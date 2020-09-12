@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84048804"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437445"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Ismerje meg a SaaS Analytics szolgáltatást Azure SQL Database, az Azure szinapszis Analytics, a Data Factory és a Power BI használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebben az oktatóanyagban egy végpontok közötti elemzési forgatókönyvet mutatunk be. A forgatókönyv azt mutatja be, hogy a bérlői adat elemzése hogyan teheti lehetővé a szoftvergyártók számára az intelligens döntések meghozatalát. Az egyes bérlői adatbázisokból kinyert adatok felhasználásával az elemzéssel betekintést nyerhet a bérlők viselkedésére, beleértve a minta Wingtip tickets SaaS-alkalmazás használatát is. Ez a forgatókönyv három lépést foglal magában:
 
-1. Az egyes bérlői adatbázisokból származó **adatok kinyerése** egy elemzési tárolóba, ebben az esetben egy SQL Data Warehouse.
+1. Az egyes bérlői adatbázisokból származó **adatok kinyerése** egy Analytics-tárolóba, ebben az esetben egy SQL-készletbe.
 2. **Optimalizálja a kinyert** adatelemzési folyamatokat.
 3. Az **üzleti intelligencia** eszközeivel hasznos elemzéseket készíthet, amelyek útmutatást nyújtanak a döntéshozatalhoz.
 
@@ -45,7 +45,7 @@ Az SaaS-alkalmazások potenciálisan nagy mennyiségű bérlői adattal rendelke
 
 Az összes bérlőre vonatkozó adatok elérése egyszerű, ha az összes adatok csak egy több-bérlős adatbázisban vannak. A hozzáférés azonban összetettebb, ha több ezer adatbázis között oszlik meg. Az összetettség kifejtésének egyik módja, ha az adatok kinyerése egy elemzési adatbázisba vagy egy adattárházba történik a lekérdezéshez.
 
-Ez az oktatóanyag egy teljes körű elemzési forgatókönyvet mutat be a Wingtip tickets alkalmazáshoz. Az első, [Azure Data Factory (ADF)](../../data-factory/introduction.md) az egyes bérlői adatbázisokból származó jegyek értékesítésének és kapcsolódó adatainak kinyerésére szolgáló előkészítési eszköz. Ezeket az adatkészleteket az elemzési tárban lévő előkészítési táblákba tölti be a rendszer. Az elemzési tár lehet SQL Database vagy SQL Data Warehouse. Ez az oktatóanyag [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) használja az elemzési tárolóként.
+Ez az oktatóanyag egy teljes körű elemzési forgatókönyvet mutat be a Wingtip tickets alkalmazáshoz. Az első, [Azure Data Factory (ADF)](../../data-factory/introduction.md) az egyes bérlői adatbázisokból származó jegyek értékesítésének és kapcsolódó adatainak kinyerésére szolgáló előkészítési eszköz. Ezeket az adatkészleteket az elemzési tárban lévő előkészítési táblákba tölti be a rendszer. Az elemzési tár lehet SQL Database vagy SQL-készlet. Ez az oktatóanyag az [Azure szinapszis Analytics (korábban SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) szolgáltatást használja az elemzési tárolóként.
 
 Ezután a kibontott adatmennyiség átalakítja és betöltődik a [Star-Schema](https://www.wikipedia.org/wiki/Star_schema) táblákba. A táblák egy központi tény tábla és a kapcsolódó dimenzió táblákból állnak:
 
@@ -83,11 +83,11 @@ Ez az oktatóanyag a Ticket Sales szolgáltatással kapcsolatban felderített el
     - **$DemoScenario**  =  **1** vásárlási jegyek minden helyszínen
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a jegyek vásárlási előzményeinek létrehozásához az összes helyszín esetében. 20 bérlő esetén a szkript több tízezer jegyet generál, és akár 10 percet is igénybe vehet.
 
-### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>SQL Data Warehouse, Data Factory és Blob Storage üzembe helyezése
+### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Az Azure szinapszis Analytics, Data Factory és Blob Storage üzembe helyezése
 
-A Wingtip jegyek alkalmazásban a bérlők tranzakciós adatait számos adatbázison keresztül osztják el. Azure Data Factory (ADF) használatával összehangolhatja az adatok kinyerését, betöltését és átalakítását (ELT) az adatraktárba. Az adatok SQL Data Warehouse leghatékonyabban történő betöltéséhez az ADF kinyeri az adatok köztes blob-fájlokat, majd a [Base](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) használatával tölti be az adattárházba.
+A Wingtip jegyek alkalmazásban a bérlők tranzakciós adatait számos adatbázison keresztül osztják el. Azure Data Factory (ADF) használatával összehangolhatja az adatok kinyerését, betöltését és átalakítását (ELT) az adatraktárba. Ahhoz, hogy az adatok betölthetők legyenek az Azure szinapszis Analyticsbe (korábbi nevén SQL Data Warehouse), az ADF kinyeri az adatok köztes blob-fájlokat, majd a [Base](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) használatával tölti be az adattárházba.
 
-Ebben a lépésben üzembe helyezi az oktatóanyagban használt további erőforrásokat: egy _tenantanalytics_nevű SQL Data Warehouse, egy _ \<user\> dbtodwload_nevű Azure Data Factory, valamint egy _wingtipstaging \<user\> _nevű Azure Storage-fiókot. A Storage-fiók a kibontott adatfájlok blobként való ideiglenes tárolására szolgál az adatraktárba való betöltés előtt. Ez a lépés az adatraktár-sémát is üzembe helyezi, és meghatározza az ADF-folyamatokat, amelyek a ELT folyamatot hangolják össze.
+Ebben a lépésben üzembe helyezi az oktatóanyagban használt további erőforrásokat: egy _tenantanalytics_nevű SQL-készletet, Azure Data Factory egy _dbtodwload nevű \<user\> _és egy _wingtipstaging \<user\> _nevű Azure Storage-fiókot. A Storage-fiók a kibontott adatfájlok blobként való ideiglenes tárolására szolgál az adatraktárba való betöltés előtt. Ez a lépés az adatraktár-sémát is üzembe helyezi, és meghatározza az ADF-folyamatokat, amelyek a ELT folyamatot hangolják össze.
 
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* és állítsa be a következőket:
     - **$DemoScenario**  =  **2** a bérlői elemzési adattárház, a blob Storage és a Refactory üzembe helyezése
@@ -159,7 +159,7 @@ A három beágyazott folyamat a következőkből áll: SQLDBToDW, DBCopy és Tab
 
 **3. folyamat – a TableCopy** a SQL Database (_ROWVERSION_) sor verziószámait használja a módosított vagy frissített sorok azonosításához. Ez a tevékenység megkeresi a kezdő és a befejező sor verziószámát a sorok kinyeréséhez a forrás tábláiból. Az egyes bérlői adatbázisokban tárolt **CopyTracker** táblázat az egyes futtatások minden egyes táblájából kinyert utolsó sort követi nyomon. Az új vagy módosított sorok az adatraktár megfelelő előkészítési tábláiba másolódnak: **raw_Tickets**, **raw_Customers**, **raw_Venues**és **raw_Events**. Végül a rendszer az utolsó sor verzióját menti a **CopyTracker** táblába, hogy a következő kinyeréskor a kezdeti sor verziója legyen használatban.
 
-Az adatelőállítót a forrás SQL-adatbázisokhoz, a cél SQL Data Warehousehoz és a köztes blob Storage-hoz kapcsolódó három paraméteres társított szolgáltatás is összeköti. A **Szerző** lapon kattintson a **kapcsolatok** elemre a társított szolgáltatások megismeréséhez, ahogy az a következő képen látható:
+Emellett három paraméterrel rendelkező társított szolgáltatás is található, amelyek összekapcsolják az adatgyárat a forrás SQL-adatbázisokkal, a cél SQL-készlettel és a közbenső blob-tárolóval. A **Szerző** lapon kattintson a **kapcsolatok** elemre a társított szolgáltatások megismeréséhez, ahogy az a következő képen látható:
 
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 
@@ -167,7 +167,7 @@ A három társított szolgáltatásnak megfelelő három olyan adathalmaz van, a
   
 ### <a name="data-warehouse-pattern-overview"></a>Az adatraktár-minta áttekintése
 
-Az Azure szinapszis (korábban Azure SQL Data Warehouse) a bérlői adatok összesítésének elvégzéséhez használt elemzési tároló. Ebben a példában a rendszer az adatoknak az adatraktárba való betöltésére használható. A nyers adatok betöltődik olyan átmeneti táblákba, amelyek rendelkeznek egy azonosító oszloppal, hogy nyomon kövessék a Star-Schema táblákba átalakított sorokat. A következő képen a betöltési minta látható: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Az Azure szinapszis (korábban SQL Data Warehouse) a bérlői adatok összesítésének elvégzéséhez használt elemzési tároló. Ebben a példában a rendszer az adatoknak az adatraktárba való betöltésére használható. A nyers adatok betöltődik olyan átmeneti táblákba, amelyek rendelkeznek egy azonosító oszloppal, hogy nyomon kövessék a Star-Schema táblákba átalakított sorokat. A következő képen a betöltési minta látható: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 Ebben a példában a lassan változó dimenzió (. SCD) Type 1 dimenziós táblázatok használatosak. Minden dimenzióhoz tartozik egy azonosító oszlop használatával meghatározott helyettes kulcs. Az ajánlott eljárás szerint a dátum dimenzió tábla előre ki van töltve, hogy időt takarítson meg. A többi dimenzió tábláinál a CREATE TABLE válassza ki a következőt:... (CTAS) utasítás egy ideiglenes tábla létrehozására szolgál, amely tartalmazza a meglévő módosított és nem módosított sorokat, valamint a helyettesítő kulcsokat. Ez a következővel történik: IDENTITY_INSERT = ON. Ekkor a rendszer beszúrja az új sorokat a táblába IDENTITY_INSERT = OFF. Az egyszerű visszaállításhoz a rendszer átnevezi a meglévő dimenzió táblát, és az ideiglenes táblát átnevezi, hogy az új dimenzió táblázat legyen. Az egyes futtatások előtt a régi dimenzió táblát törli a rendszer.
 

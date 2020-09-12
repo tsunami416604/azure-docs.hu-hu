@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885157"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440949"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -28,7 +28,7 @@ Az asztali alkalmazásokban támogatott fióktípus attól függ, hogy milyen é
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Célközönség az interaktív jogkivonat-beszerzéshez
 
-Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fióktípus](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)használatával bejelentkezhet a felhasználókba.
+Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fióktípus](quickstart-register-app.md)használatával bejelentkezhet a felhasználókba.
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>Hallgatóság az asztali alkalmazások csendes folyamataihoz
 
@@ -41,7 +41,7 @@ Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fiók
 Az asztali alkalmazásokban használandó átirányítási URI-k a használni kívánt folyamattól függenek.
 
 - Ha az interaktív hitelesítést vagy az eszköz kódjának folyamatát használja, használja a t `https://login.microsoftonline.com/common/oauth2/nativeclient` . A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítés** szakaszában.
-  
+
   > [!IMPORTANT]
   > Napjainkban a MSAL.NET egy másik átirányítási URI-t használ a Windows () rendszeren futó asztali alkalmazásokban `urn:ietf:wg:oauth:2.0:oob` . A jövőben módosítani fogjuk ezt az alapértelmezett értéket, ezért javasoljuk, hogy használja a következőt: `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 
@@ -55,7 +55,7 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 
 Asztali alkalmazások hívás API-kat a bejelentkezett felhasználó számára. Delegált engedélyeket kell kérniük. Nem igényelhetnek alkalmazás-engedélyeket, amelyek csak Daemon- [alkalmazásokban](scenario-daemon-overview.md)vannak kezelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Asztali alkalmazás: alkalmazás konfigurációja](scenario-desktop-app-configuration.md)

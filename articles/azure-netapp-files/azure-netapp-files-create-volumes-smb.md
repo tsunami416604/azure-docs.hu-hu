@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950374"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459011"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -45,7 +45,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    n.a.       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -188,7 +188,7 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
 
     Megjelenik a létrehozott Active Directory-kapcsolatok.
 
-    ![Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![Létrehozott Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 ## <a name="add-an-smb-volume"></a>SMB-kötet hozzáadása
 
@@ -230,7 +230,7 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
     
         ![Alhálózat létrehozása](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a kötetre, kattintson a **speciális szakasz megjelenítése** lehetőségre a kibontásához, majd a legördülő menüben válassza ki a pillanatkép-szabályzatot. 
+    * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a kötetre, kattintson a **speciális szakasz megjelenítése** lehetőségre a kibontásához, adja meg, hogy el kívánja-e rejteni a pillanatkép elérési útját, majd válassza ki a pillanatkép-szabályzatot a legördülő menüben. 
 
         A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 

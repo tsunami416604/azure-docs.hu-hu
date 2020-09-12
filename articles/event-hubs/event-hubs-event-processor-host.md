@@ -4,12 +4,12 @@ description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, a
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010460"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319502"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]
@@ -87,6 +87,8 @@ Ezután hozza létre az [EventProcessorHost](/dotnet/api/microsoft.azure.eventhu
 
 Végezetül a felhasználók regisztrálják a [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -példányt a Event Hubs szolgáltatással. Az Event Processor osztály EventProcessorHost-példányával való regisztrálása elindítja az események feldolgozását. A regisztrálás arra utasítja a Event Hubs szolgáltatást, hogy a fogyasztói alkalmazás egy adott partícióból származó eseményeket fogyasszon el, és meghívja a [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementációs kódot, amikor az eseményeket leküldi a felhasználásra. 
 
+> [!NOTE]
+> A consumerGroupName megkülönbözteti a kis-és nagybetűket.  A consumerGroupName módosításai az összes partíció olvasását eredményezheti a stream elejéről.
 
 ### <a name="example"></a>Példa
 

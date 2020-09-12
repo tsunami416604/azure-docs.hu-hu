@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981435"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440830"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Ajánlott eljárások Azure Data Lake Storage Gen1 használatához
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 támogatja a tűzfal bekapcsolásának lehetőségét, é
 
 ![Tűzfalbeállítások a Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Tűzfalbeállítások a Data Lake Storage Gen1")
 
-Ha a tűzfal engedélyezve van, csak az Azure-szolgáltatások (például HDInsight, Data Factory, SQL Data Warehouse stb.) férhetnek hozzá a Data Lake Storage Gen1hoz. Az Azure által használt belső hálózati címfordítás miatt a Data Lake Storage Gen1 tűzfal nem támogatja az IP-címek korlátozását, és csak az Azure-on kívüli végpontokra, például a helyszíni szolgáltatásokra vonatkozik.
+Ha a tűzfal engedélyezve van, csak az olyan Azure-szolgáltatások érhetők Data Lake Storage Gen1 el, mint a HDInsight, az Data Factory, az Azure szinapszis Analytics (korábban SQL Data Warehouse) stb.). Az Azure által használt belső hálózati címfordítás miatt a Data Lake Storage Gen1 tűzfal nem támogatja az IP-címek korlátozását, és csak az Azure-on kívüli végpontokra, például a helyszíni szolgáltatásokra vonatkozik.
 
 ## <a name="performance-and-scale-considerations"></a>Teljesítmény-és méretezési szempontok
 
@@ -104,7 +104,7 @@ Alább láthatók az első három ajánlott lehetőség a Data Lake Storage Gen1
 |**Támogatja a különbözetek másolását**     |   Igen      | Nem         | Nem         |
 |**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Yes        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
 |**Támogatott fájlrendszerek**     | ADL, HDFS, WASB, S3, GS, CFS        |Számos, lásd: [Összekötők](../data-factory/connector-azure-blob-storage.md).         | ADL – ADL, WASB – ADL (csak azonos régió)        |
-|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N.A.          | Windows 10         |
+|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N/A          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Distcp használata két helyszín közötti adatáthelyezéshez
 
@@ -189,7 +189,7 @@ NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
 
 A közvetlenül az adatbázisokba (például a kaptárba vagy a hagyományos SQL-adatbázisba) feldolgozott batch-adatokat nem kell **/in** vagy **/out** mappához adni, mivel a kimenet már egy különálló mappába kerül a kaptár-tábla vagy a külső adatbázis számára. Például az ügyfelek napi kinyerése a saját mappáiba kerül, és a Azure Data Factory, az Apache Oozie vagy az Apache légáram egy olyan napi struktúrát vagy Spark-feladatot indít el, amely feldolgozza és beírja az adatait egy kaptár-táblába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Access Control a Azure Data Lake Storage Gen1](data-lake-store-access-control.md)

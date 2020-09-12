@@ -6,21 +6,21 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/11/2020
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 5283e20b6121dbdc3ce57587d188ad5ad0e1b6b9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041030"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441578"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Helyek közötti kapcsolat hozzáadása egy VNet meglévő VPN Gateway-kapcsolattal (klasszikus)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
 >
@@ -218,6 +218,6 @@ Példa vissza:
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a VPN-átjárókkal kapcsolatban: [Tudnivalók a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141295"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440932"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -38,7 +38,7 @@ A webes API-t a saját maga határozza meg `scopes` . Függetlenül attól, hogy
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
-                                            // if the app manages is at most one account  
+                                            // if the app manages is at most one account
 try
 {
  result = await app.AcquireTokenSilent(scopes, account)
@@ -370,7 +370,7 @@ if accounts:
 if not result:
     result = app.acquire_token_by_authorization_code(
          request.args['code'],
-         scopes=config["scope"])    
+         scopes=config["scope"])
 
 ```
 
@@ -433,7 +433,7 @@ Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy A
   - Vagy a bérlői rendszergazdának előzőleg meg kell adnia a bérlő összes felhasználója számára az alkalmazás használatát.
   - Más szóval:
     - A fejlesztőként a Azure Portal a **Grant (Engedélyezés** ) gombot saját maga is kiválasztva.
-    - Vagy a bérlői rendszergazda a (z) **{bérlői tartomány} gomb engedélyezés/visszavonás rendszergazdai jóváhagyása** elemét választotta az alkalmazás regisztrációjának **API-engedélyek** lapján. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Vagy a bérlői rendszergazda a (z) **{bérlői tartomány} gomb engedélyezés/visszavonás rendszergazdai jóváhagyása** elemét választotta az alkalmazás regisztrációjának **API-engedélyek** lapján. További információ: a [webes API eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
     - Vagy lehetősége van arra, hogy a felhasználók beleegyezett az alkalmazásba. További információ: [egyéni felhasználói engedély kérése](./v2-permissions-and-consent.md#requesting-individual-user-consent).
     - Vagy megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba. További információ: [rendszergazdai beleegyezett](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
@@ -925,7 +925,7 @@ Ez a folyamat nem támogatott a macOS-MSAL.
 
 Ha olyan parancssori eszközt ír, amely nem rendelkezik webvezérlőkkel, és nem kívánja használni az előző folyamatokat, akkor az eszköz kódját kell használnia.
 
-Az Azure AD-vel való interaktív hitelesítéshez webböngésző szükséges. További információ: [böngészők használata](https://aka.ms/msal-net-uses-web-browser). Ha olyan eszközökön vagy operációs rendszereken szeretné hitelesíteni a felhasználókat, amelyek nem biztosítanak webböngészőt, az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt, például egy számítógépet vagy egy mobiltelefont használjon interaktív bejelentkezéshez. Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, amelyeket az eszközökhöz vagy az operációs rendszerhez terveztek. Ilyen alkalmazások például a iOT vagy parancssori eszközökön (CLI) futó alkalmazások. Az a gondolat, hogy:
+Az Azure AD-vel való interaktív hitelesítéshez webböngésző szükséges. További információ: [böngészők használata](https://aka.ms/msal-net-uses-web-browser). Ha olyan eszközökön vagy operációs rendszereken szeretné hitelesíteni a felhasználókat, amelyek nem biztosítanak webböngészőt, az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt, például egy számítógépet vagy egy mobiltelefont használjon interaktív bejelentkezéshez. Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, amelyeket ezekhez az eszközökhöz vagy operációs rendszerekhez terveztek. Ilyen alkalmazások például a iOT vagy parancssori eszközökön (CLI) futó alkalmazások. Az a gondolat, hogy:
 
 1. Ha felhasználói hitelesítésre van szükség, az alkalmazás kódot biztosít a felhasználó számára. A felhasználónak meg kell adnia egy másik eszközt, például egy internetkapcsolattal rendelkező okostelefont, hogy megnyissa az URL-címet (például: `https://microsoft.com/devicelogin` ). Ezután a rendszer megkéri a felhasználót a kód megadására. Ennek megfelelően a weblap egy normál hitelesítési felülettel vezeti a felhasználót, és szükség esetén beletartozik a hozzájárulási kérések és a többtényezős hitelesítés.
 
@@ -978,7 +978,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
         // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
-    }         
+    }
 }
 
 private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)

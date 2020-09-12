@@ -2,20 +2,20 @@
 title: Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
 description: Megtudhatja, hogyan engedélyezheti az erőforrás-naplózást a Traffic Manager profiljához, és hogyan férhet hozzá az eredményként létrehozott naplófájlokhoz.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: rohink
-ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089056"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401316"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
 
@@ -74,7 +74,7 @@ Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó 
 |status|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
 |||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Traffic Manager figyelésről](traffic-manager-monitoring.md)
 

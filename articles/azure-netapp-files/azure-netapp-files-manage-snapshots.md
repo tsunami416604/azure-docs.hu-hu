@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950340"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459081"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
-Azure NetApp Files támogatja az igény szerinti pillanatképek létrehozását és a pillanatkép-szabályzatok használatát az automatikus pillanatkép-létrehozás ütemezéséhez.  A pillanatképet új kötetre is visszaállíthatja.  
+Azure NetApp Files támogatja az igény szerinti pillanatképek létrehozását és a pillanatkép-szabályzatok használatát az automatikus pillanatkép-létrehozás ütemezéséhez.  A pillanatképet új kötetre is visszaállíthatja, vagy egyetlen fájlt is visszaállíthat egy ügyfél használatával.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Igény szerinti pillanatkép létrehozása kötethez
 
@@ -161,11 +161,66 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
 
     ![Visszaállítás új kötetre](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Create** (Létrehozás) gombra.   
+4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Létrehozás** gombra.   
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
+
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>Fájl visszaállítása pillanatképből ügyfél használatával
+
+Ha nem szeretné [visszaállítani a teljes pillanatképet egy kötetre](#restore-a-snapshot-to-a-new-volume), lehetősége van visszaállítani egy fájlt egy pillanatképből egy olyan ügyfél használatával, amelyhez a kötet csatlakoztatva van.  
+
+A csatlakoztatott kötet tartalmazza  `.snapshot` az ügyfél számára elérhető pillanatkép-könyvtárat (az NFS-ügyfeleken) vagy `~snapshot` (az SMB-ügyfeleken). A pillanatkép könyvtára a kötet pillanatképeit reprezentáló alkönyvtárakat tartalmaz. Minden alkönyvtár tartalmazza a pillanatkép fájljait. Ha véletlenül töröl vagy felülír egy fájlt, visszaállíthatja a fájlt a szülő írható-olvasható könyvtárára úgy, hogy a fájlt egy pillanatkép-alkönyvtárból az írható-olvasható könyvtárba másolja. 
+
+Ha a kötet létrehozásakor a pillanatkép elérési útjának elrejtése jelölőnégyzet be van jelölve, a pillanatkép-könyvtár rejtett. Megtekintheti a kötet pillanatkép-elérési útjának állapotának elrejtését a kötet kiválasztásával. A pillanatkép elérési útjának elrejtése lehetőségre kattintva szerkesztheti a kötet oldalának **Szerkesztés** elemét.  
+
+![Kötet-pillanatkép beállításainak szerkesztése](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Fájl visszaállítása Linux NFS-ügyfél használatával 
+
+1. A `ls` Linux parancs használatával listázhatja a címtárból visszaállítani kívánt fájlt `.snapshot` . 
+
+    Például:
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. A `cp` parancs használatával másolja a fájlt a szülő könyvtárba.  
+
+    Például: 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Fájl visszaállítása Windows-ügyfél használatával 
+
+1. Ha a `~snapshot` kötet könyvtára rejtett, jelenítse meg a szülő könyvtár [rejtett elemeit](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10) `~snapshot` .
+
+    ![Rejtett elemek megjelenítése](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. A `~snapshot` visszaállítani kívánt fájl megkereséséhez navigáljon a belül található alkönyvtárra.  Kattintson a jobb gombbal a fájlra. Válassza a **Másolás** lehetőséget.  
+
+    ![Fájl másolása a visszaállításhoz](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. Térjen vissza a szülő könyvtárhoz. Kattintson a jobb gombbal a szülő könyvtárra, és válassza ki a `Paste` fájlt a könyvtárba.
+
+    ![A visszaállítandó fájl beillesztése](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. Azt is megteheti, hogy a jobb gombbal a szülő könyvtárra kattint, majd kiválasztja a **Tulajdonságok**elemet, majd a **korábbi verziók** lapon megtekintheti a pillanatképek listáját, és a **visszaállítás** elemre kattintva állíthatja vissza a fájlt.  
+
+    ![Korábbi verziók tulajdonságai](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
+* [Azure NetApp Files Pillanatképek 101 videó](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

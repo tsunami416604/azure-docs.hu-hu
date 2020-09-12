@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290106"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441170"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Ez a cikk a következőket ismerteti:
 
-- A Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszis Analytics (korábban Azure SQL Data Warehouse) konfigurálásának lehetőségei lehetővé teszik a felhasználók számára a rendszergazdai feladatok elvégzését és az ezekben az adatbázisokban tárolt adatok elérését.
+- A Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszis Analytics (korábban SQL Data Warehouse) konfigurálásának lehetőségei lehetővé teszik a felhasználók számára a rendszergazdai feladatok elvégzését és az ezekben az adatbázisokban tárolt adatok elérését.
 - A hozzáférési és engedélyezési konfiguráció a kezdeti új kiszolgáló létrehozása után.
 - Bejelentkezések és felhasználói fiókok hozzáadása a főadatbázisban és a felhasználói fiókokban, majd a fiókok rendszergazdai engedélyeinek megadása.
 - Felhasználói fiókok hozzáadása felhasználói adatbázisokban a bejelentkezésekhez vagy a benne foglalt felhasználói fiókokhoz társítva.
@@ -48,8 +48,8 @@ Amikor egy felhasználó megpróbál csatlakozni egy adatbázishoz, felhasznál�
 
 **Bejelentkezések és felhasználók**: egy adatbázisban lévő felhasználói fiók társítható a főadatbázisban tárolt bejelentkezési azonosítóval, vagy lehet egy különálló adatbázisban tárolt Felhasználónév.
 
-- A **Bejelentkezés** a főadatbázis egy különálló fiókja, amelyhez egy vagy több adatbázisban lévő felhasználói fiók csatolható. A bejelentkezéssel a felhasználói fiók hitelesítő adatait a rendszer a bejelentkezéssel együtt tárolja.
-- A **felhasználói fiók** minden olyan adatbázishoz tartozik, amely lehet, de nem feltétlenül szükséges egy bejelentkezési azonosítóhoz csatolva. Ha egy olyan felhasználói fiók van, amely nem kapcsolódik bejelentkezési azonosítóhoz, a rendszer a hitelesítő adatokat a felhasználói fiókkal tárolja.
+- A **Bejelentkezés** a főadatbázis egy különálló fiókja, amelyhez egy vagy több adatbázisban lévő felhasználói fiók csatolható. Ha rendelkezik bejelentkezési azonosítóval, a felhasználói fiókhoz tartozó hitelesítő adatokat a rendszer a bejelentkezési azonosítóval együtt tárolja.
+- A **felhasználói fiók** minden olyan adatbázishoz tartozik, amely lehet, de nem feltétlenül szükséges egy bejelentkezési azonosítóhoz csatolva. Ha a felhasználói fiók nincs bejelentkezési azonosítóhoz rendelve, a rendszer a felhasználói fiókkal együtt tárolja a hitelesítő adatokat.
 
 Az adatokhoz való hozzáférés [**engedélyezése**](security-overview.md#authorization) és a különféle műveletek végrehajtása adatbázis-szerepkörök és explicit engedélyek használatával történik. Az engedélyezés a felhasználóhoz rendelt engedélyekre utal, és meghatározza, hogy a felhasználó mit tehet. Az engedélyezést a felhasználói fiók adatbázis- [szerepköri tagsága](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) és az [objektum szintű engedélyek](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)vezérlik. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak.
 
@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az összes Azure SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [biztonsági áttekintés](security-overview.md).

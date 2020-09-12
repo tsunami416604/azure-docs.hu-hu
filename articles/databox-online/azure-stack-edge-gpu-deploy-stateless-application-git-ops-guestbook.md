@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254219"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319292"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge GPU-ban
 
@@ -57,7 +57,7 @@ Az állapot nélküli alkalmazás üzembe helyezése előtt győződjön meg arr
       - Az Azure Stack Edge-eszköz helyi felhasználói felületén lépjen az **Áttekintés** elemre, és jegyezze fel a Kubernetes szoftver számát. 
       - Ellenőrizze, hogy ez a két verzió kompatibilis-e a támogatott Kubernetes-verzióban megadott leképezéssel <!--insert link-->.
 
-1. Rendelkezik egy [GitOps-konfigurációval, amely Azure arc-telepítés futtatására használható](https://github.com/kagoyal/dbehaikudemo). A következő fájlokat fogja használni a `yaml` Azure stack peremhálózati eszközön való üzembe helyezéshez.
+1. Rendelkezik egy [GitOps-konfigurációval, amely Azure arc-telepítés futtatására használható](https://github.com/kagoyal/dbehaikudemo). Ebben a példában a következő fájlokat fogja használni a `yaml` Azure stack Edge-eszközön való üzembe helyezéshez.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -132,7 +132,7 @@ A GitOps-konfiguráción keresztüli központi telepítés létrehoz egy névter
     [10.128.44.240]: PS>
     ```  
 
-1. Ebben a példában a frontend szolgáltatást a következő típusként telepítettük: terheléselosztó. A Vendégkönyv megtekintéséhez meg kell keresnie ennek a szolgáltatásnak az IP-címét. Futtassa az alábbi parancsot:
+1. Ebben a példában a frontend szolgáltatást a következő típusként telepítettük: terheléselosztó. A Vendégkönyv megtekintéséhez meg kell keresnie ennek a szolgáltatásnak az IP-címét. Futtassa az alábbi parancsot.
 
     `kubectl get service -n <your-namespace>`
     
@@ -174,6 +174,6 @@ C:\Users\user>
 ```-->
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [figyelheti a Kubernetes irányítópultot a Azure stack Edge-eszközön üzemelő példányok figyelésére](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

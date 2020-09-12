@@ -3,20 +3,20 @@ title: Háttérrendszer-és háttér-készletek az Azure bejárati ajtóban | Mi
 description: Ez a cikk ismerteti, hogy milyen háttér-és háttér-készletek találhatók az előtérben lévő konfigurációban.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293468"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399922"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Háttérrendszer és háttérbeli készletek az Azure-ban – bejárati ajtó
 Ez a cikk bemutatja, hogyan képezhető le az alkalmazás üzembe helyezése az Azure bejárati ajtóval. Emellett ismerteti a különböző használati feltételeket is az alkalmazási háttérrendszer-konfigurációban.
@@ -93,7 +93,7 @@ A háttér-készlet terheléselosztási beállításai határozzák meg, hogyan 
 
 További információ: a [minimális késésen alapuló útválasztási módszer](front-door-routing-methods.md#latency).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
 - [Az előtérben működik](front-door-routing-architecture.md)

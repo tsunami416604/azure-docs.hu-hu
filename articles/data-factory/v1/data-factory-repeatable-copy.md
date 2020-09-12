@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707293"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441629"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Ismételhető másolás Azure Data Factory
 
@@ -104,7 +104,7 @@ A másolási tevékenység lefuttatta a törlési parancsfájlt, hogy törölje 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>2. mechanizmus: a sliceIdentifierColumnName használata
 > [!IMPORTANT]
-> A Azure SQL Data Warehouse jelenleg nem támogatja a sliceIdentifierColumnName. 
+> Jelenleg a sliceIdentifierColumnName nem támogatott az Azure szinapszis Analyticsben (korábban SQL Data Warehouse). 
 
 A ismételhetőség elérésének második mechanizmusa egy dedikált oszlop (sliceIdentifierColumnName) a cél táblában. Ezt az oszlopot a Azure Data Factory fogja használni a forrás és a célhely szinkronizálásának biztosítása érdekében. Ez a megközelítés akkor működik, ha a cél SQL-tábla sémájának módosítása vagy meghatározása rugalmas. 
 
@@ -147,9 +147,9 @@ Azure Data Factory ezt az oszlopot a szükséges módon tölti fel a forrás és
 
 Az 1. mechanizmushoz hasonlóan a másolási tevékenység automatikusan törli az adott szelet adatait a cél SQL-táblából. Ezután beszúrja az adatait a forrásból a cél táblába. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő összekötő-cikkeket a teljes JSON-példákhoz: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Az Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

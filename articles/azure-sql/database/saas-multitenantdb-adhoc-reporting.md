@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 098ac343885db3e267dcefb3785f5abd55d17ee2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042645"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441034"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Alkalmi elemzési lekérdezések futtatása több adatbázison keresztül (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ Az SaaS-alkalmazások a felhőben központilag tárolt bérlői adatmennyiséget
 
 Ezeknek az adatoknak egyetlen több bérlős adatbázisban történő elérése könnyű, de nem olyan egyszerű, ha méretezve akár több ezer adatbázis között vannak elosztva. Az egyik módszer a [rugalmas lekérdezés](elastic-query-overview.md)használata, amely lehetővé teszi a közös sémával rendelkező elosztott adatbázisok lekérdezését. Ezek az adatbázisok különböző erőforráscsoportok és előfizetések között terjeszthetők. Ugyanakkor az egyik gyakori bejelentkezésnek hozzáféréssel kell rendelkeznie az adatoknak az összes adatbázisból való kinyeréséhez. A rugalmas lekérdezés egyetlen *fő* adatbázist használ, amelyben külső táblák vannak meghatározva, amelyek az elosztott (bérlői) adatbázisokban lévő táblákat vagy nézeteket tükröznek. Az ebbe a központi adatbázisba küldött lekérdezések le lesznek fordítva elosztott lekérdezési terv készítéséhez, a lekérdezés részei pedig igény szerint le lesznek küldve a bérlői adatbázisokba. A rugalmas lekérdezés az összes bérlői adatbázis helyét határozza meg a katalógus-adatbázisban található szegmenses leképezés használatával. A telepítő és a lekérdezés a standard [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)használatával egyszerű, és támogatja az olyan eszközöktől származó ad hoc lekérdezéseket, mint a Power bi és az Excel.
 
-A lekérdezéseknek a bérlői adatbázisokban való terjesztése révén a rugalmas lekérdezés azonnali betekintést nyújt az éles üzemi adataiba. Mivel azonban a rugalmas lekérdezés akár több adatbázisból is lekéri az adatok mennyiségét, a lekérdezés késése esetenként magasabb lehet, mint az egyetlen több-bérlős adatbázisba küldött egyenértékű lekérdezések esetében. Ügyeljen arra, hogy a visszaadott adatforgalom minimalizálására szolgáló lekérdezéseket tervezzen. A rugalmas lekérdezés többnyire kis mennyiségű valós idejű adat lekérdezésére alkalmas, a gyakran használt vagy összetett elemzési lekérdezések vagy jelentések kiépítése helyett. Ha a lekérdezések nem jól teljesítenek, tekintse meg a [végrehajtási tervet](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , és tekintse meg, hogy a lekérdezés milyen része lett leküldve a távoli adatbázisra. És mérje fel, hogy mennyi adattal tért vissza a rendszer. Az összetett analitikus feldolgozást igénylő lekérdezések jobb kiszolgálása a kinyert bérlői adatoknak az elemzési lekérdezésekhez optimalizált adatbázisba való mentésekor lehet. A SQL Database és a SQL Data Warehouse az elemzési adatbázist is üzemeltetheti.
+A lekérdezéseknek a bérlői adatbázisokban való terjesztése révén a rugalmas lekérdezés azonnali betekintést nyújt az éles üzemi adataiba. Mivel azonban a rugalmas lekérdezés akár több adatbázisból is lekéri az adatok mennyiségét, a lekérdezés késése esetenként magasabb lehet, mint az egyetlen több-bérlős adatbázisba küldött egyenértékű lekérdezések esetében. Ügyeljen arra, hogy a visszaadott adatforgalom minimalizálására szolgáló lekérdezéseket tervezzen. A rugalmas lekérdezés többnyire kis mennyiségű valós idejű adat lekérdezésére alkalmas, a gyakran használt vagy összetett elemzési lekérdezések vagy jelentések kiépítése helyett. Ha a lekérdezések nem jól teljesítenek, tekintse meg a [végrehajtási tervet](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , és tekintse meg, hogy a lekérdezés milyen része lett leküldve a távoli adatbázisra. És mérje fel, hogy mennyi adattal tért vissza a rendszer. Az összetett analitikus feldolgozást igénylő lekérdezések jobb kiszolgálása a kinyert bérlői adatoknak az elemzési lekérdezésekhez optimalizált adatbázisba való mentésekor lehet. A SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) képes az elemzési adatbázis üzemeltetésére.
 
 Az elemzések mintáját a [bérlői elemzési oktatóanyag](saas-multitenantdb-tenant-analytics.md)ismerteti.
 
@@ -142,7 +142,7 @@ A végrehajtási terv vizsgálatakor vigye a kurzort a terv ikonjaira a részlet
    ![lekérdezés](./media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 09/03/2020
+ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135894"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442190"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Írásvédett replikák használata írásvédett lekérdezési feladatok kiszervezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A [magas rendelkezésre állású architektúrák](high-availability-sla.md#premium-and-business-critical-service-tier-availability)részeként a prémium szintű és a üzletileg kritikus szolgáltatási szinten található minden adatbázis és felügyelt példány automatikusan egy elsődleges írható-olvasható replikával és számos másodlagos írásvédett replikával van kiépítve. A másodlagos replikákat ugyanazzal a számítási mérettel kell kiépíteni, mint az elsődleges replikát. Az *olvasási Felskálázási* funkció lehetővé teszi a csak olvasási feladatok kiosztását az írásvédett replikák egyikének számítási kapacitása alapján, ahelyett, hogy az írható-olvasható replikán fusson. Így bizonyos írásvédett munkaterhelések elkülöníthetők az írási és olvasási munkaterheléstől, és nem befolyásolják a teljesítményüket. A szolgáltatás olyan alkalmazások számára készült, amelyek logikailag elkülönített, csak olvasható számítási feladatokat tartalmaznak, például az elemzést. A prémium és üzletileg kritikus szolgáltatási szinten az alkalmazások a további kapacitás nélkül vehetik igénybe a teljesítmény előnyeit.
+A [magas rendelkezésre állású architektúrák](high-availability-sla.md#premium-and-business-critical-service-tier-availability)részeként a prémium szintű és a üzletileg kritikus szolgáltatási rétegben található minden egyes adatbázis, rugalmas készlet-adatbázis és felügyelt példány automatikusan egy elsődleges írható-olvasható replikával és számos másodlagos írásvédett replikával van kiépítve. A másodlagos replikákat ugyanazzal a számítási mérettel kell kiépíteni, mint az elsődleges replikát. Az *olvasási Felskálázási* funkció lehetővé teszi a csak olvasási feladatok kiosztását az írásvédett replikák egyikének számítási kapacitása alapján, ahelyett, hogy az írható-olvasható replikán fusson. Így bizonyos írásvédett munkaterhelések elkülöníthetők az írási és olvasási munkaterheléstől, és nem befolyásolják a teljesítményüket. A szolgáltatás olyan alkalmazások számára készült, amelyek logikailag elkülönített, csak olvasható számítási feladatokat tartalmaznak, például az elemzést. A prémium és üzletileg kritikus szolgáltatási szinten az alkalmazások a további kapacitás nélkül vehetik igénybe a teljesítmény előnyeit.
 
 Az *olvasási kibővítő* funkció a nagy kapacitású szolgáltatási rétegében is elérhető, ha legalább egy másodlagos replika létrejön. Több másodlagos replikát is használhat a csak olvasási feladatok terheléselosztásához, amelyek több erőforrást igényelnek, mint amennyi az egyik másodlagos replikán elérhető.
 
@@ -45,7 +45,7 @@ Ha biztosítani szeretné, hogy az alkalmazás az SQL-kapcsolati sztring beáll�
 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
-A replikák egyik előnye, hogy a replikák mindig tranzakciós szempontból konzisztens állapotban vannak, de a különböző időpontokban előfordulhat, hogy a különböző replikák között kis késés van. Az olvasási felskálázás támogatja a munkamenet-szintű konzisztenciát. Ez azt jelenti, hogy ha a csak olvasási munkamenet újracsatlakozik a replika nem rendelkezésre állása okozta kapcsolódási hiba után, a rendszer átirányítja egy olyan másodpéldányra, amely nem 100%-kal naprakész az írható-olvasható replikával. Hasonlóképpen, ha egy alkalmazás egy írható-olvasható munkamenet használatával ír adatokat, és azonnal beolvassa azt egy írásvédett munkamenettel, akkor lehetséges, hogy a legújabb frissítések nem láthatók azonnal a replikán. A késést egy aszinkron tranzakciónapló-ismétlési művelet okozta.
+A replikák egyik előnye, hogy a replikák mindig tranzakciós szempontból konzisztens állapotban vannak, de a különböző időpontokban előfordulhat, hogy a különböző replikák között kis késés van. Az olvasási felskálázás támogatja a munkamenet-szintű konzisztenciát. Ez azt jelenti, hogy ha a csak olvasási munkamenet újracsatlakozik a replika nem rendelkezésre állása okozta kapcsolódási hiba után, a rendszer átirányítja egy olyan másodpéldányra, amely nem 100%-kal naprakész az írható-olvasható replikával. Ugyanígy, ha egy alkalmazás olvasási-írási munkamenettel ír adatokat, és azonnal beolvassa őket írásvédett munkamenettel, előfordulhat, hogy a legújabb frissítések nem láthatók azonnal a replikán. A késést egy aszinkron tranzakciós napló ismétlési művelete okozza.
 
 > [!NOTE]
 > A régión belüli replikációs késések alacsonyak, és ez a helyzet ritka. A replikálás késésének figyeléséhez tekintse meg az [írásvédett replika figyelése és hibaelhárítása](#monitoring-and-troubleshooting-read-only-replicas)című témakört.
@@ -85,13 +85,13 @@ Ha írásvédett replikához csatlakozik, a dinamikus felügyeleti nézetek (DMV
 
 A gyakran használt nézetek a következők:
 
-| Name | Szerep |
+| Name | Cél |
 |:---|:---|
-|[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
-|[sys. dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |
+|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
+|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |
 |[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| A replika állapotának és szinkronizálási statisztikájának nyújtása. A várólista méretének megismétlése és az Ismétlési arány a csak olvasható replikán lévő Adatkésési mutatókként szolgál. |
 |[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Adatbázismotor-teljesítményszámlálókat biztosít.|
-|[sys. dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Lekérdezési végrehajtási statisztikákat biztosít, például a végrehajtások számát, a felhasznált CPU-időt stb.|
+|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Lekérdezési végrehajtási statisztikákat biztosít, például a végrehajtások számát, a felhasznált CPU-időt stb.|
 |[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Gyorsítótárazott lekérdezési terveket biztosít. |
 |[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Lekérdezési szöveget biztosít a gyorsítótárazott lekérdezési tervhez.|
 |[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Valós idejű lekérdezési előrehaladást biztosít a lekérdezések végrehajtása közben.|

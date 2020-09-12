@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816303"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440337"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Hivatkozás: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -232,7 +232,7 @@ A következő Azure-eszközök vannak telepítve a virtuális gépre:
 * **Azure Storage Explorer**: a Azure Storage Explorer egy grafikus eszköz, amellyel böngészhet az Azure Storage-fiókban tárolt objektumokon, valamint az Azure-blobokból és az onnan érkező adatok feltöltésével és letöltésével. A Storage Explorer az asztali parancsikon ikonján keresztül érheti el. A **StorageExplorer**megadásával is megnyithatja azt egy rendszerhéj-parancssorból. Be kell jelentkeznie egy X2Go-ügyfélről, vagy be kell állítania az X11-továbbítást.
 * **Azure-kódtárak**: az alábbiakban néhány előre telepített függvénytár található.
   
-  * **Python**: az Azure-hoz kapcsolódó kódtárak a Pythonban az *Azure*, a *azureml*, a *pydocumentdb*és a *pyodbc*. Az első három függvénytárban hozzáférhet az Azure Storage szolgáltatásaihoz, Azure Machine Learninghoz és Azure Cosmos DBhoz (NoSQL-adatbázis az Azure-ban). A pyodbc (a SQL Server Microsoft ODBC-illesztővel együtt) negyedik könyvtára lehetővé teszi a hozzáférést a Pythonhoz SQL Server, Azure SQL Database és Azure SQL Data Warehousehoz egy ODBC-felület használatával. Az összes felsorolt könyvtár megjelenítéséhez adja meg a **pip-listát** . Mindenképpen futtassa ezt a parancsot a Python 2,7-es és a 3,5-es környezetekben.
+  * **Python**: az Azure-hoz kapcsolódó kódtárak a Pythonban az *Azure*, a *azureml*, a *pydocumentdb*és a *pyodbc*. Az első három függvénytárban hozzáférhet az Azure Storage szolgáltatásaihoz, Azure Machine Learninghoz és Azure Cosmos DBhoz (NoSQL-adatbázis az Azure-ban). A pyodbc (a SQL Server Microsoft ODBC-illesztővel együtt) negyedik könyvtára lehetővé teszi a SQL Server, a Azure SQL Database és az Azure szinapszis-elemzések elérését a Pythonból egy ODBC-felület használatával. Az összes felsorolt könyvtár megjelenítéséhez adja meg a **pip-listát** . Mindenképpen futtassa ezt a parancsot a Python 2,7-es és a 3,5-es környezetekben.
   * **R**: az Azure-beli, r-hez kapcsolódó kódtárak a AzureML és a RODBC.
   * **Java**: az Azure Java-kódtárak listája a virtuális gép címtárának/dsvm/SDK/AzureSDKJava található. A legfontosabb kódtárak az Azure Storage és a Management API-k, a Azure Cosmos DB és a SQL Server JDBC-illesztőprogramjai.  
 
@@ -344,6 +344,6 @@ Ekkor megnyílik egy grafikus felület, amely fülekből áll. A következő rö
 
 Kiléphet a csörgő és az R lehetőségből. Most már módosíthatja a generált R-szkriptet. Használhatja a parancsfájlt is, és bármikor futtathatja, hogy megismételje a csörgő felhasználói felületen végzett összes műveletet. Különösen az R-ben kezdőknek, így gyorsan elvégezheti az elemzést és a gépi tanulást egy egyszerű grafikus felületen, az R-ben pedig automatikusan generálhat kódot a módosításhoz vagy a megismeréshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További kérdései vannak? Hozzon létre egy [támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).

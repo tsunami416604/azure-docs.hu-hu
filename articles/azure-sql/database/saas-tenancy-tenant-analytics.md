@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043512"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437394"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ A több-bérlős SaaS-alkalmazások általában nagy mennyiségű, a felhőben t
 
 Az összes bérlőre vonatkozó adatok elérése egyszerű, ha az összes adatok csak egy több-bérlős adatbázisban vannak. A hozzáférés azonban összetettebb, ha akár több ezer adatbázis között történik a skálázás. Az egyik módszer az összetettség és a tranzakciós adatokon alapuló elemzési lekérdezések hatásának minimalizálására, hogy az adatok egy célra tervezett elemzési adatbázisba vagy adattárházba legyenek kinyerve.
 
-Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be a Wingtip tickets SaaS-alkalmazáshoz. Első lépésként a *rugalmas feladatok* segítségével kinyerheti az egyes bérlői adatbázisok adatait, és betöltheti azokat átmeneti táblákba egy elemzési tárolóban. Az elemzési tár lehet egy SQL Database vagy egy SQL Data Warehouse. Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../../data-factory/introduction.md) ajánlott.
+Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be a Wingtip tickets SaaS-alkalmazáshoz. Első lépésként a *rugalmas feladatok* segítségével kinyerheti az egyes bérlői adatbázisok adatait, és betöltheti azokat átmeneti táblákba egy elemzési tárolóban. Az elemzési tár lehet egy SQL Database vagy egy SQL-készlet. Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../../data-factory/introduction.md) ajánlott.
 
 Ezt követően az összesített adatokat a rendszer a [Star-Schema](https://www.wikipedia.org/wiki/Star_schema) tábláiba alakítja át. A táblák egy központi tény tábla és a kapcsolódó dimenzió táblákból állnak.  Wingtip jegyek esetén:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135529"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459521"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
@@ -97,7 +97,7 @@ A Közösség tagjai felügyeleti megoldásokat küldhetnek az Azure Gyorsindít
 
    A CLI-hivatkozási parancsok futtatása előtt [telepítenie kell az Azure CLI](/cli/azure/install-azure-cli) -t.  Ha szeretné, a Azure Cloud Shell használatával is elvégezheti a jelen cikkben ismertetett lépéseket.  A Azure Cloud Shell egy interaktív rendszerhéj-környezet, amelyet a böngészőben használhat.  Cloud Shell elindítása a következő módszerek egyikével:
 
-   - Nyissa meg Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+   - Nyissa meg Cloud Shell [https://shell.azure.com](https://shell.azure.com)
 
    - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
 
@@ -109,18 +109,18 @@ A Közösség tagjai felügyeleti megoldásokat küldhetnek az Azure Gyorsindít
     az login
     ```
 
-1. A `log-analytics` bővítmény telepítése
+1. A `log-analytics-solution` bővítmény telepítése
 
-   A `log-analytics` parancs az alapszintű Azure CLI kísérleti bővítménye. További információ a bővítmények [használatáról az Azure CLI használatával](/cli/azure/azure-cli-extensions-overview?).
+   A `log-analytics-solution` parancs az alapszintű Azure CLI kísérleti bővítménye. További információ a bővítmények [használatáról az Azure CLI használatával](/cli/azure/azure-cli-extensions-overview?).
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    A következő figyelmeztetés várható.
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Megoldás telepítése az Azure CLI-vel
@@ -159,7 +159,6 @@ Minden figyelési megoldáshoz [log Analytics munkaterület](../platform/manage-
 
 * Egy megoldás telepítése csak egyetlen Log Analytics munkaterületet és egy Automation-fiókot használhat. A megoldást külön is telepítheti több munkaterületre.
 * Ha egy megoldáshoz Automation-fiókra van szükség, akkor a Log Analytics munkaterület és az Automation-fióknak egymáshoz kell kapcsolódnia. Log Analytics munkaterület csak egy Automation-fiókhoz kapcsolható, és egy Automation-fiók csak egy Log Analytics munkaterülethez kapcsolható.
-* Ahhoz, hogy csatolni lehessen, az Log Analytics munkaterület és az Automation-fióknak ugyanahhoz az előfizetéshez kell tartoznia, de az adott régióban üzembe helyezett különböző erőforráscsoportok is lehetnek. A kivétel az USA keleti régiójában és az USA 2. keleti régiójában található Automation-fiókhoz tartozó munkaterület.
 
 Ha az Azure Marketplace-en keresztül telepít megoldást, a rendszer a munkaterület és az Automation-fiók megadását kéri. A közöttük létrejött kapcsolat akkor jön létre, ha még nincsenek összekapcsolva.
 

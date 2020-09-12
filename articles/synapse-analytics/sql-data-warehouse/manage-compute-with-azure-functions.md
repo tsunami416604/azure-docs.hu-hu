@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543656"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442221"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
@@ -54,7 +54,7 @@ A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azur
 
 3. Jelenleg a *%ScaleDownTime%* vagy a *%ScaleUpTime%* értéknek kell megjelennie. Ezek az értékek azt jelzik, hogy az ütemezés az [Alkalmazásbeállításokban](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) beállított értékeken alapul. Egyelőre figyelmen kívül hagyhatja ezt az értéket, és a következő lépések alapján módosíthatja az ütemtervet a kívánt időpontra.
 
-4. Az ütemezési területen adja meg az SQL Data Warehouse vertikális felskálázásának gyakoriságát CRON-kifejezésként.
+4. Az ütemterv területen adja meg azt az időpontot, ameddig az Azure szinapszis Analytics méretezésének gyakoriságát szeretné tükrözni.
 
    ![Függvény ütemezésének módosítása](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -165,7 +165,7 @@ Vertikális felskálázás 8:00-kor DW1000 értékre, és vertikális leskáláz
 | 3. függvény | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
 | 4. függvény | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk az [időzítő által aktivált](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure-függvényekről.
 

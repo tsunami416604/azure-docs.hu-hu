@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498089"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441714"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Mi a logikai SQL Server Azure SQL Database és az Azure szinapszis?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -150,7 +150,7 @@ Kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával törté
 |[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Egy új adatbázist hoz létre Azure SQL Databaseban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 |[ADATBÁZIS létrehozása (Azure szinapszis)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Új adatraktár-adatbázist hoz létre az Azure Szinapszisban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Módosítja az adatbázist vagy a rugalmas készletet. |
-|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Módosít egy adatraktár-adatbázist az Azure Szinapszisban.|
+|[ALTER DATABASE (Azure szinapszis Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Módosít egy adatraktár-adatbázist az Azure Szinapszisban.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Visszaadja a kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét (ha van ilyen) egy adatbázishoz. Ha bejelentkezett a kiszolgáló főadatbázisára, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis esetében csatlakoznia kell a Master adatbázishoz.|
 |[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| A CPU-t, az i/o-t és a memória-felhasználást adja vissza egy Azure SQL Database adatbázisában. 15 másodpercenként egy sor létezik, még akkor is, ha nincs tevékenység az adatbázisban.|
@@ -190,7 +190,7 @@ Kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez ha
 |[Tűzfalszabályok – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
 |[Tűzfalszabályok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure SQL Databaseba való áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](features-comparison.md).

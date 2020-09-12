@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207719"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441000"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>SQL-készlet frissítése Gen2
 
@@ -30,7 +30,7 @@ A Microsoft segít csökkenteni az SQL-készletek beléptetési szintű költsé
 
 A következő táblázat összefoglalja a régiót, ha az alsó Gen2 számítási szintje elérhető lesz, és az automatikus frissítés elindul. A dátumok változhatnak. Térjen vissza, és tekintse meg, hogy mikor válik elérhetővé a régió.
 
-\*azt jelzi, hogy a régióhoz megadott ütemterv jelenleg nem érhető el.
+\* azt jelzi, hogy a régióhoz megadott ütemterv jelenleg nem érhető el.
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Automatikus frissítések kezdete** |
 |:--- |:--- |:--- |
@@ -124,7 +124,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 - V: Nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Frissítési lépések](upgrade-to-latest-generation.md)
 - [Karbantartási időszakok](maintenance-scheduling.md)
@@ -133,4 +133,4 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 - [Helyben történő frissítés frissítése visszaállítási pontról](upgrade-to-latest-generation.md)
 - [Felhasználó által definiált visszaállítási pont létrehozása](sql-data-warehouse-restore-points.md)
 - [Útmutató a Gen2 való visszaállításhoz](sql-data-warehouse-restore-active-paused-dw.md)
-- [SQL Data Warehouse támogatási kérelem megnyitása](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Nyisson meg egy Azure szinapszis Analytics támogatási kérelmet](https://go.microsoft.com/fwlink/?linkid=857950)

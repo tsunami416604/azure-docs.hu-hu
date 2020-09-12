@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5a83a8ab608e685f43056debe45877965e0c53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06ae55dc48152c2c10183cc60cb098b6c3786fa
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203996"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433755"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -87,10 +87,25 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | scope | No | Az OpenID Connect Core 1,0 specifikáció alapján meghatározott kérelem hatóköre. Például: `openid` , `profile` , és `email` . |
 | HttpBinding | No | A hozzáférési jogkivonat és a jogcímek jogkivonat-végpontjának várt HTTP-kötése. Lehetséges értékek: `GET` vagy `POST` .  |
 | ValidTokenIssuerPrefixes | No | Olyan kulcs, amely az egyes bérlők számára való bejelentkezéshez használható több-bérlős identitás-szolgáltató, például Azure Active Directory használata esetén. |
-| UsePolicyInRedirectUri | No | Azt jelzi, hogy az átirányítási URI létrehozásakor szabályzatot kell-e használni. Ha az alkalmazást az identitás-szolgáltatóban konfigurálja, meg kell adnia az átirányítási URI-t. Az átirányítási URI a következőre mutat: Azure AD B2C `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` .  Ha megadja `false` , minden használt szabályzathoz hozzá kell adnia egy átirányítási URI-t. Példa: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| UsePolicyInRedirectUri | No | Azt jelzi, hogy az átirányítási URI létrehozásakor szabályzatot kell-e használni. Ha az alkalmazást az identitás-szolgáltatóban konfigurálja, meg kell adnia az átirányítási URI-t. Az átirányítási URI a következőre mutat: Azure AD B2C `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` .  Ha megadja `false` , minden használt szabályzathoz hozzá kell adnia egy átirányítási URI-t. Például: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | No | Azt jelzi, hogy egy külső szolgáltatásra irányuló kérést hibaként kell-e megjelölni, ha a http-állapotkód a 5xx tartományban van. A mező alapértelmezett értéke: `false`. |
 | DiscoverMetadataByTokenIssuer | No | Azt jelzi, hogy a OIDC metaadatait fel kell-e deríteni a JWT jogkivonat kiállítójának használatával. |
 | IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+|token_endpoint_auth_method| No| Meghatározza, hogy a Azure AD B2C hogyan küldi el a hitelesítési fejlécet a jogkivonat-végpontnak. Lehetséges értékek: `client_secret_post` (alapértelmezett) és `client_secret_basic` (nyilvános előzetes verzió). További információ: [OpenID Connect ügyfél-hitelesítés szakasz](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+
+
+```xml
+<Metadata>
+  <Item Key="ProviderName">https://login.live.com</Item>
+  <Item Key="METADATA">https://login.live.com/.well-known/openid-configuration</Item>
+  <Item Key="response_types">code</Item>
+  <Item Key="response_mode">form_post</Item>
+  <Item Key="scope">openid profile email</Item>
+  <Item Key="HttpBinding">POST</Item>
+  <Item Key="UsePolicyInRedirectUri">0</Item>
+  <Item Key="client_id">Your Microsoft application client ID</Item>
+</Metadata>
+```
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
  

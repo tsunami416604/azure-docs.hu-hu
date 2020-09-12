@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696031"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319440"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Hálózati biztonsági csoport erőforrás-naplózása
 
@@ -24,7 +24,7 @@ A hálózati biztonsági csoport (NSG) olyan szabályokat tartalmaz, amelyek eng
 Amikor engedélyezi a naplózást egy NSG, a következő típusú erőforrás-naplózási információkat gyűjthet:
 
 * **Esemény:** A rendszer naplózza azokat a bejegyzéseket, amelyek NSG-szabályait a rendszer MAC-címe alapján alkalmazza a virtuális gépekre.
-* **Szabály számlálója:** Azokat a bejegyzéseket tartalmazza, amelyekkel az egyes NSG-szabályok a forgalom megtagadására vagy engedélyezésére vonatkoznak. A szabályok állapotát 60 másodpercenként gyűjti a rendszer.
+* **Szabály számlálója:** Azokat a bejegyzéseket tartalmazza, amelyekkel az egyes NSG-szabályok a forgalom megtagadására vagy engedélyezésére vonatkoznak. A szabályok állapotát 300 másodpercenként gyűjti a rendszer.
 
 Az erőforrás-naplók csak a Azure Resource Manager üzemi modellen keresztül üzembe helyezett NSG érhetők el. A klasszikus üzemi modellen keresztül üzembe helyezett NSG erőforrás-naplózása nem engedélyezhető. A két modell jobb megismeréséhez tekintse meg az [Azure üzembe helyezési modelljeinek ismertetése](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
@@ -47,7 +47,7 @@ Az erőforrás-naplózás engedélyezéséhez használhatja az [Azure Portalt](#
 
     | Beállítás                                                                                     | Érték                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name (Név)                                                                                        | A választott név.  Például: *myNsgDiagnostics*      |
+    | Név                                                                                        | A választott név.  Például: *myNsgDiagnostics*      |
     | **Archiválás egy Storage-fiókba**, **adatfolyam küldése az Event hub**-nak, és **Küldés log Analytics** | Tetszőleges számú célhelyet választhat ki. Ha többet szeretne megtudni az egyes szolgáltatásokról, tekintse meg a [naplók célhelyeit](#log-destinations).                                                                                                                                           |
     | LOG                                                                                         | Válassza ki vagy mindkét naplózási kategóriát. Ha többet szeretne megtudni az egyes kategóriákba bejelentkezett információkról, tekintse meg a [naplózási kategóriákat](#log-categories).                                                                                                                                             |
 6. Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
@@ -201,10 +201,10 @@ Az erőforrás-naplózási információk megtekintésének megismeréséhez lás
 - **Azure monitor naplók**: a [hálózati biztonsági csoport elemzési](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) megoldásával továbbfejlesztett elemzéseket készíthet. A megoldás olyan vizualizációkat biztosít a NSG-szabályokhoz, amelyek engedélyezik vagy megtagadják a virtuális gép hálózati adapterének forgalmát, MAC-címként.
 - **Azure Storage-fiók**: az adatfájlok egy PT1H.jsba íródnak. A következőket találja:
-  - Eseménynapló a következő elérési úton:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Szabály számlálójának naplója a következő elérési úton:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Eseménynapló a következő elérési úton: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Szabály számlálójának naplója a következő elérési úton: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [tevékenységek naplózásáról](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A tevékenységek naplózása alapértelmezés szerint engedélyezve van az Azure-alapú üzemi modellel létrehozott NSG. Annak megállapításához, hogy mely műveletek befejeződtek a NSG a tevékenység naplójában, keresse meg a következő típusú erőforrásokat tartalmazó bejegyzéseket:
   - Microsoft. ClassicNetwork/networkSecurityGroups

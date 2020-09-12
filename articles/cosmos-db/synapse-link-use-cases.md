@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814416"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319236"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
 
@@ -86,7 +86,7 @@ A következő egy architektúra, amely kihasználja az Azure szinapszis IoT-Azur
 
 Szinapszis-hivatkozás Azure Cosmos DB használati esetekhez:
 
-* **& Train prediktív folyamat előkészítése:** A IoT-eszköz érzékelőkből származó korábbi operatív adatok olyan prediktív modellek betanítására használhatók, mint például a anomáliák észlelése. Ezt követően a rendszer a valós idejű figyelés érdekében üzembe helyezi az ilyen anomáliák észlelését. Egy ilyen hasznos hurok lehetővé teszi a prediktív modellek folyamatos újraképzését.
+* **& Train prediktív folyamat előkészítése:** A IoT-eszköz érzékelőkből származó korábbi operatív adatok olyan prediktív modellek betanítására használhatók, mint például a anomáliák észlelése. Az anomáliadetektorok ezután ismét üzembe helyezhetők a szélen valós idejű monitorozás céljából. Egy ilyen hasznos hurok lehetővé teszi a prediktív modellek folyamatos újraképzését.
 
 * **Működési jelentéskészítés:** A digitális kettős kezdeményezések növekedésével a vállalatok nagy mennyiségű, a különböző érzékelőkből származó operatív adatok gyűjtésével készítenek digitális másolatot az egyes gépekről. Ez az adatvédelemi BI-nak ismernie kell a múltbeli adatokkal kapcsolatos trendeket, valamint a valós idejű alkalmazásokat a legutóbbi gyors adatokon.
 
@@ -128,13 +128,13 @@ Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/rég
 
   * A [Azure Cosmos db Analytical Store](analytical-store-introduction.md)egy teljesen elszigetelt oszlopdiagram használatával a szinapszis-hivatkozás nem teszi lehetővé, hogy az [Azure szinapszis Analytics](../synapse-analytics/overview-what-is.md) szolgáltatásban ne legyenek kinyerhető átalakítási-betöltési (etl) elemzések a globálisan elosztott operatív adatokon.  Az üzleti elemzők, adatmérnökök és adatszakértők mostantól a szinapszis Spark vagy a szinapszis SQL használatát interoperábilis módon futtathatják a közel valós idejű üzleti intelligenciát, elemzést és gépi tanulási folyamatokat anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére a Azure Cosmos DB. További részletekért tekintse meg a [szinapszis-hivatkozás előnyeit Azure Cosmos DBban](synapse-link.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 
 * [Az Azure szinapszis hivatkozása Azure Cosmos DB](synapse-link.md) 
 
-* [Azure Cosmos DB analitikus tároló](analytical-store-introduction.md)
+* [Azure Cosmos DB elemzési tár](analytical-store-introduction.md)
 
 * [Az Azure szinapszis-hivatkozás használata Azure Cosmos DB](configure-synapse-link.md)
 
@@ -142,4 +142,4 @@ További információért lásd a következő dokumentumokat:
 
 * [Apache Spark az Azure szinapszis Analyticsben](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [SQL Server nélküli/igény szerint az Azure szinapszis Analytics szolgáltatásban](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [SQL Server nélküli futásidejű támogatás az Azure szinapszis Analyticsben](../synapse-analytics/sql/on-demand-workspace-overview.md)

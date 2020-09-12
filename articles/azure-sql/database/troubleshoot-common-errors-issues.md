@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: e1a018b06b7ee7230612d2ee6a582214a817547b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4a1cfcbf110ab375a0fb357c1856fd0567a1c57a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985224"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459419"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>A kapcsolódási problémák és a Azure SQL Database és az Azure SQL felügyelt példányával kapcsolatos egyéb hibák elhárítása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,9 +28,9 @@ Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mért�
 
 ### <a name="list-of-transient-fault-error-codes"></a>Az átmeneti hibák hibakódjának listája
 
-| Hibakód | Severity | Description |
+| Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 4060 |16 |A bejelentkezés által kért "%. &#x2a;ls" adatbázis nem nyitható meg. A bejelentkezés sikertelen. További információ: [4000 – 4999. hibák](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
+| 4060 |16 |A bejelentkezés által kért "%. &#x2a;ls" adatbázis nem nyitható meg. A bejelentkezés sikertelen volt. További információ: [4000 – 4999. hibák](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |A szolgáltatás hibát észlelt a kérelem feldolgozásakor. Próbálkozzon újra. Hibakód:% d.<br/><br/>Ez a hibaüzenet akkor jelenik meg, ha a szolgáltatás szoftver vagy hardveres frissítés, hardverhiba vagy bármilyen más feladatátvételi probléma miatt leáll. A 40197-es hiba üzenetében beágyazott hibakód (% d) további információkat nyújt a hiba vagy a feladatátvételi típusról. Néhány példa a hibakódokra a 40197-es hiba üzenetében található, 40020, 40143, 40166 és 40540.<br/><br/>Az újracsatlakozás automatikusan csatlakozik az adatbázis egy kifogástalan állapotú példányához. Az alkalmazásnak meg kell fognia a 40197-es hibát, be kell jelentkeznie a (z) "% d" beágyazott hibakódra az üzenetben a hibaelhárításhoz, és újra kell csatlakoznia SQL Database, amíg az erőforrások elérhetővé válnak, és a kapcsolat újból létrejön. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |A szolgáltatás jelenleg foglalt. Próbálja megismételni a kérést 10 másodperc múlva. Incidens azonosítója:% ls. Kód:% d. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md).|
 | 40613 |17 |A (z)%. &#x2a;ls kiszolgáló "%. &#x2a;ls" adatbázisa jelenleg nem érhető el. Később próbálja megismételni a kapcsolatokat. Ha a probléma továbbra is fennáll, forduljon az ügyfél-támogatási szolgálathoz, és adja meg nekik a (z)%. &#x2a;ls munkamenet-nyomkövetési AZONOSÍTÓját.<br/><br/> Ez a hiba akkor fordulhat elő, ha már létezik egy meglévő dedikált rendszergazdai kapcsolódás (DAC) az adatbázishoz. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
@@ -119,7 +119,7 @@ A szolgáltatás rendszergazdája általában a következő lépésekkel adhatja
 4. Ha az SQL-bejelentkezési Felhasználónév nem létezik, hozza létre a következő lépésekkel:
 
    1. A SSMS kattintson duplán a **Biztonság** elemre a kibontásához.
-   2. Kattintson a jobb gombbal a **Logins** (Bejelentkezések) elemre, majd válassza a **New login** (Új bejelentkezés) lehetőséget.
+   2. Kattintson a jobb gombbal a **bejelentkezések**elemre, majd válassza az **új bejelentkezés**lehetőséget.
    3. A generált parancsfájl helyőrzővel, szerkessze és futtassa a következő SQL-lekérdezést:
 
    ```sql
@@ -128,10 +128,10 @@ A szolgáltatás rendszergazdája általában a következő lépésekkel adhatja
    GO
    ```
 
-5. Kattintson duplán a **Database** (Adatbázis) elemre.
+5. Kattintson duplán az **adatbázis**elemre.
 6. Válassza ki azt az adatbázist, amelyhez engedélyt kíván adni a felhasználónak.
-7. Kattintson duplán a **Security** (Biztonság) elemre.
-8. Kattintson a jobb gombbal a **Users** (Felhasználók) elemre, majd válassza a **New User** (Új felhasználó) lehetőséget.
+7. Kattintson duplán a **Biztonság**elemre.
+8. Kattintson a jobb gombbal a **felhasználók**elemre, majd válassza az **új felhasználó**lehetőséget.
 9. A generált parancsfájl helyőrzővel, szerkessze és futtassa a következő SQL-lekérdezést:
 
    ```sql
@@ -194,13 +194,13 @@ A probléma megkerüléséhez próbálkozzon az alábbi módszerek egyikével:
 2. A fej-blokkoló **bemeneti pufferének** meghatározása.
 3. A fej-blokkoló lekérdezésének hangolása.
 
-   Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+   Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 Ha az adatbázis folyamatosan eléri a korlátot a blokkoló és a hosszan futó lekérdezések kezelése előtt, érdemes lehet egy kiadásra frissíteni a [további erőforrás-kiadásokkal](https://azure.microsoft.com/pricing/details/sql-database/)).
 
 További információ a dinamikus felügyeleti nézetekről: [rendszerdinamikus felügyeleti nézetek](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
-Az adatbázis-korlátokkal kapcsolatos további információkért lásd: [a kiszolgálók erőforrás-korlátainak SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
+Az adatbázis-korlátokkal kapcsolatos további információkért lásd:  [a kiszolgálók erőforrás-korlátainak SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
 
 ### <a name="error-10929-resource-id-1"></a>10929-es hiba: erőforrás-azonosító: 1
 
@@ -261,7 +261,7 @@ Ha többször is megtapasztalja ezt a hibát, próbálja meg elhárítani a prob
 
 A lekérdezések kötegelt feldolgozását is érdemes figyelembe venni. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>40551-es hiba: a munkamenet túlzott TEMPDB-használat miatt megszakadt
 
@@ -292,11 +292,11 @@ A kötegelt feldolgozás végrehajtásával vagy a több kisebb tranzakcióra va
 
 A probléma megkerüléséhez próbálja meg optimalizálni a lekérdezést.
 
-Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>További erőforrás-irányítási hibaüzenetek táblája
 
-| Hibakód | Severity | Description |
+| Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
 | 10928 |20 |Erőforrás-azonosító:% d. Az adatbázis% s korlátja% d, és elérte a következőt:. További információ: [az önálló és a készletezett adatbázisok SQL Database erőforrás-korlátai](resource-limits-logical-server.md).<br/><br/>Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2.<br/><br/>A hibával és megoldásával kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
 | 10929 |20 |Erőforrás-azonosító:% d. A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). <br/>Ellenkező esetben próbálkozzon újra később. |
@@ -311,11 +311,11 @@ Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https:
 
 A rugalmas készletek létrehozásával és használatával kapcsolatos hibák a következők:
 
-| Hibakód | Severity | Description | Javító művelet |
+| Hibakód | Súlyosság | Leírás | Javító művelet |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](elastic-pool-scale.md)méretezése.|
 | 10929 | 16 |A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> Ellenkező esetben próbálkozzon újra később. DTU/virtuális mag/perc/adatbázis; DTU/virtuális mag-adatbázis maximális száma. Az egyidejű feldolgozók (kérelmek) teljes száma a rugalmas készletben lévő összes adatbázisban, a készlet korlátjának túllépése miatt. |Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU vagy virtuális mag, hogy növelje a munkavégző korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
-| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N.A. |
+| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N/A |
 | 40857 | 16 |Nem található rugalmas készlet a következő kiszolgálóhoz: "% ls", rugalmas készlet neve: "% ls". A megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg a rugalmas készlet érvényes nevét. |
 | 40858 | 16 |A (z) "% ls" rugalmas készlet már létezik a következő kiszolgálón: "% ls". A megadott rugalmas készlet már létezik a megadott kiszolgálón. | Adja meg az új rugalmas készlet nevét. |
 | 40859 | 16 |A rugalmas készlet nem támogatja a (z)% ls szolgáltatási szintet. A megadott szolgáltatási szintet nem támogatja a rugalmas készlet kiépítés. |Adja meg a megfelelő kiadást, vagy hagyja üresen a szolgáltatási szintet, hogy az alapértelmezett szolgáltatási szintet használja. |
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Ha a kivételt a lekérdezési problémák váltották ki, az alábbihoz hasonló hívási verem jelenik meg (jegyezze fel a **SqlCommand** osztályra mutató hivatkozást). Ebben a helyzetben [a lekérdezések finomhangolása](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Ha a kivételt a lekérdezési problémák váltották ki, az alábbihoz hasonló hívási verem jelenik meg (jegyezze fel a **SqlCommand** osztályra mutató hivatkozást). Ebben a helyzetben [a lekérdezések finomhangolása](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -388,7 +388,7 @@ Ha ezek a lépések nem oldják meg a problémát, próbálkozzon a további ada
 
 A naplózás engedélyezésével kapcsolatos további információkért lásd: a [diagnosztikai naplózás engedélyezése a Azure app Service alkalmazásokban](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure SQL Database kapcsolati architektúra](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
 - [A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

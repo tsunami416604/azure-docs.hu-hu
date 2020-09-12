@@ -3,20 +3,20 @@ title: Alhálózati forgalom útválasztásának konfigurálása – Azure Traff
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Traffic Manager az adott alhálózatokról érkező forgalom irányításához.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711782"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401367"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogy hogyan konfigurálhatja a forgalom-útválasztási met
 
 Az ebben a cikkben tárgyalt forgatókönyvben a felhasználó lekérdezésének IP-címétől függően az alhálózat-útválasztás használatával a forgalmat egy belső webhelyre vagy egy éles webhelyre irányítja a rendszer.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha működés közben szeretné megtekinteni a Traffic Managert, az oktatóanyaghoz a következőket kell üzembe helyeznie:
@@ -51,7 +51,7 @@ Ebben a szakaszban két virtuális gépet hoz létre *myEndpointVMEastUS* és *M
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myIISVMEastUS|
+    |Név|myIISVMEastUS|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Erőforráscsoport| Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM1* nevet.|
@@ -137,7 +137,7 @@ Ebben a szakaszban létrehoz egy virtuális gépet (*mVMEastUS* és *myVMWestEur
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myVMEastUS|
+    |Név|myVMEastUS|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Erőforráscsoport| Válassza a **Meglévő**, majd a *myResourceGroupTM1* lehetőséget.|
@@ -174,9 +174,9 @@ Létrehozhat egy Traffic Manager-profilt, amellyel a kérés forrás IP-címe al
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
+    | Név                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
     | Útválasztási metódus          | Válassza a **Subnet** útválasztási metódust.                                       |
-    | Előfizetés            | Válassza ki az előfizetését.                          |
+    | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza a **Meglévő** lehetőséget, majd írja be a *myResourceGroupTM1* kifejezést. |
     | |                              |
     |
@@ -239,7 +239,7 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 ## <a name="delete-the-traffic-manager-profile"></a>A Traffic Manager-profil törlése
 Ha már nincs rájuk szüksége, törölje az erőforráscsoportokat (**ResourceGroupTM1** és **ResourceGroupTM2**). Ehhez válassza ki az erőforráscsoportot (**ResourceGroupTM1** vagy **ResourceGroupTM2**), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
 - További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).

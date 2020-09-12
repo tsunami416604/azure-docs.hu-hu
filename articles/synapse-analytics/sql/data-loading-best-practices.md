@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486816"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459300"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott adatbetöltési eljárások adatraktározáshoz
 
@@ -142,8 +142,8 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a PolyBase-ről és a kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-- Betöltési oktatóanyag: [Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- További információ a kinyerési, betöltési és átalakítási (ELT) folyamatról: [design elt for Azure szinapszis Analytics](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- A betöltési oktatóanyaghoz [használja a Base elemet az adatok Azure Blob Storage-ból az Azure szinapszis analyticsbe való betöltéséhez](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Az adatbetöltések monitorozása: [A számítási feladat monitorozása DMV-kkel](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

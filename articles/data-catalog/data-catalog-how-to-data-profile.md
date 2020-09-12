@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081185"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442071"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Adatprofil adatforrásai Azure Data Catalog
 
@@ -29,7 +29,7 @@ Az adatok profilkészítése megvizsgálja az adatforrásban regisztrált adatok
 
 A következő adatforrások támogatják az adatprofilkészítést:
 
-* SQL Server (beleértve az Azure SQL DB és a Azure SQL Data Warehouse) táblázatokat és nézeteket
+* SQL Server (beleértve az Azure SQL DB és az Azure szinapszis Analytics) táblázatokat és nézeteket
 * Oracle-táblák és nézetek
 * Teradata táblák és nézetek
 * Hive-táblák
@@ -84,7 +84,7 @@ A **Azure Data Catalog** adatprofilja a táblázat és az oszlop profiljának ad
 * NULL értékű sorok száma
 * Az oszlopok értékeinek minimális, maximális, átlagos és szórásos szórása
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az adatok profilkészítése statisztikai adatokat és információkat biztosít a regisztrált adategységekről, amelyek segítségével meghatározhatja az üzleti problémák megoldásához szükséges adatok megfelelőségét. A jegyzetek és az adatforrások dokumentálása mellett az adatprofilok mélyebb ismereteket biztosíthatnak a felhasználóknak az adatairól.
 

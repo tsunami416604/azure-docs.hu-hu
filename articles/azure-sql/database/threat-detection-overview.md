@@ -1,5 +1,5 @@
 ---
-title: Fejlett fenyegetésvédelem
+title: Advanced Threat Protection
 titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse Analytics
 description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel a Azure SQL Database, az Azure SQL felügyelt példányában és az Azure szinapszis Analyticsben rejlő lehetséges biztonsági fenyegetéseket jelezve.
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 822d4267d5b163ddda50302e2caea5c3ade3b7c4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 07a39edcb7a5605759ae70a014549863a038de1c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985371"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437054"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Komplex veszélyforrások elleni védelem a Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics számára
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ A teljes körű vizsgálathoz ajánlott engedélyezni a naplózást, amely az ad
 
 ## <a name="alerts"></a>Riasztások
 
-A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A Azure SQL Database kapcsolatos riasztások listáját a [Azure Security Center SQL Database és SQL Data Warehouse riasztásai](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse)című témakörben találhatja meg.
+A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A Azure SQL Database riasztások listájáért tekintse meg a [SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) riasztásait a Azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Gyanús esemény észlelésének megismerése
 
@@ -63,7 +63,7 @@ Kattintson a komplex **veszélyforrások elleni védelem riasztása** lehetősé
 
    ![Komplex veszélyforrások elleni védelem alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a komplex [veszélyforrások elleni védelemről Azure SQL Database & Azure szinapszisban](threat-detection-configure.md).
 - További információ [az összetett veszélyforrások elleni védelemről az Azure SQL felügyelt példányain](../managed-instance/threat-detection-configure.md).

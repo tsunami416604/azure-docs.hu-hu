@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797083"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319525"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licencek kiosztása vagy eltávolítása a Azure Active Directory portálon
 
@@ -35,7 +35,7 @@ Az Azure AD szolgáltatáshoz több engedélyezési csomag is elérhető, többe
 
 - Prémium szintű Azure AD P2
 
-Az egyes licencelési csomagokkal és a hozzájuk kapcsolódó licencelési adatokkal kapcsolatos információkért lásd: [milyen licencre van szükségem?](https://azure.microsoft.com/pricing/details/active-directory/). Az Azure AD Premium-licencszerződések regisztrálásához lásd [itt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+Az egyes licencelési csomagokkal és a hozzájuk kapcsolódó licencelési adatokkal kapcsolatos információkért lásd: [milyen licencre van szükségem?](https://azure.microsoft.com/pricing/details/active-directory/). Az Azure AD Premium-licencszerződések regisztrálásához lásd [itt](./active-directory-get-started-premium.md).
 
 Nem minden Microsoft-szolgáltatás érhető el minden helyen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy csoporthoz, meg kell adnia az összes tag **használati helyét** . Ezt az értéket megadhatja az Azure AD **Azure Active Directory &gt; felhasználói &gt; profil &gt; beállításai** területén. Minden olyan felhasználó, akinek a használati helye nincs megadva, örökli az Azure AD-szervezet helyét.
 

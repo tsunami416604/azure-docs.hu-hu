@@ -2,17 +2,17 @@
 title: 'ExpressRoute: egyéni riasztások konfigurálása hirdetett útvonalakhoz'
 description: Ez a cikk bemutatja, hogyan használható a Azure Automation és a Logic Apps a ExpressRoute-átjáróról a helyszíni hálózatokra hirdetett útvonalak számának figyelésére, hogy megakadályozza a 200 útvonalak korlátozását.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.author: cherylmc
-ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738481"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401724"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
@@ -32,7 +32,7 @@ Az egyéni riasztások beállítása három fő lépésen alapul:
 
 3. Hozzon létre egy logikai alkalmazást, amely az Automation-fiókot fogja használni, és küldjön riasztási e-mailt, ha a szám nagyobb, mint a küszöbérték (például 160).
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -78,7 +78,7 @@ Alapértelmezés szerint a **közreműködői** szerepkör hozzá van rendelve a
 
 2. Válassza ki a **szerepkörök** elemet a használatban lévő szerepkör-definíció megtekintéséhez.
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Szerepkör kiosztása":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Szerepkör hozzárendelése":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>Runbookok létrehozása és konfigurálása
 
@@ -247,7 +247,7 @@ A PowerShell-parancsfájl futtatásakor a rendszer összegyűjti az értékek li
 
 * A ExpressRoute-átjáróról a második BGP-társra (peer2) hirdetett hálózati előtagok száma
 
-* Időbélyeg
+* Timestamp
 
 * Állapot, besorolás:
 
@@ -257,7 +257,7 @@ A PowerShell-parancsfájl futtatásakor a rendszer összegyűjti az értékek li
 
 * Riasztási üzenet az állapot részletes leírásához (OK, riasztás, figyelmeztetés)
 
-A PowerShell-parancsfájl egy JSON-kimenetre konvertálja az összegyűjtött adatokat. A runbook a [Write-output PowerShell-](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?) parancsmagot használja kimeneti adatfolyamként az információknak az ügyfél felé való továbbításához.
+A PowerShell-parancsfájl egy JSON-kimenetre konvertálja az összegyűjtött adatokat. A runbook a [Write-output PowerShell-](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  parancsmagot használja kimeneti adatfolyamként az információknak az ügyfél felé való továbbításához.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. a runbook ellenőrzése
 
@@ -314,7 +314,7 @@ A logikai alkalmazások más alkalmazásokhoz, szolgáltatásokhoz és platformo
 
    :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Bejelentkezés":::
 
-4. Adja meg a **kapcsolatok nevét**, adja meg az **ügyfél-azonosítót** (alkalmazás-azonosító), az **ügyfél titkos kulcsát**és a **bérlői azonosítóját**. Ezután válassza a **Létrehozás**lehetőséget.
+4. Adja meg a **kapcsolatok nevét**, adja meg az **ügyfél-azonosítót** (alkalmazás-azonosító), az **ügyfél titkos kulcsát**és a **bérlői azonosítóját**. Ezután kattintson a **Létrehozás** elemre.
 
    :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Az egyszerű szolgáltatással való kapcsolat":::
 
@@ -455,6 +455,6 @@ Az utolsó lépés a munkafolyamat-ellenőrzés. Az **Logic apps áttekintése**
 
 :::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Trigger futtatása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a munkafolyamat testreszabásáról: [Azure Logic apps](../logic-apps/logic-apps-overview.md).

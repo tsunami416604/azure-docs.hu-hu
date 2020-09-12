@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210967"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319567"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json az Azure-beli felügyelt példány létrehozási felületéhez
 
@@ -25,6 +25,7 @@ A sablon a következő
     "version": "0.1.2-preview",
     "parameters": {
         "config": {
+            "isWizard": false,
             "basics": { }
         },
         "basics": [ ],
@@ -35,7 +36,7 @@ A sablon a következő
 }
 ```
 
-A CreateUiDefinition mindig három tulajdonságot tartalmaz: 
+A `CreateUiDefinition` mindig három tulajdonságot tartalmaz:
 
 * kezelő
 * version
@@ -43,41 +44,19 @@ A CreateUiDefinition mindig három tulajdonságot tartalmaz:
 
 A kezelőnek mindig a-nek kell lennie `Microsoft.Azure.CreateUIDef` , és a legújabb támogatott verzió a `0.1.2-preview` .
 
-A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációjából függ. A felügyelt alkalmazások esetében a támogatott tulajdonságok a következők:,, `basics` `steps` `outputs` és `config` . Az alapértékek és a lépések tulajdonságai a Azure Portal megjeleníteni kívánt [elemeket](create-uidefinition-elements.md) , például a szövegmezőket és a legördülő listákat tartalmazzák. A kimenet tulajdonság a megadott elemek kimeneti értékének leképezésére szolgál a Azure Resource Manager sablon paramétereinek. Csak akkor használja, `config` Ha felül kell bírálnia a lépés alapértelmezett viselkedését `basics` .
+A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációjából függ. A felügyelt alkalmazások esetében a támogatott tulajdonságok a következők:,, `config` `basics` `steps` és `outputs` . Csak akkor használja, `config` Ha felül kell bírálnia a lépés alapértelmezett viselkedését `basics` . Az alapértékek és a lépések tulajdonságai a Azure Portal megjeleníteni kívánt [elemeket](create-uidefinition-elements.md) , például a szövegmezőket és a legördülő listákat tartalmazzák. A kimenet tulajdonság a megadott elemek kimeneti értékének leképezésére szolgál a Azure Resource Manager sablon paramétereinek.
 
 Beleértve `$schema` a javasolt, de nem kötelező. Ha meg van adva, a értékének `version` meg kell egyeznie az URI-n belüli verzióval `$schema` .
 
 A createUiDefinition létrehozásához JSON-szerkesztőt használhat, majd a [createUiDefinition-homokozóban](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) tesztelheti azt. A homokozóval kapcsolatos további információkért lásd: [Azure Managed Applications-portál felületének tesztelése](test-createuidefinition.md).
 
-## <a name="basics"></a>Alapbeállítások
-
-Az **alapismeretek** lépés az első lépés, amikor a Azure Portal elemzi a fájlt. Alapértelmezés szerint az alapvető lépések lépés lehetővé teszi a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztását.
-
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Alapértelmezett alapbeállítások":::
-
-Ebben a szakaszban további elemeket is hozzáadhat. Ha lehetséges, adjon hozzá olyan elemeket, amelyek a központi telepítési szintű paramétereket kérdezik le, például egy fürt vagy egy rendszergazdai hitelesítő adatok nevét.
-
-Az alábbi példa egy olyan szövegmezőt mutat be, amely az alapértelmezett elemekhez lett hozzáadva.
-
-```json
-"basics": [
-    {
-        "name": "textBox1",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Textbox on basics",
-        "defaultValue": "my text value",
-        "toolTip": "",
-        "visible": true
-    }
-]
-```
-
 ## <a name="config"></a>Konfigurálás
 
-A konfigurációs elemet akkor kell megadnia, ha felül kell bírálnia az alapvető beállítások alapértelmezett viselkedését. A következő példában az elérhető tulajdonságok láthatók.
+A `config` tulajdonság megadása nem kötelező. Használja az alapszintű lépés alapértelmezett viselkedésének felülbírálását, vagy állítsa be a felületet lépésről lépésre varázslóként. Ha a `config` használatban van, akkor ez az első tulajdonság **createUiDefinition.json** a fájl `parameters` szakaszánakcreateUiDefinition.js. A következő példában az elérhető tulajdonságok láthatók.
 
 ```json
 "config": {
+    "isWizard": false,
     "basics": {
         "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
         "subscription": {
@@ -124,15 +103,50 @@ A konfigurációs elemet akkor kell megadnia, ha felül kell bírálnia az alapv
 },
 ```
 
-A (z) esetében `description` adjon meg egy Markdown-kompatibilis karakterláncot, amely leírja az erőforrást. A többsoros formátum és hivatkozások támogatottak.
+### <a name="wizard"></a>Varázsló
 
-A esetében válassza ki a `location` felülbírálni kívánt hely vezérlőelem tulajdonságait. A nem felülbírált tulajdonságok az alapértelmezett értékre vannak beállítva. `resourceTypes` a teljesen minősített erőforrástípusok nevét tartalmazó karakterláncok tömbjét fogadja el. A hely beállításai csak olyan régiókra korlátozódnak, amelyek támogatják az erőforrás-típusokat.  `allowedValues`   régióbeli karakterláncok tömbjét fogadja el. Csak ezek a régiók jelennek meg a legördülő listában.`allowedValues`   A és a is beállítható  `resourceTypes` . Ennek eredménye mindkét listának metszéspontja. Végül a `visible` tulajdonság felhasználható a hely legördülő menüjének feltételes vagy teljes letiltására is.  
+A `isWizard` tulajdonság lehetővé teszi az egyes lépések sikeres érvényesítését, mielőtt továbblép a következő lépésre. Ha a `isWizard` tulajdonság nincs megadva, az alapértelmezett érték a **false**, és a lépésenkénti ellenőrzés nem szükséges.
+
+Ha `isWizard` engedélyezve van, állítsa az **igaz**értékre, az **alapok** lap elérhető, és az összes többi lap le van tiltva. Ha a **tovább** gomb be van jelölve, a TAB ikon azt jelzi, hogy a TAB érvényesítése sikeres vagy sikertelen volt-e. A lap kötelező mezőinek befejezése és ellenőrzése után a **következő** gomb lehetővé teszi a navigálást a következő lapra. Ha az összes lap átadja az érvényesítést, lépjen a **felülvizsgálat és létrehozás** lapra, és válassza a **Létrehozás** gombot az üzembe helyezés megkezdéséhez.
+
+:::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Lap varázsló":::
+
+### <a name="override-basics"></a>Alapvető beállítások felülbírálása
+
+Az alapvető beállítások lehetőséggel testreszabhatja az alapvető lépések lépéseit.
+
+A (z) esetében `description` adjon meg egy Markdown-kompatibilis karakterláncot, amely leírja az erőforrást. A többsoros formátum és hivatkozások támogatottak.
 
 A `subscription` és `resourceGroup` elemek lehetővé teszik további érvényesítések megadását. Az érvényesítések megadásának szintaxisa megegyezik a [szövegmező](microsoft-common-textbox.md)egyéni ellenőrzésével. `permission`Az előfizetés vagy az erőforráscsoport érvényességét is megadhatja.  
 
 Az előfizetés vezérlőelem elfogadja az erőforrás-szolgáltatói névterek listáját. Megadhatja például a **Microsoft. számítást**. Hibaüzenet jelenik meg, amikor a felhasználó olyan előfizetést választ ki, amely nem támogatja az erőforrás-szolgáltatót. A hiba akkor fordul elő, ha az erőforrás-szolgáltató nincs regisztrálva az adott előfizetésen, és a felhasználónak nincs engedélye az erőforrás-szolgáltató regisztrálására.  
 
 Az erőforráscsoport-vezérlőhöz lehetőség van `allowExisting` . Amikor `true` a felhasználók olyan erőforráscsoportokat választhatnak, amelyek már rendelkeznek erőforrásokkal. Ez a jelző a legtöbb esetben a megoldási sablonokra vonatkozik, ahol az alapértelmezett viselkedési feladatnak a felhasználóknak új vagy üres erőforráscsoportot kell kiválasztaniuk. A legtöbb esetben ezt a tulajdonságot nem kell megadnia.  
+
+A esetében válassza ki a `location` felülbírálni kívánt hely vezérlőelem tulajdonságait. A nem felülbírált tulajdonságok az alapértelmezett értékre vannak beállítva. `resourceTypes` a teljesen minősített erőforrástípusok nevét tartalmazó karakterláncok tömbjét fogadja el. A hely beállításai csak olyan régiókra korlátozódnak, amelyek támogatják az erőforrás-típusokat.  `allowedValues`   régióbeli karakterláncok tömbjét fogadja el. Csak ezek a régiók jelennek meg a legördülő listában.`allowedValues`   A és a is beállítható  `resourceTypes` . Ennek eredménye mindkét listának metszéspontja. Végül a `visible` tulajdonság felhasználható a hely legördülő menüjének feltételes vagy teljes letiltására is.  
+
+## <a name="basics"></a>Alapvető beállítások
+
+Az **alapismeretek** lépés az első lépés, amikor a Azure Portal elemzi a fájlt. Alapértelmezés szerint az alapvető lépések lépés lehetővé teszi a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztását.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Alapértelmezett alapbeállítások":::
+
+Ebben a szakaszban további elemeket is hozzáadhat. Ha lehetséges, adjon hozzá olyan elemeket, amelyek a központi telepítési szintű paramétereket kérdezik le, például egy fürt vagy egy rendszergazdai hitelesítő adatok nevét.
+
+Az alábbi példa egy olyan szövegmezőt mutat be, amely az alapértelmezett elemekhez lett hozzáadva.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
 
 ## <a name="steps"></a>Lépések
 

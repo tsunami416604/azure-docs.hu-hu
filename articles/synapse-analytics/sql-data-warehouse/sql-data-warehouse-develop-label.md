@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213431"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459147"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Címkék használata a szinapszis SQL-készletben lévő eszközök lekérdezéséhez
 
 Ebben a cikkben a megoldások az SQL-készletben címkék segítségével történő fejlesztésével kapcsolatos tippeket talál.
 
-Tippek Címkék létrehozásához a Azure SQL Data Warehouse a megoldások fejlesztéséhez.
+Tippek Címkék létrehozásához az Azure szinapszis Analyticsben a megoldások fejlesztéséhez.
 
 ## <a name="what-are-labels"></a>Mik a Címkék?
 
@@ -53,6 +53,6 @@ WHERE   r.[label] = 'My Query Label'
 > [!NOTE]
 > A lekérdezés során elengedhetetlen, hogy szögletes zárójeleket vagy idézőjeleket helyezzen el a szó címkéje körül. A címke egy foglalt szó, és hibát okoz, ha nincs elválasztva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

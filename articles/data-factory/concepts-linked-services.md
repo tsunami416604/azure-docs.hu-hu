@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796408"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434112"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások az Azure Data Factoryben
 
@@ -32,7 +32,7 @@ Ha most ismerkedik a Data Factoryával, tekintse meg a [Azure Data Factory bemut
 
 ## <a name="overview"></a>Áttekintés
 
-A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy másolási tevékenységet használ az adatok SQL Serverról az Azure Blob Storage-ba való másolásához. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységet is használhat a kimeneti adatok Azure SQL Data Warehouseba másolásához, amelyek alapján az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek](concepts-pipelines-activities.md) Azure Data Factoryban.
+A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy másolási tevékenységet használ az adatok SQL Serverról az Azure Blob Storage-ba való másolásához. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységgel másolhatja a kimeneti adatokat az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse), amelyeken az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek](concepts-pipelines-activities.md) Azure Data Factoryban.
 
 Az **adatkészlet** mostantól olyan elnevezett nézet, amely egyszerűen rámutat vagy hivatkozik a **tevékenységekben** használni kívánt adatokra bemenetként és kimenetként.
 

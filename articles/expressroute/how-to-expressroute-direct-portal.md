@@ -2,24 +2,24 @@
 title: 'Azure ExpressRoute: a ExpressRoute Direct konfigurálása: portál'
 description: Ez az oldal segítséget nyújt a ExpressRoute Direct konfigurálásához a portál használatával.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.author: duau
+ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903595"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401469"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre közvetlen ExpressRoute a Azure Portal használatával.
 A ExpressRoute Direct szolgáltatással közvetlenül kapcsolódhat a Microsoft globális hálózatához a világ minden pontján elérhető, stratégiai módon elosztott helyen. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrálva van-e az előfizetésében. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre.
 
@@ -63,7 +63,7 @@ Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrá
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Áttekintés és létrehozás":::
 
-1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
+1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
 ## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. a hivatkozások rendszergazdai állapotának módosítása
 
@@ -107,7 +107,7 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Áttekintés és létrehozás":::
 
-1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
+1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
 ## <a name="next-steps"></a>Következő lépések
 

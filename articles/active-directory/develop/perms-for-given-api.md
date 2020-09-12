@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: d9b84f2eace9ec268c6ff0942d19b47402e19bde
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7b70460af8126199b19c18118897c93f0477791c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120728"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442203"
 ---
-# <a name="how-to-select-permissions-for-a-given-api"></a>Engedélyek kiválasztása egy adott API-hoz 
+# <a name="how-to-select-permissions-for-a-given-api"></a>Engedélyek kiválasztása egy adott API-hoz
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
 - További információ arról, hogyan használják az ügyfélalkalmazások a [delegált és az alkalmazásokra vonatkozó engedélyeket](./developer-glossary.md#permissions) az erőforrásokhoz való hozzáféréshez.
-- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](./quickstart-register-app.md) részletes ismertetését lásd:.
-- További részletekért tekintse meg, hogy az erőforrás-alkalmazások hogyan teszik elérhetővé a [hatóköröket](./developer-glossary.md#scopes) és az [alkalmazási szerepköröket](./developer-glossary.md#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek. 
+- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](./quickstart-configure-app-access-web-apis.md) részletes ismertetését lásd:.
+- További részletekért tekintse meg, hogy az erőforrás-alkalmazások hogyan teszik elérhetővé a [hatóköröket](./developer-glossary.md#scopes) és az [alkalmazási szerepköröket](./developer-glossary.md#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

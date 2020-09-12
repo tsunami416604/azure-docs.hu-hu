@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907507"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434197"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz az Azure Data Factoryben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Előfordulhat, hogy az adatforrás sémája nem egyezik meg az adatforrások sé
 A Adatok másolása eszköz figyeli és megtanulja a viselkedését, ha a forrás-és a célhelyek közötti oszlopokat térképezi fel. Miután kiválasztotta a forrás adattárból egy vagy több oszlopot, és leképezi őket a célként megadott sémába, a Adatok másolása eszköz elkezdi elemezni a két oldalról kiválasztott oszlop párok mintázatát. Ezt követően ugyanezt a mintát alkalmazza a többi oszlopra is. Ezért láthatja, hogy az összes oszlop hozzá van rendelve a célhoz úgy, ahogy azt több kattintás után szeretné.  Ha nem elégedett az Adatok másolása eszköz által biztosított oszlop-hozzárendelési lehetőséggel, akkor figyelmen kívül hagyhatja, és folytathatja az oszlopok manuális leképezését. Eközben a Adatok másolása eszköz folyamatosan megtanulja és frissíti a mintát, és végül eléri a megfelelő mintát a elérni kívánt oszlop-hozzárendeléshez. 
 
 > [!NOTE]
-> Ha az adatok másolása SQL Server vagy Azure SQL Database a Azure SQL Data Warehouse, ha a tábla nem létezik a célhelyen, Adatok másolása eszköz támogatja a tábla automatikus létrehozását a forrásoldali séma használatával. 
+> Ha az adatok másolása SQL Server vagy Azure SQL Database az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse) történik, ha a tábla nem létezik a célhelyen, Adatok másolása eszköz támogatja a tábla automatikus létrehozását a forrásoldali séma használatával. 
 
 ## <a name="filter-data"></a>Adatok szűrése
 A forrásadatok szűrésével kiválaszthatja azokat az adatforrásokat, amelyeket át kell másolni a fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Az Adatok másolása eszköz rugalmas módot biztosít a kapcsolódó adatbázisok adatszűrésére az SQL-lekérdezési nyelv vagy egy Azure Blob mappában található fájlok használatával. 
@@ -107,7 +107,7 @@ Az egyszeri másolási művelettel csak egyszer engedélyezhető az adatáthelye
 ![Ütemezési beállítások](./media/copy-data-tool/scheduling-options.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Próbálja ki ezeket az oktatóanyagokat, amelyek az Adatok másolása eszközt használják:
 
 - [Gyors útmutató: adatelőállító létrehozása a Adatok másolása eszköz használatával](quickstart-create-data-factory-copy-data-tool.md)

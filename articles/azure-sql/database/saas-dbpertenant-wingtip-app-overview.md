@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: edf66af2df56785977418a118847991165ab3702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d291adcf53469825f32b664cb7f4ffdb0bbf244b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041191"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441017"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bevezetés egy több-bérlős SaaS-alkalmazásba, amely az adatbázis-/bérlői mintát használja Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Az oktatóanyagok és az alkalmazással való munka során az SaaS-mintázatokra
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>SQL Database Wingtip SaaS-oktatóanyagok
 
-Az alkalmazás üzembe helyezése után vizsgálja meg a következő, a kezdeti üzembe helyezésre épülő oktatóanyagokat. Ezek az oktatóanyagok olyan általános SaaS-mintákat mutatnak, amelyek kihasználják SQL Database, Azure SQL Data Warehouse és más Azure-szolgáltatások beépített funkcióit. Az oktatóanyagok tartalmazzák a PowerShell-szkripteket, részletes magyarázatokkal. A magyarázattal megtalálhatók az alkalmazások azonos SaaS-felügyeleti mintáinak megismerése és megvalósítása.
+Az alkalmazás üzembe helyezése után vizsgálja meg a következő, a kezdeti üzembe helyezésre épülő oktatóanyagokat. Ezek az oktatóanyagok olyan általános SaaS-mintákat mutatnak, amelyek kihasználják a SQL Database beépített funkcióit, az Azure szinapszis Analytics (korábban SQL Data Warehouse) és más Azure-szolgáltatásokat. Az oktatóanyagok tartalmazzák a PowerShell-szkripteket, részletes magyarázatokkal. A magyarázattal megtalálhatók az alkalmazások azonos SaaS-felügyeleti mintáinak megismerése és megvalósítása.
 
 
 | Oktatóanyag | Description |
@@ -53,7 +53,7 @@ Az alkalmazás üzembe helyezése után vizsgálja meg a következő, a kezdeti 
 |[Elemzés futtatása a kinyert bérlői adatbázison](saas-tenancy-tenant-analytics.md) | A bérlői adatok kinyerése egy elemzési adatbázisba vagy adattárházba offline elemzési lekérdezésekhez. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Általános útmutatás és tippek a Wingtip tickets SaaS-alkalmazás üzembe helyezéséhez és használatához – példa](saas-tenancy-wingtip-app-guidance-tips.md)
 - [A Wingtip SaaS-alkalmazás üzembe helyezése](../../sql-database/saas-dbpertenant-get-started-deploy.md)

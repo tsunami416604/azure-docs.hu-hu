@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541719"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442105"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Ez a dokumentum útmutatást nyújt a Azure SQL Database és az Azure SQL felüg
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Az útmutatóban nem szereplő központi telepítési ajánlatok
 
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (korábban SQL Data Warehouse)
 - Azure SQL virtuális gépek (IaaS)
 - SQL Server
 
@@ -47,7 +47,7 @@ Az útmutató célközönségei a Azure SQL Database biztonságossá tételével
 - Adatvédelmi tisztviselők
 - Biztonsági mérnökök
 
-### <a name="using-this-guide"></a><a id="using"></a>Az útmutató használata
+### <a name="using-this-guide"></a><a id="using"></a> Az útmutató használata
 
 A dokumentum célja, hogy a meglévő [Azure SQL Database biztonsági](security-overview.md) dokumentációhoz tartozó társa legyen.
 
@@ -501,7 +501,7 @@ Ajánlott eljárások az ügyfélszámítógépek és alkalmazások ismert bizto
 
 **Megvalósítás**:
 
-- Győződjön meg arról, hogy az Azure SQL Database és az SQL felügyelt példányához csatlakozó ügyfélszámítógépek [Transport Layer Security (TLS) protokollt](security-overview.md#transport-layer-security-encryption-in-transit)használnak.
+- Győződjön meg arról, hogy az Azure SQL Database és az SQL felügyelt példányához csatlakozó ügyfélszámítógépek  [Transport Layer Security (TLS) protokollt](security-overview.md#transport-layer-security-encryption-in-transit)használnak.
 
 **Ajánlott eljárások**:
 
@@ -742,7 +742,7 @@ Figyelje meg, hogy ki fér hozzá a bizalmas adatokhoz, és hogyan rögzíthet l
 
 **Megvalósítás**:
 
-- Az SQL audit és az adatbesorolás együttes használata.
+- Használja együtt az SQL-naplózást és az adatbesorolást.
   - A [SQL Database naplójában](../../azure-sql/database/auditing-overview.md) a hozzáférést a bizalmas adatokhoz is nyomon követheti. Megtekintheti az adatok, például az elért adatokat, valamint az érzékenységi címkét is. További információ: [adatfelderítés és besorolás](data-discovery-and-classification-overview.md) és [a bizalmas adatokhoz való hozzáférés naplózása](data-discovery-and-classification-overview.md#audit-sensitive-data).
 
 **Ajánlott eljárások**:
@@ -798,6 +798,6 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
 
 - További üzletmenet-folytonossági funkciók, például automatikus feladatátvételi csoportok a különböző Azure-térségek az itt leírtak szerint konfigurálhatók: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

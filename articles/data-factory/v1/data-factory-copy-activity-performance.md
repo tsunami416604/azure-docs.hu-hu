@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196112"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441085"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Útmutató a másolási tevékenységek teljesítményéhez és finomhangolásához
 
@@ -32,7 +32,7 @@ Azure Data Factory másolási tevékenység egy első osztályú biztonságos, m
 
 Az Azure nagyvállalati szintű adattárolási és adattárház-megoldásokat kínál, a másolási tevékenység pedig egy könnyen konfigurálható és beállítható, kifejezetten optimalizált betöltési élményt nyújt. Csak egyetlen másolási tevékenységgel érheti el a következőket:
 
-* Az adatbetöltések a **Azure SQL Data Warehouse** **1,2 GB/s**-ra. A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Az **Azure szinapszis analyticsbe** való betöltés **1,2 GB/s**-on. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis analyticsbe (korábban SQL Data Warehouse) 15 percen belül Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 * Adatbetöltése az **Azure Blob Storage** -ba **1,0 GB/s**
 * Az adattöltés **Azure Data Lake Store** **1,0 GB/s**
 
@@ -66,7 +66,7 @@ Az alábbi táblázatban látható a másolási átviteli sebesség (MB/s) a meg
         <td>32 mag 2,20 GHz-es Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>Memory (Memória)</td>
+        <td>Memória</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -183,9 +183,9 @@ A két tulajdonság jobb kihasználásához és az adatátviteli sebesség növe
 ## <a name="staged-copy"></a>Előkészített másolás
 Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, a blob Storage-t átmeneti átmeneti tárolóként használhatja. Az előkészítés különösen a következő esetekben hasznos:
 
-1. A **különböző adattárakból származó adatok betöltését a SQL Data Warehouseon keresztül kell használni**. A SQL Data Warehouse a Base szolgáltatást nagy átviteli sebességű mechanizmusként használja a nagy mennyiségű adat SQL Data Warehouseba való betöltéséhez. A forrásadatok esetében azonban a blob Storage-ban kell szerepelnie, és meg kell felelnie a további feltételeknek. Ha a blob Storage-tól eltérő adattárból tölt be adatait, az Adatmásolást átmeneti átmeneti blob Storage használatával aktiválhatja. Ebben az esetben a Data Factory végrehajtja a szükséges adatátalakításokat annak érdekében, hogy az megfeleljen a bázisterület követelményeinek. Ezt követően a program a SQL Data Warehouseba tölti be az adatok betöltéséhez használt alalapot. További részletekért lásd: az [adatok Azure SQL Data Warehouseba való betöltésének alapja](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+1. A **különböző adattárakból származó adatoknak az Azure szinapszis analyticsbe való betöltését a Base használatával szeretné megtekinteni**. Az Azure szinapszis Analytics a bázist nagy átviteli sebességű mechanizmusként használja nagy mennyiségű adat az Azure szinapszis Analyticsbe való betöltéséhez. A forrásadatok esetében azonban a blob Storage-ban kell szerepelnie, és meg kell felelnie a további feltételeknek. Ha a blob Storage-tól eltérő adattárból tölt be adatait, az Adatmásolást átmeneti átmeneti blob Storage használatával aktiválhatja. Ebben az esetben a Data Factory végrehajtja a szükséges adatátalakításokat annak érdekében, hogy az megfeleljen a bázisterület követelményeinek. Ezt követően a rendszer a Base használatával tölti be az adatok az Azure szinapszis Analytics szolgáltatásba. További részletekért lásd: az [adatok az Azure szinapszis analyticsbe való betöltésének használata](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 2. **Időnként igénybe veheti a hibrid adatáthelyezést (azaz egy helyszíni adattár és egy felhőalapú adattár közötti másolást) lassú hálózati kapcsolaton keresztül**. A teljesítmény javítása érdekében a helyszínen tömörítheti az adatok mennyiségét, így kevesebb időt vesz igénybe, hogy az adatok áthelyezhetők legyenek a Felhőbeli átmeneti adattárba. Ezután kibonthatja az átmeneti tárolóban lévő adatok kibontását, mielőtt betölti azt a cél adattárba.
-3. A **vállalati informatikai házirendek miatt nem kívánja megnyitni a 80-as és a 443-es porton kívüli portokat a tűzfalon**. Ha például egy helyszíni adattárból másol be egy Azure SQL Database fogadóba vagy egy Azure SQL Data Warehouse fogadóba, akkor a Windows tűzfal és a vállalati tűzfal esetében is aktiválni kell a kimenő TCP-kommunikációt az 1433-as porton. Ebben a forgatókönyvben az átjáró előnyeit kihasználva először másolja át az adatmásolt blob Storage-alapú átmeneti példányba HTTP-n vagy HTTPS-en keresztül a 443-es porton. Ezután töltse be az adatok SQL Database vagy SQL Data Warehouse a blob Storage-előkészítésből. Ebben a folyamatban nem kell engedélyeznie a 1433-es portot.
+3. A **vállalati informatikai házirendek miatt nem kívánja megnyitni a 80-as és a 443-es porton kívüli portokat a tűzfalon**. Ha például egy helyszíni adattárból másol be egy Azure SQL Database fogadóba vagy egy Azure szinapszis Analytics-fogadóba, akkor a Windows tűzfal és a vállalati tűzfal esetében aktiválni kell a kimenő TCP-kommunikációt az 1433-as porton. Ebben a forgatókönyvben az átjáró előnyeit kihasználva először másolja át az adatmásolt blob Storage-alapú átmeneti példányba HTTP-n vagy HTTPS-en keresztül a 443-es porton. Ezután töltse be az adatait SQL Database vagy az Azure szinapszis Analytics szolgáltatásba a blob Storage-előkészítésből. Ebben a folyamatban nem kell engedélyeznie a 1433-es portot.
 
 ### <a name="how-staged-copy-works"></a>A szakaszos másolás működése
 Az előkészítési funkció aktiválása után a rendszer először a forrás adattárból másolja át az adattárat az átmeneti adattárba (saját maga is). Ezt követően az adatok az előkészítési adattárból a fogadó adattárba lesznek másolva. A Data Factory automatikusan kezeli a kétlépcsős folyamatot. Az adatáthelyezés befejezése után a Data Factory az átmeneti tárolóból is törli az ideiglenes adatok mennyiségét.
@@ -207,10 +207,10 @@ Konfigurálja a **enableStaging** beállítást a másolási tevékenységben an
 
 | Tulajdonság | Leírás | Alapértelmezett érték | Kötelező |
 | --- | --- | --- | --- |
-| **enableStaging** |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |False (Hamis) |No |
-| **linkedServiceName** |Adja meg egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tároló példányára hivatkozik. <br/><br/> Nem használhat megosztott elérési aláírással rendelkező tárolót az adatok SQL Data Warehouseba való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |N.A. |Igen, ha a **enableStaging** értéke TRUE (igaz) |
-| **elérési útja** |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N.A. |No |
-| **enableCompression** |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |False (Hamis) |No |
+| **enableStaging** |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |No |
+| **linkedServiceName** |Adja meg egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tároló példányára hivatkozik. <br/><br/> Nem használhat megosztott hozzáférési aláírással rendelkező tárolót az adatok Azure szinapszis-elemzésbe való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |N/A |Igen, ha a **enableStaging** értéke TRUE (igaz) |
+| **elérési útja** |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N/A |No |
+| **enableCompression** |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |No |
 
 Az alábbi példa a másolási tevékenység definícióját tartalmazza az előző táblázatban ismertetett tulajdonságokkal:
 
@@ -262,12 +262,12 @@ Javasoljuk, hogy hajtsa végre ezeket a lépéseket a Data Factory szolgáltatá
      * [Felhőbeli adatáthelyezési egységek](#cloud-data-movement-units)
      * [Előkészített másolás](#staged-copy)
      * [adatkezelés átjáró méretezhetősége](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Átjáró adatkezelés](#considerations-for-data-management-gateway)
+   * [Adatkezelési átjáró](#considerations-for-data-management-gateway)
    * [Forrás](#considerations-for-the-source)
    * [Sink (Fogadó)](#considerations-for-the-sink)
    * [Szerializálás és deszerializálás](#considerations-for-serialization-and-deserialization)
    * [Tömörítés](#considerations-for-compression)
-   * [Oszlop-hozzárendelés](#considerations-for-column-mapping)
+   * [Oszlopleképezés](#considerations-for-column-mapping)
    * [További szempontok](#other-considerations)
 3. **Bontsa ki a konfigurációt a teljes adathalmazra**. Ha elégedett a végrehajtás eredményeivel és teljesítményével, kiterjesztheti a definíciót és a folyamat aktív időszakát, hogy az a teljes adathalmazra vonatkozzon.
 
@@ -282,7 +282,7 @@ Javasoljuk, hogy hajtsa végre ezeket a lépéseket a Data Factory szolgáltatá
 
 A Microsoft adattárak esetében lásd: az adattárakra jellemző [témakörök figyelése és finomhangolása](#performance-reference) , valamint az adattárolási teljesítmény jellemzőinek megértése, a válaszidő csökkentése és az átviteli sebesség maximalizálása.
 
-Ha a blob Storage-ból SQL Data Warehouseba másol adatait, a teljesítmény növelése érdekében érdemes lehet a **Base** használata. További részleteket a következő témakörben talál: az [adatok Azure SQL Data Warehouseba való betöltésének használata](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Ha a blob Storage-ból másolja az Azure szinapszis Analytics-be, érdemes **lehet a teljesítmény növelésére használni** További részleteket a következő témakörben talál: [adatok betöltése az Azure szinapszis analyticsbe](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Fájl alapú adattárak
 *(Blob Storage, Data Lake Store, Amazon S3, helyszíni fájlrendszerek és helyszíni HDFS tartalmazza)*
@@ -292,7 +292,7 @@ Ha a blob Storage-ból SQL Data Warehouseba másol adatait, a teljesítmény nö
 * A helyszíni **fájlrendszer** esetében, amelyben **adatkezelés átjáró** szükséges, tekintse meg a [adatkezelés átjáróval kapcsolatos szempontok](#considerations-for-data-management-gateway) című szakaszt.
 
 ### <a name="relational-data-stores"></a>Rokon adattárak
-*(Tartalmazza a SQL Database; SQL Data Warehouse; Amazon vöröseltolódás; SQL Server adatbázisok; és Oracle-, MySQL-, DB2-, Teradata-, Sybase-és PostgreSQL-adatbázisok stb.)*
+*(Tartalmazza a SQL Database; Az Azure szinapszis Analytics; Amazon vöröseltolódás; SQL Server adatbázisok; és Oracle-, MySQL-, DB2-, Teradata-, Sybase-és PostgreSQL-adatbázisok stb.)*
 
 * **Adatminta**: a táblázat sémája hatással van a másolási teljesítményre. A nagyméretű sorok mérete jobb teljesítményt nyújt, mint a kis sorok mérete, így ugyanazon mennyiségű adat másolása is megadható. Ennek az az oka, hogy az adatbázis hatékonyabban tudja lekérni a kevesebb sort tartalmazó kötegeket.
 * **Lekérdezési vagy tárolt eljárás**: optimalizálja a másolási tevékenység forrásaként megadott lekérdezés vagy tárolt eljárás logikáját, hogy az adatgyűjtést hatékonyabban lehessen beolvasni.
@@ -304,7 +304,7 @@ Ha a blob Storage-ból SQL Data Warehouseba másol adatait, a teljesítmény nö
 
 A Microsoft-adattárak esetében tekintse meg az adattárakra jellemző [témakörök figyelését és finomhangolását](#performance-reference) . Ezek a témakörök segítenek megérteni az adattár teljesítményének jellemzőit, és azt, hogy miként lehet csökkenteni a válaszidőt és maximalizálni az átviteli sebességet.
 
-Ha a **blob Storage** -ból **SQL Data Warehouseba**másol Adatmásolást, érdemes lehet a teljesítmény növelésére a **Base** használatával. További részleteket a következő témakörben talál: az [adatok Azure SQL Data Warehouseba való betöltésének használata](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Ha a **blob Storage** -ból az **Azure szinapszis Analytics**szolgáltatásba másol adatait, a teljesítmény növelése érdekében érdemes lehet a **Base** használata. További részleteket a következő témakörben talál: [adatok betöltése az Azure szinapszis analyticsbe](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Fájl alapú adattárak
 *(Blob Storage, Data Lake Store, Amazon S3, helyszíni fájlrendszerek és helyszíni HDFS tartalmazza)*
@@ -315,7 +315,7 @@ Ha a **blob Storage** -ból **SQL Data Warehouseba**másol Adatmásolást, érde
 * Adatkezelés **-** **átjáró**használatát igénylő helyszíni fájlrendszerek esetében tekintse meg a [adatkezelés átjáróval kapcsolatos szempontokat](#considerations-for-data-management-gateway) ismertető szakaszt.
 
 ### <a name="relational-data-stores"></a>Rokon adattárak
-*(SQL Database, SQL Data Warehouse, SQL Server adatbázist és Oracle-adatbázisokat tartalmaz)*
+*(Tartalmazza a SQL Database, az Azure szinapszis Analytics, a SQL Server-adatbázisok és az Oracle-adatbázisok)*
 
 * **Másolási viselkedés**: attól függően, hogy milyen tulajdonságokkal rendelkezik a **sqlSink**, a másolási tevékenység különböző módokon írja be az adatot a céladatbázisbe.
   * Alapértelmezés szerint az adatátviteli szolgáltatás a tömeges másolási API-t használja az adat hozzáfűzési módban való beszúrásához, amely a legjobb teljesítményt biztosítja.
@@ -413,13 +413,13 @@ Ebben az esetben a bzip2 adattömörítés a teljes folyamat lelassulását okoz
 
 ![3\. példa](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Hivatkozás
+## <a name="reference"></a>Referencia
 Az alábbiakban a támogatott adattárakkal kapcsolatos Teljesítményfigyelés és hangolási referenciák találhatók:
 
 * Azure Blob Storage: a blob Storage-hoz szükséges [méretezhetőségi és teljesítményi célok](../../storage/blobs/scalability-targets.md) , valamint a blob Storage-hoz kapcsolódó [teljesítmény-és méretezhetőségi ellenőrzőlista](../../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: a táblázatos tároláshoz [szükséges méretezhetőségi](../../storage/tables/scalability-targets.md) és teljesítményi célok, [valamint a Table Storage teljesítményére és méretezhetőségére vonatkozó ellenőrzőlista](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: nyomon követheti [a teljesítményt](../../sql-database/sql-database-single-database-monitor.md) , és ellenőrizheti az adatbázis-tranzakciós egység (DTU) százalékos arányát.
-* Azure SQL Data Warehouse: a képesség mérése adatraktár-egységekben (DWU) történik. Lásd: [a számítási teljesítmény kezelése a Azure SQL Data Warehouseban (áttekintés)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure szinapszis Analytics: a rendszer az adatraktár-egységekben (DWU) méri a képességét. Lásd: [a számítási teljesítmény kezelése az Azure szinapszis Analyticsben (áttekintés)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [a Azure Cosmos db teljesítmény szintjei](../../cosmos-db/performance-levels.md)
 * Helyszíni SQL Server: [teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx)
 * Helyszíni fájlkiszolgáló: a [fájlkiszolgálók teljesítményének finomhangolása](https://msdn.microsoft.com/library/dn567661.aspx)

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210661"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441680"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics memóriája és egyidejűségi korlátai
 
@@ -55,7 +55,7 @@ A maximális szolgáltatási szint a DW30000c, amelynek 60 számítási csomópo
 
 A [munkaterhelési csoportok](sql-data-warehouse-workload-isolation.md)bevezetésével az egyidejű tárolóhelyek fogalma már nem érvényes.  A kérelmekre vonatkozó erőforrások százalékos arányban vannak lefoglalva, és a munkaterhelés csoport definíciójában vannak megadva.  A párhuzamossági tárolóhelyek eltávolításával azonban a szolgáltatási szint alapján a lekérdezésekhez szükséges minimális mennyiségű erőforrásra van szükség.  Az alábbi táblázat a szolgáltatási szintek és a hozzájuk kapcsolódó egyidejűségek által lekérdezett erőforrások minimális mennyiségét definiálta.
 
-|Szolgáltatási szint|Egyidejű lekérdezések maximális száma|A REQUEST_MIN_RESOURCE_GRANT_PERCENT minimális%-a támogatott|
+|Szolgáltatásszint|Egyidejű lekérdezések maximális száma|A REQUEST_MIN_RESOURCE_GRANT_PERCENT minimális%-a támogatott|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12,5%|
@@ -83,7 +83,7 @@ Annak biztosítása érdekében, hogy az egyes lekérdezések hatékony végreha
 
 A következő táblázat a [statikus erőforrások osztályának](resource-classes-for-workload-management.md)maximális egyidejű lekérdezéseit és egyidejűségi tárolóhelyeit mutatja be.  
 
-| Szolgáltatási szint | Egyidejű lekérdezések maximális száma | Elérhető egyidejűségi bővítőhelyek | A staticrc10 által használt bővítőhelyek | A staticrc20 erőforrásosztályhoz által használt bővítőhelyek | A staticrc30 által használt bővítőhelyek | A staticrc40 által használt bővítőhelyek | A staticrc50 által használt bővítőhelyek | A staticrc60 által használt bővítőhelyek | A staticrc70 által használt bővítőhelyek | A staticrc80 által használt bővítőhelyek |
+| Szolgáltatásszint | Egyidejű lekérdezések maximális száma | Elérhető egyidejűségi bővítőhelyek | A staticrc10 által használt bővítőhelyek | A staticrc20 erőforrásosztályhoz által használt bővítőhelyek | A staticrc30 által használt bővítőhelyek | A staticrc40 által használt bővítőhelyek | A staticrc50 által használt bővítőhelyek | A staticrc60 által használt bővítőhelyek | A staticrc70 által használt bővítőhelyek | A staticrc80 által használt bővítőhelyek |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -106,7 +106,7 @@ A következő táblázat a [statikus erőforrások osztályának](resource-class
 
 Az alábbi táblázat az egyes [dinamikus erőforrás-osztályok](resource-classes-for-workload-management.md)maximális egyidejű lekérdezéseit és egyidejűségi tárolóhelyeit mutatja be. A dinamikus erőforrás-osztályok a 3-10-22-70-es memória-kiosztást használják a kis-közepes méretű XLarge erőforrás-osztályokhoz az összes szolgáltatási szinten.
 
-| Szolgáltatási szint | Egyidejű lekérdezések maximális száma | Elérhető egyidejűségi bővítőhelyek | A smallrc által használt bővítőhelyek | A mediumrc által használt bővítőhelyek | A largerc által használt bővítőhelyek | A xlargerc által használt bővítőhelyek |
+| Szolgáltatásszint | Egyidejű lekérdezések maximális száma | Elérhető egyidejűségi bővítőhelyek | A smallrc által használt bővítőhelyek | A mediumrc által használt bővítőhelyek | A largerc által használt bővítőhelyek | A xlargerc által használt bővítőhelyek |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
@@ -125,9 +125,9 @@ Az alábbi táblázat az egyes [dinamikus erőforrás-osztályok](resource-class
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-Ha nincs elegendő egyidejűségi tárolóhely a lekérdezés végrehajtásának megkezdéséhez, a lekérdezéseket a rendszer a fontosság alapján várólistára helyezi és végrehajtja.  Ha ennek megfelelő jelentősége van, a lekérdezéseket a rendszer az első, első kijelentkezési alapon hajtja végre.  A lekérdezések befejeződése után a lekérdezések és a bővítőhelyek száma a határértékek alá csökken, SQL Data Warehouse kiadások várólistán lévő lekérdezések.
+Ha nincs elegendő egyidejűségi tárolóhely a lekérdezés végrehajtásának megkezdéséhez, a lekérdezéseket a rendszer a fontosság alapján várólistára helyezi és végrehajtja.  Ha ennek megfelelő jelentősége van, a lekérdezéseket a rendszer az első, első kijelentkezési alapon hajtja végre.  A lekérdezések befejeződése után a lekérdezések és a tárolóhelyek száma a határértékek alá esik, az Azure szinapszis Analytics várólistán lévő lekérdezéseket szabadít fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogyan használhat erőforrás-osztályokat a számítási feladatok további optimalizálása érdekében, tekintse át a következő cikkeket:
 

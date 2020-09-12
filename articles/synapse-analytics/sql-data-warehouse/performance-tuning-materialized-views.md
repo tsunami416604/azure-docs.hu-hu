@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956389"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441204"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Teljesítmény-Finomhangolás az anyagbeli nézetekkel
 
@@ -52,13 +52,13 @@ A megfelelően megtervezett, jelentős nézet a következő előnyöket biztosí
 
 Az SQL-készletben megvalósított, anyagilag megtekinthető nézetek a következő előnyöket is biztosítják:
 
-Más adattárház-szolgáltatókkal való összehasonlítás esetén a Azure SQL Data Warehouseban megvalósított, az alábbi előnyökkel jár:
+Az egyéb adattárház-szolgáltatók összehasonlításával az Azure szinapszis Analytics szolgáltatásban megvalósított, lényeges nézetek is a következő előnyöket nyújtják:
 
 - Automatikus és szinkron Adatfrissítés az alaptáblákban tárolt adatváltozásokkal. Nincs szükség felhasználói beavatkozásra.
 - Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Gyakori helyzetek  
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 
 A rendszer általában az alábbi helyzetekben használja az anyagilag látható nézeteket:
 
@@ -364,6 +364,6 @@ Vizsgálja meg újra az eredeti lekérdezés végrehajtási tervét.  Most az ö
 
 A nagy mennyiségű nézetekkel ugyanaz a lekérdezés sokkal gyorsabban fut a kód módosítása nélkül.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-készlet fejlesztése – áttekintés](sql-data-warehouse-overview-develop.md).

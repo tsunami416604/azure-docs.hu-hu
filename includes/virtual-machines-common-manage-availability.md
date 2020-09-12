@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760590"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89324461"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -33,7 +33,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 * [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]
 * [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]
 * [Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre](../articles/virtual-machines/linux/scheduled-events.md)
-* [Az egyes alkalmazások szintjeinek konfigurálása különálló rendelkezésre állási csoportokra]
+* [Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása](../articles/virtual-machines/windows/tutorial-availability-sets.md)
 * [Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel]
 * [A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez]
 
@@ -82,12 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> Bizonyos körülmények között a két virtuális gép ugyanabban a üzemmódú osztható meg ugyanazzal a FaultDomain. Ezt a rendelkezésre állási csoport és a tartalék **tartomány** oszlop ellenőrzésével lehet megerősíteni.
-> Ezt a virtuális gépek üzembe helyezése során a következő folyamat okozhatja:
-> - Az első virtuális gép üzembe helyezése
-> - Az első virtuális gép leállítása/felszabadítása
-> - A 2. virtuális gép üzembe helyezése ilyen körülmények között előfordulhat, hogy a második virtuális gép operációsrendszer-lemeze ugyanazon a tartalék tartományon jön létre, mint az első virtuális gép, így a második virtuális gép is ugyanazon a FaultDomain fog futni. 
-> A probléma elkerülése érdekében javasoljuk, hogy ne állítsa le/szabadítsa fel a virtuális gépeket az üzemelő példányok között.
+> Bizonyos körülmények között az azonos rendelkezésre állási csoportba tartozó két virtuális gép megoszthatja a tartalék tartományt. A megosztott tartalék tartomány megerősítéséhez nyissa meg a rendelkezésre állási csoportját, és ellenőrizze a tartalék **tartomány** oszlopot. A virtuális gépek üzembe helyezésekor a következő szakasz befejezése okozhatja a megosztott tartalék tartományt:
+> 1. Az első virtuális gép üzembe helyezése.
+> 1. Az első virtuális gép leállítása/felszabadítása.
+> 1. A második virtuális gép üzembe helyezése.
+>
+> Ilyen körülmények között előfordulhat, hogy a második virtuális gép operációsrendszer-lemeze ugyanazon a tartalék tartományon jön létre, mint az első virtuális gép, így a két virtuális gép ugyanazon a tartalék tartományban lesz. A probléma elkerülése érdekében javasoljuk, hogy ne állítson le/szabadítson fel virtuális gépeket az üzemelő példányok között.
 
 Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
 

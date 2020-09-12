@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13d483507092892187bc13dd23bfa51ed516c890
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545641"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441153"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Olvasási tárolók telepítése és futtatása (előzetes verzió)
 
@@ -55,6 +55,7 @@ A **gazdaszámítógép** a Docker-tárolót futtató számítógép. A gazdagé
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+
 > [!WARNING]
 > A AVX2 támogatásához a gazdaszámítógép *szükséges* . A tároló *nem fog* megfelelően működni AVX2-támogatás nélkül.
 
@@ -68,14 +69,14 @@ Az olvasáshoz tároló lemezképek érhetők el.
 
 | Tároló | Container Registry/adattár/rendszerkép neve |
 |-----------|------------|
-| Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
 
 ### <a name="docker-pull-for-the-read-container"></a>Docker-lekérés az olvasási tárolóhoz
 
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -186,13 +187,16 @@ A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával ér
 }
 ```
 
+> [!IMPORTANT]
+> Ha több olvasási tárolót helyez üzembe egy terheléselosztó mögött, például a Docker-összeállítás vagy a Kubernetes alatt, külső gyorsítótárral kell rendelkeznie. Mivel előfordulhat, hogy a feldolgozó tároló és a GET kérelem tárolója nem azonos, a külső gyorsítótár tárolja az eredményeket, és megosztja őket a tárolók között. A gyorsítótár-beállításokkal kapcsolatos további információkért lásd: [Computer Vision Docker-tárolók konfigurálása](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+
 ### <a name="synchronous-read"></a>Szinkron olvasás
 
 A `POST /vision/v2.0/read/core/Analyze` műveletet a rendszerképek szinkron beolvasására is használhatja. Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-választ kell visszaadnia. Ez alól az egyetlen kivétel, ha hiba történik. Ha hiba történik, a rendszer a következő JSON-t adja vissza:
 
 ```json
 {
-    status: "Failed"
+    "status": "Failed"
 }
 ```
 
@@ -280,10 +284,10 @@ Ebben a cikkben megtanulta Computer Vision tárolók letöltésére, telepítés
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
-* A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](Home.md)
+* A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](overview.md)
 * A tároló által támogatott metódusokkal kapcsolatos részletekért tekintse meg a [Computer Vision API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 * A Computer Vision funkcióival kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](FAQ.md) című témakört.
 * További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292782"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441493"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Ismételt védelem – Azure-ból helyszíni rendszerbe
 
@@ -47,6 +47,9 @@ Engedélyezze a replikációt. Az adott virtuális gépek vagy helyreállítási
 - Ha újravédi a helyreállítási tervet, meg kell adnia minden védett gép értékét.
 - Ha a virtuális gépek a több virtuális gépre kiterjedő konzisztencia replikációs csoportjához tartoznak, akkor csak helyreállítási terv használatával lehet őket újra védelemmel ellátni. A replikációs csoportba tartozó virtuális gépeknek ugyanazt a fő célkiszolgáló kiszolgálót kell használniuk
 
+>[!NOTE]
+>Az Azure-ból a hajdani forrásba az ismételt védelem során eljuttatott adatok mennyisége 0 bájt és az összes védett gép lemezének mérete között lehet, és nem számítható ki.
+
 ### <a name="before-you-start"></a>Előkészületek
 
 - Miután egy virtuális gép a feladatátvétel után elindul az Azure-ban, eltarthat egy ideig, amíg az ügynök vissza nem regisztrálja a konfigurációs kiszolgálót (akár 15 percet is igénybe vehet). Ebben az időszakban nem fogja tudni újból védelemmel ellátni, és hibaüzenet jelzi, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, majd végezze el az ismételt védelem megtörténtét.
@@ -71,7 +74,7 @@ A következőképpen engedélyezheti az ismételt védelmet:
     - Az ismételt védelem befejeződése után ne kapcsolja be a helyszíni virtuális gépet.
    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha bármilyen problémába ütközik, tekintse át a [hibaelhárítási cikket](vmware-azure-troubleshoot-failback-reprotect.md).
 - Az Azure-beli virtuális gépek védelme után elvégezheti a feladat- [visszavétel futtatását](vmware-azure-failback.md). A feladat-visszavétel leállítja az Azure-beli virtuális gépet, és elindítja a helyszíni virtuális gépet. Némi állásidőt vár az alkalmazáshoz, és ennek megfelelően kiválaszthatja a feladat-visszavételi időt.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068726"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436850"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -93,7 +93,7 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
 
 **4. táblázat: választható jogcímek konfigurálásának értékei**
 
-| Tulajdonság neve  | További tulajdonságnév | Leírás |
+| Tulajdonság neve  | További tulajdonságnév | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Az SAML-és JWT-válaszokhoz, valamint a 1.0-s és a v 2.0-tokenekhez is használható. |
 |                | `include_externally_authenticated_upn`  | Az erőforrás-bérlőben tárolt vendég UPN-t tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -130,7 +130,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 
 **Választható jogcímek konfigurálása a felhasználói felületen keresztül:**
 
-[![Bemutatja, hogyan konfigurálhat választható jogcímeket a felhasználói felület használatával](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![Választható jogcímek konfigurálása a felhasználói felületen](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció**elemet.
 1. Válassza a **választható jogcím hozzáadása**lehetőséget.
@@ -182,7 +182,7 @@ Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmaz�
 
 **5. táblázat: OptionalClaims típusának tulajdonságai**
 
-| Név          | Típus                       | Leírás                                           |
+| Név          | Típus                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Gyűjtemény (OptionalClaim) | A JWT azonosító jogkivonatában visszaadott választható jogcímek.     |
 | `accessToken` | Gyűjtemény (OptionalClaim) | Az JWT hozzáférési jogkivonatban visszaadott választható jogcímek. |
@@ -195,7 +195,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 
 **6. táblázat: OptionalClaim típusának tulajdonságai**
 
-| Név                   | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
+| Név                   | Típus                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím neve.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | A jogcím forrása (Directory-objektum). A bővítmény tulajdonságaiban előre definiált jogcímek és felhasználó által definiált jogcímek találhatók. Ha a forrás értéke null, a jogcím egy előre meghatározott opcionális jogcím. Ha a forrás értéke felhasználó, a Name (név) tulajdonság értéke a felhasználói objektum kiterjesztés tulajdonsága. |
@@ -238,7 +238,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában
 1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció** elemet.
 1. Válassza a **csoportok hozzáadása** lehetőséget
-1. Válassza ki a visszaadni kívánt csoportok típusát (**minden csoport**, **SecurityGroup**vagy **DirectoryRole**). A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole**és a **DistributionList**
+1. Válassza ki a visszaadni kívánt csoportok típusát (**biztonsági csoportok**, **címtárbeli szerepkörök**, **az alkalmazáshoz rendelt** **összes csoport**és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole**és a **DistributionList**, de **az alkalmazáshoz nem rendelt csoportokat**. 
 1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait a csoportok jogcím értékének módosításához a helyszíni csoport attribútumain vagy a jogcím típusának a szerepkörre való módosításához.
 1. Válassza a **Mentés** lehetőséget
 
@@ -256,6 +256,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    - "All" (ez a beállítás magában foglalja az SecurityGroup, a DirectoryRole és a DistributionList)
    - "SecurityGroup"
    - "DirectoryRole"
+   - "Alkalmazáscsoport" (ez a beállítás csak az alkalmazáshoz rendelt csoportokat tartalmazza)
 
    Például:
 
@@ -307,7 +308,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
     **Felhasználói felület konfigurációja:**
 
-    [![Bemutatja, hogyan konfigurálhat választható jogcímeket a felhasználói felület használatával](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![Nem kötelező jogcímek konfigurálása](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **Alkalmazás jegyzékfájljának bejegyzése:**
 
@@ -328,7 +329,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
     **Felhasználói felület konfigurációja:**
 
-    [![Bemutatja, hogyan konfigurálhat választható jogcímeket a felhasználói felület használatával](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![Nem kötelező jogcímek a jegyzékfájlban](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **Alkalmazás jegyzékfájljának bejegyzése:**
 
@@ -394,7 +395,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Válassza az **opcionális jogcím hozzáadása**lehetőséget, válassza ki az **SAML** -token típusát, válassza a **extn. skypeID** elemet a jogcímek listájából (csak akkor érvényes, ha létrehozott egy skypeID nevű Azure ad felhasználói objektumot), majd válassza a **Hozzáadás**lehetőséget.
 
-    [![Bemutatja, hogyan konfigurálhat választható jogcímeket a felhasználói felület használatával](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![SAML-tokenhez választható jogcímek](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Jegyzékfájl konfigurációja:**
 

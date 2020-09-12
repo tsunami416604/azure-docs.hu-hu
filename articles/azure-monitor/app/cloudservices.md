@@ -4,12 +4,12 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923857"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437326"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -66,6 +66,8 @@ Ha már egy következő funkcióhoz fejleszt egyéni eseményeket, miközben a k
 Ezen helyzet elkerülése érdekében hozzon létre külön erőforrásokat az egyes Build-konfigurációkhoz, illetve a "Stamp" (fejlesztési, tesztelési, éles stb.) rendszerhez. Helyezze az egyes buildkonfigurációk erőforrásait külön erőforráscsoportokba. 
 
 A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja a Application Insights SDK-t úgy, hogy az a létrehozási konfigurációtól függően egy másik kialakítási kulcsot is felvesz. 
+
+Megtudhatja, hogyan lehet [dinamikusan beállítani a kialakítási kulcsot](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) különböző fázisokban. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Application Insights-erőforrás létrehozása mindegyik szerepkörhöz
 
@@ -272,7 +274,7 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../platform/diagnostics-extension-to-application-insights.md)
 * [Application Insights erőforrások automatikus létrehozása](./powershell.md)
 * [Azure Diagnostics automatizálása](./powershell-azure-diagnostics.md)

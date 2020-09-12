@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612384"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433932"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok exportálása
 
@@ -36,12 +36,12 @@ Az alábbi eszközöket használhatja:
 |Kiadás állapota:|Általánosan elérhető|
 |Árképzési|Ingyenes szint|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>Folyamatos exportálás beállítása
+## <a name="set-up-a-continuous-export"></a>Folyamatos exportálás beállítása
 
 Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos exportálást állít be Log Analytics munkaterületre vagy az Azure Event Hubsra.
 
@@ -55,12 +55,24 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
 
 1. Válassza ki az exportálni kívánt adattípust, és válasszon az egyes típusok szűrőinek közül (például csak a nagy súlyosságú riasztások exportálása).
 
+1. Ha a választás a következő négy javaslat egyikét tartalmazza, akkor a sebezhetőségi felmérés eredményei együttesen is felvehetők:
+
+    - A sebezhetőségi felmérés eredményeit az SQL-adatbázisokban szervizelni kell
+    - A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)
+    - A Azure Container Registry lemezképekben található biztonsági réseket szervizelni kell (Qualys-alapú)
+    - A virtuális gépek biztonsági réseit szervizelni kell
+
+    Ahhoz, hogy a megállapítások szerepeljenek a javaslatokban, engedélyezze a **biztonsági megállapítások belefoglalása** lehetőséget.
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
+
+
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
 
 1. Kattintson a **Mentés** gombra.
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>Folyamatos exportálás beállítása a REST API használatával
+## <a name="set-up-continuous-export-via-the-rest-api"></a>Folyamatos exportálás beállítása a REST API használatával
 
 A folyamatos exportálás funkció a Azure Security Center [automations API](https://docs.microsoft.com/rest/api/securitycenter/automations)használatával konfigurálható és kezelhető. Ezzel az API-val létrehozhat vagy frissíthet automatizálásokat a következő lehetséges célhelyek bármelyikére való exportáláshoz:
 
@@ -83,7 +95,7 @@ További információ az automations API-ról a [REST API dokumentációjában](
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>SIEM-integráció konfigurálása az Azure Event Hubs használatával
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>SIEM-integráció konfigurálása az Azure Event Hubs használatával
 
 Az Azure Event Hubs nagyszerű megoldás a folyamatos átviteli adatmennyiség programozott módon. Azure Security Center riasztások és javaslatok esetében ez az előnyben részesített módszer a harmadik féltől származó SIEM integrálására.
 

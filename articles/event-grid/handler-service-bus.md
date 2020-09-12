@@ -2,13 +2,13 @@
 title: Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
 description: Ismerteti, hogyan használhatók Service Bus várólisták és témakörök Azure Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105693"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440796"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure Service Bus** az egyikük. 
@@ -32,7 +32,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
 ```
 
-## <a name="service-bus-topics"></a>Service Bus témakörök
+## <a name="service-bus-topics"></a>Service Bus-témakörök
 
 Event Grid közvetlenül is átirányíthatja az eseményeket Service Bus témaköröket az Azure rendszeresemények Service Bus témakörökkel való kezeléséhez, vagy a parancs & vezérlő üzenetkezelési forgatókönyvekhez.
 
@@ -53,7 +53,7 @@ az eventgrid event-subscription create \
 ## <a name="message-properties"></a>Üzenet tulajdonságai
 Ha **Service Bus témakört vagy üzenetsor** -kezelőt használ a Event Grid eseményeihez, állítsa be a következő üzenet-fejléceket: 
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | ------------- | ----------- | 
 | AEG-előfizetés – név | Az esemény-előfizetés neve. |
 | AEG – kézbesítés – darabszám | <p>Az eseményre tett kísérletek száma.</p> <p>Példa: "1"</p> |
@@ -62,9 +62,9 @@ Ha **Service Bus témakört vagy üzenetsor** -kezelőt használ a Event Grid es
 | AEG – adatverzió | <p>Az esemény adatverziója.</p><p>Példa: "1".</p><p>**Event Grid Event Schema**esetében ez a tulajdonság az adatverziót és a **Felhőbeli esemény sémáját**jelöli, nem érvényes.</p> |
 
 ## <a name="message-headers"></a>Üzenetek fejlécei
-Ha egy eseményt egy Service Bus üzenetsor vagy témakör felügyelt üzenetként küld, a `messageid` közvetített üzenet az **eseményazonosító**.
+Ha egy eseményt egy Service Bus üzenetsor vagy témakör felügyelt üzenetként küld, a `messageid` közvetítő üzenet egy belső rendszerazonosító.
 
-Az esemény-azonosító az esemény ismételt kézbesítése során is megmarad, így elkerülhetők az ismétlődő kézbesítések, ha bekapcsolják a Service Bus entitás **ismétlődő észlelését** . Javasoljuk, hogy engedélyezze az ismétlődő észlelés időtartamát a Service Bus entitáson, hogy az esemény élettartama (TTL) vagy az újrapróbálkozások maximális időtartama legyen, attól függően, hogy melyik a hosszabb.
+Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése fogja megőrizni, így elkerülhető az ismétlődő kézbesítések elkerülése a Service Bus entitás **ismétlődő észlelésének** bekapcsolásával. Javasoljuk, hogy engedélyezze az ismétlődő észlelés időtartamát a Service Bus entitáson, hogy az esemény élettartama (TTL) vagy az újrapróbálkozások maximális időtartama legyen, attól függően, hogy melyik a hosszabb.
 
 ## <a name="rest-examples-for-put"></a>REST-példák (PUT)
 

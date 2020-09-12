@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212028"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434231"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -126,7 +126,7 @@ Az adatfolyamatok díjszabása virtuális mag-óra, ami azt jelenti, hogy a für
 
 ### <a name="time-to-live"></a>Élettartam
 
-Alapértelmezés szerint minden adatfolyam-tevékenység egy új fürtöt indít el az IR-konfiguráció alapján. A fürt indítási ideje néhány percet vesz igénybe, és az adatfeldolgozás nem kezdődhet egészen addig, amíg be nem fejeződik. Ha a folyamatok több **szekvenciális** adatfolyamatot tartalmaznak, akkor engedélyezheti az élettartam (TTL) értékét. Az élő érték megadásával a fürt a végrehajtás befejeződése után bizonyos ideig életben marad. Ha egy új feladatot az élettartam ideje alatt az IR használatával kezdi meg, a rendszer újra felhasználja a meglévő fürtöt, és a kezdési idő perc helyett másodpercben lesz. A második művelet befejezése után a fürt ismét életben marad a TTL-idő alatt.
+Alapértelmezés szerint minden adatfolyam-tevékenység egy új fürtöt indít el az IR-konfiguráció alapján. A fürt indítási ideje néhány percet vesz igénybe, és az adatfeldolgozás nem kezdődhet egészen addig, amíg be nem fejeződik. Ha a folyamatok több **szekvenciális** adatfolyamatot tartalmaznak, akkor engedélyezheti az élettartam (TTL) értékét. Az élő érték megadásával a fürt a végrehajtás befejeződése után bizonyos ideig életben marad. Ha egy új feladatot az élettartam ideje alatt az IR használatával kezdi meg, a rendszer újból felhasználja a meglévő fürtöt, és a kezdési idő jelentősen csökkenni fog. A második művelet befejezése után a fürt ismét életben marad a TTL-idő alatt.
 
 Egyszerre csak egy feladatot lehet futtatni egyetlen fürtön. Ha van elérhető fürt, de két adatfolyam indul el, csak egy fogja használni az élő fürtöt. A második feladatot a saját elszigetelt fürtje fogja felkészíteni.
 

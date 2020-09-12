@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226046"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441476"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -404,6 +404,9 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ## <a name="create-a-server-endpoint"></a>Kiszolgálói végpont létrehozása
 A kiszolgálói végpont a regisztrált kiszolgálón egy konkrét helyet jelöl, például egy mappát egy kiszolgálói köteten. A kiszolgálói végpontnak egy regisztrált kiszolgálón (nem pedig csatlakoztatott megosztáson) található elérési útnak kell lennie, és a felhőalapú rétegek használatához az elérési útnak nem rendszerköteten kell lennie. A hálózati csatolású tároló (NAS) nem támogatott.
 
+> [!NOTE]
+> Az elérési út vagy a meghajtóbetűjel módosítása a kiszolgálói végpont köteten való létrehozása után nem támogatott. Győződjön meg arról, hogy a regisztrált kiszolgálón a végső elérési utat használja.
+
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 Kiszolgálói végpont hozzáadásához nyissa meg az újonnan létrehozott szinkronizálási csoportot, majd válassza a **kiszolgáló-végpont hozzáadása**elemet.
 
@@ -571,7 +574,7 @@ Ha azonban úgy módosítja az ütemtervet, hogy az a kompatibilis nap értékn�
 
 A köteten tárolt VSS-Pillanatképek alapértelmezett maximális száma (64), valamint az alapértelmezett ütemterv, amely azt eredményezi, hogy a köteten tárolni kívánt VSS-Pillanatképek számától függően a rendszer legfeljebb 45 nappal korábbi verziót tud visszaállítani.
 
-Ha max. 64 VSS-Pillanatképek/kötetek nem a megfelelő beállítás az Ön számára, [ezt az értéket egy beállításkulcs segítségével módosíthatja](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Ha a max. 64 VSS-Pillanatképek mennyisége nem a megfelelő beállítás, akkor az [értéket egy beállításkulcs segítségével módosíthatja](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Az új korlát érvénybe léptetéséhez újra kell futtatnia a parancsmagot a korábbi verziók kompatibilitásának engedélyezéséhez minden korábban engedélyezett köteten, a-Force jelzővel, hogy a köteten lévő VSS-Pillanatképek maximális számát figyelembe vegye. Ennek eredményeképpen egy újonnan számított számú kompatibilis nap fog megjelenni. Vegye figyelembe, hogy ez a változás csak az újonnan létrehozott fájlokra lép érvénybe, és felülírja az esetlegesen elvégzett VSS-ütemterv testreszabásait.
 
 <a id="proactive-recall"></a>
@@ -624,7 +627,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

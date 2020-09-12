@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: nyilvános Microsoft-partneri hálózat áthelyezése'
 description: Ebből a cikkből megtudhatja, hogyan helyezheti át a nyilvános Microsoft-partneri kapcsolatot a ExpressRoute-on.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.author: cherylmc
-ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738362"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401418"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Váltáson nyilvános társviszony-létesítésről Microsoft-társviszony-létesítésre
 
@@ -22,7 +22,7 @@ Az Azure nyilvános társítása 1 NAT IP-címmel rendelkezik, amely az egyes BG
 
 Ha a nyilvános társítás engedélyezve van, csatlakozhat az összes Azure-szolgáltatáshoz. Nem engedélyezzük szelektíven olyan szolgáltatások kivételezését, amelyekhez útvonalakat hirdetünk. Míg a Microsoft-társítás egy kétirányú kapcsolat, ahol a Microsoft Azure szolgáltatással és a WAN-kapcsolattal is kezdeményezhető a kapcsolódás. További információ az útválasztási tartományokról és a társításról: [ExpressRoute-áramkörök és útválasztási tartományok](expressroute-circuit-peerings.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 A Microsoft-partneri kapcsolathoz való kapcsolódáshoz be kell állítania és kezelnie kell a NAT-ot. A kapcsolati szolgáltató felügyelt szolgáltatásként állíthatja be és felügyelheti a NAT-t. Ha azt tervezi, hogy hozzáfér az Azure-beli és az Azure SaaS-szolgáltatásokhoz a Microsoft-partneri kapcsolaton, akkor fontos, hogy megfelelően méretezze a NAT IP-készletet. További információ a ExpressRoute NAT-ról: a [Microsoft-partnerek NAT-követelményei](expressroute-nat.md#nat-requirements-for-microsoft-peering). Ha az Azure ExpressRoute (Microsoft-társ) keresztül csatlakozik a Microsofthoz, a Microsofthoz több hivatkozása is van. Az egyik kapcsolat a meglévő internetkapcsolat, a másik pedig az ExpressRoute-on keresztüli kapcsolat. Előfordulhat, hogy a forgalom egy része az interneten keresztül jut el a Microsofthoz, de az ExpressRoute-on át tér vissza, vagy fordítva.
 
@@ -89,6 +89,6 @@ Miután meggyőződött arról, hogy a Microsoft-társítás konfigurálva van, 
   
 Megtekintheti a Azure Portal összes ExpressRoute-áramkörét és-társát. További információ: a [Microsoft-partneri kapcsolat részleteinek megtekintése](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.

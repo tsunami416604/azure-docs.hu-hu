@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9b493e862ed70bbeab9ac509c79003a535366d0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116535"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433908"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
@@ -32,7 +32,7 @@ Az új élményt úgy érheti el, ha a Azure Portal **Azure ad B2C** vagy a **Az
 A Azure AD B2C Alkalmazásregisztrációk felhasználói élmény az Azure AD-bérlők általános [alkalmazás-regisztrációs felületén](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) alapul, de Azure ad B2C bérlők számára van kialakítva.
 
 ## <a name="whats-not-changing"></a>Mi nem változik?
-- Az alkalmazások és a kapcsolódó konfigurációk az új felületén is megtalálhatók. Nem kell újból regisztrálnia az alkalmazásokat, és az alkalmazások felhasználóinak újra be kell jelentkezniük. 
+- Az alkalmazások és a kapcsolódó konfigurációk az új felületén is megtalálhatók. Nem kell újból regisztrálnia az alkalmazásokat, és az alkalmazások felhasználóinak újra be kell jelentkezniük.
 
 > [!NOTE]
 > Az összes korábban létrehozott alkalmazás megtekintéséhez navigáljon a **Alkalmazásregisztrációk** panelre, és válassza a **minden alkalmazás** lapot. Ez megjeleníti a régi felhasználói élményben, az új felhasználói élményben és az Azure AD szolgáltatásban létrehozott alkalmazásokat.
@@ -43,7 +43,7 @@ A Azure AD B2C Alkalmazásregisztrációk felhasználói élmény az Azure AD-b�
 
 -   Az **alkalmazások regisztrálásával** gyorsan regisztrálhat egy alkalmazást, függetlenül attól, hogy az ügyfél vagy az alkalmazás fér hozzá Microsoft Graphhoz.
 
-- A **végpontok** panelen gyorsan azonosíthatja a forgatókönyvhöz tartozó végpontokat, beleértve az OpenID Connect konfigurációját, az SAML-metaadatokat, az Microsoft Graph API-t és a [OAuth 2,0 felhasználói folyamat végpontját](tokens-overview.md#endpoints). 
+- A **végpontok** panelen gyorsan azonosíthatja a forgatókönyvhöz tartozó végpontokat, beleértve az OpenID Connect konfigurációját, az SAML-metaadatokat, az Microsoft Graph API-t és a [OAuth 2,0 felhasználói folyamat végpontját](tokens-overview.md#endpoints).
 
 - Az **API-engedélyek** és **az API** -k közzététele átfogóbb hatókör-, engedély-és beleegyezési felügyeletet biztosít. Mostantól az MS Graph és az Azure AD Graph engedélyeket is hozzárendelhet egy alkalmazáshoz.
 
@@ -57,7 +57,7 @@ Az új felhasználói élményben válasszon ki egy támogatási fiókot a köve
 - Fiókok bármely szervezeti címtárban (bármely Azure AD-címtár – több-bérlős).
 - Fiókok bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban. A felhasználók Azure AD B2C használatával történő hitelesítéséhez.
 
-A különböző fióktípus megismeréséhez válassza a létrehozási **élmény lehetőséget.** 
+A különböző fióktípus megismeréséhez válassza a létrehozási **élmény lehetőséget.**
 
 A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásként történt. Ezekhez az alkalmazásokhoz a fiók típusa **bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban található fiókra van beállítva. A felhasználók Azure AD B2C használatával történő hitelesítéséhez**.
 > [!NOTE]
@@ -68,9 +68,9 @@ Ezt a lehetőséget használhatja a Azure AD B2C SAML-szolgáltatóként való h
 ## <a name="applications-for-devops-scenarios"></a>Alkalmazások DevOps-forgatókönyvekhez
 A más fióktípus használatával létrehozhat egy alkalmazást a DevOps-forgatókönyvek kezeléséhez, például a Microsoft Graph használata az identitási élményhez tartozó szabályzatok feltöltéséhez vagy a felhasználók kiépítéséhez. Megtudhatja [, hogyan regisztrálhat egy Microsoft Graph alkalmazást Azure ad B2C erőforrások kezeléséhez](microsoft-graph-get-started.md).
 
-Előfordulhat, hogy nem látja az összes Microsoft Graph engedélyt, mert az engedélyek közül sok nem vonatkozik az Azure B2C fogyasztói felhasználókra. [További információ a felhasználók Microsoft Graph használatával történő kezeléséről](manage-user-accounts-graph-api.md).  
+Előfordulhat, hogy nem látja az összes Microsoft Graph engedélyt, mert az engedélyek közül sok nem vonatkozik az Azure B2C fogyasztói felhasználókra. [További információ a felhasználók Microsoft Graph használatával történő kezeléséről](manage-user-accounts-graph-api.md).
 
-## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Rendszergazdai engedély és offline_access + OpenID-hatókörök  
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Rendszergazdai engedély és offline_access + OpenID-hatókörök
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
 Az **OpenID** hatókörre azért van szükség, hogy Azure ad B2C be tudja jelentkezni a felhasználókat egy alkalmazásba. A **offline_access** hatókörre van szükség egy felhasználó frissítési jogkivonatának kibocsátásához. Ezek a hatókörök korábban lettek hozzáadva, és a rendszergazdai beleegyező értékkel lettek megadva. A létrehozási folyamat során könnyedén hozzáadhat engedélyeket ezekhez a hatókörökhöz azáltal, hogy a **rendszergazdai jóváhagyás megadása OpenID-és offline_access engedélyek beállítás be** van jelölve. Más esetben a Microsoft Graph engedélyek a meglévő alkalmazások **API-engedélyeinek** beállításaiban adhatók hozzá rendszergazdai jogosultsággal.
@@ -78,11 +78,11 @@ Az **OpenID** hatókörre azért van szükség, hogy Azure ad B2C be tudja jelen
 További információ az [engedélyekről és a beleegyezik](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformok/hitelesítés: válasz URL-címek/átirányítási URI-k
-A régi felhasználói felületen a különböző platformok típusait a **Tulajdonságok** szakaszban kezeltük a Web Apps/API-k és a natív ügyfelek ÁTirányítási URI-ja alapján. A "natív ügyfelek" a "nyilvános ügyfelek" néven is ismertek, és az iOS-, macOS-, Android-és egyéb mobil-és asztali alkalmazás-típusok alkalmazásai is lehetnek. 
+A régi felhasználói felületen a különböző platformok típusait a **Tulajdonságok** szakaszban kezeltük a Web Apps/API-k és a natív ügyfelek ÁTirányítási URI-ja alapján. A "natív ügyfelek" a "nyilvános ügyfelek" néven is ismertek, és az iOS-, macOS-, Android-és egyéb mobil-és asztali alkalmazás-típusok alkalmazásai is lehetnek.
 
-Az új felhasználói felületen a válasz URL-címei és az átirányítási URI-k is hivatkoznak átirányítási URI-ként, és megtalálhatók az alkalmazás **hitelesítési** szakaszában. Alkalmazásregisztrációk nem kizárólag webalkalmazás vagy natív alkalmazás lehet. A megfelelő átirányítási URI-k regisztrálásával ugyanazt az alkalmazást használhatja a platform összes típusához. 
+Az új felhasználói felületen a válasz URL-címei és az átirányítási URI-k is hivatkoznak átirányítási URI-ként, és megtalálhatók az alkalmazás **hitelesítési** szakaszában. Alkalmazásregisztrációk nem kizárólag webalkalmazás vagy natív alkalmazás lehet. A megfelelő átirányítási URI-k regisztrálásával ugyanazt az alkalmazást használhatja a platform összes típusához.
 
-Az átirányítási URI-k szükségesek a web vagy a Public (Mobile és Desktop) típusú alkalmazásokhoz való társításhoz. [További információ az átirányítási URI-k használatáról](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Az átirányítási URI-k szükségesek a web vagy a Public (Mobile és Desktop) típusú alkalmazásokhoz való társításhoz. [További információ az átirányítási URI-k használatáról](../active-directory/develop/quickstart-register-app.md#add-a-redirect-uri)
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
@@ -110,7 +110,7 @@ Az új felhasználói élmény a következő korlátozásokkal jár:
 <!-- - Azure AD B2C doesn't currently support the single-page application "SPA" app type.  -->
 - A támogatott fiókok értékének módosítása nem támogatott a felhasználói felületen. Az alkalmazás jegyzékfájlját kell használnia, kivéve, ha az Azure AD egybérlős és a több-bérlő közötti váltást végzi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az új alkalmazás regisztrációs élményének megkezdéséhez:
 * Ismerje meg [, hogyan regisztrálhat egy webalkalmazást](tutorial-register-applications.md).

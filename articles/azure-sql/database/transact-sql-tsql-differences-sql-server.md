@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: c4c340282becf34ae34bf9e48bceeb86d68f237b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa10f97d0eb2f48e80d20f90a254c44c6e95a8e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345325"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436969"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Transact-SQL különbségek feloldása az áttelepítés során SQL Database
 
@@ -45,7 +45,7 @@ Az alapszintű DDL (adatdefiníciós nyelv) utasítások érhetők el, de néhá
 A [Azure SQL Database funkció-összehasonlításban](features-comparison.md)ismertetett nem támogatott funkciókhoz kapcsolódó Transact-SQL-utasítások mellett a következő utasítások és csoportok nem támogatottak. Ennek megfelelően, ha az áttelepíteni kívánt adatbázis a következő funkciók bármelyikét használja, a T-SQL-T a t-SQL-ben a T-SQL funkcióinak és utasításának eltávolításához.
 
 - Rendszerobjektumok rendezése
-- Kapcsolattal kapcsolatos: végponti utasítások. A SQL Database nem támogatja a Windows-hitelesítést, de támogatja a hasonló Azure Active Directory-hitelesítést. Bizonyos hitelesítési típusokhoz az SSMS legújabb verziója szükséges. További információ: [csatlakozás SQL Database vagy Azure SQL Data Warehouse Azure Active Directory hitelesítés használatával](authentication-aad-overview.md).
+- Kapcsolattal kapcsolatos: végponti utasítások. A SQL Database nem támogatja a Windows-hitelesítést, de támogatja a hasonló Azure Active Directory-hitelesítést. Bizonyos hitelesítési típusokhoz az SSMS legújabb verziója szükséges. További információ: [csatlakozás SQL Database vagy Azure Azure szinapszis analyticshez (korábban SQL Data Warehouse) Azure Active Directory hitelesítés használatával](authentication-aad-overview.md).
 - Adatbázisközi lekérdezések három vagy négy résznévvel. (A csak olvasható adatbázisközi lekérdezéseket a [rugalmas adatbázis lekérdezése](elastic-query-overview.md) funkció támogatja.)
 - Tulajdonjog adatbázisközi láncolása, `TRUSTWORTHY` beállítása
 - Az `EXECUTE AS LOGIN` helyett használja az 'EXECUTE AS USER' utasítást.
@@ -82,10 +82,10 @@ A Transact-SQL nyelvtani, használati és példákkal kapcsolatos további infor
 
 ### <a name="about-the-applies-to-tags"></a>Az „Érvényes” címkék
 
-A Transact-SQL-hivatkozás a jelen SQL Server 2008-es verzióra vonatkozó cikkeket tartalmaz. A cikk címe alatt látható egy ikon, amely felsorolja a négy SQL Server platformot, és jelzi az alkalmazhatóságot. A rendelkezésre állási csoportok például az SQL Server 2012-ben jelentek meg. A [rendelkezésre állási csoport létrehozása](https://msdn.microsoft.com/library/ff878399.aspx)című   cikk azt jelzi, hogy az utasítás **SQL Serverra vonatkozik (a 2012-től kezdve)**. Az utasítás nem vonatkozik a SQL Server 2008, SQL Server 2008 R2, a Azure SQL Database, a Azure SQL Data Warehouse vagy a Parallel adattárházra.
+A Transact-SQL-hivatkozás a jelen SQL Server 2008-es verzióra vonatkozó cikkeket tartalmaz. A cikk címe alatt látható egy ikon, amely felsorolja a négy SQL Server platformot, és jelzi az alkalmazhatóságot. A rendelkezésre állási csoportok például az SQL Server 2012-ben jelentek meg. A [rendelkezésre állási csoport létrehozása](https://msdn.microsoft.com/library/ff878399.aspx)című   cikk azt jelzi, hogy az utasítás **SQL Serverra vonatkozik (a 2012-től kezdve)**. Az utasítás nem vonatkozik a SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) vagy a Parallel adattárházra.
 
 Bizonyos esetekben a cikk általános tárgya felhasználható egy termékben, de a termékek között kisebb különbségek vannak. A különbségeket a cikk középpontjában kell megadni, ha szükséges. Bizonyos esetekben a cikk általános tárgya felhasználható egy termékben, de a termékek között kisebb különbségek vannak. A különbségeket a cikk középpontjában kell megadni, ha szükséges. Az TRIGGER létrehozása című cikk például elérhető SQL Databaseban. A kiszolgálói szintű eseményindítók esetében azonban a **minden kiszolgáló** beállítás azt jelzi, hogy a kiszolgálói szintű eseményindítók nem használhatók SQL Databaseban. Használjon inkább adatbázis-szintű eseményindítókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Database által támogatott és nem támogatott szolgáltatások listáját lásd: [Azure SQL Database szolgáltatások összehasonlítása](features-comparison.md). Az ezen az oldalon található lista kiegészíti az irányelvek és szolgáltatások című cikket, és a Transact-SQL-utasításokra koncentrál.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509052"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441663"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Linuxos virtuális gép hibáinak elhárítása az fstab-hibák miatt
 
@@ -107,7 +107,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
 ### <a name="using-single-user-mode"></a>Egyfelhasználós mód használata
 
 1. Kapcsolódjon [a soros konzolhoz](./serial-console-linux.md).
-2. A soros konzol használata az egyfelhasználós mód [egyfelhasználós üzemmódba](../linux/serial-console-grub-single-user-mode.md) való elvégzéséhez
+2. A soros konzol használata az egyfelhasználós mód [egyfelhasználós üzemmódba](serial-console-grub-single-user-mode.md) való elvégzéséhez
 3. Ha a virtuális gép egy egyszeri felhasználói módba lett indítva. Az fstab-fájl megnyitásához használja a kedvenc szövegszerkesztőjét. 
 
    ```
@@ -119,7 +119,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
    > [!Note]
    > * Az egyes vonalak mezői tabulátorral vagy szóközzel vannak elválasztva. Az üres sorok figyelmen kívül lesznek hagyva. Azok a sorok, amelyeknek a száma (#) az első karakter, a megjegyzések. A kommentált sorok az fstab fájlban maradhatnak, de nem lesznek feldolgozva. Javasoljuk, hogy a sorok eltávolítása helyett olyan fstab-sorokat fűzzenek, amelyekről nem biztos benne.
    > * A virtuális gép helyreállításához és elindításához a fájlrendszer partícióinak az egyetlen szükséges partíciónak kell lenniük. Előfordulhat, hogy a virtuális gép az alkalmazással kapcsolatos hibákat észlel a további kommentált partíciókkal kapcsolatban. A virtuális gépnek azonban a további partíciók nélkül kell kezdődnie. Később elvégezheti a megjegyzésekben szereplő sorok hozzáfűzését.
-   > * Javasoljuk, hogy az adatlemezeket az Azure-beli virtuális gépeken a fájlrendszer partíciójának UUID-fájljának használatával csatlakoztassa. Futtassa például a következő parancsot:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Javasoljuk, hogy az adatlemezeket az Azure-beli virtuális gépeken a fájlrendszer partíciójának UUID-fájljának használatával csatlakoztassa. Futtassa például a következő parancsot: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * A fájlrendszer UUID azonosítójának meghatározásához futtassa a blkid parancsot. A szintaxissal kapcsolatos további információkért futtassa a Man blkid parancsot.
    > * A nem sikertelen beállítással meggyőződhet arról, hogy a virtuális gép akkor is elindul, ha a fájlrendszer sérült, vagy ha a fájlrendszer nem létezik az indításkor. Azt javasoljuk, hogy az fstab fájlon a nem sikertelen beállítást használva engedélyezze az indítást, hogy a virtuális gép elindításához nem szükséges partíciókban lévő hibák után folytassa a hibákat.
 
@@ -172,7 +172,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
    > [!Note]
    > * Az egyes vonalak mezői tabulátorral vagy szóközzel vannak elválasztva. Az üres sorok figyelmen kívül lesznek hagyva. Azok a sorok, amelyeknek a száma (#) az első karakter, a megjegyzések. A kommentált sorok az fstab fájlban maradhatnak, de nem lesznek feldolgozva. Javasoljuk, hogy a sorok eltávolítása helyett olyan fstab-sorokat fűzzenek, amelyekről nem biztos benne.
    > * A virtuális gép helyreállításához és elindításához a fájlrendszer partícióinak az egyetlen szükséges partíciónak kell lenniük. Előfordulhat, hogy a virtuális gép az alkalmazással kapcsolatos hibákat észlel a további kommentált partíciókkal kapcsolatban. A virtuális gépnek azonban a további partíciók nélkül kell kezdődnie. Később elvégezheti a megjegyzésekben szereplő sorok hozzáfűzését.
-   > * Javasoljuk, hogy az adatlemezeket az Azure-beli virtuális gépeken a fájlrendszer partíciójának UUID-fájljának használatával csatlakoztassa. Futtassa például a következő parancsot:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Javasoljuk, hogy az adatlemezeket az Azure-beli virtuális gépeken a fájlrendszer partíciójának UUID-fájljának használatával csatlakoztassa. Futtassa például a következő parancsot: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * A fájlrendszer UUID azonosítójának meghatározásához futtassa a blkid parancsot. A szintaxissal kapcsolatos további információkért futtassa a Man blkid parancsot.
    > * A nem sikertelen beállítással meggyőződhet arról, hogy a virtuális gép akkor is elindul, ha a fájlrendszer sérült, vagy ha a fájlrendszer nem létezik az indításkor. Azt javasoljuk, hogy az fstab fájlon a nem sikertelen beállítást használva engedélyezze az indítást, hogy a virtuális gép elindításához nem szükséges partíciókban lévő hibák után folytassa a hibákat.
 
@@ -216,7 +216,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
    > [!Note]
    > * Az egyes vonalak mezői tabulátorral vagy szóközzel vannak elválasztva. Az üres sorok figyelmen kívül lesznek hagyva. Azok a sorok, amelyeknek a száma (#) az első karakter, a megjegyzések. A kommentált sorok az fstab fájlban maradhatnak, de nem lesznek feldolgozva. Javasoljuk, hogy a sorok eltávolítása helyett olyan fstab-sorokat fűzzenek, amelyekről nem biztos benne.
    > * A virtuális gép helyreállításához és elindításához a fájlrendszer partícióinak az egyetlen szükséges partíciónak kell lenniük. Előfordulhat, hogy a virtuális gép az alkalmazással kapcsolatos hibákat észlel a további kommentált partíciókkal kapcsolatban. A virtuális gépnek azonban a további partíciók nélkül kell kezdődnie. Később elvégezheti a megjegyzésekben szereplő sorok hozzáfűzését.
-   > * Javasoljuk, hogy az adatlemezeket az Azure-beli virtuális gépeken a fájlrendszer partíciójának UUID-fájljának használatával csatlakoztassa. Futtassa például a következő parancsot:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Javasoljuk, hogy az adatlemezeket az Azure-beli virtuális gépeken a fájlrendszer partíciójának UUID-fájljának használatával csatlakoztassa. Futtassa például a következő parancsot: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * A fájlrendszer UUID azonosítójának meghatározásához futtassa a blkid parancsot. A szintaxissal kapcsolatos további információkért futtassa a Man blkid parancsot. Figyelje meg, hogy a helyreállítani kívánt lemez most már egy új virtuális gépre van csatlakoztatva. Bár az UUID-EK konzisztensek, az eszköz partíciós azonosítói (például "/dev/sda1") eltérnek a virtuális gépen. A nem rendszervirtuális merevlemezen található eredeti, nem rendszerszintű virtuális gép fájlrendszer-partíciói a [CLI-parancsok használatával](./troubleshoot-recovery-disks-linux.md)nem érhetők el a helyreállítási virtuális gép számára.
    > * A nem sikertelen beállítással meggyőződhet arról, hogy a virtuális gép akkor is elindul, ha a fájlrendszer sérült, vagy ha a fájlrendszer nem létezik az indításkor. Azt javasoljuk, hogy az fstab fájlon a nem sikertelen beállítást használva engedélyezze az indítást, hogy a virtuális gép elindításához nem szükséges partíciókban lévő hibák után folytassa a hibákat.
 
@@ -235,7 +235,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
 13. Miután újra létrehozta a virtuális gépet, és SSH-n keresztül tud csatlakozni hozzá, hajtsa végre a következő műveleteket:
     * Tekintse át a helyreállítás során megváltoztatott vagy kommentált fstab-sorokat.
     * Győződjön meg arról, hogy az UUID-t és a nem megfelelő beállítást használja.
-    * A virtuális gép újraindítása előtt tesztelje az fstab-módosításokat. Ehhez használja a következő parancsot:``$ sudo mount -a``
+    * A virtuális gép újraindítása előtt tesztelje az fstab-módosításokat. Ehhez használja a következő parancsot: ``$ sudo mount -a``
     * Hozzon létre egy további másolatot a helyesbített fstab-fájlról a jövőbeli helyreállítási forgatókönyvekben való használathoz.
 
 ## <a name="next-steps"></a>Következő lépések

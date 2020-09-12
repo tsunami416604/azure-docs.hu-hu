@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201633"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441221"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Ajánlott eljárások az betöltéshez a szinapszis SQL-készlet használatával
 
@@ -173,8 +173,8 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A kinyerési, betöltési és átalakítási (ELT) folyamat tervezése során a MÁSOLÁSi utasítással vagy a ELT kapcsolatos további információkért lásd: [a SQL Data Warehouse tervezési](design-elt-data-loading.md).
+- A kinyerési, betöltési és átalakítási (ELT) folyamat megtervezése során a MÁSOLÁSi utasítással vagy a kiindulással kapcsolatos további információkért lásd: [elt az Azure szinapszis analyticshez](design-elt-data-loading.md).
 - A betöltési oktatóanyaghoz [használja a copy utasítást az adatok Azure Blob Storage-ból a SZINAPSZIS SQL-be való betöltéséhez](load-data-from-azure-blob-storage-using-polybase.md).
 - Az adatbetöltések monitorozása: [A számítási feladat monitorozása DMV-kkel](sql-data-warehouse-manage-monitor.md).

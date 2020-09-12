@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eec032ad56d00778627fc147761f61c03ba8bafd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668423"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442088"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági vezérlői
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,7 +46,7 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaiba beépí
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Hitelesítés| Yes | Azure Active Directory (Azure AD) |
-| Engedélyezés| Yes | None |
+| Engedélyezés| Yes | Nincs |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -62,16 +62,16 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaiba beépí
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| No  | None |
+| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| No  | Nincs |
 
 ## <a name="additional-security-controls-for-sql-database"></a>További biztonsági vezérlők SQL Database
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Megelőző: sebezhetőségi felmérés | Yes | Lásd az [SQL sebezhetőség-felmérési szolgáltatás segítséget nyújt az adatbázis-biztonsági rések azonosításához](sql-vulnerability-assessment.md). |
-| Megelőző: adatfelderítés és besorolás  | Yes | Lásd: [Azure SQL Database és SQL Data Warehouse az adatfelderítés & besorolása](data-discovery-and-classification-overview.md). |
+| Megelőző: adatfelderítés és besorolás  | Yes | Lásd: [Azure SQL Database és az Azure szinapszis Analytics adatfelderítési & besorolása](data-discovery-and-classification-overview.md). |
 | Észlelés: fenyegetések észlelése | Yes | Lásd: [a Azure SQL Database összetett veszélyforrások elleni védelme](threat-detection-overview.md). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).
