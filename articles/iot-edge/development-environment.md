@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511093"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300374"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>A fejlesztési és tesztelési környezet előkészítése IoT Edge
 
@@ -82,10 +82,10 @@ Az éles környezetekben csak a IoT Edge futtatókörnyezet támogatott, az alá
 
 | Eszköz | Más néven | Támogatott platformok | A következőkre alkalmas |
 | ---- | ------------- | ------------------- | --------- |
-| IoT EdgeHub dev eszköz  | iotedgehubdev | Windows, Linux, MacOS | Eszköz szimulálása hibakeresési modulokhoz. |
-| IoT Edge dev-tároló | Microsoft/iotedgedev | Windows, Linux, MacOS | Fejlesztés a függőségek telepítése nélkül. |
-| IoT Edge-futtatókörnyezet egy tárolóban | iotedgec | Windows, Linux, MacOS, ARM | Tesztelés olyan eszközön, amely esetleg nem támogatja a futtatókörnyezetet. |
-| IoT Edge eszköz tárolója | toolboc/Azure-IOT-Edge-Device-Container | Windows, Linux, MacOS, ARM | Egy forgatókönyv tesztelése számos IoT Edge eszközzel nagy léptékben. |
+| IoT EdgeHub dev eszköz  | iotedgehubdev | Windows, Linux, macOS | Eszköz szimulálása hibakeresési modulokhoz. |
+| IoT Edge dev-tároló | Microsoft/iotedgedev | Windows, Linux, macOS | Fejlesztés a függőségek telepítése nélkül. |
+| IoT Edge-futtatókörnyezet egy tárolóban | iotedgec | Windows, Linux, macOS, ARM | Tesztelés olyan eszközön, amely esetleg nem támogatja a futtatókörnyezetet. |
+| IoT Edge eszköz tárolója | toolboc/Azure-IOT-Edge-Device-Container | Windows, Linux, macOS, ARM | Egy forgatókönyv tesztelése számos IoT Edge eszközzel nagy léptékben. |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT EdgeHub dev eszköz
 
@@ -103,7 +103,7 @@ További információ: [Azure IoT Edge fejlesztői tároló](https://hub.docker.
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge-futtatókörnyezet egy tárolóban
 
-A tárolóban lévő IoT Edge futtatókörnyezet teljes futtatókörnyezetet biztosít, amely az eszköz csatlakoztatási karakterláncát környezeti változóként veszi igénybe. Ez a tároló lehetővé teszi IoT Edge modulok és forgatókönyvek tesztelését olyan rendszeren, amely nem támogatja a futtatókörnyezetet natív módon, például a MacOS-t. Az üzembe helyezett modulok a futásidejű tárolón kívül lesznek elindítva. Ha azt szeretné, hogy a futtatókörnyezet és a telepített modulok ugyanabban a tárolóban legyenek, vegye figyelembe a IoT Edge eszköz tárolóját.
+A tárolóban lévő IoT Edge futtatókörnyezet teljes futtatókörnyezetet biztosít, amely az eszköz csatlakoztatási karakterláncát környezeti változóként veszi igénybe. Ez a tároló lehetővé teszi IoT Edge modulok és forgatókönyvek tesztelését olyan rendszeren, amely nem támogatja a futtatókörnyezetet natív módon, például a macOS-t. Az üzembe helyezett modulok a futásidejű tárolón kívül lesznek elindítva. Ha azt szeretné, hogy a futtatókörnyezet és a telepített modulok ugyanabban a tárolóban legyenek, vegye figyelembe a IoT Edge eszköz tárolóját.
 
 További információ: [Azure IoT Edge futtatása tárolóban](https://github.com/Azure/iotedgedev/tree/master/docker/runtime).
 
@@ -119,7 +119,7 @@ Ha készen áll a nagy teljesítményű megoldások széles körű fejlesztésé
 
 További információt, útmutatást és példákat a következő lapokon talál:
 
-* [Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge](how-to-ci-cd.md)
-* [CI/CD-folyamat létrehozása a IoT Edgehoz Azure DevOps Projects](how-to-devops-project.md)
+* [Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
+* [CI/CD-folyamat létrehozása IoT Edgehoz az Azure DevOps Starter-vel](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins beépülő modul](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub-tárház](https://github.com/toolboc/IoTEdge-DevOps)

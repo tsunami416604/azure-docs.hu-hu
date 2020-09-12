@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b95e02046b2f05dd89ec8fce5da438380a8894e9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75972588"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375789"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Biztonság Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -23,7 +23,7 @@ Több biztonsági réteg is rendelkezésre áll, amelyek a Azure Database for Po
 A Azure Database for PostgreSQL az adatátvitelt a Transport Layer Security segítségével titkosítja. A titkosítás (SSL/TLS) alapértelmezés szerint ki van kényszerítve.
 
 ### <a name="at-rest"></a>Nyugalmi állapotban
-A Azure Database for PostgreSQL szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
+A Azure Database for PostgreSQL szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva vannak, beleértve a lekérdezések futtatásakor létrehozott ideiglenes fájlokat is. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
 
 ## <a name="network-security"></a>Hálózati biztonság
@@ -48,13 +48,13 @@ A Azure Database for PostgreSQL-kiszolgáló létrehozásakor meg kell adnia egy
 [Azure Active Directory (HRE) hitelesítés](concepts-aad-authentication.md)használatával is csatlakozhat a kiszolgálóhoz.
 
 
-## <a name="threat-protection"></a>Veszélyforrások elleni védelem
+## <a name="threat-protection"></a>Fenyegetések elleni védelem
 
 A komplex [veszélyforrások elleni védelem](concepts-data-access-and-security-threat-protection.md) bekapcsolásával olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek a kiszolgálók eléréséhez vagy kiaknázásához.
 
 A [naplózás elérhető](concepts-audit.md) az adatbázisok tevékenységeinek nyomon követéséhez. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tűzfalszabályok engedélyezése [IP](concepts-firewall-rules.md) -címekhez vagy [virtuális hálózatokhoz](concepts-data-access-and-security-vnet.md)
 - Tudnivalók a [Azure Active Directory hitelesítésről](concepts-aad-authentication.md) Azure Database for PostgreSQL

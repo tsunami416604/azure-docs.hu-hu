@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200537"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320953"
 ---
 # <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
  
@@ -50,7 +50,7 @@ Ez a szakasz részletes áttekintést nyújt arról, hogyan frissítheti környe
 
 A modern hitelesítés engedélyezésének első lépéseként győződjön meg arról, hogy a címtár támogatja a modern hitelesítést. A modern hitelesítés alapértelmezés szerint engedélyezve van a 2017. augusztus 1-jén vagy azt követően létrehozott címtárakban. Ha a címtár ezen dátum előtt lett létrehozva, akkor a következő lépések végrehajtásával manuálisan kell engedélyeznie a címtár modern hitelesítését:
 
-1. Ellenőrizze, hogy a címtár már támogatja-e a modern hitelesítést  `Get-CsOAuthConfiguration`   a [Skype vállalati online PowerShell-modul](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)futtatásával.
+1. Ellenőrizze, hogy a címtár már támogatja-e a modern hitelesítést  `Get-CsOAuthConfiguration`   a [Skype vállalati online PowerShell-modul](/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)futtatásával.
 1. Ha a parancs üres  `OAuthServers`   tulajdonságot ad vissza, a modern hitelesítés le van tiltva. Frissítse a beállítást a modern hitelesítés engedélyezéséhez a használatával  `Set-CsOAuthConfiguration` . Ha a  `OAuthServers`   tulajdonság egy bejegyzést tartalmaz, akkor a megfelelő lépés.
 
 A továbblépés előtt mindenképpen hajtsa végre ezt a lépést. Fontos, hogy a címtár-konfigurációk először módosítva legyenek, mivel azt írják elő, hogy az összes Office-ügyfél melyik protokollt fogja használni. Még ha olyan Office-ügyfeleket is használ, amelyek támogatják a modern hitelesítést, alapértelmezés szerint örökölt protokollokat használnak, ha a modern hitelesítés le van tiltva a címtárban.
@@ -59,7 +59,7 @@ A továbblépés előtt mindenképpen hajtsa végre ezt a lépést. Fontos, hogy
 
 Miután engedélyezte a modern hitelesítést a címtárban, az Office-ügyfelek modern hitelesítésének engedélyezésével elkezdheti az alkalmazások frissítését. Az Office 2016 vagy újabb verziójú ügyfelek alapértelmezés szerint támogatják a modern hitelesítést. Nincs szükség további lépésekre.
 
-Ha Office 2013 Windows-ügyfeleket vagy régebbit használ, javasoljuk, hogy frissítsen az Office 2016-es vagy újabb verziójára. A régebbi Office-alkalmazások továbbra is a régi hitelesítési protokollok használatát követően is a modern hitelesítés engedélyezésének befejezése után is elvégezték a korábbi lépéseket. Ha Office 2013-ügyfeleket használ, és nem tud azonnal frissíteni az Office 2016-es vagy újabb verziójára, kövesse a következő cikkben ismertetett lépéseket, hogy [engedélyezze a modern hitelesítést az office 2013-ben Windows-eszközökön](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Ha az örökölt hitelesítés használata közben szeretné védetté tenni a fiókját, javasoljuk, hogy használjon erős jelszavakat a címtárban. Tekintse meg az [Azure ad jelszavas védelmet](../authentication/concept-password-ban-bad.md)   , amely tiltja a gyenge jelszavakat a címtárban.
+Ha Office 2013 Windows-ügyfeleket vagy régebbit használ, javasoljuk, hogy frissítsen az Office 2016-es vagy újabb verziójára. A régebbi Office-alkalmazások továbbra is a régi hitelesítési protokollok használatát követően is a modern hitelesítés engedélyezésének befejezése után is elvégezték a korábbi lépéseket. Ha Office 2013-ügyfeleket használ, és nem tud azonnal frissíteni az Office 2016-es vagy újabb verziójára, kövesse a következő cikkben ismertetett lépéseket, hogy [engedélyezze a modern hitelesítést az office 2013-ben Windows-eszközökön](/office365/admin/security-and-compliance/enable-modern-authentication). Ha az örökölt hitelesítés használata közben szeretné védetté tenni a fiókját, javasoljuk, hogy használjon erős jelszavakat a címtárban. Tekintse meg az [Azure ad jelszavas védelmet](../authentication/concept-password-ban-bad.md)   , amely tiltja a gyenge jelszavakat a címtárban.
 
 Az Office 2010 nem támogatja a modern hitelesítést. Az Office 2010-et használó felhasználókat az Office újabb verziójára kell frissítenie. Javasoljuk, hogy az Office 2016-es vagy újabb verziójára frissítsen, mivel alapértelmezés szerint blokkolja az örökölt hitelesítést.
 
@@ -69,13 +69,13 @@ Ha macOS-t használ, javasoljuk, hogy frissítsen az Office for Mac 2016 vagy ú
 
 Ahhoz, hogy a Windows-alapú Outlook-ügyfelek modern hitelesítést használjanak, az Exchange Online-nak a modern hitelesítést is engedélyeznie kell. Ha a modern hitelesítés le van tiltva az Exchange Online-hoz, a modern 2013 hitelesítést támogató Windows-alapú Outlook-ügyfelek az alapszintű hitelesítést használják az Exchange Online-postaládákhoz való kapcsolódáshoz.
 
-A SharePoint Online-ban engedélyezve van a modern hitelesítés alapértelmezett értéke. A 2017. augusztus 1. után létrehozott könyvtárak esetében a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange Online-ban. Ha azonban korábban már letiltotta a modern hitelesítést, vagy a dátum előtt létrehozott könyvtárat használ, kövesse az alábbi cikk lépéseit a [modern hitelesítés engedélyezéséhez az Exchange Online-ban](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+A SharePoint Online-ban engedélyezve van a modern hitelesítés alapértelmezett értéke. A 2017. augusztus 1. után létrehozott könyvtárak esetében a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange Online-ban. Ha azonban korábban már letiltotta a modern hitelesítést, vagy a dátum előtt létrehozott könyvtárat használ, kövesse az alábbi cikk lépéseit a [modern hitelesítés engedélyezéséhez az Exchange Online-ban](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 ### <a name="step-4-skype-for-business"></a>4. lépés: Skype vállalati verzió
 
 Ha meg szeretné akadályozni, hogy a Skype vállalati verzió a korábbi hitelesítési kérelmeket használja, a modern hitelesítést engedélyeznie kell a Skype vállalati online verzióhoz. A 2017. augusztus 1. után létrehozott könyvtárak esetében alapértelmezés szerint engedélyezve van a modern hitelesítés a Skype vállalati verzióhoz.
 
-Javasoljuk, hogy térjen át a Microsoft Teams szolgáltatásra, amely alapértelmezés szerint támogatja a modern hitelesítést. Ha azonban jelenleg nem tudja áttelepíteni a rendszert, engedélyeznie kell a modern hitelesítést a Skype vállalati online verzióhoz, hogy a Skype vállalati ügyfelei a modern hitelesítést használják. Kövesse az ebben a cikkben ismertetett, [modern hitelesítéssel támogatott Skype for Business-topológiákat](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)a Skype vállalati verziójának modern hitelesítésének engedélyezéséhez.
+Javasoljuk, hogy térjen át a Microsoft Teams szolgáltatásra, amely alapértelmezés szerint támogatja a modern hitelesítést. Ha azonban jelenleg nem tudja áttelepíteni a rendszert, engedélyeznie kell a modern hitelesítést a Skype vállalati online verzióhoz, hogy a Skype vállalati ügyfelei a modern hitelesítést használják. Kövesse az ebben a cikkben ismertetett, [modern hitelesítéssel támogatott Skype for Business-topológiákat](/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)a Skype vállalati verziójának modern hitelesítésének engedélyezéséhez.
 
 A modern hitelesítés a Skype vállalati online verzióban való engedélyezése mellett azt javasoljuk, hogy engedélyezze a modern hitelesítést az Exchange Online-hoz, ha engedélyezi a modern hitelesítést a Skype vállalati verzióban. Ez a folyamat segít a modern hitelesítés állapotának szinkronizálásában az Exchange Online-ban és a Skype vállalati online verzióban, és megakadályozza a Skype vállalati ügyfelek számára a különböző bejelentkezési kéréseket.
 
@@ -93,11 +93,11 @@ Mielőtt megkezdené a modern hitelesítés engedélyezését a helyszínen, ell
 
 A modern hitelesítés engedélyezésének lépései a következő cikkekben találhatók:
 
-* [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-* [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+* [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+* [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](/skypeforbusiness/manage/authentication/use-adal)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-- [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+- [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+- [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](/skypeforbusiness/manage/authentication/use-adal)
 - [Régi hitelesítési folyamat letiltása](../conditional-access/block-legacy-authentication.md)

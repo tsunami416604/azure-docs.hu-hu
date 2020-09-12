@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782328"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300221"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -28,7 +28,7 @@ A fordítót az egyéni fordítóval együtt is használhatja olyan neurális fo
 ## <a name="text-translation"></a>Szövegfordítás
 A fordítás a fordítási művelettel érhető el a fordítóban elérhető bármely nyelvről, illetve azokról. Az API az észlelési művelettel, a Átbetűzés művelettel és a szótári keresési és szótári példákat használó kétnyelvű szótárakkal is kínál nyelvi észlelést. Az egyes műveletekhez elérhető nyelvek alább láthatók. 
 
-### <a name="translate"></a>Fordítás
+### <a name="translate"></a>Translate
 
 A fordító a következő nyelveket támogatja szöveg szöveggé fordításához. 
 
@@ -155,6 +155,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Kiswahili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Koreai |`ko`   |
+|Kurd (Közép)  |`ku-Arab`  |
 |Lett|   `lv`    |
 |Litván|    `lt`    |
 |Maláj| `ms`        |
@@ -283,10 +284,12 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
+|búr| `af`|
 | Arab       | `ar`          |
 | Bangla      | `bn`          |
 | Bosnyák (latin betűs)      | `bs`          |
 | Bolgár      | `bg`          |
+|Katalán|   `ca`    |
 | kínai (egyszerűsített)      | `zh-Hans`          |
 |kínai (hagyományos)|   `zh-Hant`   |
 | Horvát      | `hr`          |
@@ -295,6 +298,8 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Holland      | `nl`          |
 | Angol    | `en`     |
 | Észt      | `et`          |
+|Fidzsi|    `fj`    |
+|Filipino|  `fil`   |
 | Finn      | `fi`          |
 | Francia      | `fr`          |
 | Német      | `de`          |
@@ -308,12 +313,14 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Ír | `ga`  |
 | Olasz      | `it`          |
 | Japán      | `ja`          |
+|kannada|`kn`|
 | Kiswahili|    `sw`    |
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
 | Malgas| `mg`    |
 | Maláj|    `ms`        |
+|Máltai|   `mt`    |
 | maori| `mi`  |
 | marathi| `mr`  |
 | Norvég      | `nb`          |
@@ -329,7 +336,9 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Szlovén      | `sl`          |
 | Spanyol      | `es`          |
 | Svéd      | `sv`          |
+|Tahitian|  `ty`    |
 | Thai      | `th`          |
+|Tongai|    `to`    |
 | Török      | `tr`          |
 | Ukrán      | `uk`          |
 | urdu| `ur`    |

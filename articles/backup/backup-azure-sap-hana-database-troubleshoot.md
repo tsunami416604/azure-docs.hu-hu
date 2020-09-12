@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004170"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377684"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -97,7 +97,7 @@ Vegye figyelembe a következő szempontokat:
 
 - Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve. Ebben az esetben a H21 (SDC).
 - A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC kapcsolatban a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
-- Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzetre kattintva engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
+- Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzet bejelölésével engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
 - A Linux megkülönbözteti a kis-és nagybetűket. Ezért ügyeljen arra, hogy megőrizze a kis-és nagybetűket.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Több tároló-adatbázis (MDC) visszaállítása
@@ -165,7 +165,7 @@ A SDC-ről a MDC-re irányuló frissítések a következőképpen kezelhetők:
 - Végezze el a frissítést. A befejezést követően a HANA rendszer most már MDC a System DB és a bérlői adatbázisok
 - Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) újrafuttatása
 - Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
-- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli **felderítése** elemre. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
+- Válassza az egyazon virtuális géphez tartozó adatbázisok újbóli **felderítése** elemet. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
 - A régebbi SDC-adatbázis továbbra is a tárolóban marad, és a szabályzatnak megfelelően megőrzött a régi biztonsági másolati adat.
 - Az adatbázisok biztonsági mentésének konfigurálása
 
@@ -178,7 +178,7 @@ A SDC-ről a MDC-re történő frissítés a következő módon kezelhető:
 - Végezze el a frissítést. A befejezést követően a HANA rendszer most már MDC a System DB és a bérlői adatbázisok
 - Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a megfelelő részletekkel (új SID és MDC). A SID-változás miatt előfordulhat, hogy a parancsfájl sikeres futtatásával problémákba ütközik. Ha problémákba ütközik, lépjen kapcsolatba Azure Backup támogatási szolgálattal.
 - Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
-- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli **felderítése** elemre. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
+- Válassza az egyazon virtuális géphez tartozó adatbázisok újbóli **felderítése** elemet. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
 - A régebbi SDC-adatbázis továbbra is a tárolóban marad, és a szabályzatnak megfelelően megőrizte a régi biztonsági mentést.
 - Az adatbázisok biztonsági mentésének konfigurálása
 

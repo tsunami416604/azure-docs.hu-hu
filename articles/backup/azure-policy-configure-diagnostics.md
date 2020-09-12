@@ -3,12 +3,12 @@ title: Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 description: Log Analytics diagnosztikai beállítások konfigurálása egy adott hatókörben lévő összes tárolóhoz a Azure Policy használatával
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179980"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378049"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 
@@ -22,7 +22,7 @@ A diagnosztikai beállítások méretezésének leegyszerűsítése érdekében 
 
 * A szabályzat egyszerre alkalmazható egy adott előfizetésben található összes Recovery Services-tárolóra (vagy az előfizetésben található erőforráscsoporthoz). A házirendet hozzárendelő felhasználónak **tulajdonosi** hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
 
-* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak rendelkeznie kell **olvasóval**, **közreműködővel** vagy **tulajdonosi** hozzáféréssel ahhoz az előfizetéshez, amelyben a megadott La munkaterület létezik.
+* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak rendelkeznie kell **olvasóval**, **közreműködővel**vagy **tulajdonosi** hozzáféréssel ahhoz az előfizetéshez, amelyben a megadott La munkaterület létezik.
 
 * A felügyeleti csoport hatóköre jelenleg nem támogatott.
 
@@ -82,7 +82,7 @@ Ha a felhasználó rendelkezik egy olyan tárolóval, amely a hat erőforrás-sp
 >
 > Vegye figyelembe, hogy a Szervizelési feladat **nem** fog sikerülni, ha a meglévő diagnosztikai beállítás csak az X munkaterület AzureBackupReport engedélyezett, mert ebben az esetben a meglévő beállítás által engedélyezett események és a Szervizelési feladat által létrehozott események között nem lesz átfedés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tudnivalók a biztonsági mentési jelentések használatáról](./configure-reports.md)
 * [További információ a Azure Policy](../governance/policy/index.yml)

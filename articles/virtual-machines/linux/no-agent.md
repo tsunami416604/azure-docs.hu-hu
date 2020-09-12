@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045331"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322551"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Általánosított rendszerképek létrehozása kiépítési ügynök nélkül
 
@@ -174,7 +174,7 @@ Ha a virtuális gépnek nincs telepítve vagy elérhető a Python, programozott 
    </Health>
    ```
 
-3. Tegye közzé ezeket az WireServer:`curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
+3. Tegye közzé ezeket az WireServer: `curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
 
 ### <a name="automating-running-the-code-at-first-boot"></a>A kód futtatásának automatizálása az első rendszerindításkor
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Ez a rendszerű szolgáltatás az alapszintű kiépítés során három dolgot tesz:
 
 1. Készen áll az Azure-ra (amely azt jelzi, hogy sikeres volt a jelentés).
-1. Átnevezi a virtuális gépet a felhasználó által megadott virtuálisgép-név alapján, ehhez az adatok IMDS való kihúzásával.
+1. Átnevezi a virtuális gépet a felhasználó által megadott virtuálisgép-név alapján, ha ezt az adatforrást az [Azure instance metadata Serviceról (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service)húzza. **Megjegyzés** A IMDS más [példány-metaadatokat](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service)is biztosít, például az SSH nyilvános kulcsokat, így az állomásnévnél többet is beállíthat.
 1. Letiltja önmagát, hogy csak az első rendszerindításkor fusson, nem pedig a későbbi újraindítások során.
 
 A fájlrendszerben lévő egységhez futtassa a következő parancsot az engedélyezéséhez:
@@ -271,6 +271,6 @@ Jun 11 20:28:56 thstringnopa2 systemd[1]: Started Azure Provisioning.
 
 Ha saját üzembe helyezési kódot vagy ügynököt valósít meg, akkor a Microsoft támogatási szolgálata csak a nem elérhető kiépítési felületekkel kapcsolatos problémákat vizsgálja. Folyamatosan fejlesztünk javításokat és változásokat ezen a területen, ezért figyelnie kell a Cloud-init és az Azure Linux-ügynök változásait az API-változások kiépítési folyamatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: Linux- [kiépítés](provisioning.md).

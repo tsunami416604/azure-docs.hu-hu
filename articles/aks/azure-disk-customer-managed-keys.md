@@ -3,39 +3,25 @@ title: Ügyfél által felügyelt kulcs használata Azure-lemezek titkosításá
 description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS operációs rendszert és az adatlemezeket.
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796884"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297756"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
-Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az [ügyfél által felügyelt kulcsokat][customer-managed-keys] , amelyekkel az AK-fürtökhöz tartozó operációs rendszer és adatlemezek esetében az inaktív adatok titkosítását is használhatja.
+Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat, amelyekkel az AK-fürtökhöz tartozó operációs rendszer és adatlemezek esetében az inaktív adatok titkosítását is használhatja. További információ az ügyfél által felügyelt kulcsokról [Linux][customer-managed-keys-linux] és [Windows][customer-managed-keys-windows]rendszeren.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="limitations"></a>Korlátozások
+* Az adatlemez titkosításának támogatása a 1,17-es vagy újabb Kubernetes-verziót futtató AK-fürtökre korlátozódik.
+* Az operációs rendszer és az adatlemez titkosítása az ügyfél által felügyelt kulcsokkal csak ak-fürt létrehozásakor engedélyezhető.
 
-* Ez a cikk azt feltételezi, hogy *új AK-fürtöt*hoz létre.
-
+## <a name="prerequisites"></a>Előfeltételek
 * Ha Key Vault használatával titkosítja a felügyelt lemezeket, engedélyeznie kell a Soft Delete (Törlés) és a kiürítési *Azure Key Vault* védelmét.
-
-* Szüksége lesz az Azure CLI 2.0.79 vagy újabb verziójára, valamint az AK-előnézet 0.4.26-bővítményre
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>A legújabb AK CLI előnézet bővítmény telepítése
-
-Az ügyfél által felügyelt kulcsok használatához szüksége lesz az *AK-előnézeti CLI-* bővítmény 0.4.26 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* Szüksége lesz az Azure CLI 2.11.1 vagy újabb verziójára.
 
 ## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault példány létrehozása
 
@@ -155,11 +141,6 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>Korlátozások
-
-* Az adatlemez titkosítása a 1,17-es vagy újabb Kubernetes-verzióval támogatott
-* Az ügyfél által felügyelt kulcsokkal való titkosítás jelenleg csak az új AK-fürtök esetében lehetséges, a meglévő fürtök nem frissíthetők.
-
 ## <a name="next-steps"></a>Következő lépések
 
 [Az AK-fürtök biztonságával kapcsolatos ajánlott eljárások][best-practices-security] áttekintése
@@ -171,6 +152,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

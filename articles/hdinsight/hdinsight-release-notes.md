@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826820"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319797"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
@@ -49,7 +49,7 @@ Július 1 2020-től kezdődően az ügyfelek nem tudnak új Kafka-fürtöket lé
 
 ## <a name="behavior-changes"></a>Viselkedési változások
 ### <a name="ambari-stack-version-change"></a>Ambari-verem verziójának módosítása
-Ebből a kiadásból a Ambari verziója 2. x. x. x és 4,1 között változik. A Ambari-verziót a Ambari felhasználói felületéről >.
+Ebben a kiadásban a Ambari verziója 2. x. x. x és 4,1 között változik. A Ambari: Ambari > felhasználói > verziójában ellenőrizheti a verem verzióját (HDInsight 4,1).
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 Nincs szükség a közelgő változtatásokra, amelyekre figyelnie kell.
@@ -75,4 +75,4 @@ Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 �
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Probléma merült fel az Azure Portalon, ahol a felhasználók egy Azure HDInsight-fürt létrehozásakor hibát észleltek egy nyilvános kulcs SSH-hitelesítési típusának használatával. Ha a felhasználó a **felülvizsgálat + létrehozás**gombra kattintott, a következő hibaüzenetet kapja: "nem tartalmazhat három egymást követő KARAKTERT az SSH-felhasználónévből." Ezt a problémát megoldottuk, de előfordulhat, hogy a CTRL + F5 billentyűkombinációval frissítenie kell a böngésző gyorsítótárát a javított nézet betöltéséhez. A probléma megoldása egy ARM-sablonnal rendelkező fürt létrehozása volt. 
+Javítva lett az Azure Portal azon hibája, amely miatt amikor a felhasználók Azure HDInsight-fürtöt hoztak létre SSH-hitelesítéses típusú nyilvános kulcs használatával, hibaüzenetet kaptak. Amikor a felhasználók rákattintottak a **Felülvizsgálat + létrehozás** gombra, „A jelszó nem tartalmazhatja az SSH-felhasználónév semmilyen egymást követő három karakterét” hibaüzenet jelent meg. Ezt a problémát megoldottuk, de előfordulhat, hogy a CTRL + F5 billentyűkombinációval frissítenie kell a böngésző gyorsítótárát a javított nézet betöltéséhez. A probléma megkerülő megoldása a fürt ARM-sablonnal történő létrehozása volt. 

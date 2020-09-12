@@ -3,12 +3,12 @@ title: Azure Relay GYIK | Microsoft Docs
 description: Ez a cikk a Azure Relay szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317019"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299286"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
@@ -18,7 +18,7 @@ Ez a cikk a [Azure Relay](https://azure.microsoft.com/services/service-bus/)kapc
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Általános kérdések
-### <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
+### <a name="what-is-azure-relay"></a>Mi az Azure Relay?
 A [Azure Relay szolgáltatás](relay-what-is-it.md) megkönnyíti a hibrid alkalmazásokat azáltal, hogy biztonságosabban teszi közzé a vállalati vállalati hálózaton belüli szolgáltatásokat a nyilvános felhőben. A szolgáltatásokat tűzfal-kapcsolatok megnyitása nélkül is elérhetővé teheti, és anélkül, hogy zavaró módosításokat kellene létesíteni a vállalati hálózati infrastruktúrában.
 
 ### <a name="what-is-a-relay-namespace"></a>Mi az a Relay-névtér?
@@ -119,10 +119,10 @@ A gyakori kivételek és a javasolt műveletek leírását a [továbbítási kiv
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Mi a közös hozzáférési aláírás, és milyen nyelveket használhatok az aláírások létrehozásához?
 A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. További információ a saját aláírások létrehozásáról a Node.js, a PHP, a Python, a Java, a C és a C# nyelveken: [Service Bus hitelesítés közös hozzáférési aláírásokkal][Shared Access Signatures].
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezési lehetősége?
-Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy bejegyzést a `*.servicebus.windows.net` DNS-engedélyezési szolgáltatást támogató tűzfalakhoz.
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezése?
+Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy olyan bejegyzést a `*.servicebus.windows.net` tűzfalakhoz, amely támogatja a DNS-jóváhagyások listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

@@ -1,44 +1,43 @@
 ---
 title: A Microsoft kereskedelmi piactérre vonatkozó adózási adatok
 Description: Az árak kiválasztásával, a kifizetési szempontokkal és az adózással kapcsolatos megfontolások megismeréséhez tekintse meg az alábbi táblázatokban a terjesztési országokat/régiókat.
-ms.topic: conceptual
+ms.topic: article
 ms.service: marketplace
-ms.date: 05/04/2020
+ms.date: 09/02/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b0ada7047241e74095fd5b81a261c15295a08737
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 82e70c128b64f0574050c17d5e40509995488666
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319932"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378338"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Kereskedelmi piactér-közzétevők adózási adatai
 
-Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Microsoft Azure Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/p/?LinkID=699560) vagy a modern kiadói szerződés keretében felmerülő adózási szempontok megismeréséhez tekintse meg az alábbi táblázatokban a terjesztési országokat/régiókat.
+Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Microsoft Azure Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/p/?LinkID=699560) vagy a modern közzétevői szerződés keretében felmerülő adózási szempontok megismeréséhez tekintse meg a következő táblázatokban a terjesztési országokat/régiókat.
 
-> [!NOTE]
-> Előfordulhat, hogy a kereskedelmi terjeszkedési beállításban az országok/régiók korlátozott készletében a kifizetés következményei vannak. További részletek a kereskedelmi terjeszkedési beállításról és azokról a piacokról, amelyeken a szolgáltatás vonatkozik, tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://go.microsoft.com/fwlink/p/?LinkID=699560) és az érintett országok/régiók listáját.
+Előfordulhat, hogy a kereskedelmi terjeszkedési beállításban az országok/régiók korlátozott készletében a kifizetés következményei vannak. További részletek a kereskedelmi terjeszkedési beállításról és azokról a piacokról, amelyeken a szolgáltatás vonatkozik, tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://go.microsoft.com/fwlink/p/?LinkID=699560) és az érintett országok/régiók listáját.
 
 > [!IMPORTANT]
 > A viszonteladói országok/régiók és a körülmények (az [alább](#reseller-countriesregions)leírtak szerint) adózási felelőssége a [Microsoft Azure Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/p/?LinkID=699560)szerepel, az alábbi táblázatban szereplő információk ellenére.
 > Vegye figyelembe, hogy a **kifizetési vonzatú** oszlop csak a közzétevők esetében érvényes. Az ebben az oszlopban szereplő adókulcsok bármikor változhatnak, és a Microsoft nem garantálja, hogy az alábbi táblázatban szereplő díjak mindig pontosak lesznek.
 
-| Ország/régió                   | Adózási szempont az ár kiválasztásához                                                                                                             | Kifizetés következményei                    | Adózási felelősség |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
+| Ország/régió  | Adózási szempont az ár kiválasztásához  | Kifizetés következményei  | Adózási felelősség |
+|---|---|---|---|
 | Afganisztán                      | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Albánia                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Algéria                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Amerikai Szamoa                   | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Andorra                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
-| Anguilla                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Angola                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
+| Anguilla                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Antarktisz                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Antigua és Barbuda              | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Argentína                        | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.  | Ár mínusz tárolási díj  | Publisher          |
 | Örményország                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz 20% adó, mínusz tárolási díj       | Microsoft          |
 | Aruba                      | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
-| Ausztrália                        | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                             | Ár mínusz 10% áfa, mínusz tárolási díj             | Microsoft          |
+| Ausztrália                        | A kiválasztott díj kizárja a vonatkozó adókat. *        | Ár mínusz tárolási díj *        | Microsoft          |
 | Ausztria                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.       | Ár mínusz 20% adó, mínusz tárolási díj     | Microsoft          |
 | Azerbajdzsán                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | A Bahama-szigetek                      | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
@@ -83,7 +82,7 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Horvátország                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.       | Ár mínusz 25% áfa, mínusz tárolási díj   | Microsoft          |
 | Curaçao                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Ciprus                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.       | Ár mínusz 19% adó, mínusz tárolási díj  | Microsoft          |
-| Cseh Köztársaság                   | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.       | Ár mínusz 21% Tax, mínusz tárolási díj   | Microsoft        |
+| Csehország                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.       | Ár mínusz 21% Tax, mínusz tárolási díj   | Microsoft        |
 | Dánia                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.       | Ár mínusz 25% áfa, mínusz tárolási díj   | Microsoft          |
 | Dzsibuti                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Dominika                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
@@ -148,7 +147,6 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Litvánia                        | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 21% Tax, mínusz tárolási díj | Microsoft          |
 | Luxemburg                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 17% adó, mínusz tárolási díj | Microsoft          |
 | Makaó (KKT)                        | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
-| Macedónia (FYROM)                | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Madagaszkár                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Malawi                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Malajzia                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
@@ -180,6 +178,7 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Nigéria                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Niue                             | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Norfolk-sziget                   | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
+| Észak-Macedónia                | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Északi Mariana-szigetek         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Norvégia                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 25% áfa, mínusz tárolási díj | Microsoft          |
 | Omán                             | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
@@ -258,10 +257,12 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Zambia                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Zimbabwe                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 
+\* Az összes ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetében Nagyvállalati Szerződés kivéve.
+
 A következők csak az Azure Marketplace-közzétevőket érintik, a fentiektől függetlenül:
 
-| Ország/régió                   | Adózási szempont az ár kiválasztásához                                                                                                             | Adóügyek kezelése                    |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Ország/régió | Adózási szempont az ár kiválasztásához | Adóügyek kezelése |
+| --- |--- | --- |
 | Ausztrália (a Nagyvállalati Szerződés kivételével az összes ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Microsoft |
 | Ausztrália (csak az Nagyvállalati Szerződés ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Publisher |
 | Brazília | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Közzétevő (**lásd: viszonteladói országok/régiók**) |
@@ -287,6 +288,6 @@ A következők csak az Azure Marketplace-közzétevők esetében érvényesek:
 | Brazília (a CSP kivételével az összes ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) |
 | Mexikó (csak az Nagyvállalati Szerződés ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-step"></a>Következő lépés
 
 [Kifizetési számla és űrlapok beállítása](set-up-your-payout-account-tax-forms.md)

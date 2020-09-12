@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a7ed148c4bc8d58b2dcbc344656137a403c62eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037542"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299726"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Az Azure Spring Cloud és az Azure Load Balancer-megoldások integrálása
 
@@ -26,7 +26,7 @@ Az Azure már különböző terheléselosztási megoldásokat biztosít. Az Azur
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Spring-felhő: [Azure Spring Cloud-szolgáltatás létrehozása](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)
+* Azure Spring-felhő: [Azure Spring Cloud-szolgáltatás létrehozása](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure Traffic Manager: [Traffic Manager létrehozása](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
 * Azure app Gateway: [Application Gateway létrehozása](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 * Azure bejárati ajtó: [bejárati ajtó létrehozása](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
@@ -89,7 +89,7 @@ Az Azure Spring Cloud Service integrálásával és a háttérbeli készlet konf
 
     ![Bejárati ajtó 2](media/spring-cloud-load-balancers/front-door-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Traffic Manager létrehozása](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
 * [Application Gateway létrehozása](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 * [Bejárati ajtó létrehozása](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)

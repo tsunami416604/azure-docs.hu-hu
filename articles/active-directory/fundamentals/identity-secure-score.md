@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523108"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320647"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Mi az a Azure Active Directory identitások biztonságos pontszáma?
 
@@ -104,7 +104,7 @@ A pontszám előzményeinek megtekintéséhez lépjen a [Microsoft 365 Security 
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Hogyan kapcsolódik az identitásbiztonsági pontszám az Office 365 biztonsági pontszámhoz?
 
-A [Microsoft Secure pontszám](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) öt különböző vezérlőelem-és pontszám-kategóriát tartalmaz:
+A [Microsoft Secure pontszám](/office365/securitycompliance/microsoft-secure-score) öt különböző vezérlőelem-és pontszám-kategóriát tartalmaz:
 
 - Identitás
 - Adatok
@@ -114,6 +114,6 @@ A [Microsoft Secure pontszám](https://docs.microsoft.com/office365/securitycomp
 
 Az identitás biztonságos pontszáma a Microsoft biztonságos pontszámának Identity részét jelöli. Ez az átfedés azt jelenti, hogy az identitások biztonságos pontszámára és a Microsoft azonosító pontszámára vonatkozó javaslatok megegyeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[További információ a Microsoft biztonságos pontszámáról](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[További információ a Microsoft biztonságos pontszámáról](/office365/securitycompliance/microsoft-secure-score)

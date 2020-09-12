@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265660"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298198"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése
 
@@ -141,7 +141,7 @@ A következő táblázat a leképezést mutatja be.
 | **DRM-védelem munkafolyamata** |Azure Media Services dinamikus védelem |
 | **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
 | **Származási** |Azure Media Services streaming végpont |
-| **Kulcskezelő** |A hivatkozás megvalósításához nem szükséges |
+| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
 | **Tartalomkezelés** |C# konzolos alkalmazás |
 
 Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is elérhető az Azure AD-ben. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Azure Media Services, mind a Azure Media Player támogatja a CENC-t a DASH-en keresztül, a HLS, a PlayReady a Smooth streaming és az AES-128 titkosítást a DASH, a HLS és a Smooth FairPlay.
@@ -358,7 +358,7 @@ Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetri
 
 Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyakori kérdések](frequently-asked-questions.md)
 * [Tartalomvédelem – áttekintés](content-protection-overview.md)

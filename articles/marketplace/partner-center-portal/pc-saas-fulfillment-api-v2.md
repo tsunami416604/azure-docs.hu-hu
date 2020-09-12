@@ -7,20 +7,20 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a98207ef5b03f77a4f741894ec210f7551c5933
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305142"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378134"
 ---
-# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a Microsoft kereskedelmi piactéren
+# <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a kereskedelmi piactéren
 
 Ez a cikk azokat az API-kat ismerteti, amelyek lehetővé teszik, hogy a partnerek a SaaS-ajánlatokat eladják Microsoft AppSource és az Azure Marketplace-en Az ilyen API-kkal való integráció megvalósításához közzétevőre van szükség az SaaS-ajánlatok a partner Centerben való közzétételéhez.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Az SaaS-előfizetési életciklus kezelése
 
-Az Azure Marketplace egy SaaS-előfizetés teljes életciklusát a végfelhasználó által megvásárolt vásárlást követően kezeli.  A Kezdőlap, a beteljesülő API-k, az Operations API-k és a webhook használatával hajtja végre a tényleges SaaS-előfizetés aktiválását és használatát, a frissítéseket és az előfizetés törlését.  A végfelhasználói számla a Microsoft által fenntartott SaaS-előfizetés állapotától függ. 
+A kereskedelmi piactér az SaaS-előfizetések teljes életciklusát a végfelhasználó általi vásárlást követően kezeli.  A Kezdőlap, a beteljesülő API-k, az Operations API-k és a webhook használatával hajtja végre a tényleges SaaS-előfizetés aktiválását és használatát, a frissítéseket és az előfizetés törlését.  A végfelhasználói számla a Microsoft által fenntartott SaaS-előfizetés állapotától függ. 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS-előfizetés állapota
 
@@ -35,7 +35,7 @@ Ha egy végfelhasználó (vagy CSP) SaaS-ajánlatot vásárol a piactéren, a k�
 Fiók létrehozásához:
 
 1. Az ügyfélnek a Microsoft AppSource vagy Azure Portal sikeres vásárlása után a SaaS-ajánlatok számára elérhető **configure (Konfigurálás** ) gombra kell kattintania. Vagy az e-mailben, amelyet az ügyfél a vásárlás után hamarosan kap.
-2. Ezt követően a Microsoft értesíti a partnert a vásárlásról, ha megnyitja az új böngésző lapon a Kezdőlap URL-címét a jogkivonat paraméterrel (a piactér-beli vásárlási azonosító jogkivonat).
+2. Ezt követően a Microsoft értesíti a partnert a vásárlásról, ha megnyitja az új böngésző lapon a Kezdőlap URL-címét a jogkivonat paraméterrel (a kereskedelmi piactér beszerzési azonosítójának tokenje).
 
 Ilyen hívás például az, hogy `https://contoso.com/signup?token=<blob>` az SaaS-ajánlat kezdőlapjának URL-címe a partner Centerben van konfigurálva `https://contoso.com/signup` . Ez a jogkivonat olyan azonosítót biztosít a közzétevőnek, amely egyedileg azonosítja az SaaS-vásárlást és az ügyfelet.
 
@@ -46,12 +46,12 @@ A Kezdőlap URL-címének nonstop kell lennie, és futnia kell, és készen kell
 
 Ezt követően a *jogkivonatot* vissza kell adni a Microsoftnak a közzétevőtől a [SaaS-feloldási API](#resolve-a-purchased-subscription)meghívásával a `x-ms-marketplace-token header` header paraméter értékeként.  Az API-hívás feloldásának eredményeképpen a jogkivonat a SaaS-vásárlás részleteit cseréli, például a vásárlás egyedi AZONOSÍTÓját, a megvásárolt ajánlat AZONOSÍTÓját, a megvásárolt csomag AZONOSÍTÓját stb.
 
-A kezdőlapon az ügyfélnek be kell jelentkeznie az új vagy meglévő SaaS-fiókba Azure Active Directory (HRE) egyszeri bejelentkezés (SSO) használatával.
+A kezdőlapon az ügyfélnek be kell jelentkeznie az új vagy meglévő SaaS-fiókba Azure Active Directory (Azure AD) egyszeri bejelentkezés (SSO) használatával.
 
 A közzétevőnek be kell vezetnie az SSO-bejelentkezést, hogy a Microsoft ehhez a folyamathoz szükséges felhasználói élményt nyújtson.  Győződjön meg arról, hogy a több-bérlős Azure AD-alkalmazást használja, engedélyezze a munkahelyi és iskolai fiókokat, illetve a személyes Microsoft-fiókokat az egyszeri bejelentkezés konfigurálásakor.  Ez a követelmény csak a kezdőlapra vonatkozik, valamint azokra a felhasználókra, akik a Microsoft hitelesítő adataival való bejelentkezéskor átirányítják a SaaS szolgáltatáshoz. A SaaS szolgáltatás összes bejelentkezésére nem vonatkozik.
 
 > [!NOTE]
->Ha az SSO-bejelentkezés megköveteli, hogy a rendszergazda engedélyt adjon az alkalmazásnak, a partner Centerben lévő ajánlat leírásának közzé kell tennie, hogy rendszergazdai szintű hozzáférésre van szükség. Ez a [Piactéri minősítési szabályzatoknak](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)való megfelelés.
+>Ha az SSO-bejelentkezés megköveteli, hogy a rendszergazda engedélyt adjon az alkalmazásnak, a partner Centerben lévő ajánlat leírásának közzé kell tennie, hogy rendszergazdai szintű hozzáférésre van szükség. Ez a [kereskedelmi Piactéri minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)betartása.
 
 Miután bejelentkezett, az ügyfélnek el kell végeznie az SaaS-konfigurációt a közzétevő oldalán. Ezután a közzétevőnek meg kell hívnia az [aktiválási előfizetési API](#activate-a-subscription) -t, hogy egy olyan jelet küldjön a piactérnek, amelyen az SaaS-fiók üzembe helyezése befejeződött.
 Ekkor elindul az ügyfél számlázási ciklusa. Ha az előfizetés aktiválása API-hívás sikertelen, az ügyfél nem számít fel díjat a vásárlásért.
@@ -67,16 +67,16 @@ Ha az SaaS-előfizetés már aktív, és az ügyfél úgy dönt, hogy **elindít
 
 #### <a name="being-updated-subscribed"></a>Folyamatban van a frissítés (előfizetett)
 
-Ez a művelet azt jelenti, hogy egy meglévő aktív SaaS-előfizetés frissítését a Microsoft és a közzétevő is feldolgozta. Ezt a frissítést kezdeményezheti
+Ez a művelet azt jelenti, hogy egy meglévő aktív SaaS-előfizetés frissítését a Microsoft és a közzétevő is feldolgozta. Ilyen frissítést a következőket kezdeményezhet:
 
-* az ügyfél a piactéren
-* a szolgáltató a piactéren
-* az ügyfél a közzétevő SaaS-webhelyéről (nem vonatkozik a CSP által készített vásárlásokra)
+- az ügyfél a kereskedelmi piactéren.
+- a kereskedelmi piactéren található CSP.
+- az ügyfél a közzétevő SaaS-webhelyéről (nem vonatkozik a CSP által készített vásárlásokra).
 
 Az SaaS-előfizetések esetében két típusú frissítés érhető el:
 
-1. Frissítési terv, ha az ügyfél egy másik csomagot választ az előfizetéshez.
-1. Mennyiség frissítése, ha az ügyfél megváltoztatja a megvásárolt helyek számát az előfizetéshez
+- Frissítési terv, ha az ügyfél egy másik csomagot választ az előfizetéshez.
+- Mennyiség frissítése, ha az ügyfél megváltoztatja a megvásárolt helyek számát az előfizetéshez
 
 Csak aktív előfizetés lehet frissítve. Az előfizetés frissítése közben az állapota aktív marad a Microsoft oldalán.
 
@@ -141,7 +141,7 @@ Az előfizetési időszak végén (egy hónap vagy egy év után) az SaaS-előfi
 
 A rendszer csak az aktív előfizetéseket újítja meg automatikusan.  Az előfizetések aktívak maradnak a megújítási folyamat során, és ha az automatikus megújítás sikeres.  A megújítás után a rendszer frissíti az előfizetési időszak kezdő és záró dátumát az új kifejezés dátumaira.
 
-Ha az automatikus megújítás egy fizetési probléma miatt meghiúsul, az előfizetés fel lesz függesztve.  A kiadó értesítést kap.
+Ha egy fizetési probléma miatt nem sikerül automatikusan megújítani az előfizetést, az előfizetés fel lesz függesztve.  A kiadó értesítést kap.
 
 #### <a name="canceled-unsubscribed"></a>Megszakított (*leiratkozott*) 
 
@@ -194,7 +194,7 @@ A feloldási API meghívásakor a rendszer az összes támogatott állapotú Saa
 |  `x-ms-requestid`    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 |  `x-ms-correlationid` |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
 |  `authorization`     |  Egyedi hozzáférési jogkivonat, amely azonosítja az API-hívást készítő közzétevőt. A formátum az, `"Bearer <accessaccess_token>"` Amikor a közzétevő lekéri a jogkivonat értékét az [Azure ad-alkalmazáson alapuló jogkivonat beszerzése](./pc-saas-registration.md#get-the-token-with-an-http-post)című részben leírtak szerint. |
-|  `x-ms-marketplace-token`  | A piactér-vásárlási azonosító *jogkivonat* paraméter a feloldáshoz.  A rendszer átadja a tokent a Kezdőlap URL-címének hívásakor, ha az ügyfél át lesz irányítva az SaaS-partner webhelyére (például: `https://contoso.com/signup?token=<token><authorization_token>` ). <br> <br>  *Megjegyzés:* A kódolt *jogkivonat* -érték a Kezdőlap URL-címének része, ezért dekódolni kell, mielőtt az API-hívásban paraméterként használni kellene.  <br> <br> Az URL-címben szereplő kódolt karakterlánc például a következő: `contoso.com/signup?token=ab%2Bcd%2Fef` , ahol a jogkivonat `ab%2Bcd%2Fef` .  Ugyanaz a jogkivonat dekódolása a következőket eredményezi:`Ab+cd/ef` |
+|  `x-ms-marketplace-token`  | A piactér-vásárlási azonosító *jogkivonat* paraméter a feloldáshoz.  A rendszer átadja a tokent a Kezdőlap URL-címének hívásakor, ha az ügyfél át lesz irányítva az SaaS-partner webhelyére (például: `https://contoso.com/signup?token=<token><authorization_token>` ). <br> <br>  *Megjegyzés:* A kódolt *jogkivonat* -érték a Kezdőlap URL-címének része, ezért dekódolni kell, mielőtt az API-hívásban paraméterként használni kellene.  <br> <br> Az URL-címben szereplő kódolt karakterlánc például a következő: `contoso.com/signup?token=ab%2Bcd%2Fef` , ahol a jogkivonat `ab%2Bcd%2Fef` .  Ugyanaz a jogkivonat dekódolása a következőket eredményezi: `Ab+cd/ef` |
 | | |
 
 *Reagálási kódok:*
@@ -248,7 +248,7 @@ Példa a válasz törzsére:
 
 ```
 
-Kód: 400 hibás kérelem. `x-ms-marketplace-token`hiányzik, helytelen formátumú, érvénytelen vagy lejárt.
+Kód: 400 hibás kérelem. `x-ms-marketplace-token` hiányzik, helytelen formátumú, érvénytelen vagy lejárt.
 
 Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt egy másik Azure AD alkalmazás AZONOSÍTÓval közzétettek.
 
@@ -296,9 +296,9 @@ Ehhez a híváshoz nincs válasz törzs.
 
 Kód: 400 hibás kérelem: az érvényesítés nem sikerült.
 
-* `planId`nem létezik a kérelem adattartalmát.
-* `planId`a kérelem adattartalma nem egyezik meg a megvásárolttal.
-* `quantity`a kérelem adattartalma nem egyezik meg a megvásárolttal
+* `planId` nem létezik a kérelem adattartalmát.
+* `planId` a kérelem adattartalma nem egyezik meg a megvásárolttal.
+* `quantity` a kérelem adattartalma nem egyezik meg a megvásárolttal
 * Az SaaS-előfizetés előfizetett vagy felfüggesztett állapotban van.
 
 Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt egy másik Azure AD alkalmazás AZONOSÍTÓval közzétettek.
@@ -315,7 +315,7 @@ Lekéri az összes megvásárolt SaaS-előfizetés listáját a piactéren a kö
 
 Ez az API többoldalas eredményeket ad vissza. Az oldalméret 100.
 
-##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Lekérés`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -426,7 +426,7 @@ Kód: 500 belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha
 
 Lekéri a megadott megvásárolt SaaS-előfizetést a piactéren közzétett SaaS-ajánlathoz. Ezzel a hívással lekérheti az adott SaaS-előfizetéshez tartozó összes elérhető információt az azonosítójával, és nem hívja meg az API-t az összes előfizetés listájának beolvasásához.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -498,7 +498,7 @@ Az ajánlat adott vásárlása által azonosított SaaS-ajánlat összes csomagj
 
 Ez a hívás az adott ügyfél számára elérhető csomagok listáját adja vissza, a már megvásároltak mellett.  A lista a közzétevő webhelyén a végfelhasználók számára is megjeleníthető.  A végfelhasználó módosíthatja az előfizetési tervet a visszaadott listán szereplő csomagok bármelyikére.  A tervnek a listában nem szereplőre való módosítása sikertelen lesz.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -552,7 +552,7 @@ Az SaaS-előfizetéshez megvásárolt meglévő csomag frissítése egy új csom
 
 Ezt az API-t csak aktív előfizetések esetében lehet meghívni.  Bármely terv módosítható bármely más meglévő csomagra (nyilvános vagy magánjellegű), de nem saját magára.  A privát csomagok esetében az ügyfél bérlőjét a csomag célközönségének részeként kell meghatározni a partner Centerben.
 
-##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Javítás`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Javítás `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -738,7 +738,7 @@ A megadott SaaS-előfizetésre vonatkozó függőben lévő műveletek listájá
 
 A rendszer jelenleg csak az **újravisszaállítási műveleteket** adja vissza válaszként ehhez az API-híváshoz.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -792,11 +792,11 @@ Kód: 500 belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha
 
 #### <a name="get-operation-status"></a>Művelet állapotának beolvasása
 
-Lehetővé teszi a közzétevő számára a megadott aszinkron művelet állapotának nyomon követését: **leiratkozás**, **ChangePlan**vagy **ChangeQuantity**.
+Lehetővé teszi a közzétevő számára a megadott aszinkron művelet állapotának nyomon követését:  **leiratkozás**, **ChangePlan**vagy **ChangeQuantity**.
 
 Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben lévő Operations API-hívás beolvasása, vagy `<id>` egy webhook-hívásban kapott paraméterérték értéke olvasható be.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -857,7 +857,7 @@ Egy függőben lévő művelet állapotának frissítése, hogy jelezze a művel
 
 Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben lévő Operations API-hívás vagy a `<id>` webhook-hívásban kapott paraméterérték értéke olvasható be.
 
-##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Javítás`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Javítás `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -974,8 +974,8 @@ A *terv módosítása*, a *mennyiség módosítása*és a *leiratkozási* művel
 A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](support.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A piactéren elérhető SaaS-ajánlatok további lehetőségeiért lásd: Marketplace- [mérési szolgáltatás API](marketplace-metering-service-apis.md) -k.
+Tekintse meg a kereskedelmi [Piactéri mérési szolgáltatás API-kat](marketplace-metering-service-apis.md) a kereskedelmi piactéren elérhető SaaS-ajánlatok további lehetőségeiért.
 
 Tekintse át és használja a jelen dokumentumban ismertetett API-kra épülő [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) -t.

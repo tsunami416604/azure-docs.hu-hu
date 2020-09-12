@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796811"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321174"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
 
@@ -108,7 +108,7 @@ Ha az Azure AD nem tudja ellenőrizni az egyéni tartománynevet, próbálkozzon
 
 - **Győződjön meg arról, hogy nem rendelkezik nem felügyelt Power BI Bérlővel.** Ha a felhasználók aktiválták Power BI az önkiszolgáló regisztráción keresztül, és létrehoztak egy nem felügyelt bérlőt a szervezet számára, akkor a PowerShell használatával belső vagy külső rendszergazdaként kell átvennie a felügyeletet. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../users-groups-roles/domains-admin-takeover.md) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Adjon hozzá egy másik globális rendszergazdát a címtárhoz. További információ: [szerepkörök és rendszergazdák társítása](active-directory-users-assign-role-azure-portal.md).
 
@@ -116,4 +116,4 @@ Ha az Azure AD nem tudja ellenőrizni az egyéni tartománynevet, próbálkozzon
 
 - A tartománynév-információk kezelése az Azure AD-ben. További információ: [Egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
 
-- Ha a Windows Server azon helyszíni verzióit használja, amelyeket a Azure Active Directory mellett szeretne használni, tekintse [meg a helyszíni címtárak integrálása Azure Active Directory](../connect/active-directory-aadconnect.md)használatával című témakört.
+- Ha a Windows Server azon helyszíni verzióit használja, amelyeket a Azure Active Directory mellett szeretne használni, tekintse [meg a helyszíni címtárak integrálása Azure Active Directory](../hybrid/whatis-hybrid-identity.md)használatával című témakört.

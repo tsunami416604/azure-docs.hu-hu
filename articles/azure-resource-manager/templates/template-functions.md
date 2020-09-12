@@ -2,13 +2,13 @@
 title: Sablonfüggvények
 description: A Azure Resource Manager-sablonban az értékek beolvasására, a karakterláncok és a numerikus karakterek használatára, valamint az üzembe helyezési adatok lekérésére használt függvények leírását ismerteti.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/01/2020
+ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331406"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378406"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
 
@@ -38,20 +38,20 @@ A legtöbb függvény ugyanúgy működik, amikor az erőforráscsoportot, az el
 
 A Resource Manager számos funkciót biztosít a tömbök használatához.
 
-* [tömb](template-functions-array.md#array)
+* [array](template-functions-array.md#array)
 * [concat](template-functions-array.md#concat)
-* [tartalmaz](template-functions-array.md#contains)
+* [contains](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [üres](template-functions-array.md#empty)
 * [első](template-functions-array.md#first)
 * [kereszteződés](template-functions-array.md#intersection)
 * [utolsó](template-functions-array.md#last)
-* [hossza](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
+* [length](template-functions-array.md#length) (hossz)
+* [p](template-functions-array.md#min)
 * [Max](template-functions-array.md#max)
 * [tartomány](template-functions-array.md#range)
 * [kihagyása](template-functions-array.md#skip)
-* [eltarthat](template-functions-array.md#take)
+* [take](template-functions-array.md#take)
 * [Union](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -102,7 +102,7 @@ A Resource Manager a következő függvényeket biztosítja a sablon és a telep
 
 A Resource Manager a következő funkciókat biztosítja a logikai feltételekkel való együttműködéshez:
 
-* [és](template-functions-logical.md#and)
+* [and](template-functions-logical.md#and)
 * [logikai](template-functions-logical.md#bool)
 * [Ha](template-functions-logical.md#if)
 * [nem](template-functions-logical.md#not)
@@ -128,7 +128,7 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
+* [p](template-functions-numeric.md#min)
 * [Max](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -140,11 +140,11 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 
 A Resource Manager számos funkciót biztosít az objektumok használatához.
 
-* [tartalmaz](template-functions-object.md#contains)
+* [contains](template-functions-object.md#contains)
 * [üres](template-functions-object.md#empty)
 * [kereszteződés](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
-* [hossza](template-functions-object.md#length)
+* [length](template-functions-object.md#length) (hossz)
 * [Union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -167,6 +167,7 @@ A Resource Manager a következő függvényeket biztosítja az erőforrások ér
 * [Listkeys műveletének beolvasása](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
 * [listáját](template-functions-resource.md#list)
+* [pickZones](template-functions-resource.md#pickzones)
 * [szolgáltatók](template-functions-resource.md#providers)
 * [referencia](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) – csak az erőforráscsoporthoz történő központi telepítések esetén használható.
@@ -214,7 +215,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [concat](template-functions-string.md#concat)
-* [tartalmaz](template-functions-string.md#contains)
+* [contains](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [üres](template-functions-string.md#empty)
@@ -225,7 +226,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [indexOf](template-functions-string.md#indexof)
 * [utolsó](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [hossza](template-functions-string.md#length)
+* [length](template-functions-string.md#length) (hossz)
 * [newGuid](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
 * [csere](template-functions-string.md#replace)
@@ -234,7 +235,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [startsWith](template-functions-string.md#startswith)
 * [sztring](template-functions-string.md#string)
 * [substring](template-functions-string.md#substring)
-* [eltarthat](template-functions-string.md#take)
+* [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [Trim](template-functions-string.md#trim)
@@ -243,7 +244,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az ARM-sablon fejezeteinek leírását lásd: ARM- [sablonok készítése](template-syntax.md)
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md) című témakört.

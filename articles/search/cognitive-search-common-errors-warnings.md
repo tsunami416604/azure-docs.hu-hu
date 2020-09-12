@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935551"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378355"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -349,3 +349,7 @@ A figyelmeztetés megkerüléséhez határozza meg, hogy mi a blob szöveges kó
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Figyelmeztetés: Cosmos DB "X" gyűjteménynek van egy lusta indexelési házirendje. Egyes adatvesztések elveszhetnek
 
 A [lusta](/azure/cosmos-db/index-policy#indexing-mode) indexelési házirendekkel rendelkező gyűjteményeket nem lehet következetesen lekérdezni, így az indexelő adatai hiányoznak. A figyelmeztetés megkerüléséhez módosítsa az indexelési házirendet Konzisztensre.
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Figyelmeztetés: a dokumentum nagyon hosszú szavakat tartalmaz (64 karakternél hosszabb). Ezek a szavak csonkolt és/vagy megbízhatatlan modellek előrejelzését eredményezhetnek.
+
+Ezt a figyelmeztetést a Text Analytics szolgáltatás adja át.  Bizonyos esetekben nyugodtan figyelmen kívül hagyhatja ezt a figyelmeztetést, például ha a dokumentum hosszú URL-címet tartalmaz (ami valószínűleg nem kulcsfontosságú kifejezés vagy a vezetési hangulat stb.).  Ügyeljen arra, hogy ha egy szó 64 karakternél hosszabb, akkor a rendszer az 64 karakterre csonkolja a modell előrejelzéseit.  

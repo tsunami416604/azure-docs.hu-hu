@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797287"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322534"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése és támogatási jegy megnyitása Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetési támogatást nyújt a Azure Active Directoryhoz (Azure AD). A támogatás online és telefonon is elérhető Microsoft Azure fizetős és próbaverziós előfizetésekhez. Telefonos támogatás és online számlázási támogatás más nyelveken is elérhető. 
@@ -29,7 +29,7 @@ A Microsoft globális műszaki, értékesítés előtti, számlázási és előf
 
 Mielőtt támogatási jegyet hozna létre, keressen válaszokat és információkat az alábbi helyeken. 
 
-* Az informatikai szakemberek és fejlesztők számára a [technikai dokumentációban](https://docs.microsoft.com/azure/active-directory/)talál további információt, például útmutatókat vagy docs.microsoft.com az informatikai szakembereknek és fejlesztőknek.
+* Az informatikai szakemberek és fejlesztők számára a [technikai dokumentációban](../index.yml)talál további információt, például útmutatókat vagy docs.microsoft.com az informatikai szakembereknek és fejlesztőknek.
 
 * A [Microsoft technikai közössége](https://techcommunity.microsoft.com/) az informatikai szakemberek és ügyfeleink együttműködésének, megosztásának és megismerésének helyszíne. A [Microsoft technikai közösségi információs központját](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) a bejelentések, blogbejegyzések, kérdezz-Me-ANYTHING (ama) szakértőkkel folytatott interakciók és egyéb tevékenységek használják. [A közösséghez is csatlakozhat, hogy elküldje ötleteit](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
@@ -96,8 +96,8 @@ Ha nem talál válaszokat önsegítő erőforrásokkal, nyisson meg egy online t
 
 A terméktámogatási telefonszámok beszerzéséhez tekintse meg a [Kapcsolatfelvétel a Microsofttól támogatási](https://portal.office.com/Support/ContactUs.aspx) oldalát.
 
-##  <a name="next-steps"></a>További lépések
+##  <a name="next-steps"></a>Következő lépések
 
 * [A Microsoft technikai közössége](https://techcommunity.microsoft.com/)
 
-* [Technikai dokumentáció a docs.microsoft.com-on](https://docs.microsoft.com/azure/active-directory/)
+* [Technikai dokumentáció a docs.microsoft.com-on](../index.yml)

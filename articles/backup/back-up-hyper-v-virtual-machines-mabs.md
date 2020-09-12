@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: d3648bf6c980049a2e3ccfa90a777bddc1748dc9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011939"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377998"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -78,7 +78,7 @@ A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltét
 
 2. Állítsa be a MABS védelmi ügynököt a Hyper-V-kiszolgálón vagy a Hyper-V-fürt csomópontjain. Ha vendég szintű biztonsági mentést végez, az ügynököt azon virtuális gépekre kell telepítenie, amelyekről biztonsági másolatot szeretne készíteni a vendég szintjén.
 
-3. A MABS felügyeleti konzolon kattintson a **védelem**védelmi  >  **csoport létrehozása** elemre az **új védelmi csoport létrehozása** varázsló megnyitásához.
+3. Az **Protection**  >  **új védelmi csoport létrehozása** varázsló megnyitásához a MABS felügyeleti konzolján kattintson a védelem védelmi**csoport létrehozása** elemre.
 
 4. A **Csoporttagok kiválasztása** lapon válassza ki a védendő virtuális gépeket az ezeket magukban foglaló Hyper-V-gazdakiszolgálóról. Javasoljuk, hogy minden olyan virtuális gépet, amelyre azonos védelmi szabályzat vonatkozik, egy védelmi csoportba helyezzen. A tárterület hatékony felhasználása érdekében engedélyezze az együttes elhelyezést. Az együttes elhelyezés lehetővé teszi a különböző védelmi csoportokból származó adatok ugyanazon lemezen vagy szalagon történő tárolását, így több adatforrásnak egyetlen replika- és helyreállításipont-kötete keletkezik.
 
@@ -110,7 +110,7 @@ Ha a MABS Windows Server 2012 R2 vagy újabb rendszeren fut, akkor biztonsági m
 
 **Lehetővé teszi a szolgáltatói biztonsági mentést** – Replika telephelyként üzemeltetett adatközpontot is használhat, és nincs szükség másodlagos adatközpontra. Ebben az esetben a szolgáltatói SLA-nak konzisztens biztonsági másolatot kell készítenie a replika virtuális gépekről.
 
-A feladatátvétel indításáig a replika virtuális gép ki van kapcsolva, és a VSS nem garantálja a replika virtuális gép alkalmazáskonzisztens biztonsági mentését. Ezért a replika virtuális gép biztonsági mentése csak összeomlás-konzisztens lesz. Ha az összeomlás-konzisztens mentést nem lehet garantálni a biztonsági mentés sikertelen lesz, ami számos esetben előfordulhat:
+A feladatátvétel indításáig a replika virtuális gép ki van kapcsolva, és a VSS nem garantálja a replika virtuális gép alkalmazáskonzisztens biztonsági mentését. Így a replika virtuális gépek biztonsági mentése csak összeomlás-konzisztens lesz. Ha az összeomlás-konzisztens mentést nem lehet garantálni a biztonsági mentés sikertelen lesz, ami számos esetben előfordulhat:
 
 - A replika virtuális gép működése nem kifogástalan, állapota kritikus.
 
@@ -128,13 +128,13 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
 
 1. A MABS felügyeleti konzolon írja be a virtuális gép nevét, vagy bontsa ki a védett elemek listáját, és válassza ki a helyreállítani kívánt virtuális gépet.
 
-2. **A következő helyreállítási pontjai** ablaktáblán kattintson a naptárban bármelyik dátumra az elérhető helyreállítási pontok megjelenítéséhez. Az **Elérési út** ablaktáblán válassza ki a Helyreállítási varázslóban használni kívánt helyreállítási pontot.
+2. A **helyreállítási pontok** ablaktábla naptár területén válassza ki az összes dátumot, hogy megjelenjenek a rendelkezésre álló helyreállítási pontok. Az **Elérési út** ablaktáblán válassza ki a Helyreállítási varázslóban használni kívánt helyreállítási pontot.
 
-3. A **Műveletek** panelen kattintson a **Helyreállítás** elemre a Helyreállítási varázsló megnyitásához.
+3. A **műveletek** menüben válassza a **helyreállítás** lehetőséget a helyreállítási varázsló megnyitásához.
 
     A kiválasztott virtuális gép és helyreállítási pont megjelenik a **Helyreállítási beállítások áttekintése** képernyőn. Kattintson a **Tovább** gombra.
 
-4. A **Helyreállítási típus kiválasztása** képernyőn válassza ki, hová szeretné visszaállítani az adatokat, és kattintson a **Tovább** gombra.
+4. A **helyreállítási típus kiválasztása** képernyőn válassza ki, hogy hová szeretné visszaállítani az adatkészletet, majd válassza a **tovább**lehetőséget.
 
     - **Visszaállítás az eredeti példányban**: Ha az eredeti példányba állít vissza, akkor az eredeti virtuális merevlemez törlődik. A MABS a Hyper-V VSS-író használatával helyreállítja a VHD-t és az egyéb konfigurációs fájlokat az eredeti helyükre. A helyreállítási folyamat végén a virtuális gépek továbbra is magas rendelkezésre állásúak lesznek.
         A helyreállításhoz szükség van az erőforráscsoportra. Ha az nem érhető el, akkor egy másik helyre végezze el a helyreállítást, és állítsa a virtuális gépet magas rendelkezésre állásúra.
@@ -143,13 +143,13 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
 
     - **Másolás hálózati mappába**: a MABS támogatja az elemszintű helyreállítást (ILR), amely lehetővé teszi a fájlok, mappák, kötetek és virtuális merevlemezek (VHD-k) elemszintű helyreállítását a Hyper-V virtuális gépek gazdagép szintű biztonsági másolatából egy hálózati megosztásra vagy egy MABS által védett kiszolgáló kötetére. Az elemszintű helyreállítás végrehajtásához a MABS védelmi ügynököt nem kell a vendégen belül telepíteni. Ha ezt a beállítást választja, a Helyreállítási varázsló megjelenít egy további, a cél és a cél elérési útjának azonosítására szolgáló képernyőt.
 
-5. A **Helyreállítási beállítások megadása** oldalon adja meg a helyreállítási beállításokat, majd kattintson a **Tovább** gombra:
+5. A **helyreállítási beállítások megadása** területen adja meg a helyreállítási beállításokat, majd válassza a **Next (tovább**) gombot:
 
-    - Ha egy virtuális gépet alacsony sávszélesség mellett állít helyre, kattintson a **Módosítás** lehetőségre a **Sávszélesség használatának szabályozása** beállítás engedélyezéséhez. A sávszélesség-szabályozási beállítás bekapcsolása után megadhatja, hogy mekkora sávszélességet, illetve mikor kíván elérhetővé tenni.
-    - Ha a hálózatot konfigurálta, válassza ki a **Hardveresen készített pillanatfelvételek segítségével történő SAN-alapú helyreállítás engedélyezése** beállítást.
+    - Ha alacsony sávszélességen keresztül helyreállít egy virtuális gépet, válassza a **módosítás** lehetőséget a **hálózati sávszélesség-használat szabályozásának**engedélyezéséhez. A sávszélesség-szabályozási beállítás bekapcsolása után megadhatja, hogy mekkora sávszélességet, illetve mikor kíván elérhetővé tenni.
+    - Ha konfigurálta a hálózatot, válassza a **hardveres Pillanatképek használatával történő San-alapú helyreállítás engedélyezése** lehetőséget.
     - Ha azt szeretné, hogy a rendszer e-mail-értesítést küldjön a helyreállítási folyamat befejezése után, jelölje be az **E-mail küldése a helyreállítás befejezéséről** lehetőséget, majd adja meg a kívánt e-mail-címeket.
 
-6. Az Összefoglalás képernyőn ellenőrizze az adatok helyességét. Ha az adatok nem megfelelőek, vagy módosítani szeretné őket, kattintson a **Vissza** gombra. Ha elégedett a beállításokkal **, kattintson a helyreállítás gombra** a helyreállítási folyamat elindításához.
+6. Az Összefoglalás képernyőn ellenőrizze az adatok helyességét. Ha a részletek nem megfelelőek, vagy ha módosítani kívánja a módosításokat, válassza a **vissza**lehetőséget. Ha elégedett a beállításokkal **, válassza a helyreállítás lehetőséget** a helyreállítási folyamat elindításához.
 
 7. A helyreállítási feladatra vonatkozó információk a **Helyreállítás állapota** képernyőn jelennek meg.
 

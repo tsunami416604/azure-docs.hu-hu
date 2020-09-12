@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 09/01/2020
 ms.author: lbosq
-ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263058"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318216"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 
@@ -44,13 +44,12 @@ A [Azure Cosmos db API-MongoDB való Azure Database Migration Service](../dms/tu
 
 |**Áttelepítés típusa**|**Megoldás**|**Megfontolások**|
 |---------|---------|---------|
-|Offline|[Adatáttelepítési eszköz](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;Nagyméretű adathalmazokhoz nem alkalmas.|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull;Nagyméretű adatkészletekhez alkalmas <br/>&bull;Az ellenőrzőpontok hiánya azt jelenti, hogy az áttelepítés során esetlegesen felmerülő problémákhoz a teljes áttelepítési folyamat újraindítása szükséges.<br/>&bull;A kézbesítetlen levelek várólistájának hiánya azt jelenti, hogy néhány hibás fájl nem tudja leállítani a teljes áttelepítési folyamatot <br/>&bull;Egyéni kóddal kell rendelkeznie bizonyos adatforrások olvasási teljesítményének növeléséhez|
-|Offline|[Meglévő Mongo-eszközök (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Egyszerűen beállítható és integrálható <br/>&bull;Egyéni kezelést igényel a szabályozáshoz|
-|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull;Teljes körűen felügyelt áttelepítési szolgáltatás.<br/>&bull;Üzemeltetési és figyelési megoldásokat nyújt az áttelepítési feladathoz. <br/>&bull;Nagyméretű adatkészletekhez alkalmas, és gondoskodik az élő módosítások replikálásáról <br/>&bull;Csak más MongoDB-forrásokkal működik|
+|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull; Nagyméretű adatkészletekhez alkalmas, és gondoskodik az élő módosítások replikálásáról <br/>&bull; Csak más MongoDB-forrásokkal működik|
+|Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull; Nagyméretű adatkészletekhez alkalmas, és gondoskodik az élő módosítások replikálásáról <br/>&bull; Csak más MongoDB-forrásokkal működik|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Egyszerűen beállítható és támogatott több forrás <br/>&bull; A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull; Nagyméretű adatkészletekhez alkalmas <br/>&bull; Az ellenőrzőpontok hiánya azt jelenti, hogy az áttelepítés során esetlegesen felmerülő problémákhoz a teljes áttelepítési folyamat újraindítása szükséges.<br/>&bull; A kézbesítetlen levelek várólistájának hiánya azt jelenti, hogy néhány hibás fájl nem tudja leállítani a teljes áttelepítési folyamatot <br/>&bull; Egyéni kóddal kell rendelkeznie bizonyos adatforrások olvasási teljesítményének növeléséhez|
+|Offline|[Meglévő Mongo-eszközök (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Egyszerűen beállítható és integrálható <br/>&bull; Egyéni kezelést igényel a szabályozáshoz|
 
-
-## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a>A számítási feladatokhoz szükséges átviteli sebesség becslése
+## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> A számítási feladatokhoz szükséges átviteli sebesség becslése
 
 Azure Cosmos DB az átviteli sebességet előre kiépítve, és a rendszer a kérelmek egységében (RU) mérve másodpercenként méri. A virtuális gépekkel és a helyszíni kiszolgálókkal ellentétben a RUs bármikor könnyedén méretezhető. A kiosztott RUs-ket azonnal megváltoztathatja. További információ: [kérelmek egységei a Azure Cosmos DBban](request-units.md).
 
@@ -71,22 +70,22 @@ Ez a parancs a következőhöz hasonló JSON-dokumentumot fog kiadni:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-A [diagnosztikai beállítások](cosmosdb-monitor-resource-logs.md) segítségével megismerheti a Azure Cosmos DBon végrehajtott lekérdezések gyakoriságát és mintáit. A diagnosztikai naplók eredményei elküldhetők egy Storage-fiókba, egy EventHub-példányba vagy egy [Azure-log Analyticsba](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).  
+A [diagnosztikai beállítások](cosmosdb-monitor-resource-logs.md) segítségével megismerheti a Azure Cosmos DBon végrehajtott lekérdezések gyakoriságát és mintáit. A diagnosztikai naplók eredményei elküldhetők egy Storage-fiókba, egy EventHub-példányba vagy egy [Azure-log Analyticsba](../azure-monitor/log-query/get-started-portal.md).  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>Válassza ki a partíciós kulcsot
 A particionálás (más néven horizontális skálázás) az adatáttelepítés előtt kulcsfontosságú szempont. A Azure Cosmos DB a teljes körűen felügyelt particionálással növelheti a kapacitást egy adatbázisban a tárolási és átviteli sebességre vonatkozó követelmények teljesítése érdekében. Ennek a szolgáltatásnak nincs szüksége az útválasztási kiszolgálók üzemeltetésére vagy konfigurálására.   
 
-Hasonló módon a particionálási funkció automatikusan bővíti a kapacitást, és ennek megfelelően kiegyensúlyozza az adatelosztást. Az adatok megfelelő partíciós kulcsának kiválasztásával kapcsolatos részletekért és javaslatokért tekintse meg a [partíciós kulcs kiválasztása című cikket](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
+Hasonló módon a particionálási funkció automatikusan bővíti a kapacitást, és ennek megfelelően kiegyensúlyozza az adatelosztást. Az adatok megfelelő partíciós kulcsának kiválasztásával kapcsolatos részletekért és javaslatokért tekintse meg a [partíciós kulcs kiválasztása című cikket](partitioning-overview.md#choose-partitionkey). 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Adatok indexelése
 
-A MongoDB Server 3,6-es verziójában a Azure Cosmos DB API automatikusan indexeli a `_id` mezőt. Ezt a mezőt nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . További mezők indexeléséhez alkalmazza a MongoDB index-Management parancsait. Ez az alapértelmezett indexelési házirend eltér a Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint indexeli az összes mezőt.
+A MongoDB Server 3,6-es verziójában a Azure Cosmos DB API automatikusan indexeli a `_id` mezőt. Ezt a mezőt nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . További mezők indexeléséhez a MongoDB indexkezelési parancsait használja. Ez az automatikus indexelési szabályzat különbözik az Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint az összes mezőt indexeli.
 
 A Azure Cosmos DB által biztosított indexelési képességek közé tartozik az összetett indexek, az egyedi indexek és az élettartam (TTL) indexek hozzáadása. Az index felügyeleti felülete a parancsra van leképezve `createIndex()` . További információ: [Azure Cosmos db API-MongoDB című cikk indexelése](mongodb-indexing.md).
 
 A [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatikusan áttelepíti a MongoDB-gyűjteményeket egyedi indexekkel. Az áttelepítést megelőzően azonban létre kell hozni az egyedi indexeket. A Azure Cosmos DB nem támogatja az egyedi indexek létrehozását, ha már szerepelnek a gyűjtemények adatai. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Telepítse át a MongoDB-adatait Cosmos DB a Database Migration Service használatával.](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Átviteli sebesség az Azure Cosmos-tárolók és-adatbázisok számára](set-throughput.md)
 * [Particionálás az Azure Cosmos DB-ben](partition-data.md)

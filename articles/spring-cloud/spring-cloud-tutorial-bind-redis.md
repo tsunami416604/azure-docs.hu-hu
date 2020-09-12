@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6bbd54be46effe324199639477f9ca4ab31bea98
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c21a6a2a42aa7417ddb53afd3beda735b54cff3d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091402"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299133"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure-gyorsítótár kötése az Azure Spring Cloud-alkalmazás Redis 
 
@@ -24,7 +24,7 @@ A Spring boot-alkalmazások manuális konfigurálása helyett az Azure Spring Cl
 * Azure cache a Redis Service-példányhoz
 * Azure Spring Cloud-bővítmény az Azure CLI-hez
 
-Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az [Azure Spring Cloud-alkalmazás üzembe helyezésének](spring-cloud-quickstart-launch-app-portal.md)rövid útmutatójában ismertetett lépéseket.
+Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az [Azure Spring Cloud-alkalmazás üzembe helyezésének](spring-cloud-quickstart.md)rövid útmutatójában ismertetett lépéseket.
 
 ## <a name="bind-azure-cache-for-redis"></a>Az Azure cache kötése a Redis-hez
 
@@ -54,6 +54,6 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az [Azu
     spring.redis.ssl=true
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan köthető az Azure Spring Cloud-alkalmazás az Azure cache Redis-hez. Ha többet szeretne megtudni az alkalmazáshoz tartozó kötési szolgáltatásokról, tekintse meg a [kötés egy Azure Database for MySQL-példányhoz](spring-cloud-tutorial-bind-mysql.md)című témakört.

@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180014"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378083"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
@@ -52,13 +52,13 @@ Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági m
 
 Az Azure fájlmegosztás biztonsági mentési megoldásához két költség tartozik:
 
-1. A **Pillanatképek tárolási költségei**: a pillanatképekhez felmerülő tárolási költségek számlázása Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/) említett díjszabási adatok alapján. 
+1. A **Pillanatképek tárolási költségei**: a pillanatképekhez felmerülő tárolási költségek számlázása Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/) említett díjszabási adatok alapján.
 
-2. **Védett példány díja** : 2020. szeptember 1-től az ügyfeleknek az [itt](https://azure.microsoft.com/en-in/pricing/details/backup/) említett díjszabásnak megfelelően díjat számítunk fel a védett példány díját. A védett példány díja a Storage-fiókban található védett fájlmegosztás teljes méretétől függ.
+2. **Védett példány díja**: 2020. szeptember 1-től az ügyfeleknek az [itt](https://azure.microsoft.com/pricing/details/backup/)említett díjszabásnak megfelelően díjat számítunk fel a védett példány díját. A védett példány díja a Storage-fiókban található védett fájlmegosztás teljes méretétől függ.
 
 Az Azure-fájlmegosztás biztonsági mentésének részletes becsléséhez letöltheti a részletes [Azure Backup díjszabását](https://aka.ms/AzureBackupCostEstimates).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure file shares](backup-afs.md) -ről
 * Válaszokat talál a [Azure Files biztonsági mentésével kapcsolatos kérdésekre](backup-azure-files-faq.md) .

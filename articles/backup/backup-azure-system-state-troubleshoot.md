@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a rendszer
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022360"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376281"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
 
@@ -66,20 +66,20 @@ Windows Server biztonsági másolat a PowerShell használatával történő tele
 
 A Windows Server biztonsági másolat Kiszolgálókezelő használatával történő telepítéséhez hajtsa végre a következő lépéseket:
 
-1. A **Server Managerben**kattintson a **szerepkörök és szolgáltatások hozzáadása**elemre. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
+1. A **Server Managerben**válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
 
     ![Irányítópult](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. Válassza a **telepítés típusa** lehetőséget, majd kattintson a **tovább**gombra.
+2. Válassza a **telepítés típusa** lehetőséget, majd válassza a **tovább**lehetőséget.
 
     ![Telepítés típusa](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Válasszon ki egy kiszolgálót a kiszolgáló-készletből, és kattintson a **tovább**gombra. A kiszolgálói szerepkörben hagyja meg az alapértelmezett beállítást, és kattintson a **tovább**gombra.
+3. Válasszon ki egy kiszolgálót a kiszolgáló készletéből, és kattintson a **tovább**gombra. A kiszolgálói szerepkörben hagyja meg az alapértelmezett beállítást, és kattintson a **Tovább gombra**.
 4. Válassza a **Windows Server biztonsági másolat** elemet a **szolgáltatások** lapon, és kattintson a **tovább**gombra.
 
     ![Szolgáltatások kiválasztása ablak](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. A **megerősítés** lapon kattintson a **telepítés** gombra a telepítési folyamat elindításához.
+5. A **megerősítés** lapon válassza a **telepítés** lehetőséget a telepítési folyamat elindításához.
 6. A **Results (eredmények** ) lapon megjelenik a Windows Server biztonsági másolat funkció a Windows Serverre való telepítése sikeres volt.
 
     ![A telepítés eredményei](./media/backup-azure-system-state-troubleshoot/results.jpg)
@@ -92,7 +92,7 @@ Győződjön meg arról, hogy a helyi rendszer teljes hozzáféréssel rendelkez
 
 Győződjön meg arról, hogy az alábbi szolgáltatások futó állapotban vannak:
 
-**Szolgáltatásnév** | **Indítási típus**
+**Szolgáltatás neve** | **Indítási típus**
 --- | ---
 Távoli eljáráshívás (RPC) | Automatikus
 COM+ Event System (EventSystem) | Automatikus

@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault biztonság | Microsoft Docs
+title: Az Azure Key Vault biztonsága
 description: Azure Key Vault, kulcsok és titkos kódok hozzáférési engedélyeinek kezelése. Lefedi a Key Vault hitelesítési és engedélyezési modelljét, valamint a kulcstartó biztonságossá tételét.
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870578"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377573"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
-A Azure Key Vault használatakor meg kell adnia a titkosítási kulcsokat és a titkokat, például a tanúsítványokat, a kapcsolódási karakterláncokat és a jelszavakat a felhőben. Mivel bizalmas és üzleti szempontból kritikus fontosságú adatokat tárol, lépéseket kell tennie, hogy maximalizálja a tárolók és a bennük tárolt adatok biztonságát. Ez a cikk a Azure Key Vault biztonságának tervezésekor megfontolandó fogalmakat ismerteti.
+A Azure Key Vault használatával védi a felhőben a titkosítási kulcsokat és a titkos kódokat, például a tanúsítványokat, a kapcsolódási karakterláncokat és a jelszavakat. Bizalmas és üzleti szempontból kritikus fontosságú adatok tárolásához lépéseket kell tennie a tárolók és a bennük tárolt adatok biztonságának maximalizálása érdekében.
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
@@ -65,7 +64,7 @@ Key Vault hozzáférési házirendek külön engedélyeket biztosítanak a kulcs
 > [!IMPORTANT]
 > Key Vault hozzáférési házirendek nem támogatják a szemcsés, az objektum szintű engedélyeket, például egy adott kulcsot, titkos kulcsot vagy tanúsítványt. Ha a felhasználó engedélyt kap a kulcsok létrehozására és törlésére, akkor ezeket a műveleteket a kulcstartó összes kulcsán végrehajthatja.
 
-A Key Vault hozzáférési házirendjeinek beállításához használja a [Azure Portal](https://portal.azure.com/), az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), a [Azure POWERSHELL](/powershell/azure/)vagy a [Key Vault felügyeleti REST API-kat](/rest/api/keyvault/).
+A kulcstartó hozzáférési szabályzatait a [Azure Portal](assign-access-policy-portal.md), az [Azure CLI](assign-access-policy-cli.md), az [Azure POWERSHELL](assign-access-policy-powershell.md)vagy a [Key Vault felügyeleti REST API](/rest/api/keyvault/)-k használatával állíthatja be.
 
 Az adatsíkok hozzáférését korlátozhatja a [virtuális hálózati szolgáltatás végpontjának használatával Azure Key Vault](overview-vnet-service-endpoints.md)). A [tűzfalat és a virtuális hálózati szabályokat](network-security.md) egy további biztonsági réteghez is konfigurálhatja.
 
@@ -93,9 +92,9 @@ A naplózási adatok a Key Vault műveletét követő 10 percen belül érhetők
 - Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
 - Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
 
-A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse meg az [Azure Storage biztonsági útmutatóját](../../storage/blobs/security-recommendations.md) .
+A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse át az [Azure Storage biztonsági útmutatóját](../../storage/blobs/security-recommendations.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)

@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607285"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322075"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Fizetési küszöbértékek, módszerek és időkeretek
 
@@ -78,7 +78,7 @@ Ezek azok az országok és régiók, amelyekben a fenti fizetési módszereket h
 | Côte d'Ivoire (Elefántcsontpart) | Igen | Igen | Igen | Nem |
 | Horvátország | Igen | Igen | Igen | Nem |
 | Ciprus | Igen | Igen | Igen | Igen |
-| Cseh Köztársaság | Igen | Igen | Igen | Igen |
+| Csehország | Igen | Igen | Igen | Igen |
 | Dánia | Igen | Igen | Igen | Igen |
 | Dominika | Igen | Igen | Nem | Igen |
 | Dominikai Köztársaság | Igen | Igen | Igen | Igen |
@@ -123,7 +123,6 @@ Ezek azok az országok és régiók, amelyekben a fenti fizetési módszereket h
 | Liechtenstein | Igen | Igen | Igen | Igen |
 | Litvánia | Igen | Igen | Igen | Nem |
 | Luxemburg | Igen | Igen | Igen | Igen |
-| Macedónia | Nem | Igen | Igen | Nem |
 | Madagaszkár | Igen | Igen | Igen | Nem |
 | Malawi | Igen | Igen | Igen | Igen |
 | Malajzia | Igen | Igen | Igen | Igen |
@@ -142,6 +141,7 @@ Ezek azok az országok és régiók, amelyekben a fenti fizetési módszereket h
 | Nicaragua | Igen | Igen | Igen | Igen |
 | Niger | Igen | Igen | Igen | Nem |
 | Nigéria | Igen | Igen | Igen | Nem |
+| Észak-Macedónia | Nem | Igen | Igen | Nem |
 | Norvégia | Igen | Igen | Igen | Igen |
 | Omán | Igen | Igen | Igen | Igen |
 | Pakisztán | Igen | Igen | Igen | Nem |

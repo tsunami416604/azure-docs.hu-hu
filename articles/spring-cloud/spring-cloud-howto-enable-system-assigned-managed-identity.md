@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091453"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299645"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
 Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítanak Azure Active Directory egy Azure-erőforráshoz, például az Azure Spring Cloud-alkalmazáshoz. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban.
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti és tilthatja le a rendszerhez rende
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Szüksége lesz egy üzembe helyezett Azure Spring Cloud-példányra. Kövesse a gyors [üzembe helyezést az Azure CLI használatával](spring-cloud-quickstart-launch-app-cli.md).
+Szüksége lesz egy üzembe helyezett Azure Spring Cloud-példányra. Kövesse a gyors [üzembe helyezést az Azure CLI használatával](spring-cloud-quickstart.md).
 
 ## <a name="add-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
 A rendszer által hozzárendelt identitással rendelkező alkalmazások létrehozásához további tulajdonságot kell beállítani az alkalmazáshoz.
@@ -47,7 +47,7 @@ Az alábbi példa egy *APP_NAME* nevű alkalmazást hoz létre egy rendszerhez r
 az spring-cloud app create -n app_name -s service_name -g resource_group_name --assign-identity
 ```
 
-**A rendszerhez rendelt felügyelt identitás engedélyezése meglévő alkalmazásokban** `az spring-cloud app identity assign`A parancs használatával engedélyezheti a rendszerhez rendelt identitást egy meglévő alkalmazásban.
+**A rendszerhez rendelt felügyelt identitás engedélyezése meglévő alkalmazásokban** `az spring-cloud app identity assign` A parancs használatával engedélyezheti a rendszerhez rendelt identitást egy meglévő alkalmazásban.
 
 ```azurecli
 az spring-cloud app identity assign -n app_name -s service_name -g resource_group_name
@@ -72,7 +72,7 @@ A rendszer által hozzárendelt felügyelt identitás eltávolítása egy olyan 
 1. Navigáljon a kívánt virtuális géphez, és válassza az **identitás**elemet.
 1. A **rendszerhez rendelt** / **állapot**területen válassza a **ki** lehetőséget, majd kattintson a **Mentés**gombra:
 
- ![Felügyelt identitás a portálon](./media/spring-cloud-managed-identity/remove-identity.png)
+ ![Felügyelt identitás](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 A következő paranccsal távolíthatja el a rendszer által hozzárendelt felügyelt identitást egy olyan alkalmazásból, amely már nem igényli azt:
@@ -80,7 +80,7 @@ A következő paranccsal távolíthatja el a rendszer által hozzárendelt felü
 az spring-cloud app identity remove -n app_name -s service_name -g resource_group_name
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Felügyelt identitások használata a Java SDK-val](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Felügyelt identitásokkal rendelkező Azure Key Vault elérése a Spring boot Starter-ben](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)

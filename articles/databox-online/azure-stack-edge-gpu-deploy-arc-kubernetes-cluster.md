@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268193"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322024"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge GPU-eszközön
 
@@ -59,7 +59,7 @@ Mielőtt engedélyezi az Azure arc használatát a Kubernetes-fürtön, győződ
 
 ## <a name="register-kubernetes-resource-providers"></a>Kubernetes erőforrás-szolgáltató regisztrálása
 
-Mielőtt a Kubernetes-fürtöt az Azure arc használatával konfigurálja, engedélyeznie kell és regisztrálnia kell az `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` előfizetését. 
+Mielőtt engedélyezi az Azure arc-t a Kubernetes-fürtön, engedélyeznie kell és regisztrálnia kell az `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` előfizetését. 
 
 1. Az erőforrás-szolgáltató engedélyezéséhez a Azure Portal lépjen az üzembe helyezéshez használni kívánt előfizetésre. Nyissa meg az **erőforrás-szolgáltatókat**. 
 1. A jobb oldali ablaktáblában keresse meg a hozzáadni kívánt szolgáltatókat. Ebben a példában a `Microsoft.Kubernetes` és a `Microsoft.KubernetesConfiguration` .
@@ -88,7 +88,7 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
 
 1. Egyszerű szolgáltatásnév létrehozásához használja a következő parancsot a on `az cli` .
 
-    `az as sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
     A alkalmazásba való bejelentkezéssel kapcsolatos információkért `az cli` [indítsa el a Cloud Shell a Azure Portal](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
@@ -142,12 +142,12 @@ Az alábbi lépéseket követve konfigurálhatja a Kubernetes-fürtöt az Azure 
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Az Azure arc Azure Stack Edge-eszközön való üzembe helyezéséhez győződjön meg arról, hogy az [Azure arc támogatott régióját](../azure-arc/kubernetes/overview.md#supported-regions)használja. Az Azure arc jelenleg előzetes verzióban érhető el. 
+    Az Azure arc Azure Stack Edge-eszközön való üzembe helyezéséhez győződjön meg arról, hogy az [Azure arc támogatott régióját](../azure-arc/kubernetes/overview.md#supported-regions)használja. Az Azure arc jelenleg előzetes verzióban érhető el. A paranccsal a parancsmagnak átadandó régió pontos nevét is megtalálhatja a `az account list-locations` parancs használatával.
     
     Alább bemutatunk egy példát:
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "WestEurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
         [10.128.44.240]: PS>
     ```
     
@@ -222,6 +222,6 @@ Az Azure arc-felügyelet eltávolításához kövesse az alábbi lépéseket:
     `Remove-HcsKubernetesAzureArcAgent` 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure arc üzembe helyezésének megismeréséhez lásd: [állapot nélküli php Vendégkönyv alkalmazás üzembe helyezése az Redis-n keresztül az Azure stack Edge-eszközön](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

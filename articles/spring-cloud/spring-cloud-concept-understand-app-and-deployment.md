@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263972"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297535"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Az alkalmazások és az üzembe helyezés ismertetése az Azure Spring Cloud-ban
 
-Az Azure Spring Cloud erőforrás-modelljében az **alkalmazás** és a **telepítés** a két kulcsfontosságú fogalom. Az Azure Spring Cloud-ban az *alkalmazások* egy üzleti alkalmazás vagy egy szolgáltatás absztrakciója.  Egy *központi telepítésben*az *alkalmazás* futtatásakor telepített kód vagy bináris fájl egy verziója.
+Az Azure Spring Cloud erőforrás-modelljében az **alkalmazás** és a **telepítés** a két kulcsfontosságú fogalom. Az Azure Spring Cloud-ban az *alkalmazások* egy üzleti alkalmazás vagy egy szolgáltatás absztrakciója.  Egy *központi telepítésben*az *alkalmazás* futtatásakor telepített kód vagy bináris fájl egy verziója.  Az alkalmazások egy *Azure Spring Cloud Service-példányban*, vagy egyszerűen a *Service-példányban*futnak, ahogy azt a következő mutatja.
 
  ![Alkalmazások és központi telepítések](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+Egyetlen Azure-előfizetésen belül több szolgáltatási példány is lehet, de az Azure Spring Cloud szolgáltatás a legegyszerűbben akkor használható, ha az üzleti alkalmazást vagy a szolgáltatást alkotó összes alkalmazás egyetlen szolgáltatási példányban található.
 
 Az Azure Spring Cloud standard csomag lehetővé teszi, hogy egy alkalmazás egy éles üzembe helyezést és egy átmeneti üzembe helyezést biztosítson, így a kék/zöld üzembe helyezés egyszerűen elvégezhető.
 
@@ -31,7 +33,7 @@ Az alkalmazás szintjén az alábbi funkciók/tulajdonságok vannak meghatározv
 | Egyéni</br>Tartomány | Az egyéni tartomány védelmét biztosító CNAME-rekord |
 | Szolgáltatás</br>Kötés | A fájl és a *ServiceBusTrigger* attribútum function.jsban beállított kötési konfigurációs tulajdonságok |
 | Felügyelt</br>Identitás | A felügyelt identitás Azure Active Directory lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vault |
-| Állandó</br>Tárolás | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
+| Állandó</br>Storage | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
 
 ## <a name="deployment"></a>Üzembe helyezés
 

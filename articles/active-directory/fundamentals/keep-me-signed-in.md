@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054712"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320256"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurálja a "Stay bejelentkezve?" Azure AD-fiókok bekérése
 
@@ -57,7 +57,7 @@ A bejelentkezési hibával kapcsolatos részletek a következőképpen jelennek 
 
 Leállíthatja a felhasználókat, hogy meglássák a megszakítást úgy, **hogy a Megjelenítés lehetőséget** úgy állítja be, hogy a **nem** értékre legyen állítva a speciális védjegyezési beállításokban. Ez letiltja az Azure AD-címtár összes felhasználójának KMSI-kérését.
 
-A feltételes hozzáférés állandó böngésző-munkamenet vezérlőelemeit is használhatja annak megakadályozása érdekében, hogy a felhasználók láthatják a KMSI-kérést. Ez a beállítás lehetővé teszi, hogy letiltsa a KMSI-kérést a felhasználók (például a globális rendszergazdák) felhasználói csoportja számára, anélkül, hogy ez befolyásolná a címtárban található többi felhasználó bejelentkezési viselkedését. További információ: [felhasználói bejelentkezés gyakorisága](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime). 
+A feltételes hozzáférés állandó böngésző-munkamenet vezérlőelemeit is használhatja annak megakadályozása érdekében, hogy a felhasználók láthatják a KMSI-kérést. Ez a beállítás lehetővé teszi, hogy letiltsa a KMSI-kérést a felhasználók (például a globális rendszergazdák) felhasználói csoportja számára, anélkül, hogy ez befolyásolná a címtárban található többi felhasználó bejelentkezési viselkedését. További információ: [felhasználói bejelentkezés gyakorisága](../conditional-access/howto-conditional-access-session-lifetime.md). 
 
 Annak biztosítása érdekében, hogy a KMSI-kérés csak akkor jelenjen meg, ha a felhasználó számára hasznos, a KMSI-kérés szándékosan nem jelenik meg a következő helyzetekben:
 
@@ -68,10 +68,10 @@ Annak biztosítása érdekében, hogy a KMSI-kérés csak akkor jelenjen meg, ha
 * Bejelentkezés a felhasználó vagy a rendszergazda beleegyező folyamata során történik
 * Az állandó böngésző munkamenet-vezérlése feltételes hozzáférési szabályzatban van konfigurálva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a bejelentkezési munkamenet időtúllépését érintő egyéb beállításokról:
 
-* Microsoft 365 – [üresjárati munkamenet időkorlátja](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
-* Azure AD feltételes hozzáférés – [felhasználói bejelentkezés gyakorisága](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
-* Azure Portal – a [címtár szintű inaktivitás időkorlátja](https://docs.microsoft.com/azure/azure-portal/admin-timeout)
+* Microsoft 365 – [üresjárati munkamenet időkorlátja](/sharepoint/sign-out-inactive-users)
+* Azure AD feltételes hozzáférés – [felhasználói bejelentkezés gyakorisága](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure Portal – a [címtár szintű inaktivitás időkorlátja](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

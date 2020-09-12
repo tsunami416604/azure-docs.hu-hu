@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796760"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321191"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
 A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók visszaállítható az összes tulajdonságával együtt. A 30 napos időszak után a rendszer automatikusan és véglegesen törli a felhasználót.
@@ -79,7 +79,7 @@ Véglegesen törölheti a felhasználót a szervezetből anélkül, hogy az auto
 
     ![Felhasználók – törölt felhasználók lap, a felhasználó visszaállítása lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután visszaállította vagy törölte a felhasználókat, a következő alapvető folyamatokat végezheti el:
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)
@@ -88,6 +88,6 @@ Miután visszaállította vagy törölte a felhasználókat, a következő alapv
 
 - [Profil adatainak hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)
 
-- [Vendég felhasználók hozzáadása egy másik szervezethez](../b2b/what-is-b2b.md)
+- [Vendég felhasználók hozzáadása egy másik szervezethez](../external-identities/what-is-b2b.md)
 
 További információ az [Azure ad](../users-groups-roles/index.yml)-beli felhasználói felügyeleti feladatokról.

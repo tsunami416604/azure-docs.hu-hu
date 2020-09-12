@@ -3,12 +3,12 @@ title: Rendszerállapot visszaállítása Windows Serverre
 description: Részletes útmutató a Windows Server rendszerállapotának az Azure-beli biztonsági másolatból történő visszaállításához.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178586"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377437"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -56,7 +56,7 @@ A következő lépések bemutatják, hogyan állíthatja vissza a Windows Server
 
 8. Ellenőrizze a helyreállítás részleteit a **megerősítő** ablaktáblán, és válassza a **helyreállítás**lehetőséget.
 
-   ![kattintson a helyreállítás gombra a helyreállítási művelet visszaigazolásához](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![Válassza a helyreállítás lehetőséget a helyreállítási művelet visszaigazolásához](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. Másolja a helyreállítási célhelyen található *WindowsImageBackup* könyvtárat a kiszolgáló nem kritikus kötetére. A Windows operációsrendszer-kötet általában a kritikus kötet.
 
@@ -104,7 +104,7 @@ A következő lépésekben használt terminológiák a következők:
 
 11. Ellenőrizze a helyreállítás részleteit a megerősítő ablaktáblán, és kattintson a **helyreállítás**elemre.
 
-    ![kattintson a helyreállítás gombra a helyreállítási folyamat megerősítéséhez](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![Kattintson a helyreállítás gombra a helyreállítási folyamat megerősítéséhez](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Másolja a *WindowsImageBackup* könyvtárat a kiszolgáló nem kritikus kötetére (például D: \) ). Általában a Windows operációs rendszer kötete a kritikus kötet.
 
@@ -244,6 +244,6 @@ Ha a rendszerállapot alkalmazásának előző folyamata nem fejeződött be sik
 
      ![Az összes kötet helyreállítása](./media/backup-azure-restore-system-state/winre-6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy helyreállítja a fájlokat és mappákat, [kezelheti a biztonsági mentéseket](backup-azure-manage-windows-server.md).

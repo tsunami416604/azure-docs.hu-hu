@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268030"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318981"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes munkaterhelés-kezelés az Azure Stack Edge-eszközön
 
@@ -47,7 +47,7 @@ A munkaterhelések üzembe helyezésének három fő módja van. Az üzembe hely
 
 ![Kubernetes munkaterhelés üzembe helyezése](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Helyi telepítés**: ez egy parancssori hozzáférési eszközön keresztül történik, `kubectl` amely lehetővé teszi a Kubernetes üzembe helyezését `yamls` . A Kubernetes-fürthöz a fájllal létrehozott Azure Stack szélén csatlakozhat `kubeconfig` . További információért látogasson el a [Kubernetes-fürt eléréséhez a kubectl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- **Helyi telepítés**: Ez a központi telepítés a parancssori hozzáférési eszközön keresztül történik, például `kubectl` lehetővé teszi a Kubernetes üzembe helyezését `yamls` . A Kubernetes-fürtöt egy fájlon keresztül érheti el az Azure Stack Edge-ben `kubeconfig` . További információért látogasson el a [Kubernetes-fürt eléréséhez a kubectl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 - **IoT Edge**üzemelő példány: ez a IoT Edgeon keresztül történik, amely az Azure IoT hubhoz csatlakozik. Az Azure Stack Edge-eszközön a névtéren keresztül csatlakozik a Kubernetes-fürthöz `iotedge` . Az ebben a névtérben üzembe helyezett IoT Edge ügynökök felelősek az Azure-hoz való csatlakozásért. A `IoT Edge deployment.json` konfigurációt az Azure DEVOPS CI/CD használatával alkalmazhatja. A névtér és a IoT Edge kezelése a Cloud Operator használatával történik.
 
@@ -59,12 +59,12 @@ Az alkalmazások központi telepítése során vegye figyelembe a következő in
 
 - Egy **vagy több típus**: egyetlen központi telepítési lehetőség vagy különböző telepítési lehetőségek kombinációja is kiválasztható.
 - A felhő és a **helyi**környezet: az alkalmazástól függően a helyi telepítést a kubectl vagy a Cloud deployment használatával IoT Edge és az Azure arc segítségével választhatja ki. 
-    - A helyi üzembe helyezés a fejlesztési forgatókönyvekhez alkalmasabb. Ha helyi központi telepítést választ, arra a hálózatra korlátozódik, amelyben az Azure Stack Edge-eszköz telepítve van.
+    - Ha helyi központi telepítést választ, arra a hálózatra korlátozódik, amelyben az Azure Stack Edge-eszköz telepítve van.
     - Ha van olyan felhőalapú ügynöke, amelyet üzembe helyezhet, üzembe helyezheti a Felhőbeli operátort, és használhatja a felhőalapú felügyeletet.
-- **IoT vs Azure arc**: az üzembe helyezés megválasztása a termék forgatókönyvének szándékával is függ. Ha olyan alkalmazásokat vagy tárolókat helyez üzembe, amelyek mélyebb integrációt végeznek a IoT vagy a IoT ökoszisztémával, akkor ki kell választania az alkalmazások központi telepítésének IoT Edge módját. Ha már rendelkezik Kubernetes üzemelő példányokkal, az Azure arc az előnyben részesített választás lenne.
+- **IoT vs Azure arc**: az üzembe helyezés megválasztása a termék forgatókönyvének szándékával is függ. Ha olyan alkalmazásokat vagy tárolókat helyez üzembe, amelyek mélyebb integrációt végeznek a IoT vagy a IoT ökoszisztémával, válassza az IoT Edge lehetőséget az alkalmazások telepítéséhez. Ha már rendelkezik Kubernetes üzemelő példányokkal, az Azure arc az előnyben részesített választás lenne.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha helyileg szeretné telepíteni az alkalmazást a kubectl-on keresztül, olvassa el a következőt:
 
@@ -76,4 +76,4 @@ Alkalmazás IoT Edgeon keresztüli üzembe helyezéséhez lásd:
 
 Az alkalmazások Azure arc használatával történő üzembe helyezéséhez lásd:
 
-- [Alkalmazás üzembe helyezése az Azure arc használatával](azure-stack-edge-gpu-deploy-sample-module.md).
+- [Alkalmazás üzembe helyezése az Azure arc használatával](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).

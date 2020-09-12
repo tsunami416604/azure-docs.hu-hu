@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ec79fc7c09f2bc1aeb2c07016365e831932fa1ff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018110"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377318"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -197,6 +197,6 @@ Igen, legfeljebb 100 virtuális gép lehet, amely ugyanahhoz a biztonsági ment�
 
 Jelenleg a virtuális géphez rendelt biztonsági mentési házirend alapján megtekintheti a biztonsági mentési elem (VM) szintjén megőrzött adatmegőrzési beállításokat.
 
-A biztonsági másolatok megőrzési beállításainak megtekintésére az egyik lehetőség, hogy megkeresi a virtuális gép biztonsági mentési elemének [irányítópultját](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) a Azure Portal. A biztonsági mentési házirendre mutató hivatkozásra kattintva megtekintheti a virtuális géphez társított napi, heti, havi és éves adatmegőrzési pontok megőrzési időtartamát.
+A biztonsági másolatok megőrzési beállításainak megtekintésére az egyik lehetőség, hogy megkeresi a virtuális gép biztonsági mentési elemének [irányítópultját](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) a Azure Portal. A biztonsági mentési házirendre mutató hivatkozás kiválasztásával megtekintheti a virtuális géphez társított napi, heti, havi és éves adatmegőrzési pontok megőrzési időtartamát.
 
 A [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) használatával megtekintheti az összes virtuális gép megőrzési beállításait egyetlen ablaktáblán belül. Keresse meg a Backup Explorert bármely Recovery Services-tárolóból, nyissa meg a **biztonsági mentési elemek** lapot, és válassza ki a speciális nézetet az egyes virtuális gépek részletes adatmegőrzési adatainak megtekintéséhez.

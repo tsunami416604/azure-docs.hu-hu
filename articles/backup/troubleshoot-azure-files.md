@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001739"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376978"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -51,7 +51,7 @@ Próbálja megismételni a regisztrációt. Ha a probléma továbbra is fennáll
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Nem sikerült törölni a Recovery Services tárolót a fájlmegosztás feloldása után
 
-A Azure Portal nyissa **meg a tároló**  >  **biztonsági mentési infrastruktúrájának**  >  **Storage-fiókjait** , és kattintson a **regisztráció megszüntetése** gombra a Storage-fiókok Recovery Services-tárból való eltávolításához.
+A Azure Portal nyissa **meg a**  >  tároló**biztonsági mentési infrastruktúrájának**  >  **Storage-fiókjait**. Válassza a **regisztráció** törlése elemet a Storage-fiókok Recovery Services-tárolóból való eltávolításához.
 
 >[!NOTE]
 >Recovery Services-tárolót csak a tárolóban regisztrált összes Storage-fiók regisztrációjának törlése után lehet törölni.

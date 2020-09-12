@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178011"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376179"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -198,7 +198,7 @@ A biztonsági mentési művelet nem sikerült, mert inkonzisztens állapotú a b
 
 * Ellenőrizze, hogy a vendégügynök telepítve van-e és működik-e
 * A Azure Portal lépjen a **virtuális gép**  >  **minden beállítás**  >  **bővítmények** elemre.
-* Válassza ki a VmSnapshot vagy a VmSnapshotLinux nevű biztonsági mentési bővítményt, és kattintson az **Eltávolítás** elemre
+* Válassza ki a biztonsági mentési bővítmény VmSnapshot vagy VmSnapshotLinux, és válassza az **Eltávolítás**lehetőséget.
 * A biztonsági mentési bővítmény törlését követően próbálja megismételni a biztonsági mentési műveletet.
 * Ez a biztonsági mentési művelet a kívánt állapotban fogja telepíteni az új bővítményt
 
@@ -363,7 +363,7 @@ Ellenőrizze a virtuálisgép-ügynök verzióját a Windows rendszerű virtuál
 1. Jelentkezzen be az Azure-beli virtuális gépre, és navigáljon a **C:\WindowsAzure\Packages**mappába. Keresse meg a **WaAppAgent.exe** fájlt.
 2. Kattintson a jobb gombbal a fájlra, és válassza a **Tulajdonságok menüpontot**. Ezután válassza a **részletek** lapot. A **termék verzió** mezőjének 2.6.1198.718 vagy magasabbnak kell lennie.
 
-## <a name="troubleshoot-vm-snapshot-issues"></a>VIRTUÁLIS gépek pillanatképével kapcsolatos problémák elhárítása
+## <a name="troubleshoot-vm-snapshot-issues"></a>Virtuális gépek pillanatképpel kapcsolatos problémáinak elhárítása
 
 A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolgáló tárolóra támaszkodik. Ha nem fér hozzá a tárolóhoz, vagy késések vannak a pillanatképek futtatásához, a biztonsági mentési feladat sikertelen lehet. A következő feltételek okozhatnak pillanatkép-feladathoz tartozó hibát:
 

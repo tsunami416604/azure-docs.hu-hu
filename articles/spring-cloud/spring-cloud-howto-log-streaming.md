@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fb76f7897b9647a688e21993002f9c96fe9487f8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046748"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299609"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
 Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CLI-ben, hogy valós idejű Application Console-naplókat kapjon a hibaelhárításhoz. [A naplók és a metrikák is elemezhetők a diagnosztikai beállítások](./diagnostic-services.md)használatával.
@@ -20,7 +20,7 @@ Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CL
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse az [Azure CLI-bővítményt](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) a Spring Cloud számára, a minimális verzió 0.2.0.
-* Egy futó alkalmazást használó **Azure Spring Cloud** -példány, például a [Spring Cloud app](./spring-cloud-quickstart-launch-app-cli.md).
+* Egy futó alkalmazást használó **Azure Spring Cloud** -példány, például a [Spring Cloud app](./spring-cloud-quickstart.md).
 
 > [!NOTE]
 >  Az ASC CLI-bővítmény frissítve lett a 0.2.0 verzióról a 0.2.1-re. Ez a változás hatással van a naplózási streaming parancs szintaxisára: `az spring-cloud app log tail` , amelyet a következő váltja fel: `az spring-cloud app logs` . A következő parancs `az spring-cloud app log tail` egy későbbi kiadásban lesz elavult:. Ha már használta a 0.2.0 verziót, a 0.2.1-re frissíthet. Először távolítsa el a régi verziót a paranccsal: `az extension remove -n spring-cloud` .  Ezután telepítse a 0.2.1 a parancs használatával: `az extension add -n spring-cloud` .

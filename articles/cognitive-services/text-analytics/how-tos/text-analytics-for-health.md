@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167691"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300068"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -91,7 +91,7 @@ Több módon is telepítheti és futtathatja a tárolót.
 Az Azure [Web App for containers](https://azure.microsoft.com/services/app-service/containers/) egy Azure-erőforrás, amely a Felhőbeli tárolók futtatására szolgál. Olyan beépített funkciókat kínál, mint például az automatikus skálázás, a Docker-tárolók támogatása és a Docker-összeállítás, a HTTPS-támogatás és még sok más.
 
 > [!NOTE]
-> Az Azure Web App használatával automatikusan egy tartományt fog kapni`<appservice_name>.azurewebsites.net`
+> Az Azure Web App használatával automatikusan egy tartományt fog kapni `<appservice_name>.azurewebsites.net`
 
 Futtassa ezt a PowerShell-szkriptet az Azure CLI használatával egy Web App for Containers létrehozásához, az előfizetése és a tároló-rendszerkép használatával a HTTPS protokollon keresztül. Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.
 
@@ -161,11 +161,11 @@ Alapértelmezés szerint az ACI és a Container API használatával nem biztosí
 
 #### <a name="set-up-nginx-as-an-ingress-gateway"></a>NGINX beállítása bejövő átjáróként
 
-A NGINX [konfigurációs fájlokat](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) használ a funkciók futásidőben történő engedélyezéséhez. Egy másik szolgáltatás TLS-megszakításának engedélyezéséhez meg kell adnia egy SSL-tanúsítványt a TLS-kapcsolat megszakításához és a `proxy_pass` szolgáltatáshoz tartozó címek megadásához. Alább látható egy minta.
+A NGINX [konfigurációs fájlokat](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) használ a funkciók futásidőben történő engedélyezéséhez. Egy másik szolgáltatás TLS-megszakításának engedélyezéséhez meg kell adnia egy SSL-tanúsítványt a TLS-kapcsolat megszakításához és a  `proxy_pass` szolgáltatáshoz tartozó címek megadásához. Alább látható egy minta.
 
 
 > [!NOTE]
-> `ssl_certificate`az NGINX-tároló helyi fájlrendszerében megadható elérési utat vár. A számára megadott címnek `proxy_pass` elérhetőnek kell lennie az NGINX-tároló hálózatán belül.
+> `ssl_certificate` az NGINX-tároló helyi fájlrendszerében megadható elérési utat vár. A számára megadott címnek `proxy_pass` elérhetőnek kell lennie az NGINX-tároló hálózatán belül.
 
 Az NGINX-tároló betölti az összes olyan fájlt, `_.conf_` amely a http- `/etc/nginx/conf.d/` konfigurációs elérési úton van csatlakoztatva.
 
@@ -399,22 +399,19 @@ A kapcsolat extrakciós kimenete a kapcsolat *forrására* és *CÉLJÁra*vonatk
 
 ```json
 "relations": [
-  {
-      "relationType": "DosageOfMedication",
-      "score": 1.0,
-      "bidirectional": false,
-      "source": "#/documents/2/entities/0",
-      "target": "#/documents/2/entities/1",
-      "entities": [
-          {
-              "id": "0",
-              "role": "ATTRIBUTE"
-          },
-          {
-              "id": "1",
-              "role": "ENTITY"
-          }
-      ]
+                {
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
+                },
+                {
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
+                }
+            ]
   },
 ...
 ]

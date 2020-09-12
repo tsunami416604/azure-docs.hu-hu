@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202248"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297790"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API a válasz szerkezete és a válaszok típusai  
 
@@ -294,17 +294,17 @@ A matematikai kifejezések a következő szimbólumokat tartalmazhatják:
 |------------|-----------------|
 |+|Összeadás|
 |-|Kivonás|
-|/|Osztás|
+|/|Részleg|
 |*|Szorzás|
 |^|Energiaellátás|
 |!|Faktoriális|
-|.|Decimal|
+|.|Tizedesjegy|
 |()|Sorrend csoportosítása|
 |[]|Függvény|
 
 A matematikai kifejezések a következő állandókat tartalmazhatják:
 
-|Szimbólum|Leírás|
+|Szimbólum|Description|
 |------------|-----------------|
 |Pi|3,14159...|
 |Fokú|Fokú|
@@ -314,7 +314,7 @@ A matematikai kifejezések a következő állandókat tartalmazhatják:
 
 A matematikai kifejezések a következő függvényeket tartalmazhatják:
 
-|Szimbólum|Leírás|
+|Szimbólum|Description|
 |------------|-----------------|
 |Rendezés|Szögletes gyökér|
 |Sin [x], cos [x], Tan [x]<br />CSC [x], MP [x], gyermekágy [x]|Trigonometriai függvények (radiánban megadott argumentumokkal)|
@@ -435,7 +435,7 @@ Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a v�
 
 A Bing Web Search API által küldött válaszok a következő fejléceket tartalmazhatják:
 
-| Fejléc | Leírás |
+| Fejléc | Description |
 |-|-|
 |`X-MSEdge-ClientID`|A Bing által a felhasználóhoz hozzárendelt egyedi azonosító|
 |`BingAPIs-Market`|A kérelem teljesítéséhez használt piac|
@@ -445,7 +445,7 @@ Különösen fontos az ügyfél-azonosító megőrzése, és a későbbi kérelm
 
 Ha azonban a Bing Web Search API a JavaScriptből hívja meg, a böngésző beépített biztonsági funkciói (CORS) megakadályozhatják a fejlécek értékének elérését.
 
-A fejlécek eléréséhez a Bing Web Search API kérelmet CORS-proxyn keresztül teheti meg. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+A fejlécek eléréséhez a Bing Web Search API kérelmet CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely a válaszok fejléceit szűri, és elérhetővé teszi őket a JavaScript számára.
 
 Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](tutorial-bing-web-search-single-page-app.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
@@ -476,7 +476,7 @@ Az alábbi ábrán látható, hogyan használja a Bing a helyesírási javaslato
 
 ![Bing – helyesírási javaslat – példa](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * Felülvizsgálati [kérelem szabályozási](throttling-requests.md) dokumentációja.  
 

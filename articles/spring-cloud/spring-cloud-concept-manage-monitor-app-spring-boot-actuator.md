@@ -7,19 +7,19 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037593"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299507"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Alkalmazás kezelése és monitorozása az Azure Spring Boot Actuatorrel
 
 Miután telepítette az új bináris alkalmazást az alkalmazásba, érdemes megtekinteni a funkciót, és megtekintheti a futó alkalmazással kapcsolatos információkat. Ez a cikk azt ismerteti, hogyan érheti el az API-t egy Azure Spring Cloud által biztosított tesztelési végpontból, és elérhetővé teheti az alkalmazás éles használatra kész funkcióit.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk azt feltételezi, hogy van egy Spring boot 2. x alkalmazás, amely sikeresen üzembe helyezhető és indítható az Azure Spring Cloud Service-ben.  Lásd [: gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md)
+Ez a cikk azt feltételezi, hogy van egy Spring boot 2. x alkalmazás, amely sikeresen üzembe helyezhető és indítható az Azure Spring Cloud Service-ben.  Lásd [: gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>Alkalmazás ellenőrzése tesztelési végponton keresztül
 1. Lépjen az **alkalmazás irányítópultra** , és kattintson az alkalmazásra az alkalmazás – áttekintés oldal megadásához.
@@ -63,15 +63,15 @@ A konfiguráció és a konfigurálható környezet megfigyeléséhez engedélyez
 Most visszatérhet az alkalmazás áttekintés paneljére, és megvárhatja, amíg a kiépítési állapot "sikeres" állapotúra nem változik.  Több futó példány is lesz.
 
 > [!Note] 
-> Miután közzétette az alkalmazást a nyilvánosság számára, ezek az indítószerkezet-végpontok nyilvánosan is elérhetővé válnak. Az összes végpontot elrejtheti a környezeti változók törlésével `management.endpoints.web.exposure.include` , és beállíthatja a`management.endpoints.web.exposure.exclude=*`
+> Miután közzétette az alkalmazást a nyilvánosság számára, ezek az indítószerkezet-végpontok nyilvánosan is elérhetővé válnak. Az összes végpontot elrejtheti a környezeti változók törlésével `management.endpoints.web.exposure.include` , és beállíthatja a `management.endpoints.web.exposure.exclude=*`
 
 ## <a name="view-the-actuator-endpoint-to-view-application-information"></a>Az alkalmazás adatainak megtekintéséhez az indítószerkezet végpontjának megtekintése
 1. Most már elérheti az URL-címet `"<test-endpoint>/actuator/"` , és megtekintheti a Spring boot-működtető által elérhető összes végpontot.
 1. Hozzáférési URL-cím `"<test-endpoint>/actuator/env"` : megtekintheti az alkalmazás által használt aktív profilokat, valamint az összes betöltött környezeti változót.
-1. Ha egy adott környezetben szeretne keresni, elérheti az URL-címet, `"<test-endpoint>/actuator/env/{toMatch}"` és megtekintheti azt.
+1. Ha egy adott környezetben szeretne keresni, elérheti az URL-címet,  `"<test-endpoint>/actuator/env/{toMatch}"` és megtekintheti azt.
 
 A beépített összes végpont megtekintéséhez lásd: [végpontok](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints) kimutatása
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az Azure Spring Cloud metrikáinak ismertetése](spring-cloud-concept-metrics.md)
 * [Az alkalmazás állapotának megértése az Azure Spring Cloud-ban](spring-cloud-concept-app-status.md))

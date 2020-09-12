@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d8f3b4d57f00ef33bbf566c36babafd83be9a5df
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037312"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299626"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
 Az Azure Spring Cloud Diagnostics egy interaktív felület, amely segítséget nyújt az alkalmazás hibakeresésében. Nem igényel konfigurálást. Ha problémákat tapasztal, az Azure Spring Cloud Diagnostics arra utal, hogy mi a probléma, és útmutatást nyújt a problémák elhárításához és megoldásához.
@@ -20,8 +20,8 @@ Az Azure Spring Cloud Diagnostics egy interaktív felület, amely segítséget n
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart-launch-app-cli.md) útmutatót.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart.md) útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Navigáljon a diagnosztika lapra
@@ -52,6 +52,6 @@ Egyes eredmények kapcsolódó dokumentációt tartalmaznak.
 
  ![Kapcsolódó részletek](media/spring-cloud-diagnose/related-details.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Spring Cloud-erőforrások monitorozása riasztások és műveletcsoportok használatával](spring-cloud-tutorial-alerts-action-groups.md)
 * [Az Azure Spring Cloud Service biztonsági vezérlői](spring-cloud-concept-security-controls.md)

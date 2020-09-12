@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268074"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318964"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes szerepköralapú Access Control az Azure Stack Edge GPU-eszközön
 
@@ -32,10 +32,7 @@ A Kubernetes-fürt beállításakor a rendszer egyetlen felhasználót hoz létr
 
 A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések logikailag vannak csoportosítva egy névtérbe. Ezek a csoportok lehetővé teszik a Kubernetes-fürtök logikai felosztását, valamint az erőforrások létrehozásához, megtekintéséhez vagy kezeléséhez való hozzáférés korlátozását. A felhasználók csak a hozzájuk rendelt névterekben lévő erőforrásokkal tudnak kommunikálni.
 
-A névterek olyan környezetekben használhatók, amelyekben számos felhasználó több csapat vagy projekt között oszlik meg. A több tízezer felhasználót tartalmazó fürtök esetében egyáltalán nem kell létrehoznia vagy gondolnia a névtereket. A névterek használatának megkezdése, ha szüksége van az általuk nyújtott szolgáltatásokra.
-
-További információ: Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
-
+A névterek olyan környezetekben használhatók, amelyekben számos felhasználó több csapat vagy projekt között oszlik meg. További információ: Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
 Az Azure Stack Edge-eszköz a következő névterekkel rendelkezik:
 
@@ -47,20 +44,18 @@ Az Azure Stack Edge-eszköz a következő névterekkel rendelkezik:
     - dbe – névtér
     - alapértelmezett
     - kubernetes – irányítópult
-    - alapértelmezett
     - Kube – csomópont-bérlet
     - Kube – nyilvános
-    - iotedge
-    - Azure – ív
+
 
     Ügyeljen arra, hogy ne használjon fenntartott neveket a létrehozott felhasználói névterekhez. 
 <!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
 
-- **Felhasználói névtér** – ezek azok a névterek, amelyeket a **kubectl** segítségével hozhat létre helyileg, alkalmazások helyi telepítéséhez.
+- **Felhasználói névtér** – ezek azok a névterek, amelyeket a **kubectl** vagy az eszköz PowerShell-felületén keresztül hozhat létre az alkalmazások helyi telepítéséhez.
  
-- **IoT Edge névtér** – ehhez a névtérhez kapcsolódhat az `iotedge` alkalmazások IoT Edge használatával történő telepítéséhez.
+- **IoT Edge névtér** – ehhez a `iotedge` névtérhez kapcsolódhat IoT Edge használatával telepített alkalmazások kezeléséhez.
 
-- **Azure arc-névtér** – ehhez a névtérhez kapcsolódhat az `azure-arc` Azure arc használatával történő alkalmazások telepítéséhez. 
+- **Azure arc-névtér** – ehhez a névtérhez kapcsolódhat az `azure-arc` Azure arc használatával üzembe helyezett alkalmazások kezeléséhez. Az Azure arc használatával más felhasználói névterekben is telepíthet alkalmazásokat. 
 
 ## <a name="namespaces-and-users"></a>Névterek és felhasználók
 
@@ -96,7 +91,7 @@ Itt látható egy diagram, amely a RBAC Azure Stack Edge-eszközön való megval
 
 Ebben az ábrában Alice, Bob és Chuck csak a hozzárendelt felhasználói névterekhez fér hozzá, ami ebben az esetben a, a `ns1` `ns2` és a `ns3` . Ezeken a névtereken belül rendszergazdai hozzáférésük van. A fürt rendszergazdájának viszont rendszergazdai hozzáférése van a rendszer névteréhez és a fürtre kiterjedő erőforrásokhoz.
 
-`kubectl`Parancsok használatával névtereket hozhat létre, felhasználókat rendelhet hozzá, felhasználókat rendelhet hozzá, vagy fájlokat tölthet le `kubeconfig` . Magas szintű munkafolyamat:
+`kubectl`Parancsok használatával névtereket és felhasználókat hozhat létre, felhasználókat rendelhet hozzá a névterekhez vagy fájlokat tölthet le `kubeconfig` . Magas szintű munkafolyamat:
 
 1. Hozzon létre egy névteret és egy felhasználót.  
 
@@ -123,10 +118,10 @@ Ha névtereket és felhasználókat használ a Azure Stack Edge-eszközökön, a
 - Létrehozhat felhasználói névtereket, és ezeken a névterekben létrehozhat további felhasználókat, és engedélyezheti vagy visszavonhatja a névtér elérését a felhasználók számára.
 - Nem hozhat létre olyan névtereket, amelyek neve megegyezik a rendszernévtér bármely rendszernévterével. A rendszernévtér neve fenntartva.  
 - Nem hozhat létre olyan felhasználói névtereket, amelyek más felhasználói névterek által már használt névvel rendelkeznek. Ha például Ön létrehozta a t `test-ns` , nem hozhat létre újabb `test-ns` névteret.
-- A már fenntartott névvel rendelkező felhasználókat nem lehet létrehozni. Például `aseuser` egy fenntartott fürt rendszergazdája, és nem használható.
+- A már fenntartott névvel rendelkező felhasználókat nem lehet létrehozni. Például `aseuser` egy fenntartott felhasználó, és nem használható.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan hozhat létre egy felhasználót, hozzon létre egy névteret, és engedélyezze a hozzáférést a névtérhez, tekintse meg a [Kubernetes-fürt elérése a kubectl keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakört.
 

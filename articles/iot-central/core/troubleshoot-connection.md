@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958099"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322449"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Central
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 Az eszköz által küldött telemetria figyeléséhez használja a következő parancsot:
 
 ```cmd/bash
-az iot central app monitor-events --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Ha az eszköz sikeresen csatlakozott a IoT Centralhoz, a következőhöz hasonló kimenet jelenik meg:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Ha figyelni szeretné a tulajdonság frissítését, az eszköz IoT Central a következő előnézeti paranccsal végez cserét:
 
 ```cmd/bash
-az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Ha az eszköz sikeresen elküldte a tulajdonságokat, a következőhöz hasonló kimenet jelenik meg:
@@ -106,7 +106,7 @@ Ha továbbra sem jelenik meg az adatok a terminálon, akkor valószínű, hogy a
 Ha az adatai nem jelennek meg a figyelőben, ellenőrizze az eszköz kiépítési állapotát a következő parancs futtatásával:
 
 ```cmd/bash
-az iot central app device registration-info --app-id <app-id> --device-id <device-name>
+az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Az alábbi kimenet egy olyan eszközt mutat be, amely nem kapcsolódik a csatlakozáshoz:
@@ -129,9 +129,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
+| Eszköz kiépítési állapota | Description | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | n.a. |
+| Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
 | Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#connect-without-registering-devices) |
@@ -149,7 +149,7 @@ Az alábbi táblázatokban a gyakori hibakódok és a kockázatcsökkentő lehet
 
 Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
 
-| Hibakód | Leírás | Lehetséges enyhítés |
+| Hibakód | Description | Lehetséges enyhítés |
 | - | - | - |
 | 400 | A kérelem törzse érvénytelen. Például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni. | Győződjön meg arról, hogy a megfelelő kérés törzsét küldi el az igazolási folyamat részeként, vagy használjon egy eszköz SDK-t. |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |
@@ -176,13 +176,13 @@ Ha szeretné megállapítani, hogy a probléma melyik kategóriába esik, futtas
 - A telemetria érvényesítéséhez használja az előnézet parancsot:
 
     ```cmd/bash
-    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - A tulajdonságok frissítéseinek ellenőrzéséhez használja az előnézet parancsot
 
     ```cmd/bash
-    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 Előfordulhat, hogy a rendszer először a `uamqp` parancs futtatásakor kéri a könyvtár telepítését `validate` .

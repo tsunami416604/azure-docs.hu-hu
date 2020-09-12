@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223856"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300272"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
@@ -61,7 +61,7 @@ Ha a git üzembe helyezése be van állítva, akkor a lap a **git/Deployment fel
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>Felhasználói szintű hitelesítő adatok használata FTP/FTPS
 
-Hitelesítés egy FTP-/FTPS-végponthoz felhasználói szintű hitelesítő adatokkal, amelyek a felhasználónevet a következő formátumban használják:`<app-name>\<user-name>`
+Hitelesítés egy FTP-/FTPS-végponthoz felhasználói szintű hitelesítő adatokkal, amelyek a felhasználónevet a következő formátumban használják: `<app-name>\<user-name>`
 
 Mivel a felhasználói szintű hitelesítő adatok a felhasználóhoz kapcsolódnak, nem pedig egy adott erőforráshoz, a felhasználónévnek ebben a formátumban kell lennie ahhoz, hogy a bejelentkezési műveletet a megfelelő alkalmazás-végpontra irányítsa.
 
@@ -74,6 +74,36 @@ Az alkalmazás szintű hitelesítő adatok beszerzése:
 
 Az alkalmazás szintű hitelesítő adatok alaphelyzetbe állításához válassza a **hitelesítő adatok alaphelyzetbe állítása** ugyanabban a párbeszédablakban lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="disable-basic-authentication"></a>Alapszintű hitelesítés letiltása
+
+Néhány szervezetnek meg kell felelnie a biztonsági követelményeknek, és inkább le kell tiltania az FTP-n vagy a webtelepítésen keresztüli hozzáférést Így a szervezet tagjai csak az Azure Active Directory (Azure AD) által vezérelt API-kkal érhetik el a App Services.
+
+### <a name="ftp"></a>FTP
+
+Ha le szeretné tiltani az FTP-hozzáférést a helyhez, futtassa az alábbi CLI-parancsot. Cserélje le a helyőrzőket az erőforráscsoport és a webhely nevére. 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Annak ellenőrzéséhez, hogy az FTP-hozzáférés le van-e tiltva, megpróbálhat hitelesítést végezni egy FTP-ügyfél, például a FileZilla használatával. A közzétételi hitelesítő adatok lekéréséhez lépjen a webhely áttekintés paneljére, és kattintson a közzétételi profil letöltése elemre. A hitelesítéshez használja a fájl FTP-állomásnevét, felhasználónevét és jelszavát, és egy 401-es hibaüzenetet kap, amely azt jelzi, hogy Ön nem jogosult.
+
+### <a name="webdeploy-and-scm"></a>Webdeploy és SCM
+
+Ha le szeretné tiltani az alapszintű hitelesítési hozzáférést a webtelepítési porthoz és az SCM-helyhez, futtassa az alábbi CLI-parancsot. Cserélje le a helyőrzőket az erőforráscsoport és a webhely nevére. 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Annak ellenőrzéséhez, hogy a közzétételi profil hitelesítő adatai le vannak-e tiltva a webtelepítésben, próbáljon meg [közzétenni egy webalkalmazást a Visual Studio 2019 használatával](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+
+### <a name="disable-access-to-the-api"></a>Az API elérésének letiltása
+
+Az előző szakaszban található API egy Azure szerepköralapú Access Control (RBAC), ami azt jelenti, hogy [létrehozhat egy egyéni szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) , és alacsonyabb priveldged felhasználókat rendelhet hozzá a szerepkörhöz, így az alapszintű hitelesítés nem engedélyezhető egyetlen helyen sem. Az egyéni szerepkör konfigurálásához [kövesse az alábbi utasításokat](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+
+A [Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) használatával is naplózhatja a sikeres hitelesítési kérelmeket, és a [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) használatával kényszerítheti ki ezt a konfigurációt az előfizetésben található összes webhelyre.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja ezeket a hitelesítő adatokat az alkalmazás [helyi git](deploy-local-git.md) -ből való üzembe helyezéséhez, vagy [FTP/S](deploy-ftp.md)használatával.

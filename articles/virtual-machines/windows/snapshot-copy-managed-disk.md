@@ -1,6 +1,6 @@
 ---
-title: Pillanatkép készítése egy virtuális merevlemezről az Azure-ban
-description: Megtudhatja, hogyan hozhat létre másolatot egy Azure-beli virtuális gép biztonsági mentésre vagy hibaelhárítási problémákra való használatra.
+title: Virtuális merevlemez pillanatképének létrehozása a portál vagy a PowerShell használatával
+description: Megtudhatja, hogyan hozhat létre másolatot az Azure-beli virtuális gépekről biztonsági mentésre vagy hibaelhárítási problémákra a portál vagy a PowerShell használatával.
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074130"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322313"
 ---
-# <a name="create-a-snapshot"></a>Pillanatkép létrehozása
+# <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Pillanatkép létrehozása a portál vagy a PowerShell használatával
 
 A pillanatkép egy virtuális merevlemez (VHD) teljes, csak olvasható másolata. Készíthet pillanatképet egy operációsrendszer-vagy adatlemez virtuális merevlemezről, amely biztonsági mentésre használható, illetve a virtuális gép (VM) problémáinak elhárításához.
 
@@ -80,6 +80,6 @@ A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza lé
    ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez pillanatképből történő létrehozásával, majd az új felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. További információkért lásd a [virtuális gép létrehozása pillanatképből a PowerShell használatával](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)című részt.

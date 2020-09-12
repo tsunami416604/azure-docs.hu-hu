@@ -3,12 +3,12 @@ title: Etikai hackelési tesztkörnyezet beállítása Azure Lab Servicesokkal |
 description: Megtudhatja, hogyan állíthatja be a labort a Azure Lab Services használatával az etikai hackerek tanításához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443995"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297586"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához 
 Ez a cikk bemutatja, hogyan állíthat be egy olyan osztályt, amely az etikai feltörések kriminalisztikai oldalára koncentrál. A behatolási teszt, amelyet az etikai hackelési Közösség használ, akkor következik be, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz a rosszindulatú támadó által kihasználható biztonsági rések bemutatására. 
@@ -18,7 +18,7 @@ Egy etikai hackelési osztályban a tanulók modern technikákat tanulnak a bizt
 Ez a cikk két fő szakaszt tartalmaz. Az első szakasz ismerteti, hogyan hozhatja létre az osztályterem labort. A második szakasz ismerteti, hogyan hozhatja létre a sablon gépet, amelyen engedélyezve van a beágyazott virtualizálás, valamint a szükséges eszközök és lemezképek. Ebben az esetben a Metasploitable-lemezkép és a Kali Linux-lemezkép egy olyan gépen, amelyen engedélyezve van a Hyper-V a lemezképek üzemeltetéséhez.
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
+A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
 
 [Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, majd alkalmazza a következő beállításokat:
 
@@ -74,7 +74,7 @@ A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált r
 1. Válassza a **Letöltés Metasploitable most** gombot.
 1. A zip-fájl letöltésekor bontsa ki a zip-fájlt, és jegyezze fel a helyet.
 1. Alakítsa át a kinyert VMDK-fájlt egy vhdx-fájlba, hogy a a Hyper-V használatával is használható legyen. Ehhez nyissa meg a PowerShellt rendszergazdai jogosultságokkal, és navigáljon arra a mappára, ahol a VMDK fájl található, és kövesse az alábbi utasításokat:
-    1. Töltse le a [Microsoft Virtual Machine Convertert](https://www.microsoft.com/download/details.aspx?id=42497), és amikor a rendszer kéri, futtassa mvmc_setup.msi fájlt.
+    1. Töltse le a [Microsoft Virtual Machine Convertert](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi), és amikor a rendszer kéri, futtassa mvmc_setup.msi fájlt.
     1. Importálja a PowerShell modult.  A modul telepítési alapértelmezett helye: C:\Program Files\Microsoft Virtual Machine Converter \
 
         ```powershell
@@ -117,7 +117,7 @@ A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált r
 A sablon frissítve lett, és a rendszerképek szükségesek egy etikai hackelési bevezetési tesztelési osztályhoz, amely egy olyan eszközzel rendelkezik, amely a behatolási teszteket és egy másik, biztonsági réseket felderítő képet tartalmaz. A sablon képe mostantól közzétehető az osztályban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.
   
 
-## <a name="cost"></a>Költségek  
+## <a name="cost"></a>Cost  
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
  
 Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
@@ -129,7 +129,7 @@ További információ a díjszabásról: [Azure Lab Services díjszabása](https
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a tesztkörnyezet etikai feltörési osztályhoz való létrehozásának lépésein. Ez magában foglalja a beágyazott virtualizálás beállításának lépéseit két virtuális gép létrehozásához a gazda virtuális gépen az áthatoló tesztelés érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépések közösek a laborok beállításához:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

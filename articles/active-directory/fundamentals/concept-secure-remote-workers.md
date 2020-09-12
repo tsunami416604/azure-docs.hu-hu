@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204948"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320035"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Az Azure AD-vel gyorsan reagálhat a biztonságos identitásokra
 
@@ -51,11 +51,11 @@ A következő táblázat számos javaslatot tartalmaz arra vonatkozóan, hogy in
 - Microsoft 365 (M365 Business, a1)
 - Ingyenes Azure AD (az Azure, a Dynamics 365, az Intune és a Power platform részeként)
 
-| Javasolt művelet | Részlet |
+| Javasolt művelet | Részletek |
 | --- | --- |
 | [Biztonsági alapértékek engedélyezése](concept-fundamentals-security-defaults.md) | Az összes felhasználói identitás és alkalmazás védetté tétele az MFA engedélyezésével és a régi hitelesítés blokkolásával |
 | [Jelszó-kivonat szinkronizálásának engedélyezése](../hybrid/how-to-connect-password-hash-synchronization.md) (hibrid identitások használata esetén) | Redundancia biztosítása a hitelesítéshez és a biztonság növelése (beleértve az intelligens zárolást, az IP-zárolást és a kiszivárgott hitelesítő adatok felderítésének lehetőségét) |
-| [Az ADFS intelligens zárolásának engedélyezése](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (ha van ilyen) | Megvédi a felhasználókat abban, hogy rosszindulatú tevékenységekből származó extranetes fiókzárolási problémát tapasztalnak. |
+| [Az ADFS intelligens zárolásának engedélyezése](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (ha van ilyen) | Megvédi a felhasználókat abban, hogy rosszindulatú tevékenységekből származó extranetes fiókzárolási problémát tapasztalnak. |
 | [Azure Active Directory intelligens zárolás engedélyezése](../authentication/howto-password-smart-lockout.md) (felügyelt identitások használata esetén) | Az intelligens zárolás segíti a felhasználók jelszavainak kiszűrését, illetve a találgatásos kényszerítési módszerek használatát. |
 | [Végfelhasználói engedély letiltása az alkalmazásokhoz](../manage-apps/configure-user-consent.md) | A rendszergazdai hozzájárulási munkafolyamat lehetővé teszi a rendszergazdák számára, hogy hozzáférést biztosítanak a rendszergazdai jóváhagyást igénylő alkalmazásokhoz, így a végfelhasználók nem tehetik elérhetővé a vállalati adatszolgáltatásokat. A Microsoft javasolja a jövőbeli felhasználói engedélyezési műveletek letiltását a felület csökkentése és a kockázat enyhítése érdekében. |
 | [Támogatott SaaS-alkalmazások integrálása a katalógusból az Azure AD-be és az egyszeri bejelentkezés engedélyezése](../manage-apps/add-application-portal.md) | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz. A szervezet által használt alkalmazások némelyike valószínűleg a katalógusban érhető el, közvetlenül a Azure Portal. Hozzáférés biztosítása a vállalati SaaS-alkalmazásokhoz távolról és biztonságosan a továbbfejlesztett felhasználói felülettel (SSO) |
@@ -74,7 +74,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 - Enterprise Mobility + Security (EMS E3)
 - Microsoft 365 (M365 E3, a3, F1, F3)
 
-| Javasolt művelet | Részlet |
+| Javasolt művelet | Részletek |
 | --- | --- |
 | [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
@@ -82,7 +82,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [Jelszó-visszaírási implementálása](../authentication/tutorial-enable-sspr-writeback.md) (hibrid identitások használata esetén) | A Felhőbeli jelszavak módosításának engedélyezése a helyi Windows Server Active Directory környezetbe való visszaíráshoz. |
 | Feltételes hozzáférési szabályzatok létrehozása és engedélyezése | [MFA a rendszergazdák számára a rendszergazdai jogosultságokat hozzárendelő fiókok védelméhez.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Örökölt hitelesítési protokollok letiltása az örökölt hitelesítési protokollokkal kapcsolatos megnövekedett kockázat miatt.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [MFA minden felhasználó és alkalmazás számára, hogy kiegyensúlyozott MFA-szabályzatot hozzon létre a környezet számára, biztosítva a felhasználók és az alkalmazások védelmét.](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) <br><br> [A többtényezős hitelesítés megkövetelése az Azure-erőforrásokhoz hozzáférő felhasználók többtényezős hitelesítésének megkövetelése az Azure-felügyelethez.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Jelszó-kivonat szinkronizálásának engedélyezése](../hybrid/how-to-connect-password-hash-synchronization.md) (hibrid identitások használata esetén) | Redundancia biztosítása a hitelesítéshez és a biztonság növelése (beleértve az intelligens zárolást, az IP-zárolást és a kiszivárgott hitelesítő adatok felderítésének lehetőségét) |
-| [Az ADFS intelligens zárolásának engedélyezése](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (ha van ilyen) | Megvédi a felhasználókat abban, hogy rosszindulatú tevékenységekből származó extranetes fiókzárolási problémát tapasztalnak. |
+| [Az ADFS intelligens zárolásának engedélyezése](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (ha van ilyen) | Megvédi a felhasználókat abban, hogy rosszindulatú tevékenységekből származó extranetes fiókzárolási problémát tapasztalnak. |
 | [Azure Active Directory intelligens zárolás engedélyezése](../authentication/howto-password-smart-lockout.md) (felügyelt identitások használata esetén) | Az intelligens zárolás segíti a felhasználók jelszavainak kiszűrését, illetve a találgatásos kényszerítési módszerek használatát. |
 | [Végfelhasználói engedély letiltása az alkalmazásokhoz](../manage-apps/configure-user-consent.md) | A rendszergazdai hozzájárulási munkafolyamat lehetővé teszi a rendszergazdák számára, hogy hozzáférést biztosítanak a rendszergazdai jóváhagyást igénylő alkalmazásokhoz, így a végfelhasználók nem tehetik elérhetővé a vállalati adatszolgáltatásokat. A Microsoft javasolja a jövőbeli felhasználói engedélyezési műveletek letiltását a felület csökkentése és a kockázat enyhítése érdekében. |
 | [Távoli hozzáférés engedélyezése a helyszíni örökölt alkalmazásokhoz alkalmazásproxy használatával](../manage-apps/application-proxy-add-on-premises-application.md) | Az Azure AD Application Proxy engedélyezése és az örökölt alkalmazások integrálása a felhasználók számára a helyszíni alkalmazások biztonságos eléréséhez az Azure AD-fiókkal való bejelentkezéssel. |
@@ -94,7 +94,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. A break Glass-fiókok biztosítják, hogy vészhelyzetben is hozzáférjen a szolgáltatáshoz. |
 | [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
 | [A Microsoft jelszavas útmutatásának engedélyezése](https://www.microsoft.com/research/publication/password-guidance/) | Állítsa le, hogy a felhasználóknak ne kelljen módosítaniuk a jelszavukat a beállított időpontokban, le kell tiltaniuk a bonyolultsági követelményeket, és a felhasználók jobban feltehetik a jelszavukat, és így biztonságban tarthatják őket. |
-| [Csomag létrehozása a vendég felhasználói hozzáféréshez](../b2b/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
+| [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
 
 ### <a name="guidance-for-azure-ad-premium-plan-2-customers"></a>Útmutató a prémium szintű Azure AD 2. csomag ügyfeleinek.
 
@@ -104,7 +104,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 - Enterprise Mobility + Security (EMS E5)
 - Microsoft 365 (M365 E5, a5)
 
-| Javasolt művelet | Részlet |
+| Javasolt művelet | Részletek |
 | --- | --- |
 | [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
@@ -114,7 +114,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [Identity Protection-felhasználói és bejelentkezési kockázati házirendek engedélyezése](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Engedélyezze az Identity Protection felhasználói és bejelentkezési szabályzatait. Az ajánlott bejelentkezési szabályzat a közepes kockázatú bejelentkezések megcélzása és az MFA megkövetelése. A felhasználói házirendek esetében a jelszó-módosítási műveletet igénylő magas kockázatú felhasználóknak kell megcélozni. |
 | Feltételes hozzáférési szabályzatok létrehozása és engedélyezése | [MFA a rendszergazdák számára a rendszergazdai jogosultságokat hozzárendelő fiókok védelméhez.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Örökölt hitelesítési protokollok letiltása az örökölt hitelesítési protokollokkal kapcsolatos megnövekedett kockázat miatt.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [A többtényezős hitelesítés megkövetelése az Azure-erőforrásokhoz hozzáférő felhasználók többtényezős hitelesítésének megkövetelése az Azure-felügyelethez.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Jelszó-kivonat szinkronizálásának engedélyezése](../hybrid/how-to-connect-password-hash-synchronization.md) (hibrid identitások használata esetén) | Redundancia biztosítása a hitelesítéshez és a biztonság növelése (beleértve az intelligens zárolást, az IP-zárolást és a kiszivárgott hitelesítő adatok felderítésének lehetőségét) |
-| [Az ADFS intelligens zárolásának engedélyezése](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (ha van ilyen) | Megvédi a felhasználókat abban, hogy rosszindulatú tevékenységekből származó extranetes fiókzárolási problémát tapasztalnak. |
+| [Az ADFS intelligens zárolásának engedélyezése](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (ha van ilyen) | Megvédi a felhasználókat abban, hogy rosszindulatú tevékenységekből származó extranetes fiókzárolási problémát tapasztalnak. |
 | [Azure Active Directory intelligens zárolás engedélyezése](../authentication/howto-password-smart-lockout.md) (felügyelt identitások használata esetén) | Az intelligens zárolás segíti a felhasználók jelszavainak kiszűrését, illetve a találgatásos kényszerítési módszerek használatát. |
 | [Végfelhasználói engedély letiltása az alkalmazásokhoz](../manage-apps/configure-user-consent.md) | A rendszergazdai hozzájárulási munkafolyamat lehetővé teszi a rendszergazdák számára, hogy hozzáférést biztosítanak a rendszergazdai jóváhagyást igénylő alkalmazásokhoz, így a végfelhasználók nem tehetik elérhetővé a vállalati adatszolgáltatásokat. A Microsoft javasolja a jövőbeli felhasználói engedélyezési műveletek letiltását a felület csökkentése és a kockázat enyhítése érdekében. |
 | [Távoli hozzáférés engedélyezése a helyszíni örökölt alkalmazásokhoz alkalmazásproxy használatával](../manage-apps/application-proxy-add-on-premises-application.md) | Az Azure AD Application Proxy engedélyezése és az örökölt alkalmazások integrálása a felhasználók számára a helyszíni alkalmazások biztonságos eléréséhez az Azure AD-fiókkal való bejelentkezéssel. |
@@ -126,10 +126,10 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. A break Glass-fiókok biztosítják, hogy vészhelyzetben is hozzáférjen a szolgáltatáshoz. |
 | [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. |
 | [A Microsoft jelszavas útmutatásának engedélyezése](https://www.microsoft.com/research/publication/password-guidance/) | Állítsa le, hogy a felhasználóknak ne kelljen módosítaniuk a jelszavukat a beállított időpontokban, le kell tiltaniuk a bonyolultsági követelményeket, és a felhasználók jobban feltehetik a jelszavukat, és így biztonságban tarthatják őket. |
-| [Csomag létrehozása a vendég felhasználói hozzáféréshez](../b2b/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
+| [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
 | [Privileged Identity Management engedélyezése](../privileged-identity-management/pim-configure.md) | Lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés felügyeletét, vezérlését és figyelését, valamint a rendszergazdák hozzáférését csak szükség esetén és jóváhagyással |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD egyes funkcióinak részletes üzembe helyezési útmutatóját az [Azure ad Project üzembehelyezési csomagjaiban](active-directory-deployment-plans.md)tekintheti meg.
 

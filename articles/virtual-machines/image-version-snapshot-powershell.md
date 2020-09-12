@@ -1,6 +1,6 @@
 ---
-title: PowerShell – rendszerkép létrehozása pillanatképből vagy virtuális merevlemezből egy megosztott rendszerkép-gyűjteményben
-description: Megtudhatja, hogyan hozhat létre képet pillanatképből vagy virtuális merevlemezből egy megosztott képtárban a PowerShell használatával.
+title: PowerShell – rendszerkép létrehozása pillanatképből vagy felügyelt lemezről megosztott képtárban
+description: Megtudhatja, hogyan hozhat létre lemezképet egy pillanatképből vagy egy felügyelt lemezből egy megosztott rendszerkép-katalógusban a PowerShell használatával.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494717"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300255"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Rendszerkép létrehozása virtuális merevlemezről vagy pillanatképből egy megosztott képtárban a PowerShell használatával
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Rendszerkép létrehozása felügyelt lemezről vagy pillanatképből egy megosztott rendszerkép-katalógusban a PowerShell használatával
 
-Ha van olyan meglévő pillanatképe vagy virtuális merevlemeze, amelyet át szeretne telepíteni egy megosztott képkatalógusba, közvetlenül a VHD-ből vagy a pillanatképből is létrehozhat egy megosztott rendszerkép-katalógust. Az új rendszerkép tesztelése után törölheti a forrás VHD-t vagy a pillanatképet. Létrehozhat egy rendszerképet egy VHD-ből vagy pillanatképből egy megosztott képtárban az [Azure CLI](image-version-snapshot-cli.md)használatával is.
+Ha van meglévő pillanatképe vagy felügyelt lemeze, amelyet át szeretne telepíteni egy megosztott képkatalógusba, akkor közvetlenül a felügyelt lemezről vagy pillanatképből hozhat létre egy megosztott rendszerkép-katalógust. Az új rendszerkép tesztelése után törölheti a forrás felügyelt lemezt vagy pillanatképet. Az [Azure CLI](image-version-snapshot-cli.md)használatával is létrehozhat egy rendszerképet egy felügyelt lemezről vagy pillanatképből egy megosztott Képtárban.
 
 A képkatalógusban található lemezképek két összetevővel rendelkeznek, amelyeket a következő példában hozunk létre:
 - A **rendszerkép definíciója** információt nyújt a rendszerképekről és az azok használatára vonatkozó követelményekről. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, specializált vagy általánosított, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. 
@@ -27,14 +27,14 @@ A képkatalógusban található lemezképek két összetevővel rendelkeznek, am
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk elvégzéséhez pillanatkép vagy virtuális merevlemez szükséges. 
+A cikk elvégzéséhez pillanatkép vagy felügyelt lemez szükséges. 
 
 Ha adatlemezt szeretne megadni, az adatlemez mérete nem lehet nagyobb 1 TB-nál.
 
 A cikkben végzett munka során szükség esetén cserélje le az erőforrások nevét.
 
 
-## <a name="get-the-snapshot-or-vhd"></a>Pillanatkép vagy virtuális merevlemez letöltése
+## <a name="get-the-snapshot-or-managed-disk"></a>A pillanatkép vagy a felügyelt lemez beolvasása
 
 A [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot)használatával megtekintheti az erőforráscsoporthoz elérhető Pillanatképek listáját. 
 
@@ -50,17 +50,17 @@ $source = Get-AzSnapshot `
    -ResourceGroupName myResourceGroup
 ```
 
-Pillanatkép helyett virtuális merevlemezt is használhat. Virtuális merevlemez beszerzéséhez használja a [Get-AzDisk](/powershell/module/az.compute/get-azdisk). 
+A pillanatképek helyett felügyelt lemezt is használhat. Felügyelt lemez beszerzéséhez használja a [Get-AzDisk](/powershell/module/az.compute/get-azdisk). 
 
 ```azurepowershell-interactive
 Get-AzDisk | Format-Table -Property Name,ResourceGroupName
 ```
 
-Ezután szerezze be a VHD-t, és rendelje hozzá a `$source` változóhoz.
+Ezután szerezze be a felügyelt lemezt, és rendelje hozzá a `$source` változóhoz.
 
 ```azurepowershell-interactive
 $source = Get-AzDisk `
-   -SnapshotName mySnapshot
+   -Name myDisk
    -ResourceGroupName myResourceGroup
 ```
 
@@ -88,7 +88,7 @@ $gallery = Get-AzGallery `
 
 A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. A rendszer a rendszerképpel kapcsolatos információk kezelésére szolgál. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy virtuális merevlemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a VHD-t vagy pillanatképet egy általánosított operációs rendszerből (a Sysprep futtatása után Windows-vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy Linux rendszeren) készítette, `-deprovision+user` akkor módosítsa a alkalmazást `-OsState` `generalized` . 
+A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy a felügyelt lemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a felügyelt lemez vagy pillanatkép általánosított operációs rendszerből készült (a Sysprep futtatása után Windows vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy `-deprovision+user` Linux rendszeren), akkor módosítsa a alkalmazást `-OsState` `generalized` . 
 
 További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
 
@@ -107,7 +107,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Sku 'mySKU'
 ```
 
-### <a name="purchase-plan-information"></a>Tervezett konstrukció információi
+### <a name="purchase-plan-information"></a>Vásárlási terv információi
 
 Bizonyos esetekben a vásárlási terv adatait kell átadnia, amikor virtuális gépet hoz létre egy Azure Marketplace-rendszerképen alapuló rendszerképből. Ezekben az esetekben azt javasoljuk, hogy a vásárlási terv adatait a rendszerkép definíciójában adja meg. Ebben az esetben a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információinak beszerzése](marketplace-images.md)című témakörben talál információt.
 
@@ -118,7 +118,7 @@ Hozzon létre egy rendszerkép-verziót a pillanatképből a [New-AzGalleryImage
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
-Ha azt szeretné, hogy a lemezkép tartalmazzon egy adatlemezt, az operációsrendszer-lemez mellett adja hozzá a `-DataDiskImage` paramétert, és állítsa be az adatlemez-pillanatkép vagy vhd-fájl azonosítójának megfelelően.
+Ha azt szeretné, hogy a lemezkép tartalmazzon egy adatlemezt, az operációsrendszer-lemez mellett adja hozzá a `-DataDiskImage` paramétert, és állítsa be az adatlemez-pillanatkép vagy a felügyelt lemez azonosítójának megfelelően.
 
 Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer replikálja az *USA nyugati középső* régiójában és az *USA déli középső* régiójában. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a *forrás* régiót is meg kell adnia a replikálás céljának.
 

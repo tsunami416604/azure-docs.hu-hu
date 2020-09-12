@@ -1,0 +1,268 @@
+---
+title: Támogatott közzétevő országok és régiók
+description: Azon országok listája, amelyekben ajánlatot tehet közzé a Microsoft kereskedelmi piactéren.
+ms.reviewer: nanef
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.custom: references_regions
+ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 09/02/2020
+ms.openlocfilehash: 393b71e78c59d126b24da2f1fd354ccfadf6825a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322939"
+---
+# <a name="supported-publisher-countries-and-regions"></a>Támogatott közzétevő országok és régiók
+
+Ha közzé szeretne tenni egy ajánlatot a Microsoft kereskedelmi piactéren, az alábbi országok vagy régiók egyikében kell megadnia a tartózkodási helyét.
+
+- Afganisztán
+- Åland-szigetek
+- Albánia
+- Algéria
+- Amerikai Szamoa
+- Andorra
+- Angola
+- Anguilla
+- Antarktisz
+- Antigua és Barbuda
+- Argentína
+- Örményország
+- Aruba
+- Ausztrália
+- Ausztria
+- Azerbajdzsán
+- Bahama-szigetek
+- Bahrein
+- Banglades
+- Barbados
+- Belarusz
+- Belgium
+- Belize
+- Benin
+- Bermuda
+- Bhután
+- Bolívia
+- Bonaire, Sint Eustatius és Saba
+- Bosznia-Hercegovina
+- Botswana
+- Bouvet-sziget
+- Brazília
+- Brit indiai-óceáni terület
+- Brit Virgin-szigetek
+- Brunei
+- Bulgária
+- Burkina Faso
+- Burundi
+- Cabo Verde
+- Kambodzsa
+- Kamerun
+- Kanada
+- Kajmán-szigetek
+- Közép-afrikai Köztársaság
+- Csád
+- Chile
+- Kína
+- Karácsony-sziget
+- Cocos (Keeling)-szigetek
+- Kolumbia
+- Comore-szigetek
+- Kongó
+- Kongó (KDK)
+- Cook-szigetek
+- Costa Rica
+- Horvátország
+- Curaçao
+- Ciprus
+- Elefántcsontparti
+- Csehország
+- Dánia
+- Dzsibuti
+- Dominika
+- Dominikai Köztársaság
+- Ecuador
+- Egyiptom
+- Salvador
+- Egyenlítői-Guinea
+- Eritrea
+- Észtország
+- Etiópia
+- Falkland-szigetek
+- Feröer szigetek
+- Fidzsi
+- Finnország
+- Franciaország
+- Francia Guyana
+- Francia Polinézia
+- Francia Déli Területek
+- Gabon
+- Gambia
+- Grúzia
+- Németország
+- Ghána
+- Gibraltár
+- Görögország
+- Grönland
+- Grenada
+- Guadeloupe
+- Guam
+- Guatemala
+- Guernsey
+- Guinea
+- Bissau-Guinea
+- Guyana
+- Haiti
+- Heard-sziget és McDonald-szigetek
+- Honduras
+- Hongkong (KKT)
+- Magyarország
+- Izland
+- India
+- Indonézia
+- Irak
+- Írország
+- Man-sziget
+- Izrael
+- Olaszország
+- Jamaica
+- Japán
+- Jersey
+- Jordánia
+- Kazahsztán
+- Kenya
+- Kiribati
+- Dél-Korea
+- Koszovó
+- Kuvait
+- Kirgizisztán
+- Laosz
+- Lettország
+- Libanon
+- Lesotho
+- Libéria
+- Líbia
+- Liechtenstein
+- Litvánia
+- Luxemburg
+- Makaó (KKT)
+- Madagaszkár
+- Malawi
+- Malajzia
+- Maldív-szigetek
+- Mali
+- Málta
+- Marshall-szigetek
+- Martinique
+- Mauritánia
+- Mauritius
+- Mayotte
+- Mexikó
+- Mikronézia
+- Moldova
+- Monaco
+- Mongólia
+- Montenegró
+- Montserrat
+- Marokkó
+- Mozambik
+- Mianmar
+- Namíbia
+- Nauru
+- Nepál
+- Hollandia
+- Új-Kaledónia
+- Új-Zéland
+- Nicaragua
+- Niger
+- Nigéria
+- Niue
+- Norfolk-sziget
+- Észak-Macedónia
+- Északi Mariana-szigetek
+- Norvégia
+- Omán
+- Pakisztán
+- Palau
+- Palesztin Hatóság
+- Panama
+- Pápua Új-Guinea
+- Paraguay
+- Peru
+- Fülöp-szigetek
+- Pitcairn-szigetek
+- Lengyelország
+- Portugália
+- Puerto Rico
+- Katar
+- Románia
+- Oroszország
+- Ruanda
+- Réunion
+- Saba
+- Saint Barthélemy
+- Saint Kitts és Nevis
+- Saint Lucia
+- Saint Martin
+- Saint-Pierre és Miquelon
+- Saint Vincent és Grenadine-szigetek
+- Szamoa
+- San Marino
+- Szaúd-Arábia
+- Szenegál
+- Szerbia
+- Seychelle-szigetek
+- Sierra Leone
+- Szingapúr
+- Sint Eustatius
+- Sint Maarten
+- Szlovákia
+- Szlovénia
+- Salamon-szigetek
+- Szomália
+- Dél-afrikai Köztársaság
+- Déli-Georgia és Déli-Sandwich-szigetek
+- Dél-Szudán
+- Spanyolország
+- Srí Lanka
+- Szent Ilona, Ascension, Tristan da Cunha
+- Suriname
+- Svalbard és Jan Mayen
+- Szváziföld
+- Svédország
+- Svájc
+- São Tomé és Príncipe
+- Tajvan
+- Tádzsikisztán
+- Tanzánia
+- Thaiföld
+- Timor-Leste
+- Togo
+- Tokelau
+- Tonga
+- Trinidad és Tobago
+- Tunézia
+- Törökország
+- Türkmenisztán
+- Turks- és Caicos-szigetek
+- Tuvalu
+- Az Amerikai Egyesült Államok lakatlan külbirtokai
+- Amerikai Virgin-szigetek
+- Uganda
+- Ukrajna
+- Egyesült Arab Emírségek
+- Egyesült Királyság
+- Egyesült Államok
+- Uruguay
+- Üzbegisztán
+- Vanuatu
+- Vatikán
+- Venezuela
+- Vietnam
+- Wallis és Futuna
+- Jemen
+- Zambia
+- Zimbabwe

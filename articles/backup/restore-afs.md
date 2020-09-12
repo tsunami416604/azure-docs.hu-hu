@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás visszaállítása
 description: Ebből a témakörből megtudhatja, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat a Azure Backup által létrehozott visszaállítási pontról a Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762823"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376774"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-fájlmegosztás visszaállítása
 
@@ -50,9 +50,9 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
 
    ![Megosztás visszaállításának kiválasztása](./media/restore-afs/restore-share.png)
 
-1. A **megosztás visszaállítása**lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához kattintson **a hivatkozás szövege elemre** a **visszaállítási pont** szövegmező alatt.
+1. A **megosztás visszaállítása**lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához válassza **a hivatkozás szövege** a **visszaállítási pont** szövegmező alatt elemet.
 
-    ![Kattintson a kijelölés gombra a visszaállítási pont kiválasztásához.](./media/restore-afs/select-restore-point.png)
+    ![Válassza ki a visszaállítási pontot a kiválasztás lehetőség kiválasztásával](./media/restore-afs/select-restore-point.png)
 
 1. A jobb oldalon megnyílik a **visszaállítási pont** környezetének kiválasztása ablaktábla, amely felsorolja a kiválasztott fájlmegosztás számára elérhető visszaállítási pontokat. Válassza ki azt a visszaállítási pontot, amelyet a visszaállítási művelet végrehajtásához használni szeretne, majd kattintson **az OK gombra**.
 
@@ -93,9 +93,9 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Fájl helyreállításának kiválasztása](./media/restore-afs/file-recovery.png)
 
-1. A fájl- **helyreállítás**lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához kattintson **a hivatkozás szövege elemre** a **visszaállítási pont** szövegmező alatt.
+1. A fájl- **helyreállítás**lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához jelölje be a hivatkozás szövegének **kiválasztása** a **visszaállítási pont** szövegmező alatt jelölőnégyzetet.
 
-    ![Kattintson a kijelölés gombra a visszaállítási pont kiválasztásához.](./media/restore-afs/select-restore-point.png)
+    ![A kijelölési hivatkozás kiválasztásával válassza a visszaállítási pont lehetőséget.](./media/restore-afs/select-restore-point.png)
 
 1. A jobb oldalon megnyílik a **visszaállítási pont** környezetének kiválasztása ablaktábla, amely felsorolja a kiválasztott fájlmegosztás számára elérhető visszaállítási pontokat. Válassza ki azt a visszaállítási pontot, amelyet a visszaállítási művelet végrehajtásához használni szeretne, majd kattintson **az OK gombra**.
 
@@ -162,6 +162,6 @@ A visszaállítási folyamat figyelését a Recovery Services-tárolóból is ny
 
     ![A visszaállított részletek megtekintése](./media/restore-afs/restore-details.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [kezelheti az Azure-fájlmegosztás biztonsági másolatait](manage-afs-backup.md).

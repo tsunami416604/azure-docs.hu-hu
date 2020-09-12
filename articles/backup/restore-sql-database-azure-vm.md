@@ -3,12 +3,12 @@ title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826556"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377981"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -98,7 +98,7 @@ Visszaállítás a következőképpen:
 
         ![Célként megadott elérési utak megadása](./media/backup-azure-sql-database/target-paths.png)
 
-1. A visszaállítás elindításához kattintson **az OK** gombra. Nyomon követheti a visszaállítási folyamatot az **értesítések** területen, vagy nyomon követheti a **tárolóban a biztonsági mentési feladatok** nézetben.
+1. A visszaállítás elindításához kattintson **az OK gombra** . Nyomon követheti a visszaállítási folyamatot az **értesítések** területen, vagy nyomon követheti a **tárolóban a biztonsági mentési feladatok** nézetben.
 
     > [!NOTE]
     > Az időponthoz való visszaállítás csak a teljes és tömegesen naplózott helyreállítási módban lévő adatbázisok biztonsági másolatai esetében érhető el.
@@ -150,7 +150,7 @@ Ha a **naplókat (időpontot)** a visszaállítási típusként választotta, te
     ![A naptár megnyitása](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. Miután kiválasztott egy dátumot, az idővonal-gráf megjeleníti a rendelkezésre álló helyreállítási pontokat a folytonos tartományban.
-1. Adja meg a helyreállítás időpontját az idősor-diagramon, vagy válasszon ki egy időpontot. Ez után válassza az **OK** gombot.
+1. Adja meg a helyreállítás időpontját az idősor-diagramon, vagy válasszon ki egy időpontot. Ezután válassza az **OK** gombot.
 
 ### <a name="restore-to-a-specific-restore-point"></a>Visszaállítás adott visszaállítási pontra
 
@@ -161,7 +161,7 @@ Ha a **teljes & különbözetet** választotta a visszaállítási típusként, 
     ![Teljes helyreállítási pont kiválasztása](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
-    > Alapértelmezés szerint az elmúlt 30 napban érkező helyreállítási pontok jelennek meg. A 30 napnál régebbi helyreállítási pontok megjelenítéséhez kattintson a **szűrés** gombra, és válassza ki az egyéni tartományt.
+    > Alapértelmezés szerint az elmúlt 30 napban érkező helyreállítási pontok jelennek meg. A 30 napnál régebbi helyreállítási pontokat úgy jelenítheti meg, ha kiválasztja a **szűrő** lehetőséget, és kiválasztja az egyéni tartományt.
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Adatbázisok visszaállítása nagy számú fájllal
 
@@ -169,6 +169,6 @@ Ha egy adatbázisban lévő fájlok teljes mérete meghaladja az [adott korláto
 
   ![Adatbázis visszaállítása nagyméretű fájllal](./media/backup-azure-sql-database/restore-large-files.jpg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kezelés és figyelés](manage-monitor-sql-database-backup.md) SQL Server a Azure Backup által biztonsági mentést tartalmazó adatbázisokat.

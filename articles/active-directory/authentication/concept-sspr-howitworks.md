@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716316"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377199"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -27,7 +27,7 @@ A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SS
 >
 > Ha az informatikai csapat nem engedélyezte a saját jelszavának alaphelyzetbe állítását, további segítségért forduljon az ügyfélszolgálathoz.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Hogyan működik a jelszó-visszaállítási portál?
+## <a name="how-does-the-password-reset-process-work"></a>Hogyan működik a jelszó-visszaállítási folyamat?
 
 A felhasználók visszaállíthatják vagy módosíthatják a jelszavukat a [SSPR-portál](https://aka.ms/sspr)használatával. Először regisztrálniuk kell a kívánt hitelesítési módszereket. Amikor egy felhasználó hozzáfér a SSPR-portálhoz, az Azure platform a következő tényezőket veszi figyelembe:
 
@@ -58,6 +58,11 @@ Miután a SSPR-portál megjelenik a szükséges nyelven, a rendszer felszólítj
   * Ha a SSPR visszaírási nincs telepítve, és a felhasználó jelszava felügyelve van a helyszínen, a felhasználónak kapcsolatba kell lépnie a rendszergazdával a jelszavuk alaphelyzetbe állításához.
 
 Ha az összes korábbi ellenőrzés sikeresen befejeződött, a felhasználó végigvezeti a jelszó alaphelyzetbe állításának vagy módosításának folyamatán.
+
+> [!NOTE]
+> A SSPR e-mailes értesítéseket küldhet a felhasználóknak a jelszó-visszaállítási folyamat részeként. Ezeket az e-maileket a rendszer az SMTP Relay szolgáltatással küldi el, amely aktív-aktív módban működik több régióban.
+>
+> Az SMTP-továbbító szolgáltatások fogadják és feldolgozzák az e-mail törzsét, de nem tárolják azt. A SSPR e-mail-címe, amely esetleg tartalmazhatja az ügyfél által megadott adatokat, nem tárolódik az SMTP Relay szolgáltatás naplófájljaiban. A naplók csak protokoll-metaadatokat tartalmaznak.
 
 A SSPR megkezdéséhez kövesse az alábbi oktatóanyagot:
 
@@ -130,7 +135,7 @@ Ha mobil alkalmazást használ a jelszó-visszaállítási módszerként, péld�
 
 | Az alaphelyzetbe állításhoz szükséges módszerek száma | Eggyel | Kettővel |
 | :---: | :---: | :---: |
-| Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
+| Elérhető a Mobile App szolgáltatásai | Code | Kód vagy értesítés |
 
 A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az önkiszolgáló jelszó-visszaállításhoz való regisztráció során [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . A felhasználók a következő címen regisztrálhatják a mobil alkalmazást: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a kombinált biztonsági adatok regisztrációjában [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
@@ -230,7 +235,7 @@ A forgatókönyv teszteléséhez lépjen a https://passwordreset.microsoftonline
 > [!NOTE]
 > Az Azure AD-bérlőhöz (például Hotmail.com, Outlook.com vagy más személyes e-mail-címekhez) hozzáférést biztosító Microsoft-fiókok nem tudják használni az Azure AD-SSPR. A jelszó alaphelyzetbe állításához a következő információkat kell használnia, [Ha nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SSPR megkezdéséhez kövesse az alábbi oktatóanyagot:
 

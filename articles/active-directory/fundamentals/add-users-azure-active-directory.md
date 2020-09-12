@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797100"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321089"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Felhasználók hozzáadása vagy törlése Azure Active Directory használatával
 
@@ -54,13 +54,13 @@ Létrehozhat egy új felhasználót a Azure Active Directory portál használat�
 
 1. Másolja a **jelszó** mezőben megadott automatikusan generált jelszót. Ezt a jelszót kell megadnia a felhasználónak, hogy első alkalommal jelentkezzen be.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 A rendszer létrehozza és hozzáadja a felhasználót az Azure AD-szervezethez.
 
 ## <a name="add-a-new-guest-user"></a>Új vendég felhasználó hozzáadása
 
-Azt is megteheti, hogy új vendég felhasználóval együttműködik a szervezettel a **felhasználó meghívása** az **új felhasználó** lapról lehetőség kiválasztásával. Ha a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívhatja a vendégeket, a felhasználó e-mailben meghívót küld, hogy megkezdődjön az együttműködés. A B2B csoportmunka-felhasználók meghívásával kapcsolatos további információkért lásd: [B2B-felhasználók](../b2b/add-users-administrator.md) meghívása Azure Active Directory
+Azt is megteheti, hogy új vendég felhasználóval együttműködik a szervezettel a **felhasználó meghívása** az **új felhasználó** lapról lehetőség kiválasztásával. Ha a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívhatja a vendégeket, a felhasználó e-mailben meghívót küld, hogy megkezdődjön az együttműködés. A B2B csoportmunka-felhasználók meghívásával kapcsolatos további információkért lásd: [B2B-felhasználók](../external-identities/add-users-administrator.md) meghívása Azure Active Directory
 
 ## <a name="add-a-consumer-user"></a>Fogyasztói felhasználó hozzáadása
 
@@ -93,7 +93,7 @@ Ha töröl egy felhasználót, a felhasználó által felhasznált összes licen
 >[!Note]
 >A Windows Server Active Directory használatával frissítenie kell az identitást, a kapcsolattartási adatokat vagy a feladatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory. A frissítés befejezése után meg kell várnia, hogy a következő szinkronizálási ciklus befejeződjön, mielőtt látni fogja a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználók hozzáadása után a következő alapvető folyamatokat végezheti el:
 
@@ -105,4 +105,4 @@ A felhasználók hozzáadása után a következő alapvető folyamatokat végezh
 
 - [Dinamikus csoportok és felhasználók használata](../users-groups-roles/groups-create-rule.md)
 
-Más felhasználói felügyeleti feladatokat is elvégezhet, például a [vendég felhasználóinak egy másik címtárból való hozzáadásával](../b2b/what-is-b2b.md) vagy [egy törölt felhasználó visszaállításával](active-directory-users-restore.md). További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../users-groups-roles/index.yml).
+Más felhasználói felügyeleti feladatokat is elvégezhet, például a [vendég felhasználóinak egy másik címtárból való hozzáadásával](../external-identities/what-is-b2b.md) vagy [egy törölt felhasználó visszaállításával](active-directory-users-restore.md). További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../users-groups-roles/index.yml).

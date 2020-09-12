@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181374"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298283"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -58,6 +58,13 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
     * Az alkalmazás regisztrációja: *Azure ad-alkalmazás válaszának URL-címe* az Azure ad-alkalmazáshoz. Használja az `http://localhost` parancsot. A szkript létrehoz egy *nyilvános ügyfél/natív (mobil & asztali) URI-* t.
 
 A szkript létrehoz egy Azure Digital Twins-példányt, hozzárendeli az Azure-felhasználót az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkörrel a példányon, és beállít egy Azure ad-alkalmazás regisztrációját a használni kívánt ügyfélalkalmazás számára.
+
+>[!NOTE]
+>Jelenleg létezik egy **ismert probléma** a parancsfájlokkal rendelkező telepítővel, amelyben egyes felhasználók (különösen a személyes [Microsoft-fiókok (MSAs)](https://account.microsoft.com/account)felhasználói) megtalálják az ** _Azure Digital Twins tulajdonosának (előzetes verzió)_ szerepkör-hozzárendelését**.
+>
+>A szerepkör-hozzárendelést a jelen cikk későbbi, [*felhasználói szerepkör-hozzárendelés ellenőrzése*](#verify-user-role-assignment) szakaszában ellenőrizheti, és – szükség esetén – a szerepkör-hozzárendelés manuális beállítása a [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) vagy a [parancssori](how-to-set-up-instance-cli.md#set-up-user-access-permissions)felület használatával.
+>
+>A problémáról további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)című témakörben talál.
 
 Íme egy részlet a kimenet naplóból a szkriptből:
 
@@ -125,7 +132,11 @@ Először ellenőrizze, hogy az Azure Digital Twins engedélyeinek beállítása
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:
+Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
+* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)
+
+Azt is megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:
 * [*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)

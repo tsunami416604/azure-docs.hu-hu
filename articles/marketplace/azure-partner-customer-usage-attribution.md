@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031285"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320970"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -97,9 +97,9 @@ Globálisan egyedi azonosító (GUID) hozzáadásához egyetlen módosítást ke
 
 1. Nyissa meg a Resource Manager-sablont.
 
-1. Vegyen fel egy új erőforrást a fő sablonfájlba. Az erőforrásnak csak a fájl **mainTemplate.js** vagy **azuredeploy.js** kell lennie, és nem minden beágyazott vagy csatolt sablonban.
+1. Vegyen fel egy [Microsoft. Resources/Deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) nevű új erőforrást a fő sablonfájlba. Az erőforrásnak csak a fájl **mainTemplate.js** vagy **azuredeploy.js** kell lennie, és nem minden beágyazott vagy csatolt sablonban.
 
-1. Adja meg a GUID értéket az `pid-` előtag után (például: PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Adja meg a GUID értéket az `pid-` előtag neve után az erőforrás neveként. Ha például a GUID a következő: eb7927c8-dd66-43e1-b0cf-c346a422063, az erőforrás neve _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_lesz.
 
 1. Keresse meg az esetleges hibákat a sablonban.
 
@@ -112,11 +112,11 @@ Globálisan egyedi azonosító (GUID) hozzáadásához egyetlen módosítást ke
 A sablon követési erőforrásainak engedélyezéséhez hozzá kell adnia a következő további erőforrást az erőforrások szakaszban. Ügyeljen arra, hogy az alábbi mintakód a saját bemeneteit használja a fő sablonfájl hozzáadásakor.
 Az erőforrást fel kell venni a **mainTemplate.js** vagy **azuredeploy.js** csak fájlba, és nem minden beágyazott vagy csatolt sablonban.
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -153,6 +153,20 @@ A Python esetében használja a **config** attribútumot. Az attribútumot csak 
 
 > [!NOTE]
 > Adja hozzá az attribútumot az egyes ügyfelekhez. Nincs globális statikus konfiguráció. Előfordulhat, hogy az ügyfél-előállítót címkével látja el, hogy minden ügyfél nyomon követi a nyomkövetést. További információkért tekintse meg ezt a [Client Factory-mintát a githubon](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+
+#### <a name="example-the-net-sdk"></a>Példa: a .NET SDK
+
+A .NET esetében ügyeljen arra, hogy a felhasználói ügynököt állítsa be. A [Microsoft. Azure. Management. Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) függvénytár használatával beállíthatja a felhasználói ügynököt a következő kóddal (például C# nyelven):
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Központi telepítés címkézése a Azure PowerShell használatával
 
@@ -256,7 +270,7 @@ A szoftverek központi telepítésekor a \<PARTNER> Microsoft képes azonosítan
 
 A felmerülő problémáktól függően két támogatási csatorna van.
 
-Ha bármilyen problémába ütközik a partner Centerben, például megtekinti az ügyfél-használati jóváírási jelentést vagy bejelentkezik, hozzon létre egy támogatási kérést a partner Center támogatási csapatával itt:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Ha bármilyen problémába ütközik a partner Centerben, például megtekinti az ügyfél-használati jóváírási jelentést vagy bejelentkezik, hozzon létre egy támogatási kérést a partner Center támogatási csapatával itt: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![A támogatási oldal beszerzésének képernyőképe](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -339,7 +353,7 @@ Létrehozhat egy virtuálisgép-ajánlatot a piactéren az egyéni VHD használa
 
 **Nem sikerült frissíteni a fő sablon *contentVersion* tulajdonságát?**
 
-Bizonyos esetekben valószínűleg hiba fordul elő, ha a sablon üzembe helyezése egy másik sablonból származó TemplateLink használatával történik, amely valamilyen oknál fogva a régebbi contentVersion vár. A megkerülő megoldás a metadata tulajdonság használata:
+Ez valószínűleg egy hiba, ha a sablon üzembe helyezése egy másik sablonból származó TemplateLink történik, amely valamilyen oknál fogva a régebbi contentVersion vár. A megkerülő megoldás a metadata tulajdonság használata:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

@@ -3,12 +3,12 @@ title: SQL Server munkaterhelések biztonsági mentése Azure Stack
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Microsoft Azure Backup Servert (MABS) SQL Server-adatbázisok védelmére Azure Stackon.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 912e6f10b689217303786b20ec6315fca595a8c2
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017957"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376332"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
 
@@ -54,7 +54,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Biztonsági mentési szabályzat létrehozása SQL Server adatbázisok védelméhez az Azure-ban
 
-1. A Azure Backup Server felhasználói felületen kattintson a **védelem** munkaterületre.
+1. A Azure Backup Server felhasználói felületen válassza a **védelem** munkaterületet.
 
 2. Az eszközsávon kattintson az **új** elemre egy új védelmi csoport létrehozásához.
 
@@ -66,11 +66,11 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Védelmi csoport típusának kiválasztása – "kiszolgálók"](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. A csoporttagok **kiválasztása** képernyőn az elérhető tagok lista a különböző adatforrásokat jeleníti meg. Kattintson ide a **+** mappa kibontásához és az almappák megjelenítéséhez. Kattintson a jelölőnégyzetre egy elem kiválasztásához.
+4. A csoporttagok **kiválasztása** képernyőn az elérhető tagok lista a különböző adatforrásokat jeleníti meg. Válassza ki a **+** mappa kibontásához és az almappák megjelenítéséhez. Jelölje be a jelölőnégyzetet egy elem kiválasztásához.
 
     ![SQL-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
 
-    Az összes kijelölt elem megjelenik a kijelölt tagok listájában. A védelemmel ellátni kívánt kiszolgálók vagy adatbázisok kiválasztása után kattintson a **tovább**gombra.
+    Az összes kijelölt elem megjelenik a kijelölt tagok listájában. A védelemmel ellátni kívánt kiszolgálók vagy adatbázisok kiválasztása után válassza a **tovább**lehetőséget.
 
 5. Az **adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét, és jelölje be a szeretnék **online védelem** jelölőnégyzetet.
 
@@ -97,7 +97,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     A kezdeti biztonsági mentés befejezését követően a biztonsági mentések a kezdeti biztonsági másolaton lévő növekményes biztonsági másolatok. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
 
-9. Válassza ki, hogy mikor szeretné futtatni a konzisztencia-ellenőrzést, és kattintson a **tovább**gombra.
+9. Válassza ki, hogy mikor szeretné futtatni a konzisztencia-ellenőrzést, és válassza a **tovább**lehetőséget.
 
     ![Konzisztencia-ellenőrzés](./media/backup-azure-backup-sql/pg-consistent.png)
 
@@ -130,9 +130,9 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
     * A biztonsági mentés szombaton, 12:00 órakor 104 hétig megőrzött
     * A biztonsági mentés az elmúlt szombaton 12:00 órakor 60 hónapig megőrzött
     * A biztonsági mentés március 12:00 órakor, az utolsó szombaton 10 évig őrzi meg
-13. Kattintson a **tovább** gombra, és válassza ki a megfelelő lehetőséget a kezdeti biztonsági másolat Azure-ba történő átviteléhez. Automatikusan kiválaszthatja **a hálózaton keresztül**
+13. Válassza a **tovább** lehetőséget, és válassza ki a megfelelő lehetőséget a kezdeti biztonsági másolat Azure-ba történő átviteléhez. Automatikusan kiválaszthatja **a hálózaton keresztül**
 
-14. Ha áttekinti a szabályzat részleteit az **Összefoglalás** képernyőn, kattintson a **csoport létrehozása** elemre a munkafolyamat befejezéséhez. Kattintson a **Bezárás** gombra, és figyelje a feladatok előrehaladását a figyelés munkaterületen.
+14. Ha áttekinti a szabályzat részleteit az **Összefoglalás** képernyőn, válassza a **csoport létrehozása** lehetőséget a munkafolyamat befejezéséhez. Válassza a **Bezárás** lehetőséget, és figyelje a feladatok előrehaladását a figyelés munkaterületen.
 
     ![A védelmi csoport létrehozása folyamatban van](./media/backup-azure-backup-sql/pg-summary.png)
 
@@ -146,7 +146,7 @@ Míg az előző lépések létrehozott egy biztonsági mentési szabályzatot, a
 2. Kattintson a jobb gombbal az adatbázisra, és válassza a **helyreállítási pont létrehozása**lehetőséget.
 
     ![Online helyreállítási pont létrehozása](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. A legördülő menüben válassza az **online védelem** lehetőséget, majd kattintson **az OK** gombra egy helyreállítási pont Azure-beli létrehozásának megkezdéséhez.
+3. A legördülő menüben válassza az **online védelem** lehetőséget, majd kattintson **az OK gombra** egy helyreállítási pont Azure-beli létrehozásának megkezdéséhez.
 
     ![Helyreállítási pont létrehozása](./media/backup-azure-backup-sql/sqlbackup-azure.png)
 4. Tekintse meg a feladatok előrehaladását a **figyelés** munkaterületen.
@@ -160,7 +160,7 @@ A következő lépések szükségesek egy védett entitás (SQL Server adatbázi
 1. Nyissa meg a Azure Backup Server felügyeleti konzolt. Navigáljon a **helyreállítási** munkaterületre, ahol megtekintheti a védett kiszolgálókat. Tallózással keresse meg a szükséges adatbázist (ebben az esetben a reportserver $ MSDPM2012). Válasszon ki egy **online** pontként megadott **helyreállítási** időpontot.
 
     ![Helyreállítási pont kiválasztása](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Kattintson a jobb gombbal az adatbázis nevére, és kattintson a **helyreállítás**elemre.
+2. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Helyreállítás az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
 3. A MABS a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Kattintson a **Tovább** gombra.
@@ -171,9 +171,9 @@ A következő lépések szükségesek egy védett entitás (SQL Server adatbázi
 
 4. A **helyreállítási beállítások megadása** képernyőn kiválaszthatja a helyreállítási beállításokat, például a hálózati sávszélesség használatának szabályozását a helyreállítás által használt sávszélesség szabályozásához. Kattintson a **Tovább** gombra.
 
-5. Az **Összefoglalás** képernyőn az eddig megadott összes helyreállítási konfiguráció látható. Kattintson a **helyreállítás**gombra.
+5. Az **Összefoglalás** képernyőn az eddig megadott összes helyreállítási konfiguráció látható. Válassza a **helyreállítás**lehetőséget.
 
-    A helyreállítás állapota a helyreállított adatbázist mutatja. A **Bezárás** gombra kattintva zárhatja be a varázslót, és megtekintheti a folyamatot a **figyelés** munkaterületen.
+    A helyreállítás állapota a helyreállított adatbázist mutatja. A **Bezárás** gombra kattintva zárhatja be a varázslót, és megtekintheti a folyamat állapotát a **figyelés** munkaterületen.
 
     ![Helyreállítási folyamat elindítása](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 

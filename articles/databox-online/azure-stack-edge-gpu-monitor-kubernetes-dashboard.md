@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180677"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297842"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>A Kubernetes-irányítópult használata az Azure Stack Edge GPU-eszköz figyeléséhez
 
@@ -26,7 +26,6 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 >
 > * A Kubernetes-irányítópult elérése az eszközön
-> * `aseuser`Konfiguráció letöltése
 > * Az eszközön üzembe helyezett modulok megtekintése
 > * Az eszközön üzembe helyezett alkalmazások IP-címének lekérése
 > * Az eszközön üzembe helyezett modulok tároló-naplófájljainak megtekintése
@@ -42,26 +41,18 @@ Az Azure Stack Edge-eszközön a Kubernetes-irányítópultot *csak olvasható* 
 
 A Kubernetes irányítópult írásvédett, és az 31000 *-* es porton futtatja a Kubernetes fő csomópontját. Az irányítópult eléréséhez kövesse az alábbi lépéseket: 
 
-1. Az eszköz helyi felhasználói felületén nyissa meg az **eszközt** , majd válassza az **eszköz végpontok**lehetőséget. A Kubernetes irányítópult URL-címére kattintva nyissa meg az irányítópultot egy böngészőben.
+1. Az eszköz helyi felhasználói felületén nyissa meg az **eszközt** , majd válassza az **eszköz végpontok**lehetőséget. 
+1. Válassza a **konfiguráció letöltése** lehetőséget a letöltéséhez `kubeconfig` , amely lehetővé teszi az irányítópult elérését. Mentse a `config.json` fájlt a helyi rendszerbe.
+1. A Kubernetes irányítópult URL-címére kattintva nyissa meg az irányítópultot egy böngészőben.
 
     ![Kubernetes irányítópult URL-címe az eszköz lapján helyi felhasználói felületen](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
 
-1. A **Kubernetes-irányítópult bejelentkezési** oldalán válassza a **jogkivonat**elemet. 
-1. Adjon meg egy jogkivonatot. 
-    1. A jogkivonat lekéréséhez [kapcsolódjon az eszköz PowerShell-felületén keresztül](azure-stack-edge-gpu-connect-powershell-interface.md).
-    1. Futtassa a parancsot:  `Get-HcsKubernetesDashboardToken`
+1. A **Kubernetes-irányítópult bejelentkezési** oldalán:
     
-    1. Másolja a megjelenő jogkivonat-karakterláncot a parancssorba. Itt látható egy mintakimenet:
-        
-        ```powershell
-        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
-        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
-        [10.100.10.10]: PS>
-        ```
-        
-1. Válassza a **Bejelentkezés** lehetőséget.
-
-    ![Bejelentkezés a Kubernetes-irányítópultra](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+    1. Válassza a **kubeconfig**lehetőséget. 
+        ![Válassza a kubeconfig lehetőséget](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
+    1. Válassza ki a három pontot **.**.. Tallózással keresse meg a `kubeconfig` korábban letöltött helyi rendszerét, és mutasson rá. Válassza a **Bejelentkezés** lehetőséget.
+        ![Tallózással keresse meg a kubeconfig fájlt](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
 6. Most már csak olvasható módban tekintheti meg az Azure Stack Edge-eszköz Kubernetes irányítópultját.
 
@@ -111,6 +102,21 @@ A tároló naplófájljainak megtekintéséhez kövesse az alábbi lépéseket a
     ![Tárolói naplók megtekintése 2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="view-cpu-memory-usage"></a>CPU megtekintése, memóriahasználat
+
+Az Azure Stack Edge-eszköz Kubernetes-irányítópultján található egy [metrikai kiszolgáló beépülő modul](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) is, amely ÖSSZEGZI a CPU-és memóriahasználat a Kubernetes-erőforrások között.
+ 
+Megtekintheti például a PROCESSZORt és a memóriát a központi telepítések között az összes névtérben. 
+
+![A processzor és a memória használatának megtekintése az összes üzemelő példányon](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-all-1.png)
+
+Egy adott névtér alapján is szűrhető. A következő példában megtekintheti a CPU-és a memória-használatot csak az Azure arc üzemelő példányok esetében.  
+
+![Az Azure arc üzemelő példányok CPU-és memóriahasználat megtekintése](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
+
+A Kubernetes metrikai kiszolgáló a [horizontális Pod automatikus méretezéshez](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)hasonló automatikus skálázási folyamatokat biztosít.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes kapcsolatos hibák elhárításáról <!--insert link-->.

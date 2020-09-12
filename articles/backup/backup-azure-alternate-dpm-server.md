@@ -3,12 +3,12 @@ title: Adatok helyreállítása Azure Backup Server
 description: Állítsa helyre a védelemmel ellátott adatokat Recovery Services-tárolóba az adott tárban regisztrált bármely Azure Backup Server.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 531de9226be05bf50f887cfd0410842dadb68178
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012007"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378066"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Adatok helyreállítása az Azure Backup Serverről
 
@@ -21,7 +21,7 @@ A Azure Backup Server segítségével visszaállíthatja azokat az adatokat, ame
 
 Adatok helyreállítása Azure Backup Serverról:
 
-1. A Azure Backup Server felügyeleti konzol **helyreállítás** lapján kattintson a **külső DPM hozzáadása** elemre (a képernyő bal felső részén).
+1. A Azure Backup Server felügyeleti konzol **helyreállítás** lapján válassza a **külső DPM hozzáadása** lehetőséget (a képernyő bal felső részén).
 
     ![Külső DPM hozzáadása](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Töltse le az új tár **hitelesítő adatait** a tárolóhoz tartozó **Azure Backup Server** , ahol az adatok helyreállítása történik, válassza ki a Azure Backup Server az Recovery Services-tárolóban regisztrált Azure Backup kiszolgálók listájából, és adja meg az ahhoz a kiszolgálóhoz társított **titkosítási jelszót** , amelynek az adatait helyre kívánja állítani.
@@ -42,10 +42,10 @@ Adatok helyreállítása Azure Backup Serverról:
     Az alsó ablaktáblán megjelenik a fájlok és mappák listája, amely bármely helyre megtekinthető és helyreállítható.
 
     ![Külső DPM-kiszolgáló helyreállítási pontjai](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Kattintson a jobb gombbal a megfelelő elemre, majd kattintson a **helyreállítás**elemre.
+5. Kattintson a jobb gombbal a megfelelő elemre, és válassza a **helyreállítás**lehetőséget.
 
     ![Külső DPM-helyreállítás](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Tekintse át a **helyreállítás kijelölését**. Ellenőrizze a helyreállított biztonsági másolat adatait és időpontját, valamint azt a forrást, amelyről a biztonsági másolatot létrehozta. Ha a kijelölés helytelen, a **Mégse** gombra kattintva lépjen vissza a helyreállítás lapra a megfelelő helyreállítási pont kiválasztásához. Ha a kijelölés helyes, kattintson a **tovább**gombra.
+6. Tekintse át a **helyreállítás kijelölését**. Ellenőrizze a helyreállított biztonsági másolat adatait és időpontját, valamint azt a forrást, amelyről a biztonsági másolatot létrehozta. Ha a kijelölés helytelen, a **Mégse** gombra kattintva lépjen vissza a helyreállítás lapra a megfelelő helyreállítási pont kiválasztásához. Ha a kijelölés helyes, válassza a **tovább**lehetőséget.
 
     ![Külső DPM-helyreállítás összegzése](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. Válassza **a helyreállítás másik helyre**lehetőséget. **Tallózással keresse** meg a megfelelő helyet a helyreállításhoz.
@@ -62,7 +62,7 @@ Adatok helyreállítása Azure Backup Serverról:
      Annak megállapítása, hogy az **értesítés** küldése sikeres volt-e, amint a helyreállítás sikeresen befejeződött.
 
      ![Külső DPM helyreállítási értesítései](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Az **összegző** képernyő felsorolja az eddig kiválasztott beállításokat. Ha a **helyreállítás**gombra kattint, az adatokat a rendszer a megfelelő helyszíni helyre állítja vissza.
+9. Az **összegző** képernyő felsorolja az eddig kiválasztott beállításokat. Miután kiválasztotta a **helyreállítás**lehetőséget, az adatokat a rendszer a megfelelő helyszíni helyre állítja vissza.
 
     ![Külső DPM helyreállítási beállítások összegzése](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ Adatok helyreállítása Azure Backup Serverról:
    >
 
     ![Helyreállítás figyelése](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. A külső DPM-kiszolgáló nézetének eltávolításához kattintson a **külső DPM törlése** lehetőségre a DPM-kiszolgáló **helyreállítás** lapján.
+10. A DPM-kiszolgáló **helyreállítás** lapján a külső **DPM törlése** lehetőség kiválasztásával távolíthatja el a külső DPM-kiszolgáló nézetét.
 
     ![Külső DPM törlése](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

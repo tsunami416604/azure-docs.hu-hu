@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4a2464cbb47291f35cd4d7e20b555356e3e9aa8b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266459"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299031"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>A jegyzékfájlok szűrése dinamikus csomagoló használatával
 
@@ -150,7 +150,7 @@ További információt [ebben a blogbejegyzésben](https://azure.microsoft.com/b
     - Egy adott eszközön lévő zeneszámok tulajdonságainak meghatározásához [szerezze be és vizsgálja meg a jegyzékfájlt](#get-and-examine-manifest-files).
     - Az objektum-szűrő időbélyegének tulajdonságainak beállítására szolgáló képlet a következő: <br/>startTimestamp = &lt; Kezdési idő a jegyzékfájlban &gt;  +   &lt; várt szűrési kezdési idő másodpercben &gt; * időskála
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek bemutatják, hogyan hozhatók létre programozott módon a szűrők:  
 

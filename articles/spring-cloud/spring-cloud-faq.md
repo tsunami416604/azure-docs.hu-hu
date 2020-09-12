@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260526"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322041"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -36,7 +36,8 @@ A biztonság és az adatvédelem az Azure és az Azure Spring Cloud ügyfeleinek
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Mely régiókban érhető el az Azure Spring Cloud?
 
-USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
+USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA nyugati régiója, Nyugat-Európa, Észak-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia és Kelet-Ausztrália.
+
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Mik az Azure Spring Cloud ismert korlátai?
 
@@ -58,7 +59,7 @@ Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létr
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Tavaszi Felhőbeli fejlesztő vagyok, de az Azure új. Mi a leggyorsabb módszer arra, hogy megtudjam, hogyan fejleszthet egy Azure Spring Cloud-alkalmazást?
 
-Az Azure Spring Cloud első lépéseinek megkezdéséhez kövesse a rövid útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md)című témakör utasításait.
+Az Azure Spring Cloud első lépéseinek megkezdéséhez kövesse a rövid útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md)című témakör utasításait.
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Milyen Java-futtatókörnyezetet támogat az Azure Spring Cloud?
 
@@ -151,7 +152,7 @@ Nem.  Az Azure Spring Cloud elvonta a fejlesztőt a mögöttes architektúrábó
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Támogatja az Azure Spring Cloud a tárolók létrehozását a forrástól?
 
-Igen. További információ: [a Spring Cloud-alkalmazás elindítása forráskódból](spring-cloud-launch-from-source.md).
+Igen. További információ: [a Spring Cloud-alkalmazás elindítása forráskódból](spring-cloud-quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Támogatja az Azure Spring Cloud az automatikus skálázást az alkalmazás példányaiban?
 
@@ -183,6 +184,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

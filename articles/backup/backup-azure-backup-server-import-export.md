@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002011"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378457"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -51,10 +51,10 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 * Hozzon létre egy Azure Storage-fiókot a Recovery Services-tárolóval megegyező előfizetésben.
 * Győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md) a Azure Active Directory alkalmazás létrehozásához. Az offline biztonsági mentési munkafolyamat létrehoz egy Azure Active Directory alkalmazást az Azure Storage-fiókhoz társított előfizetésben. Az alkalmazás célja, hogy az offline biztonsági mentési munkafolyamathoz szükséges biztonságos és hatókörrel rendelkező Azure Backup biztosítson az Azure importálási szolgáltatáshoz.
 * Regisztrálja a Microsoft. ImportExport erőforrás-szolgáltatót az Azure Storage-fiókot tartalmazó előfizetéssel. Az erőforrás-szolgáltató regisztrálása:
-    1. A főmenüben kattintson az **előfizetések**elemre.
+    1. A főmenüben válassza az **előfizetések**lehetőséget.
     2. Ha több előfizetésre is feliratkozott, válassza ki azt az előfizetést, amelyet az offline biztonsági mentéshez használ. Ha csak egy előfizetést használ, megjelenik az előfizetése.
-    3. Az előfizetés menüben kattintson az **erőforrás-szolgáltatók** elemre a szolgáltatók listájának megtekintéséhez.
-    4. A szolgáltatók listájában görgessen le a Microsoft. ImportExport. Ha az állapot NotRegistered, kattintson a **regisztráció**elemre.
+    3. Az előfizetés menüben válassza az **erőforrás-szolgáltatók** lehetőséget a szolgáltatók listájának megtekintéséhez.
+    4. A szolgáltatók listájában görgessen le a Microsoft. ImportExport. Ha az állapot NotRegistered, válassza a **regisztráció**lehetőséget.
 
        ![Az erőforrás-szolgáltató regisztrálása](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -115,7 +115,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
      > [!IMPORTANT]
      > Ha a forrásszámítógép egy virtuális gép, akkor a másolási számítógépként egy másik fizikai kiszolgálót vagy ügyfélszámítógépet kell használnia.
 
-1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa a következő parancsot:
+1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa az alábbi parancsot:
 
     ```console
     .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
@@ -160,7 +160,7 @@ Az alábbi eljárás az Azure importálási feladat szállítási adatait friss�
 * a lemezek visszaszállítási adatainak visszaküldése
 
    1. Jelentkezzen be az Azure-előfizetésbe.
-   2. A főmenüben kattintson a **minden szolgáltatás** elemre, majd a minden szolgáltatás párbeszédpanelen írja be az importálás értéket. Amikor megjelenik az **importálási/exportálási feladatok**, kattintson rá.
+   2. A főmenüben válassza a **minden szolgáltatás** lehetőséget, majd a minden szolgáltatás párbeszédpanelen írja be az importálás értéket. Amikor megjelenik az **importálási/exportálási feladatok**, válassza ki azt.
        ![Szállítási adatok megadása](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        Megnyílik az **importálási/exportálási feladatok** menü, és megjelenik a kiválasztott előfizetés összes importálási/exportálási feladatának listája.
@@ -169,11 +169,11 @@ Az alábbi eljárás az Azure importálási feladat szállítási adatait friss�
 
        ![Szállítási információk áttekintése](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. Az importálási feladathoz tartozó beállítások menüben kattintson a **szállítási adatok kezelése** lehetőségre, és adja meg a visszaszállítás részleteit.
+   4. Az importálási feladathoz tartozó beállítások menüben válassza a **szállítási adatok kezelése** lehetőséget, és adja meg a visszaszállítás részleteit.
 
        ![Szállítási információk tárolása](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. Ha a szállítási szolgáltató nyomon követi a nyomkövetési számot, kattintson a szalagcímre az Azure importálási feladatok áttekintése lapon, és adja meg a következő adatokat:
+   5. Ha a szállítási szolgáltató nyomon követi a nyomkövetési számot, válassza ki a szalagcímet az Azure importálási feladatok áttekintése lapon, és adja meg a következő adatokat:
 
       > [!IMPORTANT]
       > Győződjön meg arról, hogy az Azure importálási feladat létrehozásától számított két héten belül frissítve legyenek a szolgáltató adatai és a nyomkövetési azonosító szám. Ha két héten belül nem tudja ellenőrizni ezeket az adatokat, a rendszer törli a feladatot, és nem dolgozza fel a meghajtókat.

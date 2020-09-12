@@ -1,5 +1,5 @@
 ---
-title: Virtuális merevlemez pillanatképének létrehozása az Azure-ban
+title: Virtuális merevlemez pillanatképének létrehozása az Azure CLI használatával
 description: Megtudhatja, hogyan hozhat létre egy virtuális merevlemez másolatát az Azure-ban biztonsági mentés vagy hibaelhárítási problémák esetén.
 author: roygara
 manager: twooley
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659963"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89317995"
 ---
-# <a name="create-a-snapshot"></a>Pillanatkép létrehozása 
+# <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Pillanatkép létrehozása a portál vagy az Azure CLI használatával
 
 Készítsen pillanatképet az operációs rendszerről vagy az adatlemezről a biztonsági mentéshez vagy a virtuális gépekkel kapcsolatos hibák elhárításához. A pillanatkép egy virtuális merevlemez teljes, írásvédett másolata. 
 
@@ -65,10 +65,10 @@ az snapshot list \
 5. Válasszon ki egy meglévő erőforráscsoportot, vagy írja be egy új nevet. 
 7. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
 8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . A **standard HDD** csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
-9. Kattintson a **Létrehozás** lehetőségre.
+9. Kattintson a **Létrehozás** gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez létrehozásával a pillanatképből, majd csatlakoztassa az új felügyelt lemezt az operációsrendszer-lemezként. További információ: [virtuális gép létrehozása pillanatkép-](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) parancsfájlból.
 

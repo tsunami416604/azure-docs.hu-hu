@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974887"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299263"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509 eszközök tanúsítványainak behelyezése
 
@@ -51,7 +51,7 @@ Amikor egy eszköz először az automatikus kiépítés révén lett kiépítve,
 
 Miután az új levél tanúsítványát beszállították az eszközre, az már nem tud csatlakozni az IoT hubhoz, mert új tanúsítványt használ a kapcsolódáshoz. Az IoT hub csak a régi tanúsítvánnyal rendelkező eszközt ismeri fel. Az eszköz csatlakozási kísérletének eredménye "jogosulatlan" kapcsolódási hiba lesz. A hiba megoldásához frissítenie kell az eszköz beléptetési bejegyzését az eszköz új levél-tanúsítványához. Ezt követően a kiépítési szolgáltatás szükség szerint frissítheti a IoT Hub-eszköz beállításjegyzék-információit az eszköz újraépítésekor. 
 
-A kapcsolódási hiba egyik lehetséges kivétele olyan forgatókönyv, amelyben létrehozott egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközhöz a kiépítési szolgáltatásban. Ebben az esetben, ha nem a gyökér-vagy köztes tanúsítványokat az eszköz megbízhatósági láncában látja, akkor a rendszer felismeri az eszközt, ha az új tanúsítvány a beléptetési csoportban definiált megbízhatósági lánc részét képezi. Ha ez a forgatókönyv egy biztonsági szabálysértésre való reagálásra vonatkozik, legalább a csoportba tartozó, a megszegni kívánt eszközök tanúsítványait kell feketelistán lennie. További információ: a [beléptetési csoportban lévő adott eszközök feketelistára](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)helyezése.
+A kapcsolódási hiba egyik lehetséges kivétele olyan forgatókönyv, amelyben létrehozott egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközhöz a kiépítési szolgáltatásban. Ebben az esetben, ha nem a gyökér-vagy köztes tanúsítványokat az eszköz megbízhatósági láncában látja, akkor a rendszer felismeri az eszközt, ha az új tanúsítvány a beléptetési csoportban definiált megbízhatósági lánc részét képezi. Ha ez a forgatókönyv egy biztonsági szabálysértésre való reagálásra szolgál, akkor legalább a csoportba tartozó, a megszegett eszközök tanúsítványainak letiltása szükséges. További információ: [bizonyos eszközök letiltása egy regisztrációs csoportban](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group).
 
 A beléptetési bejegyzések frissítése a **beléptetések kezelése** oldalon végezhető el. Az oldal eléréséhez kövesse az alábbi lépéseket:
 
@@ -94,7 +94,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 1. Kattintson az **Egyéni regisztrációk**elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
 
-2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 
     ![Egyéni regisztrációk kezelése a másodlagos tanúsítvány használatával](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -116,7 +116,7 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 4. Kattintson a **regisztrációk kezelése** lapra az eszköz kiépítési szolgáltatási példányához, majd kattintson a **regisztrációs csoportok** listára. Kattintson a regisztrációs csoport nevére a listában.
 
-5. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Mentés**gombra. 
+5. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Mentés** gombra. 
 
     ![Az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-cert.png)
 
@@ -162,7 +162,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 2. Kattintson a **regisztrációk kezelése** lapra az eszköz kiépítési szolgáltatási példányához, majd kattintson a **regisztrációs csoportok** listára. Kattintson a regisztrációs csoport nevére a listában.
 
-3. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurálása területen. Ezután kattintson a **Mentés**gombra. 
+3. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurálása területen. Ezután kattintson a **Mentés** gombra. 
 
     ![Az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
@@ -177,7 +177,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 1. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában. 
 
-2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 
     Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
 
@@ -197,27 +197,17 @@ Egy másik lehetőség, hogy a régi és az új tanúsítványok is érvényesek
 Az újratelepítést követően az eszközök az új tanúsítványokkal csatlakozhatnak IoT Hubhoz.
 
 
-## <a name="blacklist-certificates"></a>Tanúsítványok feketelistája
+## <a name="disallow-certificates"></a>Tanúsítványok letiltása
 
-Biztonsági rések esetén előfordulhat, hogy az eszköz tanúsítványának feketelistáját kell megadnia. Az eszköz tanúsítványának feketelistára történő letiltásához tiltsa le a beléptetési bejegyzést a cél eszközhöz/tanúsítványhoz. További információ: eszközök feketelistára helyezése a nem regisztráltak [kezelése](how-to-revoke-device-access-portal.md) cikkben.
+Biztonsági rések esetén előfordulhat, hogy le kell állítania az eszköz tanúsítványát. Az eszköz tanúsítványának letiltásához tiltsa le a beléptetési bejegyzést a célként megadott eszközhöz vagy tanúsítványhoz. További információkért lásd: az eszközök letiltása a nem [beléptetés kezelése](how-to-revoke-device-access-portal.md) cikkben.
 
 Ha egy tanúsítvány egy letiltott beléptetési bejegyzés részeként szerepel, akkor a tanúsítványokat használó IoT hub-ban való regisztrálásra tett kísérletek akkor is sikertelenek lesznek, ha egy másik beléptetési bejegyzés részeként engedélyezve van.
  
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az eszköz kiépítési szolgáltatásában található X. 509 tanúsítványokról, tekintse meg a következőt: [Biztonság](concepts-security.md) 
 - Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványoknak az Azure IoT Hub Device Provisioning Service használatával történő igazolásával kapcsolatos további információkért lásd: [tanúsítványok ellenőrzése](how-to-verify-certificates.md)
 - Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.
-
-
-
-
-
-
-
-
-
-

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425544"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318930"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>A Microsoft 365 Government Azure Active Directory újdonságai
 
@@ -53,22 +53,22 @@ A következő táblázat az összes ügyfél végpontját tartalmazza:
 
 | Name | Végpont részletei |
 |------|------------------|
-| Portálok |Microsoft Azure Government:https://portal.azure.us<p>Microsoft 365 Government – magas GCC:https://portal.office365.us<p>Microsoft 365 Government – DoD:https://portal.apps.mil |
+| Portálok |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – magas GCC: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
 | Azure Active Directory Authority végpont | https://login.microsoftonline.us |
 | Microsoft Graph API Microsoft 365 Government számára – magas GCC | https://graph.microsoft.us |
 | Microsoft Graph API Microsoft 365 Government számára – DoD | https://dod-graph.microsoft.us |
-| Azure Government Services-végpontok | Részletekért lásd: [Azure Government fejlesztői útmutató](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 Government – magas szintű GCC-végpontok | Részletekért lásd: [Office 365 Egyesült Államok kormányának GCC magas végpontja](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 Government – DoD | Részletekért lásd: [Office 365 US government DoD-végpontok](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Azure Government Services-végpontok | Részletekért lásd: [Azure Government fejlesztői útmutató](../../azure-government/documentation-government-developer-guide.md) |
+| Microsoft 365 Government – magas szintű GCC-végpontok | Részletekért lásd: [Office 365 Egyesült Államok kormányának GCC magas végpontja](/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 Government – DoD | Részletekért lásd: [Office 365 US government DoD-végpontok](/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő cikkeket:
 
-- [Mi az az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- [Mi az az Azure Government?](../../azure-government/documentation-government-welcome.md)
 
 - [Azure Government HRE-szolgáltató végpontjának frissítése](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
 - [Az USA kormányzati felhőben Microsoft Graph végpontok](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 Egyesült államokbeli GCC High és DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 Egyesült államokbeli GCC High és DoD](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

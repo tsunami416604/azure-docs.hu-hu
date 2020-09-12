@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422944"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321956"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
 
@@ -31,7 +31,7 @@ Az [Azure ad üzemeltetési útmutatójának](active-directory-ops-guide-intro.m
 
 A Azure Active Directory kezelése a legfontosabb működési feladatok és folyamatok folyamatos végrehajtásához szükséges, ami esetleg nem része a bevezetési projektnek. Továbbra is fontos, hogy ezeket a feladatokat a környezet optimalizálása érdekében állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
 
-| Tevékenység | Tulajdonos |
+| Feladat | Tulajdonos |
 | :- | :- |
 | Az identitások biztonságos pontszámának fejlesztése | InfoSec-műveleti csapat |
 | Azure AD Connect-kiszolgálók karbantartása | IAM Operations csapat |
@@ -49,8 +49,8 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 #### <a name="owners-recommended-reading"></a>Ajánlott olvasás a tulajdonosoknak
 
-- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Irányítás az Azure-ban](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
+- [Irányítás az Azure-ban](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Hibrid felügyelet
 
@@ -69,12 +69,12 @@ Ha az egyiket nem hozták létre, meg kell határoznia az összetevők frissít�
 
 #### <a name="hybrid-management-recommended-reading"></a>Hibrid kezelés – ajánlott olvasás
 
-- [Azure AD Connect: automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
-- [Az Azure AD Application Proxy-összekötők ismertetése | Automatikus frissítések](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#automatic-updates)
+- [Azure AD Connect: automatikus frissítés](../hybrid/how-to-connect-install-automatic-upgrade.md)
+- [Az Azure AD Application Proxy-összekötők ismertetése | Automatikus frissítések](../manage-apps/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health riasztás alapterve
 
-A szervezeteknek [Azure ad Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health) kell központilag telepíteniük Azure AD Connect és AD FS monitorozásához és jelentéskészítéséhez. A Azure AD Connect és AD FS olyan kritikus fontosságú összetevők, amelyek képesek az életciklus-kezelés és a hitelesítés megszakítására, és ezért kimaradások elvégzéséhez vezethetnek. Azure AD Connect Health segít megfigyelni és betekintést nyerni a helyszíni identitás-infrastruktúrába, így biztosítva a környezet megbízhatóságát.
+A szervezeteknek [Azure ad Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) kell központilag telepíteniük Azure AD Connect és AD FS monitorozásához és jelentéskészítéséhez. A Azure AD Connect és AD FS olyan kritikus fontosságú összetevők, amelyek képesek az életciklus-kezelés és a hitelesítés megszakítására, és ezért kimaradások elvégzéséhez vezethetnek. Azure AD Connect Health segít megfigyelni és betekintést nyerni a helyszíni identitás-infrastruktúrába, így biztosítva a környezet megbízhatóságát.
 
 ![Azure AD Connect Heath-architektúra](./media/active-directory-ops-guide/active-directory-ops-img16.png)
 
@@ -82,7 +82,7 @@ A környezet állapotának figyelése során azonnal meg kell felelnie a nagy s�
 
 #### <a name="azure-ad-connect-health-recommended-reading"></a>Azure AD Connect Health ajánlott olvasás
 
-- [Az Azure AD Connect Health-ügynök telepítése](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+- [Az Azure AD Connect Health-ügynök telepítése](../hybrid/how-to-connect-health-agent-install.md)
 
 ### <a name="on-premises-agents-logs"></a>Helyszíni ügynökök naplói
 
@@ -90,11 +90,11 @@ Néhány identitás-és hozzáférés-kezelési szolgáltatás a helyszíni ügy
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>A helyszíni ügynökök a javasolt olvasást naplózzák
 
-- [Alkalmazásproxyval kapcsolatos hibaelhárítás](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
-- [Önkiszolgáló jelszó-visszaállítás hibaelhárítása – Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Az Azure AD Application Proxy-összekötők ismertetése](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
-- [Azure AD Connect: átmenő hitelesítés – problémamegoldás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
-- [Az Azure MFA NPS-bővítményhez tartozó hibakódok megoldása](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
+- [Alkalmazásproxyval kapcsolatos hibaelhárítás](../manage-apps/application-proxy-troubleshoot.md)
+- [Önkiszolgáló jelszó-visszaállítás hibaelhárítása – Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [Az Azure AD Application Proxy-összekötők ismertetése](../manage-apps/application-proxy-connectors.md)
+- [Azure AD Connect: átmenő hitelesítés – problémamegoldás](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
+- [Az Azure MFA NPS-bővítményhez tartozó hibakódok megoldása](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Helyszíni ügynökök kezelése
 
@@ -106,14 +106,14 @@ Az ajánlott eljárások bevezetése segíthet a helyszíni ügynökök optimál
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Helyszíni ügynökök felügyeletének ajánlott olvasata
 
-- [Az Azure AD Application Proxy-összekötők ismertetése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Az Azure AD Application Proxy-összekötők ismertetése](../manage-apps/application-proxy-connectors.md)
 - [Azure AD átmenő hitelesítés – gyors útmutató](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Felügyelet nagy léptékben
 
 ### <a name="identity-secure-score"></a>Identitásbiztonság pontszám
 
-Az [identitás biztonságos pontszáma](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score) a szervezet biztonsági helyzetének számszerűsíthető mértékét biztosítja. Fontos, hogy folyamatosan áttekintse és foglalkozzon a jelentett eredményekkel, és törekedjen a lehető legmagasabb pontszámot. A pontszám az alábbiakban nyújt segítséget:
+Az [identitás biztonságos pontszáma](./identity-secure-score.md) a szervezet biztonsági helyzetének számszerűsíthető mértékét biztosítja. Fontos, hogy folyamatosan áttekintse és foglalkozzon a jelentett eredményekkel, és törekedjen a lehető legmagasabb pontszámot. A pontszám az alábbiakban nyújt segítséget:
 
 - Az identitásbiztonsági rendszer objektív felmérése
 - Identitásbiztonsági fejlesztések tervezése
@@ -125,15 +125,15 @@ Ha a szervezete jelenleg nem rendelkezik olyan programmal, amely figyeli a vált
 
 ### <a name="notifications"></a>Értesítések
 
-A Microsoft e-mailes kommunikációt küld a rendszergazdáknak a szolgáltatás különböző változásainak, a szükséges konfigurációs frissítéseknek és a rendszergazdai beavatkozást igénylő hibáknak a bejelentéséhez. Fontos, hogy az ügyfelek az értesítő e-mail-címeket úgy állítsa be, hogy az értesítéseket a megfelelő csapattagok kapják meg, akik elfogadják és felhasználhatják az összes értesítést. Azt javasoljuk, hogy több címzettet adjon hozzá az [Office 365 Message Center](https://docs.microsoft.com/office365/admin/manage/message-center) szolgáltatáshoz, és kérje meg, hogy az értesítéseket (beleértve Azure ad Connect Health értesítéseket) egy terjesztési listára vagy megosztott postaládába küldje el. Ha egy e-mail-címmel rendelkező globális rendszergazdai fiókkal rendelkezik, mindenképpen legalább két, e-mail-kompatibilis fiókot kell konfigurálnia.
+A Microsoft e-mailes kommunikációt küld a rendszergazdáknak a szolgáltatás különböző változásainak, a szükséges konfigurációs frissítéseknek és a rendszergazdai beavatkozást igénylő hibáknak a bejelentéséhez. Fontos, hogy az ügyfelek az értesítő e-mail-címeket úgy állítsa be, hogy az értesítéseket a megfelelő csapattagok kapják meg, akik elfogadják és felhasználhatják az összes értesítést. Azt javasoljuk, hogy több címzettet adjon hozzá az [Office 365 Message Center](/office365/admin/manage/message-center) szolgáltatáshoz, és kérje meg, hogy az értesítéseket (beleértve Azure ad Connect Health értesítéseket) egy terjesztési listára vagy megosztott postaládába küldje el. Ha egy e-mail-címmel rendelkező globális rendszergazdai fiókkal rendelkezik, mindenképpen legalább két, e-mail-kompatibilis fiókot kell konfigurálnia.
 
 Az Azure AD két "feladó" címet használ: az <o365mc@email2.microsoft.com> Office 365 Message Center-értesítéseket küld, és a következőhöz <azure-noreply@microsoft.com> kapcsolódó értesítéseket küld:
 
-- [Azure AD-hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
-- [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
-- [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
-- [Vállalati alkalmazás lejárati tanúsítványának értesítései](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
+- [Azure AD-hozzáférési felülvizsgálatok](../governance/access-reviews-overview.md)
+- [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
+- [Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-notifications.md)
+- [Azure AD Privileged Identity Management](../privileged-identity-management/pim-email-notifications.md)
+- [Vállalati alkalmazás lejárati tanúsítványának értesítései](../manage-apps/manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)
 - Vállalati alkalmazások kiépítési szolgáltatásával kapcsolatos értesítések
 
 Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket küld, és hogy hol keresse meg őket:
@@ -148,13 +148,13 @@ Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket kü
 
 #### <a name="notifications-recommended-reading"></a>Ajánlott olvasási értesítések
 
-- [Megváltoztathatja a munkahely címeit, a technikai kapcsolattartási és egyéb Office-365](https://docs.microsoft.com/office365/admin/manage/change-address-contact-and-more)
+- [Megváltoztathatja a munkahely címeit, a technikai kapcsolattartási és egyéb Office-365](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>Működési felületi terület
 
 ### <a name="ad-fs-lockdown"></a>Zárolás AD FS
 
-Szervezetek, amelyek az [Azure ad Smart zárolási](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012 R2 rendszerben, implementálja AD FS [extranet zárolási védelmét](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-es vagy újabb verziójára, implementálja az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Legalább azt javasoljuk, hogy engedélyezze az extranet zárolását a helyszíni Active Directory elleni találgatásos támadásokkal szemben. Ha azonban AD FS a Windows 2016-es vagy újabb verziójával, akkor engedélyeznie kell az extranetes intelligens zárolást is, amely segít enyhíteni a [jelszó-szórásos](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) támadásokat.
+Szervezetek, amelyek az [Azure ad Smart zárolási](../authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012 R2 rendszerben, implementálja AD FS [extranet zárolási védelmét](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-es vagy újabb verziójára, implementálja az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Legalább azt javasoljuk, hogy engedélyezze az extranet zárolását a helyszíni Active Directory elleni találgatásos támadásokkal szemben. Ha azonban AD FS a Windows 2016-es vagy újabb verziójával, akkor engedélyeznie kell az extranetes intelligens zárolást is, amely segít enyhíteni a [jelszó-szórásos](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) támadásokat.
 
 Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpontot ki lehet kapcsolni a támadási felület minimalizálásához. Ha például AD FSt csak az Azure AD-hez használja, tiltsa le a WS-Trust végpontokat a **usernamemixed** és a **windowstransport**számára engedélyezett végpontokon kívül.
 
@@ -164,7 +164,7 @@ A szervezeteknek a helyszíni hibrid összetevőkkel megegyező módon kell lez�
 
 A Active Directory felügyeleti réteg modellje úgy lett kialakítva, hogy a rendszer a környezet teljes vezérlése (0. réteg) és a támadók által gyakran feltört magas kockázatú munkaállomás-eszközök között puffer zónák használatával megvédje az identitási rendszereket. ![A többrétegű modell három rétegét bemutató ábra](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
-A [réteg modell](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) három szintből áll, és csak rendszergazdai fiókokat tartalmaz, nem általános jogú felhasználói fiókokat.
+A [réteg modell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) három szintből áll, és csak rendszergazdai fiókokat tartalmaz, nem általános jogú felhasználói fiókokat.
 
 - **0**   . szintű – A vállalati identitások közvetlen ellenőrzése a környezetben. A 0. réteg olyan fiókokat, csoportokat és más elemeket tartalmaz, amelyek közvetlen vagy közvetett ellenőrzéssel rendelkeznek az Active Directory-erdő, -tartomány vagy -tartományvezérlő, valamint a bennük található valamennyi erőforrás felett. A 0. rétegbeli erőforrások biztonsági érzékenysége egyenértékű, ugyanis gyakorlatilag egymás ellenőrzése alatt állnak.
 - **1**   . szintű – A vállalati kiszolgálók és alkalmazások vezérlése. Az 1. réteg erőforrásai közé a kiszolgálói operációs rendszerek, a felhőszolgáltatások és a vállalati alkalmazások tartoznak. Az 1. rétegbeli rendszergazdai fiókok az ezeken az erőforrásokon található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Általános példaként említhetjük erre a kiszolgálói rendszergazdák szerepkörét, akik ezeket az operációs rendszereket karbantartják, és az összes vállalati szolgáltatásra hatással lehetnek.
@@ -184,6 +184,6 @@ A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista seg
 - AD FS zárolása.
 - A helyszíni identitás-összetevőkkel rendelkező gépekhez való hozzáférés zárolása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át az [Azure ad telepítési terveit](active-directory-deployment-plans.md) a nem telepített képességek megvalósítására vonatkozó részletekért.

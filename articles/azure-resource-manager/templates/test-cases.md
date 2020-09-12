@@ -2,15 +2,15 @@
 title: Tesztelési eszközkészlet tesztelése
 description: Az ARM template test Toolkit által futtatott tesztek leírása.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255948"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378117"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Az ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési esetei
 
@@ -100,6 +100,37 @@ A következő példa **átadja** ezt a tesztet:
         "type": "SecureString"
     }
 }
+```
+
+## <a name="environment-urls-cant-be-hardcoded"></a>A környezeti URL-címek nem lehetnek hardcoded
+
+Teszt neve: a **DeploymentTemplate nem tartalmazhat hardcoded URI** -t
+
+Ne parancsmagba a környezet URL-címeit a sablonban. Ehelyett használja a [környezeti funkciót](template-functions-deployment.md#environment) , hogy dinamikusan beolvassa ezeket az URL-címeket az üzembe helyezés során. A blokkolt URL-gazdagépek listáját a [tesztelési eset](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)című részben tekintheti meg.
+
+Az alábbi példa ezt a tesztet **nem tudja végrehajtani** , mert az URL-cím hardcoded.
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+A teszt a [Összefűzés](template-functions-string.md#concat) vagy az [URI](template-functions-string.md#uri)használata esetén is **meghiúsul** .
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+A következő példa **átadja** ezt a tesztet.
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
 ```
 
 ## <a name="location-uses-parameter"></a>A hely paramétert használ
@@ -203,7 +234,7 @@ Teszt neve: **az erőforrásoknak helyet kell tartalmaznia**
 
 Az erőforrás helyét a [sablon kifejezésére](template-expressions.md) vagy a (z) értékre kell beállítani `global` . A sablon kifejezés általában az előző tesztben leírt Location paramétert fogja használni.
 
-A következő példa nem **teljesíti** ezt a tesztet, mert a hely nem kifejezés vagy `global` .
+A következő példa **nem teljesíti** ezt a tesztet, mert a hely nem kifejezés vagy `global` .
 
 ```json
 {
@@ -351,18 +382,18 @@ Akkor is ezt a figyelmeztetést kapja, ha a min vagy a maximális értéket adja
 
 ## <a name="artifacts-parameter-defined-correctly"></a>Az összetevők paramétere helyesen van megadva
 
-Teszt neve: összetevők **– paraméter**
+Teszt neve: összetevők **paraméter**
 
-Ha `_artifactsLocation` a és a paramétereket is tartalmazza `_artifactsLocationSasToken` , használja a megfelelő alapértelmezett értékeket és típusokat. A következő feltételeknek kell teljesülniük a teszt továbbításához:
+Ha `_artifactsLocation` a és a paramétereket is tartalmazza `_artifactsLocationSasToken` , használja a megfelelő alapértelmezett értékeket és típusokat. A teszt továbbításához a következő feltételeknek kell teljesülniük:
 
 * Ha egy paramétert ad meg, meg kell adnia a másikat.
 * `_artifactsLocation`**karakterláncnak** kell lennie
-* `_artifactsLocation`a fő sablonban alapértelmezett értékkel kell rendelkeznie
-* `_artifactsLocation`nem lehet alapértelmezett érték egy beágyazott sablonban. 
-* `_artifactsLocation`az `"[deployment().properties.templateLink.uri]"` alapértelmezett értékének vagy a nyers tárház URL-címének kell lennie
+* `_artifactsLocation` a fő sablonban alapértelmezett értékkel kell rendelkeznie
+* `_artifactsLocation` nem lehet alapértelmezett érték egy beágyazott sablonban. 
+* `_artifactsLocation` az `"[deployment().properties.templateLink.uri]"` alapértelmezett értékének vagy a nyers tárház URL-címének kell lennie
 * `_artifactsLocationSasToken`**secureString** kell lennie
-* `_artifactsLocationSasToken`az alapértelmezett értékének csak üres karakterlánca lehet
-* `_artifactsLocationSasToken`nem lehet alapértelmezett érték egy beágyazott sablonban. 
+* `_artifactsLocationSasToken` az alapértelmezett értékének csak üres karakterlánca lehet
+* `_artifactsLocationSasToken` nem lehet alapértelmezett érték egy beágyazott sablonban. 
 
 ## <a name="declared-variables-must-be-used"></a>Deklarált változókat kell használni
 
@@ -514,9 +545,9 @@ Ez a teszt a következőkre vonatkozik:
 
 A `reference` és a esetében `list*` a teszt **sikertelen lesz** , ha `concat` az erőforrás-azonosító létrehozásához használja.
 
-## <a name="dependson-cant-be-conditional"></a>a dependsOn nem lehet feltételes
+## <a name="dependson-best-practices"></a>dependsOn ajánlott eljárások
 
-Teszt neve: **a DependsOn nem lehet feltételes**
+Teszt neve: **DependsOn ajánlott eljárások**
 
 A központi telepítési függőségek beállításakor ne használja az [IF](template-functions-logical.md#if) függvényt a feltétel teszteléséhez. Ha egy erőforrás a [feltételesen üzembe helyezett](conditional-resource-deployment.md)erőforrástól függ, állítsa be a függőséget úgy, hogy bármilyen erőforrással lenne. Ha egy feltételes erőforrás nincs telepítve, Azure Resource Manager automatikusan eltávolítja a szükséges függőségekről.
 
@@ -572,7 +603,7 @@ Ha a sablon tartalmaz egy rendszerképpel rendelkező virtuális gépet, győző
 
 ## <a name="use-stable-vm-images"></a>Stabil virtuálisgép-rendszerképek használata
 
-Teszt neve: **virtuális gépek – előzetes** verzió
+Teszt neve: **Virtual Machines nem lehet előzetes** verzió
 
 A virtuális gépek nem használhatják az előnézeti lemezképeket.
 
@@ -656,6 +687,6 @@ A következő példa **meghiúsul** , mert a kimenetben egy [List *](template-fu
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.
