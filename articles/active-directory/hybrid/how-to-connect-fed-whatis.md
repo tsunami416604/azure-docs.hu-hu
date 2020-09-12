@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7730efd29e24f99bce3937a9ce5cc2caf4e1400f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359500"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660849"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 A Azure Active Directory (Azure AD) összekapcsolása lehetővé teszi a helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) és az Azure AD-vel való összevonás konfigurálását. Az összevonási bejelentkezés lehetővé teszi a felhasználók számára, hogy az Azure AD-alapú szolgáltatásokba jelentkezzenek be helyszíni jelszavával – és közben a vállalati hálózaton, anélkül, hogy újra meg kellene adniuk a jelszavukat. A AD FS összevonásával telepítheti AD FS új telepítését, vagy megadhat egy meglévő telepítést egy Windows Server 2012 R2-farmban.
@@ -38,12 +38,12 @@ Ez a témakör a Azure AD Connect összevonásával kapcsolatos funkciókról ny
 | [AD FS Farm konfigurálása](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Új AD FS Farm telepítése Azure AD Connect használatával. |
 | [Összevonása az Azure AD-vel alternatív bejelentkezési azonosító használatával](how-to-connect-fed-management.md#alternateid) | Összevonás konfigurálása alternatív bejelentkezési azonosító használatával  |
 | **A AD FS konfigurációjának módosítása** | |
-| [A megbízhatóság javítása](how-to-connect-fed-management.md#repairthetrust) |Javítsa ki az aktuális megbízhatósági kapcsolatot a helyszíni AD FS és az Office 365/Azure között. |
+| [A megbízhatóság javítása](how-to-connect-fed-management.md#repairthetrust) |Javítsa ki az aktuális megbízhatósági kapcsolatot a helyszíni AD FS és az Microsoft 365/Azure között. |
 | [Új AD FS-kiszolgáló hozzáadása](how-to-connect-fed-management.md#addadfsserver) |A kezdeti telepítés után kibonthat egy AD FS farmot egy további AD FS-kiszolgálóval. |
 | [Új AD FS WAP-kiszolgáló hozzáadása](how-to-connect-fed-management.md#addwapserver) |A kezdeti telepítés után kibonthat egy AD FS farmot egy további webalkalmazás-proxy (WAP) kiszolgálóval. |
 | [Új összevont tartomány hozzáadása](how-to-connect-fed-management.md#addfeddomain) |Adjon hozzá egy másik tartományt az Azure AD-vel való összevonáshoz. |
 | [A TLS/SSL-tanúsítvány frissítése](how-to-connect-fed-ssl-update.md)| Egy AD FS Farm TLS/SSL-tanúsítványának frissítése. |
-| [Az Office 365 és az Azure AD összevonási tanúsítványainak megújítása](how-to-connect-fed-o365-certs.md)|Újítsa meg O365-tanúsítványát az Azure AD-vel.|
+| [Microsoft 365 és az Azure AD összevonási tanúsítványainak megújítása](how-to-connect-fed-o365-certs.md)|Újítsa meg O365-tanúsítványát az Azure AD-vel.|
 | **Egyéb összevonási konfiguráció** | |
 | [Több Azure AD-példány összevonása egyetlen AD FS-példánnyal](how-to-connect-fed-single-adfs-multitenant-federation.md) | Több Azure AD-összevonása egyetlen AD FS farmtal| 
 | [Egyéni vállalati embléma/illusztráció hozzáadása](how-to-connect-fed-management.md#customlogo) |Módosítsa a bejelentkezési élményt úgy, hogy megadja a AD FS bejelentkezési oldalán megjelenő egyéni emblémát. |
@@ -53,5 +53,5 @@ Ez a témakör a Azure AD Connect összevonásával kapcsolatos funkciókról ny
 
 ## <a name="additional-resources"></a>További források
 * [Egyesítő két Azure AD-t egyetlen AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
-* [Az AD FS üzembe helyezése az Azure-ban](how-to-connect-fed-azure-adfs.md)
-* [Magas rendelkezésre állású, több földrajzi AD FS üzembe helyezés az Azure-ban az Azure-ban Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
+* [Az AD FS üzembe helyezése az Azure-ban](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Magas rendelkezésre állású, több földrajzi AD FS üzembe helyezés az Azure-ban az Azure-ban Traffic Manager](/windows-server/identity/ad-fs/deployment/active-directory-adfs-in-azure-with-azure-traffic-manager)

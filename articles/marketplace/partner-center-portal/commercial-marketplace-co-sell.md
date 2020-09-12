@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ca1a1bd1f07bf30fd7e5cd57b617a823120e85ea
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104231"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017370"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
@@ -62,7 +62,7 @@ Az ajánlathoz legfeljebb három megoldási területet adhat hozzá. Minden egye
 
 ## <a name="documents"></a>Dokumentumok
 
-A Microsoft számára biztosítékot biztosíthat az ügyfelek igényeinek kiértékeléséhez.
+Lehetősége van olyan biztosítéki dokumentumok biztosítására, amelyeket a Microsoft az ajánlatának megismerésére és az ügyfelek igényeinek megfelelő kiértékelésére használ majd. Az alábbi táblázatban felsorolt összes dokumentum nem kötelező.
 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
@@ -79,14 +79,14 @@ A Microsoft számára biztosítékot biztosíthat az ügyfelek igényeinek kiér
 
 A kapcsolattartási adatok lehetővé teszik, hogy a Microsoft értékesítési csapatok és a csatornák viszonteladói további információkat kérjenek a szervezet megfelelő erőforrásáról. A kapcsolattartási adatok minden Microsoft értékesítési csapat számára elérhetők. Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a CSP programban, a kapcsolattartási adatok a csatorna-viszonteladók számára is elérhetők.
 
-Ez a dokumentum útmutatást nyújt a partnerek különböző szerepköreivel és azok közötti választással kapcsolatban. Megadhatja a névjegyeket úgy, hogy letölti a CSV-sablont a partneri központból, és az egyes sorokban megtölti a kapcsolattartó adatait, és importálja ezt a CSV-fájlt. A CSV-fájlok importálása felülírja a meglévő névjegyeket.
+Megadhatja a névjegyeket úgy, hogy letölti a CSV-sablont a partneri központból, és az egyes sorokban megtölti a kapcsolattartó adatait, és importálja ezt a CSV-fájlt. A CSV-fájlok importálása felülírja a meglévő névjegyeket.
 
 Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosíthatja a fájlt.
 
 * *Név (kötelező)*: a partner neve.
 * *E-mail-cím (kötelező)*: a partner e-mail-címe.
 * *Beosztás (kötelező)*: beosztás.
-* *Szerepkör (kötelező)*: használja a következő szerepkörök egyikét a sablonban ebben a mezőben.
+* *Szerepkör (kötelező)*: használja a következő szerepkörök bármelyikét.
 
     | **Szerepkör**    | **Leírás**  |
     | :------------------- | :-------------------|

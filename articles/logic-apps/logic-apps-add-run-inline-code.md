@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420124"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658172"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Kódrészletek hozzáadása és futtatása beágyazott kód használatával Azure Logic Apps
 
@@ -29,7 +29,7 @@ Ha egy kódrészletet szeretne futtatni a logikai alkalmazásban, akkor a logika
 
 Ez a művelet futtatja a kódrészletet, és visszaadja az adott kódrészlet kimenetét az **eredmény**nevű tokennek, amelyet a logikai alkalmazás későbbi műveleteiben használhat. Olyan esetekben, amikor egy függvényt szeretne létrehozni a kódhoz, próbálkozzon [egy Azure-függvény létrehozásával és meghívásával](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazásban.
 
-Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail érkezik egy Office 365 Outlook-fiókba. A kódrészlet kibontja és visszaadja az e-mail törzsében megjelenő e-mail-címeket.
+Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail érkezik egy munkahelyi vagy iskolai fiókba. A kódrészlet kibontja és visszaadja az e-mail törzsében megjelenő e-mail-címeket.
 
 ![Példa – áttekintés](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 

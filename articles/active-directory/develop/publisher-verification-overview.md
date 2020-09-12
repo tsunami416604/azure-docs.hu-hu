@@ -1,6 +1,6 @@
 ---
 title: A kiadói ellenőrzés áttekintése – Microsoft Identity platform | Azure
-description: Áttekintést nyújt a Microsoft Identity platform közzétevő-ellenőrzési programjáról (előzetes verzió). Felsorolja az előnyeit, a program követelményeit és a gyakran ismételt kérdéseket. Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan Microsoft Partner Network-fiókkal, amely befejezte az ellenőrzési folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával.
+description: Áttekintést nyújt a Microsoft Identity platform közzétevő-ellenőrzési programjáról. Felsorolja az előnyeit, a program követelményeit és a gyakran ismételt kérdéseket. Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan Microsoft Partner Network-fiókkal, amely befejezte az ellenőrzési folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068473"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005791"
 ---
-# <a name="publisher-verification-preview"></a>Közzétevő ellenőrzése (előzetes verzió)
+# <a name="publisher-verification"></a>Közzétevő ellenőrzése
 
-A kiadói ellenőrzés (előzetes verzió) segít a rendszergazdáknak és a végfelhasználóknak megérteni az alkalmazások fejlesztőinek a Microsoft Identity platformmal való integrálásának eredetiségét. Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiókkal, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával. 
+A kiadói ellenőrzés segítségével a rendszergazdák és a végfelhasználók megismerhetik az alkalmazások fejlesztőinek a Microsoft Identity platformmal való integrálásának eredetiségét. Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiókkal, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával. 
 
 Egy kék "ellenőrzött" jelvény jelenik meg az Azure AD-hozzájárulási kérdésben és a többi képernyőn: ![ beleegyezés kérése](./media/publisher-verification-overview/consent-prompt.png)
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2d6e026f87211260a2cf45c0623806cc024b44e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cb804b21d6f5312c13bfdbf7b0fc0404961ba1e3
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530666"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005734"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
@@ -26,16 +26,16 @@ Azure Automation két típusú futtató fiókot használ:
 >[!NOTE]
 >A Azure Cloud Solution Provider (CSP) előfizetések csak a Azure Resource Manager modellt támogatják. A nem Azure Resource Manager szolgáltatások nem érhetők el a programban. Ha CSP-előfizetést használ, a klasszikus Azure-beli futtató fiók nem jön létre, de létrejön az Azure-beli futtató fiók. A CSP-előfizetésekkel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](/azure/cloud-solution-provider/overview/azure-csp-available-services)című témakört.
 
-A futtató fiókhoz tartozó egyszerű szolgáltatásnév nem rendelkezik az Azure AD alapértelmezett olvasási engedélyeivel. Ha engedélyeket szeretne adni az Azure AD olvasásához vagy kezeléséhez, meg kell adnia az engedélyeket az egyszerű szolgáltatáshoz az **API-engedélyek**alatt. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+A futtató fiókhoz tartozó egyszerű szolgáltatásnév nem rendelkezik az Azure AD alapértelmezett olvasási engedélyeivel. Ha engedélyeket szeretne adni az Azure AD olvasásához vagy kezeléséhez, meg kell adnia az engedélyeket az egyszerű szolgáltatáshoz az **API-engedélyek**alatt. További információért lásd: [engedélyek hozzáadása a webes API-hoz való hozzáféréshez](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
 
 ### <a name="run-as-account"></a>Futtató fiók
 
 A futtató fiók a [Resource Manager üzembe helyezési modell](../azure-resource-manager/management/deployment-models.md) erőforrásait kezeli. A következő feladatokat hajtja végre.
 
 * Létrehoz egy önaláírt tanúsítvánnyal ellátott Azure AD-alkalmazást, továbbá létrehoz egy egyszerűszolgáltatás-fiókot az Azure AD-ben lévő alkalmazáshoz, és hozzárendeli a közreműködői szerepkört a jelenlegi előfizetésben lévő fiókhoz. A tanúsítvány beállítását a tulajdonosra vagy bármely más szerepkörre módosíthatja. További információk: [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
-  
+
 * Létrehoz egy nevű Automation-tanúsítványt `AzureRunAsCertificate` a megadott Automation-fiókban. A tanúsítvány objektuma tartalmazza az Azure AD-alkalmazás által használt tanúsítvány titkos kulcsát.
-  
+
 * Létrehoz egy nevű Automation-összekötő eszközt `AzureRunAsConnection` a megadott Automation-fiókban. A szolgáltatás tartalmazza az alkalmazás AZONOSÍTÓját, a bérlő AZONOSÍTÓját, az előfizetés AZONOSÍTÓját és a tanúsítvány ujjlenyomatát.
 
 ### <a name="azure-classic-run-as-account"></a>Klasszikus Azure-futtatófiók
@@ -61,7 +61,7 @@ Ez a szakasz a normál futtató fiókok és a klasszikus futtató fiókok enged�
 
 Futtató fiók létrehozásához vagy frissítéséhez konkrét jogosultságokkal és engedélyekkel kell rendelkeznie. Azure Active Directory és egy előfizetéshez tartozó egyik alkalmazás rendszergazdája elvégezheti az összes feladatot. Az alábbi táblázat a feladatok elkülönítését mutatja be, a megfelelő parancsmagot és engedélyeket, valamint a szükséges engedélyek listáját:
 
-|Tevékenység|Parancsmag  |Minimális engedélyek  |Az engedélyek beállítása|
+|Feladat|Parancsmag  |Minimális engedélyek  |Az engedélyek beállítása|
 |---|---------|---------|---|
 |Azure AD-alkalmazás létrehozása|[Új – AzADApplication](/powershell/module/az.resources/new-azadapplication)     | Alkalmazás fejlesztői szerepköre<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja > |
 |Adjon hozzá egy hitelesítő adatot az alkalmazáshoz.|[Új – AzADAppCredential](/powershell/module/az.resources/new-azadappcredential)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
@@ -80,7 +80,7 @@ Annak ellenőrzése, hogy a hibaüzenetet előállító helyzet kijavítása meg
 
 1. A Azure Portal Azure Active Directory ablaktábláján válassza a **felhasználók és csoportok**lehetőséget.
 2. Válassza **a minden felhasználó**lehetőséget.
-3. Válassza ki a nevét, majd válassza a **profil**lehetőséget. 
+3. Válassza ki a nevét, majd válassza a **profil**lehetőséget.
 4. Győződjön meg arról, hogy a felhasználó profiljában a **felhasználó típusa** attribútum értéke nincs beállítva **vendégként**.
 
 ### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Engedélyek beszerzése klasszikus futtató fiókok konfigurálásához
@@ -99,7 +99,7 @@ A következő lépésekkel frissítheti Azure Automation-fiókját a Azure Porta
 
 4. A bal oldali ablaktáblán válassza a **futtató fiókok** lehetőséget a Fiókbeállítások szakaszban.
 
-5. Attól függően, hogy melyik fiókra van szüksége, válassza az **Azure-alapú futtató fiók** vagy a **Klasszikus Azure-alapú futtató fiók** lehetőséget. 
+5. Attól függően, hogy melyik fiókra van szüksége, válassza az **Azure-alapú futtató fiók** vagy a **Klasszikus Azure-alapú futtató fiók** lehetőséget.
 
 6. Az érdeklődési fióktól függően használja az Azure-beli **futtató fiók hozzáadása** vagy a klasszikus Azure-beli **futtató fiók hozzáadása** panelt. Az áttekintő információk áttekintése után kattintson a **Létrehozás**gombra.
 
@@ -113,7 +113,7 @@ Ez a szakasz azt ismerteti, hogyan lehet törölni egy futtató vagy klasszikus 
 
 2. A bal oldali ablaktáblán válassza a **futtató fiókok** lehetőséget a Fiókbeállítások szakaszban.
 
-3. A Futtató fiókok tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván. 
+3. A Futtató fiókok tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván.
 
 4. A kiválasztott fiók Tulajdonságok paneljén kattintson a **Törlés**elemre.
 
@@ -127,7 +127,7 @@ Ez a szakasz azt ismerteti, hogyan lehet törölni egy futtató vagy klasszikus 
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Önaláírt tanúsítvány megújítása
 
-A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy évig lejár. A futtató fiók lejárata előtt egy bizonyos ponton meg kell újítania a tanúsítványt. Bármikor megújíthatja, mielőtt lejár. 
+A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy évig lejár. A futtató fiók lejárata előtt egy bizonyos ponton meg kell újítania a tanúsítványt. Bármikor megújíthatja, mielőtt lejár.
 
 Az önaláírt tanúsítvány megújításakor a rendszer megőrzi a jelenlegi érvényes tanúsítványt, hogy biztosítsa, hogy a várólistára helyezett vagy aktívan futó runbookok és a futtató fiókkal végzett hitelesítés ne legyen negatív hatással. A tanúsítvány a lejárati dátumáig érvényes marad.
 
@@ -168,10 +168,10 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzRoleDefinition
 ```
 
-Megadhatja, hogy a futtató fiók által használt egyszerű szolgáltatásnév a közreműködő szerepkör definíciójában vagy egy egyéniben legyen. 
+Megadhatja, hogy a futtató fiók által használt egyszerű szolgáltatásnév a közreműködő szerepkör definíciójában vagy egy egyéniben legyen.
 
 1. Nyissa meg az Automation-fiókját, és válassza a fiók beállításai szakaszban a **futtató fiókok** elemet.
-2. Válassza az Azure-beli **futtató fiók**lehetőséget. 
+2. Válassza az Azure-beli **futtató fiók**lehetőséget.
 3. Válassza ki a **szerepkört** a használatban lévő szerepkör-definíció megkereséséhez.
 
 :::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Ellenőrizze a futtató fiók szerepkört." lightbox="media/manage-runas-account/verify-role-expanded.png":::
@@ -186,7 +186,7 @@ Engedélyezheti Azure Automation annak ellenőrzését, hogy a Key Vault és a f
 * Engedélyek megadása Key Vault számára.
 * Adja meg a hozzáférési házirendet.
 
-A PowerShell-galéria [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) parancsfájllal megadhatja a futtató fiók engedélyeit Key Vault. A Key Vault engedélyeinek beállításával kapcsolatos további információkért lásd: az [alkalmazások hozzáférésének biztosítása a Key vaulthoz](../key-vault/general/group-permissions-for-apps.md) .
+A PowerShell-galéria [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) parancsfájllal megadhatja a futtató fiók engedélyeit Key Vault. A Key Vault engedélyeinek beállításával kapcsolatos további részletekért tekintse meg [a Key Vault hozzáférési szabályzatának hozzárendelését](/azure/key-vault/general/assign-access-policy-powershell) ismertető témakört.
 
 ## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>A futtató fiókok konfigurációs problémáinak elhárítása
 
@@ -207,9 +207,9 @@ Ha kiválasztja a futtató fiókot, a fiók tulajdonságai ablaktábla a követk
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.
 ```
 
-A futtató fiókkal kapcsolatos hasonló problémákat gyorsan elháríthatja a fiók törlésével és ismételt létrehozásával.
+Ezeket a futtató fiókok hibáit gyorsan megoldhatja a futtató fiók törlésével és újbóli létrehozásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás-objektumok és egyszerű szolgáltatások objektumai](../active-directory/develop/app-objects-and-service-principals.md).
 * [Az Azure Cloud Services tanúsítványok áttekintése](../cloud-services/cloud-services-certs-create.md).

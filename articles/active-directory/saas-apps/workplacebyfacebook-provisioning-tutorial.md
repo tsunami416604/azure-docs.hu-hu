@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526398"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006091"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
@@ -97,7 +97,7 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a munkahelyhez a Facebook**lehetőséget.
 
@@ -125,8 +125,16 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
    |phoneNumbers [type EQ "fax"]. Value|Sztring|
    |externalId|Sztring|
    |preferredLanguage|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Manager|Sztring|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Department|Sztring|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Division|Sztring|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. szervezet|Sztring|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. costCenter|Sztring|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. employeeNumber|Sztring|
+   |urn: scim: sémák: bővítmény: Facebook: auth_method: 1.0: auth_method|Sztring|
+   |urn: scim: sémák: bővítmény: Facebook: Frontline: 1.0. is_frontline|Logikai|
+   |urn: scim: sémák: bővítmény: Facebook: starttermdates: 1.0. startDate|Egész szám|
+
 
 10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -154,11 +162,15 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 *  Ha egy felhasználót nem sikerült létrehozni, és egy "1789003" kóddal rendelkező naplózási esemény van, akkor a felhasználó nem ellenőrzött tartományból származik.
 
+## <a name="change-log"></a>Változási napló
+
+* 09/10/2020 – a (z) "Division", "Organization", "costCenter" és "employeeNumber" vállalati attribútumok támogatása. A "startDate", a "auth_method" és a "Frontline" egyéni attribútumok támogatása
+
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

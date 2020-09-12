@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760090"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661750"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>A Standard szabálymotor referenciája az Azure CDN-hez
 
@@ -59,9 +59,9 @@ A százalékos aláírás az URL-kódolás (például:) jelzésére szolgál `%2
 
 ### <a name="wildcard-values"></a>Helyettesítő karakteres értékek
 
-Jelenleg a standard szintű szabályok motorjában a **UrlPath Matching feltételben** szereplő helyettesítő karaktert támogatjuk. A \* karakter egy csillag, amely egy vagy több karaktert jelöl. 
+Jelenleg a standard szintű szabályok motorjában a **UrlPath Matching feltételben** szereplő helyettesítő karaktert támogatjuk. A \* karakter egy helyettesítő karakter, amely egy vagy több karaktert jelöl. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyeztetési feltételek a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md)
 - [Műveletek a standard szabályok motorban](cdn-standard-rules-engine-actions.md)

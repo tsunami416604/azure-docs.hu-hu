@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705775"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005224"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -68,7 +68,7 @@ A következő táblázat felsorolja, hogy milyen típusú adatok gyűjthetők ö
 
 A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Analytics munkaterületre, amely támogatja Azure Monitor naplókat.
 
-| Adatforrás | Célhelyek | Leírás |
+| Adatforrás | Célhelyek | Description |
 |:---|:---|:---|
 | Teljesítmény        | Azure Monitor metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | Windows-eseménynaplók | Log Analytics-munkaterület | A Windows eseménynaplózási rendszernek eljuttatott információk. |
@@ -88,12 +88,12 @@ A Azure Monitor ügynök jelenleg a következő operációs rendszereket támoga
   - CentOS 6<sup>1</sup>, 7
   - Debian 9, 10
   - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7, 8
+  - RHEL 6<sup>1</sup>, 7
   - SLES 11, 12, 15
   - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup> A syslog-adatküldéshez a rsyslog el kell távolítania, és telepítenie kell a syslog-ng-t.
+> <sup>1</sup> Ahhoz, hogy ezek a disztribúciók syslog-adatküldést küldjenek, az ügynök telepítése után egyszer újra kell indítania a rsyslog szolgáltatást.
 
 
 ## <a name="security"></a>Biztonság

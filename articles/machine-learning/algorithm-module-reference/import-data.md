@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68bf47f370a57fe277d4ab9679af0b920a0d81ec
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611815"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658122"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
@@ -45,7 +45,7 @@ A kívánt adatok definiálása és a forráshoz való kapcsolódás után az **
 Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatokat adhat hozzá az [importálási adatokat](./import-data.md)újrafuttatva.
 
 > [!WARNING]
-> Ha a munkaterület virtuális hálózatban található, akkor konfigurálnia kell az adattárolókat a tervező adatvizualizációs funkcióinak használatához. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [hálózati elkülönítés a betanítás során & a privát virtuális hálózatokkal való következtetés](../how-to-enable-virtual-network.md#machine-learning-studio).
+> Ha a munkaterület virtuális hálózatban található, akkor konfigurálnia kell az adattárolókat a tervező adatvizualizációs funkcióinak használatához. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [Azure Machine learning Studio használata Azure-beli virtuális hálózaton](../how-to-enable-studio-virtual-network.md).
 
 
 ## <a name="how-to-configure-import-data"></a>Az importálási adatgyűjtés konfigurálása
@@ -91,6 +91,6 @@ Az információk importálása után szükség lehet néhány további modellez�
 
 - A [Partition és a Sample](./partition-and-sample.md) használatával ossza fel az adatkészletet, végezzen mintavételezést, vagy töltse le az első n sort.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -1,5 +1,5 @@
 ---
-title: Számítási erőforrások létrehozása a Studióban
+title: Képzések létrehozása & számítások üzembe helyezése (Studio)
 titleSuffix: Azure Machine Learning
 description: A Studio használatával képzési és üzembe helyezési számítási erőforrásokat (számítási célokat) hozhat létre a gépi tanuláshoz
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147479"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661959"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -119,6 +119,9 @@ A fürt létrehozásakor vagy a számítási fürt részleteinek szerkesztéseko
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
 ### <a name="inference-clusters"></a>Fürtök következtetése
+
+> [!IMPORTANT]
+> Az Azure Kubernetes Service Azure Machine Learning több konfigurációs lehetőséggel rendelkezik. Bizonyos forgatókönyvek, például a hálózatkezelés, további telepítést és konfigurálást igényelnek. Az ak-nak az Azure ML-vel való használatával kapcsolatos további információkért lásd: [Azure Kubernetes Service-fürt létrehozása és csatolása](how-to-create-attach-kubernetes.md).
 
 Hozzon létre vagy csatoljon egy Azure Kubernetes Service-(ak-) fürtöt a nagy méretű következtetésekhez. A [fenti lépések](#portal-create) segítségével hozza létre az AK-fürtöt.  Ezután töltse ki az űrlapot a következőképpen:
 
