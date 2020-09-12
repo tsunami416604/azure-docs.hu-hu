@@ -3,12 +3,12 @@ title: Azure DevTest Labs használata fejlesztőknek | Microsoft Docs
 description: Ismerje meg a fejlesztői követelmények teljesítéséhez használható Azure DevTest Labs szolgáltatásokat, valamint a tesztkörnyezet beállításához szükséges részletes lépéseket.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293020"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296243"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Azure DevTest Labs használata fejlesztőknek
 Az Azure DevTest Labs használatával több fontos forgatókönyvet megvalósíthat, ez egyik elsődleges forgatókönyvben azonban a DevTest Lab segítségével futtatja a fejlesztői gépeket a fejlesztők számára. Ebben a forgatókönyvben a DevTest Labs az alábbi előnyöket nyújtja:
@@ -43,7 +43,7 @@ Ebben a cikkben megismerheti a fejlesztői követelmények teljesítéséhez has
    
    | Feladat | Ismertetett témák |
    | --- | --- |
-   | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Megtudhatja, hogyan engedélyezheti az Azure Marketplace-lemezképek engedélyezési lehetőségeit, így csak a fejlesztőknek szánt rendszerképeket választhat.|
+   | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Megtudhatja, hogyan engedélyezheti az Azure Marketplace-lemezképeket, így csak a fejlesztőknek szánt rendszerképeket választhat.|
    | [Egyéni lemezkép létrehozása](devtest-lab-create-template.md) |Hozzon létre egy egyéni rendszerképet a szükséges szoftver előzetes telepítésével, így a fejlesztők gyorsan létrehozhatnak egy virtuális gépet az egyéni rendszerkép használatával.|
    | [Tudnivalók a rendszerkép-előállítóról](./devtest-lab-faq.md#blog-post) |Tekintsen meg egy videót, amely leírja, hogyan kell beállítani és használni a rendszerkép-előállítót.|
 

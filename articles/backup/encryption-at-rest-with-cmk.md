@@ -160,7 +160,7 @@ A kulcs hozzárendeléséhez:
 
         ![Kulcs kiválasztása a Key vaultból](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. **A titkosítási kulcs frissítésének nyomon követési folyamata:** A kulcs hozzárendelésének előrehaladását a Recovery Services-tárolóban található **műveletnapló** használatával követheti nyomon. Az állapotnak hamarosan **sikeresre**kell váltania. A tár mostantól a megadott kulccsal titkosítja az összes adathalmazt.
 

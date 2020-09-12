@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c00729e236cb314f47df8f622db2e19438af61ab
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 916defd652ff9f4b3f372c609055d2a974126916
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267904"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295716"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Streamelési lokátor létrehozása és URL-címek összeállítása
 
@@ -169,6 +169,6 @@ Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https:/
 * [Szűrők létrehozása REST használatával](filters-dynamic-manifest-rest-howto.md)
 * [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A DRM-védelemmel ellátott tartalmakat](protect-with-drm.md).
