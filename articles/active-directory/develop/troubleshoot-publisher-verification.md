@@ -1,6 +1,6 @@
 ---
 title: A Publisher-ellenőrzés hibáinak megoldása – Microsoft Identity platform | Azure
-description: Ismerteti, hogyan lehet elhárítani a Microsoft Identity platform közzétevő-ellenőrzésének (előzetes verzió) hibaelhárítását Microsoft Graph API-k meghívásával.
+description: Útmutatás a Microsoft Identity platform közzétevői ellenőrzésének hibaelhárításához Microsoft Graph API-k meghívásával.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282976"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007553"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Közzétevő ellenőrzésének hibaelhárítása (előzetes verzió)
-Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor (előzetes verzió)](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
+# <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
+Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
 
 1. Tekintse át a [követelményeket](publisher-verification-overview.md#requirements) , és győződjön meg arról, hogy az összes teljesült.
 
@@ -62,7 +62,7 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph API-hívások készítése 
 
-Ha probléma merül fel, de nem tudja megérteni, hogy mit lát a felhasználói felületen, érdemes lehet további hibaelhárítást végezni, ha Microsoft Graph hívásokat hajt végre az alkalmazás regisztrációs portálján végrehajtható műveletek végrehajtásához. Az előnézeti fázisban ezek az API-k csak Microsoft Graph/Beta-végpontján lesznek elérhetők.  
+Ha probléma merül fel, de nem tudja megérteni, hogy mit lát a felhasználói felületen, érdemes lehet további hibaelhárítást végezni, ha Microsoft Graph hívásokat hajt végre az alkalmazás regisztrációs portálján végrehajtható műveletek végrehajtásához.
 
 Ezeknek a kéréseknek a legegyszerűbb módja a [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)használata. Érdemes lehet más lehetőségeket is megfontolni, például a [Poster](https://www.postman.com/)használatát, vagy a PowerShell használatával [webes kérést meghívni](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7).  
 

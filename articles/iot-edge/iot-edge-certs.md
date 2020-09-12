@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1d4abbcc0768915d7d2e693cfc76a699ed21a91
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210596"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669629"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
 
@@ -34,7 +34,7 @@ Az alábbi ábra a tanúsítványok IoT Edge használatát mutatja be. A legfels
 ![Jellemző tanúsítványok kapcsolatainak diagramja](./media/iot-edge-certs/edgeCerts-general.png)
 
 > [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát. Ez a korlátozás az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, a megbízhatósági csomagban található összes tanúsítványra, valamint az X. 509 létesítési módszerekhez használt eszköz-azonosító tanúsítványokra vonatkozik.
+> Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát. Ez a korlátozás az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, a megbízhatósági csomagban található összes tanúsítványra, valamint az X. 509 létesítési módszerekhez használt eszköz-azonosító tanúsítványokra vonatkozik.
 
 ### <a name="certificate-authority"></a>Hitelesítésszolgáltató
 

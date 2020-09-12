@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000005"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007570"
 ---
 # <a name="features"></a>Szolgáltatások
 
@@ -98,14 +98,24 @@ Az összes keresési paraméter típusa támogatott.
 | Keresési műveletek       | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Nem        | Nem        | Nem        |         |
-| `_sort`                 | Nem        | Részleges   | Részleges        |   `_sort=_lastUpdated` támogatott       |
+| `_sort`                 | Részleges        | Részleges   | Részleges        |   `_sort=_lastUpdated` támogatott       |
 | `_score`                | Nem        | Nem        | Nem        |         |
 | `_count`                | Igen       | Igen       | Igen       |         |
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
 | `_include`              | Nem        | Igen       | Nem        |         |
 | `_revinclude`           | Nem        | Igen       | Nem        | A tartalmazott elemek 100-re korlátozódnak. |
 | `_contained`            | Nem        | Nem        | Nem        |         |
-| `_elements`             | Nem        | Nem        | Nem        |         |
+| `_elements`             | Igen        | Igen        | Igen        |         |
+
+## <a name="extended-operations"></a>Kiterjesztett műveletek
+
+A REST API-t kiterjesztő összes támogatott művelet.
+
+| Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+|-----------------------|-----------|-----------|-----------|---------|
+| $export (teljes rendszeren)                | Igen       | Igen       | Igen       |         |
+| Beteg/$export         | Igen       | Igen       | Igen       |         |
+| Csoport/$export               | Igen       | Igen       | Igen       |         |
 
 ## <a name="persistence"></a>Kitartás
 

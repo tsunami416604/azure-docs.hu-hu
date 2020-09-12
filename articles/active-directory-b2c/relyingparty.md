@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521263"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023788"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -138,7 +138,7 @@ A **JourneyInsights** elem a következő attribútumokat tartalmazza:
 | --------- | -------- | ----------- |
 | TelemetryEngine | Yes | Az értéknek a számnak kell lennie `ApplicationInsights` . |
 | InstrumentationKey | Yes | Az Application ininsights elem kialakítási kulcsát tartalmazó karakterlánc. |
-| DeveloperMode | Yes | Lehetséges értékek: `true` vagy `false` . Ha a `true` Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás kiválóan alkalmas a fejlesztésre, de nagy mennyiségű korlátozott méretekben a részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha ez az érték be van állítva `true` .|
+| DeveloperMode | Yes | Lehetséges értékek: `true` vagy `false` . Ha a `true` Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás jó a fejlesztéshez, de nagy mennyiségű korlátozott. A részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha ez az érték be van állítva `true` .|
 | ClientEnabled | Yes | Lehetséges értékek: `true` vagy `false` . Ha `true` a a Application Insights ügyféloldali parancsfájlt küld a nyomkövetési oldal és az ügyféloldali hibák nyomon követéséhez. |
 | ServerEnabled | Yes | Lehetséges értékek: `true` vagy `false` . Ha `true` a, a a meglévő USERJOURNEYRECORDER JSON-t a Application Insights egyéni eseményként küldi el. |
 | TelemetryVersion | Yes | Az értéknek a számnak kell lennie `1.0.0` . |
@@ -198,7 +198,12 @@ Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | No | Azt jelzi, hogy támogatott-e a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett folyamat. Lehetséges értékek: `true` vagy `false` (alapértelmezett). | 
 | XmlSignatureAlgorithm | No | Az a módszer, amelyet a Azure AD B2C az SAML-válasz aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-állítás konfigurálásához tekintse meg a [SAML-kibocsátó technikai profiljának metaadatait](saml-issuer-technical-profile.md#metadata)ismertető témakört. |
+| DataEncryptionMethod | No | Azt a metódust jelzi, amelyet a Azure AD B2C az Advanced Encryption Standard (AES) algoritmus használatával titkosítja az adattitkosítást. A metaadatok az `<EncryptedData>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: `Aes256` (alapértelmezett), `Aes192` , `Sha512` , vagy ` Aes128` . |
+| KeyEncryptionMethod| No | Azt a metódust jelzi, amelyet a Azure AD B2C az adattitkosításhoz használt kulcs másolatának titkosítására használ. A metaadatok az  `<EncryptedKey>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: ` Rsa15` (alapértelmezett) – RSA nyilvános kulcsú kriptográfiai standard (PKCS) Version 1,5 algoritmus, ` RsaOaep` -RSA optimális aszimmetrikus titkosítási kitöltés (OAEP) titkosítási algoritmus. |
+| UseDetachedKeys | No |  Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a értékre van állítva `true` , Azure ad B2C módosítja a titkosított érvényesítések formátumát. A leválasztott kulcsok használata a titkosított állítást a EncrytedAssertion gyermekének adja hozzá a EncryptedData szemben. |
+| WantsSignedResponses| No | Azt jelzi, hogy Azure AD B2C aláírja-e az `Response` SAML-válasz szakaszát. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

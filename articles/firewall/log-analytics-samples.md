@@ -1,20 +1,20 @@
 ---
-title: Log Analytics-minták Azure Firewall
+title: Azure Firewall Azure Monitor naplófájljai
 description: Azure Monitor naplók a Azure Firewall elemzéséhez használhatók. Egy minta-fájl a Azure Monitor Tervező nézetében van felépítve.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705979"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023873"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Log Analytics-minták Azure Firewall
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Firewall Azure Monitor naplófájljai
 
 A következő Azure Monitor naplók használatával elemezheti a Azure Firewall naplókat. A minta-fájl a Azure Monitor Tervező nézetében található, Azure Monitor cikkben található [tervezői](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) koncepció további információkkal szolgál a nézet kialakítási felépítéséről.
 
@@ -30,7 +30,7 @@ A nézet a Log Analytics munkaterülethez való hozzáadásához hajtsa végre a
 2. Nyissa meg az **általános** **nézet tervezőjét** .
 3. Kattintson az **Importálás**gombra.
 4. Tallózással keresse meg és válassza ki a letöltött **AzureFirewall. omsview** fájlt.
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 A nézet az alkalmazási szabály naplózási információit keresi:
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 Az alábbi naplók egy naplóbejegyzés részét képezik.
 
-![naplóbejegyzés](media/log-analytics-samples/log1.png)
+![egy naplóbejegyzés](media/log-analytics-samples/log1.png)
 
-![naplóbejegyzés](media/log-analytics-samples/log2.png)
+![második naplóbejegyzés ](media/log-analytics-samples/log2.png)
 
-![naplóbejegyzés](media/log-analytics-samples/log3.png)
-## <a name="next-steps"></a>További lépések
+![harmadik naplóbejegyzés](media/log-analytics-samples/log3.png)
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Firewall monitorozási és diagnosztikai funkcióinak megismeréséhez tekintse meg a következő [oktatóanyagot: Azure Firewall naplók és metrikák figyelése](tutorial-diagnostics.md).

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320230"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019903"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban
 
@@ -28,6 +28,8 @@ Ez a cikk a következőket ismerteti:
 * Gyártási ellátási lánc beállítása X. 509 CA-alapú hitelesítéshez
 
 * Az X. 509 HITELESÍTÉSSZOLGÁLTATÓval aláírt eszközök csatlakoztatása IoT Hub
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -69,7 +71,7 @@ X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megvásárlásához a vállala
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>Önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása
 
-Az önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozási folyamata hasonló a vásárláshoz, kivéve, ha harmadik féltől származó aláírót (például a legfelső szintű hitelesítésszolgáltató) kell bevonnia. A példánkban a vállalat-X nem a legfelső szintű hitelesítésszolgáltató, hanem a hitelesítésszolgáltató tanúsítványát fogja aláírni. A vállalat – X esetén ezt a lehetőséget kiválaszthatja a teszteléshez, amíg készen nem áll a szolgáltatói tanúsítvány megvásárlására. A vállalat-X egy önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt is használhat éles környezetben, ha az intelligens X-widget nem a IoT Hub kívüli harmadik féltől származó szolgáltatásokhoz való kapcsolódásra szolgál.
+Az önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozási folyamata hasonló a vásárláshoz, kivéve, ha a külső gyártó, például a legfelső szintű hitelesítésszolgáltató. A példánkban a vállalat-X nem a legfelső szintű hitelesítésszolgáltató, hanem a hitelesítésszolgáltató tanúsítványát fogja aláírni. A vállalat – X esetén ezt a lehetőséget kiválaszthatja a teszteléshez, amíg készen nem áll a szolgáltatói tanúsítvány megvásárlására. A vállalat-X egy önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt is használhat éles környezetben, ha az intelligens X-widget nem a IoT Hub kívüli harmadik féltől származó szolgáltatásokhoz való kapcsolódásra szolgál.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Regisztrálja az X. 509 tanúsítványt IoT Hub
 

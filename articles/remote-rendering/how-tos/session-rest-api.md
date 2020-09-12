@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012381"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023754"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
@@ -65,7 +65,7 @@ $token = $response.AccessToken;
 
 Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja vissza. Minden más parancshoz szüksége lesz a munkamenet-AZONOSÍTÓra.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/Create | POST |
 
@@ -122,7 +122,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 Van néhány parancs a meglévő munkamenetek paramétereinek lekérdezéséhez vagy módosításához.
 
 > [!CAUTION]
-Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben az állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+> Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben az állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
 
 ### <a name="update-session-parameters"></a>Munkamenet paramétereinek frissítése
 
@@ -131,7 +131,7 @@ Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet 
 > [!IMPORTANT]
 > A címbérleti időt mindig a munkamenet kezdete óta teljes idő adja meg. Ez azt jelenti, hogy ha egy órás bérlettel rendelkező munkamenetet hozott létre, és egy másik órára szeretné kiterjeszteni a címbérleti időt, a maxLeaseTime két órára kell frissítenie.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountID*/Sessions/*munkamenet* -azonosító | JAVÍTÁS |
 
@@ -171,7 +171,7 @@ RawContentLength  : 0
 
 Ez a parancs az aktív munkamenetek listáját adja vissza.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions | GET |
 
@@ -214,7 +214,7 @@ RawContentLength  : 2
 
 Ez a parancs egy munkamenetre vonatkozó adatokat ad vissza, például a virtuális gép állomásnevét.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet*-/Properties | GET |
 
@@ -257,7 +257,7 @@ RawContentLength  : 60
 
 Ez a parancs leállítja a munkamenetet. A lefoglalt virtuális gép hamarosan visszaigénylésre kerül.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet* -azonosító | DELETE |
 

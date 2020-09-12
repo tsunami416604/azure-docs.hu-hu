@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021884"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023771"
 ---
 # <a name="models"></a>Modellek
 
@@ -28,7 +28,6 @@ Előfordulhat, hogy minden entitáshoz vannak csatolva [összetevők](components
 A futtatókörnyezet modelljeinek létrehozása a bemeneti modellek fájlformátumokból (például FBX és GLTF) való [átalakításával](../how-tos/conversion/model-conversion.md) érhető el. Az átalakítási folyamat kibontja az összes erőforrást, például a textúrákat, az anyagokat és a hálókat, majd konvertálja azokat optimalizált futtatókörnyezeti formátumokra. Emellett a strukturális adatokat is kinyeri és átalakítja az ARR entitás/összetevő gráf-struktúrájába.
 
 > [!IMPORTANT]
->
 > A [modell konvertálása](../how-tos/conversion/model-conversion.md) az egyetlen módszer a [Rácsvonalak](meshes.md)létrehozására. Bár a rácsvonalak megoszthatók az entitások között futásidőben, nincs más mód arra, hogy a modell betöltésén kívül más módon is beolvasson egy rácsvonalat a futtatókörnyezetbe.
 
 ## <a name="loading-models"></a>Modellek betöltése
@@ -118,6 +117,13 @@ Ezután áthaladhat az entitás-hierarchián, és módosíthatja az entitásokat
 
 > [!CAUTION]
 > Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A *várakozási* feltétele alatt a mintakód garantálja, hogy a (z) "loadOp" helyi változó hivatkozást tartalmaz, amíg a modell betöltése be nem fejeződik. Ha azonban a *befejezett* eseményt szeretné használni, az aszinkron műveletet egy tag változóban kell tárolnia.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# RemoteManager. LoadModelAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager. LoadModelFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager:: LoadModelAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager:: LoadModelFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>Következő lépések
 

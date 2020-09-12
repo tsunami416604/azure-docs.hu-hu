@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030486"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017234"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
@@ -256,7 +256,7 @@ A umask, amely a 007-re beállított állandó érték Azure Data Lake Storage G
 | umask. owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask. other         |    7         |   `RWX`      | Egyéb esetben távolítsa el az összes engedélyt a gyermek hozzáférési ACL-jéhez |
 
-Az Azure Data Lake Storage Gen2 által használt umask-érték azt jelenti, hogy a **többi** esetében az érték soha nem kerül be alapértelmezés szerint az új gyermekekre, függetlenül attól, hogy az alapértelmezett ACL mit jelez. 
+Az Azure Data Lake Storage Gen2 által használt umask érték azt jelenti, hogy az új gyermekeknél az alapértelmezett érték soha **nem lesz** továbbítva, kivéve, ha egy alapértelmezett ACL van definiálva a szülő könyvtáron. Ebben az esetben a umask a rendszer hatékonyan figyelmen kívül hagyja, és az alapértelmezett ACL által definiált engedélyeket alkalmazza a gyermek elemre. 
 
 Az alábbi pseudocode azt szemlélteti, hogyan történik a umask alkalmazása az ACL-ek egy alárendelt tételhez való létrehozásakor.
 
@@ -328,7 +328,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 A rendszer az OID-t jeleníti meg.
 
-Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzáférés kezelése** lapra az OID hozzáadásához, és rendelje hozzá a megfelelő engedélyeket az OID-hez. Győződjön meg róla, hogy a **Mentés**gombra kattint.
+Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzáférés kezelése** lapra az OID hozzáadásához, és rendelje hozzá a megfelelő engedélyeket az OID-hez. Mindenképpen kattintson a **Mentés** lehetőségre.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen2 az ACL-ek öröklését?
 

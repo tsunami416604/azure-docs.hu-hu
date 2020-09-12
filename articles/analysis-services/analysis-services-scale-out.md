@@ -4,15 +4,15 @@ description: Azure Analysis Services-kiszolgálók replikálása felskálázáss
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716928"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007689"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
@@ -41,6 +41,8 @@ Ha egy későbbi kibővített műveletet hajt végre, például a két és öt k
 * Végezzen szinkronizálást *a kibővítő művelet előtt* a hozzáadott replikák redundáns hidratációjának elkerüléséhez. Az egyidejű szinkronizálási és kibővíthető műveletek nem engedélyezettek.
 
 * A feldolgozási *és a* kibővíthető műveletek automatizálásakor fontos, hogy először dolgozza fel az elsődleges kiszolgálón lévő adatok feldolgozását, majd végezzen szinkronizálást, majd végezze el a kibővített műveletet. Ez a folyamat minimális hatást biztosít a QPU és a memória erőforrásaira.
+
+* A kibővített műveletek során a lekérdezési készletben lévő összes kiszolgáló, beleértve az elsődleges kiszolgálót, átmenetileg offline állapotú.
 
 * A szinkronizálás akkor is engedélyezett, ha nincsenek replikák a lekérdezési készletben. Ha az elsődleges kiszolgálón lévő feldolgozási műveletből egy vagy több replikára horizontális felskálázást végez, először hajtsa végre a szinkronizálást a lekérdezési készletben lévő replikák nélkül, majd a horizontális felskálázást. A horizontális felskálázás előtt a szinkronizálás elkerüli az újonnan hozzáadott replikák redundáns hidratációját.
 
@@ -114,7 +116,7 @@ A szinkronizálási műveleteket manuálisan vagy a REST API használatával kel
 
 Az Áttekintés > modell > a **modell szinkronizálása** **című témakört** .
 
-![Felskálázási csúszka](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Szinkronizálás ikon](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
@@ -131,7 +133,7 @@ Használja a **szinkronizálási** műveletet.
 Visszatérési állapotkódok:
 
 
-|Kód  |Leírás  |
+|Code  |Description  |
 |---------|---------|
 |-1     |  Érvénytelen       |
 |0     | Replikáló        |
