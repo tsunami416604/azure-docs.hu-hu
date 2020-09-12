@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814722"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419754"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -22,16 +22,16 @@ A tanácsadási szolgáltatás ajánlata az ügyfél-specifikus engagement. A ki
 
 ## <a name="compare-consulting-services"></a>Tanácsadási szolgáltatások összehasonlítása
 
-A kereskedelmi piactér online áruházai, Microsoft AppSource és az Azure piactér a célközönségekhez és a felhőalapú termékekhez igazodva segít az ügyfeleknek megtalálni a szükséges igényeket. Az egyes online áruházak speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a két online áruház közötti különbségről, tekintse meg a [Microsoft AppSource és az Azure Marketplace összehasonlítását](comparing-appsource-azure-marketplace.md)ismertető témakört.
+A kereskedelmi piactér online áruházai, Microsoft AppSource és az Azure Marketplace a megoldások típusaival és a felhőalapú termékekkel vannak összehangolva, hogy az ügyfelek megtalálják a szükséges igényeket. Az egyes online áruházak speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a két online áruház közötti különbségről, tekintse meg a [Microsoft AppSource és az Azure Marketplace összehasonlítását](comparing-appsource-azure-marketplace.md)ismertető témakört.
 
 A Dynamics 365, a Power apps és a Power BI alapján elérhető tanácsadói szolgáltatások jogosultak a AppSource-on való listázásra. További információkért töltse le a [Microsoft AppSource Consulting Services-lista irányelvek](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF-fájlját.
 
 A Microsoft Azureon alapuló tanácsadói szolgáltatások és felügyelt szolgáltatások az Azure Marketplace-en is szerepelhetnek. További információ: [Azure Consulting Service-ajánlat közzététele](./partner-center-portal/create-consulting-service-offer.md) és [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md)-en.
 
 > [!Note]
-> Az Azure Marketplace-en elérhető tanácsadói szolgáltatásoknak a technikai célközönségre, valamint az Azure-beli technikai megoldások és szolgáltatások kiemelésére kell összpontosítaniuk.
+> Az Azure piactéren elérhető tanácsadói szolgáltatásoknak az Azure technikai megoldásaira és szolgáltatásaira kell összpontosítaniuk.
 >
-> A AppSource tanácsadói szolgáltatásainak a Dynamics 365, Power BI vagy Power apps számára minőségi megoldások nyújtásával kapcsolatos szakismeretekkel rendelkező felhasználókra kell összpontosítaniuk.
+> A AppSource tanácsadási szolgáltatásainak a Dynamics 365, Power BI vagy Power apps üzleti megoldásaira kell összpontosítaniuk.
  
 > [!TIP]
 > Az Azure Marketplace-en való közzétételhez a partner Center **elsődleges termék** legördülő listájában válassza az **Azure**lehetőséget.
@@ -131,7 +131,7 @@ Az ajánlatoknak a következő öt szolgáltatási típus közül legalább egyn
 > * **Személyesen – az** ügyfél tartózkodási helye vagy a partner létesítménye.
 > * **Gyakorlatilag** – a telekonferencia, a webes konferencia vagy a távoli implementáció használatával.
 
-Miután konfigurálta a korábban felsorolt szükséges elemeket, a tartalmi felülvizsgálati csapat ellenőrzi, hogy az ajánlat leírása informatív-e, és készen áll-e a célközönségre. 
+Miután konfigurálta a korábban felsorolt szükséges elemeket, a tartalmi felülvizsgálati csapat ellenőrzi, hogy az ajánlat leírása informatív-e, és készen áll-e. 
 
 ### <a name="the-listing-title"></a>A listaelem címe
 
@@ -169,11 +169,7 @@ A partner Centerben a [Markdown](/contribute/markdown-reference)használatával 
 * Minden címsor után adjon hozzá sortörést.
 * **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
-
-A partner Centerben való regisztráció és a használat megkezdése:
-
-* Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-* További információért lásd: [tanácsadói szolgáltatás létrehozása](./partner-center-portal/create-consulting-service-offer.md) .
+- Növelje [Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
+- [Tanácsadási szolgáltatásajánlat létrehozása](./partner-center-portal/create-consulting-service-offer.md)

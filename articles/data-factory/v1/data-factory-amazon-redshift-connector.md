@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710150"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443024"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -63,7 +63,7 @@ Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásáh
 | --- | --- | --- |
 | **típusa** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Yes |
 | **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Yes |
-| **port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
+| **Port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
 | **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Yes |
 | **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Yes |
 | **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Yes |
@@ -101,13 +101,13 @@ Azt is megteheti, hogy a **RelationalSource** típust használja, amely tartalma
 
 Az Amazon Vöröseltolódásának [**eltávolítási**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) parancsa eltávolít egy lekérdezés eredményét egy vagy több fájlra az Amazon S3-on. Ezt a parancsot az Amazon ajánlja a nagyméretű adathalmazok Vöröseltolódásból való másolásához.
 
-**Példa: adatok másolása az Amazon Vöröseltolódásból a Azure SQL Data Warehouseba**
+**Példa: adatok másolása az Amazon Vöröseltolódásból az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse)**
 
-Ez a példa az Amazon vöröseltolódásról Azure SQL Data Warehousera másolt adatait másolja. A példa a vöröseltolódás **KItöltési** parancsát, az előkészített adatok másolását és a Microsoft Base-t használja.
+Ebben a példában az Amazon vöröseltolódásról származó adatok másolása az Azure szinapszis Analytics szolgáltatásba. A példa a vöröseltolódás **KItöltési** parancsát, az előkészített adatok másolását és a Microsoft Base-t használja.
 
-Ebben a példában a másolási tevékenység először a **redshiftUnloadSettings** beállításban konfigurált módon távolítja el az Amazon vöröseltolódásról az Amazon S3-be az adatokból. Ezután az adatok az Amazon S3-ból az Azure Blob Storage-ba másolódnak a **stagingSettings** beállításban megadott módon. Végezetül a SQL Data Warehouseba tölti be az adatok. Az összes ideiglenes formátumot a másolási tevékenység kezeli.
+Ebben a példában a másolási tevékenység először a  **redshiftUnloadSettings** beállításban konfigurált módon távolítja el az Amazon vöröseltolódásról az Amazon S3-be az adatokból. Ezután az adatok az Amazon S3-ból az Azure Blob Storage-ba másolódnak a **stagingSettings** beállításban megadott módon. Végezetül az adatok betöltődik az Azure szinapszis Analyticsbe. Az összes ideiglenes formátumot a másolási tevékenység kezeli.
 
-![Munkafolyamat másolása az Amazon Vöröseltolódásból a SQL Data Warehouseba](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Munkafolyamat másolása az Amazon Vöröseltolódásból az Azure szinapszis Analyticsbe](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -332,14 +332,14 @@ A következő leképezések akkor használatosak, ha a másolási tevékenység 
 | SMALLINT |Int16 |
 | EGÉSZ SZÁM |Int32 |
 | BIGINT |Int64 |
-| DECIMÁLIS |Decimal |
-| VALÓS SZÁM |Egyszeres |
-| DUPLA PONTOSSÁG |Double |
+| DECIMÁLIS |Tizedesjegy |
+| VALÓS SZÁM |Egyirányú |
+| DUPLA PONTOSSÁG |Dupla |
 | LOGIKAI |Sztring |
 | CHAR |Sztring |
 | VARCHAR |Sztring |
-| DATE |DateTime |
-| IDŐBÉLYEG |DateTime |
+| DATE |Dátum/idő |
+| IDŐBÉLYEG |Dátum/idő |
 | TEXT |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
@@ -351,5 +351,5 @@ Amikor Adatmásolást végez egy kapcsolódó adattárból, a nem kívánt eredm
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 Ismerje meg a másolási tevékenység teljesítményét befolyásoló főbb tényezőket és a teljesítmény optimalizálásának módjait a [másolási tevékenység teljesítményének és hangolási útmutatójának](data-factory-copy-activity-performance.md)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenységgel rendelkező folyamatok létrehozásával kapcsolatos részletes útmutatásért lásd a [másolási tevékenységről szóló oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

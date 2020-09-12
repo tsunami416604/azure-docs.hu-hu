@@ -2,21 +2,21 @@
 title: 'Azure ExpressRoute: társítás beállítása: klasszikus'
 description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: cherylmc
-ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736237"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395553"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Peering létrehozása és módosítása ExpressRoute-áramkörhöz (klasszikus)
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Videó – privát peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -44,7 +44,7 @@ Ezek az utasítások csak a 2. rétegbeli kapcsolati szolgáltatásokat kínál�
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="azure-private-peering"></a>Azure privát társviszony-létesítés
+## <a name="azure-private-peering"></a>Azure-beli privát társviszony
 
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
@@ -255,7 +255,7 @@ A következő parancsmag futtatásával távolíthatja el a társ-konfiguráció
 Remove-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 ```
 
-## <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+## <a name="microsoft-peering"></a>Microsoftos társviszony
 
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
@@ -350,7 +350,7 @@ A következő parancsmag futtatásával távolíthatja el a társ-konfiguráció
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután [csatoljon egy VNet egy ExpressRoute-áramkörhöz](expressroute-howto-linkvnet-classic.md).
 

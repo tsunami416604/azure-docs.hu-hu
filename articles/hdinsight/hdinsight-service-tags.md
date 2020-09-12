@@ -6,19 +6,21 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410851"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399956"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Az Azure HDInsight NSG szolgáltatásának címkéi
 
 Az Azure HDInsight Service-címkék hálózati biztonsági csoportokhoz (NSG) IP-címek csoportjai az állapot-és felügyeleti szolgáltatásokhoz. Ezek a csoportok segítenek a biztonsági szabályok létrehozásának összetettségének minimalizálásában. A [szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) lehetővé teszik a megadott IP-címekről érkező bejövő adatforgalmat anélkül, hogy a NSG minden [felügyeleti IP-címét](hdinsight-management-ip-addresses.md) be kellene írni.
 
 A HDInsight szolgáltatás kezeli ezeket a szolgáltatási címkéket. Nem hozhat létre saját szolgáltatási címkét, vagy nem módosíthat meglévő címkét. A Microsoft kezeli a szolgáltatási címkének megfelelő címet, és automatikusan frissíti a szolgáltatási címkét a címek módosításaként.
+
+Ha egy adott régiót szeretne használni, és a szolgáltatás címkéje még nincs dokumentálva ezen az oldalon, a Service tag [felderítési API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) használatával megkeresheti a szolgáltatás címkéjét. Letöltheti továbbá a [Service tag JSON-fájlját](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) , és megkeresheti a kívánt régiót.
 
 ## <a name="get-started-with-service-tags"></a>A szolgáltatás-címkék első lépései
 
@@ -54,7 +56,7 @@ Ha szeretné megtudni, hogy mely szolgáltatási címkéket szeretné hozzáadni
 
 Ha a fürt egy ebben a táblázatban felsorolt régióban található, csak egyetlen regionális szolgáltatási címkét kell hozzáadnia a NSG.
 
-| Ország | Régió | Szolgáltatáscímke |
+| Country | Régió | Szolgáltatáscímke |
 | ---- | ---- | ---- |
 | Ausztrália | Kelet-Ausztrália | HDInsight. AustraliaEast |
 | &nbsp; | Délkelet-Ausztrália | HDInsight. AustraliaSoutheast |
@@ -62,7 +64,7 @@ Ha a fürt egy ebben a táblázatban felsorolt régióban található, csak egye
 | Kína | Kelet-Kína 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Észak-Kína 2 | HDInsight. ChinaNorth2 |
 | Egyesült Államok | USA északi középső régiója | HDInsight. NorthCentralUS |
-| &nbsp; | USA nyugati régiója, 2. | HDInsight. WestUS2 |
+| &nbsp; | USA 2. nyugati régiója | HDInsight. WestUS2 |
 | &nbsp; | USA nyugati középső régiója | HDInsight. WestCentralUS |
 | Kanada | Kelet-Kanada | HDInsight. CanadaEast |
 | Brazília | Dél-Brazília | HDInsight. BrazilSouth |
@@ -94,7 +96,7 @@ Ha például a fürt a régióban lett létrehozva `East US 2` , akkor a követk
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Ország | Régió | Szolgáltatáscímke |
+| Country | Régió | Szolgáltatáscímke |
 | ---- | ---- | ---- |
 | Egyesült Államok | USA 2. keleti régiója | HDInsight. EastUS2 |
 | &nbsp; | USA középső régiója | HDInsight. CentralUS |
@@ -121,7 +123,7 @@ Ha például a fürt a régióban lett létrehozva `East US 2` , akkor a követk
 
 A *németországi Közép* -és *Kelet-Németország* régiójában lévő fürtökön két szolgáltatási címkét kell engedélyezni: `HDInsight.GermanyCentral` és `HDInsight.GermanyNortheast` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati biztonsági csoportok: szolgáltatás címkéi](../virtual-network/security-overview.md#security-rules)
 - [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti és konfigurálhatja az ultra-l
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650179"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420863"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Az Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)
 
@@ -21,11 +21,6 @@ Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehoz
 
 > [!IMPORTANT]
 > Az Azure Ultra Disks szolgáltatáshoz a rendelkezésre állási zónákban és az ezeket a lemezeket támogató nodepools, valamint csak adott virtuálisgép-sorozatok szükségesek. Tekintse meg az [**Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
-
-### <a name="prerequisites"></a>Előfeltételek
-
-- Győződjön meg arról, hogy engedélyezve van a `EnableUltraSSD` funkció jelzője.
-- Győződjön meg arról, hogy telepítve van a legújabb `aks-preview` [CLI-bővítmény][az-extension-add] .
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>Az `EnableUltraSSD` előzetes verzió funkciójának regisztrálása
 
@@ -78,7 +73,7 @@ Azure-erőforráscsoport létrehozása:
 az group create --name myResourceGroup --location westus2
 ```
 
-Hozza létre az AK-fürtöt a felügyelt Azure AD-integrációval és az Azure RBAC a Kubernetes engedélyezéséhez.
+Hozza létre az AK-fürtöt Ultra-lemezek támogatásával.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>Állandó kötet jogcímek létrehozása
 
-A tárolási osztályok alapján a tárolók automatikus kiépítéséhez állandó mennyiségi jogcím (PVC) használatos. Ebben az esetben a PVC az előre létrehozott tárolási osztályok egyikét használja egy standard vagy prémium szintű Azure Managed Disk létrehozásához.
+A tárolási osztályok alapján a tárolók automatikus kiépítéséhez állandó mennyiségi jogcím (PVC) használatos. Ebben az esetben a PVC a korábban létrehozott Storage osztály használatával hozza létre az ultra-lemezt.
 
 Hozzon létre egy nevű fájlt `azure-ultra-disk-pvc.yaml` , és másolja a következő jegyzékbe. A jogcím a `ultra-disk` *ReadWriteOnce* -hozzáféréssel rendelkező *1000 GB* méretű lemezt kér. Az *Ultra-Disk-SC* tárolási osztály a tárolási osztályként van megadva.
 
@@ -224,7 +219,7 @@ Events:
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az ultra Disks [szolgáltatásról: Azure Ultra Disks használata](../virtual-machines/disks-enable-ultra-ssd.md).
 - További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-storage]

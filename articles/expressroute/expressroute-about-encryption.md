@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: a titkosításról'
 description: A ExpressRoute-titkosítás ismertetése.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.author: cherylmc
-ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 46f0a0e86c5db612f440bcf631329d2800251dab
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838756"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397797"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute titkosítása
  
@@ -44,7 +44,7 @@ Ha elfogadja az Azure Virtual WAN-t, az [alábbi lépéseket](../virtual-wan/vpn
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Milyen átviteli sebességre lesz szükség az IPsec az ExpressRoute-kapcsolatban való engedélyezése után?
 Ha az Azure VPN Gateway használatban van, ellenőrizze a [teljesítménnyel kapcsolatos számokat](../vpn-gateway/vpn-gateway-about-vpngateways.md). Ha a rendszer külső VPN-átjárót használ, ellenőrizze a teljesítménnyel kapcsolatos számokat a szállítónál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A MACsec-konfigurációval kapcsolatos további információkért tekintse meg a [MACsec konfigurálása](expressroute-howto-macsec.md) című témakört.
 
 Az IPsec-konfigurációval kapcsolatos további információkért tekintse meg az [IPSec konfigurálása](site-to-site-vpn-over-microsoft-peering.md) című témakört.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852087"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400024"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
 
@@ -46,7 +46,7 @@ A következő kapcsolati mátrix összegzi az ebben a forgatókönyvben támogat
 | **Nem NVA virtuális hálózatok**| &#8594; |   Statikus |      X   |        X     |      X    |
 | **Ágak**     | &#8594; |   Statikus |      X   |        X     |      X    |
 
-A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejlécét) egy adott forgalmi folyamat esetében. A következőket ajánljuk figyelmébe:
+A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejlécét) egy adott forgalmi folyamat esetében. Az "X" azt jelenti, hogy a kapcsolat a virtuális WAN által natív módon van megadva, a "statikus" pedig azt jelenti, hogy a virtuális WAN a statikus útvonalak használatával biztosít kapcsolatot. A következőket ajánljuk figyelmébe:
 
 * A NVA Küllőit nem a virtuális WAN kezeli. Ennek eredményeképpen azokat a mechanizmusokat, amelyekkel más virtuális hálózatok vagy ágakkal kommunikálni fognak, a felhasználó tartja karban. A NVA-VNet való kapcsolódást egy VNet-társítás biztosítja, és a következő ugrás során a 0.0.0.0/0-ra mutató alapértelmezett útvonal a NVA való kapcsolódásra, az internetre, más küllőre és ágakra mutat
 * A NVA virtuális hálózatok a saját NVA beszél, de nem arról, hogy a NVA más NVA-virtuális hálózatok csatlakozik. Az 1. táblázatban például a VNet 2 az 5. és a VNet 6 VNet ismeri, de nem más küllők, például a VNet 7 és a VNet 8 között. A más küllők előtagjainak NVA-virtuális hálózatok való beadásához statikus útvonal szükséges.
@@ -69,14 +69,14 @@ Ebben a forgatókönyvben azonban meg kell gondolni, hogy mely statikus útvonal
 
 Ezzel az alapértelmezett táblában a NVA a NVA VNet mögötti forgalom küldéséhez szükséges statikus útvonalak a következők:
 
-| Leírás | Útválasztási táblázat | Statikus útvonal              |
+| Description | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | 2. VNet       | Alapértelmezett     | 10.2.0.0/16 – > eastusconn |
 | 4. VNet       | Alapértelmezett     | 10.4.0.0/16 – > weconn     |
 
 A Virtual WAN már tudja, hogy melyik kapcsolattal küldi el a csomagokat, de a kapcsolatnak tudnia kell, mi a teendő a csomagok fogadásakor: ez az a hely, ahol a kapcsolati útválasztási táblák vannak használatban. Itt fogjuk használni a rövidebb előtagokat (/24 a hosszabb/16 helyett), hogy meggyőződjünk arról, hogy ezek az útvonalak előnyben részesítettek a NVA virtuális hálózatok importált útvonalakon (VNet 2 és VNet 4):
 
-| Leírás | Kapcsolat | Statikus útvonal            |
+| Description | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | 5. VNet       | eastusconn | 10.2.1.0/24 – > 10.2.0.5 |
 | 6. VNet       | eastusconn | 10.2.2.0/24 – > 10.2.0.5 |
@@ -129,7 +129,7 @@ Ez az útválasztási konfiguráció változását eredményezi, ahogy az a **3.
 
    :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="3. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

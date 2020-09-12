@@ -2,24 +2,24 @@
 title: Azure VPN Gateway mérőszámok megtekintése
 description: VPN Gateway mérőszámok megtekintésének lépései
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: b3a79b8101a55eaf401c20cb118be3b0796b7aca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531620"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443177"
 ---
-# <a name="view-vpn-gateway-metrics"></a>VPN Gateway mérőszámok megtekintése
+# <a name="view-vpn-gateway-metrics"></a>VPN Gateway-metrikák megtekintése
 
 Azure Monitor használatával figyelheti az Azure VPN-átjárókat. Ez a cikk a portálon keresztül elérhető metrikákat ismerteti. A metrikák egyszerűek, és a közel valós idejű forgatókönyveket támogatják, így a riasztások és a gyors problémák észlelése is hasznos lehet.
 
 
-|**Metrika**   | **Egység** | **Részletesség** | **Leírás** | 
+|**Metrika**   | **Unit (Egység)** | **Részletesség** | **Leírás** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bájt/s  | 5 perc| Az átjárón a helyek közötti kapcsolatok átlagos összesített sávszélesség-kihasználtsága.     |
 |**P2SBandwidth**| Bájt/s  | 1 perc  | Az átjárón az összes pont – hely kapcsolat átlagos összesített sávszélesség-kihasználtsága.    |

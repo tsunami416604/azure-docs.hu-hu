@@ -1,25 +1,27 @@
 ---
-title: Azure Speaker Recognition szolgáltatás
+title: Speaker Recognition áttekintése – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Speaker Recognition olyan algoritmusokat biztosít, amelyek egyedi hangtulajdonságokkal rendelkeznek a hangszórók ellenőrzéséhez és azonosításához. Speaker Recognition a "ki beszél?" kérdésre válaszol.
+description: A Speaker Recognition olyan algoritmusokat biztosít, amelyek a hangbiometry használatával ellenőrzik és azonosítják a hangszórók egyedi hangjellemzőiket. Speaker Recognition a "ki beszél?" kérdésre válaszol. Ez a cikk áttekintést nyújt a Speaker Recognition szolgáltatás előnyeiről és képességeiről.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/02/2020
 ms.author: trbye
-ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: cog-serv-seo-aug-2020
+keywords: hangszórók felismerése, hangvezérelt biometry
+ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780885"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397259"
 ---
-# <a name="what-is-the-azure-speaker-recognition-service"></a>Mi az Azure Speaker Recognition szolgáltatás?
+# <a name="what-is-speaker-recognition"></a>Mi a Speaker Recognition?
 
-A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek egyedi hangtulajdonságokkal rendelkeznek a hangszórók ellenőrzéséhez és azonosításához. Speaker Recognition a "ki beszél?" kérdésre válaszol. A hangképzési adatok egyetlen beszélő számára is megadhatók, amely a beszélő hangja egyedi jellemzői alapján létrehoz egy beléptetési profilt. A profilhoz tartozó hangmintákat úgy ellenőrizheti, hogy a beszélő ugyanaz a személy (előadói ellenőrzés), vagy a hangvételi mintákat a regisztrált hangsugárzó-profilok egy *csoportján* keresztül ellenőrzi, hogy az megfelel-e a csoport összes profiljának (a beszélő azonosítása). Ezzel szemben a [beszélő Diarization](batch-transcription.md#speaker-separation-diarization) csoportosítja a hangfelvételek szegmensét egy batch-műveletben.
+A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek a hangbiometry használatával ellenőrzik és azonosítják a hangszórók egyedi hangjellemzőiket. Speaker Recognition a "ki beszél?" kérdésre válaszol. A hangképzési adatok egyetlen beszélő számára is megadhatók, amely a beszélő hangja egyedi jellemzői alapján létrehoz egy beléptetési profilt. A profilhoz tartozó hangmintákat úgy ellenőrizheti, hogy a beszélő ugyanaz a személy (előadói ellenőrzés), vagy a hangvételi mintákat a regisztrált hangsugárzó-profilok egy *csoportján* keresztül ellenőrzi, hogy az megfelel-e a csoport összes profiljának (a beszélő azonosítása). Ezzel szemben a [beszélő Diarization](batch-transcription.md#speaker-separation-diarization) csoportosítja a hangfelvételek szegmensét egy batch-műveletben.
 
 ## <a name="speaker-verification"></a>Beszélő-ellenőrzés
 
@@ -70,7 +72,7 @@ Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recogni
 | Többször is regisztrálhat egy beszélőt? | Igen, a szövegtől függő ellenőrzéshez akár 50 alkalommal is regisztrálhat egy beszélőt. Szövegtől független ellenőrzés vagy beszélő azonosítása esetén akár 300 másodpercig is regisztrálhat. |
 | Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](speaker-recognition-basics.md) foglalkozó cikket.

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757642"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443058"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 Konfigurálja úgy a fürtöt, hogy a fürt létrehozásakor az AK speciális GPU-rendszerképet használja. Használja az `--aks-custom-headers` új fürt GPU-ügynök csomópontjainak jelölőjét az AK speciális GPU-rendszerkép használatára.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ Ha a normál AK-lemezképek használatával szeretne fürtöt létrehozni, ezt a
 
 Konfiguráljon egy új csomópont-készletet az AK speciális GPU-rendszerkép használatára. Használja az `--aks-custom-headers` új csomóponton található GPU-ügynök csomópontjainak jelző jelzőjét az AK speciális GPU-rendszerkép használatára.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ Ha a normál AK-lemezképek használatával szeretne csomópont-készletet létr
 
 > [!NOTE]
 > Ha a GPU SKU-hoz 2. generációs virtuális gépek szükségesek, a következőket teheti:
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 
@@ -394,7 +394,7 @@ A cikkben létrehozott társított Kubernetes-objektumok eltávolításához has
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Apache Spark feladatok futtatásához tekintse [meg Apache Spark feladatok futtatása az AK][aks-spark]-ban című témakört.
 

@@ -2,17 +2,17 @@
 title: Az Azure ExpressRoute CrossConnnections API fejlesztése és integrációja
 description: Ez a cikk részletes áttekintést nyújt a expressRouteCrossConnections erőforrástípus ExpressRoute-partnereiről.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.author: mialdrid
-ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: duau
+ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921622"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397848"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-fejlesztés és-integráció
 
@@ -82,6 +82,6 @@ Fejlesztés a [EXPRESSROUTECROSSCONNECTIONS API](https://docs.microsoft.com/rest
 
 REST API dokumentációért lásd: [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az összes ExpressRoute REST API-ról: [EXPRESSROUTE REST API](https://docs.microsoft.com/rest/api/expressroute/)-k.

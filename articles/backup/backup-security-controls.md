@@ -3,12 +3,12 @@ title: Biztonsági vezérlők
 description: Tudnivalók a Azure Backup szolgáltatásban használt biztonsági ellenőrzésekről. Ezek a vezérlők segítik a szolgáltatást a biztonsági rések megelőzésében, észlelésében és megválaszolásában.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892962"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418755"
 ---
 # <a name="security-controls-for-azure-backup"></a>A Azure Backup biztonsági vezérlői
 
@@ -20,35 +20,36 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció
 |---|---|--|--|
-| Szolgáltatás végpontjának támogatása| Nem |  |  |
-| VNet-befecskendezés támogatása| Nem |  |  |
-| Hálózati elkülönítés és tűzfalak támogatása| Igen | A virtuális gépek biztonsági mentése a kényszerített bújtatást támogatja. A kényszerített bújtatás nem támogatott a virtuális gépeken belül futó munkaterhelések esetén. |  |
-| Kényszerített bújtatás támogatása| Nem |  |  |
+| Szolgáltatás végpontjának támogatása| No |  |  |
+| VNet-befecskendezés támogatása| No |  |  |
+| Hálózati elkülönítés és tűzfalak támogatása| Yes | |  |
+| Az Azure-beli virtuális gépek kényszerített bújtatási támogatása | Yes  |  |  |
+| Az Azure-beli virtuális gépeken futó alkalmazások kényszerített bújtatási támogatása| No  |  |  |
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció
 |---|---|--|--|
-| Azure monitoring-támogatás (például log Analytics, alkalmazás-elemzések)| Igen | A Log Analytics erőforrás-naplókon keresztül támogatott. További információ: [Azure Backup védett munkaterhelések figyelése log Analytics használatával](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A Azure Portal összes ügyfél által aktivált műveletét a rendszer naplózza a tevékenység naplófájljaiba. |  |
-| Adatsíkok naplózása és naplózása| Nem | Azure Backup az adatsík nem érhető el közvetlenül.  |  |
+| Azure monitoring-támogatás (például log Analytics, alkalmazás-elemzések)| Yes | A Log Analytics erőforrás-naplókon keresztül támogatott. További információ: [Azure Backup védett munkaterhelések figyelése log Analytics használatával](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Yes | A Azure Portal összes ügyfél által aktivált műveletét a rendszer naplózza a tevékenység naplófájljaiba. |  |
+| Adatsíkok naplózása és naplózása| No | Azure Backup az adatsík nem érhető el közvetlenül.  |  |
 
 ## <a name="identity"></a>Identitás
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció
 |---|---|--|--|
-| Hitelesítés| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |  |
-| Engedélyezés| Igen | A rendszer felhasználja az ügyfél által létrehozott és az Azure beépített szerepköreit. További információ: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](./backup-rbac-rs-vault.md). |  |
+| Hitelesítés| Yes | A hitelesítés Azure Active Directoryon keresztül történik. |  |
+| Engedélyezés| Yes | A rendszer felhasználja az ügyfél által létrehozott és az Azure beépített szerepköreit. További információ: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció
 |---|---|--|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | A Storage szolgáltatás titkosítása a Storage-fiókokhoz. |  |
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Nem |  |  |
-| Oszlop szintű titkosítás (Azure Data Services)| Nem |  |  |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Nem | HTTPS használatával. |  |
-| Titkosított API-hívások| Igen |  |  |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Yes | A Storage szolgáltatás titkosítása a Storage-fiókokhoz. |  |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | No |  |  |
+| Oszlop szintű titkosítás (Azure Data Services)| No |  |  |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| No | HTTPS használatával. |  |
+| Titkosított API-hívások| Yes |  |  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

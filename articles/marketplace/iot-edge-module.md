@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816252"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420608"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -30,7 +30,7 @@ A [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformot Mi
 
 ## <a name="what-is-an-iot-edge-module"></a>Mi az IoT Edge modul?
 
-Azure IoT Edge lehetővé teszi az üzleti logikák üzembe helyezését és kezelését modulok formájában. A Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. IoT Edge modulokról további információt a [Azure IoT Edge modulok ismertetése](../iot-edge/iot-edge-modules.md)című témakörben talál.
+Azure IoT Edge lehetővé teszi az üzleti logikák üzembe helyezését és kezelését modulok formájában. A Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásra vonatkozó kódokat. IoT Edge modulokról további információt a [Azure IoT Edge modulok ismertetése](../iot-edge/iot-edge-modules.md)című témakörben talál.
 
 **Mi a különbség a Container ajánlat típusa és az IoT Edge modul típusú ajánlat között?**
 
@@ -40,7 +40,7 @@ A IoT Edge modul ajánlat típusa egy IoT Edge eszközön futó adott típusú t
 
 **A megfelelő online áruház kiválasztása**
 
-IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé; A AppSource nem érvényes. További információ a különbségekről és a célközönségről az online áruházakban: [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
+IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé; A AppSource nem érvényes. További információ az online áruházak közötti különbségekről: [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
 
 **Számlázási beállítások**
 
@@ -73,8 +73,7 @@ IoT Edge modul Azure Marketplace-en való közzétételéhez meg kell felelnie a
 
 Az IoT Edge modul elsődleges műszaki követelményei, hogy az informatikai támogatás és közzététel az Azure Marketplace-en, részletesen megtalálhatók a [IoT Edge modul előkészítésének technikai eszközein](./partner-center-portal/create-iot-edge-module-asset.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [További](https://azuremarketplace.microsoft.com/sell) információ a kereskedelmi Piactérről.
 - Az ajánlat létrehozásához vagy befejezéséhez jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
 - [Hozzon létre egy IoT Edge modul ajánlatot](./partner-center-portal/azure-iot-edge-module-creation.md) a partner Centerben.

@@ -2,20 +2,20 @@
 title: Az Azure Traffic Manager beállításainak ellenőrzése
 description: Ebből a cikkből megtudhatja, hogyan ellenőrizheti a Traffic Manager beállításait, és tesztelheti a forgalom-útválasztási módszert.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.author: duau
+ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186996"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401520"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager-beállítások ellenőrzése
 
@@ -68,7 +68,7 @@ A teljesítmény-forgalom útválasztási módszerének hatékony teszteléséhe
 
 Azt is megteheti, hogy elérhetővé vált a webes DNS-keresés és a kiásási szolgáltatás. Ezen eszközök némelyike lehetővé teszi a DNS-névfeloldás ellenőrzését a világ különböző helyeiről. Példák esetén keressen rá a "DNS-címkeresés" kifejezésre. A harmadik féltől származó szolgáltatások, például a Gomez vagy a Keynote használatával ellenőrizhetik, hogy a profilok a várt módon forgalmazzák-e a forgalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tudnivalók a Traffic Manager forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
 * [A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773406"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400194"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Hálózati forgalom szabályozása az Azure HDInsight
 
@@ -32,7 +32,11 @@ Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgal
 
 1. Azonosítsa az HDInsight használni kívánt Azure-régiót.
 
-2. Azonosítsa a HDInsight által a régiója számára szükséges szolgáltatási címkéket. További információ: [hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight](hdinsight-service-tags.md).
+2. Azonosítsa a HDInsight által a régiója számára szükséges szolgáltatási címkéket. A szolgáltatási címkék több módon is beszerezhetők:
+    1. A közzétett szolgáltatások címkéit az [Azure HDInsight hálózati biztonsági csoport (NSG) szolgáltatásbeli címkék](hdinsight-service-tags.md)listájában tájékozódhat. 
+    2. Ha a régió nem szerepel a listában, használja a [Service tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) -t a régiója szolgáltatási címkéjének megtalálásához.
+    3. Ha nem tudja használni az API-t, töltse le a [Service tag JSON-fájlját](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) , és keresse meg a kívánt régiót.
+
 
 3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
 
@@ -52,10 +56,6 @@ Azok az ügyfelek, akik számára a kényszerített bújtatást kívánják beá
 
 Ha Azure Firewall használatával szeretné megtekinteni a UDR telepítőjét, tekintse meg a [kimenő hálózati forgalom korlátozásának konfigurálása az Azure HDInsight-fürtökhöz](hdinsight-restrict-outbound-traffic.md)című témakört.
 
-## <a name="required-ip-addresses"></a>Szükséges IP-címek
-
-Ha hálózati biztonsági csoportokat vagy felhasználó által megadott útvonalakat használ a forgalom vezérléséhez, tekintse meg a [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md)című témakört.
-
 ## <a name="required-ports"></a>Szükséges portok
 
 Ha **tűzfalat** szeretne használni, és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
@@ -64,7 +64,7 @@ Az egyes szolgáltatásokhoz tartozó portok listáját lásd: [Apache Hadoop Se
 
 A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetését lásd: [virtuális készülék forgatókönyvének](../virtual-network/virtual-network-scenario-udr-gw-nva.md) dokumentuma.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).

@@ -2,22 +2,22 @@
 title: Azure Traffic Manager – forgalom-útválasztási módszerek
 description: Ez a cikk segítséget nyújt az Traffic Manager által használt különböző forgalom-útválasztási módszerek megismerésében.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689656"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401656"
 ---
-# <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
+# <a name="traffic-manager-routing-methods"></a>A Traffic Manager útválasztási módszerei
 
 Az Azure Traffic Manager hat forgalmi útválasztási módszert támogat a hálózati forgalom különböző szolgáltatási végpontokra való továbbításának meghatározásához. Bármely profil esetében a Traffic Manager a hozzá társított forgalom-útválasztási módszert alkalmazza az összes kapott DNS-lekérdezéshez. A forgalom-útválasztási módszer határozza meg, hogy melyik végpontot adja vissza a rendszer a DNS-válaszban.
 
@@ -177,7 +177,7 @@ Az alhálózati útválasztással különböző felhasználói élményt biztos�
 * [Mi történik, ha egy végpont le van tiltva egy alhálózat útválasztási típusának profiljában?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan fejleszthet magas rendelkezésre állású alkalmazásokat [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md) használatával
 

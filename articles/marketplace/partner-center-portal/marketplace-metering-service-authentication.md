@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319966"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378729"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace-mérési szolgáltatás hitelesítési stratégiái
 
@@ -68,10 +68,10 @@ További információ ezekről a jogkivonatokról: [Azure Active Directory hozz�
 
 |  **Tulajdonság neve**  |  **Kötelező**  |  **Leírás**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   Igaz         | Adja meg a típust. A `client_credentials` címet használja. |
+|  `Grant_type`       |   Igaz         | Adja meg a típust. Használja az `client_credentials` parancsot. |
 |  `Client_id`        |   Igaz         | Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító.|
 |  `client_secret`    |   Igaz         | Az Azure AD-alkalmazáshoz társított titkos kulcs.  |
-|  `Resource`         |   Igaz         | A célként megadott erőforrás, amelyre a tokent kérték. A `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` címet használja. |
+|  `Resource`         |   Igaz         | A célként megadott erőforrás, amelyre a tokent kérték. Használja az `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` parancsot. |
 | | | |
 
 #### <a name="response"></a>*Válasz*
@@ -114,7 +114,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
     * [Azure Portal felhasználói felület](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [Parancssori felület](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Azure Resource Manager sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -145,7 +145,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -153,7 +153,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
 1. Használja a [piactér-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -ját a használat kibocsátása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-alkalmazásajánlat létrehozása](./create-new-azure-apps-offer.md)
-* [Az SaaS-ajánlat létrehozása](./offer-creation-checklist.md)
+* [SaaS-ajánlat tervezése](../plan-saas-offer.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837228"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420693"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MySQL a Azure Portal használatával
 
@@ -24,7 +24,7 @@ Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurác
 ![Azure Portal kiszolgáló paramétereinek lapja](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 3. Keresse meg a módosítani kívánt beállításokat. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
 ![Számbavétel legördülő lista](./media/howto-server-parameters/3-toggle_parameter.png)
-4. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+4. A módosítások mentéséhez kattintson a  **Save (Mentés** ) gombra.
 ![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
 5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
 ![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
@@ -34,11 +34,14 @@ Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurác
 Ha a frissíteni kívánt kiszolgálói paraméter nem szerepel a Azure Portalban, akkor opcionálisan a paramétert is megadhatja a kapcsolódási szinten a használatával `init_connect` . Ezzel beállítja a kiszolgálóhoz csatlakozó egyes ügyfelek kiszolgálói paramétereit. 
 
 1. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
-2. Keresés`init_connect`
+2. Keresés `init_connect`
 3. Adja hozzá a kiszolgáló paramétereit a (z) Value ( `SET parameter_name=YOUR_DESIRED_VALUE` érték) oszlopban a Format: értéknél.
 
     Megváltoztathatja például a kiszolgáló karakterkészletét a következőre való beállításával: `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
 4. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+
+>[!Note]
+> `init_connect` felhasználható olyan paraméterek módosítására, amelyek nem igénylik a SUPER jogosultság (oka) t a munkamenet szintjén. Annak ellenőrzéséhez, hogy be tudja-e állítani a paramétert a használatával `init_connect` , hajtsa végre a `set session parameter_name=YOUR_DESIRED_VALUE;` parancsot, és ha a **hozzáférés megtagadva** hibaüzenettel rendelkezik, a (z) "init_connect" paraméterrel nem állíthatja be a paramétert.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
@@ -78,6 +81,6 @@ SET time_zone = 'US/Pacific';
 
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

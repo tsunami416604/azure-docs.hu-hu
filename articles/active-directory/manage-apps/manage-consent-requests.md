@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazások beleegyezett az alkalmazásokkal és a beleegyező kérelmek kiértékelésével – Azure AD
-description: Megtudhatja, hogyan kezelheti a beleegyező kéréseket, amikor a felhasználó beleegyezik vagy korlátozott, és hogyan értékelheti ki a bérlői szintű rendszergazdai beleegyezett kérelemre vonatkozó kérelmet.
+title: Az alkalmazások beleegyezett az alkalmazásokkal és a Azure Active Directoryi engedélyezési kérelmek kiértékelésével
+description: Megtudhatja, hogyan kezelheti a belefoglalt kéréseket, amikor a felhasználó beleegyezik, vagy korlátozott, és hogyan értékelheti ki a bérlői szintű rendszergazdai beleegyező kéréseket Azure Active Directory-alkalmazásban.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763193"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420455"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Az alkalmazások beleegyezett az alkalmazásokkal és az engedélyezési kérelmek kiértékelésével
 
@@ -76,7 +75,7 @@ Az alábbi lista néhány olyan javaslatot tartalmaz, amelyeket figyelembe kell 
 
 * **Ismerje meg a kért engedélyeket.**
 
-   Az alkalmazás által kért engedélyek szerepelnek a [hozzájárulási kérésben](../develop/application-consent-experience.md). Az engedély címének kibontásakor megjelenik az engedély leírása. Az alkalmazás engedélyeinek leírása általában "bejelentkezett felhasználó nélkül" végződik. A delegált engedélyek leírása általában a bejelentkezett felhasználó nevében végződik. A Microsoft Graph API-ra vonatkozó engedélyeket a [Microsoft Graph engedélyek hivatkozása] című témakörben találja. további API-k dokumentációjában tájékozódhat az általuk közzétett engedélyek megismeréséről.
+   Az alkalmazás által kért engedélyek szerepelnek a [hozzájárulási kérésben](../develop/application-consent-experience.md). Az engedély címének kibontásakor megjelenik az engedély leírása. Az alkalmazás engedélyeinek leírása általában "bejelentkezett felhasználó nélkül" végződik. A delegált engedélyek leírása általában a bejelentkezett felhasználó nevében végződik. A Microsoft Graph API-ra vonatkozó engedélyek leírása [Microsoft Graph engedélyek hivatkozása](https://docs.microsoft.com/graph/permissions-reference) – további API-k dokumentációja a közzétett engedélyek megismeréséhez.
 
    Ha nem érti a kért engedélyt, ne adjon meg *beleegyezést*.
 
@@ -95,27 +94,29 @@ Az alábbi lista néhány olyan javaslatot tartalmaz, amelyeket figyelembe kell 
 ## <a name="granting-consent-as-an-administrator"></a>A jóváhagyás engedélyezése rendszergazdaként
 
 ### <a name="granting-tenant-wide-admin-consent"></a>A bérlői szintű rendszergazdai jóváhagyás megadása
-
 Az Azure AD PowerShell-lel vagy a hozzájárulási kéréssel megadhatja, hogy a bérlői szintű rendszergazdai hozzájárulást a Azure Portal, az Azure AD PowerShell vagy a belefoglalt engedély használatával adja [meg az alkalmazásnak](grant-admin-consent.md) , amely részletes útmutatást biztosít a bérlői szintű rendszergazdai jóváhagyáshoz
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Jóváhagyás megadása egy adott felhasználó nevében
-
-Ahelyett, hogy a teljes szervezet számára engedélyezte a jóváhagyást, a rendszergazda a [mikroszkóp Graph API](https://docs.microsoft.com/graph/use-the-api) használatával is megadhatja, hogy egy adott felhasználó nevében jóváhagyja a delegált engedélyeket. További információ: [hozzáférés beszerzése egy felhasználó nevében](https://docs.microsoft.com/graph/auth-v2-user).
+A teljes szervezethez való hozzáférés megadása helyett a rendszergazda a [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) -val is megadhatja a delegált engedélyeknek egy adott felhasználó nevében való jóváhagyását. További információ: [hozzáférés beszerzése egy felhasználó nevében](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Az alkalmazásokhoz való felhasználói hozzáférés korlátozása
-
 A felhasználók az alkalmazásokhoz való hozzáférését továbbra is korlátozhatja, még akkor is, ha a bérlői szintű rendszergazdai jogosultságot megadták. A felhasználók alkalmazáshoz való hozzárendelésének megkövetelésével kapcsolatos további információkért lásd: [a felhasználók és csoportok hozzárendelésének módszerei](methods-for-assigning-users-and-groups.md).
 
 További információk a további összetett forgatókönyvek kezeléséről: az [Azure ad használata az alkalmazás-hozzáférés kezeléséhez](what-is-access-management.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Minden jövőbeli felhasználói beleegyező művelet letiltása bármely alkalmazáshoz
+A teljes címtár felhasználói beleegyezésének letiltása megakadályozza, hogy a végfelhasználók bármilyen alkalmazást fogadnak el. A rendszergazdák továbbra is engedélyezhetik a felhasználó nevében való hozzájárulásukat. Ha többet szeretne megtudni az alkalmazások beleegyezéséről, és miért nem szeretne beleegyezést kapni, olvassa el a [felhasználói és rendszergazdai beleegyezést](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)ismertető témakört.
 
-[Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+Ha le szeretné tiltani az összes jövőbeli felhasználói beleegyező műveletet a teljes címtárban, kövesse az alábbi lépéseket:
+1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
+2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
+3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
+4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
+5.  Válassza a **Felhasználói beállítások** elemet.
+6.  Tiltsa le az összes jövőbeli felhasználói megkötési műveletet úgy, hogy a **felhasználók engedélyezik, hogy az alkalmazások hozzáférjenek az adatokhoz** , és **ne** kattintson a **Save (Mentés** ) gombra.
 
-[Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
-
-[A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
-
-[Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
-
-[Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+## <a name="next-steps"></a>Következő lépések
+* [Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
+* [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
+* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)

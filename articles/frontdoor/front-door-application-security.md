@@ -3,20 +3,20 @@ title: Azure bejárati ajtó – alkalmazás réteg biztonsága | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogy az Azure bejárati ajtaja Hogyan védi és biztonságossá teszi az alkalmazási háttérrendszer védelmét
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471795"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399939"
 ---
 # <a name="application-layer-security-with-front-door"></a>Az alkalmazások rétegének biztonsága a bejárati ajtóval
 Az Azure bejárati ajtaja webalkalmazás-védelmi képességet biztosít a webalkalmazások védelmére a hálózati támadásoktól és a gyakori webes sebezhetőségek, például az SQL-injektálás vagy a helyközi parancsfájlok (XSS) használatával. Engedélyezve van a http (s) előtérben, a bejárati ajtó alkalmazási rétegének biztonsága globálisan elosztott és always on, a rosszindulatú támadások leállítása az Azure hálózati szélén, távol a háttérben. A nagyobb biztonság és teljesítmény optimalizálása révén a bejárati ajtó gyors és biztonságos webes élményt biztosít a végfelhasználók számára.
@@ -49,7 +49,7 @@ A bejárati ajtó lehetővé teszi a webalkalmazások elleni támadások figyel�
 A bejárati ajtó alkalmazási rétegének biztonsága ingyenes az előzetes verzió alatt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

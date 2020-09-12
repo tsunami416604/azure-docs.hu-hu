@@ -2,17 +2,17 @@
 title: Tudnivalók a ExpressRoute virtuális hálózati átjárókkal kapcsolatban – Azure | Microsoft Docs
 description: A ExpressRoute virtuális hálózati átjáróinak megismerése. Ez a cikk az átjáró-SKU-ról és-típusokról tartalmaz információkat.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: mialdrid
-ms.openlocfilehash: e7779e0638ea61c70758394dc212910ba8f1d7f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 65e44acd1fe6ecb389f81cbd0ed88d1c161dfcdb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081134"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397865"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Tudnivalók a ExpressRoute virtuális hálózati átjárókkal kapcsolatban
 
@@ -91,7 +91,7 @@ A REST API-k és a virtuális hálózati átjárók konfigurációinak PowerShel
 | [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az elérhető kapcsolatok konfigurációjáról: [ExpressRoute – áttekintés](expressroute-introduction.md).
 

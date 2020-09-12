@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385722"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418908"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
@@ -77,6 +77,7 @@ A kód generálási módjának konfigurálásához a következő beállításoka
 | CodeLength | No | A kód hossza. Az alapértelmezett érték `6`. |
 | CharacterSet | No | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
 | NumRetryAttempts | No | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
+| NumCodeGenerationAttempts | No | A kód generálására irányuló kísérletek maximális száma azonosító alapján. Ha nincs megadva, az alapértelmezett érték 10. |
 | Művelet | Yes | A végrehajtandó művelet. Lehetséges érték: `GenerateCode` . |
 | ReuseSameCode | No | Azt határozza meg, hogy egy ismétlődő kód megadása helyett új kód generálását kell-e megadni, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`. |
 
@@ -94,6 +95,7 @@ A következő példa a `TechnicalProfile` kód generálására szolgál:
     <Item Key="CodeLength">6</Item>
     <Item Key="CharacterSet">0-9</Item>
     <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="NumCodeGenerationAttempts">15</Item>
     <Item Key="ReuseSameCode">false</Item>
   </Metadata>
   <InputClaims>
@@ -143,6 +145,7 @@ A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén m
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | No | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
 | UserMessageIfMaxRetryAttempted | No | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
+| UserMessageIfMaxNumberOfCodeGenerated | No | A felhasználónak megjelenítendő üzenet, ha a kód létrehozása túllépte a kísérletek maximálisan megengedett számát. |
 | UserMessageIfInvalidCode | No | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg. |
 | UserMessageIfVerificationFailedRetryAllowed | No | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg, és a felhasználó megadhatja a megfelelő kódot.  |
 |UserMessageIfSessionConflict|No| A felhasználónak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
@@ -165,7 +168,7 @@ A következő példa `TechnicalProfile` egy kód ellenőrzéséhez használható
 </TechnicalProfile>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan használhatja az egyéni e-mail-ellenőrzéssel rendelkező egyszeri jelszavas technikai profilt:
 

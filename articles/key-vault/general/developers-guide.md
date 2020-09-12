@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585865"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394754"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -67,7 +67,7 @@ A Key vaultban található kulcsok, titkok vagy tanúsítványok használata el�
 - [Tanúsítvány beállítása és lekérése parancssori felülettel](../certificates/quick-create-cli.md)
 - [Tanúsítvány beállítása és lekérése a PowerShell-lel](../certificates/quick-create-powershell.md)
 - [Tanúsítvány beállítása és lekérése a Azure Portal](../certificates/quick-create-portal.md)
-- [A kulcsok működése REST-tel](/rest/api/keyvault/#certificate-operations)
+- [Tanúsítvány-műveletek a REST-tel](/rest/api/keyvault/#certificate-operations)
 - [Tanúsítvány beállítása és lekérése Python-val](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Kódolás Key Vault
@@ -125,7 +125,7 @@ A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújt
 - A [Key Vault használata a bővíthető kulcsok felügyeletéhez a SQL Server használatával](https://msdn.microsoft.com/library/dn198405.aspx) – a SQL Server Connector Azure Key Vault lehetővé teszi, hogy a SQL Server és az SQL-a-a-VM kihasználja a Azure Key Vault szolgáltatást bővíthető kulcs-felügyeleti (EKM) szolgáltatóként, hogy megvédje a titkosítási kulcsait az alkalmazások hivatkozásához; Transzparens adattitkosítás, biztonsági másolatok titkosítása és az oszlopok szintjének titkosítása.
 - [Tanúsítványok telepítése virtuális gépekre Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – az Azure-beli virtuális gépen futó Felhőbeli alkalmazásnak tanúsítványra van szüksége. Hogyan szerezheti be ezt a tanúsítványt még ma a virtuális gépre?
 - Az [Azure webalkalmazás-tanúsítványnak a Key Vault segítségével történő üzembe helyezése]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) részletes útmutatást nyújt a Key Vault tárolt tanúsítványok [app Service-tanúsítvány](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) ajánlat részeként történő telepítéséhez.
-- [Engedélyek megadása számos alkalmazás számára a kulcstartó eléréséhez](group-permissions-for-apps.md) Key Vault hozzáférés-vezérlési házirend legfeljebb 1024 bejegyzést támogat. Azonban létrehozhat egy Azure Active Directory biztonsági csoportot is. Adja hozzá az összes társított egyszerű szolgáltatást ehhez a biztonsági csoporthoz, majd engedélyezze a biztonsági csoport számára a Key Vaulthoz való hozzáférést.
+- Hozzáférési szabályzat ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  -[portál](assign-access-policy-portal.md)) társítása. A Key Vault akár 1024 hozzáférési szabályzatot is támogat. Ha továbbra is meg szeretné őrizni a korlátozást a felhasználók számára, hozzon létre Azure Active Directory biztonsági csoportokat, adja hozzá az összes társított egyszerű szolgáltatást a csoporthoz, majd adja meg a csoport számára a hozzáférést a Key Vaulthoz.
 - A Key Vaultok Azure-beli integrálásával és használatával kapcsolatos további feladatra vonatkozó útmutatásért lásd: [Ryan Jones Azure Resource Manager sablon példák a Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - A [Key Vault Soft-delete használata a parancssori](soft-delete-cli.md) felülettel végigvezeti a kulcstartó használatának és életciklusának, valamint a helyreállítható törlést lehetővé tett különböző kulcstartó-objektumoknak a használatával.
 - A Key Vault helyreállítható [Törlés használata a PowerShell-](soft-delete-powershell.md) lel végigvezeti a kulcstartó használatának és életciklusának, valamint a helyreállítható törlést lehetővé tett különböző kulcstartó-objektumoknak a használatával.

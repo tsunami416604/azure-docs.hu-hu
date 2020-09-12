@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265252"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397304"
 ---
 # <a name="live-event-types-comparison"></a>Élő eseménytípus összehasonlítása
 
@@ -36,7 +36,7 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 * **LiveEventEncodingType. Standard** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás streamet hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy nagyobb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat kódol (részletek a cikk későbbi részében).
 * **LiveEventEncodingType. Premium1080p** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét (részletek a cikk későbbi részében). 
 
-| Funkció | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
+| Jellemző | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
 | --- | --- | --- |
 | Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Igen |
 | A hozzájárulási csatorna maximális felbontása |4K (4096x2160 at 60 Frames/mp) |1080p (1920x1088 30 keret/mp)|
@@ -60,10 +60,10 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | A beágyazások behelyezésének támogatása|Nem|Nem|
 | Az ad-jelzés támogatása API-n keresztül| Nem|Nem|
 | Az ad-jelzés támogatása SCTE-35 sávon belüli üzenetek használatával|Igen|Igen|
-| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Igen|Részleges|
-| Nem egységes bemeneti Pallagi Péter támogatása|Igen|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
-| Változó képarány bemenetének támogatása|Igen|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
-| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|Nem|12 óra elteltével, ha nem fut LiveOutput|
+| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Yes|Részleges|
+| Nem egységes bemeneti Pallagi Péter támogatása|Yes|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
+| Változó képarány bemenetének támogatása|Yes|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
+| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|No|12 óra elteltével, ha nem fut LiveOutput|
 
 ## <a name="system-presets"></a>Rendszerbeállítás
 
@@ -86,8 +86,7 @@ Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default7
 | 200 |340 |192 |30 |Magas |
 
 > [!NOTE]
-> Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van. Azt is megadhatja, hogy egy szabványos élő kódolóhoz kérjen beállításkészletet.
-> A bitráták és a felbontások meghatározott értékei idővel módosíthatók.
+> Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a videó felbontásának és a bitrátának a kívánt táblázatát. Az audió kódolási bitráta testreszabása nem támogatott. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van. Azt is megadhatja, hogy egy beállításkészletet kér.
 
 ### <a name="output-video-streams-for-default1080p"></a>Kimeneti videó streamek a Default1080p
 
@@ -103,8 +102,7 @@ Ha a hozzájárulási csatorna 1080p felbontású, a **Default1080p** -készlet 
 | 200 |320 |180 |30 |Magas |
 
 > [!NOTE]
-> Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy a rendszer csak egy réteget (1080p) és legfeljebb 6 réteget mutat be. Azt is megadhatja, hogy az Premium1080p Live Encoder számára előre beállított értéket kérjen.
-> A bitráták és a felbontások meghatározott értékei idővel módosíthatók.
+> Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Ellenőrizze, hogy csak egy réteg van-e 1080p-nél, és legfeljebb 6 rétegben. Azt is megadhatja, hogy az Premium1080p Live Encoder számára előre beállított értéket kérjen. A bitráták és a felbontások meghatározott értékei idővel módosíthatók.
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Kimeneti hang stream a Default720p és a Default1080p
 
@@ -132,6 +130,6 @@ Ha például egy 720p-beli Default1080p élő kódolásra konfigurált élő ese
 
 Az élő kódoló úgy van konfigurálva, hogy tiszteletben tartsák az előre beállított bitráta-beállításokat, függetlenül attól, hogy a hozzájárulási csatorna milyen bitrátát mutat. Ennek eredményeképpen a kimeneti rétegek bitrátája túllépheti a hozzájárulási hírcsatornát. Ha például egy 1 MB/s sebességű 720p felbontásban küld egy hozzájárulási csatornát, a kimeneti rétegek a fenti [táblázatban](live-event-types-comparison.md#output-video-streams-for-default720p) megmaradnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Élő közvetítés – áttekintés](live-streaming-overview.md)

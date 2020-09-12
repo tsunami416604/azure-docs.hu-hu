@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386163"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400143"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -225,7 +225,7 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
    1. Ha elkészült a **hozzáférési szabályzatok** ablaktáblával, válassza a **Mentés**lehetőséget.
 
-További információ: [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
+További információ: a [hitelesítés Key Vault](/azure/key-vault/general/authentication) és [egy Key Vault hozzáférési szabályzat kiosztása](/azure/key-vault/general/assign-access-policy-portal).
 
 ## <a name="next-steps"></a>Következő lépések
 

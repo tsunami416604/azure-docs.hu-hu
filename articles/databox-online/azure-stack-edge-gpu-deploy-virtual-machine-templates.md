@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268159"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419826"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge GPU-eszközön sablonok használatával
 
@@ -74,7 +74,7 @@ Konfigurálja ezeket az előfeltételeket az ügyfélen, amely az Azure Stack Ed
 Konfigurálja ezeket az előfeltételeket olyan erőforrások létrehozásához, amelyekre szükség lesz a virtuális gépek létrehozásához. 
 
     
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
 
@@ -167,7 +167,7 @@ Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blo
 
     ![BLOB Storage-végpont tanúsítványának importálása](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/import-blob-storage-endpoint-certificate-1.png)
 
-    - Ha eszköz által generált tanúsítványokat használ, töltse le és alakítsa át a blob Storage-végpont `.cer` tanúsítványát `.pem` formátumra. Futtassa az alábbi parancsot: 
+    - Ha eszköz által generált tanúsítványokat használ, töltse le és alakítsa át a blob Storage-végpont `.cer` tanúsítványát `.pem` formátumra. Futtassa az alábbi parancsot. 
     
         ```powershell
         PS C:\windows\system32> Certutil -encode 'C:\myasegpu1_Blob storage (1).cer' .\blobstoragecert.pem
@@ -245,11 +245,14 @@ A fájl `CreateImageAndVnet.parameters.json` a következő paramétereket veszi 
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -340,7 +343,7 @@ A sablon üzembe helyezése `CreateImageAndVnet.json` . Ez a sablon telepíti a 
 > [!NOTE]
 > Ha hitelesítési hibaüzenetet kap a sablon telepítésekor, előfordulhat, hogy a munkamenet Azure-beli hitelesítő adatai lejártak. Futtassa `login-AzureRM` újra a parancsot az Azure stack Edge-eszközön lévő Azure Resource Managerhoz való kapcsolódáshoz.
 
-1. Futtassa a következő parancsot: 
+1. Futtassa az alábbi parancsot: 
     
     ```powershell
     $templateFile = "Path to CreateImageAndVnet.json"
@@ -494,14 +497,14 @@ Rendelje hozzá a megfelelő paramétereket az `CreateVM.parameters.json` Azure 
 
 Telepítse a virtuális gép létrehozási sablonját `CreateVM.json` . Ez a sablon egy hálózati adaptert hoz létre a meglévő VNet, és virtuális gépet hoz létre a központilag telepített rendszerképből.
 
-1. Futtassa a következő parancsot: 
+1. Futtassa az alábbi parancsot: 
     
     ```powershell
     Command:
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,15 +550,47 @@ Telepítse a virtuális gép létrehozási sablonját `CreateVM.json` . Ez a sab
         
         PS C:\07-30-2020>
     ```   
- 
-7. Ellenőrizze, hogy a virtuális gép üzembe helyezése sikeres volt-e. Futtassa a következő parancsot:
+A parancsot aszinkron módon is futtathatja a `New-AzureRmResourceGroupDeployment` `–AsJob` paraméterrel. Íme egy minta kimenet, amikor a parancsmag a háttérben fut. Ezután lekérdezheti a parancsmag használatával létrehozott feladatok állapotát `Get-Job` .
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
+7. Ellenőrizze, hogy a virtuális gép üzembe helyezése sikeres volt-e. Futtassa az alábbi parancsot:
 
     `Get-AzureRmVm`
 
 
 ## <a name="connect-to-a-vm"></a>Kapcsolódás virtuális géphez
 
+Attól függően, hogy létrehozott-e Windows vagy Linux rendszerű virtuális gépet, a kapcsolódás lépései különbözőek lehetnek.
+
+### <a name="connect-to-windows-vm"></a>Kapcsolódás Windows rendszerű virtuális géphez
+
+A Windows rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az alábbi lépéseket.
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>Kapcsolódás Linux rendszerű virtuális géphez
+
+A Linux rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az alábbi lépéseket.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 
@@ -592,6 +627,6 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 2. Find `AZCOPY_DEFAULT_SERVICE_API_VERSION` parameter. This should have the value you set in the preceding steps.-->
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Resource Manager-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

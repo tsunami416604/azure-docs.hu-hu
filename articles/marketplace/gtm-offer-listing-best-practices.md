@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816269"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420931"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -48,11 +48,11 @@ Egy másik online áruházhoz tartozó kategóriák és iparágak a különböz�
 
 ### <a name="categories"></a>Kategóriák
 
-A Microsoft AppSource és az Azure Marketplace két különböző online áruház, amely egyedi felhasználói igényeket szolgál ki. Az Azure Marketplace az informatikai szakemberek és fejlesztők számára kínál megoldásokat az Azure-ban.  A Microsoft AppSource üzleti és/vagy iparági SaaS-alkalmazásokat, Dynamics 365 beépülő modulokat, Microsoft 365 beépülő modulokat és a Power platformos alkalmazásokat keresik.
+A Microsoft AppSource és az Azure Marketplace olyan online áruházak, amelyek különböző típusú megoldásokat kínálnak. Az Azure Marketplace az Azure-ra épülő, vagy az Azure-hoz készült megoldásokat kínál.  Microsoft AppSource olyan üzleti megoldásokat kínál, mint például az iparági SaaS-alkalmazások, a Dynamics 365 beépülő modulok, a Microsoft 365 beépülő modulok és a Power platform-alkalmazások.
 
-A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes online áruházakhoz. Az ajánlat a Microsoft AppSource vagy az Azure Marketplace-en lesz közzétéve az ajánlat típusától, az ajánlat tranzakciós képességeitől és a kategória/alkategória kiválasztástól függően. 
+A kategóriák és alkategóriák a megoldás típusa alapján vannak leképezve minden online áruházhoz. Az ajánlat a Microsoft AppSource vagy az Azure Marketplace-en lesz közzétéve az ajánlat típusától, az ajánlat tranzakciós képességeitől és a kategória/alkategória kiválasztástól függően. 
 
-Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a célközönséget. Az alábbiak közül választhat:
+Válassza ki azokat a kategóriákat és alkategóriákat, amelyek a legjobban illeszkednek a megoldás típusához. Az alábbiak közül választhat:
 
 * Legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
 * Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető.
@@ -136,7 +136,7 @@ A következő példában szereplő URL-cím az előző lekérdezési paramétere
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 

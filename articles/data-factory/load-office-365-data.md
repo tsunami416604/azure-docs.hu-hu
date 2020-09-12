@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415799"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435558"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
 
@@ -24,7 +24,7 @@ ms.locfileid: "81415799"
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési adatait az Office 365-ből az Azure Blob Storage-ba_. A hasonló lépéseket követve másolhatja az Adatmásolást Azure Data Lake Gen1 vagy Gen2. Tekintse meg az [office 365-összekötőt](connector-office-365.md) az Office 365-ből általában az adatok másolásáról szóló cikket.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**: 
    
@@ -37,10 +37,10 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
     * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *LoadFromOffice365Demo* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**LoadFromOffice365Demo**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
     * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: válassza a **v2**elemet.
+    * **Verzió**: Válassza a **V2** lehetőséget.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
    
    ![Data factory kezdőlap](./media/load-office-365-data/data-factory-home-page.png)
@@ -63,7 +63,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
 2. Az új adatkészlet ablakban válassza az **Office 365**lehetőséget, majd kattintson a **Folytatás**gombra.
  
-3. Most már a másolási tevékenység konfigurációja lapon van. az Office 365-adatkészlet melletti **Szerkesztés** gombra kattintva folytathatja az adatkonfigurációt.
+3. Most már szerepel a másolási tevékenység konfigurációja lapon. Az adatkonfiguráció folytatásához kattintson az Office 365-adatkészlet melletti **Szerkesztés** gombra.
 
     ![A config Office 365 adatkészlet általános](./media/load-office-365-data/transition-to-edit-dataset.png)
  
@@ -145,9 +145,9 @@ Miután megadta a beleegyezett adatgyűjtést, a rendszer folytatja az adatfeldo
 
 Most lépjen a cél Azure Blob Storagera, és ellenőrizze, hogy az Office 365-es Adatkivonatok bináris formátumban lettek kibontva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását: 
+A következő cikkből megismerheti az Azure szinapszis Analytics (korábban SQL Data Warehouse) támogatását: 
 
 > [!div class="nextstepaction"]
 >[Office 365-összekötő](connector-office-365.md)

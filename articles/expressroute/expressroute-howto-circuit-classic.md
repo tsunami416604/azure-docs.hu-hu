@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: áramkör módosítása: PowerShell: klasszikus'
 description: Ez a cikk végigvezeti a klasszikus ExpressRoute üzembe helyezési modell állapotának, frissítésének és törlésének és megszüntetésének lépésein.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/05/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 801032e3df9dcb778fa4e591ef37eabc317e997a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073335"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396284"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>ExpressRoute-kör módosítása a PowerShell (klasszikus) használatával
 
@@ -21,7 +21,7 @@ ms.locfileid: "89073335"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >

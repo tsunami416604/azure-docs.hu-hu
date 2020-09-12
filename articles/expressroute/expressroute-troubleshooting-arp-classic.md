@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ARP-táblák – hibaelhárítás: klasszikus'
 description: Ez az oldal utasításokat tartalmaz a ExpressRoute Circuit-klasszikus üzemi modell ARP-tábláinak beszerzéséhez.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 01/30/2017
-ms.author: charwen
-ms.openlocfilehash: f381c25edae566f2dc9f864beda47e65df5c21e1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.author: duau
+ms.openlocfilehash: 7c83b6d25936e184c70d4bf0a51636a3986bf4b2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985390"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394839"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>ARP-táblák lekérése a klasszikus üzemi modellben
 > [!div class="op_single_selector"]
@@ -176,7 +176,7 @@ Age InterfaceProperty IpAddress  MacAddress
 * Ha problémák merülnek fel a Microsoft oldalán, nem jelenik meg a társak számára megjelenített ARP-táblázat.
 * Nyisson meg egy támogatási kérést [Microsoft Azure Súgó + támogatással](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy van-e probléma a 2. rétegbeli kapcsolattal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A 3. rétegbeli konfigurációk ellenőrzése a ExpressRoute áramkörhöz:
   * A BGP-munkamenetek állapotának meghatározásához szerezze be az útvonal összegzését.
   * Adja meg azt az útválasztási táblázatot, amely meghatározza, hogy mely előtagokat hirdesse a rendszer a ExpressRoute között.

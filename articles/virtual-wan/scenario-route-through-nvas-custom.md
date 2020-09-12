@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987202"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400007"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Forgatókönyv: forgalom irányítása NVA – egyéni (előzetes verzió)
 
@@ -35,12 +35,12 @@ A következő kapcsolati mátrix összefoglalja az ebben a forgatókönyvben tá
 
 | Forrás          | Címzett:|*NVA küllők*|*Szolgáltatás VNet*|*DMZ VNet*|*Ág statikus*|
 |---|---|---|---|---|---|
-| **NVA küllők**| &#8594;|      X |            X |   Társhálózat-létesítés |    Statikus    |
+| **NVA küllők**| &#8594;|      X |            X |   Társviszony-létesítés |    Statikus    |
 | **Szolgáltatás VNet**| &#8594;|    X |            X |      X    |      X       |
 | **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
 | **Ágak** | &#8594;|  Statikus |            X |      X    |      X       |
 
-A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamat esetében. Lássuk részletesen a különböző sorokban:
+A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamat esetében. Az "X" azt jelenti, hogy a kapcsolat a virtuális WAN által natív módon van megadva, a "statikus" pedig azt jelenti, hogy a virtuális WAN a statikus útvonalak használatával biztosít kapcsolatot. Lássuk részletesen a különböző sorokban:
 
 * NVA küllők:
   * A küllők más küllőket érnek el közvetlenül a virtuális WAN-hubokon.
@@ -65,14 +65,14 @@ A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcs
 
 Ezekre a statikus útvonalakra azért van szükségünk, hogy a VNet és a VNet közötti forgalom a szolgáltatás VNet NVA (VNet 4) haladjon át:
 
-| Leírás | Útválasztási táblázat | Statikus útvonal              |
+| Description | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | Ágak    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
 | NVA küllők  | Alapértelmezett     | 10.1.0.0/16 – > vnet4conn  |
 
 A Virtual WAN már tudja, hogy melyik kapcsolattal küldi el a csomagokat, de a kapcsolatnak tudnia kell, mi a teendő a csomagok fogadásakor: ez az a hely, ahol a kapcsolati útválasztási táblák vannak használatban.
 
-| Leírás | Kapcsolat | Statikus útvonal            |
+| Description | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |
@@ -131,7 +131,7 @@ Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket 
 
 :::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="2. ábra" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

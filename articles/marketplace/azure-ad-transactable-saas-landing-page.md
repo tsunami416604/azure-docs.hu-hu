@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/02/2020
+ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921266"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378797"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját
 
@@ -38,15 +38,15 @@ A Kezdőlap általában az alábbiakat tartalmazza:
 A következő rész végigvezeti a Kezdőlap létrehozásának folyamatán:
 
 1. [Hozzon létre egy Azure ad-alkalmazás regisztrációját](#create-an-azure-ad-app-registration) a kezdőlapon.
-2. Az alkalmazás [kiindulási pontként használja a kód mintát](#use-a-code-sample-as-a-starting-point) .
-3. Oldja meg a piactér-beli [vásárlási azonosító tokent](#resolve-the-marketplace-purchase-identification-token) , amelyet a kereskedelmi piactér ad hozzá az URL-címhez.
-4. Olvassa el a kéréssel elküldött, az Azure AD-től kapott [ID-tokenben kódolt jogcímek adatait](#read-information-from-claims-encoded-in-the-id-token).
-5. [A Microsoft Graph API](#use-the-microsoft-graph-api) -val további információkat gyűjthet, igény szerint.
-6. [Két Azure ad-alkalmazással javíthatja a biztonságot az éles](#use-two-azure-ad-apps-to-improve-security-in-production)környezetben.
+1. Az alkalmazás [kiindulási pontként használja a kód mintát](#use-a-code-sample-as-a-starting-point) .
+1. [Két Azure ad-alkalmazással javíthatja a biztonságot az éles](#use-two-azure-ad-apps-to-improve-security-in-production)környezetben.
+1. Oldja meg a piactér-beli [vásárlási azonosító tokent](#resolve-the-marketplace-purchase-identification-token) , amelyet a kereskedelmi piactér ad hozzá az URL-címhez.
+1. Olvassa el a kéréssel elküldött, az Azure AD-től érkező, a bejelentkezés után kapott [azonosító jogkivonatban kódolt jogcímek információit](#read-information-from-claims-encoded-in-the-id-token).
+1. [A Microsoft Graph API](#use-the-microsoft-graph-api) -val további információkat gyűjthet, igény szerint.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD-alkalmazás regisztrálásának létrehozása
 
-A kereskedelmi piactér teljes mértékben integrálva van az Azure AD-vel. A vásárlók [Azure ad-fiókkal vagy Microsoft-fiók (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)hitelesítve érkeznek a piactéren. A vásárlást követően a vásárló a kereskedelmi piactérről a Kezdőlap URL-címére kerül, amely aktiválja és kezeli az SaaS-alkalmazás előfizetését. Engedélyeznie kell, hogy a vásárló bejelentkezzen az alkalmazásba az Azure AD SSO használatával. (A Kezdőlap URL-címe az ajánlat [technikai konfiguráció](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) lapján van megadva.
+A kereskedelmi piactér teljes mértékben integrálva van az Azure AD-vel. A vásárlók [Azure ad-fiókkal vagy Microsoft-fiók (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)hitelesítve érkeznek a piactéren. A vásárlást követően a vásárló a kereskedelmi piactérről a Kezdőlap URL-címére kerül, amely aktiválja és kezeli az SaaS-alkalmazás előfizetését. Engedélyeznie kell, hogy a vásárló bejelentkezzen az alkalmazásba az Azure AD SSO használatával. (A Kezdőlap URL-címe az ajánlat [technikai konfiguráció](plan-saas-offer.md#technical-information) lapján van megadva.
 
 Az identitás használatának első lépése annak biztosítása, hogy a Kezdőlap regisztrálva legyen Azure AD-alkalmazásként. Az alkalmazás regisztrálása lehetővé teszi, hogy az Azure AD használatával hitelesítse a felhasználókat, és hozzáférést Kérjen a felhasználói erőforrásokhoz. Ez az alkalmazás definíciójának tekinthető, amely lehetővé teszi, hogy a szolgáltatás tudja, hogyan kell jogkivonatokat kibocsátani az alkalmazásnak az alkalmazás beállításai alapján.
 
@@ -82,7 +82,7 @@ Ez lehetővé teszi, hogy a megoldás olyan helyzetekben működjön, amelyek fi
 Amikor a vevőt elküldjük a kezdőlapra, a rendszer egy tokent ad hozzá az URL-paraméterhez. Ez a jogkivonat különbözik az Azure AD-kiállított jogkivonat és a szolgáltatás-szolgáltatás hitelesítéséhez használt hozzáférési jogkivonattől, és bemenetként használja a [SaaS-teljesítési API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) -k számára, hogy lekérje az előfizetés részleteit. Ahogy a SaaS-teljesítési API-k összes hívása esetében, a szolgáltatás-szolgáltatásra irányuló kérelmet a szolgáltatás és a szolgáltatás közötti hitelesítéshez használt Azure AD-alkalmazás-azonosító felhasználótól származó hozzáférési jogkivonattal hitelesíti a rendszer.
 
 > [!NOTE]
-> A legtöbb esetben célszerű ezt a hívást egy második, egybérlős alkalmazásból elkészíteni. Tekintse meg a jelen cikk későbbi, a [két Azure ad-alkalmazás használata a biztonság javítása](#use-two-azure-ad-apps-to-improve-security-in-production) érdekében című témakört.
+> A legtöbb esetben célszerű ezt a hívást egy második, egybérlős alkalmazásból elkészíteni. Lásd: [két Azure ad-alkalmazás használata a](#use-two-azure-ad-apps-to-improve-security-in-production) jelen cikk korábbi részében a biztonság javítása érdekében.
 
 ### <a name="request-an-access-token"></a>Hozzáférési jogkivonat igénylése
 
@@ -129,6 +129,6 @@ Az Azure AD-ben regisztrált alkalmazások többsége delegált engedélyekkel r
 > [!NOTE]
 > Az MSA-bérlőről (a bérlői AZONOSÍTÓval) származó fiókok ``9188040d-6c67-4c5b-b112-36a304b66dad`` nem adnak vissza több információt, mint amelyet már gyűjtöttek az azonosító jogkivonattal. Így kihagyhatja ezt a hívást a fiókok Graph API.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [SaaS-ajánlat létrehozása a kereskedelmi piactéren](./partner-center-portal/create-new-saas-offer.md)
+- [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)

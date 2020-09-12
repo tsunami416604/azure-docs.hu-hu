@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: útválasztó-konfigurációs minták'
 description: Ezen interfész-és útválasztási konfigurációs mintákat használhatja a Cisco IOS-XE és Juniper MX sorozatú útválasztók számára, mint példákat az Azure ExpressRoute való együttműködésre.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
-ms.author: osamaz
-ms.openlocfilehash: fdf50dc6b4c0976a713a1d436ac9af7c1bd9701b
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 3bc850f02884ae0547c2ecf56a46a57a4e66a752
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190783"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397406"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Útválasztó-konfigurációs minták az Útválasztás beállításához és kezeléséhez
 Ez az oldal a Cisco IOS-XE és Juniper MX sorozatú útválasztók felületi és útválasztási konfigurációs mintáit tartalmazza az Azure ExpressRoute használatakor.

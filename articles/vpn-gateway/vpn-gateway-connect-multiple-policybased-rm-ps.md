@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081984"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418878"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni, a PowerShell-t használó helyi házirend-alapú VPN-eszközhöz
 
@@ -40,7 +40,7 @@ Jelenleg az Azure a VPN-átjárók mindkét üzemmódját támogatja: Route-alap
 | -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure Gateway SKU**    | Alapszintű                       | Alapszintű                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE-verzió**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                         |
-| **Max. S2S-kapcsolatok** | **1**                       | 10                               | 30                     |
+| **S2S-kapcsolatok maximális száma** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
 
 Az Egyéni IPsec/IKE-szabályzattal mostantól konfigurálhatja az Azure Route-alapú VPN-átjárókat, hogy a "**PolicyBasedTrafficSelectors**" beállítással rendelkező előtag-alapú forgalmi választókat használják a helyi házirend-alapú VPN-eszközökhöz való csatlakozáshoz. Ez a funkció lehetővé teszi, hogy az Azure-beli virtuális hálózatról és a VPN-átjáróról több helyszíni házirend-alapú VPN-vagy tűzfal-eszközhöz kapcsolódjon, így a jelenlegi Azure Policy-alapú VPN-átjárók egyetlen csatlakozási korlátját távolítja el.
@@ -204,7 +204,7 @@ A következő sor azt mutatja be, hogy a házirend alapú forgalom-választókat
       Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
       ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/windows/quick-create-portal.md).
 
 Tekintse át az [IPSec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet-VNet kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md) című témakört az egyéni IPSec/IKE-házirendekkel kapcsolatos további részletekért.

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476118"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401673"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Szerepkörhöz rendelt csoport létrehozása Azure Active Directory
 
-Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állított, vagy az Azure ad-portálon az **Azure ad-szerepkörökkel** rendelkező csoportokhoz rendelhető szerepkört lehet hozzárendelni. Ez a Group attribútum teszi azt a csoportot, amely egy Azure Active Directory (Azure AD) szerepkörhöz rendelhető hozzá. Ez a cikk bemutatja, hogyan hozhatja létre ezt a speciális típusú csoportot.
+Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állított, vagy az Azure ad-portálon az **Azure ad-szerepkörökkel** rendelkező csoportokhoz rendelhető szerepkört lehet hozzárendelni. Ez a Group attribútum teszi azt a csoportot, amely egy Azure Active Directory (Azure AD) szerepkörhöz rendelhető hozzá. Ez a cikk bemutatja, hogyan hozhatja létre ezt a speciális típusú csoportot. **Megjegyzés:** Az isAssignableToRole tulajdonságot True értékre beállított csoport nem lehet dinamikus tagsági típus. További információ: [csoport használata az Azure ad szerepkör-hozzárendelések kezeléséhez](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
 
 ## <a name="using-azure-ad-admin-center"></a>Az Azure AD felügyeleti központ használata
 
@@ -124,8 +124,8 @@ POST https://graph.microsoft.com/beta/groups
 
 Az ilyen típusú csoportok esetében `isPublic` mindig hamis lesz, és `isSecurityEnabled` mindig igaz lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkör társítása egy felhőalapú csoporthoz](roles-groups-assign-role.md)
 - [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](roles-groups-concept.md)
-- [Felhőalapú csoportokhoz rendelt szerepkörök hibaelhárítása](roles-groups-faq-troubleshooting.md)
+- [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](roles-groups-faq-troubleshooting.md)

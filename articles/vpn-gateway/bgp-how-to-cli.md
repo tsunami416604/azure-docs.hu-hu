@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/25/2018
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: f3a6dd70bf57cabe8014c49e2cd3ee38c8de72b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064776"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393598"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>A BGP konfigurálása Azure-beli VPN-átjárón a parancssori felület használatával
 
@@ -301,6 +301,6 @@ az network vpn-connection create -n VNet2ToVNet1 -g TestBGPRG2 --vnet-gateway1 /
 
 A lépések elvégzése után a rendszer néhány percen belül megkezdi a kapcsolatok létrehozását. A BGP-társas munkamenet a VNet-VNet kapcsolat befejezése után fog létrejönni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódás befejezése után virtuális gépeket adhat hozzá a virtuális hálózatokhoz. A lépéseket lásd: [virtuális gép létrehozása](../virtual-machines/windows/quick-create-portal.md).

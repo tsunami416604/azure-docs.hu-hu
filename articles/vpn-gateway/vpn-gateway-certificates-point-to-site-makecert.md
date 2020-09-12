@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/05/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7903dc7f614d16380626f27579363b1529665cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926de9f3fd357cd9d9ca067e4f7beff7d03eec95
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988124"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394186"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Tanúsítványok létrehozása és exportálása pont – hely kapcsolatokhoz a MakeCert használatával
 
@@ -77,7 +77,7 @@ Az alábbi lépések végigvezetik az ügyféltanúsítvány önaláírt főtan�
 
 Az ügyféltanúsítvány telepítéséhez tekintse meg az [ügyféltanúsítvány telepítése](point-to-site-how-to-vpn-client-install-azure-cert.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a pont – hely konfigurációval. 
 

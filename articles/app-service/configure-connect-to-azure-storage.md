@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962859"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435609"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Az Azure Storage hálózati megosztásként való elérése App Service-tárolóból
 
@@ -57,7 +57,7 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linu
 - Az Azure Storage App Service jelenleg **nem támogatott** a saját programkód-forgatókönyvek (nem tároló Windows-alkalmazások) használata esetén.
 - Az App Service Azure Storage szolgáltatás **nem támogatja** a **tárolási tűzfal** konfigurálását az infrastruktúra korlátai miatt.
 - Az Azure Storage App Service lehetővé teszi, **hogy egy alkalmazás legfeljebb öt** csatlakoztatási pontot határozzon meg.
-- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
+- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
 
 ::: zone-end
 
@@ -67,7 +67,7 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linu
 - Az Azure Storage App Service támogatja a **Azure Files tárolók** (írási/olvasási) és az **Azure Blob-tárolók** csatlakoztatását (csak olvasható)
 - Az App Service Azure Storage szolgáltatás **nem támogatja** a **tárolási tűzfal** konfigurálását az infrastruktúra korlátai miatt.
 - App Service Azure Storage-ban **legfeljebb öt** csatlakozási pontot adhat meg.
-- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
+- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
 
 ::: zone-end
 

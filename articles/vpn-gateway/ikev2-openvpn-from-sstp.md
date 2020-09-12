@@ -2,17 +2,17 @@
 title: Áttérés az OpenVPN-re vagy a IKEv2-re az SSTP-ből | Azure-VPN Gateway
 description: Ez a cikk segít megismerni az SSTP 128 egyidejű kapcsolódási korlátjának leküzdésének módjait.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064670"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426282"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2
 
@@ -160,7 +160,7 @@ Egy P2S-konfigurációhoz elég néhány konkrét lépés szükséges. A követk
 
 * [Az OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986557"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419911"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése P2S RADIUS-hitelesítéshez
 
@@ -45,7 +45,7 @@ A Felhasználónév/jelszó hitelesítést a Active Directory használatára vag
 
 A Felhasználónév/jelszó hitelesítés konfigurálásakor csak az EAP-MSCHAPv2 username/Password hitelesítési protokoll konfigurációját lehet létrehozni. A parancsokban a `-AuthenticationMethod` `EapMSChapv2` .
 
-### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a>1. VPN-ügyfél konfigurációs fájljainak előállítása
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. VPN-ügyfél konfigurációs fájljainak előállítása
 
 A VPN-ügyfél konfigurációs fájljait a Azure Portal használatával vagy Azure PowerShell használatával hozhatja meg.
 
@@ -80,7 +80,7 @@ A korábban létrehozott ügyfél-konfigurációs fájlok lekéréséhez haszná
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. VPN-ügyfelek konfigurálása
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. VPN-ügyfelek konfigurálása
 
 A következő VPN-ügyfeleket állíthatja be:
 
@@ -184,11 +184,11 @@ Az EAP-TLS protokollt használó RADIUS-tanúsítvány hitelesítéséhez VPN-ü
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-A parancsokban a `-AuthenticationMethod` `EapTls` . A tanúsítvány hitelesítése során az ügyfél érvényesíti a RADIUS-kiszolgálót a tanúsítványának ellenőrzésével. `-RadiusRootCert`a a RADIUS-kiszolgáló ellenőrzéséhez használt főtanúsítványt tartalmazó. cer fájl.
+A parancsokban a `-AuthenticationMethod` `EapTls` . A tanúsítvány hitelesítése során az ügyfél érvényesíti a RADIUS-kiszolgálót a tanúsítványának ellenőrzésével. `-RadiusRootCert` a a RADIUS-kiszolgáló ellenőrzéséhez használt főtanúsítványt tartalmazó. cer fájl.
 
 Minden VPN-ügyfél eszközön telepítve kell lennie egy telepített ügyféltanúsítványt. Előfordulhat, hogy egy Windows-eszköz több ügyféltanúsítványt is tartalmaz. A hitelesítés során ez egy előugró párbeszédpanelt is eredményezhet, amely felsorolja az összes tanúsítványt. A felhasználónak ezután ki kell választania a használni kívánt tanúsítványt. A megfelelő tanúsítvány kiszűrhető úgy, hogy megadja azt a főtanúsítványt, amelyhez az ügyféltanúsítványnek láncot kell használnia. 
 
-`-ClientRootCert`a főtanúsítványt tartalmazó. cer fájl. Ez egy opcionális paraméter. Ha a-ból csatlakozni kívánó eszköz csak egy ügyféltanúsítványt tartalmaz, nem kell megadnia ezt a paramétert.
+`-ClientRootCert` a főtanúsítványt tartalmazó. cer fájl. Ez egy opcionális paraméter. Ha a-ból csatlakozni kívánó eszköz csak egy ügyféltanúsítványt tartalmaz, nem kell megadnia ezt a paramétert.
 
 ### <a name="1-generate-vpn-client-configuration-files"></a><a name="certfiles"></a>1. VPN-ügyfél konfigurációs fájljainak előállítása
 
@@ -211,7 +211,7 @@ A korábban létrehozott ügyfél-konfigurációs fájlok lekéréséhez haszná
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. VPN-ügyfelek konfigurálása
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. VPN-ügyfelek konfigurálása
 
 A következő VPN-ügyfeleket állíthatja be:
 
@@ -279,7 +279,7 @@ Ha más hitelesítési típust (például OTP) szeretne használni, vagy más hi
    
    A **GenericDevice** mappában található egy **VpnServerRoot**nevű. cer fájl is. Ez a fájl tartalmazza az Azure VPN Gateway P2S-kapcsolat beállítása során történő ellenőrzéséhez szükséges főtanúsítványt. Telepítse a tanúsítványt minden olyan eszközre, amely csatlakozni fog az Azure-beli virtuális hálózathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [P2S-konfiguráció befejezéséhez](point-to-site-how-to-radius-ps.md)térjen vissza a cikkhez.
 

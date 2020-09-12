@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271722"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393819"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
 
@@ -98,7 +98,7 @@ A közzétevő a díjszabási táblázatot is feltöltheti egy ideiglenes tárol
 
 ## <a name="new-core-sizes-added-on-722019"></a>Új alapvető méretek hozzáadva a 7/2/2019
 
-Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk.  A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
+Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk. A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
 
 ## <a name="regions"></a>Régiók
 
@@ -121,7 +121,7 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | CR         | Costa Rica           | CRC               |
 | HR         | Horvátország              | HRK               |
 | CY         | Ciprus               | EUR               |
-| CZ         | Cseh Köztársaság       | CZK               |
+| CZ         | Csehország       | CZK               |
 | DK         | Dánia              | DKK               |
 | DO         | Dominikai Köztársaság   | USD               |
 | EC         | Ecuador              | USD               |
@@ -137,7 +137,7 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | HU         | Magyarország              | Ft               |
 | IS         | Izland              | ISK               |
 | IN         | India                | INR               |
-| ID         | Indonézia            | IDR               |
+| ID (Azonosító)         | Indonézia            | IDR               |
 | IE         | Írország              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Olaszország                | EUR               |
@@ -151,7 +151,6 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litvánia            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Észak-Macedónia      | MKD               |
 | MY         | Malajzia             | MYR               |
 | MT         | Málta                | EUR               |
 | MX         | Mexikó               | MXN               |
@@ -160,6 +159,7 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | NL         | Hollandia          | EUR               |
 | NZ         | Új-Zéland          | NZD               |
 | NG         | Nigéria              | NGN               |
+| MK         | Észak-Macedónia      | MKD               |
 | NO         | Norvégia               | NOK               |
 | OM         | Omán                 | OMR               |
 | PK         | Pakisztán             | PKR               |

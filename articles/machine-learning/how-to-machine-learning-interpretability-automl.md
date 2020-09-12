@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306417"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419112"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Értelmező: a modell magyarázatai az automatikus gépi tanulásban (előzetes verzió)
 
@@ -39,6 +39,14 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="interpretability-during-training-for-the-best-model"></a>A legjobb modell képzésének értelmezése
 
 Kérje le a magyarázatot a alkalmazásból `best_run` , amely a megtervezett funkciók magyarázatait is tartalmazza.
+
+> [!Warning]
+> A tolmácsolás, a legjobb modell magyarázata nem érhető el az automatikus ML-előrejelzési kísérletekhez, amelyek a következő algoritmusokat ajánlják a legjobb modellként: 
+> * ForecastTCN
+> * Átlag 
+> * Naiv
+> * Szezonális átlag 
+> * Szezonális naiv
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Az összetevő-tárolóban megjelenő Kiemelt funkciók fontosságának letöltése
 
@@ -112,7 +120,7 @@ engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=au
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Értelmezhető a következtetés során
+## <a name="interpretability-during-inference"></a>Értelmezhető a következtetés során
 
 Ebből a szakaszból megtudhatja, hogyan működővé tenni egy olyan automatizált ML-modellt, amely az előző szakaszban ismertetett magyarázatok kiszámításához használatos.
 
@@ -213,6 +221,6 @@ A funkció fontossága diagramot a munkaterületen, [Azure Machine learning Stud
 
 [![Machine Learning-értelmező architektúra](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan engedélyezheti a modell magyarázatait és funkcióit a Azure Machine Learning SDK azon területein, amelyek [nem az automatizált](how-to-machine-learning-interpretability.md)gépi tanulást ismertetik.

@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: kapcsolat ellenőrzése – hibaelhárítási útmutató'
 description: Ez az oldal útmutatást nyújt a ExpressRoute-áramkör végpontok közötti kapcsolatának hibaelhárításához és ellenőrzéséhez.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 10/31/2019
-ms.author: rambala
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204214"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401741"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt az ExpressRoute-kapcsolatok ellenőrzéséhez és hibakereséséhez. A ExpressRoute kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amelyet általában egy kapcsolat szolgáltatója is megkönnyít. A ExpressRoute-kapcsolat hagyományosan három különálló hálózati zónát foglal magában, az alábbiak szerint:

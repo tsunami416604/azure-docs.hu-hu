@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167298"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89379001"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault alapvető fogalmak
 
-Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és hozzáférésére használható eszköz. Titkos kulcsnak számít minden olyan adat, amelynek a hozzáféréstét szigorúan korlátozni kívánja, például: API-kulcsok, jelszavak vagy tanúsítványok. A tár a titkok logikai csoportja.
+Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és elérésére használható eszköz. Titkos kulcsnak számít minden olyan adat, amelynek a hozzáférését szigorúan korlátozni kívánja, például az API-kulcsok, jelszavak vagy tanúsítványok. A tár a titkok logikai csoportja.
 
 További fontos feltételek:
 
@@ -33,7 +33,7 @@ További fontos feltételek:
 
 - **Erőforráscsoport**: Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A cég számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
 
-- **Egyszerű szolgáltatásnév**: az Azure egyszerű szolgáltatás olyan biztonsági identitás, amelyet a felhasználó által létrehozott alkalmazások, szolgáltatások és automatizálási eszközök használnak az Azure-erőforrások eléréséhez. Egy adott szerepkörrel rendelkező "felhasználói identitásnak" (Felhasználónév és jelszó vagy tanúsítvány) kell lennie, és szigorúan szabályozott engedélyekkel kell rendelkezniük. Az általános identitásoktól eltérően a szolgáltatásnév csak konkrét feladatok végrehajtására szolgál. Ez növeli a biztonságot, ha csak a felügyeleti feladatainak végrehajtásához szükséges minimális jogosultsági szintet adja meg.
+- **Rendszerbiztonsági tag**: az Azure rendszerbiztonsági tagja olyan biztonsági identitás, amelyet a felhasználó által létrehozott alkalmazások, szolgáltatások és automatizálási eszközök használnak az adott Azure-erőforrások eléréséhez. Egy adott szerepkörrel rendelkező "felhasználói identitásnak" (Felhasználónév és jelszó vagy tanúsítvány) kell lennie, és szigorúan szabályozott engedélyekkel kell rendelkezniük. Egy rendszerbiztonsági tag esetében csak bizonyos dolgokra van szükség, az általános felhasználói identitástól eltérően. Ez növeli a biztonságot, ha csak a felügyeleti feladatainak végrehajtásához szükséges minimális jogosultsági szintet adja meg. Az alkalmazással vagy szolgáltatással használt rendszerbiztonsági tag neve kifejezetten **egyszerű szolgáltatásnév**.
 
 - [Azure Active Directory (Azure AD)](../../active-directory/active-directory-whatis.md): Az Azure AD egy bérlő Active Directory-szolgáltatása. Minden címtárhoz tartozik egy vagy több tartomány. Egy címtárhoz számos előfizetés tartozhat, de csak egyetlen bérlő.
 
@@ -75,7 +75,7 @@ Ez a rendszergazda ezután lehetővé teszi a fejlesztők URI-k számára, hogy 
 
 A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért tekintse meg a [Key Vault fejlesztői útmutatóját](developers-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [védheti meg a](secure-your-key-vault.md)tárolót.
 

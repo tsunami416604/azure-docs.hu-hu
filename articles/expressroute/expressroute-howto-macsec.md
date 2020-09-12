@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: a MACsec konfigurálása'
 description: Ez a cikk segítséget nyújt a MACsec konfigurálásában a peremhálózati útválasztók és a Microsoft peremhálózati útválasztói közötti kapcsolatok biztonságossá tételéhez.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: cherylmc
-ms.openlocfilehash: ce2e4ca2cad0fc080d6a750b3f1682210a5b9b20
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.author: duau
+ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387659"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395774"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec konfigurálása a ExpressRoute Direct portokon
 

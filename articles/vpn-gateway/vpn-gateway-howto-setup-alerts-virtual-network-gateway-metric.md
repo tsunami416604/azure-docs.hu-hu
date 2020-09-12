@@ -2,24 +2,24 @@
 title: Riasztások beállítása az Azure VPN Gateway-metrikák
 description: Megtudhatja, hogyan állíthatja be Azure Monitor riasztásokat a virtuális hálózati VPN-átjárók metrikái alapján a Azure Portal használatával.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/22/2019
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 05fbc5675d6ee3b6720d9db9e07e7010cf1d9172
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033495"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435657"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Riasztások beállítása VPN Gateway mérőszámokon
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat az Azure VPN Gateway-metrikák használatával. A Azure Monitor lehetővé teszi a riasztások beállítását az Azure-erőforrásokhoz. Beállíthat riasztásokat a "VPN" típusú virtuális hálózati átjárók számára.
 
 
-|**Metrika**   | **Egység** | **Részletesség** | **Leírás** | 
+|**Metrika**   | **Unit (Egység)** | **Részletesség** | **Leírás** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bájt/s  | 5 perc| Az átjárón a helyek közötti kapcsolatok átlagos összesített sávszélesség-kihasználtsága.     |
 |**P2SBandwidth**| Bájt/s  | 1 perc  | Az átjárón az összes pont – hely kapcsolat átlagos összesített sávszélesség-kihasználtsága.    |
@@ -69,6 +69,6 @@ Az alábbi példa a következő lépésekkel hoz létre egy riasztást egy átj�
 
    ![Riasztási szabályok kezelésére szolgáló gomb](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Válassza ezt:")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A riasztások bújtatási erőforrás-naplókban való konfigurálásáról további információt [a riasztások beállítása VPN Gateway erőforrás-naplókon](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)című témakörben talál.

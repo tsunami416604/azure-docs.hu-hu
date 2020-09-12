@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f1e95c1244d327478862c3919481394d974ea42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270174"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419265"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)
 
@@ -43,7 +43,7 @@ További információ a Azure Key Vault felügyeleti irányelvekről:
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Azure beépített szerepkörök Key Vault adatsík-műveletekhez (előzetes verzió)
 
-| Beépített szerepkör | Leírás | ID |
+| Beépített szerepkör | Description | ID (Azonosító) |
 | --- | --- | --- |
 | Key Vault rendszergazda (előzetes verzió) | Minden adatsík művelet végrehajtása a kulcstartón és az abban található összes objektumon, beleértve a tanúsítványokat, a kulcsokat és a titkos kulcsokat is. A Key Vault-erőforrások nem kezelhetők, illetve nem kezelhetők a szerepkör-hozzárendelések. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault Certificates Officer (előzetes verzió) | Hajtson végre bármilyen műveletet a Key Vault tanúsítványán, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | a4417e6f-fecd-4de8-b567-7b0420556985 |
@@ -61,6 +61,10 @@ Az Azure beépített szerepkör-definíciókkal kapcsolatos további informáci�
 A Key Vault új Azure RBAC-engedélyezési modellje alternatívát biztosít a tároló hozzáférési házirendjének engedélyeihez. 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Azure RBAC engedélyek engedélyezése Key Vault
+
+Az előzetes verzióban az új engedélyezési modell beállításainak megtekintéséhez az Azure RBAC Feature címkét (Microsoft_Azure_KeyVault_RBACEnabled = true) kell használnia.
+
+https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > Az Azure RBAC engedélyezési modell beállítása érvényteleníti az összes hozzáférési szabályzat engedélyét. Kiesést okozhat, ha az egyenértékű Azure-szerepköröket nem rendeli hozzá.
@@ -206,15 +210,13 @@ Az egyéni szerepkörök létrehozásáról további információt a következő
 
 [Egyéni Azure-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-Az elérhető műveletek ellenőrzési függelék: **elérhető műveletek**
-
 ## <a name="known-limits-and-performance"></a>Ismert korlátok és teljesítmény
 
 -   2000 Azure szerepkör-hozzárendelések/előfizetés
 
 -   Szerepkör-hozzárendelések késése: az aktuálisan várt teljesítménynél akár 10 600 percet is igénybe vehet, miután a szerepkör-hozzárendelések módosultak az alkalmazáshoz.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 - [Az Azure RBAC áttekintése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Egyéni szerepkörök oktatóanyaga](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

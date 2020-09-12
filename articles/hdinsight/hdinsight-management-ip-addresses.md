@@ -7,20 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82778260"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401639"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight kezelése – IP-címek
 
+Ez a cikk az Azure HDInsight Health and Management Services által használt IP-címeket sorolja fel. Ha hálózati biztonsági csoportokat (NSG) vagy felhasználó által megadott útvonalakat (UDR) használ, előfordulhat, hogy hozzá kell adnia néhány ilyen IP-címet a bejövő hálózati forgalom engedélyezési listájához.
+
+## <a name="introduction"></a>Bevezetés
+ 
 > [!Important]
-> A legtöbb esetben mostantól használhatja a hálózati biztonsági csoportokhoz tartozó [Service tag](hdinsight-service-tags.md) funkciót az IP-címek manuális hozzáadása helyett. Az új régiók csak a szolgáltatási címkékhez lesznek hozzáadva, és a statikus IP-címek végül elavultak lesznek.
+> A legtöbb esetben mostantól használhatja a hálózati biztonsági csoportokhoz tartozó [szolgáltatási címkéket](hdinsight-service-tags.md) az IP-címek manuális hozzáadása helyett. Az IP-címek nem lesznek közzétéve az új Azure-régiókban, és csak a közzétett szolgáltatás címkéi lesznek. A felügyeleti IP-címek statikus IP-címei végül elavultak lesznek.
 
 Ha hálózati biztonsági csoportokat (NSG) vagy felhasználó által megadott útvonalakat (UDR) használ a HDInsight-fürt bejövő forgalmának vezérlésére, akkor biztosítania kell, hogy a fürt képes legyen kommunikálni a kritikus Azure állapot-és felügyeleti szolgáltatásokkal.  Ezen szolgáltatások egyes IP-címei régió-specifikusak, és némelyikük az összes Azure-régióra vonatkozik. Ha nem egyéni DNS-t használ, akkor engedélyeznie kell az Azure DNS szolgáltatástól érkező forgalmat is.
+
+Ha az itt nem szereplő régió IP-címeire van szüksége, a [Service tag felderítési API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) használatával megkeresheti a RÉGIÓJA IP-címeit. Ha nem tudja használni az API-t, töltse le a [Service tag JSON-fájlját](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) , és keresse meg a kívánt régiót.
 
 A következő fejezetek a megadott IP-címeket tárgyalják, amelyeket engedélyezni kell.
 
@@ -46,7 +52,7 @@ Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP
 > [!IMPORTANT]  
 > Ha az Ön által használt Azure-régió nem szerepel a listáján, akkor használja a hálózati biztonsági csoportok [szolgáltatási címke](hdinsight-service-tags.md) szolgáltatását.
 
-| Ország | Régió | Engedélyezett forrás IP-címek | Engedélyezett célhely | Irány |
+| Country | Régió | Engedélyezett forrás IP-címek | Engedélyezett célhely | Irány |
 | ---- | ---- | ---- | ---- | ----- |
 | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | \*: 443 | Bejövő |
 | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | \*: 443 | Bejövő |
@@ -77,7 +83,7 @@ Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP
 | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | \*: 443 | Bejövő |
 | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | \*: 443 | Bejövő |
 | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | \*: 443 | Bejövő |
-| &nbsp; | USA nyugati régiója, 2. | 52.175.211.210</br>52.175.222.222 | \*: 443 | Bejövő |
+| &nbsp; | USA 2. nyugati régiója | 52.175.211.210</br>52.175.222.222 | \*: 443 | Bejövő |
 | &nbsp; | Észak-Egyesült Arab | 65.52.252.96</br>65.52.252.97 | \*: 443 | Bejövő |
 
 További információ a Azure Government használt IP-címekről: [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) -dokumentum.
@@ -86,7 +92,7 @@ További információ: a [hálózati forgalom szabályozása](./control-network-
 
 Ha felhasználó által megadott útvonalakat (UDR) használ, meg kell adnia egy útvonalat, és engedélyeznie kell a kimenő forgalmat a virtuális hálózatról a fenti IP-címekre a következő ugrás "Internet" értékre állításával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)
 * [Hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight](hdinsight-service-tags.md)

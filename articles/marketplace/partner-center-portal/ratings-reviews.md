@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff46c5e2d434a75bf71d6216ce81b34de878ba80
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304190"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419180"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Értékelések & a partner Center Analytics-irányítópultjának értékelésével
 
@@ -33,7 +33,7 @@ Az irányítópult a következő felhasználói tevékenység grafikus megjelen�
 - Értékelések & értékelések  
 - Megjegyzések áttekintése
 
-Az ajánlat Microsoft AppSource és az Azure Marketplace-metrikák külön-külön való megtekintéséhez használja a **piactér kirakat** lapjait. Adott ajánlati metrikák megtekintéséhez válassza ki az ajánlatot az ajánlat legördülő listából.
+A **Piactéri** információk lapon megtekintheti az ajánlat Microsoft AppSource és az Azure Marketplace-metrikákat. Adott ajánlati metrikák megtekintéséhez válassza ki az ajánlatot az ajánlat legördülő listából.
 
 ### <a name="ratings--reviews-summary"></a>Értékelések & értékelések összegzése
 
@@ -52,7 +52,7 @@ A felülvizsgálatok időrendi sorrendben jelennek meg a közzétételkor. Az al
 
 ![A partner Center elemzi a felülvizsgálati megjegyzéseket](./media/analyze-reviews.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

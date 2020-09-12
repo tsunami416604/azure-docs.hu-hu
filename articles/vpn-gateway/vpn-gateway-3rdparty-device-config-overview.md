@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/20/2017
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988072"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400160"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>A partneri VPN-eszközök konfigurációinak áttekintése
 Ez a cikk áttekintést nyújt a helyszíni VPN-eszközök konfigurálásáról az Azure VPN Gateway-hez való csatlakozáshoz. A minta Azure-beli virtuális hálózat és a VPN-átjáró beállításával megtudhatja, hogyan csatlakozhat a különböző helyszíni VPN-eszközök konfigurációhoz ugyanazzal a paraméterekkel.
@@ -43,7 +43,7 @@ Ez a szakasz az előző szakaszokban leírt példák paramétereit sorolja fel.
 | * Helyszíni BGP ASN-es         | 65050                        |
 | * Helyszíni BGP-társ IP-címe     | 10.52.255.254                |
 
-\*Nem kötelező paraméter a BGP-hez.
+\* Nem kötelező paraméter a BGP-hez.
 
 ### <a name="sample-powershell-script"></a>PowerShell-parancsfájl mintája
 Ez a szakasz egy minta parancsfájlt tartalmaz a kezdéshez. Részletes útmutatásért lásd: [S2S VPN-kapcsolat létrehozása a PowerShell használatával](vpn-gateway-create-site-to-site-rm-powershell.md).
@@ -148,6 +148,6 @@ A S2S VPN-kapcsolat létrehozásakor igény szerint [a BGP-t is használhatja a 
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az aktív-aktív VPN-átjárók beállításával kapcsolatos részletes utasításokért lásd: [aktív-aktív VPN-átjárók konfigurálása a létesítmények közötti és VNet-VNet kapcsolatokhoz](vpn-gateway-activeactive-rm-powershell.md).
 
