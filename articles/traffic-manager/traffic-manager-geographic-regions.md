@@ -3,7 +3,7 @@ title: Földrajzi útválasztás által használt ország/régió-hierarchia –
 description: Ez a cikk felsorolja az Azure Traffic Manager földrajzi útválasztási típus által használt ország/régió hierarchiát
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: rohink
-ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 83300a5c518a3acf853968164031a80e1c882187
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938649"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401237"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Az Azure Traffic Manager által a földrajzi forgalom útválasztási módszeréhez használt ország/régió-hierarchia
 
-Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földrajzi** forgalom útválasztási módszere használ az Azure Traffic Managerban. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)meghívásával. 
+Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földrajzi**  forgalom útválasztási módszere használ az Azure Traffic Managerban. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)meghívásával. 
 
 - VILÁG (világ)
 
@@ -688,6 +688,6 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - WS (Szamoa)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [földrajzi forgalom útválasztási módszeréről az Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).

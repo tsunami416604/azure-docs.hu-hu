@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230279"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400466"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
 
@@ -411,7 +411,7 @@ Felhőalapú Azure Multi-Factor Authentication üzembe helyezés tervezése: htt
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
-**Útmutató**: a naplók és a riasztások generálásához Azure Active Directory (hre) PRIVILEGED Identity Management (PIM) használata, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. A HRE kockázati észlelések használatával megtekintheti a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket. További naplózáshoz küldje el Azure Security Center kockázatkezelési riasztásokat a Azure Monitorba, és konfigurálja az egyéni riasztásokat/értesítéseket a műveleti csoportok használatával.
+**Útmutatás**: Azure Active Directory (Azure AD) PRIVILEGED Identity Management (PIM) használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg. További naplózáshoz küldje el Azure Security Center kockázatkezelési riasztásokat a Azure Monitorba, és konfigurálja az egyéni riasztásokat/értesítéseket a műveleti csoportok használatával.
 
 A komplex veszélyforrások elleni védelem (ATP) engedélyezése a Azure Key Vault számára a gyanús tevékenységekre vonatkozó riasztások létrehozásához.
 
@@ -445,7 +445,7 @@ Mi a hely feltétele Azure Active Directory feltételes hozzáférésben?: https
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (HRE) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Key Vault számára. Ez lehetővé teszi a szerepköralapú hozzáférés-vezérlés (RBAC) számára a bizalmas erőforrások felügyeletét.
+**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Key Vault számára. Ez lehetővé teszi a szerepköralapú hozzáférés-vezérlés (RBAC) számára a bizalmas erőforrások felügyeletét.
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: a Azure Active Directory-(HRE-) naplók áttekintése, amelyek segítenek az elavult fiókok Azure Key Vault rendszergazdai szerepkörökkel való felderítésében. Emellett a HRE-hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagság-hozzáférést a Azure Key Vault és a szerepkör-hozzárendelések eléréséhez használható vállalati alkalmazásokhoz is. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
+**Útmutató**: Tekintse át Azure Active Directory (Azure ad) naplókat, amelyek segítenek az elavult fiókok Azure Key Vault rendszergazdai szerepkörökkel való felderítésében. Emellett az Azure AD hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, hozzáférhet a Azure Key Vaulthoz és a szerepkör-hozzárendelésekhez használható vállalati alkalmazásokhoz. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
 Azure Active Directory jelentések és figyelési dokumentáció:
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 Key Vault létrehozása:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása: 
+A Key Vault hitelesítése:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault hozzáférési szabályzatok kiosztása:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center figyelés**: igen
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-Integráció az Azure felügyelt identitásokkal: 
+* [Integráció az Azure felügyelt identitásokkal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [Key Vault létrehozása](quick-create-portal.md)
 
-Key Vault létrehozása: 
+* [Hitelesítés Key Vault](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:  
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [Key Vault hozzáférési szabályzatok kiosztása](assign-access-policy-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

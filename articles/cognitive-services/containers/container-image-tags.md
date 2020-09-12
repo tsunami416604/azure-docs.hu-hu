@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 2a57c5244630c2328320d7d99eed98c892d49897
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230755"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321769"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services tároló képcímkék
 
@@ -29,17 +29,17 @@ Az [anomália-detektor][ad-containers] tárolójának képe a `mcr.microsoft.com
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 
-## <a name="computer-vision"></a>Számítógépes látástechnológia
+## <a name="computer-vision"></a>Computer Vision
 
 A [Computer Vision][cv-containers] az OCR-tároló rendszerképe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-read` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest ( (2.0.013250001-amd64-preview)` | • A memória használatának további csökkentése a tárolóban. |
 |                                          | • A többrétegű telepítéshez külső gyorsítótár szükséges. Például állítsa be a Redis a gyorsítótárazáshoz. |
@@ -62,13 +62,13 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
 
-## <a name="face"></a>Arcfelismerés
+## <a name="face"></a>Face
 
 Az [arc][fa-containers] -tároló képe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-face` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-face` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -86,7 +86,7 @@ Az [űrlap-felismerő][fr-containers] tároló rendszerképe megtalálható a `c
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -99,7 +99,7 @@ A [Luis][lu-containers] -tároló képe a `mcr.microsoft.com` Container Registry
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -117,7 +117,7 @@ A tároló beállításjegyzékében a [Custom Speech – Text][sp-cstt] tárol�
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék            | Megjegyzések |
+| Képcímkék            | Jegyzetek |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.3.1-amd64-preview` |       | 
@@ -134,7 +134,7 @@ Az [egyéni szöveg-beszéd][sp-ctts] tároló képe a `containerpreview.azurecr
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék            | Megjegyzések |
+| Képcímkék            | Jegyzetek |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.6.0-amd64-preview` |       |
@@ -149,7 +149,7 @@ A beszéd és a szöveg közötti rendszerképek az *Egyesült Államok kormány
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                  | Megjegyzések                                    |
+| Képcímkék                  | Jegyzetek                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Tároló képe a `en-US` területi beállítással. |
 | `2.4.0-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
@@ -588,7 +588,7 @@ A [szöveg-beszéd][sp-tts] tároló képe megtalálható a `containerpreview.az
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                                  | Megjegyzések                                                                      |
+| Képcímkék                                  | Jegyzetek                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-AriaRUS` hanggal.         |
 | `1.6.0-amd64-ar-eg-hoda-preview`            | A tároló képe a `ar-EG` területi beállítással és a `ar-EG-Hoda` hanggal.            |
@@ -998,13 +998,39 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Kangkang-Apollo` hanggal. |
 | `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Yaoyao-Apollo` hanggal.   |
 
+## <a name="neural-text-to-speech"></a>Neurális szöveg – beszéd
+
+A [neurális szöveg-beszéd] [SP-ntts] tároló képe a `containerpreview.azurecr.io` Container registryben található. A `microsoft` tárházban található, és neve `cognitive-services-neural-text-to-speech` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` .
+
+Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
+
+| Képcímkék                                  | Jegyzetek                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
+| `1.1.0-amd64-de-de-katjaneural-preview`     | A tároló képe a `de-DE` területi beállítással és a `de-DE-KatjaNeural` hanggal.     |
+| `1.1.0-amd64-en-au-natashaneural-preview`   | A tároló képe a `en-AU` területi beállítással és a `en-AU-NatashaNeural` hanggal.   |
+| `1.1.0-amd64-en-ca-claraneural-preview`     | A tároló képe a `en-CA` területi beállítással és a `en-CA-ClaraNeural` hanggal.     |
+| `1.1.0-amd64-en-gb-libbyneural-preview`     | A tároló képe a `en-GB` területi beállítással és a `en-GB-LibbyNeural` hanggal.     |
+| `1.1.0-amd64-en-gb-mianeural-preview`       | A tároló képe a `en-GB` területi beállítással és a `en-GB-MiaNeural` hanggal.       |
+| `1.1.0-amd64-en-us-arianeural-preview`      | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
+| `1.1.0-amd64-en-us-guyneural-preview`       | A tároló képe a `en-US` területi beállítással és a `en-US-GuyNeural` hanggal.       |
+| `1.1.0-amd64-es-es-elviraneural-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-ElviraNeural` hanggal.    |
+| `1.1.0-amd64-es-mx-dalianeural-preview`     | A tároló képe a `es-MX` területi beállítással és a `es-MX-DaliaNeural` hanggal.     |
+| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-SylvieNeural` hanggal.    |
+| `1.1.0-amd64-fr-fr-deniseneural-preview`    | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-DeniseNeural` hanggal.    |
+| `1.1.0-amd64-it-it-elsaneural-preview`      | A tároló képe a `it-IT` területi beállítással és a `it-IT-ElsaNeural` hanggal.      |
+| `1.1.0-amd64-ja-jp-nanamineural-preview`    | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-NanamiNeural` hanggal.    |
+| `1.1.0-amd64-ko-kr-sunhineural-preview`     | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-SunHiNeural` hanggal.     |
+| `1.1.0-amd64-pt-br-franciscaneural-preview` | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-FranciscaNeural` hanggal. |
+| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-XiaoxiaoNeural` hanggal.  |
+
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
 Az [kulcsszókeresés][ta-kp] -tároló rendszerképe megtalálható a `mcr.microsoft.com` Container Registry szindikátusban. A `azure-cognitive-services` tárházban található, és neve `keyphrase` . A teljes tároló rendszerképének neve: `mcr.microsoft.com/azure-cognitive-services/keyphrase` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -1019,7 +1045,7 @@ Az [nyelvfelismerés][ta-la] -tároló rendszerképe megtalálható a `mcr.micro
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -1034,7 +1060,7 @@ Az [Hangulatelemzés][ta-se] -tároló rendszerképe megtalálható a `mcr.micro
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék | Megjegyzések                                         |
+| Képcímkék | Jegyzetek                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
 | `3.0-en`   | Hangulatelemzés v3 (angol)               |

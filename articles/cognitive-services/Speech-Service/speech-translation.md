@@ -1,28 +1,29 @@
 ---
-title: Beszédfelismerési szolgáltatás fordítása
+title: Beszéd fordításának áttekintése – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Speech Service lehetővé teszi, hogy teljes körű, valós idejű, többnyelvű fordítást adjon az alkalmazásaihoz, eszközeihez és eszközeihez. Ugyanez az API használható tolmácsoláshoz és beszéd lefordított szöveggé alakításához is.
+description: A beszédfelismerés lehetővé teszi a beszéd teljes körű, valós idejű, többnyelvű fordításának hozzáadását az alkalmazásokhoz, eszközökhöz és eszközökhöz. Ugyanez az API használható tolmácsoláshoz és beszéd lefordított szöveggé alakításához is. Ez a cikk áttekintést nyújt a Speech Translation szolgáltatás előnyeiről és képességeiről.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/01/2020
 ms.author: erhopf
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
+keywords: beszéd fordítása
+ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055532"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401214"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-A beszédfelismerési szolgáltatásból való beszéd fordítás lehetővé teszi a hangadatfolyamok valós idejű, több nyelvű beszéd-beszéd és beszéd – szöveg fordítását. A Speech SDK-val az alkalmazások, eszközök és eszközök hozzáférhetnek a forrás-átírásokhoz és a fordítási kimenetekhez a megadott hanghoz. Az ideiglenes átírási és fordítási eredményeket a rendszer beszéd észlelésekor adja vissza, és a Final Results is konvertálható a szintetizált beszédbe.
+Ebben az áttekintésben megismerheti a beszédfelismerési szolgáltatás előnyeit és képességeit, ami lehetővé teszi a valós idejű, többnyelvű beszédfelismerési és beszéd-szöveges fordítást a hangadatfolyamok számára. A Speech SDK-val az alkalmazások, eszközök és eszközök hozzáférhetnek a forrás-átírásokhoz és a fordítási kimenetekhez a megadott hanghoz. Az ideiglenes átírási és fordítási eredményeket a rendszer beszéd észlelésekor adja vissza, a végső eredmények pedig szintetizált beszédbe alakíthatók.
 
 A Microsoft fordítói motorját két különböző módszer látja el: statisztikai gépi fordítás (SMT) és neurális gépi fordítás (NMT). A SMT speciális statisztikai elemzést használ a lehetséges fordítások megbecslésére néhány szó kontextusában. A NMT-alapú neurális hálózatokkal pontosabb és természetesebb fordításokat biztosítanak a szavak fordításához a mondatok teljes kontextusával.
 

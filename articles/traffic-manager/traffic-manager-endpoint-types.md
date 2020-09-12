@@ -3,20 +3,20 @@ title: Traffic Manager végpontok típusai | Microsoft Docs
 description: Ez a cikk az Azure Traffic Manager használható különböző típusú végpontokat ismerteti.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: rohink
-ms.openlocfilehash: cd5c6968425c64bd670e56bbe7ae016c59662169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698665"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401282"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 
@@ -102,7 +102,7 @@ Ha egy profil összes végpontja le van tiltva, vagy ha maga a profil le van til
 
 * [Hogyan az Traffic Manager-profil Azure-végpontját egy másik erőforráscsoporthoz helyezi át?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, [Hogyan működik a Traffic Manager](traffic-manager-how-it-works.md).
 * Ismerkedjen meg Traffic Manager [végpontok figyelésével és az automatikus feladatátvételsel](traffic-manager-monitoring.md).

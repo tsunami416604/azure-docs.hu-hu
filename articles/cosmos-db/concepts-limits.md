@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605770"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400313"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -118,6 +118,7 @@ Attól függően, hogy melyik API-t használja, az Azure Cosmos-tárolók gyűjt
 | Elérési utak maximális száma az indexelési házirendben| 100 <sup>*</sup>|
 | Egyedi kulcsok maximális száma egy tárolóban|10 <sup>*</sup>|
 | Elérési utak maximális száma egyedi kulcs megkötése esetén|16 <sup>*</sup>|
+| Maximális TTL-érték |2147483647|
 
 <sup>*</sup> Az Azure támogatási szolgálatával növelheti az egyes tárolók korlátainak bármelyikét.
 
@@ -136,6 +137,7 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 | Tulajdonságérték maximális hossza | Nincs gyakorlati korlát |
 | Karakterlánc-tulajdonságérték maximális hossza | Nincs gyakorlati korlát |
 | Numerikus tulajdonság értékének maximális hossza | IEEE754 dupla pontosságú, 64 bites |
+| Maximális TTL-érték |2147483647|
 
 Az elemekre nem vonatkoznak korlátozások (például a tulajdonságok száma és a beágyazás mélysége), kivéve a partíciós kulcs és az azonosító értékének korlátozásait, valamint a 2 MB-os teljes méret korlátozását. Előfordulhat, hogy a RU-felhasználás csökkentése érdekében az indexelési házirendet nagy vagy összetett elem-struktúrákkal rendelkező tárolók számára kell konfigurálnia. Tekintse meg a valós példák [modellezési elemeit Cosmos DBban](how-to-model-partition-example.md) , valamint a nagyméretű elemek kezelésére szolgáló mintákat.
 

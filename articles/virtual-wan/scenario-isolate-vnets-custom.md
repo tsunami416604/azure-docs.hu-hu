@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831022"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400058"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Forgatókönyv: a virtuális hálózatok egyéni elkülönítése
 
@@ -29,7 +29,7 @@ Ha szeretné kideríteni, hogy hány útválasztási táblázatra van szükség,
 | **Piros virtuális hálózatok**  |   &#8594;|              |       X       |       X      |
 | **Ágak**   |   &#8594;|     X        |       X       |       X      |
 
-Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "from" oldaláról, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejléceit) egy adott forgalmi folyamat esetében.
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorai) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a tábla oszlopainak fejlécét) egy adott forgalmi folyamathoz, ahol az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN nyújtja.
 
 A különböző sorokban szereplő minták száma az ebben a forgatókönyvben szükséges útválasztási táblák száma lesz. Ebben az esetben három útvonal-útválasztási táblázat **RT_BLUE** és **RT_RED** a virtuális hálózatokhoz, és az ágak **alapértelmezett értéke** . Ne feledje, hogy az ágakat mindig az alapértelmezett útválasztási táblázathoz kell társítani.
 

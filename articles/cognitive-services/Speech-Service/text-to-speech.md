@@ -1,27 +1,29 @@
 ---
-title: Szöveges – beszéd – beszéd szolgáltatás
+title: Szöveg – beszéd áttekintés – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatás szöveg-beszéd funkciója lehetővé teszi, hogy az alkalmazások, eszközök és eszközök szövegét természetes emberi – például szintetizált beszédre alakítsa át. Válassza az előre definiált hangok lehetőséget, vagy hozza létre saját egyéni hangját.
+description: A beszédfelismerési szolgáltatás szöveg-beszéd funkciója lehetővé teszi, hogy az alkalmazások, eszközök és eszközök szövegét természetes emberi – például szintetizált beszédre alakítsa át. Ez a cikk áttekintést nyújt a szöveg-beszéd szolgáltatás előnyeiről és képességeiről.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: szöveg – beszéd
+ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167708"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401180"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi, hogy az alkalmazások, az eszközök vagy az eszközök szöveget alakítsanak át az emberi – például a szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre egyedi hangvételt a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang a kiválasztott számú nyelven és területi beállításban érhető el. A támogatott hangok, nyelvek és területi beállítások teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgáltatás előnyeit és képességeit, ami lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei szövegeket alakítsanak ki az emberi, például a szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre egyedi hangvételt a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang a kiválasztott számú nyelven és területi beállításban érhető el. A támogatott hangok, nyelvek és területi beállítások teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 > [!NOTE]
 > A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Speech-t használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
@@ -73,7 +75,7 @@ Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricin
 - [Beszéd SDK](speech-sdk.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes beszédfelismerési szolgáltatás előfizetésének beszerzése](get-started.md)
 - [A Speech SDK beszerzése](speech-sdk.md)

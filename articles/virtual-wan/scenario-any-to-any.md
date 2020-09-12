@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553427"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400075"
 ---
 # <a name="scenario-any-to-any"></a>Forgatókönyv: bármilyen
 
@@ -29,7 +29,7 @@ Ha szeretné megtudni, hogy hány útválasztási táblázatra van szükség egy
 | Virtuális hálózatok     | &#8594;|      X     |     X    |
 | Ágak   | &#8594;|    X     |     X    |
 
-Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "from" oldaláról, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejléceit) egy adott forgalmi folyamat esetében.
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a tábla sorai) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a tábla oszlopainak fejlécét) egy adott forgalmi folyamathoz, ahol az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN nyújtja.
 
 Mivel a virtuális hálózatok és az ágak (VPN, ExpressRoute és felhasználói VPN) összes kapcsolata ugyanazokkal a kapcsolati követelményekkel rendelkezik, egyetlen útválasztási táblára van szükség. Ennek eredményeképpen minden kapcsolat társítva lesz, és a rendszer az alapértelmezett útválasztási táblázatba továbbítja az útválasztási táblázatot:
 

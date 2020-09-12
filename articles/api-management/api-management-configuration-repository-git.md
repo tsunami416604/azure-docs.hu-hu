@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723945"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400355"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
 
@@ -47,7 +47,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti és használhatja a git szolgáltat�
 
 ## <a name="access-git-configuration-in-your-service"></a>A git-konfiguráció elérése a szolgáltatásban
 
-A git konfigurációs beállításainak megtekintéséhez és konfigurálásához kattintson a **Biztonság** menüre, és navigáljon a **konfigurációs adattár** lapra.
+A git konfigurációs beállításainak megtekintéséhez és konfigurálásához kattintson a **központi telepítés és infrastruktúra** menüre, és navigáljon az **adattár** lapra.
 
 ![GIT engedélyezése][api-management-enable-git]
 
@@ -62,7 +62,7 @@ A git-hozzáférés a REST API használatával történő engedélyezésével va
 
 A tárház klónozása előtt az első lépés a szolgáltatás konfigurációjának aktuális állapotának mentése a tárházba. Kattintson **a Mentés a tárházba**lehetőségre.
 
-Végezze el a kívánt módosításokat a megerősítő képernyőn, majd kattintson **az OK** gombra a mentéshez.
+Végezze el a kívánt módosításokat a megerősítő képernyőn, majd kattintson a **Save (Mentés** ) gombra a mentéshez.
 
 Néhány pillanat elteltével a rendszer menti a konfigurációt, és megjeleníti a tárház konfigurációs állapotát, beleértve az utolsó konfigurációs módosítás dátumát és időpontját, valamint a szolgáltatás konfigurációja és az adattár közötti utolsó szinkronizálást.
 
@@ -112,7 +112,7 @@ A tárház klónozása után megtekintheti és használhatja a helyi fájlrendsz
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>A helyi tárház frissítése a legújabb szolgáltatási példány-konfigurációval
 
-Ha módosítja a API Management Service-példányát a Azure Portal vagy a REST API használatával, ezeket a változtatásokat a tárházba kell mentenie, mielőtt frissíteni tudja a helyi tárházat a legújabb módosításokkal. Ehhez kattintson a **konfiguráció mentése a tárházba** lehetőségre a Azure Portal **konfigurációs tárház** lapján, majd adja ki a következő parancsot a helyi tárházban.
+Ha módosítja a API Management Service-példányát a Azure Portal vagy a REST API használatával, ezeket a változtatásokat a tárházba kell mentenie, mielőtt frissíteni tudja a helyi tárházat a legújabb módosításokkal. Ehhez kattintson a Mentés az **adattárba** lehetőségre a Azure Portal **adattár** lapján, majd adja ki a következő parancsot a helyi tárházban.
 
 ```
 git pull
@@ -160,7 +160,7 @@ A helyi git-tárházban található fájlok és mappák tartalmazzák a szolgál
 
 Minden mappa tartalmazhat egy vagy több fájlt, bizonyos esetekben pedig egy vagy több mappát, például az egyes API-k, termékek vagy csoportok mappáit. Az egyes mappákban található fájlok a Mappanév által leírt típusú entitásokra vonatkoznak.
 
-| Fájl típusa | Rendeltetés |
+| Fájl típusa | Cél |
 | --- | --- |
 | json |A megfelelő entitás konfigurációs adatai |
 | html |Az entitásra vonatkozó leírások, amelyek gyakran megjelennek a fejlesztői portálon |
@@ -198,7 +198,7 @@ A gyökérmappa `api-management` tartalmaz egy `configuration.json` fájlt, amel
 }
 ```
 
-Az első négy beállítás ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` és `UserRegistrationTermsConsentRequired` ) a **Biztonság** szakasz **identitások** lapján a következő beállításokra mutat.
+Az első négy beállítás ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` és `UserRegistrationTermsConsentRequired` ) az alábbi beállításokra mutat a **fejlesztői portál** **identitások** lapján.
 
 | Identitás beállítása | Maps to |
 | --- | --- |
@@ -208,7 +208,7 @@ Az első négy beállítás ( `RegistrationEnabled` , `UserRegistrationTerms` , 
 | UserRegistrationTermsConsentRequired |**Beleegyezikés megkövetelése** jelölőnégyzet |
 | RequireUserSigninEnabled |**Névtelen felhasználók átirányítása a bejelentkezési oldalra** jelölőnégyzet |
 
-A következő négy beállítás ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` és `DelegationValidationKey` ) a **Biztonság** szakaszban található **delegálás** lapon a következő beállításokkal képezhető le.
+A következő négy beállítás ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` és `DelegationValidationKey` ) leképezi a következő beállításokat a **fejlesztői portál** **delegálás** lapján.
 
 | Delegálási beállítás | Maps to |
 | --- | --- |
@@ -258,7 +258,7 @@ A `templates` mappa a szolgáltatás példányának [e-mail-sablonjainak](api-ma
 * `<template name>\configuration.json` – Ez az e-mail sablon konfigurációja.
 * `<template name>\body.html` – Ez az e-mail sablon törzse.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A szolgáltatási példány kezelésének egyéb módjaival kapcsolatos további információkért lásd:
 
 * A szolgáltatás példányának kezelése a következő PowerShell-parancsmagok használatával

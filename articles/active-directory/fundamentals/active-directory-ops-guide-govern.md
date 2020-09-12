@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74535456"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321514"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory irányítási műveletek útmutatója
 
@@ -31,7 +31,7 @@ Az [Azure ad üzemeltetési útmutatójának](active-directory-ops-guide-intro.m
 
 A Azure Active Directory kezelése a legfontosabb működési feladatok és folyamatok folyamatos végrehajtásához szükséges, ami esetleg nem része a bevezetési projektnek. Továbbra is fontos, hogy ezeket a feladatokat a környezet optimalizálása érdekében állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
 
-| Tevékenység | Tulajdonos |
+| Feladat | Tulajdonos |
 | :- | :- |
 | Azure AD-naplók archiválása SIEM-rendszeren | InfoSec-műveleti csapat |
 | A megfelelőséggel felügyelt alkalmazások felderítése | IAM Operations csapat |
@@ -49,8 +49,8 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 #### <a name="owner-recommended-reading"></a>Tulajdonos által ajánlott olvasás
 
-- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Irányítás az Azure-ban](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
+- [Irányítás az Azure-ban](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>Konfiguráció módosításainak tesztelése
 
@@ -58,7 +58,7 @@ Vannak olyan változtatások, amelyek különleges szempontokat igényelnek a te
 
 | Forgatókönyv| Ajánlás |
 |-|-|
-|A hitelesítési típus módosítása összevontról PHS/PTA-re vagy fordítva| A [szakaszos](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) bevezetéssel tesztelheti a hitelesítési típus módosításának hatását.|
+|A hitelesítési típus módosítása összevontról PHS/PTA-re vagy fordítva| A [szakaszos](../hybrid/how-to-connect-staged-rollout.md) bevezetéssel tesztelheti a hitelesítési típus módosításának hatását.|
 |Új feltételes hozzáférési (CA-) házirend vagy Identity Protection-házirend bevezetése|Hozzon létre egy új HITELESÍTÉSSZOLGÁLTATÓI szabályzatot, és rendelje hozzá a felhasználók teszteléséhez.|
 |Egy alkalmazás tesztelési környezetének bevezetése|Vegye fel az alkalmazást éles környezetbe, rejtse el a MyApps panelen, és rendelje hozzá a felhasználók teszteléséhez a minőségbiztosítási (QA) fázisban.|
 |Szinkronizálási szabályok módosítása|Hajtsa végre a tesztekben Azure AD Connect módosításokat ugyanazzal a konfigurációval, amely jelenleg éles környezetben van, más néven átmeneti mód, és elemezze a CSExport eredményeit. Ha teljesülnek, az éles környezetbe kerül, ha készen áll.|
@@ -66,7 +66,7 @@ Vannak olyan változtatások, amelyek különleges szempontokat igényelnek a te
 |Új funkció bevezetése|Ha a szolgáltatás támogatja a felhasználók célcsoportjának kiépítését, a kísérleti felhasználók azonosítását és kiépítését. Például az önkiszolgáló jelszó-visszaállítás és a többtényezős hitelesítés meghatározott felhasználókat vagy csoportokat célozhat meg.|
 |Átváltás egy helyszíni Identitáskezelő (identitásszolgáltató) alkalmazásból, például Active Directoryból az Azure AD-be|Ha az alkalmazás több identitásszolgáltató-konfigurációt is támogat, például a Salesforce-t, a módosítási időszakban konfigurálja az Azure AD-t és a tesztelést (ha az alkalmazás bevezeti a HRD lapot). Ha az alkalmazás nem támogatja több IDP használatát, ütemezze a tesztet a változás-ellenőrzési időszak során, és állítsa be a program leállását.|
 |Dinamikus csoport szabályainak frissítése|Hozzon létre egy párhuzamos dinamikus csoportot az új szabállyal. Hasonlítsa össze a kiszámított eredményt, például futtassa a PowerShellt ugyanazzal a feltétellel.<br>Ha a test pass (tesztelés), a régi csoportot használó helyeket cseréli le (ha lehetséges).|
-|A licencek áttelepíthetők|Tekintse meg a [licencek egyetlen felhasználóhoz való módosítását egy licenccel rendelkező csoportban Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-change-licenses).|
+|A licencek áttelepíthetők|Tekintse meg a [licencek egyetlen felhasználóhoz való módosítását egy licenccel rendelkező csoportban Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md).|
 |AD FS szabályok módosítása, például engedélyezés, kiadás, MFA|A csoportjogcím használata a felhasználók részhalmazának megcélzására.|
 |AD FS hitelesítési élmény vagy hasonló, az egész farmra vonatkozó változtatások módosítása|Hozzon létre egy párhuzamos farmot ugyanazzal az állomásnévvel, adja meg a konfiguráció módosításait, tesztelje az ügyfeleket Hosts fájl, NLB útválasztási szabályok vagy hasonló útválasztás használatával.<br>Ha a célként megadott platform nem támogatja a GAZDAGÉPek fájljait (például a mobileszközök esetében), a vezérlés módosítása.|
 
@@ -74,7 +74,7 @@ Vannak olyan változtatások, amelyek különleges szempontokat igényelnek a te
 
 ### <a name="access-reviews-to-applications"></a>Alkalmazások hozzáférési felülvizsgálatai
 
-Idővel a felhasználók felhasználhatják az erőforrásokhoz való hozzáférést, mivel azok a különböző csapatok és pozíciók között mozognak. Fontos, hogy az erőforrás-tulajdonosok rendszeresen vizsgálják felül az alkalmazásokhoz való hozzáférést, és azokat a jogosultságokat, amelyekre már nincs szükség a felhasználók életciklusa során. Az Azure AD [hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) lehetővé teszik a szervezetek számára a csoporttagságok hatékony kezelését, a vállalati alkalmazások elérését és a szerepkör-hozzárendeléseket. Az erőforrás-tulajdonosoknak rendszeres időközönként át kell tekinteniük a felhasználók hozzáférését, hogy csak a megfelelő személyek férhessenek hozzájuk. Ideális esetben érdemes megfontolni az Azure AD hozzáférési felülvizsgálatok használatát ehhez a feladathoz.
+Idővel a felhasználók felhasználhatják az erőforrásokhoz való hozzáférést, mivel azok a különböző csapatok és pozíciók között mozognak. Fontos, hogy az erőforrás-tulajdonosok rendszeresen vizsgálják felül az alkalmazásokhoz való hozzáférést, és azokat a jogosultságokat, amelyekre már nincs szükség a felhasználók életciklusa során. Az Azure AD [hozzáférési felülvizsgálatok](../governance/access-reviews-overview.md) lehetővé teszik a szervezetek számára a csoporttagságok hatékony kezelését, a vállalati alkalmazások elérését és a szerepkör-hozzárendeléseket. Az erőforrás-tulajdonosoknak rendszeres időközönként át kell tekinteniük a felhasználók hozzáférését, hogy csak a megfelelő személyek férhessenek hozzájuk. Ideális esetben érdemes megfontolni az Azure AD hozzáférési felülvizsgálatok használatát ehhez a feladathoz.
 
 ![Hozzáférési felülvizsgálatok kezdőlapja](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
@@ -83,7 +83,7 @@ Idővel a felhasználók felhasználhatják az erőforrásokhoz való hozzáfér
 
 ### <a name="access-reviews-to-external-identities"></a>Külső identitások hozzáférési felülvizsgálatai
 
-Elengedhetetlen, hogy a külső identitásokhoz való hozzáférést csak a szükséges erőforrásokhoz korlátozza, a szükséges idő alatt. Az Azure AD [hozzáférési](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)felülvizsgálatokat használó összes külső identitáshoz és alkalmazáshoz való hozzáféréshez hozzon létre rendszeres, automatizált hozzáférési felülvizsgálati folyamatot. Ha egy folyamat már létezik a helyszínen, érdemes lehet használni az Azure AD hozzáférési felülvizsgálatait. Az alkalmazás kivonása vagy már nem használatba vételéhez távolítsa el az összes olyan külső identitást, amely hozzáféréssel rendelkezik az alkalmazáshoz.
+Elengedhetetlen, hogy a külső identitásokhoz való hozzáférést csak a szükséges erőforrásokhoz korlátozza, a szükséges idő alatt. Az Azure AD [hozzáférési](../governance/access-reviews-overview.md)felülvizsgálatokat használó összes külső identitáshoz és alkalmazáshoz való hozzáféréshez hozzon létre rendszeres, automatizált hozzáférési felülvizsgálati folyamatot. Ha egy folyamat már létezik a helyszínen, érdemes lehet használni az Azure AD hozzáférési felülvizsgálatait. Az alkalmazás kivonása vagy már nem használatba vételéhez távolítsa el az összes olyan külső identitást, amely hozzáféréssel rendelkezik az alkalmazáshoz.
 
 > [!NOTE]
 > Minden, a hozzáférési felülvizsgálattal kommunikáló felhasználónak fizetős prémium szintű Azure AD P2 licenccel kell rendelkeznie.
@@ -94,22 +94,22 @@ Elengedhetetlen, hogy a külső identitásokhoz való hozzáférést csak a szü
 
 A hackerek gyakran a rendszergazdai fiókokat és a privilegizált hozzáférés más elemeit célozzák meg, hogy gyorsan hozzáférjenek a bizalmas adatokhoz és rendszerekhez.Mivel a Kiemelt szerepkörökkel rendelkező felhasználók egyre több időt vesznek igénybe, fontos a rendszergazdai hozzáférés rendszeres felülvizsgálata és kezelése, valamint az Azure AD-hez és az Azure-erőforrásokhoz való, igény szerinti jogosultságok biztosítása.
 
-Ha a szervezet nem rendelkezik olyan folyamattal, amely a Kiemelt fiókokat felügyeli, vagy jelenleg olyan rendszergazdákat használ, akik a szokásos felhasználói fiókjaikat használják a szolgáltatások és az erőforrások kezeléséhez, azonnal érdemes külön fiókokat használni, például az egyiket a napi napi tevékenységekhez. a másik a privilegizált hozzáféréshez és az MFA konfigurálásához. Még jobb, ha a szervezete prémium szintű Azure AD P2 előfizetéssel rendelkezik, akkor azonnal telepítenie kell a [Azure ad Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure#license-requirements) (PIM) programot. Ugyanebben a jogkivonatban tekintse át ezeket a jogosultsági szintű fiókokat, és ha szükséges, [alacsonyabb jogosultsági szintű szerepköröket is rendeljen hozzá](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) .
+Ha a szervezet nem rendelkezik olyan folyamattal, amely a Kiemelt fiókokat felügyeli, vagy jelenleg olyan rendszergazdákat használ, akik a szokásos felhasználói fiókjaikat használják a szolgáltatások és az erőforrások kezeléséhez, azonnal érdemes külön fiókokat használni, például az egyiket a napi napi tevékenységekhez. a másik a privilegizált hozzáféréshez és az MFA konfigurálásához. Még jobb, ha a szervezete prémium szintű Azure AD P2 előfizetéssel rendelkezik, akkor azonnal telepítenie kell a [Azure ad Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) programot. Ugyanebben a jogkivonatban tekintse át ezeket a jogosultsági szintű fiókokat, és ha szükséges, [alacsonyabb jogosultsági szintű szerepköröket is rendeljen hozzá](../users-groups-roles/directory-admin-roles-secure.md) .
 
-A Kiemelt jogosultságokkal rendelkező fiókok felügyeletének egy másik aspektusa, amely a fiókok [hozzáférési felülvizsgálatának](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) meghatározására szolgál, manuálisan vagy [automatizáltan a PIM használatával](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review).
+A Kiemelt jogosultságokkal rendelkező fiókok felügyeletének egy másik aspektusa, amely a fiókok [hozzáférési felülvizsgálatának](../governance/access-reviews-overview.md) meghatározására szolgál, manuálisan vagy [automatizáltan a PIM használatával](../privileged-identity-management/pim-how-to-perform-security-review.md).
 
 #### <a name="privileged-account-management-recommended-reading"></a>Kiemelt jogosultságú fiókok kezelése ajánlott olvasás
 
-- [Szerepkörök a Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-roles)
+- [Szerepkörök a Azure AD Privileged Identity Management](../privileged-identity-management/pim-roles.md)
 
 ### <a name="emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok
 
-A szervezeteknek [vészhelyzeti fiókokat](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) kell létrehozniuk az Azure ad kezeléséhez olyan esetekben, mint például a hitelesítési kimaradások:
+A szervezeteknek [vészhelyzeti fiókokat](../users-groups-roles/directory-emergency-access.md) kell létrehozniuk az Azure ad kezeléséhez olyan esetekben, mint például a hitelesítési kimaradások:
 
 - A hitelesítési infrastruktúra kimaradási összetevői (AD FS, helyszíni AD, MFA szolgáltatás)
 - Felügyeleti munkatársak forgalma
 
-Annak megakadályozása érdekében, hogy véletlenül kizárja a bérlőt, mert nem tud bejelentkezni vagy aktiválni egy meglévő egyéni felhasználói fiókot rendszergazdaként, hozzon létre két vagy több vészhelyzeti fiókot, és gondoskodjon arról, hogy azok implementálva legyenek, és összhangba kerüljenek a [Microsoft ajánlott eljárásaival](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) és az [üveg-eljárások megszakításával](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency).
+Annak megakadályozása érdekében, hogy véletlenül kizárja a bérlőt, mert nem tud bejelentkezni vagy aktiválni egy meglévő egyéni felhasználói fiókot rendszergazdaként, hozzon létre két vagy több vészhelyzeti fiókot, és gondoskodjon arról, hogy azok implementálva legyenek, és összhangba kerüljenek a [Microsoft ajánlott eljárásaival](../users-groups-roles/directory-admin-roles-secure.md) és az [üveg-eljárások megszakításával](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency).
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Emelt szintű hozzáférés az Azure EA portálhoz
 
@@ -119,11 +119,11 @@ Ha az EA portál engedélyezési szintjének beállítása jelenleg "vegyes mód
 
 #### <a name="privileged-access-recommended-reading"></a>Kiemelt jogosultságú hozzáférés ajánlott olvasmánya
 
-- [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)
+- [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="entitlement-management"></a>Jogosultságkezelés
 
-A [jogosultsági felügyelet (em)](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) lehetővé teszi, hogy az alkalmazások tulajdonosai erőforrásokat rendeljenek le, és a szervezeten belül meghatározott personák rendelje őket (belső és külső). Az EM lehetővé teszi az önkiszolgáló regisztrációt és a vállalkozások tulajdonosainak való delegálását, miközben az irányítási házirendeket a hozzáférés biztosításához, a hozzáférési időtartamok beállításához és a jóváhagyási munkafolyamatok engedélyezéséhez tartja. 
+A [jogosultsági felügyelet (em)](../governance/entitlement-management-overview.md) lehetővé teszi, hogy az alkalmazások tulajdonosai erőforrásokat rendeljenek le, és a szervezeten belül meghatározott personák rendelje őket (belső és külső). Az EM lehetővé teszi az önkiszolgáló regisztrációt és a vállalkozások tulajdonosainak való delegálását, miközben az irányítási házirendeket a hozzáférés biztosításához, a hozzáférési időtartamok beállításához és a jóváhagyási munkafolyamatok engedélyezéséhez tartja. 
 
 > [!NOTE]
 > Az Azure AD-jogosultságok kezeléséhez prémium szintű Azure AD P2 licencekre van szükség.
@@ -141,6 +141,6 @@ A biztonságos identitás irányításának nyolc aspektusa van. Ez a lista seg�
 - Zárja be az Azure EA portál elérését.
 - A jogosultságok felügyeletének megvalósítása a szabályozott hozzáférés biztosításához egy erőforrás-gyűjteményhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az [Azure ad operatív ellenőrzésekkel és műveletekkel](active-directory-ops-guide-ops.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80876292"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321718"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -31,7 +31,7 @@ Az [Azure ad üzemeltetési útmutatójának](active-directory-ops-guide-intro.m
 
 A Azure Active Directory kezelése a legfontosabb működési feladatok és folyamatok folyamatos végrehajtásához szükséges, ami esetleg nem része a bevezetési projektnek. Továbbra is fontos, hogy ezeket a feladatokat a környezet optimalizálása érdekében állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
 
-| Tevékenység | Tulajdonos |
+| Feladat | Tulajdonos |
 | :- | :- |
 | Az egyszeri bejelentkezési (SSO) konfiguráció életciklusának kezelése az Azure AD-ben | IAM Operations csapat |
 | Feltételes hozzáférési szabályzatok tervezése Azure AD-alkalmazásokhoz | InfoSec-architektúra csapata |
@@ -48,8 +48,8 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 #### <a name="owner-recommended-reading"></a>Tulajdonos által ajánlott olvasás
 
-- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Irányítás az Azure-ban](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
+- [Irányítás az Azure-ban](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Hitelesítő adatok kezelése
 
@@ -61,13 +61,13 @@ Az alábbi táblázat segítségével megtalálhatja a megoldandó problémát e
 
 | Probléma | Ajánlás |
 | :- | :- |
-| Nincs olyan mechanizmus, amely védelmet nyújt a gyenge jelszavak ellen | Az Azure AD önkiszolgáló [jelszó-visszaállítás (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) és [jelszavas védelem](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) engedélyezése |
-| Nincs mechanizmus a kiszivárgott jelszavak észleléséhez | A [jelszó-kivonat szinkronizálásának](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) engedélyezése az elemzések megszerzéséhez |
-| AD FS használata és nem lehet áthelyezni a felügyelt hitelesítésre | [AD FS extranetes intelligens zárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) és/vagy [Azure ad intelligens zárolás](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) engedélyezése |
-| A jelszóházirend olyan komplexitás-alapú szabályokat használ, mint például a hossz, a több karakterkészlet vagy a lejárat | Gondolja át a [Microsoft ajánlott eljárásait](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) , és váltson át a jelszavas felügyeletre, és telepítse az [Azure ad jelszavas védelmet](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad). |
-| A felhasználók nem regisztráltak a többtényezős hitelesítés (MFA) használatára | Az [összes felhasználó biztonsági információinak regisztrálása](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) , hogy a rendszer használható legyen a felhasználó identitásának és jelszavának ellenőrzésére. |
-| A jelszavak nem vonhatók visszavonásra a felhasználói kockázat alapján | Az Azure AD [Identity Protection felhasználói kockázati házirendjeinek](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) üzembe helyezése a kiszivárgott hitelesítő adatok jelszavas változásainak kényszerítéséhez a SSPR használatával |
-| Nincs olyan intelligens zárolási mechanizmus, amely az azonosított IP-címekről érkező hibás szereplőktől származó rosszindulatú hitelesítést véd. | Felhő által felügyelt hitelesítés üzembe helyezése jelszó-kivonatoló szinkronizálással vagy [átmenő hitelesítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA ESP) |
+| Nincs olyan mechanizmus, amely védelmet nyújt a gyenge jelszavak ellen | Az Azure AD önkiszolgáló [jelszó-visszaállítás (SSPR)](../authentication/concept-sspr-howitworks.md) és [jelszavas védelem](../authentication/concept-password-ban-bad-on-premises.md) engedélyezése |
+| Nincs mechanizmus a kiszivárgott jelszavak észleléséhez | A [jelszó-kivonat szinkronizálásának](../hybrid/how-to-connect-password-hash-synchronization.md) (PHS) engedélyezése az elemzések megszerzéséhez |
+| AD FS használata és nem lehet áthelyezni a felügyelt hitelesítésre | [AD FS extranetes intelligens zárolás](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) és/vagy [Azure ad intelligens zárolás](../authentication/howto-password-smart-lockout.md) engedélyezése |
+| A jelszóházirend olyan komplexitás-alapú szabályokat használ, mint például a hossz, a több karakterkészlet vagy a lejárat | Gondolja át a [Microsoft ajánlott eljárásait](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) , és váltson át a jelszavas felügyeletre, és telepítse az [Azure ad jelszavas védelmet](../authentication/concept-password-ban-bad.md). |
+| A felhasználók nem regisztráltak a többtényezős hitelesítés (MFA) használatára | Az [összes felhasználó biztonsági információinak regisztrálása](../identity-protection/howto-identity-protection-configure-mfa-policy.md) , hogy a rendszer használható legyen a felhasználó identitásának és jelszavának ellenőrzésére. |
+| A jelszavak nem vonhatók visszavonásra a felhasználói kockázat alapján | Az Azure AD [Identity Protection felhasználói kockázati házirendjeinek](../identity-protection/howto-identity-protection-configure-risk-policies.md) üzembe helyezése a kiszivárgott hitelesítő adatok jelszavas változásainak kényszerítéséhez a SSPR használatával |
+| Nincs olyan intelligens zárolási mechanizmus, amely az azonosított IP-címekről érkező hibás szereplőktől származó rosszindulatú hitelesítést véd. | Felhő által felügyelt hitelesítés üzembe helyezése jelszó-kivonatoló szinkronizálással vagy [átmenő hitelesítéssel](../hybrid/how-to-connect-pta-quick-start.md) (PTA ESP) |
 
 #### <a name="password-policies-recommended-reading"></a>A jelszóházirend ajánlott olvasmánya
 
@@ -77,19 +77,19 @@ Az alábbi táblázat segítségével megtalálhatja a megoldandó problémát e
 
 A felhasználók az ügyfélszolgálati hívások egyik legnagyobb forrásaként és a hozzájuk tartozó jelszavak módosítására vagy alaphelyzetbe állítására szorulnak. A költséghatékonyság mellett a felhasználói kockázat enyhítésére szolgáló eszközként a jelszó módosításának alapvető lépése a szervezet biztonsági helyzetének javítása.
 
-Legalább azt javasoljuk, hogy az Azure AD önkiszolgáló [jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) (SSPR) és a helyszíni [jelszavas védelem](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) üzembe helyezését az alábbiak szerint végezze el:
+Legalább azt javasoljuk, hogy az Azure AD önkiszolgáló [jelszó-visszaállítás](../authentication/concept-sspr-howitworks.md) (SSPR) és a helyszíni [jelszavas védelem](../authentication/howto-password-ban-bad-on-premises-deploy.md) üzembe helyezését az alábbiak szerint végezze el:
 
 - Az ügyfélszolgálati hívások alakváltozása.
 - Cserélje le az ideiglenes jelszavak használatát.
 - Cserélje le a meglévő önkiszolgáló jelszavas felügyeleti megoldást, amely egy helyszíni megoldásra támaszkodik.
-- [Távolítsa el a szervezet gyenge jelszavait](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) .
+- [Távolítsa el a szervezet gyenge jelszavait](../authentication/concept-password-ban-bad.md) .
 
 > [!NOTE]
-> A prémium szintű Azure AD P2 előfizetéssel rendelkező szervezetek esetében ajánlott a SSPR üzembe helyezése, és annak használata az [Identity Protection felhasználói kockázati szabályzatának](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)részeként.
+> A prémium szintű Azure AD P2 előfizetéssel rendelkező szervezetek esetében ajánlott a SSPR üzembe helyezése, és annak használata az [Identity Protection felhasználói kockázati szabályzatának](../identity-protection/howto-identity-protection-configure-risk-policies.md)részeként.
 
 ### <a name="strong-credential-management"></a>Erős hitelesítőadat-kezelés
 
-A jelszó önmagában nem elég biztonságos ahhoz, hogy a rossz szereplők hozzáférjenek a környezetéhez. A többtényezős hitelesítés (MFA) számára legalább egy kiemelt fiókkal rendelkező felhasználónak engedélyezve kell lennie. Ideális esetben engedélyeznie kell a [kombinált regisztrációt](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) , és minden felhasználónak regisztrálnia kell az MFA-és SSPR a [kombinált regisztrációs élmény](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)használatával. Végül azt javasoljuk, hogy olyan stratégiát alkalmazzon, amely [rugalmasságot biztosít](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls) a zárolás kockázatának csökkentése érdekében az előre nem látható körülmények miatt.
+A jelszó önmagában nem elég biztonságos ahhoz, hogy a rossz szereplők hozzáférjenek a környezetéhez. A többtényezős hitelesítés (MFA) számára legalább egy kiemelt fiókkal rendelkező felhasználónak engedélyezve kell lennie. Ideális esetben engedélyeznie kell a [kombinált regisztrációt](../authentication/concept-registration-mfa-sspr-combined.md) , és minden felhasználónak regisztrálnia kell az MFA-és SSPR a [kombinált regisztrációs élmény](../user-help/security-info-setup-signin.md)használatával. Végül azt javasoljuk, hogy olyan stratégiát alkalmazzon, amely [rugalmasságot biztosít](../authentication/concept-resilient-controls.md) a zárolás kockázatának csökkentése érdekében az előre nem látható körülmények miatt.
 
 ![Összetett felhasználói élmény folyamata](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -127,7 +127,7 @@ A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellá
 
 Ezt a célt az eszköz identitásának és az Azure AD-ben való kezelésének az alábbi módszerek egyikével végezheti el:
 
-- A szervezetek a [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) használatával kezelhetik az eszközt, és kikényszerítik a megfelelőségi szabályzatokat, tanúsítják az eszköz állapotát, valamint feltételes hozzáférési házirendeket állíthatnak be attól függően, hogy az eszköz megfelel-e Microsoft Intune felügyelheti az iOS-eszközöket, a Mac-asztalokat (JAMF-integráción keresztül), a Windows-asztalokat (natív módon a Windows 10 mobileszköz-felügyeletét, valamint a Microsoft Endpoint Configuration Manager) és az androidos mobileszközök közös felügyeletét.
+- A szervezetek a [Microsoft Intune](/intune/what-is-intune) használatával kezelhetik az eszközt, és kikényszerítik a megfelelőségi szabályzatokat, tanúsítják az eszköz állapotát, valamint feltételes hozzáférési házirendeket állíthatnak be attól függően, hogy az eszköz megfelel-e Microsoft Intune felügyelheti az iOS-eszközöket, a Mac-asztalokat (JAMF-integráción keresztül), a Windows-asztalokat (natív módon a Windows 10 mobileszköz-felügyeletét, valamint a Microsoft Endpoint Configuration Manager) és az androidos mobileszközök közös felügyeletét.
 - A [hibrid Azure ad-csatlakozás](../devices/hybrid-azuread-join-managed-domains.md) a csoportházirendekkel vagy a Microsoft Endpoint Configuration managerekkel való felügyeletet biztosít Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure AD-be szeretné állítani, a Felhőbeli és a helyszíni erőforrások egyszeri bejelentkezésével maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és helyszíni erőforrások biztonságos elérését a [feltételes hozzáféréssel](../conditional-access/overview.md)   egyidejűleg.
 
 Ha olyan tartományhoz csatlakoztatott Windows-eszközöket használ, amelyek nincsenek a felhőben regisztrálva, vagy a felhőben regisztrált, de feltételes hozzáférési házirendek nélküli tartományhoz csatlakoztatott Windows-eszközök, akkor regisztrálnia kell a nem regisztrált eszközöket, és mindkét esetben [használja a hibrid Azure ad JOIN vezérlőt](../conditional-access/require-managed-devices.md) a feltételes hozzáférési szabályzatokban.
@@ -141,11 +141,11 @@ Ha MDM vagy Microsoft Intune eszközzel felügyeli az eszközöket, de a feltét
 #### <a name="device-trust-access-policies-recommended-reading"></a>Az eszköz megbízhatóságához való hozzáférési szabályzatok ajánlott olvasmányok
 
 - [Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése](../devices/hybrid-azuread-join-plan.md)
-- [Identitás- és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Vállalati Windows Hello
 
-A Windows 10 rendszerben a [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) a jelszavakat erős, Kéttényezős hitelesítéssel helyettesíti a számítógépeken. A vállalati Windows Hello lehetővé teszi a hatékonyabb MFA-élményt a felhasználók számára, és csökkenti a jelszavak függőségét. Ha még nem kezdte meg a Windows 10-es eszközök kihelyezését, vagy csak részben telepítette őket, javasoljuk, hogy frissítsen a Windows 10-es verzióra, és [engedélyezze a vállalati Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) szolgáltatást minden eszközön.
+A Windows 10 rendszerben a [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) a jelszavakat erős, Kéttényezős hitelesítéssel helyettesíti a számítógépeken. A vállalati Windows Hello lehetővé teszi a hatékonyabb MFA-élményt a felhasználók számára, és csökkenti a jelszavak függőségét. Ha még nem kezdte meg a Windows 10-es eszközök kihelyezését, vagy csak részben telepítette őket, javasoljuk, hogy frissítsen a Windows 10-es verzióra, és [engedélyezze a vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) szolgáltatást minden eszközön.
 
 Ha további információra van szüksége a jelszó nélküli hitelesítésről, tekintse meg [a globális jelszavak nélkül Azure Active Directory](../authentication/concept-authentication-passwordless.md).
 
@@ -184,22 +184,22 @@ A [felhasználók az alkalmazásokhoz való hozzárendelését](../manage-apps/a
 - Dinamikus csoportok meghatározása, ha a felhasználói attribútumok konzisztens módon határozhatják meg az alkalmazásokhoz való hozzáférést.
 - Az [Azure ad hozzáférési felülvizsgálatait](../governance/access-reviews-overview.md)használó alkalmazásokhoz való hozzáféréshez használt csoportok tanúsítványának megvalósítása.
 
-Ha azonban olyan alkalmazásokat talál, amelyek egyéni felhasználókhoz rendelnek hozzárendelést, mindenképpen hajtsa végre az alkalmazások [irányítását](https://docs.microsoft.com/azure/active-directory/governance/index) .
+Ha azonban olyan alkalmazásokat talál, amelyek egyéni felhasználókhoz rendelnek hozzárendelést, mindenképpen hajtsa végre az alkalmazások [irányítását](../governance/index.yml) .
 
 #### <a name="assign-users-to-applications-recommended-reading"></a>Felhasználók kiosztása ajánlott olvasáshoz
 
-- [Felhasználók és csoportok társítása egy alkalmazáshoz Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)
-- [Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
-- [A Azure Active Directory csoportok dinamikus tagsági szabályai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
+- [Felhasználók és csoportok társítása egy alkalmazáshoz Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)
+- [Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory](../users-groups-roles/roles-delegate-app-roles.md)
+- [A Azure Active Directory csoportok dinamikus tagsági szabályai](../users-groups-roles/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Hozzáférési szabályzatok
 
 ### <a name="named-locations"></a>Nevesített helyek
 
-Az Azure AD-ben [elnevezett helyekkel](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) megbízható IP-címtartományok is felcímkézhető a szervezetében. Az Azure AD a nevesített helyeket a következő célokra használja:
+Az Azure AD-ben [elnevezett helyekkel](../reports-monitoring/quickstart-configure-named-locations.md) megbízható IP-címtartományok is felcímkézhető a szervezetében. Az Azure AD a nevesített helyeket a következő célokra használja:
 
 - A kockázati események hamis pozitív értékének megakadályozása. A megbízható hálózati helyről való bejelentkezés csökkenti a felhasználó bejelentkezési kockázatát.
-- Konfigurálja a [hely-alapú feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations).
+- Konfigurálja a [hely-alapú feltételes hozzáférést](../reports-monitoring/quickstart-configure-named-locations.md).
 
 ![Névvel ellátott helyek](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -217,7 +217,7 @@ A prioritás alapján az alábbi táblázat segítségével megtalálhatja a sze
 
 Az Azure AD kiszámíthatja az összes bejelentkezés és minden felhasználó kockázatát. Ha a hozzáférési házirendekben a kockázati tényezőt feltételként használja, jobb felhasználói élményt biztosíthat, például kevesebb hitelesítési kérést és nagyobb biztonságot, például csak szükség esetén kéri a felhasználókat, és automatizálhatja a választ és a szervizelést.
 
-![Bejelentkezési kockázati házirend](./media/active-directory-ops-guide/active-directory-ops-img11.png)
+![Bejelentkezési kockázati szabályzat](./media/active-directory-ops-guide/active-directory-ops-img11.png)
 
 Ha már rendelkezik olyan prémium szintű Azure AD P2-licencekkel, amelyek a hozzáférési házirendekben kockázatot jelentenek, de nem használják őket, javasoljuk, hogy vegye fel a kockázatot a biztonsági helyzetbe.
 
@@ -255,10 +255,10 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 
 #### <a name="conditional-access-recommended-reading"></a>Feltételes hozzáférés ajánlott olvasmánya
 
-- [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Identitás- és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Azure Active Directory feltételes hozzáférési beállítások ismertetése](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
-- [Általános feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
+- [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](../conditional-access/best-practices.md)
+- [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Azure Active Directory feltételes hozzáférési beállítások ismertetése](../conditional-access/concept-conditional-access-conditions.md)
+- [Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
 
 ## <a name="access-surface-area"></a>Elérési felület
 
@@ -273,9 +273,9 @@ Az örökölt hitelesítés olyan kifejezés, amely az alkalmazások által hasz
 
 A támadók határozottan előnyben részesítik ezeket a protokollokat – a [jelszó-szórási támadások csaknem 100%-a](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984) örökölt hitelesítési protokollokat használ! A hackerek az örökölt hitelesítési protokollokat használják, mivel nem támogatják az interaktív bejelentkezést, ami további biztonsági problémákhoz szükséges, például a többtényezős hitelesítéshez és az eszközök hitelesítéséhez.
 
-Ha az örökölt hitelesítés széles körben használatos a környezetben, a lehető leghamarabb tervezze meg a régi ügyfelek áttelepíteni a [modern hitelesítést](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) támogató ügyfelekre. Ugyanabban a jogkivonatban, ha vannak olyan felhasználók, akik már modern hitelesítést használnak, de mások, akik továbbra is örökölt hitelesítést használnak, az alábbi lépéseket kell végrehajtania a korábbi hitelesítési ügyfelek zárolásához:
+Ha az örökölt hitelesítés széles körben használatos a környezetben, a lehető leghamarabb tervezze meg a régi ügyfelek áttelepíteni a [modern hitelesítést](/office365/enterprise/modern-auth-for-office-2013-and-2016) támogató ügyfelekre. Ugyanabban a jogkivonatban, ha vannak olyan felhasználók, akik már modern hitelesítést használnak, de mások, akik továbbra is örökölt hitelesítést használnak, az alábbi lépéseket kell végrehajtania a korábbi hitelesítési ügyfelek zárolásához:
 
-1. A [bejelentkezési tevékenységgel kapcsolatos jelentések](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) segítségével azonosíthatja azokat a felhasználókat, akik továbbra is örökölt hitelesítést használnak, és megtervezik a szervizelést:
+1. A [bejelentkezési tevékenységgel kapcsolatos jelentések](../reports-monitoring/concept-sign-ins.md) segítségével azonosíthatja azokat a felhasználókat, akik továbbra is örökölt hitelesítést használnak, és megtervezik a szervizelést:
 
    a. Frissítsen a modern hitelesítésre képes ügyfelekre az érintett felhasználók számára.
    
@@ -288,7 +288,7 @@ Ha az örökölt hitelesítés széles körben használatos a környezetben, a l
 
 #### <a name="legacy-authentication-recommended-reading"></a>Örökölt hitelesítés ajánlott olvasmánya
 
-- [POP3-vagy IMAP4-hozzáférés engedélyezése vagy letiltása a postaládákhoz az Exchange Serveren](https://docs.microsoft.com/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [POP3-vagy IMAP4-hozzáférés engedélyezése vagy letiltása a postaládákhoz az Exchange Serveren](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
 
 ### <a name="consent-grants"></a>Hozzájárulási támogatás
 
@@ -316,11 +316,11 @@ Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálha
 | Microsoft Graph API| Directory. AccessAsUser. All |
 | Azure REST API | user_impersonation |
 
-Ennek elkerüléséhez tekintse meg a [tiltott engedélyezési támogatások észlelését és szervizelését az Office 365-ben](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) , hogy azonosítsa és javítsa azokat az alkalmazásokat, amelyek nem rendelkeznek olyan illegális támogatásokkal vagy alkalmazásokkal, amelyek a szükségesnél több támogatással rendelkeznek. Ezután [távolítsa el](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) az önkiszolgáló szolgáltatást teljesen, és [hozzon létre irányítási eljárásokat](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Végezetül ütemezze az alkalmazás engedélyeinek rendszeres felülvizsgálatát, és távolítsa el őket, ha nincs rá szükség.
+Ennek elkerüléséhez tekintse meg a [tiltott engedélyezési támogatások észlelését és szervizelését az Office 365-ben](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) , hogy azonosítsa és javítsa azokat az alkalmazásokat, amelyek nem rendelkeznek olyan illegális támogatásokkal vagy alkalmazásokkal, amelyek a szükségesnél több támogatással rendelkeznek. Ezután [távolítsa el](../manage-apps/configure-user-consent.md) az önkiszolgáló szolgáltatást teljesen, és [hozzon létre irányítási eljárásokat](../manage-apps/configure-admin-consent-workflow.md). Végezetül ütemezze az alkalmazás engedélyeinek rendszeres felülvizsgálatát, és távolítsa el őket, ha nincs rá szükség.
 
 #### <a name="consent-grants-recommended-reading"></a>Hozzájárulás a javasolt olvasáshoz
 
-- [API-engedélyek Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
+- [API-engedélyek Microsoft Graph](/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Felhasználói és csoport beállításai
 
@@ -328,7 +328,7 @@ Az alábbiakban láthatók azok a felhasználói és csoportos beállítások, a
 
 #### <a name="user-settings"></a>Felhasználói beállítások
 
-- **Külső felhasználók** – a külső együttműködés szerves módon történhet a vállalaton belül olyan szolgáltatásokkal, mint a csapatok, a Power bi, a SharePoint Online és a Azure Information Protection. Ha kifejezett korlátozásokkal rendelkezik a felhasználó által kezdeményezett külső együttműködés szabályozására, javasoljuk, hogy engedélyezze a külső felhasználókat az [Azure ad-jogosultságok kezelése](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) vagy egy ellenőrzött művelet, például az ügyfélszolgálat használatával. Ha nem kívánja engedélyezni a szolgáltatások szerves külső együttműködését, [megakadályozhatja, hogy a tagok teljesen meghívjanak külső felhasználókat](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations). Azt is megteheti, hogy engedélyezi vagy letiltja a külső felhasználói meghívásokban lévő [egyes tartományokat](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) .
+- **Külső felhasználók** – a külső együttműködés szerves módon történhet a vállalaton belül olyan szolgáltatásokkal, mint a csapatok, a Power bi, a SharePoint Online és a Azure Information Protection. Ha kifejezett korlátozásokkal rendelkezik a felhasználó által kezdeményezett külső együttműködés szabályozására, javasoljuk, hogy engedélyezze a külső felhasználókat az [Azure ad-jogosultságok kezelése](../governance/entitlement-management-overview.md) vagy egy ellenőrzött művelet, például az ügyfélszolgálat használatával. Ha nem kívánja engedélyezni a szolgáltatások szerves külső együttműködését, [megakadályozhatja, hogy a tagok teljesen meghívjanak külső felhasználókat](../external-identities/delegate-invitations.md). Azt is megteheti, hogy engedélyezi vagy letiltja a külső felhasználói meghívásokban lévő [egyes tartományokat](../external-identities/allow-deny-list.md) .
 - **Alkalmazás-regisztráció** – ha a Alkalmazásregisztrációk engedélyezve vannak, a végfelhasználók maguk is előkészíthetik az alkalmazásokat, és hozzáférést biztosíthatnak az adatkezeléshez. Az alkalmazások regisztrálásának tipikus példája az Outlook beépülő moduljainak engedélyezése, illetve az olyan hangsegédek, mint az Alexa és a Siri, hogy olvassák az e-maileket és a naptárt, vagy e-maileket küldjenek a nevükben. Ha az ügyfél úgy dönt, hogy kikapcsolja az alkalmazás regisztrációját, az InfoSec-és a IAM-csapatoknak részt kell venniük a kivételek kezelésében (az üzleti követelményeken alapuló alkalmazás-regisztrációk esetében), mivel az alkalmazásoknak rendszergazdai fiókkal kell regisztrálniuk, és a legvalószínűbb, hogy a folyamat működővé tenni kell megtervezniük a folyamatot.
 - **Felügyeleti portál** – a szervezetek zárolják az Azure ad panelt a Azure Portalban, így a nem rendszergazdák nem férhetnek hozzá az Azure ad Managementhez a Azure Portalban, és nem tévesztendő össze. A hozzáférés korlátozásához nyissa meg az Azure AD felügyeleti portáljának felhasználói beállításait:
 
@@ -343,33 +343,33 @@ Az alábbiakban láthatók azok a felhasználói és csoportos beállítások, a
 
 #### <a name="groups-recommended-reading"></a>Ajánlott olvasási csoportok
 
-- [Mi az Azure Active Directory B2B együttműködés?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-- [Alkalmazások integrálása a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- [Alkalmazások, engedélyek és beleegyezett Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
-- [Csoportok használata a Azure Active Directory erőforrásaihoz való hozzáférés kezeléséhez](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-- [Önkiszolgáló alkalmazás-hozzáférés felügyeletének beállítása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)
+- [Mi az Azure Active Directory B2B együttműködés?](../external-identities/what-is-b2b.md)
+- [Alkalmazások integrálása a Azure Active Directory](../develop/quickstart-register-app.md)
+- [Alkalmazások, engedélyek és beleegyezett Azure Active Directory.](../develop/quickstart-register-app.md)
+- [Csoportok használata a Azure Active Directory erőforrásaihoz való hozzáférés kezeléséhez](./active-directory-manage-groups.md)
+- [Önkiszolgáló alkalmazás-hozzáférés felügyeletének beállítása Azure Active Directory](../users-groups-roles/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Nem várt helyekről érkező forgalom
 
-A támadók a világ különböző részeiből származnak. Ezt a kockázatot a feltételes hozzáférési szabályzatok és a feltételnek megfelelően kezelheti. A feltételes hozzáférési szabályzat [helyének feltétele](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) lehetővé teszi, hogy letiltsa a hozzáférést azokhoz a helyekhez, amelyekről nincs üzleti ok a bejelentkezéshez.
+A támadók a világ különböző részeiből származnak. Ezt a kockázatot a feltételes hozzáférési szabályzatok és a feltételnek megfelelően kezelheti. A feltételes hozzáférési szabályzat [helyének feltétele](../conditional-access/location-condition.md) lehetővé teszi, hogy letiltsa a hozzáférést azokhoz a helyekhez, amelyekről nincs üzleti ok a bejelentkezéshez.
 
 ![Új elnevezett hely létrehozása](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
-Ha elérhető, egy biztonsági információ és egy eseménykezelő (SIEM) megoldás használatával elemezze és keresse meg a régiók közötti hozzáférési mintákat. Ha nem használ SIEM-terméket, vagy nem végez hitelesítési adatokat az Azure AD-től, javasoljuk, hogy a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) használatával azonosítsa a régiók közötti hozzáférés mintáit.
+Ha elérhető, egy biztonsági információ és egy eseménykezelő (SIEM) megoldás használatával elemezze és keresse meg a régiók közötti hozzáférési mintákat. Ha nem használ SIEM-terméket, vagy nem végez hitelesítési adatokat az Azure AD-től, javasoljuk, hogy a [Azure monitor](../../azure-monitor/overview.md) használatával azonosítsa a régiók közötti hozzáférés mintáit.
 
 ## <a name="access-usage"></a>Hozzáférés használata
 
 ### <a name="azure-ad-logs-archived-and-integrated-with-incident-response-plans"></a>Az Azure AD-naplók archiválása és integrálva van az incidensek válaszának csomagjaival
 
-A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási és kockázati eseményei elengedhetetlenek a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz. Az Azure AD hozzáférést biztosít ezekhez a forrásokhoz olyan REST API-kon keresztül, amelyek korlátozott megőrzési időtartammal rendelkeznek. A auditok és a támogatás hosszú távú tárolásának kulcsa a biztonsági információ-és eseménykezelő (SIEM) rendszer vagy az azzal egyenértékű archiválási technológia. Az Azure AD-naplók hosszú távú tárolásának engedélyezéséhez hozzá kell adnia azokat a meglévő SIEM-megoldáshoz, vagy [Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor)kell használnia. Az incidensek válaszának csomagjai és a vizsgálatok részeként használható archivált naplók.
+A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási és kockázati eseményei elengedhetetlenek a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz. Az Azure AD hozzáférést biztosít ezekhez a forrásokhoz olyan REST API-kon keresztül, amelyek korlátozott megőrzési időtartammal rendelkeznek. A auditok és a támogatás hosszú távú tárolásának kulcsa a biztonsági információ-és eseménykezelő (SIEM) rendszer vagy az azzal egyenértékű archiválási technológia. Az Azure AD-naplók hosszú távú tárolásának engedélyezéséhez hozzá kell adnia azokat a meglévő SIEM-megoldáshoz, vagy [Azure monitor](../reports-monitoring/concept-activity-logs-azure-monitor.md)kell használnia. Az incidensek válaszának csomagjai és a vizsgálatok részeként használható archivált naplók.
 
 #### <a name="logs-recommended-reading"></a>A naplók ajánlott olvasása
 
-- [Azure Active Directory audit API-referenciája](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)
-- [Azure Active Directory bejelentkezési tevékenység jelentésének API-referenciája](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-sign-in-activity-reference)
-- [Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
-- [Azure Active Directory Identity Protection Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
-- [Office 365 felügyeleti tevékenység API-referenciája](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
+- [Azure Active Directory audit API-referenciája](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory bejelentkezési tevékenység jelentésének API-referenciája](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával](../reports-monitoring/tutorial-access-api-with-certificates.md)
+- [Azure Active Directory Identity Protection Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)
+- [Office 365 felügyeleti tevékenység API-referenciája](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Az Azure Active Directory Power BI-tartalomcsomag használata](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Összefoglalás
@@ -389,6 +389,6 @@ A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segí
 - A felhasználók és a csoportok beállításainak zárolása.
 - Az Azure AD-naplók hosszú távú tárolásának engedélyezése a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [személyazonosság-irányítási operatív ellenőrzésekkel és műveletekkel](active-directory-ops-guide-govern.md).

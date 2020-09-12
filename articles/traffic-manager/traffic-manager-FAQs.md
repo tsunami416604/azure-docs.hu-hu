@@ -3,20 +3,20 @@ title: Azure Traffic Manager – gyakori kérdések
 description: Ez a cikk a Traffic Managerekkel kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: rohink
-ms.openlocfilehash: 2a3293cac15636ddf29df24cc1eff471aee25ec1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: duau
+ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926535"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400177"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -497,7 +497,7 @@ A szülő profil nem hajtja végre az állapot-ellenőrzéseket közvetlenül a 
 
 A következő táblázat ismerteti a beágyazott végpontok Traffic Manager állapotának ellenőrzésének viselkedését.
 
-| Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Megjegyzések |
+| Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Jegyzetek |
 | --- | --- | --- |
 | Letiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
 | Leromlott. Legalább egy alárendelt profil-végpont csökkentett teljesítményű állapotban van. |Online: a gyermek profilban található online végpontok száma legalább a MinChildEndpoints értéke.<BR>CheckingEndpoint: az online plusz CheckingEndpoint végpontok száma a gyermek profilban legalább a MinChildEndpoints értéke.<BR>Csökkentett teljesítményű: máskülönben. |A forgalmat az állapot CheckingEndpoint-végpontja irányítja át. Ha a MinChildEndpoints túl magasra van állítva, a végpont mindig csökken. |
