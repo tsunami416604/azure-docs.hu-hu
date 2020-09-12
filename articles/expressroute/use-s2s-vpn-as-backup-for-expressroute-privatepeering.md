@@ -2,17 +2,17 @@
 title: A S2S VPN használata biztonsági mentésként az Azure ExpressRoute Private-társításához | Microsoft Docs
 description: Ez az oldal az Azure ExpressRoute privát S2S VPN-sel való biztonsági mentésére szolgáló építészeti javaslatokat tartalmaz.
 services: networking
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: rambala
-ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: duau
+ms.openlocfilehash: 0ab74a14c16b7ea1d587cfcc82eea689e2f98c83
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244771"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393020"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>A S2S VPN használata biztonsági mentésként a ExpressRoute-alapú privát partnerek számára
 
@@ -302,7 +302,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 Annak ellenőrzéséhez, hogy a forgalom vissza lett-e állítva a ExpressRoute, ismételje meg a traceroute-t, és győződjön meg arról, hogy a ExpressRoute privát társán keresztül zajlik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ExpressRoute magas rendelkezésre állású, és a Microsoft-hálózaton belül egyetlen meghibásodási pont hiányában van kialakítva. A ExpressRoute áramkör továbbra is egyetlen földrajzi régióra és egy szolgáltatóra korlátozódik. A S2S VPN lehet jó vész-helyreállítási passzív biztonsági mentési megoldás egy ExpressRoute-áramkörhöz. A megbízható passzív biztonsági mentési megoldás esetében fontos a passzív konfiguráció és az időszakos ellenőrzés rendszeres karbantartása. Elengedhetetlen, hogy a VPN-konfiguráció elavult legyen, és rendszeres időközönként (mondjuk minden negyedévben) ismételje meg a jelen cikkben ismertetett ellenőrzési és feladatátvételi teszteket a karbantartási időszak során.
 

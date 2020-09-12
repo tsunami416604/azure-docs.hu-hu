@@ -1,39 +1,41 @@
 ---
-title: Ajánlott eljárások Azure Maps Route Servicehoz | Microsoft Azure térképek
+title: Ajánlott eljárások Azure Maps Route Service Microsoft Azure Maps-ben
 description: Megtudhatja, hogyan irányíthatja a járműveket Microsoft Azure Maps Route Service használatával.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 03/11/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132211"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400780"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
 Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) Route Directions és Route Matrix API-k segítségével kiszámíthatja az egyes kért útvonalak becsült érkezési idejét (ETA). Az útválasztási API-k olyan tényezőket vesznek figyelembe, mint például a valós idejű forgalmi információk és a korábbi forgalmi adatok, például a hét kért napjának és a nap időpontjának a szokásos országúti sebessége. Az API-k a legrövidebb vagy leggyorsabb útvonalakat adják vissza több célhelyre egyszerre, sorrendben vagy optimalizált sorrendben, az idő vagy a távolság alapján. A felhasználók speciális útvonalakat és részleteket is igényelhetnek a túrázók, a kerékpárosok és a kereskedelmi járművek, például a teherautók számára. Ebben a cikkben megosztjuk az ajánlott eljárásokat a Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route)meghívásához, és megismerheti a következőket:
 
-* Válasszon az útvonalterv API-k és a mátrix-útválasztási API közül
-* A valós idejű és a korábbi forgalmi adatok alapján megkérheti a korábbi és a várható utazási időt
-* Az útvonal részleteit, például az időt és a távolságot, a teljes útvonal és az útvonal minden egyes szakasza esetén
-* Kereskedelmi jármű, például egy teherautó kérésének útvonala
-* Forgalmi információk kérése az útvonalon, például a dzsemek és az autópályadíj-információk
-* Egy vagy több leállításból (útpontok) álló útvonal igénylése
-* Egy vagy több leállás útvonalának optimalizálása a legjobb megrendelés megszerzéséhez az egyes Leállítás (útpont) megkereséséhez
-* Alternatív útvonalak optimalizálása támogató pontok használatával. Például alternatív útvonalakat is kínálunk, amelyek egy elektromos járművet betöltő állomásnak adnak át.
-* A [Route Service](https://docs.microsoft.com/rest/api/maps/route) használata a Azure Maps web SDK-val
+> [!div class="checklist"]
+> * Válasszon az útvonalterv API-k és a mátrix-útválasztási API közül
+> * A valós idejű és a korábbi forgalmi adatok alapján megkérheti a korábbi és a várható utazási időt
+> * Az útvonal részleteit, például az időt és a távolságot, a teljes útvonal és az útvonal minden egyes szakasza esetén
+> * Kereskedelmi jármű, például egy teherautó kérésének útvonala
+> * Forgalmi információk kérése az útvonalon, például a dzsemek és az autópályadíj-információk
+> * Egy vagy több leállításból (útpontok) álló útvonal igénylése
+> * Egy vagy több leállás útvonalának optimalizálása a legjobb megrendelés megszerzéséhez az egyes Leállítás (útpont) megkereséséhez
+> * Alternatív útvonalak optimalizálása támogató pontok használatával. Például alternatív útvonalakat is kínálunk, amelyek egy elektromos járművet betöltő állomásnak adnak át.
+> * A [Route Service](https://docs.microsoft.com/rest/api/maps/route) használata a Azure Maps web SDK-val
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Maps API-k hívásához egy Azure Maps-fiókra és egy kulcsra van szükség. További információkért lásd: [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) és [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account). Az elsődleges kulcsot elsődleges előfizetési kulcsnak vagy előfizetési kulcsnak is nevezzük.
+1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 
-A Azure Maps-hitelesítéssel kapcsolatos információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md). A Route Service lefedettségével kapcsolatos további információkért tekintse meg az [Útválasztás lefedettségét](routing-coverage.md).
+A Route Service lefedettségével kapcsolatos további információkért tekintse meg az [Útválasztás lefedettségét](routing-coverage.md).
 
 Ez a cikk a [Poster alkalmazást](https://www.postman.com/downloads/) használja a REST-hívások létrehozásához, de bármelyik API-fejlesztési környezetet kiválaszthatja.
 
@@ -133,43 +135,23 @@ Alapértelmezés szerint az útvonal-szolgáltatás a koordináták tömbjét fo
 
 Az alábbi képen az `points` elem látható.
 
-<center>
-
-![pontok listája](media/how-to-use-best-practices-for-routing/points-list-is-hidden-img.png)
-
-</center>
+![Pontok elem](media/how-to-use-best-practices-for-routing/points-list-is-hidden-img.png)
 
 Bontsa ki az `point` elemet az elérési út koordinátáinak megjelenítéséhez:
 
-<center>
-
-![pontok listája](media/how-to-use-best-practices-for-routing/points-list-img.png)
-
-</center>
+![Kibontott pontok elem](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
 Az útválasztási utasítások API-jai különböző, a **instructionsType** paraméter megadásával felhasználható utasítások formátumait támogatják. Az egyszerű számítógép-feldolgozásra vonatkozó utasítások formázásához használja a **instructionsType = kódolt**lehetőséget. Használja a **instructionsType = Tagged** utasítást a felhasználó szövegének megjelenítéséhez. Emellett az utasítások szövegként is formázhatók, ahol az utasítások egyes elemei meg vannak jelölve, az utasítás pedig speciális formázással jelenik meg. További információkért tekintse meg a [támogatott utasításkészlet-típusok listáját](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
 Ha a rendszer utasításokat kér, a válasz egy új elemet ad vissza `guidance` . Az `guidance` elem két információt tartalmaz: lépésenkénti utasítások és összegzett utasítások.
 
-<center>
-
 ![Utasítások típusa](media/how-to-use-best-practices-for-routing/instructions-type-img.png)
-
-</center>
 
 Az `instructions` elem megtartja az utazás lépésenkénti irányát, és az `instructionGroups` összegzett utasításokkal rendelkezik. Az egyes utasítások összegzése az utazás egy olyan szegmensét fedi le, amely több utat is képes kimutatni. Az API-k egy útvonal szakaszának részleteit adhatják vissza. ilyenek például a forgalmi dugók koordináta-tartománya vagy a forgalom aktuális sebessége.
 
-<center>
-
 ![Kapcsolja be az utasításokat](media/how-to-use-best-practices-for-routing/instructions-turn-by-turn-img.png)
 
-</center>
-
-<center>
-
 ![Összegzett utasítások](media/how-to-use-best-practices-for-routing/instructions-summary-img.png)
-
-</center>
 
 ## <a name="request-a-route-for-a-commercial-vehicle"></a>Kereskedelmi jármű útvonalának igénylése
 
@@ -185,11 +167,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Az Route API olyan irányokat ad vissza, amelyek a kamion és a veszélyes hulladék méreteinek megfelelően vannak elhelyezve. Az útvonalra vonatkozó utasításokat az elem kibontásával érheti el `guidance` .
 
-<center>
-
 ![1. osztályú hazwaste rendelkező kamion](media/how-to-use-best-practices-for-routing/truck-with-hazwaste-img.png)
-
-</center>
 
 ### <a name="sample-query"></a>Mintalekérdezés
 
@@ -201,11 +179,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Az alábbi válasz egy 9. osztályú veszélyes anyagot hordozó teherautóra mutat, amely kevésbé veszélyes, mint az 1. osztályba tartozó veszélyes anyagok. Ha kibontja az `guidance` elemet az utasítások olvasásához, megfigyelheti, hogy az irányok nem egyeznek. Az 1. osztályú veszélyes anyagokhoz több útvonalra vonatkozó útmutatást is talál.
 
-<center>
+
 
 ![Tehergépkocsi, 9. osztályú hazwaste](media/how-to-use-best-practices-for-routing/truck-with-hazwaste9-img.png)
 
-</center>
+
 
 ## <a name="request-traffic-information-along-a-route"></a>Forgalmi adatok kérése az útvonal mentén
 
@@ -221,19 +199,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 A válasz azokat a szakaszokat tartalmazza, amelyek alkalmasak a forgalomra a megadott koordináták mentén.
 
-<center>
-
-![forgalmi csoportok](media/how-to-use-best-practices-for-routing/traffic-section-type-img.png)
-
-</center>
+![Forgalmi csoportok](media/how-to-use-best-practices-for-routing/traffic-section-type-img.png)
 
 Ezzel a beállítással az alábbi képen látható módon színezheti a pontokat a térkép megjelenítéséhez: 
 
-<center>
-
-![forgalmi csoportok](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
-
-</center>
+![A térképen megjelenített színes csoportok](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
 ## <a name="calculate-and-optimize-a-multi-stop-route"></a>Több leállítási útvonal kiszámítása és optimalizálása
 
@@ -257,19 +227,13 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 A válasz az elérési út 140 851 méteres hosszát írja le, és az elérési út 9 991 másodpercet vesz igénybe.
 
-<center>
-
 ![Nem optimalizált válasz](media/how-to-use-best-practices-for-routing/non-optimized-response-img.png)
-
-</center>
 
 Az alábbi képen látható a lekérdezésből származó elérési út. Ez az elérési út egyetlen lehetséges útvonal. Nem az optimális elérési út az idő vagy a távolság alapján.
 
-<center>
-
 ![Nem optimalizált rendszerkép](media/how-to-use-best-practices-for-routing/non-optimized-image-img.png)
 
-</center>
+
 
 Az útvonal útpont sorrendje a következő: 0, 1, 2, 3, 4, 5 és 6.
 
@@ -283,19 +247,11 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 A válasz az elérési út 91 814 méteres hosszát írja le, és az elérési út 7 797 másodpercet vesz igénybe. Az utazási távolság és az utazási idő is alacsonyabb, mert az API az optimalizált útvonalat adta vissza.
 
-<center>
-
-![Nem optimalizált válasz](media/how-to-use-best-practices-for-routing/optimized-response-img.png)
-
-</center>
+![Optimalizált válasz](media/how-to-use-best-practices-for-routing/optimized-response-img.png)
 
 Az alábbi képen látható a lekérdezésből származó elérési út.
 
-<center>
-
-![Nem optimalizált rendszerkép](media/how-to-use-best-practices-for-routing/optimized-image-img.png)
-
-</center>
+![Optimalizált rendszerkép](media/how-to-use-best-practices-for-routing/optimized-image-img.png)
 
 Az optimális útvonal a következő útpont sorrendtel rendelkezik: 0, 5, 1, 2, 4, 3 és 6.
 
@@ -315,17 +271,13 @@ Az útvonalterv [utáni API](https://docs.microsoft.com/rest/api/maps/route/post
 
 Az alábbi kép egy példát mutat be alternatív útvonalak megjelenítésére az idő és a távolság megadott eltérési korlátaival.
 
-<center>
-
 ![Alternatív útvonalak](media/how-to-use-best-practices-for-routing/alternative-routes-img.png)
-
-</center>
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Az útválasztási szolgáltatás használata egy webalkalmazásban
 
 A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát a web-és Node.js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a következő témakörben talál:
 

@@ -2,17 +2,17 @@
 title: A Azure Portal használatával HTTP-vel HTTPS-átirányítással hozhat létre egy bejárati ajtót
 description: Megtudhatja, hogyan hozhat létre átirányított forgalmat a HTTP-ről HTTPS-re a Azure Portal használatával.
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: 05699c827af251b890de4c6f195df5872bfbe364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: fe2159f0eeb9d01081e6a25e7a88ceff4f1e361c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743609"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399690"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>A Azure Portal használatával HTTP-vel HTTPS-átirányítással hozhat létre egy bejárati ajtót
 
@@ -25,7 +25,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Egyéni tartomány hozzáadása TLS/SSL-tanúsítvánnyal 
 > * HTTPS-átirányítás beállítása az egyéni tartományon
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Bejárati ajtó létrehozása meglévő Web App-erőforrással
 
@@ -104,7 +104,7 @@ Miután hozzáadta a CNAME rekordot, a DNS-rekordok oldala a következő példá
 4. Végezze el ugyanezt a műveletet a másik útválasztási szabályhoz is, azaz a továbbítási útvonalhoz az egyéni tartomány hozzáadásához.
 5. A módosítások elküldéséhez kattintson a **Save (Mentés** ) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: társítás konfigurálása'
 description: Ez a cikk a privát és a Microsoft-ExpressRoute létrehozásának és kiépítési lépéseinek a lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizhető az áramkör állapota, frissítése vagy törlése.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: 6bcbe2bd038a3e27df86b281c51cf0a151c5b5af
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: duau
+ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542908"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395723"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása
 
@@ -43,7 +43,7 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 > 
 > 
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társhálózat-létesítés
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társviszony
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -115,7 +115,7 @@ A társítási konfigurációt a Delete (Törlés) ikonra kattintva távolíthat
 
 ![Társítás törlése](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
-## <a name="azure-private-peering"></a><a name="private"></a>Azure-beli privát társhálózat-létesítés
+## <a name="azure-private-peering"></a><a name="private"></a>Azure-beli privát társviszony
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát társ-összevonási konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -175,7 +175,7 @@ A társítási konfigurációt a Delete (Törlés) ikon kiválasztásával távo
 ![privát társak törlése](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépés, [VNet csatolása egy ExpressRoute-áramkörhöz](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Az ExpressRoute-munkafolyamatokkal kapcsolatos további információkért lásd: [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-munkafolyamatok).

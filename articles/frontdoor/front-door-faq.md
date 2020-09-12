@@ -3,20 +3,20 @@ title: Azure-beli bejárati ajtó – gyakori kérdések
 description: Ez a lap az Azure bejárati ajtóval kapcsolatos gyakori kérdésekre ad választ.
 services: frontdoor
 documentationcenter: ''
-author: sohamnchatterjee
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
-ms.author: sohamnc
-ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.author: duau
+ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760413"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399735"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure-előtérben elérhető funkciókkal és funkciókkal kapcsola
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
+### <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
 
 Az Azure bejárati ajtó egy alkalmazásszolgáltatási hálózat (ADN) szolgáltatás, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál alkalmazásai számára. Dinamikuswebhely-gyorsítást (DSA), valamint globális terheléselosztást biztosít, közel valós idejű feladatátvétellel. Ez egy magas rendelkezésre állású és nagy mértékben skálázható szolgáltatás, amelyet teljes mértékben az Azure felügyel.
 
@@ -92,8 +92,8 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
 - Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat az Azure bejárati ajtó háttérbeli IP-címe és az Azure infrastruktúra-szolgáltatásai között. Tekintse át az alábbi IP-hozzáférés a háttérrendszer:
  
     - Tekintse át az [Azure IP-címtartományok és szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) *AzureFrontDoor. backend* szakaszát az első ajtó IPv4-háttér IP-címéhez, vagy használhatja a *AzureFrontDoor. backend* szolgáltatási címkét is a [hálózati biztonsági csoportokban](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules).
-    - Az Azure-beli **IPv6** -háttér IP-területe a szolgáltatás címkéjén látható, nem szerepel az Azure IP-címtartományok JSON-fájljában. Ha explicit IPv6-címtartományt keres, a rendszer jelenleg csak a következőre korlátozódik:`2a01:111:2050::/44`
-    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és`169.254.169.254`
+    - Az Azure-beli **IPv6** -háttér IP-területe a szolgáltatás címkéjén látható, nem szerepel az Azure IP-címtartományok JSON-fájljában. Ha explicit IPv6-címtartományt keres, a rendszer jelenleg csak a következőre korlátozódik: `2a01:111:2050::/44`
+    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és `169.254.169.254`
 
     > [!WARNING]
     > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
@@ -123,7 +123,7 @@ Megjegyzés: az egyéni TLS/SSL-tanúsítvány frissítései körülbelül 30 pe
 Az útvonalak vagy háttér-készletek, stb. minden frissítése zökkenőmentes, és nulla állásidőt eredményez (ha az új konfiguráció helyes). A tanúsítványok frissítései szintén atomi jellegűek, és nem okoznak kimaradást, kivéve, ha a "AFD Managed" típusról "saját tanúsítvány használata" értékre vált, vagy fordítva.
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Képes az Azure-beli bejárati terheléselosztásra vagy a virtuális hálózaton belüli forgalom irányítására?
 
@@ -238,7 +238,7 @@ A naplók elérhetők az Azure-előtérben. A portálon kattintson a **tevékeny
 
 Igen, az Azure bejárati ajtó támogatja a riasztásokat. A riasztások a metrikák használatára vannak konfigurálva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

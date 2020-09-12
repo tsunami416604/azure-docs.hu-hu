@@ -3,13 +3,13 @@ title: Fogalmak – tárolás az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) tárolóját, beleértve a köteteket, az állandó köteteket, a tárolási osztályokat és a jogcímeket.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406962"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421152"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -32,8 +32,6 @@ A hagyományos kötetek tárolására és lekérésére az Azure Storage által 
 
 - Az *Azure-lemezek* használhatók Kubernetes *adatlemez* -erőforrások létrehozásához. A lemezek az Azure Premium Storage-t, a nagy teljesítményű SSD-ket, illetve az Azure standard Storage-t is használhatják, a normál HDD-k által támogatottak. A legtöbb éles és fejlesztési számítási feladathoz használja a Premium Storage-t. Az Azure-lemezek *ReadWriteOnce*-ként vannak csatlakoztatva, így csak egyetlen Pod számára érhető el. A több hüvelyrel egyidejűleg elérhető tárolási kötetek esetében használja a Azure Files.
 - *Azure Files* használható egy Azure Storage-fiók által támogatott SMB 3,0-megosztás csatlakoztatására a hüvelyek számára. A fájlok lehetővé teszik az adatmegosztást több csomóponton és hüvelyen keresztül. A fájlok a normál HDD-k, illetve az Azure Premium Storage által támogatott Azure standard Storage-t is használhatják, nagy teljesítményű SSD-k által támogatottak.
-> [!NOTE] 
-> Azure Files támogatja a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtökben.
 
 A Kubernetes-ben a kötetek több, mint egy hagyományos lemezt képviselnek, ahol az információ tárolható és lekérhető. A Kubernetes kötetek a tárolók általi használatra is használhatók a pod-ba történő adatbevitelhez. A Kubernetes-ben a gyakori további mennyiségi típusok a következők:
 
@@ -55,12 +53,18 @@ A PersistentVolume lehet *statikusan* létrehozni, vagy a Kubernetes API-kiszolg
 
 A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez a reclaimPolicy az alapul szolgáló Azure Storage-erőforrás viselkedését szabályozza a pod törlésekor, és előfordulhat, hogy az állandó kötetre már nincs szükség. A mögöttes tárolási erőforrás törölhető vagy megtartható egy későbbi Pod-nal való használathoz.
 
-Az AK-ban 4 kezdeti StorageClasses jönnek létre:
+Az AK-ban négy kezdeti `StorageClasses` kapcsolat jön létre a fürtön a fán tárolt beépülő modulok használatával:
 
-- *default* – felügyelt lemez létrehozásához az Azure StandardSSD Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
-- *Managed-Premium* – az Azure Premium Storage használatával felügyelt lemez hozható létre. A visszaigénylési házirend újból azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
-- *azurefile* – az Azure standard Storage használatával hozza létre az Azure-fájlmegosztást. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-fájlmegosztás törlődik, ha az azt használó állandó kötet törlődik.
-- *azurefile – prémium* – az Azure Premium Storage használatával Azure-fájlmegosztás hozható létre. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-fájlmegosztás törlődik, ha az azt használó állandó kötet törlődik.
+- `default` – Felügyelt lemez létrehozásához az Azure StandardSSD Storage szolgáltatást használja. A visszaigénylési házirend biztosítja, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
+- `managed-premium` – Felügyelt lemez létrehozásához az Azure Premium Storage szolgáltatást használja. A visszaigénylési házirend újból biztosítja, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
+- `azurefile` -Az Azure standard Storage használatával létrehoz egy Azure-fájlmegosztást. A visszaigénylési házirend biztosítja, hogy az alapul szolgáló Azure-fájlmegosztás törölve legyen, ha az azt használó állandó kötet törlődik.
+- `azurefile-premium` – Az Azure Premium Storage használatával létrehoz egy Azure-fájlmegosztást. A visszaigénylési házirend biztosítja, hogy az alapul szolgáló Azure-fájlmegosztás törölve legyen, ha az azt használó állandó kötet törlődik.
+
+Az új Container Storage Interface (CSI) külső beépülő modulokat (előzetes verzió) használó fürtök esetén a következő továbbiak jönnek `StorageClasses` létre:
+- `managed-csi` -Az Azure StandardSSD helyileg redundáns tárolást (LRS) használ egy felügyelt lemez létrehozásához. A visszaigénylési házirend biztosítja, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik. A tárolási osztály azt is konfigurálja, hogy az állandó kötetek bővíthetők legyenek, csak az állandó mennyiségi jogcímet kell módosítania az új mérettel.
+- `managed-csi-premium` -Az Azure Premium helyileg redundáns tárolást (LRS) használja egy felügyelt lemez létrehozásához. A visszaigénylési házirend újból biztosítja, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik. Hasonlóképpen, ez a tárolási osztály lehetővé teszi az állandó kötetek kibontását.
+- `azurefile-csi` -Az Azure standard Storage használatával létrehoz egy Azure-fájlmegosztást. A visszaigénylési házirend biztosítja, hogy az alapul szolgáló Azure-fájlmegosztás törölve legyen, ha az azt használó állandó kötet törlődik.
+- `azurefile-csi-premium` – Az Azure Premium Storage használatával létrehoz egy Azure-fájlmegosztást. A visszaigénylési házirend biztosítja, hogy az alapul szolgáló Azure-fájlmegosztás törölve legyen, ha az azt használó állandó kötet törlődik.
 
 Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. A használatával további igényekhez is létrehozhat StorageClass `kubectl` . Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
 

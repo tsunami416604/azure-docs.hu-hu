@@ -2,18 +2,18 @@
 title: A Hyper-V vész-helyreállítás hibáinak elhárítása Azure Site Recovery
 description: Ismerteti, hogyan lehet elhárítani a Hyper-V-ről az Azure-ba történő helyreállítási problémákat a Azure Site Recovery használatával
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132450"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426122"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>A Hyper-V-ről az Azure-ba végzett replikáció és feladatátvétel hibaelhárítása
 
@@ -130,7 +130,7 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
 
 2. Ha VSS-pillanatképeket szeretne létrehozni a virtuális géphez, győződjön meg arról, hogy a Hyper-V integrációs szolgáltatások telepítve vannak a virtuális gépen, és hogy a biztonsági mentési (VSS) integrációs szolgáltatás engedélyezve van.
     - Győződjön meg arról, hogy az Integration Services VSS szolgáltatás/démonok futnak a vendégen, és **OK** állapotban vannak.
-    - Ezt egy emelt szintű PowerShell-munkamenetből is megtekintheti a Hyper-V-gazdagépen, a **Get-VMIntegrationService-VMName \<VMName> -Name VSS** paranccsal pedig bejelentkezhet a vendég virtuális gépre. [További információk](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Ezt egy emelt szintű PowerShell-munkamenetből is megtekintheti a Hyper-V-gazdagépen, a **Get-VMIntegrationService-VMName \<VMName> -Name VSS** paranccsal pedig bejelentkezhet a vendég virtuális gépre. [További információ](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Győződjön meg arról, hogy a virtuális gépen a biztonsági mentési/VSS-integrációs szolgáltatások futnak és kifogástalan állapotban vannak. Ha nem, indítsa újra ezeket a szolgáltatásokat és a Hyper-v Kötet árnyékmásolata kérelmező szolgáltatást a Hyper-V-gazdagép kiszolgálóján.
 
 ### <a name="common-errors"></a>Gyakori hibák

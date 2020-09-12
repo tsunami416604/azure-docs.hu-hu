@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552832"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421458"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, akkor a Microsoft Identit
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Leírás |
+| NameID formátuma | Description |
 |---------------|-------------|
 | **Alapértelmezett** | A Microsoft Identity platform az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
@@ -88,11 +88,11 @@ Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben defini
 
 1. Adja meg az állandó értéket idézőjelek nélkül a **forrás attribútumban** a szervezetnél, majd kattintson a **Save (Mentés**) gombra.
 
-    ![Nyissa meg a felhasználói attribútumok & jogcímek szakaszt a Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Szervezeti attribútumok & jogcímek szakasz a Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. Az állandó érték az alábbiak szerint fog megjelenni.
 
-    ![Nyissa meg a felhasználói attribútumok & jogcímek szakaszt a Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Attribútumok szerkesztése & jogcímek szakasz a Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Speciális jogcímek – átalakítások
 
@@ -121,7 +121,7 @@ Alkalmazás-specifikus jogcímek hozzáadása:
 2. Válassza ki a függvényt az átalakítás legördülő listából. A kiválasztott függvénytől függően paramétereket és állandó értéket kell megadnia, hogy kiértékelje az átalakítást. Az elérhető funkciókkal kapcsolatos további információkért tekintse meg az alábbi táblázatot.
 3. Több átalakítás alkalmazásához kattintson az **átalakítás hozzáadása**lehetőségre. A jogcímek számára legfeljebb két átalakítás alkalmazható. Először kinyerheti például az e-mail-előtagot `user.mail` . Ezután végezze el a karakterláncot a nagybetűvel.
 
-   ![A NameID (Name Identifier) értékének szerkesztése](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![Több jogcím-átalakítás](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 A jogcímek átalakításához a következő függvények használhatók.
 
@@ -129,8 +129,8 @@ A jogcímek átalakításához a következő függvények használhatók.
 |----------|-------------|
 | **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja ki a (z joe_smith@contoso.com ) helyett. |
 | **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. A NameID-jogcím átalakításához az illesztés egy ellenőrzött tartományra korlátozódik. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet ( joe_smith@contoso.com ) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez a következőt eredményezi: joe_smith@contoso.onmicrosoft.com . |
-| **ToLower ()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
-| **ToUpper()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
+| **ToLowercase()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
+| **ToUppercase()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
 | **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a (z @contoso.com ) "" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. e-mail<br/>*Érték*: " @contoso.com "<br/>2. paraméter (kimenet): user. e-mail<br/>3. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
 | **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az alkalmazott azonosítója "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. Alkalmazottkód<br/>*Érték*: "000"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: felhasználó. ország<br/>*Érték*: "US"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
@@ -179,4 +179,4 @@ Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasznál
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Az SAML-alapú egyszeri bejelentkezés hibaelhárítása](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

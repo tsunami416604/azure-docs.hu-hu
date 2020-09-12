@@ -3,20 +3,20 @@ title: Azure bejárati ajtó – háttér állapotának monitorozása | Microsof
 description: Ebből a cikkből megtudhatja, hogy az Azure bejárati ajtaja hogyan figyeli a háttérrendszer állapotát
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471574"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399633"
 ---
 # <a name="health-probes"></a>Állapotminták
 
@@ -72,7 +72,7 @@ Ha bármelyik háttér Kifogástalan állapotba kerül, a bejárati ajtó a norm
 
 Ha a háttér-készletben egyetlen háttérrel rendelkezik, letilthatja az alkalmazás-háttér terhelését csökkentő állapot-mintavételt. Még ha több háttérrel is rendelkezik a háttér-készletben, de csak az egyikük engedélyezett állapotban van, letilthatja az állapot-mintavételt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

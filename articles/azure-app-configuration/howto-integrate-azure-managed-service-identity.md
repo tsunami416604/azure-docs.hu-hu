@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0525f305e130247fd88ee2858c79cbfd0a15283e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206841"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400823"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -69,11 +69,11 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Az **előfizetés**területen válassza ki az Azure-előfizetését. Válassza ki az alkalmazás App Service erőforrását.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Felügyelt identitás hozzáadása](./media/add-managed-identity.png)
 
-1. Opcionális: Ha hozzáférést szeretne biztosítani Key Vaulthoz is, kövesse az [Key Vault hitelesítés felügyelt identitással való megadása](https://docs.microsoft.com/azure/key-vault/managed-identity)című témakör utasításait.
+1. Nem kötelező: Ha hozzáférést szeretne biztosítani Key Vaulthoz is, kövesse az [Key Vault hozzáférési szabályzat hozzárendelése](/azure/key-vault/assign-access-policy-portal)című témakör utasításait.
 
 ## <a name="use-a-managed-identity"></a>Felügyelt identitás használata
 
@@ -272,7 +272,7 @@ Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer kon
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy Azure által felügyelt identitást adott hozzá, amellyel egyszerűbbé válik az alkalmazások konfigurációjának elérése, és javítható a hitelesítő adatok kezelése az alkalmazásban. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]

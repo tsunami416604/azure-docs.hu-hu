@@ -2,17 +2,17 @@
 title: Gyökér-vagy APEX-tartomány beléptetése meglévő bejárati ajtóra – Azure Portal
 description: Megtudhatja, hogyan lehet bevezetni egy gyökér-vagy APEX-tartományt egy meglévő bevezető ajtajához a Azure Portal használatával.
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 05267ad43f6e7f89ec50b1765d2475a02fae1702
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743592"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399580"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Gyökértartomány vagy Apex-tartomány előkészítése a Front Dooron
 Az Azure bevezető ajtaja CNAME rekordokat használ a tartomány tulajdonjogának ellenőrzéséhez az egyéni tartományok bevezetéséhez. Emellett a bevezető ajtó nem teszi elérhetővé az előtér-profilhoz társított előtérbeli IP-címet, így az APEX tartománya nem rendelhető hozzá IP-címhez, ha a cél az, hogy bemutassa az Azure-ba.
@@ -62,7 +62,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="enable-https-on-your-custom-domain"></a>HTTPS engedélyezése az egyéni tartományon
 
 1. Kattintson a hozzáadott egyéni tartományra, és az **egyéni tartomány HTTPS**szakasza alatt módosítsa az állapotot **engedélyezve**értékre.
-2. Válassza ki a **tanúsítványkezelő típusát** a _saját tanúsítvány használata_lehetőségnél.
+2. Válassza ki a  **tanúsítványkezelő típusát** a _saját tanúsítvány használata_lehetőségnél.
 
 > [!WARNING]
 > Az előtérben felügyelt tanúsítvány-felügyeleti típus jelenleg nem támogatott az APEX-vagy a gyökérszintű tartományokban. Az egyetlen lehetőség, hogy a HTTPS-t egy csúcson vagy gyökértartományen engedélyezze a bejárati ajtónál, a saját, Azure Key Vault üzemeltetett egyéni TLS/SSL-tanúsítványát használja.
@@ -75,7 +75,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!WARNING]
 > Győződjön meg arról, hogy megfelelő útválasztási szabályokat hozott létre az APEX-tartományhoz, vagy adja hozzá a tartományt a meglévő útválasztási szabályokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

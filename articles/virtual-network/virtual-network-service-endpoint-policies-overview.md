@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 3c0b0f9f39620996245614b53c7ec274ec965d5b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921198"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400755"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Virtuális hálózati szolgáltatás végponti házirendjei az Azure Storage-hoz
 
@@ -122,7 +122,7 @@ A virtuális hálózatok és az Azure Storage-fiókok lehetnek azonos vagy elté
 - A virtuális hálózatoknak és a szolgáltatásvégpont-szabályzatnak ugyanabban a régióban kell lenniük.
 - Csak akkor alkalmazhat szolgáltatásvégpont-szabályzatokat egy alhálózaton, ha a szolgáltatásvégpontok a szabályzatban szereplő Azure-szolgáltatásokhoz vannak konfigurálva.
 - A saját helyszíni hálózatáról az Azure-szolgáltatásokba irányuló forgalomhoz nem használhat szolgáltatásvégpont-szabályzatokat.
-- Az Azure által felügyelt szolgáltatások jelenleg nem támogatják a végponti házirendeket. Ez magában foglalja a megosztott alhálózatokban üzembe helyezett felügyelt szolgáltatásokat (például *Azure HDInsight, Azure batch, Azure Hozzáadás, Azure APplication Gateway, Azure VPN Gateway, Azure Firewall*) vagy a dedikált alhálózatokhoz (például *Azure app Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasszikus felügyelt szolgáltatás*).
+- Az Azure által felügyelt szolgáltatások jelenleg nem támogatják a végponti házirendeket. Ez magában foglalja a megosztott alhálózatokban üzembe helyezett felügyelt szolgáltatásokat (például *Azure HDInsight, Azure batch, Azure Add, azure Application Gateway, azure VPN Gateway, Azure Firewall*) vagy a dedikált alhálózatokban (például *Azure app Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasszikus felügyelt szolgáltatás*).
 
  > [!WARNING]
  > A virtuális hálózatokban üzembe helyezett Azure-szolgáltatások, mint például az Azure HDInsight, más Azure-szolgáltatásokhoz, például az Azure Storage-hoz férnek hozzá, hogy lekérjék az infrastruktúrával kapcsolatos követelményeket. A végpontszabályzatok bizonyos erőforrásokra történő korlátozása meggátolhatja, hogy a virtuális hálózatában üzembe helyezett Azure-szolgáltatások hozzáférjenek ezekhez az infrastruktúra-erőforrásokhoz.

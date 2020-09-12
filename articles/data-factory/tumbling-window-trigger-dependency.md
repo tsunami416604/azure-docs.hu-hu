@@ -2,21 +2,21 @@
 title: Kieséses ablak trigger függőségeinek létrehozása
 description: Megtudhatja, hogyan hozhat létre függőséget egy kieséses ablakos triggerből Azure Data Factoryban.
 services: data-factory
-ms.author: daperlov
-author: djpmsft
-manager: anandsub
+ms.author: chez
+author: chez-charlie
+manager: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2019
-ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82870031"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421859"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,7 @@ Ahhoz, hogy a Azure Data Factory függő folyamatokat hozzon létre a kieséses 
 
 Ha függőséget szeretne létrehozni egy triggerhez, válassza az **aktiválás > speciális > új**lehetőséget, majd válassza ki a megfelelő eltolással és mérettel függő triggert. Válassza a **Befejezés** lehetőséget, és tegye közzé a függőségek érvénybe léptetéséhez szükséges adatfeldolgozó-módosításokat.
 
-![Függőség létrehozása](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Függőség létrehozása")
+![Függőség létrehozása](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Függőség létrehozása")
 
 ## <a name="tumbling-window-dependency-properties"></a>Ablak függőségi tulajdonságainak kiesése
 
@@ -79,7 +79,7 @@ A függőséggel rendelkező kieséses ablakos trigger a következő tulajdonsá
 
 Az alábbi táblázat tartalmazza az ablak függőségének definiálásához szükséges attribútumok listáját.
 
-| **Tulajdonság neve** | **Leírás**  | **Típus** | **Szükséges** |
+| **Tulajdonság neve** | **Leírás**  | **Típus** | **Kötelező** |
 |---|---|---|---|
 | típus  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Yes |
 | offset | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Időtartomány<br/>(óó: PP: SS) | Önálló függőség: igen<br/>Egyéb: nem |
@@ -133,42 +133,54 @@ Alább láthatók a forgatókönyvek és az ablak függőségi tulajdonságainak
 
 ### <a name="dependency-offset"></a>Függőségi eltolás
 
-![Eltolási példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Eltolási példa")
+![Eltolási példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png "Eltolási példa")
 
 ### <a name="dependency-size"></a>Függőség mérete
 
-![Példa a méretre](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Példa a méretre")
+![Példa a méretre](media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png "Példa a méretre")
 
 ### <a name="self-dependency"></a>Önálló függőség
 
-![Önálló függőség](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Önálló függőség")
+![Önálló függőség](media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png "Önálló függőség")
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>Függőség egy másik kiesést jelző ablakos triggertől
 
 A napi telemetria-feldolgozási feladatok attól függően, hogy az elmúlt hét nap folyamán egy másik napi feladatot összesítenek, és hét napos időszakot állítanak elő:
 
-![Függőségi példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Függőségi példa")
+![Függőségi példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png "Függőségi példa")
 
 ### <a name="dependency-on-itself"></a>Függőség önmagában
 
 A feladatokhoz tartozó kimeneti adatfolyamok hiánya nélküli napi feladatok:
 
-![Saját függőségi példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Saját függőségi példa")
+![Saját függőségi példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png "Saját függőségi példa")
 
 ## <a name="monitor-dependencies"></a>Függőségek figyelése
 
-A függőségi láncot és a megfelelő Windows-t a trigger futtatásának figyelése lapról követheti nyomon. Navigáljon a **figyelés > triggerek futtatásához**. A műveletek oszlopban újra futtathatja a triggert, vagy megtekintheti annak függőségeit.
+A függőségi láncot és a megfelelő Windows-t a trigger futtatásának figyelése lapról követheti nyomon. Navigáljon a  **figyelés > triggerek futtatásához**. Ha egy kiugró ablak-trigger függőségekkel rendelkezik, akkor a trigger neve a függőség figyelési nézetére mutató hivatkozást tartalmaz.  
 
-![Eseményindító-futtatások monitorozása](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Eseményindító-futtatások monitorozása")
+![Eseményindító-futtatások monitorozása](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "Riasztási futtatások figyelése – a teljes ablak függőség nézete")
 
-Ha a "trigger függőségeinek megtekintése" gombra kattint, megtekintheti a függőségek állapotát. Ha a függőségi eseményindítók egyike meghibásodik, a függő eseményindító futtatásához sikeresen újra kell futtatnia azt. A kiugró ablakos trigger az időtúllépés előtt hét napig megvárja a függőségeket.
+Az trigger függőségeinek megtekintéséhez kattintson a trigger nevére. A jobb oldali panelen a részletes trigger-futtatási információk, például a RunID, az ablak időpontja, az állapot és így tovább láthatók.
 
-![Függőségek figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Függőségek figyelése")
+![A függőségek listájának figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png "A függőségek listájának figyelése")
+
+Megtekintheti a függőségek állapotát és a Windowst az egyes függő triggerekhez. Ha az egyik függőségi eseményindító meghibásodik, a függő eseményindító futtatásához sikeresen újra kell futtatnia a parancsot.
+
+A kiugró ablakos trigger az időtúllépés előtt _hét napig_ megvárja a függőségeket. Hét nap elteltével a trigger futtatása sikertelen lesz.
 
 Az trigger függőségi ütemtervének megjelenítéséhez kattintson a Gantt-nézetre.
 
-![Függőségek figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Függőségek figyelése")
+![Függőségek figyelése Gantt-diagram](media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png "Függőségek figyelése Gantt-diagram nézetben")
 
-## <a name="next-steps"></a>További lépések
+Az átlátszó mezők megjelenítik a függőségi ablakokat az egyes adatfolyam-függőségi triggerekhez, míg az egyes ablakokat megjelenítő, egyszínű színes dobozok is megjelennek. Íme néhány tipp a Gantt-diagram nézet értelmezéséhez:
+
+* Átlátszó doboz kék színnel jelenik meg, ha a függő ablakok függőben vagy futó állapotban vannak
+* Miután az összes Windows sikeresen elvégezte a függő triggert, az átlátszó doboz zöldre vált.
+* A transzparens mező piros színnel jeleníti meg, ha néhány függő ablak meghibásodik. Keressen egy folytonos piros mezőt a hiba-ablak futtatásának azonosításához
+
+Egy ablak Gantt-diagram nézetben való újrafuttatásához jelölje be az ablakhoz tartozó Solid Color (folytonos szín) jelölőnégyzetet, és a műveleti panel a részletek és az újrafuttatási beállítások használatával jelenik meg.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [A bukdácsoló ablakos trigger létrehozásának](how-to-create-tumbling-window-trigger.md) áttekintése

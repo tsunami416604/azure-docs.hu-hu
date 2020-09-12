@@ -3,20 +3,20 @@ title: Azure bejárati ajtó – útválasztási architektúra | Microsoft Docs
 description: Ez a cikk segít megismerni az első ajtó architektúrájának globális nézetének aspektusát.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b36852e27f6aa3a909dd645c19a12c55e082b761
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879292"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399327"
 ---
 # <a name="routing-architecture-overview"></a>Útválasztási architektúra – áttekintés
 
@@ -43,6 +43,6 @@ Ha a bevezető ajtó megfelel egy útválasztási szabálynak a bejövő kérele
 ## <a name="forwarding-the-request-to-your-application-backend"></a>A kérelem továbbítása az alkalmazás-háttérbe
 Végül, feltéve, hogy nincs konfigurálva gyorsítótárazás, a felhasználói kérést a rendszer a "legjobb" háttérre továbbítja a rendszer a [bejárati útválasztási módszer](front-door-routing-methods.md) konfigurációja alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

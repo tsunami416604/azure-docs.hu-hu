@@ -3,20 +3,20 @@ title: Végpontok kezelése az Azure Traffic Managerben | Microsoft Docs
 description: Ez a cikk a végpontok Azure Traffic Managerben végzett felvételében, eltávolításában, engedélyezésében és letiltásában segít.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: rohink
-ms.openlocfilehash: 9f779910460ec19f0efb02fb1a65f39bb100050c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711612"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392918"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -74,7 +74,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 5. A **végpont** panelen kattintson a **Törlés** elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Traffic Manager-profilok kezelése](traffic-manager-manage-profiles.md)
 * [Útválasztási módszerek konfigurálása](traffic-manager-configure-routing-method.md)

@@ -2,20 +2,20 @@
 title: Azure Traffic Manager végpontok figyelése | Microsoft Docs
 description: Ez a cikk segít megérteni, hogyan használja a Traffic Manager a végpontok monitorozását és az automatikus végpont-feladatátvételt, hogy az Azure-ügyfelek magas rendelkezésre állású alkalmazásokat telepítsenek
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: rohink
-ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 78a1681c743f65081b30657f4fd747ff8aaef5f5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80757258"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392833"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-végpontmonitorozás
 
@@ -69,8 +69,8 @@ A Endpoint monitor állapota egy Traffic Manager által generált érték, amely
 
 | Profil állapota | Végpont állapota | Endpoint monitor állapota | Jegyzetek |
 | --- | --- | --- | --- |
-| Letiltva |Engedélyezve |Inaktív |A profil le lett tiltva. Bár a végpont állapota engedélyezve van, a profil állapota (letiltva) elsőbbséget élvez. A letiltott profilokban lévő végpontok nincsenek figyelve. A DNS-lekérdezéshez egy NXDOMAIN-hibakódot ad vissza. |
-| &lt;bármelyik&gt; |Letiltva |Letiltva |A végpont le van tiltva. A letiltott végpontok figyelése nem történik meg. A végpont nem része a DNS-válaszoknak, ezért nem kap forgalmat. |
+| Disabled (Letiltva) |Engedélyezve |Inaktív |A profil le lett tiltva. Bár a végpont állapota engedélyezve van, a profil állapota (letiltva) elsőbbséget élvez. A letiltott profilokban lévő végpontok nincsenek figyelve. A DNS-lekérdezéshez egy NXDOMAIN-hibakódot ad vissza. |
+| &lt;bármelyik&gt; |Disabled (Letiltva) |Disabled (Letiltva) |A végpont le van tiltva. A letiltott végpontok figyelése nem történik meg. A végpont nem része a DNS-válaszoknak, ezért nem kap forgalmat. |
 | Engedélyezve |Engedélyezve |Online |A végpont figyelése és állapota Kifogástalan. A DNS-válaszok részét képezi, és képes fogadni a forgalmat. |
 | Engedélyezve |Engedélyezve |Csökkentett teljesítményű |A végpont-figyelés állapotának ellenőrzése sikertelen. A végpont nem szerepel a DNS-válaszokban, és nem kap forgalmat. <br>Ez alól kivételt képez, ha az összes végpontot csökkentik, és ebben az esetben a lekérdezési válaszban az összeset visszaadja a rendszer.</br>|
 | Engedélyezve |Engedélyezve |CheckingEndpoint |A rendszer figyeli a végpontot, de az első mintavétel eredményei még nem érkeztek meg. A CheckingEndpoint olyan ideiglenes állapot, amely általában közvetlenül a profilhoz tartozó végpont hozzáadása vagy engedélyezése után azonnal megtörténik. Ebben az állapotban egy végpont szerepel a DNS-válaszokban, és képes fogadni a forgalmat. |
@@ -87,7 +87,7 @@ A Profil figyelő állapota a konfigurált profil állapotának és a végpontok
 
 | Profil állapota (konfiguráltként) | Endpoint monitor állapota | Profil figyelő állapota | Jegyzetek |
 | --- | --- | --- | --- |
-| Letiltva |&lt;bármely &gt; vagy egy profil, amely nem rendelkezik definiált végpontokkal. |Letiltva |A profil le lett tiltva. |
+| Disabled (Letiltva) |&lt;bármely &gt; vagy egy profil, amely nem rendelkezik definiált végpontokkal. |Disabled (Letiltva) |A profil le lett tiltva. |
 | Engedélyezve |Legalább egy végpont állapota csökken. |Csökkentett teljesítményű |Tekintse át az egyes végpontok állapotának értékeit annak meghatározásához, hogy mely végpontok igényelnek további figyelmet. |
 | Engedélyezve |Legalább egy végpont állapota online állapotban van. A végpontok nem rendelkeznek csökkentett teljesítményű állapottal. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
 | Engedélyezve |Legalább egy végpont állapota CheckingEndpoint. Nem található végpont online vagy csökkentett teljesítményű állapotban. |CheckingEndpoints |Ez az átmeneti állapot akkor fordul elő, ha a profilt létrehozták vagy engedélyezik. A végpont állapota első alkalommal van bejelölve. |
@@ -193,7 +193,7 @@ További információ a sikertelen állapot-ellenőrzésekkel kapcsolatos hibák
 
 * [Hogyan kaphatok értesítést, ha az egyik végpontom leáll?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [Traffic Manager működéséről](traffic-manager-how-it-works.md)
 

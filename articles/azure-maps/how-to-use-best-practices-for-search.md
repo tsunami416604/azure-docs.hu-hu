@@ -3,41 +3,39 @@ title: Ajánlott eljárások Azure Maps Search Servicehoz | Microsoft Azure tér
 description: Ismerje meg, hogyan alkalmazhatja az ajánlott eljárásokat a Search Service Microsoft Azure Maps-ből való használatakor.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064274"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400704"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service
 
 A Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) olyan API-kat tartalmaz, amelyek különböző képességeket biztosítanak a fejlesztők számára a címek, a helyek, az üzleti listák név vagy kategória szerinti kereséséhez, valamint más földrajzi információkhoz. A[zavaros keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) például lehetővé teszi, hogy a felhasználók megkeressék az adott címeket vagy érdekes pontokat (POI).
 
 Ez a cikk azt ismerteti, hogyan alkalmazhatók a helyes eljárások a Azure Maps Search Service adatainak meghívásakor. A következőket fogja megtanulni:
-
-* Lekérdezések készítése a megfelelő egyezések visszaküldéséhez
-* Keresési eredmények korlátozása
-* Az eredményhalmaz közötti különbségek megismerése
-* A címek keresése – válasz struktúra beolvasása
+> [!div class="checklist"]
+> * Lekérdezések készítése a megfelelő egyezések visszaküldéséhez
+> * Keresési eredmények korlátozása
+> * Az eredményhalmaz közötti különbségek megismerése
+> * A címek keresése – válasz struktúra beolvasása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Maps Service API-k hívásához szükség van egy Azure Maps-fiókra és egy kulcsra. További információkért lásd: [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) és [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 
-A Azure Maps-hitelesítéssel kapcsolatos információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
-
-> [!TIP]
-> Search Service lekérdezéséhez a [Poster alkalmazást](https://www.getpostman.com/apps) használhatja REST API-hívások létrehozásához. Vagy bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
+Ez a cikk a [Poster alkalmazást](https://www.postman.com/downloads/) használja a REST-hívások létrehozásához, de bármelyik API-fejlesztési környezetet kiválaszthatja.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Ajánlott eljárások geocode-címekhez
 
-Ha Azure Maps Search Service használatával keres teljes vagy részleges címeket, az API beolvassa a kulcsszavakat a keresési lekérdezésből. Ezután visszaadja a címe hosszúsági és szélességi koordinátáit. Ezt a folyamatot *helymeghatározáshoz*nevezzük. 
+Ha Azure Maps Search Service használatával keres teljes vagy részleges címeket, az API beolvassa a kulcsszavakat a keresési lekérdezésből. Ezután visszaadja a címe hosszúsági és szélességi koordinátáit. Ezt a folyamatot *helymeghatározáshoz*nevezzük.
 
 Az ország/régió geocode képessége a közúti adatok rendelkezésre állásának és a helymeghatározáshoz szolgáltatás pontosságának függvénye. Ha további információt szeretne az ország vagy régió Azure Maps helymeghatározáshoz képességeiről, tekintse meg a [helymeghatározáshoz lefedettségét](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)ismertető témakört.
 
@@ -79,9 +77,9 @@ Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](https://docs.microso
 
 #### <a name="usage-examples"></a>Használati példák
 
-* `idxSet=POI`– Csak keresési POI-k. 
+* `idxSet=POI` – Csak keresési POI-k. 
 
-* `idxSet=PAD,Addr`– Csak keresési címek. `PAD`Megadja a pont címeit, és `Addr` jelzi a címtartományt.
+* `idxSet=PAD,Addr` – Csak keresési címek. `PAD` Megadja a pont címeit, és `Addr` jelzi a címtartományt.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Geocode és szűrés egy földrajzi entitás típusához
 
@@ -965,7 +963,7 @@ A Search ( [Keresés](https://docs.microsoft.com/rest/api/maps/search/getsearcha
 } 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a következő témakörben talál:
 

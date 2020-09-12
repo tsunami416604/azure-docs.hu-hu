@@ -2,20 +2,20 @@
 title: Metrikák és riasztások az Azure Traffic Manager
 description: Ez a cikk az Azure-ban Traffic Manager elérhető metrikákat és riasztásokat ismerteti.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: rohink
-ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938586"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392850"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Metrikák és riasztások Traffic Manager
 
@@ -63,6 +63,6 @@ Ezeket a metrikákat [Azure monitor szolgáltatás](../azure-monitor/platform/me
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager metrikákkal kapcsolatos riasztások
 A Traffic Manager metrikáinak feldolgozásán és megjelenítésén kívül Azure Monitor lehetővé teszi, hogy az ügyfelek a metrikákkal kapcsolatos riasztásokat konfiguráljanak és fogadnak. Kiválaszthatja, hogy milyen feltételeket kell teljesíteni ezekben a mérőszámokban, hogy riasztást kapjon, milyen gyakran kell figyelni ezeket a feltételeket, és hogy a riasztásokat hogyan kell elküldeni Önnek. További információ: [Azure monitor riasztások dokumentációja](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure monitor szolgáltatásról](../azure-monitor/platform/metrics-supported.md)
 - Megtudhatja, hogyan [hozhat létre diagramot a Azure monitor használatával](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

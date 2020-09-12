@@ -3,7 +3,7 @@ title: Terheléselosztási szolgáltatások használata az Azure-ban | Microsoft
 description: 'Ez az oktatóanyag bemutatja, hogyan hozhat létre forgatókönyvet az Azure terheléselosztási portfóliójának használatával: Traffic Manager, Application Gateway és Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: rohink
-ms.openlocfilehash: c5667a03d127441a9a911ff4b8daba0b3b138e3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711748"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393063"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Microsoft Azure több szolgáltatást biztosít a hálózati forgalom elosztásának és terheléselosztásának kezeléséhez. Ezeket a szolgáltatásokat egyenként is használhatja, vagy igény szerint kombinálhatja a módszereit az optimális megoldás kiépítéséhez.
 
@@ -207,7 +207,7 @@ Most konfiguráljuk az IP-címet és a terheléselosztó előtér-portot a webr�
 
 ![Load Balancer "előtéri IP-címkészlet" navigációs ablaktábla](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Traffic Manager áttekintése](traffic-manager-overview.md)
 * [Az Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)

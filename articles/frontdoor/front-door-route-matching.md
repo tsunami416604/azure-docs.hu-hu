@@ -3,20 +3,20 @@ title: Azure bejárati ajtó – útválasztási szabály egyeztetése a figyel�
 description: Ebből a cikkből megtudhatja, hogy az Azure-beli bejárati ajtó hogyan illeszkedik a bejövő kérelmekhez használt útválasztási szabályokhoz
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878595"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401571"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hogyan társítja a Front Door a kéréseket útválasztási szabályokhoz?
 
@@ -83,7 +83,7 @@ További részletekért tekintse meg a következő példát:
 | A     | www- \. contoso.com | /        |
 | B     | www- \. contoso.com | /\*      |
 | C#     | www- \. contoso.com | /ab      |
-| D     | www- \. contoso.com | /abc     |
+| T     | www- \. contoso.com | /abc     |
 | E     | www- \. contoso.com | ABC    |
 | F     | www- \. contoso.com | ABC\*  |
 | G     | www- \. contoso.com | /abc/def |
@@ -96,7 +96,7 @@ A konfigurációtól függően a következő példában szereplő táblázat ere
 | www- \. contoso.com/            | A             |
 | www- \. contoso.com/a           | B             |
 | www- \. contoso.com/AB          | C#             |
-| www- \. contoso.com/ABC         | D             |
+| www- \. contoso.com/ABC         | T             |
 | www- \. contoso.com/abzzz       | B             |
 | www- \. contoso.com/ABC/        | E             |
 | www- \. contoso.com/ABC/d       | F             |
@@ -112,7 +112,7 @@ A konfigurációtól függően a következő példában szereplő táblázat ere
 >
 > Példa konfiguráció:
 >
-> | Útválasztás | Gazdagép             | Elérési út    |
+> | Útvonal | Gazda             | Elérési út    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /API\* |
 >
@@ -125,7 +125,7 @@ A konfigurációtól függően a következő példában szereplő táblázat ere
 ### <a name="routing-decision"></a>Útválasztási döntés
 Miután egyeztetett egy bejárati ajtó útválasztási szabályával, ki kell választania, hogyan kell feldolgozni a kérést. Ha az egyeztetett útválasztási szabályhoz a bejárati ajtón van egy gyorsítótárazott válasz, akkor ugyanazt a rendszer visszaküldi az ügyfélnek. Ellenkező esetben a következő dolog lesz kiértékelve, hogy beállította-e az [URL-újraírást (egyéni továbbítási útvonalat)](front-door-url-rewrite.md) a megfeleltetett útválasztási szabályhoz. Ha nincs definiálva egyéni továbbítási útvonal, akkor a kérés a megfelelő háttérbe kerül a konfigurált háttérrendszer-készletben. Más esetben a kérés elérési útja a megadott [Egyéni továbbítási útvonalon](front-door-url-rewrite.md) , majd a háttér felé továbbítva lesz frissítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

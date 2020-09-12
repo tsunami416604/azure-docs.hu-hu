@@ -4,12 +4,12 @@ description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások sz�
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499993"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425993"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -579,7 +579,7 @@ Az erőforráscsoport vagy az előfizetés által alkalmazott címkéket nem ör
 
 Címkék segítségével a számlázási adatok is csoportosíthatók. Ha például több virtuális gépet futtat különböző vállalatok számára, akkor a használatot címkék segítségével tudja költséghely szerint csoportosítani. A címkék a költségek futtatókörnyezet szerinti besorolására, például az éles környezetben futó virtuális gépek használatának kiszámlázására is felhasználhatók.
 
-A címkékre vonatkozó információkat az [Azure erőforrás-használat és-arány kártya API](../../cost-management-billing/manage/usage-rate-card-overview.md) -k vagy a használat vesszővel tagolt (CSV) fájlja segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
+A címkékre vonatkozó információkat az [Azure erőforrás-használat és-arány kártya API](../../cost-management-billing/manage/usage-rate-card-overview.md) -k vagy a használat vesszővel tagolt (CSV) fájlja segítségével kérheti le. A használati fájlt a Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
 
 REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
 
@@ -591,7 +591,7 @@ Az alábbi korlátozások érvényesek a címkékre:
 * Minden erőforrás, erőforráscsoport és előfizetés legfeljebb 50 címke név/érték párokat tartalmazhat. Ha a maximálisan megengedettnél több címkét kell alkalmaznia, használjon egy JSON-karakterláncot a címke értékhez. A JSON-sztring sok olyan értéket tartalmazhat, amelyek egyetlen címkenévre vannak alkalmazva. Egy erőforráscsoport vagy előfizetés több olyan erőforrást is tartalmazhat, amelyek mindegyike 50 címke név/érték párokat tartalmaz.
 * A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
 * A címkék nem alkalmazhatók a klasszikus erőforrásokra, például a Cloud Servicesra.
-* A címkék nevei nem tartalmazhatják a következő karaktereket:,,,,, `<` `>` `%` `&` `\` `?` ,`/`
+* A címkék nevei nem tartalmazhatják a következő karaktereket:,,,,, `<` `>` `%` `&` `\` `?` , `/`
 
    > [!NOTE]
    > Azure DNS zónák és Traffic Manager szolgáltatások jelenleg nem teszik lehetővé a szóközök használatát a címkében.
@@ -600,7 +600,7 @@ Az alábbi korlátozások érvényesek a címkékre:
    >
    > Azure Automation és Azure CDN csak a 15 címkét támogatja az erőforrásokon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
 * A címkézési stratégia megvalósításával kapcsolatos javaslatokért lásd: [erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).

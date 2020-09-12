@@ -3,7 +3,7 @@ title: Azure Traffic Manager-profilok kezelése | Microsoft Docs
 description: Ez a cikk segítséget nyújt az Azure Traffic Manager-profilok létrehozásához, letiltásához, engedélyezéséhez és törléséhez.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: rohink
-ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711578"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392884"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Az Azure Traffic Manager-profilok kezelése
 
@@ -37,7 +37,7 @@ Az Azure Portal használatával Traffic Manager-profilokat hozhat létre. A prof
     3. Az **Előfizetés** területen válassza ki azt az előfizetést, amely alatt létre szeretné hozni ezt a profilt
     4. Az **Erőforráscsoport** mezőben hozzon létre egy új erőforráscsoportot, amely alá ezt a profilt helyezi.
     5. Az **Erőforráscsoport helye** területen válassza ki az erőforráscsoport helyét. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.
-    6. Kattintson a **Létrehozás** lehetőségre.
+    6. Kattintson a **Létrehozás** gombra.
     7. Amikor befejeződött a Traffic Manager-profil globális üzembe helyezése, az egyik erőforrásként szerepel majd a megfelelő erőforráscsoportban.
 
 ## <a name="disable-enable-or-delete-a-profile"></a>Profilok letiltása, engedélyezése vagy törlése
@@ -68,7 +68,7 @@ Letilthat létező profilokat, így a Traffic Manager nem hivatkozik a konfigur�
 3. Kattintson az **Áttekintés**  >  **Törlés**lehetőségre.
 4. Erősítse meg a Traffic Manager-profil törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Végpont hozzáadása](traffic-manager-endpoints.md)
 * [Prioritásos útválasztási mód konfigurálása](traffic-manager-configure-priority-routing-method.md)

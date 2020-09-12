@@ -3,20 +3,20 @@ title: Azure bejárati ajtó – URL-átirányítás | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan támogatja az Azure-előtérben az útvonalak URL-átirányítását, ha vannak ilyenek.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 41cb2343cb86d2ec756bb0a2fb690b7df886024f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295476"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399038"
 ---
 # <a name="url-redirect"></a>URL-átirányítás
 A forgalom átirányításához használhatja az Azure bejáratát. A forgalmat több szinten is átirányíthatja (protokoll, állomásnév, elérési út, lekérdezési karakterlánc), és az összes funkció konfigurálható az egyes szolgáltatásokhoz, mivel az átirányítás elérésiút-alapú. Ez egyszerűsíti az alkalmazások konfigurációját, optimalizálja az erőforrás-használatot, és támogatja az új átirányítási forgatókönyveket, beleértve a globális és az elérésiút-alapú átirányítást.
@@ -43,7 +43,7 @@ Beállíthatja azt a protokollt, amelyet az átirányítás használni fog. Ez l
 Az átirányítási útválasztás konfigurálásának részeként módosíthatja az átirányítási kérelem állomásnevét vagy tartományát is. Ezt a mezőt beállíthatja úgy, hogy módosítsa az állomásnév URL-címét az átirányítás számára, vagy egyéb módon őrizze meg a gazdagépet a bejövő kérelemből. Így a mező használatával átirányíthatja a szolgáltatásba küldött összes `https://www.contoso.com/*` kérelmet `https://www.fabrikam.com/*` .
 
 ## <a name="destination-path"></a>Cél elérési útja
-Olyan esetekben, amikor az URL-cím elérésiút-szegmensét az átirányítás részeként szeretné lecserélni, ezt a mezőt az új elérésiút-értékkel állíthatja be. Ellenkező esetben dönthet úgy is, hogy az elérési út értékét az átirányítás részeként megőrzi. Így a mező használatával átirányíthatja a szolgáltatásba küldött összes kérelmet `https://www.contoso.com/\*` `https://www.contoso.com/redirected-site` .
+Olyan esetekben, amikor az URL-cím elérésiút-szegmensét az átirányítás részeként szeretné lecserélni, ezt a mezőt az új elérésiút-értékkel állíthatja be. Ellenkező esetben dönthet úgy is, hogy az elérési út értékét az átirányítás részeként megőrzi. Így a mező használatával átirányíthatja a szolgáltatásba küldött összes kérelmet `https://www.contoso.com/\*`  `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Lekérdezési karakterlánc paraméterei
 A lekérdezési karakterlánc paramétereit is lecserélheti az átirányított URL-címekre. A bejövő kérelem URL-címében szereplő összes meglévő lekérdezési karakterlánc lecseréléséhez állítsa a mezőt "Replace" értékre, majd állítsa be a megfelelő értéket. Ellenkező esetben megtarthatja a lekérdezési karakterláncok eredeti készletét úgy, hogy a mezőt "megőrzés" értékre állítja. Ennek a mezőnek a használatával például átirányíthatja a szolgáltatásba érkező összes `https://www.contoso.com/foo/bar` forgalmat `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
@@ -51,7 +51,7 @@ A lekérdezési karakterlánc paramétereit is lecserélheti az átirányított 
 ## <a name="destination-fragment"></a>Cél töredéke
 A cél töredék az URL-cím "#" utáni része, amelyet általában a böngészők egy adott szakasz egy adott szakasza számára használnak. Ezt a mezőt beállíthatja úgy, hogy felvegyen egy töredéket az átirányítási URL-címhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
