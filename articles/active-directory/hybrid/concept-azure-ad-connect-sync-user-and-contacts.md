@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245495"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279312"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése
 Számos különböző okból kifolyólag több Active Directory erdő van, és több különböző üzembe helyezési topológiával is rendelkezhet. Az általános modellek közé tartozik a fiók-erőforrás üzembe helyezése és a GAL Sync ' ED erdők egyesítése & beszerzése után. De még ha vannak is tiszta modellek, a hibrid modellek is gyakoriak. Az Azure AD Connect Sync alapértelmezett konfigurációja nem feltételezi az adott modellt, de attól függően, hogy a felhasználói megfeleltetés hogyan lett kiválasztva a telepítési útmutatóban, a különböző viselkedések megfigyelhetők.
@@ -39,15 +39,15 @@ Fontos tudnivalók a csoportok Active Directoryról Azure AD-re történő szink
 
 * Azure AD Connect kizárja a címtár-szinkronizálás beépített biztonsági csoportjait.
 
-* A Azure AD Connect nem támogatja az [elsődleges](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) CSOPORTTAGSÁGOK Azure ad-beli szinkronizálását.
+* A Azure AD Connect nem támogatja az [elsődleges](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) CSOPORTTAGSÁGOK Azure ad-beli szinkronizálását.
 
-* Azure AD Connect nem támogatja a [dinamikus terjesztési csoportok tagságának](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) szinkronizálását az Azure ad-be.
+* Azure AD Connect nem támogatja a [dinamikus terjesztési csoportok tagságának](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019) szinkronizálását az Azure ad-be.
 
 * Active Directory csoport szinkronizálása az Azure AD-val levelezési csoportként:
 
     * Ha a csoport *proxyAddress* attribútuma üres, a *mail* -attribútumnak értékkel kell rendelkeznie
 
-    * Ha a csoport *proxyAddress* attribútuma nem üres, tartalmaznia kell legalább egy SMTP-proxy címe értéket. Az alábbiakban néhány példa következik:
+    * Ha a csoport *proxyAddress* attribútuma nem üres, tartalmaznia kell legalább egy SMTP-proxy címe értéket. Néhány példa:
     
       * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup"}* , nem lesz engedélyezve a levelezés az Azure ad-ben. Nincs SMTP-címe.
       
@@ -76,4 +76,3 @@ Ha egy objektumot az Azure AD-be exportáltak, akkor többé nem lehet módosít
 ## <a name="additional-resources"></a>További források
 * [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-

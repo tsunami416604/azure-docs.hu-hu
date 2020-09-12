@@ -1,6 +1,6 @@
 ---
-title: CLI – rendszerkép létrehozása pillanatképből vagy virtuális merevlemezből megosztott képtárban
-description: Megtudhatja, hogyan hozhat létre képet pillanatképből vagy virtuális merevlemezből egy megosztott képtárban az Azure CLI használatával.
+title: CLI – rendszerkép létrehozása pillanatképből vagy felügyelt lemezről megosztott képtárban
+description: Megtudhatja, hogyan hozhat létre lemezképet egy pillanatképből vagy egy felügyelt lemezből egy megosztott rendszerkép-katalógusban az Azure CLI használatával.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502877"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297093"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Rendszerkép létrehozása virtuális merevlemezről vagy pillanatképből egy megosztott képtárban az Azure CLI használatával
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Rendszerkép létrehozása felügyelt lemezről vagy pillanatképből egy megosztott rendszerkép-katalógusban az Azure CLI használatával
 
-Ha van olyan meglévő pillanatképe vagy virtuális merevlemeze, amelyet át szeretne telepíteni egy megosztott képkatalógusba, közvetlenül a VHD-ből vagy a pillanatképből is létrehozhat egy megosztott rendszerkép-katalógust. Az új rendszerkép tesztelése után törölheti a forrás VHD-t vagy a pillanatképet. A [Azure PowerShell](image-version-snapshot-powershell.md)használatával létrehozhat egy rendszerképet egy virtuális merevlemezről vagy pillanatképből egy megosztott Képtárban.
+Ha van meglévő pillanatképe vagy felügyelt lemeze, amelyet át szeretne telepíteni egy megosztott képkatalógusba, akkor közvetlenül a felügyelt lemezről vagy pillanatképből hozhat létre egy megosztott rendszerkép-katalógust. Az új rendszerkép tesztelése után törölheti a forrás felügyelt lemezt vagy pillanatképet. A rendszerképeket a [Azure PowerShell](image-version-snapshot-powershell.md)használatával is létrehozhatja egy felügyelt lemezről vagy pillanatképből egy megosztott Képtárban.
 
 A képkatalógusban található lemezképek két összetevővel rendelkeznek, amelyeket a következő példában hozunk létre:
 - A **rendszerkép definíciója** információt nyújt a rendszerképekről és az azok használatára vonatkozó követelményekről. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, specializált vagy általánosított, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. 
@@ -27,13 +27,13 @@ A képkatalógusban található lemezképek két összetevővel rendelkeznek, am
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk elvégzéséhez pillanatkép vagy virtuális merevlemez szükséges. 
+A cikk elvégzéséhez pillanatkép vagy felügyelt lemez szükséges. 
 
 Ha adatlemezt szeretne megadni, az adatlemez mérete nem lehet nagyobb 1 TB-nál.
 
 A cikkben végzett munka során szükség esetén cserélje le az erőforrások nevét.
 
-## <a name="find-the-snapshot-or-vhd"></a>A pillanatkép vagy a virtuális merevlemez megkeresése 
+## <a name="find-the-snapshot-or-managed-disk"></a>A pillanatkép vagy a felügyelt lemez megkeresése 
 
 Az erőforráscsoporthoz elérhető Pillanatképek listáját az [az Snapshot List](/cli/azure/snapshot#az-snapshot-list)paranccsal tekintheti meg. 
 
@@ -41,13 +41,13 @@ Az erőforráscsoporthoz elérhető Pillanatképek listáját az [az Snapshot Li
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-Pillanatkép helyett virtuális merevlemezt is használhat. Virtuális merevlemez beszerzéséhez használja [az az Disk List](/cli/azure/disk#az-disk-list)lehetőséget. 
+A pillanatképek helyett felügyelt lemezt is használhat. Felügyelt lemez beszerzéséhez használja [az az Disk List](/cli/azure/disk#az-disk-list)lehetőséget. 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
 ```
 
-Miután megadta a pillanatkép vagy a virtuális merevlemez AZONOSÍTÓját, és hozzárendeli azt egy nevű változóhoz, amelyet `$source` később felhasználhat.
+Miután megadta a pillanatkép vagy a felügyelt lemez AZONOSÍTÓját, és hozzárendeli azt egy nevű változóhoz, amelyet `$source` később felhasználhat.
 
 Ugyanezt a folyamatot használhatja a rendszerképbe felvenni kívánt adatlemezek lekéréséhez. Rendelje hozzá a változóhoz, majd ezeket a változókat később, amikor létrehozza a rendszerkép verzióját.
 
@@ -67,7 +67,7 @@ az sig list -o table
 
 A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. A rendszer a rendszerképpel kapcsolatos információk kezelésére szolgál. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy virtuális merevlemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a VHD-t vagy pillanatképet egy általánosított operációs rendszerből (a Sysprep futtatása után Windows-vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy Linux rendszeren) készítette, `-deprovision+user` akkor módosítsa a alkalmazást `-OsState` `generalized` . 
+A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy a felügyelt lemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a felügyelt lemez vagy pillanatkép általánosított operációs rendszerből készült (a Sysprep futtatása után Windows vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy `-deprovision+user` Linux rendszeren), akkor módosítsa a alkalmazást `-OsState` `generalized` . 
 
 További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./linux/shared-image-galleries.md#image-definitions).
 
@@ -99,9 +99,9 @@ Hozzon létre egy rendszerkép [-verziót az az rendszerkép-gyűjtemény létre
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
-Ebben a példában a rendszerkép verziója a *1.0.0* , és 1 replikát hozunk létre az *USA déli középső* régiójában, az USA *2. keleti* régiójában pedig 1 replikát használunk a Zone-redundáns tárolás használatával. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a VHD vagy a pillanatkép *forrás* -régióját is meg kell adnia a replikálás céljának.
+Ebben a példában a rendszerkép verziója a *1.0.0* , és 1 replikát hozunk létre az *USA déli középső* régiójában, az USA *2. keleti* régiójában pedig 1 replikát használunk a Zone-redundáns tárolás használatával. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a felügyelt lemez vagy pillanatkép *forrás* régióját is meg kell adnia a replikálás céljának.
 
-Adja át a pillanatkép vagy virtuális merevlemez AZONOSÍTÓját a `--os-snapshot` paraméterben.
+Adja át a pillanatkép vagy a felügyelt lemez AZONOSÍTÓját a `--os-snapshot` paraméterben.
 
 
 ```azurecli-interactive 

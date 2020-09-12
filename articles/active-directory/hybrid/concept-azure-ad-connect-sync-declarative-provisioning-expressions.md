@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245507"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280213"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítési kifejezések ismertetése
 A Azure AD Connect Sync szolgáltatás a Forefront Identity Manager 2010-es verziójában elsőként bevezetett deklaratív üzembe helyezésre épül. Lehetővé teszi a teljes identitás-integráció üzleti logikájának megvalósítását, anélkül, hogy lefordított kódot kellene írnia.
 
 A deklaratív kiépítés elengedhetetlen része az attribútum-folyamatokban használt kifejezés nyelve. A használt nyelv a Microsoft® Visual Basic® for Applications (VBA) része. A rendszer ezt a nyelvet használja Microsoft Office és a VBScript felhasználói felülettel rendelkező felhasználók is felismerik. A deklaratív kiépítési kifejezés nyelve csak a függvények használatát és nem strukturált nyelvet használ. Nincsenek metódusok vagy utasítások. A függvények Ehelyett az expressz program folyamatához vannak beágyazva.
 
-További részletekért tekintse [meg az Office 2013 Visual Basic for Applications nyelvi referenciáját](https://msdn.microsoft.com/library/gg264383.aspx)ismertető témakört.
+További részletekért tekintse [meg az Office 2013 Visual Basic for Applications nyelvi referenciáját](/office/vba/api/overview/language-reference)ismertető témakört.
 
 Az attribútumok erősen begépeltek. A függvény csak a megfelelő típusú attribútumokat fogadja el. Megkülönbözteti a kis-és nagybetűket is. A függvények nevének és az attribútumainak megfelelő burkolattal kell rendelkezniük, vagy hibát kell eldobni.
 
@@ -83,11 +83,11 @@ A kezelők kiértékelése balról jobbra történik, és ugyanaz a kiértékel�
 A függvények egyértékű és több értékű attribútumokon is működhetnek. A többértékű attribútumok esetében a függvény minden értéknél működik, és minden értékhez ugyanazt a függvényt alkalmazza.
 
 Például:  
-`Trim([proxyAddresses])`Végezze el a proxyAddress attribútum minden értékének vágását.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`A-val minden értéknél @-sign cserélje le a tartományt a következőre: @contoso.com .  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Keresse meg a SIP-címeket, és távolítsa el az értékek közül.
+`Trim([proxyAddresses])` Végezze el a proxyAddress attribútum minden értékének vágását.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` A-val minden értéknél @-sign cserélje le a tartományt a következőre: @contoso.com .  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Keresse meg a SIP-címeket, és távolítsa el az értékek közül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * Tekintse meg, hogyan használható a deklaratív kiépítés az [alapértelmezett konfiguráció megismeréséhez](concept-azure-ad-connect-sync-default-configuration.md).
 * Tekintse meg, hogyan lehet [módosítani az alapértelmezett konfigurációt](how-to-connect-sync-change-the-configuration.md)a deklaratív kiépítés használatával.
@@ -100,4 +100,3 @@ Például:
 **Referencia-témakörök**
 
 * [Azure AD Connect Sync: függvények referenciája](reference-connect-sync-functions-reference.md)
-

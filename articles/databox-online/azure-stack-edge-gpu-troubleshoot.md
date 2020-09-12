@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268322"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290123"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Az Azure Stack Edge GPU-eszköz hibáinak elhárítása 
 
@@ -189,17 +189,17 @@ Itt láthatók a blob Storage szolgáltatással kapcsolatos hibák Azure Stack E
 |Nem sikerült beolvasni a gyermek erőforrásokat. A HTTP-fejlécek egyikének értéke nem megfelelő formátumú.| A **Szerkesztés** menüben válassza a **cél Azure stack API**-k elemet. Ezután indítsa újra Azure Storage Explorer.|
 |getaddrinfo ENOTFOUND <accountname> . blob. <serialnumber> . microsoftdatabox.com|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts-fájlhoz ezen az elérési úton: `C:\Windows\System32\drivers\etc\hosts` Windows vagy `/etc/hosts` Linux rendszeren.|
 |Nem sikerült beolvasni a gyermek erőforrásokat.<br> Részletek: önaláírt tanúsítvány |Importálja az eszközéhez tartozó SSL-tanúsítványt Azure Storage Explorerba: <ol><li>Töltse le a tanúsítványt a Azure Portal. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).</li><li>A **Szerkesztés** menüben válassza az SSL-tanúsítványok lehetőséget, majd válassza a **tanúsítványok importálása**lehetőséget.</li></ol>|
-|A AzCopy parancs úgy tűnik, hogy egy percen keresztül lefagy a hiba megjelenítése előtt:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `C:\Windows\System32\drivers\etc\hosts` .|
-|A AzCopy parancs úgy tűnik, hogy egy percen keresztül lefagy a hiba megjelenítése előtt:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
-|A AzCopy parancs úgy tűnik, hogy 20 percen belül lefagy a hiba megjelenítése előtt:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `/etc/hosts` .|
-|A AzCopy parancs úgy tűnik, hogy 20 percen belül lefagy a hiba megjelenítése előtt:<br>`Error parsing source location… The SSL connection could not be established`. |Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
-|A AzCopy parancs úgy tűnik, hogy 20 percen belül lefagy a hiba megjelenítése előtt:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `/etc/hosts` .|
-|A AzCopy parancs úgy tűnik, hogy 20 percen belül lefagy a hiba megjelenítése előtt: `Error parsing source location… The SSL connection could not be established` .|Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt nem válaszol egy percre:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `C:\Windows\System32\drivers\etc\hosts` .|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt nem válaszol egy percre:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt 20 perccel nem válaszol:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `/etc/hosts` .|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt 20 perccel nem válaszol:<br>`Error parsing source location… The SSL connection could not be established`. |Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt 20 perccel nem válaszol:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `/etc/hosts` .|
+|A AzCopy parancs úgy tűnik, hogy 20 percen belül leállítja a válaszadást a hiba megjelenítése előtt: `Error parsing source location… The SSL connection could not be established` .|Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
 |A HTTP-fejlécek egyikének értéke nem megfelelő formátumú.|A Data Box nem támogatja a Python Microsoft Azure Storage könyvtárának telepített verzióját. Lásd: Azure Data Box blob Storage-követelmények a támogatott verziókhoz.|
 |… [SSL: CERTIFICATE_VERIFY_FAILED]...| A Python futtatása előtt állítsa a REQUESTS_CA_BUNDLE környezeti változót a Base64 kódolású SSL-tanúsítványfájl elérési útjára (lásd: [a tanúsítvány letöltése](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Például:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Másik lehetőségként adja hozzá a tanúsítványt a rendszer tanúsítványtárolóhoz, majd állítsa be ezt a környezeti változót a tároló elérési útjára. Például az Ubuntu rendszeren:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |A kapcsolatok időtúllépést mutatnak.|Jelentkezzen be az Azure Stack Edge-be, majd győződjön meg arról, hogy a zárolása fel van oldva. Az eszköz minden újraindításakor zárolva marad, amíg valaki bejelentkezik.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk a [jelen kiadás ismert problémáiról](azure-stack-edge-gpu-2008-release-notes.md).

@@ -12,16 +12,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de22cfd3505fe4d632a722cfec923a0eb8e66062
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c46fe5a4199e73cd22aeef4df62daeed4b58db06
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254116"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291313"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Offline FairPlay streaming iOS-hez Media Services v3
 
@@ -209,6 +209,6 @@ Ha az FPS Server SDK 3-as vagy 4-es verziójú verzióját használja, és ha eg
 
 [A gyakori kérdések a hibaelhárítással kapcsolatban nyújtanak segítséget](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [AES-128 használatával történő védelem](protect-with-aes128.md) ismertetése

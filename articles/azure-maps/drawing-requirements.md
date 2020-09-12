@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 4a57719ec9e7b22ed81ee6f07a568a993846de42
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: af7238ca4229bac678061c742f13953299a96ba4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374320"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290021"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
@@ -25,16 +25,16 @@ A rajzfájl DWG formátumban mentett rajzokat tartalmaz, amely az Autodesk AutoC
 
 Bármelyik CAD-szoftvert kiválaszthatja a rajzok létrehozásához a rajzolási csomagban.  
 
-A [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) átalakítja a rajzolási csomagot a leképezési adatként.  Az átalakítási szolgáltatás az AutoCAD DWG fájlformátum használatával lett kifejlesztve és tesztelve. `AC1032`a DWG-fájlok belső formátumú verziója. Javasoljuk, hogy válassza `AC1032` a belső DWG fájlformátum verzióját.  
+A [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) átalakítja a rajzolási csomagot a leképezési adatként.  Az átalakítási szolgáltatás az AutoCAD DWG fájlformátum használatával lett kifejlesztve és tesztelve. `AC1032` a DWG-fájlok belső formátumú verziója. Javasoljuk, hogy válassza `AC1032` a belső DWG fájlformátum verzióját.  
 
 A dokumentumban használt kifejezések glosszáriuma.
 
-| Kifejezés  | Definíció |
+| Időszak  | Definíció |
 |:-------|:------------|
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy olyan fájl, amely az elsődleges rajzhoz külső hivatkozásként csatolt AutoCAD DWG-fájlformátumban (. DWG) van csatolva.  |
-| Funkció | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Jellemző | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy egység például egy szolgáltatás osztály, az Office pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -80,7 +80,7 @@ Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típu
 | Réteg | Entitástípusok | Szolgáltatások |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
-| [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
+| [Unit (Egység)](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
 | [Fal](#wall-layer)  | Sokszög, vonallánc (lezárt), kör | Nem alkalmazható. További információért lásd a [fal réteget](#wall-layer).
 | [Ajtó](#door-layer) | Sokszög, vonallánc, vonal, CircularArc, kör | Nyílások
 | [Zóna](#zone-layer) | Sokszög, vonallánc (lezárt), kör | Zóna
@@ -359,7 +359,6 @@ Alább látható a minta rajzolási csomaghoz tartozó jegyzékfájl-fájl. A te
             "nameAlt": "Basement01", 
             "nameSubtitle": "01", 
             "addressRoomNumber": "B01", 
-            "nonWheelchairAccessible": false, 
             "nonPublic": true, 
             "isRoutable": true, 
             "isOpenArea": true 
@@ -402,7 +401,7 @@ Alább látható a minta rajzolási csomaghoz tartozó jegyzékfájl-fájl. A te
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rajzolási csomag megfelel a követelményeknek, a [Azure Maps konverziós szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával. A beltéri térképek modul használatáról a következő cikkekből tájékozódhat:
 

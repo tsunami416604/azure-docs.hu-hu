@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f188d959bf702a2907fe34805b41fa62cae7ee40
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 11485ebac449cbde0a4f31e2a099a153476577b6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265388"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289511"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket
 
@@ -55,7 +55,7 @@ További információkért lásd:
 > [!NOTE]
 > Ha törli az élő kimenetet, nem törli az objektum mögöttes eszközét és tartalmát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Videók kivágása](subclip-video-rest-howto.md).
 * [Az eszközökhöz tartozó szűrők definiálása](filters-dynamic-manifest-rest-howto.md).

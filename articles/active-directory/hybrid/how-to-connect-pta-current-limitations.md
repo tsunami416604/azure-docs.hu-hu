@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6efff54d2c28659af27161ab4cd4753302210006
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358412"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280196"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory átmenő hitelesítés: jelenlegi korlátozások
 
@@ -43,9 +43,9 @@ A következő forgatókönyvek támogatottak:
 
 A következő forgatókönyvek _nem_ támogatottak:
 
-- A [kiszivárgott hitelesítő adatokkal](../reports-monitoring/concept-risk-events.md#leaked-credentials)rendelkező felhasználók észlelése.
+- A [kiszivárgott hitelesítő adatokkal](../identity-protection/overview-identity-protection.md)rendelkező felhasználók észlelése.
 - Azure AD Domain Services jelszó-kivonatolási szinkronizálást kell engedélyezni a bérlőn. Az _átmenő hitelesítést használó_ bérlők ezért nem működnek olyan helyzetekben, amelyeknek Azure ad domain Servicesra van szükségük.
-- Az átmenő hitelesítés nincs integrálva a [Azure ad Connect Healthba](whatis-hybrid-identity-health.md).
+- Az átmenő hitelesítés nincs integrálva a [Azure ad Connect Healthba](./whatis-azure-ad-connect.md).
 
 > [!IMPORTANT]
 > Megkerülő megoldásként _csak_ a nem támogatott forgatókönyvek esetében (Azure ad Connect Health integráció kivételével) engedélyezze a jelszó-kivonatok szinkronizálását a Azure ad Connect varázsló [választható szolgáltatások](how-to-connect-install-custom.md#optional-features) lapján.
@@ -53,7 +53,7 @@ A következő forgatókönyvek _nem_ támogatottak:
 > [!NOTE]
 > A jelszó-kivonat szinkronizálásának engedélyezése lehetőséget biztosít a feladatátvétel hitelesítésére, ha a helyszíni infrastruktúra megszakad. Ez a feladatátvétel az átmenő hitelesítéstől a jelszó-kivonat szinkronizálására nem automatikus. A bejelentkezési módszert manuálisan kell átváltania Azure AD Connect használatával. Ha a Azure AD Connect-t futtató kiszolgáló leáll, segítségre van szüksége Microsoft ügyfélszolgálata az átmenő hitelesítés kikapcsolásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): az Azure ad átmenő hitelesítésének megkezdése.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/ADFSTOPTADPDownload) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.
 - [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): megtudhatja, hogyan konfigurálhatja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.

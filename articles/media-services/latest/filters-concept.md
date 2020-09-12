@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cc3bc176798efda46f03c80fe9cce2edd7daf6b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262634"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291551"
 ---
 # <a name="filters"></a>Szűrők
 
@@ -156,7 +156,7 @@ Nem ajánlott frissíteni egy aktívan közzétett **adatfolyam-keresőhöz**tá
 
 Ha módosítani kell a szűrő definícióját, érdemes létrehozni egy új szűrőt, és hozzá kell adni azt a **streaming-lokátor** URL-címéhez, vagy közzé kell tennie egy új **streaming-keresőt** , amely közvetlenül hivatkozik a szűrőre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek bemutatják, hogyan hozhat létre programozott módon szűrőket.  
 

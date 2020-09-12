@@ -7,14 +7,14 @@ author: johndeu
 manager: johndeu
 ms.author: johndeu
 ms.date: 08/31/2020
-ms.topic: article
+ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: b246833b5a6ea38c70afe49f8b2d0421943a3a02
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256786"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295359"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ellenőrzött helyszíni élő adatfolyam-kódolók
 
@@ -120,6 +120,6 @@ A tartalom lejátszásához a hang-és video streamnek is jelen kell lennie. A c
 
 [Élő közvetítés a Media Services v3-val](live-streaming-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A kódoló ellenőrzése](become-on-premises-encoder-partner.md)

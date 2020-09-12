@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: a1b2738e3be2e2b8a388ef80ca94764cdae99b08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047358"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294237"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Márkák modell testreszabása Video Indexer
 
 A Video Indexer támogatja a beszédfelismerés és a vizualizáció szövegének felderítését a videó-és hangtartalom indexelése és újraindexelése során. A márka észlelési funkciója a Bing márkák adatbázisa által javasolt termékek, szolgáltatások és vállalatok megemlítését azonosítja. Ha például a Microsoft a videóban vagy a hangtartalomban szerepel, vagy ha a videó vizualizációs szövegben jelenik meg, akkor Video Indexer a tartalmat a tartalomban márkaként észleli. A márkák más feltételek alapján disambiguated a kontextus használatával.
 
-A márka észlelése számos különböző üzleti forgatókönyvben hasznos lehet, például a tartalmak archiválása és felderítése, a kontextusbeli reklámozás, a közösségi média elemzése, a kiskereskedelmi verseny elemzése és sok más. A Video Indexer márka észlelése lehetővé teszi a beszéd-és vizualizációs szövegek, a Bing márkák adatbázisának, valamint a testreszabási funkcióinak indexelését az egyes Video Indexer-fiókokhoz tartozó egyéni márkák modell kiépítése révén. A Custom Brands Model szolgáltatással kiválaszthatja, hogy Video Indexer észleli-e a Bing Brands-adatbázisból származó márkákat, kizár bizonyos márkákat a rendszerből (lényegében a márkák fekete listáját hozza létre), és olyan márkákat tartalmazzon, amelyek nem a Bing Brands-adatbázisában találhatók (lényegében a márkák fehér listáját hozza létre). A létrehozott egyéni Brands modell csak abban a fiókban lesz elérhető, amelyben létrehozta a modellt.
+A márka észlelése számos különböző üzleti forgatókönyvben hasznos lehet, például a tartalmak archiválása és felderítése, a kontextusbeli reklámozás, a közösségi média elemzése, a kiskereskedelmi verseny elemzése és sok más. A Video Indexer márka észlelése lehetővé teszi a beszéd-és vizualizációs szövegek, a Bing márkák adatbázisának, valamint a testreszabási funkcióinak indexelését az egyes Video Indexer-fiókokhoz tartozó egyéni márkák modell kiépítése révén. A Custom Brands Model szolgáltatással kiválaszthatja, hogy Video Indexer észleli-e a Bing Brands adatbázisából származó márkákat, kizár bizonyos márkákat a rendszerből (lényegében a nem jóváhagyott márkák listáját hozza létre), és olyan márkákat tartalmazzon, amelyeknek a típusa nem a Bing márka-adatbázisában található (lényegében létrehozta a jóváhagyott márkák listáját). A létrehozott egyéni Brands modell csak abban a fiókban lesz elérhető, amelyben létrehozta a modellt.
 
 ## <a name="out-of-the-box-detection-example"></a>A Box észlelési példája
 
@@ -33,7 +33,7 @@ Ha az építőipar kontextusában a Windowsról beszél, a "Windows" szót nem i
 
 A saját márkák létrehozásához tekintse meg a következő lépéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)
 

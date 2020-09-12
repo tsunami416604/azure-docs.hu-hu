@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447089"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279261"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: az eszköz visszaírási engedélyezése
 > [!NOTE]
@@ -31,10 +31,10 @@ ms.locfileid: "87447089"
 
 Az alábbi dokumentáció a Azure AD Connect eszköz visszaírási funkciójának engedélyezését ismerteti. Az eszköz visszaírási a következő esetekben használja:
 
-* [A vállalati Windows Hello engedélyezése hibrid tanúsítvány-megbízhatósági telepítés használatával](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* [A vállalati Windows Hello engedélyezése hibrid tanúsítvány-megbízhatósági telepítés használatával](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Az eszközökön alapuló feltételes hozzáférés engedélyezése az ADFS (2012 R2 vagy újabb) által védett alkalmazások (függő entitások megbízhatóságai) alapján.
 
-Ez további biztonságot és garanciát nyújt, hogy az alkalmazásokhoz való hozzáférés csak a megbízható eszközök számára legyen elérhető. A feltételes hozzáféréssel kapcsolatos további információkért tekintse meg a [kockázatkezelés feltételes hozzáféréssel való kezelésével](../active-directory-conditional-access-azure-portal.md) és [a helyszíni feltételes hozzáférés beállítása a Azure Active Directory Eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)című témakört.
+Ez további biztonságot és garanciát nyújt, hogy az alkalmazásokhoz való hozzáférés csak a megbízható eszközök számára legyen elérhető. A feltételes hozzáféréssel kapcsolatos további információkért tekintse meg a [kockázatkezelés feltételes hozzáféréssel való kezelésével](../conditional-access/overview.md) és [a helyszíni feltételes hozzáférés beállítása a Azure Active Directory Eszközregisztráció használatával](../devices/overview.md)című témakört.
 
 > [!IMPORTANT]
 > <li>Az eszközöknek a felhasználókkal megegyező erdőben kell lenniük. Mivel az eszközöket egyetlen erdőhöz kell visszaírni, ez a funkció jelenleg nem támogatja a több felhasználói erdővel rendelkező telepítést.</li>
@@ -83,7 +83,7 @@ Az eszköz visszaírási megfelelően működnie kell. Vegye figyelembe, hogy az
    ![Active Directory felügyeleti központ regisztrált eszközök listája](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
-A forgatókönyv végrehajtásához szükséges részletes utasítások a helyszíni [feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)érhetők el.
+A forgatókönyv végrehajtásához szükséges részletes utasítások a helyszíni [feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../devices/overview.md)érhetők el.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>A visszaírási jelölőnégyzet továbbra is le van tiltva
@@ -126,9 +126,8 @@ Konfiguráció ellenőrzése Active Directoryban:
 ![Hibaelhárítás, engedélyek ellenőrzése az eszköz regisztrációs konfigurációjában](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>További információ
-* [Kockázatkezelés feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)
-* [Helyszíni feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Kockázatkezelés feltételes hozzáféréssel](../conditional-access/overview.md)
+* [Helyszíni feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../devices/overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
-

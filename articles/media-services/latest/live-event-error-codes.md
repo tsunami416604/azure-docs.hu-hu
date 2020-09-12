@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265371"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291534"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services élő események hibakódja
 
@@ -30,7 +30,7 @@ Az ebben a szakaszban szereplő táblázatok az [élő események](live-events-o
 
 Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) eseményeire, a következő hibák valamelyikét láthatja a [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)  eseményből.
 
-| Eredménykód | Leírás |
+| Eredménykód | Description |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Helytelen betöltési URL-cím |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | A kódoló IP-címe nem található a beállított IP-engedélyezési listán |
@@ -48,7 +48,7 @@ Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) ese
 
 A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) eseményből.
 
-|Eredménykód|Leírás|
+|Eredménykód|Description|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|Az RTMP-munkamenet időtúllépést követően időtúllépést követett el az engedélyezett időkorlát után.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|A videó-vagy hangFLVTag időbélyege érvénytelen az RTMP-kódolótól.|
@@ -60,6 +60,6 @@ A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](me
 
 [Adatfolyam-végpont (forrás) hibakódok](streaming-endpoint-error-codes.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: élő közvetítés Media Services](stream-live-tutorial-with-api.md)

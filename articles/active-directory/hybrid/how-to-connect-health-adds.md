@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7e8e3219cc2b11ed123889973c375edd22664d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75b439c2753db17cffecdc97b6389a7b31b833e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359398"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279873"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Az Azure AD Connect Health használata az AD DS szolgáltatással
 Az alábbi dokumentáció az Active Directory tartományi szolgáltatások Azure AD Connect Health használatával történő figyelésére vonatkozik. Az AD DS támogatott verziói: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016.
@@ -57,11 +57,10 @@ Ez a funkció különböző teljesítményszámlálók grafikus trendjeit jelen�
 Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de belefoglalhat továbbiakat is úgy, hogy a szűrő parancsra kattint, és kijelöli a kívánt teljesítményszámlálót, vagy törli annak jelölését. Továbbá, egy teljesítményszámláló diagramjára duplán kattintva megnyílik egy új panel, amely az egyes megfigyelt tartományvezérlőkhöz tartozó adatpontokat tartalmazza.
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)](how-to-connect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
 * [Szinkronizálás Azure AD Connect Health használata](how-to-connect-health-sync.md)
 * [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](reference-connect-health-faq.md)
 * [Azure AD Connect Health korábbi verziók](reference-connect-health-version-history.md)
-

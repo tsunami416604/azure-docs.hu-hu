@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3aa8d691eb62b94c5784d8a6efc35b53a3762d7f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921149"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294118"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Kérelmek küldése a Bing Autosuggest APInak.
 
@@ -23,7 +23,7 @@ Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a B
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Bing Autosuggest API végpont
 
-A **Bing AutoSuggest API** egy végpontot tartalmaz, amely egy részleges keresési kifejezésből származó javasolt lekérdezések listáját adja vissza.
+A **Bing AutoSuggest API**  egy végpontot tartalmaz, amely egy részleges keresési kifejezésből származó javasolt lekérdezések listáját adja vissza.
 
 Ha a Bing API használatával szeretne felvenni a javasolt lekérdezéseket, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
 
@@ -64,7 +64,7 @@ Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://d
 > [!NOTE]
 > Ha a Bing Autosuggest API a JavaScriptből hívja meg, a böngésző beépített biztonsági funkciói megakadályozhatják a fejlécek értékének elérését.
 
-Ennek megoldásához a Bing Autosuggest API kérelmet egy CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
+Ennek megoldásához a Bing Autosuggest API kérelmet egy CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely a válaszok fejléceit szűri, és elérhetővé teszi őket a JavaScript számára.
 
 Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](../tutorials/autosuggest.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
@@ -173,7 +173,7 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

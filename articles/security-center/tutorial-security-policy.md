@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519354"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277663"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -40,7 +40,7 @@ Security Center a következő lehetőségeket kínálja a biztonsági házirende
 * **Szabályozási megfelelőségi szabályzatok hozzáadása** – a Security Center szabályozási megfelelőségi irányítópultja egy adott szabvány vagy szabályozás (például Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020) kontextusában jeleníti meg a környezet összes értékelésének állapotát. További információ: [a szabályozás megfelelőségének javítása](security-center-compliance-dashboard.md).
 
 
-## <a name="managing-your-security-policies"></a>Biztonsági szabályzatok kezelése
+## <a name="manage-your-security-policies"></a>Biztonsági szabályzatok kezelése
 
 Biztonsági szabályzatok megtekintése a Security Centerben:
 
@@ -54,7 +54,7 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 1. Megjelenik az adott előfizetés vagy felügyeleti csoport biztonsági szabályzat lapja. Megjeleníti az elérhető és hozzárendelt házirendeket.
 
-   ![házirend képernyő](./media/tutorial-security-policy/security-policy-page.png)
+   ![házirend lap](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > Ha az alapértelmezett szabályzat mellett "MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
@@ -111,17 +111,17 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
 1. Válassza a **hatályos szabályzat megtekintése**lehetőséget.
 
-   ![házirend letiltása](./media/tutorial-security-policy/view-effective-policy.png)
+   ![házirend megtekintése](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. Válassza ki a hozzárendelt szabályzatot.
 
-   ![házirend letiltása](./media/tutorial-security-policy/security-policy.png)
+   ![házirend kiválasztása](./media/tutorial-security-policy/security-policy.png)
 
 1. A **Parameters (paraméterek** ) szakaszban keresse meg a letiltani kívánt javaslatot meghívó házirendet, és a legördülő listából válassza a **Letiltva** lehetőséget.
 
    ![házirend letiltása](./media/tutorial-security-policy/disable-policy.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    > [!NOTE]
    > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.

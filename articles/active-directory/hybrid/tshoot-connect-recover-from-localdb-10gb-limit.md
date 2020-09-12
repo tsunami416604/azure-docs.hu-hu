@@ -16,17 +16,17 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355998"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275902"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk a helyreállítási lépéseket ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 Két gyakori tünet:
 
 * Azure AD Connect szinkronizációs szolgáltatás **fut,** de nem tud szinkronizálni a *"leállított-adatbázis-lemez-teljes"* hibával.
@@ -55,7 +55,7 @@ Először is állapítsa meg, hogy a szinkronizálási szolgáltatás továbbra 
 5. Ha nem fut, próbálja meg elindítani a szolgáltatást. Ha a szolgáltatás sikeresen elindul, hagyja ki [az adatbázis lekicsinyítése](#shrink-the-database) lépést, és válassza a [futtatási előzmények törlése](#delete-run-history-data) lépést. Ellenkező esetben folytassa [az adatbázis lépésének Lekicsinyítésével](#shrink-the-database) .
 
 ### <a name="shrink-the-database"></a>Az adatbázis zsugorítása
-A Shrink művelettel szabadítson fel elegendő adatbázis-területet a szinkronizálási szolgáltatás elindításához. Üresen szabadít fel adatbázis-területet a szóközök eltávolításával az adatbázisban. Ez a lépés a legjobb megoldás, mivel nem garantált, hogy mindig helyre tudja állítani a helyet. Ha többet szeretne megtudni a zsugorodó műveletről, olvassa el ezt a cikket [egy adatbázis zsugorítása](https://msdn.microsoft.com/library/ms189035.aspx)című cikkben.
+A Shrink művelettel szabadítson fel elegendő adatbázis-területet a szinkronizálási szolgáltatás elindításához. Üresen szabadít fel adatbázis-területet a szóközök eltávolításával az adatbázisban. Ez a lépés a legjobb megoldás, mivel nem garantált, hogy mindig helyre tudja állítani a helyet. Ha többet szeretne megtudni a zsugorodó műveletről, olvassa el ezt a cikket [egy adatbázis zsugorítása](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)című cikkben.
 
 > [!IMPORTANT]
 > Hagyja ki ezt a lépést, ha le szeretné kérni a szinkronizálási szolgáltatást. Az SQL-adatbázis zsugorodása nem ajánlott, mivel a töredezettség megnövekedése miatt gyenge teljesítményt eredményezhet.
@@ -100,8 +100,8 @@ Ennek a lépésnek a célja, hogy csökkentse a 10 GB-os korláttal való futás
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>Hosszú távú megoldás – Migrálás teljes SQL-re
 Általánosságban a probléma általában azt jelzi, hogy a 10 GB-os adatbázis mérete már nem elegendő ahhoz, hogy Azure AD Connect a helyszíni Active Directory az Azure AD-vel való szinkronizálásához. Javasoljuk, hogy az SQL Server teljes verziójának használatára váltson. Az Azure AD Connect üzemelő példányának LocalDB adatbázisát nem cserélheti le közvetlenül az SQL teljes verziójának adatbázisára. Ehelyett egy új Azure AD Connect-kiszolgálót kell üzembe helyeznie az SQL teljes verziójával. Ajánlott a párhuzamos migrálás, amely során az (SQL-adatbázist tartalmazó) új Azure AD Connect-kiszolgálót átmeneti kiszolgálóként helyezi üzembe a (LocalDB-adatbázist tartalmazó) meglévő Azure AD Connect-kiszolgáló mellett. 
-* A távoli SQL az Azure AD Connecttel történő konfigurálásáról tekintse meg a [Az Azure AD Connect egyéni telepítése](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom) című cikket.
-* Az Azure AD Connect frissítésének párhuzamos migrálásáról tekintse meg az [Azure AD Connect: Frissítés egy előző verzióról a legújabbra](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration) című cikket.
+* A távoli SQL az Azure AD Connecttel történő konfigurálásáról tekintse meg a [Az Azure AD Connect egyéni telepítése](./how-to-connect-install-custom.md) című cikket.
+* Az Azure AD Connect frissítésének párhuzamos migrálásáról tekintse meg az [Azure AD Connect: Frissítés egy előző verzióról a legújabbra](./how-to-upgrade-previous-version.md#swing-migration) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -16,12 +16,12 @@ ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedf1419a763fe0b0f528bee6e1b48e435ec0e2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d8cc39174f6392b0c532948305fa713535f0c9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360027"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279227"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect: eszközbeállítások
 
@@ -43,8 +43,7 @@ Az alábbi dokumentáció a Azure AD Connectban elérhető különböző eszköz
 2.  Az Azure AD hitelesítő adatainak megadása után kiválaszthatja az eszköz beállításai lapon végrehajtandó műveletet.
     ![Eszköz műveletei](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Hibrid Azure AD-csatlakozás konfigurálása](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Hibrid Azure AD-csatlakozás konfigurálása](../devices/hybrid-azuread-join-plan.md)
 * [Eszköz visszaírási konfigurálása/letiltása](how-to-connect-device-writeback.md)
-

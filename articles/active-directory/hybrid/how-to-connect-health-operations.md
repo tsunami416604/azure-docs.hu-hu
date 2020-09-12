@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177618"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276269"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
 Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
@@ -138,7 +138,7 @@ Ha engedélyezni szeretné, hogy a felhasználói hozzáférés a Azure AD Conne
    ![Képernyőkép a Azure AD Connect Health és az Azure RBAC konfigurálási menüjéről](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** elemre.
    ![A Azure AD Connect Health és az Azure RBAC szerepkör-listájának képernyőképe](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. Kattintson az **OK** gombra.<br>
+5. Válassza az **OK** lehetőséget.<br>
 6. A szerepkör-hozzárendelés befejezése után a felhasználók és csoportok megjelennek a listában.<br>
    ![Képernyőkép a Azure AD Connect Health és az Azure RBAC és az új Kiemelt felhasználókról](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
@@ -166,8 +166,8 @@ Eltávolíthatja a Azure AD Connect Health és az Azure RBAC felvett felhasznál
 
 [//]: # (RBAC szakasz vége)
 
-## <a name="next-steps"></a>További lépések
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+## <a name="next-steps"></a>Következő lépések
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
 * [Szinkronizálás Azure AD Connect Health használata](how-to-connect-health-sync.md)

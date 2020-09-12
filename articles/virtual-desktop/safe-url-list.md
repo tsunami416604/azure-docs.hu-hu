@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135861"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291109"
 ---
 # <a name="safe-url-list"></a>Biztonságos URL-címek listája
 
@@ -43,13 +43,13 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 
 |Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
 |---|---|---|---|
-|*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|Nincsenek|
-|*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincsenek|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincsenek|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
-|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|Nincsenek|
-|*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|Nincsenek|
-|*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincsenek|
+|*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|Nincs|
+|*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincs|
+|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
+|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|Nincs|
+|*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|Nincs|
+|*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincs|
 
 >[!NOTE]
 >A Windows virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, amelyekkel engedélyezhető a hálózati forgalom. Jelenleg csak bizonyos URL-címek blokkolását támogatjuk.
@@ -60,7 +60,7 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 >
 >1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
 >2. Nyissa meg az **eseménynaplót**, majd lépjen a **Windows logs**  >  **Application**  >  **WVD-Agent** elemre, és keresse meg a 3701-es azonosítójú eseményt.
->3. Az 3701-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3701-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az összes olyan régióhoz tartozó URL-címmel meg kell ismételnie a blokkolási folyamatot, amelyre telepíteni szeretné a virtuális gépeket a alkalmazásban.
+>3. Oldja fel a 3701-es AZONOSÍTÓJÚ esemény alatt megtalált URL-címeket. Az 3701-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az összes olyan régióhoz tartozó URL-címmel meg kell ismételnie a blokkolási folyamatot, amelyre telepíteni szeretné a virtuális gépeket a alkalmazásban.
 
 ## <a name="remote-desktop-clients"></a>Távoli asztali ügyfelek
 
@@ -68,12 +68,12 @@ A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a k
 
 |Cím|Kimenő TCP-port|Cél|Ügyfél (ek)|
 |---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Összes|
-|*.servicebus.windows.net|443|Hibaelhárítási hibák|Összes|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Összes|
-|aka.ms|443|Microsoft URL-rövidített|Összes|
-|docs.microsoft.com|443|Dokumentáció|Összes|
-|privacy.microsoft.com|443|Adatvédelem|Összes|
+|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|
+|*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|
+|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|
+|aka.ms|443|Microsoft URL-rövidített|Mind|
+|docs.microsoft.com|443|Dokumentáció|Mind|
+|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|
 |query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|
 
 >[!IMPORTANT]

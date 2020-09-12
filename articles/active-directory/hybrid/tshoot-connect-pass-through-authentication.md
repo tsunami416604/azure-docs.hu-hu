@@ -16,19 +16,19 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446994"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275923"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
 Ez a cikk az Azure AD átmenő hitelesítéssel kapcsolatos gyakori problémákról nyújt hibaelhárítási információkat.
 
 >[!IMPORTANT]
->Ha az átmenő hitelesítéssel kapcsolatos felhasználói bejelentkezési problémákat tapasztal, ne tiltsa le a funkciót, vagy távolítsa el az átmenő hitelesítési ügynököket anélkül, hogy csak Felhőbeli globális rendszergazdai fiókkal kellene visszaesnie. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról](../active-directory-users-create-azure-portal.md). Ez a lépés kritikus fontosságú, és gondoskodik arról, hogy ne legyen kizárva a bérlőből.
+>Ha az átmenő hitelesítéssel kapcsolatos felhasználói bejelentkezési problémákat tapasztal, ne tiltsa le a funkciót, vagy távolítsa el az átmenő hitelesítési ügynököket anélkül, hogy csak Felhőbeli globális rendszergazdai fiókkal kellene visszaesnie. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról](../fundamentals/add-users-azure-active-directory.md). Ez a lépés kritikus fontosságú, és gondoskodik arról, hogy ne legyen kizárva a bérlőből.
 
 ## <a name="general-issues"></a>Általános problémák
 
@@ -72,10 +72,10 @@ Annak ellenőrzéséhez, hogy ez a probléma, először ellenőrizze, hogy az á
  ``` 
 4. Amikor a rendszer a hitelesítő adatok megadását kéri, adja meg a bejelentkezéshez használt felhasználónevet és jelszót ( https://login.microsoftonline.com) ).
 
-Ha ugyanazzal a Felhasználónév/jelszóval kapcsolatos hibaüzenetet kap, ez azt jelenti, hogy az áteresztő hitelesítési ügynök megfelelően működik, és a probléma az lehet, hogy a helyszíni UPN nem irányítható. További tudnivalókért tekintse meg az [alternatív bejelentkezési azonosító konfigurálását]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)ismertető témakört.
+Ha ugyanazzal a Felhasználónév/jelszóval kapcsolatos hibaüzenetet kap, ez azt jelenti, hogy az áteresztő hitelesítési ügynök megfelelően működik, és a probléma az lehet, hogy a helyszíni UPN nem irányítható. További tudnivalókért tekintse meg az [alternatív bejelentkezési azonosító konfigurálását]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)ismertető témakört.
 
 > [!IMPORTANT]
-> Ha a Azure AD Connect-kiszolgáló nincs tartományhoz csatlakoztatva, [Azure ad Connect: előfeltételek](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites), Érvénytelen felhasználónév/jelszó hiba lép fel.
+> Ha a Azure AD Connect-kiszolgáló nincs tartományhoz csatlakoztatva, [Azure ad Connect: előfeltételek](./how-to-connect-install-prerequisites.md#installation-prerequisites), Érvénytelen felhasználónév/jelszó hiba lép fel.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Bejelentkezési hibák okai a Azure Active Directory felügyeleti központban (prémium szintű licencre van szükség)
 
@@ -98,7 +98,7 @@ Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejel
 | 80011 | A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot. | Ha a probléma következetesen reprodukálható, telepítsen és regisztráljon egy új hitelesítési ügynököt. És távolítsa el a jelenlegit.
 
 >[!IMPORTANT]
->Az átmenő hitelesítési ügynökök a [Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)meghívásával hitelesítik az Azure ad-felhasználókat a felhasználónevek és a jelszavak Active Directory való ellenőrzésével. Ennek eredményeképpen, ha beállította a "Bejelentkezés a következőre" beállítást a Active Directory a munkaállomás bejelentkezési hozzáférésének korlátozásához, akkor az áteresztő hitelesítési ügynököket futtató kiszolgálókat is fel kell vennie a "Bejelentkezés" kiszolgálókra. Ha ezt nem teszi meg, azzal letiltja a felhasználók számára az Azure AD-ba való bejelentkezést.
+>Az átmenő hitelesítési ügynökök a [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera)meghívásával hitelesítik az Azure ad-felhasználókat a felhasználónevek és a jelszavak Active Directory való ellenőrzésével. Ennek eredményeképpen, ha beállította a "Bejelentkezés a következőre" beállítást a Active Directory a munkaállomás bejelentkezési hozzáférésének korlátozásához, akkor az áteresztő hitelesítési ügynököket futtató kiszolgálókat is fel kell vennie a "Bejelentkezés" kiszolgálókra. Ha ezt nem teszi meg, azzal letiltja a felhasználók számára az Azure AD-ba való bejelentkezést.
 
 ## <a name="authentication-agent-installation-issues"></a>A hitelesítési ügynök telepítési problémái
 

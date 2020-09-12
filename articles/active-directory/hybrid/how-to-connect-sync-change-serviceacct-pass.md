@@ -17,19 +17,19 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385092"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278037"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>A ADSync-szolgáltatásfiók jelszavának módosítása
 Ha módosítja a ADSync-szolgáltatásfiók jelszavát, a szinkronizálási szolgáltatás nem fog megfelelően elindulni, amíg el nem hagyta a titkosítási kulcsot, és újra nem inicializálta a ADSync-szolgáltatásfiók jelszavát. 
 
 Azure AD Connect a szinkronizálási szolgáltatások részeként egy titkosítási kulcsot használ a AD DS Connector-fiók és a ADSync-szolgáltatásfiók jelszavának tárolására.  Ezek a fiókok titkosítva vannak, mielőtt azokat a rendszer az adatbázisban tárolja. 
 
-A használt titkosítási kulcs [védelme a Windows adatvédelem (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx)használatával történik. A DPAPI a **AdSync-szolgáltatásfiók**használatával védi a titkosítási kulcsot. 
+A használt titkosítási kulcs [védelme a Windows adatvédelem (DPAPI)](/previous-versions/ms995355(v=msdn.10))használatával történik. A DPAPI a **AdSync-szolgáltatásfiók**használatával védi a titkosítási kulcsot. 
 
 Ha módosítania kell a szolgáltatásfiók jelszavát, használhatja a [AdSync-szolgáltatásfiók titkosítási kulcsának elhagyása](#abandoning-the-adsync-service-account-encryption-key) a következő eljárásokkal való elvégzéséhez szükséges eljárásokat.  Ezeket az eljárásokat akkor is érdemes használni, ha valamilyen okból le kell hagyni a titkosítási kulcsot.
 
@@ -84,9 +84,9 @@ Hagyjon le egy meglévő titkosítási kulcsot, hogy az új titkosítási kulcs 
 
 2. Indítson el egy új PowerShell-munkamenetet.
 
-3. Navigáljon a mappához:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
+3. Navigáljon a mappához: `'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
-4. Futtassa a parancsot:`./miiskmu.exe /a`
+4. Futtassa a parancsot: `./miiskmu.exe /a`
 
 ![Azure AD Connect Sync encryption Key segédprogram](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230332"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295400"
 ---
 # <a name="blob-snapshots"></a>BLOB-Pillanatképek
 
@@ -90,25 +90,25 @@ A következő forgatókönyvek azt mutatják be, hogyan merülhetnek fel a letil
 
 Az 1. forgatókönyvben az alap blob nem frissült a pillanatkép készítése után, ezért a díjak csak az 1., 2. és 3. egyedi blokkok esetében merülnek fel.
 
-![1. ábra, az alap blob és a pillanatkép egyedi blokkokra vonatkozó számlázását mutatja](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![1. ábra, az alap blob és a pillanatkép egyedi blokkokra vonatkozó számlázását mutatja.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>2\. példa
 
 A 2. forgatókönyvben az alap blob frissült, de a pillanatkép nem. A 3. blokk frissült, annak ellenére, hogy ugyanazokat az adatokkal és ugyanazzal az AZONOSÍTÓval rendelkezik, nem ugyanaz, mint a 3. blokk a pillanatképben. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
-![2. ábra: az alap blobban és a pillanatképben lévő egyedi blokkok számlázásának megjelenítése](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![2. ábra: az alap blob és a pillanatkép egyedi blokkokra vonatkozó számlázását mutatja.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>3\. példa
 
 A 3. forgatókönyvben az alap blob frissült, de a pillanatkép nem. A 3. blokk lecserélve a 4-es blokkra az alap blobban, de a pillanatkép továbbra is a 3. blokkot tükrözi. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
-![3. ábra: az alap blobban és a pillanatképben lévő egyedi blokkok számlázásának megjelenítése](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![3. ábra: az alap blob és a pillanatkép egyedi blokkokra vonatkozó számlázását mutatja.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>4\. példa
 
 A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók minden nyolc egyedi blokk után díjat számít fel.
 
-![4. ábra: az alap blobban és a pillanatképben lévő egyedi blokkok számlázásának megjelenítése](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![4. ábra: az alap blob és a pillanatkép egyedi blokkokra vonatkozó számlázását mutatja.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > Ne hívjon fel olyan metódusokat, amelyek felülírják a teljes blobot, hanem az egyes blokkok frissítésével a költségek alacsonyak maradnak.
@@ -128,6 +128,10 @@ A következő táblázat ismerteti a Blobok vagy Pillanatképek számlázási vi
 | Pillanatkép | A pillanatkép az új rétegben és az alapszintű blobban az eredeti szinten, valamint a többi pillanatkép egyedi blokkja. <sup>1</sup> |
 
 <sup>1</sup> Ha vannak olyan korábbi verziók vagy Pillanatképek, amelyek nem lettek áthelyezve az eredeti szintjéről, akkor ezek a verziók vagy Pillanatképek az általuk tartalmazott egyedi blokkok száma alapján lesznek felszámítva, a [számlázás, ha a blob szintjét nem adta meg explicit módon](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Az alábbi ábra azt szemlélteti, hogyan történik az objektumok számlázása, amikor egy pillanatképet tartalmazó blobot egy másik szintjére helyeznek át.
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="Diagram, amely bemutatja, hogyan történik az objektumok számlázása, amikor egy pillanatképet tartalmazó blob explicit módon van feltüntetve.":::
 
 A blob, a verzió vagy a pillanatkép szintje explicit módon történő beállítása nem vonható vissza. Ha egy blobot egy új szintre helyez át, majd visszahelyezi az eredeti szintjére, akkor akkor is a teljes tartalomért kell fizetnie, ha az objektum más objektumokkal is megosztja az eredeti szintet.
 

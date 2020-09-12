@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60455784"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279567"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Felhasználói adatvédelem és Azure AD Connect 
 
@@ -43,7 +43,7 @@ Egy Azure AD Connect szinkronizáló kiszolgáló a következő felhasználói a
 
 Azure AD Connect ügyfeleknek a következő irányelveket kell használniuk a felhasználói adatvesztések eltávolításakor:
 1.  Törölje a Azure AD Connect telepítési naplófájlokat rendszeres időközönként tartalmazó mappa tartalmát – legalább 48 óránként
-2.  Ez a termék eseménynaplókat is létrehozhat.  Az eseménynaplók naplóival kapcsolatos további tudnivalókért tekintse meg a [dokumentációt itt](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
+2.  Ez a termék eseménynaplókat is létrehozhat.  Az eseménynaplók naplóival kapcsolatos további tudnivalókért tekintse meg a [dokumentációt itt](/windows/win32/wes/windows-event-log).
 
 Egy személy adatait a rendszer automatikusan eltávolítja a Azure AD Connect-adatbázisból, ha az adott személy adatait eltávolítja a forrásból, ahonnan származik. Nem szükséges, hogy a rendszergazdák GDPR a megfelelő lépéseket.  Szükség van azonban arra, hogy a Azure AD Connect-adatait legalább két naponként szinkronizálja az adatforrással.
 
@@ -82,6 +82,6 @@ Az alábbi lépések végrehajtásával ütemezze a parancsfájlt minden 48 ór�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft adatvédelmi szabályzatának áttekintése a megbízhatósági központban](https://www.microsoft.com/trustcenter)
 * [Azure AD Connect Health és felhasználói adatvédelem](reference-connect-health-user-privacy.md)

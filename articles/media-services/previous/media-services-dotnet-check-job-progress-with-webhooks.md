@@ -521,7 +521,7 @@ Ebben a szakaszban a webhook-értesítés feladathoz való hozzáadását ismert
             }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

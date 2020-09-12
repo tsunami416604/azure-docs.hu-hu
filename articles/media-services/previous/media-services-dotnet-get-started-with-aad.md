@@ -207,6 +207,6 @@ namespace AzureADAuthSample
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a [fájlok feltöltésével a fiókjába](media-services-dotnet-upload-files.md).

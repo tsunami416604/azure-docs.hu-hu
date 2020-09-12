@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 065c6661ffc9f618a5dfd32a9f45d26569a56003
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559568"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278173"
 ---
 # <a name="using-custom-security-policies"></a>Egyéni biztonsági házirendek használata
 
@@ -40,7 +40,7 @@ Amint azt [a Azure Policy dokumentációban](https://docs.microsoft.com/azure/go
 
     [![Kattintson az egyéni kezdeményezés hozzáadása lehetőségre.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
-    A következő oldal jelenik meg:
+    Az alábbi oldal nyílik meg:
 
     ![Szabályzat létrehozása vagy hozzáadása](media/custom-security-policies/create-or-add-custom-policy.png)
 
@@ -52,7 +52,7 @@ Amint azt [a Azure Policy dokumentációban](https://docs.microsoft.com/azure/go
     1. Adja meg a definíció helyét és nevét.
     1. Válassza ki a felvenni kívánt házirendeket, majd kattintson a **Hozzáadás**gombra.
     1. Adja meg a kívánt paramétereket.
-    1. Kattintson a **Save** (Mentés) gombra.
+    1. Kattintson a **Mentés** gombra.
     1. Az egyéni kezdeményezések hozzáadása lapon kattintson a frissítés elemre. Az új kezdeményezés elérhetőként jelenik meg.
     1. Kattintson a **Hozzáadás** gombra, és rendelje hozzá az előfizetéséhez.
 
@@ -69,7 +69,7 @@ Amint azt [a Azure Policy dokumentációban](https://docs.microsoft.com/azure/go
 
     [![Egyéni javaslatok](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>Részletes információ az egyéni javaslatok tökéletesítéséről
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Részletes információkkal bővítheti egyéni javaslatait
 
 A Azure Security Centerhez mellékelt beépített ajánlások olyan részleteket tartalmaznak, mint például a súlyossági szintek és a Szervizelési utasítások. Ha ezt a típusú információt szeretné felvenni az egyéni javaslataiba, hogy az megjelenjen a Azure Portalban, vagy bárhol hozzáférjen a javaslataihoz, akkor a REST API kell használnia. 
 
@@ -139,7 +139,7 @@ Az alábbi példa egy egyéni házirendre mutat példát, beleértve a metaadato
 A securityCenter tulajdonság használatának egy másik példáját a [REST API dokumentációjának ezen szakasza](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)tartalmazza.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági házirendeket. 
 

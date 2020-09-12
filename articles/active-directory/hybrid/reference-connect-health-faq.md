@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182377"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276201"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
 Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
@@ -70,10 +70,10 @@ A Azure AD Connect Health a németországi felhőben nem támogatott, kivéve a 
 
 | Szerepkörök | Szolgáltatások | Támogatott a német felhőben |
 | ------ | --------------- | --- |
-| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | Nem |
-|  | Szinkronizálási hibajelentés | Igen |
-| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | Nem |
-| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | Nem |
+| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | No |
+|  | Szinkronizálási hibajelentés | Yes |
+| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | No |
+| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | No |
 
 Annak érdekében, hogy az ügynök kapcsolatba lépjen a csatlakozás állapota szinkronizáláshoz, a [telepítési követelményt](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően konfigurálja.
 
@@ -190,18 +190,18 @@ CheckForMS17-010
 
 **K: Miért jelenik meg a <i>Get-MsolDirSyncProvisioningError PowerShell-</i> parancsmag kevesebb szinkronizálási hiba az eredményben?**
 
-A <i>Get-MsolDirSyncProvisioningError</i> csak az rsync kiépítési hibáit fogja visszaadni. Ezen kívül a csatlakozási állapot portálon más szinkronizálási hibák is láthatók, például az exportálási hibák. Ez konzisztens Azure AD Connect különbözeti eredménysel. További információ [Azure ad Connect szinkronizálási hibákról](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+A <i>Get-MsolDirSyncProvisioningError</i> csak az rsync kiépítési hibáit fogja visszaadni. Ezen kívül a csatlakozási állapot portálon más szinkronizálási hibák is láthatók, például az exportálási hibák. Ez konzisztens Azure AD Connect különbözeti eredménysel. További információ [Azure ad Connect szinkronizálási hibákról](./tshoot-connect-sync-errors.md).
 
 **K: Miért nem jönnek létre az ADFS-naplózások?**
 
-Használja a <i>Get-AdfsProperties-AuditLevel PowerShell-</i> parancsmagot annak biztosítására, hogy a naplók nem letiltott állapotban legyenek. További információ az [ADFS-naplókkal](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)kapcsolatban. Figyelje meg, hogy vannak-e olyan speciális naplózási beállítások, amelyeket az ADFS-kiszolgálóra leküldtek, auditpol.exe felülírja a módosításokat (esemény, ha az alkalmazás létrehozva nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet, hogy naplózza az alkalmazás által generált hibákat és sikereket.
+Használja a <i>Get-AdfsProperties-AuditLevel PowerShell-</i> parancsmagot annak biztosítására, hogy a naplók nem letiltott állapotban legyenek. További információ az [ADFS-naplókkal](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)kapcsolatban. Figyelje meg, hogy vannak-e olyan speciális naplózási beállítások, amelyeket az ADFS-kiszolgálóra leküldtek, auditpol.exe felülírja a módosításokat (esemény, ha az alkalmazás létrehozva nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet, hogy naplózza az alkalmazás által generált hibákat és sikereket.
 
 **K: Mikor kerül sor az ügynök tanúsítványának automatikus megújítására a lejárat előtt?**
 Az ügynök minősítése a lejárat napja előtt **6 hónappal** automatikusan megújul. Ha nem újítják meg, gondoskodjon arról, hogy az ügynök hálózati kapcsolatai stabilak legyenek. A probléma megoldásához indítsa újra az ügynök szolgáltatásait, vagy frissítsen a legújabb verzióra.
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health műveletek](how-to-connect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)

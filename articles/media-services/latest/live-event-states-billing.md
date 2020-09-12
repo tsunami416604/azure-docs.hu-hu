@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 37098b8268d5a451935c925114fb762c574fa55c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1b058eefe22238b60c3482c55b5ae340f4e597f0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265303"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296736"
 ---
 # <a name="live-event-states-and-billing"></a>Élő események állapotai és számlázása
 
@@ -39,13 +39,13 @@ Az élő esemény a következő állapotok egyikében lehet.
 |---|---|
 |**Leállítva**| Ez az élő esemény kezdeti állapota a létrehozás után (kivéve, ha az autostart értéke TRUE (igaz).) Ebben az állapotban nem történik számlázás. Ebben az állapotban az élő esemény tulajdonságai frissíthetők, de a folyamatos átvitel nem engedélyezett.|
 |**Indítás**| Az élő esemény elindult, és az erőforrások le vannak foglalva. Ebben az állapotban nem történik számlázás. A frissítések vagy a folyamatos átvitel nem engedélyezett ebben az állapotban. Ha hiba lép fel, az élő esemény visszaállítja a leállított állapotot.|
-|**Fut**| Az élő esemény erőforrásai lefoglalva, betöltési és előnézeti URL-címek lettek létrehozva, és képesek élő streamek fogadására. Ezen a ponton a számlázás aktív. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását.|
+|**Futó**| Az élő esemény erőforrásai lefoglalva, betöltési és előnézeti URL-címek lettek létrehozva, és képesek élő streamek fogadására. Ezen a ponton a számlázás aktív. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását.|
 |**Leállítás**| Az élő esemény leáll, és a rendszer kiépíti az erőforrásokat. Ebben az átmeneti állapotban nem történik számlázás. A frissítések vagy a folyamatos átvitel nem engedélyezett ebben az állapotban.|
 |**Törlés**| Folyamatban van az élő esemény törlése. Ebben az átmeneti állapotban nem történik számlázás. A frissítések vagy a folyamatos átvitel nem engedélyezett ebben az állapotban.|
 
 Dönthet úgy, hogy engedélyezi az élő átírásokat az élő esemény létrehozásakor. Ha így tesz, az élő átírások után számítunk fel díjat, ha az élő esemény **fut** állapotban van. Vegye figyelembe, hogy a számlázás akkor is megtörténik, ha az élő eseményen nem folyik hang.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Élő közvetítés – áttekintés](live-streaming-overview.md)
 - [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

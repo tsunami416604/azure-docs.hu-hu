@@ -1,7 +1,7 @@
 ---
 title: Tranzakciós replikáció
 titleSuffix: Azure SQL Managed Instance
-description: Tudnivalók a SQL Server tranzakciós replikációjának használatáról az Azure SQL felügyelt példányaival.
+description: Tudnivalók a SQL Server tranzakciós replikálás használatáról az Azure SQL felügyelt példányaival (előzetes verzió).
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920126"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290514"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL felügyelt példányával
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Tranzakciós replikáció az Azure SQL felügyelt példányaival (előzetes verzió)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 A tranzakciós replikáció az Azure SQL felügyelt SQL Server példányának egyik funkciója, amely lehetővé teszi az adatok replikálását az Azure SQL felügyelt példányain lévő táblákból vagy egy SQL Server-példányból a távoli adatbázisokra helyezett táblákba. Ez a funkció lehetővé teszi több tábla szinkronizálását különböző adatbázisokban. 
@@ -43,7 +43,7 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 
 ![replikálás SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nem | Igen |
 | **Terjesztő** | Nem | Igen|
@@ -74,8 +74,8 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
+| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
 | [**Egyenrangú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
 | [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
@@ -190,7 +190,7 @@ Ha a Geo-replikáció engedélyezve van egy feladatátvételi csoport **előfize
 - Adatvesztéssel rendelkező feladatátvétel esetén a replikáció is működik. A rendszer újra replikálja az elveszett módosításokat.
 - Adatvesztéssel rendelkező feladatátvétel esetén az adatvesztés azonban a terjesztési adatbázis megőrzési idején kívül esik, az SQL felügyelt példányának rendszergazdájának újra kell inicializálnia az előfizetés-adatbázist.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 
@@ -199,7 +199,7 @@ A tranzakciós replikáció konfigurálásával kapcsolatos további informáci�
 - [Hozzon létre egy kiadványt](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 - [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks**). )
 
-## <a name="see-also"></a>További információ  
+## <a name="see-also"></a>Lásd még  
 
 - [Replikálás SQL felügyelt példánnyal és feladatátvételi csoporttal](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replikáció az SQL Database-be](../database/replication-to-sql-database.md)

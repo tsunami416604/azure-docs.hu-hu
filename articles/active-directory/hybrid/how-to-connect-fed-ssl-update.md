@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359585"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279907"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory összevonási szolgáltatások (AD FS) (AD FS) Farm TLS/SSL-tanúsítványának frissítése
 
@@ -34,7 +34,7 @@ A AD FS Farm TLS/SSL-tanúsítványának teljes műveletét a következő három
 
 
 >[!NOTE]
->Ha többet szeretne megtudni az AD FS által használt tanúsítványokról, tekintse meg a [AD FS által használt tanúsítványok ismertetése](https://technet.microsoft.com/library/cc730660.aspx)című témakört.
+>Ha többet szeretne megtudni az AD FS által használt tanúsítványokról, tekintse meg a [AD FS által használt tanúsítványok ismertetése](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11))című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,8 +105,7 @@ A konfiguráció befejezése után Azure AD Connect megjeleníti a frissítés �
 
     Ha eltávolítja a kiszolgálót a listából, Azure AD Connect nem távolítja el a AD FS-konfigurációban. Azure AD Connect referenciák AD FS (Windows Server 2016 vagy újabb) a farmra vonatkozó bármilyen információhoz. Ha a kiszolgáló továbbra is megtalálható a AD FS konfigurációban, a lista vissza lesz listázva.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD Connect és összevonás](how-to-connect-fed-whatis.md)
 - [Active Directory összevonási szolgáltatások (AD FS) felügyelet és testreszabás Azure AD Connect](how-to-connect-fed-management.md)
-

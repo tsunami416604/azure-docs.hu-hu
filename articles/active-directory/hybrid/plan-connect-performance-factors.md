@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253494"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279584"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -43,7 +43,7 @@ A következő ábra a kiépítési motor magas szintű architektúráját mutatj
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-A kiépítési motor csatlakozik az egyes Active Directory erdőkhöz és az Azure AD-hez. Az adatok az egyes könyvtárakból való olvasásának folyamatát importálásnak nevezzük. Az Exportálás a címtárak a kiépítési motorból való frissítését jelenti. A szinkronizálás kiértékeli az objektumok a kiépítési motoron belüli folyamatának szabályait. A további részletekért tekintse meg [Azure ad Connect Sync: az architektúra megismerése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)című témakört.
+A kiépítési motor csatlakozik az egyes Active Directory erdőkhöz és az Azure AD-hez. Az adatok az egyes könyvtárakból való olvasásának folyamatát importálásnak nevezzük. Az Exportálás a címtárak a kiépítési motorból való frissítését jelenti. A szinkronizálás kiértékeli az objektumok a kiépítési motoron belüli folyamatának szabályait. A további részletekért tekintse meg [Azure ad Connect Sync: az architektúra megismerése](./concept-azure-ad-connect-sync-architecture.md)című témakört.
 
 Azure AD Connect a következő átmeneti területeket, szabályokat és folyamatokat használja, hogy lehetővé tegye a szinkronizálást Active Directoryról az Azure AD-re:
 
@@ -52,7 +52,7 @@ Azure AD Connect a következő átmeneti területeket, szabályokat és folyamat
 * **Szinkronizálási szabályok** – eldöntik, hogy mely objektumok lesznek létrehozva (tervezett) vagy csatlakoztatva (összekapcsolva) az MV-beli objektumokhoz. A szinkronizálási szabályok azt is eldöntik, hogy mely attribútumok lesznek átmásolva vagy átalakítva a címtárakba.
 * **Futtatási profilok** – az objektumok és az attribútumok másolásának folyamati lépéseit az átmeneti területek és a csatlakoztatott könyvtárak közötti szinkronizálási szabályoknak megfelelően csomagolja.
 
-Különböző futtatási profilok találhatók a kiépítési motor teljesítményének optimalizálása érdekében. A legtöbb szervezet az alapértelmezett ütemterveket és a futtatási profilokat használja a normál működéshez, de előfordulhat, hogy néhány szervezetnek [módosítania kell az ütemtervet](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) , vagy más futtatási profilokat kell elindítania, hogy az ne legyen gyakori helyzetekben. A következő futtatási profilok érhetők el:
+Különböző futtatási profilok találhatók a kiépítési motor teljesítményének optimalizálása érdekében. A legtöbb szervezet az alapértelmezett ütemterveket és a futtatási profilokat használja a normál működéshez, de előfordulhat, hogy néhány szervezetnek [módosítania kell az ütemtervet](./how-to-connect-sync-feature-scheduler.md) , vagy más futtatási profilokat kell elindítania, hogy az ne legyen gyakori helyzetekben. A következő futtatási profilok érhetők el:
 
 ### <a name="initial-sync-profile"></a>Kezdeti szinkronizálási profil
 
@@ -109,7 +109,7 @@ A szinkronizálási folyamat futtatókörnyezete a következő teljesítménnyel
 
 Az importálni kívánt Active Directory-topológia mérete az a szám, amely befolyásolhatja a teljesítményt és a kiépítési motor belső összetevőinek teljes idejét.
 
-A [szűrést](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) az objektumok szinkronizált értékre való csökkentésére kell használni. Ez megakadályozza a szükségtelen objektumok feldolgozását és exportálását az Azure AD-be. A preferencia sorrendben a következő szűrési módszerek érhetők el:
+A [szűrést](./how-to-connect-sync-configure-filtering.md) az objektumok szinkronizált értékre való csökkentésére kell használni. Ez megakadályozza a szükségtelen objektumok feldolgozását és exportálását az Azure AD-be. A preferencia sorrendben a következő szűrési módszerek érhetők el:
 
 
 
@@ -130,7 +130,7 @@ A Active Directory CS számos állandó [leválasztó objektuma](concept-azure-a
 
 ### <a name="attribute-flows"></a>Attribútumok folyamatai
 
-Az attribútumok folyamata az objektumok attribútumainak az egyik csatlakoztatott címtárból egy másik csatlakoztatott könyvtárba történő másolásának vagy átalakításának folyamata. Ezek a szinkronizálási szabályok részeként vannak meghatározva. Ha például egy felhasználó telefonszámát módosítja a Active Directory, a rendszer frissíti az Azure AD telefonszámát. A szervezetek [módosíthatják az attribútum folyamatait](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) a különböző követelményekhez. Azt javasoljuk, hogy a módosítás előtt másolja a meglévő attribútumok folyamatait.
+Az attribútumok folyamata az objektumok attribútumainak az egyik csatlakoztatott címtárból egy másik csatlakoztatott könyvtárba történő másolásának vagy átalakításának folyamata. Ezek a szinkronizálási szabályok részeként vannak meghatározva. Ha például egy felhasználó telefonszámát módosítja a Active Directory, a rendszer frissíti az Azure AD telefonszámát. A szervezetek [módosíthatják az attribútum folyamatait](./how-to-connect-sync-change-the-configuration.md) a különböző követelményekhez. Azt javasoljuk, hogy a módosítás előtt másolja a meglévő attribútumok folyamatait.
 
 Az egyszerű átirányítások, például az attribútumérték egy másik attribútumra való továbbítása nem befolyásolja a lényeges teljesítményt. Átirányítási példa egy mobil számra Active Directory az Azure AD-ben az Office Phone-számra.
 
@@ -181,7 +181,7 @@ A Azure AD Connect megvalósításának teljesítményének optimalizálása ér
 
 
 - A Azure AD Connect-kiszolgáló megvalósítási méretén alapuló [ajánlott hardverkonfiguráció](how-to-connect-install-prerequisites.md) használata.
-- Ha nagy léptékű központi telepítések során Azure AD Connect frissíteni, érdemes a [swing Migration metódust](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)használni, hogy a lehető legkevesebb állásidőt és a legjobb megbízhatóságot biztosítsa. 
+- Ha nagy léptékű központi telepítések során Azure AD Connect frissíteni, érdemes a [swing Migration metódust](./how-to-upgrade-previous-version.md#swing-migration)használni, hogy a lehető legkevesebb állásidőt és a legjobb megbízhatóságot biztosítsa. 
 - A legjobb írási teljesítmény érdekében használja az SSD-t az SQL Database-hez.
 - Szűrje a Active Directory hatókört úgy, hogy csak olyan objektumokat tartalmazzon, amelyeket az Azure AD-ben kell kiépíteni, tartomány, szervezeti egység vagy attribútum szűrés használatával.
 - Ha módosítania kell az attribútum alapértelmezett folyamatának szabályait, először másolja a szabályt, majd módosítsa a másolást, és tiltsa le az eredeti szabályt. Ne felejtse el újrafuttatni a teljes szinkronizálást.
@@ -189,5 +189,5 @@ A Azure AD Connect megvalósításának teljesítményének optimalizálása ér
 - Törekedni kell arra, hogy 30 percen belül elvégezze a különbözeti szinkronizálási ciklust. Ha a különbözeti szinkronizálási profil nem fejeződött be 30 percen belül, módosítsa az alapértelmezett szinkronizálási gyakoriságot úgy, hogy az tartalmazza a teljes különbözeti szinkronizálási ciklust.
 - A [Azure ad Connect szinkronizálási állapotának](how-to-connect-health-agent-install.md) figyelése az Azure ad-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

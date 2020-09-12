@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358140"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279482"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory átmenő hitelesítés: az előzetes verziójú hitelesítési ügynökök frissítése
 
@@ -60,7 +60,7 @@ A hitelesítési ügynökök verzióinak az előző lépésben azonosított öss
 
 A frissítés előtt győződjön meg arról, hogy a következő elemek vannak érvényben:
 
-1. **Csak felhőalapú globális rendszergazdai fiók létrehozása**: ne frissítsen kizárólag felhőalapú globális rendszergazdai fiókkal olyan vészhelyzeti helyzetekben, ahol az átmenő hitelesítési ügynökök nem működnek megfelelően. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról](../active-directory-users-create-azure-portal.md). Ez a lépés kritikus fontosságú, és gondoskodik arról, hogy ne legyen kizárva a bérlőből.
+1. **Csak felhőalapú globális rendszergazdai fiók létrehozása**: ne frissítsen kizárólag felhőalapú globális rendszergazdai fiókkal olyan vészhelyzeti helyzetekben, ahol az átmenő hitelesítési ügynökök nem működnek megfelelően. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról](../fundamentals/add-users-azure-active-directory.md). Ez a lépés kritikus fontosságú, és gondoskodik arról, hogy ne legyen kizárva a bérlőből.
 2.  **Magas rendelkezésre állás biztosítása**: Ha korábban még nem fejeződött be, telepítsen egy második önálló hitelesítési ügynököt, hogy magas rendelkezésre állást biztosítson a bejelentkezési kérésekhez, ezekkel az [utasításokkal](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>A hitelesítési ügynök frissítése a Azure AD Connect-kiszolgálón
@@ -88,5 +88,5 @@ A következő lépésekkel frissítheti a hitelesítési ügynököket más kisz
 >[!NOTE]
 >Ha a fenti lépések elvégzése után bejelöli a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) az átmenő hitelesítés panelt, két hitelesítési ügynök bejegyzés jelenik meg kiszolgálónként – egy bejegyzés, amely a hitelesítési ügynököt **aktívként** és a másikat **inaktívként**jeleníti meg. Ez a _várt_érték. Az **inaktív** bejegyzés néhány nap múlva automatikusan eldobásra kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [**Hibaelhárítás**](tshoot-connect-pass-through-authentication.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.

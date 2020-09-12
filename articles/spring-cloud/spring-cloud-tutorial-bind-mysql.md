@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ef202bb3ba82b48aca75c7f934aecb3f5fbe0a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0287bc8a11c359acce5fbf12d3a51e99a9f5420e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297144"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Azure Database for MySQL-példány kötése az Azure Spring Cloud-alkalmazáshoz 
 
@@ -24,7 +24,7 @@ Az Azure Spring Cloud-ban az Azure-szolgáltatások automatikus kiválasztását
 * Egy Azure Database for MySQL fiók
 * Azure CLI
 
-Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse a gyors útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md) az első rugós felhőalapú alkalmazás üzembe helyezéséhez.
+Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse a gyors útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md) az első rugós felhőalapú alkalmazás üzembe helyezéséhez.
 
 ## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>Az alkalmazás kötése az Azure Database for MySQL-példányhoz
 
@@ -60,6 +60,6 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse a gyors
     spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan köthető egy Azure Spring Cloud-alkalmazás egy Azure Database for MySQL-példányhoz. Ha többet szeretne megtudni az alkalmazások kötési szolgáltatásairól, olvassa el a [Azure Cosmos db adatbázis kötése Azure Spring Cloud-alkalmazáshoz](spring-cloud-tutorial-bind-cosmos.md)című témakört.

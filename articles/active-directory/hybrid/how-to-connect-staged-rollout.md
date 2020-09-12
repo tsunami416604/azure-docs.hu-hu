@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053221"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278581"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -25,7 +25,7 @@ A lépcsőzetes bevezetéssel szelektíven tesztelheti a felhasználók csoportj
 -  Intelligens kártyákat használ a hitelesítéshez. 
 -  Az aktuális kiszolgáló a csak összevonási szolgáltatásokat kínálja.
 
-A szolgáltatás kipróbálása előtt javasoljuk, hogy tekintse át az útmutatót a megfelelő hitelesítési módszer kiválasztásához. További információ: a módszerek összehasonlítása a [Azure Active Directory Hybrid Identity megoldás megfelelő hitelesítési módszerének kiválasztása](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods)című táblázatban.
+A szolgáltatás kipróbálása előtt javasoljuk, hogy tekintse át az útmutatót a megfelelő hitelesítési módszer kiválasztásához. További információ: a módszerek összehasonlítása a [Azure Active Directory Hybrid Identity megoldás megfelelő hitelesítési módszerének kiválasztása](./choose-ad-authn.md#comparing-methods)című táblázatban.
 
 A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a szakaszos bevezetés?" című témakört. videóinak
 
@@ -91,7 +91,7 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 Ha tesztelni szeretné a *jelszó-kivonatolási szinkronizálást* a szakaszos bevezetéssel, kövesse a következő szakaszban ismertetett lépéseket.
 
-További információ a használni kívánt PowerShell-parancsmagokról: [Azure AD 2,0 előzetes](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzió.
+További információ a használni kívánt PowerShell-parancsmagokról: [Azure AD 2,0 előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzió.
 
 ## <a name="pre-work-for-password-hash-sync"></a>A jelszó-kivonat szinkronizálásának előzetes munkája
 
@@ -225,7 +225,7 @@ A bejelentkezés *zökkenőmentes egyszeri bejelentkezéssel*történő tesztel�
 
 1. Győződjön meg arról, hogy a bejelentkezés sikeresen megtörtént az [Azure ad bejelentkezési tevékenység jelentésében](../reports-monitoring/concept-sign-ins.md) a userPrincipalName való szűréssel.
 
-   Ha nyomon szeretné követni azokat a felhasználói bejelentkezéseket, amelyek továbbra is Active Directory összevonási szolgáltatások (AD FS) (AD FS) időpontban történnek a kiválasztott bevezetési felhasználók számára, kövesse az [AD FS hibaelhárítás: események és naplózás](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)című témakör utasításait. A gyártói dokumentációban tájékozódhat arról, hogyan lehet ezt a külső összevonási szolgáltatóknál megnézni.
+   Ha nyomon szeretné követni azokat a felhasználói bejelentkezéseket, amelyek továbbra is Active Directory összevonási szolgáltatások (AD FS) (AD FS) időpontban történnek a kiválasztott bevezetési felhasználók számára, kövesse az [AD FS hibaelhárítás: események és naplózás](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)című témakör utasításait. A gyártói dokumentációban tájékozódhat arról, hogyan lehet ezt a külső összevonási szolgáltatóknál megnézni.
 
 ## <a name="remove-a-user-from-staged-rollout"></a>Felhasználó eltávolítása az előkészített bevezetésből
 
@@ -243,7 +243,7 @@ A: nem, ez a funkció az összevontról a felhőbe való Migrálás fázisokban 
 
 **K: használhatom a PowerShellt a szakaszos bevezetéshez?**
 
-V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
+V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
 
-## <a name="next-steps"></a>További lépések
-- [Azure AD 2,0 előzetes verzió](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+## <a name="next-steps"></a>Következő lépések
+- [Azure AD 2,0 előzetes verzió](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

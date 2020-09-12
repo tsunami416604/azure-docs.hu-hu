@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080181"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276184"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hibrid identitási megfontolások a Azure Government felhőhöz
 
@@ -25,7 +25,7 @@ Ez a cikk a hibrid környezetek Microsoft Azure Government felhővel való integ
 > [!NOTE]
 > A helyszíni Microsoft Azure Active Directory (Azure AD) környezetnek a Azure Government felhővel való integrálásához frissítenie kell a [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594)legújabb verziójára.
 
-Egyesült Államok kormányzati védelmi végpontok teljes listáját a [dokumentációban](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)találja.
+Egyesült Államok kormányzati védelmi végpontok teljes listáját a [dokumentációban](/office365/enterprise/office-365-u-s-government-dod-endpoints)találja.
 
 ## <a name="azure-ad-pass-through-authentication"></a>Azure AD átmenő hitelesítés
 
@@ -100,7 +100,7 @@ Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateAllowlist` �
 
 Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateWhitelist`   vagy `AuthServerWhitelist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét `https://autologon.microsoft.us` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Átmenő hitelesítés](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)
 - [Egyszeri bejelentkezés](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)

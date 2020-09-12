@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 8/26/2019
+ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522856"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279550"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Az Azure Data Factory hibaelhárítása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,55 +30,55 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 - **Üzenet**: 403-es hiba.
 
-- **OK**:`The Databricks access token has expired.`
+- **OK**: `The Databricks access token has expired.`
 
 - **Javaslat**: alapértelmezés szerint a Azure Databricks hozzáférési jogkivonat 90 napig érvényes. Hozzon létre egy új jogkivonatot, és frissítse a társított szolgáltatást.
 
 ### <a name="error-code-3201"></a>Hibakód: 3201
 
-- **Üzenet**:`Missing required field: settings.task.notebook_task.notebook_path.`
+- **Üzenet**: `Missing required field: settings.task.notebook_task.notebook_path.`
 
-- **OK**:`Bad authoring: Notebook path not specified correctly.`
+- **OK**: `Bad authoring: Notebook path not specified correctly.`
 
 - **Javaslat**: a jegyzetfüzet elérési útjának megadása a Databricks tevékenységben.
 
 <br/> 
 
-- **Üzenet**:`Cluster... does not exist.`
+- **Üzenet**: `Cluster... does not exist.`
 
-- **OK**:`Authoring error: Databricks cluster does not exist or has been deleted.`
+- **OK**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
 - **Javaslat**: Ellenőrizze, hogy létezik-e a Databricks-fürt.
 
 <br/> 
 
-- **Üzenet**:`Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
+- **Üzenet**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
-- **OK**:`Bad authoring.`
+- **OK**: `Bad authoring.`
 
 - **Javaslat**: adjon meg abszolút elérési utat a munkaterület-címzési sémák vagy `dbfs:/folder/subfolder/foo.py` a Databricks fájlrendszerben (DFS) tárolt fájlokhoz.
 
 <br/> 
 
-- **Üzenet**:`{0} LinkedService should have domain and accessToken as required properties.`
+- **Üzenet**: `{0} LinkedService should have domain and accessToken as required properties.`
 
-- **OK**:`Bad authoring.`
-
-- **Javaslat**: Ellenőrizze a [társított szolgáltatás definícióját](compute-linked-services.md#azure-databricks-linked-service).
-
-<br/> 
-
-- **Üzenet**:`{0} LinkedService should specify either existing cluster ID or new cluster information for creation.`
-
-- **OK**:`Bad authoring.`
+- **OK**: `Bad authoring.`
 
 - **Javaslat**: Ellenőrizze a [társított szolgáltatás definícióját](compute-linked-services.md#azure-databricks-linked-service).
 
 <br/> 
 
-- **Üzenet**:`Node type Standard_D16S_v3 is not supported. Supported node types: Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2, Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3, Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s, Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2.`
+- **Üzenet**: `{0} LinkedService should specify either existing cluster ID or new cluster information for creation.`
 
-- **OK**:`Bad authoring.`
+- **OK**: `Bad authoring.`
+
+- **Javaslat**: Ellenőrizze a [társított szolgáltatás definícióját](compute-linked-services.md#azure-databricks-linked-service).
+
+<br/> 
+
+- **Üzenet**: `Node type Standard_D16S_v3 is not supported. Supported node types: Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2, Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3, Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s, Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2.`
+
+- **OK**: `Bad authoring.`
 
 - **Javaslat**: Tekintse meg a hibaüzenetet.
 
@@ -86,17 +86,17 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 ### <a name="error-code-3202"></a>Hibakód: 3202
 
-- **Üzenet**:`There were already 1000 jobs created in past 3600 seconds, exceeding rate limit: 1000 job creations per 3600 seconds.`
+- **Üzenet**: `There were already 1000 jobs created in past 3600 seconds, exceeding rate limit: 1000 job creations per 3600 seconds.`
 
-- **OK**:`Too many Databricks runs in an hour.`
+- **OK**: `Too many Databricks runs in an hour.`
 
 - **Javaslat**: a Databricks-munkaterületet használó összes folyamat kiértékelése a feladatok létrehozási arányára. Ha a folyamatok túl sok Databricks-t futtatnak összesítésben, telepítsen át bizonyos folyamatokat egy új munkaterületre.
 
 <br/> 
 
-- **Üzenet**:`Could not parse request object: Expected 'key' and 'value' to be set for JSON map field base_parameters, got 'key: "..."' instead.`
+- **Üzenet**: `Could not parse request object: Expected 'key' and 'value' to be set for JSON map field base_parameters, got 'key: "..."' instead.`
 
-- **OK**:`Authoring error: No value provided for the parameter.`
+- **OK**: `Authoring error: No value provided for the parameter.`
 
 - **Javaslat**: vizsgálja meg a folyamat JSON-fájlját, és győződjön meg arról, hogy a baseParameters-jegyzetfüzet összes paramétere nem üres értéket ad meg.
 
@@ -110,7 +110,7 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 ### <a name="error-code-3203"></a>Hibakód: 3203
 
-- **Üzenet**:`The cluster is in Terminated state, not available to receive jobs. Please fix the cluster or retry later.`
+- **Üzenet**: `The cluster is in Terminated state, not available to receive jobs. Please fix the cluster or retry later.`
 
 - **OK**: a fürt meg lett szakítva. Az interaktív fürtök esetében ez a probléma lehet a verseny feltétele.
 
@@ -118,7 +118,7 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 ### <a name="error-code-3204"></a>Hibakód: 3204
 
-- **Üzenet**:`Job execution failed.`
+- **Üzenet**: `Job execution failed.`
 
 - **OK**: a hibaüzenetek különböző problémákat jeleznek, például egy váratlan fürt állapotát vagy egy adott tevékenységet. Gyakran nem jelenik meg hibaüzenet.
 
@@ -126,7 +126,7 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 ### <a name="error-code-3208"></a>Hibakód: 3208
 
-- **Üzenet**:`An error occurred while sending the request.`
+- **Üzenet**: `An error occurred while sending the request.`
 
 - **OK**: a Databricks szolgáltatáshoz való hálózati kapcsolódás megszakadt.
 
@@ -138,7 +138,7 @@ A következő táblázat az U-SQL-re vonatkozik.
  
 ### <a name="error-code-2709"></a>Hibakód: 2709
 
-- **Üzenet**:`The access token is from the wrong tenant.`
+- **Üzenet**: `The access token is from the wrong tenant.`
 
 - **OK**: helytelen Azure Active Directory (Azure ad) bérlő.
 
@@ -146,7 +146,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 <br/>
 
-- **Üzenet**:`We cannot accept your job at this moment. The maximum number of queued jobs for your account is 200. `
+- **Üzenet**: `We cannot accept your job at this moment. The maximum number of queued jobs for your account is 200. `
 
 - **OK**: ezt a hibát a Data Lake Analytics szabályozása okozza.
 
@@ -154,7 +154,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 <br/> 
 
-- **Üzenet**:`This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
+- **Üzenet**: `This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
 
 - **OK**: ezt a hibát a Data Lake Analytics szabályozása okozza.
 
@@ -162,7 +162,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2705"></a>Hibakód: 2705
 
-- **Üzenet**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/> <br/> User is not able to access Data Lake Store. <br/> <br/> User is not authorized to use Data Lake Analytics.`
+- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/> <br/> User is not able to access Data Lake Store. <br/> <br/> User is not authorized to use Data Lake Analytics.`
 
 - **OK**: az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban.
 
@@ -170,7 +170,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2711"></a>Hibakód: 2711
 
-- **Üzenet**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/> <br/> User is not able to access Data Lake Store. <br/> <br/> User is not authorized to use Data Lake Analytics.`
+- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/> <br/> User is not able to access Data Lake Store. <br/> <br/> User is not authorized to use Data Lake Analytics.`
 
 - **OK**: az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban.
 
@@ -178,7 +178,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 <br/> 
 
-- **Üzenet**:`Cannot find the 'Azure Data Lake Store' file or folder.`
+- **Üzenet**: `Cannot find the 'Azure Data Lake Store' file or folder.`
 
 - **OK**: az U-SQL-fájl elérési útja helytelen, vagy a társított szolgáltatás hitelesítő adatai nem rendelkeznek hozzáféréssel.
 
@@ -186,7 +186,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2704"></a>Hibakód: 2704
 
-- **Üzenet**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/> <br/> User is not able to access Data Lake Store. <br/> <br/> User is not authorized to use Data Lake Analytics.`
+- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/> <br/> User is not able to access Data Lake Store. <br/> <br/> User is not authorized to use Data Lake Analytics.`
 
 - **OK**: az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban.
 
@@ -194,7 +194,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2707"></a>Hibakód: 2707
 
-- **Üzenet**:`Cannot resolve the account of AzureDataLakeAnalytics. Please check 'AccountName' and 'DataLakeAnalyticsUri'.`
+- **Üzenet**: `Cannot resolve the account of AzureDataLakeAnalytics. Please check 'AccountName' and 'DataLakeAnalyticsUri'.`
 
 - **OK**: a társított szolgáltatás Data Lake Analytics fiókja nem megfelelő.
 
@@ -202,7 +202,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2703"></a>Hibakód: 2703
 
-- **Üzenet**:`Error Id: E_CQO_SYSTEM_INTERNAL_ERROR (or any error that starts with "Error Id:").`
+- **Üzenet**: `Error Id: E_CQO_SYSTEM_INTERNAL_ERROR (or any error that starts with "Error Id:").`
 
 - **OK**: a hiba Data Lake Analytics.
 
@@ -214,7 +214,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3602"></a>Hibakód: 3602
 
-- **Üzenet**:`Invalid HttpMethod: '%method;'.`
+- **Üzenet**: `Invalid HttpMethod: '%method;'.`
 
 - **OK**: az Azure Function tevékenység nem támogatja a tevékenység hasznos HttpMethod megadott értéket.
 
@@ -222,11 +222,11 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3603"></a>Hibakód: 3603
 
-- **Üzenet**:`Response Content is not a valid JObject.`
+- **Üzenet**: `Response Content is not a valid JObject.`
 
 - **OK**: a hívott Azure-függvény nem adott vissza JSON-adattartalmat a válaszban. Azure Data Factory (ADF) az Azure Function tevékenység csak a JSON-válaszok tartalmát támogatja.
 
-- **Javaslat**: frissítse az Azure-függvényt egy érvényes JSON-adattartalom, például egy C#-függvény visszaküldéséhez`(ActionResult)new OkObjectResult("{\"Id\":\"123\"}");`
+- **Javaslat**: frissítse az Azure-függvényt egy érvényes JSON-adattartalom, például egy C#-függvény visszaküldéséhez `(ActionResult)new OkObjectResult("{\"Id\":\"123\"}");`
 
 ### <a name="error-code-3606"></a>Hibakód: 3606
 
@@ -238,7 +238,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3607"></a>Hibakód: 3607
 
-- **Üzenet**:`Azure function activity missing function name.`
+- **Üzenet**: `Azure function activity missing function name.`
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
@@ -246,7 +246,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3608"></a>Hibakód: 3608
 
-- **Üzenet**:`Call to provided Azure function '%FunctionName;' failed with status-'%statusCode;' and message - '%message;'.`
+- **Üzenet**: `Call to provided Azure function '%FunctionName;' failed with status-'%statusCode;' and message - '%message;'.`
 
 - **OK**: az Azure-függvény részletei a tevékenység definíciójában helytelenek lehetnek.
 
@@ -254,7 +254,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3609"></a>Hibakód: 3609
 
-- **Üzenet**:`Azure function activity missing functionAppUrl.`
+- **Üzenet**: `Azure function activity missing functionAppUrl.`
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
@@ -262,7 +262,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3610"></a>Hibakód: 3610
 
-- **Üzenet**:`There was an error while calling endpoint.`
+- **Üzenet**: `There was an error while calling endpoint.`
 
 - **OK**: lehet, hogy a függvény URL-címe helytelen.
 
@@ -270,7 +270,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3611"></a>Hibakód: 3611
 
-- **Üzenet**:`Azure function activity missing Method in JSON.`
+- **Üzenet**: `Azure function activity missing Method in JSON.`
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
@@ -278,7 +278,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-3612"></a>Hibakód: 3612
 
-- **Üzenet**:`Azure function activity missing LinkedService definition in JSON.`
+- **Üzenet**: `Azure function activity missing LinkedService definition in JSON.`
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
@@ -288,7 +288,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4101"></a>Hibakód: 4101
 
-- **Üzenet**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+- **Üzenet**: `AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
 - **OK**: a tulajdonság helytelen formátumú vagy hiányzó definíciója `%propertyName;` .
 
@@ -296,7 +296,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4110"></a>Hibakód: 4110
 
-- **Üzenet**:`AzureMLExecutePipeline activity missing LinkedService definition in JSON.`
+- **Üzenet**: `AzureMLExecutePipeline activity missing LinkedService definition in JSON.`
 
 - **OK**: a AzureMLExecutePipeline tevékenység definíciója nem fejeződött be.
 
@@ -304,7 +304,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4111"></a>Hibakód: 4111
 
-- **Üzenet**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+- **Üzenet**: `AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
 
 - **OK**: helytelen tevékenység-definíció.
 
@@ -312,7 +312,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4112"></a>Hibakód: 4112
 
-- **Üzenet**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
+- **Üzenet**: `AzureMLService linked service has invalid value for property '%propertyName;'.`
 
 - **OK**: helytelen formátumú vagy hiányzó definíció a (z)% propertyName; tulajdonsághoz.
 
@@ -320,7 +320,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4121"></a>Hibakód: 4121
 
-- **Üzenet**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **OK**: a Azure Machine learning eléréséhez használt hitelesítő adat lejárt.
 
@@ -328,7 +328,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4122"></a>Hibakód: 4122
 
-- **Üzenet**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **OK**: a Azure Machine learning társított szolgáltatásban megadott hitelesítő adat érvénytelen, vagy nem rendelkezik engedéllyel a művelethez.
 
@@ -336,7 +336,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4123"></a>Hibakód: 4123
 
-- **Üzenet**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **OK**: a tevékenység tulajdonságai, például `pipelineParameters` a Azure Machine learning (ml) folyamat esetében érvénytelenek.
 
@@ -344,7 +344,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4124"></a>Hibakód: 4124
 
-- **Üzenet**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **OK**: a közzétett Azure ml-folyamat végpontja nem létezik.
 
@@ -352,7 +352,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4125"></a>Hibakód: 4125
 
-- **Üzenet**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **OK**: a Azure Machine learning kiszolgálóhiba történt.
 
@@ -360,7 +360,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-4126"></a>Hibakód: 4126
 
-- **Üzenet**:`Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
+- **Üzenet**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **OK**: az Azure ml-folyamat futtatása nem sikerült.
 
@@ -370,7 +370,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2103"></a>Hibakód: 2103
 
-- **Üzenet**:`Please provide value for the required property '%propertyName;'.`
+- **Üzenet**: `Please provide value for the required property '%propertyName;'.`
 
 - **OK**: a tulajdonsághoz szükséges érték nincs megadva.
 
@@ -378,7 +378,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2104"></a>Hibakód: 2104
 
-- **Üzenet**:`The type of the property '%propertyName;' is incorrect.`
+- **Üzenet**: `The type of the property '%propertyName;' is incorrect.`
 
 - **OK**: a megadott tulajdonság típusa nem megfelelő.
 
@@ -386,7 +386,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2105"></a>Hibakód: 2105
 
-- **Üzenet**:`An invalid json is provided for property '%propertyName;'. Encountered an error while trying to parse: '%message;'.`
+- **Üzenet**: `An invalid json is provided for property '%propertyName;'. Encountered an error while trying to parse: '%message;'.`
 
 - **OK**: a tulajdonság értéke érvénytelen vagy nem a várt formátumban van.
 
@@ -394,7 +394,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2106"></a>Hibakód: 2106
 
-- **Üzenet**:`The storage connection string is invalid. %errorMessage;`
+- **Üzenet**: `The storage connection string is invalid. %errorMessage;`
 
 - **OK**: a tárolóhoz tartozó kapcsolatok karakterlánca érvénytelen vagy helytelen formátumú.
 
@@ -402,7 +402,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2108"></a>Hibakód: 2108
 
-- **Üzenet**:`Error calling the endpoint '%url;'. Response status code: '%code;'`
+- **Üzenet**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
 
 - **OK**: a kérelem végrehajtása egy mögöttes probléma miatt meghiúsult, például a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy az időtúllépés.
 
@@ -410,7 +410,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2110"></a>Hibakód: 2110
 
-- **Üzenet**:`The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
+- **Üzenet**: `The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
 
 - **OK**: a tevékenységben megadott társított szolgáltatás helytelen.
 
@@ -418,7 +418,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2111"></a>Hibakód: 2111
 
-- **Üzenet**:`The type of the property '%propertyName;' is incorrect. The expected type is %expectedType;.`
+- **Üzenet**: `The type of the property '%propertyName;' is incorrect. The expected type is %expectedType;.`
 
 - **OK**: a megadott tulajdonság típusa nem megfelelő.
 
@@ -426,7 +426,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2112"></a>Hibakód: 2112
 
-- **Üzenet**:`The cloud type is unsupported or could not be determined for storage from the EndpointSuffix '%endpointSuffix;'.`
+- **Üzenet**: `The cloud type is unsupported or could not be determined for storage from the EndpointSuffix '%endpointSuffix;'.`
 
 - **OK**: a felhő típusa nem támogatott, vagy nem határozható meg a tárolóhoz a EndpointSuffix.
 
@@ -434,7 +434,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code-2128"></a>Hibakód: 2128
 
-- **Üzenet**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+- **Üzenet**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
 
 - **OK**: hálózati kapcsolat, DNS-hiba, kiszolgálói tanúsítvány ellenőrzése vagy időtúllépés.
 
@@ -446,15 +446,15 @@ A következő táblázat a Azure Batchra vonatkozik.
  
 ### <a name="error-code-2500"></a>Hibakód: 2500
 
-- **Üzenet**:`Hit unexpected exception and execution failed.`
+- **Üzenet**: `Hit unexpected exception and execution failed.`
 
-- **OK**:`Can't launch command, or the program returned an error code.`
+- **OK**: `Can't launch command, or the program returned an error code.`
 
 - **Javaslat**: Ellenőrizze, hogy létezik-e a végrehajtható fájl. Ha a program elindult, ellenőrizze, hogy a rendszer feltöltötte-e *stdout.txt* és *stderr.txt* a Storage-fiókba. Érdemes bemutatni a naplókat a kódban a hibakereséshez.
 
 ### <a name="error-code-2501"></a>Hibakód: 2501
 
-- **Üzenet**:`Cannot access user batch account; please check batch account settings.`
+- **Üzenet**: `Cannot access user batch account; please check batch account settings.`
 
 - **OK**: helytelen a Batch-hozzáférési kulcs vagy a készlet neve.
 
@@ -462,7 +462,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2502"></a>Hibakód: 2502
 
-- **Üzenet**:`Cannot access user storage account; please check storage account settings.`
+- **Üzenet**: `Cannot access user storage account; please check storage account settings.`
 
 - **OK**: helytelen a Storage-fiók neve vagy elérési kulcsa.
 
@@ -470,17 +470,17 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2504"></a>Hibakód: 2504
 
-- **Üzenet**:`Operation returned an invalid status code 'BadRequest'.`
+- **Üzenet**: `Operation returned an invalid status code 'BadRequest'.`
 
 - **OK**: túl sok fájl szerepel az `folderPath` Egyéni tevékenységben. A teljes méret `resourceFiles` nem lehet hosszabb 32 768 karakternél.
 
 - **Javaslat**: távolítsa el a szükségtelen fájlokat, vagy zip-fájlt, és adjon hozzá egy unzip parancsot a kinyeréséhez.
    
-   Használja például a következőt:`powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ; $folder\yourProgram.exe`
+   Használja például a következőt: `powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ; $folder\yourProgram.exe`
 
 ### <a name="error-code-2505"></a>Hibakód: 2505
 
-- **Üzenet**:`Cannot create Shared Access Signature unless Account Key credentials are used.`
+- **Üzenet**: `Cannot create Shared Access Signature unless Account Key credentials are used.`
 
 - **OK**: az egyéni tevékenységek csak a hozzáférési kulcsot használó tárolási fiókokat támogatják.
 
@@ -488,7 +488,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2507"></a>Hibakód: 2507
 
-- **Üzenet**:`The folder path does not exist or is empty: ...`
+- **Üzenet**: `The folder path does not exist or is empty: ...`
 
 - **OK**: a megadott elérési úton egyetlen fájl sem található a Storage-fiókban.
 
@@ -496,25 +496,25 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2508"></a>Hibakód: 2508
 
-- **Üzenet**:`There are duplicate files in the resource folder.`
+- **Üzenet**: `There are duplicate files in the resource folder.`
 
 - **OK**: a folderPath különböző almappáiban több azonos nevű fájl található.
 
 - **Javaslat**: az egyéni tevékenységek lelapulják a folderPath a mappa szerkezetét. Ha meg kell őriznie a mappa szerkezetét, zip-fájlt kell kibontania Azure Batch egy unzip paranccsal.
    
-   Használja például a következőt:`powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ; $folder\yourProgram.exe`
+   Használja például a következőt: `powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ; $folder\yourProgram.exe`
 
 ### <a name="error-code-2509"></a>Hibakód: 2509
 
-- **Üzenet**:`Batch url ... is invalid; it must be in Uri format.`
+- **Üzenet**: `Batch url ... is invalid; it must be in Uri format.`
 
-- **OK**: a Batch URL-címeinek hasonlónak kell lenniük`https://mybatchaccount.eastus.batch.azure.com`
+- **OK**: a Batch URL-címeinek hasonlónak kell lenniük `https://mybatchaccount.eastus.batch.azure.com`
 
 - **Javaslat**: Tekintse meg a hiba leírását.
 
 ### <a name="error-code-2510"></a>Hibakód: 2510
 
-- **Üzenet**:`An error occurred while sending the request.`
+- **Üzenet**: `An error occurred while sending the request.`
 
 - **OK**: a Batch URL-címe érvénytelen.
 
@@ -524,7 +524,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-200"></a>Hibakód: 200
 
-- **Üzenet**:`Unexpected error happened: '%error;'.`
+- **Üzenet**: `Unexpected error happened: '%error;'.`
 
 - **OK**: belső szolgáltatási probléma van.
 
@@ -532,7 +532,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-201"></a>Hibakód: 201
 
-- **Üzenet**:`JobType %jobType; is not found.`
+- **Üzenet**: `JobType %jobType; is not found.`
 
 - **OK**: Az ADF nem támogatja az új feladattípust.
 
@@ -540,7 +540,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-202"></a>Hibakód: 202
 
-- **Üzenet**:`Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
+- **Üzenet**: `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
 
 - **OK**: a hibaüzenet tartalmazza a hibák részleteit.
 
@@ -548,7 +548,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-203"></a>Hibakód: 203
 
-- **Üzenet**:`Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
+- **Üzenet**: `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
 
 - **OK**: a hibaüzenet tartalmazza a hibák részleteit.
 
@@ -556,7 +556,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-204"></a>Hibakód: 204
 
-- **Üzenet**:`The resumption token is missing for runId '%runId;'.`
+- **Üzenet**: `The resumption token is missing for runId '%runId;'.`
 
 - **OK**: belső szolgáltatási probléma van.
 
@@ -564,7 +564,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-205"></a>Hibakód: 205
 
-- **Üzenet**:`Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
+- **Üzenet**: `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
 
 - **OK**: hiba történt a HDI igény szerinti fürt létrehozásakor.
 
@@ -572,7 +572,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-206"></a>Hibakód: 206
 
-- **Üzenet**:`The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **Üzenet**: `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
 
 - **OK**: a hibát okozó szolgáltatás belső hibába ütközött.
 
@@ -580,7 +580,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-207"></a>Hibakód: 207
 
-- **Üzenet**:`Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **Üzenet**: `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
 
 - **OK**: belső hiba történt a régió elsődleges Storage-fiókból való megállapítására tett kísérlet során.
 
@@ -588,7 +588,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-208"></a>Hibakód: 208
 
-- **Üzenet**:`Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **Üzenet**: `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
 
 - **OK**: belső hiba történt a szolgáltatásnév beolvasására tett kísérlet során vagy az MSI-hitelesítés példányának létrehozásakor.
 
@@ -598,7 +598,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2300"></a>Hibakód: 2300
 
-- **Üzenet**:`Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
+- **Üzenet**: `Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
 - **OK**: a hibaüzenet a következőhöz hasonló üzenetet tartalmaz: `The remote name could not be resolved.` . Lehetséges, hogy a megadott fürt URI azonosítója érvénytelen.
 
@@ -651,7 +651,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2301"></a>Hibakód: 2301
 
-- **Üzenet**:`Could not get the status of the application '%physicalJobId;' from the HDInsight service. Received the following error: %message;. Please refer to HDInsight troubleshooting documentation or contact their support for further assistance.`
+- **Üzenet**: `Could not get the status of the application '%physicalJobId;' from the HDInsight service. Received the following error: %message;. Please refer to HDInsight troubleshooting documentation or contact their support for further assistance.`
 
 - **OK**: a HDInsight-fürt vagy-szolgáltatás problémái vannak.
 
@@ -661,7 +661,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2302"></a>Hibakód: 2302
 
-- **Üzenet**:`Hadoop job failed with exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Contact HDInsight team for further support.`
+- **Üzenet**: `Hadoop job failed with exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Contact HDInsight team for further support.`
 
 - **OK**: a feladatot elküldték a HDI-fürtnek, és ott volt a hiba.
 
@@ -683,7 +683,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2303"></a>Hibakód: 2303
 
-- **Üzenet**:`Hadoop job failed with transient exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Try again or contact HDInsight team for further support.`
+- **Üzenet**: `Hadoop job failed with transient exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Try again or contact HDInsight team for further support.`
 
 - **OK**: a feladatot elküldték a HDI-fürtnek, és ott volt a hiba.
 
@@ -705,7 +705,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2304"></a>Hibakód: 2304
 
-- **Üzenet**:`MSI authentication is not supported on storages for HDI activities.`
+- **Üzenet**: `MSI authentication is not supported on storages for HDI activities.`
 
 - **OK**: a HDINSIGHT (HDI) társított szolgáltatásban vagy a HDI-tevékenységben használt Storage társított szolgáltatások olyan MSI-hitelesítéssel vannak konfigurálva, amely nem támogatott.
 
@@ -713,7 +713,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2305"></a>Hibakód: 2305
 
-- **Üzenet**:`Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
+- **Üzenet**: `Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
 
 - **OK**: a HDI-fürt kapcsolati adatai helytelenek, a megadott felhasználónak nincs engedélye a szükséges művelet végrehajtására, vagy a HDInsight szolgáltatás nem válaszol az ADF kéréseire.
 
@@ -721,7 +721,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2306"></a>Hibakód: 2306
 
-- **Üzenet**:`An invalid json is provided for script action '%scriptActionName;'. Error: '%message;'`
+- **Üzenet**: `An invalid json is provided for script action '%scriptActionName;'. Error: '%message;'`
 
 - **OK**: a parancsfájl műveletéhez megadott JSON érvénytelen.
 
@@ -731,7 +731,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2310"></a>Hibakód: 2310
 
-- **Üzenet**:`Failed to submit Spark job. Error: '%message;'`
+- **Üzenet**: `Failed to submit Spark job. Error: '%message;'`
 
 - **OK**: Az ADF megpróbált létrehozni egy köteget egy Spark-fürtön a Livy API (Livy/batch) használatával, de hibaüzenetet kapott.
 
@@ -741,7 +741,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2312"></a>Hibakód: 2312
 
-- **Üzenet**:`Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
+- **Üzenet**: `Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
 
 - **OK**: a HDInsight Spark-fürtön nem sikerült végrehajtani a feladatot.
 
@@ -751,7 +751,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2313"></a>Hibakód: 2313
 
-- **Üzenet**:`The batch with ID '%batchId;' was not found on Spark cluster. Open the Spark History UI and try to find it there. Contact HDInsight support for further assistance.`
+- **Üzenet**: `The batch with ID '%batchId;' was not found on Spark cluster. Open the Spark History UI and try to find it there. Contact HDInsight support for further assistance.`
 
 - **OK**: a köteg törölve lett a HDInsight Spark-fürtön.
 
@@ -761,7 +761,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2328"></a>Hibakód: 2328
 
-- **Üzenet**:`Failed to create the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
+- **Üzenet**: `Failed to create the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
 
 - **OK**: a hibaüzenetből megtudhatja, hogy mi volt a hiba.
 
@@ -769,7 +769,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2329"></a>Hibakód: 2329
 
-- **Üzenet**:`Failed to delete the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
+- **Üzenet**: `Failed to delete the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
 
 - **OK**: a hibaüzenetből megtudhatja, hogy mi volt a hiba.
 
@@ -777,7 +777,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2331"></a>Hibakód: 2331
 
-- **Üzenet**:`The file path should not be null or empty.`
+- **Üzenet**: `The file path should not be null or empty.`
 
 - **OK**: a megadott fájl elérési útja üres.
 
@@ -785,7 +785,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2340"></a>Hibakód: 2340
 
-- **Üzenet**:`HDInsightOnDemand linked service does not support execution via SelfHosted IR. Your IR name is '%IRName;'. Please select an Azure IR instead.`
+- **Üzenet**: `HDInsightOnDemand linked service does not support execution via SelfHosted IR. Your IR name is '%IRName;'. Please select an Azure IR instead.`
 
 - **OK**: a HDInsightOnDemand társított szolgáltatás nem támogatja a végrehajtást a SelfHosted IR-n keresztül.
 
@@ -793,7 +793,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2341"></a>Hibakód: 2341
 
-- **Üzenet**:`HDInsight cluster URL '%clusterUrl;' is incorrect, it must be in URI format and the scheme must be 'https'.`
+- **Üzenet**: `HDInsight cluster URL '%clusterUrl;' is incorrect, it must be in URI format and the scheme must be 'https'.`
 
 - **OK**: a megadott URL-cím nem megfelelő formátumú.
 
@@ -801,7 +801,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2342"></a>Hibakód: 2342
 
-- **Üzenet**:`Failed to connect to HDInsight cluster: '%errorMessage;'.`
+- **Üzenet**: `Failed to connect to HDInsight cluster: '%errorMessage;'.`
 
 - **OK**: a megadott hitelesítő adatok nem megfelelőek a fürthöz, vagy hálózati konfiguráció vagy kapcsolódási probléma lépett fel, vagy az IR probléma merült fel a fürthöz való csatlakozás során.
 
@@ -809,7 +809,7 @@ A következő táblázat a Azure Batchra vonatkozik.
     1. Ellenőrizze, hogy a hitelesítő adatok helyesek-e. Ehhez nyissa meg a HDInsight-fürt Ambari felhasználói felületét egy böngészőben.
     1. Ha a fürt Virtual Networkban (VNet) van használatban, és egy saját üzemeltetésű IR-t használ, a HDI URL-címnek a virtuális hálózatok lévő privát URL-címnek kell lennie, és a fürt neve után "-int" értékűnek kell lennie.
     
-       Például váltson a következőre: `https://mycluster.azurehdinsight.net/` `https://mycluster-int.azurehdinsight.net/` . Jegyezze fel a következőt `-int` `mycluster` , de előtte`.azurehdinsight.net`
+       Például váltson a következőre: `https://mycluster.azurehdinsight.net/` `https://mycluster-int.azurehdinsight.net/` . Jegyezze fel a következőt `-int` `mycluster` , de előtte `.azurehdinsight.net`
     1. Ha a fürt VNet van, a rendszer a saját üzemeltetésű integrációs modult használja, és a magánhálózati URL-címet használta, és még a kapcsolat továbbra is meghiúsult, akkor az a virtuális gép, amelyen az IR telepítve volt, problémák léptek fel a HDI-hez való csatlakozás során. 
     
        Kapcsolódjon ahhoz a virtuális géphez, amelyen az IR telepítve van, és nyissa meg a Ambari felhasználói felületét egy böngészőben. Használja a fürt magánhálózati URL-címét. A hálózatnak a böngészőben kell működnie. Ha nem, további segítségért lépjen kapcsolatba a HDInsight támogatási csapatával.
@@ -819,7 +819,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2343"></a>Hibakód: 2343
 
-- **Üzenet**:`User name and password cannot be null or empty to connect to the HDInsight cluster.`
+- **Üzenet**: `User name and password cannot be null or empty to connect to the HDInsight cluster.`
 
 - **OK**: a Felhasználónév vagy a jelszó üres.
 
@@ -827,7 +827,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2345"></a>Hibakód: 2345
 
-- **Üzenet**:`Failed to read the content of the hive script. Error: '%message;'`
+- **Üzenet**: `Failed to read the content of the hive script. Error: '%message;'`
 
 - **OK**: a parancsfájl nem létezik, vagy az ADF nem tudott csatlakozni a parancsfájl helyéhez.
 
@@ -835,7 +835,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2346"></a>Hibakód: 2346
 
-- **Üzenet**:`Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
+- **Üzenet**: `Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
 
 - **OK**: Az ADF megpróbált létrehozni egy Open Database Connectivity (ODBC) kapcsolatot a HDI-fürthöz, és hiba miatt meghiúsult.
 
@@ -855,7 +855,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2347"></a>Hibakód: 2347
 
-- **Üzenet**:`Hive execution through ODBC failed with error message '%message;'.`
+- **Üzenet**: `Hive execution through ODBC failed with error message '%message;'.`
 
 - **OK**: Az ADF elküldte a kaptár-szkriptet a HDI-fürthöz való végrehajtáshoz az ODBC-kapcsolatok használatával, és a parancsfájl a HDI-on meghiúsult.
 
@@ -875,7 +875,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2348"></a>Hibakód: 2348
 
-- **Üzenet**:`The main storage has not been initialized. Please check the properties of the storage linked service in the HDI linked service.`
+- **Üzenet**: `The main storage has not been initialized. Please check the properties of the storage linked service in the HDI linked service.`
 
 - **OK**: a Storage társított szolgáltatás tulajdonságai nincsenek megfelelően beállítva.
 
@@ -883,7 +883,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2350"></a>Hibakód: 2350
 
-- **Üzenet**:`Failed to prepare the files for the run '%jobId;'. HDI cluster: '%cluster;', Error: '%errorMessage;'`
+- **Üzenet**: `Failed to prepare the files for the run '%jobId;'. HDI cluster: '%cluster;', Error: '%errorMessage;'`
 
 - **OK**: a megadott hitelesítő adatok nem megfelelőek ahhoz a tárolóhoz, ahol a fájlok találhatók, vagy a fájlok nem léteznek.
 
@@ -891,7 +891,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2351"></a>Hibakód: 2351
 
-- **Üzenet**:`Could not open the file '%filePath;' in container/fileSystem '%container;'.`
+- **Üzenet**: `Could not open the file '%filePath;' in container/fileSystem '%container;'.`
 
 - **OK**: a fájl nem létezik a megadott elérési úton.
 
@@ -899,7 +899,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2352"></a>Hibakód: 2352
 
-- **Üzenet**:`The file storage has not been initialized. Please check the properties of the file storage linked service in the HDI activity.`
+- **Üzenet**: `The file storage has not been initialized. Please check the properties of the file storage linked service in the HDI activity.`
 
 - **OK**: a file Storage társított szolgáltatás tulajdonságai nincsenek megfelelően beállítva.
 
@@ -907,7 +907,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2353"></a>Hibakód: 2353
 
-- **Üzenet**:`The script storage has not been initialized. Please check the properties of the script storage linked service in the HDI activity.`
+- **Üzenet**: `The script storage has not been initialized. Please check the properties of the script storage linked service in the HDI activity.`
 
 - **OK**: a parancsfájl-tárolási társított szolgáltatás tulajdonságai nincsenek megfelelően beállítva.
 
@@ -915,7 +915,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2354"></a>Hibakód: 2354
 
-- **Üzenet**:`The storage linked service type '%linkedServiceType;' is not supported for '%executorType;' activities for property '%linkedServicePropertyName;'.`
+- **Üzenet**: `The storage linked service type '%linkedServiceType;' is not supported for '%executorType;' activities for property '%linkedServicePropertyName;'.`
 
 - **OK**: a tevékenység nem támogatja a Storage társított szolgáltatás típusát.
 
@@ -925,7 +925,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2355"></a>Hibakód: 2355
 
-- **Üzenet**:`The '%value' provided for commandEnvironment is incorrect. The expected value should be an array of strings where each string has the format CmdEnvVarName=CmdEnvVarValue.`
+- **Üzenet**: `The '%value' provided for commandEnvironment is incorrect. The expected value should be an array of strings where each string has the format CmdEnvVarName=CmdEnvVarValue.`
 
 - **OK**: a megadott érték `commandEnvironment` helytelen.
 
@@ -940,7 +940,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2356"></a>Hibakód: 2356
 
-- **Üzenet**:`The commandEnvironment already contains a variable named '%variableName;'.`
+- **Üzenet**: `The commandEnvironment already contains a variable named '%variableName;'.`
 
 - **OK**: a megadott érték `commandEnvironment` helytelen.
 
@@ -955,7 +955,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2357"></a>Hibakód: 2357
 
-- **Üzenet**:`The certificate or password is wrong for ADLS Gen 1 storage.`
+- **Üzenet**: `The certificate or password is wrong for ADLS Gen 1 storage.`
 
 - **OK**: a megadott hitelesítő adatok helytelenek.
 
@@ -963,7 +963,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2358"></a>Hibakód: 2358
 
-- **Üzenet**:`The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
+- **Üzenet**: `The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
 
 - **OK**: a kötelező tulajdonsághoz megadott érték `TimeToLive` formátuma érvénytelen. 
 
@@ -971,7 +971,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2359"></a>Hibakód: 2359
 
-- **Üzenet**:`The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
+- **Üzenet**: `The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
 
 - **OK**: a tulajdonsághoz megadott érték `roles` érvénytelen.
 
@@ -979,7 +979,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2360"></a>Hibakód: 2360
 
-- **Üzenet**:`The connection string in HCatalogLinkedService is invalid. Encountered an error while trying to parse: '%message;'.`
+- **Üzenet**: `The connection string in HCatalogLinkedService is invalid. Encountered an error while trying to parse: '%message;'.`
 
 - **OK**: a megadott "a" karakterlánc `HCatalogLinkedService` érvénytelen.
 
@@ -987,7 +987,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2361"></a>Hibakód: 2361
 
-- **Üzenet**:`Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
+- **Üzenet**: `Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
 
 - **OK**: a fürt létrehozása nem sikerült, és az ADF nem adott vissza hibát a HDInsight szolgáltatástól.
 
@@ -995,7 +995,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2362"></a>Hibakód: 2362
 
-- **Üzenet**:`Only Azure Blob storage accounts are supported as additional storages for HDInsight on demand linked service.`
+- **Üzenet**: `Only Azure Blob storage accounts are supported as additional storages for HDInsight on demand linked service.`
 
 - **OK**: a megadott további tárterület nem Azure Blob Storage.
 
@@ -1005,7 +1005,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2128"></a>Hibakód: 2128
 
-- **Üzenet**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+- **Üzenet**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
 
 - **OK**: Ez a probléma a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy időtúllépés miatt fordul elő.
 
@@ -1013,7 +1013,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code-2108"></a>Hibakód: 2108
 
-- **Üzenet**:`Error calling the endpoint '%url;'. Response status code: '%code;'`
+- **Üzenet**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
 
 - **OK**: a kérelem végrehajtása egy mögöttes probléma miatt meghiúsult, például a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy időtúllépés.
 
@@ -1053,6 +1053,11 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 1. Ugrás: **fájl**–  >  **Save**  >  **minden munkamenet**mentése.
 
 További információ: [Bevezetés a Hegedűs](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)használatába.
+
+## <a name="general"></a>Általános kérdések
+
+### <a name="activity-stuck-issue"></a>A tevékenység beragadt probléma
+Ha azt tapasztalja, hogy a tevékenység sokkal hosszabb ideig fut, mint a normál Futtatás, és alig van előrehaladás, előfordulhat, hogy elakad. Megpróbálkozhat a megszakítással, és újra megtekintheti, hogy segít-e a szolgáltatás. Ha ez egy másolási tevékenység, megismerheti a teljesítmény figyelését és a hibaelhárítást a [másolási tevékenység teljesítményének hibaelhárítása](copy-activity-performance-troubleshooting.md)során. Ha ez egy adatfolyam, tanulja meg az [Adatáramlások teljesítményének](concepts-data-flow-performance.md) és hangolási útmutatójának feltérképezését.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918026"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294866"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search
 
@@ -37,13 +37,13 @@ A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenérté
 
 A kérelem fejlécének megadását követően újra felhasználhatja azt a jelen cikk összes lekérdezéséhez, csak a **Search =** sztringet felcserélve. 
 
-  ![Postman-kérelem fejléce](media/search-query-lucene-examples/postman-header.png)
+  ![Poster-kérelem fejlécének paramétereinek beállítása](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>A kérelem URL-címének beállítása
 
 A kérelem egy GET parancs, amely az Azure Cognitive Search végpontot és a keresési karakterláncot tartalmazó URL-címmel párosítva van.
 
-  ![Postman-kérelem fejléce](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Poster-kérelem fejlécének beolvasása](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Az URL-összeállítás a következő elemekből áll:
 
@@ -285,7 +285,7 @@ A következő 5 beszerzéséhez hagyja ki az első köteget:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Próbálkozzon a kódban szereplő lekérdezések megadásával. Az alábbi hivatkozások azt ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz az alapértelmezett egyszerű szintaxis használatával.
 
 * [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)

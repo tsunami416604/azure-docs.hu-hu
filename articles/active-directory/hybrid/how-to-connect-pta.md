@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279465"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) átmenő hitelesítés lehetővé teszi a felh
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Ez a funkció az [Azure ad Password hash-szinkronizálás](how-to-connect-password-hash-synchronization.md)alternatívája, amely ugyanazt az előnyt nyújtja a felhőalapú hitelesítésnek a szervezeteknek. Azonban bizonyos szervezetek, akik szeretnék érvényesíteni a helyszíni Active Directory biztonsági és jelszavas házirendeket, dönthetnek az átmenő hitelesítés használatával. Tekintse át [ezt az útmutatót](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) a különböző Azure ad bejelentkezési módszereinek összehasonlításához, és hogyan választhatja ki a szervezete megfelelő bejelentkezési módszerét.
+Ez a funkció az [Azure ad Password hash-szinkronizálás](how-to-connect-password-hash-synchronization.md)alternatívája, amely ugyanazt az előnyt nyújtja a felhőalapú hitelesítésnek a szervezeteknek. Azonban bizonyos szervezetek, akik szeretnék érvényesíteni a helyszíni Active Directory biztonsági és jelszavas házirendeket, dönthetnek az átmenő hitelesítés használatával. Tekintse át [ezt az útmutatót](./choose-ad-authn.md) a különböző Azure ad bejelentkezési módszereinek összehasonlításához, és hogyan választhatja ki a szervezete megfelelő bejelentkezési módszerét.
 
 ![Azure AD átmenő hitelesítés](./media/how-to-connect-pta/pta1.png)
 
@@ -42,14 +42,14 @@ Az átmenő hitelesítés a [zökkenőmentes egyszeri bejelentkezés](how-to-con
 - *Nagyszerű felhasználói élmény*
   - A felhasználók ugyanazt a jelszót használják a helyszíni és a felhőalapú alkalmazásba való bejelentkezéshez.
   - A felhasználók kevesebb időt fordítanak az informatikai ügyfélszolgálatnak a jelszóval kapcsolatos problémák megoldására.
-  - A felhasználók önkiszolgáló [jelszavas kezelési](../authentication/active-directory-passwords-overview.md) feladatokat végezhetnek a felhőben.
+  - A felhasználók önkiszolgáló [jelszavas kezelési](../authentication/concept-sspr-howitworks.md) feladatokat végezhetnek a felhőben.
 - *Egyszerűen üzembe helyezhető & felügyelet*
   - Nincs szükség bonyolult helyszíni telepítésekre vagy hálózati konfigurációra.
   - Csak egy egyszerűsített ügynököt kell telepíteni a helyszínen.
   - Nincs felügyeleti terhelés. Az ügynök automatikusan megkapja a javításokat és hibajavításokat.
 - *Biztonságos*
   - A helyszíni jelszavakat a rendszer soha nem tárolja semmilyen formában a felhőben.
-  - Az [Azure ad feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), például a multi-Factor Authentication (MFA) és az [örökölt hitelesítés blokkolásával](../conditional-access/concept-conditional-access-conditions.md) , valamint a [találgatásos jelszó elleni támadások kiszűrésével](../authentication/howto-password-smart-lockout.md)védi a felhasználói fiókokat.
+  - Az [Azure ad feltételes hozzáférési szabályzatok](../conditional-access/overview.md), például a multi-Factor Authentication (MFA) és az [örökölt hitelesítés blokkolásával](../conditional-access/concept-conditional-access-conditions.md) , valamint a [találgatásos jelszó elleni támadások kiszűrésével](../authentication/howto-password-smart-lockout.md)védi a felhasználói fiókokat.
   - Az ügynök csak a hálózatán belüli kimenő kapcsolatokat teszi elérhetővé. Ezért nincs szükség arra, hogy az ügynököt egy peremhálózati hálózatban, más néven DMZ-ben telepítse.
   - Az ügynök és az Azure AD közötti kommunikáció tanúsítványalapú hitelesítés használatával van védve. Ezeket a tanúsítványokat az Azure AD minden hónapban automatikusan megújítja.
 - *Magas rendelkezésre állású*
@@ -59,8 +59,8 @@ Az átmenő hitelesítés a [zökkenőmentes egyszeri bejelentkezés](how-to-con
 
 - A lehetővé teszi a felhasználók bejelentkezését az összes webböngésző-alapú alkalmazásba és a [modern hitelesítést](https://aka.ms/modernauthga)használó Microsoft Office ügyfélalkalmazásokba.
 - A bejelentkezési felhasználónevek lehetnek a helyszíni alapértelmezett felhasználónevek ( `userPrincipalName` ) vagy a Azure ad Connect konfigurált más attribútumok (más néven `Alternate ID` ).
-- A szolgáltatás zökkenőmentesen működik együtt a feltételes hozzáférési funkciókkal, mint például a Multi-Factor Authentication (MFA) a felhasználók biztonságossá [tételéhez](../active-directory-conditional-access-azure-portal.md) .
-- Integrált a felhőalapú [önkiszolgáló jelszavas felügyelettel](../authentication/active-directory-passwords-overview.md), beleértve a jelszó visszaírási a helyszíni Active Directory és jelszavas védelmet a gyakran használt jelszavak betiltásával.
+- A szolgáltatás zökkenőmentesen működik együtt a feltételes hozzáférési funkciókkal, mint például a Multi-Factor Authentication (MFA) a felhasználók biztonságossá [tételéhez](../conditional-access/overview.md) .
+- Integrált a felhőalapú [önkiszolgáló jelszavas felügyelettel](../authentication/concept-sspr-howitworks.md), beleértve a jelszó visszaírási a helyszíni Active Directory és jelszavas védelmet a gyakran használt jelszavak betiltásával.
 - A többerdős környezetek akkor támogatottak, ha erdőszintű megbízhatósági kapcsolat van az AD-erdők között, és ha a névutótagok útválasztása megfelelően van konfigurálva.
 - Ez egy ingyenes funkció, és nincs szüksége az Azure AD fizetős kiadásaira a használatához.
 - [Azure ad Connect](whatis-hybrid-identity.md)használatával engedélyezhető.
@@ -68,7 +68,7 @@ Az átmenő hitelesítés a [zökkenőmentes egyszeri bejelentkezés](how-to-con
 - Több ügynök telepítése biztosítja a bejelentkezési kérések magas rendelkezésre állását.
 - A felhőben [védi](../authentication/howto-password-smart-lockout.md) a helyszíni fiókokat a találgatásos támadásokkal szemben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Rövid [útmutató – az](how-to-connect-pta-quick-start.md) Azure ad átmenő hitelesítésének megkezdése és futtatása.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.

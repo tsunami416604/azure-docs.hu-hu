@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109278"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278411"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Az incidensekre vonatkozó válaszokra vonatkozó követelmények meghatározása a hibrid identitás megoldásához
-A nagy vagy közepes méretű szervezetek valószínűleg [biztonsági incidensre reagálnak](https://technet.microsoft.com/library/cc700825.aspx) , hogy az incidensek szintjének megfelelően tegyenek lépéseket. Az Identity Management rendszer fontos összetevő az incidensek válaszának folyamatában, mivel felhasználható annak a meghatározására, hogy ki hajtott végre egy adott műveletet a célra. A hibrid identitási megoldásnak képesnek kell lennie olyan figyelési és jelentéskészítési funkciók biztosítására, amelyekkel az informatikai részleg felhasználhatja a potenciális fenyegetések azonosítására és enyhítésére szolgáló műveleteket. Egy tipikus incidens-válasz tervében a következő fázisok jelennek meg a csomag részeként:
+A nagy vagy közepes méretű szervezetek valószínűleg [biztonsági incidensre reagálnak](/previous-versions/tn-archive/cc700825(v=technet.10)) , hogy az incidensek szintjének megfelelően tegyenek lépéseket. Az Identity Management rendszer fontos összetevő az incidensek válaszának folyamatában, mivel felhasználható annak a meghatározására, hogy ki hajtott végre egy adott műveletet a célra. A hibrid identitási megoldásnak képesnek kell lennie olyan figyelési és jelentéskészítési funkciók biztosítására, amelyekkel az informatikai részleg felhasználhatja a potenciális fenyegetések azonosítására és enyhítésére szolgáló műveleteket. Egy tipikus incidens-válasz tervében a következő fázisok jelennek meg a csomag részeként:
 
 1. Kezdeti Értékelés.
 2. Incidensek kommunikációja.
@@ -64,9 +64,8 @@ A károsodások szabályozása és a kockázatok csökkentése – fázisban fon
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Adatvédelmi stratégia definiálása](plan-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>Lásd még:
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
-

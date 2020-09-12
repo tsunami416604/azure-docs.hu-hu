@@ -1,21 +1,21 @@
 ---
-title: A Windows felügyeleti központ integrálása a Azure Security Center használatával | Microsoft Docs
+title: Windows felügyeleti központ-kiszolgálók védetté Azure Security Center
 description: Ez a cikk ismerteti, hogyan integrálható a Azure Security Center a Windows felügyeleti központba
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076365"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277493"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center integrálása a Windows felügyeleti központtal
+# <a name="protect-windows-admin-center-resources-with-security-center"></a>A Windows felügyeleti központ erőforrásainak védetté Security Center
 
 A Windows felügyeleti központ egy felügyeleti eszköz a Windows-kiszolgálókhoz. A rendszergazdák egyetlen helyen érhetik el a leggyakrabban használt felügyeleti eszközök többségét. A Windows felügyeleti központban közvetlenül a helyszíni kiszolgálókat Azure Security Centerba helyezheti. Ezután megtekintheti a biztonsági javaslatok és riasztások összefoglalását közvetlenül a Windows felügyeleti központ felületén.
 
@@ -31,7 +31,7 @@ Ha sikeresen felkészített egy kiszolgálót a Windows felügyeleti központbó
 
 Ennek a két eszköznek a kombinálásával a Security Center lesz az egyetlen üvegtábla, amely az összes biztonsági információt megtekintheti, bármi is legyen az erőforrás: a Windows felügyeleti központ felügyelt helyszíni kiszolgálók, a virtuális gépek és a további Pásti munkaterhelések védelme.
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Windows felügyeleti központ által felügyelt kiszolgálók beléptetése Security Centerba
+## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Windows felügyeleti központ által felügyelt kiszolgálók előkészítése Security Center
 
 1. A Windows felügyeleti központban válassza ki az egyik kiszolgálót, és az **eszközök** ablaktáblán válassza ki a Azure Security Center bővítményt:
 
@@ -54,16 +54,16 @@ Ennek a két eszköznek a kombinálásával a Security Center lesz az egyetlen �
     > A javaslatok megjelenése után eltarthat egy ideig. Valójában a kiszolgálói tevékenységtől függően előfordulhat, hogy *nem kap* riasztásokat. A riasztások tesztelésére szolgáló tesztelési riasztások létrehozásához kövesse a riasztás- [ellenőrzési eljárás](security-center-alert-validation.md)utasításait.
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Biztonsági javaslatok és riasztások megtekintése a Windows felügyeleti központban
+## <a name="view-security-recommendations-and-alerts-in-windows-admin-center"></a>Biztonsági javaslatok és riasztások megtekintése a Windows felügyeleti központban
 
 A bevezetést követően közvetlenül a Windows felügyeleti központ Azure Security Center területén tekintheti meg a riasztásokat és a javaslatokat. Egy javaslatra vagy egy riasztásra kattintva megtekintheti őket a Azure Portalban. Itt további információkhoz juthat, és megtudhatja, hogyan javíthatja a problémákat.
 
 [![A Windows felügyeleti központban megtekintett javaslatok és riasztások Security Center](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>A Windows felügyeleti központ felügyelt kiszolgálóira vonatkozó biztonsági javaslatok és riasztások megtekintése Security Center
+## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>A Windows felügyeleti központ felügyelt kiszolgálóira vonatkozó biztonsági javaslatok és riasztások megtekintése Security Center
 Azure Security Center:
 
-* Ha meg szeretné tekinteni a Windows felügyeleti központ összes kiszolgálójának biztonsági javaslatait, nyissa meg a **számítási & alkalmazásokat** , és kattintson a **virtuális gépek és számítógépek** lapra. a listát a "kiszolgáló" alapján szűrheti az itt látható módon:
+* Ha meg szeretné tekinteni a Windows felügyeleti központ összes kiszolgálójának biztonsági javaslatait, nyissa meg a **számítási & alkalmazásokat** , és kattintson a **virtuális gépek és számítógépek** fülre. A listát a "kiszolgáló" erőforrás alapján szűrheti az itt látható módon:
 
     [![A Windows felügyeleti központ által felügyelt kiszolgálók biztonsági javaslatainak megtekintése](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
 

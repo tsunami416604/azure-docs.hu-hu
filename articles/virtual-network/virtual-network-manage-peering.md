@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416502"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290174"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
 
@@ -126,11 +126,12 @@ Ha azt szeretné, hogy a virtuális hálózatok időnként kommunikáljanak, de 
   - *Kezdeményezve:* Amikor létrehozza a társítást a második virtuális hálózatra az első virtuális hálózatról, a rendszer *kezdeményezi*a társítási állapotot. 
   - *Csatlakoztatva:* Amikor létrehozza a társítást a második virtuális hálózatról az első virtuális hálózatra, a társítási állapota *csatlakoztatva*lesz. Ha megtekinti az első virtuális hálózat társítási állapotát, az állapota a *kezdeményezőtől* a *csatlakoztatott*állapotra módosult. Nem sikerült létrehozni a társítást, amíg a virtuális hálózati társítások társítási állapota is *csatlakoztatva*van.
 - Ha a Resource Managerrel létrehozott virtuális hálózatot a klasszikus üzemi modellel létrehozott virtuális hálózattal hozta létre, akkor csak a Resource Manageren keresztül üzembe helyezett virtuális hálózatra vonatkozó társítást konfigurálhat. A virtuális hálózat (klasszikus) vagy a klasszikus üzemi modellben üzembe helyezett két virtuális hálózat között nem konfigurálható a társítás. A virtuális hálózat (Resource Manager) és a virtuális hálózat (klasszikus) közötti társítás létrehozásakor a rendszer *frissíti*a társítási állapotot, majd rövid idő alatt módosítja a *csatlakozást*.
-- A rendszer két virtuális hálózat között létrehoz egy társítást. A társak nem tranzitívak. Ha a következőket hozza létre egymás között:
-  - VirtualNetwork1 & VirtualNetwork2
-  - VirtualNetwork2 & VirtualNetwork3
+- A rendszer két virtuális hálózat között létrehoz egy társítást. Önmagában nem tranzitívak. Ha a következőket hozza létre egymás között:
+  - VirtualNetwork1 & VirtualNetwork2-VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3-VirtualNetwork2 & VirtualNetwork3
 
-  A VirtualNetwork1 és a VirtualNetwork3 között nincs egymással való társítás a VirtualNetwork2-n keresztül. Ha létre szeretne hozni egy virtuális hálózatot a VirtualNetwork1 és a VirtualNetwork3 között, létre kell hoznia egy társítást a VirtualNetwork1 és a VirtualNetwork3 között.
+
+  A VirtualNetwork1 és a VirtualNetwork3 között nincs egymással való társítás a VirtualNetwork2-n keresztül. Ha létre szeretne hozni egy virtuális hálózatot a VirtualNetwork1 és a VirtualNetwork3 között, létre kell hoznia egy társítást a VirtualNetwork1 és a VirtualNetwork3 között. A VirtualNetwork1 és a VirtualNetwork3 között nincs egymással való társítás a VirtualNetwork2-n keresztül. Ha azt szeretné, hogy a VirtualNetwork1 és a VirtualNetwork3 közvetlenül kommunikáljanak, létre kell hoznia egy explicit társítást a VirtualNetwork1 és a VirtualNetwork3 között, vagy át kell haladnia egy NVA a hub-hálózaton.  
 - Az alapértelmezett Azure-névfeloldás használatával nem oldhatók fel nevek a megosztott virtuális hálózatokban. Más virtuális hálózatok neveinek feloldásához Azure DNS kell használnia [a privát tartományokhoz](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy egyéni DNS-kiszolgálóhoz. A saját DNS-kiszolgáló beállításával kapcsolatos további információkért lásd: [névfeloldás a saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 - Az ugyanabban a régióban található, egymással azonos régióba tartozó virtuális hálózatok erőforrásai ugyanúgy kommunikálhatnak egymással, mint a virtuális hálózatban lévő azonos sávszélességgel és késéssel. Az egyes virtuális gépek mérete azonban a saját maximális hálózati sávszélességgel rendelkezik. A különböző virtuálisgép-méretek maximális hálózati sávszélességével kapcsolatos további információkért lásd: Windows vagy [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretei.
 - Egy virtuális hálózat egy másik virtuális hálózatra is csatlakoztatható, és egy másik virtuális hálózathoz is csatlakozhat egy Azure virtuális hálózati átjáróval. Ha a virtuális hálózatok kapcsolaton és átjárón keresztül csatlakoznak, a virtuális hálózatok közötti forgalom az átjáró helyett a társítási konfiguráción keresztül folyik.
@@ -146,7 +147,7 @@ A virtuális hálózati társítással való együttműködéshez használt fió
 
 Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell rendelnie egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Művelet                                                          | Name |
+| Műveletek                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Az A virtuális hálózatról a B virtuális hálózatra való társítás létrehozásához szükséges. A virtuális hálózatnak virtuális hálózatnak (Resource Manager) kell lennie.          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | A (z) B virtuális hálózatról (Resource Manager) az A virtuális hálózatra való társítás létrehozásához szükséges                                                       |

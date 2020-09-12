@@ -8,15 +8,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d2dffc90d78d5d173e25232010171a5c0109e028
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267505"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289154"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-események kezelése
 
@@ -44,7 +44,7 @@ Az Media Services eseményeket kezelő alkalmazásoknak néhány ajánlott gyako
 > [!NOTE]
 > Az események a Event Grid [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)hatálya alá esnek. Ha API-kat használó esemény-értesítéseket szeretne kapni, tekintse meg a példákat az események használatáról a [.net SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) -val vagy a [Java SDK](https://github.com/Azure-Samples/media-services-v3-java)-val.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Események figyelése – portál](monitor-events-portal-how-to.md)
 * [Események monitorozása – Parancssori felület](job-state-events-cli-how-to.md)

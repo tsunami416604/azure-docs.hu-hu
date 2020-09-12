@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1e3579f79f9daa80c3d3f2206be7a76cc5505e80
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037019"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293999"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A fenti eljárások követéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szükség, amely már üzembe van és fut. Fejezze be a gyors [üzembe helyezési útmutatót az Azure CLI-n keresztül](spring-cloud-quickstart-launch-app-cli.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
+A fenti eljárások követéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szükség, amely már üzembe van és fut. Fejezze be a gyors [üzembe helyezési útmutatót az Azure CLI-n keresztül](spring-cloud-quickstart.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
     
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
@@ -101,6 +101,6 @@ A Application Insights az Application Map és a Search függvény mellett biztos
 1. A **figyelés**lapon válassza az **elosztott nyomkövetés**lehetőséget.
 1. Application Insights letiltásához válassza a **Letiltás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazásokhoz való kötési szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Cosmos db adatbázis kötése egy Azure Spring Cloud-alkalmazáshoz](spring-cloud-tutorial-bind-cosmos.md).

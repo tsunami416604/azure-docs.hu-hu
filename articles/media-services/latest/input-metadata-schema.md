@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269148"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295546"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok
 
@@ -71,7 +71,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 | **Profil** |A Video Track profilja. <br /><br />Például: `"Profile": "Main"`|
 | **Szintű** |A videó követési szintje. <br /><br />Például: `"Level": "3.2"`|
 | **PixelFormat** |A Video Track képpontjának formátuma <br /><br />Például: `"PixelFormat": "yuv420p"`|
-| **Szélesség**<br />Kötelező |Kódolt videó szélessége képpontban megadva <br /><br />Például: `"Width": "1280"`|
+| **Szélessége**<br />Kötelező |Kódolt videó szélessége képpontban megadva <br /><br />Például: `"Width": "1280"`|
 | **Magasság**<br />Kötelező |Kódolt videó magassága képpontban megadva.<br /><br />Például: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Kötelező |Videó megjelenítési oldalarányának számlálója<br /><br />Például: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Kötelező |Videó megjelenítési méretarányának nevezője <br /><br />Például: `"DisplayAspectRatioDenominator": 9.0`|
@@ -240,6 +240,6 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kimeneti metaadatok](output-metadata-schema.md)

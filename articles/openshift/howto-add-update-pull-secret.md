@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: pull Secret, ARO, openshift, Red Hat
-ms.openlocfilehash: 3351052db63f095bfca5f0b91f26e1013319c582
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098896"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294747"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Red Hat pull-titok hozzáadása vagy frissítése Azure Red Hat OpenShift 4-fürtön
 
-Ez az útmutató a Red Hat pull Secret egy meglévő Azure Red Hat OpenShift 4. x fürthöz való hozzáadását és frissítését ismerteti.
+Ez az útmutató a Red Hat pull Secret egy meglévő Azure Red Hat OpenShift (ARO) 4. x fürthöz való hozzáadását és frissítését ismerteti.
 
 Ha első alkalommal hoz létre fürtöt, a fürt létrehozásakor felveheti a lekérési titkot. A Red Hat pull secrettel rendelkező ARO-fürtök létrehozásával kapcsolatos további információkért lásd: [Azure Red Hat OpenShift 4-fürt létrehozása](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional).
 
@@ -29,13 +29,13 @@ Ha ARO-fürtöt hoz létre a Red Hat pull Secret hozzáadása nélkül, a rendsz
 
 Ez a szakasz a Red Hat pull Secret-ből származó további értékekkel rendelkező, a lekéréses titkos kód frissítését ismerteti.
 
-1. A `pull-secret` következő parancs futtatásával olvassa be a openshift-config névtérben megnevezett titkos kulcsot, és mentse egy külön fájlba: 
+1. A következő parancs futtatásával olvassa be a névtérben megnevezett titkot `pull-secret` `openshift-config` , és mentse egy külön fájlba: 
 
     ```console
     oc get secrets pull-secret -n openshift-config -o template='{{index .data ".dockerconfigjson"}}' | base64 -d > pull-secret.json
     ```
 
-    A kimenetnek a következőhöz hasonlónak kell lennie (vegye figyelembe, hogy a tényleges titkos érték el lett távolítva):
+    A kimenetnek az alábbihoz hasonlónak kell lennie. (Vegye figyelembe, hogy a tényleges titkos érték el lett távolítva.)
 
     ```json
     {
@@ -47,7 +47,7 @@ Ez a szakasz a Red Hat pull Secret-ből származó további értékekkel rendelk
     }
     ```
 
-2. Navigáljon a [Red Hat OpenShift cluster Manager-portálra](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) , és kattintson a **lekéréses titok letöltése elemre.** A Red Hat pull Secret a következőhöz hasonlóan fog kinézni (vegye figyelembe, hogy a tényleges titkos értékek el lettek távolítva):
+2. Nyissa meg a [Red Hat OpenShift cluster Manager-portált](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) , és válassza a **lekéréses titok letöltése**lehetőséget. A Red Hat pull Secret a következőhöz hasonlóan fog kinézni. (Vegye figyelembe, hogy a tényleges titkos értékek el lettek távolítva.)
 
     ```json
     {
@@ -75,7 +75,7 @@ Ez a szakasz a Red Hat pull Secret-ből származó további értékekkel rendelk
 3. Szerkessze a fürtből kapott lekéréses titkos fájlt a Red Hat pull-titokban található bejegyzések hozzáadásával. 
 
     > [!IMPORTANT]
-    > A `cloud.openshift.com` Red Hat pull Secret bejegyzésének beírásával a fürt a telemetria-adatok Red Hat-ra való küldését is elindíthatja. Csak akkor adja meg ezt a szakaszt, ha telemetria-adatküldést szeretne küldeni. Ellenkező esetben hagyja meg a következő szakaszt.
+    > A `cloud.openshift.com` Red Hat pull Secret bejegyzésének beírásával a fürt a telemetria-adatok Red Hat-ra való küldését is elindíthatja. Csak akkor adja meg ezt a szakaszt, ha telemetria-adatküldést szeretne küldeni. Ellenkező esetben hagyja meg a következő szakaszt.    
     > ```json
     > {
     >         "cloud.openshift.com": {
@@ -86,13 +86,14 @@ Ez a szakasz a Red Hat pull Secret-ből származó további értékekkel rendelk
 
     > [!CAUTION]
     > Ne távolítsa el vagy módosítsa a `arosvc.azurecr.io` lekéréses titokból származó bejegyzést. Ez a szakasz szükséges ahhoz, hogy a fürt megfelelően működjön.
+
     ```json
     "arosvc.azurecr.io": {
                 "auth": "<my-aroscv.azurecr.io-secret>"
             }
     ```
 
-    A végső fájlnak a következőhöz hasonlóan kell kinéznie (vegye figyelembe, hogy a tényleges titkos értékek el lettek távolítva):
+    A végső fájlnak az alábbihoz hasonlóan kell kinéznie. (Vegye figyelembe, hogy a tényleges titkos értékek el lettek távolítva.)
 
     ```json
     {
@@ -121,25 +122,26 @@ Ez a szakasz a Red Hat pull Secret-ből származó további értékekkel rendelk
     ```
 
 4. Győződjön meg arról, hogy a fájl érvényes JSON. A JSON számos módon érvényesíthető. A következő példa a jQ használja:
+
     ```json
     cat pull-secret.json | jq
     ```
 
     > [!NOTE]
-    > Ha hiba van a fájlban, akkor látható `parse error` .
+    > Ha egy hiba szerepel a fájlban, az a következőképpen jelenik meg: `parse error` .
 
 ## <a name="add-your-pull-secret-to-your-cluster"></a>A lekéréses titkos kód hozzáadása a fürthöz
 
-A következő parancs futtatásával frissítse a lekéréses titkot:
+Futtassa a következő parancsot a lekéréses titok frissítéséhez.
 
 > [!NOTE]
-> Ha ezt a parancsot futtatja, akkor a fürtcsomópontok a frissítésük után egyenként újraindulnak. 
+> A parancs futtatása azt eredményezi, hogy a fürtcsomópontok egy-egy frissítést követően újraindulnak. 
 
 ```console
 oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=./pull-secret.json
 ```
 
-Miután beállította a titkot, készen áll a Red Hat Certified operátorok engedélyezésére.
+A titok beállítása után készen áll a Red Hat Certified operátorok engedélyezésére.
 
 ### <a name="modify-the-configuration-files"></a>A konfigurációs fájlok módosítása
 
@@ -151,9 +153,9 @@ Először módosítsa a minták kezelője konfigurációs fájlját. Ezután fut
 oc edit configs.samples.operator.openshift.io/cluster -o yaml
 ```
 
-Módosítsa a `spec.architectures.managementState` és a `status.architecture.managementState` értékeit `Removed` `Managed` . 
+Módosítsa a `spec.architectures.managementState` és a `status.architecture.managementState` értékét a következőre: `Removed` `Managed` . 
 
-A következő YAML-kódrészlet csak a szerkesztett YAML fájl megfelelő részeit jeleníti meg.
+A következő YAML-kódrészlet csak a szerkesztett YAML fájl megfelelő részeit jeleníti meg:
 
 ```yaml
 apiVersion: samples.operator.openshift.io/v1
@@ -181,9 +183,9 @@ Másodszor, futtassa a következő parancsot az operátori központ konfiguráci
 oc edit operatorhub cluster -o yaml
 ```
 
-Módosítsa a `Spec.Sources.Disabled` és a `Status.Sources.Disabled` értékeit a rendszerből `true` `false` minden olyan forrás esetében, amelyet engedélyezni szeretne.
+Módosítsa a `Spec.Sources.Disabled` és a `Status.Sources.Disabled` érték `true` értékét `false` minden olyan forrás esetében, amelyet engedélyezni szeretne.
 
-A következő YAML-kódrészlet csak a szerkesztett YAML fájl megfelelő részeit jeleníti meg.
+A következő YAML-kódrészlet csak a szerkesztett YAML fájl megfelelő részeit jeleníti meg:
 
 ```yaml
 Name:         cluster
@@ -214,7 +216,7 @@ Mentse a fájlt a módosítások alkalmazásához.
 
 ## <a name="validate-that-your-secret-is-working"></a>Annak ellenőrzése, hogy a titka működik-e
 
-A lekéréses titok hozzáadását és a megfelelő konfigurációs fájlok módosítását követően a fürt frissítése több percet is igénybe vehet. A fürt frissítésének megadásához futtassa a következő parancsot a Certified operátorok és a Red Hat operátorok rendelkezésre álló forrásai megjelenítéséhez:
+Miután hozzáadta a lekéréses titkot, és módosítja a megfelelő konfigurációs fájlokat, a fürt frissítése több percet is igénybe vehet. A fürt frissítésének megadásához futtassa a következő parancsot a Certified operátorok és a Red Hat operátorok rendelkezésre álló forrásai megjelenítéséhez:
 
 ```console
 $ oc get catalogsource -A
@@ -226,9 +228,9 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 
 Ha nem látja a Certified operátorokat és a Red Hat operátort, várjon néhány percet, és próbálkozzon újra.
 
-A lekéréses titok frissítésének és megfelelő működésének biztosításához nyissa meg a OperatorHub, és ellenőrizze, hogy van-e Red Hat ellenőrzött operátor. Ellenőrizze például, hogy elérhető-e a OpenShift-tároló kezelője, és hogy van-e engedélye a telepítésére.
+A lekéréses titok frissítésének és megfelelő működésének biztosítása érdekében nyissa meg a OperatorHub, és ellenőrizze, hogy van-e Red Hat ellenőrzött operátor. Ellenőrizze például, hogy elérhető-e a OpenShift-tároló kezelője, és hogy van-e engedélye a telepítésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Red Hat pull Secrets szolgáltatással kapcsolatos további információkért lásd: [a képek lekérésével kapcsolatos titkok használata](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html).
 
 További információ a Red Hat OpenShift 4-ről: [Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/welcome/index.html).

@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a98a56bf27f76de706d02691d5dfbb54b5466c49
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f234c3e221c947443869d8ab472dc60ddf7317ea
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268519"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297287"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása Media Services REST API
 
@@ -95,7 +95,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
-Kattintson a **Küldés** gombra. 
+Válassza a **Küldés** lehetőséget. 
 
 A szűrő létrejött.
 
@@ -113,7 +113,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
-Kattintson a **Küldés** gombra. 
+Válassza a **Küldés** lehetőséget. 
 
 Az eszköz szűrője létrejött.
 
@@ -137,6 +137,6 @@ Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-c�
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Stream-videók](stream-files-tutorial-with-rest.md) 

@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359755"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279941"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Módosított alapértelmezett szabályok javítása Azure AD Connect
 
@@ -89,7 +89,7 @@ Hagyja üresen a **hatókör-szűrőt** . Ez azt jelenti, hogy a szabály a Acti
 
 Az **illesztési szabályok** megtartása üres. Ez azt jelenti, hogy ez a szabály a szabványos alapértelmezett szabályban definiált illesztési feltételt használja. Ez egy másik ok, amiért nem lehet letiltani vagy törölni a szabványos alapértelmezett szabályt. Ha nincs összekapcsolási feltétel, az attribútum nem fog folyni. 
 
-Adja hozzá a megfelelő átalakításokat az attribútumhoz. Állandó érték kiosztásával állandó értéket adhat a célként megadott attribútumnak. A forrás vagy a cél attribútum között közvetlen hozzárendelést használhat. Vagy használhat egy kifejezést is az attribútumhoz. Itt láthatja a különböző [kifejezési függvényeket](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) .
+Adja hozzá a megfelelő átalakításokat az attribútumhoz. Állandó érték kiosztásával állandó értéket adhat a célként megadott attribútumnak. A forrás vagy a cél attribútum között közvetlen hozzárendelést használhat. Vagy használhat egy kifejezést is az attribútumhoz. Itt láthatja a különböző [kifejezési függvényeket](./reference-connect-sync-functions-reference.md) .
 
 #### <a name="add-an-outbound-sync-rule"></a>Kimenő szinkronizálási szabály hozzáadása
 Ahhoz, hogy az attribútumot a célként megadott könyvtárba lehessen kapcsolni, létre kell hoznia egy kimenő szabályt. Ez azt jelenti, hogy a forrás a metaverse, és a cél a csatlakoztatott rendszer. Kimenő szabály létrehozásához indítsa el a **szinkronizálási szabályok szerkesztőjét**, módosítsa az **irányt** a **kimenő**értékre, majd kattintson az **új szabály hozzáadása**lehetőségre. 
@@ -102,7 +102,7 @@ A bejövő szabályhoz hasonlóan a szabály elnevezéséhez használhatja a saj
 
 A **hatókör-szűrő** és a **csatlakoztatási szabályok** üresek maradnak. Adja meg az átalakítást állandó, közvetlen vagy kifejezésként. 
 
-Most már tudja, hogyan hozhat új attribútumot egy felhasználói objektumhoz Active Directoryról Azure Active Directoryre. Ezekkel a lépésekkel bármely objektumból leképezheti a forrás és a cél bármely attribútumát. További információ: [Egyéni szinkronizálási szabályok létrehozása](how-to-connect-create-custom-sync-rule.md) és [felkészülés a felhasználók](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)kiépítésére.
+Most már tudja, hogyan hozhat új attribútumot egy felhasználói objektumhoz Active Directoryról Azure Active Directoryre. Ezekkel a lépésekkel bármely objektumból leképezheti a forrás és a cél bármely attribútumát. További információ: [Egyéni szinkronizálási szabályok létrehozása](how-to-connect-create-custom-sync-rule.md) és [felkészülés a felhasználók](/office365/enterprise/prepare-for-directory-synchronization)kiépítésére.
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Meglévő attribútum értékének felülbírálása
 Érdemes lehet felülbírálni egy már leképezett attribútum értékét. Ha például az Azure AD-ben mindig null értéket szeretne beállítani egy attribútumhoz, egyszerűen csak egy bejövő szabályt hozzon létre. Végezze el az állandó értéket, a `AuthoritativeNull` folyamatot a TARGET attribútumnak. 
@@ -190,10 +190,7 @@ Figyelje meg, hogy a módosított szabályban az `msExchMailboxGuid` attribútum
  
 Ha a szabályokat úgy szeretné kijavítani, hogy azok az alapértelmezett beállításokra váltsanak vissza, törölje a módosított szabályt, és engedélyezze az alapértelmezett szabályt. Ügyeljen arra, hogy ne veszítse el az elérni kívánt testreszabást. Ha elkészült, futtassa a **teljes szinkronizálást**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
 - [Testreszabott beállítások](how-to-connect-install-custom.md)
-
-
-

@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8557a11a4768b547096fb56371f0f358c890f883
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266986"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295614"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Kódolás egyéni átalakítással – .NET
 
@@ -58,6 +58,6 @@ Az alábbi példa azokat a kimeneteket határozza meg, amelyeket az átalakító
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Fájlok streamelése](stream-files-tutorial-with-api.md) 

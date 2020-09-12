@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381161"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278394"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Címtár-szinkronizálási követelmények meghatározása
 A szinkronizálás arról szól, hogy a felhasználók a helyszíni identitásuk alapján biztosítanak identitást a felhőben. Függetlenül attól, hogy szinkronizált fiókot használnak-e hitelesítéshez vagy összevont hitelesítéshez, a felhasználóknak továbbra is rendelkezniük kell identitással a felhőben.  Ezt az identitást rendszeresen karban kell tartani és frissíteni kell.  A frissítések több űrlapot is igénybe vehetnek, a cím módosításaitól a jelszó módosításaiig.  
@@ -64,7 +64,7 @@ Emellett meg kell határoznia a biztonsági követelményeket és a megkötések
   * Megnyithatja a szükséges tűzfal-portokat a szinkronizálás támogatásához?
 * Vész-helyreállítási terve van a szinkronizációs kiszolgálónak?
 * Van olyan fiókja, amely a megfelelő engedélyekkel rendelkezik az összes olyan erdőhöz, amelyet szinkronizálni szeretne?
-  * Ha a vállalat nem ismeri a kérdésre adott választ, tekintse át a "jelszó-szinkronizálási engedélyek" szakaszt a [Azure Active Directory szinkronizálási szolgáltatás telepítése](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) című cikkben, és állapítsa meg, hogy van-e ilyen engedélyekkel rendelkező fiókja, vagy ha létre kell hoznia egyet.
+  * Ha a vállalat nem ismeri a kérdésre adott választ, tekintse át a "jelszó-szinkronizálási engedélyek" szakaszt a [Azure Active Directory szinkronizálási szolgáltatás telepítése](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) című cikkben, és állapítsa meg, hogy van-e ilyen engedélyekkel rendelkező fiókja, vagy ha létre kell hoznia egyet.
 * Ha van megtalálhatjuk-erdő szinkronizálása, akkor a Szinkronizáló kiszolgáló képes az egyes erdőkbe bejutni?
 
 > [!NOTE]
@@ -72,9 +72,8 @@ Emellett meg kell határoznia a biztonsági követelményeket és a megkötések
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A multi-Factor Authentication követelményeinek meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
-

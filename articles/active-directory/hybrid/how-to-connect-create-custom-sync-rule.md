@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75300824d94ecbd77f426539ce99da6caaa2e27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f33cbb8caaf81b862198d694b0562d461de8a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359993"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279278"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Szinkronizálási szabály testre szabása
 
@@ -43,13 +43,13 @@ A szinkronizálási szabály szerkesztőjével szerkesztheti vagy létrehozhatja
 * Egy **kimenő** szabály módosításához módosítsa a szűrést a szinkronizálási szabály szerkesztőjéből.
 
 ## <a name="recommended-documents"></a>**Ajánlott dokumentumok**
-* [Azure AD Connect Sync: technikai fogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect Sync: az architektúra megismerése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect szinkronizálás: a deklaratív kiépítési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect Sync: Shadow attributes](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect Sync: technikai fogalmak](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect Sync: az architektúra megismerése](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect szinkronizálás: a deklaratív kiépítési kifejezések ismertetése](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect Sync: Shadow attributes](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>Következő lépések
 - [Azure ad Connect szinkronizálás](how-to-connect-sync-whatis.md).

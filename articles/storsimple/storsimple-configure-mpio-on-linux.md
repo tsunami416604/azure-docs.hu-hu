@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183632"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294713"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
 Ez a cikk ismerteti a többutas i/o (MPIO) szolgáltatásnak a CentOS 6,6-es gazdagép-kiszolgálón való konfigurálásához szükséges lépéseket. Az iSCSI-kezdeményezők használatával a gazdagép-kiszolgáló a magas rendelkezésre állás érdekében csatlakozik a Microsoft Azure StorSimple eszközhöz. Részletesen ismerteti a Többutas eszközök automatikus észlelését és a StorSimple-kötetek adott beállítását.
@@ -352,7 +352,7 @@ A. Általában nem látható, hogy a többutas útvonalak egyike a többutas dé
 
 * Az SCSI-busz újraellenőrzéséhez használja a következő parancsot:
   
-    `$ rescan-scsi-bus.sh`(sg3_utils csomag része)
+    `$ rescan-scsi-bus.sh` (sg3_utils csomag része)
 * Írja be a következő parancsokat:
   
     `$ dmesg | grep sd*`
@@ -377,7 +377,7 @@ Ismételje meg ezt a parancsot az iSCSI-tároló összes csatlakoztatott hálóz
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-K. Nem biztos benne, hogy az eszközem engedélyezési listán van-e.
+K. Nem tudom, hogy az eszközem engedélyezve van-e.
 
 A. Annak ellenőrzéséhez, hogy az eszköz engedélyezve van-e, használja a következő hibaelhárítási interaktív parancsot:
 
@@ -441,7 +441,7 @@ További információ: [Hibaelhárítás a többutas eléréshez](https://access
 | &nbsp; |`chkconfig multipathd on` </br> VAGY </br> `mpathconf -with_chkconfig y` |A többutas démon indításának engedélyezése rendszerindítás közben |
 | &nbsp; |`multipathd -k` |Az interaktív konzol elindítása hibaelhárításhoz |
 | &nbsp; |`multipath -l` |Többutas kapcsolatok és eszközök listázása |
-| &nbsp; |`mpathconf --enable` |Hozzon létre egy minta mulitpath. conf fájlt a`/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |Hozzon létre egy minta mulitpath. conf fájlt a `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Következő lépések
@@ -449,4 +449,3 @@ Az MPIO Linux-gazdagépen való konfigurálásakor előfordulhat, hogy a követk
 
 * [Az MPIO beállítása a CentOS-ben](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux-betanítási útmutató](http://linux-training.be/linuxsys.pdf)
-

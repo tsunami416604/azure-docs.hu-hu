@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974836"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294390"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Korábban automatikusan kiépített eszközök kiépítése 
 
@@ -57,22 +57,10 @@ A regisztrációs csoporton keresztül kiépített eszközök listájának megte
 A beléptetési csoportok esetében kétféle esetben érdemes figyelembe venni a következőket:
 
 - A beléptetési csoporton keresztül kiépített összes eszköz kivonása:
-  1. Tiltsa le a beléptetési csoportot az aláíró tanúsítványának feketelistára történő letiltásához. 
+  1. Tiltsa le a beléptetési csoportot, hogy ne engedélyezze az aláíró tanúsítványát. 
   2. A regisztrációs csoport kiépített eszközeinek listájával letilthatja vagy törölheti az egyes eszközöket a megfelelő IoT hub azonosító beállításjegyzékében. 
   3. Miután letiltotta vagy törölte az összes eszközt a megfelelő IoT-hubokból, lehetősége van törölni a beléptetési csoportot. Ügyeljen arra, hogy ha törli a beléptetési csoportot, és van egy engedélyezett regisztrációs csoport egy vagy több eszközhöz tartozó tanúsítványláncnél magasabb szintű aláíró tanúsítványhoz, akkor ezek az eszközök újra regisztrálhatnak. 
 
 - Egyetlen eszköz kiépítése egy beléptetési csoportból:
   1. Hozzon létre egy letiltott egyéni regisztrációt a levél (eszköz) tanúsítványához. Ez visszavonja az eszköz kiépítési szolgáltatáshoz való hozzáférését, miközben továbbra is engedélyezi a hozzáférést azokhoz az eszközökhöz, amelyeken a regisztrációs csoport aláíró tanúsítványa szerepel a láncban. Ne törölje az eszköz letiltott egyéni regisztrációját. Ezzel lehetővé teszi, hogy az eszköz újra regisztrálja a regisztrációs csoportot. 
   2. A regisztrációs csoport kiépített eszközeinek listájával megkeresheti azt az IoT hubot, amelyet az eszköz kiépített, illetve amelyről letiltotta vagy törölheti az adott hub identitás-beállításjegyzékében. 
-  
-  
-
-
-
-
-
-
-
-
-
-

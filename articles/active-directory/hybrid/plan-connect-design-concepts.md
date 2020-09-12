@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698597"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279652"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tervezési fogalmak
 A dokumentum célja, hogy leírja, milyen területeken kell átgondolni a Azure AD Connect megvalósításának tervezése során. Ez a dokumentum részletesen ismerteti az egyes területeket, és ezeket a fogalmakat röviden ismertetjük más dokumentumokban is.
@@ -119,7 +119,7 @@ A Azure AD Connect egyéni módban való telepítésekor a Azure AD Connect var�
 
 ![Egyéni telepítés – sourceAnchor-konfiguráció](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | --- | --- |
 | Let Azure manage the source anchor for me (Az Azure kezelje a forráshorgonyt) | Válassza ezt a lehetőséget, ha azt szeretné, hogy az Azure AD válassza ki az attribútumot. Ha ezt a lehetőséget választja, a Azure AD Connect varázsló ugyanazt a [sourceAnchor attribútumot alkalmazza, amelyet az expressz telepítéskor használ](#express-installation)a rendszer. Az expressz telepítéshez hasonlóan a varázsló arról tájékoztatja, hogy az egyéni telepítés befejeződése után melyik attribútumot választotta a forrás-szerkesztőpont attribútumként. |
 | A specific attribute (Egy adott attribútum) | Válassza ezt a lehetőséget, ha meglévő AD-attribútumot szeretne megadni forráshorgony-attribútumként. |
@@ -165,7 +165,7 @@ Az elemzés során (4. lépés), ha az attribútum egy vagy több objektumon van
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS vagy külső összevonási konfigurációra gyakorolt hatás
 Ha Azure AD Connectt használ a helyszíni AD FS központi telepítésének kezeléséhez, a Azure AD Connect automatikusan frissíti a jogcím-szabályokat, hogy ugyanazt az AD attribútumot használják, mint a sourceAnchor. Ez biztosítja, hogy az ADFS által létrehozott ImmutableID-jogcím konzisztens legyen az Azure AD-ba exportált sourceAnchor-értékekkel.
 
-Ha Azure AD Connectn kívüli AD FS felügyel, vagy harmadik féltől származó összevonási kiszolgálókat használ a hitelesítéshez, akkor manuálisan kell frissítenie a ImmutableID jogcím szabályait úgy, hogy konzisztensek legyenek az Azure AD-ba exportált sourceAnchor-értékekkel, az [AD FS jogcímek módosítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)című szakaszban leírtak szerint. A varázsló a telepítés befejeződése után a következő figyelmeztetést adja vissza:
+Ha Azure AD Connectn kívüli AD FS felügyel, vagy harmadik féltől származó összevonási kiszolgálókat használ a hitelesítéshez, akkor manuálisan kell frissítenie a ImmutableID jogcím szabályait úgy, hogy konzisztensek legyenek az Azure AD-ba exportált sourceAnchor-értékekkel, az [AD FS jogcímek módosítása](./how-to-connect-fed-management.md#modclaims)című szakaszban leírtak szerint. A varázsló a telepítés befejeződése után a következő figyelmeztetést adja vissza:
 
 ![Harmadik féltől származó összevonási konfiguráció](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
@@ -193,9 +193,9 @@ John a contoso.com felhasználója. Azt szeretné, hogy János a helyszíni UPN 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Nem irányítható helyszíni tartományok és UPN az Azure AD-hez
 Egyes szervezetek nem irányítható tartományokkal, például a contoso. local vagy az egyszerű, egycímkés tartományokkal, például a contoso. Nem lehet ellenőrizni az Azure AD-ben nem irányítható tartományt. Azure AD Connect csak ellenőrzött tartományba tud szinkronizálni az Azure AD-ben. Amikor létrehoz egy Azure AD-címtárat, egy olyan, az Azure AD-hoz tartozó alapértelmezett tartományba kerülő, áthelyezhető tartományt hoz létre, például contoso.onmicrosoft.com. Ezért szükség lesz arra, hogy ellenőrizze a többi átirányítható tartományt ebben az esetben, ha nem szeretne szinkronizálni az alapértelmezett onmicrosoft.com-tartománnyal.
 
-A tartományok hozzáadásával és ellenőrzésével kapcsolatos további információkért olvassa el [az Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../active-directory-domains-add-azure-portal.md) című témakört.
+A tartományok hozzáadásával és ellenőrzésével kapcsolatos további információkért olvassa el [az Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../fundamentals/add-custom-domain.md) című témakört.
 
 Azure AD Connect észleli, ha nem átirányítható tartományi környezetben fut, és megfelelően figyelmezteti Önt az expressz beállításokkal. Ha nem átirányítható tartományban működik, akkor valószínű, hogy a felhasználók UPN-je nem irányítható utótaggal rendelkezik. Ha például a contoso. local alatt fut, Azure AD Connect javasolja, hogy az expressz beállítások használata helyett egyéni beállításokat használjon. Egyéni beállításokkal megadhatja azt az attribútumot, amelyet UPN-ként kell használni az Azure-ba való bejelentkezéshez, miután a felhasználók szinkronizálva lettek az Azure AD szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

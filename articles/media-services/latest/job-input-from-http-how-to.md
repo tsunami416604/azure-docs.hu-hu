@@ -8,15 +8,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c6ab5051b436d12ca86501e4c71bbbea0a8d3107
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e440e4393065d2bc1cad1a96b4f8c975624faa11
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269063"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295512"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>Feladathoz tartozó bemenet létrehozása HTTPS URL-címről
 
@@ -37,6 +37,6 @@ A következő kód bemutatja, hogyan hozhat létre egy HTTPS URL-címmel rendelk
 
 Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy feladatot egy helyi fájlból](job-input-from-local-file-how-to.md).

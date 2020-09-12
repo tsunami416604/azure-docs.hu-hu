@@ -10,17 +10,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 8f4e0d9a6781e35c1ed6197dd32181511506d145
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256480"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295325"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Streamvégpont (forrás) hibái 
+# <a name="streaming-endpoint-origin-errors"></a>Streamvégpont (forrás) hibái
 
 Ez a témakör a Azure Media Services [streaming Endpoint szolgáltatástól](streaming-endpoint-concept.md)kapott hibákat ismerteti.
 
@@ -202,8 +202,8 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 - [Kódolási hibakódok](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services fogalmak](concepts-overview.md)
-- [Kvóták és korlátok](limits-quotas-constraints.md)
+- [Kvóták és korlátozások](limits-quotas-constraints.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Példa: hozzáférés ErrorCode és üzenetküldés a ApiException és a .NET használatával](configure-connect-dotnet-howto.md#connect-to-the-net-client)

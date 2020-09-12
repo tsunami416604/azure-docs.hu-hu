@@ -10,17 +10,17 @@ tags: ''
 keywords: azure media services, stream, szórás, élő, offline
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 26e6e56d7c14cfa0ab54776003ae4489bb254094
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265847"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294373"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services-események létrehozása és monitorozása az Event Griddel az Azure Portalon
 
@@ -88,6 +88,6 @@ A Media Services-fiókhoz tartozó eseményeket a kódolási feladatok futtatás
 
 ![Előfizetési esemény megtekintése](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltöltés, kódolás és streamelés](stream-files-tutorial-with-api.md)

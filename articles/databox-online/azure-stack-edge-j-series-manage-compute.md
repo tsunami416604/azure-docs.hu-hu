@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="manage-triggers"></a>Eseményindítók kezelése
 
-Az események olyan dolgok, amelyek az Ön felhőalapú környezetében vagy az eszközön történnek, amelyre szükség lehet. Ha például egy fájl egy megosztásban jön létre, akkor ez egy esemény. Az eseményindítók megemelik az eseményeket. Az Azure Stack Edge esetében az eseményindítók a fájlok eseményeire vagy az ütemtervre is reagálnak.
+Eseménynek nevezzük a felhőalapú környezetben vagy az eszközén bekövetkező történéseket, amelyekkel kapcsolatban érdemes lehet cselekedni. Egy fájl létrehozása egy megosztásban például eseménynek számít. A trigger az, ami az eseményt kiváltja. Az Azure Stack Edge-ben a triggerek fájleseményekre vagy ütemezésre reagálnak.
 
 - **Fájl**: ezek az eseményindítók olyan fájlok eseményeire reagálnak, mint például egy fájl létrehozása, egy fájl módosítása.
 - **Ütemezve**: ezek az eseményindítók olyan ütemezésre reagálnak, amelyet a kezdési dátummal, a kezdési időponttal és az Ismétlési intervallummal lehet meghatározni.
@@ -131,6 +131,6 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [végezhet hibakeresést Azure stack Edge](azure-stack-edge-gpu-troubleshoot.md)-ben.

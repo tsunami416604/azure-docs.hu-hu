@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423150"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279499"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -116,7 +116,7 @@ A biztonságos pontszám, amely a Center for Internet Security (CIS) vezérlők�
 **Részletek**: kövesse a Security Center kezdődő [biztonsági javaslatokat](../../security-center/security-center-recommendations.md) a legmagasabb prioritású elemekkel.
 
 **Ajánlott eljárás**: Security Center riasztások integrálása a biztonsági információk és az Event Management (SIEM) megoldásba.   
-**Részletek**: a legtöbb Siem-et használó szervezet központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által készített feldolgozott események közzé lesznek téve az Azure-tevékenység naplójában, amely az Azure Monitoron keresztül elérhető naplók egyike. A Azure Monitor összevont folyamatot biztosít a figyelési adatainak egy SIEM-eszközre történő átirányításához. Lásd: [biztonsági riasztások exportálása és javaslatok](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) az utasításokhoz. Ha az Azure Sentinelt használja, tekintse meg a [Azure Security Center összekapcsolását](../../sentinel/connect-azure-security-center.md)ismertető témakört.
+**Részletek**: a legtöbb Siem-et használó szervezet központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által készített feldolgozott események közzé lesznek téve az Azure-tevékenység naplójában, amely az Azure Monitoron keresztül elérhető naplók egyike. A Azure Monitor összevont folyamatot biztosít a figyelési adatainak egy SIEM-eszközre történő átirányításához. Lásd: [biztonsági riasztások exportálása és javaslatok](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) az utasításokhoz. Ha az Azure Sentinelt használja, tekintse meg a [Azure Security Center összekapcsolását](../../sentinel/connect-azure-security-center.md)ismertető témakört.
 
 **Ajánlott eljárás**: az Azure-naplók integrálása a Siem-szel.   
 **Részletek**: [Azure monitor használata adatok gyűjtésére és exportálására](/azure/azure-monitor/overview#integrate-and-export-data). Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának engedélyezéséhez, és az online napló megtartásának korlátozása. Ha Azure Sentinelt használ, tekintse meg [az adatforrások összekapcsolását](../../sentinel/connect-data-sources.md)ismertető témakört.
@@ -149,7 +149,7 @@ A következő DevOps ajánlott eljárásokat követve biztosíthatja, hogy a vá
 Az alkalmazások deklaratív sablonnal történő kiépítéséhez [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) használható. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont használja az alkalmazás életciklusának minden fázisában történő ismételt üzembe helyezéséhez.
 
 **Ajánlott eljárás**: az Azure Web Apps vagy a Cloud Services automatikus létrehozása és üzembe helyezése.  
-**Részletek**: beállíthatja, hogy a Azure DevOps projects [automatikusan létrejöjjön és üzembe helyezhető](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) az Azure Web Apps vagy a Cloud Services szolgáltatásban. Az Azure DevOps automatikusan telepíti a bináris fájlokat az Azure-hoz való kiépítést követően, miután minden kód bejelentkezett. A csomag-összeállítási folyamat egyenértékű a Visual Studióban található Package paranccsal, és a közzétételi lépések egyenértékűek a Visual Studióban található publish paranccsal.
+**Részletek**: beállíthatja, hogy a Azure DevOps projects  [automatikusan létrejöjjön és üzembe helyezhető](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) az Azure Web Apps vagy a Cloud Services szolgáltatásban. Az Azure DevOps automatikusan telepíti a bináris fájlokat az Azure-hoz való kiépítést követően, miután minden kód bejelentkezett. A csomag-összeállítási folyamat egyenértékű a Visual Studióban található Package paranccsal, és a közzétételi lépések egyenértékűek a Visual Studióban található publish paranccsal.
 
 **Ajánlott eljárás**: a kiadási felügyelet automatizálása.  
 **Részletek**: az [Azure-folyamatok](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) egy megoldás a többfázisú üzembe helyezés automatizálására és a kiadási folyamat kezelésére. Felügyelt folyamatos üzembe helyezési folyamatokat hozhat létre gyorsan, egyszerűen és gyakran. Az Azure-folyamatok segítségével automatizálhatja a kiadási folyamatot, és előre definiált jóváhagyási munkafolyamatokat is használhat. A helyszíni és a felhő üzembe helyezése, bővítése és testreszabása szükség szerint.
@@ -226,4 +226,4 @@ Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kez
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
 * Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, jelentések vagy e-mailen keresztülsecure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, jelentések vagy e-mailen keresztül secure@microsoft.com

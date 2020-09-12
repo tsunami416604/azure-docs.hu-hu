@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.subservice: ''
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2b20668ea08186f42eed89f82fb1ae8d85cf090d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c3aaba6939f9e5e3f5d7c169cd3a199cc93f527d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267700"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296773"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Magas rendelkezésre állás a Media Services és a videó igény szerint (VOD)
 
@@ -85,6 +85,6 @@ Ez a magas szintű diagram a rendelkezésre álló minta architektúráját muta
     * Ha az ütemezett állapot olyan feladatokkal rendelkezik, amelyek egy adott régióra vonatkozóan ésszerű időn belül nem fejlettek a feldolgozási állapotra, távolítsa el a régiót a jelenleg használt fiókok listájáról. Az üzleti igényektől függően dönthet úgy, hogy azonnal megszakítja a feladatokat, és visszaküldi azokat a másik régióba. Vagy további időt adhat nekik, hogy a következő állapotba lépjenek.
     * Ha egy régiót eltávolítottak a fiók listájából, figyelje a helyreállítást a listához való hozzáadás előtt. A regionális állapot a régió meglévő feladatain keresztül figyelhető (ha nem lettek megszakítva és nem lettek elküldve), a fiók egy adott időtartam után visszakerül a listához, és az operátorok figyelik az Azure-kommunikációt az olyan kimaradások miatt, amelyek hatással lehetnek a Azure Media Servicesra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Példák a [kód](/samples/browse/?products=azure-media-services) megadására

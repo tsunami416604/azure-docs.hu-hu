@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264963"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291415"
 ---
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
@@ -201,6 +201,6 @@ Az előzetes verzióban az alábbi ismert problémák állnak az élő átiratta
 - Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertet.
 - A digitális jogkezelési (DRM) védelem nem vonatkozik a szöveges nyomon követésre, csak az AES-borítékok titkosítása lehetséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Media Services áttekintése](media-services-overview.md)

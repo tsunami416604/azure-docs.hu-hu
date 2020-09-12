@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267606"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296651"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése Azure Monitor használatával
 
@@ -44,7 +44,7 @@ Media Services támogatja a következő erőforrások figyelési metrikáit:
 
 A következő fiók metrikáit figyelheti.
 
-|Metrika neve|Megjelenített név|Leírás|
+|Metrika neve|Megjelenített név|Description|
 |---|---|---|
 |AssetCount|Eszközök száma|A fiókban lévő eszközök.|
 |AssetQuota|Eszköz kvótája|A fiókban lévő eszköz kvótája.|
@@ -62,7 +62,7 @@ Tekintse át [a fiók kvótáit és korlátozásait](limits-quotas-constraints.m
 
 A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) metrikáit támogatja:
 
-|Metrika neve|Megjelenített név|Leírás|
+|Metrika neve|Megjelenített név|Description|
 |---|---|---|
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|
@@ -111,7 +111,7 @@ Néhány dolog, amit megvizsgálhat a kulcsfontosságú kézbesítési diagnoszt
 
 Lásd: [a Media Service diagnosztikai naplóinak figyelése](media-services-diagnostic-logs-howto.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md)
 * [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../../azure-monitor/platform/alerts-metric.md)

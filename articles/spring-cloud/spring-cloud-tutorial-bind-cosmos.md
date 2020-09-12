@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 881005c2597eadc3b3b0be9a01fbf9d82d35d050
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7fb1f88ab5eaf22047f5a696ec9cb021981cdd5e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070788"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297178"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB-adatbázis kötése az Azure Spring Cloud-alkalmazáshoz
 
@@ -20,7 +20,7 @@ A Spring boot-alkalmazások manuális konfigurálása helyett az Azure Spring Cl
 
 Előfeltételek:
 
-* Egy üzembe helyezett Azure Spring Cloud-példány. Az első lépésekhez kövesse [Az Azure CLI-n keresztül történő üzembe helyezést ismertető](spring-cloud-quickstart-launch-app-cli.md) útmutatót.
+* Egy üzembe helyezett Azure Spring Cloud-példány. Az első lépésekhez kövesse [Az Azure CLI-n keresztül történő üzembe helyezést ismertető](spring-cloud-quickstart.md) útmutatót.
 * Egy Azure Cosmos DB fiók, amelynek a minimális jogosultsági szintje közreműködő.
 
 ## <a name="bind-azure-cosmos-db"></a>Kötés Azure Cosmos DB
@@ -104,6 +104,6 @@ Azure Cosmos DB öt különböző API-típust támogat, amelyek támogatják a k
     azure.cosmosdb.database=testdb
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan köthető az Azure Spring Cloud-alkalmazás egy Azure Cosmos DB adatbázishoz. Ha többet szeretne megtudni az alkalmazásra vonatkozó kötési szolgáltatásokról, tekintse meg a [kötés egy Azure cache-hez a Redis cache-hez](spring-cloud-tutorial-bind-redis.md)című témakört.

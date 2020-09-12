@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73664409"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278085"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Alapértékek összehasonlítása fájlintegritási monitorozással (FIM)
 
@@ -36,12 +36,12 @@ Valójában számos szabályozási megfelelőségi szabvány, például a PCI-DS
 
 A FIM beállításjegyzék-struktúra alapértelmezései kényelmes módot biztosítanak a rekurzív változások figyelésére a közös biztonsági területeken belül.  Előfordulhat például, hogy egy támadó úgy konfigurálhat egy parancsfájlt, hogy LOCAL_SYSTEM környezetben fusson egy végrehajtás indításkor vagy leállításkor történő konfigurálásával.  Az ilyen típusú változások figyeléséhez engedélyezze a beépített ellenőrzést.  
 
-![Registry](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Regisztrációs adatbázis](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > A rekurzív ellenőrzések csak az ajánlott biztonsági struktúrákra vonatkoznak, és nem az egyéni beállításjegyzékbeli elérési utakra.  
 
-## <a name="adding-a-custom-registry-check"></a>Egyéni beállításjegyzék-ellenőrző hozzáadása
+## <a name="add-a-custom-registry-check"></a>Egyéni beállításjegyzék-ellenőrző hozzáadása
 
 A FIM alapkonfigurációk az operációs rendszer és a támogató alkalmazás ismert állapotának azonosításával kezdődnek.  Ebben a példában a Windows Server 2008-es és újabb verziójának jelszóházirend-konfigurációit fogjuk összpontosítani.
 
@@ -73,14 +73,14 @@ A FIM alapkonfigurációk az operációs rendszer és a támogató alkalmazás i
 
       ![A FIM engedélyezése a beállításjegyzékben](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Windows-fájlok változásainak követése
+## <a name="track-changes-to-windows-files"></a>Windows-fájlok változásainak követése
 
 1. A **Windows-fájl hozzáadása Change Tracking** ablakban az **elérési út megadása** szövegmezőbe írja be azt a mappát, amely tartalmazza a nyomon követni kívánt fájlokat. Az alábbi ábrán látható példában a **contoso-webalkalmazás** a D:\ található. meghajtó a **ContosWebApp** -mappa struktúráján belül.  
 1. Hozzon létre egy egyéni Windows-bejegyzést úgy, hogy megadja a beállítási osztály nevét, engedélyezi a rekurziót, és megadta a legfelső mappát helyettesítő karakter (*) utótaggal.
 
     ![FIM engedélyezése fájlon](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Módosítási adatok beolvasása
+## <a name="retrieve-change-data"></a>Adatváltozások beolvasása
 
 A fájlok integritásának figyelési adatok az Azure Log Analytics/konfigurációváltozás tábla készletén belül találhatók.  
 

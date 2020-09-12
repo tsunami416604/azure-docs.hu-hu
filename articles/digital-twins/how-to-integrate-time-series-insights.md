@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bda07d0e14ddc630bde4fdc9c869704154c1e6cc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236352"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290096"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -72,6 +72,11 @@ Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás össz
     ```
 
 5. Hozzon létre egy [útvonalat](concepts-route-events.md#create-an-event-route) az Azure Digital ikrekben, hogy dupla frissítési eseményt küldjön a végpontnak. Az ebben az útvonalban lévő szűrő csak a kettős frissítési üzeneteket továbbítja a végpontnak.
+
+    >[!NOTE]
+    >Jelenleg egy **ismert probléma** van a Cloud shellt érintő következő parancsokkal: `az dt route` , `az dt model` , `az dt twin` .
+    >
+    >A probléma megoldásához futtassa a `az login` parancsot Cloud Shell a parancs futtatása előtt, vagy használja a [helyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -208,6 +213,8 @@ Ezután állítson be egy Time Series Insights-példányt, amely a második Even
 
 Az adatok Time Series Insightsba való küldésének megkezdéséhez meg kell kezdenie a digitális Twin-tulajdonságok frissítését az Azure Digital Twins-ban az adatértékek módosításával. Használja az az [DT Twin Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) parancsot.
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 Ha teljes körű oktatóanyagot használ ([*oktatóanyag: végpontok közötti megoldás összekapcsolásával*](tutorial-end-to-end.md)) a környezet beállításának elősegítése érdekében, megkezdheti a szimulált IoT-adatok küldését a minta *DeviceSimulator* -projekt futtatásával. Az útmutató az oktatóanyag [*konfigurálása és futtatása a szimuláció*](tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban található.
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>Jelenítse meg az adatait Time Series Insights
@@ -230,7 +237,7 @@ Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az 
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Az egyes Twin-sorok hőmérsékleti értékeit három, különböző színű párhuzamos vonal ábrázolja.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A digitális ikreket alapértelmezés szerint a rendszer a Time Series Insightsban lévő, lapos hierarchiában tárolja, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. A folyamattal kapcsolatos további információkért olvassa el a következőt: 
 

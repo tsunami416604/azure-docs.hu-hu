@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550187"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279771"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: függvények referenciája
 Azure AD Connect a függvények egy attribútumérték manipulálására szolgálnak a szinkronizálás során.  
@@ -75,7 +75,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [CertThumbprint](#certthumbprint)
   * [CertVersion](#certversion)
   * [IsCert](#iscert)
-* **Konverziós**
+* **Átalakítás**
   * [CBool](#cbool)
   * [CDate](#cdate)
   * [CGuid](#cguid)
@@ -115,7 +115,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
 * **Többszörös * érték**
   * [Tartalmaz](#contains)
   * [Száma](#count)
-  * [Item](#item)
+  * [Elem](#item)
   * [ItemOrNull](#itemornull)
   * [Csatlakozás](#join)
   * [RemoveDuplicates](#removeduplicates)
@@ -124,7 +124,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [Hiba](#error)
   * [IIF](#iif)
   * [Kiválasztás](#select)
-  * [Kapcsoló](#switch)
+  * [Kapcsoló (switch)](#switch)
   * [Ahol](#where)
   * [A](#with)
 * **Szöveg**
@@ -165,7 +165,7 @@ Ez a függvény mindkét paramétert a bináris ábrázolásra konvertálja, és
 
 Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét paraméternek megfelelő bitek értéke 1.
 
-**Példa:**  
+**Példa**  
 `BitAnd(&HF, &HF7)`  
 A 7 értéket adja vissza, mert a hexadecimális "F" és "F7" kifejezés kiértékelése erre az értékre történik.
 
@@ -193,7 +193,7 @@ A CBool függvény egy logikai értéket ad vissza a kiértékelt kifejezés ala
 **Megjegyzéseket tartalmazó**  
 Ha a kifejezés kiértékelése nem nulla értékű, akkor a CBool igaz értéket ad vissza, máskülönben hamis értéket ad vissza.
 
-**Példa:**  
+**Példa**  
 `CBool([attrib1] = [attrib2])`  
 
 Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rendelkezik.
@@ -211,7 +211,7 @@ A CDate függvény egy UTC DateTime értéket ad vissza egy karakterláncból. A
 **Megjegyzéseket tartalmazó**  
 A visszaadott karakterlánc mindig UTC-ben van.
 
-**Példa:**  
+**Példa**  
 `CDate([employeeStartTime])`  
 Egy DateTime értéket ad vissza az alkalmazott kezdési időpontja alapján
 
@@ -426,9 +426,9 @@ A CGuid függvény egy GUID karakterlánc-ábrázolását átalakítja bináris 
 A tartalmaz függvény megkeres egy karakterláncot egy többértékű attribútumon belül
 
 **Szintaxis**  
-`num Contains (mvstring attribute, str search)`– kis-és nagybetűk megkülönböztetése  
+`num Contains (mvstring attribute, str search)` – kis-és nagybetűk megkülönböztetése  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`– kis-és nagybetűk megkülönböztetése
+`num Contains (mvref attribute, str search)` – kis-és nagybetűk megkülönböztetése
 
 * attribútum: a keresendő többértékű attribútum.
 * Keresés: az attribútumban keresendő karakterlánc.
@@ -440,7 +440,7 @@ A többértékű attribútum azon indexét adja vissza, amelyben a sztring talá
 A Többértékű karakterlánc-attribútumok esetében a keresés alsztringeket keres az értékekben.  
 A hivatkozási attribútumok esetében a keresett karakterláncnak pontosan egyeznie kell az egyezőnek tekintendő értékkel.
 
-**Példa:**  
+**Példa**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 Ha a proxyAddresses attribútum elsődleges e-mail-címmel rendelkezik (amelyet a nagybetűs "SMTP:" kifejezés jelöl), akkor adja vissza a proxyAddress attribútumot, máskülönben hibát ad vissza.
 
@@ -450,7 +450,7 @@ Ha a proxyAddresses attribútum elsődleges e-mail-címmel rendelkezik (amelyet 
 A ConvertFromBase64 függvény a megadott Base64 kódolású értéket egy normál karakterlánccá alakítja át.
 
 **Szintaxis**  
-`str ConvertFromBase64(str source)`-Unicode kódolást feltételez  
+`str ConvertFromBase64(str source)` -Unicode kódolást feltételez  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Forrás: Base64 kódolású karakterlánc  
@@ -476,7 +476,7 @@ A ConvertFromUTF8Hex függvény a megadott UTF8 hexadecimális kódolású ért�
 A függvény és a ConvertFromBase64 ([], UTF8) közötti különbség abban az esetben, ha az eredmény a DN attribútumhoz tartozó felhasználóbarát.  
 Ezt a formátumot a Azure Active Directory használja DN-ként.
 
-**Példa:**  
+**Példa**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 A "*Helló világ!*" értéket adja vissza.
 
@@ -489,7 +489,7 @@ Egész számokból álló tömb értékét konvertálja az egyenértékű karakt
 **Szintaxis**  
 `str ConvertToBase64(str source)`
 
-**Példa:**  
+**Példa**  
 `ConvertToBase64("Hello world!")`  
 A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
@@ -504,7 +504,7 @@ A ConvertToUTF8Hex függvény egy karakterláncot UTF8 hexadecimális kódolás�
 **Megjegyzéseket tartalmazó**  
 A függvény kimeneti formátumát a Azure Active Directory használja DN-attribútum formátumként.
 
-**Példa:**  
+**Példa**  
 `ConvertToUTF8Hex("Hello world!")`  
 48656C6C6F20776F726C6421 visszaadása
 
@@ -532,7 +532,7 @@ Sztring átalakítása hivatkozási attribútumra
 **Szintaxis**  
 `ref CRef(str value)`
 
-**Példa:**  
+**Példa**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
 ---
@@ -547,7 +547,7 @@ A CStr függvény karakterlánc típusú adattípusra konvertál.
 
 * Value: numerikus érték, hivatkozási attribútum vagy logikai érték lehet.
 
-**Példa:**  
+**Példa**  
 `CStr([dn])`  
 Visszatérhet a "CN = Joe, DC = contoso, DC = com" értékre.
 
@@ -573,7 +573,7 @@ Egy olyan dátumot ad vissza, amely egy megadott időintervallum hozzáadására
 * érték: a felvenni kívánt egységek száma. Ez lehet pozitív (a jövőbeli dátumok beolvasása) vagy negatív (a múltbeli dátumok beszerzéséhez).
 * Date: dátum és idő, amely az intervallum hozzáadásának dátumát jelképezi.
 
-**Példa:**  
+**Példa**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 3 hónapot ad vissza, és egy "2001-04-01" értéket jelölő DateTime értéket ad vissza.
 
@@ -585,7 +585,7 @@ A DateFromNum függvény egy értéket AD meg az AD dátumformátum dátum és i
 **Szintaxis**  
 `dt DateFromNum(num value)`
 
-**Példa:**  
+**Példa**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
@@ -601,7 +601,7 @@ A DNComponent függvény a megadott DN-összetevő értékét adja vissza balró
 * DN: az értelmezni kívánt hivatkozási attribútum
 * ComponentNumber: a DN által visszaadott összetevő
 
-**Példa:**  
+**Példa**  
 `DNComponent(CRef([dn]),1)`  
 Ha a DN a következő: "CN = Joe, ou =...", visszaadja a következőt: Joe
 
@@ -618,7 +618,7 @@ A DNComponentRev függvény egy megadott DN-összetevő értékét adja vissza, 
 * ComponentNumber – a DN által visszaadott összetevő
 * Beállítások: DC – az összes összetevő figyelmen kívül hagyása a "DC =" értékkel
 
-**Példa:**  
+**Példa**  
 Ha a DN a "CN = Joe, OU = Atlanta, OU = GA, OU = US, DC = contoso, DC = com", akkor  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
@@ -632,7 +632,7 @@ A Error függvény egyéni hiba visszaküldésére szolgál.
 **Szintaxis**  
 `void Error(str ErrorMessage)`
 
-**Példa:**  
+**Példa**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Ha a accountName attribútum nem található, hibát jelez az objektumon.
 
@@ -644,7 +644,7 @@ A EscapeDNComponent függvény a DN egyik összetevőjét veszi át, és megmene
 **Szintaxis**  
 `str EscapeDNComponent(str value)`
 
-**Példa:**  
+**Példa**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 Gondoskodik arról, hogy az objektum az LDAP-címtárban is létrehozható legyen, még akkor is, ha a displayName attribútum olyan karaktereket tartalmaz, amelyeket az LDAP-ban el kell menekülni.
 
@@ -660,9 +660,9 @@ A FormatDateTime függvény egy dátum és idő formázása megadott formátumú
 * Format (formátum): a konvertálandó formátumot jelképező karakterlánc.
 
 **Megjegyzéseket tartalmazó**  
-A formátum lehetséges értékei itt találhatók: [Egyéni dátum-és időformátumok a FORMAT függvényhez](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+A formátum lehetséges értékei itt találhatók: [Egyéni dátum-és időformátumok a FORMAT függvényhez](/dax/custom-date-and-time-formats-for-the-format-function).
 
-**Példa:**  
+**Példa**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
 Eredmények: "2007-12-25".
@@ -690,7 +690,7 @@ Az IIF függvény a lehetséges értékek egy halmazát adja vissza egy megadott
 * valueIfTrue: Ha a feltétel igaz értéket ad vissza, a visszaadott érték.
 * valueIfFalse: Ha a feltétel hamis értéket ad vissza, a visszaadott érték.
 
-**Példa:**  
+**Példa**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Ha a felhasználó egy gyakornok, a a "t-" értékkel rendelkező felhasználó aliasát adja vissza, a másik pedig a felhasználó aliasát adja vissza.
 
@@ -713,7 +713,7 @@ A beosztási függvény megkeresi egy karakterláncban szereplő alsztring első
 **Megjegyzéseket tartalmazó**  
 Azt a pozíciót adja vissza, ahol az alkarakterlánc található vagy 0, ha nem található.
 
-**Példa:**  
+**Példa**  
 `InStr("The quick brown fox","quick")`  
 Evalues – 5
 
@@ -738,7 +738,7 @@ A InStrRev függvény megkeresi egy karakterlánc utolsó előfordulását egy s
 **Megjegyzéseket tartalmazó**  
 Azt a pozíciót adja vissza, ahol az alkarakterlánc található vagy 0, ha nem található.
 
-**Példa:**  
+**Példa**  
 `InStrRev("abbcdbbbef","bb")`  
 7 értéket ad vissza.
 
@@ -752,7 +752,7 @@ A függvény IsBitSet teszteket végez, ha egy bit be van állítva.
 
 * Value (érték): a kiértékelt numerikus érték. jelző: egy numerikus érték, amelynek a kiértékelése megtörtént.
 
-**Példa:**  
+**Példa**  
 `IsBitSet(&HF,4)`  
 Igaz értéket ad vissza, mert a "4" érték be van állítva az "F" hexadecimális értékben.
 
@@ -796,7 +796,7 @@ A GUID a következő minták egyikét követő karakterláncként van definiálv
 
 Annak megállapítására szolgál, hogy a CGuid () sikeres lehet-e.
 
-**Példa:**  
+**Példa**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 Ha a StrAttribute GUID formátumú, a bináris ábrázolást ad vissza, ellenkező esetben null értéket ad vissza.
 
@@ -811,7 +811,7 @@ Ha a kifejezés értéke null, akkor a IsNull függvény Igaz értéket ad vissz
 **Megjegyzéseket tartalmazó**  
 Attribútum esetén a null értéket az attribútum hiánya fejezi ki.
 
-**Példa:**  
+**Példa**  
 `IsNull([displayName])`  
 Igaz értéket ad vissza, ha az attribútum nem szerepel a CS vagy az MV-ban.
 
@@ -827,7 +827,7 @@ Ha a kifejezés null értékű vagy üres karakterlánc, akkor a IsNullOrEmpty f
 Egy attribútum esetében ez igaz értékre értékeli, ha az attribútum hiányzik vagy létezik, de egy üres karakterlánc.  
 A függvény inverzének neve IsPresent.
 
-**Példa:**  
+**Példa**  
 `IsNullOrEmpty([displayName])`  
 Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc a CS vagy az MV.
 
@@ -864,11 +864,11 @@ Ha a kifejezés olyan karakterláncot ad vissza, amely nem null értékű, és n
 **Megjegyzéseket tartalmazó**  
 A függvény inverzének neve IsNullOrEmpty.
 
-**Példa:**  
+**Példa**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>Elem
 **Leírás:**  
 Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
 
@@ -883,7 +883,7 @@ Az Item függvény a tartalmaz függvénnyel együtt használható, mivel az ut�
 
 Hibát jelez, ha az index tartományon kívül esik.
 
-**Példa:**  
+**Példa**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Az elsődleges e-mail-címet adja vissza.
 
@@ -918,7 +918,7 @@ Az illesztési függvény többértékű karakterláncot használ, és egy egyé
 **Megjegyzések**  
 A JOIN és a Split függvények között paritás van. Az illesztési függvény karakterláncok tömbjét veszi fel, és egy elválasztó sztringet használva összekapcsolja őket egyetlen sztring visszaadásához. A felosztott függvény egy karakterláncot fogad el, és elválasztja azt a határolón, hogy sztringek tömbjét állítsa vissza. Azonban a fő különbség az, hogy az illesztés bármely elválasztó karakterlánccal összefűzheti a karakterláncokat, a felosztás csak egyetlen karakterből álló határolójel használatával lehet különálló sztringeket használni.
 
-**Példa:**  
+**Példa**  
 `Join([proxyAddresses],",")`  
 Visszatérési érték: " SMTP:john.doe@contoso.com , smtp:jd@contoso.com "
 
@@ -930,7 +930,7 @@ A LCase függvény egy karakterlánc összes karakterét kisbetűvé alakítja.
 **Szintaxis**  
 `str LCase(str value)`
 
-**Példa:**  
+**Példa**  
 `LCase("TeSt")`  
 A "test" értéket adja vissza.
 
@@ -954,7 +954,7 @@ A karakterlánc első numChars karaktert tartalmazó karakterlánc:
 
 Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a rendszer a karakterlánctal megegyező karakterláncot (azaz az 1. paraméterben szereplő összes karaktert tartalmazza) adja vissza.
 
-**Példa:**  
+**Példa**  
 `Left("John Doe", 3)`  
 A "Joh" értéket adja vissza.
 
@@ -966,7 +966,7 @@ A len függvény egy karakterláncban szereplő karakterek számát adja vissza.
 **Szintaxis**  
 `num Len(str value)`
 
-**Példa:**  
+**Példa**  
 `Len("John Doe")`  
 8 értéket ad vissza
 
@@ -978,7 +978,7 @@ A LTrim függvény eltávolítja a kezdő szóközöket egy karakterláncból.
 **Szintaxis**  
 `str LTrim(str value)`
 
-**Példa:**  
+**Példa**  
 `LTrim(" Test ")`  
 A "teszt" értéket adja vissza.
 
@@ -1006,7 +1006,7 @@ A numChars karaktert tartalmazó karakterlánc a pozíció kezdete karakterlánc
 
 Ha a karakterláncból nem maradnak numChar karakterek a pozícióból, a rendszer annyi karaktert ad vissza, amennyit csak lehet.
 
-**Példa:**  
+**Példa**  
 `Mid("John Doe", 3, 5)`  
 A "HN do" értéket adja vissza.
 
@@ -1029,7 +1029,7 @@ A NumFromDate függvény egy dátumot AD vissza az Active Directory dátumformá
 **Szintaxis**  
 `num NumFromDate(dt value)`
 
-**Példa:**  
+**Példa**  
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 129699324000000000 értéket ad vissza
 
@@ -1054,7 +1054,7 @@ A PadLeft függvény bal oldali kitöltési karakterrel a megadott hosszúságú
 * Ha a karakterlánc hossza kisebb a hosszúságnál, a rendszer a kívánt hosszúságú karakterláncot adja vissza, amely egy padCharacter rendelkező Sztringet tartalmaz.
 * Ha a karakterlánc null értékű, a függvény üres karakterláncot ad vissza.
 
-**Példa:**  
+**Példa**  
 `PadLeft("User", 10, "0")`  
 A "000000User" értéket adja vissza.
 
@@ -1079,7 +1079,7 @@ A PadRight függvény jobb gombbal egy karakterláncot adott hosszúságú, egy 
 * Ha a karakterlánc hossza kisebb a hosszúságnál, a rendszer a kívánt hosszúságú karakterláncot adja vissza, amely egy padCharacter rendelkező Sztringet tartalmaz.
 * Ha a karakterlánc null értékű, a függvény üres karakterláncot ad vissza.
 
-**Példa:**  
+**Példa**  
 `PadRight("User", 10, "0")`  
 A "User000000" értéket adja vissza.
 
@@ -1095,7 +1095,7 @@ A PCase függvény minden szóközzel tagolt szó első karakterét átalakítja
 
 * Ez a függvény jelenleg nem biztosít megfelelő burkolatot egy teljesen nagybetűvel, például egy betűszóval rendelkező szó átalakításához.
 
-**Példa:**  
+**Példa**  
 `PCase("TEsT")`  
 A "test" értéket adja vissza.
 
@@ -1113,7 +1113,7 @@ A RandomNum függvény egy véletlenszerű számot ad vissza egy megadott interv
 * indítás: a generált véletlenszerű érték alsó határértékét azonosító szám
 * End: a generált véletlenszerű érték felső korlátját azonosító szám
 
-**Példa:**  
+**Példa**  
 `Random(100,999)`  
 734 értéket adhat vissza.
 
@@ -1125,7 +1125,7 @@ A RemoveDuplicates függvény többértékű karakterláncot használ, és minde
 **Szintaxis**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Példa:**  
+**Példa**  
 `RemoveDuplicates([proxyAddresses])`  
 Egy megtisztított proxyAddress attribútumot ad vissza, amelyben az összes duplikált érték el lett távolítva.
 
@@ -1148,7 +1148,7 @@ A függvény a következő speciális monikereket ismeri fel:
 * \r – kocsivissza
 * \t – lap
 
-**Példa:**  
+**Példa**  
 `Replace([address],"\r\n",", ")`  
 Lecseréli a CRLF vesszővel és szóközzel, és "egy Microsoft Way, Redmond, WA, USA"-t eredményezhet
 
@@ -1176,7 +1176,7 @@ A formátum a következő: {source1}: {target1}, {source2}: {TARGET2}, {sourceN}
 * A (z), (vessző) és a: (kettőspont) foglalt karakter, ezért ez a függvény nem cserélhető le.
 * A rendszer figyelmen kívül hagyja a szóközöket és más fehér karaktereket a ReplacePattern karakterláncban.
 
-**Példa:**  
+**Példa**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)`  
@@ -1207,7 +1207,7 @@ A karakterlánc utolsó numChars karaktert tartalmazó karakterlánc:
 
 Ha a karakterlánc a NumChars megadott számnál kevesebb karaktert tartalmaz, a rendszer a karakterlánctal megegyező karakterláncot adja vissza.
 
-**Példa:**  
+**Példa**  
 `Right("John Doe", 3)`  
 A "DOE" értéket adja vissza.
 
@@ -1219,7 +1219,7 @@ A RTrim függvény eltávolítja a szóközöket a sztringből.
 **Szintaxis**  
 `str RTrim(str value)`
 
-**Példa:**  
+**Példa**  
 `RTrim(" Test ")`  
 A "test" értéket adja vissza.
 
@@ -1254,7 +1254,7 @@ A Split függvény egy karakterláncot választ el egy elválasztóval, és töb
 * elválasztó: a határolójelként használandó egyetlen karakter.
 * korlát: a visszaadható értékek maximális száma.
 
-**Példa:**  
+**Példa**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 Egy többértékű karakterláncot ad vissza, amelynek 2 eleme hasznos a proxyAddress attribútumhoz.
 
@@ -1275,7 +1275,7 @@ A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonság
 `str StringFromSid(bin ObjectSID)`  
 
 ---
-### <a name="switch"></a>Kapcsoló
+### <a name="switch"></a>Kapcsoló (switch)
 **Leírás:**  
 A Switch függvény egyetlen érték visszaadására szolgál a kiértékelt feltételek alapján.
 
@@ -1299,7 +1299,7 @@ A kapcsoló kiértékeli az összes kifejezést, annak ellenére, hogy csak az e
 
 Az érték lehet a Error függvény is, amely egyéni karakterláncot ad vissza.
 
-**Példa:**  
+**Példa**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 Az egyes főbb városokban beszélt nyelvet adja vissza, ellenkező esetben hibát ad vissza.
 
@@ -1311,7 +1311,7 @@ A Trim függvény eltávolítja a kezdő és záró szóközöket egy karakterl�
 **Szintaxis**  
 `str Trim(str value)`  
 
-**Példa:**  
+**Példa**  
 `Trim(" Test ")`  
 A "test" értéket adja vissza.
 
@@ -1326,7 +1326,7 @@ A UCase függvény a sztring összes karakterét nagybetűvé alakítja.
 **Szintaxis**  
 `str UCase(str string)`
 
-**Példa:**  
+**Példa**  
 `UCase("TeSt")`  
 A "TEST" értéket adja vissza.
 
@@ -1344,7 +1344,7 @@ Egy többértékű attribútum (vagy egy kifejezés kimenete) értékének egy r
 * feltétel: bármely kifejezés, amelynek kiértékelése igaz vagy hamis lehet
 * kifejezés: értékek gyűjteményét visszaadó kifejezés
 
-**Példa:**  
+**Példa**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 A nem elévült többértékű attribútum userCertificate visszaadása.
 
@@ -1359,7 +1359,7 @@ A with függvény lehetővé teszi egy összetett kifejezés egyszerűsítését
 * alkifejezés: a változó által jelölt alkifejezés.
 * complexExpression: összetett kifejezés.
 
-**Példa:**  
+**Példa**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
 Funkcionálisan egyenértékű a következővel:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
@@ -1386,7 +1386,7 @@ A rendszer az elválasztó karakterek egyikével elválasztott karakterláncban 
 
 Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tartalmaz határolójelekkel azonosított szavakat, akkor a rendszer üres karakterláncot ad vissza.
 
-**Példa:**  
+**Példa**  
 `Word("The quick brown fox",3," ")`  
 A "barna" értéket adja vissza.
 

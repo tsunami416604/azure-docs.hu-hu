@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356627"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277204"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
 Ez a témakör azokat a különböző módszereket ismerteti, amelyekkel a Azure Active Directory (Azure AD) a legújabb verzióra történő frissítését végezheti el. Javasoljuk, hogy a Azure AD Connect kiadásával tartsa naprakészen. Ha jelentős konfigurációt végez, a [swing Migrálás](#swing-migration) szakasz lépéseit is használhatja.
@@ -33,7 +33,7 @@ Ha az rSync-ről szeretne frissíteni, tekintse meg a következőt: [verziófris
 
 Néhány különböző stratégia használható a Azure AD Connect frissítéséhez.
 
-| Metódus | Description |
+| Metódus | Leírás |
 | --- | --- |
 | [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md) |Ez a legegyszerűbb módszer az expressz telepítéssel rendelkező ügyfelek számára. |
 | [Frissítés helyben](#in-place-upgrade) |Ha egyetlen kiszolgálóval rendelkezik, a telepítést helyben is frissítheti ugyanarra a kiszolgálóra. |
@@ -54,7 +54,7 @@ Ha módosította a beépített szinkronizálási szabályokat, akkor ezek a szab
 
 A helyben történő frissítés során előfordulhat, hogy a frissítés befejeződése után meghatározott szinkronizálási tevékenységeket (beleértve a teljes importálási lépést és a teljes szinkronizálási lépést) igénylő módosításokat is be kell állítani. Az ilyen tevékenységek elhalasztásához tekintse meg a [teljes szinkronizálás késleltetése a frissítés után](#how-to-defer-full-synchronization-after-upgrade)című szakaszt.
 
-Ha nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja a Azure AD Connectt, frissítenie kell a megfelelő összekötő-konfigurációt a [synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) a helyben végzett frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg a cikk az [összekötő verziójának kiadási előzményei – hibaelhárítás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)című szakaszt. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőn. A rendszer a következő hibaüzenetet fogja kapni az alkalmazás eseménynaplójában a *"szerelvény verziója a HRE Connector-konfigurációban (" X.X.xxx. X ") korábbi, mint a tényleges verzió (" X.X.XXX. X ") a" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
+Ha nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja a Azure AD Connectt, frissítenie kell a megfelelő összekötő-konfigurációt a [synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) a helyben végzett frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg a cikk az [összekötő verziójának kiadási előzményei – hibaelhárítás](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting)című szakaszt. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőn. A rendszer a következő hibaüzenetet fogja kapni az alkalmazás eseménynaplójában a *"szerelvény verziója a HRE Connector-konfigurációban (" X.X.xxx. X ") korábbi, mint a tényleges verzió (" X.X.XXX. X ") a" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
 
 ## <a name="swing-migration"></a>Párhuzamos migrálás
 Ha összetett vagy sok objektummal rendelkezik, előfordulhat, hogy nem célszerű helyben frissíteni az élő rendszeren. Egyes ügyfelek esetében ez a folyamat több napot is igénybe vehet – és ez idő alatt nem történik változás. Ezt a módszert akkor is használhatja, ha jelentős módosításokat tervez a konfigurációban, és a felhőbe való leküldésük előtt szeretné kipróbálni őket.
@@ -108,7 +108,7 @@ Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírá
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. A frissítés befejeződése után futtassa a következő parancsmagot, hogy megtudja, milyen felülbírálások lettek hozzáadva:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. A frissítés befejeződése után futtassa a következő parancsmagot, hogy megtudja, milyen felülbírálások lettek hozzáadva: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > A felülbírálások összekötő-specifikusak. A következő példában a teljes importálási lépést és a teljes szinkronizálás lépést a helyszíni AD-összekötőhöz és az Azure AD-összekötőhöz is hozzáadták.
@@ -117,7 +117,7 @@ Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírá
 
 3. Jegyezze fel a meglévő felülbírálásokat, amelyek hozzá lettek adva.
    
-4. Ha el szeretné távolítani a felülbírálásokat a teljes importáláshoz és a teljes szinkronizáláshoz egy tetszőleges összekötőn, futtassa a következő parancsmagot:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Ha el szeretné távolítani a felülbírálásokat a teljes importáláshoz és a teljes szinkronizáláshoz egy tetszőleges összekötőn, futtassa a következő parancsmagot: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Az összes összekötő felülbírálásának eltávolításához hajtsa végre a következő PowerShell-parancsfájlt:
 
@@ -128,12 +128,12 @@ Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírá
    }
    ```
 
-5. Az ütemező folytatásához futtassa a következő parancsmagot:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Az ütemező folytatásához futtassa a következő parancsmagot: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Ne felejtse el végrehajtani a szükséges szinkronizálási lépéseket a lehető leghamarabb. Ezeket a lépéseket manuálisan is végrehajthatja a Synchronization Service Manager használatával, vagy hozzáadhatja a felülbírálásokat a set-ADSyncSchedulerConnectorOverride parancsmag használatával.
 
-Ha a felülbírálásokat a teljes importáláshoz és a teljes szinkronizáláshoz is hozzá szeretné adni egy tetszőleges összekötőn, futtassa a következő parancsmagot:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Ha a felülbírálásokat a teljes importáláshoz és a teljes szinkronizáláshoz is hozzá szeretné adni egy tetszőleges összekötőn, futtassa a következő parancsmagot:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 A következő szakasz azokat a hibaelhárítási és információkat tartalmazza, amelyeket akkor használhat, ha a Azure AD Connect frissítése során probléma merül fel.
@@ -144,7 +144,7 @@ Ha egy korábbi verzióról Azure AD Connect frissít, a következő hibaüzenet
 
 ![Hiba](./media/how-to-upgrade-previous-version/error1.png)
 
-Ez a hiba azért fordul elő, mert a b891884f-051e-4a83-95af-2544101c9083 azonosítójú Azure Active Directory összekötő nem létezik az aktuális Azure AD Connect-konfigurációban. A helyzet ellenőrzéséhez nyisson meg egy PowerShell-ablakot, és futtassa a parancsmagot.`Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+Ez a hiba azért fordul elő, mert a b891884f-051e-4a83-95af-2544101c9083 azonosítójú Azure Active Directory összekötő nem létezik az aktuális Azure AD Connect-konfigurációban. A helyzet ellenőrzéséhez nyisson meg egy PowerShell-ablakot, és futtassa a parancsmagot. `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
@@ -167,5 +167,5 @@ Ha a Azure AD Connect újabb verzióját szeretné telepíteni: a Azure AD Conne
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).

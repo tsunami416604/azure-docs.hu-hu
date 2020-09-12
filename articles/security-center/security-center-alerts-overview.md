@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519607"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278139"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -23,7 +23,7 @@ A Azure Security Center számos különböző típusú erőforráshoz biztosít 
 
 A biztonsági riasztásokat a speciális észlelések váltották ki, és csak a standard szintű Azure Security Center érhetők el. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítés a **díjszabás & beállítások** lapról végezhető el. További információ a [Security Center díjszabásáról](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="responding-to-todays-threats"></a>Válaszadás a mai fenyegetésekre <a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>Válasz a mai fenyegetésekre <a name="respond-threats"> </a>
 
 Az elmúlt 20 évben jelentős változásokat figyelhettünk meg a fenyegetések területén. A múltban a vállalatoknak általában csak azért kellett aggódniuk az egyes támadók számára, akik leginkább érdeklik a "mit tehetnek". A mai támadók sokkal kifinomultabbak és megrendezettek. Gyakran konkrét pénzügyi és stratégiai célokat követnek. Ezenkívül több erőforrás áll a rendelkezésükre, mert akár az is előfordulhat, hogy egy nemzetállam vagy a szervezett bűnözés biztosítja számukra az anyagi hátteret.
 
@@ -88,7 +88,7 @@ Ezek az összetett erőfeszítések új és továbbfejlesztett észleléseket er
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információ:
+Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információkért lásd:
 
 * [Veszélyforrások elleni védelem Azure Security Center](threat-protection.md) – a Azure Security Center által megjelenített biztonsági riasztások forrásainak rövid leírása 
 * **Biztonsági riasztások az Azure-tevékenység naplójában** – amellett, hogy elérhetővé válnak a Azure Portal vagy programozott módon, a biztonsági riasztások és incidensek naplózása eseményként történik az Azure-beli [tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). További információ az esemény-sémáról: [biztonsági riasztások az Azure-beli tevékenység naplójában](https://go.microsoft.com/fwlink/?linkid=2114113)

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179147"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278683"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
 
@@ -133,7 +133,7 @@ Az előző lépések után a felhasználó elérheti az eredeti erőforrást, am
 
 ## <a name="failures-and-error-messages"></a>Hibák és hibaüzenetek
 **Az ütköző attribútummal rendelkező felhasználó nem törölhető a Azure Active Directory. Győződjön meg arról, hogy a felhasználó nehezen törölve van az újrapróbálkozás előtt.**  
-Az Azure AD-ben ütköző attribútummal rendelkező felhasználót meg kell tisztítani a javítás alkalmazása előtt. Tekintse meg [, hogyan törölheti a felhasználót véglegesen az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) a javítás megkísérlése előtt. A felhasználó automatikusan törölve lesz, és a rendszer véglegesen törli a törölt állapotot 30 nap után is. 
+Az Azure AD-ben ütköző attribútummal rendelkező felhasználót meg kell tisztítani a javítás alkalmazása előtt. Tekintse meg [, hogyan törölheti a felhasználót véglegesen az Azure ad-ben](../fundamentals/active-directory-users-restore.md) a javítás megkísérlése előtt. A felhasználó automatikusan törölve lesz, és a rendszer véglegesen törli a törölt állapotot 30 nap után is. 
 
 **A forrás-és a bérlőn lévő felhőalapú felhasználóra történő frissítés nem támogatott.**  
 Az Azure AD-beli felhőalapú felhasználónak nem lehet forrás-horgonya. Ebben az esetben a forrás-horgony frissítése nem támogatott. A helyszínen manuális javítást kell végezni. 

@@ -3,12 +3,12 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537180"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89288967"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -70,8 +70,8 @@ Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell 
 | HTTP, HTTPS | 80, 443 |  |
 | Kafka | 9093 | Lásd: [Event Hubs használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címekre van szükségem az engedélyezési listához?
-Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsolatokhoz tartozó fehér listához:
+### <a name="what-ip-addresses-do-i-need-to-allow"></a>Milyen IP-címeket kell engedélyezni?
+Az alábbi lépéseket követve megkeresheti a kapcsolatok engedélyezett listájához hozzáadandó megfelelő IP-címeket:
 
 1. Futtassa a következő parancsot egy parancssorból: 
 
@@ -270,5 +270,5 @@ Ha többet szeretne megtudni az SLA-ról, tekintse meg a [szolgáltatói szerző
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs áttekintése](./event-hubs-about.md)
-* [Eseményközpont létrehozása](event-hubs-create.md)
+* [Event hub létrehozása](event-hubs-create.md)
 * [Event Hubs automatikus kiemelés](event-hubs-auto-inflate.md)

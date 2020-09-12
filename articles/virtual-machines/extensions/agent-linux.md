@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269121"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279703"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Az Azure Linux-ügynök megismerése és használata
 
@@ -53,7 +53,7 @@ A Microsoft Azure Linux-ügynök (waagent) kezeli a Linux & a FreeBSD kiépíté
 * **VM-bővítmény**
   
   * A Microsoft és partnerei által a szoftverek és a konfiguráció automatizálásának lehetővé tételéhez a Linux VM (IaaS) segítségével létrehozott összetevő behelyezése
-  * A virtuálisgép-bővítmény referenciájának megvalósítása[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * A virtuálisgép-bővítmény referenciájának megvalósítása [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Kommunikáció
 A platformról az ügynökre irányuló információáramlás két csatornán keresztül történik:
@@ -92,6 +92,9 @@ A Linux-ügynök a megfelelő működés érdekében néhány rendszercsomagtól
 * Text Processing Tools: sed, grep
 * Hálózati eszközök: IP-útvonal
 * Kernel-támogatás az UDF-fájlrendszerek csatlakoztatásához.
+
+Győződjön meg arról, hogy a virtuális gép rendelkezik hozzáféréssel az IP-168.63.129.16. További információ: [Mi az IP-168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+
 
 ## <a name="installation"></a>Telepítés
 Az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módja, ha egy RPM vagy egy DEB-csomagot használ a terjesztési csomag adattárában. Az összes [támogatott terjesztési szolgáltató](../linux/endorsed-distros.md) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba.

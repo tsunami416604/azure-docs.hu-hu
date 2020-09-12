@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071431"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280162"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -29,7 +29,7 @@ Ez a cikk az Azure Active Directory (Azure AD) átmenő hitelesítéssel kapcsol
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Hogyan kell bejelentkezni az Azure AD-be, az átmenő hitelesítésre, a jelszó-kivonat szinkronizálására és a Active Directory összevonási szolgáltatások (AD FS) (AD FS)?
 
-Tekintse át [ezt az útmutatót](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) a különböző Azure ad bejelentkezési módszereinek összehasonlításához, és hogyan választhatja ki a szervezete megfelelő bejelentkezési módszerét.
+Tekintse át [ezt az útmutatót](./choose-ad-authn.md) a különböző Azure ad bejelentkezési módszereinek összehasonlításához, és hogyan választhatja ki a szervezete megfelelő bejelentkezési módszerét.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Az áteresztő hitelesítés ingyenes szolgáltatás?
 
@@ -39,7 +39,7 @@ Az átmenő hitelesítés ingyenes szolgáltatás. Nincs szüksége az Azure AD 
 
 Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában érhető el.
 
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) átmenő hitelesítéssel?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../conditional-access/overview.md) átmenő hitelesítéssel?
 
 Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
@@ -148,7 +148,7 @@ Nem, ez a forgatókönyv _nem_ támogatott.
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Miért van szükségem egy csak felhőalapú globális rendszergazdai fiókra az átmenő hitelesítés engedélyezéséhez?
 
-Javasoljuk, hogy engedélyezze vagy tiltsa le az átmenő hitelesítést egy csak felhőalapú globális rendszergazdai fiók használatával. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról](../active-directory-users-create-azure-portal.md). Így biztosíthatja, hogy ne zárja ki a bérlőből.
+Javasoljuk, hogy engedélyezze vagy tiltsa le az átmenő hitelesítést egy csak felhőalapú globális rendszergazdai fiók használatával. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról](../fundamentals/add-users-azure-active-directory.md). Így biztosíthatja, hogy ne zárja ki a bérlőből.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Hogyan lehet letiltani az átmenő hitelesítést?
 
@@ -184,4 +184,3 @@ A június 15-től 2015-ig létrehozott bérlők alapértelmezett viselkedése az
 - [Biztonsági](how-to-connect-pta-security-deep-dive.md)részletes információk: részletes technikai információkat kaphat az átmenő hitelesítés funkcióról.
 - [Azure ad – zökkenőmentes egyszeri bejelentkezés](how-to-connect-sso.md): További információ erről a kiegészítő funkcióról.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): használja a Azure Active Directory fórumot az új szolgáltatásokra vonatkozó kérelmek fájljának megjelenítéséhez.
-

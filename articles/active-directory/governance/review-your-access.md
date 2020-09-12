@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077921"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292724"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatokban lévő csoportok és alkalmazások hozzáférésének áttekintése
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan tekintheti át a saját hozzáférését egy csoport
 A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáférési felülvizsgálat megkeresése és megnyitása.
 
 >[!IMPORTANT]
-> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési lista azure-noreply@microsoft.com , hogy biztosan megkapja az összes e-mailt.
+> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Adja hozzá azure-noreply@microsoft.com a biztonságos címzettek listájához, és győződjön meg arról, hogy az összes e-mailt fogadja.
 
 1. Keresse meg a Microsoft e-mail-címét, amely arra kéri, hogy tekintse át a hozzáférést. Íme egy példa e-mailben, amely áttekinti a csoporthoz való hozzáférést.
 
@@ -106,7 +106,7 @@ Az új felhasználói felületet a saját hozzáférés a frissített felhaszná
 ### <a name="email"></a>E-mail
 
 >[!IMPORTANT]
-> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési lista azure-noreply@microsoft.com , hogy biztosan megkapja az összes e-mailt.
+> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Adja hozzá azure-noreply@microsoft.com a biztonságos címzettek listájához, és győződjön meg arról, hogy az összes e-mailt fogadja.
 
 1. Keressen egy e-mailt a Microsofttól, és kérje meg, hogy tekintse át a hozzáférést. Az alábbi e-mail-üzenetet láthatja:
 
@@ -123,7 +123,7 @@ Az új felhasználói felületet a saját hozzáférés a frissített felhaszná
 
 A függőben lévő hozzáférési felülvizsgálatokat a böngésző használatával is megtekintheti a saját hozzáférés megnyitásához.
 
-1. Bejelentkezés a My Access onhttps://myaccess.microsoft.com/
+1. Bejelentkezés a My Access on https://myaccess.microsoft.com/
 
 2. A bal oldali sávban található menüben válassza a **hozzáférési felülvizsgálatok** lehetőséget, hogy megtekintse a függőben lévő hozzáférési felülvizsgálatok listáját.
 
@@ -163,6 +163,6 @@ A függőben lévő hozzáférési felülvizsgálatokat a böngésző használat
     > [!NOTE]
     > Ha azt jelezte, hogy már nincs szüksége a hozzáférésre, nem távolítja el azonnal. Ha a felülvizsgálat véget ért, vagy ha a rendszergazda leállítja a felülvizsgálatot, a rendszer eltávolítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691479"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276762"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -76,7 +76,7 @@ Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők la
     - **Ajánlott** – azonos alkalmazásokat futtató, és nem konfigurált engedélyezési listával rendelkező gépek csoportjai. Javasoljuk, hogy engedélyezze a csoportok adaptív alkalmazás-vezérlőit.
     
       > [!TIP]
-      > Ha a "REVIEWGROUP" előtagú csoportnév jelenik meg, akkor az az alkalmazások részlegesen konzisztens listáját tartalmazó gépeket tartalmaz. Security Center nem lát mintázatot, de javasolja ennek a csoportnak a megtekintését annak ellenőrzéséhez, _hogy tud-_ e manuálisan definiálni valamilyen adaptív alkalmazás-vezérlési [szabályt a csoport adaptív alkalmazás-ellenőrzési szabályának szerkesztése](#editing-a-groups-adaptive-application-controls-rule)című részben leírtak szerint.
+      > Ha a "REVIEWGROUP" előtagú csoportnév jelenik meg, akkor az az alkalmazások részlegesen konzisztens listáját tartalmazó gépeket tartalmaz. Security Center nem lát mintázatot, de javasolja ennek a csoportnak a megtekintését annak ellenőrzéséhez, _hogy tud-_ e manuálisan definiálni valamilyen adaptív alkalmazás-vezérlési [szabályt a csoport adaptív alkalmazás-ellenőrzési szabályának szerkesztése](#edit-a-groups-adaptive-application-controls-rule)című részben leírtak szerint.
       >
       > A csoportba tartozó gépeket más csoportokra is áthelyezheti a [gép áthelyezése az egyik csoportból a másikba](#move-a-machine-from-one-group-to-another)című témakörben leírtak szerint.
 
@@ -115,7 +115,7 @@ Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők la
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Csoport adaptív alkalmazás-ellenőrzési szabályának szerkesztése
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Csoport adaptív alkalmazás-ellenőrzési szabályának szerkesztése
 
 Dönthet úgy, hogy egy adott számítógépcsoport engedélyezési listáját a szervezete ismert változásai miatt szerkeszti. 
 
@@ -150,7 +150,7 @@ A számítógépek csoportjára vonatkozó szabályok szerkesztése:
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Válaszoljon a "engedélyezési-szabályokra az adaptív alkalmazás-vezérlési szabályzatban" frissítésre vonatkozó javaslat
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Válaszoljon a "engedélyezési-szabályokra az adaptív alkalmazás-vezérlési szabályzatban" frissítés ajánlott
 
 Ez a javaslat akkor jelenik meg, ha Security Center Machine learning azonosítja a korábban nem engedélyezett, potenciálisan legitim viselkedést. Az ajánlás új szabályokat javasol a meglévő definíciók számára a hamis pozitív riasztások számának csökkentése érdekében.
 
@@ -167,7 +167,7 @@ A problémák megoldásához:
 
 
 
-## <a name="auditing-alerts-and-violations"></a>Riasztások és szabálysértések naplózása
+## <a name="audit-alerts-and-violations"></a>Riasztások és szabálysértések naplózása
 
 1. A Security Center menüjében válassza az **adaptív alkalmazások vezérlői**lehetőséget.
 
@@ -199,7 +199,7 @@ Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmaz�
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>Alkalmazás-vezérlőelemek kezelése a REST API használatával 
+## <a name="manage-application-controls-via-the-rest-api"></a>Alkalmazás-vezérlőelemek kezelése a REST API használatával 
 
 Az adaptív alkalmazások programozott módon felügyeletéhez használja a REST API. 
 
@@ -221,7 +221,7 @@ A REST API elérhető függvények:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-beli és nem Azure-alapú gépeken futó alkalmazások engedélyezési listájainak definiálásához. Ha többet szeretne megtudni Security Center más felhőalapú munkaterhelés-védelmi funkcióival kapcsolatban, tekintse meg a következőt:
 
 * [Igény szerinti (JIT) VM-hozzáférés ismertetése](just-in-time-explained.md)

@@ -2,13 +2,13 @@
 title: Paraméterfájl létrehozása
 description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/01/2020
+ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179623"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276643"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
 
@@ -148,6 +148,8 @@ Végül tekintse meg az engedélyezett értékeket és a korlátozásokat, péld
 }
 ```
 
+A paraméter fájlja csak a sablonban definiált paraméterek értékeit tartalmazza. Ha a paraméter-fájl olyan további paramétereket tartalmaz, amelyek nem egyeznek a sablon paraméterei között, hibaüzenetet kap.
+
 ## <a name="parameter-type-formats"></a>Paramétertípusok formátumai
 
 A következő példában a különböző típusú paraméterek formátuma látható.
@@ -226,7 +228,7 @@ Külső paramétert is használhat a fájl URI azonosítójának megadásával. 
 Ha a sablon egy, a PowerShell-parancsban szereplő paraméterekkel megegyező nevű paramétert tartalmaz, a PowerShell a sablonban található paramétert a Postfix **FromTemplate**mutatja be. A sablonban található **ResourceGroupName** nevű paraméter például ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. A rendszer megkéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**számára. Ezt a zavart a telepítési parancsokhoz nem használt paraméterek neveinek használatával lehet elkerülni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, tekintse meg a [Azure Resource Manager sablonokban található paramétereket](template-parameters.md).
 - További információ a Key Vault értékeinek használatáról: a [Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során.

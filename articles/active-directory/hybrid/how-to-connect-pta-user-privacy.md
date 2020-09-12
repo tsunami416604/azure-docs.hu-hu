@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358123"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279516"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése
 
@@ -67,7 +67,7 @@ Ha többet szeretne megtudni a kapcsolódó Azure AD Connect GDPR vonatkozó kö
 
 ### <a name="delete-authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplóinak törlése
 
-Ez a termék Windows- **eseménynaplókat**is létrehozhat. További információért olvassa el [ezt a cikket](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Ez a termék Windows- **eseménynaplókat**is létrehozhat. További információért olvassa el [ezt a cikket](/windows/win32/wes/windows-event-log).
 
 A továbbított hitelesítési ügynökhöz kapcsolódó naplók megtekintéséhez nyissa meg a **Eseménynapló** alkalmazást a kiszolgálón, és keresse meg az **alkalmazás és szolgáltatás Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
@@ -103,8 +103,8 @@ A parancsfájl 48 óránkénti futtatásához kövesse az alábbi lépéseket:
  
 ### <a name="note-about-domain-controller-logs"></a>Megjegyzés a tartományvezérlő naplóiról
 
-Ha a naplózás engedélyezve van, ez a termék biztonsági naplókat hozhat a tartományvezérlőkhöz. Ha többet szeretne megtudni a naplózási házirendek konfigurálásáról, olvassa el ezt a [cikket](https://technet.microsoft.com/library/dd277403.aspx).
+Ha a naplózás engedélyezve van, ez a termék biztonsági naplókat hozhat a tartományvezérlőkhöz. Ha többet szeretne megtudni a naplózási házirendek konfigurálásáról, olvassa el ezt a [cikket](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft adatvédelmi szabályzatának áttekintése a megbízhatósági központban](https://www.microsoft.com/trustcenter)
 * [**Hibaelhárítás**](tshoot-connect-pass-through-authentication.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.
