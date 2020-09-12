@@ -1,6 +1,6 @@
 ---
-title: Analitika SQL Data Warehouse a T-SQL, Python-Team adatelemzési folyamattal
-description: Példák az SQL Data Warehouse használatára a prediktív elemzések elvégzéséhez.
+title: Analitika az Azure szinapszis Analyticsben a T-SQL, Python-Team adatelemzési folyamattal
+description: Példák az Azure szinapszis Analytics használatára a prediktív elemzések elvégzéséhez.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,26 +11,26 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92cd3a9cc82a38cae6a56b7796e22d035979f2d5
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128170"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439850"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Adatelemzési útmutató SQL Data Warehouse a T-SQL és a Python használatával az Azure-ban
+# <a name="azure-synapse-analytics-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Az Azure szinapszis Analytics adatelemzési útmutatói a T-SQL és a Python használatával az Azure-ban
 
-Ezek a forgatókönyvek a prediktív elemzések elvégzéséhez SQL Data Warehouse használatát ismertetik. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). A SQL Data Warehouse bemutatása: [Mi az Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Ezek a forgatókönyvek az Azure szinapszis Analytics használatát ismertetik a prediktív elemzések elvégzéséhez. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). Az Azure szinapszis Analytics bemutatása: [Mi az az Azure szinapszis Analytics?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>A taxi tippek előrejelzése T-SQL-és IPython-jegyzetfüzetek használatával SQL Data Warehouse
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-azure-synapse-analytics"></a>Az Azure szinapszis Analytics használatával a T-SQL-és IPython-jegyzetfüzetek segítségével előre jelezheti a taxis tippeket
 
-A [Use SQL Data Warehouse útmutató](sqldw-walkthrough.md) bemutatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolást és regressziós modelleket SQL Data WAREHOUSE (SQL DW) használatával.  Az adat egy nyilvánosan elérhető NYC taxi Trip és fare adatkészlet.
+Az [Azure szinapszis Analytics-útmutatójának használatával](sqldw-walkthrough.md) megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolást és regressziós modelleket az Azure szinapszis Analytics használatával.  Az adat egy nyilvánosan elérhető NYC taxi Trip és fare adatkészlet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos adatelemzési folyamat áttekintésében](overview.md)talál további információt.
 

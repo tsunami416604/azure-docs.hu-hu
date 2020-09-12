@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319473"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647336"
 ---
-# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identitás használata az Azure Kubernetes Service-ben a Machine learning webszolgáltatással
+# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identitás használata a gépi tanulási webszolgáltatással az Azure Kubernetes Service-ben
 
 Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Directory (HRE) identitást az üzembe helyezett Machine learning-modellhez az Azure Kubernetes szolgáltatásban. A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) projekt lehetővé teszi az alkalmazások számára, hogy biztonságosan hozzáférjenek a HRE a [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -és Kubernetes primitívek használatával. Ez lehetővé teszi a webszolgáltatás számára az Azure-erőforrások biztonságos elérését anélkül, hogy hitelesítő adatokat kellene beágyaznia vagy a tokeneket közvetlenül a `score.py` szkriptben kezelnie. Ez a cikk bemutatja, hogyan hozhat létre és telepíthet Azure-identitást az Azure Kubernetes Service-fürtben, és hogyan rendelheti hozzá az identitást az üzembe helyezett webszolgáltatáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
+- Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
 
 - Hozzáférés az AK-fürthöz a `kubectl` parancs használatával. További információ: [Kapcsolódás a fürthöz](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
 
@@ -153,7 +153,7 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> Ez a példa a DefaultAzureCredential használja. Ha hozzáférést szeretne biztosítani az identitáshoz egy adott hozzáférési házirend használatával, tekintse [meg a 4. rész: a titkos kulcs Lekérése Azure Key Vault](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python).
+> Ez a példa a DefaultAzureCredential használja. Ha hozzáférést szeretne biztosítani az identitáshoz egy adott hozzáférési házirend használatával, tekintse meg a [Key Vault hozzáférési szabályzat hozzárendelése az Azure CLI használatával](/azure/key-vault/general/assign-access-policy-cli)című témakört.
 
 ### <a name="access-blob-from-your-web-service"></a>A blob elérése a webszolgáltatásból
 
@@ -177,7 +177,7 @@ blob_data = blob_client.download_blob()
 blob_data.readall()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Python Azure Identity ügyféloldali kódtár használatával kapcsolatos további információkért tekintse meg a [tárházat](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python) a githubon.
 * A modellek Azure Kubernetes Service-fürtökön való üzembe helyezésével kapcsolatos részletes útmutatóért lásd: [útmutató](how-to-deploy-azure-kubernetes-service.md).

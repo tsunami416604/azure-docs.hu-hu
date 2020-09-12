@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195885"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442394"
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – termékkel kapcsolatos javaslatok
 Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  A csomaggal kapcsolatos részletekért tekintse meg [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) oldalt. Ebben a dokumentumban általános használati esetet ismertetünk, amelyet az Azure-felhasználók már megoldottak és implementáltak Azure Data Factory és más Cortana Intelligence összetevő-szolgáltatások használatával.
@@ -41,7 +41,7 @@ Végezetül a kiskereskedőknek a megközelítésük eredményességét kell mé
 ## <a name="solution-overview"></a>Megoldási áttekintés
 A példában szereplő használati esetet a Azure Data Factory és más Cortana Intelligence összetevő-szolgáltatások, például a [HDInsight](https://azure.microsoft.com/services/hdinsight/) és a [Power bi](https://powerbi.microsoft.com/)használatával oldották meg és implementálták a valódi Azure-felhasználók.
 
-Az online kiskereskedő egy Azure BLOB-tárolót, egy helyszíni SQL Server, Azure SQL Databaset és egy, a munkafolyamaton belüli adattárolási lehetőségekkel rendelkező kapcsolati data martt használ.  A blob-tároló a vásárlói adatokat, az ügyfél viselkedési adatait és a termékinformáció adatait tartalmazza. A termékinformáció-adatok tartalmazzák a termék márkájának adatait és a helyszínen tárolt termékkatalógust egy SQL-adattárházban. 
+Az online kiskereskedő egy Azure BLOB-tárolót, egy helyszíni SQL Server, Azure SQL Databaset és egy, a munkafolyamaton belüli adattárolási lehetőségekkel rendelkező kapcsolati data martt használ.  A blob-tároló a vásárlói adatokat, az ügyfél viselkedési adatait és a termékinformáció adatait tartalmazza. A termékinformáció-adatok tartalmazzák a termék márkájának adatait és a helyszínen tárolt termékkatalógust az Azure szinapszis Analyticsben (korábban SQL Data Warehouse). 
 
 Az összes információ össze van építve és egy termék-ajánlási rendszerbe kerül, hogy személyre szabott ajánlásokat nyújtson az ügyfelek érdeklődési köre és műveletei alapján, míg a felhasználó a webhelyen lévő katalógusban böngészhet a termékek között. Az ügyfelek olyan termékeket is láthatnak, amelyek a termékhez kapcsolódnak, és a webhelyek általános használati mintái alapján működnek, amelyek nem kapcsolódnak egyetlen felhasználóhoz sem.
 

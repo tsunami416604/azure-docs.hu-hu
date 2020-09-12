@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461701"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462360"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-környezetek védelme
 
@@ -100,10 +100,10 @@ A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tar
 
 | Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | --- | --- | --- |
-| Hamisítás | Hitelesítés | HTTPS-kapcsolatok megkövetelése. |
-| Illetéktelen módosításának | Integritás | A TLS/SSL-tanúsítványok ellenőrzése. |
-| Letagadhatóság | Nem megtagadási | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése. |
-| Információk közzététele | Titkosság | Bizalmas adatok titkosítása a [szolgáltatás tanúsítványainak](/rest/api/appservice/certificates)használatával. |
+| Identitáshamisítás | Hitelesítés | HTTPS-kapcsolatok megkövetelése. |
+| Illetéktelen adatmódosítás | Integritás | A TLS/SSL-tanúsítványok ellenőrzése. |
+| Letagadhatóság | Letagadhatatlanság | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése. |
+| Információfelfedés | Titkosság | Bizalmas adatok titkosítása a [szolgáltatás tanúsítványainak](/rest/api/appservice/certificates)használatával. |
 | Szolgáltatásmegtagadás | Rendelkezésre állás | Teljesítmény-mérőszámok figyelése a lehetséges szolgáltatásmegtagadási feltételekhez. A kapcsolatok szűrőinek implementálása. |
 | Jogosultsági szint emelése | Engedélyezés | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)használata. |
 
@@ -150,11 +150,11 @@ A biztonsági védelem ellenőrzése olyan fontos, mint bármely más funkció t
 A fuzz Testing metódus a programbeli hibák (hibakódok) megkeresésére, ha helytelenül formázott bemeneti adatokat ad meg az adatok elemzésére és felhasználására szolgáló kezelőfelületekhez (belépési pontokhoz). A [Microsoft biztonsági kockázatok észlelése](https://www.microsoft.com/en-us/security-risk-detection/) egy felhőalapú eszköz, amellyel a szoftverben az Azure-ba történő üzembe helyezése előtt hibákat és egyéb biztonsági réseket kereshet. Az eszköz úgy van kialakítva, hogy a szoftverek központi telepítése előtt elkapjon biztonsági réseket, így nem kell hibát kijavítania, összeomlásokkal foglalkoznia, vagy támadásra reagálni a szoftver felszabadítása után.
 
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben az Azure Pásti üzembe helyezésének és a felhőalapú alkalmazásokhoz ajánlott biztonsági eljárásoknak a biztonsági előnyeire összpontosítunk. Ezután Ismerkedjen meg a javasolt eljárásokkal, amelyekkel az adott Azure-szolgáltatásokkal biztonságossá teheti a Pásti web-és mobil megoldásait. A Azure App Service, a Azure SQL Database és a Azure SQL Data Warehouse, valamint az Azure Storage szolgáltatással fogunk kezdeni. Az egyéb Azure-szolgáltatásokra vonatkozó ajánlott eljárásokról szóló cikkek elérhetővé válnak, és az alábbi listán szereplő hivatkozásokat fogjuk megadni:
+## <a name="next-steps"></a>Következő lépések
+Ebben a cikkben az Azure Pásti üzembe helyezésének és a felhőalapú alkalmazásokhoz ajánlott biztonsági eljárásoknak a biztonsági előnyeire összpontosítunk. Ezután Ismerkedjen meg a javasolt eljárásokkal, amelyekkel az adott Azure-szolgáltatásokkal biztonságossá teheti a Pásti web-és mobil megoldásait. A Azure App Service, a Azure SQL Database és az Azure szinapszis Analytics és az Azure Storage szolgáltatással fogunk kezdeni. Az egyéb Azure-szolgáltatásokra vonatkozó ajánlott eljárásokról szóló cikkek elérhetővé válnak, és az alábbi listán szereplő hivatkozásokat fogjuk megadni:
 
 - [Azure App Service](paas-applications-using-app-services.md)
-- [Azure SQL Database és Azure SQL Data Warehouse](paas-applications-using-sql.md)
+- [Azure SQL Database és az Azure szinapszis Analytics](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure Service Bus
@@ -166,4 +166,4 @@ Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kez
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
 * Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, jelentések vagy e-mailen keresztülsecure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, jelentések vagy e-mailen keresztül secure@microsoft.com

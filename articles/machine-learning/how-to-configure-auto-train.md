@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: fe562b8202c508c13f4127d14aeb5f994d15f962
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782753"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649599"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val. Az automatizált gépi tanulás egy algoritmust és hiperparaméterek beállítása hoz létre, és létrehoz egy modellt, amely készen áll a telepítésre. Számos lehetőség közül választhat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
+Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-val. Az automatizált gépi tanulás egy algoritmust és hiperparaméterek beállítása hoz létre, és létrehoz egy modellt, amely készen áll a telepítésre. Számos lehetőség közül választhat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
 
 Ha szeretné megtekinteni az automatizált gépi tanulási kísérletekre vonatkozó példákat, tekintse meg az [oktatóanyag: besorolási modell betanítása automatizált gépi tanulással](tutorial-auto-train-models.md) vagy [tanítási modelleket a Felhőbeli automatizált gépi tanulással](how-to-auto-train-remote.md).
 
@@ -46,7 +46,7 @@ Ehhez a cikkhez szükséges,
     Az SDK telepítéséhez használhatja a következőt is, 
     * Hozzon létre egy számítási példányt, amely automatikusan telepíti az SDK-t, és előre konfigurálva van a ML-munkafolyamatokhoz. További információ: [What is a Azure Machine learning számítási példány?](concept-compute-instance.md#managing-a-compute-instance) . 
 
-    * [Saját maga is telepítheti az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t. Csak ügyeljen arra, hogy a `automl` továbbiak szerepeljenek. 
+    * [Saját maga is telepítheti az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t. Csak ügyeljen arra, hogy a `automl` továbbiak szerepeljenek. 
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
@@ -69,7 +69,7 @@ A betanítási adatgyűjtésre vonatkozó követelmények:
 - Az adatokat táblázatos formában kell megadni.
 - Az előre jelzett értéknek, a célként megadott oszlopnak szerepelnie kell az adatsorokban.
 
-**Távoli kísérletek**esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. A AutoML csak akkor fogadja [Azure Machine learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , ha távoli számítási feladatokra dolgozik. 
+**Távoli kísérletek**esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. A AutoML csak akkor fogadja [Azure Machine learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) , ha távoli számítási feladatokra dolgozik. 
 
 Azure Machine Learning adatkészletek a következő funkciókat teszik elérhetővé:
 

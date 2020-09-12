@@ -2,32 +2,39 @@
 title: Tudásbázis – QnA Maker
 description: QnA Maker a legjobbat tanulja meg a modell változásainak, a kitalált példáknak, a közzétételnek és az adatoknak a végponti lekérdezésekből való összegyűjtése során.
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 98fbd81baa717c981486f33cfb2b3a608cec27c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 09/01/2020
+ms.openlocfilehash: 7bbf729fa80e4b41a85b8dfd1080decea1bae108
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77914952"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612276"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Tudásbázis életciklusa QnA Maker
 QnA Maker a legjobbat tanulja meg a modell változásainak, a kitalált példáknak, a közzétételnek és az adatoknak a végponti lekérdezésekből való összegyűjtése során.
 
 ![Tartalomkészítési ciklus](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
-## <a name="creating-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis létrehozása
-A (z) QnA Maker Tudásbázis (KB) végpontja a TUDÁSBÁZISCIKK tartalmának megfelelő választ ad a felhasználók lekérdezéséhez. A Tudásbázis létrehozása egy egyszeri művelet, amely a kérdések, válaszok és a kapcsolódó metaadatok tartalmi tárházának beállítására szolgál. A Tudásbázis olyan meglévő tartalmak bejárásával hozható létre, mint a GYIK-lapok, a termék-kézikönyvek vagy A strukturált Q-A pár. Útmutató [Tudásbázis létrehozásához](../quickstarts/create-publish-knowledge-base.md).
+## <a name="creating-a-qna-maker-knowledge-base"></a>QnA Maker-tudásbázis létrehozása
+A (z) QnA Maker Tudásbázis (KB) végpontja a TUDÁSBÁZISCIKK tartalmának megfelelő választ ad a felhasználók lekérdezéséhez. A Tudásbázis létrehozása egy egyszeri művelet, amely a kérdések, válaszok és a kapcsolódó metaadatok tartalmi tárházának beállítására szolgál. Egy KB-ot a meglévő tartalom bejárásával hozhat létre, például a következő forrásokból:
+
+- Gyakori kérdések oldalai
+- Termék-kézikönyvek
+- Q-A pár
+
+Útmutató [Tudásbázis létrehozásához](../quickstarts/create-publish-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>A Tudásbázis tesztelése és frissítése
 
-A Tudásbázis készen áll a tesztelésre, ha a tartalom fel van töltve, vagy akár szerkesztőségi módon, akár automatikus kinyeréssel. Az interaktív tesztelés a QnA Maker portálon keresztül végezhető el a **tesztelési** panelen a gyakori felhasználói lekérdezések beírásával és annak ellenőrzésével, hogy a válaszok a megfelelő válasz és a megfelelő megbízhatósági pontszám alapján lettek-e visszaküldve.
+A Tudásbázis készen áll a tesztelésre, ha a tartalom fel van töltve, vagy akár szerkesztőségi módon, akár automatikus kinyeréssel. Az interaktív tesztelés a QnA Maker portálon, a **teszt** panelen végezhető el. Általános felhasználói lekérdezéseket adhat meg. Ezt követően ellenőrizze, hogy a válaszok a helyes válasz és a megfelelő megbízhatósági pontszám alapján lettek-e visszaadva.
+
 
 * **Az alacsony megbízhatósági pontszámok kijavítása**: alternatív kérdések hozzáadása.
 * **Ha egy lekérdezés helytelenül adja vissza az [alapértelmezett választ](../How-to/change-default-answer.md)**: új válaszok hozzáadása a megfelelő kérdéshez.
 
 A test-Update ezen szoros ciklusa addig folytatódik, amíg meg nem felel az eredményekkel. Ismerje meg, hogyan [tesztelheti tudásbázisát](../How-To/test-knowledge-base.md).
 
-Nagyméretű Tudásbázis esetében használja az automatikus tesztelést a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) -val `isTest` és a Body tulajdonsággal, `test` amely a közzétett Tudásbázis helyett a tudásbázist kérdezi le.
+Nagyméretű Tudásbázis esetében használja az automatikus tesztelést a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) -val és a `isTest` Body tulajdonsággal, amely a `test` közzétett Tudásbázis helyett a tudásbázist kérdezi le.
 
 ```json
 {
@@ -41,7 +48,7 @@ Nagyméretű Tudásbázis esetében használja az automatikus tesztelést a [GEN
 ## <a name="publish-the-knowledge-base"></a>A tudásbázis közzététele
 Ha elkészült a Tudásbázis tesztelésével, közzéteheti. A közzététel leküldi a tesztelt Tudásbázis legújabb verzióját egy dedikált Azure Cognitive Search indexre, amely a **közzétett** tudásbázist jelképezi. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 
-Így a Tudásbázis tesztelési verziójában végrehajtott módosítások nem érintik az éles alkalmazásokban élő közzétett verziót.
+A közzétételi művelet miatt a Tudásbázis tesztelési verziójában végrehajtott további módosítások nem érintik a közzétett verziót. Előfordulhat, hogy a közzétett verzió éles alkalmazásban van.
 
 Ezen tudásbázisok mindegyike külön tesztelésre is megcélozható. Az API-k használatával megcélozhatja a Tudásbázis tesztelési verzióját a `isTest` Body tulajdonsággal a generateAnswer hívásban.
 
@@ -69,14 +76,14 @@ A Tudásbázis két állapottal rendelkezik: *tesztelés* és *Közzététel*.
 
 ### <a name="test-knowledge-base"></a>Tudásbázis tesztelése
 
-A *teszt* Tudásbázis a válaszok pontosságának és teljességének aktuálisan szerkesztett, mentett és tesztelt verziója. A teszt Tudásbázisban végrehajtott módosítások nem érintik az alkalmazás vagy a csevegési robot végfelhasználóját. A teszt Tudásbázis a HTTP `test` -kérelemben is ismert. Az `test` ismeret a QnA Maker portál interaktív **teszt** paneljén érhető el.
+A *teszt Tudásbázis* a jelenleg szerkesztett és mentett verzió. A teszt verziója pontosságra és a válaszok teljességére lett tesztelve. A teszt Tudásbázisban végrehajtott módosítások nem érintik az alkalmazás vagy a csevegési robot végfelhasználóját. A teszt Tudásbázis a `test` http-kérelemben is ismert. Az `test` ismeret a QnA Maker portál interaktív **teszt** paneljén érhető el.
 
 ### <a name="production-knowledge-base"></a>Üzemi Tudásbázis
 
-A *közzétett Tudásbázis* a csevegési robotban vagy alkalmazásban használt verzió. A Tudásbázis közzétételének művelete a Tudásbázis közzétett verziójában a teszt Tudásbázis tartalmát helyezi el. Mivel a közzétett Tudásbázis az alkalmazás által a végponton keresztül használt verzió, győződjön meg arról, hogy a tartalom helyes és jól tesztelt. A közzétett Tudásbázis a HTTP `prod` -kérelemben is ismert.
+A *közzétett Tudásbázis* a csevegési robotban vagy alkalmazásban használt verzió. A Tudásbázis közzététele a tesztelési verziójának tartalmát a közzétett verzióba helyezi. A közzétett Tudásbázis az alkalmazás által a végponton keresztül használt verzió. Győződjön meg arról, hogy a tartalom helyes és jól tesztelt. A közzétett Tudásbázis a `prod` http-kérelemben is ismert.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Aktív tanulási javaslatok](./active-learning-suggestions.md)

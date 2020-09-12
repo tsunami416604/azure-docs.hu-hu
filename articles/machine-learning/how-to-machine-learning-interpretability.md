@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306400"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649435"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modell értelmezése Azure Machine Learningban (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ A modell fejlesztésének két fő fázisában fontos a gépi tanulási modell e
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Értelmezés Azure Machine Learning
 
-Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
+Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
 
 * `azureml.interpret`a fő csomag, amely a Microsoft által támogatott funkciókat tartalmazza.
 
@@ -69,9 +69,9 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
 ## <a name="supported-interpretability-techniques"></a>Támogatott értelmezési technikák
 
- `azureml-interpret`a az [értelmezés – Közösség](https://github.com/interpretml/interpret-community/), a értelmezhető modellek betanítására szolgáló nyílt forráskódú Python-csomag, valamint a tábla AI-rendszerek ismertetésére szolgáló, értelmezhető technikákat használja. A [tolmácsolás – a Közösség](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázatokat üzemeltető gazdagépként működik, és jelenleg a következő értelmező módszereket támogatja:
+ `azureml-interpret` a az [értelmezés – Közösség](https://github.com/interpretml/interpret-community/), a értelmezhető modellek betanítására szolgáló nyílt forráskódú Python-csomag, valamint a tábla AI-rendszerek ismertetésére szolgáló, értelmezhető technikákat használja. A [tolmácsolás – a Közösség](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázatokat üzemeltető gazdagépként működik, és jelenleg a következő értelmező módszereket támogatja:
 
-|Értelmező technika|Leírás|Típus|
+|Értelmező technika|Description|Típus|
 |--|--|--------------------|
 |ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
 |Mélyreható magyarázat kialakítása| A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|
@@ -90,7 +90,7 @@ A fent ismertetett értelmező technikák mellett egy másik, a nevű SHAP-alap�
 * LinearExplainer lineáris modellekhez
 * KernelExplainer az összes többi modellhez
 
-`TabularExplainer`jelentős funkciókkal és teljesítménnyel kapcsolatos fejlesztéseket hajtott végre a Direct SHAP-magyarázatokkal:
+`TabularExplainer` jelentős funkciókkal és teljesítménnyel kapcsolatos fejlesztéseket hajtott végre a Direct SHAP-magyarázatokkal:
 
 * **Az inicializálási adatkészlet összefoglalása**. Azokban az esetekben, amikor a magyarázat sebessége a legfontosabb, összefoglaljuk az inicializálási adatkészletet, és létrehozunk egy kis reprezentatív mintát, amely felgyorsítja a teljes és az egyes funkciók fontossági értékeinek létrehozását.
 * **A kiértékelési adatkészlet mintavételezése**. Ha a felhasználó a kiértékelési minták nagy készletét adja vissza, de valójában nem szükséges mindegyiket kiértékelni, a mintavételi paraméter értéke TRUE (igaz) lehet, hogy felgyorsítsa a teljes modell magyarázatának kiszámítását.
@@ -117,8 +117,8 @@ A `azureml.interpret` csomag úgy van kialakítva, hogy a helyi és távoli szá
 A magyarázatot távolról is futtathatja Azure Machine Learning számításon, és naplózhatja a magyarázat adatait a Azure Machine Learning futtatási előzmények szolgáltatásba. Az információk naplózása után a magyarázatokból származó jelentések és vizualizációk azonnal elérhetők a Azure Machine Learning Studióban a felhasználók elemzéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [útmutató](how-to-machine-learning-interpretability-aml.md) a modellek helyi és Azure Machine learning távoli számítási erőforrásokon való értelmezésének engedélyezéséhez című témakört. 
 - További forgatókönyvek: [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 
-- Ha érdekli a szöveges forgatókönyvek értelmezése, tekintse meg a következőt: [értelmezési szöveg](https://github.com/interpretml/interpret-text), egy kapcsolódó nyílt forráskódú tárház, amely a [közösségi értelmezést](https://github.com/interpretml/interpret-community/)értelmezi a NLP értelmezési módszereiben. `azureml.interpret`a csomag jelenleg nem támogatja ezeket a technikákat, de megkezdheti a [szöveges besorolású jegyzetfüzetek](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)használatát.
+- Ha érdekli a szöveges forgatókönyvek értelmezése, tekintse meg a következőt: [értelmezési szöveg](https://github.com/interpretml/interpret-text), egy kapcsolódó nyílt forráskódú tárház, amely a [közösségi értelmezést](https://github.com/interpretml/interpret-community/)értelmezi a NLP értelmezési módszereiben. `azureml.interpret` a csomag jelenleg nem támogatja ezeket a technikákat, de megkezdheti a [szöveges besorolású jegyzetfüzetek](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)használatát.

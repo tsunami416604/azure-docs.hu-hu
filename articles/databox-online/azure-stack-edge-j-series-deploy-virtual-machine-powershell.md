@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d5210a3788f7bb054492c2d83c595c26fa3c4f42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265711"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461714"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge GPU-eszközön a Azure PowerShell használatával
 
@@ -101,7 +101,7 @@ Ezt az előfizetést a virtuális gépek üzembe helyezéséhez fogjuk használn
     ZoneMappings      :
     ```
     
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
 
@@ -220,8 +220,8 @@ Hozzon létre egy felügyelt lemezt a feltöltött VHD-ből.
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
 Alább látható egy minta kimenet: 
-
-$DiskConfig = New-AzureRmDiskConfig-Location DBELocal-CreateOption import – SourceUri http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd 
+<code>
+$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
 ```powershell
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
@@ -408,24 +408,39 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 
 ## <a name="connect-to-a-vm"></a>Kapcsolódás virtuális géphez
 
-Kapcsolódjon a virtuális géphez a virtuális gép létrehozása során átadott magánhálózati IP-címmel.
+Attól függően, hogy létrehozott-e Windows vagy Linux rendszerű virtuális gépet, a kapcsolódás lépései különbözőek lehetnek.
 
-Nyisson meg egy SSH-munkamenetet az IP-címhez való kapcsolódáshoz.
+### <a name="connect-to-linux-vm"></a>Kapcsolódás Linux rendszerű virtuális géphez
+
+A Linux rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az alábbi lépéseket.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+### <a name="connect-to-windows-vm"></a>Kapcsolódás Windows rendszerű virtuális géphez
+
+A Windows rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az alábbi lépéseket.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+
+<!--Connect to the VM using the private IP that you passed during the VM creation.
+
+Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-Ha a rendszer kéri, adja meg a virtuális gép létrehozásakor használt jelszót.
+When prompted, provide the password that you used when creating the VM.
 
-Ha meg kell adnia az SSH-kulcsot, használja ezt a parancsot.
+If you need to provide the SSH key, use this command.
 
-SSH-i c:/Users/Administrator/. ssh/id_rsa Administrator@5.5.41.236
+ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
-Ha a virtuális gép létrehozása során nyilvános IP-címet használt, akkor az adott IP-cím használatával csatlakozhat a virtuális géphez. A nyilvános IP-cím beszerzése: 
+If you used a public IP address during VM creation, you can use that IP to connect to the VM. To get the public IP: 
 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Ebben az esetben a nyilvános IP-cím megegyezik a virtuális hálózati adapter létrehozásakor átadott magánhálózati IP-címmel.
+The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
 
 
 ## <a name="manage-vm"></a>Virtuális gép kezelése
@@ -550,6 +565,6 @@ A következő lépésekkel ellenőrizheti, hogy a AzCopy környezeti változója
 2. Keresse meg a `AZCOPY_DEFAULT_SERVICE_API_VERSION` paramétert. Ennek az előző lépésekben beállított értéknek kell lennie.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Resource Manager-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

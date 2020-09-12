@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849098"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612801"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -71,7 +71,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Leírás |  
+|Magic parancs |Nyelv | Description |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -119,7 +119,7 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 |PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Igen|
 |SparkSQL|Igen|Igen|-|-|-|-|-|-|
-|.NET for Spark (C#)|Igen|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Szöveg cellájának formázása eszköztár gombjaival
 
@@ -232,7 +232,7 @@ from pyspark.sql.types import *
 account_name = "Your account name"
 container_name = "Your container name"
 relative_path = "Your path"
-adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (blob_container_name, blob_account_name,  blob_relative_path)
+adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
 spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
 spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
@@ -349,7 +349,7 @@ A jegyzetfüzet tulajdonságainál beállíthatja, hogy a cella kimenete megjele
    ![Jegyzetfüzet – tulajdonságok](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>Mágikus parancsok
-Használhatja az ismerős Jupyter Magic-parancsokat az Azure szinapszis Studio jegyzetfüzetben. Az alábbi listában tekintse meg az aktuálisan elérhető Magic-parancsokat. Ismertesse a GitHubon a használati eseteit, hogy továbbra is felépíthetjük az igényeinek megfelelő Magic-parancsokat.
+Használhatja az ismerős Jupyter Magic-parancsokat az Azure szinapszis Studio jegyzetfüzetben. Az alábbi listában tekintse meg az aktuálisan elérhető Magic-parancsokat. Ismertesse [a githubon a használati eseteit](https://github.com/MicrosoftDocs/azure-docs/issues/new) , hogy továbbra is felépíthetjük az igényeinek megfelelő Magic-parancsokat.
 
 Elérhető vonali varázslatok: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%)](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
@@ -398,7 +398,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis jegyzetfüzetekben.
 
-| Művelet |A szinapszis Studio notebook parancsikonjai  |
+| Műveletek |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget. | SHIFT + ENTER |
 |Az aktuális cella futtatása és az alábbi beszúrása | ALT + ENTER |
@@ -417,7 +417,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis-jegyzetfüzetekben szerkesztési módban.
 
-| Művelet |A szinapszis Studio notebook parancsikonjai  |
+| Műveletek |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Kurzor mozgatása felfelé | Fel |
 |Kurzor mozgatása lefelé|Le|

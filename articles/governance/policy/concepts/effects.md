@@ -3,12 +3,12 @@ title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079659"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425534"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -156,7 +156,8 @@ A AuditIfNotExists-effektusok **részletek** tulajdonsága az összes olyan altu
   - Ha a **details. Type** egy erőforrástípus az **IF** feltétel erőforrása alatt, a szabályzat a kiértékelt erőforrás hatókörén belül lekérdezi az ilyen **típusú** erőforrásokat. Ellenkező esetben a házirend-lekérdezések a kiértékelt erőforrással megegyező erőforráscsoport alatt vannak.
 - **Név** (nem kötelező)
   - Megadja az egyező erőforrás pontos nevét, és a megadott típus összes erőforrása helyett egy adott erőforrás beolvasását okozza.
-  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _megadása kötelező_ , és a következőnek kell lennie: `[field('name')]` . A [naplózási](#audit) hatást azonban figyelembe kell venni.
+  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _megadása kötelező_ , `[field('name')]` vagy `[field('fullName')]` egy alárendelt erőforrásnak kell lennie.
+    A [naplózási](#audit) hatást azonban figyelembe kell venni.
 - **ResourceGroupName** (nem kötelező)
   - Lehetővé teszi a kapcsolódó erőforrás megfeleltetését egy másik erőforráscsoporthoz.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
@@ -277,7 +278,7 @@ A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altul
   - A parancs elindítja az erőforrás lekérését az **IF** feltétel erőforrása alatt, majd az adott erőforráscsoporthoz tartozó, az **IF** feltétel erőforrással rendelkező lekérdezéseket.
 - **Név** (nem kötelező)
   - Megadja az egyező erőforrás pontos nevét, és a megadott típus összes erőforrása helyett egy adott erőforrás beolvasását okozza.
-  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _megadása kötelező_ , és a következőnek kell lennie: `[field('name')]` .
+  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _megadása kötelező_ , `[field('name')]` vagy `[field('fullName')]` egy alárendelt erőforrásnak kell lennie.
 - **ResourceGroupName** (nem kötelező)
   - Lehetővé teszi a kapcsolódó erőforrás megfeleltetését egy másik erőforráscsoporthoz.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
@@ -568,7 +569,7 @@ Az **Operations** Property Array lehetővé teszi több címke különböző mó
 
 A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 
-|Művelet |Leírás |
+|Művelet |Description |
 |-|-|
 |addOrReplace |Hozzáadja a definiált tulajdonságot vagy címkét és értéket az erőforráshoz, még akkor is, ha a tulajdonság vagy a címke már létezik egy másik értékkel. |
 |Hozzáadás |Hozzáadja a definiált tulajdonságot vagy címkét és értéket az erőforráshoz. |

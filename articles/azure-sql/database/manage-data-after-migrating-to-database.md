@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249278"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439775"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -63,7 +63,7 @@ Az üzletmenet folytonossága és a vész-helyreállítási képességek lehető
 
 Nem kell biztonsági másolatokat létrehoznia Azure SQL Databaseon, és ez azért van, mert nem kell. SQL Database automatikusan biztonsági mentést készít az adatbázisokról, így többé nem kell aggódnia a biztonsági mentések ütemezésével, bevezetésével és kezelésével kapcsolatban. A platform teljes biztonsági mentést készít minden héten, a különbözeti biztonsági mentést óránként, a napló biztonsági mentését pedig 5 percenként, így biztosítva a vész-helyreállítás hatékonyságát és az adatvesztést. Az első teljes biztonsági mentés az adatbázis létrehozása után azonnal megtörténik. Ezek a biztonsági másolatok a "megőrzési időszak" nevű meghatározott időszakra érhetők el, és a kiválasztott szolgáltatási rétegtől függően változnak. A SQL Database lehetővé teszi a megőrzési időszakon belüli bármely időpontra való visszaállítást az [időponthoz tartozó helyreállítás (PITR)](recovery-using-backups.md#point-in-time-restore)használatával.
 
-|Szolgáltatásszint|Megőrzési időszak (nap)|
+|Szolgáltatási szint|Megőrzési időszak (nap)|
 |---|:---:|
 |Alapszintű|7|
 |Standard|35|
@@ -104,9 +104,11 @@ A SQL Databaseban két hitelesítési módszer érhető el:
 - [Azure Active Directory hitelesítés](authentication-aad-overview.md)
 - [SQL-hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Azure AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. Az Azure AD az [azure multi-Factor Authenticationt](authentication-mfa-ssms-overview.md) támogatja, és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) az Azure ad-vel integrálható a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi SQL Database és SQL Data Warehouse számára, hogy az Azure AD-tartományon belül Multi-Factor Authentication és vendég felhasználói fiókokat is kínáljon. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
+A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Azure AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. 
 
-|**Ha...**|**SQL Database/SQL Data Warehouse**|
+Az Azure AD az [azure multi-Factor Authenticationt](authentication-mfa-ssms-overview.md) támogatja, és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) az Azure ad-vel integrálható a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi a SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) számára, hogy az Azure AD-tartományon belül Multi-Factor Authentication és vendég felhasználói fiókokat is kínáljon. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
+
+|**Ha...**|**SQL Database/Azure szinapszis-elemzés**|
 |---|---|
 |Inkább nem a Azure Active Directory (Azure AD) használata az Azure-ban|[SQL-hitelesítés](security-overview.md) használata|
 |Az AD-t a helyszínen SQL Server használni|[ÖSSZEVONÁSA ad az Azure ad-vel](../../active-directory/hybrid/whatis-hybrid-identity.md), és használja az Azure ad-hitelesítést. Ezzel az egyszeri bejelentkezést is használhatja.|
@@ -114,7 +116,7 @@ A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Az
 |Legyenek a Microsoft-fiókok (live.com, outlook.com) vagy más tartományok (gmail.com) vendég fiókjai|Az [Azure ad univerzális hitelesítés](authentication-mfa-ssms-overview.md) használata SQL Database/adattárházban, amely az [Azure ad B2B-együttműködés](../../active-directory/b2b/what-is-b2b.md)használatát teszi lehetővé.|
 |Bejelentkezve a Windowsba egy összevont tartomány Azure AD-beli hitelesítő adataival|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
 |Az Azure-ba nem összevont tartomány hitelesítő adataival vannak bejelentkezve a Windowsba|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
-|Rendelkeznie kell olyan középszintű szolgáltatásokkal, amelyeknek csatlakozniuk kell SQL Databasehoz vagy SQL Data Warehouse|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
+|Olyan közepes szintű szolgáltatásokkal kell rendelkezniük, amelyeknek SQL Database vagy Azure szinapszis Analyticshez kell csatlakozniuk|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
 |||
 
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Az adatbázishoz való kapcsolódás Hogyan korlátozása vagy vezérlése
@@ -122,7 +124,7 @@ A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Az
 Az Ön rendelkezésére áll több olyan módszer is, amelyekkel optimális kapcsolati szervezetet érhet el az alkalmazáshoz.
 
 - Tűzfalszabályok
-- VNet szolgáltatási végpontok
+- VNet-szolgáltatásvégpontok
 - Fenntartott IP-címek
 
 #### <a name="firewall"></a>Firewall
@@ -137,7 +139,7 @@ Alapértelmezés szerint az adatbázis az "Azure-szolgáltatások elérésének 
 
 A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőforrásokat csak az Azure saját privát virtuális hálózatára tegye elérhetővé. Ezzel lényegében megszünteti az erőforrásaihoz való nyilvános hozzáférést. Az Azure-beli virtuális hálózat közötti forgalom az Azure gerinc hálózatán marad. Az SE használata nélkül kényszerített bújtatású csomagok útválasztása. A virtuális hálózata kényszeríti az internetes forgalmat a szervezet és az Azure-szolgáltatás forgalmára, hogy ugyanarra az útvonalra lépjen át. A szolgáltatási végpontokkal optimalizálhatja ezt, mivel a csomagok közvetlenül a virtuális hálózatról az Azure gerinces hálózaton lévő szolgáltatásba áramlanak.
 
-![VNet-szolgáltatásvégpontok](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![VNet szolgáltatási végpontok](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Fenntartott IP-címek
 
@@ -167,7 +169,7 @@ A titkosítás erős mechanizmust biztosít a behatolókkal szembeni bizalmas ad
 A SQL Database alapértelmezés szerint az adatok és naplófájlok a tárolási alrendszerben tárolt adatai teljesen és mindig titkosítva vannak a [transzparens adattitkosítás [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatával. A biztonsági másolatok is titkosítva vannak. A TDE esetében nem szükséges módosítani az alkalmazás oldalán az adatokhoz való hozzáférést. A titkosítás és a visszafejtés transzparens módon történik; Ezért a név.
 A bizalmas adatok repülés közbeni és nyugalmi állapotban való védelme érdekében SQL Database a [Always encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine)nevű szolgáltatást nyújt. Az AE az ügyféloldali titkosítás egy formája, amely titkosítja a bizalmas oszlopokat az adatbázisban (így rejtjelezett az adatbázis-rendszergazdák és a jogosulatlan felhasználók számára). A kiszolgáló fogadja a titkosított adatvesztést. A Always Encrypted kulcsát az ügyfél oldalán is tárolja a rendszer, így csak a hitelesítő ügyfelek tudják visszafejteni a bizalmas oszlopokat. A kiszolgáló és az adatok rendszergazdái nem láthatják a bizalmas adatokat, mivel a titkosítási kulcsok tárolása az ügyfélen történik. Az AE a bizalmas oszlopokat a tábla végétől végéig titkosítja, a jogosulatlan ügyfelektől a fizikai lemezig. Az AE támogatja a mai egyenlőség-összehasonlításokat, így a Adattervezők továbbra is lekérdezheti a titkosított oszlopokat az SQL-parancsaik részeként. Always Encrypted számos kulcstároló-lehetőséggel használható, például a [Azure Key Vault](always-encrypted-azure-key-vault-configure.md), a Windows tanúsítványtároló és a helyi hardveres biztonsági modulok használatával.
 
-|**Jellemzők**|**Always Encrypted**|**transzparens adattitkosítás**|
+|**Jellemzők**|**Always Encrypted**|**Transzparens adattitkosítás**|
 |---|---|---|
 |**Titkosítási tartomány**|Végpontok közötti|Rest-adatok|
 |**A kiszolgáló bizalmas adatokat tud elérni**|No|Igen, mivel az inaktív adatok titkosítása|
@@ -299,9 +301,9 @@ A teljesítménnyel kapcsolatos problémák hangolásával kapcsolatos javaslato
 
 A SQL Database különböző szolgáltatási szinteket kínál alapszintű, standard és prémium szintű szolgáltatásként. Minden szolgáltatási szinten a szolgáltatás szintjéhez kötött garantált kiszámítható teljesítmény fog megjelenni. A számítási feladattól függően előfordulhat, hogy az Erőforrás-kihasználtsága olyan tevékenységgel rendelkezik, amelynél az erőforrás-felhasználás a jelenlegi számítási méret felső határát elérheti. Ilyen esetekben érdemes először kipróbálni, hogy a hangolás segíthet-e (például egy index hozzáadásával vagy módosításával stb.). Ha továbbra is problémákba ütközik a korlátozások között, érdemes lehet magasabb szolgáltatási szintet vagy számítási méretet áthelyezni.
 
-|**Szolgáltatási szintek**|**Gyakori használati esetek**|
+|**Szolgáltatási szint**|**Gyakori használati esetek**|
 |---|---|
-|**Alapszintű**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
+|**Basic**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
 |**Standard**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
 |**Prémium**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
 |||
@@ -333,6 +335,6 @@ Ezt többféleképpen is elérheti:
 - **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több SQL Server adatbázis és SQL Database között. SQL Server adatbázisokkal való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen vagy virtuális gépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
 - **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat egy SQL Server adatbázisból, hogy Azure SQL Database a közzétevő és az előfizető Azure SQL Database SQL Server példányával. Egyelőre csak ez a beállítás támogatott. Az adatok SQL Server adatbázisból az Azure SQL-be minimális állásidővel való áttelepítésével kapcsolatos további információkért lásd: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [SQL Database](sql-database-paas-overview.md)megismerése.

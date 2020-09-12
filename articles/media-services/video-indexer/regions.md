@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/08/2020
 ms.author: kumud
-ms.openlocfilehash: 45da0556d074fdb81002f73cd89d0c35cb37276e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530049"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565327"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-régiók, amelyekben Video Indexer létezik
 
@@ -23,7 +23,7 @@ Video Indexer API-k olyan **Location** paramétert tartalmaznak, amelyet arra az
 
 ## <a name="locations"></a>Helyek
 
-A `location` paraméternek meg kell adni az Azure-régió kódjának nevét az értékeként. Ha az előnézeti módban Video Indexert használ, a értéket kell megtennie `"trial"` értékként. `trial`a paraméter alapértelmezett értéke `location` . Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](/cli/azure)-ben:
+A `location` paraméternek meg kell adni az Azure-régió kódjának nevét az értékeként. Ha az előnézeti módban Video Indexert használ, a értéket kell megtennie `"trial"` értékként. `trial` a paraméter alapértelmezett értéke `location` . Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](/cli/azure)-ben:
 
 ```azurecli-interactive
 az account list-locations
@@ -36,7 +36,7 @@ Az USA 2. nyugati régiójában (az alábbi ábrán látható) például az "wes
 ```json
    {
       "displayName": "West US 2",
-      "id": "/subscriptions/35c2594a-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/locations/westus2",
       "latitude": "47.233",
       "longitude": "-119.852",
       "name": "westus2",

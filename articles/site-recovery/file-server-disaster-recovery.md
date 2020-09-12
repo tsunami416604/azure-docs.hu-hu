@@ -1,19 +1,19 @@
 ---
 title: Fájlkiszolgálók védelmének biztosítása az Azure Site Recovery használatával
 description: Ez a cikk bemutatja, hogyan biztosítható a fájlkiszolgálók védelme az Azure Site Recovery használatával
-author: rajani-janaki-ram
-manager: gauravd
+author: Sharmistha-Rai
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: c4b6d583c2dd3d54c6201917a40fa6165efac18f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c88a7e78d37556f0f1f89e16154dc1808f24323
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131277"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425517"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Fájlkiszolgálók védelmének biztosítása az Azure Site Recovery használatával 
 
@@ -66,7 +66,7 @@ Mivel a Site Recovery replikációja alkalmazásfüggetlen, várhatóan az aláb
 
 | Forrás  |Egy másodlagos helyre  |Az Azure-ba
 |---------|---------|---------|
-|Azure|  -|Igen|
+|Azure|  -|Yes|
 |Hyper-V|  Igen  |Igen
 |VMware  |Igen|  Igen
 |Fizikai kiszolgáló|  Igen  |Igen

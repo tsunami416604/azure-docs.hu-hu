@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273201"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649736"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -47,87 +47,7 @@ A v2 SKU-val a díjszabási modellt a használat vezérli, és a rendszer már n
 
 Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, 2500 állandó kapcsolat és 2,22 – Mbps átviteli sebesség.
 
-Számítási egységre vonatkozó útmutató:
-
-- **Standard_v2** – minden számítási egység képes körülbelül 50 kapcsolat másodpercenként az RSA 2048-bites Key TLS-tanúsítvánnyal.
-- **WAF_v2** – az egyes számítási egységek körülbelül 10 egyidejű kérést támogatnak másodpercenként a 70-30%-os adatforgalomhoz, 70%-nál kevesebb kérés/post, és annál nagyobb marad. A WAF teljesítményét jelenleg nem érinti a válasz mérete.
-
-> [!NOTE]
-> Az egyes példányok jelenleg körülbelül 10 kapacitást képesek támogatni.
-> A számítási egységek által kezelhető kérelmek száma különböző feltételektől függ, például a TLS-tanúsítvány kulcsának méretétől, a kulcscsere-algoritmustól, a fejléc újraírásának és a WAF bejövő kérések méretétől függően. Javasoljuk, hogy az alkalmazás-tesztek alapján határozza meg a kérelmek sebességét számítási egységenként. A számlázás elkezdése előtt a kapacitás egység és a számítási egység mérőszámként is elérhetővé válik.
-
-Az alábbi táblázat az árakat mutatja be, és csak illusztrációs célokat szolgál.
-
-**Díjszabás az USA keleti régiójában**:
-
-|              SKU neve                             | Rögzített ár ($/óra)  | Kapacitási egység ára ($/CU-hr)   |
-| ------------------------------------------------- | ------------------- | ------------------------------- |
-| Standard_v2                                       |    0,20             | 0,0080                          |
-| WAF_v2                                            |    0.36             | 0,0144                          |
-
-A díjszabással kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-gateway/). 
-
-**1\. példa**
-
-Az Application Gateway Standard_v2 a manuális skálázási módban automatikus skálázás nélkül, öt példány rögzített kapacitással lett kiépítve.
-
-Rögzített ár = 744 (óra) * $0,20 = $148,8 <br>
-Kapacitási egységek = 744 (óra) * 10 kapacitási egység/példány * 5 példány * $0,008/kapacitás egység órája = $297,6
-
-Teljes ár = $148,8 + $297,6 = $446,4
-
-**2\. példa**
-
-Egy Application Gateway standard_v2 egy hónapig van kiépítve, minimális példányszámban, és ez idő alatt 25 új TLS-kapcsolat/s, átlagosan 8,88 – Mbps adatátvitelt kap. Ha a kapcsolatok rövid életűek, az ár a következő:
-
-Rögzített ár = 744 (óra) * $0,20 = $148,8
-
-Kapacitási egység ára = 744 (óra) * Max (25/50 számítási egység kapcsolatokhoz/s, 8.88/2.22 kapacitási egység az átviteli sebességhez) * $0,008 = 744 * 4 * 0,008 = $23,81
-
-Teljes ár = $148.8 + 23.81 = $172,61
-
-Amint láthatja, a rendszer csak négy kapacitású egységért számláz, nem pedig a teljes példányért. 
-
-> [!NOTE]
-> A Max függvény a legnagyobb értéket adja vissza egy értékben.
-
-
-**3\. példa**
-
-Egy Application Gateway standard_v2 egy hónapig van kiépítve, amely legalább öt példányból áll. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
-
-Rögzített ár = 744 (óra) * $0,20 = $148,8
-
-Kapacitási egység ára = 744 (óra) * Max (0/50 számítási egység a kapcsolatok/mp, 0/2.22 kapacitási egység az átviteli sebességhez) * $0,008 = 744 * 50 * 0,008 = $297,60
-
-Teljes ár = $148.80 + 297.60 = $446,4
-
-Ebben az esetben az öt példány teljes összegét számítjuk fel, még akkor is, ha nincs forgalom.
-
-**4. példa**
-
-Egy Application Gateway standard_v2 egy hónapig van kiépítve, amely legalább öt példányból áll, de ezúttal átlagosan 125 MB/s adatátviteli sebesség és 25 TLS-kapcsolat másodpercenként. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
-
-Rögzített ár = 744 (óra) * $0,20 = $148,8
-
-Kapacitási egység ára = 744 (óra) * Max (25/50 számítási egység kapcsolatokhoz/mp, 125/2.22 kapacitási egység az átviteli sebességhez) * $0,008 = 744 * 57 * 0,008 = $339,26
-
-Teljes ár = $148.80 + 339.26 = $488,06
-
-Ebben az esetben a teljes öt példányra, valamint hét kapacitási egységre (amely egy példány 7/10) számítunk fel díjat.  
-
-**5. példa**
-
-Egy hónapra kiépített Application Gateway WAF_v2. Ebben az időszakban 25 új TLS-kapcsolat/másodperc, átlagosan 8,88 MB/s adatátviteli sebesség és a 80-es kérelem másodpercenkénti száma jelenik meg. Ha a kapcsolatok rövid életűek, és az alkalmazás számítási egységének kiszámítása a számítási egységenként 10 RPS-t támogat, a díj a következő lesz:
-
-Rögzített ár = 744 (óra) * $0,36 = $267,84
-
-Kapacitási egység ára = 744 (óra) * Max (számítási egység Max (25/50 a kapcsolatok/mp, 80/10 WAF RPS), 8.88/2.22 kapacitási egység az átviteli sebességhez) * $0,0144 = 744 * 8 * 0,0144 = $85,71
-
-Teljes ár = $267,84 + $85,71 = $353,55
-
-> [!NOTE]
-> A Max függvény a legnagyobb értéket adja vissza egy értékben.
+További információ: a [díjszabás ismertetése](understanding-pricing.md).
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>A Application Gateway és a WAF v2 méretezése
 
@@ -148,7 +68,7 @@ Egy új példány létrehozása azonban hosszabb időt is igénybe vehet (körü
 
 A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgáltatásokat.
 
-| Funkció                                           | v1 SKU   | v2 SKU   |
+| Jellemző                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatikus skálázás                                       |          | &#x2713; |
 | Zónaredundancia                                   |          | &#x2713; |
@@ -180,7 +100,7 @@ Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információ: [a végpontok és a végpontok közötti TLS áttekintése Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Standard_v2 és standard Application Gateway összekeverése ugyanazon az alhálózaton|Nem támogatott|
-|Felhasználó által megadott útvonal (UDR) Application Gateway alhálózaton|Támogatott (konkrét forgatókönyvek). Előzetes verzióban.<br> További információ a támogatott forgatókönyvekről: [Application Gateway konfiguráció áttekintése](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
+|Felhasználó által megadott útvonal (UDR) Application Gateway alhálózaton|Támogatott (konkrét forgatókönyvek). Előzetes verzióban.<br> További információ a támogatott forgatókönyvekről: [Application Gateway konfiguráció áttekintése](configuration-infrastructure.md#supported-user-defined-routes).|
 |NSG a bejövő porttartomány| -65200 – 65535 Standard_v2 SKU-hoz<br>-65503 – 65534 a standard SKU-hoz.<br>További információt a [Gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)című témakörben talál.|
 |Teljesítménynaplók az Azure diagnosticsban|Nem támogatott.<br>Az Azure-metrikákat kell használni.|
 |Számlázás|Számlázás ütemezve, hogy 2019. július 1-jén induljon el.|
@@ -193,7 +113,7 @@ Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait
 
 Azure PowerShell parancsfájl a PowerShell-galériában érhető el, hogy segítséget nyújtson a v1 Application Gateway/WAF a v2 automatikus skálázási SKU-ba való átálláshoz. Ez a szkript segítséget nyújt a konfigurációnak a v1-átjáróról történő másolásához. A forgalom áttelepítése továbbra is az Ön felelőssége. További információ: [Azure Application Gateway migrálása v1-ről v2-re](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal](quick-create-portal.md)
 - [Hozzon létre egy automatikus skálázást, a Zone redundáns Application Gateway-t egy fenntartott virtuális IP-címmel a Azure PowerShell használatával](tutorial-autoscale-ps.md)

@@ -3,16 +3,16 @@ title: Azure Container-ajánlat létrehozása – Azure Marketplace
 description: Ismerje meg, hogyan hozhat létre és tehet közzé tároló-ajánlatokat az Azure Marketplace-en.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815631"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649262"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure-tárolóra vonatkozó ajánlat létrehozása az Azure Marketplace-en
 
@@ -133,7 +133,7 @@ Ezen a lapon megadhatja a kereskedelmi piactéren megjelenő ajánlat részletei
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -151,7 +151,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

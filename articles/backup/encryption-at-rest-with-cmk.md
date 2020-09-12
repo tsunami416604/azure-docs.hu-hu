@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022411"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378287"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -66,7 +66,7 @@ Azure Backup a rendszerhez rendelt felügyelt identitás használatával hiteles
 
     ![Identitás beállításai](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. Módosítsa az **állapotot** **a be** értékre, majd kattintson a **Mentés**gombra.
+1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés**lehetőséget.
 
 1. Létrejön egy objektumazonosító, amely a tároló rendszer által hozzárendelt felügyelt identitása.
 
@@ -82,13 +82,13 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 
     ![Kulcs engedélyeinek kiosztása](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. Lépjen a **rendszerbiztonsági tag kiválasztása elemre** , és keresse meg a tárolót a keresőmezőbe a nevét vagy a felügyelt identitását használva. Ha megjelenik, válassza ki a tárolót, és kattintson a **kiválasztás** gombra a panel alján.
+1. Lépjen a **rendszerbiztonsági tag kiválasztása elemre** , és keresse meg a tárolót a keresőmezőbe a nevét vagy a felügyelt identitását használva. Ha megjelenik, válassza ki a tárolót, és válassza a **kiválasztás** elemet a panel alján.
 
     ![Rendszerbiztonsági tag kiválasztása](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. Ha elkészült, kattintson a **Hozzáadás** gombra az új hozzáférési szabályzat hozzáadásához.
+1. Ha elkészült, válassza a **Hozzáadás** lehetőséget az új hozzáférési szabályzat hozzáadásához.
 
-1. Kattintson a **Save (Mentés** ) gombra a Azure Key Vault hozzáférési házirendjében történt módosítások mentéséhez.
+1. Válassza a **Mentés** lehetőséget a Azure Key Vault hozzáférési házirendjében történt módosítások mentéséhez.
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
 
@@ -148,7 +148,7 @@ A kulcs hozzárendeléséhez:
 
     ![Titkosítási beállítások](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. Kattintson a **frissítés** elemre a **titkosítási beállítások**területen.
+1. Válassza a **frissítés** lehetőséget a **titkosítási beállítások**területen.
 
 1. A titkosítási beállítások panelen válassza a **saját kulcs használata** lehetőséget, és folytassa a kulcs megadásával a következő módszerek egyikével. **Győződjön meg arról, hogy a használni kívánt kulcs egy RSA 2048-kulcs, amely engedélyezett állapotban van.**
 

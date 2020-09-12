@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
-ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ef46a0040ba767197028d170372a4a9edca9feee
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085089"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442700"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Ha egy új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis Analytics *portra beállított mysqlserver*nevű szolgáltatását, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) használatára is vonatkozik.
+Ha egy új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis Analytics *portra beállított mysqlserver*nevű szolgáltatását, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) használatára is vonatkozik.
 
 > [!IMPORTANT]
 > Ez a cikk *nem* vonatkozik az *Azure SQL felügyelt példányaira*. További információ a hálózati konfigurációról: [az alkalmazás összekötése az Azure SQL felügyelt példányával](../managed-instance/connect-application-instance.md).
@@ -59,7 +59,7 @@ Az adatbázis szintű IP-tűzfalszabályok használatát javasoljuk, ha lehetsé
 > [!NOTE]
 > Az üzletmenet folytonossága és a hordozható adatbázisok közötti kapcsolatról [a vészhelyreállítás hitelesítési követelményeit](active-geo-replication-security-configure.md)ismertető cikkből tájékozódhat.
 
-## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Kiszolgálói szintű és adatbázis-szintű IP-tűzfalszabályok
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Kiszolgálószintű és adatbázisszintű IP-tűzfalszabályok
 
 *Egy adatbázis felhasználóinak teljesen el kell különíteni egy másik adatbázisból?*
 
@@ -237,7 +237,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [Tűzfalszabályok törlése](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályok szabályait |
 | [Tűzfalszabályok beolvasása](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Kiszolgáló | Kiszolgálói szintű IP-tűzfalszabályok beolvasása |
 
-## <a name="troubleshoot-the-database-firewall"></a>Az adatbázis tűzfala – problémamegoldás
+## <a name="troubleshoot-the-database-firewall"></a>Az adatbázistűzfal hibaelhárítása
 
 Vegye figyelembe a következő szempontokat, amikor a Azure SQL Databasehoz való hozzáférés nem a várt módon működik.
 
@@ -267,7 +267,7 @@ Vegye figyelembe a következő szempontokat, amikor a Azure SQL Databasehoz val�
   - Kérje meg az internetszolgáltatót a kiszolgálót elérő ügyfélszámítógépekhez rendelt IP-címtartomány megadására. Adja hozzá az IP-címtartományt IP-tűzfalszabályként.
   - Az ügyfélszámítógépek helyett statikus IP-címzést kell lekérnie. Adja hozzá az IP-címeket IP-tűzfalszabályokként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
 - A kiszolgálói szintű IP-Tűzfalszabályok létrehozásával kapcsolatos rövid útmutató: [önálló adatbázis létrehozása Azure SQL Databaseban](single-database-create-quickstart.md).

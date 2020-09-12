@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706064"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438665"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -44,7 +44,7 @@ Azure Load Balancer különböző mechanizmusokon keresztül biztosítja a kimen
 
 Az Azure egy algoritmus használatával határozza meg, hogy hány előre lefoglalt SNAT-port áll rendelkezésre a háttérrendszer-készlet mérete alapján a PAT használatakor. A terheléselosztó minden egyes nyilvános IP-címéhez 64 000-as port érhető el SNAT-portként minden IP-átviteli protokollhoz. Az UDP és a TCP számára a SNAT-portok száma azonos, és az IP-átviteli protokolltól függetlenül használatos.  A SNAT-port használata azonban eltérő attól függően, hogy a folyamat UDP vagy TCP. A kimenő folyamatok létrehozásakor a rendszer dinamikusan felhasználja ezeket a portokat (az előfoglalási korlátig), és a folyamat bezárásakor vagy [üresjárati időtúllépés](../load-balancer/troubleshoot-outbound-connection.md#idletimeout) esetén is felszabadítja. A portok csak akkor lesznek felhasználva, ha a folyamatokat egyedivé kell tenni.
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> Lefoglalt alapértelmezett SNAT-portok
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a> Lefoglalt dinamikus SNAT portok
 
 A következő táblázat a SNAT portok előfoglalásait mutatja be a háttérbeli készlet méreteihez:
 
@@ -64,7 +64,7 @@ Előfordulhat, hogy a háttér-készlet méretének módosítása hatással lehe
 
 ## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>A kimenő kapcsolatok forgatókönyvének áttekintése
 
-| Forgatókönyv | Metódus | IP-protokollok | Leírás |
+| Forgatókönyv | Metódus | IP-protokollok | Description |
 |  --- | --- | --- | --- |
 |  1. nyilvános IP-címmel rendelkező virtuális gép (Azure Load Balancerval vagy anélkül | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. Egy virtuális géphez hozzárendelt nyilvános IP-cím 1:1-kapcsolat (nem 1: sok), és állapot nélküli 1:1 NAT-ként lett megvalósítva. |
 | 2. a virtuális géphez társított nyilvános Load Balancer (nincs nyilvános IP-cím a virtuális gépen/példányon) | SNAT a Load Balancer előtérrel (PAT) rendelkező portokkal | TCP, UDP | Ebben az esetben a Load Balancer erőforrást egy terheléselosztó-szabállyal kell konfigurálni, hogy kapcsolatot hozzon létre a nyilvános IP-frontend és a háttér-készlet között. Ha nem végzi el a szabály konfigurálását, a viselkedés a 3. forgatókönyvben ismertetett módon történik. Nincs szükség ahhoz, hogy a szabály a háttérrendszer munkafolyamati készletében működő figyelővel rendelkezzen a sikeres állapothoz. Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a kimenő folyamat magánhálózati IP-címét a nyilvános Load Balancer előtér nyilvános IP-címére a SNAT-on keresztül. A terheléselosztó nyilvános IP-címének ideiglenes portjai a virtuális gép által kezdeményezett egyes folyamatok megkülönböztetésére szolgálnak. A SNAT dinamikusan használja az [előlefoglalt ideiglenes portokat](#preallocatedports) a kimenő folyamatok létrehozásakor. Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Az SNAT-portok előre le vannak foglalva az [alapértelmezett SNAT-portok lefoglalt táblájában](#snatporttable)leírtak szerint. |
@@ -139,7 +139,7 @@ Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER al
 - A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Egy virtuális gép vagy NVA másodlagos IP-címéhez nem hozható létre Kimenő szabály. Több hálózati adapter is támogatott.
 - A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök csak akkor érhetők el, ha csak belső standard Load Balancer van használatban, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkciójának mellékhatása. Ne támaszkodjon erre a mellékhatásra, mert maga a saját szolgáltatás, vagy az alapul szolgáló platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a kimenő kapcsolatot explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges. A jelen cikkben ismertetett 3. forgatókönyv nem érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [standard Load Balancerról](load-balancer-standard-overview.md).
 - Tekintse meg a [Azure Load Balancerokkal kapcsolatos gyakori kérdéseket](load-balancer-faqs.md).

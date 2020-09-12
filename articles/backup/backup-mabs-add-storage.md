@@ -3,12 +3,12 @@ title: modern biztonsági másolati tárhely használata a Azure Backup Server
 description: Ismerkedjen meg a Azure Backup Server új szolgáltatásaival. Ez a cikk a biztonsági mentési kiszolgáló telepítésének frissítését ismerteti.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825868"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378236"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -105,7 +105,7 @@ A védelmi csoportokat nem kötelező átállítani a Modern Backup Storage hasz
 
    ![Tag védelmének leállítása](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Kattintson az **OK** gombra.
+2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Válassza az **OK** lehetőséget.
 
    Ha azonnal vissza kívánja adni a felhasznált lemezterületet az ingyenes tárterületre, jelölje be a **replika törlése a lemezen** jelölőnégyzetet az ehhez a taghoz tartozó biztonsági mentési információk (és helyreállítási pontok) törléséhez.
 

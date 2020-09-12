@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845697"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440201"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata
 Ebben az oktatóanyagban bemutatjuk, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt az Azure szinapszis Analytics használatával egy nyilvánosan elérhető adatkészlethez – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlethez. A bináris besorolási modell alapján megjósolható, hogy egy adott utazási tipp díjköteles-e.  A modellek többosztályos besorolást tartalmaznak (legyen szó vagy sem a tippről) és a regresszióról (a tip-összeg kifizetésének eloszlása).
@@ -91,14 +91,14 @@ Az Azure-beli adatelemzési környezet beállításához kövesse az alábbi lé
   * A **tároló neve** (amelyet az Azure Blob Storage-ban tárolni kíván)
 
 **Az Azure szinapszis Analytics-példány kiépítése.**
-Az Azure-beli szinapszis Analytics-példány kiépítéséhez kövesse a [Azure SQL Data Warehouse létrehozása és lekérdezése a Azure Portalben](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) című dokumentációt. Győződjön meg arról, hogy a következő Azure szinapszis Analytics-beli hitelesítő adatokkal rendelkezik, amelyeket a későbbi lépésekben fog használni.
+Az Azure szinapszis Analytics-példány kiépítéséhez kövesse a [Azure Portal Azure szinapszis Analytics létrehozása és lekérdezése](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) című dokumentumát. Győződjön meg arról, hogy a következő Azure szinapszis Analytics-beli hitelesítő adatokkal rendelkezik, amelyeket a későbbi lépésekben fog használni.
 
 * **Kiszolgáló neve**: \<server Name> . database.Windows.net
 * **SQLDW (adatbázis) neve**
 * **Felhasználónév**
 * **Jelszó**
 
-**Telepítse a Visual studiót és a SQL Server Data Tools.** Útmutatásért lásd: [első lépések a Visual Studio 2019 for SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
+**Telepítse a Visual studiót és a SQL Server Data Tools.** Útmutatásért lásd: [Bevezetés a Visual Studio 2019 for Azure szinapszis Analytics használatába](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
 **Kapcsolódjon az Azure szinapszis Analyticshez a Visual Studióval.** Útmutatásért lásd: 1 & 2. lépés az [SQL analyticshez való kapcsolódáshoz az Azure szinapszis Analyticsben](../../synapse-analytics/sql/connect-overview.md).
 
@@ -966,7 +966,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az Azure szinapszis A
 
     ![Azure ML importálási adatkészletek][17]
 2. Válassza a **Azure SQL Database** lehetőséget a **Tulajdonságok** panelen lévő **adatforrásként** .
-3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg az **adatbázis nevét** a megfelelő mezőben.
 5. Adja meg az *SQL-felhasználónevet* a **kiszolgáló felhasználói fiókjának nevében**, és a *jelszót* a **kiszolgáló felhasználói fiókjának jelszavában**.
 7. Az **adatbázis-lekérdezés** szövegmezőben illessze be azt a lekérdezést, amely kibontja a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a címkéket), és a legördülő menüben az adatok kinyerését a kívánt minta méretre.
@@ -1012,7 +1012,7 @@ Ahhoz, hogy beolvassa az ebben az útmutatóban ismertetett oktatóanyagot, lét
 ### <a name="license-information"></a>Licencelési információk
 Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért olvassa el a GitHubon található mintakód könyvtárában lévő LICENSE.txt fájlt.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 - [Andrés Monroy NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)
 - [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [A New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

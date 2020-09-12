@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722101"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440286"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Az adatelemzési projektek gyors fejlesztése
 
@@ -43,7 +43,7 @@ Itt láthatók a munkaelem-típusok definíciói:
   
 - **Felhasználói történet**: a felhasználói történetek olyan munkaelemek, amelyek a funkciók végpontok közötti befejezéséhez szükségesek. A felhasználói történetek például a következők:
   - Adatok lekérése 
-  - Adatok megismerése 
+  - Adatok feltárása 
   - Szolgáltatások előállítása
   - Modellek létrehozása
   - Modellek üzembe helyezése 
@@ -51,7 +51,7 @@ Itt láthatók a munkaelem-típusok definíciói:
   
 - **Feladat**: a feladatok olyan hozzárendelhető munkaelemek, amelyeket egy adott felhasználói történet végrehajtásához kell elvégezni. Például a felhasználói történetnek az *adatok lekérése* :
   - SQL Server hitelesítő adatok beolvasása
-  - Adatok feltöltése a SQL Data Warehouseba
+  - Adatok feltöltése az Azure szinapszis Analyticsbe
   
 - **Hiba**: a hibák olyan meglévő kódok vagy dokumentumok hibái, amelyeket a feladatok elvégzéséhez javítani kell. Ha a hibákat a hiányzó munkaelemek okozzák, a felhasználók megadhatják, hogy felhasználói történetek vagy feladatok legyenek. 
 
@@ -208,7 +208,7 @@ Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létr
 ![18](./media/agile-development/18-workitems1.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [git együttműködésen alapuló kódolása](collaborative-coding-with-git.md) leírja, hogyan lehet az adatelemzési projektek együttműködési programkódjának fejlesztését használni a git-t a közös programkód fejlesztési keretrendszereként, és hogyan kapcsolhatja össze ezeket a kódolási tevékenységeket az agilis folyamattal tervezett munkavégzéshez.
 

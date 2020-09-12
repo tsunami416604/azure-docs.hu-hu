@@ -8,16 +8,16 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c562708dcf554afc8dfe4acf6b525db1db677f40
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855951"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564902"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
-Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett adatközpont-SDK van a .NET (C#) rendszerhez. A .NET SDK-val és az API-kkal kapcsolatban általában a [*útmutató: az Azure digitális Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata című témakörben olvashat. Ha más nyelven dolgozik, ebből a cikkből megtudhatja, hogyan hozhatja ki saját adatközpont SDK-t az Ön által választott nyelven az autorest használatával.
+Jelenleg az Azure Digital Twins API-kkal való interakcióhoz az egyetlen közzétett adatsíkok-SDK a .NET (C#) és a JavaScript. Ezekről az SDK-król és az API-król az [*útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)című témakörben olvashat bővebben. Ha más nyelven dolgozik, ebből a cikkből megtudhatja, hogyan hozhatja ki saját adatközpont SDK-t az Ön által választott nyelven az autorest használatával.
 
 >[!NOTE]
 > Az autorest használatával is létrehozhatja a Control Plane SDK-t, ha szeretné. Ehhez hajtsa végre a jelen cikkben ismertetett lépéseket az adatsík helyett a [Control Plane hencegő (OpenAPI) fájl](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) használatával.
@@ -189,7 +189,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

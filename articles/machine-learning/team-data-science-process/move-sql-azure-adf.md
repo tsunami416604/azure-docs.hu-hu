@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092422"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440020"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Adatok áthelyezése SQL Server-adatbázisból a SQL Databaseba Azure Data Factory
 
@@ -60,12 +60,12 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 >
 >
 
-## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Az adatok feltöltése a SQL Server-példányba
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a> Az adatok feltöltése a SQL Server-példányba
 A [New York-i taxi-adatkészletet](https://chriswhong.com/open-data/foil_nyc_taxi/) használjuk az áttelepítési folyamat bemutatására. A New York-i taxi adatkészlete az Azure Blob Storage [NYC](https://www.andresmh.com/nyctaxitrips/)-beli, a Poston megjelenő módon érhető el. Az adatoknak két fájlja van, a trip_data.csv fájl, amely tartalmazza az utazás részleteit, valamint a trip_far.csv fájlt, amely az egyes utakra fizetett viteldíj részleteit tartalmazza. Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
 
 Az itt megadott eljárást a saját adataihoz igazíthatja, vagy a New York-i taxi-adatkészletben leírt lépéseket követve hajthatja végre. Ha fel szeretné tölteni a New York-i taxi-adatkészletet a SQL Server-adatbázisába, kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban ismertetett eljárást.
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure Data Factory létrehozása
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Azure Data Factory létrehozása
 Az új Azure Data Factory és egy erőforráscsoport létrehozásához szükséges útmutatást a [Azure Portal](https://portal.azure.com/) [hozzon létre Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Nevezze el az új ADF-példány *adfdsp* , és nevezze el a *adfdsprg*létrehozott erőforráscsoportot.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory telepítése és konfigurálása Integration Runtime
@@ -232,7 +232,7 @@ A korábban megadott táblázat-definíciók használatával az ADF-hez tartozó
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
+        "description" : "This pipeline has two activities: the first one copies data from SQL Server to Azure Blob, and the second one copies from Azure Blob to Azure Database Table",
         "activities":
         [
             {

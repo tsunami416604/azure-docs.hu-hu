@@ -1,6 +1,6 @@
 ---
-title: Terabájtos adatterhelés SQL Data Warehouseba
-description: Azt mutatja be, hogyan tölthető 1 TB adat a Azure SQL Data Warehouse 15 perc alatt Azure Data Factory
+title: Az Azure szinapszis Analyticsbe való betöltési terabájt
+description: Azt mutatja be, hogy az Azure szinapszis Analytics szolgáltatásban 1 TB-nyi adat hogyan tölthető le 15 percen belül Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,33 +12,33 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3b5ce0cba68d4374d6a0403af28ec3f03920acf6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537598"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442479"
 ---
-# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Töltse be az 1 TB-ot Azure SQL Data Warehouse 15 perc alatt Data Factory
+# <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Töltsön be 1 TB-ot az Azure szinapszis Analytics szolgáltatásba 15 perc alatt Data Factory
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a következő témakört: [adatok másolása Azure SQL Data Warehouseba vagy a Data Factory használatával](../connector-azure-sql-data-warehouse.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a következőt: az [Azure szinapszis Analytics (korábban SQL Data Warehouse) adatainak másolása Data Factory használatával](../connector-azure-sql-data-warehouse.md).
 
 
-A [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely képes nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére.  A nagymértékben párhuzamos feldolgozási (MPP) architektúrára épülő SQL Data Warehouse a vállalati adattárház számítási feladataihoz van optimalizálva.  A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
+Az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére képes.  A nagymértékben párhuzamos feldolgozási (MPP) architektúrára épülő Azure szinapszis Analytics a vállalati adattárház számítási feladataihoz van optimalizálva.  A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
 
-A Azure SQL Data Warehouse használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory**.  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely felhasználható egy SQL Data Warehouse a meglévő rendszerből származó adatokkal való feltöltésére, és értékes időt takaríthat meg a SQL Data Warehouse kiértékelése és az elemzési megoldások kiépítése során. Az alábbi fő előnyökkel jár az adatAzure SQL Data Warehouse Azure Data Factory használatával történő betöltésének főbb előnyei:
+Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory**.  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely az Azure szinapszis Analytics és a meglévő rendszer adatainak feltöltésére használható, és értékes időt takaríthat meg az Azure szinapszis Analytics kiértékelése és az elemzési megoldások kiépítése során. Az alábbi főbb előnyökkel jár az Azure szinapszis Analytics szolgáltatásba való betöltés a Azure Data Factory használatával:
 
 * **Könnyen beállítható**: 5 lépésből álló intuitív varázsló, amely nem igényel parancsfájlt.
 * **Gazdag adattár-támogatás**: beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.
 * **Biztonságos és megfelelő**: az adatátvitel HTTPS-vagy ExpressRoute keresztül történik, és a globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt
-* **Páratlan teljesítmény a Base használatával** – a Base használata az adatok Azure SQL Data Warehouseba való áthelyezésének leghatékonyabb módja. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el az Azure Blob Storage melletti összes adattárolóból, amelyet alapértelmezés szerint a Base támogat.
+* **Páratlan teljesítmény a Base használatával** – a Base használatával a leghatékonyabb módszer az adatok áthelyezése az Azure szinapszis analyticsbe. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el az Azure Blob Storage melletti összes adattárolóból, amelyet alapértelmezés szerint a Base támogat.
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory másolási varázslót az 1 TB-os adatok Azure-Azure SQL Data Warehouse Blob Storageból való betöltésére 15 percen belül, 1,2 GB/s sebességnél.
+Ebből a cikkből megtudhatja, hogyan használhatók a Data Factory másolási varázslóval az Azure-Blob Storage 1 TB-os adatok betöltésére az Azure szinapszis Analytics szolgáltatásba 15 percen belül, több mint 1,2 GB/s sebességnél.
 
-Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való áthelyezéséhez a másolás varázsló segítségével.
+Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinapszis Analytics szolgáltatásba a másolás varázslóval.
 
 > [!NOTE]
->  Az adatok Azure SQL Data Warehouseba való áthelyezésével Data Factory képességeivel kapcsolatos általános információkért lásd: [adatok áthelyezése a Azure SQL Data Warehousebe és a Azure Data Factory cikk használatával](data-factory-azure-sql-data-warehouse-connector.md) .
+>  Az adatok Azure szinapszis Analytics szolgáltatásba való áthelyezésének Data Factory képességeivel kapcsolatos általános információkért lásd: [adatok áthelyezése az Azure szinapszis Analytics szolgáltatásba és onnan az Azure Data Factory cikk használatával](data-factory-azure-sql-data-warehouse-connector.md) .
 >
 > A Visual Studióval, a PowerShell-lel és más szolgáltatásokkal is készíthet folyamatokat. Tekintse meg az [oktatóanyag: adatok másolása az Azure blobból Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy gyors útmutatóhoz, amely részletes útmutatást nyújt a másolási tevékenység Azure Data Factory-ban való használatához.  
 >
@@ -54,18 +54,18 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
     Most másolja a generált fájlokat az Azure-Blobba.  Tekintse át az adatok átvitele [a helyszíni fájlrendszerbe és a rendszerből a Azure Data Factory használatával](data-factory-onprem-file-system-connector.md) című témakört, amely az ADF-másolás használatával végezhető el.    
-* Azure SQL Data Warehouse: Ez a kísérlet az 6 000 DWU-mel létrehozott Azure SQL Data Warehouseba tölti be az adatgyűjtést
+* Azure szinapszis Analytics: Ez a kísérlet a 6 000 DWU-mel létrehozott Azure szinapszis Analyticsbe tölti be az adatgyűjtést.
 
-    SQL Data Warehouse-adatbázis létrehozásával kapcsolatos részletes utasításokért tekintse meg a [Azure SQL Data Warehouse létrehozása](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) című témakört.  Annak érdekében, hogy a lehető leghatékonyabban töltse be a terhelést SQL Data Warehouse a Base használatával, a teljesítmény beállításban engedélyezett maximális számú adatraktár-egység (DWU) közül választhat, amely 6 000 DWU.
+    Az Azure szinapszis Analytics-adatbázis létrehozásával kapcsolatos részletes utasításokért tekintse meg az [Azure szinapszis Analytics létrehozása](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) című témakört.  Annak érdekében, hogy a lehető leghatékonyabban lehessen betölteni az Azure szinapszis Analytics-elemzést a Base használatával, a teljesítmény beállításban engedélyezett maximális számú adatraktár-egység (DWU) közül választhat, amely 6 000 DWU.
 
   > [!NOTE]
-  > Az Azure Blobból való betöltéskor az adatok betöltésének teljesítménye közvetlenül a SQL Data Warehouse konfigurált DWU számával arányos:
+  > Az Azure Blobból való betöltéskor az adatok betöltésének teljesítménye közvetlenül az Azure szinapszis Analytics szolgáltatáshoz konfigurált DWU számával arányos:
   >
-  > Az 1 TB betöltése a 1 000 DWU SQL Data Warehouse a 87 percet (~ 200 MBps átviteli sebességre) helyezi át az 1 TB-ot a 2 000 DWU-be, SQL Data Warehouse az 1 TB-ot az 46 SQL Data Warehouse DWU-be (~ 380 MBps átviteli sebesség) tölti be.
+  > Az 1 TB betöltése a 1 000-es DWU az Azure szinapszis Analytics 87 perc (~ 200 MBps átviteli sebesség) értékre vált az 1 TB-ot a 2 000 DWU Azure szinapszis 46 Analytics szolgáltatásba
   >
   >
 
-    A 6 000 DWU rendelkező SQL Data Warehouse létrehozásához mozgassa a teljesítmény csúszkát jobbra a jobb oldalon:
+    Ha 6 000 DWU rendelkező szinapszis SQL-készletet szeretne létrehozni, helyezze át a teljesítmény csúszkát jobbra:
 
     ![Teljesítmény csúszka](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -77,10 +77,10 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
 
     ![Méretezési párbeszédpanel](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    Ez a kísérlet Azure SQL Data Warehouse az erőforrás-osztály használatával tölti be az adatgyűjtést `xlargerc` .
+    Ez a kísérlet az Azure szinapszis Analyticsbe az erőforrás-osztály használatával tölti be az adatgyűjtést `xlargerc` .
 
-    A lehető legjobb átviteli sebesség eléréséhez a másolást az erőforrás osztályhoz tartozó SQL Data Warehouse felhasználó használatával kell elvégezni `xlargerc` .  Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.  
-* Hozzon létre egy céltáblabeli sémát Azure SQL Data Warehouse adatbázisban a következő DDL-utasítás futtatásával:
+    A lehető legjobb átviteli sebesség eléréséhez a másolást az erőforrás osztályhoz tartozó Azure szinapszis Analytics-felhasználó használatával kell elvégezni `xlargerc` .  Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.  
+* Hozzon létre egy céltáblabeli sémát az Azure szinapszis Analytics-adatbázisban a következő DDL-utasítás futtatásával:
 
     ```SQL  
     CREATE TABLE [dbo].[lineitem]
@@ -123,7 +123,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Létrehozás** lehetőségre.
+   6. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható:
 
    ![Data factory kezdőlap](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -165,13 +165,13 @@ Ez a szakasz a forrás konfigurálásának lépéseit mutatja be: az Azure-Blob 
     ![Másolás varázsló – fájlformátum-beállítások](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>3. lépés: a cél konfigurálása
-Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` Table táblát a Azure SQL Data Warehouse adatbázisban.
+Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a cél: `lineitem` Table táblát az Azure szinapszis Analytics-adatbázisban.
 
-1. Válassza a **Azure SQL Data Warehouse** lehetőséget a cél tárolóként, majd kattintson a **tovább**gombra.
+1. Válassza az **Azure szinapszis Analytics** lehetőséget célként szolgáló tárolóként, majd kattintson a **tovább**gombra.
 
     ![Másolási varázsló – cél adattár kiválasztása](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Adja meg a Azure SQL Data Warehousehoz tartozó kapcsolatok adatait.  Győződjön meg arról, hogy a szerepkör tagja a felhasználónak `xlargerc` (lásd az **Előfeltételek** című szakaszt a részletes utasításokhoz), majd kattintson a **tovább**gombra.
+2. Adja meg az Azure szinapszis Analytics szolgáltatáshoz kapcsolódó információkat.  Győződjön meg arról, hogy a szerepkör tagja a felhasználónak `xlargerc` (lásd az **Előfeltételek** című szakaszt a részletes utasításokhoz), majd kattintson a **tovább**gombra.
 
     ![Másolási varázsló – cél kapcsolatok adatai](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -190,27 +190,27 @@ Alapértelmezés szerint be van jelölve a " **Base** " jelölőnégyzet.  Katti
 ## <a name="step-5-deploy-and-monitor-load-results"></a>5. lépés: a betöltési eredmények üzembe helyezése és figyelése
 1. A telepítéshez kattintson a **Befejezés** gombra.
 
-    ![Másolás varázsló – összefoglalás lap](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![Másolás varázsló – 1. összesítő oldal](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
 2. Az üzembe helyezés befejezése után kattintson a gombra a `Click here to monitor copy pipeline` Másolás futtatási folyamatának figyeléséhez. Válassza ki a létrehozott másolási folyamatot a **tevékenység Windows** listájában.
 
-    ![Másolás varázsló – összefoglalás lap](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    ![Másolási varázsló – összefoglalás 2. lapja](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
     A másolási művelet részleteit a jobb oldali panelen, a **tevékenység ablak-kezelőben** tekintheti meg, beleértve a forrásból beolvasott adatmennyiséget, valamint a célhelyre, az időtartamra és a Futtatás átlagos átviteli sebességére vonatkozó adatokat.
 
-    Ahogy az alábbi képernyőképen is látható, az 1 TB-ot az Azure Blob Storageba másolja SQL Data Warehouse 14 percet vett igénybe, ami gyakorlatilag 1,22 GB/s sebesség elérését teszi elérhetővé.
+    Ahogy az alábbi képernyőképen is látható, az Azure-Blob Storageból az Azure szinapszis Analyticsbe való 1 TB-os adatmásolási szolgáltatás 14 percet vett igénybe, ami gyakorlatilag 1,22 GB/s sebesség elérését
 
     ![Másolás varázsló – sikeres párbeszédpanel](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Íme néhány ajánlott eljárás a Azure SQL Data Warehouse-adatbázis futtatásához:
+Íme néhány ajánlott eljárás az Azure szinapszis Analytics-adatbázis futtatásához:
 
 * FÜRTÖZÖTT OSZLOPCENTRIKUS-INDEXbe való betöltéskor használjon nagyobb erőforrás-osztályt.
 * A hatékonyabb összekapcsoláshoz érdemes lehet a kivonatoló eloszlást egy Select oszlop használatával használni az alapértelmezett ciklikus multiplexelés-eloszlás helyett.
 * A gyorsabb betöltési sebesség érdekében érdemes lehet a kupacot használni az átmeneti adatértékekhez.
-* Statisztikák létrehozása a Azure SQL Data Warehouse betöltésének befejezése után.
+* Statisztikák létrehozása az Azure szinapszis Analyticsbe való betöltés befejezését követően.
 
-Részletekért tekintse [meg Azure SQL Data Warehouse ajánlott eljárásait](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) .
+További részletekért tekintse meg az [Azure szinapszis Analytics ajánlott eljárásai](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 * [Data Factory másolási varázsló](data-factory-copy-wizard.md) – ez a cikk a másolás varázsló részleteit tartalmazza.

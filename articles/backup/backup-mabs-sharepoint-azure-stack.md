@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése Azure Stack
 description: A Azure Backup Server használatával biztonsági mentést készíthet a SharePoint-adatairól, és visszaállíthatja azokat Azure Stackeken. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 7319cf064ab2bab20e4140f8a208be843df7fa71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017970"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378321"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
 
@@ -104,7 +104,7 @@ A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét
 
 1. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. Replikálhat a hálózaton keresztül, vagy offline biztonsági mentést (offline áttöltést) is végezhet. Az offline biztonsági mentés az Azure Import szolgáltatással működik. [További információk](./backup-azure-backup-import-export.md).
 
-1. Az  **Összefoglalás** lapon tekintse át a beállításokat. Miután rákattintott a **csoport létrehozása**lehetőségre, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
+1. Az  **Összefoglalás** lapon tekintse át a beállításokat. Miután kiválasztotta a **csoport létrehozása**lehetőséget, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -116,17 +116,17 @@ A védelmi csoport létrehozása után a rendszer elindítja a kezdeti replikál
 
 ### <a name="set-up-monitoring-notifications"></a>Figyelési értesítések beállítása
 
-1. A MABS felügyeleti konzol kattintson a **figyelés**  >  **műveleti**  >  **Beállítások**elemre.
+1. A MABS felügyeleti konzol válassza a **figyelés**  >  **műveleti**  >  **Beállítások lehetőséget**.
 
-2. Kattintson az **SMTP-kiszolgáló** elemre, írja be a kiszolgáló nevét, portszámát, és azt az e-mail címet, amelyről az értesítéseket küldeni szeretné. A címnek érvényesnek kell lennie.
+2. Válassza az **SMTP-kiszolgáló**lehetőséget, írja be a kiszolgáló nevét, a portot és az e-mail-címet, amelyről az értesítéseket küldi a rendszer. A címnek érvényesnek kell lennie.
 
 3. A **hitelesített SMTP-kiszolgáló**területen írjon be egy felhasználónevet és egy jelszót. A felhasználónévnek és a jelszónak az előző lépésben megadott "feladó" címről származó személy tartományi fiókjának kell lennie. Ellenkező esetben az értesítés kézbesítése sikertelen lesz.
 
-4. Az SMTP-kiszolgáló beállításainak teszteléséhez kattintson a **Tesztüzenet küldése**elemre, írja be azt az e-mail címet, AHOVÁ a MABS elküldeni a tesztüzenet, majd kattintson **az OK**gombra. Kattintson a **Beállítások értesítések lehetőségre**  >  **Notifications** , és válassza ki azokat a riasztási típusokat, amelyekről a címzettek értesülni kívánnak. A **címzettek** mezőbe írja be az egyes címzettek e-mail címét, akiknek a MABS szeretné elküldeni az értesítések másolatait.
+4. Az SMTP-kiszolgáló beállításainak teszteléséhez válassza a **Tesztüzenet küldése**lehetőséget, írja be azt az e-mail címet, AHOVÁ a MABS elküldeni a tesztüzenet, majd kattintson **az OK gombra**. Válassza a **Beállítások**  >  **értesítések** lehetőséget, és válassza ki, hogy milyen típusú riasztásokat szeretne kapni a címzetteknek. A **címzettek** mezőbe írja be az egyes címzettek e-mail címét, akiknek a MABS szeretné elküldeni az értesítések másolatait.
 
 ### <a name="publish-operations-manager-alerts"></a>Riasztások közzététele az Operations Managerben
 
-1. A MABS felügyeleti konzol kattintson a **figyelés**  >  **műveleti**  >  **Beállítások**  >  **riasztások közzététele**  >  **aktív riasztások közzététele** elemre.
+1. A MABS felügyeleti konzol válassza a **figyelés**  >  **műveleti**  >  **Beállítások**  >  **riasztások közzététele**  >  **aktív riasztások közzététele** lehetőséget.
 
 2. Miután engedélyezte a **riasztások közzétételét**, minden olyan meglévő MABS-riasztást, amely felhasználói beavatkozást igényelhet, közzé lesz téve a **MABS riasztások** eseménynaplójában. Ezután a MABS-kiszolgálóra telepített Operations Manager ügynök közzéteszi ezeket a riasztásokat a Operations Manager, és folytatja a konzol frissítését új riasztások létrehozásakor.
 
@@ -180,7 +180,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     > Megadhatja a hálózati sávszélesség használatának szabályozását. Ez a művelet a termelési idő alatt a termelési kiszolgálóra is hatással van.
     >
     >
-11. Tekintse át az összegző információkat, majd kattintson a **helyreállítás** gombra a fájl helyreállításának megkezdéséhez.
+11. Tekintse át az összegző információkat, majd kattintson a **helyreállítás** elemre a fájl helyreállításának megkezdéséhez.
 
     ![Helyreállítási összefoglalás](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. Most válassza a **figyelés** fület a **MABS felügyeleti konzol** a helyreállítás **állapotának** megtekintéséhez.
@@ -203,7 +203,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
    > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a MABS-kiszolgálón nem érhető el katalógus-információ (metaadatok). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
    >
    >
-3. Kattintson az **újrakatalogizálás**elemre.
+3. Válassza az **újrakatalogizálás**lehetőséget.
 
     ![MABS SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -211,10 +211,10 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 
     ![MABS SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    A katalogizálás befejezése után az állapot *sikeresre*változik. Kattintson a **Bezárás** gombra.
+    A katalogizálás befejezése után az állapot *sikeresre*változik. Válassza a **Bezárás** lehetőséget.
 
     ![MABS SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Kattintson a MABS- **helyreállítás** lapon látható SharePoint-objektumra a tartalom-adatbázis struktúrájának lekéréséhez. Kattintson a jobb gombbal az elemre, majd kattintson a **helyreállítás**elemre.
+4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a MABS- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás**lehetőséget.
 
     ![MABS SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
@@ -249,7 +249,7 @@ Az alábbi eljárás egy kiszolgálófarm példáját használja két előtér-w
 
 1. A *Kiszolgáló2*-on a parancssorban módosítsa a könyvtárat, `_MABS installation location_\bin\` és futtassa a **ConfigureSharepoint**. További információ a ConfigureSharePoint: a [biztonsági mentés konfigurálása](#configure-backup).
 
-1. Válassza ki azt a védelmi csoportot, amelyhez a kiszolgálófarm tartozik, majd kattintson a **védelmi csoport módosítása**elemre.
+1. Válassza ki azt a védelmi csoportot, amelyhez a kiszolgálófarm tartozik, majd válassza a **védelmi csoport módosítása**lehetőséget.
 
 1. A csoport módosítása varázslóban a **csoporttagok kiválasztása** lapon bontsa ki a *Kiszolgáló2* elemet, és válassza ki a kiszolgálófarmot, majd fejezze be a varázslót.
 

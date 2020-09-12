@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891861"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439744"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -72,7 +72,7 @@ Egy alkalmazás az Azure AD-katalógusban való listázásához végre kell hajt
 
 A következő táblázat összehasonlítja a fő szabványokat: nyílt hitelesítés 2,0 (OAuth 2,0) az OpenID Connect (OIDC), a Security Assertion Markup Language (SAML) és a Web Services Federation (WS-Fed) használatával.
 
-| Képesség| OAuth/OIDC| SAML/WS-fed |
+| A képességeik| OAuth/OIDC| SAML/WS-fed |
 | - |-|-|
 | Webalapú egyszeri bejelentkezés| √| √ |
 | Webalapú egyszeri kijelentkezés| √| √ |
@@ -277,6 +277,6 @@ Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs
 A Microsoft Partner Network azonnali hozzáférést biztosít az exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz. A hálózathoz való csatlakozáshoz és a piacra jutási terv létrehozásához tekintse meg a [kereskedelmi ügyfelek elérhetőségét](https://partner.microsoft.com/explore/commercial#gtm)ismertető témakört.
 
 
-## <a name="next-steps"></a>További lépések
-
-Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](authentication-flows-app-scenarios.md).
+## <a name="next-steps"></a>Következő lépések
+* [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Hitelesítési forgatókönyvek az Azure AD-hez](authentication-flows-app-scenarios.md)

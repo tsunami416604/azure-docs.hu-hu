@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121357"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565089"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database önálló adatbázisainak kiszolgáló nélküli számítási
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Cost
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -114,11 +114,12 @@ Az automatikus szüneteltetés akkor aktiválódik, ha az alábbi feltételek mi
 
 Ha szükséges, a rendszer lehetőséget biztosít az autoszüneteltetés letiltására.
 
-A következő szolgáltatások nem támogatják az automatikus szüneteltetést, de támogatják az automatikus skálázást.  Azaz ha a következő funkciók bármelyikét használják, az adatbázis az adatbázis tétlenségének időtartamától függetlenül online marad:
+A következő szolgáltatások nem támogatják az automatikus szüneteltetést, de támogatják az automatikus skálázást.  Ha a következő szolgáltatások bármelyike használatban van, az autoszüneteltetést le kell tiltani, és az adatbázis az adatbázis inaktivitásának időtartamától függetlenül továbbra is elérhető marad:
 
 - Geo-replikáció (aktív geo-replikáció és automatikus feladatátvételi csoportok).
 - A biztonsági másolatok hosszú távú megőrzése (LTR).
 - Az SQL-adatszinkronizálás során használt szinkronizálási adatbázis.  A szinkronizálási adatbázisoktól eltérően a központ és a tagok adatbázisai támogatják az autoszüneteltetést.
+- DNS-alias
 - A rugalmas feladatokban (előzetes verzió) használt feladat-adatbázis.
 
 Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgáltatás telepítése során, amelyekhez az adatbázisnak online állapotra van szüksége.  Ilyen esetekben a szolgáltatás frissítésének befejeződése után ismét engedélyezve lesz az autoszüneteltetés.
@@ -127,7 +128,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Funkció|Trigger újraindítása|
+|Jellemző|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -364,7 +365,7 @@ A Azure Hybrid Benefit (AHB) és a fenntartott kapacitási kedvezmények nem von
 
 A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Kelet-Németország és US Gov Central (Iowa).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md)című témakört.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

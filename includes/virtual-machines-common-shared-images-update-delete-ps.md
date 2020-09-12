@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0612a017650f0c6e4c9f63d9a5fd097b0b92c4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179082"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304083"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
 
@@ -65,8 +65,18 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
+Ez a példa bemutatja, hogyan használható a [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) a lemezkép verziójának a *legújabb* rendszerképbe való felvételéhez.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+```azurepowershell-interactive
+Update-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name `
+   -GalleryName $gallery.Name `
+   -Name $galleryVersion.Name `
+   -ResourceGroupName $resourceGroup.Name `
+   -PublishingProfileExcludeFromLatest:$false
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Erőforrások törlésekor először a beágyazott erőforrások utolsó elemét kell kezdenie – a rendszerkép verziószámát. A verziók törlése után törölheti a rendszerkép definícióját. A katalógust csak akkor törölheti, ha az összes alatta lévő erőforrás törölve lett.
 

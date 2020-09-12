@@ -4,12 +4,12 @@ description: További információ a Azure Container Instances lévő tárolók 
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72ebe6186da179bc5a1effddcc14327455eb7557
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583833"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612403"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tárolócsoportok az Azure Container Instancesben
 
@@ -67,7 +67,7 @@ Ebben az esetben legfeljebb 2 processzort állíthat be a tároló-példányhoz.
 
 * A tárolói csoportok **maximális** erőforrásaival kapcsolatban tekintse meg az [Erőforrás rendelkezésre állását][region-availability] Azure Container instances a telepítési régióban.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A Container groups megoszthat egy külső elérésű IP-címet, egy vagy több portot az adott IP-címen, valamint egy teljes tartománynevet (FQDN) tartalmazó DNS-címkét is. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. A rendszer a tároló csoportjának IP-címét és teljes tartománynevét kibocsátja a Container Group törlésekor. 
 
@@ -75,7 +75,7 @@ Egy tároló csoporton belül a Container instances a localhost-on keresztül b�
 
 A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban][virtual-network] , amely lehetővé teszi, hogy a tárolók biztonságosan kommunikáljanak a virtuális hálózat más erőforrásaival.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. A támogatott kötetek a következők:
 * [Azure-fájlmegosztás][azure-files]
@@ -85,7 +85,7 @@ Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. A 
 
 Ezeket a köteteket meghatározott elérési utakra is leképezheti egy csoport egyes tárolói között. 
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 A többtárolós csoportok olyan esetekben hasznosak, amikor egyetlen funkcionális feladatot szeretne megosztani kis számú tároló-lemezképbe. Ezeket a lemezképeket ezután különböző csapatok továbbítják, és külön erőforrás-követelményekkel rendelkezhetnek.
 
@@ -96,7 +96,7 @@ A használati példa a következőket tartalmazhatja:
 * Egy alkalmazás-tároló és egy figyelési tároló. A megfigyelési tároló rendszeres időközönként egy kérést küld az alkalmazásnak, hogy ellenőrizze, hogy fut-e, és hogy megfelelően válaszol-e, és riasztást küld, ha nem.
 * Egy előtér-tároló és egy háttér-tároló. Az előtér egy webalkalmazást is kiszolgálhat, és a szolgáltatás futtatásával lekérheti az adatgyűjtést. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan helyezhet üzembe egy több tárolóból álló tároló csoportot Azure Resource Manager sablonnal:
 
@@ -108,7 +108,7 @@ Megtudhatja, hogyan helyezhet üzembe egy több tárolóból álló tároló cso
 
 <!-- LINKS - External -->
 [dcos-pod]: https://dcos.io/docs/1.10/deploying-services/pods/
-[kubernetes-pod]: https://kubernetes.io/docs/concepts/workloads/pods/pod/
+[kubernetes-pod]: https://kubernetes.io/docs/concepts/workloads/pods/
 
 <!-- LINKS - Internal -->
 [resource-manager template]: container-instances-multi-container-group.md

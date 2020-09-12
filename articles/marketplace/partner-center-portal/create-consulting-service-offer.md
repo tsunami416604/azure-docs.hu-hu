@@ -5,14 +5,14 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814264"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646841"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -101,7 +101,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Elemzés
     - Alkalmazások modernizálása
     - Archívum
-    - Mesterséges intelligencia és gépi tanulás
+    - AI + Machine Learning
     - Backup
     - Big Data
     - Adatplatform
@@ -110,7 +110,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Vészhelyreállítás
     - Identitás
     - Eszközök internetes hálózata
-    - Áttelepítés
+    - Migrálás
     - Hálózatkezelés
     - Biztonság
     - Tárolás
@@ -141,7 +141,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 4. Iparágak
 5. Ajánlat neve
 6. Összefoglalás
-7. Leírás
+7. Description
 8. Képernyőképek/videók
 
 <br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
@@ -156,11 +156,11 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 4. Iparágak
 5. Ajánlat neve
 6. Összefoglalás
-7. Leírás
+7. Description
 8. Képernyőképek/videók
 9. Dokumentumok
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -174,7 +174,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

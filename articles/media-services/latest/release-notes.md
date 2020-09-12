@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267502"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425636"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -38,13 +38,25 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 >
 > Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+
+## <a name="august-2020"></a>2020. augusztus
+
+### <a name="dynamic-encryption"></a>Dinamikus titkosítás
+Már elérhető a dinamikus adatcsomagolásban a örökölt PlayReady Protected File Format (PIFF 1,1) titkosítás támogatása. Ez támogatja a Samsungtól és az LG-től származó örökölt intelligens TV-készleteket, amelyek a Microsoft által közzétett Common Encryption Standard (CENC) korai tervezeteit implementálják.  A PIFF 1,1 formátuma más néven a Silverlight ügyféloldali könyvtára által korábban támogatott titkosítási formátum. Napjainkban a titkosítási formátum egyetlen felhasználási esete az, hogy az örökölt intelligens televíziós piacot célozza meg, ahol a nem triviálisan sok olyan régióban marad, amely csak a PIFF 1,1 titkosítást támogató Smooth Streaming támogatja. 
+
+Az új PIFF 1,1 titkosítási támogatás használatához módosítsa a titkosítási értéket "PIFF" értékre a folyamatos átviteli lokátor URL-címének elérési útján. További részletekért tekintse meg az [Content Protection áttekintését.](content-protection-overview.md)
+Például: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> A PIFF 1,1-támogatás visszamenőlegesen kompatibilis megoldásként érhető el az intelligens TV (Samsung, LG) számára, amely a Common Encryption korai "Silverlight" verzióját implementálta. Azt javasoljuk, hogy csak a PIFF formátumot használja, ahol ez szükséges a 2009-2015-es verzióban szállított örökölt Samsung-vagy LG-es intelligens TV-k támogatásához, amely támogatta a PlayReady-titkosítás PIFF 1,1 verzióját. 
+
 ## <a name="july-2020"></a>2020. július
 
 ### <a name="live-transcriptions"></a>Élő átírások
 
 Az élő átiratok immár 19 nyelvet és 8 régiót támogatnak.
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>A tartalom védelme Media Services és az Azure AD-vel
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>A tartalom védelme Media Services és az Azure AD-vel
 
 Közzétettünk egy teljes körű tartalomvédelem nevű oktatóanyagot [Az Azure ad használatával](./azure-ad-content-protection.md).
 
@@ -396,7 +408,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

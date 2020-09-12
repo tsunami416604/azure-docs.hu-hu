@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04d86b0ef8202c1c544524dd2a7331d521245f12
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043955"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612161"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
 
@@ -23,7 +23,7 @@ A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is
 
 Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetekről. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg és válassza ki a meglévő Stream Analytics feladatot.
 
@@ -71,7 +71,7 @@ Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átv
 
 Az élő adatok helyett helyi fájlokból származó mintaadatok használatával tesztelheti a Azure Stream Analytics lekérdezést.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
    
 2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
 
@@ -97,7 +97,22 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 10. A böngészőben megjelenített eredmények ellenőrzése után **elindíthatja** a feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="limitations"></a>Korlátozások
+
+1.  Az időszabályzat nem támogatott a portálon történő tesztelés során:
+
+   * Nem sorrendben: minden bejövő esemény megrendelésre kerül.
+   * Késői érkezés: nem lesz késői beérkezési esemény, mert Stream Analytics csak a meglévő, tesztelésre szolgáló adatfelhasználást tudja használni.
+   
+2.  A C# UDF nem támogatott.
+
+3.  Minden tesztelés egy folyamatos átviteli egységgel rendelkező feladatokkal fog futni.
+
+4.  Az időtúllépés mérete egy perc. Így minden olyan lekérdezés, amelynek ablakának mérete meghaladja az egy percet, nem tud semmilyen adatmennyiséget beolvasni.
+
+5.  A gépi tanulás nem támogatott.
+
+## <a name="next-steps"></a>Következő lépések
 * [IoT-megoldás létrehozása stream Analytics használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): ez az oktatóanyag bemutatja, hogyan hozhat létre egy teljes körű megoldást egy olyan adatgenerátorral, amely egy autópályadíj-kezelőn keresztül szimulálja a forgalmat.
 
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

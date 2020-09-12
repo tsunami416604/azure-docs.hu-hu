@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018295"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442649"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Többtényezős hitelesítés konfigurálása SQL Server Management Studio és az Azure AD-hez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ez a cikk bemutatja, hogyan használható a Azure Active Directory (Azure AD) multi-Factor Authentication (MFA) a SQL Server Management Studio (SSMS) szolgáltatással. Az Azure AD MFA a SSMS vagy a SqlPackage.exe [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányának](../managed-instance/sql-managed-instance-paas-overview.md) és az [azure szinapszis Analytics (korábban Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)összekapcsolására használható. A többtényezős hitelesítés áttekintését lásd: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).
+Ez a cikk bemutatja, hogyan használható a Azure Active Directory (Azure AD) multi-Factor Authentication (MFA) a SQL Server Management Studio (SSMS) szolgáltatással. Az Azure AD MFA a SSMS vagy a SqlPackage.exe [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányának](../managed-instance/sql-managed-instance-paas-overview.md) és az [azure szinapszis Analytics (korábban SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)összekapcsolására használható. A többtényezős hitelesítés áttekintését lásd: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> A Azure SQL Databaseban, az Azure SQL felügyelt példányában és az Azure Szinapszisban (korábbi nevén Azure SQL Data Warehouse) lévő adatbázisokat a cikk további részében adatbázisként hivatkoznak, és a kiszolgáló arra a [kiszolgálóra](logical-servers.md) hivatkozik, amely az adatbázisokat üzemelteti a Azure SQL Database és az Azure szinapszis számára.
+> A Azure SQL Databaseban, az Azure SQL felügyelt példányában és az Azure Szinapszisban (korábbi nevén SQL Data Warehouse) lévő adatbázisokat a cikk további részében adatbázisként hivatkoznak, és a kiszolgáló arra a [kiszolgálóra](logical-servers.md) hivatkozik, amely az adatbázisokat üzemelteti a Azure SQL Database és az Azure szinapszis számára.
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 
@@ -52,7 +52,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a legújabb SSMS haszn�
 
    ![MFA-bérlő – SSMS](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. Válassza a **Beállítások** lehetőséget, majd adja meg az adatbázist a **Beállítások** párbeszédpanelen. (Ha a csatlakoztatott felhasználó egy vendég felhasználó (azaz joe@outlook.com ), jelölje be a jelölőnégyzetet, és adja hozzá az aktuális ad-tartománynevet vagy a bérlő azonosítóját a beállítások részeként. Lásd: [univerzális hitelesítés SQL Database és SQL Data Warehouse (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md). Ezután kattintson a **Csatlakozás** gombra.  
+4. Válassza a **Beállítások** lehetőséget, majd adja meg az adatbázist a **Beállítások** párbeszédpanelen. (Ha a csatlakoztatott felhasználó egy vendég felhasználó (azaz joe@outlook.com ), jelölje be a jelölőnégyzetet, és adja hozzá az aktuális ad-tartománynevet vagy a bérlő azonosítóját a beállítások részeként. Lásd: [univerzális hitelesítés a SQL Database és az Azure szinapszis Analytics használatával (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md). Ezután kattintson a **Csatlakozás** gombra.  
 5. Amikor megjelenik a **Bejelentkezés a fiókba** párbeszédpanel, adja meg a Azure Active Directory identitásának fiókját és jelszavát. Nincs szükség jelszóra, ha a felhasználó az Azure AD-vel összevont tartomány tagja.
 
    ![2mfa – bejelentkezés](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

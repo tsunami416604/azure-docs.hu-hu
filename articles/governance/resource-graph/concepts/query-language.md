@@ -3,12 +3,12 @@ title: A lekérdezésnyelv megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
 ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 65304ca1241b2c8a1f9541580e7ee8434dd5b6eb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798550"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426401"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -28,10 +28,11 @@ Az erőforrás-diagram több táblázatot is biztosít a Azure Resource Manager 
 
 |Resource Graph-táblák |Description |
 |---|---|
-|Források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
+|További források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
 |ResourceContainers |A tartalmazza az előfizetést (előzetes verzióban `Microsoft.Resources/subscriptions` ) és az erőforráscsoport ( `Microsoft.Resources/subscriptions/resourcegroups` ) típusú erőforrásokat és az adattípusokat. |
 |AdvisorResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Advisor` . |
 |AlertsManagementResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.AlertsManagement` . |
+|GuestConfigurationResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.GuestConfiguration` . |
 |HealthResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.ResourceHealth` . |
 |MaintenanceResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Maintenance` . |
 |SecurityResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Security` . |
@@ -120,7 +121,7 @@ Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-
 
 |KQL |Resource Graph-minta lekérdezése |Jegyzetek |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
+|[száma](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
 |[különböző](/azure/kusto/query/distinctoperator) |[Egy adott alias különböző értékeinek megjelenítése](../samples/starter.md#distinct-alias-values) | |
 |[kiterjesztése](/azure/kusto/query/extendoperator) |[A virtuális gépek száma az operációs rendszer típusa szerint](../samples/starter.md#count-os) | |
 |[csatlakozás](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 `join` egyetlen lekérdezésben. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
@@ -142,7 +143,7 @@ Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-
 Annak az előfizetésnek a hatóköre, amelyből a lekérdezés az erőforrásokat adja vissza, az erőforrás-gráf elérésének módjától függ. Az Azure CLI és a Azure PowerShell feltöltheti a kérelembe felvenni kívánt előfizetések listáját a jogosultsággal rendelkező felhasználó kontextusa alapján. Az előfizetések listája manuálisan is definiálható az **előfizetések** és az **előfizetési** paraméterek esetében.
 A REST API és az összes többi SDK-ban a kérés részeként explicit módon meg kell határozni az előfizetések listáját.
 
-**Előzetes**verzióként REST API verziója `2020-04-01-preview` egy tulajdonság hozzáadásával a lekérdezés hatókörét egy [felügyeleti csoportba](../../management-groups/overview.md)helyezi. Ez az előzetes verziójú API azt is lehetővé teszi, hogy az előfizetés tulajdonság nem kötelező. Ha nincs definiálva felügyeleti csoport vagy előfizetési lista, a lekérdezési hatókör a hitelesített felhasználó által elérhető összes erőforrás. Az új `managementGroupId` tulajdonság a felügyeleti csoport azonosítóját veszi át, amely eltér a felügyeleti csoport nevétől. Ha `managementGroupId` meg van adva, a rendszer a megadott felügyeleti csoport hierarchiájának első 5000-előfizetésének erőforrásait tartalmazza. `managementGroupId` nem használható egyszerre a következővel: `subscriptions` .
+**Előzetes**verzióként REST API verziója `2020-04-01-preview` egy tulajdonság hozzáadásával a lekérdezés hatókörét egy [felügyeleti csoportba](../../management-groups/overview.md)helyezi. Ez az előzetes verziójú API azt is lehetővé teszi, hogy az előfizetés tulajdonság nem kötelező. Ha nincs definiálva felügyeleti csoport vagy előfizetési lista, a lekérdezés hatóköre minden erőforrás, amely tartalmazza az [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) által delegált erőforrásokat, amelyeket a hitelesített felhasználó elérhet. Az új `managementGroupId` tulajdonság a felügyeleti csoport azonosítóját veszi át, amely eltér a felügyeleti csoport nevétől. Ha `managementGroupId` meg van adva, a rendszer a megadott felügyeleti csoport hierarchiájának első 5000-előfizetésének erőforrásait tartalmazza. `managementGroupId` nem használható egyszerre a következővel: `subscriptions` .
 
 Példa: a "saját felügyeleti csoport" nevű felügyeleti csoport hierarchiájában lévő összes erőforrás lekérdezése a (z) myMG AZONOSÍTÓval.
 

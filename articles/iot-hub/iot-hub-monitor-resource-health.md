@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022139"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438398"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
 
@@ -61,7 +61,7 @@ A kapcsolatok kategória nyomon követi az eszköz csatlakoztatását, és levá
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -352,7 +352,7 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 
 Itt `durationMs` nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
@@ -386,7 +386,7 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
 | **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
@@ -418,7 +418,7 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Végpontneve** | Sztring | Az útválasztási végpont neve |
 | **endpointType** | Sztring | Az útválasztási végpont típusa |
@@ -426,7 +426,7 @@ A `properties` szakaszban ez a napló további információkat tartalmaz az üze
 
 #### <a name="configurations"></a>Konfigurációk
 
-IoT Hub konfigurációs naplók nyomon követi az eseményeket és a hibát az automatikus Eszközkezelő szolgáltatás számára.
+IoT Hub konfigurációs naplók nyomon követik az automatikus Eszközkezelő szolgáltatáshoz tartozó eseményeket és hibákat.
 
 ```json
 {
@@ -470,6 +470,42 @@ Az eszköz Streams kategória nyomon követi az egyes eszközökre küldött ké
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK verziója
+
+Egyes műveletek visszaadnak egy `sdkVersion` tulajdonságot az `properties` objektumban. Ezen műveletek esetében, ha egy eszköz-vagy háttér-alkalmazás az Azure IoT SDK-k egyikét használja, ez a tulajdonság a használt SDK-val, az SDK-verzióval és az SDK-t futtató platformmal kapcsolatos információkat tartalmaz. Az alábbi példa a `sdkVersion` művelethez kibocsátott tulajdonságot mutatja be `deviceConnect` a Node.js Device SDK használatakor: `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"` . Íme egy példa a .NET (C#) SDK számára kibocsátott értékre: `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"` .
+
+A következő táblázat a különböző Azure IoT SDK-k által használt SDK-nevet mutatja be:
+
+| Az SDK neve a sdkVersion tulajdonságban | Nyelv |
+|----------|----------|
+| .NET | .NET (C#) |
+| Microsoft. Azure. Devices | .NET (C#) Service SDK |
+| Microsoft. Azure. Devices. Client | .NET (C#) eszköz SDK |
+| iothubclientről | C vagy Python v1 (elavult) eszköz SDK |
+| iothubserviceclient | C vagy Python v1 (elavult) Service SDK |
+| Azure-IOT-Device-iothub-, | Python-eszköz SDK |
+| azure-iot-device | Node.js eszköz SDK |
+| azure-iothub | Node.js Service SDK |
+| com. microsoft. Azure. iothub-Java-Client | Java-eszköz SDK |
+| com. microsoft. Azure. iothub. Service. SDK | Java Service SDK |
+| com. microsoft. Azure. SDK. IOT. IOT-Device-Client | Java-eszköz SDK |
+| com. microsoft. Azure. SDK. IOT. IOT-Service-Client | Java Service SDK |
+| C# | Beágyazott C |
+| C + (OSSimplified = Azure RTOS) | Azure RTOS |
+
+A diagnosztikai naplókra irányuló lekérdezések végrehajtásakor kinyerheti az SDK Version tulajdonságát. A következő lekérdezés kibontja az SDK Version tulajdonságát (és az eszköz AZONOSÍTÓját) a kapcsolatok eseményei által visszaadott tulajdonságokból. Ez a két tulajdonság az eredményekre, valamint annak az IoT hub-erőforrás-AZONOSÍTÓra van írva, amelyhez az eszköz csatlakozik.
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Naplók beolvasása az Azure Event Hubs

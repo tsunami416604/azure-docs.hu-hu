@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230347"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647408"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -41,7 +41,7 @@ Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használ
 
 
 > [!TIP]
-> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) és [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
+> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) és [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
 
 A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)című cikkben talál. 
 
@@ -251,7 +251,7 @@ dataprep_step = PythonScriptStep(
 Az `prepped_data_path` objektum típusa `PipelineOutputFileDataset` . Figyelje meg, hogy a és az argumentumokban is meg van adva `arguments` `outputs` . Ha áttekinti az előző lépést, látni fogja, hogy az adatelőkészítési kódban az argumentum értéke annak `'--output_path'` a fájlnak az elérési útja, amelybe a Parquet fájl íródott. 
 
 > [!TIP]
-> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el `OutputFileDatasetConfig` . További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Az osztályt használó kódrészletek esetében `OutputFileDatasetConfig` tekintse meg a [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása című témakört.
 
 ## <a name="train-with-automlstep"></a>Tanítás AutoMLStep
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 A fenti kódrészlet magas teljesítményt eredményez az `PipelineOutputTabularDataset` `PipelineOutputFileDataset` adatelőkészítési lépés kimenetében.
 
 > [!TIP]
-> A nyilvános előzetes verzió osztályának `OutputFileDatasetConfig` lehetősége van arra is, hogy a `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) AutoML-futtatásokban való felhasználásra is Konvertáljon egy-t. További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> A nyilvános előzetes verzió osztálya [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) tartalmazza azt a [read_delimited_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) metódust, amely átalakítja a `OutputFileDatasetConfig` into a-t az [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) AutoML-ben való felhasználásra.
 
 Egy másik lehetőség a `Dataset` munkaterületen regisztrált objektumok használata:
 
@@ -520,7 +520,7 @@ Minden `Run` objektum olyan `StepRun` objektumokat tartalmaz, amelyek az egyes f
 
 Végül a rendszer letölti a tényleges mérőszámokat és modelleket a helyi gépre, ahogy azt a fenti "a folyamat eredményeinek vizsgálata" szakaszban tárgyalták.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Futtassa ezt a Jupyter-jegyzetfüzetet egy olyan folyamaton, amely egy regressziót használó [folyamatban lévő AUTOMATIZÁLT ml-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) t mutat a taxi viteldíjak előrejelzéséhez
 - [Automatizált ML-kísérletek létrehozása kód írása nélkül](how-to-use-automated-ml-for-ml-models.md)

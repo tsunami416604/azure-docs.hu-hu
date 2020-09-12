@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752099"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433449"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -218,7 +218,7 @@ az extension update --name aks-preview
 ### <a name="use-gen2-vms-on-new-clusters-preview"></a>Gen2 virtuális gépek használata új fürtökön (előzetes verzió)
 Konfigurálja úgy a fürtöt, hogy Gen2 virtuális gépeket használjon a kiválasztott SKU-hoz a fürt létrehozásakor. A `--aks-custom-headers` jelzővel beállíthatja, hogy a Gen2 a virtuális gép létrehozásakor egy új fürtön legyen.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -227,7 +227,7 @@ Ha az 1. generációs (Gen1) virtuális gépek használatával szeretne normál 
 ### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Gen2 virtuális gépek használata meglévő fürtökön (előzetes verzió)
 Konfiguráljon egy új csomópont-készletet a Gen2 virtuális gépek használatára. A `--aks-custom-headers` jelzővel állítsa be a Gen2 virtuálisgép-generációként az adott csomópont-készlethez.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -276,7 +276,7 @@ az extension update --name aks-preview
 
 Konfigurálja úgy a fürtöt, hogy az elmúló operációsrendszer-lemezeket használja a fürt létrehozásakor. A `--aks-custom-headers` jelzővel állíthatja be az ideiglenes operációs rendszert az új fürt operációsrendszer-lemezének típusaként.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -285,7 +285,7 @@ Ha a hálózatra csatlakoztatott operációsrendszer-lemezekkel szeretne normál
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Ideiglenes operációs rendszer használata meglévő fürtökön (előzetes verzió)
 Új csomópont-készlet beállítása az ideiglenes operációsrendszer-lemezek használatára. Használja a `--aks-custom-headers` jelzőt az operációsrendszer-lemez típusaként az adott csomópont operációsrendszer-lemezének típusaként.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -314,7 +314,7 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 - A csomópont erőforráscsoporthoz tartozó felügyelt erőforrások nevének megadása.
 - Módosíthatja vagy törölheti az Azure-ban létrehozott, felügyelt erőforrások címkéit a csomópont-erőforráscsoporton belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan `Kured` [alkalmazhatja a biztonsági és a kernel-frissítéseket a fürt Linux-csomópontjaira](node-updates-kured.md) .
 - Lásd: [Azure Kubernetes Service-(ak-) fürt frissítése](upgrade-cluster.md) , amelyből megtudhatja, hogyan frissítheti a fürtöt a Kubernetes legújabb verziójára.

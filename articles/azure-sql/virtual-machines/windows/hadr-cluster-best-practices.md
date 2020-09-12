@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285628"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612329"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürt konfigurálásának ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,26 +35,23 @@ Egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot használ
 
 Bár a két csomópontos fürt [kvórum-erőforrás](/windows-server/storage/storage-spaces/understand-quorum)nélkül működik, az ügyfeleknek feltétlenül szükségük van egy kvórum erőforrás használatára a termelési támogatáshoz. A fürt érvényesítése nem felel meg a fürtnek kvórum-erőforrás nélkül. 
 
-A három csomópontos fürt gyakorlatilag egyetlen csomópontból álló veszteséget (legfeljebb két csomópontot) tud túlélni kvórum-erőforrás nélkül. Ha azonban a fürt két csomópontra van lebontva, fennáll a kockázata annak, hogy fut a következő: 
+A három csomópontos fürt gyakorlatilag egyetlen csomópontból álló veszteséget (legfeljebb két csomópontot) tud túlélni kvórum-erőforrás nélkül. Ha azonban a fürt két csomópontra van lebontva, fennáll a kockázata annak, hogy a fürtözött erőforrások a csomópont elvesztése vagy kommunikációs meghibásodása esetén offline állapotba lépnek.
 
-- **Partíció a térben** (darabolt agy): a fürt csomópontjai a kiszolgáló, a hálózati adapter vagy a kapcsoló hibája miatt elkülönítve lesznek a hálózaton. 
-- **Partíció az időben** (amnézia): a csomópont összekapcsolja vagy újracsatlakoztatja a fürtöt, és nem megfelelő módon próbálkozik a fürt vagy a fürt szerepkör tulajdonjogának igénylésével. 
-
-A kvórumerőforrás megvédi a fürtöt a fenti problémák bármelyikén. 
+A kvórum erőforrásának konfigurálása lehetővé teszi a fürt számára, hogy online állapotba lépjen, csak egy csomóponttal.
 
 A következő táblázat felsorolja az Azure-beli virtuális géppel való használatra ajánlott sorrendben elérhető kvórum beállításokat, és a tanúsító lemez előnyben részesített választása: 
 
 
 ||[Tanúsító lemez](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Felhőbeli tanúsító](/windows-server/failover-clustering/deploy-cloud-witness)  |[Tanúsító fájlmegosztás](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Támogatott operációs rendszer**| Mind |Windows Server 2016 +| Windows Server 2012 +|
+|**Támogatott operációs rendszer**| Mind |Windows Server 2016 +| Mind|
 
 
 
 
 ### <a name="disk-witness"></a>Tanúsító lemez
 
-A tanúsító lemez egy kisméretű fürtözött lemez a fürt rendelkezésre álló tárolási csoportjában. Ez a lemez nagyon elérhető, és feladatátvételt hajt végre a csomópontok között. A fürt adatbázisának egy példányát tartalmazza, amelynek alapértelmezett mérete általában 1 GB-nál kisebb. A tanúsító lemez az Azure-beli virtuális gép előnyben részesített kvóruma, mivel a probléma megoldására a Felhőbeli tanúsító és a tanúsító fájlmegosztás eltérően van szükség. 
+A tanúsító lemez egy kisméretű fürtözött lemez a fürt rendelkezésre álló tárolási csoportjában. Ez a lemez nagyon elérhető, és feladatátvételt hajt végre a csomópontok között. A fürt adatbázisának egy példányát tartalmazza, amelynek alapértelmezett mérete általában 1 GB-nál kisebb. A tanúsító lemez minden olyan fürt előnyben részesített kvóruma, amely az Azure megosztott lemezeit (vagy bármilyen megosztott lemezes megoldást, például a megosztott SCSI-t, az iSCSI-t vagy a Fibre Channel SAN-t) használja.  Fürtözött megosztott kötet nem használható tanúsító lemezként.
 
 Konfiguráljon egy Azure-beli megosztott lemezt a tanúsító lemezként. 
 
@@ -95,8 +92,8 @@ A következő táblázat a HADR-kapcsolatok támogatását hasonlítja össze:
 
 | |**Virtuális hálózat neve (VNN)**  |**Elosztott hálózat neve (DNN)**  |
 |---------|---------|---------|
-|**Operációs rendszer minimális verziója**| Windows Server 2012 | Windows Server 2016|
-|**Minimális SQL Server-verzió** |SQL Server 2012 |SQL Server 2019 CU2|
+|**Operációs rendszer minimális verziója**| Mind | Mind |
+|**Minimális SQL Server-verzió** |Mind |SQL Server 2019 CU2|
 |**Támogatott HADR-megoldás** | Feladatátvevőfürt-példány <br/> Rendelkezésre állási csoport | Feladatátvevőfürt-példány|
 
 
@@ -108,9 +105,9 @@ A terheléselosztó használata során enyhe feladatátvételi késleltetés tö
 
 Az első lépésekhez megtudhatja, hogyan [konfigurálhatja a Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)-t egy-ra. 
 
-**Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2012-es és újabb verziók   
-**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport 
+**Támogatott operációs rendszer**: mind   
+**Támogatott SQL-verzió**: ALL   
+**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport   
 
 
 ### <a name="distributed-network-name-dnn"></a>Elosztott hálózat neve (DNN)
@@ -138,15 +135,16 @@ Az első lépésekhez megtudhatja, hogyan [konfigurálhat egy DNN-erőforrást e
 A következő korlátozásokat érdemes figyelembe venni, ha az Azure-ban vagy rendelkezésre állási csoportokkal dolgozik, és SQL Server az Azure Virtual Machines. 
 
 ### <a name="msdtc"></a>MSDTC 
-Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019-on a fürtözött megosztott kötetek (CSV) és az [Azure standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)tárolóval.
 
-Az Azure Virtual Machines-on az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban, mert:
+Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
+
+Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban fürtözött megosztott kötetekkel, mert:
 
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután meghatározta a megoldásához szükséges ajánlott eljárásokat, első lépésként [készítse elő a SQL Server VMt a következőre](failover-cluster-instance-prepare-vm.md):. A rendelkezésre állási csoportot az [Azure CLI](availability-group-az-cli-configure.md)vagy az [Azure Gyorsindítás sablonjaival](availability-group-quickstart-template-configure.md)is létrehozhatja. 
 

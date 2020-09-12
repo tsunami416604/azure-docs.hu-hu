@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 05ecce2d6ef0f8a3f241570ba9364c5e38682f3e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1293534849c98cee51349bbefd3073cc8b94f876
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319439"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647204"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning adatkészlet létrehozása és feltárása címkékkel
 
@@ -22,13 +22,13 @@ Ebből a cikkből megtudhatja, hogyan exportálhatja az adatfeliratokat egy Azur
 
 ## <a name="what-are-datasets-with-labels"></a>A címkékkel rendelkező adatkészletek 
 
-Azure Machine Learning címkéket tartalmazó adatkészleteket [TabularDatasets](how-to-create-register-datasets.md#dataset-types) , a címkével ellátott adatkészletként fogunk hivatkozni rájuk. Ezek a TabularDatasets-típusok csak Azure Machine Learning adatcímkéző projektek kimenetében jönnek létre. Hozzon létre egy adatcímkéző projektet a [következő lépésekkel](how-to-create-labeling-projects.md). A Machine Learning támogatja a képbesoroláshoz a többcímkés vagy a többosztályos, valamint az objektum-azonosítókat a kötött mezőkkel együtt.
+A címkével ellátott adatkészletek használatával Azure Machine Learning adatkészleteket. A címkézett adatkészletek adott adatkészlet-típusai csak Azure Machine Learning adatcímkéző projektek kimenetében jönnek létre. Hozzon létre egy adatcímkéző projektet a [következő lépésekkel](how-to-create-labeling-projects.md). A Machine Learning támogatja a képbesoroláshoz a többcímkés vagy a többosztályos, valamint az objektum-azonosítókat a kötött mezőkkel együtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree) .
-* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
-    * Az [Azure--beli-adathalmaz-adatkészlet](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py) csomagjának telepítése
+* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
+    * Az [Azure--beli-adathalmaz-adatkészlet](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py&preserve-view=true) csomagjának telepítése
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 * Hozzáférés egy Azure Machine Learning adatcímkéző projekthez. Ha nem rendelkezik címkéző projekttel, hozzon létre egyet [ezekkel a lépésekkel](how-to-create-labeling-projects.md).
 
@@ -52,7 +52,7 @@ Betöltheti a címkével ellátott adatkészleteket egy Panda dataframe vagy Tor
 
 ### <a name="pandas-dataframe"></a>Panda dataframe
 
-A címkével ellátott adatkészleteket egy Panda dataframe is betöltheti a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) osztály metódusával `azureml-contrib-dataset` . Telepítse az osztályt a következő rendszerhéj-paranccsal: 
+A címkével ellátott adatkészleteket egy Panda dataframe is betöltheti a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) osztály metódusával `azureml-contrib-dataset` . Telepítse az osztályt a következő rendszerhéj-paranccsal: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -80,7 +80,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision adatkészletek
 
-Címkézett adatkészleteket is betölthet a Torchvision adatkészletbe a [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) metódussal a `azureml-contrib-dataset` osztályból is. Ennek a módszernek a használatához telepítenie kell a [PyTorch](https://pytorch.org/) . 
+Címkézett adatkészleteket is betölthet a Torchvision adatkészletbe a [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#&preserve-view=trueto-torchvision--) metódussal a `azureml-contrib-dataset` osztályból is. Ennek a módszernek a használatához telepítenie kell a [PyTorch](https://pytorch.org/) . 
 
 ```python
 from torchvision.transforms import functional as F
@@ -97,6 +97,6 @@ gray_image = F.to_grayscale(pil_image, num_output_channels=3)
 imgplot = plt.imshow(gray_image)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az [adathalmazt a címkék jegyzetfüzettel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) a teljes betanítási minta megtekintéséhez.

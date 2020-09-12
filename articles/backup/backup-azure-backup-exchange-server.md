@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889719"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378389"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 
@@ -39,13 +39,13 @@ A folytatás előtt győződjön meg arról, hogy teljesülnek a Microsoft Azure
 Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
 1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Telepítse az ügynököt az Exchange-kiszolgálóra, ehhez kattintson a **felügyeleti > ügynökök** elemre, > telepítse a DPM felügyeleti konzol. A részletes lépésekért lásd [a DPM védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
+2. Telepítse az ügynököt az Exchange-kiszolgálóra az DPM Felügyeleti konzol-ben **> telepítés felügyeleti > ügynökök** kiválasztásával. A részletes lépésekért lásd [a DPM védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
 
-1. A DPM Felügyeleti konzol kattintson a **védelem**elemre, majd kattintson az eszköz menüszalagjának **új** elemére az **új védelmi csoport létrehozása** varázsló megnyitásához.
-2. A varázsló **üdvözlő** képernyőjén kattintson a **tovább**gombra.
-3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **tovább**gombra.
+1. A DPM Felügyeleti konzol kattintson a **védelem**elemre, majd az új **védelmi csoport létrehozása** varázsló megnyitásához kattintson az **új** elemre az eszköz menüszalagján.
+2. A varázsló **üdvözlő** képernyőjén válassza a **tovább**lehetőséget.
+3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **Tovább gombra**.
 4. Válassza ki a védelemmel ellátni kívánt Exchange Server-adatbázist, és kattintson a **tovább**gombra.
 
    > [!NOTE]
@@ -73,17 +73,17 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
    >
    >
 8. Kattintson a **Tovább** gombra.
-9. Válassza ki a **másolási biztonsági mentés**adatbázisát, majd kattintson a **tovább**gombra.
+9. Válassza ki az adatbázist a **másolási biztonsági mentéshez**, majd kattintson a **tovább**gombra.
 
    > [!NOTE]
    > Ha nem a "teljes biztonsági mentés" lehetőséget választja egy adatbázis legalább egy DAG-példányához, a rendszer nem csonkolja a naplókat.
    >
    >
-10. Konfigurálja a **rövid távú biztonsági mentés**céljait, és kattintson a **tovább**gombra.
+10. Konfigurálja a **rövid távú biztonsági mentés**céljait, majd válassza a **tovább**lehetőséget.
 11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább**gombra.
 12. Válassza ki azt az időpontot, amikor a DPM-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább**gombra.
-13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd kattintson a **tovább**gombra.
-14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd kattintson a **tovább**gombra. Például:
+13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd válassza a **tovább**lehetőséget.
+14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább**lehetőséget. Például:
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
 15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Például:
@@ -94,21 +94,21 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
     > Megjegyzés: az online helyreállítási pontok expressz teljes helyreállítási pontokon alapulnak. Ezért az online helyreállítási pontot az expressz teljes helyreállítási ponthoz megadott idő után kell ütemeznie.
     >
     >
-16. Konfigurálja **Azure Backup**adatmegőrzési szabályát, majd kattintson a **tovább**gombra.
-17. Válasszon online replikálási lehetőséget, majd kattintson a **tovább**gombra.
+16. Konfigurálja a **Azure Backup**adatmegőrzési házirendjét, majd kattintson a **tovább**gombra.
+17. Válasszon egy online replikálási lehetőséget, majd kattintson a **tovább**gombra.
 
     Ha nagyméretű adatbázissal rendelkezik, hosszú időt is igénybe vehet, hogy a rendszer létrehozza a kezdeti biztonsági mentést a hálózaton keresztül. A probléma elkerüléséhez létrehozhat egy offline biztonsági mentést.  
 
     ![Online adatmegőrzési szabály meghatározása](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. Erősítse meg a beállításokat, majd kattintson a **csoport létrehozása**elemre.
-19. Kattintson a **Bezárás** gombra.
+19. Válassza a **Bezárás** lehetőséget.
 
 ## <a name="recover-the-exchange-database"></a>Az Exchange-adatbázis helyreállítása
 
-1. Exchange-adatbázis helyreállításához kattintson a DPM Felügyeleti konzol **helyreállítás** elemére.
+1. Exchange-adatbázis helyreállításához válassza a **helyreállítás** lehetőséget a DPM felügyeleti konzol.
 2. Keresse meg a helyreállítani kívánt Exchange-adatbázist.
 3. Válasszon ki egy online helyreállítási pontot a *helyreállítási idő* legördülő listából.
-4. Kattintson **a helyreállítás gombra** a **helyreállítási varázsló**elindításához.
+4. A **helyreállítási varázsló**elindításához válassza a **helyreállítás** lehetőséget.
 
 Az online helyreállítási pontok esetében öt helyreállítási típus létezik:
 
@@ -120,6 +120,6 @@ Az online helyreállítási pontok esetében öt helyreállítási típus létez
 
     ![Online replikáció kiválasztása](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Backup GYIK](backup-azure-backup-faq.md)

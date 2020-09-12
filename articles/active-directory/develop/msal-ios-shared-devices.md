@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0354010297942c3b9e18dc6f556cb0afa075ff5f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114914"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649104"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Megosztott eszköz mód iOS-eszközökhöz
 
@@ -61,7 +61,7 @@ Az eszközt úgy kell konfigurálni, hogy támogassa a megosztott eszköz üzemm
     - **Típus**: átirányítás
     - **BŐVÍTMÉNY azonosítója**: com. microsoft. azureauthenticator. ssoextension
     - **Csoport azonosítója**: SGGM6D27TK
-    - **URL-címek**:https://login.microsoftonline.com
+    - **URL-címek**: https://login.microsoftonline.com
     - További konfigurálandó információk:
       - Kulcs: sharedDeviceMode
       - Típus: Boolean
@@ -221,7 +221,7 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 }];
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtekinteni a megosztott eszköz üzemmódot a műveletben, a GitHubon a következő mintakód példaként egy Firstline Worker-alkalmazás futtatására használható egy iOS-eszközön a megosztott eszköz módban:
 

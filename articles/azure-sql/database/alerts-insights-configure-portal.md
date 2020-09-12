@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7457ad5870e31d682f8727901795c9d6d73f06
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553498"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442666"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az Azure szinapszis Analytics számára a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "85553498"
 
 ## <a name="overview"></a>Áttekintés
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) adatbázisaihoz tartozó riasztásokat a Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) adatbázisaihoz tartozó riasztásokat a Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket.
 
 > [!NOTE]
 > Az Azure SQL felügyelt példányaira vonatkozó utasításokért lásd: [riasztások létrehozása az Azure SQL felügyelt példányaihoz](../managed-instance/alerts-create.md).
@@ -42,7 +42,7 @@ A riasztást úgy is beállíthatja, hogy a következő esetekben hajtsa végre 
 
 A riasztási szabályokkal kapcsolatos információkat a
 
-* [Az Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
+* [A Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Parancssori felület (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -71,6 +71,6 @@ A riasztási szabályokkal kapcsolatos információkat a
 
 10 percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [webhookok riasztásokban való konfigurálásáról](../../azure-monitor/platform/alerts-webhooks.md).

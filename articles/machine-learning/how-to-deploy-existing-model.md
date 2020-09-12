@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008202"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648317"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>A meglévő modell üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,11 +28,11 @@ A cikkben szereplő fogalmakkal és kifejezésekkel kapcsolatos további inform�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Azure Machine Learning munkaterület](how-to-manage-workspace.md)
-  + A Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva. A munkaterülethez való kapcsolódással kapcsolatos további információkért tekintse meg a [Pythonhoz készült Azure Machine learning SDK dokumentációját](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace).
+  + A Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva. A munkaterülethez való kapcsolódással kapcsolatos további információkért tekintse meg a [Pythonhoz készült Azure Machine learning SDK dokumentációját](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=trueworkspace).
   
   + A CLI-példák a és a helyőrzőit használják `myworkspace` `myresourcegroup` , amelyeket a munkaterület nevével és az azt tartalmazó erőforráscsoporthoz kell cserélni.
 
-* A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.  
+* A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.  
 
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Machine learning CLI bővítmény](reference-azure-machine-learning-cli.md).
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-További információ: [modell. Register ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) – hivatkozás.
+További információ: [modell. Register ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) – hivatkozás.
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -103,7 +103,7 @@ inference_config = InferenceConfig(entry_script="score.py",
 További információkért tekintse át a következő cikkeket:
 
 + [Környezetek használata](how-to-use-environments.md).
-+ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -hivatkozás.
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) -hivatkozás.
 
 
 A CLI betölti a következtetési konfigurációt egy YAML-fájlból:
@@ -220,7 +220,7 @@ A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: 
 
 ## <a name="define-deployment"></a>Központi telepítés meghatározása
 
-A [webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) csomag az üzembe helyezéshez használt osztályokat tartalmazza. A használt osztály meghatározza a modell központi telepítését. Ha például webszolgáltatásként kíván üzembe helyezni az Azure Kubernetes szolgáltatásban, a [AksWebService. deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) használatával hozza létre a telepítési konfigurációt.
+A [webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true) csomag az üzembe helyezéshez használt osztályokat tartalmazza. A használt osztály meghatározza a modell központi telepítését. Ha például webszolgáltatásként kíván üzembe helyezni az Azure Kubernetes szolgáltatásban, a [AksWebService. deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) használatával hozza létre a telepítési konfigurációt.
 
 A következő Python-kód egy helyi telepítés központi telepítési konfigurációját határozza meg. Ezzel a konfigurációval a modellt webszolgáltatásként helyezi üzembe a helyi számítógépen.
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-További információ: [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) hivatkozás.
+További információ: [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) hivatkozás.
 
 A CLI betölti a telepítési konfigurációt egy YAML-fájlból:
 
@@ -260,7 +260,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-További információ: [modell. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) hivatkozás.
+További információ: [modell. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) hivatkozás.
 
 A modell parancssori felületről történő üzembe helyezéséhez használja a következő parancsot. Ezzel a paranccsal a (z) és a (z `sentiment:1` ) és a (z) fájlban tárolt következtetési és telepítési konfiguráció alapján telepítheti a regisztrált modell () 1 `inferenceConfig.json` . verzióját `deploymentConfig.json` :
 
@@ -293,7 +293,7 @@ print(response.json())
 
 Az üzembe helyezett szolgáltatás használatáról további információt az [ügyfél létrehozása](how-to-consume-web-service.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

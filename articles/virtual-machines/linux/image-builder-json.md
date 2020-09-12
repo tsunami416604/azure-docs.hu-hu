@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869201"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378371"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -142,7 +142,7 @@ A szolgáltatás telepítésével kapcsolatos további információkért lásd: 
 
 ## <a name="properties-source"></a>Tulajdonságok: forrás
 
-Az Image Builder jelenleg csak az 1. generációs lemezképeket és virtuális gépeket támogatja, a `source` szakasz a rendszerkép-szerkesztő által használt HyperV tartalmaz információkat.
+A `source` szakasz a rendszerkép-szerkesztő által használt forrás-rendszerképről tartalmaz információkat. A rendszerkép-készítő jelenleg csak natív módon támogatja a Hyper-V generációs (Gen1) 1 lemezképek létrehozását az Azure Shared Image Gallery (SIG) vagy a Managed Image használatával. Ha Gen2-lemezképeket szeretne létrehozni, akkor forrás-Gen2 lemezképet kell használnia, és a virtuális merevlemezre kell terjesztenie. Ezután létre kell hoznia egy felügyelt rendszerképet a VHD-ből, és be kell szúrnia a SIG-ba Gen2-képként.
 
 Az API-nak szüksége van egy "forrás típusa" elemre, amely meghatározza a rendszerkép-Build forrását, jelenleg három típus létezik:
 - PlatformImage – jelezte, hogy a forrás rendszerkép egy Piactéri rendszerkép.
@@ -571,7 +571,7 @@ A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjte
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {

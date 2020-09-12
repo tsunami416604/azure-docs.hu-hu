@@ -2,19 +2,19 @@
 title: ARM-sablon tesztelési eszközkészlete
 description: Útmutatás a ARM-sablon tesztelési eszközkészletének futtatásához a sablonban. Az eszközkészlet segítségével megtekintheti, hogy végrehajtotta-e a javasolt eljárásokat.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7b88096dfdd1c7fb3e2671a369132e75a8885b8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255946"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439560"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM-sablon tesztelési eszközkészletének használata
 
-Az [ARM-sablon tesztelési eszközkészlete](https://aka.ms/arm-ttk) ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit használatával megtudhatja, hogyan kerülheti el a sablonok fejlesztésével kapcsolatos gyakori problémákat.
+A [Azure Resource Manager (ARM) sablon tesztelési eszközkészlete](https://aka.ms/arm-ttk) ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit használatával megtudhatja, hogyan kerülheti el a sablonok fejlesztésével kapcsolatos gyakori problémákat.
 
 A test Toolkit az [alapértelmezett tesztek készletét](test-cases.md)tartalmazza. Ezek a tesztek javaslatok, de nem szükségesek. Eldöntheti, hogy mely tesztek relevánsak a céljaihoz, és hogy milyen tesztek futnak.
 
@@ -22,53 +22,103 @@ Ez a cikk bemutatja, hogyan futtathatja a tesztelési eszközkészletet, és hog
 
 Az eszközkészlet PowerShell-parancsfájlok egy készlete, amely a PowerShell vagy a parancssori felület egyik parancsának használatával futtatható.
 
-## <a name="download-test-toolkit"></a>Tesztelési eszközkészlet letöltése
+## <a name="install-on-windows"></a>Telepítés Windows rendszeren
 
-A tesztelési eszközkészlet használatához elágazással és klónozással a parancsfájlokat tartalmazó [tárházat](https://aka.ms/arm-ttk) vagy a [legújabb. zip fájlt töltheti le](https://aka.ms/arm-ttk-latest).
+1. Ha még nincs telepítve a PowerShell, [telepítse a PowerShellt Windows rendszeren](/powershell/scripting/install/installing-powershell-core-on-windows).
 
-Annak a számítógépnek a végrehajtási házirendjétől függően, amelyen futtatja a parancsfájlt, hibaüzenetet kaphat arról, hogyan futtathat parancsfájlokat az internetről. Módosítania kell a [végrehajtási házirendet](/powershell/module/microsoft.powershell.core/about/about_execution_policies) , vagy fel kell [oldania a parancsfájlok feloldását](/powershell/module/microsoft.powershell.utility/unblock-file).
+1. [Töltse le a test Toolkit legújabb. zip fájlját](https://aka.ms/arm-ttk-latest) , és bontsa ki.
 
-## <a name="run-on-powershell"></a>Futtatás a PowerShell-lel
+1. Indítsa el a PowerShellt.
 
-A tesztek futtatása előtt importálja a modult.
+1. Navigáljon ahhoz a mappához, ahová kibontotta a tesztelési eszközkészletet. A mappában navigáljon a **ARM-TTK** mappára.
 
-```powershell
-Import-Module .\arm-ttk.psd1 # from the same directory as .\arm-ttk.psd1
-```
+1. Ha a [végrehajtási házirend](/powershell/module/microsoft.powershell.core/about/about_execution_policies) blokkolja az internetről származó parancsfájlokat, fel kell oldania a parancsfájlok feloldását. Győződjön meg arról, hogy az **ARM-TTK** mappában van.
 
-A tesztek **PowerShellben**való futtatásához használja a következő parancsot:
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
 
-```powershell
-Test-AzTemplate -TemplatePath $TemplateFolder
-```
+1. Importálja a modult.
 
-## <a name="run-on-linux"></a>Futtatás Linuxon
+   ```powershell
+   Import-Module .\arm-ttk.psd1
+   ```
 
-A tesztek futtatása előtt telepítse a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux)-t.
+1. A tesztek futtatásához használja a következő parancsot:
 
-A **Linux** rendszerű, bash-alapú tesztek futtatásához használja a következő parancsot:
+   ```powershell
+   Test-AzTemplate -TemplatePath \path\to\template
+   ```
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+## <a name="install-on-linux"></a>Telepítés Linux rendszeren
 
-A tesztet pwsh.exe is futtathatja.
+1. Ha még nincs telepítve a PowerShell, [telepítse a PowerShellt Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux).
 
-## <a name="run-on-macos"></a>Futtatás macOS rendszeren
+1. [Töltse le a test Toolkit legújabb. zip fájlját](https://aka.ms/arm-ttk-latest) , és bontsa ki.
 
-A tesztek futtatása előtt telepítse a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-macos)-t. 
+1. Indítsa el a PowerShellt.
 
-`coreutils` telepítése:
+   ```bash
+   pwsh
+   ```
 
-```bash
-brew install coreutils
-```
+1. Navigáljon ahhoz a mappához, ahová kibontotta a tesztelési eszközkészletet. A mappában navigáljon a **ARM-TTK** mappára.
 
-A **MacOS**rendszeren futtatott tesztek futtatásához használja a következő parancsot:
+1. Ha a [végrehajtási házirend](/powershell/module/microsoft.powershell.core/about/about_execution_policies) blokkolja az internetről származó parancsfájlokat, fel kell oldania a parancsfájlok feloldását. Győződjön meg arról, hogy az **ARM-TTK** mappában van.
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Importálja a modult.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. A tesztek futtatásához használja a következő parancsot:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
+
+## <a name="install-on-macos"></a>Telepítés macOS rendszeren
+
+1. Ha még nincs telepítve a PowerShell, [telepítse a PowerShellt MacOS rendszeren](/powershell/scripting/install/installing-powershell-core-on-macos).
+
+1. `coreutils` telepítése:
+
+   ```bash
+   brew install coreutils
+   ```
+
+1. [Töltse le a test Toolkit legújabb. zip fájlját](https://aka.ms/arm-ttk-latest) , és bontsa ki.
+
+1. Indítsa el a PowerShellt.
+
+   ```bash
+   pwsh
+   ```
+
+1. Navigáljon ahhoz a mappához, ahová kibontotta a tesztelési eszközkészletet. A mappában navigáljon a **ARM-TTK** mappára.
+
+1. Ha a [végrehajtási házirend](/powershell/module/microsoft.powershell.core/about/about_execution_policies) blokkolja az internetről származó parancsfájlokat, fel kell oldania a parancsfájlok feloldását. Győződjön meg arról, hogy az **ARM-TTK** mappában van.
+
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Importálja a modult.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. A tesztek futtatásához használja a következő parancsot:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
 
 ## <a name="result-format"></a>Eredmény formátuma
 
@@ -137,7 +187,7 @@ A sablon objektum a következő tulajdonságokkal rendelkezik:
 
 * $schema
 * contentVersion
-* paraméterek
+* parameters
 * változók
 * resources
 * kimenetek
@@ -230,6 +280,6 @@ A következő példa bemutatja, hogyan futtathatja a teszteket.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alapértelmezett tesztek megismeréséhez tekintse meg az [eszközkészlet tesztelési eseteivel foglalkozó](test-cases.md)témakört.

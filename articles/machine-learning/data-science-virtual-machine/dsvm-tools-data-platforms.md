@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012485"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440354"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott adatplatformok
 
@@ -37,7 +37,7 @@ A DSVM a következő adatplatform-eszközöket támogatja.
 > SQL Server Developer kiadás csak fejlesztési és tesztelési célokra használható. Az üzemi környezetben való futtatásához licencre vagy a SQL Server virtuális gépek egyikére van szükség.
 
 
-### <a name="setup"></a>Előkészületek
+### <a name="setup"></a>Telepítés
 
 Az adatbázis-kiszolgáló már előre konfigurálva van, és a SQL Serverhoz (például) kapcsolódó Windows-szolgáltatások `SQL Server (MSSQLSERVER)` automatikus futásra vannak beállítva. Az egyetlen manuális lépés magában foglalja az adatbázis-elemzések Microsoft Machine Learning Server használatával történő engedélyezését. Az elemzés engedélyezéséhez futtassa a következő parancsot egyszeri műveletként a SQL Server Management Studio (SSMS) alkalmazásban. Futtassa ezt a parancsot a számítógép-rendszergazdaként való bejelentkezés után, nyisson meg egy új lekérdezést a SSMS, és győződjön meg arról, hogy a kiválasztott adatbázis a következő `master` :
 
@@ -53,7 +53,7 @@ SQL Server Management Studio futtatásához megkeresheti a programok listájába
 
 Alapértelmezés szerint az alapértelmezett adatbázis-példánnyal rendelkező adatbázis-kiszolgáló automatikusan lefut. Az SQL Server-adatbázis helyi eléréséhez olyan eszközöket használhat, mint a virtuális gép SQL Server Management Studio. A helyi rendszergazdai fiókok rendszergazdai hozzáféréssel rendelkeznek az adatbázishoz.
 
-Emellett a DSVM ODBC-és JDBC-illesztőprogramokkal is rendelkezik, amelyekkel a SQL Server, az Azure SQL Database és a Azure SQL Data Warehouse különböző nyelveken írt alkalmazásokból, beleértve a Pythont és a Machine Learning Servert is.
+Emellett a DSVM ODBC-és JDBC-illesztőprogramokkal is rendelkezik, amelyekkel a SQL Server, az Azure SQL Database és az Azure szinapszis Analytics több nyelven írt alkalmazásokból, például a Pythonból és a Machine Learning Serverból is kommunikálhat.
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hogyan van konfigurálva és telepítve a DSVM? 
 
@@ -75,7 +75,7 @@ A (z `spark-submit` ) vagy parancs futtatásával elküldheti a Spark-feladatoka
 
 A Spark for R használatával olyan könyvtárakat használhat, mint a Sparker, a Sparklyr és a Microsoft Machine Learning Server, amelyek elérhetők a DSVM. Lásd az előző táblázatban szereplő mintákhoz tartozó mutatókat.
 
-### <a name="setup"></a>Előkészületek
+### <a name="setup"></a>Telepítés
 Mielőtt a (z) Ubuntu Linux DSVM kiadásban Microsoft Machine Learning Server Spark-kontextusban fut, végre kell hajtania egy egyszeri telepítési lépést, amely lehetővé teszi a helyi egycsomópontos Hadoop HDFS és a fonal példányának engedélyezését. Alapértelmezés szerint a Hadoop Services telepítve van, de le van tiltva a DSVM. Az engedélyezéshez futtassa a következő parancsokat root-ként az első alkalommal:
 
 ```bash

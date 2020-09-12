@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: b613e89fbe29074160d83a96d2cd13505244994a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f0e5a153efe26640e54f386600f07c7b3d4711d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186714"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649070"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapot figyelésének áttekintése
 
@@ -98,9 +98,9 @@ Engedélyeznie kell a bejövő internetes forgalmat a 65503-65534 **-as TCP** -p
 
 Emellett a kimenő internetkapcsolatot nem lehet letiltani, a **AzureLoadBalancer** címkétől érkező bejövő forgalmat pedig engedélyezni kell.
 
-További információ: [Application Gateway konfiguráció áttekintése](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
+További információ: [Application Gateway konfiguráció áttekintése](configuration-infrastructure.md#network-security-groups).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután megtanulta Application Gateway Health monitoringot, beállíthatja az [Egyéni állapot](application-gateway-create-probe-portal.md) -mintavételt a Azure Portalban vagy egy [Egyéni állapot](application-gateway-create-probe-ps.md) -mintavételt a PowerShell és a Azure Resource Manager üzembe helyezési modell használatával.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

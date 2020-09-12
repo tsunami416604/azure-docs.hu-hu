@@ -3,13 +3,12 @@ title: Erőforrás rendelkezésre állása régiónként
 description: A Azure Container Instances szolgáltatás számítási és memória-erőforrásainak rendelkezésre állása különböző Azure-régiókban.
 ms.topic: article
 ms.date: 04/27/2020
-ms.author: danlep
-ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 97baa5199a1803bd967c0b55c846908ea5a2ddcf
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500606"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565429"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -58,7 +57,7 @@ A következő régiók és maximális erőforrások elérhetők a [GPU-erőforr�
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tájékoztassa a csapatot, ha további régiókat szeretne látni, vagy megnövelt erőforrás-elérhetőséget a [aka.MS/ACI/feedback](https://aka.ms/aci/feedback)címen.
 

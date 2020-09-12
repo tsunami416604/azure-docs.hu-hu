@@ -12,19 +12,19 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1db62b77f3b9b1bcfc524a68b52c4aef5c16d851
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651216"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648181"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan dolgozhat [Azure Machine learning adatkészletekkel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) a betanítási kísérletekben.  Az adatkészleteket a helyi vagy távoli számítási célhelyen is használhatja, és nem kell aggódnia a kapcsolatok karakterláncai vagy az adatelérési utak miatt.
+Ebből a cikkből megtudhatja, hogyan dolgozhat [Azure Machine learning adatkészletekkel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) a betanítási kísérletekben.  Az adatkészleteket a helyi vagy távoli számítási célhelyen is használhatja, és nem kell aggódnia a kapcsolatok karakterláncai vagy az adatelérési utak miatt.
 
-Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési termékekkel, például a [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), a [kalkulátorsal](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), a [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) és a [Azure Machine learning folyamatokkal](how-to-create-your-first-pipeline.md).
+Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési termékekkel, például a [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py&preserve-view=true), a [kalkulátorsal](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true), a [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py&preserve-view=true) és a [Azure Machine learning folyamatokkal](how-to-create-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,16 +34,16 @@ Az adatkészletek létrehozásához és betanításához a következők szüksé
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
-* A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
+* A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), amely tartalmazza a azureml-adatkészletek csomagot.
 
 > [!Note]
-> Egyes adatkészlet-osztályok függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
+> Egyes adatkészlet-osztályok függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
 
 ## <a name="access-and-explore-input-datasets"></a>Bemeneti adatkészletek elérése és megismerése
 
 Egy meglévő TabularDataset a munkaterületen található kísérlet betanítási parancsfájljában férhet hozzá, és betöltheti az adatkészletet egy Panda dataframe a helyi környezet további feltárása érdekében.
 
-A következő kód a [`get_context()`]() osztály metódusát használja a [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) meglévő bemeneti TabularDataset eléréséhez `titanic` a betanítási parancsfájlban. Ezután a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metódus használatával tölti be az adatkészletet egy Panda dataframe, hogy a képzés előtt további adatfeltárást és előkészítést lehessen készíteni.
+A következő kód a [`get_context()`]() osztály metódusát használja a [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true) meglévő bemeneti TabularDataset eléréséhez `titanic` a betanítási parancsfájlban. Ezután a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metódus használatával tölti be az adatkészletet egy Panda dataframe, hogy a képzés előtt további adatfeltárást és előkészítést lehessen készíteni.
 
 > [!Note]
 > Ha az eredeti adatforrás NaN, üres karakterláncokat vagy üres értékeket tartalmaz, akkor a to_pandas_dataframe () használatakor ezek az értékek *Null* értékként lesznek lecserélve. 
@@ -67,7 +67,7 @@ Ha be kell töltenie az előkészített adatokat egy új adatkészletbe a memór
 
 Ha strukturált adatokat még nem regisztrált adatkészletként, hozzon létre egy TabularDataset, és közvetlenül a helyi vagy távoli kísérlethez használja a betanítási parancsfájlban.
 
-Ebben a példában létre kell hoznia egy nem regisztrált [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , és közvetlenül bemenetként kell használni az `estimator` objektum számára a képzéshez. Ha a munkaterületen más kísérletekkel szeretné használni ezt a TabularDataset, tekintse meg az [adatkészletek munkaterületre való regisztrálásával](how-to-create-register-datasets.md#register-datasets)foglalkozó témakört.
+Ebben a példában létre kell hoznia egy nem regisztrált [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) , és közvetlenül bemenetként kell használni az `estimator` objektum számára a képzéshez. Ha a munkaterületen más kísérletekkel szeretné használni ezt a TabularDataset, tekintse meg az [adatkészletek munkaterületre való regisztrálásával](how-to-create-register-datasets.md#register-datasets)foglalkozó témakört.
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
@@ -84,7 +84,7 @@ A TabularDataset-objektumok lehetővé teszik a TabularDataset lévő adat betö
 
 ### <a name="configure-the-estimator"></a>A kalkulátor konfigurálása
 
-A kísérlet futtatásának elküldéséhez egy [kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) objektumot kell használni. A Azure Machine Learning előre konfigurált becslések rendelkezik a gyakori gépi tanulási keretrendszerekhez, valamint egy általános becsléshez is.
+A kísérlet futtatásának elküldéséhez egy [kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) objektumot kell használni. A Azure Machine Learning előre konfigurált becslések rendelkezik a gyakori gépi tanulási keretrendszerekhez, valamint egy általános becsléshez is.
 
 Ez a kód egy általános kalkulátor-objektumot hoz létre, `est` amely megadja a
 
@@ -109,9 +109,12 @@ experiment_run.wait_for_completion(show_output=True)
 
 ## <a name="mount-files-to-remote-compute-targets"></a>Fájlok csatlakoztatása távoli számítási célokhoz
 
-Ha strukturálatlan adatokkal rendelkezik, hozzon létre egy [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) , és csatlakoztassa vagy töltse le az adatfájlokat, hogy azok elérhetők legyenek a távoli számítási cél számára a képzéshez. Ismerje meg, hogy mikor kell használni a [csatlakoztatást és a letöltést](#mount-vs-download) a távoli betanítási kísérletekhez. 
+Ha strukturálatlan adatokkal rendelkezik, hozzon létre egy [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) , és csatlakoztassa vagy töltse le az adatfájlokat, hogy azok elérhetők legyenek a távoli számítási cél számára a képzéshez. Ismerje meg, hogy mikor kell használni a [csatlakoztatást és a letöltést](#mount-vs-download) a távoli betanítási kísérletekhez. 
 
 A következő példa létrehoz egy FileDataset, és csatlakoztatja az adatkészletet a számítási célhoz úgy, hogy a kiképzéshez a kalkulátorban argumentumként adja át. 
+
+> [!Note]
+> Ha egyéni Docker-alaplemezképet használ, a biztosítékot az `apt-get install -y fuse` adatkészlet-csatlakoztatás működésének függősége alapján kell telepítenie. Ismerje meg, hogyan [hozhat létre egyéni Build-rendszerképet](how-to-deploy-custom-docker-image.md#build-a-custom-base-image).
 
 ### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
@@ -133,7 +136,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 Javasoljuk, hogy az adatkészletet argumentumként adja át a csatlakoztatáskor. Az adatkészletnek a kalkulátorban található paraméterrel való átadása mellett az adatkészletet átadhatja a `inputs` `script_params` (z) és az adatelérési utat (beszerelési pont) a betanítási szkriptben argumentumokkal. Így ugyanazt a betanítási szkriptet fogja használni a helyi hibakereséshez és a távoli oktatáshoz bármilyen felhőalapú platformon.
 
-A [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) -kalkulátor objektum a scikit-Learn kísérletek futtatásának elküldésére szolgál. Miután elküldte a futtatást, az adatkészlet által hivatkozott adatfájlok a `mnist` számítási célhoz lesznek csatlakoztatva. További információ a [SKlearn-kalkulátor](how-to-train-scikit-learn.md)betanításáról.
+A [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true) -kalkulátor objektum a scikit-Learn kísérletek futtatásának elküldésére szolgál. Miután elküldte a futtatást, az adatkészlet által hivatkozott adatfájlok a `mnist` számítási célhoz lesznek csatlakoztatva. További információ a [SKlearn-kalkulátor](how-to-train-scikit-learn.md)betanításáról.
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -219,7 +222,7 @@ print (mounted_path)
 
 ## <a name="access-datasets-in-your-script"></a>Adatkészletek elérése a parancsfájlban
 
-A regisztrált adatkészletek helyileg és távolról is elérhetők a számítási fürtökön, például az Azure Machine Learning számítási feladatokhoz. A regisztrált adatkészlet kísérletek közötti eléréséhez használja a következő kódot a munkaterület és a regisztrált adatkészlet név szerinti eléréséhez. Alapértelmezés szerint az [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) osztályban lévő metódus a `Dataset` munkaterülethez regisztrált adatkészlet legújabb verzióját adja vissza.
+A regisztrált adatkészletek helyileg és távolról is elérhetők a számítási fürtökön, például az Azure Machine Learning számítási feladatokhoz. A regisztrált adatkészlet kísérletek közötti eléréséhez használja a következő kódot a munkaterület és a regisztrált adatkészlet név szerinti eléréséhez. Alapértelmezés szerint az [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) osztályban lévő metódus a `Dataset` munkaterülethez regisztrált adatkészlet legújabb verzióját adja vissza.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -253,7 +256,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gépi tanulási modellek automatikus tanítása](how-to-auto-train-remote.md) a TabularDatasets.
 

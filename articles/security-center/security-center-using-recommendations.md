@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783231"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569050"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Az Azure Security Center javaslatainak használata a biztonság növelése érdekében
+
 A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
 
 Security Center automatikusan folyamatos vizsgálatokat futtat az Azure-erőforrások biztonsági állapotának elemzéséhez. Ha a Security Center felismeri a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán. Security Center 24 órán belül frissíti javaslatait, a következő kivételekkel:
@@ -67,11 +68,16 @@ A napi megfigyelési tevékenységük részeként Jeff bejelentkezik az Azure-ba
 
 Jeff továbbra is a magas prioritású és közepes prioritású ajánlásokon halad át, és döntéseket hoz a megvalósítással kapcsolatban. Jeff minden ajánláshoz a Security Center által biztosított részletes információkat tekinti át, hogy megtudja, mely erőforrások érintettek, milyen hatással van a biztonsági pontszámra, mit jelent az egyes javaslatok, és hogyan lehet elhárítani az egyes problémák enyhítésének lépéseit.
 
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>Javaslatok kikényszerítés a biztonsági konfigurációs problémák megelőzésére
+
+Annak biztosítása érdekében, hogy a felhasználók ne hozzanak létre olyan erőforrásokat, amelyek negatív hatással vannak Jeff pontszámára, a leglényegesebb ajánlások érvényesítési és megtagadási beállításait konfigurálhatják. További információ a [helytelen konfigurációkkal kapcsolatos kényszerítő/megtagadási javaslatok megelőzéséről](prevent-misconfigurations.md).
+
+
 ## <a name="conclusion"></a>Összegzés
 A Security Center figyelési javaslatai segítenek a biztonsági rések megszüntetésében a támadás előtt. A javaslatok szervizelése során a biztonságos pontszám és a számítási feladatok biztonsági helyzete javul. Security Center automatikusan felfedi a telepített új erőforrásokat, felméri azokat a biztonsági szabályzattal, és új javaslatokat biztosít számukra a biztosításához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Győződjön meg arról, hogy van egy figyelési folyamat, amelyben rendszeresen ellenőrzi a Security Center található javaslatokat, így biztosíthatja, hogy az erőforrások az idő múlásával biztonságosak legyenek.
 
 Ez a forgatókönyv azt mutatja be, hogyan használhatók a biztonsági szabályzatok és javaslatok a Security Centerban a biztonsági támadások enyhítése érdekében.

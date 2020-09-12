@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 392b74d74c22d16d9f0577b813521a12502ee8ae
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2c3eb2423c308d512bb880525cb15fef2ffbdb2c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89237852"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89303957"
 ---
 Ez a táblázat a Azure Functions futtatókörnyezet főbb verzióiban támogatott kötéseket mutatja be:
 
@@ -19,13 +19,16 @@ Ez a táblázat a Azure Functions futtatókörnyezet főbb verzióiban támogato
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
+| [Dapr](https://github.com/dapr/azure-functions-extension)<sup>3</sup> . Dapr             | |✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
 | [HTTP & webhookok](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
 | [IoT Hub](../articles/azure-functions/functions-bindings-event-iot.md)             |✔|✔|✔| |✔|
+| [Kafka](https://github.com/azure/azure-functions-kafka-extension)<sup>2</sup>             | |✔|✔| |✔|
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|
+| [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)<sup>2</sup> . RabbitMQ             | |✔|✔| |✔|
 | [SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md)                   |✔|✔| | |✔|
 | [Szolgáltatásbusz](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|
 | [SignalR](../articles/azure-functions/functions-bindings-signalr-service.md)             | |✔| |✔|✔|
@@ -34,3 +37,7 @@ Ez a táblázat a Azure Functions futtatókörnyezet főbb verzióiban támogato
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
 <sup>1</sup> a 2. x verziótól kezdődően a http és az időzítő kivételével minden kötést regisztrálni kell. Lásd: [kötési bővítmények regisztrálása](../articles/azure-functions/functions-bindings-register.md).
+
+<sup>2</sup> eseményindító nem támogatott a használati tervben. [Futtatókörnyezet által vezérelt eseményindítók](../articles/azure-functions/functions-networking-options.md#premium-plan-with-virtual-network-triggers)szükségesek.
+
+<sup>3</sup> csak Kubernetes, IoT Edge és más, saját üzemeltetésű módban támogatott.
