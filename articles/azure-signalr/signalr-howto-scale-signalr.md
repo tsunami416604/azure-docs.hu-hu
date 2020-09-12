@@ -4,21 +4,21 @@ description: Megtudhatja, hogyan méretezhető az Azure Signaler szolgáltatás 
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500487"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595767"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure Signaler Service-példány skálázása
 Ez a cikk bemutatja, hogyan méretezhető az Azure Signaler szolgáltatás példánya. Két forgatókönyv áll rendelkezésre a méretezéshez, a vertikális felskálázáshoz és a horizontális felskálázáshoz.
 
 * Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több egység, kapcsolat, üzenet és egyebek is elérhetők. Vertikális felskálázást az árképzési szint Ingyenesről standard szintűre való módosításával végezheti el.
-* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje a jelző egységek számát. Akár 100 egységre is kibővíthető.
+* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje a jelző egységek számát. Akár 100 egységre is kibővíthető. A skálázáshoz több lehetőség közül választhat: 1, 2, 5, 10, 20, 50 és 100 egység egyetlen Signal Service-példányhoz.
 
 A skálázási beállítások alkalmazása eltarthat néhány percig. Ritka esetekben előfordulhat, hogy az alkalmazás körülbelül 30 percet vesz igénybe. Nem igénylik a kód módosítását vagy a kiszolgálóalkalmazás újbóli üzembe helyezését.
 
@@ -84,7 +84,7 @@ Részletes információkat, például az összes díjszabási csomaghoz tartozó
 
 Az egyes szintek szolgáltatási korlátainak, kvótáinak és megkötéseinek táblázatát lásd: a [signaler szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megismerte, hogyan méretezhető az egyetlen szignáló szolgáltatás példánya.
 

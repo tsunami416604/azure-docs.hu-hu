@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806439"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595903"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application Gateway létrehozása és a HTTP-fejlécek újraírása
 
@@ -20,17 +20,15 @@ Az új automatikus [skálázás és a Zone-redundáns Application Gateway SKU](h
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
->
-> * Autoscale virtuális hálózat létrehozása
-> * Fenntartott nyilvános IP-cím létrehozása
-> * Az Application Gateway-infrastruktúra beállítása
-> * Adja meg a HTTP-fejléc Újraírási szabályának konfigurációját
-> * Automatikus méretezés megadása
-> * Application Gateway létrehozása
-> * Az alkalmazásátjáró tesztelése
+* Autoscale virtuális hálózat létrehozása
+* Fenntartott nyilvános IP-cím létrehozása
+* Az Application Gateway-infrastruktúra beállítása
+* Adja meg a HTTP-fejléc Újraírási szabályának konfigurációját
+* Automatikus méretezés megadása
+* Application Gateway létrehozása
+* Az alkalmazásátjáró tesztelése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +41,7 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy erőforráscsoportot az elérhető helyek egyikén.
 
 ```azurepowershell
@@ -167,12 +165,12 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Először vizsgálja meg az Application Gateway használatával létrehozott erőforrásokat. Ezután, ha már nincs rá szükség, az `Remove-AzResourceGroup` paranccsal eltávolíthatja az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást.
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

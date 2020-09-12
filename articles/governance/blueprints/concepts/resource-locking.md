@@ -3,12 +3,12 @@ title: Az erőforrás-zárolás megismerése
 description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051502"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651939"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -103,7 +103,7 @@ A hozzárendelés eltávolításakor az Azure-tervrajzok által létrehozott zá
 
 Egy RBAC [megtagadási hozzárendelések](../../../role-based-access-control/deny-assignments.md) megtagadási művelete a terv hozzárendelése során az összetevő-erőforrásokra vonatkozik, ha a hozzárendelés a **csak olvasható** vagy a **nem törlés** lehetőséget választotta. A megtagadási műveletet a terv-hozzárendelés felügyelt identitása adja hozzá, és csak azonos felügyelt identitással lehet eltávolítani az összetevő-erőforrásokból. Ez a biztonsági mérték kikényszeríti a zárolási mechanizmust, és megakadályozza az Azure-tervezeteken kívüli terv zárolásának eltávolítását.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Az erőforráscsoport hozzárendelésének megtagadása" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Képernyőfelvétel a hozzáférés-vezérlésről (I M) és egy erőforráscsoport megtagadási hozzárendeléseinek lapjáról." border="false":::
 
 Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) a következők:
 

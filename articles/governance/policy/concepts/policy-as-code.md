@@ -3,12 +3,12 @@ title: Szabályzat tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047326"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651893"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
 
@@ -43,7 +43,9 @@ Ilyen fájlformátumok például a [Azure Policy GitHub](https://github.com/Azur
 
 A szabályzatok javasolt általános munkafolyamata a következő ábrának megfelelően néz ki:
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Szabályzat mint kód munkafolyamat áttekintése" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagram, amely megjeleníti a szabályzatot, amely a Create (létrehozás) kód munkafolyamat-mezőiből áll a telepítésre." border="false":::
+   A szabályzatot a kód munkafolyamat-mezőiként ábrázoló diagram. A létrehozás kiterjed a szabályzat és a kezdeményezési definíciók létrehozására. A teszt letiltotta a hozzárendelést a kényszerítési módban. A megfelelőségi állapotra vonatkozó átjáró-ellenőrzés után a hozzárendelések M I/S I/szervizelését erőforrásainak megadása után kell megadni.  Az üzembe helyezés magában foglalja a hozzárendelésnek a kényszerítési módban való frissítését.
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Szabályzat-definíciók létrehozása és frissítése
 

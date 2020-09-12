@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524964"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595849"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Több webhelyet üzemeltető alkalmazásátjáró létrehozása az Azure PowerShell használatával
 
@@ -22,17 +22,16 @@ Az Azure PowerShell használatával [konfigurálhatja több webhely üzemelteté
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Háttérbeli figyelők létrehozása
-> * Útválasztási szabályok létrehozása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
-> * CNAME rekord létrehozása a tartományban
+* A hálózat beállítása
+* Application Gateway létrehozása
+* Háttérbeli figyelők létrehozása
+* Útválasztási szabályok létrehozása
+* Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
+* CNAME rekord létrehozása a tartományban
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Többhelyes Application Gateway":::
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -296,7 +295,7 @@ Változtassa meg a címet a másik tartományára. Ekkor az eredmény a követke
 
 ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/tutorial-multiple-sites-powershell/application-gateway-iistest2.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 

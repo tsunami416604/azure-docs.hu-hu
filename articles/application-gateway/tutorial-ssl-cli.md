@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502732"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595818"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Application Gateway létrehozása TLS-megszakítással az Azure CLI használatával
 
@@ -21,11 +21,10 @@ Az Azure CLI-vel létrehozhat egy, a [TLS](ssl-overview.md)-leállításhoz szü
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Önaláírt tanúsítvány létrehozása
-> * Hálózat beállítása
-> * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
+* Önaláírt tanúsítvány létrehozása
+* Hálózat beállítása
+* Alkalmazásátjáró létrehozása a tanúsítvánnyal
+* Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-ssl-powershell.md)használatával végezheti el.
 
@@ -181,6 +180,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Több webhelyet üzemeltető alkalmazásátjáró létrehozása](./tutorial-multiple-sites-cli.md)

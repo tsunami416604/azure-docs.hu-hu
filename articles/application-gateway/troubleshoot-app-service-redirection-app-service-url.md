@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806499"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595944"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A Application Gateway App Service problémáinak elhárítása
 
@@ -23,9 +23,8 @@ Ismerje meg, hogyan diagnosztizálhatja és megoldhatja a problémákat, amikor 
 
 Ebből a cikkből megtudhatja, hogyan lehet elhárítani a következő problémákat:
 
-> [!div class="checklist"]
-> * Az App Service URL-címe elérhető a böngészőben, ha van átirányítás.
-> * Az App Service ARRAffinity cookie-tartománya az eredeti gazdagép helyett az App Service-állomásnévre, a example.azurewebsites.net-ra van állítva.
+* Az App Service URL-címe elérhető a böngészőben, ha van átirányítás.
+* Az App Service ARRAffinity cookie-tartománya az eredeti gazdagép helyett az App Service-állomásnévre, a example.azurewebsites.net-ra van állítva.
 
 Ha egy háttérbeli alkalmazás átirányítási választ küld, előfordulhat, hogy át szeretné irányítani az ügyfelet egy másik URL-címre, mint amelyet a háttérbeli alkalmazás adott meg. Ezt akkor teheti meg, ha egy app Service-t egy Application Gateway mögött futtat, és megköveteli, hogy az ügyfél átirányítsa a relatív elérési útját. Ilyen például a contoso.azurewebsites.net/path1 és a contoso.azurewebsites.net/path2 közötti átirányítás. 
 
@@ -143,6 +142,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
   X-Powered-By: ASP.NET
   ```
-  ## <a name="next-steps"></a>További lépések
+  ## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldották meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

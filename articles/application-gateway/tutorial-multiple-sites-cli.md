@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502756"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595841"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet üzemeltető Application Gateway létrehozása az Azure CLI használatával
 
@@ -22,13 +22,12 @@ Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](m
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Háttérbeli figyelők létrehozása
-> * Útválasztási szabályok létrehozása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
-> * CNAME rekord létrehozása a tartományban
+* A hálózat beállítása
+* Application Gateway létrehozása
+* Háttérbeli figyelők létrehozása
+* Útválasztási szabályok létrehozása
+* Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
+* CNAME rekord létrehozása a tartományban
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Többhelyes Application Gateway":::
 
@@ -256,6 +255,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)

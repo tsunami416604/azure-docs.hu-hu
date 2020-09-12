@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066366"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657383"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>A Azure Logic Apps munkafolyamat-műveleteinek vezérlésére szolgáló feltételes utasítások létrehozása
 
@@ -28,7 +28,7 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A jelen cikkben szereplő példának megfelelően [hozza létre ezt a minta logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy Outlook.com vagy Office 365 Outlook-fiókkal.
+* A jelen cikkben szereplő példának megfelelően [hozza létre ezt a minta logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy Outlook.com-fiókkal vagy egy munkahelyi vagy iskolai fiókkal.
 
 ## <a name="add-condition"></a>Feltétel hozzáadása
 
@@ -40,7 +40,7 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
    ![Művelet hozzáadása a lépések között](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Ha a munkafolyamat végén fel szeretne venni egy feltételt, a logikai alkalmazás alján válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+   Ha a munkafolyamat végén fel szeretne venni egy feltételt, a logikai alkalmazás alján válassza az  **új lépés** > **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "feltétel" kifejezést. Válassza ki ezt a műveletet: **feltétel – vezérlés**
 
@@ -113,7 +113,7 @@ Itt látható a feltételes utasítás mögötti magas szintű kód definíciój
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [Futtatási és ismétlési lépések (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)

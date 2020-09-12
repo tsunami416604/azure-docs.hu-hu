@@ -1,21 +1,21 @@
 ---
-title: Adatcsatorna módosítása az Azure Blob Storageban (előzetes verzió) | Microsoft Docs
+title: Adatcsatorna módosítása az Azure Blob Storageban | Microsoft Docs
 description: Ismerje meg, hogyan válthat a hírcsatorna-naplók az Azure Blob Storageban és hogyan használhatók.
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055422"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568234"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)
+# <a name="change-feed-support-in-azure-blob-storage"></a>A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage
 
 A változási csatorna célja, hogy tranzakciós naplókat szolgáltasson a blobok és a blob metaadatainak a Storage-fiókban történt változásairól. A változási hírcsatorna **rendezett**, **garantált**, **tartós**, **nem módosítható,** **csak olvasható** naplót biztosít ezekről a változásokról. Az ügyfélalkalmazások bármikor elolvashatják ezeket a naplókat, akár streaming, akár batch módban. A módosítási hírcsatorna lehetővé teszi olyan hatékony és méretezhető megoldások kiépítését, amelyek alacsony áron dolgozzák fel az Blob Storage-fiókban bekövetkező változásokat.
 
@@ -29,9 +29,9 @@ A hírcsatorna-támogatás módosítása olyan forgatókönyvek esetén megfelel
 
   - Másodlagos index frissítése, szinkronizálás gyorsítótárral, keresőmotorral vagy más tartalomkezelési forgatókönyvekkel.
   
-  - Az objektumokon végrehajtott módosítások alapján kinyerheti az üzleti elemzési elemzéseket és mérőszámokat, akár streaming módon, akár kötegelt módban.
+  - Az objektumokon végrehajtott módosítások alapján kinyerheti az üzleti elemzési betekintő adatokat és metrikákat akár adatfolyammal, akár kötegelt módon.
   
-  - Az objektumok módosításainak tárolása, naplózása és elemzése, a biztonság, a megfelelőség vagy a vállalati adatkezelési intelligencia tekintetében.
+  - Az objektumok módosításainak tárolása, naplózása és elemzése bármilyen időszakra, a biztonság, a megfelelőség vagy a vállalati adatkezelési intelligencia érdekében.
 
   - Létrehozhat olyan megoldásokat, amelyekkel biztonsági mentést készíthet, tükrözheti vagy replikálhatja a fiókját a katasztrófák kezelése vagy megfelelősége érdekében.
 
@@ -55,9 +55,6 @@ A módosítások rögzítésének és rögzítésének megkezdéséhez engedély
 - A módosítási hírcsatorna rögzíti *az összes,* a fiókon elérhető esemény változását. Az ügyfélalkalmazások igény szerint szűrhetik az események típusait. (Lásd a jelenlegi kiadás [feltételeit](#conditions) ).
 
 - Csak a GPv2 és a blob Storage-fiókok módosíthatják a módosítási csatornát. A prémium szintű BlockBlobStorage-fiókok és a hierarchikus névtér-kompatibilis fiókok jelenleg nem támogatottak. A GPv1 Storage-fiókok nem támogatottak, de a GPv2 nem lehet állásidő nélkül frissíteni, további információért lásd: [verziófrissítés egy GPv2 Storage-fiókra](../common/storage-account-upgrade.md) .
-
-> [!IMPORTANT]
-> A változási csatorna nyilvános előzetes verzióban érhető el, és elérhető az **USA nyugati középső**régiójában, az **USA 2. nyugati**régiójában, **Közép**- **Franciaország, Dél**-Kanada, **Közép**-Kanada és **Kelet-Kanada** régióiban. Tekintse meg a jelen cikk [feltételek](#conditions) című szakaszát. Az előzetes verzióra való regisztráláshoz tekintse meg a jelen cikk [előfizetés regisztrálása](#register) című szakaszát. Regisztrálnia kell az előfizetését, mielőtt engedélyezi a módosítási csatornát a Storage-fiókokon.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -85,10 +82,10 @@ A módosítási hírcsatorna engedélyezése a PowerShell használatával:
 
 2. Kattintson a Bezárás gombra, majd nyissa meg újra a PowerShell-konzolt.
 
-3. Telepítse az az **. Storage** Preview-modult.
+3. Telepítse az az **. Storage** modul 2.5.0-es vagy újabb verzióját.
 
    ```powershell
-   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
+   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
    ```
 
 4. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
@@ -289,43 +286,18 @@ Az egyes tulajdonságok leírását lásd: [Azure Event Grid blob Storagehoz tar
 
 ```
 
-<a id="register"></a>
-
-## <a name="register-your-subscription-preview"></a>Előfizetés regisztrálása (előzetes verzió)
-
-Mivel a változási csatorna csak nyilvános előzetes verzióban érhető el, regisztrálnia kell az előfizetését a funkció használatához.
-
-### <a name="register-by-using-powershell"></a>Regisztrálás a PowerShell használatával
-
-A PowerShell-konzolon futtassa a következő parancsokat:
-
-```powershell
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-   
-### <a name="register-by-using-azure-cli"></a>Regisztrálás az Azure CLI használatával
-
-A Azure Cloud Shell futtassa a következő parancsokat:
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Changefeed
-az provider register --namespace 'Microsoft.Storage'
-```
-
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>Feltételek és ismert problémák (előzetes verzió)
+## <a name="conditions-and-known-issues"></a>Feltételek és ismert problémák
 
-Ez a szakasz a változási hírcsatorna aktuális nyilvános előzetes verziójának ismert problémáit és feltételeit ismerteti. 
-- Előzetes verzióként [regisztrálnia kell az előfizetését](#register) , mielőtt engedélyezi a Storage-fiókhoz tartozó módosítási CSATORNÁT az USA nyugati középső régiójában, az USA 2. nyugati régiójában, Közép-Franciaország, Dél-Kanada, Közép-Kanada és Kelet-Kanada régióban. 
-- A módosítási hírcsatorna csak a létrehozási, frissítési, törlési és másolási műveleteket rögzíti. A blob tulajdonságot és a metaadatok módosításait is rögzíti a rendszer. A hozzáférési szintek tulajdonság azonban jelenleg nem rögzített. 
+Ez a szakasz a változási hírcsatorna aktuális kiadásának ismert problémáit és feltételeit ismerteti. 
+
 - Ha módosítja az események rekordjait, előfordulhat, hogy a módosítási hírcsatorna többször is megjelenhet.
 - Az időalapú adatmegőrzési szabályzat beállításával még nem kezelheti a hírcsatorna-naplófájlok módosításának élettartamát, és nem törölheti a blobokat.
 - A `url` naplófájl tulajdonsága jelenleg mindig üres.
 - A `LastConsumable` fájl segments.jstulajdonsága nem sorolja fel azt a legelső szegmenst, amelyet a módosítási hírcsatorna véglegesít. Ez a probléma csak az első szegmens véglegesítése után fordul elő. Az első óra utáni összes további szegmens rögzítése pontosan megtörténik a `LastConsumable` tulajdonságban.
 - A ListContainers API meghívásakor jelenleg nem jelenik meg a **$blobchangefeed** tároló, és a tároló nem jelenik meg Azure Portal vagy Storage Explorer. A tartalmakat úgy tekintheti meg, hogy közvetlenül a $blobchangefeed tárolóban hívja meg a ListBlobs API-t.
-- Azok a Storage-fiókok, amelyek korábban már kezdeményezték a [fiók feladatátvételét](../common/storage-disaster-recovery-guidance.md) , a naplófájlban nem jelennek meg problémák. A jövőbeli fiók-feladatátvételek az előzetes verzió során is befolyásolhatják a naplófájlt.
+- Azok a Storage-fiókok, amelyek korábban már kezdeményezték a [fiók feladatátvételét](../common/storage-disaster-recovery-guidance.md) , a naplófájlban nem jelennek meg problémák. A jövőbeli fiók-feladatátvételek is befolyásolhatják a naplófájlt.
 
 ## <a name="faq"></a>GYIK
 
@@ -337,7 +309,7 @@ A Change feed olyan megoldás, amely tranzakciós naplót biztosít a sikeres mu
 ### <a name="should-i-use-change-feed-or-storage-events"></a>Használhatom a Change feed vagy a Storage eseményt?
 Mindkét funkciót kihasználhatja, mivel a memória-és [blob-tárolási események](storage-blob-event-overview.md) is ugyanazokat az információkat nyújtják, mint a kézbesítés megbízhatósági garanciája, és a fő különbség az, hogy az események rekordjainak késése, rendezése és tárolása is megmarad. A módosítási hírcsatorna a változást követően néhány percen belül közzéteszi a rekordokat a naplóba, és a módosítási műveletek sorrendjét is megtartja blobban. A tárolási események valós időben lesznek leküldve, és előfordulhat, hogy nem rendelhető meg. A tartósan a Storage-fiókban tárolt adatok módosítása csak olvasható stabil naplókat tartalmaz a saját meghatározott adatmegőrzéssel, míg a tárolási események átmenetiek, ha kifejezetten tárolja őket. A változási hírcsatornával tetszőleges számú alkalmazás használhatja a naplókat a saját kényelmében a blob API-k vagy SDK-k használatával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a változási hírcsatorna .NET-ügyfélalkalmazás használatával történő beolvasásának példáját. Lásd: [Az Azure Blob Storageban található adatcsatorna-naplók feldolgozása](storage-blob-change-feed-how-to.md).
 - Ismerje meg, hogyan reagálhat az eseményekre valós időben. További tudnivalók [a blob Storage eseményekre való reagálásról](storage-blob-event-overview.md)

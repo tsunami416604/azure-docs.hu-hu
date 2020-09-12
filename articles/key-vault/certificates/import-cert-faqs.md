@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588821"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651855"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault-tanúsítványok importálása – gyakori kérdések
 
@@ -54,7 +54,7 @@ További információ a tanúsítványokkal kapcsolatos hozzáférési házirend
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Hogyan oldható fel a "hiba típusa: ütközés a tanúsítvány létrehozásakor"?
     
-Minden tanúsítvány nevének egyedinek kell lennie. Egy olyan tanúsítvány, amelynek a neve azonos, egy másik lehet, hogy nem törölt állapotban van. Továbbá, ha a tanúsítvány [összetétele](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) alapján Azure Key Vault, ha a kulcstartóban van egy másik kulcs vagy titok, amelynek a neve megegyezik a tanúsítványhoz megadott névvel, a tanúsítvány létrehozása sikertelen lesz, és el kell távolítania a kulcsot vagy a titkos kulcsot, vagy más nevet kell használnia a tanúsítványhoz. 
+Minden tanúsítvány nevének egyedinek kell lennie. Előfordulhat, hogy egy ugyanilyen nevű tanúsítvány nem törölhető állapotban van. Továbbá a [tanúsítvány összetétele](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)szerint amikor új tanúsítvány jön létre, létrehoz egy azonos nevű címezhető titkos kulcsot, ha a kulcstartóban van egy másik kulcs vagy titok, amelynek a neve megegyezik a tanúsítványhoz megadott névvel, a tanúsítvány létrehozása sikertelen lesz, és el kell távolítania a kulcsot vagy a titkos kulcsot, vagy más nevet kell használnia a tanúsítványhoz. 
 
 További információ: [Get Deleted Certificate Operation](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 
@@ -81,6 +81,6 @@ Igen. A tanúsítvány feltöltése után ne felejtse el megadnia az autorotáci
 Ha sikeresen importálta a tanúsítványt, a **titkok** ablaktáblán ellenőrizheti, hogy meg tudja-e erősíteni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tanúsítványok Azure Key Vault](/azure/key-vault/certificates/about-certificates)

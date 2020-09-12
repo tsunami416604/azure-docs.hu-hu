@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d3de9dff2d3af99c720868d3342d39f8fb47e8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502757"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595862"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével
 
@@ -21,10 +21,9 @@ Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányu
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
+* A hálózat beállítása
+* Application Gateway létrehozása
+* Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-manage-web-traffic-powershell.md)használatával végezheti el.
 
@@ -154,6 +153,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Webes forgalom korlátozása webalkalmazási tűzfallal](./tutorial-restrict-web-traffic-cli.md)

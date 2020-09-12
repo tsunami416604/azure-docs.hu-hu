@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5804dcc840eb666c1d43ea7d7ed7640b8f7ff371
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850695"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657447"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>A fokozott biztonságú Windows Defender-tűzfal és az Azure Sentinel összekapcsolása
 
@@ -31,7 +31,7 @@ A megoldás Windows tűzfalbeli eseményeket gyűjt azokról a Windows-gépekrő
 > [!NOTE]
 > - Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
 >
-> - Ha az Azure Sentinel és a Azure Security Center összegyűjtése ugyanarra a munkaterületre történik, nem szükséges engedélyezni a Windows tűzfal megoldását ezen az összekötőn keresztül. Ha ezt az állapotot engedélyezte, akkor a duplikált adatértékeket nem okoz. 
+> - Ha az Azure Sentinel és az Azure Defender (korábban Azure Security Center) összegyűjtése ugyanarra a munkaterületre történik, nem szükséges engedélyezni a Windows tűzfal megoldását ezen az összekötőn keresztül. Ha ezt az állapotot engedélyezte, akkor a duplikált adatértékeket nem okoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,37 +47,40 @@ A megoldás Windows tűzfalbeli eseményeket gyűjt azokról a Windows-gépekrő
 
 ### <a name="instructions-tab"></a>Utasítások lap
 
-- **Ha a Windows rendszerű gépek az Azure-ban vannak:**
+Hajtsa végre a következő lépéseket az **utasítások** lapon.
 
-    1. Válassza **az ügynök telepítése az Azure Windows rendszerű virtuális gépen**lehetőséget.
+- **Ha a Windows rendszerű gépek az Azure-ban találhatók, hajtsa végre a következő lépéseket:**
 
-    1. Kattintson a **letöltés & telepítse az ügynököt az Azure Windows rendszerű virtuális gépekhez >** a megjelenő hivatkozásra.
+   1. Válassza **az ügynök telepítése az Azure Windows rendszerű virtuális gépen**lehetőséget.
+   
+   1. Kattintson a **letöltés & telepítse az ügynököt az Azure Windows rendszerű virtuális gépekhez >** a megjelenő hivatkozásra.
+   
+   1. A **virtuális gépek** listájában válassza ki azt a Windows-gépet, amelyet az Azure sentinelbe szeretne továbbítani. (Az operációs rendszer oszlopának szűrőben a **Windows** lehetőség kiválasztásával biztosíthatja, hogy csak a Windows rendszerű virtuális gépek jelenjenek meg).
+   
+   1. A virtuális gép megnyíló ablakában kattintson a **kapcsolat**elemre.
+   
+   1. Térjen vissza a **Virtual Machines** panelre, és ismételje meg az előző két lépést minden olyan virtuális gép esetében, amelyhez csatlakozni szeretne. Ha elkészült, térjen vissza a **Windows tűzfal** ablaktáblára.
 
-    1. A **virtuális gépek** listájában válassza ki azt a Windows-gépet, amelyet az Azure sentinelbe szeretne továbbítani. (Az operációs rendszer oszlopának szűrőben a **Windows** lehetőség kiválasztásával biztosíthatja, hogy csak a Windows rendszerű virtuális gépek jelenjenek meg).
+- **Ha a Windows rendszerű számítógép nem Azure-beli virtuális gép, hajtsa végre a következő lépéseket:**
+   
+   1. Válassza **az ügynök telepítése nem Azure-beli Windows-gépen**lehetőséget.
+   
+   1. Kattintson a **letöltés & telepítse az ügynököt nem Azure-beli Windows-gépekhez >** a megjelenő hivatkozásra.
+   
+   1. Az **ügynökök kezelése** panelen válassza a Windows- **ügynök letöltése (64 bit)** vagy a **Windows-ügynök (32 bites)** letöltését igény szerint.
+   
+   1. Másolja a **munkaterület-azonosítót**, az **elsődleges kulcsot**és a **másodlagos kulcs** karakterláncait egy szövegfájlba. Másolja a fájlt és a letöltött telepítőfájlt a Windows rendszerű gépre. Futtassa a telepítőfájlt, és amikor a rendszer kéri, adja meg az azonosító és a kulcs karakterláncot a szövegfájlban a telepítés során.
+   
+   1. Térjen vissza a **Windows tűzfal** ablaktáblára.
 
-    1. A virtuális gép megnyíló ablakában kattintson a **kapcsolat**elemre.
-
-    1. Térjen vissza a **Virtual Machines** panelre, és ismételje meg az előző két lépést minden olyan virtuális gép esetében, amelyhez csatlakozni szeretne. Ha elkészült, térjen vissza a **Windows tűzfal** ablaktáblára.
-
-- **Ha a Windows rendszerű számítógép nem Azure-beli virtuális gép:**
-
-    1. Válassza **az ügynök telepítése nem Azure-beli Windows-gépen**lehetőséget.
-
-    1. Kattintson a **letöltés & telepítse az ügynököt nem Azure-beli Windows-gépekhez >** a megjelenő hivatkozásra.
-
-    1. Az **ügynökök kezelése** panelen válassza a Windows- **ügynök letöltése (64 bit)** vagy a **Windows-ügynök (32 bites)** letöltését igény szerint.
-
-    1. Másolja a **munkaterület-azonosítót**, az **elsődleges kulcsot**és a **másodlagos kulcs** karakterláncait egy szövegfájlba. Másolja a fájlt és a letöltött telepítőfájlt a Windows rendszerű gépre. Futtassa a telepítőfájlt, és amikor a rendszer kéri, adja meg az azonosító és a kulcs karakterláncot a szövegfájlban a telepítés során.
-
-    1. Térjen vissza a **Windows tűzfal** ablaktáblára.
-
-1. Kattintson a **megoldás telepítése**gombra.
+Miután elvégezte a lépéseket az **utasítások** lapon, kattintson a **megoldás telepítése**elemre.
 
 ### <a name="next-steps-tab"></a>Következő lépések lap
 
-- Tekintse meg a **Windows tűzfal** adatösszekötője által elérhető ajánlott munkafüzeteket és lekérdezési mintákat, hogy betekintést kapjon a Windows tűzfal naplófájljaiba.
+- A Windows tűzfal naplófájljainak betekintéséhez tekintse meg a rendelkezésre álló javasolt munkafüzeteket és a **Windows tűzfal** adatösszekötőjét tartalmazó lekérdezési mintákat.
 
 - A Windows tűzfal **naplókban**tárolt adatlekérdezéséhez írja be a **WindowsFirewall** értéket a lekérdezési ablakban.
+
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
  
