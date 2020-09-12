@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65950899"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660572"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitási megoldás identitási követelményeinek meghatározása
 A hibrid identitás megoldásának első lépéseként meg kell határozni a megoldást használó üzleti szervezet követelményeit.  A hibrid identitás támogató szerepkörként indul (az összes többi felhőalapú megoldást támogatja a hitelesítés biztosításával), és új és érdekes képességeket biztosít a felhasználók új munkaterhelésének feloldásához.  Ezek a munkaterhelések vagy szolgáltatások, amelyeket a felhasználók számára kíván alkalmazni, a hibrid identitás kialakítására vonatkozó követelményeket határozzák meg.  Ezeknek a szolgáltatásoknak és munkaterheléseknek a hibrid identitást kell használniuk a helyszíni és a felhőben egyaránt.  
@@ -72,10 +72,10 @@ Ezután ki kell értékelnie az identitás-integráció követelményeit. Ez az 
   * A vállalata olyan helyszíni alkalmazásokkal rendelkezik (beépített vagy harmadik féltől származó), amely SAML-vagy hasonló összevonási képességeket használ.
   * MFA intelligens kártyákon keresztül. RSA-SecurID stb.
   * Az alábbi kérdésekkel foglalkozó ügyfél-hozzáférési szabályok:
-    1. Letilthatom az Office 365-hez való összes külső hozzáférést az ügyfél IP-címe alapján?
-    2. Letilthatom az Office 365 összes külső hozzáférését az Exchange ActiveSync kivételével?
-    3. Letilthatom az Office 365 összes külső hozzáférését, kivéve a böngészőalapú alkalmazásokat (OWA, Spongya)
-    4. Letilthatom az Office 365 összes külső hozzáférését a kijelölt AD-csoportok tagjai számára
+    1. Letilthatom az Microsoft 365 összes külső hozzáférését az ügyfél IP-címe alapján?
+    2. Letilthatom az Microsoft 365 összes külső hozzáférését, az Exchange ActiveSync kivételével?
+    3. Letilthatom Microsoft 365 összes külső hozzáférését a böngészőalapú alkalmazások (OWA, Spongya) kivételével.
+    4. Letilthatom a Microsoft 365 összes külső hozzáférését a kijelölt AD-csoportok tagjai számára
 * Biztonsági/naplózási vonatkozások
 * Már meglévő befektetés összevont hitelesítéssel
 * Milyen nevet fog használni a szervezetünk a Felhőbeli tartományhoz?
@@ -107,9 +107,9 @@ Meg kell vizsgálnia a felhasználói követelményeket is. Ez az értékelés f
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

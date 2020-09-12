@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: ab1cedf324c0391ce54773202b030b519c3e4766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804266"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594305"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Belső átirányítással rendelkező Application Gateway létrehozása Azure PowerShell használatával
 
@@ -21,14 +21,13 @@ Az Azure PowerShell használatával konfigurálhatja a [webes forgalom átirány
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Figyelők és átirányítási szabály hozzáadása
-> * Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
-> * CNAME rekord létrehozása a tartományban
+* A hálózat beállítása
+* Application Gateway létrehozása
+* Figyelők és átirányítási szabály hozzáadása
+* Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
+* CNAME rekord létrehozása a tartományban
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -36,7 +35,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával.  
 
@@ -298,7 +297,7 @@ Adja meg a tartománya nevét a böngésző címsorában. Például: `https://ww
 
 Módosítsa a címeket a másik tartományra, például `https://www.contoso.org` láthatja, hogy a forgalom át lett irányítva a figyelőhöz a www- \. contoso.com.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ec06fc23b147eb3e4a5922242aa922063f4172c
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038614"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514152"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>A tárolók biztonságának figyelése
 
 Ez az oldal ismerteti, hogyan használható a Container [Security című cikkben](container-security.md) ismertetett tároló biztonsági szolgáltatások a fogalmak szakaszban.
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>A ARM-alapú tároló-beállításjegyzékek vizsgálata a biztonsági rések esetében 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>ARM-alapú tároló-beállításjegyzékek vizsgálata a biztonsági rések felderítéséhez 
 
 1. A Azure Container Registry-lemezképek sebezhetőségi vizsgálatának engedélyezése:
 
@@ -30,13 +30,13 @@ Ez az oldal ismerteti, hogyan használható a Container [Security című cikkben
 
         Security Center most már készen áll a beállításjegyzékbe leküldeni kívánt rendszerképek vizsgálatára. 
 
-        >[!NOTE]
-        >Ez a funkció rendszerkép alapján van felszámítva.
+      >[!NOTE]
+      >Ez a funkció rendszerkép alapján van felszámítva.
 
 
 1. A rendszerkép vizsgálatának elindításához küldje le azt a beállításjegyzékbe. 
 
-    Ha a vizsgálat befejeződik (általában körülbelül 2 percen belül, de akár 15 percet is igénybe vehet), a megállapítások a következőképpen érhetők el Security Center javaslatokként:
+    Ha a vizsgálat befejeződik (általában körülbelül 2 percet, de akár 15 percet is igénybe vehet), az eredmények Security Center javaslatként érhetők el.
 
 1. A megállapítások megtekintéséhez nyissa meg a **javaslatok** lapot. Ha probléma merült fel, a következő javaslat jelenik meg:
 
@@ -86,7 +86,7 @@ Ez az oldal ismerteti, hogyan használható a Container [Security című cikkben
     1. Ha biztos abban, hogy a frissített rendszerkép le lett küldve, a vizsgálat megtörtént, és már nem jelenik meg a javaslatban, törölje a "régi" sebezhető rendszerképet a beállításjegyzékből.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>A tárolók Docker-gazdagépének megerősítése
+## <a name="harden-your-containers-docker-hosts"></a>A tárolók Docker-gazdagépének megerősítése
 
 Security Center folyamatosan figyeli a Docker-gazdagépek konfigurációját, és biztonsági javaslatokat hoz létre az iparági szabványoknak megfelelően.
 
@@ -124,7 +124,7 @@ A Azure Security Center a tárolók Docker-gazdagépekre vonatkozó biztonsági 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a Security Center tároló biztonsági funkcióit. 
 

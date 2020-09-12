@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 4515eda6723a9a347a7a0aa56187f40ed4269cdc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 08529d1bb50a1a5d5b3c7d0296aa36f021f45e98
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942150"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646082"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Gépi tanulási folyamatok közzététele és nyomon követése
 
@@ -38,7 +38,7 @@ A gépi tanulási folyamatok a gépi tanulási feladatok újrafelhasználható m
 
 Ha már rendelkezik egy folyamattal, akkor közzétehet egy folyamatot, hogy az a különböző bemenetekkel fusson. Ahhoz, hogy egy már közzétett folyamat REST-végpontja fogadja a paramétereket, konfigurálnia kell a folyamatot úgy, hogy `PipelineParameter` objektumokat használjon a változó argumentumokhoz.
 
-1. A folyamat paramétereinek létrehozásához használjon egy alapértelmezett értéket használó [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) objektumot.
+1. A folyamat paramétereinek létrehozásához használjon egy alapértelmezett értéket használó [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) objektumot.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -73,7 +73,7 @@ Ha már rendelkezik egy folyamattal, akkor közzétehet egy folyamatot, hogy az 
 
 Minden közzétett folyamat REST-végponttal rendelkezik. A folyamat végpontja segítségével bármely külső rendszerből elindíthatja a folyamat futtatását, beleértve a nem Python-ügyfeleket is. Ez a végpont lehetővé teszi a "felügyelt ismételhetőség" használatát a Batch-pontozási és-átképzési forgatókönyvekben.
 
-Az előző folyamat futtatásának meghívásához egy Azure Active Directory hitelesítési fejléc tokenre van szükség. Az ilyen jogkivonatok lekérése a [AzureCliAuthentication osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py) referenciájában és a Azure Machine learning jegyzetfüzetben történő [hitelesítésben](https://aka.ms/pl-restep-auth) olvasható.
+Az előző folyamat futtatásának meghívásához egy Azure Active Directory hitelesítési fejléc tokenre van szükség. Az ilyen jogkivonatok lekérése a [AzureCliAuthentication osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) referenciájában és a Azure Machine learning jegyzetfüzetben történő [hitelesítésben](https://aka.ms/pl-restep-auth) olvasható.
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -150,10 +150,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-A használatával újra engedélyezheti `p.enable()` . További információ: PublishedPipeline- [osztály](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) referenciája.
+A használatával újra engedélyezheti `p.enable()` . További információ: PublishedPipeline- [osztály](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py&preserve-view=true) referenciája.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ezeket a Jupyter-jegyzetfüzeteket a githubon](https://aka.ms/aml-pipeline-readme) a gépi tanulási folyamatok további megismeréséhez használhatja.
-- Tekintse meg a [azureml-pipeline-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) csomag és a azureml-folyamatok – [STEPs](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) csomag SDK-referenciáját.
+- Tekintse meg a [azureml-pipeline-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) csomag és a azureml-folyamatok – [STEPs](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) csomag SDK-referenciáját.
 - A folyamatokkal kapcsolatos hibakeresési és hibaelhárítási tippekért lásd: [útmutató](how-to-debug-pipelines.md) .

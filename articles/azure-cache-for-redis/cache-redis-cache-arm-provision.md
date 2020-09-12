@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078418"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461238"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Azure cache létrehozása Redis Resource Manager-sablon használatával
 
@@ -27,7 +27,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Egy Storage-fiók**: hozzon létre egy [Azure Storage-fiók létrehozása](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template)című témakört. A Storage-fiók diagnosztikai adatként van használatban.
+* **Egy Storage-fiók**: hozzon létre egy [Azure Storage-fiók létrehozása](/azure/storage/common/storage-account-create?tabs=azure-portal)című témakört. A Storage-fiók diagnosztikai adatként van használatban.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
@@ -38,7 +38,7 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 A következő erőforrások vannak definiálva a sablonban:
 
 * [Microsoft. cache/Redis](/azure/templates/microsoft.cache/redis)
-* [Microsoft. bepillantások/diagnosticsettings](/azure/templates/diagnosticsettings)
+* [Microsoft. bepillantások/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 Az új [prémium szintű](cache-overview.md#service-tiers) Resource Manager-sablonok is elérhetők.
 

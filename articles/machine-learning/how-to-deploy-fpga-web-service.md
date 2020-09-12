@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a5f56beb179f7c72fe66c7423999201f3460b143
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648785"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646295"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 
@@ -30,7 +30,7 @@ Az FPGA-k programozható logikai blokkok tömbjét és újrakonfigurálható ös
 
 ![Azure Machine Learning FPGA összehasonlításának ábrája](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processzor| Rövidítés |Leírás|
+|Processzor| Rövidítés |Description|
 |---|:-------:|------|
 |Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök – például a Google TensorFlow Processor Units (TPU) – biztosítják a lehető legnagyobb hatékonyságot. Az igények változása miatt nem konfigurálhatók újra.|
 |Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
@@ -78,7 +78,7 @@ Az **Azure-beli virtuális gépek PBS-családja** Intel Arria 10 FPGA tartalmaz.
 
 ## <a name="deploy-models-on-fpgas"></a>Modellek üzembe helyezése a FPGA
 
-A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban.
+A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban.
 
 A modellek FPGA való üzembe helyezése a következő lépésekkel jár:
 
@@ -121,7 +121,7 @@ Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép el�
     ```
 ### <a name="1-define-the-tensorflow-model"></a>1. a TensorFlow-modell megadása
 
-A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) segítségével hozzon létre egy szolgáltatás-definíciót. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs automatikusan tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
+A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) segítségével hozzon létre egy szolgáltatás-definíciót. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs automatikusan tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
 
 1. Azure Machine Learning munkaterület betöltése
 
@@ -401,7 +401,7 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg ezeket a jegyzetfüzeteket, videókat és blogokat:
 

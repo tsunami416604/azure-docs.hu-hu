@@ -3,12 +3,12 @@ title: Nem megfelelő erőforrások szervizelése
 description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésén, amelyek nem felelnek meg a Azure Policy szabályzatának.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958745"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651353"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Nem megfelelő erőforrások szervizelése Azure Policy
 
@@ -19,7 +19,7 @@ Azok az erőforrások, amelyek nem felelnek meg a **deployIfNotExists** vagy a h
 Ha Azure Policy futtatja a sablont a **deployIfNotExists** házirend-definíciójában, akkor azt [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md)használatával végzi el.
 Azure Policy létrehoz egy felügyelt identitást az egyes hozzárendelésekhez, de a felügyelt identitást megadó szerepkörökkel kapcsolatos részletekkel kell rendelkeznie. Ha a felügyelt identitásból hiányzik egy szerepkör, akkor ez a hiba a házirend vagy egy kezdeményezés hozzárendelésekor jelenik meg. A portál használatakor Azure Policy automatikusan megadja a felügyelt identitást a felsorolt szerepköröknek a hozzárendelés indításakor. A felügyelt identitás _helye_ nem befolyásolja a műveletét Azure Policy.
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Felügyelt identitás – hiányzó szerepkör" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 > [!IMPORTANT]
 > Ha egy **deployIfNotExists** vagy **módosítás** által módosított erőforrás kívül esik a házirend-hozzárendelés hatókörén, vagy a sablon a szabályzat-hozzárendelés hatókörén kívüli erőforrásokhoz fér hozzá, akkor a hozzárendelés felügyelt identitásának [manuálisan kell hozzáférést adni](#manually-configure-the-managed-identity) , vagy a Szervizelési telepítés sikertelen lesz.
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>Definiált szerepkörök megadása a portálon keresztül
 
-A hozzárendelések felügyelt identitását kétféleképpen lehet megadnia a portál használatával, a **hozzáférés-vezérlés (iam)** használatával, vagy a házirend vagy a kezdeményezés hozzárendelésének szerkesztésével, és a **Mentés**gombra kattintva.
+A hozzárendelések felügyelt identitását kétféleképpen lehet megadnia a portál használatával, a **hozzáférés-vezérlés (iam)** használatával, vagy a házirend vagy a kezdeményezés hozzárendelésének szerkesztésével, és a **Mentés gombra**kattintva.
 
 Ha szerepkört szeretne hozzáadni a hozzárendelés felügyelt identitásához, kövesse az alábbi lépéseket:
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán.
 
-1. Keresse meg a felügyelt identitással rendelkező hozzárendelést, és kattintson a névre.
+1. Keresse meg a felügyelt identitással rendelkező hozzárendelést, és válassza ki a nevet.
 
 1. Keresse meg a **hozzárendelés-azonosító** tulajdonságot a szerkesztés oldalon. A hozzárendelés azonosítója a következőhöz hasonló lesz:
 
@@ -110,10 +110,10 @@ Ha szerepkört szeretne hozzáadni a hozzárendelés felügyelt identitásához,
 
 1. Navigáljon az erőforráshoz vagy az erőforrások szülő-tárolóhoz (erőforráscsoport, előfizetés, felügyeleti csoport), amelyhez manuálisan hozzá kell adni a szerepkör-definíciót.
 
-1. Kattintson a **hozzáférés-vezérlés (iam)** hivatkozásra az erőforrások lapon, majd a hozzáférés-vezérlés lap tetején kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre.
+1. Válassza a **hozzáférés-vezérlés (iam)** hivatkozást az erőforrások lapon, majd válassza a **+ szerepkör-hozzárendelés hozzáadása** elemet a hozzáférés-vezérlési oldal tetején.
 
 1. Válassza ki a megfelelő szerepkört, amely megfelel egy **roleDefinitionIds** a házirend-definícióban.
-   Az "Azure AD-felhasználó, csoport vagy alkalmazás" alapértelmezett értékének beállításához hagyja a **hozzáférés-hozzárendelést** . A **kiválasztás** mezőben illessze be vagy írja be a korábban megjelenő hozzárendelési erőforrás-azonosító részét. A keresés befejeződése után kattintson az azonos nevű objektumra az azonosító kiválasztásához, majd kattintson a **Mentés**gombra.
+   Az "Azure AD-felhasználó, csoport vagy alkalmazás" alapértelmezett értékének beállításához hagyja a **hozzáférés-hozzárendelést** . A **kiválasztás** mezőben illessze be vagy írja be a korábban megjelenő hozzárendelési erőforrás-azonosító részét. Ha a keresés befejeződött, jelölje ki az azonos nevű objektumot az azonosító kiválasztásához, majd válassza a **Mentés**lehetőséget.
 
 ## <a name="create-a-remediation-task"></a>Szervizelési feladat létrehozása
 
@@ -123,32 +123,32 @@ Az értékelés során a szabályzat-hozzárendelés **deployIfNotExists** vagy 
 
 **Szervizelési feladat**létrehozásához kövesse az alábbi lépéseket:
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
 
 1. Válassza a **szervizelés** elemet a Azure Policy lap bal oldalán.
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Szervizelés kiválasztása a szabályzat lapon" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Képernyőfelvétel a szabályzat lap szervizelési csomópontról." border="false":::
 
-1. A nem megfelelő erőforrásokkal rendelkező szabályzat-hozzárendelések minden **deployIfNotExists** és **módosítása** a lap és az adattábla **szervizeléséhez** szükséges. Kattintson egy olyan házirendre, amelynek erőforrásai nem megfelelőek. Megnyílik az **új szervizelési feladat** lap.
+1. A nem megfelelő erőforrásokkal rendelkező szabályzat-hozzárendelések minden **deployIfNotExists** és **módosítása** a lap és az adattábla **szervizeléséhez** szükséges. Válasszon olyan házirendet, amelynek erőforrásai nem megfelelőek. Megnyílik az **új szervizelési feladat** lap.
 
    > [!NOTE]
-   > A **szervizelési feladat** lap megnyitásának másik módja, ha megkeresi és rákattint a szabályzatra a **megfelelőség** lapon, majd kattintson a **szervizelési feladat létrehozása** gombra.
+   > A **szervizelési feladat** lap megnyitásának másik módja, ha megkeresi és kiválasztja a szabályzatot a **megfelelőség** lapon, majd kiválasztja a **szervizelési feladat létrehozása** gombot.
 
 1. Az **új szervizelési feladat** lapon a **hatóköri** ellipszisek használatával szűrheti a kijavítani kívánt erőforrásokat, hogy kiválassza a gyermek erőforrásokat, amelyekről a szabályzat hozzá van rendelve (beleértve az egyes erőforrás-objektumokat is). Emellett az erőforrások további szűréséhez használja a **helyszínek** legördülő listát. Csak a táblázatban felsorolt erőforrások lesznek szervizelve.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Szervizelés – kiválaszthatja, hogy mely erőforrások legyenek szervizelve" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Képernyőkép a Szervizelési csomópontról és a szervizeléshez szükséges erőforrások rácsáról." border="false":::
 
-1. Indítsa el a Szervizelési feladatot az erőforrások szűrése után, a **szervizelés**gombra kattintva. A szabályzat megfelelősége lap megnyílik a **szervizelési feladatok** lapra, hogy megjelenjen a feladatok állapota. A Szervizelési feladat által létrehozott központi telepítések azonnal megkezdődik.
+1. Indítsa el a Szervizelési feladatot az erőforrások szűrése után a **szervizelés**lehetőség kiválasztásával. A szabályzat megfelelősége lap megnyílik a **szervizelési feladatok** lapra, hogy megjelenjen a feladatok állapota. A Szervizelési feladat által létrehozott központi telepítések azonnal megkezdődik.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Szervizelés – szervizelési feladatok állapota" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Képernyőfelvétel a Szervizelési feladatok lapról, valamint a meglévő szervizelési feladatok előrehaladásáról." border="false":::
 
-1. Kattintson a **szervizelési feladatra** a szabályzat megfelelősége lapon a folyamat részleteinek megismeréséhez. A feladathoz használt szűrés megjelenik a szervizelt erőforrások listájával együtt.
+1. Válassza ki a **szervizelési feladatot** a szabályzat megfelelősége lapon a folyamat részleteinek megismeréséhez. A feladathoz használt szűrés megjelenik a szervizelt erőforrások listájával együtt.
 
-1. A **szervizelési feladat** lapon kattintson a jobb gombbal egy erőforrásra a Szervizelési feladat központi telepítésének vagy erőforrásának megtekintéséhez. A sor végén kattintson a **kapcsolódó események** elemre, hogy megtekintse a részleteket, például a hibaüzenetet.
+1. A **szervizelési feladat** lapon kattintson a jobb gombbal egy erőforrásra a Szervizelési feladat központi telepítésének vagy erőforrásának megtekintéséhez. A sor végén válassza a **kapcsolódó események** lehetőséget a részletek, például a hibaüzenetek megjelenítéséhez.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Szervizelés – erőforrás-feladat helyi menüje" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Képernyőkép a Szervizelési feladat lap erőforrásának helyi menüjéről." border="false":::
 
 A **szervizelési feladattal** üzembe helyezett erőforrások hozzáadódnak a szabályzat megfelelősége lap **telepített erőforrások** lapjához.
 

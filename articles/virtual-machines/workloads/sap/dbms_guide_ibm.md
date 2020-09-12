@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649612"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461961"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -30,7 +30,7 @@ Az Azure-ban megjelent SAP számítási feladatok különböző cikkei.  Javasol
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területeken:
 
-| Megjegyzés száma |Cím |
+| Megjegyzés száma |Title |
 | --- |--- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -56,7 +56,8 @@ További információ a támogatott SAP-termékekről és az Azure-beli virtuál
 ### <a name="storage-configuration"></a>Tárolási konfiguráció
 Az SAP-alapú számítási feladatokhoz használható Azure Storage-típusok áttekintéséhez tekintse meg az Azure-beli [tárolási típusok SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) -alapú számítási feladatokhoz az összes adatbázisfájlt az Azure Block Storage csatlakoztatott lemezén kell tárolni (Windows: NFFS, Linux: XFS, ext4 vagy ext3). A következő Azure-szolgáltatásokhoz hasonló hálózati meghajtók vagy távoli megosztások **nem** támogatottak az adatbázisfájlok esetében: 
 
-* [Microsoft Azure file Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure file Service](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Az Azure-beli BLOB Storage vagy a Managed Disks-alapú lemezek használatával az [azure Virtual Machines adatbázis-kezelő rendszerhez készült, az SAP számítási feladatokhoz való üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md) a DB2 adatbázis-kezelővel együtt üzemelő példányokra vonatkoznak.
@@ -71,7 +72,7 @@ Azt is megteheti, hogy a Windows Storage-készleteket (csak a Windows Server 201
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. Windows Storage-készletek használatakor manuálisan kell létrehoznia a tárolási készleteket parancssori felületen keresztül a paraméter használatával `-LogicalSectorSizeDefault` . További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+A és a címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében `sapdata` `saptmp` meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. Windows Storage-készletek használatakor manuálisan kell létrehoznia a tárolási készleteket parancssori felületen keresztül a paraméter használatával `-LogicalSectorSizeDefault` . További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../how-to-enable-write-accelerator.md).
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926864"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462513"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -78,15 +78,15 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 | Erőforrás | Ingyenes &nbsp; <sup>1</sup> | Alapszintű &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N.A. |10 |10 |
-| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N.A. |10 |10 |
-| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N.A. |10 |10 |
-| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N.A. |Korlátlan |Korlátlan |
+| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N/A |10 |10 |
+| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N/A |Korlátlan |Korlátlan |
 | Minimális ütemterv | 5 perc |5 perc |5 perc |5 perc |5 perc |5 perc |5 perc | 5 perc |
-| Maximális futási idő| 1-3 perc |24 óra |24 óra |24 óra |24 óra |N.A.  |24 óra |24 óra |
-| Az indexek maximális futási ideje készségkészlet <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N.A.  |2 óra |2 óra |
-| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N.A.  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4 &nbsp; millió |8 &nbsp; millió |16 &nbsp; millió |N.A. |4 &nbsp; millió |4 &nbsp; millió |
+| Maximális futási idő| 1-3 perc |24 óra |24 óra |24 óra |24 óra |N/A  |24 óra |24 óra |
+| Az indexek maximális futási ideje készségkészlet <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N/A  |2 óra |2 óra |
+| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N/A  |256 |256 |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4 &nbsp; millió |8 &nbsp; millió |16 &nbsp; millió |N/A |4 &nbsp; millió |4 &nbsp; millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -96,10 +96,26 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 <sup>4</sup> készségkészlet legfeljebb 30 ismeret.
 
-<sup>5</sup> az AI-bővítés és-rendszerkép elemzése számítási igényű, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényel. A számítási feladatokhoz tartozó futási idő lerövidítve lett, hogy a várólistán lévő többi feladat több lehetőséget biztosítson a futtatásra.  
+<sup>5</sup> az AI-bővítés és-rendszerkép elemzése számítási igényű, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényel. A számítási feladatokhoz tartozó futási idő lerövidítve lett, hogy a várólistán lévő többi feladat több lehetőséget biztosítson a futtatásra.
 
 > [!NOTE]
 > Ahogy az [index korlátaiban](#index-limits)is említettük, az indexek az összes összetett gyűjteményre vonatkozó, a legújabb GA API-verziótól kezdődően a felső 3000 korlátot is kikényszerítik az összes, a ( `2019-05-06` Ez azt jelenti, hogy ha az indexelő korábbi API-verzióval hozta létre, a korlát nem vonatkozik rá. A maximális kompatibilitás megőrzése érdekében egy korábbi API-verzióval létrehozott indexelő, majd egy API-verzióval `2019-05-06` vagy később frissülve a rendszer továbbra is **kizárja** a korlátokat. Az ügyfeleknek tisztában kell lenniük azzal, hogy milyen negatív hatással vannak a nagyon nagy összetett gyűjtemények (a korábban említettek szerint), és javasoljuk, hogy hozzon létre minden új indexelő a legújabb GA API-verzióval.
+
+### <a name="shared-private-link-resource-limits"></a>Megosztott magánhálózati kapcsolati erőforrások korlátai
+
+> [!NOTE]
+> Az indexelő biztonságosan férhetnek hozzá az erőforrásokhoz a [megosztott magánhálózati kapcsolat erőforrás-API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) -n keresztül kezelt privát végpontokon keresztül, a [jelen](search-indexer-howto-access-private.md) útmutatóban ismertetett módon.
+
+| Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD | L1 | L2
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Privát végpont-indexelő támogatása | Nem | Igen | Igen | Igen | Igen | Nem | Igen | Igen |
+| Privát végpontok támogatása az indexek számára a készségkészlet<sup>1</sup> | Nem | Nem | Nem | Igen | Igen | Nem | Igen | Igen |
+| Privát végpontok maximális száma | N/A | 10 vagy 30 | 100 | 400 | 400 | N/A | 20 | 20 |
+| Maximális eltérő erőforrástípusok<sup>2</sup> | N.A. | 4 | 7 | 15 | 15 | N.A. | 4 | 4 |
+
+<sup>1</sup> a mesterséges intelligenciával és a képelemzéssel kapcsolatos elemzések számítási szempontból intenzívek, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényelnek, ezért az alacsonyabb keresési szolgáltatási rétegek számára, hogy a saját környezetben futnak, negatív hatással lehetnek a keresési szolgáltatás teljesítményére és stabilitására.
+
+<sup>2</sup> a különböző erőforrástípusok számát a rendszer az `groupId` adott keresési szolgáltatás összes megosztott magánhálózati kapcsolati erőforrásában használt egyedi értékek számaként számítja ki, az erőforrás állapotától függetlenül.
 
 ## <a name="synonym-limits"></a>Szinonimák korlátai
 
@@ -116,7 +132,7 @@ A QPS-becsléseket minden ügyféltől függetlenül kell kialakítani. Az index
 
 A becslések a dedikált erőforrásokon futó szolgáltatásokra (alapszintű és standard csomagokra) számítanak. Megbecsülheti a QPS, mert több paramétert is megadhat. A becslések megközelítésével kapcsolatos útmutatásért lásd: [Azure Cognitive Search teljesítmény és optimalizálás](search-performance-optimization.md).
 
-A Storage optimalizált szintjeihez (L1 és L2) a standard szintnél kisebb lekérdezési sebességet és nagyobb késést kell várni. 
+A Storage optimalizált szintjeihez (L1 és L2) a standard szintnél kisebb lekérdezési sebességet és nagyobb késést kell várni.
 
 ## <a name="data-limits-ai-enrichment"></a>Adatkorlátok (AI-dúsítás)
 

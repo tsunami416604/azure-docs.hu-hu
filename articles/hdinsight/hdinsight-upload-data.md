@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085871"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462564"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
 
@@ -37,7 +37,7 @@ A Microsoft az alábbi segédprogramokat biztosítja az Azure Storage-hoz való 
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portalra](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -68,7 +68,7 @@ vagy
 
 `wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
-A fájlokkal dolgozó egyéb Hadoop-parancsok listáját itt tekintheti meg:[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+A fájlokkal dolgozó egyéb Hadoop-parancsok listáját itt tekintheti meg: [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > Az Apache HBase-fürtökön az adatíráskor használt alapértelmezett blokk mérete 256 KB. Habár ez jól működik a HBase API-k vagy a REST API-k használata esetén, a vagy a parancs használatával a `hadoop` `hdfs dfs` ~ 12 GB-nál nagyobb adatbevitel hibát eredményez. További információ: Storage- [kivétel a blobon való íráshoz](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
@@ -88,7 +88,7 @@ Több alkalmazás is rendelkezésre áll, amelyek grafikus felületet biztosíta
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Az Azure Storage csatlakoztatása helyi meghajtóként
 
-Lásd: [Az Azure Storage csatlakoztatása helyi meghajtóként](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Lásd: [Az Azure Storage csatlakoztatása helyi meghajtóként](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Feltöltés a szolgáltatásokkal
 
@@ -121,7 +121,7 @@ Az Azure Storage egy Azure SDK-val is elérhető a következő programozási nye
 
 Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure-letöltések](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette, hogyan szerezhet be információkat a HDInsight-ba, olvassa el a következő cikkeket az elemzés elsajátításához:
 

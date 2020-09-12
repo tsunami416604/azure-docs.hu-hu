@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 541f3e5ada69568506969f6406564a8ff59c0ba6
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236369"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613232"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,9 @@ ms.locfileid: "88236369"
 Az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) lehetővé teszi a felhőalapú SQL Server teljes verziójának használatát anélkül, hogy bármilyen helyszíni hardvert kellene kezelnie. A SQL Server virtuális gépek (VM-EK) is leegyszerűsítik a licencelési költségeket, ha Ön fizet.
 
 Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/windows/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Így a virtuális gépek jó választást tesznek lehetővé számos különböző SQL Server munkaterheléshez.
+
+Ha még nem SQL Server Azure-beli virtuális gépeken, tekintse meg az Azure-beli virtuális gépekről szóló [Azure-](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)beli virtuálisgép- *áttekintő videó SQL Serverét* :
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>Automatikus frissítések
 
@@ -147,10 +150,10 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 * [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [Az SQL Server dokumentációja](https://docs.microsoft.com/sql/index)
+* [SQL Server dokumentáció](https://docs.microsoft.com/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure Virtual Machines SQL Serverával:
 

@@ -3,16 +3,16 @@ title: Dynamics 365 létrehozása a Customer engagement & PowerApps ajánlathoz 
 description: Új Dynamics 365 létrehozása a Customer engagement & PowerApps az Azure Marketplace-en, a AppSource-on vagy a partner centeren keresztül a Cloud Solution Provider (CSP) programon keresztül történő listázásához és értékesítéséhez.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c488daeafefce23d1fc65fe61e8c0f39cd1c0490
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817034"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646714"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
 
@@ -137,10 +137,10 @@ Itt adhatja meg az egyes nyelvekhez/piacokhoz tartozó piactér részleteit, pé
 4. Támogatási címe (hivatkozás)
 5. Használati feltételek címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -148,7 +148,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

@@ -11,12 +11,14 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732577"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462036"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -39,7 +41,7 @@ Ebben a cikkben a [C Azure IoT Device SDK](iot-hub-device-sdk-c-intro.md) -t has
 
   - **Észak-Európa**
   - **Délkelet-Ázsia**
-  - **USA nyugati régiója, 2.**
+  - **USA 2. nyugati régiója**
 
 - Ez a cikk azt feltételezi, hogy már ismeri a telemetria-üzenetek küldését az IoT hub-ra. Győződjön meg arról, hogy végrehajtotta a [Send telemetria C](quickstart-send-telemetry-c.md)rövid útmutatót.
 
@@ -204,7 +206,7 @@ A felhőből nyomon követett üzenetek százalékos arányának módosításáh
 
 1. Válasszon ki egy 0 és 100% közötti **mintavételi sebességet** .
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 1. Várjon néhány másodpercet, és kattintson a **frissítés**gombra, majd ha az eszköz sikeresen visszaigazolja az eszközt, a szinkronizálás ikon látható.
 
@@ -247,9 +249,9 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 }
 ```
 
-| Elem neve | Kötelező | Típus | Description |
+| Elem neve | Kötelező | Típus | Leírás |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Yes | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1`a és a, `2` ki van kapcsolva. |
+| `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1` a és a, `2` ki van kapcsolva. |
 | `sampling_rate` | Yes | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
 
 ## <a name="query-and-visualize"></a>Lekérdezés és megjelenítés
@@ -270,7 +272,7 @@ AzureDiagnostics
 
 Példák a Log Analytics által megjelenített naplókra:
 
-| TimeGenerated | OperationName | Kategória | Szint | CorrelationId | Átl | Tulajdonságok |
+| TimeGenerated | OperationName | Kategória | Szint | CorrelationId | DurationMs | Tulajdonságok |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
@@ -307,10 +309,10 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 
 1. A rendszer létrehoz egy üzenetet a IoT-eszközön.
 1. A IoT-eszköz (a felhő segítségével) úgy dönt, hogy ezt az üzenetet nyomkövetési környezettel kell hozzárendelni.
-1. Az SDK hozzáadja a `tracestate` alkalmazást az üzenet-létrehozási időbélyegzőt tartalmazó tulajdonsághoz.
+1. Az SDK hozzáadja a `tracestate` -t az üzenet tulajdonsághoz, amely tartalmazza az üzenet létrehozási időbélyegét.
 1. A IoT-eszköz elküldi az üzenetet a IoT Hubnak.
 1. Az üzenet megérkezik az IoT hub-átjáróra.
-1. IoT Hub megkeresi az `tracestate` üzenet alkalmazás tulajdonságait, és ellenőrzi, hogy a formátuma megfelelő-e.
+1. IoT Hub megkeresi az `tracestate` üzenet tulajdonságait, és ellenőrzi, hogy a formátuma megfelelő-e.
 1. Ha igen, IoT Hub létrehoz egy globálisan egyedit `trace-id` az üzenethez, egy a `span-id` "hop" kifejezésre, és naplózza őket a művelet alatt Azure monitor diagnosztikai naplókba `DiagnosticIoTHubD2C` .
 1. Az üzenetek feldolgozásának befejeződése után IoT Hub létrehoz egy másikat, `span-id` és a művelettel együtt naplózza `trace-id` `DiagnosticIoTHubIngress` .
 1. Ha az útválasztás engedélyezve van az üzenethez, IoT Hub írja azt az egyéni végpontba, és a `span-id` kategóriával megegyezően naplózza a másikat `trace-id` `DiagnosticIoTHubEgress` .
@@ -323,7 +325,7 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 - A felhőből az eszközre történő kettős képesség nem érhető el [IoT hub alapszintű csomaghoz](iot-hub-scaling.md#basic-and-standard-tiers). A IoT Hub azonban továbbra is Azure Monitor, ha a megfelelő számú nyomkövetési környezeti fejlécet lát.
 - A hatékony működés biztosítása érdekében a IoT Hub a naplózás mértékét fogja alkalmazni, amely az elosztott nyomkövetés részeként fordulhat elő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az általános elosztott nyomkövetési mintával kapcsolatban, tekintse meg a következő témakört [: a Service architektúrájának mintája: elosztott nyomkövetés](https://microservices.io/patterns/observability/distributed-tracing.html).
 - Ha úgy szeretné beállítani a konfigurációt, hogy az elosztott nyomkövetési beállításokat nagy számú eszközre alkalmazza, tekintse meg a [IoT-eszközök konfigurálása és figyelése skálán](iot-hub-auto-device-config.md)című témakört

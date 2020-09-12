@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236097"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646540"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -105,7 +105,7 @@ Egyetlen alhálózat nem támogatja mind a v2, mind a v1 Application Gateway SKU
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>A Application Gateway v2 támogatja a felhasználó által megadott útvonalakat (UDR)?
 
-Igen, de csak bizonyos forgatókönyvek. További információ: [Application Gateway konfiguráció áttekintése](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).
+Igen, de csak bizonyos forgatókönyvek. További információ: [Application Gateway infrastruktúra-konfiguráció](configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Támogatja a Application Gateway az x által továbbított fejléceket?
 
@@ -136,7 +136,7 @@ Nem. A Application Gateway v2 még nem támogatja az NTLM-hitelesítéssel rende
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>A Application Gateway affinitás cookie támogatja a SameSite attribútumot?
 Igen, a [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) a SameSite attribútum nélküli http-cookie-kra vonatkozó mandátumot vezetett be SameSite = LAX néven. Ez azt jelenti, hogy a böngésző nem fogja elküldeni a Application Gateway affinitási cookie-t harmadik féltől származó környezetben. 
 
-Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos*. Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-overview.md#cookie-based-affinity) talál.
+Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos*. Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-http-settings.md#cookie-based-affinity) talál.
 
 ## <a name="performance"></a>Teljesítmény
 
@@ -186,7 +186,7 @@ Lásd: [hálózati biztonsági csoportok a Application Gateway alhálózatban](h
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Támogatja az Application Gateway alhálózata a felhasználó által megadott útvonalakat?
 
-Tekintse [meg a Application Gateway alhálózat által támogatott, felhasználó által megadott útvonalakat](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet).
+Tekintse [meg a Application Gateway alhálózat által támogatott, felhasználó által megadott útvonalakat](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Milyen korlátozások vonatkoznak a Application Gatewayra? Növelhetim ezeket a korlátokat?
 
@@ -404,7 +404,7 @@ Jelenleg a bejövő adatkezelő egyik példánya csak egy Application Gatewayhoz
 
 ### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Miért nem működik együtt a AGIC a kubenet-sel?
 
-A AGIC megpróbálja automatikusan hozzárendelni az útválasztási tábla erőforrását az Application Gateway alhálózathoz, de ezt a művelet nem teszi lehetővé, mert a AGIC nem rendelkezik a megfelelő engedélyekkel. Ha a AGIC nem tudja hozzárendelni az útválasztási táblázatot a Application Gateway alhálózathoz, akkor a AGIC-naplók hibát jeleznek, ami azt jelzi, hogy az AK-fürt által létrehozott útválasztási táblázatot manuálisan kell hozzárendelni a Application Gateway alhálózatához. További információ: [itt](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)talál útmutatást.
+A AGIC megpróbálja automatikusan hozzárendelni az útválasztási tábla erőforrását az Application Gateway alhálózathoz, de ezt a művelet nem teszi lehetővé, mert a AGIC nem rendelkezik a megfelelő engedélyekkel. Ha a AGIC nem tudja hozzárendelni az útválasztási táblázatot a Application Gateway alhálózathoz, akkor a AGIC-naplók hibát jeleznek, ami azt jelzi, hogy az AK-fürt által létrehozott útválasztási táblázatot manuálisan kell hozzárendelni a Application Gateway alhálózatához. További információ: [támogatott felhasználó által definiált útvonalak](configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Csatlakozhatok a saját AK-fürthöz, és Application Gateway külön virtuális hálózatban? 
 
@@ -467,6 +467,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

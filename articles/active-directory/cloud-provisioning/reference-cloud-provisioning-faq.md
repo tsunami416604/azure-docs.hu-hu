@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518470"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658379"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect Cloud kiépítés – gyakori kérdések
 
@@ -74,7 +74,7 @@ A konfiguráció törlésekor a Felhőbeli kiépítés nem távolítja el automa
 
 **K: mit jelent az, hogy az Exchange Hybrid nem támogatott?**
 
-Az Exchange hibrid telepítés lehetővé teszi, hogy az Exchange postafiókok a helyszínen és az Office 365-ben egy időben létezzenek. Az Azure AD Connect visszaszinkronizálja az attribútumok egy adott halmazát az Azure AD szolgáltatásból a helyszíni címtárba.  A felhőalapú kiépítési ügynök jelenleg nem szinkronizálja ezeket az attribútumokat a helyszíni címtárba, így a Azure AD Connect helyett nem használható.
+Az Exchange hibrid üzembe helyezési funkciója lehetővé teszi az Exchange-postaládák együttes létezését helyszíni és Microsoft 365 is. Az Azure AD Connect visszaszinkronizálja az attribútumok egy adott halmazát az Azure AD szolgáltatásból a helyszíni címtárba.  A felhőalapú kiépítési ügynök jelenleg nem szinkronizálja ezeket az attribútumokat a helyszíni címtárba, így a Azure AD Connect helyett nem használható.
 
 **K: telepíthetem a Cloud kiépítési ügynököt a Windows Server Core-ra?**
 

@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871394"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484298"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név átmigrálása Azure App Service
 
@@ -40,7 +40,7 @@ Ha végül áttelepíti az egyéni DNS-nevet a régi helyről a App Service alka
 
 ### <a name="get-domain-verification-id"></a>Tartomány-ellenőrzési azonosító lekérése
 
-Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító lekéréséhez kövesse a [tartomány-ellenőrzési azonosító beolvasása](app-service-web-tutorial-custom-domain.md#get-domain-verification-id)című témakör lépéseit.
+Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító lekéréséhez kövesse a [tartomány-ellenőrzési azonosító beolvasása](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)című témakör lépéseit.
 
 ### <a name="create-domain-verification-record"></a>Tartomány-ellenőrzési rekord létrehozása
 
@@ -48,9 +48,9 @@ A tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy TXT-rekordot a 
 
 | Példa DNS-rekordra | TXT-gazdagép | TXT-érték |
 | - | - | - |
-| \@ legfelső szintű | _asuid_ | [Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| www (Sub) | _asuid. www_ | [Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| \* helyettesítő | _asuid_ | [Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \@ legfelső szintű | _asuid_ | [Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| www (Sub) | _asuid. www_ | [Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \* helyettesítő | _asuid_ | [Az alkalmazáshoz tartozó tartomány-ellenőrzési azonosító](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
 
 A DNS-rekordok oldalon jegyezze fel az áttelepíteni kívánt DNS-név bejegyzéstípusát. A App Service támogatja a CNAME és A rekordok leképezését.
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903323"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461544"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldásmintái
 
@@ -102,7 +102,7 @@ A legtöbb adatelemzési és elemzési tevékenység továbbra is offline állap
 
 ## <a name="use-reference-data-for-enrichment"></a>Referenciák használata a dúsításhoz
 
-Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja a SQL Database és az Azure Blob Storage [-ból származó adatokkal való](stream-analytics-use-reference-data.md) gazdagodás támogatását. Az adatgyűjtést a Azure Data Lake és SQL Data Warehouseban egyaránt megteheti.
+Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja a SQL Database és az Azure Blob Storage [-ból származó adatokkal való](stream-analytics-use-reference-data.md) gazdagodás támogatását. Az Adatbővítés a Azure Data Lake és az Azure szinapszis Analytics szolgáltatásban is elvégezhető.
 
 
 ![ASA offline elemzés az adatgazdagítás használatával](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
@@ -115,7 +115,7 @@ Ha az offline elemzési mintát a közel valós idejű alkalmazási mintával ko
 
 ## <a name="how-to-monitor-asa-jobs"></a>Az ASA-feladatok figyelése
 
-Azure Stream Analytics az 24/7-es feladatok futtatásával a bejövő események valós időben történő feldolgozását is elvégezheti. A teljes alkalmazás állapota elengedhetetlen a szükséges üzemidő biztosításához. Noha a Stream Analytics az iparág egyetlen Streaming Analytics szolgáltatása, amely [99,9%-os rendelkezésre állási garanciát](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)kínál, továbbra is felmerülhet. Az évek során Stream Analytics metrikákat, naplókat és feladatokat vezetett be a feladatok állapotának megfelelően. Mindegyik Azure Monitor szolgáltatáson keresztül történik, és tovább exportálhatók a OMS. További információ: [stream Analytics feladatok figyelésének ismertetése és a lekérdezések figyelése](stream-analytics-monitoring.md).
+Azure Stream Analytics az 24/7-es feladatok futtatásával a bejövő események valós időben történő feldolgozását is elvégezheti. A teljes alkalmazás állapota elengedhetetlen a szükséges üzemidő biztosításához. Noha a Stream Analytics az iparág egyetlen Streaming Analytics szolgáltatása, amely  [99,9%-os rendelkezésre állási garanciát](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)kínál, továbbra is felmerülhet. Az évek során Stream Analytics metrikákat, naplókat és feladatokat vezetett be a feladatok állapotának megfelelően. Mindegyik Azure Monitor szolgáltatáson keresztül történik, és tovább exportálhatók a OMS. További információ: [stream Analytics feladatok figyelésének ismertetése és a lekérdezések figyelése](stream-analytics-monitoring.md).
 
 ![ASA-figyelés](media/stream-analytics-solution-patterns/monitoring.png)
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011190"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506678"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 
@@ -31,7 +31,7 @@ A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség to
 
 ### <a name="responses"></a>Válaszok
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -144,7 +144,7 @@ A visszaállítási művelet indítása [aszinkron művelet](../azure-resource-m
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadva    |
 
@@ -216,7 +216,7 @@ Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági mentés
 
 Egy lemez Azure-beli virtuális gép biztonsági mentésből való visszaállításának elindításához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -244,6 +244,30 @@ A következő kérelem törzse a lemez-visszaállítás indításához szükség
 }
 ```
 
+### <a name="restore-disks-selectively"></a>Lemezek szelektív visszaállítása
+
+Ha [szelektíven készít biztonsági mentést a lemezekről](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), akkor a rendszer a [helyreállítási pont összefoglalása](#select-recovery-point) és a [részletes válasz](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)alapján megtekinti a jelenleg mentett lemezek listáját. A lemezeket szelektíven is visszaállíthatja, és további részleteket [itt](selective-disk-backup-restore.md#selective-disk-restore)talál. Ha a lemezeket szelektív módon szeretné visszaállítani a mentett lemezek listájáról, keresse meg a lemez LUN-jét a helyreállítási pont válaszában, és adja hozzá a **restoreDiskLunList** tulajdonságot a fenti példában látható módon a [kérelem törzséhez](#example-request) .
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
+```
+
 Ha nyomon követte a [fentiekben](#responses)ismertetett választ, és a hosszú ideig futó feladatok befejeződik, a rendszer a biztonsági másolatban szereplő virtuális gép lemezeit és konfigurációját ("VMConfig.json") a megadott Storage-fiókban fogja megjelenni.
 
 ### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Lemezek cseréje egy biztonsági másolatba mentett virtuális gépen
@@ -254,7 +278,7 @@ Míg a visszaállítási lemezek lemezeket hoznak létre a helyreállítási pon
 
 Az Azure-beli virtuális gépek biztonsági másolatából származó lemez cseréjének kiváltásához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f9bc0cd229888d952821509ced6cc5410000ee52
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078724"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462139"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelé
 
 * Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
 * Ne hozzon létre egynél több AK-fürtöt ugyanabban az alhálózatban.
-* Az AK-fürtök nem használhatnak,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány esetében.
+* Az AK-fürtök nem használhatják a,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` , vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány, a pod címtartomány vagy a fürt virtuális hálózati címtartomány-tartományát.
 * Az AK-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor) szerepkörrel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Emellett rendelkeznie kell a megfelelő engedélyekkel, például az előfizetés tulajdonosával az egyszerű szolgáltatásnév létrehozásához és az engedélyek hozzárendeléséhez. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`

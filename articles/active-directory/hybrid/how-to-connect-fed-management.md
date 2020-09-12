@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect – AD FS felügyelet és testreszabás | Microsoft Docs
 description: A Azure AD Connect és a PowerShell használatával AD FS a felügyeletet a felhasználói AD FS bejelentkezési felületének Azure AD Connectával és testreszabásával.
-keywords: AD FS, ADFS, AD FS felügyelet, HRE-kapcsolat, csatlakozási, bejelentkezés, AD FS testreszabás, megbízhatóság javítása, O365, összevonás, függő entitás
+keywords: AD FS, ADFS, AD FS felügyelet, HRE-kapcsolat, csatlakozási, bejelentkezés, AD FS testreszabás, megbízhatóság javítása, M365, összevonás, függő entitás
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830927"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661260"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory összevonási szolgáltatások (AD FS) kezelése és testreszabása Azure AD Connect használatával
 Ez a cikk a Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azure Active Directory (Azure AD) használatával történő kezelését és testreszabását ismerteti. Emellett olyan gyakori AD FS feladatokat is tartalmaz, amelyeket a AD FS farmok teljes konfigurálásához lehet szükség.
@@ -31,7 +31,7 @@ Ez a cikk a Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azur
 | Témakör | Mire terjed ki |
 |:--- |:--- |
 | **AD FS kezelése** | |
-| [A megbízhatóság javítása](#repairthetrust) |Az Office 365 összevonási megbízhatóságának javítása. |
+| [A megbízhatóság javítása](#repairthetrust) |Az összevonási megbízhatóság javítása a Microsoft 365 használatával. |
 | [Összevonása az Azure AD-vel alternatív bejelentkezési azonosító használatával](#alternateid) | Összevonás konfigurálása alternatív bejelentkezési azonosító használatával  |
 | [AD FS-kiszolgáló hozzáadása](#addadfsserver) |AD FS Farm kibontása további AD FS-kiszolgálóval. |
 | [AD FS webalkalmazás-proxy kiszolgáló hozzáadása](#addwapserver) |AD FS Farm kibontása egy további webalkalmazás-proxy (WAP) kiszolgálóval. |
@@ -85,7 +85,7 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
     Ha hiányzó TUDÁSBÁZIS esetén szeretné kijavítani a konfigurációt, telepítse a szükséges [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) , majd javítsa ki a megbízhatóságot a [javítási hre és a AD FS megbízhatóság](#repairthetrust)használatával.
 
 > [!NOTE]
-> A alternateID és a manuális konfigurálásával kapcsolatos további információkért olvassa el a [másik bejelentkezési azonosító konfigurálása](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) című témakört.
+> A alternateID és a manuális konfigurálásával kapcsolatos további információkért olvassa el a [másik bejelentkezési azonosító konfigurálása](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) című témakört.
 
 ## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>AD FS-kiszolgáló hozzáadása 
 
@@ -174,7 +174,7 @@ Egyszerűen hozzáadhat egy tartományt az Azure AD-vel összevont tartományhoz
 
    ![Azure AD-tartomány](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    A tartomány kiválasztása után a varázsló megfelelő információkat biztosít a varázsló által végrehajtandó további műveletekről és a konfiguráció hatásáról. Bizonyos esetekben, ha olyan tartományt választ ki, amely még nem lett ellenőrizve az Azure AD-ben, a varázsló információt nyújt a tartomány ellenőrzéséhez. További részletekért tekintse [meg az Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../active-directory-domains-add-azure-portal.md) című témakört.
+    A tartomány kiválasztása után a varázsló megfelelő információkat biztosít a varázsló által végrehajtandó további műveletekről és a konfiguráció hatásáról. Bizonyos esetekben, ha olyan tartományt választ ki, amely még nem lett ellenőrizve az Azure AD-ben, a varázsló információt nyújt a tartomány ellenőrzéséhez. További részletekért tekintse [meg az Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../fundamentals/add-custom-domain.md) című témakört.
 
 5. Kattintson a **Tovább** gombra. A **konfigurálásra kész** lapon látható azoknak a műveleteknek a listája, amelyeket a Azure ad Connect végrehajt. A konfigurálás befejezéséhez kattintson a **telepítés** gombra.
 
@@ -207,7 +207,7 @@ Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requi
 ```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FSi jogcím szabályainak módosítása 
-A AD FS támogatja az egyéni jogcím-szabályok létrehozásához használható, sokoldalú jogcímek nyelvét. További információ: a [jogcím-szabály nyelvének szerepe](https://technet.microsoft.com/library/dd807118.aspx).
+A AD FS támogatja az egyéni jogcím-szabályok létrehozásához használható, sokoldalú jogcímek nyelvét. További információ: a [jogcím-szabály nyelvének szerepe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807118(v=ws.11)).
 
 Az alábbi szakaszok azt ismertetik, hogyan írhat egyéni szabályokat az Azure AD-hez és a AD FS-összevonáshoz kapcsolódó egyes forgatókönyvekhez.
 
@@ -262,5 +262,5 @@ Ebben a szabályban egyszerűen ellenőrzi az ideiglenes jelző **idflag**. Ön 
 
 Az [új összevont tartomány hozzáadása](how-to-connect-fed-management.md#addfeddomain)című témakörben leírtak szerint több tartományt is hozzáadhat összevontként Azure ad Connect használatával. Azure AD Connect a 1.1.553.0 és a legújabb verzió automatikusan létrehozza a megfelelő issuerID. Ha nem tudja használni a Azure AD Connect 1.1.553.0 vagy legújabb verzióját, ajánlott az [Azure ad RPT jogcím-szabályok](https://aka.ms/aadrptclaimrules) eszközzel létrehozni és beállítani az Azure ad függő entitás megbízhatóságának megfelelő jogcímeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [felhasználói bejelentkezési lehetőségekről](plan-connect-user-signin.md).

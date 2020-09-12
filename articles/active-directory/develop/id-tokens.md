@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795243"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646595"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -85,6 +85,8 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 |`unique_name` | Sztring | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték egy adott időpontban egyedi, de az e-mailek és más azonosítók újból felhasználhatók, ez az érték más fiókokban is újra szerepelhet, ezért csak megjelenítési célokra használható. Csak a 1.0-s verzióban van kiállítva `id_tokens` . |
 |`uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
+|`hasgroups`|Logikai|Ha van, mindig igaz, ami azt jelöli, hogy a felhasználó legalább egy csoportban van. A JWTs implicit engedélyezési folyamatokban használt csoportok helyett használható, ha a teljes csoportokra vonatkozó jogcím kiterjeszti az URI-töredéket az URL-cím hosszának korlátain túl (jelenleg 6 vagy több csoport). Azt jelzi, hogy az ügyfélnek a Microsoft Graph API-t kell használnia a felhasználó csoportjainak () meghatározásához `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` .|
+|`groups:src1`|JSON-objektum | A nem hosszúságú jogkivonat-kérelmek esetében (lásd a `hasgroups` fentieket), de még mindig túl nagy a tokenhez, a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Elosztott jogcímek esetén az SAML-t a jogcím helyett új jogcímként JWTs `groups` . <br><br>**Példa JWT értékre**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> További információ: [groups overing jogcím](#groups-overage-claim).|
 
 > [!NOTE]
 > A 1.0-s és a 2.0-s verzió id_token a fenti példákban látható információk mennyiségétől függ. A verzió a kért végponton alapul. Habár a meglévő alkalmazások valószínűleg az Azure AD-végpontot használják, az új alkalmazásoknak a v 2.0 "Microsoft Identity platform" végpontot kell használniuk.
@@ -102,6 +104,26 @@ Ha az adatokat felhasználónként szeretné tárolni, használjon `sub` vagy `o
 > Ne használja a `idp` jogcímet a felhasználóval kapcsolatos adatok tárolására a bérlők közötti összekapcsolásra tett kísérlet során.  Ez nem fog működni, mivel a `oid` és a `sub` jogcímek a bérlők között megváltoznak, így biztosítva, hogy az alkalmazások ne tudják nyomon követni a felhasználókat a bérlők között.  
 >
 > A vendég forgatókönyvek, ahol egy felhasználó egy bérlőn van felhasználva, és a hitelesítés egy másikban történik, úgy kell kezelnie a felhasználót, mintha az új felhasználó legyen a szolgáltatásban.  A contoso-bérlő dokumentumai és jogosultságai nem alkalmazhatók a fabrikam-bérlőben. Ez azért fontos, hogy megakadályozza a véletlen adatszivárgást a bérlők között.
+
+### <a name="groups-overage-claim"></a>Csoporton túli jogcímek
+Annak biztosítása érdekében, hogy a jogkivonat mérete ne haladja meg a HTTP-fejléc méretének korlátait, az Azure AD korlátozza a jogcímben foglalt objektumazonosítók számát `groups` . Ha a felhasználó több csoport tagja, mint a túlhasználati korlát (SAML-tokenek esetében 150, 200 JWT-token esetében), akkor az Azure AD nem bocsátja ki a groups jogcímet a jogkivonatban. Ehelyett a jogkivonat olyan túlhasználati jogcímet tartalmaz, amely azt jelzi, hogy az alkalmazás lekérdezi a Microsoft Graph API-t a felhasználó csoporttagság beolvasásához.
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+ }
+```
 
 ## <a name="validating-an-id_token"></a>Id_token ellenőrzése
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920086"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460286"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
 Ez a cikk a telepítési problémák gyakori okait ismerteti, és hibaelhárítási tippeket nyújt a problémák megoldásához. Annak jelzése, hogy az alkalmazással kapcsolatban probléma merült fel, ha a szerepkör-példány nem indul el, vagy az inicializálás, a foglalt és a leállítási állapotok között ciklust jelez.
@@ -62,10 +62,10 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 ## <a name="exported-certificate-does-not-include-private-key"></a>Az exportált tanúsítvány nem tartalmaz titkos kulcsot.
 Ha webes szerepkört szeretne futtatni a TLS alatt, győződjön meg arról, hogy az exportált felügyeleti tanúsítvány tartalmazza a titkos kulcsot. Ha a *Windows Tanúsítványkezelőt* használja a tanúsítvány exportálásához, akkor ügyeljen arra, hogy a **titkos kulcs exportálása** lehetőségnél válassza az **Igen** lehetőséget. A tanúsítványt PFX formátumban kell exportálni, amely az egyetlen jelenleg támogatott formátum.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a Cloud Services szolgáltatáshoz.
 
-További szerepkör-újrahasznosítási forgatókönyvek megtekintése a [Kevin Williamson blog-sorozatában](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+További szerepkör-újrahasznosítási forgatókönyvek megtekintése a [Kevin Williamson blog-sorozatában](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx

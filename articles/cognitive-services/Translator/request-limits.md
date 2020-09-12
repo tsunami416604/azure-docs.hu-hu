@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903407"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566585"
 ---
 # <a name="request-limits-for-translator"></a>Fordítói kérelmek korlátai
 
@@ -29,9 +29,9 @@ A következő táblázat a fordító egyes műveleteinek tömb elemeit és karak
 
 | Művelet | Tömb elemének maximális mérete |    Tömb elemeinek maximális száma |    Kérelmek maximális mérete (karakter) |
 |:----|:----|:----|:----|
-| Fordítás | 10,000    | 100   | 10,000 |
+| Translate | 10,000    | 100   | 10,000 |
 | Átírás | 5000 | 10    | 5000 |
-| Észlelés | 10,000 | 100 |   50,000 |
+| Észlelés | 50,000 | 100 |   50,000 |
 | BreakSentence | 50,000    | 100 | 50,000 |
 | Keresés a szótárban| 100 |  10  | 1,000 |
 | Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2000 |
@@ -64,14 +64,14 @@ A fordító a standard modellekkel és az 120 másodperces késleltetéssel 15 m
 
 A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) függvény használatakor a mondat hossza 275 karakterre van korlátozva. Ezekhez a nyelvekhez kivételek tartoznak:
 
-| Nyelv | Kód | Karakteres korlát |
+| Nyelv | Code | Karakteres korlát |
 |----------|------|-----------------|
 | Kínai | zh | 166 |
 | Német | de | 800 |
 | Olasz | Ez | 800 |
 | Japán | Japán | 166 |
 | Portugál | pt | 800 |
-| Spanyol | Igen | 800 |
+| spanyol | es | 800 |
 | Thai | adik | 180 |
 
 > [!NOTE]

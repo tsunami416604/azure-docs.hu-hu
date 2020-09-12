@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50de800c94bd0a65fafcff3ef6613d6f063a3797
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855489"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512334"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -156,9 +156,10 @@ a következőt is megírhatja (amely egyenértékű)
 public void ConfigureServices(IServiceCollection services)
 {
  // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
- services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+             .AddMicrosoftIdentityWebApi(Configuration, "AzureAd");
 
- services.AddControllers();
+services.AddControllers();
 }
 ```
 
@@ -188,7 +189,7 @@ Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](h
 
 Ez a táblázat a validatorokat ismerteti:
 
-| Validator | Leírás |
+| Validator | Description |
 |---------|---------|
 | **ValidateAudience** | Gondoskodik arról, hogy a jogkivonat az alkalmazáshoz legyen hitelesítve, amely érvényesíti a jogkivonatot. |
 | **ValidateIssuer** | Gondoskodik arról, hogy a tokent egy megbízható STS bocsátotta ki, ami azt jelenti, hogy a jogkivonatot megbízhatónak minősíti. |
@@ -233,7 +234,7 @@ A bejövő hozzáférési jogkivonatokat is ellenőrizheti Azure Functionsban. I
 - Node.js: [Azure-Samples/MS-Identity-NodeJS-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
 - Python: [Azure-Samples/MS-Identity-Python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

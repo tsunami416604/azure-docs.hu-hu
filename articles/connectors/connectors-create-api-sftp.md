@@ -1,21 +1,22 @@
 ---
-title: Kapcsolódás SFTP-fiókhoz
-description: Automatizálhatja az SFTP-kiszolgálókhoz tartozó fájlok figyelését, létrehozását, kezelését, küldését és fogadását az SSH használatával Azure Logic Apps
+title: Kapcsolódás SFTP-fiókhoz (elavult)
+description: Az SFTP-kiszolgálóhoz tartozó fájlok figyelésére, létrehozására, kezelésére, küldésére és fogadására szolgáló feladatok és folyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789273"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651417"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése az Azure Logic Apps használatával
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése Azure Logic Apps
 
 > [!IMPORTANT]
 > Használja az [SFTP-SSH összekötőt](../connectors/connectors-sftp-ssh.md) , mivel az SFTP-összekötő elavult. A Logic app Designerben már nem választhat SFTP eseményindítókat és műveleteket.
@@ -114,10 +115,6 @@ Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, amikor e
 
 Ez a művelet lekérdezi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Így például felveheti az triggert az előző példából, és egy olyan feltételt, amelynek meg kell felelnie a fájl tartalmának. Ha a feltétel igaz, akkor a tartalmat lekérdező művelet futtatható.
 
-## <a name="connector-reference"></a>Összekötő-referencia
-
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/sftpconnector/).
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

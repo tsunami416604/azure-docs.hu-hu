@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357749"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658363"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés Azure Active Directory
 
@@ -53,21 +53,21 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 - A bejelentkezési Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév ( `userPrincipalName` ) vagy a Azure ad Connect () alkalmazásban konfigurált másik attribútum `Alternate ID` . Mindkét használati eset működik, mivel a zökkenőmentes egyszeri bejelentkezés a `securityIdentifier` Kerberos-jegyben lévő jogcímet használja a megfelelő felhasználói objektum kereséséhez az Azure ad-ben.
 - A zökkenőmentes SSO egy opportunista funkció. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény visszatér a szokásos viselkedésére – azaz a felhasználónak meg kell adnia a jelszavát a bejelentkezési oldalon.
-- Ha egy alkalmazás (például: `https://myapps.microsoft.com/contoso.com` ) továbbít egy `domain_hint` (OpenID Connect) vagy `whr` (SAML) paramétert – a bérlő azonosítására, vagy `login_hint` a felhasználó azonosítására szolgáló paramétert – az Azure ad bejelentkezési kérelmében a felhasználók automatikusan bejelentkeznek a felhasználónevek és jelszavak beírása nélkül.
+- Ha egy alkalmazás (például:  `https://myapps.microsoft.com/contoso.com` ) továbbít egy `domain_hint` (OpenID Connect) vagy `whr` (SAML) paramétert – a bérlő azonosítására, vagy `login_hint` a felhasználó azonosítására szolgáló paramétert – az Azure ad bejelentkezési kérelmében a felhasználók automatikusan bejelentkeznek a felhasználónevek és jelszavak beírása nélkül.
 - A felhasználók akkor is csendes bejelentkezési élményt kapnak, ha egy alkalmazás (például: `https://contoso.sharepoint.com` ) a bejelentkezési kéréseket az Azure ad azon végpontjai számára állítja be, amelyek bérlőként vannak beállítva – azaz az `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` Azure ad közös végpontja – azaz `https://login.microsoftonline.com/common/<...>` .
 - A kijelentkezés támogatott. Így a felhasználók kiválaszthatnak egy másik Azure AD-fiókot a szolgáltatásba való bejelentkezéshez ahelyett, hogy automatikusan be kellene jelentkezniük a zökkenőmentes egyszeri bejelentkezés automatikus használatával.
-- Az Office 365 Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamattal támogatottak a 16.0.8730. xxxx és újabb verziók használatával. A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
+- A 16.0.8730. xxxx és újabb verziókkal rendelkező Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamat használatával támogatottak. Microsoft 365 A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - Azure AD Connect használatával engedélyezhető.
 - Ez egy ingyenes funkció, és nincs szüksége az Azure AD fizetős kiadásaira a használatához.
-- A szolgáltatás olyan webböngésző-alapú ügyfelek és Office-ügyfelek számára támogatott, amelyek támogatják a [modern hitelesítést](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) a Kerberos-hitelesítésre képes platformokon és böngészőkön:
+- A szolgáltatás olyan webböngésző-alapú ügyfelek és Office-ügyfelek számára támogatott, amelyek támogatják a [modern hitelesítést](/office365/enterprise/modern-auth-for-office-2013-and-2016) a Kerberos-hitelesítésre képes platformokon és böngészőkön:
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N.A.
-|Windows 8.1|Yes\*|N.A.|Yes|Igen\*\*\*|N.A.
-|Windows 8|Yes\*|N.A.|Yes|Igen\*\*\*|N.A.
-|Windows 7|Yes\*|N.A.|Yes|Igen\*\*\*|N.A.
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Yes|Igen\*\*\*|N.A.
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
+|Windows 8.1|Yes\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows 8|Yes\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows 7|Yes\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Yes|Igen\*\*\*|N/A
 |Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
@@ -80,7 +80,7 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 >[!NOTE]
 >A Windows 10 esetében ajánlott az Azure [ad JOIN](../devices/concept-azure-ad-join.md) használata az Azure ad-vel való optimális egyszeri bejelentkezéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
 - [**Üzembe helyezési terv**](https://aka.ms/deploymentplans/sso) – lépésenkénti üzembe helyezési terv.
@@ -88,4 +88,3 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 - [**Gyakori kérdések**](how-to-connect-sso-faq.md) – válaszok a gyakori kérdésekre.
 - [**Hibaelhárítás**](tshoot-connect-sso.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új szolgáltatásokra vonatkozó kérelmek bejelentése.
-

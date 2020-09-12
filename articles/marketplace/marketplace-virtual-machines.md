@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 04/15/2020
-ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 09/04/2020
+ms.openlocfilehash: cc6b040731cbeb7271d7a7c0de1c32fa2d007013
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837344"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484188"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>A virtuális gépekkel kapcsolatos ajánlatok közzétételi útmutatója
 
 A virtuálisgép-lemezképek közzététele az egyik fő módszer az Azure Marketplace-en való megoldás közzétételére. Ez az útmutató az ilyen típusú ajánlatokra vonatkozó követelmények megismerésére használható. 
 
-A virtuális gépek ajánlatai az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő művelet meghívása *most*.
+A virtuális gépek ajánlatai az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő listázási lehetőség a *Letöltés*.
 
 ## <a name="free-trial"></a>Ingyenes próbaidőszak 
 
@@ -59,7 +59,7 @@ Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, h
 >[!Note]
 >Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

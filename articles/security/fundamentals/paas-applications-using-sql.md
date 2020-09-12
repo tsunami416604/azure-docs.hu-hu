@@ -1,6 +1,6 @@
 ---
 title: A Pásti-adatbázisok védelme az Azure-ban | Microsoft Docs
-description: 'Ismerje meg, Azure SQL Database és SQL Data Warehouse biztonsági eljárásokat a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. '
+description: 'Ismerkedjen meg a Azure SQL Database és az Azure szinapszis Analytics biztonsági eljárásaival a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. '
 services: security
 documentationcenter: na
 author: techlake
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 9c821a8898b61517dd5d6c872c8516bad6db6968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012959"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462530"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Ajánlott eljárások a Pásti-adatbázisok biztonságossá tételéhez az Azure-ban
 
-Ebből a cikkből megbeszéljük [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) és [SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) biztonsági eljárások gyűjteményét, amelyekkel biztosítható a platform-szolgáltatásként szolgáló (Pásti) webes és mobil alkalmazások védelme. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
+Ebben a cikkben a [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) biztonsági eljárásainak egy gyűjteményét tárgyaljuk, amelyekkel biztosítható a szolgáltatásként szolgáló (Pásti) webes és mobil alkalmazások biztonságossá tétele. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
 
-A Azure SQL Database és a SQL Data Warehouse az internetalapú alkalmazások számára biztosítanak egy kapcsolódó adatbázis-szolgáltatást. Tekintse meg azokat a szolgáltatásokat, amelyek segítenek az alkalmazások és az adatvédelemben, amikor a Azure SQL Database és a SQL Data Warehouse egy Pásti üzemelő példányban használja:
+A Azure SQL Database és az Azure szinapszis Analytics egy, az internetalapú alkalmazások számára biztosít egy kapcsolódó adatbázis-szolgáltatást. Nézzük meg azokat a szolgáltatásokat, amelyek segítenek az alkalmazások és az adataik védelmében, amikor a Azure SQL Database és az Azure szinapszis Analytics szolgáltatást egy Pásti üzembe helyezéssel használja:
 
 - Azure Active Directory hitelesítés (SQL Server hitelesítés helyett)
 - Azure SQL tűzfal
@@ -40,7 +40,7 @@ Azure SQL Database konfigurálható két hitelesítési típus egyikének haszn�
 
 - **Azure Active Directory hitelesítés** a Azure Active Directory által felügyelt identitásokat használ, és a felügyelt és integrált tartományok esetében támogatott. Azure Active Directory hitelesítés használatához létre kell hoznia egy másik, "Azure AD admin" nevű kiszolgálói rendszergazdát, amely jogosult az Azure AD-felhasználók és-csoportok felügyeletére. Ez a rendszergazda a normál kiszolgálói rendszergazdák által elvégezhető összes műveletet is végrehajthatja.
 
-[Azure Active Directory a hitelesítés](../../active-directory/develop/authentication-scenarios.md) olyan mechanizmus, amellyel Azure SQL Database és SQL Data Warehousehoz kapcsolódhat Azure Active Directory (ad) identitások használatával. Az Azure AD alternatívát biztosít a SQL Server hitelesítéshez, így leállíthatja a felhasználói identitások elterjedését az adatbázis-kiszolgálók között. Az Azure AD-hitelesítés segítségével központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi azonosítófelügyelettel egyetlen helyen kezelheti az adatbázis-felhasználókat, így leegyszerűsítheti az engedélykezelést.  
+[Azure Active Directory a hitelesítés](../../active-directory/develop/authentication-scenarios.md) a Azure SQL Database és az Azure szinapszis Analytics szolgáltatáshoz való kapcsolódás mechanizmusa az Azure Active Directory (ad) identitások használatával. Az Azure AD alternatívát biztosít a SQL Server hitelesítéshez, így leállíthatja a felhasználói identitások elterjedését az adatbázis-kiszolgálók között. Az Azure AD-hitelesítés segítségével központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi azonosítófelügyelettel egyetlen helyen kezelheti az adatbázis-felhasználókat, így leegyszerűsítheti az engedélykezelést.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Az Azure AD használatának előnyei az SQL-hitelesítés helyett
 
@@ -50,12 +50,12 @@ Azure SQL Database konfigurálható két hitelesítési típus egyikének haszn�
 - A a tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
 - Támogatja a jogkivonat-alapú hitelesítést a SQL Databasehoz csatlakozó alkalmazások esetében.
 - Támogatja a tartományi összevonást a Active Directory összevonási szolgáltatások (AD FS) (ADFS) vagy a natív felhasználói/jelszó-hitelesítéssel egy helyi Azure AD-hoz tartományi szinkronizálás nélkül.
-- Támogatja a [multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Active Directory univerzális hitelesítést használó SQL Server Management Studiookhoz való kapcsolódást. A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: [az univerzális hitelesítés SQL Database és SQL Data Warehouse](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- Támogatja a [multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Active Directory univerzális hitelesítést használó SQL Server Management Studiookhoz való kapcsolódást. A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: az [univerzális hitelesítés SQL Database és az Azure szinapszis Analytics használatával](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd:
 
-- [Azure Active Directory hitelesítés használata SQL Database, felügyelt példány vagy SQL Data Warehouse használatával történő hitelesítéshez](../../azure-sql/database/authentication-aad-overview.md)
-- [Hitelesítés az Azure SQL Warehouse-szal](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [Azure Active Directory hitelesítés használata SQL Database, felügyelt példány vagy Azure szinapszis Analytics használatával történő hitelesítéshez](../../azure-sql/database/authentication-aad-overview.md)
+- [Hitelesítés az Azure szinapszis Analytics szolgáltatással](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [Jogkivonat-alapú hitelesítés támogatása Azure SQL Database Azure AD-hitelesítés használatával](../../azure-sql/database/authentication-aad-overview.md)
 
 > [!NOTE]
@@ -69,12 +69,12 @@ SQL Database alapértelmezett forrás IP-cím korlátozásai lehetővé teszik a
 
 Az Azure SQL Firewall és az IP-korlátozásokról további információt a következő témakörben talál:
 
-- [Azure SQL Database és SQL Data Warehouse hozzáférés-vezérlés](../../azure-sql/database/logins-create-manage.md)
-- [Az Azure SQL Database és az SQL Data Warehouse tűzfalszabályai](../../azure-sql/database/firewall-configure.md)
+- [Azure SQL Database és az Azure szinapszis Analytics hozzáférés-vezérlése](../../azure-sql/database/logins-create-manage.md)
+- [Azure SQL Database és az Azure szinapszis Analytics tűzfalszabályok](../../azure-sql/database/firewall-configure.md)
 
 ## <a name="encrypt-data-at-rest"></a>Inaktív adatok titkosítása
 
-A [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) alapértelmezés szerint engedélyezve van. A TDE transzparens módon titkosítja SQL Server, Azure SQL Database és Azure SQL Data Warehouse az adatfájlokat és a naplófájlokat. A TDE védelmet biztosít a fájlok vagy a biztonsági másolatok közvetlen hozzáférésének veszélye ellen. Ez lehetővé teszi, hogy a meglévő alkalmazások módosítása nélkül titkosítsa az adatvédelmet. A TDE mindig engedélyezve kell maradnia; Ez azonban nem állítja le a támadót a normál hozzáférési útvonal használatával. A TDE lehetővé teszi a különböző iparágakban bevezetett törvények, rendeletek és irányelvek betartását.
+A [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) alapértelmezés szerint engedélyezve van. A TDE transzparens módon titkosítja SQL Server, Azure SQL Database és az Azure szinapszis Analytics-adatfájlokat és-naplófájlokat. A TDE védelmet biztosít a fájlok vagy a biztonsági másolatok közvetlen hozzáférésének veszélye ellen. Ez lehetővé teszi, hogy a meglévő alkalmazások módosítása nélkül titkosítsa az adatvédelmet. A TDE mindig engedélyezve kell maradnia; Ez azonban nem állítja le a támadót a normál hozzáférési útvonal használatával. A TDE lehetővé teszi a különböző iparágakban bevezetett törvények, rendeletek és irányelvek betartását.
 
 Az Azure SQL a TDE kapcsolatos legfontosabb problémákat kezeli. A TDE hasonlóan a helyszíni speciális felügyeletet is meg kell tenni a helyreállítás és az adatbázisok áthelyezése érdekében. Kifinomultabb helyzetekben a kulcsok explicit módon kezelhetők Azure Key Vault a bővíthető kulcskezelő szolgáltatással. Lásd: [a TDE engedélyezése SQL Server a EKM használatával](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm). Ez lehetővé teszi, hogy a Bring Your Own Key (BYOK) az Azure Key Vaults BYOK képességgel is rendelkezik.
 
@@ -84,9 +84,9 @@ Szelektív adathoz is használható az alkalmazás szintjének titkosítása. Az
 
 Az adatbázis biztonságossá tételéhez további óvintézkedéseket is használhat, például a biztonságos rendszer megtervezését, a bizalmas eszközök titkosítását és a tűzfal létrehozását az adatbázis-kiszolgálók köré.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk a SQL Database és SQL Data Warehouse biztonsági bevált eljárások gyűjteményét mutatta be, amelyekkel biztonságossá teheti a Pásti web-és mobil alkalmazásait. További információ a Pásti-telepítések biztonságossá tételéről:
+Ez a cikk a SQL Database és az Azure szinapszis Analytics biztonsági eljárásainak egy gyűjteményét mutatta be, amelyekkel biztosíthatja a Pásti web-és Mobile-alkalmazások védelmét. További információ a Pásti-telepítések biztonságossá tételéről:
 
 - [PaaS-környezetek védelme](paas-deployments.md)
 - [A Pásti web-és Mobile-alkalmazások biztonságossá tétele az Azure App Services](paas-applications-using-app-services.md)

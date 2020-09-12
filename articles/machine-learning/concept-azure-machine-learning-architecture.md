@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146776"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651261"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -110,7 +110,7 @@ Példa a futtatási konfigurációkra: [számítási cél használata a modell b
 
 ### <a name="estimators"></a>Becslések
 
-A kisegítő lehetőségek a népszerű keretrendszerekkel való modellezésének megkönnyítésére a kalkulátor osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
+A kisegítő lehetőségek a népszerű keretrendszerekkel való modellezésének megkönnyítésére a kalkulátor osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
 
 További információ a becslések: ML- [modellek betanítása a becslések](how-to-train-ml-models.md).
 
@@ -123,7 +123,9 @@ Amikor elküld egy futtatást, Azure Machine Learning tömöríti azt a könyvt�
 
 ### <a name="logging"></a>Naplózás
 
-A megoldás fejlesztésekor a Python-szkript Azure Machine Learning Python SDK-val tetszőleges metrikákat naplózhat. A Futtatás után a metrikák lekérdezésével állapítsa meg, hogy a Futtatás előkészítette-e a telepíteni kívánt modellt.
+Azure Machine Learning automatikusan naplózza a szabványos futtatási metrikákat. [A PYTHON SDK használatával azonban tetszőleges mérőszámokat is naplózhat](how-to-track-experiments.md).
+
+Több módon is megtekintheti a naplókat: valós időben figyelheti a futtatási állapotot, vagy megtekintheti az eredményeket a befejezés után. További információkért lásd: [ml-futtatási naplók figyelése és megtekintése](how-to-monitor-view-training-logs.md).
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Ha engedélyezte az automatikus skálázást, az Azure automatikusan méretezi a
 
 Egy modell webszolgáltatásként való üzembe helyezésére példa: [lemezkép besorolási modell telepítése Azure Container Instancesban](tutorial-deploy-models-with-aml.md).
 
+#### <a name="real-time-endpoints"></a>Valós idejű végpontok
+
+Ha egy betanított modellt helyez üzembe a tervezőben (előzetes verzió), [a modellt valós idejű végpontként is üzembe](tutorial-designer-automobile-price-deploy.md)helyezheti. Egy valós idejű végpont általában egyetlen kérést kap a REST-végponton keresztül, és valós időben előrejelzést ad vissza. Ez ellentétben áll a kötegelt feldolgozással, amely egyszerre több értéket dolgoz fel, és a befejezés után menti az eredményeket egy adattárba.
+
+#### <a name="pipeline-endpoints"></a>Folyamat végpontjai
+
+A folyamat végpontjai lehetővé teszik a [ml-folyamatok](#ml-pipelines) programozott módon való meghívását egy Rest-végponton keresztül. A folyamat végpontjai lehetővé teszik a folyamat munkafolyamatainak automatizálását.
+
+A folyamat végpontja közzétett folyamatok gyűjteménye. Ez a logikai szervezet lehetővé teszi több folyamat kezelését és meghívását ugyanazzal a végponttal. A folyamat végpontján lévő összes közzétett folyamat verziószáma. Kiválaszthatja a végpont alapértelmezett folyamatát, vagy megadhat egy verziót a REST-hívásban.
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT modul végpontjai
 
 Az üzembe helyezett IoT-végpont egy olyan Docker-tároló, amely tartalmazza a modellt, valamint a hozzá tartozó parancsfájlt vagy alkalmazást, valamint a további függőségeket. Ezeket a modulokat a Azure IoT Edge Edge-eszközökön történő üzembe helyezésével végezheti el.
@@ -212,12 +225,13 @@ A folyamat lépései újrafelhasználhatók, és az előző lépések újbóli f
 
 ### <a name="studio"></a>Studio
 
-[Azure Machine learning Studio](https://ml.azure.com) a munkaterületen található összes összetevőt webes nézetben jeleníti meg.  Megtekintheti az adatkészletek, kísérletek, folyamatok, modellek és végpontok eredményeit és részleteit.  A Studióban is kezelheti a számítási erőforrásokat és az adattárolókat.
+[Azure Machine learning Studio](overview-what-is-machine-learning-studio.md) a munkaterületen található összes összetevőt webes nézetben jeleníti meg.  Megtekintheti az adatkészletek, kísérletek, folyamatok, modellek és végpontok eredményeit és részleteit.  A Studióban is kezelheti a számítási erőforrásokat és az adattárolókat.
 
 A Studióban a Azure Machine Learning részét képező interaktív eszközök is elérhetők:
 
 + [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) a munkafolyamat lépéseinek kód írása nélkül történő elvégzéséhez
 + Webes felület az [automatizált gépi tanuláshoz](concept-automated-ml.md)
++ [Azure Machine learning jegyzetfüzetek](how-to-run-jupyter-notebooks.md) segítségével írhat és futtathat saját kódot az integrált Jupyter notebook-kiszolgálókon.
 + [Adatcímkéző projektek](how-to-create-labeling-projects.md) az adatcímkéző projektek létrehozásához, kezeléséhez és figyeléséhez
 
 ### <a name="programming-tools"></a>Programozási eszközök
@@ -226,7 +240,7 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 > Az alábbi megjelölésű eszközök (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
 > Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
++  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-val.
 + A szolgáltatás használata bármely R-környezetben az R- [hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) -val (előzetes verzió).
 + Az automatizáláshoz használja a [Azure Machine learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) -t.
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
@@ -236,5 +250,5 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 
 * [Mi az Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Azure Machine Learning munkaterület létrehozása](how-to-manage-workspace.md)
+* [Azure Machine Learning-munkaterület létrehozása](how-to-manage-workspace.md)
 * [Oktatóanyag (1. rész): modell betanítása](tutorial-train-models-with-aml.md)

@@ -2,17 +2,17 @@
 title: Gyakori kérdések – Azure ExpressRoute | Microsoft Docs
 description: A ExpressRoute GYIK a támogatott Azure-szolgáltatásokkal, a díjszabással, az adatokkal, a kapcsolatokkal, az SLA-val, a szolgáltatókkal és a szolgáltatásokkal, valamint a sávszélességgel és további technikai
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: jaredro
-ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537122"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566420"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -78,13 +78,13 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 
 * Virtuális hálózatok, beleértve az összes virtuális gépet és a Cloud Servicest
 
-### <a name="microsoft-peering"></a>Microsoftos társhálózat-létesítés
+### <a name="microsoft-peering"></a>Microsoftos társviszony
 
 Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcsolathoz, az Azure-ban az áramkörön használt [nyilvános IP-címtartományok](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) is elérhetők. Az Azure Microsoft-partnerek hozzáférést biztosítanak a jelenleg az Azure-ban üzemeltetett szolgáltatásokhoz (az áramköri SKU-tól függően földrajzi korlátozásokkal). Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután keresse meg a cél szolgáltatás IP-tartományait, és hasonlítsa össze az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
 
 **Támogatott**
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
 * Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját.
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure globális szolgáltatások közössége)
@@ -158,7 +158,7 @@ Több ExpressRoute-áramkör különböző, egymástól eltérő helyekről vagy
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hogyan valósítható meg a redundancia a Microsoft-partnereken?
 
-Erősen ajánlott, hogy ha az ügyfelek Microsoft-partneri kapcsolattal férnek hozzá az Azure nyilvános szolgáltatásaihoz, például az Azure Storage-hoz vagy az Azure SQL-hoz, valamint az Office 365-hoz készült Microsoft Az ügyfelek megtehetik ugyanazt az előtagot mindkét áramkörön, és az [elérési út](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) alapján vagy különböző előtagokat is megadhatnak a helyi elérési út meghatározásához.
+Erősen ajánlott, hogy ha az ügyfelek Microsoft-partneri kapcsolattal érik el az Azure-beli nyilvános szolgáltatásokat, például az Azure Storage vagy az Azure SQL szolgáltatást, valamint azokat az ügyfeleket, amelyek a Microsoft-partneri kapcsolatot használják a Microsoft 365, hogy az egyetlen meghibásodási pont elkerülése érdekében több áramkört implementálnak a különböző társi helyeken. Az ügyfelek megtehetik ugyanazt az előtagot mindkét áramkörön, és az [elérési út](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) alapján vagy különböző előtagokat is megadhatnak a helyi elérési út meghatározásához.
 
 A magas rendelkezésre állás kialakításához [itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) talál további információt.
 
@@ -217,13 +217,13 @@ Igen. Akár 10 virtuális hálózati kapcsolattal is rendelkezhet standard Expre
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Több Azure-előfizetésem is van, amelyek virtuális hálózatokat tartalmaznak. Összekapcsolhatok különálló előfizetésben lévő virtuális hálózatokat egyetlen ExpressRoute-áramkörre?
 
-Igen. Akár 10 virtuális hálózatot is összekapcsolhat ugyanabban az előfizetésben, mint az áramkör vagy a különböző előfizetések egyetlen ExpressRoute áramkör használatával. Ezt a korlátot növelheti a ExpressRoute prémium funkciójának engedélyezésével.
+Igen. Akár 10 virtuális hálózatot is összekapcsolhat ugyanabban az előfizetésben, mint az áramkör vagy a különböző előfizetések egyetlen ExpressRoute áramkör használatával. Ezt a korlátot növelheti a ExpressRoute prémium funkciójának engedélyezésével. Vegye figyelembe, hogy a dedikált áramkör kapcsolati és sávszélességi díjai a ExpressRoute Circuit tulajdonosára lesznek alkalmazva. minden virtuális hálózat ugyanazt a sávszélességet használja.
 
 További információ: ExpressRoute- [áramkör megosztása több előfizetés között](expressroute-howto-linkvnet-arm.md).
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Több Azure-előfizetésem van társítva különböző Azure Active Directory bérlőhöz vagy Nagyvállalati Szerződés regisztrációhoz. Csatlakozhatok különálló bérlőket és regisztrációkat tartalmazó virtuális hálózatokat egyetlen ExpressRoute-áramkörhöz sem ugyanabban a bérlőben vagy regisztrációban?
 
-Igen. A ExpressRoute-engedélyek az előfizetések, a bérlők és a regisztrációs határok kiterjedhetnek, és nincs szükség további konfigurálásra. 
+Igen. A ExpressRoute-engedélyek az előfizetések, a bérlők és a regisztrációs határok kiterjedhetnek, és nincs szükség további konfigurálásra. Vegye figyelembe, hogy a dedikált áramkör kapcsolati és sávszélességi díjai a ExpressRoute Circuit tulajdonosára lesznek alkalmazva. minden virtuális hálózat ugyanazt a sávszélességet használja.
 
 További információ: ExpressRoute- [áramkör megosztása több előfizetés között](expressroute-howto-linkvnet-arm.md).
 
@@ -293,7 +293,7 @@ A ExpressRoute Premium a következő funkciók gyűjteménye:
 
 * Megnövelt útválasztási táblázat a 4000 útvonalról 10 000 útvonalra a privát társak számára.
 * Nagyobb számú virtuális hálózatok és ExpressRoute Global Reach kapcsolat, amely engedélyezhető egy ExpressRoute-áramkörön (az alapértelmezett érték 10). További információ: [ExpressRoute-korlátok](#limits) tábla.
-* Csatlakozás az Office 365-hoz
+* Kapcsolódás a Microsoft 365hoz
 * Globális kapcsolat a Microsoft Core hálózaton keresztül. Most már összekapcsolhat egy VNet az egyik geopolitikai régióban egy másik régióban lévő ExpressRoute-áramkörrel.<br>
     **Példák:**
 
@@ -344,43 +344,43 @@ A helyi ExpressRoute is ugyanazok a korlátozások vonatkoznak az erőforrásokr
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Hol van a ExpressRoute helyi elérhetősége, és mely Azure-régiók vannak leképezve az összes társítási helyhez?
 A ExpressRoute local (helyi) lehetőség azon a társítási helyeken érhető el, ahol egy vagy két Azure-régiót zártak be. Nem érhető el olyan egyenrangú helyen, ahol az adott államban vagy régióban, illetve országban vagy régióban nem található Azure-régió. Tekintse meg a pontos leképezéseket a [helyszínek lapon](expressroute-locations-providers.md).  
 
-## <a name="expressroute-for-office-365"></a>ExpressRoute az Office 365-hez
+## <a name="expressroute-for-microsoft-365"></a>Microsoft 365 ExpressRoute
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Hogyan hozzon létre egy ExpressRoute-áramkört az Office 365-szolgáltatásokhoz való kapcsolódáshoz?
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-microsoft-365-services"></a>Hogyan hozzon létre egy ExpressRoute-áramkört Microsoft 365-szolgáltatásokhoz való kapcsolódáshoz?
 
 1. Tekintse át a [ExpressRoute előfeltételek oldalát](expressroute-prerequisites.md) , és győződjön meg arról, hogy megfelel a követelményeknek.
 2. A kapcsolati igények teljesítésének biztosításához tekintse át a szolgáltatók és a helyszínek listáját a [ExpressRoute-partnerek és-helyszínek](expressroute-locations.md) című cikkben.
-3. Tervezze meg a kapacitásra vonatkozó követelményeket az [Office 365 hálózati tervezésének és teljesítmény-finomhangolásának](https://aka.ms/tune/)áttekintésével.
+3. A kapacitásra vonatkozó követelmények megtervezéséhez tekintse át a [hálózati tervezést és a teljesítmény finomhangolását Microsoft 365](/microsoft-365/enterprise/network-planning-and-performance).
 4. A munkafolyamatokban felsorolt lépéseket követve állíthatja be a kapcsolati [ExpressRoute munkafolyamatait az áramköri kiépítési és az áramköri állapotokhoz](expressroute-workflows.md).
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a ExpressRoute Premium bővítmény engedélyezve van az Office 365-szolgáltatásokhoz való kapcsolódás konfigurálásakor.
+> Győződjön meg arról, hogy a ExpressRoute Premium bővítmény engedélyezve van a Microsoft 365 szolgáltatásokhoz való kapcsolódás konfigurálásakor.
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Támogathatja a meglévő ExpressRoute-áramkörök az Office 365-szolgáltatásokhoz való kapcsolódást?
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-microsoft-365-services"></a>Támogatja a meglévő ExpressRoute-áramkörök a Microsoft 365 szolgáltatásokhoz való kapcsolódást?
 
-Igen. A meglévő ExpressRoute-áramkör úgy konfigurálható, hogy támogassa az Office 365-szolgáltatásokhoz való kapcsolódást. Győződjön meg arról, hogy elegendő kapacitása van az Office 365-szolgáltatásokhoz való kapcsolódáshoz, és hogy engedélyezte a prémium szintű bővítményt. [Az Office 365 hálózati tervezése és teljesítmény-finomhangolása](https://aka.ms/tune/) segít megtervezni a kapcsolati igényeket. Lásd még: [ExpressRoute-kör létrehozása és módosítása](expressroute-howto-circuit-classic.md).
+Igen. A meglévő ExpressRoute-áramkör úgy konfigurálható, hogy támogassa a Microsoft 365 szolgáltatásokhoz való kapcsolódást. Győződjön meg arról, hogy elegendő kapacitása van a Microsoft 365 szolgáltatásokhoz való kapcsolódáshoz és a prémium szintű bővítmény engedélyezéséhez. A [Microsoft 365 hálózati tervezése és teljesítmény-finomhangolása](/microsoft-365/enterprise/network-planning-and-performance) megkönnyíti a kapcsolati igények megtervezését. Lásd még: [ExpressRoute-kör létrehozása és módosítása](expressroute-howto-circuit-classic.md).
 
-### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Milyen Office 365-szolgáltatásokat lehet elérni egy ExpressRoute-kapcsolaton keresztül?
+### <a name="what-microsoft-365-services-can-be-accessed-over-an-expressroute-connection"></a>Milyen Microsoft 365 szolgáltatások érhetők el egy ExpressRoute-kapcsolaton keresztül?
 
-Az ExpressRoute-on keresztül támogatott szolgáltatások naprakész listáját az [Office 365 URL-címei és IP-címtartományok](https://aka.ms/o365endpoints) lapján tekintheti meg.
+A ExpressRoute-on keresztül támogatott szolgáltatások naprakész listáját a [Microsoft 365 URL-címek és IP-címtartományok](/microsoft-365/enterprise/urls-and-ip-address-ranges) lapon találja.
 
-### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Mennyibe kerül az Office 365-szolgáltatások ExpressRoute?
+### <a name="how-much-does-expressroute-for-microsoft-365-services-cost"></a>Mennyibe kerül a Microsoft 365 szolgáltatások ExpressRoute?
 
-Az Office 365-szolgáltatások esetében engedélyezni kell a prémium szintű bővítményt. A költségekért tekintse meg a [díjszabás részleteit ismertető oldalt](https://azure.microsoft.com/pricing/details/expressroute/) .
+Microsoft 365-szolgáltatások esetében engedélyezni kell a prémium szintű bővítményt. A költségekért tekintse meg a [díjszabás részleteit ismertető oldalt](https://azure.microsoft.com/pricing/details/expressroute/) .
 
-### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Milyen régiókat támogat a ExpressRoute az Office 365-ben?
+### <a name="what-regions-is-expressroute-for-microsoft-365-supported-in"></a>Milyen régiókat ExpressRoute a támogatott Microsoft 365?
 
 További információ: [ExpressRoute-partnerek és-helyszínek](expressroute-locations.md) .
 
-### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Hozzáférhetek az Office 365-hez az interneten keresztül, még akkor is, ha a ExpressRoute konfigurálva lett a saját szervezetem számára?
+### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Hozzáférhetek Microsoft 365 az interneten keresztül, még akkor is, ha a ExpressRoute konfigurálva lett a saját szervezetem számára?
 
-Igen. Az Office 365 szolgáltatási végpontok az interneten keresztül érhetők el, bár a hálózat ExpressRoute konfigurálva van. Ha a tartózkodási hely hálózata úgy van konfigurálva, hogy a ExpressRoute keresztül kapcsolódjon az Office 365-szolgáltatásokhoz, ellenőrizze a szervezet hálózati csapatát.
+Igen. Microsoft 365 szolgáltatási végpontok elérhetők az interneten keresztül, annak ellenére, hogy a ExpressRoute konfigurálva van a hálózathoz. Ha a tartózkodási hely hálózata úgy van konfigurálva, hogy a ExpressRoute keresztül kapcsolódjon Microsoft 365-szolgáltatásokhoz, ellenőrizze a szervezet hálózati csapatát.
 
-### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Hogyan tervezhetem meg az Office 365 hálózati forgalmának magas rendelkezésre állását az Azure ExpressRoute?
+### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Hogyan tervezhetem meg a magas rendelkezésre állást az Azure ExpressRoute Microsoft 365 hálózati forgalmához?
 Tekintse meg a [magas rendelkezésre állásra és a feladatátvételre](https://aka.ms/erhighavailability) vonatkozó javaslatot az Azure ExpressRoute
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Hozzáférhetek az Office 365 amerikai kormányzati Közösség (GCC) szolgáltatásaihoz az Azure US government ExpressRoute áramkörén keresztül?
@@ -395,11 +395,11 @@ Egyetlen útvonal sem jelenik meg. Az előtag-hirdetmények indításához csato
 
 ### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Bekapcsoltam a Microsoft-társat, és most megpróbálom kijelölni az Exchange Online-t, de a hiba miatt nem vagyok engedélyezve.
 
-Az útválasztási szűrők használatakor bármely ügyfél bekapcsolhatja a Microsoft-partneri kapcsolatot. Az Office 365-szolgáltatások fogyasztása érdekében azonban továbbra is engedélyeznie kell az Office 365-et.
+Az útválasztási szűrők használatakor bármely ügyfél bekapcsolhatja a Microsoft-partneri kapcsolatot. A Microsoft 365-szolgáltatások használatakor azonban továbbra is engedélyezni kell a Microsoft 365.
 
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Engedélyeztem a Microsoft-társat a 2017-as augusztus 1. előtt, hogyan használhatom az útválasztási szűrők előnyeit?
 
-A meglévő áramkör továbbra is meghirdeti az Office 365 előtagjait. Ha az Azure-beli nyilvános előtagok hirdetményeit ugyanazon Microsoft-társon szeretné felvenni, akkor létrehozhat egy útvonal-szűrőt, kiválaszthatja a meghirdetett szolgáltatásokat (beleértve az Office 365 szolgáltatás (oka) t), és csatolja a szűrőt a Microsoft-partneri kapcsolathoz. Útmutatásért lásd: [útválasztási szűrők konfigurálása a Microsoft-partnerek](how-to-routefilter-powershell.md)számára.
+A meglévő áramkör továbbra is meghirdeti a Microsoft 365 előtagjait. Ha az Azure-beli nyilvános előtagok hirdetményeit ugyanazon Microsoft-társon keresztül szeretné felvenni, akkor létrehozhat egy útvonal-szűrőt, kiválaszthatja a meghirdetett szolgáltatásokat (beleértve a szükséges Microsoft 365-szolgáltatás (oka) t), és csatolja a szűrőt a Microsoft-társához. Útmutatásért lásd: [útválasztási szűrők konfigurálása a Microsoft-partnerek](how-to-routefilter-powershell.md)számára.
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Van egy helyen a Microsoft-társam, most pedig megpróbálom engedélyezni egy másik helyen, és nem látok előtagokat.
 

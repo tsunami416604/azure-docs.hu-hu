@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91fa6a8da555d0b0cc79b262a83306c1f72aa68a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997255"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567095"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Enterprise Security Package az Azure HDInsight
 
@@ -20,7 +20,7 @@ A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-
 
 * Active Directory integrációja a hitelesítéshez.
 
-    Korábban létrehozta a HDInsight-fürtöket a helyi rendszergazda felhasználóval és a helyi SSH-felhasználóval. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package lehetővé teszi a szerepköralapú hozzáférés-vezérlést a HDInsight és a Active Directory integrálásával. Ide tartozik a helyszíni Active Directory, Azure Active Directory Domain Services. Vagy Active Directory a IaaS virtuális gépen. A fürt tartományi rendszergazdája engedélyezheti a felhasználóknak, hogy saját vállalati (tartományi) felhasználónevet és jelszót használjanak.
+    Korábban létrehozta a HDInsight-fürtöket a helyi rendszergazda felhasználóval és a helyi SSH-felhasználóval. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package lehetővé teszi a szerepköralapú hozzáférés-vezérlést a HDInsight és a Azure Active Directory Domain Services integrálásával.
 
     További információkért lásd:
 
@@ -59,7 +59,7 @@ A Enterprise Security Package az elsődleges tárolóként és a kiegészítő t
 
 További információ a Enterprise Security Package díjszabásáról és SLA-ról: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Munkahelyi Apache Hadoop HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL](hdinsight-hadoop-windows-tools.md)

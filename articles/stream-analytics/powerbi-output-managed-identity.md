@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044243"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613410"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI
 
@@ -155,7 +155,7 @@ Azure Resource Manager lehetővé teszi, hogy teljes mértékben automatizálja 
 
 ## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>A Stream Analytics-feladatok elérésének biztosítása a Power BI-munkaterülethez
 
-Most, hogy létrehozta a Stream Analytics feladatot, hozzáférést biztosíthat egy Power BI-munkaterülethez.
+Most, hogy létrehozta a Stream Analytics feladatot, hozzáférést biztosíthat egy Power BI-munkaterülethez. Miután megadta a feladathoz való hozzáférést, néhány percet is igénybe vehet, hogy az identitás propagálni lehessen.
 
 ### <a name="use-the-power-bi-ui"></a>A Power BI felhasználói felületének használata
 
@@ -221,7 +221,7 @@ A szolgáltatás korlátai a következők:
 
 - A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy nem tudja beírni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz kíván használni. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Irányítópult-integráció Power BI Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
 * [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)

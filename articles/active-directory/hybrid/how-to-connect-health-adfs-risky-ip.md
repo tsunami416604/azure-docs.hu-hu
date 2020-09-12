@@ -16,15 +16,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359348"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660844"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
-Az AD FS-ügyfelek az interneten elérhetővé tehetnek jelszóalapú hitelesési végpontokat, és ezzel hitelesítési szolgáltatásokat biztosíthatnak a végfelhasználók számára olyan SaaS-alkalmazások eléréséhez, mint az Office 365. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
+AD FS ügyfelek jelszavas hitelesítési végpontokat tehetnek elérhetővé az interneten, hogy hitelesítési szolgáltatásokat nyújtsanak a végfelhasználók számára az SaaS-alkalmazások, például a Microsoft 365 eléréséhez. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
 
 Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentkezni több felhasználó fiókjába. Ilyen esetekben előfordulhat, hogy az egyes felhasználókat érintő kísérletek száma az AD FS fiókzárolási funkcióját aktiváló küszöbérték alatt marad. Az Azure AD Connect Health mostantól elérhető „Kockázatos IP jelentése” észleli az ilyen eseményeket, és értesíti azokról a rendszergazdákat. A jelentés előnyei a következők: 
 - Észleli az IP-címeket, amelyek túllépik a sikertelen jelszóalapú belépési kísérletek küszöbértékét
@@ -35,7 +35,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 
 > [!NOTE]
 > A jelentés használatához győződjön meg róla, hogy az AD FS-naplózás engedélyezve van. További információkért tekintse meg az [AD FS-naplózás engedélyezését](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges.  
+> Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges.  
 > 
 
 ## <a name="what-is-in-the-report"></a>Mi a jelentés?
@@ -99,7 +99,7 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 
 ## <a name="faq"></a>GYIK
 **Miért jelennek meg magánhálózati IP-címtartományok a jelentésben?**  <br />
-A magánhálózati IP-címek (<i>10.x.x.x, 172.x.x.x és 192.168.x.x</i>) és az Exchange-IP-címek szűrve vannak, és True értékűként vannak megjelölve az IP-címek engedélyezési listáján. Ha magánhálózati IP-tartományok jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának.
+A magánhálózati IP-címek (<i>10. x. x. x, 172. x. x. x & 192.168. x. x</i>) és az Exchange IP-címek szűrve vannak, és True (igaz) jelöléssel vannak megjelölve az IP által jóváhagyott listában. Ha magánhálózati IP-tartományok jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának.
 
 **Miért jelennek meg terheléselosztói IP-címek a jelentésben?**  <br />
 Ha terheléselosztói IP-címek jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának. Konfigurálja megfelelően a terheléselosztót a továbbított ügyfél IP-címének továbbítására. 
@@ -113,9 +113,9 @@ Az azonosított kártevő IP-címeket érdemes hozzáadni a tűzfalhoz vagy blok
 - Az AD FS-farmokon nincs engedélyezve a naplózás.
 
 **Miért nem látható hozzáférés a jelentéshez?**  <br />
-Globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges. Hozzáférésért forduljon a globális rendszergazdához.
+Globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges. Hozzáférésért forduljon a globális rendszergazdához.
 
 
-## <a name="next-steps"></a>További lépések
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+## <a name="next-steps"></a>Következő lépések
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)

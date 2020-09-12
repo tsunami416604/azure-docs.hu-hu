@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37e76f54b9c4fe38c891f7cee7bc443d1b0b20f5
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805992"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596073"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webes forgalom irányítása URL-cím alapján az Azure PowerShell használatával
 
@@ -23,16 +23,15 @@ A forgalom irányításának engedélyezéséhez figyelőkhöz hozzárendelt [ú
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Figyelők, URL-útvonaltérképek és szabályok létrehozása
-> * Méretezhető háttérkészletek létrehozása
+* A hálózat beállítása
+* Figyelők, URL-útvonaltérképek és szabályok létrehozása
+* Méretezhető háttérkészletek létrehozása
 
 ![URL-útválasztási példa](./media/tutorial-url-route-powershell/scenario.png)
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-url-route-cli.md) vagy a [Azure Portal](create-url-route-portal.md)használatával végezheti el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,7 +41,7 @@ Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a
 
 Az erőforrások létrehozásához szükséges idő miatt az eljárás végrehajtása akár 90 percet is igénybe vehet.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot, amely az alkalmazás összes erőforrását tartalmazza. 
 
@@ -430,7 +429,7 @@ Módosítsa az URL-címet http:// &lt; IP-cím &gt; : 8080/video/test.htm érté
 
 ![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 
@@ -438,6 +437,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Forgalom átirányítása URL-cím alapján](./tutorial-url-redirect-powershell.md)

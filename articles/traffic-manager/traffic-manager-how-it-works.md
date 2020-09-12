@@ -3,7 +3,7 @@ title: Az Azure Traffic Manager működése | Microsoft Docs
 description: Ez a cikk segít megérteni, hogyan Traffic Manager irányítja a forgalmat a webalkalmazások nagy teljesítményének és rendelkezésre állásának biztosítása érdekében
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294855"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462632"
 ---
 # <a name="how-traffic-manager-works"></a>A Traffic Manager működése
 
@@ -62,8 +62,8 @@ Az előző példát követve, amikor egy ügyfél a lapot kéri `https://partner
     - Az egyes végpontok aktuális állapota a Traffic Manager állapotának ellenőrzése alapján. További információ: [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md).
     - A kiválasztott forgalom – útválasztási módszer. További információ: [Traffic Manager útválasztási módszerek](traffic-manager-routing-methods.md).
 
-5. A kiválasztott végpontot egy másik DNS-CNAME rekordként adja vissza a rendszer. Ebben az esetben tegyük fel, hogy a rendszer visszaadja a contoso-us.cloudapp.net.
-6. Ezután a rekurzív DNS szolgáltatás megkeresi a "cloudapp.net" tartományhoz tartozó névkiszolgálók nevét. Ezek a névkiszolgálók az "contoso-us.cloudapp.net" DNS-rekord igénylésére szolgálnak. A rendszer a US-alapú szolgáltatási végpont IP-címét tartalmazó DNS-rekordot ad vissza.
+5. A kiválasztott végpontot egy másik DNS-CNAME rekordként adja vissza a rendszer. Ebben az esetben tegyük fel, hogy a rendszer visszaadja a contoso-eu.cloudapp.net.
+6. Ezután a rekurzív DNS szolgáltatás megkeresi a "cloudapp.net" tartományhoz tartozó névkiszolgálók nevét. Ezek a névkiszolgálók az "contoso-eu.cloudapp.net" DNS-rekord igénylésére szolgálnak. A rendszer egy olyan DNS-rekordot ad vissza, amely tartalmazza az EU-alapú szolgáltatási végpont IP-címét.
 7. A rekurzív DNS szolgáltatás összevonja az eredményeket, és egyetlen DNS-választ ad vissza az ügyfélnek.
 8. Az ügyfél megkapja a DNS-eredményeket, és csatlakozik a megadott IP-címhez. Az ügyfél közvetlenül kapcsolódik az Application Service-végponthoz, és nem a Traffic Manageron keresztül. Mivel ez egy HTTPS-végpont, az ügyfél elvégzi a szükséges SSL/TLS-kézfogást, majd egy HTTP GET kérelmet tesz elérhetővé az "/login.aspx" oldalon.
 
@@ -93,7 +93,7 @@ A rekurzív DNS szolgáltatás gyorsítótárazza a kapott DNS-válaszokat. Az �
 
 * [Hogyan tudom megismerni a profilhoz tartozó lekérdezések mennyiségét?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Traffic Manager [végpont monitorozásáról és az automatikus feladatátvételről](traffic-manager-monitoring.md).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121442"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483745"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Gyakori kérdések az Azure-beli virtuális gépek SQL Serveréről
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="images"></a><a id="images"></a>Képek
+## <a name="images"></a><a id="images"></a> Képek
 
 1. **Milyen SQL Server virtuálisgép-katalógus lemezképei érhetők el?** 
 
@@ -85,7 +85,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
    Először hozzon létre egy SQL Server példánnyal rendelkező Azure-beli virtuális gépet. Ezután telepítse át a helyszíni adatbázisait erre a példányra. Az adatáttelepítési stratégiákat lásd: [SQL Server adatbázis áttelepítése egy Azure-beli virtuális gépen SQL Server](migrate-to-vm-from-sql-server.md).
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
@@ -164,6 +164,9 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
    Igen. A SQL Server telepítési adathordozó a **C** meghajtó egyik mappájában található. **Setup.exe** futtatása az adott helyről új SQL Server példányok hozzáadásához vagy a SQL Server egyéb telepített szolgáltatásainak módosításához a gépen. Vegye figyelembe, hogy egyes funkciók, például az automatikus biztonsági mentés, az automatikus javítás és a Azure Key Vault integráció, csak az alapértelmezett példányon vagy egy megfelelően konfigurált megnevezett példányon működnek (lásd a 3. kérdést). [A Azure Hybrid Benefiton](licensing-model-azure-hybrid-benefit-ahb-change.md) vagy az utólagos **elszámolású licencelési** modellen keresztül használó ügyfelek a SQL Server több példányát is telepíthetik a virtuális gépre anélkül, hogy további licencelési költségekkel kellene számolniuk. A további SQL Server példányok esetében a rendszererőforrások nem megfelelően vannak konfigurálva. 
 
+1. **Mi a példányok maximális száma egy virtuális gépen?**
+   SQL Server 2012 a SQL Server 2019 képes támogatni [50 példányokat](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) egy önálló kiszolgálón. Ez ugyanaz a korlát, függetlenül az Azure-ban a helyszínen. Az [ajánlott eljárások](performance-guidelines-best-practices.md#multiple-instances) című témakörből megtudhatja, hogyan készítheti elő a környezetét. 
+
 1. **Eltávolíthatom az SQL Server alapértelmezett példányát?**
 
    Igen, de bizonyos szempontokat figyelembe kell venni. Először is SQL Server kapcsolódó számlázás a virtuális gép licencelési modelljétől függően továbbra is előfordulhat. Másodszor, ahogy az előző válaszban is szerepel, vannak olyan funkciók, amelyek a [SQL Server IaaS-ügynök bővítményére](sql-server-iaas-agent-extension-automate-management.md)támaszkodnak. Ha a IaaS-bővítmény eltávolítása nélkül távolítja el az alapértelmezett példányt, a bővítmény továbbra is megkeresi az alapértelmezett példányt, és Eseménynapló-hibákat eredményezhet. Ezek a hibák a következő két forrásból származnak: **Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. Az egyik hiba a következőhöz hasonló lehet:
@@ -179,6 +182,9 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 1. **Eltávolíthatom teljesen az SQL Servert egy SQL Server-alapú virtuális gépről?**
 
    Igen, de továbbra is a SQL Server VMért kell fizetnie, az [SQL Server Azure-beli virtuális gépek díjszabási útmutatójában](pricing-guidance.md)leírtak szerint. Ha már nincs szüksége az SQL Serverre, üzembe helyezhet egy új virtuális gépet, majd oda migrálhatja az adatokat és az alkalmazásokat. Ezt követően már eltávolíthatja az SQL Servert futtató virtuális gépet.
+
+1. **Az Azure Portal használható egyszerre több példány ugyanazon a virtuális gépen történő kezelésére?**
+   Nem. A portál felügyeletét az SQL VM erőforrás-szolgáltató biztosítja, amely a SQL Server IaaS-ügynök bővítményére támaszkodik. Így ugyanazok a korlátozások vonatkoznak az erőforrás-szolgáltatóra, mint a bővítményre. A portálon csak egy alapértelmezett példány, vagy egy elnevezett példány kezelhető, ha megfelelően van konfigurálva. További információ: [SQL Server IaaS-ügynök bővítménye](sql-server-iaas-agent-extension-automate-management.md) 
    
 ## <a name="updating-and-patching"></a>Frissítés és javítás
 

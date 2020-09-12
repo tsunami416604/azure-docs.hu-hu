@@ -3,16 +3,16 @@ title: Dynamics 365 Business Central-ajánlat létrehozása – Microsoft keresk
 description: Ismerkedjen meg az új Dynamics 365 Business Central-ajánlat létrehozásával kapcsolatos lépésekkel és szempontokkal a Microsoft kereskedelmi piactéren a partner Centerben. Az ajánlatot az Azure Marketplace-en vagy a Cloud Solution Provider (CSP) programon keresztül is listázhatja vagy értékesítheti.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817051"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646847"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -131,10 +131,10 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -142,7 +142,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -280,7 +280,7 @@ A tesztelési meghajtó beállítása után a folytatás előtt válassza a **Pi
 
 Ezen az oldalon további információkat adhat meg az ajánlatáról, hogy segítsen az ajánlat érvényesítésében. Ezek az információk nem jelennek meg az ügyfelek számára, és nem jelennek meg a piactéren.
 
-### <a name="target-release"></a>Cél kiadása
+### <a name="target-release"></a>Célkiadás
 
 Jelezze, hogy a Microsoft Dynamics üzleti központjának melyik kiadását célozza meg a megoldás céljai: **current**, **Next Major**vagy **Next Minor**. Ez az információ lehetővé teszi a megoldás megfelelő tesztelését.
 
@@ -315,6 +315,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

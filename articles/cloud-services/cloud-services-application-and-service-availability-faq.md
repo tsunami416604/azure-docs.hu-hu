@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2596d4f6a8aa9fb4c95dfb5a3ccab7d7206f3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386918"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461306"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -33,7 +33,7 @@ A Microsoft körülbelül havonta egyszer kibocsátja a vendég operációs rend
 
 A legújabb vendég operációs rendszer frissítéseivel kapcsolatos részletes információkért lásd: az [Azure vendég operációs rendszer kiadásai és az SDK kompatibilitási mátrixa](cloud-services-guestos-update-matrix.md).
 
-A vendég és a gazdagép operációsrendszer-frissítéseinek technikai részleteit ismertető, az újraindítással és a mutatókkal kapcsolatos hasznos információkért tekintse meg az MSDN blog post [szerepkör-példányának újraindítását az operációs rendszer frissítései miatt](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+A vendég és a gazdagép operációsrendszer-frissítéseinek technikai részleteit ismertető, az újraindítással és a mutatókkal kapcsolatos hasznos információkért tekintse meg az MSDN blog post [szerepkör-példányának újraindítását az operációs rendszer frissítései miatt](https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Miért nem a szokásosnál hosszabb ideig tart a Felhőbeli szolgáltatásra irányuló első kérés a szolgáltatás tétlensége után?
 Amikor a webkiszolgáló megkapja az első kérést, először újrafordítja a kódot, majd feldolgozza a kérést. Ezért az első kérelem hosszabb időt vesz igénybe, mint a többi. Alapértelmezés szerint az alkalmazáskészlet felhasználói tétlenség esetén leáll. Az alkalmazáskészlet alapértelmezés szerint 1 740 percenként is újraindul (29 óra).

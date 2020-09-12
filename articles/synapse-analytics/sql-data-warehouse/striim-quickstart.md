@@ -1,6 +1,6 @@
 ---
 title: Striim – első lépések
-description: Gyorsan elsajátíthatja a Striim és a Azure SQL Data Warehouse.
+description: Ismerkedjen meg gyorsan a Striim és az Azure szinapszis Analytics szolgáltatással.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208552"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485974"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>A Striim Azure SQL DW Marketplace-ajánlat telepítési útmutatója
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim Azure szinapszis Analytics Marketplace ajánlat telepítési útmutató
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik SQL Data Warehouse meglévő példányával.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik az Azure szinapszis Analytics már meglévő példányával.
 
-Keresse meg a Striim az Azure Marketplace-en, és válassza ki a Striim az adatintegrációhoz SQL Data Warehouse (szakaszos) beállítást. 
+Keresse meg a Striim az Azure piactéren, és válassza ki a Striim az Azure szinapszis Analytics (szakaszos) beállításhoz való adatintegrációhoz 
 
 ![A Striim telepítése][install]
 
@@ -32,7 +32,7 @@ Konfigurálja a Striim virtuális gépet a megadott tulajdonságokkal, és jegye
 
 Az üzembe helyezést követően kattintson a masternode elemre \<VM Name> a Azure Portal, kattintson a kapcsolat lehetőségre, és másolja a bejelentkezést a VM helyi fiók használatával. 
 
-![A Striim SQL Data Warehousehoz való kapcsolódása][connect]
+![A Striim és az Azure szinapszis Analytics összekötése][connect]
 
 Töltse le a sqljdbc42. jar fájlt a számítógépről <https://www.microsoft.com/en-us/download/details.aspx?id=54671> a helyi gépre. 
 

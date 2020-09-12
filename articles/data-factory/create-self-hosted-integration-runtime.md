@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655864"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596115"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -36,7 +36,7 @@ Saját üzemeltetésű integrációs modul létrehozásához és beállításáh
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>Önkiszolgáló IR létrehozása Azure PowerShell használatával
 
-1. Ehhez a feladathoz Azure PowerShell is használhatja. Például:
+1. Ehhez a feladathoz Azure PowerShell is használhatja. Alább bemutatunk egy példát:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -205,7 +205,7 @@ A saját üzemeltetésű integrációs modult úgy is telepítheti, ha letölt e
 
     1. Ha szeretné, válassza a **hitelesítési kulcs megjelenítése** lehetőséget a kulcs szövegének megtekintéséhez.
 
-    1. Kattintson a **Register** (Regisztrálás) elemre.
+    1. Válassza a **Regisztráció** lehetőséget.
 
 ## <a name="high-availability-and-scalability"></a>Magas rendelkezésre állás és méretezhetőség
 
@@ -320,6 +320,7 @@ A vállalati tűzfal szintjén a következő tartományokat és kimenő portokat
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
+
 A Windows tűzfal szintjén vagy a számítógép szintjén ezek a kimenő portok általában engedélyezve vannak. Ha nem, akkor a tartományokat és portokat konfigurálhatja egy saját üzemeltetésű integrációs modult futtató gépen.
 
 > [!NOTE]
@@ -331,13 +332,13 @@ A Windows tűzfal szintjén vagy a számítógép szintjén ezek a kimenő porto
 
 Győződjön meg arról, hogy megfelelően engedélyezte a tűzfalszabályok beállításait a vállalati tűzfalon, a saját üzemeltetésű integrációs modul Windows tűzfalán, valamint magát az adattárat. Ezeknek a szabályoknak a engedélyezése lehetővé teszi, hogy a saját üzemeltetésű integrációs modul sikeresen csatlakozhasson a forráshoz és a fogadóhoz. Engedélyezze a szabályokat a másolási műveletben érintett összes adattárhoz.
 
-Ha például egy helyszíni adattárból egy SQL Database fogadóba vagy egy Azure SQL Data Warehouse fogadóba szeretne másolni, hajtsa végre a következő lépéseket:
+Ha például egy helyszíni adattárból egy SQL Database fogadóba vagy egy Azure szinapszis Analytics (korábban SQL Data Warehouse) fogadóba szeretne másolni, hajtsa végre a következő lépéseket:
 
 1. Engedélyezze a kimenő TCP-kommunikációt az 1433-as porton a Windows tűzfal és a vállalati tűzfal esetében is.
 1. Konfigurálja a SQL Database tűzfal beállításait úgy, hogy hozzáadja a saját üzemeltetésű integrációs modul számítógépének IP-címét az engedélyezett IP-címek listájához.
 
 > [!NOTE]
-> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, a saját üzemeltetésű integrációs modul nem fér hozzá közvetlenül az SQL-adatbázishoz. Ebben az esetben egy [szakaszos másolatot](copy-activity-performance.md) használhat SQL Database és SQL Data Warehouse. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
+> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, a saját üzemeltetésű integrációs modul nem fér hozzá közvetlenül az SQL-adatbázishoz. Ebben az esetben a SQL Database és az Azure szinapszis Analytics használatával [szakaszos másolatot](copy-activity-performance.md) készíthet. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
 
 ## <a name="proxy-server-considerations"></a>A proxykiszolgáló szempontjai
 
@@ -362,7 +363,7 @@ Miután regisztrálta a saját üzemeltetésű integrációs modult, ha szeretn�
 1. Nyissa meg **Microsoft Integration Runtime Configuration Manager**.
 1. Válassza a **Settings** (Beállítások) fület.
 1. A **http-proxy**alatt kattintson a **módosítás** hivatkozásra a **http-proxy beállítása** párbeszédpanel megnyitásához.
-1. Válassza a **Tovább** lehetőséget. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
+1. Kattintson a **Tovább** gombra. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
 
 A Configuration Manager eszköz használatával megtekintheti és frissítheti a HTTP-proxyt.
 
@@ -439,6 +440,6 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 Ha úgy dönt, hogy nem nyitja meg a 8060-as portot a saját üzemeltetésű integrációs modulban, használja a hitelesítő adatok beállítása az adattároló hitelesítő adatainak konfigurálására szolgáló mechanizmust. Használhatja például a **New-AzDataFactoryV2LinkedServiceEncryptCredential PowerShell-** parancsmagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Részletes útmutatásért lásd [: oktatóanyag: helyszíni információk másolása a felhőbe](tutorial-hybrid-copy-powershell.md).

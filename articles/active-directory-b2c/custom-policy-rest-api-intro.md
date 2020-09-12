@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388935"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594186"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API jogcímek cseréjének integrálása a Azure AD B2C egyéni szabályzatba
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az identitási élmény keretrendszere, amely Azure Active Directory B2C (Azure AD B2C), a felhasználói úton lévő REST API-kkal is integrálható. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan felhasználói utat, amely [Rest-technikai profil](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster)használatával kommunikál egy Rest-szolgáltatással.
+Az identitási élmény keretrendszere, amely Azure Active Directory B2C (Azure AD B2C), a felhasználói úton lévő REST API-kkal is integrálható. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan felhasználói utat, amely [Rest-technikai profil](restful-technical-profile.md)használatával kommunikál egy Rest-szolgáltatással.
 
 A Azure AD B2C használatával saját üzleti logikát adhat hozzá egy felhasználói útra, ha meghívja saját REST-szolgáltatását. Az Identity Experience Framework az adatok küldését és fogadását is elküldheti a REST-szolgáltatástól az Exchange jogcímeihez. Megteheti például a következőt:
 
@@ -125,9 +125,9 @@ A kimeneti jogcímeknek a következőhöz hasonlóan kell kinézniük:
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts.0.person.name" />
-  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts.0.person.emails.0.email" />
-  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts.0.person.loyaltyNumber" />
+  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts[0].person.name" />
+  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts[0].person.emails[0].email" />
+  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts[0].person.loyaltyNumber" />
 </OutputClaims>
 ```
 
@@ -179,7 +179,7 @@ A REST API szolgáltatásra irányuló kérés Azure AD B2C kiszolgálóról sz�
 
 Tervezze meg REST API szolgáltatását és a mögöttes összetevőit (például az adatbázist és a fájlrendszert) a rendelkezésre álláshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 

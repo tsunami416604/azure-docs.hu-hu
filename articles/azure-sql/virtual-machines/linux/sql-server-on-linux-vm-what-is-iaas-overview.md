@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41b74ed713485679576fdf7f4f0df54803b56caa
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6e6038e2c0aa4f6b41c4a4da9bde6e98555ceb31
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192109"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613574"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,6 +28,9 @@ ms.locfileid: "88192109"
 Az Azure Virtual Machines SQL Server lehetővé teszi a felhőalapú SQL Server teljes verziójának használatát anélkül, hogy bármilyen helyszíni hardvert kellene kezelnie. Az SQL Servert futtató virtuális gépekkel a használatalapú licencelési költségek is leegyszerűsödnek.
 
 Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/windows/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Ez számos különböző SQL Server számítási feladatra teszi alkalmassá a virtuális gépeket. 
+
+Ha még nem ismeri az Azure SQL-t, tekintse meg SQL Server az Azure-beli *virtuális gépek áttekintését ismertető* videót a részletes [Azure SQL-videós sorozatban](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> Ismerkedés a SQL Server virtuális gépekkel
 
@@ -54,9 +57,9 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 
 | Disztribúció | [Adatbázismotor](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Eszközök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server ügynök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Teljes szöveges keresés](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [Magas rendelkezésreállási bővítmény](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
-| SLES | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
-| Ubuntu | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| RHEL | ![RHEL és adatbázismotor](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL és eszközök](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL és SQL Server ügynök](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL és teljes szöveges keresés](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL és SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL és HA bővítmény](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| SLES | ![SLES és adatbázismotor](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES és eszközök](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES és SQL Server ügynök](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES és teljes szöveges keresés](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES és SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES és HA bővítmény](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
+| Ubuntu | ![Ubuntu és adatbázismotor](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu és eszközök](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu és SQL Server ügynök](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu és teljes szöveges keresés](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu és SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu és HA bővítmény](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
 

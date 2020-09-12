@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ca76ec5bef1d908ca3cea6ce0f58b1205c1676ca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144090"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661577"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>Képzés elküldése egy számítási célra
 
@@ -31,7 +31,7 @@ Mindössze annyit kell tennie, hogy a **parancsfájl futtatási konfigurációj�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
-* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md), `ws`
 * Egy számítási cél `my_compute_target` .  Számítási cél létrehozása a rel:
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
@@ -39,11 +39,11 @@ Mindössze annyit kell tennie, hogy a **parancsfájl futtatási konfigurációj�
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Mi az a parancsfájl-futtatási konfiguráció?
 
-A betanítási kísérletet egy [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) -objektummal küldi el.  Ez az objektum az alábbiakat tartalmazza:
+A betanítási kísérletet egy [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) -objektummal küldi el.  Ez az objektum az alábbiakat tartalmazza:
 
 * **source_directory**: a betanítási parancsfájlt tartalmazó forrás könyvtára
 * **parancsfájl**: a betanítási parancsfájl azonosítása
-* **run_config**: a [futtatási konfiguráció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py), amely meghatározza, hogy hol történjen a képzés. A alkalmazásban `run_config` meg kell adnia a számítási célt és azt a környezetet, amelyet a betanítási parancsfájl futtatásakor kíván használni.  
+* **run_config**: a [futtatási konfiguráció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true), amely meghatározza, hogy hol történjen a képzés. A alkalmazásban `run_config` meg kell adnia a számítási célt és azt a környezetet, amelyet a betanítási parancsfájl futtatásakor kíván használni.  
 
 ## <a name="whats-an-environment"></a>Mi az a környezet?
 
@@ -167,7 +167,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
-* Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.
+* Ismerje meg, hogyan [javíthatja hatékonyan a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához? View = Azure-ml-a&megőrzése – nézet = true)
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).
-* Tekintse meg a [RunConfiguration Class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-referenciát.
+* Tekintse meg a [RunConfiguration Class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK-referenciát.
 * [Azure Machine Learning használata az Azure Virtual Networks használatával](how-to-enable-virtual-network.md)

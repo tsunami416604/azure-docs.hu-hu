@@ -2,17 +2,17 @@
 title: Tudnivalók az Azure ExpressRoute Directről
 description: Ismerje meg az Azure ExpressRoute Direct főbb funkcióit, valamint azokat az információkat, amelyek a közvetlen ExpressRoute, például az elérhető SKU-hoz és a technikai követelményekhez szükségesek.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jaredro
-ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192345"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566398"
 ---
 # <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
 
@@ -44,7 +44,7 @@ A ExpressRoute Direct használata előtt először regisztrálnia kell az előfi
 
 ## <a name="expressroute-direct-circuits"></a>Közvetlen ExpressRoute áramkörök
 
-A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services, például a Microsoft Azure és az Office 365 között.
+A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services, például a Microsoft Azure és a Microsoft 365 között.
 
 Minden egyes társítási hely rendelkezik hozzáféréssel a Microsoft globális hálózatához, és alapértelmezés szerint bármely régióhoz hozzáférhet a geopolitikai zónában, és az összes globális régióhoz prémium szintű áramkör érhető el.  
 
@@ -91,6 +91,6 @@ A ExpressRoute Direct a QinQ és a Dot1Q VLAN-címkézést is támogatja.
 
 A ExpressRoute Direct a Microsoft globális hálózatának aktív/aktív redundáns kapcsolataival azonos nagyvállalati szintű SLA-t biztosít. A ExpressRoute-infrastruktúra redundáns és a Microsoft globális hálózattal való kapcsolat redundáns és sokrétű, és ennek megfelelően méretezhető az ügyfelek igényei szerint. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az ExpressRoute Direct konfigurálása](expressroute-howto-erdirect.md)

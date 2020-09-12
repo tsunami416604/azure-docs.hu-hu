@@ -1,6 +1,6 @@
 ---
-title: A klasszikus Azure-beli virtuális gépeket a 2023-es március 1-én felhasználjuk
-description: A cikk magas szintű áttekintést nyújt a virtuális gépek kivonásáról
+title: Azure-beli virtuális gépek (klasszikus) kivonása a 2023. március 1-jén
+description: Ez a cikk magas szintű áttekintést nyújt a klasszikus üzemi modellel létrehozott virtuális gépek kivonásáról.
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,56 +8,64 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 7f2db507176d65e7794607e83db8605b2f892c1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754803"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646627"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>A IaaS-erőforrások migrálása a Azure Resource Managerra 2023. március 1-től 
 
-2014-én a IaaS-t elindítottuk Azure Resource Manageron, és azóta is javultak a képességek. Mivel [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) mostantól teljes körű IaaS képességekkel és egyéb fejlesztésekkel rendelkezik, a IaaS-alapú virtuális gépek felügyeletét az [Service Manager Azure](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) -on keresztül, a 2020. február 28-án, és ez a funkció teljes mértékben megszűnik, 2023. március 1-jén. 
+A 2014-es verzióban az infrastruktúra szolgáltatásként (IaaS) indult [Azure Resource Manageron](https://azure.microsoft.com/features/resource-manager/). Azóta is fejlesztjük a képességeket. Mivel Azure Resource Manager már teljes körű IaaS képességekkel és egyéb fejlesztésekkel rendelkezik, a IaaS virtuális gépek (VM-EK) felügyeletét az [Azure Service Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) segítségével, 2020. február 28-án érvénytelenítettük. Ez a funkció 2023 március 1-től teljesen megszűnik. 
 
-Napjainkban a IaaS virtuális gépek 90%-a Azure Resource Manager használ. Ha az Azure Service Manager (ASM) használatával IaaS-erőforrásokat használ, kezdje el megtervezni az áttelepítést, és fejezze be azt a 2023-as számú [Azure Resource Manager](../azure-resource-manager/management/index.yml)kihasználása érdekében.
+Napjainkban a IaaS virtuális gépek körülbelül 90%-a használja a Azure Resource Manager. Ha a IaaS-erőforrásokat az ASM-en keresztül használja, kezdje el megtervezni az áttelepítés megtervezését. A [Azure Resource Manager](../azure-resource-manager/management/index.yml)kihasználása érdekében a 2023. március 1-től elvégezhető.
 
-A klasszikus virtuális gépek a [modern életciklus-szabályzatot](https://support.microsoft.com/help/30881/modern-lifecycle-policy) követik a nyugdíjazáshoz.
+A klasszikus üzemi modellel létrehozott virtuális gépek a [modern életciklus-szabályzatot](https://support.microsoft.com/help/30881/modern-lifecycle-policy) fogják követni a nyugdíjazáshoz.
 
 ## <a name="how-does-this-affect-me"></a>Hogyan érint ez engem? 
 
-- A 2020. február 28-án kezdődően a IaaS virtuális gépeket nem használó ügyfelek az Azure Service Manager (ASM) használatával nem tudják létrehozni 2020 a klasszikus virtuális gépeket. 
-- 2023. március 1-én az ügyfelek többé nem tudják elindítani a IaaS virtuális gépeket az Azure Service Manager használatával, és a továbbra is fut vagy lefoglalt, és fel lesz foglalva. 
-- 2023. március 1-jén a nem átAzure Resource Manager telepített előfizetéseket a rendszer a többi klasszikus virtuális gép törlésére vonatkozó ütemtervekkel kapcsolatban tájékoztatja.  
+- 2020. február 28-án a IaaS virtuális gépeket nem használó ügyfelek a 2020 februárjában már nem hozhatnak létre virtuális gépeket (klasszikus). 
+- 2023. március 1-jén az ügyfelek többé nem tudják elindítani a IaaS virtuális gépeket az ASM használatával. A rendszer leállítja és lefoglalja a még futó vagy lefoglalt összes szolgáltatást. 
+- 2023. március 1-jén a nem átAzure Resource Manager telepített előfizetéseket a rendszer a fennmaradó virtuális gépek (klasszikus) törlésére vonatkozó ütemtervekkel kapcsolatban tájékoztatja.  
 
-Ez a nyugdíjazás **nem** érinti a következő Azure-szolgáltatásokat és-funkciókat: 
-- Cloud Services 
-- A klasszikus virtuális gépek által **nem** használt Storage-fiókok 
-- A klasszikus virtuális gépek **nem** használják a virtuális hálózatokat (virtuális hálózatok). 
+Ez a nyugdíjazás *nem* érinti a következő Azure-szolgáltatásokat és-funkciókat: 
+- Azure Cloud Services 
+- Virtuális gépek által *nem* használt Storage-fiókok (klasszikus) 
+- Virtuális gépek által *nem* használt virtuális hálózatok (klasszikus) 
 - Egyéb klasszikus erőforrások
 
 ## <a name="what-actions-should-i-take"></a>Milyen műveleteket kell elvégeznie? 
 
-- Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre, ma. 
+Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre, ma. 
 
-- Készítse el az összes érintett virtuális gép listáját. Az [Azure Portal](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) virtuálisgép-paneljén található "Virtual Machines (klasszikus)" virtuálisgép-típus az előfizetésen belüli összes érintett virtuális gép. 
+1. Készítse el az összes érintett virtuális gép listáját: 
 
-- [További](./windows/migration-classic-resource-manager-overview.md) információ a klasszikus [Linux](./linux/migration-classic-resource-manager-plan.md) -és Windows- [alapú](./windows/migration-classic-resource-manager-plan.md) virtuális gépek Azure Resource Manager való áttelepítéséről.
+   - A **Virtual Machines (klasszikus) típusú virtuális gépek a Azure Portal virtuálisgép-** [paneljén](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) az előfizetésen belüli összes érintett virtuális gépre vonatkoznak. 
+   - Az Azure Resource Graph-t a [portál](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) vagy a [PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) használatával is lekérdezheti az összes megjelölt virtuális gép (klasszikus) és a kapcsolódó információk listájának megtekintéséhez a kiválasztott előfizetések esetében. 
+   - 2020. február 8-án és szeptember 2-án az előfizetések tulajdonosainak küldött e-maileket a virtuális gépeket tartalmazó összes előfizetés listájával (klasszikus). A lista létrehozásához használja őket. 
 
-- További információkért tekintse meg a [klasszikusról Azure Resource Manager áttelepítésre vonatkozó gyakori kérdéseket](./migration-classic-resource-manager-faq.md) .
+1. [További](./windows/migration-classic-resource-manager-overview.md) információ a [Linux](./linux/migration-classic-resource-manager-plan.md) és a [Windows rendszerű](./windows/migration-classic-resource-manager-plan.md) virtuális gépek (klasszikus) Azure Resource Manager való áttelepítéséről. További információ: a [klasszikusról Azure Resource Manager áttelepítésre vonatkozó gyakori kérdések](./migration-classic-resource-manager-faq.md).
 
-- Technikai kérdések, problémák és előfizetések hozzáadása az engedélyezési listához [forduljon az ügyfélszolgálathoz](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
+1. Javasoljuk, hogy indítsa el a tervezést a [platform-támogatás áttelepítési eszköz](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) használatával a meglévő virtuális gépek három egyszerű lépéssel történő áttelepítéséhez: érvényesítés, előkészítés és végrehajtás. Az eszköz úgy lett kialakítva, hogy a virtuális gépeket minimálisan, állásidő nélkül telepítse át. 
 
-- A gyakori kérdések és visszajelzések nem részei a következő megjegyzésekben olvashatók.
+   1. Az első lépés, a validate nem befolyásolja a meglévő telepítést, és felsorolja az áttelepítéshez nem támogatott forgatókönyveket. 
+   1. A központi telepítés kijavításához és az áttelepítéshez való felkészüléshez végezze el a [megkerülő megoldások listáját](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview#unsupported-features-and-configurations) . 
+   1. Ideális esetben az összes érvényesítési hiba kijavítása után az előkészítés és a végrehajtás lépései során nem merülhet fel probléma. A végrehajtás sikeres végrehajtása után a rendszer áttelepíti az üzemelő példányt Azure Resource Manager, és a Azure Resource Manager által elérhetővé tett új API-kkal felügyelhető. 
 
-- A lehető leghamarabb fejezze be az áttelepítést az üzleti hatás elkerülése és a jobb teljesítmény, a biztonság & a Azure Resource Manager által nyújtott új szolgáltatások kihasználása érdekében. 
+   Ha az áttelepítési eszköz nem alkalmas az áttelepítésre, az áttelepítéshez [más számítási ajánlatokat](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree) is megvizsgálhat. Mivel számos Azure-beli számítási ajánlat létezik, és ezek különböznek egymástól, nem biztosítható a platform által támogatott áttelepítési útvonal.  
 
-## <a name="what-resources-are-provided-to-me-for-this-migration"></a>Milyen erőforrásokat biztosítanak nekem ehhez az áttelepítéshez?
+1. A technikai kérdésekkel, problémákkal és az előfizetések engedélyezési listához való hozzáadásával kapcsolatos segítségért [forduljon az ügyfélszolgálathoz](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html): Microsoft & közösségi támogatás az áttelepítéshez
+1. A lehető leghamarabb fejezze be az áttelepítést az üzleti hatás elkerülése és a Azure Resource Manager jobb teljesítményének, biztonságának és új funkcióinak kihasználásához. 
 
-- [Azure-áttelepítési támogatás](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): az áttelepítés során technikai segítséget nyújtó dedikált támogatási csapat
+## <a name="what-resources-are-available-for-this-migration"></a>Milyen erőforrások érhetők el ehhez az áttelepítéshez?
 
-- [Microsoft Fast Track](https://www.microsoft.com/fasttrack): a Microsoft Fast Track csapata technikai segítséget nyújthat a jogosult ügyfeleknek való áttelepítés során. 
+- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html): Microsoft és közösségi támogatás az áttelepítéshez.
 
-- Ha a vállalata/szervezete a Microsofttal és/vagy a Microsoft képviselőjével (például a Cloud Solution Architect (CSA), a technikai fiókkezelő (TAMs) szolgáltatással) együttműködve működik együtt, a Migrálás további erőforrásaiért vegye fel velük a kapcsolatot. 
+- [Azure-áttelepítési támogatás](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): az áttelepítés során technikai segítséget nyújtó dedikált támogatási csoport.
+
+- [Microsoft Fast Track](https://www.microsoft.com/fasttrack): csapat, amely technikai segítséget nyújthat a jogosult ügyfeleknek való áttelepítés során. 
+
+Ha a vállalata vagy szervezete a Microsofttal vagy a Microsoft képviselőivel (például a Cloud Solution Architects (CSAs) vagy a Technical Account Managers (TAMs) szolgáltatással együttműködve dolgozik, akkor további forrásokat is megtalálhat a Migrálás érdekében. 
 

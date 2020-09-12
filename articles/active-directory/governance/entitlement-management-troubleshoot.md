@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783331"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460796"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
@@ -33,7 +33,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Ha hozzáférési csomagok létrehozásakor vagy megtekintésekor kap hozzáférés-megtagadási üzenetet, és Ön egy katalógus-létrehozó csoport tagja, létre kell [hoznia egy katalógust](entitlement-management-catalog-create.md) az első hozzáférési csomag létrehozása előtt.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 * Az alkalmazások szerepköreit maguk az alkalmazások határozzák meg, a kezelésük pedig az Azure AD-ben történik. Ha egy alkalmazás nem rendelkezik erőforrás-szerepkörökkel, a jogosultságok kezelése a felhasználókat egy **alapértelmezett hozzáférési** szerepkörhöz rendeli.
 
@@ -47,7 +47,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Egy csoport tagjainak eltávolításakor a rendszer eltávolítja azokat a Microsoft 365 csoportból is. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](/microsoftteams/office-365-groups#group-membership).
 
-* Győződjön meg arról, hogy a címtár nincs-e több földrajzi helyes használatra konfigurálva. A jogosultságkezelés jelenleg nem támogatja a Multi-Geo-helyeket a SharePoint Online esetében. A SharePoint Online-webhelyeknek az alapértelmezett földrajzi helyen kell lenniük a jogosultságkezeléssel történő szabályozáshoz. További információkért lásd: [a OneDrive és a SharePoint Online több földrajzi lehetőségei](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Győződjön meg arról, hogy a címtár nincs-e több földrajzi helyes használatra konfigurálva. A jogosultságkezelés jelenleg nem támogatja a Multi-Geo-helyeket a SharePoint Online esetében. A SharePoint Online-webhelyeknek az alapértelmezett földrajzi helyen kell lenniük a jogosultságkezeléssel történő szabályozáshoz. További információkért lásd: [a OneDrive és a SharePoint Online több földrajzi lehetőségei](/Microsoft 365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Hozzáférési csomagok
 

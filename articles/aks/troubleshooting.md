@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056511"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460320"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -82,7 +82,7 @@ Az AK-ban a slo és a szolgáltatói szerződéseket (SLA-kat) biztosító magok
     - https://github.com/helm/helm/issues/4543
 - **[A csomópontok közötti belső forgalom blokkolva van?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
-## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Kapok `TCP timeouts` , például`dial tcp <Node_IP>:10250: i/o timeout`
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Kapok `TCP timeouts` , például `dial tcp <Node_IP>:10250: i/o timeout`
 
 Ezek az időtúllépések a letiltott csomópontok közötti belső forgalomhoz kapcsolódnak. Ellenőrizze, hogy nem blokkolja-e a forgalmat, például a fürt csomópontjaihoz tartozó alhálózat [hálózati biztonsági csoportjaival](concepts-security.md#azure-network-security-groups) .
 
@@ -98,13 +98,17 @@ A figyelmeztetések oka, hogy a fürtön engedélyezve van a RBAC, és az irány
 
 Győződjön meg arról, hogy a 22-es, 9000 és 1194 portok nyitva vannak az API-kiszolgálóhoz való csatlakozáshoz. A parancs használatával győződjön meg arról, hogy a `tunnelfront` vagy a `aks-link` Pod a *Kube-System* névtérben fut-e `kubectl get pods --namespace kube-system` . Ha nem, akkor kényszerítse a pod törlését, és a rendszer újraindul.
 
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Az `"tls: client offered only unsupported versions"` én ügyfelem az AK API-hoz való csatlakozáskor kapok. Mit tegyek?
+
+A minimálisan támogatott TLS-verzió a TLS 1,2.
+
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Megpróbálok frissíteni vagy méretezni, és `"Changing property 'imageReference' is not allowed"` hibaüzenetet kapok. Hogyan kijavítani ezt a problémát?
 
 Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürtön belüli ügynök-csomópontokban módosította. A címkék és az erőforrások egyéb tulajdonságai módosíthatók vagy törölhetők a MC_ * erőforráscsoport váratlan eredményekhez vezethet. Az AK-fürt MC_ * csoportjában található erőforrások módosítása megszakítja a szolgáltatási szint célkitűzését (SLO).
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Hibaüzeneteket kapok, hogy a fürtem hibás állapotban van, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás.
 
-*Ez a hibaelhárítási segítség a következő címről származik:https://aka.ms/aks-cluster-failed*
+*Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-cluster-failed*
 
 Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
@@ -115,7 +119,7 @@ Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba ker
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Hibákba ütközik, amikor megpróbálja frissíteni vagy méretezni az adott állapotot a fürt frissítése vagy frissítése sikertelen volt.
 
-*Ez a hibaelhárítási segítség a következő címről származik:https://aka.ms/aks-pending-upgrade*
+*Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-pending-upgrade*
 
  Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus csak akkor fejeződik be a célként megadott erőforráson, ha a következő kérelem ugyanarra az erőforrásra van leképezve. Ennek eredményeképpen a műveletek korlátozottak, amikor az aktív verziófrissítési vagy méretezési műveletek történnek vagy megkíséreltek. 
 
@@ -176,9 +180,9 @@ A probléma a következő megkerülő megoldásokkal használható:
 * Ha Automation-parancsfájlokat használ, adja hozzá az egyszerű szolgáltatás létrehozása és az AK-fürt létrehozása közötti késleltetést.
 * Ha Azure Portal használ, térjen vissza a fürt beállításaihoz a létrehozás során, és néhány perc múlva próbálja megismételni az érvényesítési oldalt.
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>`"AADSTS7000215: Invalid client secret is provided."`Az AK API használatakor kapok. Mit tegyek?
 
-
-
+Ez általában az egyszerű szolgáltatásnév hitelesítő adatainak lejárta miatt fordul elő. [Egy AK-fürt hitelesítő adatainak frissítése.](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Hibák jelentkeznek a kimenő forgalom korlátozása után
 
@@ -221,7 +225,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | n.a. |
+| 1,12 és újabb verziók | N/A |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -278,7 +282,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | n.a. |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -297,7 +301,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | n.a. |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -406,7 +410,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | n.a. |
+| 1,14 és újabb verziók | N/A |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 

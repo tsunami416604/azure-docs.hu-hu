@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456590"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646254"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
@@ -35,13 +35,13 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
 
 2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
 
-    Ha az adat [táblázatos](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
+    Ha az adat [táblázatos](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
 
 3.  A **művelet** legördülő listában adja meg, hogy az adatkészlet mentése előtt szeretné-e elvégezni az adattisztítást:  
   
     - **Nincs**: használja az-t a következőképpen.  
   
-    - **SetMissingValue**: egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez**a **taxit** adja meg, akkor az adatkészlet **Taxi** összes példánya a hiányzó értékre lesz módosítva.
+    - **SetMissingValue**: egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az  **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez**a **taxit** adja meg, akkor az adatkészlet **Taxi** összes példánya a hiányzó értékre lesz módosítva.
   
     - **ReplaceValues**: ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
 
@@ -68,6 +68,6 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
 -   Az egyéni csere műveletei esetén a csere csendesen meghiúsul, ha helyettesítő karaktert használ, amely nem felel meg az oszlop aktuális adattípusának.  
 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

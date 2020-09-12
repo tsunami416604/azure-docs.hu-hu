@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff327372a0ec22ca6291615ca64f01a4aa5807be
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325797"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646224"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,9 +37,9 @@ A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a
     > [!IMPORTANT]
     > A cikkben szereplő kódrészletek azt feltételezik, hogy a következő változókat állította be:
     >
-    > * `ws`– Azure Machine Learning munkaterület.
-    > * `model`– A rendszerbe állított regisztrált modell.
-    > * `inference_config`– A modellre vonatkozó következtetési konfiguráció.
+    > * `ws` – Azure Machine Learning munkaterület.
+    > * `model` – A rendszerbe állított regisztrált modell.
+    > * `inference_config` – A modellre vonatkozó következtetési konfiguráció.
     >
     > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
@@ -63,7 +63,7 @@ További információ a beléptetési parancsfájlról: [pontozási kód defini�
 Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet azt mutatja be, hogyan hozhat létre egy új csomagot a modellből és a következtetések konfigurációjában a blob triggerrel:
+A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet azt mutatja be, hogyan hozhat létre egy új csomagot a modellből és a következtetések konfigurációjában a blob triggerrel:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
@@ -184,7 +184,7 @@ Ekkor `show_output=True` megjelenik a Docker-létrehozási folyamat kimenete. A 
     ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
-    Jegyezze fel ezt a kapcsolódási karakterláncot a Function alkalmazás számára történő biztosításhoz. Később fogjuk használni, amikor a kért`<triggerConnectionString>`
+    Jegyezze fel ezt a kapcsolódási karakterláncot a Function alkalmazás számára történő biztosításhoz. Később fogjuk használni, amikor a kért `<triggerConnectionString>`
 
 1. Hozza létre a tárolót a bemenethez és a kimenethez a Storage-fiókban. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott kapcsolatok sztringre:
 
@@ -295,10 +295,10 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
 
 A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob Storage által aktivált függvények létrehozását](/azure/azure-functions/functions-create-storage-blob-triggered-function) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](/azure/azure-functions/functions-create-function-linux-custom-image) dokumentációjában.
 * További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [A modell üzembe helyezése Azure app Service](how-to-deploy-app-service.md).
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
-* [API-referencia](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)
+* [API-referencia](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)

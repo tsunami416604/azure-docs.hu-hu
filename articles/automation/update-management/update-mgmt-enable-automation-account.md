@@ -2,19 +2,19 @@
 title: Azure Automation Update Management engedélyezése az Automation-fiókból
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management Automation-fiókból.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 930861c61843c5963c83d8fa6dc1efdce20853f4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450244"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669499"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
-Ez a cikk azt ismerteti, hogyan használható az Automation-fiókja a virtuális gépek [Update Management](update-mgmt-overview.md) funkciójának engedélyezésére a környezetben. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet.
+Ez a cikk azt ismerteti, hogyan használhatja az Automation-fiókját a környezetben található virtuális gépek [Update Management](update-mgmt-overview.md) funkciójának engedélyezésére, beleértve az [Azure arc-kompatibilis kiszolgálókon](../../azure-arc/servers/overview.md) (előzetes verzió) regisztrált gépeket és kiszolgálókat is. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő Azure-beli virtuális gépet.
 
 > [!NOTE]
 > A Update Management engedélyezésekor csak bizonyos régiók támogatottak Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](../how-to/region-mappings.md).
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan használható az Automation-fiókja a virtuális
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy [Automation-fiók](../index.yml) a gépek kezeléséhez.
-* Egy [virtuális gép](../../virtual-machines/windows/quick-create-portal.md).
+* Egy [Azure-beli virtuális gép](../../virtual-machines/windows/quick-create-portal.md), vagy az arc-kompatibilis kiszolgálókkal (előzetes verzió) regisztrált virtuális gépek vagy kiszolgálók. A nem Azure-beli virtuális gépeknek vagy kiszolgálóknak telepítve kell lennie a Windows vagy Linux rendszerhez készült [log Analytics ügynöknek](../../azure-monitor/platform/log-analytics-agent.md) , és az Automation-fiókhoz társított munkaterületre kell jelentenie Update Management engedélyezve van a rendszerben. Az ügynököt az Azure Log Analytics virtuálisgép- [bővítmény](../../azure-arc/servers/manage-vm-extensions.md) Azure arc használatával történő üzembe helyezésével telepítheti az ív használatára képes kiszolgálókra.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -65,16 +65,21 @@ A munkaterülethez már jelentést küldő gépeket vagy gépeket manuálisan ke
 
     ![Mentett keresések](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Az összes rendelkezésre álló gép Update Management engedélyezéséhez válassza az Engedélyezés lehetőséget az összes **elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt a számítógépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületnek jelentett számítógépek összes nevét a számítógépcsoport mentett keresési lekérdezéséhez. Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** gombot.
+3. A munkaterületre jelentett összes elérhető gép Update Management engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt a számítógépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületnek jelentett számítógépek összes nevét a számítógépcsoport mentett keresési lekérdezéséhez `MicrosoftDefaultComputerGroup` . Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** gombot.
 
-4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a lehetőség törli a mentett kereséseket és a hatókör-konfigurációkat a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** gombot, mivel nem maradt hatókör-konfiguráció.
+4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és lehetővé teszi, hogy a szolgáltatás a jelenleg vagy a jövőben is tartalmazza az összes Azure-és nem Azure-beli gépet, amely a munkaterületre vonatkozik. Ha bejelöli ezt a jelölőnégyzetet, a művelet véglegesen letiltja a **gépek kezelése** gombot, mert nincs elérhető hatókör-konfiguráció.
 
-5. Szükség esetén ismét hozzáadhatja a hatókör-konfigurációkat a kezdeti mentett keresések újbóli hozzáadásával. További információ: a [Update Management központi telepítési hatókörének korlátozása](update-mgmt-scope-configuration.md).
+    > [!NOTE]
+    > Mivel ez a lehetőség törli a mentett kereséseket és a hatókör-konfigurációkat Log Analyticson belül, fontos, hogy a beállítás kiválasztása előtt távolítsa el az összes törlési zárolást a Log Analytics munkaterületen. Ha nem, akkor a beállítás nem távolítja el a konfigurációkat, ezért azokat manuálisan kell eltávolítania.
+
+5. Szükség esetén ismét hozzáadhatja a hatókör-konfigurációkat a kezdeti mentett keresési lekérdezés újbóli hozzáadásával. További információ: a [Update Management központi telepítési hatókörének korlátozása](update-mgmt-scope-configuration.md).
 
 6. Egy vagy több gép funkciójának engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd az egyes gépek melletti **Hozzáadás** lehetőséget. Ez a feladat hozzáadja a kiválasztott számítógépneveket a szolgáltatáshoz tartozó számítógépcsoport mentett keresési lekérdezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Update Management virtuális gépekhez való használatához lásd: [a virtuális gépek frissítéseinek és javításának kezelése](update-mgmt-manage-updates-for-vm.md).
+
+* Ha már nincs szükség a virtuális gépek vagy kiszolgálók Update Management használatával történő felügyeletére, tekintse meg a [virtuális gépek eltávolítása a Update Managementról](update-mgmt-remove-vms.md)című témakört.
 
 * Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](../troubleshoot/update-management.md).

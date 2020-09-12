@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ab8a49f62735a47c4ccc9fa488eed60088cd9c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508602"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658600"
 ---
 # <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>A nagyvállalati (előzetes verzió) és a Azure Machine Learning alapszintű kiadásai 
 
@@ -113,12 +113,12 @@ Megtudhatja, hogyan [frissíthet egy alapszintű munkaterületet nagyvállalati 
 | Képességek     | Kiadás                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](how-to-assign-roles.md) támogatása                                           | Mind                     |
-| [Virtual Network (VNet)-](how-to-enable-virtual-network.md) támogatás a számítási feladatokhoz                                         | Mind                     |
+| [Virtual Network (VNet)-](how-to-secure-training-vnet.md) támogatás a számítási feladatokhoz                                         | Mind                     |
 | Pontozási végpont hitelesítése                                                    | Mind                     |
 | [Munkaterület privát hivatkozása](how-to-configure-private-link.md)                                                            | Mind                     |
 | [Kvótakezelés](how-to-manage-quotas.md) a munkaterületek között                                                 | Csak Enterprise Edition |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Machine Learning [Edition áttekintése és díjszabása lapon](https://azure.microsoft.com/pricing/details/machine-learning/)elérhető tudnivalókról. 
 

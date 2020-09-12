@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34f781db2a731cc6eb38c8241d0e1897517f2c9a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226794"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661803"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -30,10 +30,10 @@ Az üzemi szintű modell képzéséhez használjon [Azure Machine learning szám
 
 A számítási példány egy teljes körűen felügyelt felhőalapú munkaállomás, amely a gépi tanulási fejlesztési környezethez van optimalizálva. A következő előnyöket biztosítja:
 
-|Főbb előnyök|Leírás|
+|Főbb előnyök|Description|
 |----|----|
 |Termelékenység|A modelleket integrált jegyzetfüzetekkel és a Azure Machine Learning Studio következő eszközeivel hozhatja létre és helyezheti üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio (előzetes verzió)<br/>A számítási példány teljes mértékben integrálva van Azure Machine Learning munkaterülettel és Studióval. A jegyzetfüzeteket és az egyéb adatszakértőket a munkaterületen is megoszthatja. A VS Code-távfelügyeleti szolgáltatást [SSH](how-to-set-up-vs-code-remote.md) -val is beállíthatja |
-|Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-enable-virtual-network.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához<br/>TLS 1,2 engedélyezve |
+|Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-secure-training-vnet.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához<br/>TLS 1,2 engedélyezve |
 |Előre konfigurálva &nbsp; ( &nbsp; ml)|Időt takaríthat meg a telepítési feladatokban előre konfigurált és naprakész ML-csomagokkal, mély tanulási keretrendszerekkel, GPU-illesztővel.|
 |Teljes mértékben testreszabható|Az Azure-beli virtuálisgép-típusok széles körű támogatása, beleértve a GPU-ket és a megőrzött alacsony szintű testreszabásokat, például a csomagok és illesztőprogramok telepítésének speciális forgatókönyveit. |
 
@@ -69,7 +69,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Anaconda Python||
 |Jupyter és-bővítmények||
 |Jupyterlab és-bővítmények||
-[Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-run-jupyter-notebooks.md#terminal) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
+[Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-run-jupyter-notebooks.md#terminal) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
 |Egyéb PyPI-csomagok|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep learning-csomagok|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -135,6 +135,9 @@ Ezeket a műveleteket a RBAC is vezérelheti:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
+
+Ahhoz, hogy a számítási példány létrehozója hozzáférhessen a számítási példány Jupyter/JupyterLab/RStudio, az alábbi (vagy magasabb) RBAC engedélyre van szükség
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/applicationaccess*
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Számítási példány létrehozása
 

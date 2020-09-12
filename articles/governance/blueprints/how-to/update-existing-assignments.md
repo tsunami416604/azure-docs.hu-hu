@@ -3,12 +3,12 @@ title: Meglévő hozzárendelés frissítése a portálról
 description: Ismerje meg, hogyan frissíthet egy meglévő tervezet-hozzárendelést a portálról az Azure-tervezetekben.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051423"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651369"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
@@ -26,17 +26,17 @@ Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzá
 
 1. A tervrajzok listájában válassza ki a terv-hozzárendelést. Ezután használja a **hozzárendelés frissítése** gombot, vagy kattintson a jobb gombbal a terv-hozzárendelésre, és válassza a **hozzárendelés frissítése**lehetőséget.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Meglévő terv-hozzárendelés frissítése" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Képernyőkép a terv-hozzárendelési oldalról, amely kiemelte a "frissítés hozzárendelése" gombot." border="false":::
 
 1. A **terv hozzárendelése** lap az eredeti hozzárendelés összes értékével előre betöltődik. Megváltoztathatja a **terv definíciójának verzióját**, a **zárolás hozzárendelésének** állapotát, valamint a terv definíciójában létező dinamikus paramétereket. Válassza a **hozzárendelés** lehetőséget a módosítások végrehajtásakor.
 
 1. A frissített hozzárendelés részletei lapon tekintse meg az új állapotot. Ebben a példában a hozzárendelést felvettük a **zárolásra** .
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Egy meglévő terv hozzárendelésének frissítése – a zárolási mód módosult" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Képernyőfelvétel a zárolási módot megváltoztató frissített terv-hozzárendelésről." border="false":::
 
 1. A legördülő lista használatával megismerheti a többi **hozzárendelési művelet** részleteit. A **felügyelt erőforrások** a kijelölt hozzárendelési művelet által frissülő táblázata.
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Tervrajz-hozzárendelés hozzárendelési műveletei" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Képernyőkép a hozzárendelési műveleteket és azok állapotát bemutató, frissített terv-hozzárendelésről." border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>A hozzárendelések frissítésére vonatkozó szabályok
 

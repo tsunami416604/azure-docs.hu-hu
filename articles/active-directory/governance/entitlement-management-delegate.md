@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01f945496d2f0bc81a108c5e58c89587c1c4e38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8ab68ab4166ddf9e938648e6618ef37df6d998f0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505478"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460898"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -76,7 +76,7 @@ A delegálás után a marketing részleg a következő táblázathoz hasonló sz
 
 A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a jogosultságok felügyeletére vonatkoznak.
 
-| Jogosultsági felügyeleti szerepkör | Leírás |
+| Jogosultsági felügyeleti szerepkör | Description |
 | --- | --- |
 | Katalógus létrehozója | Katalógusok létrehozása és kezelése. Általában az a rendszergazda, aki nem globális rendszergazda, vagy erőforrás-tulajdonos az erőforrások gyűjteménye számára. A katalógust létrehozó személy automatikusan a katalógus első katalógusának tulajdonosa lesz, és további katalógus-tulajdonosokat is hozzáadhat. A katalógus-létrehozó nem tudja kezelni vagy megtekinteni azokat a katalógusokat, amelyeket nem a saját, és nem adhatnak hozzá olyan erőforrásokat, amelyek nem a katalógusba tartoznak. Ha a katalógus létrehozójának egy másik katalógust kell kezelnie, vagy nem a saját erőforrásokat kell hozzáadnia, kérheti, hogy a katalógus vagy az erőforrás közös tulajdonosa legyen. |
 | Katalógus tulajdonosa | Meglévő katalógusok szerkesztése és kezelése. Általában rendszergazda vagy erőforrás-tulajdonos, vagy a katalógus tulajdonosának kijelölt felhasználója. |
@@ -84,14 +84,14 @@ A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a 
 
 Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is rendelkezik jogosultságokkal, bár ezek nem szerepkörök.
 
-| Jobb | Leírás |
+| Jobb | Description |
 | --- | --- |
 | Jóváhagyó | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
 | Requestor (Kérelmező) | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
 
 A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
 
-| Tevékenység | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
+| Feladat | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegálás katalógus-létrehozóra](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -116,11 +116,11 @@ A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosults�
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Erőforrások katalógusba való felvételéhez szükséges szerepkörök
 
-A globális rendszergazdák hozzáadhatnak vagy eltávolíthatnak bármely csoportot (felhőalapú biztonsági csoportokat vagy felhőben létrehozott Office 365-csoportokat), alkalmazást vagy SharePoint Online-webhelyeket katalógusban. A felhasználó rendszergazdája hozzáadhat vagy eltávolíthat bármely csoportot vagy alkalmazást egy katalógusban, kivéve a címtárbeli szerepkörhöz hozzárendelhető csoportokat.
+A globális rendszergazdák hozzáadhatnak vagy eltávolíthatnak bármely csoportot (felhőalapú biztonsági csoportokat vagy felhőalapú Microsoft 365-csoportokat), alkalmazást vagy SharePoint Online-webhelyet egy katalógusban. A felhasználó rendszergazdája hozzáadhat vagy eltávolíthat bármely csoportot vagy alkalmazást egy katalógusban, kivéve a címtárbeli szerepkörhöz hozzárendelhető csoportokat.
 
 Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhasználói rendszergazda, csoportok, alkalmazások vagy SharePoint Online-helyek katalógusba való felvételéhez a *felhasználónak rendelkeznie kell a szükséges* Azure ad-címtárbeli szerepkörrel és a katalógus tulajdonosi jogosultsági kezelési szerepkörével. A következő táblázat felsorolja azokat a szerepkör-kombinációkat, amelyek szükségesek az erőforrások katalógushoz való hozzáadásához. Az erőforrások katalógusból való eltávolításához ugyanazokat a szerepköröket kell megadnia.
 
-| Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Office 365-csoportot adhat hozzá | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
+| Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Hozzáadhat Microsoft 365 csoportot | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n.a. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n.a. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -133,11 +133,11 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 | Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
 
 > [!NOTE]
-> Ha a felhasználó egy biztonsági csoportot vagy Office 365 csoportot ad hozzá, akkor a csoport nem lehet szerepkörhöz hozzárendelhető. Ha a felhasználó olyan csoportot ad hozzá, amely a hozzáférési csomag létrehozásakor szerepkörhöz rendelhető, akkor a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. További információ: [a szerepkörhöz hozzárendelhető csoport létrehozása Azure Active Directoryban](../users-groups-roles/roles-groups-create-eligible.md).
+> Ha a felhasználó egy biztonsági csoportot vagy Microsoft 365 csoportot ad hozzá, akkor a csoport nem lehet szerepkörhöz hozzárendelhető. Ha a felhasználó olyan csoportot ad hozzá, amely a hozzáférési csomag létrehozásakor szerepkörhöz rendelhető, akkor a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. További információ: [a szerepkörhöz hozzárendelhető csoport létrehozása Azure Active Directoryban](../users-groups-roles/roles-groups-create-eligible.md).
 
 Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési szabályozás delegálása a katalógus-létrehozók számára](entitlement-management-delegate-catalog.md)
 - [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)

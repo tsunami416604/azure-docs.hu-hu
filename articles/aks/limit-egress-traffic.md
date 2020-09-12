@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003171"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594259"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -280,7 +280,7 @@ Hozzon létre egy virtuális hálózatot két különálló alhálózattal, egye
 
 Hozzon létre egy erőforráscsoportot az összes erőforrás tárolásához.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +294,7 @@ Hozzon létre egy virtuális hálózatot két alhálózattal az AK-fürt és a A
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +321,12 @@ Azure Firewall be kell állítani a bejövő és a kimenő szabályokat. A tűzf
 
 Hozzon létre egy szabványos SKU nyilvános IP-erőforrást, amelyet Azure Firewall előtér-címként kíván használni.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Regisztrálja az előnézeti CLI-bővítményt Azure Firewall létrehozásához.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +341,7 @@ A korábban létrehozott IP-cím most már hozzá lehet rendelni a tűzfal előt
 > A nyilvános IP-cím a Azure Firewall való beállítása néhány percet igénybe vehet.
 > A hálózati szabályok teljes tartománynevének kihasználásához engedélyezve kell lennie a DNS-proxynak, ha engedélyezve van a tűzfal a 53-es portot fogja figyelni, és továbbítja a DNS-kéréseket a fent megadott DNS-kiszolgálónak. Ez lehetővé teszi, hogy a tűzfal automatikusan lefordítsa a teljes tartománynevet.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +365,10 @@ Az Azure automatikusan irányítja a forgalmat az Azure-alhálózatok, a virtuá
 
 Hozzon létre egy üres útválasztási táblázatot, amely egy adott alhálózathoz lesz társítva. Az útválasztási táblázat a következő ugrást fogja meghatározni a fent létrehozott Azure Firewall. Mindegyik alhálózattal nulla vagy egy útvonaltábla társítható.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +399,7 @@ A Azure Firewall szolgáltatással kapcsolatos további információkért tekint
 
 Ha a fürtöt a tűzfalhoz szeretné rendelni, a fürt alhálózatához tartozó dedikált alhálózatnak a fent létrehozott útválasztási táblára kell hivatkoznia. A társítást úgy teheti meg, hogy a fürtöt és a tűzfalat tároló virtuális hálózatra vonatkozó parancs kiadásával frissíti a fürt alhálózatának útválasztási táblázatát.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +415,7 @@ Most már van egy AK-fürt üzembe helyezése a meglévő virtuális hálózatba
 
 Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehozásához. A létrehozáskor átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például a tárolási erőforrások, az IP-címek és a terheléselosztó által használt terheléselosztó létrehozásához használható (Ehelyett [felügyelt identitást](use-managed-identity.md) is használhat). Ha nem kapta meg az alábbi megfelelő engedélyeket, nem fogja tudni kiépíteni az AK-fürtöt.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +423,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Most cserélje le az `APPID` és az `PASSWORD` alábbit az egyszerű szolgáltatásnév AppID és a szolgáltatás egyszerű jelszavára, amelyet az előző parancs kimenete automatikusan generált. A VNET erőforrás-AZONOSÍTÓra hivatkozunk, hogy megadja az engedélyeket az egyszerű szolgáltatásnak, hogy az AK-ban üzembe helyezhet erőforrásokat.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +461,7 @@ A kimenő típust úgy kell megadnia, hogy az alhálózaton már létező UDR ha
 >
 > Az [**API-kiszolgáló által engedélyezett IP-tartományokhoz**](api-server-authorized-ip-ranges.md) tartozó AK funkció hozzáadható az API-kiszolgáló hozzáférésének korlátozásához csak a tűzfal nyilvános végpontja számára. A jóváhagyott IP-címtartományok funkció a diagramon nem kötelező. Ha engedélyezi a jogosult IP-címtartomány használatát az API-kiszolgáló elérésének korlátozására, a fejlesztői eszközöknek Jumpbox kell használniuk a tűzfal virtuális hálózatáról, vagy az összes fejlesztői végpontot fel kell vennie az engedélyezett IP-tartományba.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +492,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  Az `kubectl` újonnan létrehozott Kubernetes-fürthöz való kapcsolódáshoz használja az [az AK Get-hitelesítő adatok] [az-AK-Get-hitelesítőadats] parancsot. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -754,7 +755,7 @@ SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].
 ```
 
 Adja hozzá a NAT-szabályt a futtatásával:
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -768,15 +769,15 @@ Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tű
 ![AK – szavazás](media/limit-egress-traffic/aks-vote.png)
 
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogy milyen portokat és címeket kell engedélyezni, ha szeretné korlátozni a kimenő forgalmat a fürt számára. Azt is láthatja, hogyan védheti meg a kimenő forgalmat Azure Firewall használatával. 
 

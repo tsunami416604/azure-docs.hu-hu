@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: b81af3e89a3226757c5bf7668a06701c35831072
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3b18582cdb34708c379725d361d1fcc5e608ae38
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962713"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462757"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Üzletmenet-folytonosság és HADR az Azure-ban SQL Server Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -148,7 +148,7 @@ További információ az ügyfelek kapcsolatáról:
 
 * [A kapcsolatok sztring kulcsszavainak használata SQL Server Native Client](https://msdn.microsoft.com/library/ms130822.aspx)
 * [Ügyfelek összekötése egy adatbázis-tükrözési munkamenettel (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Csatlakozás a rendelkezésre állási csoport figyelője számára a hibrid informatikai szolgáltatásban](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
+* [Csatlakozás a rendelkezésre állási csoport figyelője számára a hibrid informatikai szolgáltatásban](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
 * [A rendelkezésre állási csoport figyelők, az ügyfélkapcsolatok és az alkalmazások feladatátvétele (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
 * [Adatbázis-tükrözési kapcsolatok karakterláncok használata rendelkezésre állási csoportokkal](https://technet.microsoft.com/library/hh213417.aspx)
 
@@ -160,7 +160,7 @@ A Geo-replikáció az Azure-lemezeken nem támogatja ugyanazon adatbázis adatf�
 
 Ha nem szeretné letiltani a Geo-replikációt a Storage-fiókon, akkor az adatbázis összes adatfájlját és naplófájlját egy adott lemezen tárolja. Ha az adatbázis mérete miatt egynél több lemezt kell használnia, a korábban felsorolt vész-helyreállítási megoldások egyikét kell telepítenie az adatredundancia biztosítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Döntse el, hogy egy [rendelkezésre állási csoport](availability-group-overview.md) vagy egy [feladatátvevő fürt példánya](failover-cluster-instance-overview.md) a legjobb üzletmenet-folytonossági megoldás-e a vállalat számára. Ezután tekintse át az [ajánlott eljárásokat](hadr-cluster-best-practices.md) a környezet konfigurálásához a magas rendelkezésre állás és a vész-helyreállítás érdekében. 
 

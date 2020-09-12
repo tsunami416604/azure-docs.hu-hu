@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258794"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669610"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -41,7 +41,7 @@ IoT Edge az eszközök a málna PI-ből egy laptopra vagy egy kiszolgálón fut�
 Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telepített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak. Ezt követően a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány deklarálva lesz a config. YAML fájlban lévő IoT Edge futtatókörnyezetnek. Fejlesztési és tesztelési forgatókönyvek esetén az IoT Edge Runtime ideiglenes tanúsítványokat hoz létre, ha nem deklarálnak tanúsítványokat a config. YAML fájlban. Ezek az ideiglenes tanúsítványok azonban három hónap elteltével lejárnak, és nem biztonságosak az éles környezetekben. Éles forgatókönyvek esetén saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát kell megadnia egy önaláírt hitelesítésszolgáltatótól, vagy egy kereskedelmi hitelesítésszolgáltatótól vásárolhatja meg.
 
 > [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
+> Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
 Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa szerepkörének megismeréséhez tekintse meg a [hogyan használja a Azure IoT Edge a tanúsítványokat](iot-edge-certs.md).
 
@@ -182,7 +182,7 @@ Szerezze be a lemezképeket a Docker pull paranccsal a privát beállításjegyz
 | IoT Edge futtatókörnyezet tárolója | Docker-lekérési parancs |
 | --- | --- |
 | [Azure IoT Edge ügynök](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge hub](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
 Ezután frissítse a képhivatkozásokat a fájl deployment.template.jsa edgeAgent és a edgeHub rendszer-modulok esetében. Cserélje le a `mcr.microsoft.com` -t a beállításjegyzék nevére és a kiszolgáló mindkét modulra.
 
@@ -321,9 +321,9 @@ Ezt megteheti az egyes modulok **createOptions** . Például:
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>Tesztek és CI/CD-folyamatok megfontolása
 
-A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-ci-cd.md).
+A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a [IoT Edge automatikus központi telepítéséről](module-deployment-monitoring.md).
-* Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-ci-cd.md).
+* Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-continuous-integration-continuous-deployment.md).

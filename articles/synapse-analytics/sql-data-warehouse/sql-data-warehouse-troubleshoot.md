@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bce5e14db133ad55a2035c0c8074486ed1b8a6ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039024"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460507"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -24,7 +24,7 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 
 ## <a name="connecting"></a>Csatlakozás
 
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Feloldás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, hiba: 18456) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik a főkiszolgálóval.  A probléma megoldásához adja meg azt az SQL-készletet, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
 | A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, hiba: 916) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik a főkiszolgálóval.  A probléma megoldásához adja meg azt az SQL-készletet, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
@@ -34,15 +34,15 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 
 ## <a name="tools"></a>Eszközök
 
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Feloldás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A Visual Studio Object Explorerből hiányzik az Azure AD-felhasználók           | Ez egy ismert probléma.  Megkerülő megoldásként tekintse meg a [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.  További információ az Azure Active Directory és a szinapszis SQL-készlet használatával történő használatáról: az [Azure szinapszis hitelesítése](sql-data-warehouse-authentication.md) . |
-| A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure SQL Data Warehouse Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
+| A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure szinapszis Analytics Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
 | A szkriptek előállítása meghiúsul a SSMS                               | Nem sikerül létrehozni egy, a szinapszis SQL-készlethez tartozó parancsfájlt, ha a "függő objektumok parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az **eszközök-> Options->SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false** értékre kell állítani. |
 
 ## <a name="performance"></a>Teljesítmény
 
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Feloldás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A lekérdezés teljesítményével kapcsolatos hibaelhárítás                            | Ha egy adott lekérdezést próbál elhárítani, kezdje a [megtanulni a lekérdezések figyelését](sql-data-warehouse-manage-monitor.md#monitor-query-execution). |
 | TempDB lemezterülettel kapcsolatos problémák | [Figyelje a tempdb](sql-data-warehouse-manage-monitor.md#monitor-tempdb) terület használatát.  A TempDB-területek futtatásának gyakori okai a következők:<br>– Nincs elég erőforrás a lekérdezés számára, ami az adatvesztést okozó TempDB.  Lásd: [munkaterhelés-kezelés](resource-classes-for-workload-management.md) <br>– A statisztikák hiányoznak vagy elavultak, ami túlzott adatáthelyezést okoz.  A statisztikák létrehozásával kapcsolatos részletekért tekintse meg a [táblák statisztikáinak fenntartását](sql-data-warehouse-tables-statistics.md) ismertető témakört.<br>– A TempDB terület kiosztása szolgáltatási szintenként történik.  [Az SQL-készlet](sql-data-warehouse-manage-compute-overview.md#scaling-compute) nagyobb DWU-beállításra skálázása több tempdb területet foglal le.|
@@ -54,16 +54,16 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 
 ## <a name="system-management"></a>Rendszerkezelés
 
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Feloldás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: nem végezhető el a művelet, mert a kiszolgáló túllépi az engedélyezett adatbázis-tranzakciós egység (45000) kvótáját. | Csökkentse a létrehozni kívánt adatbázis [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) vagy a [kvóta növelését](sql-data-warehouse-get-started-create-support-ticket.md). |
 | A terület kihasználtságának vizsgálata                              | A rendszerek lemezterület-kihasználtságának megismeréséhez tekintse meg a [táblázat méretét](sql-data-warehouse-tables-overview.md#table-size-queries) . |
-| Súgó a táblázatok kezeléséhez                                    | A táblák kezelésével kapcsolatos segítségért tekintse meg a [táblázat áttekintését](sql-data-warehouse-tables-overview.md) ismertető cikket.  A cikk a részletes témakörökre mutató hivatkozásokat is tartalmaz, például a [táblázat adattípusait](sql-data-warehouse-tables-data-types.md), [a táblázatok terjesztését](sql-data-warehouse-tables-distribute.md), [a táblák indexelését](sql-data-warehouse-tables-index.md), [a táblák particionálását, a](sql-data-warehouse-tables-partition.md)táblák [statisztikáit](sql-data-warehouse-tables-statistics.md) és az [ideiglenes táblákat](sql-data-warehouse-tables-temporary.md). |
+| Súgó a táblázatok kezeléséhez                                    | A táblák kezelésével kapcsolatos segítségért tekintse meg a [táblázat áttekintését](sql-data-warehouse-tables-overview.md) ismertető cikket.  A cikk a részletes témakörökre mutató hivatkozásokat is tartalmaz, például a [táblázat adattípusait](sql-data-warehouse-tables-data-types.md), [a táblázatok terjesztését](sql-data-warehouse-tables-distribute.md), [a táblák indexelését](sql-data-warehouse-tables-index.md),  [a táblák particionálását, a](sql-data-warehouse-tables-partition.md)táblák [statisztikáit](sql-data-warehouse-tables-statistics.md) és az [ideiglenes táblákat](sql-data-warehouse-tables-temporary.md). |
 | Az transzparens adattitkosítás (TDE) folyamatjelző sáv nem frissül a Azure Portal | A TDE állapotát a [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével tekintheti meg. |
 
 ## <a name="differences-from-sql-database"></a>Különbségek a SQL Database
 
-| Probléma                                 | Megoldás:                                                   |
+| Probléma                                 | Feloldás                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nem támogatott SQL Database funkciók     | Lásd: nem [támogatott táblázatos funkciók](sql-data-warehouse-tables-overview.md#unsupported-table-features). |
 | Nem támogatott SQL Database adattípusok   | Lásd: nem [támogatott adattípusok](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
@@ -72,7 +72,7 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 | Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra vonatkozó korlátozásokat](sql-data-warehouse-develop-stored-procedures.md#limitations) . |
 | A UDF nem támogatja a SELECT utasítások használatát | Ez a UDF jelenlegi korlátozása.  Az általunk támogatott szintaxishoz lásd: [create Function](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége a probléma megoldásához, néhány további erőforrást is kipróbálhat.
 

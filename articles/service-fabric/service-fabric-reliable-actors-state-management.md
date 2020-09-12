@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007791"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611712"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors állapot kezelése
 A Reliable Actors egyszálas objektumok, amelyek logika és állapot beágyazására is képesek. Mivel a szereplők Reliable Services futnak, megbízhatóan kezelhetik az állapotot ugyanazon megőrzési és replikációs mechanizmusok használatával. Így a szereplők nem veszítik el az állapotukat a meghibásodások után, az újraaktiválást követően, vagy a fürt csomópontjai között, erőforrás-kiegyensúlyozás vagy-verziófrissítés miatt.
@@ -115,7 +115,7 @@ Ez az alkalmazás teljesítmény-és erőforrás-használatának szempontjából
 ### <a name="correctly-manage-the-actors-life-cycle"></a>A színész életciklusának megfelelő kezelése
 Egyértelmű szabályzattal kell rendelkeznie az állapot méretének kezeléséhez egy Actor szolgáltatás minden partícióján. A Actor szolgáltatásnak rögzített számú szereplőkkel kell rendelkeznie, és a lehető legnagyobb mértékben újra fel kell őket használni. Ha folyamatosan új szereplőkkel hoz létre, akkor azokat a munkájuk után törölnie kell. A Actors keretrendszer néhány metaadatot tárol a létező szereplőkről. Egy színész összes állapotának törlése nem távolítja el a szereplő metaadatait. Törölnie kell a szereplőt (lásd: a [szereplők törlése és állapota](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) a rendszeren tárolt összes információ eltávolításához. További ellenőrzésként le kell kérdezni a Actors szolgáltatást (lásd: [szereplők enumerálása](service-fabric-reliable-actors-enumerate.md)) egy ideje, hogy megbizonyosodjon róla, hogy a szereplők száma a várt tartományon belül van-e.
  
-Ha azt tapasztalja, hogy egy Actor szolgáltatás adatbázis-fájljának mérete meghaladja a várt méretet, ügyeljen arra, hogy a fenti irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is az adatbázis fájlméretével kapcsolatos problémák merülnek fel, akkor segítségért [Nyisson meg egy támogatási jegyet](service-fabric-support.md) a termék csapatával.
+Ha azt tapasztalja, hogy egy Actor szolgáltatás adatbázis-fájljának mérete meghaladja a várt méretet, ügyeljen arra, hogy a fenti irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is az adatbázis fájlméretével kapcsolatos problémákat tapasztal, [egy támogatási jegyet kell megnyitnia](service-fabric-support.md) a termék csapatával, hogy segítséget kapjon.
 
 ## <a name="next-steps"></a>Következő lépések
 

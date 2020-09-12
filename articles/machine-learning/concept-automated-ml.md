@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652100"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658557"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -118,7 +118,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; normalizálása| Leírás |
+|Méretezés &nbsp; & &nbsp; normalizálása| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -174,7 +174,7 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
  További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
 
-| Funkció                                                    | Távoli | Helyi | Igényel <br>Vállalati munkaterület |
+| Jellemző                                                    | Távoli | Helyi | Igényel <br>Vállalati munkaterület |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
 | DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |
@@ -204,9 +204,9 @@ Például az __egyes példányok vagy egyedi__ modellek létrehozása a követke
 
 ## <a name="automl-in-azure-machine-learning"></a>AutoML Azure Machine Learning
 
-A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez
+A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez:
 
-* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -t 
+* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -t 
 
 * A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -267,7 +267,7 @@ Tekintse meg a ONNX formátumra való átalakítást [ebben a Jupyter-jegyzetfü
 
 A ONNX Runtime támogatja a C#-t is, így a C#-alkalmazásokban automatikusan létrehozott modellt is használhatja az újrakódolás vagy a REST-végpontok által bevezetett hálózati késések nélkül. További információ [a ONNX-modellekről a ONNX Runtime C# API-val](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Több erőforrás áll rendelkezésre a AutoML való használathoz. 
 
@@ -289,9 +289,9 @@ A cikkek további részletekbe menően ismertetik a funkciók AutoML-ajánlatait
 
 Tekintse át a részletes példákat és a használati eseteket a [GitHub notebook-tárházban az automatizált gépi tanulási mintákhoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
 
-### <a name="python-sdk-reference"></a>Python SDK-referencia 
+### <a name="python-sdk-reference"></a>Python SDK-referencia
 
-Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)elmélyítésére szaktudását. 
+Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)elmélyítésére szaktudását. 
 
 > [!Note]
 > Az automatizált gépi tanulási képességek más Microsoft-megoldásokban is elérhetők, mint például a, a [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), a [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), a [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

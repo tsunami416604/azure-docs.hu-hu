@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691394"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462581"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
@@ -98,7 +98,7 @@ Miután beleegyezett a szervezetbe vagy egy adott felhasználóhoz, bármikor ho
 
 Az eszköz elindításához kövesse az alábbi utasításokat:
 
-1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például:  <https://rdmimgmtweb-210520190304.azurewebsites.net> .
+1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például:  `https://rdmimgmtweb-210520190304.azurewebsites.net` .
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
 4. Amikor kiválasztja az **alapértelmezett bérlői csoportot**, egy menü jelenik meg az ablak bal oldalán. Ebben a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
@@ -110,6 +110,6 @@ Az eszköz elindításához kövesse az alábbi utasításokat:
 
 Ha a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatos problémákba ütközik, kövesse az [Azure Resource Manager-távoli asztali szolgáltatások sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja az Azure szolgáltatás súgóját a szolgáltatással kapcsolatos problémák és az egészségügyi tanácsadók figyelésére. További információ: [set up Service riasztások oktatóanyaga](set-up-service-alerts-2019.md).

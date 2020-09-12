@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 05/15/2020
-ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343113"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567119"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
@@ -39,9 +39,17 @@ Az alapértelmezett vizualizáció-létrehozási élmény közvetlenül a Data F
 
 A legfelső szintű erőforrások, például folyamatok, adatkészletek és adatfolyamatok esetében a magas szintű tulajdonságok a vászon jobb oldalán található Tulajdonságok ablaktáblán szerkeszthetők. A Tulajdonságok ablaktábla olyan tulajdonságokat tartalmaz, mint például a név, a leírás, a jegyzetek és más magas szintű tulajdonságok. Az alerőforrások (például a folyamat tevékenységei és az adatfolyam-TRANSZFORMÁCIÓK) a vászon alján található panel használatával szerkeszthetők. 
 
-![Szerzői vászon](media/author-visually/properties-pane.png)
+![Tulajdonságok panel](media/author-visually/properties-pane.png)
 
 A Tulajdonságok ablaktábla csak az erőforrások létrehozásakor nyílik meg alapértelmezés szerint. A szerkesztéshez kattintson a vászon jobb felső sarkában található Tulajdonságok ablaktábla ikonra.
+
+### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
+
+A Tulajdonságok panelen megtekintheti, hogy mely erőforrások függenek a kiválasztott erőforrástól a **kapcsolódó** lapra kattintva. Az aktuális erőforrásra hivatkozó erőforrások itt lesznek felsorolva.
+
+![Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)](media/author-visually/related-resources.png)
+
+A fenti képen például egy folyamat és két adatfolyam használja az aktuálisan kiválasztott adatkészletet.
 
 ## <a name="management-hub"></a>Felügyeleti központ
 
@@ -69,6 +77,6 @@ Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.

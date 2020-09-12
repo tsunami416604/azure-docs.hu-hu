@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 18397ef76a4503bf79c4aaf286035d222bd84ba0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068626"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460439"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
 
@@ -26,7 +26,7 @@ Az örökölt hitelesítési protokollok fokozott kockázata miatt a Microsoft a
 
 A következő lépések segítséget nyújtanak egy feltételes hozzáférési szabályzat létrehozásához az örökölt hitelesítési kérelmek blokkolásához. Ezt a házirendet csak a [jelentések üzemmódba](howto-conditional-access-insights-reporting.md) helyezheti el, így a rendszergazdák meghatározhatják, hogy milyen hatással lesznek a meglévő felhasználókra. Ha a rendszergazdák kényelmesek, hogy a házirend a kívánt módon érvényes, **akkor a telepítésre vagy az** üzembe helyezésre adott csoportok hozzáadásával, illetve mások kizárásával válthatnak.
 
-1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Jelentkezzen be az **Azure Portalra** globális rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
@@ -37,7 +37,7 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 1. A **Cloud apps vagy műveletek**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
    1. Válassza a **Kész** lehetőséget.
 1. A **feltételek**  >  **ügyfélalkalmazások**területen állítsa az **Configure** **Igen**értékre.
-   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése. Az Exchange ActiveSync feltételes hozzáférési szabályzatának Azure-beli üzembe helyezéséhez a felhasználónak globális rendszergazdának is kell lennie.
+   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése.
    1. Válassza a **Kész** lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget.
    1. Válassza a **Kiválasztás** lehetőséget.

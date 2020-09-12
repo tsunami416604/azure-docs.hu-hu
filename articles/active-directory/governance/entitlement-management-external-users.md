@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783858"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460864"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
@@ -105,7 +105,7 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>Tekintse át Microsoft 365 csoport megosztási beállításait
 
-- Ha a külső felhasználók hozzáférési csomagjaiban Microsoft 365 csoportokat szeretne felvenni, győződjön **meg** arról, hogy a **felhasználók új vendégeket adhatnak hozzá a szervezethez** , hogy engedélyezze a vendég hozzáférését. További információ: a [vendég hozzáférésének kezelése Microsoft 365 csoportokhoz](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Ha a külső felhasználók hozzáférési csomagjaiban Microsoft 365 csoportokat szeretne felvenni, győződjön **meg** arról, hogy a **felhasználók új vendégeket adhatnak hozzá a szervezethez** , hogy engedélyezze a vendég hozzáférését. További információ: a [vendég hozzáférésének kezelése Microsoft 365 csoportokhoz](/Microsoft 365/admin/create-groups/manage-guest-access-in-groups?view=Microsoft 365-worldwide#manage-groups-guest-access).
 
 - Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és a Microsoft 365hoz társított erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 

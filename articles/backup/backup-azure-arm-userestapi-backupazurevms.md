@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja, kezdeménye
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006295"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506627"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -41,7 +41,7 @@ A "refresh" művelet egy [aszinkron művelet](../azure-resource-manager/manageme
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
 |202 elfogadva     |         |     Elfogadva    |
@@ -104,7 +104,7 @@ A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség to
 
 #### <a name="responses-to-get-operation"></a>Válaszok a lekérési műveletre
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Védett elem létrehozásához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás tulajdonságai         |
 
@@ -208,7 +208,7 @@ A védett elemek létrehozása egy [aszinkron művelet](../azure-resource-manage
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadva    |
@@ -274,6 +274,35 @@ A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsé
 
 Ez megerősíti, hogy a virtuális gép védelmének engedélyezése engedélyezve van, és az első biztonsági mentés a házirend-ütemterv szerint lesz aktiválva.
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>Lemezek kizárása az Azure virtuális gép biztonsági mentésében
+
+A Azure Backup a lemezek egy részhalmazának szelektív biztonsági mentését is lehetővé teszi az Azure-beli virtuális gépen. További részletek [itt](selective-disk-backup-restore.md)találhatók. Ha szelektív biztonsági mentést szeretne készíteni néhány lemezről a védelem engedélyezése során, akkor a védelem engedélyezése során a következő kódrészletnek kell lennie a [kérés törzsének](#example-request-body).
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+A fenti kérelem törzsében a biztonsági mentésre kerülő lemezek listáját a kiterjesztett tulajdonságok szakaszban találja.
+
+|Tulajdonság  |Érték  |
+|---------|---------|
+|diskLunList     | A lemez LUN listája az *adatlemezek logikai egységeit*tartalmazó lista. **Az operációsrendszer-lemez mindig biztonsági mentés alatt áll, ezért nem kell megemlíteni**.        |
+|IsInclusionList     | **Igaz** értéknek kell lennie ahhoz, hogy a logikai egységek szerepeljenek a biztonsági mentés során. Ha **hamis**, a fent említett logikai egységek ki lesznek zárva.         |
+
+Ha tehát a követelmény, hogy csak az operációsrendszer-lemezt készítsen biztonsági másolatot, az _összes_ adatlemezt ki kell zárni. A legegyszerűbben azt mondhatjuk, hogy a rendszer nem tartalmaz adatlemezt. Így a lemez LUN listája üres lesz, a **IsInclusionList** pedig **igaz**lesz. Hasonlóképpen gondoljon arra is, hogy mi a könnyebb kiválasztani egy részhalmazt: néhány lemezt mindig ki kell zárni, vagy néhány lemezt mindig fel kell venni. Válassza ki a LUN-listát és a logikai változó értékét ennek megfelelően.
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Igény szerinti biztonsági mentés elindítása egy védett Azure-beli virtuális gépen
 
 Ha egy Azure-beli virtuális gép biztonsági mentésre van konfigurálva, a biztonsági mentések a szabályzat ütemezése szerint történnek. Megvárhatja az első ütemezett biztonsági mentést, vagy bármikor elindíthat egy igény szerinti biztonsági mentést. Az igény szerinti biztonsági mentések megtartása eltér a biztonsági mentési szabályzatok megőrzésének, és egy adott dátumra és időpontra is megadható. Ha nincs megadva, a rendszer azt feltételezi, hogy az igény szerinti biztonsági mentés napjától számított 30 nap.
@@ -294,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource tulajdonságai         |
 
@@ -319,7 +348,7 @@ Az igény szerinti biztonsági mentés indítása [aszinkron művelet](../azure-
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadva    |
 
@@ -389,7 +418,7 @@ Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [felada
 
 A védelemmel ellátott virtuális géppel rendelkező házirend módosításához használhatja ugyanazt a formátumot, mint a [védelem engedélyezése](#enabling-protection-for-the-azure-vm). Csak adja meg az új házirend-azonosítót [a kérelem törzsében](#example-request-body) , és küldje el a kérelmet. Például: Ha módosítani szeretné a testVM szabályzatát a "DefaultPolicy" típusról a "ProdPolicy" értékre, adja meg a "ProdPolicy" azonosítót a kérelem törzsében.
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ A védelemmel ellátott virtuális géppel rendelkező házirend módosításáh
 ```
 
 A válasz a [védelem engedélyezésével](#responses-to-create-protected-item-operation) megegyező formátumot fogja követni.
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>Lemezek kizárása az Azure VM Protectionben
+
+Ha az Azure-beli virtuális gép biztonsági mentése már megtörtént, megadhatja a biztonsági mentéshez vagy kizáráshoz szükséges lemezek listáját a védelem szabályzatának módosításával. Készítse elő a kérést ugyanúgy, mint a [Lemezek kizárása a védelem engedélyezése során](#excluding-disks-in-azure-vm-backup)
+
+> [!IMPORTANT]
+> A fenti kérelem törzse mindig a kizárni vagy belefoglalt adatlemezek végső másolata. Ez a beállítás nem az előző konfigurációhoz van *hozzáadva* . Például: Ha először frissíti a védelmet "az 1. adatlemez kihagyása" beállításnál, majd a "2. adatlemez kizárása" értékkel ismétlődik, a rendszer *csak a 2. adatlemezt zárja ki* a következő biztonsági másolatokban, és az 1. adatlemezt is tartalmazza. Ez mindig a végső lista, melyet a rendszer a következő biztonsági másolatokban tartalmaz/kizár.
+
+A kizárt vagy belefoglalt lemezek aktuális listájának lekéréséhez szerezze be a védett elem adatait az [itt](https://docs.microsoft.com/rest/api/backup/protecteditems/get)leírtak szerint. A válasz megadja az adatlemez-logikai egységek listáját, és jelzi, hogy azok bekerülnek vagy kizárnak-e.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Védelem leállítása, de meglévő adat megőrzése
 
@@ -439,7 +477,7 @@ A védelem *törlése* [aszinkron művelet](../azure-resource-manager/management
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 204 (nincs tartalom), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |204 tartalom     |         |  Nincs tartalom       |
 |202 elfogadva     |         |     Elfogadva    |

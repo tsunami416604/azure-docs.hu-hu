@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855534"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650717"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -119,7 +119,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Leírás | PerfMon | Iostat |
+| Számláló | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
@@ -127,10 +127,10 @@ A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló m
 | **Késés** |A lemez i/o-kérések befejezésének teljes ideje. |Átlagos írási idő (mp/olvasás) <br> Átlagos írási idő (mp/írás) |várja <br> svctm |
 | **IO-méret** |Az I/O-kérések mérete a tároló lemezei számára. |Lemez átlagos bájtjai/olvasása <br> Átlagos lemez bájt/írás |avgrq – sz |
 | **Várólista mélysége** |Azon függő I/O-kérések száma, amelyek a Storage-lemezre való olvasásra vagy írásra várnak. |Lemez aktuális várólistájának hossza |avgqu – sz |
-| **Max. Memória** |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória kihasználtsága (%) |Vmstat használata |
+| **Maximális memória** |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória kihasználtsága (%) |Vmstat használata |
 | **Max. CPU** |Az alkalmazás zökkenőmentes futtatásához szükséges mennyiségű CPU |Processzoridő (%) |% util |
 
-További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perfmon](https://msdn.microsoft.com/library/aa645516.aspx)szolgáltatásról.
+További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)szolgáltatásról.
 
 
 
@@ -410,7 +410,7 @@ A csíkozott kötetek esetében elég magas a várólista mélységének megőrz
 
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a lemez teljesítménytesztét szeretné használni, tekintse meg a következő cikkeket: a lemez teljesítményértékelése:
 

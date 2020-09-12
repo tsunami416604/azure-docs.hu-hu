@@ -6,21 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/14/2020
-ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/04/2020
+ms.openlocfilehash: 565ad4267bcdab095a85ab537c10728981eadb0d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607257"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484153"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
-Ez a cikk a kereskedelmi piactéren elérhető ajánlati típusokat ismerteti. Az *ajánlat típusa* határozza meg az ajánlat struktúráját, amely tartalmazza azokat a metaadatokat, összetevőket és egyéb tartalmakat, amelyek az ajánlatnak a piactéren való bemutatására szolgálnak.
+Ez a cikk a kereskedelmi piactéren elérhető ajánlati típusokat ismerteti. Az *ajánlat típusa* határozza meg az ajánlat struktúráját, amely tartalmazza a kereskedelmi piactéren bemutatott metaadatokat, összetevőket és egyéb tartalmakat.
 
-Az ajánlat létrehozása előtt és a [közzétételi lehetőség](determine-your-listing-type.md)kiválasztása után ki kell választania az ajánlat bemutatására használni kívánt ajánlat típusát is. Az ajánlat típusa megegyezik a közzétenni kívánt megoldás, alkalmazás vagy szolgáltatási ajánlat típusával, valamint a Microsoft-termékekkel és-szolgáltatásokkal való összehangolásával.
+A [közzétételi lehetőség](determine-your-listing-type.md)kiválasztása után ki kell választania az ajánlat típusát, mielőtt megkezdené az ajánlat létrehozását. Az ajánlat típusa megegyezik a közzétenni kívánt megoldás, alkalmazás vagy szolgáltatási ajánlat típusával, valamint a Microsoft-termékekkel és-szolgáltatásokkal való összehangolásával.
 
-Egyetlen ajánlat típusa konfigurálható különböző módon a különböző közzétételi beállítások, a műveletek, a kiépítés vagy a díjszabás lehetővé tételéhez. A közzétételi lehetőség és az ajánlat típusának konfigurációja is igazodik az ajánlat támogathatóságához és a technikai követelményekhez.
+A különböző közzétételi lehetőségek, listaelemek, kiépítés vagy díjszabás lehetővé tételéhez többféle módon is konfigurálhat egyetlen ajánlatot. A közzétételi lehetőség és az ajánlat típusának konfigurációja is igazodik az ajánlat támogathatóságához és a technikai követelményekhez.
 
 Ügyeljen arra, hogy az ajánlat létrehozása előtt tekintse át az online áruház és az ajánlat típusra vonatkozó támogathatósági követelményeit, valamint a technikai közzétételi követelményeket.
 
@@ -33,16 +33,16 @@ Az Azure Marketplace-ajánlatok típusai az alábbi táblázatban találhatók.
 | [**Virtuális gépek**](./marketplace-virtual-machines.md) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
 | [**Megoldássablonok**](./marketplace-solution-templates.md) | Használja a megoldás sablont (más néven Azure-alkalmazás), ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen kívül. A megoldási sablonok számos különböző Azure-erőforrást alkalmazhatnak, többek között a virtuális gépeket is beleértve.  |
 | [**Felügyelt alkalmazások**](./marketplace-managed-apps.md) | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li> Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
-| [**SaaS-alkalmazás**](./partner-center-portal/create-new-saas-offer.md) | A SaaS app Offer típus használatával engedélyezheti az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldását. |
+| [**SaaS**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. |
 | [**Tároló ajánlatok**](./marketplace-containers.md) | Ha a megoldás egy, a Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép, akkor használja a Container ajánlat típusát. |
 | [**Azure IoT Edge modulok**](./iot-edge-module.md) | Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
 | [**Tanácsadói szolgáltatások**](./consulting-services.md) | A tanácsadási szolgáltatások segítségével az ügyfeleket összekapcsolhatja a szolgáltatásokkal az Azure, a Dynamics 365 vagy a Power Suite szolgáltatások használatának támogatásához és bővítéséhez.|
-| [**Office 365, Dynamics 365 és Power BI**](./appsource-offer-publishing-guide.md) | Közzéteheti a Dynamics 365, az Office 365, a Power BI és a Power apps szolgáltatásra épülő vagy kiterjeszthető AppSource ajánlatokat.|
+| [**Microsoft 365, Dynamics 365 és Power BI**](./appsource-offer-publishing-guide.md) | Közzéteheti a Dynamics 365, Microsoft 365, Power BI és a Power apps szolgáltatásra épülő vagy kiterjeszthető AppSource ajánlatokat.|
 | [**Integrált megoldások**](./integrated-solutions-for-publishers.md) | Olyan integrált, iparághoz igazított megoldásokat tehet közzé, amelyek egyetlen ajánlatként ötvözik a technológiát és a szolgáltatásokat.|
 
 Az egyszeri bejelentkezésre vonatkozó követelményekről és az ajánlatok típusairól az [**Azure ad-követelmények**](./enable-appsource-marketplace-using-azure-ad.md)című témakörben olvashat bővebben.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át az ajánlat típusának (a következő szakaszoknak) a megfelelő cikkben szereplő támogathatósági követelményeket az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez.
-- Tekintse át a közzétételi mintákat az online áruházban példákat arra, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.
+- Az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez tekintse át a megfelelő cikkben szereplő támogathatósági követelményeket.
+- Tekintse át az egyes online áruházak közzétételi mintáit, példákat arra, hogy a megoldás hogyan mutasson az ajánlat típusára és a konfigurációra.

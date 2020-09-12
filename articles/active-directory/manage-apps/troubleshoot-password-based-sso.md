@@ -1,5 +1,5 @@
 ---
-title: Jelszó alapú egyszeri bejelentkezés hibáinak megoldása az Azure AD-ben
+title: Jelszó alapú egyszeri bejelentkezés hibáinak megoldása Azure Active Directory
 description: A jelszó alapú egyszeri bejelentkezéshez konfigurált Azure AD-alkalmazással kapcsolatos problémák elhárítása.
 author: kenwith
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 436fbdde1283bd8406e631fd37b559bfe11e234e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051944"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460354"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Jelszó alapú egyszeri bejelentkezés hibáinak megoldása az Azure AD-ben
 
@@ -98,7 +98,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mez�
 7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 9. Adja meg a **bejelentkezési URL-címet**, amely annak az oldalnak az URL-címe, ahol a felhasználók megadják a felhasználónevét és jelszavát a bejelentkezéshez. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
-10. Válassza a **Mentés** lehetőséget.
+10. Kattintson a **Mentés** gombra.
     A rendszer automatikusan lekaparja a lapot a Felhasználónév és a jelszó beviteli mezőihez. Mostantól az Azure AD használatával biztonságosan továbbíthatja a jelszavakat az alkalmazásba a saját alkalmazások böngésző bővítménnyel.
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Egy alkalmazás bejelentkezési mezőinek manuális rögzítése
@@ -120,7 +120,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmaz
 10. Válassza **a * &lt; AppName &gt; * jelszavának egyszeri bejelentkezési beállításainak konfigurálása**lehetőséget.
 11. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet.
 14. Kattintson az **OK** gombra.
-15. Válassza a **Mentés** lehetőséget.
+15. Kattintson a **Mentés** gombra.
 16. Az alkalmazások használatához kövesse az utasításokat.
 
 

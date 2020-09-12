@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589044"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658345"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -37,7 +37,7 @@ A zökkenőmentes egyszeri bejelentkezés ingyenes szolgáltatás, és nincs sz�
 
 **K: a [Microsoft Azure Germany felhőben](https://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)is elérhető a zökkenőmentes egyszeri bejelentkezés?**
 
-A Azure Government felhőhöz zökkenőmentes egyszeri bejelentkezés érhető el. A részletekért tekintse meg [a Azure Government hibrid identitásával kapcsolatos szempontokat](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+A Azure Government felhőhöz zökkenőmentes egyszeri bejelentkezés érhető el. A részletekért tekintse meg [a Azure Government hibrid identitásával kapcsolatos szempontokat](./reference-connect-government-cloud.md).
 
 **K: milyen alkalmazásokat használ a `domain_hint` `login_hint` zökkenőmentes egyszeri bejelentkezés vagy a paraméter funkció?**
 
@@ -62,11 +62,11 @@ Ha azt szeretné, hogy más alkalmazások is csendes bejelentkezési élményt h
 
 **K: támogatja a zökkenőmentes egyszeri bejelentkezést `Alternate ID` a Felhasználónév helyett `userPrincipalName` ?**
 
-Igen. A zökkenőmentes egyszeri bejelentkezés támogatja `Alternate ID` a felhasználónevet, ha a Azure ad Connect az [itt](how-to-connect-install-custom.md)látható módon van konfigurálva. Nem minden Office 365-alkalmazás támogatja `Alternate ID` . Tekintse meg az adott alkalmazás dokumentációját a támogatási nyilatkozathoz.
+Igen. A zökkenőmentes egyszeri bejelentkezés támogatja `Alternate ID` a felhasználónevet, ha a Azure ad Connect az [itt](how-to-connect-install-custom.md)látható módon van konfigurálva. Nem minden Microsoft 365-alkalmazás támogatja `Alternate ID` . Tekintse meg az adott alkalmazás dokumentációját a támogatási nyilatkozathoz.
 
-**K: mi a különbség az [Azure ad JOIN](../active-directory-azureadjoin-overview.md) és a zökkenőmentes SSO által nyújtott egyszeri bejelentkezés?**
+**K: mi a különbség az [Azure ad JOIN](../devices/overview.md) és a zökkenőmentes SSO által nyújtott egyszeri bejelentkezés?**
 
-Az [Azure ad JOIN](../active-directory-azureadjoin-overview.md) egyszeri bejelentkezést biztosít a felhasználók számára, ha az eszközük regisztrálva van az Azure ad-ben. Ezeket az eszközöket nem feltétlenül kell tartományhoz csatlakoztatni. Az egyszeri bejelentkezés az *elsődleges frissítési tokenekkel* vagy a *PRT*-vel van megadva, és nem Kerberos. A Windows 10-es eszközökön a felhasználói élmény a legoptimálisabb. Az egyszeri bejelentkezés automatikusan megtörténik a Microsoft Edge böngészőben. Emellett a Chrome-ban is működik egy böngésző-bővítmény használatával.
+Az [Azure ad JOIN](../devices/overview.md) egyszeri bejelentkezést biztosít a felhasználók számára, ha az eszközük regisztrálva van az Azure ad-ben. Ezeket az eszközöket nem feltétlenül kell tartományhoz csatlakoztatni. Az egyszeri bejelentkezés az *elsődleges frissítési tokenekkel* vagy a *PRT*-vel van megadva, és nem Kerberos. A Windows 10-es eszközökön a felhasználói élmény a legoptimálisabb. Az egyszeri bejelentkezés automatikusan megtörténik a Microsoft Edge böngészőben. Emellett a Chrome-ban is működik egy böngésző-bővítmény használatával.
 
 Az Azure AD Joint és a zökkenőmentes egyszeri bejelentkezést is használhatja a bérlőn. Ez a két funkció kiegészíti egymást. Ha mindkét funkció be van kapcsolva, az Azure AD JOIN szolgáltatásból származó egyszeri bejelentkezés elsőbbséget élvez a zökkenőmentes egyszeri bejelentkezéssel szemben.
 
@@ -85,7 +85,7 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    **1. lépés. Azon AD-erdők listájának beolvasása, amelyeken engedélyezve van a zökkenőmentes egyszeri bejelentkezés**
 
-   1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Először töltse le és telepítse az [Azure ad PowerShellt](/powershell/azure/active-directory/overview).
    2. Lépjen a `%programfiles%\Microsoft Azure Active Directory Connect` mappába.
    3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
    4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
@@ -130,7 +130,7 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    Futtassa az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure AD Connect futtatja:
 
-   1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Először töltse le és telepítse az [Azure ad PowerShellt](/powershell/azure/active-directory/overview).
    2. Lépjen a `%programfiles%\Microsoft Azure Active Directory Connect` mappába.
    3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
    4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
@@ -145,7 +145,7 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    Ha a Azure AD Connect használatával letiltotta a zökkenőmentes egyszeri bejelentkezést, kövesse az alábbi 1 – 4. feladatot. Ha letiltotta a zökkenőmentes egyszeri bejelentkezést a PowerShell használatával, ugorjon az alábbi 5. feladatra.
 
-   1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Először töltse le és telepítse az [Azure ad PowerShellt](/powershell/azure/active-directory/overview).
    2. Lépjen a `%programfiles%\Microsoft Azure Active Directory Connect` mappába.
    3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
    4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
@@ -153,7 +153,7 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    **3. lépés. Törölje kézzel a `AZUREADSSO` számítógépfiókot a felsorolt ad-erdőkből.**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Rövid [**útmutató – az**](how-to-connect-sso-quick-start.md) Azure ad zökkenőmentes egyszeri bejelentkezésének beszerzése és futtatása.
 - [**Technikai**](how-to-connect-sso-how-it-works.md) részletes útmutató – a funkció működésének megismerése.

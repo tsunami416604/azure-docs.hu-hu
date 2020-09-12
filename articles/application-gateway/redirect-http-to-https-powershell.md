@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 0c1baa96c9093e02c54fb70949d1de0ddbda1bcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c65f143552aa14f9e309b68f484f9c0695e8dbd
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804320"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596060"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure PowerShell használatával
 
@@ -20,14 +20,13 @@ A Azure PowerShell használatával létrehozhat egy, a TLS/SSL-lezáráshoz szü
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Önaláírt tanúsítvány létrehozása
-> * Hálózat beállítása
-> * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Figyelő és átirányítási szabály hozzáadása
-> * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
+* Önaláírt tanúsítvány létrehozása
+* Hálózat beállítása
+* Alkalmazásátjáró létrehozása a tanúsítvánnyal
+* Figyelő és átirányítási szabály hozzáadása
+* Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +62,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy *myResourceGroupAG* nevű Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. 
 

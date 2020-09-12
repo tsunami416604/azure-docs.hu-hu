@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080692"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487300"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Explorer
 
 Ez a cikk a Azure Time Series Insights Gen1 [Explorer webalkalmazás](https://insights.timeseries.azure.com/)funkcióit és beállításait ismerteti. A Azure Time Series Insights Explorer bemutatja a szolgáltatás által biztosított hatékony adatvizualizációs képességeket, és a saját környezetében érhető el.
 
-Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Globális áttekintést nyújt az adatairól, így gyorsan ellenőrizheti IoT-megoldását, és elkerülheti az üzleti szempontból kritikus fontosságú eszközök költséges leállását. Közel valós időben derítheti fel a rejtett trendeket, észlelheti a rendellenességeket, és elvégezheti a kiváltó okok elemzését. 
+Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Globális áttekintést nyújt az adatairól, így gyorsan ellenőrizheti IoT-megoldását, és elkerülheti az üzleti szempontból kritikus fontosságú eszközök költséges leállását. Közel valós időben derítheti fel a rejtett trendeket, észlelheti a rendellenességeket, és elvégezheti a kiváltó okok elemzését.
 
 > [!TIP]
 > A demonstrációs környezettel kapcsolatos interaktív bemutatóért olvassa el a [Azure Time Series Insights](time-series-quickstart.md)rövid útmutatót.
@@ -74,7 +74,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
          |Művelet  |Támogatott típusok  |Jegyzetek  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**, **datetime**, **TimeSpan**       |         |
-         |**=**, **!=**,**<>**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |         |
+         |**=**, **!=**, **<>**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |         |
          |**A**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |  Az összes operandusnak azonos típusúnak vagy **Null** konstansnak kell lennie.        |
          |**RENDELKEZIK**     | **Sztring**        |  A jobb oldalon csak konstans karakterlánc-literálok engedélyezettek. Üres karakterlánc és **Null érték** nem engedélyezett.       |
 
@@ -108,7 +108,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 1. A **hő** segítségével gyorsan kipróbálhatja az egyedi vagy rendellenes adatsorozatokat egy adott lekérdezésben. Hő csak egy keresési kifejezés látható.
 
-    [![Gen1 Explorer hő-diagramok](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Time Series Insights Explorer hő-diagramok ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Ha az eseményeket a jobb gombbal kattintva tárja fel, az **események** panel elérhetővé válik. Itt áttekintheti az összes nyers eseményt, és az eseményeket JSON-vagy CSV-fájlként is exportálhatja. Azure Time Series Insights az összes nyers adathalmazt tárolja.
 
@@ -123,7 +123,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 Most, hogy megismerte az Azure Time Series Insights Explorer webalkalmazásban elérhető főbb funkciókat, konfigurációs beállításokat és megjelenítési beállításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a Azure Time Series Insights-környezetben felmerülő problémákat](time-series-insights-diagnose-and-solve-problems.md) .
 

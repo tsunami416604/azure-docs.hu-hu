@@ -1,5 +1,5 @@
 ---
-title: Az ÁME Explorer-Azure Time Series Insights Gen2 lévő adatmegjelenítési szolgáltatás | Microsoft Docs
+title: Adatmegjelenítés a Time Series Insights Explorerben – Azure Time Series Insights Gen2 | Microsoft Docs
 description: Ismerkedjen meg a Azure Time Series Insights Explorerben elérhető funkciókkal és lehetőségekkel.
 author: deepakpalled
 ms.author: dpalled
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227049"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488167"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -47,7 +47,7 @@ A Azure Time Series Insights Explorer a következő hét elemből áll:
 
 ## <a name="1-environment-panel"></a>1. környezeti panel
 
-A környezet panel megjeleníti az összes olyan Azure Time Series Insights Gen2 környezetet, amelyhez hozzáféréssel rendelkezik. A lista tartalmazza a Gen2-környezeteket, valamint az 1. generációs környezeteket. Egyszerűen válassza ki azt a környezetet, amelyet azonnal el szeretne végezni.
+A környezet panel megjeleníti az összes olyan Azure Time Series Insights Gen2 környezetet, amelyhez hozzáféréssel rendelkezik. A lista Gen2-környezeteket és Gen1-környezeteket is tartalmaz. Egyszerűen válassza ki azt a környezetet, amelyet azonnal el szeretne végezni.
 
 1. Válassza ki a megjelenített környezet melletti legördülő nyilat.
 
@@ -200,11 +200,11 @@ Azure Time Series Insights Explorer két témát támogat:
 
   [![Kiválasztott sötét téma](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>1. generációs környezet-vezérlőelemek
+## <a name="gen1-environment-controls"></a>Gen1 környezeti vezérlők
 
 ### <a name="gen2-terms-panel"></a>Gen2 feltételek panel
 
-Ez a szakasz csak azokra a meglévő, 1. generációs környezetekre vonatkozik, amelyek a frissített felhasználói felületen a Explorer használatát kísérlik meg. Érdemes lehet az 1. generációs termék-és Gen2 használni. Felvettünk néhány funkciót a meglévő felhasználói felületről a frissített Explorerbe, de az új Azure Time Series Insights Explorerben megtekintheti az 1. generációs környezet teljes felhasználói felületi élményét.
+Ez a szakasz csak olyan meglévő Gen1-környezetekre vonatkozik, amelyek a frissített felhasználói felületen a Explorert használják. Előfordulhat, hogy a Gen1 termék-és Gen2 termékét együtt szeretné használni. Felvettünk néhány funkciót a meglévő felhasználói felületen a frissített Explorerrel, de a Gen1-környezet teljes felhasználói felületi élményét az új Azure Time Series Insights Explorerben érheti el.
 
 A hierarchia helyett megjelenik a Azure Time Series Insights Gen2 terms panel. A feltételek panel lehetővé teszi lekérdezések definiálását a környezetben. Az adathalmaz alapján is szűrheti az adatszűrést.
 
@@ -214,7 +214,7 @@ A Azure Time Series Insights Gen2 feltételek szerkesztő panelje a következő 
 
 **Hol**: a WHERE záradék használatával gyorsan szűrheti az eseményeket az alábbi táblázatban felsorolt operandusok használatával. Ha egy operandus kiválasztásával végez keresést, a rendszer automatikusan frissíti a predikátumot a keresés alapján. A támogatott operandusok típusai a következők:
 
-| Művelet    | Támogatott típusok    | Megjegyzések |
+| Művelet    | Támogatott típusok    | Jegyzetek |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double, DateTime, TimeSpan | |
 | `=`, `!=`, `<>` | Karakterlánc, bool, Double, DateTime, TimeSpan, NULL |

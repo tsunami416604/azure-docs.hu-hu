@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592287"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566636"
 ---
 # <a name="translator-30-detect"></a>Translator 3,0: észlelés
 
@@ -35,7 +35,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>api-verzió</td>
     <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` .</td>
@@ -46,7 +46,7 @@ A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
@@ -67,7 +67,7 @@ A kérelem fejlécei a következők:
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON-objektum `Text` . A nyelvfelismerés a tulajdonság értékére lesz alkalmazva `Text` . A mintául szolgáló kérelem törzse így néz ki:
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON-objektum `Text` . A nyelvfelismerés a tulajdonság értékére lesz alkalmazva `Text` . A nyelv automatikus észlelése hatékonyabban működik a hosszú bemeneti szöveggel. A mintául szolgáló kérelem törzse így néz ki:
 
 ```json
 [
@@ -78,7 +78,6 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON-objektum `Te
 Az alábbi korlátozások érvényesek:
 
 * A tömb legfeljebb 100 elemet tartalmazhat.
-* Egy tömb elemének szöveges értéke nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
 * A kérelemben szereplő teljes szöveg nem lehet hosszabb 50 000 karakternél, beleértve a szóközöket is.
 
 ## <a name="response-body"></a>Választörzs
@@ -126,7 +125,7 @@ Példa JSON-válaszra:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
@@ -139,7 +138,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>

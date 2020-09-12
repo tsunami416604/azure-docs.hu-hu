@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319626"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661625"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ A cikk azt is feltételezi, hogy alapvető ismeretekkel rendelkezik a folyamatok
 
 ### <a name="sample-pipeline"></a>Mintavételezési folyamat
 
-A cikkben használt folyamat a 3. minta módosított verziója [: bevétel előrejelzése](samples-designer.md#classification). A folyamat a minta adatkészlet helyett az [adat importálása](algorithm-module-reference/import-data.md) modult használja, hogy megmutassa, hogyan taníthatja be a modelleket a saját adatai alapján.
+A cikkben használt folyamat a tervezői kezdőlapon a minta-adatcsatorna [bevételeinek előrejelzése](samples-designer.md#classification) módosított változata. A folyamat a minta adatkészlet helyett az [adat importálása](algorithm-module-reference/import-data.md) modult használja, hogy megmutassa, hogyan taníthatja be a modelleket a saját adatai alapján.
 
 ![Képernyőfelvétel a módosított mintavételi folyamatról az Adatimportálási modul kiemelésével](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -69,7 +69,7 @@ Folyamat paramétereinek létrehozása a változók dinamikus beállításához 
    > [!NOTE]
    > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A folyamat futtatásának elküldése.
 
@@ -83,7 +83,8 @@ A tervező az összes folyamat kimenetét, beleértve a betanított modelleket i
 1. A modellt **más kimenetekben** is megtalálhatja a futtatási naplókkal együtt.
 1. Másik lehetőségként válassza a **kimenet megtekintése** ikont. Innen követheti a párbeszédablak utasításait, hogy közvetlenül az adattárhoz navigáljon. 
 
-![A betanított modell letöltését bemutató képernyőkép](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![A betanított modell letöltését bemutató képernyőkép](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Betanítási folyamat közzététele
 
@@ -101,9 +102,9 @@ Egy folyamat közzététele egy folyamat végpontján, hogy a jövőben könnyed
 
 Most, hogy már rendelkezik egy közzétett betanítási folyamattal, felhasználhatja a modell új adataira való átképzéséhez. Elküldheti a futtatásokat egy folyamat-végpontról a Studio munkaterületről vagy programozott módon.
 
-### <a name="submit-runs-by-using-the-designer"></a>Futtatások beküldése a Designer használatával
+### <a name="submit-runs-by-using-the-studio-portal"></a>Futtatások küldése a Studio portál használatával
 
-A következő lépések végrehajtásával elküldheti a paraméteres folyamat végpontját a tervezőből:
+A következő lépések végrehajtásával elküldheti a paraméteres folyamat végpontját a Studio-portálról:
 
 1. Ugrás a **végpontok** lapra a Studio-munkaterületen.
 1. Válassza a **folyamat végpontjai** lapot. Ezután válassza ki a folyamat végpontját.
@@ -119,7 +120,7 @@ Az Áttekintés panelen megtalálhatja a közzétett folyamat REST-végpontját.
 
 A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonosi típusú hitelesítési fejlécre. További információ a munkaterület hitelesítésének beállításáról és a paraméteres REST-hívás létrehozásáról: [Azure Machine learning folyamat létrehozása a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egy paraméteres betanítási folyamat végpontját a tervező használatával.
 

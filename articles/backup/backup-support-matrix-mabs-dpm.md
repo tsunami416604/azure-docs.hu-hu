@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 71f188ffca125bc13eb2e9a43f466aeb61c64b75
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182003"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506610"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -114,10 +114,10 @@ A MABS üzembe helyezhető egy Azure Stack virtuális gépen, így egyetlen hely
 A DPM-kiszolgálónak/MABS hozzá kell férnie az alábbi URL-címekhez:
 
 - `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- `*.Microsoft.com`
+- `*.WindowsAzure.com`
+- `*.microsoftonline.com`
+- `*.windows.net`
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
 
@@ -190,7 +190,7 @@ A Data Protection Managerrel védhető különböző kiszolgálókkal és munkat
 - A DPM/MABS által készített fürtözött munkaterheléseknek ugyanabban a tartományban kell lenniük, mint a DPM/MABS, vagy egy alárendelt/megbízható tartományban.
 - Az NTLM/tanúsítványalapú hitelesítés használatával biztonsági mentést készíthet a nem megbízható tartományokban vagy munkacsoportokban található adatvédelemről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) információ a MABS architektúráról.
 - [Tekintse át](backup-support-matrix-mars-agent.md) a Mars-ügynök által támogatott tudnivalókat.

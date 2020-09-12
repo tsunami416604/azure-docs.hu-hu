@@ -2,14 +2,14 @@
 title: Ügyfél által felügyelt kulccsal történő titkosítás
 description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a prémium szintű beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/26/2020
 ms.custom: ''
-ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225886"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487232"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -22,10 +22,14 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 
 ## <a name="things-to-know"></a>Tudnivalók
 
-* Jelenleg csak a beállításjegyzék létrehozásakor engedélyezheti az ügyfél által felügyelt kulcsokat.
-* Az ügyfél által felügyelt kulcs beállításjegyzékbe való engedélyezése után nem lehet letiltani.
+* Jelenleg csak a beállításjegyzék létrehozásakor engedélyezheti az ügyfél által felügyelt kulcsokat. A kulcs engedélyezésekor egy *felhasználóhoz rendelt* felügyelt identitást kell konfigurálni a kulcstartó eléréséhez.
+* Miután engedélyezte a titkosítást egy ügyfél által felügyelt kulccsal a beállításjegyzékben, nem tilthatja le a titkosítást.  
 * A [tartalom megbízhatósága](container-registry-content-trust.md) jelenleg nem támogatott az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben.
 * Az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben az [ACR-feladatokhoz](container-registry-tasks-overview.md) tartozó naplókat jelenleg csak 24 óráig őrzi meg a rendszer. Ha hosszabb ideig kell megőriznie a naplókat, tekintse meg a [feladat-futtatási naplók exportálásával és tárolásával](container-registry-tasks-logs.md#alternative-log-storage)kapcsolatos útmutatót.
+
+
+> [!NOTE]
+> Ha az Azure Key vaulthoz való hozzáférés egy [Key Vault tűzfallal](../key-vault/general/network-security.md)rendelkező virtuális hálózat használatával van korlátozva, további konfigurációs lépésekre van szükség. A beállításjegyzék létrehozása és az ügyfél által felügyelt kulcs engedélyezése után állítsa be a kulcsot a beállításjegyzék *rendszer által hozzárendelt* felügyelt identitásával, és konfigurálja a beállításjegyzéket a Key Vault tűzfal megkerüléséhez. A cikk lépéseit követve engedélyezze a titkosítást az ügyfél által felügyelt kulccsal, majd tekintse meg a jelen cikk későbbi, [speciális forgatókönyv: Key Vault tűzfal](#advanced-scenario-key-vault-firewall) című szakaszát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -372,7 +376,7 @@ Miután engedélyezte az ügyfél által felügyelt kulcsokat a beállításjegy
 
 ## <a name="rotate-key"></a>Elforgatási kulcs
 
-Az ügyfél által felügyelt kulcs elforgatása a beállításjegyzék-titkosításhoz a megfelelőségi szabályzatokban. Hozzon létre egy új kulcsot, vagy frissítsen egy kulcsot, majd frissítse a beállításjegyzéket, hogy az adatait a kulcs használatával titkosítsa. Ezeket a lépéseket az Azure CLI használatával vagy a portálon végezheti el.
+A megfelelőségi szabályzatoknak megfelelően a beállításjegyzék titkosításához használt ügyfél által felügyelt kulcs elforgatása. Hozzon létre egy új kulcsot, vagy frissítsen egy kulcsot, majd frissítse a beállításjegyzéket, hogy az adatait a kulcs használatával titkosítsa. Ezeket a lépéseket az Azure CLI használatával vagy a portálon végezheti el.
 
 A kulcsok elforgatásakor általában ugyanazt az identitást kell megadnia, amelyet a beállításjegyzék létrehozásakor használ. Szükség esetén új, felhasználó által hozzárendelt identitást konfigurálhat a kulcs eléréséhez, vagy engedélyezheti és megadhatja a beállításjegyzék rendszer által hozzárendelt identitását.
 
@@ -439,9 +443,15 @@ az keyvault delete-policy \
 
 A kulcs visszavonása gyakorlatilag blokkolja az összes beállításjegyzék-adattal való hozzáférést, mivel a beállításjegyzék nem fér hozzá a titkosítási kulcshoz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törölt kulcs vissza lett állítva, a beállításjegyzékben meg kell választania a kulcsot, hogy újra hozzáférhessen a titkosított beállításjegyzék-adataihoz.
 
-## <a name="advanced-scenarios"></a>Speciális forgatókönyvek
+## <a name="advanced-scenario-key-vault-firewall"></a>Speciális forgatókönyv: Key Vault tűzfal
 
-### <a name="system-assigned-identity"></a>Rendszer által hozzárendelt identitás
+Ha az Azure Key Vault egy Key Vault tűzfallal rendelkező virtuális hálózaton van telepítve, hajtsa végre az alábbi további lépéseket, miután engedélyezte az ügyfél által felügyelt kulcs titkosítását a beállításjegyzékben.
+
+1. Beállításjegyzék-titkosítás konfigurálása a beállításjegyzék rendszer által hozzárendelt identitásának használatára
+1. A Key Vault tűzfal megkerülésének engedélyezése a beállításjegyzékben
+1. Az ügyfél által felügyelt kulcs elforgatása
+
+### <a name="configure-system-assigned-identity"></a>Rendszer által hozzárendelt identitás konfigurálása
 
 A beállításjegyzék rendszerhez rendelt felügyelt identitását beállíthatja a titkosítási kulcsok kulcstárolójának eléréséhez. Ha nem ismeri az Azure-erőforrások különböző felügyelt identitásait, tekintse meg az [áttekintést](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -449,7 +459,7 @@ A beállításjegyzék rendszerhez rendelt identitásának engedélyezése a por
 
 1. A portálon navigáljon a beállításjegyzékhez.
 1. Válassza a **Beállítások**  >   **identitás**lehetőséget.
-1. A **rendszer által hozzárendelve**beállításnál állítsa be **a**következőt: **állapot** . Válassza a **Mentés** lehetőséget.
+1. A **rendszer által hozzárendelve**beállításnál állítsa be **a**következőt: **állapot** . Kattintson a **Mentés** gombra.
 1. Másolja az identitás **objektum-azonosítóját** .
 
 Az identitás hozzáférésének biztosítása a kulcstartóhoz:
@@ -466,16 +476,20 @@ A beállításjegyzék titkosítási beállításainak frissítése a személyaz
 1. A **Beállítások**területen válassza a **titkosítási**  >  **kulcs módosítása**elemet.
 1. Az **identitás**területen válassza ki a **rendszer által hozzárendelt**elemet, majd kattintson a **Mentés**gombra.
 
-### <a name="key-vault-firewall"></a>Key Vault tűzfal
+### <a name="enable-key-vault-bypass"></a>Key Vault megkerülésének engedélyezése
 
-Ha az Azure Key Vault egy Key Vault tűzfallal rendelkező virtuális hálózaton van telepítve, hajtsa végre a következő lépéseket:
+Key Vault tűzfallal konfigurált kulcstartó eléréséhez a beállításjegyzéknek meg kell kerülnie a tűzfalat. Konfigurálja a kulcstartót úgy, hogy az engedélyezze a hozzáférést bármely [megbízható szolgáltatás](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)számára. Azure Container Registry az egyik megbízható szolgáltatás.
 
-1. Konfigurálja a beállításjegyzék titkosítását a beállításjegyzék rendszer által hozzárendelt identitásának használatára. Lásd az előző szakaszt.
-2. Konfigurálja a kulcstartót úgy, hogy az engedélyezze a hozzáférést bármely [megbízható szolgáltatás](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)számára.
+1. A portálon navigáljon a kulcstartóhoz.
+1. Válassza a **Beállítások**  >  **hálózatkezelés**lehetőséget.
+1. Virtuális hálózati beállítások megerősítése, frissítése vagy hozzáadása. Részletes lépések: [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/general/network-security.md).
+1. A **tűzfal megkerülésének engedélyezése a Microsoft megbízható szolgáltatások számára**területen válassza az **Igen**lehetőséget. 
 
-Részletes lépések: [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/general/network-security.md).
+### <a name="rotate-the-customer-managed-key"></a>Az ügyfél által felügyelt kulcs elforgatása
 
-## <a name="next-steps"></a>További lépések
+Az előző lépések elvégzése után forgassa el a kulcsot egy új kulccsal a kulcstartó mögött. A lépések a cikk [elforgatása](#rotate-key) című részében olvashatók.
+
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [Az Azure-](../security/fundamentals/encryption-atrest.md)beli inaktív adatok titkosításáról.
 * További információ a hozzáférési házirendekről és a [kulcstartóhoz való hozzáférés biztonságossá](../key-vault/general/secure-your-key-vault.md)tételéről.

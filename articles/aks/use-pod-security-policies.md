@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan vezérelheti a pod-felvételeket az Azure Kuber
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 3c8ec61666942fc74dcb64c03c0e3f06986e8c37
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: bec9c7b4be5c3c3e334a8e3cb3a8b2e0a7130de3
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987273"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669300"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
 > [!WARNING]
-> **A jelen dokumentumban ismertetett funkció, a pod biztonsági szabályzat (előzetes verzió), az elavult, és a továbbiakban nem lesz elérhető 2020. október 15-én,** [Azure Policy az AK](use-pod-security-on-azure-policy.md)-hoz.
+> **A jelen dokumentumban ismertetett funkció, a pod biztonsági szabályzat (előzetes verzió), az elavult, és a továbbiakban nem lesz elérhető február 1-től 2021** -én, Azure Policy az [AK](use-pod-security-on-azure-policy.md)-hoz. Az Érvénytelenítési dátum az előző dátummal bővült, 2020. október 15-ig.
 >
 > Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
 >
@@ -392,7 +392,7 @@ A [kubectl delete][kubectl-delete] paranccsal törölje az NGINX unprivilegizál
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A pod biztonsági szabályzat letiltásához használja újra az az [AK Update][az-aks-update] parancsot. A következő példa letiltja a pod biztonsági házirendet a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* található fürt neve elemnél:
 
@@ -422,7 +422,7 @@ Végezetül törölje a *PSP-Kabai* névteret:
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Pod biztonsági házirendet, hogy megakadályozza a privilegizált hozzáférés használatát. A szabályzatok számos funkciót kikényszerítenek, például a kötet típusát vagy a futtató felhasználót. Az elérhető beállításokkal kapcsolatos további információkért tekintse meg az [Kubernetes Pod biztonsági szabályzatának dokumentációját][kubernetes-policy-reference].
 

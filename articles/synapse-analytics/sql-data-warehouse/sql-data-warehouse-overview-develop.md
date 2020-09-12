@@ -1,6 +1,6 @@
 ---
 title: Erőforrások a szinapszis SQL-készlet fejlesztéséhez az Azure szinapszis Analyticsben
-description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák a SQL Data Warehousehoz.
+description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák az Azure szinapszis Analytics szolgáltatáshoz.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211493"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460609"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák a szinapszis SQL-készlethez az Azure szinapszis Analyticsben 
  Ebben a cikkben további forrásokat talál, amelyek segítségével jobban megismerheti az Azure Szinapszisban található SQL-készletek legfontosabb tervezési döntéseit, javaslatait és kódolási módszereit.
@@ -38,12 +38,12 @@ Az alábbi cikkekben speciális kódolási technikák, tippek és javaslatok sze
 
 * [tárolt eljárások](sql-data-warehouse-develop-stored-procedures.md)
 * [Címkék](sql-data-warehouse-develop-label.md)
-* [kilátással](sql-data-warehouse-develop-views.md)
+* [kilátással](performance-tuning-materialized-views.md)
 * [ideiglenes táblák](sql-data-warehouse-tables-temporary.md)
 * [dinamikus SQL](sql-data-warehouse-develop-dynamic-sql.md)
 * [hurkolás](sql-data-warehouse-develop-loops.md)
 * [csoportosítási beállítások](sql-data-warehouse-develop-group-by-options.md)
 * [változó-hozzárendelés](sql-data-warehouse-develop-variable-assignment.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md).

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013639"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613757"
 ---
 # <a name="sky-reflections"></a>Égbolt tükröződése
 
@@ -28,8 +28,8 @@ Az alábbi képek a különböző felületek világításának eredményeit jele
 
 | Érdesség  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Nem fém  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| Fém      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| Nem fém  | ![Dielektromos, érdesség = 0](media/dielectric-0.png)   | ![Dielektromos, érdesség = 0,25](media/dielectric-0.25.png)  | ![Dielektromos, érdesség = 0,5](media/dielectric-0.5.png)  | ![Dielektromos, érdesség = 0,75](media/dielectric-0.75.png)  | ![Dielektromos, érdesség = 1](media/dielectric-1.png)  |
+| Fém      | ![Fém, érdesség = 0](media/metallic-0.png)  | ![Fém, érdesség = 0,25](media/metallic-0.25.png)    | ![Fém, érdesség = 0,5](media/metallic-0.5.png)    | ![Fém, érdesség = 0,75](media/metallic-0.75.png)    | ![Fém, érdesség = 1](media/metallic-1.png)    |
 
 A világítástechnikai modellel kapcsolatos további információkért tekintse meg az [anyagok](../../concepts/materials.md) című fejezetet.
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -119,22 +119,27 @@ A 2D-mintázatok környezeti térképként való használatakor a képnek [gömb
 
 Az Azure Remote rendering számos beépített környezeti leképezést biztosít, amelyek mindig elérhetők. Az összes beépített környezeti Térkép a cubemaps.
 
-|Azonosító                         | Leírás                                              | Ábrán                                                      |
+|Azonosító                         | Description                                              | Ábrán                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Különféle szalagos fények, világos beltéri alapszintű megvilágítás    | ![Autoshop](media/autoshop.png)
-|builtin://BoilerRoom               | Világos beltéri fény beállítása, több ablakos fények      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | Változóan színes fények Közepes fényű beltéri környezetben  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Közepesen fényes környezeti csarnok                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Halvány beltéri beállítás világos sötét kontraszttal              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Nappali környezeti helyiség világos, világos ablakos fény     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Sötét éjszakai égbolt és számos környező fénnyel   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | Napfény és árnyék kontrasztja                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Tiszta égbolt            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Mérsékelten változó nap és árnyalat                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Esti naplemente a félhomályban                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Világos, buja-zöld és fehér fény tónusok, halvány terep | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Nappali és világos környezeti alapfény                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | Ugyanaz, mint a TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Különféle szalagos fények, világos beltéri alapszintű megvilágítás    | ![Egy objektum megvilágításához használt SkyBox](media/autoshop.png)
+|builtin://BoilerRoom               | Világos beltéri fény beállítása, több ablakos fények      | ![Objektum BoilerRoom SkyBox](media/boiler-room.png)
+|builtin://ColorfulStudio           | Változóan színes fények Közepes fényű beltéri környezetben  | ![Objektum ColorfulStudio SkyBox](media/colorful-studio.png)
+|builtin://Hangar                   | Közepesen fényes környezeti csarnok                     | ![Objektum SmallHangar SkyBox](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Halvány beltéri beállítás világos sötét kontraszttal              | ![Objektum IndustrialPipeAndValve SkyBox](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Nappali környezeti helyiség világos, világos ablakos fény     | ![Objektum Lebombo SkyBox](media/lebombo.png)
+|builtin://SataraNight              | Sötét éjszakai égbolt és számos környező fénnyel   | ![Objektum SataraNight SkyBox](media/satara-night.png)
+|builtin://SunnyVondelpark          | Napfény és árnyék kontrasztja                      | ![Objektum SunnyVondelpark SkyBox](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Tiszta égbolt            | ![Objektum Syferfontein SkyBox](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Mérsékelten változó nap és árnyalat                         | ![Objektum TearsOfSteelBridge SkyBox](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Esti naplemente a félhomályban                    | ![Objektum VeniceSunset SkyBox](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Világos, buja-zöld és fehér fény tónusok, halvány terep | ![Objektum WhippleCreekRegionalPark SkyBox](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Nappali és világos környezeti alapfény                 | ![Objektum WinterRiver SkyBox](media/winter-river.png)
+|builtin://DefaultSky               | Ugyanaz, mint a TearsOfSteelBridge                               | ![Objektum DefaultSky SkyBox](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# RemoteManager. SkyReflectionSettings tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager:: SkyReflectionSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225682"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594356"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
@@ -59,7 +59,7 @@ A magánhálózati végpont egy magánhálózati IP-címet használ a felügyelt
 > Javasoljuk, hogy felügyelt privát végpontokat hozzon létre az összes Azure-adatforráshoz való kapcsolódáshoz. 
  
 > [!WARNING]
-> Ha egy Pásti-adattár (blob, ADLS Gen2, SQL DW) már létre van hozva egy privát végpontot, és akkor is, ha az összes hálózatról engedélyezi a hozzáférést, az ADF csak felügyelt privát végponton keresztül férhet hozzá. Győződjön meg róla, hogy ilyen helyzetekben Hozzon létre egy privát végpontot. 
+> Ha egy Pásti-adattár (blob, ADLS Gen2, Azure szinapszis Analytics) rendelkezik egy már létrehozott privát végponttal, és akkor is, ha az összes hálózatról engedélyezi a hozzáférést, az ADF csak felügyelt privát végponton keresztül férhet hozzá. Győződjön meg róla, hogy ilyen helyzetekben Hozzon létre egy privát végpontot. 
 
 A privát végponti kapcsolatok "függő" állapotban jönnek létre, amikor felügyelt privát végpontot hoz létre Azure Data Factoryban. A rendszer elindít egy jóváhagyási munkafolyamatot. A magánhálózati kapcsolat erőforrásának tulajdonosa a kapcsolat jóváhagyása vagy elutasítása.
 
@@ -83,12 +83,29 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure Private link Service
+- Azure Search
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+
+### <a name="supported-regions"></a>Támogatott régiók
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA nyugati középső régiója
+- USA 2. nyugati régiója
+- USA déli középső régiója
+- USA középső régiója
+- Észak-Európa
+- Nyugat-Európa
+- Az Egyesült Királyság déli régiója
+- Délkelet-Ázsia
+- Kelet-Ausztrália
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Kimenő kommunikáció nyilvános végponton keresztül, felügyelt Virtual Network
 - A kimenő kommunikációhoz csak az 443-es port van megnyitva.
 - Az Azure Storage és a Azure Data Lake Gen2 nem támogatottak nyilvános végponton keresztüli csatlakoztatáshoz az ADF által felügyelt Virtual Network.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Oktatóanyag: [másolási folyamat létrehozása felügyelt Virtual Network és privát végpontok használatával](tutorial-copy-data-portal-private.md) 
 - Oktatóanyag: [leképezési adatfolyam folyamat létrehozása felügyelt Virtual Network és privát végpontok használatával](tutorial-data-flow-private.md)

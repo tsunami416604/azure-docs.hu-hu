@@ -3,13 +3,12 @@ title: Erőforrás-naplók & gyűjtése
 description: Megtudhatja, hogyan küldhet erőforrás-naplókat és-eseményeket a Azure Container Instances lévő tároló-csoportokból Azure Monitor naplókba
 ms.topic: article
 ms.date: 07/13/2020
-ms.author: danlep
-ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524012"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566670"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Tároló csoport és példány naplózása Azure Monitor naplókkal
 
@@ -107,7 +106,7 @@ A tároló csoport naplóinak megtekintése a `ContainerInstanceLog_CL` tábláb
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
 1. Az **általános**területen válassza a **naplók** lehetőséget.  
-1. Írja be a következő lekérdezést:`ContainerInstanceLog_CL | limit 50`
+1. Írja be a következő lekérdezést: `ContainerInstanceLog_CL | limit 50`
 1. **Futtatás** kiválasztása
 
 A lekérdezésnek számos találatot kell megjelennie. Ha először nem lát eredményt, várjon néhány percet, majd kattintson a **Futtatás** gombra a lekérdezés újbóli végrehajtásához. Alapértelmezés szerint a naplóbejegyzések **táblázatos** formátumban jelennek meg. Ezután a sorokat kibontva tekintheti meg az egyes naplóbejegyzések tartalmát.
@@ -120,7 +119,7 @@ Megtekintheti a Azure Portal tároló példányainak eseményeit is. Az esemény
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
 1. Az **általános**területen válassza a **naplók** lehetőséget.  
-1. Írja be a következő lekérdezést:`ContainerEvent_CL | limit 50`
+1. Írja be a következő lekérdezést: `ContainerEvent_CL | limit 50`
 1. **Futtatás** kiválasztása
 
 A lekérdezésnek számos találatot kell megjelennie. Ha először nem lát eredményt, várjon néhány percet, majd kattintson a **Futtatás** gombra a lekérdezés újbóli végrehajtásához. Alapértelmezés szerint a bejegyzések **táblázatos** formátumban jelennek meg. Ezután kibonthat egy sort az egyes bejegyzések tartalmának megtekintéséhez.

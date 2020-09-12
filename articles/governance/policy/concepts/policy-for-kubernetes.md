@@ -3,12 +3,12 @@ title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509875"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645600"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -57,13 +57,13 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
      1. Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-     1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+     1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
 
      1. A Azure Policy lap bal oldalán válassza a **Csatlakozás előnézete** elemet.
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Csatlakozás a Szabályzathoz az AK előzetes verziójához" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Képernyőkép a házirend oldal "csatlakozás előnézete" csomópontról." border="false":::
 
      1. Válassza ki az előfizetéshez hozzáadni kívánt előfizetés sorát.
 
@@ -120,17 +120,17 @@ A fenti előfeltételként szükséges lépések elvégzése után telepítse a 
 
 - Azure Portal
 
-  1. Indítsa el az AK szolgáltatást a Azure Portal a **minden szolgáltatás**elemre kattintva, majd keresse meg és válassza ki a **Kubernetes Services szolgáltatást**.
+  1. Indítsa el az AK szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **Kubernetes-szolgáltatások**keresésével és kiválasztásával.
 
   1. Válasszon egy AK-beli fürtöt.
 
   1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek (előzetes verzió)** lehetőséget.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Házirend-definíciók az AK-fürtből" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a "házirendek (előzetes verzió)" csomópontról a Kubernetes szolgáltatás lapján." border="false":::
 
   1. A Főoldalon kattintson a **bővítmény engedélyezése** gombra.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="A Azure Policy engedélyezése az AK-bővítményhez":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Az Azure Kubernetes Services (A K) oldalának bevezetési Azure Policyének engedélyezése gomb képernyőképe.":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
 
 - Azure Portal
 
-  1. Indítsa el az AK szolgáltatást a Azure Portal a **minden szolgáltatás**elemre kattintva, majd keresse meg és válassza ki a **Kubernetes Services szolgáltatást**.
+  1. Indítsa el az AK szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **Kubernetes-szolgáltatások**keresésével és kiválasztásával.
 
   1. Válassza ki az AK-fürtöt, ahol le szeretné tiltani a Azure Policy-bővítményt.
 
   1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek (előzetes verzió)** lehetőséget.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Házirend-definíciók az AK-fürtből" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a "házirendek (előzetes verzió)" csomópontról a Kubernetes szolgáltatás lapján." border="false":::
 
   1. A Főoldalon kattintson a **bővítmény letiltása** gombra.
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Az AK-bővítmény Azure Policyának letiltása" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Képernyőkép a "bővítmény letiltása" gombra a "bevezetési Azure Policy az Azure Kubernetes Services (A K) oldalához." border="false":::
 
 - Azure CLI
 
@@ -535,7 +535,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949779"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647501"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -46,6 +46,7 @@ A rendszercsomópont-készletek a következő korlátozásokkal rendelkeznek:
 * A rendszercsomópont-készletek legalább 2 vCPU és 4 GB memóriával rendelkező VM SKU-t igényelnek.
 * A rendszercsomópont-készleteknek legalább 30 hüvelyt kell támogatniuk, a [hüvelyek minimális és maximális értékének képlete][maximum-pods]szerint.
 * A helyszíni csomópont-készletek felhasználói csomópont-készleteket igényelnek.
+* Egy további rendszercsomópont-készlet hozzáadásával vagy a csomópont-készlet egy rendszercsomópont-készlettel való módosításával a rendszer *nem* helyezi át automatikusan a rendszerhüvelyeket. A rendszerhüvelyek továbbra is futhatnak ugyanazon a csomópont-készleten, még akkor is, ha egy felhasználói csomópont-készletre módosítják. Ha töröl vagy lekicsinyít egy olyan rendszerhüvelyt futtató csomópont-készletet, amely korábban a rendszercsomópont-készlet volt, akkor a rendszer ezeket a hüvelyeket az új rendszercsomópont-készletre helyezi át az előnyben részesített ütemezéssel.
 
 A következő műveleteket hajthatja végre a Node Pools használatával:
 

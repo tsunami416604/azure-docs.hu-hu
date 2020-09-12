@@ -3,14 +3,12 @@ title: Statikus kimenő IP-cím konfigurálása
 description: Az Azure tűzfal és a felhasználó által megadott útvonalak konfigurálása olyan Azure Container Instances munkaterhelésekhez, amelyek a tűzfal nyilvános IP-címét használják a bejövő és kimenő forgalomhoz
 ms.topic: article
 ms.date: 07/16/2020
-author: dlepow
-ms.author: danlep
-ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023704"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566568"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Egyetlen nyilvános IP-cím konfigurálása a kimenő és a bejövő forgalom számára egy tároló csoportba
 
@@ -280,7 +278,7 @@ A kimenet a következőhöz hasonló:
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 52.142.18.133</body></html>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Azure tűzfal mögötti virtuális hálózatban állít be tároló csoportokat. Felhasználó által megadott útvonalat, NAT-és alkalmazás-szabályokat konfigurált a tűzfalon. Ennek a konfigurációnak a használatával egyetlen statikus IP-címet állíthat be a bejövő és a kimenő Azure Container Instancesról.
 

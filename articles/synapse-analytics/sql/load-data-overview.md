@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490285"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483728"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Alapszintű betöltési stratégia kialakítása az Azure szinapszis SQL-készlethez
 
@@ -38,7 +38,7 @@ Az SQL-készlethez tartozó ELT megvalósításának alapvető lépései a köve
 5. Alakítsa át az adathalmazt.
 6. Adatok beszúrása az éles üzemi táblákba.
 
-Betöltési oktatóanyagért lásd: az [Azure Blob Storage-ból való adatok betöltésének használata a Azure SQL Data Warehouseba](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+A betöltési oktatóanyagért lásd: az [Azure Blob Storage-ból az Azure szinapszis analyticsbe való adatok betöltésének használata](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 További információ: [minták betöltése blog](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/).
 
@@ -50,7 +50,7 @@ A forrásrendszer adatokból való beolvasása a tárterület helyétől függ. 
 
 A kiinduló adatok az UTF-8 és az UTF-16 kódolású, tagolt szövegfájlokból is betöltődik. A tagolt szövegfájlok mellett az RC-fájlból, az ORKből és a Parkettaből is betöltődik a Hadoop fájlformátum. A rendszer a gzip és a Snappy tömörített fájlok adatait is képes betölteni. A Base jelenleg nem támogatja a bővített ASCII, a rögzített szélességű formátumot és a beágyazott formátumokat, például a WinZip, a JSON és az XML formátumot.
 
-Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét. A parketta és az SQL DW adattípusok megfeleltetése a következő:
+Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét. Az Azure szinapszis Analytics adattípusának leképezése a következő:
 
 | **Parketta adattípusa** |                      **SQL-adattípus**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -121,7 +121,7 @@ Az adatok alapszintű betöltéséhez használhatja a következő betöltési le
 - A [T-SQL-](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sel jól használható, ha az adatok Azure Blob Storage-ban vagy Azure Data Lake Storeban vannak. A leghatékonyabban szabályozhatja a betöltési folyamatot, de külső adatobjektumokat is meg kell határoznia. A többi módszer ezeket az objektumokat a háttérben úgy definiálja, ahogy a forrástábla táblázatokra van leképezve.  A T-SQL-terhelések összehangolása érdekében Azure Data Factory, SSIS vagy Azure functions-T használhat.
 - A SSIS jól működik [,](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ha a forrásadatok SQL Serverban működnek. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek.
 - [A Azure Data Factory (ADF) használatával egy másik összehangoló](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) eszköz van.  Meghatározza a folyamatokat és az ütemezett feladatokat.
-- A [Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a SQL Data Warehouse táblák adatait egy Databricks dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír egy SQL Data Warehouse táblába, a Base használatával.
+- [A Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) az Azure szinapszis Analytics-táblázatból származó adatok átvitele egy Databricks-dataframe, és/vagy egy Databricks-dataframe származó adatok beírása egy Azure szinapszis Analytics-táblába a Base használatával.
 
 ### <a name="non-polybase-loading-options"></a>Nem albase betöltési beállítások
 
@@ -141,6 +141,6 @@ Az ETL-folyamat tervezésekor próbálja meg futtatni a folyamatot egy kis teszt
 
 Számos partnerünk betöltési megoldásokkal rendelkezik. További információért tekintse meg a [megoldás partnereink](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutatást a [betöltési útmutatóban](data-loading-best-practices.md)talál.

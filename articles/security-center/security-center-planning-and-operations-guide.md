@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e9e67dc0da7f81f73d8237769e7aea90f9bc1585
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833419"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461323"
 ---
 # <a name="planning-and-operations-guide"></a>Tervezési és működtetési útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -230,11 +230,11 @@ Az [incidensekre adott válaszokkal kapcsolatos videók Azure Security Center & 
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Partneri megoldások monitorozása Azure Security Centerokkal](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
 * [Azure Security Center GYIK](faq-general.md) – gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security Blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

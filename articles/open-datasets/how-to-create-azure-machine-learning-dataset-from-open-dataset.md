@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998073"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461510"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning adatkészletek létrehozása az Azure Open-adatkészletből
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,7 +111,7 @@ Létrehozhat Azure Machine Learning adatkészleteket az Azure Open-adatkészlete
 
     ![Adatkészlet kiválasztása](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a **munkaszüneti** adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Az adatok részletezéséhez tekintse [meg az Azure Open adatkészletek katalógusát](https://azure.microsoft.com/services/op[en-datasets/catalog/) , például a mezők leírását és a dátumtartomány értékét. Kattintson a **Létrehozás** gombra.
+1. Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a **munkaszüneti** adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Az adatok részletezéséhez tekintse [meg az Azure Open adatkészletek katalógusát](https://azure.microsoft.com/services/open-datasets/catalog) , például a mezők leírását és a dátumtartomány értékét. Kattintson a **Létrehozás** gombra.
 
     ![Adatkészlet-paraméterek beállítása és adatkészlet létrehozása](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

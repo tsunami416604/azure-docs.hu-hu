@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798567"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460547"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Tervezési táblázatok a szinapszis SQL-készletben
 
@@ -46,7 +46,7 @@ Az SQL-készletben lévő táblák szervezetének megjelenítéséhez használha
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL-készlet |
 |:-----|:-----|:------|:-----|
-| City | Dimenzió | WWI. DimCity |
+| City | Méret | WWI. DimCity |
 | Rendelés | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
@@ -106,12 +106,12 @@ A tábla kategóriája általában meghatározza, hogy melyik lehetőséget kell
 | Táblázat kategóriája | Ajánlott terjesztési lehetőség |
 |:---------------|:--------------------|
 | Fact           | Használjon kivonatoló eloszlást a fürtözött oszlopcentrikus index használatával. A teljesítmény akkor javul, ha két kivonatoló tábla ugyanahhoz a terjesztési oszlophoz van csatlakoztatva. |
-| Dimenzió      | Kisebb táblák esetében replikált használata. Ha a táblák túl nagyok az egyes számítási csomópontokon való tároláshoz, használja a kivonatoló eloszlást. |
+| Méret      | Kisebb táblák esetében replikált használata. Ha a táblák túl nagyok az egyes számítási csomópontokon való tároláshoz, használja a kivonatoló eloszlást. |
 | Előkészítés        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
 
 ## <a name="table-partitions"></a>Tábla partíciói
 
-A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel a SQL Data Warehouseban lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal.
+A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel az Azure szinapszis Analyticsben lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -294,9 +294,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> A szinapszis SQL-ben a jobb teljesítmény érdekében érdemes lehet sys. **pdw_permanent_table_mappings** helyett a sys **. pdw_table_mappingst** használni az állandó felhasználói táblákon. További információért lásd: **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Táblázat területének összegzése
 

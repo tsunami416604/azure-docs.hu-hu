@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: aszimmetrikus Útválasztás'
 description: Ez a cikk végigvezeti azokon a problémákon, amelyek az aszimmetrikus útválasztással szembesülnek olyan hálózatokban, amelyeken több hivatkozás található a célhelyre.
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: osamam
-ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072137"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566534"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Aszimmetrikus útválasztás több hálózati elérési úttal
 A cikk leírja, hogy hogyan követhet a kimenő és a bejövő hálózati forgalom különböző utakat, amikor a hálózati forrás és cél között több elérési út is rendelkezésre áll.
@@ -64,5 +64,5 @@ Az aszimmetrikus útválasztás által okozott problémák megoldásának másik
 ![A forrásalapú NAT hálózati konfigurációja](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Az aszimmetrikus útválasztás észlelése
-A Traceroute a legjobb módszer annak vizsgálatához, hogy a forgalom a várt útvonalat járja-e be. Ha azt várja, hogy a helyszíni SMTP-kiszolgálóról a Microsoft felé irányuló forgalom az interneten haladjon keresztül, a traceroute által megjelenített útvonalnak az SMTP-kiszolgálótól kell indulnia és az Office 365 szolgáltatásnál kell végződnie. Az eredmény alapján ellenőrizheti, hogy a forgalom valóban az internet felé, és nem az ExpressRoute irányában hagyja el a hálózatot.
+A Traceroute a legjobb módszer annak vizsgálatához, hogy a forgalom a várt útvonalat járja-e be. Ha várhatóan a helyszíni SMTP-kiszolgálóról a Microsoft felé irányuló forgalom az Internet elérési útját veszi át, a várt traceroute az SMTP-kiszolgálóról Microsoft 365ra. Az eredmény alapján ellenőrizheti, hogy a forgalom valóban az internet felé, és nem az ExpressRoute irányában hagyja el a hálózatot.
 

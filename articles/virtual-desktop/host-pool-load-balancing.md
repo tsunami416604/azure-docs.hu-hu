@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali gazdagép-készlet terheléseloszt�
 description: Ismerje meg a Windows rendszerű virtuális asztali környezethez tartozó gazdagép-készlet terheléselosztási módszereit.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 09/04/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007437"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461119"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Gazdagépcsoport terheléselosztási módszerei
 
@@ -34,7 +34,7 @@ Az egyes gazdagépek készletei csak egy ilyen terheléselosztási típust áll�
 
 A szélesség – első terheléselosztási módszer lehetővé teszi a felhasználói kapcsolatok terjesztését a forgatókönyv optimalizálásához. Ez a módszer ideális azoknak a szervezeteknek, akik a legjobb élményt szeretnék biztosítani a készletezett virtuális asztali környezethez csatlakozó felhasználók számára.
 
-A szélesség – első módszer először a munkamenet azon gazdagépeit kérdezi le, amelyek engedélyezik az új kapcsolatokat. A metódus ezután kiválasztja a munkamenet-gazdagépet a legkevesebb munkamenettel. Döntetlen esetén a metódus kiválasztja az első munkamenet-állomást a lekérdezésben.
+A szélesség – első módszer először a munkamenet azon gazdagépeit kérdezi le, amelyek engedélyezik az új kapcsolatokat. A metódus ezután véletlenszerűen kiválasztja a munkamenet-gazdagépet a legkevesebb munkamenetet tartalmazó munkamenet-gazdagépek közül. Ha például kilenc, 11, 12, 13, 14, 15, 16, 17, 18 és 19 munkamenetből álló gép van, akkor a létrehozott új munkamenet nem fog automatikusan belépni az első gépre. Ehelyett a legalacsonyabb számú munkamenettel rendelkező első öt gép közül választhat (11, 12, 13, 14, 15).
 
 ## <a name="depth-first-load-balancing-method"></a>Mélység – első terheléselosztási módszer
 

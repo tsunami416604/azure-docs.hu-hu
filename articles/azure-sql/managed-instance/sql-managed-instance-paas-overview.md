@@ -11,17 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d8bf3f087592a7d629a247b1c10721237699fdc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590064"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613538"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Az Azure SQL felügyelt példánya az intelligens, méretezhető felhőalapú adatbázis-szolgáltatás, amely a legszélesebb körű SQL Server adatbázismotor-kompatibilitást ötvözi a teljes mértékben felügyelt és örökzöld platform szolgáltatásként nyújtott előnyökkel. Az SQL felügyelt példánya közel 100%-os kompatibilitást biztosít a legújabb SQL Server (Enterprise Edition) adatbázis-motorral, amely egy natív [virtuális hálózat (VNet)](../../virtual-network/virtual-networks-overview.md) megvalósítását biztosítja, amely az általános biztonsági kérdésekre és a meglévő SQL Server ügyfeleknek kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül. Az SQL felügyelt példánya lehetővé teszi a meglévő SQL Server ügyfelek számára, hogy a felhőbe a helyszíni alkalmazásaikat minimális alkalmazás-és adatbázis-módosításokkal emelje át. Ugyanakkor a felügyelt SQL-példányok megőrzik az összes, a felügyeleti terhelést [és a TCO](../database/high-availability-sla.md)-t drasztikusan csökkentő (automatikus javítás és verziófrissítés, [automatikus biztonsági mentés](../database/automated-backups-overview.md)) lehetőséget.
+
+Ha még nem ismeri az Azure SQL felügyelt példányát, tekintse meg az Azure SQL *felügyelt példányának* videóját a részletes [Azure SQL-videó sorozatból](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
 
 > [!IMPORTANT]
 > Azoknak a régióknak a listájáért, amelyeken jelenleg elérhető az SQL felügyelt példány, tekintse meg a [támogatott régiók](resource-limits.md#supported-regions)című témakört.
@@ -41,7 +44,7 @@ Az SQL felügyelt példánya a Azure SQL Database és az SQL Server adatbázismo
 
 | **Pásti előnyei** | **Az üzletmenet folytonossága** |
 | --- | --- |
-|Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](../database/high-availability-sla.md) <br>[Automatizált biztonsági mentéssel](../database/automated-backups-overview.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időponthoz tartozó adatbázis-visszaállítási](../database/recovery-using-backups.md#point-in-time-restore) képesség |
+|Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](../database/high-availability-sla.md) <br>[Automatizált biztonsági mentéssel](../database/automated-backups-overview.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>[Időponthoz tartozó adatbázis-visszaállítási](../database/recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyelet**|
 |Elszigetelt környezet ([VNet-integráció](connectivity-architecture-overview.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure ad) hitelesítés](../database/authentication-aad-overview.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint a Azure SQL Database <br>[SQL-naplózás](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Data Migration Service
 
@@ -182,7 +185,7 @@ Az SQL felügyelt példánya a helyszíni vagy IaaS adatbázis-megvalósítások
 
 ### <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás  
 
-Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az Azure Blob Storage-ba. Az Azure Storage-blobokban tárolt biztonsági másolatok közvetlenül visszaállíthatók egy felügyelt példányra a [T-SQL Restore parancs](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)használatával.
+Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az Azure Blob Storage-ba. Az Azure Storage-blobokban tárolt biztonsági másolatok közvetlenül visszaállíthatók egy felügyelt példányra a [T-SQL Restore parancs](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current&preserve-view=true)használatával.
 
 - A Wide World Importers – standard adatbázis biztonságimásolat-fájljának visszaállítását bemutató rövid útmutató: [biztonságimásolat-fájl visszaállítása felügyelt példányra](restore-sample-database-quickstart.md). Ez a rövid útmutató azt mutatja be, hogy fel kell töltenie egy biztonságimásolat-fájlt az Azure Blob Storage-ba, és biztonságossá kell tennie egy közös hozzáférés-aláírási (SAS-) kulcs használatával.
 - További információ az URL-címről való visszaállításról: [NATÍV visszaállítás az URL-](migrate-to-instance-from-sql-server.md#native-restore-from-url)címről.
@@ -202,7 +205,7 @@ Az SQL felügyelt példánya támogatja a SQL Server 2008-adatbázisok visszamen
   
 Az alábbi ábra az SQL felügyelt példányának felületi kompatibilitását ismerteti:  
 
-![Migrálás](./media/sql-managed-instance-paas-overview/migration.png)
+![felszín terület kompatibilitása](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>SQL Server helyszíni és az SQL felügyelt példány közötti fő különbségek
 
@@ -234,7 +237,7 @@ A következő táblázat több, a Transact-SQL szolgáltatáson keresztül elér
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban: `<instanceName>` . `<dnsPrefix>` . a database.windows.net, ahol az az `<instanceName>` ügyfél által megadott név, míg a `<dnsPrefix>` neve automatikusan létrejön a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98"), például:.|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: bea9e163e9dde6c42de87048379d663222cb56e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82734620"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460201"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Az alapértelmezett ideiglenes mappa mérete túl kicsi a Cloud Service webes és feldolgozói szerepkörén
 A Cloud Service Worker vagy webes szerepkör alapértelmezett ideiglenes könyvtára legfeljebb 100 MB méretű lehet, ami egy bizonyos ponton megtelt. Ez a cikk azt ismerteti, hogyan kerülhető el a szabad hely az ideiglenes címtárban.
@@ -69,9 +69,9 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>További lépések
-Olvassa el az [Azure web Role ASP.net ideiglenes mappa méretének növelését](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)ismertető blogot.
+## <a name="next-steps"></a>Következő lépések
+Olvassa el az [Azure web Role ASP.net ideiglenes mappa méretének növelését](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder)ismertető blogot.
 
 További [hibaelhárítási cikkek](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) a Cloud Services szolgáltatáshoz.
 
-Ha meg szeretné tudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatát](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Ha meg szeretné tudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatát](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

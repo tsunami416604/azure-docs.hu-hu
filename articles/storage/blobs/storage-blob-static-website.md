@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432508"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486858"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetés az Azure Storage-ban
 
-A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web*nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](/azure/azure-functions/functions-overview) és más platformként nyújtott szolgáltatásokat is tartalmazzák.
+A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web*nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](/azure/azure-functions/functions-overview) és más platformként nyújtott szolgáltatásokat is tartalmazzák. Az Azure Storage statikus webhelyének üzemeltetése kiváló megoldás olyan esetekben, amikor nincs szükség webkiszolgálóra a tartalom megjelenítéséhez.
+
+[App Service statikus Web Apps](https://azure.microsoft.com/services/app-service/static/) az Azure Storage statikus webhelyeinek üzemeltetése, és olyan esetekben is megfelelő, amikor nincs szükség webkiszolgálóra a tartalom megjelenítéséhez. App Service statikus Web Apps teljes körűen felügyelt folyamatos integrációs és folyamatos teljesítési (CI/CD) munkafolyamatot biztosít a GitHub-forrásból a globális üzembe helyezésig.
+
+Ha a tartalom megjelenítéséhez webkiszolgálóra van szüksége, használhatja a [Azure app Service](https://azure.microsoft.com/services/app-service/).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> Ha a hely kiszolgálóoldali kódból függ, használja a [Azure app Service](/azure/app-service/overview) helyet.
-Mindenképpen hozzon létre egy általános célú v2-es standard Storage-fiókot. A statikus webhelyek semmilyen más típusú Storage-fiókban nem érhetők el.
+> Mindenképpen hozzon létre egy általános célú v2-es standard Storage-fiókot. A statikus webhelyek semmilyen más típusú Storage-fiókban nem érhetők el.
 
 ## <a name="setting-up-a-static-website"></a>Statikus webhely beállítása
 
@@ -103,6 +106,11 @@ Ha a Storage-fiók úgy van konfigurálva, hogy [biztonságos átvitelt igényel
 A statikus webhely funkciójának részeként nincs lehetőség fejlécek konfigurálására. Az Azure CDN segítségével azonban fejléceket adhat hozzá, és hozzáfűzheti (vagy felülírhatja) a fejlécek értékeit. Lásd: [a Standard Rules Engine referenciája Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
 
 Ha fejléceket kíván használni a gyorsítótárazás vezérléséhez, tekintse meg [a vezérlés Azure CDN gyorsítótárazási viselkedés a gyorsítótárazási szabályokkal](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)című témakört.
+
+## <a name="multi-region-website-hosting"></a>Több régiós webhely üzemeltetése
+
+Ha több földrajzi helyen szeretné üzemeltetni a webhelyeket, javasoljuk, hogy használjon egy [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) a regionális gyorsítótárazáshoz. Ha az egyes régiókban különböző tartalmakat szeretne kiszolgálni, az [Azure bejárati ajtót](https://docs.microsoft.com/azure/frontdoor/) kell használnia. Emellett feladatátvételi képességeket is biztosít. Az [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) használata nem ajánlott, ha egyéni tartományt tervez használni. Problémák merülhetnek fel amiatt, hogy az Azure Storage hogyan ellenőrzi az egyéni tartományneveket.
+
 
 ## <a name="pricing"></a>Díjszabás
 

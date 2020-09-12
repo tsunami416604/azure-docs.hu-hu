@@ -1,63 +1,85 @@
 ---
-title: Az Azure IoT Central-beli adatszolgáltatások exportálása | Microsoft Docs
-description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-ba Event Hubs, Azure Service Bus és az Azure Blob Storage-ba
+title: Adatok exportálása az Azure IoT Central (előzetes verzió) | Microsoft Docs
+description: Az új adatexportálás használata a IoT-adatainak az Azure-ba és az egyéni Felhőbeli célhelyekre való exportálásához.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: iot-central
-manager: corywink
-ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: contperfq1
+ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008525"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461935"
 ---
-# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>IoT-adatexportálás a célhelyekre az Azure-ban az adatexportálás használatával (örökölt)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>IoT-alapú adatexportálás a Felhőbeli célhelyekre adatexportálással (előzetes verzió)
 
 > [!Note]
-> A IoT Centralban lévő adatexportálás új módon történik. Az új adatexportálás használatával szűrheti és bővítheti az exportált adatait, és exportálhatja azokat új célhelyekre, például webhook-végpontokra. Az új adatexportálásról [itt](./howto-use-data-export.md)tájékozódhat. Az új adatexportálás és az örökölt adatexportálás közötti különbségek megismeréséhez tekintse meg az [összehasonlító táblázatot](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export).
+> Ez a cikk a IoT Central előnézeti adatexportálási funkcióit ismerteti.
+>
+> - Az örökölt adatexportálási funkciókkal kapcsolatos információkért lásd: [IoT-adatok exportálása a Felhőbeli célhelyekre adatexportálás (örökölt) használatával](./howto-export-data-legacy.md).
+> - Az előzetes verziójú adatexportálás és az örökölt adatexportálási funkciók közötti különbségekről az alábbi [összehasonlító táblázatban](#comparison-of-legacy-data-export-and-preview-data-export) talál további információt.
 
-Ez a cikk az Azure IoT Central adatexportálási funkciójának használatát ismerteti. Ezzel a szolgáltatással folyamatosan exportálhatja az adatait az **azure Event Hubsba**, **Azure Service Busba**vagy **Azure Blob Storage** -példányba. Az adatexportálás JSON-formátumot használ, és tartalmazhatja a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
+Ez a cikk azt ismerteti, hogyan használható az új adatexportálási Előnézet funkció az Azure IoT Centralban. Ezzel a szolgáltatással folyamatosan exportálhatja a szűrt és a dúsított IoT-adatait a IoT Central alkalmazásból. Az adatexportálás leküldi a közel valós idejű változásokat a felhőalapú megoldás más részeire a meleg elérésű elemzések, az elemzések és a tárolás érdekében.
 
-- Meleg elérésű elemzések és elemzések. Ez a beállítás magában foglalja az egyéni szabályok beindítását a Azure Stream Analyticsban, az egyéni munkafolyamatok aktiválását a Azure Logic Appsban, vagy átadja a Azure Functions át.
-- A Microsoft Power BI-ban a ritka elérésű elemzések, például a Azure Machine Learning vagy a hosszú távú trendek elemzése során betanítási modellek.
+Megteheti például a következőt:
 
-> [!Note]
+- A telemetria-és a tulajdonság-módosítások folyamatos exportálása JSON formátumban, közel valós időben.
+- Az adatstreamek szűrésével exportálhatja az egyéni feltételekkel egyező adatforgalmat.
+- Az adatstreamek az eszköz egyéni értékeivel és tulajdonságértékek gazdagítása.
+- Az Azure Event Hubs, a Azure Service Bus, az Azure Blob Storage és a webhook-végpontok számára küldje el az összes olyan célhelyet.
+
+> [!Tip]
 > Amikor bekapcsolja az adatexportálást, a rendszer csak az adott pillanattól kezdve kapja meg az adatait. Jelenleg nem lehet lekérni az adatexportálást olyan időpontra, amikor az adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a korai adatexportálást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A IoT Central alkalmazásban rendszergazdának kell lennie, vagy az adatexportálási engedélyekkel kell rendelkeznie.
+Az előzetes verziójú adatexportálási funkciók használatához [v3 alkalmazás](howto-get-app-info.md)szükséges, és rendelkeznie kell az [adatexportálási](howto-manage-users-roles.md) engedéllyel.
 
 ## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
-Az exportálási célhelynek az adatexportálás konfigurálása előtt léteznie kell.
+Az exportálási célhelynek az adatexportálás konfigurálása előtt léteznie kell. Jelenleg a következő típusú célhelyek érhetők el:
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
+- Azure Event Hubs
+- Azure Service Bus-üzenetsor
+- Azure Service Bus-témakör
+- Azure Blob Storage
+- Webhook
+
+### <a name="create-an-event-hubs-destination"></a>Event Hubs célhely létrehozása
 
 Ha nem rendelkezik meglévő Event Hubs-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy [új Event Hubs névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.EventHub). További információt az [Azure Event Hubs dokumentációjában](../../event-hubs/event-hubs-create.md)olvashat.
 
-2. Válasszon előfizetést. Az olyan egyéb előfizetésekben is exportálhat adatexportálást, amelyek nem ugyanabban az előfizetésben vannak, mint a IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
+1. Hozzon létre egy Event hubot a Event Hubs névtérben. Nyissa meg a névteret, és a felül található **+ Event hub** elemet választva hozzon létre egy Event hub-példányt.
 
-3. Hozzon létre egy Event hubot a Event Hubs névtérben. Nyissa meg a névteret, és a felül található **+ Event hub** elemet választva hozzon létre egy Event hub-példányt.
+1. Hozzon létre egy kulcsot, amelyet akkor kell használni, ha az adatexportálást IoT Centralban állítja be:
 
-### <a name="create-service-bus-namespace"></a>Service Bus névtér létrehozása
+    - Válassza ki a létrehozott Event hub-példányt.
+    - Válassza a **beállítások > a közös hozzáférési szabályzatok**lehetőséget.
+    - Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
+    - Másolja az elsődleges vagy a másodlagos kapcsolatok sztringjét. Ezt a kapcsolódási karakterláncot használva új célhelyet állíthat be IoT Centralban.
+
+### <a name="create-a-service-bus-queue-or-topic-destination"></a>Service Bus üzenetsor vagy témakör célhelyének létrehozása
 
 Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy [új Service Bus névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). [Azure Service Bus dokumentációban](../../service-bus-messaging/service-bus-create-namespace-portal.md)bővebben is olvashat.
-2. Válasszon előfizetést. Az olyan egyéb előfizetésekben is exportálhat adatexportálást, amelyek nem ugyanabban az előfizetésben vannak, mint a IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
 
-3. Az exportáláshoz használandó üzenetsor vagy témakör létrehozásához nyissa meg a Service Bus névteret, és válassza a **+ üzenetsor** vagy a **+ témakör**lehetőséget.
+1. Az exportáláshoz használandó üzenetsor vagy témakör létrehozásához nyissa meg a Service Bus névteret, és válassza a **+ üzenetsor** vagy a **+ témakör**lehetőséget.
 
-Ha a Service Bus exportálás célhelyként választja, akkor a várólisták és a témakörök nem rendelkezhetnek a munkamenetek és az ismétlődő észlelések engedélyezésével. Ha ezek bármelyike engedélyezve van, néhány üzenet nem érkezik meg a várólistán vagy a témakörben.
+1. Hozzon létre egy kulcsot, amelyet akkor kell használni, ha az adatexportálást IoT Centralban állítja be:
 
-### <a name="create-storage-account"></a>Storage-fiók létrehozása
+    - Válassza ki a létrehozott várólistát vagy témakört.
+    - Válassza a **Beállítások/közös hozzáférési szabályzatok**lehetőséget.
+    - Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
+    - Másolja az elsődleges vagy a másodlagos kapcsolatok sztringjét. Ezt a kapcsolódási karakterláncot használva új célhelyet állíthat be IoT Centralban.
+
+### <a name="create-an-azure-blob-storage-destination"></a>Azure Blob Storage célhely létrehozása
 
 Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse az alábbi lépéseket:
 
@@ -70,687 +92,184 @@ Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse
     |Standard|Blob Storage|
     |Prémium|BLOB Storage letiltása|
 
-2. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
+1. A Storage-fiókban lévő tároló létrehozásához nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
+
+1. A Storage-fiókhoz tartozó kapcsolati karakterlánc létrehozásához nyissa meg a **beállítások > hozzáférési kulcsok lehetőséget**. Másolja az egyiket a két összekapcsolási karakterláncból.
+
+### <a name="create-a-webhook-endpoint"></a>Webhook-végpont létrehozása
+
+Az adatexportálás nyilvánosan elérhető HTTP webhook-végpontba is elvégezhető. A [RequestBin](https://requestbin.net/)használatával létrehozhat egy teszt webhook-végpontot. RequestBin-szabályozás a kérelem korlátjának elérésekor:
+
+1. Nyissa meg a [RequestBin](https://requestbin.net/).
+2. Hozzon létre egy új RequestBin, és másolja a **bin URL-címét**. Ezt az URL-címet használja az adatexportálás tesztelésekor.
 
 ## <a name="set-up-data-export"></a>Az adatexportálás beállítása
 
-Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket követve állíthatja be az adatexportálást.
+Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatexportálást a IoT Central alkalmazásban:
 
 1. Jelentkezzen be IoT Central alkalmazásba.
 
-2. A bal oldali panelen válassza az **adatexportálás**elemet.
+1. A bal oldali panelen válassza az **adatexportálás (előzetes verzió)** lehetőséget.
 
     > [!Tip]
-    > Ha nem látja az **adatexportálást** a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
+    > Ha nem látja az **adatexportálás (előzetes verzió)** lehetőséget a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-3. Kattintson az **+ új** gombra. Válassza ki az **azure blob Storage**, az **azure Event Hubs**, **Azure Service Bus üzenetsor**vagy a **Azure Service Bus témakör** egyikét az Exportálás céljának megfelelően. Az alkalmazáson keresztüli exportálások maximális száma öt.
+1. Válassza az **+ új Exportálás**lehetőséget.
 
-4. Adja meg az Exportálás nevét. A legördülő listában válassza ki a **névteret**, vagy **adjon meg egy kapcsolatok karakterláncot**.
+1. Adja meg az új Exportálás megjelenítendő nevét, és győződjön meg arról, hogy az adatexportálás **engedélyezve**van.
 
-    - A IoT Central alkalmazással megegyező előfizetésben csak a Storage-fiókok, a Event Hubs névterek és a Service Bus névterek láthatók. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg a 6. lépést.
-    - Az ingyenes díjszabási csomag használatával létrehozott alkalmazások esetében az adatexportálás konfigurálása egyetlen módon történik a kapcsolódási karakterláncon keresztül. Az ingyenes díjszabási csomag alkalmazásai nem rendelkeznek társított Azure-előfizetéssel.
+1. Válassza ki az exportálandó adattípust. A következő táblázat a támogatott adatexportálási típusokat sorolja fel:
 
-    ![Új Event hub létrehozása](media/howto-export-data/export-event-hub.png)
+    | Adattípus | Leírás | Adatformátum |
+    | :------------- | :---------- | :----------- |
+    |  Telemetria | Telemetria-üzenetek exportálása az eszközökről közel valós időben. Minden exportált üzenet tartalmazza az eredeti üzenet teljes tartalmát, normalizálva.   |  [Telemetria-üzenet formátuma](#telemetry-format)   |
+    | Tulajdonságok módosítása | A módosításokat az eszköz és a felhő tulajdonságai között közel valós időben exportálhatja. A csak olvasható eszköz tulajdonságainál a jelentett értékek módosításai lesznek exportálva. Az írási és olvasási tulajdonságok esetében a jelentett és a kívánt értékeket is exportálja a rendszer. | [Tulajdonság-módosítási üzenet formátuma](#property-changes-format) |
 
-5. Válassza ki az Event hub, a várólista, a témakör vagy a tároló elemet a legördülő listából.
+1. Szükség esetén szűrők hozzáadásával csökkentheti az exportált adatmennyiséget. Az egyes adatexportálási típusokhoz különböző típusú szűrők érhetők el:
 
-6. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
+    A telemetria szűréséhez használja a következőt:
 
-    - Event Hubs vagy Service Bus keresse meg a névteret a Azure Portalban:
-        - A teljes névtérhez tartozó kapcsolódási karakterlánc használata:
-            1. A **Beállítások**területen válassza a **megosztott elérési szabályzatok** elemet.
-            2. Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
-            3. Az elsődleges vagy a másodlagos kapcsolatok karakterláncának másolása
-        - Ha a kapcsolati karakterláncot egy adott Event hub-példányhoz vagy Service Bus üzenetsor vagy témakörhöz szeretné használni, lépjen az **entitások > Event Hubs** vagy **entitások > várólisták** vagy **entitások > témakörök**elemre. Válasszon egy adott példányt, és kövesse a fenti lépéseket a kapcsolódási karakterlánc beszerzéséhez.
-    - Storage-fiók, nyissa meg a Azure Portal Storage-fiókját:
-        - Csak a teljes Storage-fiókhoz tartozó kapcsolatok karakterláncai támogatottak. Az egyetlen tárolóra kiterjedő kapcsolódási karakterláncok nem támogatottak.
-          1. A **Beállítások**területen válassza a **hozzáférési kulcsok** elemet.
-          2. Másolja a key1-vagy a key2-kapcsolatok karakterláncát
+    - **Képesség szűrő**: Ha egy telemetria elemet választ a **név** legördülő menüben, az exportált adatfolyam csak olyan telemetria tartalmaz, amelyek megfelelnek a szűrési feltételnek. Ha a **név** legördülő menüben kiválasztja az eszköz vagy a felhő tulajdonság elemét, az exportált adatfolyam csak a telemetria megfelelő tulajdonságokkal rendelkező eszközökről származó eszközöket tartalmaz.
+    - **Üzenet tulajdonságai szűrő**: az eszköz SDK-kat használó eszközök az egyes telemetria üzenetekben küldhetnek *üzenet-tulajdonságokat* vagy *alkalmazás-tulajdonságokat* . A tulajdonságok olyan kulcs-érték párok táska, amelyek egyéni azonosítókkal címkézik az üzenetet. Az üzenet tulajdonságai szűrő létrehozásához adja meg a keresett üzenet tulajdonság kulcsát, és adjon meg egy feltételt. Csak a megadott szűrési feltételnek megfelelő tulajdonságokkal rendelkező telemetria exportálja a rendszer. A következő karakterlánc-összehasonlító operátorok támogatottak: egyenlő, nem egyenlő, nem tartalmaz, nem tartalmaz, létezik, nem létezik. [További információ az alkalmazás tulajdonságairól IoT hub docs-ból](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-    Illessze be a kapcsolatok karakterláncát. Írja be a példány vagy a **tároló nevét**, és vegye figyelembe, hogy ez megkülönbözteti a kis-és nagybetűket.
+    A tulajdonságok változásainak szűréséhez használjon egy **képesség szűrőt**. Válasszon egy tulajdonságot a legördülő menüben. Az exportált adatfolyam csak a szűrési feltételnek megfelelő kijelölt tulajdonság módosításait tartalmazza.
 
-7. Az **exportálni**kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a**típust be értékre állítja.
+1. Igény szerint az exportált üzeneteket további kulcs-érték párokkal gazdagíthatja. A következő dúsítások érhetők el a telemetria és a tulajdonsághoz az adatexportálási típusok módosításához:
 
-8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Kattintson a **Mentés** gombra.
+    - **Egyéni karakterlánc**: egyéni statikus karakterláncot hoz létre minden üzenethez. Írjon be egy tetszőleges kulcsot, és adjon meg egy karakterlánc-értéket.
+    - **Tulajdonság**: hozzáadja az aktuális eszköz jelentett tulajdonságát vagy a Felhőbeli tulajdonság értékét az egyes üzenetekhez. Adjon meg egy kulcsot, és válasszon ki egy eszközt vagy egy Felhőbeli tulajdonságot. Ha az exportált üzenet olyan eszközről származik, amely nem rendelkezik a megadott tulajdonsággal, az exportált üzenet nem kapja meg a dúsítást.
 
-9. Néhány perc elteltével az adatai megjelennek a kiválasztott célhelyen.
+1. Adjon hozzá egy új célhelyet, vagy adjon hozzá egy már létrehozott célhelyet. Válassza az **új létrehozása** hivatkozást, és adja hozzá a következő információkat:
+
+    - **Cél neve**: a célhely megjelenítendő neve IoT Centralban.
+    - **Cél típusa**: válassza ki a célhely típusát. Ha még nem állította be a célhelyet, olvassa el az [Exportálás célhelyének beállítása](#set-up-export-destination)című témakört.
+    - Az Azure Event Hubs Azure Service Bus üzenetsor vagy témakör esetében illessze be az erőforráshoz tartozó kapcsolatok karakterláncát.
+    - Az Azure Blob Storage esetében illessze be az erőforráshoz tartozó kapcsolatok karakterláncát, és adja meg a kis-és nagybetűket megkülönböztető tároló nevét.
+    - Webhook esetén illessze be a webhook-végpont visszahívási URL-címét.
+    - Kattintson a **Létrehozás** gombra.
+
+1. Válassza a **+ cél** lehetőséget, és válasszon egy célhelyet a legördülő listából. Legfeljebb öt célhelyet adhat hozzá egyetlen exportáláshoz.
+
+1. Ha végzett az Exportálás beállításával, válassza a **Mentés**lehetőséget. Néhány perc elteltével az adatai megjelennek a célhelyen.
 
 ## <a name="export-contents-and-format"></a>Tartalom és formátum exportálása
 
-Az exportált telemetria-adatok teljes egészében tartalmazzák az eszköz által IoT Central küldött üzenetet, nem csak a telemetria értékeket. Az exportált eszközökhöz tartozó adatok az összes eszköz tulajdonságainak és metaadatainak változásait tartalmazzák, az exportált eszközök pedig az összes eszközosztály változásait tartalmazzák.
+### <a name="azure-blob-storage-destination"></a>Azure Blob Storage célhely
 
-Event Hubs és Service Bus esetében az adatexportálás közel valós idejű. Az adatobjektum a `body` tulajdonságban van, és JSON formátumú. Példákat alább talál.
+Az adatexportálás percenként egyszer történik, és minden olyan fájl, amely az előző exportálás óta változást tartalmaz. Az exportált adatfájlok JSON formátumban lesznek mentve. A Storage-fiókban található exportált adatelérési utak a következők:
 
-A blob Storage esetében percenként egyszer exportálja az adatmennyiséget, és minden olyan fájlt, amely a legutóbbi exportált fájl óta módosul. Az exportált adatfájlok JSON formátumú három mappába kerülnek. A Storage-fiók alapértelmezett elérési útjai a következők:
+- Telemetria: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
+- Tulajdonságok módosítása: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
 
-- Telemetria: _{Container}/{app-ID}/telemetry/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
-- Eszközök: _{Container}/{app-ID}/Devices/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
-- Eszközök sablonjai: _{Container}/{app-ID}/deviceTemplates/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
+Az exportált fájlok tallózásához a Azure Portal navigáljon a fájlhoz, és válassza a **blob szerkesztése**lehetőséget.
 
-Az exportált fájlok tallózásához a Azure Portalban navigáljon a fájlhoz, és válassza a **blob szerkesztése** lapot.
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure Event Hubs és Azure Service Bus célhelyek
 
-## <a name="telemetry"></a>Telemetria
+Az adatexportálás közel valós időben történik. Az adattartalom az üzenet törzsében van, és JSON formátumú, UTF-8 kódolású.
 
-Event Hubs és Service Bus esetén a IoT Central gyorsan exportál egy új üzenetet, miután megkapta az üzenetet az eszközről. Minden exportált üzenet tartalmazza az eszköz JSON formátumban küldött teljes üzenetét.
+Az üzenet jegyzetek vagy Rendszertulajdonságok táska tartalmazza a,, `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` és `iotcentral-message-type` mezőket, amelyek az üzenettörzs megfelelő mezőivel megegyező értékekkel rendelkeznek.
 
-A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva. Az exportált fájlok ugyanazt a formátumot használják, mint a blob Storage-ba [IoT hub üzenet-útválasztás](../../iot-hub/tutorial-routing.md) által exportált üzenet-fájlok.
+### <a name="webhook-destination"></a>Webhook célhelye
 
-> [!NOTE]
-> BLOB Storage esetén győződjön meg arról, hogy az eszközök olyan üzeneteket küldenek, amelyek rendelkeznek `contentType: application/JSON` és `contentEncoding:utf-8` (vagy `utf-16` `utf-32` ). Példaként tekintse meg a [IoT hub dokumentációját](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) .
+Webhookok célhelye esetén a rendszer a közel valós időben is exportálja az adategységeket. Az üzenet törzsében lévő adatformátum megegyezik a Event Hubs és Service Bus.
 
-A telemetria küldő eszközt az eszköz azonosítója jelöli (lásd a következő részeket). Az eszközök nevének beszerzéséhez exportálja az eszközöket, és korrelálja az egyes üzeneteket az **connectionDeviceId** , amely megfelel az eszköz **deviceId** -beli értékének.
+### <a name="telemetry-format"></a>Telemetria formátuma
 
-Az alábbi példa egy Event hub vagy Service Bus üzenetsor vagy témakör által fogadott üzenetet jelenít meg:
+Minden exportált üzenet a teljes üzenet normalizált formáját tartalmazza, amelyet az eszköz küld az üzenet törzsében. Az üzenet JSON formátumú, és UTF-8-ként van kódolva. Az egyes üzenetekben található információk a következők:
 
-```json
-{
-  "temp":81.129693132351775,
-  "humid":59.488071477541247,
-  "EventProcessedUtcTime":"2020-04-07T09:41:15.2877981Z",
-  "PartitionId":0,
-  "EventEnqueuedUtcTime":"2020-04-07T09:38:32.7380000Z"
-}
-```
+- `applicationId`: A IoT Central alkalmazás azonosítója.
+- `messageSource`: Az üzenet forrása – `telemetry` .
+- `deviceId`: Annak az eszköznek az azonosítója, amely elküldte a telemetria üzenetet.
+- `schema`: A hasznos adatok sémájának neve és verziószáma.
+- `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
+- `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
+- `messageProperties`: Az eszköz által az üzenettel küldött további tulajdonságok. Ezeket a tulajdonságokat más néven az *alkalmazás tulajdonságai*is nevezik. [További információ: IoT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-Ez az üzenet nem tartalmazza a küldő eszköz AZONOSÍTÓját.
+Event Hubs és Service Bus esetén a IoT Central gyorsan exportál egy új üzenetet, miután megkapta az üzenetet az eszközről.
 
-Ha Azure Stream Analytics lekérdezésben lévő üzenet adatait szeretné lekérni, használja a [GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) függvényt. Példaként tekintse meg a lekérdezést az [Azure IoT Central kiterjesztése egyéni szabályokkal stream Analytics, Azure functions és SendGrid használatával](./howto-create-custom-rules.md).
+A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva.
 
-Az eszköz AZONOSÍTÓjának lekéréséhez Azure Databricks vagy Apache Spark munkaterületen használja a [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md). Példaként tekintse meg a Databricks munkaterületet az [Azure IoT Central kiterjesztése egyéni elemzéssel az Azure Databricks használatával](./howto-create-custom-analytics.md).
-
-Az alábbi példa egy blob Storage-ba exportált rekordot mutat be:
+Az alábbi példa egy exportált telemetria üzenetet mutat be:
 
 ```json
+
 {
-  "EnqueuedTimeUtc":"2019-09-26T17:46:09.8870000Z",
-  "Properties":{
-
-  },
-  "SystemProperties":{
-    "connectionDeviceId":"<deviceid>",
-    "connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-    "connectionDeviceGenerationId":"637051167384630591",
-    "contentType":"application/json",
-    "contentEncoding":"utf-8",
-    "enqueuedTime":"2019-09-26T17:46:09.8870000Z"
-  },
-  "Body":{
-    "temp":49.91322758395974,
-    "humid":49.61214852573155,
-    "pm25":25.87332214661367
-  }
-}
-```
-
-## <a name="devices"></a>Eszközök
-
-A pillanatképben szereplő minden üzenet vagy rekord az eszköz és az eszköz és a felhő tulajdonságai egy vagy több módosítását jelöli az utolsó exportált üzenet óta. Az üzenet tartalmazza a következőket:
-
-- `id`az eszköz IoT Central
-- `displayName`az eszköz
-- Eszköz sablonjának azonosítója a`instanceOf`
-- `simulated`jelző, igaz, ha az eszköz szimulált eszköz
-- `provisioned`jelző, igaz, ha az eszköz ki lett építve
-- `approved`jelző, igaz, ha az eszköz jóvá lett hagyva az adatküldéshez
-- Tulajdonságértékek
-- `properties`az eszköz és a felhő tulajdonságainak értékeit is beleértve
-
-A törölt eszközök nincsenek exportálva. Jelenleg nincsenek mutatók a törölt eszközök exportált üzeneteiben.
-
-Event Hubs és Service Bus esetében IoT Central az eszköz adatait tartalmazó üzeneteket küld az Event hub-nak vagy a Service Bus üzenetsor vagy a témakör közelében, közel valós időben.
-
-A blob Storage esetében az utolsó írás óta minden változást tartalmazó új pillanatkép percenként lesz exportálva.
-
-Az alábbi példa egy Event hub-vagy Service Bus-üzenetsor vagy-témakör eszközeit és tulajdonságait mutatja be:
-
-```json
-{
-  "body":{
-    "id": "<device Id>",
-    "etag": "<etag>",
-    "displayName": "Sensor 1",
-    "instanceOf": "<device template Id>",
-    "simulated": false,
-    "provisioned": true,
-    "approved": true,
-    "properties": {
-        "sensorComponent": {
-            "setTemp": "30",
-            "fwVersion": "2.0.1",
-            "status": { "first": "first", "second": "second" },
-            "$metadata": {
-                "setTemp": {
-                    "desiredValue": "30",
-                    "desiredVersion": 3,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 3
-                },
-                "fwVersion": { "ackVersion": 3 },
-                "status": {
-                    "desiredValue": {
-                        "first": "first",
-                        "second": "second"
-                    },
-                    "desiredVersion": 2,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 2
-                }
-            },
-            
-        }
-    },
-    "installDate": { "installDate": "2020-02-01" }
-},
-  "annotations":{
-    "iotcentral-message-source":"devices",
-    "x-opt-partition-key":"<partitionKey>",
-    "x-opt-sequence-number":39740,
-    "x-opt-offset":"<offset>",
-    "x-opt-enqueued-time":1539274959654
-  },
-  "partitionKey":"<partitionKey>",
-  "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
-  "offset":"<offset>"
-}
-```
-
-Ez a pillanatkép egy példaként szolgáló üzenet, amely megjeleníti az eszközöket és a tulajdonságokat a blob Storage-ban. Az exportált fájlok rekordokban egyetlen sort tartalmaznak.
-
-```json
-{
-  "id": "<device Id>",
-  "etag": "<etag>",
-  "displayName": "Sensor 1",
-  "instanceOf": "<device template Id>",
-  "simulated": false,
-  "provisioned": true,
-  "approved": true,
-  "properties": {
-      "sensorComponent": {
-          "setTemp": "30",
-          "fwVersion": "2.0.1",
-          "status": { "first": "first", "second": "second" },
-          "$metadata": {
-              "setTemp": {
-                  "desiredValue": "30",
-                  "desiredVersion": 3,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 3
-              },
-              "fwVersion": { "ackVersion": 3 },
-              "status": {
-                  "desiredValue": {
-                      "first": "first",
-                      "second": "second"
-                  },
-                  "desiredVersion": 2,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 2
-              }
-          },
-          
-      }
-  },
-  "installDate": { "installDate": "2020-02-01" }
-}
-```
-
-## <a name="device-templates"></a>Eszközök sablonjai
-
-Minden üzenet-vagy pillanatkép-rekord egy közzétett sablon egy vagy több módosítását jelöli a legutóbbi exportált üzenet óta. Az egyes üzenetekben vagy rekordokban küldött információk a következők:
-
-- `id`azon eszköz sablonja, amely megfelel a `instanceOf` fenti eszközök streamnek
-- `displayName`az eszköz sablonja
-- Az eszköz `capabilityModel` , beleértve a saját `interfaces` , a telemetria, a tulajdonságok és a parancsok definícióját
-- `cloudProperties`definíciók
-- Felülbírálások és kezdeti értékek, beágyazott`capabilityModel`
-
-A törölt eszközöket a rendszer nem exportálja. Jelenleg nincsenek mutatók a törölt eszközök sablonjaihoz tartozó exportált üzenetekben.
-
-A Event Hubs és a Service Bus esetében IoT Central az eszköz sablonjának adatait tartalmazó üzeneteket küld az Event hub-nak vagy a Service Bus üzenetsor vagy témakör számára közel valós időben.
-
-A blob Storage esetében az utolsó írás óta minden változást tartalmazó új pillanatkép percenként lesz exportálva.
-
-Ez a példa egy üzenetet jelenít meg az Event hub vagy Service Bus üzenetsor vagy témakör eszköz sablonjainak adatait illetően:
-
-```json
-{
-  "body":{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "sensorComponent",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorConfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-Ez a példa egy olyan üzenetet mutat be, amely a blob Storage-ban lévő eszköz-és tulajdonságokat tartalmazza. Az exportált fájlok rekordokban egyetlen sort tartalmaznak.
-
-```json
-{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "Sensor component",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorconfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  }
-```
-
-## <a name="data-format-change-notice"></a>Adatformátum-változási Megjegyzés
-
-> [!Note]
-> Ez a változás nem érinti a telemetria adatfolyam-adatformátumát. Csak az eszközök és az eszközökön tárolt adatfolyamok vannak hatással.
-
-Ha az előnézeti alkalmazásban már van egy meglévő adatexportálás az *eszközök* és az *eszköz sablonjainak* bekapcsolásával, frissítse az exportálást **2020. június 30-ig**. Ez a követelmény az Azure Blob Storage-ba, az Azure Event Hubs-ra és a Azure Service Bus-re való exportálásra vonatkozik.
-
-A 2020. február 3-án kezdődően az eszközökön és az eszközök sablonjain lévő összes új Exportálás a fent ismertetett adatformátummal fog rendelkezni. Az ezen dátum előtt létrehozott összes exportálás a régi adatformátumban, 2020. június 30-ig marad, ekkor a rendszer automatikusan áttelepíti ezeket az exportálásokat az új adatformátumba. Az új adatformátum megegyezik a IoT Central nyilvános API-ban található [eszköz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [eszköz tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [eszköz felhő tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)és [eszköz sablon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objektumokkal.
-
-Az **eszközök**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
-- `@id`az eszköz eltávolításakor a `deviceId` rendszer átnevezi`id` 
-- `provisioned`a jelző megjelenik az eszköz kiépítési állapotának leírásához.
-- `approved`a jelző megjelenik az eszköz jóváhagyási állapotának leírásához.
-- `properties`az eszköz és a felhő tulajdonságait is beleértve, a nyilvános API-ban lévő entitásokra illeszkedik
-
-Az **eszközök sablonjai**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
-
-- `@id`az eszköz sablonjának neve:`id`
-- `@type`a rendszer átnevezi az eszköz sablonját `types` , és mostantól egy tömb
-
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Eszközök (a formátum a 2020. február 3. után elavult)
-
-```json
-{
-  "@id":"<id-value>",
-  "@type":"Device",
-  "displayName":"Airbox",
-  "data":{
-    "$cloudProperties":{
-        "Color":"blue"
-    },
-    "EnvironmentalSensor":{
-      "thsensormodel":{
-        "reported":{
-          "value":"Neque quia et voluptatem veritatis assumenda consequuntur quod.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "pm25sensormodel":{
-        "reported":{
-          "value":"Aut alias odio.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    },
-    "urn_azureiot_DeviceManagement_DeviceInformation":{
-      "totalStorage":{
-        "reported":{
-          "value":27900.9730905171,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "totalMemory":{
-        "reported":{
-          "value":4667.82916715811,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    }
-  },
-  "instanceOf":"<template-id>",
-  "deviceId":"<device-id>",
-  "simulated":true
-}
-```
-
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Eszközök sablonjai (a formátum a 2020. február 3. után elavult)
-
-```json
-{
-  "@id":"<template-id>",
-  "@type":"DeviceModelDefinition",
-  "displayName":"Airbox",
-  "capabilityModel":{
-    "@id":"<id>",
-    "@type":"CapabilityModel",
-    "implements":[
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"EnvironmentalSensor",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "comment":"Requires temperature and humidity sensors.",
-          "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-          "displayName":"Environmental Sensor",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current temperature on the device",
-              "displayName":"Temperature",
-              "name":"temp",
-              "schema":"double",
-              "unit":"Units/Temperature/celsius",
-              "valueDetail":{
-                "@id":"<id>",
-                "@type":"ValueDetail/NumberValueDetail",
-                "minValue":{
-                  "@value":"50"
-                }
-              },
-              "visualizationDetail":{
-                "@id":"<id>",
-                "@type":"VisualizationDetail"
-              }
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current humidity on the device",
-              "displayName":"Humidity",
-              "name":"humid",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current PM2.5 on the device",
-              "displayName":"PM2.5",
-              "name":"pm25",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"T&H Sensor Model Name",
-              "displayName":"T&H Sensor Model",
-              "name":"thsensormodel",
-              "schema":"string"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"PM2.5 Sensor Model Name",
-              "displayName":"PM2.5 Sensor Model",
-              "name":"pm25sensormodel",
-              "schema":"string"
-            }
-          ]
-        }
-      },
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "displayName":"Device information",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-              "displayName":"Total storage",
-              "name":"totalStorage",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-              "displayName":"Total memory",
-              "name":"totalMemory",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            }
-          ]
-        }
-      }
-    ],
-    "displayName":"AAEONAirbox52"
-  },
-  "solutionModel":{
-    "@id":"<id>",
-    "@type":"SolutionModel",
-    "cloudProperties":[
-      {
-        "@id":"<id>",
-        "@type":"CloudProperty",
-        "displayName":"Color",
-        "name":"Color",
-        "schema":"string",
-        "valueDetail":{
-          "@id":"<id>",
-          "@type":"ValueDetail/StringValueDetail"
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@preview",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "Activity": "running",
+        "BloodPressure": {
+            "Diastolic": 7,
+            "Systolic": 71
         },
-        "visualizationDetail":{
-          "@id":"<id>",
-          "@type":"VisualizationDetail"
-        }
-      }
-    ]
-  }
+        "BodyTemperature": 98.73447010562934,
+        "HeartRate": 88,
+        "HeartRateVariability": 17,
+        "RespiratoryRate": 13
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="property-changes-format"></a>Tulajdonság módosításainak formátuma
 
-Most, hogy tudja, hogyan exportálhatja adatait az Azure Event Hubsba, Azure Service Busba és az Azure Blob Storage-ba, folytassa a következő lépéssel:
+Minden üzenet vagy rekord egy eszköz vagy egy Felhőbeli tulajdonság egyik módosítását jelöli. Az eszköz tulajdonságainál csak a jelentett érték változásai lesznek exportálva külön üzenetként. Az exportált üzenetben szereplő információk a következők:
 
-> [!div class="nextstepaction"]
-> [Egyéni elemzések futtatása a Databricks](./howto-create-custom-analytics.md)
+- `applicationId`: A IoT Central alkalmazás azonosítója.
+- `messageSource`: Az üzenet forrása – `properties` .
+- `messageType`: Vagy `cloudPropertyChange` , `devicePropertyDesiredChange` , vagy `devicePropertyReportedChange` .
+- `deviceId`: Annak az eszköznek az azonosítója, amely elküldte a telemetria üzenetet.
+- `schema`: A hasznos adatok sémájának neve és verziószáma.
+- `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
+- `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
+
+Event Hubs és Service Bus esetén IoT Central az új üzenetek adatait az Event hub-ba vagy a Service Bus üzenetsor vagy témakörbe exportálja közel valós időben.
+
+A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva.
+
+Az alábbi példa egy exportált tulajdonság-módosítási üzenetet mutat be az Azure Blob Storageban.
+
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "properties",
+    "messageType": "cloudPropertyChange",
+    "deviceId": "18a985g1fta",
+    "schema": "default@preview",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:37:32.942Z",
+    "properties": [{
+        "fieldName": "MachineSerialNumber",
+        "value": "abc"
+    }],
+    "enrichments": {
+        "userSpecifiedKey" : "sampleValue"
+    }
+}
+```
+
+## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>A régi adatexportálás és az előzetes verziójú adatexportálás összehasonlítása
+
+Az alábbi táblázat a [korábbi adatexportálási](howto-export-data-legacy.md) és-előnézeti adatexportálási funkciók közötti különbségeket mutatja be:
+
+| Képességek  | Örökölt adatexportálás | Új adatexportálás |
+| :------------- | :---------- | :----------- |
+| Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, tulajdonságok módosításai |
+| Szűrés | Nincs | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
+| Modellbővítések | Nincs | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
+| Célhelyek | Azure Event Hubs, Azure Service Bus várólisták és témakörök, Azure Blob Storage | Ugyanaz, mint a korábbi adatexportáláshoz és webhookokhoz|
+| Támogatott alkalmazások verziói | V2, V3 | Csak v3 |
+| Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint |
+
+## <a name="next-steps"></a>Következő lépések
+
+Most, hogy már tudja, hogyan használhatja az új adatexportálást, egy javasolt következő lépés az [elemzések használatának](./howto-create-analytics.md) megismerése IoT Central

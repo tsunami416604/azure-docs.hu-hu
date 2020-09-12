@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962825"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596039"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -149,11 +149,11 @@ Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alka
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](tutorial-auth-aad.md)  
-[Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-[A hitelesítés és az engedélyezés testreszabása app Service](app-service-authentication-how-to.md) 
- [Az Azure AppService EasyAuth .net Core-integrációja (harmadik fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
- [Azure app Service hitelesítés használata a .net Core-ban (harmadik fél)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](tutorial-auth-aad.md)  
+* [Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [A hitelesítés és az engedélyezés testreszabása App Service](app-service-authentication-how-to.md)
+* [Az Azure AppService EasyAuth .NET Core-integrációja (harmadik fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [Azure App Service hitelesítés használata a .NET Core-ban (harmadik fél)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Szolgáltatóra vonatkozó útmutatók:
 

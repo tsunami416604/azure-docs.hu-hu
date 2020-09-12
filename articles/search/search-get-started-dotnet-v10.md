@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002436"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462088"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Gyors útmutató: keresési index létrehozása a Microsoft. Azure. Search v10 ügyféloldali kódtár használatával
 
@@ -27,7 +27,7 @@ Az új megoldások esetében javasoljuk az új Azure.Search.Documents könyvtár
 
 Hozzon létre egy .NET Core Console-alkalmazást a C#-ban, amely létrehoz, betölt és lekérdez egy Azure Cognitive Search indexet a Visual Studióval és a [Microsoft. Azure. Search ügyféloldali kódtárak](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)használatával. 
 
-Ez a cikk azt ismerteti, hogyan hozhatja létre az alkalmazást. [Letöltheti és futtathatja a teljes alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)is.
+Ez a cikk azt ismerteti, hogyan hozhatja létre az alkalmazást. [Letöltheti és futtathatja a teljes alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)is.
 
 > [!NOTE]
 > A jelen cikkben szereplő bemutató kód az Azure Cognitive Search 10-es verzióhoz készült .NET SDK szinkron metódusait használja az egyszerűség kedvéért. Éles környezetekben azonban azt javasoljuk, hogy a saját alkalmazásaiban lévő aszinkron metódusok használatával méretezhető és rugalmas legyen. Használhatja például `CreateAsync` `DeleteAsync` a és a és a helyett a és a értéket `Create` `Delete` .
@@ -58,7 +58,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="set-up-your-environment"></a>Saját környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-on futtatható Console app-projektet.
 
@@ -107,9 +107,9 @@ Ez a lépés szükséges az értelmes kimenet létrehozásához a-konzolon. Amik
 
 1. Két üres osztály-definíció hozzáadása a projekthez: Address.Methods.cs, Hotel.Methods.cs
 
-1. A Address.Methods.cs írja felül az alapértelmezett tartalmakat a következő kóddal, a 1-25-es [sorokkal](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
+1. A Address.Methods.cs írja felül az alapértelmezett tartalmakat a következő kóddal, a 1-25-es [sorokkal](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. A Hotel.Methods.cs-ben másolja a [1-68 sorokat](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
+1. A Hotel.Methods.cs-ben másolja a [1-68 sorokat](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1 – index létrehozása
 

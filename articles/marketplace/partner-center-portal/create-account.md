@@ -3,16 +3,16 @@ title: Kereskedelmi piactér-fiók létrehozása a partner Centerben
 description: Ismerje meg, hogyan hozhat létre Microsoft kereskedelmi piactér-fiókot a partner Centerben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 862922ff3d0e09d1d1fdc864886852aed910c7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326647"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647658"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -188,6 +188,6 @@ A Azure Active Directory bérlő további felhasználói hozzáadhatnak egy új 
 
 A folyamat befejezése után az újonnan létrehozott közzétevőt a bal oldali ablaktáblán látható kereskedelmi Piactéri fiókkal kezelheti. Ha nem látja a kereskedelmi Piactéri fiókot, frissítse az oldalt. Az új közzétevő megjelenik a **közzétevők** listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md)

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903986"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566602"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: fordítás
 
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>api-verzió</td>
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>a</td>
     <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg nyelvét. A hatókör használatával megkeresheti, hogy mely nyelvek érhetők el a <a href="./v3-0-languages.md">támogatott nyelvek</a> közül <code>translation</code> . Ha a <code>from</code> paraméter nincs megadva, a rendszer az automatikus nyelvfelismerés alapján határozza meg a forrás nyelvét. <br/><br/>A <code>from</code> <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dinamikus szótár</a> funkció használatakor az automatikus észlelés helyett a (z) paramétert kell használnia.</td>
@@ -95,7 +95,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Azt adja meg, hogy a szolgáltatás egy általános rendszer számára engedélyezett, ha nem létezik egyéni rendszer. A lehetséges értékek a következők: <code>true</code> (alapértelmezett) vagy <code>false</code> .<br/><br/><code>allowFallback=false</code>azt adja meg, hogy a fordítás csak a kérelemben meghatározott rendszerek használatára legyen kiképezve <code>category</code> . Ha az X nyelvhez való fordítás az Y nyelvhez szükséges, akkor a láncban lévő összes rendszernek (X->E és E->Y) egyéninek kell lennie, és ugyanazzal a kategóriával kell rendelkeznie. Ha nem található a megadott kategóriába tartozó rendszer, a kérelem egy 400 állapotkódot ad vissza. <code>allowFallback=true</code>azt adja meg, hogy a szolgáltatás egy általános rendszer számára engedélyezett, ha nem létezik egyéni rendszer.
+    <td>Nem <em>kötelező paraméter</em>.<br/>Azt adja meg, hogy a szolgáltatás egy általános rendszer számára engedélyezett, ha nem létezik egyéni rendszer. A lehetséges értékek a következők: <code>true</code> (alapértelmezett) vagy <code>false</code> .<br/><br/><code>allowFallback=false</code> azt adja meg, hogy a fordítás csak a kérelemben meghatározott rendszerek használatára legyen kiképezve <code>category</code> . Ha az X nyelvhez való fordítás az Y nyelvhez szükséges, akkor a láncban lévő összes rendszernek (X->E és E->Y) egyéninek kell lennie, és ugyanazzal a kategóriával kell rendelkeznie. Ha nem található a megadott kategóriába tartozó rendszer, a kérelem egy 400 állapotkódot ad vissza. <code>allowFallback=true</code> azt adja meg, hogy a szolgáltatás egy általános rendszer számára engedélyezett, ha nem létezik egyéni rendszer.
 </td>
   </tr>
 </table> 
@@ -104,7 +104,7 @@ A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
@@ -174,7 +174,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     A mondatok határai csak abban az esetekben szerepelnek, ha a kérelem paraméter `includeSentenceLength` értéke `true` .
 
-  * `sourceText`: Egy nevű, egyetlen karakterlánc-tulajdonsággal rendelkező objektum `text` , amely a forrás nyelvének alapértelmezett parancsfájljában megadja a bemeneti szöveget. `sourceText`a tulajdonság csak akkor jelenik meg, ha a bemenet olyan parancsfájlban van kifejezve, amely nem a nyelv szokásos parancsfájlja. Ha például a bemenet arab nyelven íródott, akkor az arab nyelvű `sourceText.text` szöveg lesz az Arab-parancsfájlba konvertálva.
+  * `sourceText`: Egy nevű, egyetlen karakterlánc-tulajdonsággal rendelkező objektum `text` , amely a forrás nyelvének alapértelmezett parancsfájljában megadja a bemeneti szöveget. `sourceText` a tulajdonság csak akkor jelenik meg, ha a bemenet olyan parancsfájlban van kifejezve, amely nem a nyelv szokásos parancsfájlja. Ha például a bemenet arab nyelven íródott, akkor az arab nyelvű `sourceText.text` szöveg lesz az Arab-parancsfájlba konvertálva.
 
 Példa a JSON-válaszokra a [példák](#examples) szakaszban.
 
@@ -182,7 +182,7 @@ Példa a JSON-válaszokra a [példák](#examples) szakaszban.
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
     <tr>
     <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
@@ -199,7 +199,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>
@@ -280,7 +280,7 @@ A válasz törzse:
     }
 ]
 ```
-A válasz hasonló az előző példában szereplő válaszhoz. Mivel a rendszer a nyelv automatikus észlelését kérte, a válasz a bemeneti szöveghez észlelt nyelvről is tartalmaz információkat. 
+A válasz hasonló az előző példában szereplő válaszhoz. Mivel a rendszer a nyelv automatikus észlelését kérte, a válasz a bemeneti szöveghez észlelt nyelvről is tartalmaz információkat. A nyelv automatikus észlelése hatékonyabban működik a hosszú bemeneti szöveggel.
 
 ### <a name="translate-with-transliteration"></a>Fordítás az angol nyelvvel
 
@@ -364,7 +364,7 @@ Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Művelet</th>
+  <th>Műveletek</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Ez az alapértelmezett viselkedés. A káromkodás a forrás és a cél között lesz továbbítva.<br/><br/>

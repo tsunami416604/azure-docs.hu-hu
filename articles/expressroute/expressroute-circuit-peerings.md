@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: áramkörök és peering'
 description: Ez az oldal áttekintést nyújt a ExpressRoute-áramkörökről és az útválasztási tartományokról és a társításokról.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537020"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566500"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-kapcsolatcsoportok és -társviszonyok
 
@@ -44,17 +44,17 @@ Egy ExpressRoute-áramkörhöz több útválasztási tartomány/társ tartozik: 
 
 ![Ábra, amely bemutatja, hogyan vannak konfigurálva az Azure nyilvános, az Azure Private-és a Microsoft-partnerek egy ExpressRoute-áramkörben.](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure-beli privát társhálózat-létesítés
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure-beli privát társviszony
 
 A virtuális hálózatokon belül üzembe helyezett Azure számítási szolgáltatások, nevezetesen a virtuális gépek (IaaS-EK) és a Cloud Services (Pásti) a privát társ-létrehozási tartományon keresztül csatlakoztathatók. A privát társ-létrehozási tartomány az alapvető hálózat megbízható kiterjesztésének tekintendő Microsoft Azureba. Az alapvető hálózat és az Azure-beli virtuális hálózatok (virtuális hálózatok-EK) között kétirányú kapcsolat is beállítható. Ez a társítás lehetővé teszi a virtuális gépekhez és a felhőalapú szolgáltatásokhoz való közvetlen kapcsolódást a magánhálózati IP-címeken.  
 
 Több virtuális hálózatot is összekapcsolhat a privát társ-létrehozási tartományhoz. A korlátozásokkal és korlátozásokkal kapcsolatos információkért tekintse át a [GYIK oldalt](expressroute-faqs.md) . Az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető oldalt megtekintheti a korlátozásokkal kapcsolatos naprakész információkhoz.  Az útválasztási konfigurációval kapcsolatos részletes információkért tekintse meg az [Útválasztás](expressroute-routing.md) lapot.
 
-### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoftos társhálózat-létesítés
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoftos társviszony
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-A Microsoft online szolgáltatásokhoz (Office 365 és az Azure Pásti Services) való kapcsolódás a Microsoft-partneri kapcsolaton keresztül történik. A WAN és a Microsoft Cloud Services közötti kétirányú kapcsolatot a Microsoft társközi útválasztási tartományán keresztül engedélyezzük. Csak olyan nyilvános IP-címeken keresztül csatlakozhat a Microsoft Cloud Services szolgáltatáshoz, amelyek tulajdonosa Ön vagy a kapcsolat szolgáltatója, és be kell tartania az összes definiált szabályt. További információkért tekintse meg a [ExpressRoute előfeltételek](expressroute-prerequisites.md) oldalát.
+A Microsoft online szolgáltatások (Microsoft 365 és az Azure Pásti Services) kapcsolata a Microsoft-partnereken keresztül történik. A WAN és a Microsoft Cloud Services közötti kétirányú kapcsolatot a Microsoft társközi útválasztási tartományán keresztül engedélyezzük. Csak olyan nyilvános IP-címeken keresztül csatlakozhat a Microsoft Cloud Services szolgáltatáshoz, amelyek tulajdonosa Ön vagy a kapcsolat szolgáltatója, és be kell tartania az összes definiált szabályt. További információkért tekintse meg a [ExpressRoute előfeltételek](expressroute-prerequisites.md) oldalát.
 
 A támogatott szolgáltatásokkal, a költségekkel és a konfigurációs adatokkal kapcsolatos további információkért tekintse meg a [GYIK oldalt](expressroute-faqs.md) . A Microsoft társközi támogatását kínáló kapcsolati szolgáltatók listáját a [ExpressRoute helye](expressroute-locations.md) oldalon tekintheti meg.
 

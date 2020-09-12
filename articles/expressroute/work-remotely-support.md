@@ -2,17 +2,17 @@
 title: Az Azure ExpressRoute használata a távoli felhasználók támogatásához
 description: Ez az oldal azt ismerteti, hogyan használhatja az Azure ExpressRoute-t a COVID-19 világjárvány miatti távoli működéshez.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/22/2020
-ms.author: ajitbhu
-ms.openlocfilehash: 18b30380ede0c95c7d039749a4d47f65e5824058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738073"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567673"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatásához
 
@@ -31,7 +31,7 @@ A [ExpressRoute](expressroute-introduction.md) egy olyan Azure-szolgáltatás, a
 * [A meglévő ExpressRoute-áramkör sávszélességének javítása](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [ExpressRoute-figyelés, mérőszámok és riasztások](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
 * [Útvonal-optimalizálás ExpressRoute](expressroute-optimize-routing.md)
-* [Azure-ExpressRoute a O365-hez](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+* [Microsoft 365 Azure-ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [Aszimmetrikus útválasztási megfontolások](expressroute-asymmetric-routing.md)
 * [Támogatási kérelem megnyitása a Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 

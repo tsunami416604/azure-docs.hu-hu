@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708841"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658734"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Mi az Azure SQL felügyelt példányok készlete (előzetes verzió)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,6 +79,7 @@ A példánykészletekre és a készletekben lévő példányokra többféle erő
 - A példányok szintjének korlátain kívül két korlátot is megszabhatnak *a példány-készlet szintjén*:
   - A tárterület teljes mérete (8 TB).
   - A készletben lévő adatbázisok teljes száma (100).
+- A HRE-rendszergazda nem állítható be a példány-készleten belül üzembe helyezett példányokhoz, ezért a HRE-hitelesítés nem használható.
 
 A tárolók teljes kiosztása és az adatbázisok száma az összes példánynál kisebbnek vagy egyenlőnek kell lennie a példány-készletek által elérhető korlátokkal.
 
@@ -148,7 +149,7 @@ Ha a [fejlesztési és tesztelési juttatásra jogosult előfizetésekhez](https
 
 A példányok készletének díjszabásával kapcsolatos részletes információkért tekintse meg az [SQL felügyelt példány díjszabása lap](https://azure.microsoft.com/pricing/details/sql-database/managed/) *példány-készletek* szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A példányok készletének megkezdéséhez lásd: [SQL felügyelt példányok készletei útmutató](instance-pools-configure.md).
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).

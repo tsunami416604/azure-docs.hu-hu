@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani a tervezetek létrehozásával, hozzárendelésével és eltávolításával kapcsolatos problémákat, például a szabályzat megsértését és a terv paramétereinek funkcióit.
 ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557519"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651332"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
 
@@ -22,9 +22,9 @@ Számos hiba lesz a terv egy hatókörhöz való hozzárendelésének eredménye
 
 1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról, és a keresőmező segítségével szűrje a terv-hozzárendeléseket a sikertelen hozzárendelés megkereséséhez. A hozzárendelések tábláját a **kiépítési állapot** oszlopban is rendezheti, ha az összes sikertelen hozzárendelést együtt szeretné látni.
 
-1. Kattintson a _nem_ megfelelő állapotú tervezetre, vagy kattintson a jobb gombbal, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
+1. Válassza ki a _sikertelen_ állapotú tervet, vagy kattintson a jobb gombbal, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
 
-1. Egy piros szalagcím figyelmeztetése, hogy a hozzárendelés meghiúsult a terv-hozzárendelés oldal tetején. További részletekért kattintson a szalagcím tetszőleges pontjára.
+1. Egy piros szalagcím figyelmeztetése, hogy a hozzárendelés meghiúsult a terv-hozzárendelés oldal tetején. További részletekért kattintson a szalagcímen bárhová.
 
 Gyakori, hogy a hiba oka egy összetevő, nem pedig a terv egésze. Ha egy összetevő létrehoz egy Key Vault, és Azure Policy megakadályozza a Key Vault létrehozását, a teljes hozzárendelés sikertelen lesz.
 
@@ -43,7 +43,7 @@ Egy házirend több okból is ütközhet az üzembe helyezéssel:
 - A létrehozandó erőforrást házirend korlátozza (általában SKU vagy Location korlátozásokkal).
 - Az üzemelő példány olyan mezőket állít be, amelyeket a szabályzat konfigurál (közös címkékkel)
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Módosítsa a tervet úgy, hogy az ne ütközzön a hiba részleteiben szereplő szabályzatokkal. Ha ez a változás nem lehetséges, egy másik lehetőség, hogy a házirend-hozzárendelés hatóköre megváltozott, így a terv már nem ütközik a szabályzattal.
 
@@ -57,7 +57,7 @@ A függvények feldolgozására szolgáló tervrajzi paramétereket a rendszer a
 
 Egy függvényt (például) használó tervrajzi paraméter átadása az `[resourceGroup().tags.myTag]` összetevőnek a dinamikus függvény helyett a tárgyban beállított függvény feldolgozott eredményét eredményezi.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Egy függvény paraméterként való átadásához escape a teljes karakterláncot `[` oly módon, hogy a terv paramétere hasonlítson `[[resourceGroup().tags.myTag]` . Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
 
@@ -73,11 +73,11 @@ A terv-hozzárendelés törlése nem fejeződött be.
 
 A tervrajz-hozzárendelések nem terminálos állapotba kerülhetnek, ha törölve lett. Ez az állapot akkor áll elő, amikor a terv-hozzárendelés által létrehozott erőforrások még törlésre várók, vagy nem adnak vissza állapotkódot az Azure-tervezetekhez.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A nem terminálos állapotú terv-hozzárendelések egy _6 órás_ időkorlát után automatikusan **nem** lesznek megjelölve. Miután az időtúllépés kiigazította a terv-hozzárendelés állapotát, a törlés újrapróbálkozhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

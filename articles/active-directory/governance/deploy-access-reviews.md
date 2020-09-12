@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011344"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461034"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -93,7 +93,7 @@ A hozzáférési felülvizsgálatok esetében valószínű, hogy a szervezeten b
 
 * Az **it-adminisztráció** kezeli az informatikai infrastruktúrát, és felügyeli a Felhőbeli és a szolgáltatott szoftverek (SaaS) alkalmazásait. A csapat a következőket teszi:
 
-   * Tekintse át az infrastruktúrához és alkalmazásokhoz való emelt szintű hozzáférést, beleértve az Office 365 és az Azure AD-t.
+   * Tekintse át az infrastruktúrához és alkalmazásokhoz való emelt szintű hozzáférést, beleértve a Microsoft 365 és az Azure AD-t.
 
    * Az aktuális hozzáférési listák fenntartása érdekében ütemezzen és futtasson hozzáférési felülvizsgálatokat azokon a csoportokon, amelyek a kivételi listák vagy az informatikai kísérleti projektek fenntartására szolgálnak.
 
@@ -180,7 +180,7 @@ Az ellenőrzéshez használt tipikus célok a következők:
 
 * Az [Azure ad-vel integrált alkalmazások egyszeri bejelentkezéshez](../manage-apps/what-is-application-management.md) (például SaaS, üzletági).
 
-* Csoporttagság [(](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) szinkronizálva az Azure ad-vel, vagy az Azure ad-ben vagy Office 365-ben létrehozott, beleértve a Microsoft Teams-t).
+* Csoporttagság [(](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) szinkronizálva az Azure ad-vel, vagy az Azure ad-ben vagy Microsoft 365ban, beleértve a Microsoft Teams-t).
 
 * Olyan [hozzáférési csomag](/azure/active-directory/governance/entitlement-management-overview) , amely az erőforrásokat (csoportokat, alkalmazásokat és helyeket) egyetlen csomagba csoportosítja a hozzáférés kezeléséhez.
 
@@ -304,7 +304,7 @@ A hozzáférési felülvizsgálatok megtekintéséhez nyissa meg az életciklus 
 
 ## <a name="plan-access-reviews-for-groups"></a>Csoportok hozzáférési felülvizsgálatának megtervezése
 
-A hozzáférési csomagok mellett a csoporttagság áttekintésének leghatékonyabb módja a hozzáférés szabályozása. Azt javasoljuk, hogy az erőforrásokhoz való hozzáférés [biztonsági csoportokon vagy Office 365-csoportokon](../fundamentals/active-directory-manage-groups.md)keresztül legyen hozzárendelve, és hogy a felhasználók hozzáférjenek a csoporthoz.
+A hozzáférési csomagok mellett a csoporttagság áttekintésének leghatékonyabb módja a hozzáférés szabályozása. Azt javasoljuk, hogy az erőforrásokhoz való hozzáférést [biztonsági csoportokon vagy Microsoft 365 csoportokon](../fundamentals/active-directory-manage-groups.md)keresztül rendelje hozzá, és hogy a felhasználók hozzáférjenek a csoporthoz.
 
 Egyetlen csoport is jogosult az összes megfelelő erőforráshoz való hozzáférésre. Hozzárendelheti a csoporthoz az egyes erőforrásokhoz való hozzáférést, illetve az alkalmazásokat és egyéb erőforrásokat csoportosító hozzáférési csomagokat. Ezzel a módszerrel áttekintheti a csoport hozzáférését, nem pedig az egyes alkalmazásokhoz való hozzáférést. 
 
@@ -322,9 +322,9 @@ A csoporttagság a következőket tekintheti át:
 
 Javasoljuk, hogy a csoport tulajdonosai tekintsék meg a tagságot, mivel azok a legjobbak, akiknek a hozzáférésre van szükségük. A csoportok tulajdonjoga különbözik a csoport típusától:
 
-Az Office 365-ben és az Azure AD-ben létrehozott csoportok egy vagy több jól definiált tulajdonossal rendelkeznek. A legtöbb esetben ezek a tulajdonosok tökéletes véleményezőket végeznek a saját csoportjaikban, és tudják, hogy kinek van hozzáférésük. 
+A Microsoft 365 és az Azure AD-ben létrehozott csoportok egy vagy több jól definiált tulajdonossal rendelkeznek. A legtöbb esetben ezek a tulajdonosok tökéletes véleményezőket végeznek a saját csoportjaikban, és tudják, hogy kinek van hozzáférésük. 
 
-A Microsoft Teams például az Office 365-csoportokat használja alapul szolgáló engedélyezési modellként, hogy a felhasználók hozzáférjenek a SharePoint, az Exchange, a OneNote vagy más Office 365-szolgáltatásokban található erőforrásokhoz. A csapat létrehozója automatikusan tulajdonosa lesz, és felelős a csoport tagságának igazolásához. 
+A Microsoft Teams például Microsoft 365 csoportokat használ a mögöttes engedélyezési modellként, hogy hozzáférést biztosítson a felhasználóknak a SharePoint, az Exchange, a OneNote vagy más Microsoft 365-szolgáltatásokban található erőforrásokhoz. A csapat létrehozója automatikusan tulajdonosa lesz, és felelős a csoport tagságának igazolásához. 
 
 Az Azure AD-portálon vagy a Microsoft Graph parancsfájlokon keresztül manuálisan létrehozott csoportok nem feltétlenül rendelkeznek a tulajdonosok által definiált csoportokkal. Azt javasoljuk, hogy az Azure AD-portálon keresztül definiálja őket a csoport "tulajdonosok" szakaszában vagy a gráfon keresztül.
 
@@ -403,7 +403,7 @@ A hozzáférési felülvizsgálatok lehetővé teszik a felülvizsgálók szám�
 
 * Biztonsági rendszergazda
 
-* Az Office 365 és a Dynamics Service felügyeleti szerepkörei
+* Az összes Microsoft 365-és Dynamics Service-felügyeleti szerepkör
 
 Az itt kiválasztott szerepkörök állandó és jogosult szerepkört tartalmaznak. 
 
@@ -419,7 +419,7 @@ Miután előkészített egy stratégiát és egy tervet az Azure AD-vel integrá
 
 Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazdák a hozzáférési csomag aktív hozzárendeléseivel rendelkező felhasználók rendszeres felülvizsgálatát is lehetővé teszik. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Leírás |
+| Útmutatók| Description |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](entitlement-management-access-reviews-create.md)| Hozzáférési csomag felülvizsgálatának engedélyezése. |
 | [Hozzáférési felülvizsgálatok végrehajtása](entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
@@ -433,7 +433,7 @@ Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazd
 
 Az alkalmazottak és a vendégek számára az idő múlásával valószínűleg változnak a csoportok és az alkalmazások hozzáférése. Az elavult hozzáférési hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében a rendszergazdák hozzáférési felülvizsgálatokat hozhatnak létre a csoporttagok vagy az alkalmazások eléréséhez. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Leírás |
+| Útmutatók| Description |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](create-access-review.md)| Hozzon létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások eléréséhez. |
 | [Hozzáférési felülvizsgálatok végrehajtása](perform-access-review.md)| Hozzáférési felülvizsgálat végrehajtása egy csoport vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára. |
@@ -450,7 +450,7 @@ Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentés
 
 Kövesse az alábbi hivatkozások utasításait:
 
-| Útmutatók | Leírás |
+| Útmutatók | Description |
 | - | - |
  [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure AD-szerepkörökhöz a PIM-ben |
 | [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
@@ -465,7 +465,7 @@ Az elavult szerepkör-hozzárendelések kockázatának csökkentése érdekében
 
 Kövesse az alábbi hivatkozások utasításait:
 
-| Útmutatók| Leírás |
+| Útmutatók| Description |
 | - | -|
 | [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure-beli erőforrás-szerepkörökhöz a PIM-ben |
 | [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |

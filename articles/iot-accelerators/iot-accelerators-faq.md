@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75647713"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462547"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakran ismételt kérdések az IoT-megoldásgyorsítókról
 
@@ -101,9 +101,9 @@ Jelenleg nem hozható létre megoldás-gyorsító [Microsoft Azure a DreamSpark]
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hogyan törölni egy Azure AD-bérlőt?
 
-Az [Azure ad-bérlő törlésével](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)kapcsolatban lásd: Eric golpe 's blog post (útmutató).
+Az [Azure ad-bérlő törlésével](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)kapcsolatban lásd: Eric golpe 's blog post (útmutató).
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 

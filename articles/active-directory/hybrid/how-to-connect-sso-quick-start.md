@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115759"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658750"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -40,7 +40,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
    - Ha a tűzfal vagy a proxy lehetővé teszi, vegye fel a kapcsolatot az engedélyezett listához a ** \* . Msappproxy.net** URL-címeken a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
 
     >[!NOTE]
-    >A 1.1.557.0, a 1.1.558.0, a 1.1.561.0 és a 1.1.614.0 verziók a jelszó-kivonat szinkronizálásával kapcsolatos problémával rendelkeznek. Azure AD Connect Ha _nem_ kívánja használni a jelszó-kivonatolási szinkronizálást az átmenő hitelesítéssel együtt, olvassa el a [Azure ad Connect kibocsátási megjegyzéseit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) további információért.
+    >A 1.1.557.0, a 1.1.558.0, a 1.1.561.0 és a 1.1.614.0 verziók a jelszó-kivonat szinkronizálásával kapcsolatos problémával rendelkeznek. Azure AD Connect Ha _nem_ kívánja használni a jelszó-kivonatolási szinkronizálást az átmenő hitelesítéssel együtt, olvassa el a [Azure ad Connect kibocsátási megjegyzéseit](./reference-connect-version-history.md) további információért.
 
 * **Támogatott Azure ad Connect topológia használata**: Ügyeljen arra, hogy az [itt](plan-connect-topologies.md)leírt Azure ad Connect által támogatott topológiák egyikét használja.
 
@@ -51,9 +51,9 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
     * Azure AD Connect keresztül szinkronizál az Azure AD-vel.
     * Azokat a felhasználókat tartalmazza, akik számára engedélyezni szeretné a zökkenőmentes egyszeri bejelentkezést.
     
-* **Modern hitelesítés engedélyezése**: a funkció működéséhez engedélyeznie kell a [modern hitelesítést](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) a bérlőn.
+* **Modern hitelesítés engedélyezése**: a funkció működéséhez engedélyeznie kell a [modern hitelesítést](/office365/enterprise/modern-auth-for-office-2013-and-2016) a bérlőn.
 
-* **Használja az office 365-ügyfelek legújabb verzióit**: Ha csendes bejelentkezést szeretne használni az Office 365-ügyfelekkel (Outlook, Word, Excel és mások), a felhasználóknak a 16.0.8730. xxxx vagy újabb verziót kell használniuk.
+* **Microsoft 365-ügyfelek legújabb verzióinak használata**: Ha csendes bejelentkezési élményt szeretne kapni Microsoft 365-ügyfelekkel (Outlook, Word, Excel és mások), a felhasználóknak a 16.0.8730. xxxx vagy újabb verziót kell használniuk.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: a funkció engedélyezése
 
@@ -132,7 +132,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
      Az eredmény a következőhöz hasonló:
 
-     Érték neve:`https://autologon.microsoftazuread-sso.com`
+     Érték neve: `https://autologon.microsoftazuread-sso.com`
   
      Érték (adathalmaz): 1
 
@@ -187,11 +187,11 @@ Győződjön meg arról, hogy a macOS-t futtató számítógép csatlakozik az A
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge a Chromium alapján (minden platform)
 
-Ha felülbírálta a [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) vagy a [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) házirend-beállításait a környezetben, ügyeljen arra, hogy az Azure ad URL-címét ( `https://autologon.microsoftazuread-sso.com` ) is hozzáadja hozzájuk.
+Ha felülbírálta a [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) vagy a [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) házirend-beállításait a környezetben, ügyeljen arra, hogy az Azure ad URL-címét ( `https://autologon.microsoftazuread-sso.com` ) is hozzáadja hozzájuk.
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge króm alapján (macOS és egyéb nem Windows platform)
 
-A macOS és más nem Windows rendszerű platformokon a Chromium-alapú Microsoft Edge esetén [a Chromium-szabályzatok listája alapján](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) tájékozódhat arról, hogyan adhat hozzá az Azure ad URL-címet integrált hitelesítéshez az engedélyezési listához.
+A macOS és más nem Windows rendszerű platformokon a Chromium-alapú Microsoft Edge esetén [a Chromium-szabályzatok listája alapján](/DeployEdge/microsoft-edge-policies#authserverallowlist) tájékozódhat arról, hogyan adhat hozzá az Azure ad URL-címet integrált hitelesítéshez az engedélyezési listához.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
@@ -211,7 +211,7 @@ A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox és a Microsof
 
 Egy adott felhasználó szolgáltatásának teszteléséhez győződjön meg arról, hogy a következő feltételek teljesülnek:
   - A felhasználó bejelentkezik egy vállalati eszközre.
-  - Az eszköz csatlakoztatva van a Active Directory tartományhoz. Az eszköznek _nem_ kell csatlakoznia az [Azure ad-hez](../active-directory-azureadjoin-overview.md).
+  - Az eszköz csatlakoztatva van a Active Directory tartományhoz. Az eszköznek _nem_ kell csatlakoznia az [Azure ad-hez](../devices/overview.md).
   - Az eszköz közvetlen kapcsolattal rendelkezik a tartományvezérlővel (DC) a vállalati vezetékes vagy vezeték nélküli hálózaton, vagy egy távelérési kapcsolaton keresztül, például egy VPN-kapcsolaton keresztül.
   - A funkciót a Csoportházirendon keresztül [építették ki a](#step-3-roll-out-the-feature) felhasználó számára.
 
@@ -234,7 +234,7 @@ A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directo
 >[!IMPORTANT]
 >Ezt a lépést nem kell _azonnal_ végrehajtania, miután engedélyezte a szolgáltatást. A Kerberos-visszafejtési kulcsok legalább 30 naponkénti átadása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: a zökkenőmentes egyszeri bejelentkezési funkció működésének megismerése.
 - [Gyakori kérdések](how-to-connect-sso-faq.md): válaszokat kaphat a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.

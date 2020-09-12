@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/09/2020
+ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795881"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613474"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
 
@@ -29,7 +29,9 @@ A keresési tevékenység beolvassa és visszaadja egy konfigurációs fájl vag
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-A keresési tevékenység a következő adatforrásokat támogatja. A keresési tevékenység által visszaadott legnagyobb számú sor 5 000, legfeljebb 2 MB méretű lehet. Jelenleg az időkorlát előtt a keresési tevékenység leghosszabb időtartama egy óra.
+A keresési tevékenység a következő adatforrásokat támogatja. 
+
+A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményhalmaz több rekordot tartalmaz, a rendszer az első 5000 sort adja vissza. A keresési tevékenység kimenete legfeljebb 2 MB méretű, a tevékenység sikertelen lesz, ha a méret meghaladja a korlátot. Jelenleg az időkorlát előtt a keresési tevékenység leghosszabb időtartama egy óra.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -58,7 +60,7 @@ Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
 adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
 source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
-firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai érték | Nem. A mező alapértelmezett értéke: `true`.
+firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
 > 
