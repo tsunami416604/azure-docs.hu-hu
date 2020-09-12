@@ -3,16 +3,16 @@ title: Meglévő kereskedelmi Piactéri ajánlat frissítése
 description: Meglévő kereskedelmi Piactéri ajánlat frissítése, beleértve a szerkesztést, a Piszkozat törlését, a közzétételi kérelem megszakítását, az ajánlat vagy terv értékesítésének leállítását és a privát célközönségek szinkronizálását.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056142"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650107"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
@@ -190,6 +190,6 @@ A csomag (ok) privát célközönségének frissítése és szinkronizálása:
 
 A **privát célközönség szinkronizálása** csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni a draft ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése](./publishing-status.md)

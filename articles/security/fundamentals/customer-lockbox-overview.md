@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/04/2019
-ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735436"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650961"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure Ügyfélszéf
 
@@ -25,6 +25,49 @@ A Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek szám�
 Ez a cikk a Ügyfélszéf kérelmek kezdeményezésének, nyomon követésének és a későbbi felülvizsgálatok és auditálások tárolásának módját ismerteti.
 
 A Ügyfélszéf mostantól általánosan elérhető, és jelenleg engedélyezve van a távoli asztali hozzáférés a virtuális gépekhez.
+
+## <a name="supported-services-and-scenarios-in-preview"></a>Az előzetes verzióban támogatott szolgáltatások és forgatókönyvek
+
+A következő szolgáltatások jelenleg előzetes verzióban érhetők el a Ügyfélszéf számára:
+
+- API Management
+- Azure App Service
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Synapse Analytics
+- Cognitive Services
+- Container Registry
+- Azure Data Factory
+- Azure Database for PostgreSQL
+- Azure Kubernetes Service
+- Azure Data Box
+- HDInsight
+- Functions
+- Azure Storage
+- Azure SQL DB
+- Azure Data Explorer
+- Virtual Machines (mostantól a memóriaképek és a felügyelt lemezek hozzáférését is magában foglalja)
+- Azure-előfizetés továbbítása
+
+Ha engedélyezni szeretné a Ügyfélszéf a szervezete számára az előzetes verzióhoz, regisztráljon a [Ügyfélszéf az Azure nyilvános előzetes](https://aka.ms/customerlockbox/insiderprogram)verziójára.
+
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé
+
+A következő szolgáltatások és forgatókönyvek jelenleg általánosan elérhetők a Ügyfélszéf számára.
+
+### <a name="remote-desktop-access-to-virtual-machines"></a>Távoli asztali hozzáférés a virtuális gépekhez
+
+A Ügyfélszéf jelenleg engedélyezve van a távoli asztali hozzáférési kérelmek virtuális gépekre való hozzáférése. A következő munkaterhelések támogatottak:
+- Szolgáltatásként szolgáló platform (Pásti) – Azure Cloud Services (webes szerepkör és feldolgozói szerepkör)
+- Infrastruktúra-szolgáltatás (IaaS) – Windows és Linux (csak Azure Resource Manager)
+- Virtuálisgép-méretezési csoport – Windows és Linux
+
+> [!NOTE]
+> Ügyfélszéf nem támogatja a klasszikus IaaS-példányok használatát. Ha IaaS klasszikus példányokon futó számítási feladatokkal rendelkezik, javasoljuk, hogy a Klasszikusból a Resource Manager-alapú üzemi modellekbe telepítse át őket. Útmutatásért lásd: a [IaaS-erőforrások platform által támogatott áttelepítése klasszikusról Azure Resource Managerra](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+
+#### <a name="detailed-audit-logs"></a>Részletes naplók
+
+A távoli asztal elérését érintő forgatókönyvek esetében a Windows-eseménynaplók segítségével áttekintheti a Microsoft mérnök által végrehajtott műveleteket. Az eseménynaplók összegyűjtéséhez és az adatok a munkaterületre való másolásához vegye fontolóra a Azure Security Center használatát elemzés céljából. További információ: [adatgyűjtés Azure Security Centerban](../../security-center/security-center-enable-data-collection.md).
 
 ## <a name="workflow"></a>Munkafolyamat
 
@@ -91,40 +134,9 @@ Lássunk erre egy példát:
 
 ![Azure Ügyfélszéf – tevékenységek naplói](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Ügyfélszéf integráció az Azure biztonsági teljesítményteszttel
 
-A következő szolgáltatások és forgatókönyvek jelenleg általánosan elérhetők a Ügyfélszéf számára.
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>Távoli asztali hozzáférés a virtuális gépekhez
-
-A Ügyfélszéf jelenleg engedélyezve van a távoli asztali hozzáférési kérelmek virtuális gépekre való hozzáférése. A következő munkaterhelések támogatottak:
-- Szolgáltatásként szolgáló platform (Pásti) – Azure Cloud Services (webes szerepkör és feldolgozói szerepkör)
-- Infrastruktúra-szolgáltatás (IaaS) – Windows és Linux (csak Azure Resource Manager)
-- Virtuálisgép-méretezési csoport – Windows és Linux
-
-> [!NOTE]
-> Ügyfélszéf nem támogatja a klasszikus IaaS-példányok használatát. Ha IaaS klasszikus példányokon futó számítási feladatokkal rendelkezik, javasoljuk, hogy a Klasszikusból a Resource Manager-alapú üzemi modellekbe telepítse át őket. Útmutatásért lásd: a [IaaS-erőforrások platform által támogatott áttelepítése klasszikusról Azure Resource Managerra](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
-
-#### <a name="detailed-audit-logs"></a>Részletes naplók
-
-A távoli asztal elérését érintő forgatókönyvek esetében a Windows-eseménynaplók segítségével áttekintheti a Microsoft mérnök által végrehajtott műveleteket. Az eseménynaplók összegyűjtéséhez és az adatok a munkaterületre való másolásához vegye fontolóra a Azure Security Center használatát elemzés céljából. További információ: [adatgyűjtés Azure Security Centerban](../../security-center/security-center-enable-data-collection.md).
-
-## <a name="supported-services-and-scenarios-in-preview"></a>Az előzetes verzióban támogatott szolgáltatások és forgatókönyvek
-
-A következő szolgáltatások jelenleg előzetes verzióban érhetők el a Ügyfélszéf számára:
-
-- Azure Storage
-
-- Azure SQL DB
-
-- Azure Data Explorer
-
-- Virtual Machines (mostantól a memóriaképek és a felügyelt lemezek hozzáférését is magában foglalja)
-
-- Azure-előfizetés továbbítása
-
-Ha engedélyezni szeretné a Ügyfélszéf a szervezete számára az előzetes verzióhoz, regisztráljon a [Ügyfélszéf az Azure nyilvános előzetes](https://aka.ms/customerlockbox/insiderprogram)verziójára.
-
+Bevezetünk egy új alapszintű vezérlőelemet ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) az Azure biztonsági teljesítménytesztben, amely a Ügyfélszéf alkalmazhatóságát fedi le. Az ügyfelek mostantól kihasználhatják a teljesítménytesztet, és áttekinthetik Ügyfélszéf alkalmazhatóságát a szolgáltatásokhoz.
 
 ## <a name="exclusions"></a>Kizárások
 
@@ -134,7 +146,7 @@ Ha engedélyezni szeretné a Ügyfélszéf a szervezete számára az előzetes v
 
 - A Microsoft mérnöke a hibaelhárítás részeként fér hozzá az Azure platformhoz, és véletlenül hozzáfér az ügyféladatok eléréséhez. Az Azure hálózati csapat például olyan hibaelhárítást végez, amely egy hálózati eszközön lévő csomag rögzítését eredményezi. Ha azonban az ügyfél a továbbítás során titkosította az adatforgalmat, a mérnök nem tudja beolvasni az adatforgalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Ügyfélszéf automatikusan elérhető minden olyan ügyfél számára, akik [Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkeznek, és ez a **fejlesztő**minimális szintű.
 

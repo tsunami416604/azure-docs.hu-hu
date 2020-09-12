@@ -7,12 +7,13 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: device-developer
+ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337109"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015092"
 ---
 # <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
@@ -160,10 +161,10 @@ A következő példa a környezeti érzékelő felületének definícióját mut
 
 Ez a példa két tulajdonságot, egy telemetria és két parancsot mutat be. A mező minimális leírása a következőket tartalmazhatja:
 
-- `@type`a képesség típusának megadása: `Telemetry` , `Property` , vagy `Command` .  Bizonyos esetekben a típus egy szemantikai típust tartalmaz, amely lehetővé teszi, hogy IoT Central az érték kezelésével kapcsolatos feltételezések elvégzéséhez.
-- `name`a telemetria értékhez.
-- `schema`a telemetria vagy a tulajdonság adattípusának megadása. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
-- `commandType`a parancs kezelésének megadásához.
+- `@type` a képesség típusának megadása: `Telemetry` , `Property` , vagy `Command` .  Bizonyos esetekben a típus egy szemantikai típust tartalmaz, amely lehetővé teszi, hogy IoT Central az érték kezelésével kapcsolatos feltételezések elvégzéséhez.
+- `name` a telemetria értékhez.
+- `schema` a telemetria vagy a tulajdonság adattípusának megadása. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
+- `commandType` a parancs kezelésének megadásához.
 
 Az opcionális mezők, például a megjelenítendő név és a Leírás lehetővé teszik, hogy további részleteket adjon hozzá az interfészhez és a képességekhez.
 
@@ -222,7 +223,7 @@ A megoldás fejlesztői olyan nézeteket hoznak létre, amelyek lehetővé teszi
 
 A nézetekhez felvehető telemetria, tulajdonságokat és parancsokat a DCM, a Cloud Properties és a testreszabások határozzák meg az eszköz sablonjában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az eszközök sablonjait, a következő lépés a [telemetria, a Property és a Command hasznos](./concepts-telemetry-properties-commands.md) adatok beolvasása, amelyekkel részletesebben tájékozódhat az eszközök IoT Centralsal való cseréjéről.
 

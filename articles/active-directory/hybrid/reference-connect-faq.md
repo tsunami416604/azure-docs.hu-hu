@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256679"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014633"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
 
@@ -34,13 +34,13 @@ A Microsoft azt javasolja, hogy a Azure AD Connect kiszolgáló megerősítse a 
 
 További tudnivalókért lásd: 
 
-* [Rendszergazdák csoportok biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Rendszergazdák csoportok biztonságossá tétele](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Beépített rendszergazdai fiókok biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [Beépített rendszergazdai fiókok biztonságossá tétele](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Biztonsági fejlesztés és fenntartás a támadási felületek csökkentésével](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Biztonsági fejlesztés és fenntartás a támadási felületek csökkentésével](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [A Active Directory támadási felület csökkentése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [A Active Directory támadási felület csökkentése](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **K: a telepítés akkor működik, ha a Azure Active Directory (Azure AD) globális rendszergazdája kétfaktoros hitelesítést (2FA) engedélyez?**  
 A február 2016-es verziótól kezdve ez a forgatókönyv támogatott.
@@ -119,7 +119,7 @@ A következő egy tájékoztató dokumentum, amely bemutatja a mérnöki, támog
 **K: engedélyezhető Azure AD Connect az Azure AD Connector-fiók létrehozása munkacsoportos gépen?**
 Nem.  Ahhoz, hogy az Azure AD Connect automatikusan létre lehessen hozni az Azure AD Connector-fiókot, a gépnek tartományhoz kell tartoznia.  
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 **K: van egy tűzfallal, hálózati eszközzel vagy mással, amely korlátozza, hogy a kapcsolatok mikor maradhatnak nyitva a hálózaton. Mire használható az ügyféloldali időtúllépési küszöbérték a Azure AD Connect használatakor?**  
 Minden hálózati szoftver, fizikai eszköz vagy bármi más, ami korlátozza a kapcsolatok nyitva maradható maximális idejét, legalább öt perc (300 másodperc) küszöbértéket kell használnia ahhoz, hogy a kiszolgáló, amelyen a Azure AD Connect-ügyfél telepítve van, és Azure Active Directory. Ez a javaslat a korábban megjelent Microsoft identitásszinkronizálás-eszközökre is vonatkozik.
 
@@ -139,30 +139,30 @@ Nem, Azure AD Connect nem támogatja a tiszta IPv6-környezetet.
 Nem, Azure AD Connect használata NAT-kapcsolaton keresztül nem támogatott. 
 
 ## <a name="federation"></a>Összevonás
-**K: mit tegyek, ha olyan e-mailt kapok, amely megkéri az Office 365-tanúsítvány megújítását?**  
+**K: mit tegyek, ha olyan e-mailt kapok, amely megkéri a Microsoft 365-tanúsítvány megújítását?**  
 A tanúsítvány megújításával kapcsolatos útmutatásért lásd: [tanúsítványok megújítása](how-to-connect-fed-o365-certs.md).
 
-**K: "a függő entitás automatikus frissítése" van beállítva az Office 365 függő entitáshoz. Kell-e bármilyen műveletet végrehajtani, ha a jogkivonat-aláíró tanúsítványa automatikusan áthalad?**  
+**K: "a függő entitás automatikus frissítése" beállítás van beállítva a Microsoft 365 függő entitáshoz. Kell-e bármilyen műveletet végrehajtani, ha a jogkivonat-aláíró tanúsítványa automatikusan áthalad?**  
 Használja a [tanúsítványok megújítása](how-to-connect-fed-o365-certs.md)című cikkben ismertetett útmutatást.
 
-## <a name="environment"></a>Environment
+## <a name="environment"></a>Környezet
 **K: támogatja a kiszolgáló átnevezését Azure AD Connect telepítését követően?**  
 Nem. A kiszolgálónév módosítása azt eredményezi, hogy a Szinkronizáló motor nem tud csatlakozni az SQL Database-példányhoz, és a szolgáltatás nem indítható el.
 
 **K: a következő generációs kriptográfiai (NGC) szinkronizálási szabályok támogatottak egy FIPS-kompatibilis gépen?**  
 Nem.  Ez nem támogatott.
 
-**K. Ha Letiltottam egy szinkronizált eszközt (például: HAADJ) a Azure Portalban, miért van újra engedélyezve?**<br>
+**Q. Ha Letiltottam egy szinkronizált eszközt (például: HAADJ) a Azure Portalban, miért van újra engedélyezve?**<br>
 A szinkronizált eszközöket lehet létrehozni vagy elsajátítani a helyszínen. Ha egy szinkronizált eszköz van engedélyezve a helyszínen, akkor a Azure Portal még akkor is újra engedélyezheti, ha korábban egy rendszergazda letiltotta. Egy szinkronizált eszköz letiltásához használja a helyszíni Active Directory a számítógépfiók letiltásához.
 
-**K. Ha letiltom a felhasználói bejelentkezést az Office 365 vagy az Azure AD portálon a szinkronizált felhasználók számára, miért nem blokkolja a rendszer az újbóli bejelentkezést?**<br>
+**Q. Ha letiltom a felhasználói bejelentkezést a Microsoft 365 vagy az Azure AD-portálon a szinkronizált felhasználók számára, miért nem oldja fel a rendszer az ismételt bejelentkezést?**<br>
 A szinkronizált felhasználókat a helyszínen lehet létrehozni vagy elsajátítani. Ha a fiók engedélyezve van a helyszínen, akkor feloldja a rendszergazda által elhelyezett bejelentkezési blokk blokkolását.
 
 ## <a name="identity-data"></a>Azonosító adatok
 **K: Miért nem egyezik a helyszíni egyszerű felhasználónévvel az Azure AD-ben a userPrincipalName (UPN) attribútum?**  
 További információt a következő cikkekben talál:
 
-* [Az Office 365-ben, az Azure-ban vagy az Intune-ban lévő felhasználónevek nem egyeznek meg a helyszíni egyszerű felhasználónévvel vagy a másodlagos bejelentkezési AZONOSÍTÓval](https://support.microsoft.com/kb/2523192)
+* [A Microsoft 365ban, az Azure-ban vagy az Intune-ban lévő felhasználónevek nem egyeznek meg a helyszíni egyszerű felhasználónévvel vagy a másodlagos bejelentkezési AZONOSÍTÓval](https://support.microsoft.com/kb/2523192)
 * [A Azure Active Directory Sync Tool nem szinkronizálja a módosításokat, miután a felhasználói fiók egyszerű felhasználónevét más összevont tartomány használatára változtatta](https://support.microsoft.com/kb/2669550)
 
 Az Azure AD-t úgy is beállíthatja, hogy a szinkronizálási motor frissítse az egyszerű felhasználónevet a [Azure ad Connect Sync szolgáltatás szolgáltatásai](how-to-connect-syncservice-features.md)című témakörben leírtak szerint.
@@ -253,19 +253,19 @@ Igen, az automatikus frissítés frissíti a Azure AD Connect Healtht is.
 Igen, egy átmeneti módban lévő Azure AD Connect-kiszolgáló automatikus frissítése is végezhető.
 
 **K: Ha az automatikus frissítés meghiúsul, és a Azure AD Connect-kiszolgáló nem indul el, mi a teendő?**  
-Ritka esetekben a Azure AD Connect szolgáltatás nem indul el a frissítés végrehajtása után. Ezekben az esetekben a kiszolgáló újraindítása általában kijavítja a problémát. Ha a Azure AD Connect szolgáltatás még nem indul el, nyisson meg egy támogatási jegyet. További információ: [Service-kérelem létrehozása az Office 365-támogatással való kapcsolatfelvételhez](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
+Ritka esetekben a Azure AD Connect szolgáltatás nem indul el a frissítés végrehajtása után. Ezekben az esetekben a kiszolgáló újraindítása általában kijavítja a problémát. Ha a Azure AD Connect szolgáltatás még nem indul el, nyisson meg egy támogatási jegyet. További információ: [Microsoft 365 támogatási szolgáltatáshoz való kapcsolódási kérelem létrehozása](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support). 
 
 **K: nem tudom, mi a kockázat, amikor a Azure AD Connect újabb verziójára frissítek. Meg tud hívni nekem, hogy segítsenek a frissítésben?**  
-Ha segítségre van szüksége a Azure AD Connect újabb verziójára való frissítéshez, nyisson meg egy támogatási jegyet az [Office 365-támogatással való kapcsolatfelvételhez szükséges szolgáltatási kérelem létrehozásához](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
+Ha segítségre van szüksége a Azure AD Connect újabb verziójára való frissítéshez, nyisson meg egy támogatási jegyet a [szolgáltatási kérelem létrehozásakor, hogy kapcsolatba lépjen Microsoft 365 támogatási szolgálattal](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support).
 
 ## <a name="operational-best-practice"></a>Operatív ajánlott eljárás    
 Az alábbiakban ismertetjük a Windows Server Active Directory és Azure Active Directory közötti szinkronizálás során megvalósított ajánlott eljárásokat.
 
-**Multi-Factor Authentication alkalmazása az összes szinkronizált fiókra** Az Azure Multi-Factor Authentication segít az adatkezelésben és az alkalmazásokban való hozzáférésben, miközben a felhasználók egyszerűségét is fenntartja. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható hitelesítési módszer segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t. Az MFA-ról itt talál további információt:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Multi-Factor Authentication alkalmazása az összes szinkronizált fiókra** Az Azure Multi-Factor Authentication segít az adatkezelésben és az alkalmazásokban való hozzáférésben, miközben a felhasználók egyszerűségét is fenntartja. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható hitelesítési módszer segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t. Az MFA-ról itt talál további információt: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
-**Kövesse a Azure ad Connect-kiszolgáló biztonsági irányelveit** A Azure AD Connect kiszolgáló kritikus identitási adatokból áll, és 0. rétegű összetevőként kell kezelni, ahogy azt az [Active Directory felügyeleti csomag modelljében](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)dokumentálták. Tekintse meg a [AADConnect-kiszolgáló biztonságossá tételére vonatkozó irányelveket](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)is.
+**Kövesse a Azure ad Connect-kiszolgáló biztonsági irányelveit** A Azure AD Connect kiszolgáló kritikus identitási adatokból áll, és 0. rétegű összetevőként kell kezelni, ahogy azt az [Active Directory felügyeleti csomag modelljében](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)dokumentálták. Tekintse meg a [AADConnect-kiszolgáló biztonságossá tételére vonatkozó irányelveket](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)is.
 
-**A PHS engedélyezése a kiszivárgott hitelesítő adatok észleléséhez** A jelszó-kivonatolási szinkronizálás lehetővé teszi a [kiszivárgott hitelesítő adatok észlelését](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) is a hibrid fiókoknál. A Microsoft együtt működik a sötét webes kutatókkal és a bűnüldöző szervekkel nyilvánosan elérhető felhasználónevek és jelszavak párok kereséséhez. Ha ezek közül bármelyik pár megegyezik a felhasználókkal, a rendszer a társított fiókot magas kockázatra helyezi át. 
+**A PHS engedélyezése a kiszivárgott hitelesítő adatok észleléséhez** A jelszó-kivonatolási szinkronizálás lehetővé teszi a [kiszivárgott hitelesítő adatok észlelését](../identity-protection/concept-identity-protection-risks.md) is a hibrid fiókoknál. A Microsoft együtt működik a sötét webes kutatókkal és a bűnüldöző szervekkel nyilvánosan elérhető felhasználónevek és jelszavak párok kereséséhez. Ha ezek közül bármelyik pár megegyezik a felhasználókkal, a rendszer a társított fiókot magas kockázatra helyezi át. 
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -275,11 +275,11 @@ Az alábbiakban ismertetjük a Windows Server Active Directory és Azure Active 
 
 * Az Azure AD Connect támogatásával kapcsolatos gyakori hibajavítási hibákért keresse meg a KB-os technikai megoldásokat.
 
-[A Microsoft Q&egy kérdés oldalt Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[A Microsoft Q&egy kérdés oldalt Azure Active Directory](/answers/topics/azure-active-directory.html)
 
-* [Az Azure ad-Közösségre](https://docs.microsoft.com/answers/topics/azure-active-directory.html)kattintva technikai kérdéseket és válaszokat kereshet, vagy megteheti a saját kérdéseit.
+* [Az Azure ad-Közösségre](/answers/topics/azure-active-directory.html)kattintva technikai kérdéseket és válaszokat kereshet, vagy megteheti a saját kérdéseit.
 
-[Támogatás kérése az Azure AD-hez](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[Támogatás kérése az Azure AD-hez](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
 **K: Miért jelenik meg a 6311-es és a 6401-es esemény a szinkronizálási lépés hibája után?**
 

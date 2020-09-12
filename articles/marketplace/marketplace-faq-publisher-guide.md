@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607329"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007757"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -46,7 +46,7 @@ További információért tekintse meg a videót a [piactéren való értékesí
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Díjköteles a Microsoft kereskedelmi piactér?
 
-Nem, a kereskedelmi piactéren elérhető ajánlatok közzétételére nincs díj. Az értékesítés egy kis hányadát, tranzakciós díjat számítunk fel, és befektetjük a Marketplace jutalmazási programba, a platform innovációba és a kereskedelmi piactéren végrehajtott műveletekbe. Ez a tranzakciós díj az [Azure IP közös értékesítésű](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized ajánlatait is csökkenti.
+Nem, a kereskedelmi piactéren elérhető ajánlatok közzétételére nincs díj. Az értékesítés egy kis hányadát, tranzakciós díjat számítunk fel, és befektetjük a Marketplace jutalmazási programba, a platform innovációba és a kereskedelmi piactéren végrehajtott műveletekbe. Ez a tranzakciós díj az [Azure-beli IP-](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized ajánlatokra és az olyan fizetős SaaS-ajánlatokra vonatkozik, amelyek egy Microsoft Teams-alkalmazáshoz vagy legalább két Microsoft 365-bővítményhez (Excel, PowerPoint, Word, Outlook és SharePoint) vannak társítva.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hogyan regisztrálni, hogy kiadó legyen a Microsoft kereskedelmi piactéren?
 
@@ -320,7 +320,7 @@ A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül 
 A következő erőforrásokat javasoljuk:
 
 - A Microsoft partner Közösséghez való csatlakozáshoz lásd: [Microsoft AppSource és az Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222).
-- Ismerje meg és csatlakozzon a [Microsoft kereskedelmi Marketplace bennfentesek programhoz](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders).
+- Ismerje meg és csatlakozzon a [Microsoft kereskedelmi Marketplace bennfentesek programhoz](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743).
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Hol tudhatok meg többet a partner Center szolgáltatásról?
 
@@ -340,7 +340,7 @@ A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [kü
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Hol tudhatok meg többet a Azure Governmentról és a Azure Government Marketplace-ről?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
-- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center)
+- [Microsoft adatvédelmi központ](https://www.microsoft.com/trust-center)
 - [Az Azure Government dokumentációja](../azure-government/index.yml)
 - [Azure Government piactér](../azure-government/documentation-government-manage-marketplace.md)
 - [Azure Government megfelelőség](../azure-government/documentation-government-plan-compliance.md)

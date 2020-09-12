@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1e6abeff8998e55eb7cbf450d1c3cc32f233e382
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065977"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659914"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
 * Hozzáférés a használni kívánt fájlrendszerrel rendelkező számítógéphez. Ha például ugyanarra a számítógépre telepíti az adatátjárót, mint a fájlrendszert, szüksége lesz a számítógép fiókjának hitelesítő adataira.
 
-* Egy Logic Apps által támogatott szolgáltató által használt e-mail-fiók, például Office 365 Outlook, Outlook.com vagy gmail. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). Ez a logikai alkalmazás Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet.
+* Egy Logic Apps által támogatott szolgáltató által használt e-mail-fiók, például Office 365 Outlook, Outlook.com vagy gmail. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). Ez a logikai alkalmazás munkahelyi vagy iskolai fiókot használ. Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet.
 
   > [!IMPORTANT]
   > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
@@ -101,7 +101,7 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [csatlakozhat a helyszíni adatbázisokhoz](../logic-apps/logic-apps-gateway-connection.md) 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

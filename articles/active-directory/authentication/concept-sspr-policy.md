@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194069"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005020"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -43,13 +43,13 @@ Az alábbi táblázat azokat a felhasználóneveket ismerteti, amelyek az Azure 
 
 A rendszer az Azure AD-ben közvetlenül létrehozott és felügyelt összes felhasználói fiókra alkalmazza a jelszóházirend-szabályzatot. Ez a jelszóházirend nem módosítható, de [Az Azure ad jelszavas védelemhez egyéni tiltott jelszavakat is beállíthat](tutorial-configure-custom-password-protection.md).
 
-A jelszóházirend nem vonatkozik a helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált felhasználói fiókokra.
+A jelszóházirend nem vonatkozik a helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált felhasználói fiókokra, hacsak nem engedélyezi a EnforceCloudPasswordPolicyForPasswordSyncedUsers.
 
 A következő jelszóházirend-beállítások vannak meghatározva:
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \`~ " ( ) ;</li> <li>üres terület</li></ul> |
+| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \` ~ " ( ) ;</li> <li>üres terület</li></ul> |
 | Nem engedélyezett karakterek | Unicode-karakterek. |
 | Jelszó korlátozásai |<ul><li>Legalább 8 karakterből és legfeljebb 256 karakterből állhat.</li><li>A három közül a következők közül hármat igényel:<ul><li>Kisbetűs karakterek.</li><li>Nagybetűs karakterek.</li><li>Számok (0-9).</li><li>Szimbólumok (lásd a jelszó korábbi korlátozásait).</li></ul></li></ul> |
 | Jelszó lejárati időtartama (jelszó maximális kora) |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható a `Set-MsolPasswordPolicy` Windows PowerShell Azure Active Directory moduljának parancsmagjának használatával.</li></ul> |
@@ -173,7 +173,7 @@ A modul telepítése után a következő lépésekkel hajtsa végre az egyes fel
    > [!WARNING]
    > `-PasswordPolicies DisablePasswordExpiration`A jelszavak az attribútum alapján még mindig korra vannak állítva `pwdLastSet` . `pwdLastSet`Ha az attribútum alapján módosítja a lejárati `-PasswordPolicies None` időt, a `pwdLastSet` 90 napnál régebbi jelszavakhoz a felhasználónak a következő bejelentkezéskor módosítania kell a felhasználókat. Ez a változás nagy mennyiségű felhasználót érinthet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SSPR használatának megkezdéséhez tekintse meg az [oktatóanyag: a felhasználók számára a fiók zárolásának feloldását vagy a jelszavak visszaállítását Azure Active Directory önkiszolgáló jelszó-visszaállítással](tutorial-enable-sspr.md).
 

@@ -3,12 +3,12 @@ title: Metrikai riasztások a Azure Monitorről a tárolók számára | Microsof
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563364"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019886"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
@@ -144,9 +144,9 @@ Az alapszintű lépések a következők:
 
 2. Ha egyéni sablont szeretne üzembe helyezni a portálon, válassza az **erőforrás létrehozása** lehetőséget a [Azure Portal](https://portal.azure.com).
 
-3. Keressen rá a **sablon**kifejezésre, majd válassza a **sablon**lehetőséget. telepítési.
+3. Keressen rá a **sablon**kifejezésre, majd válassza a **template Deployment**lehetőséget.
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 5. A sablonok létrehozásához több lehetőség is megjelenik, válassza **a saját sablon létrehozása a szerkesztőben**lehetőséget.
 

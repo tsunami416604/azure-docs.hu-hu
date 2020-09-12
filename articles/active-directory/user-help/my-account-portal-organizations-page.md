@@ -1,6 +1,6 @@
 ---
 title: Szervezetek kezelése a saját fiók portálról – Azure AD
-description: A saját fiók portál szervezetek lapján megtekintheti és elhagyhatja a munkahelyi vagy iskolai fiókjához kapcsolódó szervezeteket.
+description: A saját fiók portál szervezetek lapján megtekintheti és elhagyhatja a szervezeteket, amelyekhez hozzáfér.
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798176"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005071"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a szervezetek lapról
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>A saját fiók portálon elérhető szervezetek kezelése
 
-A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy iskolai fiókhoz kapcsolódó szervezeteket (általában a szervezet nevét). A **szervezetek lapon két típusú szervezet látható** :
+A **saját fiók** portál **szervezetek** lapján kezelheti a szervezeteket (általában a szervezet nevét), amelyhez hozzáfér. A **szervezetek lapon két típusú szervezet látható** :
 
 - **Otthoni szervezet.** Otthoni szervezete a munkahelyi vagy iskolai fiókját birtokló szervezet. Nem hagyhatja a saját szervezetét.
 
@@ -30,7 +30,7 @@ A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy i
 - **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
 >[!Important]
->Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott szervezeti adatokat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](../users-groups-roles/index.yml).
+>Ez a cikk azoknak a felhasználóknak készült, akik a munkahelyi vagy iskolai fiókhoz hozzáférő szervezeti adatokat szeretnék frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
@@ -44,7 +44,7 @@ A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy i
 
     ![Szervezetek lap](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Tekintse át a többi társított szervezetet, és győződjön meg arról, hogy ismeri fel a fiókhoz csatlakozó összes szervezetet.
+4. Tekintse át a többi szervezetet, és győződjön meg arról, hogy ismeri fel az összes olyan szervezetet, amelyhez hozzáfér.
 
 ## <a name="leave-an-organization"></a>Szervezet elhagyása
 

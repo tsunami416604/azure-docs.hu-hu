@@ -1,28 +1,25 @@
 ---
-title: A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)
+title: A lekérdezés gyorsításának SQL nyelvi referenciája
 titleSuffix: Azure Storage
 description: Ismerje meg, hogyan használható a lekérdezési gyorsítás SQL-szintaxisa.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193411"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659561"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)
+# <a name="query-acceleration-sql-language-reference"></a>A lekérdezés gyorsításának SQL nyelvi referenciája
 
 A lekérdezési gyorsítás egy ANSI SQL-szerű nyelvet támogat a blob-tartalmakon keresztüli lekérdezések kifejezésére.  A lekérdezés-gyorsítási SQL-dialektus az ANSI SQL egy részhalmaza, amely korlátozott számú támogatott adattípust, operátort stb., de az ANSI SQL-ben is kibővül, hogy támogassa a többtényezős, félig strukturált adatformátumokat, például a JSON-t. 
-
-> [!NOTE]
-> A lekérdezési gyorsítási funkció nyilvános előzetes verzióban érhető el, és a közép-Kanada középső régiójában és Közép-Franciaországban található. A korlátozások áttekintéséhez tekintse meg az [ismert problémákkal foglalkozó](data-lake-storage-known-issues.md) cikket. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adls/qa-preview-signup). 
 
 ## <a name="select-syntax"></a>Szintaxis kiválasztása
 
@@ -58,7 +55,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="data-types"></a>Adattípusok
 
-|Adattípus|Description|
+|Adattípus|Leírás|
 |---------|-------------------------------------------|
 |INT      |64 bites előjeles egész szám.                     |
 |FLOAT    |64 bites ("dupla pontosságú") lebegőpontos pont.|
@@ -66,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |IDŐBÉLYEG|Egy adott időpontban.                           |
 |LOGIKAI  |TRUE (igaz) vagy FALSE (hamis).                             |
 
-A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 ## <a name="expressions"></a>Kifejezések
 
@@ -80,15 +77,36 @@ CSV-formázott adat esetén a mezőket a sorszám alapján is hivatkozhatjuk, al
 
 A következő szabványos SQL-operátorok támogatottak:
 
-``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
+|Operátor|Leírás|
+|--|--|
+|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |Összehasonlítja a két kifejezés (összehasonlító operátor) egyenlőségét.|
+|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Azt vizsgálja, hogy egy kifejezés nem egyenlő-e egy másik kifejezéssel (összehasonlító operátor).|
+|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Összehasonlítja a két kifejezést, hogy ne legyen egyenlő (összehasonlítási operátor).|
+|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |Összehasonlítja a két kifejezést kisebb, mint (összehasonlítási operátor).|
+|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Összehasonlítja a két kifejezést kisebb vagy egyenlő értékkel (összehasonlító operátor).|
+|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |Összehasonlítja a két kifejezést nagyobb mint (összehasonlító operátor). |
+|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Összehasonlítja a két kifejezést nagyobb vagy egyenlő értékkel (összehasonlító operátor).|
+|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |Két szám hozzáadására szolgál. Ez a kiegészítő aritmetikai operátor egy számot is hozzáadhat napokban a dátumhoz.|
+|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |Két szám kivonása (egy aritmetikai kivonási operátor). |
+|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Az egyik számot egy másikra (egy aritmetikai osztási operátorra) osztja.|
+|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |Két kifejezés (egy aritmetikai szorzási operátor) szorzata.|
+|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Egy szám fennmaradó számát adja vissza egy másikkal osztva.|
+|[ÉS](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Egy bitenkénti logikai és műveletet hajt végre két egész érték között.|
+|[VAGY](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Bitenkénti logikai vagy műveletet hajt végre két megadott egész érték között, a Transact-SQL-utasításokon belüli bináris kifejezésekre lefordítva.|
+|[NEM](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Egy logikai bemenet megtagadása.|
+|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Egy adott adattípusú kifejezést alakít át egy másikra.|
+|[KÖZÖTT](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Meghatározza a vizsgálandó tartományt.|
+|[A](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Meghatározza, hogy egy adott érték egyezik-e egy allekérdezés vagy egy lista bármelyik értékével.|
+|[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Null értéket ad vissza, ha a két megadott kifejezés egyenlő.|
+|[ÖSSZEFONÓDIK](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Kiértékeli az argumentumokat sorrendben, és visszaadja az első olyan kifejezés aktuális értékét, amely kezdetben nem a NULL értékre van kiértékelve.|
 
-Ha az operátor bal és jobb oldalán lévő adattípusok eltérnek, akkor az automatikus konverzió az itt megadott szabályoknak megfelelően lesz elvégezve: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Ha az operátor bal és jobb oldalán lévő adattípusok eltérnek, akkor az automatikus konverzió az itt megadott szabályoknak megfelelően lesz elvégezve: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok nagyon kis részhalmazát támogatja.  Tekintse meg a jelen cikk [adattípusok](#data-types) című szakaszát.
 
 ### <a name="casts"></a>Típuskonverziók
 
-A lekérdezés gyorsításának SQL-nyelve támogatja a CAST operátort a szabályoknak megfelelően: [adattípus-átalakítás (adatbázismotor)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+A lekérdezés gyorsításának SQL-nyelve támogatja a CAST operátort a szabályoknak megfelelően: [adattípus-átalakítás (adatbázismotor)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine).  
 
 A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok kis részhalmazát támogatja.  Tekintse meg a jelen cikk [adattípusok](#data-types) című szakaszát.
 
@@ -96,7 +114,16 @@ A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok
 
 A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakterlánc-függvényeket támogatja:
 
-``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
+|Függvény|Leírás|
+|--|--|
+|CHAR_LENGTH    | A karakterlánc-kifejezés karakteres hosszát adja vissza, ha a karakterlánc-kifejezés karakteres adattípusú. Ellenkező esetben a karakterlánc-kifejezésben megadott hosszúságot adja vissza (a legkisebb egész szám nem kisebb, mint a bitek száma a 8 értékkel osztva). (Ez a függvény megegyezik a CHARACTER_LENGTH függvénnyel.)|
+|CHARACTER_LENGTH    |A karakterlánc-kifejezés karakteres hosszát adja vissza, ha a karakterlánc-kifejezés karakteres adattípusú. Ellenkező esetben a karakterlánc-kifejezésben megadott hosszúságot adja vissza (a legkisebb egész szám nem kisebb, mint a bitek száma a 8 értékkel osztva). (Ez a függvény megegyezik a CHAR_LENGTH függvénnyel|
+|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Egy karakterláncot ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta.|
+|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |A kisbetűs karaktereket tartalmazó karakteres kifejezést adja vissza nagybetűvé alakítva.|
+|[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Egy karakter, bináris, szöveg vagy képkifejezés egy részét adja vissza SQL Serverban.|
+|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről és végéről.|
+|VEZETŐ    |Description|
+|ZÁRÓ    |Description|
 
 Íme néhány példa:
 
@@ -108,16 +135,6 @@ A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakte
 |UPPER|``SELECT UPPER('AbCdEfG') from BlobStorage``|``ABCDEFG``|
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
-
-A [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvény segítségével megkeresheti a mintázatot. Íme néhány példa, amely a [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvényt használja az adatkarakterlánc kereséséhez ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
-
-|Lekérdezés|Példa|
-|--|--|
-|``SELECT _1, _2, _3 from BlobStorage where _2 LIKE 'a%'``|``abc,abd,cd\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a[bcd]c``|``abc,abd,cd\n``|
-|``SELECT _1 from BlobStorage where _2 LIKE '[^xyz]%'``|``abc\ntest\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a_``|``abc,abd,cd\n``|
-|``SELECT _2,_3 from BlobStorage where _3 LIKE '[g-h]_![[a-j]' Escape '!'``|``xc%d^e,gh[i\n``|
 
 ### <a name="date-functions"></a>Dátumfüggvények
 
@@ -133,14 +150,12 @@ A lekérdezés gyorsításának SQL nyelve az év, hónap, nap, óra, perc, más
 
 Példák:
 
-```sql
-DATE_ADD(datepart, quantity, timestamp)
-DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+"" SQL DATE_ADD (DatePart, mennyiség, időbélyeg) DATE_ADD ("minute", 1, CAST ("2017-01-02T03:04:05.006 Z", TIMESTAMP)
 ```
 
-#### <a name="date_diff-function"></a>DATE_DIFF függvény
+#### DATE_DIFF function
 
-A lekérdezés gyorsításának SQL nyelve az év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja ``DATE_DIFF`` .
+The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -220,12 +235,12 @@ A SELECT utasítás tartalmazhat egy vagy több leképezési kifejezést, vagy e
 
 |Kifejezés|Leírás|
 |--|--|
-|[DARABSZÁM ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |A predikátum kifejezésének megfelelő rekordok számát adja vissza.|
-|[DARABSZÁM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Azon rekordok számát adja vissza, amelyek esetében a kifejezés nem null értékű.|
-|[ÁTLAG (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |A kifejezés null értéktől eltérő értékeinek átlagát adja vissza.|
-|[MIN (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |A kifejezés minimális nem null értékű értékét adja vissza.|
-|[Max (kifejezés](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |A kifejezés nem null értékű maximális értékét adja vissza.|
-|[SUM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |A kifejezés összes nem null értékének összegét adja vissza.|
+|[DARABSZÁM ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |A predikátum kifejezésének megfelelő rekordok számát adja vissza.|
+|[DARABSZÁM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Azon rekordok számát adja vissza, amelyek esetében a kifejezés nem null értékű.|
+|[ÁTLAG (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |A kifejezés null értéktől eltérő értékeinek átlagát adja vissza.|
+|[MIN (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |A kifejezés minimális nem null értékű értékét adja vissza.|
+|[MAX (kifejezés](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |A kifejezés nem null értékű maximális értékét adja vissza.|
+|[SUM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |A kifejezés összes nem null értékének összegét adja vissza.|
 
 ### <a name="missing"></a>HIÁNYZÓ
 
@@ -323,6 +338,6 @@ A legtöbb esetben az egyes kötegek mérete valamivel nagyobb lesz, mint a mega
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)
-- [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió)](data-lake-storage-query-acceleration-how-to.md)
+- [Azure Data Lake Storage lekérdezés gyorsulása](data-lake-storage-query-acceleration.md)
+- [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával](data-lake-storage-query-acceleration-how-to.md)
 

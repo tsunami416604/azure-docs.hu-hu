@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889940"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660008"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -39,7 +39,7 @@ Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkater�
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Rendeltetés** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -63,7 +63,7 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Rendeltetés** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
 | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
@@ -76,7 +76,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Rendeltetés** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
@@ -84,12 +84,12 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 
 A Azure Government-régiókhoz szükséges URL-címek.
 
-| **Állomásnév** | **Rendeltetés** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **usgovarizona.api.ml.azure.us** | Az USA – Arizona régió |
 | **usgovvirginia.api.ml.azure.us** | Az USA-Virginia régió |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](../firewall/tutorial-firewall-deploy-portal.md)
-* [Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit](how-to-enable-virtual-network.md)
+* [Biztonságos Azure ML-kísérletezés és következtetési feladatok egy Azure-beli virtuális hálózaton belül](how-to-network-security-overview.md)

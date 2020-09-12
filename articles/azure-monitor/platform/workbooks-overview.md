@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799565"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657954"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
@@ -43,12 +43,13 @@ A munkafüzetek jelenleg a következő adatforrásokkal kompatibilisek:
 
 A munkafüzetek számos képességet biztosítanak az adatmegjelenítéshez. Az egyes vizualizációs típusok részletes példáit az alábbi hivatkozásokra kattintva tekintheti meg:
 
-* [Szöveg](workbooks-visualizations.md#text)
-* [Diagramok](workbooks-visualizations.md#charts)
-* [Rácsok](workbooks-visualizations.md#grids)
-* [Csempék](workbooks-visualizations.md#tiles)
-* [Fák](workbooks-visualizations.md#trees)
-* [Grafikonok](workbooks-visualizations.md#graphs)
+* [Szöveg](workbooks-text-visualizations.md)
+* [Diagramok](workbooks-chart-visualizations.md)
+* [Rácsok](workbooks-grid-visualizations.md)
+* [Csempék](workbooks-tile-visualizations.md)
+* [Fák](workbooks-tree-visualizations.md)
+* [Grafikonok](workbooks-graph-visualizations.md)
+* [Összetett sáv](workbooks-composite-bar.md)
 
 ![Példa munkafüzet-vizualizációk](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +87,9 @@ Az adott munkafüzet esetében az élmény interaktív. Módosíthatja az előfi
 
 ### <a name="editing-mode"></a>Szerkesztési mód
 
-Annak megismeréséhez, hogy a munkafüzet-sablon hogyan legyen összekapcsolva, **a Szerkesztés gombra**kattintva kell cserélnie a szerkesztési módba. 
+Annak megismeréséhez, hogy a munkafüzet-sablon hogyan legyen összekapcsolva, **a Szerkesztés gombra**kattintva kell cserélnie a szerkesztési módba.
 
-![Képernyőkép az alkalmazáshiba-elemzési sablonról](./media/workbooks-overview/edit.png)
+![A munkafüzetek szerkesztési gombjának képernyőképe.](./media/workbooks-overview/edit.png)
 
 Miután átváltotta a szerkesztési módot, megfigyelheti, hogy számos **szerkesztési** mező jelenik meg a munkafüzet minden egyes aspektusának megfelelő módon.
 

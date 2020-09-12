@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758951"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016758"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással
 
-*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
+*Ez a cikk a megoldás-építők esetében érvényes.*
 
 Ez a cikk azt ismerteti, hogyan csatlakozhat egy RuuviTag-érzékelőt a Microsoft Azure IoT Central alkalmazáshoz.
 
@@ -46,7 +46,7 @@ Ahhoz, hogy egy RuuviTag-érzékelőt beillesszen az Azure IoT Central Applicati
 RuuviTag-sablon hozzáadása:
 
 1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** panelre, majd válassza a **+ új**: ![ új sablon létrehozása lehetőséget, amely ](./media/howto-connect-ruuvi/devicetemplate-new.png) lehetővé teszi ***egyéni sablon létrehozását*** vagy ***előre konfigurált sablon használatát*** .
-1. Válassza ki a RuuviTag az előre konfigurált eszközök listájából az alább látható módon: ![ válassza a RuuviTag-eszköz sablonja lehetőséget.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Válassza ki a RuuviTag az előre konfigurált eszközök listájából az alább látható módon:  ![ válassza a RuuviTag-eszköz sablonja lehetőséget.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
 1. A ***Tovább gombra*** kattintva folytassa a következő lépéssel.
 1. A következő képernyőn válassza a ***Létrehozás*** elemet a C500-eszköz sablonjának a IoT Central alkalmazásba való beléptetéséhez.
 
@@ -69,10 +69,10 @@ Ha nem rendelkezik fizikai RuuviTag eszközzel, létrehozhat egy szimulált Ruuv
 Szimulált RuuviTag létrehozása:
 
 1. Válassza az **eszközök > RuuviTag**elemet.
-1. Válassza az **+ új**lehetőséget.
+1. Válassza a **+ Új** lehetőséget.
 1. Adjon meg egy egyedi **azonosítót** és egy felhasználóbarát **eszköznév**.  
 1. Engedélyezze a **szimulált** beállítást.
-1. Válassza a **Létrehozás** lehetőséget.  
+1. Kattintson a **Létrehozás** gombra.  
 
 ## <a name="next-steps"></a>Következő lépések
 

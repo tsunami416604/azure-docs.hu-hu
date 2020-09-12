@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386452"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650924"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Ismerje meg, hogyan teheti meg:
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-## <a name="create-notebooks"></a><a name="create"></a>Jegyzetfüzetek létrehozása
+## <a name="create-notebooks"></a><a name="create"></a> Jegyzetfüzetek létrehozása
 
 A Azure Machine Learning munkaterületen hozzon létre egy új Jupyter-jegyzetfüzetet, és kezdjen el dolgozni. Az újonnan létrehozott jegyzetfüzetet az alapértelmezett munkaterület-tárolóban tárolja a rendszer. Ez a jegyzetfüzet a munkaterülethez hozzáféréssel rendelkező bárkivel megosztható. 
 
@@ -48,9 +48,9 @@ A Azure Machine Learning munkaterületen hozzon létre egy új Jupyter-jegyzetf�
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Új fájl létrehozása":::
 
 1. Nevezze el a fájlt. 
-1. Jupyter Notebook fájlok esetében válassza a **Python notebook** lehetőséget a fájl típusaként.
+1. Jupyter Notebook fájlok esetében válassza a **Jegyzetfüzet** lehetőséget fájltípusként.
 1. Válassza ki a kívánt könyvtárat.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Szövegfájlokat is létrehozhat.  Válassza ki a kívánt **szöveget** , és adja hozzá a kiterjesztést a névhez (például myfile.py vagy myfile.txt)  
 
@@ -65,7 +65,7 @@ A munkaterület tartalmaz egy jegyzetfüzeteket tartalmazó **minta** mappát, a
 
 Példaként tekintse [meg az első ml-kísérlet létrehozását ismertető oktatóanyagot](tutorial-1st-experiment-sdk-setup.md#azure).
 
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Fájlok használata a git és a saját fájlok verziójában
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Fájlok használata a git és a saját fájlok verziójában
 
 Az összes git-műveletet egy terminál-ablak használatával érheti el. A rendszer az összes git-fájlt és-mappát a munkaterület fájlrendszerében fogja tárolni.
 
@@ -82,7 +82,7 @@ A terminál elérése:
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Terminál megnyitása":::
 
-1. Ha nem látja az ikont, válassza a **...** lehetőséget a számítási cél jobb oldalán, majd válassza a **terminál megnyitása** lehetőséget.
+1. Ha nem látja az ikont, válassza a **...** lehetőséget a számítási cél jobb oldalán, majd válassza a **terminál megnyitása**lehetőséget.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminál megnyitása a következőből:...":::
 
@@ -110,6 +110,22 @@ Az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) egy k�
 
 A kód beírásakor használja a CTRL + SZÓKÖZ billentyűkombinációt az IntelliSense aktiválásához.
 
+### <a name="clean-your-notebook-preview"></a>A jegyzetfüzet tisztítása (előzetes verzió)
+
+> [!IMPORTANT]
+> A Gathering szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A jegyzetfüzetek létrehozása során általában az adatfeltáráshoz vagy a hibakereséshez használt cellákkal végződik. Az *adatgyűjtés* funkció segítségével tiszta jegyzetfüzetet hozhat létre a külső cellák nélkül.
+
+1. Futtassa az összes jegyzetfüzet-cellát.
+1. Válassza ki azt a cellát, amely tartalmazza az új jegyzetfüzet futtatásához használni kívánt kódot. Például egy kísérletet elküldő kód, vagy esetleg a modellt regisztráló kód.
+1. Válassza a cella eszköztárán megjelenő **összegyűjtési** ikont.
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Képernyőfelvétel: a gyűjtés ikon kiválasztása":::
+1. Adja meg az új "összegyűjtött" jegyzetfüzet nevét.  
+
+Az új jegyzetfüzet csak programkódot tartalmaz, és az összes cellának ugyanazokat az eredményeket kell megadnia, mint a begyűjtéshez kiválasztott cella.
+
 ### <a name="save-and-checkpoint-a-notebook"></a>Jegyzetfüzet mentése és ellenőrzőpont
 
 A Azure Machine Learning egy *ipynb*-fájl létrehozásakor létrehoz egy ellenőrzőpont-fájlt   .
@@ -125,7 +141,7 @@ Válassza az **ellenőrzőpontok** lehetőséget a notebook menüben egy elnevez
 
 ### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
 
-|Billentyűzet  |Művelet  |
+|Billentyűzet  |Műveletek  |
 |---------|---------|
 |SHIFT + ENTER     |  Cella futtatása       |
 |CTRL + SZÓKÖZ | IntelliSense aktiválása |
@@ -141,7 +157,7 @@ A **mintákat** tartalmazó jegyzetfüzetek *nem* törölhetők.  Ezek a jegyzet
 A következő módokon *törölheti* a **felhasználói fájlok** jegyzetfüzeteit:
 
 * A Studióban válassza a **...** elemet a mappa vagy fájl végén.  Győződjön meg arról, hogy támogatott böngészőt használ (Microsoft Edge, Chrome vagy Firefox).
-* Bármely jegyzetfüzet eszköztárból válassza a [**terminál megnyitása**](#terminal) lehetőséget a számítási példányhoz tartozó terminál ablak eléréséhez.
+* Bármely jegyzetfüzet eszköztárból válassza a [**terminál megnyitása**](#terminal)  lehetőséget a számítási példányhoz tartozó terminál ablak eléréséhez.
 * A Jupyter vagy a JupyterLab eszközzel.
 
 ## <a name="run-an-experiment"></a>Kísérlet futtatása
@@ -150,14 +166,14 @@ Egy kísérlet jegyzetfüzetből való futtatásához először egy futó [szám
 
 1. Válassza ki **+** a jegyzetfüzet eszköztárát. 
 2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét**. 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. A számítási példány automatikusan csatlakozik a jegyzetfüzethez, és most már futtathatja a cellákat.
 
 Csak az Ön által létrehozott számítási példányok láthatók és használhatók.  A **felhasználói fájlokat** a rendszer külön tárolja a virtuális gépen, és a munkaterület összes számítási példánya között meg van osztva.
 
 ### <a name="view-logs-and-output"></a>Naplók és kimenet megtekintése
 
-A Futtatás és a naplók előrehaladásának megtekintéséhez [Jegyzetfüzet-minialkalmazások](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) használhatók. A widgetek aszinkron módon frissülnek, és frissítéseket biztosítanak, amíg befejeződik a képzés. A Azure Machine Learning widgeteket a Jupyter és a JupterLab is támogatja.
+A Futtatás és a naplók előrehaladásának megtekintéséhez [Jegyzetfüzet-minialkalmazások](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) használhatók. A widgetek aszinkron módon frissülnek, és frissítéseket biztosítanak, amíg befejeződik a képzés. A Azure Machine Learning widgeteket a Jupyter és a JupterLab is támogatja.
 
 ## <a name="change-the-notebook-environment"></a>A notebook-környezet módosítása
 
@@ -165,14 +181,14 @@ A notebook eszköztár lehetővé teszi, hogy megváltoztassa a környezetet, am
 
 Ezek a műveletek nem változtatják meg a jegyzetfüzet állapotát vagy a jegyzetfüzetben lévő változók értékeit:
 
-|Művelet  |Eredmény  |
+|Műveletek  |Eredmény  |
 |---------|---------| --------|
 |A kernel leállítása     |  Leállítja a futó cellákat. A cella futtatása automatikusan újraindítja a rendszermagot. |
 |Navigáljon egy másik munkaterület szakaszhoz     |     A futó cellák le vannak állítva. |
 
 Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a jegyzetfüzetben lévő összes változót visszaállítják.
 
-|Művelet  |Eredmény  |
+|Műveletek  |Eredmény  |
 |---------|---------| --------|
 | A kernel módosítása | A jegyzetfüzet új kernelt használ |
 | Számítás váltása    |     A jegyzetfüzet automatikusan az új számítást használja. |
@@ -208,7 +224,7 @@ A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wi
 
 A **számítási** legördülő lista melletti kijelző megjeleníti az állapotát.  Az állapot a legördülő menüben is látható.  
 
-|Szín (Color) |Számítási állapot |
+|Color |Számítási állapot |
 |---------|---------| 
 | Zöld | A számítás fut |
 | Piros |A számítás nem sikerült | 
@@ -218,7 +234,7 @@ A **számítási** legördülő lista melletti kijelző megjeleníti az állapot
 
 A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
-|Szín (Color) |Kernel állapota |
+|Color |Kernel állapota |
 |---------|---------|
 |  Zöld |Kernel csatlakoztatva, tétlen, foglalt|
 |  Szürke |A kernel nincs csatlakoztatva |

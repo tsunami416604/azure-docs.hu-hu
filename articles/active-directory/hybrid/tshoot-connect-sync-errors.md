@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca2600101c302cee1da4d22a3f098436ecb71e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bd779c26cd523bbf33fa1be6c87f21b4415c152
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355896"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016418"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Hibaelhárítási hibák a szinkronizálás során
 Hibák merülhetnek fel, ha a rendszer a Windows Server Active Directory (AD DS) identitási adatait szinkronizálja a Azure Active Directory (Azure AD) szolgáltatásba. Ez a cikk áttekintést nyújt a különböző típusú szinkronizálási hibákról, a hibákat okozó lehetséges forgatókönyvekről és a hibák kijavításának lehetséges módjairól. Ez a cikk a gyakori hibákat tartalmazza, és nem feltétlenül fedi le az összes lehetséges hibát.
@@ -75,19 +75,19 @@ Azure Active Directory séma nem teszi lehetővé két vagy több objektum szám
 2. Bob Smith **userPrincipalName** a **bobot \@ contoso.com**van beállítva.
 3. a **"abcdefghijklmnopqrstuv = ="** a Azure ad Connect által kiszámított **SourceAnchor** , amelyet Bob Smith **ObjectGUID** használ a helyszíni Active Directory, amely a Azure Active Directoryban található Bob Smith **immutableId** .
 4. Bob a következő értékeket is tartalmazta a **ProxyAddresses** attribútumhoz:
-   * SMTP-bobs@contoso.com
-   * SMTP-bob.smith@contoso.com
+   * SMTP- bobs@contoso.com
+   * SMTP- bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
 5. Egy új felhasználó, **Bob Taylor**, hozzá lesz adva a helyszíni Active Directoryhoz.
 6. Bob Taylor **userPrincipalName** **bobt \@ contoso.com**van beállítva.
 7. a **"abcdefghijkl0123456789 = ="** "a Azure ad Connect által kiszámított **SourceAnchor** , amelyet Bob Taylor **ObjectGUID** használ a helyszíni Active Directory. Bob Taylor objektuma még nem lett szinkronizálva Azure Active Directory.
 8. A Bob Taylor a következő értékeket tartalmazta a proxyAddresses attribútumhoz:
-   * SMTP-bobt@contoso.com
-   * SMTP-bob.taylor@contoso.com
+   * SMTP- bobt@contoso.com
+   * SMTP- bob.taylor@contoso.com
    * **SMTP: Bob \@ contoso.com**
 9. A szinkronizálás során Azure AD Connect felismeri a Bob Taylor hozzáadását a helyszíni Active Directory, és megkéri az Azure AD-t, hogy végezze el ugyanezt a módosítást.
 10. Az Azure AD először a rögzített egyezést fogja végrehajtani. Ez azt eredményezi, hogy megkeresi, hogy van-e olyan objektum, amelynek immutableId egyenlő a "abcdefghijkl0123456789 = =" értékkel. A rögzített egyezés sikertelen lesz, mert az Azure AD-ben nincs más objektum a immutableId.
-11. Az Azure AD ezután megkísérli a Soft-Match Bob Taylor-egyeztetést. Ez azt eredményezi, hogy megkeresi, hogy van-e olyan objektum, amely proxyAddresses egyenlő a három értékkel, beleértve az SMTP-t:bob@contoso.com
+11. Az Azure AD ezután megkísérli a Soft-Match Bob Taylor-egyeztetést. Ez azt eredményezi, hogy megkeresi, hogy van-e olyan objektum, amely proxyAddresses egyenlő a három értékkel, beleértve az SMTP-t: bob@contoso.com
 12. Az Azure AD megkeresi a Bob Smith objektumát, hogy megfeleljen a Soft-Match feltételnek. Ez az objektum azonban a immutableId = "abcdefghijklmnopqrstuv = =" értékkel rendelkezik. Ez azt jelzi, hogy ez az objektum a helyszíni Active Directory egy másik objektumáról lett szinkronizálva. Az Azure AD ezért nem képes az ilyen objektumok **InvalidSoftMatch** , és egy szinkronizálási hibát eredményez.
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>InvalidSoftMatch-hiba elhárítása
@@ -106,17 +106,17 @@ A szinkronizálási hibajelentések Azure AD Connect Healthon belüli szinkroniz
 >
 
 #### <a name="related-articles"></a>Kapcsolódó cikkek
-* [Ismétlődő vagy érvénytelen attribútumok akadályozzák meg a címtár-szinkronizálást az Office 365-ben](https://support.microsoft.com/kb/2647098)
+* [Ismétlődő vagy érvénytelen attribútumok megakadályozzák a címtár-szinkronizálást Microsoft 365](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
 #### <a name="description"></a>Description
 Ha az Azure AD két objektumra kísérli meg a műveletet, lehetséges, hogy a különböző "objektumtípus" (például a felhasználó, a csoport, a kapcsolattartó stb.) két objektumának ugyanazokkal az értékekkel kell rendelkeznie a puha egyezés végrehajtásához használt attribútumoknál. Mivel az attribútumok ismétlődése nem engedélyezett az Azure AD-ben, a művelet "ObjectTypeMismatch" szinkronizálási hibát eredményezhet.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Példa ObjectTypeMismatch-hiba esetére
-* Az Office 365-ben létrejön egy levelezésre alkalmas biztonsági csoport. A rendszergazda új felhasználót vagy kapcsolattartót ad hozzá a helyszíni AD-ben (ez még nincs szinkronizálva az Azure AD-vel), és ugyanazzal az értékkel rendelkezik a ProxyAddresses attribútumhoz, mint az Office 365-csoport.
+* A rendszer létrehoz egy levelezésre alkalmas biztonsági csoportot Microsoft 365. A rendszergazda új felhasználót vagy kapcsolattartót ad hozzá a helyszíni AD-ben (ez még nincs szinkronizálva az Azure AD-vel), és ugyanazzal az értékkel rendelkezik a ProxyAddresses attribútumhoz, mint a Microsoft 365 csoport.
 
 #### <a name="example-case"></a>Példa esetre
-1. A rendszergazda létrehoz egy új, levelezési szolgáltatást engedélyező biztonsági csoportot az Office 365-ben az adózási részleg számára, és e-mail-címet biztosít tax@contoso.com . Ez a csoport a ProxyAddresses attribútum értékét rendeli hozzá az **SMTP: tax \@ contoso.com**
+1. A rendszergazda létrehoz egy új, e-mailek használatára képes biztonsági csoportot az adórendszer Microsoft 365jában, és e-mail-címet biztosít tax@contoso.com . Ez a csoport a ProxyAddresses attribútum értékét rendeli hozzá az **SMTP: tax \@ contoso.com**
 2. Egy új felhasználó csatlakozik a Contoso.com-hez, és létrehoz egy fiókot a felhasználó számára a proxyAddress SMTP-ként **: tax \@ contoso.com**
 3. Ha Azure AD Connect szinkronizálja az új felhasználói fiókot, az "ObjectTypeMismatch" hibaüzenetet kapja.
 
@@ -145,12 +145,12 @@ Ha Azure AD Connect új objektum hozzáadását vagy egy meglévő objektum fris
 1. **Bob Smith** egy szinkronizált felhasználó Azure Active Directory a helyszíni Active Directory contoso.com
 2. Bob Smith **userPrincipalName** a helyszínen **bobot \@ contoso.com**van beállítva.
 3. Bob a következő értékeket is tartalmazta a **ProxyAddresses** attribútumhoz:
-   * SMTP-bobs@contoso.com
-   * SMTP-bob.smith@contoso.com
+   * SMTP- bobs@contoso.com
+   * SMTP- bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
 4. Egy új felhasználó, **Bob Taylor**, hozzá lesz adva a helyszíni Active Directoryhoz.
 5. Bob Taylor **userPrincipalName** **bobt \@ contoso.com**van beállítva.
-6. **Bob Taylor** a következő értékekkel rendelkezik a **ProxyAddresses** attribútumhoz: i. SMTP: bobt@contoso.com II. SMTP-bob.taylor@contoso.com
+6. **Bob Taylor** a következő értékekkel rendelkezik a **ProxyAddresses** attribútumhoz: i. SMTP: bobt@contoso.com II. SMTP- bob.taylor@contoso.com
 7. A Bob Taylor objektuma sikeresen szinkronizálva van az Azure AD-vel.
 8. A rendszergazda úgy döntött, hogy Bob Taylor **ProxyAddresses** attribútumát a következő értékkel frissítette: i. **SMTP: Bob \@ contoso.com**
 9. Az Azure AD megpróbálja frissíteni Bob Taylor objektumát az Azure AD-ben a fenti értékkel, de a művelet sikertelen lesz, mivel a ProxyAddresses érték már hozzá van rendelve Bob Smith-hez, ami "AttributeValueMustBeUnique" hibát eredményez.
@@ -164,7 +164,7 @@ A AttributeValueMustBeUnique hibájának leggyakoribb oka, hogy a \( \) ProxyAdd
 4. Ha a helyszíni AD-ben végzett módosítást hajtotta végre, Azure AD Connect szinkronizálni a hiba változását, hogy kijavítva legyen.
 
 #### <a name="related-articles"></a>Kapcsolódó cikkek
--[Ismétlődő vagy érvénytelen attribútumok akadályozzák meg a címtár-szinkronizálást az Office 365-ben](https://support.microsoft.com/kb/2647098)
+-[Ismétlődő vagy érvénytelen attribútumok megakadályozzák a címtár-szinkronizálást Microsoft 365](https://support.microsoft.com/kb/2647098)
 
 ## <a name="data-validation-failures"></a>Adatérvényesítési hibák
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
@@ -179,7 +179,7 @@ b. A UserPrincipalName attribútum nem követi a szükséges formátumot.
 a. Győződjön meg arról, hogy a userPrincipalName attribútumnak támogatott karakterek és a szükséges formátuma van.
 
 #### <a name="related-articles"></a>Kapcsolódó cikkek
-* [Felkészülés a felhasználók címtár-szinkronizálással való kiépítésére az Office 365-be](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+* [Felkészülés a felhasználók címtár-szinkronizálással való kiépítésére Microsoft 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>Description
@@ -189,15 +189,15 @@ Ez az eset **"FederatedDomainChangeError"** szinkronizálási hibát eredményez
 Szinkronizált felhasználó esetén a UserPrincipalName utótagot az egyik összevont tartományból egy másik összevont tartományra módosították a helyszínen. A *userPrincipalName = bob \@ contoso.com* például a következőre változott: *userPrincipalName = Bob \@ fabrikam.com*.
 
 #### <a name="example"></a>Példa
-1. Bob Smith, a Contoso.com fiókja új felhasználóként lesz hozzáadva Active Directory a UserPrincipalNamebob@contoso.com
-2. Bob a Fabrikam.com nevű másik Contoso.com kerül át, és a UserPrincipalName a következőre módosultbob@fabrikam.com
+1. Bob Smith, a Contoso.com fiókja új felhasználóként lesz hozzáadva Active Directory a UserPrincipalName bob@contoso.com
+2. Bob a Fabrikam.com nevű másik Contoso.com kerül át, és a UserPrincipalName a következőre módosult bob@fabrikam.com
 3. A contoso.com és a fabrikam.com tartományok összevont tartományok Azure Active Directorykal.
 4. Bob userPrincipalName nem frissül, és "FederatedDomainChangeError" szinkronizálási hibát eredményez.
 
 #### <a name="how-to-fix"></a>A hiba kijavítása
 Ha a felhasználó UserPrincipalName-utótagjának frissítése bob@**contoso.com** -ből Bob \@ **fabrikam.com**-ra történt, ahol a **contoso.com** és a **fabrikam.com** is **összevont tartományok**, akkor a szinkronizálási hiba elhárításához kövesse az alábbi lépéseket.
 
-1. Frissítse a felhasználó UserPrincipalName az Azure AD-ból bob@contoso.com a verzióra bob@contoso.onmicrosoft.com . Az Azure AD PowerShell-modullal a következő PowerShell-parancs használható:`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+1. Frissítse a felhasználó UserPrincipalName az Azure AD-ból bob@contoso.com a verzióra bob@contoso.onmicrosoft.com . Az Azure AD PowerShell-modullal a következő PowerShell-parancs használható: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. A szinkronizálás megkezdéséhez engedélyezze a következő szinkronizálási ciklust. Az idő szinkronizálása sikeres lesz, és a UserPrincipalName a várt módon frissíti a Bob-t bob@fabrikam.com .
 
 #### <a name="related-articles"></a>Kapcsolódó cikkek
@@ -246,5 +246,5 @@ A probléma megoldásához tegye a következőket:
 >A rendszergazdai szerepkört a meglévő felhasználói objektumhoz is hozzárendelheti, miután a helyi felhasználói objektum és az Azure AD felhasználói objektum közötti lágy egyezés befejeződött.
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Active Directory objektumok megkeresése Active Directory felügyeleti központ](https://technet.microsoft.com/library/dd560661.aspx)
-* [Azure Active Directory lekérdezése egy objektumhoz Azure Active Directory PowerShell használatával](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+* [Active Directory objektumok megkeresése Active Directory felügyeleti központ](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560661(v=ws.10))
+* [Azure Active Directory lekérdezése egy objektumhoz Azure Active Directory PowerShell használatával](/previous-versions/azure/jj151815(v=azure.100))

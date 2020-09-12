@@ -2,18 +2,18 @@
 title: Always-On VPN felhasználói alagút konfigurálása
 titleSuffix: Azure Virtual WAN
 description: Ez a cikk bemutatja, hogyan konfigurálhat egy always on VPN felhasználói alagutat a virtuális WAN-hoz
-services: vpn-gateway
+services: virtual-wan
 author: cherylmc
-ms.service: vpn-gateway
+ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 03f67053a5a199c8c64efb05d2b6a65ad6707650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14790d4be91ffd0463436b6ca1d5c8794c102697
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564043"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016351"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Always On VPN felhasználói alagút konfigurálása a virtuális WAN-hoz
 
@@ -44,6 +44,6 @@ A profilok eltávolításához kövesse az alábbi lépéseket:
 
    ![Felesleges tartalmak törlése](./media/howto-always-on-user-tunnel/disconnect.jpg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.

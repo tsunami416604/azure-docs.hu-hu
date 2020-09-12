@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144838"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651013"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -23,7 +23,7 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
 
 + [Pythonhoz készült Azure Machine learning SDK](#python-sdk): a Python SDK számos módszert kínál a különböző képességekkel rendelkező modellek betanításához.
 
-    | Betanítási módszer | Leírás |
+    | Betanítási módszer | Description |
     | ----- | ----- |
     | [Konfiguráció futtatása](#run-configuration) | A **modellek betanításának általános módja** egy képzési parancsfájl használata és a konfiguráció futtatása. A futtatási konfiguráció biztosítja a modell betanításához használt képzési környezet konfigurálásához szükséges információkat. Elvégezheti a futtatási konfigurációt, a betanítási szkriptet és a számítási célt (a képzési környezetet) és a betanítási feladatot. |
     | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását**. Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
@@ -42,13 +42,13 @@ A képzési módszerek mindegyike különböző típusú számítási erőforrá
 
 A Pythonhoz készült Azure Machine Learning SDK lehetővé teszi a gépi tanulási munkafolyamatok létrehozását és futtatását Azure Machine Learning használatával. Interaktív Python-munkamenetből, Jupyter-jegyzetfüzetből, Visual Studio Code-ból vagy más IDE-ből is használhatja a szolgáltatást.
 
-* [Mi a Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Mi a Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [Az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Fejlesztési környezet konfigurálása Azure Machine Learninghoz](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Konfiguráció futtatása
 
-Azure Machine Learning használatával általános betanítási feladatok határozhatók meg a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py). A rendszer ezt követően a futtatási konfigurációt, valamint a betanítási parancsfájl (oka) t használja a modell számítási célra való betanításához.
+Azure Machine Learning használatával általános betanítási feladatok határozhatók meg a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true). A rendszer ezt követően a futtatási konfigurációt, valamint a betanítási parancsfájl (oka) t használja a modell számítási célra való betanításához.
 
 A futtatási konfigurációt a helyi számítógép esetében is elindíthatja, majd igény szerint átválthat egy felhőalapú számítási célra. A számítási cél módosításakor csak a használt futtatási konfigurációt kell módosítania. A Futtatás a betanítási feladatról is naplóz adatokat, például a bemeneteket, a kimeneteket és a naplókat.
 

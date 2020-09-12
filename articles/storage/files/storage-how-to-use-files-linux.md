@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053167"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004782"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha létrehoz egy bejegyzést a alkalmazásban `/etc/fstab` .
@@ -69,7 +69,7 @@ uname -r
 
 * **Az Azure parancssori felület (CLI) legújabb verziója.** Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az operációs rendszer kiválasztása. Ha inkább a Azure PowerShell modult szeretné használni a PowerShell 6 +-ban, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
 
-* **Győződjön meg arról**, hogy a 445-es port nyitva van: az SMB a 445-es TCP-porton keresztül kommunikál, és ellenőrizze, hogy a tűzfal nem blokkolja-e az ügyfélszámítógép TCP-445 portjait.  Cserélje le **<az-erőforráscsoport>** és **<a storage-fiókot>**
+* **Győződjön meg arról**, hogy a 445-es port nyitva van: az SMB a 445-es TCP-porton keresztül kommunikál, és ellenőrizze, hogy a tűzfal nem blokkolja-e az ügyfélszámítógép TCP-445 portjait.  Cserélje le `<your-resource-group>` , `<your-storage-account>` majd futtassa a következő parancsfájlt:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -98,7 +98,7 @@ Ha egy Azure-fájlmegosztást Linux-disztribúcióval szeretne használni, létr
 
 Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja az Azure-fájlmegosztást.
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Igény szerinti Azure-fájlmegosztás csatlakoztatása a következővel:`mount`
+### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Igény szerinti Azure-fájlmegosztás csatlakoztatása a következővel: `mount`
 1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: cserélje le `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkkal a környezetéhez:
 
     ```bash
@@ -114,6 +114,7 @@ Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja a
 1. Az **Azure-fájlmegosztás csatlakoztatásához használja a mount parancsot**. Az alábbi példában a helyi Linux-fájl és a mappa engedélyei alapértelmezett 0755, ami azt jelenti, hogy a tulajdonos (fájl/könyvtár Linux-tulajdonos) olvasási, írási és végrehajtási jogosultsággal rendelkezik, olvasás és végrehajtás a tulajdonos csoportban lévő felhasználók számára, valamint olvasás és végrehajtás mások számára a rendszeren. A `uid` és a `gid` csatlakoztatási lehetőségekkel beállíthatja a csatlakoztatás felhasználói azonosítóját és a csoport azonosítóját. `dir_mode`A és a használatával is igény `file_mode` szerint állíthatja be az egyéni engedélyeket. További információ az engedélyek beállításáról: [UNIX numerikus jelölés](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) a wikipedia-ben. 
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -133,7 +134,7 @@ Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja a
 
 Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` a használatával leválaszthatja a megosztást.
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Állandó csatlakozási pont létrehozása az Azure-fájlmegosztás számára a következővel:`/etc/fstab`
+### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Állandó csatlakozási pont létrehozása az Azure-fájlmegosztás számára a következővel: `/etc/fstab`
 1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
 
     ```bash
@@ -176,6 +177,7 @@ Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` 
 1. A **következő parancs használatával fűzze hozzá a következő sort `/etc/fstab` **az alkalmazáshoz: az alábbi példában a helyi Linux-fájl és a mappa engedélyei alapértelmezett 0755, ami azt jelenti, hogy olvasás, írás és végrehajtás a tulajdonos számára (a fájl/könyvtár Linux tulajdonosa alapján), olvasás és végrehajtás a tulajdonos csoportba tartozó felhasználók számára, valamint olvasás és végrehajtás mások számára a rendszeren. A `uid` és a `gid` csatlakoztatási lehetőségekkel beállíthatja a csatlakoztatás felhasználói azonosítóját és a csoport azonosítóját. `dir_mode`A és a használatával is igény `file_mode` szerint állíthatja be az egyéni engedélyeket. További információ az engedélyek beállításáról: [UNIX numerikus jelölés](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) a wikipedia-ben.
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -248,22 +250,22 @@ A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amely `cifs`
 
 | Disztribúció | Az SMB 1 letiltása |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | Nem |
-| Ubuntu 18.04 | Igen |
-| Ubuntu 19.04 + | Igen |
-| Debian 8-9 | Nem |
-| Debian 10 + | Igen |
-| Fedora 29 + | Igen |
-| CentOS 7 | Nem | 
-| CentOS 8 + | Igen |
-| Red Hat Enterprise Linux 6. x-7. x | Nem |
-| Red Hat Enterprise Linux 8 + | Igen |
-| openSUSE LEAP 15,0 | Nem |
-| openSUSE ugrás 15.1 + | Igen |
-| openSUSE Tumbleweed | Igen |
-| SUSE Linux Enterprise 11. x-12. x | Nem |
-| SUSE Linux Enterprise 15 | Nem |
-| SUSE Linux Enterprise 15,1 | Nem |
+| Ubuntu 14.04 – 16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE LEAP 15,0 | No |
+| openSUSE ugrás 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15,1 | No |
 
 A következő parancs használatával megtekintheti, hogy a Linux-disztribúciója támogatja-e a `disable_legacy_dialects` modul paraméterét.
 
@@ -320,7 +322,7 @@ sudo modprobe cifs
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
 * [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

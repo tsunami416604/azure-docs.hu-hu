@@ -1,10 +1,10 @@
 ---
 title: Adatforrások összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók az adatforrások, például a Microsoft Threat Protection, a Microsoft 365 és az Office 365, az Azure AD, az ATP és a Cloud App Security az Azure Sentinelhez.
+description: Ismerje meg, hogyan csatlakoztathatók az olyan adatforrások, mint például a Microsoft 365 Defender (korábbi nevén Microsoft Threat Protection), a Microsoft 365 és az Office 365, az Azure AD, az ATP és az Azure Sentinel Cloud App Security.
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,32 +13,31 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555513"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659636"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
-Ha engedélyezte az Azure Sentinelt, először össze kell kapcsolni az adatforrásokat. Az Azure Sentinel számos összekötőt kínál a Microsoft-megoldások számára, és lehetővé teszi a valós idejű integrációt, beleértve a Microsoft Threat Protection-megoldásokat, Microsoft 365 forrásait (beleértve az Office 365-et), az Azure AD-t, az Azure ATP-t, a Microsoft Cloud App Security és egyebeket. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. A Common Event Format (CEF), a syslog vagy a REST-API használatával is összekapcsolhatók az adatforrások az Azure Sentinel szolgáltatással.
+Ha engedélyezte az Azure Sentinelt, először össze kell kapcsolni az adatforrásokat. Az Azure Sentinel számos összekötőt tartalmaz a Microsoft-megoldások számára, és lehetővé teszi a valós idejű integrációt, beleértve a Microsoft 365 Defender (korábban Microsoft Threat Protection) megoldásokat, Microsoft 365 forrásokat (beleértve az Office 365-et), az Azure AD-t, a Microsoft Defender for Identity (korábbi nevén Azure ATP), Microsoft Cloud App Security és sok más. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. A Common Event Format (CEF), a syslog vagy a REST-API használatával is összekapcsolhatók az adatforrások az Azure Sentinel szolgáltatással.
 
 1. A menüben válassza az **adatösszekötők**lehetőséget. Ezen a lapon megtekintheti az Azure Sentinel által biztosított összekötők teljes listáját, valamint azok állapotát. Válassza ki a csatlakoztatni kívánt összekötőt, és válassza az **összekötő lap megnyitása**lehetőséget. 
 
-   ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
+   ![Adatösszekötők katalógusa](./media/collect-data/collect-data-page.png)
 
 1. Az adott összekötő lapon győződjön meg arról, hogy teljesítette az összes előfeltételt, és kövesse az utasításokat az adat Azure Sentinelhez való csatlakozásához. Eltarthat egy ideig, amíg a naplók megkezdik a szinkronizálást az Azure Sentinel használatával. A csatlakozást követően megjelenik a **kapott** adatmennyiség és az adattípusok kapcsolati állapota.
 
-   ![Gyűjtők összekapcsolása](./media/collect-data/opened-connector-page.png)
+   ![Adatösszekötők konfigurálása](./media/collect-data/opened-connector-page.png)
   
 1. A **következő lépések** lapon lekérheti, hogy az Azure Sentinel milyen adattípust biztosít a beépített tartalomhoz.
 
-   ![Adatgyűjtők](./media/collect-data/data-insights.png)
+   ![Az összekötők következő lépései](./media/collect-data/data-insights.png)
  
-
 ## <a name="data-connection-methods"></a>Adatkapcsolati módszerek
 
 Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
@@ -48,13 +47,13 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     - [Azure-tevékenység](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – naplózási naplók és bejelentkezési naplók
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Komplex veszélyforrások elleni védelem](connect-azure-atp.md)
+    - [Microsoft Defender for Identity](connect-azure-atp.md) (korábbi nevén Azure Advanced Threat Protection)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
+    - [Azure Defender](connect-azure-security-center.md) (korábban Azure Security Center)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Tartományi névkiszolgáló](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (korábban Microsoft Defender komplex veszélyforrások elleni védelem)
     - [Microsoft webalkalmazási tűzfal](connect-microsoft-waf.md)
     - [Windows tűzfal](connect-windows-firewall.md)
     - [A Windows biztonsági eseményei](connect-windows-security-events.md)
@@ -135,8 +134,8 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | WireData | [Vezetékes adatkapcsolatok](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [A Windows tűzfal összekapcsolása](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Az Azure AD Identity Protection csatlakoztatása](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Az Azure ATP csatlakoztatása](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [Az Azure Security Center csatlakoztatása](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [A Microsoft Defender for Identity](connect-azure-atp.md) (korábban Azure ATP) összekötése | &#10003; | |
+| ASC SecurityAlert  | Az [Azure Defender összekötése](connect-azure-security-center.md) (korábban Azure Security Center)  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security összekötése](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/platform/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
@@ -147,7 +146,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Barracuda_CL | [A Barracuda csatlakoztatása](connect-barracuda.md) | &#10003; | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

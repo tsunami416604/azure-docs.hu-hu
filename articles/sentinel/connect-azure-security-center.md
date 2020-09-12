@@ -1,44 +1,44 @@
 ---
-title: Azure Security Center-adatkapcsolatok összekötése az Azure Sentinel szolgáltatással
-description: Ismerje meg, hogyan csatlakoztathatók a riasztások a Azure Security Center (ASC) standard csomagból, és hogyan továbbíthatók az Azure Sentinelbe.
+title: Azure Defender-adatkapcsolatok az Azure Sentinelhez
+description: Ismerje meg, hogyan csatlakoztathatók az Azure Defender-riasztások Azure Security Centerről, és hogyan továbbíthatja őket az Azure Sentinel szolgáltatásba.
 author: yelevin
 manager: rkarlin
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.topic: conceptual
-ms.date: 09/23/2019
+ms.topic: how-to
+ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 2fc7744600a9652ad43fd0aae8d886dc94acd58f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559159"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659654"
 ---
-# <a name="connect-data-from-azure-security-center-asc"></a>Adatok összekötése Azure Security Centerról (ASC)
+# <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Defender-riasztási adatok összekötése Azure Security Center
 
-Az Azure Sentinel lehetővé teszi a riasztások összekapcsolását [Azure Security Center](../security-center/security-center-intro.md) és az Azure sentinelbe való továbbítását. 
+Az Azure Defender riasztási összekötő használatával betöltheti az Azure Defender-riasztásokat a [Azure Security Centerból](../security-center/security-center-intro.md) , és továbbíthatja őket az Azure sentinelbe. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A riasztások Azure Security Centerból való exportálásához a továbbított naplók előfizetésében a biztonsági olvasó szerepkörrel kell rendelkeznie.
+- A felhasználónak rendelkeznie kell a biztonsági olvasó szerepkörrel a továbbított naplók előfizetésében.
 
-- Az előfizetésben az [Azure Security Center standard szintű](../security-center/security-center-pricing.md) csomagnak kell futnia. Ha nem, [frissítse az előfizetést a standard szintre](https://azure.microsoft.com/pricing/details/security-center/).
+- Engedélyeznie kell az Azure Defender-t Azure Security Centeron belül. (A standard szint már nem létezik, és már nem a licencre vonatkozó követelmény.)
 
-## <a name="connect-to-azure-security-center"></a>Kapcsolódás Azure Security Centerhoz
+## <a name="connect-to-azure-defender"></a>Kapcsolódás az Azure Defenderhez
 
 1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget a navigációs menüből.
 
-1. Az adatösszekötők katalógusában válassza a **Azure Security Center**lehetőséget, majd kattintson az **összekötő lap megnyitása** gombra.
+1. Az adatösszekötők katalógusában válassza az **Azure Defender-riasztások az ASC-ből** lehetőséget (továbbra is meghívható Azure Security Center), majd kattintson az **összekötő megnyitása** gombra.
 
-1. A **konfiguráció**alatt kattintson a **Kapcsolódás** elemre minden olyan előfizetés mellett, amelynek a riasztásait továbbítani szeretné az Azure Sentinel szolgáltatásba. A csatlakozás gomb csak akkor lesz elérhető, ha rendelkezik a szükséges engedélyekkel és az ASC standard szintű előfizetéssel.
+1. A **konfiguráció**alatt kattintson a **Kapcsolódás** elemre minden olyan előfizetés mellett, amelynek a riasztásait továbbítani szeretné az Azure Sentinel szolgáltatásba. A csatlakozás gomb csak akkor lesz elérhető, ha rendelkezik a szükséges engedélyekkel.
 
-1. Kiválaszthatja, hogy a Azure Security Center riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása**területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés**területen módosíthatja az **aktív szabályok** lapon.
+1. Kiválaszthatja, hogy az Azure Defender riasztásai automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása**területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés**területen módosíthatja az  **aktív szabályok** lapon.
 
-1. Ha a Log Analytics vonatkozó sémát szeretné használni a Azure Security Center riasztásokhoz, keresse meg a **SecurityAlert**.
+1. Ha az Azure Defender-riasztások esetében a Log Analytics vonatkozó sémát szeretné használni, keresse meg a **SecurityAlert**.
 
-## <a name="next-steps"></a>További lépések
-Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Security Center az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>Következő lépések
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az Azure Defender az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

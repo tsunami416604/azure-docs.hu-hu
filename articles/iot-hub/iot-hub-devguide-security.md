@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-javascript
 - devx-track-csharp
-ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e1de8b5c35c2f62c65b2bdd4751df86127010ad
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017685"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015126"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -361,7 +361,12 @@ A támogatott tanúsítványok a következők:
 
 Egy eszköz X. 509 tanúsítványt vagy biztonsági jogkivonatot használhat a hitelesítéshez, de mindkettőt nem.
 
-A hitelesítésszolgáltatóval történő hitelesítéssel kapcsolatos további információkért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](iot-hub-x509ca-overview.md).
+Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítést használó eszközök esetében a következő funkciók nem támogatottak:
+
+* HTTPS, MQTT over WebSockets, és AMQP over WebSockets protokollok.
+* Fájlfeltöltés (minden protokoll).
+
+A hitelesítésszolgáltatóval történő hitelesítéssel kapcsolatos további információkért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](iot-hub-x509ca-overview.md). További információ az IoT hub-beli hitelesítésszolgáltató feltöltéséről és ellenőrzéséről: az [X. 509 Biztonság beállítása az Azure IoT hub-ban](iot-hub-security-x509-get-started.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>X. 509 tanúsítvány regisztrálása egy eszközhöz
 

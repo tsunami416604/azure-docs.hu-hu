@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355913"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016265"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibáinak megoldása
 
@@ -29,7 +29,7 @@ Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmente
 - Néhány esetben a zökkenőmentes SSO engedélyezése akár 30 percet is igénybe vehet.
 - Ha letiltja és újból engedélyezi a zökkenőmentes egyszeri bejelentkezést a bérlőn, a felhasználók nem kapják meg az egyszeri bejelentkezést, amíg a gyorsítótárazott Kerberos-jegyek (általában 10 órán át érvényesek) lejárnak.
 - Ha a zökkenőmentes egyszeri bejelentkezés sikeres, a felhasználónak nincs lehetősége kiválasztani a **bejelentkezve maradni**lehetőséget. Ennek a viselkedésnek köszönhetően a [SharePoint és a OneDrive leképezési forgatókönyvek](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nem működnek.
-- Az Office 365 Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamattal támogatottak a 16.0.8730. xxxx és újabb verziók használatával. Más verziók nem támogatottak; ezeken a verziókon a felhasználók bejelentkeznek a felhasználónevek, de a jelszavak nem. A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
+- A 16.0.8730. xxxx és újabb verziókkal rendelkező Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamat használatával támogatottak. Microsoft 365 Más verziók nem támogatottak; ezeken a verziókon a felhasználók bejelentkeznek a felhasználónevek, de a jelszavak nem. A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox privát böngészési módjában.
 - A zökkenőmentes egyszeri bejelentkezés nem működik az Internet Explorerben, ha a fokozottan védett mód be van kapcsolva.
 - A zökkenőmentes egyszeri bejelentkezés nem működik az iOS és az Android rendszerű böngészőkben.
@@ -56,7 +56,7 @@ Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejel
 
 Keresse meg **Azure Active Directory**  >  a**bejelentkezéseket** a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/), majd válasszon egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és a megoldásnak az alábbi táblázat használatával:
 
-|Bejelentkezési hibakód|Bejelentkezési hiba oka|Megoldás:
+|Bejelentkezési hibakód|Bejelentkezési hiba oka|Feloldás
 | --- | --- | ---
 | 81001 | A felhasználó Kerberos-jegye túl nagy. | Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.
 | 81002 | Nem sikerült érvényesíteni a felhasználó Kerberos-jegyét. | Tekintse meg a [hibaelhárítási ellenőrzőlistát](#troubleshooting-checklist).
@@ -74,9 +74,9 @@ Keresse meg **Azure Active Directory**  >  a**bejelentkezéseket** a [Azure Acti
 A következő ellenőrzőlista segítségével elháríthatja a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos problémákat:
 
 - Győződjön meg arról, hogy a zökkenőmentes egyszeri bejelentkezés funkció engedélyezve van Azure AD Connectban. Ha nem tudja engedélyezni a szolgáltatást (például egy letiltott port miatt), győződjön meg arról, hogy az összes [előfeltétel](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) teljesül.
-- Ha engedélyezte az [Azure ad-csatlakozást](../active-directory-azureadjoin-overview.md) és a zökkenőmentes egyszeri bejelentkezést a bérlőn, győződjön meg arról, hogy a probléma nem az Azure ad JOIN szolgáltatással érhető el. Az Azure AD JOIN szolgáltatásból származó egyszeri bejelentkezés elsőbbséget élvez a zökkenőmentes SSO esetén, ha az eszköz regisztrálva van az Azure AD-ben és a tartományhoz csatlakoztatva. Az Azure AD-csatlakozáshoz tartozó egyszeri bejelentkezéssel a felhasználó egy bejelentkezési csempét lát, amely a "Connected to Windows".
+- Ha engedélyezte az [Azure ad-csatlakozást](../devices/overview.md) és a zökkenőmentes egyszeri bejelentkezést a bérlőn, győződjön meg arról, hogy a probléma nem az Azure ad JOIN szolgáltatással érhető el. Az Azure AD JOIN szolgáltatásból származó egyszeri bejelentkezés elsőbbséget élvez a zökkenőmentes SSO esetén, ha az eszköz regisztrálva van az Azure AD-ben és a tartományhoz csatlakoztatva. Az Azure AD-csatlakozáshoz tartozó egyszeri bejelentkezéssel a felhasználó egy bejelentkezési csempét lát, amely a "Connected to Windows".
 - Győződjön meg arról, hogy az Azure AD URL-címe ( `https://autologon.microsoftazuread-sso.com` ) a felhasználó intranetes zóna-beállításainak részét képezi.
-- Győződjön meg arról, hogy a vállalati eszköz csatlakozik a Active Directory tartományhoz. Az eszköznek _nem_ kell az [Azure ad](../active-directory-azureadjoin-overview.md) -hez CSATLAKOZNIA a zökkenőmentes egyszeri bejelentkezés működéséhez.
+- Győződjön meg arról, hogy a vállalati eszköz csatlakozik a Active Directory tartományhoz. Az eszköznek _nem_ kell az [Azure ad](../devices/overview.md) -hez CSATLAKOZNIA a zökkenőmentes egyszeri bejelentkezés működéséhez.
 - Győződjön meg arról, hogy a felhasználó Active Directory tartományi fiókkal van bejelentkezve az eszközre.
 - Győződjön meg arról, hogy a felhasználói fiók olyan Active Directory erdőben van, ahol be van állítva a zökkenőmentes egyszeri bejelentkezés.
 - Győződjön meg arról, hogy az eszköz a vállalati hálózathoz csatlakozik.
@@ -106,7 +106,7 @@ Ha a hibaelhárítás nem segített, manuálisan állíthatja vissza a szolgált
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1. lépés: a zökkenőmentes egyszeri bejelentkezés PowerShell-moduljának importálása
 
-1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Először töltse le és telepítse az [Azure ad PowerShellt](/powershell/azure/active-directory/overview).
 2. Tallózással keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
 3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
 

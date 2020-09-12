@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323026"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019529"
 ---
 # <a name="upload-files-with-iot-hub"></a>Fájlok feltöltése az IoT Hubbal
 
@@ -28,6 +28,8 @@ Ahelyett, hogy az üzeneteket a IoT hubon keresztül kellene közvetíteni, IoT 
 Mielőtt feltölt egy fájlt IoT Hub egy eszközről, konfigurálnia kell a hubot [egy Azure Storage-fiók társításával](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) .
 
 Az eszköz ezután [inicializálhat egy feltöltést](iot-hub-devguide-file-upload.md#initialize-a-file-upload) , majd [értesítheti az IoT hubot](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) a feltöltés befejeződése után. Ha egy eszköz értesíti IoT Hub arról, hogy a feltöltés befejeződött, a szolgáltatás [értesítési üzenetet](iot-hub-devguide-file-upload.md#file-upload-notifications)is létrehozhat.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>A következő esetekben használja
 
@@ -150,7 +152,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan tölthet fel fájlokat az eszközökről IoT Hub használatával, az alábbi IoT Hub fejlesztői útmutató témaköreiben talál további információt:
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260323"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014939"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -128,9 +128,9 @@ A következő táblázat felsorolja a Spring boot és Spring Cloud-t használó 
 
 Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-ügyfél kezdő verziója
 ---|---|---
-2.1 | Greenwich. RELEASE | 2.1.2
-2,2 | Hoxton. SR8 | Nem szükséges
-2.3 | Hoxton. SR8 | Nem szükséges
+2.1. x | Greenwich. RELEASE | 2.1.2
+2.2. x | Hoxton. SR8 | Nem szükséges
+2.3. x | Hoxton. SR8 | Nem szükséges
 
 Ha a Spring boot 2,1-et használja, vegye fel a következő dependenciy a pom.xml-fájlba.
 
@@ -239,7 +239,7 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

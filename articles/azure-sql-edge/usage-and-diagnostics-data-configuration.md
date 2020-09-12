@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759614"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650469"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Az Azure SQL Edge használati és diagnosztikai adatok konfigurálása
 
@@ -72,7 +72,7 @@ Ha le szeretné tiltani a használati és diagnosztikai adatok gyűjtését az A
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>A használat és a diagnosztika letiltása az MSSQL. conf fájllal
 
-Ha le szeretné tiltani a használati és diagnosztikai adatok gyűjtését az Azure SQL Edge-ben, adja hozzá az alábbi fájlokat a/var/opt/MSSQL/mappához az SQL Edge-modulban leképezett állandó tárolóeszközön lévő MSSQL. conf fájlban. Az Azure SQL Edge az MSSQL. conf fájllal történő konfigurálásával kapcsolatos további információkért tekintse meg az [MSSQL. conf fájl használatával történő konfigurálást](configure.md#configure-by-using-an-mssqlconf-file)ismertető témakört.
+Ha le szeretné tiltani a használati és diagnosztikai adatok gyűjtését az Azure SQL Edge-ben, adja hozzá a következő sorokat az MSSQL. conf fájlhoz az SQL Edge-modul/var/opt/MSSQL/mappájához rendelt állandó tárolóeszközön. Az Azure SQL Edge az MSSQL. conf fájllal történő konfigurálásával kapcsolatos további információkért tekintse meg az [MSSQL. conf fájl használatával történő konfigurálást](configure.md#configure-by-using-an-mssqlconf-file)ismertető témakört.
 
 ```ini
 [telemetry]
@@ -105,7 +105,7 @@ A helyi naplózás használatának és a diagnosztikai adatoknak az Azure SQL Ed
        userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

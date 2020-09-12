@@ -1,20 +1,20 @@
 ---
-title: Azure Files referenciája
-description: Az Azure Storage API-referenciák, a readme-fájlok és az ügyféloldali kódtár csomagjainak megkeresése.
+title: Azure Files-referenciák
+description: Keresse meg Azure Files API-referenciát, a readme-fájlokat és az ügyféloldali függvénytár-csomagokat.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527846"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014684"
 ---
-# <a name="azure-files-reference"></a>Azure Files referenciája
+# <a name="azure-files-reference"></a>Azure Files-referenciák
 
 A Azure Files API-referenciák, a függvénytár-csomagok, a readme-fájlok és az első lépések cikkeinek megkeresése.
 
@@ -27,7 +27,7 @@ Az alábbi táblázat a Azure Files .NET API-k hivatkozásait és mintáit sorol
 | 12. x | [A .NET-hez készült ügyféloldali kódtár Azure Files](/dotnet/api/overview/azure/storage.files.shares-readme) | [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
 | 11. x | [Microsoft. Azure. Storage. file névtér](/dotnet/api/microsoft.azure.storage.file) | [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel](/azure/storage/files/storage-dotnet-how-to-use-files) |
 
-### <a name="storage-management"></a>Tárolók kezelése
+### <a name="storage-management"></a>Tárolókezelés
 
 Az alábbi táblázat az Azure Storage Management .NET API-k dokumentációját ismerteti.
 
@@ -52,7 +52,7 @@ Az alábbi táblázat a Azure Files Java API-k hivatkozásait és mintáit tarta
 | 12. x | [A Javához készült ügyféloldali kódtár Azure Files](/java/api/overview/azure/storage-file-share-readme) | [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
 | 8. x | [com. microsoft. Azure. Storage. file](/java/api/com.microsoft.azure.storage.file) | [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Fejlesztés az Azure Files szolgáltatáshoz Javával](/azure/storage/files/storage-java-how-to-use-file-storage) |
 
-### <a name="storage-management"></a>Tárolók kezelése
+### <a name="storage-management"></a>Tárolókezelés
 
 Az alábbi táblázat az Azure Storage Management Java API-jai dokumentációját tartalmazza.
 
@@ -66,8 +66,8 @@ Az alábbi táblázat a Python API-k Azure Files dokumentációját és mintáit
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Az Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Példák](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12. x | [Az Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Példák](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-ügyféloldali kódtárak
 
@@ -106,8 +106,9 @@ A következő táblázat a hivatkozási tartalom legújabb verziójára mutató 
 
 | Verzió | Platform |
 | ------- | -------- |
-|  3. x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2. x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4. x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3. x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2. x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

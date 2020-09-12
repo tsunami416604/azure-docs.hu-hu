@@ -5,18 +5,18 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021647"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007791"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zóna használatának engedélyezése az Azure Virtual Machines szolgáltatásbeli vész-helyreállításhoz
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Azure-beli virtuális gép vész-helyreállításának engedélyezése rendelkezésre állási zónák között
 
-Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónából egy másikba való replikálását, feladatátvételét és feladat-visszavételét mutatja be ugyanazon az Azure-régióban.
+Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónából egy másikba való replikálását, feladatátvételét és feladat-visszavételét ismerteti ugyanazon az Azure-régióban.
 
 >[!NOTE]
 >
@@ -26,6 +26,8 @@ Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónáb�
 A Site Recovery szolgáltatás a tervezett és nem tervezett leállások során az üzletmenet-folytonosságot és a vész-helyreállítási stratégiát segíti az üzleti alkalmazások működésének megtartásában. Az ajánlott vész-helyreállítási lehetőség, hogy az alkalmazásait akár regionális kimaradás esetén is meg kell őrizni.
 
 A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden zónához egy vagy több adatközpont tartozik. 
+
+Ha a virtuális gépeket egy másik régióban lévő rendelkezésre állási zónába szeretné áthelyezni, [tekintse át ezt a cikket](../resource-mover/move-region-availability-zone.md).
 
 ## <a name="using-availability-zones-for-disaster-recovery"></a>A Availability Zones használata a vész-helyreállításhoz 
 
@@ -37,7 +39,7 @@ Bizonyos helyzetekben azonban a Availability Zones a vész-helyreállításhoz i
 
 - Számos más ügyfél bonyolult hálózati infrastruktúrával rendelkezik, és nem kívánja újra létrehozni azt egy másodlagos régióban a kapcsolódó költségeket és összetettséget figyelembe véve. A Zone to Zone vész-helyreállítási szolgáltatás csökkenti a bonyolultságot, mivel a redundáns hálózatkezelési fogalmakat használja Availability Zones a konfigurálás sokkal egyszerűbbé tétele érdekében. Az ilyen ügyfelek előnyben részesítik az egyszerűséget, és a Availability Zones is használhatják a vész-helyreállításhoz.
 
-- Egyes régiókban, amelyekben nem szerepel egy párosított régió ugyanazon a jogi joghatóság alatt (például Délkelet-Ázsiában), a zóna-zóna vész-helyreállítási megoldásként használható vész-helyreállítási megoldásként, mivel az alkalmazások és az adatkezelési lehetőségek nem nemzeti határokon átívelőek. 
+- Egyes régiókban, amelyekben nem szerepel a párosított régió ugyanazon a jogi joghatóság alatt (például Délkelet-Ázsiában), a zóna-zóna vész-helyreállítási megoldásként a katasztrófa-visszaeséses helyreállítási megoldásként szolgálhat, mivel az alkalmazások és az információk nem kerülnek át a nemzeti határokon. 
 
 - A zónák közötti vész-helyreállítás az Azure-hoz az Azure vész-helyreállításhoz képest rövidebb idő alatt replikálja az adatreplikációt, így az alacsonyabb késés és az alacsonyabb RPO is megjelenhet.
 
@@ -65,12 +67,12 @@ A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szo
 
 Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
 
-|Funkció  | Támogatási nyilatkozat  |
+|Jellemző  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |
-|Azure Disk Encryption v1 (Dual Pass, with HRE)     |     Támogatott |
-|Azure Disk Encryption v2 (Single pass, HRE nélkül)    |    Támogatott    |
+|Azure Disk Encryption v1 (Dual Pass, Azure Active Directory (Azure AD))     |     Támogatott   |
+|Azure Disk Encryption v2 (Single pass, Azure AD nélkül)    |    Támogatott    |
 |Nem felügyelt lemezek    |    Nem támogatott    |
 |Felügyelt lemezek    |    Támogatott    |
 |Felhasználó által kezelt kulcsok    |    Támogatott    |
@@ -82,7 +84,7 @@ Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-h
 
 ### <a name="log-in"></a>Bejelentkezés
 
-Jelentkezzen be a Azure Portalba.
+Jelentkezzen be az Azure Portalra.
 
 ### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>Replikáció engedélyezése a Zona Azure-beli virtuális gép számára
 
@@ -119,14 +121,14 @@ A Site Recovery csapat és az Azure Capacity Management csapata elegendő infras
 A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operációs rendszereket támogatja, mint az Azure-ban az Azure vész-helyreállítás. Tekintse meg a támogatási mátrixot [itt](./azure-to-azure-support-matrix.md).
 
 **5. a forrás-és a célként megadott erőforráscsoportok is megegyeznek?**
-Nem, a feladatátvételt egy másik erőforráscsoporthoz kell megadnia.
+Nem, a feladatátvételt egy másik erőforráscsoporthoz kell átadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A vész-helyreállítási részletezés, feladatátvétel, ismételt védelem és feladat-visszavétel futtatásához követendő lépések megegyeznek az Azure-beli vész-helyreállítási forgatókönyv lépéseivel.
 
 A vész-helyreállítási részletezés végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-dr-drill.md)ismertetett lépéseket.
 
-A másodlagos zónában található virtuális gépek feladatátvételének és ismételt védelemének végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-failover-failback.md)ismertetett lépéseket.
+A másodlagos zónában lévő virtuális gépek feladatátvételének és újravédésének végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-failover-failback.md)ismertetett lépéseket.
 
 Az elsődleges zónába történő feladat-visszavételhez kövesse az [itt](./azure-to-azure-tutorial-failback.md)ismertetett lépéseket.
