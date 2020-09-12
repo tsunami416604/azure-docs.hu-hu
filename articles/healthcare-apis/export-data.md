@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270144"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482317"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -35,10 +35,17 @@ A $export parancs a FHIR-kiszolgálóról származó, de azonosított adatok exp
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|Lekérdezési paraméter            | Példa |Nem kötelező| Leírás|
+|Lekérdezési paraméter            | Példa |Nem kötelező| Description|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.jsbekapcsolva|A deazonosított exportáláshoz szükséges |A konfigurációs fájl neve. Tekintse meg a konfigurációs fájlformátumot [itt](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format). Ezt a fájlt egy **névtelenítésével** nevű tárolóban kell tárolni, amely az exportálási helyként konfigurált Azure Storage-fiókban található. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Nem kötelező a azonosított exportáláshoz|Ez a konfigurációs fájl ETAG. A ETAG az Azure Storage Explorer használatával kérheti le a blob tulajdonságból.|
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Nem kötelező a azonosított exportáláshoz|Ez a konfigurációs fájl ETAG. A ETAG Azure Storage Explorer használatával szerezheti be a blob tulajdonságból|
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy mind a nyers, mind a nem azonosított Exportálás az exportálási konfiguráció részeként megadott Azure Storage-fiókra is vonatkozik. Azt javasoljuk, hogy a különböző, de azonosított konfigurációnak megfelelő tárolókat használjon, és kezelje a felhasználói hozzáférést a tároló szintjén.
+
+## <a name="next-steps"></a>Következő lépések
+
+Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export paranccsal, beleértve az azonosított adatforrásokat is. Ezután beállíthatja az exportálási adatait:
+ 
+>[!div class="nextstepaction"]
+>[Az adatexportálás konfigurálása](configure-export-data.md)

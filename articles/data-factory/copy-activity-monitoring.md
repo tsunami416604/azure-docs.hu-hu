@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036368"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440609"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
 
@@ -30,7 +30,7 @@ Miután létrehozta és közzétett egy folyamatot Azure Data Factoryban, társ�
 
 A másolási tevékenység futtatásának figyeléséhez nyissa meg a következőt: **& monitor** felhasználói felületét. A **figyelés** lapon megjelenik a folyamat-futtatások listája, és kattintson a **folyamat neve** hivatkozásra a folyamat futtatása során futó tevékenységek listájának eléréséhez.
 
-![Másolási tevékenység futtatásának figyelése](./media/copy-activity-overview/monitor-pipeline-run.png)
+![Folyamat futtatásának figyelése](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 Ezen a szinten megtekintheti a másolási tevékenység bemenetét, kimenetét és hibáit (ha a másolási tevékenység sikertelen lesz), valamint a statisztikát, például az időtartamot/állapotot. A másolási tevékenység neve melletti **részletek** gombra kattintva részletes információkat adhat meg a másolási tevékenység végrehajtásáról. 
 
@@ -38,7 +38,7 @@ Ezen a szinten megtekintheti a másolási tevékenység bemenetét, kimenetét �
 
 Ebben a grafikus figyelési nézetben a Azure Data Factory megadja a másolási tevékenység végrehajtásával kapcsolatos információkat, beleértve az olvasási/írási kötetet, a forrásról a fogadóba másolt fájlok számát/sorait, az átviteli sebességet, a másolási forgatókönyvre alkalmazott konfigurációkat, a másolási tevékenység lépéseit pedig a megfelelő időtartamokkal és részletekkel együtt. Tekintse meg [ezt a táblázatot](#monitor-programmatically) minden lehetséges metrika és részletes leírása alapján. 
 
-Bizonyos helyzetekben, amikor másolási tevékenységet futtat Data Factoryban, a másolási tevékenység figyelése nézet tetején a **"Performance tuning tippek"** láthatók a példában látható módon. A tippekből megtudhatja, hogy az ADF milyen szűk keresztmetszetet azonosít az adott másolási futtatáshoz, és javaslatot tesz arra, hogy mit kell módosítani a másolási teljesítmény növelése érdekében. További információ az [automatikus teljesítmény-hangolási tippekről](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
+Bizonyos helyzetekben, amikor másolási tevékenységet futtat Data Factoryban, a másolási tevékenység figyelése nézet tetején a **"Performance tuning tippek"**  láthatók a példában látható módon. A tippekből megtudhatja, hogy az ADF milyen szűk keresztmetszetet azonosít az adott másolási futtatáshoz, és javaslatot tesz arra, hogy mit kell módosítani a másolási teljesítmény növelése érdekében. További információ az [automatikus teljesítmény-hangolási tippekről](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
 
 Az alsó **végrehajtási adatok és időtartamok** a másolási tevékenység lépéseit ismertetik, ami különösen hasznos a másolási teljesítmény hibaelhárításához. A másolási Futtatás szűk keresztmetszete a leghosszabb időtartamú. Tekintse meg a [másolási tevékenység teljesítményének hibaelhárítása](copy-activity-performance-troubleshooting.md) című témakört, amely az egyes szakaszok és a részletes hibaelhárítási útmutatót mutatja be.
 
@@ -50,7 +50,7 @@ Az alsó **végrehajtási adatok és időtartamok** a másolási tevékenység l
 
 A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredményének**  >  **kimenete** szakaszban is megjelennek, amely a felhasználói felület figyelési nézetének megjelenítésére szolgál. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek figyeléséről általában programozott módon: Azure-beli adat- [előállító programozott figyelése](monitor-programmatically.md).
 
-| Tulajdonság neve  | Leírás | Kimeneti egység |
+| Tulajdonság neve  | Description | Kimeneti egység |
 |:--- |:--- |:--- |
 | dataRead | A forrásból beolvasott adatok tényleges mennyisége. | Int64 érték bájtban |
 | dataWritten | A fogadóba írt/elkötelezett adatok tényleges csatlakoztatása. A méret különbözhet a `dataRead` mérettől, mivel az egyes adattár az adatok tárolására szolgál. | Int64 érték bájtban |
@@ -67,7 +67,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 | korlátozások | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
 | sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int32 érték (nincs egység) |
 | sinkPeakConnections| A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma.| Int32 érték (nincs egység) |
-| sqlDwPolyBase | Azt jelzi, hogy a rendszer az adatok másolásakor használja-e a SQL Data Warehouse. | Logikai |
+| sqlDwPolyBase | Azt jelzi, hogy a rendszer az Azure szinapszis Analyticsbe másolt adatok (korábban SQL Data Warehouse) esetében használja-e a rendszer-e. | Logikai |
 | redshiftUnload | Azt jelzi, hogy a rendszer az ELTÁVOLÍTÁSt használja-e az adatok Vöröseltolódásból történő másolásakor. | Logikai |
 | hdfsDistcp | Azt határozza meg, hogy a rendszer DistCp használ-e az adatok HDFS-ből való másolásakor. | Logikai |
 | effectiveIntegrationRuntime | A tevékenység futtatásához használt integrációs modul (IR) vagy futtatókörnyezet a következő formátumban: `<IR name> (<region if it's Azure IR>)` . | Szöveg (karakterlánc) |
@@ -160,9 +160,9 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-\-[Másolási tevékenység – áttekintés](copy-activity-overview.md)
+\- [Másolási tevékenység áttekintése](copy-activity-overview.md)
 
 \- [Másolási tevékenység teljesítménye](copy-activity-performance.md)

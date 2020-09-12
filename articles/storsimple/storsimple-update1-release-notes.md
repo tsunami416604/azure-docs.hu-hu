@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60531026"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459963"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series-eszközre vonatkozó 1,2-es kibocsátási megjegyzések frissítése
 
@@ -57,14 +57,14 @@ Ezek a funkciók először az 1. frissítéssel lettek közzétéve, amelyet kor
     Az [áttelepítési útmutatóból](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) megtudhatja, hogyan telepíthet át egy StorSimple 5000-7000-sorozatot egy 8000 sorozatú eszközre. 
 * **Rendelkezésre állás a Azure Government portálon** – a StorSimple mostantól elérhető a Azure Government portálon. Lásd: [StorSimple-eszköz üzembe helyezése a Azure Government portálon](storsimple-deployment-walkthrough-gov.md).
 * **Más felhőalapú szolgáltatók támogatása** – a további támogatott felhőalapú szolgáltatók az Amazon S3, az Amazon S3 és az RR, a HP és a OpenStack (bétaverzió).
-* **Frissítés a legújabb Storage API** -khoz – ezzel a kiadással a StorSimple frissítve lett a legújabb Azure Storage Service API-kra. Az 1. frissítést (kiadás, 0,1, 0,2 és 0,3) futtató StorSimple 8000 sorozatú eszközök az Azure Storage szolgáltatás API-jai korábbi verzióját használják, mint az 2009. A [Storage Service-verziók eltávolításával kapcsolatos](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx), 2016. augusztus 1-től a frissített közleményben leírtak szerint ezek az API-k elavultak lesznek. Fontos, hogy a StorSimple 8000 sorozat 1. frissítését a 2016. augusztus 1. előtt alkalmazza. Ha ezt nem teszi meg, a StorSimple-eszközök nem fognak megfelelően működni.
+* **Frissítés a legújabb Storage API** -khoz – ezzel a kiadással a StorSimple frissítve lett a legújabb Azure Storage Service API-kra. Az 1. frissítést (kiadás, 0,1, 0,2 és 0,3) futtató StorSimple 8000 sorozatú eszközök az Azure Storage szolgáltatás API-jai korábbi verzióját használják, mint az 2009. A [Storage Service-verziók eltávolításával kapcsolatos](https://docs.microsoft.com/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016), 2016. augusztus 1-től a frissített közleményben leírtak szerint ezek az API-k elavultak lesznek. Fontos, hogy a StorSimple 8000 sorozat 1. frissítését a 2016. augusztus 1. előtt alkalmazza. Ha ezt nem teszi meg, a StorSimple-eszközök nem fognak megfelelően működni.
 * A **zóna redundáns tárolási (ZRS) támogatása** – a Storage API-k legújabb verziójára való frissítéssel a StorSimple 8000 sorozat a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mellett a zóna redundáns tárolását (ZRS) is támogatja. Tekintse meg ezt a [cikket az Azure Storage redundancia-beállításairól](../storage/common/storage-redundancy.md) a ZRS részleteinek megtekintéséhez.
 * **Továbbfejlesztett kezdeti üzembe helyezési és frissítési élmény** – ebben a kiadásban a telepítési és frissítési folyamatokat továbbfejlesztettük. Ha a hálózati konfiguráció és a tűzfal beállításai helytelenek, a telepítő varázslón keresztüli telepítés megnövelhető a felhasználó számára. További diagnosztikai parancsmagok is rendelkezésre állnak, amelyek segítenek az eszköz hálózatkezelésének hibaelhárításában. A hibaelhárításhoz használt új diagnosztikai parancsmagokkal kapcsolatos további információkért tekintse meg a [központi telepítés hibaelhárítása című cikket](storsimple-troubleshoot-deployment.md) .
 
 ## <a name="issues-fixed-in-update-12"></a>Az 1,2-es frissítésben rögzített problémák
 Az alábbi táblázat a 1,2-es, 1,1-es és 1-es frissítésekben rögzített problémák összegzését tartalmazza.    
 
-| Nem. | Szolgáltatás | Probléma | Javítás folyamatban | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem. | Jellemző | Probléma | Javítás folyamatban | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell StorSimple-bővítménye |Amikor a felhasználó a Windows PowerShell StorSimple-bővítménye használatával távolról fér hozzá a StorSimple-eszközhöz, majd elindította a telepítővarázslót, összeomlás történt, amint az adatok 0 IP-címet adtak meg. Ez a hiba már meg van javítva az 1. frissítésben. |1. frissítés |Igen |Igen |
 | 2 |Gyári beállítások visszaállítása |Egyes esetekben a gyári beállítások visszaállítását követően a StorSimple-eszköz beragadt, és a következő üzenet jelenik meg: **visszaállítás a gyári állapotba (8. fázis)**. Ez akkor történt, ha a CTRL + C billentyűkombinációt lenyomva, miközben a parancsmag folyamatban volt. Ez a hiba már kijavítva van. |1. frissítés |Igen |Nem |
@@ -74,7 +74,7 @@ Az alábbi táblázat a 1,2-es, 1,1-es és 1-es frissítésekben rögzített pro
 | 6 |Vészhelyreállítás |Egy vész-helyreállítási (DR) hibát rögzítettek, amelyben DR a biztonsági mentések felderítése során meghiúsult a célszámítógépen. |1. frissítés |Igen |Igen |
 | 7 |Figyelési LED-EK |Bizonyos esetekben a készülék hátulján lévő figyelő LED-ek nem jelezték a helyes állapotot. A kék LED ki lett kapcsolva. Az adat0 és az 1. adatled-EK akkor is villogtak, ha nincsenek konfigurálva ezek a felületek. A probléma kijavítva lett, és a figyelési LED-ek mostantól a megfelelő állapotot jelzik. |1. frissítés |Igen |Nem |
 | 8 |Figyelési LED-EK |Bizonyos példányokban az 1. frissítés alkalmazása után az aktív vezérlő kék fénye kikapcsolva, így nehezen azonosítható az aktív vezérlő. Ezt a problémát javítottuk ebben a javítási kiadásban. |1.2-es frissítés |Igen |Nem |
-| 9 |Hálózati illesztők |A korábbi verziókban a nem irányítható átjáróval konfigurált StorSimple-eszközök offline módba kerülhetnek. Ebben a kiadásban a 0 adathoz tartozó útválasztási metrika a legalacsonyabb értékkel lett elvégezve. ezért még ha más hálózati adapterek is engedélyezve vannak a felhőben, az eszközről érkező összes Felhőbeli forgalom a 0. adatokon keresztül lesz átirányítva. |1. frissítés |Igen |Igen |
+| 9 |Hálózati adapterek |A korábbi verziókban a nem irányítható átjáróval konfigurált StorSimple-eszközök offline módba kerülhetnek. Ebben a kiadásban a 0 adathoz tartozó útválasztási metrika a legalacsonyabb értékkel lett elvégezve. ezért még ha más hálózati adapterek is engedélyezve vannak a felhőben, az eszközről érkező összes Felhőbeli forgalom a 0. adatokon keresztül lesz átirányítva. |1. frissítés |Igen |Igen |
 | 10 |Biztonsági másolatok |Az 1. frissítésben szereplő egyik hiba, amely miatt a biztonsági mentések sikertelenek voltak 24 nap elteltével, a javítás 1,1-es frissítésében megoldódott. |1.1-es frissítés |Igen |Igen |
 | 11 |Biztonsági másolatok |A korábbi verziókban felmerülő hibák gyenge teljesítményt eredményeztek a Felhőbeli Pillanatképek alacsony változási arányával. Ez a hibajavítás ebben a javítási kiadásban megoldódott. |1.2-es frissítés |Igen |Igen |
 | 12 |Frissítések |Az 1. frissítés egyik hibája, amely egy sikertelen frissítést jelentett, és a vezérlők helyreállítási módba való beváltását okozta, a javítás kiadása megoldódott. |1.2-es frissítés |Igen |Igen |
@@ -82,7 +82,7 @@ Az alábbi táblázat a 1,2-es, 1,1-es és 1-es frissítésekben rögzített pro
 ## <a name="known-issues-in-update-12"></a>Az 1,2-es frissítés ismert problémái
 A következő táblázat az ebben a kiadásban található ismert problémák összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem. | Jellemző | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Lemez kvóruma |Ritka esetekben, ha egy 8600-es eszköz EBOD-borításában lévő lemezek többsége le van választva, ami nem a lemez kvórumát eredményezi, akkor a tárolási készlet offline állapotba kerül. Offline állapotban marad, még akkor is, ha a lemezek újra vannak csatlakoztatva. |Az eszközt újra kell indítani. Ha a probléma továbbra is fennáll, forduljon Microsoft ügyfélszolgálata a következő lépésekhez. |Igen |Nem |
 | 2 |Helytelen vezérlő-azonosító |A vezérlő cseréjének végrehajtásakor a vezérlő 0 vezérlőként jelenhet meg. A vezérlő cseréjekor, amikor a rendszerkép betöltődik a társ csomópontból, a vezérlő azonosítója kezdetben megjelenhet a társ-vezérlő AZONOSÍTÓJAként. Ritka esetekben ez a viselkedés a rendszer újraindítása után is megjelenhet. |Nincs szükség felhasználói beavatkozásra. Ez a helyzet a vezérlő cseréjének befejeződése után maga is megoldódik. |Igen |Nem |
@@ -111,6 +111,6 @@ Ez a kiadás frissíti az illesztőprogramot és a lemez belső vezérlőprogram
 ## <a name="virtual-device-updates-in-update-12"></a>Virtuális eszközök frissítései a 1,2-es frissítésben
 Ez a frissítés nem alkalmazható a virtuális eszközre. Új virtuális eszközöket kell létrehozni. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Telepítse az 1,2-es frissítést az eszközön](storsimple-install-update-1.md).
 

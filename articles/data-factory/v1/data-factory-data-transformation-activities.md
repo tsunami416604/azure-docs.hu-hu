@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522363"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436297"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Az adatátalakítás Azure Data Factory 1. verzióban
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Idővel a Machine Learning pontozási kísérletek prediktív modelljeit új bem
 A Machine Learning tevékenységekkel kapcsolatos részletekért tekintse meg [Machine learning tevékenységek használata](data-factory-azure-ml-batch-execution-activity.md) című témakört. 
 
 ## <a name="stored-procedure-activity"></a>Tárolt eljárási tevékenység
-A Data Factory folyamat SQL Server tárolt eljárás tevékenységében tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure SQL Data Warehouse, SQL Server adatbázis a vállalatában vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.  
+A Data Factory folyamat SQL Server tárolt eljárása tevékenységgel egy tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse), SQL Server adatbázis a vállalatban vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Data Lake Analytics tevékenység
 Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürtön. Részletekért lásd: [adatelemzési U-SQL-tevékenység](data-factory-usql-activity.md) . 
@@ -83,7 +83,7 @@ Hozzon létre egy társított szolgáltatást a számítási környezethez, majd
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című cikket. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Azure Data Factory a következő Adatátalakítási tevékenységeket és a tevékenységek számítási környezeteit támogatja. Az átalakítási tevékenységek hozzáadhatók a folyamatokhoz, akár külön, akár egy másik tevékenységgel.
 
 | Adatátalakítási tevékenység | Számítási környezet |
@@ -93,7 +93,7 @@ Azure Data Factory a következő Adatátalakítási tevékenységeket és a tev�
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning-tevékenységek: kötegelt végrehajtás és az erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [Tárolt eljárás](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse vagy SQL Server |
+| [Tárolt eljárás](data-factory-stored-proc-activity.md) |Azure SQL, Azure szinapszis Analytics vagy SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] vagy Azure Batch |
 

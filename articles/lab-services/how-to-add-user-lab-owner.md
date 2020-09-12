@@ -2,13 +2,13 @@
 title: További tulajdonosok hozzáadása laborhoz Azure Lab Services
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy felhasználót tulajdonosként egy laborhoz Azure Lab Servicesban.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 6671a3070dae672769eecf59d614d3b75455ef5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/04/2020
+ms.openlocfilehash: 4b46dd08a3b9527cdfc7bdf766ee4976e67656d0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445865"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482669"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>További tulajdonosok hozzáadása meglévő laborhoz Azure Lab Services
 Ez a cikk bemutatja, hogyan adhat hozzá további tulajdonosokat egy meglévő laborhoz a rendszergazdaként.
@@ -32,6 +32,9 @@ Ha egy felhasználót további tulajdonosként szeretne hozzáadni egy meglévő
 
 ## <a name="add-user-to-the-owner-role-for-the-lab"></a>Felhasználó hozzáadása a tulajdonos szerepkörhöz a laborban
 
+> [!NOTE]
+> Ha a felhasználó csak olvasói hozzáféréssel rendelkezik az a laborban, a labor nem jelenik meg a labs.azure.com-ben.
+
 1. A labor- **fiók** lapon kattintson a bal oldali menüben a **minden labor** elemre.
 2. Válassza ki azt a **labort** , amelyhez hozzá szeretné adni a felhasználót tulajdonosként. 
     
@@ -43,5 +46,5 @@ Ha egy felhasználót további tulajdonosként szeretne hozzáadni egy meglévő
     2. Válassza ki a felhasználót. 
     3. Kattintson a **Mentés** gombra. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Győződjön meg róla, hogy a felhasználó látja a labort a [labor Services portálra](https://labs.azure.com)való bejelentkezéskor.

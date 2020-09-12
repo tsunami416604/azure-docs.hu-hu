@@ -9,14 +9,14 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020150"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500419"
 ---
-# <a name="monitor-azure-storage"></a>Az Azure Storage figyelése
+# <a name="monitoring-azure-storage"></a>Az Azure Storage figyelése
 
 Ha olyan kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendelkezik, amelyek az Azure-erőforrásokra támaszkodnak, ezeket az erőforrásokat szeretné figyelni a rendelkezésre állás, a teljesítmény és a művelet szempontjából. Ez a cikk az Azure Storage által generált figyelési információkat ismerteti, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatriasztások elemzéséhez.
 
@@ -30,7 +30,7 @@ Az egyes tárolási erőforrások Azure Portal **áttekintő** lapja az erőforr
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 Az Azure Storage [Azure monitor](../../azure-monitor/overview.md)használatával hoz létre figyelési adatgyűjtési szolgáltatást, amely az Azure-ban teljes verem-figyelési szolgáltatás. A Azure Monitor a funkciók teljes készletét biztosítja az Azure-erőforrások és-erőforrások figyelésére más felhőkben és a helyszínen. 
 
-További információ a Azure Monitorről: az [Azure-erőforrások figyelése a Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md)használatával. A cikk a következő témákat ismerteti:
+A cikkből megtudhatja [, hogyan figyelheti az Azure-erőforrásokat a Azure monitor,](../../azure-monitor/insights/monitor-azure-resource.md) amely leírja a következőket:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -40,7 +40,7 @@ További információ a Azure Monitorről: az [Azure-erőforrások figyelése a 
 
 Az alábbi, az Azure Storage-ból gyűjtött adatok leírásával a cikk a következő részekre épül. A példák bemutatják, hogyan konfigurálhatja az adatgyűjtést, és hogyan elemezheti ezeket az Azure-eszközökkel.
 
-## <a name="monitor-data-from-azure-storage"></a>Adatok figyelése az Azure Storage-ból
+## <a name="monitoring-data-from-azure-storage"></a>Adatok figyelése az Azure Storage-ból
 
 Az Azure Storage ugyanolyan típusú figyelési adatokat gyűjt, mint az Azure- [erőforrások monitorozásával](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos egyéb Azure-erőforrások. Az Azure Storage által létrehozott naplókkal és metrikákkal kapcsolatos további információkért lásd az [Azure Storage-figyelési adatok referenciáját](monitor-storage-reference.md).
 
@@ -90,7 +90,7 @@ Meg kell adnia azoknak a műveleteknek a kategóriáit is, amelyekhez naplókat 
 | StorageWrite | Írási műveletek az objektumokon. |
 | StorageDelete | Objektumok törlési műveletei. |
 
-## <a name="analyze-metric-data"></a>Metrikai adatok elemzése
+## <a name="analyzing-metric-data"></a>Metrikus adatok elemzése
 
 Az Azure Storage mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti Metrikaböngésző használatával. A **Azure monitor** menüből válassza a **metrikák** lehetőséget a Metrikaböngésző megnyitásához. Az eszköz használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](../../azure-monitor/platform/metrics-getting-started.md)foglalkozó témakörben talál. 
 
@@ -115,7 +115,7 @@ Az Azure Storage összes mérőszáma a következő névterekben található:
 Az Azure Storage-t tartalmazó összes Azure Monitor támogatási mérőszámok listáját lásd: [Azure monitor támogatott metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
 
 
-### <a name="access-metrics"></a>Hozzáférési metrikák
+### <a name="accessing-metrics"></a>Metrikák elérése
 
 > [!TIP]
 > Az Azure CLI-vagy .NET-példák megtekintéséhez válassza ki az itt felsorolt megfelelő lapokat.
@@ -133,7 +133,7 @@ Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-f
    Get-AzMetricDefinition -ResourceId $resourceId
 ```
 
-#### <a name="read-metric-values"></a>Metrika értékeinek olvasása
+#### <a name="reading-metric-values"></a>Metrika értékeinek olvasása
 
 Elolvashatja a Storage-fiók vagy az egyéni tárolási szolgáltatás, például a blob, fájl, tábla vagy üzenetsor szolgáltatás fiók szintű metrikájának értékét. Használja a [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) parancsmagot.
 
@@ -203,7 +203,7 @@ Az alábbi példa bemutatja, hogyan listázhat mérőszám-definíciót a fiók 
 
 ```
 
-#### <a name="read-account-level-metric-values"></a>Fiók szintű metrika értékeinek olvasása
+#### <a name="reading-account-level-metric-values"></a>Fiók szintű metrika értékeinek olvasása
 
 Az alábbi példa azt szemlélteti, hogyan olvashatók be `UsedCapacity` az információk a fiók szintjén:
 
@@ -249,7 +249,7 @@ Az alábbi példa azt szemlélteti, hogyan olvashatók be `UsedCapacity` az info
 
 ```
 
-#### <a name="read-multidimensional-metric-values"></a>Többdimenziós metrika értékeinek olvasása
+#### <a name="reading-multidimensional-metric-values"></a>Többdimenziós metrika értékeinek olvasása
 
 Többdimenziós metrikák esetében meg kell határoznia a metaadat-szűrőket, ha adott dimenzió értékeken szeretné beolvasni a metrikai adatokat.
 
@@ -304,7 +304,7 @@ Az alábbi példa bemutatja, hogyan olvashatja el a metrikus adatokat a többdim
 
 ---
 
-## <a name="analyze-log-data"></a>Naplóadatok elemzése
+## <a name="analyzing-log-data"></a>Naplózási adatok elemzése
 
 Az erőforrás-naplókat megadhatja blobként egy Storage-fiókban, az Event-adatként vagy a log analitikus lekérdezésekkel.
 
@@ -313,7 +313,7 @@ Az ezekben a naplókban megjelenő mezők részletes ismertetését az [Azure St
 > [!NOTE]
 > Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt a lapot](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták, a táblák, a Premium Storage-fiókok általános célú v1-ben és az általános célú v2 Storage-fiókokban való naplózását. A klasszikus Storage-fiókok nem támogatottak.
 
-### <a name="access-logs-in-a-storage-account"></a>Naplófájlok elérése egy Storage-fiókban
+### <a name="accessing-logs-in-a-storage-account"></a>Naplófájlok elérése a Storage-fiókban
 
 A naplók úgy jelennek meg, mint a cél Storage-fiókban lévő tárolóban tárolt Blobok. Az adatok gyűjtése és tárolása egy blobon belül, egy sorba tagolt JSON-adattartalomként történik. A blob neve az alábbi elnevezési konvenciót követi:
 
@@ -323,7 +323,7 @@ Bemutatunk egy példát:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="access-logs-in-an-event-hub"></a>Eseménynaplók elérése az Event hub-ban
+### <a name="accessing-logs-in-an-event-hub"></a>Eseménynaplók elérése az Event hub-ban
 
 Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál. 
 
@@ -331,7 +331,7 @@ Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőriz
 
 A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
-### <a name="access-logs-in-a-log-analytics-workspace"></a>Naplók elérése Log Analytics munkaterületen
+### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Naplók elérése Log Analytics munkaterületen
 
 A Log Analytics munkaterületre küldött naplók Azure Monitor naplózási lekérdezések használatával érhetők el.
 

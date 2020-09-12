@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510973"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434639"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>A virtuális gépek üzembe helyezésének hibaelhárítása a Cloud-init használatával
 
@@ -21,7 +21,7 @@ Ha általánosított egyéni rendszerképeket hozott létre, a Cloud-init haszn�
 
 Néhány példa a kiépítési problémákra:
 - A virtuális gép 40 percig elakad a létrehozáskor, és a virtuális gép létrehozása sikertelenként van megjelölve
-- `CustomData`nem kerül feldolgozásra
+- `CustomData` nem kerül feldolgozásra
 - Az ideiglenes lemez csatlakoztatása sikertelen
 - A felhasználók nem jönnek létre, vagy felhasználói hozzáférési problémák léptek fel
 - A hálózatkezelés nincs megfelelően beállítva
@@ -29,7 +29,7 @@ Néhány példa a kiépítési problémákra:
 
 Ez a cikk végigvezeti a Cloud-init hibaelhárításának lépésein. Részletesebb részleteket a [Cloud-init Deep Dive](./cloud-init-deep-dive.md)című témakörben talál.
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>1. lépés: a központi telepítés tesztelése a nélkül`customData`
+## <a name="step-1-test-the-deployment-without-customdata"></a>1. lépés: a központi telepítés tesztelése a nélkül `customData`
 
 A Cloud-init `customData` a virtuális gép létrehozásakor fogadja el az átadott értéket. Először is győződjön meg arról, hogy ez nem okoz problémát az üzemelő példányokkal kapcsolatban. Próbálja meg kiépíteni a virtuális gépet bármilyen konfiguráció nélkül. Ha úgy találja, hogy a virtuális gép nem tud kiépíteni, folytassa az alábbi lépésekkel, ha úgy találja, hogy az átadott konfiguráció nem lesz alkalmazva, ugorjon a [4. lépésre](). 
 
@@ -56,7 +56,7 @@ Ha a virtuális gép nem tud kiépíteni, az Azure a "létrehozás" állapotot j
 
 Amíg a virtuális gép fut, szüksége lesz a virtuális gép naplóira, hogy megtudja, miért nem sikerült a kiépítés.  Ha meg szeretné tudni, miért nem sikerült a virtuális gép üzembe helyezése, ne állítsa le a virtuális gépet. Tartsa meg a virtuális gépet. A naplók gyűjtéséhez a meghibásodott virtuális gép futási állapotban kell maradnia. A naplók gyűjtéséhez használja az alábbi módszerek egyikét:
 
-- [Soros konzol](./serial-console-grub-single-user-mode.md)
+- [Soros konzol](../troubleshooting/serial-console-grub-single-user-mode.md)
 
 - A virtuális gép létrehozása előtt [engedélyezze a rendszerindítási diagnosztikát](./tutorial-monitor.md#enable-boot-diagnostics) , majd [tekintse meg](./tutorial-monitor.md#view-boot-diagnostics) őket a rendszerindítás során.
 
@@ -108,7 +108,7 @@ Ha hibát vagy figyelmeztetést talált, olvassa el a visszafelé a Cloud-init n
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Ha rendelkezik hozzáféréssel a [soros konzolhoz](./serial-console-grub-single-user-mode.md), próbálja meg újra futtatni a Cloud-init futtatására irányuló parancsot.
+Ha rendelkezik hozzáféréssel a [soros konzolhoz](../troubleshooting/serial-console-grub-single-user-mode.md), próbálja meg újra futtatni a Cloud-init futtatására irányuló parancsot.
 
 A naplózása a `/var/log/cloud-init.log` /etc/cloud/cloud.cfg.d/05_logging. cfg-n belül is újrakonfigurálható. A Cloud-init naplózással kapcsolatos további részletekért tekintse meg a [Cloud-init dokumentációját](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
 
@@ -126,7 +126,7 @@ Ha továbbra sem tudja elkülöníteni, hogy miért nem sikerült kiépíteni a 
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>4. lépés: annak vizsgálata, hogy a konfiguráció miért nincs alkalmazva
 A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha például a `runcmd` modult egy Cloud-init konfigurációban használja, akkor a futtatott parancsból nem nulla kilépési kód jelenik meg, mert a virtuális gép üzembe helyezése sikertelen lesz. Ennek az az oka, hogy az alapszintű üzembe helyezési funkció után fut, amely a Cloud-init első 3 fázisában történik. A konfiguráció által nem alkalmazott hibák megoldásához tekintse át a 3. lépésben és a Cloud-init modulok naplóit manuálisan. Például:
 
-- `runcmd`– a parancsfájlok hibák nélkül futnak? Futtassa manuálisan a konfigurációt a terminálról, hogy biztosan a várt módon fussanak.
+- `runcmd` – a parancsfájlok hibák nélkül futnak? Futtassa manuálisan a konfigurációt a terminálról, hogy biztosan a várt módon fussanak.
 - Csomagok telepítése – a virtuális gép hozzáférhet a csomagok tárházához?
 - Ellenőriznie kell a `customData` virtuális gép számára biztosított adatkonfigurációt is, amely a következő helyen található: `/var/lib/cloud/instances/<unique-instance-identifier>/user-data.txt` .
 

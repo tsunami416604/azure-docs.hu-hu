@@ -1,19 +1,19 @@
 ---
 title: Phoenix-teljesítmény az Azure HDInsight
 description: Ajánlott eljárások az Azure HDInsight-fürtök Apache Phoenix teljesítményének optimalizálásához
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0dfb93db1af807459c37653189a90b754c933aa4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079496"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504791"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
@@ -52,7 +52,7 @@ Ezzel az új elsődleges kulccsal a Phoenix által generált sorok kulcsai a kö
 
 A fenti első sorban a rowkey az alábbi módon jelenik meg:
 
-|rowkey|       kulcs|   value|
+|rowkey|       kulcs|   Érték|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|telefon |1-425-000-0002|  
@@ -256,7 +256,7 @@ CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
 Ezen és egyéb beállításokkal kapcsolatos további információkért lásd: [Apache Phoenix nyelvtan](https://phoenix.apache.org/language/index.html#options).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Phoenix hangolási útmutató](https://phoenix.apache.org/tuning_guide.html)
 * [Másodlagos indexek](https://phoenix.apache.org/secondary_indexing.html)

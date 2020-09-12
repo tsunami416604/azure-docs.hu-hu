@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 6455c186e05fc98b1ec340c152f9b3e5710f1dd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/06/2020
+ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087907"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505488"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Csomagok kezelése Azure-SSIS Integration Runtime Package Store-val
 
@@ -57,7 +57,7 @@ Miután kapcsolódott a Azure-SSIS IRhoz a SSMS-on, a jobb gombbal kattintson b�
       > [!NOTE]
       > A SSIS-csomagok Azure-SSIS IR Package Store-ba történő importálása csak egyszer hajtható végre, és egyszerűen másolja őket az alapul szolgáló MSDB/File System/Azure Filesba, miközben megőrzi a SQL Server/SSIS verzióját. 
       >
-      > Mivel a Azure-SSIS IR jelenleg a 140-as alapértelmezett kompatibilitási szinttel rendelkezik, ami egyenlő a **SQL Server 2017**-vel, az alacsonyabb verziójú csomagok futtatásával a SSIS 2017-csomagokba lesz frissítve. A magasabb verziójú csomagok végrehajtása nem támogatott.
+      > Mivel a Azure-SSIS IR jelenleg **SQL Server 2017**-es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
       >
       > Továbbá, mivel a régi SSIS-csomagok tárolói meghatározott SQL Server-verzióhoz vannak kötve, és az adott verzióhoz csak a SSMS érhetők el, a régi SSIS-csomagok alacsonyabb verziójú csomagjait először a kijelölt SSMS-verzióval kell exportálni, mielőtt a SSMS 2019-as vagy újabb verziókkal importálják őket Azure-SSIS IR-csomagokba.
       >
@@ -72,7 +72,7 @@ Miután kapcsolódott a Azure-SSIS IRhoz a SSMS-on, a jobb gombbal kattintson b�
       > [!NOTE]
       > Az Azure-SSIS IR SSIS származó csomagok exportálása csak egyszer hajtható végre, és a védelmi szint átállítása nélkül egyszerűen másolja őket a SQL Server/SSIS verziójának megőrzése mellett, ellenkező esetben a rendszer a SSIS 2019-as vagy újabb verziójú csomagokat fogja frissíteni.
       >
-      > Mivel a Azure-SSIS IR jelenleg a 140-as alapértelmezett kompatibilitási szinttel rendelkezik, ami egyenlő a **SQL Server 2017**-vel, az alacsonyabb verziójú csomagok futtatásával a SSIS 2017-csomagokba lesz frissítve. A magasabb verziójú csomagok végrehajtása nem támogatott.
+      > Mivel a Azure-SSIS IR jelenleg **SQL Server 2017**-es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
       >
       > Azt is megteheti, hogy Azure-SSIS IR Package Store-ból több SSIS-csomagot is exportál a védelmi szint átállítása közben. a [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) parancssori segédprogramot a következő témakörben tekintheti meg: [több csomag telepítése dtutil](#deploying-multiple-packages-with-dtutil)használatával.
 
@@ -124,7 +124,7 @@ A helyszíni SSIS számítási feladatok SSIS való átváltásához az ADF-ben 
 
 A SQL Server/SSIS telepítéséhez használható [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) parancssori segédprogramot több csomag kötegekben történő üzembe helyezéséhez is használhatja. Az adott SSIS-verzióhoz van kötve, így ha az alacsonyabb verziójú csomagokat a védelmi szint átállítása nélkül helyezi üzembe, akkor egyszerűen másolja őket, miközben megőrzi a SSIS verzióját. Ha ezt a lehetőséget használja az üzembe helyezéséhez és a védelmi szint egyidejű átállításához, akkor az a SSIS verziójára frissíti őket.
 
- Mivel a Azure-SSIS IR jelenleg a 140-as alapértelmezett kompatibilitási szinttel rendelkezik, ami egyenlő a **SQL Server 2017**-vel, az alacsonyabb verziójú csomagok futtatásával a SSIS 2017-csomagokba lesz frissítve. A magasabb verziójú csomagok végrehajtása nem támogatott.
+ Mivel a Azure-SSIS IR jelenleg **SQL Server 2017**-es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
 
 Ennek következtében, ha el szeretné kerülni a futásidejű frissítéseket, a csomagok üzembe helyezése Azure-SSIS IR a csomag üzembe helyezési modelljében a dtutil 2017-et kell használnia, amely a SQL Server/SSIS 2017 telepítéshez tartozik. Erre a célra letöltheti és telepítheti az ingyenes [SQL Server/SSIS 2017 fejlesztői kiadást](https://go.microsoft.com/fwlink/?linkid=853016) . A telepítést követően a dtutil 2017 a következő mappában található: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` .
 
@@ -209,6 +209,6 @@ dtutil /SQL YourFolder\YourPackage3 /ENCRYPT FILE;Z:\YourFolder\YourPackage3.dts
 
 Ha Azure-SSIS IR csomag-áruházakat Azure Files-on felül konfigurálta, akkor a telepített csomagok a SSMS 2019-as vagy újabb verziójában a Azure-SSIS IRhoz való csatlakozáskor fognak megjelenni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az automatikus létrehozott ADF-folyamatokat újrafuttathatja vagy szerkesztheti a SSIS-csomag tevékenységeivel, vagy újakat hozhat létre az ADF-portálon. További információ: [SSIS-csomagok futtatása az ADF-folyamatokban végrehajtható SSIS-csomag tevékenységként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

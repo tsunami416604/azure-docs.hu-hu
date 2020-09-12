@@ -1,19 +1,19 @@
 ---
 title: Apache Hadoop architektúra – Azure HDInsight
 description: Ismerteti Apache Hadoop tárolását és feldolgozását az Azure HDInsight-fürtökön.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd1303417f008da476356a274dde30d7d02d36f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162208"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505505"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
@@ -56,7 +56,7 @@ Ha törölni szeretne egy fájlt a Storage-fiókból, tekintse meg a következő
 * [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/storage-blob-soft-delete.md)
 * [BLOB törlésének visszavonása](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
 
-### <a name="azure-data-lake-storage-gen-1"></a>1. generációs Azure Data Lake Storage
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
 [Visszaállítás – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
@@ -68,7 +68,7 @@ Ha törölni szeretne egy fájlt a Storage-fiókból, tekintse meg a következő
 
 Az `fs.trash.interval` **HDFS**  >  **Advanced Core-hely** tulajdonságának az alapértelmezett értéken kell maradnia `0` , mert nem kell a helyi fájlrendszerben tárolt adatait tárolnia. Ez az érték nem befolyásolja a távoli tárolási fiókokat (WASB, ADLS GEN1, ABFS)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A MapReduce használata a HDInsight-alapú Apache Hadoopban](hadoop/hdinsight-use-mapreduce.md)
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)

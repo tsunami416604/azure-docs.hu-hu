@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180099"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500334"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -72,7 +72,7 @@ Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A re
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Láthatom az ütemezett biztonsági mentési feladatokat a biztonsági mentési feladatok menüben?
 
-A **biztonsági mentési feladat** menü csak az igény szerinti biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz [Azure monitor használatával történő figyelést](backup-azure-monitoring-use-azuremonitor.md)használhat.
+A **biztonsági mentési feladatok** menü megjeleníti az összes ütemezett és igény szerinti műveletet, kivéve az ütemezett naplók biztonsági másolatait, mivel ezek nagyon gyakoriak. Ütemezett naplózási feladatokhoz használja a [figyelést a Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>A jövőbeli adatbázisokról is automatikusan készül biztonsági mentés?
 
@@ -102,6 +102,6 @@ Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan ada
 
   ![Újonnan hozzáadott adatbázis manuális felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

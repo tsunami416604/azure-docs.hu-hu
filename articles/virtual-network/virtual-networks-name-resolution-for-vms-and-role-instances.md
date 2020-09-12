@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087011"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469643"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
 
@@ -60,7 +60,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 > A Cloud Services webes és feldolgozói szerepköreinek használatakor a szerepkör-példányok belső IP-címeit is elérheti az Azure Service Management REST API használatával. További információt a [Service Management REST API dokumentációjában](https://msdn.microsoft.com/library/azure/ee460799.aspx)talál. A címe a szerepkör neve és a példány száma alapján történik. 
 >
 
-### <a name="features"></a>Funkciók
+### <a name="features"></a>Szolgáltatások
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
 * Egyszerű használat. Nem igényel konfigurálást.
@@ -86,7 +86,7 @@ Az Azure által biztosított névfeloldás használatakor megfontolandó szempon
 A fordított DNS minden ARM-alapú virtuális hálózatban támogatott. Fordított DNS-lekérdezéseket adhat ki (PTR-lekérdezések) a virtuális gépek IP-címeinek a virtuális gépek teljes tartománynevére való leképezéséhez.
 * A virtuális gépek IP-címeire vonatkozó összes PTR-lekérdezés a vmname űrlap teljes tartománynevét fogja visszaadni \[ \] . internal.cloudapp.net
 * A címkeresés a vmname űrlap teljes tartománynevén \[ \] történik. a Internal.cloudapp.net a virtuális géphez HOZZÁRENDELT IP-címekre lesz feloldva.
-* Ha a virtuális hálózat egy [Azure DNS magánhálózati zónához](../dns/private-dns-overview.md) van csatolva regisztrációs virtuális hálózatként, akkor a fordított DNS-lekérdezések két rekordot adnak vissza. Az egyik rekord a vmname formában jelenik \[ meg \] . [ privatednszonename] és más lenne a Form \[ vmname \] . internal.cloudapp.net
+* Ha a virtuális hálózat egy [Azure DNS magánhálózati zónához](../dns/private-dns-overview.md) van csatolva regisztrációs virtuális hálózatként, akkor a fordított DNS-lekérdezések két rekordot adnak vissza. Az egyik rekord a vmname alak lesz \[ \] . [ privatednszonename], a másik pedig a \[ vmname \] . internal.cloudapp.net formátumú.
 * A fordított DNS-keresés hatóköre egy adott virtuális hálózatra terjed ki, még akkor is, ha más virtuális hálózatokhoz van kiállítva. A fordított DNS-lekérdezések (PTR-lekérdezések) a társ virtuális hálózatokban található virtuális gépek IP-címeihez a NXDOMAIN lesznek visszaadva.
 * Ha ki szeretné kapcsolni a fordított DNS-függvényt egy virtuális hálózatban, akkor ehhez hozzon létre egy névkeresési zónát [Azure DNS privát zónák](../dns/private-dns-overview.md) használatával, és kapcsolja a zónát a virtuális hálózathoz. Ha például a virtuális hálózat IP-címe 10.20.0.0/16, akkor létrehozhat egy üres magánhálózati DNS-zónát a 20.10.in-addr. arpa paranccsal, és összekapcsolhatja azt a virtuális hálózattal. A zóna virtuális hálózathoz való összekapcsolásakor le kell tiltania az automatikus regisztrációt a hivatkozáson. Ez a zóna felülbírálja a virtuális hálózat alapértelmezett névkeresési zónáit, és mivel ez a zóna üres, a fordított DNS-lekérdezések NXDOMAIN fogja kapni. A saját DNS-zónák létrehozásával és a virtuális hálózattal való összekapcsolásával kapcsolatos további tudnivalókért tekintse meg a rövid [útmutató útmutatóját](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) .
 
@@ -220,7 +220,7 @@ A klasszikus üzemi modell használatakor megadhatja a virtuális hálózat DNS-
 > [!NOTE]
 > Ha módosítja egy olyan virtuális hálózat vagy virtuális gép DNS-beállításait, amely már telepítve van, az új DNS-beállítások érvénybe léptetéséhez a DHCP-bérlet megújítását kell végrehajtania a virtuális hálózatban lévő összes érintett virtuális gépen. A Windows operációs rendszert futtató virtuális gépek esetén `ipconfig /renew` közvetlenül a virtuális gépen írhat be. A lépések az operációs rendszertől függően változnak. Tekintse meg az operációs rendszer típusának megfelelő dokumentációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Resource Manager telepítési modell:
 

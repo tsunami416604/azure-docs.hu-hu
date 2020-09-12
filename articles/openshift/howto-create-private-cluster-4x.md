@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056771"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505351"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
 
@@ -23,17 +23,35 @@ Ebben a cikkben előkészíti a környezetet a OpenShift 4 rendszerű Azure Red 
 > * Az előfeltételek beállítása és a szükséges virtuális hálózatok és alhálózatok létrehozása
 > * Fürt üzembe helyezése privát API-kiszolgálói végponttal és privát bejövő adatkezelővel
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-### <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
+### <a name="register-the-resource-providers"></a>Az erőforrás-szolgáltatók regisztrálása
 
-Ezután regisztrálnia kell az `Microsoft.RedHatOpenShift` erőforrás-szolgáltatót az előfizetésében.
+1. Ha több Azure-előfizetéssel rendelkezik, akkor a megfelelő előfizetés-azonosítót kell megadnia:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. Az erőforrás-szolgáltató regisztrálása `Microsoft.RedHatOpenShift` :
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Compute` :
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Storage` :
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beolvasása (nem kötelező)
 
@@ -63,7 +81,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
    CLUSTER=aro-cluster             # the name of your cluster
    ```
 
-1. **Erőforráscsoport létrehozása**
+1. **Hozzon létre egy erőforráscsoportot**
 
     Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az [az Group Create] [az-Group-Create] parancs használatával.
 
@@ -141,7 +159,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Tiltsa le az alhálózat magánhálózati végpontjának házirendjeit](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) a fő alhálózaton.** Ez szükséges ahhoz, hogy csatlakozni tudjon és kezelhesse a fürtöt.
+5. **[Tiltsa le az alhálózat magánhálózati végpontjának házirendjeit](../private-link/disable-private-link-service-network-policy.md) a fő alhálózaton.** Ez szükséges ahhoz, hogy csatlakozni tudjon és kezelhesse a fürtöt.
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -197,7 +215,7 @@ Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `ku
 }
 ```
 
-A fürt konzoljának URL-címét a következő parancs futtatásával érheti el, amely a következőképpen fog kinézni:`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+A fürt konzoljának URL-címét a következő parancs futtatásával érheti el, amely a következőképpen fog kinézni: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -207,7 +225,7 @@ A fürt konzoljának URL-címét a következő parancs futtatásával érheti el
 ```
 
 >[!IMPORTANT]
-> Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
+> Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](../virtual-network/virtual-network-peering-overview.md) .
 
 Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kubeadmin` hitelesítő adatok használatával.
 
@@ -230,7 +248,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
+> Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](../virtual-network/virtual-network-peering-overview.md) .
 
 Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. Cserélje le **\<kubeadmin password>** az t az imént beolvasott jelszóra.
 
@@ -238,7 +256,7 @@ Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs ha
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy, a OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtöt telepítettünk. Megtanulta végrehajtani az alábbi műveleteket:
 

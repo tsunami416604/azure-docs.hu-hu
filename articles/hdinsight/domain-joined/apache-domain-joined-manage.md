@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079734"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595784"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 
@@ -47,7 +47,7 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 Enterprise Security Package (korábbi nevén HDInsight Premium) többfelhasználós hozzáférést biztosít a fürthöz, ahol a hitelesítés az Apache Ranger és a tárolási ACL-ek (ADLS ACL-ek) által végzett Active Directory és engedélyezéssel történik. Az engedélyezés több felhasználó számára biztosít biztonságos határokat, és lehetővé teszi, hogy csak a jogosultsággal rendelkező felhasználók férhessenek hozzá az adataihoz az engedélyezési házirendek alapján.
 
-A biztonság és a felhasználók elkülönítése a HDInsight-fürtök esetében fontos a Enterprise Security Package. A követelmények teljesítése érdekében az SSH-hozzáférés a fürthöz Enterprise Security Package blokkolva van. Az alábbi táblázat az egyes fürtök ajánlott hozzáférési módszereit mutatja be:
+A biztonság és a felhasználók elkülönítése a HDInsight-fürtök esetében fontos a Enterprise Security Package. A követelmények kielégítése érdekében a fürthöz való SSH-hozzáférés Enterprise Security Package támogatott a fürt létrehozási idején kiválasztott helyi felhasználó, valamint a HRE-DS-ben (például Kerberos) elérhető felhasználók számára. Az alábbi táblázat az egyes fürtök ajánlott hozzáférési módszereit mutatja be:
 
 |Számítási feladat|Forgatókönyv|Hozzáférési módszer|
 |--------|--------|-------------|
@@ -171,7 +171,7 @@ A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkez
 2. A bal oldali menüben válassza a **szerepkörök**lehetőséget.
 3. A felhasználók és csoportok különböző szerepkörökhöz való hozzárendeléséhez válassza a **felhasználó hozzáadása** vagy a **Csoport hozzáadása** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A HDInsight-fürtök Enterprise Security Package-vel való konfigurálásával kapcsolatban lásd: [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md).
 - A kaptár-házirendek konfigurálásához és a kaptár-lekérdezések futtatásához lásd: [Apache Hive házirendek konfigurálása HDInsight-fürtökhöz ESP-vel](apache-domain-joined-run-hive.md).

@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590319"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469881"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (portál)
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -50,7 +50,7 @@ Navigáljon az **Áttekintés** elemre, és jegyezze fel az **alkalmazás (ügyf
 
 ## <a name="configure-optional-claims"></a>Nem kötelező jogcímek konfigurálása
 
-Az alkalmazások fejlesztői használhatják az Azure AD-alkalmazásokban [választható jogcímeket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) annak meghatározására, hogy mely jogcímeket szeretnék elküldeni az alkalmazásnak.
+Az alkalmazások fejlesztői használhatják az Azure AD-alkalmazásokban [választható jogcímeket](../active-directory/develop/active-directory-optional-claims.md) annak meghatározására, hogy mely jogcímeket szeretnék elküldeni az alkalmazásnak.
 
 A következő választható jogcímeket használhatja:
 
@@ -68,7 +68,7 @@ Navigáljon a **jogkivonat-konfiguráció (előzetes verzió)** elemre, és katt
 
 Az Azure Active Directory (Azure AD) bérlőben regisztrált alkalmazások alapértelmezés szerint a sikeres hitelesítést végző bérlő összes felhasználója számára elérhetők. Az Azure AD lehetővé teszi, hogy a bérlői rendszergazdák és fejlesztők egy alkalmazást a bérlőben lévő felhasználók vagy biztonsági csoportok meghatározott csoportjára korlátozzák.
 
-A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)kövesse az Azure Active Directory dokumentációjának utasításait.
+A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)kövesse az Azure Active Directory dokumentációjának utasításait.
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID-hitelesítés konfigurálása
 
@@ -100,7 +100,7 @@ A fürt konzoljának URL-címét a következő parancs futtatásával érheti el
 
 Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kubeadmin` hitelesítő adatok használatával.
 
-Lépjen az **Adminisztráció**elemre, kattintson a **fürt beállításai**elemre, majd válassza a **globális konfiguráció** fület. görgessen a **OAuth**elemre.
+Navigáljon az **Adminisztráció**elemre, kattintson a **fürt beállításai**elemre, majd válassza a **globális konfiguráció** fület. Görgessen a **OAuth**kiválasztásához.
 
 Görgessen le a **Hozzáadás** lehetőség kiválasztásához az **Identity Providers** területen, majd válassza az **OpenID Connect**elemet.
 ![Válassza az OpenID Connect lehetőséget az identitás-szolgáltatók legördülő listából](media/aro4-oauth-idpdrop.png)

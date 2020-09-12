@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: pont – hely kapcsolatok hibakeresése: Mac OS X-ügyfelek'
 description: Megtudhatja, hogyan lehet hibaelhárítási pont – hely kapcsolati problémákat Mac OS X rendszerről a natív VPN-ügyféllel és IKEv2.
 services: vpn-gateway
-author: kumudD
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030662"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442802"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Pont – hely típusú VPN-kapcsolatok hibakeresése Mac OS X VPN-ügyfelektől
 
@@ -25,7 +25,7 @@ Ez a cikk segítséget nyújt a Mac OS X pont – hely kapcsolati problémák hi
 * Operációs rendszer verziója (10,11 vagy újabb)
 
 
-## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a>Tanúsítványalapú hitelesítés – problémamegoldás
+## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a> Tanúsítványalapú hitelesítés – problémamegoldás
 1. Keresse meg a VPN-ügyfél beállításait. Nyissa meg a **hálózati beállítást** a Command + Shift billentyűkombináció lenyomásával, majd írja be a "VPN" parancsot a VPN-ügyfél beállításainak ellenőrzéséhez. A listából válassza ki a vizsgálni kívánt VPN-bejegyzést.
 
    ![IKEv2 tanúsítvány alapú hitelesítés](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
@@ -62,5 +62,5 @@ Ha kipróbálja az előző lépéseket, és minden megfelelően van konfigurálv
   
 3. Ha nincs kiszolgálói válasz a hálózati nyomkövetéseken, ellenőrizze, hogy engedélyezve van-e a IKEv2 protokoll az Azure Gateway Configuration lapon a Azure Portal webhelyén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További segítségért lásd: [Microsoft ügyfélszolgálata](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

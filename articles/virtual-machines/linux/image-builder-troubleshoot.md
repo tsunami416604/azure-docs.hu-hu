@@ -3,16 +3,16 @@ title: Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 description: Az Azure VM rendszerkép-készítő szolgáltatás használata során felmerülő gyakori problémák és hibák elhárítása
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 09/03/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068200"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459929"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 
@@ -502,6 +502,28 @@ Az ok a D1_V2 VM-méret miatti időzítési probléma lehet. Ha a testreszabáso
 
 Növelje a virtuális gép méretét. Emellett az időzítési probléma elkerülése érdekében hozzáadhat egy 60-másodperces PowerShell-alvási testreszabást is.
 
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>Build megszakítása a környezet lemondási környezetének megszakítása után
+
+#### <a name="error"></a>Hiba
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>Ok
+A rendszerkép-készítő szolgáltatás a 22-es (Linux) vagy a 5986 (Windows) portot használja a Build virtuális géphez való csatlakozáshoz. Ez akkor fordul elő, ha a szolgáltatás leválasztása a virtuális gép létrehozásához a rendszerkép létrehozásakor történik. A leválasztás okai eltérőek lehetnek, de a parancsfájlok engedélyezése vagy konfigurálása a fenti portok blokkolását is lehetővé teszi.
+
+#### <a name="solution"></a>Megoldás
+Tekintse át a tűzfalak változásait/engedélyezését, illetve az SSH vagy a WinRM módosítását, és győződjön meg arról, hogy a módosítások lehetővé teszik a szolgáltatás közötti állandó kapcsolódást és a virtuális gép kiépítését a fenti portokon. A rendszerkép-készítő hálózatkezeléssel kapcsolatos további információkért tekintse át a [követelményeket](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+
 ## <a name="devops-task"></a>DevOps-feladat 
 
 ### <a name="troubleshooting-the-task"></a>A feladat hibaelhárítása
@@ -633,11 +655,11 @@ Ha erre az útmutatóra hivatkozik, és továbbra sem tudja elhárítani a probl
 Az eset termék kiválasztása:
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).

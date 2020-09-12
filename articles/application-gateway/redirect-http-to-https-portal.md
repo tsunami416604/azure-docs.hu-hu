@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804349"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594815"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
 
@@ -20,14 +20,13 @@ A Azure Portal használatával létrehozhat egy [Application Gateway](overview.m
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Önaláírt tanúsítvány létrehozása
-> * Hálózat beállítása
-> * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Figyelő és átirányítási szabály hozzáadása
-> * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
+* Önaláírt tanúsítvány létrehozása
+* Hálózat beállítása
+* Alkalmazásátjáró létrehozása a tanúsítvánnyal
+* Figyelő és átirányítási szabály hozzáadása
+* Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -126,7 +125,7 @@ Először adja hozzá a *myListener* nevű figyelőt a 80-es porthoz.
 6. **Átirányítási cél**esetén válassza a **figyelő**lehetőséget.
 7. Győződjön meg arról, hogy a **cél figyelő** **appGatewayHttpListener**van beállítva.
 8. A **belefoglalási lekérdezési karakterlánc** és az **elérési út** beállításnál válassza az *Igen*lehetőséget.
-9. Válassza a **Hozzáadás** elemet.
+9. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
@@ -146,7 +145,7 @@ Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, a
 12. A **hálózatkezelés**területen győződjön meg arról, hogy a terheléselosztási **beállítások** beállítás értéke **Application Gateway**.
 13. Győződjön meg arról, hogy az **Application Gateway** **myAppGateway**van beállítva.
 14. Győződjön meg arról, hogy az **alhálózat** **myBackendSubnet**értékre van beállítva.
-15. Válassza a **Létrehozás** lehetőséget.
+15. Kattintson a **Létrehozás** gombra.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>A méretezési csoport hozzárendelése a megfelelő háttér-készlethez
 
@@ -173,7 +172,7 @@ Végül frissítenie kell a méretezési csoport ezeket a módosításokat.
 2. A **Beállítások** alatt válassza a **Példányok** lehetőséget.
 3. Jelölje ki mindkét példányt, majd válassza a **frissítés**lehetőséget.
 4. Válassza az **Igen** lehetőséget a megerősítéshez.
-5. Ezt követően térjen vissza a **myAppGateway** , és válassza a **háttérbeli készletek**elemet. Ekkor látnia kell, hogy a **appGatewayBackendPool** két célponttal rendelkezik, és a **myAppGatewaymyvmss** nulla célponttal rendelkezik.
+5. Ezt követően térjen vissza a **myAppGateway** , és válassza a **háttérbeli készletek**elemet. Ekkor látnia kell, hogy a **appGatewayBackendPool** két célponttal rendelkezik, és a  **myAppGatewaymyvmss** nulla célponttal rendelkezik.
 6. Válassza a **myAppGatewaymyvmss**lehetőséget, majd válassza a **Törlés**lehetőséget.
 7. Válassza az **OK** lehetőséget a megerősítéshez.
 
@@ -223,6 +222,6 @@ Az alkalmazás nyilvános IP-címét az Application Gateway – áttekintés old
 
    ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [hozhat létre egy belső átirányítással rendelkező Application Gateway-átjárót](redirect-internal-site-powershell.md).

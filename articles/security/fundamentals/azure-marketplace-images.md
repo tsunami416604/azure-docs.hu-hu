@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038273"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536382"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-rendszerképekhez
 
@@ -39,8 +39,8 @@ Az elküldés előtt mindig futtasson biztonsági sebezhetőségi észlelést a 
 | Biztonság                                                     | Kerülje az LVM használatát.                                                                                                                                                                                                                                            |
 | Biztonság                                                     | Adja meg a szükséges kódtárak legújabb verzióit: </br> -OpenSSL 1.0 vagy újabb verzió </br> -Python 2,5 vagy újabb (Python 2.6 + ajánlott) </br> -Python pyasn1-csomag, ha még nincs telepítve </br> -d. OpenSSL v 1,0 vagy újabb                                                                |
 | Biztonság                                                     | A bash/shell History bejegyzéseinek törlése.                                                                                                                                                                                                                                             |
-| Hálózatkezelés                                                   | Adja meg az SSH-kiszolgálót alapértelmezetten. Állítsa be az SSH-t életben az sshd-konfigurációba a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
-| Hálózatkezelés                                                   | Távolítsa el az egyéni hálózati konfigurációt a rendszerképből. Törölje a resolv. conf fájlt: `rm /etc/resolv.conf` .                                                                                                                                                                                |
+| Hálózat                                                   | Adja meg az SSH-kiszolgálót alapértelmezetten. Állítsa be az SSH-t életben az sshd-konfigurációba a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
+| Hálózat                                                   | Távolítsa el az egyéni hálózati konfigurációt a rendszerképből. Törölje a resolv. conf fájlt: `rm /etc/resolv.conf` .                                                                                                                                                                                |
 | Üzembe helyezés                                                   | Telepítse a legújabb Azure Linux-ügynököt.</br> -Telepítés az RPM vagy a deb csomag használatával.  </br> – A manuális telepítési folyamat is használható, de a telepítő csomagok ajánlottak és előnyben részesítettek. </br> – Ha manuálisan telepíti az ügynököt a GitHub-tárházból, először másolja `waagent` `/usr/sbin` és futtassa a fájlt (root néven): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Az ügynök konfigurációs fájlját a rendszer a következő helyen helyezi el: `/etc/waagent.conf` . |
 | Üzembe helyezés                                                   | Győződjön meg arról, hogy az Azure-támogatás szükség esetén a soros konzol kimenetével biztosíthatja partnereit, és megfelelő időkorlátot biztosít a Felhőbeli tároló operációsrendszer-lemez csatlakoztatásához. Adja hozzá a következő paramétereket a rendszerkép kernel rendszerindítási sorához: `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` . |
 | Üzembe helyezés                                                   | Nincs lapozófájl-partíció az operációsrendszer-lemezen. A felcserélés a Linux-ügynök által a helyi erőforrás lemezén történő létrehozáshoz kérhető le.         |
@@ -65,11 +65,3 @@ Az elküldés előtt mindig futtasson biztonsági sebezhetőségi észlelést a 
 
 Ha a szervezet nem rendelkezik rendszerképekkel az Azure Marketplace-en, érdemes megfontolnia a Windows-és Linux-lemezképek konfigurációjának ellenőrzését ezen javaslatok alapján.
 
-## <a name="contacting-customers"></a>Kapcsolatfelvétel az ügyfelekkel
-
-Ügyfelek és kapcsolattartási e-mailek azonosítása:
-
-1.  Cloud Partner Portal a bal oldali vasúton **válassza az**eredmények elemet.
-2.  A **megrendelések és használat** lapon a **kezdési dátum** és a **Befejezés dátuma** mezők használatával kérdezheti le a szükséges dátumtartományt a használaton belül. Ez azt mutatja, hogy mely Azure-előfizetések lettek felhasználva az ajánlathoz napi rendszerességgel. Exportálja ezeket az adatfájlokat. 
-3.  Hasonlóképpen, az **ügyfél** lapon kérdezheti le és exportálhatja az ügyfél alapjait.
-4.  A szükséges ügyfél-információk megkereséséhez a 2. lépésben szereplő előfizetés-azonosítót kell megegyeznie a 3. lépésben szereplő előfizetés-AZONOSÍTÓval.

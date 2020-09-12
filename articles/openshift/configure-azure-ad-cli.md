@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590336"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469422"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (CLI)
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.6.0 vagy újabb verziójának kell futnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.6.0 vagy újabb verziójának kell futnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 A Azure Active Directory alkalmazás konfigurálásához használni kívánt fürtözött URL-címek beolvasása.
 
@@ -66,7 +66,7 @@ Ehhez ehhez hasonlót kell kapnia. Jegyezze fel, mert ez a **TenantId** , amelyr
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>Jegyzékfájl létrehozása az azonosító jogkivonatban szerepeltetni kívánt választható jogcímek meghatározásához
 
-Az alkalmazások fejlesztői használhatják az Azure AD-alkalmazásokban [választható jogcímeket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) annak meghatározására, hogy mely jogcímeket szeretnék elküldeni az alkalmazásnak.
+Az alkalmazások fejlesztői használhatják az Azure AD-alkalmazásokban [választható jogcímeket](../active-directory/develop/active-directory-optional-claims.md) annak meghatározására, hogy mely jogcímeket szeretnék elküldeni az alkalmazásnak.
 
 A következő választható jogcímeket használhatja:
 
@@ -127,7 +127,7 @@ az ad app permission add \
 
 Az Azure Active Directory (Azure AD) bérlőben regisztrált alkalmazások alapértelmezés szerint a sikeres hitelesítést végző bérlő összes felhasználója számára elérhetők. Az Azure AD lehetővé teszi, hogy a bérlői rendszergazdák és fejlesztők egy alkalmazást a bérlőben lévő felhasználók vagy biztonsági csoportok meghatározott csoportjára korlátozzák.
 
-A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)kövesse az Azure Active Directory dokumentációjának utasításait.
+A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)kövesse az Azure Active Directory dokumentációjának utasításait.
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID-hitelesítés konfigurálása
 

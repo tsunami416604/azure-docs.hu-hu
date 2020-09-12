@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187277"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440507"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -83,7 +83,7 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 
 -    A projektek/csomagok SSIS-adatbázisának (SSISDB) üzemeltetéséhez a Azure SQL Database három további konfigurációjának/változatának támogatása:
 -    SQL Database virtuális hálózati szolgáltatásbeli végpontokkal
--    Felügyelt SQL-példány
+-    SQL Managed Instance
 -    Rugalmas készlet
 -    Egy klasszikus virtuális hálózatra épülő Azure Resource Manager virtuális hálózat támogatása a jövőben elavulttá válik, ami lehetővé teszi az Azure-SSIS integrációs modul beléptetését vagy csatlakoztatását egy, a virtuális hálózati szolgáltatás végpontokkal/MI/helyszíni adateléréssel SQL Database konfigurált virtuális hálózathoz. További információkért lásd még: [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Azure Active Directory-(Azure AD-) hitelesítés és SQL-hitelesítés támogatása a SSISDB való kapcsolódáshoz, az Azure AD-hitelesítés engedélyezése a Data Factory felügyelt identitásával az Azure-erőforrásokhoz
@@ -190,7 +190,7 @@ Ha a Microsoft segítséget vagy hibaelhárítást biztosít az adatfolyamatokka
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>A Data Factory más 90 adatkészlet-típusaival Hogyan a hozzáférési adatokat?
 
-A leképezési adatfolyam funkció jelenleg lehetővé teszi Azure SQL Database, Azure SQL Data Warehouse, tagolt szövegfájlok használatát az Azure Blob Storage-ból vagy a Azure Data Lake Storage Gen2-ból, valamint a blob Storage-ból származó, illetve a forrás-és a fogadó Data Lake Storage Gen2 natív módon. 
+A leképezési adatfolyam funkció jelenleg lehetővé teszi az Azure SQL Database, az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse), az Azure Blob Storage-ból vagy a Azure Data Lake Storage Gen2-ból származó, határolt szövegfájlok és a a blob Storage-ból származó, illetve a forrás-és fogadó Data Lake Storage Gen2 natív módon történő használatát 
 
 A másolási tevékenység használatával a többi összekötőtől származó adatok is megadhatók, majd az adatok átalakítását követően végrehajthat egy adatfolyam-tevékenységet. Például a folyamat először a blob Storage-ba másol, majd egy adatfolyam-tevékenység egy adatkészletet fog használni a forrásban az adatátalakításhoz.
 
@@ -220,7 +220,7 @@ A huzavona-adatfolyam jelenleg támogatott a következő régiókban létrehozot
 * USA nyugati középső régiója
 * Nyugat-Európa
 * USA nyugati régiója
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Milyen korlátozások és korlátozások vonatkoznak a huzavona-adatfolyamra?
 
@@ -252,7 +252,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * rövid
 * double
 * valós szám
-* lebegőpontos
+* float
 * char
 * NCHAR
 * varchar
@@ -260,7 +260,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * egész szám
 * int
 * bit
-* logikai
+* boolean
 * smallint
 * tinyint
 * bigint
@@ -276,7 +276,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 
 A jövőben más adattípusok is támogatottak lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adat-előállító létrehozásával kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
 - [Gyors útmutató: adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md)

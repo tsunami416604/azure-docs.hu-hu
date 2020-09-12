@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3399138ef7c14dd2db9133334a08b3984bd26448
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186001"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426333"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrálás az Orchestratorből az Azure Automationbe (bétaverzió)
 
@@ -20,7 +20,7 @@ A [Service Management Automation](/previous-versions/system-center/system-center
 
 ## <a name="download-the-orchestrator-migration-toolkit"></a>A Orchestrator áttelepítési eszközkészlet letöltése
 
-Az áttelepítés első lépése a [System Center Orchestrator áttelepítési eszközkészlet](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all)letöltése. Ez az eszközkészlet olyan eszközöket tartalmaz, amelyek segítséget nyújtanak a runbookok Orchestrator-ről Azure Automationra való átalakításában.  
+Az áttelepítés első lépése a [System Center Orchestrator áttelepítési eszközkészlet](https://www.microsoft.com/download/details.aspx?id=47323)letöltése. Ez az eszközkészlet olyan eszközöket tartalmaz, amelyek segítséget nyújtanak a runbookok Orchestrator-ről Azure Automationra való átalakításában.  
 
 ## <a name="import-the-standard-activities-module"></a>A standard tevékenységek modul importálása
 

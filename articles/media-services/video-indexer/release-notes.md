@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837309"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505338"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -29,6 +29,16 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="august-2020"></a>2020. augusztus
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>Mobil kialakítás a Video Indexer webhelyhez
+
+A Video Indexer webhely felhasználói felülete mostantól támogatja a mobileszközök támogatását. A felhasználói élmény rugalmasan alkalmazkodik a mobil képernyő méretéhez (a testreszabási felület nélkül). 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>A kisegítő lehetőségek fejlesztése és hibajavítások 
+
+A WCAG (webtartalom-kisegítő irányelvek) részeként a Video Indexer webhely tapasztalatai a C kategóriába vannak igazítva a Microsoft Accessibility standard részeként. A billentyűzettel való navigálással, a programozott hozzáféréssel és a képernyőolvasóval kapcsolatos számos hiba és javítás megoldódott. 
 
 ## <a name="july-2020"></a>2020. július
 
@@ -129,7 +139,7 @@ A fiók törlése művelettel mostantól 90 napon belül törli a fiókot, 48 ó
  
 ### <a name="new-video-indexer-github-repository"></a>Új Video Indexer GitHub-adattár
 
-Mostantól elérhető egy új Video Indexer GitHub különböző projektekkel, az első lépéseket ismertető útmutatók és a kód példákkal:https://github.com/Azure-Samples/media-services-video-indexer
+Mostantól elérhető egy új Video Indexer GitHub különböző projektekkel, az első lépéseket ismertető útmutatók és a kód példákkal: https://github.com/Azure-Samples/media-services-video-indexer
  
 ### <a name="swagger-update"></a>Hencegő frissítés
 
@@ -289,6 +299,6 @@ Az [Update video ÁTIRAT API](https://api-portal.videoindexer.ai/docs/services/O
 
 A már támogatott lezárt feliratozási formátum (SRT, VTT és TTML) mellett a Video Indexer mostantól támogatja az átirat TXT-és CSV-formátumokban való letöltését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](video-indexer-overview.md)

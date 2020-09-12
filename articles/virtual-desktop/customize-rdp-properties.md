@@ -3,15 +3,15 @@ title: RDP-tulajdonságok testreszabása a PowerShell használatával – Azure
 description: A Windows rendszerű virtuális asztal RDP-tulajdonságainak testreszabása PowerShell-parancsmagokkal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009103"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462224"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP protokoll (RDP) tulajdonságainak testreszabása
 
@@ -21,6 +21,16 @@ ms.locfileid: "88009103"
 A gazdagépek RDP protokoll (RDP) tulajdonságainak (például a többmonitoros élmény és a hangátirányítás) testreszabása lehetővé teszi, hogy a felhasználók igényei alapján optimális élményt nyújtson a felhasználóknak. Az RDP-tulajdonságokat a Windows rendszerű virtuális asztali számítógépeken a Azure Portal vagy az **Update-AzWvdHostPool** parancsmag *-CustomRdpProperty* paraméter használatával szabhatja testre.
 
 A támogatott tulajdonságok és az alapértelmezett értékek teljes listájáért tekintse meg a [támogatott RDP-fájlok beállításait](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+
+## <a name="default-rdp-file-properties"></a>Az RDP-fájl alapértelmezett tulajdonságai
+
+Az RDP-fájlok alapértelmezés szerint a következő tulajdonságokkal rendelkeznek:
+
+|RDP-tulajdonság|Asztali számítógépen|RemoteAppként|
+|---|---|---|
+|Többszörös figyelési mód|Engedélyezve|N/A|
+|Meghajtó-átirányítások engedélyezve|Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák|Meghajtók, vágólap és nyomtatók|
+|Távoli hang mód|Helyi lejátszás|Helyi lejátszás|
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,7 +121,7 @@ Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő útmutatókból megtudhatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

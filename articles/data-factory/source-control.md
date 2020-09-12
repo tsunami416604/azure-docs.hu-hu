@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949133"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595084"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Az alábbi példák olyan helyzetekre mutatnak, amelyek elavult közzétételi �
 
 ## <a name="switch-to-a-different-git-repository"></a>Váltás másik git-tárházra
 
-Ha másik git-tárházra szeretne váltani, kattintson a git-adattár **beállításai** ikonra a Data Factory áttekintés oldal jobb felső sarkában. Ha nem látja az ikont, törölje a helyi böngésző gyorsítótárát. Válassza ki az ikont az aktuális tárház társításának eltávolításához.
+Ha másik git-tárházra szeretne váltani, lépjen a git-konfiguráció lapra a felügyeleti központ **forrás vezérlőelem**területén. Válassza a **Leválasztás**lehetőséget. 
 
-![Git ikon](media/author-visually/remove-repo.png)
+![Git ikon](media/author-visually/remove-repository.png)
 
-Ha megjelenik az adattár beállításai ablaktábla, válassza a **git eltávolítása**lehetőséget. Adja meg az adatelőállító nevét, és kattintson a **Confirm (megerősítés** ) gombra az adatgyárhoz társított git-tárház eltávolításához.
+Adja meg az adatelőállító nevét, és kattintson a **Confirm (megerősítés** ) gombra az adatgyárhoz társított git-tárház eltávolításához.
 
-![Az aktuális git-tárház társításának eltávolítása](media/author-visually/remove-repo2.png)
+![Az aktuális git-tárház társításának eltávolítása](media/author-visually/remove-repository-2.png)
 
 Miután eltávolította az aktuális tárházhoz való társítást, beállíthatja, hogy a git-beállítások egy másik tárházat használjanak, majd meglévő Data Factory erőforrásokat importáljon az új tárházba.
 

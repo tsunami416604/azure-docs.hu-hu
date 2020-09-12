@@ -7,24 +7,23 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806032"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595272"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással az Azure PowerShell használatával
 
-Az Azure PowerShell használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat az [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben a cikkben a [virtuálisgép-méretezési](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)csoportok használatával hoz létre háttér-készleteket. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
+Az Azure PowerShell használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat az [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben a cikkben a  [virtuálisgép-méretezési](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)csoportok használatával hoz létre háttér-készleteket. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
+* A hálózat beállítása
+* Application Gateway létrehozása
+* Figyelők és útválasztási szabályok hozzáadása
+* Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
 
 A következő példában a 8080-as és a 8081-es portról egyaránt érkezik webhelyforgalom, amely ugyanazokra a háttérkészletekre lesz átirányítva:
 
@@ -32,7 +31,7 @@ A következő példában a 8080-as és a 8081-es portról egyaránt érkezik web
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-url-redirect-cli.md)használatával végezheti el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +39,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az eljáráshoz a Azure PowerShell modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával.  
 
@@ -509,14 +508,14 @@ Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/video/test.htm értékr
 
 Most módosítsa az URL-címet a http://&lt;ip-cím&gt;:8081/images/test.htm értékre, és az &lt;ip-cím&gt; helyére írja be a saját IP-címét. Ekkor azt kellene látnia, hogy a forgalom vissza lesz irányítva a képek háttérkészletére, amely a http://&lt;ip-cím&gt;:8080/images címen található.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)

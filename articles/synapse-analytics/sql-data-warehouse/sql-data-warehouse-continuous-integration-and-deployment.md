@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 131811ffd268f001a047a7031170f0723770d24c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213567"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462326"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Az adattárházak folyamatos integrációja és üzembe helyezése
 
@@ -44,13 +44,13 @@ Ez az egyszerű oktatóanyag azt ismerteti, hogyan integrálható a SQL Server A
 
 Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügyeleti tárház főágának beadása automatikusan elindítja az adatbázis-projekt sikeres Visual Studio-buildjét. Ellenőrizze, hogy az automatizálás működik-e, ha módosítja a helyi adatbázis-projektet, és ellenőrzi, hogy a változás a fő ágra esik-e.
 
-## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Folyamatos üzembe helyezés a Azure SQL Data Warehouse-(vagy adatbázis-) telepítési feladattal
+## <a name="continuous-deployment-with-the-azure-synapse-analytics-or-database-deployment-task"></a>Folyamatos üzembe helyezés az Azure szinapszis Analytics-(vagy adatbázis-) telepítési feladattal
 
-1. Vegyen fel egy új feladatot a [Azure SQL Database központi telepítési feladattal](/azure/devops/pipelines/targets/azure-sqldb) , és töltse ki a szükséges mezőket a cél adattárházhoz való kapcsolódáshoz. A feladat futtatásakor a rendszer az előző összeállítási folyamatból generált DACPAC telepíti a cél adattárházba. Használhatja a [Azure SQL Data Warehouse központi telepítési feladatot](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)is.
+1. Vegyen fel egy új feladatot a [Azure SQL Database központi telepítési feladattal](/azure/devops/pipelines/targets/azure-sqldb) , és töltse ki a szükséges mezőket a cél adattárházhoz való kapcsolódáshoz. A feladat futtatásakor a rendszer az előző összeállítási folyamatból generált DACPAC telepíti a cél adattárházba. Az [Azure szinapszis Analytics üzembe helyezési feladatát](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)is használhatja.
 
       ![Üzembe helyezési feladat](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Üzembe helyezési feladat")
 
-2. Ha önkiszolgáló ügynököt használ, győződjön meg róla, hogy a környezeti változót a SQL Data Warehouse megfelelő SqlPackage.exe használatára állítja be. Az elérési útnak a következőhöz hasonlóan kell kinéznie:
+2. Ha önkiszolgáló ügynököt használ, győződjön meg róla, hogy a környezeti változót az Azure szinapszis Analytics megfelelő SqlPackage.exe használatára állítja be. Az elérési útnak a következőhöz hasonlóan kell kinéznie:
 
       ![Környezeti változó](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Környezeti változó")
 
@@ -58,7 +58,7 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
    A folyamat futtatása és ellenőrzése. Helyben végezheti a módosításokat, és ellenőrizheti a verziókövetés módosításait, amelyeknek automatikus buildet és üzembe helyezést kell létrehozniuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [SZINAPSZIS SQL Pool MPP architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
 - [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)

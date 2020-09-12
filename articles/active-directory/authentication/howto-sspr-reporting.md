@@ -9,14 +9,14 @@ ms.date: 02/01/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9118a99f285dedfe0b76e890db001627e4f85969
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717727"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657135"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -169,7 +169,7 @@ A következő lista részletesen ismerteti ezt a tevékenységet:
      >[!NOTE]
      >A hiba nem jelenti azt, hogy a felhasználó nem tudja visszaállítani a saját jelszavát. Ez azt jelenti, hogy nem fejezték be a regisztrációs folyamatot. Ha a fiókjában nem ellenőrzött adatok szerepelnek, például a telefonszámot, amely nincs érvényesítve, még akkor is, ha nem ellenőrizte ezt a telefonszámot, továbbra is használhatja a jelszavát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SSPR és MFA-használati és-bejelentési jelentések](howto-authentication-methods-usage-insights.md)
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)

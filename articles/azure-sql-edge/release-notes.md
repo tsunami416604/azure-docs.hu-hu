@@ -9,28 +9,49 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/04/2020
+ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553410"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500351"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
 Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét.
 
+## <a name="ctp-23"></a>CTP 2,3
+### <a name="sql-engine-build-number---15020001549"></a>SQL Engine Build száma – 15.0.2000.1549
+### <a name="whats-new"></a>Újdonságok
+1. Egyéni eredetek támogatása a Date_Bucket () függvényben. 
+2. A BacPac-fájlok támogatása az SQL-telepítés részeként.
+3. Adatmegőrzési szabályzaton alapuló tisztítás támogatása.      
+   - DDL-támogatás adatmegőrzési szabályzat engedélyezéséhez 
+   - Tárolt eljárások és a háttérben végzett törlési feladat törlése
+   - Kibővített események a karbantartási feladatok figyeléséhez
+
+### <a name="fixes"></a>Javítások
+1. További hibaüzenetek és részletek a TSQL adatfolyam-továbbítási műveleteivel kapcsolatos hibák elhárításához. 
+2. Imporvements az akkumulátor élettartamának üresjárati módban való megőrzéséhez. 
+3. TSQL streaming Engine-javítások: 
+   - Az elakadt vízjel-probléma kijavítása a alstreamben lévő ugráló ablakmal 
+   - Javítsa ki a keretrendszer kivétel-kezelését, hogy a rendszer a felhasználó által végrehajtható hiba miatt begyűjtse
+
+
 ## <a name="ctp-22"></a>CTP 2,2
 ### <a name="sql-engine-build-number---15020001546"></a>SQL Engine Build száma – 15.0.2000.1546
-### <a name="fixes"></a>Javítások
+### <a name="whats-new"></a>Újdonságok
 1. Nem legfelső szintű tárolók támogatása 
 2. A használati és diagnosztikai adatok gyűjtésének támogatása 
 3. A T-SQL streaming frissítései
    - Unicode-karakterek támogatása a stream-objektumok neveinél
+
+### <a name="fixes"></a>Javítások
+1. A T-SQL streaming frissítései
    - Folyamatok tisztításának fejlesztése
    - A naplózás és a diagnosztika fejlesztése
-4. Az adatfeldolgozás teljesítményének növelése
+2. Az adatfeldolgozás teljesítményének növelése
 
 ## <a name="ctp-21"></a>CTP 2,1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL Engine Build száma – 15.0.2000.1545

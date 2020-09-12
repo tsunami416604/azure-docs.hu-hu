@@ -1,6 +1,6 @@
 ---
 title: Adatok átalakítása
-description: Megtudhatja, hogyan alakíthatja át az adatgyűjtési és-feldolgozási Azure Data Factory Hadoop, Machine Learning vagy Azure Data Lake Analytics használatával.
+description: Az adatátalakítást vagy az adatfeldolgozást Azure Data Factory Hadoop, Machine Learning vagy Azure Data Lake Analytics használatával.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606614"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442785"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryben
 
@@ -78,7 +78,7 @@ Idővel a Machine Learning pontozási kísérletek prediktív modelljeit új bem
 A Machine Learning tevékenységekkel kapcsolatos részletekért tekintse meg [Machine learning tevékenységek használata](transform-data-using-machine-learning.md) című témakört. 
 
 ### <a name="stored-procedure-activity"></a>Tárolt eljárási tevékenység
-A Data Factory folyamat SQL Server tárolt eljárás tevékenységében tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure SQL Data Warehouse, SQL Server adatbázis a vállalatában vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](transform-data-using-stored-procedure.md) szóló cikket.  
+A Data Factory folyamat SQL Server tárolt eljárása tevékenységgel egy tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse), SQL Server adatbázis a vállalatban vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](transform-data-using-stored-procedure.md) szóló cikket.  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Data Lake Analytics tevékenység
 Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürtön. Részletekért lásd: [adatelemzési U-SQL-tevékenység](transform-data-using-data-lake-analytics.md) . 
@@ -108,5 +108,5 @@ Hozzon létre egy társított szolgáltatást a számítási környezethez, majd
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](compute-linked-services.md) című cikket. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő oktatóanyagot, amely egy átalakítási tevékenység használatát szemlélteti: [oktatóanyag: az adatgyűjtés a Spark használatával](tutorial-transform-data-spark-powershell.md)

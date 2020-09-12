@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066532"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658198"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vész-helyreállítási Azure Logic Apps
 
@@ -69,7 +69,7 @@ Ez a példa az előző elsődleges és másodlagos logikai alkalmazás példány
 
 ## <a name="connections-to-resources"></a>Erőforrások kapcsolatai
 
-A Azure Logic Apps [beépített eseményindítókat és műveleteket biztosít, valamint több száz felügyelt összekötőt](../connectors/apis-list.md) , amelyeket a logikai alkalmazás használhat más alkalmazásokkal, szolgáltatásokkal, rendszerekkel és egyéb erőforrásokkal, például Azure Storage-fiókokkal, SQL Server adatbázisokkal, Office 365 Outlook e-mail fiókokkal és így tovább. Ha a logikai alkalmazásnak hozzá kell férnie ezekhez az erőforrásokhoz, olyan kapcsolatokat hoz létre, amelyek hitelesítik a hozzáférést ezekhez az erőforrásokhoz. Az egyes kapcsolatok egy különálló Azure-erőforrás, amely egy adott helyen található, és más hely erőforrásai nem használhatók.
+A Azure Logic Apps [beépített eseményindítókat és műveleteket biztosít, valamint több száz felügyelt összekötőt](../connectors/apis-list.md) , amelyeket a logikai alkalmazás használhat más alkalmazásokkal, szolgáltatásokkal, rendszerekkel és egyéb erőforrásokkal, például Azure Storage-fiókokkal, SQL Server adatbázisokkal, munkahelyi vagy iskolai e-mail-fiókokkal és így tovább. Ha a logikai alkalmazásnak hozzá kell férnie ezekhez az erőforrásokhoz, olyan kapcsolatokat hoz létre, amelyek hitelesítik a hozzáférést ezekhez az erőforrásokhoz. Az egyes kapcsolatok egy különálló Azure-erőforrás, amely egy adott helyen található, és más hely erőforrásai nem használhatók.
 
 A vész-helyreállítási stratégia esetében vegye figyelembe azokat a helyeket, ahol a függő erőforrások a logikai alkalmazás példányaihoz képest léteznek:
 
@@ -102,8 +102,8 @@ Beállíthatja az elsődleges és a másodlagos helyet, hogy a logikai alkalmaz�
 
 | Elsődleges – másodlagos szerepkör | Description |
 |------------------------|-------------|
-| *Aktív – aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
-| *Aktív – passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
+| *Aktív-aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
+| *Aktív-passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
 | Kombinációja | Egyes logikai alkalmazások aktív-aktív szerepkört játszanak, míg más logikai alkalmazások aktív-passzív szerepet játszanak. |
 |||
 
@@ -346,7 +346,7 @@ Beállíthat naplózást a logikai alkalmazás futtatásához, és elküldheti a
   * [Azure Blob Storage vész-helyreállítási és-fiók feladatátvétele](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure Event Hubs geo – vész-helyreállítás](../event-hubs/event-hubs-geo-dr.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A rugalmasság áttekintése az Azure-ban](/azure/architecture/framework/resiliency/overview)
 * [Az egyes Azure-szolgáltatások rugalmasságára vonatkozó ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)

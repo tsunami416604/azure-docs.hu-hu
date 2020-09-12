@@ -1,18 +1,18 @@
 ---
-title: Áttelepítés Azure Red Hat OpenShift 3,11-ről Azure Red Hat OpenShift 4-re
-description: Áttelepítés Azure Red Hat OpenShift 3,11-ről Azure Red Hat OpenShift 4-re
+title: Migrálás az Azure Red Hat OpenShift 3.11-es verziójáról az Azure Red Hat OpenShift 4-es verziójára
+description: Migrálás az Azure Red Hat OpenShift 3.11-es verziójáról az Azure Red Hat OpenShift 4-es verziójára
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: Migrálás, ARO, openshift, Red Hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513187"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469745"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrálás az Azure Red Hat OpenShift 3,11-ről az Azure Red Hat OpenShift 4-re
 
@@ -81,7 +81,7 @@ Egy Azure Red Hat OpenShift-fürt létrehozásakor létrejön egy ideiglenes ren
 
 Az Azure Red Hat OpenShift 4 néhány különböző operátort használ a hálózat beállításához a fürtben: a [fürt hálózati kezelője](https://docs.openshift.com/aro/4/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), a [DNS-operátor](https://docs.openshift.com/aro/4/networking/dns-operator.html)és a [Bejövő forgalom kezelője](https://docs.openshift.com/aro/4/networking/ingress-operator.html). Az Azure Red Hat OpenShift 4 fürt hálózatkezelésének beállításával kapcsolatos további információkért tekintse meg a hálózatkezelés [diagramot](concepts-networking.md) és a [hálózatkezelés megismerését](https://docs.openshift.com/aro/4/networking/understanding-networking.html)ismertető témakört.
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 Az Azure Red Hat OpenShift 4 a következő PersistentVolume beépülő modulokat támogatja:
 
 - AWS rugalmas blokk-tároló (EBS)
@@ -100,7 +100,7 @@ A tárolási típusok konfigurálásával kapcsolatos információkért lásd: a
 
 Az Azure Red Hat OpenShift 4 képes képeket készíteni a forráskódból, üzembe helyezheti és felügyelheti az életciklusát. Ennek engedélyezéséhez az Azure Red Hat OpenShift 4 [belső, integrált tároló lemezkép-regisztrációs adatbázist](https://docs.openshift.com/aro/4/registry/registry-options.html) biztosít, amely az Azure Red Hat OpenShift-környezetben üzembe helyezhető a lemezképek helyi kezeléséhez.
 
-Ha külső beállításjegyzékeket használ, például a [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/), a [Red Hat Quay-jegyzékeket](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)vagy egy [hitelesítést engedélyező Red Hat-regisztrációt](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), kövesse a hitelesítő adatok megadásához szükséges lépéseket a fürt számára, hogy a fürt hozzáférjen a tárházhoz.
+Ha külső beállításjegyzékeket használ, például a [Azure Container Registry](../container-registry/index.yml), a [Red Hat Quay-jegyzékeket](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)vagy egy [hitelesítést engedélyező Red Hat-regisztrációt](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), kövesse a hitelesítő adatok megadásához szükséges lépéseket a fürt számára, hogy a fürt hozzáférjen a tárházhoz.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -126,6 +126,5 @@ az openshift delete --name $CLUSTER_NAME
                     [--subscription]
                     [--yes]
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Red Hat által biztosított Azure Red Hat OpenShift-dokumentációt [itt](https://docs.openshift.com/aro/4/welcome/index.html).
-

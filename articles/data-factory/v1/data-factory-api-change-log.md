@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74979002"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438942"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET API-változási napló
 > [!NOTE]
@@ -75,7 +75,7 @@ Szolgáltatások kiegészítései:
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * Új StorageFormat típusú [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) -típus hozzáadása a fájlok optimalizált, oszlopos (ORK) formátumban való másolásához.
 * Adja hozzá a [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) és a PolyBaseSettings tulajdonságot a SqlDWSink.
-  * Lehetővé teszi az adatok SQL Data Warehouseba való másolását a Base használatával.
+  * Lehetővé teszi az adatok másolását az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse).
 
 ## <a name="version-461"></a>4.6.1-es verzió
 ### <a name="bug-fixes"></a>Hibajavítások
@@ -154,7 +154,7 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 | Régi név | Új név |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| Táblázat |[Adatkészlet](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| Táblázat |[Adathalmaz](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
@@ -163,7 +163,7 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* A **lista** metódusai mostantól a lapozható eredményeket adják vissza. Ha a válasz nem üres **NextLink** tulajdonságot tartalmaz, az ügyfélalkalmazásnak továbbra is le kell kérnie a következő lapot, amíg az összes oldalt vissza nem adja.  Például:
+* A **lista** metódusai mostantól a lapozható eredményeket adják vissza. Ha a válasz nem üres **NextLink** tulajdonságot tartalmaz, az ügyfélalkalmazásnak továbbra is le kell kérnie a következő lapot, amíg az összes oldalt vissza nem adja.  Alább bemutatunk egy példát:
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -181,5 +181,5 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 * A **List** folyamat API a teljes részletek helyett csak egy folyamat összegzését adja vissza. Például egy folyamat összefoglaló tevékenységei csak a nevet és a típust tartalmazzák.
 
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* A [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) osztály két új tulajdonságot ( **SliceIdentifierColumnName** és **SqlWriterCleanupScript**) támogat a idempotens másolásának támogatásához Azure SQL Data Warehouse. A tulajdonságokkal kapcsolatos részletekért tekintse meg a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) cikket.
-* A másolási tevékenység részeként mostantól támogatjuk a tárolt eljárás Azure SQL Database és Azure SQL Data Warehouse forrásokon való futtatását. A [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) és a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) osztály a következő tulajdonságokkal rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters**. A tulajdonságokkal kapcsolatos részletekért tekintse meg a Azure.com [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkeit.  
+* A [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) osztály két új tulajdonságot ( **SliceIdentifierColumnName** és **SqlWriterCleanupScript**) támogat az Azure Azure szinapszis Analytics idempotens-másolásának támogatásához. Ezen tulajdonságokkal kapcsolatos részletekért tekintse meg az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md) -cikket.
+* A másolási tevékenység részeként mostantól támogatjuk a Azure SQL Database és az Azure szinapszis Analytics-források futtatására szolgáló tárolt eljárást. A [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) és a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) osztály a következő tulajdonságokkal rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters**. Ezekről a tulajdonságokról a Azure.com [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkeiben talál további információkat.  

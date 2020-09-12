@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037596"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434945"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -32,7 +32,7 @@ Az adatok előállítójának létrehozásakor a rendszer felügyelt identitást
 A Data Factory felügyelt identitása a következő funkciókat nyújtja:
 
 - [Tárolja a hitelesítő adatokat Azure Key Vaultban](store-credentials-in-key-vault.md), amelyekben a rendszer az adat-előállító felügyelt identitását használja Azure Key Vault hitelesítéshez.
-- Összekötők, például [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)és [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
+- Összekötők, többek között az [Azure Blob Storage](connector-azure-blob-storage.md), a [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), a [Azure SQL Database](connector-azure-sql-database.md)és az [Azure szinapszis Analytics (korábban SQL Data Warehouse)](connector-azure-sql-data-warehouse.md).
 - [Webes tevékenység](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Felügyelt identitás előállítása
@@ -246,7 +246,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő témaköröket, amelyek bemutatják, hogy mikor és hogyan kell használni az adatok gyári felügyelt identitását
 
 - [Hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)

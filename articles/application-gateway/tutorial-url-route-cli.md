@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502698"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595240"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webes forgalom irányítása az URL-cím alapján az Azure CLI használatával
 
@@ -23,17 +23,16 @@ A webes forgalmat felügyelő rendszergazdaként a feladatai közé tartozik ann
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Erőforráscsoport létrehozása a szükséges hálózati erőforrások számára
-> * Hálózati erőforrások létrehozása
-> * Alkalmazásátjáró létrehozása az alkalmazásból érkező forgalom számára
-> * Kiszolgálókészletek és útválasztásai szabályok meghatározása a különböző típusú forgalmakhoz
-> * Méretezési csoport létrehozása az egyes készletekhez azok automatikus méretezésének megvalósításához
-> * Teszt futtatása annak ellenőrzéséhez, hogy a forgalom különféle típusai a megfelelő készletekre irányulnak-e
+* Erőforráscsoport létrehozása a szükséges hálózati erőforrások számára
+* Hálózati erőforrások létrehozása
+* Alkalmazásátjáró létrehozása az alkalmazásból érkező forgalom számára
+* Kiszolgálókészletek és útválasztásai szabályok meghatározása a különböző típusú forgalmakhoz
+* Méretezési csoport létrehozása az egyes készletekhez azok automatikus méretezésének megvalósításához
+* Teszt futtatása annak ellenőrzéséhez, hogy a forgalom különféle típusai a megfelelő készletekre irányulnak-e
 
 Ha szeretné, ezt az eljárást [Azure PowerShell](tutorial-url-route-powershell.md) vagy a [Azure Portal](create-url-route-portal.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -264,6 +263,6 @@ Ha már nincs rájuk szükség, távolítsa el az erőforráscsoportot, az alkal
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazásátjáró létrehozása URL-alapú átirányítással](./tutorial-url-redirect-cli.md)

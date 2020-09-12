@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586215"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536400"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -68,7 +68,33 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 
 ## <a name="release-history"></a>Kiadási előzmények
 
-### <a name="440-beta1-unreleased"></a>4.4.0-Beta. 1 (nem kiadott)
+### <a name="440-beta2-unreleased"></a>4.4.0-Beta. 2 (nem kiadott)
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Rögzített RequestTimeoutException a tcnative engedélyezésekor.
+
+### <a name="440-beta1-2020-08-27"></a>4.4.0-Beta. 1 (2020-08-27)
+#### <a name="new-features"></a>Új funkciók
+* Új API-t adott hozzá, amellyel hatékonyan betöltheti a sok dokumentumot (a PK/ID párok vagy az összes dokumentum a PK értékek halmaza alapján).
+* Új API hozzáadva `deleteItem` .
+* A lekérdezési metrikák alapértelmezés szerint engedélyezve vannak.
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Rögzített NPE a-ben `GatewayAddressCache` .
+* A lekérdezési metrika hibájának kijavítása az elemek nulla válasza esetén.
+* Jobb teljesítmény (csökkentett CPU-használat) a címek elemzéséhez és a fő kulcsos hitelesítéshez.
+
+### <a name="432-beta2-2020-08-17"></a>4.3.2-Beta. 2 (2020-08-17)
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* A korábbi verzió nem módosult, így a rugós adatmodulokkal való kompatibilitási problémák is kihasználhatók.
+
+### <a name="432-beta1-2020-08-14"></a>4.3.2-Beta. 1 (2020-08-14)
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Kijavítva a hiba a RntbdServiceEndpoint, hogy elkerülje a nem használt TCP-kapcsolatok korai bezárását.
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* A lekérdezés kijavítva `GROUP BY` , ahol csak egyetlen lapot adott vissza.
+* Rögzített felhasználói ügynök karakterlánc-formátuma a központi SDK-irányelvek betartása érdekében.
+* Továbbfejlesztett diagnosztikai információk, amelyek tartalmazzák a lekérdezési terv diagnosztikát.
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
 #### <a name="new-features"></a>Új funkciók
@@ -179,5 +205,5 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

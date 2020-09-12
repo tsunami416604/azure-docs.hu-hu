@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961992"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506695"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
@@ -268,6 +268,10 @@ A virtuális gépek szelektív lemezes biztonsági mentési élményének konfig
 Ha Azure Portal használatával engedélyezi a biztonsági mentést, kiválaszthatja az **operációs rendszer lemezének biztonsági mentése** lehetőséget. Így konfigurálhatja az Azure-beli virtuális gép biztonsági mentését az operációsrendszer-lemezzel, és kizárhatja a hozzá csatolt összes adatlemezt.
 
 ![Csak az operációsrendszer-lemez biztonsági mentésének konfigurálása](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>Az Azure REST API használata
+
+Az Azure-beli virtuális gépek biztonsági mentését néhány kiválasztott lemezzel is konfigurálhatja, vagy módosíthatja a meglévő virtuális gépek védelmét úgy, hogy az [itt](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)leírtak szerint belefoglalja vagy kizárja a néhány lemezt.
 
 ## <a name="selective-disk-restore"></a>Szelektív lemez visszaállítása
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: fdaffef6c682bd1f9c81f14af6cd949816f7555a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815827"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505522"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 
@@ -155,14 +155,19 @@ A tárolók analitikai ÉLETTARTAMa a következő `AnalyticalStoreTimeToLiveInSe
 * Ha van, és az érték egy "n" pozitív számra van beállítva: az elemek a tranzakciós tároló utolsó módosításának időpontját követően lejárnak az "n" analitikai tárolóban. Ez a beállítás kihasználható, ha az elemzési tárolóban korlátozott ideig szeretné megőrizni az operatív adatait, függetlenül a tranzakciós tárolóban lévő adatok megőrzésének.
 
 Néhány megfontolandó szempont:
-*   Miután az analitikai tár engedélyezve lett egy analitikai TTL-értékkel, később más érvényes értékre is frissítheti. 
-*   Míg a tranzakciós TTL beállítható a tárolóban vagy az elem szintjén, az analitikai élettartam jelenleg csak a tároló szintjén állítható be.
+*   Miután az analitikai tároló engedélyezve lett egy analitikai TTL-értékkel, később más érvényes értékre is frissíthető. 
+*   Míg a tranzakciós TTL beállítható a tárolóban vagy az elem szintjén, az analitikai ÉLETTARTAMot csak a tároló szintjén lehet beállítani.
 *   A működési adatok megőrzését az analitikus tárolóban az analitikai TTL >= tranzakciós élettartam beállításával érheti el a tároló szintjén.
-*   Az analitikai tár a tranzakciós tároló tükrözésére az analitikai TTL = tranzakciós TTL beállításával végezhető el.
+*   Az analitikai tároló a tranzakciós tároló tükrözéséhez az analitikai TTL = tranzakciós TTL beállításával végezhető el.
+
+Ha a tárolóban engedélyezi a anaytical-tárolót:
+ * Az Azure Portal használatával az analitikai TTL az alapértelmezett-1 értékre van állítva. Ezt az értéket "n" másodpercre módosíthatja, ha a Adatkezelő alatt navigál a tároló beállításai között. 
+ 
+ * Az Azure SDK vagy a PowerShell vagy a parancssori felület használatával az analitikai TTL engedélyezhető az-1 vagy az "n" értékre. 
 
 További információ: [az analitikai élettartam konfigurálása egy tárolón](configure-synapse-link.md#create-analytical-ttl).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 

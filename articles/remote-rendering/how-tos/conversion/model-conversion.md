@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808608"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506661"
 ---
 # <a name="convert-models"></a>Modellek konvertálása
 
@@ -21,9 +21,9 @@ Az átalakítás után egy modell tölthető be egy Azure Storage-fiókból.
 
 Az átalakítási szolgáltatás a következő formátumokat támogatja:
 
-- **FBX** (2011-es vagy újabb verzió)
+- **FBX**  (2011-es vagy újabb verzió)
 - **GLTF** (2. x verzió)
-- **Borai** (2. x verzió)
+- **Borai**  (2. x verzió)
 
 Kisebb eltérések vannak a formátumok között az anyagi tulajdonságok átalakításával kapcsolatban, ahogy az a Chapter [anyagok leképezése a modell-formátumokhoz](../../reference/material-mapping.md)című részben szerepel.
 
@@ -53,9 +53,10 @@ A különböző átalakítási lehetőségekért tekintse meg [ezt a fejezetet](
 - Gyors útmutató [: modell átalakítása renderelésre](../../quickstarts/convert-model.md) – lépésenkénti bevezetés a modellek átalakítására.
 - [Például](../../samples/powershell-example-scripts.md)a konverziós szolgáltatás használatát bemutató PowerShell-parancsfájlok a *parancsfájlok* mappa [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modellek átalakítása az Azure Blob Storage használatával](blob-storage.md)
 - [A modell átalakítási REST API](conversion-rest-api.md)
 - [A modell átalakításának konfigurálása](configure-model-conversion.md)
+- [Fájlok elrendezése átalakításhoz](layout-files-for-conversion.md)
 - [Anyagleképzés a modellformátumokhoz](../../reference/material-mapping.md)

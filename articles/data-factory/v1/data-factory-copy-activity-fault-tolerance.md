@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74926152"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436391"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hibatűrés hozzáadása a másolási tevékenységhez inkompatibilis sorok kihagyása
 
@@ -48,7 +48,7 @@ A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem k
     Például: adatok másolása egy SQL-kiszolgálóról egy SQL-adatbázisba. Elsődleges kulcs van definiálva a fogadó SQL-adatbázisban, de nincs ilyen elsődleges kulcs definiálva a forrás SQL-kiszolgálón. A forrásban található duplikált sorok nem másolhatók a fogadóba. A másolási tevékenység csak a forrásadatok első sorát másolja a fogadóba. A duplikált elsődleges kulcs értékét tartalmazó következő forrásfájlokat inkompatibilisként észleli a rendszer, és kihagyja.
 
 >[!NOTE]
->Ez a funkció nem vonatkozik arra az időpontra, amikor a másolási tevékenység úgy van konfigurálva, hogy külső betöltési mechanizmust hív [meg,](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)többek között a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) a Az adatoknak a SQL Data Warehouse használatával történő betöltéséhez használja a "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" kifejezést a másolási tevékenységben a natív hibatűrés támogatásával.
+>Ez a funkció nem alkalmazható, ha a másolási tevékenység úgy van konfigurálva, hogy külső betöltési mechanizmust hív meg, beleértve az [Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse)](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) vagy az [Amazon vöröseltolódás eltávolítását](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Az adatoknak az Azure szinapszis Analyticsbe való betöltéséhez használja a "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" kifejezést a másolási tevékenységben a natív hibatűrés támogatásával.
 
 ## <a name="configuration"></a>Konfiguráció
 A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok másolási tevékenységbe való kihagyásának konfigurálásához:
@@ -71,7 +71,7 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | A nem kompatibilis sorok kihagyásának engedélyezése a másolás során vagy nem. | True (Igaz)<br/>False (alapértelmezett) | No |
+| **enableSkipIncompatibleRow** | A nem kompatibilis sorok kihagyásának engedélyezése a másolás során vagy nem. | Igaz<br/>False (alapértelmezett) | No |
 | **redirectIncompatibleRowSettings** | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | No |
 | **linkedServiceName** | Az Azure Storage társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás neve, amely arra a tárolási példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | No |
 | **elérési útja** | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg azt a blob Storage-elérési útvonalat, amelyet a nem kompatibilis adatértékek naplózásához használni kíván. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No |
@@ -89,5 +89,5 @@ data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an inval
 data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni Azure Data Factory másolási tevékenységről, olvassa el az [adatáthelyezés a másolási tevékenységgel](data-factory-data-movement-activities.md)című témakört.

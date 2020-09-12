@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 08f1d1e0ca1936b30db968dde5d7f6f2e6104cf8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146732"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651211"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -51,7 +51,7 @@ A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre é
 A következő esetekben hozhat létre Azure Machine Learning számítási példányokat vagy számítási fürtöket:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure Portal
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) osztályok
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) osztályok
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (előzetes verzió)
 * Resource Manager-sablon. Példa a sablonra: [Azure Machine learning számítási sablon létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Machine learning- [bővítmény az Azure CLI-hez](reference-azure-machine-learning-cli.md#resource-management).  
@@ -59,7 +59,7 @@ A következő esetekben hozhat létre Azure Machine Learning számítási péld�
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, más típusú számítási céloktól eltérően.
 
 
-|Képesség  |Számítási fürt  |Számítási példány  |
+|A képességeik  |Számítási fürt  |Számítási példány  |
 |---------|---------|---------|
 |Egy vagy több csomópontos fürt     |    **&check;**       |         |
 |Minden alkalommal, amikor elküld egy futtatást     |     **&check;**      |         |

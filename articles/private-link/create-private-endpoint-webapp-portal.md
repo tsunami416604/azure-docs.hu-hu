@@ -1,19 +1,19 @@
 ---
 title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
-description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
+description: Ez a cikk azt ismerteti, hogyan csatlakozhat egy webalkalmazáshoz az Azure Private Endpoint használatával
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737393"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569455"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával
 
@@ -65,7 +65,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 1. A virtuális gép létrehozása – alapismeretek területen adja meg vagy válassza ki az alábbi adatokat:
 
    > [!div class="mx-imgBorder"]
-   >![Alapszintű virtuális gép][4]
+   >![Alapszintű virtuális gép ][4]
 
 1. Válassza a **"tovább: lemezek" lehetőséget.**
 
@@ -94,7 +94,7 @@ Ebben a szakaszban egy magánhálózati webalkalmazást hoz létre egy privát v
 1. A webalkalmazás létrehozása – alapok lapon adja meg vagy válassza ki az alábbi adatokat:
 
    > [!div class="mx-imgBorder"]
-   >![Alapszintű Web App][6]
+   >![Alapszintű Web App ][6]
 
 1. Válassza a **"felülvizsgálat + létrehozás"** lehetőséget
 
@@ -138,13 +138,13 @@ Ebben a szakaszban egy magánhálózati webalkalmazást hoz létre egy privát v
 
 1. Nyissa meg a letöltött. rdp fájlt.
 
-- Ha a rendszer kéri, válassza a Csatlakozás lehetőséget.
-- Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+   - Ha a rendszer kéri, válassza a Csatlakozás lehetőséget.
+   - Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-> [!Note]
-> Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon.
+   > [!Note]
+   > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon.
 
-- Kattintson az OK gombra.
+   - Kattintson az OK gombra.
 
 1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az igen vagy a Folytatás lehetőséget.
 
@@ -174,12 +174,21 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a webalkalmaz
 1. A myVM ellenőrizze, hogy a webalkalmazás nem érhető el a nyilvános IP-címen keresztül. Nyisson meg egy böngészőt, és illessze be a webalkalmazás nevét, amelynek 403 Tiltott hibaüzenete van
 
    > [!div class="mx-imgBorder"]
-   >![Forbidden][17]
+   >![hiba tiltott az IP-cím használata közben][17]
 
-> [!Important]
-> Mivel ez a funkció előzetes verzióban érhető el, manuálisan kell kezelnie a DNS-bejegyzést.
+   > [!Important]
+   > Mivel ez a funkció előzetes verzióban érhető el, manuálisan kell kezelnie a DNS-bejegyzést.
 
-1. Hozza létre a gazdagép bejegyzését, nyissa meg a fájlkezelőt, és keresse meg a Hosts fájlt.
+   A DNS esetében két lehetőség közül választhat:
+   - a virtuális gép gazdagép-fájljának használata 
+   - vagy használja a Azure DNS privát zóna szolgáltatást.
+
+1. Első megoldás: létrehozhat egy privatelink.azurewebsites.net nevű saját DNS-zónát, és összekapcsolhatja azt a VNet
+1. Ezután létre kell hoznia a két rekordot (Alkalmazásnév és SCM-név) a privát végpont IP-címével.
+   > [!div class="mx-imgBorder"]
+   >![Saját DNS-zóna rekordjai][21]
+
+1. Második megoldás: hozza létre a gazdagép bejegyzését, nyissa meg a fájlkezelőt, és keresse meg a Hosts fájlt.
 
    > [!div class="mx-imgBorder"]
    >![Hosts fájl][18]
@@ -189,7 +198,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a webalkalmaz
    > [!div class="mx-imgBorder"]
    >![Gazdagépek tartalma][19]
 
-1. Mentse a fájlt.
+1. Mentse a fájlt
 
 1. Nyisson meg egy böngészőt, és írja be a webalkalmazás URL-címét
 
@@ -198,7 +207,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a webalkalmaz
 
 1. A privát végponton keresztül fér hozzá a webalkalmazáshoz
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a privát végponttal, a webalkalmazással és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 
@@ -206,7 +215,7 @@ Ha elkészült a privát végponttal, a webalkalmazással és a virtuális gépp
 1. Válassza az Erőforráscsoport törlése elemet.
 1. Írja be a Ready-RG értéket az ERŐFORRÁSCSOPORT nevének beírásához, majd válassza a Törlés lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy webalkalmazáson és egy privát végponton. Csatlakozik egy virtuális géphez az internetről, és biztonságosan kommunikál a webalkalmazással a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint][privateendpoint].
 
@@ -214,7 +223,7 @@ Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális h
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
 [2]: ./media/create-private-endpoint-webapp-portal/ipaddresses.png
 [3]: ./media/create-private-endpoint-webapp-portal/subnet.png
-[4]: ./media/create-private-endpoint-webapp-portal/virtualmachine.png
+[4]: ./media/create-private-endpoint-webapp-portal/virtual-machine.png
 [5]: ./media/create-private-endpoint-webapp-portal/vmnetwork.png
 [6]: ./media/create-private-endpoint-webapp-portal/webapp.png
 [7]: ./media/create-private-endpoint-webapp-portal/webappnetworking.png
@@ -231,6 +240,8 @@ Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális h
 [18]: ./media/create-private-endpoint-webapp-portal/explorer.png
 [19]: ./media/create-private-endpoint-webapp-portal/hosts.png
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
+[21]: ./media/create-private-endpoint-webapp-portal/dns-private-zone-records.png
+
 
 <!--Links-->
 [privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

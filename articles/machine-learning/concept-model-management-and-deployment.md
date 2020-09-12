@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543384"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651092"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -71,7 +71,7 @@ A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt 
 Aktív központi telepítésben használt regisztrált modell nem törölhető.
 További információkért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel)című szakaszt a modell regisztrálása szakaszban.
 
-### <a name="profile-models"></a>Profil modelljei
+### <a name="profile-models"></a>Profilmodellek
 
 A Azure Machine Learning segítségével megismerheti a szolgáltatás CPU-és memória-követelményeit, amelyeket a rendszer a modell telepítésekor hoz létre. A profilkészítés a modellt futtató szolgáltatást teszteli, és olyan információkat ad vissza, mint például a CPU-használat, a memóriahasználat és a válasz késése. Emellett egy CPU-és memória-javaslatot is biztosít az erőforrás-használat alapján.
 További információért lásd a [modellek üzembe helyezése](how-to-deploy-profile-model.md)című szakaszt.
@@ -158,7 +158,7 @@ Az Azure ML lehetővé teszi az összes ML-eszköz teljes körű naplózásának
 > [!TIP]
 > Míg a modellekkel és adatkészletekkel kapcsolatos néhány információ automatikusan rögzítve van, a __címkék__használatával további információkat is hozzáadhat. Ha regisztrált modelleket és adatkészleteket keres a munkaterületen, használhat címkéket szűrőként.
 >
-> Az adatkészlet regisztrált modellel való társítása egy választható lépés. Az adatkészletek modelljének regisztrálásakor való hivatkozással kapcsolatos információkért tekintse meg a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) osztályának referenciáját.
+> Az adatkészlet regisztrált modellel való társítása egy választható lépés. Az adatkészletek modelljének regisztrálásakor való hivatkozással kapcsolatos információkért tekintse meg a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) osztályának referenciáját.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>A ML-életciklus eseményeinek értesítése, automatizálása és riasztása
@@ -203,7 +203,7 @@ Az Azure-folyamatok Azure Machine Learning használatával történő használat
 
 A Azure Data Factory használatával olyan adatfeldolgozási folyamat is létrehozható, amely előkészíti az adatgyűjtést az oktatással való használatra. További információ: [adatfeldolgozási folyamat](how-to-cicd-data-ingestion.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: a következő erőforrások olvasása és feltárása:
 

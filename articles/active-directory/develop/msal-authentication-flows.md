@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170513"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437870"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -219,7 +219,7 @@ Mivel a IWA egy csendes folyamat, a következők egyikének igaznak kell lennie:
 Ez azt jelenti, hogy az alábbiak egyike igaz:
 
 - A fejlesztőknek Ön **is kiválasztotta a Azure Portal** saját magának.
-- A bérlői rendszergazda a (Azure Portal (lásd: a [webes API-khoz való hozzáféréshez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) **) a** **{bérlői tartomány} rendszergazdai jóváhagyásának engedélyezése/visszavonása** a következőben:.
+- A bérlői rendszergazda kiválasztotta az alkalmazás regisztrációjának **engedélyezése/visszavonása a következőhöz: {bérlő tartomány}** **a** Azure Portalban (lásd a [webes API eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)című témakört).
 - Megadta a felhasználók számára az alkalmazáshoz való hozzájárulásukat. Lásd: [egyéni felhasználói engedély kérése](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba; Lásd: [rendszergazdai engedély](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
@@ -227,7 +227,7 @@ A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Unive
 
 További információ a beleegyező adatokról: [v 2.0 engedélyek és beleegyezik](v2-permissions-and-consent.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a Microsoft Authentication Library (MSAL) által támogatott hitelesítési folyamatokat, megismerheti az ezekben a folyamatokban használt jogkivonatok beszerzését és gyorsítótárazását:
 

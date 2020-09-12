@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269369"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437377"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -50,7 +50,12 @@ Ha a felhasználók Active Directory (AD) vagy Azure Active Directory Domain Ser
 
 ### <a name="solution-for-cause-3"></a>3. ok megoldás
 
-A megosztási szintű engedélyek frissítéséhez tekintse meg a [hozzáférési engedélyek kiosztása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity)című témakört.
+Ellenőrizze, hogy az engedélyek helyesen vannak-e konfigurálva:
+
+- **Active Directory (ad)** lásd: [megosztási szintű engedélyek társítása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+
+    A megosztási szintű engedélyek hozzárendelései olyan csoportok és felhasználók számára támogatottak, amelyek a Active Directory (AD) szolgáltatásból Azure Active Directory (HRE) Azure AD Connect használatával lettek szinkronizálva.  Győződjön meg arról, hogy a csoportoknak és a megosztott megosztási szintű engedélyekkel rendelkező felhasználók nem támogatják a "csak felhőalapú" csoportokat.
+- **Azure Active Directory Domain Services (Azure AD DS)** lásd: [hozzáférési engedélyek kiosztása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>53 hiba, hiba 67 vagy hiba 87 az Azure-fájlmegosztás csatlakoztatásakor vagy leválasztásakor
@@ -316,18 +321,6 @@ Hiba történt a AadDsTenantNotFound, amikor az Azure [AD tartományi szolgálta
 Engedélyezze az Azure AD DS azon előfizetés Azure AD-bérlőn, amelyre a Storage-fiókja telepítve van. Felügyelt tartomány létrehozásához rendszergazdai jogosultsággal kell rendelkeznie az Azure AD-bérlőben. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót, amely [lehetővé teszi Azure Active Directory Domain Services használatát a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
-
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt a (z) Azure Active Directory tartományi szolgáltatás (Azure AD DS) hitelesítéssel rendelkező fájlmegosztás SMB-hozzáférése esetén
-
-### <a name="cause"></a>Ok
-
-Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt, amikor az Azure-AD DS hitelesítéssel próbál csatlakozni a fájlmegosztást az Azure-AD DS, amelynek tartomány DNS-neve egy numerikus karakterrel kezdődik. Ha például az Azure AD DS tartomány DNS-neve "1domain", akkor ez a hibaüzenet jelenik meg, amikor az Azure AD-beli hitelesítő adatokkal próbálja meg csatlakoztatni a fájlmegosztást. 
-
-### <a name="solution"></a>Megoldás
-
-Jelenleg az alábbi szabályok alapján érdemes megfontolni az Azure-AD DS újbóli üzembe helyezését egy új tartományi DNS-névvel:
-- A nevek nem kezdődhetnek numerikus karakterrel.
-- A névnek 3 – 63 karakter hosszúnak kell lennie.
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nem sikerült csatlakoztatni az AD hitelesítő adatokkal rendelkező Azure Files 
 

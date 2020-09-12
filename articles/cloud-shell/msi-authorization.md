@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72328714"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469898"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Felügyelt identitások használata az Azure-erőforrásokhoz Azure Cloud Shell
 
@@ -43,8 +43,8 @@ A helyi MSI alrendszer gyorsítótárazza a jogkivonatokat. Így a lehető legt�
 
 Ha gyorsítótárba helyezi a tokent a kódban, fel kell készülnie az olyan forgatókönyvek kezelésére, amelyekben az erőforrás azt jelzi, hogy a jogkivonat lejárt.
 
-A jogkivonat-hibák kezeléséhez látogasson el az [MSI-lapra a CURLING MSI hozzáférési jogkivonatokkal kapcsolatban](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
+A jogkivonat-hibák kezeléséhez látogasson el az [MSI-lapra a CURLING MSI hozzáférési jogkivonatokkal kapcsolatban](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling).
 
-## <a name="next-steps"></a>További lépések
-[További információ az MSI-ről](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[Hozzáférési jogkivonatok beszerzése MSI-alapú virtuális gépekről](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+## <a name="next-steps"></a>Következő lépések
+[További információ az MSI-ről](../active-directory/managed-identities-azure-resources/overview.md)  
+[Hozzáférési jogkivonatok beszerzése MSI-alapú virtuális gépekről](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

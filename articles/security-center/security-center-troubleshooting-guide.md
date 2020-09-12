@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836005"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462394"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -29,7 +29,7 @@ Riasztási típusok:
 
 * Virtuális gép működésének elemzése (VMBA)
 * Hálózatelemzés
-* SQL Database- és SQL Data Warehouse-elemzés
+* SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) elemzése
 * Környezeti információk
 
 A riasztástípusoktól függően az ügyfelek a riasztás vizsgálatához szükséges információkat az alábbi erőforrások használatával gyűjthetik össze:
@@ -40,7 +40,7 @@ A riasztástípusoktól függően az ügyfelek a riasztás vizsgálatához szük
 
 Az ügyfelek visszajelzéseket adhatnak a riasztás leírásával és relevanciájával kapcsolatban. Lépjen a riasztásra, kattintson a **Hasznos volt ez az információ?** gombra, adja meg az okot, és írja be a megjegyzését a visszajelzés indoklására. A riasztások javítása érdekében folyamatosan figyeljük ezeket a visszajelzéseket.
 
-## <a name="audit-log"></a>Napló
+## <a name="audit-log"></a>Az auditnaplóban
 
 A Security Center hibaelhárítása többnyire a meghibásodott összetevőhöz tartozó [auditnapló](../azure-monitor/platform/platform-logs-overview.md) bejegyzéseinek áttekintésével kezdődik. A naplókból a következők állapíthatók meg:
 
@@ -151,4 +151,4 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 * [Azure Security Center észlelési képességek](security-center-detection-capabilities.md)
 * [Partneri megoldások monitorozása Azure Security Centerokkal](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
 * [Azure Security Center GYIK](faq-general.md) – gyakori kérdések a szolgáltatás használatával kapcsolatban
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

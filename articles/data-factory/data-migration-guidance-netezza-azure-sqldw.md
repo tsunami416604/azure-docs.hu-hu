@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416454"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442837"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A Azure Data Factory a helyszíni Netezza-kiszolgálóról az Azure Storage-fiókjába vagy a Azure SQL Data Warehouse-adatbázisba való áttelepítését végző, hatékony és költséghatékony mechanizmust biztosít az adatok áttelepítésére. 
+A Azure Data Factory a helyszíni Netezza-kiszolgálóról az Azure Storage-fiókjába vagy az Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisba való áttelepítését végző, hatékony és költséghatékony mechanizmust biztosít. 
 
 Ez a cikk a következő információkat tartalmazza az adatmérnökök és a fejlesztők számára:
 
@@ -57,7 +57,7 @@ A másolási tevékenység Azure Data Factory a forrás és a fogadó adattárol
 
 ## <a name="network-security"></a>Hálózati biztonság 
 
-Alapértelmezés szerint a Azure Data Factory a helyszíni Netezza-kiszolgálóról egy Azure Storage-fiókba vagy Azure SQL Data Warehouse-adatbázisba küldi át az adatátvitelt Hypertext Transfer Protocol Secure (HTTPS) protokollon keresztüli titkosított kapcsolat használatával. A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a belső támadásokat.
+Alapértelmezés szerint a Azure Data Factory a helyszíni Netezza-kiszolgálóról egy Azure Storage-fiókba vagy az Azure szinapszis Analytics-adatbázisába továbbít egy titkosított, Hypertext Transfer Protocol Secure (HTTPS) protokollt használó kapcsolaton keresztül. A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a belső támadásokat.
 
 Ha nem szeretné, hogy a rendszer a nyilvános interneten keresztül továbbítsa az adatátvitelt, nagyobb biztonságot érhet el azáltal, hogy az Azure Express Route használatával áthelyezi az adatátvitelt egy privát kapcsolaton keresztül. 
 
@@ -109,7 +109,7 @@ Az előző ábrát a következőképpen lehet értelmezni:
    
    - Használhatja a [szolgáltatásnevet](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy a [Storage-fiók kulcsát](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)is. 
 
-- Hitelesítés Azure SQL Data Warehouse:
+- Hitelesítés az Azure szinapszis Analytics szolgáltatásban:
 
    - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
    
@@ -131,7 +131,7 @@ Nagyobb táblák esetén (azaz 100 GB-os vagy annál nagyobb mennyiségű, illet
 
 Ha egy hálózati vagy adattár-átmeneti probléma miatt nem sikerül a másolási feladatok végrehajtása, újrafuttathatja a sikertelen másolási feladatot, hogy az adott partíciót a táblából töltse újra. Más partíciókat betöltő más másolási feladatok nem érintettek.
 
-Amikor az adatok betöltését egy Azure SQL Data Warehouse adatbázisba, javasoljuk, hogy a másolási feladaton belül engedélyezze az Azure Blob Storage-ba történő előkészítést átmenetiként.
+Amikor az Azure szinapszis Analytics-adatbázisba tölti be az adatok betöltését, javasoljuk, hogy a másolási feladatban engedélyezze az Azure Blob Storage-ba történő előkészítést átmenetiként.
 
 ### <a name="migrate-delta-data"></a>Különbözeti adatáttelepítés 
 
@@ -162,7 +162,7 @@ Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory
 
 ### <a name="estimate-your-pricing"></a>A díjszabás becslése 
 
-Vegye figyelembe a következő folyamatot, amely az adatok helyszíni Netezza-kiszolgálóról egy Azure SQL Data Warehouse adatbázisba való átköltöztetésére szolgál:
+Vegye figyelembe a következő folyamatot, amely az adatok helyszíni Netezza-kiszolgálóról egy Azure szinapszis Analytics-adatbázisba való átköltöztetésére szolgál:
 
 ![A díjszabási folyamat](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -196,7 +196,7 @@ További információt a következő cikkekben és útmutatókban talál:
 - [ODBC-összekötő](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Data Warehouse-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Azure szinapszis Analytics-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Helyi integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
@@ -206,6 +206,6 @@ További információt a következő cikkekben és útmutatókban talál:
 - [Adatok növekményes másolása több táblából](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
 - [Azure Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory használatával](solution-template-copy-files-multiple-containers.md)

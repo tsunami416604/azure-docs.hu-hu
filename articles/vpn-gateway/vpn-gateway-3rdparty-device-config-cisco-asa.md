@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2018
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082001"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426173"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Példa konfiguráció: Cisco ASA-eszköz (IKEv2/nincs BGP)
 Ez a cikk példákat tartalmaz a Cisco adaptív biztonsági berendezés (ASA) eszközeinek Azure VPN Gateway-hez való csatlakoztatására. Ez a példa a IKEv2 rendszert futtató Cisco ASA-eszközökre vonatkozik a Border Gateway Protocol (BGP) nélkül. 
@@ -62,7 +62,7 @@ Ez a szakasz a minta paramétereit sorolja fel.
 | * Helyszíni BGP-társ IP-címe     | 10.52.255.254                |
 |                              |                              |
 
-\*Nem kötelező paraméter a BGP-hez.
+\* Nem kötelező paraméter a BGP-hez.
 
 ### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE-házirend és paraméterek
 A következő táblázat a mintában használt IPsec/IKE algoritmusokat és paramétereket sorolja fel. A VPN-eszközök és a belső vezérlőprogram verziója által támogatott algoritmusok ellenőrzéséhez forduljon a VPN-eszköz specifikációhoz.
@@ -80,7 +80,7 @@ A következő táblázat a mintában használt IPsec/IKE algoritmusokat és para
 | Előre megosztott kulcs   | PreSharedKey                         |
 |                  |                                      |
 
-\*Egyes eszközökön az IPsec-integritásnak null értékűnek kell lennie, ha az IPsec titkosítási algoritmus AES-GCM.
+\* Egyes eszközökön az IPsec-integritásnak null értékűnek kell lennie, ha az IPsec titkosítási algoritmus AES-GCM.
 
 ### <a name="asa-device-support"></a>ASA-eszközök támogatása
 
@@ -297,5 +297,5 @@ Hibakeresési célokra használja az alábbi ASA-parancsokat:
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az aktív-aktív létesítmények közötti és VNet kapcsolatok konfigurálásával kapcsolatban lásd: [Active-Active VPN Gateway-átjárók konfigurálása](vpn-gateway-activeactive-rm-powershell.md).

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038543"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500300"
 ---
 # <a name="supported-authentication-methods"></a>Támogatott hitelesítési módszerek
 
@@ -43,9 +43,13 @@ Ezek a jelenleg támogatott bejelentkezési módszerek:
 >[!NOTE]
 >Az intelligens kártya és a Windows Hello csak Kerberos használatával tud bejelentkezni. A Kerberosba való bejelentkezéshez meg kell adni a tartományvezérlőt.
 
+## <a name="hybrid-identity"></a>Hibrid identitás
+
+A Windows virtuális asztal támogatja a [hibrid identitások](../active-directory/hybrid/whatis-hybrid-identity.md) használatát Azure Active Directory (ad) segítségével, beleértve az Active Directory ÖSSZEVONÁSI szolgáltatások (AD FS) (ADFS) használatával összevont összevonásokat is. Mivel a felhasználóknak felderíthetőnek kell lenniük az Azure AD-n keresztül, a Windows virtuális asztal nem támogatja az ADFS-vel való önálló Active Directory üzemelő példányokat.
+
 ## <a name="single-sign-on-sso"></a>Egyszeri bejelentkezés (SSO)
 
-A Windows virtuális asztal jelenleg nem támogatja az Active Directory összevonási szolgáltatások (AD FS) (ADFS) hitelesítést vagy SSO-t.
+A Windows rendszerű virtuális asztali szolgáltatás jelenleg nem támogatja az egyszeri bejelentkezéshez Active Directory összevonási szolgáltatások (AD FS) (ADFS).
 
 A munkamenet-gazdagéphez tartozó hitelesítő adatok megadásának egyetlen módja, ha az ügyfélen szeretné menteni őket. Azt javasoljuk, hogy csak akkor tegye ezt biztonságos eszközökkel, ha megakadályozza, hogy más felhasználók hozzáférjenek az erőforrásokhoz.
 

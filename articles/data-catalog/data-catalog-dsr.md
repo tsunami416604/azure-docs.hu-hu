@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898152"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439084"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog támogatott adatforrások
 
@@ -143,7 +143,7 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse táblázat</td>
+      <td>Azure szinapszis analitikai táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +151,7 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse nézet</td>
+      <td>Az Azure szinapszis Analytics nézete</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -450,7 +450,7 @@ Ha egy adott adatforrást szeretne megtekinteni, javasolja azt (vagy ha már jav
 <table>
     <tr>
        <td><b>Forrás típusa</b></td>
-       <td><b>Objektumtípus</b></td>
+       <td><b>Eszköz típusa</b></td>
        <td><b>Objektumtípusok</b></td>
        <td><b>DSL-struktúra<b></td>
     </tr>
@@ -932,7 +932,7 @@ Ha egy adott adatforrást szeretne megtekinteni, javasolja azt (vagy ha már jav
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Command</td>
       <td>Stored procedure</td>
       <td>
@@ -948,7 +948,7 @@ Ha egy adott adatforrást szeretne megtekinteni, javasolja azt (vagy ha már jav
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>TableValuedFunction</td>
       <td>Table-valued function</td>
       <td>
@@ -964,7 +964,7 @@ Ha egy adott adatforrást szeretne megtekinteni, javasolja azt (vagy ha már jav
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Container</td>
       <td>Database</td>
       <td>
@@ -978,7 +978,7 @@ Ha egy adott adatforrást szeretne megtekinteni, javasolja azt (vagy ha már jav
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Table</td>
       <td>Table, view</td>
       <td>

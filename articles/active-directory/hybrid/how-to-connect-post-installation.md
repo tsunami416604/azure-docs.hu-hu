@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358446"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657110"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>További lépések és a Azure AD Connect kezelése
 A jelen cikkben ismertetett működési eljárások segítségével testreszabhatja Azure Active Directory (Azure AD) kapcsolódását a szervezet igényeinek és követelményeinek megfelelően.  
@@ -30,7 +30,7 @@ A jelen cikkben ismertetett működési eljárások segítségével testreszabha
 Alapértelmezés szerint csak az a felhasználó, aki a telepítést és a helyi rendszergazdákat is képes kezelni a telepített szinkronizáló motort. Ahhoz, hogy a felhasználók hozzáférjenek és felügyelhetők legyenek a Szinkronizáló motorban, keresse meg a ADSyncAdmins nevű csoportot a helyi kiszolgálón, és adja hozzá őket ehhez a csoporthoz.
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Licencek kiosztása prémium szintű Azure AD és nagyvállalati mobilitási csomag felhasználói számára
-Most, hogy a felhasználók már szinkronizálva lettek a felhővel, hozzá kell rendelnie a licenceket, hogy azok a felhőalapú alkalmazások, például az Office 365 használatával is elérhetők legyenek.
+Most, hogy a felhasználók már szinkronizálva lettek a felhővel, hozzá kell rendelnie a licenceket, hogy azok a felhőalapú alkalmazások, például a Microsoft 365 számára is elérhetők legyenek.
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>prémium szintű Azure AD vagy nagyvállalati mobilitási csomag licencének kiosztása
 
@@ -84,5 +84,5 @@ Az alábbi táblázat a feladatok összegzését és az egyes feladatok rövid l
 |**Összevonás kezelése**|AD FS-infrastruktúra kezelése, tanúsítványok megújítása és AD FS-kiszolgálók hozzáadása|
 |**Hibaelhárítás**|Súgó a Azure AD Connect problémák elhárításához|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273290"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470136"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
 A Cloud Shell az Azure file Storage-t használja a fájlok munkamenetek közötti megőrzéséhez. A kezdeti indításkor Cloud Shell egy új vagy meglévő fájlmegosztás hozzárendelését kéri a fájlok munkamenetek közötti megőrzéséhez.
@@ -34,8 +34,8 @@ A Cloud Shell az Azure file Storage-t használja a fájlok munkamenetek között
 
 Ha alapszintű beállításokat használ, és csak egy előfizetést választ ki, Cloud Shell három erőforrást hoz létre az Ön nevében a legközelebbi támogatott régióban:
 * Erőforráscsoport: `cloud-shell-storage-<region>`
-* Storage-fiók:`cs<uniqueGuid>`
-* Fájlmegosztás:`cs-<user>-<domain>-com-<uniqueGuid>`
+* Storage-fiók: `cs<uniqueGuid>`
+* Fájlmegosztás: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Az előfizetés beállítása](media/persisting-shell-storage/basic-storage.png)
 
@@ -66,7 +66,7 @@ A bash-ben futtatott aktuális régió megkereséséhez `env` Keresse meg a vál
 
 Cloud Shell gépek léteznek a következő régiókban:
 
-|Terület|Régió|
+|Terület|Region|
 |---|---|
 |Észak-, Dél- és Közép-Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
 |Európa|Észak-Európa, Nyugat-Európa|
@@ -83,12 +83,12 @@ Másodlagos tárolási régió használata esetén a társított Azure Storage-f
 A felhasználók a `(Get-CloudDrive | Get-AzStorageAccount).Location` PowerShellben futhatnak a fájlmegosztás helyének megtekintéséhez.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás-létrehozás korlátozása Azure-erőforrás-házirenddel
-A Cloud Shellban létrehozott Storage-fiókok címkével rendelkeznek `ms-resource-usage:azure-cloud-shell` . Ha azt szeretné, hogy a felhasználók ne hozzanak létre Storage-fiókokat a Cloud Shellban, hozzon létre egy Azure-erőforrás-szabályzatot az adott címke által aktivált [címkékhez](../azure-policy/json-samples.md) .
+A Cloud Shellban létrehozott Storage-fiókok címkével rendelkeznek `ms-resource-usage:azure-cloud-shell` . Ha azt szeretné, hogy a felhasználók ne hozzanak létre Storage-fiókokat a Cloud Shellban, hozzon létre egy Azure-erőforrás-szabályzatot az adott címke által aktivált [címkékhez](../governance/policy/samples/index.md) .
 
 ## <a name="how-cloud-shell-storage-works"></a>A Cloud Shell Storage működése 
 A Cloud Shell a következő módszerekkel is megőrzi a fájlokat: 
 * Hozzon létre egy lemezképet a `$Home` címtárból, hogy az a könyvtárban található összes tartalmat megőrzi. A rendszer a lemezképet a megadott fájlmegosztást a `acc_<User>.img` (z) helyen menti `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` , és automatikusan szinkronizálja a módosításokat. 
-* A megadott fájlmegosztás csatlakoztatása a `clouddrive` `$Home` közvetlen fájlmegosztás-interakcióhoz a címtárban. `/Home/<User>/clouddrive`leképezve a következőre: `fileshare.storage.windows.net/fileshare` .
+* A megadott fájlmegosztás csatlakoztatása a `clouddrive` `$Home` közvetlen fájlmegosztás-interakcióhoz a címtárban. `/Home/<User>/clouddrive` leképezve a következőre: `fileshare.storage.windows.net/fileshare` .
  
 > [!NOTE]
 > A címtárban lévő összes fájl `$Home` , például az ssh-kulcsok megmaradnak a felhasználói lemezképben, amelyet a csatlakoztatott fájlmegosztás tárol. Alkalmazza az ajánlott eljárásokat, ha a `$Home` címtárban és a csatlakoztatott fájlmegosztás adataiban marad.
@@ -100,7 +100,7 @@ Cloud Shell futtathatja a nevű parancsot `clouddrive` , amely lehetővé teszi 
 
 ![A "clouddrive" parancs futtatása](media/persisting-shell-storage/clouddrive-h.png)
 
-### <a name="list-clouddrive"></a>Listáját`clouddrive`
+### <a name="list-clouddrive"></a>Listáját `clouddrive`
 `clouddrive`A parancs futtatásával derítheti fel, hogy melyik fájlmegosztás van csatlakoztatva `df` . 
 
 A clouddrive elérési útja a Storage-fiók nevét és a fájlmegosztás URL-címét jeleníti meg. Például: `//storageaccountname.file.core.windows.net/filesharename`
@@ -157,7 +157,7 @@ A fájlmegosztás továbbra is fennáll, hacsak nem törli manuálisan. A követ
 A `Get-CloudDrive` parancsmag lekérdezi az Azure-fájlmegosztás aktuálisan csatlakoztatott adatait a `clouddrive` Cloud shell. <br>
 ![A Get-CloudDrive futtatása](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
-### <a name="unmount-clouddrive"></a>Foglalatlan`clouddrive`
+### <a name="unmount-clouddrive"></a>Foglalatlan `clouddrive`
 Bármikor leválaszthatja a Cloud Shellhoz csatlakoztatott Azure-fájlmegosztást. Ha az Azure-fájlmegosztás el lett távolítva, a rendszer felszólítja egy új Azure-fájlmegosztás létrehozására és csatlakoztatására a következő munkamenet során.
 
 A `Dismount-CloudDrive` parancsmag leválasztja az Azure-fájlmegosztást az aktuális Storage-fiókból. Az aktuális munkamenet leválasztásának `clouddrive` megszakítása. A rendszer a következő munkamenet során új Azure-fájlmegosztás létrehozására és csatlakoztatására kéri a felhasználót.
@@ -167,7 +167,7 @@ A `Dismount-CloudDrive` parancsmag leválasztja az Azure-fájlmegosztást az akt
 
 Megjegyzés: Ha egy fájlban lévő függvényt kell megadnia, és a PowerShell-parancsmagokból kell meghívnia, akkor a pont operátort is tartalmaznia kell. Például:. .\MyFunctions.ps1
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Cloud Shell rövid útmutató](quickstart.md) <br>
 [Tudnivalók a Microsoft Azure file Storage-ról](../storage/files/storage-files-introduction.md) <br>
-[Tudnivalók a tárolási címkékről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[Tudnivalók a tárolási címkékről](../azure-resource-manager/management/tag-resources.md) <br>

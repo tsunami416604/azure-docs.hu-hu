@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: útválasztási követelmények'
 description: Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.author: cherylmc
-ms.openlocfilehash: 7e70348ba1638057fdab579c1f2799a0f5aa77a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341353"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569611"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -82,8 +82,8 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
 ### <a name="private-peering"></a>Magánhálózati társviszony-létesítés
 Eldöntheti, hogy nyilvános vagy magánhálózati IPv4-címeket szeretne-e használni a magánhálózati társviszony-létesítéshez. Mi biztosítjuk a forgalom végpontok közötti elkülönítését, így elkerülhető, hogy a címek átfedésben legyenek más ügyfelekkel magánhálózati társviszony-létesítés esetén. Ezek a címek nincsenek meghirdetve az interneten. 
 
-### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
-A Microsoft-partneri útvonal lehetővé teszi a Microsoft Cloud Serviceshez való kapcsolódást. A szolgáltatások listája magában foglalja az Office 365-szolgáltatásokat, például az Exchange Online, a SharePoint Online, a Skype vállalati verzió és a Microsoft Teams szolgáltatást. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
+### <a name="microsoft-peering"></a>Microsoftos társviszony
+A Microsoft-partneri útvonal lehetővé teszi a Microsoft Cloud Serviceshez való kapcsolódást. A szolgáltatások listája olyan Microsoft 365 szolgáltatásokat tartalmaz, mint például az Exchange Online, a SharePoint Online, a Skype vállalati verzió és a Microsoft teams. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
 
 Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az alábbi nyilvántartások egyikében:
 
@@ -100,7 +100,7 @@ Amennyiben a rendszer nem rendeli Önhöz az előtagokat és az AS-számot az el
 A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezettek, de ebben az esetben is szükség van manuális érvényesítésre. Ezenkívül eltávolítjuk az AS PATH értékében lévő privát AS-számokat a fogadott előtagok esetében. Ennek eredményeképpen nem fűzhet privát AS-számokat az AS PATH értékéhez [a Microsoft társviszony-létesítés útválasztásának befolyásolásához](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Ne Hirdessen ugyanazt a nyilvános IP-útvonalat a nyilvános internetre és a ExpressRoute-ra. Az aszimmetrikus útválasztást okozó helytelen konfiguráció kockázatának csökkentése érdekében erősen ajánlott, hogy a Microsofton keresztül hirdetett [NAT IP-címek](expressroute-nat.md) olyan tartományból ExpressRoute legyenek, amely egyáltalán nem hirdeti meg az internetet. Ha ez nem érhető el, elengedhetetlen annak biztosítása, hogy a ExpressRoute több mint egy adott tartományt Hirdessen, mint az internetkapcsolaton. A NAT nyilvános útvonalán kívül a helyszíni hálózatban lévő kiszolgálók által használt nyilvános IP-címeket is meghirdetheti a Microsofton belüli Office 365-végpontokkal kommunikáló ExpressRoute. 
+> Ne Hirdessen ugyanazt a nyilvános IP-útvonalat a nyilvános internetre és a ExpressRoute-ra. Az aszimmetrikus útválasztást okozó helytelen konfiguráció kockázatának csökkentése érdekében erősen ajánlott, hogy a Microsofton keresztül hirdetett [NAT IP-címek](expressroute-nat.md) olyan tartományból ExpressRoute legyenek, amely egyáltalán nem hirdeti meg az internetet. Ha ez nem érhető el, elengedhetetlen annak biztosítása, hogy a ExpressRoute több mint egy adott tartományt Hirdessen, mint az internetkapcsolaton. A NAT nyilvános útvonalán kívül a helyszíni hálózatban lévő kiszolgálók által használt nyilvános IP-címeket is meghirdetheti a Microsofton belüli Microsoft 365-végpontokkal kommunikáló ExpressRoute. 
 > 
 > 
 
@@ -138,7 +138,7 @@ Az alapértelmezett útvonalak használata csak az Azure privát társviszony-l�
 * Felhasználó által meghatározott útválasztást használ az internetkapcsolatot igénylő összes alhálózat internetkapcsolatának engedélyezéséhez.
 
 > [!NOTE]
-> Az alapértelmezett útvonalak meghirdetése megszakítja a Windows- és az egyéb virtuálisgép-licencek aktiválását. Megkerülő megoldás alkalmazásához kövesse az [itt](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) található utasításokat.
+> Az alapértelmezett útvonalak meghirdetése megszakítja a Windows- és az egyéb virtuálisgép-licencek aktiválását. Megkerülő megoldás alkalmazásához kövesse az [itt](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) található utasításokat.
 > 
 > 
 
@@ -159,7 +159,7 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | USA keleti régiója | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 | 12076:55004 |
 | USA 2. keleti régiója | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 | 12076:55005 |
 | USA nyugati régiója | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 | 12076:55006 |
-| USA nyugati régiója, 2. | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 | 12076:55026 |
+| USA 2. nyugati régiója | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 | 12076:55026 |
 | USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
@@ -229,10 +229,10 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Azure Resource Manager |12076:5070 |
 | Egyéb Office 365 online szolgáltatások * * | 12076:5100 |
 
-\*Az Azure Global Services jelenleg csak az Azure DevOps tartalmazza. \
-\*\*Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md)\
-\*\*\*Ez a Közösség a Microsoft Teams Services szükséges útvonalait is közzéteszi. \
-\*\*\*\*A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb verziók esetében válassza ki a regionális Közösséget a Dynamics-környezetekben.
+\* Az Azure Global Services jelenleg csak az Azure DevOps tartalmazza. \
+\*\* Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md)\
+\*\*\* Ez a Közösség a Microsoft Teams Services szükséges útvonalait is közzéteszi. \
+\*\*\*\* A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb verziók esetében válassza ki a regionális Közösséget a Dynamics-környezetekben.
 
 > [!NOTE]
 > A Microsoft nem fogadja el a Microsoft számára meghirdetett útvonalakon beállított BGP-közösségértékeket.
@@ -260,7 +260,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Skype Vállalati online verzió |12076:5130 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)

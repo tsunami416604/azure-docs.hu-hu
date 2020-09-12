@@ -5,12 +5,12 @@ description: A virtuális hálózati erőforrásokhoz és az Azure Kubernetes sz
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542704"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482725"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolatra és biztonságra vonatkozó ajánlott eljárások az Azure Kubernetes Service-ben (AKS)
 
@@ -31,7 +31,7 @@ Ez az ajánlott eljárási cikk a fürtszolgáltatások hálózati kapcsolatára
 A virtuális hálózatok alapszintű kapcsolatot biztosítanak az AK-csomópontok és az ügyfelek számára az alkalmazások eléréséhez. Az AK-fürtök két különböző módon telepíthetők virtuális hálózatokra:
 
 * **Kubenet hálózatkezelés** – az Azure felügyeli a virtuális hálózati erőforrásokat, mivel a fürt üzembe lett helyezve, és a [Kubenet][kubenet] Kubernetes beépülő modult használja.
-* **Azure CNI hálózatkezelés** – üzembe helyez egy meglévő virtuális hálózatban, és az [Azure Container Network Interface (CNI)][cni-networking] Kubernetes beépülő modult használja. A hüvelyek olyan egyedi IP-címeket fogadnak, amelyek más hálózati szolgáltatásokhoz vagy helyszíni erőforrásokhoz is továbbíthatók.
+* **Azure CNI hálózatkezelés** – üzembe helyezi egy virtuális hálózatban, és az [Azure Container Network Interface (CNI)][cni-networking] Kubernetes beépülő modult használja. A hüvelyek olyan egyedi IP-címeket fogadnak, amelyek más hálózati szolgáltatásokhoz vagy helyszíni erőforrásokhoz is továbbíthatók.
 
 A Container Network Interface (CNI) egy olyan szállító-semleges protokoll, amely lehetővé teszi, hogy a tároló futásidejű kérelmeit egy hálózati szolgáltató számára tegye elérhetővé. Az Azure-CNI az IP-címeket a hüvelyekhez és a csomópontokhoz rendeli hozzá, és az IP-címek kezelésére szolgáló (IPAM) funkciókat biztosít a meglévő Azure-beli virtuális hálózatokhoz való kapcsolódáshoz. Az egyes csomópontok és Pod-erőforrások IP-címet kapnak az Azure virtuális hálózatban, és nincs szükség további útválasztásra más erőforrásokkal vagy szolgáltatásokkal való kommunikációhoz.
 
@@ -64,7 +64,7 @@ A Kubenet alkalmas a kisebb fejlesztési vagy tesztelési feladatokhoz, mivel ne
 
 **Ajánlott eljárási útmutató** – http-vagy https-forgalom terjesztése az alkalmazásokba, a bejövő erőforrások és a vezérlők használata. A bejövő vezérlők további funkciókat biztosítanak egy normál Azure Load balancerben, és natív Kubernetes-erőforrásként kezelhetők.
 
-Az Azure Load Balancer az ügyfelek adatforgalmát az AK-fürtben lévő alkalmazásokba terjesztheti, de ez csak abban van, hogy mit ért el a forgalom. A terheléselosztó erőforrás a 4. rétegben működik, és protokoll vagy portok alapján osztja el a forgalmat. A HTTP-t vagy HTTPS-t használó legtöbb webalkalmazásnak a 7. rétegbeli Kuberenetes-bejövő erőforrásokat és vezérlőket kell használnia. A bejövő forgalom elosztása az alkalmazás URL-címe és a TLS/SSL-lezárás kezelése alapján végezhető el. Ez a funkció csökkenti a kimutatott és leképezett IP-címek számát is. A terheléselosztó esetében minden alkalmazásnak jellemzően egy nyilvános IP-címet kell kiosztania, amelyet a szolgáltatáshoz kell hozzárendelni az AK-fürtben. A bejövő erőforrások esetében egyetlen IP-cím több alkalmazás számára is terjesztheti a forgalmat.
+Az Azure Load Balancer az ügyfelek adatforgalmát az AK-fürtben lévő alkalmazásokba terjesztheti, de ez csak abban van, hogy mit ért el a forgalom. A terheléselosztó erőforrás a 4. rétegben működik, és protokoll vagy portok alapján osztja el a forgalmat. A HTTP-t vagy HTTPS-t használó legtöbb webalkalmazásnak a 7. rétegbeli Kubernetes-bejövő erőforrásokat és vezérlőket kell használnia. A bejövő forgalom elosztása az alkalmazás URL-címe és a TLS/SSL-lezárás kezelése alapján végezhető el. Ez a funkció csökkenti a kimutatott és leképezett IP-címek számát is. A terheléselosztó esetében minden alkalmazásnak jellemzően egy nyilvános IP-címet kell kiosztania, amelyet a szolgáltatáshoz kell hozzárendelni az AK-fürtben. A bejövő erőforrások esetében egyetlen IP-cím több alkalmazás számára is terjesztheti a forgalmat.
 
 ![Egy AK-fürt bejövő forgalmát bemutató diagram](media/operator-best-practices-network/aks-ingress.png)
 
@@ -160,7 +160,7 @@ Az AK-ban a legtöbb művelet az Azure felügyeleti eszközeivel vagy a Kubernet
 
 A megerősített gazdagép felügyeleti hálózatát is védeni kell. Egy [Azure ExpressRoute][expressroute] vagy [VPN Gateway][vpn-gateway] használatával csatlakozhat egy helyszíni hálózathoz, és szabályozhatja a hozzáférést hálózati biztonsági csoportokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a hálózati kapcsolatra és a biztonságra koncentrál. További információ a Kubernetes hálózati alapjairól: az [Azure Kubernetes szolgáltatásban található alkalmazások hálózati fogalmai (ak)][aks-concepts-network]
 

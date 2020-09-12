@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226743"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482589"
 ---
 # <a name="supported-data-types"></a>Támogatott adattípusok
 
@@ -26,11 +26,11 @@ A következő táblázat felsorolja a Azure Time Series Insights Gen2 által tá
 | **dátum/idő** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. A DateTime tulajdonságokat a rendszer mindig UTC formátumban tárolja. Az időzóna-eltolások, ha megfelelően vannak formázva, a rendszer alkalmazza, majd az UTC szerint tárolt értéket fogja alkalmazni. Tekintse meg [ezt](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) a szakaszt a környezet timestamp tulajdonságával és a DateTime típusú eltolásokkal kapcsolatban. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Ha a "eventProcessedLocalTime" az eseményforrás időbélyegzője: `$event.$ts` . Ha ez egy másik JSON-tulajdonság: `$event.eventProcessedLocalTime.DateTime` vagy `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Kétszeres pontosságú 64 bites szám  | `"value": 31.0482941` | `$event.value.Double` vagy `$event['value'].Double` |  `value_double`
 | **long** | Aláírt 64 bites egész szám  | `"value" : 31` | `$event.value.Long` vagy `$event['value'].Long` |  `value_long`
-| **karakterlánc** | A szöveges értékeknek érvényes UTF-8 típusúnak kell lenniük. A null értékű és az üres karakterláncok azonosak. |  `"site": "DIM_MLGGG"`| `$event.site.String` vagy `$event['site'].String`| `site_string`
-| **dinamikus** | Egy tömbből vagy egy tárolóból (szótárból) álló összetett (nem primitív) típus. Jelenleg csak a sztringesített vagy a TS ID-t, illetve az időbélyeg-tulajdonságot (IES) tartalmazó tömböket tartalmazó JSON-tömbök lesznek tárolva dinamikusként. Ebből a [cikkből](./concepts-json-flattening-escaping-rules.md) megtudhatja, hogyan lehet összeállítani az objektumokat, és lehet, hogy a tömbök nem állnak le. Az ebben a típusban tárolt hasznos adatok tulajdonságai csak az `Explore Events` ÁME Explorerben láthatók a nyers események megtekintéséhez, vagy az [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   ügyféloldali elemzéshez használt lekérdezési API-n keresztül. |  `"values": "[197, 194, 189, 188]"` | Egy idősorozat-kifejezésben lévő dinamikus típusok hivatkozása még nem támogatott | `values_dynamic`
+| **sztring** | A szöveges értékeknek érvényes UTF-8 típusúnak kell lenniük. A null értékű és az üres karakterláncok azonosak. |  `"site": "DIM_MLGGG"`| `$event.site.String` vagy `$event['site'].String`| `site_string`
+| **dinamikus** | Egy tömbből vagy egy tárolóból (szótárból) álló összetett (nem primitív) típus. Jelenleg csak a sztringesített vagy a TS ID-t, illetve az időbélyeg-tulajdonságot (IES) tartalmazó tömböket tartalmazó JSON-tömbök lesznek tárolva dinamikusként. Ebből a [cikkből](./concepts-json-flattening-escaping-rules.md) megtudhatja, hogyan lehet összeállítani az objektumokat, és lehet, hogy a tömbök nem állnak le. Az ebben a típusban tárolt hasznos adatok tulajdonságai csak a `Explore Events` Time Series Insights Explorerben láthatók a nyers események megtekintéséhez, vagy az [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   ügyféloldali elemzéshez használt lekérdezési API-n keresztül. |  `"values": "[197, 194, 189, 188]"` | Egy idősorozat-kifejezésben lévő dinamikus típusok hivatkozása még nem támogatott | `values_dynamic`
 
 > [!NOTE]
-> 64 bites egész értékek támogatottak, de a Azure Time Series Insights Explorer által biztonságosan kiértékelhető legnagyobb szám a JavaScript-korlátozások miatt 9 007 199 254 740 991 (2 ^ 53-1). Ha a fenti adatmodellben szereplő számok használatával dolgozik, csökkentheti a méretet egy [idősorozat-modell változó](/concepts-variables#numeric-variables) létrehozásával és az érték [átalakításával](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) .
+> 64 bites egész értékek támogatottak, de a Azure Time Series Insights Explorer által biztonságosan kiértékelhető legnagyobb szám a JavaScript-korlátozások miatt 9 007 199 254 740 991 (2 ^ 53-1). Ha a fenti adatmodellben szereplő számok használatával dolgozik, csökkentheti a méretet egy [idősorozat-modell változó](/azure/time-series-insights/concepts-variables#numeric-variables) létrehozásával és az érték [átalakításával](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) .
 
 > [!NOTE]
 > A **sztring** típusa nem üres:

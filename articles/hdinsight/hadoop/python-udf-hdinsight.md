@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874758"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462241"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben
 
@@ -38,7 +38,7 @@ A HDInsight a Jython is tartalmazza, amely egy Java-ban írt python-implementác
 
 ## <a name="storage-configuration"></a>Tároló konfigurálása
 
-Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)` .  A cikkben szereplő folyamat legalább a kimenetet fogja eredményezni `/tezstaging` .  Az alapértelmezett Hadoop-konfiguráció a `/tezstaging` `fs.azure.page.blob.dir` szolgáltatásban található konfigurációs változóban fog szerepelni `core-site.xml` `HDFS` .  Ez a konfiguráció azt eredményezi, hogy a könyvtár a könyvtárba kerül, és a Storage-fiók típusa nem támogatott `BlobStorage` .  Ennek a `BlobStorage` cikknek a használatához távolítsa el `/tezstaging` a `fs.azure.page.blob.dir` konfigurációs változót.  A konfiguráció a [Ambari felhasználói felületéről](../hdinsight-hadoop-manage-ambari.md)érhető el.  Ellenkező esetben a következő hibaüzenet jelenik meg:`Page blob is not supported for this account type.`
+Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)` .  A cikkben szereplő folyamat legalább a kimenetet fogja eredményezni `/tezstaging` .  Az alapértelmezett Hadoop-konfiguráció a `/tezstaging` `fs.azure.page.blob.dir` szolgáltatásban található konfigurációs változóban fog szerepelni `core-site.xml` `HDFS` .  Ez a konfiguráció azt eredményezi, hogy a könyvtár a könyvtárba kerül, és a Storage-fiók típusa nem támogatott `BlobStorage` .  Ennek a `BlobStorage` cikknek a használatához távolítsa el `/tezstaging` a `fs.azure.page.blob.dir` konfigurációs változót.  A konfiguráció a [Ambari felhasználói felületéről](../hdinsight-hadoop-manage-ambari.md)érhető el.  Ellenkező esetben a következő hibaüzenet jelenik meg: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > A jelen dokumentumban ismertetett lépések a következő feltételezéseket teszik:  
@@ -300,8 +300,8 @@ Egy Python-szkript használható a Pig-ből származó UDF-ként az `GENERATE` u
 
 A Python-tolmács megadásához használja `register` a Python-szkriptre való hivatkozással. Az alábbi példákban a Pig-szkriptek regisztrálása `myfuncs` :
 
-* **A Jython használata**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **A C Python használata**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **A Jython használata**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **A C Python használata**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > A Jython használatakor a pig_jython-fájl elérési útja lehet helyi elérési út vagy WASBS://elérési út is. A C Python használatakor azonban hivatkoznia kell egy fájlra annak a csomópontnak a helyi fájlrendszerén, amelyet a Pig feladat elküldéséhez használ.
@@ -319,7 +319,7 @@ A példa a következőképpen működik:
 
 1. Az első sor betölti a minta adatfájlt a `sample.log` alkalmazásba `LOGS` . Emellett az egyes rekordokat is meghatározza `chararray` .
 2. A következő sor kiszűri a null értékeket, és a művelet eredményét a alkalmazásba tárolja `LOG` .
-3. Ezután megismétli a `LOG` és a által használt rekordokat, `GENERATE` hogy meghívja a `create_structure` Python/Jython parancsfájlban található metódust `myfuncs` . `LINE`az aktuális rekord függvénybe való továbbítására szolgál.
+3. Ezután megismétli a `LOG` és a által használt rekordokat, `GENERATE` hogy meghívja a `create_structure` Python/Jython parancsfájlban található metódust `myfuncs` . `LINE` az aktuális rekord függvénybe való továbbítására szolgál.
 4. Végül a kimenetek az STDOUT-ra kerülnek a parancs használatával `DUMP` . Ez a parancs a művelet befejeződése után jeleníti meg az eredményeket.
 
 ### <a name="create-file"></a>Fájl létrehozása
@@ -594,7 +594,7 @@ A rendszer a hiba adatait (STDERR) és a feladatok eredményét (STDOUT) is napl
 
 ## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
-Ha olyan Python-modulokat kell betölteni, amelyek alapértelmezés szerint nem találhatók meg, tekintse meg [a modul üzembe helyezése az Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)című témakört.
+Ha olyan Python-modulokat kell betölteni, amelyek alapértelmezés szerint nem találhatók meg, tekintse meg [a modul üzembe helyezése az Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)című témakört.
 
 A Pig, a kaptár és a MapReduce használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 

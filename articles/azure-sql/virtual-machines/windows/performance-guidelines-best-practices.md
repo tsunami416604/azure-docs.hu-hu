@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690238"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481790"
 ---
-# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Teljesítményre vonatkozó irányelvek az Azure-beli SQL Server Virtual Machines
+# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Teljesítményre vonatkozó irányelvek az Azure Virtual Machines szolgáltatásban futó SQL Serverhez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk útmutatást nyújt a Microsoft Azure Virtual Machines SQL Server teljesítményének optimalizálásához.
@@ -198,7 +198,20 @@ Ha tárolóhelyeket használ, amikor csomópontokat ad hozzá a fürthöz a **j�
 
 Ha tárolóhelyeket használ, és nem törli **az összes megfelelő tároló hozzáadása a fürthöz**lehetőséget, a Windows leválasztja a virtuális lemezeket a fürtözési folyamat során. Ennek eredményeképpen azok nem jelennek meg a Lemezkezelés eszközben vagy az Intézőben, amíg a tárolóhelyek el nem lesznek távolítva a fürtből, és nem kapcsolódnak újra a PowerShell használatával. A tárolóhelyek több lemezt is csoportosítanak a Storage-készletekbe. További információ: [tárolóhelyek](/windows-server/storage/storage-spaces/overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="multiple-instances"></a>Több példány 
+
+Ha több SQL Server példányt telepít egyetlen virtuális gépre, vegye figyelembe az alábbi ajánlott eljárásokat: 
+
+- Állítsa be az egyes SQL Server-példányok maximális kiszolgálói memóriáját, és győződjön meg róla, hogy az operációs rendszer megmaradt a memóriában. Ügyeljen arra, hogy frissítse a SQL Server példányok memória-korlátozásait, ha módosítja a virtuális gép számára lefoglalt memória mennyiségét. 
+- Külön LUN-nak kell lennie az adatokhoz, a naplókhoz és a TempDB, mivel ezek mind eltérő számítási feladatok, és nem szeretné, hogy azok hatással legyenek egymásra. 
+- Alaposan tesztelje környezetét nagy teljesítményű, hasonló számítási feladatokkal, hogy az alkalmazáson belül képes legyen kezelni a maximális munkaterhelés-kapacitást. 
+
+A túlterhelt rendszerek jelei tartalmazhatnak, de nem korlátozódnak a munkavégző szálra, a lassú válaszidőra és/vagy az elakadt kiosztó rendszermemóriára. 
+
+
+
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a tárolásról és a teljesítményről: [Az Azure-beli SQL Server tárolási konfigurációs irányelvei Virtual Machines](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 

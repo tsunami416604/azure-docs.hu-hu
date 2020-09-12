@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526503"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436187"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Linux rendszerű virtuális gép hibáinak elhárítása fájlrendszerbeli hibák miatt
 
@@ -83,7 +83,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módba 
 
    > [!Note]
    > A soros konzol Linux rendszeren történő használatáról további információt a következő témakörben talál:
-   > * [A soros konzol használata a GRUB és az single user mód eléréséhez](../linux/serial-console-grub-single-user-mode.md)
+   > * [A soros konzol használata a GRUB és az single user mód eléréséhez](serial-console-grub-single-user-mode.md)
    > * [Soros konzol használata SysRq-és NMI-hívásokhoz](./serial-console-nmi-sysrq.md)
 
 2. Válassza a főkapcsoló ikon gombot, majd válassza a virtuális gép újraindítása lehetőséget. (Ha a soros konzol nincs engedélyezve vagy nem csatlakozik sikeresen, a gomb nem jelenik meg.)

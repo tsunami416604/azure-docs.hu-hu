@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 95e2b268da0785816423ec1ee9c8e31730d48ed8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0cd6797bcdfadca807e25f8b3decf34bd553fc56
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854254"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470051"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>Azure Red Hat OpenShift 4-fürt alkalmazás-visszaállításának létrehozása
 
@@ -23,7 +23,7 @@ Ebben a cikkben előkészíti a környezetet egy Azure Red Hat OpenShift 4 fürt
 > * Az előfeltételek beállítása és a szükséges eszközök telepítése
 > * Azure Red Hat OpenShift 4 alkalmazás-visszaállítás létrehozása
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -68,5 +68,3 @@ Ebben a cikkben egy Red Hat OpenShift 4 fürtözött alkalmazást állítottak v
 A következő cikkből megismerheti az Azure Red Hat OpenShift 4 támogatott erőforrásait.
 
 * [Azure Red Hat OpenShift v4 – támogatott források](supported-resources.md)
-
-

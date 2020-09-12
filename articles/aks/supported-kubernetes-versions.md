@@ -3,19 +3,19 @@ title: Az Azure Kubernetes Service-ben támogatott Kubernetes-verziók
 description: Ismerje meg az Azure Kubernetes Service-ben (ak) lévő fürtök Kubernetes-verziójának támogatási szabályzatát és életciklusát
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144617"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565372"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
-A Kubernetes-Közösség nagyjából három havonta kibocsátja a kisebb verziókat. Ezek a kiadások új funkciókat és fejlesztési lehetőségeket tartalmaznak. A javítási kiadások gyakoribbak (esetenként hetente), és csak a kritikus hibajavítások számára készültek egy kisebb verzióban. Ezek a javítások a biztonsági rések vagy a nagyobb hibák javítását is tartalmazzák.
+A Kubernetes-Közösség nagyjából három havonta kibocsátja a kisebb verziókat. A közelmúltban a Kubernetes Közösség [9 hónap és 12 hónap között megnövelte az egyes verziók támogatását](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), az 1,19-es verziótól kezdődően. Ezek a kiadások új funkciókat és fejlesztési lehetőségeket tartalmaznak. A javítási kiadások gyakoribbak (esetenként hetente), és a kritikus hibajavítások egy alverzión belül vannak. Ezek a javítások a biztonsági rések vagy a nagyobb hibák javítását is tartalmazzák.
 
 ## <a name="kubernetes-versions"></a>Kubernetes-verziók
 
@@ -41,8 +41,8 @@ A felhasználóknak törekedniük kell arra, hogy futtassák a futtatott alverzi
 
 Az AK általánosan elérhető verziót határoz meg, amely minden SLO-vagy SLA-mértékben engedélyezve van, és ha minden régióban elérhető. Az AK támogatja a Kubernetes három GA-moll verzióját:
 
-* A legújabb GA alverzió, amely az AK-ban jelent meg (amit N-ként fogunk hivatkozni). 
-* Két korábbi másodlagos verzió. 
+* A legújabb GA alverzió, amely az AK-ban jelent meg (amit N-ként fogunk hivatkozni).
+* Két korábbi másodlagos verzió.
 * A támogatott alverziók mindegyike legfeljebb két (2) stabil javítást is támogat.
 * Az AK is támogathatja az előzetes verziókat, amelyek explicit módon címkével rendelkeznek, és az [előzetes verziójú használati][preview-terms]feltételeket is felhasználhatják.
 
@@ -143,6 +143,10 @@ A korábbi kiadási előzményekért lásd [itt](https://en.wikipedia.org/wiki/K
 \* A felsőbb rétegbeli kiadási dátum megerősítése folyamatban van.
 
 ## <a name="faq"></a>GYIK
+
+**Milyen gyakran várható a Kubernetes-verziók frissítése a támogatásban?**
+
+A Kubernetes 1,19- [ben a nyílt forráskódú közösség 1 évre kibővített támogatást](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)nyújt. Az AK véglegesíti, hogy a javítások és a támogatás legalább a felsőbb rétegbeli kötelezettségvállalásoknak megfelelő támogatást biztosít. Ez azt jelenti, hogy a 1,19-es számú AK-fürtökkel kezdődően az évente legalább egyszer frissíthető, hogy egy támogatott verzió maradjon. A 1,18-es vagy újabb verziókban a támogatási ablak 9 hónap alatt marad, és 9 havonta egyszer kell frissíteni, hogy egy támogatott verzió maradjon. Javasoljuk, hogy rendszeresen tesztelje az új verziókat, és készüljön fel az újabb verzióra való frissítésre, hogy rögzítse a legújabb stabil fejlesztéseket a Kubernetes belül.
 
 **Mi történik, ha egy felhasználó olyan alverzióval frissít egy Kubernetes-fürtöt, amely nem támogatott?**
 

@@ -1,14 +1,14 @@
 ---
 title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
-ms.date: 08/10/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056618"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469779"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
@@ -31,7 +31,26 @@ Alapértelmezés szerint a rendszer a bérlőn belül hozzáadott új előfizet�
 
 Azáltal, hogy lehetővé teszi az új előfizetések alapértelmezett felügyeleti csoportjának meghatározását, a szervezeti szintű irányítási szerkezetek alkalmazhatók a legfelső szintű felügyeleti csoportra, és egy külön felügyeleti csoport, amelynek a szabályzat-hozzárendelései vagy egy új előfizetéshez jobban illeszkedő Azure-szerepkör-hozzárendelések adhatók meg.
 
-A beállítás konfigurálásához a [hierarchia beállításait](/rest/api/resources/hierarchysettings) REST API végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Cserélje le a `{rootMgID}` értéket a gyökér felügyeleti csoportjának azonosítójával, és a `{defaultGroupID}` felügyeleti csoport azonosítójának használatával az alapértelmezett felügyeleti csoport lesz:
+### <a name="set-default-management-group-in-portal"></a>Alapértelmezett felügyeleti csoport beállítása a portálon
+
+A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lépéseket:
+
+1. A keresési sáv használatával megkeresheti és kiválaszthatja a felügyeleti csoportok elemet.
+
+1. A gyökérszintű felügyeleti csoportban válassza a **részletek** elemet a felügyeleti csoport neve mellett.
+
+1. A **Beállítások**területen válassza a **hierarchia beállításai**lehetőséget.
+
+1. Válassza az **alapértelmezett felügyeleti csoport módosítása** gombot.
+
+   > [!NOTE]
+   > Ha az **alapértelmezett felügyeleti csoport módosítása** gomb le van tiltva, vagy a megtekintett felügyeleti csoport nem a gyökérszintű felügyeleti csoport, vagy a rendszerbiztonsági tag nem rendelkezik a hierarchia beállításainak módosításához szükséges engedélyekkel.
+
+1. Válasszon ki egy felügyeleti csoportot a hierarchiából, és használja a **Select (kiválasztás** ) gombot.
+
+### <a name="set-default-management-group-with-rest-api"></a>Alapértelmezett felügyeleti csoport beállítása REST API
+
+A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/resources/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Cserélje le a `{rootMgID}` értéket a gyökér felügyeleti csoportjának azonosítójával, és a `{defaultGroupID}` felügyeleti csoport azonosítójának használatával az alapértelmezett felügyeleti csoport lesz:
 
 - REST API URI
 
@@ -55,7 +74,24 @@ Ha az alapértelmezett felügyeleti csoportot vissza szeretné állítani a gyö
 
 Alapértelmezés szerint bármely felhasználó új felügyeleti csoportokat hozhat létre a bérlőn belül. A bérlők rendszergazdái dönthetnek úgy, hogy csak bizonyos felhasználók számára kívánják biztosítani a következetesség és a megfelelőség fenntartását a felügyeleti csoport hierarchiájában. Ha engedélyezve van, a felhasználónak a `Microsoft.Management/managementGroups/write` felügyeleti csoporton kell megadnia a műveletet az új alárendelt felügyeleti csoportok létrehozásához.
 
-A beállítás konfigurálásához a [hierarchia beállításait](/rest/api/resources/hierarchysettings) REST API végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Ez az érték egy _logikai_érték, ezért **igaz** vagy **hamis** értéket adjon meg az értékhez. A **true** értékkel engedélyezheti a felügyeleti csoport hierarchiájának védelmét:
+### <a name="set-require-authorization-in-portal"></a>Engedélyezés megkövetelése a portálon
+
+A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lépéseket:
+
+1. A keresési sáv használatával megkeresheti és kiválaszthatja a felügyeleti csoportok elemet.
+
+1. A gyökérszintű felügyeleti csoportban válassza a **részletek** elemet a felügyeleti csoport neve mellett.
+
+1. A **Beállítások**területen válassza a **hierarchia beállításai**lehetőséget.
+
+1. Az **új felügyeleti csoportok létrehozásához szükséges engedélyek** bekapcsolása. lehetőség bekapcsolva.
+
+   > [!NOTE]
+   > Ha az **új felügyeleti csoportok létrehozásához engedélyekre van szükség.** a váltógomb le van tiltva, vagy a megtekintett felügyeleti csoport nem a gyökérszintű felügyeleti csoport, vagy a rendszerbiztonsági tag nem rendelkezik a hierarchia beállításainak módosításához szükséges engedélyekkel.
+
+### <a name="set-require-authorization-with-rest-api"></a>Engedélyezés megkövetelése REST API
+
+A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/resources/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Ez az érték egy _logikai_érték, ezért **igaz** vagy **hamis** értéket adjon meg az értékhez. A **true** értékkel engedélyezheti a felügyeleti csoport hierarchiájának védelmét:
 
 - REST API URI
 
@@ -75,7 +111,7 @@ A beállítás konfigurálásához a [hierarchia beállításait](/rest/api/reso
 
 Ha vissza szeretné kapcsolni a beállítást, használja ugyanazt a végpontot, és állítsa a **requireAuthorizationForGroupCreation** értéket **hamis**értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

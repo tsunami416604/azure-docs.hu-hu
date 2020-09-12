@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021381"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613774"
 ---
 # <a name="color-materials"></a>Színes anyagok
 
@@ -51,7 +51,14 @@ A következő tulajdonságok a színanyagokra jellemzőek:
 
   1. **Adalékanyag:** Ez a legegyszerűbb és leghatékonyabb átlátszósági mód. Az anyag hozzájárulása hozzáadódik a megjelenített képhez. Ezzel a móddal szimulálhatja a fénylő (de még transzparens) objektumokat, például a fontos objektumok kiemeléséhez használt jelölőket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# ColorMaterial osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ ColorMaterial osztály](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+
+## <a name="next-steps"></a>Következő lépések
 
 * [PBR-anyagok](pbr-materials.md)
 * [Textúrák](../../concepts/textures.md)

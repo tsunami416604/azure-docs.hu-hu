@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311568"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434537"
 ---
 # <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
@@ -32,12 +32,12 @@ A MSAL.js 1,0-és 2,0-alapú alkalmazásokhoz a kezdeti alkalmazás regisztráci
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha a fiókja több bérlőhöz fér hozzá, válassza ki a **könyvtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a bérlőt, amelynek a létrehozni kívánt alkalmazás-regisztrációt tartalmaznia kell.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
-1. Válassza az **új regisztráció**lehetőséget, adjon meg egy **nevet** az alkalmazásnak, és válassza ki az alkalmazás **támogatott fiókjának típusát** . Ne **adjon meg** **átirányítási URI**-t. A különböző fióktípus leírását az [új alkalmazás regisztrálása a Azure Portal használatával](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)című témakörben tekintheti meg.
+1. Válassza az **új regisztráció**lehetőséget, adjon meg egy **nevet** az alkalmazásnak, és válassza ki az alkalmazás **támogatott fiókjának típusát** . Ne **adjon meg** **átirányítási URI**-t. A különböző fióktípus leírását az [új alkalmazás regisztrálása a Azure Portal használatával](quickstart-register-app.md)című témakörben tekintheti meg.
 1. Az alkalmazás regisztrációjának létrehozásához válassza a **regisztráció** lehetőséget.
 
 Ezután konfigurálja az alkalmazás regisztrációját egy **átirányítási URI** -val annak megadásához, hogy a Microsoft Identity platform hová irányítsa át az ügyfelet a biztonsági jogkivonatokkal együtt. Használja az alkalmazásban használt MSAL.js verziójának megfelelő lépéseket:
 
-- [2,0MSAL.js az Auth Code flow-val](#redirect-uri-msaljs-20-with-auth-code-flow) (ajánlott)
+- [ 2,0MSAL.js az Auth Code flow-val](#redirect-uri-msaljs-20-with-auth-code-flow) (ajánlott)
 - [MSAL.js 1,0 implicit folyamattal](#redirect-uri-msaljs-10-with-implicit-flow)
 
 ## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Átirányítási URI: [MSAL.js 2,0 az Auth Code flow-val](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)

@@ -3,12 +3,12 @@ title: GPU-figyelés konfigurálása a Azure Monitor for containers szolgáltat�
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a figyelési Kubernetes-fürtöket NVIDIA és AMD GPU-t használó csomópontokkal a Azure Monitor for containers használatával.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373309"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569696"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>A GPU-figyelés konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -22,9 +22,12 @@ A tárolók Azure Monitor támogatja a GPU-fürtök figyelését a következő G
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-A tárolók Azure Monitor automatikusan elindítja a GPU-használat figyelését a csomópontokon, valamint a hüvelyeket és a munkaterheléseket kérő GPU-t a következő metrikák 60sec-időközönként történő gyűjtésével és a **InsightMetrics** táblában való tárolásával:
+A tárolók Azure Monitor automatikusan elindítja a GPU-használat figyelését a csomópontokon, valamint a hüvelyeket és a munkaterheléseket kérő GPU-t a következő metrikák 60sec időközönkénti gyűjtésével és a **InsightMetrics** táblában való tárolásával.
 
-|Metrika neve |Metrikus dimenzió (címkék) |Leírás |
+>[!NOTE]
+>A fürt GPU-csomópontokkal való üzembe helyezését követően győződjön meg arról, hogy a GPU- [illesztő](../../aks/gpu-cluster.md) a GPU-munkaterhelések futtatásához szükséges az AK-ban. A tárolók Azure Monitor GPU-metrikákat gyűjtenek a csomóponton futó GPU-illesztőn keresztül. 
+
+|Metrika neve |Metrikus dimenzió (címkék) |Description |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|Az elmúlt mintavételi időszakban (60 másodpercben) az idő százalékos aránya, amely alatt a GPU foglalt/aktívan feldolgozás alatt áll a tárolóban. A Duty ciklus 1 és 100 közötti szám. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |Minden tároló megadhatja a határértékeket egy vagy több GPU-ként. A GPU töredékét nem lehet lekérni vagy korlátozni. |
@@ -38,7 +41,7 @@ A tárolók Azure Monitor automatikusan elindítja a GPU-használat figyelését
 
 A tárolók Azure Monitor tartalmaz előre konfigurált diagramokat a táblázatban korábban felsorolt metrikák számára a minden fürthöz tartozó GPU-munkafüzetként. A GPU-munkafüzet **csomópontjának GPU** -t közvetlenül egy AK-fürtből is megtalálhatja, ha a bal oldali ablaktáblán a **munkafüzetek** elemre kattint, és az elemzés **munkafüzetek megtekintése** legördülő listájában található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [a GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban](../../aks/gpu-cluster.md) (ak), amelyből megtudhatja, hogyan helyezhet üzembe egy GPU-t támogató csomópontokat tartalmazó AK-fürtöt.
 

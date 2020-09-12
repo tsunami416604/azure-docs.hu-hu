@@ -1,19 +1,19 @@
 ---
 title: Azure Active Directory-felhasználók szinkronizálása a HDInsight-fürttel
 description: Hitelesített felhasználók szinkronizálása Azure Active Directoryról egy HDInsight-fürtre.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004423"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504655"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
@@ -37,7 +37,7 @@ A gazdagépek megtekintéséhez nyissa meg a Ambari webes felhasználói felüle
 
     ![Azure Portal felhasználói ablaktábla csoportok kiválasztása](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>A felhasználók szinkronizálása az Apache Ambari REST API használatával
 
@@ -59,7 +59,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
     "https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events"
     ```
 
-    A válasznak így kell kinéznie:
+    A következő választ kell kapnia:
 
     ```json
     {
@@ -80,7 +80,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
 
-    A válasznak így kell kinéznie:
+    A következő választ kell kapnia:
 
     ```json
     {
@@ -123,7 +123,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
 1. Ez az eredmény azt mutatja, hogy az állapot **elkészült**, egy új felhasználó lett létrehozva, és a felhasználó hozzá lett rendelve egy tagsághoz. Ebben a példában a felhasználó hozzá van rendelve az "HiveUsers" szinkronizált LDAP-csoporthoz, mivel a felhasználó hozzá lett adva ugyanahhoz a csoporthoz az Azure AD-ben.
 
     > [!NOTE]  
-    > Az előző metódus csak a tartományi beállítások **hozzáférés felhasználói csoport** tulajdonságában megadott Azure ad-csoportokat szinkronizálja a fürt létrehozásakor. További információt a HDInsight- [fürt létrehozása](domain-joined/apache-domain-joined-configure.md)című témakörben talál.
+    > Az előző metódus csak a tartományi beállítások **hozzáférés felhasználói csoport** tulajdonságában megadott Azure ad-csoportokat szinkronizálja a fürt létrehozásakor. További információt a HDInsight-  [fürt létrehozása](domain-joined/apache-domain-joined-configure.md)című témakörben talál.
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Az újonnan hozzáadott Azure AD-felhasználó ellenőrzése
 
@@ -137,7 +137,7 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 
     ![HDInsight-felhasználók és-csoportok menü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre van állítva `LDAP` `Local` .
+3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre van állítva `LDAP`  `Local` .
 
     ![HDInsight HRE-felhasználók lap – áttekintés](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
@@ -146,7 +146,7 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 Amikor az új felhasználó (vagy bármely más tartományi felhasználó) bejelentkezik a Ambari-ba, a teljes Azure AD-felhasználónevet és tartományi hitelesítő adatokat használják.  A Ambari megjelenít egy felhasználói aliast, amely a felhasználó megjelenítendő neve az Azure AD-ben.
 Az új példában szereplő felhasználó neve `hiveuser3@contoso.com` . A Ambari-ben ez az új felhasználó úgy jelenik meg, ahogy `hiveuser3` a felhasználó bejelentkezik a Ambari-ba `hiveuser3@contoso.com` .
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Apache Hive házirendek konfigurálása a HDInsight-ben ESP-vel](hdinsight-domain-joined-run-hive.md)
 * [HDInsight-fürtök az ESP-vel való kezelése](hdinsight-domain-joined-manage.md)

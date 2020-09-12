@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079776"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536455"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -168,13 +168,18 @@ A modelleket nem feltétlenül adja vissza pontosan abban a dokumentum űrlapon,
 
 ### <a name="update-models"></a>Modellek frissítése
 
-Miután feltöltötte a modellt a példányra, a teljes modell felülete nem változtatható meg. Ez azt jelenti, hogy nincs a modellek hagyományos "szerkesztése".
+Miután feltöltötte a modellt az Azure Digital Twins-példányba, a teljes modell felülete nem változtatható meg. Ez azt jelenti, hogy nincs a modellek hagyományos "szerkesztése". Az Azure Digital Twins szintén nem teszi lehetővé ugyanannak a modellnek az újbóli feltöltését.
 
-Ehelyett, ha az Azure Digital Twins-modellben szeretne módosítani egy modellt, ennek az az módja, hogy az azonos modell **újabb verzióját** töltse fel. Az előzetes verzióban a modell verziófrissítése csak a mezők eltávolítását teszi lehetővé, nem újak hozzáadásával (új mezők hozzáadásához csak új modellt kell [létrehoznia](#create-models)).
+Ehelyett, ha módosítani szeretné a modelleket – például a frissítést `displayName` vagy a módszert –, akkor `description` a modell **újabb verziójának** feltöltését kell végrehajtania. 
+
+#### <a name="model-versioning"></a>Modell verziószámozása
 
 Meglévő modell új verziójának létrehozásához kezdje az eredeti modell DTDL. Frissítse a módosítani kívánt mezőket.
 
-Ezt követően jelölje meg a modell újabb verzióját a modell mező frissítésével `id` . A modell AZONOSÍTÓjának utolsó szakasza, amely után a `;` , a modell számát jelöli. Annak jelzéséhez, hogy ez a modell most már egy frissített verziója, növelje az érték végén lévő számot az `id` aktuális verziószámnál nagyobb számra.
+>[!NOTE]
+>Az előzetes verzióban a modell verziófrissítése csak új mezők hozzáadását teszi lehetővé, és nem távolítja el a meglévőket. A mezők eltávolításához egyszerűen [hozzon létre egy új modellt](#create-models).
+
+Ezután a modell mezőjét frissítve a modell újabb verziójára kell megjelölnie `id` . A modell AZONOSÍTÓjának utolsó szakasza, amely után a `;` , a modell számát jelöli. Annak jelzéséhez, hogy ez a modell most már egy frissített verziója, növelje az érték végén lévő számot az `id` aktuális verziószámnál nagyobb számra.
 
 Ha például az előző modell azonosítója így néz ki:
 
@@ -188,7 +193,17 @@ a modell 2. verziója így néz ki:
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-Ezután töltse fel a modell új verzióját a példányra. A régi verzió helyére kerül, és a modell használatával létrehozott új ikrek a frissített verziót fogják használni.
+Ezután töltse fel a modell új verzióját a példányra. 
+
+A modell ezen verziója ezután elérhető lesz a példányban a digitális ikrek számára. **Nem** írja felül a modell korábbi verzióit, így a modell több verziója is egyszerre fog létezni a példányban, amíg [el nem távolítja őket](#remove-models).
+
+#### <a name="impact-on-twins"></a>Az ikrek hatása
+
+Új Twin létrehozásakor, mivel az új modell verziója és a régi modell verziója együttes létezik, az új Twin a modell új verzióját vagy a régebbi verziót is használhatja.
+
+Ez azt is jelenti, hogy egy modell új verziójának feltöltése nem befolyásolja automatikusan a meglévő ikreket. A meglévő ikrek egyszerűen megmaradnak a modell korábbi verziójának példányain.
+
+Ezeket a meglévő ikreket frissítheti az új modell verziójára úgy, hogy kijavítja azokat a következő témakörben ismertetett módon: a [*Digital Twin modell frissítése*](how-to-manage-twin.md#update-a-digital-twins-model) című rész, *útmutató: digitális ikrek kezelése*. Ugyanezen a javításon belül frissítenie kell a **modell azonosítóját** (az új verzióra) és **minden olyan mezőt, amelyet meg kell változtatni a twinon, hogy az megfeleljen az új modellnek**.
 
 ### <a name="remove-models"></a>Modellek eltávolítása
 
@@ -273,6 +288,8 @@ Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen a
 ## <a name="manage-models-with-cli"></a>Modellek kezelése a CLI-vel
 
 A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

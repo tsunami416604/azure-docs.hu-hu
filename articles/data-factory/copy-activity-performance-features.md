@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846343"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440541"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Másolási tevékenység teljesítményének optimalizálási funkciói
 
@@ -42,7 +42,7 @@ A másolási tevékenység figyelési nézetében vagy a tevékenység kimeneté
 
 **A rendszer a felhasznált DIUs \* -másolási időtartam \* egységnyi árát/DIU óradíjat**számítja fel. Tekintse meg az [aktuális árakat.](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) A helyi pénznem és a különálló kedvezmények előfizetési típusok esetén alkalmazhatók.
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -91,7 +91,7 @@ A következő táblázat a párhuzamos másolási viselkedést sorolja fel:
 
 | Másolási forgatókönyv | Párhuzamos másolási viselkedés |
 | --- | --- |
-| A file Stores között | `parallelCopies`meghatározza a párhuzamosságot **a fájl szintjén**. Az egyes fájlokon belüli adatdarabolás automatikusan és transzparens módon történik. Úgy van kialakítva, hogy egy adott adattár-típushoz a legmegfelelőbb méretet használja az adat párhuzamos betöltéséhez. <br/><br/>A párhuzamos példányszámú másolási tevékenységek tényleges száma a futási időben nem haladja meg az Ön által használt fájlok számát. Ha a másolási viselkedés **mergeFile** , a másolási tevékenység nem tudja kihasználni a fájl szintű párhuzamosságot. |
+| A file Stores között | `parallelCopies` meghatározza a párhuzamosságot **a fájl szintjén**. Az egyes fájlokon belüli adatdarabolás automatikusan és transzparens módon történik. Úgy van kialakítva, hogy egy adott adattár-típushoz a legmegfelelőbb méretet használja az adat párhuzamos betöltéséhez. <br/><br/>A párhuzamos példányszámú másolási tevékenységek tényleges száma a futási időben nem haladja meg az Ön által használt fájlok számát. Ha a másolási viselkedés **mergeFile** , a másolási tevékenység nem tudja kihasználni a fájl szintű párhuzamosságot. |
 | A file Store-ból a nem file Store-ba | -Az adatok Azure SQL Database vagy Azure Cosmos DBba másolásakor a párhuzamos másolás a fogadó rétegtől (DTU/RUs) függ.<br>-Az adatok Azure-táblázatba másolásakor az alapértelmezett párhuzamos másolás 4. |
 | Nem a file Store-ból a file Store-ba | – Ha az adatok másolása a partícióról engedélyezett adattárból történik (beleértve [a Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source), az [Azure SQL felügyelt példányát](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), az [Azure szinapszis Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), az [Oracle](connector-oracle.md#oracle-as-source), a [Netezza](connector-netezza.md#netezza-as-source), az [SAP HANA](connector-sap-hana.md#sap-hana-as-source), az [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), az [SAP Table](connector-sap-table.md#sap-table-as-source), a [SQL Server](connector-sql-server.md#sql-server-as-a-source)és a [Teradata](connector-teradata.md#teradata-as-source)), az alapértelmezett párhuzamos másolás 4. A párhuzamos példányszámú másolási tevékenységek tényleges száma a futási időben nem haladja meg az Ön által használt adatpartíciók számát. Ha saját üzemeltetésű Integration Runtime használ, és másolja az Azure Blob/ADLS Gen2ba, vegye figyelembe, hogy a maximális effektív párhuzamos másolás 4 vagy 5.<br>– Más esetekben a párhuzamos másolás nem lép érvénybe. Még ha a párhuzamosság is meg van adva, a rendszer nem alkalmazza. |
 | Nem fájlos tárolók között | -Az adatok Azure SQL Database vagy Azure Cosmos DBba másolásakor a párhuzamos másolás a fogadó rétegtől (DTU/RUs) függ.<br/>– Ha az adatok másolása a partícióról engedélyezett adattárból történik (beleértve [a Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source), az [Azure SQL felügyelt példányát](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), az [Azure szinapszis Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), az [Oracle](connector-oracle.md#oracle-as-source), a [Netezza](connector-netezza.md#netezza-as-source), az [SAP HANA](connector-sap-hana.md#sap-hana-as-source), az [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), az [SAP Table](connector-sap-table.md#sap-table-as-source), a [SQL Server](connector-sql-server.md#sql-server-as-a-source)és a [Teradata](connector-teradata.md#teradata-as-source)), az alapértelmezett párhuzamos másolás 4.<br>-Az adatok Azure-táblázatba másolásakor az alapértelmezett párhuzamos másolás 4. |
@@ -100,7 +100,7 @@ Az adattárakat üzemeltető gépek terhelésének szabályozásához, vagy a m�
 
 Ha megad egy értéket a `parallelCopies` tulajdonsághoz, vegye figyelembe a terhelés növekedését a forrás-és a fogadó adattárakban. Vegye figyelembe a terhelés növekedését is a saját üzemeltetésű integrációs modul esetében, ha a másolási tevékenységet a rendszer felhatalmazza. Ez a terhelés növekszik, különösen akkor, ha több tevékenység vagy ugyanazon tevékenység egyidejű futtatása történik ugyanazon az adattárban. Ha azt észleli, hogy az adattár vagy a saját üzemeltetésű integrációs modul túlterhelt a terheléssel, csökkentse az `parallelCopies` értéket a terhelés enyhítéséhez.
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -126,7 +126,7 @@ Ha megad egy értéket a `parallelCopies` tulajdonsághoz, vegye figyelembe a te
 
 Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, a blob Storage-t átmeneti átmeneti tárolóként használhatja. Az előkészítés különösen a következő esetekben hasznos:
 
-- **A különböző adattárakból származó adatok betöltését az Azure szinapszis Analyticsbe (korábbi nevén SQL Data Warehouse)-be szeretné állítani a Base használatával.** Az Azure szinapszis Analytics a bázist nagy átviteli sebességű mechanizmusként használja nagy mennyiségű adat az Azure szinapszis Analyticsbe való betöltéséhez. A forrásadatok csak blob Storage-ban vagy Azure Data Lake Storeban szerepelhetnek, és meg kell felelniük a további feltételeknek. Ha a blob Storage-ból vagy a Azure Data Lake Storetól eltérő adattárból tölt be adattárolót, az Adatmásolást átmeneti átmeneti blob Storage használatával aktiválhatja. Ebben az esetben a Azure Data Factory végrehajtja a szükséges adatátalakításokat annak érdekében, hogy az megfeleljen a bázisterület követelményeinek. Ezután a Base használatával tölti be az adatok betöltését az Azure szinapszis Analytics szolgáltatásba. További információkért lásd: az [adatok Azure SQL Data Warehouseba való betöltésének alapja](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)
+- **A különböző adattárakból származó adatok betöltését az Azure szinapszis Analyticsbe (korábbi nevén SQL Data Warehouse)-be szeretné állítani a Base használatával.** Az Azure szinapszis Analytics a bázist nagy átviteli sebességű mechanizmusként használja nagy mennyiségű adat az Azure szinapszis Analyticsbe való betöltéséhez. A forrásadatok csak blob Storage-ban vagy Azure Data Lake Storeban szerepelhetnek, és meg kell felelniük a további feltételeknek. Ha a blob Storage-ból vagy a Azure Data Lake Storetól eltérő adattárból tölt be adattárolót, az Adatmásolást átmeneti átmeneti blob Storage használatával aktiválhatja. Ebben az esetben a Azure Data Factory végrehajtja a szükséges adatátalakításokat annak érdekében, hogy az megfeleljen a bázisterület követelményeinek. Ezután a Base használatával tölti be az adatok betöltését az Azure szinapszis Analytics szolgáltatásba. További információkért lásd: az [adatok az Azure szinapszis analyticsbe való betöltésének használata](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
 - **Időnként igénybe veheti a hibrid adatáthelyezést (azaz egy helyszíni adattárból a Felhőbeli adattárolóba történő másolást) lassú hálózati kapcsolaton keresztül.** A teljesítmény javítása érdekében a szakaszos másolással tömörítheti a helyszíni adatok, így kevesebb időt vesz igénybe az adatok áthelyezése a Felhőbeli átmeneti adattárba. Ezután kibonthatja az átmeneti tárolóban lévő adatok kibontását a cél adattárba való betöltés előtt.
 - **A vállalati informatikai házirendek miatt nem szeretné megnyitni a 80-as és a 443-es porton kívüli portokat a tűzfalon.** Ha például egy helyszíni adattárból másol be egy Azure SQL Database fogadóba vagy egy Azure szinapszis Analytics-fogadóba, akkor a Windows tűzfal és a vállalati tűzfal esetében aktiválni kell a kimenő TCP-kommunikációt az 1433-as porton. Ebben az esetben a szakaszos másolás kihasználhatja a saját üzemeltetésű integrációs modul előnyeit, hogy először másolja az adatait egy blob Storage-alapú átmeneti példányba HTTP vagy HTTPS protokollon keresztül a 443-es porton. Ezt követően az adatok betölthetők a SQL Databaseba vagy az Azure szinapszis Analytics szolgáltatásba a blob Storage átmeneti környezetből. Ebben a folyamatban nem kell engedélyeznie a 1433-es portot.
 
@@ -140,16 +140,16 @@ Ha átmeneti tároló használatával aktiválja az adatáthelyezést, megadhatj
 
 Jelenleg nem másolhat Adatmásolást két olyan adattár között, amely különböző saját üzemeltetésű IRs-kapcsolaton keresztül csatlakozik, sem a, sem a szakaszos másolat nélkül. Ilyen esetben két explicit módon láncolt másolási tevékenységet konfigurálhat a forrásról az előkészítésre való másoláshoz, majd az előkészítésből a fogadóba.
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 
 Konfigurálja a **enableStaging** beállítást a másolási tevékenységben annak megadásához, hogy a blob Storage-ban kívánja-e az adatelőkészítést, mielőtt betölti azt egy célhely-adattárba. A **enableStaging** beállításakor `TRUE` adja meg az alábbi táblázatban felsorolt további tulajdonságokat. Ha még nem rendelkezik ilyennel, létre kell hoznia egy Azure Storage vagy Storage közös hozzáférésű aláírással társított szolgáltatást az átmeneti tároláshoz.
 
 | Tulajdonság | Leírás | Alapértelmezett érték | Kötelező |
 | --- | --- | --- | --- |
-| enableStaging |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |Nem |
+| enableStaging |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |No |
 | linkedServiceName |Adja meg egy [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tárolási példányra hivatkozik. <br/><br/> Nem használhat megosztott hozzáférési aláírással rendelkező tárolót az adatok Azure szinapszis-elemzésbe való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |N/A |Igen, ha a **enableStaging** értéke TRUE (igaz) |
-| path |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N/A |Nem |
-| enableCompression |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |Nem |
+| path |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N/A |No |
+| enableCompression |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |No |
 
 >[!NOTE]
 > Ha a szakaszos másolást engedélyezte a tömörítést, az átmeneti blobhoz társított szolgáltatás egyszerű vagy MSI-hitelesítése nem támogatott.
@@ -194,7 +194,7 @@ A díj két lépésből áll: a másolás időtartama és a másolás típusa al
 ## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató](copy-activity-performance.md)
 - [A másolási tevékenység teljesítményével kapcsolatos hibák](copy-activity-performance-troubleshooting.md)
 - [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)

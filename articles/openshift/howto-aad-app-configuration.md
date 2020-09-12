@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382919"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470085"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
 
@@ -30,7 +30,7 @@ Hozzon létre egy új Azure Active Directory "tulajdonos" felhasználót az Azur
 1. Lépjen a [felhasználók – minden felhasználó](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) panelre.
 2. Kattintson az **+ új felhasználó** lehetőségre a **felhasználó** ablaktábla megnyitásához.
 3. Adja meg a felhasználó **nevét** .
-4. Hozzon létre egy **felhasználónevet** a létrehozott bérlő neve alapján, a `.onmicrosoft.com` végéhez hozzáfűzve. Például: `yourUserName@yourTenantName.onmicrosoft.com`. Jegyezze fel ezt a felhasználónevet. Szüksége lesz rá a fürtbe való bejelentkezéshez.
+4. Hozzon létre egy **felhasználónevet** a létrehozott bérlő neve alapján, a  `.onmicrosoft.com` végéhez hozzáfűzve. Például: `yourUserName@yourTenantName.onmicrosoft.com`. Jegyezze fel ezt a felhasználónevet. Szüksége lesz rá a fürtbe való bejelentkezéshez.
 5. Kattintson a **címtár-szerepkör** elemre a címtár-szerepkör panel megnyitásához, majd válassza a **tulajdonos** lehetőséget, majd kattintson az **OK** gombra a panel alján.
 6. A **felhasználó** ablaktáblán kattintson a **jelszó megjelenítése** lehetőségre, és jegyezze fel az ideiglenes jelszót. Az első bejelentkezés után a rendszer felszólítja, hogy állítsa alaphelyzetbe.
 7. A panel alján kattintson a **Létrehozás** gombra a felhasználó létrehozásához.
@@ -86,9 +86,9 @@ Ha a szervezet még nem rendelkezik olyan Azure Active Directory (Azure AD-beli)
 
 ![Képernyőkép a tanúsítványok és titkok panelről](./media/howto-create-tenant/create-key.png)
 
-További információ az Azure Application Objects szolgáltatásról: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+További információ az Azure Application Objects szolgáltatásról: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalmazások regisztrálása a Azure Active Directory v 1.0-s végponttal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalmazások regisztrálása a Azure Active Directory v 1.0-s végponttal](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="add-api-permissions"></a>API-engedélyek hozzáadása
 
@@ -110,14 +110,14 @@ További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalma
 > [!IMPORTANT]
 > A fürt-rendszergazdák csoport szinkronizálása csak a beleegyező engedély megadása után fog működni. Ekkor megjelenik egy pipa nevű zöld kör, és egy "megadott *előfizetés neve*" üzenet jelenik meg a *rendszergazdai engedély szükséges* oszlopban.
 
-A rendszergazdák és egyéb szerepkörök kezelésével kapcsolatos részletekért lásd: [Azure-előfizetési rendszergazdák hozzáadása vagy módosítása](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+A rendszergazdák és egyéb szerepkörök kezelésével kapcsolatos részletekért lásd: [Azure-előfizetési rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="resources"></a>További források
 
-* [Alkalmazások és egyszerű szolgáltatások objektumai a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Alkalmazások és egyszerű szolgáltatások objektumai a Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md)
+* [Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján](../active-directory/develop/quickstart-register-app.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha teljesítette az összes [Azure Red Hat OpenShift előfeltételét](howto-setup-environment.md), készen áll az első fürt létrehozására.
 

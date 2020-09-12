@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 0fc4f9c2142011edf78033d36d13ecb9115a8850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e87a083f5b31237c00bc8421774c14d3ef8ef33f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84044989"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439690"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Rugalmas készletek kezelése Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ SQL Database rugalmas készletek és készletezett adatbázisok Azure PowerShell
 > A PowerShell-szkriptek esetében lásd: [rugalmas készletek létrehozása és adatbázisok áthelyezése készletek és készlet között a PowerShell használatával](scripts/move-database-between-elastic-pools-powershell.md) , valamint a [PowerShell használatával egy rugalmas SQL-készlet figyelése és méretezése Azure SQL Databaseban](scripts/monitor-and-scale-pool-powershell.md).
 >
 
-| Parancsmag | Description |
+| Parancsmag | Leírás |
 | --- | --- |
 |[Új – AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Rugalmas készletet hoz létre.|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Rugalmas készleteket és azok tulajdonságainak értékét kapja meg.|
@@ -71,7 +71,7 @@ SQL Database rugalmas készletek az [Azure CLI](/cli/azure)-vel való létrehoz�
 > Az Azure CLI példa parancsfájljaihoz lásd: a [CLI használata egy adatbázis SQL Databaseba való áthelyezéséhez egy rugalmas SQL-készletben](scripts/move-database-between-elastic-pools-cli.md) , és az [Azure CLI használatával MÉRETEZHETŐ egy rugalmas SQL-készlet a Azure SQL Database](scripts/scale-pool-cli.md).
 >
 
-| Parancsmag | Description |
+| Parancsmag | Leírás |
 | --- | --- |
 |[az SQL rugalmas készlet létrehozása](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Rugalmas készletet hoz létre.|
 |[az SQL rugalmas készlet listája](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Egy kiszolgálón lévő rugalmas készletek listáját adja vissza.|
@@ -88,19 +88,19 @@ A meglévő rugalmas készletekben lévő adatbázisok létrehozásához és át
 > Azure SQL Database rugalmas készlet nem hozható létre, nem frissíthető és nem törölhető a Transact-SQL használatával. Hozzáadhat vagy eltávolíthat egy rugalmas készletből származó adatbázisokat, és a DMV használatával a meglévő rugalmas készletekre vonatkozó információkat adhat vissza.
 >
 
-| Parancs | Description |
+| Parancs | Leírás |
 | --- | --- |
 |[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Új adatbázist hoz létre egy meglévő készletben vagy egyetlen adatbázisként. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Egy adatbázis áthelyezése a, a vagy a rugalmas készletek között.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
 |[sys. elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|A kiszolgálón lévő összes rugalmas készlet erőforrás-használati statisztikáit adja vissza. Minden rugalmas készlethez egy sor tartozik minden 15 másodperces jelentési ablakhoz (percenként négy sor). Ide tartozik a CPU, az IO, a log, a Storage-felhasználás és az egyidejű kérelmek/munkamenetek kihasználtsága a készletben lévő összes adatbázis esetében.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|A kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét adja vissza SQL Database vagy Azure SQL Data Warehouse adatbázisához. Ha bejelentkezett a főadatbázisba egy kiszolgálón, az az összes adatbázisra vonatkozó információt adja vissza. Azure SQL Data Warehouse esetében csatlakoznia kell a Master adatbázishoz.|
+|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|A kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét adja vissza SQL Database vagy Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisához. Ha bejelentkezett a főadatbázisba egy kiszolgálón, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
 
 ## <a name="rest-api"></a>REST API
 
 SQL Database rugalmas készletek és készletezett adatbázisok létrehozásához és kezeléséhez használja ezeket a REST API kérelmeket.
 
-| Parancs | Description |
+| Parancs | Leírás |
 | --- | --- |
 |[Rugalmas készletek – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|Létrehoz egy új rugalmas készletet, vagy frissít egy meglévő rugalmas készletet.|
 |[Rugalmas készletek – törlés](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|Törli a rugalmas készletet.|
@@ -115,7 +115,7 @@ SQL Database rugalmas készletek és készletezett adatbázisok létrehozásáho
 |[Adatbázisok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
 |[Adatbázisok – frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](saas-tenancy-app-design-patterns.md) című részt.
 * A rugalmas készleteket használó SaaS-oktatóanyagért tekintse [meg a Wingtip SaaS-alkalmazás bemutatása](saas-dbpertenant-wingtip-app-overview.md)című témakört.

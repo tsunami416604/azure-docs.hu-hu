@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770953"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440524"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -55,7 +55,7 @@ A másolási tevékenység figyelése nézet alján a végrehajtás részletei �
 
 | Fázis           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
-| Várólista           | Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. |
+| Üzenetsor           | Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. |
 | Másolás előtti parancsfájl | A másolási tevékenység és a másolási tevékenység közötti eltelt idő a fogadó adattárban lévő előmásolási parancsfájl végrehajtásának befejezése után. Az adatbázis-nyelők előmásolási parancsfájljának konfigurálásakor alkalmazza, például amikor az adatírást Azure SQL Database az új Adatmásolás előtt törli az adatbevitelt. |
 | Átvitel        | Az előző lépés vége és a forrás és a fogadó közötti összes adatok átvitele között eltelt idő. <br/>Figyelje meg, hogy az átvitel alatt álló allépések párhuzamosan futnak, és egyes műveletek nem jelennek meg, pl. a fájlformátum elemzése/létrehozása.<br><br/>- **Első bájtig eltelt idő:** Az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik.<br>- **Listaelem forrása:** A forrásfájlok vagy az adatpartíciók számbavételére fordított idő mennyisége. Az utóbbi akkor érvényes, ha az adatbázis-források partíciós beállításait konfigurálja, például az adatok olyan adatbázisokból való másolásakor, mint például az Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Olvasás a forrástól:** Az adatok forrás adattárból való beolvasásához felhasznált idő mennyisége.<br/>- **Írás a** fogadóba: Az adattárolási adattárba való adatírás során eltöltött idő mennyisége. Megjegyzés: egyes összekötők jelenleg nem rendelkeznek ezzel a metrikával, beleértve az Azure Cognitive Search, az Azure Adatkezelő, az Azure Table Storage, az Oracle, a SQL Server, a Common Data Service, a Dynamics 365, a Dynamics CRM, a Salesforce/Salesforce Service Cloud szolgáltatást. |
 
@@ -179,15 +179,15 @@ Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelés
 * Azure Blob Storage: a blob Storage-hoz szükséges [méretezhetőségi és teljesítményi célok](../storage/blobs/scalability-targets.md) , valamint a blob Storage-hoz kapcsolódó [teljesítmény-és méretezhetőségi ellenőrzőlista](../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: a táblázatos tároláshoz [szükséges méretezhetőségi](../storage/tables/scalability-targets.md) és teljesítményi célok, [valamint a Table Storage teljesítményére és méretezhetőségére vonatkozó ellenőrzőlista](../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: nyomon követheti [a teljesítményt](../sql-database/sql-database-single-database-monitor.md) , és ellenőrizheti az adatbázis-tranzakciós egység (DTU) százalékos arányát.
-* Azure SQL Data Warehouse: a képesség mérése adatraktár-egységekben (DWU) történik. Lásd: [a számítási teljesítmény kezelése Azure SQL Data Warehouseban (áttekintés)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse): a képessége adatraktár-egységekben (DWU) mérhető. Lásd: [a számítási teljesítmény kezelése az Azure szinapszis Analyticsben (áttekintés)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Azure Cosmos db teljesítmény szintjei](../cosmos-db/performance-levels.md).
 * SQL Server: [a teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx).
 * Helyszíni fájlkiszolgáló: a [fájlkiszolgálók teljesítményének finomhangolása](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató](copy-activity-performance.md)
 - [Másolási tevékenység teljesítményének optimalizálási funkciói](copy-activity-performance-features.md)
 - [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)

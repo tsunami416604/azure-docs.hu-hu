@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249164"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442905"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Az Ön által fejlesztett SaaS-alkalmazások nagy mennyiségű, a felhőben tár
 
 Az összes bérlőre vonatkozó adatok elérése egyszerű, ha az összes adatok csak egy több-bérlős adatbázisban vannak. A hozzáférés azonban összetettebb, ha több ezer adatbázis között oszlik meg. Az összetettség kinyerésének egyik módja az, hogy kinyeri az adatok elemzését egy elemzési adatbázisba vagy egy adattárházba. Ezután lekérdezheti az adattárházat, hogy bepillantást nyerjen az összes bérlő jegy-adatainak használatával.
 
-Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be ehhez a minta SaaS-alkalmazáshoz. Az első rugalmas feladatok az egyes bérlői adatbázisokból származó adatok kinyerésének a megadására szolgálnak. Az adatküldés egy Analytics-tárolóba történik. Az elemzési tár lehet egy SQL Database vagy egy SQL Data Warehouse. Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../../data-factory/introduction.md) dicséretet biztosítunk.
+Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be ehhez a minta SaaS-alkalmazáshoz. Az első rugalmas feladatok az egyes bérlői adatbázisokból származó adatok kinyerésének a megadására szolgálnak. Az adatküldés egy Analytics-tárolóba történik. Az elemzési tár lehet egy SQL Database vagy egy Azure szinapszis Analytics (korábban SQL Data Warehouse). Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../../data-factory/introduction.md) dicséretet biztosítunk.
 
 Ezután az összesített adatokat a rendszer a [Star-Schema](https://www.wikipedia.org/wiki/Star_schema) táblákba gyűjti. A táblák egy központi tény tábla és a kapcsolódó dimenzió táblákból állnak:
 

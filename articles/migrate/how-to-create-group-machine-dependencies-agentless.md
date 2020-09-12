@@ -3,12 +3,12 @@ title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Serv
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771376"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536438"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>A gép függőségeinek elemzése (ügynök nélküli)
 
@@ -25,7 +25,7 @@ Ez a cikk az ügynök nélküli függőségek elemzésének beállítását isme
 
 - A függőség elemzése nézetben jelenleg nem adhat hozzá és nem távolíthat el kiszolgálót egy csoportból.
 - Jelenleg nem érhető el függőségi Térkép a kiszolgálók csoportjához.
-- A függőségi adatokat táblázatos formátumban nem lehet letölteni.
+- A függőségi adatgyűjtés a 400-kiszolgálókhoz egyidejűleg állítható be. Nagyobb számú kiszolgálót is elemezheti a 400 kötegekben történő előkészítéssel.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -50,7 +50,7 @@ Adja hozzá a felhasználói fiókot a készülékhez.
 2. Navigáljon az **adja meg a vCenter részletei** panelt.
 3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése**területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
 3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév** / **jelszava**
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
 
     ![VM-felhasználói fiók hozzáadása](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -135,6 +135,6 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 5. Kattintson a **kiszolgálók eltávolítása**elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az értékeléshez [csoportosítsa a gépeket](how-to-create-a-group.md) .
