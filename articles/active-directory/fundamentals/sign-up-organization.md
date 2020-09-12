@@ -13,24 +13,24 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af76e98175c1c9cd3031c13bbecca6acc43ca55
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9cc6f0a6325aabae18460d696c2c1b1b2c8f7f74
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799071"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568846"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Regisztrálja a szervezetét Azure Active Directory használatára
 Regisztráljon Azure Active Directory (Azure AD) vagy egy új Microsoft Azure-előfizetésre, vagy használja a következőt:
 
-- **Microsoft-fiók.** Személyes, Microsoft-fiók használhatja az Azure-t és az összes fogyasztói Microsoft-terméket és felhőalapú szolgáltatást (például Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE vagy Office 365). Egy Outlook.com-postaláda regisztrálása automatikusan létrehoz egy Microsoft-fiók. További információ: [Microsoft-fiók Overview (áttekintés](https://account.microsoft.com/account)).
+- **Microsoft-fiók.** A személyes Microsoft-fiók segítségével hozzáférhet az Azure-hoz és az összes olyan fogyasztói Microsoft-termékhez és felhőalapú szolgáltatáshoz, mint például az Outlook (Hotmail), a Messenger, a OneDrive, az MSN, az Xbox LIVE vagy a Microsoft 365. Egy Outlook.com-postaláda regisztrálása automatikusan létrehoz egy Microsoft-fiók. További információ: [Microsoft-fiók Overview (áttekintés](https://account.microsoft.com/account)).
 
-- **Munkahelyi vagy iskolai fiók.** A munkahelyi vagy iskolai fiókkal hozzáférhet a Microsoft által használt kis, közepes és nagyvállalati felhőalapú szolgáltatásokhoz, például az Azure-hoz, a Microsoft Intunehoz vagy az Office 365-hez. Miután regisztrálta az egyik szolgáltatást a szervezet számára, az Azure AD automatikusan kiépít egy felhőalapú könyvtárat, amely a szervezetét képviseli. További információ: [Az Azure ad-címtár kezelése](active-directory-administer.md).
+- **Munkahelyi vagy iskolai fiók.** A munkahelyi vagy iskolai fiókkal hozzáférhet a Microsoft által használt kis, közepes és nagyvállalati felhőalapú szolgáltatásokhoz, például az Azure-hoz, a Microsoft Intunehoz vagy a Microsoft 365hoz. Miután regisztrálta az egyik szolgáltatást a szervezet számára, az Azure AD automatikusan kiépít egy felhőalapú könyvtárat, amely a szervezetét képviseli. További információ: [Az Azure ad-címtár kezelése](./active-directory-whatis.md).
 
   > [!Note]
   >   Javasoljuk, hogy használja munkahelyi vagy iskolai fiókját, ha már rendelkezik hozzáféréssel az Azure AD-hoz. Azonban az Azure-előfizetéshez tartozó bármelyik típusú fiókot kell használnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/)
 
@@ -38,7 +38,6 @@ Regisztráljon Azure Active Directory (Azure AD) vagy egy új Microsoft Azure-el
 
 - [További információ az Azure AD-ről](active-directory-whatis.md)
 
-- [A helyszíni identitás-infrastruktúra használata a felhőben](../connect/active-directory-aadconnect.md)
+- [A helyszíni identitás-infrastruktúra használata a felhőben](../hybrid/whatis-hybrid-identity.md)
 
 - [Látogasson el a Microsoft Azure blogra](https://azure.microsoft.com/blog/)
-

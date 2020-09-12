@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013588"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613744"
 ---
 # <a name="debug-rendering"></a>Renderelés hibakeresése
 
@@ -74,6 +74,10 @@ A megadott effektusok azonban nem biztosítanak részletes betekintést a szolg�
 
 * A szöveg átfedésének engedélyezése nem lehet kisebb a teljesítmény terhelése nélkül.
 * A drótváz mód engedélyezése nem triviális teljesítménybeli terhelést eredményezhet, bár a jelenettől függően változhat. Összetett jelenetek esetén ez a mód azt eredményezheti, hogy a keret sebessége a 60-Hz cél alá csökken.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C++ RemoteManager::D ebugRenderingSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>Következő lépések
 

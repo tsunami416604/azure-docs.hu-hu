@@ -1,18 +1,18 @@
 ---
 title: Apache Spark 2,1-es vagy 2,2-os számítási feladatok migrálása 2,3 vagy 2,4-Azure HDInsight
 description: Megtudhatja, hogyan telepíthet át Apache Spark 2,1-es és 2,2-es verziókat 2,3-ra vagy 2,4-
-author: ashishthaps1
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 681de5d8e4daeaabb865cde3ef93008b2965824e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce9b0faa6636d1318871cc9ef66cfbe47908265
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497148"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504978"
 ---
 # <a name="migrate-apache-spark-21-and-22-workloads-to-23-and-24"></a>Apache Spark 2,1-es és 2,2-es számítási feladatok migrálása 2,3-ra és 2,4-re
 

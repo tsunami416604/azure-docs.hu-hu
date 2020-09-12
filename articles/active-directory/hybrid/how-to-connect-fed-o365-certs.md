@@ -1,6 +1,6 @@
 ---
-title: Tanúsítvány megújítása az Office 365 és az Azure AD-felhasználók számára | Microsoft Docs
-description: Ez a cikk az Office 365 felhasználói számára ismerteti a tanúsítványok megújításával kapcsolatos problémák megoldását.
+title: Tanúsítvány megújítása a Microsoft 365 és az Azure AD-felhasználók számára | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogy Microsoft 365 felhasználók Hogyan oldhatók meg a tanúsítványok megújításával kapcsolatos, e-mailekkel kapcsolatos problémák.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,14 +16,14 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830451"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661455"
 ---
-# <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Az Office 365 és Azure Active Directory összevonási tanúsítványainak megújítása
+# <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 és Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
 Az Azure Active Directory (Azure AD) és a Active Directory összevonási szolgáltatások (AD FS) (AD FS) közötti sikeres összevonáshoz a biztonsági jogkivonatok Azure AD-be való aláírásához a AD FS által használt tanúsítványoknak meg kell egyezniük az Azure AD-ben konfigurált beállításokkal. Az eltérések megszakadó megbízhatóságot okozhatnak. Az Azure AD biztosítja, hogy ezek az információk szinkronban legyenek a AD FS és a webalkalmazás-proxy telepítésekor (extranetes hozzáférés esetén).
 
@@ -34,7 +34,7 @@ Ez a cikk további információkat tartalmaz a jogkivonat-aláíró tanúsítvá
 * Külső gyártótól származó identitás-szolgáltatót használ.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>AD FS alapértelmezett konfigurációja a jogkivonat-aláíró tanúsítványokhoz
-A jogkivonat-aláírás és a jogkivonat-visszafejtő tanúsítványok általában önaláírt tanúsítványok, és egy évig jók. Alapértelmezés szerint a AD FS tartalmaz egy **autocertificaterollover beállítást**nevű automatikus megújítási folyamatot. Ha a AD FS 2,0-es vagy újabb verzióját használja, az Office 365 és az Azure AD automatikusan frissíti a tanúsítványt a lejárat előtt.
+A jogkivonat-aláírás és a jogkivonat-visszafejtő tanúsítványok általában önaláírt tanúsítványok, és egy évig jók. Alapértelmezés szerint a AD FS tartalmaz egy **autocertificaterollover beállítást**nevű automatikus megújítási folyamatot. Ha AD FS 2,0-es vagy újabb verziót használ, Microsoft 365 és az Azure AD automatikusan frissíti a tanúsítványt a lejárat előtt.
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Megújítási értesítés a Microsoft 365 felügyeleti központból vagy egy e-mailből
 > [!NOTE]
@@ -58,7 +58,7 @@ Az Azure AD megkísérli az összevonási metaadatok figyelését, és frissíti
 >
 >
 
-## <a name="check-if-the-certificates-need-to-be-updated"></a>Ellenőrizze, hogy a tanúsítványokat frissíteni kell-e<a name="managecerts"></a>
+## <a name="check-if-the-certificates-need-to-be-updated"></a>Ellenőrizze, hogy a tanúsítványokat frissíteni kell-e <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>1. lépés: a Autocertificaterollover beállítást állapotának keresése
 A AD FS-kiszolgálón nyissa meg a PowerShellt. Győződjön meg arról, hogy a Autocertificaterollover beállítást értéke TRUE (igaz).
 
@@ -107,12 +107,12 @@ A Get-MsolFederationProperty vagy a Get-AdfsCertificate kimenetében keresse meg
 | Autocertificaterollover beállítást | Az Azure AD-vel szinkronizált tanúsítványok | Az összevonási metaadatok nyilvánosan elérhetők | Érvényességi | Műveletek |
 |:---:|:---:|:---:|:---:|:---:|
 | Igen |Igen |Igen |- |Nincs szükség művelet végrehajtására. Lásd: [jogkivonat-aláíró tanúsítvány automatikus megújítása](#autorenew). |
-| Yes |Nem |- |Kevesebb, mint 15 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
+| Igen |Nem |- |Kevesebb, mint 15 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
 | No |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
 
 \[-] Nem számít
 
-## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>A jogkivonat-aláíró tanúsítvány automatikus megújítása (ajánlott)<a name="autorenew"></a>
+## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>A jogkivonat-aláíró tanúsítvány automatikus megújítása (ajánlott) <a name="autorenew"></a>
 Nem kell manuális lépéseket végrehajtania, ha az alábbiak mindegyike teljesül:
 
 * Telepítette a webalkalmazás-proxyt, amely lehetővé teszi az összevonás-metaadatok elérését az extranetről.
@@ -129,18 +129,18 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 ahol a `(your_FS_name)` helyére a szervezet által használt összevonási szolgáltatás állomásneve kerül, például FS.contoso.com.  Ha mindkét beállítást sikeresen ellenőrizni tudja, nem kell mást tennie.  
 
 Például: `https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
-## <a name="renew-the-token-signing-certificate-manually"></a>Jogkivonat-aláíró tanúsítvány manuális megújítása<a name="manualrenew"></a>
+## <a name="renew-the-token-signing-certificate-manually"></a>Jogkivonat-aláíró tanúsítvány manuális megújítása <a name="manualrenew"></a>
 Dönthet úgy, hogy manuálisan megújítja a jogkivonat-aláíró tanúsítványokat. Előfordulhat például, hogy a következő forgatókönyvek jobban működnek a manuális megújítás érdekében:
 
 * A jogkivonat-aláíró tanúsítványok nem önaláírt tanúsítványok. Ennek a leggyakoribb oka az, hogy a szervezet felügyeli AD FS a szervezeti hitelesítésszolgáltatótól beléptetett tanúsítványokat.
 * A hálózati biztonság nem teszi lehetővé az összevonási metaadatok nyilvánosan elérhetővé tételét.
 
-Ezekben a forgatókönyvekben minden alkalommal, amikor frissíti a jogkivonat-aláíró tanúsítványokat, az Office 365-tartományt is frissítenie kell a PowerShell-paranccsal, az Update-MsolFederatedDomain használatával.
+Ezekben a forgatókönyvekben minden alkalommal, amikor frissíti a jogkivonat-aláíró tanúsítványokat, frissítenie kell a Microsoft 365 tartományt is a PowerShell-paranccsal, az Update-MsolFederatedDomain használatával.
 
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>1. lépés: Győződjön meg arról, hogy a AD FS új jogkivonat-aláíró tanúsítványokkal rendelkezik
 **Nem alapértelmezett konfiguráció**
 
-Ha a AD FS nem alapértelmezett konfigurációját használja (ha a **Autocertificaterollover beállítást** **hamis**értékre van állítva), akkor valószínűleg egyéni tanúsítványokat (nem önaláírt) használ. Az AD FS jogkivonat-aláíró tanúsítványok megújításával kapcsolatos további információkért lásd: [Útmutató azon ügyfelek számára, akik nem AD FS önaláírt tanúsítványokat használnak](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
+Ha a AD FS nem alapértelmezett konfigurációját használja (ha a **Autocertificaterollover beállítást** **hamis**értékre van állítva), akkor valószínűleg egyéni tanúsítványokat (nem önaláírt) használ. Az AD FS jogkivonat-aláíró tanúsítványok megújításával kapcsolatos további információkért lásd: az [összevont kiszolgálók tanúsítványokra vonatkozó követelményei](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
 
 **Az összevonási metaadatok nem nyilvánosan elérhetők**
 
@@ -162,8 +162,8 @@ Ha viszont az **autocertificaterollover beállítást** értéke **true (igaz**)
 
 Most két tanúsítványnak kell szerepelnie, amelyek közül az egyik **egy még egy év** múlva a későbbiekben, a **IsPrimary** értéke pedig **hamis**.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>2. lépés: az új jogkivonat-aláíró tanúsítványok frissítése az Office 365-megbízhatósághoz
-Az Office 365 frissítése a megbízhatósághoz használandó új jogkivonat-aláíró tanúsítványokkal az alábbiak szerint.
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-microsoft-365-trust"></a>2. lépés: a Microsoft 365 megbízhatóságának új jogkivonat-aláíró tanúsítványainak frissítése
+Frissítse Microsoft 365 a megbízhatósághoz használni kívánt új jogkivonat-aláíró tanúsítványokkal, az alábbiak szerint.
 
 1. Nyissa meg a Microsoft Azure Active Directory modult a Windows PowerShellhez.
 2. Futtassa $cred = Get-hitelesítő adatokat. Ha ez a parancsmag kéri a hitelesítő adatok megadását, írja be a Cloud Service rendszergazdai fiókjának hitelesítő adatait.
@@ -176,7 +176,7 @@ Az Office 365 frissítése a megbízhatósághoz használandó új jogkivonat-al
 >
 
 
-## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>Az Azure AD-megbízhatóság javítása Azure AD Connect használatával<a name="connectrenew"></a>
+## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>Az Azure AD-megbízhatóság javítása Azure AD Connect használatával <a name="connectrenew"></a>
 Ha a AD FS farmját és az Azure AD-megbízhatóságot a Azure AD Connect használatával konfigurálta, akkor a Azure AD Connect használatával észlelheti, hogy szükséges-e a jogkivonat-aláíró tanúsítványoknak bármilyen művelete. Ha meg kell újítania a tanúsítványokat, a Azure AD Connect is használhatja.
 
 További információ: [a megbízhatóság javítása](how-to-connect-fed-management.md).
@@ -188,4 +188,4 @@ Alapértelmezés szerint a AD FS úgy van konfigurálva, hogy jogkivonat-aláír
 
 Az Azure AD az aktuális tanúsítvány lejárta előtt 30 nappal megpróbálja lekérni az összevonási szolgáltatás metaadatainak új tanúsítványát. Ha az adott időpontban nem érhető el új tanúsítvány, az Azure AD továbbra is rendszeresen figyeli a metaadatokat a napi rendszerességgel. Amint az új tanúsítvány elérhető a metaadatokban, a tartományhoz tartozó összevonási beállítások frissülnek az új tanúsítvány adataival. A használatával `Get-MsolDomainFederationSettings` ellenőrizheti, hogy az új tanúsítvány megjelenik-e az NextSigningCertificate/SigningCertificate.
 
-További információ a jogkivonat-aláíró tanúsítványokról AD FS lásd: [jogkivonat-aláírási és jogkivonat-visszafejtési tanúsítványok beszerzése és konfigurálása ad FShoz](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
+További információ a jogkivonat-aláíró tanúsítványokról AD FS lásd: [jogkivonat-aláírási és jogkivonat-visszafejtési tanúsítványok beszerzése és konfigurálása ad FShoz](/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

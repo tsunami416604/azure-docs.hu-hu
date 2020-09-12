@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 015feac819467cf60bfb2faab27af769fadc3cfa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522873"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484952"
 ---
 # <a name="data-access-strategies"></a>Adathozzáférési stratégiák
 
@@ -47,19 +47,19 @@ Ennek számos forgatókönyvben kell működnie, és tisztában vagyunk vele, ho
 A Azure Integration Runtime és a saját üzemeltetésű Integration Runtime adattárakban található, támogatott hálózati biztonsági mechanizmusokkal kapcsolatos további információkért lásd: két táblázat.  
 * **Azure Integration Runtime**
 
-    | Adattárak                  | Az adattárakban támogatott hálózati biztonsági mechanizmus | Privát kapcsolat     | Megbízható szolgáltatás     | Statikus IP-címtartomány | Szolgáltatáscímkék | Azure-szolgáltatások engedélyezése |
+    | Adattárak                  | Az adattárakban támogatott hálózati biztonsági mechanizmus | Private Link     | Megbízható szolgáltatás     | Statikus IP-címtartomány | Szolgáltatáscímkék | Azure-szolgáltatások engedélyezése |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|-----------------|
     | Azure Pásti-adattárak       | Azure Cosmos DB                                     | Igen              | -                   | Igen             | -            | Igen                  |
     |                              | Azure Data Explorer                                 | -                | -                   | Igen*            | Igen*         | -                    |
     |                              | Azure Data Lake Gen1                                | -                | -                   | Igen             | -            | Igen                  |
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Igen             | -            | Igen                  |
     |                              | Azure File Storage                                  | Igen              | -                   | Igen             | -            | .                    |
-    |                              | Azure Storage (blob, ADLS Gen2)                     | Igen              | Igen (csak MSI-hitelesítés) | Igen             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (szinapszis Analytics), SQL ml  | Igen (csak az Azure SQL DB/DW)        | -                   | Igen             | -            | Igen                  |
+    |                              | Azure Storage (blob, ADLS Gen2)                     | Yes              | Igen (csak MSI-hitelesítés) | Yes             | -            | .                    |
+    |                              | Azure SQL DB, Azure szinapszis Analytics), SQL ml  | Igen (csak az Azure SQL DB/DW)        | -                   | Igen             | -            | Igen                  |
     |                              | Azure Key Vault (a Titkok/a kapcsolatok karakterláncának beolvasásához) | igen      | Igen                 | Igen             | -            | -                    |
-    | Egyéb Pásti/SaaS-adattárak | AWS S3, SalesForce, Google Cloud Storage stb.    | -                | -                   | Igen             | -            | -                    |
+    | Egyéb Pásti/SaaS-adattárak | AWS S3, SalesForce, Google Cloud Storage stb.    | -                | -                   | Yes             | -            | -                    |
     | Azure-laaS                   | SQL Server, Oracle stb.                          | -                | -                   | Igen             | Igen          | -                    |
-    | Helyszíni laaS              | SQL Server, Oracle stb.                          | -                | -                   | Igen             | -            | -                    |
+    | Helyszíni laaS              | SQL Server, Oracle stb.                          | -                | -                   | Yes             | -            | -                    |
     
     **Csak akkor alkalmazható, ha az Azure Adatkezelő virtuális hálózati befecskendezéses, és az IP-címtartomány a NSG/Firewall-on is alkalmazható.* 
 
@@ -69,14 +69,14 @@ A Azure Integration Runtime és a saját üzemeltetésű Integration Runtime ada
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
     | Azure Pásti-adattárak       | Azure Cosmos DB                                               | Igen       | -                   |
     |                                | Azure Data Explorer                                           | -         | -                   |
-    |                                | Azure Data Lake Gen1                                          | Igen       | -                   |
-    |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Igen       | -                   |
-    |                                | Azure File Storage                                            | Igen       | -                   |
-    |                                | Azure Storage (blog, ADLS Gen2)                             | Igen       | Igen (csak MSI-hitelesítés) |
-    |                                | Azure SQL DB, SQL DW (szinapszis Analytics), SQL ml          | Igen       | -                   |
+    |                                | Azure Data Lake Gen1                                          | Yes       | -                   |
+    |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Yes       | -                   |
+    |                                | Azure File Storage                                            | Yes       | -                   |
+    |                                | Azure Storage (blog, ADLS Gen2)                             | Yes       | Igen (csak MSI-hitelesítés) |
+    |                                | Azure SQL DB, Azure szinapszis Analytics), SQL ml          | Yes       | -                   |
     |                                | Azure Key Vault (a Titkok/a kapcsolatok karakterláncának beolvasásához) | Igen       | Igen                 |
-    | Egyéb Pásti/SaaS-adattárak | AWS S3, SalesForce, Google Cloud Storage stb.              | Igen       | -                   |
-    | Azure-laaS                     | SQL Server, Oracle stb.                                  | Igen       | -                   |
+    | Egyéb Pásti/SaaS-adattárak | AWS S3, SalesForce, Google Cloud Storage stb.              | Yes       | -                   |
+    | Azure-laaS                     | SQL Server, Oracle stb.                                  | Yes       | -                   |
     | Helyszíni laaS              | SQL Server, Oracle stb.                                  | Igen       | -                   |    
 
 ## <a name="next-steps"></a>Következő lépések
@@ -85,4 +85,4 @@ További információkért tekintse meg a következő kapcsolódó cikkeket:
 * [Támogatott adattárak](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)
 * [Azure Key Vault "megbízható szolgáltatások"](https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints#trusted-services)
 * [Azure Storage – megbízható Microsoft-szolgáltatások](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)
-* [Felügyelt identitás Data Factoryhoz](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)
+* [Data Factory felügyelt identitása](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)

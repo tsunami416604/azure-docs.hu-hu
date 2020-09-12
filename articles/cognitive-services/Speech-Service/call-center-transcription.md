@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636126"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462734"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
 
@@ -60,7 +60,7 @@ Nem ritka, hogy egy támogatási hívás 35%-ában a nem beszélgetési időpont
 
 ### <a name="translation"></a>Fordítás
 
-Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](translation.md) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
+Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](/azure/cognitive-services/speech-service/speech-translation) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
 
 ### <a name="text-to-speech"></a>Text to Speech
 
@@ -103,7 +103,7 @@ Belsőleg a fenti technológiákat használjuk a Microsoft ügyfél-hívások k�
 
 Egyes vállalkozásoknak valós időben kell átírniuk a beszélgetéseket. A valós idejű átírással azonosíthatók a beszélgetéshez kapcsolódó tartalomra és erőforrásokra, a figyelem figyelésére, a kisegítő lehetőségek javítására, illetve az olyan ügyfelek és ügynökök számára készült fordítások, amelyek nem natív hangszórók.
 
-A valós idejű átírást igénylő forgatókönyvek esetében javasoljuk, hogy a [SPEECH SDK](speech-sdk.md)-t használja. Jelenleg a beszéd-szöveg [több mint 20 nyelven](language-support.md)érhető el, az SDK pedig C++, C#, Java, Python, Node. js, Objective-C és JavaScript nyelven érhető el. A minták minden nyelven elérhetők a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk). A legfrissebb hírek és frissítések: [kibocsátási megjegyzések](releasenotes.md).
+A valós idejű átírást igénylő forgatókönyvek esetében javasoljuk, hogy a [SPEECH SDK](speech-sdk.md)-t használja. Jelenleg a beszéd-szöveg [több mint 20 nyelven](language-support.md)érhető el, az SDK pedig C++, C#, Java, Python, Node.js, Objective-C és JavaScript nyelven érhető el. A minták minden nyelven elérhetők a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk). A legfrissebb hírek és frissítések: [kibocsátási megjegyzések](releasenotes.md).
 
 Belsőleg a fenti technológiákat használjuk a Microsoft ügyfeleinek valós időben történő elemzéséhez, ahogy az a következő ábrán is látható.
 
@@ -121,7 +121,7 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 
  A beszédfelismerési szolgáltatás a beépített modellekkel jól működik. Azonban érdemes lehet tovább testreszabni és hangolni a termék vagy a környezet élményét. A testreszabási lehetőségek köre az akusztikus modell finomhangolása és a márka egyedi hangbetűkészletei között. Miután létrehozott egy egyéni modellt, a beszédfelismerési szolgáltatás bármelyik szolgáltatásával valós időben vagy batch módban használhatja azt.
 
-| Speech szolgáltatás | Modell | Leírás |
+| Speech szolgáltatás | Modell | Description |
 | -------------- | ----- | ----------- |
 | Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
 |                | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |

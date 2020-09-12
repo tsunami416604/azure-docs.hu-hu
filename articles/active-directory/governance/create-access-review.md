@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/06/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783654"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505107"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -100,22 +100,31 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
 1. Ha meg szeretné határozni, hogy mi történik egy ellenőrzés befejezése után, bontsa ki a **befejezési beállítások** szakaszban.
 
-    ![Hozzáférési felülvizsgálat létrehozása a befejezési beállítások alapján](./media/create-access-review/upon-completion-settings.png)
+    ![Hozzáférési felülvizsgálat létrehozása a befejezési beállítások alapján](./media/create-access-review/upon-completion-settings-new.png)
 
-1. Ha azt szeretné, hogy a rendszer automatikusan eltávolítsa a hozzáférést a megtagadott felhasználók számára, állítsa az **eredmények automatikus alkalmazása az erőforrásra** lehetőséget az **engedélyezéshez**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás**lehetőségre.
+2. Ha azt szeretné, hogy a rendszer automatikusan eltávolítsa a hozzáférést a megtagadott felhasználók számára, állítsa az **eredmények automatikus alkalmazása az erőforrásra** lehetőséget az **engedélyezéshez**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás**lehetőségre.
 
-1. Az ajánlott felülvizsgáló **nem válaszoló** listával adhatja meg, hogy mi történik azon felhasználók esetében, akiket a felülvizsgálati időszakon belül nem tekintenek át a véleményező. Ez a beállítás nem érinti azokat a felhasználókat, akiket manuálisan ellenőriztek a véleményezők. Ha megtagadja a végső felülvizsgáló döntését, a rendszer eltávolítja a felhasználó hozzáférését.
+3. Ha a felülvizsgálók nem **válaszolnak** a listára, adja meg, hogy mi történik azon felhasználók esetében, akiket a felülvizsgálati időszakon belül nem tekintenek át a véleményező. Ez a beállítás nem érinti azokat a felhasználókat, akiket manuálisan ellenőriztek a véleményezők. Ha megtagadja a végső felülvizsgáló döntését, a rendszer eltávolítja a felhasználó hozzáférését.
 
     - **Nincs változás** – a felhasználó hozzáférése változatlan marad
     - **Hozzáférés eltávolítása** – a felhasználó hozzáférésének eltávolítása
     - **Hozzáférés jóváhagyása** – a felhasználó hozzáférésének jóváhagyása
     - **Javaslatok készítése** – a rendszer javaslata a felhasználó folyamatos hozzáférésének megtagadására vagy jóváhagyására
 
+4. Előnézet A megtagadott felhasználókra vonatkozó művelet végrehajtásával adhatja meg, hogy mi történik a vendég felhasználókkal, ha azok meg vannak tagadva.
+    - Az **1. lehetőség** eltávolítja a megtagadott felhasználó hozzáférését az áttekintett csoporthoz vagy alkalmazáshoz, továbbra is bejelentkezhet a bérlőbe. 
+    - A **2. lehetőség** megakadályozza, hogy a megtagadott felhasználók bejelentkezzenek a bérlőbe, függetlenül attól, hogy vannak-e hozzáférésük más erőforrásokhoz. Ha hiba történt, vagy ha egy rendszergazda úgy dönt, hogy újra engedélyezi az egyik hozzáférését, akkor a felhasználó letiltását követő 30 napon belül megteheti. Ha a letiltott felhasználók nem végeznek műveleteket, a rendszer törli a bérlőről.
+
+Ha többet szeretne megtudni az olyan vendég felhasználók eltávolítására vonatkozó ajánlott eljárásokról, akik már nem férnek hozzá a szervezet erőforrásaihoz, olvassa el a [Azure ad Identity Governance használata című cikket, amellyel áttekintheti és eltávolíthatja azokat a külső felhasználókat, akik már nem rendelkeznek erőforrás-hozzáféréssel.](access-reviews-external-users.md)
+
+>[!NOTE]
+> A megtagadott felhasználókra alkalmazandó művelet csak akkor működik, ha korábban csak a vendég felhasználóinak tekinti át a felülvizsgálatot (lásd: **egy vagy több hozzáférési felülvizsgálat létrehozása szakasz,** 8. lépés)
+
 ### <a name="advanced-settings"></a>Speciális beállítások
 
 1. További beállítások megadásához bontsa ki a **Speciális beállítások** szakaszt.
 
-    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings-preview.png)
+    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Állítsa be a **javaslatok megjelenítése** lehetőséget **, hogy** megjelenjenek a felülvizsgálók a felhasználó hozzáférési adatai alapján.
 

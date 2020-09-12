@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048422"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567935"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048422"
 
 A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ezt úgy hajthatja végre, hogy a kívánt módon csatlakoztatja az összetevőket vagy a csomópontokat. Az alábbi ábra egy Media Graph grafikus ábrázolását mutatja be.  
 
-![A Media Graph grafikus ábrázolása](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="Médiagrafikon":::
 
 A IoT Edge élő videó-elemzések támogatják a különböző típusú forrásokat, processzorokat és mosogatókat.
 
@@ -39,7 +40,8 @@ A topológia paramétereinek értékei a topológiára hivatkozó gráf-példán
 
 A Graph-topológiák és a Graph-példányok életciklusa a következő állapot ábrán látható.
 
-![Gráf-topológia és gráf-példány életciklusa](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Gráf-topológia és gráf-példány életciklusa":::
 
 Első lépésként [hozzon létre egy gráf-topológiát](direct-methods.md#graphtopologyset). Ezután minden olyan élő videó-hírcsatorna esetében, amelyet fel szeretne dolgozni ezzel a topológiával, [létrehoz egy gráf-példányt](direct-methods.md#graphinstanceset). 
 
@@ -88,11 +90,11 @@ A frame rate szűrő processzor csomópontja lehetővé teszi, hogy a beérkező
 
 #### <a name="http-extension-processor"></a>HTTP-bővítmény processzora
 
-A HTTP-bővítmény processzor-csomópontja lehetővé teszi saját IoT Edge moduljának összekapcsolását egy adathordozó-gráfhoz. Ez a csomópont dekódolja a képkockákat bemenetként, és az ilyen képkockákat a modul által elérhető HTTP REST-végpontra továbbítja. Ez a csomópont szükség esetén képes a REST-végpont hitelesítésére. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a REST-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot.
+A HTTP-bővítmény processzor-csomópontja lehetővé teszi saját IoT Edge moduljának összekapcsolását egy adathordozó-gráfhoz. Ez a csomópont dekódolja a képkockákat bemenetként, és az ilyen képkockákat a modul által elérhető HTTP REST-végpontra továbbítja. Ez a csomópont szükség esetén képes a REST-végpont hitelesítésére. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a REST-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot. További információ [a processzorról](media-graph-extension-concept.md#http-extension-processor).
 
 #### <a name="grpc-extension-processor"></a>gRPC-bővítmény processzora
 
-A gRPC-bővítmény processzor-csomópontja dekódolja a képkockákat bemenetként, és továbbítja ezeket a képkockákat a modul által elérhető [gRPC](terminology.md#grpc) -végpontnak. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a gRPC-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot.
+A gRPC-bővítmény processzor-csomópontja dekódolja a képkockákat bemenetként, és továbbítja ezeket a képkockákat a modul által elérhető [gRPC](terminology.md#grpc) -végpontnak. A csomópont támogatja az adatátvitelt a [megosztott memóriával](https://en.wikipedia.org/wiki/Shared_memory) , vagy közvetlenül ágyazza be a tartalmat a gRPC-üzenetek törzsébe. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a gRPC-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot. További információ [a processzorról](media-graph-extension-concept.md#grpc-extension-processor).
 
 #### <a name="signal-gate-processor"></a>Signal Gate processzor  
 

@@ -1,18 +1,18 @@
 ---
 title: Kapcsolódás Azure-beli virtuális gépekhez helyszíni feladatátvétel a Azure Site Recovery használatával
 description: Útmutató Azure-beli virtuális gépekhez való kapcsolódáshoz a helyszíni rendszerről az Azure-ba történő feladatátvétel után Azure Site Recovery használatával
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
-ms.author: mayg
-ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770492"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568778"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Kapcsolódás Azure-beli virtuális gépekhez a helyszíni feladatátvétel után 
 
@@ -96,19 +96,19 @@ Az IP-címek megtartásához a következő lépések szükségesek:
 
 ### <a name="failover-example"></a>Példa feladatátvételre
 
-Lássunk erre egy példát.
+Lássunk egy példát.
 
 - A fiktív vállalati Woodgrove Bank a helyileg üzemeltetett üzleti alkalmazásokat üzemelteti a mobil alkalmazásaikat az Azure-ban.
 - A helyek közötti VPN-kapcsolaton keresztül csatlakoznak a helyszínről az Azure-hoz. 
 - A Woodgrove Site Recovery használatával replikálja a helyszíni gépeket az Azure-ba.
 - A helyszíni alkalmazások nem kódolt IP-címeket használnak, ezért az Azure-ban ugyanazt az IP-címet szeretnék megőrizni.
 - A helyszínen az alkalmazásokat futtató gépek három alhálózaton futnak:
-    - 192.168.1.0/24.
+    - 192.168.1.0/24
     - 192.168.2.0/24
     - 192.168.3.0/24
 - Az Azure-ban futó alkalmazások két alhálózaton találhatók az Azure VNet **Azure-hálózatban** :
-- 172.16.1.0/24
-- 172.16.2.0/24.
+    - 172.16.1.0/24
+    - 172.16.2.0/24
 
 A címek megőrzése érdekében a következő műveleteket végzi el.
 
@@ -165,5 +165,5 @@ Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvé
 
 A Site Recovery mostantól tiszteletben tartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételen a virtuális gép a megfelelő IP-címen keresztül kapcsolódjon a kiválasztott erőforráshoz, ha az elérhető a cél IP-tartományban. Ebben az esetben nincs szükség a teljes alhálózat feladatátvételére. DNS-frissítésre lesz szükség a sikertelenül átadott gép rekordjainak frissítéséhez, hogy a virtuális gép új IP-címére mutasson.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Tudnivalók](site-recovery-active-directory.md) a helyszíni Active Directory és a DNS Azure-ba történő replikálásáról.

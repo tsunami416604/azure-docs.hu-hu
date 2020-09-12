@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/13/2020
-ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/03/2020
+ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539210"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462700"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Az Azure SQL Edge támogatott funkciói (előzetes verzió) 
 
@@ -67,8 +67,8 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | Terület | Nem támogatott szolgáltatás vagy szolgáltatás |
 |-----|-----|
 | **Adatbázis-kialakítás** | Memóriában tárolt OLTP és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek. |
-| &nbsp; | `HierarchyID`adattípus és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek. |
-| &nbsp; | `Spatial`adattípus és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek. |
+| &nbsp; | `HierarchyID` adattípus és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek. |
+| &nbsp; | `Spatial` adattípus és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek. |
 | &nbsp; | A stretch DB és a kapcsolódó DDL-parancsok, valamint a Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek. |
 | &nbsp; | Teljes szöveges indexek és keresések, valamint kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek.|
 | &nbsp; | `FileTable`, `FILESTREAM` és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek.|
@@ -89,6 +89,10 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | CLR-függő dátum és idő katalógus-nézetek, függvények és lekérdezési záradékok. |
 | &nbsp; | Puffer-készlet kiterjesztése. |
 | &nbsp; | Adatbázis e-mail-címe. |
+| &nbsp; | Szolgáltatásközvetítő |
+| &nbsp; | Házirend-alapú felügyelet |
+| &nbsp; | Felügyeleti adattárház |
+| &nbsp; | Foglalt adatbázisok |
 | **SQL Server Agent** |  Alrendszerek: CmdExec, PowerShell, üzenetsor-olvasó, SSIS, SSAS és SSRS. |
 | &nbsp; | Riasztások. |
 | &nbsp; | Felügyelt biztonsági mentés. |

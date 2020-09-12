@@ -4,16 +4,16 @@ description: Útmutató az Azure-beli Analysis Services-kiszolgálóról való k
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506774"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489017"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
@@ -76,6 +76,24 @@ Használja az aktuális folyamatot futtató Windows-fiókot.
 ## <a name="connect-using-an-odc-file"></a>Kapcsolat. odc-fájl használatával
 
 Az Excel régebbi verzióival a felhasználók Office-adatkapcsolati (. odc) fájl használatával csatlakozhatnak egy Azure Analysis Services-kiszolgálóhoz. További információt az [Office-Adatkapcsolódási (. odc) fájl létrehozása](analysis-services-odc.md)című témakörben talál.
+
+## <a name="connect-as-a-linked-server-from-sql-server"></a>Kapcsolat csatolt kiszolgálóként SQL Server
+
+SQL Server csatlakozhat egy Azure Analysis Services erőforráshoz [csatolt kiszolgálóként](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) úgy, hogy megadja a MSOLAP az adatforrás-szolgáltatóként. A csatolt kiszolgáló kapcsolatának konfigurálása előtt mindenképpen telepítse a legújabb [MSOLAP ügyféloldali függvénytárat](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (Provider). 
+
+A Azure Analysis Services csatolt kiszolgáló kapcsolatai esetén a MSOLAP-szolgáltatót a SQL Server folyamaton kívül kell létrehozni. A csatolt kiszolgáló beállításainak konfigurálásakor győződjön meg arról, hogy az **InProcess engedélyezése** beállítás nincs **bejelölve**.
+
+Ha a leválasztás **engedélyezése** lehetőség be van jelölve, és a szolgáltató a SQL Server folyamat során jön létre, a rendszer a következő hibát adja vissza:
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
 
 
 ## <a name="next-steps"></a>Következő lépések

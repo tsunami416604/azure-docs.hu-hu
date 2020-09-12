@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726973"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485037"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -60,8 +60,8 @@ adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowRefere
 integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. | IntegrationRuntimeReference | No
 számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | No
 számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | No
-előkészítés. linkedService | Ha SQL DW-forrást vagy-fogadót használ, a rendszer a alapszintű előkészítéshez használt Storage-fiókot használja. | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
-előkészítés. folderPath | Ha SQL DW-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
+előkészítés. linkedService | Ha Azure-beli szinapszis Analytics-forrást vagy-fogadót használ, a rendszer a alapszintű előkészítéshez használt Storage-fiókot használja. | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvassa vagy ír egy Azure szinapszis Analyticsbe
+előkészítés. folderPath | Ha Azure szinapszis Analytics-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvassa vagy ír az Azure szinapszis Analyticsbe
 
 ![Adatfolyam végrehajtása](media/data-flow/activity-data-flow.png "Adatfolyam végrehajtása")
 
@@ -86,7 +86,7 @@ A folyamatok végrehajtásához a fürt egy olyan fürt, amely a végrehajtás m
 
 ### <a name="polybase"></a>PolyBase
 
-Ha egy Azure SQL Data Warehouse fogadóként vagy forrásként használ, ki kell választania egy átmeneti helyet a Batch-köteg betöltéséhez. A Base lehetővé teszi a kötegek tömeges betöltését az adatsorok egymásba helyezése helyett. A Base drasztikusan csökkenti a betöltési időt az SQL DW-ben.
+Ha az Azure szinapszis Analytics (korábban SQL Data Warehouse) szolgáltatást fogadóként vagy forrásként használja, ki kell választania egy átmeneti helyet a köteg batch-terheléshez. A Base lehetővé teszi a kötegek tömeges betöltését az adatsorok egymásba helyezése helyett. A Base drasztikusan csökkenti a betöltési időt az Azure szinapszis Analytics szolgáltatásban.
 
 ## <a name="parameterizing-data-flows"></a>Parameterizing-adatfolyamok
 
@@ -155,7 +155,7 @@ A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez has
 > [!NOTE]
 > Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a függvény használatával `contains` . Például `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` megvizsgálhatja, hogy a sorok sink1-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: Data Factory által támogatott vezérlési flow-tevékenységek: 
 

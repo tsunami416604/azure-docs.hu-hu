@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642469"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489527"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Mi az Azure SQL Edge (előzetes verzió)?
 
@@ -67,7 +67,7 @@ Az Azure SQL Edge egyszerűbbé és hatékonyabbá teszi az alkalmazások fejles
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) – ingyenes, letölthető ÜGYFÉLALKALMAZÁS bármely SQL-infrastruktúra kezelésére, SQL Serverról a SQL Databasere.
 - [SQL Server Data Tools a Visual Studióban](/sql/ssdt/download-sql-server-data-tools-ssdt/) – ingyenes, letölthető ügyfélalkalmazás SQL Server-alapú, SQL Database-adatbázisok, Integration Services-csomagok, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.
 - [Azure Data Studio](/sql/azure-data-studio/what-is/) – ingyenes, letölthető, platformfüggetlen adatbázis-eszköz, amely a helyszíni és a Felhőbeli adatplatformok Microsoft-családját használja Windows, MacOS és Linux rendszereken.
-- [Visual Studio Code](https://code.visualstudio.com/docs) – ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, MacOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.
+- [Visual Studio Code](https://code.visualstudio.com/docs) – ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, MacOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és az Azure szinapszis Analytics lekérdezéséhez.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,12 +3,12 @@ title: Event-alapú videofelvétel – Azure
 description: Az Event-based video Recording (EVR) az esemény által aktivált videó rögzítési folyamatára utal. A szóban forgó esemény a videós jel (például a mozgás észlelése) vagy egy független forrásból (például egy ajtó megnyitása) származó feldolgozásból származhat.  Ebben a cikkben az Event-alapú videofelvételekkel kapcsolatos néhány felhasználási esetet ismertetjük.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 0a6f7ca4233c195c7494fc6f63e7dfb5bf654c17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261330"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568494"
 ---
 # <a name="event-based-video-recording"></a>Eseményalapú videófelvétel  
  
@@ -34,7 +34,8 @@ Ebben a használati esetben csak akkor rögzíthet videoklipeket, ha a videóban
 
 Az alábbi ábrán egy olyan adathordozó-gráf grafikus ábrázolása látható, amely ezt a használati esetet kezeli. Az ilyen adathordozó-gráf gráf-topológiájának JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-motion-assets/topology.json)található.
 
-![Videó rögzítése a mozgásészlelés alapján](./media/event-based-video-recording/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/motion-detection.svg" alt-text="Videó rögzítése a mozgásészlelés alapján":::
 
 A diagramon az RTSP forrás csomópontja rögzíti az élő video-hírcsatornát a kamerából, és továbbítja azt egy [mozgásérzékelő processzor](media-graph-concept.md#motion-detection-processor) -csomópontnak. Ha a mozgás észlelését észleli az élő videóban, a mozgásérzékelő processzor csomópontja olyan eseményt hoz létre, amely a [Signal Gate processzor](media-graph-concept.md#signal-gate-processor) -csomópontra, valamint a IoT hub Message fogadó csomópontra mutat. Az utóbbi csomópont az eseményeket az IoT Edge hubhoz küldi, ahonnan a riasztások elindításához más célhelyekre is átirányítható. 
 
@@ -44,7 +45,8 @@ A mozgásészlelési csomópont egy eseménye aktiválja a Signal Gate processzo
 
 Ebben a használati esetben egy másik IoT-érzékelőből származó jeleket lehet használni a videó rögzítésének elindításához. Az alábbi ábrán egy olyan adathordozó-gráf grafikus ábrázolása látható, amely ezt a használati esetet kezeli. Az ilyen adathordozó-gráf gráf-topológiájának JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json)található.
 
-![Videók rögzítése más forrásokból származó események alapján](./media/event-based-video-recording/other-sources.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Videók rögzítése más forrásokból származó események alapján":::
 
 A diagramon a külső érzékelő eseményeket küld az IoT Edge hubhoz. Ezután a rendszer átirányítja az eseményeket a Signal Gate processzor-csomópontra a [IoT hub Message Source](media-graph-concept.md#iot-hub-message-source) csomóponton keresztül. A Signal Gate processzor csomópontjának viselkedése ugyanaz, mint az előző használati eset esetében – megnyílik, és hagyja, hogy az élő videó adatcsatornája az RTSP-forrás csomópontról a file fogadó csomópontra (vagy az eszköz fogadó csomópontjára) kerüljön, amikor a külső esemény aktiválja. 
 
@@ -54,7 +56,8 @@ Ha file mosogató-csomópontot használ, a videó a peremhálózati eszköz hely
 
 Ebben a használati esetben a külső logikai rendszertől származó jel alapján rögzíthet videoklipeket. Ilyen használati eset például csak akkor rögzíthet egy videoklipet, ha az adott országúton lévő forgalom videós csatornáján egy teherautó észlelhető. Az alábbi ábrán egy olyan adathordozó-gráf grafikus ábrázolása látható, amely ezt a használati esetet kezeli. Az ilyen adathordozó-gráf gráf-topológiájának JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)található.
 
-![Videó rögzítése egy külső viszonyítási modul alapján](./media/event-based-video-recording/external-inferencing-module.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Videó rögzítése egy külső viszonyítási modul alapján":::
 
 A diagramon az RTSP forrás csomópontja rögzíti az élő video-hírcsatornát a kamerából, és két ág számára teszi elérhetővé: az egyiknek van egy [Signal Gate processzor](media-graph-concept.md#signal-gate-processor) -csomópontja, a másik pedig egy [http-bővítmény](media-graph-concept.md) csomópontot használ az adatok külső logikai modulba való küldéséhez. A HTTP-bővítmény csomópont lehetővé teszi, hogy a Media Graph képkockákat (JPEG, BMP vagy PNG formátumban) küldjön a REST-alapú külső következtetési szolgáltatásnak. A jel elérési útja általában csak az alacsony képkockák (<5fps) támogatására használható. A [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjának használatával csökkentheti a videó keretének sebességét a http-bővítmény csomópontra.
 
@@ -62,6 +65,6 @@ A külső következtetési szolgáltatásból származó eredményeket a HTTP-b�
 
 Ennek a példának a továbbfejlesztése egy mozgásérzékelős processzor használata a frame rate szűrő processzor-csomópontja előtt. Ez csökkenti a következtetést, például az éjszakai időt, ha az országúton nem található járműveket nem lehet megtakarítani. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: eseményvezérelt videó rögzítése](event-based-video-recording-tutorial.md)

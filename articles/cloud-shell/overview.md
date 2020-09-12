@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286664"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468657"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 
@@ -33,7 +33,7 @@ A Cloud Shell három módon érheti el:
 
     ![Ikon a Cloud Shell elindításához a Azure Portal](media/overview/portal-launch-icon.png)
 
-- **Kódrészletek: a** [docs.microsoft.com](https://docs.microsoft.com) és a [Microsoft Learn](https://docs.microsoft.com/learn/)lapon jelölje be az Azure CLI-vel és az Azure PowerShell kódrészletekkel megjelenő **kipróbálás** gombot:
+- **Kódrészletek: a** [docs.microsoft.com]() és a [Microsoft Learn](/learn/)lapon jelölje be az Azure CLI-vel és az Azure PowerShell kódrészletekkel megjelenő **kipróbálás** gombot:
 
     ```azurecli-interactive
     az account show
@@ -87,8 +87,8 @@ A Cloud Shell egy rugalmas eszköz, amely a következő helyekről használható
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Az Azure CLI dokumentációja](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell-dokumentáció](https://docs.microsoft.com/powershell/azure/)
+* [Az Azure CLI dokumentációja](/cli/azure)
+* [Azure PowerShell-dokumentáció](/powershell/azure/)
 * [Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -111,13 +111,13 @@ További információ: [új vagy meglévő Storage-fiók](persisting-shell-stora
 * Cloud Shell megőrzi $HOME a fájlmegosztás 5 GB-os rendszerképének használatával
 * Az engedélyek normál Linux-felhasználóként vannak beállítva a bash-ben
 
-További információ a bash szolgáltatásairól [Cloud Shell](features.md) és [a PowerShellben Cloud Shellban](features-powershell.md).
+További információ a bash szolgáltatásairól [Cloud Shell](features.md) és [a PowerShellben Cloud Shellban](./features.md).
 
 ## <a name="pricing"></a>Díjszabás
 
 A Cloud Shell gép üzemeltetése ingyenes, és egy csatlakoztatott Azure Files-megosztás előfeltétele. A normál tárolási költségek érvényesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md)

@@ -1,29 +1,26 @@
 ---
-title: Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió) | Microsoft Docs
+title: Folyamat változási csatornájának feldolgozása az Azure Blob Storageban | Microsoft Docs
 description: Megtudhatja, hogyan dolgozhatja fel az adatcsatorna-naplókat egy .NET-ügyfélalkalmazás esetében
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018960"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568251"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Folyamat változási csatornájának feldolgozása az Azure-ban Blob Storage
 
 A módosítási hírcsatorna tranzakciós naplókat biztosít a blobok és a blob metaadatainak a Storage-fiókban történt változásairól. Ebből a cikkből megtudhatja, hogyan olvashatja el a módosítási hírcsatorna rekordjait a blob Change feed Processor Library használatával.
 
-További információ a változási csatornáról: a [hírcsatorna módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md).
-
-> [!NOTE]
-> A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és korlátozott régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg a [hírcsatorna-támogatás módosítása az Azure Blob Storageban](storage-blob-change-feed.md)című témakört. A módosítási hírcsatorna-feldolgozó függvénytárának változása mostantól változhat, és a tár általánosan elérhetővé válik.
+További információ a változási csatornáról: a [hírcsatorna módosítása az Azure Blob Storageban](storage-blob-change-feed.md).
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>A blob Change feed Processor Library letöltése
 
@@ -219,4 +216,4 @@ A megadott kezdési időpontot a legközelebbi órára kerekíti a rendszer, a b
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a hírcsatorna-naplók változásáról. Lásd: [hírcsatorna módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
+További információ a hírcsatorna-naplók változásáról. Lásd: [adatcsatorna módosítása az Azure-ban blob Storage](storage-blob-change-feed.md)

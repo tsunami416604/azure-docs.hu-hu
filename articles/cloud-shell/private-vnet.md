@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114659"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468538"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Cloud Shell üzembe helyezése Azure-beli virtuális hálózaton
 > [!NOTE]
@@ -52,7 +52,7 @@ A kiválasztott virtuális hálózaton belül egy dedikált alhálózatot kell h
 A hálózati profil az Azure-erőforrások hálózati konfigurációs sablonja, amely az erőforrás bizonyos hálózati tulajdonságait határozza meg.
 
 ### <a name="azure-relay"></a>Azure Relay
-Egy [Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) két végpontot engedélyez, amelyek nem érhetők el közvetlenül a kommunikációhoz. Ebben az esetben a rendszer lehetővé teszi, hogy a rendszergazda böngészője kommunikáljon a magánhálózaton lévő tárolóval.
+Egy [Azure Relay](../azure-relay/relay-what-is-it.md) két végpontot engedélyez, amelyek nem érhetők el közvetlenül a kommunikációhoz. Ebben az esetben a rendszer lehetővé teszi, hogy a rendszergazda böngészője kommunikáljon a magánhálózaton lévő tárolóval.
 
 A Cloud Shellhoz használt Azure Relay-példány konfigurálható úgy, hogy szabályozza, mely hálózatok férhetnek hozzá a tároló erőforrásaihoz: 
 - Elérhető a nyilvános internetről: ebben a konfigurációban a Cloud Shell lehetővé teszi az egyéb belső erőforrások elérésének módját. 
@@ -66,7 +66,7 @@ A standard Cloud Shellhoz hasonlóan a Cloud Shell virtuális hálózatban való
 
 * Az előzetes verzióban a virtuális hálózatok Cloud Shell kevesebb régiót támogatnak. Ez jelenleg csak a következőre korlátozódik: WestUS és WestCentralUS.
 
-* A [Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) nem ingyenes szolgáltatás, tekintse meg a [díjszabást](https://azure.microsoft.com/pricing/details/service-bus/). A Cloud Shell-forgatókönyvben minden rendszergazda számára egy hibrid kapcsolatot használ a Cloud Shell használatakor. A Cloud Shell munkamenet befejezése után a rendszer automatikusan leállítja a kapcsolatot.
+* A [Azure Relay](../azure-relay/relay-what-is-it.md) nem ingyenes szolgáltatás, tekintse meg a [díjszabást](https://azure.microsoft.com/pricing/details/service-bus/). A Cloud Shell-forgatókönyvben minden rendszergazda számára egy hibrid kapcsolatot használ a Cloud Shell használatakor. A Cloud Shell munkamenet befejezése után a rendszer automatikusan leállítja a kapcsolatot.
 
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
@@ -113,5 +113,5 @@ Cloud Shell csatlakozhat, a rendszer az első futtatási élményt fogja kérni.
 
 ![A Cloud Shell izolált VNET első élményének beállításait mutatja be.](media/private-vnet/vnet-settings.png)
 
-## <a name="next-steps"></a>További lépések
-[További tudnivalók az Azure Virtual Networkről](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+## <a name="next-steps"></a>Következő lépések
+[További tudnivalók az Azure Virtual Networkről](../virtual-network/virtual-networks-overview.md)

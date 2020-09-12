@@ -12,16 +12,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089702"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569084"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
 A Azure Security Center a [Microsoft Defender komplex veszélyforrások elleni védelem (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) szolgáltatással integrálható az átfogó végpont-észlelési és reagálási (EDR) képességek biztosításához.
+
+
+## <a name="availability"></a>Rendelkezésre állás
+
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|**Általános elérhetőség**|
+|Árképzési|Standard csomag|
+|Támogatott gépek:|![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
+|Szükséges szerepkörök és engedélyek:|Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa**vagy **előfizetéshez tartozó közreműködő**|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek nyilvános Azure-felhőkben<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|||
+
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>A Microsoft Defender ATP funkciói Security Center
 
@@ -55,7 +68,7 @@ Ha Azure Security Centert használ a kiszolgálók figyelésére, a rendszer aut
 A konfigurálást követően nem módosíthatja azt a helyet, ahol az adatait tárolja. Ha át kell helyeznie az adatait egy másik helyre, lépjen kapcsolatba Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához.
 
 
-## <a name="onboarding-servers-to-security-center"></a>Kiszolgálók előkészítése a Security Centerre 
+## <a name="onboard-servers-to-security-center"></a>Bevezetési kiszolgálók Security Center 
 
 A kiszolgálók Security Centerbe való bevezetéséhez kattintson az **Azure Security Center ugrás** gombra a Microsoft Defender ATP-kiszolgáló bevezetési kiszolgálóinak bevezetéséhez.
 
@@ -112,7 +125,7 @@ Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
 1. A vizsgálat ablakban válassza ki a Microsoft Defender ATP-portálra mutató hivatkozást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait.

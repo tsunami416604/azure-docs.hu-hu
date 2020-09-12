@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321734"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489544"
 ---
 # <a name="create-external-stream-transact-sql"></a>KÜLSŐ STREAM létrehozása (Transact-SQL)
 
@@ -24,7 +24,7 @@ Egy külső STREAM is megadható és létrehozható kimenetként és bemenetkén
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Az Azure Function függvénynek másodpercenként eljuttatott események maximális száma – az alapértelmezett érték a 100. SQL Database esetében ez az összes tömeges beszúrási tranzakcióval ellátott rekordok maximális számát jelöli – az alapértelmezett érték a 10 000. 
     - Az összes SQL-alapú kimenetre vonatkozik 
-  - STAGING_AREA: külső ADATFORRÁS-objektum Blob Storage az átmeneti terület a nagy átviteli sebességű adatok betöltésének SQL Data Warehouse 
+  - STAGING_AREA: külső ADATFORRÁS-objektum, amely a nagy átviteli sebességű adatfeldolgozást az Azure szinapszis Analytics szolgáltatásba Blob Storage az átmeneti területét. 
     - Későbbi használatra fenntartva. Nem vonatkozik az Azure SQL Edge-re.
 
 
@@ -245,7 +245,7 @@ WITH
 ); 
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [KÜLSŐ STREAM módosítása (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [KÜLSŐ STREAM eldobása (Transact-SQL)](drop-external-stream-transact-sql.md) 

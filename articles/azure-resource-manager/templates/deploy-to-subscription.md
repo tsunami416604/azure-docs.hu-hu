@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002789"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468640"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -115,7 +115,7 @@ Az egyes központi telepítési nevek esetében a hely nem módosítható. A kö
 
 ## <a name="deployment-scopes"></a>Központi telepítési hatókörök
 
-Az előfizetések telepítésekor az előfizetést vagy az előfizetésen belüli erőforráscsoportokat is megcélozhatja. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+Az előfizetések telepítésekor egy előfizetést és egy, az előfizetésen belüli erőforráscsoportot is megcélozhat. Nem telepíthet olyan előfizetésre, amely eltér a cél előfizetéstől. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
 
 A sablon erőforrások szakaszában meghatározott erőforrások az előfizetésre lesznek alkalmazva.
 
@@ -145,7 +145,7 @@ Egy erőforráscsoport az előfizetésen belüli célzásához adjon hozzá egy 
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,19 @@ Egy erőforráscsoport az előfizetésen belüli célzásához adjon hozzá egy 
 }
 ```
 
+Ebben a cikkben olyan sablonokat talál, amelyek bemutatják, hogyan telepíthet erőforrásokat különböző hatókörökre. Egy erőforráscsoportot létrehozó sablon és egy Storage-fiók üzembe helyezése esetén tekintse meg az [erőforráscsoport és erőforrások létrehozása](#create-resource-group-and-resources)című témakört. Egy erőforráscsoportot létrehozó sablon esetén egy zárolást alkalmaz rá, és hozzárendel egy szerepkört az erőforráscsoporthoz, lásd: [hozzáférés-vezérlés](#access-control).
+
 ## <a name="use-template-functions"></a>A Template functions használata
 
 Az előfizetési szintű központi telepítések esetében néhány fontos szempontot figyelembe kell venni a sablon funkcióinak használatakor:
 
 * A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
 * A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
-* Használja a [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) függvényt az előfizetési szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
+* Ne használja a [resourceId ()](template-functions-resource.md#resourceid) parancsot az előfizetés szintjén üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
 
-  Ha például egy házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
+  Ehelyett használja a [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) függvényt.
+
+  Ha például egy előfizetéshez telepített házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -420,7 +424,7 @@ New-AzSubscriptionDeployment `
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]
@@ -479,7 +483,7 @@ Az alábbi példa létrehoz egy erőforráscsoportot, egy zárolást alkalmaz r�
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments)találhatók.

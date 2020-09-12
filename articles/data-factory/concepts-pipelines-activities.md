@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 62df01a02feacb8311d14e0bae7ceccb44d47a5a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 78007c9f153267b72a94dc4b4024155dee6beb88
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497658"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442973"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 
@@ -26,7 +26,7 @@ ms.locfileid: "86497658"
 Ennek a cikknek a segítségével megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját adatáthelyezési és -feldolgozási forgatókönyveihez.
 
 ## <a name="overview"></a>Áttekintés
-A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek naplózzák és megtisztítják a naplózási adatot, majd elindítanak egy leképezési adatfolyamot a naplófájlok elemzéséhez. A folyamat lehetővé teszi, hogy a tevékenységeket egy készletként kezelje, külön helyett. A folyamatokat egymástól függetlenül helyezheti üzembe és ütemezhet.
+A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Például a folyamat tartalmazhat egy olyan tevékenységkészletet, amely naplóadatokat tölt be és töröl, majd egy leképezési adatfolyamot futtat a naplóadatok elemzéséhez. A folyamatok lehetővé teszik, hogy a tevékenységeket egy készletben kezelje, ne pedig külön-külön. Magát a folyamatot helyezheti üzembe és ütemezheti az önálló tevékenységek helyett.
 
 A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy másolási tevékenységet használ az adatok SQL Serverból egy Azure-Blob Storageba való másolásához. Ezt követően egy adatfolyam-tevékenység vagy egy Databricks-jegyzetfüzet tevékenység használatával feldolgozhatja és átalakíthatja a blob Storage-ból származó adatok egy olyan Azure-beli szinapszis Analytics-készletbe való feldolgozását, amely az üzleti intelligencia jelentéskészítési megoldásaira épül.
 
@@ -57,7 +57,7 @@ Adatátalakítási tevékenység | Számítási környezet
 [Hadoop Streaming](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Machine Learning-tevékenységek: kötegelt végrehajtás és az erőforrás frissítése](transform-data-using-machine-learning.md) | Azure VM
-[Tárolt eljárás](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse vagy SQL Server
+[Tárolt eljárás](transform-data-using-stored-procedure.md) | Azure SQL, Azure szinapszis Analytics (korábban SQL Data Warehouse) vagy SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Egyéni tevékenység](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-jegyzetfüzet](transform-data-databricks-notebook.md) | Azure Databricks
@@ -69,14 +69,14 @@ További információkért tekintse meg az [adatátalakítási tevékenységekr�
 ## <a name="control-flow-activities"></a>Vezérlési folyamat tevékenységei
 A támogatott átvitelvezérlési tevékenységek a következők:
 
-Vezérlési tevékenység | Leírás
+Vezérlési tevékenység | Description
 ---------------- | -----------
 [Változó hozzáfűzése](control-flow-append-variable-activity.md) | Adjon hozzá egy értéket egy meglévő tömb változóhoz.
 [Folyamat végrehajtása](control-flow-execute-pipeline-activity.md) | A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
 [Szűrő](control-flow-filter-activity.md) | Szűrő kifejezés alkalmazása bemeneti tömbre
 [Minden](control-flow-for-each-activity.md) | A ForEach tevékenység ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 [Metaadatok beolvasása](control-flow-get-metadata-activity.md) | A metaadatok beolvasása tevékenység segítségével az Azure Data Factory bármely metaadatát lekérheti.
-[If Condition tevékenység](control-flow-if-condition-activity.md) | Az If Condition tevékenység igaz vagy hamis értéket visszaadó feltételek alapján történő elágaztatásra használható. Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Kiértékeli a tevékenységek egy csoportját, amikor a feltétel kiértékelése `true` és a tevékenységek egy másik csoportja, amikor a feltétel kiértékelése`false.`
+[If Condition tevékenység](control-flow-if-condition-activity.md) | Az If Condition tevékenység igaz vagy hamis értéket visszaadó feltételek alapján történő elágaztatásra használható. Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Kiértékeli a tevékenységek egy csoportját, amikor a feltétel kiértékelése `true` és a tevékenységek egy másik csoportja, amikor a feltétel kiértékelése `false.`
 [Keresési tevékenység](control-flow-lookup-activity.md) | A Keresési tevékenység segítségével bármely külső forrásból kiolvashat vagy megkereshet egy rekordot, táblanevet vagy értéket. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak.
 [Változó beállítása](control-flow-set-variable-activity.md) | Egy meglévő változó értékének beállítása.
 [Until tevékenység](control-flow-until-activity.md) | A Do-Until ciklus megvalósítása hasonló a programozási nyelvek Do-Until ciklusos szerkezetéhez. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban.
@@ -106,14 +106,14 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 }
 ```
 
-Címke | Leírás | Típus | Kötelező
+Címke | Description | Típus | Kötelező
 --- | ----------- | ---- | --------
-name | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" </li></ul> | Sztring | Igen
-leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
-tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
-parameters | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
-Egyidejűség | A folyamat egyidejű futtatások maximális száma. Alapértelmezés szerint nincs maximum. Ha elérte a párhuzamossági korlátot, a rendszer a folyamatban lévő további folyamatokat várólistára helyezi, amíg a korábbi verziók befejeződik. | Szám | Nem 
-Széljegyzetek | A folyamathoz társított címkék listája | Tömb | Nem
+name | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Sztring | Yes
+leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | No
+tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Yes
+parameters | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | No
+Egyidejűség | A folyamat egyidejű futtatások maximális száma. Alapértelmezés szerint nincs maximum. Ha elérte a párhuzamossági korlátot, a rendszer a folyamatban lévő további folyamatokat várólistára helyezi, amíg a korábbi verziók befejeződik. | Szám | No 
+Széljegyzetek | A folyamathoz társított címkék listája | Tömb | No
 
 ## <a name="activity-json"></a>Tevékenység JSON-fájlja
 A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A következő két fő tevékenységtípust különböztetjük meg: végrehajtási és vezérlési tevékenységek.
@@ -143,13 +143,13 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 
 Címke | Leírás | Kötelező
 --- | ----------- | ---------
-name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás () karakterrel kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Igen</li></ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
-típus | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Igen
+name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás () karakterrel kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li></ul>
+leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Yes
+típus | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Yes
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
-typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
-szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ez a tulajdonság egy időtúllépési és újrapróbálkozási viselkedést tartalmaz. Ha nincs megadva, a rendszer az alapértelmezett értékeket használja. További információkat a [Tevékenységszabályzat](#activity-policy) szakaszban talál. | Nem
-dependsOn | Ez a tulajdonság a tevékenységfüggőségek, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [Tevékenységfüggőség](#activity-dependency) | Nem
+typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | No
+szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ez a tulajdonság egy időtúllépési és újrapróbálkozási viselkedést tartalmaz. Ha nincs megadva, a rendszer az alapértelmezett értékeket használja. További információkat a [Tevékenységszabályzat](#activity-policy) szakaszban talál. | No
+dependsOn | Ez a tulajdonság a tevékenységfüggőségek, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [Tevékenységfüggőség](#activity-dependency) | No
 
 ### <a name="activity-policy"></a>Tevékenységszabályzat
 A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolják, beállíthatósági lehetőségeket biztosítva. A tevékenységszabályzatok kizárólag végrehajtási tevékenységek esetében állnak rendelkezésre.
@@ -182,12 +182,12 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
 }
 ```
 
-JSON-név | Leírás | Megengedett értékek | Kötelező
+JSON-név | Description | Megengedett értékek | Kötelező
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Időtartomány | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
 retryIntervalInSeconds | Az újrapróbálkozási kísérletek közötti késleltetés, másodpercben | Egész szám | Nem. Az alapértelmezett érték 30 másodperc
-secureOutput | Ha igaz értékre van állítva, a tevékenység kimenete biztonságosnak minősül, és nem naplózva van a figyeléshez. | Logikai érték | Nem. Az alapértelmezett érték a false (hamis).
+secureOutput | Ha igaz értékre van állítva, a tevékenység kimenete biztonságosnak minősül, és nem naplózva van a figyeléshez. | Logikai | Nem. Az alapértelmezett érték a false (hamis).
 
 ### <a name="control-activity"></a>Vezérlési tevékenység
 A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkeznek:
@@ -208,11 +208,11 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 
 Címke | Leírás | Kötelező
 --- | ----------- | --------
-name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Igen</li><ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
-típus | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Igen
-typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
-dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információ: tevékenység- [függőség](#activity-dependency). | Nem
+name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li><ul>
+leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Yes
+típus | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Yes
+typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | No
+dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információ: tevékenység- [függőség](#activity-dependency). | No
 
 ### <a name="activity-dependency"></a>Tevékenységfüggőség
 A tevékenység függősége határozza meg, hogy a későbbi tevékenységek milyen mértékben függenek az előző tevékenységektől, és meghatározza, hogy a következő feladat végrehajtása továbbra is fennáll-e. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet.

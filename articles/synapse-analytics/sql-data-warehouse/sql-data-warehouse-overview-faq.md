@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482530"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462649"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
@@ -27,7 +27,7 @@ A. Az Azure szinapszis egy elemzési szolgáltatás, amely egyesíti az adattár
 
 K. Mi történt a Azure SQL Data Warehouse?
 
-A. Az Azure szinapszis Azure SQL Data Warehouse (SQL DW) lett kifejlesztve. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Az Azure szinapszis használatával folytathatja a meglévő adattárház-számítási feladatok futtatását az éles környezetben. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. Az Azure szinapszis Azure SQL Data Warehouse fejlődött. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Az Azure szinapszis használatával folytathatja a meglévő adattárház-számítási feladatok futtatását az éles környezetben. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
 K. Mi az a szinapszis SQL Pool?
 
@@ -75,7 +75,7 @@ A. A [támogatási jegyeket](sql-data-warehouse-get-started-create-support-ticke
 
 K. Milyen adattípusok támogatottak?
 
-A. Lásd [az adattípusokat](sql-data-warehouse-tables-data-types.md).
+A. Lásd  [az adattípusokat](sql-data-warehouse-tables-data-types.md).
 
 K. Milyen funkciókat támogat?
 
@@ -109,6 +109,6 @@ K: csatlakozhatok a HDI szolgáltatáshoz?
 
 A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, az adatait egy szinapszis SQL-készletbe is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure szinapszis egészére vonatkozó további információkért tekintse meg az [Áttekintés](sql-data-warehouse-overview-faq.md) oldalt.

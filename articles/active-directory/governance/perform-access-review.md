@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077983"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299966"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -33,7 +33,7 @@ A hozzáférési felülvizsgálati folyamat elindításához az értesítő e-ma
 - **E-mail cím**:
 
 >[!IMPORTANT]
-> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési lista azure-noreply@microsoft.com , hogy biztosan megkapja az összes e-mailt.
+> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Adja hozzá azure-noreply@microsoft.com a biztonságos címzettek listájához, és győződjön meg arról, hogy az összes e-mailt fogadja.
 
 1. Keressen egy e-mailt a Microsofttól, és kérje meg, hogy tekintse át a hozzáférést. Íme egy példa e-mailben a csoport hozzáférésének áttekintéséhez.
 
@@ -129,7 +129,7 @@ Az új véleményezői élményt a saját hozzáférés frissített felhasznál�
 ### <a name="email"></a>E-mail
 
   >[!IMPORTANT]
-> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési lista azure-noreply@microsoft.com , hogy biztosan megkapja az összes e-mailt.
+> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Adja hozzá azure-noreply@microsoft.com a biztonságos címzettek listájához, és győződjön meg arról, hogy az összes e-mailt fogadja.
 
    1. Keressen egy e-mailt a Microsofttól, és kérje meg, hogy tekintse át a hozzáférést. Az alábbi e-mail-üzenetet láthatja:
 
@@ -144,7 +144,7 @@ Az új véleményezői élményt a saját hozzáférés frissített felhasznál�
 
 A függőben lévő hozzáférési felülvizsgálatokat a böngésző használatával is megtekintheti a saját hozzáférés megnyitásához.
 
-1. Bejelentkezés a My Access onhttps://myaccess.microsoft.com/
+1. Bejelentkezés a My Access on https://myaccess.microsoft.com/
 
 2. A bal oldali sávban található menüben válassza a **hozzáférési felülvizsgálatok** lehetőséget, hogy megtekintse a függőben lévő hozzáférési felülvizsgálatok listáját.
 
@@ -203,7 +203,6 @@ Az összes felhasználóra vonatkozó javaslatok elfogadásához győződjön me
 >[!NOTE]
 >A javaslatok elfogadását követően a korábbi döntések nem változnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)
-

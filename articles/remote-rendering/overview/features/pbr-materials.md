@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021313"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613674"
 ---
 # <a name="pbr-materials"></a>PBR-anyagok
 
@@ -55,7 +55,7 @@ A fizikailag vezérelt renderelés lényege, hogy a *BaseColor*, a *fémesség*�
 
   Ha a rendszer egy fémes értéket és egy fémes térképet is biztosít, akkor a végső érték a kettő szorzata lesz.
 
-  ![a fémek és a durvaség](./media/metalness-roughness.png)
+  ![Különböző fémekkel és érdes értékekkel megjelenített gömbök](./media/metalness-roughness.png)
 
   A fenti képen a jobb alsó sarokban lévő gömb úgy néz ki, mint egy valódi fém, a bal alsó rész a kerámia vagy a műanyag elemre hasonlít. A albedó színe a fizikai tulajdonságok alapján is változik. A növekvő durvasággal az anyag elveszíti a tükröződés élességét.
 
@@ -63,13 +63,13 @@ A fizikailag vezérelt renderelés lényege, hogy a *BaseColor*, a *fémesség*�
 
 * **occlusionMap** és **aoScale:** a [környezeti elzáródások](https://en.wikipedia.org/wiki/Ambient_occlusion) olyan objektumokat tesznek elérhetővé, amelyekkel az árnyékok a bezárt területekhez hozzáadhatók. Az értéknek a-tól a- `0.0` ig történő elzáródása `1.0` , ahol a `0.0` sötétség (bezárt) és az `1.0` azt jelenti, hogy nincsenek elzáródások. Ha egy 2D-textúra elzáródási térképként van megadva, a hatás engedélyezve van, és a *aoScale* szorzóként működik.
 
-  ![Elzáródási Térkép](./media/boom-box-ao2.gif)
+  ![Környezeti elzáródással és anélkül megjelenített objektum](./media/boom-box-ao2.gif)
 
 * **transzparens:** A PBR-anyagok esetében csak egyetlen áttetszőségi beállítás van: engedélyezve van vagy nem. Az opacitást a albedó színe alfa-csatornája határozza meg. Ha engedélyezve van, a rendszer összetettebb renderelési folyamatot hív meg félig átlátszó felületek rajzolásához. Az Azure-alapú távoli renderelés igaz [sorrendű, független átlátszóságot](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) valósít meg.
 
   Az átlátszó geometria költséges a megjelenítéshez. Ha csak a felületen lévő lyukakra van szüksége, például egy fa leveleinél, érdemes inkább alfa-nyírást használni.
 
-  ![](./media/transparency.png)A fenti képen látható átlátszósági figyelmeztetés, hogy a jobb szélső gömb teljesen transzparens, de a reflexió továbbra is látható.
+  ![A fenti képen a nullával megjelenített elemek teljes átláthatóságára vonatkozó figyelmeztetést jelenítenek meg ](./media/transparency.png) , a jobb szélső gömb pedig teljesen átlátszó, de a reflexió továbbra is látható.
 
   > [!IMPORTANT]
   > Ha bármilyen anyagot át kell váltani átlátszatlanról áttetszőre futásidőben, a megjelenítőnek a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md)kell használnia. Ez a korlátozás nem vonatkozik azokra az anyagokra, amelyeket transzparens anyagként konvertálnak a kezdéshez.
@@ -81,7 +81,14 @@ Az Azure Remote rendering a Cook-Torrance mikro-dimenziós BRDF használja a GGX
  A *ragyogás* pbr modell az Azure Remote rendering-ben használt *fémmentes pbr-* modell alternatívája. Ez a modell az anyagok szélesebb körét reprezentálhatja. Azonban ez drágább, és általában nem működik megfelelően a valós idejű esetekben.
 Nem mindig lehetséges a *ragyogás* -ről a *fémekre* váltani, mivel olyan *(diffúziós, visszaverődési)* érték párokat, amelyek nem alakíthatók át *(BaseColor, fémes)*. A másik irányba történő átalakítás egyszerűbb és pontosabb, mivel az összes *(BaseColor, fémes)* párok jól meghatározott *(diffúz, fényvisszaverődési)* pároknak felelnek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# PbrMaterial osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ PbrMaterial osztály](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Színes anyagok](color-materials.md)
 * [Textúrák](../../concepts/textures.md)

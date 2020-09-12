@@ -3,12 +3,12 @@ title: Az Azure Migrate-berendezés architektúrája
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919743"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514567"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Az Azure Migrate-berendezés architektúrája
 
@@ -62,15 +62,15 @@ Az ügyfél által az összes központi telepítési forgatókönyvhöz gyűjtö
 
 ## <a name="discovery-and-collection-process"></a>Felderítési és gyűjtési folyamat
 
-![Architektúra](./media/migrate-appliance-architecture/architecture.png)
+![Architektúra](./media/migrate-appliance-architecture/architecture1.png)
 
 A készülék a következő eljárással kommunikál a vCenter-kiszolgálókkal és a Hyper-V-gazdagépekkel/-fürtökkel.
 
 1. **Felderítés elindítása**:
-    - Amikor elindítja a felderítést a Hyper-V berendezésen, az a 5985-as (HTTP) és a 5986 (HTTPS) WinRM-portok Hyper-V-gazdagépekkel kommunikál.
+    - Amikor elindítja a felderítést a Hyper-V berendezésen, az a 5985-as (HTTP) WinRM-porton keresztül kommunikál a Hyper-V-gazdagépekkel.
     - Amikor elindítja a felderítést a VMware készüléken, az a 443-as TCP-porton keresztül kommunikál a vCenter-kiszolgálóval. Ha a vCenter-kiszolgáló egy másik portot figyel, konfigurálhatja azt a berendezés webalkalmazásban.
 2. **Metaadatok és teljesítményadatok összegyűjtése**:
-    - A készülék egy CIM-(CIM-) munkamenetet használ a Hyper-V virtuális gépek adatainak a Hyper-V-gazdagépről a 5985-es és 5986-es portokon való összegyűjtéséhez.
+    - A készülék egy CIM (CIM) munkamenet használatával gyűjt Hyper-V virtuális gépek adatait a Hyper-V-gazdagépről a 5985-es porton.
     - A készülék alapértelmezés szerint az 443-as porttal kommunikál a VMware virtuális gépek adatainak a vCenter Serverból való összegyűjtéséhez.
 3. **Adatküldés**: a készülék elküldi az összegyűjtött adatokat Azure Migrate kiszolgáló értékelésére és Azure Migrate kiszolgáló áttelepítésére az 443-as SSL-porton keresztül. A készülék az interneten keresztül tud csatlakozni az Azure-hoz, vagy használhatja a ExpressRoute nyilvános/Microsoft-partneri kapcsolattal is.
     - A teljesítményadatok esetében a készülék valós idejű kihasználtsági adatokat gyűjt.
@@ -81,19 +81,14 @@ A készülék a következő eljárással kommunikál a vCenter-kiszolgálókkal 
     - A kiszolgáló áttelepítése esetén a készülék elkezdi a virtuális gépekkel kapcsolatos adatok gyűjtését, és replikálja azt az Azure-ba.
 4. **Értékelés és Migrálás**: most már létrehozhat értékeléseket a készülék által gyűjtött metaadatokból Azure Migrate Server Assessment használatával. Emellett a VMware virtuális gépek áttelepítését is megkezdheti Azure Migrate kiszolgáló áttelepítésével az ügynök nélküli virtuális gép replikálásának előkészítéséhez.
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>Berendezések frissítése
 
 A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynökök frissülnek. Ez automatikusan megtörténik, mivel alapértelmezés szerint engedélyezve van az automatikus frissítés a készüléken. Az alapértelmezett beállítás módosításával manuálisan is frissítheti az ügynököket.
 
 Ha kikapcsolja az automatikus frissítést a beállításjegyzékben, állítsa a HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" kulcsot 0 (DWORD) értékre.
 
- 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tekintse át](migrate-appliance.md) a készülék támogatási mátrixát.
 

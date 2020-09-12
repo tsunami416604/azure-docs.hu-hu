@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254372"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462717"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával az Azure Stack Edge-eszközön lévő PersistentVolume
 
@@ -55,7 +55,10 @@ Készen áll egy állapot-nyilvántartó alkalmazás üzembe helyezésére az Az
 
 ## <a name="provision-a-static-pv"></a>Statikus PV kiépítése
 
-A PV statikus kiépítéséhez létre kell hoznia egy megosztást az eszközön. Az alábbi lépéseket követve kiépítheti az SMB-vagy NFS-megosztáshoz tartozó PV-t. 
+A PV statikus kiépítéséhez létre kell hoznia egy megosztást az eszközön. Az alábbi lépéseket követve kiépítheti az SMB-megosztást. 
+
+> [!NOTE]
+> Az ebben a útmutatóban használt példa nem működik az NFS-megosztásokkal. Az NFS-megosztások általában az Azure Stack Edge-eszközön, nem adatbázis-alkalmazásokkal is üzembe helyezhetők.
 
 1. Válassza ki, hogy szeretne-e peremhálózati megosztást vagy peremhálózati helyi megosztást létrehozni. Megosztás létrehozásához kövesse a [megosztás hozzáadása](azure-stack-edge-manage-shares.md#add-a-share) című témakör utasításait. Ügyeljen arra, hogy jelölje be a **megosztás Edge-számítással való használatának**jelölőnégyzetét.
 
@@ -71,7 +74,7 @@ A PV statikus kiépítéséhez létre kell hoznia egy megosztást az eszközön.
 
         ![Meglévő helyi megosztás csatlakoztatása a PV-hez](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. Jegyezze fel a megosztás nevét. A megosztás létrehozásakor a rendszer állandó kötet objektumot hoz létre a létrehozott SMB-vagy NFS-megosztásnak megfelelő Kubernetes-fürtben. 
+1. Jegyezze fel a megosztás nevét. A megosztás létrehozásakor a rendszer állandó kötet objektumot hoz létre a létrehozott SMB-megosztásnak megfelelő Kubernetes-fürtben. 
 
 ## <a name="deploy-mysql"></a>A MySQL üzembe helyezése
 
@@ -147,7 +150,7 @@ Az `kubectl` állapot-nyilvántartó alkalmazások központi telepítésének l�
               claimName: mysql-pv-claim
     ```
     
-2. Másolja és mentse fájlként egy olyan `mysql-pv.yml` mappába, ahová a fájlt mentette `mysql-deployment.yml` . Ahhoz, hogy használni lehessen a korábban létrehozott SMB-vagy NFS-megosztást `kubectl` , állítsa be a `volumeName` PVC-objektum mezőjét a megosztás nevére. 
+2. Másolja és mentse fájlként egy olyan `mysql-pv.yml` mappába, ahová a fájlt mentette `mysql-deployment.yml` . Ahhoz, hogy használni lehessen a korábban létrehozott SMB-megosztást `kubectl` , állítsa be a `volumeName` PVC-objektum mezőjét a megosztás nevére. 
 
     > [!NOTE] 
     > Győződjön meg arról, hogy a YAML-fájlok helyes behúzással rendelkeznek. A [YAML](http://www.yamllint.com/) az ellenőrzéshez és a mentéshez használhatja.
@@ -158,8 +161,8 @@ Az `kubectl` állapot-nyilvántartó alkalmazások központi telepítésének l�
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ Az `kubectl` állapot-nyilvántartó alkalmazások központi telepítésének l�
 
 ## <a name="verify-mysql-is-running"></a>Ellenőrizze, hogy fut-e a MySQL
 
-Az előző YAML-fájl egy olyan szolgáltatást hoz létre, amely lehetővé teszi, hogy a fürtben lévő Pod hozzáférjen az adatbázishoz. A szolgáltatás clusterIP: none beállításával a szolgáltatás DNS-neve közvetlenül a pod IP-címére oldható fel. Ez akkor optimális, ha csak egy Pod a szolgáltatás mögött van, és nem kívánja emelni a hüvelyek számát.
 
 Ha MySQL-t futtató Pod tárolón szeretne futtatni egy parancsot, írja be a következőt:
 
@@ -350,6 +352,6 @@ A PV már nem kötődik a PVC-hez, mert a PVC törölve lett. Mivel a rendszer a
     ![Helyi megosztás törlése a PV-hez](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tárolók dinamikus kiépítésének megismeréséhez lásd: [állapot-nyilvántartó alkalmazás üzembe helyezése dinamikus kiépítés Azure stack peremhálózati eszközön](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)

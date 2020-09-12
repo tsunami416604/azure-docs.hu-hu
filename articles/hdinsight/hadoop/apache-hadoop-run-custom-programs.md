@@ -1,19 +1,19 @@
 ---
 title: Egyéni MapReduce-programok futtatása – Azure HDInsight
 description: Mikor és hogyan futtathat egyéni Apache MapReduce-programokat az Azure HDInsight-fürtökön.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 8751a54393f310c1d5a77ccbfdb553ee3643f74a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1dcc2a944fc527e4cbc8c7c1072503377ecb5798
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080108"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505267"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Egyéni MapReduce programok futtatása
 
@@ -70,7 +70,7 @@ A leggyakoribb MapReduce-programok Java nyelven íródtak, és egy jar-fájlba v
 
     Ez a parancs a MapReduce-feladatot a FONALba küldi. A bemeneti fájl a `/example/data/sample.log` és a kimeneti könyvtár `/example/data/logoutput` . A bemeneti fájl és a kimeneti fájlok a fürt alapértelmezett tárolójában tárolódnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A C# és a MapReduce streaming használata Apache Hadoop HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [Java MapReduce-programok fejlesztése a HDInsight Apache Hadoop](apache-hadoop-develop-deploy-java-mapreduce-linux.md)

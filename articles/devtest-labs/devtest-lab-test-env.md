@@ -3,12 +3,12 @@ title: Azure DevTest Labs használata a virtuális gépek és a Pásti tesztelé
 description: Megtudhatja, hogyan használhatja a Azure DevTest Labst a virtuális gépek és a Péter tesztelési környezetével kapcsolatos forgatókönyvekhez.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272895"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299830"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Azure DevTest Labs használata a virtuális gépek és a Pásti tesztelési környezetekhez
 
@@ -46,7 +46,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
    | Feladat | Ismertetett témák |
    | --- | --- |
-   | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Megtudhatja, hogyan engedélyezheti az Azure Marketplace-lemezképek engedélyezési lehetőségeit, így csak a tesztelők számára kívánt rendszerképeket lehet kiválasztani.|
+   | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Megtudhatja, hogyan engedélyezheti az Azure Marketplace-lemezképeket, így csak a tesztelők számára kívánt rendszerképeket lehet kiválasztani.|
    | [Egyéni lemezkép létrehozása](devtest-lab-create-template.md) |Hozzon létre egy egyéni rendszerképet a szükséges szoftver előzetes telepítésével, így a tesztelők gyorsan létrehozhatnak egy virtuális gépet az egyéni rendszerkép használatával.|
    | [Tudnivalók a rendszerkép-előállítóról](./devtest-lab-faq.md#blog-post) |Tekintsen meg egy videót, amely leírja, hogyan kell beállítani és használni a rendszerkép-előállítót.|
 

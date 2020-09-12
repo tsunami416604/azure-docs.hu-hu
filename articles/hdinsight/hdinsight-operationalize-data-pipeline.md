@@ -1,19 +1,19 @@
 ---
 title: Működővé tenni adatelemzési folyamat – Azure
 description: Állítson be és futtasson egy olyan adatfolyamatot, amelyet új adatfeldolgozás aktivál, és rövid eredményeket állít elő.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082794"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504418"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -126,7 +126,7 @@ Ha a Oozie webkonzol segítségével szeretné megtekinteni a koordinátori és 
         hdfs dfs -put ./2017-01-FlightData.csv /example/data/flights/2017-01-FlightData.csv
         ```
 
-### <a name="create-tables"></a>Táblázatok létrehozása
+### <a name="create-tables"></a>Táblák létrehozása
 
 A mintaadatok mostantól elérhetők. A folyamat azonban két kaptár-táblázatot igényel a feldolgozáshoz, egyet a bejövő adatértékekhez (), egyet pedig `rawFlights` az összegzett adatértékekhez ( `flights` ). Hozza létre ezeket a táblákat a Ambari az alábbiak szerint.
 
@@ -594,7 +594,7 @@ Ha a folyamatot egy koordinátorral szeretné futtatni, folytassa a munkafolyama
     oozie job -config job.properties -run
     ```
 
-5. Ellenőrizze az állapotot a Oozie webkonzolon, ezúttal válassza a **koordinátori feladatok** fület, majd az **összes feladatot**.
+5. Ellenőrizze az állapotot a Oozie webkonzolon, ezúttal válassza a **koordinátori feladatok** fület, majd az  **összes feladatot**.
 
     ![Oozie webkonzol-koordinátori feladatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 
@@ -604,6 +604,6 @@ Ha a folyamatot egy koordinátorral szeretné futtatni, folytassa a munkafolyama
 
     Az ebben a listában szereplő műveletek a munkafolyamat egy olyan példányának felelnek meg, amely egy nap értékű adatot dolgoz fel, és az adott nap kezdetét a névleges idő jelzi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Apache Oozie dokumentációja](https://oozie.apache.org/docs/4.2.0/index.html)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022146"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613644"
 ---
 # <a name="scene-lighting"></a>Jelenet megvilágítása
 
@@ -70,7 +70,18 @@ Nincsenek további tulajdonságok.
 
 A fényforrások jelentős hatással vannak a renderelési teljesítményre. Körültekintően használhatja őket, és csak akkor, ha az alkalmazás igényli. Bármilyen statikus globális megvilágítási feltétel, beleértve a statikus irányú összetevőket is, az [Egyéni égbolt textúrával](sky.md)is megvalósítható, amely nem tartalmaz további renderelési költségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# LightComponentBase osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase osztály](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Anyagok](../../concepts/materials.md)
 * [Ég](sky.md)

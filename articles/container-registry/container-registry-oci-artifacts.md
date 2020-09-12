@@ -4,14 +4,14 @@ description: A nyílt Container Initiative (OCI) összetevők leküldése és le
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371052"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485003"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>OCI-összetevő leküldése és lekérése egy Azure Container Registry használatával
 
@@ -54,7 +54,7 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`a a Docker-ügyfél használatával állít be Azure Active Directory tokent a `docker.config` fájlban. Az egyéni hitelesítési folyamat befejezéséhez telepíteni kell a Docker-ügyfelet, és futnia kell rajta.
+> `az acr login` a a Docker-ügyfél használatával állít be Azure Active Directory tokent a `docker.config` fájlban. Az egyéni hitelesítési folyamat befejezéséhez telepíteni kell a Docker-ügyfelet, és futnia kell rajta.
 
 ## <a name="push-an-artifact"></a>Összetevő leküldése
 
@@ -150,7 +150,37 @@ az acr repository delete \
     --image samples/artifact:1.0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="example-build-docker-image-from-oci-artifact"></a>Példa: Docker-rendszerkép létrehozása a OCI-összetevőből
+
+A tárolók rendszerképének létrehozásához használható forráskód és bináris fájlok OCI-összetevőkként tárolhatók egy Azure Container registryben. Az [ACR-feladatok](container-registry-tasks-overview.md)létrehozási kontextusához hivatkozhat egy forrás-összetevőre. Ebből a példából megtudhatja, hogyan tárolhat egy Docker OCI-összetevőként, majd hogyan hivatkozhat az összetevőre egy tároló-rendszerkép létrehozásához.
+
+Hozzon létre például egy egysoros Docker:
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+Jelentkezzen be a cél tároló beállításjegyzékbe.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Hozzon létre és helyezzen el egy új OCI-összetevőt a cél beállításjegyzékbe a `oras push` parancs használatával. Ez a példa az összetevő alapértelmezett adathordozó-típusát állítja be.
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+Futtassa az az [ACR Build](/cli/azure/acr#az-acr-build) parancsot a Hello-World rendszerkép létrehozásához az új összetevő létrehozási kontextusa alapján:
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [a ORAS-könyvtárról](https://github.com/deislabs/oras/tree/master/docs), beleértve az összetevők jegyzékfájljának konfigurálását is
 * Tekintse meg a [OCI](https://github.com/opencontainers/artifacts) -összetevők tárházát, amely az új összetevő-típusokra vonatkozó információkat tartalmaz.

@@ -1,6 +1,6 @@
 ---
-title: Azure RTOS-támogatás
-description: Ismerje meg az Azure RTOS támogatását a IoT szolgáltatás Azure Security Centerjában.
+title: Az Azure RTOS biztonsági moduljának áttekintése
+description: További információ az Azure RTOS-támogatással és-megvalósítással kapcsolatos biztonsági modulról a IoT szolgáltatás Azure Security Center részeként.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/15/2020
+ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: af4579d25b94fc12f67cfc91d0f6a5af4b35c810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bcf98f503b0f0c8bf76435d9884297d5f53d65e6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096695"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514475"
 ---
-# <a name="azure-security-center-for-iot-security-solution-for-azure-rtos"></a>Azure Security Center az Azure RTOS IoT biztonsági megoldásához 
+# <a name="overview-security-module-for-azure-rtos-preview"></a>Áttekintés: biztonsági modul az Azure RTOS (előzetes verzió)
 
-A IoT biztonsági modul Azure Security Center átfogó biztonsági megoldást nyújt az Azure RTOS-eszközökhöz. Az Azure RTOS egy beépített biztonsági modullal rendelkezik, amely a valós idejű operációsrendszer-eszközök gyakori fenyegetéseit fedi le. 
+A IoT RTOS biztonsági moduljának Azure Security Center átfogó biztonsági megoldást nyújt az Azure RTOS-eszközökhöz. Az Azure RTOS mostantól a beépített Azure IoT biztonsági modullal rendelkezik, és a valós idejű operációsrendszer-eszközökön biztosít lefedettséget a gyakori fenyegetések és a lehetséges kártékony tevékenységek számára. 
 
 ![Azure Security Center IoT Azure-RTOS](./media/architecture/azure-rtos-security-monitoring.png)
 
 
-Az Azure RTOS-támogatással rendelkező IoT biztonsági modulhoz Azure Security Center a következő funkciókat kínálja: 
+Az Azure RTOS biztonsági modulja a következő funkciókat kínálja: 
 - Kártevő hálózati tevékenységek észlelése
 - Egyéni riasztási alapú, eszköz viselkedési viszonyítási
 - Az eszköz biztonsági higiéniájának javítása
@@ -47,16 +47,14 @@ A IoT ajánlott infrastruktúra-Azure Security Centerének kihasználásával ol
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Az Azure RTOS-eszközök védelmének megkezdése
 
-- Az Azure RTOS IoT biztonsági moduljának Azure Security Center ingyenes letöltést biztosít az eszközei számára. A IoT Cloud Service-hez készült Azure Security Center Azure-előfizetések esetében 30 napos próbaidőszakot biztosítunk. Az első lépésekhez töltse le az [Azure RTOS IoT biztonsági moduljának Azure Security Center](https://github.com/azure-rtos/iot-security-module-preview) . 
+Az Azure RTOS biztonsági modulja ingyenes letöltést biztosít az eszközei számára. A IoT Cloud Service-hez készült Azure Security Center Azure-előfizetések esetében 30 napos próbaidőszakot biztosítunk. Az első lépésekhez töltse le az [Azure RTOS biztonsági modulját](https://github.com/azure-rtos/iot-security-module-preview) . 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogy Azure Security Center az Azure RTOS-támogatás IoT. A következő cikkekből megtudhatja, hogyan kezdheti el az első lépéseket, és hogyan engedélyezheti IoT Hub biztonsági megoldását:
+Ebből a cikkből megismerheti az Azure RTOS szolgáltatás biztonsági modulját. Ha többet szeretne megtudni a biztonsági modulról és az első lépésekről, tekintse meg a következő cikkeket:
 
-- [A szolgáltatás előfeltételei](service-prerequisites.md)
-- [Bevezetés](getting-started.md)
-- [A megoldás konfigurálása](quickstart-configure-your-solution.md)
-- [A IoT Hub biztonságának engedélyezése](quickstart-onboard-iot-hub.md)
-- [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)
-- [Azure Security Center for IoT – biztonsági riasztások](concept-security-alerts.md)
+- [Az Azure RTOS IoT biztonsági moduljának fogalmak](concept-rtos-security-module.md)
+- [Gyors útmutató: Azure RTOS IoT biztonsági modul](quickstart-azure-rtos-security-module.md)
+
+

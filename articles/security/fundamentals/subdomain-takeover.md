@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: e378ffe00be9215c692a832e232fac7e866ab3c9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890824"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514611"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
@@ -27,27 +27,33 @@ Ez a cikk ismerteti az altartományok átvételének gyakori biztonsági kockáz
 
 ## <a name="what-is-subdomain-takeover"></a>Mi az altartomány átvétele?
 
-Az altartományok közötti átvételek gyakori, nagy súlyosságú fenyegetést jelentenek az olyan szervezetek számára, amelyek rendszeresen hoznak létre és törölnek sok erőforrást. Az altartományok átvétele akkor fordulhat elő, ha olyan DNS-rekorddal rendelkezik, amely egy kiépített Azure-erőforrásra mutat. Az ilyen DNS-rekordokat "lelógó DNS"-bejegyzéseknek is nevezzük. A CNAME rekordok különösen sebezhetők a fenyegetéssel szemben.
+Az altartományok közötti átvételek gyakori, nagy súlyosságú fenyegetést jelentenek az olyan szervezetek számára, amelyek rendszeresen hoznak létre és törölnek sok erőforrást. Az altartományok átvétele akkor fordulhat elő, ha olyan [DNS-rekorddal](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) rendelkezik, amely egy kiépített Azure-erőforrásra mutat. Az ilyen DNS-rekordokat "lelógó DNS"-bejegyzéseknek is nevezzük. A CNAME rekordok különösen sebezhetők a fenyegetéssel szemben. Az altartományok átvétele lehetővé teszi, hogy a rosszindulatú szereplők átirányítsák a szervezet tartománya számára a kártékony tevékenységeket végző helyekre irányuló forgalmat.
 
 Egy altartomány átvételének gyakori forgatókönyve:
 
-1. Létrejön egy webhely. 
+1. **LÉTREHOZÁSA**
 
-    Ebben a példában a `app-contogreat-dev-001.azurewebsites.net` .
+    1. Kiépít egy Azure-erőforrást a teljes tartománynevével (FQDN) `app-contogreat-dev-001.azurewebsites.net` .
 
-1. A rendszer hozzáadja a CNAME-bejegyzést a webhelyhez mutató DNS-bejegyzéshez. 
+    1. A DNS-zónában egy CNAME rekordot kell hozzárendelni azzal az altartománnyal, `greatapp.contoso.com` amely az Azure-erőforrásra irányítja a forgalmat.
 
-    Ebben a példában a következő felhasználóbarát név lett létrehozva: `greatapp.contoso.com` .
+1. **MEGSZÜNTETÉS**
 
-1. Néhány hónap elteltével a hely már nem szükséges, ezért a rendszer törli a megfelelő DNS-bejegyzés törlése **nélkül** . 
+    1. Az Azure-erőforrás megszűnik vagy törlődik, miután már nincs rá szükség. 
+    
+        Ezen a ponton a CNAME rekordot `greatapp.contoso.com` *should* el kell távolítani a DNS-zónából. Ha a CNAME rekord nem lett eltávolítva, akkor aktív tartományként van meghirdetve, de nem irányítja át a forgalmat egy aktív Azure-erőforráshoz. Ez a "lelógó" DNS-rekord definíciója.
 
-    A CNAME DNS-bejegyzés most "lóg".
+    1. A lógó altartomány `greatapp.contoso.com` már sebezhető, és egy másik Azure-előfizetéshez rendelt erőforráshoz rendelhető hozzá.
 
-1. Szinte azonnal a hely törlése után a fenyegetést jelentő színész felfedi a hiányzó helyet, és létrehozza a saját webhelyét a következő helyen: `app-contogreat-dev-001.azurewebsites.net` .
+1. **ÁTVÉTELE**
 
-    Most pedig a `greatapp.contoso.com` fenyegetést jelentő színész Azure-webhelyére irányuló forgalom, valamint a fenyegetést kezelő személy felügyeli a megjelenő tartalmat. 
+    1. A gyakran elérhető módszerek és eszközök használatával a fenyegetést jelentő színész felfedi a lógó altartományt.  
 
-    A rendszer kihasználta a DNS-t, és a contoso altartománya ("GreatApp") az altartomány átvételének áldozatává vált. 
+    1. A fenyegetést tartalmazó színész egy Azure-erőforrást is kiépít a korábban vezérelt erőforrással megegyező teljes tartománynévvel. Ebben a példában a `app-contogreat-dev-001.azurewebsites.net` .
+
+    1. A rendszer most átirányítja az altartományba küldött forgalmat `myapp.contoso.com` a rosszindulatú Actor erőforrására, ahol a tartalmat szabályozzák.
+
+
 
 ![Altartomány átvétele egy kiépített webhelyről](./media/subdomain-takeover/subdomain-takeover.png)
 
@@ -57,23 +63,91 @@ Egy altartomány átvételének gyakori forgatókönyve:
 
 Ha egy DNS-rekord olyan erőforrásra mutat, amely nem érhető el, a rekordot el kell távolítani a DNS-zónából. Ha még nem törölte, a "lelógó DNS" rekord, amely lehetővé teszi az altartományok átvételét.
 
-A kilógó DNS-bejegyzések révén a fenyegetést jelentő szereplők átvehetik a társított DNS-név irányítását egy rosszindulatú webhely vagy szolgáltatás üzemeltetéséhez. A szervezet altartományában található kártékony lapok és szolgáltatások a következőket okozhatják:
+A kilógó DNS-bejegyzések révén a fenyegetést jelentő szereplők átvehetik a társított DNS-név irányítását egy rosszindulatú webhely vagy szolgáltatás üzemeltetéséhez. A szervezet altartományán található kártékony lapok és szolgáltatások a következőket okozhatják:
 
 - **Az altartomány tartalmának elvesztése** – negatívan megnyomható, hogy a szervezet nem tudja védeni a tartalmát, valamint a márka sérülését és a megbízhatóság elvesztését.
 
 - **Cookie-k betakarítása a gyanútlan látogatóktól** – gyakori a webalkalmazások számára, hogy a munkamenet-cookie-kat az altartományokra (*. contoso.com) tegyék elérhetővé, ezért bármely altartomány elérheti őket. A fenyegetésekkel rendelkező szereplők az altartományok átvételével hozhatnak létre valódi keresett oldalt, megszerezhetik a gyanútlan felhasználókat a látogatásuk és a cookie-k (akár biztonságos cookie-k) betakarítására is. Gyakori tévhit, hogy az SSL-tanúsítványok használata megvédi a webhelyét és a felhasználók cookie-jait egy átvételből. Egy fenyegetést tartalmazó színész azonban használhatja a eltérített altartományt, hogy érvényes SSL-tanúsítványt kapjon és fogadjon. Az érvényes SSL-tanúsítványok hozzáférést biztosítanak számukra a cookie-k védelméhez, és tovább növelhetik a kártékony webhely vélt legitimitását.
 
-- **Adathalászat-kampányok** – az autentikus megjelenésű altartományok használhatók az adathalászat-kampányok során. Ez a kártékony webhelyekhez és az olyan MX-rekordokhoz is igaz, amelyek lehetővé tennék a veszélyforrások számára, hogy olyan e-maileket kapjanak, amelyek egy ismert biztonságos márka megbízható altartományára irányulnak.
+- **Adathalászat-kampányok** – az eredeti megjelenésű altartományok adathalászat-kampányokba is felhasználhatók. Ez a kártékony webhelyek és az olyan MX-rekordok esetében igaz, amelyek lehetővé tennék a veszélyforrások számára, hogy olyan e-maileket kapjanak, amelyek egy ismert biztonságos márka megbízható altartományára irányulnak.
 
-- **További kockázatok** – a kártékony webhelyek más klasszikus támadásokra is felhasználhatók, mint például az XSS, a CSRF, a CORS megkerülés és sok más.
+- **További kockázatok** – előfordulhat, hogy a rosszindulatú webhelyek más klasszikus támadásokkal, például az XSS-vel, a CSRF, a CORS megkerüléssel és egyebekkel is kiterjeszthetők.
 
 
 
-## <a name="preventing-dangling-dns-entries"></a>A DNS-bejegyzések lelógók megakadályozása
+## <a name="identify-dangling-dns-entries"></a>A lógó DNS-bejegyzések azonosítása
+
+A szervezeten belüli DNS-bejegyzések azonosításához használja a Microsoft GitHub által üzemeltetett PowerShell-eszközeit ["Get-DanglingDnsRecords"](https://aka.ms/DanglingDNSDomains).
+
+Ez az eszköz segíti az Azure-ügyfelek számára, hogy az előfizetések vagy bérlők számára létrehozott meglévő Azure-erőforráshoz tartozó CNAME-vel rendelkező tartományokat sorolja fel.
+
+Ha a CNAME fájlok más DNS-szolgáltatásokban vannak, és az Azure-erőforrásokra mutatnak, adjon meg egy bemeneti fájlban lévő CNAME adatokat az eszközhöz.
+
+Az eszköz támogatja az alábbi táblázatban felsorolt Azure-erőforrásokat. Az eszköz kinyeri vagy bemenetként veszi fel az összes bérlő CNAME értékét.
+
+
+| Szolgáltatás                   | Típus                                        | FQDNproperty                               | Példa                         |
+|---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
+| Azure Front Door          | Microsoft. Network/frontdoors                | Properties. cName                           | `abc.azurefd.net`               |
+| Azure Blob Storage        | Microsoft. Storage/storageaccounts           | Properties. primaryEndpoints. blob           | `abc. blob.core.windows.net`    |
+| Azure CDN                 | Microsoft. CDN/profilok/végpontok            | Properties. állomásnév                        | `abc.azureedge.net`             |
+| Nyilvános IP-címek       | Microsoft. Network/nyilvános IP         | Properties. dnsSettings. FQDN                | `abc.EastUs.cloudapp.azure.com` |
+| Azure Traffic Manager     | Microsoft. Network/trafficmanagerprofiles    | Properties. dnsConfig. FQDN                  | `abc.trafficmanager.net`        |
+| Azure Container Instance  | Microsoft. containerinstance/containergroups | Properties. Ip_cím. FQDN                  | `abc.EastUs.azurecontainer.io`  |
+| Azure API Management      | Microsoft. apimanagement/szolgáltatás             | Properties. hostnameConfigurations. hostName | `abc.azure-api.net`             |
+| Azure App Service         | Microsoft. Web/Sites                         | Properties. defaultHostName                 | `abc.azurewebsites.net`         |
+| Azure App Service – bővítőhely | Microsoft. Web/Sites/Slots                   | Properties. defaultHostName                 | `abc-def.azurewebsites.net`     |
+
+
+
+### <a name="prerequisites"></a>Előfeltételek
+
+Futtassa a lekérdezést olyan felhasználóként, aki rendelkezik a következőkkel:
+
+- legalább olvasói szintű hozzáférés az Azure-előfizetésekhez
+- olvasási hozzáférés az Azure Resource graphhoz
+
+Ha Ön a szervezete bérlője globális rendszergazdája, emelje ki a fiókját, hogy hozzáférjen az összes szervezet előfizetéséhez a [jogosultságszint-emelési hozzáférés az összes Azure-előfizetéshez és a felügyeleti csoportokhoz](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)című témakör útmutatása alapján.
+
+
+> [!TIP]
+> Az Azure Resource Graph szabályozási és lapozási korlátokat tartalmaz, amelyeket érdemes figyelembe vennie, ha nagy Azure-környezettel rendelkezik. [További](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) információ a nagyméretű Azure Resource-adatkészletek használatáról. 
+> 
+> Az eszköz előfizetési kötegek használatával kerülheti el ezeket a korlátozásokat.
+
+### <a name="run-the-script"></a>A szkript futtatása
+
+A parancsfájlnak két verziója van, mindkettő ugyanazokat a bemeneti paramétereket adja meg, és hasonló kimenetet hoz létre:
+
+|Script  |Tájékoztatás  |
+|---------|---------|
+|**Get-DanglingDnsRecordsPsCore.ps1**    |A Parallel mód csak a 7. PowerShell 7-es vagy újabb verziójában támogatott, máskülönben a soros üzemmódot fogja futtatni.|
+|**Get-DanglingDnsRecordsPsDesktop.ps1** |Csak a 6-nál alacsonyabb PowerShell-asztal/-verzió esetén támogatott, mivel ez a parancsfájl [Windows-munkafolyamatot](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview)használ.|
+
+További információt és a PowerShell-szkriptek letöltését a GitHubról: https://aka.ms/DanglingDNSDomains .
+
+## <a name="remediate-dangling-dns-entries"></a>A lógó DNS-bejegyzések szervizelése 
+
+Tekintse át a DNS-zónákat, és azonosítsa azokat a CNAME-rekordokat, amelyek le vannak tiltva vagy átkerültek. Ha az altartományok lelógó vagy átvétele megtörtént, távolítsa el a sebezhető altartományokat, és csökkentse a kockázatokat a következő lépésekkel:
+
+1. A DNS-zónából távolítsa el az összes olyan CNAME rekordot, amely az erőforrások teljes tartománynevére mutat, már nincs kiépítve.
+
+1. Ahhoz, hogy a forgalom a vezérlő erőforrásaihoz legyen irányítva, további erőforrásokat kell kiépítenie a lógó altartományok CNAME rekordjaiban megadott teljes tartománynévvel.
+
+1. Tekintse át az alkalmazás kódját az adott altartományokra való hivatkozáshoz, és frissítse a helytelen vagy elavult altartományokra mutató hivatkozásokat.
+
+1. Vizsgálja meg, hogy történt-e kompromisszum, és tegye meg a szervezete incidens-válaszának eljárásait. A probléma kivizsgálásával kapcsolatos tippek és ajánlott eljárások alább találhatók.
+
+    Ha az alkalmazás logikája olyan titkokat tartalmaz, mint például a OAuth hitelesítő adatok elküldése a lógó altartományba, vagy az adatvédelmi szempontból bizalmas adatokat a lelógó altartományoknak küldték el, előfordulhat, hogy az adatok harmadik fél számára elérhetővé válnak.
+
+1. Ismerje meg, hogy a CNAME rekord miért nem lett eltávolítva a DNS-zónából az erőforrás megszüntetése után, és tegye meg a szükséges lépéseket annak biztosítására, hogy a DNS-rekordok megfelelően frissüljenek az Azure-erőforrások jövőbeli kiépítésekor.
+
+
+## <a name="prevent-dangling-dns-entries"></a>Lelógó DNS-bejegyzések megakadályozása
 
 Győződjön meg arról, hogy a szervezete olyan folyamatokat hozott létre, amelyekkel megelőzhető a DNS-bejegyzések bevezetése, és az eredményül kapott altartomány-átvételek a biztonsági program kulcsfontosságú részét
 
-A jelenleg elérhető megelőző intézkedések alább láthatók.
+Néhány Azure-szolgáltatás olyan funkciókat kínál, amelyek a megelőző intézkedések létrehozásában nyújtanak segítséget. A probléma megelőzésének egyéb módszereit a szervezete ajánlott eljárásain vagy szabványos működési eljárásain keresztül kell létrehozni.
 
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias-rekordok használata
@@ -122,110 +196,6 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
 
     - Az Azure-beli teljes tartománynevek (FQDN) végpontok és az alkalmazás tulajdonosai szolgáltatás-katalógus karbantartása. A szolgáltatás-katalógus létrehozásához futtassa az alábbi Azure Resource Graph lekérdezési parancsfájlt. Ez a szkript a teljes tartománynév-végponti információit, amelyekhez hozzáfér, és egy CSV-fájlba exportálja azokat. Ha rendelkezik hozzáféréssel a bérlő összes előfizetéséhez, a szkript az alábbi minta parancsfájlban látható összes előfizetést figyelembe veszi. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, szerkessze a szkriptet az ábrán látható módon.
 
-        >[!IMPORTANT]
-        > **Engedélyek** – a lekérdezés futtatása olyan felhasználóként, aki hozzáfér az összes Azure-előfizetéséhez. 
-        >
-        > **Korlátozások** – az Azure Resource Graph szabályozási és lapozási korlátokat tartalmaz, amelyeket érdemes figyelembe vennie, ha nagy Azure-környezettel rendelkezik. [További](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) információ a nagyméretű Azure Resource-adatkészletek használatáról. A következő minta-parancsfájl előfizetés-kötegeket használ a korlátozások elkerüléséhez.
-
-        ```powershell
-        
-            # Fetch the full array of subscription IDs.
-            $subscriptions = Get-AzSubscription
-
-            $subscriptionIds = $subscriptions.Id
-                    # Output file path and names
-                    $date = get-date
-                    $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
-                    $fdate #log to console
-                    $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
-                    $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
-                    $fpath = $rpath + $rname
-                    $fpath #This is the output file of FQDN report.
-
-            # queries
-            $allTypesFqdnsQuery = "where type in ('microsoft.network/frontdoors',
-                                    'microsoft.storage/storageaccounts',
-                                    'microsoft.cdn/profiles/endpoints',
-                                    'microsoft.network/publicipaddresses',
-                                    'microsoft.network/trafficmanagerprofiles',
-                                    'microsoft.containerinstance/containergroups',
-                                    'microsoft.web/sites',
-                                    'microsoft.web/sites/slots')
-                        | extend FQDN = case(
-                            type =~ 'microsoft.network/frontdoors', properties['cName'],
-                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
-                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
-                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
-                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
-                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
-                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
-                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
-                            '')
-                        | project id, type, name, FQDN
-                        | where isnotempty(FQDN)";
-
-            $apiManagementFqdnsQuery = "where type =~ 'microsoft.apimanagement/service'
-                        | project id, type, name,
-                            gatewayUrl=parse_url(tostring(properties['gatewayUrl'])).Host,
-                            portalUrl =parse_url(tostring(properties['portalUrl'])).Host,
-                            developerPortalUrl = parse_url(tostring(properties['developerPortalUrl'])).Host,
-                            managementApiUrl = parse_url(tostring(properties['managementApiUrl'])).Host,
-                            gatewayRegionalUrl = parse_url(tostring(properties['gatewayRegionalUrl'])).Host,
-                            scmUrl = parse_url(tostring(properties['scmUrl'])).Host,
-                            additionaLocs = properties['additionalLocations']
-                        | mvexpand additionaLocs
-                        | extend additionalPropRegionalUrl = tostring(parse_url(tostring(additionaLocs['gatewayRegionalUrl'])).Host)
-                        | project id, type, name, FQDN = pack_array(gatewayUrl, portalUrl, developerPortalUrl, managementApiUrl, gatewayRegionalUrl, scmUrl,             
-                            additionalPropRegionalUrl)
-                        | mvexpand FQDN
-                        | where isnotempty(FQDN)";
-
-            $queries = @($allTypesFqdnsQuery, $apiManagementFqdnsQuery);
-
-            # Paging helper cursor
-            $Skip = 0;
-            $First = 1000;
-
-            # If you have large number of subscriptions, process them in batches of 2,000.
-            $counter = [PSCustomObject] @{ Value = 0 }
-            $batchSize = 2000
-            $response = @()
-
-            # Group the subscriptions into batches.
-            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
-
-            foreach($query in $queries)
-            {
-                # Run the query for each subscription batch with paging.
-                foreach ($batch in $subscriptionsBatch)
-                { 
-                    $Skip = 0; #Reset after each batch.
-
-                    $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
-                    else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
-                    $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
-                }
-            }
-
-            # View the completed results of the query on all subscriptions
-            $response | Export-Csv -Path $fpath -Append  
-
-        ```
-
-        A típusok és `FQDNProperty` értékeik listája az előző erőforrás-gráf lekérdezésben megadott módon:
-
-        |Erőforrás neve  | `<ResourceType>`  | `<FQDNproperty>`  |
-        |---------|---------|---------|
-        |Azure Front Door|Microsoft. Network/frontdoors|Properties. cName|
-        |Azure Blob Storage|Microsoft. Storage/storageaccounts|Properties. primaryEndpoints. blob|
-        |Azure CDN|Microsoft. CDN/profilok/végpontok|Properties. állomásnév|
-        |Nyilvános IP-címek|Microsoft. Network/nyilvános IP|Properties. dnsSettings. FQDN|
-        |Azure Traffic Manager|Microsoft. Network/trafficmanagerprofiles|Properties. dnsConfig. FQDN|
-        |Azure Container Instance|Microsoft. containerinstance/containergroups|Properties. Ip_cím. FQDN|
-        |Azure API Management|Microsoft. apimanagement/szolgáltatás|Properties. hostnameConfigurations. hostName|
-        |Azure App Service|Microsoft. Web/Sites|Properties. defaultHostName|
-        |Azure App Service – bővítőhely|Microsoft. Web/Sites/Slots|Properties. defaultHostName|
-
 
 - **Szervizelési eljárások létrehozása:**
     - A DNS-bejegyzések beolvasásakor a csapatnak meg kell vizsgálnia, hogy történt-e kompromisszum.
@@ -233,7 +203,7 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
     - Törölje a DNS-rekordot, ha már nincs használatban, vagy mutasson a szervezete tulajdonában lévő megfelelő Azure-erőforrásra (FQDN).
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a kapcsolódó szolgáltatásokról és az Azure-beli szolgáltatásokkal szembeni védelemről, tekintse meg a következő lapokat.
 

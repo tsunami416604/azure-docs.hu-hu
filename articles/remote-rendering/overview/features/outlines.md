@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997523"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613699"
 ---
 # <a name="outline-rendering"></a>Vázlat renderelése
 
@@ -23,13 +23,13 @@ A körvonal tulajdonságai globális beállítások. A tagolást használó öss
 
 `OutlineSettings`Az osztály a globális vázlat tulajdonságaival kapcsolatos beállításokat tartalmazza. A következő tagokat teszi elérhetővé:
 
-| Paraméter      | Típus    | Leírás                                             |
+| Paraméter      | Típus    | Description                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Color`          | Color4Ub | A körvonal rajzolásához használt szín Az alfa-rész figyelmen kívül lesz hagyva.         |
 | `PulseRateHz`    | float   | A szerkezeti rezgések másodpercenkénti száma|
 | `PulseIntensity` | float   | A tagolási impulzus hatásának intenzitása A teljes lüktetés esetén 0,0 és 1,0 közötti értéknek kell lennie. Az intenzitás implicit módon beállítja a vázlat minimális opacitását `MinOpacity = 1.0 - PulseIntensity` . |
 
-![A (z ](./media/outlines.png) `color` ) sárga (balra) és a magenta (Közép) és a `pulseIntensity` 0 – 0,8 (jobb) közötti érték módosításának hatását ismerteti.
+![A különböző tagolási paraméterekkel háromszor megjelenített objektum ](./media/outlines.png) a (z `color` ) sárga (balra) és a magenta (Közép) és a `pulseIntensity` 0 – 0,8 (jobbra) közötti érték módosításának hatását eredményezi.
 
 ## <a name="example"></a>Példa
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>Teljesítmény
 
 A vázlatos renderelés jelentős hatással lehet a renderelési teljesítményre. Ez a hatás az adott keret kiválasztott és nem kijelölt objektumai közötti képernyő-térbeli kapcsolattól függ.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# RemoteManager. OutlineSettings tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C++ RemoteManager:: OutlineSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>Következő lépések
 
