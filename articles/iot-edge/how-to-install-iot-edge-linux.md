@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 09/04/2020
 ms.author: kgremban
-ms.openlocfilehash: 4078d7e6c20571db2387cfd138ecb325fc3469e7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 21fde76dc5791030a7afa280e00642119cbe464c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022088"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660045"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken
 
@@ -25,7 +25,7 @@ Ez a cikk a Azure IoT Edge futtatókörnyezet x64-, ARM32-vagy ARM64-alapú Linu
 > [!NOTE]
 > A linuxos szoftverek tárházában lévő csomagokat az egyes csomagokban található licencfeltételek (/usr/share/doc/*-csomag neve*) alapján kell megvizsgálni. A csomag használata előtt olvassa el a licencfeltételeket. A csomag telepítése és használata jelenti a jelen feltételek elfogadását. Ha nem fogadja el a licencfeltételeket, ne használja a csomagot.
 
-## <a name="install-iot-edge-and-container-runtimes"></a>IoT Edge-és tároló-futtatókörnyezetek telepítése
+## <a name="install-container-runtime-and-iot-edge"></a>A Container Runtime és a IoT Edge telepítése
 
 Az alábbi részekben a Azure IoT Edge Runtime legújabb verzióját telepítheti az eszközre.
 
@@ -272,7 +272,7 @@ Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. 
 
 Az erőforrás által korlátozott eszközök esetében erősen ajánlott a *OptimizeForPerformance* környezeti változót *hamis* értékre állítani a [hibaelhárítási útmutató](troubleshoot.md)utasításai szerint.
 
-Ha a hálózatban proxykiszolgáló található, kövesse az [IoT Edge eszköz konfigurálása a proxykiszolgálón keresztül történő kommunikációhoz](how-to-configure-proxy-support.md)című témakör lépéseit.
+Ha az eszköz nem tud csatlakozni a IoT Hubhoz, és a hálózat proxykiszolgálót tartalmaz, kövesse az [IoT Edge eszköz konfigurálása a proxykiszolgálón keresztül történő kommunikációhoz](how-to-configure-proxy-support.md)című szakasz lépéseit.
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>A Linux-kernel ellenőrzése a Moby kompatibilitás érdekében
 
@@ -290,13 +290,15 @@ Ez a parancs egy részletes kimenetet tartalmaz, amely a Moby Runtime által has
 
 Az ebben a szakaszban ismertetett lépéseket követve telepítheti a Azure IoT Edge futtatókörnyezet adott verzióját, amely nem érhető el a rendszeren `apt-get install` . A Microsoft-csomagok listája csak korlátozott számú közelmúltbeli verziót és azok alverzióit tartalmazza, ezért ezek a lépések mindazok számára szükségesek, akik egy régebbi verziót vagy egy kiadásra jelölt verziót kívánnak telepíteni.
 
-A curl-parancsok használatával közvetlenül a IoT Edge GitHub-tárházból is megcélozhatja az összetevők fájljait. A következő lépésekkel telepítheti a libiothsm és a IoT Edge biztonsági démont. Telepítse a Moby Engine-t és a CLI-t a [Container Runtime telepítése](#install-a-container-runtime) szakasz lépéseit követve.
+A curl-parancsok használatával közvetlenül a IoT Edge GitHub-tárházból is megcélozhatja az összetevők fájljait. A következő lépésekkel telepítheti a libiothsm és a IoT Edge biztonsági démont.
 
-1. Navigáljon a [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokhoz, és keresse meg a célként használni kívánt kiadási verziót.
+1. Készítse elő az eszközt egy telepített tároló motorral. Ha nem rendelkezik tároló-motorral, kövesse a Microsoft adattár regisztrálásához és a Moby telepítéséhez szükséges lépéseket a jelen cikk [tároló-futtatókörnyezet telepítése és IoT Edge](#install-container-runtime-and-iot-edge) szakaszában.
 
-2. Bontsa ki az **eszközök** szakaszt az adott verzióhoz.
+2. Navigáljon a [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokhoz, és keresse meg a célként használni kívánt kiadási verziót.
 
-3. Minden kiadásnak új fájlokkal kell rendelkeznie a IoT Edge biztonsági démonhoz és a hsmlib. Ezen összetevők frissítéséhez használja az alábbi parancsokat.
+3. Bontsa ki az **eszközök** szakaszt az adott verzióhoz.
+
+4. Minden kiadásnak új fájlokkal kell rendelkeznie a IoT Edge biztonsági démonhoz és a hsmlib. Ezen összetevők frissítéséhez használja az alábbi parancsokat.
 
    1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **libiothsm-STD-** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
 

@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640123"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660353"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -24,7 +24,7 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 --- | ---
 **Értékelési korlátok** | Akár 35 000 fizikai kiszolgálót is felfedezheti és felderítheti egyetlen [Azure Migrate projektben](migrate-support-matrix.md#azure-migrate-projects).
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A fizikai kiszolgálókon kívül egy projekt is tartalmazhatja a VMware virtuális gépeket és a Hyper-V virtuális gépeket, az egyes alkalmazásokra vonatkozó értékelési korlátokig.
-**Felderítés** | A Azure Migrate berendezés akár 1000 fizikai kiszolgálót is képes észlelni.
+**Felfedezés** | A Azure Migrate berendezés akár 1000 fizikai kiszolgálót is képes észlelni.
 **Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
@@ -34,8 +34,8 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Fizikai kiszolgáló üzembe helyezése**       | A fizikai kiszolgáló önálló vagy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | **Windows:** Tartományi fiókot használjon a tartományhoz csatlakoztatott gépekhez, valamint egy helyi fiókot olyan gépekhez, amelyek nem csatlakoznak a tartományhoz. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: távfelügyeleti felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. <br/> Másik lehetőségként ellenőrizze, hogy a szükséges funkciók a következő parancsokkal vannak-e beállítva. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (ha a/usr/sbin/fdisk nincs jelen) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
-| **Operációs rendszer** | A Windows Server 2003 és a SUSE Linux kivételével az összes operációs rendszer kiértékelése áttelepítésre lehetséges. |
+| **Engedélyek**           | **Windows:** Tartományhoz csatlakozó gépeknél használjon tartományi fiókot, tartományhoz nem csatlakozó gépeknél pedig helyit. A felhasználói fiókot ezekhez a csoportokhoz kell hozzáadni: távfelügyeleti felhasználók, teljesítményfigyelő felhasználók és teljesítménynapló-felhasználók. <br/><br/> **Linux:** Rendszergazdai fiókra van szüksége a felderíteni kívánt Linux-kiszolgálókon. <br/> Másik lehetőségként ellenőrizze, hogy a szükséges funkciók a következő parancsokkal vannak-e beállítva. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (ha a/usr/sbin/fdisk nincs jelen) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
+| **Operációs rendszer** | Az összes Windows-és Linux-operációs rendszer kiértékelése áttelepítésre lehetséges. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei

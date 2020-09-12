@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331264"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657153"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Felhasználói bejelentkezési beállítások Azure AD Connect
 Azure Active Directory (Azure AD) kapcsolat lehetővé teszi, hogy a felhasználók ugyanazzal a jelszóval jelentkezzenek be a felhőbe és a helyszíni erőforrásokra. Ez a cikk az egyes identitási modellekkel kapcsolatos főbb fogalmakat ismerteti, így kiválaszthatja az Azure AD-ba való bejelentkezéshez használni kívánt identitást.
@@ -47,9 +47,9 @@ Az Azure AD a következő hitelesítési módszereket támogatja:
    * **Átmenő hitelesítés (PTA)** – ez a beállítás hasonló a jelszó-kivonatolási szinkronizáláshoz, de egyszerű jelszó-érvényesítést biztosít a helyszíni szoftveres ügynökökkel olyan szervezetek számára, amelyek erős biztonsági és megfelelőségi szabályzatokkal rendelkeznek.
 * **Összevont hitelesítés** – ha ezt a hitelesítési módszert választja, az Azure ad kikapcsolja a hitelesítési folyamatot egy különálló megbízható hitelesítési rendszerre, például AD FS vagy egy harmadik féltől származó összevonási rendszerre, hogy érvényesítse a felhasználó bejelentkezését. 
 
-A legtöbb szervezet számára, amely csak az Office 365, az SaaS-alkalmazások és más Azure AD-alapú erőforrások felhasználói bejelentkezését szeretné engedélyezni, javasoljuk, hogy az alapértelmezett jelszó-kivonatoló szinkronizálási beállítást.
+A legtöbb szervezet számára, amely csak a felhasználói bejelentkezést szeretné engedélyezni Microsoft 365, SaaS-alkalmazásokhoz és más Azure AD-alapú erőforrásokhoz, javasoljuk, hogy az alapértelmezett jelszó-kivonatoló szinkronizálási beállítást.
  
-A hitelesítési módszer kiválasztásával kapcsolatos részletes információkért lásd: [a megfelelő hitelesítési módszer kiválasztása a Azure Active Directory Hybrid Identity megoldáshoz](../../security/fundamentals/choose-ad-authn.md)
+A hitelesítési módszer kiválasztásával kapcsolatos részletes információkért lásd: [a megfelelő hitelesítési módszer kiválasztása a Azure Active Directory Hybrid Identity megoldáshoz](./choose-ad-authn.md)
 
 ### <a name="password-hash-synchronization"></a>Jelszókivonat szinkronizálása
 A jelszó-kivonatolási szinkronizálással a felhasználói jelszavak kivonatait a helyszíni Active Directoryról az Azure AD-be szinkronizálja a rendszer. Ha a jelszavakat módosítják vagy alaphelyzetbe állítják, a rendszer azonnal szinkronizálja az új jelszó-kivonatokat az Azure AD-be, hogy a felhasználók mindig ugyanazt a jelszót használják a felhőalapú erőforrásokhoz és a helyszíni erőforrásokhoz. A jelszavakat a rendszer soha nem továbbítja az Azure AD-nek, vagy az Azure AD-ben tárolja tiszta szövegben. A jelszó-kivonatolási szinkronizálást és a jelszó-visszaírást is használhatja az önkiszolgáló jelszó-visszaállítás engedélyezéséhez az Azure AD-ben.
@@ -139,12 +139,12 @@ Az Azure AD bejelentkezési oldala felsorolja a helyszíni Active Directoryhoz d
 A frissítés gombra kattintva újra beolvashatja az egyéni tartományok legújabb állapotát az Azure AD-ből.
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>Az egyszerű felhasználónévhez tartozó attribútum kiválasztása az Azure AD-ben
-A userPrincipalName attribútum azt az attribútumot használja, amelyet a felhasználók az Azure AD-be és az Office 365-be való bejelentkezéskor használnak. Ellenőrizze az Azure AD-ben használt tartományokat (más néven UPN-utótagokat) a felhasználók szinkronizálása előtt.
+A userPrincipalName attribútum azt az attribútumot használja, amelyet a felhasználók az Azure AD-be és Microsoft 365ba való bejelentkezéskor használnak. Ellenőrizze az Azure AD-ben használt tartományokat (más néven UPN-utótagokat) a felhasználók szinkronizálása előtt.
 
 Határozottan javasoljuk, hogy tartsa meg az alapértelmezett attribútumot a userPrincipalName. Ha ez az attribútum nem irányítható, és nem ellenőrizhető, akkor lehetséges, hogy egy másik attribútumot (például e-mailt) választ a bejelentkezési azonosítót birtokló attribútumként. Ez más néven a másodlagos azonosító. A másodlagos azonosító attribútum értékének az RFC 822 szabványt kell követnie. Bejelentkezési megoldásként használhat egy alternatív azonosítót is a jelszó egyszeri bejelentkezéssel és az összevonási egyszeri bejelentkezéssel.
 
 > [!NOTE]
-> Egy másik azonosító használata nem kompatibilis az Office 365-munkaterhelésekkel. További információt a [Másodlagos bejelentkezési azonosító beállítása](https://technet.microsoft.com/library/dn659436.aspx) című cikkben talál.
+> Egy másik azonosító használata nem kompatibilis az összes Microsoft 365 munkaterheléssel. További információt a [Másodlagos bejelentkezési azonosító beállítása](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) című cikkben talál.
 >
 >
 
@@ -190,6 +190,6 @@ A **felhasználói bejelentkezés** lapon válassza ki a kívánt felhasználói
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).
 - További információ a [Azure ad Connect kialakításával kapcsolatos fogalmakról](plan-connect-design-concepts.md).

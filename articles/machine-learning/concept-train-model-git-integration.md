@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144821"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661788"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -41,7 +41,7 @@ A git parancssori felület használatáról itt [talál](https://guides.github.c
 
 Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat azt a segítségével ellenőrizze, hogy a fájlok egy git-tárházban tárolódnak-e. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
 
-| Tulajdonság | Az érték beolvasásához használt git-parancs | Leírás |
+| Tulajdonság | Az érték beolvasásához használt git-parancs | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
@@ -98,7 +98,7 @@ A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 
 ### <a name="python-sdk"></a>Python SDK
 
-A betanítási Futtatás elküldése után a rendszer egy [futtatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) objektumot ad vissza. Az `properties` objektum attribútuma tartalmazza a naplózott git-információkat. A következő kód például lekéri a véglegesítő kivonatot:
+A betanítási Futtatás elküldése után a rendszer egy [futtatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) objektumot ad vissza. Az `properties` objektum attribútuma tartalmazza a naplózott git-információkat. A következő kód például lekéri a véglegesítő kivonatot:
 
 ```python
 run.properties['azureml.git.commit']

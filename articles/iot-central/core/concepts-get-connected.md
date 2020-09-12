@@ -7,15 +7,17 @@ ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
+manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+- device-developer
+ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337092"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018186"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -147,10 +149,10 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Elsődleges kulcs csoportosítása SAS-IoT-Devices beléptetési csoportból":::
 
-1. A [DPS-keygen](https://www.npmjs.com/package/dps-keygen) eszközzel előállíthatja az eszköz sas-kulcsait. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítóinak kisbetűvel kell rendelkezniük:
+1. Az `az iot central device compute-device-key` eszköz sas-kulcsainak létrehozásához használja az parancsot. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítóinak kisbetűvel kell rendelkezniük:
 
-    ```cmd
-    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```azurecli
+    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
     ```
 
 1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy generált eszköz SAS-kulccsal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
@@ -195,12 +197,12 @@ IoT Central a következő igazolási mechanizmusokat támogatja az egyéni regis
 - **Szimmetrikus kulcs igazolása:** A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz a DPS-példánnyal való hitelesítésére. Szimmetrikus kulcsokat használó egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolat** lapját, válassza az **Egyéni regisztráció** lehetőséget a kapcsolódási módszerként, valamint a **közös hozzáférésű aláírást (SAS)** mechanizmusként. Adja meg a Base64 kódolású elsődleges és másodlagos kulcsot, és mentse a módosításokat. Az eszköz csatlakoztatásához használja az **azonosító hatókörét**, az **eszköz azonosítóját**és az elsődleges vagy a másodlagos kulcsot.
 
     > [!TIP]
-    > A teszteléshez az **OpenSSL** használatával Base64 kódolású kulcsokat hozhatja elő:`openssl rand -base64 64`
+    > A teszteléshez az **OpenSSL** használatával Base64 kódolású kulcsokat hozhatja elő: `openssl rand -base64 64`
 
 - **X. 509 tanúsítványok:** X. 509 tanúsítvánnyal rendelkező egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolódása** lapot, válassza az **Egyéni regisztráció** lehetőséget a kapcsolódási módszerként, valamint a **tanúsítványok (X. 509)** módszert. Az egyéni beléptetési bejegyzésekhez használt eszközök tanúsítványainak követelménye, hogy a kiállító és a tulajdonos CN az eszköz AZONOSÍTÓját adja meg.
 
     > [!TIP]
-    > A teszteléshez használhatja [Az Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) -t a Node.jsszámára egy önaláírt tanúsítvány létrehozásához:`node create_test_cert.js device "mytestdevice"`
+    > A teszteléshez használhatja [Az Azure IoT Device kiépítési eszköz SDK ](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) -t a Node.jsszámára egy önaláírt tanúsítvány létrehozásához: `node create_test_cert.js device "mytestdevice"`
 
 - **Platformmegbízhatósági modul (TPM) igazolása:** A [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) a hardveres biztonsági modul típusa. Az eszköz csatlakoztatásának egyik legbiztonságosabb módja a TPM használata. Ez a cikk feltételezi, hogy diszkrét, belső vezérlőprogramot vagy integrált TPM-t használ. A szoftveresen emulált TPM a prototípus-készítéshez és a teszteléshez megfelelőek, de nem biztosítják ugyanazt a biztonsági szintet, mint a diszkrét, belső vezérlőprogram vagy integrált TPM. Ne használja éles környezetben a szoftver TPM. TPM-t használó egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolódása** lapot, válassza az **Egyéni regisztráció** a kapcsolódási módszerként és a **TPM** mechanizmusként lehetőséget. Adja meg a TPM-záradék kulcsát, és mentse az eszköz csatlakoztatási adatait.
 
@@ -297,7 +299,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, az Azure IoT Edg
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

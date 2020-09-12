@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230381"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651642"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -173,7 +173,9 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 > [!WARNING]
 > Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
 
-* **Azure Portal**: Ha közvetlenül a munkaterületet tekinti meg az SDK-ból vagy a portálról, akkor nem fogja tudni megtekinteni a normál **áttekintő** oldalt a bővítmény előfizetési adataival. Nem válthat másik munkaterületre is. Ha meg kell tekintenie egy másik munkaterületet, lépjen közvetlenül a [Azure Machine learning studióra](https://ml.azure.com) , és keresse meg a munkaterület nevét.
+* **Azure Portal**: 
+  * Ha az SDK-ból vagy a Azure Portalból közvetlenül a munkaterületre lép, nem tekintheti meg a szabványos **Áttekintés** lapot, amely előfizetési adatokat tartalmaz a bővítményben. Ebben a forgatókönyvben nem válthat másik munkaterületre is. Ha egy másik munkaterületet szeretne megtekinteni, lépjen közvetlenül a [Azure Machine learning studióra](https://ml.azure.com) , és keresse meg a munkaterület nevét.
+  * Minden eszköz (adatkészletek, kísérletek, számítások stb.) csak [Azure Machine learning Studióban](https://ml.azure.com)érhető el. *Nem* érhetők el a Azure Portal.
 
 * A **Azure Machine learning Studio webportálon támogatott böngészők**: javasoljuk, hogy az operációs rendszerével kompatibilis legújabb böngészőt használja. A következő böngészők támogatottak:
   * Microsoft Edge (az új Microsoft Edge, legújabb verzió. Nem a Microsoft Edge örökölt)
@@ -239,7 +241,7 @@ Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
     1. Az **adatkészlet-figyelők** lapon válassza a kísérlet hivatkozást a Futtatás állapotának vizsgálatához.  Ez a hivatkozás a tábla jobb szélén található.
     1. Ha a Futtatás sikeresen befejeződött, ellenőrizze az illesztőprogram-naplókat, hogy hány mérőszám lett létrehozva, vagy hogy van-e figyelmeztető üzenet.  A kísérletre való kattintás után keresse meg az illesztőprogram-naplókat a **kimenet + naplók** lapon.
 
-* Ha az SDK `backfill()` -függvény nem hozza ki a várt kimenetet, előfordulhat, hogy egy hitelesítési probléma okozza.  Amikor létrehozza a számítást, hogy átadja ezt a függvényt, ne használja `Run.get_context().experiment.workspace.compute_targets` .  Ehelyett használja a [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) , például az alábbiakat a függvénybe beadott számítási számítás létrehozásához `backfill()` : 
+* Ha az SDK `backfill()` -függvény nem hozza ki a várt kimenetet, előfordulhat, hogy egy hitelesítési probléma okozza.  Amikor létrehozza a számítást, hogy átadja ezt a függvényt, ne használja `Run.get_context().experiment.workspace.compute_targets` .  Ehelyett használja a [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) , például az alábbiakat a függvénybe beadott számítási számítás létrehozásához `backfill()` : 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -294,7 +296,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Az Azure ML a TensorFlow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy az alapvető keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
  
     Az Azure ML által karbantartott Docker-rendszerképek és azok tartalma [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers)láthatók.
-    A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)listájában találhatók meg.
+    A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks)listájában találhatók meg.
 
     > [!Note]
     > Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
@@ -303,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * A **Horovod le lett**állítva: a legtöbb esetben, ha "AbortedError: Horovod" állapotba került, akkor ez a kivétel azt jelenti, hogy a Horovod leállítását okozó egyik folyamat egy mögöttes kivételt észlelt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs` . Elosztott képzés esetén a naplók neve utótaggal van ellátva, `_rank` hogy könnyebben megkülönböztesse a naplókat. A Horovod leállítását okozó pontos hiba megtalálásához folytassa az összes naplófájlt, és keresse meg a `Traceback` driver_log fájlok végén található fájlt. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
 
-* A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
+* A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
 
     Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
 
@@ -337,6 +339,8 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
+ 
+* Az **előrejelzési R2 pontszáma mindig nulla**: Ez a probléma akkor fordul elő, ha a megadott betanítási adatsorozatban az utolsó `n_cv_splits`  +  `forecasting_horizon` adatpontok esetében azonos érték szerepel. Ha ez a minta várható az idősorozatban, átválthatja az elsődleges metrikát normalizált, legfelső szintű négyzetes hibára.
  
 * **TensorFlow**: az SDK-ból származó 1.5.0-es verziótól kezdve az automatikus gépi tanulás nem telepíti a TensorFlow-modelleket alapértelmezés szerint. A TensorFlow telepítéséhez és az automatikus ML-kísérletekhez való használatához telepítse a TensorFlow = = 1.12.0-et a CondaDependecies-n keresztül. 
  

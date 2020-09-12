@@ -3,12 +3,12 @@ title: Azure-beli virtuális gép biztonsági mentése a virtuális gép beáll�
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy egyedi Azure-beli vagy több Azure-beli virtuális gépről a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: a8d1c29c894663da76b5882ef7ba249356ba3e6d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531846"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667519"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
 
@@ -76,9 +76,9 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Biztonsági mentés a Recovery Services-tárból
 
-A cikk utasításait követve engedélyezheti az Azure-beli virtuális gépek biztonsági mentését egy Azure Backup Recovery Services-tároló beállításával, valamint a biztonsági mentés engedélyezésével a tárban.
+A [cikk](backup-azure-arm-vms-prepare.md) utasításait követve engedélyezheti az Azure-beli virtuális gépek biztonsági mentését egy Azure Backup Recovery Services-tároló beállításával, valamint a biztonsági mentés engedélyezésével a tárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a jelen cikkben ismertetett eljárások valamelyikével kapcsolatban nehézségekbe ütközik, tekintse meg a [hibaelhárítási útmutatót](backup-azure-vms-troubleshoot.md).
 - [További](backup-azure-manage-vms.md) információ a biztonsági másolatok kezeléséről.

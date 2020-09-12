@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: yelevin
-ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77581684"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662013"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Az Azure Sentinel eltávolítása a munkaterületről
 
@@ -48,13 +48,13 @@ A leválasztást követően a offboarding folyamat megkezdődik.
 
 -   AWS
 
--   Microsoft-szolgáltatások biztonsági riasztásai (Azure ATP, Microsoft Cloud App Security beleértve Cloud Discovery Shadow IT Reporting, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
+-   Microsoft-szolgáltatások biztonsági riasztásai: Microsoft Defender for Identity (*korábbi nevén Azure ATP*), Microsoft Cloud App Security beleértve Cloud Discovery Shadow it Reporting, Azure ad Identity Protection, Microsoft Defender for Endpoint (*korábban Microsoft Defender ATP*), Azure Defender (*korábban Azure Security Center*)
 
 -   Fenyegetések felderítése
 
--   Gyakori biztonsági naplók (beleértve a CEF-alapú naplókat, a Barracuda-t és a syslog-t) (ha van Azure Security Center, a rendszer ezeket a naplókat továbbra is gyűjti.)
+-   Gyakori biztonsági naplók (beleértve a CEF-alapú naplókat, a Barracuda-t és a syslog-t) (ha rendelkezik Azure Defender-rel, a rendszer a naplókat továbbra is gyűjti.)
 
--   Windows biztonsági események (ha van Azure Security Center, ezek a naplók továbbra is gyűjtése történik.)
+-   Windows biztonsági események (ha rendelkezik az Azure Defender szolgáltatással, a rendszer a naplókat továbbra is gyűjti.)
 
 Az első 48 órán belül az adatkezelési és elemzési szabályok (beleértve a valós idejű Automation-konfigurációt) többé nem lesznek elérhetők vagy lekérdezhető az Azure Sentinelben.
 
@@ -76,6 +76,6 @@ A szolgáltatás eltávolítása után 30 napos türelmi időszak áll rendelkez
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan távolíthatja el az Azure Sentinel szolgáltatást. Ha meggondolja magát, és újra szeretné telepíteni:
 - Ismerkedés [Az Azure Sentinel](quickstart-onboard.md)beszerzésével.

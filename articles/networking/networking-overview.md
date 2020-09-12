@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037252"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651734"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure Networking Services áttekintése
 
@@ -38,7 +38,7 @@ Ez a szakasz azokat a szolgáltatásokat ismerteti, amelyek kapcsolatot biztosí
 |[Azure DNS](#dns)|Olyan DNS-tartományokat üzemeltet, amelyek Microsoft Azure infrastruktúra használatával biztosítják a névfeloldást.|<p>[Üzemeltessen saját tartományt az Azure DNS-ben](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-rekordok létrehozása egy webalkalmazáshoz](../dns/dns-web-sites-custom-domain.md)</p> <p>[Alias-rekord létrehozása a Traffic Managerhoz](../dns/tutorial-alias-tm.md)</p> <p>[Alias-rekord létrehozása nyilvános IP-címhez](../dns/tutorial-alias-pip.md)</p> <p>[Alias-rekord létrehozása a zóna erőforrásrekord számára](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot konfigurálhat a virtuális gépekhez közvetlenül a TLS-Azure Portal. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre|<p>[Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)</p><p>[Kapcsolódás az SSH-val Linux rendszerű virtuális géphez](../bastion/bastion-connect-vm-ssh.md)</p><p>[Kapcsolódás RDP használatával Windows rendszerű virtuális géphez](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Virtuális hálózati NAT-átjáró](#nat)|Hozzon létre egy NAT-átjárót a virtuális gép kimenő kapcsolatának biztosításához.|<p>[NAT-átjáró létrehozása](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure-partneri szolgáltatás (előzetes verzió)](#azurepeeringservice)|Együttműködés a szolgáltatókkal a Microsoft Cloud számára a nyilvános hálózaton keresztül történő optimális és megbízható útválasztáshoz.|<p>[Azure-partneri szolgáltatás regisztrálása](../peering-service/azure-portal.md)</p>|
+|[Azure Peering Service](#azurepeeringservice)|Együttműködés a szolgáltatókkal a Microsoft Cloud számára a nyilvános hálózaton keresztül történő optimális és megbízható útválasztáshoz.|<p>[Azure-partneri szolgáltatás regisztrálása](../peering-service/azure-portal.md)</p>|
 ||||
 
 
@@ -83,7 +83,7 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 
 ![Virtuális hálózati NAT-átjáró](./media/networking-overview/flow-map.png)
 
-### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Azure-partneri szolgáltatás
+### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure-partneri szolgáltatás
 Az Azure-alapú szolgáltatások a Microsoft Cloud Services, például az Office 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára növelik az ügyfelek kapcsolódását. További információ: [Mi az Azure-partneri szolgáltatás?](../peering-service/about.md).
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Alkalmazás-védelmi szolgáltatások
@@ -120,10 +120,10 @@ A Azure Firewallról további információt a [Azure Firewall dokumentációjáb
 
 ![Tűzfal áttekintése](./media/networking-overview/firewall-threat.png)
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
+### <a name="network-security-groups"></a><a name="nsg"></a>Network security groups (Hálózati biztonsági csoportok)
 Az Azure-beli virtuális hálózatokban az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. További információ: [biztonsági áttekintés](../virtual-network/security-overview.md).
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatási végpontok
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatásvégpontok
 A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át. További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ![Virtuális hálózati szolgáltatásvégpontok](./media/networking-overview/vnet-service-endpoints-overview.png)
@@ -208,7 +208,7 @@ Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS
 
 További információ: [Mi az Virtual Network koppint](../virtual-network/virtual-network-tap-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre az első VNet, és kapcsolódjon néhány virtuális géphez a [létrehozásához az első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikkben ismertetett lépések végrehajtásával.
 - A számítógép csatlakoztatása egy VNet a [pont – hely kapcsolat konfigurálása című cikkben](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)ismertetett lépések végrehajtásával.

@@ -13,16 +13,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 1c1e29d43fefa6be1586aefc28249fe2f0f9e9fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001025"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018305"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az X.509 biztonsági rendszer beállítása az Azure IoT Hubon
 
 Ez az oktatóanyag azokat a lépéseket mutatja be, amelyekkel biztonságossá teheti az Azure IoT hub-t az *X. 509 Tanúsítványos hitelesítés*használatával. Az illusztrációk alapján a nyílt forráskódú eszköz OpenSSL segítségével helyileg hozhat létre tanúsítványokat a Windows rendszerű gépen. Javasoljuk, hogy ezt az oktatóanyagot csak tesztelési célokra használja. Éles környezetben a tanúsítványokat a *legfelső szintű hitelesítésszolgáltatóktól (CA)* kell megvásárolnia.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -102,7 +104,7 @@ Ezután megmutatjuk, hogyan hozhat létre C#-alkalmazást az IoT hub-hoz regiszt
 
 1. Megoldáskezelő kattintson a jobb gombbal a **SimulateX509Device** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. A **NuGet csomagkezelő eszközben**válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** lehetőséget.
+1. A **NuGet csomagkezelő eszközben**válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
 
    ![Device SDK NuGet-csomag hozzáadása a Visual Studióban](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 

@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan taníthat ki egy modellt, és hogyan állíthat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319609"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661545"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Batch-előrejelzések futtatása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +71,10 @@ Ebben a szakaszban egy adatkészlet-paramétert hoz létre egy másik adatkészl
    
     Adja meg a paraméter nevét, vagy fogadja el az alapértelmezett értéket.
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>A Batch-következtetési folyamat közzététele
+    > [!div class="mx-imgBorder"]
+    > ![Adatkészlet beállítása folyamat paraméterként](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
+
+## <a name="publish-your-batch-inference-pipeline"></a>A Batch-következtetési folyamat közzététele
 
 Most már készen áll a következtetési folyamat üzembe helyezésére. Ezzel a folyamattal üzembe helyezi a folyamatot, és elérhetővé teszi mások számára a használatra.
 
@@ -126,9 +129,7 @@ A folyamatok végpontjának és a közzétett folyamatnak a **végpontok** szaka
 
 A folyamat végpontjának REST-végpontját a Futtatás Áttekintés panelen találja. A végpont meghívásával meghívja az alapértelmezett közzétett folyamatát.
 
-A közzétett **folyamatok** oldalon is felhasználhatja a közzétett folyamatokat. Válasszon ki egy közzétett folyamatot, és keresse meg a hozzá tartozó REST-végpontot. 
-
-![Rest-végpont részletei](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+A közzétett **folyamatok** oldalon is felhasználhatja a közzétett folyamatokat. Válasszon ki egy közzétett folyamatot, és a gráftól jobbra található **közzétett folyamat áttekintés** paneljén megtalálja a további végpontját. 
 
 A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonos típusú hitelesítési fejlécre. A munkaterület hitelesítésének beállításával és a paraméteres REST-hívás létrehozásával kapcsolatos további részletekért tekintse meg a következő [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
 
@@ -142,9 +143,9 @@ Amikor közzétesz egy folyamatot, megadhatja, hogy az új alapértelmezett foly
 
 Az új alapértelmezett folyamat a végpont **közzétett folyamatok** lapján is beállítható.
 
-![Alapértelmezett folyamat beállítása](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![Alapértelmezett folyamat beállítása a közzétett folyamat lapon](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A regressziós modell betanításához és üzembe helyezéséhez kövesse a tervezői [oktatóanyagot](tutorial-designer-automobile-price-train-score.md) .
 ''

@@ -3,25 +3,25 @@ title: Kifizetési jelentések – Microsoft kereskedelmi piactér
 description: A kifizetési jelentések részletesen ismertetik az ajánlattal kapcsolatban szerzett pénz részleteit, beleértve a fizetés összegét és a fizetését.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 62de9380578ca5a97f7b72f9939d5c2dd7392c0d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502630"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004221"
 ---
 # <a name="payout-summaries"></a>Fizetési összegzések
 
 A kifizetési összefoglaló a Microsoft által szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
 
-Ha termékeket értékesít az Azure Marketplace-en, a nyeremények összefoglalójában a sikeres kifizetésekről is tájékozódhat. Részletekért lásd: [Microsoft Azure Marketplace részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy) és a [Microsoft Azure Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+Ha termékeket értékesít az Azure Marketplace-en, a nyeremények összefoglalójában a sikeres kifizetésekről is tájékozódhat. További információ az Azure Marketplace-ről: befizetések [a kereskedelmi piactéren](./get-paid.md) és a [Microsoft kiadói szerződésben](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es [fizetési küszöbértéket](payment-thresholds-methods-timeframes.md) . A fizetési küszöbértékre vonatkozó részletekért tekintse meg ezt a lapot, és tekintse át az alkalmazás fejlesztői szerződését.
+> Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es fizetési küszöbértéket. Részletekért tekintse meg a [Microsoft kiadói szerződését](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
 > Ha támogatásra [van](https://developer.microsoft.com/windows/support)szüksége a kifizetésekkel kapcsolatban, beleértve a kifizetési fiókok konfigurálását, a hiányzó kifizetéseket, a befizetések tárolását, vagy bármi mást, forduljon az ügyfélszolgálathoz.
@@ -31,27 +31,19 @@ Ha termékeket értékesít az Azure Marketplace-en, a nyeremények összefoglal
 A kifizetési összefoglaló lapok egyikének megnyitása:
 
 1. Válassza ki a kifizetés ikont a jobb felső sarokban.
-2. Válassza ki a tranzakciók előzményeit, a befizetéseket és az adatexportálást.
-
-## <a name="transaction-history-page"></a>Tranzakció előzményei lap
-
-Ez az oldal az összes egyéni bevételt jeleníti meg, beleértve a dátumot, a típust és a keresőt is. Kiválaszthatja a megtekinteni kívánt időszakot, és a beléptetési azonosító, a program, a fizetési azonosító, a kereső típusa, a kar és az állapot alapján is szűrheti. Az aktuális pénzügyi évre (július 1 – június 30.) és az előző két pénzügyi évre vonatkozó adatszolgáltatások érhetők el.
-
-Ha további részletekre kíváncsi, kattintson az oldal jobb oldalán található lefelé mutató nyílra. Ekkor megjelenik a kar, a bevétel mennyisége és a termék. Ha az ilyen típusú adatmennyiség nem érhető el, de hozzá kell férnie, forduljon az [ügyfélszolgálathoz](https://developer.microsoft.com/windows/support). Ha a kereset egy beállítás eredménye, és nem tranzakció, a termék mezői nem jelennek meg.
-
-A lapon lévő összes tranzakciós adatexportáláshoz használja az **adatexportálás** lapot.
+2. Válassza ki a **tranzakciók előzményeit**, a **befizetéseket**és **az adatexportálást**.
 
 ## <a name="payments-page"></a>Fizetési oldal
 
 Az ezen a lapon található összegek az összes, a programban részt vevő programot képviselik. Résztvevő-azonosító, program, fizetési azonosító és a bevétel típusa alapján is szűrhet. Az összegek amerikai dollárban vannak feltüntetve. A kifizetett érték szintén a fizetési pénznemben jelenik meg.
 
-| Terület                   | Leírás                                                                                |
-|------------------------|---------------------------------------------------------------------------------------------|
+| Terület  | Description |
+| --- | --- |
 | Az év teljes kifizetése   | Az egész évben az USA dollárban fizetett összesített összeg az összes program esetében       |
 | Következő becsült fizetés | Az egyszeri következő fizetés Önhöz közeledik (még akkor is, ha hamarosan mások is érkeznek), USA dollárban |
 | Utolsó fizetés           | A legutóbbi fizetés összegét (USA-dollárban), a program nevét és programját           |
 | Kifizetések forrás szerint     | Az elmúlt 12 hónap során a program által képviselt kifizetések mennyisége (USA-dollárban)           |
-| Kifizetések               | Válassza a **kifizetett** vagy **függőben lévő** lehetőséget, majd a kívánt rendezést. Egy adott fizetésre vonatkozó további részletekért válassza a **nézet**lehetőséget. A fizetési átutalási utasítás másolatának letöltéséhez válassza a **Letöltés**lehetőséget. Mivel a tranzakciós előzmények adatai akár 24 órát is igénybe vehetnek, előfordulhat, hogy a kapcsolódó bevétel azonnal nem jelenik meg. |
+| Payments (Befizetések)               | Válassza a **kifizetett** vagy **függőben lévő** lehetőséget, majd a kívánt rendezést. Egy adott fizetésre vonatkozó további részletekért válassza a **nézet**lehetőséget. A fizetési átutalási utasítás másolatának letöltéséhez válassza a **Letöltés**lehetőséget. Mivel a tranzakciós előzmények adatai akár 24 órát is igénybe vehetnek, előfordulhat, hogy a kapcsolódó bevétel azonnal nem jelenik meg. |
 |||
 
 Az ezen a lapon lévő összes érték exportálásához válassza az **Exportálás** lehetőséget, és kövesse az adatexportálás lapon található utasításokat.
@@ -66,20 +58,20 @@ Ezen az oldalon az összes tranzakciós adatmennyiség exportálásához válass
 
 ## <a name="payment-status"></a>Fizetési állapot
 
-| Jövedelemszerzési állapot           | Ok                                                                                                                                      | Partneri beavatkozás szükséges?                                   |
-|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| Feldolgozatlan              | A kereset jogosult a fizetésre. Ebben az állapotban marad az ösztönző programhoz tartozó program útmutatójában meghatározott hűtési időszakra vonatkozóan. | Nem                                                         |
-| Közelgő                 | Függőben lévő belső felülvizsgálatok által létrehozott fizetési rendelés a kifizetés feldolgozása előtt                                                               | Nem                                                         |
+| Jövedelemszerzési állapot | Ok | Partneri beavatkozás szükséges? |
+| --- | --- | --- |
+| Feldolgozatlan              | A kereset jogosult a fizetésre. Ebben az állapotban marad az ösztönző programhoz tartozó program útmutatójában meghatározott hűtési időszakra vonatkozóan. | No                                                         |
+| Közelgő                 | Függőben lévő belső felülvizsgálatok által létrehozott fizetési rendelés a kifizetés feldolgozása előtt                                                               | No                                                         |
 | Függőben lévő adó számla      | Az adó számla nem teljes vagy érvénytelen                                                                                                  | A fizetés előtt frissítenie kell az áfát |
 | Elutasította a felülvizsgálat során   | A rendszer elutasította a fizetést a felülvizsgálat során                                                                                                     | Részletekért forduljon a [Microsoft ügyfélszolgálatához](https://developer.microsoft.com/windows/support)                      |
 | Sikertelen                   | A fizetés Microsoft rendszerhiba miatt meghiúsult                                                                                         | Részletekért forduljon a [Microsoft ügyfélszolgálatához](https://developer.microsoft.com/windows/support)                      |
-| Folyamatban              | A fizetés folyamatban van                                                                                                                 | Nem                                                         |
-| Helytelen fizetés        | A fizetési Újracsatlakozás folyamatban van                                                                                                       | Nem                                                         |
-| Elküldött                     | A program elküldje a fizetést a banknak                                                                                                     | Nem                                                         |
-| Újrafeldolgozás             | A fizetés Microsoft rendszerhibát észlelt, és folyamatban van az újrafeldolgozása                                                                  | Nem                                                         |
-| Reversed                 | A bank megfordította a fizetést, és a következő fizetési ciklusban ismét el lesz küldve.                                                     | Nem                                                         |
+| Folyamatban              | A fizetés folyamatban van                                                                                                                 | No                                                         |
+| Helytelen fizetés        | A fizetési Újracsatlakozás folyamatban van                                                                                                       | No                                                         |
+| Elküldött                     | A program elküldje a fizetést a banknak                                                                                                     | No                                                         |
+| Újrafeldolgozás             | A fizetés Microsoft rendszerhibát észlelt, és folyamatban van az újrafeldolgozása                                                                  | No                                                         |
+| Reversed                 | A bank megfordította a fizetést, és a következő fizetési ciklusban ismét el lesz küldve.                                                     | No                                                         |
 | Számlaösszeg elutasítva     | Az adó számla elutasítása a felülvizsgálat során megtörtént. Az összes függőben lévő kifizetés addig tart, amíg az adó számla felülvizsgálata be nem fejeződik.                 | Részletekért forduljon a [Microsoft ügyfélszolgálatához](https://developer.microsoft.com/windows/support)                      |
-| Adózási számla a felülvizsgálat alatt | Az adó számla felülvizsgálata folyamatban van. A kifizetését az adó-számla jóváhagyása után bocsátja ki a rendszer.                                   | Nem                                                         |
+| Adózási számla a felülvizsgálat alatt | Az adó számla felülvizsgálata folyamatban van. A kifizetését az adó-számla jóváhagyása után bocsátja ki a rendszer.                                   | No                                                         |
 | Elutasítva                 | A Bank elutasította a fizetést                                                                                                      | Részletekért forduljon a bankhoz.                             |
 |||
 
@@ -91,14 +83,14 @@ Az adatexportálás lap nem frissül a sajátján. Előfordulhat, hogy manuális
 
 Előfordulhat, hogy a szűrő **nem érhető** el az Adathiba miatt. Ez valószínűleg azt jelenti, hogy a kiválasztott alapértelmezett időszakot három hónapra hagyta, majd kiválasztott egy fizetési azonosítót az adott időszakon kívüli jövedelemszerzési szolgáltatásból. Bontsa ki az időtartamot, és próbálkozzon újra.
 
-## <a name="payments"></a>Kifizetések
+## <a name="payments"></a>Payments (Befizetések)
 
 ![Kifizetések exportálása](./media/pc-export-payments.png)
 
 Ez a lehetőség egy adott program, a kapcsolódó adó és az összesített kereset összegének a bankban kapott fizetések letöltését biztosítja. Ez a jelentés számos partner Center-programhoz használatos, ezért előfordulhat, hogy egyes oszlopok nem alkalmazhatók a jelentésre. Ezek az oszlopok az alábbi jelöléssel vannak megjelölve.
 
-| Oszlop neve              | Leírás                                                                                                                               |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
+| Oszlop neve | Description |
+| --- | --- |
 | participantID            | A program keretében keresett partner elsődleges identitása                                                                             |
 | participantIDType        | Az áruházi programok esetében általában a program azonosítója az ösztönző programokhoz és az értékesítői AZONOSÍTÓhoz                                                                |
 | participantName          | A jövedelemszerzési partner neve                                                                                                               |
@@ -123,8 +115,8 @@ Ez a lehetőség egy adott program, a kapcsolódó adó és az összesített ker
 
 Ez a beállítás a tranzakciós Előzmények lapon, a kereset típusa, a dátum, a társított tranzakció összege, az ügyfél, a termék és a programokra vonatkozó egyéb tranzakciós adatok letöltését teszi lehetővé.
 
-| Oszlop neve                    | Leírás                                                                                                                              | Ösztönzők/tárolás/Azure Marketplace alkalmazhatósága           |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| Oszlop neve | Description | Ösztönzők/tárolás/Azure Marketplace alkalmazhatósága |
+| --- | --- | --- |
 | earningId                      | Az egyes keresések egyedi azonosítója                                                                                                       | Mind                                                            |
 | participantId                  | A program keretében keresett partner elsődleges identitása                                                                            | Mind                                                            |
 | participantIdType              | Az ösztönző programokhoz és az értékesítőhöz általában az áruházbeli programok és az Azure Marketplace program azonosítója                                          | Mind                                                            |
@@ -209,8 +201,8 @@ A 1 2019 júliusa előtti tranzakciós előzmények külön vannak kezelve. Az u
 > [!NOTE]
 > Az olyan szűrők, mint a 3M, 6M vagy 12M, nem lesznek érvényesek a **korábbi utasítások** szakaszra.
 
-| Mező neve              | Leírás                                                                                                                                                             |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Mező neve | Description |
+| --- | --- |
 | Bevétel forrása          | A bevétel forrása, amely alapján a tranzakció bekövetkezett, például Microsoft Store, Windows Phone-telefon áruház, Windows áruház 8 vagy reklám                  |
 | Rendelésazonosító                | Egyedi megrendelési azonosító. Ez az azonosító lehetővé teszi a vásárlási tranzakciók azonosítását a megfelelő nem vásárlási tranzakciókkal, például a visszatérítéssel vagy a jóváírásokkal kapcsolatban. Mindkettő ugyanazzal a megrendelési AZONOSÍTÓval fog rendelkezni. Továbbá, ha egy megosztott díj esetében több fizetési módszert használtak egyetlen vásárláshoz, akkor lehetővé teszi a vásárlási tranzakciók összekapcsolását. |
 | Tranzakcióazonosító          | Egyedi tranzakció-azonosító.                                                                                                                                          |

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011579"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660253"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
@@ -139,9 +139,11 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Javasolt függvény
 
-Ha C#-ot és MVC-alkalmazást használ, a **HomeController.cs** -fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslati függvény a [DocumentsOperationsExtensions. javaslat metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)alapul.
+Ha C#-ot és MVC-alkalmazást használ, a **HomeController.cs** -fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslati függvény a [DocumentsOperationsExtensions. javaslat metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)alapul. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](./search-howto-dotnet-sdk.md).
 
-A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](./search-howto-dotnet-sdk.md).
+A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) osztály tulajdonságai határozzák meg, hogy mely mezők kereshetők és visszaadásra kerülnek az eredmények között, a egyezések száma, valamint az, hogy a rendszer felhasználja-e a zavaros egyezést 
+
+Az automatikus kiegészítéshez a zavaros egyezés csak egy kihagyott vagy rossz helyen lévő módosítási távolságra korlátozódik. Vegye figyelembe, hogy az automatikus kiegészítési lekérdezésekben a zavaros egyezés esetenként váratlan eredményeket eredményezhet az index méretétől és a szilánkok mennyiségétől függően. További információ: [particionálási és](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)skálázási fogalmak.
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -250,5 +252,5 @@ Az automatikus kiegészítési függvény a keresési kifejezés bemenetét vesz
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 
 + [Oktatóanyag: az első alkalmazás létrehozása C# nyelven (3. lecke)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C#-kód minta: Azure-Search-DotNet-Samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [C#-kód minta: Azure-Search-DotNet-Samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
 + [C# és JavaScript REST-alapú kóddal minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

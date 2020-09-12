@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083684"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669757"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -48,18 +48,23 @@ Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az a
 * Ha a felderítés állapota _fel van állítva_, a metrikák elemre kattintva ellenőrizze az alkalmazás állapotát. Vizsgálja meg a következő metrikákat:
 
 
-  - `TomcatErrorCount`(_tomcat. Global. Error_): az összes Spring Application-kivételt itt számoljuk el. Ha ez a szám nagy, nyissa meg az Azure Log Analytics az alkalmazás naplófájljainak vizsgálatához.
+  - `TomcatErrorCount` (_tomcat. Global. Error_): az összes Spring Application-kivételt itt számoljuk el. Ha ez a szám nagy, nyissa meg az Azure Log Analytics az alkalmazás naplófájljainak vizsgálatához.
 
-  - `AppMemoryMax`(_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy egy memória kiosztása egy `OutOfMemoryError` üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy az *> véglegesítése*során is felhasználja, még akkor is, ha *<= Max* még mindig igaz. Ilyen esetben próbálja meg a maximális halom méretének növelését a `-Xmx` paraméter használatával.
+  - `AppMemoryMax` (_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy egy memória kiosztása egy `OutOfMemoryError` üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy az *> véglegesítése*során is felhasználja, még akkor is, ha *<= Max* még mindig igaz. Ilyen esetben próbálja meg a maximális halom méretének növelését a `-Xmx` paraméter használatával.
 
-  - `AppMemoryUsed`(_JVM. Memory. használt_): az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. A normál betöltésű Java-alkalmazások esetében ez a metrika egy *fűrészfog* mintát alkot, ahol a memóriahasználat folyamatosan nő és csökken, és hirtelen leesik, majd a mintázat ismétlődik. Ez a metrikai sorozat a Java virtuális gépen belüli adatgyűjtési művelet miatt következik be, ahol a gyűjtési műveletek a fűrészfog mintában lévő cseppeket jelölik.
+  - `AppMemoryUsed` (_JVM. Memory. használt_): az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. A normál betöltésű Java-alkalmazások esetében ez a metrika egy *fűrészfog* mintát alkot, ahol a memóriahasználat folyamatosan nő és csökken, és hirtelen leesik, majd a mintázat ismétlődik. Ez a metrikai sorozat a Java virtuális gépen belüli adatgyűjtési művelet miatt következik be, ahol a gyűjtési műveletek a fűrészfog mintában lévő cseppeket jelölik.
     
     Ez a mérőszám fontos a memóriával kapcsolatos problémák azonosításához, például:
     * A memória alábontása a legelején.
     * A túlterhelési memória kiosztása egy adott logikai útvonalhoz.
     * Fokozatos memóriavesztés.
-
   További információ: [mérőszámok](spring-cloud-concept-metrics.md).
+  
+* Ha az alkalmazás nem indul el, ellenőrizze, hogy az alkalmazás rendelkezik-e érvényes JVM-paraméterekkel. Ha a JVM-memória túl magasra van állítva, a következő hibaüzenet jelenhet meg a naplókban:
+
+  >"a szükséges memória-2728741K nagyobb, mint a kiosztáshoz elérhető 2000M."
+
+
 
 Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört.
 
@@ -138,7 +143,7 @@ Ha a lekérdezés megszakad, továbbra is használhatja a következő parancsot 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Vegye figyelembe azonban, hogy egy Azure Spring Cloud Service-példány egyszerre csak egy felépítési feladatot tud kiváltani egy adott csomagra. További információ: [alkalmazás üzembe helyezése](spring-cloud-quickstart-launch-app-portal.md) és [átmeneti környezet beállítása az Azure Spring Cloud-ban](spring-cloud-howto-staging-environment.md).
+Vegye figyelembe azonban, hogy egy Azure Spring Cloud Service-példány egyszerre csak egy felépítési feladatot tud kiváltani egy adott csomagra. További információ: [alkalmazás üzembe helyezése](spring-cloud-quickstart.md) és [átmeneti környezet beállítása az Azure Spring Cloud-ban](spring-cloud-howto-staging-environment.md).
 
 ### <a name="my-application-cant-be-registered"></a>Az alkalmazásom nem regisztrálható
 
@@ -174,7 +179,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
 
 1. Indítsa újra az alkalmazást.
 
-1. Keresse meg `https://<your application test endpoint>/actuator/env` és vizsgálja meg a választ.  Így kell kinéznie:
+1. Keresse meg `https://<your application test endpoint>/actuator/env` és vizsgálja meg a választ.  Ennek így kell kinéznie:
 
     ```json
     {
@@ -193,7 +198,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
 Keresse meg a nevű gyermek csomópontot `systemEnvironment` .  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
 
 > [!IMPORTANT]
-> Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
+> Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót:  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nem találom az alkalmazás metrikáit vagy naplóit
 

@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a098d4bab4ea8cb083658b205dcb73da619fdbde
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2fd0269744c7ee49c72806e3cb0e1227035de4f0
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035705"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019172"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 
@@ -79,13 +79,13 @@ Amikor megpróbál hozzáférni a blob-vagy üzenetsor-adathoz, a Azure Portal e
 
 Ha az Azure AD-fiókkal szeretné elérni a Azure Portal blob-vagy üzenetsor-adatait, a blob-és üzenetsor-adatok eléréséhez engedélyekre van szüksége, és a Azure Portal a Storage-fiók erőforrásain is meg kell keresnie az engedélyeket. Az Azure Storage beépített szerepkörei hozzáférést biztosítanak a blob-és üzenetsor-erőforrásokhoz, de nem biztosítanak engedélyeket a Storage-fiók erőforrásaihoz. Emiatt a portálhoz való hozzáféréshez szükség van egy olyan Azure Resource Manager szerepkör hozzárendelésére is, mint például az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör, a Storage-fiók szintjére vagy magasabbra. Az **olvasó** szerepkör biztosítja a legtöbb korlátozott engedélyt, de egy másik Azure Resource Manager szerepkör is elfogadható, amely hozzáférést biztosít a Storage-fiókok felügyeleti erőforrásaihoz. Ha többet szeretne megtudni arról, hogyan rendelhet engedélyeket a felhasználók számára az Azure Portal Azure AD-fiókkal való adathozzáféréshez, tekintse meg [Az Azure Blob-és üzenetsor-hozzáférés biztosítása a RBAC](storage-auth-aad-rbac-portal.md)című témakört az Azure Portal.
 
-A Azure Portal azt jelzi, hogy melyik engedélyezési séma van használatban, amikor egy tárolót vagy várólistát navigál. További információ a portálon elérhető adathozzáférésről: [a Azure Portal használata a blob-vagy üzenetsor-adatok eléréséhez](storage-access-blobs-queues-portal.md).
+A Azure Portal azt jelzi, hogy melyik engedélyezési séma van használatban, amikor egy tárolót vagy várólistát navigál. További információ a portálon elérhető adathozzáférésről: [válassza ki, hogyan engedélyezze a blob-adatokhoz való hozzáférést a Azure Portal](../blobs/authorize-blob-access-portal.md) , és [válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-adatokhoz a Azure Portal](../queues/authorize-queue-access-portal.md).
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Adatokhoz való hozzáférés a PowerShell vagy az Azure CLI használatával
 
 Azure CLI-és PowerShell-támogatás az Azure AD-beli hitelesítő adatokkal való bejelentkezéshez. A bejelentkezés után a munkamenet ezen hitelesítő adatok alatt fut. További információ: [Azure CLI-vagy PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](authorize-active-directory-powershell.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz](storage-auth-aad-msi.md)
 - [Engedélyezés Azure Active Directory alkalmazásból a blobokhoz és várólistákhoz való hozzáféréshez](storage-auth-aad-app.md)

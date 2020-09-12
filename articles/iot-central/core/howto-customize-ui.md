@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 660f6dfae23331455408ae7127274550a3a4cc3a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157999"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019835"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Az Azure IoT Central felhasználói felületének testreszabása
 
 Ez a cikk leírja, hogyan szabhatja testre az alkalmazás felhasználói felületét egyéni témák alkalmazásával, és módosíthatja a Súgó hivatkozásait úgy, hogy az egyéni súgó erőforrásaira mutasson. 
-
-
 
 Az alábbi képernyőképen egy oldal látható a standard téma használatával:
 
@@ -73,7 +71,7 @@ A Súgó hivatkozásainak módosításához navigáljon a **Súgó testreszabás
 > [!NOTE]
 > A **Súgó testreszabása** lapon bármikor visszatérhet az alapértelmezett Súgó hivatkozásokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan szabhatja testre a felhasználói felületet a IoT Central alkalmazásban, néhány javasolt lépés:
 

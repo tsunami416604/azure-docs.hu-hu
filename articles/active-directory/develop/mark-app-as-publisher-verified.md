@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477685"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006944"
 ---
-# <a name="mark-your-app-as-publisher-verified-preview"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése (előzetes verzió)
+# <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése
 
 Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő a Microsoft Partner Network (MPN) fiók használatával ellenőrizte az identitását, és az alkalmazás regisztrálásával társította ezt az MPN-fiókot. Ez a cikk a [közzétevői ellenőrzés (előzetes verzió)](publisher-verification-overview.md) folyamatának befejezését ismerteti.
 
 ## <a name="quickstart"></a>Gyorsútmutató
 Ha már regisztrált a Microsoft Partner Network (MPN) szolgáltatásban, és teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), azonnal megkezdheti az első lépéseket: 
 
-1. Navigáljon az előzetes verziójú [alkalmazás regisztrációs portálján](https://aka.ms/PublisherVerificationPreview).
+1. Navigáljon az [alkalmazás regisztrációs portálra](https://aka.ms/PublisherVerificationPreview).
 
 1. Válasszon ki egy alkalmazást, és kattintson a **branding**elemre. 
 
@@ -37,7 +37,7 @@ Ha már regisztrált a Microsoft Partner Network (MPN) szolgáltatásban, és te
 Az egyes előnyökkel, követelményekkel és gyakori kérdésekkel kapcsolatos további információkért tekintse meg az [áttekintést](publisher-verification-overview.md).
 
 
-## <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás megjelölése a közzétevőnek ellenőrzöttként
+## <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése
 Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), majd kövesse az alábbi lépéseket az alkalmazás (ok) megjelöléséhez a közzétevő által ellenőrzöttként.  
 
 1. Győződjön meg arról, hogy olyan szervezeti (Azure AD-) fiókkal van bejelentkezve, amely jogosult a Közzétevőként megjelölni kívánt alkalmazás (ok) módosítására, valamint a fiókpartner MPN-fiókjára. 
@@ -46,7 +46,7 @@ Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-ver
 
     - A partner Centerben ennek a felhasználónak a következő szerepkörökkel kell rendelkeznie: MPN-rendszergazda, fiókok rendszergazdája vagy globális rendszergazda (ez az Azure AD-ben elsajátított megosztott szerepkör). 
 
-1. Navigáljon az alkalmazás regisztrációs portáljának előzetes verziójához:  
+1. Navigáljon az alkalmazás regisztrációs portálján:  
 
 1. Kattintson arra az alkalmazásra, amelyet Közzétevőként szeretne megjelölni, és nyissa meg a branding (védjegyezés) panelt. 
 
@@ -78,5 +78,5 @@ Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-ver
 
 Készen is van. Tudassa velünk, hogy van-e visszajelzése a folyamatról, az eredményekről vagy a szolgáltatásról. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha problémákat tapasztal, olvassa el a [hibaelhárítási információkat](troubleshoot-publisher-verification.md).

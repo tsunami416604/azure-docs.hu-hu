@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386129"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660485"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
   * Az Azure-fióknak munkahelyi vagy iskolai fióknak kell lennie, ami így néz ki `username@contoso.com` . Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat, például @hotmail.com vagy @outlook.com .
 
     > [!NOTE]
-    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, előfordulhat, hogy a címe hasonlít `username@domain.onmicrosoft.com` . A fiókját egy Azure AD-bérlő tárolja. A legtöbb esetben az Azure-fiókjához tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
+    > Ha regisztrált egy Microsoft 365 ajánlatra, és nem adta meg a munkahelyi e-mail-címét, akkor előfordulhat, hogy a címe hasonlít `username@domain.onmicrosoft.com` . A fiókját egy Azure AD-bérlő tárolja. A legtöbb esetben az Azure-fiókjához tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
 
     Ha egy Microsoft-fiókhoz társított [Visual Studio standard-előfizetést](https://visualstudio.microsoft.com/vs/pricing/) szeretne használni, először [hozzon létre egy Azure ad-bérlőt](../active-directory/develop/quickstart-create-new-tenant.md) , vagy használja az alapértelmezett könyvtárat. Adjon hozzá egy jelszót tartalmazó felhasználót a címtárhoz, majd adja meg a felhasználónak az Azure-előfizetését. Ezt a felhasználónevet és jelszót használva az átjáró telepítése közben is bejelentkezhet.
 
@@ -142,7 +142,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 A helyszíni adatátjáró a felhőalapú kapcsolat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) függ, és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül hozzáférjen az internethez, akkor ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információt az alábbi témakörökben talál:
 
-* [A helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
+* [Helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
 * [Helyszíni adatátjáró proxybeállításainak konfigurálása](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>

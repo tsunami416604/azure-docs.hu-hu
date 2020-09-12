@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509083"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658509"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek a Azure AD Connect szinkronizálást használják kulcsfontosságú integrációs megoldásként. Ebben a cikkben a támogatott és a nem támogatott konfigurációk is szerepelnek.
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure
 
 A cikkben található képek jelmagyarázata:
 
-| Leírás | Szimbólum |
+| Description | Szimbólum |
 | --- | --- |
 | Helyszíni Active Directory erdő |![Helyszíni Active Directory erdő](./media/plan-connect-topologies/LegendAD1.png) |
 | Helyszíni Active Directory szűrt importálással |![Active Directory szűrt importálással](./media/plan-connect-topologies/LegendAD2.png) |
@@ -117,15 +117,15 @@ A fiók-erőforrás erdő topológiájában egy vagy több, aktív felhasználó
 
 Ebben a forgatókönyvben egy (vagy több) erőforrás-erdő megbízhatónak tekinti az összes fiók erdőjét. Az erőforrás-erdő általában kiterjesztett Active Directory sémával rendelkezik az Exchange és a Lync szolgáltatással. Az összes Exchange-és Lync-szolgáltatás, valamint más megosztott szolgáltatások is ebben az erdőben találhatók. A felhasználók letiltott felhasználói fiókkal rendelkeznek ebben az erdőben, és a postaláda a fiók erdőhöz van csatolva.
 
-## <a name="office-365-and-topology-considerations"></a>Az Office 365 és a topológia szempontjai
-Egyes Office 365-munkaterhelések bizonyos korlátozásokkal rendelkeznek a támogatott topológiákkal kapcsolatban:
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365-és topológiai megfontolások
+Egyes Microsoft 365 munkaterhelések bizonyos korlátozásokkal rendelkeznek a támogatott topológiákkal kapcsolatban:
 
 | Számítási feladat | Korlátozások |
 | --------- | --------- |
-| Exchange Online | További információ az Exchange Online által támogatott hibrid topológiákkal kapcsolatban: [több Active Directory-erdővel rendelkező hibrid telepítések](https://technet.microsoft.com/library/jj873754.aspx). |
-| Skype Vállalati verzió | Ha több helyszíni erdőt használ, csak a fiók – erőforrás erdő topológiája támogatott. További információ: [a Skype for Business Server 2015 környezeti követelményei](https://technet.microsoft.com/library/dn933910.aspx). |
+| Exchange Online | További információ az Exchange Online által támogatott hibrid topológiákkal kapcsolatban: [több Active Directory-erdővel rendelkező hibrid telepítések](/Exchange/hybrid-deployment/hybrid-with-multiple-forests). |
+| Skype Vállalati verzió | Ha több helyszíni erdőt használ, csak a fiók – erőforrás erdő topológiája támogatott. További információ: [a Skype for Business Server 2015 környezeti követelményei](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements). |
 
-Ha Ön nagyobb szervezet, akkor érdemes megfontolnia, hogy az [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) szolgáltatást használja. Lehetővé teszi annak meghatározását, hogy a felhasználók mely adatközpont-régiókban találhatók.
+Ha nagyobb szervezet, akkor érdemes megfontolnia a [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) funkció használatát. Lehetővé teszi annak meghatározását, hogy a felhasználók mely adatközpont-régiókban találhatók.
 
 ## <a name="staging-server"></a>Átmeneti kiszolgáló
 ![Átmeneti kiszolgáló a topológiában](./media/plan-connect-topologies/MultiForestStaging.png)
@@ -165,7 +165,7 @@ Ez a topológia a következő korlátozásokkal rendelkezik a más támogatott h
 * A Windows 10-es eszközökhöz csak egy Azure AD-bérlő társítható.
 * Az egyszeri bejelentkezési (SSO) beállítás a jelszó-kivonatolási szinkronizáláshoz és az átmenő hitelesítéshez csak egy Azure AD-Bérlővel használható.
 
-A kölcsönösen kizárható objektumokra vonatkozó követelmények a visszaírási is érvényesek. Egyes visszaírási-funkciók nem támogatottak ehhez a topológiához, mert egyetlen helyszíni konfigurációt feltételeznek. Ezek a szolgáltatások a következők:
+A kölcsönösen kizárható objektumokra vonatkozó követelmények a visszaírási is érvényesek. Egyes visszaírási-funkciók nem támogatottak ehhez a topológiához, mert egyetlen helyszíni konfigurációt feltételeznek. Ezek a funkciók a következők:
 
 * A csoport visszaírási alapértelmezett konfigurációval.
 * Eszköz visszaírási.
@@ -197,7 +197,7 @@ A helyszíni FIM 2010 2016 vagy a GALSync segítségével szinkronizálhatja a f
 
 A Azure Active Directory Connect-kiszolgáló a Azure Active Directory Connect háttér használatával kommunikál a Azure Active Directoryokkal. Az ezzel a háttérrel való kommunikációhoz használható egyetlen szoftver Azure Active Directory Connect. Nem támogatott a Azure Active Directory Connect háttérrel való kommunikáció bármely más szoftver vagy módszer használatával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha meg szeretné tudni, hogyan telepítheti Azure AD Connect a forgatókönyvekhez, tekintse meg a [Azure ad Connect egyéni telepítését](how-to-connect-install-custom.md)ismertető témakört.
 
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 57e5fe236e117932c3cbc2fcf2479f89aaa261d9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 8665b49aebcb99ef3d3ded17e7e7653027aba21e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069069"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651623"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 
@@ -68,8 +68,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 
 Az aktuális verziók a következők:
 
-* Service Fabric SDK és eszközök 4.1.456
-* Service Fabric futtatókörnyezet 7.1.456
+* Service Fabric SDK és eszközök 4.1.458
+* Service Fabric futtatókörnyezet 7.1.458
 
 A támogatott verziók listáját lásd: [Service Fabric verziók](service-fabric-versions.md)
 

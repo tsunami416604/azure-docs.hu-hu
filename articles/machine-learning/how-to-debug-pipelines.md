@@ -10,17 +10,17 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cad1c8b7250ddf1e675145e764abcc90b4db9d86
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018059"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661718"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibakeresést a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -ban és [Azure Machine learning Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/concept-designer). 
+Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibakeresést a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -ban és [Azure Machine learning Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/concept-designer). 
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
@@ -33,7 +33,7 @@ Az alábbi táblázat a folyamat fejlesztése során felmerülő gyakori problé
 | Nem egyértelmű hibák a számítási célokkal | Próbálkozzon a számítási célok törlésével és újbóli létrehozásával. A számítási célok újbóli létrehozása gyorsan elvégezhető, és bizonyos átmeneti problémák is megoldhatók. |
 | A folyamat nem használja újra a lépéseket | Az ismételt használat alapértelmezés szerint engedélyezve van, de gondoskodjon arról, hogy ne tiltsa le egy folyamat lépéseiben. Ha az újbóli használat le van tiltva, a `allow_reuse` lépésben megadott paraméter a következő lesz: `False` . |
 | A folyamat feleslegesen fut újra | Annak biztosítása érdekében, hogy a lépések csak akkor fussanak újra, amikor a mögöttes adatokat vagy parancsfájlokat módosítják, az egyes lépésekhez tartozó forráskód-címtárakat le kell választva. Ha ugyanazt a könyvtárat használja több lépéshez, előfordulhat, hogy szükségtelen ismétléseket tapasztal. Használja a `source_directory` paramétert egy folyamat lépés objektumon, hogy az elkülönített könyvtárba mutasson erre a lépésre, és győződjön meg arról, hogy nem ugyanazt az `source_directory` útvonalat használja több lépéshez. |
-
+| A képzési időszakokra vagy más hurok-viselkedésre lelassított lépés | Próbáljon meg bármilyen írást váltani, beleértve a naplózást is `as_mount()` `as_upload()` . A **csatlakoztatási** mód távoli virtualizált fájlrendszert használ, és minden alkalommal feltölti a teljes fájlt. |
 
 ## <a name="debugging-techniques"></a>Hibakeresési technikák
 
@@ -148,7 +148,7 @@ Amikor elküld egy folyamat futását, és az authoring (szerzői műveletek) ol
 1. A modul jobb oldali ablaktáblájában lépjen a  **kimenetek és naplók** lapra.
 1. Bontsa ki a jobb oldali ablaktáblát, és válassza ki a **70_driver_log.txt** a fájl böngészőben való megtekintéséhez. A naplókat helyileg is letöltheti.
 
-    ![Kibontott kimeneti ablaktábla a tervezőben](./media/how-to-debug-pipelines/designer-logs.png)
+    ![Kibontott kimeneti ablaktábla a tervezőben](./media/how-to-debug-pipelines/designer-logs.png)? View = Azure-ml-a&megőrzése-nézet = true)? nézet = Azure-ml-a&megőrzése – nézet = true)
 
 ### <a name="get-logs-from-pipeline-runs"></a>Naplók beolvasása a folyamat-futtatásokból
 
@@ -174,6 +174,6 @@ Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végezni
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg az SDK-referenciát a [azureml-pipeline-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) csomag és a [azureml-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) csomag súgójában.
+* Tekintse meg az SDK-referenciát a [azureml-pipeline-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) csomag és a [azureml-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) csomag súgójában.
 
 * Tekintse meg a [Designer-kivételek és-hibakódok](algorithm-module-reference/designer-error-codes.md)listáját.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e46cca28c049a794db617797d5f09e9f3b5720d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82183500"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006891"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Transport Layer Security az Azure HDInsight
 
@@ -21,10 +21,8 @@ A HDInsight-fürthöz a nyilvános fürt végpontján keresztül létesített ka
 
 Alapértelmezés szerint az Azure HDInsight-fürtök elfogadják a TLS 1,2-kapcsolatokat a nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. A fürt létrehozása során a Azure Portal vagy egy Resource Manager-sablon használatával szabályozhatja az átjáró csomópontjain támogatott minimális TLS-verziót. A portálon válassza ki a TLS-verziót a **Biztonság + hálózatkezelés** lapon a fürt létrehozása során. A Resource Manager-sablonok központi telepítésének ideje alatt használja a **minSupportedTlsVersion** tulajdonságot. Minta sablon: [HDInsight minimális TLS 1,2 rövid útmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Ez a tulajdonság három értéket támogat: "1,0", "1,1" és "1,2", amely a TLS 1.0 +, a TLS 1.1 + és a TLS 1.2 + értéknek felel meg.
 
-> [!IMPORTANT]
-> Az Azure HDInsight az 2020. június 30-ig az összes HTTPS-kapcsolathoz a TLS 1,2-es vagy újabb verziókat fogja érvényesíteni. Javasoljuk, hogy minden ügyfél készen álljon a TLS 1,2-es vagy újabb verzióinak kezelésére. További információ: [Azure HDINSIGHT TLS 1,2 kényszerítés](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Virtuális hálózat megtervezése az Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md)
 * [Hozzon létre virtuális hálózatokat az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).

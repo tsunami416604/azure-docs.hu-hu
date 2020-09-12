@@ -1,5 +1,5 @@
 ---
-title: Számítási erőforrások létrehozása a Python SDK-val
+title: Képzések létrehozása & számítások üzembe helyezése (Python)
 titleSuffix: Azure Machine Learning
 description: A Azure Machine Learning Python SDK segítségével képzési és üzembe helyezési számítási erőforrásokat (számítási célokat) hozhat létre a gépi tanuláshoz
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147502"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662532"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez a Python SDK-val
 
@@ -31,8 +31,12 @@ Ebben a cikkben a számítási célok létrehozásához és kezeléséhez haszn�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
-* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine learning munkaterület](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>Korlátozások
+
+A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>Mi a számítási cél?
 
@@ -55,16 +59,33 @@ Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 * [Távoli virtuális gépek](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>Kiszámítási célok a következtetéshez
+
+A következtetések elvégzése során a Azure Machine Learning létrehoz egy Docker-tárolót, amely a modell és a hozzájuk tartozó erőforrások használatához szükséges. Ezt a tárolót a rendszer a következő telepítési forgatókönyvek egyikében használja:
+
+* A valós idejű következtetésekhez használt __webszolgáltatásként__ . A webszolgáltatás központi telepítései a következő számítási célok egyikét használják:
+
+    * [Helyi számítógép](#local)
+    * [Azure Machine Learning számítási példány](#instance)
+    * [Azure Container Instances](#aci)
+    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
+    * Azure Functions (előzetes verzió). A központi telepítés Azure Functions csak Azure Machine Learning támaszkodik a Docker-tároló felépítésére. Innen Azure Functions használatával telepítjük. További információ: [Machine learning-modell üzembe helyezése Azure functions (előzetes verzió)](how-to-deploy-functions.md).
+
+* Olyan __Batch-következtetési__ végpontként, amely az adatkötegek rendszeres feldolgozására szolgál. A Batch-következtetések [Azure Machine learning számítási fürtöt](#amlcompute)használnak.
+
+* Egy __IoT-eszközre__ (előzetes verzió). A IoT-eszközre történő központi telepítés csak az Azure Machine Learningra támaszkodik a Docker-tároló felépítéséhez. Innen Azure IoT Edge használatával telepítjük. További információ: [telepítés IoT Edge modulként (előzetes verzió)](/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
 
-Ha a helyi számítógépet használja a betanításhoz, nem kell számítási célt létrehoznia.  Csak [küldje el a képzést](how-to-set-up-training-targets.md) a helyi gépről.
+Ha a helyi számítógépet használja a **betanításhoz**, nem kell számítási célt létrehoznia.  Csak [küldje el a képzést](how-to-set-up-training-targets.md) a helyi gépről.
+
+Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) t a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Számítási fürt Azure Machine Learning
 
 Azure Machine Learning számítási fürt felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
 
-A betanítási folyamat a felhőben lévő CPU-vagy GPU-alapú számítási csomópontok fürtön keresztüli elosztásához Azure Machine Learning számítást is használhat. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+A Azure Machine Learning számítási szolgáltatással a felhőben lévő CPU-vagy GPU-számítási csomópontok fürtjét kiterjesztheti egy képzési vagy batch-következtetési folyamatra. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
 Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](how-to-manage-quotas.md).
 
@@ -87,7 +108,7 @@ Azure Machine Learning a számítások újra felhasználhatók a futtatások kö
 
     Emellett állandó Azure Machine Learning számítási erőforrást is létrehozhat és csatolhat [Azure Machine learning Studióban](how-to-create-attach-compute-studio.md#portal-create).
 
-Most, hogy csatlakoztatta a számítást, a következő lépés a [betanítási Futtatás elküldése](how-to-set-up-training-targets.md).
+Most, hogy csatlakoztatta a számítást, a következő lépés a [betanítás futtatása vagy a](how-to-set-up-training-targets.md) [Batch-következtetés futtatása](how-to-use-parallel-run-step.md).
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Csökkentse a számítási fürt költségeit
 
@@ -201,8 +222,15 @@ A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuál
         instance.wait_for_completion(show_output=True)
     ```
 
-Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás beküldése](how-to-set-up-training-targets.md)
+Most, hogy csatlakoztatta a számítást, és konfigurálta a futtatását, a következő lépés a [betanítási Futtatás beküldése](how-to-set-up-training-targets.md) vagy [egy modell üzembe helyezése a következtetéshez](how-to-deploy-local-container-notebook-vm.md).
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instance
+
+A modell telepítésekor a Azure Container Instances (ACI) dinamikusan jön létre. Más módon nem hozhat létre vagy csatolhat ACI-t a munkaterülethez. További információ: [modell üzembe helyezése Azure Container instances](how-to-deploy-azure-container-instance.md).
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Az Azure Kubernetes Service (ak) számos konfigurációs lehetőséget biztosít a Azure Machine Learning használata esetén. További információ: [Az Azure Kubernetes szolgáltatás létrehozása és csatlakoztatása](how-to-create-attach-kubernetes.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Távoli virtuális gépek
 
@@ -437,7 +465,7 @@ except ComputeTargetException:
 Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-adla) .
 
 > [!TIP]
-> Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) másolhatja az Adatmásolást a betanítás előtt.
+> Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) másolhatja az Adatmásolást a betanítás előtt.
 
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 

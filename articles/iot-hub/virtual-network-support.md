@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272899"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018356"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -226,6 +226,8 @@ Most az egyéni Service Bus-végpont úgy van beállítva, hogy a hub rendszerhe
 
 IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/create-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
 2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
@@ -287,7 +289,7 @@ A Python esetében töltse le a korlátozott verziót a GitHubról.
     > pip install./azure_iot_hub-2.2.0_limited-py2. py3-none-any. WHL
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokra kattintva további információt találhat IoT Hub szolgáltatásairól:
 

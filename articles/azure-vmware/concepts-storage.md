@@ -3,12 +3,12 @@ title: Fogalmak – tárolás
 description: Ismerje meg a főbb tárolási képességeket az Azure VMware Solution előzetes privát felhőkben.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752212"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024315"
 ---
 # <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware-megoldás előzetes verziójú tárolási fogalmak
 
@@ -28,7 +28,7 @@ A fürtállomások helyi tárterülete a fürtre kiterjedő vSAN-adattárban has
 
 ## <a name="data-at-rest-encryption"></a>Inaktív adatok titkosítása
 
-a vSAN adattárolók alapértelmezés szerint a REST titkosítást használják. A titkosítási megoldás KMS-alapú, és támogatja a vCenter műveleteket. A kulcsok tárolása titkosított, HSM-alapú Azure Key Vault főkulcs által burkoltan történik. Ha egy gazdagépet bármilyen okból eltávolítanak a fürtből, az SSD-lemezeken lévő adatok azonnal érvénytelenítve lettek.
+a vSAN adattárolók alapértelmezés szerint a REST titkosítást használják. A titkosítási megoldás KMS-alapú, és támogatja a vCenter műveleteket. A kulcs titkosítási kulcsainak tárolása egy Azure Key Vault történik, és ha egy gazdagépet bármilyen okból eltávolítanak a fürtből, a rendszer azonnal érvényteleníti az SSD-k adatait.
 
 ## <a name="scaling"></a>Méretezés
 
@@ -38,7 +38,7 @@ A natív fürt tárolókapacitása méretezhető úgy, hogy gazdagépeket ad hoz
 
 Használhatja az Azure Storage-szolgáltatásokat a saját felhőben futó munkaterheléseken. Az Azure Storage szolgáltatásai közé tartoznak a Storage-fiókok, a Table Storage és a Blob Storage. A számítási feladatok Azure Storage-szolgáltatásokhoz való kapcsolódása nem haladja meg az internetet. Ez a kapcsolat nagyobb biztonságot nyújt, és lehetővé teszi SLA-alapú Azure Storage-szolgáltatások használatát a saját Felhőbeli számítási feladatokban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés a [saját Felhőbeli identitással kapcsolatos fogalmak][concepts-identity]megismerése.
 

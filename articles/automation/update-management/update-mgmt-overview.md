@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660908"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024136"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -18,8 +18,8 @@ Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben
 
 A virtuális gépek Update Management a következő módokon engedélyezhető:
 
-* Egy vagy több Azure-gép [Azure Automation-fiókjából](update-mgmt-enable-automation-account.md) .
-* Manuálisan nem Azure-beli gépek esetén.
+* Egy vagy több Azure-beli és nem Azure-beli gép [Azure Automation-fiókjából](update-mgmt-enable-automation-account.md) .
+* Manuálisan nem Azure-beli gépek esetén, beleértve az [Azure arc-kompatibilis kiszolgálókon](../../azure-arc/servers/overview.md) (előzetes verzió) regisztrált gépeket vagy kiszolgálókat.
 * Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetében érhető el.
 * [Több Azure](update-mgmt-enable-portal.md) -beli virtuális gép esetén válassza ki őket a Azure Portal Virtual Machines lapján.
 
@@ -40,21 +40,17 @@ A Update Management által felügyelt gépek a következő konfigurációkat has
 * Automation hibrid runbook-feldolgozó
 * Microsoft Update vagy Windows Server Update Services (WSUS) Windows rendszerű gépekhez
 
-Az alábbi ábra azt szemlélteti, hogy a Update Management hogyan vizsgálja és alkalmazza a biztonsági frissítéseket a munkaterületen lévő összes csatlakoztatott Windows Server-és Linux-gépen:
+Az alábbi ábra azt szemlélteti, hogy a Update Management hogyan vizsgálja és alkalmazza a biztonsági frissítéseket a munkaterület összes csatlakoztatott Windows Server-és Linux-kiszolgálójára vonatkozóan:
 
 ![Update Management munkafolyamat](./media/update-mgmt-overview/update-mgmt-updateworkflow.png)
 
-A Update Management használatával natív módon telepíthet gépeket több előfizetésben ugyanahhoz a bérlőhöz.
+A Update Management használatával natív módon telepíthetők a több előfizetésben lévő gépekre ugyanabban a bérlőben.
 
-A csomag felszabadítása után 2 – 3 órát vesz igénybe, hogy a javítás megjelenjen a Linux rendszerű gépek értékeléséhez. A Windows rendszerű gépek esetében 12 – 15 órát vesz igénybe, hogy a javítás megjelenjen az értékelés után.
-
-Miután a gép befejezte a frissítések megfelelőségi vizsgálatát, az ügynök tömegesen továbbítja az adatokat Azure Monitor naplókhoz. Windows rendszerű gépen a megfelelőségi vizsgálat alapértelmezés szerint 12 óránként fut.
+A csomag felszabadítása után 2 – 3 órát vesz igénybe, hogy a javítás megjelenjen a Linux rendszerű gépek értékeléséhez. A Windows rendszerű gépek esetében 12 – 15 órát vesz igénybe, hogy a javítás megjelenjen az értékelés után. Amikor egy gép befejezi a frissítések megfelelőségi vizsgálatát, az ügynök tömegesen továbbítja az adatokat Azure Monitor naplókhoz. Windows rendszerű gépen a megfelelőségi vizsgálat alapértelmezés szerint 12 óránként fut. Linux rendszerű gépek esetén a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Ha a Log Analytics ügynök újraindítása megtörténik, a rendszer 15 percen belül elindít egy megfelelőségi vizsgálatot.
 
 A vizsgálati ütemterven kívül a frissítés megfelelőségének vizsgálata a Log Analytics ügynök újraindítása után 15 percen belül elindul, a frissítés telepítése előtt és a frissítés telepítése után.
 
-Linux rendszerű gépek esetén a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Ha a Log Analytics ügynök újraindítása megtörténik, a rendszer 15 percen belül elindít egy megfelelőségi vizsgálatot.
-
-Update Management a jelentést arról, hogy a gép milyen naprakészen van, hogy milyen forrásra van konfigurálva a szinkronizáláshoz. Ha a Windows rendszerű gép úgy van konfigurálva, hogy a WSUS szolgáltatásnak jelentsen, attól függően, hogy mikor szinkronizálta az Microsoft Update, az eredmények eltérhetnek attól, amit Microsoft Update mutat. Ez a viselkedés ugyanaz, mint a Linux rendszerű gépeken, amelyek úgy vannak konfigurálva, hogy nyilvános tárház helyett helyi tárházba jelentsenek.
+Update Management a jelentést arról, hogy a gép milyen naprakészen van, hogy milyen forrásra van konfigurálva a szinkronizáláshoz. Ha a Windows rendszerű gép úgy van konfigurálva, hogy [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) jelentésre legyen állítva, attól függően, hogy mikor szinkronizálta a WSUS-t a Microsoft Update, az eredmények eltérhetnek a Microsoft Update láthatótól. Ez a viselkedés ugyanaz, mint a Linux rendszerű gépeken, amelyek úgy vannak konfigurálva, hogy nyilvános tárház helyett helyi tárházba jelentsenek.
 
 > [!NOTE]
 > Ahhoz, hogy a szolgáltatás megfelelően jelentsen, Update Management szükség van bizonyos URL-címekre és portokra. Ha többet szeretne megtudni ezekről a követelményekről, tekintse meg a [hálózati konfiguráció](../automation-hybrid-runbook-worker.md#network-planning)című témakört.
@@ -166,7 +162,7 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
 | Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
@@ -176,13 +172,13 @@ A következő táblázat ismerteti a Update Management által támogatott csatla
 
 A Update Management a következő szabályok használatával vizsgálja a felügyelt gépeket az adatkezeléshez. 30 perc és 6 óra között eltarthat, amíg az irányítópult a felügyelt gépekről származó frissített adatok megjelenítésére is képes.
 
-* Minden Windows-gép – Update Management naponta kétszer ellenőrzi az egyes gépeket. A rendszer 15 percenként lekérdezi a Windows API-t az utolsó frissítés idejére annak megállapítására, hogy megváltozott-e az állapot. Ha az állapot módosult, Update Management elindítja a megfelelőségi vizsgálatot.
+* Minden Windows-gép – Update Management naponta kétszer ellenőrzi az egyes gépeket.
 
 * Minden linuxos gép – Update Management óránkénti vizsgálatot végez.
 
 A Update Management-t használó gépek átlagos adatfelhasználása Azure Monitor-naplók havonta körülbelül 25 MB. Ez az érték csak egy közelítés, és változhat a környezettől függően. Javasoljuk, hogy figyelje a környezetét, hogy nyomon követhesse a pontos használatot. A Azure Monitor naplók adatfelhasználásának elemzésével kapcsolatos további információkért lásd: [a használat és a költséghatékonyság kezelése](../../azure-monitor/platform/manage-cost-storage.md).
 
-## <a name="network-planning"></a><a name="ports"></a>Hálózati tervezés
+## <a name="network-planning"></a><a name="ports"></a>Hálózattervezés
 
 A következő címek megadása kifejezetten a Update Management. A címekkel folytatott kommunikáció az 443-as porton keresztül történik.
 
@@ -256,11 +252,12 @@ Az Azure [Resource Manager-sablonok](update-mgmt-enable-template.md) segítség�
 
 Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a felügyelni kívánt gépeket:
 
-* [Virtuális gépről](update-mgmt-enable-vm.md)
-* [Több gép tallózása](update-mgmt-enable-portal.md)
+* [Azure-beli virtuális gépről](update-mgmt-enable-vm.md)
+* [Több Azure-beli virtuális gép tallózása](update-mgmt-enable-portal.md)
 * [Azure Automation-fiókból](update-mgmt-enable-automation-account.md)
+* Az ív használatára képes kiszolgálók (előzetes verzió) vagy a nem Azure-beli gépek esetében telepítse a [log Analytics ügynököt](../../azure-monitor/platform/log-analytics-agent.md) , majd [engedélyezze a munkaterületen lévő gépek](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) Update Managementét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Update Management használatáról a [virtuális gépek frissítéseinek kezelése](update-mgmt-manage-updates-for-vm.md)című témakörben olvashat bővebben.
 

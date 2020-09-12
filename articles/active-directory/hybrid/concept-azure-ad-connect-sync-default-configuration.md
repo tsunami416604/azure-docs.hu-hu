@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548866"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661866"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk a beépített konfigurációs szabályokat ismerteti. Dokumentálja a szabályokat, és hogy ezek a szabályok milyen hatással vannak a konfigurációra. Emellett Azure AD Connect Sync alapértelmezett konfigurációját is ismerteti. A cél az, hogy az olvasó tudomásul veszi, hogyan működik a deklaratív kiépítés nevű konfigurációs modell egy valós példában. Ez a cikk azt feltételezi, hogy már telepítette és konfigurálta Azure AD Connect szinkronizálást a telepítővarázsló használatával.
@@ -223,13 +223,13 @@ Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal,
 | Name | Megjegyzés |
 |:--- |:--- |
 | A from AD – felhasználói csatlakozás |Szabály az összekötő terület objektumainak metaverse-vel való csatlakoztatásához. |
-| A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és az Office 365-be való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |
+| A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és Microsoft 365ba való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |
 | A from AD – Common from Exchange |A globális címlistában található attribútumok. Feltételezzük, hogy az adatminőség a legjobb abban az erdőben, ahol a felhasználó postaládáját megtalálták. |
 | A from AD – Common |A globális címlistában található attribútumok. Ha nem találtunk egy postaládát, a többi csatlakoztatott objektum is hozzájárulhat az attribútum értékéhez. |
 | A from AD – felhasználói Exchange |Csak akkor létezik, ha az Exchange észlelve lett. Az összes infrastruktúra-Exchange-attribútumot átfolyik. |
 | A from AD – felhasználó Lync |Csak akkor létezik, ha a Lync észlelve lett. Az összes infrastruktúra Lync-attribútumot átfolyik. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 * Továbbra is olvashatja, hogyan működik a beépített konfiguráció a [felhasználók és a névjegyek megismeréséhez](concept-azure-ad-connect-sync-user-and-contacts.md)

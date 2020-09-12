@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 1b5c756fed5d172593b23c2a157c280caa614940
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098695"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016245"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 pénzügyi és üzemeltetési funkciók ellenőrzése
 
@@ -35,7 +35,7 @@ A Microsoft minősítési csapata áttekinti a videót és a fájlokat, majd jó
 
 ### <a name="option-1-30-minute-conference-call"></a>Lehetőség 1:30 perces konferenciahívásra
 
-A végső felülvizsgálati hívás megadásához vegye fel a kapcsolatot [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) az ajánlat nevével és néhány lehetséges időponttal 8 órakor. és 5 óra Csendes-óceáni idő.
+A végső felülvizsgálati hívások bejelentéséhez vegye fel a kapcsolatot [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) az ajánlat nevével, és néhány lehetséges időpontot a csendes-óceáni idő 8 és 5 óra között.
 
 ### <a name="option-2-upload-a-demo-video-and-lcs-screenshots"></a>2. lehetőség: bemutató videó és LCS képernyőképek feltöltése
 
@@ -60,7 +60,7 @@ A végső felülvizsgálati hívás megadásához vegye fel a kapcsolatot [appso
     | --- | --- |
     | Csomag – áttekintés | [![Csomag áttekintése képernyő](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Megoldás-jóváhagyók</li></ul> | [![Csomag áttekintése képernyő](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Csomag tartalma<ul><li>Modellezés</li><li>Szoftveresen telepíthető csomag</li></ul> | [![Csomag tartalmának képernyője](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Csomag tartalma<ul><li>Modell</li><li>Szoftveresen telepíthető csomag</li></ul> | [![Csomag tartalmának képernyője](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>CSOPORTMENTESSÉGi konfiguráció</li><li>Adatbázis biztonsági mentése</li></ul><br>Az összetevők nem szükségesek a **GER konfigurációs** szakaszban. | [![Csomag tartalma két képernyő](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI jelentési modell</li><li>BPM-összetevő</li></ul><br>Az összetevők nem szükségesek a **Power bi** szakaszban. | [![Csomag tartalmának három képernyője](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Adatcsomag feldolgozása</li><li>Megoldási licencszerződés és adatvédelmi szabályzat</li></ul><br>A **csoportmentességi konfiguráció** és a **Power bi jelentési modell** részei nem kötelezőek a pénzügyi és üzemeltetési ajánlatokhoz. | [![Csomag tartalmának négy képernyője](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
@@ -74,6 +74,6 @@ A végső felülvizsgálati hívás megadásához vegye fel a kapcsolatot [appso
 
     [![A Project Library ablak megjelenítése](media/dynamics-365-finance-operations/supplemental-content.png)](media/dynamics-365-finance-operations/supplemental-content.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ajánlatok létrehozásával kapcsolatos további tudnivalókért lásd: [Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).

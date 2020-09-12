@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1449114ad14ebbd064f95ad2853b516893ba4b12
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908392"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661692"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
@@ -37,7 +37,7 @@ Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végezni
   * Jegyzetfüzet virtuális gép számítási példánya a virtuális hálózaton
   * Olyan ügyfélszámítógép, amely magánhálózati kapcsolattal rendelkezik a virtuális hálózathoz VPN-vagy ExpressRoute-n keresztül.
 
-Az Azure Virtual Network és az Azure Machine Learning használatával kapcsolatos további információkért lásd: [Az Azure-beli Virtual Network-kísérletezés és a feladatok következtetése](how-to-enable-virtual-network.md).
+Az Azure Virtual Network és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 
 > [!TIP]
 > Habár a virtuális hálózatokat nem futtató Azure Machine Learning erőforrásokkal is dolgozhat, javasolt a virtuális hálózat használata.
@@ -281,7 +281,7 @@ Mentse az `ip_address` értéket. A következő szakaszban használatos.
 Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a modell üzembe helyezésében található Python-kóddal. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A VS Code és a debugpy használatával a Docker-tárolón belül futó kód is csatolható.
 
 > [!IMPORTANT]
-> Ez a hibakeresési módszer nem működik `Model.deploy()` helyi modell használatakor és `LocalWebservice.deploy_configuration` üzembe helyezése esetén. Ehelyett létre kell hoznia egy rendszerképet a [Model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) metódus használatával.
+> Ez a hibakeresési módszer nem működik `Model.deploy()` helyi modell használatakor és `LocalWebservice.deploy_configuration` üzembe helyezése esetén. Ehelyett létre kell hoznia egy rendszerképet a [Model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) metódus használatával.
 
 A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Docker-telepítés szükséges. A Docker használatával kapcsolatos további információkért lásd a [Docker dokumentációját](https://docs.docker.com/). Vegye figyelembe, hogy a számítási példányok használatakor a Docker már telepítve van.
 

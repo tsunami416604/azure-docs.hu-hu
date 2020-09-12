@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758249"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016843"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500-átjáró eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
-*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
+*Ez a cikk a megoldás-építők esetében érvényes.*
 
 Ez a cikk azt ismerteti, hogyan lehet megoldás-szerkesztőként csatlakozni a Rigado Cascade 500 Gateway-eszközhöz a Microsoft Azure IoT Central alkalmazáshoz. 
 
@@ -51,7 +51,7 @@ Lépcsőzetes 500-eszköz sablonjának hozzáadása:
 
 Most le kell kérnie az Azure IoT Central-alkalmazás **hatókör-azonosítóját** és **elsődleges kulcsát** a lépcsőzetes 500-eszköz csatlakoztatásához. 
 
-1. Navigáljon a **felügyelet** elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre. 
+1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre. 
 2. Jegyezze fel IoT Central alkalmazás **hatókör-azonosítóját** .
 ![Alkalmazás-hatókör azonosítója](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
 3. Most kattintson a **kulcsok megtekintése** elemre, és jegyezze fel az elsődleges **kulcs** 
@@ -65,11 +65,11 @@ Miután az eszköz csatlakozik az internethez, a Rigado leküldheti a konfigurá
 
 Ez a frissítés alkalmazza a IoT Central kapcsolat részleteit a lépcsőzetes 500 eszközön, és megjelenik az eszközök listájában. 
 
-![Elsődleges kulcs](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
+![Eszközök listája](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
 Most már készen áll a C500-eszköz használatára a IoT Central alkalmazásban!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

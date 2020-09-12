@@ -1,27 +1,27 @@
 ---
-title: A nyeremények összegzésének áttekintése – Azure Marketplace
+title: A nyeremények összegzésének áttekintése, Azure Marketplace
 description: A nyeremények összegzése az ajánlatával kapcsolatban szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 708fc2c0783bdefa4ac4fa4b73f10733bba0bc04
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479812"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006924"
 ---
 # <a name="payout-summary-overview"></a>Fizetési összegzés áttekintése
 
 A [kifizetési összefoglaló](./payout-summary.md) a Microsoft által szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
 
-Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetésekről is tájékozódhat a kifizetési összefoglalóban. Az Azure Marketplace-fizetéssel kapcsolatos további információkért lásd: [Azure Marketplace részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy) és [Microsoft Azure Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetésekről is tájékozódhat a kifizetési összefoglalóban. További információ az Azure Marketplace-ről: befizetések [a kereskedelmi piactéren](./get-paid.md) és a [Microsoft kiadói szerződésben](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es [fizetési küszöbértéket](./payment-thresholds-methods-timeframes.md) . A fizetési küszöbértékre vonatkozó részletekért tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+> Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es fizetési küszöbértéket. Részletekért tekintse meg a [Microsoft kiadói szerződését](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 A kifizetés részleteinek megtekintéséhez jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/dashboard/home) , és válassza a képernyő jobb felső sarkában található kifizetési ikont:
 
@@ -29,7 +29,7 @@ A kifizetés részleteinek megtekintéséhez jelentkezzen be a [partner Centerbe
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
 
-Ezek a kifizetési jelentés eléréséhez szükséges szerepkörök és engedélyek:
+Ezek a szerepkörök és engedélyek a kifizetési jelentés eléréséhez:
 
 | Jelentések/lapok | Fióktulajdonos | Manager | Fejlesztő | Üzleti közreműködő | Pénzügyi közreműködő | Marketingszakértő |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,13 +45,13 @@ Ezek a kifizetési jelentés eléréséhez szükséges szerepkörök és engedé
 
 ## <a name="payment-schedules"></a>Fizetési ütemtervek
 
-A fizetési ütemtervek megvitatására, beleértve a tartási időszakokat, a partnerek láthatóságát, valamint azt, hogy az ügyfél milyen bankkártyát vagy számlát használ, tekintse meg a kifizetés **részletei** témakör [fizetési ütemtervek](./payout-policy-details.md#payment-schedules) című szakaszát.
+A fizetési ütemtervekkel kapcsolatos megbeszélésekhez, beleértve a tartási időszakokat, a partnerek láthatóságát, valamint azt, hogy az ügyfél milyen bankkártyát vagy számlát használ, tekintse meg a kifizetési **adatokról** szóló cikk [fizetési ütemtervek](./payout-policy-details.md#payment-schedules) című szakaszát.
 
 ## <a name="transaction-history-download-export"></a>Tranzakciós előzmények letöltésének exportálása
 
 Ez a beállítás a tranzakció előzményei lapon megjelenő egyes letételi sorok letöltését teszi lehetővé. Ez magában foglalja a beszerzési típust, a dátumot, a kapcsolódó tranzakciók mennyiségét, az ügyfél, a termék és az ösztönző programhoz kapcsolódó egyéb tranzakciós adatokat.
 
-| Oszlop neve | Leírás |
+| Oszlop neve | Description |
 | --- | --- |
 | earningId | Az egyes keresések egyedi azonosítója |
 | participantId | A program keretében keresett partner elsődleges identitása |

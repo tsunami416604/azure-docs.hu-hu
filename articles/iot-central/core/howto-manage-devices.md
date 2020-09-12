@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157942"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017098"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT Central-alkalmazásban lévő eszközök kezelése
 
-
-
-Ez a cikk azt ismerteti, hogyan felügyelheti az eszközöket az Azure IoT Central alkalmazásban. Operátorként a következőket teheti:
+Ez a cikk azt ismerteti, hogyan kezelheti az eszközöket az Azure IoT Central alkalmazásban. Operátorként a következőket teheti:
 
 - Az **eszközök** lapon megtekintheti, hozzáadhatja és törölheti az Azure IoT Central-alkalmazáshoz csatlakoztatott eszközöket.
 - Naprakész leltárt készíthet az eszközökről.
@@ -51,7 +49,7 @@ Eszköz hozzáadása az Azure IoT Central-alkalmazáshoz:
 
 1. A **szimulált** váltógomb be- **vagy** **kikapcsolása**. Egy valós eszköz az Azure IoT Central-alkalmazáshoz csatlakoztatott fizikai eszközhöz. Egy szimulált eszközön az Azure IoT Central által létrehozott mintaadatok láthatók.
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** gombra.
 
 1. Ez az eszköz most megjelenik az eszköz listájában ehhez a sablonhoz. Válassza ki az eszközt az eszköz részletei lap megjelenítéséhez, amely az eszköz összes nézetét tartalmazza.
 
@@ -71,7 +69,7 @@ Eszközök tömeges regisztrálása az alkalmazásban:
     > [!NOTE]
     > Ha még nincs telepítve az eszközön, akkor a **minden eszköz** területen importálhatja az eszközöket, és sablon nélkül regisztrálhatja őket. Az eszközök importálása után áttelepítheti azokat egy sablonba.
 
-1. Kattintson az **Importálás** gombra.
+1. Válassza az **Importálás** lehetőséget.
 
     ![Importálási művelet](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -174,7 +172,7 @@ A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például
 1. Válassza a **Mentés** elemet. Ha az írható tulajdonságokat mentette, az értékeket a rendszer elküldi az eszközre. Amikor az eszköz megerősíti az írható tulajdonság módosítását, az állapot visszakerül a **szinkronizált**értékre. Ha mentett egy Felhőbeli tulajdonságot, az érték frissül.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan felügyelheti az eszközöket az Azure IoT Central alkalmazásban, itt látható a következő lépés:
 

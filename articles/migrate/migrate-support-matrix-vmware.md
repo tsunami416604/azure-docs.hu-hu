@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266969"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660271"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -33,7 +33,7 @@ Ha VMware virtuális gépeket szeretne áttelepíteni az Azure-ba, tekintse át 
 
 **VMware** | **Részletek**
 --- | ---
-**vCenter Server** | A felderíteni és értékelni kívánt gépeket a 5,5, 6,0, 6,5 vagy 6,7 vCenter Server-es verzióval kell felügyelni.
+**vCenter Server** | A felderíteni és értékelni kívánt gépeket a 5,5, 6,0, 6,5, 6,7 vagy 7,0 vCenter Server-es verzióval kell felügyelni.<br/><br/> A VMware virtuális gépek felderítése az ESXi-gazdagép adatainak a berendezésben való megadásával jelenleg nem támogatott.
 **Engedélyek** | A kiszolgáló értékeléséhez vCenter Server írásvédett fiókra van szükség a felderítéshez és értékeléshez.<br/><br/> Ha meg szeretné tenni az alkalmazások felderítését vagy a függőségi vizualizációt, a fióknak jogosultsággal kell rendelkeznie **Virtual Machines**  >  **vendég műveleteihez**.
 
 ## <a name="vm-requirements"></a>VIRTUÁLIS gépekre vonatkozó követelmények
@@ -89,7 +89,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **hitelesítő adatok vCenter Server** | A függőségi vizualizációhoz egy vCenter Server fiókra van szükség, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik.
 **Windowsos VM-engedélyek** |  A függőségek elemzéséhez a Azure Migrate készüléknek tartományi rendszergazdai fiókra vagy helyi rendszergazdai fiókra van szüksége a Windows rendszerű virtuális gépek eléréséhez.
 **Linux rendszerű virtuális gépek** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Linux-fiók** | A függőségek elemzéséhez Linux rendszerű gépeken a Azure Migrate berendezésnek rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szüksége.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
+**Linux-fiók** | A függőségek elemzéséhez Linux rendszerű gépeken a Azure Migrate berendezésnek rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szüksége.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE. A következő parancsokkal állíthatja be ezeket a képességeket: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
 **Szükséges ügynökök** | Nem szükséges ügynök az elemezni kívánt gépeken.
 **VMware-eszközök** | Az elemezni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket (a 10,2-nál újabb).
 
@@ -115,7 +115,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat.
 - [Felkészülés a VMware](tutorial-prepare-vmware.md) -értékelésre.

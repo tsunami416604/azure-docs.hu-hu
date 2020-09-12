@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 619bc7cec2f8a79a656cf3a7ad1f86d1e5786abb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322992"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016000"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Hivatkozás – kommunikációs protokoll kiválasztása
 
@@ -55,6 +55,8 @@ A következő szempontokat kell figyelembe vennie, amikor kijelöli a protokollt
 > [!WARNING]
 > A HTTPS használatakor minden eszköznek 25 percenként legfeljebb egyszer kell lekérdezni a felhőből az eszközre irányuló üzeneteket. A fejlesztés során minden eszköz gyakrabban tud lekérdezni, ha szükséges.
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
+
 ## <a name="port-numbers"></a>Portszámok
 
 Az eszközök különböző protokollok használatával kommunikálhatnak az Azure IoT Hubával. A protokoll választását jellemzően a megoldás konkrét követelményei vezérlik. A következő táblázat felsorolja azokat a kimenő portokat, amelyeknek az eszköz számára nyitva kell lennie egy adott protokoll használatához:
@@ -69,6 +71,6 @@ Az eszközök különböző protokollok használatával kommunikálhatnak az Azu
 
 Miután létrehozott egy IoT hubot egy Azure-régióban, az IoT hub megtartja ugyanazt az IP-címet az IoT hub élettartama szempontjából. Ha azonban a Microsoft az IoT hub-t egy másik méretezési egységbe helyezi a szolgáltatás minőségének fenntartása érdekében, akkor az új IP-címet kap.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogy IoT Hub hogyan valósítja meg a MQTT protokollt, tekintse meg [a kommunikáció az IoT hub használatával című témakört a MQTT protokoll segítségével](iot-hub-mqtt-support.md).

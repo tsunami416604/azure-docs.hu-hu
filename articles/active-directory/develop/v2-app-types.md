@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121170"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015806"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -42,9 +42,9 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Egyoldalas alkalmazások (JavaScript)
 
-Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás-előtérrel, amely elsősorban a JavaScriptben íródott, gyakran olyan keretrendszerrel, mint a szögletes, a reakciós vagy a Vue. A Microsoft Identity platform végpontja támogatja ezeket az alkalmazásokat az [OAuth 2,0 engedélyezési kód folyamatával](v2-oauth2-auth-code-flow.md).
+Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás-előtérrel, amely elsősorban a JavaScriptben íródott, gyakran olyan keretrendszerrel, mint a szögletes, a reakciós vagy a Vue. A Microsoft Identity platform végpontja támogatja ezeket az alkalmazásokat az [OpenID Connect](v2-protocols-oidc.md) protokoll használatával történő hitelesítéshez, illetve az [OAuth 2,0 implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) vagy az újabb [OAUTH 2,0 engedélyezési kód + PKCE folyamat](v2-oauth2-auth-code-flow.md) engedélyezéséhez (lásd alább).
 
-Ebben a folyamatban az alkalmazás egy kódot kap a Microsoft Identity platform `authorize` végponttól, és visszaváltja a tokenekhez, és frissíti a jogkivonatokat a helyek közötti webes kérelmek használatával. A frissítési jogkivonat 24 óránként lejár, és az alkalmazásnak egy másik kódot kell igényelnie.
+Az alábbi folyamatábra a OAuth 2,0 engedélyezési kód engedélyezését mutatja be (a PKCE kihagyott részletekkel), ahol az alkalmazás kódot kap a Microsoft Identity platform `authorize` végponttól, és visszaváltja a tokenekhez, és frissíti a tokeneket a helyek közötti webes kérelmek használatával. A frissítési jogkivonat 24 óránként lejár, és az alkalmazásnak egy másik kódot kell igényelnie. A hozzáférési tokenen kívül a `id_token` bejelentkezett felhasználót az ügyfélalkalmazás számára általában ugyanarra a folyamatra és/vagy egy külön OpenID Connect-kérelemre is kéri (itt nem látható).
 
 ![A SPA-alkalmazások kódjának folyamatábrája](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
@@ -128,6 +128,6 @@ Ebben a folyamatban az alkalmazás közvetlenül a `/token` végpontot használj
 
 Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait tartalmazó dokumentációt](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Microsoft Identity platform által támogatott típusú alkalmazásokat, ismerkedjen meg a [OAuth 2,0 és az OpenID Connecttel](active-directory-v2-protocols.md) , hogy megértse a különböző forgatókönyvekben használt protokoll-összetevőket.

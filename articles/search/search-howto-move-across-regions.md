@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926949"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007043"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search-szolgáltatás áthelyezése másik Azure-régióba
 
@@ -23,7 +23,13 @@ Alkalmanként előfordulhat, hogy az ügyfelek egy másik régióba helyezik át
 > [!NOTE]
 > A Azure Portal minden szolgáltatás rendelkezik **exportálási sablon** paranccsal. Az Azure Cognitive Search esetében ez a parancs egy szolgáltatás alapszintű definícióját (név, hely, réteg, replika és partíciók száma) állítja elő, de nem ismeri fel a szolgáltatás tartalmát, és nem végez kulcsokat, szerepköröket vagy naplókat. Bár a parancs létezik, nem javasoljuk, hogy használja a keresési szolgáltatás áthelyezéséhez.
 
-## <a name="guidance-for-moving-a-service"></a>Útmutató a szolgáltatások áthelyezéséhez
+## <a name="prerequisites"></a>Előfeltételek
+
++ Ellenőrizze, hogy a tárfiók által használt szolgáltatások és funkciók támogatottak-e a célként megadott régióban.
+
++ Az előzetes verziójú funkciók használatához ellenőrizze, hogy az előfizetése engedélyezett-e a célként megadott régióban.
+
+## <a name="prepare-and-move"></a>Előkészítés és áthelyezés
 
 1. Azonosítsa a függőségeket és a kapcsolódó szolgáltatásokat, hogy megértsék a szolgáltatások áthelyezésének teljes hatását, ha többre van szüksége, mint az Azure Cognitive Search.
 
@@ -41,9 +47,11 @@ Alkalmanként előfordulhat, hogy az ügyfelek egy másik régióba helyezik át
 
 1. Az ügyfélalkalmazások és a tesztelési csomagok frissítése az új szolgáltatásnév és API-kulcsok használatára és az összes alkalmazás tesztelésére.
 
-1. Törölje a régi szolgáltatást, ha az új szolgáltatás teljes körű tesztelése és működtetése megtörtént.
+## <a name="discard-or-clean-up"></a>Elvetés vagy felesleges elemek eltávolítása
 
-## <a name="next-steps"></a>További lépések
+Törölje a régi szolgáltatást, ha az új szolgáltatás teljes körű tesztelése és működtetése megtörtént. A szolgáltatás törlése automatikusan törli a szolgáltatáshoz társított összes tartalmat.
+
+## <a name="next-steps"></a>Következő lépések
 
 A következő hivatkozások segítséget nyújtanak a fenti lépések elvégzéséhez szükséges további információk megkereséséhez.
 

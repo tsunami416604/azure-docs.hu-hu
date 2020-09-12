@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan importálhat adatforrásokat a Azure Machine Le
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495371"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006984"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Az adatimportálás Azure Machine Learning designerbe (előzetes verzió)
 
@@ -38,19 +38,28 @@ Bármely tervező modul kimenetét adatkészletként is regisztrálhatja.
 
 1. Válassza ki azt a modult, amely a regisztrálni kívánt adatokat kiírja.
 
-1. A Tulajdonságok panelen válassza a **kimenetek**  >  **regisztrálása adatkészletet**.
+1. A Tulajdonságok ablaktáblán válassza a **kimenetek + naplók**  >  **regisztrálása adatkészletet**.
 
     ![Az adatkészlet regisztrálása lehetőségre való váltást bemutató képernyőkép](media/how-to-designer-import-data/register-dataset-designer.png)
 
+Ha a modul kimeneti adatokat táblázatos formátumban adja meg, akkor a kimenetet **fájl-adatkészlet** vagy **táblázatos adatkészletként**kell regisztrálnia.
+
+ - A **fájl adatkészlete** fájl adatkészletként regisztrálja a modul kimeneti mappáját. A kimeneti mappa tartalmaz egy adatfájlt és egy olyan metataget, amelyet a Designer belsőleg használ. Válassza ezt a lehetőséget, ha továbbra is használni szeretné a regisztrált adatkészletet a tervezőben. 
+
+ - A **táblázatos adatkészlet** csak a modul kimeneti adatfájlját regisztrálja táblázatos adatkészletként. Ezt a formátumot más eszközök is könnyen felhasználják, például automatizált Machine Learning vagy a Python SDK-ban. Akkor válassza ezt a lehetőséget, ha a regisztrált adatkészletet a tervezőn kívül szeretné használni.  
+
+
+
 ### <a name="use-a-dataset"></a>Adatkészlet használata
 
-A regisztrált adatkészletek a modul palettáján **, az**  >  **adathalmazok adatkészletek**területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a paletta más moduljaival.
+A regisztrált adatkészletek a modul palettáján, az **adatkészletek**területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a vászon más moduljaival. 
 
 ![A mentett adatkészletek helyét bemutató képernyőkép a tervező palettán](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> A tervező jelenleg csak a [táblázatos adatkészletek](how-to-create-register-datasets.md#dataset-types)feldolgozását támogatja. Ha [fájl-adatkészleteket](how-to-create-register-datasets.md#dataset-types)szeretne használni, használja a Python és az R számára elérhető Azure Machine learning SDK-t.
+> A tervező támogatja az [adatkészlet verziószámozását](how-to-version-track-datasets.md). Határozza meg az adatkészlet verzióját az adatkészlet moduljának tulajdonságok paneljén.
+
 
 ## <a name="import-data-using-the-import-data-module"></a>Adatimportálás az Adatimportálási modul használatával
 
@@ -82,7 +91,7 @@ A tervező belsőleg felismeri a következő adattípusokat:
 
 * Sztring
 * Egész szám
-* Decimal
+* Tizedesjegy
 * Logikai
 * Dátum
 
@@ -94,8 +103,8 @@ A tervezőben lévő modulokat a számítási cél mérete korlátozza. Nagyobb 
 
 ## <a name="access-data-in-a-virtual-network"></a>Virtuális hálózatban tárolt adathozzáférés
 
-Ha a munkaterület virtuális hálózatban található, további konfigurációs lépéseket kell végrehajtania a tervezőben lévő adatok megjelenítéséhez. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [hálózati elkülönítés a betanítás során & a privát virtuális hálózatokkal való következtetés](how-to-enable-virtual-network.md#machine-learning-studio).
+Ha a munkaterület virtuális hálózatban található, további konfigurációs lépéseket kell végrehajtania a tervezőben lévő adatok megjelenítéséhez. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [Azure Machine learning Studio használata Azure-beli virtuális hálózaton](how-to-enable-studio-virtual-network.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező alapjait az [oktatóanyaggal: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).

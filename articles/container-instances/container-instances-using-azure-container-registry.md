@@ -4,14 +4,13 @@ description: Megtudhatja, hogyan helyezhet üzembe tárolókat a Azure Container
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927436"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656997"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés az Azure Container Instancesben az Azure Container Registryből
 
@@ -31,6 +30,9 @@ A Azure Container Registry további [hitelesítési lehetőségeket](../containe
 
 > [!NOTE]
 > Nem végezheti el a hitelesítést úgy, hogy Azure Container Registry a lemezképek lekérését a tároló csoportjának telepítése során egy ugyanazon a tároló csoportban konfigurált [felügyelt identitás](container-instances-managed-identity.md) használatával.
+
+> [!NOTE]
+> Jelenleg nem lehet lekérni az Azure-Virtual Network üzembe helyezett [Azure Container Registry](../container-registry/container-registry-vnet.md) lemezképeit.
 
 A következő szakaszban létrehoz egy Azure Key vaultot és egy szolgáltatásnevet, és tárolja az egyszerű szolgáltatásnév hitelesítő adatait a tárolóban. 
 
@@ -160,7 +162,7 @@ Ha a tároló lemezképeit egy Azure Container registryben tartja karban, egysze
 
     ![Azure Container Instances tároló csoport részletes nézete][aci-detailsview]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Container Registry hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés Azure Container registryvel](../container-registry/container-registry-authentication.md).
 

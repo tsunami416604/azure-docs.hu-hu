@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507500"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004272"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,14 @@ Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes r�
 ## <a name="status-updates"></a>Állapot-frissítések
 
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
+### <a name="october-2020"></a>Október 2020
+
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+
+- Középnyugat-Németország: 51.116.240.0, 51.116.248.0
+
+Ezek az SQL-átjárók a 2020 október 12-én megkezdik az ügyfél forgalmának elfogadását. 
+
 ### <a name="september-2020"></a>2020. szeptember
 Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva. Ezek az SQL-átjárók a **2020. szeptember 15**-én megkezdik az ügyfelek forgalmának fogadását:
 
@@ -66,7 +74,7 @@ A meglévő SQL Gateway-átjárók a következő régiókban kezdik el a forgalo
 
 A következő átjárók áttelepítése befejeződött: 
 
-### <a name="august-2020"></a>Augusztus 2020
+### <a name="august-2020"></a>2020. augusztus
 
 Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 
@@ -116,6 +124,6 @@ Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogram
 
 Ha a fenti megoldás nem működik, a következő URL-cím használatával kérjen SQL Database vagy SQL felügyelt példányra vonatkozó támogatási kérelmet: https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure SQL kapcsolati architektúráról](connectivity-architecture.md)

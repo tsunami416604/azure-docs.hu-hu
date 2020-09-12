@@ -11,14 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079586"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661930"
 ---
-# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
+# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkaterülethez való hozzáférést. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. A Azure Active Directory lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
@@ -46,7 +46,7 @@ Ha Ön a munkaterület tulajdonosa, szerepköröket adhat hozzá és távolítha
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager-sablonok](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager sablonok](/azure/role-based-access-control/role-assignments-template)
 
 Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-t, a parancssori felület parancsaival rendelhet hozzá szerepköröket a felhasználókhoz:
 
@@ -135,16 +135,16 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 | Tevékenység | Előfizetés szintű hatókör | Erőforráscsoport-szintű hatókör | Munkaterület-szintű hatókör |
 | ----- | ----- | ----- | ----- |
 | Új munkaterület létrehozása | Nem szükséges | Tulajdonos vagy közreműködő | N/A (A létrehozása után válik a tulajdonos vagy A magasabb hatókörű szerepkör örökli) |
-| A munkaterület kiadásának frissítése | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`/workspaces/write` |
-| Kérelem előfizetési szintjének Amlcompute-kvótája vagy a munkaterület szintjének beállítása kvóta | Tulajdonos vagy közreműködő, vagy egyéni szerepkör </br>így`/locations/updateQuotas/action`</br> az előfizetés hatókörében | Nincs engedélyezve | Nincs engedélyezve |
-| Új számítási fürt létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`/workspaces/computes/write` |
-| Új számítási példány létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`/workspaces/computes/write` |
-| Bármilyen típusú Futtatás elküldése | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Folyamat végpontjának közzététele | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
-| Regisztrált modell üzembe helyezése AK/ACI-erőforráson | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| A munkaterület kiadásának frissítése | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `/workspaces/write` |
+| Kérelem előfizetési szintjének Amlcompute-kvótája vagy a munkaterület szintjének beállítása kvóta | Tulajdonos vagy közreműködő, vagy egyéni szerepkör </br>így `/locations/updateQuotas/action`</br> az előfizetés hatókörében | Nincs engedélyezve | Nincs engedélyezve |
+| Új számítási fürt létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `/workspaces/computes/write` |
+| Új számítási példány létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `/workspaces/computes/write` |
+| Bármilyen típusú Futtatás elküldése | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| Folyamat végpontjának közzététele | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Regisztrált modell üzembe helyezése AK/ACI-erőforráson | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Egy üzembe helyezett AK-végponton keresztüli pontozás | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` a következőket: (ha nem használja Azure Active Directory auth) vagy `"/workspaces/read"` (jogkivonat-hitelesítés használatakor) |
-| A tárterület elérése interaktív jegyzetfüzetekkel | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
-| Új egyéni szerepkör létrehozása | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi`Microsoft.Authorization/roleDefinitions/write` | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`/workspaces/computes/write` |
+| A tárterület elérése interaktív jegyzetfüzetekkel | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Új egyéni szerepkör létrehozása | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi `Microsoft.Authorization/roleDefinitions/write` | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `/workspaces/computes/write` |
 
 > [!TIP]
 > Ha a munkaterület első alkalommal történő létrehozásakor hiba lép fel, győződjön meg arról, hogy a szerepköre engedélyezi `Microsoft.MachineLearningServices/register/action` . Ez a művelet lehetővé teszi, hogy regisztrálja az Azure Machine Learning erőforrás-szolgáltatót az Azure-előfizetésében.
@@ -426,9 +426,9 @@ Igen, megadhat egy olyan szerepkört, amely megakadályozza a munkaterület kiad
 Az előfizetési szintű engedélyekre van szükség a munkaterületen található kvóta-alapú műveletek elvégzéséhez. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
-- [A kísérletek és következtetések/pontszámok biztonságos futtatása virtuális hálózaton belül](how-to-enable-virtual-network.md)
+- [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)
 - [Oktatóanyag: modellek betanítása](tutorial-train-models-with-aml.md)
 - [Erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

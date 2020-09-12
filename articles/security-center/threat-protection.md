@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e2f72cc0ea6851caaf5d0db2f17f8e16473d420e
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272501"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667545"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -25,7 +25,7 @@ Azure Security Center fenyegetés elleni védelme átfogó védelmet biztosít a
 
 * **Veszélyforrások elleni védelem Azure számítási erőforrásokhoz**: Windows-gépek, linuxos gépek, Azure app Service és Azure-tárolók
 
-* **Veszélyforrások elleni védelem az Azure-beli adatforrások esetében**: SQL Database és SQL Data Warehouse, Azure Storage és Azure Cosmos db
+* **Veszélyforrások elleni védelem az Azure-beli adatforrások esetében**: SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse), az Azure Storage és az Azure Cosmos db
 
 * **Veszélyforrások elleni védelem az Azure-szolgáltatások rétegeiben**: Azure hálózati réteg, Azure felügyeleti réteg (Azure Resource Manager) (előzetes verzió) és Azure Key Vault (előzetes verzió)
 
@@ -119,7 +119,7 @@ App Service csomagokkal kapcsolatos további információkért lásd: [app Servi
 |Kiadás állapota:|Általánosan elérhető|
 |Árképzési|Standard csomag|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat.<br>A **biztonsági olvasó** megtekintheti az eredményeket.|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -131,19 +131,19 @@ App Service csomagokkal kapcsolatos további információkért lásd: [app Servi
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Veszélyforrások elleni védelem SQL Database és SQL Data Warehouse <a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-azure-synapse-analytics-formerly-sql-data-warehouse"></a>Veszélyforrások elleni védelem a SQL Database és az Azure szinapszis Analytics szolgáltatásban (korábban SQL Data Warehouse) <a name="data-sql"></a>
 
 A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
 A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenciális sebezhetőségek vagy SQL-injektálási támadások, valamint rendellenes adatbázis-hozzáférés és lekérdezési minták vannak.
 
-A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme a speciális SQL biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi, amely a Azure SQL Database, az Azure SQL felügyelt példányaira, a Azure SQL Data Warehouse adatbázisokra és az Azure Virtual Machines SQL-kiszolgálóira terjed ki.
+A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme a speciális SQL biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi, amely magában foglalja a Azure SQL Database, az Azure SQL felügyelt példányain, az Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisait és az Virtual Machines Azure-beli SQL-kiszolgálókat.
 
-További információ:
+További információkért lásd:
 
 * [A komplex veszélyforrások elleni védelem engedélyezése a Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Az Azure-beli SQL serverek komplex veszélyforrások elleni védelmének engedélyezése Virtual Machines](security-center-iaas-advanced-data.md)
-* [A veszélyforrások elleni védelmi riasztások listája SQL Database és SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [A veszélyforrások elleni védelmi riasztások listája SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
@@ -155,7 +155,7 @@ További információ:
 |----|:----|
 |Kiadás állapota:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (előzetes verzió)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (előzetes verzió)|
 |Árképzési|Standard csomag|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -164,8 +164,6 @@ További információ:
 Az Azure Storage veszélyforrások elleni védelme észleli az Azure Storage-fiókok potenciálisan káros tevékenységeit. Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva.
 
 Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében.
-
-A Storage-fiókok védettek 
 
 ### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Milyen típusú riasztásokat biztosít a fenyegetések elleni védelem az Azure Storage-ban?
 
@@ -185,11 +183,11 @@ Ha egy fájl gyanúja szerint kártevőt tartalmaz, Security Center riasztást j
 
 
 
-### <a name="next-steps"></a>További lépések 
+### <a name="next-steps"></a>Következő lépések 
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
-További információ:
+További információkért lásd:
 
 * [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Az Azure Storage veszélyforrások elleni védelmi értesítéseinek listája](alerts-reference.md#alerts-azurestorage)
@@ -204,11 +202,11 @@ További információ:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Veszélyforrások elleni védelem Azure Cosmos DB <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Veszélyforrások elleni védelem Azure Cosmos DB (előzetes verzió) <a name="cosmos-db"></a>
 
 A Azure Cosmos DB riasztások szokatlan és potenciálisan ártalmas kísérletekkel jönnek létre Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához.
 
-További információ:
+További információkért lásd:
 
 * [A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [A veszélyforrások elleni védelmi riasztások listája Azure Cosmos DB (előzetes verzió)](alerts-reference.md#alerts-azurecosmos)
@@ -302,7 +300,7 @@ A DDoS-támadások elleni védelemhez vásároljon Azure DDoS Protection-licence
 A Azure DDoS Protection riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureddos)tekintheti meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a veszélyforrások elleni védelmi funkciókkal kapcsolatos biztonsági riasztásokról, tekintse meg a következő cikkeket:
 
 * [Az összes Azure Security Center-riasztás hivatkozási táblázata](alerts-reference.md)

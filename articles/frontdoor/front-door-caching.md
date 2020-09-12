@@ -3,20 +3,20 @@ title: Azure bejárati ajtó – gyorsítótárazás | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogy az Azure bejárati ajtaja hogyan figyeli a háttérrendszer állapotát
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056958"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024281"
 ---
 # <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtaján
 A következő dokumentum a bejárati ajtó működésének módját határozza meg az olyan útválasztási szabályokkal, amelyeken engedélyezve van a gyorsítótárazás. A bejárati ajtó egy modern Content Delivery Network (CDN), és a dinamikus hely gyorsításával és a terheléselosztással együtt a gyorsítótárazási viselkedést is támogatja, ugyanúgy, mint bármely más CDN.
@@ -88,13 +88,22 @@ A bejárati ajtó segítségével szabályozhatja, hogy a rendszer hogyan gyors�
 - **Gyorsítótár – minden egyedi URL-cím**: ebben a módban minden egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot, a saját gyorsítótárral rendelkező egyedi objektumként lesz kezelve. Például a rendszer a (z) rendszerre irányuló kérelem esetében a háttérbeli választ `www.example.ashx?q=test1` gyorsítótárazza a bejárati ajtó környezetében, és ugyanezen lekérdezési karakterlánccal visszaadja a későbbi gyorsítótárak esetében. A szolgáltatásra irányuló kérelmet `www.example.ashx?q=test2` külön eszközként gyorsítótárazza a saját élettartama beállítással.
 
 ## <a name="cache-purge"></a>Gyorsítótár kiürítése
-A bejárati ajtó gyorsítótárba helyezi az eszközöket, amíg az eszköz élettartama (TTL) lejár. Miután az objektum ÉLETTARTAMa lejár, amikor egy ügyfél kéri az eszközt, az előtérben lévő környezet beolvassa az eszköz új, frissített példányát az ügyfél kérésének kiszolgálásához, és tárolja a gyorsítótár frissítését.
-</br>Az ajánlott eljárás annak biztosítására, hogy a felhasználók mindig megkapják az adategységek legújabb példányát, hogy minden egyes frissítéshez a saját eszközeiket, és azokat új URL-ként tegye közzé. A bejárati ajtó azonnal lekéri az új eszközöket a következő ügyfelek kéréseire. Előfordulhat, hogy a gyorsítótárazott tartalmat törölni kívánja az összes peremhálózati csomópontról, és az összeset kényszeríti az új eszközök beolvasására. Ennek oka lehet a webalkalmazás frissítései, vagy a helytelen adatokat tartalmazó eszközök gyors frissítése.
 
-</br>Válassza ki, hogy milyen eszközöket kíván kiüríteni a peremhálózati csomópontokból. Ha törölni kívánja az összes eszközt, kattintson az összes kiürítés jelölőnégyzetre. Ellenkező esetben írja be az elérési út szövegmezőben az összes törölni kívánt eszköz elérési útját. Az alábbi formátumok támogatottak az elérési úton.
-1. **Egyetlen elérési út kiürítése: az egyes adategységek**kiürítése az eszköz teljes elérési útjának megadásával (a protokoll és a tartomány nélkül), a fájlkiterjesztés használatával, például/Pictures/strasbourg.png;
-2. **Helyettesítő karakteres törlés**: \* a csillag () helyettesítő karakterként is használható. Kiüríti az összes mappát, almappát és fájlt egy végpont alatt, \* az elérési úton, illetve az összes almappa és fájl kiürítése egy adott mappában, a mappa és a \* (például/Pictures/ \* ) után.
-3. **Gyökértartomány kiürítése**: Ürítse ki a végpont gyökerét az elérési úton található "/" értékkel.
+A bejárati ajtó gyorsítótárazza az eszközöket, amíg az eszköz élettartama (TTL) lejár. Miután az objektum ÉLETTARTAMa lejár, amikor egy ügyfél kéri az eszközt, az előtérben lévő környezet lekérdezi az eszköz új példányát az ügyfél kérelmének kiszolgálásához, és tárolja a gyorsítótár frissítését.
+
+Az ajánlott eljárás annak biztosítására, hogy a felhasználók mindig megkapják az adategységek legújabb példányát, hogy minden egyes frissítéshez a saját eszközeiket, és azokat új URL-ként tegye közzé. A bejárati ajtó azonnal lekéri az új eszközöket a következő ügyfelek kéréseire. Előfordulhat, hogy a gyorsítótárazott tartalmat törölni kívánja az összes peremhálózati csomópontról, és az összeset kényszeríti az új eszközök beolvasására. Ennek oka lehet a webalkalmazás frissítései, vagy a helytelen adatokat tartalmazó eszközök gyors frissítése.
+
+Válassza ki azokat az eszközöket, amelyeket ki szeretne üríteni a peremhálózati csomópontokból. Az összes eszköz törléséhez válassza **az összes törlése**lehetőséget. Ellenkező esetben az **elérési út**mezőben adja meg a kiüríteni kívánt eszközök elérési útját.
+
+Ezek a formátumok a kiüríteni kívánt elérési utak listája esetén támogatottak:
+
+- **Egyetlen útvonal kiürítése**: az egyes eszközök kiürítése az eszköz teljes elérési útjának megadásával (a protokoll és a tartomány nélkül), például:/Pictures/strasbourg.png;
+- **Helyettesítő karakteres törlés**: \* a csillag () helyettesítő karakterként is használható. Kiüríti az összes mappát, almappát és fájlt egy végpont alatt, \* az elérési úton, illetve az összes almappa és fájl kiürítése egy adott mappában, a mappa és a \* (például/Pictures/ \* ) után.
+- **Gyökértartomány kiürítése**: Ürítse ki a végpont gyökerét az elérési úton található "/" értékkel.
+
+> [!NOTE]
+> **Helyettesítő karakteres tartományok törlése**: az ebben a szakaszban tárgyalt, a kiürítéshez használt gyorsítótárazott útvonalak megadása nem vonatkozik a bejárati ajtóhoz társított helyettesítő karakteres tartományokra. Jelenleg nem támogatott a helyettesítő karakteres tartományok közvetlen törlése. Az egyes altartományokból származó útvonalakat a terjesztésipont megcélzó altartomány és a kiürítési útvonal megadásával törölheti. Ha például a bejárati ajtóm `*.contoso.com` , begépelve törölhetem az altartományom eszközeit `foo.contoso.com` `foo.contoso.com/path/*` . Jelenleg a kiürítési tartalom elérési útján megadott állomásnevek megadása a helyettesítő karakterek altartományára imited, ha van ilyen.
+>
 
 A bejárati ajtón a gyorsítótár kiürítése kis-és nagybetűk megkülönböztetése nélkül történik. Emellett a lekérdezési karakterláncokat is használják, ami azt jelenti, hogy az URL-cím ürítése törli az összes lekérdezési karakterlánc-változatot. 
 
@@ -102,7 +111,7 @@ A bejárati ajtón a gyorsítótár kiürítése kis-és nagybetűk megkülönb�
 A rendszer a következő fejlécek sorrendjét használja annak meghatározásához, hogy mennyi ideig tárolja a rendszer az elemeket a gyorsítótárban:</br>
 1. Gyorsítótár-vezérlő: s-maxage =\<seconds>
 2. Cache-Control: Max-Age =\<seconds>
-3. Lejár\<http-date>
+3. Lejár \<http-date>
 
 Cache-Control Response fejlécek, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, például a Cache-Control: Private, Cache-Control: no-cache és Cache-Control: No-Store tiszteletben. Ha azonban egy adott URL-címen több kérelem van folyamatban egy POP-on, akkor megoszthatják a választ. Ha nincs gyorsítótár-vezérlő, az alapértelmezett viselkedés az, hogy a AFD gyorsítótárazza az erőforrást X időtartamra, ahol az X véletlenszerűen 1 és 3 nap közötti értéket vesz fel.
 
@@ -118,7 +127,7 @@ A gyorsítótár időtartama a bejárati tervezőben és a szabályok motorjába
 
 A gyorsítótár időtartamának beállítása a Rules Engine használatával igaz gyorsítótár-felülbírálás, ami azt jelenti, hogy a felülbírálási értéket fogja használni, függetlenül attól, hogy mi a forrás válasz fejléce.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

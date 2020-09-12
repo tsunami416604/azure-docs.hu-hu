@@ -9,16 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017855"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018187"
 ---
-# <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával
-
-
+# <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kibővítése egyéni szabályokkal a Stream Analytics, az Azure Functions és a SendGrid használatával
 
 Ez az útmutató bemutatja, hogyan bővítheti IoT Central alkalmazását egyéni szabályokkal és értesítésekkel. A példa egy értesítés küldését mutatja be egy operátornak, amikor egy eszköz leállítja a telemetria küldését. A megoldás egy [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) lekérdezést használ annak észlelésére, hogy egy eszköz leállította-e a telemetria küldését. A Stream Analytics-feladatokhoz [Azure functions](https://docs.microsoft.com/azure/azure-functions/) kell küldenie az értesítő e-maileket a [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)használatával.
 
@@ -48,7 +46,7 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
 | Címtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Régió | A legközelebbi régió |
+| Region | A legközelebbi régió |
 
 A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
@@ -302,7 +300,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
         RightSide.deviceid2 is NULL
     ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A Stream Analytics-feladatok elindításához válassza az **Áttekintés**, majd a **Start** **, majd a**Start lehetőséget, majd **indítsa**el a következőt:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267445"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006780"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -34,12 +34,12 @@ A következő Azure-szolgáltatások támogatják az Azure-erőforrások felügy
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
-| Felhasználó által hozzárendelt | Előnézet | Előnézet | Nem érhető el | Előnézet |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
+| Felhasználó által hozzárendelt | Előnézet | Előnézet | Nem elérhető | Előnézet |
 
 Tekintse át az alábbi listát az Azure API Management felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
-- [Azure Resource Manager-sablon](../../api-management/api-management-howto-use-managed-service-identity.md)
+- [Azure Resource Manager sablon](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -54,7 +54,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
 - [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
-- [Azure Resource Manager-sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
+- [Azure Resource Manager sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-kompatibilis Kubernetes
 
@@ -82,14 +82,14 @@ Tekintse át az alábbi listát a felügyelt identitás [Azure-tervezetekkel](..
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 ### <a name="azure-cognitive-services"></a>Azure Cognitive Services
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 
@@ -103,7 +103,7 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Container Instances (a régiókban, ahol elérhető):
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Azure Resource Manager-sablon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Azure Resource Manager sablon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
@@ -122,14 +122,14 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Data Factory v2 (a régiókban, ahol elérhető):
@@ -145,7 +145,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 Felügyelt identitás típusa |Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | Előnézet | Előnézet | Nem érhető el | Előnézet |
+| Rendszer által hozzárendelt | Előnézet | Előnézet | Nem elérhető | Előnézet |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el  | Nem érhető el  | Nem érhető el |
 
 
@@ -168,13 +168,13 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
 - [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
-- [Azure Resource Manager-sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
+- [Azure Resource Manager sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT Hub
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Data Factory v2 (a régiókban, ahol elérhető):
@@ -192,8 +192,8 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 
 | Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] | 
-| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] | 
+| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 
 
 További információ: [felügyelt identitások használata az Azure Kubernetes szolgáltatásban](../../aks/use-managed-identity.md).
@@ -203,14 +203,14 @@ További információ: [felügyelt identitások használata az Azure Kubernetes 
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
-| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
+| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem elérhető | ![Elérhető][check] |
 
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Logic Apps (a régiókban, ahol elérhető):
 
 - [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager-sablon](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+- [Azure Resource Manager sablon](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 
 ### <a name="azure-policy"></a>Azure Policy
@@ -225,7 +225,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Azure Resource Manager-sablonok](/azure/templates/microsoft.authorization/policyassignments)
+- [Azure Resource Manager sablonok](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
 
@@ -240,7 +240,7 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 
 A következő listában megtekintheti az Azure Service Fabric-alkalmazások felügyelt identitásának konfigurálását az összes régióban:
 
-- [Azure Resource Manager-sablon](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+- [Azure Resource Manager sablon](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ### <a name="azure-spring-cloud"></a>Azure Spring Cloud
 
@@ -265,7 +265,7 @@ Tekintse át az alábbi listát az Azure Virtual Machine Scale Sets felügyelt i
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager sablonok](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -282,8 +282,9 @@ Tekintse át az alábbi listát az Azure Virtual Machines felügyelt identitás�
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager sablonok](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
+- [Azure SDK-k](qs-configure-sdk-windows-vm.md)
 
 
 ### <a name="azure-vm-image-builder"></a>Azure VM-rendszerkép-készítő
@@ -298,12 +299,12 @@ Az Azure virtuálisgép-rendszerkép-készítő felügyelt identitásának konfi
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | Előnézet | Előnézet | Nem érhető el | Előnézet |
-| Felhasználó által hozzárendelt | Előnézet | Előnézet | Nem érhető el | Előnézet |
+| Rendszer által hozzárendelt | Előnézet | Előnézet | Nem elérhető | Előnézet |
+| Felhasználó által hozzárendelt | Előnézet | Előnézet | Nem elérhető | Előnézet |
 
 Tekintse át az alábbi listát az Azure Signaler szolgáltatás felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
-- [Azure Resource Manager-sablon](../../azure-signalr/howto-use-managed-identity.md)
+- [Azure Resource Manager sablon](../../azure-signalr/howto-use-managed-identity.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD-hitelesítést támogató Azure-szolgáltatások
 

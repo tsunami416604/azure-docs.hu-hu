@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501014"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667608"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz
 
@@ -32,15 +32,12 @@ A bérlői szintű rendszergazdai jóváhagyás megadása megköveteli, hogy [gl
 > [!IMPORTANT]
 > Ha egy alkalmazás teljes körű rendszergazdai jogosultsággal rendelkezik, az összes felhasználó be tud jelentkezni az alkalmazásba, kivéve, ha úgy van konfigurálva, hogy felhasználói hozzárendelést igényeljen. Ha szeretné korlátozni, hogy mely felhasználók jelentkezhetnek be egy alkalmazásba, megkövetelheti a felhasználói hozzárendelést, majd felhasználókat vagy csoportokat rendelhet hozzá az alkalmazáshoz. További információ: [felhasználók és csoportok hozzárendelésének módszerei](methods-for-assigning-users-and-groups.md).
 >
-> A globális rendszergazdai szerepkör szükséges ahhoz, hogy rendszergazdai jogosultságot nyújtson a Microsoft Graph API-hoz.
->
-
+> A globális rendszergazdai szerepkör szükséges ahhoz, hogy rendszergazdai jogosultságot adjon a Microsoft Graph API-nak az alkalmazás engedélyeihez.
 
 > [!WARNING]
 > A bérlői szintű rendszergazdai jóváhagyás megadása egy alkalmazás számára megadja az alkalmazásnak és az alkalmazás közzétevője számára a szervezet adataihoz való hozzáférést. A jóváhagyás megadása előtt körültekintően tekintse át az alkalmazás által kért engedélyeket.
 >
-> A globális rendszergazdai szerepkör szükséges ahhoz, hogy rendszergazdai jogosultságot nyújtson a Microsoft Graph API-hoz.
->
+> A globális rendszergazdai szerepkör szükséges ahhoz, hogy rendszergazdai jogosultságot adjon a Microsoft Graph API-nak az alkalmazás engedélyeihez.
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Rendszergazdai jóváhagyás megadása a Azure Portal
 
@@ -56,6 +53,9 @@ A bérlői szintű rendszergazdai jóváhagyás biztosítása a **vállalati alk
 4. Válassza az **engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása**lehetőségre.
 5. Körültekintően tekintse át az alkalmazás által igényelt engedélyeket.
 6. Ha elfogadja az alkalmazás által igényelt engedélyeket, engedélyezze a jóváhagyást. Ha nem, kattintson a **Mégse** gombra, vagy az ablak bezárásához.
+
+> [!WARNING]
+> A bérlői szintű rendszergazdai jóváhagyás a **nagyvállalati alkalmazásokon** keresztül való megadásával visszavon minden olyan engedélyt, amely korábban már megkapta a bérlői szintű engedélyeket. A felhasználók által korábban a saját nevében megadott engedélyeket a rendszer nem érinti. 
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>Rendszergazdai jóváhagyás megadása Alkalmazásregisztrációk
 
@@ -82,12 +82,15 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 ahol:
 
-* `{client-id}`az alkalmazás ügyfél-azonosítója (más néven alkalmazás-azonosító).
-* `{tenant-id}`a szervezete bérlői azonosítója vagy bármely ellenőrzött tartománynév.
+* `{client-id}` az alkalmazás ügyfél-azonosítója (más néven alkalmazás-azonosító).
+* `{tenant-id}` a szervezete bérlői azonosítója vagy bármely ellenőrzött tartománynév.
 
 Ahogy mindig, körültekintően tekintse át az alkalmazások kérelmének engedélyeit a jóváhagyás megadása előtt.
 
-## <a name="next-steps"></a>További lépések
+> [!WARNING]
+> A bérlői szintű rendszergazdai jóváhagyás ezen az URL-címen keresztül történő megadása visszavonja azokat az engedélyeket, amelyek korábban már megadták a bérlői szintű jogosultságokat. A felhasználók által a saját nevében korábban ggranted engedélyeket a rendszer nem érinti. 
+
+## <a name="next-steps"></a>Következő lépések
 
 [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
 

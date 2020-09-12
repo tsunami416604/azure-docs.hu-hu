@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936520"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006759"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -122,6 +122,7 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 ### <a name="user-secrets-and-other-configuration-providers"></a>Felhasználói titkok és egyéb konfigurációs szolgáltatók
 
 Ha a kialakítási kulcsot ASP.NET Core felhasználói titokban szeretné tárolni, vagy egy másik konfigurációs szolgáltatótól kéri le, akkor a túlterhelés paraméterrel is felhasználható `Microsoft.Extensions.Configuration.IConfiguration` . Például: `services.AddApplicationInsightsTelemetry(Configuration);`.
+A Microsoft. ApplicationInsights. AspNetCore [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)verziótól kezdődően a hívás `services.AddApplicationInsightsTelemetry()` automatikusan beolvassa a kialakítási kulcsot `Microsoft.Extensions.Configuration.IConfiguration` az alkalmazásból. Nem kell explicit módon megadnia a következőt: `IConfiguration` .
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
@@ -158,17 +159,17 @@ Az előző lépések elegendő segítséget nyújtanak a kiszolgálóoldali tele
 
 1. A alkalmazásban `_ViewImports.cshtml` adja hozzá a befecskendezést:
 
-    ```cshtml
-        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-    ```
+```cshtml
+    @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+```
 
 2. A alkalmazásban `_Layout.cshtml` szúrja be a `HtmlHelper` szakaszt a szakasz végén, `<head>` de minden más parancsfájl előtt. Ha az oldalról bármilyen egyéni JavaScript-telemetria szeretne jelenteni, szúrja be azt a kódrészlet után:
 
-    ```cshtml
-        @Html.Raw(JavaScriptSnippet.FullScript)
-        </head>
-    ```
-    
+```cshtml
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    </head>
+```
+
 Másik lehetőségként használhatja `FullScript` a `ScriptBody` -t az SDK v 2.14-as verziójában. Akkor használja ezt a beállítást, ha a `<script>` címkét a tartalom biztonsági házirendjének beállításához kell vezérelni:
 
 ```cshtml
@@ -183,7 +184,7 @@ Ha a projekt nem tartalmazza `_Layout.cshtml` , az [ügyféloldali figyelést](.
 
 ## <a name="configure-the-application-insights-sdk"></a>A Application Insights SDK konfigurálása
 
-Az alapértelmezett konfiguráció módosításához testreszabhatja a ASP.NET Core Application Insights SDK-t. Előfordulhat, hogy a Application Insights ASP.NET SDK felhasználói megismerik a konfiguráció módosítással történő módosítását `ApplicationInsights.config` `TelemetryConfiguration.Active` . A konfigurációt a ASP.NET Core eltérő módon változtathatja meg. Adja hozzá a ASP.NET Core SDK-t az alkalmazáshoz, és konfigurálja ASP.NET Core beépített [függőségi befecskendezés](/aspnet/core/fundamentals/dependency-injection)használatával. Szinte minden konfigurációs módosítást hajthat végre az `ConfigureServices()` osztály metódusában `Startup.cs` , hacsak nem irányította másképpen. A következő fejezetei további információkat nyújtanak.
+Az alapértelmezett konfiguráció módosításához testreszabhatja a ASP.NET Core Application Insights SDK-t. Előfordulhat, hogy a Application Insights ASP.NET SDK felhasználói megismerik a konfiguráció módosítással történő módosítását `ApplicationInsights.config` `TelemetryConfiguration.Active` . ASP.NET Core esetében szinte az összes konfigurációs módosítást az `ConfigureServices()` osztály metódusa végzi el `Startup.cs` , hacsak nem irányította másképpen. A következő fejezetei további információkat nyújtanak.
 
 > [!NOTE]
 > ASP.NET Core alkalmazásokban a konfiguráció módosításának módosítása `TelemetryConfiguration.Active` nem támogatott.
@@ -221,8 +222,25 @@ A beállítások teljes listája `ApplicationInsightsServiceOptions`
 |EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartbeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | true
 |AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | true
 |RequestCollectionOptions.TrackExceptions | Engedélyezheti vagy letilthatja a nem kezelt kivételek nyomon követését a kérelmek gyűjtési modulja által. | hamis a NETSTANDARD 2.0-ban (mivel a kivételeket a ApplicationInsightsLoggerProvider követte nyomon), ellenkező esetben igaz.
+|EnableDiagnosticsTelemetryModule | Engedélyezés/letiltás `DiagnosticsTelemetryModule` . Ha letiltja ezt a beállítást, a rendszer figyelmen kívül hagyja a következő beállításokat: `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | true
 
 A legnaprakészebb listához tekintse [meg `ApplicationInsightsServiceOptions` a konfigurálható beállításokat](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
+
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Konfigurációs javaslat a Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 – beta3 & felett
+
+A Microsoft. ApplicationInsights. AspNetCore SDK verziótól kezdődően a [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) az ajánlott beállítás szerint konfigurálja az összes rendelkezésre álló beállítást `ApplicationInsightsServiceOptions` , beleértve az alkalmazások példányát használó instrumentationkey is `IConfiguration` . A beállításoknak a "ApplicationInsights" szakasz alá kell esnie, ahogy az alábbi példában is látható. A következő szakasz a rendszerállapot-kulcs konfigurálásának appsettings.js, valamint az adaptív mintavételi és teljesítményszámláló-gyűjtemény letiltására is lehetőséget nyújt.
+
+```json
+{
+    "ApplicationInsights": {
+    "InstrumentationKey": "putinstrumentationkeyhere",
+    "EnableAdaptiveSampling": false,
+    "EnablePerformanceCounterCollectionModule": false
+    }
+}
+```
+
+Ha a `services.AddApplicationInsightsTelemetry(aiOptions)` használatban van, a felülbírálja a beállításait `Microsoft.Extensions.Configuration.IConfiguration` .
 
 ### <a name="sampling"></a>Mintavételezés
 
@@ -466,11 +484,10 @@ Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem 
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fedezze fel a felhasználói folyamatokat](./usage-flows.md) , hogy megtudja, hogyan navigálnak a felhasználók az alkalmazáson keresztül.
 * [Egy pillanatkép-gyűjtemény konfigurálásával](./snapshot-debugger.md) megtekintheti a forráskód és a változók állapotát a kivétel pillanatában.
 * [Az API használatával](./api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletes áttekintéséhez.
 * A [rendelkezésre állási tesztek](./monitor-web-app-availability.md) segítségével folyamatosan, a világ minden pontján ellenőrizhető az alkalmazás.
 * [Függőséginjektálás az ASP.NET Core-ban](/aspnet/core/fundamentals/dependency-injection)
-

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185400"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660430"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
     1. Kattintson a **tovább** gombra az **adattár és a fájl kiválasztása űrlap**megnyitásához. Ezen az űrlapon választhatja ki az adatkészlet feltöltésének helyét; a munkaterülettel automatikusan létrehozott alapértelmezett tároló, vagy válasszon egy, a kísérlethez használni kívánt tárolót. 
     
-        1. Ha az adatai egy virtuális hálózat mögött vannak, engedélyeznie kell az **érvényesítési funkció kihagyását** annak biztosításához, hogy a munkaterület hozzáférhessen az adataihoz. További információ a [hálózat elkülönítéséről és az adatvédelemről](how-to-enable-virtual-network.md#machine-learning-studio). 
+        1. Ha az adatai egy virtuális hálózat mögött vannak, engedélyeznie kell az **érvényesítési funkció kihagyását** annak biztosításához, hogy a munkaterület hozzáférhessen az adataihoz. További információ: [Azure Machine learning Studio használata Azure-beli virtuális hálózaton](how-to-enable-studio-virtual-network.md). 
     
     1. Válassza a **Tallózás** lehetőséget az adatkészlet adatfájljának feltöltéséhez. 
 
@@ -83,7 +83,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).
         Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.
     
-        Válassza a **Tovább** lehetőséget.
+        Kattintson a **Tovább** gombra.
 
     1. A **séma** űrlapja intelligens módon van feltöltve a **beállítások és az előnézet** űrlapon megadott beállítások alapján. Itt konfigurálhatja az egyes oszlopok adattípusát, áttekintheti az oszlopnevek nevét, és kiválaszthatja, hogy mely oszlopok **ne szerepeljenek** a kísérletben. 
             
@@ -91,7 +91,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
     1. A **részletek megerősítése** űrlap az **alapszintű információ** és **beállítások és az előnézet** űrlapon korábban feltöltött információk összegzése. Lehetősége van arra is, hogy adatprofilt hozzon létre az adatkészlethez egy profilkészítést engedélyező számítás használatával. További információ az [adatprofilkészítésről](#profile).
 
-        Válassza a **Tovább** lehetőséget.
+        Kattintson a **Tovább** gombra.
 1. Válassza ki az újonnan létrehozott adatkészletet, amint megjelenik. Emellett megtekintheti az adatkészlet és a minta statisztikáinak előnézetét is. 
 
 1. A **Run (Futtatás** ) űrlapon adja meg a kísérlet egyedi nevét.
@@ -116,15 +116,18 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
     >[!NOTE]
     > A számítási név azt jelzi, hogy a kiválasztott számítási/létrehozási *profil engedélyezve*van-e. (További részletekért lásd az [adatok profilkészítési](#profile) szakaszát).
 
-    Válassza a **Tovább** lehetőséget.
+    Kattintson a **Tovább** gombra.
 
 1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. További információért lásd: [támogatott](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) feladattípusok.
 
-    1. A **besoroláshoz**is engedélyezheti a mély tanulást, amelyet a Text featurizations is használhat.
+    1. **Besorolás**esetén a Deep learning is engedélyezhető.
+    
+        Ha a Deep learning engedélyezve van, az érvényesítés _train_validation felosztásra_korlátozódik. [További információ az ellenőrzési lehetőségekről](how-to-configure-cross-validation-data-splits.md).
+
 
     1. Az **előrejelzéshez** használhatja a következőt: 
     
-        1. Mély tanulás engedélyezése
+        1. Mély tanulás engedélyezése.
     
         1. Válassza ki az *Time oszlopot*: ez az oszlop a használni kívánt időértékeket tartalmazza.
 
@@ -135,10 +138,10 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
     További konfigurációk|Description
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#primary-metric).
-    A legjobb modell ismertetése | Az engedélyezéshez vagy a letiltáshoz válassza a javasolt legjobb modell magyarázatát.
-    Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
+    A legjobb modell ismertetése | Az engedélyezés vagy a Letiltás lehetőség kiválasztásával megjelenítheti a javasolt legjobb modell magyarázatait. <br> Ez a funkció jelenleg nem érhető el [bizonyos előrejelzési algoritmusokhoz](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
+    Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból. <br><br> Az algoritmusok engedélyezése csak [SDK-kísérletekhez](how-to-configure-auto-train.md#supported-models)érhető el. <br> Tekintse meg az egyes feladattípusok [támogatott modelljeit](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true).
     Kilépési feltétel| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Képzési idő (óra)*: meddig kell futtatni a betanítási feladatot. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
-    Érvényesítés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-cross-validation-data-splits.md#prerequisites)szolgáltatásról.
+    Érvényesítés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. <br> [További információ a Cross Validation](how-to-configure-cross-validation-data-splits.md#prerequisites)szolgáltatásról.<br> <br>Az előrejelzés csak a k-fold kereszt-ellenőrzést támogatja.
     Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál.
 
 1. Választható Featurization-beállítások megtekintése: Ha úgy dönt, hogy engedélyezi az **automatikus featurization** a **további konfigurációs beállítások** űrlapon, a rendszer az alapértelmezett featurization technikákat alkalmazza. A **featurization-beállítások megtekintése** lehetőséggel módosíthatja ezeket az alapértelmezett értékeket, és ennek megfelelően testreszabhatja azokat. Megtudhatja, hogyan [szabhatja testre a featurizations](#customize-featurization). 
@@ -156,7 +159,7 @@ Az adatkészletek széles skáláját veheti igénybe, így ellenőrizheti, hogy
 
 Statisztikai adatok|Description
 ------|------
-Szolgáltatás| Az összesíteni kívánt oszlop neve.
+Jellemző| Az összesíteni kívánt oszlop neve.
 Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
 Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
 Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
@@ -205,9 +208,9 @@ A befejezett modellek részletezésével megtekintheti a képzések futtatásán
 
 ## <a name="deploy-your-model"></a>A modell üzembe helyezése
 
-Miután megadta a legjobb modellt, itt az ideje, hogy webszolgáltatásként telepítse azt az új adatforrások előrejelzéséhez.
+Ha már kéznél van a legjobb modell, új adatok előrejelzéséhez helyezze üzembe webszolgáltatásként.
 
-Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
+Az automatizált ML segít programozás nélkül üzembe helyezni a modellt:
 
 1. Van néhány lehetőség a telepítéshez. 
 
@@ -217,7 +220,7 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
         1. Válassza a **telepítés** lehetőséget az ablak bal felső részén. 
 
     + 2. lehetőség: egy adott modell iterációjának üzembe helyezése ebből a kísérletből.
-        1. Válassza ki a kívánt modellt a **modellek** lapról
+        1. Válassza ki a kívánt modellt a **Modellek** lapról
         1. Válassza a **telepítés** lehetőséget az ablak bal felső részén.
 
 1. Töltse ki a **modell üzembe helyezése** ablaktáblát.
@@ -229,17 +232,17 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)*.
     Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.
-    Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha fel szeretné tölteni a saját pontozási parancsfájlját és a környezeti fájlját. [További információ a pontozási parancsfájlokról](how-to-deploy-and-where.md).
+    Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha fel szeretné tölteni a saját pontozási parancsfájlját és a környezeti fájlját. [További információk a pontozószkriptekről](how-to-deploy-and-where.md).
 
     >[!Important]
-    > A fájlneveknek 32 karakternél rövidebbnek kell lenniük, és betűkkel kell kezdődnie és végződnie. Kötőjeleket, aláhúzásokat, pontokat és alfanumerikus elemeket tartalmazhat. Szóközök használata nem engedélyezett.
+    > A fájlneveknek 32 karakternél rövidebbnek kell lenniük, és betűkkel kell kezdődnie és végződnie. A neveken belül használhat gondolatjeleket, aláhúzásjeleket, pontokat és alfanumerikus karaktereket. A szóköz nem engedélyezett.
 
-    A *speciális* menü olyan alapértelmezett központi telepítési funkciókat kínál, mint például [az adatgyűjtés](how-to-enable-app-insights.md) és az erőforrás-kihasználtsági beállítások. Ha ezeket az alapértelmezett értékeket szeretné felülbírálni ebben a menüben.
+    A *Speciális* menü olyan alapértelmezett üzembehelyezési funkciókat kínál, mint például az [adatgyűjtési](how-to-enable-app-insights.md) és az erőforrás-használati beállítások. Ha felül kívánja írni ezeket az alapértelmezett beállításokat, akkor ebben a menüben megteheti.
 
-1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet vesz igénybe.
-    Az üzembe helyezés megkezdése után megjelenik a **modell összegzése** lap. Tekintse meg a telepítési folyamat **állapotát az állapot üzembe helyezése** szakaszban. 
+1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés nagyjából 20 percet vesz igénybe.
+    Az üzembe helyezés megkezdése után megjelenik a **Modell összegzése** lap. Az üzembe helyezés folyamatát az **Üzembe helyezés állapota** szakaszban követheti nyomon. 
 
-Most már rendelkezik egy olyan operatív webszolgáltatással, amely előrejelzéseket készít! Az előrejelzések teszteléséhez a szolgáltatást a [Power bi beépített Azure Machine learning-támogatásával](how-to-consume-web-service.md#consume-the-service-from-power-bi)lehet lekérdezni.
+Ezzel használatba állított egy előrejelzéseket készítő webszolgáltatást! Az előrejelzések teszteléséhez kérdezze le a szolgáltatást a [Power BI beépített Azure Machine Learning-támogatásából](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 
 ## <a name="next-steps"></a>Következő lépések
 

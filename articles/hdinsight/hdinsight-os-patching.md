@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082641"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019665"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása
 
@@ -22,8 +22,8 @@ ms.locfileid: "86082641"
 
 A HDInsight támogatást nyújt a fürtben lévő általános feladatok végrehajtásához, például az operációsrendszer-javítások, a biztonsági frissítések és a csomópontok újraindításának telepítéséhez. Ezek a feladatok a következő két parancsfájl használatával végezhetők el, amelyek [parancsfájl-műveletként](hdinsight-hadoop-customize-cluster-linux.md)futtathatók, és paraméterekkel konfigurálhatók:
 
-- `schedule-reboots.sh`– Végezzen azonnali újraindítást, vagy ütemezzen egy újraindítást a fürtcsomópontokon.
-- `install-updates-schedule-reboots.sh`– Telepítse az összes frissítést, csak a kernel + biztonsági frissítéseket, vagy csak a kernel frissítéseit.
+- `schedule-reboots.sh` – Végezzen azonnali újraindítást, vagy ütemezzen egy újraindítást a fürtcsomópontokon.
+- `install-updates-schedule-reboots.sh` – Telepítse az összes frissítést, csak a kernel + biztonsági frissítéseket, vagy csak a kernel frissítéseit.
 
 > [!NOTE]  
 > A parancsfájl-műveletek nem fogják automatikusan alkalmazni a frissítéseket az összes jövőbeli frissítési ciklusra. Futtassa a parancsfájlokat minden alkalommal, amikor új frissítéseket kell alkalmazni a frissítések telepítéséhez, majd indítsa újra a virtuális gépet.
@@ -32,11 +32,16 @@ A HDInsight támogatást nyújt a fürtben lévő általános feladatok végreha
 
 Az éles környezetben történő üzembe helyezést megelőzően egy reprezentatív, nem éles környezethez tartozó javítás. Dolgozzon ki egy tervet a rendszer megfelelő teszteléséhez a tényleges javítás előtt.
 
-A fürttel létesített SSH-munkamenetből időről időre üzenetet kaphat, hogy a frissítés elérhető. Az üzenet valahogy így néz ki:
+A fürttel létesített SSH-munkamenetből időről időre üzenetet kaphat, hogy a biztonsági frissítések elérhetők lesznek. Az üzenet valahogy így néz ki:
 
 ```
-New release '18.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade it
+89 packages can be updated.
+82 updates are security updates.
+
+*** System restart required ***
+
+Welcome to Spark on HDInsight.
+
 ```
 
 A javítások opcionálisan és saját belátása szerint is megadhatók.
@@ -65,7 +70,10 @@ A `install-updates-schedule-reboots` parancsfájl két numerikus paramétert fog
 > [!NOTE]
 > Azt követően, hogy egy meglévő fürtre alkalmazza, meg kell jelölnie egy parancsfájlt. Ellenkező esetben a skálázási műveletekkel létrehozott új csomópontok az alapértelmezett javítási ütemtervet fogják használni. Ha a parancsfájlt a fürt létrehozási folyamatának részeként alkalmazza, a rendszer automatikusan megőrzi azt.
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> Az ütemezett újraindítási lehetőség a javított fürtcsomópontok automatikus működés közbeni újraindítását teszi elérhetővé 12 – 24 óra alatt, és figyelembe veszi a magas rendelkezésre állás, a frissítési tartomány és a tartalék tartomány szempontjait. Az ütemezett újraindítás nem szakítja meg a futó munkaterheléseket, de a csomópontok átmeneti állapotában is eltarthat, ha a csomópontok nem érhetők el, ami hosszabb feldolgozási időt vesz igénybe. 
+
+## <a name="next-steps"></a>Következő lépések
 
 A parancsfájl-műveletek használatával kapcsolatos konkrét lépésekért tekintse meg a [Linux-alapú HDInsight-fürtök testre szabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md)című szakaszt a következő részekben:
 

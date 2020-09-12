@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323043"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019563"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Hivatkozás – IoT Hub végpontok
 
@@ -26,7 +26,7 @@ ms.locfileid: "87323043"
 
 ## <a name="iot-hub-names"></a>IoT Hub nevek
 
-Megkeresheti a végpontokat üzemeltető IoT hub állomásnevét a központ **Áttekintés** oldalán található portálon. Alapértelmezés szerint az IoT hub DNS-neve a következőképpen néz ki: `{your iot hub name}.azure-devices.net` .
+Megkeresheti a végpontokat üzemeltető IoT hub állomásnevét a központ  **Áttekintés** oldalán található portálon. Alapértelmezés szerint az IoT hub DNS-neve a következőképpen néz ki: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Beépített IoT Hub végpontok listája
 
@@ -55,6 +55,8 @@ A következő lista a végpontokat ismerteti:
   * *Eszköz Twin tulajdonságainak beolvasása és frissítése*. Az eszköz ezt a végpontot használja az [eszköz Twin](iot-hub-devguide-device-twins.md)tulajdonságainak eléréséhez. A HTTPS nem támogatott.
 
   * *Közvetlen metódusokra vonatkozó kérelmek fogadása*. Egy eszköz ezt a végpontot használja a [közvetlen metódus](iot-hub-devguide-direct-methods.md)kérelmének figyelésére. A HTTPS nem támogatott.
+
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 * **Szolgáltatási végpontok**. Minden IoT hub a megoldás hátterében lévő végpontokat tesz elérhetővé az eszközökkel való kommunikációhoz. Egyetlen kivétel esetén ezek a végpontok csak a [AMQP](https://www.amqp.org/) és a AMQP használatával lesznek elérhetők a WebSockets protokollokon keresztül. A közvetlen metódus Meghívási végpontja elérhető a HTTPS protokollon keresztül.
   
@@ -95,7 +97,7 @@ Egy IoT-megoldásban a *Field Gateway* az eszközök és a IoT hub végpontok k�
 
 A [Azure IoT Edge](/azure/iot-edge/) használható a Field Gateway megvalósításához. IoT Edge olyan funkciókat kínál, mint például a több eszközről származó többszörös kommunikáció ugyanarra a IoT Hub kapcsolatra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A IoT Hub Fejlesztői útmutatóban szereplő további témakörök a következők:
 

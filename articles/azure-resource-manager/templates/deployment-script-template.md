@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291804"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667498"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -143,7 +143,7 @@ Tulajdonság értékének részletei:
 - **azPowerShellVersion** / **azCliVersion**: Itt adhatja meg a használni kívánt modul verzióját. A PowerShell és a parancssori felület támogatott verzióinak listájáért lásd: [Előfeltételek](#prerequisites).
 - **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
 
-    Az üzembe helyezési parancsfájlok karakterláncok tömbje szerint osztják el az argumentumokat a [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás meghívásával. Erre azért van szükség, mert az argumentumok [parancs tulajdonságként](/rest/api/container-instances/containergroups/createorupdate#containerexec) lesznek átadva az Azure Container instance számára, a Command tulajdonság pedig sztring.
+    Az üzembe helyezési parancsfájlok karakterláncok tömbje szerint osztják el az argumentumokat a [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás meghívásával. Erre azért van szükség, mert az argumentumok [parancs tulajdonságként](/rest/api/container-instances/containergroups/createorupdate#containerexec) lesznek átadva az Azure Container instance számára, a Command tulajdonság pedig sztring.
 
     Ha az argumentumok Escape-karaktereket tartalmaznak, a [JsonEscaper](https://www.jsonescaper.com/) használatával megduplázhatja a karaktereket. Illessze be az eredeti Escape-karakterláncot az eszközbe, majd válassza a **Escape**lehetőséget.  Az eszköz egy dupla Escape-karakterláncot ad vissza. Az előző minta sablonban például a következő argumentum: **-name \\ "John Dole \\ "**.  Az Escape **-karakterlánc neve \\ \\ \\ "John Dole \\ \\ \\ "**.
 
@@ -181,7 +181,7 @@ A következő sablon egyetlen erőforrással van definiálva a `Microsoft.Resour
 > [!NOTE]
 > Mivel a beágyazott üzembe helyezési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő sztringeket **&#92;** vagy szimpla idézőjelek közé kell tenni. Azt is megteheti, hogy a karakterlánc-helyettesítést használja az előző JSON-mintában látható módon.
 
-A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. `Write-Output`hibakeresési célra szolgál. A kimeneti fájl elérésének megismeréséhez lásd: [telepítési parancsfájlok figyelése és hibáinak megoldása](#monitor-and-troubleshoot-deployment-scripts).  A tulajdonságok leírását lásd: [példák a sablonokra](#sample-templates).
+A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. `Write-Output` hibakeresési célra szolgál. A kimeneti fájl elérésének megismeréséhez lásd: [telepítési parancsfájlok figyelése és hibáinak megoldása](#monitor-and-troubleshoot-deployment-scripts).  A tulajdonságok leírását lásd: [példák a sablonokra](#sample-templates).
 
 A parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához, majd illessze be a következő kódot a rendszerhéj ablaktáblába.
 
@@ -217,7 +217,7 @@ A külső parancsfájloknak elérhetőnek kell lenniük.  Az Azure Storage-fiók
 
 ## <a name="use-supporting-scripts"></a>Támogató parancsfájlok használata
 
-A bonyolult logikai műveleteket egy vagy több támogató parancsfájlba is elkülönítheti. A `supportingScriptURI` tulajdonság lehetővé teszi, hogy szükség esetén az URI-k tömbjét adja meg a támogató parancsfájl-fájlokhoz:
+A bonyolult logikai műveleteket egy vagy több támogató parancsfájlba is elkülönítheti. A `supportingScriptUris` tulajdonság lehetővé teszi, hogy szükség esetén az URI-k tömbjét adja meg a támogató parancsfájl-fájlokhoz:
 
 ```json
 "scriptContent": "
@@ -562,7 +562,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 
 ## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
 
-| Hibakód | Leírás |
+| Hibakód | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
 | DeploymentScriptResourceConflict | Nem terminálos állapotú központi telepítési parancsfájl-erőforrás nem törölhető, és a végrehajtás nem haladja meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl törzse egyszerre több tartalmat is tartalmaz. |
@@ -588,7 +588,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 | DeploymentScriptContainerGroupInNonterminalState | Az Azure Container instance (ACI) létrehozásakor egy másik telepítési parancsfájl ugyanazt az ACI-nevet használja ugyanabban a hatókörben (az előfizetés, az erőforráscsoport neve és az erőforrás neve). |
 | DeploymentScriptContainerGroupNameInvalid | Az Azure Container instance megadott neve (ACI) nem felel meg az ACI-követelményeknek. Lásd: [Azure Container instances gyakori problémáinak elhárítása](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

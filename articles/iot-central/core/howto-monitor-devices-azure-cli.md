@@ -6,15 +6,15 @@ ms.author: viviali
 ms.date: 03/27/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b9cf8b862f77af833016d6aabb0ccae7bea8e24a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497426"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015976"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Eszközkapcsolatok monitorozása az Azure CLI-vel
 
@@ -26,7 +26,7 @@ Az Azure CLI IoT bővítmény használatával megtekintheti, hogy az eszközök 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Az Azure CLI telepítve van, és a verziója 2.0.7 vagy újabb. Az Azure CLI verziójának futtatásával keresse meg az alkalmazást `az --version` . Ismerje meg, hogyan telepítheti és frissítheti az [Azure CLI-docs](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Az Azure CLI telepítve van, és a verziója 2.7.0 vagy újabb. Az Azure CLI verziójának futtatásával keresse meg az alkalmazást `az --version` . Ismerje meg, hogyan telepítheti és frissítheti az [Azure CLI-docs](https://docs.microsoft.com/cli/azure/install-azure-cli)
 + Munkahelyi vagy iskolai fiók az Azure-ban, amely felhasználóként van hozzáadva egy IoT Central alkalmazásban.
 
 ## <a name="install-the-iot-central-extension"></a>Az IoT Central-bővítmény telepítése
@@ -43,7 +43,7 @@ A bővítmény verziójának ellenőrzéséhez futtassa a következőket:
 az --version
 ```
 
-Az Azure-IOT bővítménynek 0.8.1 vagy magasabbnak kell lennie. Ha nem, futtassa a következőket:
+Az Azure-IOT bővítménynek 0.9.9 vagy magasabbnak kell lennie. Ha nem, futtassa a következőket:
 
 ```azurecli
 az extension update --name azure-iot
@@ -68,16 +68,16 @@ Az **Adminisztráció/alkalmazás beállításaiban**másolja az **alkalmazás a
 A IoT Central alkalmazásnak az eszközökről küldött üzeneteinek figyelése. A kimenet tartalmazza az összes fejlécet és megjegyzést.
 
 ```azurecli
-az iot central app monitor-events --app-id <app-id> --properties all
+az iot central diagnostics monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>Eszköz tulajdonságainak megtekintése
 Megtekintheti egy adott eszköz aktuális olvasási és olvasási/írási/olvasási eszközének tulajdonságait.
 
 ```azurecli
-az iot central device-twin show --app-id <app-id> --device-id <device-id>
+az iot central device twin show --app-id <app-id> --device-id <device-id>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, javasolt következő lépésként olvassa el az [eszköz kapcsolatát az Azure IoT Central-ban](./concepts-get-connected.md)című témakört.

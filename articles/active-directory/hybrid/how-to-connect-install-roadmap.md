@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358735"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662152"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -46,17 +46,17 @@ Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com
 |Telepítés gyorsbeállítások használatával | [Az Azure AD Connect gyorstelepítése](./how-to-connect-install-express.md)|
 |Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](./how-to-connect-install-custom.md)|
 |Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
-|A telepítést követően | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
+|A telepítés után | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>További információk az Azure AD Connect telepítésével kapcsolatban
-Az [üzemeltetéssel](how-to-connect-sync-operations.md) kapcsolatban felmerülő kérdések kezelésére is érdemes felkészülni. [Vészhelyzet](how-to-connect-sync-staging-server.md#disaster-recovery) esetére megfontolhatja egy készenléti kiszolgáló üzembe állítását. Ha gyakori konfigurációs módosításokat tervez, egy [átmeneti üzemmódú](how-to-connect-sync-staging-server.md) kiszolgáló beállításán is elgondolkodhat.
+Az [üzemeltetéssel](./how-to-connect-sync-staging-server.md) kapcsolatban felmerülő kérdések kezelésére is érdemes felkészülni. [Vészhelyzet](how-to-connect-sync-staging-server.md#disaster-recovery) esetére megfontolhatja egy készenléti kiszolgáló üzembe állítását. Ha gyakori konfigurációs módosításokat tervez, egy [átmeneti üzemmódú](how-to-connect-sync-staging-server.md) kiszolgáló beállításán is elgondolkodhat.
 
 |Témakör |Hivatkozás|  
 | --- | --- |
 |Támogatott topológiák | [Azure AD Connect-topológiák](plan-connect-topologies.md)|
 |Tervezési alapelvek | [Az Azure AD Connect tervezési alapelvei](plan-connect-design-concepts.md)|
 |Telepítési fiókok | [További információk az Azure AD Connect hitelesítő adataival és engedélyeivel kapcsolatban](reference-connect-accounts-permissions.md)|
-|Az üzemeltetés megtervezése | [Az Azure AD Connect szinkronizálása: üzemeltetési feladatok és szempontok](how-to-connect-sync-operations.md)|
+|Az üzemeltetés megtervezése | [Az Azure AD Connect szinkronizálása: üzemeltetési feladatok és szempontok](./how-to-connect-sync-staging-server.md)|
 |A felhasználói bejelentkezés lehetőségei | [A felhasználói bejelentkezés lehetőségei az Azure AD Connectben](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>A szinkronizálási funkciók konfigurálása
@@ -66,7 +66,7 @@ Az Azure AD Connect számos, szükség szerint bekapcsolható vagy alapértelmez
 
 A [jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization.md) az Active Directory jelszókivonatát szinkronizálja az Azure AD-vel. A végfelhasználó ugyanazt a jelszót használhatja a helyszíni alkalmazásban és a felhőben, de csak az egyik helyen kezelheti. Mivel ez a funkció szolgáltatóként a helyszíni Active Directoryt használja, saját jelszóházirendjét is alkalmazhatja.
 
-A [jelszóvisszaíró](../authentication/quickstart-sspr.md) szolgáltatás lehetővé teszi a felhasználók számára jelszavak módosítását és visszaállítását a felhőben, valamint a helyszíni jelszóházirend alkalmazását.
+A [jelszóvisszaíró](../authentication/tutorial-enable-sspr.md) szolgáltatás lehetővé teszi a felhasználók számára jelszavak módosítását és visszaállítását a felhőben, valamint a helyszíni jelszóházirend alkalmazását.
 
 Az [eszköz visszaírási](how-to-connect-device-writeback.md) lehetővé teszi, hogy az Azure ad-ban regisztrált eszközök visszakerüljenek a helyszíni Active Directoryra, így feltételes hozzáféréshez is használhatók.
 
@@ -80,7 +80,7 @@ Az [automatikus frissítés](how-to-connect-install-automatic-upgrade.md) szolg�
 |A szűrés konfigurálása | [Az Azure AD Connect szinkronizálása: a szűrés konfigurálása](how-to-connect-sync-configure-filtering.md)|
 |Jelszókivonat szinkronizálása | [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|
 |Átmenő hitelesítés | [Átmenő hitelesítés](how-to-connect-pta.md)
-|Jelszóvisszaíró | [A jelszavak kezelésének első lépései](../authentication/quickstart-sspr.md)|
+|Jelszóvisszaíró | [A jelszavak kezelésének első lépései](../authentication/tutorial-enable-sspr.md)|
 |Eszközvisszaíró | [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md)|
 |Véletlen törlések megakadályozása | [Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |Automatikus frissítés | [Azure AD Connect: automatikus frissítés](how-to-connect-install-automatic-upgrade.md)|
@@ -124,7 +124,7 @@ Ha az ADFS-kiszolgáló még nem lett konfigurálva az Azure AD-tanúsítványok
 |Minden AD FS-cikk | [Azure AD Connect és összevonás](how-to-connect-fed-whatis.md)|
 |Az ADFS konfigurálása altartományokkal | [Többtartományos támogatás az Azure AD összevonási szolgáltatásához](how-to-connect-install-multiple-domains.md)|
 |AD FS-farm kezelése | [Az AD FS kezelése és testreszabása az Azure AD Connect segítségével](how-to-connect-fed-management.md)|
-|Összevonási tanúsítványok manuális frissítése | [Az Office 365 és az Azure AD összevonási tanúsítványainak megújítása](how-to-connect-fed-o365-certs.md)|
+|Összevonási tanúsítványok manuális frissítése | [Microsoft 365 és az Azure AD összevonási tanúsítványainak megújítása](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Az Azure AD Connect Health használatának első lépései

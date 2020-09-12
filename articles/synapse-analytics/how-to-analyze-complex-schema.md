@@ -9,28 +9,26 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fdf3dc56575a45ad0c9e716054184ba2691133ba
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 51422bd47b5bd2d7d5103c154e90eaa910396024
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831702"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661032"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Összetett adattípusok elemzése az Azure szinapszis Analyticsben
 
-Ez a cikk a ( [Azure Cosmos db) szinapszis-hivatkozásban](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)található Parquet-fájlokra és-tárolóra vonatkozik. Elmagyarázza, hogy a felhasználók hogyan használhatják a Sparkot vagy az SQLot az olyan összetett sémákkal való adatolvasásra vagy átalakításra, mint a tömbök vagy a beágyazott struktúrák. A következő példa egyetlen dokumentummal fejeződött be, de a Spark vagy az SQL használatával könnyedén méretezhetők több milliárd dokumentumra. A cikkben szereplő kód PySpark (Python) használ.
+Ez a cikk az Azure-beli, Azure Cosmos DB-hez készült, az Azure-beli [szinapszis-hivatkozáshoz](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)tartozó Parquet-fájlok A Spark vagy az SQL segítségével összetett sémákkal, például tömbökkel vagy beágyazott struktúrákkal olvashatja és alakíthatja át az adatátalakítást. A következő példa egyetlen dokumentummal fejeződött be, de a Spark vagy az SQL használatával könnyedén méretezhető több milliárd dokumentumra. A cikkben szereplő kód PySpark (Python) használ.
 
 ## <a name="use-case"></a>Használati eset
 
-Az összetett adattípusok egyre gyakoribbak, és kihívást jelentenek az adatmérnökök számára, mivel a beágyazott sémák és tömbök elemzése általában időigényes és összetett SQL-lekérdezéseket tartalmaz. Emellett nehéz lehet átnevezni vagy átadni a beágyazott oszlopok adattípusát. A teljesítménnyel kapcsolatos problémák a mélyen beágyazott objektumok használatakor is felmerülhetnek.
+Az összetett adattípusok egyre gyakoribbak, és kihívást jelentenek az adatmérnökök számára. A beágyazott sémák és tömbök elemzése időigényes és összetett SQL-lekérdezéseket is tartalmazhat. Emellett nehéz lehet átnevezni vagy átadni a beágyazott oszlopok adattípusát. Emellett, ha mélyen beágyazott objektumokat használ, teljesítményproblémák merülhetnek fel.
 
-Az adatmérnököknek ismerniük kell, hogyan kell hatékonyan feldolgozni az összetett adattípusokat, és könnyen elérhetővé tenni azokat mindenki számára.
-
-A következő példában a szinapszis Spark az objektumok adatkereteken keresztüli, lapos struktúrába való olvasására és átalakítására szolgál. A szinapszis SQL Server nélküli lekérdezi az ilyen objektumokat közvetlenül, és az eredményeket normál táblázatként jeleníti meg.
+Az adatmérnököknek ismerniük kell, hogyan kell hatékonyan feldolgozni az összetett adattípusokat, és könnyen elérhetővé tenni azokat mindenki számára. Az alábbi példában a Spark az Azure szinapszis Analytics szolgáltatásban az objektumok olvasására és átalakítására használható az adatkereteken keresztül. Az Azure szinapszis Analytics kiszolgáló nélküli SQL-modelljét használva közvetlenül lekérdezheti az ilyen objektumokat, és visszaküldheti ezeket az eredményeket normál táblázatként.
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Mik azok a tömbök és beágyazott struktúrák?
 
-A következő objektum az [alkalmazás-betekintésből](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)származik. Ebben az objektumban beágyazott struktúrákat és tömböket tartalmaz, amelyek beágyazott struktúrákat tartalmaznak.
+A következő objektum a [Application Insightsból](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)származik. Ebben az objektumban beágyazott struktúrákat és tömböket tartalmaz, amelyek beágyazott struktúrákat tartalmaznak.
 
 ```json
 {
@@ -70,24 +68,26 @@ A következő objektum az [alkalmazás-betekintésből](https://docs.microsoft.c
 ```
 
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>A tömbök és beágyazott struktúrák sémájának példája
-Az objektum adatkeretének ( **DF**) sémájának a paranccsal való nyomtatásakor a `df.printschema` következő ábrázolás látható:
+Ha az objektum adatkeretének ( **DF**) sémáját az paranccsal nyomtatja ki `df.printschema` , akkor a következő ábrázolás jelenik meg:
 
-* A sárga szín beágyazott struktúrát jelöl
-* A zöld szín két elemet tartalmazó tömböt jelöl
+* A sárga beágyazott struktúrákat jelöl.
+* A zöld a két elemet tartalmazó tömböt jelöl.
 
-[![Séma forrása](./media/how-to-complex-schema/schema-origin.png)](./media/how-to-complex-schema/schema-origin.png#lightbox)
+[![Kód sárga és zöld kiemeléssel, a séma eredetének megjelenítése](./media/how-to-complex-schema/schema-origin.png)](./media/how-to-complex-schema/schema-origin.png#lightbox)
 
-**_rid**, **_ts**és **_etag** lettek hozzáadva a rendszerhez, mivel a dokumentum Azure Cosmos db tranzakciós tárolóba lett betöltve.
+`_rid`, `_ts` és `_etag` hozzá lettek adva a rendszerhez, mivel a dokumentum betöltése bekerült a Azure Cosmos db tranzakciós tárolóba.
 
-A fenti adatkeret csak 5 oszlopra és 1 sorra számít. Az átalakítás után a kurátori adatkeret 13 oszlopból és 2 sorból áll majd táblázatos formában.
+Az előző adatkeret 5 oszlopra és csak 1 sorra számít. Az átalakítás után a kurátori adatkeret 13 oszlopból és 2 sorból áll, táblázatos formában.
 
-## <a name="flatten-nested-structures-and-explode-arrays-with-apache-spark"></a>Beágyazott struktúrák összeolvasztása és a tömbök alábontása Apache Spark
+## <a name="flatten-nested-structures-and-explode-arrays"></a>Beágyazott struktúrák összeolvasztása és tömbök alábontása
 
-A szinapszis Spark segítségével egyszerűen átalakíthatja a beágyazott struktúrákat oszlopokra és tömb elemekre több sorba. A következő lépések használhatók a megvalósításhoz.
+Az Azure szinapszis Analyticsben a Spark használatával egyszerűen átalakíthatja a beágyazott struktúrákat oszlopokra és tömb elemekre több sorba. A megvalósításhoz kövesse az alábbi lépéseket.
 
-[![A Spark átalakítások lépései](./media/how-to-complex-schema/spark-transform-steps.png)](./media/how-to-complex-schema/spark-transform-steps.png#lightbox)
+[![A Spark-átalakítások lépéseit bemutató folyamatábra](./media/how-to-complex-schema/spark-transform-steps.png)](./media/how-to-complex-schema/spark-transform-steps.png#lightbox)
 
-**1. lépés**: definiálunk egy függvényt a beágyazott séma összeolvasztásához. Ez a függvény módosítás nélkül is használható. Hozzon létre egy cellát egy [PySpark jegyzetfüzetben](quickstart-apache-spark-notebook.md) a következő függvénnyel:
+### <a name="define-a-function-to-flatten-the-nested-schema"></a>A beágyazott séma összeolvasztására szolgáló függvény definiálása
+
+Ezt a függvényt módosítás nélkül is használhatja. Hozzon létre egy cellát egy [PySpark jegyzetfüzetben](quickstart-apache-spark-notebook.md) a következő függvénnyel:
 
 ```python
 from pyspark.sql.functions import col
@@ -120,7 +120,9 @@ def flatten_df(nested_df):
     return nested_df.select(columns)
 ```
 
-**2. lépés**: használja a függvényt az adatkeret (**DF**) beágyazott sémájának egy új adatkeretbe való leválasztásához `df_flat` :
+### <a name="use-the-function-to-flatten-the-nested-schema"></a>A beágyazott séma összeolvasztása a függvény használatával
+
+Ebben a lépésben az adatkeret (**DF**) beágyazott sémáját egy új adatkeretbe () ágyazza be `df_flat` :
 
 ```python
 from pyspark.sql.types import StringType, StructField, StructType
@@ -130,7 +132,9 @@ display(df_flat.limit(10))
 
 A megjelenítési függvénynek 10 oszlopot és 1 sort kell visszaadnia. A tömb és a beágyazott elemei még mindig vannak.
 
-**3. lépés**: alakítsa át a tömböt `context_custom_dimensions` az adatkeretben `df_flat` egy új dataframe `df_flat_explode` . A következő kódban azt is megadhatja, hogy melyik oszlopot válassza ki:
+### <a name="transform-the-array"></a>A tömb átalakítása
+
+Itt átalakítja a tömböt, az `context_custom_dimensions` adatkereten belül `df_flat` egy új adatkeretbe `df_flat_explode` . A következő kódban azt is megadhatja, hogy melyik oszlopot válassza ki:
 
 ```python
 from pyspark.sql.functions import explode
@@ -144,7 +148,9 @@ display(df_flat_explode.limit(10))
 
 A megjelenítési függvénynek 10 oszlopot és 2 sort kell visszaadnia. A következő lépés a beágyazott sémák összeolvasztása az 1. lépésben meghatározott függvénnyel.
 
-**4. lépés**: használja a függvényt az adatkeret beágyazott sémájának `df_flat_explode` egy új adatkeretbe való lelapulához `df_flat_explode_flat` :
+### <a name="use-the-function-to-flatten-the-nested-schema"></a>A beágyazott séma összeolvasztása a függvény használatával
+
+Végül a függvénnyel lelapulhatja az adatkeret beágyazott sémáját `df_flat_explode` egy új adatkeretbe `df_flat_explode_flat` :
 ```python
 df_flat_explode_flat = flatten_df(df_flat_explode)
 display(df_flat_explode_flat.limit(10))
@@ -154,26 +160,23 @@ A megjelenítési függvénynek 13 oszlopot és 2 sort kell megjelenítenie.
 
 Az `printSchema` adatkeret funkciója a `df_flat_explode_flat` következő eredményt adja vissza:
 
-[![Séma végleges](./media/how-to-complex-schema/schema-final.png)](./media/how-to-complex-schema/schema-final.png#lightbox)
+[![A végleges sémát megjelenítő kód](./media/how-to-complex-schema/schema-final.png)](./media/how-to-complex-schema/schema-final.png#lightbox)
 
-## <a name="read-arrays-and-nested-structures-directly-with-sql-serverless"></a>Tömbök és beágyazott szerkezetek olvasása közvetlenül az SQL Server nélküli rendszerből
+## <a name="read-arrays-and-nested-structures-directly"></a>Tömbök és beágyazott szerkezetek olvasása közvetlenül
 
-A nézetek és a táblázatok lekérdezése és létrehozása az SQL Server nélküli szolgáltatással lehetséges.
+A kiszolgáló nélküli SQL-modell használatával megtekintheti és létrehozhatja az ilyen objektumokra vonatkozó nézeteket és táblákat.
 
-Először is, az adattárolás módjától függően a felhasználóknak a következő besorolást kell használniuk. A nagybetűvel megjelenő minden esetben a használati esetre vonatkozik:
+Először is, az adattárolás módjától függően a felhasználóknak a következő besorolást kell használniuk. A nagybetűkben látható összes érték a használati esetre vonatkozik:
 
-| TÖMEGES              | FORMAT |
-| -------------------- | --- |
+| Tömeges | Formátum |
+| ------ | ------ |
 | 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |"Parquet" (ADLSg2)|
-| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; Account = ACCOUNTNAME; adatbázis = databasename; gyűjtemény = COLLECTIONNAME; régió = REGIONTOQUERY ', titkos kulcs = ' YOURSECRET ' |"CosmosDB" (szinapszis-hivatkozás)|
+| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; Account = ACCOUNTNAME; adatbázis = databasename; gyűjtemény = COLLECTIONNAME; régió = REGIONTOQUERY ', titkos kulcs = ' YOURSECRET ' |"CosmosDB" (Azure szinapszis-hivatkozás)|
 
-
-> [!NOTE]
-> Az SQL Server nélküli az Azure Cosmos és a HRE áteresztő szolgáltatáshoz kapcsolódó szinapszis-hivatkozáshoz tartozó társított szolgáltatást fogja támogatni. A képesség jelenleg a szinapszis-hivatkozáshoz tartozó előzetes verzióban érhető el.
 
 Cserélje le az egyes mezőket a következőképpen:
-* "A TÖMEGES fenti" = az adatforrás kapcsolati karakterlánca, amelyhez csatlakozik
-* "A fenti típus" = a forráshoz való kapcsolódáshoz használt formátum
+* A "saját TÖMEGES fenti" az adatforrás kapcsolati karakterlánca, amelyhez csatlakozik.
+* A fenti típus a forráshoz való kapcsolódáshoz használt formátum.
 
 ```sql
 select *
@@ -200,22 +203,22 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 
 Két különböző típusú művelet létezik:
 
-Az első Művelettípus a következő sorában van megadva, amely az nevű oszlopot határozza meg, amely a `contextdataeventTime` beágyazott elemre hivatkozik: Context. eventTime 
-```sql
-contextdataeventTime varchar(50) '$.context.data.eventTime'
-```
+- Az első Művelettípus a következő sorában van megadva, amely meghatározza a nevű oszlopot `contextdataeventTime` , amely a beágyazott elemre hivatkozik `Context.Data.eventTime` . 
+  ```sql
+  contextdataeventTime varchar(50) '$.context.data.eventTime'
+  ```
 
-Ez a sor határozza meg a contextdataeventTime nevű oszlopot, amely a következő beágyazási elemre hivatkozik: Context>az adat>eventTime
+  Ez a sor az nevű oszlopot határozza meg `contextdataeventTime` , amely a beágyazott elemre hivatkozik `Context>Data>eventTime` .
 
-A második Művelettípus a `cross apply` tömbben lévő minden elemhez új sorokat hoz létre, majd a minden olyan beágyazott objektumot definiál, amely az első ponthoz hasonló: 
-```sql
-cross apply openjson (contextcustomdimensions) 
-with ( ProfileType varchar(50) '$.customerInfo.ProfileType', 
-```
+- A második Művelettípus a `cross apply` tömbben lévő egyes elemek új sorainak létrehozásához használatos. Ezután definiálja az egyes beágyazott objektumokat. 
+  ```sql
+  cross apply openjson (contextcustomdimensions) 
+  with ( ProfileType varchar(50) '$.customerInfo.ProfileType', 
+  ```
 
-Ha a tömb 5 elemet tartalmaz 4 beágyazott struktúrával, az SQL Server nélküli az 5 sort és 4 oszlopot ad vissza. Az SQL Server nélküli képes a helyi lekérdezésre, a tömböt 2 sorba leképezni, és az összes beágyazott struktúrát oszlopba megjeleníteni.
+  Ha a tömb 5 elemet tartalmaz 4 beágyazott struktúrával, a kiszolgáló nélküli SQL-modell 5 sort és 4 oszlopot ad vissza. A kiszolgáló nélküli SQL-modell képes a lekérdezésre, a tömböt 2 sorba leképezni, és az összes beágyazott struktúrát oszlopokba megjeleníteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan kérdezheti le a Azure Cosmos DBhoz készült szinapszis-hivatkozást a Spark használatával](./synapse-link/how-to-query-analytical-store-spark.md)
-* [A parketta beágyazott típusainak lekérdezése](./sql/query-parquet-nested-types.md) 
+* [A Parquet beágyazott típusainak lekérdezése](./sql/query-parquet-nested-types.md) 
