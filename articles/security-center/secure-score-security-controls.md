@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272280"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567624"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Fokozottan biztonságos pontszám Azure Security Center
 
@@ -45,17 +45,17 @@ A Security Center biztonságos pontszám lapja az alábbiakat tartalmazza:
 > Security Center odaítélt pontok korábbi verziói az ajánlási szinten: Ha egy adott erőforrásra vonatkozó javaslatot szervizelt, a biztonságos pontszám javult. Napjainkban a pontszám csak akkor javul, ha a vezérlőn belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Így a pontszám csak akkor javul, ha javította az erőforrás biztonságát.
 
 
-## <a name="accessing-your-secure-score"></a>A biztonságos pontszám elérése
+## <a name="access-your-secure-score"></a>Hozzáférés a biztonságos pontszámhoz
 
 A teljes biztonsági pontszám, valamint a pontszám/előfizetés alapján a Azure Portal vagy a programozott módon a Azure Security Center REST API.
 
-### <a name="getting-your-secure-score-from-the-portal"></a>Biztonságos pontszám beszerzése a portálról
+### <a name="get-your-secure-score-from-the-portal"></a>A portál biztonságos pontszámának beolvasása
 
 Security Center a pontszám kiemelten jelenik meg a portálon: ez az első dolog, ami az Áttekintés oldalon látható. Ha a a dedikált biztonságos pontszám oldalra kattint, a pontszám az előfizetés alapján lebontva jelenik meg. Kattintson egy előfizetésre, és tekintse meg a rangsorolt javaslatok részletes listáját, valamint azt, hogy milyen hatással lehet a szervizelését az előfizetés pontszámára.
 
 ![Általános biztonsági pontszám a portálon látható módon](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>A REST API biztonságos pontszámának beolvasása
+### <a name="get-your-secure-score-from-the-rest-api"></a>Szerezze be biztonságos pontszámát a REST API
 
 A pontszámot a [biztonságos pontszám API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) -n keresztül érheti el (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
 
@@ -91,13 +91,22 @@ A vezérlő maximális pontszáma, rendszerfrissítések alkalmazása, mindig 6.
 |**Biztonsági pontszám**<br>Több előfizetés|<br>Az összes előfizetéshez tartozó összes erőforrás aktuális pontszáma hozzáadva, a számítás pedig azonos, mint egyetlen előfizetés esetén.<br><br>Több előfizetés megtekintésekor a biztonságos pontszám kiértékeli az összes engedélyezett szabályzaton belüli összes erőforrást, és a biztonsági vezérlők maximális pontszámára vonatkozó együttes hatásukat.<br>![Több előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Az összesített pontszám **nem** átlag; Ehelyett az összes előfizetés összes erőforrása állapotának kiértékelt testtartása.<br>Itt is, ha a javaslatok lapra lép, és hozzáadja az elérhető lehetséges pontokat, akkor a jelenlegi pontszám (24) és a rendelkezésre álló maximális pontszám (60) közötti különbség jelenik meg.|
 ||||
 
-## <a name="improving-your-secure-score"></a>A biztonságos pontszám javítása
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Mely javaslatok szerepelnek a biztonságos pontszámok számításában?
+
+Csak a beépített javaslatok befolyásolhatják a biztonságos pontszámot.
+
+Emellett az **előzetes** verzióként megjelölt javaslatok nem szerepelnek a biztonságos pontszám számításában. Ha lehetséges, még mindig szervizelni kell őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul.
+
+Példa az előzetes verziójú javaslatra:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
+
+
+## <a name="improve-your-secure-score"></a>Biztonsági pontszám javítása
 
 A biztonságos pontszám javítása érdekében javítsa a javaslatok listáját a biztonsági javaslatok kijavításával. Az egyes javaslatokat minden erőforráshoz manuálisan, vagy a **gyors javítás** használatával javíthatja. lehetőség (ha elérhető) egy, az erőforrások egy csoportjára vonatkozó javaslatra vonatkozó szervizelés alkalmazásához. További információ: [javaslatok szervizelése](security-center-remediate-recommendations.md).
 
->[!IMPORTANT]
-> Csak a beépített javaslatok befolyásolhatják a biztonságos pontszámot.
-
+A pontszám javításának egy másik módja, és gondoskodhat arról, hogy a felhasználók ne hozzanak létre olyan erőforrásokat, amelyek negatív hatással vannak a pontszámra, hogy konfigurálja a vonatkozó javaslatok érvényesítési és megtagadási beállításait. További információ a [helytelen konfigurációkkal kapcsolatos kényszerítő/megtagadási javaslatok megelőzéséről](prevent-misconfigurations.md).
 
 ## <a name="security-controls-and-their-recommendations"></a>Biztonsági vezérlők és javaslataik
 
@@ -144,7 +153,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Biztonsági konfigurációk szervizelése (max. pontszám 4)</p></strong>A helytelenül konfigurált informatikai eszközök nagyobb kockázatot jelentenek a támadásra. Az alapszintű megerősítési műveleteket gyakran elfelejtette az eszközök üzembe helyezése, és a határidőknek teljesülnie kell. A biztonsági beállítások az infrastruktúra bármely szintjén lehetnek: az operációs rendszertől és a hálózati berendezésektől a Felhőbeli erőforrásokhoz.<br>Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurációját az iparági szabványok, rendeletek és referenciaértékek követelményeivel. Ha konfigurálta a szervezete számára fontos "megfelelőségi csomagokat" (szabványokat és alapkonfigurációkat), akkor a hiányosságok a CCEID tartalmazó biztonsági javaslatokat, valamint az esetleges biztonsági hatás magyarázatát eredményezik.<br>A gyakran használt csomagok az <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Security benchmark</a> és a <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure founds benchmark Version 1.1.0</a></td>
-    <td class="tg-lboi"; width=55%>- A pod biztonsági szabályzatokat meg kell határozni a Kubernetes-szolgáltatásokban<br>- A tároló biztonsági konfigurációjában található biztonsági réseket szervizelni kell<br>- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell<br>- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell<br>- A figyelési ügynököt telepíteni kell a virtuális gépekre<br>- A figyelési ügynököt telepíteni kell a gépekre<br>- Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)<br>- Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)<br>- A figyelési ügynököt a virtuálisgép-méretezési csoportokra kell telepíteni<br>- A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken</td>
+    <td class="tg-lboi"; width=55%>- A tároló biztonsági konfigurációjában található biztonsági réseket szervizelni kell<br>- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell<br>- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell<br>- A figyelési ügynököt telepíteni kell a virtuális gépekre<br>- A figyelési ügynököt telepíteni kell a gépekre<br>- Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)<br>- Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)<br>- A figyelési ügynököt a virtuálisgép-méretezési csoportokra kell telepíteni<br>- A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Nem engedélyezett hálózati hozzáférés korlátozása (max. pontszám 4)</p></strong>A szervezeten belüli végpontok közvetlen kapcsolódást biztosítanak a virtuális hálózatról a támogatott Azure-szolgáltatásokhoz. Az alhálózatban lévő virtuális gépek kommunikálhatnak az összes erőforrással. Ha korlátozni szeretné az alhálózaton belüli és az erőforrások közötti kommunikációt, hozzon létre egy hálózati biztonsági csoportot, és rendelje hozzá az alhálózathoz. A szervezetek a bejövő és kimenő szabályok létrehozásával korlátozhatják és védhetők a jogosulatlan forgalom ellen.</td>
@@ -204,7 +213,7 @@ Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a k�
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Ha egy biztonsági vezérlő nulla pontot biztosít a biztonságos pontszám felé, figyelmen kívül hagyhatom?
 Bizonyos esetekben a vezérlőelem maximális pontszáma nullánál nagyobb lesz, de a hatás nulla. Ha az erőforrások kijavításának növekményes pontszáma elhanyagolható, a rendszer nulla értékűre kerekíti. Ne hagyja figyelmen kívül ezeket az ajánlásokat, mivel azok továbbra is biztonsági javítást tesznek lehetővé. Az egyetlen kivétel a "további ajánlott eljárás" vezérlő. Szervizelését ezekkel az ajánlásokkal nem növeli a pontszámát, de a teljes biztonságot is növeli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellenőrzéseket ismerteti. A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 

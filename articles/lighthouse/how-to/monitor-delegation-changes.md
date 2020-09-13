@@ -1,14 +1,14 @@
 ---
 title: Delegálási változások figyelése a kezelési bérlőben
 description: Megtudhatja, hogyan figyelheti a delegálási tevékenységeket az ügyfelek bérlői számára a felügyeleti bérlőbe.
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589741"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567605"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelési bérlőben
 
@@ -48,6 +48,9 @@ Mivel ez egy széles körű hozzáférés, javasoljuk, hogy ezt a szerepkört eg
 - Győződjön meg arról, hogy ez az egyszerű szolgáltatás nem rendelkezik hozzáféréssel a delegált ügyfelek erőforrásaihoz.
 - [Tanúsítvány használata](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) az Azure Key Vault biztonságos hitelesítéséhez és [tárolásához](../../key-vault/general/best-practices.md).
 - Korlátozza azokat a felhasználókat, akik hozzáféréssel rendelkeznek az egyszerű szolgáltatásnév nevében.
+
+> [!NOTE]
+> A monitoring Reader Azure beépített szerepkörét a root hatókörben is hozzárendelheti az egyes felhasználókhoz vagy a felhasználói csoportokhoz. Ez akkor lehet hasznos, ha azt szeretné, hogy egy felhasználó [közvetlenül a Azure Portal tudja megtekinteni a delegálási adatokat](#view-delegation-changes-in-the-azure-portal). Ha így tesz, vegye figyelembe, hogy ez egy széles körű hozzáférés, amelyet a lehető legkevesebb felhasználó számára kell korlátozni.
 
 Az alábbi módszerek egyikével hajthatja végre a gyökérszintű hatókör-hozzárendeléseket.
 
@@ -165,7 +168,16 @@ else {
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Delegálási változások megtekintése a Azure Portalban
+
+Azok a felhasználók, akik a felügyeleti olvasó Azure beépített szerepkörét használták a gyökérszintű hatókörben, közvetlenül a Azure Portalban tekinthetik meg a delegálási módosításokat.
+
+1. Lépjen a **saját ügyfelek** oldalra, majd válassza a **műveletnapló** lehetőséget a bal oldali navigációs menüből.
+1. Győződjön meg arról, hogy a **címtár tevékenység** van kiválasztva a képernyő felső részén található szűrőben.
+
+Ekkor megjelenik a delegálási változások listája. Az **Oszlopok szerkesztése** lehetőség kiválasztásával megjelenítheti vagy elrejtheti az **állapotot**, az **események kategóriáját**, az **időt**, az **időbélyeget**, az **előfizetést**, az **esemény által kezdeményezett, az** **erőforráscsoport**, az **erőforrástípus**és az **erőforrás** értékét.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan hozhatja be az ügyfeleket az [Azure lighthouseba](../concepts/azure-delegated-resource-management.md).
 - Ismerje meg a [Azure monitor](../../azure-monitor/index.yml) és az [Azure-tevékenység naplóját](../../azure-monitor/platform/platform-logs-overview.md).

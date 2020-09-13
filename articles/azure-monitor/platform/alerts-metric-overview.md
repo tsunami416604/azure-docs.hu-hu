@@ -4,12 +4,12 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258434"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595563"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -137,13 +137,15 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 
 | Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
+| Virtuális gépek<sup>1</sup>  | **Igen** | Nem | Nem |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kötetei | **Igen** | **Igen** | **Igen** |
 | Kulcstartók | **Igen** | **Igen** | **Igen** |
 | Adatmező peremhálózati eszközei | **Igen** | **Igen** | **Igen** |
+
+<sup>1</sup> nem támogatott a virtuálisgép-hálózati metrikák esetében (összesen a hálózat, a hálózat teljes száma, a bejövő folyamatok, a kimenő folyamatok, a bejövő folyamatok maximális létrehozási sebessége, a kimenő forgalom maximális száma).
 
 A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 
@@ -170,7 +172,7 @@ A metrikus riasztások esetében általában 5 percen belül értesítést fog k
 A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
 - [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)

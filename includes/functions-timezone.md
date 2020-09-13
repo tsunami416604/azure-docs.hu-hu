@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b4fbeb6baa4516ca4cf3ca6194195fae2c688b07
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dba7a3cc7a68d360fd6e56511b71ae364f624646
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165658"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569278"
 ---
 A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes világidő (UTC) szerint van megadva. Ha egy másik időzóna alapján szeretné megkeresni a CRON-kifejezést, hozzon létre egy alkalmazást az nevű Function-alkalmazáshoz `WEBSITE_TIME_ZONE` . 
 
@@ -12,11 +12,11 @@ A beállítás értéke attól függ, hogy az operációs rendszer és az alkalm
 
 |Operációs rendszer |Felkészülés |Érték |
 |-|-|-|
-| **Windows** |Mind | Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-index] ( https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) . |
+| **Windows** |Mind | Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-indexben](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10))látható módon. |
 | **Linux** |Prémium<br/>Dedikált |Állítsa az értéket a kívánt időzóna nevére a [TZ-adatbázisban](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)látható módon. |
 
 > [!NOTE]
-> `WEBSITE_TIME_ZONE`jelenleg nem támogatott a Linux-fogyasztási tervben.
+> `WEBSITE_TIME_ZONE` jelenleg nem támogatott a Linux-fogyasztási tervben.
 
 Például a *keleti téli idő* (Windows) vagy az *America/New_York* (Linux) UTC-05:00. A következő NCRONTAB-kifejezéssel, amely az UTC-időzónához 10:00 tartozik:
 

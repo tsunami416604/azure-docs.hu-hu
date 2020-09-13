@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/08/2020
 ms.author: b-juche
-ms.openlocfilehash: e7bdf6ce35e2649a068de234b4b52e13efe72c44
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ca17dccd8b17a2e0ff7e9b960c74b4c5a36018f5
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690544"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567319"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -50,8 +50,8 @@ Ez a szakasz a Windows-alkalmazásokra és SQL Server-megoldásokra mutató hiva
 ### <a name="sql-server"></a>SQL Server
 
 * [SQL Server üzembe helyezése SMB-kapcsolaton keresztül Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
-* [SQL Server always-on feladatátvevő fürt üzembe helyezése SMB-kapcsolaton keresztül Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q)
-* [Always-On rendelkezésre állási csoportok üzembe helyezése Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc)
+<!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
+<!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
 
 ## <a name="sap-on-azure-solutions"></a>SAP Azure-megoldásokkal
 
@@ -89,7 +89,7 @@ Ez a szakasz a virtuális asztali infrastruktúra-megoldásokra mutató hivatkoz
 * [Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei](solutions-windows-virtual-desktop.md)
 * [Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
-* [Windowsos virtuális asztal nagyvállalati szinten](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [Vállalati szintű Windows Virtual Desktop](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>HPC-megoldások
 

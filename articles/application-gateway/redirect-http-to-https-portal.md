@@ -125,7 +125,7 @@ Először adja hozzá a *myListener* nevű figyelőt a 80-es porthoz.
 6. **Átirányítási cél**esetén válassza a **figyelő**lehetőséget.
 7. Győződjön meg arról, hogy a **cél figyelő** **appGatewayHttpListener**van beállítva.
 8. A **belefoglalási lekérdezési karakterlánc** és az **elérési út** beállításnál válassza az *Igen*lehetőséget.
-9. Válassza a **Hozzáadás** lehetőséget.
+9. Válassza a **Hozzáadás** elemet.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
@@ -156,13 +156,13 @@ A virtuálisgép-méretezési csoport portál felhasználói felülete létrehoz
 3. Válassza ki a **háttérbeli készletek**elemet.
 4. Válassza a **myAppGatewaymyvmss**lehetőséget.
 5. Válassza **a minden cél eltávolítása a háttér-készletből**lehetőséget.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 7. A folyamat befejezése után válassza ki a **myAppGatewaymyvmss** háttér-készletet, válassza a **Törlés** lehetőséget, majd kattintson az **OK gombra** a megerősítéshez.
 8. Válassza a **appGatewayBackendPool**lehetőséget.
 9. A **célok**területen válassza a **VMSS**lehetőséget.
 10. A **VMSS**területen válassza a **myvmss**elemet.
 11. A **hálózati adapter konfigurációja**területen válassza a **myvmssNic**lehetőséget.
-12. Kattintson a **Mentés** gombra.
+12. Válassza a **Mentés** lehetőséget.
 
 ### <a name="upgrade-the-scale-set"></a>A méretezési csoport frissítése
 

@@ -14,18 +14,18 @@ ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815997"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567350"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
 Ez a cikk a Privileged Identity Management (PIM) engedélyezését és a használatának első lépéseit ismerteti.
 
-A Privileged Identity Management (PIM) használatával felügyelheti, vezérelheti és figyelheti a hozzáférést a Azure Active Directory (Azure AD) szervezeten belül. A PIM segítségével igény szerint és az Azure-erőforrásokhoz, Azure AD-erőforrásokhoz és más Microsoft-online szolgáltatásokokhoz, például az Office 365-hez vagy Microsoft Intunehoz is igény szerinti hozzáférést biztosíthat.
+A Privileged Identity Management (PIM) használatával felügyelheti, vezérelheti és figyelheti a hozzáférést a Azure Active Directory (Azure AD) szervezeten belül. A PIM segítségével igény szerinti és igény szerint férhet hozzá az Azure-erőforrásokhoz, az Azure AD-erőforrásokhoz és más Microsoft-online szolgáltatásokokhoz, például Microsoft 365okhoz vagy Microsoft Intuneokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +59,7 @@ A Privileged Identity Management beállítása után megismerheti a módját.
 
 ![Navigációs ablak Privileged Identity Management feladatok és kezelési beállítások megjelenítése](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Feladat + kezelés | Leírás |
+| Feladat + kezelés | Description |
 | --- | --- |
 | **Saját szerepkörök**  | Megjeleníti az Önhöz hozzárendelt jogosult és aktív szerepkörök listáját. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
 | **Saját kérések** | Megjeleníti a jogosult szerepkör-hozzárendelések aktiválásához függőben lévő kéréseit. |
@@ -88,7 +88,7 @@ A Privileged Identity Management megnyitásának megkönnyítéséhez adjon hozz
 
     ![Privileged Identity Management gyors üzembe helyezési csempe az irányítópulton](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Azure-erőforrásokhoz való hozzáférés kezelése Privileged Identity Management](pim-resource-roles-discover-resources.md)

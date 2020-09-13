@@ -1,67 +1,67 @@
 ---
-title: 'Cognitive Services docs: Újdonságok július 1-től 2020 – július 31., 2020'
-description: Újdonságok a Cognitive Services docs-ban július 1-től 2020 – július 31., 2020.
+title: 'Cognitive Services docs: Újdonságok augusztus 1-től 2020 – augusztus 31., 2020'
+description: A Cognitive Services docs újdonságai augusztus 1-től 2020 – augusztus 31., 2020.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 08/03/2020
-ms.openlocfilehash: eda90a430d96d43d052a603f82832aef6c0facdb
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/08/2020
+ms.openlocfilehash: a48efed2444a6d2210a24a7f25ad8dce8ae32940
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553359"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567962"
 ---
-# <a name="cognitive-services-docs-whats-new-for-july-1-2020---july-31-2020"></a>Cognitive Services docs: Újdonságok július 1-től 2020 – július 31., 2020
+# <a name="cognitive-services-docs-whats-new-for-august-1-2020---august-31-2020"></a>Cognitive Services docs: Újdonságok augusztus 1-től 2020 – augusztus 31., 2020
 
-Üdvözöljük a Cognitive Services docs újdonságait 2020. július 1-től 2020. július 31-ig. Ez a cikk felsorolja a docs ezen időszak alatt történt főbb változásait.
+Üdvözöljük a Cognitive Services docs újdonságai augusztus 1-től 2020, 2020. augusztus 31-ig. Ez a cikk felsorolja a docs ezen időszak alatt történt főbb változásait.
+
+## <a name="computer-vision"></a>Computer Vision
+
+### <a name="new-articles"></a>Új cikkek
+
+- [A 2.0-s és a v 2.1-es Computer Vision API frissítése a v 3.0-s verzióra](/azure/cognitive-services/computer-vision/upgrade-api-versions)
+
+## <a name="containers"></a>Containers
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Azure Cognitive Services tároló képcímkék](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel](/azure/cognitive-services/form-recognizer/tutorial-ai-builder)
+- [Névjegykártyákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-business-cards)
+- [Nyugtákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Gyors útmutató: névjegykártya-adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
 
-## <a name="personalizer"></a>Personalizer
+### <a name="updated-articles"></a>Frissített cikkek
 
-### <a name="new-articles"></a>Új cikkek
-
-- [Oktatóanyag: személyre szabott használata a .NET-csevegési robotban](/azure/cognitive-services/personalizer/tutorial-use-personalizer-chat-bot)
-
-## <a name="qna-maker"></a>QnA Maker
-
-### <a name="new-articles"></a>Új cikkek
-
-- [A QnA Maker alkalmazás megtervezése](/azure/cognitive-services/qnamaker/concepts/plan)
+- [Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával](/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract)
+- [Gyors útmutató: űrlap-felismerő modell betanítása címkékkel a REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-labeled-data)
+- [Gyors útmutató: szöveg-és elrendezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-layout)
+- [Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-train-extract)
 
 ## <a name="speech-service"></a>Beszédszolgáltatás
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Custom Commands – Inaktív adatok titkosítása](/azure/cognitive-services/speech-service/custom-commands-encryption-of-data-at-rest)
-- [Egyéni kulcsszó alapjai](/azure/cognitive-services/speech-service/custom-keyword-basics)
-- [Egyéni parancsok használata Custom Voice szolgáltatással](/azure/cognitive-services/speech-service/how-to-custom-commands-use-custom-voice)
-- [Batch Processing Kit a Speech containers szolgáltatáshoz](/azure/cognitive-services/speech-service/speech-container-batch-processing)
+- [A Speech Services kvótái és korlátai](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)
 
-## <a name="text-analytics"></a>Text Analytics
+### <a name="updated-articles"></a>Frissített cikkek
 
-### <a name="new-articles"></a>Új cikkek
-
-- [Útmutató: a Text Analytics for Health használata (előzetes verzió)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [Long audio API (előzetes verzió)](/azure/cognitive-services/speech-service/long-audio-api)
 
 ## <a name="community-contributors"></a>Közösségi közreműködők
 
-A következő személyek járultak hozzá az Cognitive Services docs-hoz ebben az időszakban. Köszönöm! Ismerje meg, hogy miként járulhat hozzá az [Újdonságok kezdőlapjának](index.yml)"a részvétel" című részében található hivatkozásokhoz.
+A következő személyek járultak hozzá az Cognitive Services docs-hoz ebben az időszakban. Köszönöm! 
 
-- [milestonedev](https://github.com/milestonedev) – Justin Mile (2)
-- [felixvanleeuwen](https://github.com/felixvanleeuwen) (1)
-- [LoicB](https://github.com/LoicB) -Loic Beylot (1)
-- [nkgami](https://github.com/nkgami) -Hiroki Kendzsi (1)
-- [RussellJQA](https://github.com/RussellJQA) – Russell Johnson (1)
-- [ryotokuro](https://github.com/ryotokuro) -Taiyue tan (1)
-- [smorcuend](https://github.com/smorcuend) -Sergio Morcuende (1)
-- [swildermann](https://github.com/swildermann) – Sven Wildermann (1)
+- [hyoshioka0128](https://github.com/hyoshioka0128) – Hiroshi Yoshioka (2)
+- [Madácsi László-b](https://github.com/anwesh-b) -Madácsi László Budhathoki (1)
+- [jangelfdez](https://github.com/jangelfdez) – José Ángel Fernández (1)
+- [xhan742](https://github.com/xhan742) (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783586"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567418"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
 
@@ -72,13 +72,13 @@ A jogosultságok kezelésével automatikusan hozzáadhat felhasználókat egy cs
 - Ha egy csoport vagy csapat egy hozzáférési csomag része, és egy felhasználó hozzá van rendelve az adott hozzáférési csomaghoz, akkor a felhasználó hozzá lesz adva az adott csoporthoz vagy csapathoz, ha még nem létezik.
 - Ha egy felhasználó hozzáférési csomagjának hozzárendelése lejár, a rendszer eltávolítja azokat a csoportból vagy csapatból, kivéve, ha jelenleg egy másik hozzáférési csomagra van rendelve, amely ugyanazt a csoportot vagy csapatot tartalmazza.
 
-Bármelyik [Azure ad biztonsági csoportot vagy Office 365 csoportot](../fundamentals/active-directory-groups-create-azure-portal.md)kiválaszthatja. A rendszergazdák hozzáadhatnak bármely csoportot egy katalógushoz; a katalógus tulajdonosai bármelyik csoportot hozzáadhatják a katalógushoz, ha a csoport tulajdonosai. A csoportok kiválasztásakor tartsa szem előtt az alábbi Azure AD-korlátozásokat:
+Bármelyik [Azure ad biztonsági csoportot vagy Microsoft 365 csoportot](../fundamentals/active-directory-groups-create-azure-portal.md)is kiválaszthatja. A rendszergazdák hozzáadhatnak bármely csoportot egy katalógushoz; a katalógus tulajdonosai bármelyik csoportot hozzáadhatják a katalógushoz, ha a csoport tulajdonosai. A csoportok kiválasztásakor tartsa szem előtt az alábbi Azure AD-korlátozásokat:
 
 - Ha egy felhasználó, a vendéget is beleértve, tagként egy csoport vagy csapat tagjaként van hozzáadva, akkor az adott csoport vagy csapat többi tagját is láthatják.
 - Az Azure AD nem tudja módosítani a Windows Server Active Directoryról szinkronizált csoport tagságát Azure AD Connect használatával, vagy az Exchange Online-ban, terjesztési csoportban létrehozottként.  
 - A dinamikus csoportok tagsága nem frissíthető egy tag hozzáadásával vagy eltávolításával, így a dinamikus csoporttagságok nem alkalmasak a jogosultsági felügyelettel való használatra.
 
-További információt a csoportok és az [Office 365-csoportok és a Microsoft Teams](/microsoftteams/office-365-groups) [összevetése](/office365/admin/create-groups/compare-groups) című témakörben talál.
+További információ: csoportok és [Microsoft 365 csoportok és Microsoft Teams](/microsoftteams/office-365-groups) [összevetése](/office365/admin/create-groups/compare-groups) .
 
 1. Az **erőforrás-Szerepkörök hozzáadása a csomaghoz** lapon kattintson a **csoportok és** csoportok elemre a csoportok kiválasztása panel megnyitásához.
 
@@ -94,8 +94,8 @@ További információt a csoportok és az [Office 365-csoportok és a Microsoft 
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
     | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
-    | O365 | Az Office 365-csoport, amely nem engedélyezve van a csapatok számára. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
-    | Csoport | A csapatok számára engedélyezett Office 365-csoport. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
+    | Microsoft 365 | Microsoft 365 csoport, amely nem engedélyezett a csapat számára. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
+    | Csoport | Microsoft 365 csoportok, amelyeken engedélyezve van a csoport. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
 
 1. A **szerepkör** listából válassza a **tulajdonos** vagy a **tag**elemet.
 
@@ -178,7 +178,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
 A jogosultságok kezelése során az Azure AD naponta többször dolgozza fel a hozzáférési csomagok hozzárendeléseinek és erőforrásainak tömeges módosításait. Így ha hozzárendelést végez, vagy megváltoztatja a hozzáférési csomag erőforrás-szerepköreit, akár 24 órát is igénybe vehet az Azure AD-ben, valamint azt, hogy mennyi időt vesz igénybe a módosítások más Microsoft Online Services vagy csatlakoztatott SaaS-alkalmazásokhoz való propagálása. Ha a változás csupán néhány objektumot érint, a változás valószínűleg csak néhány percet vesz igénybe az Azure AD-ben, amely után a többi Azure AD-összetevő ezt követően észleli az SaaS-alkalmazások módosítását és frissítését. Ha a változás több ezer objektumot érint, akkor a módosítás hosszabb ideig tart. Ha például egy 2 alkalmazásból és egy 100 felhasználói hozzárendelésből álló hozzáférési csomaggal rendelkezik, és úgy dönt, hogy egy SharePoint-webhely szerepkört ad hozzá a hozzáférési csomaghoz, akkor előfordulhat, hogy az összes felhasználó a SharePoint-webhely szerepkörbe való belefoglalása után késésben van. Nyomon követheti az előrehaladást az Azure AD-naplóban, az Azure AD-kiépítési naplóban és a SharePoint-webhely naplófájljaiban.
 
-Az eltávolított csapattagok az Office 365-csoportból is törlődnek. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](/microsoftteams/office-365-groups#group-membership).
+Egy csoport tagjainak eltávolításakor a rendszer eltávolítja azokat a Microsoft 365 csoportból is. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Következő lépések
 

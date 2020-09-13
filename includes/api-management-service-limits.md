@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204516"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570050"
 ---
 | Erőforrás | Korlát |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -42,6 +42,6 @@ ms.locfileid: "82204516"
 <sup>5</sup> Ez a korlát az alapszintű, a standard és a prémium szintekre vonatkozik. A felhasználási szinten a szabályzat dokumentumának mérete legfeljebb 4 KiB lehet.<br/>
 <sup>6</sup> A fejlesztői és a prémium szintű csomagokban több egyéni tartomány is támogatott.<br/>
 <sup>7</sup> A CA-tanúsítványok nem támogatottak a felhasználási szinten.<br/>
-<sup>8</sup> Ez az erőforrás csak a felhasználási szintet érinti.<br/>
+<sup>8</sup> Ez a korlát csak a felhasználási szinten érvényes. A kategóriákban nincsenek korlátok.<br/>
 <sup>9</sup> Csak a felhasználási szintjére vonatkozik. Akár 2048 bájt hosszú lekérdezési karakterláncot tartalmaz.<br/>
 <sup>10</sup> A saját üzemeltetésű átjárók csak a fejlesztői és a prémium szinteken támogatottak. A korlát a saját üzemeltetésű [átjáró erőforrásainak](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)számára vonatkozik. A korlát növeléséhez forduljon az [ügyfélszolgálathoz](https://azure.microsoft.com/support/options/). Vegye figyelembe, hogy a saját üzemeltetésű átjáró erőforráshoz társított csomópontok (vagy replikák) száma korlátlan a prémium szinten, és a fejlesztői szint egyetlen csomópontján van korlátozva.

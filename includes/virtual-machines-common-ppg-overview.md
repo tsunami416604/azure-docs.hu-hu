@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81421794"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570002"
 ---
 A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
 
@@ -34,7 +34,7 @@ A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hog
 
 A közelségi elhelyezési csoport egy új erőforrástípus az Azure-ban. Először létre kell hoznia egyet, mielőtt más erőforrásokkal kellene használnia. A létrehozást követően a virtuális gépekkel, rendelkezésre állási csoportokkal vagy virtuálisgép-méretezési csoportokkal használható. Ha a közelségi elhelyezési csoport AZONOSÍTÓját biztosító számítási erőforrásokat hoz létre, a közelségi elhelyezési csoportot kell megadnia. 
 
-Egy meglévő erőforrást is át lehet helyezni egy közelségi elhelyezési csoportba. Ha az erőforrást egy közelségi elhelyezési csoportba helyezi át, akkor először állítsa le (szabadítsa fel) az eszközt, mert a régió egy másik adatközpontjában is elérhetővé válik, hogy az megfeleljen az elhelyezési korlátozásnak. 
+Egy meglévő erőforrást is át lehet helyezni egy közelségi elhelyezési csoportba. Ha az erőforrást egy közelségi elhelyezési csoportba helyezi át, akkor először állítsa le (szabadítsa fel) az eszközt, mert az újra üzembe kerül a régió egy másik adatközpontjában, hogy az kielégítse az elhelyezési korlátozást. 
 
 A rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok esetében az egyes virtuális gépek helyett az erőforrás szintjén kell beállítani a közelségi elhelyezési csoportot. 
 

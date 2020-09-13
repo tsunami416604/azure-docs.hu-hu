@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT Edge figyelésről és naplózásról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934293"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567554"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -20,7 +20,8 @@ Azt is megismerheti, hogyan szabályozhatja a modul által generált naplókat.
 
 A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria az alábbi besorolásnak megfelelően.
 
-![Élő videó-elemzés IoT Edge telemetria-sémán](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Az események osztályozása":::
 
 * Működés: a felhasználó által végrehajtott műveletek részeként vagy egy [adathordozó-gráf](media-graph-concept.md)végrehajtása során generált események.
    
@@ -71,6 +72,7 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
    * Példák:
       
       A rendszer észlelte a mozgást (alább), a következtetés eredményét.
+
    ```      
    {
      "body": {
@@ -98,15 +100,19 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
      }
    }
    ```
+
 A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)továbbítja, és innen más célhelyekre is átirányítható. 
 
 ### <a name="timestamps-in-analytic-events"></a>Az analitikus események időbélyegei
+
 A fentiekben leírtaknak megfelelően a videó-elemzés részeként generált események időbélyegzővel vannak társítva. Ha a gráf topológiájának részeként [rögzítette az élő videót](video-recording-concept.md) , akkor ez az időbélyegző segít megkeresni, hogy a rögzített videó hol található az adott esemény bekövetkezésekor. A következő irányelvek azt ismertetik, hogyan képezhető le egy elemzési esemény időbélyege az [Azure Media Service-eszközbe](terminology.md#asset)rögzített videó idővonalára.
 
 Először bontsa ki az `eventTime` értéket. Használja ezt az értéket egy [időtartomány-szűrőben](playback-recordings-how-to.md#time-range-filters) a rögzítés megfelelő részének lekéréséhez. Előfordulhat például, hogy olyan videót szeretne beolvasni, amely 30 másodpercet indít el az előtt `eventTime` , és 30 másodperccel később ér véget. A fenti példában, ahol a `eventTime` 2020-05-12T23:33:09.381 z, a +/-30-as időszakra vonatkozó HLS-jegyzékfájl iránti kérelem a következőhöz hasonlóan fog kinézni:
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
+
 A fenti URL-cím egy úgynevezett [fő listát](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)ad vissza, amely az URL-címeket tartalmazza a média lejátszási listáihoz. A média lista a következőhöz hasonló bejegyzéseket tartalmaz:
 
 ```
@@ -199,7 +205,7 @@ Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
 
 #### <a name="event-classes"></a>Eseményosztályok
 
-|Osztály neve|Leírás|
+|Osztály neve|Description|
 |---|---|
 |Elemzés  |A tartalom elemzése részeként generált események.|
 |Diagnosztika    |A problémák és a teljesítmény diagnosztizálását segítő események.|
@@ -262,6 +268,6 @@ Ezután a modul bináris formában fogja írni a hibakeresési naplókat az (esz
 
 [Gyakori kérdések](faq.md#monitoring-and-metrics)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Folyamatos videófelvétel](continuous-video-recording-tutorial.md)
