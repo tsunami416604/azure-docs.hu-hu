@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bac1d1e41cab4aa3be10fb226df57277db20c78e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648869"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030276"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
@@ -114,7 +114,7 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
 
 4. A **tanúsítvány engedélyei**területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
 
-5. Kattintson az **OK** gombra. 
+5. Válassza az **OK** lehetőséget. 
 
     Az Azure bejárati ajtaja mostantól elérheti ezt a Key Vault és a Key Vault tárolt tanúsítványokat.
  
@@ -241,7 +241,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
 
-## <a name="clean-up-resources---disable-https"></a>Az erőforrások eltávolítása – HTTPS letiltása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az előző lépések során engedélyezte a HTTPS protokollt az egyéni tartományon. Ha már nem szeretné HTTPS-sel használni az egyéni tartományt, letilthatja a HTTPS-t a következő lépések végrehajtásával:
 

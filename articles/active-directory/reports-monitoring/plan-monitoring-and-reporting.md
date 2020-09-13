@@ -1,6 +1,6 @@
 ---
 title: Jelentések tervezése & figyelés üzembe helyezése – Azure AD
-description: A jelentéskészítés és a monitorozás implmentation tervezését és végrehajtását ismerteti.
+description: Útmutatás a jelentéskészítés és a figyelés megvalósításának tervezéséhez és végrehajtásához.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229752"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030990"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -99,7 +99,7 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
 * Nem alkalmazható
 
-|Terület |Leírás |
+|Terület |Description |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |
@@ -133,7 +133,7 @@ Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket a
 
 Az Azure Event hub-ba történő útválasztási naplók lehetővé teszik a harmadik féltől származó SIEM-eszközökkel való integrációt. Ez az integráció lehetővé teszi, hogy az Azure AD-tevékenységek naplójának adatait kombinálja a SIEM által kezelt egyéb adatszolgáltatásokkal, így a környezet mélyebb betekintést biztosít. 
 
-További információ [a naplók eseményközpontokba való streameléséről](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+További információ [a naplók eseményközpontokba való streameléséről](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Az Azure AD jelentéskészítési és figyelési műveleteinek és biztonságának megtervezése
 

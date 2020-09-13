@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/19/2020
-ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/09/2020
+ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918587"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024383"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -42,7 +42,7 @@ További információ: [Azure Machine learning erőforrások és munkafolyamatok
 
 Azure Machine Learning a következő két hitelesítési módszert támogatja a webszolgáltatások esetében: kulcs és jogkivonat. Az egyes webszolgáltatások egyszerre csak egy hitelesítési űrlapot tudnak engedélyezni.
 
-|Hitelesítési módszer|Leírás|Azure Container Instances|AKS|
+|Hitelesítési módszer|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Kulcs|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett|
 |Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem elérhető| Alapértelmezés szerint letiltva |
@@ -105,7 +105,7 @@ A Azure Machine Learning egy további alkalmazást hoz létre (a név `aml-` a `
 
 A Azure Machine Learning a számítási erőforrások egyéb Azure-szolgáltatásaira támaszkodik. A számítási erőforrások (számítási célok) a modellek betanítására és üzembe helyezésére szolgálnak. Ezeket a számítási célokat virtuális hálózatban is létrehozhatja. Például az Azure Data Science Virtual Machine használatával betaníthatja a modelleket, majd üzembe helyezheti a modellt az AK-ra.  
 
-További információ: Hogyan lehet [biztonságosan futtatni a kísérleteket és következtetéseket egy elkülönített virtuális hálózatban](how-to-enable-virtual-network.md).
+További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 
 Az Azure Private-hivatkozást is engedélyezheti a munkaterülethez. A privát hivatkozás lehetővé teszi, hogy a kommunikációt egy Azure-Virtual Network korlátozza a munkaterületre. További információt a [privát hivatkozás konfigurálása](how-to-configure-private-link.md)című témakörben talál.
 
@@ -119,7 +119,7 @@ Az Azure Private-hivatkozást is engedélyezheti a munkaterülethez. A privát h
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
 > [!IMPORTANT]
-> Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) állítsa be. A `hbi_workspace` jelző csak akkor állítható be, ha létrehoznak egy munkaterületet. A meglévő munkaterületek esetében nem módosítható.
+> Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) állítsa be. A `hbi_workspace` jelző csak akkor állítható be, ha létrehoznak egy munkaterületet. A meglévő munkaterületek esetében nem módosítható.
 
 A `hbi_workspace` jelző szabályozza a Microsoft által [diagnosztikai célokra gyűjtött adatok](#microsoft-collected-data) mennyiségét, és lehetővé teszi a [további titkosítást a Microsoft által felügyelt környezetekben](../security/fundamentals/encryption-atrest.md). Emellett a következő műveleteket is lehetővé teszi:
 
@@ -157,13 +157,14 @@ Az ügyfél által felügyelt kulcsokkal rendelkező Cosmos DB példány kiépí
     * `cmk_keyvault`: Ez a paraméter az előfizetésében található kulcstartó erőforrás-azonosítója. Ennek a kulcstartónak ugyanabban a régióban és előfizetésben kell lennie, amelyet az Azure Machine Learning munkaterülethez fog használni. 
     
         > [!NOTE]
-        > Ez a Key Vault-példány különbözhet a munkaterület kiépítésekor Azure Machine Learning által létrehozott kulcstartótól. Ha ugyanazt a Key Vault-példányt szeretné használni a munkaterülethez, a [key_vault paraméter](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)használatával adja meg ugyanazt a kulcstartót, miközben a munkaterületet kiépíti. 
+        > Ez a Key Vault-példány különbözhet a munkaterület kiépítésekor Azure Machine Learning által létrehozott kulcstartótól. Ha ugyanazt a Key Vault-példányt szeretné használni a munkaterülethez, a [key_vault paraméter](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)használatával adja meg ugyanazt a kulcstartót, miközben a munkaterületet kiépíti. 
 
-Ezt a Cosmos DB példányt egy Microsoft által felügyelt erőforráscsoport hozza létre az előfizetésében. A felügyelt erőforráscsoport formátuma a neve `<AML Workspace Resource Group Name><GUID>` .
+Ez a Cosmos DB-példány egy Microsoft által felügyelt erőforráscsoport keretében jön létre az előfizetésében, valamint a szükséges erőforrásokkal együtt. A felügyelt erőforráscsoport formátuma a neve `<AML Workspace Resource Group Name><GUID>` . Ha a Azure Machine Learning-munkaterület privát végpontot használ, a rendszer a Cosmos DB példányhoz is létrehoz egy virtuális hálózatot. Ez a VNet a Cosmos DB és Azure Machine Learning közötti kommunikáció biztonságossá tételére szolgál.
 
 > [!IMPORTANT]
-> * Ha törölnie kell ezt a Cosmos DB példányt, törölnie kell az azt használó Azure Machine Learning munkaterületet. 
-> * Ehhez a Cosmos DB-fiókhoz az alapértelmezett [__kérési egység__](../cosmos-db/request-units.md) __8000__-kor van beállítva. Az érték módosítása nem támogatott. 
+> * Ne törölje az ezt a Cosmos DB példányt tartalmazó erőforráscsoportot, vagy a csoportban automatikusan létrehozott összes erőforrást. Ha törölnie kell az erőforráscsoportot, Cosmos DB példányt stb., törölnie kell az azt használó Azure Machine Learning-munkaterületet. A társított munkaterület törlésekor az erőforráscsoport, a Cosmos DB-példány és az egyéb automatikusan létrehozott erőforrások törlődnek.
+> * Ehhez a Cosmos DB-fiókhoz az alapértelmezett [__kérési egység__](../cosmos-db/request-units.md) __8000__-kor van beállítva. Az érték módosítása nem támogatott.
+> * Nem adhat meg saját VNet a létrehozott Cosmos DB-példánnyal való használatra. A virtuális hálózat nem módosítható. Például nem módosíthatja az általa használt IP-címtartományt.
 
 Ha el kell __forgatnia vagy vissza kell vonnia__ a kulcsot, bármikor megteheti. A kulcsok elforgatásakor Cosmos DB megkezdi az új kulcs (legújabb verzió) használatát az inaktív adatok titkosításához. Kulcs visszavonása (letiltása) esetén Cosmos DB a sikertelen kérelmeket. Ez általában egy órát vesz igénybe a rotáció vagy a visszavonás érvénybe léptetéséhez.
 
@@ -197,7 +198,7 @@ Ahhoz, hogy a kulcsot a modell Azure Container-példányra történő telepíté
 
 A központi telepítési konfiguráció létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) hivatkozás
+* [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) hivatkozás
 * [Az üzembe helyezés módja és helye](how-to-deploy-and-where.md)
 * [Modell üzembe helyezése az Azure Container Instances szolgáltatásban](how-to-deploy-azure-container-instance.md)
 
@@ -246,7 +247,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 A Microsoft a nem felhasználótól származó azonosító adatokat (például az adathalmaz nevét vagy a Machine learning-kísérlet nevét) vagy a munkahelyi környezeti változókat diagnosztikai célokra gyűjtheti. Az összes ilyen adatokat a Microsoft által felügyelt kulcsok tárolják a Microsoft tulajdonában lévő előfizetésekben üzemeltetett tárolókban, és a [Microsoft szabványos adatvédelmi szabályzatát és adatkezelési szabványait](https://privacy.microsoft.com/privacystatement)követi.
 
-A Microsoft azt is javasolja, hogy ne tárolja a bizalmas adatokat (például a fiók kulcsának titkos adatait) a környezeti változókban. A környezeti változók naplózása, titkosítása és tárolása az USA-ban történik. Hasonlóképpen a [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)elnevezése esetén Kerülje a bizalmas adatokat, például a felhasználóneveket vagy a titkos projektek nevét. Ezek az információk megjelenhetnek Microsoft ügyfélszolgálata mérnökök számára elérhető telemetria-naplókban.
+A Microsoft azt is javasolja, hogy ne tárolja a bizalmas adatokat (például a fiók kulcsának titkos adatait) a környezeti változókban. A környezeti változók naplózása, titkosítása és tárolása az USA-ban történik. Hasonlóképpen a [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)elnevezése esetén Kerülje a bizalmas adatokat, például a felhasználóneveket vagy a titkos projektek nevét. Ezek az információk megjelenhetnek Microsoft ügyfélszolgálata mérnökök számára elérhető telemetria-naplókban.
 
 A gyűjtött diagnosztikai adatok közül kiválaszthatja, `hbi_workspace` hogy a paramétert úgy állítja be, hogy `TRUE` kiépítse a munkaterületet. Ez a funkció a AzureML Python SDK, a CLI, a REST API-k vagy a Azure Resource Manager-sablonok használata esetén támogatott.
 
@@ -362,11 +363,11 @@ A részletek a következők:
 
 [![Következtetési munkafolyamat](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonságos Azure Machine Learning webszolgáltatások TLS-vel](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Machine Learning-modell felhasználása](how-to-consume-web-service.md)
 * [Azure Machine Learning használata a Azure Firewall](how-to-access-azureml-behind-firewall.md)
-* [Azure Machine Learning használata az Azure-ban Virtual Network](how-to-enable-virtual-network.md)
+* [Azure Machine Learning használata az Azure-ban Virtual Network](how-to-network-security-overview.md)
 * [Ajánlott eljárások az ajánlásokat tartalmazó rendszerek létrehozásához](https://github.com/Microsoft/Recommenders)
 * [Valós idejű ajánlási API létrehozása az Azure-ban](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

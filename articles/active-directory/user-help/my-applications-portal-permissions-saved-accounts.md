@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798108"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031092"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások portálján
 
@@ -28,9 +28,9 @@ Ha szervezeti alkalmazásokat használ a **saját alkalmazások** portálon, akk
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/access-panel-collections.md).
 
-## <a name="manage-app-permissions"></a>Alkalmazásengedélyek kezelése
+## <a name="manage-app-accounts"></a>Alkalmazás-fiókok kezelése
 
-Ha meg szeretné tekinteni az Ön vagy a rendszergazda által megadott engedélyeket, válassza a **...** lehetőséget, ha a **saját alkalmazások** portálon egy alkalmazásra viszi a kurzort, majd válassza az **alkalmazás kezelése**lehetőséget:
+Ha meg szeretné tekinteni az Ön vagy a rendszergazda által megadott alkalmazásokat, válassza a **...** lehetőséget, ha a **saját alkalmazások** portálon egy alkalmazásra viszi a kurzort, majd válassza az **alkalmazás kezelése**lehetőséget:
 
 ![Alkalmazások kezelése a saját alkalmazások portálján](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 

@@ -84,7 +84,7 @@ Ebben a szakaszban egy Microsoft Intune-profilt hoz létre egyéni beállításo
     * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (ez az információ a <name> </name> címke azurevpnconfig.xml fájljában található).
     * **Adattípus:** Karakterlánc (XML-fájl).
 
-   Jelölje ki a mappa ikont, és válassza ki az [XML-](#xml) lépések 6. lépésében mentett fájlt. Válassza a **Hozzáadás** lehetőséget.
+   Jelölje ki a mappa ikont, és válassza ki az [XML-](#xml) lépések 6. lépésében mentett fájlt. Válassza a **Hozzáadás** elemet.
 
    :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Konfigurációs beállítások" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. Kattintson a **Tovább** gombra.

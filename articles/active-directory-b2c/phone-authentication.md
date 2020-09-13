@@ -1,5 +1,5 @@
 ---
-title: Telefonos regisztráció és bejelentkezés egyéni szabályzatokkal (előzetes verzió)
+title: Telefonos regisztráció és bejelentkezés egyéni szabályzatokkal
 titleSuffix: Azure AD B2C
 description: Egyszeri jelszó (OTP) küldése szöveges üzenetekben az alkalmazás felhasználói telefonokra egyéni szabályzatokkal Azure Active Directory B2Cban.
 services: active-directory-b2c
@@ -8,27 +8,85 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/25/2020
+ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385348"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029155"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Telefonos regisztráció és bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2Cban (előzetes verzió)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C
 
 A telefonos regisztráció és bejelentkezés Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a felhasználók számára, hogy egy szöveges üzenetben SMS-ben küldött egyszeri jelszó (OTP) használatával regisztráljanak és jelentkezzenek be az alkalmazásaiba. Az egyszeri jelszavak segítségével csökkentheti a felhasználók felejtésének kockázatát, vagy megsérült a jelszavuk.
 
 A cikk lépéseit követve az egyéni szabályzatok használatával engedélyezheti ügyfelei számára, hogy regisztráljanak, és bejelentkezzenek az alkalmazásaiba a telefonjára eljuttatott egyszeri jelszó használatával.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="pricing"></a>Díjszabás
 
 Az egyszeri jelszavakat SMS szöveges üzenetek formájában küldi el a felhasználók számára, és minden egyes elküldött üzenet után díjat számítunk fel. A díjszabással kapcsolatos információkért tekintse meg a [Azure Active Directory B2C díjszabásának](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **külön** díjszabását ismertető szakaszt.
+
+## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>Felhasználói élmény a telefonos regisztrációhoz és bejelentkezéshez
+
+A telefonos regisztrációt és bejelentkezést követően a felhasználó az elsődleges azonosítóként megadott telefonszám használatával regisztrálhat az alkalmazásra. A regisztráció és a bejelentkezés során a végfelhasználói élmény az alábbiakban olvasható.
+
+> [!NOTE]
+> Nyomatékosan javasoljuk, hogy a regisztrációs és a bejelentkezéshez hasonló módon adja meg a belefoglalási adatokat, mint az alábbi minta szövege. Ez a mintaszöveg csak tájékoztató jellegű. A megfelelőségi igények kielégítéséhez tekintse meg a [CTIA webhelyén](https://www.ctia.org/programs) található rövid kód-figyelési kézikönyvet, és kérjen segítséget a saját jogi vagy megfelelőségi szakértőitől a végső szöveg és a szolgáltatás konfigurálásához:
+>
+> *A telefonszámának megadásával beleegyezik abba, hogy SMS-ben küldött egyszeri jelszót kapjon, amely segítséget nyújt a * &lt; beszúráshoz: az alkalmazás neve &gt; *. A standard üzenet és az adatforgalmi díj is érvényes.*
+>
+> *&lt;INSERT: az adatvédelmi nyilatkozatra mutató hivatkozás&gt;*<br/>*&lt;INSERT: a szolgáltatási feltételekre mutató hivatkozás&gt;*
+
+A saját belefoglalási információinak hozzáadásához szabja testre a következő mintát, és foglalja bele azt a LocalizedResources, amelyet az önérvényesített oldal a megjelenítési vezérlőelemmel (Phone-Email-Base.xml a telefonos regisztráció & bejelentkezési indító csomagjában) használt.
+
+```xml
+<LocalizedResources Id="phoneSignUp.en">        
+    <LocalizedStrings>
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_url">{insert your terms and conditions URL}</LocalizedString>          
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please verify your country code and phone number</LocalizedString>        
+    </LocalizedStrings>      
+</LocalizedResources>
+   ```
+
+### <a name="phone-sign-up-experience"></a>Telefonos regisztrációs élmény
+
+Ha a felhasználó még nem rendelkezik fiókkal az alkalmazáshoz, létrehozhat egyet a **regisztráció most** hivatkozásra kattintva. Megjelenik egy regisztrációs oldal, ahol a felhasználó kiválasztja az **országot**, beírja a telefonszámát, és kiválasztja a **kód küldése**lehetőséget.
+
+![A felhasználó elindítja a telefonos regisztrációt](media/phone-authentication/phone-signup-start.png)
+
+A rendszer egy egyszeri ellenőrző kódot továbbít a felhasználó telefonszámára. A felhasználó beírja az **ellenőrző kódot** a regisztrációs oldalra, majd kiválasztja a **kód ellenőrzése**lehetőséget. (Ha a felhasználó nem tudta beolvasni a kódot, akkor válassza az **új kód küldése**lehetőséget.)
+
+![A felhasználó a telefonos regisztráció során ellenőrzi a kódot.](media/phone-authentication/phone-signup-verify-code.png)
+
+ A felhasználó bármilyen más, a regisztrációs oldalon kért információt megad, például a **megjelenítendő nevet**, a **nevet**és a **vezetéknevet** (ország és telefonszám továbbra is feltöltve marad). Ha a felhasználó egy másik telefonszámot szeretne használni, akkor a regisztráció újraindításához válassza a **szám módosítása** lehetőséget. Ha elkészült, a felhasználó a **Folytatás**gombra kattint.
+
+![A felhasználó további információkat is tartalmaz](media/phone-authentication/phone-signup-additional-info.png)
+
+Ezután a rendszer megkéri a felhasználót, hogy adjon meg egy helyreállítási e-mailt. A felhasználó megadja az e-mail-címét, majd kiválasztja az **ellenőrző kód küldése**lehetőséget. A rendszer elküld egy kódot a felhasználó e-mail-fiókjába, amelyet az **ellenőrző kód** mezőbe beolvashat és megadhat. Ezután a felhasználó kiválasztja a **kód ellenőrzése**lehetőséget. 
+
+A kód ellenőrzése után a felhasználó a **Létrehozás** gombra kattint a fiók létrehozásához. Ha a felhasználó más e-mail-címet szeretne használni, válassza az **E-mail módosítása**lehetőséget.
+
+![A felhasználó létrehoz egy fiókot](media/phone-authentication/email-verification.png)
+
+### <a name="phone-sign-in-experience"></a>Telefonos bejelentkezési élmény
+
+Ha a felhasználó rendelkezik egy olyan fiókkal, amely azonosítóként rendelkezik telefonszámmal, a felhasználó beírja a telefonszámát, és kiválasztja a **Continue (folytatás**) értéket. A **Folytatás**gombra kattintva megerősítik az országot és a telefonszámot, és egy egyszeri ellenőrző kódot kapnak a telefonjára. A felhasználó beírja az ellenőrző kódot, és kiválasztja a **tovább** lehetőséget a bejelentkezéshez.
+
+![Telefonos bejelentkezési felhasználói élmény](media/phone-authentication/phone-signin-screens.png)
+
+## <a name="deleting-a-user-account"></a>Felhasználói fiók törlése
+
+Bizonyos esetekben előfordulhat, hogy törölnie kell egy felhasználót és a hozzá tartozó adatait a Azure AD B2C könyvtárából. A felhasználói fiókok Azure Portalon keresztüli törlésével kapcsolatos részletekért tekintse meg [ezeket az utasításokat](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete). 
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -92,14 +150,9 @@ Például:
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Megtalálhatja a telefonos regisztrációt és az egyéni házirend-előfizetési csomagot (és más kezdő csomagokat is) a GitHubon:
-
-[Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/forgatókönyvek/telefon-szám-jelszó][starter-pack-phone]
-
-Az alapszintű csomag házirend-fájljai a multi-Factor Authentication technikai profilokat és a telefonszám-adatfeldolgozási jogcímeket használják:
-
+Megtalálhatja a telefonos regisztrációt és az egyéni házirend-előindítási csomagot (és más alapszintű csomagokat) a GitHubon: [Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/forgatókönyvek/telefon-szám][starter-pack-phone]
 * [Azure Multi-Factor Authentication technikai profil megadása](multi-factor-auth-technical-profile.md)
 * [Telefonszám-jogcímek átalakításának meghatározása](phone-number-claims-transformations.md)
 

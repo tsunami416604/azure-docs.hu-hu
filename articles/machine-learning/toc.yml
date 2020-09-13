@@ -535,6 +535,9 @@
       href: reference-pipeline-yaml.md
     - name: Szuverén felhőparitás
       href: reference-machine-learning-cloud-parity.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Kibocsátási megjegyzések

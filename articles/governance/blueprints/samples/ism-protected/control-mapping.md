@@ -1,14 +1,14 @@
 ---
-title: Ausztráliai kormányzati ISM – védett terv minta áttekintése
-description: Az ausztrál Government, az ISM által védett tervezet minta áttekintése. Ez a tervrajz-minta segít az ügyfeleknek az egyes ISM-védelemmel ellátott vezérlők értékelésében.
-ms.date: 08/03/2020
+title: Ausztrál kormány, az ISM által védett terv minta-vezérlőinek
+description: Az ausztrál kormány és a védett tervekhez tartozó ISM-minta hozzárendelésének vezérlése. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760430"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030106"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Az Australian Government által védett tervezetek mintájának vezérlése
 
@@ -347,9 +347,13 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További cikkek a tervekről és a használatukról:
+
+> [!div class="nextstepaction"]
+> [ISM-védelemmel ellátott terv – áttekintés](./index.md) 
+>  [ISM-védelemmel ellátott terv – lépések üzembe helyezése](./deploy.md)
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

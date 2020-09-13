@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142407"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030380"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -77,6 +77,8 @@ A CloudMonix monitorozást, automatizálást és önjavító szolgáltatásokat 
 A datadoggal a világ legjelentősebb monitorozási szolgáltatása a felhőalapú alkalmazások számára. Összegyűjti a kiszolgálók, adatbázisok, eszközök és szolgáltatások adatait a teljes verem egységes nézetének bemutatásához. Ezek a képességek SaaS-alapú adatelemzési platformon érhetők el. Ez a szolgáltatás lehetővé teszi, hogy a fejlesztői és az Ops-csapatok működjenek együtt az állásidő elkerülésével, a teljesítményproblémák megoldásával, valamint a fejlesztési és üzembe helyezési ciklusok időben történő befejezésének biztosításával. A Datadoggal és az Azure integrálásával az infrastruktúra különböző mérőszámait gyűjtheti és tekintheti meg. A virtuális gépek metrikáinak korrelációja az alkalmazás szintű metrikákkal. A mérőszámokat a tulajdonságok és az egyéni címkék bármely kombinációjának használatával darabolhatja és kockára teheti.
 
 [Nyissa meg a dokumentációt.][datadog-doc]
+
+A Datadoggal új Azure Marketplace-integrációja a kiadásra van ütemezve a 2020. október elején. Itt egy hivatkozás jelenik meg A kiadás után. 
 
 ## <a name="dynatrace"></a>Dynatrace
 

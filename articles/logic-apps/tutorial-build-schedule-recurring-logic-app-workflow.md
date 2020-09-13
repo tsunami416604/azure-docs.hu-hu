@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9239196d26bcd4967b685fa7970c4d3bd706d4
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124850"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030531"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -36,7 +36,7 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 * Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [regisztráljon egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
 
-* Egy Logic Apps által támogatott e-mail-szolgáltatótól (például Office 365 Outlook, Outlook.com vagy Gmail) származó e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). Ez a rövid útmutató egy Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, az általános lépések változatlanok maradnak, de a felhasználói felület némileg eltérő lehet.
+* Egy Logic Apps által támogatott e-mail-szolgáltatótól (például Office 365 Outlook, Outlook.com vagy Gmail) származó e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). Ez a rövid útmutató munkahelyi vagy iskolai fiókot használ. Ha más e-mail-fiókot használ, az általános lépések változatlanok maradnak, de a felhasználói felület némileg eltérő lehet.
 
   > [!IMPORTANT]
   > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
@@ -92,8 +92,8 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Intervallum** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
-   | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
+   | **Intervallum** | Yes | 1 | Az ellenőrzések között kivárt intervallumok száma |
+   | **Gyakoriság** | Yes | Hét | Az ismétlődéshez használni kívánt időegység |
    |||||
 
 1. Az **intervallum** és a **gyakoriság**területen nyissa meg az **új paraméter hozzáadása** listát, és válassza ki ezeket a tulajdonságokat az triggerhez való hozzáadáshoz.
@@ -141,8 +141,8 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
-   | **API-kulcs** | Igen | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
+   | **Kapcsolat neve** | Yes | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
+   | **API-kulcs** | Yes | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Nevezze át a műveletet a következő leírásra: `Get route and travel time with traffic`
@@ -161,11 +161,11 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **1. útvonalpont** | Igen | <*Start – hely*> | Az útvonal kiindulópontja |
-   | **2. útvonalpont** | Igen | <*végső hely*> | Az útvonal célállomása |
-   | **Optimalizálás** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
-   | **Távolság mértékegysége** | Nem | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
-   | **Közlekedési mód** | Nem | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
+   | **1. útvonalpont** | Yes | <*Start – hely*> | Az útvonal kiindulópontja |
+   | **2. útvonalpont** | Yes | <*végső hely*> | Az útvonal célállomása |
+   | **Optimalizálás** | No | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
+   | **Távolság mértékegysége** | No | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
+   | **Közlekedési mód** | No | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
    ||||
 
    További információk ezekről a paraméterekről: [Útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route).
@@ -192,9 +192,9 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Név** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
-   | **Típus** | Igen | Egész szám | A változó adattípusa |
-   | **Érték** | Nem| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
+   | **Név** | Yes | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
+   | **Típus** | Yes | Egész szám | A változó adattípusa |
+   | **Érték** | No| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
    ||||
 
    1. Az **érték** tulajdonsághoz tartozó kifejezés létrehozásához kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. Ha szükséges, állítsa szélesebbre a böngésző ablakát, amíg meg nem jelenik a lista. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
@@ -248,7 +248,7 @@ Ezután adjon hozzá egy feltételt, amely ellenőrzi, hogy a jelenlegi utazás 
 
    1. A középső összehasonlítás mezőben válassza a **nagyobb, mint** operátor elemet.
 
-   1. A feltétel jobb oldalán található **érték választása** mezőben adja meg a következő korlátot:`15`
+   1. A feltétel jobb oldalán található **érték választása** mezőben adja meg a következő korlátot: `15`
 
       Ha elkészült, a feltétel a következő példához hasonlóan néz ki:
 
@@ -361,7 +361,7 @@ Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alka
 
 1. Adja meg az erőforráscsoport nevét megerősítésként, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy logikai alkalmazást, amely ellenőrzi a forgalmat a megadott ütemezés alapján (hétköznap reggelente), és végrehajt egy adott műveletet (e-mailt küld), amikor az utazási idő meghaladja a megadott határértéket. Most megismerheti, hogyan hozhat létre egy olyan logikai alkalmazást az Azure- és Microsoft-szolgáltatások, valamint más SaaS-alkalmazások integrálásával, amely levelezési listára vonatkozó kérelmeket küld el jóváhagyásra.
 

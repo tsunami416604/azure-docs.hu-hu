@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120375"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030752"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 
@@ -27,7 +27,7 @@ A cikk lépéseinek végrehajtásához a következő felhasználói engedélyek 
 
 * A Dynamics 365 Customer engagement-példány rendszergazdai jogosultságai a megoldás telepítéséhez.
 * Bérlői rendszergazdai jogosultságok új szolgáltatásfiók létrehozásához az érdeklődők számára a kereskedelmi Piactéri ajánlatok által küldött érdeklődők számára.
-* Hozzáférés az Office 365 felügyeleti portálhoz.
+* Hozzáférés a felügyeleti portálhoz.
 * Hozzáférés a Azure Portalhoz.
 
 ## <a name="install-the-solution"></a>A megoldás telepítése
@@ -78,7 +78,7 @@ Azure Active Directory konfigurálása a Dynamics 365 Customer engagement szolg�
 1. Adjon meg egy értelmes nevet az alkalmazás neveként.
 1. A **támogatott fiókok típusai**területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
 1. Az **átirányítási URI (nem kötelező)** területen válassza a **web** lehetőséget, és adjon meg egy URI-t, például: `https://contosoapp1/auth` . 
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 
     ![Alkalmazás-oldal regisztrálása](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
@@ -157,7 +157,7 @@ Az utolsó lépés az, hogy lehetővé teszi a létrehozott felhasználó szám�
 
     ![Biztonsági szerepkörök panel](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-1. A biztonsági szerepkörben válassza az **alaprekordok** fület. Keresse meg a **felhasználói entitás felhasználói felületének beállításai** elemet. A létrehozási, olvasási és írási engedélyek engedélyezése a felhasználó számára (1/4 sárga kör) az adott entitáshoz a megfelelő körökben egyszer kattintva.
+1. A biztonsági szerepkörben válassza az **alapvető rekordok** lapot. Keresse meg a **felhasználói entitás felhasználói felületének beállításai** elemet. A létrehozási, olvasási és írási engedélyek engedélyezése a felhasználó számára (1/4 sárga kör) az adott entitáshoz a megfelelő körökben egyszer kattintva.
 
     ![Microsoft Marketplace vezető Writer Core Records lap](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 

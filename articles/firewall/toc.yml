@@ -28,8 +28,6 @@
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure Monitor-naplók
-      href: log-analytics-samples.md
 - name: Alapelvek
   items:
     - name: Az Azure Firewall funkciói
@@ -88,6 +86,8 @@
       href: dns-settings.md
     - name: Diagnosztikai naplók monitorozása
       href: firewall-diagnostics.md
+    - name: Azure Monitor-naplók
+      href: log-analytics-samples.md
 - name: Referencia
   items:
     - name: Azure CLI

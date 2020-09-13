@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 85a1f0dcc2e778a09cf0d19b2a85d6faf371f032
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 10d253b3e470ea009944d4ccd756d4bbbe3766e7
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134520"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029817"
 ---
 # <a name="server-group-size"></a>Kiszolgálócsoport mérete
 
@@ -40,7 +40,7 @@ A Azure Database for PostgreSQL-nagy kapacitású (Citus) önkiszolgáló skál�
 
 ### <a name="add-worker-nodes"></a>Munkavégző csomópontok hozzáadása
 
-Csomópontok hozzáadásához nyissa meg a **configure (Konfigurálás** ) lapot a nagy kapacitású (Citus) kiszolgálócsoport számára.  Ha a **munkavégző csomópontok száma** fölé húzza a csúszkát, az érték módosul.
+Csomópontok hozzáadásához nyissa meg a nagy kapacitású-(Citus-) kiszolgálócsoport **számítás + tárolás** lapját.  Ha a **munkavégző csomópontok száma** fölé húzza a csúszkát, az érték módosul.
 
 ![Erőforrás-csúszkák](./media/howto-hyperscale-scaling/01-sliders-workers.png)
 
@@ -66,7 +66,7 @@ A függvény a (z `rebalance_table_shards` ) argumentumban megnevezett tábla eg
 
 Az új csomópontok hozzáadásán kívül növelheti a meglévő csomópontok képességeit is. A számítási kapacitás felfelé és lefelé való beállítása hasznos lehet a teljesítmény-kísérleteknél, valamint a forgalmi igények rövid vagy hosszú távú változásaihoz.
 
-Ha módosítani szeretné az összes munkavégző csomópont virtuális mag, állítsa be a **virtuális mag** csúszkát a **konfiguráció alatt (munkavégző csomópont)**. A koordinátor csomópontjának virtuális mag egymástól függetlenül is módosítható. Állítsa be a **virtuális mag** csúszkát a **konfiguráció (koordinátor csomópont)** alatt.
+Ha módosítani szeretné az összes munkavégző csomópont virtuális mag, állítsa be a **virtuális mag** csúszkát a **konfiguráció alatt (munkavégző csomópont)**. A koordinátor csomópontjának virtuális mag egymástól függetlenül is módosítható. Állítsa be a **virtuális mag** csúszkát a  **konfiguráció (koordinátor csomópont)** alatt.
 
 ## <a name="next-steps"></a>Következő lépések
 

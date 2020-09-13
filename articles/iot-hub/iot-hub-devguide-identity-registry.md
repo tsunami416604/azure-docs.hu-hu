@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327752"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029834"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
 
@@ -84,7 +84,7 @@ Használjon aszinkron műveleteket a [IoT hub erőforrás-szolgáltató végpont
 
 További információ az importálási és exportálási API-król: [IoT hub erőforrás-szolgáltató REST API](/rest/api/iothub/iothubresource)-k. Ha többet szeretne megtudni az importálási és exportálási feladatok futtatásáról, tekintse meg [a IoT hub-eszköz identitások tömeges kezelése](iot-hub-bulk-identity-mgmt.md)című témakört.
 
-Az eszközök identitásai a Service API-n keresztül is exportálhatók és importálhatók IoT Hub a [REST API](/rest/api/iothub/service/jobclient/createimportexportjob) vagy a IoT hub [Service SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)-k egyikével.
+Az eszközök identitásai a Service API-n keresztül is exportálhatók és importálhatók IoT Hub a [REST API](/rest/api/iothub/service/jobs/createimportexportjob) vagy a IoT hub [Service SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)-k egyikével.
 
 ## <a name="device-provisioning"></a>Eszköz kiépítés
 
@@ -112,7 +112,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 
 Értesítési üzenet az eszközhöz:
 
-| Név | Érték |
+| Name | Érték |
 | --- | --- |
 |$content típusa | application/json |
 |$iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -148,7 +148,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ike
 ```
 Értesítési üzenet a modulhoz:
 
-| Név | Érték |
+| Name | Érték |
 | --- | --- |
 $content típusa | application/json |
 $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -188,7 +188,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 
 Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Leírás |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
@@ -212,7 +212,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 
 A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Leírás |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
@@ -244,7 +244,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan használhatja a IoT Hub Identity registryt, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

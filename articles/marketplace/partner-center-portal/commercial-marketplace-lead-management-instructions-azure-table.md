@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855714"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030797"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -135,7 +135,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
    A következő néhány lépésben a feltétel eredményén alapuló műveletet állíthatja be:
 
    * Ha a feltétel a **nem**értékre van feloldva, semmit sem kell tennie.
-   * Ha a feltétel az **Igen**értékre van feloldva, aktiváljon egy műveletet, amely összekapcsolja az Office 365-fiókját e-mailek küldéséhez.
+   * Ha a feltétel az **Igen**értékre van feloldva, aktiváljon egy műveletet, amely összekapcsolja a munkahelyi vagy iskolai fiókját e-mailek küldéséhez. 
 
 1. Válassza a **művelet hozzáadása** lehetőséget, **Ha igen**.
 

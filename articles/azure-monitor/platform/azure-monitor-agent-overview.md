@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005224"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030827"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -99,6 +99,8 @@ A Azure Monitor ügynök jelenleg a következő operációs rendszereket támoga
 ## <a name="security"></a>Biztonság
 A Azure Monitor ügynöknek nincs szüksége kulcsra, de a [rendszerhez rendelt felügyelt identitásra](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)van szükség. Az ügynök telepítése előtt minden virtuális gépen engedélyezve kell lennie egy rendszerhez rendelt felügyelt identitásnak.
 
+## <a name="networking"></a>Hálózat
+Az Azure Monitor ügynök támogatja az Azure-szolgáltatás címkéit (a AzureMonitor és a AzureResourceManager címkét is kötelező megadni), de még nem működik Azure Monitor magánhálózati vagy közvetlen proxykkal.
 
 ## <a name="install-the-azure-monitor-agent"></a>A Azure Monitor ügynök telepítése
 A Azure Monitor ügynök Azure-beli virtuálisgép- [bővítményként](../../virtual-machines/extensions/overview.md) van megvalósítva, és a következő táblázatban található adatokat tartalmazza. 

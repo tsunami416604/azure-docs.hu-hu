@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503208"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030327"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a szinapszis SQL-ben
 
@@ -94,12 +94,12 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`a egy hatékony parancs, és az előnye, hogy hatékony a tranzakciós napló területének használatakor. 
+> `CTAS` a egy hatékony parancs, és az előnye, hogy hatékony a tranzakciós napló területének használatakor. 
 > 
 > 
 
 ### <a name="drop-temporary-tables"></a>Ideiglenes táblák eldobása
-Új munkamenet létrehozásakor nem létezhet ideiglenes tábla.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely egy ideiglenest hoz létre ugyanazzal a névvel, akkor győződjön meg arról, hogy az `CREATE TABLE` utasítások sikeresek, és egy egyszerű, előfeltétel-ellenőrzéssel ellenőrizze az alábbiakat `DROP` : 
+Új munkamenet létrehozásakor nem létezhet ideiglenes tábla.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely egy ideiglenest hoz létre ugyanazzal a névvel, akkor győződjön meg arról, hogy az `CREATE TABLE` utasítások sikeresek, és egy egyszerű, előfeltétel-ellenőrzéssel ellenőrizze az alábbiakat  `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -230,7 +230,7 @@ Az SQL igény szerinti ideiglenes táblái támogatottak, de a használatuk korl
 
 Nem lehet például olyan ideiglenes táblát csatlakoztatni, amely a tárolóban lévő fájlokból származó adatokkal rendelkezik. Az ideiglenes táblák száma 100, a teljes méretük pedig 100 MB-ra van korlátozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A táblázatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [táblák tervezése a SZINAPSZIS SQL-erőforrások használatával](develop-tables-overview.md) című cikket.
 

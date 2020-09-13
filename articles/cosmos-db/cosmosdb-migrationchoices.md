@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: a08c6abe52801e1fbafd517adcb8fd9a8b8b4aee
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462292"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030072"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>A helyszíni vagy a Felhőbeli adatátviteli beállítások Azure Cosmos DB
 
@@ -47,7 +47,7 @@ A következő tényezők határozzák meg az áttelepítési eszköz kiválaszt�
 |Offline|[Azure Cosmos DB Spark-összekötő](spark-connector.md)|Azure Cosmos DB SQL API-t. <br/><br/>Más forrásokat is használhat a Spark-ökoszisztéma további összekötőit használva.| Azure Cosmos DB SQL API-t. <br/><br/>Más célokat a Spark-ökoszisztéma további összekötői is használhatnak.| &bull; A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé. <br/>&bull; Nagyméretű adatkészletekhez használható. <br/>&bull; Egyéni Spark-telepítőre van szüksége. <br/>&bull; A Spark érzékeny a séma következetlenségére, és ez problémát okozhat az áttelepítés során. |
 |Offline|[Egyéni eszköz Cosmos DB tömeges végrehajtó könyvtárral](migrate-cosmosdb-data.md)| A forrás az egyéni kódból függ | Azure Cosmos DB SQL API| &bull; Ellenőrzőpont-és kézbesítetlen levelekre vonatkozó képességeket biztosít, amelyek növelik az áttelepítés rugalmasságát. <br/>&bull; Nagyon nagy adatkészletekhez alkalmas (10 TB +).  <br/>&bull; Ehhez az eszközhöz App Serviceként futó egyéni beállítás szükséges. |
 |Online|[Cosmos DB Functions + ChangeFeed API](change-feed-functions.md)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; Egyszerűen beállítható. <br/>&bull; Csak akkor működik, ha a forrás egy Azure Cosmos DB tároló. <br/>&bull; Nagyméretű adathalmazokhoz nem alkalmas. <br/>&bull; A nem rögzíti a törlést a forrás tárolóból. |
-|Online|[Egyéni áttelepítési szolgáltatás a ChangeFeed használatával](https://github.com/nomiero/CosmosDBLiveETLSample)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; A folyamat nyomon követését teszi lehetővé. <br/>&bull; Csak akkor működik, ha a forrás egy Azure Cosmos DB tároló. <br/>&bull; Nagyobb adatkészletek esetén is működik.<br/>&bull; A felhasználónak be kell állítania egy App Service a változási csatorna processzorának üzemeltetéséhez. <br/>&bull; A nem rögzíti a törlést a forrás tárolóból.|
+|Online|[Egyéni áttelepítési szolgáltatás a ChangeFeed használatával](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; A folyamat nyomon követését teszi lehetővé. <br/>&bull; Csak akkor működik, ha a forrás egy Azure Cosmos DB tároló. <br/>&bull; Nagyobb adatkészletek esetén is működik.<br/>&bull; A felhasználónak be kell állítania egy App Service a változási csatorna processzorának üzemeltetéséhez. <br/>&bull; A nem rögzíti a törlést a forrás tárolóból.|
 |Online|[Striim](cosmosdb-sql-api-migrate-data-striim.md)| &bull;Oracle <br/>&bull;Apache Cassandra<br/><br/> Más támogatott forrásokért tekintse meg a [Striim webhelyet](https://www.striim.com/sources-and-targets/) . |&bull;Azure Cosmos DB SQL API <br/>&bull; Azure Cosmos DB Cassandra API<br/><br/> További támogatott célokért tekintse meg a [Striim webhelyet](https://www.striim.com/sources-and-targets/) . | &bull; Sokféle forrással működik, például Oracle, DB2 SQL Server.<br/>&bull; Egyszerűen hozhat létre ETL-folyamatokat, és irányítópultot biztosít a figyeléshez. <br/>&bull; Nagyobb adatkészleteket támogat. <br/>&bull; Mivel ez egy harmadik féltől származó eszköz, azt a piactéren kell megvásárolni, és telepíteni kell a felhasználó környezetében.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API

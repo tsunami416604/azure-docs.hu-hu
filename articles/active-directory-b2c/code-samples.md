@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181158"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029018"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -26,7 +26,7 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 | Sample | Leírás |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Swift nyelvű iOS-minta, amely az Azure AD B2C-felhasználókat hitelesíti, és meghív egy API-t az OAuth 2.0 használatával. |
-| [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | Egy egyszerű Android-alkalmazás, amely azt mutatja be, hogyan használható az MSAL felhasználók hitelesítéséhez az Azure Active Directory B2C segítségével, és hogyan lehet hozzáférni egy webes API-hoz az eredményül kapott jogkivonatokkal. |
+| [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Egy egyszerű Android-alkalmazás, amely azt mutatja be, hogyan használható az MSAL felhasználók hitelesítéséhez az Azure Active Directory B2C segítségével, és hogyan lehet hozzáférni egy webes API-hoz az eredményül kapott jogkivonatokkal. |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ez a minta azt mutatja be, hogyan használhatók a külső fejlesztőktől származó kódtárak egy olyan iOS-alkalmazás létrehozásához az Objective-C-ben, amely Microsoft identitás-felhasználókat hitelesít az Azure AD B2C identitásszolgáltatáshoz. |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ez a minta azt mutatja be, hogyan használhatók a külső fejlesztőktől származó kódtárak egy olyan Android-alkalmazás létrehozásához, amely Microsoft identitás-felhasználókat hitelesít a B2C identitásszolgáltatáshoz, és meghív egy webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Ez a minta azt mutatja be, hogyan tud egy Windows asztali .NET- (WPF-) alkalmazás bejelentkeztetni egy felhasználót az Azure AD B2C-vel, hogyan szerezhet be egy hozzáférési jogkivonatot az MSAL.NET használatával, és hogyan hívhat meg egy API-t. |

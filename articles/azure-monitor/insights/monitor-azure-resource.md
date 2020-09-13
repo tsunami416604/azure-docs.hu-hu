@@ -6,30 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326171"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030344"
 ---
-# <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása Azure Monitor
+# <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása az Azure Monitor segítségével
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.
 
 > [!IMPORTANT]
 > Ez a cikk az Azure-ban Azure Monitort használó összes szolgáltatásra vonatkozik. A számítási erőforrások, beleértve a virtuális gépeket és a App Service is, az itt ismertetett figyelési adatokat, de a vendég operációs rendszert is létrehozhatja, amely naplók és metrikák létrehozását is eredményezheti. Az adatok gyűjtésével és elemzésével kapcsolatos további információkért tekintse meg a szolgáltatások figyelési dokumentációját.
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
-A Azure Monitor az Azure teljes körű figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül. A [Azure monitor adatplatform](../platform/data-platform.md) a [naplókba](../platform/data-platform-logs.md) és a [metrikába](../platform/data-platform-metrics.md) gyűjti az adatokat, ahol a következő szakaszokban leírtak szerint elemezheti őket a figyelési eszközök teljes készletével.
-
-- [Mit tehet a Azure Monitor metrikákkal?](../platform/data-platform-metrics.md#what-can-you-do-with-azure-monitor-metrics)
-- [Mire használhatók Azure Monitor naplók?](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)
+A Azure Monitor az Azure teljes körű figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül. A [Azure monitor adatplatform](../platform/data-platform.md) a [naplókba](../platform/data-platform-logs.md) és a [metrikába](../platform/data-platform-metrics.md) gyűjti az adatokat, ahol a monitorozási eszközök teljes készletével együtt is elemezhetők. Tekintse meg a [Azure monitor által figyelt](../monitor-reference.md)alkalmazások és szolgáltatások teljes listáját Azure monitor alapján.
 
 Amint létrehoz egy Azure-erőforrást, Azure Monitor engedélyezve van, és megkezdi a metrikák és a tevékenységek naplóinak gyűjtését, amelyeket [a Azure Portal tekinthet meg és elemez](#monitoring-in-the-azure-portal). Néhány konfigurációval további figyelési adatokat gyűjthet, és további funkciókat is engedélyezhet. A konfigurációs követelmények részleteiért lásd az alábbi [figyelési adatokat](#monitoring-data) .
 
 
 ## <a name="costs-associated-with-monitoring"></a>A figyeléshez kapcsolódó költségek
-Az alapértelmezés szerint összegyűjtött figyelési adatok elemzéséhez nincs díj. Ez az alábbiakat foglalja magában:
+Az alapértelmezés szerint összegyűjtött figyelési adatok elemzéséhez nincs díj. Ezek a következők lehetnek:
 
 - A platform metrikáinak összegyűjtése és a metrikák Explorerrel való elemzése.
 - A tevékenység naplójának összegyűjtése és elemzése a Azure Portalban.
@@ -100,7 +97,7 @@ Egyes szolgáltatások a Azure Monitor normál szolgáltatásain kívül is bizt
 
 Ha egy szolgáltatás Azure Monitor betekintéssel rendelkezik, akkor az egyes erőforrások menüjében elérheti azt a **figyelés** lehetőséggel. A **Azure monitor** menüből elérheti az összes bepillantást és megoldást.
 
-![Insights](media/monitor-azure-resource/insights.png)
+![Betekintés a Azure Portal](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Mérőszámok
 A metrikák elemzése a Azure Portal a metrikák [Explorer](../platform/metrics-getting-started.md) használatával, amely a legtöbb szolgáltatás **mérőszámok** menüjéből érhető el. Ez az eszköz lehetővé teszi, hogy egyéni metrikákkal működjön együtt, és kombinálja a többit a korrelációk és trendek azonosítására. 
@@ -108,7 +105,7 @@ A metrikák elemzése a Azure Portal a metrikák [Explorer](../platform/metrics-
 - Tekintse meg az [Azure Metrikaböngésző használatának első lépései](../platform/metrics-getting-started.md) a metrikák Explorerrel.
 - Tekintse meg az [Azure Metrikaböngésző speciális funkcióit](../platform/metrics-charts.md) a metrikák Explorer speciális szolgáltatásaihoz, például több metrika használatával, valamint szűrők és felosztás alkalmazásával.
 
-![Mérőszámok](media/monitor-azure-resource/metrics.png)
+![Metrikák Intéző a Azure Portal](media/monitor-azure-resource/metrics.png)
 
 
 ### <a name="activity-log"></a>Tevékenységnapló 
@@ -129,7 +126,7 @@ Azure Monitor a naplók több szolgáltatásból és más adatforrásokból szá
 - Tekintse meg az [adatgyűjtési módot](../platform/resource-logs.md#send-to-log-analytics-workspace) , amely azt ismerteti, hogyan épülnek fel az erőforrás-naplózási információk Azure monitor naplókba.
 - Tekintse meg az egyes Azure-szolgáltatások dokumentációját Azure Monitor naplókban található táblázat részleteivel.
 
-![Naplók](media/monitor-azure-resource/logs.png)
+![Log Analytics a Azure Portal](media/monitor-azure-resource/logs.png)
 
 ## <a name="monitoring-from-command-line"></a>Figyelés parancssorból
 Az erőforrásból gyűjtött figyelési adatokat parancssorból vagy [Azure PowerShell](/powershell/azure/) vagy az [Azure parancssori felületét](/cli/azure/)használó parancsfájlba is elérheti. 
@@ -161,7 +158,7 @@ Különböző típusú figyelési adattípusokat használ a riasztási szabályo
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A különböző Azure-szolgáltatásokhoz tartozó erőforrás-naplók részleteiért lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/resource-logs-schema.md) .  
 

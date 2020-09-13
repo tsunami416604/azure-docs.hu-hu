@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205928"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030310"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
 
@@ -65,6 +65,8 @@ Fejlesztési szempontból ez néhány dolgot jelent:
 * Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például a `web` -, `native` -vagy `spa` -Type átirányítás) használja.
 * Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://127.0.0.1/MyWebApp` `http://127.0.0.1/MyNativeApp` .
 * Az RFC-útmutató alapján nem használhatja az `localhost` átirányítási URI-t. Ehelyett használja a tényleges visszacsatolási IP-címet `127.0.0.1` . Ez megakadályozza, hogy az alkalmazást hibásan konfigurált tűzfalak vagy átnevezett hálózati adapterek lehessen megszakítani.
+
+    Ha a `http` sémát a localhost helyett a visszacsatolási címhez (127.0.0.1) szeretné használni, szerkesztenie kell az [alkalmazás jegyzékfájlját](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute). 
 
     Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
 

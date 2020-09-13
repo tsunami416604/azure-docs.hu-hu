@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290716"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030901"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a repülőgépipari prediktív karbantartás megoldási sablonja számára
 
@@ -170,7 +170,7 @@ A következő lépések bemutatják, hogyan csatlakoztatható a pbix-fájl a meg
    * A megoldási sablon diagramjának **"Azure SQL Database"** után a zöldre vált, kattintson rá, majd kattintson a **Megnyitás**gombra.
    * Ekkor megjelenik egy új böngésző lap/ablak, amely megjeleníti a Azure Portal lapot. Kattintson a bal oldali panelen található **erőforráscsoportok** elemre.
    * Válassza ki a megoldás üzembe helyezéséhez használt előfizetést, majd válassza a **"YourSolutionName \_ ResourceGroup"** lehetőséget.
-   * Az új kiugró panelen kattintson az ![ SQL Icon ikonra az ](./media/predictive-maintenance-technical-guide/icon-sql.png) adatbázis eléréséhez. Az adatbázis neve az ikon mellett található (például **"pmaintenancedb"**), az **adatbázis-kiszolgáló neve** pedig a kiszolgálónév tulajdonság alatt jelenik meg, és a **YourSolutionName.database.Windows.net**hasonlónak kell lennie.
+   * Az új kiugró panelen kattintson az  ![ SQL Icon ikonra az ](./media/predictive-maintenance-technical-guide/icon-sql.png) adatbázis eléréséhez. Az adatbázis neve az ikon mellett található (például **"pmaintenancedb"**), az **adatbázis-kiszolgáló neve** pedig a kiszolgálónév tulajdonság alatt jelenik meg, és a **YourSolutionName.database.Windows.net**hasonlónak kell lennie.
    * Az adatbázis **felhasználóneve** és **jelszava** megegyezik a megoldás üzembe helyezése során korábban rögzített felhasználónévvel és jelszóval.
 2. Frissítse a hideg Path jelentési fájl adatforrását Power BI Desktop.
    
@@ -182,7 +182,7 @@ A következő lépések bemutatják, hogyan csatlakoztatható a pbix-fájl a meg
    * A következő kiugró ablakban két lehetőség jelenik meg a bal oldali ablaktáblán (**Windows** és **adatbázis**). Kattintson az **adatbázis**elemre, töltse ki a **"username"** és a **"password"** (a megoldás első telepítésekor megadott felhasználónevet és jelszót, és hozzon létre egy Azure SQL Database). A ***válassza ki, hogy melyik szinten szeretné alkalmazni ezeket a beállításokat***, és jelölje be az adatbázis-szint beállítást. Ezután kattintson a **"kapcsolat"** gombra.
    * Kattintson a második táblázatra, **PMResult** kattintson a "forrás" elemre a ![ ](./media/predictive-maintenance-technical-guide/icon-navigation.png) jobb **'APPLIED STEPS'** oldali **"lekérdezés beállításai"** panelen, majd frissítse a kiszolgáló és az adatbázis nevét a fenti lépésekkel **'Source'** , majd kattintson az OK gombra.
    * Miután visszatért az előző oldalra, zárjuk be az ablakot. Üzenet jelenik meg – kattintson az **alkalmaz**gombra. Végül kattintson a Save ( **Mentés** ) gombra a módosítások mentéséhez. Az Power BI-fájl már létrejött a Kapcsolódás a kiszolgálóhoz. Ha a vizualizációk üresek, ügyeljen rá, hogy a jelmagyarázatok jobb felső sarkában található radír ikonra kattintva törölje a vizualizációk kiválasztott elemeit. Használja a refresh (frissítés) gombot a vizualizációk új adatainak megjelenítéséhez. Kezdetben csak a vizualizációk adatai jelennek meg, mivel a rendszer 3 óránként frissíti az adatelőállítót. 3 óra elteltével a vizualizációkban szereplő új előrejelzések jelennek meg, amikor frissíti az adatait.
-3. Választható Tegye közzé a hűtőházi útvonal irányítópultját, hogy [Power bi online állapotba](https://www.powerbi.com/). Ehhez a lépéshez Power BI fiókra (vagy Office 365-fiókra) van szükség.
+3. Választható Tegye közzé a hűtőházi útvonal irányítópultját, hogy [Power bi online állapotba](https://www.powerbi.com/). Ehhez a lépéshez Power BI fiókra (vagy munkahelyi vagy iskolai fiókra) van szükség.
    
    * Kattintson a **Közzététel** gombra, és néhány másodperccel később megjelenik egy ablak, amely a "közzététel a Power bi sikerhez!" lehetőséget jeleníti meg. zöld pipa jelzi. Kattintson az alábbi hivatkozásra "a PredictiveMaintenanceAerospace. pbix megnyitása a Power BIban" elemre. Részletes utasításokért tekintse meg [a Power bi Desktop közzétételét](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)ismertető témakört.
    * Új irányítópult létrehozásához: kattintson a **+** bal oldali ablaktábla **irányítópultok** területén található jelre. Adja meg az új irányítópult "prediktív karbantartási bemutató" nevét.
@@ -208,7 +208,7 @@ A következő lépések bemutatják, hogyan jelenítheti meg Stream Analytics-fe
 1. Azure Stream Analytics (ASA) Power BI kimenetének hozzáadása.
    
    * Követnie kell a [Azure Stream Analytics & Power bi: egy elemzési irányítópultot, amely valós idejű láthatóságot biztosít a folyamatos átviteli adatok](../../stream-analytics/stream-analytics-power-bi-dashboard.md) számára, hogy a Azure stream Analytics feladat kimenetét Power bi irányítópultként állítsa be.
-   * Az ASA-lekérdezés három kimenettel rendelkezik, amelyek a következők: **aircraftmonitor**, **aircraftalert**és **flightsbyhour**. A lekérdezést a Query (lekérdezés) lapra kattintva tekintheti meg. ezeknek a tábláknak a megfelelő kimenetet kell hozzáadnia az ASA-hoz. Az első kimenet (**aircraftmonitor**) hozzáadásakor győződjön meg arról, hogy a **kimeneti alias**, az **adatkészlet neve** és a **tábla neve** azonos (**aircraftmonitor**). A **aircraftalert**és a **flightsbyhour**kimenetének hozzáadásához ismételje meg a lépéseket. Ha mind a három kimeneti táblát hozzáadta, és elindította az ASA-feladatot, egy megerősítő üzenetet kell kapnia ("a Stream Analytics-feladatok sikeres maintenancesa02asapbi").
+   * Az ASA-lekérdezés három kimenettel rendelkezik, amelyek a következők: **aircraftmonitor**, **aircraftalert**és **flightsbyhour**. A lekérdezést a Query (lekérdezés) lapra kattintva tekintheti meg. Az egyes tábláknak megfelelően hozzá kell adnia egy kimenetet az ASA-hoz. Az első kimenet (**aircraftmonitor**) hozzáadásakor győződjön meg arról, hogy a **kimeneti alias**, az **adatkészlet neve** és a **tábla neve** azonos (**aircraftmonitor**). A **aircraftalert**és a **flightsbyhour**kimenetének hozzáadásához ismételje meg a lépéseket. Ha mind a három kimeneti táblát hozzáadta, és elindította az ASA-feladatot, egy megerősítő üzenetet kell kapnia ("a Stream Analytics-feladatok sikeres maintenancesa02asapbi").
 2. Jelentkezzen be [Power bi online](https://www.powerbi.com) -ba
    
    * A saját munkaterület bal oldali panel adatkészletek szakaszában a **aircraftmonitor**, a **aircraftalert**és a **flightsbyhour** ***adatkészlet*** nevenek kell megjelennie. Az előző lépésben Azure Stream Analytics leküldött adatfolyam-adatok. Előfordulhat, hogy az adatkészlet **flightsbyhour** nem jelenik meg egyszerre a másik két adatkészletből, mert az SQL-lekérdezés jellegéből ered. Ez azonban egy óra elteltével jelenik meg.

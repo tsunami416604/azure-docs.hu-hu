@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0e217676f5e1f4dcba24917cb140d9d4d8fcc422
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013180"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024366"
 ---
 # <a name="z-fighting-mitigation"></a>Z-pufferelési hibák csökkentése
 
@@ -21,9 +21,9 @@ Ha két felület átfedésben van, nem egyértelmű, hogy az egyiket a másikon 
 
 |Helyzet                        | Eredmény                               |
 |---------------------------------|:-------------------------------------|
-|Normál z – harcok               |![Z – küzdelem](./media/zfighting-0.png)|
-|Z – a küzdelem engedélyezése engedélyezve    |![Z – küzdelem](./media/zfighting-1.png)|
-|Pepita kiemelése engedélyezve|![Z – küzdelem](./media/zfighting-2.png)|
+|Normál z – harcok               |![Nem determinisztikus elsőbbség a vörös és a zöld quadok között](./media/zfighting-0.png)|
+|Z – a küzdelem engedélyezése engedélyezve    |![A vörös quad elsőbbséget élvez](./media/zfighting-1.png)|
+|Pepita kiemelése engedélyezve|![A piros és zöld négymagos váltógomb a Pepita mintában](./media/zfighting-2.png)|
 
 A következő kód lehetővé teszi a z-harcok enyhítését:
 
@@ -53,7 +53,6 @@ void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
 }
 ```
 
-
 > [!NOTE]
 > A Z-Fighting mérséklés egy globális beállítás, amely az összes megjelenített rácsvonalra hatással van.
 
@@ -76,6 +75,11 @@ Az ajánlott z – küzdelem a legjobb megoldás. Nincs garancia arra, hogy az �
 
 * A z-harcok enyhítésének engedélyezése csekély mértékben nem jelent teljesítménybeli terhelést.
 * A z-harcok átfedésének engedélyezése emellett nem triviális teljesítménybeli terhelést is jelent, bár a jelenettől függően változhat.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# RemoteManager. ZFightingMitigationSettings tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C++ RemoteManager:: ZFightingMitigationSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Következő lépések
 

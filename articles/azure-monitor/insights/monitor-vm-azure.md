@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326188"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029461"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
 Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virtuális gépek monitorozási adatainak gyűjtésére és elemzésére az állapotuk fenntartása érdekében. A virtuális gépeket a rendelkezésre állás és a teljesítmény figyelésére használhatja Azure Monitor mint bármely [más Azure-erőforrást](monitor-azure-resource.md), de ezek más erőforrásokkal is egyediek, mivel a vendég operációs és a rendszer, valamint a rajta futó munkaterhelések figyelésére is szükség van. 
@@ -59,7 +59,7 @@ Ha a Azure Monitor összes funkcióját engedélyezni szeretné egy virtuális g
 | [Azure Monitor for VMs engedélyezése](#enable-azure-monitor-for-vms) | -Log Analytics ügynök telepítve.<br>-A függőségi ügynök telepítve van.<br>– Vendég teljesítményadatokat gyűjtött a naplókba.<br>– A naplókba gyűjtött folyamat-és függőségi részletek. | – Teljesítmény-diagramok és a vendég teljesítményadatokat tartalmazó munkafüzetek.<br>– A vendég teljesítményadatokat érintő lekérdezések naplózása.<br>– A vendég teljesítményadatokat naplózó riasztások.<br>– Függőségi Térkép. |
 | [A diagnosztikai bővítmény és a-Graf ügynök telepítése](#enable-diagnostics-extension-and-telegraf-agent) | – A vendég teljesítményadatokat gyűjt a metrikák között. | -Metrikai tallózó vendégként.<br>-Metrikák riasztások vendég számára.  |
 | [Log Analytics munkaterület konfigurálása](#configure-log-analytics-workspace) | – Vendégtől gyűjtött események. | – A vendég eseményeihez tartozó lekérdezések naplózása.<br>– Riasztások naplózása a vendég eseményeihez. |
-| [Diagnosztikai beállítás létrehozása a virtuális géphez](#collect-platform-metrics-and-activity-log) | – A naplókba gyűjtött platform-metrikák.<br>– A naplókba gyűjtött tevékenység naplója. | -LOQ lekérdezések a gazdagép metrikái számára.<br>– Riasztások naplózása a gazdagép metrikái esetében.<br>– A tevékenység naplójának lekérdezése.
+| [Diagnosztikai beállítás létrehozása a virtuális géphez](#collect-platform-metrics-and-activity-log) | – A naplókba gyűjtött platform-metrikák.<br>– A naplókba gyűjtött tevékenység naplója. | – Lekérdezések naplózása a gazdagép metrikái számára.<br>– Riasztások naplózása a gazdagép metrikái esetében.<br>– A tevékenység naplójának lekérdezése.
 
 Ezeket a konfigurációs lépéseket az alábbi szakaszokban ismertetjük.
 
@@ -70,9 +70,9 @@ Ezeket a konfigurációs lépéseket az alábbi szakaszokban ismertetjük.
 - Előre definiált teljesítmény-diagramok és munkafüzetek, amelyek segítségével elemezheti a virtuális gép vendég operációs rendszerének alapvető teljesítmény-mérőszámait.
 - Függőségi Térkép, amely megjeleníti az egyes virtuális gépeken futó folyamatokat, valamint az összekapcsolt összetevőket más gépekkel és külső forrásokkal.
 
-![Azure Monitor virtuális gépekhez](media/monitor-vm-azure/vminsights-01.png)
+![Azure Monitor for VMs teljesítmény nézet](media/monitor-vm-azure/vminsights-01.png)
 
-![Azure Monitor virtuális gépekhez](media/monitor-vm-azure/vminsights-02.png)
+![Azure Monitor for VMs Maps nézet](media/monitor-vm-azure/vminsights-02.png)
 
 
 A Azure Portal virtuális gép menüjében engedélyezze a Azure Monitor for VMst az **adatáttekintések** lehetőségnél. További részletekért és egyéb konfigurációs módszerekhez tekintse meg a [Azure monitor for VMS áttekintésének engedélyezése](vminsights-enable-overview.md) című témakört.
@@ -80,7 +80,7 @@ A Azure Portal virtuális gép menüjében engedélyezze a Azure Monitor for VMs
 ![Azure Monitor for VMs engedélyezése](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>Log Analytics munkaterület konfigurálása
-A Azure Monitor for VMs által használt Log Analytics ügynök adatokat küld egy [log Analytics munkaterületre](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured). A Log Analytics munkaterület konfigurálásával engedélyezheti a további teljesítményadatok, események és egyéb megfigyelési adatok gyűjtését az ügynöktől. Csak egyszer kell konfigurálni, mivel a munkaterülethez csatlakozó összes ügynök automatikusan letölti a konfigurációt, és azonnal elkezdi a definiált adatok gyűjtését. 
+A Azure Monitor for VMs által használt Log Analytics ügynök adatokat küld egy [log Analytics munkaterületre](../platform/data-platform-logs.md). A Log Analytics munkaterület konfigurálásával engedélyezheti a további teljesítményadatok, események és egyéb megfigyelési adatok gyűjtését az ügynöktől. Csak egyszer kell konfigurálni, mivel a munkaterülethez csatlakozó összes ügynök automatikusan letölti a konfigurációt, és azonnal elkezdi a definiált adatok gyűjtését. 
 
 A munkaterülethez tartozó konfigurációt közvetlenül a Azure Monitor for VMsból érheti el, ha kiválasztja a **munkaterület-konfiguráció** elemet az első **lépések**közül. Kattintson a munkaterület nevére a menü megnyitásához.
 
@@ -96,7 +96,7 @@ Válassza a **Speciális beállítások** elemet a munkaterület menüben, majd 
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>Diagnosztikai bővítmény és a-Graf ügynök engedélyezése
-A Azure Monitor for VMs a Log Analytics ügynökön alapul, amely adatokat gyűjt egy Log Analytics munkaterületen. Ez az [Azure monitor több funkcióját](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) támogatja, például a [naplózási lekérdezéseket](../log-query/log-query-overview.md), a [naplózási riasztásokat](../platform/alerts-log.md)és a [munkafüzeteket](../platform/workbooks-overview.md). A [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) teljesítményadatokat gyűjt a Windows rendszerű virtuális gépek vendég operációs rendszeréről az Azure Storage-ba, és szükség esetén teljesítményadatokat küld [Azure monitor mérőszámoknak](../platform/data-platform-metrics.md). A Linux rendszerű virtuális gépek esetében a-hez készült [Grafi ügynöknek](../platform/collect-custom-metrics-linux-telegraf.md) adatokat kell küldenie az Azure-mérőszámoknak.  Ez lehetővé teszi a Azure Monitor egyéb funkcióit, például a [metrikák Explorer](../platform/metrics-getting-started.md) és a [metrikák riasztásait](../platform/alerts-metric.md). A diagnosztikai bővítményt úgy is beállíthatja, hogy a Azure Monitoron kívüli eseményeket és teljesítményadatokat küldjön az Azure Event Hubs használatával.
+A Azure Monitor for VMs az Log Analytics ügynökön alapul, amely adatokat küld egy Log Analytics munkaterületre. Ez az Azure Monitor több funkcióját támogatja, például a [naplózási lekérdezéseket](../log-query/log-query-overview.md), a [naplózási riasztásokat](../platform/alerts-log.md)és a [munkafüzeteket](../platform/workbooks-overview.md). A [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) teljesítményadatokat gyűjt a Windows rendszerű virtuális gépek vendég operációs rendszeréről az Azure Storage-ba, és szükség esetén teljesítményadatokat küld [Azure monitor mérőszámoknak](../platform/data-platform-metrics.md). A Linux rendszerű virtuális gépek esetében a-hez készült [Grafi ügynöknek](../platform/collect-custom-metrics-linux-telegraf.md) adatokat kell küldenie az Azure-mérőszámoknak.  Ez lehetővé teszi a Azure Monitor egyéb funkcióit, például a [metrikák Explorer](../platform/metrics-getting-started.md) és a [metrikák riasztásait](../platform/alerts-metric.md). A diagnosztikai bővítményt úgy is beállíthatja, hogy a Azure Monitoron kívüli eseményeket és teljesítményadatokat küldjön az Azure Event Hubs használatával.
 
 Telepítse a diagnosztikai bővítményt egyetlen Windowsos virtuális géphez a Azure Portal a virtuális gép menüjének **diagnosztika beállítása** lehetőségével. Válassza ki a **Azure monitor** engedélyezésének lehetőségét a **mosogatók** lapon. A bővítmény sablonból vagy parancssorból való engedélyezéséhez több virtuális gép esetén lásd: [telepítés és konfigurálás](../platform/diagnostics-extension-overview.md#installation-and-configuration). A Log Analytics ügynöktől eltérően a gyűjteni kívánt adatok az egyes virtuális gépeken a bővítmény konfigurációjában vannak meghatározva.
 
@@ -130,7 +130,7 @@ Miután konfigurálta a figyelési adatok gyűjtését egy virtuális géphez, t
 
 ![Figyelés a Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Menüpont | Leírás |
+| Menüpont | Description |
 |:---|:---|
 | Áttekintés | Megjeleníti a virtuális gép gazdagépének [platform metrikáit](../platform/data-platform-metrics.md) . Kattintson egy gráfra, hogy működjön együtt ezekkel az adatokkal a [mérőszámok Explorerben](../platform/metrics-getting-started.md). |
 | Tevékenységnapló | Az aktuális virtuális gép számára szűrt [tevékenység-naplóbejegyzések](../platform/activity-log.md#view-the-activity-log) . |
@@ -148,13 +148,13 @@ A metrikák a virtuális gép menüjéből **való megnyitásával** elemezheti 
 
 A virtuális gépek három névteret használnak a metrikák számára:
 
-| Névtér | Leírás | Követelmény |
+| Névtér | Description | Követelmény |
 |:---|:---|:---|
 | Virtuálisgép-gazda | Az összes Azure-beli virtuális gép számára automatikusan összegyűjtött gazdagép-metrikák. A metrikák részletes listája a [Microsoft. számítás/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatikusan összegyűjtött konfiguráció nélkül. |
 | Vendég (klasszikus) | A vendég operációs rendszerek és az alkalmazások teljesítményének korlátozott készlete. Elérhető a metrikák Explorerben, de nem más Azure Monitor-funkciók, például a metrikus riasztások.  | A [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) telepítve van. Az adatok beolvasása az Azure Storage-ból történik.  |
 | Virtuális gép vendége | A vendég operációs rendszer és az alkalmazás teljesítményére vonatkozó adatok a metrikák használatával minden Azure Monitor szolgáltatás számára elérhetők. | Windows esetén a Azure Monitor fogadóval telepített [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) engedélyezve van. A Linux, a- [Graf ügynök telepítve van](../platform/collect-custom-metrics-linux-telegraf.md). |
 
-![Mérőszámok](media/monitor-vm-azure/metrics.png)
+![Metrikák Intéző a Azure Portal](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>Naplózási adatok elemzése
 Az Azure Virtual Machines a következő adatokat gyűjti össze a naplók Azure Monitor. 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![Napló riasztása](media/monitor-vm-azure/log-alert-01.png)
+![Kihagyott szívverés miatti riasztás naplózása](media/monitor-vm-azure/log-alert-01.png)
 
 Ha riasztást szeretne létrehozni, ha túlzott számú sikertelen bejelentkezés történt az előfizetésben található összes Windows rendszerű virtuális gépen, használja a következő lekérdezést, amely az elmúlt órában minden sikertelen bejelentkezési esemény rekordját visszaadja. Használjon egy küszöbértéket az engedélyezni kívánt sikertelen bejelentkezések számának megadásához. 
 
@@ -222,23 +222,23 @@ Event
 | where EventID == 4625
 ```
 
-![Napló riasztása](media/monitor-vm-azure/log-alert-02.png)
+![Sikertelen bejelentkezések naplójának riasztása](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) a virtuális gépeken a számítási feladatok részletes figyelését teszi lehetővé. Tekintse meg a [felhőalapú figyelési útmutatót](/azure/cloud-adoption-framework/manage/monitor/) a figyelési platformok és a különböző implementációs stratégiák összehasonlításához.
+System Center Operations Manager a virtuális gépeken a számítási feladatok részletes figyelését teszi lehetővé. Tekintse meg a [felhőalapú figyelési útmutatót](/azure/cloud-adoption-framework/manage/monitor/) a figyelési platformok és a különböző implementációs stratégiák összehasonlításához.
 
-Ha rendelkezik egy meglévő SCOM-környezettel, amelyet továbbra is használni kíván, integrálhatja azt Azure Monitor segítségével további funkciók biztosításához. A Azure Monitor által használt Log Analytics-ügynök ugyanaz, mint a SCOM, így a felügyelt virtuális gépek is elküldhetik az adatküldést. Továbbra is hozzá kell adnia az ügynököt, hogy Azure Monitor for VMs és konfigurálja a munkaterületet, hogy további adatokat gyűjtsön a fent megadott módon, de a virtuális gépek módosítás nélkül továbbra is futtathatják a meglévő felügyeleti csomagjaikat egy SCOM környezetben.
+Ha rendelkezik egy meglévő Operations Manager-környezettel, amelyet továbbra is használni kíván, integrálhatja azt Azure Monitor a további funkciók biztosításához. A Azure Monitor által használt Log Analytics-ügynök ugyanaz, mint Operations Manager, hogy a felügyelt virtuális gépek is elküldjék az adatküldést. Továbbra is hozzá kell adnia az ügynököt, hogy Azure Monitor for VMs, és konfigurálja a munkaterületet, hogy további adatokat gyűjtsön a fent megadott módon, de a virtuális gépek módosítás nélkül továbbra is futtathatják a meglévő felügyeleti csomagjaikat egy Operations Manager környezetben.
 
-A meglévő SCOM-funkciókat bővítő Azure Monitor szolgáltatásai többek között a következők:
+A meglévő Operations Manager funkciókat kibővítő Azure Monitor szolgáltatásai többek között a következők:
 
 - Az Log Analytics használatával interaktív módon elemezheti a napló-és teljesítményadatokat.
-- A naplózási riasztások használatával több virtuális gépen is meghatározhat riasztási feltételeket, és olyan hosszú távú trendeket használhat, amelyek nem használhatók a riasztások SCOM.   
+- A naplózási riasztások használatával több virtuális gépen is meghatározhat riasztási feltételeket, és olyan hosszú távú trendeket használhat, amelyek nem használhatók a Operations Manager riasztások használatával.   
 
-A meglévő SCOM-felügyeleti csoport Log Analytics-munkaterülethez való csatlakoztatásáról további információt a [Operations Manager csatlakoztatása a Azure monitorhoz](../platform/om-agents.md) című témakörben talál.
+A meglévő Operations Manager felügyeleti csoport Log Analytics munkaterülethez való csatlakoztatásáról további információt a [csatlakozás Operations Manager a Azure monitorhoz](../platform/om-agents.md) című témakörben talál.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan elemezheti Azure Monitor naplókban lévő adatelemzéseket a naplók használatával.](../log-query/get-started-queries.md)
 * [Tudnivalók a riasztásokról Azure Monitor mérőszámokkal és naplókkal.](../platform/alerts-overview.md)

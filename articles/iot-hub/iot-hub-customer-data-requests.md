@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074703"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030701"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Az Azure IoT Hub-eszközök felhasználói adatkérési funkciói
 
@@ -36,13 +36,13 @@ Ha az Azure IoT Hub szolgáltatás Azure Monitor integrációs funkciójával di
 
 A bérlői rendszergazdák az Azure IoT Hub bővítmény IoT-eszközök paneljén használhatják a Azure Portal egy eszköz törléséhez, amely törli az adott eszközhöz társított adatmennyiséget.
 
-A REST API-kat használó eszközök törlési műveleteit is el lehet végezni. További információ: [szolgáltatás – eszköz törlése](/rest/api/iothub/service/registrymanager/deletedevice).
+A REST API-kat használó eszközök törlési műveleteit is el lehet végezni. További információ: [szolgáltatás – eszköz törlése](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice).
 
 ## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
 
 A bérlői rendszergazdák a Azure Portal Azure IoT Hub bővítményének IoT-eszközök paneljén a másolás és beillesztés funkciót használhatják az eszközhöz társított adatexportáláshoz.
 
-A REST API-kat használó eszközök exportálási műveleteit is el lehet végezni. További információ: [szolgáltatás – eszköz beolvasása](/rest/api/iothub/service/registrymanager/getdevice).
+A REST API-kat használó eszközök exportálási műveleteit is el lehet végezni. További információ: [szolgáltatás – eszköz beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice).
 
 > [!NOTE]
 > A Microsoft nagyvállalati szolgáltatásainak használatakor a Microsoft bizonyos adatokat hoz létre a rendszer által létrehozott naplók néven. Néhány Azure-IoT Hub rendszer által generált napló nem érhető el vagy nem exportálható a bérlői rendszergazdák számára. Ezek a naplók a szolgáltatáson belüli, illetve az egyes eszközökhöz kapcsolódó diagnosztikai adatokból származó ténybeli műveleteket alkotnak.

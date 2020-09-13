@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816524"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029702"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -27,7 +27,7 @@ Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner 
 Ha közzéteszi az ajánlatait az Azure Marketplace-en, a következőket teheti:
 
 - Népszerűsítse vállalatát a Microsoft Brand segítségével.
-- Több mint 100 000 000 Office 365-és Dynamics 365-felhasználó és több mint 200 000 szervezet érhető el.
+- Több mint 100 000 000 Microsoft 365 és Dynamics 365 felhasználó és több mint 200 000 szervezet érhető el.
 - Kiváló minőségű érdeklődőket érhet el ezekből a piactérekről.
 - Szerezze be a Microsoft Field Sales and Sales csapatai által támogatott szolgáltatásokat.
 
@@ -162,7 +162,7 @@ Ajánlati feltételeket és kikötéseket kell megadnia ügyfeleinek. Erre két 
 
        a. Adja meg saját módosítási feltételeit az **Egyéni módosítási feltételek** mezőben. Korlátlan számú karaktert adhat meg. Csak az ezen egyéni feltételekhez megadott bérlői azonosítók ügyfelei láthatják az ajánlat vásárlási folyamatát a Azure Portalban.
 
-       b. Szükséges Adja meg a **bérlői azonosítókat**. Minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót, amely azonosítja az ügyfelet az Azure-ban. Az ügyfél az Azure-ban az **Azure Active Directory**tulajdonságok lehetőség kiválasztásával találja meg ezt  >  **Properties**. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megtalálhatja az ügyfélhez tartozó tartománynév-webcímek használatával, [Mi a Microsoft Azure és az Office 365-bérlő azonosítója?](https://www.whatismytenantid.com/).
+       b. Szükséges Adja meg a **bérlői azonosítókat**. Minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót, amely azonosítja az ügyfelet az Azure-ban. Az ügyfél az Azure-ban az **Azure Active Directory**tulajdonságok lehetőség kiválasztásával találja meg ezt  >  **Properties**. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megtalálhatja az ügyfélhez tartozó tartománynév-webcímek használatával, [Mi az a Microsoft Azure és Microsoft 365 a bérlői azonosító?](https://www.whatismytenantid.com/).
 
        c. Választható Adjon meg egy rövid **leírást** a BÉRLŐi azonosítóhoz, amely segít azonosítani a módosítással megcélzott ügyfelet.
 
@@ -180,7 +180,7 @@ Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az aj
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
-#### <a name="name"></a>Név
+#### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező az ajánlat **aliasa** mezőben megadott névvel van feltöltve az ajánlat létrehozásakor. A nevet később módosíthatja. A név:
 
@@ -196,7 +196,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor használandó kapcsolattartási adatokat. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name
 - E-mail
 - Telefon
 
@@ -234,7 +234,7 @@ Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor hasz
 
 Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén használandó kapcsolattartási adatokat, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name
 - E-mail
 - Telefon
 
@@ -541,7 +541,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 

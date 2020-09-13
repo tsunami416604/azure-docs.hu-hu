@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 09/11/2020
+ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475600"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030599"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -41,13 +41,15 @@ Ha befejezte a hibakeresést, kapcsolja ki a hibakeresési kapcsolót, hogy a Az
 
 ## <a name="debug-settings"></a>Hibakeresési beállítások
 
-A hibakeresési beállítások szerkesztéséhez kattintson a "hibakeresési beállítások" lehetőségre az adatfolyam-vászon eszköztáron. Itt kiválaszthatja az egyes forrás-átalakításokhoz használandó sor korlátját vagy forrását. Az ebben a beállításban szereplő sorokra vonatkozó korlátok csak az aktuális hibakeresési munkamenet esetében érvényesek. Kiválaszthatja az SQL DW-forráshoz használandó átmeneti társított szolgáltatást is. 
+A hibakeresési mód bekapcsolása után szerkesztheti, hogyan tekintheti át az adatfolyamok az adatfolyamatokat. A hibakeresési beállítások szerkesztéséhez kattintson a "hibakeresési beállítások" lehetőségre az adatfolyam-vászon eszköztáron. Itt kiválaszthatja az egyes forrás-átalakításokhoz használandó sor korlátját vagy forrását. Az ebben a beállításban szereplő sorokra vonatkozó korlátok csak az aktuális hibakeresési munkamenet esetében érvényesek. Azt is megteheti, hogy az átmeneti társított szolgáltatást az Azure szinapszis Analytics-forráshoz kívánja használni. 
 
 ![Hibakeresési beállítások](media/data-flow/debug-settings.png "Hibakeresési beállítások")
 
 Ha az adatfolyamban vagy valamelyik hivatkozott adatkészletben paraméterek vannak megadva, megadhatja, hogy a hibakeresés során milyen értékeket kell használni a **Parameters (paraméterek** ) lapon.
 
 ![Hibakeresési beállítások paraméterei](media/data-flow/debug-settings2.png "Hibakeresési beállítások paraméterei")
+
+Az ADF-adatfolyamatok hibakeresési módjához használt alapértelmezett IR egy 4 magos, egyetlen illesztőprogram-csomóponttal rendelkező, 4 magos önálló feldolgozó csomópont. Ez az adatfolyam-logika tesztelésekor is jól működik kisebb adatmennyiséggel. Ha a hibakeresési beállításokban kibontja a sorok korlátait az adatok előnézete során, vagy ha nagyobb számú mintavételezési sort állít be a forrásban a folyamat hibakeresése során, érdemes lehet nagyobb számítási környezetet beállítani egy új Azure Integration Runtime. Ezután újraindíthatja a hibakeresési munkamenetet a nagyobb számítási környezet használatával.
 
 ## <a name="data-preview"></a>Adatelőnézet
 
@@ -59,6 +61,8 @@ Ha a hibakeresés be van kapcsolva, az adatelőnézet lap az alsó panelen jelen
 > A fájlok forrása csak a megjelenő sorokra korlátozza a beolvasott sorokat. A nagyon nagy adatkészletek esetében ajánlott a fájl egy kis részének elvégzése, és a teszteléshez használni. Egy ideiglenes fájlt is kijelölhet a hibakeresési beállításokban minden olyan forrás esetében, amely egy fájl-adatkészlet típusú.
 
 Ha hibakeresési módban fut az adatfolyamban, az adatai nem lesznek beírva a fogadó átalakítóba. A hibakeresési munkamenetek célja, hogy tesztelési hámként szolgáljon az átalakításokhoz. A rendszer nem igényel mosogatót a hibakeresés során, és figyelmen kívül hagyja az adatfolyamban. Ha szeretné tesztelni a fogadóban lévő adatok írását, hajtsa végre az adatfolyamatot egy Azure Data Factory folyamatból, és használja egy folyamat hibakeresési végrehajtását.
+
+Az adatelőnézet az átalakított adatokról készült pillanatkép, amely a Spark-memóriában lévő adatkeretek által használt sorokra vonatkozó korlátozásokkal és adatok mintavételezésével kapcsolatos Ezért ebben az esetben a fogadó illesztőprogramok nem használhatók és nem lettek tesztelve.
 
 ### <a name="testing-join-conditions"></a>Csatlakozási feltételek tesztelése
 
@@ -87,7 +91,7 @@ Ha kijelöl egy oszlopot az adatelőnézet lapon, és a **statisztikák** elemre
 
 ![Oszlop statisztikái](media/data-flow/stats.png "Oszlop statisztikái")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Miután befejezte az adatfolyamok létrehozását és hibakeresését, [hajtsa végre a folyamatot egy folyamatból.](control-flow-execute-data-flow-activity.md)
 * Amikor adatfolyamként teszteli a folyamatot, használja a folyamat [hibakeresési futtatásának futtatása beállítást.](iterative-development-debugging.md)

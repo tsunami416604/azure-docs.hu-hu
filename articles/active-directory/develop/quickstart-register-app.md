@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d52673f1c66c8e053639b24bb31a3159a75736b9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436718"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029052"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -43,7 +43,7 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
 1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 1. Itt adhatja meg, hogy ki használhatja az alkalmazást, más néven a *bejelentkezési célközönségnek*.
 
-    | Támogatott fióktípusok | Leírás |
+    | Támogatott fióktípusok | Description |
     |-------------------------|-------------|
     | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez egy **egybérlős** alkalmazás a Microsoft Identity platformon. |
     | **Tetszőleges szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha *bármely* Azure ad-bérlő felhasználói számára szeretné használni az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt nevezzük **több-bérlős** alkalmazásnak a Microsoft Identity platformon. |
@@ -65,7 +65,7 @@ Az alkalmazás kódja, vagy általában az alkalmazásban használt hitelesíté
 
 Az átirányítási URI az a hely, ahol a Microsoft Identity platform átirányítja a felhasználó ügyfelét, és a hitelesítés után biztonsági jogkivonatokat küld.
 
-Egy éles webalkalmazásban például az átirányítási URI általában egy nyilvános végpont, amelyben az alkalmazás fut, például: `https://contoso.com/auth-response` . A fejlesztés során gyakori, hogy hozzáadja azt a végpontot is, amelyben az alkalmazást helyileg futtatja, például: `https://127.0.0.1/auth-response` .
+Egy éles webalkalmazásban például az átirányítási URI általában egy nyilvános végpont, amelyben az alkalmazás fut, például: `https://contoso.com/auth-response` . A fejlesztés során gyakori, hogy hozzáadja azt a végpontot is, amelyben az alkalmazást helyileg futtatja, például `https://127.0.0.1/auth-response` vagy `http://localhost/auth-response` .
 
 A regisztrált alkalmazások átirányítási URI-k hozzáadásával és módosításával konfigurálhatja a [platform beállításait](#configure-platform-settings).
 
@@ -110,7 +110,7 @@ Más néven *nyilvános kulcs*, a tanúsítványok az ajánlott hitelesítő ada
 1. Válassza ki az alkalmazást a Azure Portal **Alkalmazásregisztrációkban** .
 1. Válassza a **tanúsítványok & titkok**  >  **feltöltési tanúsítvány**elemet.
 1. Válassza ki a feltölteni kívánt fájlt. A fájlnak a következő típusok egyikébe kell tartoznia: .cer, .pem vagy .crt.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 ### <a name="add-a-client-secret"></a>Ügyfél titkos kulcsának hozzáadása
 
@@ -120,7 +120,7 @@ Az ügyfél titkos kulcsa (más néven *alkalmazás jelszava*) egy olyan karakte
 1. Válassza a **tanúsítványok & titkos kulcsok**  >   **új ügyfél titka**lehetőséget.
 1. Adja meg titkos ügyfélkódja leírását.
 1. Válassza ki az időtartamot.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. **Jegyezze fel a titkos kulcs értékét** az ügyfélalkalmazás kódjában való használathoz – ez a lap *nem jelenik meg többé* , miután elhagyja ezt a lapot.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009457"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024400"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
-Sok esetben szükség van a [modell](../../concepts/models.md)részeinek megjelenésének dinamikus módosítására, például az algráfok elrejtésére vagy a részek átváltására transzparens megjelenítésre. Az egyes részekben található anyagok módosítása nem praktikus, mivel a teljes jelenet gráfon való iterációra, valamint az egyes csomópontokon az anyagok klónozásának és hozzárendelésének kezelésére van szükség.
+Sok esetben szükség van egy [modell](../../concepts/models.md)részeinek dinamikus módosítására, például az algráfok elrejtésére vagy a részek az áttetsző renderelésre való váltására. Az egyes részekben található anyagok módosítása nem praktikus, mivel a teljes jelenet gráfon való iterációra, valamint az egyes csomópontokon az anyagok klónozásának és hozzárendelésének kezelésére van szükség.
 
 Ha a lehető legkevesebb terheléssel szeretné elérni a használati esetet, használja a következőt: `HierarchicalStateOverrideComponent` . Ez az összetevő hierarchikus állapotú frissítéseket valósít meg a jelenet gráf tetszőleges ágain. Ez azt jelenti, hogy az állapot bármilyen szinten meghatározható a Scene Graphban, és a hierarchiában leszivárog, egészen addig, amíg egy új állapot felülbírálja, vagy egy levél objektumra van alkalmazva.
 
@@ -31,20 +31,23 @@ A felülbírálható állapotok rögzített halmaza:
 * **`Hidden`**: A jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
 * **`Tint color`**: Egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
   
-  ![Színárnyalat](./media/color-tint.png)
+  ![Objektum zöldre kapcsolásához használt színárnyalat](./media/color-tint.png)
 
 * **`See-through`**: A geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
 
-  ![Áttekintő](./media/see-through.png)
+  ![A kijelölt objektumok transzparensvé tételéhez használt, áttekinthető mód](./media/see-through.png)
 
   > [!IMPORTANT]
   > A megtekintési effektus csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
 * **`Selected`**: A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
 
-  ![Kijelölési körvonal](./media/selection-outline.png)
+  ![Kijelölt rész kiemelésére szolgáló tagolási beállítás](./media/selection-outline.png)
 
 * **`DisableCollision`**: A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
+
+> [!TIP]
+> A teljes algráfok láthatóságának és térbeli lekérdezésének kikapcsolásához a `enabled` játék egy objektumának állapotát lehet váltani. Ha egy hierarchia le van tiltva, akkor ez előnyt élvez a következővel kapcsolatban: `HierarchicalStateOverrideComponent` .
 
 ## <a name="hierarchical-overrides"></a>Hierarchikus felülbírálások
 
@@ -95,6 +98,11 @@ A `tint color` felülbírálás némileg különleges abban az állapotban, hogy
 Maga egy példánya `HierarchicalStateOverrideComponent` nem ad hozzá sok futásidejű terhelést. Azonban mindig érdemes megtartani az aktív összetevők számát. Ha például olyan kiválasztási rendszer megvalósítását tervezi, amely kiemeli a kiválasztott objektumot, akkor azt javasoljuk, hogy törölje az összetevőt a kiemelés eltávolításakor. Az összetevők és a semleges funkciók megtartása gyorsan felvehető.
 
 Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor*a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# HierarchicalStateOverrideComponent osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [C++ HierarchicalStateOverrideComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Következő lépések
 

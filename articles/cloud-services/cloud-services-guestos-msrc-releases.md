@@ -12,19 +12,74 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510164"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024298"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
 
-## <a name="august-2020-guest-os"></a>Augusztus 2020 vendég operációs rendszer
+## <a name="september-2020-guest-os"></a>Szeptember 2020 vendég operációs rendszer
 >[!NOTE]
->Az augusztusi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. Az augusztusi vendég operációs rendszer a következő javításokat tartalmazza. A lista módosítása változhat.
+>A szeptemberi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások szerepelnek a szeptemberi vendég operációs rendszerben. A lista módosítása változhat.
+
+
+| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | Sep 8, 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-frissítés | 3,89, 4,82, 5,47, 6,23 | Sep 8, 2020 |
+|  Rel 20-09 |  [4577015]  |  Legújabb összesített frissítés (LCU) | 5,47 | Sep 8, 2020 |
+|  Rel 20-09 |  [4570333]  |  Legújabb összesített frissítés (LCU) | 6,23 | Sep 8, 2020 |
+|  Rel 20-09 |  [4570673]  |  Karbantartási verem frissítése | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4577051]  |  Havi összesítés | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4569767]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4569780]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4566426]  |  Karbantartási verem frissítése | 3,89 | Sep 8, 2020 |
+|  Rel 20-09 |  [4577038]  |  Havi összesítés | 3,89 | Sep 8, 2020 |
+|  Rel 20-09 |  [4569765]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 3,89 | Sep 8, 2020 |
+|  Rel 20-09 |  [4569779]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 3,89 | Sep 8, 2020 |
+|  Rel 20-09 |  [4566425]  |  Karbantartási verem frissítése | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4577066]  |  Havi összesítés | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4569768]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 biztonsági és minőségi összesítés | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4578013]  |  Biztonsági frissítés | 2,102 | Sep 8, 2020 |
+|  Rel 20-09 |  [4576750]  |  Karbantartási verem frissítése | 5,47 | Sep 8, 2020 |
+|  Rel 20-09 |  [4576479]  |  NET Framework 4,8 biztonsági és minőségi összesítés | 5,47 | Sep 8, 2020 |
+|  Rel 20-09 |  [4494175]  |  Mikrokód | 5,47 | Sep 8, 2020 |
+|  Rel 20-09 |  [4570332]  |  Karbantartási verem frissítése | 6,23 | Sep 8, 2020 |
+|  Rel 20-09 |  [4570720]  |  A .NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése | 6,23 | Sep 8, 2020 |
+|  Rel 20-09 |  [4576483]  |  A .NET-keretrendszer 4,8 biztonsági és minőségi összesítése | 6,23 | Sep 8, 2020 |
+|  Rel 20-09 |  [4494174]  |  Mikrokód | 6,23 | Sep 8, 2020 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4576479]: https://support.microsoft.com/kb/4576479
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4576483]: https://support.microsoft.com/kb/4576483
+[4494174]: https://support.microsoft.com/kb/4494174
+
+## <a name="august-2020-guest-os"></a>Augusztus 2020 vendég operációs rendszer
 
 
 | Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
@@ -1250,13 +1305,13 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 ## <a name="september-2017-guest-os"></a>Szeptember 2017 vendég operációs rendszer
 | Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-| Rel 17-09 | [4038782] |Windows 10 frissítések |5.11 |Szeptember 12., 2017 |
+| Rel 17-09 | [4038782] |Windows 10 frissítések |5,11 |Szeptember 12., 2017 |
 | Rel 17-09 | [4038779], [4038786], [4038793] |Csak Windows-Biztonság |2,66, 3,53, 4,46 |Szeptember 12., 2017 |
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|.NET-frissítés szeptember |2,66, 3,53, 4,46 |Szeptember 12., 2017 |
 | Rel 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |Szeptember 12., 2017 |
-| CVE-2017-8704 | [4038782] |Szolgáltatásmegtagadás |5.11 |Szeptember 12., 2017 |
+| CVE-2017-8704 | [4038782] |Szolgáltatásmegtagadás |5,11 |Szeptember 12., 2017 |
 | N/A | [4034664] |Augusztus nem biztonsági összesítés  |2,66 |2017. augusztus 8. |
-| N/A | [4034665] |Augusztus nem biztonsági összesítés |5.11 |2017. augusztus 8. |
+| N/A | [4034665] |Augusztus nem biztonsági összesítés |5,11 |2017. augusztus 8. |
 | N/A | [4034681] |Augusztus nem biztonsági összesítés |4,46 |2017. augusztus 8. |
 
 ## <a name="august-2017-guest-os"></a>Augusztus 2017 vendég operációs rendszer

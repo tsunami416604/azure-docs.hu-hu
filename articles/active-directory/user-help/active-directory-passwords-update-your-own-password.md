@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 05/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799043"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029545"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
@@ -107,7 +107,7 @@ A jelszó alaphelyzetbe állítása után egy megerősítő e-mailt kap, amely e
 
 ## <a name="how-to-change-your-password"></a>Jelszó módosítása
 
-Ha csak módosítani szeretné a jelszavát, megteheti az Office 365 portálon, az Azure hozzáférési paneljén vagy a Windows 10 bejelentkezési oldalán.
+Ha csak módosítani szeretné a jelszavát, az Office 365-portálon, a saját alkalmazások portálján vagy a Windows 10 bejelentkezési oldalán végezheti el.
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>A jelszó módosítása az Office 365-portál használatával
 
@@ -121,11 +121,11 @@ Akkor használja ezt a módszert, ha általában az Office-portálon keresztül 
 
 4. Írja be a régi jelszót, hozza létre és erősítse meg az új jelszót, majd kattintson a **Submit (elküldés**) gombra.
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>Az Azure-hozzáférési panel jelszavának módosítása
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>A saját alkalmazások portál jelszavának módosítása
 
-Akkor használja ezt a módszert, ha általában az Azure Access panelről (MyApps) fér hozzá az alkalmazásaihoz:
+Akkor használja ezt a módszert, ha általában a saját alkalmazások portálról fér hozzá az alkalmazásaihoz:
 
-1. Jelentkezzen be az [Azure-hozzáférési panelre](https://myapps.microsoft.com/)meglévő jelszava használatával.
+1. Jelentkezzen be a [saját alkalmazások portálra](https://myapps.microsoft.com/)meglévő jelszava használatával.
 
 2. Válassza ki a profilt a jobb felső oldalon, majd válassza a **profil**lehetőséget.
 
