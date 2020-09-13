@@ -199,7 +199,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Új elem hozzáadása a figyeléshez][14]
 
-3. Válassza a **Hozzáadás** lehetőséget. **A hozzáadás Change Tracking** megnyílik.
+3. Válassza a **Hozzáadás** elemet. **A hozzáadás Change Tracking** megnyílik.
 
    ![Adja meg a kért adatokat][15]
 
@@ -223,7 +223,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Beállítás engedélyezve hamis értékre][19]
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Mappa és elérési út figyelése helyettesítő karakterek használatával
 

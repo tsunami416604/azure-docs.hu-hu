@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542959"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458620"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure-titkosítás áttekintése
 
@@ -83,7 +83,7 @@ A [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) e
 
 #### <a name="transparent-data-encryption"></a>Transzparens adattitkosítás
 
-A [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) a [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)és [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) adatfájlok valós idejű titkosítására szolgál, amely az adatbázis-rendszerindító rekordban tárolódik a helyreállítás során rendelkezésre álló adatbázis-titkosítási kulcs (adattitkosítási kulcsot) használatával.
+A [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) a [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), a [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) -adatfájlok valós idejű titkosítására szolgál, amely az adatbázis-rendszerindító rekordban tárolódik a helyreállítás során rendelkezésre álló adatbázis-rendszerindítási rekordban.
 
 A TDE az AES és a Triple Encryption Standard (3DES) titkosítási algoritmusok használatával védi az adatfájlokat és a naplófájlokat. Az adatbázisfájl titkosítása az oldal szintjén történik. A titkosított adatbázisban lévő lapok titkosítva lesznek a lemezre írásuk előtt, és a memóriába való beolvasás során visszafejtésre kerülnek. A TDE mostantól alapértelmezés szerint engedélyezve van az újonnan létrehozott Azure SQL-adatbázisokon.
 
@@ -179,7 +179,7 @@ A helyek közötti VPN Gateway-kapcsolattal a helyszíni hálózatot egy IPsec/I
 
 A helyek közötti VPN-kapcsolat a Azure Portal, a PowerShell vagy az Azure CLI használatával konfigurálható egy virtuális hálózathoz.
 
-További információ:
+További információkért lásd:
 
 [Helyek közötti kapcsolat létrehozása a Azure Portalban](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -199,11 +199,11 @@ A kulcsok megfelelő védelme és kezelése nélkül a titkosítás használhata
 
 Key Vault feloldja a szervezeteknek a hardveres biztonsági modulok (HSM) és a kulcskezelő szoftverek konfigurálását, javítását és karbantartását. Key Vault használatakor a vezérlést is megtarthatja. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel. A HSM-ben is importálhat és létrehozhat kulcsokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure biztonsági szolgáltatásainak áttekintése](get-started-overview.md)
 - [Az Azure hálózati biztonság áttekintése](network-overview.md)
 - [Az Azure Database biztonsági áttekintése](database-security-overview.md)
 - [Az Azure Virtual Machines biztonsági áttekintése](virtual-machines-overview.md)
-- [Inaktív adatok titkosítása](encryption-atrest.md)
+- [Adat-titkosítás inaktív állapotban](encryption-atrest.md)
 - [Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások](data-encryption-best-practices.md)

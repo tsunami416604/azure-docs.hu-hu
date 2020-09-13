@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: f08352d4a79b8c27b2c163516f44edf578fbe3a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092643"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458824"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>1. vendég operációsrendszer-család használatból való kivonásáról szóló értesítés
 Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jelent meg.
@@ -32,7 +32,7 @@ A Cloud Services érintik, ha a következők valamelyike érvényes:
 2. Nem rendelkezik a felhőalapú szolgáltatáshoz tartozó ServiceConfiguration. cscfg fájlban explicit módon megadott osFamily-értékkel. A rendszer jelenleg az alapértelmezett "1" értéket használja ebben az esetben.
 3. A Azure Portal a vendég operációs rendszer családjának értékét a "Windows Server 2008" értékkel listázza.
 
-Annak megállapításához, hogy a Cloud Services melyik operációsrendszer-családot futtatja, a következő parancsfájlt futtathatja Azure PowerShellban, de először [be kell állítania a Azure PowerShell](/powershell/azure/) . További információ a parancsfájlról: [Azure vendég operációs rendszer 1. családjának vége: június 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Annak megállapításához, hogy a Cloud Services melyik operációsrendszer-családot futtatja, a következő parancsfájlt futtathatja Azure PowerShellban, de először [be kell állítania a Azure PowerShell](/powershell/azure/) . További információ a parancsfájlról: [Azure vendég operációs rendszer 1. családjának vége: június 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -67,5 +67,5 @@ Javasoljuk, hogy a Cloud Service-szerepköröket az egyik támogatott vendég op
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>Kiterjesztett támogatás a vendég operációs rendszer családja 1. november 3., 2014
 A vendég operációsrendszer-családon futó Cloud Services már nem támogatott. A szolgáltatás megszakadásának elkerülése érdekében a lehető leghamarabb telepítse át az 1. családot.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a [vendég operációs rendszer legújabb kiadásait](cloud-services-guestos-update-matrix.md).

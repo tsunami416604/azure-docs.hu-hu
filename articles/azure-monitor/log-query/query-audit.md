@@ -5,21 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/25/2020
-ms.openlocfilehash: cb38dcba2f61a432decb56164b816688ad3192d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/03/2020
+ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893754"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458637"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Lekérdezések naplózása Azure Monitor naplókban (előzetes verzió)
 A napló lekérdezési naplói a Azure Monitorban futtatott telemetria kapcsolatos információkat biztosítanak. Ez olyan információkat tartalmaz, mint például a lekérdezés futtatása, a futtatásuk, a használt eszköz, a lekérdezés szövege és a lekérdezés végrehajtását leíró teljesítmény-statisztika.
-
-## <a name="current-limitations"></a>Aktuális korlátozások
-A nyilvános előzetes verzióban a következő korlátozások érvényesek:
-
-- Csak a munkaterület-központú lekérdezések lesznek naplózva. A lekérdezések erőforrás-központú módban futnak, vagy egy olyan Application Insightson futnak, amely nem munkaterület-alapúként van konfigurálva. a rendszer nem naplózza.
 
 
 ## <a name="configure-query-auditing"></a>Lekérdezés naplózásának konfigurálása
@@ -55,10 +50,11 @@ A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lek�
 | QueryTimeRangeEnd     | A lekérdezéshez kiválasztott időtartomány vége. Ez bizonyos helyzetekben nem tölthető fel, például akkor, ha a lekérdezés Log Analyticsból indul el, és az időtartomány a lekérdezésen belül van megadva az időválasztó helyett.  |
 | QueryText             | A futtatott lekérdezés szövege. |
 | RequestTarget         | A lekérdezés elküldéséhez használt API URL-cím.  |
-| RequestContext        | Azoknak az erőforrásoknak a listája, amelyeken a lekérdezésre kérték. Legfeljebb három karakterlánc-tömböt tartalmaz: munkaterületeket, alkalmazásokat és erőforrásokat. Az előfizetés vagy az erőforráscsoport által megadott lekérdezések *erőforrásokként*jelennek meg. A RequestTarget által vélelmezett célként megadott célt is tartalmazza. |
+| RequestContext        | Azoknak az erőforrásoknak a listája, amelyeken a lekérdezésre kérték. Legfeljebb három karakterlánc-tömböt tartalmaz: munkaterületeket, alkalmazásokat és erőforrásokat. Az előfizetés vagy az erőforráscsoport által megadott lekérdezések *erőforrásokként*jelennek meg. A RequestTarget által vélelmezett célként megadott célt is tartalmazza.<br>Ha feloldható, az egyes erőforrások erőforrás-azonosítója is szerepelni fog. Előfordulhat, hogy a rendszer nem tudja feloldani, ha az erőforráshoz való hozzáférés során hibaüzenetet ad vissza. Ebben az esetben a rendszer a lekérdezés megadott szövegét fogja használni.<br>Ha a lekérdezés nem egyértelmű nevet használ, például több előfizetésben létező munkaterület-nevet, a rendszer ezt a kétértelmű nevet fogja használni. |
 | RequestContextFilters | A lekérdezés meghívásának részeként megadott szűrők halmaza. Legfeljebb három lehetséges karakterlánc-tömböt tartalmaz:<br>-ResourceTypes – a lekérdezés hatókörének korlátozására szolgáló erőforrás típusa<br>– Munkaterületek – a lekérdezésre korlátozni kívánt munkaterületek listája<br>-WorkspaceRegions – a lekérdezés korlátozására szolgáló munkaterület-régiók listája |
 | ResponseCode          | A lekérdezés elküldésekor visszaadott HTTP-válasz kódja. |
 | ResponseDurationMs    | A válasz eredményének időpontja.  |
+| ResponseRowCount     | A lekérdezés által visszaadott sorok száma összesen |
 | StatsCPUTimeMs       | A számítási, elemzési és beolvasási számítási idő összesen. Csak akkor van feltöltve, ha a lekérdezés a 200 állapotkódot adja vissza. |
 | StatsDataProcessedKB | A lekérdezés feldolgozásához elért adatmennyiség. A cél tábla mérete, a használt időtartomány, az alkalmazott szűrők és a hivatkozott oszlopok száma befolyásolja. Csak akkor van feltöltve, ha a lekérdezés a 200 állapotkódot adja vissza. |
 | StatsDataProcessedStart | A lekérdezés feldolgozásához elért legrégebbi adatmennyiség. Befolyásolja a lekérdezés explicit időtartománya és a szűrők alkalmazása. Ez nagyobb lehet, mint az adatparticionálás miatti explicit időtartomány. Csak akkor van feltöltve, ha a lekérdezés a 200 állapotkódot adja vissza. |
@@ -66,9 +62,13 @@ A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lek�
 | StatsWorkspaceCount | A lekérdezés által elért munkaterületek száma. Csak akkor van feltöltve, ha a lekérdezés a 200 állapotkódot adja vissza. |
 | StatsRegionCount | A lekérdezés által elért régiók száma. Csak akkor van feltöltve, ha a lekérdezés a 200 állapotkódot adja vissza. |
 
+## <a name="considerations"></a>Megfontolandó szempontok
 
+- A teljesítménnyel kapcsolatos statisztikák nem érhetők el az Azure Adatkezelő proxyról érkező lekérdezések esetén. A lekérdezésekre vonatkozó egyéb adatok továbbra is fel lesznek töltve.
+- A [sztringeket eltorzító](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) karakterláncok *h* -célzása nem lesz hatással a lekérdezési naplókra. A lekérdezések pontosan úgy lesznek rögzítve, hogy a karakterlánc ne legyen elküldve. Győződjön meg arról, hogy csak a megfelelőségi jogokkal rendelkező felhasználók láthatják ezt az információt Log Analytics munkaterületeken elérhető különböző RBAC módok használatával.
+- Több munkaterület adatait tartalmazó lekérdezések esetén a lekérdezés csak azokon a munkaterületeken lesz rögzítve, amelyekhez a felhasználónak hozzáférése van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [diagnosztikai beállításokról](../platform/diagnostic-settings.md).
 - További információ a [naplók lekérdezésének optimalizálásáról](query-optimization.md).
