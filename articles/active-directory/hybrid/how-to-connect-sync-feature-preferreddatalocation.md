@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása'
-description: Ismerteti, hogyan helyezhetők el az Office 365 felhasználói erőforrásai a felhasználóhoz Azure Active Directory Connect szinkronizálással.
+title: 'Azure AD Connect: Microsoft 365 erőforrások előnyben részesített adathelyének konfigurálása'
+description: Ismerteti, hogyan helyezheti üzembe a Microsoft 365 felhasználói erőforrásait Azure Active Directory Connect szinkronizálással a felhasználóhoz.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,29 +16,29 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357409"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662499"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
-Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect Sync: Microsoft 365 erőforrások előnyben részesített adathelyének konfigurálása
+Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki a Microsoft 365 több földrajzi funkcióját használja, ezzel az attribútummal jelölheti meg a felhasználó Microsoft 365-adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Az előnyben részesített adathely szinkronizálásának engedélyezése
-Alapértelmezés szerint a felhasználók Office 365-erőforrásai ugyanabban a földrajzi helyen találhatók, mint az Azure AD-bérlő. Ha például a bérlő a Észak-Amerikaban található, akkor a felhasználók Exchange-postaládái a Észak-Amerikaban is megtalálhatók. A többnemzetiségű szervezetek esetében ez nem lehet optimális.
+Alapértelmezés szerint a felhasználók Microsoft 365 erőforrásai ugyanabban a földrajzi helyen találhatók, mint az Azure AD-bérlő. Ha például a bérlő a Észak-Amerikaban található, akkor a felhasználók Exchange-postaládái a Észak-Amerikaban is megtalálhatók. A többnemzetiségű szervezetek esetében ez nem lehet optimális.
 
-A **preferredDataLocation**attribútum beállításával megadhatja a felhasználó földrajzi elhelyezkedését. A felhasználó Office 365-erőforrásait, például a postaládát és a OneDrive a felhasználóval megegyező földrajzi tartományba helyezheti, és továbbra is rendelkezik egy Bérlővel a teljes szervezet számára.
+A **preferredDataLocation**attribútum beállításával megadhatja a felhasználó földrajzi elhelyezkedését. A felhasználó Microsoft 365 erőforrásait, például a postaládát és a OneDrive a felhasználóval megegyező földrajzi tartományba helyezheti, és továbbra is rendelkezik egy Bérlővel a teljes szervezet számára.
 
 > [!IMPORTANT]
-> A multi-geo jelenleg aktív Nagyvállalati Szerződés és legalább 500 Office 365 Services-előfizetéssel rendelkező ügyfelek számára érhető el. A részletekért forduljon a Microsoft képviselőjéhez.
+> A multi-geo jelenleg aktív Nagyvállalati Szerződés és legalább 250 Microsoft 365 Services-előfizetéssel rendelkező ügyfelek számára érhető el. A részletekért forduljon a Microsoft képviselőjéhez.
 >
 >
 
-Az Office 365 összes térségek listája megtalálható [ott, ahol az Ön adatai találhatók?](https://aka.ms/datamaps).
+A Microsoft 365 összes térségek listája megtalálható a következő helyen: hol található az [adatai?](https://aka.ms/datamaps).
 
-A térségek az Office 365-ben több geo esetén is elérhető:
+A térségek Microsoft 365 több geo esetén is elérhető:
 
 | Térség | preferredDataLocation érték |
 | --- | --- |
@@ -58,16 +58,16 @@ A térségek az Office 365-ben több geo esetén is elérhető:
 
 * Ha a Geo nem szerepel a táblázatban (például Dél-Amerika), akkor nem használható több földrajzi helyhez.
 
-* Nem minden Office 365-alapú számítási feladat támogatja a felhasználó földrajzi elhelyezkedésének használatát.
+* Nem minden Microsoft 365 számítási feladat támogatja a felhasználó földrajzi elhelyezkedésének használatát.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>A szinkronizálás Azure AD Connect támogatása
 
-Azure AD Connect támogatja a **preferredDataLocation** attribútum szinkronizálását a 1.1.524.0 vagy újabb verzióban lévő **felhasználói** objektumokhoz. Ezek a következők:
+Azure AD Connect támogatja a **preferredDataLocation** attribútum szinkronizálását a 1.1.524.0 vagy újabb verzióban lévő **felhasználói** objektumokhoz. Ezek konkrétan a következők:
 
 * Az Azure AD-összekötőben az objektumtípus- **felhasználó** sémája ki van bővítve a **preferredDataLocation** attribútum belefoglalásával. Az attribútum típusa, egyértékű karakterlánc.
 * A metaverse-beli objektumtípus- **személy** sémája ki van bővítve, hogy tartalmazza a **preferredDataLocation** attribútumot. Az attribútum típusa, egyértékű karakterlánc.
 
-Alapértelmezés szerint a **preferredDataLocation** nincs engedélyezve a szinkronizáláshoz. Ez a funkció nagyobb szervezetek számára készült. A Windows Server 2019 Active Directory sémája az **msDS-preferredDataLocation** attribútumot használja erre a célra. Ha nem frissítette a Active Directory sémát, és nem tudja megtenni, akkor meg kell adnia egy attribútumot, amely az Office 365 geo-t fogja tárolni a felhasználók számára. Ez minden szervezet esetében eltérő lesz.
+Alapértelmezés szerint a **preferredDataLocation** nincs engedélyezve a szinkronizáláshoz. Ez a funkció nagyobb szervezetek számára készült. A Windows Server 2019 Active Directory sémája az **msDS-preferredDataLocation** attribútumot használja erre a célra. Ha nem frissítette a Active Directory sémát, és nem tudja megtenni, akkor meg kell adnia egy attribútumot, amely a felhasználók számára a Microsoft 365 geo-t fogja tárolni. Ez minden szervezet esetében eltérő lesz.
 
 > [!IMPORTANT]
 > Az Azure AD lehetővé teszi, hogy a **felhőalapú felhasználói objektumok** **preferredDataLocation** attribútuma közvetlenül az Azure ad PowerShell használatával legyen konfigurálva. Ha ezt az attribútumot **szinkronizált felhasználói objektumokon**szeretné konfigurálni, akkor a Azure ad Connectt kell használnia.
@@ -181,10 +181,10 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Nyissa meg a **hatókör-szűrő** lapot, és adjon hozzá egyetlen hatókörű szűrőt két záradékkal:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Operátor | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
-    | cloudMastered | NOTEQUAL | True (Igaz) |
+    | cloudMastered | NOTEQUAL | Igaz |
 
     A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokat alkalmazza a kimenő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk a "kimenő az Azure AD – felhasználói identitás" OOB (beépített) szinkronizálási szabálya alapján. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nem szinkronizálhatók a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
@@ -250,7 +250,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
 
 1. Indítsa el a PowerShell-munkamenetet.
-2. Engedélyezze újra az ütemezett szinkronizálást a következő parancsmag futtatásával:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Engedélyezze újra az ütemezett szinkronizálást a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 ## <a name="step-9-verify-the-result"></a>9. lépés: az eredmény ellenőrzése
 Itt az ideje, hogy ellenőrizze a konfigurációt, és engedélyezze azt a felhasználók számára.
@@ -262,9 +262,9 @@ Itt az ideje, hogy ellenőrizze a konfigurációt, és engedélyezze azt a felha
 ![Képernyőfelvétel az Exchange Online PowerShellről](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Ha a bérlőt úgy jelölte meg, hogy használni tudja ezt a funkciót, a rendszer áthelyezi a postaládát a megfelelő földrajzi helyre. Ennek ellenőrzéséhez tekintse meg a kiszolgáló nevét, ahol a postaláda található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az Office 365-ben elérhető multi-geo szolgáltatásról:
+További információ a Microsoft 365 több földrajzi helyéről:
 
 * [Multi-geo munkamenetek az Ignite-on](https://aka.ms/MultiGeoIgnite)
 * [Multi-geo a OneDrive](https://aka.ms/OneDriveMultiGeo)

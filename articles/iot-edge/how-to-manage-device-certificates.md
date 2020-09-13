@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257830"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669026"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -49,7 +49,7 @@ A következő fájlok létrehozásához használja a saját hitelesítésszolgá
 Ebben a cikkben a *legfelső szintű hitelesítésszolgáltatót* nevezzük, nem pedig a szervezet legfelső szintű hitelesítésszolgáltatója. Ez a legfelső szintű hitelesítésszolgáltató a IoT Edge-forgatókönyvhöz, amelyet az IoT Edge hub modul, a felhasználói modulok és az alsóbb rétegbeli eszközök az egymás közötti megbízhatósági kapcsolat létrehozására használnak.
 
 > [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
+> Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
 Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutató tanúsítványokat létrehozó parancsfájlokat a [teszt hitelesítésszolgáltatói tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)című témakörben.
 
@@ -59,9 +59,9 @@ Telepítse a tanúsítványláncot a IoT Edge eszközre, és konfigurálja a IoT
 
 Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja át az alábbi fájlokat a IoT-peremhálózati eszközre:
 
-* Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa:`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-* Eszköz HITELESÍTÉSSZOLGÁLTATÓjának titkos kulcsa:`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-* Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ:`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓjának titkos kulcsa: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
+* Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ: `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
 1. Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre.
 
@@ -69,8 +69,8 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
 
 1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
 
-   * Windows`C:\ProgramData\iotedge\config.yaml`
-   * Linux`/etc/iotedge/config.yaml`
+   * Windows `C:\ProgramData\iotedge\config.yaml`
+   * Linux `/etc/iotedge/config.yaml`
 
 1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
@@ -96,9 +96,9 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
 
 1. Ha korábban más tanúsítványokat használt IoT Edgehoz az eszközön, a IoT Edge elindítása vagy újraindítása előtt törölje a fájlokat a következő két könyvtárban:
 
-   * Windows: `C:\ProgramData\iotedge\hsm\certs` és`C:\ProgramData\iotedge\hsm\cert_keys`
+   * Windows: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys`
 
-   * Linux: `/var/lib/iotedge/hsm/certs` és`/var/lib/iotedge/hsm/cert_keys`
+   * Linux: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="customize-certificate-lifetime"></a>A tanúsítvány élettartamának testreszabása
 
@@ -114,7 +114,9 @@ A két automatikusan generált tanúsítvány esetében beállíthatja a **auto_
 >[!NOTE]
 >Létezik egy harmadik automatikusan generált tanúsítvány, amelyet a IoT Edge Security Manager hoz létre, a **IoT Edge hub-kiszolgáló tanúsítványát**. A tanúsítványnak mindig 90 napos élettartama van, de a lejárata előtt automatikusan megújul. A **auto_generated_ca_lifetime_days** érték nem befolyásolja ezt a tanúsítványt.
 
-Ha a tanúsítvány lejáratát az alapértelmezett 90 napnál nem korábbi értékre szeretné beállítani, adja hozzá az értéket napokban a config. YAML fájl **tanúsítványok** szakaszába.
+Ha a tanúsítvány lejáratát az alapértelmezett 90 napnál nem korábbi értékre szeretné beállítani, adja hozzá az értéket napokban a **config. YAML** fájl **tanúsítványok** szakaszába.
+
+A megadott számú nap lejárata után a IoT Edge biztonsági démont újra kell indítani az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának újbóli létrehozásához, ezért a rendszer nem újítja meg automatikusan.
 
 ```yaml
 certificates:
@@ -125,15 +127,13 @@ certificates:
 ```
 
 > [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
+> Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
-Ha a saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványait biztosította, akkor ez az érték továbbra is érvényes a munkaterhelés HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, ha a beállított élettartam értéke rövidebb, mint az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának élettartama.
-
-Miután megadta a jelölőt a config. YAML fájlban, hajtsa végre a következő lépéseket:
+Miután megadta az értéket a config. YAML fájlban, hajtsa végre a következő lépéseket:
 
 1. Törölje a `hsm` mappa tartalmát.
 
-   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux:`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 
 1. Indítsa újra a IoT Edge szolgáltatást.
 

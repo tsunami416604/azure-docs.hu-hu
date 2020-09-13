@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357579"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662466"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -26,14 +26,14 @@ A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számár
  - teljesítménybeli nyereség az Azure AD-ba való exportálás és importálás során
  
 > [!NOTE]
-> Jelenleg az új végpont nem rendelkezik konfigurált csoportra vonatkozó méretkorlát a visszaállított O365-csoportokhoz. Ez hatással lehet a Active Directoryra és a szinkronizálási ciklus késésére.  A csoportok méretének növekményes növelését javasoljuk.  
+> Jelenleg az új végpont nem rendelkezik konfigurált csoport mérettel a visszaállított Microsoft 365 csoportokhoz. Ez hatással lehet a Active Directoryra és a szinkronizálási ciklus késésére. A csoportok méretének növekményes növelését javasoljuk.  
 
 
 ## <a name="pre-requisites"></a>Előfeltételek  
 Az új v2-végpont használatához [Azure ad Connect 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) vagy újabb verziót kell használnia, és az alábbi üzembe helyezési lépések végrehajtásával engedélyezheti a v2-végpontot a Azure ad Connect-kiszolgálóhoz.   
 
 >[!NOTE]
->Ez a nyilvános előzetes verzió jelenleg csak az Azure globális felhőben érhető el, és nem érhető el az [országos felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)számára.
+>Ez a nyilvános előzetes verzió jelenleg csak az Azure globális felhőben érhető el, és nem érhető el az [országos felhők](../develop/authentication-national-cloud.md)számára.
 
 ### <a name="public-preview-limitations"></a>A nyilvános előzetes verzió korlátozásai  
 Habár ez a kiadás kiterjedt tesztelésen esett át, még problémák merülhetnek fel. A nyilvános előzetes kiadás egyik célja, hogy megkeresse és javítsa ki az ilyen problémákat.  
@@ -44,14 +44,14 @@ Habár ez a kiadás kiterjedt tesztelésen esett át, még problémák merülhet
 ## <a name="deployment-guidance"></a>Üzembe helyezési útmutató 
 A v2-végpont használatához telepítenie kell [Azure ad Connect 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) -es vagy újabb verzióját. Használja a letöltéshez megadott hivatkozást. 
 
-Javasoljuk, hogy kövesse a [swing áttelepítési](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration) módszert az új végpontnak a környezetében való működéséhez. Ez egyértelmű készenléti tervet biztosít az eseményen, amely jelentős visszaállítást tesz szükségessé. Az alábbi példa azt szemlélteti, hogyan használható a swing Migrálás ebben a forgatókönyvben. A swing Migration üzembe helyezési módszerével kapcsolatos további információkért tekintse meg a megadott hivatkozást. 
+Javasoljuk, hogy kövesse a [swing áttelepítési](./how-to-upgrade-previous-version.md#swing-migration) módszert az új végpontnak a környezetében való működéséhez. Ez egyértelmű készenléti tervet biztosít az eseményen, amely jelentős visszaállítást tesz szükségessé. Az alábbi példa azt szemlélteti, hogyan használható a swing Migrálás ebben a forgatókönyvben. A swing Migration üzembe helyezési módszerével kapcsolatos további információkért tekintse meg a megadott hivatkozást. 
 
 ### <a name="swing-migration-for-deploying-v2-endpoint"></a>Swing Migrálás a v2-végpont üzembe helyezéséhez
 A következő lépések végigvezetik a v2-végpont üzembe helyezésének lépésein a swing metódus használatával.
 
 1. Telepítse a v2-végpontot az aktuális átmeneti kiszolgálón. Ezt a kiszolgálót az alábbi lépésekben a **v2-kiszolgálóként** fogja tudni. A jelenlegi aktív kiszolgáló a v1 végpont használatával továbbra is feldolgozza az üzemi munkaterhelést, amely az alábbi **v1-kiszolgáló** lesz.
 1. Győződjön meg arról, hogy a **v2-kiszolgáló** továbbra is a várt módon dolgozza fel az importálásokat. Ebben a szakaszban a nagyméretű csoportok nem lesznek kiépítve az Azure AD-be vagy a helyszíni AD-be, de ellenőrizheti, hogy a frissítés nem eredményezett-e váratlan hatást a meglévő szinkronizálási folyamatra. 
-2. Az érvényesítés befejeződése után állítsa a **v2-kiszolgálót** az aktív kiszolgálóra és az átmeneti kiszolgálóként működő **v1** -kiszolgálóra. Jelenleg a szinkronizálni kívánt nagyméretű csoportok lesznek kiépítve az Azure AD-be, valamint a nagyméretű O365 egyesített csoportok az AD-ben lesznek kiépítve, ha a csoport visszaírási engedélyezve van.
+2. Az érvényesítés befejeződése után állítsa a **v2-kiszolgálót** az aktív kiszolgálóra és az átmeneti kiszolgálóként működő **v1** -kiszolgálóra. Jelenleg a szinkronizálni kívánt nagyméretű csoportok lesznek kiépítve az Azure AD-be, valamint a nagyméretű Microsoft 365 egyesített csoportok az AD-ben lesznek kiépítve, ha a csoport visszaírási engedélyezve van.
 3. Ellenőrizze, hogy a **v2-kiszolgáló** sikeresen végrehajtja és feldolgozza-e a nagyméretű csoportokat. Dönthet úgy, hogy megmarad ebben a lépésben, és figyeli a szinkronizálási folyamatot egy adott időszakra vonatkozóan.
   >[!NOTE]
   > Ha vissza kell térnie az előző konfigurációra, a **v2-kiszolgálóról** a **v1-kiszolgálóra**történő áttelepítést is végrehajthatja. Mivel a v1-végpont nem támogatja a több mint 50 000 taggal rendelkező csoportokat, az Azure AD-ben vagy a helyszíni AD-ben az Azure AD Connect által kiépített nagy csoportok később törlődni fognak. 
@@ -153,7 +153,7 @@ A **HRE – csoportos csatlakozás** szinkronizálása szabályban a csoporttag 
  `Set-ADSyncSchedulerConnectorOverride -FullSyncRequired $false -ConnectorName "<AAD Connector Name>" `
  
 >[!NOTE]
-> Ha több mint 50 000 taggal rendelkező egységes O365 rendelkezik, a rendszer beolvassa a csoportokat Azure AD Connectba, és ha engedélyezve van a csoport visszaírási, a rendszer a helyszíni AD-be fogja írni. 
+> Ha Microsoft 365 több mint 50 000 taggal rendelkező egyesített csoportokkal rendelkezik, a rendszer beolvassa a csoportokat a Azure AD Connectba, és ha a csoport visszaírási engedélyezve van, a rendszer a helyszíni AD-be fogja írni. 
 
 ## <a name="rollback"></a>Visszaállítási 
 Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítást, kövesse az alábbi lépéseket: 
@@ -181,7 +181,7 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
  `Set-ADSyncScheduler -SyncCycleEnabled $true`
  
 >[!NOTE]
-> Ha a v2 – v1 végpontokra vált vissza, a rendszer a teljes szinkronizálás futtatása után törli a több mint 50 000 taggal szinkronizált csoportokat, mind az Azure AD-hez kiépített AD-csoportok, mind az AD-hez kiépített egyesített csoportok O365. 
+> Ha a v2-ből v1-es végpontokra vált vissza, a rendszer a teljes szinkronizálás futtatása után törli a több mint 50 000 taggal szinkronizált csoportokat, valamint az Azure AD-hez kiosztott és az AD-hez kiépített egyesített csoportok Microsoft 365. 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések  
 **K: az ügyfél használhatja ezt a szolgáltatást éles környezetben?**  
@@ -196,7 +196,7 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 **K: a következő mérföldkőre való idő?**  
 </br>A nyilvános előzetes verzió funkcióit a további mérföldkövek elérése előtt lehet visszavonni és valószínűleg újratervezni.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

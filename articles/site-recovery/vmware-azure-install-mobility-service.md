@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606520"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669238"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
 
@@ -25,8 +25,12 @@ Minden olyan Windows-gépen, amelyet védelemmel szeretne ellátni, tegye a köv
 1. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak rendszergazdai jogosultságokkal kell rendelkeznie a helyi vagy a tartományhoz. Ezt a fiókot csak a leküldéses telepítéshez és az ügynök frissítéseihez használhatja.
 2. Ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen a következő módon:
     - A HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs alatt adjon hozzá egy új DWORD: **LocalAccountTokenFilterPolicy**. Állítsa az értéket **1-re**.
-    -  Ehhez futtassa a következő parancsot a parancssorban:  
-   "REG ADD HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+    -  Ehhez futtassa a következő parancsot a parancssorban:
+    
+       ```
+       REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+       ```
+
 3. A védelemmel ellátni kívánt gépen a Windows tűzfalon válassza az **alkalmazás vagy szolgáltatás engedélyezése a tűzfalon keresztül**lehetőséget. Engedélyezze a **fájl-és nyomtatómegosztás** , valamint a **Windows Management Instrumentation (WMI)** szolgáltatást. Tartományhoz tartozó számítógépek esetén Csoportházirend objektum (GPO) használatával konfigurálhatja a tűzfalbeállítások beállításait.
 
    ![Tűzfalbeállítások](./media/vmware-azure-install-mobility-service/mobility1.png)

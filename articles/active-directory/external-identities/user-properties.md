@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a61a298b3b1d9e129b0ef3bbfff12f34d0ba09a8
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908399"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668958"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -108,7 +108,7 @@ Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet g
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Frissíthetem a vendég felhasználó e-mail-címét?
 
-Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)-n keresztül hozza létre a rendszer. Az e-mail tulajdonságot az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)segítségével frissítheti, és a módosítás az Azure ad vendég felhasználói objektumában jelenik meg.
+Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)-n keresztül hozza létre a rendszer. A mail tulajdonságot a Microsoft Graph API, az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)segítségével frissítheti. A módosítás az Azure AD vendég felhasználói objektumában jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

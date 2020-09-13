@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420311"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669183"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
 Az Azure standard Load Balancer támogatja a rendelkezésre állási zónák forgatókönyveit. A standard Load Balancer használatával növelheti a rendelkezésre állást a forgatókönyvben az erőforrások és a zónák közötti elosztásával. A standard Load balancerrel együtt elérhető rendelkezésre állási zónák egy átfogó és rugalmas szolgáltatáskészlet, amely számos különböző forgatókönyvet hozhat létre.  Tekintse át ezt a dokumentumot, hogy megértse ezeket a [fogalmakat](#concepts) és az alapvető forgatókönyv [kialakítására vonatkozó útmutatót](#design).
 
-## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>A Load Balancerra alkalmazott fogalmak Availability Zones
+## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a> A Load Balancerra alkalmazott fogalmak Availability Zones
 
 A terheléselosztó az összetevőitől örökli a zóna konfigurációját: 
 
@@ -67,7 +67,7 @@ Ezen kívül az egyes zónákon belüli elosztott terhelésű végpontok esetén
   <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
-*Ábra: a Zona redundáns Load Balancer*
+*Ábra: Zona Load Balancer*
 
 Ha szeretné összekeverni ezeket a fogalmakat (a zóna redundáns és az azonos háttérbeli névteret), tekintse át [Azure Load Balancer több](load-balancer-multivip-overview.md)előtérben is.
 
@@ -101,7 +101,7 @@ A zóna redundáns előtérbeli felületének használatakor a terheléselosztó
 
 A virtuális gépet elérő más zónák továbbra is kiszolgálják a virtuális gépet a saját előtéri felületéről. A meghibásodási események során az egyes zónák az új folyamatok különböző eloszlásával rendelkezhetnek, miközben védik a szolgáltatás általános állapotát.
 
-## <a name="design-considerations"></a><a name="design"></a>Tervezési szempontok
+## <a name="design-considerations"></a><a name="design"></a> Tervezési szempontok
 
 A Load Balancer rugalmas a rendelkezésre állási zónák környezetében. Dönthet úgy is, hogy az egyes szabályokhoz igazítja a zónákat, vagy a zóna redundáns. A magasabb rendelkezésre állás a megnövekedett összetettség árán érhető el. Az optimális teljesítmény érdekében tervezze meg a rendelkezésre állást.
 
@@ -113,7 +113,7 @@ A zóna – a redundancia nem jelent hitless-DataPath vagy-vezérlési gépet. E
 
 A zóna meghibásodása esetén egy zónát használó adatforgalom befolyásolható, de az alkalmazások helyreállíthatók. A forgalom a régión belüli, kifogástalan állapotú zónákban folytatódik, amikor az Azure a zóna meghibásodása körül konvergált.
 
-### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a>Zónák közötti határok
+### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a> Zónák közötti határok
 
 Fontos tisztában lenni azzal, hogy egy szolgáltatás több zónába kerül, és nem egy zónával, hanem akár több zónával is megoszthatja a sorsot. Ennek eredményeképpen előfordulhat, hogy a szolgáltatás nem rendelkezik a zóna nélküli üzemelő példányokkal való rendelkezésre állással.
 

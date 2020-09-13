@@ -16,20 +16,20 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061506"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662557"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
-A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. Az Office 365 munkaterheléseket, például az Exchange Online-t és a Skype vállalati alkalmazást használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
+A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. A Microsoft 365 számítási feladatokat, például az Exchange Online-t és a Skype vállalati verziókat használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
 
 Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Néhány példa:
 
 * A [multi-Azure ad címtár-topológiát](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)tervezi használni. Ezután egy szűrőt kell alkalmaznia annak szabályozására, hogy mely objektumok legyenek szinkronizálva egy adott Azure AD-címtárral.
-* Az Azure-hoz vagy az Office 365-hoz készült pilóta futtatásakor csak a felhasználók egy részhalmazát szeretné használni az Azure AD-ben. A kis pilóta esetében nem fontos, hogy a funkciók megjelenítéséhez teljes globális címlistát lehessen használni.
+* Az Azure-hoz vagy a Microsoft 365hoz tartozó próbaverziót futtat, és csak a felhasználók egy részhalmazát szeretné használni az Azure AD-ben. A kis pilóta esetében nem fontos, hogy a funkciók megjelenítéséhez teljes globális címlistát lehessen használni.
 * Számos szolgáltatásfiókot és más olyan nem személyes fiókot tartalmaz, amelyeket nem szeretne az Azure AD-ben használni.
 * Megfelelőségi okokból nem törölheti a helyszíni felhasználói fiókokat. Csak azokat kell letiltani. Az Azure AD-ben azonban csak azt szeretné, hogy az aktív fiókok jelen legyenek.
 
@@ -217,7 +217,7 @@ A bejövő szűrés az alapértelmezett konfigurációt használja, ahol az Azur
 A bejövő szűrés során a **hatókör** hatékonyságát használva határozza meg, hogy mely objektumokat szinkronizálni vagy ne szinkronizálni. Itt végezheti el a saját szervezet igényeinek megfelelő módosításokat. A hatókör modul tartalmaz egy **csoportot** és egy **záradékot** annak meghatározásához, hogy egy szinkronizálási szabály hatókörben van-e. Egy csoport egy vagy több záradékot tartalmaz. Létezik egy logikai "és" kifejezés több záradék között, valamint logikai "vagy" több csoport között.
 
 Nézzünk egy példát:  
-![Hatókör](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![A hatóköri szűrők hozzáadására példát bemutató képernyőkép](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Ennek a következőnek kell lennie: **(részleg = IT) vagy (részleg = értékesítés és c = US)**.
 
 A következő példákban és lépésekben példaként használja a felhasználói objektumot, de ezt minden objektumtípus esetében használhatja.
@@ -299,9 +299,9 @@ Hajtsa végre a következő lépéseket:
 A szinkronizálás után a rendszer az összes módosítást exportálja. Mielőtt megkezdené a módosításokat az Azure AD-ben, ellenőrizni kívánja, hogy a módosítások helyesek-e.
 
 1. Indítson el egy parancssort, és nyissa meg a következőt: `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. A `csexport "Name of Connector" %temp%\export.xml /f:x` parancs futtatása.  
+2. Futtassa az `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
    Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
-3. A `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancs futtatása.
+3. Futtassa az `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
 4. Most már van egy fájlja a (z)% Temp% megnevezett export.csvban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.
 
@@ -328,6 +328,6 @@ Több AD-erdő szinkronizálásakor a csoport-alapú szűrést egy másik csopor
 * Az egyik erdőben van egy olyan felhasználó, amely egy másik erdőben található e-mail-kapcsolattal rendelkezik. Továbbá úgy konfigurálta Azure AD Connect, hogy összekapcsolja a felhasználót a levelezési kapcsolattal. Mindkét objektumnak Group-alapú szűrési hatókörön belül kell lennie. Ellenkező esetben a felhasználó nem lesz szinkronizálva az Azure AD-vel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 - További információ a helyszíni [identitások Azure ad-vel való integrálásáról](whatis-hybrid-identity.md).

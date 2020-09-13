@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357868"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662568"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -113,7 +113,7 @@ Ha minden a vártnak megfelelően, engedélyezheti az ütemező újbóli engedé
 Az előző szakasz azt ismerteti, hogyan lehet módosítani az attribútumok folyamatát. Ebben a szakaszban további példákat is ismertetünk. A szinkronizálási szabály létrehozásának lépései rövidítve jelennek meg, de az előző szakaszban megtalálhatja a teljes lépéseket.
 
 ### <a name="use-an-attribute-other-than-the-default"></a>Az alapértelmezetttől eltérő attribútum használata
-Ebben a fabrikam-forgatókönyvben egy olyan erdő található, amelyben a név, a vezetéknév és a megjelenítendő név a helyi ábécét használja. Ezen attribútumok latin betűs ábrázolása a bővítmény attribútumaiban található. Globális címlista létrehozásához az Azure AD-ben és az Office 365-ben a szervezet ezeket az attribútumokat kívánja használni.
+Ebben a fabrikam-forgatókönyvben egy olyan erdő található, amelyben a név, a vezetéknév és a megjelenítendő név a helyi ábécét használja. Ezen attribútumok latin betűs ábrázolása a bővítmény attribútumaiban található. Az Azure AD-ben és a Microsoft 365ban a globális címlista létrehozásához a szervezet ezeket az attribútumokat szeretné használni.
 
 Alapértelmezett konfiguráció esetén a helyi erdő egy objektuma így néz ki:  
 ![Attribútum 1. folyamata](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -274,7 +274,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
 5. Lépjen a **hatóköri szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** a következő záradékkal:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Operátor | Érték |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Felhasználó\_ |
 
@@ -316,10 +316,10 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Lépjen a **hatókör-szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** két záradékkal:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Operátor | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
-    | cloudMastered | NOTEQUAL | True (Igaz) |
+    | cloudMastered | NOTEQUAL | Igaz |
 
     A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokra vonatkozik ez a kimenő szinkronizálási szabály. Ebben a példában ugyanezt a hatókör-szűrőt használjuk a *kimenetből az ad-user identity* out-of-box szinkronizációs szabály alapján. Megakadályozza, hogy a szinkronizálási szabály olyan felhasználói objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
@@ -392,7 +392,7 @@ Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
 2. Engedélyezze újra az ütemezett szinkronizálást a parancsmag futtatásával `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 
