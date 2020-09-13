@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 23c2362d46a0b9bfe2fc2fbe31e00d0a42f80cfa
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: feab7755dea69a932fe40df59e0dd35f3f826553
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055447"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645825"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -32,7 +32,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 > [!NOTE]
 > A rövid útmutatók és oktatóanyagokban az üzembe helyezési jegyzékek 1. címkét használnak (Live-Video-Analytics: 1). Ezért az ilyen jegyzékfájlok újbóli üzembe helyezéséhez frissítenie kell a modult a peremhálózati > eszközökön.
 
-## <a name="new-features"></a>Új funkciók 
+### <a name="new-features"></a>Új funkciók 
 
 * Mostantól nagy adatátviteli teljesítményt érhet el az élő videók elemzése IoT Edge és egyéni bővítménye között a gRPC Framework használatával. A kezdéshez tekintse meg [ezt](analyze-live-video-use-your-grpc-model-quickstart.md) a témakört.
 * Az élő videó-elemzések szélesebb regionális telepítése, és csak a Cloud Service frissült.  
@@ -40,7 +40,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 * A gyors [üzembe helyezés beállítása](https://aka.ms/lva-edge/setup-resources-for-samples) az új régiók támogatásával is frissült.
     * Nincs olyan művelet, aki már beállított erőforrásokat
 
-## <a name="bug-fixes"></a>Hibajavítások 
+### <a name="bug-fixes"></a>Hibajavítások 
 
 * Elavult Azure-bővítmény használatának eltávolítása a parancsfájl beállítása
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681765"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613831"
 ---
 # <a name="meshes"></a>Hálók
 
@@ -38,6 +38,13 @@ Az `MeshComponent` osztály egy rácsvonal-erőforrás példányának elhelyezé
 
 * **UsedMaterials:** A ténylegesen felhasznált anyagok tömbje az egyes alhálók esetében. Azonos lesz az *anyagok* tömbben lévő adatokkal, nem null érték esetén. Ellenkező esetben a Mesh-példányban található *anyagok* tömb értékét tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# háló osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
+* [C# MeshComponent osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
+* [C++ háló osztály](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
+* [C++ MeshComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Anyagok](materials.md)

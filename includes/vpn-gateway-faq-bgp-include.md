@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa4e94d6ec4c3e612d5a8a29db76e023957d583
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79485921"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89644094"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
 A BGP az alapszintű SKU kivételével az összes Azure VPN Gateawy SKU-t támogatja.
@@ -55,7 +55,7 @@ Az Azure VPN Gatewayek a helyszíni BGP-eszközök alábbi elérési útjait aj�
 
 * Az Ön VNet-címelőtagjait
 * Az Azure VPN Gatewayhez csatlakozó egyes helyi hálózati átjárók címelőtagjait
-* Az Azure VPN Gatewayhez csatlakozó más BGP társviszony-munkamenetektől tanult elérési utakat, **kivéve a VNet-előtagok által átfedett alapértelmezett elérési uta(ka)t**.
+* Az Azure VPN gatewayhez csatlakozó más BGP-társi munkamenetekről származó útvonalak, **kivéve az alapértelmezett útvonalakat vagy útvonalakat, amelyek átfedésben vannak az VNet előtaggal**.
 
 ### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Hány előtagokat lehet hirdetni az Azure VPN Gateway-ben?
 Akár 4000 előtagokat is támogatunk. A rendszer eldobja a BGP-munkameneteket, ha az előtagok száma meghaladja a korlátot.

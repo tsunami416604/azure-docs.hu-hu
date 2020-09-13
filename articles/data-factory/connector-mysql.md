@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 9fbf4062304dda7112e89ecd4abd5288533f28ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83635779"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612632"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Adatok másolása a MySQL-ből Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-onprem-mysql-connector.md)
 > * [Aktuális verzió](connector-mysql.md)
@@ -58,18 +59,20 @@ A MySQL-hez társított szolgáltatás a következő tulajdonságokat támogatja
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **MySQL** | Igen |
-| connectionString | Az Azure Database for MySQL-példányhoz való kapcsolódáshoz szükséges adatok meghatározása.<br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **MySQL** | Yes |
+| connectionString | Az Azure Database for MySQL-példányhoz való kapcsolódáshoz szükséges adatok meghatározása.<br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 Egy tipikus kapcsolatok karakterlánca: `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` . További tulajdonságok állíthatók be az egyes esetekben:
 
 | Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Ezzel a beállítással adható meg, hogy az illesztőprogram TLS titkosítást és ellenőrzést használ-e a MySQL-hez való kapcsolódáskor. Például:`SSLMode=<0/1/2/3/4>`| Letiltva (0)/ELŐNYben részesített (1) **(alapértelmezett)** /kötelező (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nem |
-| UseSystemTrustStore | Ezzel a beállítással adható meg, hogy a rendszer egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ-e a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1)/Letiltva (0) **(alapértelmezett)** | Nem |
+| SSLMode | Ezzel a beállítással adható meg, hogy az illesztőprogram TLS titkosítást és ellenőrzést használ-e a MySQL-hez való kapcsolódáskor. Például:  `SSLMode=<0/1/2/3/4>` .| Letiltva (0)/ELŐNYben részesített (1) **(alapértelmezett)** /kötelező (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
+| SSLCert | Az ügyfél identitásának igazolásához használt SSL-tanúsítványt tartalmazó. PEM fájl teljes elérési útja és neve. <br/> Ha meg szeretné adni a tanúsítvány titkosításához szükséges titkos kulcsot, mielőtt elküldené a kiszolgálónak, használja a `SSLKey` tulajdonságot.| | Igen, ha kétirányú SSL-ellenőrzést használ. |
+| SSLKey | Az ügyféloldali tanúsítvány titkosításához használt titkos kulcsot tartalmazó fájl teljes elérési útja és neve a kétirányú SSL-ellenőrzés során.|  | Igen, ha kétirányú SSL-ellenőrzést használ. |
+| UseSystemTrustStore | Ezzel a beállítással adható meg, hogy a rendszer egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ-e a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1)/Letiltva (0) **(alapértelmezett)** | No |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -147,7 +150,7 @@ Az adatok MySQL-ből való másolásához a következő tulajdonságok támogato
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MySqlTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MySqlTable** | Yes |
 | tableName | A MySQL-adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -180,10 +183,10 @@ Az adatok MySQL-ből történő másolásához a másolási tevékenység **forr
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MySqlSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MySqlSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

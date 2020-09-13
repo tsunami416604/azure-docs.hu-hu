@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997710"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613782"
 ---
 # <a name="textures"></a>Textúrák
 
@@ -82,11 +82,19 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 }
 ```
 
-
 Attól függően, hogy mit kell használni a textúrában, a textúra típusa és tartalma korlátozásokat is tartalmazhat. Például a [pbr-anyagokhoz](../overview/features/pbr-materials.md) tartozó érdesség térképének szürkeárnyalatos kell lennie.
 
 > [!CAUTION]
 > Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A (z) "_textureLoad" tag változó feletti mintakód egy hivatkozás tárolására szolgál, amíg a *befejezett* esemény megérkezik.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# textúra osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C# RemoteManager. LoadTextureAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C# RemoteManager. LoadTextureFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C++ textúra osztály](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
+* [C++ RemoteManager:: LoadTextureAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C++ RemoteManager:: LoadTextureFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>Következő lépések
 

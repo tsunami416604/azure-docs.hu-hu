@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808104"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595710"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
 
@@ -23,10 +23,8 @@ A Application Gateway egy nevű kapcsolót biztosít `Pick host name from backen
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
->
-> - Háttérbeli készlet létrehozása és App Service hozzáadása
-> - HTTP-beállítások és egyéni mintavétel létrehozása a "pick hostname" kapcsolók engedélyezésével
+- Háttérbeli készlet létrehozása és App Service hozzáadása
+- HTTP-beállítások és egyéni mintavétel létrehozása a "pick hostname" kapcsolók engedélyezésével
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +41,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 4. A **célok**területen kattintson a legördülő listára, és válassza a **app Services** lehetőséget.
 
-5. Megjelenik egy legördülő lista, amely közvetlenül a **célok** legördülő listájában jelenik meg, amely tartalmazni fogja a app Services listáját. Ebből a legördülő listából válassza ki a háttérbeli készlet tagjaként hozzáadni kívánt App Service, majd kattintson a Hozzáadás gombra.
+5. Megjelenik egy legördülő lista, amely közvetlenül a **célok**  legördülő listájában jelenik meg, amely tartalmazni fogja a app Services listáját. Ebből a legördülő listából válassza ki a háttérbeli készlet tagjaként hozzáadni kívánt App Service, majd kattintson a Hozzáadás gombra.
 
    ![App Service-háttérrendszer](./media/configure-web-app-portal/backendpool.png)
    
@@ -61,9 +59,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
    > [!NOTE]
    > Ha a HTTPS lehetőséget választja, nincs szükség semmilyen hitelesítési tanúsítvány vagy megbízható főtanúsítvány feltöltésére az App Service-háttér engedélyezése óta, mivel az App Service egy megbízható Azure-szolgáltatás.
 
-4. Jelölje be a jelölőnégyzetet a **app Service használatához** . Vegye figyelembe, hogy a kapcsolók `Create a probe with pick host name from backend address` és a `Pick host name from backend address` automatikusan engedélyezve lesz.`Pick host name from backend address` felülírja a kérelemben szereplő állomásfejléc-fejlécet, ha a kérést a Application Gateway a háttérbe irányítja a rendszer.  
+4. Jelölje be a jelölőnégyzetet a **app Service használatához** . Vegye figyelembe, hogy a kapcsolók  `Create a probe with pick host name from backend address` és a `Pick host name from backend address` automatikusan engedélyezve lesz.`Pick host name from backend address` felülírja a kérelemben szereplő állomásfejléc-fejlécet, ha a kérést a Application Gateway a háttérbe irányítja a rendszer.  
 
-   `Create a probe with pick host name from backend address`a automatikusan létrehoz egy állapot-mintavételt, és hozzárendeli azt ehhez a HTTP-beállításhoz. Ehhez a HTTP-beállításhoz nem kell más állapot-mintavételt létrehoznia. Azt is megteheti, hogy egy új, a névvel ellátott mintavétel <HTTP Setting name> <Unique GUID> hozzá lett adva az állapot-mintavételek listájában, és már rendelkezik a kapcsolóval `Pick host name from backend http settings enabled` .
+   `Create a probe with pick host name from backend address` a automatikusan létrehoz egy állapot-mintavételt, és hozzárendeli azt ehhez a HTTP-beállításhoz. Ehhez a HTTP-beállításhoz nem kell más állapot-mintavételt létrehoznia. Azt is megteheti, hogy egy új, a névvel ellátott mintavétel <HTTP Setting name> <Unique GUID> hozzá lett adva az állapot-mintavételek listájában, és már rendelkezik a kapcsolóval `Pick host name from backend http settings enabled` .
 
    Ha már rendelkezik egy vagy több olyan HTTP-beállítással, amelyet az App Service használ, és ha ezek a HTTP-beállítások ugyanazt a protokollt használják, mint amelyet a létrehozott, akkor a kapcsoló helyett a `Create a probe with pick host name from backend address` legördülő listából választhatja ki az egyik egyéni mintavételt. Ennek az az oka, hogy mivel már létezik egy HTTP-beállítás az App Service-szel, ezért a kapcsolóval rendelkező állapot-mintavétel is létezik `Pick host name from backend http settings enabled` . Válassza ki az egyéni mintavételt a legördülő listából.
 
@@ -101,6 +99,6 @@ A példákban telepített webalkalmazások nyilvános IP-címeket használnak, a
 
 A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az App Service-ről és az Application Gateway további több-bérlős támogatásáról, tekintse meg a [több-bérlős szolgáltatás támogatása az Application gatewayrel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)című témakört.

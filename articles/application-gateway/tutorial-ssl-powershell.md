@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071448"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595801"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Application Gateway létrehozása TLS-megszakítással Azure PowerShell használatával
 
@@ -22,13 +22,12 @@ A Azure PowerShell használatával létrehozhat egy [Application Gateway](overvi
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Önaláírt tanúsítvány létrehozása
-> * Hálózat beállítása
-> * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
+* Önaláírt tanúsítvány létrehozása
+* Hálózat beállítása
+* Alkalmazásátjáró létrehozása a tanúsítvánnyal
+* Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -65,7 +64,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy *myResourceGroupAG* nevű Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 

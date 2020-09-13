@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135827"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612907"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -96,7 +96,7 @@ Tekintse át ezt a szakaszt, és ismerkedjen meg a virtuális hálózatok NAT-be
 1. [Cost Optimization](#cost-optimization)
 1. [A bejövő és a kimenő együttes létezése](#coexistence-of-inbound-and-outbound)
 2. [Alapszintű erőforrások kezelése](#managing-basic-resources)
-3. [Availability Zones](#availability-zones)
+3. [Rendelkezésre állási zónák](#availability-zones)
 
 ### <a name="cost-optimization"></a>Költségoptimalizálás
 
@@ -217,7 +217,7 @@ Ha a forgatókönyvben bejövő végpontokra van szükség, két lehetőség kö
 
 Ha a virtuálisgép-példányok ugyanabban az alhálózaton belül több zónában vannak telepítve, a NAT-átjáró erőforrásaival nem érhet el zónákra vonatkozó ígéretet.   Ha pedig több, egy alhálózathoz csatlakoztatott, több zóna számára készült NAT-átjáró található, akkor a virtuálisgép-példány nem tudja, melyik NAT-átjáró erőforrást válassza ki.
 
-Egy zónabeli ígéret csinál ' létezik, ha a) a virtuálisgép-példány zónája és a zónákhoz tartozó NAT-átjáró zónái nincsenek igazítva, vagy b) egy regionális NAT Gateway-erőforrást használnak a Zona virtuálisgép-példányokkal.
+Egy zóna-megígérő csinál ' létezik, ha a) a virtuálisgép-példány zónája és a zónákhoz tartozó NAT-átjáró zónája nincs igazítva, vagy b) egy regionális NAT-átjáró erőforrást használ a Zona virtuálisgép-példányokhoz.
 
 Amíg a forgatókönyv működni fog, az állapot modellje és a meghibásodási mód nincs meghatározva a rendelkezésre állási zónák szempontjából. Ehelyett érdemes lehet zónákhoz vagy az összes regionális környezethez jutni.
 
@@ -237,7 +237,7 @@ Az egyes NAT-átjárók a hozzárendelt kimenő IP-címek alapján 64 000-es kap
 
 A forrás hálózati címfordítás (SNAT) egy másik IP-címről származó folyamat forrását írja le.  A NAT-átjáró erőforrásai a SNAT gyakran hivatkoznak a port címfordítás (PAT) használatára. A PAT újraírja a forrás és a forrás portját. A SNAT nem rendelkezik rögzített kapcsolattal a privát címek száma és a lefordított nyilvános címek között.  
 
-### <a name="fundamentals"></a>Alapok
+### <a name="fundamentals"></a>Alapismeretek
 
 Lássunk egy példát négy folyamatra, hogy megismertesse az alapvető koncepciót.  A NAT-átjáró a nyilvános IP-cím erőforrás-65.52.0.2 használja.
 

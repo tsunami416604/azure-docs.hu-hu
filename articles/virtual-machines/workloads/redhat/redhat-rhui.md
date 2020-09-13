@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869218"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612505"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek számára az Azure-ban
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -89,11 +89,11 @@ Az írás időpontjában a EUS-támogatás befejeződött a RHEL <= 7,4 esetébe
 * RHEL 7,6 EUS-támogatás vége május 31., 2021
 * RHEL 7,7 EUS-támogatás vége augusztus 30-ig 2021
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL virtuális gép átváltása a EUS-re (verzió – egy adott alverzióra való zárolás)
-Az alábbi útmutatást követve zárolhat egy RHEL virtuális gépet egy adott másodlagos kiadásra (futtató gyökérként):
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL virtuális gép 7. x átváltása a EUS-be (verzió-zárolás egy adott alverzióra)
+Az alábbi útmutatást követve zárolhat egy RHEL 7. x virtuális gépet egy adott másodlagos kiadásra (futtató gyökérként):
 
 >[!NOTE]
-> Ez csak azokra a RHEL-verziókra vonatkozik, amelyekhez EUS érhető el. Az írás időpontjában ez a 7.2-7.7 RHEL is magában foglalja. További részletek a [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata) lapon érhetők el.
+> Ez csak azokra a RHEL 7. x verziókra vonatkozik, amelyekhez EUS érhető el. Az írás időpontjában ez a 7.2-7.7 RHEL is magában foglalja. További részletek a [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata) lapon érhetők el.
 
 1. Nem EUS-alapú repók letiltása:
     ```bash
@@ -111,14 +111,52 @@ Az alábbi útmutatást követve zárolhat egy RHEL virtuális gépet egy adott 
     ```
 
     >[!NOTE]
-    > A fenti utasítás a RHEL-alverzió zárolását az aktuális másodlagos kiadáshoz fogja zárolni. Adjon meg egy adott másodlagos kiadást, ha a frissítést és a zárolást egy későbbi, nem a legújabb verzióra szeretné használni. Például a `echo 7.5 > /etc/yum/vars/releasever` RHEL-verziót a RHEL 7,5-re fogja zárolni
+    > A fenti utasítás a RHEL-alverzió zárolását az aktuális másodlagos kiadáshoz fogja zárolni. Adjon meg egy adott másodlagos kiadást, ha a frissítést és a zárolást egy későbbi, nem a legújabb verzióra szeretné használni. Például a `echo 7.5 > /etc/yum/vars/releasever` RHEL-verziót a RHEL 7,5-re fogja zárolni.
 
 1. A RHEL virtuális gép frissítése
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL virtuális gép átváltása nem EUS (verziók zárolásának eltávolítása)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL virtuális gép 8. x átváltása a EUS-re (verzió – egy adott alverzióra való zárolás)
+Az alábbi útmutatást követve zárolhat egy RHEL 8. x virtuális gépet egy adott másodlagos kiadásra (futtató gyökérként):
+
+>[!NOTE]
+> Ez csak azokra a 8. x verziójú RHEL vonatkozik, amelyekhez EUS érhető el. Az írás időpontjában ez a RHEL 8.1-8.2 részét képezi. További részletek a [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata) lapon érhetők el.
+
+1. Nem EUS-alapú repók letiltása:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. A EUS Repos konfigurációs fájljának beolvasása:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. EUS-repók hozzáadása:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. A változó zárolása `releasever` (futtató gyökér):
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > A fenti utasítás a RHEL-alverzió zárolását az aktuális másodlagos kiadáshoz fogja zárolni. Adjon meg egy adott másodlagos kiadást, ha a frissítést és a zárolást egy későbbi, nem a legújabb verzióra szeretné használni. Például a `echo 8.1 > /etc/yum/vars/releasever` RHEL-verziót a RHEL 8,1-re fogja zárolni.
+
+    >[!NOTE]
+    > Ha a releasever eléréséhez engedélyekkel kapcsolatos problémák lépnek fel, a fájlt szerkesztheti a "Nano/etc/yum/Vars/releaseve" paranccsal, és hozzáadhatja a rendszerkép verziószámát, és mentheti ("CTRL + o", majd nyomja le az ENTER billentyűt, majd a "CTRL + x" billentyűkombinációt).  
+
+1. A RHEL virtuális gép frissítése
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL 7. x virtuális gép átváltása nem EUS (verzió zárolásának eltávolítása)
 Futtassa a következőt root-ként:
 1. Távolítsa el a `releasever` fájlt:
     ```bash
@@ -135,6 +173,33 @@ Futtassa a következőt root-ként:
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. A RHEL virtuális gép frissítése
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL 8. x virtuális gép átváltása nem EUS (verziók zárolásának eltávolítása)
+Futtassa a következőt root-ként:
+1. Távolítsa el a `releasever` fájlt:
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. EUS-repók letiltása:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. A rendszeres Repos konfigurációs fájljának beolvasása:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. EUS-repók hozzáadása:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. A RHEL virtuális gép frissítése
     ```bash
     sudo yum update

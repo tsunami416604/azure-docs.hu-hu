@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 430b491780e10840274f16315b159a8095c11889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051117"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612525"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -41,7 +41,7 @@ A táblázat összefoglalja a VMware hypervisor követelményeit.
 --- | ---
 **VMware vCenter Server** | 5,5, 6,0, 6,5 vagy 6,7.
 **VMware vSphere ESXI-gazdagép** | 5,5, 6,0, 6,5 vagy 6,7.
-**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek az alábbi engedélyekkel kell rendelkeznie vCenter Serverban:<br/><br/> - **Adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **Adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine.Configszülő. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine.Configszülő. DiskLease**: engedélyezze a lemez címbérleti műveleteit a virtuális gépek számára a VMware vSphere Virtual Disk Development Kit (VDDK) használatával történő olvasáshoz.<br/><br/> - **VirtualMachine. kiépítés. DiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gépen lévő lemez megnyitásával véletlenszerű olvasási hozzáférés legyen a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. ReadOnlyDiskAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. DiskRandomAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. VirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> - **VirtualMachine. SnapshotManagement. \* **: engedélyezi a virtuális gépek pillanatképének létrehozását és kezelését a replikáláshoz.<br/><br/> - **Virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való Migrálás során.
+**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek az alábbi engedélyekkel kell rendelkeznie vCenter Serverban:<br/><br/> - **Adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **Adattár. FileManagement**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine.Config. Változáskövetési**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine.Config. DiskLease**: engedélyezze a lemez címbérleti műveleteit a virtuális gépek számára a VMware vSphere Virtual Disk Development Kit (VDDK) használatával történő olvasáshoz.<br/><br/> - **VirtualMachine. kiépítés. DiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gépen lévő lemez megnyitásával véletlenszerű olvasási hozzáférés legyen a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. DiskRandomRead**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. DiskRandomAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. GetVmFiles**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> - **VirtualMachine. State. \* **: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **Virtuális gép. Interact. erő**: lehetővé teszi, hogy a virtuális gép kikapcsolható legyen az Azure-ba való Migrálás során.
 
 
 
@@ -68,7 +68,7 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 **Tárolási vMotion** | Nem támogatott. A replikáció nem fog működni, ha a virtuális gép tárolási vMotion használ.
 **Összevont hálózati adapterek** | Nem támogatott.
 **IPv6** | Nem támogatott.
-**Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, prémium SSD) az Azure-ban.
+**Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
 **Egyidejű replikáció** | 300 virtuális gépek száma vCenter Server. Ha többre van szüksége, a 300-es kötegekben telepítse át őket.
 
 
@@ -118,7 +118,7 @@ A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt 
 **Mobilitási szolgáltatás** | Az áttelepíteni kívánt virtuális gépeken telepíteni kell a mobilitási szolgáltatás ügynökét.
 **UEFI-rendszerindítás** | Támogatott.
 **UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.
-**Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, prémium SSD) az Azure-ban.
+**Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
 **Lemezméret** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 63 lemez/virtuális gép.
 **Titkosított lemezek/kötetek** | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott.

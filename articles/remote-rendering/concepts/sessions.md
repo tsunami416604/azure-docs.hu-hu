@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021833"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613801"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-munkamenetek
 
@@ -31,7 +31,7 @@ Ha aktív munkamenethez *kapcsolódott* , akkor a rendszer az osztályon kereszt
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Egyszerre több munkamenet kezelése
 
-Egyetlen eszközről nem lehet teljes mértékben *csatlakozni* több munkamenethez. Azonban létrehozhat, megfigyelheti és leállíthat annyi munkamenetet, amennyit csak szeretne egyetlen alkalmazásból. Mindaddig, amíg az alkalmazás nem a munkamenethez való kapcsolódásra szolgál, nem szükséges olyan eszközön futtatni, mint a HoloLens 2. Ilyen implementáció esetén előfordulhat, hogy egy központi mechanizmus segítségével szeretné vezérelni a munkameneteket. Például létrehozhat egy webalkalmazást, ahol több tabletta és HoloLenses is bejelentkezhet. Ezután az alkalmazás megjelenítheti a tabletták beállításait, például azt, hogy melyik CAD-modellt szeretné megjeleníteni. Ha a felhasználó kiválaszt egy választ, a rendszer ezeket az információkat közli az összes HoloLenses, hogy közös felhasználói élményt hozzon létre.
+Egyetlen eszközről nem lehet teljes mértékben *csatlakozni* több munkamenethez. Azonban létrehozhat, megfigyelheti és leállíthat annyi munkamenetet, amennyit csak szeretne egyetlen alkalmazásból. Mindaddig, amíg az alkalmazás nem a munkamenethez való kapcsolódásra szolgál, nem szükséges olyan eszközön futtatni, mint a HoloLens 2. Ilyen implementáció esetén előfordulhat, hogy egy központi mechanizmus segítségével szeretné vezérelni a munkameneteket. Létrehozhat például egy webalkalmazást, ahol több tabletta és HoloLens-eszköz tud bejelentkezni. Ezután az alkalmazás megjelenítheti a tabletták beállításait, például azt, hogy melyik CAD-modellt szeretné megjeleníteni. Ha a felhasználó kiválaszt egy választ, a rendszer ezeket az információkat közli az összes HoloLens-eszközzel, hogy közös felhasználói élményt hozzon létre.
 
 ## <a name="session-phases"></a>Munkamenet-fázisok
 
@@ -146,6 +146,15 @@ A virtuális gép élettartama nincs a `AzureFrontend` példányhoz vagy a `Azur
 Az állandó munkamenet-azonosító lekérdezhető helyileg a-n keresztül `AzureSession.SessionUUID()` és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `AzureFrontend.OpenSession` a kötést az adott munkamenethez.
 
 Ha a `AzureSession.IsConnected` értéke TRUE (igaz), a `AzureSession.Actions` egy példányát adja vissza `RemoteManager` , amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# AzureSession osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C# AzureFrontend. OpenRenderingSession ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [C++ AzureSession osztály](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
+* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C++ AzureFrontend:: OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>Következő lépések
 

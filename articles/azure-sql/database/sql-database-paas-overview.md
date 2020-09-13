@@ -195,7 +195,7 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
 
 |Eszköz|Leírás|
 |:---|:---|
-|[A Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
+|[Az Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, MacOS és Linux rendszeren fut.|
 |[Az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
 |[SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server a kapcsolódó adatbázisok, adatbázisok Azure SQL Database, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
