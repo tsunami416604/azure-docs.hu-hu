@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356865"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662388"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása
 A Azure Active Directory Connect synchronization Services (Azure AD Connect Sync) a Azure AD Connect fő összetevője. Gondoskodik a helyszíni környezet és az Azure AD közötti személyazonossági adatok szinkronizálásával kapcsolatos összes műveletről. A Azure AD Connect Sync az Azure Active Directory-összekötővel konfigurált, az rSync, a Azure AD-szinkronizáló és a Forefront Identity Manager utódja.
@@ -52,19 +52,19 @@ A szinkronizálási szolgáltatás két összetevőből áll, a helyszíni **Azu
 | [Jelszó-kivonatolási szinkronizálás implementálása](how-to-connect-password-hash-synchronization.md) |A jelszó-szinkronizálás működésének, megvalósításának és működésének és hibaelhárításának módját ismerteti. |
 | [Eszközvisszaíró](how-to-connect-device-writeback.md) |Ismerteti, hogyan működik az visszaírási az Azure AD Connect. |
 | [Címtárbővítmények](how-to-connect-sync-feature-directory-extensions.md) |Ismerteti, hogyan bővíthető az Azure AD-séma a saját egyéni attribútumaival. |
-| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Ismerteti, hogyan helyezheti el a felhasználó Office 365-erőforrásait a felhasználóval megegyező régióban. |
+| [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Leírja, hogyan helyezheti el a felhasználó Microsoft 365 erőforrásait a felhasználóval megegyező régióban. |
 | **Szinkronizálási szolgáltatás** | |
 | [Az Azure AD Connect szinkronizálási szolgáltatás jellemzői](how-to-connect-syncservice-features.md) |A szinkronizálási szolgáltatás oldalát és az Azure AD szinkronizálási beállításainak módosítását ismerteti. |
 | [Ismétlődő attribútum rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Ismerteti, hogyan lehet engedélyezni és használni a **userPrincipalName** és a **ProxyAddresses** duplikált attribútum-értékek rugalmasságát. |
 | **Műveletek és felhasználói felület** | |
 | [Szinkronizálási szolgáltatáskezelő](how-to-connect-sync-service-manager-ui.md) |Ismerteti a Synchronization Service Manager felhasználói felületet, beleértve a [műveleteket](how-to-connect-sync-service-manager-ui-operations.md), [összekötőket](how-to-connect-sync-service-manager-ui-connectors.md), [metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)és [metaverse keresési](how-to-connect-sync-service-manager-ui-mvsearch.md) lapokat. |
-| [Üzemeltetési feladatok és szempontok](how-to-connect-sync-operations.md) |Leírja a működési problémákat, például a vész-helyreállítást. |
+| [Üzemeltetési feladatok és szempontok](./how-to-connect-sync-staging-server.md) |Leírja a működési problémákat, például a vész-helyreállítást. |
 | **kézikönyv...** | |
 | [Az Azure AD-fiók alaphelyzetbe állítása](how-to-connect-azureadaccount.md) |A Azure AD Connect Sync szolgáltatásból az Azure AD-be való kapcsolódáshoz használt szolgáltatásfiók hitelesítő adatainak alaphelyzetbe állítása. |
 | **További információk és hivatkozások** | |
 | [Portok](reference-connect-ports.md) |Felsorolja, hogy mely portokat kell megnyitni a Szinkronizáló motor és a helyszíni címtárak és az Azure AD között. |
 | [Az Azure Active Directoryval szinkronizált attribútumok](reference-connect-sync-attributes-synchronized.md) |Felsorolja az összes, a helyszíni AD és az Azure AD között szinkronizált attribútumot. |
-| [Függvények referenciája](reference-connect-sync-functions-reference.md) |A deklaratív kiépítés során elérhető összes függvény listája. |
+| [Functions – referencia](reference-connect-sync-functions-reference.md) |A deklaratív kiépítés során elérhető összes függvény listája. |
 
 ## <a name="additional-resources"></a>További források
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

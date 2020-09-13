@@ -1,6 +1,6 @@
 ---
 title: Több tartomány Azure AD Connect
-description: Ez a dokumentum több legfelső szintű tartomány beállítását és konfigurálását ismerteti a O365 és az Azure AD-vel.
+description: Ez a dokumentum több legfelső szintű tartomány beállítását és konfigurálását ismerteti Microsoft 365 és az Azure AD-vel.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849943"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662434"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Többtartományos támogatás az Azure AD összevonási szolgáltatásához
-Az alábbi dokumentáció ismerteti, hogyan használható több legfelső szintű tartomány és altartomány a egyesítő Office 365-vagy Azure AD-tartományokkal való használata esetén.
+Az alábbi dokumentáció ismerteti, hogyan használható több legfelső szintű tartomány és altartomány a Microsoft 365-vagy Azure AD-tartományokkal való egyesítő.
 
 ## <a name="multiple-top-level-domain-support"></a>Több felső szintű tartományi támogatás
 Az Azure AD-ben több, legfelső szintű tartomány egyesítő van szükség további konfigurálásra, amely nem szükséges, ha a egyesítő egyetlen legfelső szintű tartománnyal rendelkezik.
@@ -42,7 +42,7 @@ A IssuerUri a PowerShell-parancs használatával tekintheti meg `Get-MsolDomainF
 
 Probléma merül fel, ha egynél több legfelső szintű tartományt ad hozzá.  Tegyük fel például, hogy beállította az Azure AD és a helyszíni környezet közötti összevonást.  Ehhez a dokumentumhoz a tartományt, a bmcontoso.com használja.  Most egy második, legfelső szintű tartomány, a bmfabrikam.com lett hozzáadva.
 
-![Tartományok](./media/how-to-connect-install-multiple-domains/domains.png)
+![Több legfelső szintű tartományt ábrázoló képernyőkép](./media/how-to-connect-install-multiple-domains/domains.png)
 
 Ha a bmfabrikam.com-tartomány összevonására kísérli meg az átalakítást, hiba történik.  Ennek az az oka, hogy az Azure AD olyan korlátozással rendelkezik, amely nem teszi lehetővé, hogy a IssuerUri tulajdonság egynél több tartományhoz ugyanazt az értéket engedélyezze.  
 
@@ -63,11 +63,11 @@ A bmfabrikam.com tartomány beállításai a következőkben láthatók:
 
 ![Összevonási hiba](./media/how-to-connect-install-multiple-domains/settings.png)
 
-`-SupportMultipleDomain`a nem módosítja a többi végpontot, amelyek még úgy vannak konfigurálva, hogy az összevonási szolgáltatásra mutassanak a adfs.bmcontoso.com.
+`-SupportMultipleDomain` a nem módosítja a többi végpontot, amelyek még úgy vannak konfigurálva, hogy az összevonási szolgáltatásra mutassanak a adfs.bmcontoso.com.
 
 Egy másik dolog, ami `-SupportMultipleDomain` azt biztosítja, hogy a AD FS rendszer magában foglalja az Azure ad-hoz kiállított jogkivonatok megfelelő kibocsátói értékét. Ezt az értéket úgy állítja be, hogy a felhasználói UPN tartomány részét képezi, és azt a IssuerUri, azaz a https://{UPN-utótag}/ADFS/Services/Trust. adja meg tartományként.
 
-Így az Azure AD-ben vagy az Office 365-ben végzett hitelesítés során a rendszer a felhasználó jogkivonat IssuerUri elemét használja a tartomány megkeresésére az Azure AD-ben.  Ha nem található egyezés, a hitelesítés sikertelen lesz.
+Így az Azure AD-ben vagy a Microsoft 365-ben végzett hitelesítés során a rendszer a felhasználó jogkivonatában található IssuerUri elemet használja a tartomány megkereséséhez az Azure AD-ben. Ha nem található egyezés, a hitelesítés sikertelen lesz.
 
 Ha például egy felhasználó UPN bsimon@bmcontoso.com -je, a jogkivonat IssuerUri eleme AD FS problémákra lesz állítva `http://bmcontoso.com/adfs/services/trust` . Ez az elem megfelel az Azure AD-konfigurációnak, és a hitelesítés sikeres lesz.
 
@@ -106,17 +106,17 @@ A következő lépésekkel távolíthatja el a Microsoft Online megbízhatóság
 2. A bal oldalon bontsa ki a **megbízhatósági kapcsolatok** és a **függő entitások megbízhatóságai** elemet.
 3. A jobb oldalon törölje a **Microsoft Office 365 Identity platform** bejegyzést.
    ![A Microsoft Online eltávolítása](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. Olyan gépen, amelyen telepítve van a [Windows PowerShell Azure Active Directory modulja](https://msdn.microsoft.com/library/azure/jj151815.aspx) , az alábbi parancsot futtatja: `$cred=Get-Credential` .  
+4. Olyan gépen, amelyen telepítve van a [Windows PowerShell Azure Active Directory modulja](/previous-versions/azure/jj151815(v=azure.100)) , az alábbi parancsot futtatja: `$cred=Get-Credential` .  
 5. Adja meg a egyesítő Azure AD-tartományhoz tartozó globális rendszergazda felhasználónevét és jelszavát.
-6. A PowerShellben adja meg a`Connect-MsolService -Credential $cred`
-7. A PowerShellben adja meg a értéket `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Ez a frissítés az eredeti tartományhoz készült.  A fenti tartományokat a következő módon használhatja:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
+6. A PowerShellben adja meg a `Connect-MsolService -Credential $cred`
+7. A PowerShellben adja meg a értéket `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Ez a frissítés az eredeti tartományhoz készült.  A fenti tartományokat a következő módon használhatja:  `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 Az új legfelső szintű tartomány a PowerShell használatával való hozzáadásához kövesse az alábbi lépéseket.
 
-1. Olyan gépen, amelyen telepítve van a [Windows PowerShell Azure Active Directory modulja](https://msdn.microsoft.com/library/azure/jj151815.aspx) , az alábbi parancsot futtatja: `$cred=Get-Credential` .  
+1. Olyan gépen, amelyen telepítve van a [Windows PowerShell Azure Active Directory modulja](/previous-versions/azure/jj151815(v=azure.100)) , az alábbi parancsot futtatja: `$cred=Get-Credential` .  
 2. Adja meg a egyesítő Azure AD-tartományhoz tartozó globális rendszergazda felhasználónevét és jelszavát.
-3. A PowerShellben adja meg a`Connect-MsolService -Credential $cred`
-4. A PowerShellben adja meg a`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
+3. A PowerShellben adja meg a `Connect-MsolService -Credential $cred`
+4. A PowerShellben adja meg a `New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
 
 A következő lépésekkel adhatja hozzá az új legfelső szintű tartományt a Azure AD Connect használatával.
 
@@ -128,11 +128,11 @@ A következő lépésekkel adhatja hozzá az új legfelső szintű tartományt a
 5. Kattintson a Telepítés gombra
 
 ### <a name="verify-the-new-top-level-domain"></a>Az új felső szintű tartomány ellenőrzése
-A PowerShell-parancs használatával `Get-MsolDomainFederationSettings -DomainName <your domain>` megtekintheti a frissített IssuerUri.  Az alábbi képernyőképen látható, hogy az összevonási beállítások frissítve lettek az eredeti tartományban`http://bmcontoso.com/adfs/services/trust`
+A PowerShell-parancs használatával `Get-MsolDomainFederationSettings -DomainName <your domain>` megtekintheti a frissített IssuerUri.  Az alábbi képernyőképen látható, hogy az összevonási beállítások frissítve lettek az eredeti tartományban `http://bmcontoso.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-Az új tartomány IssuerUri pedig a következőre lett beállítva`https://bmfabrikam.com/adfs/services/trust`
+Az új tartomány IssuerUri pedig a következőre lett beállítva `https://bmfabrikam.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 
@@ -173,7 +173,7 @@ A következő lépésekkel adhat hozzá egyéni jogcímet az altartományok tám
 
 5. Kattintson az OK gombra.  Kattintson az Alkalmaz gombra.  Kattintson az OK gombra.  Zárja be az AD FS felügyeleti konzolt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).
 
 Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokkal: az [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md), a [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) és az [Azure AD Connect Health](how-to-connect-health-sync.md).

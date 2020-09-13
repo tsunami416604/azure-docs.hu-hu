@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688130"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662164"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -33,11 +33,11 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 * Szüksége lesz egy Azure AD-bérlőre. Egy [ingyenes Azure-próbaverziót](https://azure.microsoft.com/pricing/free-trial/)kap. Azure AD Connect kezeléséhez a következő portálok egyikét használhatja:
   * A [Azure Portal](https://portal.azure.com).
   * Az [Office-portálon](https://portal.office.com).
-* [Adja hozzá és ellenőrizze az](../active-directory-domains-add-azure-portal.md) Azure ad-ben használni kívánt tartományt. Ha például contoso.com kíván használni a felhasználók számára, győződjön meg róla, hogy a tartomány ellenőrzése megtörtént, és nem csak a contoso.onmicrosoft.com alapértelmezett tartományát használja.
-* Az Azure AD-bérlők alapértelmezés szerint 50 000 objektumot tesznek lehetővé. A tartomány ellenőrzésekor a korlát 300 000 objektumra nő. Ha még több objektumra van szüksége az Azure AD-ben, nyisson meg egy támogatási esetet, hogy a korlát továbbra is nagyobb legyen. Ha több mint 500 000 objektumra van szüksége, licencre van szükség, például Office 365, prémium szintű Azure AD vagy Enterprise Mobility + Security.
+* [Adja hozzá és ellenőrizze az](../fundamentals/add-custom-domain.md) Azure ad-ben használni kívánt tartományt. Ha például contoso.com kíván használni a felhasználók számára, győződjön meg róla, hogy a tartomány ellenőrzése megtörtént, és nem csak a contoso.onmicrosoft.com alapértelmezett tartományát használja.
+* Az Azure AD-bérlők alapértelmezés szerint 50 000 objektumot tesznek lehetővé. A tartomány ellenőrzésekor a korlát 300 000 objektumra nő. Ha még több objektumra van szüksége az Azure AD-ben, nyisson meg egy támogatási esetet, hogy a korlát továbbra is nagyobb legyen. Ha több mint 500 000 objektumra van szüksége, licencre van szüksége, például Microsoft 365, prémium szintű Azure AD vagy Enterprise Mobility + Security.
 
 ### <a name="prepare-your-on-premises-data"></a>A helyszíni adatfeldolgozás előkészítése
-* Az Azure AD-hez és az Office 365-hoz való szinkronizálás előtt a [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) segítségével azonosíthatja a hibákat, például az ismétlődéseket és a formázási problémákat a címtárban.
+* A [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) használatával azonosíthatja a címtárban előforduló hibákat, például az ismétlődéseket és a formázási problémákat, mielőtt szinkronizálni kíván az Azure ad-val és a Microsoft 365ával.
 * Tekintse át [Az Azure ad-ben engedélyezhető választható szinkronizálási funkciókat](how-to-connect-syncservice-features.md), és értékelje ki, hogy mely szolgáltatásokat kell engedélyezni.
 
 ### <a name="on-premises-active-directory"></a>Helyszíni Active Directory
@@ -48,11 +48,11 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 * Javasoljuk, hogy [engedélyezze a Active Directory Lomtárát](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect kiszolgáló
-A Azure AD Connect kiszolgáló kritikus identitási adatait tartalmaz. Fontos, hogy a kiszolgálóhoz való rendszergazdai hozzáférés megfelelő védelemmel legyen ellátott. Kövesse a [privilegizált hozzáférés biztonságossá](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)tételével kapcsolatos útmutatást. 
+A Azure AD Connect kiszolgáló kritikus identitási adatait tartalmaz. Fontos, hogy a kiszolgálóhoz való rendszergazdai hozzáférés megfelelő védelemmel legyen ellátott. Kövesse a [privilegizált hozzáférés biztonságossá](/windows-server/identity/securing-privileged-access/securing-privileged-access)tételével kapcsolatos útmutatást. 
 
-A Azure AD Connect-kiszolgálót 0. rétegű összetevőként kell kezelni, ahogy azt a [Active Directory felügyeleti modellben](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) dokumentálták 
+A Azure AD Connect-kiszolgálót 0. rétegű összetevőként kell kezelni, ahogy azt a [Active Directory felügyeleti modellben](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) dokumentálták 
 
-További információ a Active Directory környezet biztonságossá tételéről: [ajánlott eljárások a Active Directory biztonságossá tételéhez](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
+További információ a Active Directory környezet biztonságossá tételéről: [ajánlott eljárások a Active Directory biztonságossá tételéhez](/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
 
 #### <a name="installation-prerequisites"></a>Telepítési előfeltételek
 
@@ -62,25 +62,25 @@ További információ a Active Directory környezet biztonságossá tételéről
 - A Azure AD Connect-kiszolgáló nem rendelkezhet a PowerShell-átírással Csoportházirend, ha a Azure AD Connect varázslóval felügyeli a Active Directory összevonási szolgáltatások (AD FS) (AD FS) konfigurációját. Ha a szinkronizálási konfiguráció kezeléséhez a Azure AD Connect varázslót használja, akkor engedélyezheti a PowerShell átírását. 
 - Ha AD FS üzembe helyezése folyamatban van: 
     - Azok a kiszolgálók, amelyeken telepítve van a AD FS vagy a webalkalmazás-proxy, Windows Server 2012 R2 vagy újabb rendszernek kell lennie. A Távoli telepítéshez engedélyezni kell a Rendszerfelügyeleti webszolgáltatásokat ezeken a kiszolgálókon. 
-    - Konfigurálnia kell a TLS/SSL-tanúsítványokat. További információ: [SSL/TLS protokollok és titkosító csomagok kezelése a AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) és [az SSL-tanúsítványok kezelése a ad FSban](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
+    - Konfigurálnia kell a TLS/SSL-tanúsítványokat. További információ: [SSL/TLS protokollok és titkosító csomagok kezelése a AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) és [az SSL-tanúsítványok kezelése a ad FSban](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Konfigurálnia kell a névfeloldást. 
 - Ha a globális rendszergazdák rendelkeznek MFA-támogatással, az URL-címnek szerepelnie kell https://secure.aadcdn.microsoftonline-p.com *must* a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kérdés megadását kéri, és korábban még nem adta hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect-kiszolgáló megerősítése 
 Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kritikus összetevője számára történő csökkentése érdekében a Azure AD Connect-kiszolgáló megerősítse. A javaslatok követése segít csökkenteni a szervezete biztonsági kockázatait.
 
-- A Azure AD Connect a tartományvezérlővel és más 0. szintű erőforrásokkal azonos módon kezelhető. További információ: [Active Directory felügyeleti rétegek modellje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- A Azure AD Connect a tartományvezérlővel és más 0. szintű erőforrásokkal azonos módon kezelhető. További információ: [Active Directory felügyeleti rétegek modellje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - A Azure AD Connect-kiszolgálóhoz való rendszergazdai hozzáférés korlátozása csak tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok számára.
-- Hozzon létre egy [dedikált fiókot az összes, emelt szintű hozzáféréssel rendelkező személy számára](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). A rendszergazdáknak nem szabad megkeresni a webet, ellenőrizniük az e-mailjeit, és a magas jogosultsági szintű fiókokkal a napi hatékonyságnövelő feladatokat kell megadniuk.
-- Kövesse az emelt [szintű hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)című témakör útmutatását. 
-- Az NTLM-hitelesítés használatának megtagadása a AADConnect-kiszolgálóval. A következőképpen teheti meg ezt: [az NTLM korlátozása a AADConnect-kiszolgálón és az](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) [NTLM korlátozása egy tartományon](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. További információ: [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) az egyes munkaállomásokon egyedi véletlenszerű jelszavakat konfigurálhat, és a kiszolgálókat ACL-védelemmel ellátott Active Directory tárolhatja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)kérheti le a kört. További útmutatást a környezet és az emelt szintű hozzáférési munkaállomások (mancsok) üzemeltetéséhez az [üzemeltetési szabványokban találhat a tiszta forrás elve alapján](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
-- Dedikált emelt [szintű hozzáférésű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) implementálása minden munkatárs számára, a szervezet információs rendszereihez emelt szintű hozzáféréssel. 
-- A Active Directory-környezet támadási felületének csökkentése érdekében kövesse ezeket a [további irányelveket](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) .
+- Hozzon létre egy [dedikált fiókot az összes, emelt szintű hozzáféréssel rendelkező személy számára](/windows-server/identity/securing-privileged-access/securing-privileged-access). A rendszergazdáknak nem szabad megkeresni a webet, ellenőrizniük az e-mailjeit, és a magas jogosultsági szintű fiókokkal a napi hatékonyságnövelő feladatokat kell megadniuk.
+- Kövesse az emelt [szintű hozzáférés biztonságossá tétele](/windows-server/identity/securing-privileged-access/securing-privileged-access)című témakör útmutatását. 
+- Az NTLM-hitelesítés használatának megtagadása a AADConnect-kiszolgálóval. A következőképpen teheti meg ezt: [az NTLM korlátozása a AADConnect-kiszolgálón és az](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) [NTLM korlátozása egy tartományon](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
+- Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. További információ: [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) az egyes munkaállomásokon egyedi véletlenszerű jelszavakat konfigurálhat, és a kiszolgálókat ACL-védelemmel ellátott Active Directory tárolhatja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)kérheti le a kört. További útmutatást a környezet és az emelt szintű hozzáférési munkaállomások (mancsok) üzemeltetéséhez az [üzemeltetési szabványokban találhat a tiszta forrás elve alapján](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- Dedikált emelt [szintű hozzáférésű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations) implementálása minden munkatárs számára, a szervezet információs rendszereihez emelt szintű hozzáféréssel. 
+- A Active Directory-környezet támadási felületének csökkentése érdekében kövesse ezeket a [további irányelveket](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) .
 
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL-kiszolgáló
-* Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint a SQL Server 2012 Express LocalDB (SQL Server Express) egy egyszerűsített verziója van telepítve. A SQL Server Express 10 GB-os mérethatárt tartalmaz, amely lehetővé teszi körülbelül 100 000 objektum kezelését. Ha nagyobb mennyiségű címtár-objektumot kell kezelnie, mutasson a telepítővarázsló SQL Server másik telepítésére. A SQL Server telepítésének típusa hatással lehet [Azure ad Connect teljesítményére](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint a SQL Server 2012 Express LocalDB (SQL Server Express) egy egyszerűsített verziója van telepítve. A SQL Server Express 10 GB-os mérethatárt tartalmaz, amely lehetővé teszi körülbelül 100 000 objektum kezelését. Ha nagyobb mennyiségű címtár-objektumot kell kezelnie, mutasson a telepítővarázsló SQL Server másik telepítésére. A SQL Server telepítésének típusa hatással lehet [Azure ad Connect teljesítményére](./plan-connect-performance-factors.md#sql-database-factors).
 * Ha a SQL Server eltérő telepítését használja, a következő követelmények érvényesek:
   * A Azure AD Connect a SQL Server összes verzióját támogatja a 2012-es verzióról (a legújabb szervizcsomaggal) a SQL Server 2019. A Azure SQL Database adatbázisként *nem támogatott* .
   * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a \_ nevükben CI_ azonosítjuk. A CS_ által azonosított kis-és nagybetűket megkülönböztető rendezés használata \_ *nem támogatott*.
@@ -126,10 +126,10 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
         </system.net>
     ```
 
-* Ha a proxy konfigurációját egy meglévő telepítő hajtja végre, akkor a **Microsoft Azure ad szinkronizálási szolgáltatást** egyszer újra kell indítani ahhoz, hogy a Azure ad Connect beolvassák a proxy konfigurációját, és frissíteniük kell a behviour. 
+* Ha a proxy konfigurációját egy meglévő telepítő hajtja végre, akkor a **Microsoft Azure ad szinkronizálási szolgáltatást** egyszer kell újraindítani ahhoz, hogy a Azure ad Connect beolvassa a proxy konfigurációját, és frissítse a viselkedést. 
 * Ha Azure AD Connect webes kérést küld az Azure AD-nak a címtár-szinkronizálás részeként, az Azure AD akár 5 percet is igénybe vehet. Gyakori, hogy a proxykiszolgálók a kapcsolat tétlen időtúllépési konfigurációját. Győződjön meg arról, hogy a konfiguráció legalább 6 percre van beállítva.
 
-További információ: MSDN az [alapértelmezett proxy elemről](https://msdn.microsoft.com/library/kd3cf2ex.aspx).
+További információ: MSDN az [alapértelmezett proxy elemről](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 További információt a kapcsolattal kapcsolatos problémákkal kapcsolatban a [kapcsolódási problémák elhárítása](tshoot-connect-connectivity.md)című témakörben talál.
 
 ### <a name="other"></a>Egyéb
@@ -148,9 +148,9 @@ A Azure AD Connect a Microsoft PowerShelltől és a .NET-keretrendszer 4.5.1-tő
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>A TLS 1,2 engedélyezése Azure AD Connect
-A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint TLS 1,0-et használ a Sync Engine-kiszolgáló és az Azure AD közötti kommunikáció titkosításához. A .NET-alkalmazások a kiszolgálón alapértelmezés szerint a TLS 1,2 használatára is konfigurálhatók. További információ a TLS 1,2-ről: [Microsoft Security advisor 2960358](https://technet.microsoft.com/security/advisory/2960358).
+A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint TLS 1,0-et használ a Sync Engine-kiszolgáló és az Azure AD közötti kommunikáció titkosításához. A .NET-alkalmazások a kiszolgálón alapértelmezés szerint a TLS 1,2 használatára is konfigurálhatók. További információ a TLS 1,2-ről: [Microsoft Security advisor 2960358](/security-updates/SecurityAdvisories/2015/2960358).
 
-1. Győződjön meg arról, hogy az operációs rendszeréhez telepítve van a .NET 4.5.1-es gyorsjavítás. További információ: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Lehet, hogy ez a gyorsjavítás vagy egy későbbi kiadás már telepítve van a kiszolgálón.
+1. Győződjön meg arról, hogy az operációs rendszeréhez telepítve van a .NET 4.5.1-es gyorsjavítás. További információ: [Microsoft biztonsági tanácsadó 2960358](/security-updates/SecurityAdvisories/2015/2960358). Lehet, hogy ez a gyorsjavítás vagy egy későbbi kiadás már telepítve van a kiszolgálón.
 
 1. Az összes operációs rendszer esetében állítsa be ezt a beállításkulcsot, és indítsa újra a kiszolgálót.
     ```
@@ -221,5 +221,5 @@ AD FS-vagy webalkalmazás-proxykiszolgálót futtató számítógépekre vonatko
 * Memória: 2 GB vagy magasabb
 * Azure-beli virtuális gép: a2 vagy újabb konfiguráció
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

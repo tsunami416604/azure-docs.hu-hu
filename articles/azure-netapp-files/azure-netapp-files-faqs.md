@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 09/09/2020
 ms.author: b-juche
-ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590370"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662457"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -49,6 +49,10 @@ Igen, ha létrehozza a szükséges DNS-bejegyzéseket. Azure NetApp Files megadj
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Megadhatom vagy kiválaszthatom a saját IP-címüket egy Azure NetApp Files kötethez?  
 
 Nem. A Azure NetApp Files kötetek IP-hozzárendelése dinamikus. A statikus IP-hozzárendelés nem támogatott. 
+
+### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Támogatja a Azure NetApp Files a kettős verem (IPv4 és IPv6) VNet?
+
+Nem, Azure NetApp Files jelenleg nem támogatja a kettős verem (IPv4 és IPv6) VNet.  
  
 ## <a name="security-faqs"></a>Biztonsági GYIK
 
@@ -66,10 +70,9 @@ Az összes Azure NetApp Files kötet titkosítása az FIPS 140-2 szabvány haszn
 
 Azure NetApp Files felügyeletét a szolgáltatás kezeli. Minden kötethez létrejön egy egyedi XTS-AES-256 adattitkosítási kulcs. A titkosítási kulcs hierarchiája az összes kötet kulcsának titkosítására és védelemmel való ellátására szolgál. Ezeket a titkosítási kulcsokat a rendszer soha nem titkosítatlan formában jeleníti meg vagy jelenti. A rendszer azonnal törli a titkosítási kulcsokat a kötetek törlésekor.
 
-A felhasználó által felügyelt kulcsok támogatása (saját kulcsok használata) az Azure dedikált HSM az USA keleti, USA-beli West2 és USA déli középső régiójában szabályozott módon érhető el.  A következő címen kérhet hozzáférést: **anffeedback@microsoft.com** . A kapacitás elérhetősége esetén a rendszer jóváhagyja a kérelmeket.
+Az Azure dedikált HSM-t használó, az ügyfél által felügyelt kulcsok (Bring Your Own Key) támogatása az USA keleti régiójában, az USA déli középső régiójában, az USA 2. nyugati régiójában és a US Gov Virginia régióban ellenőrzött módon érhető el. A következő címen kérhet hozzáférést: [anffeedback@microsoft.com](mailto:anffeedback@microsoft.com) . Mivel a kapacitás elérhetővé válik, a rendszer jóváhagyja a kérelmeket.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Megadhatom az NFS-exportálási házirend szabályait a Azure NetApp Files Service Mount-célhoz való hozzáférés szabályozásához?
-
 
 Igen, legfeljebb öt szabályt állíthat be egyetlen NFS-exportálási házirendben.
 
@@ -256,7 +259,7 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010975"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662879"
 ---
 Az entitás kategóriája pénzügyi információkat és az azonosítás hivatalos formáit tartalmazza. A modell verziójától kezdődően érhető el `2019-10-01` . Az altípusok alább láthatók. 
 
 ### <a name="financial-account-identification"></a>Pénzügyi fiók azonosítása
 
-| Altípus neve               | Leírás                                                                |
+| Altípus neve               | Description                                                                |
 |----------------------------|----------------------------------------------------------------------------|
 | ABA átutalási kód        | American Banker Association (ABA) tranzit-útválasztási számok.                  |
 | SWIFT-kód                 | SWIFT-kódok a fizetési utasítással kapcsolatos információkhoz.                           |
@@ -34,7 +34,7 @@ Az entitás kategóriája pénzügyi információkat és az azonosítás hivatal
 > * Passport-számok
 > * Adó-azonosítók
 
-Az alábbi entitások ország szerint vannak csoportosítva és listázva:
+A következő entitások az ország szerint vannak csoportosítva és listázva:
 
 Argentína
 * Argentin nemzeti identitás (DNI) száma

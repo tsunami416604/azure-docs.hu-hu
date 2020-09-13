@@ -1,24 +1,21 @@
 ---
 title: A privát végpontokkal rendelkező helyszíni gépek replikálásának engedélyezése
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a helyszíni gépek replikálását a Site Recovery privát végpontjai használatával.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 13c19f07ac21f986a5523407e46c59c050ebf96d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142077"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658801"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Helyszíni gépek replikálása privát végpontok használatával
 
-A Azure Site Recovery lehetővé teszi, hogy az [Azure Private link](../private-link/private-endpoint-overview.md) privát végpontok használatával replikálja a helyszíni gépeket az Azure-beli virtuális hálózatra. A titkos végpontok helyreállítási tárolóhoz való hozzáférésének támogatása ezekben a régiókban támogatott:
-
-- Azure Commercial: az USA déli középső régiója, USA 2. nyugati régiója, USA keleti régiója
-- Azure Government: US Gov Virginia, US Gov Arizona, US Gov Texas, US DoD – keleti régió, US DoD – középső régió
+A Azure Site Recovery lehetővé teszi, hogy az [Azure Private link](../private-link/private-endpoint-overview.md) privát végpontok használatával replikálja a helyszíni gépeket az Azure-beli virtuális hálózatra. A helyreállítási tárolóhoz való magánhálózati végpontok minden Azure kereskedelmi & kormányzati régióban támogatottak.
 
 Ez a cikk a következő lépések végrehajtását ismerteti:
 
@@ -191,7 +188,7 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    Most létre kell hoznia a megkerülő módon létrehozott magánhálózati DNS-zónát.
 
-   1. Nyissa meg az előző lépésben létrehozott privát DNS-zónát, majd a bal oldali ablaktáblán lépjen a **virtuális hálózati kapcsolatok** elemre. Válassza a **Hozzáadás** lehetőséget.
+   1. Nyissa meg az előző lépésben létrehozott privát DNS-zónát, majd a bal oldali ablaktáblán lépjen a **virtuális hálózati kapcsolatok** elemre. Válassza a **Hozzáadás** elemet.
 
    1. Adja meg a szükséges adatokat. Az **előfizetés** és a **virtuális hálózat** listában válassza a Mellőzés hálózatnak megfelelő részleteket. A többi mezőben hagyja meg az alapértelmezett értékeket.
 
@@ -210,7 +207,7 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    1. A **rekordazonosító hozzáadása** lapon adjon hozzá egy bejegyzést az egyes teljes tartománynevek és magánhálózati IP- **címek bejegyzéstípusként** . A teljes tartománynevek és IP-címek listáját a **privát végpont** oldalon **tekintheti**meg az Áttekintés lapon. Ahogy az alábbi képernyőképen is látható, a magánhálózati végpont első teljes tartományneve hozzá lesz adva a saját DNS-zónában lévő rekordhoz.
 
-      Ezek a teljes tartománynevek megfelelnek a következő mintának:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      Ezek a teljes tartománynevek megfelelnek a következő mintának: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="A rekordazonosító hozzáadása lapot megjelenítő képernyőkép.":::
 

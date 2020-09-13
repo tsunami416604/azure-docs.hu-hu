@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356882"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662405"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 A duplikált attribútum-rugalmasság a Azure Active Directory egyik funkciója, amely megszünteti a **userPrincipalName** és az SMTP- **ProxyAddress** ütközések okozta súrlódást a Microsoft szinkronizálási eszközeinek valamelyikének futtatásakor.
@@ -44,7 +44,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 
 Az attribútum rugalmassági folyamata csak UPN-és SMTP- **ProxyAddress** -értékeket kezel.
 
-Ha az attribútum nem szükséges, például egy **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezi az ütközési attribútumot, és folytatja az objektum létrehozását vagy frissítését.
+Ha az attribútum nem szükséges, például egy  **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezi az ütközési attribútumot, és folytatja az objektum létrehozását vagy frissítését.
 
 Az attribútum karanténba helyezése után a rendszer a régi viselkedésben használt, a hibajelentésben szereplő e-mail-címre küldi el az ütközésre vonatkozó információkat. Ez az információ azonban csak egyszer jelenik meg a hibajelentésben, amikor a Karanténba kerül, nem folytatja a jövőbeli e-mailek beléptetését. Továbbá, mivel az objektum exportálása sikeres volt, a szinkronizálási ügyfél nem naplóz egy hibát, és nem próbálja meg újból végrehajtani a létrehozás/frissítés műveletet a következő szinkronizálási ciklusok után.
 
@@ -126,7 +126,7 @@ A címtár-szinkronizálási hibákat a Microsoft 365 felügyeleti központban t
 
 ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktív felhasználók")
 
-A címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban való megtekintésével kapcsolatos útmutatásért lásd: [címtár-szinkronizálási hibák azonosítása az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+A címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban való megtekintésével kapcsolatos útmutatásért lásd: [a címtár-szinkronizálási hibák azonosítása a Microsoft 365ban](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>identitásszinkronizálás hibajelentés
 Ha egy duplikált attribútummal rendelkező objektumot kezel ezzel az új viselkedéssel, akkor a rendszer értesítést küld a normál identitás-szinkronizálási hibajelentés e-mail-címéről, amelyet a bérlőnek szóló technikai értesítési kapcsolattartó kap. Ez a viselkedés azonban fontos változást mutat be. A múltban a duplikált attribútumokra vonatkozó Adatütközések az ütközés feloldása előtt minden további hibajelentésben szerepelni fognak. Ezzel az új viselkedéssel az adott ütközésre vonatkozó hibaüzenet csak egyszer jelenik meg, amikor az ütköző attribútum Karanténba kerül.
@@ -177,5 +177,5 @@ A következőre kell mutatnia: [https://aka.ms/duplicateattributeresiliency](htt
 ## <a name="see-also"></a>Lásd még
 * [Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-* [Címtár-szinkronizálási hibák azonosítása az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [A címtár-szinkronizálási hibák azonosítása a Microsoft 365ban](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

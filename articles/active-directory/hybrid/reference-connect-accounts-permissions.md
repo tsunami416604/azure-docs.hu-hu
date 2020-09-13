@@ -17,14 +17,14 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255778"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662330"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: fiókok és engedélyek
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect használt fiókok
 
@@ -55,7 +55,7 @@ A Azure AD Connect futtatásához használt három fiókon kívül a Azure AD Co
 > [!NOTE]
 > A ESAE felügyeleti erdőben Azure AD Connect használt rendszergazdai fiókok felügyelete (más néven "vörös erdő") támogatott.
 > A dedikált felügyeleti erdők lehetővé teszik a szervezetek számára a rendszergazdai fiókok, munkaállomások és csoportok üzemeltetését az üzemi környezetnél erősebb biztonságú környezetben.
-> Ha többet szeretne megtudni a dedikált adminisztratív erdőkről, tekintse meg a [ESAE felügyeleti erdő kialakítási megközelítését](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
+> Ha többet szeretne megtudni a dedikált adminisztratív erdőkről, tekintse meg a [ESAE felügyeleti erdő kialakítási megközelítését](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
 > A kezdeti beállítás után a globális rendszergazdai szerepkör nem szükséges, és az egyetlen szükséges fiók lesz a **címtár-szinkronizálási fiókok** szerepkör fiókja. Ez nem feltétlenül jelenti azt, hogy csak a globális rendszergazdai szerepkörrel rendelkező fiókot kívánja eltávolítani. Jobb megoldás, ha a szerepkört egy kevésbé hatékony szerepkörre módosítja, mivel a fiók teljes eltávolításával problémák léphetnek fel, ha újra futtatni kell a varázslót. A szerepkör jogosultságának csökkentésével bármikor újra megemelheti a jogosultságokat, ha újra kell használnia a Azure AD Connect varázslót. 
@@ -141,15 +141,15 @@ Emellett meg kell adni a szükséges engedélyeket is. A telepítővarázsló ne
 
 A szükséges engedélyek a választható funkcióktól függenek. Ha több tartománnyal rendelkezik, az engedélyeket az erdő összes tartományához meg kell adni. Ha nem engedélyezi ezen funkciók bármelyikét, az alapértelmezett **tartományi felhasználói** engedélyek elegendőek.
 
-| Funkció | Engedélyek |
+| Jellemző | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid használata sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
 | Hibrid Exchange-telepítés |Írási engedélyek a felhasználók, csoportok és névjegyek [Exchange hibrid visszaírási](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) dokumentált attribútumokhoz. |
 | Exchange-levelezés nyilvános mappája |Olvasási engedélyek a nyilvános mappák Exchange- [levelezés nyilvános mappájában](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dokumentált attribútumokhoz. | 
-| Jelszóvisszaíró |Írási engedélyek a felhasználók [jelszavas kezelésének megkezdése](../authentication/howto-sspr-writeback.md) című dokumentumban ismertetett attribútumokhoz. |
+| Jelszóvisszaíró |Írási engedélyek a felhasználók [jelszavas kezelésének megkezdése](../authentication/tutorial-enable-sspr-writeback.md) című dokumentumban ismertetett attribútumokhoz. |
 | Eszközvisszaíró |A PowerShell-parancsfájllal megadott engedélyek a [Device visszaírási](how-to-connect-device-writeback.md)című cikkben leírtak szerint. |
-| Group writeback (Csoportvisszaíró) |Lehetővé teszi, hogy az **Office 365-csoportokat** egy olyan erdőhöz visszaírási, amelyen telepítve van az Exchange.|
+| Group writeback (Csoportvisszaíró) |Lehetővé teszi, hogy visszaírási **Microsoft 365 csoportokat** egy olyan erdőhöz, amelyen telepítve van az Exchange.|
 
 ## <a name="upgrade"></a>Frissítés
 Ha a Azure AD Connect egyik verziójáról egy új kiadásra frissít, a következő engedélyek szükségesek:
@@ -175,7 +175,7 @@ Ha egyéni beállításokat használ, akkor a telepítés megkezdése előtt Ön
 ### <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 A szinkronizálási szolgáltatás más fiókokban is futhat. Egy **virtuális szolgáltatásfiók** (VSA), egy **csoportosan felügyelt szolgáltatásfiók** (gMSA/önállóan felügyelt szolgáltatásfiókot) vagy egy normál felhasználói fiók használatával futtatható. A támogatott beállítások a csatlakozás április 2017-os verziójával módosultak, amikor új telepítést végez. Ha Azure AD Connect korábbi kiadásáról frissít, ezek a további beállítások nem érhetők el.
 
-| Fiók típusa | Telepítési lehetőség | Leírás |
+| Fiók típusa | Telepítési lehetőség | Description |
 | --- | --- | --- |
 | [Virtual Service-fiók](#virtual-service-account) | Express és Custom, 2017 április és újabb | Ez a beállítás az összes expressz telepítéshez használatos, a tartományvezérlőn lévő telepítések kivételével. Egyéni esetén ez az alapértelmezett beállítás, kivéve, ha egy másik lehetőség van használatban. |
 | [Csoportosan felügyelt szolgáltatásfiók](#group-managed-service-account) | Custom, 2017 április és újabb | Ha távoli SQL Servert használ, javasoljuk, hogy egy csoportosan felügyelt szolgáltatásfiókot használjon. |
@@ -197,8 +197,8 @@ Jelmagyarázat:
 - Nem félkövérrel támogatott beállítás
 - Helyi fiók – helyi felhasználói fiók a kiszolgálón
 - Tartományi fiók – tartományi felhasználói fiók
-- Önállóan felügyelt szolgáltatásfiókot – [önálló felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA – [csoportosan felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/hh831782.aspx)
+- Önállóan felügyelt szolgáltatásfiókot – [önálló felügyelt szolgáltatásfiók](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA – [csoportosan felügyelt szolgáltatásfiók](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Egyéni | Távoli SQL</br>Egyéni |
 | --- | --- | --- | --- |
@@ -215,11 +215,11 @@ A VSA olyan forgatókönyvekkel használható, amelyekben a Szinkronizáló moto
 Ehhez a szolgáltatáshoz Windows Server 2008 R2 vagy újabb rendszer szükséges. Ha a Azure AD Connect telepítését a Windows Server 2008-es verzióra telepíti, akkor a telepítés helyett egy [felhasználói fiók](#user-account) használatára kerül vissza.
 
 #### <a name="group-managed-service-account"></a>Csoportosan felügyelt szolgáltatásfiók
-Ha távoli SQL Servert használ, azt javasoljuk, hogy egy **csoportosan felügyelt szolgáltatásfiókot**használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: [csoportosan felügyelt szolgáltatásfiókok áttekintése](https://technet.microsoft.com/library/hh831782.aspx).
+Ha távoli SQL Servert használ, azt javasoljuk, hogy egy **csoportosan felügyelt szolgáltatásfiókot**használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: [csoportosan felügyelt szolgáltatásfiókok áttekintése](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
 
 Ha ezt a beállítást szeretné használni, a [szükséges összetevők telepítése](how-to-connect-install-custom.md#install-required-components) lapon jelölje be a **meglévő szolgáltatásfiók használata**jelölőnégyzetet, és válassza a **felügyelt szolgáltatásfiók**lehetőséget.  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-[Önálló felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/dd548356.aspx)használata is támogatott. Ezek azonban csak a helyi gépen használhatók, és nem használhatók fel az alapértelmezett Virtual Service-fiókra.
+[Önálló felügyelt szolgáltatásfiók](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))használata is támogatott. Ezek azonban csak a helyi gépen használhatók, és nem használhatók fel az alapértelmezett Virtual Service-fiókra.
 
 Ehhez a szolgáltatáshoz a Windows Server 2012-es vagy újabb verziója szükséges. Ha régebbi operációs rendszert kell használnia, és a távoli SQL-t kell használnia, [felhasználói fiókot](#user-account)kell használnia.
 
@@ -247,12 +247,12 @@ Annak a kiszolgálónak a neve, amelyen a fiók használatban van, a Felhasznál
 
 A fiók olyan hosszú, összetett jelszóval jön létre, amely nem jár le. Olyan speciális szerepkörű címtár- **szinkronizálási fiókokat** kap, amelyek csak a címtár-szinkronizálási feladatok végrehajtásához szükségesek. Ez a speciális beépített szerepkör nem adható meg a Azure AD Connect varázslón kívül. A Azure Portal megjeleníti ezt a fiókot a szerepkör **felhasználójának**.
 
-Az Azure AD-ben legfeljebb 20 szinkronizálási szolgáltatásfiók szerepel. Az Azure ad-beli meglévő Azure AD-szolgáltatásfiókok listájának lekéréséhez futtassa a következő Azure AD PowerShell-parancsmagot:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Az Azure AD-ben legfeljebb 20 szinkronizálási szolgáltatásfiók szerepel. Az Azure ad-beli meglévő Azure AD-szolgáltatásfiókok listájának lekéréséhez futtassa a következő Azure AD PowerShell-parancsmagot: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-A nem használt Azure AD-szolgáltatásfiókok eltávolításához futtassa a következő Azure AD PowerShell-parancsmagot:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+A nem használt Azure AD-szolgáltatásfiókok eltávolításához futtassa a következő Azure AD PowerShell-parancsmagot: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->A fenti PowerShell-parancsok használata előtt telepítenie kell a [Graph modulhoz tartozó Azure Active Directory PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) , és csatlakoznia kell az Azure ad-példányához a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) használatával
+>A fenti PowerShell-parancsok használata előtt telepítenie kell a [Graph modulhoz tartozó Azure Active Directory PowerShellt](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) , és csatlakoznia kell az Azure ad-példányához a [AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) használatával
 
 Az Azure AD Connector-fiók jelszavának kezelésével és alaphelyzetbe állításával kapcsolatos további információkért lásd: [a Azure ad Connect fiók kezelése](how-to-connect-azureadaccount.md)
 
@@ -265,7 +265,7 @@ Ha nem olvassa be a helyszíni [identitások Azure Active Directory használatá
 |Telepítés gyorsbeállítások használatával | [Az Azure AD Connect gyorstelepítése](how-to-connect-install-express.md)|
 |Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](./how-to-connect-install-custom.md)|
 |Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md)|
-|A telepítést követően | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
+|A telepítés után | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

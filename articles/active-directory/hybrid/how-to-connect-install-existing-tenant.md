@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640650"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662256"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Ha meglévő Bérlővel rendelkezik
 A Azure AD Connect használatának első lépései a legtöbb esetben feltételezik, hogy új Azure AD-bérlőt használ, és nincsenek felhasználók vagy más objektumok. Ha azonban egy Azure AD-Bérlővel lett elindítva, feltöltve a felhasználókkal és más objektumokkal, és most a kapcsolódást szeretné használni, akkor ez a témakör Önnek szól.
@@ -41,7 +41,7 @@ A egyezés csak a kapcsolatból érkező új objektumok esetében lesz kiérték
 Ha az Azure AD olyan objektumot talál, amelyben az attribútumok értékei megegyeznek egy olyan objektum esetében, amely a kapcsolatból származik, és már megtalálható az Azure AD-ben, akkor az Azure AD-beli objektumot a kapcsolat veszi át. A korábban felhőben felügyelt objektum a helyszínen felügyelt van megjelölve. Az Azure AD-ben a helyszíni AD értékkel rendelkező összes attribútum felülíródik a helyszíni értékkel. A kivétel az, amikor egy attribútumnak van egy **Null** értékű értéke a helyszínen. Ebben az esetben az Azure AD-beli érték marad, de továbbra is csak a helyszínen módosítható egy másikra.
 
 > [!WARNING]
-> Mivel az Azure AD összes attribútumát felülírja a helyszíni érték, győződjön meg arról, hogy a helyszínen található a megfelelő adatközpont. Ha például csak a felügyelt e-mail-címe van az Office 365-ben, és nem frissült a helyszíni AD DSban, akkor az Azure AD-ban és az Office 365-ben nem jelennek meg a AD DSban található értékek.
+> Mivel az Azure AD összes attribútumát felülírja a helyszíni érték, győződjön meg arról, hogy a helyszínen található a megfelelő adatközpont. Ha például csak a felügyelt e-mail-cím szerepel a Microsoft 365ban, és nem tartja naprakészen a helyszíni AD DSban, akkor az Azure AD-ban vagy Microsoft 365ban nem jelennek meg az AD DSban található értékek.
 
 > [!IMPORTANT]
 > Ha jelszó-szinkronizálást használ, amelyet mindig az expressz beállítások használnak, akkor a rendszer felülírja az Azure AD-ban található jelszót a helyszíni AD-ben lévő jelszóval. Ha a felhasználók különböző jelszavakat kezelhetnek, akkor tájékoztatnia kell őket arról, hogy a csatlakozás telepítésekor a helyszíni jelszót kell használniuk.

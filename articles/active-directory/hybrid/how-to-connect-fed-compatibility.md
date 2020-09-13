@@ -16,18 +16,18 @@ ms.date: 08/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3ca659535c225ca6736fe7bba8aa5b0120c684c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e7347feea3190ba9bdc273200d2985dfaa0d1
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359823"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661818"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Az Azure AD összevonás kompatibilitási listája
-A Azure Active Directory az Office 365 és más Microsoft online szolgáltatásainak egyszeri bejelentkezését és továbbfejlesztett alkalmazás-hozzáférését teszi lehetővé a hibrid és a kizárólag felhőalapú megvalósításokhoz anélkül, hogy harmadik féltől származó megoldást kellene igényelni. Az Office 365, mint a Microsoft online szolgáltatásainak többsége, integrálva van a címtárszolgáltatások, a hitelesítés és az engedélyezés Azure Active Directoryával. Azure Active Directory emellett egyszeri bejelentkezést is biztosít több ezer SaaS-alkalmazáshoz és helyszíni webalkalmazásokhoz. Tekintse meg a támogatott SaaS-alkalmazások Azure Active Directory [alkalmazás-gyűjteményét](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) . 
+A Azure Active Directory lehetővé teszi az egyszeri bejelentkezést és az alkalmazásokhoz való hozzáférés biztonságát a Microsoft 365 és más Microsoft online szolgáltatások számára a hibrid és a kizárólag felhőalapú megvalósításokhoz anélkül, hogy harmadik féltől származó megoldást kellene igényelni. Microsoft 365, mint a Microsoft online szolgáltatásainak többsége, a címtárszolgáltatások, a hitelesítés és az engedélyezés Azure Active Directory is integrálva van. Azure Active Directory emellett egyszeri bejelentkezést is biztosít több ezer SaaS-alkalmazáshoz és helyszíni webalkalmazásokhoz. Tekintse meg a támogatott SaaS-alkalmazások Azure Active Directory [alkalmazás-gyűjteményét](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) . 
 
 ## <a name="idp-validation"></a>IDENTITÁSSZOLGÁLTATÓ érvényesítése
-Ha a szervezete egy külső gyártótól származó összevonási megoldást használ, az egyszeri bejelentkezést a helyszíni Active Directory felhasználók számára is beállíthatja a Microsoft Online Services szolgáltatással, például az Office 365-mel, feltéve, hogy a harmadik féltől származó összevonási megoldás kompatibilis a Azure Active Directoryval.  A kompatibilitással kapcsolatos kérdésekért forduljon az identitás-szolgáltatóhoz.  Ha szeretné megtekinteni a Microsoft által az Azure AD-vel való kompatibilitásra korábban tesztelt identitás-szolgáltatók listáját, kattintson [ide](https://www.microsoft.com/download/details.aspx?id=56843). 
+Ha a szervezet egy külső gyártótól származó összevonási megoldást használ, az egyszeri bejelentkezést a helyszíni Active Directory felhasználók számára is konfigurálhatja a Microsoft Online Services szolgáltatással (például Microsoft 365), feltéve, hogy a harmadik féltől származó összevonási megoldás kompatibilis a Azure Active Directorysal.  A kompatibilitással kapcsolatos kérdésekért forduljon az identitás-szolgáltatóhoz.  Ha szeretné megtekinteni a Microsoft által az Azure AD-vel való kompatibilitásra korábban tesztelt identitás-szolgáltatók listáját, tekintse meg az [Azure ad Identity Provider kompatibilitási dokumentációját](https://www.microsoft.com/download/details.aspx?id=56843). 
 
 >[!NOTE]
 >A Microsoft már nem biztosít érvényesítési teszteket a független identitás-szolgáltatók számára a Azure Active Directory való kompatibilitás érdekében. Ha tesztelni szeretné a terméket az együttműködéshez, tekintse meg ezeket az [irányelveket](https://www.microsoft.com/download/details.aspx?id=56843). 

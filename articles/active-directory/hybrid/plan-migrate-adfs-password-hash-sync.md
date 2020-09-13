@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356679"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662414"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba Azure Active Directory
 
@@ -42,11 +42,11 @@ A jelszó-kivonatos szinkronizálásra való áttelepítéshez szükséges lép�
 > [!IMPORTANT]
 > Előfordulhat, hogy az elavult dokumentációban, eszközökben és blogokban a felhasználók átalakítására van szükség, amikor a tartományokat összevont identitásról felügyelt identitásra konvertálja. A *felhasználók konvertálása* már nem szükséges. A Microsoft dolgozik a dokumentáció és az eszközök frissítésén, hogy tükrözze ezt a változást.
 
-Azure AD Connect frissítéséhez hajtsa végre a [Azure ad Connect: frissítés a legújabb verzióra](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)című témakör lépéseit.
+Azure AD Connect frissítéséhez hajtsa végre a [Azure ad Connect: frissítés a legújabb verzióra](./how-to-upgrade-previous-version.md)című témakör lépéseit.
 
 ### <a name="password-hash-synchronization-required-permissions"></a>Jelszó kivonatának szinkronizálásához szükséges engedélyek
 
-Az expressz beállítások vagy egy egyéni telepítés használatával Azure AD Connect konfigurálhatja. Ha az egyéni telepítési lehetőséget használta, előfordulhat, hogy a jelszó-kivonat szinkronizálásához [szükséges engedélyek](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-accounts-permissions) nem teljesülnek.
+Az expressz beállítások vagy egy egyéni telepítés használatával Azure AD Connect konfigurálhatja. Ha az egyéni telepítési lehetőséget használta, előfordulhat, hogy a jelszó-kivonat szinkronizálásához [szükséges engedélyek](./reference-connect-accounts-permissions.md) nem teljesülnek.
 
 A Azure AD Connect Active Directory tartományi szolgáltatások (AD DS) szolgáltatás fiókjának a következő engedélyekkel kell rendelkeznie a jelszó-kivonatok szinkronizálásához:
 
@@ -59,7 +59,7 @@ Most már jó ideje ellenőrizni, hogy ezek az engedélyek teljesülnek-e az erd
 
 Két módszer közül választhat az összevont identitáskezelésból a jelszó-kivonat szinkronizálására és a zökkenőmentes egyszeri bejelentkezésre (SSO) való Migrálás esetén. Az Ön által használt módszer attól függ, hogy a AD FS-példányt eredetileg konfigurálták-e.
 
-* **Azure ad Connect**. Ha eredetileg a Azure AD Connect használatával konfigurálta a AD FSt, akkor a Azure AD Connect varázsló segítségével módosítania *kell* a jelszó-kivonatolási szinkronizálást.
+* **Azure AD Connect**. Ha eredetileg a Azure AD Connect használatával konfigurálta a AD FSt, akkor a Azure AD Connect varázsló segítségével módosítania *kell* a jelszó-kivonatolási szinkronizálást.
 
    A Azure AD Connect automatikusan futtatja a **set-MsolDomainAuthentication** parancsmagot a felhasználói bejelentkezési módszer módosításakor. Azure AD Connect automatikusan unfederates az összes ellenőrzött összevont tartományt az Azure AD-bérlőben.
 
@@ -114,8 +114,8 @@ Ellenőrizze, hogy vannak-e testreszabott beállítások az összevonási tervez
 
 További információért lásd a következő cikkeket:
 
-* [AD FS prompt = bejelentkezési paraméter támogatása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [AD FS prompt = bejelentkezési paraméter támogatása](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
 > Ha a **SupportsMfa** értéke **true (igaz**), a rendszer helyszíni multi-Factor Authentication megoldást használ egy második tényezős kihívás beadására a felhasználói hitelesítési folyamatba. Ez a beállítás már nem működik az Azure AD hitelesítési forgatókönyvek esetében, miután a tartományt összevontról felügyelt hitelesítésre konvertálta. Az összevonás letiltása után megszakítja a kapcsolatot a helyszíni összevonási kapcsolattal, és ez magában foglalja a helyszíni MFA-adaptereket is. 
@@ -124,9 +124,9 @@ További információért lásd a következő cikkeket:
 
 #### <a name="back-up-federation-settings"></a>Összevonási beállítások biztonsági mentése
 
-Bár a jelen cikkben ismertetett folyamatok során a AD FS Farm többi függő entitása nem módosult, javasoljuk, hogy a AD FS Farm aktuálisan érvényes biztonsági másolatával rendelkezzen, amelyről visszaállíthatók. Az ingyenes Microsoft [AD FS Rapid Restore Tool](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool)használatával létrehozhat egy aktuálisan érvényes biztonsági mentést. Használhatja az eszközt a AD FS biztonsági mentésére, illetve egy meglévő Farm visszaállítására vagy egy új Farm létrehozására.
+Bár a jelen cikkben ismertetett folyamatok során a AD FS Farm többi függő entitása nem módosult, javasoljuk, hogy a AD FS Farm aktuálisan érvényes biztonsági másolatával rendelkezzen, amelyről visszaállíthatók. Az ingyenes Microsoft [AD FS Rapid Restore Tool](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool)használatával létrehozhat egy aktuálisan érvényes biztonsági mentést. Használhatja az eszközt a AD FS biztonsági mentésére, illetve egy meglévő Farm visszaállítására vagy egy új Farm létrehozására.
 
-Ha úgy dönt, hogy nem használja a AD FS gyors visszaállítás eszközt, akkor exportálnia kell a Microsoft Office 365 Identity platform függő entitás megbízhatóságát és a hozzá társított egyéni jogcím-szabályokat. A függő entitás megbízhatóságát és a hozzá tartozó jogcím-szabályokat a következő PowerShell-példa használatával exportálhatja:
+Ha úgy dönt, hogy nem használja a AD FS gyors visszaállítás eszközt, akkor exportálnia kell az Microsoft 365 Identity platform függő entitás megbízhatóságát és a hozzá társított egyéni jogcím-szabályokat. A függő entitás megbízhatóságát és a hozzá tartozó jogcím-szabályokat a következő PowerShell-példa használatával exportálhatja:
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
@@ -138,15 +138,15 @@ Ez a szakasz a telepítési szempontokat és a AD FS használatának részleteit
 
 ### <a name="current-ad-fs-use"></a>Aktuális AD FS-használat
 
-Az összevont identitásról a felügyelt identitásra való áttérés előtt tekintse meg az Azure AD, az Office 365 és más alkalmazások (függő entitások megbízhatóságai) jelenleg AD FS használatát ismertető részt. Pontosabban vegye figyelembe az alábbi táblázatban ismertetett forgatókönyveket:
+Az összevont identitásról felügyelt identitásra való áttérés előtt tekintse meg az Azure AD-hez, Microsoft 365hoz és más alkalmazásokhoz (függő entitások megbízhatóságának) való használatának AD FSét. Pontosabban vegye figyelembe az alábbi táblázatban ismertetett forgatókönyveket:
 
 | Ha a(z) | Majd |
 |-|-|
-| A AD FS használatát tervezi más alkalmazásokkal (az Azure AD és az Office 365 kivételével). | A tartományok konvertálása után AD FS és Azure AD-t is használhat. Vegye figyelembe a felhasználói élményt. Bizonyos esetekben előfordulhat, hogy a felhasználóknak kétszer kell hitelesíteniük magukat: egyszer az Azure AD-be (ahol a felhasználó SSO-hozzáférést kap más alkalmazásokhoz, például az Office 365-hoz), és újra minden olyan alkalmazáshoz, amely továbbra is a függő entitás megbízhatóságának AD FS kötődik. |
+| A AD FS használatát tervezi más alkalmazásokkal (az Azure AD és a Microsoft 365 kivételével). | A tartományok konvertálása után AD FS és Azure AD-t is használhat. Vegye figyelembe a felhasználói élményt. Bizonyos esetekben előfordulhat, hogy a felhasználóknak kétszer kell megadniuk a hitelesítést: egyszer az Azure AD-be (ahol a felhasználó SSO-hozzáférést kap más alkalmazásokhoz, például Microsoft 365), és újra minden olyan alkalmazáshoz, amely továbbra is a függő entitás megbízhatóságának AD FS van kötve. |
 | A AD FS-példánya nagymértékben testre szabható, és a onload.js fájl adott testreszabási beállításaira támaszkodik (például ha megváltoztatta a bejelentkezési folyamatot, hogy a felhasználók csak az egyszerű felhasználónév (UPN) helyett a **sAMAccountName** használják a felhasználónevet, vagy ha a szervezete jelentősen kihasználta a bejelentkezési élményt). Az onload.js fájlt nem lehet duplikálni az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD megfelel-e az aktuális testreszabási követelményeknek. További információért és útmutatásért tekintse meg a AD FS branding és a AD FS testreszabása című szakaszt.|
-| AD FS használatával blokkolhatja a hitelesítési ügyfelek korábbi verzióit.| A [feltételes hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) és az [Exchange Online ügyfél-hozzáférési szabályok](https://aka.ms/EXOCAR)együttes használatával vegye figyelembe a hitelesítési ügyfelek korábbi verzióit letiltó AD FS vezérlőket. |
+| AD FS használatával blokkolhatja a hitelesítési ügyfelek korábbi verzióit.| A [feltételes hozzáférés-vezérlés](../conditional-access/concept-conditional-access-conditions.md) és az [Exchange Online ügyfél-hozzáférési szabályok](https://aka.ms/EXOCAR)együttes használatával vegye figyelembe a hitelesítési ügyfelek korábbi verzióit letiltó AD FS vezérlőket. |
 | A felhasználóknak a többtényezős hitelesítést kell végrehajtaniuk a helyszíni multi-Factor Authentication kiszolgálói megoldáson, amikor a felhasználók hitelesítik AD FS.| Felügyelt identitási tartományban a többtényezős hitelesítési kihívás a helyszíni multi-Factor Authentication megoldáson keresztül nem szúrható be a hitelesítési folyamatba. A tartomány átalakítása után azonban használhatja az Azure Multi-Factor Authentication szolgáltatást a többtényezős hitelesítéshez.<br /><br /> Ha a felhasználók jelenleg nem használják az Azure Multi-Factor Authentication-t, egy egyszeri bejelentkezést igénylő felhasználói regisztrációs lépést kell megadnia. Elő kell készítenie és továbbítania kell a tervezett regisztrációt a felhasználók számára. |
-| Jelenleg a AD FS hozzáférés-vezérlési házirendjeit (AuthZ-szabályok) használja az Office 365 elérésének szabályozásához.| Érdemes lehet a szabályzatokat az egyenértékű Azure AD [feltételes hozzáférési szabályzatokkal](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) és az [Exchange Online ügyfél-hozzáférési szabályokkal](https://aka.ms/EXOCAR)helyettesíteni.|
+| Jelenleg a AD FS hozzáférés-vezérlési házirendjeit (AuthZ-szabályok) használja a Microsoft 365hoz való hozzáférés szabályozásához.| Érdemes lehet a szabályzatokat az egyenértékű Azure AD [feltételes hozzáférési szabályzatokkal](../conditional-access/overview.md) és az [Exchange Online ügyfél-hozzáférési szabályokkal](https://aka.ms/EXOCAR)helyettesíteni.|
 
 ### <a name="common-ad-fs-customizations"></a>Gyakori AD FS testreszabások
 
@@ -154,13 +154,13 @@ Ez a szakasz a gyakori AD FS testreszabásokat ismerteti.
 
 #### <a name="insidecorporatenetwork-claim"></a>InsideCorporateNetwork jogcím
 
-AD FS kiadja a **InsideCorporateNetwork** jogcímet, ha a hitelesítést végző felhasználó a vállalati hálózaton belül van. Ezt követően a jogcím átadható az Azure AD-nek. A rendszer a felhasználó hálózati helye alapján a többtényezős hitelesítés megkerülésére használatos. Ha meg szeretné tudni, hogyan állapítható meg, hogy a funkció jelenleg engedélyezve van-e a AD FSban, tekintse meg az [összevont felhasználók megbízható IP](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)-címei
+AD FS kiadja a **InsideCorporateNetwork** jogcímet, ha a hitelesítést végző felhasználó a vállalati hálózaton belül van. Ezt követően a jogcím átadható az Azure AD-nek. A rendszer a felhasználó hálózati helye alapján a többtényezős hitelesítés megkerülésére használatos. Ha meg szeretné tudni, hogyan állapítható meg, hogy a funkció jelenleg engedélyezve van-e a AD FSban, tekintse meg az [összevont felhasználók megbízható IP](../authentication/howto-mfa-adfs.md)-címei
 
-A **InsideCorporateNetwork** jogcím nem érhető el, ha a tartományok konvertálása jelszó-kivonatolási szinkronizálásra történik. Az [Azure ad elnevezett helyeinek](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) használatával lecserélheti a funkciót.
+A **InsideCorporateNetwork** jogcím nem érhető el, ha a tartományok konvertálása jelszó-kivonatolási szinkronizálásra történik. Az [Azure ad elnevezett helyeinek](../reports-monitoring/quickstart-configure-named-locations.md) használatával lecserélheti a funkciót.
 
 A nevesített helyek konfigurálása után frissítenie kell az összes olyan feltételes hozzáférési házirendet, amely konfigurálva lett a hálózat **minden megbízható hely** vagy **MFA megbízható IP** -cím értékének befoglalására vagy kizárására az új elnevezett helyeknek megfelelően.
 
-A feltételes hozzáférés **hely** feltételével kapcsolatos további információkért lásd: [Active Directory feltételes hozzáférési helyek](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+A feltételes hozzáférés **hely** feltételével kapcsolatos további információkért lásd: [Active Directory feltételes hozzáférési helyek](../conditional-access/location-condition.md).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-hez csatlakoztatott eszközök
 
@@ -170,16 +170,16 @@ Annak biztosítása érdekében, hogy a hibrid csatlakoztatások továbbra is m�
 
 A Windows 8 és a Windows 7 rendszerű számítógépfiókok esetében a hibrid illesztés zökkenőmentes egyszeri bejelentkezést használ a számítógép Azure AD-ben való regisztrálásához. A Windows 8 és a Windows 7 rendszerű számítógépek fiókjait nem kell szinkronizálnia, mint a Windows 10-es eszközökhöz. A Windows 8 és a Windows 7 rendszerű ügyfelek esetében azonban frissítenie kell egy frissített workplacejoin.exe-fájlt (. msi-fájlon keresztül), hogy a zökkenőmentes SSO használatával regisztrálja magukat. [Töltse le az. msi fájlt](https://www.microsoft.com/download/details.aspx?id=53554).
 
-További információ: [hibrid Azure ad-hez csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
+További információ: [hibrid Azure ad-hez csatlakoztatott eszközök konfigurálása](../devices/hybrid-azuread-join-plan.md).
 
-#### <a name="branding"></a>Védjegyezés
+#### <a name="branding"></a>Arculat
 
-Ha a szervezete [testreszabja a AD FS bejelentkezési oldalain](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) a szervezettel kapcsolatos információk megjelenítéséhez, érdemes lehet hasonló [testreszabásokat felvenni az Azure ad bejelentkezési oldalára](https://docs.microsoft.com/azure/active-directory/customize-branding).
+Ha a szervezete [testreszabja a AD FS bejelentkezési oldalain](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) a szervezettel kapcsolatos információk megjelenítéséhez, érdemes lehet hasonló [testreszabásokat felvenni az Azure ad bejelentkezési oldalára](../fundamentals/customize-branding.md).
 
 Bár a hasonló testreszabások elérhetők, a bejelentkezési lapokon a konverziót követően néhány vizualizációs változást is el kell várni. Előfordulhat, hogy meg kívánja adni a kommunikáció várható változásaival kapcsolatos információkat a felhasználók számára.
 
 > [!NOTE]
-> A szervezet arculata csak akkor érhető el, ha a prémium szintű vagy alapszintű licencet vásárolja meg Azure Active Directory, vagy ha rendelkezik Office 365-licenccel.
+> A szervezet arculata csak akkor érhető el, ha a prémium szintű vagy alapszintű licencet vásárolja meg Azure Active Directory vagy Microsoft 365 licenccel rendelkezik.
 
 ## <a name="plan-deployment-and-support"></a>Üzembe helyezés és támogatás tervezése
 
@@ -194,7 +194,7 @@ Csak azok a felhasználók férhetnek hozzá a szolgáltatáshoz, akik egy webb�
 A modern hitelesítési ügyfelek (Office 2016 és Office 2013, iOS és Android rendszerű alkalmazások) érvényes frissítési jogkivonattal szerezhetnek be új hozzáférési jogkivonatokat az erőforrásokhoz való folyamatos hozzáféréshez ahelyett, hogy az AD FS-re térnek vissza. Ezek az ügyfelek a tartomány-átalakítási folyamat során felmerülő összes jelszóra vonatkoznak. Az ügyfelek további konfigurálás nélkül továbbra is működőképesek lesznek.
 
 > [!IMPORTANT]
-> Ne állítsa le a AD FS környezetet, vagy távolítsa el az Office 365 függő entitás megbízhatóságát, amíg nem ellenőrizte, hogy az összes felhasználó sikeresen tud-e hitelesíteni a felhőalapú hitelesítés használatával.
+> Ne állítsa le a AD FS környezetet, vagy távolítsa el az Microsoft 365 függő entitás megbízhatóságát, amíg nem ellenőrizte, hogy az összes felhasználó sikeresen tud-e hitelesíteni a felhőalapú hitelesítés használatával.
 
 ### <a name="plan-for-rollback"></a>A visszaállítás megtervezése
 
@@ -211,7 +211,7 @@ A visszaállítás megtervezéséhez olvassa el az összevonási tervezési és 
 
 Az üzembe helyezés és a támogatás megtervezésének fontos része annak biztosítása, hogy a felhasználók proaktívan tájékoztassanak a közelgő változásokról. A felhasználóknak előre ismerniük kell, hogy milyen élményt jelenthetnek, és mire van szükségük. 
 
-A jelszó-kivonatolási szinkronizálás és a zökkenőmentes SSO üzembe helyezése után a felhasználói bejelentkezési élmény az Office 365 és az Azure AD változásain keresztül hitelesített egyéb erőforrások elérésére szolgál. A hálózaton kívüli felhasználók csak az Azure AD bejelentkezési oldalát látják. Ezeket a felhasználókat a rendszer nem irányítja át a külső elérésű webalkalmazás-proxy kiszolgálók által megjelenített űrlapalapú oldalra.
+A jelszó-kivonatolási szinkronizálás és a zökkenőmentes SSO üzembe helyezése után a felhasználói bejelentkezés az Azure AD változásain keresztül hitelesített Microsoft 365 és egyéb erőforrások elérését is eredményezi. A hálózaton kívüli felhasználók csak az Azure AD bejelentkezési oldalát látják. Ezeket a felhasználókat a rendszer nem irányítja át a külső elérésű webalkalmazás-proxy kiszolgálók által megjelenített űrlapalapú oldalra.
 
 Adja meg a következő elemeket a kommunikációs stratégiában:
 
@@ -262,7 +262,7 @@ A jelszó-kivonatoló szinkronizálás megfelelő működésének ellenőrzésé
 6. A főmenüben válassza a **jelszó-kivonatolási szinkronizálás hibáinak megoldása**lehetőséget.
 7. Az almenüben válassza a **jelszó kivonat szinkronizálása egyáltalán nem működik**lehetőséget.
 
-Hibaelhárítási problémák esetén lásd: [jelszó-kivonatolási szinkronizálás hibaelhárítása Azure ad Connect szinkronizálással](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization).
+Hibaelhárítási problémák esetén lásd: [jelszó-kivonatolási szinkronizálás hibaelhárítása Azure ad Connect szinkronizálással](./tshoot-connect-password-hash-synchronization.md).
 
 ### <a name="step-2-prepare-for-seamless-sso"></a>2. lépés: a zökkenőmentes egyszeri bejelentkezés előkészítése
 
@@ -270,7 +270,7 @@ Ahhoz, hogy az eszközök zökkenőmentes egyszeri bejelentkezést használjanak
 
 Alapértelmezés szerint a böngészők automatikusan kiszámítják a megfelelő zónát (Internet vagy intranet) egy URL-címről. Például **http: \/ \/ contoso/** maps to the intranet zóna és **http: \/ \/ intranet.contoso.com** maps to the Internet Zone (mivel az URL-cím egy pontot tartalmaz). A böngészők Kerberos-jegyeket küldenek egy Felhőbeli végpontra (például az Azure AD URL-címére), ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
 
-Végezze [el az](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) eszközök szükséges módosításainak lépéseit.
+Végezze [el az](./how-to-connect-sso-quick-start.md) eszközök szükséges módosításainak lépéseit.
 
 > [!IMPORTANT]
 > Ennek a módosításnak a végrehajtásával nem módosítható, hogy a felhasználók hogyan jelentkeznek be az Azure AD-be. Azonban fontos, hogy a folytatás előtt alkalmazza ezt a konfigurációt az összes eszközre. Azokat a felhasználókat, akik nem kaptak ezt a konfigurációt, egyszerűen be kell írniuk egy felhasználónevet és jelszót az Azure AD-be való bejelentkezéshez.
@@ -431,14 +431,14 @@ A jelszó-kivonat szinkronizálásának tesztelése:
 3. A rendszer átirányítja a felhasználót, és sikeresen bejelentkezett a hozzáférési panelre:
 
    > [!NOTE]
-   > A zökkenőmentes SSO olyan Office 365-szolgáltatások esetében működik, amelyek támogatják a tartományi emlékeztetőt (például myapps.microsoft.com/contoso.com). Jelenleg az Office 365 portál (portal.office.com) nem támogatja a tartományi tippeket. A felhasználóknak meg kell adniuk egy egyszerű felhasználónevet. Egy egyszerű felhasználónév megadása után a zökkenőmentes egyszeri bejelentkezés a felhasználó nevében lekéri a Kerberos-jegyet. A felhasználó jelszava megadása nélkül bejelentkezett.
+   > A zökkenőmentes egyszeri bejelentkezés olyan Microsoft 365-szolgáltatások esetében működik, amelyek támogatják a tartományi emlékeztetőt (például myapps.microsoft.com/contoso.com). Jelenleg a Microsoft 365 portál (portal.office.com) nem támogatja a tartományi tippeket. A felhasználóknak meg kell adniuk egy egyszerű felhasználónevet. Egy egyszerű felhasználónév megadása után a zökkenőmentes egyszeri bejelentkezés a felhasználó nevében lekéri a Kerberos-jegyet. A felhasználó jelszava megadása nélkül bejelentkezett.
 
    > [!TIP]
-   > A továbbfejlesztett SSO-élmény érdekében érdemes lehet az [Azure ad Hybrid Joint telepíteni a Windows 10-es](https://docs.microsoft.com/azure/active-directory/device-management-introduction) verzióra.
+   > A továbbfejlesztett SSO-élmény érdekében érdemes lehet az [Azure ad Hybrid Joint telepíteni a Windows 10-es](../devices/overview.md) verzióra.
 
 ### <a name="remove-the-relying-party-trust"></a>A függő entitás megbízhatóságának eltávolítása
 
-Miután ellenőrizte, hogy az összes felhasználó és ügyfél sikeresen hitelesítve lett az Azure AD-n keresztül, biztonságosan eltávolíthatja az Office 365 függő entitás megbízhatóságát.
+Miután ellenőrizte, hogy az összes felhasználó és ügyfél sikeresen hitelesítve lett az Azure AD-n keresztül, nyugodtan távolíthatja el a Microsoft 365 függő entitás megbízhatóságát.
 
 Ha nem használja a AD FS más célra (azaz más függő entitások megbízhatóságára), akkor a AD FS ezen a ponton is biztonságosan leszerelhető.
 
@@ -458,15 +458,15 @@ A **userPrincipalName** attribútum korábbi frissítései a helyszíni környez
 * A felhasználó felügyelt (nem összevont) identitás tartományban található.
 * A felhasználóhoz nincs hozzárendelve licenc.
 
-A szolgáltatás ellenőrzésével vagy bekapcsolásával kapcsolatos további információkért lásd: [userPrincipalName-frissítések szinkronizálása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features).
+A szolgáltatás ellenőrzésével vagy bekapcsolásával kapcsolatos további információkért lásd: [userPrincipalName-frissítések szinkronizálása](./how-to-connect-syncservice-features.md).
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
 A támogatási csapatnak tisztában kell lennie azzal, hogyan lehet elhárítani azokat a hitelesítési problémákat, amelyek vagy a folyamat során vagy az összevonás által felügyelt változás után jelentkeznek. Az alábbi hibaelhárítási dokumentáció segítséget nyújt a támogatási csapatnak a gyakori hibaelhárítási lépésekkel, valamint a probléma elkülönítésére és megoldására alkalmas műveletek megismerésére.
 
-[A jelszó-kivonatok szinkronizálásának Azure Active Directory hibáinak megoldása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization)
+[A jelszó-kivonatok szinkronizálásának Azure Active Directory hibáinak megoldása](./tshoot-connect-password-hash-synchronization.md)
 
-[Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibáinak megoldása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sso)
+[Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibáinak megoldása](./tshoot-connect-sso.md)
 
 ## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>A zökkenőmentes SSO Kerberos-visszafejtési kulcs átadása
 
@@ -474,10 +474,10 @@ Fontos, hogy a AZUREADSSOACC számítógépfiók (amely az Azure AD-t jelképez�
 
 Kezdeményezheti a zökkenőmentes SSO Kerberos-visszafejtési kulcs átváltását a Azure AD Connect rendszert futtató helyszíni kiszolgálón.
 
-További információ: [hogyan a AZUREADSSOACC-számítógépfiók Kerberos-visszafejtési kulcsának átadása?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
+További információ: [hogyan a AZUREADSSOACC-számítógépfiók Kerberos-visszafejtési kulcsának átadása?](./how-to-connect-sso-faq.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Azure ad Connect tervezési fogalmakkal](plan-connect-design-concepts.md).
-* Válassza ki a [megfelelő hitelesítést](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+* Válassza ki a [megfelelő hitelesítést](./choose-ad-authn.md).
 * A [támogatott topológiák](plan-connect-design-concepts.md)megismerése.

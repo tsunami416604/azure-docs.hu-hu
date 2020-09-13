@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423269"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662296"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -145,7 +145,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 | <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással felvenni kívánt lekérdezési paraméterek. Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja a `?api-version=2018-01-01` hívást. | 
 | <*futtatások maximális száma*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak (egyidejűleg vagy párhuzamosan) az [alapértelmezett korlátig](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
 | <*futtatások maximális száma – üzenetsor*> | Egész szám | Ha a munkafolyamata már futtatja a példányok maximális számát, amelyet a tulajdonság alapján módosíthat `runtimeConfiguration.concurrency.runs` , minden új Futtatás az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kerül ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*splitOn – kifejezés*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger szövegtörzsében visszaadott elemre vonatkozik:`@triggerbody()?['value']` |
+| <*splitOn – kifejezés*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger szövegtörzsében visszaadott elemre vonatkozik: `@triggerbody()?['value']` |
 | <*művelet – beállítás*> | Sztring | Az alapértelmezett viselkedést a tulajdonság beállításával módosíthatja `operationOptions` . További információ: [üzemeltetési beállítások](#operation-options). |
 ||||
 
@@ -160,7 +160,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 
 *Példa*
 
-Ez az trigger-definíció a Beérkezett üzenetek mappájában naponta ellenőrzi az e-maileket egy Office 365 Outlook-fiókhoz:
+Ez a trigger-definíció minden nap a Beérkezett üzenetek mappán belül ellenőrzi az e-maileket munkahelyi vagy iskolai fiókhoz:
 
 ```json
 "When_a_new_email_arrives": {
@@ -235,7 +235,7 @@ Ez az trigger egy [Microsoft által felügyelt API-](../connectors/apis-list.md)
 | <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja a `?api-version=2018-01-01` hívást. |
 | <*futtatások maximális száma*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak (egyidejűleg vagy párhuzamosan) az [alapértelmezett korlátig](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. |
 | <*futtatások maximális száma – üzenetsor*> | Egész szám | Ha a munkafolyamata már futtatja a példányok maximális számát, amelyet a tulajdonság alapján módosíthat `runtimeConfiguration.concurrency.runs` , minden új Futtatás az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kerül ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*splitOn – kifejezés*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger szövegtörzsében visszaadott elemre vonatkozik:`@triggerbody()?['value']` |
+| <*splitOn – kifejezés*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger szövegtörzsében visszaadott elemre vonatkozik: `@triggerbody()?['value']` |
 | <*művelet – beállítás*> | Sztring | Az alapértelmezett viselkedést a tulajdonság beállításával módosíthatja `operationOptions` . További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
@@ -346,7 +346,7 @@ Ahhoz, hogy megfelelően működjön a logikai alkalmazással, a végpontnak meg
 
 *Példa a különböző kérelmek viselkedésére*
 
-| Állapotkód | Újrapróbálkozás | Működés | 
+| Állapotkód | Újrapróbálkozás | Viselkedés | 
 |-------------|-------------|----------|
 | 200 | nEz egy | Futtassa a munkafolyamatot, majd a definiált ismétlődés után további információért próbálkozzon újra. | 
 | 200 | 10 másodperc | Futtassa a munkafolyamatot, majd 10 másodperc elteltével további információért próbálkozzon újra. |  
@@ -827,10 +827,10 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 | [**JSON-elemzés**](#parse-json-action) | Felhasználóbarát jogkivonatokat hoz létre a JSON-tartalmak tulajdonságaiban. Ezeket a tulajdonságokat a logikai alkalmazásban található jogkivonatokkal is hivatkozhat. | 
 | [**Lekérdezés**](#query-action) | Tömböt hoz létre egy másik tömb elemeiből egy feltétel vagy szűrő alapján. | 
 | [**Válasz**](#response-action) | Egy bejövő hívásra vagy kérelemre vonatkozó választ hoz létre. | 
-| [**Válassza ezt:**](#select-action) | JSON-objektumokkal rendelkező tömböt hoz létre egy másik tömb elemeinek a megadott Térkép alapján történő átalakításával. | 
+| [**Válassza**](#select-action) | JSON-objektumokkal rendelkező tömböt hoz létre egy másik tömb elemeinek a megadott Térkép alapján történő átalakításával. | 
 | [**Tábla**](#table-action) | CSV-vagy HTML-táblázatot hoz létre egy tömbből. | 
 | [**Befejezés**](#terminate-action) | Leállítja egy aktívan futó munkafolyamatot. | 
-| [**Várakozás**](#wait-action) | Szünetelteti a munkafolyamatot egy adott időtartamra vagy a megadott dátumra és időpontra vonatkozóan. | 
+| [**várj**](#wait-action) | Szünetelteti a munkafolyamatot egy adott időtartamra vagy a megadott dátumra és időpontra vonatkozóan. | 
 | [**Munkafolyamat**](#workflow-action) | Munkafolyamatot ágyaz be egy másik munkafolyamaton belül. | 
 ||| 
 
@@ -1010,7 +1010,7 @@ Ez a művelet egyetlen kimenetet hoz létre több bemenetből, beleértve a kife
 
 | Érték | Típus | Description | 
 |-------|------|-------------| 
-| <*bemenetek és összeállítások*> | Bármely | Egyetlen kimenet létrehozására szolgáló bemenetek | 
+| <*bemenetek és összeállítások*> | Bármelyik | Egyetlen kimenet létrehozására szolgáló bemenetek | 
 |||| 
 
 *1\. példa*
@@ -1101,7 +1101,7 @@ Ez a művelet olyan kódot futtat, amely megkapja a logikai alkalmazás nevét, 
 
 *2\. példa*
 
-Ez a művelet kódot futtat egy logikai alkalmazásban, amely elindítja, amikor új e-mail érkezik egy Office 365 Outlook-fiókba. A logikai alkalmazás egy küldési jóváhagyási e-mail-műveletet is használ, amely a kapott e-mailben továbbítja a tartalmat a jóváhagyásra vonatkozó kéréssel együtt.
+Ez a művelet kódot futtat egy logikai alkalmazásban, amely akkor aktiválódik, amikor új e-mail érkezik egy munkahelyi vagy iskolai fiókba. A logikai alkalmazás egy küldési jóváhagyási e-mail-műveletet is használ, amely a kapott e-mailben továbbítja a tartalmat a jóváhagyásra vonatkozó kéréssel együtt.
 
 A kód kibontja az e-mail-címeket az trigger `Body` tulajdonságból, és visszaadja a címeket a `SelectedOption` jóváhagyási műveletből származó tulajdonság értékkel együtt. A művelet explicit módon tartalmazza a jóváhagyás küldése e-mailben műveletet az attribútumban található függőségként `explicitDependencies`  >  `actions` .
 
@@ -1288,7 +1288,7 @@ Tegyük fel, hogy rendelkezik egy korábban létrehozott "myIntegerArray" válto
 
 `[1,2,3,4]` 
 
-Ez a művelet egy kifejezésben szereplő függvény használatával beolvassa a változó értékeit, `variables()` és a karakterláncot a következő értékekkel hozza létre, amelyek vesszővel vannak elválasztva:`"1,2,3,4"`
+Ez a művelet egy kifejezésben szereplő függvény használatával beolvassa a változó értékeit, `variables()` és a karakterláncot a következő értékekkel hozza létre, amelyek vesszővel vannak elválasztva: `"1,2,3,4"`
 
 ```json
 "Join": {
@@ -1330,7 +1330,7 @@ Ez a művelet felhasználóbarát mezőket vagy *jogkivonatokat* hoz létre a JS
 
 Ez a műveleti definíció létrehozza ezeket a jogkivonatokat, amelyeket használhat a munkafolyamatban, de csak olyan műveletekben, amelyek a **JSON** elemzése műveletet követően futnak:
 
-`FirstName`, `LastName` és`Email`
+`FirstName`, `LastName` és `Email`
 
 ```json
 "Parse_JSON": {
@@ -1649,7 +1649,7 @@ Az oszlopfejlécek és az értékek megadásához és testreszabásához haszná
 | Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*oszlop neve*> | Sztring | Egy oszlop fejlécének neve | 
-| <*oszlop – érték*> | Bármely | Az oszlopban szereplő érték | 
+| <*oszlop – érték*> | Bármelyik | Az oszlopban szereplő érték | 
 |||| 
 
 *1\. példa*
@@ -1696,7 +1696,7 @@ Ez a műveleti definíció egy HTML-táblázatot hoz létre a "myItemArray" vál
 
 Itt látható a művelet által létrehozott HTML-táblázat: 
 
-<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Almák</td></tr><tr><td>1</td><td>Narancsok</td></tr></tbody></table>
+<table><thead><tr><th>ID (Azonosító)</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Almák</td></tr><tr><td>1</td><td>Narancsok</td></tr></tbody></table>
 
 *3\. példa*
 

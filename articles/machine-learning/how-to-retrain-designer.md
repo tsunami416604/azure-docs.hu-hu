@@ -69,7 +69,7 @@ Folyamat paramétereinek létrehozása a változók dinamikus beállításához 
    > [!NOTE]
    > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A folyamat futtatásának elküldése.
 

@@ -1,6 +1,6 @@
 ---
 title: Hybrid Identity design – bevezetési stratégia az Azure-ban | Microsoft Docs
-description: A feltételes hozzáférés-vezérléssel Azure Active Directory ellenőrzi a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés engedélyezése előtt kiválasztott konkrét feltételeket. Ha ezek a feltételek teljesülnek, a felhasználó hitelesíti és engedélyezi az alkalmazáshoz való hozzáférést.
+description: A feltételes hozzáférés-vezérléssel az Azure AD ellenőrzi a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés engedélyezése előtt kiválasztott konkrét feltételeket.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555382"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659523"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Hibrid identitás-bevezetési stratégia definiálása
 Ebben a feladatban megadhatja a hibrid identitás-bevezetési stratégiát a hibrid személyazonossági megoldáshoz, hogy megfeleljenek a következő cikkben tárgyalt üzleti követelményeknek:
@@ -32,7 +32,7 @@ Ebben a feladatban megadhatja a hibrid identitás-bevezetési stratégiát a hib
 * [A multi-Factor Authentication követelményeinek meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>Üzleti igényekre vonatkozó stratégia meghatározása
-A szervezeti üzleti igényeket meghatározó első feladat.  Ez nagyon tág lehet, és a hatókör-kúszás akkor fordulhat elő, ha nem vigyáz rá.  Az elején tartsa egyszerűvé, de mindig ne feledje, hogy tervezzen egy olyan kialakítást, amely a jövőben is alkalmazkodik és megkönnyíti a változást.  Függetlenül attól, hogy ez egy egyszerű vagy rendkívül összetett, Azure Active Directory a Microsoft Identity platform, amely támogatja az Office 365, a Microsoft Online Services és a Cloud Aware alkalmazásokat.
+A szervezeti üzleti igényeket meghatározó első feladat.  Ez nagyon tág lehet, és a hatókör-kúszás akkor fordulhat elő, ha nem vigyáz rá.  Az elején tartsa egyszerűvé, de mindig ne feledje, hogy tervezzen egy olyan kialakítást, amely a jövőben is alkalmazkodik és megkönnyíti a változást.  Függetlenül attól, hogy ez egy egyszerű vagy rendkívül összetett, Azure Active Directory a Microsoft Identity platform, amely támogatja a Microsoft 365, a Microsoft Online Services és a Cloud Aware alkalmazásokat.
 
 ## <a name="define-an-integration-strategy"></a>Integrációs stratégia definiálása
 A Microsoft három fő integrációs forgatókönyvet tartalmaz, amelyek a Felhőbeli identitások, a szinkronizált identitások és az összevont identitások.  Ezen integrációs stratégiák egyikének bevezetését érdemes megterveznie.  Az Ön által választott stratégia változhat, és a döntések közül választhat, hogy milyen típusú felhasználói élményt szeretne biztosítani, rendelkezik meglévő infrastruktúrával, és mi a legköltséghatékonyabb megoldás.  
@@ -171,7 +171,7 @@ A következők nem támogatottak, és nem választhatók implementációként:
 * Az Azure AD-címtárakat elszigetelten tervezték. Nem támogatott a Azure AD Connect Sync konfigurációjának módosítása egy másik Azure AD-címtárból származó adatok olvasására, ha egy közös és egységesített GAL-t próbál létrehozni a címtárak között. Emellett nem támogatott a felhasználók névjegyekként való exportálása egy másik helyszíni AD-hez Azure AD Connect Sync használatával.
 
 > [!NOTE]
-> Ha a szervezete korlátozza a hálózaton lévő számítógépeket az internethez való csatlakozáshoz, ez a cikk felsorolja azokat a végpontokat (FQDN-EK, IPv4-és IPv6-címtartományok), amelyeket a kimenő engedélyezési listán és az ügyfélszámítógépeken elérhető Internet Explorer megbízható helyek zónájában kell szerepeltetni, hogy a számítógépek sikeresen használhassák az Office 365-ot. További információért olvassa el az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)című témakört.
+> Ha a szervezete korlátozza a hálózaton lévő számítógépeket az internethez való csatlakozáshoz, ez a cikk felsorolja azokat a végpontokat (FQDN-EK, IPv4-és IPv6-címtartományok), amelyeket a kimenő engedélyezési listán, valamint az ügyfélszámítógépeken az Internet Explorer megbízható helyek zónájában kell szerepeltetni, hogy a számítógépek sikeresen használhassák a Microsoft 365. További információért olvassa el az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)című témakört.
 > 
 > 
 
@@ -210,7 +210,7 @@ A többtényezős hitelesítés alapértelmezés szerint olyan globális rendsze
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>Lásd még
