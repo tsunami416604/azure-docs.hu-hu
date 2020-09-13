@@ -113,7 +113,7 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
 
 7. Az **exportálni**kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a**típust be értékre állítja.
 
-8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Kattintson a **Mentés** gombra.
+8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Válassza a **Mentés** lehetőséget.
 
 9. Néhány perc elteltével az adatai megjelennek a kiválasztott célhelyen.
 

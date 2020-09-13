@@ -61,7 +61,7 @@ Ha engedélyezi egy virtuális gép replikálását a virtuálisgép- [nézetbő
 
    Ha manuálisan szeretné kezelni a bővítményt, válassza a **ki**lehetőséget.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 :::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Bővítmény frissítési beállításai":::
 

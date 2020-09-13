@@ -1,51 +1,64 @@
 ---
-title: Adatfolyam-diagramok
-description: A adatáramlási diagramok használata
+title: A megfeleltetési adatfolyam gráfjának kezelése
+description: A leképezési Adatfolyam-diagram hatékony kezelése és szerkesztése
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605358"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420106"
 ---
-# <a name="mapping-data-flow-graphs"></a>Adatfolyam-diagramok leképezése
+# <a name="managing-the-mapping-data-flow-graph"></a>A megfeleltetési adatfolyam gráfjának kezelése
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A leképezési adatfolyamatok tervezési felülete egy "építési" felület, amelyben felülről lefelé, balról jobbra hozhat létre adatfolyamokat. Az egyes átalakításokhoz egy pluszjel (+) szimbólum van csatolva. Koncentráljon az üzleti logikára ahelyett, hogy a csomópontokat a szabad formátumú DAG-környezet szélein keresztül csatlakoztatja.
+Az adatfolyamatok leképezése egy tervezési felületen keresztül történik, amely az adatfolyam-gráfot ismeri. A gráfban az átalakítási logika balról jobbra van kialakítva, és a további adatfolyamok felül lesznek adva. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
 
-Az alábbi beépített mechanizmusokkal felügyelheti az adatfolyam gráfját.
+![Vászon](media/data-flow/canvas2.png "Vászon")
 
-## <a name="move-nodes"></a>Csomópontok áthelyezése
+Mivel az adatforgalom összetettebb, a következő módszerekkel kezelheti és felügyelheti az adatfolyam-diagramot. 
 
-![Összesített átalakítási beállítások](media/data-flow/agghead.png "összesítő fejléc")
+## <a name="moving-transformations"></a>Átalakítások áthelyezése
 
-A fogd és vidd típusú paradigma nélkül az átalakítási csomópontok áthelyezésének módja a bejövő adatfolyam módosítása. Ehelyett a "bejövő adatfolyam" módosításával áthelyezi az átalakításokat.
+Az adatfolyamatok leképezése során a csatlakoztatott transzformációs logika egy készletét nevezzük **streamnek**. A **bejövő adatfolyam** mező azt határozza meg, hogy melyik adatfolyam táplálja az aktuális transzformációt. Minden átalakítás egy vagy két bejövő streamtel rendelkezik a függvénytől függően, és kimeneti adatfolyamot jelöl. A bejövő adatfolyamok kimeneti sémája határozza meg, hogy az aktuális átalakítás milyen oszlop-metaadatokat hivatkozhat.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Adatfolyamban tárolt adatstreamek
+![Csomópont áthelyezése](media/data-flow/move-nodes.png "csomópont áthelyezése")
 
-Azure Data Factory adatfolyamban a streamek az adatáramlást jelölik. Az átalakítási beállítások ablaktáblán egy "bejövő adatfolyam" mező jelenik meg. Ez azt mutatja be, hogy mely bejövő adatfolyam táplálja az átalakítást. Az átalakítási csomópont fizikai helyét a diagramon módosíthatja úgy, hogy a bejövő adatfolyam nevére kattint, és kiválasztja egy másik adatfolyamot. A jelenlegi átalakítás az adott adatfolyamon végzett összes további átalakítással együtt az új helyre kerül.
-
-Ha az átalakítást egy vagy több átalakítással helyezi át, a folyamat során az új hely egy új ág használatával lesz csatlakoztatva.
-
-Ha a kiválasztott csomópont után nem végez további átalakítást, akkor csak az adott átalakítás fog áttérni az új helyre.
+A pipeline-vászontól eltérően az adatfolyam-átalakítások nem szerkeszthetők a fogd és vidd modell használatával. Ha módosítani szeretné a bejövő adatfolyamot, vagy "áthelyez" egy átalakítást, válasszon másik értéket a **bejövő adatfolyam** legördülő listából. Ha ezt teszi, a rendszer az összes alsóbb rétegbeli átalakítást a szerkesztett transzformáció mellett helyezi át. A gráf automatikusan frissül az új logikai folyamat megjelenítéséhez. Ha a bejövő adatfolyamot olyan átalakításra módosítja, amely már rendelkezik alsóbb rétegbeli átalakítással, akkor létrejön egy új ág vagy párhuzamos adatfolyam. További információ [az új ágakról a leképezési](data-flow-new-branch.md)adatfolyamban.
 
 ## <a name="hide-graph-and-show-graph"></a>Gráf elrejtése és grafikon megjelenítése
 
-Az alsó konfigurációs ablaktábla jobb felső sarkában egy gomb látható, ahol az átalakítási konfigurációkon végzett munka során kiterjesztheti az alsó panelt teljes képernyős megjelenítésre. Ez lehetővé teszi, hogy az "előző" és a "Next" gombokkal navigáljon a gráf konfigurációjában. A diagram nézetre való visszalépéshez kattintson a lefelé gombra, és térjen vissza a felosztott képernyőhöz.
+Az átalakítás szerkesztése során kiterjesztheti a konfigurációs panelt, hogy a teljes vászonra felvegye a diagramot. Kattintson a vászon jobb oldalán található felfelé irányuló Chevron elemre.
 
-## <a name="search-graph"></a>Keresési gráf
+![Gráf elrejtése](media/data-flow/hide-graph.png "gráf elrejtése")
 
-A diagramon a tervezési felületen található Keresés gombra kattintva keresheti meg a diagramot.
+Ha a gráf rejtett, a **tovább** vagy az **előző**gombra kattintva átválthat a streamek közötti átalakítások között. A diagram megjelenítéséhez kattintson a lefelé néző francia idézőjelre.
 
-![Search](media/data-flow/search001.png "Keresési gráf")
+![Gráf megjelenítése](media/data-flow/show-graph.png "gráf megjelenítése")
 
-## <a name="next-steps"></a>További lépések
+## <a name="searching-for-transformations"></a>Átalakítások keresése
 
-Miután befejezte az adatfolyam kialakítását, kapcsolja be a hibakeresés gombot a hibakeresési módban, vagy közvetlenül az adatfolyam- [tervezőben](concepts-data-flow-debug-mode.md) vagy a [folyamat hibakeresésében](control-flow-execute-data-flow-activity.md).
+A gráfban található átalakítás gyors megtalálásához kattintson a nagyítási beállítás feletti **Keresés** ikonra.
+
+![Search](media/data-flow/search-1.png "Keresési gráf")
+
+A transzformációk neve vagy leírása alapján megkeresheti az átalakítást.
+
+![Search](media/data-flow/search-2.png "Keresési gráf")
+
+## <a name="hide-reference-nodes"></a>Hivatkozási csomópontok elrejtése
+
+Ha az adatfolyam bármely illesztési, keresési, létező vagy Union-átalakítással rendelkezik, az adatfolyam az összes bejövő adatfolyamra hivatkozó csomópontokat jelenít meg. Ha szeretné minimálisra csökkenteni a felhasznált vertikális terület méretét, csökkentheti a hivatkozási csomópontjait. Ehhez kattintson a jobb gombbal a vászonra, és válassza a **hivatkozási csomópontok elrejtése**lehetőséget.
+
+![Hivatkozási csomópontok elrejtése](media/data-flow/hide-reference-nodes.png "Hivatkozási csomópontok elrejtése")
+
+## <a name="next-steps"></a>Következő lépések
+
+Az adatfolyam-logika befejezése után kapcsolja be a [hibakeresési módot](concepts-data-flow-debug-mode.md) , és tesztelje az adatelőnézetben.

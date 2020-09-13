@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 08/12/2020
-ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/02/2020
+ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212053"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419963"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
@@ -41,7 +41,7 @@ A leképezési folyamat egy egyedi szerzői vászon, amely megkönnyíti az áta
 
 ### <a name="graph"></a>Graph
 
-A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
+A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre. További információ [az adatfolyam-gráf kezeléséről](concepts-data-flow-manage-graph.md).
 
 ![Vászon](media/data-flow/canvas2.png "Vászon")
 
@@ -109,7 +109,7 @@ Az adatfolyamatok leképezése a következő régiókban érhető el:
 | Délkelet-Ausztrália   | ✓ | ✓ |
 | Dél-Brazília  | ✓ |  |
 | Közép-Kanada | ✓ |  |
-| Central India | ✓ |   ✓ |
+| Közép-India | ✓ |   ✓ |
 | USA középső régiója    | ✓ |   ✓ |
 | Kelet-Kína |      | ✓ |
 | Kelet-Kína 2  |   |    |
