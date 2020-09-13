@@ -140,7 +140,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 3. Megoldási területek
 4. Iparágak
 5. Ajánlat neve
-6. Összefoglalás
+6. Összegzés
 7. Description
 8. Képernyőképek/videók
 
@@ -155,7 +155,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 3. Termékek
 4. Iparágak
 5. Ajánlat neve
-6. Összefoglalás
+6. Összegzés
 7. Description
 8. Képernyőképek/videók
 9. Dokumentumok

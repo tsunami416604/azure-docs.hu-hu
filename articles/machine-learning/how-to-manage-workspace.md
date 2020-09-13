@@ -85,7 +85,7 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
     > 
     > 1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet tartalmazó erőforráscsoportot. Ezután válassza ki a __privatelink.API.azureml.MS__nevű saját DNS zóna erőforrást.
     > 2. A __Beállítások__területen válassza a __virtuális hálózati kapcsolatok__elemet.
-    > 3. Válassza a __Hozzáadás__ lehetőséget. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__, majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
+    > 3. Válassza a __Hozzáadás__ elemet. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__, majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
     >
     > További információ: [Azure Private Endpoint DNS-konfiguráció](/azure/private-link/private-endpoint-dns).
 

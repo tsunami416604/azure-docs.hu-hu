@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74782020"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648691"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight-fürt kezelése – ajánlott eljárások
 
@@ -25,7 +25,7 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 |---|---|
 | Azure Data Factory | [Igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával](./hdinsight-hadoop-create-linux-clusters-adf.md) |
 | Egyéni Resource Manager-sablon | [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
-| Gyorsindítási sablonok | [HDInsight gyors üzembe helyezési sablonok](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
+| Gyorssablonok | [HDInsight gyors üzembe helyezési sablonok](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | Azure-minták | [HDInsight Azure-minták](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
 | Azure Portal | [Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [HDInsight-fürtök létrehozása az Azure CLI használatával](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
@@ -41,7 +41,7 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 | Beállítás | Dokumentumok |
 |---|---|
 | Parancsfájlok műveletei | [Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](./hdinsight-hadoop-customize-cluster-linux.md) |
-| Rendszerindítás | [HDInsight-fürtök testreszabása a bootstrap használatával](./hdinsight-hadoop-customize-cluster-bootstrap.md) |
+| Bootstrap | [HDInsight-fürtök testreszabása a bootstrap használatával](./hdinsight-hadoop-customize-cluster-bootstrap.md) |
 | Külső metaadattárak | [Külső metaadattárak használata az Azure HDInsightban](./hdinsight-use-external-metadata-stores.md) |
 | Egyéni Ambari-adatbázis | [HDInsight-fürtök beállítása egyéni Ambari-ADATBÁZISsal](./hdinsight-custom-ambari-db.md) |
 
@@ -62,6 +62,8 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 | Manuális skálázás | [Azure HDInsight-fürtök méretezése](./hdinsight-scaling-best-practices.md) |
 | Figyelés a Ambari| [A fürt teljesítményének figyelése az Azure HDInsight](./hdinsight-key-scenarios-to-monitor.md) |
 | Figyelés Azure Monitor naplókkal | [Azure Monitor-naplók használata HDInsight-fürtök monitorozásához](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
+| Szolgáltatási problémák, tervezett karbantartás, Health & biztonsági tanácsadók | [Előfizetés-specifikus szolgáltatás állapotára vonatkozó riasztások](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>Hogyan a törölt HDInsight-fürtök ellenőrzését?
 
@@ -74,7 +76,7 @@ AzureActivity
 | where ResourceProvider == "Microsoft.HDInsight" and (OperationName == "Create or Update Cluster" or OperationName == "Delete Cluster") and ActivityStatus == "Succeeded"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kapacitástervezése](./hdinsight-capacity-planning.md)
 * [Mik az Azure HDInsight alapértelmezett és ajánlott csomópont-konfigurációi?](./hdinsight-supported-node-configuration.md)

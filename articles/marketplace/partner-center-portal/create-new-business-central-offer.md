@@ -130,7 +130,7 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összefoglalás
+8. Összegzés
 9. Description
 10. Képernyőképek/videók
 

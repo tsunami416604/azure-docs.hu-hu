@@ -142,7 +142,7 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Összefoglalás
+9. Összegzés
 10. Description
 11. Képernyőképek/videók
 

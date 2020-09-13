@@ -187,7 +187,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 4. Használati feltételek
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Összefoglalás
+7. Összegzés
 8. Description
 9. Képernyőképek/videók
 

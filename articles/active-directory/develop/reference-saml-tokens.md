@@ -1,7 +1,7 @@
 ---
-title: Azure AD-jogkivonat & jogcím-típusok
-description: Útmutató a jogcímek megismeréséhez és értékeléséhez az SAML 2,0 és a JSON web tokens (JWT) jogkivonatok által kiadott Azure Active Directory (HRE)
-documentationcenter: na
+title: SAML 2,0 token jogcímek referenciája | Azure
+titleSuffix: Microsoft identity platform
+description: A jogcímek hivatkozása a Microsoft Identity platform által kiadott SAML 2,0-tokenekben foglalt jogcímek részleteivel együtt, beleértve a JWT egyenértékű adatokat is.
 author: kenwith
 services: active-directory
 manager: CelesteDG
@@ -9,40 +9,40 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 06/22/2018
+ms.date: 09/09/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 254fa03310bac9c5c478d9297145f88773c1a7b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114965"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648617"
 ---
-# <a name="azure-ad-saml-token-reference"></a>Azure AD SAML-jogkivonat – dokumentáció
+# <a name="saml-token-claims-reference"></a>SAML-token jogcímek referenciája
 
-Azure Active Directory (Azure AD) számos különböző típusú biztonsági jogkivonatot bocsát ki az egyes hitelesítési folyamatok feldolgozásában. Ez a dokumentum az egyes típusú tokenek formátumát, biztonsági jellemzőit és tartalmát ismerteti.
+A Microsoft Identity platform számos különböző típusú biztonsági jogkivonatot bocsát ki az egyes hitelesítési folyamatok feldolgozásában. Ez a dokumentum az SAML 2,0-tokenek formátumát, biztonsági jellemzőit és tartalmát ismerteti.
 
 ## <a name="claims-in-saml-tokens"></a>SAML-jogkivonatokban lévő jogcímek
 
 > [!div class="mx-codeBreakAll"]
-> | Name (Név) | Egyenértékű JWT jogcím | Leírás | Példa |
+> | Name | Egyenértékű JWT jogcím | Leírás | Példa |
 > | --- | --- | --- | ------------|
 > |Célközönség | `aud` |A jogkivonat címzettjei. A jogkivonatot fogadó alkalmazásnak meg kell győződnie arról, hogy a célközönség értéke helyes, és elutasítja a különböző célközönségnek szánt jogkivonatokat. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
-> | Hitelesítési időpont | |A hitelesítés dátumát és időpontját rögzíti. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
+> | Hitelesítési időpont | |A hitelesítés dátumát és időpontját rögzíti. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |Hitelesítési módszer | `amr` |Azt határozza meg, hogy a jogkivonat tárgya hogyan lett hitelesítve. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Utónév | `given_name` |A felhasználó első vagy "megadott" nevét adja meg az Azure AD felhasználói objektumán. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |Csoportok | `groups` |A tulajdonos csoportjának tagságát képviselő objektumazonosítók benyújtása. Ezek az értékek egyediek (lásd: objektumazonosító), és biztonságosan használhatók a hozzáférés felügyeletéhez, például az erőforrásokhoz való hozzáférés engedélyezésének kényszerítéséhez. A groups jogcímben szereplő csoportok alkalmazáson belüli alapon vannak konfigurálva, az alkalmazás jegyzékfájljának "groupMembershipClaims" tulajdonságával. A Null érték kizárja az összes csoportot, a "SecurityGroup" érték pedig csak Active Directory biztonsági csoportba tartozó tagságot tartalmaz, az "all" érték pedig a biztonsági csoportokat és az Office 365 terjesztési listáját is tartalmazza. <br><br> **Megjegyzések**: <br> Ha a felhasználó által birtokolt csoportok száma meghaladja a korlátot (az SAML esetében 150, 200 a JWT esetében), a rendszer felveszi a túllépési jogcímet, amely a felhasználóhoz tartozó csoportok listáját tartalmazó gráf végpontra mutat. a. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | Csoportok keretén túli kijelző | `groups:src1` | A nem hosszúságú jogkivonat-kérelmek esetében (lásd a `hasgroups` fentieket), de még mindig túl nagy a tokenhez, a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Az SAML esetében ez a jogcím helyett új jogcímként lesz hozzáadva `groups` . | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | Csoportok keretén túli kijelző | `groups:src1` | A nem hossz-korlátozott, de a jogkivonat esetében túl nagy méretű jogkivonat-kérelmek esetén a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Az SAML esetében ez a jogcím helyett új jogcímként lesz hozzáadva `groups` . | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Identitásszolgáltató | `idp` |A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállítói jogcímek értékével, kivéve, ha a felhasználói fiók a kiállítótól eltérő bérlőn található. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |A jogkivonat kiállításának időpontját tárolja. Gyakran használják a jogkivonat frissességének mérésére. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Kiállító | `iss` |Azonosítja a tokent létrehozó és visszaküldő biztonságijogkivonat-szolgáltatást (STS). Az Azure AD által visszaadott jogkivonatokban a kiállító sts.windows.net. A kiállítói jogcím értékében szereplő GUID az Azure AD-címtár bérlői azonosítója. A bérlő azonosítója a címtár megváltoztathatatlan és megbízható azonosítója. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Vezetéknév | `family_name` |Az Azure AD felhasználói objektumában megadott felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Name (Név) | `unique_name` |A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált, hogy a bérlőn belül egyediek legyenek, és kizárólag megjelenítési célra való használatra készültek. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name | `unique_name` |A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált, hogy a bérlőn belül egyediek legyenek, és kizárólag megjelenítési célra való használatra készültek. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Objektumazonosító | `oid` |Egy objektum egyedi azonosítóját tartalmazza az Azure AD-ben. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az objektumazonosító használatával azonosíthatja az Azure AD-lekérdezésekben található objektumokat. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Szerepkörök | `roles` |Az összes olyan alkalmazási szerepkört jelöli, amelyet a tulajdonos közvetlenül és közvetve a csoporttagság keretében kapott, és használható a szerepköralapú hozzáférés-vezérlés kikényszeríthető. Az alkalmazás szerepköreinek meghatározása az alkalmazás `appRoles` jegyzékfájljának tulajdonságán keresztül történik. Az `value` egyes alkalmazási szerepkörök tulajdonsága a szerepkör-jogcímben megjelenő érték. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Tárgy | `sub` |Azonosítja azt a rendszerbiztonsági azonosítót, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható fel újra, így biztonságosan végezhető el az engedélyezési ellenőrzés. Mivel a tulajdonos mindig szerepel a jogkivonatokban az Azure AD-ban, javasoljuk, hogy használja ezt az értéket egy általános célú engedélyezési rendszeren. <br> `SubjectConfirmation`nem jogcím. Ismerteti a jogkivonat tulajdonosának ellenőrzését. `Bearer`azt jelzi, hogy a tárgyat a jogkivonat birtokosa igazolja. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Tárgy | `sub` |Azonosítja azt a rendszerbiztonsági azonosítót, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható fel újra, így biztonságosan végezhető el az engedélyezési ellenőrzés. Mivel a tulajdonos mindig szerepel a jogkivonatokban az Azure AD-ban, javasoljuk, hogy használja ezt az értéket egy általános célú engedélyezési rendszeren. <br> `SubjectConfirmation` nem jogcím. Ismerteti a jogkivonat tulajdonosának ellenőrzését. `Bearer` azt jelzi, hogy a tárgyat a jogkivonat birtokosa igazolja. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Bérlőazonosító | `tid` |Egy nem módosítható, nem újrafelhasználható azonosító, amely azonosítja a jogkivonatot kiállító címtár-bérlőt. Ezzel az értékkel elérheti a bérlő-specifikus címtár-erőforrásokat egy több-bérlős alkalmazásban. Ezzel az értékkel például azonosíthatja a bérlőt a Graph API hívásakor. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Jogkivonat élettartama | `nbf`, `exp` |A jogkivonat érvényességi idejét határozza meg. A jogkivonatot érvényesítő szolgáltatásnak ellenőriznie kell, hogy az aktuális dátum a jogkivonat élettartamán belül van-e, máskülönben el kell utasítania a jogkivonatot. Előfordulhat, hogy a szolgáltatás akár öt percet is igénybe vehet a jogkivonat élettartamának tartományán kívül, és így az Azure AD és a szolgáltatás közötti idő ("időeltérés") közötti különbségeket is figyelembe kell venni. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
@@ -152,10 +152,9 @@ Ez egy tipikus SAML-token mintája.
 </t:RequestSecurityTokenResponse>
 ```
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg a [házirend-erőforrást](/graph/api/resources/policy?view=graph-rest-beta), ha többet szeretne megtudni a jogkivonat-élettartam szabályzatának Microsoft Graph API-val történő kezeléséről.
-* A szabályzatok PowerShell-parancsmagokkal történő kezelésével kapcsolatos további információkért és Példákért lásd: [konfigurálható jogkivonat-élettartamok az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
-* [Egyéni és választható jogcímeket](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) adhat hozzá az alkalmazás jogkivonatához.
+* Ha többet szeretne megtudni a jogkivonat-élettartam szabályzatának Microsoft Graph API-val történő kezeléséről, tekintse meg az [Azure ad-házirend erőforrásának áttekintését](/graph/api/resources/policy).
+* [Egyéni és választható jogcímeket](active-directory-optional-claims.md) adhat hozzá az alkalmazás jogkivonatához.
 * Használjon [egyszeri bejelentkezést (SSO) az SAML](single-sign-on-saml-protocol.md)használatával.
-* Az [Azure egyszeri kijelentkezés SAML protokolljának](single-sign-out-saml-protocol.md) használata
+* Az [Azure egyszeri kijelentkezési SAML protokoll](single-sign-out-saml-protocol.md) használata
