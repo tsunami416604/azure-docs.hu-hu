@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849518"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006080"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>A TLS 1,0-es és 1,1-es verziójának elavult változata IoT Hub
 
@@ -38,10 +38,10 @@ A IoT Hub továbbra is támogatja a TLS 1.0/1.1-et további értesítésig. Azt 
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-## <a name="tls-12-ciphers"></a>TLS 1,2-Rejtjelek
+## <a name="tls-12-cipher-suites"></a>TLS 1,2 titkosítási csomagok
 
-Lásd: [IOT hub TLS 1,2 ajánlott titkosítási algoritmus](iot-hub-tls-support.md#recommended-ciphers).
+Lásd: [IOT hub TLS 1,2 titkosítási csomagok](iot-hub-tls-support.md#cipher-suites).
  
-## <a name="customer-feedback"></a>Felhasználói visszajelzés
+## <a name="customer-feedback"></a>Ügyfélvisszajelzés
 
 Míg a TLS 1,2-kényszerítés az iparági szintű legjobb titkosítási megoldás, és a tervezett módon lesz engedélyezve, továbbra is hallani kell az ügyfelektől az adott üzembe helyezésekkel és a TLS 1,2 bevezetésével kapcsolatos nehézségekkel. Erre a célra a megjegyzéseit elküldheti a következőnek: [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com) .

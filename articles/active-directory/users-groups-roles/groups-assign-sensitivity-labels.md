@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795327"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005938"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
 
@@ -68,7 +68,7 @@ A közzétett címkék csoportokba való alkalmazásához először engedélyezn
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Ennyi az egész. Engedélyezte a funkciót, és közzétett címkéket alkalmazhat a csoportokra.
+Az érzékenységi címkéket az Azure AD-be is szinkronizálnia kell. Útmutatásért lásd: [a tárolók érzékenységi címkéjének engedélyezése és a címkék szinkronizálása](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Címke kiosztása egy új csoportba Azure Portal
 
@@ -113,7 +113,8 @@ A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meg
 Az érzékenységi címke beállítás csak akkor jelenik meg a csoportok esetében, ha a következő feltételek teljesülnek:
 
 1. A címkék az Azure AD-szervezet Microsoft 365 megfelelőségi központjában jelennek meg.
-1. A szolgáltatás engedélyezve van, a EnableMIPLabels True értékre van állítva a PowerShellben.
+1. A szolgáltatás engedélyezve van, a EnableMIPLabels értéke TRUE (igaz) értékre van állítva az Azure AD PowerShell-modulból.
+1. A lables szinkronizálva vannak az Azure AD-val az EXECUTE-AzureAdLabelSync parancsmaggal a biztonsági & megfelelőségi PowerShell-moduljában.
 1. A csoport Microsoft 365 csoport.
 1. A szervezet aktív prémium szintű Azure Active Directory P1 licenccel rendelkezik.
 1. A jelenlegi bejelentkezett felhasználónak megfelelő jogosultsága van a címkék hozzárendeléséhez. A felhasználónak globális rendszergazdának, csoport rendszergazdának vagy a csoport tulajdonosának kell lennie.
@@ -135,7 +136,7 @@ A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják
 1. Válassza a **csoportok**lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 

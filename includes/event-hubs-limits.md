@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8700bbfe697a6b5fb81380831950d704fcb1f5ff
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84317423"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90012837"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -39,14 +39,14 @@ A következő korlátok az alapszintű és a standard szintű csomagokban vannak
 | Fogyasztói csoportok száma az Event hub-ban |Entitás | &nbsp; |1 |20 |
 | AMQP-kapcsolatok száma névtérben |Névtér |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. |100 |5000|
 | Esemény-adatok maximális megőrzési ideje |Entitás | &nbsp; |1 nap |1-7 nap |
-|Apache Kafka engedélyezett névtér|Névtér |Event Hubs névteret használó alkalmazások a Kafka protokoll használatával |Nem | Igen |
-|Rögzítés |Entitás | Ha engedélyezve van, a mikro-kötegek ugyanazon az adatfolyamon |Nem |Igen |
+|Apache Kafka engedélyezett névtér|Névtér |Event Hubs névteret használó alkalmazásokat a Kafka protokoll használatával. További információ: [Azure Event Hubs használata Apache Kafka alkalmazásokból](../articles/event-hubs/event-hubs-for-kafka-ecosystem-overview.md). |Nem | Igen |
+|Rögzítés |Entitás | Ha engedélyezve van, a mikro-kötegek ugyanazon az adatfolyamon. További információ: [események rögzítése az Azure-Event Hubs az Azure-ban blob Storage vagy Azure Data Lake Storage](../articles/event-hubs/event-hubs-capture-overview.md). |Nem |Igen |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Dedikált Event Hubs – kvóták és korlátok
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 
 
-| Szolgáltatás | Korlátok |
+| Jellemző | Korlátok |
 | --- | ---|
 | Sávszélesség |  20 ke |
 | Névterek | 50/CU |
@@ -54,7 +54,7 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 | Bejövő események | Tartalmazza |
 | Üzenet mérete | 1 MB |
 | Partíciók | 2000/CU |
-| Felhasználói csoportok | Az Event hub-ban nincs korlát/CU, 1000 |
+| Fogyasztói csoportok | Az Event hub-ban nincs korlát/CU, 1000 |
 | Felügyelt kapcsolatok | 100 a csomagban foglalt |
 | Üzenetek megőrzése | 90 nap, 10 TB tartalmaz/CU |
 | Rögzítés | Tartalmazza |

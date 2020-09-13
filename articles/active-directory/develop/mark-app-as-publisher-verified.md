@@ -23,7 +23,7 @@ ms.locfileid: "90006944"
 
 Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő a Microsoft Partner Network (MPN) fiók használatával ellenőrizte az identitását, és az alkalmazás regisztrálásával társította ezt az MPN-fiókot. Ez a cikk a [közzétevői ellenőrzés (előzetes verzió)](publisher-verification-overview.md) folyamatának befejezését ismerteti.
 
-## <a name="quickstart"></a>Gyorsútmutató
+## <a name="quickstart"></a>Első lépések
 Ha már regisztrált a Microsoft Partner Network (MPN) szolgáltatásban, és teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), azonnal megkezdheti az első lépéseket: 
 
 1. Navigáljon az [alkalmazás regisztrációs portálra](https://aka.ms/PublisherVerificationPreview).

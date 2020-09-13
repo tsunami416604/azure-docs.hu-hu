@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/01/2020
 ms.author: jlian
-ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080618"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006040"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
 
@@ -22,11 +22,11 @@ A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: 
 
 ## <a name="tls-12-enforcement-available-in-select-regions"></a>A TLS 1,2 kényszerítés a kiválasztott régiókban érhető el
 
-A további biztonság érdekében konfigurálja a IoT hubokat úgy, hogy *csak* a 1,2-es TLS-verziót használó ügyfélkapcsolatokat engedélyezze, és kényszerítse az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát. Ez a funkció csak a következő régiókban támogatott:
+A további biztonság érdekében konfigurálja a IoT hubokat úgy, hogy *csak* a 1,2-es TLS-verziót használó ügyfélkapcsolatokat engedélyezze, és kényszerítse a [titkosítási csomagok](#cipher-suites)használatát. Ez a funkció csak a következő régiókban támogatott:
 
 * USA keleti régiója
 * USA déli középső régiója
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 * USA-beli államigazgatás – Arizona
 * USA-beli államigazgatás – Virginia
 
@@ -55,23 +55,23 @@ Erre a célra hozzon létre egy új IoT Hub a bármelyik támogatott régióban,
 }
 ```
 
-Az ezzel a konfigurációval létrehozott IoT Hub erőforrás elutasítja az eszköz-és szolgáltatás-ügyfeleket, amelyek a 1,0-es és a 1,1-es TLS-verzióval próbálnak csatlakozni. Hasonlóképpen, a TLS-kézfogás visszautasítva lesz, ha az ügyfél HELLO üzenete nem sorolja fel a [javasolt titkosítási algoritmusokat](#recommended-ciphers).
+Az ezzel a konfigurációval létrehozott IoT Hub erőforrás elutasítja az eszköz-és szolgáltatás-ügyfeleket, amelyek a 1,0-es és a 1,1-es TLS-verzióval próbálnak csatlakozni. Hasonlóképpen a TLS-kézfogás elutasítása is megtagadható, ha az `ClientHello` üzenet nem sorolja fel a [javasolt titkosítási algoritmusokat](#cipher-suites).
 
 > [!NOTE]
-> A `minTlsVersion` tulajdonság csak olvasható, és a IoT hub-erőforrás létrehozása után nem módosítható. Ezért fontos, hogy megfelelően tesztelje és ellenőrizze *, hogy a* IoT-eszközök és-szolgáltatások kompatibilisek-e a TLS 1,2-mel és az [ajánlott titkosítási](#recommended-ciphers) megoldásokkal.
+> A `minTlsVersion` tulajdonság csak olvasható, és a IoT hub-erőforrás létrehozása után nem módosítható. Ezért fontos, hogy megfelelően tesztelje és ellenőrizze *, hogy a* IoT-eszközök és-szolgáltatások kompatibilisek-e a TLS 1,2-mel és az [ajánlott titkosítási](#cipher-suites) megoldásokkal.
 > 
 > Feladatátvétel esetén a `minTlsVersion` IoT hub tulajdonsága továbbra is érvényben marad a helyszíni, a feladatátvételt követő régióban.
 
-## <a name="recommended-ciphers"></a>Ajánlott titkosítási algoritmusok
+## <a name="cipher-suites"></a>Titkosítási csomagok
 
-A csak a TLS 1,2 használatára konfigurált IoT hubok a következő ajánlott titkosítási algoritmusok használatát is kikényszerítik:
+A csak a TLS 1,2 használatára konfigurált IoT hubok a következő ajánlott titkosítási csomagok használatát is kikényszerítik:
 
 * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-A TLS 1,2-kényszerítéshez nem konfigurált IoT-hubok esetében a TLS 1,2 továbbra is a következő titkosítási megoldásokkal működik:
+A TLS 1,2-kényszerítéshez nem konfigurált IoT-hubok esetében a TLS 1,2 továbbra is a következő titkosítási csomagokkal működik:
 
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
@@ -85,6 +85,8 @@ A TLS 1,2-kényszerítéshez nem konfigurált IoT-hubok esetében a TLS 1,2 tov�
 * `TLS_RSA_WITH_AES_256_CBC_SHA`
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+Az ügyfél javasolhatja, hogy a rendszer milyen magasabb titkosítási csomagokat használjon `ClientHello` . Előfordulhat azonban, hogy néhányat IoT Hub nem támogat (például: `ECDHE-ECDSA-AES256-GCM-SHA384` ). Ebben az esetben a IoT Hub megpróbálja követni az ügyfél beállításait, de végül egyezteti a titkosító csomagot a használatával `ServerHello` .
 
 ## <a name="use-tls-12-in-your-iot-hub-sdks"></a>A TLS 1,2 használata a IoT Hub SDK-ban
 
@@ -102,3 +104,7 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 ## <a name="use-tls-12-in-your-iot-edge-setup"></a>A TLS 1,2 használata a IoT Edge-telepítőben
 
 A IoT Edge-eszközök úgy konfigurálhatók, hogy a TLS 1,2-et használják a IoT Hubval való kommunikáció során. Erre a célra használja a [IoT Edge dokumentációs oldalát](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
+
+## <a name="device-authentication"></a>Eszköz hitelesítése
+
+A sikeres TLS-kézfogás után a IoT Hub szimmetrikus kulccsal vagy X. 509 tanúsítvánnyal tud hitelesíteni egy eszközt. Tanúsítványalapú hitelesítés esetén ez lehet bármilyen X. 509 tanúsítvány, beleértve az ECC-t is. IoT Hub érvényesíti a tanúsítványt az Ön által megadott ujjlenyomat vagy hitelesítésszolgáltató (CA) ellen. A IoT Hub jelenleg nem támogatja az X. 509 alapú kölcsönös hitelesítést (mTLS). További információ: [támogatott X. 509 tanúsítványok](iot-hub-devguide-security.md#supported-x509-certificates).
