@@ -3,12 +3,12 @@ title: Hozzáférés korlátozása szolgáltatás-végpont használatával
 description: Az Azure Container Registry elérésének korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával. A szolgáltatás-végponti hozzáférés a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371430"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488667"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
 
@@ -28,6 +28,8 @@ A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** 
 * Csak egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -fürt vagy Azure-beli [virtuális gép](../virtual-machines/linux/overview.md) használható gazdagépként egy tároló-beállításjegyzék eléréséhez szolgáltatási végpont használatával. *Más Azure-szolgáltatások, többek között a Azure Container Instances nem támogatottak.*
 * Mindegyik beállításjegyzék legfeljebb 100 hálózati hozzáférési szabályt támogat.
 * A Azure Container Registry szolgáltatásbeli végpontok nem támogatottak az Azure US government-felhőben vagy az Azure China Cloud-ban.
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -181,7 +183,7 @@ az group delete --name myResourceGroup
 
 A portálon található erőforrások törléséhez navigáljon a myResourceGroup erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha egy virtuális hálózat privát végpontján keresztül szeretné korlátozni a beállításjegyzékhez való hozzáférést, tekintse meg az [Azure Private-hivatkozás konfigurálása Azure Container registryhez](container-registry-private-link.md)című témakört.
 * Ha be kell állítania a beállításjegyzék-hozzáférési szabályokat az ügyfél tűzfala mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.

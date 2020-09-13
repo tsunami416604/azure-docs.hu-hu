@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855205"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488558"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modellek A
 > [!TIP]
 >
 > * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
-> * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights ÁME Explorer használatával.
+> * Ismerje meg, [Hogyan dolgozhat a Time Series modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights Explorerrel.
 
 ## <a name="summary"></a>Összegzés
 
@@ -75,7 +75,7 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Idősorozat-modell áttekintő diagramja](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Egy idősorozat-modell hozható létre és kezelhető az [Azure Time Series INSIGHTS ÁME Explorer](/azure/time-series-insights/concepts-model-overview)használatával. Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
+Az idősorozat-modell a [Azure Time Series Insights Explorerben](/azure/time-series-insights/concepts-model-overview)hozható létre és kezelhető. Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
@@ -87,7 +87,7 @@ A példányok a *példány tulajdonságaihoz*tartozó, például egy idősorozat
 
 A *példány mezői* olyan leíró információk gyűjteményei, amelyek a hierarchia szintjeire, valamint a gyártóra, a kezelőre és így továbbra is tartalmazhatnak értékeket.
 
-Ha egy eseményforrás konfigurálva van a Azure Time Series Insights Gen2-környezethez, a rendszer automatikusan felderíti és létrehozza a példányokat egy idősorozat-modellben. A példányok az Azure Time Series Insights ÁME-tallózón keresztül hozhatók létre vagy frissíthetők az idősorozat-modell lekérdezéseinek használatával.
+Ha egy eseményforrás konfigurálva van a Azure Time Series Insights Gen2-környezethez, a rendszer automatikusan felderíti és létrehozza a példányokat egy idősorozat-modellben. A példányok a Azure Time Series Insights Explorerben hozhatók létre vagy frissíthetők az idősorozat-modell lekérdezéseinek használatával.
 
 A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/preview/samples) több élő példányra vonatkozó példát is tartalmaz.
 
@@ -216,7 +216,7 @@ Az előző definícióban és a több idősorozatban használt példány mezők 
 | ID4 | "Building" = "1000", "Floor" = "10"  |
 | ID5 | A "Building", a "Floor" vagy a "Room" nincs beállítva. |
 
-Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg az [Azure Time Series Insights ÁME Explorerben](time-series-insights-update-explorer.md) , mert teljes mértékben definiálva és megfelelően rendezték a *kiépítési*, a *padló*és a *szoba* paramétereit.
+Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg a [Azure Time Series Insights Explorerben](time-series-insights-update-explorer.md) , mert teljes mértékben definiálva és megfelelően rendezték a *Létrehozás*, a *padló*és a *szoba* paramétereit.
 
 A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek meg a megadott adathierarchiának.
 
@@ -286,7 +286,7 @@ A típusok megfelelnek a következő JSON-példának:
 
 Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken. További információ az [idősorozat-modell változók definiálásáról](./concepts-variables.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
 

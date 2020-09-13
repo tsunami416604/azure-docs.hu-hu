@@ -1,22 +1,22 @@
 ---
 title: Az Azure Marketplace ajánlat és szolgáltatás listázási követelményei
-description: Ez a cikk az Azure Marketplace-en elérhető új ajánlatok és szolgáltatások listázásával kapcsolatos követelményeket és irányelveket ismerteti.
+description: Ez a cikk az új ajánlatok, szolgáltatások és egyéb IT-megoldások az Azure Marketplace-en való listázásával kapcsolatos követelményeket és irányelveket ismerteti.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 07/14/2020
-ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/04/2020
+ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812869"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484272"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace listázási irányelvei
 
-Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolgáltatások listázásának követelményeit és irányelveit. Minden ajánlatnak meg kell felelnie az [összes ajánlat listázási követelménye](#listing-requirements-for-all-offers) szakaszban felsorolt követelményeknek. A jobb oldalon található hivatkozásokra kattintva megkeresheti a követelményeket és a feladatlistákat az adott listaelemekhez.
+Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolgáltatások listázásának követelményeit és irányelveit. Minden ajánlatnak meg kell felelnie az alább felsorolt [listázási követelményeknek](#listing-requirements-for-all-offers) . A jobb oldalon található hivatkozásokra kattintva további követelményeket és ellenőrző listákat kereshet az adott listaelemekhez.
 
 ## <a name="listing-requirements-for-all-offers"></a>Az összes ajánlatra vonatkozó követelmények listázása
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 5 | Kategóriák és iparágak | <ul><li>A kategóriák és alkategóriáknak meg kell egyezniük az ajánlati lehetőségekkel </li><li>Ne válasszon olyan kategóriákat/alkategóriákat, amelyek nem felelnek meg az ajánlati képességeinek. </li></ul> | <ul><li>Válasszon legfeljebb két kategóriát, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).</li><li>Minden elsődleges és/vagy másodlagos kategória esetében két alkategóriát válasszon ki. Ha nincs alkategória kiválasztva, az ajánlata továbbra is a kiválasztott kategóriában lesz felderíthető.</li></ul> |
 | 6 | Képek | <ul><li>A rendszerképekre vonatkozó követelmények a partner Center webhelyen találhatók.</li><li>A képernyőképen látható szöveg olvasható, a rendszerkép pedig egyértelmű. | A megoldási ajánlat könnyen értelmezhető egy pillantással. |
 | 7 | Videók | <ul><li>Nincs szükség videóra, de ha meg van adni, hiba nélkül kell visszajátszania.</li><li>Ha meg van adni, előfordulhat, hogy nem hivatkozik a versenytárs vállalatokra, *kivéve* , ha egy áttelepítési megoldást mutat be. |<ul><li>Ideális esetben a hossz 3 perc vagy több.</li><li>A megoldási ajánlat könnyen értelmezhető a videotartalom használatával.</li><li>A megoldás képességeinek bemutatóját biztosítja. |
-| 8 | Lista állapota (művelet meghívása) | <ul><li>A címkét a következő típusok egyikének kell megadnia: <ul><li>*Kapcsolatfelvétel*</li><li>*Próbaverzió* / *Próbaverzió letöltése* / *Próbaverzió indítása* / *Tesztelési meghajtó*</li><li>*Vásárlás most* / Letöltés *most*</li></ul></ul> | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Vegye fel a kapcsolatot e-mailben vagy telefonszámon, hogy intézkedik a megvalósíthatósági igazolásról (POC), az értékelésről vagy a tájékoztatásról.</li></ol> | 
+| 8 | Lista állapota (listaelem-beállítások) | <ul><li>A címkét a következő típusok egyikének kell megadnia: <ul><li>*Kapcsolatfelvétel*</li><li>*Próbaverzió* / *Próbaverzió letöltése* / *Próbaverzió indítása* / *Tesztelési meghajtó*</li><li>*Vásárlás most* / Letöltés *most*</li></ul></ul> | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Vegye fel a kapcsolatot e-mailben vagy telefonszámon, hogy intézkedik a megvalósíthatósági igazolásról (POC), az értékelésről vagy a tájékoztatásról.</li></ol> | 
 | 9 | Megoldás díjszabása | A megoldás díjszabási lapjának/részleteinek kell lennie, és a díjszabásnak a partneri megoldás ajánlatának helyi pénznemében kell lennie. | A vásárlói beállítások megadásához több számlázási lehetőség is rendelkezésre áll. |
 | 10 | További információ | Az alján található hivatkozások (a Leírás alatt, nem az Azure Marketplace hivatkozásai a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők és megfelelően jelennek meg. |    Adott elemekre mutató hivatkozások (például a partner webhelyén található spec-lapok) és nem csak a partner kezdőlapja. | 
 | 11 | Megoldás támogatása és Súgó | Hivatkozás a következők legalább egyikére: <ul><li>Telefonszámok</li><li>E-mail-támogatás</li><li>Csevegési ügynökök</li><li>Közösségi fórumok |<ul><li>Az összes támogatási módszer szerepel a felsorolásban.</li><li>A fizetős támogatás díjmentesen használható a *próbaidőszak* vagy a *tesztelési* időszak alatt. |
@@ -40,7 +40,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 
 | Nem. | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
-|  | Lista állapota (művelet meghívása) | A hivatkozásnak az ügyfél által vezetett *próbaidőszakot* kell eredményeznie. | Más műveletekre irányuló hívások (például a *vásárlás most*) is elérhetők. | 
+|  | Lista állapota (listázási lehetőség) | A hivatkozásnak az ügyfél által vezetett *próbaidőszakot* kell eredményeznie. | Egyéb listaelem-beállítások (például a *Buy most*) is elérhetők. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS-alkalmazásokra vonatkozó követelmények
@@ -78,7 +78,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 2 | Ajánlat leírása  |<ul><li>A [Microsoft-termékek nevének](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)megfelelő használatának biztosítása.</li><li>A (z) *árként* megjelölt ajánlatok: a becsült értéknek meg kell egyeznie a felső vagy az alsó megjegyzéssel, hogy ismertesse a változékonyságt (az ügyfélre való utazás, a migrált kiszolgálók száma stb.).</li><li>Az egyes ajánlati típusok leírási követelményekkel rendelkeznek, az alábbiak szerint: <ul><li>A tájékoztatóknak legalább négy vagy öt felsorolásjelre van szükségük, és meg kell adni a tárgyalt témakörökre vonatkozó információkat.</li><li>Az összes workshopnak napirendre van szüksége.</li><li>Az összes napirendet naponta vagy hetente, a workshop időtartamától függően kell lebontani.</li><li>Az értékelés, a POC, a nem betanítási workshopok és a megvalósítási ajánlatok szükségesek.</li><li>A képzési workshopoknak nincs szükségük a termékekre, de részletesebb napirendre van szükségük, amelyekkel foglalkozni fog.</li></ul></ul> | <ul><li>Minden ajánlatnak van napirendje és teljesítése.</li><li>Az ajánlat tartalmaz egy olyan bekezdést, amely a szolgáltatást a felső szakaszban biztosító vállalattal kapcsolatos környezettel rendelkezik.</li><li>Az ajánlat tartalmaz egy, a szolgáltatás értékével kapcsolatos bekezdést, amely a legfelső szakasz. |
 | 3 | Markdown formázása  | Minden ajánlatnak Markdown-formázást kell használnia, hogy az ajánlat megfelelően legyen megjelenítve, amikor HTML-re konvertálja.  |  |
 | 4 | Kategóriák és iparágak | A kategóriák nem relevánsak. |  | 
-| 5 | Lista állapota (művelet meghívása) | Automatikusan *kapcsolatba lépni velem*. |  | 
+| 5 | Lista állapota (listázási lehetőség) | Automatikusan *kapcsolatba lépni velem*. |  | 
 | 6 | Megoldás támogatása és Súgó  | Támogatás és segítség nem szükséges.  | | 
 | 7 | Az adatvédelmi szabályzat és az elérhető használati feltételek  |  A szabályzatok vagy kifejezések nem szükségesek.  | | 
 | 8 | Szolgáltatások típusai | Győződjön meg arról, hogy a szolgáltatás típusa megegyezik a címmel. | |
@@ -88,7 +88,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 12 | További információ  | <ul><li>A lenti hivatkozások (a Leírás alatt, nem az Azure Marketplace-hivatkozások a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők, és helyesen jelennek meg.</li><li>A hivatkozásoknak "felhasználóbarát" névvel kell rendelkezniük, és nem jelennek meg a letöltésekhez tartozó fájlnévként. | |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az Azure Marketplace különböző ajánlati típusait:
   * [SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)

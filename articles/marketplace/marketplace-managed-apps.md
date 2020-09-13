@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119820"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484239"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Közzétételi útmutató az Azure által felügyelt alkalmazásokhoz
 
-Az Azure-beli *felügyelt alkalmazások* egyik módja egy Azure-alkalmazás közzététele az Azure Marketplace-en. A felügyelt alkalmazások olyan Transact-ajánlatok, amelyek üzembe helyezése és számlázása az Azure Marketplace-en keresztül történik. A felhasználó által megjelenő művelet meghívása *most*.
+Az Azure-beli *felügyelt alkalmazások* egyik módja egy Azure-alkalmazás közzététele az Azure Marketplace-en. A felügyelt alkalmazások olyan Transact-ajánlatok, amelyek üzembe helyezése és számlázása az Azure Marketplace-en keresztül történik. A felhasználó által megjelenő listázási lehetőség a *Letöltés*.
 
 Ez a cikk a felügyelt alkalmazási ajánlat típusára vonatkozó követelményeket ismerteti.
 

@@ -2,13 +2,13 @@
 title: Az ACR-feladatok áttekintése
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087277"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488643"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -100,7 +100,7 @@ Ismerje meg a többlépéses feladatokat a [több lépésből álló Build-, tes
 
 ## <a name="context-locations"></a>Környezet helyei
 
-Az alábbi táblázat néhány példát mutat be az ACR-feladatok támogatott környezeti helyeire:
+A következő táblázat példákat mutat be az ACR-feladatok támogatott környezeti helyeire:
 
 | Környezet helye | Leírás | Példa |
 | ---------------- | ----------- | ------- |
@@ -111,6 +111,7 @@ Az alábbi táblázat néhány példát mutat be az ACR-feladatok támogatott k�
 | GitHub-véglegesítés | Konkrét véglegesítés nyilvános vagy privát GitHub-tárházban. Példa a commit hash (SHA) és az almappák specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps almappa | Egy nyilvános vagy privát Azure-tárház almappájába tartozó fájlok. Példa az ág és az almappa specifikációjának kombinációját mutatja be. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Távoli Fez | Tömörített archívumban található fájlok egy távoli webkiszolgálón. | `http://remoteserver/myapp.tar.gz` |
+| Összetevő a tároló beállításjegyzékében | [OCI](container-registry-oci-artifacts.md) egy tároló beállításjegyzék-adattárában. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > Ha privát git-tárházat használ egy tevékenység környezetében, meg kell adnia egy személyes hozzáférési jogkivonatot (PAT).
@@ -130,7 +131,7 @@ Minden feladat futtatásakor a rendszer naplózza a napló kimenetét, amely ala
 
 További információ a [naplók megtekintéséről és kezeléséről](container-registry-tasks-logs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha készen áll a tárolók rendszerképének és a Felhőbeli karbantartásának automatizálására, tekintse meg az [ACR feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
 

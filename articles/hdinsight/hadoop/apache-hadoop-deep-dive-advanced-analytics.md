@@ -1,19 +1,19 @@
 ---
 title: Deep Dive – fejlett Analitika – Azure HDInsight
 description: Ismerje meg, hogy a fejlett elemzési algoritmusok hogyan használják a big data Azure HDInsight való feldolgozását.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079360"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504349"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -67,7 +67,7 @@ Három skálázható gépi tanulási kódtár van, amelyek a következő eloszto
 
 * A [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib a Spark RDD-ra épülő eredeti API-t tartalmazza.
 * A [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML egy újabb csomag, amely egy magasabb szintű API-t biztosít a Spark DataFrames, amely ml-folyamatok létrehozását teszi lehetővé.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) – a (z) Apache Spark Microsoft Machine learning könyvtára (MMLSpark) úgy lett kialakítva, hogy az adatszakértőket hatékonyabbá tegye a Sparkban, hogy növelje a kísérletezés mértékét, és kihasználja az élvonalbeli gépi tanulási technikákat, beleértve a mély tanulást a nagy adathalmazokon. A MMLSpark könyvtár leegyszerűsíti az általános modellezési feladatokat a PySpark-modellek létrehozásához.
+* [**MMLSpark**](https://github.com/Azure/mmlspark)  – a (z) Apache Spark Microsoft Machine learning könyvtára (MMLSpark) úgy lett kialakítva, hogy az adatszakértőket hatékonyabbá tegye a Sparkban, hogy növelje a kísérletezés mértékét, és kihasználja az élvonalbeli gépi tanulási technikákat, beleértve a mély tanulást a nagy adathalmazokon. A MMLSpark könyvtár leegyszerűsíti az általános modellezési feladatokat a PySpark-modellek létrehozásához.
 
 ### <a name="r-and-ml-services"></a>R és ML szolgáltatások
 
@@ -114,7 +114,7 @@ Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy p
 
 A megoldás teljes körű megvalósításához kövesse [az oktatóanyagot](../spark/apache-spark-microsoft-cognitive-toolkit.md) : hozzon létre egy HDInsight Spark-fürtöt, telepítse a Cognitive Toolkitt, és futtassa a 10 000-es SZÁMú CIFAR-rendszerképekből álló Jupyter notebook.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Apache Hive és Azure Machine Learning
 

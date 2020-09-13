@@ -1,21 +1,21 @@
 ---
-title: Azure CDN Endpoint multi-Origin
+title: Azure CDN Endpoint multi-Origin (előzetes verzió)
 description: Ismerkedjen meg Azure CDN Endpoint több eredetével.
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870456"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504673"
 ---
-# <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN Endpoint multi-Origin
+# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN Endpoint multi-Origin (előzetes verzió)
 
 A többszörös eredetű támogatás kiküszöböli az állásidőt, és létrehozza a globális redundanciát. 
 
@@ -25,6 +25,10 @@ Ha több kezdőpontot választ egy Azure CDN végponton belül, a redundancia a 
 
 > [!NOTE]
 > Ez a funkció jelenleg csak a Microsoft Azure CDNból érhető el. 
+
+> [!IMPORTANT]
+> Azure CDN Endpoint multi-Origin szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-the-origin-group"></a>A Origin csoport létrehozása
 
@@ -144,7 +148,7 @@ A forgalom elosztása egy másik csoportba a kérelem URL-címe alapján.
 
 Az összes bejövő kérelem esetén, ha az URL-cím **/images**tartalmaz, akkor a kérés a művelet szakaszban **(myorigingroup)** lesz hozzárendelve a forrás csoportjához. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben engedélyezte Azure CDN Endpoint multi-Origin használatát.
 
 A Azure CDNről és a jelen cikkben említett egyéb Azure-szolgáltatásokról további információt a következő témakörben talál:

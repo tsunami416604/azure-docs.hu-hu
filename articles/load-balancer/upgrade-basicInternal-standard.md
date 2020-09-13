@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a6d2b69b0b498601497c4b33fb6bdfede87002df
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033155"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500249"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure belső Load Balancer frissítése – nincs szükség kimenő kapcsolatok megtételére
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -48,7 +48,7 @@ Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteke
 
 ## <a name="download-the-script"></a>A parancsfájl letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0).
+Töltse le az áttelepítési parancsfájlt a  [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureILBUpgrade/5.0).
 ## <a name="use-the-script"></a>A szkript használata
 
 A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
@@ -106,6 +106,6 @@ Igen, áttelepíti a forgalmat. Ha a forgalmat személyesen szeretné áttelepí
   
 E-mailt küldhet a szolgáltatásnak slbupgradesupport@microsoft.com , megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a standard Load Balancer](load-balancer-overview.md)

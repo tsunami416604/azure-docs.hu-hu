@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871564"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488830"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -66,7 +66,7 @@ Azon logikai alkalmazások esetében, amelyeknek közvetlen hozzáférésre van 
 > [!NOTE]
 > Az ISE-ben és azok összekötői futó Logic apps, függetlenül attól, hogy az összekötők hol futnak, a rögzített díjszabási csomagot és a fogyasztáson alapuló díjszabást kell követnie. További információ: [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md) és [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Címke | Példa | Leírás |
+| Címke | Példa | Description |
 |-------|---------|-------------|
 | **CORE** | ![Példa CORE-összekötőre](./media/apis-list/example-core-connector.png) | Az ezzel a címkével rendelkező beépített eseményindítók és műveletek a logikai alkalmazásokkal megegyező ISE-ben futnak. |
 | **ISE** | ![Példa ISE-összekötőre](./media/apis-list/example-ise-connector.png) | Az ezzel a címkével rendelkező felügyelt összekötők ugyanabban az ISE-ben futnak, mint a Logic apps. Ha egy Azure-beli virtuális hálózathoz csatlakoztatott helyszíni rendszerrel rendelkezik, az ISE lehetővé teszi, hogy a logikai alkalmazások közvetlenül hozzáférhessenek a rendszerhez a [helyszíni adatátjáró](../logic-apps/logic-apps-gateway-connection.md)nélkül. Ehelyett használhatja a rendszer **ISE** -összekötőjét, ha van ilyen, http-művelet vagy [egyéni összekötő](#custom). Az **ISE** -összekötőket nem tartalmazó helyszíni rendszerekhez használja a helyszíni adatátjárót. Az elérhető ISE-összekötők áttekintését lásd: [ISE-összekötők](#ise-connectors). |
@@ -308,7 +308,7 @@ A dedikált [integrációs szolgáltatási környezetben (ISE)](#integration-ser
         [![Azure Service Bus ISE-összekötő ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL Data Warehouse ISE-összekötő ][azure-sql-data-warehouse-icon]<br> **Az Azure SQL- <br> adattárházban**][azure-sql-data-warehouse-doc]
+        [![Azure szinapszis Analytics ISE-összekötő ][azure-sql-data-warehouse-icon]<br> **Az Azure SQL- <br> adattárházban**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure Table Storage ISE-összekötő az ][azure-table-storage-icon]<br> **Azure Table <br> Storage** -ban][azure-table-storage-doc]
@@ -572,7 +572,7 @@ Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "Lekérdezések futtatása Azure Monitor naplókon Log Analytics-munkaterületeken és Application Insights-összetevőkön"
 [azure-queues-doc]: /connectors/azurequeues/ "Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Üzeneteket küldhet a Service Bus-üzenetsorokból és -témakörökből, valamint fogadhatja a Service Bus-üzenetsorok és -előfizetések üzeneteit."
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "A Azure SQL Data Warehouse csatlakozhat, így megtekintheti az adatait"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Kapcsolódjon az Azure szinapszis Analyticshez, hogy megtekintse az adatait"
 [azure-table-storage-doc]: /connectors/azuretables/ "Kapcsolódjon az Azure Storage-fiókjához, így táblákat hozhat létre, frissíthet és lekérdezéseket végezhet"
 [biztalk-server-doc]: /connectors/biztalk/ "Kapcsolódjon a BizTalk Serverhoz, hogy a BizTalk-alapú alkalmazások egymás mellett is futtathatók legyenek Azure Logic Apps"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Csatlakozhat egy helyszíni fájlrendszerhez"

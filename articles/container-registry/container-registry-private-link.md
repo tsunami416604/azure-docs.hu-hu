@@ -3,27 +3,23 @@ title: Privát hivatkozás beállítása
 description: Hozzon létre egy privát végpontot egy tároló-beállításjegyzékben, és engedélyezze a hozzáférést egy helyi virtuális hálózatban lévő privát kapcsolaton keresztül. A Private link Access a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523842"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488745"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Privát csatlakozás Azure Container registryhez az Azure Private link használatával
 
 
-Korlátozza a hozzáférést egy beállításjegyzékhez a virtuális hálózat magánhálózati IP-címeinek a beállításjegyzékbeli végpontokhoz való hozzárendelésével és az [Azure Private-hivatkozás](../private-link/private-link-overview.md)használatával. A virtuális hálózaton lévő ügyfelek és a beállításjegyzék privát végpontjai közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinces hálózaton lévő privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A privát hivatkozás azt is lehetővé teszi, hogy az [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) privát vagy [VPN-átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md)keresztül lehetővé tegye a privát beállításjegyzék-hozzáférés helyszíni elérését.
+Korlátozza a hozzáférést egy beállításjegyzékhez a virtuális hálózat magánhálózati IP-címeinek a beállításjegyzékbeli végpontokhoz való hozzárendelésével és az [Azure Private-hivatkozás](../private-link/private-link-overview.md)használatával. A virtuális hálózaton lévő ügyfelek és a beállításjegyzék privát végpontjai közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinces hálózaton lévő privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A privát hivatkozás azt is lehetővé teszi, hogy az [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) privát vagy egy [VPN-átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md)keresztül privát beállításjegyzék-hozzáférés is elérhető legyen a helyi gépen.
 
 Megadhatja a beállításjegyzék saját végpontjának [DNS-beállításait](../private-link/private-endpoint-overview.md#dns-configuration) , hogy a beállítások a beállításjegyzék lefoglalt magánhálózati IP-címére legyenek feloldva. A DNS-konfigurációval a hálózatban lévő ügyfelek és szolgáltatások továbbra is hozzáférhetnek a beállításjegyzékhez a beállításjegyzék teljes tartománynevénél, például *myregistry.azurecr.IO*. 
 
-Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry rétegek](container-registry-skus.md).
+Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. Jelenleg legfeljebb 10 privát végpont állítható be a beállításjegyzékben. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry rétegek](container-registry-skus.md).
 
-
-## <a name="things-to-know"></a>Tudnivalók
-
-* A képvizsgálat jelenleg Azure Security Center használatával nem érhető el egy privát végponttal konfigurált beállításjegyzékben.
-* Jelenleg legfeljebb 10 privát végpont állítható be a beállításjegyzékben.
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -244,7 +240,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
     | **Példány részletei** |  |
     | Name | Adjon meg egy nevet. |
-    |Régió|Válasszon régiót.|
+    |Region|Válasszon régiót.|
     |||
 5. Válassza a **Tovább: erőforrás**elemet.
 6. Adja meg vagy válassza ki a következő adatokat:
@@ -270,7 +266,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     |saját DNS zóna |Select *(új) privatelink.azurecr.IO* |
     |||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
 2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
 
 A magánhálózati végpont létrehozása után a privát zónában a DNS-beállítások a portál **privát végpontok** lapján jelennek meg:
@@ -369,7 +365,7 @@ Ahogy az ebben a cikkben is látható, amikor egy magánhálózati végponti kap
 
 Ha később új replikát ad hozzá, manuálisan kell hozzáadnia egy új zónát az adott régióban lévő adatvégponthoz. Ha például létrehoz egy *myregistry* -replikát a *northeurope* helyen, vegyen fel egy zóna rekordot a következőhöz: `myregistry.northeurope.data.azurecr.io` . További lépések: [DNS-rekordok létrehozása a privát zónában](#create-dns-records-in-the-private-zone) ebben a cikkben.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
 

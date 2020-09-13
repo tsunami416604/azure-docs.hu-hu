@@ -2,19 +2,18 @@
 title: OPERÁCIÓSRENDSZER-lemezek titkosítása az ügyfél által felügyelt kulcsok használatával Azure DevTest Labs
 description: Megtudhatja, hogyan titkosíthatja az operációs rendszer (OS) lemezeit az ügyfél által felügyelt kulcsokkal Azure DevTest Labsban.
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/01/2020
+ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815921"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489828"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Operációs rendszer (OS) lemezek titkosítása az ügyfél által felügyelt kulcsok használatával Azure DevTest Labs
 A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az SSE alapértelmezés szerint automatikusan titkosítja a felügyelt lemezeken tárolt adatait az Azure-ban (az operációs rendszer és az adatlemezek), amikor a felhőben megmarad. További információ az Azure-beli [lemezek titkosításáról](../virtual-machines/windows/disk-encryption.md) . 
 
 A DevTest Labs szolgáltatásban a labor részeként létrehozott operációsrendszer-lemezek és adatlemezek a platform által felügyelt kulcsok használatával lesznek titkosítva. A labor tulajdonosaként azonban úgy is dönthet, hogy a saját kulcsait használva titkosítja a tesztkörnyezet virtuális gépe operációsrendszer-lemezeit. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhatja az **ügyfél által felügyelt kulcsot** , amelyet a rendszer a Lab operációsrendszer-lemezeken tárolt adattitkosításhoz használ. Az ügyfél által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lásd még: [korlátozások az ügyfél által felügyelt kulcsok használatával](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
-
 
 > [!NOTE]
 > - Az ügyfél által felügyelt kulccsal jelenleg a lemezes titkosítás csak a DevTest Labs operációsrendszer-lemezei esetében támogatott. 
@@ -29,8 +28,11 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 
     - A lemez titkosítási készletének ugyanabban a **régióban és előfizetésben kell lennie, mint a labornak**. 
     - Győződjön meg arról, hogy (Lab tulajdonos) rendelkezik **-e legalább olvasó szintű hozzáféréssel** ahhoz a lemezes titkosítási készlethez, amelyet a labor operációsrendszer-lemezek titkosításához fog használni. 
-2. A 8/1/2020-es előtti laborok esetében a labor tulajdonosának biztosítania kell, hogy a labor rendszerhez rendelt identitás engedélyezve legyen. Ehhez **a** labor tulajdonosa megtekintheti a labort, kattintson a **konfiguráció és házirendek**elemre, kattintson az **identitás (előzetes verzió)** panelre, majd a rendszerhez rendelt identitás **állapotának** módosítása elemre, és kattintson a **Mentés**gombra. Az 8/1/2020 labor rendszerhez rendelt identitása után létrehozott új laborok alapértelmezés szerint engedélyezve lesznek. 
-3. Ahhoz, hogy a labor kezelni tudja az összes Lab operációsrendszer-lemez titkosítását, a labor tulajdonosának explicit módon meg kell adnia a tesztkörnyezet **rendszerhez rendelt identitás** -olvasó szerepkörét a lemez titkosítási készletén, valamint a virtuális gépi közreműködő szerepkört a mögöttes Azure-előfizetésben. A labor tulajdonosa a következő lépések végrehajtásával teheti meg:
+1. A 8/1/2020-es előtti laborok esetében a labor tulajdonosának biztosítania kell, hogy a labor rendszerhez rendelt identitás engedélyezve legyen. Ehhez **a** labor tulajdonosa megtekintheti a labort, kattintson a **konfiguráció és házirendek**elemre, kattintson az **identitás (előzetes verzió)** panelre, majd a rendszerhez rendelt identitás **állapotának** módosítása elemre, és kattintson a **Mentés**gombra. Az 8/1/2020 labor rendszerhez rendelt identitása után létrehozott új laborok alapértelmezés szerint engedélyezve lesznek. 
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/managed-keys.png" alt-text="Felügyelt kulcsok":::
+1. Ahhoz, hogy a labor kezelni tudja az összes Lab operációsrendszer-lemez titkosítását, a labor tulajdonosának explicit módon meg kell adnia a tesztkörnyezet **rendszerhez rendelt identitás** -olvasó szerepkörét a lemez titkosítási készletén, valamint a virtuális gépi közreműködő szerepkört a mögöttes Azure-előfizetésben. A labor tulajdonosa a következő lépések végrehajtásával teheti meg:
 
    
     1. Győződjön meg arról, hogy tagja a [felhasználói hozzáférés rendszergazdai szerepkörének](../role-based-access-control/built-in-roles.md#user-access-administrator) az Azure-előfizetési szinten, így kezelheti az Azure-erőforrásokhoz való felhasználói hozzáférést. 
@@ -71,8 +73,24 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 1. A következő szöveget tartalmazó üzenetablakban: *Ez a beállítás a tesztkörnyezetben újonnan létrehozott gépekre lesz érvényes. A régi operációsrendszer-lemez titkosítva marad a régi lemezes titkosítási készlettel*, majd kattintson **az OK gombra**. 
 
     A konfigurálást követően a labor operációsrendszer-lemezeket a rendszer a lemez titkosítási készletével megadott ügyfél által felügyelt kulccsal fogja titkosítani. 
+   
+## <a name="how-to-validate-if-disks-are-being-encrypted"></a>Annak ellenőrzése, hogy a lemezek titkosítása folyamatban van-e
 
-## <a name="next-steps"></a>További lépések
+1. Nyissa meg a laborban egy, az ügyfél által felügyelt kulccsal rendelkező lemez titkosításának engedélyezése után létrehozott labor virtuális gépet.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Virtuális gép, amelyen engedélyezve van a lemez titkosítása":::
+1. Kattintson a virtuális gép erőforráscsoporthoz, és kattintson az operációsrendszer-lemezre.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Virtuálisgép-erőforráscsoport":::
+1. Lépjen a titkosításhoz, és ellenőrizze, hogy a titkosítás beállítása ügyfél által felügyelt kulcsra van-e beállítva a kiválasztott lemezes titkosítási készlettel.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Titkosítás ellenőrzése":::
+  
+## <a name="next-steps"></a>Következő lépések
+
 Lásd az alábbi cikkeket: 
 
 - [Azure Disk Encryption](../virtual-machines/windows/disk-encryption.md). 

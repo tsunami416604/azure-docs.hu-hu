@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dc9c39192dc478a4ffeba64983a498191417ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c3793daa820d0cb5b5b6900402704756f206425
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213584"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488388"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure szinapszis Analyticsben
 
@@ -67,7 +67,7 @@ A dinamikus erőforrás-osztályok a következő előre definiált adatbázis-sz
 
 Az egyes erőforrás-osztályok memóriájának kiosztása a következő.
 
-| Szolgáltatási szint  | smallrc           | mediumrc               | largerc                | xlargerc               |
+| Szolgáltatásszint  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
 | DW200c         | 12,5%             | 12,5%                  | 22                    | 70%                    |
@@ -133,7 +133,7 @@ Az alábbi utasítások mentesülnek az erőforrás-osztályoktól, és mindig a
 - DBCC
 
 <!--
-Removed as these two are not confirmed / supported under SQL DW
+Removed as these two are not confirmed / supported under Azure Synapse Analytics
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
@@ -192,7 +192,7 @@ Javasoljuk, hogy hozzon létre egy olyan felhasználót, amely egy adott típus�
 
 ### <a name="resource-classes-for-load-users"></a>Erőforrás-osztályok a betöltési felhasználók számára
 
-`CREATE TABLE`Alapértelmezés szerint fürtözött oszlopcentrikus indexeket használ. Az adatok oszlopcentrikus-indexbe tömörítése egy memória-igényes művelet, a memória terhelése pedig csökkentheti az index minőségét. A memória-nyomás nagyobb erőforrás-osztályt eredményezhet az adatbetöltése során. Annak érdekében, hogy a terhelések elegendő memóriával rendelkezzenek, létrehozhat egy terhelés futtatására kijelölt felhasználót, és hozzárendelheti a felhasználót egy magasabb szintű erőforrás-osztályhoz.
+`CREATE TABLE` Alapértelmezés szerint fürtözött oszlopcentrikus indexeket használ. Az adatok oszlopcentrikus-indexbe tömörítése egy memória-igényes művelet, a memória terhelése pedig csökkentheti az index minőségét. A memória-nyomás nagyobb erőforrás-osztályt eredményezhet az adatbetöltése során. Annak érdekében, hogy a terhelések elegendő memóriával rendelkezzenek, létrehozhat egy terhelés futtatására kijelölt felhasználót, és hozzárendelheti a felhasználót egy magasabb szintű erőforrás-osztályhoz.
 
 A terhelések feldolgozásához szükséges memória a betöltött tábla természetétől és az adatok méretétől függ. A memóriával kapcsolatos követelményekről a [sorcsoport minőségének maximalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)című témakörben olvashat bővebben.
 
@@ -243,9 +243,9 @@ A következő tárolt eljárás célja:
 Szintaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:Adjon meg NULL paramétert az aktuális DWU kinyeréséhez a DW DB-ből, vagy adja meg a támogatott DWU a következő formában: "DW100c".
-2. @SCHEMA_NAME:Adja meg a tábla sémájának nevét.
-3. @TABLE_NAME:Adja meg a kamat táblanév nevét
+1. @DWU: Adjon meg NULL paramétert az aktuális DWU kinyeréséhez a DW DB-ből, vagy adja meg a támogatott DWU a következő formában: "DW100c".
+2. @SCHEMA_NAME: Adja meg a tábla sémájának nevét.
+3. @TABLE_NAME: Adja meg a kamat táblanév nevét
 
 Példák a tárolt folyamat végrehajtására:
 
@@ -590,6 +590,6 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele a SZINAPSZIS SQL-ben](sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).

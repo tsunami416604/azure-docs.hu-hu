@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835597"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488507"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében
 Ez a cikk bemutatja, hogyan lehet Stream Analytics-lekérdezést hangolni a streaming Analytics-feladatok átviteli sebességének növeléséhez. A következő útmutató segítségével méretezheti a feladatokat nagyobb terhelés kezelésére, és kihasználhatja a több rendszererőforrást (például több sávszélességet, több processzor-erőforrást, több memóriát).
@@ -23,7 +23,7 @@ Előfeltételként előfordulhat, hogy a következő cikkeket kell elolvasnia:
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>1. eset – a lekérdezés eredendően teljesen párhuzamosítható a bemeneti partíciók között
 Ha a lekérdezés eredendően teljesen párhuzamosítható a bemeneti partíciók között, kövesse az alábbi lépéseket:
 1.  Készítse el a lekérdezést zavaróan párhuzamosan a **Partition by** kulcsszó használatával. További részletekért tekintse meg a zavaró párhuzamos feladatok című szakaszt [ezen az oldalon](stream-analytics-parallelization.md).
-2.  A lekérdezésben használt kimeneti típusoktól függően előfordulhat, hogy egyes kimenetek nem párhuzamosítható, vagy további konfigurációra van szükségük, hogy zavaróan párhuzamos legyen. A PowerBI kimenete például nem párhuzamosítható. A kimenetek mindig össze lesznek fésülve a kimeneti fogadóba való küldés előtt. A Blobok, táblák, ADLS, Service Bus és Azure függvények automatikusan párhuzamosak. Az SQL és az SQL DW kimenetek esetében lehetőség van a párhuzamos. Az Event hub-nak meg kell egyeznie a PartitionKey-konfigurációval, hogy egyezzen a **Partition by** mezővel (általában PartitionID). Az Event hub esetében külön figyelmet kell fordítani a partíciók számának megadására az összes bemenetnél és az összes kimenetnél, hogy elkerülje a partíciók közti átkelést. 
+2.  A lekérdezésben használt kimeneti típusoktól függően előfordulhat, hogy egyes kimenetek nem párhuzamosítható, vagy további konfigurációra van szükségük, hogy zavaróan párhuzamos legyen. A PowerBI kimenete például nem párhuzamosítható. A kimenetek mindig össze lesznek fésülve a kimeneti fogadóba való küldés előtt. A Blobok, táblák, ADLS, Service Bus és Azure függvények automatikusan párhuzamosak. Az SQL és az Azure szinapszis Analytics kimenetei párhuzamos is rendelkeznek. Az Event hub-nak meg kell egyeznie a PartitionKey-konfigurációval, hogy egyezzen a **Partition by** mezővel (általában PartitionID). Az Event hub esetében külön figyelmet kell fordítani a partíciók számának megadására az összes bemenetnél és az összes kimenetnél, hogy elkerülje a partíciók közti átkelést. 
 3.  Futtassa a lekérdezést a **6 Su** -vel (amely egy számítástechnikai csomópont teljes kapacitása) a maximálisan elérhető átviteli sebesség méréséhez, és ha **Group By**-t használ, mérje fel, hogy hány csoport (kardinális) kezelésére van lehetőség. A rendszererőforrás-korlátokat ütő feladat általános tünetei a következők.
     - A SU% kihasználtsági metrika meghaladja a 80%-ot. Ez azt jelzi, hogy a memóriahasználat magas. A mérőszám növeléséhez hozzájáruló tényezők leírása [itt](stream-analytics-streaming-unit-consumption.md)található. 
     -   A kimeneti időbélyeg a falióra időpontjával kapcsolatos. A lekérdezési logikától függően előfordulhat, hogy a kimeneti időbélyeg a fal órajelének időpontjához képest logikai eltolással rendelkezik. Azonban nagyjából azonos sebességgel kell haladni. Ha a kimeneti időbélyeg további és további mögött van, akkor azt jelzi, hogy a rendszer túlműködik-e. Ez lehet az alsóbb rétegbeli kimeneti sávszélesség-szabályozás vagy a nagy CPU-kihasználtság eredménye. Jelenleg nem biztosítunk CPU-kihasználtsági mérőszámot, ezért nehéz lehet különbséget tenni a kettőnél.
@@ -80,7 +80,7 @@ Bizonyos ISV-használati esetek esetében, ahol a több bérlőről származó a
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

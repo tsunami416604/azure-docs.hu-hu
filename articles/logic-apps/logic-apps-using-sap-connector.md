@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833895"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488847"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -124,7 +124,7 @@ Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások prémium 
 
 ### <a name="sap-client-library-prerequisites"></a>Az SAP-ügyfél függvénytárának előfeltételei
 
-* Győződjön meg arról, hogy a legújabb verziót, az [SAP Connectort (nkh 3,0) telepíti Microsoft .net 3.0.22.0 a .NET-keretrendszer 4,0-Windows 64-bit (x64) használatával lefordítva](https://softwaredownloads.sap.com/file/0020000001000932019). A korábbi verziók kompatibilitási problémákat okozhatnak. További információ: [SAP ügyféloldali függvénytár-verziók](#sap-library-versions).
+* Győződjön meg arról, hogy a legújabb verziót, az [SAP Connectort (nkh 3,0) telepíti Microsoft .net 3.0.22.0 a .NET-keretrendszer 4,0-Windows 64-bit (x64) használatával lefordítva](https://support.sap.com/en/product/connectors/msnet.html). A korábbi verziók kompatibilitási problémákat okozhatnak. További információ: [SAP ügyféloldali függvénytár-verziók](#sap-library-versions).
 
 * Alapértelmezés szerint az SAP-telepítő az alapértelmezett telepítési mappában helyezi el az összeállítási fájlokat. Ezeket a szerelvény-fájlokat egy másik helyre kell másolnia a forgatókönyv alapján, az alábbiak szerint:
 
@@ -396,7 +396,7 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    Vagy manuálisan is megadhat egy műveletet:
 
-   ![SAP-művelet manuális megadása](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
+   ![Adja meg manuálisan a használni kívánt SAP-műveletet](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Az alábbi példa bemutatja, hogyan jelenik meg a művelet, amikor beállítja, hogy a trigger egynél több üzenetet kapjon.
 
@@ -606,7 +606,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 1. A IDoc- **feldolgozási beállítások tesztelési eszközének** megnyitásához az SAP-felületen használja az **we19** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
-1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Válassza a **Létrehozás** lehetőséget.
+1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Kattintson a **Létrehozás** gombra.
 
 1. A **Folytatás**gombra kattintva erősítse meg, hogy **melyik IDoc-típust?** üzenet jelenik meg.
 
@@ -808,12 +808,12 @@ Egyszerű SAP IDoc XML-séma létrehozásához használja az **SAP-bejelentkezé
 
 Ez a példa deklarálja a legfelső szintű csomópontot és a névtereket. A mintakód URI-ja a `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` következő konfigurációt deklarálja:
 
-* `/IDoc`a legfelső szintű Megjegyzés az összes IDocs
-* `/3`a rekordtípusok verziója a gyakori szegmensek definícióinak
-* `/ORDERS05`a IDoc típusa
-* `//`üres szegmens, mert nincs IDoc-bővítmény
-* `/700`az SAP verziója
-* `/Send`az adatok SAP-be való küldésének művelete
+* `/IDoc` a legfelső szintű Megjegyzés az összes IDocs
+* `/3` a rekordtípusok verziója a gyakori szegmensek definícióinak
+* `/ORDERS05` a IDoc típusa
+* `//` üres szegmens, mert nincs IDoc-bővítmény
+* `/700` az SAP verziója
+* `/Send` az adatok SAP-be való küldésének művelete
 
 ```xml
 
@@ -1190,7 +1190,7 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódjon a helyi rendszerekhez](../logic-apps/logic-apps-gateway-connection.md) Azure Logic Appsról.
 * Megtudhatja, hogyan érvényesítheti, átalakíthatja és használhatja más üzenetkezelési műveleteket a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md).

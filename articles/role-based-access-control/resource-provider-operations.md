@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/31/2020
+ms.date: 09/04/2020
 ms.custom: generated
-ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: cbf859baa79b6630dea44a23d2a0e6f9fb64b82a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227763"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489663"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -22,7 +22,7 @@ Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgál
 
 A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgáltató nevére a következő táblázatban.
 
-## <a name="all"></a>Összes
+## <a name="all"></a>Mind
 
 | Általános kérdések |
 | --- |
@@ -402,6 +402,23 @@ Azure-szolgáltatás: [Virtual Machines](../virtual-machines/index.yml), [Virtua
 > | Microsoft. számítás/availabilitySets/írás | Új rendelkezésre állási csoport létrehozása vagy egy meglévő frissítése |
 > | Microsoft. számítás/availabilitySets/törlés | A rendelkezésre állási csoport törlése |
 > | Microsoft. számítás/availabilitySets/méreteinek listáján/olvasás | A rendelkezésre állási csoportba tartozó virtuális gépek létrehozásához vagy frissítéséhez elérhető méretek listázása |
+> | Microsoft. számítás/cloudServices/olvasás | Felhőszolgáltatás tulajdonságainak beolvasása. |
+> | Microsoft. számítás/cloudServices/írás | Létrehozott egy új felhőszolgáltatás, vagy frissít egy meglévőt. |
+> | Microsoft. számítás/cloudServices/törlés | Törli a felhőszolgáltatás. |
+> | Microsoft. számítási/cloudServices/erő/művelet | Kikapcsolja a felhőszolgáltatás. |
+> | Microsoft. számítás/cloudServices/indítás/művelet | Elindítja a felhőszolgáltatás. |
+> | Microsoft. számítás/cloudServices/újraindítás/művelet | Egy vagy több szerepkör-példány újraindítása egy felhőszolgáltatás. |
+> | Microsoft. számítás/cloudServices/rendszerkép/művelet | Újraépíti a felhőszolgáltatás lévő szerepkör-példányok összes lemezét. |
+> | Microsoft. számítási/cloudServices/Újraépítés/művelet | Egy felhőszolgáltatás található összes szerepkör-példány rendszerképének alaphelyzetbe állítása. |
+> | Microsoft. számítás/cloudServices/törlés/művelet | A felhőszolgáltatás lévő szerepkör-példányok törlése. |
+> | Microsoft. számítás/cloudServices/instanceView/olvasás | Egy felhőszolgáltatás állapotának beolvasása. |
+> | Microsoft. számítás/cloudServices/roleInstances/delete | Töröl egy RoleInstance a felhőszolgáltatás. |
+> | Microsoft. számítás/cloudServices/roleInstances/olvasás | RoleInstance beolvasása a felhőszolgáltatás. |
+> | Microsoft. számítás/cloudServices/roleInstances/újraindítás/művelet | Felhőszolgáltatás szerepkör-példányának újraindítása |
+> | Microsoft. számítás/cloudServices/roleInstances/rendszerkép/művelet | Rendszerkép egy felhőszolgáltatás szerepkör-példányának alaphelyzetbe állítása. |
+> | Microsoft. számítás/cloudServices/roleInstances/Újraépítés/művelet | Egy felhőszolgáltatás összes lemezének újraépítése. |
+> | Microsoft. számítás/cloudServices/roleInstances/instanceView/READ | Egy szerepkör-példány állapotának beolvasása egy felhőszolgáltatás. |
+> | Microsoft. számítás/cloudServices/updateDomains/olvasás | Lekérdezi a felhőszolgáltatás lévő összes frissítési tartomány listáját. |
 > | Microsoft. számítás/diskAccesses/olvasás | DiskAccess-erőforrás tulajdonságainak beolvasása |
 > | Microsoft. számítás/diskAccesses/írás | Hozzon létre egy új DiskAccess-erőforrást, vagy frissítsen egy meglévőt |
 > | Microsoft. számítás/diskAccesses/törlés | DiskAccess-erőforrás törlése |
@@ -1387,21 +1404,22 @@ Azure-szolgáltatás: [Azure Data Box](../databox/index.yml)
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
 > | --- | --- |
+> | Microsoft. DataBox/feladatok/olvasás | Megrendelések listázása vagy beolvasása |
+> | Microsoft. DataBox/feladatok/törlés | Megrendelések törlése |
+> | Microsoft. DataBox/feladatok/írás | Megrendelések létrehozása vagy frissítése |
+> | Microsoft. DataBox/Locations/availableSkus/READ | Az elérhető SKU-ket listázhatja vagy beolvashatja |
+> | Microsoft. DataBox/Locations/operationResults/READ | A művelet eredményeinek listázása vagy beolvasása |
+> | Microsoft. DataBox/Operations/READ | A műveletek listázása vagy beolvasása |
+> | **DataAction** | **Leírás** |
 > | Microsoft. DataBox/regisztráció/művelet | Szolgáltató regisztrálása a Microsoft. Databox |
 > | Microsoft. DataBox/regisztráció/művelet | A Microsoft. Databox szolgáltató regisztrációjának megszüntetése |
 > | Microsoft. DataBox/feladatok/megszakítás/művelet | Megszakítja a folyamatban lévő rendelést. |
 > | Microsoft. DataBox/Jobs/bookShipmentPickUp/művelet | Lehetővé teszi a visszaszállítások felvételének lefoglalását. |
-> | Microsoft. DataBox/feladatok/olvasás | Megrendelések listázása vagy beolvasása |
-> | Microsoft. DataBox/feladatok/törlés | Megrendelések törlése |
-> | Microsoft. DataBox/feladatok/írás | Megrendelések létrehozása vagy frissítése |
 > | Microsoft. DataBox/Jobs/listCredentials/művelet | Felsorolja a rendeléshez kapcsolódó titkosítatlan hitelesítő adatokat. |
 > | Microsoft. DataBox/Locations/validateInputs/Action | Ez a metódus az összes érvényesítési típust támogatja. |
 > | Microsoft. DataBox/Locations/validateAddress/Action | Ellenőrzi a szállítási címet, és alternatív címeket biztosít, ha vannak ilyenek. |
 > | Microsoft. DataBox/Locations/availableSkus/Action | Ez a metódus visszaadja az elérhető SKU-ket tartalmazó listát. |
 > | Microsoft. DataBox/Locations/regionConfiguration/Action | Ez a metódus a régió konfigurációit adja vissza. |
-> | Microsoft. DataBox/Locations/availableSkus/READ | Az elérhető SKU-ket listázhatja vagy beolvashatja |
-> | Microsoft. DataBox/Locations/operationResults/READ | A művelet eredményeinek listázása vagy beolvasása |
-> | Microsoft. DataBox/Operations/READ | A műveletek listázása vagy beolvasása |
 > | Microsoft. DataBox/előfizetések/resourceGroups/moveResources/művelet | Ez a metódus végrehajtja az erőforrás-áthelyezést. |
 > | Microsoft. DataBox/előfizetések/resourceGroups/validateMoveResources/művelet | Ez a metódus ellenőrzi, hogy engedélyezett-e az erőforrás áthelyezése. |
 
@@ -3286,6 +3304,7 @@ Azure-szolgáltatás: [Azure Database for MariaDB](../mariadb/index.yml)
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
 > | --- | --- |
+> | Microsoft. DBforMariaDB/privateEndpointConnectionsApproval/művelet | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
 > | Microsoft. DBforMariaDB/regisztráció/művelet | MariaDB erőforrás-szolgáltató regisztrálása |
 > | Microsoft. DBforMariaDB/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
 > | Microsoft. DBforMariaDB/Locations/administratorAzureAsyncOperation/READ | Folyamatban lévő műveletek beolvasása a MariaDB-kiszolgáló rendszergazdái számára |
@@ -3304,10 +3323,11 @@ Azure-szolgáltatás: [Azure Database for MariaDB](../mariadb/index.yml)
 > | Microsoft. DBforMariaDB/Locations/serverKeyOperationResults/READ | Folyamatban lévő műveletek beolvasása transzparens adattitkosítási kiszolgáló kulcsain |
 > | Microsoft. DBforMariaDB/Operations/READ | A MariaDB-műveletek listájának visszaadása. |
 > | Microsoft. DBforMariaDB/performanceTiers/READ | A rendelkezésre álló teljesítményi rétegek listáját adja vissza. |
-> | Microsoft. DBforMariaDB/Servers/queryTexts/Action | A lekérdezések listájához tartozó szövegek visszaküldése |
-> | Microsoft. DBforMariaDB/Servers/queryTexts/Action | Egy lekérdezés szövegének visszaadása |
 > | Microsoft. DBforMariaDB/kiszolgálók/indítás/művelet | Egy adott kiszolgálót indít el. |
 > | Microsoft. DBforMariaDB/kiszolgálók/leállítás/művelet | Leállítja egy adott kiszolgálót. |
+> | Microsoft. DBforMariaDB/Servers/queryTexts/Action | A lekérdezések listájához tartozó szövegek visszaküldése |
+> | Microsoft. DBforMariaDB/Servers/queryTexts/Action | Egy lekérdezés szövegének visszaadása |
+> | Microsoft. DBforMariaDB/Servers/privateEndpointConnectionsApproval/Action | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
 > | Microsoft. DBforMariaDB/kiszolgálók/olvasás | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
 > | Microsoft. DBforMariaDB/kiszolgálók/írás | Létrehoz egy kiszolgálót a megadott paraméterekkel, vagy frissíti a megadott kiszolgálóhoz tartozó tulajdonságokat vagy címkéket. |
 > | Microsoft. DBforMariaDB/kiszolgálók/törlés | Töröl egy meglévő kiszolgálót. |
@@ -3366,6 +3386,7 @@ Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
 > | --- | --- |
+> | Microsoft. DBforMySQL/privateEndpointConnectionsApproval/művelet | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
 > | Microsoft. DBforMySQL/regisztráció/művelet | MySQL erőforrás-szolgáltató regisztrálása |
 > | Microsoft. DBforMySQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
 > | Microsoft. DBforMySQL/Locations/administratorAzureAsyncOperation/READ | Folyamatban lévő műveletek beolvasása a MySQL-kiszolgáló rendszergazdái számára |
@@ -3386,9 +3407,9 @@ Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft. DBforMySQL/performanceTiers/READ | A rendelkezésre álló teljesítményi rétegek listáját adja vissza. |
 > | Microsoft. DBforMySQL/kiszolgálók/indítás/művelet | Egy adott kiszolgálót indít el. |
 > | Microsoft. DBforMySQL/kiszolgálók/leállítás/művelet | Leállítja egy adott kiszolgálót. |
-> | Microsoft. DBforMySQL/kiszolgálók/exportálás/művelet |  |
 > | Microsoft. DBforMySQL/Servers/queryTexts/Action | A lekérdezések listájához tartozó szövegek visszaküldése |
 > | Microsoft. DBforMySQL/Servers/queryTexts/Action | Egy lekérdezés szövegének visszaadása |
+> | Microsoft. DBforMySQL/Servers/privateEndpointConnectionsApproval/Action | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
 > | Microsoft. DBforMySQL/kiszolgálók/olvasás | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
 > | Microsoft. DBforMySQL/kiszolgálók/írás | Létrehoz egy kiszolgálót a megadott paraméterekkel, vagy frissíti a megadott kiszolgálóhoz tartozó tulajdonságokat vagy címkéket. |
 > | Microsoft. DBforMySQL/kiszolgálók/törlés | Töröl egy meglévő kiszolgálót. |
@@ -3408,6 +3429,9 @@ Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft. DBforMySQL/kiszolgálók/adatbázisok/olvasás | A MySQL-adatbázisok listájának visszaadása vagy a megadott adatbázis tulajdonságainak beolvasása. |
 > | Microsoft. DBforMySQL/kiszolgálók/adatbázisok/írás | Egy MySQL-adatbázist hoz létre a megadott paraméterekkel, vagy frissíti a megadott adatbázis tulajdonságait. |
 > | Microsoft. DBforMySQL/kiszolgálók/adatbázisok/törlés | Töröl egy meglévő MySQL-adatbázist. |
+> | Microsoft. DBforMySQL/kiszolgálók/exportálás/írás |  |
+> | Microsoft. DBforMySQL/kiszolgálók/exportálás/olvasás |  |
+> | Microsoft. DBforMySQL/kiszolgálók/exportálás/olvasás |  |
 > | Microsoft. DBforMySQL/Servers/firewallRules/READ | Visszaadja egy kiszolgáló tűzfalszabályok listáját, vagy lekéri a megadott tűzfalszabály tulajdonságait. |
 > | Microsoft. DBforMySQL/Servers/firewallRules/Write | Tűzfalszabály létrehozása a megadott paraméterekkel vagy egy meglévő szabály frissítése. |
 > | Microsoft. DBforMySQL/Servers/firewallRules/delete | Töröl egy meglévő tűzfalszabály-szabályt. |
@@ -3447,8 +3471,16 @@ Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
 > | --- | --- |
+> | Microsoft. DBforPostgreSQL/privateEndpointConnectionsApproval/művelet | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
 > | Microsoft. DBforPostgreSQL/regisztráció/művelet | A PostgreSQL erőforrás-szolgáltató regisztrálása |
 > | Microsoft. DBforPostgreSQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/READ | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Write | Létrehoz egy kiszolgálót a megadott paraméterekkel, vagy frissíti a megadott kiszolgálóhoz tartozó tulajdonságokat vagy címkéket. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/delete | Töröl egy meglévő kiszolgálót. |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. bepillantást/diagnosticSettings/READ | Az erőforráshoz tartozó nem független beállítás beolvasása |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. bepillantások/diagnosticSettings/írás | Az erőforrás diagnosztikai beállításának létrehozása vagy frissítése |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. bepillantást/logDefinitions/READ | A PostgreSQL-kiszolgálókhoz elérhető naplók beolvasása |
+> | Microsoft. DBforPostgreSQL/flexibleServers/Providers/Microsoft. bepillantást/metricDefinitions/READ | Az adatbázisokhoz elérhető metrikák visszatérési típusai |
 > | Microsoft. DBforPostgreSQL/Locations/administratorAzureAsyncOperation/READ | Folyamatban lévő műveletek beolvasása a PostgreSQL-kiszolgáló rendszergazdái számára |
 > | Microsoft. DBforPostgreSQL/Locations/administratorOperationResults/READ | A PostgreSQL-kiszolgáló rendszergazdai műveleti eredményeinek visszaadása |
 > | Microsoft. DBforPostgreSQL/Locations/azureAsyncOperation/READ | A PostgreSQL-kiszolgáló műveleti eredményeinek visszaadása |
@@ -3466,6 +3498,7 @@ Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | Microsoft. DBforPostgreSQL/Operations/READ | A PostgreSQL-műveletek listájának visszaadása. |
 > | Microsoft. DBforPostgreSQL/performanceTiers/READ | A rendelkezésre álló teljesítményi rétegek listáját adja vissza. |
 > | Microsoft. DBforPostgreSQL/Servers/queryTexts/Action | Egy lekérdezés szövegének visszaadása |
+> | Microsoft. DBforPostgreSQL/Servers/privateEndpointConnectionsApproval/Action | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
 > | Microsoft. DBforPostgreSQL/kiszolgálók/olvasás | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
 > | Microsoft. DBforPostgreSQL/kiszolgálók/írás | Létrehoz egy kiszolgálót a megadott paraméterekkel, vagy frissíti a megadott kiszolgálóhoz tartozó tulajdonságokat vagy címkéket. |
 > | Microsoft. DBforPostgreSQL/kiszolgálók/törlés | Töröl egy meglévő kiszolgálót. |
@@ -3765,7 +3798,7 @@ Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
+Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [azure szinapszis Analytics (korábban SQL Data Warehouse)](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -3938,13 +3971,11 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/managedInstances/vulnerabilityAssessments/READ | A sebezhetőségi felmérési szabályzatok beolvasása egy adott felügyelt példányon |
 > | Microsoft. SQL/Operations/READ | Elérhető REST-műveletek beolvasása |
 > | Microsoft. SQL/kiszolgálók/tdeCertificates/művelet | TDE-tanúsítvány létrehozása/frissítése |
-> | Microsoft. SQL/kiszolgálók/enableAzureADOnlyAuthentication/művelet | Csak a logikai kiszolgálón lévő hitelesítés engedélyezése Azure Active Directory |
-> | Microsoft. SQL/kiszolgálók/disableAzureADOnlyAuthentication/művelet | Csak a logikai kiszolgálón lévő hitelesítés letiltása Azure Active Directory |
+> | Microsoft. SQL/kiszolgálók/importálás/művelet | Azure SQL Database importálása |
 > | Microsoft. SQL/kiszolgálók/olvasás | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
 > | Microsoft. SQL/kiszolgálók/írás | Létrehoz egy kiszolgálót a megadott paraméterekkel, vagy frissíti a megadott kiszolgálóhoz tartozó tulajdonságokat vagy címkéket. |
 > | Microsoft. SQL/kiszolgálók/törlés | Töröl egy meglévő kiszolgálót. |
 > | Microsoft. SQL/kiszolgálók/privateEndpointConnectionsApproval/művelet | Meghatározza, hogy a felhasználó jóváhagyhat-e privát végponti kapcsolatokat |
-> | Microsoft. SQL/kiszolgálók/importálás/művelet | Új adatbázis létrehozása a kiszolgálón és a séma és az adatok központi telepítése DacPac-csomagból |
 > | Microsoft. SQL/kiszolgálók/administratorOperationResults/olvasás | Folyamatban lévő műveletek beolvasása a kiszolgálói rendszergazdáknál |
 > | Microsoft. SQL/kiszolgálók/rendszergazdák/olvasás | Egy adott Azure Active Directory rendszergazdai objektum beolvasása |
 > | Microsoft. SQL/kiszolgálók/rendszergazdák/írás | Egy adott Azure Active Directory rendszergazdai objektum hozzáadására vagy frissítésére szolgál. |
@@ -3953,18 +3984,17 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/kiszolgálók/tanácsadók/írás | A tanácsadók kiszolgálói szinten történő automatikus végrehajtási állapotának frissítése. |
 > | Microsoft. SQL/kiszolgálók/tanácsadók/recommendedActions/olvasás | A kiszolgáló megadott tanácsadójának javasolt műveleteinek listáját adja vissza. |
 > | Microsoft. SQL/kiszolgálók/tanácsadók/recommendedActions/írás | A javasolt művelet alkalmazása a kiszolgálón |
-> | Microsoft. SQL/kiszolgálók/auditingPolicies/olvasás | Az adott kiszolgálón konfigurált alapértelmezett kiszolgálóoldali naplózási szabályzat részleteinek beolvasása |
-> | Microsoft. SQL/kiszolgálók/auditingPolicies/írás | Az alapértelmezett kiszolgálói tábla naplózásának módosítása egy adott kiszolgálón |
 > | Microsoft. SQL/kiszolgálók/auditingSettings/olvasás | Egy adott kiszolgálón konfigurált kiszolgálói blob naplózási szabályzat részleteinek beolvasása |
 > | Microsoft. SQL/kiszolgálók/auditingSettings/írás | A kiszolgáló blob-naplózásának módosítása egy adott kiszolgálón |
 > | Microsoft. SQL/Servers/auditingSettings/operationResults/READ | A kiszolgálói blob naplózási házirendjének beállítása művelet eredményének beolvasása |
 > | Microsoft. SQL/kiszolgálók/automaticTuning/olvasás | A kiszolgáló Automatikus hangolási beállításainak visszaadása |
 > | Microsoft. SQL/kiszolgálók/automaticTuning/írás | Frissíti a kiszolgáló Automatikus hangolási beállításait, és visszaadja a frissített beállításokat |
+> | Microsoft. SQL/kiszolgálók/azureADOnlyAuthentications/olvasás | Egy adott kiszolgáló beolvasása csak a hitelesítési objektum Azure Active Directory |
+> | Microsoft. SQL/kiszolgálók/azureADOnlyAuthentications/írás | Egy adott kiszolgáló hozzáadását vagy frissítését Azure Active Directory csak a hitelesítési objektum |
+> | Microsoft. SQL/Servers/azureADOnlyAuthentications/delete | Egy adott kiszolgáló törlése Azure Active Directory csak hitelesítési objektum |
 > | Microsoft. SQL/kiszolgálók/communicationLinks/olvasás | Egy megadott kiszolgáló kommunikációs hivatkozásainak listáját adja vissza. |
 > | Microsoft. SQL/kiszolgálók/communicationLinks/írás | Kiszolgáló-kommunikációs hivatkozás létrehozása vagy frissítése. |
 > | Microsoft. SQL/Servers/communicationLinks/delete | Egy meglévő kiszolgálói kommunikációs hivatkozás törlése. |
-> | Microsoft. SQL/kiszolgálók/connectionPolicies/olvasás | Egy adott kiszolgáló kiszolgálói csatlakoztatási házirendjeinek a listáját adja vissza. |
-> | Microsoft. SQL/kiszolgálók/connectionPolicies/írás | Kiszolgálói kapcsolatok házirendjének létrehozása vagy frissítése. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/olvasás | Az adatbázisok listájának visszaadása vagy a megadott adatbázis tulajdonságainak beolvasása. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/írás | Létrehoz egy adatbázist a megadott paraméterekkel, vagy frissíti a megadott adatbázis tulajdonságait vagy címkéit. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/törlés | Töröl egy meglévő adatbázist. |
@@ -3974,14 +4004,13 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/kiszolgálók/adatbázisok/upgradeDataWarehouse/művelet | Az Azure SQL Datawarehouse-adatbázis frissítése |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/áthelyezés/művelet | Meglévő adatbázis nevének módosítása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/restorePoints/művelet | Új visszaállítási pont létrehozása |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/importálás/művelet | Azure SQL Database importálása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/feladatátvétel/művelet | Ügyfél által kezdeményezett adatbázis-feladatátvétel. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/vulnerabilityAssessmentScans/művelet | Sebezhetőség-felmérési adatbázis vizsgálatának végrehajtása. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/tanácsadók/olvasás | Az adatbázishoz elérhető tanácsadók listájának beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/tanácsadók/írás | Egy Advisor automatikus végrehajtási állapotának frissítése az adatbázis szintjén. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/tanácsadók/recommendedActions/olvasás | Az adatbázis megadott tanácsadójának javasolt műveleteinek listáját adja vissza. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/tanácsadók/recommendedActions/írás | A javasolt művelet alkalmazása az adatbázison |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/auditingPolicies/olvasás | Az adott adatbázisban konfigurált táblázatos naplózási szabályzat részleteinek beolvasása |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/auditingPolicies/írás | A tábla naplózási házirendjének módosítása egy adott adatbázisra vonatkozóan |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/auditingSettings/olvasás | Egy adott adatbázisban konfigurált blob-naplózási szabályzat részleteinek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/auditingSettings/írás | Egy adott adatbázis blob-naplózási házirendjének módosítása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/auditRecords/olvasás | Az adatbázis blob-naplózási rekordjainak beolvasása |
@@ -3993,8 +4022,6 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/kiszolgálók/adatbázisok/backupShortTermRetentionPolicies/olvasás | Egy adatbázis rövid távú adatmegőrzési szabályzatának beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/backupShortTermRetentionPolicies/írás | Egy adatbázis rövid távú adatmegőrzési szabályzatának frissítése |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/oszlopok/olvasás | Egy adatbázis oszlopainak listájának visszaadása |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/connectionPolicies/olvasás | Egy adott adatbázisban konfigurált kapcsolati szabályzat részleteinek beolvasása |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/connectionPolicies/írás | Egy adott adatbázishoz tartozó kapcsolatbiztonsági szabályzat módosítása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/currentSensitivityLabels/olvasás | Egy adott adatbázis érzékenységi címkéjének listázása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/currentSensitivityLabels/írás | A Batch Update érzékenységi címkéi |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataMaskingPolicies/olvasás | Az adatbázis-adatmaszkolási szabályzatok listájának visszaadása. |
@@ -4012,6 +4039,7 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/importExtensionOperationResults/olvasás | Folyamatban lévő importálási műveletek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/geoBackupPolicies/olvasás | Egy adott adatbázishoz tartozó földrajzi biztonsági mentési szabályzatok beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/geoBackupPolicies/írás | Adatbázis-geobackup szabályzat létrehozása vagy frissítése |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/importExportAzureAsyncOperation/olvasás | Folyamatban lévő importálási/exportálási műveletek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/importExportOperationResults/olvasás | Folyamatban lévő importálási/exportálási műveletek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/maintenanceWindowOptions/olvasás | A kiválasztott adatbázishoz elérhető karbantartási időszakok listájának beolvasása. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/maintenanceWindows/olvasás | A kiválasztott adatbázis karbantartási Windows-beállításainak beolvasása. |
@@ -4965,6 +4993,39 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/accounts/ImmersiveReader/getcontentmodelforreader/Action | Egy magával ragadó olvasó munkamenetet hoz létre |
 > | Microsoft. CognitiveServices/fiókok/InkRecognizer/felismerés/művelet | A stroke-adathalmazok egy készlete elemzi a tartalmat, és létrehoz egy felismert entitások listáját, beleértve a felismert szöveget is. |
 > | Microsoft. CognitiveServices/fiókok/LUIS/előrejelzés/művelet | Lekéri a megadott lekérdezés közzétett végpontjának előrejelzését. |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/riasztás/anomália/konfigurációk/írás | Anomália-riasztási konfiguráció létrehozása vagy frissítése |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Alert/anomália/konfigurációk/delete | Anomália-riasztási konfiguráció törlése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/riasztás/anomália/konfigurációk/olvasás | Egyetlen anomália riasztási konfiguráció lekérdezése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/riasztás/anomália/konfigurációk/riasztások/lekérdezés/művelet | Riasztások lekérdezése a rendellenesség riasztási konfigurációjában |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/riasztás/anomália/konfigurációk/riasztások/rendellenességek/olvasás | Egy adott riasztás alá tartozó lekérdezési rendellenességek |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/riasztás/anomália/konfigurációk/riasztások/incidensek/olvasás | Adott riasztás alá tartozó lekérdezési incidensek |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Datafeeds/Write | Adatcsatorna létrehozása vagy frissítése. |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Datafeeds/delete | Adatcsatorna törlése |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Datafeeds/READ | Adatcsatorna beszerzése az azonosító alapján, vagy az összes adatcsatorna listázása |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Datafeeds/ingestionprogress/READ | Adatok beolvasása az utolsó sikeres betöltési feladatok időbélyege adatcsatornán keresztül |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Datafeeds/ingestionprogress/reset/Action | Adatfeldolgozási állapot alaphelyzetbe állítása adatcsatorna alapján backfill-adatként |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/Datafeeds/ingestionstatus/Query/Action | Adatfeldolgozási állapot beolvasása adatcsatorna alapján |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/írás | Anomália-észlelési konfiguráció létrehozása vagy frissítése |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/delete | Anomáliák észlelési konfigurációjának törlése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/olvasás | Egyetlen anomália-észlelési konfiguráció lekérdezése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/riasztás/anomália/konfigurációk/olvasás | Az adott anomália-észlelési konfigurációhoz tartozó összes rendellenesség riasztási konfiguráció lekérdezése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/rendellenességek/lekérdezés/művelet | Hibák lekérdezése az anomália észlelési konfigurációjában |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/rendellenességek/dimenzió/lekérdezés/művelet | Anomáliák lekérdezési dimenziójának értékei |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/incidensek/lekérdezés/művelet | Lekérdezési incidensek az anomália észlelési konfigurációjában |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/incidensek/rootcause/olvasás | Az incidens lekérdezésének kiváltó oka |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/dúsítás/anomalydetection/konfigurációk/adatsorozat/lekérdezés/művelet | A lekérdezési sorozat az anomáliák észlelésével gazdagítva |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/visszajelzés/metrika/írás | Új metrikai visszajelzés létrehozása |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/visszajelzés/metrika/olvasás | Metrikai visszajelzés beszerzése az azonosítója alapján |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/feedback/metrika/lekérdezés/művelet | Visszajelzések listázása az adott metrika alapján |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/hookok/írás | Hook létrehozása vagy frissítése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/hookok/törlés | Hook törlése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/hookok/olvasás | Hook beszerzése az azonosító alapján vagy az összes Hook listázása |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/mérőszámok/adatok/lekérdezés/művelet | Idősorozat-adatok beolvasása a metrikaből |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/mérőszámok/dimenzió/lekérdezés/művelet | Dimenzió listázása adott metrika alapján |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/metrika/dúsítás/anomalydetection/konfigurációk/olvasás | Adott metrika összes rendellenesség-észlelési konfigurációjának lekérdezése |
+> | Microsoft. CognitiveServices/fiókok/MetricsAdvisor/mérőszámok/adatsorozat/lekérdezés/művelet | Adatsorozatok (dimenzió kombinációk) listázása a metrika alapján |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/metrika/status/dúsítás/anomalydetection/lekérdezés/művelet | Lekérdezési rendellenesség észlelési állapota |
+> | Microsoft. CognitiveServices/accounts/MetricsAdvisor/stats/Latest/READ | Legfrissebb használati statisztikák beolvasása |
 > | Microsoft. CognitiveServices/accounts/NewsSearch/categorysearch/Action | Egy megadott kategóriára vonatkozó híreket ad vissza. |
 > | Microsoft. CognitiveServices/accounts/NewsSearch/Search/Action | Az adott lekérdezésre vonatkozó Hírek beszerzése. |
 > | Microsoft. CognitiveServices/accounts/NewsSearch/trendingtopics/Action | A Bing által azonosított trendekkel kapcsolatos témakörök beolvasása. Ugyanezek a témakörök a Bing kezdőlapjának alján látható szalagcímben jelennek meg. |
@@ -5010,35 +5071,6 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/accounts/VideoSearch/Search/Action | Egy adott lekérdezéshez kapcsolódó videók beolvasása. |
 > | Microsoft. CognitiveServices/accounts/VisualSearch/Search/Action | A megadott képhez kapcsolódó címkék listájának beolvasása |
 > | Microsoft. CognitiveServices/fiókok/webkeresés/keresés/művelet | Egy adott lekérdezéshez webes, képképek, Hírek & videók eredményeinek beolvasása. |
-
-### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
-
-Azure-szolgáltatás: [Machine learning Studio](../machine-learning/studio/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Művelet | Leírás |
-> | --- | --- |
-> | Microsoft. MachineLearning/regisztráció/művelet | Regisztrálja az előfizetést a Machine learning webszolgáltatás erőforrás-szolgáltatója számára, és lehetővé teszi a webszolgáltatások létrehozását. |
-> | Microsoft. MachineLearning/webszolgáltatások/művelet | Regionális webszolgáltatás tulajdonságainak létrehozása a támogatott régiók számára |
-> | Microsoft. MachineLearning/commitmentPlans/READ | Machine Learning kötelezettségvállalási terv beolvasása |
-> | Microsoft. MachineLearning/commitmentPlans/Write | Machine Learning kötelezettségvállalási terv létrehozása vagy frissítése |
-> | Microsoft. MachineLearning/commitmentPlans/delete | Machine Learning kötelezettségvállalási terv törlése |
-> | Microsoft. MachineLearning/commitmentPlans/JOIN/Action | Csatlakozás bármely Machine Learning kötelezettségvállalási tervhez |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/READ | Bármely Machine Learning kötelezettségvállalási terv társításának beolvasása |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Bármely Machine Learning kötelezettségvállalási terv társításának áthelyezése |
-> | Microsoft. MachineLearning/Locations/operationresults/READ | Machine Learning művelet eredményének beolvasása |
-> | Microsoft. MachineLearning/Locations/operationsstatus/READ | Folyamatban lévő Machine Learning művelet állapotának beolvasása |
-> | Microsoft. MachineLearning/Operations/READ | Machine Learning műveletek beolvasása |
-> | Microsoft. MachineLearning/SKU/READ | Machine Learning kötelezettségvállalási terv beszerzése |
-> | Microsoft. MachineLearning/webszolgáltatások/olvasás | Bármely Machine Learning webszolgáltatás beolvasása |
-> | Microsoft. MachineLearning/webszolgáltatások/írás | Machine Learning webszolgáltatás létrehozása vagy frissítése |
-> | Microsoft. MachineLearning/webszolgáltatások/törlés | Machine Learning webszolgáltatás törlése |
-> | Microsoft. MachineLearning/webszolgáltatás/listkeys műveletének beolvasása/READ | Kulcsok beolvasása egy Machine Learning webszolgáltatáshoz |
-> | Microsoft. MachineLearning/munkaterületek/olvasás | Bármilyen Machine Learning-munkaterület beolvasása |
-> | Microsoft. MachineLearning/munkaterületek/írás | Tetszőleges Machine Learning-munkaterület létrehozása vagy frissítése |
-> | Microsoft. MachineLearning/munkaterületek/törlés | Tetszőleges Machine Learning-munkaterület törlése |
-> | Microsoft. MachineLearning/munkaterületek/listworkspacekeys/művelet | Machine Learning-munkaterület kulcsainak listázása |
-> | Microsoft. MachineLearning/munkaterületek/resyncstoragekeys/művelet | Machine Learning-munkaterület konfigurált Storage-fiók kulcsainak újraszinkronizálása |
 
 ### <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -5156,6 +5188,36 @@ Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/inde
 > | Microsoft. MachineLearningServices/munkaterületek/szolgáltatások/AK/listkeys műveletének beolvasása/művelet | A Machine Learning Services munkaterületen található AK-szolgáltatásokhoz tartozó kulcsok listázása |
 > | Microsoft. MachineLearningServices/munkaterületek/szolgáltatások/AK/törlés | AK-szolgáltatások törlése Machine Learning Services munkaterületen |
 > | Microsoft. MachineLearningServices/munkaterületek/szolgáltatások/AK/pontszám/művelet | Machine Learning Services munkaterületen található AK-szolgáltatások |
+
+
+### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
+
+Azure-szolgáltatás: [Machine learning Studio (klasszikus)](../machine-learning/studio/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Művelet | Leírás |
+> | --- | --- |
+> | Microsoft. MachineLearning/regisztráció/művelet | Regisztrálja az előfizetést a Machine learning webszolgáltatás erőforrás-szolgáltatója számára, és lehetővé teszi a webszolgáltatások létrehozását. |
+> | Microsoft. MachineLearning/webszolgáltatások/művelet | Regionális webszolgáltatás tulajdonságainak létrehozása a támogatott régiók számára |
+> | Microsoft. MachineLearning/commitmentPlans/READ | Machine Learning kötelezettségvállalási terv beolvasása |
+> | Microsoft. MachineLearning/commitmentPlans/Write | Machine Learning kötelezettségvállalási terv létrehozása vagy frissítése |
+> | Microsoft. MachineLearning/commitmentPlans/delete | Machine Learning kötelezettségvállalási terv törlése |
+> | Microsoft. MachineLearning/commitmentPlans/JOIN/Action | Csatlakozás bármely Machine Learning kötelezettségvállalási tervhez |
+> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/READ | Bármely Machine Learning kötelezettségvállalási terv társításának beolvasása |
+> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Bármely Machine Learning kötelezettségvállalási terv társításának áthelyezése |
+> | Microsoft. MachineLearning/Locations/operationresults/READ | Machine Learning művelet eredményének beolvasása |
+> | Microsoft. MachineLearning/Locations/operationsstatus/READ | Folyamatban lévő Machine Learning művelet állapotának beolvasása |
+> | Microsoft. MachineLearning/Operations/READ | Machine Learning műveletek beolvasása |
+> | Microsoft. MachineLearning/SKU/READ | Machine Learning kötelezettségvállalási terv beszerzése |
+> | Microsoft. MachineLearning/webszolgáltatások/olvasás | Bármely Machine Learning webszolgáltatás beolvasása |
+> | Microsoft. MachineLearning/webszolgáltatások/írás | Machine Learning webszolgáltatás létrehozása vagy frissítése |
+> | Microsoft. MachineLearning/webszolgáltatások/törlés | Machine Learning webszolgáltatás törlése |
+> | Microsoft. MachineLearning/webszolgáltatás/listkeys műveletének beolvasása/READ | Kulcsok beolvasása egy Machine Learning webszolgáltatáshoz |
+> | Microsoft. MachineLearning/munkaterületek/olvasás | Bármilyen Machine Learning-munkaterület beolvasása |
+> | Microsoft. MachineLearning/munkaterületek/írás | Tetszőleges Machine Learning-munkaterület létrehozása vagy frissítése |
+> | Microsoft. MachineLearning/munkaterületek/törlés | Tetszőleges Machine Learning-munkaterület törlése |
+> | Microsoft. MachineLearning/munkaterületek/listworkspacekeys/művelet | Machine Learning-munkaterület kulcsainak listázása |
+> | Microsoft. MachineLearning/munkaterületek/resyncstoragekeys/művelet | Machine Learning-munkaterület konfigurált Storage-fiók kulcsainak újraszinkronizálása |
 
 ## <a name="internet-of-things"></a>Eszközök internetes hálózata
 
@@ -5578,9 +5640,9 @@ Azure-szolgáltatás: [API Management](../api-management/index.yml)
 > | Microsoft. ApiManagement/szolgáltatás/házirend/törlés | A házirend-konfiguráció törlése a bérlői szinten |
 > | Microsoft. ApiManagement/Service/policyDescriptions/READ | Felsorolja az összes házirend leírását. |
 > | Microsoft. ApiManagement/Service/policySnippets/READ | Felsorolja az összes házirend-kódrészletet. |
-> | Microsoft. ApiManagement/Service/portalsettings/READ | A portál beállításainak gyűjteményét listázza. vagy jelentkezzen be a portálra, vagy kérje meg a portál regisztrációját vagy a portál delegálási beállításainak beszerzését. |
-> | Microsoft. ApiManagement/szolgáltatás/portalsettings/írás | A bejelentkezési beállítások frissítése. vagy a bejelentkezési beállítások létrehozása vagy frissítése. vagy frissítse a regisztrációs beállításokat, vagy frissítse a regisztrációs beállításokat, vagy frissítse a delegálási beállításokat. vagy a delegálási beállítások létrehozása vagy frissítése. |
-> | Microsoft. ApiManagement/Service/portalsettings/listSecrets/művelet | Beolvassa a portál delegálási beállításainak érvényesítési kulcsát. |
+> | Microsoft. ApiManagement/Service/portalSettings/READ | A portál beállításainak gyűjteményét listázza. vagy jelentkezzen be a portálra, vagy kérje meg a portál regisztrációját vagy a portál delegálási beállításainak beszerzését. |
+> | Microsoft. ApiManagement/szolgáltatás/portalSettings/írás | A bejelentkezési beállítások frissítése. vagy a bejelentkezési beállítások létrehozása vagy frissítése. vagy frissítse a regisztrációs beállításokat, vagy frissítse a regisztrációs beállításokat, vagy frissítse a delegálási beállításokat. vagy a delegálási beállítások létrehozása vagy frissítése. |
+> | Microsoft. ApiManagement/Service/portalSettings/listSecrets/művelet | Beolvassa a portál delegálási beállításainak érvényesítési kulcsát. vagy töltse le a médiatartalom blob-tárolójának URI-ját. |
 > | Microsoft. ApiManagement/szolgáltatás/termékek/olvasás | Felsorolja a megadott szolgáltatási példányban található termékek gyűjteményét. vagy lekéri az azonosító alapján megadott termék részleteit. |
 > | Microsoft. ApiManagement/szolgáltatás/termékek/írás | Létrehoz vagy frissít egy terméket. vagy frissítse a meglévő termék részleteit. |
 > | Microsoft. ApiManagement/szolgáltatás/termékek/törlés | Termék törlése. |
@@ -6204,7 +6266,6 @@ Azure-szolgáltatás: Azure Active Directory
 > | Microsoft. aadiam/privateLinkForAzureAD/Write | Privát kapcsolati szabályzat definíciójának létrehozása és frissítése |
 > | Microsoft. aadiam/privateLinkForAzureAD/delete | Magánhálózati kapcsolati szabályzat definíciójának törlése |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/READ | Privát kapcsolati proxyk olvasása |
-> | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/Write | Magánhálózati kapcsolati proxyk létrehozása és frissítése |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/delete | Privát kapcsolati proxyk törlése |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/validate/Action | Magánhálózati kapcsolati proxyk ellenőrzése |
 > | Microsoft. aadiam/privateLinkForAzureAD/privateEndpointConnections/READ | PrivateEndpointConnections olvasása |
@@ -6559,6 +6620,14 @@ Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/threatintelligence/mérőszámok/művelet | Veszélyforrások felderítésére vonatkozó mérőszámok gyűjtése |
 > | Microsoft. SecurityInsights/threatintelligence/bulkDelete/művelet | Fenyegetési intelligencia tömeges törlése |
 > | Microsoft. SecurityInsights/threatintelligence/bulkTag/művelet | Tömeges címkék veszélyforrások felderítése |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/olvasás | Fenyegetési intelligencia indikátorok beolvasása |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/írás | A fenyegetésekkel kapcsolatos intelligencia-mutatók frissítése |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/törlés | Fenyegetési intelligencia-mutatók törlése |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/lekérdezés/művelet | Veszélyforrások elleni lekérdezési mutatók |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/mérőszámok/művelet | Veszélyforrások felderítésére vonatkozó mutatók metrikáinak beolvasása |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/appendTags/művelet | Címkék hozzáfűzése a veszélyforrások felderítéséhez |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/bulkDelete/művelet | Veszélyforrások elleni intelligencia-mutatók tömeges törlése |
+> | Microsoft. SecurityInsights/threatintelligence/mutatók/bulkTag/művelet | Tömeges címkék veszélyforrások felderítésére vonatkozó mutatók |
 > | Microsoft. SecurityInsights/listák/olvasás | Lekéri a listák |
 > | Microsoft. SecurityInsights/listák/írás | Listák létrehozása |
 > | Microsoft. SecurityInsights/listák/delete | Listák törlése |
@@ -7695,6 +7764,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADTEventRoutesOperation/olvasás | Adatok beolvasása a ADTEventRoutesOperation táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADTModelsOperation/olvasás | Adatok beolvasása a ADTModelsOperation táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADTQueryOperation/olvasás | Adatok beolvasása a ADTQueryOperation táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADXCommand/olvasás | Adatok beolvasása a ADXCommand táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADXQuery/olvasás | Adatok beolvasása a ADXQuery táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AegDeliveryFailureLogs/olvasás | Adatok beolvasása a AegDeliveryFailureLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AegPublishFailureLogs/olvasás | Adatok beolvasása a AegPublishFailureLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/riasztás/olvasás | Adatok beolvasása a riasztási táblából |
@@ -8929,6 +9000,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 > | Microsoft. PolicyInsights/igazolások/olvasás | Megfelelőségi állapot igazolásának beolvasása. |
 > | Microsoft. PolicyInsights/igazolások/írás | Megfelelőségi állapot igazolásának létrehozása vagy frissítése. |
 > | Microsoft. PolicyInsights/igazolások/törlés | Megfelelőségi állapot igazolásának törlése. |
+> | Microsoft. PolicyInsights/checkPolicyRestrictions/READ | A szabályzat által az erőforráson érvényesített korlátozások részleteinek beolvasása. |
 > | Microsoft. PolicyInsights/Operations/READ | A Microsoft. PolicyInsights névtérben támogatott műveletek beolvasása |
 > | Microsoft. PolicyInsights/policyEvents/queryResults/művelet | A házirend eseményeivel kapcsolatos információk lekérdezése. |
 > | Microsoft. PolicyInsights/policyEvents/queryResults/READ | A házirend eseményeivel kapcsolatos információk lekérdezése. |

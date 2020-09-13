@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: 81069b0340202a0a481522ef1920806026ebcbe1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119395"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484341"
 ---
 # <a name="publishing-guide-for-container-offers"></a>A Container-ajánlatok közzétételi útmutatója
 
 A Container segítségével közzéteheti a tárolók rendszerképét az Azure Marketplace-en. Az útmutató segítségével megismerheti az ajánlat követelményeit. 
 
-A tárolók az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő művelet hívása "Letöltés most".
+A tárolók az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő listázási lehetőség a "Letöltés most".
 
 Ha a megoldás egy olyan Docker-tároló-rendszerkép, amely Kubernetes-alapú Azure Container Service-példányként van beállítva, használja a *Container* ajánlat típusát. 
 

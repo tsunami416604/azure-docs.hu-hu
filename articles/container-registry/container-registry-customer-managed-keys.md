@@ -459,7 +459,7 @@ A beállításjegyzék rendszerhez rendelt identitásának engedélyezése a por
 
 1. A portálon navigáljon a beállításjegyzékhez.
 1. Válassza a **Beállítások**  >   **identitás**lehetőséget.
-1. A **rendszer által hozzárendelve**beállításnál állítsa be **a**következőt: **állapot** . Kattintson a **Mentés** gombra.
+1. A **rendszer által hozzárendelve**beállításnál állítsa be **a**következőt: **állapot** . Válassza a **Mentés** lehetőséget.
 1. Másolja az identitás **objektum-azonosítóját** .
 
 Az identitás hozzáférésének biztosítása a kulcstartóhoz:

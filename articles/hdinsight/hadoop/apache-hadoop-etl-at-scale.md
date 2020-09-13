@@ -1,19 +1,19 @@
 ---
 title: Kinyerés, átalakítás és betöltés (ETL) skálán – Azure HDInsight
 description: Megtudhatja, hogyan használják a kinyerési, átalakítási és betöltési HDInsight a Apache Hadoop.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084120"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504315"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -48,7 +48,7 @@ Azure Data Factory használata a következőhöz:
 
 1. Adatvezérelt munkafolyamatokat hozhat létre és ütemezhet. Ezek a folyamatok különböző adattárakból származó adatokból állnak.
 1. Az adatok feldolgozása és átalakítása számítási szolgáltatások, például a HDInsight vagy a Hadoop használatával. Ehhez a lépéshez Spark, Azure Data Lake Analytics, Azure Batch vagy Azure Machine Learning is használható.
-1. A kimeneti adatokat adattárakba (például Azure SQL Data Warehouse) teheti közzé a BI-alkalmazások felhasználása érdekében.
+1. A kimeneti adatokat az adattárakba (például az Azure szinapszis Analyticsbe) teheti közzé a BI-alkalmazások felhasználása érdekében.
 
 A Azure Data Factoryről a [dokumentációban](../../data-factory/introduction.md)talál további információt.
 
@@ -84,11 +84,11 @@ Az adatkészletek terabájt tartományban való feltöltéséhez a hálózati k�
 
 - **Adatok feltöltése a merevlemez-meghajtókról:** Az [Azure import/export szolgáltatást](../../storage/common/storage-import-export-service.md) használhatja az Azure-adatközpontok adataihoz tartozó merevlemez-meghajtók szállítására. Az adatait először feltölti az Azure Blob Storage-ba. Ezután a Azure Data Factory vagy a AdlCopy eszközzel másolhat adatokat az Azure Blob Storage-ból a Data Lake Storageba.
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse az előkészített eredmények tárolásának megfelelő választás. Az Azure HDInsight a szolgáltatások SQL Data Warehouse való elvégzésére használható.
+Az Azure szinapszis Analytics megfelelő választás az előkészített eredmények tárolására. Az Azure HDInsight használatával a Zure szinapszis Analytics szolgáltatáshoz is elvégezheti ezeket a szolgáltatásokat.
 
-Az Azure SQL Data Warehouse egy elemzési számítási feladatokra optimalizált, egy kapcsolódó adatbázis-tároló. Particionált táblák alapján méretezhető. A táblák több csomópont között is particionálva lehetnek. A csomópontok a létrehozáskor vannak kiválasztva. Az is előfordulhat, hogy a tény után méretezhetők, de ez egy aktív folyamat, amely adatáthelyezést igényelhet. További információ: [a számítások kezelése SQL Data Warehouseban](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+Az Azure szinapszis Analytics egy, az analitikus számítási feladatokra optimalizált, összehasonlítható adatbázis-tároló. Particionált táblák alapján méretezhető. A táblák több csomópont között is particionálva lehetnek. A csomópontok a létrehozáskor vannak kiválasztva. Az is előfordulhat, hogy a tény után méretezhetők, de ez egy aktív folyamat, amely adatáthelyezést igényelhet. További információ: [a számítások kezelése az Azure szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
 ### <a name="apache-hbase"></a>Apache HBase
 
@@ -107,7 +107,7 @@ A HBase alkalmazkodóképesség a HDInsight-fürt csomópontjainak számától f
 Az Azure három, a (z):
 
 * A [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) Microsoft SQL Server implementációja. A teljesítményre vonatkozó további információkért lásd: [a teljesítmény finomhangolása Azure SQL Databaseban](../../azure-sql/database/performance-guidance.md).
-* [Azure Database for MySQL](../../mysql/overview.md) az Oracle MySQL implementációja.
+* [Azure Database for MySQL](../../mysql/overview.md)  az Oracle MySQL implementációja.
 * [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) a PostgreSQL implementációja.
 
 További CPU és memória hozzáadása a termékek vertikális felskálázásához.  Azt is megteheti, hogy prémium szintű lemezeket használ a termékekkel a jobb I/O-teljesítmény érdekében.
@@ -138,7 +138,7 @@ Az Apache Flume nem használható az Azure HDInsight. Egy helyszíni Hadoop-tele
 
 Miután az adatok megtalálhatók a kiválasztott helyen, meg kell tisztítania, össze kell állítania, vagy elő kell készítenie egy adott használati mintához. A kaptár, a Pig és a Spark SQL minden jó választás az adott típusú munkához. Ezek mind támogatottak a HDInsight.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Apache Hive használata ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 - [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

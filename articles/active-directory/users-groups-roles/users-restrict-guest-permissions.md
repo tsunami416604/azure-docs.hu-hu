@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798431"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489646"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -40,17 +40,14 @@ A külső együttműködési beállítások konfigurálásához globális rendsz
 
 Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal vezérlőit.
 
-> [!IMPORTANT]
-> Rövid idő alatt az új portál a vendég felhasználói engedélyekhez tartozó vezérlőit csak az URL-cím használatával látja el [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . A PowerShell és a Microsoft Graph továbbra is használható a vezérlők és a módosítások megadására a portálon.
-
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aka.ms/AADRestrictedGuestAccess) globális rendszergazdai engedélyekkel.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai engedélyekkel.
 1. A szervezet **Azure Active Directory** áttekintés lapján válassza a **felhasználói beállítások**lehetőséget.
 1. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 1. A **külső együttműködési beállítások** lapon válassza a **vendég felhasználói hozzáférés lehetőséget a saját címtár-objektumok tulajdonságai és tagsága** lehetőségre.
 
     ![Az Azure AD külső együttműködési beállítások lapja](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. Kattintson a **Mentés** gombra. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
+1. Válassza a **Mentés** lehetőséget. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Frissítés a Microsoft Graph API-val
 

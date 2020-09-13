@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/04/2020
+ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921384"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488609"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Az ingyenes vagy próbaverziós SaaS-ajánlat kezdőlapjának összeállítása a kereskedelmi piactéren
 
@@ -21,13 +21,13 @@ Ez a cikk végigvezeti egy, a Microsoft kereskedelmi piactéren árusított ingy
 
 ## <a name="overview"></a>Áttekintés
 
-Azt is megteheti, hogy a kezdőlapot "lobbyként" látja el a szolgáltatott szoftverként (SaaS). Miután az ügyfél úgy dönt, hogy beolvassa az alkalmazást, a kereskedelmi piactér átirányítja őket a kezdőlapra, hogy aktiválja és konfigurálja az előfizetését az SaaS-alkalmazásra. Amikor létrehoz egy szolgáltatott szoftver (SaaS) ajánlatot, a partner Centerben megadhatja, hogy a [Microsofton keresztül](partner-center-portal/create-new-saas-offer.md)kíván-e eladni. Ha csak a Microsoft kereskedelmi piactéren kívánja felsorolni ajánlatát, és nem a Microsofton keresztül értékesít, megadhatja, hogy a potenciális ügyfelek hogyan használhatják az ajánlatot. Ha engedélyezi a **Letöltés most (ingyenes)** vagy az **ingyenes próbaverzió** listázása beállítást, meg kell adnia egy Kezdőlap URL-címét, amelyhez a felhasználó hozzáférhet az ingyenes előfizetéshez vagy próbaverzióhoz.
+Azt is megteheti, hogy a kezdőlapot "lobbyként" látja el a szolgáltatott szoftverként (SaaS). Miután az ügyfél úgy dönt, hogy beolvassa az alkalmazást, a kereskedelmi piactér átirányítja őket a kezdőlapra, hogy aktiválja és konfigurálja az előfizetését az SaaS-alkalmazásra. Amikor létrehoz egy szolgáltatott szoftver (SaaS) ajánlatot, a partner Centerben megadhatja, hogy a [Microsofton keresztül](plan-saas-offer.md#listing-options)kíván-e eladni. Ha csak a Microsoft kereskedelmi piactéren kívánja felsorolni ajánlatát, és nem a Microsofton keresztül értékesít, megadhatja, hogy a potenciális ügyfelek hogyan használhatják az ajánlatot. Ha engedélyezi a **Letöltés most (ingyenes)** vagy az **ingyenes próbaverzió** listázása beállítást, meg kell adnia egy Kezdőlap URL-címét, amelyhez a felhasználó hozzáférhet az ingyenes előfizetéshez vagy próbaverzióhoz.
 
 A Kezdőlap célja egyszerűen a felhasználó fogadása, így aktiválhatja az ingyenes próbaverziót vagy az ingyenes előfizetést. A Azure Active Directory (Azure AD) és a Microsoft Graph használatával engedélyezheti az egyszeri bejelentkezést (SSO) a felhasználó számára, és fontos információkat kaphat arról, hogy miként aktiválhatja az ingyenes próbaverziót vagy az ingyenes előfizetést, beleértve a nevét, e-mail-címét és a szervezetét.
 
 Mivel az előfizetés aktiválásához szükséges információk korlátozottak, és az Azure AD és a Microsoft Graph biztosítanak, nem kell olyan információt kérnie, amely több mint alapszintű beleegyezett. Ha olyan felhasználói adatokra van szüksége, amelyek további beleegyezett az alkalmazáshoz, akkor az előfizetés aktiválása után kérnie kell ezt az információt. Ez lehetővé teszi a felhasználó számára a zökkenőmentes előfizetés-aktiválást, és csökkenti a megszüntetés kockázatát.
 
-A Kezdőlap általában a következő információkat és a beavatkozási hívásokat tartalmazza:
+A Kezdőlap általában a következő információkat és listaelem-beállításokat tartalmazza:
 
 - Adja meg az ingyenes próbaverzió vagy az ingyenes előfizetés nevét és részleteit. Itt adhatja meg például a próbaverzió használati korlátait vagy időtartamát.
 - Adja meg a felhasználó fiókjának adatait, beleértve a vezetéknevét és a vezetéknevét, a céget és az e-maileket.
@@ -38,12 +38,12 @@ A cikk következő részei végigvezetik a Kezdőlap létrehozásának folyamat�
 
 1. [Hozzon létre egy Azure ad-alkalmazás regisztrációját](#create-an-azure-ad-app-registration) a kezdőlapon.
 2. Az alkalmazás [kiindulási pontként használja a kód mintát](#use-a-code-sample-as-a-starting-point) .
-3. Olvassa el a kéréssel elküldött, az Azure AD-től kapott, [az azonosító jogkivonatban kódolt jogcímek információit](#read-information-from-claims-encoded-in-the-id-token).
+3. Az [azonosító jogkivonatban kódolt jogcímek adatainak beolvasása](#read-information-from-claims-encoded-in-the-id-token)az Azure ad-től a bejelentkezés után kapott, a kérelemmel elküldött információ.
 4. [A Microsoft Graph API](#use-the-microsoft-graph-api) -val további információkat gyűjthet, igény szerint.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD-alkalmazás regisztrálásának létrehozása
 
-A kereskedelmi piactér teljes mértékben integrálva van az Azure AD-vel. A felhasználók egy [Azure ad-fiókkal vagy Microsoft-fiók (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)hitelesítve érkeznek meg a piactéren. Miután beszerezte az ingyenes vagy ingyenes próbaverziós előfizetést a listáról, a felhasználó a kereskedelmi piactérről a Kezdőlap URL-címére jut, hogy aktiválja és felügyelje az előfizetését az SaaS-alkalmazásra. Engedélyeznie kell, hogy a felhasználó bejelentkezzen az alkalmazásba az Azure AD SSO segítségével. (A Kezdőlap URL-címe az ajánlat [technikai konfiguráció lapján](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)van megadva).
+A kereskedelmi piactér teljes mértékben integrálva van az Azure AD-vel. A felhasználók egy [Azure ad-fiókkal vagy Microsoft-fiók (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)hitelesítve érkeznek meg a piactéren. Miután beszerezte az ingyenes vagy ingyenes próbaverziós előfizetést a listáról, a felhasználó a kereskedelmi piactérről a Kezdőlap URL-címére jut, hogy aktiválja és felügyelje az előfizetését az SaaS-alkalmazásra. Engedélyeznie kell, hogy a felhasználó bejelentkezzen az alkalmazásba az Azure AD SSO segítségével. (A Kezdőlap URL-címe az ajánlat [technikai konfiguráció](plan-saas-offer.md#technical-information) lapján van megadva.
 
 Az identitás használatának első lépése annak biztosítása, hogy a Kezdőlap regisztrálva legyen Azure AD-alkalmazásként. Az alkalmazás regisztrálása lehetővé teszi, hogy az Azure AD használatával hitelesítse a felhasználókat, és hozzáférést Kérjen a felhasználói erőforrásokhoz. Ez az alkalmazás definíciójának tekinthető, amely lehetővé teszi, hogy a szolgáltatás tudja, hogyan kell jogkivonatokat kibocsátani az alkalmazásnak az alkalmazás beállításai alapján.
 
@@ -102,5 +102,5 @@ Az Azure AD-ben regisztrált alkalmazások többsége delegált engedélyekkel r
 > [!NOTE]
 > Az MSA-bérlőről (a bérlői AZONOSÍTÓval) származó fiókok `9188040d-6c67-4c5b-b112-36a304b66dad` nem adnak vissza több információt, mint amelyet már gyűjtöttek az azonosító jogkivonattal. Így kihagyhatja ezt a hívást a fiókok Graph API.
 
-## <a name="next-steps"></a>További lépések
-- [SaaS-ajánlat létrehozása a kereskedelmi piactéren](./partner-center-portal/create-new-saas-offer.md)
+## <a name="next-steps"></a>Következő lépések
+- [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)
