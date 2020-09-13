@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002774"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468555"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
 
@@ -151,7 +151,7 @@ Egy felügyeleti csoportnak a bérlőn belüli célzásához adjon hozzá egy be
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-mg
                 }
             }
         }
@@ -167,9 +167,11 @@ A bérlői központi telepítések esetén fontos szempont a sablon funkcióinak
 * A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
 * Az [előfizetés ()](template-functions-resource.md#subscription) függvény **nem** támogatott.
 * A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
-* Használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt a bérlői szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
+* Ne használja a [resourceId ()](template-functions-resource.md#resourceid) parancsot a bérlői szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
 
-  Ha például egy házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
+  Ehelyett használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt.
+
+  Ha például egy beépített szabályzat-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -249,7 +251,7 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [Azure szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 * A sablonokat [előfizetési szinten](deploy-to-subscription.md) vagy [felügyeleti csoport szintjén](deploy-to-management-group.md)is üzembe helyezheti.

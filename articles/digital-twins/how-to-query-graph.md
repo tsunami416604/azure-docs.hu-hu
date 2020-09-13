@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055634"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468708"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -169,11 +169,47 @@ AND Room.$dtId IN ['room1', 'room2']
 
 A fenti típusú lekérdezéseket **kombinálhatja** a kombinált operátorok használatával, így több részletet is megadhat egyetlen lekérdezésben. Íme néhány további példa az összetett lekérdezésekre, amelyek egyszerre több típusú Twin-leírót kérdeznek le.
 
-| Leírás | Lekérdezés |
+| Description | Lekérdezés |
 | --- | --- |
 | A 123-as *termetű* eszközökön a kezelő szerepkört kiszolgáló MxChip-eszközöket kell visszaadnia. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Olyan ikrek beszerzése, amelyekben egy nevű kapcsolat *található* egy másik, *ID1* azonosítóval | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | A *floor11* által foglalt Room-modell összes szobájának beolvasása | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>Hivatkozás: kifejezések és kikötések
+
+Ez a szakasz az Azure Digital Twins-lekérdezések írásakor elérhető operátorokra és funkciókra vonatkozó referenciákat tartalmaz.
+
+### <a name="operators"></a>Operátorok
+
+A következő operátorok támogatottak:
+
+| Family (Család) | Operátorok |
+| --- | --- |
+| Logikai |ÉS, VAGY NEM |
+| Összehasonlítás |=,! =, <, >, <=, >= |
+| Contains | , NIN |
+
+### <a name="functions"></a>Functions
+
+A következő típusú ellenőrzési és öntési függvények támogatottak:
+
+| Függvény | Leírás |
+| -------- | ----------- |
+| IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean, numerikus vagy `null` . A DateTime, az Objektumtípusok és a tömbök nem támogatottak. |
+| IS_OF_MODEL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott iker megfelel-e a megadott modell típusának. |
+| IS_BOOL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa logikai. |
+| IS_NUMBER | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa szám-e. |
+| IS_STRING | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa sztring-e. |
+| IS_NULL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa NULL-e. |
+| IS_PRIMITIVE | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa primitív (karakterlánc, logikai, numerikus vagy `null` ). |
+| IS_OBJECT | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa JSON-objektum-e. |
+
+A következő karakterlánc-függvények támogatottak:
+
+| Függvény | Leírás |
+| -------- | ----------- |
+| STARTS_WITH (x, y) | Olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikval kezdődik-e. |
+| ENDS_WITH (x, y) | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |
 
 ## <a name="run-queries-with-an-api-call"></a>Lekérdezések futtatása API-hívással
 

@@ -148,7 +148,7 @@ Az **alapvető beállítások** lapon válassza az **adatbázis konfigurálása*
   
 **Meglévő SQL felügyelt példány hardveres létrehozásának módosítása**
 
-# <a name="the-azure-portal"></a>[A Azure Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
 
 Az SQL felügyelt példánya lapon válassza ki az **árképzési** csomag hivatkozását a beállítások szakaszban.
 

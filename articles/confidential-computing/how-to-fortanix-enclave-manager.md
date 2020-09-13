@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826293"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462428"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Útmutató: alkalmazás futtatása a Fortanix enklávé Managerrel 
 
@@ -24,7 +24,7 @@ Indítsa el az alkalmazást az Azure bizalmas számítástechnikai szolgáltatá
 A Fortanix egy külső gyártótól származó szoftvergyártó, amely Azure-infrastruktúrára épülő termékekkel és szolgáltatásokkal rendelkezik. Más külső szolgáltatók is hasonló bizalmas számítástechnikai szolgáltatásokat kínálnak az Azure-ban.
 
 > [!Note] 
- > A DOKUMENTUMBAN HIVATKOZOTT TERMÉKEK NEM A MICROSOFT FELÜGYELETE ALÁ TARTOZNAK. A MICROSOFT EZT AZ INFORMÁCIÓT KIZÁRÓLAG KÉNYELMI CÉLOKRA NYÚJTJA, ÉS A NEM MICROSOFT-TERMÉKEKRE VALÓ HIVATKOZÁS NEM A MICROSOFT JÓVÁHAGYÁSÁT JELENTI.
+ > A dokumentumban hivatkozott termékek nem a Microsoft felügyelete alá tartoznak. A Microsoft ezt az információt kizárólag kényelmi célokra nyújtja, és a nem Microsoft-termékekre való hivatkozás nem a Microsoft jóváhagyását jelenti.
 
 
 
@@ -43,7 +43,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át az alkalmazás r
 > Az ingyenes próbaverziós fiókok nem férnek hozzá az oktatóanyagban használt virtuális gépekhez. Váltson utólagos elszámolású előfizetésre.
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>Alkalmazás hozzáadása a Fortanix enklávé Managerhez
-1. Bejelentkezés a [FORTANIX em](https://fortanix.com) -be
+1. Bejelentkezés a [Fortanix enklávé Managerbe (FORTANIX em)](https://em.fortanix.com)
 1. Az új fiók létrehozásához navigáljon a **fiókok** lapra, és válassza a **fiók hozzáadása** lehetőséget. 
     
 ![Fiók létrehozása](media/how-to-fortanix-enclave-manager/create-account.png)
@@ -73,7 +73,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át az alkalmazás r
     - **Docker hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
     - **Alkalmazás**: fortanix/Python-lombik
 
-        Futtassa a következő parancsot:
+        Futtassa az alábbi parancsot:
          ```bash
             sudo docker run fortanix/python-flask
          ```
@@ -120,7 +120,7 @@ A Fortanix-csomópontok létrehozásakor a rendszer egy virtuális gépet, egy h
 1. Ezen a lapon megadhatja a virtuális gép üzembe helyezéséhez szükséges adatokat. Pontosabban, ez a virtuális gép egy DCsv2 sorozatú, Intel SGX ENKLÁVÉHOZ-kompatibilis virtuális gép az Azure-ban, amelyen telepítve van az Fortanix Node Agent szoftver. A csomópont-ügynök lehetővé teszi, hogy az átalakított rendszerkép biztonságosan fusson az Azure-beli Intel SGX ENKLÁVÉHOZ-csomópontokon.  Válassza ki azt az **előfizetést** és **erőforráscsoportot** , ahol telepíteni szeretné a virtuális gépet és a kapcsolódó erőforrásokat. 
  
     > [!NOTE]
-    > A DCsv2-sorozatú virtuális gépek az Azure-ban való üzembe helyezése megkötést eredményez. Előfordulhat, hogy további magokra vonatkozó kvótát kell igényelnie. További információt az Azure-beli [virtuális gépeken található bizalmas számítástechnikai megoldásokról szóló](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solution) témakörben olvashat. 
+    > A DCsv2-sorozatú virtuális gépek az Azure-ban való üzembe helyezése megkötést eredményez. Előfordulhat, hogy további magokra vonatkozó kvótát kell igényelnie. További információt az Azure-beli [virtuális gépeken található bizalmas számítástechnikai megoldásokról szóló](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) témakörben olvashat. 
 
 1. Válasszon a rendelkezésre álló régiók közül.
 1. A **csomópont neve** mezőben adja meg a virtuális gép nevét. 
@@ -168,7 +168,7 @@ A létrehozott Fortanix enklávé-kezelő fiók törléséhez nyissa meg az enkl
 
   ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a Fortanix-eszközök használatával alakíthatja át az alkalmazás rendszerképét, hogy az a bizalmas számítástechnikai virtuális gépen fusson. Az Azure-beli bizalmas számítástechnikai virtuális gépekkel kapcsolatos további információkért lásd: [Virtual Machines-megoldások](virtual-machine-solutions.md). 
 

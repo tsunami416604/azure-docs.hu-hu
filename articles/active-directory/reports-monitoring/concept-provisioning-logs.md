@@ -172,7 +172,7 @@ A részletek a következő kategóriák alapján vannak csoportosítva:
 
 - Módosított tulajdonságok
 
-- Összefoglalás
+- Összegzés
 
 
 ![Kiépítés részletei](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
@@ -204,7 +204,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855115"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483269"
 ---
 # <a name="data-storage"></a>Adattárolás
 
@@ -24,7 +24,7 @@ Azure Time Series Insights Gen2-környezet létrehozásakor két Azure-erőforr�
 * Egy Azure Time Series Insights Gen2 környezet, amely konfigurálható a meleg adattároláshoz.
 * Egy Azure Storage-fiók a hideg adattároláshoz.
 
-A meleg tárolóban tárolt adatai csak a [Time Series lekérdezési API](./time-series-insights-update-tsq.md) -k és a [Azure Time Series Insights ÁME Explorer](./time-series-insights-update-explorer.md)használatával érhetők el. A meleg áruház a Azure Time Series Insights Gen2-környezet létrehozásakor kiválasztott [megőrzési időszakon](./time-series-insights-update-plan.md#the-preview-environment) belül friss adatokkal fog szerepelni.
+A meleg tárolóban tárolt adatai csak a [Time Series lekérdezési API](./time-series-insights-update-tsq.md) -k és a [Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md)használatával érhetők el. A meleg áruház a Azure Time Series Insights Gen2-környezet létrehozásakor kiválasztott [megőrzési időszakon](./time-series-insights-update-plan.md#the-preview-environment) belül friss adatokkal fog szerepelni.
 
 Azure Time Series Insights a Gen2 a hűtőházi tároló adatait az Azure Blob Storage-ba menti a [Parquet fájlformátumban](#parquet-file-format-and-folder-structure). Azure Time Series Insights a Gen2 kizárólag a hűtőházi adattárolási adattárakat kezeli, de közvetlenül a standard Parquet-fájlokként is elérhető.
 
@@ -58,7 +58,7 @@ A lekérdezés teljesítményének és az adatelérhetőségnek a biztosításá
 
 #### <a name="accessing-cold-store-data"></a>A hűtőházi adattárolási adatok elérése
 
-Az [Azure Time Series INSIGHTS ÁME Explorer](./time-series-insights-update-explorer.md) és az [idősoros lekérdezési API](./time-series-insights-update-tsq.md)-k adataihoz való hozzáférés mellett az adatok közvetlenül a hűtőházi tárolóban tárolt Parquet-fájlokból is elérhetők. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
+Az adatoknak a [Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) és az [idősorozat lekérdezési API](./time-series-insights-update-tsq.md)-kkal való elérésén kívül az adatok közvetlenül a hűtőházi tárolóban tárolt Parquet-fájlokból is elérhetők. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
 
 Az adatok közvetlenül az Azure Storage-fiókból való eléréséhez olvasási hozzáféréssel kell rendelkeznie a Azure Time Series Insights Gen2-adatok tárolására használt fiókhoz. Ezután a Parquet fájl létrehozási ideje alapján elolvashatja a kiválasztott adatmennyiséget az `PT=Time` alább ismertetett mappában található parketta- [fájl formátuma](#parquet-file-format-and-folder-structure) szakaszban.  A Storage-fiókhoz való olvasási hozzáférés engedélyezésével kapcsolatos további információkért lásd: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md).
 
@@ -102,7 +102,7 @@ Azure Time Series Insights Gen2-események a következő módon vannak leképezv
 * A telemetria-adatként elküldett összes többi tulajdonság a `_bool` tulajdonság típusától függően (logikai), `_datetime` (időbélyegző), ( `_long` hosszú), `_double` (Double), ( `_string` String) vagy `dynamic` (dinamikus) oszlopokra van leképezve.  További információt a [támogatott adattípusokról](./concepts-supported-data-types.md)szóló témakörben olvashat.
 * Ez a leképezési séma a **(z) V = 1** néven hivatkozott fájlformátum első verziójára vonatkozik, és az azonos nevű alapmappában tárolódik. A szolgáltatás fejlődése során ez a leképezési séma változhat, és a hivatkozási név megnő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [adatmodellezésről](./time-series-insights-update-tsm.md).
 

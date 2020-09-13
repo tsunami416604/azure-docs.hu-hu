@@ -2,13 +2,13 @@
 title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 7f485d258074959c4a0a17449c65c38fa9648502
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/03/2020
+ms.openlocfilehash: 3f916be4431aa6b2b100967465450447ecc1d626
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661401"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468674"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
@@ -16,6 +16,7 @@ A Resource Manager a következő függvényeket biztosítja az erőforrások ér
 
 * [extensionResourceId](#extensionresourceid)
 * [listáját](#list)
+* [pickZones](#pickzones)
 * [szolgáltatók](#providers)
 * [referencia](#reference)
 * [resourceGroup](#resourcegroup)
@@ -34,7 +35,7 @@ A [bővítmény erőforrásának](../management/extension-resource-types.md)erő
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceId |Yes |sztring |Annak az erőforrásnak az erőforrás-azonosítója, amelyre a bővítmény erőforrása vonatkozik. |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
@@ -101,6 +102,12 @@ A következő példa egy erőforráscsoport-zárolás erőforrás-AZONOSÍTÓjá
 }
 ```
 
+Egy felügyeleti csoportba telepített egyéni szabályzat-definíció kiterjesztési erőforrásként van implementálva. Házirend létrehozásához és hozzárendeléséhez telepítse a következő sablont egy felügyeleti csoportba.
+
+:::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
+
+A beépített szabályzat-definíciók a bérlői szintű erőforrások. A beépített szabályzat-definíciók üzembe helyezésére példát a következő témakörben talál: [tenantResourceId](#tenantresourceid).
+
 <a id="listkeys"></a>
 <a id="list"></a>
 
@@ -112,7 +119,7 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Yes |sztring |Az erőforrás egyedi azonosítója. |
 | apiVersion |Yes |sztring |Az erőforrás-futtatókörnyezet állapotának API-verziója. Általában az **éééé-hh-nn**formátumban kell megadni. |
@@ -130,9 +137,16 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 
 | Erőforrás típusa | Függvény neve |
 | ------------- | ------------- |
+| Microsoft. addons/supportProviders | listsupportplaninfo |
 | Microsoft. AnalysisServices/kiszolgálók | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft. ApiManagement/Service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
+| Microsoft. ApiManagement/szolgáltatás/átjárók | [Listkeys műveletének beolvasása](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
+| Microsoft. ApiManagement/Service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
+| Microsoft. ApiManagement/Service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
+| Microsoft. ApiManagement/Service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
-| Microsoft. AppConfiguration/configurationStores | Listkeys műveletének beolvasása |
+| Microsoft. AppConfiguration/configurationStores | [Listkeys műveletének beolvasása](/rest/api/appconfiguration/configurationstores/listkeys) |
+| Microsoft. AppPlatform/Spring | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
 | Microsoft. Automation/automationAccounts | [Listkeys műveletének beolvasása](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.BatCH/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/munkaterületek/kísérletek/feladatok | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
@@ -144,10 +158,15 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. ContainerRegistry/nyilvántartók | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft. ContainerRegistry/nyilvántartók | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft. ContainerRegistry/nyilvántartók | [listUsages](/rest/api/containerregistry/registries/listusages) |
+| Microsoft. ContainerRegistry/nyilvántartók/agentpools | listQueueStatus |
+| Microsoft. ContainerRegistry/nyilvántartók/buildTasks | listSourceRepositoryProperties |
+| Microsoft. ContainerRegistry/nyilvántartások/buildTasks/lépések | listBuildArguments |
+| Microsoft. ContainerRegistry/nyilvántartók/taskruns | listDetails |
 | Microsoft. ContainerRegistry/nyilvántartók/webhookok | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft. ContainerRegistry/nyilvántartások/futtatások | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
 | Microsoft. ContainerRegistry/nyilvántartások/feladatok | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
 | Microsoft. Tárolószolgáltatás/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft. Tárolószolgáltatás/managedClusters | [listClusterMonitoringUserCredential](/rest/api/aks/managedclusters/listclustermonitoringusercredentials) |
 | Microsoft. Tárolószolgáltatás/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
 | Microsoft. Tárolószolgáltatás/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
 | Microsoft. DataBox/feladatok | listCredentials |
@@ -168,6 +187,7 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. segédösszetevője/Labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
 | Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
 | Microsoft.DocumentDB/databaseAccounts | [Listkeys műveletének beolvasása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2020-04-01/notebookworkspaces/listconnectioninfo) |
 | Microsoft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft. EventGrid/tartományok | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -206,7 +226,9 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. NotificationHubs/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft. OperationalInsights/munkaterületek | [list](/rest/api/loganalytics/workspaces/list) |
+| Microsoft. OperationalInsights/munkaterületek | Listkeys műveletének beolvasása |
 | Microsoft. PolicyInsights/szervizelések | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft. RedHatOpenShift/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft. Relay/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/névterek/disasterRecoveryConfigs/engedélyezési szabályok | listkeys műveletének beolvasása |
 | Microsoft. Relay/névterek/HybridConnections/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/relay/hybridconnections/listkeys) |
@@ -225,6 +247,7 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. StorSimple/vezetők/eszközök | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft. StorSimple/vezetők | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
 | Microsoft. StorSimple/vezetők | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft. szinapszis/munkaterületek/integrationRuntimes | [listAuthKeys](/rest/api/synapse/integrationruntimeauthkeys/list) |
 | Microsoft. Web/connectionGateways | ListStatus |
 | Microsoft. Web/kapcsolatok | listconsentlinks |
 | Microsoft. Web/customApis | listWsdlInterfaces |
@@ -316,6 +339,94 @@ A következő példa egy list függvényt mutat be, amely egy paramétert vesz i
 
 Egy listKeyValue példa: gyors útmutató [: automatikus VM-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
 
+## <a name="pickzones"></a>pickZones
+
+`pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
+
+Meghatározza, hogy az erőforrástípus támogatja-e egy adott régió zónáit.
+
+### <a name="parameters"></a>Paraméterek
+
+| Paraméter | Kötelező | Típus | Description |
+|:--- |:--- |:--- |:--- |
+| providerNamespace | Yes | sztring | Az erőforrás-szolgáltató névterét, amely a zónák támogatását keresi. |
+| resourceType | Yes | sztring | A zóna támogatásának kereséséhez használt erőforrástípus. |
+| location | Yes | sztring | A zóna támogatását támogató régió. |
+| numberOfZones | No | egész szám | A visszaadni kívánt logikai zónák száma. Az alapértelmezett érték 1. A számnak 1 és 3 közötti pozitív egész számnak kell lennie.  Az egyzónás erőforrások esetében az 1 érték használható. A többzónás erőforrások esetében az értéknek kisebbnek vagy egyenlőnek kell lennie a támogatott zónák számával. |
+| offset | No | egész szám | A kezdő logikai zóna eltolása. A függvény hibát ad vissza, ha az eltolás plusz numberOfZones meghaladja a támogatott zónák számát. |
+
+### <a name="return-value"></a>Visszatérési érték
+
+A támogatott zónákat tartalmazó tömb. Az eltolás és a numberOfZones alapértelmezett értékeinek használatakor a zónákat támogató erőforrástípus és régió a következő tömböt adja vissza:
+
+```json
+[
+    "1"
+]
+```
+
+Ha a paraméter értéke 3, a a következőt `numberOfZones` adja vissza:
+
+```json
+[
+    "1",
+    "2",
+    "3"
+]
+```
+
+Ha az erőforrás típusa vagy régiója nem támogatja a zónákat, a rendszer üres tömböt ad vissza.
+
+```json
+[
+]
+```
+
+### <a name="pickzones-example"></a>pickZones példa
+
+A következő sablon három eredményt mutat a pickZones függvény használatához.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "supported": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')]"
+        },
+        "notSupportedRegion": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
+        },
+        "notSupportedType": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Cdn', 'profiles', 'westus2')]"
+        }
+    }
+}
+```
+
+Az előző példák kimenete három tömböt ad vissza.
+
+| Név | Típus | Érték |
+| ---- | ---- | ----- |
+| támogatott | array | ["1"] |
+| notSupportedRegion | array | [] |
+| notSupportedType | array | [] |
+
+A pickZones válaszával határozhatja meg, hogy null értéket kíván-e biztosítani a zónák számára, vagy a virtuális gépeket különböző zónákhoz rendeli. A következő példa a zónák rendelkezésre állása alapján állítja be a zóna értékét.
+
+```json
+"zones": {
+    "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
+},
+```
+
 ## <a name="providers"></a>szolgáltatók
 
 `providers(providerNamespace, [resourceType])`
@@ -324,7 +435,7 @@ Egy erőforrás-szolgáltatóval és annak támogatott erőforrásaival kapcsola
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |sztring |A szolgáltató névtere |
 | resourceType |No |sztring |Az erőforrás típusa a megadott névtéren belül. |
@@ -399,7 +510,7 @@ Egy erőforrás futásidejű állapotát jelképező objektumot ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Yes |sztring |Egy erőforrás neve vagy egyedi azonosítója. Ha az aktuális sablonban lévő erőforrásra hivatkozik, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
 | apiVersion |No |sztring |A megadott erőforrás API-verziója. **Ezt a paramétert akkor kell megadni, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
@@ -722,7 +833,7 @@ Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor hasz
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörére telepíti. |
 | resourceGroupName |No |sztring |Az alapértelmezett érték az aktuális erőforráscsoport. Akkor adja meg ezt az értéket, ha egy másik erőforráscsoport erőforrását le kell kérnie. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
@@ -740,23 +851,27 @@ Ha a sablont egy erőforráscsoport hatókörébe telepíti, a rendszer az erőf
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Ha [előfizetési szintű központi telepítésben](deploy-to-subscription.md)használja, az erőforrás-azonosítót a következő formátumban adja vissza a rendszer:
+A resourceId függvényt más központi telepítési hatókörökhöz is használhatja, de az azonosító formátuma megváltozik.
+
+Ha resourceId használ az előfizetés telepítésekor, az erőforrás-azonosítót a következő formátumban adja vissza a rendszer:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Ha [felügyeleti csoport szintű](deploy-to-management-group.md) vagy bérlői szintű központi telepítésben használja, az erőforrás-azonosítót a következő formátumban adja vissza a rendszer:
+Ha a resourceId a felügyeleti csoportba vagy bérlőbe való központi telepítés során használja, az erőforrás-azonosítót a következő formátumban adja vissza a rendszer:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Az azonosító más formátumokban való lekéréséhez lásd:
+A félreértések elkerülése érdekében javasoljuk, hogy ne használja a resourceId-t, amikor az előfizetésre, a felügyeleti csoportra vagy a bérlőre telepített erőforrásokkal dolgozik. Ehelyett használja a hatókörhöz tervezett ID függvényt.
 
-* [extensionResourceId](#extensionresourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+Az [előfizetési szintű erőforrások](deploy-to-subscription.md)esetében használja a [subscriptionResourceId](#subscriptionresourceid) függvényt.
+
+[Felügyeleti csoport szintű erőforrások](deploy-to-management-group.md)esetén használja a [extensionResourceId](#extensionresourceid) függvényt egy felügyeleti csoport kiterjesztéseként megvalósított erőforrásra való hivatkozáshoz. Például a felügyeleti csoportba telepített egyéni házirend-definíciók a felügyeleti csoport bővítményei. A [tenantResourceId](#tenantresourceid) függvénnyel hivatkozhat a bérlőre központilag telepített és a felügyeleti csoportban elérhető erőforrásokra. Például a beépített szabályzat-definíciók a bérlői szintű erőforrásokként vannak implementálva.
+
+A [bérlői szintű erőforrások](deploy-to-tenant.md)esetében használja a [tenantResourceId](#tenantresourceid) függvényt. A tenantResourceId használata beépített szabályzat-definíciók esetében, mivel azok a bérlői szinten vannak implementálva.
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -918,7 +1033,7 @@ Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját ad
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
@@ -1000,7 +1115,7 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
 | resourceName1 |Yes |sztring |Az erőforrás neve. |
@@ -1020,7 +1135,45 @@ Az azonosító a következő formátumban lesz visszaadva:
 
 Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
-## <a name="next-steps"></a>További lépések
+### <a name="tenantresourceid-example"></a>tenantResourceId példa
+
+A beépített szabályzat-definíciók a bérlői szintű erőforrások. A beépített szabályzat-definícióra hivatkozó szabályzat-hozzárendelés telepítéséhez használja a tenantResourceId függvényt.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyAssignmentName": {
+      "type": "string",
+      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
+      "metadata": {
+        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
+      }
+    },
+    "policyDefinitionID": {
+      "type": "string",
+      "defaultValue": "0a914e76-4921-4c19-b460-a2d36003525a",
+      "metadata": {
+        "description": "Specifies the ID of the policy definition or policy set definition being assigned."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "[parameters('policyAssignmentName')]",
+      "apiVersion": "2019-09-01",
+      "properties": {
+        "scope": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]",
+        "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
+      }
+    }
+  ]
+}
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/04/2020
+ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328324"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483626"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Az Azure AD és a transactd SaaS-ajánlatok a kereskedelmi piactéren
 
@@ -25,9 +25,9 @@ Az ebben a cikkben ismertetett útmutatást követve az SaaS-ajánlat a keresked
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha az SaaS-ajánlatot a partner Centerben [hozza létre](./partner-center-portal/create-new-saas-offer.md) , az ajánlati listán megjelenő, a művelethez megadott hívási lehetőség közül választhat. Ön dönti el, hogyan történik az ajánlat a kereskedelmi piactéren való lebonyolításában. A Microsoft által eladott ajánlatokat felhívható ajánlatoknak nevezzük. Az ügyfelet az Ön nevében számlázjuk minden visszagörgethető ajánlatért. Ha úgy dönt, hogy a Microsofton keresztül értékesít, és az Ön nevében üzemelteti az Egyesült államokbeli tranzakciókat (az **Igen** lehetőséggel), akkor egy visszagörgethető ajánlat létrehozását választotta, és ez a cikk Önnek szól. Javasoljuk, hogy teljes egészében olvassa el.
+Ha az SaaS-ajánlatot a partner Centerben [hozza létre](./partner-center-portal/create-new-saas-offer.md) , az ajánlati listán megjelenő, meghatározott listaelemek közül választhat. Ön dönti el, hogyan történik az ajánlat a kereskedelmi piactéren való lebonyolításában. A Microsoft által eladott ajánlatokat felhívható ajánlatoknak nevezzük. Az ügyfelet az Ön nevében számlázjuk minden visszagörgethető ajánlatért. Ha úgy dönt, hogy a Microsofton keresztül értékesít, és az Ön nevében üzemelteti az Egyesült államokbeli tranzakciókat (az **Igen** lehetőséggel), akkor egy visszagörgethető ajánlat létrehozását választotta, és ez a cikk Önnek szól. Javasoljuk, hogy teljes egészében olvassa el.
 
-Ha úgy dönt, hogy csak az ajánlatát sorolja fel, de a kereskedelmi piactér és a tranzakciók egymástól függetlenül (a **nincs** lehetőség), három lehetősége van arra, hogy a potenciális ügyfelek hogyan férhessenek hozzá az ajánlathoz: azonnali letöltés (ingyenes), ingyenes próbaverzió és kapcsolatfelvétel. Ha a letöltés **most (ingyenes)** vagy az **ingyenes próbaverzió**lehetőséget választja, akkor ez a cikk nem áll az Ön számára. További információkért lásd: [az ingyenes vagy próbaverziós SaaS-ajánlat kezdőlapjának létrehozása a kereskedelmi piactéren](./azure-ad-free-or-trial-landing-page.md) . Ha a **Kapcsolatfelvétel**lehetőséget választja, nincsenek közvetlen közzétevői felelősségek. Folytassa az ajánlat létrehozását a partner Centerben.
+Ha úgy dönt, hogy csak a kereskedelmi Piactéren keresztül sorolja fel az ajánlatát, és a tranzakciókat egymástól függetlenül dolgozza fel (a **No** lehetőséggel), három lehetősége van arra, hogy a potenciális ügyfelek hogyan férhessenek hozzá az ajánlathoz: azonnali letöltés (ingyenes), ingyenes próbaverzió és kapcsolatfelvétel. Ha a letöltés **most (ingyenes)** vagy az **ingyenes próbaverzió**lehetőséget választja, akkor ez a cikk nem áll az Ön számára. További információkért lásd: [az ingyenes vagy próbaverziós SaaS-ajánlat kezdőlapjának létrehozása a kereskedelmi piactéren](./azure-ad-free-or-trial-landing-page.md) . Ha a **Kapcsolatfelvétel**lehetőséget választja, nincsenek közvetlen közzétevői felelősségek. Folytassa az ajánlat létrehozását a partner Centerben.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Hogyan működik az Azure AD a kereskedelmi piactéren az SaaS-ajánlatok számára
 
@@ -86,7 +86,8 @@ A 7 – 9. lépést feldolgozhatja a felhasználói felügyeleti folyamatok opci
 | 9. az alkalmazás jogosultságának és üzembe helyezésének engedélyezése után a vásárló vállalatának felhasználói az Azure AD SSO használatával jelentkezhetnek be a közzétevő SaaS-alkalmazásba. | Az [Azure ad SSO használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) engedélyezheti, hogy a felhasználók egyszer jelentkezzenek be egy fiókkal a közzétevő SaaS-alkalmazásával. | Ajánlott |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [SaaS-ajánlat létrehozása a kereskedelmi piactéren](./partner-center-portal/create-new-saas-offer.md)
-- [A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját](./azure-ad-transactable-saas-landing-page.md)
+- [A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját](azure-ad-transactable-saas-landing-page.md)
+- [Az ingyenes vagy próbaverziós SaaS-ajánlat kezdőlapjának összeállítása a kereskedelmi piactéren](azure-ad-free-or-trial-landing-page.md)
+- [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)

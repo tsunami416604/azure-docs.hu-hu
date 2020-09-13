@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ae42bb29d1273e4f0f9c25803e8cc97b56ad95
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514450"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462411"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
 
@@ -192,7 +192,7 @@ Ebben a cikkben különböző túlterheléseket beszéltünk a Storage ügyfélo
 * A lusta lista a könyvtárban kényelmes burkolóként van megadva a szinkron helyzetekben.
 * A kapzsi felsorolás nem ajánlott, és el lett távolítva a könyvtárból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Storage-ról és az ügyféloldali kódtár a C++ nyelvhez: az alábbi források.
 
@@ -200,5 +200,5 @@ További információ az Azure Storage-ról és az ügyféloldali kódtár a C++
 * [A Table Storage használata a C++-ból](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [A Queue Storage használata C++-szal](../storage-c-plus-plus-how-to-use-queues.md)
 * [Az Azure Storage ügyféloldali kódtára a C++ API dokumentációhoz.](https://azure.github.io/azure-storage-cpp/)
-* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Az Azure Storage csapat blogja](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
