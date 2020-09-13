@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/24/2016
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f5fd8433f8de4dab39a73e889a71c4b262dc924
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779620"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394499"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között
 Ez a cikk áttekintést nyújt a létesítmények közötti és a virtuális hálózatok közötti kapcsolatokra vonatkozó magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
@@ -75,6 +75,6 @@ Ugyanez az aktív-aktív konfiguráció az Azure virtuális hálózatok között
 
 Ez biztosítja, hogy bármilyen tervezett karbantartási esemény esetében legyen két alagút a két virtuális hálózat között, ami még jobb rendelkezésre állást eredményez. Bár az azonos topológia a létesítmények közötti kapcsolatok esetében két kapcsolatot igényel, a fent bemutatott virtuális hálózatok közötti topológiához az egyes átjárókhoz csak egy kapcsolat szükséges. Emellett a BGP használata nem kötelező, kivéve, ha a virtuális hálózatok közötti kapcsolat esetében átmenő útválasztásra van szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A létesítmények közötti és a virtuális hálózatok közötti aktív-aktív kapcsolatok konfigurálásának lépéseit lásd: [Aktív-aktív VPN Gateway-átjárók konfigurálása létesítmények közötti és virtuális hálózatok közötti kapcsolatokhoz](vpn-gateway-activeactive-rm-powershell.md).
 

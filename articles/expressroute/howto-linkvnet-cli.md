@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: VNet összekapcsolása az áramkörrel: CLI'
 description: Ez a cikk bemutatja, hogyan kapcsolhat virtuális hálózatokat (virtuális hálózatok) a ExpressRoute-áramkörökhöz a Resource Manager-alapú üzemi modell és a parancssori felület használatával.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: cherylmc
-ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: duau
+ms.openlocfilehash: ac36e303cbeaf5167b5bbec3cea503c37b276058
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325253"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393207"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a CLI használatával
 
@@ -167,6 +167,6 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.

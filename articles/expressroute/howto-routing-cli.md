@@ -2,25 +2,25 @@
 title: 'Azure ExpressRoute: társítás konfigurálása: parancssori felület'
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és helyezhet üzembe egy ExpressRoute-áramkör privát, nyilvános és Microsoft-társait. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 04/24/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c20b0741f12ee2cab40d8f5b53c51ad537801bf2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727041"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393173"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>ExpressRoute-áramkör társításának létrehozása és módosítása a parancssori felület használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet útválasztási konfigurációt/társítást egy ExpressRoute-áramkörhöz a Resource Manager-alapú üzemi modellben a CLI használatával. A ExpressRoute-áramkör állapota, frissítése vagy törlése és megszüntetése is ellenőrizhető. Ha más módszert szeretne használni az áramkörrel való munkavégzéshez, válasszon egy cikket a következő listából:
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Nyilvános társak](about-public-peering.md)
@@ -39,7 +39,7 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 
 A ExpressRoute-áramkörhöz privát és Microsoft-társítást is beállíthat (az Azure nyilvános társítása elavult az új áramkörök esetében). A társításokat tetszőleges sorrendben lehet konfigurálni. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományokról és a társításokról: [ExpressRoute-útválasztási tartományok](expressroute-circuit-peerings.md). A nyilvános hálózattal kapcsolatos további információkért lásd: [nyilvános ExpressRoute](about-public-peering.md).
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft társviszony-létesítés
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társviszony
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -187,7 +187,7 @@ A következő példa futtatásával távolíthatja el a társ-konfigurációt:
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name MicrosoftPeering
 ```
 
-## <a name="azure-private-peering"></a><a name="private"></a>Azure privát társviszony-létesítés
+## <a name="azure-private-peering"></a><a name="private"></a>Azure-beli privát társviszony
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát társ-összevonási konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -326,7 +326,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](howto-linkvnet-cli.md).
 

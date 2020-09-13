@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: NPM konfigurálása áramkörökhöz'
 description: Felhőalapú hálózati figyelés (NPM) konfigurálása az Azure ExpressRoute-áramkörökhöz. Ez magában foglalja a ExpressRoute privát és Microsoft-partnerek általi figyelését.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
-ms.author: cherylmc
-ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738379"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393678"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
@@ -107,7 +107,7 @@ Javasoljuk, hogy legalább két ügynököt telepítsen a redundancia (például
    * Ha a **Operations Managerhoz**való csatlakozást választotta, a **felügyeleti csoport konfigurációja** lapon írja be a **felügyeleti csoport nevét**, a **felügyeleti kiszolgálót**és a **felügyeleti kiszolgáló portját**. Ezután kattintson a **tovább**gombra.
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * Az **ügynök műveleti fiókja** lapon válassza ki a **helyi** rendszerfiókot, vagy a **tartomány vagy a helyi számítógép fiókot**. Ezután kattintson a **tovább**gombra.
+   * Az **ügynök műveleti fiókja** lapon válassza ki a **helyi** rendszerfiókot, vagy a  **tartomány vagy a helyi számítógép fiókot**. Ezután kattintson a **tovább**gombra.
 
      ![Fiók](./media/how-to-npm/10.png)
 6. A **telepítésre kész** oldalon tekintse át a beállításokat, majd kattintson a **telepítés**gombra.
@@ -199,7 +199,7 @@ A privát kapcsolatok esetében a felderítés befejezésekor a szabályok az eg
 5. Mentse a beállításokat.
 6. Miután engedélyezte a szabályokat, és kiválasztja a figyelni kívánt értékeket és ügynököket, várjon körülbelül 30-60 percet, amíg az értékek megkezdik a feltöltést, és a **ExpressRoute-figyelési** csempék elérhetővé válnak.
 
-### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+### <a name="microsoft-peering"></a>Microsoftos társviszony
 
 Microsoft-társak esetén kattintson a figyelni kívánt Microsoft-társi kapcsolatok elemre, majd konfigurálja a beállításokat.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717251"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394329"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -45,7 +45,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.4.4         | 2.3.2.                      |
 | Apache Livy            | 0,5           | 0,4.                        |
-| Apache Kafka           | 2.1.1         | 1.1                         |
+| Apache Kafka           | 2.1.1         | 1,1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -78,7 +78,7 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |Igen |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 31., 2021 |Június 31., 2021 |Igen |Igen |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 30., 2021 |Június 30., 2021 |Igen |Igen |
 
 * Kiterjesztjük bizonyos HDInsight 3,6-fürtök támogatási időkeretét
 
@@ -88,11 +88,11 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight 3,6 Spark             | 2.3               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 Spark             | 2,2               | Kivonulás június 30-ig, 2020          |                             |
 | HDInsight 3,6 Spark             | 2.1               | Kivonulás június 30-ig, 2020          |                             |
-| HDInsight 3,6 Kafka             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Kafka             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 Kafka             | 1,0               | 2020. június 30-án megszűnt.         |                             |
-| HDInsight 3,6 HBase             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 HBase             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 interaktív lekérdezés | 2.1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Storm             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Storm             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 ML-szolgáltatások      | 9,3               | Dec. 31.2020                      | Dec. 31.2020                |
 
 > [!NOTE]
@@ -130,7 +130,7 @@ A lejárati _dátum_ az a dátum, amely után a fürt verziója nem hozható lé
 
 További információ arról, hogy mely virtuálisgép-SKU-ket szeretné kijelölni a fürt számára: az [Azure HDInsight-fürt konfigurációjának részletei](hdinsight-supported-node-configuration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Munkahelyi Apache Hadoop HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL](hdinsight-hadoop-windows-tools.md)

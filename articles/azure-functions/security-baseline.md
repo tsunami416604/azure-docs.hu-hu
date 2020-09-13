@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5609df554e78996e50dcc57e200bb1dc1282cfb0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230500"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394091"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
 
@@ -541,7 +541,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az Azure Function apps-alkalmazásokat a Virtual Network (VNet)/subnet és a megfelelő címkével kell elválasztani.
 
-A hálózati elkülönítés végrehajtásához privát végpontokat is használhat. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatásokhoz (például: Azure Functions alkalmazás HTTPs-végpontja). A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A privát végpontok (előzetes verzió) a prémium csomagon futó Function apps szolgáltatásokhoz tartoznak. Az éles munkaterhelések használata előtt győződjön meg arról, hogy a magánhálózati végpontok már nem (előzetes verzió).
+A hálózati elkülönítés végrehajtásához privát végpontokat is használhat. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatásokhoz (például: Azure Functions alkalmazás HTTPs-végpontja). A privát végpont a virtuális hálózat egyik magánhálózati IP-címét használja, így lényegében bekapcsolja a szolgáltatást a virtuális hálózatba. A privát végpontok (előzetes verzió) a prémium csomagon futó Function apps szolgáltatásokhoz tartoznak. Az éles munkaterhelések használata előtt győződjön meg arról, hogy a magánhálózati végpontok már nem (előzetes verzió).
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
@@ -960,7 +960,9 @@ Belső beszerzési útmutató létrehozása:
 
 - [Felügyelt identitások használata App Service és Azure Functions](../app-service/overview-managed-identity.md)
 
-- [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/managed-identity.md)
+* [Hitelesítés Key Vault](../key-vault/general/authentication.md)
+
+* [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 
 - [Key Vault referenciák használata App Service és Azure Functions](../app-service/app-service-key-vault-references.md)
 
