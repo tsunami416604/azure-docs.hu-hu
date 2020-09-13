@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036623"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292520"
 ---
 # <a name="archived-release-notes"></a>Archivált kibocsátási megjegyzések
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Apache Hadoop és az Azure-beli Apache Spark-elemzések terén.
 
@@ -337,7 +337,7 @@ A HDInsight 4,0-ben elérhető javításokról további információt az alábbi
 |---|---|
 | Ambari | [Ambari-javítási információk](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
 | Hadoop | [Hadoop-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBase-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| A HBase | [HBase-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
 | Hive  | Ez a kiadás további Apache-javítások nélkül biztosít kaptár-3.1.0.  |
 | Kafka | Ebben a kiadásban a Kafka 1.1.1-es verziója további Apache-javítások nélkül elérhető. |
 | Oozie | [Oozie-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
@@ -561,7 +561,7 @@ A HDP 2.6.4 a Hadoop Common 2.7.3 és a következő Apache-javításokat biztos�
 
 -   [Fonal-6805](https://issues.apache.org/jira/browse/YARN-6805): NPE a LinuxContainerExecutor-ben a PrivilegedOperationException-kilépési kód miatt.
 
-#### <a name="hbase"></a>HBase
+#### <a name="hbase"></a>A HBase
 
 Ebben a kiadásban a HBase 1.1.2 és a következő Apache-javítások is elérhetők.
 
@@ -779,7 +779,7 @@ Ez a kiadás a következő javítások mellett biztosítja a kaptár 1.2.1-es é
 
 -   [*Struktúra-17621*](https://issues.apache.org/jira/browse/HIVE-17621): struktúra – a hely beállításai figyelmen kívül lesznek hagyva a HCatInputFormat felosztása során.
 
--   [*Kaptár-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: engedélyező/feketelistás konfiguráció, amely lehetővé teszi a táblák/partíciók szelektív gyorsítótárazását, és lehetővé teszi az olvasást az előmelegítés közben.
+-   [*Kaptár-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: jóváhagyott/nem jóváhagyott konfigurációval engedélyezheti a táblák/partíciók szelektív gyorsítótárazását, és engedélyezheti az olvasást az előmelegítés közben.
 
 -   [*Struktúra-17636*](https://issues.apache.org/jira/browse/HIVE-17636): vegyen fel több \_ Agg. q tesztet a blobstores.
 
@@ -1167,7 +1167,7 @@ Ez a kiadás a Spark 2.3.0 és a következő Apache-javításokat biztosítja:
 
 Ez a kiadás további Apache-javítások nélkül biztosít Sqoop 1.4.6.
 
-#### <a name="storm"></a>Vihar
+#### <a name="storm"></a>Storm
 
 Ebben a kiadásban a Storm 1.1.1 és a következő Apache-javítások állnak rendelkezésre:
 
@@ -1692,7 +1692,7 @@ A rögzített problémák olyan kiválasztott problémákat jelentenek, amelyek 
 
 |**Apache-összetevő**|**Apache JIRA**|**Összefoglalás**|**Részletek**|
 |--|--|--|--|
-|**Spark 2,3** |**N/A** |**A Apache Spark kibocsátási megjegyzésekben dokumentált változások** |– Létezik egy "elavult" dokumentum és egy "viselkedés változása" útmutató,https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Az SQL részhez van egy másik részletes "áttelepítési útmutató" (2,2 – 2,3),https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**N/A** |**A Apache Spark kibocsátási megjegyzésekben dokumentált változások** |– Létezik egy "elavult" dokumentum és egy "viselkedés változása" útmutató, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Az SQL részhez van egy másik részletes "áttelepítési útmutató" (2,2 – 2,3), https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**STRUKTÚRA – 12505**](https://issues.apache.org/jira/browse/HIVE-12505) |A Spark-feladatok sikeresen befejeződik, de van egy HDFS-lemezkvóta teljes hiba |**Forgatókönyv:** A **Beszúrás felülírásának** futtatása, ha egy kvóta be van állítva a parancsot futtató felhasználó kukába mappájába.<br /><br />**Előző viselkedés:** A feladatok akkor is sikeresek lesznek, ha az adatok nem helyezhetők át a kukába. Az eredmény helytelenül tartalmazhat néhány, a táblázatban korábban szereplő adatmennyiséget.<br /><br />**Új viselkedés:** Ha a Kuka mappába való áthelyezés sikertelen, a fájlok véglegesen törlődnek.|
 |**Kafka 1,0**|**N/A**|**A Apache Spark kibocsátási megjegyzésekben dokumentált változások** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Struktúra/Ranger** | |További Ranger-struktúra-szabályzatok szükségesek a Beszúrás FELÜLÍRÁSához |**Forgatókönyv:** További Ranger-struktúra-szabályzatok szükségesek a **Beszúrás felülírásához**<br /><br />**Előző viselkedés:** A kaptár **beszúrása felülíró** lekérdezések a szokásos módon sikeresek lesznek.<br /><br />**Új viselkedés:** A kaptár- **beszúrási** lekérdezések váratlanul meghiúsulnak a HDP-2.6. x-re való frissítés után, a következő hibával:<br /><br />Hiba történt az utasítás összeállítása közben: sikertelen: a HiveAccessControlException engedély megtagadva: a felhasználó jdoe nem rendelkezik írási jogosultsággal a/tmp/ \* (State = 42000, code = 40000)<br /><br />A HDP-2.6.0 esetében a kaptár- **beszúrási** lekérdezésekhez a Ranger URI-szabályzata szükséges ahhoz, hogy írási műveleteket engedélyezzen, még akkor is, ha a felhasználó rendelkezik írási jogosultsággal a HDFS szabályzaton keresztül.<br /><br />**Megkerülő megoldás/várt ügyfél-művelet:**<br /><br />1. hozzon létre egy új szabályzatot a kaptár-tárházban.<br />2. a legördülő menüben válassza az URI elemet.<br />3. az elérési út frissítése (példa:/tmp/*)<br />4. adja hozzá a felhasználókat és a csoportot, és mentse.<br />5. próbálkozzon újra az INSERT lekérdezéssel.|

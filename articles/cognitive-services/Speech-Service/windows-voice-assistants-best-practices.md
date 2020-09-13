@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714780"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293642"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Tervezési asszisztensi tapasztalatok a Windows 10 rendszerhez
 
@@ -118,9 +118,9 @@ Számos számítógép hordozható, de nem mindig az ügyfél-elérhetőségen b
 
 Ezért az asszisztenseknek az ebben a részben ismertetett útmutatást kell követniük a felhasználói élmény fenntartásához. A zárolás fölötti interakció akkor fordul elő, ha a Windows-felhasználó nem hitelesített. Ez azt jelenti, hogy **a Segédnek való bevitelt általában nem hitelesítettként kell kezelni**.
 
-- Az asszisztenseknek meg kell **valósítaniuk egy képesség-engedélyezési listát, amellyel azonosíthatók azok a képességek, amelyek biztonságban vannak, és amelyek biztonságban vannak** a zárolás felett.
+- Az asszisztenseknek **olyan szaktudás-engedélyezési listát kell alkalmazniuk, amely azonosítja azokat a képességeket, amelyeket a rendszer** a fenti zárolást követően a biztonságos és biztonságos hozzáférés érdekében megerősít.
 - A hangfelismerő technológiák bizonyos kockázatok enyhítésében is szerepet játszhatnak, de a hangszórók azonosítója nem megfelelő a Windows-hitelesítéshez.
-- A szakértelem engedélyezési listájának három osztályt kell figyelembe vennie a műveletek vagy a képességek terén:
+- Az engedélyezett képzettségi listának a műveletek és képességek három osztályát kell figyelembe vennie:
 
 | **Műveleti osztály** | **Leírás** | **Példák (nem teljes lista)** |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Ezért az asszisztenseknek az ebben a részben ismertetett útmutatást kell kö
 
 A contoso esetében a nyilvános Stock-információk körére vonatkozó általános információk hitelesítés nélkül biztonságosak. Az ügyfél-specifikus információk, például a tulajdonában lévő megosztások száma valószínűleg biztonságos a beszélő azonosítójával. A készletek vásárlása és értékesítése azonban soha nem engedélyezett Windows-hitelesítés nélkül.
 
-A felhasználói élmény, a **Weblinkek és az alkalmazások közötti egyéb alkalmazások további biztonságossá tételéhez mindig a Windows blokkolja a rendszer, amíg az ügyfél be nem jelentkezik.** Végső megoldásként a Microsoft fenntartja a jogot arra, hogy eltávolítson egy alkalmazást az engedélyezett asszisztensek engedélyezési listájában, ha egy súlyos biztonsági probléma nem jelent kellő időben.
+A felhasználói élmény, a **Weblinkek és az alkalmazások közötti egyéb alkalmazások további biztonságossá tételéhez mindig a Windows blokkolja a rendszer, amíg az ügyfél be nem jelentkezik.** Végső megoldásként a Microsoft fenntartja a jogot arra, hogy eltávolítson egy alkalmazást az engedélyezett asszisztensek listájáról, ha egy súlyos biztonsági probléma nem kerül kellő időben.
 
 ## <a name="design-guidance-for-voice-activation-preview"></a>Tervezési útmutató a hangalapú aktiválás előzetes verziójához
 

@@ -1,7 +1,7 @@
 ---
-title: Oktatóanyag a Azure Active Directory B2C konfigurálásához a whoIam használatával
+title: Oktatóanyag a Azure Active Directory B2C konfigurálásához a WhoIAM használatával
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan integrálható Azure AD B2C hitelesítés a whoIam használatával a felhasználók ellenőrzéséhez
+description: Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja Azure AD B2C hitelesítését a WhoIAM használatával a felhasználók ellenőrzéséhez.
 services: active-directory-b2c
 author: gargi-sinha
 manager: martinco
@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6545c5f40004dc50904618a8ea734eb73eeee933
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817570"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293150"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Oktatóanyag a WhoIAM konfigurálásához a Azure Active Directory B2C
 
-Ebben a példában útmutatást nyújtunk a [WhoIAM](https://www.whoiam.ai/brims/) márkás Identitáskezelés rendszerének (BRIMS) konfigurálásához a környezetben, és integrálni azt a Azure ad B2Cával.
+Ebben a példában útmutatást adunk arról, hogyan konfigurálhatja a [WhoIAM](https://www.whoiam.ai/brims/) márkás Identitáskezelés rendszerét (BRIMS) a környezetében, és integrálhatja azt Active Directory B2C (Azure ad B2C) használatával.
 
-A WhoIAM BRIMS a környezetében üzembe helyezett alkalmazások és szolgáltatások összessége. Ez biztosítja a felhasználói bázis hang-, SMS-és e-mail-ellenőrzését. A BRIMS a meglévő identitás-és hozzáférés-kezelési megoldással együtt működik, és a platform agnosztikus.
+A BRIMS az Ön környezetében üzembe helyezett alkalmazások és szolgáltatások összessége. Ez biztosítja a felhasználói bázis hang-, SMS-és e-mail-ellenőrzését. A BRIMS a meglévő identitás-és hozzáférés-kezelési megoldással együtt működik, és a platform agnosztikus.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,73 +32,73 @@ A kezdéshez a következőkre lesz szüksége:
 
 - [Egy Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
 
-- WhoIAM [próbaverziós fiók](https://www.whoiam.ai/contact-us/)
+- Egy WhoIAM [próbaverziós fiók](https://www.whoiam.ai/contact-us/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 A WhoIAM-integráció a következő összetevőket tartalmazza:
 
-- Azure AD B2C bérlő – az engedélyezési kiszolgáló, amelynek feladata a felhasználó hitelesítő adatainak ellenőrzése a bérlőben definiált egyéni házirendek alapján. Más néven identitás-szolgáltató.
+- Azure AD B2C bérlő. Ez az engedélyezési kiszolgáló, amely a felhasználó hitelesítő adatait ellenőrzi a megadott egyéni szabályzatok alapján. Más néven identitás-szolgáltató.
 
-- Felügyeleti portál ügyfelek és azok konfigurációinak kezeléséhez
+- Felügyeleti portál az ügyfelek és azok konfigurációinak kezeléséhez.
 
-- Egy API-szolgáltatás, amely különböző szolgáltatásokat tesz elérhetővé végpontokon keresztül  
+- Egy API-szolgáltatás, amely a különböző szolgáltatásokat a végpontokon keresztül teszi elérhetővé.  
 
-- A BRIMS felügyeleti portál és az API szolgáltatás háttereként használt Azure Cosmos DB
+- Azure Cosmos DB, amely a BRIMS felügyeleti portál és az API szolgáltatás hátterében is működik.
 
 A következő architektúra-diagram a megvalósítást mutatja be.
 
-![képernyőkép a whoiam-Architecture-diagramról](media/partner-whoiam/whoiam-architecture-diagram.png)
+![A Azure AD B2C integráció architektúrájának ábrája a WhoIAM-mel.](media/partner-whoiam/whoiam-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
-| 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználó elindít egy regisztrációs vagy bejelentkezési kérést egy olyan alkalmazásnak, amely a Azure AD B2C identitás-szolgáltatóként használja.
+| 1. | A felhasználó egy lapon megérkezik a regisztrációs vagy bejelentkezési kérés elindítására olyan alkalmazásra, amely a Azure AD B2C identitás-szolgáltatóként használja.
 | 2. | A hitelesítés részeként a felhasználó a saját e-mail-címe vagy telefonja tulajdonjogának ellenőrzésére, illetve a hangjuk biometrikus ellenőrzési tényezőként való felhasználására kéri.  
-| 3. | Azure AD B2C kezdeményezi a BRIMS API szolgáltatásnak a felhasználó e-mail-címét, telefonszámát és hangfelvételét.
-| 4. | A BRIMS előre definiált konfigurációkat használ, például teljes mértékben testreszabható e-maileket és SMS-sablonokat, hogy az alkalmazás megjelenésével és működésével összhangban legyenek a felhasználóval a megfelelő nyelven.
-| 5. | A felhasználó személyazonosságának ellenőrzése után a BRIMS egy tokent ad vissza, amely az ellenőrzés eredményét Azure AD B2C. Azure AD B2C ezután engedélyezi a felhasználónak az alkalmazáshoz való hozzáférést, vagy a hitelesítési kísérletük meghiúsul.  
+| 3. | Azure AD B2C kezdeményezi a BRIMS API szolgáltatás hívását, és továbbítja a felhasználó e-mail-címét, telefonszámát és hangfelvételét.
+| 4. | A BRIMS előre definiált konfigurációkat használ, például teljes mértékben testreszabható e-maileket és SMS-sablonokat, hogy az alkalmazás stílusával konzisztens módon kommunikáljon a felhasználóval a saját nyelvén.
+| 5. | A felhasználó személyazonosságának ellenőrzése után a BRIMS egy tokent ad vissza Azure AD B2C az ellenőrzés eredményének jelzéséhez. Azure AD B2C ezután engedélyezi a felhasználónak az alkalmazáshoz való hozzáférést, vagy a hitelesítési kísérletük meghiúsul.  
 
-## <a name="onboard-with-whoiam"></a>WhoIAM
+## <a name="sign-up-with-whoiam"></a>Regisztráció a WhoIAM
 
 1. Forduljon a [WhoIAM](https://www.whoiam.ai/contact-us/) -hez, és hozzon létre egy BRIMS-fiókot.
 
-2. A fiók létrehozása után használja az elérhetővé tett bevezetési irányelveket, és konfigurálja a következő Azure-szolgáltatásokat:
+2. Használja az Ön számára elérhető regisztrációs irányelveket, és konfigurálja a következő Azure-szolgáltatásokat:
 
-    - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) – a jelszó biztonságos tárolásához használható, például:, levelezési szolgáltatás jelszava.
+    - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): a jelszavak biztonságos tárolásához használatos, például a levelezési szolgáltatás jelszavai.
 
-    - [Azure app Service](https://azure.microsoft.com/services/app-service/) – a BRIMS API és a felügyeleti portál szolgáltatásainak üzemeltetésére szolgál
+    - [Azure app Service](https://azure.microsoft.com/services/app-service/): a BRIMS API és a felügyeleti portál szolgáltatásainak üzemeltetésére szolgál.
 
-    - [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) – a rendszergazda felhasználók hitelesítésére használható a felügyeleti portálon
+    - [Azure Active Directory](https://azure.microsoft.com/services/active-directory/): a rendszergazda felhasználók hitelesítésére szolgál a felügyeleti portálon.
 
-    - [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) – beállítások tárolására és lekérésére szolgál
+    - [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/): a beállítások tárolására és lekérésére szolgál.
 
-    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications.) (nem kötelező) – az API-és a felügyeleti portálra való bejelentkezéshez használatos
+    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) (nem kötelező): az API-ra és a felügyeleti portálra való bejelentkezéshez használatos.
 
 3. Telepítse a BRIMS API-t és a BRIMS felügyeleti portált az Azure-környezetben.
 
-4. A BRIMS-előkészítési dokumentációban Azure AD B2C egyéni házirend-minták érhetők el. Kövesse a dokumentumot az alkalmazás konfigurálásához, és használja a BRIMS platformot a felhasználói azonosító ellenőrzéséhez.  
+4. A BRIMS regisztrációs dokumentációjában Azure AD B2C egyéni házirend-minták érhetők el. Az alkalmazás konfigurálásához és a BRIMS platform felhasználói identitás-ellenőrzéshez való használatához kövesse a dokumentációt.  
 
-További információ a WhoIAM BRIMS: [termék dokumentációja](https://www.whoiam.ai/brims/)
+A WhoIAM BRIMS kapcsolatos további információkért tekintse meg a [termék dokumentációját](https://www.whoiam.ai/brims/).
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza az **identitási élmény keretrendszere**elemet.
+1. Nyissa meg a Azure AD B2C bérlőt. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
 
 2. Válassza ki a korábban létrehozott **SignUpSignIn**.
 
-3. Válassza a **felhasználói folyamat futtatása** lehetőséget, és válassza ki a beállításokat:
+3. Válassza a **felhasználói folyamat futtatása** lehetőséget, majd:
 
-   a. **Alkalmazás**: válassza ki a regisztrált alkalmazást (minta a JWT)
+   a. **Alkalmazás**esetén válassza ki a regisztrált alkalmazást (a minta a JWT).
 
-   b. **Válasz URL-címe**: válassza ki az **átirányítási URL-címet**
+   b. A **Válasz URL-cím**mezőben válassza ki az **átirányítási URL-címet**.
 
    c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
 
-4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
+4. Ugorjon végig a regisztrációs folyamaton, és hozzon létre egy fiókot.
 
-5. A BRIMS szolgáltatás a folyamat során lesz meghívva, a felhasználói attribútum létrehozása után. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
+5. A rendszer a BRIMS szolgáltatást a folyamat során hívja meg a felhasználói attribútum létrehozása után. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

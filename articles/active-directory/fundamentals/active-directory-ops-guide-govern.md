@@ -128,7 +128,7 @@ A [jogosultsági felügyelet (em)](../governance/entitlement-management-overview
 > [!NOTE]
 > Az Azure AD-jogosultságok kezeléséhez prémium szintű Azure AD P2 licencekre van szükség.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás irányításának nyolc aspektusa van. Ez a lista segítséget nyújt azoknak a műveleteknek a meghatározásához, amelyeket el kell végeznie a nem Kiemelt jogosultságú és privilegizált identitásokhoz, naplózáshoz és a környezet változásainak ellenőrzéséhez.
 

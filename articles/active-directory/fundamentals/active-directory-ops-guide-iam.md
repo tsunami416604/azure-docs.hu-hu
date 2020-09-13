@@ -191,7 +191,7 @@ Az [alapértelmezett különbözeti szinkronizálás](../hybrid/how-to-connect-s
 - [Címtár attribútumainak előkészítése az Office 365-vel való szinkronizáláshoz a IdFix eszköz használatával – Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: hibák elhárítása szinkronizálás közben](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának öt aspektusa van. Ebben a listában gyorsan megtalálhatja és megteheti a szükséges műveleteket az identitások és jogosultságok életciklusának védelméhez és kezeléséhez a szervezetében.
 
