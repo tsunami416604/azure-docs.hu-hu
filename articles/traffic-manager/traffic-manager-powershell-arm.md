@@ -3,20 +3,20 @@ title: Traffic Manager kezelése a PowerShell használatával az Azure-ban
 description: Ez a képzési terv a Traffic Manager Azure PowerShell használatának első lépéseiben nyújt segítséget.
 services: traffic-manager
 documentationcenter: na
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089039"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400534"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell használatával
 
@@ -125,7 +125,7 @@ Minden esetben:
 * A "Weight" megadása nem kötelező. A súlyok használata csak akkor történik meg, ha a profil úgy van konfigurálva, hogy a "súlyozott" forgalom-útválasztási módszert használja. Ellenkező esetben a rendszer figyelmen kívül hagyja őket. Ha meg van adva, az értéknek 1 és 1000 közötti számnak kell lennie. Az alapértelmezett érték: "1".
 * A "priority" megadása nem kötelező. A prioritásokat csak akkor használja a rendszer, ha a profil a "priority" forgalom – útválasztási módszer használatára van konfigurálva. Ellenkező esetben a rendszer figyelmen kívül hagyja őket. Az érvényes értékek 1 és 1000 közöttiek, a magasabb prioritást jelző alacsonyabb értékekkel. Ha egy végponthoz meg van adva, azt az összes végponthoz meg kell adni. Ha nincs megadva, a rendszer az "1" kezdetű alapértelmezett értékeket alkalmazza a végpontok listájának sorrendjében.
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>1. példa: App Service-végpontok hozzáadása a használatával`Add-AzTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>1. példa: App Service-végpontok hozzáadása a használatával `Add-AzTrafficManagerEndpointConfig`
 
 Ebben a példában egy Traffic Manager profilt hozunk létre, és két App Service végpontot adunk hozzá a `Add-AzTrafficManagerEndpointConfig` parancsmag használatával.
 
@@ -137,7 +137,7 @@ $webapp2 = Get-AzWebApp -Name webapp2
 Add-AzTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $TmProfile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>2. példa: publicIpAddress-végpont hozzáadása a használatával`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>2. példa: publicIpAddress-végpont hozzáadása a használatával `New-AzTrafficManagerEndpoint`
 
 Ebben a példában egy nyilvános IP-cím erőforrás kerül a Traffic Manager-profilba. A nyilvános IP-címnek konfigurálnia kell egy DNS-nevet, és a virtuális gép hálózati adapteréhez vagy egy terheléselosztóhoz is köthető.
 
@@ -167,7 +167,7 @@ Add-AzTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProf
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>2. példa: külső végpontok hozzáadása a használatával`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>2. példa: külső végpontok hozzáadása a használatával `New-AzTrafficManagerEndpoint`
 
 Ebben a példában egy külső végpontot adunk hozzá egy meglévő profilhoz. A profil a profil és az erőforráscsoport neve alapján van megadva.
 
@@ -199,7 +199,7 @@ Set-AzTrafficManagerProfile -TrafficManagerProfile $parent
 
 Ebben a példában a rövidség kedvéért nem adunk hozzá más végpontokat a gyermek-vagy szülő profilokhoz.
 
-### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>2. példa: beágyazott végpontok hozzáadása a használatával`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>2. példa: beágyazott végpontok hozzáadása a használatával `New-AzTrafficManagerEndpoint`
 
 Ebben a példában egy meglévő alárendelt profilt adunk hozzá beágyazott végpontként egy meglévő szülő profilhoz. A profil a profil és az erőforráscsoport neve alapján van megadva.
 
@@ -238,7 +238,7 @@ $TmProfile.Endpoints[1].Priority = 1
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>2. példa: végpont frissítése a `Get-AzTrafficManagerEndpoint` és a használatával`Set-AzTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>2. példa: végpont frissítése a `Get-AzTrafficManagerEndpoint` és a használatával `Set-AzTrafficManagerEndpoint`
 
 Ebben a példában egyetlen végpont súlyát módosítjuk egy meglévő profilban.
 
@@ -321,7 +321,7 @@ Ez a folyamat is lehet vezetékes:
 Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Traffic Manager figyelés](traffic-manager-monitoring.md)
 

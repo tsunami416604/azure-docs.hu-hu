@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea7460b3f997e0432ea0b987849eafccbe57b3b9
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3fcbc386c60611493912fdfb17226490549cdc53
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229174"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396811"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Container Registry Azure biztonsági alapterve
 
@@ -970,9 +970,11 @@ Az Azure Container-nyilvántartások megfelelőségének naplózása Azure Polic
 
 Integráció az Azure felügyelt identitásokkal:  https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault létrehozása:  https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault létrehozása: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:  https://docs.microsoft.com/azure/key-vault/managed-identity
+A Key Vault hitelesítése: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault hozzáférési szabályzatok kiosztása: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 Azure által felügyelt identitás használata Azure Container Registry feladatokban:  https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
 

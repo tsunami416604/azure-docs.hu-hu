@@ -1,6 +1,6 @@
 ---
 title: Távoli asztal közzététele Azure AD alkalmazás proxyval | Microsoft Docs
-description: Az Azure AD Application Proxy-összekötők alapjaira terjed ki.
+description: Bemutatja, hogyan konfigurálhatja az App proxyt az RDS használatával
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019522"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396760"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele az Azure-ban AD Application Proxy
 
@@ -135,7 +135,7 @@ Az ebben a cikkben ismertetett konfiguráció az RDS-webhelyeken vagy a távoli 
 
 | Hitelesítési módszer | Támogatott ügyfél-konfiguráció |
 | --------------------- | ------------------------------ |
-| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer + RDS ActiveX bővítmény használatával |
+| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer vagy [Edge króm IE Mode](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS ActiveX bővítmény használatával |
 | Előhitelesítés    | Távoli asztali webes ügyfél – HTML5-kompatibilis webböngésző, például a Microsoft Edge, az Internet Explorer 11, a Google Chrome, a Safari vagy a Mozilla Firefox (v 55.0 és újabb verziók) |
 | Csatlakoztatott | Minden más operációs rendszer, amely támogatja a Microsoft Távoli asztal alkalmazást |
 
@@ -145,7 +145,7 @@ Az áteresztő hitelesítés használatához a cikkben felsorolt lépések csak 
 1. A [Távoli asztali gazdagép végpontjának](#publish-the-rd-host-endpoint) (1. lépés) közzétételéhez állítsa az előhitelesítési módszert az **áteresztés**értékre.
 2. Az [alkalmazás-proxy felé irányuló közvetlen RDS-forgalom](#direct-rds-traffic-to-application-proxy)esetében hagyja ki a 8. lépést teljes mértékben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Távoli hozzáférés engedélyezése a sharepointhoz az Azure ad Application proxy](application-proxy-integrate-with-sharepoint-server.md) 
  [Biztonsági megfontolások az alkalmazások távoli eléréséhez az Azure ad Application proxy használatával](application-proxy-security.md)

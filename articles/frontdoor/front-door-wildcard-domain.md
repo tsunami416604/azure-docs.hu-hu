@@ -2,20 +2,20 @@
 title: Azure bejárati ajtó – helyettesítő karakteres tartományok támogatása
 description: Ebből a cikkből megtudhatja, hogyan támogatja az Azure bejárati ajtó a helyettesítő tartományok leképezését és kezelését az egyéni tartományok listájában.
 services: frontdoor
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
-ms.author: sharadag
-ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81768304"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398749"
 ---
 # <a name="wildcard-domains"></a>Helyettesítő karakteres tartományok
 
@@ -74,7 +74,7 @@ Ha nem szeretné, hogy egy WAF-házirend egy altartományhoz fusson, hozzon lét
 > [!IMPORTANT]
 > Az útválasztási szabályokban meg kell egyeznie az elérésiút-mintázattal, vagy az ügyfelek hibaüzeneteket fognak látni. Tegyük fel, hogy két útválasztási szabálya van, például az 1. útvonal (az `*.foo.com/*` A háttér-készlethez leképezve) és a 2-es útvonal ( `bar.foo.com/somePath/*` a B háttér-készletre van leképezve). Ezt követően egy kérelem érkezik a következőre: `bar.foo.com/anotherPath/*` . Az Azure bejárati ajtaja kiválasztja a 2. útvonalat egy adott tartományi egyeztetés alapján, csak az útvonalakon nem talál egyező elérésiút-mintákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre Azure-beli bejárati profilt](quickstart-create-front-door.md).
 - Megtudhatja, hogyan [adhat hozzá egyéni tartományt az Azure](front-door-custom-domain.md)-beli előtérben.

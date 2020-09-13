@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553393"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400041"
 ---
 # <a name="scenario-isolating-vnets"></a>Forgatókönyv: a virtuális hálózatok elkülönítése
 
@@ -29,7 +29,7 @@ Ebben az esetben egy adott VNet belüli munkaterhelés elkülönített marad, é
 | Virtuális hálózatok     | &#8594;|           |     X    |
 | Ágak   | &#8594;|    X     |     X    |
 
-Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamat esetében.
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagot (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamathoz, ahol az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN nyújtja.
 
 Ez a kapcsolati mátrix két különböző sor mintázatot biztosít, amelyek két útválasztási táblázatra fordíthatók le. A virtuális WAN már rendelkezik alapértelmezett útválasztási táblázattal, ezért szükség lesz egy másik útválasztási táblázatra. Ebben a példában az útválasztási táblázatot **RT_VNET**nevet adja.
 

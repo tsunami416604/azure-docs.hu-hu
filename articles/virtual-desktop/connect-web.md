@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ca5a591d168e18181a29cf1c00a7d1fead54595
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226046"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400636"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz a webes ügyféllel
 
@@ -27,7 +27,7 @@ A webes ügyfél lehetővé teszi a Windows rendszerű virtuális asztali erőfo
 
 Habár minden HTML5-kompatibilis böngészőnek működnie kell, a következő operációs rendszereket és böngészőket hivatalosan támogatjuk.
 
-| Böngésző           | Támogatott operációs rendszer                     | Megjegyzések               |
+| Böngésző           | Támogatott operációs rendszer                     | Jegyzetek               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          | 11-es vagy újabb verzió |
@@ -48,6 +48,25 @@ Egy böngészőben nyissa meg a Windows rendszerű virtuális asztali webes ügy
 >Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Windowsos virtuális asztalhoz kíván használni, akkor ki kell jelentkeznie, vagy egy privát böngészőablakot kell használnia.
 
 A bejelentkezést követően meg kell jelennie az erőforrások listájának. Az erőforrásokat úgy is elindíthatja, ha a **minden erőforrás** lapon a normál alkalmazást szeretné.
+
+## <a name="using-an-input-method-editor"></a>A bemeneti módszer szerkesztőjének használata
+
+A webes ügyfél a **1.0.21.16 vagy újabb**verzióban a távoli munkamenetben támogatja a bemeneti metódus-szerkesztő (IME) használatát. A távoli munkamenetben használni kívánt billentyűzet nyelvi csomagját telepíteni kell a gazdagép virtuális gépre. Ha többet szeretne megtudni a nyelvi csomagok távoli munkamenetben való beállításáról, tekintse meg a [nyelvi csomagok hozzáadása Windows 10-es többmunkamenetes rendszerképhez](language-packs.md)című részt.
+
+IME-bemenet engedélyezése a webes ügyfél használatával:
+
+1. A távoli munkamenethez való csatlakozás előtt lépjen a webes ügyfél **beállításai** panelre.
+
+2. Állítsa **be az** **Input Method Editor engedélyezése** beállítást be értékre.
+
+3. A legördülő menüben válassza ki a távoli munkamenetben használni kívánt billentyűzetet.
+
+4. Kapcsolódjon a távoli munkamenethez.
+
+A webes ügyfél letiltja a helyi ÍRÁSJEGYBEVIVŐ ablakát, amikor a távoli munkamenetre fókuszál. Ha már csatlakozott a távoli munkamenethez, az IME beállításainak módosítása nem lesz hatással.
+
+>[!NOTE]
+>Ha a nyelvi csomag nincs telepítve a gazdagép virtuális gépén, a távoli munkamenet alapértelmezett értéke az angol (Egyesült Államok) billentyűzet lesz.
 
 ## <a name="next-steps"></a>Következő lépések
 

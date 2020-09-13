@@ -3,12 +3,12 @@ title: Hibrid Kubernetes-fürtök konfigurálása a Azure Monitor for containers
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498899"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398381"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
@@ -38,7 +38,7 @@ A következő konfigurációk hivatalosan támogatottak a tárolók Azure Monito
 
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
 
-- [Log Analytics munkaterület](../platform/design-logs-deployment.md).
+- Egy [Log Analytics-munkaterület](../platform/design-logs-deployment.md).
 
     A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
 
@@ -71,9 +71,11 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 A hibrid Kubernetes-fürthöz tartozó tárolók Azure Monitorának engedélyezése a következő lépések végrehajtásával történik.
 
-1. Konfigurálja a Log Analytics munkaterületet a Container bepillantást biztosító megoldással.
+1. Konfigurálja a Log Analytics munkaterületet a Container bepillantást biztosító megoldással.   
 
 2. Engedélyezze a Azure Monitor for containers HELM diagramot Log Analytics munkaterülettel.
+
+A Azure Monitor figyelésével kapcsolatos további [információkért tekintse](../../azure-monitor/insights/solutions.md)meg a következőt:.
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>A Azure Monitor containers megoldás hozzáadása
 
@@ -334,7 +336,7 @@ A diagram sikeres üzembe helyezését követően áttekintheti a hibrid Kuberne
 
 A 2.7.1-es diagrammal kezdődően a diagram támogatja a proxy végpont megadását a `omsagent.proxy` diagram paraméterrel. Ez lehetővé teszi, hogy az informatikai kiszolgáló a proxykiszolgálón keresztül kommunikáljon. A Azure Monitor for containers Agent és a Azure Monitor közötti kommunikáció HTTP-vagy HTTPS-proxykiszolgáló lehet, és a névtelen és az alapszintű hitelesítés (username/Password) is támogatott.
 
-A proxy konfigurációs értékének szintaxisa a következő:`[protocol://][user:password@]proxyhost[:port]`
+A proxy konfigurációs értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Ha a proxykiszolgáló nem igényel hitelesítést, akkor továbbra is meg kell adnia egy psuedo felhasználónevet vagy jelszót. Ez lehet bármilyen Felhasználónév vagy jelszó.

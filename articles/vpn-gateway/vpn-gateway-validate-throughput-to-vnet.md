@@ -1,21 +1,21 @@
 ---
 title: A VPN átviteli sebességének ellenőrzése Microsoft Azure Virtual Network
-description: A dokumentum célja, hogy segítséget nyújtson a felhasználóknak a helyszíni erőforrásaik által az Azure-beli virtuális gépek felé irányuló hálózati teljesítmény ellenőrzésében.
+description: Ez a cikk segítséget nyújt a helyszíni erőforrások hálózati teljesítményének ellenőrzéséhez egy Azure-beli virtuális gépre.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 05/29/2019
+ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998476"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398507"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN teljesítményének érvényesítése virtuális hálózaton
 
@@ -127,7 +127,7 @@ Töltse le a [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip).
 
 [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) legújabb verziójának letöltése
 
-Fontolja meg a Latte.exe külön mappába helyezését, például:`c:\tools`
+Fontolja meg a Latte.exe külön mappába helyezését, például: `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte.exe engedélyezése a Windows tűzfalon keresztül
 
@@ -217,7 +217,7 @@ A telepítés gyors
 
 > [!Note]
 > Győződjön meg arról, hogy nincsenek közbenső ugrások (például virtuális berendezések) a virtuális gép és az átjáró közötti átviteli sebesség tesztelése során.
-> Ha a fenti iPERF-/NTTTCP-tesztek hiányos eredményekkel rendelkeznek (a teljes átviteli sebesség tekintetében), tekintse meg az alábbi cikket a probléma lehetséges kiváltó okai mögötti főbb tényezők megismeréséhez:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Ha a fenti iPERF-/NTTTCP-tesztek hiányos eredményekkel rendelkeznek (a teljes átviteli sebesség tekintetében), tekintse meg az alábbi cikket a probléma lehetséges kiváltó okai mögötti főbb tényezők megismeréséhez: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 Az ügyfél és a kiszolgáló közötti párhuzamosan gyűjtött csomagok rögzítési nyomkövetési (Wireshark/Hálózatfigyelő) elemzése különösen a hibás teljesítmény felmérésében nyújt segítséget. Ezek a Nyomkövetések a csomagok elvesztését, a nagy késést és az MTU-méretet is tartalmazhatják. töredezettség, TCP 0 ablak, nem sorrendben lévő töredékek stb.
 
@@ -253,7 +253,7 @@ A késést a következő eszközök használatával tekintheti meg:
 
 * WinMTR
 * TCPTraceroute
-* `ping`és `psping` (ezek az eszközök jó becslést nyújthatnak a RTT, de nem használhatók minden esetben.)
+* `ping` és `psping` (ezek az eszközök jó becslést nyújthatnak a RTT, de nem használhatók minden esetben.)
 
 ![Késések keresése](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
@@ -261,7 +261,7 @@ Ha nagy késleltetésű csúcsot észlel valamelyik ugrásban az MS hálózati g
 
 Ha a "msn.net"-n belül egy nagy, szokatlan késési tüske szerepel a komlóban, további vizsgálatokért forduljon az MS támogatási szolgálatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért és segítségért tekintse meg a következő hivatkozást:
 

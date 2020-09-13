@@ -4,20 +4,20 @@ description: Törölje a virtuális hálózati átjárót a Resource Manager-ala
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/23/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a7eb87f57676b469203e45e48b6f863cdf894c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983155"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400653"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Virtuális hálózati átjáró törlése a portál használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
@@ -60,5 +60,5 @@ Ekkor a rendszer törli a virtuális hálózati átjárót. A következő lépé
 Ha nem érdekli az erőforráscsoport erőforrásainak megtartása, és csak azt szeretné kezdeni, törölheti a teljes erőforráscsoportot. Ez egy gyors módszer, amellyel mindent eltávolíthat. A következő lépések csak a Resource Manager-alapú üzemi modellre vonatkoznak.
 
 1. Az **összes erőforrás**területen keresse meg az erőforráscsoportot, és kattintson a panel megnyitásához.
-2. Kattintson a **Törlés** gombra. A törlés panelen tekintse meg az érintett erőforrásokat. Győződjön meg arról, hogy az összes erőforrást törölni kívánja. Ha nem, használja a cikk elején található VPN Gateway törlésének lépéseit.
+2. Kattintson a **Delete** (Törlés) gombra. A törlés panelen tekintse meg az érintett erőforrásokat. Győződjön meg arról, hogy az összes erőforrást törölni kívánja. Ha nem, használja a cikk elején található VPN Gateway törlésének lépéseit.
 3. A folytatáshoz írja be a törölni kívánt erőforráscsoport nevét, majd kattintson a **Törlés**gombra.

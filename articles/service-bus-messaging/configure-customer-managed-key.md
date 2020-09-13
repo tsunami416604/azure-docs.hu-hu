@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067239"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400585"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
@@ -28,7 +28,7 @@ A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulc
 Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a Azure Portal használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok Azure Service Bus való használata megköveteli, hogy a kulcstartónak két szükséges tulajdonsága legyen konfigurálva. Ezek a következők: **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
+> Az ügyfél által felügyelt kulcsok Azure Service Bus való használata megköveteli, hogy a kulcstartónak két szükséges tulajdonsága legyen konfigurálva. Ezek a következők:  **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
@@ -82,12 +82,12 @@ Miután engedélyezte az ügyfél által felügyelt kulcsokat, hozzá kell rende
     > 
     >   * Ha a Geo vész- [helyreállítási](service-bus-geo-dr.md) funkció már engedélyezve van a Service Bus névtérhez, és engedélyezni szeretné az ügyfél által felügyelt kulcsot, 
     >     * A párosítás megszüntetése
-    >     * Állítsa be az elsődleges és a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/general/managed-identity.md) a kulcstartóba.
+    >     * Állítsa be az elsődleges és a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/general/assign-access-policy-portal.md) a kulcstartóba.
     >     * Állítsa be a titkosítást az elsődleges névtérben.
     >     * Az elsődleges és a másodlagos névterek újbóli párosítása.
     > 
     >   * Ha azt szeretné, hogy a Geo-DR olyan Service Bus névteren legyen engedélyezve, amelyben az ügyfél által felügyelt kulcs már be van állítva, akkor
-    >     * Állítsa be a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/general/managed-identity.md) a Key vaultba.
+    >     * Állítsa be a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/general/assign-access-policy-portal.md) a Key vaultba.
     >     * Az elsődleges és a másodlagos névterek párosítása.
 
 
@@ -164,8 +164,8 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Azure Service Bus né
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
-    > - `<ServiceBusNamespaceName>`-Service Bus névtér neve
-    > - `<Location>`– A Service Bus névtér helye
+    > - `<ServiceBusNamespaceName>` -Service Bus névtér neve
+    > - `<Location>` – A Service Bus névtér helye
 
     ```json
     {
@@ -287,10 +287,10 @@ Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-inform�
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
-    > - `<ServiceBusNamespaceName>`-Service Bus névtér neve
-    > - `<Location>`– A Service Bus névtér helye
-    > - `<KeyVaultName>`– A Key Vault neve
-    > - `<KeyName>`– A kulcs neve a Key vaultban  
+    > - `<ServiceBusNamespaceName>` -Service Bus névtér neve
+    > - `<Location>` – A Service Bus névtér helye
+    > - `<KeyVaultName>` – A Key Vault neve
+    > - `<KeyName>` – A kulcs neve a Key vaultban  
 
     ```json
     {
@@ -319,7 +319,7 @@ Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-inform�
     ```
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 - [Service Bus áttekintése](service-bus-messaging-overview.md)
 - [Key Vault áttekintése](../key-vault/general/overview.md)

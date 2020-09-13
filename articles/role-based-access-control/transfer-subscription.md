@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227032"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400544"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba (előzetes verzió)
 
@@ -79,7 +79,7 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 | Azure Data Lake Storage Gen1 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure File Sync | Igen | Igen |  |  |
-| Azure Managed Disks | Igen | N/A |  |  |
+| Azure Managed Disks | Yes | N/A |  |  |
 | Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
 | Azure Active Directory Domain Services | Igen | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |
@@ -224,7 +224,7 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 > [!WARNING]
 > Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használ titkosítást, amely **nem** ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor az egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
 
-- Ha rendelkezik kulcstartóval, az az Key [Vault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) paranccsal listázhatja a hozzáférési házirendeket. További információ: [Key Vault hitelesítés megadása hozzáférés-vezérlési házirenddel](../key-vault/key-vault-group-permissions-for-apps.md).
+- Ha rendelkezik kulcstartóval, az az Key [Vault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) paranccsal listázhatja a hozzáférési házirendeket. További információ: [Key Vault hozzáférési szabályzatok társítása](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault

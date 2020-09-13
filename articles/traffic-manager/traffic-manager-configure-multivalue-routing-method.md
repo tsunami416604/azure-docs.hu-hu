@@ -3,20 +3,20 @@ title: Többértékű forgalom útválasztásának konfigurálása – Azure Tra
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Traffic Manager, hogy a forgalmat egy/AAAA-végpontra irányítsa.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: rohink
-ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706817"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401044"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Többértékű útválasztási módszer konfigurálása Traffic Manager
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a többtényezős forgalom – 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy erőforráscsoportot a Traffic Manager profilhoz.
 1. A Azure Portal bal oldali ablaktábláján válassza az **erőforráscsoportok**lehetőséget.
 2. Az **erőforráscsoportok**lapon a lap tetején válassza a **Hozzáadás**lehetőséget.
@@ -42,9 +42,9 @@ Hozzon létre egy Traffic Manager-profilt, amely a legalacsonyabb késleltetés�
     
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
+    | Név                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
     | Útválasztási metódus          | Válassza ki **a** többértékű útválasztási módszert.                                       |
-    | Előfizetés            | Válassza ki az előfizetését.                          |
+    | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza a *myResourceGroupTM1*lehetőséget. |
     | Hely                | Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
    |        |           | 
@@ -71,7 +71,7 @@ Vegyen fel két IP-címet külső végpontként az előző lépésben létrehozo
 
    ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
 - További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).

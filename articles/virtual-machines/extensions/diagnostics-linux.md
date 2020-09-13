@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7a0b2afa8b566ec82fc638291c43f3e0419f654c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267853"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400687"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -70,7 +70,7 @@ Támogatott disztribúciók és verziók:
 * Az **Azure Linux Agent 2.2.0-es vagy újabb verziója**. A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
 * **Azure CLI**-vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
 * A wget parancs, ha még nem tette meg: Futtatás `sudo apt-get install wget` .
-* Egy meglévő Azure-előfizetés és egy meglévő Storage-fiók az adattároláshoz.
+* Meglévő Azure-előfizetés és meglévő általános célú Storage-fiók az adattároláshoz.  Az általános célú Storage-fiókok támogatják a Table Storage-t, amelyhez szükség van.  A blob Storage-fiók nem fog működni.
 
 ### <a name="sample-installation"></a>Minta telepítése
 
@@ -765,7 +765,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-about.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../azure-monitor/platform/alerts-classic-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../azure-monitor/platform/data-platform.md) létrehozása a mérőszámokhoz.

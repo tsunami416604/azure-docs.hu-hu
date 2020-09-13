@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078044"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398322"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -693,7 +693,8 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 - [Felügyelt identitás konfigurálása Azure Resource Manager környezetek telepítéséhez a DevTest Labs szolgáltatásban](use-managed-identities-environments.md)
 - [Felügyelt identitás konfigurálása virtuális gépek üzembe helyezéséhez a DevTest Labs szolgáltatásban](enable-managed-identities-lab-vms.md)
 - [Kulcstartó létrehozása](../key-vault/quick-create-portal.md)
-- [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/managed-identity.md)
+- [Hitelesítés Key Vault](../key-vault/general/authentication.md)
+- [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center figyelés:** igen
 
