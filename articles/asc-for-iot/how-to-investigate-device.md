@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab9b396f72ddd35638519ab69f17e034479e0d5a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311036"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504910"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Gyanús IoT-eszköz vizsgálata
 
@@ -39,9 +39,9 @@ Alapértelmezés szerint a IoT Azure Security Center a biztonsági riasztásokat
 Az adattároláshoz Log Analytics munkaterület megkeresése:
 
 1. Nyissa meg az IoT hubot,
-1. A **Biztonság**területen kattintson az **Áttekintés**, majd a **Beállítások**elemre.
+1. A **Biztonság**területen válassza a **Beállítások**, majd **az adatgyűjtés**elemet.
 1. Módosítsa Log Analytics munkaterület konfigurációjának részleteit.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 A következő beállításokkal érheti el a Log Analytics munkaterületen tárolt adatait:
 
@@ -186,6 +186,6 @@ A lekérdezés eredményeinek felderítése:
 - A megfelelő felhasználók hajtották végre a folyamatokat?
 - A parancssori végrehajtások tartalmazzák a megfelelő és várt argumentumokat?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az eszköz kivizsgálása és a kockázatok jobb megismerése érdekében érdemes lehet [Egyéni riasztásokat beállítani](quickstart-create-custom-alerts.md) a IoT-megoldás biztonsági helyzetének javítására. Ha még nem rendelkezik ügynökkel, érdemes lehet [biztonsági ügynököt telepíteni](how-to-deploy-agent.md) , vagy [egy meglévő ügynök konfigurációját módosítani](how-to-agent-configuration.md) az eredmények javítása érdekében.

@@ -2,13 +2,13 @@
 title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079498"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566126"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
 
@@ -728,7 +728,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | képességek | Nem | Nem |
 > | checkdomainnameavailability | Nem | Nem |
-> | tartománynevek | Yes | No |
+> | tartománynevek | Igen | Nem |
 > | tartománynevek/képességek | Nem | Nem |
 > | tartománynevek/internalloadbalancers | Nem | Nem |
 > | tartománynevek/servicecertificates | Nem | Nem |
@@ -744,7 +744,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kvóták | Nem | Nem |
 > | resourcetypes | Nem | Nem |
 > | validatesubscriptionmoveavailability | Nem | Nem |
-> | virtualmachines | Igen | No |
+> | virtualmachines | Igen | Igen |
 > | virtualmachines / diagnosticsettings | Nem | Nem |
 > | virtualmachines / metricdefinitions | Nem | Nem |
 > | virtualmachines/mérőszámok | Nem | Nem |
@@ -796,7 +796,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | osplatformimages | Nem | Nem |
 > | publicimages | Nem | Nem |
 > | kvóták | Nem | Nem |
-> | storageaccounts | Yes | No |
+> | storageaccounts | Igen | Nem |
 > | storageaccounts/blobservices | Nem | Nem |
 > | storageaccounts/fileservices | Nem | Nem |
 > | storageaccounts/metricdefinitions | Nem | Nem |
@@ -1437,10 +1437,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nem | Nem |
-> | Labs | Yes | No |
+> | Labs | Igen | Nem |
 > | Labs/környezetek | Igen | Igen |
 > | Labor/servicerunners | Igen | Igen |
-> | Labor/virtualmachines | Yes | No |
+> | Labor/virtualmachines | Igen | Nem |
 > | helyek | Nem | Nem |
 > | helyszínek/műveletek | Nem | Nem |
 > | műveletek | Nem | Nem |
@@ -1866,8 +1866,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nem | Nem |
 > | integrationaccounts | Igen | Igen |
-> | integrationserviceenvironments | Yes | No |
-> | integrationserviceenvironments/król | Yes | No |
+> | integrationserviceenvironments | Igen | Nem |
+> | integrationserviceenvironments/król | Igen | Nem |
 > | isolatedenvironments | Nem | Nem |
 > | helyek | Nem | Nem |
 > | helyszínek/munkafolyamatok | Nem | Nem |
@@ -1884,7 +1884,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyszínek/műveletek | Nem | Nem |
 > | helyszínek/operationsstatus | Nem | Nem |
 > | műveletek | Nem | Nem |
-> | WebServices | Yes | No |
+> | WebServices | Igen | Nem |
 > | munkaterületek | Igen | Igen |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -2197,10 +2197,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | networkinterfaces | Igen | Igen |
 > | networkprofiles | Nem | Nem |
 > | networksecuritygroups | Igen | Igen |
-> | networkwatchers | Yes | No |
-> | networkwatchers / connectionmonitors | Yes | No |
-> | networkwatchers / flowlogs | Yes | No |
-> | networkwatchers / pingmeshes | Yes | No |
+> | networkwatchers | Igen | Nem |
+> | networkwatchers / connectionmonitors | Igen | Nem |
+> | networkwatchers / flowlogs | Igen | Nem |
+> | networkwatchers / pingmeshes | Igen | Nem |
 > | műveletek | Nem | Nem |
 > | p2svpngateways | Nem | Nem |
 > | privatednsoperationresults | Nem | Nem |
@@ -2523,7 +2523,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazások | Igen | No |
+> | alkalmazások | Igen | Nem |
 > | checkmoderneligibility | Nem | Nem |
 > | checknameavailability | Nem | Nem |
 > | operationresults | Nem | Nem |
@@ -2789,7 +2789,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyszínek/jobagentoperationresults | Nem | Nem |
 > | helyszínek/longtermretentionbackupazureasyncoperation | Nem | Nem |
 > | helyszínek/longtermretentionbackupoperationresults | Nem | Nem |
-> | helyszínek/longtermretentionbackups | Nem | Nem |
+> | helyszínek/longtermretentionbackups | Igen | Igen |
 > | helyszínek/longtermretentionmanagedinstancebackupazureasyncoperation | Nem | Nem |
 > | helyszínek/longtermretentionmanagedinstancebackupoperationresults | Nem | Nem |
 > | helyszínek/longtermretentionmanagedinstancebackups | Nem | Nem |
@@ -2872,7 +2872,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kiszolgálók/adatbázisok/auditingsettings | Nem | Nem |
 > | kiszolgálók/adatbázisok/auditrecords | Nem | Nem |
 > | kiszolgálók/adatbázisok/automatictuning | Nem | Nem |
-> | kiszolgálók/adatbázisok/backuplongtermretentionpolicies | Nem | Nem |
+> | kiszolgálók/adatbázisok/backuplongtermretentionpolicies | Igen | Igen |
 > | kiszolgálók/adatbázisok/backupshorttermretentionpolicies | Nem | Nem |
 > | kiszolgálók/adatbázisok/connectionpolicies | Nem | Nem |
 > | kiszolgálók/adatbázisok/datamaskingpolicies | Nem | Nem |
@@ -3186,7 +3186,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | availablestacks | Nem | Nem |
 > | billingmeters | Nem | Nem |
-> | tanúsítványok | No | Yes |
+> | tanúsítványok | Nem | Igen |
 > | checknameavailability | Nem | Nem |
 > | connectiongateways | Igen | Igen |
 > | kapcsolatok | Igen | Igen |
@@ -3281,7 +3281,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket tartalmazó fájlokat, töltse le [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).

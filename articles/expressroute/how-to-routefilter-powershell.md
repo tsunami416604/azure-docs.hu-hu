@@ -2,18 +2,18 @@
 title: 'ExpressRoute: útvonal-szűrők – Microsoft-társak: Azure PowerShell'
 description: Ez a cikk bemutatja, hogyan konfigurálhat útválasztási szűrőket a Microsoft-partnerek számára a PowerShell használatával
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ca4362f10ea6ed2fa7cc39370fc9b4c764ff3b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729302"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566194"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: PowerShell
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "84729302"
 
 Az útvonalszűrők lehetővé teszik a támogatott szolgáltatások egy részének felhasználását Microsoft-társviszony-létesítésen keresztül. Az ebben a cikkben ismertetett lépések segítséget nyújtanak a ExpressRoute-áramkörök útválasztási szűrőinek konfigurálásához és kezeléséhez.
 
-Az Office 365-szolgáltatások, például az Exchange Online, a SharePoint Online és a Skype vállalati verzió, valamint az Azure nyilvános szolgáltatásai, például a Storage és az SQL Database, a Microsoft-partneri kapcsolaton keresztül érhetők el. Az Azure-beli nyilvános szolgáltatások régiónként választhatók, és nem definiálhatók nyilvános szolgáltatáson belül.
+Microsoft 365 olyan szolgáltatások, mint az Exchange Online, a SharePoint Online és a Skype vállalati verzió, valamint az Azure-beli nyilvános szolgáltatások, például a Storage és az SQL Database, a Microsoft-partneri kapcsolaton keresztül érhetők el. Az Azure-beli nyilvános szolgáltatások régiónként választhatók, és nem definiálhatók nyilvános szolgáltatáson belül.
 
 Ha a Microsoft-társítás egy ExpressRoute-áramkörön van konfigurálva, és egy útvonal-szűrő van csatlakoztatva, a szolgáltatásokhoz kiválasztott összes előtag a létrehozott BGP-munkameneteken keresztül kerül meghirdetésre. Minden előtaghoz egy BGP-közösségérték van csatolva, amely azonosítja az előtag keretében nyújtott szolgáltatást. A BGP közösségi értékek és a hozzájuk kapcsolódó szolgáltatások listáját itt tekintheti meg: [BGP-Közösségek](expressroute-routing.md#bgp).
 
@@ -40,7 +40,7 @@ Ha a Microsoft-társak konfigurálva vannak a ExpressRoute-áramkörön, a Micro
 
 Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez lényegében egy engedélyezési lista az összes BGP közösségi értékről. Miután meghatározott és egy ExpressRoute-kapcsolatcsoporthoz csatolt egy útvonalszűrő erőforrást, a BGP-közösségértékekhez rendelt összes előtag meg van hirdetve a hálózaton.
 
-Ahhoz, hogy az Office 365-szolgáltatásokkal csatolja az útválasztási szűrőket, rendelkeznie kell az Office 365-szolgáltatások ExpressRoute-en keresztüli használatára vonatkozó engedéllyel. Ha nincs engedélye arra, hogy az Office 365-szolgáltatásokat ExpressRoute-en keresztül használja, az útválasztási szűrők csatlakoztatásának művelete meghiúsul. Az engedélyezési folyamattal kapcsolatos további információkért lásd: [Azure ExpressRoute for Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
+Ahhoz, hogy az útválasztási szűrőket Microsoft 365-szolgáltatásokkal lehessen csatolni, rendelkeznie kell a ExpressRoute-en keresztüli Microsoft 365-szolgáltatások használatára vonatkozó engedéllyel. Ha nincs engedélye arra, hogy a ExpressRoute-n keresztül használja Microsoft 365-szolgáltatásokat, az útválasztási szűrők csatlakoztatásának művelete meghiúsul. Az engedélyezési folyamattal kapcsolatos további információkért lásd: [Azure ExpressRoute for Microsoft 365](/microsoft-365/enterprise/azure-expressroute).
 
 > [!IMPORTANT]
 > Az 2017. augusztus 1. előtt konfigurált ExpressRoute-áramkörök Microsoft-összevonása a Microsoft-társon keresztül meghirdetett összes szolgáltatás előtagja lesz, még akkor is, ha az útvonal-szűrők nincsenek meghatározva. A 2017 augusztus 1-jén vagy azt követően konfigurált ExpressRoute-áramkörök Microsoft-társítása nem rendelkezik olyan előtagokkal, amelyek csak akkor lesznek meghirdetve, ha az áramkörhöz hozzá van rendelve egy útvonal-szűrő.

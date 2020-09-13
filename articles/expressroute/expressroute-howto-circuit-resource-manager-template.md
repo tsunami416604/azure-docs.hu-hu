@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute-sablon: ExpressRoute-áramkör létrehozása'
 description: Ismerje meg, hogyan hozhat létre egy Azure ExpressRoute-áramkört egy Azure Resource Manager-sablonnak a Azure PowerShell használatával történő üzembe helyezésével.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: charwen
-ms.openlocfilehash: 78318726a658b6e0dc966288f386c65ee4c6f0e4
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190443"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566177"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával
 
@@ -63,7 +63,7 @@ ExpressRoute-kör létrehozása sablon üzembe helyezésével:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * Az **SKU-szint** meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket*is.
+   * Az **SKU-szint** meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket*is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
    * Az **SKU termékcsalád** meghatározza a számlázási típust. Megadhatja a *Metereddata* a forgalmi díjas csomaghoz és a *Unlimiteddata* korlátlan adatcsomag esetén. A számlázási típust a *Metereddata* és a *Unlimiteddata*között is módosíthatja, de a típus nem módosítható a *Unlimiteddata* értékről a *Metereddata*-re. Egy *helyi* áramkör csak *Unlimiteddata* .
    * A társítás **helye** az a fizikai hely, ahol a Microsofttal való együttműködésre van szükség.
 

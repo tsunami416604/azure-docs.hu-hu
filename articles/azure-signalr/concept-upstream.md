@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559435"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514237"
 ---
 # <a name="upstream-settings"></a>Felsőbb rétegbeli beállítások
 
-A felsőbb rétegbeli funkció lehetővé teszi, hogy az Azure Signaler szolgáltatás üzeneteket és kapcsolódási eseményeket küldjön a végpontok számára kiszolgáló nélküli módban. A felsőbb réteg használatával kiszolgáló nélküli módban hívhat meg központi metódust az ügyfelektől, és engedélyezheti, hogy a végpontok értesítést kapjanak az ügyfélkapcsolatok csatlakoztatása vagy leválasztása esetén.
+A felsőbb rétegbeli szolgáltatás előzetes funkciója lehetővé teszi, hogy az Azure Signaler szolgáltatás üzeneteket és kapcsolódási eseményeket küldjön a végpontok számára kiszolgáló nélküli módban. A felsőbb réteg használatával kiszolgáló nélküli módban hívhat meg központi metódust az ügyfelektől, és engedélyezheti, hogy a végpontok értesítést kapjanak az ügyfélkapcsolatok csatlakoztatása vagy leválasztása esetén.
 
 > [!NOTE]
 > Csak a kiszolgáló nélküli mód konfigurálhatja a felsőbb rétegbeli beállításokat.
@@ -60,6 +60,10 @@ Megadhatja a *központi szabályok*, a *Kategóriák*és az *események szabály
 - Több esemény csatlakoztatásához használjon vesszőt (,). Például `connected, disconnected` megfelel a csatlakoztatott és a leválasztott eseményeknek.
 - A teljes esemény nevét használja az eseménynek megfelelően. Például `connected` megfelel a csatlakoztatott eseménynek.
 
+> [!NOTE]
+> Ha Azure Functions és a [signaler triggert](../azure-functions/functions-bindings-signalr-service-trigger.md)használja, a signaler trigger egyetlen végpontot tesz elérhetővé a következő formátumban: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` .
+> Ehhez az URL-címhez egyszerűen beállíthatja az URL-sablont.
+
 ### <a name="authentication-settings"></a>Hitelesítési beállítások
 
 Az egyes felsőbb rétegbeli beállítási elemek hitelesítését külön is konfigurálhatja. A hitelesítés konfigurálásakor a jogkivonat a `Authentication` felsőbb rétegbeli üzenet fejlécében van beállítva. Jelenleg az Azure Signaler szolgáltatás a következő hitelesítési típusokat támogatja:
@@ -78,7 +82,7 @@ Ha kiválasztja `ManagedIdentity` , a felügyelt identitást előre kell engedé
 3. URL-címek hozzáadása a **felsőbb rétegbeli URL-minta**alatt. Ezután a beállítások, például a **hub-szabályok** az alapértelmezett értéket fogják megjeleníteni.
 4. A **hub-szabályok**, az **események**, a **Kategória-szabályok**és a **felsőbb rétegbeli hitelesítés**beállításainak megadásához válassza ki a **hub-szabályok**értékét. Megjelenik egy olyan oldal, amely lehetővé teszi a beállítások szerkesztését:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Felsőbb rétegbeli beállítások":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Felsőbb rétegbeli beállítás részletei":::
 
 5. A **felsőbb rétegbeli hitelesítés**beállításához először engedélyezze a felügyelt identitást. Ezután válassza a **felügyelt identitás használata**lehetőséget. Az igényeknek megfelelően az **Auth erőforrás-azonosító**területen bármelyik lehetőség közül választhat. További részletekért lásd: [felügyelt identitások az Azure signaler szolgáltatáshoz](howto-use-managed-identity.md) .
 
@@ -119,7 +123,7 @@ POST
 
 ### <a name="request-header"></a>Kérelem fejléce
 
-|Name |Description|
+|Név |Leírás|
 |---------|---------|
 |X-ASRS-kapcsolatazonosító |Az ügyfélkapcsolathoz tartozó kapcsolatazonosító.|
 |X-ASRS – hub |Az az elosztó, amelyhez az Ügyfélkapcsolat tartozik.|
@@ -139,17 +143,17 @@ Content-Type: Application/JSON
 
 #### <a name="disconnected"></a>Leválasztott
 
-Content-Type:`application/json`
+Content-Type: `application/json`
 
-|Name  |Típus  |Description  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |Hiba |sztring |Egy lezárt kapcsolatok hibaüzenete. Üres, ha a kapcsolatok hiba nélkül zárulnak.|
 
 #### <a name="invocation-message"></a>Meghívási üzenet
 
-Content-Type: `application/json` vagy`application/x-msgpack`
+Content-Type: `application/json` vagy `application/x-msgpack`
 
-|Name  |Típus  |Description  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |InvocationId |sztring | Egy Meghívási üzenetet jelölő, nem kötelező karakterlánc. Részletek keresése a [hívásokban](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cél |sztring | Ugyanaz, mint a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)szereplő esemény és a cél. |
@@ -162,7 +166,7 @@ A szolgáltatás a `X-ASRS-Connection-Id` kulcsként az elsődleges hozzáféré
 Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure Signaler szolgáltatáshoz](howto-use-managed-identity.md)
 - [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](signalr-concept-serverless-development-config.md)

@@ -2,13 +2,13 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086812"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535558"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -19,7 +19,9 @@ Kis-és közepes megoldások esetében az egyetlen sablon könnyebben érthető 
 Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
-> Csatolt vagy beágyazott sablonok esetében csak [növekményes](deployment-modes.md) telepítési módot használhat.
+> Csatolt vagy beágyazott sablonok esetén a telepítési módot csak [növekményes](deployment-modes.md)értékre állíthatja. A fő sablon azonban teljes módban is üzembe helyezhető. Ha a fősablont a teljes módban telepíti, és a csatolt vagy beágyazott sablon ugyanazt az erőforráscsoportot célozza meg, a csatolt vagy beágyazott sablonban üzembe helyezett erőforrások a teljes telepítési mód kiértékelése részét képezik. A fő sablonban és a csatolt vagy beágyazott sablonokban üzembe helyezett erőforrások összevont gyűjteménye össze van hasonlítva az erőforráscsoport meglévő erőforrásaival. Az egyesített gyűjteményben nem szereplő erőforrások törlődnek.
+>
+> Ha a csatolt vagy beágyazott sablon más erőforráscsoportot céloz, a központi telepítés növekményes módot használ.
 >
 
 ## <a name="nested-template"></a>Beágyazott sablon
@@ -160,7 +162,7 @@ A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései 
 
 A (z `exampleVar` ) tulajdonságának értékétől függően változik a változás értéke `scope` `expressionEvaluationOptions` . Az alábbi táblázat mindkét hatókör eredményét tartalmazza.
 
-| `expressionEvaluationOptions`hatókör | Kimenet |
+| `expressionEvaluationOptions` hatókör | Kimenet |
 | ----- | ------ |
 | belső | beágyazott sablonból |
 | külső (vagy alapértelmezett) | fölérendelt sablonból |
@@ -312,14 +314,9 @@ Csatolt sablonra hivatkozó érték esetén a `uri` nem lehet helyi fájl vagy o
 
 > [!NOTE]
 >
-> A sablonok olyan paraméterekkel is hivatkozhatnak, amelyek végső soron **http** vagy **https**protokollt használó, például a következő `_artifactsLocation` paramétert használják:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> A sablonok olyan paraméterekkel is hivatkozhatnak, amelyek végső soron **http** vagy **https**protokollt használó, például a következő `_artifactsLocation` paramétert használják: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja.
-
-A [sablon specifikációi](./template-specs.md) (jelenleg privát előzetes verzióban) lehetővé teszik az ARM-sablonok megosztását a szervezet más felhasználóival. A sablonok specifikációi a fő sablon és a hozzá csatolt sablonok csomagolására is használhatók. További információ:
-
-- [Oktatóanyag: spec sablon létrehozása csatolt sablonokkal](./template-specs-create-linked.md).
-- [Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként](./template-specs-deploy-linked-template.md).
 
 ### <a name="parameters-for-linked-template"></a>Csatolt sablon paraméterei
 
@@ -369,6 +366,15 @@ A paraméterek értékének megadásához használja a **Parameters** tulajdons�
 ```
 
 Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutató hivatkozást. Az üzemelő példány hibát jelez, ha mindkettő `parametersLink` és `parameters` a meg van adva.
+
+## <a name="template-specs"></a>Sablonspecifikációk
+
+A csatolt sablonok egy elérhető végponton való fenntartása helyett létrehozhat egy olyan [sablont](template-specs.md) , amely a fő sablont és a hozzá tartozó sablonokat egyetlen olyan entitásba csomagolja, amelyet üzembe helyezhet. A sablon spec az Azure-előfizetés egyik erőforrása. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosít hozzáférést a sablonhoz. Ez a funkció jelenleg előzetes verzióban érhető el.
+
+További információkért lásd:
+
+- [Oktatóanyag: spec sablon létrehozása csatolt sablonokkal](./template-specs-create-linked.md).
+- [Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként](./template-specs-deploy-linked-template.md).
 
 ## <a name="contentversion"></a>contentVersion
 
@@ -724,6 +730,9 @@ A paraméter fájlja az SAS-tokenen keresztüli hozzáférésre is korlátozhat�
 
 Jelenleg nem lehet olyan sablonhoz csatolni, amely egy [Azure Storage-tűzfal](../../storage/common/storage-network-security.md)mögött található Storage-fiókban van.
 
+> [!IMPORTANT]
+> A csatolt sablon SAS-tokenhez való biztonságossá tétele helyett érdemes lehet létrehozni egy [sablon-specifikációt](template-specs.md). A sablon specifikációja biztonságosan tárolja a fő sablont és a hozzá tartozó sablonokat erőforrásként az Azure-előfizetésében. A RBAC használatával biztosíthatja a hozzáférést azokhoz a felhasználókhoz, akiknek szükségük van a sablon üzembe helyezésére.
+
 Az alábbi példa bemutatja, hogyan lehet átadni egy SAS-tokent egy sablonhoz való csatoláskor:
 
 ```json
@@ -796,7 +805,7 @@ Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 |[Load Balancer nyilvános IP-címmel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |A társított sablonból származó nyilvános IP-címet adja vissza, és beállítja a terheléselosztó értékét. |
 |[Több IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Több nyilvános IP-címet hoz létre a társított sablonban.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./deployment-tutorial-linked-template.md).
 * Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](define-resource-dependency.md).

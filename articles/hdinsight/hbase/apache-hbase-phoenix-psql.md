@@ -1,19 +1,19 @@
 ---
 title: Tömeges betöltés Apache Phoenix a psql használatával – Azure HDInsight
 description: A psql eszközzel tömeges betöltési adatmennyiségeket tölthet be Apache Phoenix táblákba az Azure HDInsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: c46b15c6744ba9d3f83260ffaac24c4ee1cdd776
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 513d48114d73b2c91ebecf06f9492a6ebf0ba1cf
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079479"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504706"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok tömeges betöltése az Apache Phoenixbe a psql használatával
 
@@ -181,7 +181,7 @@ A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez ha
 
 * Kerülje a régió-kiszolgálói hozzáférési pontok elérését. Ha a sor kulcsa monoton módon növekszik, a HBase szekvenciális írások a régió-kiszolgáló hotspotting okozhatják. A sor kulcsának *sói* csökkentik a szekvenciális írásokat. A Phoenix lehetővé teszi, hogy a sor kulcsát transzparens módon sózzuk egy adott tábla egy adott táblára vonatkozóan, az alábbi hivatkozással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tömeges betöltés Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
 * [Apache Phoenix használata Linux-alapú Apache HBase-fürtökkel a HDInsight-ben](../hbase/apache-hbase-query-with-phoenix.md)

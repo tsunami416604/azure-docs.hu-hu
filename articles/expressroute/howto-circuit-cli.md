@@ -2,18 +2,18 @@
 title: 'ExpressRoute-kör létrehozása és módosítása: Azure CLI'
 description: Ez a cikk bemutatja, hogyan lehet ExpressRoute-áramkört létrehozni, kiépíteni, ellenőrizni, frissíteni, törölni és kiépíteni a parancssori felület használatával.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2d8ad6b90f533161835ab12a43865b177c24c14e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503582"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566143"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>ExpressRoute-kapcsolatcsoport létrehozása és módosítása a CLI-vel
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure ExpressRoute-áramkört a pa
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -142,7 +142,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute ára
 
 Győződjön meg arról, hogy a megfelelő SKU-szintet és SKU-családot adta meg:
 
-* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat *helyi*, *standard* vagy *prémium*szintűeket is.
+* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat *helyi*, *standard* vagy *prémium*szintűeket is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
 * Az SKU termékcsalád meghatározza a számlázási típust. Megadhatja a *Metereddata* a forgalmi díjas csomaghoz és a *Unlimiteddata* korlátlan adatcsomag esetén. A számlázási típust a *Metereddata* és a *Unlimiteddata*között is módosíthatja, de a típus nem módosítható a *Unlimiteddata* értékről a *Metereddata*-re. Egy *helyi* áramkör csak *Unlimiteddata* .
 
 
@@ -280,7 +280,7 @@ Ezután csatoljon egy virtuális hálózatot a ExpressRoute-áramkörhöz. Haszn
 
 Egy ExpressRoute-kör bizonyos tulajdonságait módosíthatja a kapcsolat befolyásolása nélkül. A következő módosításokat hajthatja végre leállás nélkül:
 
-* Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt.
+* Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt. Az SKU *szabványos/prémiumról* *helyire* történő módosítása nem támogatott.
 * Növelheti a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll a porton elérhető kapacitás. Az áramkör sávszélességének visszaminősítése azonban nem támogatott.
 * A mérési tervet megváltoztathatja a mért adatoktól a korlátlan számú adatokig. Azonban a mérési terv korlátlan számú adatokról a mért adatokra való módosítása nem támogatott.
 * Engedélyezheti és letilthatja a *klasszikus műveletek engedélyezését*.
@@ -360,7 +360,7 @@ A ExpressRoute-áramkört a következő parancs futtatásával törölheti:
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áramkör létrehozása után győződjön meg arról, hogy a következő feladatokat végzi el:
 

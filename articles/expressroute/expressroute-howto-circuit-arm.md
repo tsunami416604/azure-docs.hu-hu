@@ -2,21 +2,21 @@
 title: 'Azure-ExpressRoute: áramkör módosítása: PowerShell'
 description: ExpressRoute-áramkör létrehozása, kiépítése, ellenőrzése, frissítése, törlése és megszüntetése.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/08/2020
-ms.author: cherylmc
-ms.openlocfilehash: aba29c46a781c8e687c79a197d37758699a9acf5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.author: duau
+ms.openlocfilehash: e9bf9dbe0f4146101513ab9786b298ac6b43b6a3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984465"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566297"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>ExpressRoute-kapcsolatcsoport létrehozása és módosítása a PowerShell-lel
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
@@ -73,7 +73,7 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 Győződjön meg arról, hogy a megfelelő SKU-szintet és SKU-családot adta meg:
 
-* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat *helyi*, *standard* vagy *prémium*szintűeket is.
+* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat *helyi*, *standard* vagy *prémium*szintűeket is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
 * Az SKU termékcsalád meghatározza a számlázási típust. Megadhatja a *Metereddata* a forgalmi díjas csomaghoz és a *Unlimiteddata* korlátlan adatcsomag esetén. A számlázási típust a *Metereddata* és a *Unlimiteddata*között is módosíthatja, de a típus nem módosítható a *Unlimiteddata* értékről a *Metereddata*-re. A *helyi* áramkör mindig *Unlimiteddata*.
 
 > [!IMPORTANT]
@@ -306,7 +306,7 @@ Egy ExpressRoute-kör bizonyos tulajdonságait módosíthatja a kapcsolat befoly
 
 A következő feladatokat a leállás nélkül végezheti el:
 
-* Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt.
+* Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt. Az SKU *szabványos/prémiumról* *helyire* történő módosítása nem támogatott.
 * Növelje a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll a porton elérhető kapacitás. Az áramkör sávszélességének visszaminősítése nem támogatott.
 * Módosítsa a mérési tervet a mért adatokról a korlátlan mennyiségű adatokra. A mérési terv korlátlan mennyiségű és mért adatok közötti módosítása nem támogatott.
 * Engedélyezheti és letilthatja a *klasszikus műveletek engedélyezését*.
@@ -400,7 +400,7 @@ A ExpressRoute-áramkört a következő parancs futtatásával törölheti:
 Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áramkör létrehozása után győződjön meg arról, hogy a következő lépéseket hajtja végre:
 
