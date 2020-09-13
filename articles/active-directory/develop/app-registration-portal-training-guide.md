@@ -13,12 +13,12 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13242a41e1d10b0df031bf10fd646d9ec3cf47c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478161"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437768"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Az új Azure Portal alkalmazás regisztrációs felülete
 
@@ -77,12 +77,12 @@ Az új felhasználói élményben az **alkalmazás-titkok** átnevezve lettek a 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformok/hitelesítés: válasz URL-címek/átirányítási URI-k
 A régi felületen a webes, natív és webes API-k platformokkal foglalkozó szakasza az átirányítási URL-címek, a kijelentkezési URL-cím és az implicit folyamat konfigurálására használható.
 
-Az új felhasználói felületen a válasz URL-címei megtalálhatók az alkalmazás- \' s hitelesítés szakaszban. Emellett a rendszer átirányítási URI-ként is hivatkozik rá, és módosult az átirányítási URI-k formátuma. Egy alkalmazás típusához (webes vagy nyilvános ügyfél – mobil és asztali) kell társítani őket. [További információ](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Az új felhasználói felületen a válasz URL-címei megtalálhatók az alkalmazás- \' s hitelesítés szakaszban. Emellett a rendszer átirányítási URI-ként is hivatkozik rá, és módosult az átirányítási URI-k formátuma. Egy alkalmazás típusához (webes vagy nyilvános ügyfél – mobil és asztali) kell társítani őket. [További információ](quickstart-register-app.md#add-a-redirect-uri)
 
 A webes API-k API-lapokon vannak konfigurálva.
 
 > [!NOTE]
-> Próbálja ki az új hitelesítési beállításokat, ahol konfigurálhatja az alkalmazás beállításait a célként használni kívánt platform vagy eszköz alapján. [További információ](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Próbálja ki az új hitelesítési beállításokat, ahol konfigurálhatja az alkalmazás beállításait a célként használni kívánt platform vagy eszköz alapján. [További információ](quickstart-register-app.md#configure-platform-settings)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Engedélyek/API-engedélyek Microsoft Graph
 
@@ -121,6 +121,6 @@ Az új felhasználói élmény a következő korlátozásokkal jár:
    > [!NOTE]
    > Ha Ön személyes Microsoft-fiók felhasználó az Azure AD-bérlőben, és a bérlői rendszergazdának korlátozott hozzáférése van a Azure Portalhoz, akkor a hozzáférés megtagadva lesz. Ha azonban a parancsikonon a Alkalmazásregisztrációk beírásával, vagy a rögzítéssel megadhatja azt, akkor hozzáférhet az új felülethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az új alkalmazás regisztrációs felületének megkezdéséhez tekintse meg a rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)című témakört.

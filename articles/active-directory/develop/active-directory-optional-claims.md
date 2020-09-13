@@ -136,7 +136,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 1. Válassza a **választható jogcím hozzáadása**lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 **Választható jogcímek konfigurálása az alkalmazás jegyzékfájlján keresztül:**
 

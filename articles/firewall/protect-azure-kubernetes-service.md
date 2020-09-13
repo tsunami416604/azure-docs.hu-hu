@@ -1,20 +1,20 @@
 ---
-title: Az Azure Kubernetes Service (ak) üzembe helyezésének biztosítása Azure Firewall
+title: Az Azure Firewall használata az Azure Kubernetes Service (AKS) üzemelő példányainak védelmére
 description: Ismerje meg, hogyan használhatja a Azure Firewallt az Azure Kubernetes-szolgáltatás (ak) üzembe helyezéséhez
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/03/2020
 ms.author: victorh
-ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87412949"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437853"
 ---
-# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Az Azure Kubernetes Service (ak) üzembe helyezésének biztosítása Azure Firewall
+# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Az Azure Firewall használata az Azure Kubernetes Service (AKS) üzemelő példányainak védelmére
 
 Az Azure Kubernetes Service (ak) felügyelt Kubernetes-fürtöt biztosít az Azure-ban. Ez csökkenti a Kubernetes kezelésének összetettségét és működési terhelését azáltal, hogy az Azure-ba való felelősség nagy részét kiszervezi. Az AK kritikus fontosságú feladatokat kezel, például az állapot figyelését és karbantartását, és egy nagyvállalati szintű és biztonságos fürtöt biztosít az egyszerűsített irányítással.
 
@@ -47,7 +47,13 @@ Azure Firewall a konfiguráció leegyszerűsítése érdekében egy AK FQDN-cím
    - TCP [*IPAddrOfYourAPIServer*]: 443 szükséges, ha van olyan alkalmazás, amelynek meg kell beszélnie az API-kiszolgálóval. Ezt a módosítást a fürt létrehozása után lehet beállítani.
    - A 9000-es TCP-port és a 1194-es UDP-port az alagút elülső Pod-portjához az API-kiszolgáló alagút végével való kommunikációhoz.
 
-      A részletekért lásd: **. HCP. <location> . azmk8s.io* és címek a következő táblázatban.
+      A részletekért lásd: **. HCP. <location> . azmk8s.io* és címek a következő táblázatban:
+
+   | Cél végpont                                                             | Protokoll | Port    | Használat  |
+   |----------------------------------------------------------------------------------|----------|---------|------|
+   | **`*:1194`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
+   | **`*:9000`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
+
    - Az 123-es UDP-port a Network Time Protocol (NTP) időszinkronizálásához (Linux-csomópontok).
    - A DNS esetében a 53-es UDP-portra akkor is szükség van, ha közvetlenül az API-kiszolgálóhoz fér hozzá.
 

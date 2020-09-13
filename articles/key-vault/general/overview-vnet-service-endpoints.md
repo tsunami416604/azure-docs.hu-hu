@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 891ea69dc6d53370f5f73f8bb3072a9795f07635
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 261d85c60473749719830c380d8a4866d7561874
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190591"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438040"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -71,7 +71,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 |Exchange Online & SharePoint Online-ban|Hozzáférés engedélyezése az Azure Storage Service Encryptionhoz az [ügyfél kulcsával](/microsoft-365/compliance/customer-key-overview).|
 |Azure Information Protection|A bérlői kulcs elérésének engedélyezése [Azure Information Protection számára.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Azure webalkalmazás-tanúsítvány üzembe helyezése Key Vault használatával](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL Database|[Transzparens adattitkosítás a Azure SQL Database és az adattárház bring your own Key támogatásával](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
+|Azure SQL Database|[Transzparens adattitkosítás a Azure SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) bring your own Key támogatásával](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage Service encryption az ügyfél által felügyelt kulcsokat Azure Key Vault](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|A [Azure Data Lake Storeban lévő adattitkosítás](../../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
 |Azure Databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](../../azure-databricks/what-is-azure-databricks.md)|

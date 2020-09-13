@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254514"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438517"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storageba vagy onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -31,7 +31,7 @@ ms.locfileid: "85254514"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure-Blob Storageba való másolásához. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
 ## <a name="overview"></a>Áttekintés
-Bármilyen támogatott forrásból származó adattárból átmásolhatja az adatait az Azure Blob Storageba vagy az Azure Blob Storageból bármely támogatott fogadó adattárba. A következő táblázat felsorolja a másolási tevékenység által a forrásként vagy a nyelőként támogatott adattárakat. Áthelyezheti például **az adatait egy** SQL Server adatbázisból vagy egy Azure SQL Database-adatbázisból egy Azure Blob **Storage-ba** . Emellett az Azure Blob Storage- **ból** másolhatja az **adatait** egy Azure SQL Data Warehouseba vagy egy Azure Cosmos db gyűjteménybe.
+Bármilyen támogatott forrásból származó adattárból átmásolhatja az adatait az Azure Blob Storageba vagy az Azure Blob Storageból bármely támogatott fogadó adattárba. A következő táblázat felsorolja a másolási tevékenység által a forrásként vagy a nyelőként támogatott adattárakat. Áthelyezheti például **az adatait egy** SQL Server adatbázisból vagy egy Azure SQL Database-adatbázisból egy Azure Blob **Storage-ba** . Az Azure **blob Storage-** **ból** az Azure szinapszis Analytics (korábban SQL Data Warehouse) vagy egy Azure Cosmos db gyűjtemény adatait is átmásolhatja.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -163,9 +163,9 @@ Ez a szakasz a rekurzív és copyBehavior értékek különböző kombinációin
 
 | rekurzív | copyBehavior | Eredményül kapott viselkedés |
 | --- | --- | --- |
-| igaz |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| igaz |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a fájl3 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File4 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File5 automatikusan generált neve |
-| igaz |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve automatikusan generált fájlnévvel |
+| true |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a fájl3 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File4 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File5 automatikusan generált neve |
+| true |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve automatikusan generált fájlnévvel |
 | hamis |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/><br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
 | hamis |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/><br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
 | hamis |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 tartalma egyetlen fájlba van egyesítve, amely automatikusan létrehozott fájlnevet tartalmaz. a file1 automatikusan generált neve<br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
@@ -192,8 +192,8 @@ Nézzük meg, hogyan másolhat gyorsan egy Azure Blob Storage-ba vagy az adatokb
     3. Az erőforráscsoport területen válassza a **meglévő használata** lehetőséget egy meglévő erőforráscsoport kiválasztásához (vagy) válassza az **új létrehozása** lehetőséget az erőforráscsoport nevének megadásához.
     4. Válassza ki a Data Factory **helyét**.
     5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.
-    6. Kattintson a **Létrehozás** lehetőségre.
-3. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható: a "a" ![ adatok gyári kezdőlapja](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+    6. Kattintson a **Létrehozás** gombra.
+3. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható: a "a"  ![ adatok gyári kezdőlapja](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Másolás varázsló
 1. A Data Factory kezdőlapján kattintson az **Adatmásolás** csempére **adatok másolása varázsló** elindításához egy külön lapon.  
@@ -221,14 +221,14 @@ Nézzük meg, hogyan másolhat gyorsan egy Azure Blob Storage-ba vagy az adatokb
 5. A **Choose the input file or folder** (A bemeneti fájl vagy mappa kiválasztása) oldalon:
     1. Kattintson duplán a **adfblobcontainer**elemre.
     2. Válassza a **bevitel**lehetőséget, majd kattintson a **kiválasztás**elemre. Ebben az útmutatóban kiválasztja a bemeneti mappát. Ehelyett a mappában lévő emp.txt fájlt is kiválaszthatja.
-        ![Copy (Másolás) eszköz – Choose the input file or folder (A bemeneti fájl vagy mappa kiválasztása) oldal](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        ![Másolási eszköz – válassza ki a bemeneti fájlt vagy az 1. mappát](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. A **bemeneti fájl vagy mappa kiválasztása** oldalon:
     1. Győződjön meg arról, hogy a **fájl vagy mappa** **adfblobconnector/input**értékűre van beállítva. Ha a fájlok almappákban találhatók, például 2017/04/01, 2017/04/02 stb., írja be a következőt: adfblobconnector/input/{Year}/{month}/{Day} a fájlhoz vagy mappához. Amikor lenyomja a TAB billentyűt a szövegmezőből, három legördülő lista jelenik meg az év (éééé), a hónap (MM) és a nap (NN) formátumának kiválasztásához.
     2. Ne állítsa **rekurzív módon a másolási fájlt**. Ezzel a beállítással rekurzív módon áthaladhat a célhelyre másolandó fájlok mappáin keresztül.
     3. Ne a **bináris másolás** beállítást. Válassza ezt a lehetőséget a forrásfájl bináris másolatának elvégzéséhez a célhelyre. Ne válassza ezt a bemutatót, hogy a következő lapokon további lehetőségek is megjelenjenek.
     4. Győződjön meg arról, hogy a **tömörítési típus** nincs értékre van **állítva.** Válassza ki ezt a beállítást, ha a forrásfájlok a támogatott formátumok egyikében vannak tömörítve.
     5. Kattintson a **Tovább** gombra.
-    ![Copy (Másolás) eszköz – Choose the input file or folder (A bemeneti fájl vagy mappa kiválasztása) oldal](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    ![Másolási eszköz – válassza ki a bemeneti fájlt vagy a 2. mappát](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. A **File format settings** (Fájlformátum beállításai) oldalon a fájl elemzése során a varázsló által automatikusan észlelt elválasztó karakterek és séma láthatók.
     1. Erősítse meg a következő beállításokat:  
         a. A **fájlformátum** **szöveg formátumú**. A támogatott formátumok a legördülő listában láthatók. Például: JSON, Avro, ork, Parque.

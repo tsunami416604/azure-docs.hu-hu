@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57786aa343fd2ea863b17f65253e5d4a4a6b88ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226828"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437938"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -542,7 +542,7 @@ Használja a Azure SQL Database adatfelderítési és besorolási funkciót. Az 
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az integrációs modulokat a virtuális hálózat (VNet)/subnet és megfelelő címkével kell elválasztani.
 
- A hálózati elkülönítés végrehajtásához privát végpontokat is használhat. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet.
+ A hálózati elkülönítés végrehajtásához privát végpontokat is használhat. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont a virtuális hálózat egyik magánhálózati IP-címét használja, így lényegében bekapcsolja a szolgáltatást a virtuális hálózatba.
 
 * [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -578,7 +578,7 @@ Ha a privát hivatkozás elérhető, használjon privát végpontokat az Azure D
 
 **Útmutató**: Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik. A használt TLS-verzió 1,2.
 
-Azure SQL Database és Azure SQL Data Warehouse összes kapcsolata titkosítást igényel (SSL/TLS), miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Amikor JSON használatával készít folyamatokat, adja hozzá a titkosítási tulajdonságot, és állítsa igaz értékre a kapcsolódási karakterláncban. Az Azure Storage esetében a kapcsolati sztringben HTTPS protokollt használhat.
+A Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) összes kapcsolata titkosítást (SSL/TLS) igényel, miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Amikor JSON használatával készít folyamatokat, adja hozzá a titkosítási tulajdonságot, és állítsa igaz értékre a kapcsolódási karakterláncban. Az Azure Storage esetében a kapcsolati sztringben HTTPS protokollt használhat.
 
 * [A Azure Data Factory-átvitel titkosításának ismertetése](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -896,7 +896,7 @@ Vegye figyelembe, hogy ez csak akkor érvényes, ha a Integration Runtime Azure-
 
 * [Mi az Azure Firewall?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Mi az az Azure Web Application Firewall?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Mi az Azure webalkalmazási tűzfal?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
@@ -1050,7 +1050,9 @@ A hitelesítő adatokat és a titkos értékeket egy Azure Key Vault is tárolha
 
 * [Key Vault létrehozása](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Key Vault hitelesítés biztosítása felügyelt identitással](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Hitelesítés Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Key Vault hozzáférési szabályzatok kiosztása](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 

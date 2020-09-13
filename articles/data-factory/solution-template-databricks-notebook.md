@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857641"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438449"
 ---
 # <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks szolgáltatással
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban egy végpontok közötti folyamatot hoz létre, amely t
 
 - Az **Adatmásolás** duplikálja a forrás adatkészletet a fogadó tárolóba, amely a Azure Databricks jegyzetfüzetben DBFS van csatlakoztatva. Így az adatkészletet közvetlenül a Spark használhatja fel.
 
-- A **Jegyzetfüzet** elindítja a Databricks-jegyzetfüzetet, amely átalakítja az adatkészletet. Emellett hozzáadja az adatkészletet egy feldolgozott mappához vagy Azure SQL Data Warehousehoz.
+- A **Jegyzetfüzet** elindítja a Databricks-jegyzetfüzetet, amely átalakítja az adatkészletet. Emellett hozzáadja az adatkészletet egy feldolgozott mappához vagy az Azure Azure szinapszis Analyticshez (korábban SQL Data Warehouse).
 
 Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre ütemezett triggert. Szükség esetén egyet is hozzáadhat.
 
@@ -183,6 +183,6 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
     > A Data Factory-folyamat futtatásával való korrelációhoz ez a példa a folyamat futtatási AZONOSÍTÓját fűzi hozzá az adatok gyárból a kimeneti mappába. Ez segít nyomon követni az egyes futtatások által létrehozott fájlokat.
     > ![Hozzáfűzött folyamat futtatási azonosítója](media/solution-template-Databricks-notebook/verify-data-files.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

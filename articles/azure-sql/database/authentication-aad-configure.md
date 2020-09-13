@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 08/17/2020
-ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551840"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434401"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és tölthet fel egy Azure Active Directory (Azure AD-példányt), majd hogyan használhatja az Azure AD-t a [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányával](../managed-instance/sql-managed-instance-paas-overview.md)és az [azure szinapszis Analytics (korábban Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)használatával. Az áttekintést lásd: [Azure Active Directory hitelesítés](authentication-aad-overview.md).
+Ebből a cikkből megtudhatja, hogyan hozhat létre és tölthet fel egy Azure Active Directory (Azure AD-példányt), majd hogyan használhatja az Azure AD-t a [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányával](../managed-instance/sql-managed-instance-paas-overview.md)és az [azure szinapszis Analytics (korábban SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)használatával. Az áttekintést lásd: [Azure Active Directory hitelesítés](authentication-aad-overview.md).
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD-hitelesítési módszerek
 
@@ -532,7 +532,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítással kapcsolatban az alábbi blogban talál útmutatást: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A bejelentkezések, a felhasználók, az adatbázis-szerepkörök és a SQL Databaseban lévő engedélyek áttekintését lásd: [bejelentkezések, felhasználók, adatbázis-szerepkörök és felhasználói fiókok](logins-create-manage.md).
 - További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](https://msdn.microsoft.com/library/ms181127.aspx).

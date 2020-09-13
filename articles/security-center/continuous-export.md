@@ -69,7 +69,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 
 ## <a name="set-up-continuous-export-via-the-rest-api"></a>Folyamatos exportálás beállítása a REST API használatával

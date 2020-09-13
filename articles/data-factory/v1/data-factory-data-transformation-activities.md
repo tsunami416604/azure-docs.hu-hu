@@ -83,7 +83,7 @@ Hozzon létre egy társított szolgáltatást a számítási környezethez, majd
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című cikket. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Azure Data Factory a következő Adatátalakítási tevékenységeket és a tevékenységek számítási környezeteit támogatja. Az átalakítási tevékenységek hozzáadhatók a folyamatokhoz, akár külön, akár egy másik tevékenységgel.
 
 | Adatátalakítási tevékenység | Számítási környezet |
