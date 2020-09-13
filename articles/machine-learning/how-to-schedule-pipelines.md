@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 351d52128660c25c557c536f2835e0e71c0115f7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac1df12b10e32f35e8edbd52c3488b2d38db638a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842960"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650812"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok ütemezhetnek a Pythonhoz készült Azure Machine Learning SDK-val
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Időalapú ütemterv létrehozása
 
-A `ScheduleRecurrence` konstruktor egy kötelező `frequency` argumentummal rendelkezik, amelynek a következő karakterláncok egyikének kell lennie: "minute", "Hour", "Day", "Week" vagy "Month". Egy egész szám argumentumot is igényel, amely `interval` meghatározza, hogy hány `frequency` egységnek kell eltelnie az ütemterv kezdete között. A választható argumentumok lehetővé teszik a [SCHEDULERECURRENCE SDK-dokumentációban](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)részletezett időpontokra vonatkozó részletesebb tudnivalókat.
+A `ScheduleRecurrence` konstruktor egy kötelező `frequency` argumentummal rendelkezik, amelynek a következő karakterláncok egyikének kell lennie: "minute", "Hour", "Day", "Week" vagy "Month". Egy egész szám argumentumot is igényel, amely `interval` meghatározza, hogy hány `frequency` egységnek kell eltelnie az ütemterv kezdete között. A választható argumentumok lehetővé teszik a [SCHEDULERECURRENCE SDK-dokumentációban](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py&preserve-view=true)részletezett időpontokra vonatkozó részletesebb tudnivalókat.
 
 Hozzon létre egy-t `Schedule` , amely 15 percenként elindítja a futtatást:
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 A fájlok változásai által aktivált folyamatok hatékonyabbak lehetnek, mint az időalapú ütemtervek. Előfordulhat például, hogy egy fájl módosításakor vagy egy új fájl egy adatkönyvtárhoz való hozzáadásakor szeretne elvégezni egy előfeldolgozási lépést. Az adattáron belüli adattárolók és az adattárban lévő módosítások változásai figyelhetők. Ha egy adott könyvtárat figyel, akkor a könyvtár alkönyvtárain belüli módosítások _nem_ indítják el a futtatást.
 
-Fájl – reaktív létrehozásához a (z) `Schedule` paramétert be kell állítania `datastore` a [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)értékre. Egy mappa figyeléséhez állítsa be az `path_on_datastore` argumentumot.
+Fájl – reaktív létrehozásához a (z) `Schedule` paramétert be kell állítania `datastore` a [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)értékre. Egy mappa figyeléséhez állítsa be az `path_on_datastore` argumentumot.
 
 Az `polling_interval` argumentummal percek alatt megadhatja, hogy az adattár milyen gyakorisággal legyen bejelölve a változásokhoz.
 
-Ha a folyamat [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) - [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)lett létrehozva, a változót a módosított fájl nevére állíthatja be az argumentum beállításával `data_path_parameter_name` .
+Ha a folyamat [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py&preserve-view=true) - [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true)lett létrehozva, a változót a módosított fájl nevére állíthatja be az argumentum beállításával `data_path_parameter_name` .
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -146,7 +146,7 @@ Ha ezt követően újra futtatja `Schedule.list(ws)` , üres listát kell kapnia
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Végezetül megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson.
 
-További információ:
+További információkért lásd:
 
 > [!div class="nextstepaction"]
 > [Azure Machine Learning folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)

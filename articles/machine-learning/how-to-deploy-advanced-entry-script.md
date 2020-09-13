@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 0499cd6885454604e89ce4cadc313b2f68c45156
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 95d3570d93aa4966fcf6864838ec01735b8662db
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544640"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650277"
 ---
-# <a name="advanced-entry-script-authoring"></a>Speciális bejegyzési parancsfájl készítése
+# <a name="advanced-entry-script-authoring"></a>Speciális bejegyzésszkript létrehozása
 
 Ez a cikk bemutatja, hogyan írhatók be a speciális használati esetekben a beléptetési parancsfájlok.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk azt feltételezi, hogy már rendelkezik egy betanított gépi tanulási modellel, amelyet a Azure Machine Learning használatával szeretne üzembe helyezni. A modell üzembe helyezésével kapcsolatos további tudnivalókért tekintse meg [ezt az oktatóanyagot](how-to-deploy-and-where.md).
 
@@ -90,7 +90,7 @@ def run(data):
 ```
 
 
-## <a name="binary-ie-image-data"></a><a id="binary-data"></a>Bináris (azaz Képfájlos) adatok
+## <a name="binary-ie-image-data"></a><a id="binary-data"></a> Bináris (azaz Képfájlos) adatok
 
 Ha a modellben bináris adatok (például rendszerkép) is szerepelnek, akkor módosítania kell a `score.py` központi telepítéshez használt fájlt, hogy fogadja a nyers http-kérelmeket. A nyers adat elfogadásához használja az `AMLRequest` osztályt a bejegyzési parancsfájlban, és adja hozzá a `@rawhttp` bedekorációt a `run()` függvényhez.
 
@@ -260,18 +260,18 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) metódussal, hogy lekérje a modell fájljának vagy fájljainak elérési útját a helyi fájlrendszerben. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
+Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) metódussal, hogy lekérje a modell fájljának vagy fájljainak elérési útját a helyi fájlrendszerben. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
 
 Modell regisztrálása esetén a nevet adja meg. A név a modell elhelyezésének helyét adja meg helyileg vagy a szolgáltatás telepítése során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 * [Esemény-riasztások és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066225"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657460"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Munkafolyamat-műveleteket futtató kapcsolói utasítások létrehozása a Azure Logic Apps adott értékei alapján
 
@@ -27,7 +27,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A jelen cikkben szereplő példának megfelelően [hozza létre ezt a minta logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy Outlook.com vagy Office 365 Outlook-fiókkal.
+* A jelen cikkben szereplő példának megfelelően [hozza létre ezt a minta logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy Outlook.com-fiókkal vagy egy munkahelyi vagy iskolai fiókkal.
 
   1. Ha hozzáadja a műveletet az e-mailek küldéséhez, keresse meg és válassza ki ezt a műveletet: **jóváhagyó E-mail küldése**
 
@@ -124,7 +124,7 @@ Most, hogy egy switch utasítás használatával létrehozott egy logikai alkalm
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A funkciókra vagy javaslatokra való beküldéshez vagy szavazáshoz látogasson el a [Azure Logic apps felhasználói visszajelzési webhelyre](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Futtatási és ismétlési lépések (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)

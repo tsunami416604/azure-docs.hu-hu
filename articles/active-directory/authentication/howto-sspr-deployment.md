@@ -9,14 +9,14 @@ ms.date: 01/31/2020
 ms.author: baselden
 author: barbaraselden
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717744"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657214"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
@@ -56,7 +56,7 @@ A SSPR engedélyezésének fő előnyei a következők:
 
 * **Robusztus naplózás és használat nyomon követése**. Egy szervezet gondoskodhat arról, hogy az üzleti rendszerek biztonságban maradjanak, miközben a felhasználók visszaállítják a saját jelszavukat. A robusztus naplók a jelszó-visszaállítási folyamat egyes lépéseinek információit tartalmazzák. Ezek a naplók egy API-ból érhetők el, és lehetővé teszik a felhasználó számára, hogy az adatok importálását egy biztonsági incidensek és esemény-figyelési (SIEM) rendszerbe.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 A Azure Active Directory felhasználónkénti licenccel rendelkezik, azaz minden felhasználónak megfelelő licencre van szüksége az általuk használt funkciókhoz. A SSPR csoportos licencelését javasoljuk. 
 
@@ -254,7 +254,7 @@ Habár a SSPR általában nem hoz létre felhasználói problémákat, fontos, h
 
 A támogatási csapat sikerességének engedélyezéséhez a felhasználóktól kapott kérdések alapján hozhat létre GYIK-et. Íme, néhány példa:
 
-| Forgatókönyvek| Leírás |
+| Forgatókönyvek| Description |
 | - | - |
 | A felhasználónak nincs elérhető regisztrált hitelesítési módszere.| A felhasználó megpróbálja alaphelyzetbe állítani a jelszavát, de nem rendelkezik az általuk regisztrált hitelesítési módszerekkel (például a mobil telefonját otthon hagyta, és nem fér hozzá az e-mailekhez) |
 | A felhasználó nem kap szöveget vagy hívást az irodában vagy a mobiltelefonján| A felhasználó szöveges vagy hívási identitást próbál meg ellenőrizni, de nem kap szöveget vagy hívást. |
@@ -341,7 +341,7 @@ A [használat és](./howto-authentication-methods-usage-insights.md) az adatok s
 
 * [Mi a jelszó visszaírási?](./concept-sspr-writeback.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az SSPR üzembe helyezésének megkezdéséhez lásd: az [Azure ad önkiszolgáló jelszó-visszaállításának engedélyezése](tutorial-enable-sspr.md)
 

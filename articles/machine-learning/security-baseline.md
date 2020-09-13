@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228358"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657362"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -28,7 +28,7 @@ Az Microsoft Azure Machine Learning Azure biztonsági alapkonfigurációja olyan
 
 A Azure Firewall a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozására használható.
 
-- [Kísérletek és következtetések biztonságos futtatása elkülönített virtuális hálózatban](how-to-enable-virtual-network.md)
+- [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)
 
 - [Azure Firewall mögötti munkaterület használata Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje 
 
 - [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 
-- [Hálózati elkülönítés a betanítás során &amp; privát virtuális hálózatokkal](how-to-enable-virtual-network.md)
+- [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -94,7 +94,7 @@ Azure Firewall üzembe helyezése minden szervezet hálózati határain, és a f
 
 **Útmutató**: az Ön által választott tűzfal-megoldás üzembe helyezése minden szervezet hálózati határain a kártékony forgalom észlelése és/vagy blokkolása céljából.
 
-Válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az AZONOSÍTÓk/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal.  Ha a hasznos adatok ellenőrzése nem követelmény, Azure Firewall a veszélyforrások felderítése is használható. Azure Firewall veszélyforrások felderítésére szolgáló szűrés a riasztások és/vagy az ismert kártékony IP-címek és tartományok felé irányuló, illetve azokból való adatforgalom letiltására szolgál. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
+Válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az AZONOSÍTÓk/IP-címek funkciót a hasznos adatok vizsgálatával.  Ha a hasznos adatok ellenőrzése nem követelmény, Azure Firewall a veszélyforrások felderítése is használható. Azure Firewall veszélyforrások felderítésére szolgáló szűrés a riasztások és/vagy az ismert kártékony IP-címek és tartományok felé irányuló, illetve azokból való adatforgalom letiltására szolgál. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
 - [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -122,7 +122,7 @@ Azure Machine Learning a szolgáltatás dokumentálja a számítási célokhoz t
 
 - [További információ a szolgáltatási címkék használatáról](../virtual-network/service-tags-overview.md)
 
-- [Azure Machine Learning virtuális hálózat esetén](how-to-enable-virtual-network.md)
+- [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -326,7 +326,7 @@ Az Azure AD PowerShell-modullal is elvégezheti az alkalmi lekérdezéseket a fe
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
-**Útmutató**: a Azure Machine learning három alapértelmezett szerepkört tartalmaz, amikor új munkaterületet hoz létre, szabványos üzemeltetési eljárásokat hoz létre a tulajdonosi fiókok használata körül.
+**Útmutató**: a Azure Machine learning három alapértelmezett szerepkört tartalmaz, amikor új munkaterületet hoz létre, valamint szabványos üzemeltetési eljárásokat hoz létre a tulajdonosi fiókok használata körül.
 
 Azure AD Privileged Identity Management és Azure Resource Manager használatával is engedélyezheti az igény szerinti hozzáférést a rendszergazdai fiókokhoz. 
 
@@ -402,7 +402,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
  
 A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Machine Learning a szerepkörök a munkaterület szintjén kezelhetők, például a munkaterület tulajdonosi hozzáférése nem jogosult a munkaterületet tartalmazó erőforráscsoporthoz való tulajdonosi hozzáférésre. Ez részletesebb hozzáférés-vezérlést biztosít az azonos erőforráscsoporthoz tartozó szerepkörök elkülönítéséhez. 
 
-- [Azure Machine Learning munkaterület elérésének kezelése](how-to-assign-roles.md) 
+- [Azure Machine Learning-munkaterülethez való hozzáférés kezelése](how-to-assign-roles.md) 
  
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -527,7 +527,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure Machine Learning az Azure Active Directory (Azure ad) használatával támogatja a kérelmek Machine learning erőforrásokhoz való engedélyezését. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket biztosíthat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás.
 
-- [Azure Machine Learning munkaterület elérésének kezelése](how-to-assign-roles.md)
+- [Azure Machine Learning-munkaterülethez való hozzáférés kezelése](how-to-assign-roles.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -979,7 +979,9 @@ A betanítási szkriptek nem titkosított szöveg helyett a Azure Key Vault hasz
 
 - [Key Vault létrehozása](/azure/key-vault/quick-create-portal)
 
-- [Key Vault hitelesítés biztosítása felügyelt identitással](/azure/key-vault/managed-identity)
+- [Hitelesítés Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [Key Vault hozzáférési szabályzatok kiosztása](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center figyelés**: igen
 
@@ -990,7 +992,7 @@ A betanítási szkriptek nem titkosított szöveg helyett a Azure Key Vault hasz
 **Útmutató**: a Azure Machine learning támogatja a beépített szerepköröket és az egyéni szerepkörök létrehozását is. Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását az Azure AD-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
  
-- [Azure Machine Learning munkaterület elérésének kezelése](how-to-assign-roles.md)
+- [Azure Machine Learning-munkaterülethez való hozzáférés kezelése](how-to-assign-roles.md)
 
 - [Felügyelt identitások konfigurálása az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 

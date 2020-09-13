@@ -1,26 +1,23 @@
 ---
-title: Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)
-description: A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data Lake Storage számára, amely lehetővé teszi az alkalmazások és az elemzési keretrendszerek számára, hogy a feldolgozási művelethez szükséges adatok beolvasásával jelentősen optimalizálják az adatfeldolgozást.
+title: Azure Data Lake Storage lekérdezés gyorsulása
+description: A lekérdezési gyorsítás lehetővé teszi az alkalmazások és az elemzési keretrendszerek számára, hogy a feldolgozási művelethez szükséges adatok beolvasásával jelentősen optimalizálják az adatfeldolgozást.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176702"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657649"
 ---
-# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)
+# <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage lekérdezés gyorsulása
 
-A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data Lake Storage számára, amely lehetővé teszi az alkalmazások és az elemzési keretrendszerek számára, hogy az adatok feldolgozását az adott művelet végrehajtásához szükséges adatok beolvasásával jelentősen optimalizálja. Ez csökkenti a tárolt információk kritikus fontosságú elemzéséhez szükséges időt és feldolgozási teljesítményt.
-
-> [!NOTE]
-> A lekérdezési gyorsítási funkció nyilvános előzetes verzióban érhető el, és a közép-Kanada középső régiójában és Közép-Franciaországban található. A korlátozások áttekintéséhez tekintse meg az [ismert problémákkal foglalkozó](data-lake-storage-known-issues.md) cikket. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adls/qa-preview-signup).  
+A lekérdezési gyorsítás lehetővé teszi, hogy az alkalmazások és az elemzési keretrendszerek jelentősen optimalizálják az adatfeldolgozást azáltal, hogy csak az adott művelet végrehajtásához szükséges adatok beolvasását végzik. Ez csökkenti a tárolt információk kritikus fontosságú elemzéséhez szükséges időt és feldolgozási teljesítményt.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -57,7 +54,7 @@ Egy összesített érték kiszámításához az alkalmazások általában lekér
 
 Annak ellenére, hogy az Azure egy piacvezető hálózatot is tartalmaz, az átviteli sebesség és a késés tekintetében, az adatok felesleges átvitele a hálózaton keresztül továbbra is költséges az alkalmazások teljesítményére. Ha kiszűri a nemkívánatos adattárolási kérést a tárolási kérelem során, a lekérdezés gyorsulása kiküszöböli ezt a költségeket.
 
-Emellett a szükségtelen adatelemzéshez és szűréshez szükséges CPU-terheléshez az alkalmazásnak nagyobb számú és nagyobb méretű virtuális gépet kell kiépíteni a működésének elvégzéséhez. Ha áthelyezi ezt a számítási terhelést a gyorsításra, az alkalmazások jelentős költségmegtakarítást tudnak megvalósítani.
+Emellett a szükségtelen adatelemzéshez és szűréshez szükséges CPU-terheléshez az alkalmazásnak nagyobb számú és nagyobb méretű virtuális gépet kell kiépíteni a munkája elvégzéséhez. Ha áthelyezi ezt a számítási terhelést a gyorsításra, az alkalmazások jelentős költségmegtakarítást tudnak megvalósítani.
 
 ## <a name="applications-that-can-benefit-from-query-acceleration"></a>A lekérdezési gyorsítás előnyeit kihasználó alkalmazások
 
@@ -75,10 +72,9 @@ A Azure Data Lake Storage szolgáltatásban megnövelt számítási terhelés mi
 
 A számlázási modellre való váltás ellenére a lekérdezési gyorsítás díjszabási modellje úgy van kialakítva, hogy csökkentse a számítási feladatok teljes tulajdonlási költségét, a jóval drágább virtuális gépek költségeinek csökkentése miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Lekérdezési gyorsítás beléptetésének űrlapja](https://aka.ms/adls/qa-preview-signup)    
-- [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió)](data-lake-storage-query-acceleration-how-to.md)
-- [A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)](query-acceleration-sql-reference.md)
+- [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával](data-lake-storage-query-acceleration-how-to.md)
+- [A lekérdezés gyorsításának SQL nyelvi referenciája](query-acceleration-sql-reference.md)
 
 

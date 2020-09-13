@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor ügyfél által felügyelt kulcs
+title: Azure Monitor – ügyfél által kezelt kulcs
 description: Információk és lépések az ügyfél által felügyelt kulcs (CMK) konfigurálásához a Log Analytics-munkaterületeken lévő adatok Azure Key Vault kulcs használatával történő titkosításához.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 07/05/2020
-ms.openlocfilehash: eec056cbe246f129fb78e15faa0027846c271181
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 09/09/2020
+ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382950"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657307"
 ---
-# <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
+# <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
 Ez a cikk háttér-információkat és lépéseket tartalmaz az ügyfél által felügyelt kulcsok (CMK) az Log Analytics-munkaterületekhez való konfigurálásához. A konfigurálást követően a munkaterületekre eljuttatott összes adatfájl titkosítva van a Azure Key Vault kulccsal.
 
@@ -21,17 +21,15 @@ Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozások
 
 ## <a name="customer-managed-key-cmk-overview"></a>Ügyfél által felügyelt kulcs (CMK) áttekintése
 
-[Titkosítás nyugalmi](../../security/fundamentals/encryption-atrest.md)   állapotban gyakori adatvédelmi és biztonsági követelmények a szervezetekben.Lehetővé teheti, hogy az Azure teljes mértékben kezelhesse a titkosítást, míg számos különböző lehetőség áll rendelkezésre a titkosítási vagy titkosítási kulcsok szoros kezeléséhez.
+A inaktív adatok [titkosítása](../../security/fundamentals/encryption-atrest.md) a szervezetek közös adatvédelmi és biztonsági követelménye. Lehetővé teheti, hogy az Azure teljes mértékben kezelhesse a titkosítást, míg számos különböző lehetőség áll rendelkezésre a titkosítási vagy titkosítási kulcsok szoros kezeléséhez.
 
-Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md) tárolt és a rendszer által hozzárendelt [felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) -hitelesítéssel hozzáférő saját kulcs használatával is lehetőséget nyújt a titkosításra. Ez a kulcs (CMK) lehet [szoftveres vagy hardveres HSM-védelemmel ellátott](../../key-vault/general/overview.md).
+Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md) tárolt és a rendszer által hozzárendelt [felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) -hitelesítéssel hozzáférő saját kulcs használatával is lehetőséget nyújt a titkosításra. Ez a kulcs (CMK) lehet [szoftveres vagy hardveres HSM-védelemmel ellátott](../../key-vault/general/overview.md). Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) működésének módjával.
 
-Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)   működésének módjával.
+A CMK képesség dedikált Log Analytics-fürtökön érhető el, és lehetővé teszi a vezérlést, hogy bármikor visszavonja az adataihoz való hozzáférést, és a [Kulcstároló](#customer-lockbox-preview) -vezérlővel megvédje azt. Annak ellenőrzéséhez, hogy a régiójában van-e a dedikált fürthöz szükséges kapacitás, előzetesen engedélyezni kell az előfizetést. A CMK konfigurálásának megkezdése előtt használja a Microsoft-névjegyét az előfizetés engedélyezéséhez.
 
-A CMK segítségével szabályozhatja az adataihoz való hozzáférést, és bármikor visszavonhatja azt. Azure Monitor a tároló egy órán belül mindig tiszteletben tartja a legfontosabb engedélyek változásait. Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az adatforgalom a Microsoft kulcsaival együtt titkosítva marad, függetlenül a CMK-konfigurációtól, az SSD-adatforgalom pedig a [kulcs visszavonását](#cmk-kek-revocation)követi. Dolgozunk, hogy a CMK-mel titkosított SSD-adatforgalom a 2020-as második fele legyen.
+A [log Analytics-fürtök díjszabási modellje](./manage-cost-storage.md#log-analytics-dedicated-clusters) a 1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
 
-A CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, az előfizetést előzetesen engedélyezni kell. A CMK konfigurálásának megkezdése előtt használja a Microsoft-névjegyét az előfizetés engedélyezéséhez.
-
-A [log Analytics-fürtök díjszabási modellje](./manage-cost-storage.md#log-analytics-dedicated-clusters)a   1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
+Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az adatforgalom a Microsoft kulcsaival együtt titkosítva marad, függetlenül a CMK-konfigurációtól, az SSD-adatforgalom pedig a [kulcs visszavonását](#cmk-kek-revocation)követi. Dolgozunk, hogy a CMK-mel titkosított SSD-adatforgalom a 2020-as második fele legyen.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hogyan működik a CMK Azure Monitor
 
@@ -65,7 +63,7 @@ A következő szabályok érvényesek:
 
 - A KEK soha nem hagyja el a Key Vault, és HSM-kulcsok esetén soha nem hagyja el a hardvert.
 
-- Az Azure Storage a *fürterőforrás* -hez társított felügyelt identitást használja a Azure Key Vault hitelesítésére és elérésére Azure Active Directory használatával.
+- Az Azure Storage a   *fürterőforrás* -hez társított felügyelt identitást használja a Azure Key Vault hitelesítésére és elérésére Azure Active Directory használatával.
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-létesítési eljárás
 
@@ -83,7 +81,7 @@ Az eljárás nem támogatott Azure Portal és a kiépítés PowerShell-vagy REST
 Például:
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -102,12 +100,12 @@ A jogkivonatot a következő módszerek egyikével is beszerezheti:
 
 A konfigurációs eljárás egyes műveletei aszinkron módon futnak, mert nem hajthatók végre gyorsan. Ha REST-kérelmeket használ a konfigurációban, a válasz kezdetben a 200-es HTTP-állapotkódot (OK) és az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
 Ezután az aszinkron művelet állapotát úgy tekintheti meg, hogy elküld egy GET kérelmet az *Azure-AsyncOperation* fejléc értékére:
 ```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -215,7 +213,7 @@ New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Clust
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -246,7 +244,7 @@ Míg a Log Analytics-fürt üzembe helyezése egy ideig tart, a kiépítési ál
 2. Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *provisioningState* értéket. A kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -309,7 +307,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Cl
 > A *fürt* erőforrás- *SKU*-t, a *KeyVaultProperties* -t vagy a *billingType* -t a patch használatával frissítheti.
 
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -391,7 +389,7 @@ Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" 
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -412,7 +410,7 @@ A betöltött adatait a rendszer a társítási művelet után titkosítja a fel
 2. [Munkaterületek küldése –](/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz betartása a társított munkaterületen a "szolgáltatások" clusterResourceId lesz.
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -490,7 +488,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -517,7 +515,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -534,6 +532,13 @@ Content-type: application/json
 
 A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tárolóba.
 
+## <a name="customer-lockbox-preview"></a>Ügyfélszéf (előzetes verzió)
+A kulcstároló segítségével engedélyezheti vagy elutasíthatja a Microsoft mérnök kérelmét, hogy támogatási kérelem során hozzáférjen az adataihoz.
+
+A Azure Monitor a Log Analytics dedikált fürthöz társított munkaterületeken található adatkezelési vezérlővel rendelkezik. A kulcstároló-vezérlő a Log Analytics dedikált fürtben tárolt adatra vonatkozik, ahol a rendszer elkülönítetten tárolja a fürt Storage-fiókjaiban a kulcstároló által védett előfizetését.  
+
+További információ a [Microsoft Azure Ügyfélszéfről](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+
 ## <a name="cmk-management"></a>CMK-kezelés
 
 - **Erőforráscsoport összes *fürterőforrás* -erőforrásának beolvasása**
@@ -543,7 +548,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   ```
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
@@ -589,7 +594,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   ```
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
     
@@ -606,7 +611,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   ```
 
   ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   Content-type: application/json
 
@@ -627,7 +632,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új billingType értéket. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell a *billingType*:
 
   ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   Content-type: application/json
 
@@ -649,7 +654,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   ```
 
   ```rest
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
@@ -681,7 +686,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   ```
 
   ```rst
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 

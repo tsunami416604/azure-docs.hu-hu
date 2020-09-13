@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224852"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656945"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -104,7 +104,7 @@ Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szer
 
 Az elérhető konfigurációs lehetőségek a következők 
 
-| Név | Típus | Leírás
+| Név | Típus | Description
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
 | name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -204,8 +204,7 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 
 Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez hozzáadhat a `enableAutoRouteTracking: true` telepítési konfigurációhoz.
 
-Jelenleg egy külön [reakciós beépülő modult](#react-extensions)is kínálunk, amelyet az SDK-val inicializálhat. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint [más reagáló specifikus telemetria](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)is gyűjthet.
-
+Jelenleg egy külön [reakciós beépülő modult](javascript-react-plugin.md)is kínálunk, amelyet az SDK-val inicializálhat. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint más reagáló specifikus telemetria is gyűjthet.
 > [!NOTE]
 > Csak akkor használja `enableAutoRouteTracking: true` , ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
 
@@ -213,12 +212,13 @@ Jelenleg egy külön [reakciós beépülő modult](#react-extensions)is kínálu
 
 A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](../platform/metrics-custom-overview.md) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](../platform/metrics-getting-started.md) "napló alapú metrika" néven látható.
 
-## <a name="react-extensions"></a>Reakciós bővítmények
+## <a name="extensions"></a>Bővítmények
 
 | Bővítmények |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
+| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
 ## <a name="correlation"></a>Korreláció
 
@@ -315,7 +315,7 @@ Ez a verzió a szolgáltatások és funkciók minimális számát tartalmazza, �
 
 ## <a name="examples"></a>Példák
 
-A futtatható-példákat lásd: [Application Insights JavaScript SDK-minták](https://github.com/topics/applicationinsights-js-demo)
+A futtatható-példákat lásd: [Application Insights JavaScript SDK-minták](https://github.com/Azure-Samples?q=applicationinsights-js-demo).
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Frissítés a Application Insights korábbi verziójáról
 

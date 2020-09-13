@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144889"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650824"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ További információ a számítási példányokról, beleértve a csomagok tele
 
 A számítási költségek kiszámításához [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
-## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
+## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Adatelemzési virtuális gép
 
 A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési munkához készült, amely előre konfigurálva van a következővel:
 
@@ -81,7 +81,7 @@ A DSVM használata fejlesztési környezetként:
 
     * A Azure Portal:
 
-        * [Ubuntu rendszerű adatelemzési virtuális gép létrehozása](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+        * [Ubuntu-Data Science Virtual Machine létrehozása](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
 
         * [Windows rendszerű adatelemzési virtuális gép létrehozása](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
 
@@ -185,7 +185,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Az SDK telepítése több percet is igénybe vehet. További információ a telepítési lehetőségekről: telepítési [útmutató](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+   Az SDK telepítése több percet is igénybe vehet. További információ a telepítési lehetőségekről: telepítési [útmutató](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 
 1. Telepítsen további csomagokat a Machine learning-kísérletezéshez.
 
@@ -361,7 +361,7 @@ Ha ezt a fájlt a kódból szeretné használni, használja a következőt: `ws=
 
 A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
-* **A [ws. Write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py): használatával**config.jsírhat *a* fájlra. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config.jst* letöltheti vagy átmásolhatja más fejlesztői környezetbe.
+* **A [ws. Write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true): használatával**config.jsírhat *a* fájlra. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config.jst* letöltheti vagy átmásolhatja más fejlesztői környezetbe.
 
 * **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
 
@@ -389,4 +389,4 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 ## <a name="next-steps"></a>Következő lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
-- A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése
+- A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -dokumentáció megtekintése

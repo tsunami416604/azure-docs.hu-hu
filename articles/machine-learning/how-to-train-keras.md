@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ab0b90e08d51602979e31486a1a446731f66e5ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1917ded59275c7a456e8d2fd25412afc91a1327c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320935"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650648"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Kerasz besorolási modell betanítása és regisztrálása Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,9 +40,9 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
 
  - Saját Jupyter Notebook-kiszolgáló
 
-    - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
+    - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.
     - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
-    - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` és`utils.py`
+    - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` és `utils.py`
 
     Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) .
 
 Hozzon létre egy munkaterület-objektumot az `config.json` [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -133,7 +133,7 @@ A számítási célokkal kapcsolatos további információkért tekintse meg a [
 
 ## <a name="create-a-tensorflow-estimator-and-import-keras"></a>TensorFlow-kalkulátor létrehozása és kerasz importálása
 
-A [TensorFlow kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) egyszerű módszert kínál a TensorFlow-betanítási feladatok számítási célra való elindítására. Mivel a kerasz a TensorFlow-on fut, használhatja a TensorFlow-kalkulátort, és importálhatja a kerasz könyvtárat az `pip_packages` argumentum használatával.
+A [TensorFlow kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true) egyszerű módszert kínál a TensorFlow-betanítási feladatok számítási célra való elindítására. Mivel a kerasz a TensorFlow-on fut, használhatja a TensorFlow-kalkulátort, és importálhatja a kerasz könyvtárat az `pip_packages` argumentum használatával.
 
 Először kérje le a munkaterület-adattár adatait a `Dataset` osztály használatával.
 
@@ -144,7 +144,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-A TensorFlow kalkulátor az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. Emellett hozzon létre egy szótárt, `script_params` amely tartalmazza a DNN hiperparaméter beállításait. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
+A TensorFlow kalkulátor az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. Emellett hozzon létre egy szótárt, `script_params` amely tartalmazza a DNN hiperparaméter beállításait. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -167,7 +167,7 @@ est = TensorFlow(source_directory=script_folder,
 
 ## <a name="submit-a-run"></a>Futtatás küldése
 
-A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
+A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
 run = exp.submit(est)
@@ -208,7 +208,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy kerasz-modellt képzett és regisztrált Azure Machine Learningon. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 

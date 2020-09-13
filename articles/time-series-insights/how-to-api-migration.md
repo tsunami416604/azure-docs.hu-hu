@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d68323bb72779ec5978c721b5258d4c8a8d4940d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163951"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650798"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Áttelepítés új Azure Time Series Insights Gen2 API-verzióra
 
@@ -39,7 +39,7 @@ Annak érdekében, hogy a felhasználók áttelepítse az [Idősorozat-modell v�
 
 1. A rendszer arra kéri, hogy az Explorer frissítse az idősorozat-modell változói és a mentett lekérdezések által használt szintaxist.
 
-    [![Adatkérés](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![Gyors](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     Ha véletlenül lezárta az értesítést, akkor az értesítési panelen található.
 
@@ -56,7 +56,7 @@ Annak érdekében, hogy a felhasználók áttelepítse az [Idősorozat-modell v�
 
     [![Változók frissítése](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. Kattintson a **mentett lekérdezések frissítése**elemre. Az eszköz értesíti, ha a változók frissítve lettek.
+1. Kattintson a **mentett lekérdezések frissítése**elemre. Az eszköz értesíti Önt, ha a mentett lekérdezések frissültek.
 
     [![Mentett lekérdezések frissítése](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495607"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657468"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
 
@@ -40,12 +40,12 @@ A "foreach hurok" megismétli egy vagy több műveletet minden tömb elemnél, �
 
 * Ha az egyes hurok-iterációk esetében kiszámítható eredményt szeretne kapni a változók műveleteitől, futtassa ezeket a hurkokat egymás után. Ha például egy párhuzamosan futó hurok véget ér, a növekmény, a csökkentés és a Hozzáfűzés változó művelet előre jelezhető eredményeket ad vissza. Ugyanakkor a párhuzamosan futó hurokban az egyes ismétlések során ezek a műveletek kiszámíthatatlan eredményeket adhatnak vissza. 
 
-* A "foreach" ciklusban végrehajtott műveletek a következőt használják:[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
+* A "foreach" ciklusban végrehajtott műveletek a következőt használják: [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 a tömb egyes elemeinek hivatkozására és feldolgozására szolgáló kifejezés. Ha olyan adathalmazt ad meg, amely nem egy tömbben található, akkor a logikai alkalmazás munkafolyamata sikertelen lesz. 
 
 Ez a példa a logikai alkalmazás egy webhely RSS-hírcsatornájának napi összefoglalóját küldi el. Az alkalmazás egy "foreach" hurkot használ, amely minden új elemről e-mailt küld.
 
-1. [Hozza létre ezt a minta logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy Outlook.com vagy Office 365 Outlook-fiókkal.
+1. [Hozza létre ezt a minta logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy Outlook.com-fiókkal vagy egy munkahelyi vagy iskolai fiókkal.
 
 2. Az RSS-trigger és az e-mail küldése művelet között adjon hozzá egy "foreach" ciklust. 
 
@@ -232,7 +232,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
-      | **Hogy** | *\<email-address\@domain>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
+      | **Művelet** | *\<email-address\@domain>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
       | **Törzs** | <*e-mail – tartalom*> | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
       |||| 
@@ -247,7 +247,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
 A "ig" ciklusban az alapértelmezett korlátok a végrehajtás leállítása, ha bármelyik feltétel teljesül:
 
-| Tulajdonság | Alapértelmezett érték | Leírás | 
+| Tulajdonság | Alapértelmezett érték | Description | 
 | -------- | ------------- | ----------- | 
 | **Száma** | 60 | A hurok bezárása előtt futó hurkok maximális száma. Az alapértelmezett érték 60 ciklus. | 
 | **Időtúllépés** | PT1H | A huroknak a hurokból való kilépése előtti futtatásának legnagyobb ideje. Az alapértelmezett érték egy óra, és ISO 8601 formátumban van megadva. <p>Az időtúllépési érték kiértékelése minden hurok ciklusakor megtörténik. Ha a hurok bármelyik művelete hosszabb időt vesz igénybe, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. | 
@@ -338,7 +338,7 @@ Ebben a példában a "ig" ciklus egy olyan HTTP-végpontot hív meg, amely létr
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról [Azure Logic apps felhasználói visszajelzési webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)

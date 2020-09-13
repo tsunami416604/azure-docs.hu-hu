@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0a41aa062cf4804587b97ce224f80c0bc4bf2b3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320833"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650581"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulási eredmények értelmezése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,14 +59,14 @@ Az automatizált gépi tanulási kísérlet futtatása után a futtatások előz
 
    [![Kísérleti modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
-Ugyanezeket az eredményeket is láthatja a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)használja.
+Ugyanezeket az eredményeket is láthatja a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)használja.
 
-## <a name="classification-results"></a><a name="classification"></a>Besorolási eredmények
+## <a name="classification-results"></a><a name="classification"></a> Besorolási eredmények
 
 A következő mérőszámokat és diagramokat minden olyan besorolási modell esetében elérhetővé teszi, amelyet a Azure Machine Learning gépi tanulási képességeinek felhasználásával épít fel.
 
 + [Metrikák](#classification-metrics)
-+ [Zavart mátrix](#confusion-matrix)
++ [Keveredési mátrix](#confusion-matrix)
 + [Precíziós visszahívási diagram](#precision-recall-chart)
 + [Fogadó működési jellemzői (vagy ROC)](#roc)
 + [Emelő görbe](#lift-curve)
@@ -108,7 +108,7 @@ Egy konkrét példa ezt a különbségtételt teszi lehetővé: a felidézés he
 
 <a name="confusion-matrix"></a>
 
-### <a name="confusion-matrix"></a>Zavart mátrix
+### <a name="confusion-matrix"></a>Keveredési mátrix
 
 #### <a name="what-is-a-confusion-matrix"></a>Mi az a zűrzavaros mátrix?
 A rendszer a besorolási modell teljesítményének leírására használja a zűrzavaros mátrixot. Minden sor megjeleníti az adott adatkészlet igaz vagy tényleges osztályának példányait, és minden oszlop az osztály azon példányaira vonatkozik, amelyeket a modell előre jelzett. 
@@ -211,7 +211,7 @@ A jól kalibrált modell az y = x sorral összhangban van, ahol helyesen Jósolj
 ##### <a name="example-2-an-over-confident-model"></a>2. példa: egy magabiztos modell
 ![Egy több mint magabiztos modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a>Regressziós eredmények
+## <a name="regression-results"></a><a name="regression"></a> Regressziós eredmények
 
 A következő mérőszámok és diagramok érhetők el minden olyan regressziós modellhez, amelyet a Azure Machine Learning automatizált gépi tanulási képességeivel épít fel.
 
@@ -220,7 +220,7 @@ A következő mérőszámok és diagramok érhetők el minden olyan regressziós
 + [Maradványok hisztogramja](#histo)
 
 
-### <a name="regression-metrics"></a><a name="reg-metrics"></a>Regressziós metrikák
+### <a name="regression-metrics"></a><a name="reg-metrics"></a> Regressziós metrikák
 
 A rendszer a következő metrikákat menti a regressziós vagy előrejelzési feladatokhoz minden futtatási iteráció során.
 
@@ -238,7 +238,7 @@ normalized_root_mean_squared_error|Normalizált legfelső szintű, négyzetes hi
 root_mean_squared_log_error|A legfelső szintű négyzetes naplózási hiba a várt szögletes logaritmikus hiba négyzetének gyökere.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Nincs|
 normalized_root_mean_squared_log_error|Normalizált legfelső szintű, négyzetes naplózási hiba: legfelső szintű négyzetes naplózási hiba az adattartomány szerint elosztva|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Osztás az adattartomány szerint|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a>Előre jelzett és igaz diagram
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Előre jelzett és igaz diagram
 #### <a name="what-is-a-predicted-vs-true-chart"></a>Mi az az előre jelzett vagy igaz diagram?
 Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós probléma esetén az előre jelzett érték és a korrelációs valódi értéke közötti kapcsolat látható. Ez a gráf felhasználható egy modell teljesítményének mérésére, ahogy az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell pontossága.
 
@@ -254,7 +254,7 @@ Az egyes futtatások után megtekintheti az egyes regressziós modellekhez tarto
 
 
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>Maradványok diagramjának hisztogramja
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Maradványok diagramjának hisztogramja
 #### <a name="what-is-a-residuals-chart"></a>Mi az a fennmaradó diagram?
 A maradék az előrejelzés és a tényleges érték () közötti különbség `y_pred - y_true` . Ha alacsony torzítású hibát szeretne megjeleníteni, a maradékok hisztogramját harang alakú görbévé kell alakítani, a 0 körüli középpontba. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Mit jelent az automatizált ML a fennmaradó diagrammal?
@@ -268,14 +268,14 @@ A jó modell általában a nullához közel álló maradványokat tartalmaz.
 ##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>2. példa: egy regressziós modell a hibák egyenletes eloszlásával
 ![Egy regressziós modell, amely a hibák egyenletes eloszlásával rendelkezik](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a>Modell-értelmező és-funkció fontossága
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> Modell-értelmező és-funkció fontossága
 Az automatikus ML gépi tanulásra vonatkozó értelmező irányítópultot biztosít a futtatásához.
 A tolmácsolási funkciók engedélyezésével kapcsolatos további információkért tekintse [meg az AUTOMATIZÁLT](how-to-machine-learning-interpretability-automl.md) ml-kísérletek értelmezésének engedélyezése című témakört.
 
 > [!NOTE]
 > A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + További információ a Azure Machine Learning [automatizált ml](concept-automated-ml.md) -ről.
 + Próbálja ki az [automatizált Machine learning Model magyarázat](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) minta jegyzetfüzeteket.

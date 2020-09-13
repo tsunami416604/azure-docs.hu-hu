@@ -1,25 +1,22 @@
 ---
 title: Privát végpontok replikálásának engedélyezése Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális gépek replikálása az egyik Azure-régióból a másikba Site Recovery használatával.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 16cde1cf43c6463cbbe640d9e0a80a9ea88f1f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096779"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658249"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>Számítógépek replikálása privát végpontokkal
 
-Azure Site Recovery lehetővé teszi, hogy az [Azure Private link](../private-link/private-endpoint-overview.md) privát végpontait használja a gépek elkülönített virtuális hálózaton belüli replikálásához. A titkos végpontok helyreállítási tárolóhoz való hozzáférésének támogatása a következő régiókban támogatott:
-
-- Azure Commercial: az USA déli középső régiója, USA 2. nyugati régiója, USA keleti régiója
-- Azure Government: US Gov Virginia, US Gov Arizona, US Gov Texas, US DoD – keleti régió, US DoD – középső régió
+Azure Site Recovery lehetővé teszi, hogy az [Azure Private link](../private-link/private-endpoint-overview.md) privát végpontait használja a gépek elkülönített virtuális hálózaton belüli replikálásához. A helyreállítási tárolóhoz való magánhálózati végpontok minden Azure kereskedelmi & kormányzati régióban támogatottak.
 
 Ez a cikk útmutatást nyújt a következő lépések végrehajtásához:
 
@@ -140,7 +137,7 @@ A virtuális gépek replikálásának engedélyezése előtt a tár felügyelt i
 
 - Resource Manager-alapú Storage-fiókok (szabványos típus):
   - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor)
-  - [Storage blob adatközreműködői](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Storage-blobadatok közreműködője](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Resource Manager-alapú Storage-fiókok (prémium típus):
   - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor)
   - [Storage blob-adattulajdonos](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -176,7 +173,7 @@ Hozzon létre egy privát DNS-zónát, amely lehetővé teszi, hogy a mobilitás
 
    1. Keresse meg a "saját DNS zóna" kifejezést a **minden szolgáltatás** keresési sávján, és válassza a legördülő menüből a "saját DNS zónák" lehetőséget.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Megjeleníti a privát DNS-zóna keresést a Azure Portal új erőforrások lapján.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Megjeleníti a "privát DNS-zóna" keresést a Azure Portal új erőforrások lapján.":::
 
    1. A "saját DNS zónák" lapon kattintson a ** \+ Hozzáadás** gombra az új zóna létrehozásának megkezdéséhez.
 
@@ -209,14 +206,14 @@ Hozzon létre egy privát DNS-zónát, amely lehetővé teszi, hogy a mobilitás
 
    1. A megnyíló "rekord hozzáadása" lapon adjon _hozzá egy bejegyzést_ minden teljesen minősített tartománynévhez és magánhálózati IP-címhez. A teljes tartománynevek és IP-címek listája a "privát végpont" lapról szerezhető be az **áttekintésben**. Ahogy az alábbi példában is látható, a magánhálózati végpont első teljes tartományneve hozzá lesz adva a saját DNS-zónában lévő rekordhoz.
 
-      Ezek a teljes tartománynevek megfelelnek a következő mintának:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      Ezek a teljes tartománynevek megfelelnek a következő mintának: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Megjeleníti a lapot, amely a teljes tartománynévhez hozzáadja a DNS-típusú rekordot a Azure Portal privát végpontjának.":::
 
    > [!NOTE]
    > A replikáció engedélyezése után két további teljes tartománynevet hoz létre a rendszer mindkét régióban a privát végpontokon. Győződjön meg arról, hogy az újonnan létrehozott, teljesen minősített tartománynevek számára is hozzáadja a DNS-rekordokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy engedélyezte a saját végpontok használatát a virtuális gépek replikálásához, tekintse meg a további és kapcsolódó információkat a következő lapokon:
 
