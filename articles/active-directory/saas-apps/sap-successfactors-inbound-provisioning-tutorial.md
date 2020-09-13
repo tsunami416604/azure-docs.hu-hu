@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534105"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017999"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználó kiépítési felállításához 
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 
@@ -30,13 +30,13 @@ A [Azure Active Directory felhasználó-kiépítési szolgáltatás](../app-prov
 
 Az Azure AD-alapú felhasználó-kiépítési szolgáltatás által támogatott SuccessFactors-kiépítési munkafolyamatok lehetővé teszik a következő emberi erőforrások és az identitás-életciklus felügyeleti forgatókönyvek automatizálását:
 
-* **Új alkalmazottak felvétele** – új alkalmazottak SuccessFactors való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan az Office 365 és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md), az e-mail-cím SuccessFactors való visszaírásával.
+* **Új alkalmazottak felvétele** – ha új alkalmazottat ad hozzá a SuccessFactors-hoz, a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan Microsoft 365 és más, az [Azure ad által támogatott SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md), az e-mail-cím SuccessFactors való visszaírásával.
 
-* **Alkalmazotti attribútumok és profilok frissítései** – ha egy alkalmazotti rekordot frissítenek a SuccessFactors (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)is.
+* **Alkalmazotti attribútumok és profilok frissítései** – ha egy alkalmazotti rekord frissül a SuccessFactors (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory, és opcionálisan Microsoft 365 és [más, az Azure ad által támogatott SaaS-alkalmazásokkal](../app-provisioning/user-provisioning.md).
 
-* **Alkalmazotti megszakítások** – ha egy alkalmazott leáll a SuccessFactors-ben, a felhasználói fiókja automatikusan le lesz tiltva Active Directory, Azure Active Directory és opcionálisan az Office 365 és [Az Azure ad által támogatott egyéb SaaS-alkalmazások](../app-provisioning/user-provisioning.md)esetében.
+* **Alkalmazotti megszakítások** – ha egy alkalmazott leáll a SuccessFactors-ben, a felhasználói fiókja automatikusan le lesz tiltva Active Directory, Azure Active Directory és opcionálisan Microsoft 365 és [más, az Azure ad által támogatott SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md).
 
-* **Alkalmazottak** újratelepítése – ha egy alkalmazottat a SuccessFactors-ben bérelnek újra, a régi fiókjuk automatikusan újraaktiválható vagy újra kiépíthető (az Ön igényeitől függően), hogy Active Directory, Azure Active Directory és opcionálisan az Office 365-et és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokat](../app-provisioning/user-provisioning.md).
+* **Alkalmazottak** újratelepítése – ha egy alkalmazottat a SuccessFactors-ben bérelnek újra, a régi fiókjuk automatikusan újraaktiválható vagy újraépíthető (az Ön igényeitől függően), hogy Active Directory, Azure Active Directory, és opcionálisan Microsoft 365 és [más, az Azure ad által támogatott SaaS-alkalmazásokat](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználó-kiépítési megoldás a legmegfelelőbb?
 
@@ -50,7 +50,7 @@ Ez a SuccessFactors Active Directory a felhasználói üzembe helyezési megold�
 
 * Azok a szervezetek, amelyeknek a felhasználóknak csatlakozniuk kell, át kell helyezniük, és el kell hagyniuk a felhasználókat, hogy szinkronizálva legyenek egy vagy több Active Directory erdőben, tartományban és szervezeti egységben, csak a SuccessFactors-ben [(EC)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
 
-* Office 365-t használó szervezetek e-mailben
+* Az e-maileket Microsoft 365 használó szervezetek
 
 ## <a name="solution-architecture"></a>Megoldási architektúra
 
@@ -234,7 +234,7 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
    
 1. Ellenőrizze az ügynök telepítését, és ellenőrizze, hogy fut-e. Ehhez nyissa meg a "szolgáltatások" beépülő modult, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
   
-   ![Szolgáltatások](./media/workday-inbound-tutorial/services.png)
+   ![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>3. rész: a kiépítési alkalmazásban konfigurálja a SuccessFactors-hez és a Active Directoryhoz való kapcsolódást.
 Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directoryekkel a Azure Portal. 
@@ -353,7 +353,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a bejövő kiépítés támogatott SuccessFactors attribútumairól](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [Ismerje meg, hogyan konfigurálhatja az e-mailek visszaírási a SuccessFactors](sap-successfactors-writeback-tutorial.md)

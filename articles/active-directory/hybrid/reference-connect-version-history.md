@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: verziók kiadásának előzményei | Microsoft Docs'
-description: Ez a cikk a Azure AD Connect és Azure AD-szinkronizáló összes kiadását felsorolja
+description: Ez a cikk a Azure AD Connect és Azure AD-szinkronizáló összes kiadását felsorolja.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052929"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018441"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -48,7 +48,7 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 >
 >Ha engedélyezte a Azure AD Connect for Sync szolgáltatást, hamarosan automatikusan megkezdi az olyan állapotadatok fogadását, amelyek figyelmeztetik a közelgő elavult verziókra, amikor az egyik régebbi verziót futtatja.
 >
->[Ebben a cikkben](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
+>[Ebben a cikkben](./how-to-upgrade-previous-version.md) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
 >
 >Az elavult verziókkal kapcsolatos korábbi verziókról lásd: [Azure ad Connect verziók kiadásának előzményei archívuma](reference-connect-version-history-archive.md)
 
@@ -74,7 +74,7 @@ Ez egy hibajavítási kiadás. Ebben a kiadásban nincsenek funkcionális válto
 ### <a name="functional-changes"></a>Funkcionális változások
 Ez a kiadás a meglévő Azure AD Connect-kiszolgálók konfigurációjának exportálására szolgáló funkció nyilvános előzetes verzióját tartalmazza. A JSON-fájl, amely akkor használható, amikor új Azure AD Connect-kiszolgálót telepít az eredeti kiszolgáló másolatának létrehozásához.
 
-Az új szolgáltatás részletes leírása ebben a [cikkben található.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config)
+Az új szolgáltatás részletes leírása ebben a [cikkben található.](./how-to-connect-import-export-config.md)
 
 ### <a name="fixed-issues"></a>Megoldott problémák
 - Kijavítva egy olyan hibát, amely hamis figyelmeztetést ad a honosított adatbázis-mérettel kapcsolatban a frissítés során.
@@ -244,13 +244,13 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->Ismert probléma történt a Azure AD Connect korábbi verzióról 1.3.21.0 való frissítésével, ha a O365-portál nem tükrözi a frissített verziót, noha Azure AD Connect frissítése sikeresen megtörtént.
+>Ismert probléma történt a Azure AD Connect korábbi verzióról történő frissítésével a 1.3.21.0, ahol a Microsoft 365-portál nem tükrözi a frissített verziót, noha Azure AD Connect frissítése sikeresen megtörtént.
 >
 > Ennek megoldásához importálnia kell a **AdSync** modult, majd futtatnia kell a `Set-ADSyncDirSyncConfiguration` PowerShell-parancsmagot a Azure ad Connect kiszolgálón.  A következő lépéseket hajthatja végre:
 >
 >1. Nyissa meg a PowerShellt administator módban.
->2. A `Import-Module "ADSync"` parancs futtatása.
->3. A `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancs futtatása.
+>2. Futtassa az `Import-Module "ADSync"` parancsot.
+>3. Futtassa az `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
  
 ### <a name="release-status"></a>Kiadás állapota 
 
@@ -261,5 +261,5 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 - A Microsoft Azure Active Directory Connect build 1.3.20.0 található, a jogosultságok kiterjesztésével kapcsolatos sebezhetőség javítva.  Ez a biztonsági rés bizonyos körülmények között lehetővé teheti, hogy egy támadó egy kiemelt fiók környezetében két PowerShell-parancsmagot hajtson végre, és magas jogosultsági szintű műveleteket hajtson végre.  Ez a biztonsági frissítés a parancsmagok letiltásával oldja meg a problémát. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

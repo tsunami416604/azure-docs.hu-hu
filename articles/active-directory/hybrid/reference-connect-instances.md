@@ -16,15 +16,15 @@ ms.date: 05/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c4d8b0a33763a967550453d8a205258f7583084
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66298819"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015262"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: a példányokra vonatkozó különleges szempontok
-A Azure AD Connect leggyakrabban az Azure AD és az Office 365 világméretű példányával használják. Vannak azonban más példányok is, és ezek eltérő követelményekkel rendelkeznek az URL-címekhez és egyéb speciális megfontolásokhoz.
+A Azure AD Connect leggyakrabban az Azure AD és a Microsoft 365 globális példányával együtt használják. Vannak azonban más példányok is, és ezek eltérő követelményekkel rendelkeznek az URL-címekhez és egyéb speciális megfontolásokhoz.
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
 A [Microsoft Cloud Németország](https://www.microsoft.de/cloud-deutschland) egy németországi adatkezelő által működtetett szuverén felhő.
@@ -67,5 +67,5 @@ A következő kézi konfigurációs lépések segítségével biztosítható, ho
 3. Indítsa el a regeditt, és módosítsa a beállításkulcsot az `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` értékre `4` .
 4. Lépjen vissza a Azure AD Connect telepítővarázsló, fogadja el a végfelhasználói licencszerződést, és folytassa a következővel:. A telepítés során győződjön meg arról, hogy az **Egyéni konfiguráció** telepítési útvonalát (és nem az expressz telepítést) használja, majd a szokásos módon folytassa a telepítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

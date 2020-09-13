@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540966"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015483"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
 Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző adatok munkanapokból Azure Active Directoryba való kiépítéséhez szükséges lépéseket. 
@@ -27,13 +27,13 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző adatok munkana
 
 A felhasználói fiókok kiépítéséhez az [Azure Active Directory felhasználó-kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) integrálva van a [MUNKANAP emberi erőforrások API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) -val. Az Azure AD-alapú felhasználó-kiépítési szolgáltatás által támogatott munkafolyamatok munkafolyamatai lehetővé teszik a következő emberi erőforrások és az identitás-életciklus felügyeleti forgatókönyvek automatizálását:
 
-* **Új alkalmazottak felvétele** – új alkalmazottak munkanapokhoz való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Azure Active Directory és opcionálisan az Office 365-ben és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md), és az e-mail-címet a munkanapokra írja vissza.
+* **Új alkalmazottak felvétele** – új alkalmazottak munkanapokhoz való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Azure Active Directory és opcionálisan Microsoft 365 és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md), és az e-mail-címet a munkanapokra írja vissza.
 
-* **Alkalmazotti attribútumok és a profil frissítései** – ha egy alkalmazotti rekord frissítése munkanapokon történik (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Azure Active Directory és opcionálisan az Office 365 és [Az Azure ad által támogatott egyéb SaaS-alkalmazások](../app-provisioning/user-provisioning.md)esetében is.
+* **Alkalmazotti attribútumok és profilok frissítései** – ha egy alkalmazotti rekordot (például a nevét, címét vagy felettesét) frissíti, a felhasználói fiókja automatikusan frissül Azure Active Directory és opcionálisan Microsoft 365 és [Az Azure ad által támogatott egyéb SaaS-alkalmazások](../app-provisioning/user-provisioning.md)esetében is.
 
-* **Alkalmazotti megszakítások** – ha egy alkalmazott munkanapokon leáll, a felhasználói fiókja automatikusan le van tiltva Azure Active Directory és opcionálisan az Office 365-ben és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)is.
+* **Alkalmazotti megszakítások** – ha egy alkalmazott munkanapokon leáll, a felhasználói fiókja automatikusan le van tiltva Azure Active Directory és opcionálisan Microsoft 365 és [Az Azure ad által támogatott egyéb SaaS-alkalmazások](../app-provisioning/user-provisioning.md)esetében.
 
-* **Alkalmazottak** újratelepítése – ha egy alkalmazottat munkanapokon helyeztek át újra, a régi fiók automatikusan újraaktiválható vagy újraépíthető (a beállítástól függően), hogy Azure Active Directory és opcionálisan az Office 365 és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokat](../app-provisioning/user-provisioning.md).
+* **Alkalmazottak** újratelepítése – ha egy alkalmazottat munkanapokon helyeztek át újra, a régi fiók automatikusan újraaktiválható vagy újra kiépíthető (az Ön igényeitől függően), hogy Azure Active Directory és opcionálisan Microsoft 365 és [más, az Azure ad által támogatott SaaS-alkalmazásokat](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználó-kiépítési megoldás a legmegfelelőbb?
 
@@ -45,7 +45,7 @@ Ez a munkanap Azure Active Directory a felhasználói üzembe helyezési megold�
 
 * Azok a szervezetek, amelyeknek a felhasználók számára a munkanapokból beszerzett adatok használatával kell kiépíteni a felhasználókat
 
-* Office 365-t használó szervezetek e-mailben
+* Az e-maileket Microsoft 365 használó szervezetek
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
@@ -206,7 +206,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a bejövő kiépítés támogatott munkanapokhoz tartozó attribútumairól](../app-provisioning/workday-attribute-reference.md)
 * [Tudnivalók a munkanap visszaírási konfigurálásáról](workday-writeback-tutorial.md)

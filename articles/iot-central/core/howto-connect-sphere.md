@@ -7,20 +7,21 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715060"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017693"
 ---
-# <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
+# <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
 *Ez a cikk az eszközök fejlesztőire vonatkozik.*
 
 Ez a cikk bemutatja, hogyan csatlakoztatható egy Azure Sphere (fejlesztői készlet) eszköz egy Azure IoT Central-alkalmazáshoz.
 
-A Azure Sphere egy biztonságos, magas szintű alkalmazás-platform, amely beépített kommunikációs és biztonsági funkciókat biztosít az internethez csatlakoztatott eszközökhöz. Tartalmaz egy biztonságos, csatlakoztatott, crossover mikrovezérlő-egységet (MCU), egy egyéni, magas szintű Linux-alapú operációs rendszert (OS) és egy felhőalapú biztonsági szolgáltatást, amely folyamatos, megújítható biztonságot nyújt. További információ: [Mi az Azure Sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)
+Az Azure Sphere biztonságos, magas szintű alkalmazásplatform, amely beépített kommunikációt és biztonsági funkciókat nyújt az internethez kapcsolódó eszközökhöz. Tartalmaz egy biztonságos, csatlakoztatott, crossover mikrovezérlő-egységet (MCU), egy egyéni, magas szintű Linux-alapú operációs rendszert (OS) és egy felhőalapú biztonsági szolgáltatást, amely folyamatos, megújítható biztonságot nyújt. További információ: [Mi az Azure Sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)
 
 [Azure Sphere fejlesztői készletek](https://azure.microsoft.com/services/azure-sphere/get-started/) biztosítják mindazt, amire szüksége lehet a prototípus-készítéshez és a Azure Sphere alkalmazások fejlesztéséhez. Az Azure IoT Central with Azure Sphere lehetővé teszi egy teljes körű verem használatát egy IoT-megoldáshoz. A Azure Sphere biztosítja az eszközök támogatását, és a IoT Centralt nulla kód, felügyelt IoT alkalmazási platformként.
 
@@ -52,7 +53,7 @@ Azure Sphere-eszköz létrehozása a IoT Centralban:
 
 1. Az eszköz sablonjában szerkessze az **Áttekintés** nevű nézetet a **hőmérséklet** és a **gomb megnyomásának**megjelenítéséhez.
 
-1. Az **eszköz és a Felhőbeli** adatnézet típusának kiválasztásával adjon hozzá egy másik nézetet, amely az olvasási/írási tulajdonság **állapotát**mutatja. Húzza a **status LED** tulajdonságot az űrlap jobb oldalán található üres, pontozott négyszögre. Kattintson a **Mentés** gombra.
+1. Az **eszköz és a Felhőbeli** adatnézet típusának kiválasztásával adjon hozzá egy másik nézetet, amely az olvasási/írási tulajdonság **állapotát**mutatja. Húzza a **status LED** tulajdonságot az űrlap jobb oldalán található üres, pontozott négyszögre. Válassza a **Mentés** lehetőséget.
 
 ## <a name="prepare-the-device"></a>Az eszköz előkészítése
 
@@ -75,12 +76,12 @@ Ha nem rendelkezik fizikai Azure Sphere fejlesztői készlet eszközzel, egy szi
 Szimulált eszköz létrehozása:
 
 - **Eszközök kiválasztása > Azure IoT szférában**
-- Válassza az **+ új**lehetőséget.
+- Válassza a **+ Új** lehetőséget.
 - Adjon meg egy egyedi **eszköz-azonosítót** és egy felhasználóbarát **eszköznév**.
 - Engedélyezze a **szimulált** beállítást.
-- Válassza a **Létrehozás** lehetőséget.
+- Kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3d46df8847a5865c42438ea36245ead0f1e6e528
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: f65bf2bbe174ff90d5a0b962768833b8668f6400
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951118"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019716"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -213,7 +213,7 @@ Néhány Azure-eszköz lehetővé teszi az Azure AD-hitelesítés használatát 
 
 | Azure-eszköz | Azure AD-hitelesítés az Azure Storage-ba |
 |-|-|
-| Azure Portal | Támogatott. A Azure Portal Azure AD-fiókjával való engedélyezésével kapcsolatos információkért lásd: a [blob-vagy üzenetsor-adatokhoz való hozzáférés engedélyezésének kiválasztása a Azure Portal](storage-access-blobs-queues-portal.md). |
+| Azure Portal | Támogatott. A Azure Portal Azure AD-fiókjával való engedélyezésével kapcsolatos információkért lásd: [a blob-adatokhoz való hozzáférés engedélyezésének kiválasztása a Azure Portal](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | BLOB Storage esetén támogatott. További információ a AzCopy-műveletek engedélyezéséről: [válassza ki, hogyan adja meg az engedélyezési hitelesítő adatokat](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) a AzCopy dokumentációjában. |
 | Azure Storage Explorer | BLOB Storage és csak Azure Data Lake Storage Gen2 esetén támogatott. Az Azure AD-hozzáférés a várólista-tárolóhoz nem támogatott. Ügyeljen arra, hogy kiválassza a megfelelő Azure AD-bérlőt. További információ: [Bevezetés a Storage Explorer használatába](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Támogatott. További információ az Azure AD-val történő PowerShell-parancsok engedélyezéséről a blob-és üzenetsor-adatok eléréséhez: [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](authorize-active-directory-powershell.md). |

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755908"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018577"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
 
@@ -92,11 +92,13 @@ Ha biztos abban, hogy a TLS régebbi verzióit használó ügyfelektől érkező
 A Storage-fiók minimális TLS-verziójának konfigurálásához állítsa be a **MinimumTlsVersion** verzióját a fiókhoz. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely a Azure Resource Manager telepítési modellel lett létrehozva. További információ a Azure Resource Manager telepítési modellről: a [Storage-fiók áttekintése](storage-account-overview.md).
 
 > [!NOTE]
-> A **minimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null**.
+> A **MinimumTlsVersion** tulajdonság jelenleg csak az Azure nyilvános felhőben lévő Storage-fiókok esetében érhető el.
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
-A Azure Portalhoz tartozó Storage-fiók minimális TLS-verziójának konfigurálásához kövesse az alábbi lépéseket:
+Amikor létrehoz egy Azure Portal Storage-fiókot, a rendszer alapértelmezés szerint a TLS minimális verzióját 1,2-re állítja.
+
+Ha egy meglévő Storage-fiók minimális TLS-verzióját szeretné konfigurálni a Azure Portal, kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. Válassza ki a **konfigurációs** beállítást.
@@ -108,6 +110,8 @@ A Azure Portalhoz tartozó Storage-fiók minimális TLS-verziójának konfigurá
 
 Ha egy Storage-fiók minimális TLS-verzióját szeretné konfigurálni a PowerShell-lel, telepítse [Azure PowerShell 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) vagy újabb verziót. Ezután konfigurálja a **MinimumTLSVersion** tulajdonságot egy új vagy meglévő Storage-fiókhoz. A **MinimumTlsVersion** érvényes értékei: `TLS1_0` , `TLS1_1` és `TLS1_2` .
 
+A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva a PowerShell-lel rendelkező Storage-fiók létrehozásakor. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null**.
+
 A következő példa létrehoz egy Storage-fiókot, és beállítja a **MinimumTLSVersion** a TLS 1,1-re, majd frissíti a fiókot, és beállítja a **MinimumTLSVersion** a TLS 1,2-re. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```powershell
@@ -116,18 +120,18 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
-    -Location $location \
-    -SkuName Standard_GRS \
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
 
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.
@@ -137,6 +141,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName \
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az Azure CLI-vel rendelkező Storage-fiókok minimális TLS-verziójának konfigurálásához telepítse az Azure CLI 2.9.0 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **minimumTlsVersion** tulajdonságot egy új vagy meglévő Storage-fiókhoz. A **minimumTlsVersion** érvényes értékei: `TLS1_0` , `TLS1_1` és `TLS1_2` .
+
+A **minimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, amikor létrehoz egy Storage-fiókot az Azure CLI-vel. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null**.
 
 A következő példa létrehoz egy Storage-fiókot, és beállítja a **minimumTLSVersion** a TLS 1,1-re. Ezután frissíti a fiókot, és beállítja a **minimumTLSVersion** tulajdonságot a TLS 1,2 értékre. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -343,7 +349,7 @@ Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage
 
 Amikor egy ügyfél kérelmet küld a Storage-fióknak, az ügyfél először a Storage-fiók nyilvános végpontját hozza létre a kérések feldolgozása előtt. A TLS-verzió minimális beállítása a kapcsolatok létrehozása után van bejelölve. Ha a kérelem a TLS egy korábbi verzióját használja, mint amit a beállítás meghatároz, a kapcsolódás továbbra is sikeres lesz, de a kérelem végül sikertelen lesz. Az Azure Storage nyilvános végpontokkal kapcsolatos további információkért lásd: [erőforrás URI-szintaxisa](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Transport Layer Security (TLS) konfigurálása ügyfélalkalmazás számára](transport-layer-security-configure-client-version.md)
 - [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

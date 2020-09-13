@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533996"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017931"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -40,7 +40,7 @@ Beállíthatja, hogy az SAP SuccessFactors visszaírási alkalmazás meghatároz
 
 Ez a SuccessFactors visszaírási-alapú felhasználói üzembe helyezési megoldás ideális a következőkhöz:
 
-* Az Office 365-et használó szervezetek, amelyek az IT által felügyelt mérvadó attribútumokat (például e-mail-címet, telefonszámot, felhasználónevet) szeretnék visszaírni a SuccessFactors Employee Central szolgáltatásba.
+* A Microsoft 365t használó szervezetek, akik az informatikai részleg által felügyelt mérvadó attribútumokat (például e-mail-címet, telefonszámot, felhasználónevet) szeretnék visszaírni a SuccessFactors Employee Central szolgáltatásba.
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Az integráció SuccessFactors konfigurálása
 
@@ -310,7 +310,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 Tekintse meg az SAP SuccessFactors integrációs útmutatójának [visszaírási-forgatókönyvek című szakaszát](../app-provisioning/sap-successfactors-integration-reference.md#writeback-scenarios) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD és az SAP SuccessFactors integrációs dokumentációjának részletes bemutatása](../app-provisioning/sap-successfactors-integration-reference.md)
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

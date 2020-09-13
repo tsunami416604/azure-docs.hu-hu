@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231044"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015330"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -37,7 +37,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: jelenleg a `https://graph.windows.net/<tenant-name>/reports/` Endpoint API-kat használva lehívhatják az Azure ad biztonsági jelentéseit (az észlelések bizonyos típusai, például a kiszivárgott hitelesítő adatok vagy a névtelen IP-címekről való bejelentkezések) a jelentéskészítési rendszerbe programozott módon. Mire érdemes váltani?**
 
-**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/howto-identity-protection-graph-api.md)   -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](/graph/api/resources/identityriskevent?view=graph-rest-beta)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
+**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/howto-identity-protection-graph-api.md)   -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](/graph/api/resources/identityriskevent?view=graph-rest-beta)azonban a Microsoft Graph-t használja, amely az ilyen API-k Microsoft-szabványa Microsoft 365 vagy az Azure ad. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
 
 ---
 
@@ -81,15 +81,15 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 ---
 
-**K: beszerezhető az Office 365-tevékenység naplójának adatai a Azure Portalon keresztül?**
+**K: lekérhetek Microsoft 365 tevékenység naplójának adatait a Azure Portalon keresztül?**
 
-**A:** Annak ellenére, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, ha az Office 365-tevékenység naplóinak teljes nézetét szeretné megtekinteni, lépjen a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) az Office 365-tevékenység naplójának adatainak beszerzéséhez.
+**A:** Annak ellenére, hogy Microsoft 365 tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, ha a Microsoft 365 tevékenység naplóinak teljes nézetét szeretné megtekinteni, lépjen a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) az Office 365-tevékenység naplózási adatainak beszerzéséhez.
 
 ---
 
-**K: milyen API-kat használok az Office 365-tevékenység naplóira vonatkozó információk lekéréséhez?**
+**K: milyen API-kat használok a Microsoft 365 tevékenységi naplókra vonatkozó információk lekéréséhez?**
 
-**A:** Az [office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) -k használatával érheti el az Office 365-tevékenységek naplóit egy API-n keresztül.
+**A:** A [Microsoft 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview) -k használatával érheti el az Microsoft 365 tevékenység naplóit egy API-n keresztül.
 
 ---
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526830"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017472"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből munkanapokra
 Ennek az oktatóanyagnak a célja, hogy megmutassa az attribútumok Azure AD-ből munkanapokra történő visszaírási elvégzendő lépéseket. A munkanap visszaírási kiépítési alkalmazás támogatja az értékek hozzárendelését a következő munkanap-attribútumokhoz:
@@ -34,7 +34,7 @@ Miután beállította a bejövő üzembe helyezési integrációt a [Munkanapokr
 
 Ez a munkanap visszaírási felhasználói üzembe helyezési megoldás ideális a következőkhöz:
 
-* Az Office 365-et használó szervezetek, amelyek az informatikai részleg által kezelt mérvadó attribútumokat (például e-mail-címet, felhasználónevet és telefonszámot) szeretnék visszaírási a munkanapokra
+* A Microsoft 365t használó szervezetek, akik az informatikai részleg által felügyelt mérvadó attribútumokat (például e-mail-címet, felhasználónevet és telefonszámot) szeretnék visszaírási a munkanapokra
 
 ## <a name="configure-integration-system-user-in-workday"></a>Integrációs rendszer felhasználójának konfigurálása munkanapokon
 
@@ -155,7 +155,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
      > [!div class="mx-imgBorder"]
      > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)

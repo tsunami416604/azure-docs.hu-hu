@@ -3,12 +3,12 @@ title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050811"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019733"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
@@ -65,7 +65,7 @@ A forgatókönyvek a riasztások aktiválásakor automatikus mérséklésre [has
 
 [Azure monitor munkafüzetek az Azure sentinelben](../../sentinel/overview.md#workbooks) a csatlakoztatott adatforrásokból származó adatok vizualizációját és figyelését teszik lehetővé az elemzések megszerzéséhez. Használhatja az Azure Sentinel beépített munkafüzet-sablonjait, vagy létrehozhat egyéni munkafüzeteket a forgatókönyvekhez.
 
-A felügyeleti bérlőben munkafüzetek helyezhetők üzembe, és méretezhető irányítópultokat hozhat létre, amelyekkel figyelheti és lekérdezheti az ügyfelek bérlői közötti adatait. További információ: több [munkaterület figyelése](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). Vegye figyelembe, hogy egyes funkciók [nem támogatottak több munkaterületen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
+A felügyeleti bérlőben munkafüzetek helyezhetők üzembe, és méretezhető irányítópultokat hozhat létre, amelyekkel figyelheti és lekérdezheti az ügyfelek bérlői közötti adatait. További információ: több [munkaterület figyelése](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). 
 
 A munkafüzeteket közvetlenül is üzembe helyezheti egy egyéni bérlőben, amelyet az adott ügyfélhez tartozó forgatókönyvek esetében kezel.
 
@@ -76,8 +76,6 @@ Hozzon létre és mentsen Log Analytics-lekérdezéseket a fenyegetés észlelé
 ## <a name="use-automation-for-cross-workspace-management"></a>Automatizálás használata a munkaterületek közötti felügyelethez
 
 Az Automation használatával több Azure Sentinel-munkaterület is kezelhető, és a [vadászati lekérdezések](../../sentinel/hunting.md), a forgatókönyvek és a munkafüzetek is konfigurálhatók. További információ: a [munkaterület-kezelés automatizálással](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
-
-Vegye figyelembe, hogy egyes funkciók [jelenleg nem támogatottak több munkaterületen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
 
 ## <a name="manage-security-of-office-365-environments"></a>Office 365-környezetek biztonságának kezelése
 

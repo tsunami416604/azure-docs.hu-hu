@@ -300,7 +300,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
         RightSide.deviceid2 is NULL
     ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. A Stream Analytics-feladatok elindításához válassza az **Áttekintés**, majd a **Start** **, majd a**Start lehetőséget, majd **indítsa**el a következőt:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
