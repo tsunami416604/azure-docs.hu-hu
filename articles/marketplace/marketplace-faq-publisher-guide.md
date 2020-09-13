@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007757"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032112"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -22,7 +22,7 @@ Ez a cikk a kereskedelmi piactérsel kapcsolatos gyakori kérdésekre ad válasz
 
 ### <a name="what-is-the-microsoft-commercial-marketplace"></a>Mi a Microsoft kereskedelmi piactér?
 
-A kereskedelmi piactér a partnereink által készített megoldásokkal köti össze az üzleti és kormányzati szerveket. Partnereink az ajánlatokat a partner Centerben hozhatják létre és kezelhetik, és az ügyfelek a terméken belüli tapasztalatokkal, például a Microsoft AppSource, az Azure piactéren, a felhőalapú megoldás-szolgáltatói programban és az értékesítési csapatokon keresztül vásárolhatnak és vásárolhatnak megoldásokat.
+A kereskedelmi piactér a partnereink által készített megoldásokkal köti össze az üzleti és kormányzati szerveket. Partnereink az ajánlatokat a partner Centerben hozhatják létre és kezelhetik, és az ügyfelek a terméken belüli tapasztalatokkal, például a Microsoft AppSource, az Azure piactéren, a felhőalapú megoldás-szolgáltatói programban, valamint az értékesítési csapatokon keresztül vásárolhatnak és vásárolhatnak megoldásokat a közös értékesítés keretében.
 
 További információért látogasson el a [Microsoft kereskedelmi Piactéri központ webhelyére](https://partner.microsoft.com/asset/collection/commercial-marketplace#/).
 
@@ -42,7 +42,7 @@ A kereskedelmi piactér 141 régiókban érhető el, a tervek alapján.
 
 Számos országban/régióban kezeljük a fizetési adót, és hozzáférést biztosítunk a globális csatorna-hálózatokhoz. Az ügyfél Microsoft-szerződése vagy Nagyvállalati Szerződés segítségével új vásárlási kapcsolat létrehozása nélkül is értékesítheti a szervezeteket.
 
-További információért tekintse meg a videót a [piactéren való értékesítésről](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
+További információ: a [Microsoft kereskedelmi piactér központja](https://aka.ms/commercialmarketplacehub).
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Díjköteles a Microsoft kereskedelmi piactér?
 
@@ -67,7 +67,7 @@ Az ügyfelek által a kereskedelmi Marketplace-ajánlat használatának módja a
 
 A regisztráció és a kiadói szerződés elfogadását követően hozzáférhet a kereskedelmi piactér oldalához a partner Centerben. Itt hozhat létre és kezelhet ajánlatokat, és itt tekintheti meg az elemzési jelentéseket. Microsoft 365 alkalmazások esetében az Office áruház programját is aktiválni kell a partner centeren belül.
 
-További információ: [Üdvözöljük a kereskedelmi piactéren](index.yml) , és az [Office 365-bővítményt a Microsoft kereskedelmi Piactéren keresztül teheti meg](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+További információ: [Üdvözöljük a kereskedelmi piactéren](index.yml) , és [a Microsoft kereskedelmi Piactéren keresztül pénzt nyújt a Microsoft 365-bővítményről](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Hogyan támogatási támogatást kaphat a kereskedelmi piactéren?
 
@@ -329,7 +329,7 @@ A következő erőforrásokat javasoljuk:
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Hol tudhatok meg többet a Microsoft felügyeleti központról?
 
-A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [külső gyártótól származó alkalmazás-előfizetések kezelése a szervezet](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide)számára.
+A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [külső gyártótól származó alkalmazás-előfizetések kezelése a szervezet](/microsoft-365/commerce/manage-saas-apps)számára.
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Hol tudhatok meg többet az Azure-számlázásról?
 

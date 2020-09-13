@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3924e609091f4d0975901024f20db74efb6aac5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606895"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032707"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>Vezető felügyelet a kereskedelmi piactéren
 
 Az ügyfelek a jó üzleti tevékenység központja. A mai termék beszerzésének átalakításakor a marketingeseknek az ügyfelek közvetlen csatlakoztatására és a kapcsolatok létrehozására kell összpontosítaniuk. A kiváló minőségű érdeklődők létrehozásának oka az értékesítési ciklus létfontosságú eszköze. Az ajánlatnak a [partner Centerben](https://partner.microsoft.com/)való listázása után olyan eszközök is elérhetők, amelyekkel programozott módon kaphatják meg az ügyfelek kapcsolattartási adatait, miután az ügyfél kifejezte érdeklődését, vagy üzembe helyezi a terméket a piactéren. 
 
-## <a name="what-are-leads-in-the-marketplace"></a>Mik azok az érdeklődők a piactéren?
+## <a name="what-are-leads-in-the-commercial-marketplace"></a>Mik azok az érdeklődők a kereskedelmi piactéren?
 
-Az érdeklődők olyan ügyfelektől származnak, akik érdeklik, vagy üzembe helyezik termékeiket a piactéren. Függetlenül attól, hogy a termék szerepel-e az Azure Marketplace-en vagy a AppSource-on, akkor is fogadhat érdeklődőket az ügyfelektől, ha a CRM-ből a partner Centerben lévő listára (k) megfelelően beállította. 
+Az érdeklődők olyan ügyfelektől származnak, akik érdeklődnek, vagy a kereskedelmi piactéren helyezik üzembe termékeiket. Ha a CRM-et a (z) partner Centerben található listával összekötötte, akkor az Azure Marketplace-en és a AppSource-ügyfeleken is fogadhat érdeklődőket.
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>A CRM rendszer összekapcsolásának módja a partneri központtal
 
-Az érdeklődők beszerzésének megkezdéséhez az ólom-felügyeleti összekötő a partner Centerben úgy lett kialakítva, hogy könnyen csatlakoztatható legyen a CRM-adatokhoz az elérhető CRM-rendszer listájához. Mostantól könnyedén kihasználhatja a piactér által generált érdeklődőket, és nem kell egy külső rendszerrel integrálni a jelentős mérnöki erőfeszítéseket.
+A partner Centerben a vezető felügyeleti összekötő úgy van kialakítva, hogy könnyen csatlakoztatható legyen a CRM-adatokhoz az elérhető CRM-rendszer listájához. Mostantól könnyedén kihasználhatja a piactér által generált érdeklődőket, és nem kell egy külső rendszerrel integrálni a jelentős mérnöki erőfeszítéseket.
 
 Az alábbiakban részletes útmutatást talál az egyes lehetséges érdeklődői célok összekapcsolásáról:
 
@@ -38,25 +38,25 @@ Az alábbiakban részletes útmutatást talál az egyes lehetséges érdeklődő
 
 **Https-végpont** – lásd: az [érdeklődők felügyeletének konfigurálása HTTPS-végponttal](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md) , útmutatás a https-végpont beállításához az érdeklődők beszerzéséhez.
 
-Miután megfelelően konfigurálta az érdeklődői célhelyet, és az ajánlaton közzétette a találatot, a rendszer érvényesíti a kapcsolatokat, és elküld egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot. Fontos, hogy az érdeklődői beállítások naprakészek maradjanak, hogy ne veszítse el az érdeklődőket, ezért ügyeljen arra, hogy frissítse ezeket a kapcsolatokat, ha valami módosult a végén.
+Ha megfelelően konfigurálta az érdeklődő célját, és az ajánlat közzétételére kéri, a rendszer érvényesíti a kapcsolódást, és elküld egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot. Fontos, hogy az érdeklődői beállítások naprakészek maradjanak, hogy ne veszítse el az érdeklődőket, ezért ügyeljen arra, hogy frissítse ezeket a kapcsolatokat, ha valami módosult a végén.
 
 ### <a name="what-are-the-next-steps"></a>Mi a következő lépés?
 
-A technikai beállítás bevezetését követően érdemes beépíteni ezeket az érdeklődőket az aktuális értékesítési & marketing stratégiába és működési folyamataiba. Fontos, hogy jobban megértsük a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne visszajelzést küldeni, és javaslatokat tesz arra, hogy az értékesítési csapata még nagyobb sikert biztosítson a piactéren.
+A technikai beállítás bevezetését követően érdemes beépíteni ezeket az érdeklődőket az aktuális értékesítési & marketing stratégiába és működési folyamataiba. Fontos, hogy tisztában legyenek a teljes értékesítési folyamattal, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne visszajelzést küldeni, és javaslatokat tesz arra, hogy az értékesítési csapat sikeresebb legyen a kereskedelmi piactéren.
 
 ## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Gyakori vezető konfigurációs hibák a partner Centerben való közzététel során
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be. Keresse meg a Dynamics CRM-fiók beállításait. LastCRMError: nem lehet bejelentkezni a Dynamics CRM-be, LastCRMException:** 
 
-> Ha a O365-hitelesítés be van jelölve, ellenőrizze, hogy érvényes-e a felhasználói fiók és a jelszó. Ha a HRE ki van jelölve, ellenőrizze, hogy a bérlő azonosítója, az alkalmazás azonosítója és az alkalmazás titkos kulcsa megegyezik-e a HRE beállított értékkel. Kövesse az [alábbi utasításokat.](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) Ha a fiók felhasználóneve/jelszava érvényes, ellenőrizze, hogy rendelkezik-e hozzáféréssel a Dynamics 365-hez, és van-e hozzárendelve licence (11-15. lépés, ha az Office-felhasználó használata esetén Azure Active Directory vagy biztonsági beállításokat használ). 
+> Ha Microsoft 365 hitelesítés lett kiválasztva, ellenőrizze, hogy érvényes-e a felhasználói fiók és a jelszó. Ha Azure Active Directory lett kiválasztva, ellenőrizze, hogy a bérlő azonosítója, az alkalmazás azonosítója és az alkalmazás titkos kulcsa megegyezik-e a Azure Active Directory beállításával. Kövesse az [alábbi utasításokat.](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) Ha a fiók felhasználóneve/jelszava érvényes, ellenőrizze, hogy rendelkezik-e hozzáféréssel a Dynamics 365-hez, és van-e hozzárendelve licence (11-15. lépés, ha az Office-felhasználó használata esetén Azure Active Directory vagy biztonsági beállításokat használ). 
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be. A felhasználó nem rendelkezik a leadsourcecode attribútum létrehozásához szükséges engedélyekkel az érdeklődő entitásban.** 
 
-> Az alkalmazás/felhasználó hiányzó biztonsági szerepkör (ek) Microsoft Marketplace vezető író számára. Kövesse az 11-15-es lépéseket, ha Azure Active Directory vagy biztonsági beállításokat használ, ha itt az Office-felhasználó [van](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)használatban.
+> Az alkalmazás/felhasználó hiányzó biztonsági szerepkör (ek) Microsoft Marketplace vezető író számára. Kövesse az 11-15-es lépéseket, ha Azure Active Directory vagy biztonsági beállításokat használ, ha [itt](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)az Office-felhasználó használata szükséges.
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: a bérlő nem található. Ez a példány akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések.**  
 
-> A vezető felügyeleti szakaszban megadott címtár-azonosító nem érvényes könyvtár. Szerezze be a címtár-azonosítót a 2. lépésben (Azure Active Directory alatt található utasítások [alapján).](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)
+> A vezető felügyeleti szakaszban megadott címtár-azonosító nem érvényes könyvtár. A könyvtár azonosítóját a 2. lépésben ( [Azure Active Directory) található](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)utasítások alapján szerezheti be.
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: SecLib:: a RetrievePrivilegeForUser sikertelen – egyetlen szerepkör sincs hozzárendelve a felhasználóhoz.**  
 
@@ -76,7 +76,7 @@ A technikai beállítás bevezetését követően érdemes beépíteni ezeket az
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: a kérelem csatornájának időkorlátja lejárt, miközben a 00:02:00 utáni választ várt. Növelje meg a híváshoz átadott időtúllépési értéket a kérelemhez, vagy növelje a SendTimeout értékét a kötésben. Előfordulhat, hogy a művelethez megadott idő egy hosszú időtúllépés részét képezi.**  
 
-> Megoldás: Jelentkezzen be a partner központba, ellenőrizze a kirakat részleteit >>  >> URL-címet, és ellenőrizze, hogy érvényes-e a dinamikus CRM-példány.
+> Megoldás: Jelentkezzen be a partner központba, és ellenőrizze, hogy az ajánlat telepítője >> ügyfél >> URL-címét, ellenőrizze, hogy érvényes-e a dinamikus CRM-példány.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -139,7 +139,7 @@ Az egyes érdeklődők a kiválasztott érdeklődői célhely mezőiben átadott
 - *Műveletek*
   - "INS" – a telepítésre áll. Ez az Azure Marketplace-en vagy AppSource érhető el, amikor egy ügyfél megkeresi a gombot a termék megvásárlásához.
   - "PLT" – a partner által vezetett próbaverzióra áll. Ez a AppSource akkor fordul elő, amikor egy ügyfél eléri a kapcsolatfelvétel gombot.
-  - "DNC –" – a (z) "nem" kapcsolatra vonatkozó. Ez a AppSource, amikor az alkalmazás oldalán megjelenő partnert kérik a kapcsolatfelvételre. Megosztjuk a vezetőket, hogy az ügyfél több mint az alkalmazásban szerepel, de nem kell kapcsolatba lépnie.
+  - "DNC –" – a (z) "nem" kapcsolatra vonatkozó. Ez a AppSource, amikor az alkalmazás oldalán megjelenő partnert kérik a kapcsolatfelvételre. Megosztjuk a fejét, hogy az ügyfél az alkalmazáson keresztül szerepel, de nem kell kapcsolatba lépnie.
   - "Létrehozás" – ez csak Azure Portalon belül történik, és minden alkalommal, amikor egy ügyfél megvásárolja az ajánlatát a fiókjához.
   - "StartTestDrive" – csak tesztelési meghajtókra szolgál, és minden alkalommal, amikor egy ügyfél elindítja a tesztelési meghajtót.
 
@@ -190,4 +190,4 @@ Adatvédelmi szabályzatok miatt a nem biztonságos e-mailen keresztül nem oszt
 
 **Beállítottam-e az Azure Storage-t (BLOB/Table) a vezető célként, Mennyibe kerül?** 
 
-A Lead Gen-adat alacsony (<1 GB szinte minden közzétevőhöz). A költségek a kapott érdeklődők számától függenek, ha az 1 000-es érdeklődők egy hónapon belül érkeznek, a költségek körülbelül 50 centet vesznek igénybe. 
+Az ólom-létrehozási adat alacsony (<1 GB szinte minden közzétevőhöz). A költségek a kapott érdeklődők számától függenek, ha az 1 000-es érdeklődők egy hónapon belül érkeznek, a költségek körülbelül 50 centet vesznek igénybe. 

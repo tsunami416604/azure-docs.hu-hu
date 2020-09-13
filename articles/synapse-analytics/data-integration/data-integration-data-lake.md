@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8307f01e690536a71d98d5d5ca99f8f7a77a433f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cc5c72c2d0db7c17fdbc29e7fb815f1d06134730
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383919"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033217"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Adatbevitel a Azure Data Lake Storage Gen2ba 
 
@@ -31,24 +31,24 @@ Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adato
 
 1. Nyissa meg az Azure szinapszis Analytics UX eszközt, és lépjen a **kezelés** lapra.
 1. A **külső kapcsolatok**területen válassza a **társított szolgáltatások**elemet.
-1. Társított szolgáltatás hozzáadásához kattintson az **új**elemre.
-1. Válassza ki a Azure Data Lake Storage Gen2 csempét a listából, majd kattintson a **Folytatás**gombra.
-1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. A hitelesítő adatok helyességének ellenőrzéséhez kattintson a kapcsolódás tesztelése elemre. 
-1. Ha elkészült, kattintson a **Létrehozás** gombra.
+1. Társított szolgáltatás hozzáadásához válassza az **új**lehetőséget.
+1. Válassza ki a listából a Azure Data Lake Storage Gen2 csempét, és válassza a **Folytatás**lehetőséget.
+1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. Válassza a kapcsolódás tesztelése lehetőséget a hitelesítő adatok helyességének ellenőrzéséhez. 
+1. Miután végzett, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
 A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot hoz létre, amely a 2. generációs Azure Data Lakeból származó adatok SQL-készletbe való betöltését teszi elérhetővé.
 
-1. Lépjen a **hangszerelés** lapra. kattintson a folyamatok fejléc melletti plusz ikonra, és válassza a **folyamat**lehetőséget.
+1. Lépjen a **hangszerelés** lapra. Válassza a folyamatok fejléc melletti plusz ikont, és válassza a **folyamat**lehetőséget.
 1. Az **áthelyezés és átalakítás** területen a tevékenységek panelen húzza az **Adatmásolás** elemet a folyamat vászonra.
-1. Kattintson a másolási tevékenységre, és válassza a **forrás** fület. az **új** elemre kattintva hozzon létre egy új forrás-adatkészletet.
-1. Válassza a Azure Data Lake Storage Gen2 lehetőséget az adattárban, majd kattintson a Folytatás gombra.
-1. Válassza a DelimitedText formátumot, és kattintson a Folytatás gombra.
+1. Válassza ki a másolási tevékenységet, és lépjen a **forrás** lapra. Az **új** elemre kattintva hozzon létre egy új forrás-adatkészletet.
+1. Válassza a Azure Data Lake Storage Gen2 lehetőséget az adattárban, majd válassza a Folytatás lehetőséget.
+1. Válassza a DelimitedText formátumot, és válassza a Folytatás lehetőséget.
 1. A készlet tulajdonságai ablaktáblán válassza ki a létrehozott ADLS társított szolgáltatást. Adja meg a forrásadatok fájljának elérési útját, és adja meg, hogy az első sorban van-e fejléc. Importálhatja a sémát a file Store-ból vagy egy mintából. Ha elkészült, kattintson az OK gombra.
-1. Lépjen a fogadó **lapra.** új fogadó adatkészlet létrehozásához kattintson az **új** elemre.
-1. Válassza ki Azure Data Lake Storage Gen2, és kattintson a Continue (folytatás) gombra.
-1. Válassza a DelimitedText formátumot, és kattintson a Folytatás gombra.
+1. Nyissa meg a **fogadó lapot.** Új fogadó adatkészlet létrehozásához válassza az **új** lehetőséget.
+1. Válassza ki Azure Data Lake Storage Gen2, és válassza a Folytatás lehetőséget.
+1. Válassza a DelimitedText formátumot, és válassza a Folytatás lehetőséget.
 1. A készlet tulajdonságai ablaktáblán válassza ki a létrehozott ADLS társított szolgáltatást. Itt adhatja meg annak a mappának az elérési útját, ahová az adatírást szeretné írni. Ha elkészült, kattintson az OK gombra.
 
 ## <a name="debug-and-publish-pipeline"></a>Folyamat hibakeresése és közzététele

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440932"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032809"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -183,7 +183,7 @@ Androidon a szülő tevékenységet is meg kell adnia a használatával, amint a
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive` egy adott opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ.
+A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive` egy adott opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ. Azt is megteheti, hogy kihagyja a választható szülő ablak paramétert egy ablak létrehozásához, ha nem szeretné szabályozni, hogy a bejelentkezési párbeszédpanel megjelenjen-e a képernyőn. Ez a parancssoron alapuló, a más háttérrendszer-szolgáltatásokra irányuló hívások átadására, valamint a felhasználói beavatkozáshoz nem szükséges Windows-alapú alkalmazásokra alkalmazható. 
 
 ```csharp
 // net45

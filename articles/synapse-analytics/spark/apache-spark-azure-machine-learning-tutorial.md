@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: 57830ae14c5d6653f6a2225924160fcb75646c12
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d4df4ea96f8dafa2f0eb26e27fcc08ab4ec89003
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590655"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033574"
 ---
 # <a name="run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kísérletek futtatása az Azure automatizált ML-vel és Apache Spark
 
@@ -341,6 +341,6 @@ Végül az iterációk eredményeinek eléréséhez navigáljon a Azure Machine 
 
 ![A pénzmosás-munkaterület képernyőképe.](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-aml-workspace.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark MLlib-oktatóanyag](./apache-spark-machine-learning-mllib-notebook.md)

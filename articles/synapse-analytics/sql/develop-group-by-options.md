@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429043"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032299"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>CSOPORTOSÍTÁSi lehetőségek a szinapszis SQL-ben
 A szinapszis SQL lehetővé teszi a megoldások fejlesztését különböző CSOPORTOSÍTÁSi beállításokkal. 
@@ -57,7 +57,7 @@ GROUP BY ROLLUP (
 A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
-* Ország
+* Country
 * Végösszeg
 
 Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:
@@ -186,6 +186,6 @@ ORDER BY 1,2,3
 
 A kód szakaszokra bontásával és a hurkos szerkezet létrehozásával a kód hatékonyabban kezelhető és karbantartható lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [fejlesztés áttekintése](develop-overview.md).

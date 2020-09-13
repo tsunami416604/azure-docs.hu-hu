@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484867"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032384"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
@@ -45,7 +45,7 @@ A következő táblázat a Microsoft AppSource és az Azure piactéren elérhet�
 
 &#42; SaaS-alkalmazás Transact-ajánlatai Microsoft AppSource jelenleg csak bankkártyával rendelkeznek.
 
-A &#42;&#42; Microsoft 365 ajánlatok díjmentesen telepíthetők, és az SaaS-ajánlaton keresztül licencelési szolgáltatásként is megadhatók. További információkért tekintse [meg az Office 365-bővítmények a Microsoft kereskedelmi piactéren keresztüli bevételeit ismertető részt](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+A &#42;&#42; Microsoft 365 ajánlatok díjmentesen telepíthetők, és az SaaS-ajánlaton keresztül licencelési szolgáltatásként is megadhatók. További információ: a [Microsoft kereskedelmi Piactéren keresztül a Microsoft 365-bővítmény bevétele](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ## <a name="choose-a-listing-option"></a>Listaelem választása
 

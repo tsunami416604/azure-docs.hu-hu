@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400313"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033013"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -163,7 +163,17 @@ Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vag
 | Erőforrás-jogkivonat maximális lejárati ideje | Alapértelmezés szerint 24 óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
 | Token-engedélyezés maximális órajele| 15 perc |
 
-Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A szolgáltatás legfeljebb egy trigger előtti és egy trigger utáni műveletet támogat. 
+Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A szolgáltatás legfeljebb egy trigger előtti és egy trigger utáni műveletet támogat.
+
+## <a name="metadata-request-limits"></a>Metaadat-kérelmek korlátai
+
+Azure Cosmos DB az egyes fiókok rendszermetaadatainak karbantartását. Ez a metaadatok lehetővé teszik gyűjtemények, adatbázisok, egyéb Azure Cosmos DB erőforrások és a hozzájuk tartozó konfigurációk díjmentes számbavételét.
+
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+|Maximális gyűjtemény-létrehozási arány RER perc| 5|
+|Adatbázis maximális létrehozási sebessége percenként|   5|
+|Maximális kiosztott átviteli sebesség percenkénti frissítése| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Az autoscale kiépített átviteli sebességre vonatkozó korlátok
 

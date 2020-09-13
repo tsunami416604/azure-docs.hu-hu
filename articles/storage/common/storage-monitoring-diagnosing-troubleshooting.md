@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462003"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031483"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,7 +220,7 @@ A .NET-hez készült Storage ügyféloldali kódtára lehetővé teszi az alkalm
 Az ügyfél és a kiszolgáló közötti forgalmat rögzítheti az ügyfél és a kiszolgáló közötti adatcsere és a mögöttes hálózati feltételek részletes adatainak biztosításához. Hasznos hálózati naplózási eszközök a következők:
 
 * A [Hegedűs](https://www.telerik.com/fiddler) egy ingyenes webes hibakeresési proxy, amely lehetővé teszi a http-és HTTPS-kérések és-válaszüzenetek fejlécének és hasznos adatainak vizsgálatát. További információ: [1. függelék: a Hegedűs használata a http-és HTTPS-forgalom rögzítéséhez](#appendix-1).
-* A [Microsoft Hálózatfigyelő (netmon)](https://www.microsoft.com/download/details.aspx?id=4865) és a [Wireshark](https://www.wireshark.org/) olyan ingyenes hálózati protokoll-elemzők, amelyek lehetővé teszik a hálózati protokollok széles körének részletes csomagjainak megtekintését. A Wireshark kapcsolatos további információkért lásd a "[2. függelék: a hálózati forgalom rögzítése a Wireshark használatával](#appendix-2)" című szakaszt.
+* A [Microsoft Hálózatfigyelő (netmon)](https://cnet-downloads.com/network-monitor) és a [Wireshark](https://www.wireshark.org/) olyan ingyenes hálózati protokoll-elemzők, amelyek lehetővé teszik a hálózati protokollok széles körének részletes csomagjainak megtekintését. A Wireshark kapcsolatos további információkért lásd a "[2. függelék: a hálózati forgalom rögzítése a Wireshark használatával](#appendix-2)" című szakaszt.
 * A Microsoft Message Analyzer a Microsoft egyik eszköze, amely felülírja a netmon, és a hálózati csomagok adatainak rögzítése mellett segít megtekinteni és elemezni a más eszközökről rögzített naplózási adatok megtekintését és elemzését. További információért lásd a "[3. függelék: a hálózati forgalom rögzítése a Microsoft Message Analyzer használatával](#appendix-3)" című szakaszt.
 * Ha alapszintű kapcsolati tesztet szeretne végezni annak ellenőrzéséhez, hogy az ügyfélszámítógép képes-e csatlakozni az Azure Storage szolgáltatáshoz a hálózaton keresztül, ezt a standard **ping** eszközzel nem végezheti el az ügyfélen. A [ **tcping** eszközzel](https://www.elifulkerson.com/projects/tcping.php) azonban ellenőrizheti a kapcsolatot.
 
@@ -346,7 +346,7 @@ Az [Azure Portal](https://portal.azure.com) monitorozási eszköz alább láthat
 
 ![A Azure Portal illusztrációja, amely egy példát mutat be, ahol a AverageE2ELatency jelentősen nagyobb, mint a Averageserverlatency értéket mutatnak.][4]
 
-A Storage szolgáltatás csak a sikeres kérések metrikai **AverageE2ELatency** számítja ki, és a **averageserverlatency értéket mutatnak**-től eltérően azt az időpontot is tartalmazza, amikor az ügyfél elküldi az adatokat, és nyugtát fogad a tárolási szolgáltatástól. Ezért a **AverageE2ELatency** és a **averageserverlatency értéket mutatnak** közötti különbség oka az lehet, hogy az ügyfélalkalmazás nem válaszol, vagy a hálózat feltételei miatt.
+A Storage szolgáltatás csak a sikeres kérések metrikai **AverageE2ELatency** számítja ki, és a **averageserverlatency értéket mutatnak**-től eltérően azt az időpontot is tartalmazza, amikor az ügyfél az adatok elküldését és a tárolási szolgáltatástól való nyugtát fogadja. Ezért a **AverageE2ELatency** és a **averageserverlatency értéket mutatnak** közötti különbség oka az lehet, hogy az ügyfélalkalmazás nem válaszol, vagy a hálózat feltételei miatt.
 
 > [!NOTE]
 > A tárolási naplózási napló adataiban a **E2ELatency** és a **ServerLatency** is megtekintheti az egyes tárolási műveletekhez.
@@ -409,7 +409,7 @@ Ha késlelteti az alkalmazás egy várólistához való hozzáadását, valamint
 
 * Győződjön meg arról, hogy az alkalmazás sikeresen hozzáadja az üzeneteket a várólistához. Győződjön meg arról, hogy az alkalmazás nem próbálkozik újra többször a **AddMessage** metódussal a sikeres művelet előtt. A Storage ügyféloldali kódtár naplóiban megjelennek a tárolási műveletek ismételt újrapróbálkozásai.
 * Ellenőrizze, hogy a feldolgozói szerepkör nem rendelkezik-e az üzenetet a várólistához, valamint a várólistából beolvasott üzenetet olvasó feldolgozói szerepkörhöz, amely úgy tűnik, mintha a feldolgozás késése van.
-* Ellenőrizze, hogy a várólista üzeneteit olvasó feldolgozói szerepkör meghibásodik-e. Ha egy üzenetsor-ügyfél meghívja a **GetMessage** metódust, de nem válaszol egy nyugtára, az üzenet mindaddig láthatatlan marad a várólistán, amíg a **invisibilityTimeout** időszak le nem jár. Ezen a ponton az üzenet újbóli feldolgozásra válik elérhetővé.
+* Ellenőrizze, hogy a várólista üzeneteit olvasó feldolgozói szerepkör meghibásodik-e. Ha egy üzenetsor-ügyfél meghívja a **GetMessage** metódust, de nem válaszol a visszaigazolásra, az üzenet mindaddig láthatatlan marad a várólistán, amíg lejár a **invisibilityTimeout** időszak. Ezen a ponton az üzenet újbóli feldolgozásra válik elérhetővé.
 * Ellenőrizze, hogy a várólista hossza növekszik-e az idő múlásával. Ez akkor fordulhat elő, ha nem áll rendelkezésre elegendő feldolgozója ahhoz, hogy feldolgozzák az összes olyan üzenetet, amelyet a többi alkalmazott a várólistára helyez. Tekintse meg a metrikákat is, és ellenőrizze, hogy a törlési kérések sikertelenek-e, és hogy a várólistán lévő üzenetek száma megtörténjen-e az üzenetekben, ami azt jelzi, hogy ismételt sikertelen
 * Vizsgálja meg a tárolási naplózási naplókat minden olyan üzenetsor-művelet esetében, amely a vártnál nagyobb **E2ELatency** és **ServerLatency** értékkel rendelkezik a szokásosnál hosszabb ideig.
 
@@ -617,7 +617,7 @@ Az ügyfél kivétel részletei közé tartozik a kérelem azonosítója (7e84f1
 
 A kiszolgálóoldali napló egy másik, ugyanazzal az **ügyfél-kérelmi azonosító** értékkel (813ea74f...) rendelkező bejegyzést is tartalmaz egy sikeres törlési művelethez ugyanahhoz az entitáshoz, és ugyanabból az ügyfélből. Ez a sikeres törlési művelet nagyon rövid idő alatt zajlott a sikertelen törlési kérelem előtt.
 
-Ennek a forgatókönyvnek a legvalószínűbb oka az, hogy az ügyfél törlési kérelmet küld az entitásnak a Table szolgáltatásnak, amely sikeres volt, de nem kapott nyugtát a kiszolgálótól (például egy ideiglenes hálózati probléma miatt). Az ügyfél ezután automatikusan újrapróbálkozik a művelettel (ugyanazzal az **ügyfél-kérelem-azonosítóval**), és az újrapróbálkozás sikertelen volt, mert az entitás már törölve lett.
+Ennek a forgatókönyvnek a legvalószínűbb oka az, hogy az ügyfél törlési kérelmet küld az entitásnak a Table szolgáltatásnak, amely sikeres volt, de nem kapott nyugtát a kiszolgálóról (például egy ideiglenes hálózati probléma miatt). Az ügyfél ezután automatikusan újrapróbálkozik a művelettel (ugyanazzal az **ügyfél-kérelem-azonosítóval**), és az újrapróbálkozás sikertelen volt, mert az entitás már törölve lett.
 
 Ha ez a probléma gyakran előfordul, vizsgálja meg, hogy az ügyfél miért nem tud nyugtákat fogadni a Table szolgáltatástól. Ha a probléma időnként időszakos, akkor a "HTTP (404) nem található" hibaüzenetet kell felhasználnia, és be kell jelentkeznie az ügyfélbe, de az ügyfél továbbra is elérhetővé válik.
 

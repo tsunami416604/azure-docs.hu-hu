@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a426a579fa56fca880eb9689adc2aeb7a21407d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303160"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033489"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön (klasszikus szerkesztő)
 
@@ -86,7 +86,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
 
    * Ha a Windows 1809-tárolók esetében szeretné felépíteni a modulokat a platform amd64-ben, akkor a [Windowsban saját üzemeltetésű ügynököt kell beállítania](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-   * Ha a modulokat a platform arm32v7 vagy a arm64 for Linux-tárolók számára szeretné felépíteni, a saját üzemeltetésű [ügynököt Linux rendszeren kell beállítania](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-continuous-integration-continuous-deployment-pipeline-with-arm-agent/).
+   * Ha a modulokat a platform arm32v7 vagy a arm64 for Linux-tárolók számára szeretné felépíteni, a saját üzemeltetésű [ügynököt Linux rendszeren kell beállítania](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent).
 
     ![Build-ügynök specifikációjának konfigurálása](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
 

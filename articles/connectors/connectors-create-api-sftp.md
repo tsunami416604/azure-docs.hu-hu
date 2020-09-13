@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
-ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651417"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033302"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése Azure Logic Apps
 
@@ -114,6 +114,10 @@ Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, amikor e
 ### <a name="sftp-action-get-content"></a>SFTP-művelet: tartalom lekérése
 
 Ez a művelet lekérdezi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Így például felveheti az triggert az előző példából, és egy olyan feltételt, amelynek meg kell felelnie a fájl tartalmának. Ha a feltétel igaz, akkor a tartalmat lekérdező művelet futtatható.
+
+## <a name="connector-reference"></a>Összekötő-referencia
+
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/azure/data-factory/connector-sftp).
 
 ## <a name="next-steps"></a>Következő lépések
 

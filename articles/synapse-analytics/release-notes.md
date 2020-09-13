@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8212af727a47ab05936c8b59c781cd49c5b0ba6
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: f2050bf671af35df4faec8b0b1d53f4c10a9075e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669705"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031670"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-release-notes"></a>Az Azure szinapszis Analytics (munkaterületek előzetes verzió) kibocsátási megjegyzései
 
@@ -32,7 +32,7 @@ Ez a cikk az Azure szinapszis Analytics (munkaterületek) korlátozásait és pr
   3.    Munkaterület hozzáadása szerepkörként a Storage-fiókhoz futtatásával ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}` .
   4.    Tűzfalszabály hozzáadása a futtatásával ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 ` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure szinapszis?](overview-what-is.md)
 * [Első lépések](get-started.md)

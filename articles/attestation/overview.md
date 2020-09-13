@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320596"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032996"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (előzetes verzió)
 
@@ -85,7 +85,7 @@ A két régióban üzembe helyezett fürtök normál körülmények között egy
 - A régióhoz tartozó [Azure Traffic Manager](../traffic-manager/index.yml) felismeri az állapot-mintavételt, és átváltja a végpontot a párosított régióra.
 - A meglévő kapcsolatok nem fognak működni, és belső kiszolgálóhiba-vagy időtúllépési problémákat fognak kapni
 - A vezérlési sík összes művelete le lesz tiltva. Az ügyfelek nem tudnak tanúsítvány-előállítók létrehozására és a szabályzatok frissítésére az elsődleges régióban
-- Az összes adatsík művelet, beleértve az igazolást is, továbbra is működni fog az elsődleges régióban.
+- Az összes adatsík művelet, beleértve a tanúsító hívásokat, továbbra is az elsődleges régióban fog működni
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg az [Azure igazolásának alapfogalmait](basic-concepts.md)

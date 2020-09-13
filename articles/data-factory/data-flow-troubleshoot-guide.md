@@ -1,25 +1,25 @@
 ---
-title: Az adatfolyamatok hibáinak megoldása
+title: Az adatfolyamatok leképezésének hibakeresése
 description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory az adatfolyamokkal kapcsolatos problémákat.
 services: data-factory
 ms.author: makromer
 author: kromerm
-manager: anandsub
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/08/2020
-ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.date: 09/11/2020
+ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594151"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031857"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
+# <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módszereit vizsgálja.
+Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gyakori hibaelhárítási módszereit vizsgálja.
 
 ## <a name="common-errors-and-messages"></a>Gyakori hibák és üzenetek
 
@@ -43,10 +43,10 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 ### <a name="error-code-df-executor-broadcasttimeout"></a>Hibakód: DF-végrehajtó-BroadcastTimeout
 
 - **Üzenet**: szórásos csatlakozás időtúllépési hibája, győződjön meg arról, hogy a szórásos adatfolyam 60 másodpercen belül, hibakeresési futtatások és 300 a feladat futtatásakor
-- **OK**: a szórás a hibakeresési és a 300-es mp-es alapértelmezett időkorlátot (60 mp) tartalmaz a feladatok futtatásához. Úgy tűnik, hogy a szórásra kiválasztott stream nagy mennyiségű adatmennyiséget hoz létre ezen a korláton belül.
-- **Javaslat**: a csatlakozáshoz, a létezéshez és a kereséshez tekintse meg az optimalizálás lapot az adatfolyam-transzformációk lapon. A szórás alapértelmezett beállítása az "Auto". Ha ez be van állítva, vagy ha manuálisan állítja be a bal vagy a jobb oldali szórást a "rögzített" érték alatt, akkor beállíthat nagyobb Azure Integration Runtime konfigurációt, vagy kikapcsolhatja a szórást. Az Adatáramlások legjobb teljesítményének ajánlott megközelítése, hogy a Spark az "Auto" használatával közvetítse az "automatikus", és használja a memóriára optimalizált Azure IR.
+- **Okok**: a szórás a hibakeresési futtatásokban és a 300 másodpercben, a feladatok futtatásakor alapértelmezett időkorláttal rendelkezik 60 mp. Úgy tűnik, hogy a szórásra kiválasztott stream túl nagy ahhoz, hogy az adott korláton belül adatmennyiséget lehessen létrehozni
+- **Javaslat**: a csatlakozáshoz, a létezéshez és a kereséshez tekintse meg az optimalizálás lapot az adatfolyam-transzformációk lapon. A szórás alapértelmezett beállítása az "Auto". Ha az "automatikus" beállítás be van állítva, vagy ha manuálisan állítja be a bal vagy a jobb oldali szórást a "rögzített" érték alatt, akkor beállíthat nagyobb Azure Integration Runtime konfigurációt, vagy kikapcsolhatja a szórást. Az Adatáramlások legjobb teljesítményének ajánlott megközelítése, hogy a Spark az "Auto" használatával közvetítse az "automatikus", és használja a memóriára optimalizált Azure IR.
 
-Ha hibakeresési folyamat futása során hajtja végre az adatáramlást hibakeresési teszt végrehajtása során, akkor gyakrabban futtathatja ezt az állapotot. Ennek az az oka, hogy az ADF leszabályozza a szórási időtúllépést 60 mp-re a gyorsabb hibakeresési élmény fenntartása érdekében. Ha azt szeretné, hogy a rendszer kiterjessze a kiváltott futtatások 300 mp-s időtúllépését, használja a Debug > a tevékenység-futtatókörnyezet használata lehetőséget, hogy kihasználja az adatáramlási folyamat végrehajtása tevékenységben definiált Azure IR.
+Ha hibakeresési folyamat futása során hajtja végre az adatáramlást hibakeresési teszt végrehajtása során, akkor gyakrabban futtathatja ezt az állapotot. Ennek az az oka, hogy az ADF leszabályozza a szórási időtúllépést 60 mp-re a gyorsabb hibakeresési élmény fenntartása érdekében. Ha azt szeretné, hogy a rendszer kiterjessze az aktivált Futtatás 300 másodperces időtúllépését, használja a hibakeresési > a tevékenység-futtatókörnyezet használata lehetőséget, hogy kihasználja az adatfolyam-feldolgozási folyamat végrehajtása tevékenységben definiált Azure IR.
 
 ### <a name="error-code-df-executor-conversion"></a>Hibakód: DF-végrehajtó – konverzió
 
@@ -59,6 +59,46 @@ Ha hibakeresési folyamat futása során hajtja végre az adatáramlást hibaker
 - **Üzenet**: az oszlop nevét meg kell adni a lekérdezésben, egy aliast kell beállítania, ha SQL-függvényt használ
 - **Okok**: nincs megadva oszlopnév
 - **Javaslat**: alias beállítása, ha olyan SQL-függvényt használ, mint a min ()/Max (), stb.
+
+ ### <a name="error-code-df-executor-drivererror"></a>Hibakód: DF-végrehajtó-DriverError
+- **Üzenet**: a INT96 olyan örökölt időbélyeg-típus, amelyet az ADF adatfolyam nem támogat. Érdemes lehet frissíteni az oszlop típusát a legújabb típusokra.
+- **Okok**: illesztőprogram-hiba
+- **Javaslat**: a INT96 elavult időbélyeg-típus, amelyet az ADF adatfolyam nem támogat. Érdemes lehet frissíteni az oszlop típusát a legújabb típusokra.
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Hibakód: DF-végrehajtó-BlockCountExceedsLimitError
+- **Üzenet**: a nem véglegesített blokkok száma nem haladhatja meg a 100 000 blokk maximális korlátját. Keresse meg a blob konfigurációját.
+- **Okok**: legfeljebb 100 000 nem véglegesített blokk lehet egy blobban.
+- **Javaslat**: további részletekért forduljon a Microsoft termék csapatához a probléma kapcsán
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>Hibakód: DF-végrehajtó-PartitionDirectoryError
+- **Üzenet**: a megadott forrás elérési út több particionált címtárral rendelkezik (például <Source Path> /<partíció gyökérkönyvtára 1>/a = 10/b = 20, <Source Path> /<partíció gyökérkönyvtára 2>/c = 10/d = 30) vagy particionált könyvtár más fájlokkal vagy nem particionált címtárral (például <Source Path> /<Partition Root Directory 1>/a = 10/b = 20, <Source Path> /mappa 2/file1), távolítsa el a partíció gyökérkönyvtárát a forrás elérési útról, és olvassa el külön forrás-átalakítással.
+- **OK**: a forrás elérési útja több particionált címtárral vagy particionált könyvtárral rendelkezik más fájlokkal vagy nem particionált címtárral.
+- **Javaslat**: távolítsa el a particionált gyökérkönyvtárat a forrás elérési útról, és olvassa el külön forrás-átalakítással.
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>Hibakód: DF-végrehajtó-működése OutOfMemoryError
+- **Üzenet**: a fürt kifogyott a memóriából a végrehajtás során, próbálkozzon újra egy integrációs modul használatával, amely nagyobb alapszámmal és/vagy memória-optimalizált számítási típussal rendelkezik.
+- **Okok**: a fürt elfogyott a memóriából
+- **Javaslat**: a hibakeresési fürtök fejlesztési célokra szolgálnak. Használja ki az adatok mintavételezését, a megfelelő számítási típust és méretet az adattartalom futtatásához. A legjobb teljesítmény elérése érdekében tekintse meg a [leképezési folyamat teljesítményének útmutatóját](concepts-data-flow-performance.md) a hangoláshoz.
+
+ ### <a name="error-code-df-executor-illegalargument"></a>Hibakód: DF-végrehajtó-illegalArgument
+- **Üzenet**: Ellenőrizze, hogy helyes-e a társított szolgáltatás elérési kulcsa
+- **Okok**: helytelen a fiók neve vagy a hozzáférési kulcs
+- **Javaslat**: Ellenőrizze, hogy helyes-e a társított szolgáltatásban megadott fiók neve vagy elérési kulcsa. 
+
+ ### <a name="error-code-df-executor-invalidtype"></a>Hibakód: DF-végrehajtó-InvalidType
+- **Üzenet**: Ellenőrizze, hogy a paraméter típusa egyezik-e az átadott érték típusával. Az úszó paraméterek átadása a folyamatokból jelenleg nem támogatott.
+- **Okok**: nem kompatibilis adattípusok a deklarált típus és a tényleges paraméter értéke között
+- **Javaslat**: Győződjön meg róla, hogy az átadott paraméterérték megfelel a deklarált típusnak.
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>Hibakód: DF-végrehajtó-ColumnUnavailable
+- **Üzenet**: a kifejezésben használt oszlopnév nem érhető el vagy érvénytelen
+- **Okok**: érvénytelen vagy nem érhető el a kifejezésekben használt oszlopnév
+- **Javaslat**: a kifejezésekben használt oszlop neve (i)
+
+ ### <a name="error-code-df-executor-parseerror"></a>Hibakód: DF-végrehajtó-értelmezési hiba
+- **Üzenet**: a kifejezés nem elemezhető
+- **Okok**: a kifejezés formázása miatt hibákat elemez
+- **Javaslat**: a kifejezés formázásának keresése
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Hibakód: a GetCommand OutputAsync sikertelen
 

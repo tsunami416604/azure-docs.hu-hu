@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 5c5f690fd5fefbd67180ea04d5ca1d269676f7b7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180813"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032843"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
 
@@ -61,8 +61,8 @@ A megrendelés kézhezvételét követően több másodpercig is eltarthat, amí
 
 Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [küldhet be](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) .
 
-Üzleti termékek esetén [forduljon az ügyfélszolgálathoz](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
+Üzleti termékek esetén [forduljon az ügyfélszolgálathoz](/office365/admin/contact-support-for-business-products?tabs=phone).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért tekintse meg a [kereskedelmi piactér dokumentációját](partner-center-portal/commercial-marketplace-overview.md) .

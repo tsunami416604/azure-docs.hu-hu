@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 2a0c95e45dc529d779d6b06e1e5bdb32ba80b241
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007536"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033455"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -79,7 +79,7 @@ A [log Analytics ügynök](log-analytics-agent.md) a vendég operációs rendsze
 Ha a következőkre van szüksége, használja a Log Analytics-ügynököt:
 
 * Naplókat és teljesítményadatokat gyűjthet az Azure-on belüli vagy kívüli virtuális vagy fizikai gépekről. 
-* Adatküldés egy Log Analytics munkaterületre, hogy kihasználhassa a [Azure monitor naplók](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , például a [naplózási lekérdezések](../log-query/log-query-overview.md)által támogatott funkciókat.
+* Adatküldés egy Log Analytics munkaterületre, hogy kihasználhassa a [Azure monitor naplók](data-platform-logs.md) , például a [naplózási lekérdezések](../log-query/log-query-overview.md)által támogatott funkciókat.
 * A [Azure monitor for VMS](../insights/vminsights-overview.md) használata lehetővé teszi a virtuális gépek méretezését, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra.  
 * A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-intro.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával.
 * Az Azure-beli virtuális gépek teljes körű felügyeletének biztosításához használja [Azure Automation Update managementet](../../automation/update-management/update-mgmt-overview.md), [Azure Automation az állapot konfigurációját](../../automation/automation-dsc-overview.md), vagy [Azure Automation Change Tracking és leltárt](../../automation/change-tracking.md) .

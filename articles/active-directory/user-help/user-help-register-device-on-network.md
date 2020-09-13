@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/04/2019
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799400"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033047"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Személyes eszköz regisztrálása a szervezet hálózatán
 Regisztrálja személyes eszközét (jellemzően telefon vagy tabletta) a szervezet hálózatán. Az eszköz regisztrálása után hozzáférhet a szervezet korlátozott erőforrásaihoz.
@@ -31,7 +31,7 @@ Az eszköz a szervezet hálózatán való regisztrálása közben a következő 
 
 - A Windows regisztrálja az eszközt a szervezet hálózatán.
 
-- A szervezete által választott lehetőségek alapján előfordulhat, hogy az [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági adatok](./security-info-setup-signin.md)között két lépésből álló ellenőrzést kell beállítania.
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy a [Kéttényezős hitelesítés](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági információ](./security-info-setup-signin.md)segítségével kétlépéses ellenőrzést kell beállítania.
 
 - A szervezete által választott lehetőségek alapján előfordulhat, hogy automatikusan regisztrálva van a mobileszköz-kezelésben, például Microsoft Intune. További információ a Microsoft Intune való regisztrálásáról: [eszköz regisztrálása az Intune-ban](/intune-user-help/enroll-your-device-in-intune-all).
 

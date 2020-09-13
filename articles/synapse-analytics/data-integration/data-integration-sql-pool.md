@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 63e83e69e5e09c17b2a2ddb5ca7bee6474e2fddd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386673"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033200"
 ---
 # <a name="ingest-data-into-a-sql-pool"></a>Adatgyűjtés SQL-készletbe
 
@@ -32,24 +32,24 @@ Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adato
 
 1. Nyissa meg az Azure szinapszis Analytics UX eszközt, és lépjen a **kezelés** lapra.
 1. A **külső kapcsolatok**területen válassza a **társított szolgáltatások**elemet.
-1. Társított szolgáltatás hozzáadásához kattintson az **új**elemre.
-1. Válassza ki a Azure Data Lake Storage Gen2 csempét a listából, majd kattintson a **Folytatás**gombra.
-1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. A hitelesítő adatok helyességének ellenőrzéséhez kattintson a kapcsolódás tesztelése elemre. Ha elkészült, kattintson a **Létrehozás** gombra.
+1. Társított szolgáltatás hozzáadásához válassza az **új**lehetőséget.
+1. Válassza ki a listából a Azure Data Lake Storage Gen2 csempét, és válassza a **Folytatás**lehetőséget.
+1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. Válassza a kapcsolódás tesztelése lehetőséget a hitelesítő adatok helyességének ellenőrzéséhez. Miután végzett, válassza a **Létrehozás** lehetőséget.
 1. Ismételje meg a 3-5 lépést, de Azure Data Lake Storage Gen2 helyett válassza ki az Azure szinapszis Analytics csempét, és adja meg a megfelelő kapcsolatok hitelesítő adatait. Az Azure szinapszis Analytics, az SQL-hitelesítés, a felügyelt identitás és az egyszerű szolgáltatásnév jelenleg támogatott.
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
 A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot fog létrehozni, amely a ADLS Gen2ból származó adatok SQL-készletbe való betöltését teszi elérhetővé.
 
-1. Lépjen a **hangszerelés** lapra. kattintson a folyamatok fejléc melletti plusz ikonra, és válassza a **folyamat**lehetőséget.
+1. Lépjen a **hangszerelés** lapra. Válassza a folyamatok fejléc melletti plusz ikont, és válassza a **folyamat**lehetőséget.
 1. Az **áthelyezés és átalakítás** területen a tevékenységek panelen húzza az **Adatmásolás** elemet a folyamat vászonra.
-1. Kattintson a másolási tevékenységre, és válassza a **forrás** fület. az **új** elemre kattintva hozzon létre egy új forrás-adatkészletet.
-1. Válassza ki Azure Data Lake Storage Gen2, és kattintson a Continue (folytatás) gombra.
-1. Válassza a DelimitedText formátumot, és kattintson a Folytatás gombra.
+1. Válassza ki a másolási tevékenységet, és lépjen a **forrás** lapra. Az **új** elemre kattintva hozzon létre egy új forrás-adatkészletet.
+1. Válassza ki Azure Data Lake Storage Gen2, és válassza a Folytatás lehetőséget.
+1. Válassza a DelimitedText formátumot, és válassza a Folytatás lehetőséget.
 1. A készlet tulajdonságai ablaktáblán válassza ki a létrehozott ADLS társított szolgáltatást. Adja meg a forrásadatok fájljának elérési útját, és adja meg, hogy az első sorban van-e fejléc. Importálhatja a sémát a file Store-ból vagy egy mintából. Ha elkészült, kattintson az OK gombra.
-1. Lépjen a fogadó **lapra.** új fogadó adatkészlet létrehozásához kattintson az **új** elemre.
-1. Válassza az Azure szinapszis Analytics lehetőséget adattárként, majd kattintson a Folytatás gombra.
-1. A készlet tulajdonságai ablaktáblán válassza ki az Ön által létrehozott Azure szinapszis Analytics társított szolgáltatást. Ha egy meglévő táblába ír, válassza ki a legördülő menüből. Ha nem, akkor a **Szerkesztés** és a bevitel megadásával adja meg az új tábla nevét. Ha elkészült, kattintson az OK gombra.
+1. Nyissa meg a **fogadó lapot.** Új fogadó adatkészlet létrehozásához válassza az **új** lehetőséget.
+1. Válassza az Azure szinapszis Analytics lehetőséget adattárként, és válassza a Folytatás lehetőséget.
+1. A készlet tulajdonságai ablaktáblán válassza ki az Ön által létrehozott Azure szinapszis Analytics társított szolgáltatást. Ha egy meglévő táblába ír, válassza ki a legördülő menüből. Ha nem, akkor a **Szerkesztés** és a bevitel megadásával adja meg az új tábla nevét. Ha elkészült, kattintson az OK gombra
 1. Ha táblát hoz létre, engedélyezze az **Automatikus létrehozás táblát** a tábla beállítás mezőjében.
 
 ## <a name="debug-and-publish-pipeline"></a>Folyamat hibakeresése és közzététele
@@ -73,4 +73,4 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 
 ## <a name="next-steps"></a>Következő lépések
 
-A szinapszis Analytics adatintegrálásával kapcsolatos további információkért lásd: adatok beolvasása [Azure Data Lake Storage Gen2](data-integration-data-lake.md) cikkbe.
+A szinapszis Analytics adatintegrálásával kapcsolatos további információkért lásd: adatok beolvasása [Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) cikkbe.

@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475243"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032027"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT-Plug and Play modellek használata IoT-megoldásokban
 
@@ -40,7 +40,7 @@ A megoldás a következő három módszer egyikének használatával kérheti le
 
 ### <a name="get-device-twin-api"></a>Eszköz – Twin API beszerzése
 
-A megoldás a IoT Plug and Play eszköz modell-AZONOSÍTÓjának lekéréséhez használhatja az [eszköz Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API-t.
+A megoldás a IoT Plug and Play eszköz modell-AZONOSÍTÓjának lekéréséhez használhatja az [eszköz Twin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) API-t.
 
 A következő eszköz Twin Response kódrészletben `modelId` a IoT Plug and Play eszköz modell-azonosítóját tartalmazza:
 
@@ -136,7 +136,7 @@ Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, k
 
 1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service-node.md).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan integrálhatja a IoT Plug and Play modelleket egy IoT-megoldásba, néhány javasolt következő lépés:
 

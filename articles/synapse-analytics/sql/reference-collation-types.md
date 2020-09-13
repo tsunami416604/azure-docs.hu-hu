@@ -4,16 +4,16 @@ description: Az Azure szinapszis SQL-ben támogatott rendezési típusok
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496202"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032860"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Adatbázis-rendezési támogatás a szinapszis SQL-hez
 
@@ -111,7 +111,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL Pool és az SQL on-demand ajánlott eljárásaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 9/12/2019
-ms.openlocfilehash: c84616e8a9b9ff9722f5a104175c80c37dbcbcc3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 9/11/2020
+ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116913"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032558"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok kezelése
 A kiszolgálói szintű tűzfalszabályok segítségével kezelheti a nagy kapacitású (Citus) koordinátor-csomópontokhoz való hozzáférést egy adott IP-cím vagy IP-címtartomány használatával.
@@ -24,14 +24,14 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 
 > [!NOTE]
-> Ezek a beállítások egy Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálócsoport létrehozása során is elérhetők. A **hálózatkezelés** lapon kattintson a **nyilvános végpont**elemre.
+> Ezek a beállítások egy Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálócsoport létrehozása során is elérhetők. A **hálózatkezelés** lapon kattintson a **nyilvános hozzáférés**elemre.
 > ![Azure Portal – hálózatkezelés lap](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. A PostgreSQL-kiszolgáló csoport lapon, a biztonság fejléc alatt kattintson a **hálózatkezelés** elemre a tűzfalszabályok megnyitásához.
 
    ![Azure Portal kattintson a hálózatkezelés elemre](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
 
-2. Kattintson az **ügyfél IP-** címének hozzáadása elemre az eszköztáron (az alábbi kapcsolón) vagy a hivatkozásban (B. lehetőség). A automatikusan létrehoz egy tűzfalszabályot a számítógép nyilvános IP-címével, ahogyan azt az Azure-rendszer észleli.
+2. Kattintson az **aktuális ügyfél IP-címének hozzáadása** elemre a számítógép nyilvános IP-címével rendelkező tűzfalszabály létrehozásához az Azure-rendszer által észlelt módon.
 
    ![Azure Portal – kattintson az ügyfél IP-címének hozzáadása elemre.](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -55,7 +55,7 @@ Az Azure-ban üzemeltetett alkalmazásokhoz (például Azure Web Apps alkalmazá
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Meglévő kiszolgálószintű tűzfalszabályok kezelése az Azure Portalon
 Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
-* Az aktuális számítógép hozzáadásához kattintson a gombra az **ügyfél IP-címének hozzáadásához**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* Az aktuális számítógép hozzáadásához kattintson a gombra az **aktuális ügyfél IP-címének hozzáadásához**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * További IP-címek hozzáadásához adja meg a Szabály neve, a Kezdő IP-cím és a Záró IP-cím értékét. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály módosításához kattintson a szabály valamelyik mezőjére, és adja meg a módosításokat. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pont [...] elemre, majd a szabály eltávolításához kattintson a **Törlés** gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.

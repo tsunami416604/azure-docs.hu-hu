@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018356"
+ms.locfileid: "90033523"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -252,7 +252,7 @@ Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
-Most már használhatja az Azure IoT REST API-kat [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatban. Meg kell adnia a `storageAuthenticationType="identityBased"` kérés törzsét, és használnia kell a `inputBlobContainerUri="https://..."` és `outputBlobContainerUri="https://..."` a, valamint a Storage-fiók bemeneti és kimeneti URL-címét.
+Most már használhatja az Azure IoT REST API-kat [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatban. Meg kell adnia a `storageAuthenticationType="identityBased"` kérés törzsét, és használnia kell a `inputBlobContainerUri="https://..."` és `outputBlobContainerUri="https://..."` a, valamint a Storage-fiók bemeneti és kimeneti URL-címét.
 
 Az Azure IoT Hub SDK-k a szolgáltatás-ügyfél beállításjegyzék-kezelőjében is támogatják ezt a funkciót. A következő kódrészletből megtudhatja, hogyan kezdeményezzen importálási feladatot vagy exportálási feladatot a C# SDK használatával.
 

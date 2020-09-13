@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 25c92437b350d7329c340fe1ea13b3df40e231ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f30e9c30f1067595fc502bf3ea349cd6b7630ae1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020599"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032680"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () különbségek
 
-`DBCC SHOW_STATISTICS()`szigorúbban implementálva van az SQL-készletben a SQL Serverhoz képest:
+`DBCC SHOW_STATISTICS()` szigorúbban implementálva van az SQL-készletben a SQL Serverhoz képest:
 
 - A nem dokumentált funkciók nem támogatottak.
 - A Stats_stream nem használható.
@@ -556,7 +556,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Nem használhatók oszlopnevek a statisztikai objektumok azonosításához.
 - A 2767-es egyéni hiba nem támogatott.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 A lekérdezési teljesítmény javítása érdekében lásd: [a munkaterhelés figyelése](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
@@ -814,6 +814,6 @@ CREATE STATISTICS sState
     WITH FULLSCAN, NORECOMPUTE
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A további lekérdezések teljesítményének növelését lásd: [ajánlott eljárások az SQL-készlethez](best-practices-sql-pool.md#maintain-statistics).

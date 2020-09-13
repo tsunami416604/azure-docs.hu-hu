@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fa3bee706049bbeaed0a01cb4f3f5c0422050fa2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797581"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032962"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximalizálja a sorcsoport minőségét a oszlopcentrikus index teljesítményéhez
 
@@ -68,9 +68,6 @@ JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  
 select *
 from cte;
 ```
-
->[!TIP]
-> A szinapszis SQL-ben a jobb teljesítmény érdekében érdemes lehet sys. **pdw_permanent_table_mappings** helyett a sys **. pdw_table_mappingst** használni az állandó felhasználói táblákon. További információért lásd: **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 A trim_reason_desc megadja, hogy a sorcsoport-e (trim_reason_desc = NO_TRIM azt jelenti, hogy a vágás és a sorcsoport nem optimális minőségű). A következő vágási okok a sorcsoport idő előtti kivágását jelzik:
 

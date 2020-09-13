@@ -106,8 +106,6 @@
   items:
     - name: 'Bejelentkezés a Saját alkalmazások portálra, és annak használata'
       href: my-apps-portal-end-user-access.md
-    - name: Profil- és fiókadatok frissítése
-      href: my-apps-portal-end-user-update-profile.md
     - name: A csoporttal kapcsolatos információk frissítése
       href: my-apps-portal-end-user-groups.md
     - name: Alkalmazások rendszerezése gyűjteményekkel

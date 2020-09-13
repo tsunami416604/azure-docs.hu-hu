@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: acbcbc8e5dcebcb894ab8f78b2ed4a71bbc87689
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3366f1a16777ecf46951296e4a1c2c28aed75feb
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662222"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031925"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Oktatóanyag: a szabályok motorjának konfigurálása
 

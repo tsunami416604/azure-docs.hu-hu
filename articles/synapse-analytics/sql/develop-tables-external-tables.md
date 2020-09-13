@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 070d933394b19ea38a9632f25909812943f7bff8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c0373e8a476e65a61ef4b3ea945b98e0763c0a22
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255830"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032928"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -96,7 +96,7 @@ data_source_name
 Megadja az adatforrás felhasználó által definiált nevét. A névnek egyedinek kell lennie az adatbázison belül.
 
 #### <a name="location"></a>Hely
-LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a külső adatforrás elérési útját. A következő mintákat lehet használni a helyen:
+LOCATION = `'<prefix>://<path>'`   – Megadja a kapcsolati protokollt és a külső adatforrás elérési útját. A következő mintákat lehet használni a helyen:
 
 | Külső adatforrás        | Hely előtagja | Hely elérési útja                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
@@ -105,7 +105,7 @@ LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a küls
 | 1. generációs Azure Data Lake Store | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
 | 2. generációs Azure Data Lake Store | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
 
-`https:`az előtag lehetővé teszi az elérési út almappájának használatát.
+`https:` az előtag lehetővé teszi az elérési út almappájának használatát.
 
 #### <a name="credential"></a>Hitelesítő adat
 HITELESÍTŐADAT = `<database scoped credential>` opcionális hitelesítő adat, amely az Azure Storage-ban való hitelesítéshez használatos. A hitelesítő adatok nélküli külső adatforrás hozzáférhet a nyilvános Storage-fiókhoz. 

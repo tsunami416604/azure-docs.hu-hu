@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/10/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800713"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033659"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -190,7 +190,7 @@ A GAC-val kapcsolatos további információkért tekintse meg [ezt a cikket](htt
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-A saját üzemeltetésű integrációs modul hirtelen offline állapotba kerül a kulcs nélkül, az Eseménynaplóban az alábbi hibaüzenet jelenik meg:`Authentication Key is not assigned yet`
+A saját üzemeltetésű integrációs modul hirtelen offline állapotba kerül a kulcs nélkül, az Eseménynaplóban az alábbi hibaüzenet jelenik meg: `Authentication Key is not assigned yet`
 
 ![Hiányzó hitelesítési kulcs](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
@@ -351,7 +351,7 @@ A **regisztráció** gomb nem található a Configuration Manager felhasználói
 
 #### <a name="cause"></a>Ok
 
-A *Integration Runtime 3,0*-es verziójának megjelenése óta egy meglévő Integration Runtime csomóponton található **regisztráció** gomb el lett távolítva a tisztább és biztonságosabb környezet lehetővé tételéhez. Ha egy csomópont valamilyen Integration Runtime van regisztrálva (akár online, akár nem), akkor a másik Integration Runtimeba való újbóli regisztrálásához el kell távolítania az előző csomópontot, majd telepítenie és regisztrálnia kell a csomópontot.
+A *Integration Runtime 3,0*-es verziójának megjelenése óta egy meglévő Integration Runtime csomóponton található **regisztráció** gomb el lett távolítva a tisztább és biztonságosabb környezet lehetővé tételéhez. Ha regisztrált egy csomópontot valamilyen integrációs modulba (online vagy nem online), akkor a csomópont másik integrációs modulba történő újraregisztrálásához először el kell távolítania az előző csomópontot, és ezt követően tudja telepíteni és regisztrálni a csomópontot.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -366,7 +366,7 @@ A *Integration Runtime 3,0*-es verziójának megjelenése óta egy meglévő Int
 1. Telepítse az MSI-t, és regisztrálja a Integration Runtime.
 
 
-### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Nem lehet regisztrálni a saját üzemeltetésű IR-t a localhost miatt    
+### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>A saját üzemeltetési integrációs modul nem regisztrálható a localhost miatt    
 
 #### <a name="symptoms"></a>Hibajelenségek
 
@@ -519,7 +519,7 @@ Ez a viselkedés akkor fordul elő, ha a csomópontok nem tudnak kommunikálni e
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Kapcsolódási probléma a saját üzemeltetésű IR és Data Factory vagy a saját üzemeltetésű IR és adatforrás/fogadó között
 
-A hálózati kapcsolat problémájának megoldásához tudnia kell, hogyan [gyűjtheti a hálózati nyomkövetést](#how-to-collect-netmon-trace), hogyan használhatja azt, és [elemezheti a netmon nyomkövetést](#how-to-analyze-netmon-trace) , mielőtt a netmon-eszközöket valós esetekben alkalmazza a saját üzemeltetésű integrációs modulból.
+A hálózati kapcsolat problémájának megoldásához tudnia kell, hogyan gyűjtheti a hálózati nyomkövetést, hogyan használhatja azt, és [elemezheti a netmon nyomkövetést](#how-to-analyze-netmon-trace) , mielőtt a netmon-eszközöket valós esetekben alkalmazza a saját üzemeltetésű integrációs modulból.
 
 #### <a name="symptoms"></a>Hibajelenségek
 
@@ -577,7 +577,7 @@ Végezze el a netmon nyomkövetést, és elemezze tovább.
 
 ### <a name="how-to-collect-netmon-trace"></a>Netmon-nyomkövetés gyűjtése
 
-1.  Töltse le a netmon-eszközöket [erről a webhelyről](https://www.microsoft.com/en-sg/download/details.aspx?id=4865), és telepítse azt a kiszolgálói gépre (a problémával rendelkező kiszolgálóra) és az ügyfélre (például saját üzemeltetésű IR-re).
+1.  Töltse le a netmon-eszközöket [erről a webhelyről](https://cnet-downloads.com/network-monitor), és telepítse azt a kiszolgálói gépre (a problémával rendelkező kiszolgálóra) és az ügyfélre (például saját üzemeltetésű IR-re).
 
 2.  Hozzon létre egy mappát, például a következő elérési úton: *D:\netmon*. Győződjön meg arról, hogy elegendő lemezterülettel rendelkezik a napló mentéséhez.
 
@@ -621,7 +621,10 @@ Végezze el a netmon nyomkövetést, és elemezze tovább.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon-nyomkövetés elemzése
 
-Ha a **8.8.8.8 888** -as netmon-nyomkövetéssel próbálkozik a fent leírtak szerint, az alábbi nyomkövetés látható:
+> [!NOTE] 
+> Az alábbi utasítás a netmon nyomkövetésre vonatkozik. Mivel a netmon-nyomkövetés jelenleg nem támogatott, a Wireshark is kihasználhatja.
+
+Ha a 888-es netmon-nyomkövetéssel rendelkező Telnet- **8.8.8.8** próbálja meg összegyűjteni, az alábbi nyomkövetést kellene látnia:
 
 ![netmon nyomkövetés 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 
@@ -670,7 +673,7 @@ Előfordulhat, hogy más adatgyárakat (különböző bérlőket) is meg kell h�
 A saját üzemeltetésű integrációs modul nem osztható meg több Bérlővel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

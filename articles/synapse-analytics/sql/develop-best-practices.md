@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d38029284a05ce3b8f9e9af96d3f632e874f874c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482513"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032271"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-hez
 Ez a cikk útmutatást és ajánlott eljárásokat ismertet az adattárház-megoldás fejlesztése során. 
@@ -164,7 +164,7 @@ A CETAS-t használhatja a lekérdezések gyakran használt részeinek tárolás�
 
 Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan létrejönnek, amikor az első lekérdezés ezt a külső táblát célozza meg, és jobb teljesítményt fog nyerni.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Ha a jelen cikkben nem szereplő információkra van szüksége, használja a lap bal oldalán található "dokumentumok keresése" kifejezést az SQL-készlet összes dokumentumának kereséséhez.  A [Microsoft Q&az SQL-készletre vonatkozó kérdés-oldal](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) egy olyan hely, amellyel kérdéseket tehet fel más felhasználóknak és az SQL Pool termék csoportjának.  
 

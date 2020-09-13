@@ -8,6 +8,7 @@
   items:
     - name: ExpressRoute-kapcsolatcsoport létrehozása – ARM-sablon
       href: quickstart-create-expressroute-vnet-template.md
+  expanded: true
 - name: Oktatóanyagok
   items:
     - name: Kapcsolatcsoport létrehozása és módosítása

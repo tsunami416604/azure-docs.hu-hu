@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor üzembe helyezése
+title: Az Azure Monitor üzembe helyezése
 description: A Azure Monitor teljes megvalósításához szükséges különböző lépéseket ismerteti az Azure-előfizetés összes erőforrásának figyeléséhez.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 34a048c702b62caeecaf21e710a9dcd9156e4aea
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801569"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033472"
 ---
-# <a name="deploy-azure-monitor"></a>Azure Monitor üzembe helyezése
+# <a name="deploy-azure-monitor"></a>Az Azure Monitor üzembe helyezése
 Az Azure-erőforrások figyelésének engedélyezése Azure Monitor az Azure Monitor-összetevők konfigurálását és az Azure-erőforrások konfigurálását is lehetővé teszi, hogy a gyűjtéshez Azure Monitor figyelési adatokat készítsenek. Ez a cikk a Azure Monitor teljes megvalósításához szükséges különböző lépéseket ismerteti az Azure-előfizetésében lévő összes erőforrás figyelésére szolgáló közös konfiguráció használatával. Az egyes lépésekhez tartozó alapszintű leírások a részletes konfigurációs követelményekre mutató hivatkozásokkal is rendelkeznek.
 
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ További követelmények is lehetnek, például az Azure-on kívüli erőforrás
 
 Az Azure-erőforrások bizonyos figyelése automatikusan, konfiguráció nélkül érhető el, míg a további figyelési adatok gyűjtéséhez konfigurációs lépéseket kell végrehajtania. Az alábbi táblázat azokat a konfigurációs lépéseket mutatja be, amelyek az Azure-erőforrások összes elérhető adatának gyűjtéséhez szükségesek, beleértve az adatok Azure Monitor metrikák és Azure Monitor naplókhoz való továbbításának lépéseit. Az alábbi szakaszok részletesen ismertetik az egyes lépéseket.
 
-[Az ![ Azure erőforrás-figyelés ](media/deploy/deploy-azure-resources.png) üzembe helyezése](media/deploy/deploy-azure-resources.png#lightbox)
+[Az ![ Azure erőforrás-figyelés ](media/deploy/deploy-azure-resources.png) üzembe helyezése ](media/deploy/deploy-azure-resources.png#lightbox)
 
 ### <a name="no-configuration"></a>Nincs konfiguráció
 Az Azure-előfizetések létrehozásakor a Azure Monitor következő funkciói engedélyezve vannak, és nincs szükség konfigurációra. Ehhez a figyeléshez nem tartozik díj.
@@ -48,7 +48,7 @@ Az Azure-előfizetések létrehozásakor a Azure Monitor következő funkciói e
 
 
 ### <a name="create-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
-Szükség van legalább egy Log Analytics munkaterületre a [Azure monitor naplók](platform/data-platform-logs.md)engedélyezéséhez, amelyek szükségesek az adatok Azure-erőforrásokba való gyűjtéséhez, az Azure-beli virtuális gépek vendég operációs rendszeréről származó adatok gyűjtéséhez, valamint a legtöbb Azure monitor elemzéshez. Más szolgáltatások, például az Azure Sentinel és a Azure Security Center egy Log Analytics-munkaterületet is használhatnak, és megoszthatják ugyanazt, mint Azure Monitor. Egyetlen munkaterülettel is elindíthatja ezt a figyelést, de a több munkaterület használatára vonatkozó útmutatásért lásd: [a Azure monitor naplók üzembe helyezésének megtervezése](platform/design-logs-deployment.md) .
+Szükség van legalább egy Log Analytics munkaterületre a [Azure monitor naplók](platform/data-platform-logs.md)engedélyezéséhez, amelyek szükségesek az adatok Azure-erőforrásokba való gyűjtéséhez, az Azure-beli virtuális gépek vendég operációs rendszeréről származó adatok gyűjtéséhez, valamint a legtöbb Azure monitor elemzéshez. Más szolgáltatások, például az Azure Sentinel és a Azure Security Center egy Log Analytics-munkaterületet is használhatnak, és megoszthatják ugyanazt, mint Azure Monitor. Egyetlen munkaterülettel is elindíthatja ezt a figyelést, de a több munkaterület használatára vonatkozó útmutatásért lásd:  [a Azure monitor naplók üzembe helyezésének megtervezése](platform/design-logs-deployment.md) .
 
 Log Analytics munkaterület létrehozásához nem számítunk fel díjat, de lehetséges, hogy az adatok begyűjtésére való konfigurálását követően a szolgáltatás díjköteles. A részletekért lásd: [a használat és a költségek kezelése Azure monitor naplókkal](platform/manage-cost-storage.md) .  
 
@@ -118,9 +118,9 @@ Az ügynökök telepítésével és konfigurálásával kapcsolatos részleteket
 Azure Monitor a [Application Insights](app/app-insights-overview.md)használatával figyeli az egyéni alkalmazásokat, amelyeket minden egyes figyelni kívánt alkalmazáshoz konfigurálnia kell. A konfigurációs folyamat a figyelt alkalmazás típusától és a végrehajtani kívánt figyelési típustól függően eltérő lesz. A Application Insights által gyűjtött adatokat Azure Monitor metrikák, Azure Monitor naplók és az Azure Blob Storage tárolja a szolgáltatástól függően. A teljesítményadatok Azure Monitor Metrikákban és Azure Monitor naplókban is tárolódnak, és nincs szükség további konfigurálásra.
 
 ### <a name="create-an-application-resource"></a>Alkalmazás-erőforrás létrehozása
-Minden figyelni kívánt alkalmazáshoz létre kell hoznia egy erőforrást Application Insightsban. A Application Insights által gyűjtött naplózási adatokat Azure Monitor naplók tárolják, de a Log Analytics munkaterülettől elkülönítve vannak, ahogy az az [adatok Azure monitor naplókban való strukturálása](platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured)című témakörben leírtak szerint?. Jelenleg előzetes verzióban érhető el, ha az alkalmazás adatait közvetlenül egy Log Analytics munkaterületen tárolja a többi adattal. Ez leegyszerűsíti a konfigurációt, és lehetővé teszi az alkalmazás számára, hogy kihasználhassa a Log Analytics munkaterület összes funkcióját.
+Minden figyelni kívánt alkalmazáshoz létre kell hoznia egy erőforrást Application Insightsban. A Application Insights által gyűjtött adatokat a rendszer a munkaterület-alapú alkalmazások Azure Monitor naplófájljaiban tárolja. A klasszikus alkalmazások naplózási adatait a rendszer az [adatok szerkezete](platform/data-platform-logs.md#structure-of-data)szerint külön tárolja a log Analytics munkaterületről.
 
- Az alkalmazás létrehozásakor ki kell választania, hogy a klasszikus vagy a munkaterület-alapú (előzetes verzió) használatát kívánja-e használni. Lásd: [Application Insights-erőforrás létrehozása](app/create-new-resource.md) klasszikus alkalmazás létrehozásához. Munkaterület-alapú alkalmazás létrehozásához tekintse meg a [munkaterület-alapú Application Insights-erőforrások (előzetes verzió)](app/create-workspace-resource.md) című témakört.
+ Az alkalmazás létrehozásakor ki kell választania, hogy a klasszikus vagy a munkaterület-alapú használatát kívánja-e használni. Lásd: [Application Insights-erőforrás létrehozása](app/create-new-resource.md) klasszikus alkalmazás létrehozásához. Munkaterület-alapú alkalmazás létrehozásához tekintse meg a [munkaterület-alapú Application Insights-erőforrások (előzetes verzió)](app/create-workspace-resource.md) című témakört.
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>Kód-vagy programkód-alapú figyelés konfigurálása
 Az alkalmazások figyelésének engedélyezéséhez el kell döntenie, hogy a kód nélküli vagy a kód alapú figyelést fogja-e használni. A konfigurációs folyamat a döntéstől és a figyelni kívánt alkalmazás típusától függően eltérő lesz.
@@ -192,6 +192,6 @@ Több típusú riasztási szabály van megadva az általuk használt adattípuss
 - Az [alkalmazások riasztásai](app/monitor-web-app-availability.md) lehetővé teszik a webalkalmazások proaktív teljesítményének és rendelkezésre állásának tesztelését. Egy egyszerű pingelési teszt díjmentesen elvégezhető, de összetettebb tesztelésre is van lehetőség. A különböző tesztek leírását és a létrehozásuk részleteit lásd: [bármely webhely rendelkezésre állásának figyelése](app/monitor-web-app-availability.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [Azure monitor üzembe helyezése méretezéssel Azure Policy használatával](deploy-scale.md).

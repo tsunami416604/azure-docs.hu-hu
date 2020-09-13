@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89086519"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033030"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor javaslatok megoldása
 
@@ -34,7 +34,7 @@ Ellenőrzési környezet engedélyezése:
 
 2. Ezután válassza ki azt az alkalmazáskészletet, amelyet éles környezetből egy ellenőrzési környezetbe szeretne váltani.
 
-3. A gazdagép medencéjében válassza a **Tulajdonságok** fület a képernyő jobb oldalán található oszlopban. Ezután görgessen lefelé, amíg meg nem jelenik az "érvényesítési környezet". Válassza az **Igen**, majd az **alkalmaz**lehetőséget.
+3. A gazdagép-készletben válassza a bal oldali oszlopban a **Tulajdonságok** elemet. Ezután görgessen lefelé, amíg meg nem jelenik az "érvényesítési környezet". Válassza az **Igen**, majd az **alkalmaz**lehetőséget.
 
 >[!div class="mx-imgBorder"]
 >![A Tulajdonságok menü képernyőképe Az "érvényesítési környezet" vörös színnel van kiemelve, és az "igen" buborék van kiválasztva.](media/validation-yes.png)

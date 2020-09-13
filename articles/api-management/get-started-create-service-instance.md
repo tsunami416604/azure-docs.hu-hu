@@ -1,33 +1,28 @@
 ---
-title: Azure API Management-példány létrehozása | Microsoft Docs
-description: Új Azure API Management-példány létrehozásához kövesse ennek az oktatóanyagnak a lépéseit.
-services: api-management
-documentationcenter: ''
+title: Rövid útmutató – Azure API Management-példány létrehozása
+description: Hozzon létre egy új Azure API Management Service-példányt a Azure Portal használatával.
 author: vladvino
-manager: cflower
-editor: ''
 ms.service: api-management
-ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/28/2017
+ms.date: 09/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 6c71b88f43570a65edb5d0bea24f623c861f8111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 104e1873a56d1ecf6e9f11a271344e9b4073e780
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206299"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033355"
 ---
-# <a name="create-a-new-azure-api-management-service-instance"></a>Új Azure API Management-szolgáltatáspéldány létrehozása
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása a Azure Portal használatával
 
-Az Azure API Management (APIM) segít közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják használni az adataikban és szolgáltatásaikban rejlő lehetőségeket. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az APIM segítségével modern API-átjárókat hozhat létre meglévő háttérrendszerekhez, és az üzemeltetés helyétől függetlenül kezelheti azokat. További információt az [Áttekintés](api-management-key-concepts.md) témakörben talál.
+Az Azure API Management (APIM) segít közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják használni az adataikban és szolgáltatásaikban rejlő lehetőségeket. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. A APIM lehetővé teszi modern API Gateway-átjárók létrehozását és felügyeletét a bárhol üzemeltetett meglévő háttér-szolgáltatásokhoz. További információ: [Áttekintés](api-management-key-concepts.md).
 
 Ez a gyors útmutató az új API Management-példányok Azure Portalon történő létrehozásának lépéseit mutatja be.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-![API Management-példány](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
+:::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-created.png" alt-text="API Management-példány":::
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -37,32 +32,39 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Kiválaszthatja az **erőforrás létrehozása** lehetőséget is az Azure **kezdőlapján** . 
    
-   ![Válassza az erőforrás létrehozása lehetőséget.](./media/get-started-create-service-instance/00-CreateResource-01.png)
-   
-1. Az **új** képernyőn válassza az **integráció** lehetőséget, majd válassza a **API Management**lehetőséget.
-   
-   ![Új Azure API Management-példány](./media/get-started-create-service-instance/00-CreateResource-02.png)
-   
-1. A **API Management szolgáltatás** képernyőn adja meg a beállításokat.
-   
-   ![új példány](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
-   
-   | Beállítás                 | Ajánlott érték                               | Leírás                                                                                                                                                                                                                                                                                                                         |
-|-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Név**                | Az API Management szolgáltatás egyedi neve | A név később nem módosítható. A szolgáltatásnév alapján jön létre a *{név}.azure-api.net* formátumú alapértelmezett tartománynév. Ha egyéni tartománynevet kíván használni, tekintse meg az [Egyéni tartománynév konfigurálása](configure-custom-domain.md) témakört. <br/> A szolgáltatásnév a szolgáltatásra és a megfelelő Azure erőforrásra utal. |
-| **Előfizetés**        | Az Ön előfizetése                             | Az új szolgáltatáspéldány létrehozásához használt előfizetés. Az Ön számára elérhető Azure-előfizetések közül választhat.                                                                                                                                                            |
-| **Erőforráscsoport**      | *apimResourceGroup*                           | Válasszon ki egy új vagy egy létező erőforrást. Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információ [itt](../azure-resource-manager/management/overview.md#resource-groups).                                                                                                  |
-| **Hely**            | *USA nyugati régiója*                                    | Válassza ki az Önhöz legközelebbi földrajzi régiót. A legördülő listában csak az elérhető API Management szolgáltatási régiók jelennek meg.                                                                                                                                                                                                          |
-| **Szervezet neve**   | Az intézmény neve                 | Ezt a nevet sok helyen használja a rendszer, többek között a fejlesztői portál címében és az értesítő e-mailek küldőjeként.                                                                                                                                                                                                             |
-| **Rendszergazda e-mail-címe** | *rendszergazdai \@ org.com*                               | Az itt megadott e-mail-címre érkezik majd az **API Management** által küldött összes értesítés.                                                                                                                                                                                                                                              |
-| **Tarifacsomag**        | *Fejlesztői*                                   | Állítsa be a **Fejlesztői** szintet a szolgáltatás értékeléséhez. Ez a szint nem használható éles környezetben. További információt az API Management szintjeinek skálázásáról a [frissítés és skálázás](upgrade-and-scale.md) oldalon talál.                                                                                                                                    |
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
 
-3. Válassza a **Létrehozás**lehetőséget.
+   
+1. Az **új** lapon válassza az **integráció**  >  **API Management**elemet.
+
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Új Azure API Management-példány":::
+   
+1. A **API Management szolgáltatás** lapon adja meg a beállításokat.
+
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Új példány":::
+   
+   | Beállítás                 | Leírás   |                                                                     
+   |-------------------------|-----------------------------------------------|
+   | **Név**                | A API Management szolgáltatás egyedi neve. A név később nem módosítható. A szolgáltatás neve a szolgáltatásra és a hozzá tartozó Azure-erőforrásra is vonatkozik. <br/> A szolgáltatás neve egy alapértelmezett tartománynév létrehozásához használható: * \<name\> . Azure-API.net.* Ha egyéni tartománynevet kíván használni, tekintse meg az [Egyéni tartománynév konfigurálása](configure-custom-domain.md) témakört. |
+   | **Előfizetés**          | Az új szolgáltatáspéldány létrehozásához használt előfizetés.   |
+   | **Erőforráscsoport**      |  Válasszon ki egy új vagy egy meglévő erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. |
+   | **Hely**          | Válasszon ki egy földrajzi régiót az elérhető API Management szolgáltatási helyekről. | 
+   | **Szervezet neve**   | A szervezet neve. Ezt a nevet sok helyen használja a rendszer, többek között a fejlesztői portál címében és az értesítő e-mailek küldőjeként. |                                                         
+   | **Rendszergazda e-mail-címe** | Az e-mail-cím, amelyre a **API Management** összes értesítése el lesz küldve.   |  
+   | **Tarifacsomag**        | Válassza ki a **fejlesztői** szintet a szolgáltatás kiértékeléséhez. Ez a rétegek nem használhatók éles környezetben. További információt az API Management szintjeinek skálázásáról a [frissítés és skálázás](upgrade-and-scale.md) oldalon talál. |
+
+3. Kattintson a **Létrehozás** gombra.
 
     > [!TIP]
-    > Egy új API Management szolgáltatás létrehozása általában 20-30 percig tart. A **Rögzítés az irányítópulton** lehetőség használatával könnyebben megtalálhatja az újonnan létrehozott szolgáltatást.
+    > Általában 20 – 30 percet vesz igénybe egy API Management szolgáltatás létrehozása és aktiválása. A **Rögzítés az irányítópulton** lehetőség használatával könnyebben megtalálhatja az újonnan létrehozott szolgáltatást.
 
 [!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
+
+Tekintse át a szolgáltatás tulajdonságait az **Áttekintés** oldalon.
+
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-created.png" alt-text="API Management-példány":::
+
+Ha a API Management Service-példány online állapotban van, készen áll a használatára. Kezdje az Oktatóanyaggal az [első API importálásához és közzétételéhez](import-and-publish.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -70,19 +72,19 @@ Ha már nincs rájuk szükség, eltávolíthatja az erőforráscsoportot és az 
 
 1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok**elemet. A **kezdőlapon** kiválaszthatja az **erőforráscsoportok** lehetőséget is. 
 
-   ![Erőforráscsoportok navigációja](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Erőforráscsoport navigációja":::
 
 1. Az **erőforráscsoportok** lapon válassza ki az erőforráscsoportot.
 
-   ![Erőforráscsoportok navigációja](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Erőforráscsoport kiválasztása":::
 
 1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet. 
    
 1. Írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-   ![Erőforráscsoport törlése](./media/get-started-create-service-instance/00-DeleteResource-03.png)
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Erőforráscsoport törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első API importálása és közzététele](import-and-publish.md)

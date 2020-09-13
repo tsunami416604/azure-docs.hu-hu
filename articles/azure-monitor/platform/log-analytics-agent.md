@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016332"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032520"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics-ügynök a Windows-és Linux-alapú virtuális gépekről gyűjt telemetria a Felhőbeli, a helyszíni gépeken, valamint a [System Center Operations Manager](/system-center/scom/) által figyelt, és az összegyűjtött adatokat a Azure monitor log Analytics munkaterületére küldi el. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint az üzembe helyezési módszerekről.
@@ -39,7 +39,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 ## <a name="data-collected"></a>Összegyűjtött adatok
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | [Windows-eseménynaplók](data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Syslog](data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
@@ -63,7 +63,7 @@ Az ügynökök Operations Manager felügyeleti csoporthoz való csatlakoztatás�
 
 ## <a name="security-limitations"></a>Biztonsági korlátozások
 
-* A Windows-ügynök támogatja a [FIPS 140 szabványt](/windows/security/threat-protection/fips-140-validation), míg a Linux-ügynök nem támogatja azt.  
+* A Windows-és Linux-ügynökök támogatják a [FIPS 140 szabványt](/windows/security/threat-protection/fips-140-validation), [más típusú megerősítés azonban nem támogatott](agent-linux.md#supported-linux-hardening).
 
 
 ## <a name="installation-options"></a>Telepítési lehetőségek
@@ -109,10 +109,10 @@ A következő táblázat a Linux és a Windows-ügynökök Azure Monitor naplók
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-es port |Kimenő|Igen |
-|*.azure-automation.net |443-es port |Kimenő|Igen |
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.blob.core.windows.net |443-es port |Kimenő|Yes |
+|*.azure-automation.net |443-es port |Kimenő|Yes |
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

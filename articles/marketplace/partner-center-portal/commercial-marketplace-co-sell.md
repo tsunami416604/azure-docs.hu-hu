@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: ca1a1bd1f07bf30fd7e5cd57b617a823120e85ea
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017370"
+ms.locfileid: "90033251"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
@@ -66,7 +66,7 @@ Lehetősége van olyan biztosítéki dokumentumok biztosítására, amelyeket a 
 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
-| *Ügyfél – pager* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Office 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul> |
+| *Ügyfél – pager* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Microsoft 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul> |
 | *Ügyfél bemutatása* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
 | *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy a Microsoft milyen módon sikeresen telepítette ezt a megoldást az előző esetekben. <br> <br> Használja a partner Centerben elérhető sablont. |
 | *Ellenőrizhető ügyfél-WINS (nem kötelező)* | Az ügyfelek sikereire adott példák a megoldás telepítése után. |

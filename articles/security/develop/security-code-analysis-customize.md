@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206857"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031398"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -143,7 +143,7 @@ Az elérhető lehetőségek a következők:
 >
 >   Ha az új feladat az eredeti feladattal megegyező ügynökön fut, az új tevékenység kimenete felülírja az eredeti feladat kimenetét az *s* Sources mappában. Bár a Build kimenete azonos, javasoljuk, hogy futtassa az MSBuild-et, másolja a kimenetet az összetevők előkészítési könyvtárába, majd futtassa a következőt:.
 
-Ha további erőforrásokat kíván felderíteni a (z)-elemzők feladathoz, tekintse meg a Microsoft Docs-on végzett, a [-alapú elemzéseket](https://docs.microsoft.com/dotnet/standard/analyzers/) .
+Ha további erőforrásokat kíván felderíteni a (z)-elemzők feladathoz, tekintse meg a Microsoft Docs-on végzett, a [-alapú elemzéseket](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer) .
 
 A Build feladat által telepített és használt Analyzer-csomag a [Microsoft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)NuGet oldalon található.
 
@@ -195,7 +195,7 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [post Analysis YAML beállításait](yaml-configuration.md#post-analysis-task)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A YAML-alapú konfigurációval kapcsolatos információkért tekintse meg a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 

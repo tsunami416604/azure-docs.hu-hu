@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387241"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033183"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal 
 
@@ -33,16 +33,16 @@ Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adato
 
 1. Nyissa meg az Azure szinapszis Studio alkalmazást, és lépjen a **kezelés** lapra.
 1. A **külső kapcsolatok**területen válassza a **társított szolgáltatások**elemet.
-1. Társított szolgáltatás hozzáadásához kattintson az **új**elemre.
-1. Válassza ki a Azure Data Lake Storage Gen2 csempét a listából, majd kattintson a **Folytatás**gombra.
+1. Társított szolgáltatás hozzáadásához válassza az **új**lehetőséget.
+1. Válassza ki a listából a Azure Data Lake Storage Gen2 csempét, és válassza a **Folytatás**lehetőséget.
 1. Győződjön meg arról, hogy az **interaktív szerzői műveletek**engedélyezve vannak. Előfordulhat, hogy az engedélyezése körülbelül 1 percet vesz igénybe. 
-1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. A hitelesítő adatok helyességének ellenőrzéséhez kattintson a kapcsolódás tesztelése elemre.
+1. Adja meg a hitelesítő adatait. A fiók kulcsa, az egyszerű szolgáltatásnév és a felügyelt identitás jelenleg támogatott hitelesítési típus. Válassza a kapcsolódás tesztelése lehetőséget a hitelesítő adatok helyességének ellenőrzéséhez.
 1. Válassza a **kapcsolat tesztelése**lehetőséget, mert a Storage-fiók nem engedélyezi a hozzáférést egy privát végpont létrehozása és jóváhagyása nélkül. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy **privát végpontot** , amelyet követve a következő részre léphet. Ha követi ezt a hivatkozást, ugorja át a következő részt.
 1. Miután végzett, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-managed-private-endpoint"></a>Felügyelt privát végpont létrehozása
 
-Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhivatkozásra, kövesse az alábbi elérési utat. Most létre kell hoznia egy felügyelt magánhálózati végpontot, amelyhez csatlakozni fog a fent létrehozott társított szolgáltatáshoz.
+Ha a fenti kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse az alábbi elérési utat. Hozzon létre egy felügyelt magánhálózati végpontot, amelyhez csatlakozni fog a fent létrehozott társított szolgáltatáshoz.
 
 1. Lépjen a **kezelés** lapra.
 1. Lépjen a **felügyelt virtuális hálózatok** szakaszra.
@@ -55,7 +55,7 @@ Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhiva
 ## <a name="private-link-approval"></a>Privát hivatkozás jóváhagyása
 1. Válassza ki a fent létrehozott privát végpontot. Megtekintheti azt a hiperhivatkozást, amely lehetővé teszi a magánhálózati végpont jóváhagyását a Storage-fiók szintjén. *Egy másik lehetőség, hogy közvetlenül a Azure Portal Storage-fiókba lép, és bemegy a **privát Endpoint Connections** panelre.*
 1. Jelölje be a stúdióban létrehozott privát végpontot, és válassza a **jóváhagyás**lehetőséget.
-1. Adja meg a leírást, és kattintson az **Igen** gombra.
+1. Adjon hozzá egy leírást, és válassza az **Igen** lehetőséget.
 1. Lépjen vissza a szinapszis studióhoz a **kezelés** lap **felügyelt virtuális hálózatok** szakaszában.
 1. Ahhoz, hogy a jóváhagyás megjelenjen a privát végponton, körülbelül 1 percnek kell lennie.
 
@@ -64,7 +64,7 @@ Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhiva
 1. Győződjön meg arról, hogy az **interaktív szerzői műveletek** aktívak.
 1. Válassza a **Kapcsolat tesztelése** elemet. Látnia kell a sikeres kapcsolatokat.
 
-Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a társított szolgáltatás között!
+Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a társított szolgáltatás között.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -41,9 +41,15 @@
       href: ./samples/azure-security-benchmark.md
     - name: Australian Government ISM PROTECTED
       items:
+        - name: Áttekintés
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/index.md
         - name: Vezérlőelem-leképezés
           displayName: 'standards, Australian, Government, ISM, PROTECTED'
           href: ./samples/ism-protected/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/deploy.md
     - name: Canada Federal PBMM
       items:
         - name: Áttekintés

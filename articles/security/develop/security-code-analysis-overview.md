@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543010"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031245"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 
@@ -73,7 +73,7 @@ A forráskódban tárolt jelszavak és egyéb titkos kódok jelentős problémá
 
 ### <a name="roslyn-analyzers"></a>-Elemzők
 
-A a a Microsoft fordítói szolgáltatásának integrált eszköze a felügyelt C# és a Visual Basic kód statikus elemzéséhez. További információkért lásd: a [-alapú elemzők](https://docs.microsoft.com/dotnet/standard/analyzers/).
+A a a Microsoft fordítói szolgáltatásának integrált eszköze a felügyelt C# és a Visual Basic kód statikus elemzéséhez. További információkért lásd: a [-alapú elemzők](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer).
 
 ### <a name="tslint"></a>TSLint
 
@@ -104,7 +104,7 @@ Ezt a feladatot úgy is beállíthatja, hogy az adott eszközök vagy az összes
 >[!NOTE]
 >A tervezés szerint az egyes felépítési feladatok sikeresek lesznek, ha a feladat sikeresen befejeződik. Ez igaz, hogy az eszköz hibákat észlel-e, így az összes eszköz futtatásához a Build a befejezéshez is futtatható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft biztonsági kódok elemzésének bevezetésével és telepítésével kapcsolatos útmutatásért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md).
 

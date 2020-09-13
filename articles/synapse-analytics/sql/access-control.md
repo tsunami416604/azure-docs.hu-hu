@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499840"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031313"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
@@ -32,8 +32,8 @@ Az éles környezetben történő üzembe helyezéshez az Azure szinapszis munka
 
 ### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>1. lépés: biztonsági csoportok beállítása az ezt a mintát követő névvel
 
-1. Nevű biztonsági csoport létrehozása`Synapse_WORKSPACENAME_Users`
-2. Nevű biztonsági csoport létrehozása`Synapse_WORKSPACENAME_Admins`
+1. Nevű biztonsági csoport létrehozása `Synapse_WORKSPACENAME_Users`
+2. Nevű biztonsági csoport létrehozása `Synapse_WORKSPACENAME_Admins`
 3. A `Synapse_WORKSPACENAME_Admins` hozzáadása ehhez: `Synapse_WORKSPACENAME_Users`
 
 > [!NOTE]
@@ -52,10 +52,10 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 3. Navigáljon az Azure szinapszis munkaterülethez kiválasztott tárolóhoz (fájlrendszerhez)
 4. Kattintson **Access Control (iam)**
 5. Rendelje hozzá a következő szerepköröket:
-   1. **Olvasói** szerepkör:`Synapse_WORKSPACENAME_Users`
-   2. **Storage blob-adattulajdonosi** szerepkör:`Synapse_WORKSPACENAME_Admins`
-   3. **Storage blob-adatközreműködői** szerepkör:`Synapse_WORKSPACENAME_Users`
-   4. **Storage blob-adattulajdonosi** szerepkör:`WORKSPACENAME`
+   1. **Olvasói** szerepkör:  `Synapse_WORKSPACENAME_Users`
+   2. **Storage blob-adattulajdonosi** szerepkör:  `Synapse_WORKSPACENAME_Admins`
+   3. **Storage blob-adatközreműködői** szerepkör: `Synapse_WORKSPACENAME_Users`
+   4. **Storage blob-adattulajdonosi** szerepkör:  `WORKSPACENAME`
 
 > [!NOTE]
 > WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.
@@ -64,7 +64,7 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 
 1. Ugrás az [ **Azure szinapszis webes felhasználói felületére**](https://web.azuresynapse.net)
 2. Ugrás a **Manage**   >  **biztonsági**  >  **hozzáférés-vezérlés** kezelése
-3. Kattintson a **rendszergazda hozzáadása**lehetőségre, majd válassza a`Synapse_WORKSPACENAME_Admins`
+3. Kattintson a **rendszergazda hozzáadása**lehetőségre, majd válassza a `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. lépés: az SQL-rendszergazdai hozzáférés konfigurálása a munkaterülethez
 
@@ -81,8 +81,8 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>5. lépés: felhasználók és rendszergazdák hozzáadása és eltávolítása biztonsági csoportokhoz
 
-1. Rendszergazdai hozzáférésre szoruló felhasználók hozzáadása`Synapse_WORKSPACENAME_Admins`
-2. Az összes többi felhasználó hozzáadása`Synapse_WORKSPACENAME_Users`
+1. Rendszergazdai hozzáférésre szoruló felhasználók hozzáadása `Synapse_WORKSPACENAME_Admins`
+2. Az összes többi felhasználó hozzáadása `Synapse_WORKSPACENAME_Users`
 
 > [!NOTE]
 > [Ebből a cikkből](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal) megtudhatja, hogyan vehet fel felhasználót tagként egy biztonsági csoportba ebben a cikkben
@@ -198,6 +198,6 @@ REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 DROP USER [<workspacename>];
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szinapszis munkaterület által felügyelt identitás áttekintését lásd: az [Azure szinapszis munkaterület felügyelt identitása](../security/synapse-workspace-managed-identity.md). További információ az adatbázis-rendszerbiztonsági tagekről: [rendszerbiztonsági tag](https://msdn.microsoft.com/library/ms181127.aspx). Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx) című cikket.

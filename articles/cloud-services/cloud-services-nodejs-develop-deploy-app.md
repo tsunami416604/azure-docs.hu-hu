@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079209"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032877"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
 
@@ -36,8 +36,8 @@ Az alkalmazás egy egyszerű „hello world” alkalmazás:
 > [!NOTE]
 > A jelen oktatóanyagban szereplő Azure PowerShell használatához Windows rendszer szükséges.
 
-* Az [Azure PowerShell]telepítése és konfigurálása.
-* Az [Azure SDK for .NET 2.7] letöltése és telepítése. A telepítőben válassza a következőket:
+* [Azure PowerShell]telepítése és konfigurálása.
+* Töltse le és telepítse az [Azure SDK for .NET 2,7] csomagot. A telepítőben válassza a következőket:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -172,7 +172,7 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
    > [!NOTE]
    > A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. Ha a tárterületet semmi más nem használja, megfontolhatja a törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk: [Node.js fejlesztői központ].
 
 <!-- URL List -->
@@ -180,7 +180,7 @@ További információk: [Node.js fejlesztői központ].
 [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [egyszerűsített webalkalmazás használatát]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
-[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [PowerShell összekapcsolása]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés]: https://azure.microsoft.com/documentation/services/cloud-services/

@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 019c78236ed0cc689de09a9ee04ebb6a0b9243b1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131480"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033591"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rövid útmutató: Logic Apps-munkafolyamatdefiníciók létrehozása és kezelése a Visual Studio Code használatával
 
@@ -130,7 +130,7 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
    Itt látható például egy példa logikai alkalmazás munkafolyamat-definíciója, amely egy RSS-triggerrel és egy Office 365 Outlook-művelettel kezdődik. A JSON-elemek általában betűrendben jelennek meg az egyes szakaszokban. A minta azonban ezeket az elemeket nagyjából abban a sorrendben jeleníti meg, ahogy a logikai alkalmazás lépései megjelennek a tervezőben.
 
    > [!IMPORTANT]
-   > Ha újra szeretné használni a minta logikai alkalmazás definícióját, szüksége lesz egy Office 365 szervezeti fiókra, például: @fabrikam.com . Győződjön meg arról, hogy a fiktív e-mail-címet a saját e-mail-címére cseréli. Egy másik e-mail-összekötő, például a Outlook.com vagy a Gmail használatához cserélje le a `Send_an_email_action` műveletet egy olyan hasonló műveletre, [amely a Azure Logic apps által támogatott e-mail-összekötőn](../connectors/apis-list.md)érhető el.
+   > Ha újra szeretné használni a minta logikai alkalmazás definícióját, szüksége lesz egy szervezeti fiókra, például: @fabrikam.com . Győződjön meg arról, hogy a fiktív e-mail-címet a saját e-mail-címére cseréli. Egy másik e-mail-összekötő, például a Outlook.com vagy a Gmail használatához cserélje le a `Send_an_email_action` műveletet egy olyan hasonló műveletre, [amely a Azure Logic apps által támogatott e-mail-összekötőn](../connectors/apis-list.md)érhető el.
    >
    > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. 
    > Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). 
@@ -304,7 +304,7 @@ A Visual Studio Code-ban megnyithatja és áttekintheti a logikai alkalmazás ko
 
       A Visual Studio Code a kiválasztott verziót a jelenlegi verzióra mozdítja elő, és új számot rendel hozzá a előléptetett verzióhoz. A korábban aktuális verzió már a előléptetett verzió alatt jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Logikai alkalmazások létrehozása a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
