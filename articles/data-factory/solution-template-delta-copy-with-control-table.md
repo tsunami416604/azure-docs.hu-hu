@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629031"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442003"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolat egy adatbázisból egy vezérlő táblával
 
@@ -140,11 +140,11 @@ A sablon a következő paramétereket definiálja:
 
     Látni fogja, hogy csak az új sorok lettek átmásolva a célhelyre.
 
-15. Választható Ha az Azure szinapszis Analytics (korábbi nevén SQL DW) lehetőséget választja az adat célhelyként, akkor az Azure Blob Storage-hoz való kapcsolódást is meg kell adnia az átmeneti tároláshoz, amelyet a SQL Data Warehouse-alapok igényelnek. A sablon létrehozza a tároló elérési útját. A folyamat futtatása után győződjön meg arról, hogy a tároló létre lett-e hozva a blob Storage-ban.
+15. Választható Ha az Azure szinapszis Analytics (korábbi nevén SQL DW) lehetőséget választja az adatok célhelyként, akkor az Azure Blob Storage-hoz az átmeneti tároláshoz is meg kell adnia egy kapcsolódást, amelyet az Azure szinapszis Analytics (korábban SQL Data Warehouse) alapszintű elemzéséhez szükséges. A sablon létrehozza a tároló elérési útját. A folyamat futtatása után győződjön meg arról, hogy a tároló létre lett-e hozva a blob Storage-ban.
     
     ![A bázisterület konfigurálása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával](solution-template-bulk-copy-with-control-table.md)
 - [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

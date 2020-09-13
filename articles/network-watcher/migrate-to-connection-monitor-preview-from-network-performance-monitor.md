@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogyan telepítheti át a Network Performance Monitorról a kapcsolódási figyelőre (előzetes verzió).
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 69dbb1dd4017c5acf9c195f5104741caee38c2b7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dcbb82c1315e6150ddcfadbb52b2976447329b87
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701591"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441833"
 ---
 # <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>Migrálás a kapcsolódási figyelőbe (előzetes verzió) Network Performance Monitor
 
-A tesztek áttelepíthetők Network Performance Monitorról az új és továbbfejlesztett kapcsolódási figyelőre (előzetes verzió) egyetlen kattintással és nulla állásidővel. Ha többet szeretne megtudni az előnyökről, érdemes lehet beolvasni a [kapcsolódási figyelőt (előzetes verzió)](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview)
+Network Performance Monitor (NPM) teszteit áttelepítheti új, továbbfejlesztett (előzetes verzió), egyetlen kattintással és nulla állásidővel. További információ az előnyökről: a [kapcsolatkezelő (előzetes verzió)](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview).
 
 >[!NOTE]
 > Csak a Service connectivity Figyelőről származó tesztek telepíthetők át a kapcsolati figyelőbe (előzetes verzió).
@@ -29,39 +29,49 @@ A tesztek áttelepíthetők Network Performance Monitorról az új és továbbfe
 
 ## <a name="key-points-to-note"></a>Jegyezze fel a legfontosabb pontokat
 
-* A helyszíni ügynökök és a tűzfalbeállítások is működni fognak. Nincs szükség módosításra. Log Analytics az Azure-Virtual Machines telepített ügynököket Network Watcher bővítménnyel kell helyettesíteni
-* A meglévő tesztek le lesznek képezve a kapcsolódási figyelőre (előzetes verzió) – > test Group – > tesztelési formátumra. A felhasználók a *Szerkesztés* gombra kattintva megtekinthetik és módosíthatják az új kapcsolati figyelő tulajdonságait, és letölthetik a kapcsolati figyelő módosításait, és elküldhetik azt Azure Resource Manager használatával.
-* Az ügynökök mindkét Log Analytics munkaterületre és metrikára küldenek adatokat.
-* Adatok monitorozása
-    * Log Analyticsban tárolt adatmennyiség – az összes adatáttelepítési folyamat továbbra is abban a munkaterületen marad, amelyben a NPM a NetworkMonitoring táblában van konfigurálva. Az áttelepítés után az adatelérési pont NetworkMonitoring táblázatba és ConnectionMonitor_CL táblába kerül ugyanabban a munkaterületen. Ha a tesztek le vannak tiltva a NPM-ből, az adatok csak ConnectionMonitor_CL táblában lesznek tárolva
-    * Napló alapú riasztások, irányítópultok és integrációk – az új tábla ConnectionMonitor_CL alapján manuálisan kell szerkesztenie a lekérdezéseket. Ezzel a hivatkozással újból létrehozhatja a mérőszámokban lévő riasztásokat is. A naplókon alapuló riasztások áttelepítése a NetworkMonitoring-táblán a metrikák alapú riasztásokra automatikusan, mivel a Migrálás része hamarosan elérhető lesz
+Az áttelepítés a következő eredményeket segíti elő:
+
+* A helyszíni ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. Log Analytics Azure-beli virtuális gépekre telepített ügynököket a Network Watcher bővítménnyel kell helyettesíteni.
+* A meglévő tesztek a kapcsolódási figyelő (előzetes verzió) > a tesztelési csoport > tesztelési formátumára vannak leképezve. A **Szerkesztés**lehetőség kiválasztásával megtekintheti és módosíthatja az új kapcsolat figyelője (előzetes verzió) tulajdonságait, letöltheti a sablonokat, és elküldheti a sablont Azure Resource Manager használatával.
+* Az ügynökök az Log Analytics munkaterületre és a metrikára is küldenek adatokat.
+* Adatfigyelés:
+   * **Log Analyticsban tárolt adatértékek**: az áttelepítés előtt az adatterület abban a munkaterületen marad, amelyben a NPM a NetworkMonitoring táblában van konfigurálva. Az áttelepítés után az adatelérési pont a NetworkMonitoring táblába kerül, és a ConnectionMonitor_CL tábla ugyanabban a munkaterületen található. Miután a tesztek le vannak tiltva a NPM-ben, az adattárolást csak a ConnectionMonitor_CL táblában tárolja a rendszer.
+   * **Napló alapú riasztások, irányítópultok és integrációk**: az új ConnectionMonitor_CL táblázat alapján manuálisan kell szerkesztenie a lekérdezéseket. A riasztások a mérőszámokban való újbóli létrehozásával kapcsolatban lásd: [hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#metrics-in-azure-monitor).
     
 ## <a name="prerequisites"></a>Előfeltételek
 
-*   Győződjön meg arról, Network Watcher engedélyezve van a Log Analytics munkaterület előfizetésében és régiójában
-*   Az Azure-beli virtuális gépeket, amelyeken a log Analytics-ügynökök telepítve vannak, Network Watcher bővítménnyel kell engedélyezni
+* Győződjön meg arról, hogy a Network Watcher engedélyezve van az előfizetésben és a Log Analytics munkaterület régiójában.
+* A telepített Log Analytics-ügynökökkel rendelkező Azure-beli virtuális gépeket a Network Watcher bővítménnyel kell engedélyezni.
 
-## <a name="steps-to-migrate-tests-from-network-performance-monitor-to-connection-monitor-preview"></a>A tesztek Network Performance Monitorról a kapcsolódási figyelőbe való áttelepíteni kívánt lépések (előzetes verzió)
+## <a name="migrate-the-tests"></a>A tesztek áttelepíteni
 
-1.  Kattintson a "kapcsolódási figyelő" elemre, és navigáljon a tesztek áttelepíteni a NPM-ből a kapcsolódási figyelőbe (előzetes verzió).
+A tesztek Network Performance Monitorról a kapcsolódási figyelőre (előzetes verzió) való áttelepíthetők:
 
-    ![A NPM és a Csatlakozáskezelő előzetes verziójára mutató áttelepíteni kívánt tesztek](./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png)
+1. A Network Watcher területen válassza a **Csatlakozáskezelő**lehetőséget, majd válassza a **tesztek átmigrálása a NPM** lapról lehetőséget. 
+
+    ![Képernyőfelvétel: "a tesztek áttelepíthetők a NPM" panelről Network Watcher | Csatlakozáskezelő (előzetes verzió).](./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png)
     
-1.  Válassza ki az előfizetést, a munkaterületet és az áttelepíteni kívánt NPM szolgáltatást. Jelenleg csak teszteket telepíthet át a szolgáltatás-csatlakozási Figyelőről.  
-1.  Kattintson az "Importálás" gombra a tesztek áttelepíteni
-1.  Az áttelepítés megkezdése után a következő változások történnek: 
-    1. Létrejön egy új Csatlakozáskezelő-erőforrás.
-        1. Régiónként egy figyelőt hoznak létre. Helyszíni ügynökökkel végzett tesztek esetén az új kapcsolattípus neve <workspaceName> _"helyszíni" formátumú. Az Azure-ügynökökkel végzett tesztek esetében az új figyelő neve<Azure_region_name formátumú <workspaceName> _>
-        1. A figyelési adattárolási szolgáltatás jelenleg ugyanazon a Log Analytics munkaterületen található, amelyben a NPM engedélyezve van, egy új, Connectionmonitor_CL tábla nevű táblában. 
-        1. A teszt neve a csoport nevének tesztelésére szolgál. A teszt leírása nem lesz áttelepítve.
-        1. A rendszer létrehozza és használja a forrás-és cél végpontokat a létrehozott tesztelési csoportban. A helyszíni ügynökök esetében a végpontok neve <workspaceName> _"Endpoint" (végpont_ <FQDN of on-premises machine> ) formátumú. Ha az Azure-ban az áttelepítési tesztek nem futnak ügynökök, akkor engedélyeznie kell az ügynököket, és újra kell telepíteni az áttelepítést.
-        1. A célport és a szondázás időközét a rendszer a "TC"_ <testname> és a "TC"__ "AppThresholds" teszt-konfigurációra helyezi át <testname> . A port értékei alapján a protokoll beállítása megtörténik. A sikeres küszöbértékek és egyéb opcionális tulajdonságok üresen maradnak.
-    1. A NPM nincs letiltva. Ezért az áttelepített tesztek továbbra is küldenek az NetworkMonitoring táblába és ConnectionMonitor_CL táblázatba. Ez a lépés biztosítja, hogy a meglévő napló alapú riasztások és integrációk ne legyenek hatással. A napló alapú riasztások áttelepítése a NetworkMonitoring táblázatba automatikusan metrikai alapú riasztásokra, a Migrálás részeként pedig hamarosan elérhető lesz.
-    1. Az újonnan létrehozott Csatlakozáskezelő látható lesz a Csatlakozáskezelőben (előzetes verzió)
-1.  Az áttelepítés után manuálisan le kell tiltania a teszteket a NPM-ben. Amíg nem teszi meg, továbbra is ugyanazt a díjat kell fizetnie. A NPM letiltása során győződjön meg arról, hogy ConnectionMonitor_CL táblán hozza létre újra a riasztásokat, vagy használjon metrikákat. Győződjön meg arról is, hogy minden külső integrációt, például az irányítópultokat Power BI, Grafana, SIEM-rendszerekkel való integrációját át kell telepíteni ConnectionMonitor_CL táblázatba
+1. A legördülő listában válassza ki az előfizetést és a munkaterületet, majd válassza ki az áttelepíteni kívánt NPM szolgáltatást. Jelenleg csak a Service connectivity figyelőből lehet áttelepíteni a teszteket.  
+1. Az **Importálás** gombra kattintva áttelepítheti a teszteket.
+
+Az áttelepítés megkezdése után a következő módosítások lépnek érvénybe: 
+* Létrejön egy új Csatlakozáskezelő-erőforrás.
+   * Régiónként egy figyelőt hoznak létre. Helyszíni ügynökökkel végzett tesztek esetén az új figyelő neve a következő lesz: `<workspaceName>_"on-premises"` . Az Azure-ügynökökkel végzett tesztek esetében az új figyelő neve a következő lesz: `<workspaceName>_<Azure_region_name>` .
+   * A figyelési adattárolási szolgáltatás jelenleg ugyanazon a Log Analytics munkaterületen található, amelyben a NPM engedélyezve van, egy új táblázatban Connectionmonitor_CL néven. 
+   * A teszt neve a test Group neve alapján kerül továbbításra. A teszt leírása nincs áttelepítve.
+   * A forrás és a cél végpontok létrehozása és használata az új tesztelési csoportban történik. A helyszíni ügynökök esetében a végpontok formátuma a következő: `<workspaceName>_"endpoint"_<FQDN of on-premises machine>` . Az Azure esetében, ha az áttelepítési tesztek olyan ügynököket tartalmaznak, amelyek nem futnak, engedélyeznie kell az ügynököket, és újra kell telepíteni az áttelepítést.
+   * A célport és a Szondázási intervallum átkerül egy * \<testname> TC_* nevű és *TC_ \<testname> _AppThresholdsi*teszt-konfigurációba. A protokoll beállítása a portok értékei alapján történik. A sikeres küszöbértékek és egyéb opcionális tulajdonságok üresen maradnak.
+* A NPM nincs letiltva, ezért az áttelepített tesztek továbbra is küldhetnek adatátvitelt a NetworkMonitoring és ConnectionMonitor_CL táblákba. Ez a megközelítés biztosítja, hogy a meglévő napló alapú riasztások és integrációk ne legyenek hatással.
+* Az újonnan létrehozott Csatlakozáskezelő látható a Csatlakozáskezelő (előzetes verzió) szolgáltatásban.
+
+Az áttelepítés után ügyeljen a következőre:
+* Manuálisan tiltsa le a teszteket a NPM. Amíg így tesz, továbbra is díjat kell fizetnie. 
+* A NPM letiltása közben hozza létre újra a riasztásokat a ConnectionMonitor_CL táblában, vagy használjon metrikákat. 
+* Telepítse át a külső integrációkat a ConnectionMonitor_CL táblába. A külső integrációk példái a Power BI-és Grafana található irányítópultok, valamint a biztonsági információkkal és az Event Management-(SIEM-) rendszerekkel való integrációk.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja, [Hogyan migrálhat a kapcsolódási figyelőről a kapcsolódási figyelőre (előzetes verzió)](migrate-to-connection-monitor-preview-from-connection-monitor.md)
-* Ismerje meg [, hogyan hozhatja létre a kapcsolódási figyelőt (előzetes verzió) a Azure Portal használatával](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview-create-using-portal)
+A Csatlakozáskezelő (előzetes verzió) szolgáltatásról további információt a következő témakörben talál:
+* [Áttelepítés a kapcsolódási Figyelőről a kapcsolódási figyelőre (előzetes verzió)](migrate-to-connection-monitor-preview-from-connection-monitor.md)
+* [Csatlakozáskezelő (előzetes verzió) létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview-create-using-portal)

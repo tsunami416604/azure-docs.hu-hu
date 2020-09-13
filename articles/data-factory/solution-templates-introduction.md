@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628946"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441952"
 ---
 # <a name="templates"></a>Sablonok
 
@@ -68,9 +68,9 @@ A Data Factory Azure Resource Manager sablonokat használ a következő adattár
 
         -   SQL Server a helyszínen Azure SQL Database
 
-        -   SQL Server a helyszínen Azure SQL Data Warehouse
+        -   SQL Server a helyszínen az Azure szinapszis Analytics szolgáltatásba (korábban SQL Data Warehouse)
 
-        -   A helyszíni Oracle-ből Azure SQL Data Warehouse
+        -   A helyszíni Oracle-ből az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse)
 
 -   SSIS-sablonok
 

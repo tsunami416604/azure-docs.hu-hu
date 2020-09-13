@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/03/2020
+ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306145"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440118"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning erőforrások kezelése a VS Code bővítménnyel (előzetes verzió)
 
@@ -48,6 +48,7 @@ További információ: [munkaterületek](concept-workspace.md).
 
 A munkaterület létrehozásának alternatív módszerei a következők:
 
+- Nyissa meg a parancs paletta **nézetét > a Command paletta** parancsot, és írja be az **Azure ml: Create Workspace (munkaterület létrehozása**) szöveget.
 - Kattintson a `+` Azure Machine learning nézet tetején található ikonra.
 - Hozzon létre egy új munkaterületet, amikor a rendszer kéri, hogy válasszon ki egy munkaterületet más erőforrások kiépítés során.
 
@@ -243,6 +244,39 @@ A Futtatás befejezése után előfordulhat, hogy le szeretné tölteni a napló
 
 A bővítményben ellenőrizheti a metaadatokat, például a futtatási konfigurációt, valamint a Futtatás részleteit.
 
+## <a name="compute-instances"></a>Számítási példányok
+
+További információ: [számítási példányok](concept-compute-instance.md).
+
+### <a name="create-compute-instance"></a>Számítási példány létrehozása
+
+1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
+1. Bontsa ki azt a munkaterület-csomópontot, amelyben a számítási példányt létre szeretné hozni.
+1. Kattintson a jobb gombbal a **számítási példányok** csomópontra, és válassza a **számítási példány létrehozása**lehetőséget.
+1. A parancssorban:
+    1. Adja meg a számítási példány nevét.
+    1. Válassza ki a virtuális gép méretét a listából.
+    1. Válassza ki, hogy engedélyezni kívánja-e az SSH-hozzáférést.
+        1. Ha engedélyezi az SSH-hozzáférést, meg kell adnia a nyilvános SSH-kulcsot vagy a kulcsot tartalmazó fájlt is. További információ: [ssh-kulcsok létrehozása és használata az Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)-ban.
+
+### <a name="stop-or-restart-compute-instance"></a>Számítási példány leállítása vagy újraindítása
+
+1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
+1. Bontsa ki a **számítási példány** csomópontot a munkaterületen belül.
+1. Kattintson a jobb gombbal a leállítani vagy újraindítani kívánt számítási példányra, majd válassza a **számítási példány leállítása** vagy a **számítási példány újraindítása** lehetőséget.
+
+### <a name="view-compute-instance-configuration"></a>Számítási példány konfigurációjának megtekintése
+
+1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
+1. Bontsa ki a **számítási példány** csomópontot a munkaterületen belül.
+1. Kattintson a jobb gombbal az ellenőrizni kívánt számítási példányra, és válassza a **számítási példány tulajdonságainak megtekintése**lehetőséget.
+
+### <a name="delete-compute-instance"></a>Számítási példány törlése
+
+1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
+1. Bontsa ki a **számítási példány** csomópontot a munkaterületen belül.
+1. Kattintson a jobb gombbal a törölni kívánt számítási példányra, majd válassza a **számítási példány törlése**lehetőséget.
+
 ## <a name="compute-clusters"></a>Számítási fürtök
 
 A bővítmény a következő számítási típusokat támogatja:
@@ -390,6 +424,6 @@ A központi telepítések létrehozása és törlése mellett megtekintheti és 
         - A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás**gombot.
     - A központi telepítés konfigurációs beállításainak megtekintéséhez válassza a **szolgáltatás tulajdonságainak megtekintése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Képbesorolási modell betanítása](tutorial-train-deploy-image-classification-model-vscode.md) a vs Code bővítménnyel.

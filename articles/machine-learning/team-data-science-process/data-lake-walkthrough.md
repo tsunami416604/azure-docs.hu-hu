@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48e6d8870baad60c79cf392894db8b71003bb875
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b45cc87c525ab66a3807f71901728e60d086ea74
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276964"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440405"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skálázható adatelemzés a Azure Data Lake használatával: teljes körű útmutató
 Ez az útmutató bemutatja, hogyan használhatók a Azure Data Lake az adatfeltárási és a bináris besorolási feladatok elvégzésére a New York-i taxi Trip és a viteldíj-adatkészlet mintáján, és megjósolható, hogy a tipp díjköteles-e. Végigvezeti a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)lépésein, a teljes körű, az adatgyűjtés és a modell képzésének lépésein, majd egy olyan webszolgáltatás üzembe helyezésén, amely közzéteszi a modellt.
@@ -28,13 +28,13 @@ Ezek a technológiák az útmutatóban használatosak.
 * U-SQL és Visual Studio
 * Python
 * Azure Machine Learning
-* Scripts
+* Parancsfájlok
 
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 A [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) minden olyan képességgel rendelkezik, amely megkönnyíti az adatszakértők számára a méret, az alakzat és a sebesség adatainak tárolását, valamint az adatfeldolgozást, a fejlett elemzési funkciókat és a gépi tanulási modellezést, költséghatékony módon.   A feladatokat csak akkor kell fizetnie, ha az adatok feldolgozása ténylegesen folyamatban van. Azure Data Lake Analytics tartalmazza a U-SQL-t, amely egy olyan nyelv, amely az SQL deklaratív jellegét a C# kifejező erejével ötvözi a skálázható elosztott lekérdezési képesség biztosításához. Lehetővé teszi a strukturálatlan adatok feldolgozását, ha a sémát az olvasás, az egyéni logika és a felhasználó által definiált függvények (UDF-EK) használatával végzi, és bővíthető, így részletesen szabályozható a méretezési műveletek végrehajtása. Ha többet szeretne megtudni az U-SQL mögötti tervezési filozófiáról, tekintse meg a [Visual Studio blogbejegyzését](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
-A Data Lake Analytics a Cortana Analytics Suite részét képezi, és Azure SQL Data Warehouse, Power BI és Data Factory is működik. Ez a kombináció teljes körű felhőalapú big data és fejlett elemzési platformot biztosít.
+Data Lake Analytics a Cortana Analytics Suite része is, és együttműködik az Azure szinapszis Analytics, a Power BI és a Data Factory használatával. Ez a kombináció teljes körű felhőalapú big data és fejlett elemzési platformot biztosít.
 
 Ez az útmutató az adatelemzési folyamatokkal kapcsolatos feladatok végrehajtásához szükséges előfeltételek és erőforrások telepítését ismerteti. Ezután az U-SQL használatával ismerteti az adatfeldolgozási lépéseket, és azt mutatja be, hogyan használható a Python és a kaptár a Azure Machine Learning Studio (klasszikus) segítségével a prediktív modellek létrehozásához és üzembe helyezéséhez.
 
@@ -47,7 +47,7 @@ Ez az útmutató egy olyan szakaszt is tartalmaz, amely bemutatja, hogyan hozhat
 ### <a name="azure-machine-learning"></a>Azure Machine Learning 
 A Azure Machine Learning Studio (klasszikus) a prediktív modellek létrehozásához és üzembe helyezéséhez használható két módszer használatával: először Python-szkriptekkel, majd egy HDInsight-(Hadoop-) fürthöz tartozó kaptár-táblákkal.
 
-### <a name="scripts"></a>Scripts
+### <a name="scripts"></a>Parancsfájlok
 Ebben az útmutatóban csak a fő lépések szerepelnek. Letöltheti a teljes **U-SQL-szkriptet** és **Jupyter notebook** a [githubról](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -181,7 +181,7 @@ FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyct
 USING Extractors.Csv();
 ```
 
-Mivel az első sorban vannak fejlécek, el kell távolítania a fejléceket, és módosítania kell az oszlopok típusait. Mentheti a feldolgozott adatAzure Data Lake Storaget a **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ vagy az Azure Blob Storage-fiókkal a **wasb://container_name \@ blob_storage_account_name. blob. Core. windows. net/blob_name**használatával.
+Mivel az első sorban vannak fejlécek, el kell távolítania a fejléceket, és módosítania kell az oszlopok típusait. Mentheti a feldolgozott adatAzure Data Lake Storaget a **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ vagy az Azure Blob Storage-fiókkal a  **wasb://container_name \@ blob_storage_account_name. blob. Core. windows. net/blob_name**használatával.
 
 ```sql
 // change data types
@@ -512,7 +512,7 @@ from azureml import services
 ```
 
 ### <a name="read-in-the-data-from-blob"></a>Olvasás a blobból származó adatokból
-* Kapcsolatok karakterlánca
+* Kapcsolati sztring
 
   ```text
   CONTAINERNAME = 'test1'
@@ -587,7 +587,7 @@ Itt létrehozhat egy bináris besorolási modellt, amely azt jelzi, hogy egy ado
   Y_train_pred = logit_fit.predict(X_train)
   ```
 
-    ![C1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
+    ![c1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
 
 * Pontszám tesztelési adatkészlete
 
@@ -613,14 +613,14 @@ Itt létrehozhat egy bináris besorolási modellt, amely azt jelzi, hogy egy ado
   print metrics.confusion_matrix(Y_test,Y_test_pred)
   ```
 
-    ![C2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
+    ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Webszolgáltatási API létrehozása és felhasználása a Pythonban
 A gépi tanulási modellt a létrehozása után szeretné működővé tenni. A bináris logisztikai modellt példaként használjuk. Győződjön meg arról, hogy a scikit-Learn verzió a helyi gépen 0.15.1 (Azure Machine Learning Studio már legalább ezen a verziónál).
 
 * Keresse meg a munkaterület hitelesítő adatait Azure Machine Learning Studio (klasszikus) beállítások közül. A Azure Machine learning Studio kattintson a **Beállítások**  -->  **név**  -->  **engedélyezési jogkivonatok**elemre.
 
-    ![C3 csomag](./media/data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
   ```output
   workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -660,7 +660,7 @@ A gépi tanulási modellt a létrehozása után szeretné működővé tenni. A 
   NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
   ```
 
-    ![C4](./media/data-lake-walkthrough/c4-call-API.PNG)
+    ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>2. lehetőség: modellek létrehozása és üzembe helyezése közvetlenül a Azure Machine Learningban
 Azure Machine Learning Studio (klasszikus) az adatok közvetlenül a Azure Data Lake Storageból olvashatók be, majd a modellek létrehozásához és üzembe helyezéséhez használhatók. Ez a megközelítés egy struktúra-táblázatot használ, amely a Azure Data Lake Storage mutat. A kaptár táblához külön Azure HDInsight-fürtöt kell kiépíteni. 
@@ -756,7 +756,7 @@ Az útmutató elvégzésével létrehozta az adatelemzési környezetet a Azure 
 ## <a name="whats-next"></a>A következő lépések
 A [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) képzési terve olyan témakörökre mutató hivatkozásokat tartalmaz, amelyek a speciális elemzési folyamat egyes lépéseit ismertetik. A [csoportos adatelemzési folyamat áttekintése](walkthroughs.md) oldalon számos bemutatót talál, amelyek bemutatják, hogyan használhatja az erőforrásokat és szolgáltatásokat különböző prediktív elemzési helyzetekben:
 
-* [A csoportos adatelemzési folyamat működés közben: a SQL Data Warehouse használata](sqldw-walkthrough.md)
+* [A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata](sqldw-walkthrough.md)
 * [A csoportos adatelemzési folyamat működés közben: a HDInsight Hadoop-fürtök használata](hive-walkthrough.md)
 * [A csoportos adatelemzési folyamat: a SQL Server használata](sql-walkthrough.md)
 * [Az adatelemzési folyamat áttekintése az Azure HDInsight Spark használatával](spark-overview.md)

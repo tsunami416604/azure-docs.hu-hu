@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028123"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439997"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Az adatelemzési projektek platformja és eszközei
 
@@ -63,11 +63,11 @@ Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőfo
 A Microsoft TDSP csapata két végpontok közötti bemutatót tett közzé, amelyekkel Azure HDInsight Spark-fürtöket hozhat létre adatelemzési megoldások létrehozásához, amely a Python és a többi Scala használatával történik. Az Azure HDInsight **Spark-fürtökkel**kapcsolatos további információkért tekintse [meg a HDInsight Linux – Áttekintés: Apache Spark](../../hdinsight/spark/apache-spark-overview.md)című témakört. Ha szeretné megismerni, hogyan hozhat létre adatelemzési megoldást a **Python** használatával egy Azure HDInsight Spark-fürtön, tekintse meg [az adatelemzés áttekintése a Spark használatával az Azure HDInsight](spark-overview.md)című cikket. Ha meg szeretné tudni, hogyan hozhat létre adatelemzési megoldást a **Scala** használatával egy Azure HDInsight Spark-fürtön, tekintse meg az [adatelemzést a Scala és a Spark Azure-beli használatával](scala-walkthrough.md)című 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse lehetővé teszi a számítási erőforrások egyszerű és másodpercek alatt történő méretezését, a kiépítés és a túlfizetések nélkül. Emellett egyedi lehetőséget biztosít a számítási erőforrások használatának szüneteltetésére is, így biztosítva a Felhőbeli költségek jobb kezelését. A méretezhető számítási erőforrások üzembe helyezésének lehetősége lehetővé teszi, hogy az összes adatait Azure SQL Data Warehouseba hozza. A tárolási költségek minimálisak, és csak az elemezni kívánt adatkészletek részein lehet számítást futtatni. 
+Az Azure szinapszis Analytics segítségével könnyedén és másodpercek alatt méretezheti a számítási erőforrásokat, anélkül, hogy túlterhelést vagy túlfizetést kellene fizetnie. Emellett egyedi lehetőséget biztosít a számítási erőforrások használatának szüneteltetésére is, így biztosítva a Felhőbeli költségek jobb kezelését. A méretezhető számítási erőforrások üzembe helyezésének képessége lehetővé teszi az adatok Azure szinapszis-elemzésbe való bevezetését. A tárolási költségek minimálisak, és csak az elemezni kívánt adatkészletek részein lehet számítást futtatni. 
 
-Azure SQL Data Warehouseről a [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) webhelyén talál további információt. Ha szeretné megtudni, hogyan hozhat létre teljes körű fejlett elemzési megoldásokat SQL Data Warehouseekkel, tekintse meg [a csoportos adatelemzési folyamat működés közben: SQL Data Warehouse használata](sqldw-walkthrough.md)című témakört.
+Az Azure szinapszis Analytics szolgáltatással kapcsolatos további információkért tekintse meg az [Azure szinapszis Analytics](https://azure.microsoft.com/services/sql-data-warehouse) webhelyét. Ha szeretné megtudni, hogyan hozhat létre teljes körű, fejlett elemzési megoldásokat az Azure szinapszis Analytics segítségével, tekintse meg a csoportos adatelemzési [folyamat működés közben: az Azure szinapszis Analytics használata](sqldw-walkthrough.md)című témakört.
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
@@ -149,7 +149,7 @@ Ha Linux (CentOS) gépeket használ a git-parancsok futtatásához, hozzá kell 
 1. Illessze be a szövegmezőbe másolt SSH-kulcsot, és mentse a fájlt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Teljes körű útmutatók, amelyek bemutatják a folyamat összes lépését az **adott forgatókönyvek** esetében is. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példa útmutatói](walkthroughs.md) című témakörben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 

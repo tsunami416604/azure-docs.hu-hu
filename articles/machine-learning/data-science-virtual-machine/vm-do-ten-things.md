@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815912"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440456"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Adatelemzés Windows Data Science Virtual Machine
 
@@ -255,7 +255,7 @@ Az adatgyűjtés adatkeretként történik:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure szinapszis Analytics (korábban SQL DW) és adatbázisok
 Az Azure szinapszis Analytics (korábbi nevén SQL DW) egy rugalmas adattárház, amely nagyvállalati szintű SQL Server felülettel rendelkezik.
 
-Az Azure szinapszis Analytics kiépítéséhez kövesse az ebben a [cikkben](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)található utasításokat. Az SQL-adattárház üzembe helyezése után ezzel az [útmutatóval](../team-data-science-process/sqldw-walkthrough.md) az adatok feltöltését, feltárását és modellezését végezheti el az SQL-adattárházban lévő adatok használatával.
+Az Azure szinapszis Analytics kiépítéséhez kövesse az ebben a [cikkben](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)található utasításokat. Az Azure szinapszis Analytics üzembe helyezése után [ezzel az útmutatóval](../team-data-science-process/sqldw-walkthrough.md) az adatok feltöltését, feltárását és modellezését végezheti el az Azure szinapszis Analytics szolgáltatásban található adatok használatával.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB egy NoSQL-adatbázis a felhőben. Használhatja a JSON-hoz hasonló dokumentumokkal, valamint a dokumentumok tárolására és lekérdezésére.
@@ -330,6 +330,6 @@ A keretrendszeren alapuló mintákon kívül olyan átfogó útmutatók is besze
 
 - [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két neurális hálózati architektúrát létrehozni és betanítani: hierarchikus figyelmet a hálózatra és a hosszú távú memória-(LSTM-) hálózatra. Ezek a neurális hálózatok a kerasz API-t használják a mélyreható tanuláshoz a szöveges dokumentumok besorolásához. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ez a cikk néhány olyan dolgot ismertetett, amelyet a Microsoft Data Science Virtual Machine végezhet el. Számos további dolgot tehet a DSVM hatékony elemzési környezetének elvégzéséhez.
 

@@ -152,7 +152,7 @@ Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonna
    1. A **név**alatt cserélje le az **EPICT** *TDSP-projektekkel*. 
    1. A **várakozó munkaelemek**területen válassza az **új munkaelem típusa**lehetőséget, írja be a *TDSP projektet*, és válassza a **Hozzáadás**lehetőséget. 
    1. Az **alapértelmezett munkaelem típusa**területen válassza a legördülő listát, majd a **TDSP projektet**. 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
    
    ![Portfólió-várakozó fájlok szintjének beállítása](./media/agile-development/13-rename.png)  
    

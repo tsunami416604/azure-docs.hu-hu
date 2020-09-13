@@ -84,7 +84,7 @@ A **Azure Data Catalog** adatprofilja a táblázat és az oszlop profiljának ad
 * NULL értékű sorok száma
 * Az oszlopok értékeinek minimális, maximális, átlagos és szórásos szórása
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az adatok profilkészítése statisztikai adatokat és információkat biztosít a regisztrált adategységekről, amelyek segítségével meghatározhatja az üzleti problémák megoldásához szükséges adatok megfelelőségét. A jegyzetek és az adatforrások dokumentálása mellett az adatprofilok mélyebb ismereteket biztosíthatnak a felhasználóknak az adatairól.
 

@@ -42,7 +42,7 @@ A riasztást úgy is beállíthatja, hogy a következő esetekben hajtsa végre 
 
 A riasztási szabályokkal kapcsolatos információkat a
 
-* [A Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Az Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Parancssori felület (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)

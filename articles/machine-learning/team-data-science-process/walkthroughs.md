@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864077"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439827"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Útmutató a csoportos adatelemzési folyamat végrehajtásához
 
@@ -32,11 +32,11 @@ Ezek az **átfogó** útmutatók a csoportos adatelemzési folyamat lépéseit m
 - [HDInsight Hadoop-forgatókönyvek a kaptár használatával](walkthroughs-hdinsight-hadoop.md) Ezek a forgatókönyvek a kaptárt egy HDInsight Hadoop-fürttel használják a prediktív elemzések elvégzéséhez.
 - [A U-SQL használatával Azure Data Lake útmutató](walkthroughs-azure-data-lake.md) Ezek a forgatókönyvek a U-SQL-t használják Azure Data Lake a prediktív elemzések elvégzéséhez.
 - [SQL Server](walkthroughs-sql-server.md) Ezek a forgatókönyvek a SQL Server, SQL Server R Services és SQL Server Python-szolgáltatásokat használják a prediktív elemzések elvégzéséhez.
-- [SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) Ezek a forgatókönyvek a prediktív elemzések SQL Data Warehouseét használják. 
+- [Azure szinapszis-elemzés](walkthroughs-sql-data-warehouse.md) Ezek a forgatókönyvek az Azure szinapszis Analytics használatával végzik a prediktív elemzést. 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos adatelemzési folyamat áttekintésében](overview.md)talál további információt.
 

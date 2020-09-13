@@ -1006,7 +1006,7 @@ Az alábbi ábrán egy minta pontozási kísérlet szerepel. Ha készen áll a t
 
 ![Azure ML-közzététel][11]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ahhoz, hogy beolvassa az ebben az útmutatóban ismertetett oktatóanyagot, létrehozott egy Azure-beli adatelemzési környezetet, amely egy nagyméretű nyilvános adatkészlettel dolgozott, a csoportos adatelemzési folyamaton keresztül, egészen az adatgyűjtésig a modell betanítása, majd egy Azure Machine Learning webszolgáltatás üzembe helyezése során.
 
 ### <a name="license-information"></a>Licencelési információk

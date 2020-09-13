@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021500"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441935"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory adatáthelyezési biztonsági szempontjait](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez. Azure Data Factory felügyeleti erőforrások az Azure biztonsági infrastruktúrára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést felhasználhatják.
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
@@ -42,7 +42,7 @@ Ha érdekli az Azure megfelelősége, és hogy az Azure Hogyan védi a saját in
 
 Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjük át a biztonsági szempontokat: 
 
-- **Felhőalapú forgatókönyv**– ebben a forgatókönyvben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, a Azure SQL Data Warehouse, a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon-vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData A támogatott adatforrások teljes listáját [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats)találja.
+- **Felhőalapú forgatókönyv**– ebben a forgatókönyvben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, az Azure szinapszis Analytics (korábban SQL Data Warehouse), a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData. A támogatott adatforrások teljes listáját [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats)találja.
 - **Hibrid forgatókönyv**– ebben a forgatókönyvben a forrás vagy a cél tűzfal mögött van, vagy egy helyszíni vállalati hálózaton belül, vagy az adattár egy magánhálózat/virtuális hálózatban (leggyakrabban a forrás) található, és nem nyilvánosan elérhető. A virtuális gépeken üzemeltetett adatbázis-kiszolgálók is ebbe a forgatókönyvbe tartoznak.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -55,13 +55,13 @@ Azure Data Factory védi az adattár hitelesítő **adatait a** **Microsoft ált
 Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik.
 
 > [!NOTE]
-> **Azure SQL Database** és **Azure SQL Data Warehouse** összes kapcsolata mindig titkosítást (SSL/TLS) igényel, miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Egy folyamat JSON-szerkesztővel való készítése közben adja hozzá a **titkosítási** tulajdonságot, és állítsa **igaz** értékre a **kapcsolódási karakterláncban**. A [Másolás varázsló](data-factory-azure-copy-wizard.md)használatakor a varázsló alapértelmezés szerint beállítja ezt a tulajdonságot. Az **Azure Storage**esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
+> A **Azure SQL Database** és az **Azure szinapszis Analytics** összes kapcsolata mindig titkosítást (SSL/TLS) igényel, miközben az adatok átvitele az adatbázisból és az adatbázisból történik. Egy folyamat JSON-szerkesztővel való készítése közben adja hozzá a **titkosítási** tulajdonságot, és állítsa **igaz** értékre a **kapcsolódási karakterláncban**. A [Másolás varázsló](data-factory-azure-copy-wizard.md)használatakor a varázsló alapértelmezés szerint beállítja ezt a tulajdonságot. Az **Azure Storage**esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
 
 ### <a name="data-encryption-at-rest"></a>Adat-titkosítás inaktív állapotban
 Egyes adattárak támogatják a nyugalmi állapotban lévő adatok titkosítását. Javasoljuk, hogy ezekhez az adattárakhoz engedélyezze az adattitkosítási mechanizmust. 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-A Azure SQL Data Warehouse transzparens adattitkosítás (TDE) segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és inaktív adatok visszafejtését végzi. Ez a viselkedés átlátható az ügyfél számára. További információ: [adatbázis biztonságossá tétele SQL Data Warehouseban](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Az Azure szinapszis Analytics transzparens adattitkosítás (TDE) szolgáltatásával megvédheti a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és visszafejtést végez a nyugalmi állapotban. Ez a viselkedés átlátható az ügyfél számára. További információ: [adatbázis biztonságossá tétele a szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 A Azure SQL Database támogatja az transzparens adattitkosítást (TDE), amely segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy az alkalmazás módosítása nélkül valós idejű titkosítást és visszafejtést végez. Ez a viselkedés átlátható az ügyfél számára. További információ: [transzparens adattitkosítás Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
@@ -114,7 +114,7 @@ Az adatkezelés-átjáró jelenleg egyetlen **tanúsítványt**használ. Ez a ta
 | Átjáró verziója (a létrehozás során) | Tárolt hitelesítő adatok | Hitelesítő adatok titkosítása/biztonság | 
 | --------------------------------- | ------------------ | --------- |  
 | < = 2.3. xxxx. x | Felhőben | Titkosított tanúsítvány használatával (a Hitelesítőadat-kezelő alkalmazás által használttól eltérő) | 
-| > = 2.4. xxxx. x | Helyszíni | Védett DPAPI-n keresztül | 
+| > = 2.4. xxxx. x | A helyszínen | Védett DPAPI-n keresztül | 
   
 
 ### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
@@ -154,11 +154,11 @@ A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tarto
 | `*.servicebus.windows.net` | 443, 80 | Az átjáró számára szükséges az adatátviteli szolgáltatásokhoz való kapcsolódáshoz Data Factory |
 | `*.core.windows.net` | 443 | Az átjáró az Azure Storage-fiókhoz való csatlakozáshoz használja az [előkészített másolási](data-factory-copy-activity-performance.md#staged-copy) szolgáltatás használatakor. | 
 | `*.frontend.clouddatahub.net` | 443 | Ahhoz szükséges, hogy az átjáró csatlakozhasson a Azure Data Factory szolgáltatáshoz. | 
-| `*.database.windows.net` | 1433   | (Nem kötelező) akkor szükséges, ha a cél Azure SQL Database/Azure SQL Data Warehouse. Az előkészített másolási szolgáltatással az 1433-as port megnyitása nélkül másolhatja az adatAzure SQL Database/Azure SQL Data Warehouse. | 
+| `*.database.windows.net` | 1433   | (Nem kötelező) akkor szükséges, ha a cél Azure SQL Database/Azure szinapszis Analytics. Az előkészített másolási szolgáltatással az 1433-as port megnyitása nélkül másolhat Adatmásolást Azure SQL Database/Azure szinapszis Analytics szolgáltatásba. | 
 | `*.azuredatalakestore.net` | 443 | (Nem kötelező) akkor szükséges, ha a célhelye Azure Data Lake Store | 
 
 > [!NOTE] 
-> Előfordulhat, hogy a megfelelő adatforrások által megkövetelt portokat vagy engedélyezési tartományokat a vállalati tűzfal szintjén kell kezelnie. Ez a táblázat csak Azure SQL Database, Azure SQL Data Warehouse, Azure Data Lake Store példát használ.   
+> Előfordulhat, hogy a megfelelő adatforrások által megkövetelt portokat vagy engedélyezési tartományokat a vállalati tűzfal szintjén kell kezelnie. Ez a táblázat csak az Azure SQL Database, az Azure szinapszis Analytics, Azure Data Lake Store példaként használja.   
 
 A következő táblázat a **Windows tűzfal** **bejövő portokra** vonatkozó követelményeit tartalmazza.
 
@@ -174,7 +174,7 @@ A felhőben lévő egyes adattárakhoz szükség van a számítógép IP-címén
 A következő felhőalapú adattárakhoz az átjáró-gép IP-címének engedélyezési módszere szükséges. Az adattárak némelyike alapértelmezés szerint nem igényli az IP-cím engedélyezési felírását. 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
-- [Az Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -185,12 +185,12 @@ A következő felhőalapú adattárakhoz az átjáró-gép IP-címének engedél
 **Válasz:** Ez a funkció még nem támogatott. Már dolgozunk rajta.
 
 **Kérdés:** Milyen portokra vonatkozó követelmények vonatkoznak az átjáró működéséhez?
-**Válasz:** Az átjáró HTTP-alapú kapcsolatokat tesz elérhetővé az Internet megnyitásához. A kapcsolódáshoz a **443-es és a 80-as kimenő portnak** kell megnyitnia az átjáró számára. Nyissa meg a 8050-es **bejövő portot** a Hitelesítőadat-kezelő alkalmazáshoz csak a számítógép szintjén (a vállalati tűzfal szintjén). Ha Azure SQL Database vagy Azure SQL Data Warehouse forrásként vagy célhelyként van használatban, akkor a **1433** -as portot is meg kell nyitnia. További információ: a [tűzfal konfigurációi és az IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) listája szakasz. 
+**Válasz:** Az átjáró HTTP-alapú kapcsolatokat tesz elérhetővé az Internet megnyitásához. A kapcsolódáshoz a **443-es és a 80-as kimenő portnak** kell megnyitnia az átjáró számára. Nyissa meg a 8050-es **bejövő portot** a Hitelesítőadat-kezelő alkalmazáshoz csak a számítógép szintjén (a vállalati tűzfal szintjén). Ha Azure SQL Database vagy az Azure szinapszis Analytics forrásként vagy célhelyként van használatban, akkor a **1433** -as portot is meg kell nyitnia. További információ: a [tűzfal konfigurációi és az IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) listája szakasz. 
 
 **Kérdés:** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
 **Válasz:** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység teljesítményével kapcsolatos további információkért lásd: a [másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md).
 
  
