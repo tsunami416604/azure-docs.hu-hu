@@ -40,7 +40,7 @@ Az eszköz-szimulátor **Node.js**10.0. x vagy újabb verzión alapul. [*A fejle
 
 Az alábbi ábra a megoldás architektúráját mutatja be az Azure Digital Twins és a Device kiépítési szolgáltatás használatával. Az eszköz kiépítése és a kivonási folyamat is megjelenik.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a "kiosztás" címkével ellátott Azure-függvény használatával. A manuális "eszköz törlése" műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a kiosztás címkével ellátott Azure-függvény használatával. A manuális eszköz törlése műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
 
 Ez a cikk két szakaszra oszlik:
 * [*Eszköz automatikus kiépítése az eszköz kiépítési szolgáltatásával*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ Az architektúra egyes lépéseinek mélyebb magyarázatához tekintse meg az eg
 
 Ebben a szakaszban az eszköz kiépítési szolgáltatását az Azure digitális Twins-hoz csatlakoztatja, hogy automatikusan kiépítse az eszközöket az alábbi elérési úton. Ez a [korábban](#solution-architecture)bemutatott teljes architektúra kivonata.
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Flow kiépítése – a megoldás architektúra-diagramjának kivonata, amely a folyamat egyes részeit címkézi. Az adatforgalom egy termosztátos eszköz és a DPS (1 for Device > DPS és 5 a DPS > eszköz esetében) között zajlik. Az adatok a DPS-ből a IoT Hub (4) és az Azure digitális Twins (3) rendszerbe is áramlanak a "kiosztás" (2) címkével ellátott Azure-függvény használatával.":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Flow kiépítése – a megoldás architektúra-diagramjának kivonata, amely a folyamat egyes részeit címkézi. Az adatforgalom egy termosztátos eszköz és a DPS (1 for Device > DPS és 5 a DPS > eszköz esetében) között zajlik. Az adatok a DPS-ből a IoT Hub (4) és az Azure digitális Twins (3) rendszerbe is áramlanak a kiosztás (2) címkével ellátott Azure-függvény használatával.":::
 
 Itt látható a folyamat folyamatábrája:
 1. Az eszköz kapcsolatba lép a DPS-végponttal, és azonosítja az azonosító adatokat, hogy igazolja az identitását.
@@ -304,7 +304,7 @@ Meg kell jelennie az Azure Digital Twins-példányban található eszköz két r
 
 Ebben a szakaszban IoT Hub életciklus-eseményeket csatlakoztat az Azure digitális Twins-hoz, hogy az alábbi elérési úton automatikusan kivonja az eszközöket. Ez a [korábban](#solution-architecture)bemutatott teljes architektúra kivonata.
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Az eszköz kivonása – a megoldás architektúra diagramjának kivonata, amely a folyamat egyes részeit címkézi. A termosztátos eszköz a diagramon az Azure-szolgáltatásokhoz való csatlakozás nélkül jelenik meg. A manuális "eszköz törlése" műveletből származó adatok IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure digitális Twins (3) használatával áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Az eszköz kivonása – a megoldás architektúra diagramjának kivonata, amely a folyamat egyes részeit címkézi. A termosztátos eszköz a diagramon az Azure-szolgáltatásokhoz való csatlakozás nélkül jelenik meg. A manuális eszköz törlése műveletből származó adatok IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure digitális Twins (3) használatával áramlanak.":::
 
 Itt látható a folyamat folyamatábrája:
 1. Egy külső vagy manuális folyamat elindít egy eszköz törlését IoT Hubban.
