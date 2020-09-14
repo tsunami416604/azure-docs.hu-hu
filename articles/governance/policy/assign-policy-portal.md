@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Képernyőkép a "szabályzat hozzárendelése" lehetőség kiválasztásáról a hozzárendelések lapon." border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Képernyőkép a szabályzat hozzárendelése lehetőség kiválasztásáról a hozzárendelések lapon." border="false":::
 
 1. A **házirend kiosztása** lapon állítsa be a **hatókört** úgy, hogy kiválasztja a három pontot, majd kiválasztja a felügyeleti csoportot vagy az előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután használja a **Select (kiválasztás** ) gombot a **hatókör** lap alján.
 
