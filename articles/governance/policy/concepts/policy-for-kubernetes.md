@@ -63,7 +63,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
      1. A Azure Policy lap bal oldalán válassza a **Csatlakozás előnézete** elemet.
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Képernyőkép a házirend oldal "csatlakozás előnézete" csomópontról." border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Képernyőkép a házirend oldal csatlakozás előnézete csomópontról." border="false":::
 
      1. Válassza ki az előfizetéshez hozzáadni kívánt előfizetés sorát.
 
@@ -126,7 +126,7 @@ A fenti előfeltételként szükséges lépések elvégzése után telepítse a 
 
   1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek (előzetes verzió)** lehetőséget.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a "házirendek (előzetes verzió)" csomópontról a Kubernetes szolgáltatás lapján." border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a házirendek (előzetes verzió) csomópontról a Kubernetes szolgáltatás lapján." border="false":::
 
   1. A Főoldalon kattintson a **bővítmény engedélyezése** gombra.
 
@@ -466,11 +466,11 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
 
   1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek (előzetes verzió)** lehetőséget.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a "házirendek (előzetes verzió)" csomópontról a Kubernetes szolgáltatás lapján." border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a házirendek (előzetes verzió) csomópontról a Kubernetes szolgáltatás lapján." border="false":::
 
   1. A Főoldalon kattintson a **bővítmény letiltása** gombra.
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Képernyőkép a "bővítmény letiltása" gombra a "bevezetési Azure Policy az Azure Kubernetes Services (A K) oldalához." border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Képernyőkép a bővítmény letiltása gombra a bevezetési Azure Policy az Azure Kubernetes Services (A K) oldalához." border="false":::
 
 - Azure CLI
 
