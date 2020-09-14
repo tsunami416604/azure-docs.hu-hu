@@ -28,7 +28,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    Vagy válassza a **Létrehozás** lehetőséget a **kezdeti lépések** oldalon a terv létrehozásához.
 
-   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Képernyőkép a "Create Blueprint" (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Képernyőkép a Create Blueprint (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
 
 1. Válassza a **kezdés üres tervezettel** elemet a beépített tervrajzok listájának tetején található kártyán.
 
@@ -265,7 +265,7 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. A tervrajzok listájában kattintson a jobb gombbal a korábban hozzárendelt elemre, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Képernyőfelvétel a terv-hozzárendelés helyi menüjéről a "hozzárendelés részleteinek megtekintése" lehetőség kiválasztásával." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Képernyőfelvétel a terv-hozzárendelés helyi menüjéről a hozzárendelés részleteinek megtekintése lehetőség kiválasztásával." border="false":::
 
 1. A **terv-hozzárendelés** lapon ellenőrizze, hogy az összes összetevő telepítése sikeres volt-e, és hogy nem történt-e hiba a telepítés során. Ha hiba történt, tekintse meg a [tervekkel kapcsolatos hibaelhárítási](./troubleshoot/general.md) lépéseket, amelyek alapján megállapíthatja, hogy mi volt a probléma.
 
