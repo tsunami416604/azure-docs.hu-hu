@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798278"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053548"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 szolgáltatások rendszergazdai szerepkörei
 
@@ -29,10 +29,10 @@ A Microsoft 365ban található összes termék felügyelhető az Azure AD-ben re
 
 Microsoft 365 szolgáltatás | Szerepkör tartalma | API-tartalom
 ---------------------- | ------------------ | -----------------
-Rendszergazdai szerepkörök az Office 365-ben és Microsoft 365 üzleti tervekben | [Office 365-rendszergazdai szerepkörök](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nem elérhető
+Rendszergazdai szerepkörök az Office 365-ben és Microsoft 365 üzleti tervekben | [Rendszergazdai szerepkörök Microsoft 365](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nem elérhető
 Azure Active Directory (Azure AD) és Azure AD Identity Protection| [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Exchange szerepköralapú hozzáférés-vezérlés](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell Exchange-hez](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Szerepkör-hozzárendelések beolvasása](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md)<br>[A SharePoint-rendszergazdai szerepkör az Office 365-ben](/sharepoint/sharepoint-admin-role) is | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md)<br>További [információ a SharePoint-rendszergazdai szerepkörről Microsoft 365](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Csapatok/Skype vállalati verzió | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Biztonsági & megfelelőségi központ (Office 365 Advanced Threat Protection, Exchange Online Protection, Information Protection) | [Office 365-rendszergazdai szerepkörök](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Szerepkör-hozzárendelések beolvasása](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 Biztonságos pontszám | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)

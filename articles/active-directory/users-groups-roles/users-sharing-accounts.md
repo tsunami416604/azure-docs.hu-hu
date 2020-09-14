@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb637ae3da9c6a0a3ea066ad741845bad36d5d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489629"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055163"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure AD-vel
 
@@ -29,7 +29,7 @@ ms.locfileid: "89489629"
 Néha a szervezeteknek egyetlen felhasználónevet és jelszót kell használniuk több személy számára, ami általában két esetben fordul elő:
 
 * Ha olyan alkalmazásokhoz fér hozzá, amelyek egyedi bejelentkezést és jelszót igényelnek minden felhasználó számára, akár helyszíni alkalmazások, akár fogyasztói felhőalapú szolgáltatások (például vállalati közösségi média-fiókok).
-* Többfelhasználós környezetek létrehozásakor. Lehet, hogy egyetlen, helyi fiókkal rendelkezik, amely emelt szintű jogosultságokkal rendelkezik, és alapszintű telepítési, felügyeleti és helyreállítási tevékenységeket végez. Például a helyi "globális rendszergazda" fiók az Office 365 vagy a Salesforce rendszergazdai fiókja.
+* Többfelhasználós környezetek létrehozásakor. Lehet, hogy egyetlen, helyi fiókkal rendelkezik, amely emelt szintű jogosultságokkal rendelkezik, és alapszintű telepítési, felügyeleti és helyreállítási tevékenységeket végez. Például a helyi "globális rendszergazda" fiók Microsoft 365 vagy a Salesforce-ben a root fiókhoz.
 
 Ezek a fiókok hagyományosan a hitelesítő adatok (Felhasználónév és jelszó) elosztásával vannak megosztva a megfelelő személyeknek, vagy megosztott helyen tárolják őket, ahol több megbízható ügynök férhet hozzájuk.
 

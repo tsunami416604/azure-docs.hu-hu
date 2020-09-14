@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271005"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052382"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 
@@ -66,7 +66,13 @@ Az attribútum-hozzárendelési kifejezések legfeljebb 10 000 karakterből áll
 - A beágyazott csoportok kiépítés nem támogatott. 
 - A B2C-bérlők kiépítés a bérlők mérete miatt nem támogatott. 
 
-**A kiépítési intervallum rögzített** A kiépítési ciklusok közötti [idő](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) jelenleg nem konfigurálható. 
+**Az automatikus kiépítés nem érhető el az OIDC-alapú alkalmazáson**
+
+Ha létrehoz egy alkalmazást, a vállalati alkalmazásokban a megfelelő egyszerű szolgáltatásnév nem lesz engedélyezve az automatikus felhasználó-kiépítés során. Ha több szervezet számára kívánja használni, vagy egy második, nem katalógusból álló alkalmazást szeretne kiépíteni, az alkalmazást fel kell vennie a katalógusba. 
+
+**A kiépítési intervallum rögzített**
+
+A kiépítési ciklusok közötti [idő](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) jelenleg nem konfigurálható. 
 
 **A cél alkalmazásból az Azure AD-be való áttérés nem változik**
 
@@ -81,5 +87,5 @@ A kiépítés `enabled = off` vagy a Leállítás megszakadása esetén az aktu�
 Ha egy csoport hatókörben van, és egy tag kívül esik a hatókörön, a rendszer kiépíti a csoportot. A hatókörön kívüli felhasználó nem lesz kiépítve. Ha a tag visszatér a hatókörbe, a szolgáltatás nem ismeri fel azonnal a változást. A kiépítés újraindítása a probléma megoldásához vezet. Javasoljuk, hogy a szolgáltatás rendszeres újraindítása után ellenőrizze, hogy az összes felhasználó megfelelően van-e kiépítve.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az üzembe helyezés menete](how-provisioning-works.md)

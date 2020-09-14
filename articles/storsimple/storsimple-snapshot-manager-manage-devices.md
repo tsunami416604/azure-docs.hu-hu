@@ -3,7 +3,7 @@ title: Eszközök kezelése a StorSimple Snapshot Managersal | Microsoft Docs
 description: Ismerteti, hogyan használható a StorSimple Snapshot Manager MMC beépülő modul a StorSimple-eszközök csatlakoztatásához és kezeléséhez.
 services: storsimple
 documentationcenter: ''
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513973"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054850"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -31,12 +31,12 @@ A StorSimple Snapshot Manager **hatóköre** ablaktáblán a csomópontok segít
 
 A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a következő információkat jeleníti meg az egyes eszközökről. (A nézetek konfigurálásával kapcsolatos további információkért nyissa meg a [Nézet menüt](storsimple-use-snapshot-manager.md#view-menu).
 
-| Eredmények oszlop | Description |
+| Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Name |A klasszikus Azure portálon konfigurált eszköz neve |
+| Név |A klasszikus Azure portálon konfigurált eszköz neve |
 | Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
-| Állapot |Az eszköz elérhető-e |
+| status |Az eszköz elérhető-e |
 | Legutóbb szinkronizálva |Az eszköz legutóbbi szinkronizálásának dátuma és időpontja |
 | Sorozatszám. |Az eszköz sorozatszáma |
 
@@ -208,7 +208,7 @@ Ha egy StorSimple-eszköz meghibásodik, és egy készenléti (feladatátvételi
 6. A **hatókör** ablaktáblán kattintson a jobb gombbal a legfelső szintű csomópontra (a példában a StorSimple Snapshot Manager), majd kattintson az **importálások megjelenítése**elemre. 
 7. Üzenet jelenik meg, amikor az importált kötetek és a biztonsági másolatok láthatók a StorSimple Snapshot Manager. Kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Megtudhatja, hogyan [használhatja a StorSimple Snapshot Manager a kötetek megtekintésére és kezelésére](storsimple-snapshot-manager-manage-volumes.md).
 

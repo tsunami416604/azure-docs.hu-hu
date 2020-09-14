@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f8df1a62ace8a1f094a708b752e175f3299d0ee0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86083457"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053174"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -25,6 +25,12 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 |**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2115-08232020"></a>2.11.5 (08/23/2020)
+
+- Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre: 
+* "/EnablePreview" – lehetővé teszi az előzetes verziójú funkciókat a Cosmos Emulator számára; Ezek olyan szolgáltatások, amelyek még fejlesztés alatt állnak, és a CI és a Sample Writing használatával érhetők el.
+* "/EnableAadAuthentication" – lehetővé teszi, hogy a Cosmos emulátor fogadja el az egyéni HRE-jogkivonatokat a Cosmos főkulcsok alternatívájaként. Ez a funkció még fejlesztés alatt áll; az adott szerepkör-hozzárendelések és más engedélyek kapcsolódó beállításai jelenleg nem támogatottak.
 
 ### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
 

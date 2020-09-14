@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495080"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052936"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-kapcsolat a Azure Database for MySQL
 
@@ -19,6 +19,9 @@ A Azure Database for MySQL a SSL (SSL) használatával támogatja az adatbázis-
 
 > [!NOTE]
 > A `require_secure_transport` kiszolgáló paraméter értékének frissítése nem befolyásolja a MySQL szolgáltatás viselkedését. A cikkben ismertetett SSL-és TLS-kényszerítési funkciókkal biztonságossá teheti az adatbázishoz való kapcsolódást.
+
+> [!IMPORTANT] 
+> Az SSL főtanúsítványa az 2020-as (10/26/2020-as) október 26. és újabb lejárati időpontra van állítva. Frissítse az alkalmazást az [új tanúsítvány](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)használatára. További információ: [tervezett tanúsítványok frissítései](concepts-certificate-rotation.md)
 
 ## <a name="ssl-default-settings"></a>Alapértelmezett SSL-beállítások
 
@@ -59,7 +62,7 @@ Ha például a TLS 1,0-es minimális beállítás értéke a TLS, azt jelenti, h
 
 Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for MySQLhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md)
 - Ismerje meg, hogyan [konfigurálhatja az SSL](howto-configure-ssl.md) -t

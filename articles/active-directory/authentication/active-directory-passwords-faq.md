@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716333"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052383"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Gyakori kérdések az önkiszolgáló jelszó-visszaállítással kapcsolatban
 
@@ -104,7 +104,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   > * Győződjön meg arról, hogy a címtárban található hitelesítési adat megfelelően van formázva, például: + 1 4255551234 vagy *felhasználói \@ contoso.com*. 
 * **K: Milyen nyelveket támogat a jelszó-visszaállítás?**
 
-  > **A:** A jelszó-visszaállítás felhasználói felület, az SMS-üzenetek és a hanghívások az Office 365 által támogatott nyelveken vannak honosítva.
+  > **A:** A jelszó-visszaállítás felhasználói felület, az SMS-üzenetek és a hanghívások a Microsoft 365 által támogatott nyelveken vannak honosítva.
   >
   >
 * **K: a jelszó-visszaállítási élmény mely részeit kell beolvasni, amikor a szervezeti védjegyezési elemeket beállítja a saját címtár konfigurálása lapján?**
@@ -277,7 +277,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
   >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [A jelszó alaphelyzetbe állítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)

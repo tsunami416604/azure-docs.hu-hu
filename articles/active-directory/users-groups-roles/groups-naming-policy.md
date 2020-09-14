@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213747"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054466"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése Microsoft 365 csoportokban Azure Active Directory
 
@@ -229,9 +229,9 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>Az Office 365-alkalmazások közötti élmény
+## <a name="experience-across-microsoft-365-apps"></a>Microsoft 365 alkalmazások közötti élmény
 
-Miután beállította a csoport elnevezési szabályzatát az Azure AD-ben, amikor egy felhasználó létrehoz egy csoportot egy Office 365-alkalmazásban, a következőket látják:
+Miután beállította a csoport elnevezési házirendjét az Azure AD-ben, amikor egy felhasználó létrehoz egy csoportot egy Microsoft 365 alkalmazásban, a következőt látják:
 
 - A név előnézete az elnevezési szabályzatnak megfelelően (előtagokkal és utótagokkal), amint a felhasználó típusa szerepel a csoport nevében.
 - Ha a felhasználó letiltott szavakat ír be, hibaüzenet jelenik meg, hogy el tudják távolítani a blokkolt szavakat.
@@ -252,7 +252,7 @@ School-adatszinkronizálás (SDS) | Az SDS használatával létrehozott csoporto
 Outlook Customer Manager (VÁLASZTHATÓÖSSZETEVŐ) | Az Outlook Customer Manager megfelel az elnevezési házirendnek, amely automatikusan az Outlook Customer Managerben létrehozott csoportra lesz alkalmazva. Ha a rendszer egy egyéni blokkolt szót észlel, a VÁLASZTHATÓÖSSZETEVŐ-ben való csoportos létrehozás le van tiltva, és a felhasználó le van tiltva a VÁLASZTHATÓÖSSZETEVŐ alkalmazás használatával.
 Tantermi alkalmazás | Az osztályterem alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek, de az elnevezési házirend nem lesz automatikusan alkalmazva, és az elnevezési szabályzat előzetes verziója nem jelenik meg a felhasználók számára az osztályterem csoport nevének megadásakor. A felhasználóknak meg kell adniuk a kényszerített osztályterem csoport nevét előtagokkal és utótagokkal. Ha nem, az osztályterem csoport létrehozás vagy szerkesztés művelete hibákkal meghiúsul.
 Power BI | Power BI munkaterületek megfelelnek az elnevezési házirendnek.    
-Yammer | Amikor egy felhasználó a Yammer-be bejelentkezett a Azure Active Directory-fiókjával, létrehoz egy csoportot, vagy szerkeszti a csoport nevét, a csoportnév megfelel az elnevezési házirendnek. Ez mind az Office 365 csatlakoztatott csoportjaira, mind a többi Yammer-csoportra vonatkozik.<br>Ha az Office 365 Connected Group létrejött az elnevezési házirend előtt, a csoport neve nem követi automatikusan a névadási házirendeket. Amikor egy felhasználó szerkeszti a csoport nevét, a rendszer kérni fogja, hogy adja hozzá az előtagot és utótagot.
+Yammer | Amikor egy felhasználó a Yammer-be bejelentkezett a Azure Active Directory-fiókjával, létrehoz egy csoportot, vagy szerkeszti a csoport nevét, a csoportnév megfelel az elnevezési házirendnek. Ez a Microsoft 365 csatlakoztatott csoportokra és az összes többi Yammer is vonatkozik.<br>Ha az elnevezési házirend betartását megelőzően egy Microsoft 365 csatlakoztatott csoport lett létrehozva, akkor a csoport neve nem követi automatikusan a névadási házirendeket. Amikor egy felhasználó szerkeszti a csoport nevét, a rendszer kérni fogja, hogy adja hozzá az előtagot és utótagot.
 StaffHub  | A StaffHub csapatok nem követik az elnevezési házirendet, de az alapul szolgáló Microsoft 365 csoport nem. A StaffHub-csoport neve nem alkalmazza az előtagokat és az utótagokat, és nem keres egyéni tiltott szavakat. A StaffHub azonban alkalmazza az előtagokat és az utótagokat, és eltávolítja a letiltott szavakat az alapul szolgáló Microsoft 365 csoportból.
 Exchange PowerShell | Az Exchange PowerShell-parancsmagok megfelelnek az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési házirendet a csoport neve és a csoport aliasában (mailNickname).
 PowerShell-parancsmagok Azure Active Directory | Azure Active Directory PowerShell-parancsmagok megfelelnek az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoportok neveiben és a csoport aliasnevében.

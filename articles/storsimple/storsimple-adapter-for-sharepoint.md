@@ -3,7 +3,7 @@ title: StorSimple-adapter telepítése a SharePointhoz | Microsoft Docs
 description: Leírja, hogyan telepítheti és konfigurálhatja a SharePoint-StorSimple-adaptert a SharePoint-farmban.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: twooley
-ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75930209"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053276"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter telepítése és konfigurálása
 ## <a name="overview"></a>Áttekintés
@@ -92,7 +92,7 @@ Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, konfigurál
 ## <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, győződjön meg arról, hogy a StorSimple-eszköz, a SharePoint-kiszolgálófarm és a SQL Server példánya megfelel a következő előfeltételeknek.
 
-### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+### <a name="system-requirements"></a>Rendszerkövetelmények
 A SharePointhoz készült StorSimple-adapter a következő hardverekkel és szoftverekkel működik:
 
 * Támogatott operációs rendszer – Windows Server 2008 R2 SP1, Windows Server 2012 vagy Windows Server 2012 R2
@@ -253,7 +253,7 @@ Miután visszahelyezte a blobokat a SQL Server tartalom-adatbázisba, az alábbi
 1. Nyissa meg a Vezérlőpultot, majd kattintson a **programok és szolgáltatások**elemre.
 2. Válassza **a StorSimple-adapter a sharepointhoz**lehetőséget, majd kattintson az **Eltávolítás**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a StorSimple](storsimple-overview.md).
 
 <!--Reference links-->

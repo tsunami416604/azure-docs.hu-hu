@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8d1b6d912cadb073251d72ee327f4b19950ab1b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147133"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055185"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Felhasználói hozzáférés visszavonása Azure Active Directory
 
@@ -38,7 +38,7 @@ A hozzáférési jogkivonatok és a frissítési tokenek gyakran használatosak 
 
 Az Azure AD ezután újraértékeli az engedélyezési házirendeket. Ha a felhasználó továbbra is engedélyezve van, az Azure AD új hozzáférési jogkivonatot és frissítési jogkivonatot bocsát ki.
 
-A hozzáférési tokenek biztonsági szempontból fontosak lehetnek, ha a hozzáférést a jogkivonat élettartama alatt rövidebb idő alatt kell visszavonni, ami általában egy óra körüli. Ezért a Microsoft aktívan dolgozik az Office 365-alkalmazások [folyamatos hozzáférésének kiértékelésében](../conditional-access/concept-continuous-access-evaluation.md) , így biztosítva, hogy a hozzáférési tokenek közel valós időben legyenek érvényben.  
+A hozzáférési tokenek biztonsági szempontból fontosak lehetnek, ha a hozzáférést a jogkivonat élettartama alatt rövidebb idő alatt kell visszavonni, ami általában egy óra körüli. Emiatt a Microsoft aktívan dolgozik a [folyamatos hozzáférés kiértékelésének](../conditional-access/concept-continuous-access-evaluation.md) biztosításán Microsoft 365 alkalmazások számára, ami segít biztosítani a hozzáférési jogkivonatok érvénytelenítését a közel valós időben.  
 
 ## <a name="session-tokens-cookies"></a>Munkamenet-tokenek (cookie-k)
 

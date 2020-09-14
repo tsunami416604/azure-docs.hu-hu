@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015884"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054704"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként az Azure Active Directoryban
 
@@ -34,7 +34,7 @@ A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azu
 
 ## <a name="internal-admin-takeover"></a>Belső rendszergazdai átvétel
 
-A SharePoint-és OneDrive, például az Office 365-et tartalmazó termékek nem támogatják a külső átvételt. Ha ez a forgatókönyv, vagy ha Ön rendszergazda, és nem felügyelt vagy "Shadow" Azure AD-szervezetet szeretne létrehozni az önkiszolgáló regisztrációt használó felhasználók számára, ezt egy belső rendszergazdai átvételsel teheti meg.
+Egyes, a SharePoint-és OneDrive tartalmazó termékek, például a Microsoft 365 nem támogatják a külső átvételt. Ha ez a forgatókönyv, vagy ha Ön rendszergazda, és nem felügyelt vagy "Shadow" Azure AD-szervezetet szeretne létrehozni az önkiszolgáló regisztrációt használó felhasználók számára, ezt egy belső rendszergazdai átvételsel teheti meg.
 
 1. Hozzon létre egy felhasználói környezetet a nem felügyelt szervezetben a Power BI regisztrálásával. Például a következő lépések elvégzésével feltételezhető, hogy az elérési út.
 
@@ -52,7 +52,7 @@ A SharePoint-és OneDrive, például az Office 365-et tartalmazó termékek nem 
 
 Ha a DNS TXT-rekordok ellenőrzése a tartománynév-regisztrálónál történik, akkor felügyelheti az Azure AD-szervezetet.
 
-Az előző lépések elvégzése után Ön már az Office 365 negyedik kávézójának globális rendszergazdája. Ha a tartománynevet a többi Azure-szolgáltatással szeretné integrálni, távolítsa el az Office 365-ből, és vegye fel egy másik felügyelt szervezetbe az Azure-ban.
+Az előző lépések elvégzése után a Microsoft 365 negyedik kávéházának globális rendszergazdája lesz. Ha a tartománynevet a többi Azure-szolgáltatással szeretné integrálni, távolítsa el a Microsoft 365ból, és vegye fel egy másik felügyelt szervezetbe az Azure-ban.
 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Tartománynév hozzáadása felügyelt szervezethez az Azure AD-ben
 
@@ -61,9 +61,9 @@ Az előző lépések elvégzése után Ön már az Office 365 negyedik kávézó
 3. Győződjön meg arról, hogy az új felhasználói fiók globális rendszergazdai jogosultságokkal rendelkezik az Azure AD-szervezethez.
 4. Nyissa meg a **tartományok** fület a Microsoft 365 felügyeleti központban, válassza ki a tartománynevet, és válassza az **Eltávolítás**lehetőséget. 
   
-   ![a tartománynév eltávolítása az Office 365-ből](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![A tartománynév eltávolítása Microsoft 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Ha az Office 365-ben olyan felhasználók vagy csoportok találhatók, amelyek az eltávolított tartománynévre hivatkoznak, akkor azokat a. onmicrosoft.com tartományba kell átnevezni. Ha kényszeríti a tartománynév törlését, az összes felhasználó automatikusan átnevezve lesz, ebben a példában a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com*.
+5. Ha az eltávolított tartománynévre hivatkozó Microsoft 365-felhasználók vagy-csoportok találhatók, akkor azokat a. onmicrosoft.com tartományba kell átnevezni. Ha kényszeríti a tartománynév törlését, az összes felhasználó automatikusan átnevezve lesz, ebben a példában a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com*.
   
 6. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
   
@@ -72,11 +72,11 @@ Az előző lépések elvégzése után Ön már az Office 365 negyedik kávézó
    ![Az Azure AD-hez hozzáadott tartomány ellenőrizve](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akik az Office 365-szervezetben vannak hozzárendelve licencek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User \@ fourthcoffee. xyz*néven.
+> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akiknek a Microsoft 365 szervezethez hozzárendelt licenccel rendelkeznek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User \@ fourthcoffee. xyz*néven.
 
 ## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétel
 
-Ha már felügyel egy szervezetet az Azure-szolgáltatásokkal vagy az Office 365-mel, akkor nem adhat hozzá egyéni tartománynevet, ha már ellenőrizve van egy másik Azure AD-szervezetben. Az Azure AD-beli felügyelt szervezete azonban átveheti a nem felügyelt szervezeteket külső rendszergazdai átvételre. Az általános eljárás az [egyéni tartomány hozzáadása az Azure ad-hoz](../fundamentals/add-custom-domain.md)című cikket követi.
+Ha már felügyel egy szervezetet az Azure-szolgáltatásokkal vagy a Microsoft 365okkal, akkor nem adhat hozzá egyéni tartománynevet, ha már ellenőrizve van egy másik Azure AD-szervezetben. Az Azure AD-beli felügyelt szervezete azonban átveheti a nem felügyelt szervezeteket külső rendszergazdai átvételre. Az általános eljárás az [egyéni tartomány hozzáadása az Azure ad-hoz](../fundamentals/add-custom-domain.md)című cikket követi.
 
 A tartománynév tulajdonjogának ellenőrzésekor az Azure AD eltávolítja a tartománynevet a nem felügyelt szervezetből, és áthelyezi a meglévő szervezetbe. A nem felügyelt címtár külső rendszergazdai átvételéhez ugyanazt a DNS TXT-ellenőrzési folyamatot kell megadnia, mint a belső rendszergazdai átvétel. A különbség az, hogy az alábbiak is át lesznek helyezve a tartománynévvel:
 
@@ -120,7 +120,7 @@ parancsmag | Használat
 `new-msoldomain –name <domainname>` | Nem ellenőrzöttként adja hozzá a tartománynevet a szervezethez (a DNS-ellenőrzés még nem lett elvégezve).
 `get-msoldomain` | A tartománynév már szerepel a felügyelt szervezethez társított tartománynevek listáján, de nem **ellenőrzöttként**van felsorolva.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Megadja a tartományhoz tartozó új DNS TXT-rekordba (MS = XXXXX) való üzembe helyezéshez szükséges adatokat. Előfordulhat, hogy az ellenőrzés nem történik meg azonnal, mert eltart egy ideig a TXT-rekord propagálásához, ezért várjon néhány percet, mielőtt fontolóra venné a **-ForceTakeover** kapcsolót. 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha a tartománynevet még nem ellenőrzi, folytathatja a **-ForceTakeover** kapcsolót. Ellenőrzi, hogy létrejött-e a TXT-rekord, és elindította-e az átvételi folyamatot.<li>A **-ForceTakeover** beállítást csak akkor adja hozzá a parancsmaghoz, ha a külső rendszergazdai átvételt kényszeríti, például ha a nem felügyelt szervezet rendelkezik Office 365-szolgáltatásokkal, és blokkolja az átvételt.
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha a tartománynevet még nem ellenőrzi, folytathatja a **-ForceTakeover** kapcsolót. Ellenőrzi, hogy létrejött-e a TXT-rekord, és elindította-e az átvételi folyamatot.<li>A **-ForceTakeover** beállítást csak akkor adja hozzá a parancsmaghoz, ha a külső rendszergazdai átvételt kényszeríti, például ha a nem felügyelt szervezet Microsoft 365 szolgáltatás blokkolja az átvételt.
 `get-msoldomain` | A tartománynevek mostantól **ellenőrzöttként**jelenítik meg a tartománynevet.
 
 > [!NOTE]
@@ -168,7 +168,7 @@ parancsmag | Használat
 
 A sikeres kihívás egy hiba nélkül visszaadja a kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
 * [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)

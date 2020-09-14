@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420005"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055486"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -123,7 +123,7 @@ Ha több jóváhagyót állít be, a jóváhagyás azonnal befejeződik, amint a
 
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
-## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
+## <a name="open-role-settings-previous-version"></a>Szerepkör-beállítások megnyitása (előző verzió)
 
 Kövesse az alábbi lépéseket egy Azure AD-szerepkör beállításainak megnyitásához.
 
@@ -168,7 +168,7 @@ Az **incidens/kérelem jegy** kapcsolójának használatával megkövetelheti, h
 Használja a **multi-Factor Authentication** kapcsolót annak megadásához, hogy a felhasználóknak meg kell-e adniuk identitását az MFA-ban, mielőtt aktiválni tudják a szerepköreiket. Csak egyszer kell meggyőződniük a saját identitásukat, nem minden alkalommal, amikor aktiválnak egy szerepkört. Az MFA engedélyezésekor két tippet kell szem előtt tartani:
 
 - Azok a felhasználók, akik rendelkeznek Microsoft-fiókkal az e-mail-címeiknek (általában @outlook.com , de nem mindig), nem regisztrálhatnak az Azure multi-Factor Authentication. Ha a Microsoft-fiókkal rendelkező felhasználók számára szeretné hozzárendelni a szerepköröket, a rendszergazdáknak állandó rendszergazdai jogosultságokkal kell rendelkezniük, vagy le kell tiltaniuk a többtényezős hitelesítést a szerepkörhöz.
-- Az Azure Multi-Factor Authentication nem tiltható le magas jogosultsági szintű szerepkörökhöz az Azure AD-ben és az Office 365-ben. Ez a biztonsági funkció a következő szerepkörök védelme érdekében nyújt segítséget:  
+- Az Azure Multi-Factor Authentication nem tiltható le magas jogosultsági szintű szerepkörökhöz az Azure AD-ben és a Microsoft 365ban. Ez a biztonsági funkció a következő szerepkörök védelme érdekében nyújt segítséget:  
   
   - Azure Information Protection rendszergazda
   - Számlázási adminisztrátor

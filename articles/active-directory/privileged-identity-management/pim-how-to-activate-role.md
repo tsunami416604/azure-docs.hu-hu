@@ -14,18 +14,18 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421399"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055452"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Saját Azure AD-szerepkörök aktiválása a PIM-ben
 
-A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ban és más Microsoft-online szolgáltatások, például az Office 365-ban vagy a Microsoft Intuneban található erőforrásokhoz való  
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ben és más Microsoft-online szolgáltatások, például Microsoft 365 vagy Microsoft Intune található erőforrásokhoz való jogosultságú hozzáférést.  
 
-Ha már jogosult rendszergazdai szerepkörre, aktiválnia kell a szerepkör-hozzárendelést, ha emelt szintű műveleteket kell végrehajtania. Ha például alkalmanként felügyeli az Office 365-funkciókat, a szervezete Kiemelt szerepkörű rendszergazdái nem hozhatnak állandó globális rendszergazdát, mivel ez a szerepkör más szolgáltatásokra is hatással van. Ehelyett jogosult az Azure AD-szerepkörökre, például az Exchange Online-rendszergazdára. Ha a jogosultságai szükségesek, a szerepkör aktiválásához kérheti a rendszergazda vezérlését, és megadhatja az előre meghatározott időszakot.
+Ha már jogosult rendszergazdai szerepkörre, aktiválnia kell a szerepkör-hozzárendelést, ha emelt szintű műveleteket kell végrehajtania. Ha például esetenként felügyeli Microsoft 365 funkcióit, a szervezete Kiemelt szerepkörű rendszergazdái nem hozhatnak állandó globális rendszergazdát, mivel ez a szerepkör más szolgáltatásokra is hatással van. Ehelyett jogosult az Azure AD-szerepkörökre, például az Exchange Online-rendszergazdára. Ha a jogosultságai szükségesek, a szerepkör aktiválásához kérheti a rendszergazda vezérlését, és megadhatja az előre meghatározott időszakot.
 
 Ez a cikk azoknak a rendszergazdáknak szól, akiknek aktiválniuk kell az Azure AD-szerepkört Privileged Identity Managementban.
 
@@ -118,7 +118,7 @@ Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat
 
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
-## <a name="activate-a-role"></a>Szerepkör aktiválása
+## <a name="activate-a-role-previous-version"></a>Szerepkör aktiválása (előző verzió)
 
 Ha egy Azure AD-szerepkört kell használnia, az aktiválást az Privileged Identity Management **saját szerepkörök** navigációs lehetőségének használatával kérheti le.
 
@@ -168,7 +168,7 @@ Ha egy Azure AD-szerepkört kell használnia, az aktiválást az Privileged Iden
 
     Ha a [szerepkör jóváhagyást kér](./azure-ad-pim-approval-workflow.md) az aktiváláshoz, a böngésző jobb felső sarkában megjelenik egy Azure-értesítés, amely tájékoztatja, hogy a kérelem jóváhagyása függőben van.
 
-## <a name="view-the-status-of-your-requests"></a>A kérések állapotának megtekintése
+## <a name="view-the-status-of-your-requests-previous-version"></a>A kérések állapotának megtekintése (előző verzió)
 
 A függőben lévő kérések állapotát az aktiváláshoz tekintheti meg.
 
@@ -180,7 +180,7 @@ A függőben lévő kérések állapotát az aktiváláshoz tekintheti meg.
 
     ![Azure AD-szerepkörök – saját kérelmek listája](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role"></a>Szerepkör inaktiválása
+## <a name="deactivate-a-role-previous-version"></a>Szerepkör inaktiválása (előző verzió)
 
 Miután aktiválta a szerepkört, a automatikusan inaktiválja az időkorlátot (jogosult időtartam).
 
@@ -196,7 +196,7 @@ Ha a rendszergazda feladatait korán végezte el, a szerepkörök inaktiválása
 
 1. Keresse meg a használni kívánt szerepkört, majd kattintson az **inaktiválás**elemre.
 
-## <a name="cancel-a-pending-request"></a>Függőben lévő kérelem megszakítása
+## <a name="cancel-a-pending-request-previous-version"></a>Függőben lévő kérelem megszakítása (előző verzió)
 
 Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, bármikor lemondhatja a függőben lévő kéréseket.
 
@@ -212,7 +212,7 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 
    ![Saját kérelmek listája a Mégse gombbal kiemelve](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+## <a name="troubleshoot-previous-version"></a>Hibakeresés (előző verzió)
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>A szerepkör aktiválását követően az engedélyek kiosztása nem történik meg
 

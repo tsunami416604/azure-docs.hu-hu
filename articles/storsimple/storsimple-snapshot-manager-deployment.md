@@ -3,7 +3,7 @@ title: A StorSimple Snapshot Manager üzembe helyezése | Microsoft Docs
 description: Megtudhatja, hogyan töltheti le és telepítheti a StorSimple Snapshot Manager, egy MMC beépülő modult a StorSimple-adatvédelem és a biztonsági mentési funkciók kezeléséhez.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75933385"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055078"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>A StorSimple Snapshot Manager MMC beépülő modul üzembe helyezése
 
@@ -211,7 +211,7 @@ A StorSimple Snapshot Manager újratelepítéséhez kövesse az [új StorSimple 
    2. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás**elemet.
    3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás újraindítása**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha többet szeretne megtudni a StorSimple Snapshot Managerról, olvassa el a [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)című témakört.
 * Ha többet szeretne megtudni a StorSimple Snapshot Manager felhasználói felületéről, nyissa meg a [StorSimple Snapshot Manager felhasználói felületét](storsimple-use-snapshot-manager.md).
 * Ha többet szeretne megtudni a StorSimple Snapshot Manager használatáról, látogasson el a [StorSimple Snapshot Manager használatára a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).

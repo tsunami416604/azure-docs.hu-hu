@@ -2,16 +2,19 @@
 title: Közös rendszerkép-katalógus használata Azure Lab Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat egy Lab-fiókot megosztott képkatalógus használatára úgy, hogy egy felhasználó megoszthat egy képet a másikkal, és egy másik felhasználó is használhatja a rendszerképet a sablon létrehozásához a laborban.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 4dc001a5e4c95db608c38f0a7c00190fd1859998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445151"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052834"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény használata Azure Lab Services
 Ebből a cikkből megtudhatja, hogy a pedagógusok/labor-rendszergazdák hogyan menthetik a sablon virtuálisgép-rendszerképeit egy [megosztott](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) képkatalógusba, így mások is használhatják a laborokat. 
+
+> [!IMPORTANT]
+> Megosztott képtárat használva a Azure Lab Services csak a 128 GB-nál kevesebb lemezképet támogatja az operációsrendszer-lemezterülettel. Az 128 GB-nál több lemezterületet tartalmazó képek vagy több lemez nem jelenik meg a virtuálisgép-rendszerképek listájában a labor létrehozása során.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 Íme a funkció által támogatott néhány forgatókönyv: 
@@ -56,5 +59,5 @@ A pedagógus a sablon megosztott képgalériájában elérhető egyéni rendszer
 > A sablon virtuális gépeket a Azure Lab Services **általánosított** és **speciális** lemezképei alapján is létrehozhatja. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A megosztott képtárakkal kapcsolatos további információkért lásd a [megosztott képtárat](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries).

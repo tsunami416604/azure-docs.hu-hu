@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799298"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054551"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 csoportok elévülési szabályzatának konfigurálása
 
@@ -42,7 +42,7 @@ További információ az Azure AD PowerShell-parancsmagok letöltéséről és t
 
 ## <a name="activity-based-automatic-renewal"></a>Tevékenységalapú automatikus megújítás
 
-Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak, attól függően, hogy legutóbb használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai számára a manuális beavatkozást, mivel az Office 365-szolgáltatások, például az Outlook, a SharePoint vagy a Teams különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a rendszer automatikusan megújítja a csoportot, és a tulajdonos nem kap megújítási értesítéseket.
+Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak, attól függően, hogy legutóbb használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai számára a manuális beavatkozást, mivel az Microsoft 365-szolgáltatások, például az Outlook, a SharePoint vagy a Teams különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a rendszer automatikusan megújítja a csoportot, és a tulajdonos nem kap megújítási értesítéseket.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>A csoport lejáratát automatikusan megújító tevékenységek
 

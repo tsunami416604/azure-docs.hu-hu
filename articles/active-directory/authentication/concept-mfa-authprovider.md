@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7e4772ba2b3d8adf163d6f2932461e1e939ed84
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81309903"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052443"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell Azure Multi-Factor Authentication szolgáltatót használni
 
 > [!IMPORTANT]
 > Az új hitelesítési szolgáltatók már nem hozhatók létre az 2018. szeptember 1-től érvényesek. A meglévő hitelesítési szolgáltatók továbbra is használhatók és frissíthetők, de a Migrálás már nem lehetséges. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencek szolgáltatásként.
 
-A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](howto-mfa-mfasettings.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
+A kétlépéses ellenőrzés alapértelmezés szerint a Azure Active Directory-t használó globális rendszergazdák számára érhető el, és Microsoft 365 felhasználókat. De ha ki szeretné használni a [speciális szolgáltatásokat](howto-mfa-mfasettings.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
 Az Azure multi-Factor Auth szolgáltató az Azure-Multi-Factor Authentication által nyújtott szolgáltatások kihasználására szolgál azon felhasználók számára, akik **nem rendelkeznek licenccel**.
 
@@ -72,6 +72,6 @@ Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tal
 > [!NOTE]
 > Előfordulhat, hogy a Microsoft Authenticator alkalmazás és az Azure MFA-kiszolgáló régebbi verzióit használó felhasználóknak újra regisztrálniuk kell az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)

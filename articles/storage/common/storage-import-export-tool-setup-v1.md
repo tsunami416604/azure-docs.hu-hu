@@ -1,19 +1,19 @@
 ---
 title: Az Azure import/export eszköz v1-es verziójának beállítása | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be az Azure import/export szolgáltatáshoz készült meghajtó-előkészítési és-javítási eszközt. Ez a cikk az import/export eszköz 1. verziójára vonatkozik.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/15/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03601bc929354a69e7f9027db5ac9b7697c3c82
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530800"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054075"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Az Azure import/export eszköz beállítása v1
 A Microsoft Azure Import/Export eszköz a Microsoft Azure Import/Export szolgáltatással használható meghajtó-előkészítési és-javítási eszköz. A következő függvényekhez használhatja az eszközt:  
@@ -247,7 +247,7 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Az exportálási feladatokhoz tartozó meghajtók használatának előzetes megtekintése](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   

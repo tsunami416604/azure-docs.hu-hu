@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 0e4b96092107e3411f33411f1044fd7cc839f132
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807026"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90051992"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure szinapszis Analytics – Cheat Sheet
 
@@ -22,13 +22,16 @@ ms.locfileid: "85807026"
 
 Az Azure szinapszis Analytics Cheat Sheet végigvezeti Önt a szolgáltatás alapvető fogalmait és a fontos parancsokat. Ez a cikk segítséget nyújt az új tanulók és a fontos Azure szinapszis-témakörök kiemeléséhez.
 
-## <a name="architecture"></a>Architektúra
+## <a name="basics"></a>Alapvető beállítások
 
-> [!div class="mx-imgBorder"]
->![Szinapszis-architektúra](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+A **szinapszis munkaterület** biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLS Gen2 fiókkal és fájlrendszerrel (az ideiglenes adattárolók tárolásához). A munkaterület egy erőforráscsoport alatt található.
 
+A munkaterület lehetővé teszi, hogy az SQL és az Apache Spark használatával végezzen elemzéseket. Az SQL és a Spark Analytics számára elérhető erőforrások **készletekbe**vannak rendezve. Három fajta készlet létezik.
+* **SQL-készletek**. Ezek **dedikált** SQL Analytics-kapacitást biztosítanak.
+* **Igény szerinti SQL-készlet**. Minden munkaterülethez pontosan egy SQL igény szerinti készlet tartozik. Ez a **kiszolgáló** nélküli SQL Analytics-kapacitást nyújt lekérdezési alapon.
+* **Spark-készletek**. Ezek a Spark Analytics-kapacitást biztosítják.
 ## <a name="terminology"></a>Terminológia
-| Kifejezés                         | Definíció      |
+| Időszak                         | Definíció      |
 |:---                                 |:---                 |
 | **Szinapszis-munkaterület** | Biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLS Gen2 fiókkal és fájlrendszerrel (az ideiglenes adattárolók tárolásához). A munkaterület egy erőforráscsoport alatt található. |
 | **Synapse SQL**   | Az elemzéseket készletekkel vagy igény szerinti funkciókkal futtathatja.  |
@@ -49,12 +52,12 @@ Az Azure szinapszis Analytics Cheat Sheet végigvezeti Önt a szolgáltatás ala
 |**Tevékenység**| Meghatározza az adatokon végrehajtandó műveleteket, például az adatok másolását, egy jegyzetfüzet vagy egy SQL-parancsfájl futtatását.|
 |**Eseményindító**| Folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló vagy eseményvezérelt).|
 |**Társított szolgáltatások**| Kapcsolati karakterláncok, amelyek meghatározzák a munkaterület külső erőforrásokhoz való kapcsolódásához szükséges kapcsolati adatokat.|
-|**Adatkészlet**|  Az adatok elnevezett nézete, amely egyszerűen rámutat vagy hivatkozik a tevékenységekben a bemenetként és kimenetként használt adatokra. Egy társított szolgáltatáshoz tartozik.|
+|**Adathalmaz**|  Az adatok elnevezett nézete, amely egyszerűen rámutat vagy hivatkozik a tevékenységekben a bemenetként és kimenetként használt adatokra. Egy társított szolgáltatáshoz tartozik.|
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Munkaterület létrehozása](quickstart-create-workspace.md)
-- [A szinapszis Studio használata](quickstart-synapse-studio.md)
+- [A Synapse Studio használata](quickstart-synapse-studio.md)
 - [SQL-készlet létrehozása](quickstart-create-sql-pool-portal.md)
 - [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)
 - [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)

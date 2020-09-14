@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager és kötetek | Microsoft Docs
 description: Ismerteti, hogyan használható a StorSimple Snapshot Manager MMC beépülő modul a kötetek megtekintéséhez és kezeléséhez, valamint a biztonsági másolatok konfigurálásához.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: twooley
-ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508920"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054907"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Kötetek megtekintése és kezelése StorSimple Snapshot Manager használatával
 ## <a name="overview"></a>Áttekintés
@@ -91,9 +91,9 @@ Az alábbi eljárással tekintheti meg a helyi és az Azure-beli StorSimple-köt
    
     ![Az oszlopok konfigurálása](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Eredmények oszlop | Description |
+   | Eredmények oszlop | Leírás |
    |:--- |:--- |
-   |  Name |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
+   |  Név |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
    |  Eszköz |Az **eszköz** oszlop tartalmazza a gazdaszámítógéphez csatlakoztatott eszköz IP-címét. |
    |  Eszköz kötetének neve |Az **eszköz kötet neve** oszlop tartalmazza annak az eszköznek a nevét, amelyhez a kiválasztott kötet tartozik. Ez az adott kötethez tartozó Azure Portalban definiált kötet neve. |
    |  Elérési utak |A **hozzáférési útvonalak** oszlop a kötet elérési útját jeleníti meg. Ez az a meghajtóbetűjel vagy csatlakoztatási pont, amelyen a kötet elérhető a gazdaszámítógépen. |
@@ -183,7 +183,7 @@ A Lemezkezelés a merevlemezek felügyeletére szolgáló rendszersegédprogram,
 6. A **meghajtóbetűjel vagy elérési út kiosztása** lapon fogadja el az alapértelmezett értékeket, majd kattintson a **tovább**gombra. 
 7. A **kötet formázása** lap **foglalási egység mérete** mezőjében válassza a **64 kb**-ot. Jelölje be a **gyors formátum elvégzése** jelölőnégyzetet, majd kattintson a **tovább**gombra. 
 8. Az **Új tükrözött kötet befejezése** lapon tekintse át a beállításokat, majd kattintson a **Befejezés**gombra. 
-9. Megjelenik egy üzenet, amely jelzi, hogy az alaplemez dinamikus lemezzé lesz konvertálva. Kattintson az **Igen**gombra.
+9. Megjelenik egy üzenet, amely jelzi, hogy az alaplemez dinamikus lemezzé lesz konvertálva. Kattintson a **Yes** (Igen) gombra.
    
     ![Dinamikus lemez konverziójának üzenete](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. A Lemezkezelés alkalmazásban ellenőrizze, hogy az 1. és a 2. lemez dinamikus tükrözött kötetekként jelenik-e meg. (A**dinamikus** értéknek szerepelnie kell az Állapot oszlopban, és a kapacitási sáv színének pirosra kell váltania, amely tükrözött kötetet jelez.) 
@@ -198,14 +198,14 @@ A következő eljárással konfigurálhatja a dinamikus tükrözött köteteket,
 2. A **hatókör** ablaktáblán kattintson a jobb gombbal a **kötetek** csomópontra, és válassza a **kötetek újraellenőrzése**elemet. A vizsgálat befejezésekor a kötetek listájának szerepelnie kell az **eredmények** ablaktábláján. A dinamikus tükrözött kötet egyetlen kötetként van felsorolva. 
 3. Az **eredmények** ablaktáblájában kattintson a jobb gombbal a dinamikus tükrözött kötetre, majd kattintson a **kötet csoport létrehozása**parancsra. 
 4. A **kötet létrehozása** párbeszédpanelen írja be a kötet csoport nevét, rendelje hozzá a dinamikus tükrözött kötetet ehhez a csoporthoz, majd kattintson **az OK**gombra. 
-5. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot. Az új kötet csoportnak a **mennyiségi csoportok** csomópont alatt kell megjelennie. 
+5. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot. Az új kötet csoportnak a  **mennyiségi csoportok** csomópont alatt kell megjelennie. 
 6. Kattintson a jobb gombbal a kötet csoport nevére. 
    
    * Az interaktív (igény szerinti) biztonsági mentési feladatok elindításához kattintson a **biztonsági mentés**készítése gombra. 
    * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válassza ki a kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Amikor végzett, kattintson az **OK**gombra. 
 7. A biztonsági mentési feladatot a Futtatás közben is figyelheti. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás**elemre, a feladat részletei megjelennek az **eredmények** ablaktábláján. A biztonsági mentési feladatok befejezése után a rendszer átviszi a részleteket az **elmúlt 24** órás feladatok listájára. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet StorSimple-Snapshot Manager a kötetek létrehozásához és kezeléséhez](storsimple-snapshot-manager-manage-volume-groups.md).
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542361"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053936"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>A LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett hozzáférése
 
@@ -73,13 +73,13 @@ A Microsoft-és a LinkedIn-fiókok összekapcsolásával lehetővé teszi, hogy 
 * Profil adatai – olyan információkat tartalmaz, mint például az utónév, a vezetéknév, a profil fényképe, az e-mail-cím, a felettes és a kezelt személyek.
 * Naptáradatok – a naptárakban, az időpontokban, a helyszíneken és a résztvevők kapcsolattartási adatait tartalmazza. Az értekezletre, például a napirendre, a tartalomra vagy az értekezlet címére vonatkozó információk nem szerepelnek a naptári adatokban.
 * Érdeklődési körök – a Microsoft-szolgáltatások (például a Cortana és a Bing for Business) alapján a fiókjához társított érdekeket foglalja magában.
-* Előfizetések adatai – a szervezet által a Microsoft-alkalmazásokhoz és-szolgáltatásokhoz, például az Office 365-hoz biztosított előfizetéseket tartalmazza.
+* Előfizetések adatai – a szervezet által a Microsoft-alkalmazások és-szolgáltatások, például a Microsoft 365 számára biztosított előfizetéseket tartalmazza.
 * Kapcsolattartási adatok – az Outlookban, a Skype-ban és más Microsoft-fiók-szolgáltatásokban található kapcsolattartási listát is tartalmazza, beleértve a gyakran kommunikáló vagy együttműködő személyekhez tartozó kapcsolattartási adatokat is. A névjegyeket a LinkedIn rendszeresen importálja, tárolja és használja, például a kapcsolatok javaslatára, a névjegyek rendszerezésére és a névjegyek frissítéseinek megjelenítésére.
 
 A Microsofttól elért adatok nem tárolódnak véglegesen a LinkedIn-mel, kivéve a névjegyeket. A Microsoft névjegyek a LinkedIn-ben tárolódnak, amíg a felhasználók el nem távolítják őket. További információ az [importált névjegyek a linkedinből való törléséről](https://www.linkedin.com/help/linkedin/answer/43377).
 
 A LinkedIn személyes adatainak használatával kapcsolatos további információkért tekintse meg a [LinkedIn adatvédelmi szabályzatát](https://www.linkedin.com/legal/privacy-policy). A LinkedIn-szolgáltatások, az adatforgalom és a tárolás esetében az adatok az Európai Unióból a Egyesült Államokba és vissza is áramlanak, és az adatvédelem védelme az [Európai Unió adatátviteli](https://www.linkedin.com/help/linkedin/answer/62533)szolgáltatásában leírtaknak megfelelően történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A LinkedIn a munkahelyi vagy iskolai fiókkal rendelkező Microsoft-alkalmazásokban](https://www.linkedin.com/help/linkedin/answer/84077)

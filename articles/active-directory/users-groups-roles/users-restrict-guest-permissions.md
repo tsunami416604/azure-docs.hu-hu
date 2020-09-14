@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489646"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055214"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -154,7 +154,7 @@ Az aktuális támogatás nélküli szolgáltatás kompatibilitási problémákba
 
 Kérdés | Válasz
 -------- | ------
-Hová kell alkalmazni ezeket az engedélyeket? | Ezek a címtár-szintű engedélyek az Azure AD-szolgáltatások és-portálok esetében érvényesek, beleértve a Microsoft Graph, a PowerShell V2, a Azure Portal és a saját alkalmazások portált. Az Office 365-csoportokat az együttműködési forgatókönyvek kihasználása mellett az Outlook, a Microsoft Teams és a SharePoint is érinti. Microsoft 365
+Hová kell alkalmazni ezeket az engedélyeket? | Ezek a címtár-szintű engedélyek az Azure AD-szolgáltatások és-portálok esetében érvényesek, beleértve a Microsoft Graph, a PowerShell V2, a Azure Portal és a saját alkalmazások portált. Az együttműködési forgatókönyvekhez Microsoft 365 csoportokat kihasználó Microsoft 365-szolgáltatások is érintettek, különösen az Outlook, a Microsoft Teams és a SharePoint.
 A My apps portál mely részeit érinti ez a funkció? | A saját alkalmazások portál csoportok funkciója tiszteletben tartja ezeket az új engedélyeket. Ide tartozik a csoportok listájának és a csoporttagságok a saját alkalmazásokban való megtekintéséhez szükséges összes elérési út. Nem történt változás a csoport csempe rendelkezésre állása során. A csoport csempe rendelkezésre állását továbbra is az Azure felügyeleti portál meglévő csoport beállítása szabályozza.
 Felülbírálják ezeket az engedélyeket a SharePoint vagy a Microsoft Teams vendég beállításainak? | Nem. Ezek a meglévő beállítások továbbra is szabályozzák az alkalmazások élményét és elérését. Ha például problémát tapasztal a SharePointban, ellenőrizze a külső megosztási beállításokat.
 Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha az engedélyek "korlátozott" értékre vannak beállítva, a Planner alkalmazásba bejelentkezett, vagy a Microsoft Teams-tervezőhöz való hozzáférés nem fog tudni hozzáférni a terveihez vagy a feladatokhoz.<li>A "korlátozott" értékre beállított engedélyek esetén a Yammer bejelentkezett vendégek nem hagyhatják el a csoportot.

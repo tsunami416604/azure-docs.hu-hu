@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de0212739f5cd24cec9ab58bdaf4d2b272f31200
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213685"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054364"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rövid útmutató: Elnevezési szabályzat az Azure Active Directoryban lévő csoportokhoz
 
@@ -68,6 +68,6 @@ Ennyi az egész. Beállította az elnevezési szabályzatot és hozzáadta az eg
 
 Ebben a rövid útmutatóban megtanulta, hogyan állíthatja be az Azure AD-szervezet elnevezési házirendjét a Azure Portal használatával.
 
-Folytassa a következő cikkel, amely további információkat tartalmaz: az elnevezési házirendhez, a technikai korlátozásokhoz, az egyéni blokkolt szavak listájának hozzáadásához, valamint az Office 365-alkalmazások végfelhasználói tapasztalataihoz tartozó PowerShell-parancsmagok.
+Folytassa a következő cikkel, amely további információkat tartalmaz: az elnevezési házirendhez, a technikai korlátozásokhoz, az egyéni blokkolt szavak listájának hozzáadásához és a végfelhasználói élményekhez Microsoft 365 alkalmazásokban.
 > [!div class="nextstepaction"]
 > [Elnevezési házirend PowerShell](groups-naming-policy.md)

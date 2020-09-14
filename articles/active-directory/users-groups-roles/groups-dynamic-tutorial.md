@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82582872"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054603"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Csoporttagok automatikus hozzáadása és eltávolítása
 
-Az Azure Active Directory (Azure AD) szolgáltatásban automatikusan adhat hozzá vagy távolíthat el felhasználókat a biztonsági vagy Office 365-csoportokban, így ezt nem kell minden alkalommal manuálisan elvégeznie. Ha a felhasználó vagy az eszköz bármely tulajdonsága megváltozik, az Azure AD kiértékeli az Azure AD-szervezet összes dinamikus csoportjának szabályait, hogy megtekintse, hogy a módosításnak tagokat kell-e hozzáadnia vagy eltávolítania
+Azure Active Directory (Azure AD) használatával automatikusan hozzáadhat vagy eltávolíthat felhasználókat a biztonsági csoportokhoz vagy Microsoft 365 csoportokhoz, így nem mindig kell manuálisan megtennie azokat. Ha a felhasználó vagy az eszköz bármely tulajdonsága megváltozik, az Azure AD kiértékeli az Azure AD-szervezet összes dinamikus csoportjának szabályait, hogy megtekintse, hogy a módosításnak tagokat kell-e hozzáadnia vagy eltávolítania
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]

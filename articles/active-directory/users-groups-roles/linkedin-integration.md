@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797989"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053973"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
 
@@ -29,7 +29,7 @@ Lehetővé teheti, hogy a szervezet felhasználói a LinkedIn-kapcsolataikat biz
 >
 > Kivételek
 >
-> * A beállítás nem érhető el olyan ügyfelek számára, akik az Egyesült Államok kormánya, a Microsoft Cloud Németország vagy az Azure és az Office 365 Microsoft Cloudt használják Kínában 21Vianet.
+> * A beállítás nem érhető el olyan ügyfelek számára, akik az Egyesült Államok kormánya, Microsoft Cloud Németország vagy az Azure Microsoft 365 és a 21Vianet által üzemeltetett Microsoft Cloudt használják.
 > * A beállítás alapértelmezés szerint ki van kapcsolva a Németországban kiépített Azure AD-szervezetek esetében. Vegye figyelembe, hogy a beállítás nem érhető el a Microsoft Cloud Németországot használó ügyfelek számára.
 > * A beállítás alapértelmezés szerint ki van kapcsolva a Franciaországban kiépített szervezeteknek.
 >
@@ -99,7 +99,7 @@ Ha az Azure AD felügyeleti központban lévő LinkedIn Account Connections (Lin
    **Engedélyezve** | Engedélyezve van az Office 2016-beállítások az Office- **alkalmazásokban beállítás a LinkedIn funkcióinak megjelenítése** lehetőség. A szervezet felhasználói a LinkedIn funkcióit használhatják az Office 2016-alkalmazásaikban.
    **Disabled** | A **LinkedIn funkcióinak megjelenítése** az Office-alkalmazások Office 2016-beállításokban beállítás le van tiltva, és a végfelhasználók nem változtathatják meg ezt a beállítást. A szervezet felhasználói nem használhatják a LinkedIn szolgáltatásait az Office 2016-alkalmazásokban.
 
-Ez a csoportházirend csak az Office 2016-alkalmazásokat érinti a helyi számítógépeken. Ha a felhasználók az Office 2016-alkalmazásokban letiltják a LinkedIn szolgáltatást, továbbra is megjelenhetnek a LinkedIn szolgáltatásai az Office 365-ben.
+Ez a csoportházirend csak az Office 2016-alkalmazásokat érinti a helyi számítógépeken. Ha a felhasználók az Office 2016-alkalmazásokban letiltják a LinkedIn szolgáltatást, továbbra is megjelenhetnek a LinkedIn szolgáltatásai Microsoft 365.
 
 ## <a name="next-steps"></a>Következő lépések
 

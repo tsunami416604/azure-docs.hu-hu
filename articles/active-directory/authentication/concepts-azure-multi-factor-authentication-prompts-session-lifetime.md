@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179351"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052664"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Újrahitelesítési kérések optimalizálása és az Azure-Multi-Factor Authentication munkamenet-élettartamának megértése
 
@@ -36,7 +36,7 @@ Annak érdekében, hogy a felhasználók a megfelelő időközönként jelentkez
     * Az egyszeri bejelentkezés (SSO) engedélyezése a [felügyelt eszközökön](../devices/overview.md) vagy a [zökkenőmentes egyszeri](../hybrid/how-to-connect-sso.md)bejelentkezésen keresztül az alkalmazások között.
     * Ha újrahitelesítésre van szükség, használjon feltételes hozzáférési [bejelentkezési gyakorisági szabályzatot](../conditional-access/howto-conditional-access-session-lifetime.md).
     * Azon felhasználók esetében, akik nem felügyelt eszközökről vagy mobileszköz-forgatókönyvekről jelentkeznek be, a feltételes hozzáféréssel lehetővé teszik az állandó böngésző-munkamenetek és a bejelentkezési gyakorisági házirendek használatát.
-* Ha rendelkezik Office 365 alkalmazás-licenccel vagy az ingyenes Azure AD-csomaggal:
+* Ha rendelkezik Microsoft 365 alkalmazás-licenccel vagy az ingyenes Azure AD-csomaggal:
     * Az egyszeri bejelentkezés (SSO) engedélyezése a [felügyelt eszközökön](../devices/overview.md) vagy a [zökkenőmentes egyszeri](../hybrid/how-to-connect-sso.md)bejelentkezésen keresztül az alkalmazások között.
     * Tartsa meg a *bejelentkezett maradás* lehetőséget, és irányítsa a felhasználókat, hogy fogadják el.
 * A mobileszközök esetében ügyeljen arra, hogy a felhasználók a Microsoft Authenticator alkalmazást használják. Ez az alkalmazás közvetítőként használható más Azure AD összevont alkalmazásokhoz, és csökkenti a hitelesítési kéréseket az eszközön.
@@ -123,17 +123,17 @@ A bejelentkezési gyakoriság és az állandó böngésző-munkamenet feltétele
 
 A jogkivonatok élettartamának áttekintéséhez az [Azure ad PowerShell használatával kérdezheti le az Azure ad-szabályzatokat](../develop/active-directory-configurable-token-lifetimes.md#prerequisites). Tiltsa le a meglévő szabályzatokat.
 
-Ha több beállítás van engedélyezve a bérlőben, javasoljuk, hogy az Ön számára elérhető Licencelés alapján frissítse a beállításait. Ha például az Azure AD Premium-licencekkel rendelkezik, csak a *bejelentkezési gyakoriság* és az *állandó böngésző-munkamenet*feltételes hozzáférési szabályzatát kell használnia. Ha az Office 365-alkalmazások vagy az Azure AD ingyenes licencei vannak, akkor a *továbbra is bejelentkezett?* konfigurációt kell használnia.
+Ha több beállítás van engedélyezve a bérlőben, javasoljuk, hogy az Ön számára elérhető Licencelés alapján frissítse a beállításait. Ha például az Azure AD Premium-licencekkel rendelkezik, csak a *bejelentkezési gyakoriság* és az *állandó böngésző-munkamenet*feltételes hozzáférési szabályzatát kell használnia. Ha Microsoft 365 alkalmazásait vagy az Azure AD ingyenes licenceit, használja a *továbbra is bejelentkezett?* konfigurációt.
 
 Ha engedélyezte a konfigurálható jogkivonat élettartamát, ez a funkció hamarosan el lesz távolítva. Tervezze meg az áttelepítést egy feltételes hozzáférési szabályzatba.
 
 A következő táblázat a licenceken alapuló ajánlásokat foglalja össze:
 
-|              | ingyenes Azure AD és Office 365 alkalmazások | Azure AD Premium |
+|              | Alkalmazások ingyenes Azure AD és Microsoft 365 | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **SSO**                      | [Azure ad JOIN](../devices/concept-azure-ad-join.md) vagy [Hybrid Azure ad JOIN](../devices/concept-azure-ad-join-hybrid.md)vagy [zökkenőmentes SSO](../hybrid/how-to-connect-sso.md) a nem felügyelt eszközökhöz. | Azure AD-csatlakozás<br />Hibrid Azure AD-csatlakozás |
 | **Újrahitelesítés beállításai** | Továbbra is bejelentkezett                  | Feltételes hozzáférési szabályzatok használata a bejelentkezés gyakoriságához és az állandó böngésző-munkamenethez |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépésekhez fejezze be az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az azure multi-Factor Authentication-ban](tutorial-enable-azure-mfa.md) , vagy [használjon kockázati észleléseket felhasználói bejelentkezésekhez az Azure-multi-Factor Authentication aktiválásához](tutorial-risk-based-sspr-mfa.md).

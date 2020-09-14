@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717438"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052681"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hogyan működik az önkiszolgáló jelszó-visszaállítási visszaírási az Azure Active Directory?
 
@@ -37,7 +37,7 @@ A jelszó visszaírási a következő funkciókat biztosítja:
 
 * Helyszíni **Active Directory tartományi szolgáltatások (AD DS) jelszavas szabályzatok kényszerítése**: amikor egy felhasználó visszaállítja a jelszavát, ellenőrzi, hogy az megfelel-e a helyszíni AD DS házirendnek, mielőtt véglegesíti azt az adott könyvtárba. Ez a felülvizsgálat a AD DSban definiált előzmények, összetettség, kor, jelszó-szűrők és egyéb jelszó-korlátozásokat is ellenőrzi.
 * **Nulla késleltetésű visszajelzés**: a jelszó visszaírási egy szinkron művelet. A rendszer azonnal értesíti a felhasználókat, ha a jelszavuk nem felel meg a szabályzatnak, vagy bármilyen okból nem lehet alaphelyzetbe állítani vagy módosítani.
-* **Támogatja a jelszó-módosításokat a hozzáférési panelen és az Office 365**-ben: Ha az összevont vagy jelszó-kivonatolással szinkronizált felhasználók megváltoztatják a lejárt vagy nem lejárt jelszavukat, a jelszavakat visszaírják ad DSba.
+* **Támogatja a hozzáférési panel jelszavas módosításait, és Microsoft 365**: Ha az összevont vagy jelszó-kivonatolással szinkronizált felhasználók a lejárt vagy nem lejárt jelszavakat módosítják, a jelszavakat a rendszer visszaírja a ad DSba.
 * **Támogatja a jelszó visszaírási, amikor egy rendszergazda visszaállítja azokat a Azure Portal**: Ha a rendszergazda visszaállítja a felhasználó jelszavát a [Azure Portalban](https://portal.azure.com), ha a felhasználó összevont vagy jelszó-kivonattal szinkronizálva van, a rendszer visszaírja a jelszót a helyszíni környezetbe. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
 * **Nincs szükség bejövő tűzfalszabályok**használatára: a Password visszaírási egy Azure Service Bus továbbítót használ mögöttes kommunikációs csatornaként. Minden kommunikáció a 443-es porton keresztül kimenő.
 
@@ -156,7 +156,7 @@ A jelszavakat a következő helyzetekben nem írja vissza a rendszer:
 > [!WARNING]
 > A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni AD DS felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információ: jelszó- [kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SSPR-visszaírási első lépéseihez hajtsa végre a következő oktatóanyagot:
 

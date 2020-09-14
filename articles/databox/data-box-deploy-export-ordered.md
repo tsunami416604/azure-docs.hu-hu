@@ -2,18 +2,18 @@
 title: Oktatóanyag az adatok Azure Data Boxból való exportálásához | Microsoft Docs
 description: Ismerje meg az üzembe helyezés előfeltételeit és az adatok exportálását Azure Data Box
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783620"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053054"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -115,9 +115,20 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    Az XML-bemenet példájának megtekintéséhez lásd: [minta XML-bemenet](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. Az **adatok kiválasztása**lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra: kapcsolattartási adatok>**.
+9. Az **Adatválasztás**területen tekintse át a beállításokat, és válassza a **tovább: biztonsági>**.
 
    ![Kapcsolattartási adatok](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. Ha a **Biztonság**területen engedélyezni szeretné a szoftveres kettős titkosítást, válassza **a dupla titkosítás engedélyezése lehetőséget a rendeléshez**. 
+
+   A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
+
+   > [!NOTE]
+   > Ha engedélyezi ezt a beállítást, megteheti, hogy a rendelés feldolgozása és az Adatmásolás tovább tart. Ez a beállítás a megrendelés létrehozása után nem módosítható.
+
+   ![Adatmező importálásának biztonsági képernyője, dupla titkosítás](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
 
 10. A **kapcsolattartási**adatok területen válassza a **+ szállítási címek hozzáadása** lehetőséget a szállítási információk megadásához.
 

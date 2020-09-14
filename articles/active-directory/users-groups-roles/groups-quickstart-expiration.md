@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213722"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054398"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Microsoft 365 csoportok lejáratának beállítása Azure Active Directory
 
@@ -33,7 +33,7 @@ Az elévülési szabályzat nem bonyolult:
 - Egy törölt Microsoft 365 csoport egy csoport tulajdonosa vagy egy Azure AD-rendszergazda által 30 napon belül visszaállítható.
 
 > [!NOTE]
-> A csoportok mostantól az Azure AD Intelligence használatával automatikusan megújulnak, függetlenül attól, hogy a legutóbbi használatban vannak-e. Ez a megújítási döntés az Office 365-szolgáltatásokban, például az Outlook, a SharePoint, a Teams, a Yammer és egyebek területén lévő csoportok felhasználói tevékenységén alapul.
+> A csoportok mostantól az Azure AD Intelligence használatával automatikusan megújulnak, függetlenül attól, hogy a legutóbbi használatban vannak-e. Ez a megújítási döntés a különböző Microsoft 365-szolgáltatások, például az Outlook, a SharePoint, a Teams, a Yammer és egyebek csoportjain belüli felhasználói tevékenységeken alapul.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 

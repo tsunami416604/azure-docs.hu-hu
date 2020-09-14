@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005020"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052715"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -108,7 +108,7 @@ A *globális rendszergazda* vagy a *felhasználó rendszergazdája* a [Windows P
 
 PowerShell-parancsmagokkal is eltávolíthatja a soha nem lejáró konfigurációt, vagy megtekintheti, hogy a rendszer mely felhasználói jelszavakat állítsa le soha nem jár le.
 
-Ez az útmutató más szolgáltatókra is vonatkozik, például az Intune-ra és az Office 365-re, amely az identitás-és Címtárszolgáltatások Azure AD-szolgáltatására is támaszkodik. A jelszó lejárata a szabályzat egyetlen része, amely módosítható.
+Ez az útmutató más szolgáltatókra is vonatkozik, például az Intune-ra és a Microsoft 365ra, amely az identitás-és Címtárszolgáltatások Azure AD-ra is támaszkodik. A jelszó lejárata a szabályzat egyetlen része, amely módosítható.
 
 > [!NOTE]
 > Csak a Azure AD Connecton keresztül szinkronizált felhasználói fiókok jelszavai konfigurálhatók úgy, hogy ne járjanak le. További információ a címtár-szinkronizálásról: az [ad és az Azure ad közötti kapcsolat](../hybrid/whatis-hybrid-identity.md).

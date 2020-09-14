@@ -3,7 +3,7 @@ title: Az 5,1-es frissítés telepítése a StorSimple 8000 Series eszközön | 
 description: Ismerteti, hogyan telepíthető a StorSimple 8000 Series Update 5,1 a StorSimple 8000 Series eszközre.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
-ms.author: twooley
-ms.openlocfilehash: f9cc5181d6cc29ee4b3c2373dbbc91d6290fbe6e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782770"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052171"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Az 5,1-es frissítés telepítése a StorSimple-eszközön
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 08f3a3c17a5f6ea519eea04c4b8c5e7025adcbac
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116767"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052358"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -35,16 +35,16 @@ Az alábbi táblázat ismerteti, hogy milyen metódusok érhetők el az elsődle
 
 | Metódus | Elsődleges hitelesítés | Másodlagos hitelesítés |
 | --- | --- | --- |
-| [Jelszó](#password) | Igen | |
+| [Jelszó](#password) | Yes | |
 | [A Microsoft Authenticator alkalmazás](#microsoft-authenticator-app) | Igen (előzetes verzió) | MFA és SSPR |
-| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Igen | Csak MFA |
-| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | Nem | MFA |
-| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Nem | MFA |
+| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Yes | Csak MFA |
+| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | No | MFA |
+| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | No | MFA |
 | [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
-| [Hanghívás](#phone-options) | Nem | MFA és SSPR |
-| [Biztonsági kérdések](#security-questions) | Nem | Csak SSPR |
-| [E-mail-cím](#email-address) | Nem | Csak SSPR |
-| [Alkalmazásjelszavak](#app-passwords). | Nem | MFA csak bizonyos esetekben |
+| [Hanghívás](#phone-options) | No | MFA és SSPR |
+| [Biztonsági kérdések](#security-questions) | No | Csak SSPR |
+| [E-mail-cím](#email-address) | No | Csak SSPR |
+| [Alkalmazásjelszavak](#app-passwords). | No | MFA csak bizonyos esetekben |
 
 Ezek a hitelesítési módszerek konfigurálhatók a Azure Portalban, és egyre inkább a [Microsoft Graph REST API bétaverzióját](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)használják.
 
@@ -119,7 +119,7 @@ Az eskü TOTP-tokenek általában titkos kulccsal, vagy a tokenben előre progra
 
 A feldolgozható, programozható eskü TOTP a szoftveres jogkivonat telepítési folyamatában is beállítható az Azure AD-ben.
 
-A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ![ESKÜ-tokenek feltöltése az MFA-eskü tokenek paneljére](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
@@ -212,7 +212,7 @@ A biztonsági kérdések kevésbé biztonságosak, mint más metódusok, mert eg
 
 ### <a name="predefined-questions"></a>Előre meghatározott kérdések
 
-A következő előre meghatározott biztonsági kérdések használhatók ellenőrzési módszerként a SSPR. Az összes biztonsági kérdést lefordítjuk és honosítjuk az Office 365 teljes készletében, a felhasználó böngésző területi beállítása alapján:
+A következő előre meghatározott biztonsági kérdések használhatók ellenőrzési módszerként a SSPR. Az összes ilyen biztonsági kérdés fordítása és honosítása a felhasználó böngésző területi beállítása alapján a Microsoft 365 nyelvének teljes készletében történik:
 
 * Melyik városban teljesítette az első házastársa/partnerét?
 * Milyen városokban felelt meg a szülei?
@@ -292,7 +292,7 @@ Ha a szervezete egyszeri bejelentkezéshez (SSO) van összevont Azure AD-val, é
     * A helyszíni infrastruktúrával hitelesítő ügyfelek esetében szervezeti felhasználónevet és jelszót kell használnia.
     * Az Azure AD-vel hitelesítő ügyfelek esetében használja az alkalmazás jelszavát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 

@@ -1,6 +1,6 @@
 ---
 title: Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directoryban | Microsoft Docs
-description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure-szerepkörök kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
+description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure szerepkör-hozzárendelések kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798312"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053769"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -28,7 +28,7 @@ Vegyük például a következő példát: a contoso az Azure AD-szervezetében d
 
 ## <a name="how-this-feature-works"></a>A szolgáltatás működése
 
-Hozzon létre egy új Office 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való**bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 200 szerepkör-hozzárendelhető csoport hozható létre.
+Hozzon létre egy új Microsoft 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való**bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 200 szerepkör-hozzárendelhető csoport hozható létre.
 
 Ha nem szeretné, hogy a csoport tagjai rendelkezzenek állandó hozzáféréssel a szerepkörhöz, használhatja a Azure AD Privileged Identity Management. Rendeljen hozzá egy csoportot egy Azure AD-szerepkör jogosult tagjaként. A csoport minden tagja ezután jogosult a hozzárendelés aktiválására ahhoz a szerepkörhöz, amelyhez a csoport hozzá van rendelve. Ezután aktiválják a szerepkör-hozzárendelést egy rögzített időtartamra.
 

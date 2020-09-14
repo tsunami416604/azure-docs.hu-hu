@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager Backup katalógus | Microsoft Docs
 description: Ismerteti, hogyan használható a StorSimple Snapshot Manager MMC beépülő modul a biztonsági mentési katalógus megtekintéséhez és kezeléséhez.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515466"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054993"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>A StorSimple Snapshot Manager használata a biztonsági mentési katalógus kezeléséhez
 
@@ -93,7 +93,7 @@ Az alábbi eljárással hozhat létre duplikált (klónt) kötet-vagy kötet-cso
    1. A **név** szövegmezőbe írja be a klónozott kötet nevét. Ez a név jelenik meg a **kötetek** csomópontban. 
    2. (Nem kötelező) válassza a **meghajtó**lehetőséget, majd válasszon egy meghajtóbetűjelet a legördülő listából.
    3. (Nem kötelező) válassza a **mappa (NTFS)** lehetőséget, és írja be a mappa elérési útját, vagy kattintson a Tallózás gombra, és válasszon egy helyet a mappához. 
-   4. Kattintson a **Létrehozás** lehetőségre.
+   4. Kattintson a **Létrehozás** gombra.
 5. Ha a klónozási folyamat elkészült, inicializálnia kell a klónozott kötetet. Indítsa el a Kiszolgálókezelő alkalmazást, majd indítsa el a Lemezkezelés segédprogramot. Részletes útmutatást a [kötetek csatlakoztatása](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)című témakörben talál. Az inicializálás után a kötet a **hatókör** ablaktábla **kötetek** csomópontjában jelenik meg. Ha nem látja a felsorolt kötetet, frissítse a kötetek listáját (kattintson a jobb gombbal a **kötetek** csomópontra, majd kattintson a **frissítés**parancsra).
 
 ## <a name="delete-a-backup"></a>Biztonsági másolat törlése
@@ -126,7 +126,7 @@ Mielőtt elkezdené, ellenőrizze, hogy van-e aktuális biztonsági másolata a 
    1. A **név** szövegmezőbe írja be a klónozott kötet nevét. Ez a név jelenik meg a **kötetek** csomópontban. 
    2. Választható Válassza a **meghajtó**lehetőséget, majd válasszon egy meghajtóbetűjelet a legördülő listából. 
    3. Választható Válassza a **mappa (NTFS)** lehetőséget, és írja be a mappa elérési útját, vagy kattintson a **Tallózás** gombra, és válassza ki a mappa helyét. 
-   4. Kattintson a **Létrehozás** lehetőségre. 
+   4. Kattintson a **Létrehozás** gombra. 
 5. Ha a klónozási folyamat elkészült, inicializálnia kell a klónozott kötetet. Indítsa el a Kiszolgálókezelő alkalmazást, majd indítsa el a Lemezkezelés segédprogramot. Részletes útmutatást a [kötetek csatlakoztatása](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)című témakörben talál. Az inicializálás után a kötet a **hatókör** ablaktábla **kötetek** csomópontjában jelenik meg. 
    
     Ha nem látja a felsorolt kötetet, frissítse a kötetek listáját (kattintson a jobb gombbal a **kötetek** csomópontra, majd kattintson a **frissítés**parancsra).
@@ -161,7 +161,7 @@ Rendszeresen készítsen biztonsági másolatot a StorSimple Snapshot Manager ad
 6. Törölje a katalógus XML-fájlját, és cserélje le a létrehozott biztonsági mentési verzióra. 
 7. A StorSimple Snapshot Manager elindításához kattintson az asztali StorSimple Snapshot Manager ikonra. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 * További információ a [StorSimple Snapshot Manager feladatokról és munkafolyamatokról](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
 

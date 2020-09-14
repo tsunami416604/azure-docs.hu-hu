@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager felügyelet | Microsoft Docs
 description: Áttekintést nyújt, és hivatkozásokat tartalmaz a StorSimple Snapshot Manager megoldás-felügyeleti feladatokkal és munkafolyamatokkal kapcsolatos további információkra.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
-ms.author: twooley
-ms.openlocfilehash: f9a42a8f94f3e5cb63cd340b696a803d97491c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 16d782c6a25d8d2d8e1323b7cb683f41d8c99649
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512825"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054976"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>A StorSimple-megoldás felügyeletéhez használja a StorSimple Snapshot Manager
 
@@ -59,6 +59,6 @@ A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a jelenle
 | Ütemezett biztonsági mentési feladatok megtekintése és kezelése<br>Legutóbbi biztonsági mentési feladatok megtekintése és kezelése<br>Jelenleg futó biztonsági mentési feladatok megtekintése és kezelése |[A StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez](storsimple-snapshot-manager-manage-backup-jobs.md) |
 | Kötet visszaállítása<br>Kötet vagy számítógépcsoport klónozása<br>Biztonsági másolat törlése<br>Fájl helyreállítása<br>A StorSimple Snapshot Manager adatbázisának visszaállítása |[A StorSimple Snapshot Manager használata a biztonsági mentési katalógus kezeléséhez](storsimple-snapshot-manager-manage-backup-catalog.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Töltse le a StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
 

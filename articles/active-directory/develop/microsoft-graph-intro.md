@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119674"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052562"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 A Microsoft Graph API egy REST-alapú webes API, amely lehetővé teszi Microsoft Cloud szolgáltatás erőforrásainak elérését. Miután regisztrálta az alkalmazást, és beolvassa egy felhasználó vagy szolgáltatás hitelesítési jogkivonatait, megteheti a kéréseket a Microsoft Graph API-nak. További információ: [Microsoft Graph áttekintése](/graph/overview).
 
 A Microsoft Graph REST API-kat és ügyféloldali kódtárakat tesz elérhetővé a következő Microsoft 365-szolgáltatásokban lévő adatok eléréséhez:
-- Office 365-szolgáltatások: ás, Excel, Microsoft Books, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner és SharePoint
+- Microsoft 365 Services: ásni, Excel, Microsoft Books, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner és SharePoint
 - Nagyvállalati mobilitási és biztonsági szolgáltatások: Advanced Threat Analytics, komplex veszélyforrások elleni védelem, Azure Active Directory, Identity Manager és Intune
 - Windows 10 Services: tevékenységek, eszközök, értesítések
 - Dynamics 365 Business Central

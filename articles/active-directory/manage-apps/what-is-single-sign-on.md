@@ -12,18 +12,18 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b1f23d52b96e708a16adbbf6098de4b7ab0423e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069469"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052103"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
 Az egyszeri bejelentkezés azt jelenti, hogy a felhasználóknak nem kell bejelentkezniük minden általuk használt alkalmazásba. A felhasználó egyszer jelentkezik be, és a rendszer a hitelesítő adatokat is használja más alkalmazásokhoz.
 
-Ha Ön a végfelhasználó, valószínűleg nem érdekli az egyszeri bejelentkezés részletei. Csak azokat az alkalmazásokat szeretné használni, amelyekkel hatékonyabbá teheti a jelszavát. Az alkalmazások a következő címen találhatók: https://myapps.microsoft.com .
+Ha Ön a végfelhasználó, valószínűleg nem érdekli az egyszeri bejelentkezés részletei. Csak azokat az alkalmazásokat szeretné használni, amelyekkel hatékonyabbá teheti a jelszavát. Az alkalmazások a következő címen találhatók: https://myapplications.microsoft.com .
  
 Ha Ön rendszergazda vagy informatikai szakember, olvassa el a következőt: További információ az egyszeri bejelentkezésről és az Azure-beli megvalósításáról.
 

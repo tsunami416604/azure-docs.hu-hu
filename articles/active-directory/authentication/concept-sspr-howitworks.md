@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377199"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052774"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -39,7 +39,7 @@ A felhasználók visszaállíthatják vagy módosíthatják a jelszavukat a [SSP
 
 Ha a felhasználó kiválasztja, hogy **nem fér hozzá a fiók** hivatkozásához egy alkalmazásból vagy lapról, vagy közvetlenül a-re mutat [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) , a SSPR-portálon használt nyelv a következő lehetőségektől függ:
 
-* Alapértelmezés szerint a böngésző területi beállítása a SSPR a megfelelő nyelven való megjelenítésére szolgál. A jelszó-visszaállítási élmény az [Office 365 által támogatott](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)nyelvekre van honosítva.
+* Alapértelmezés szerint a böngésző területi beállítása a SSPR a megfelelő nyelven való megjelenítésére szolgál. A jelszó-visszaállítási élmény a [Microsoft 365 által támogatott](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)nyelvekre van honosítva.
 * Ha a SSPR egy adott honosított nyelven szeretné összekapcsolni, fűzze hozzá a `?mkt=` jelszó-visszaállítási URL-cím végéhez, valamint a szükséges területi beállításhoz.
     * Például a spanyol *es-US* területi beállítás megadásához használja a következőt: `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) .
 
@@ -77,7 +77,7 @@ Mielőtt a felhasználók visszaállíthatják vagy megváltoztathatják a jelsz
 
 Engedélyezheti, hogy a felhasználó megkövetelje a SSPR regisztrációját, ha az Azure AD-t használó alkalmazásokba jelentkeznek be. A munkafolyamat a következő alkalmazásokat tartalmazza:
 
-* Office 365
+* Microsoft 365
 * Azure Portal
 * Hozzáférési panel
 * Összevont alkalmazások
@@ -226,7 +226,7 @@ A SSPR elvégzi a rendszergazda által kezdeményezett jelszó-visszaállítás 
 
 A jelszó alaphelyzetbe állítása és módosítása teljes mértékben támogatott az összes vállalatközi (B2B) konfigurációban. A B2B felhasználói jelszó alaphelyzetbe állítása a következő három esetben támogatott:
 
-* **Meglévő Azure ad-Bérlővel rendelkező partnerszervezet felhasználói**: Ha az a szervezet, amelyen a partner, rendelkezik egy meglévő Azure ad-Bérlővel, a jelszó-visszaállítási házirendeket a bérlőn is be kell tartani. A jelszó-visszaállítás működéséhez a partner szervezetnek csak meg kell győződnie arról, hogy az Azure AD SSPR engedélyezve van. Az Office 365-ügyfelek esetében nem számítunk fel további díjat.
+* **Meglévő Azure ad-Bérlővel rendelkező partnerszervezet felhasználói**: Ha az a szervezet, amelyen a partner, rendelkezik egy meglévő Azure ad-Bérlővel, a jelszó-visszaállítási házirendeket a bérlőn is be kell tartani. A jelszó-visszaállítás működéséhez a partner szervezetnek csak meg kell győződnie arról, hogy az Azure AD SSPR engedélyezve van. Microsoft 365 ügyfelek esetében nem számítunk fel további díjat.
 * Önkiszolgáló regisztráción **keresztül regisztrációt végző felhasználók** : Ha a szervezet, amellyel az önkiszolgáló [bejelentkezési](../users-groups-roles/directory-self-service-signup.md) funkciót használta a bérlőhöz való belépéshez, a jelszó alaphelyzetbe állításával visszaállíthatja a regisztrált e-mail-címet.
 * **B2B-felhasználók**: az új [Azure ad B2B-funkciók](../external-identities/what-is-b2b.md) használatával létrehozott összes új B2B-felhasználó is visszaállíthatja a jelszavukat a Meghívási folyamat során regisztrált e-mail-címre.
 

@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure A
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: celested
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 756b8e8e06d393736b330c3ae3e9128de76bf5a0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e7fc8f68bf344b689d6d4ebb49fde8d43ebcaccd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544213"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053651"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Elium
 
@@ -26,14 +26,15 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Elium a Azure Ac
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Elium az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * Elium egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -46,14 +47,14 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 A Elium Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Elium a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Elium** kifejezést a keresőmezőbe.
 1. Válassza ki a **Elium** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-elium"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Elium
+## <a name="configure-and-test-azure-ad-sso-for-elium"></a>Azure AD SSO konfigurálása és tesztelése a Elium-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Elium a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Elium-ben.
 
@@ -70,7 +71,7 @@ Az Azure AD SSO és a Elium konfigurálásához és teszteléséhez hajtsa végr
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Elium** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal **Elium** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
@@ -124,7 +125,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -133,15 +134,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza a **Elium**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-elium-sso"></a>Elium SSO konfigurálása
@@ -156,17 +151,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Ha manuálisan szeretné beállítani a Elium, nyisson meg egy új böngészőablakot, és jelentkezzen be a Elium vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. Kattintson a **felhasználói profilra** a jobb felső sarokban, majd válassza az **Adminisztráció**lehetőséget.
+1. Kattintson a **felhasználói profilra** a jobb felső sarokban, majd válassza a **Beállítások**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/elium-tutorial/user1.png)
+    ![Egyszeri bejelentkezéses Elium beállítása 01](./media/elium-tutorial/elium-01.png)
 
-1. Válassza a **Biztonság** fület.
+1. Válassza a **Biztonság** elemet a **speciális**területen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/elium-tutorial/user2.png)
+    ![Az egyszeri bejelentkezés Elium 02 konfigurálása](./media/elium-tutorial/elium-02.png)
 
 1. Görgessen le az **egyszeri bejelentkezés (SSO)** szakaszhoz, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/elium-tutorial/user3.png)
+    ![Egyszeri bejelentkezés beállítása Elium 03](./media/elium-tutorial/elium-03.png)
 
     a. Másolja ki a **egy saml2-hitelesítés működésének ellenőrzését** , és illessze be a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
@@ -181,11 +176,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. Keresse meg a **entityID** az **SP metadata** fájlban, másolja a **entityID** értéket, és illessze be az **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában. 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/elium-tutorial/user4.png)
+    ![Egyszeri bejelentkezéses Elium (04) konfigurálása](./media/elium-tutorial/elium-04.png)
 
     f. Keresse meg a **AssertionConsumerService** az **SP metadata** fájlban, másolja a **Location (hely** ) értéket, és illessze be a **válasz URL-címe** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/elium-tutorial/user5.png)
+    ![Egyszeri bejelentkezéses Elium beállítása 05](./media/elium-tutorial/elium-05.png)
 
     : Nyissa meg a letöltött metaadatokat Azure Portal a Jegyzettömbben, másolja a tartalmat, és illessze be a **identitásszolgáltató metadata** szövegmezőbe.
 
@@ -200,16 +195,20 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Elium-ben. A E
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
+ 
+#### <a name="sp-initiated"></a>Az SP inicializálva:
+ 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Elium bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+ 
+* Lépjen közvetlenül a Elium bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+ 
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+ 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Elium, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+ 
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Elium csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Elium, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Ha a hozzáférési panelen a Elium csempére kattint, automatikusan be kell jelentkeznie arra a Elium, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="additional-resources"></a>További források
-
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [A Elium kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A Glint Inc konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

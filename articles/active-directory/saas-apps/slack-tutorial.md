@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a631ab7190891ae3716a28615bcdbfe4d219ea27
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527552"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053463"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Slacktel
 
@@ -50,6 +50,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A Slack támogatja a [felhasználók **automatikus** kiépítési felállítását](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
 * A Slack konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
 ## <a name="adding-slack-from-the-gallery"></a>Slack hozzáadása a gyűjteményből
 
 A Slack Azure AD-be való integrálásának konfigurálásához hozzá kell adnia Slack-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
@@ -61,7 +64,7 @@ A Slack Azure AD-be való integrálásának konfigurálásához hozzá kell adni
 1. A **Hozzáadás a** katalógusból szakaszban a keresőmezőbe írja be a **Slack** kifejezést.
 1. Válassza ki a **Slack** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-slack"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése a Slackhez
+## <a name="configure-and-test-azure-ad-sso-for-slack"></a>Azure AD SSO konfigurálása és tesztelése a Slackhez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Slack használatával egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Slackben.
 
@@ -86,13 +89,20 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://< DOMAIN NAME>.slack.com/sso/saml/start`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<DOMAIN NAME>.slack.com/sso/saml/start`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `https://slack.com`
+    
+    c. A **Válasz URL-cím**mezőben adja meg a következő URL-minta egyikét:
+    
+    | Válasz URL-cím|
+    |----------|
+    | `https://<DOMAIN NAME>.slack.com/sso/saml` |
+    | `https://<DOMAIN NAME>.enterprise.slack.com/sso/saml` |
 
     > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot a [Slack-ügyfél támogatási csoportjával](https://slack.com/help/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
-    
+    > Ezek az értékek nem valósak. Ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével kell frissítenie. Az érték beszerzéséhez vegye fel a kapcsolatot a [Slack-ügyfél támogatási csoportjával](https://slack.com/help/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+
     > [!NOTE]
     > Az **azonosító (Entity ID)** értéke változó lehet, ha több Slack-példánnyal rendelkezik, amelyet integrálni kell a Bérlővel. Használja a mintát `https://<DOMAIN NAME>.slack.com` . Ebben az esetben a Slack egy másik beállításával is párosítani kell ugyanazzal az értékkel.
 
@@ -106,7 +116,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
     | e-mail | User. userPrincipalName |
-    | | |
 
    > [!NOTE]
    > A szolgáltatói (SP) konfiguráció beállításához kattintson a **Kibontás** lehetőségre a SAML-konfiguráció lapon a **Speciális beállítások** elem mellett. A **szolgáltatói kiállító** mezőben adja meg a munkaterület URL-címét. Az alapértelmezett érték a slack.com. 
@@ -129,7 +138,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -155,15 +164,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Lépjen a **Microsoft Azure ADra** , majd lépjen a **Team Settings**elemre.
 
-     ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/slack-tutorial/tutorial-slack-team-settings.png)
+     ![Egyszeri bejelentkezés konfigurálása Microsoft Azure AD](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. A **csapat beállításai** szakaszban kattintson a **hitelesítés** lapra, majd a **beállítások módosítása**parancsra.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/slack-tutorial/tutorial-slack-authentication.png)
+    ![Egyszeri bejelentkezés konfigurálása a csoport beállításaiban](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. Az **SAML hitelesítési beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/slack-tutorial/tutorial-slack-save-authentication.png)
+    ![Az SAML-hitelesítési beállítások egyszeri bejelentkezésének konfigurálása](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  Az **SAML 2,0-végpont (http)** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 

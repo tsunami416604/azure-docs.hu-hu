@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065488"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052630"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
@@ -39,18 +39,18 @@ Az alábbi táblázatban a rögzítettként megjelölt elemek a SCIM feladatokba
 
 | **SCIM 2,0 megfelelőségi probléma** |  **Rögzített?** | **Javítás dátuma**  |  **Visszamenőleges kompatibilitás** |
 |---|---|---|
-| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Igen  |  December 18., 2018 | Visszalépés a customappSSO |
-| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Igen  | December 18., 2018  | Visszalépés a customappSSO |
-| A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Igen  |  December 18., 2018  | Visszalépés a customappSSO |
-| A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Igen  |  December 18., 2018  |  Visszalépés a customappSSO |
-| A javítási viselkedés frissítése a megfelelőség biztosítása érdekében (például a logikai és a megfelelő csoporttagság-eltávolítások esetén) | Nem | TBD| előnézet jelző használata |
+| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Yes  |  December 18., 2018 | Visszalépés a customappSSO |
+| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Yes  | December 18., 2018  | Visszalépés a customappSSO |
+| A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Yes  |  December 18., 2018  | Visszalépés a customappSSO |
+| A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Yes  |  December 18., 2018  |  Visszalépés a customappSSO |
+| A javítási viselkedés frissítése a megfelelőség biztosítása érdekében (például a logikai és a megfelelő csoporttagság-eltávolítások esetén) | No | TBD| előnézet jelző használata |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>A SCIM viselkedését megváltoztató jelzők
 Az alapértelmezett SCIM-ügyfél működésének módosításához használja az alábbi jelzőket az alkalmazás bérlői URL-címében.
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="A SCIM jelzői a későbbi működéshez.":::
 
-* A következő URL-cím használatával frissítheti a javítási viselkedést, és biztosíthatja a SCIM megfelelőségét (például az aktív logikai és a megfelelő csoporttagság-eltávolítások esetén). Ez a viselkedés jelenleg csak a jelző használatakor érhető el, de a következő néhány hónap során az alapértelmezett viselkedés lesz.
+* A következő URL-cím használatával frissítheti a javítási viselkedést, és biztosíthatja a SCIM megfelelőségét (például az aktív logikai és a megfelelő csoporttagság-eltávolítások esetén). Ez a viselkedés jelenleg csak a jelző használatakor érhető el, de a következő néhány hónap során az alapértelmezett viselkedés lesz. Megjegyzés Ez az előnézet jelölő jelenleg nem működik igény szerinti kiépítés esetén. 
   * **URL-cím (scim-kompatibilis):** AzureAdScimPatch062020
   * **SCIM RFC-referenciák:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
@@ -203,5 +203,5 @@ Az alábbi lépésekkel törli a meglévő customappsso-feladatot, és létrehoz
 7. A szokásos módon végezze el a felhasználó kiépítési konfigurációját.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ az SaaS-alkalmazásokhoz való kiépítés és kiépítés ellen](user-provisioning.md)

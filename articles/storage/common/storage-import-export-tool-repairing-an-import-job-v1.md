@@ -1,19 +1,19 @@
 ---
 title: Azure import/export importálási feladatok javítása – v1 | Microsoft Docs
 description: Ismerje meg, hogy miként javítható az Azure import/export szolgáltatás használatával létrehozott és futtatott importálási feladatok.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b3ba9844bf8412e169322fd4953cbc259a94e174
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525775"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052426"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
 Előfordulhat, hogy a Microsoft Azure Import/Export szolgáltatás néhány fájlt vagy egy fájl részeit nem tudja átmásolni a Windows Azure Blob szolgáltatásba. A hibák néhány lehetséges okát jelenthetik például:  
@@ -97,7 +97,7 @@ Az eszköz ezután megírja a problémás fájl elérési útját a következőr
   
 Miután elvégezte a szükséges fájlok elérhetővé tételét az eszköz számára, vagy az elérésiút-leképezési fájl frissítését, az importálási folyamat befejezéséhez futtassa újra az eszközt.  
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

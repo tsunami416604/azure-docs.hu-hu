@@ -14,16 +14,16 @@ ms.date: 04/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4096c65fa4375152f44891d4a0a5aac4b9077cf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743847"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055435"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Tekintse át az Azure AD-szerepkörökhöz való hozzáférést Privileged Identity Management
 
-A Privileged Identity Management (PIM) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik a Azure Active Directory (AD) és más Microsoft-online szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásainak jogosultsági szintű hozzáférését. A cikkben ismertetett lépéseket követve sikeresen áttekintheti a hozzárendelt szerepköröket.
+A Privileged Identity Management (PIM) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik a Azure Active Directory (AD) és más Microsoft-online szolgáltatások, például a Microsoft 365 vagy Microsoft Intune erőforrásaihoz való emelt szintű hozzáférést. A cikkben ismertetett lépéseket követve sikeresen áttekintheti a hozzárendelt szerepköröket.
 
 Ha rendszergazdai szerepkörhöz van rendelve, a szervezet Kiemelt szerepkörű rendszergazdája megkérheti, hogy rendszeresen erősítse meg, hogy továbbra is szüksége van erre a szerepkörre a feladathoz. Előfordulhat, hogy olyan e-mailt kap, amely hivatkozást tartalmaz, vagy egyenesen a [Azure Portalra](https://portal.azure.com) , és megkezdheti.
 
@@ -49,6 +49,6 @@ Az alábbi lépéseket követve megkeresheti és elvégezheti a hozzáférési f
 4. Válassza a **jóváhagyás** vagy a **Megtagadás**lehetőséget. Előfordulhat, hogy a döntés okát is meg kell adnia az **indoklás** szövegmezőben.  
 5. Az **Azure ad-szerepkörök áttekintése** panel bezárásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A saját Azure-erőforrásszerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-resource-roles-perform-access-review.md)

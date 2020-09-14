@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051160"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052279"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure Multi-Factor Authentication
 
-A vásárlói adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft online szolgáltatásokra, például az Office 365-re és az Azure-ra való feliratkozáskor. További információ a vásárlói adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
+A vásárlói adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft Online szolgáltatásra (például Microsoft 365 és az Azure-ra való feliratkozáskor) alapuló címen. További információ a vásárlói adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
 
 A felhőalapú Azure Multi-Factor Authentication és az Azure Multi-Factor Authentication-kiszolgáló dolgozza fel és tárolja a személyes és a szervezeti adatmennyiséget. Ez a cikk azt ismerteti, hogy mit és hol tárolja a rendszer az adattárolást.
 
@@ -105,6 +105,6 @@ A naplófájlok tárolási helyétől függ, hogy a rendszer melyik régióból 
 
 Néhány alapszintű hitelesítési naplót csak a Egyesült Államok tárol. A 21Vianet által üzemeltetett Microsoft Azure Germany és Microsoft Azure mindig a saját felhőben tárolódnak. A Microsoft Government Cloud log-adatkészleteket a rendszer mindig a Egyesült Államok tárolja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy a felhőalapú Azure-Multi-Factor Authentication és az Azure-Multi-Factor Authentication-kiszolgáló milyen felhasználói adatokat gyűjtenek be: [azure multi-Factor Authentication felhasználói adatok gyűjtése](howto-mfa-reporting-datacollection.md).

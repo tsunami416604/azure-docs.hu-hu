@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager mennyiségi csoportok | Microsoft Docs
 description: Ismerteti, hogyan használható a StorSimple Snapshot Manager MMC beépülő modul a mennyiségi csoportok létrehozásához és kezeléséhez.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506259"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054772"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple-Snapshot Manager használata a kötetek létrehozásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -48,11 +48,11 @@ Az összes művelet a **műveletek** ablaktáblán is elérhető.
 ## <a name="view-volume-groups"></a>Mennyiségi csoportok megtekintése
 Ha a **mennyiségi csoportok** csomópontra kattint, az **eredmények** ablaktábla az egyes kötetekre vonatkozó alábbi információkat jeleníti meg az oszlopok kiválasztott beállításaitól függően. (Az **eredmények** ablaktáblájának oszlopai konfigurálhatók. Kattintson a jobb gombbal a **kötetek** csomópontra, válassza a **nézet**, majd az **Oszlopok hozzáadása/eltávolítása**lehetőséget.)
 
-| Eredmények oszlop | Description |
+| Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Name |A **Name (név** ) oszlop tartalmazza a kötet csoportjának nevét. |
+| Név |A **Name (név** ) oszlop tartalmazza a kötet csoportjának nevét. |
 | Alkalmazás |Az **alkalmazások** oszlop a Windows-gazdagépen jelenleg telepített és futó VSS-írók számát jeleníti meg. |
-| Kiválasztva |A **kiválasztott** oszlop a kötetben található kötetek számát jeleníti meg. A nulla (0) érték azt jelzi, hogy egyetlen alkalmazás sincs társítva a mennyiségi csoport köteteihez. |
+| Bejelölve |A **kiválasztott** oszlop a kötetben található kötetek számát jeleníti meg. A nulla (0) érték azt jelzi, hogy egyetlen alkalmazás sincs társítva a mennyiségi csoport köteteihez. |
 | Importált |Az **importált** oszlop az importált kötetek számát jeleníti meg. Ha **igaz**értékre van állítva, akkor ez az oszlop azt jelzi, hogy egy kötet csoport lett importálva a Azure Portalból, és nem lett létrehozva a StorSimple Snapshot Manager. |
 
 > [!NOTE]
@@ -125,7 +125,7 @@ A köteteket a következő eljárással törölheti.
    
     A törölt számítógépcsoport eltűnik az **eredményeket** tartalmazó ablaktábla listájáról, és az adott kötethez társított összes biztonsági mentés törlődik a biztonsági mentési katalógusból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet biztonsági mentési házirendeket a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-policies.md).
 

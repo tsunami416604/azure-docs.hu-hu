@@ -3,12 +3,12 @@ title: Windows rendszerű gépek biztonsági mentése a MARS-ügynök használat
 description: A Windows rendszerű gépek biztonsági mentéséhez használja a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182088"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052222"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server-fájlok és-mappák biztonsági mentése az Azure-ba
 
@@ -125,7 +125,7 @@ A hálózati sávszélesség-szabályozás engedélyezése:
 1. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget.
 
     ![Hálózati sávszélesség-szabályozás beállítása biztonsági mentési műveletekhez](./media/backup-configure-vault/throttling-dialog.png)
-1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 MBps is lehet. Ez után válassza az **OK** gombot.
+1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 Mbps is lehet. Ezután válassza az **OK** gombot.
 
 ## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
 
@@ -155,7 +155,7 @@ A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** ál
 
 További információt a [biztonsági mentési szabályzat létrehozása](#create-a-backup-policy)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure-ban](backup-azure-restore-windows-server.md).
 * [Gyakori kérdések a fájlok és mappák biztonsági mentéséről](backup-azure-file-folder-backup-faq.md)
