@@ -26,7 +26,7 @@ Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzá
 
 1. A tervrajzok listájában válassza ki a terv-hozzárendelést. Ezután használja a **hozzárendelés frissítése** gombot, vagy kattintson a jobb gombbal a terv-hozzárendelésre, és válassza a **hozzárendelés frissítése**lehetőséget.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Képernyőkép a terv-hozzárendelési oldalról, amely kiemelte a "frissítés hozzárendelése" gombot." border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Képernyőkép a terv-hozzárendelési oldalról, amely kiemelte a frissítés hozzárendelése gombot." border="false":::
 
 1. A **terv hozzárendelése** lap az eredeti hozzárendelés összes értékével előre betöltődik. Megváltoztathatja a **terv definíciójának verzióját**, a **zárolás hozzárendelésének** állapotát, valamint a terv definíciójában létező dinamikus paramétereket. Válassza a **hozzárendelés** lehetőséget a módosítások végrehajtásakor.
 
