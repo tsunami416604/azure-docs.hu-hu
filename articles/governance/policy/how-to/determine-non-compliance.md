@@ -36,7 +36,7 @@ A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
 
 1. A **szabályzat megfelelősége** lap **erőforrás-megfelelőség** lapján kattintson a jobb gombbal, vagy válassza ki az erőforrás három pontját egy olyan **megfelelőségi állapotban** , amely _nem megfelelő_. Ezután válassza a **megfelelőségi adatok megtekintése**lehetőséget.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Képernyőkép a "megfelelőségi adatok megtekintése" hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Képernyőkép a megfelelőségi adatok megtekintése hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
 
 1. A **megfelelőség részletei** ablaktábla az erőforrás legutóbbi kiértékelésével kapcsolatos információkat jeleníti meg az aktuális szabályzat-hozzárendeléshez. Ebben a példában a **Microsoft. SQL/Servers/Version** mező értéke _12,0_ , míg a rendszer a _14,0_-es szabályzat-definíciót várta. Ha az erőforrás több okból nem megfelelő, az egyes elemek a panelen jelennek meg.
 
