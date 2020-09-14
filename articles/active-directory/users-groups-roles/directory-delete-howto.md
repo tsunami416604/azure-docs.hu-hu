@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795422"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056302"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Bérlő törlése Azure Active Directory
 
@@ -27,12 +27,12 @@ Ha egy Azure AD-szervezetet (bérlőt) töröl, a szervezetben található össz
 
 ## <a name="prepare-the-organization"></a>A szervezet előkészítése
 
-Nem törölhet szervezetet az Azure AD-ben, amíg át nem halad több ellenőrzés. Ezek az ellenőrzések csökkentik annak a kockázatát, hogy az Azure AD-szervezet törlése negatív hatással van a felhasználói hozzáférésre, például az Office 365-be való bejelentkezésre vagy az Azure-beli erőforrásokhoz való hozzáférésre. Ha például az előfizetéshez társított szervezet véletlenül törölve van, akkor a felhasználók nem férhetnek hozzá az adott előfizetéshez tartozó Azure-erőforrásokhoz. A rendszer a következő feltételek teljesülését ellenőrzi:
+Nem törölhet szervezetet az Azure AD-ben, amíg át nem halad több ellenőrzés. Ezek az ellenőrzések csökkentik a kockázatot, amely az Azure AD-szervezet törlésével negatív hatással van a felhasználói hozzáférésre, például az Azure-ban való Microsoft 365 vagy az erőforrások elérésének lehetőségére. Ha például az előfizetéshez társított szervezet véletlenül törölve van, akkor a felhasználók nem férhetnek hozzá az adott előfizetéshez tartozó Azure-erőforrásokhoz. A rendszer a következő feltételek teljesülését ellenőrzi:
 
 * Az Azure AD-szervezetben (bérlőben) nem lehetnek felhasználók, kivéve az egyik globális rendszergazda, aki a szervezetet törölni szeretné. A szervezet törlése előtt minden más felhasználót törölni kell. Ha a felhasználók szinkronizálása a helyszíni rendszerből történik, akkor először ki kell kapcsolni a szinkronizálást, és a felhasználókat a Azure Portal vagy Azure PowerShell parancsmagokkal kell törölni a felhőalapú szervezetekben.
 * A szervezetben nem szerepelhetnek alkalmazások. A szervezet törlése előtt minden alkalmazást el kell távolítani.
 * A szervezethez társított multi-Factor Authentication szolgáltatók közül nem lehet.
-* Semmilyen Microsoft Online Services-szolgáltatáshoz (például Microsoft Azure, Office 365 vagy a szervezethez társított prémium szintű Azure AD) nem lehet előfizetést fizetni. Ha például egy alapértelmezett Azure AD-szervezet lett létrehozva az Azure-ban, akkor nem törölheti ezt a szervezetet, ha az Azure-előfizetése továbbra is ezen a szervezeten alapul a hitelesítéshez. Hasonlóképpen nem törölheti a szervezetet, ha egy másik felhasználó társított egy előfizetést.
+* Semmilyen Microsoft Online Services-szolgáltatáshoz, például Microsoft Azurehoz, Microsoft 365hoz vagy a szervezethez társított prémium szintű Azure ADhoz nem lehet előfizetést fizetni. Ha például egy alapértelmezett Azure AD-szervezet lett létrehozva az Azure-ban, akkor nem törölheti ezt a szervezetet, ha az Azure-előfizetése továbbra is ezen a szervezeten alapul a hitelesítéshez. Hasonlóképpen nem törölheti a szervezetet, ha egy másik felhasználó társított egy előfizetést.
 
 ## <a name="delete-the-organization"></a>A szervezet törlése
 
@@ -52,16 +52,16 @@ Nem törölhet szervezetet az Azure AD-ben, amíg át nem halad több ellenőrz�
 
 ## <a name="if-you-cant-delete-the-organization"></a>Ha nem tudja törölni a szervezetet
 
-Az Azure AD-szervezet konfigurálását követően aktiválhatja az olyan licenc-alapú előfizetéseket is, mint a prémium szintű Azure AD P2, az Office 365 Business Premium vagy a Enterprise Mobility + Security E5. A véletlen adatvesztés elkerülése érdekében nem törölhet szervezeteket, amíg az előfizetések teljes mértékben nem törlődnek. Az előfizetéseket el kell **helyezni a szervezet** törlésének engedélyezéséhez. Egy **lejárt** vagy **megszakított** előfizetés a **letiltott** állapotba kerül, és a végső szakasz a **kiépített** állapot.
+Ha konfigurálta az Azure AD-szervezetet, akkor lehet, hogy aktiválta a licenc-alapú előfizetéseket a szervezete számára, például prémium szintű Azure AD P2, Microsoft 365 Vállalati verzió standard vagy Enterprise Mobility + Security E5. A véletlen adatvesztés elkerülése érdekében nem törölhet szervezeteket, amíg az előfizetések teljes mértékben nem törlődnek. Az előfizetéseket el kell **helyezni a szervezet** törlésének engedélyezéséhez. Egy **lejárt** vagy **megszakított** előfizetés a **letiltott** állapotba kerül, és a végső szakasz a **kiépített** állapot.
 
-A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
+A következő táblázatból megtudhatja, mire számíthat, ha egy próbaverzió Microsoft 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). További információ a Microsoft 365 adatmegőrzéssel és az előfizetések életciklusával kapcsolatban: [Mi történik az adatokkal és a hozzáféréssel, ha a Microsoft 365 for Business-előfizetés lejár?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
 Előfizetés állapota | Adatok | Hozzáférés az adatkezeléshez
 ----- | ----- | -----
-Aktív (30 nap próbaverzió esetén) | Az összes elérhető | A felhasználók az Office 365-fájlokhoz vagy-alkalmazásokhoz normál hozzáféréssel rendelkeznek<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz 
-Lejárt (30 nap) | Az összes elérhető| A felhasználók az Office 365-fájlokhoz vagy-alkalmazásokhoz normál hozzáféréssel rendelkeznek<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz
-Letiltva (30 nap) | Csak a rendszergazda számára elérhető adathozzáférés | A felhasználók nem férhetnek hozzá az Office 365-fájlokhoz vagy-alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz, de nem rendelhetnek hozzá licenceket vagy frissíthetnek felhasználókat
-Kiépítve (30 nappal a letiltottak után) | Az adattörlés (automatikusan törlődik, ha nincs más szolgáltatás használatban) | A felhasználók nem férhetnek hozzá az Office 365-fájlokhoz vagy-alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz más előfizetések megvásárlásához és kezeléséhez
+Aktív (30 nap próbaverzió esetén) | Az összes elérhető | A felhasználók normál hozzáféréssel rendelkeznek Microsoft 365 fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz 
+Lejárt (30 nap) | Az összes elérhető| A felhasználók normál hozzáféréssel rendelkeznek Microsoft 365 fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz
+Letiltva (30 nap) | Csak a rendszergazda számára elérhető adathozzáférés | A felhasználók nem férhetnek hozzá Microsoft 365 fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz, de nem rendelhetnek hozzá licenceket vagy frissíthetnek felhasználókat
+Kiépítve (30 nappal a letiltottak után) | Az adattörlés (automatikusan törlődik, ha nincs más szolgáltatás használatban) | A felhasználók nem férhetnek hozzá Microsoft 365 fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz más előfizetések megvásárlásához és kezeléséhez
 
 ## <a name="delete-a-subscription"></a>Előfizetés törlése
 
@@ -97,7 +97,7 @@ A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti köz
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Olyan próbaverziós előfizetésem van, amely blokkolja a törlést
 
-Az [önkiszolgáló regisztrációs termékek](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power bi, a Rights Management szolgáltatások, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók regisztrálhatnak az Office 365-on keresztül, ami szintén létrehoz egy vendég felhasználót az Azure ad-szervezetben való hitelesítéshez. Ezek az önkiszolgáló termékek letiltják a címtár törlését, amíg a termékek teljes mértékben törlődnek a szervezetből, így elkerülhető az adatvesztés. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
+Az [önkiszolgáló regisztrációs termékek](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power bi, a Rights Management Services, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók a Microsoft 365on keresztül regisztrálhatnak, ami szintén létrehoz egy vendég felhasználót az Azure ad-szervezetben való hitelesítéshez. Ezek az önkiszolgáló termékek letiltják a címtár törlését, amíg a termékek teljes mértékben törlődnek a szervezetből, így elkerülhető az adatvesztés. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
 
 Az önkiszolgáló regisztrációs termékek két típusa van a hozzárendelésük módjában: 
 
@@ -108,7 +108,7 @@ Az önkiszolgáló regisztrációs termék törlésének megkezdése után a mű
 
 A jelenleg elérhető önkiszolgáló regisztrációs termékekkel és szolgáltatásokkal kapcsolatos további információkért lásd a [rendelkezésre álló](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)önkiszolgáló programok című témakört.
 
-A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+A következő táblázatból megtudhatja, mire számíthat, ha egy próbaverzió Microsoft 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). További információ a Microsoft 365 adatmegőrzéssel és az előfizetések életciklusával kapcsolatban: [Mi történik az adatokkal és a hozzáféréssel, ha a Microsoft 365 for Business-előfizetés lejár?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Termék állapota | Adatok | Hozzáférés az adatkezeléshez
 ------------- | ---- | --------------

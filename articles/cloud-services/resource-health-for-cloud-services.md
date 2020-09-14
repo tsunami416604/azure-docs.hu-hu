@@ -3,17 +3,16 @@ title: Cloud Services Resource Health (klasszikus)
 description: Ez a cikk a Microsoft Azure Cloud Services (klasszikus) Resource Health-ellenőrzési (RHC-) támogatásáról beszél.
 services: cloud-services
 author: tanmaygore
-manager: vashan
 ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: 969390b0988c59940cb210c14821cbee42edfa7a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664541"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056054"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Az Azure Cloud Services (klasszikus) Resource Health-ellenőrzési (RHC) támogatása
 Ez a cikk a [Microsoft Azure Cloud Services (klasszikus)](https://azure.microsoft.com/services/cloud-services) Resource Health-ellenőrzési (RHC-) támogatásáról beszél.
@@ -22,6 +21,7 @@ A Cloud Services [Azure Resource Health](https://docs.microsoft.com/azure/servic
 
 Azure-állapotjelentések az Azure-ügyfelek széles körét érintő problémákról. A Resource Health személyre szabott irányítópultot biztosít az erőforrások állapotáról. Resource Health azt mutatja, hogy az erőforrások az Azure-szolgáltatásokkal kapcsolatos problémák miatt nem voltak elérhetők. Ezek az információk megkönnyítik annak megtekintését, hogy az SLA-t megsértették-e.
 
+:::image type="content" source="media/cloud-services-allocation-failure/rhc-blade-cloud-services.png" alt-text="A képen a Azure Portal erőforrás állapota-ellenőrzési panelje látható.":::
 
 ## <a name="how-health-is-checked-and-reported"></a>Hogyan történik az állapot ellenőrzése és jelentése?
 Az erőforrás-állapotot egy központi telepítés vagy szerepkör szintjén kell jelenteni. Az állapot-ellenõrzés a szerepkör-példány szintjén történik, összesítjük az állapotot, és bejelentjük a szerepkör szintjén. Például Ha az összes szerepkör-példány elérhető, akkor a szerepkör állapota elérhető. Hasonlóképpen összesítjük az összes szerepkör állapotát, és bejelentjük a telepítési szinten. Például Ha az összes szerepkör elérhető, az üzembe helyezés állapota elérhetővé válik. 

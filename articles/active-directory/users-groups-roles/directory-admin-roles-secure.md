@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179572"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055809"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -114,7 +114,7 @@ A sürgősségi hozzáférési fiókok segítenek a rendszerjogosultságú hozz�
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A többtényezős hitelesítés bekapcsolása és az összes többi magas jogosultsági szintű, egyetlen felhasználótól eltérő, nem összevont rendszergazdai fiók regisztrálása
 
-Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange-rendszergazda és SharePoint-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
+Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange-rendszergazda és SharePoint-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz a [Microsoft 365ban található adatokhoz és szolgáltatásokhoz való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. fázis: a gyakran használt támadások enyhítése
 
@@ -130,7 +130,7 @@ A "saját eszközök használata" és a otthoni házirendek működésének növ
 
 * Azonosítsa azokat a felhasználókat, akik rendszergazdai szerepkörökkel rendelkeznek, és azokat a szolgáltatásokat, amelyeken kezelhető.
 * Az Azure AD PIM segítségével megtudhatja, hogy a szervezete mely felhasználói rendelkeznek rendszergazdai hozzáféréssel az Azure AD-hez.
-* Az Azure AD-ben definiált szerepkörökön túl az Office 365 olyan rendszergazdai szerepköröket tartalmaz, amelyeket a szervezet felhasználói számára hozzárendelhet. Az egyes rendszergazdai szerepkörök közös üzleti funkciókra mutatnak, és lehetővé teszi, hogy a szervezeten belül a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)meghatározott feladatokat végezzenek. A Microsoft 365 felügyeleti központ segítségével megtudhatja, hogy a szervezete mely felhasználói rendelkeznek rendszergazdai hozzáféréssel az Office 365-hez, beleértve az Azure AD-ben nem felügyelt szerepkörökön keresztül. További információ: az Office [365 rendszergazdai szerepkörei](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) és [biztonsági eljárásai az Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)-hoz.
+* Az Azure AD-ben definiált szerepkörökön túl Microsoft 365 olyan rendszergazdai szerepköröket tartalmaz, amelyeket a szervezet felhasználói számára hozzárendelhet. Az egyes rendszergazdai szerepkörök közös üzleti funkciókra mutatnak, és lehetővé teszi, hogy a szervezeten belül a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)meghatározott feladatokat végezzenek. A Microsoft 365 felügyeleti központ segítségével megtudhatja, hogy a szervezete mely felhasználói rendelkeznek rendszergazdai hozzáféréssel a Microsoft 365hoz, beleértve az Azure AD-ben nem felügyelt szerepkörökön keresztül. További információ: Microsoft 365 tudnivalók az Office 365 [rendszergazdai szerepköreiről](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) és [biztonsági eljárásairól](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * A szervezet által használt szolgáltatások leltározása, például az Azure, az Intune vagy a Dynamics 365.
 * Győződjön meg arról, hogy a felügyeleti célokra használt fiókok:
 
@@ -175,17 +175,17 @@ Ha a vállalati Windows Hello-t használja, akkor az MFA-követelmény a Windows
 
 A Azure AD Identity Protection egy algoritmus-alapú figyelési és jelentéskészítési eszköz, amely a szervezet identitásait érintő lehetséges biztonsági réseket észleli. A gyanús tevékenységekre vonatkozó automatizált válaszokat is konfigurálhat, és megteheti a szükséges lépéseket a megoldásához. További információkért lásd: [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)
+#### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>A Microsoft 365 biztonságos pontszámának beszerzése (ha Microsoft 365 használ)
 
-A biztonságos pontszám a használatban lévő Office 365-szolgáltatások beállításait és tevékenységeit vizsgálja, és összehasonlítja azokat a Microsoft által létrehozott alaptervvel. Az Ön által összehangolt biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik az Office 365 üzleti prémium vagy nagyvállalati előfizetéshez, elérheti a biztonságos pontszámot a következő címen: [https://securescore.office.com](https://securescore.office.com/) .
+A biztonságos pontszám a használt Microsoft 365-szolgáltatások beállításait és tevékenységeit vizsgálja, és összehasonlítja őket a Microsoft által létrehozott alaptervvel. Az Ön által összehangolt biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik egy Microsoft 365 Vállalati verzió standard vagy nagyvállalati előfizetéshez, elérheti a biztonságos pontszámot a következő címen: [https://securescore.office.com](https://securescore.office.com/) .
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (ha az Office 365-at használja)
+#### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Tekintse át a Microsoft 365 biztonsági és megfelelőségi útmutatóját (ha Microsoft 365 használ)
 
-A [biztonsági és megfelelőségi terv](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) felvázolja az Office 365-ügyfél az Office 365 konfigurálására és más EMS-funkciók engedélyezésére vonatkozó megközelítését. Ezt követően tekintse át a 3-6-es lépéseket, amelyekkel [biztosíthatja az office 365 adataihoz és szolgáltatásaihoz való hozzáférést](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) , valamint a [Biztonság és megfelelőség figyelését az Office 365-ban](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)című útmutatóban.
+A [biztonsági és megfelelőségi terv](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) felvázolja az Office 365-ügyfél az Office 365 konfigurálására és más EMS-funkciók engedélyezésére vonatkozó megközelítését. Ezt követően tekintse át a 3-6-es lépéseket a [Microsoft 365 adataihoz és szolgáltatásaihoz való hozzáférés védelméről](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) , valamint az útmutató a [Biztonság és a megfelelőség figyeléséhez Microsoft 365ban](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Office 365-tevékenységek figyelése (az Office 365 használata esetén)
+#### <a name="configure-microsoft-365-activity-monitoring-if-using-microsoft-365"></a>Microsoft 365 tevékenység figyelésének konfigurálása (ha Microsoft 365 használ)
 
-Figyelje meg a szervezetét azon felhasználók számára, akik az Office 365-et használják a rendszergazdai fiókkal rendelkező munkatársak azonosításához, de előfordulhat, hogy nincs szükségük az Office 365-hozzáférésre, mert nem jelentkeznek be a portálokra. További információ: [tevékenységi jelentések a Microsoft 365 felügyeleti központban](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
+Figyelje meg a szervezetét olyan felhasználók számára, akik Microsoft 365 használnak a rendszergazdai fiókkal rendelkező munkatársak azonosításához, de előfordulhat, hogy nincs szükségük Microsoft 365 hozzáférésre, mert nem jelentkeznek be a portálokra. További információ: [tevékenységi jelentések a Microsoft 365 felügyeleti központban](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>Incidens/vészhelyzeti válasz terv tulajdonosainak létrehozása
 
@@ -229,7 +229,7 @@ A 3. fázis a 2. fázis enyhítésére épül, és körülbelül 1-3 hónapon be
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Rendszergazdai szerepkörrel rendelkező felhasználók hozzáférési felülvizsgálatának befejezése
 
-A vállalati felhasználók egyre magasabb szintű hozzáférést kapnak a Cloud Serviceshez, ami nem felügyelt hozzáféréshez vezethet. A mai felhasználók globális rendszergazdák lehetnek az Office 365, az Azure-előfizetés rendszergazdái számára, vagy rendszergazdai hozzáférésük van a virtuális gépekhez vagy SaaS-alkalmazásokon keresztül.
+A vállalati felhasználók egyre magasabb szintű hozzáférést kapnak a Cloud Serviceshez, ami nem felügyelt hozzáférést eredményezhet. Napjainkban a felhasználók globális rendszergazdák lehetnek Microsoft 365, az Azure-előfizetés rendszergazdái számára, vagy rendszergazdai hozzáférésük van a virtuális gépekhez vagy SaaS-alkalmazásokon keresztül.
 
 A szervezetnek minden alkalmazottnak rendelkeznie kell a szokásos üzleti tranzakciókkal a nem megfelelő jogosultságú felhasználóként, és csak szükség esetén adhat rendszergazdai jogosultságokat. A hozzáférési felülvizsgálatok végrehajtásával azonosíthatja és megerősítheti azokat a felhasználókat, akik jogosultak a rendszergazdai jogosultságok aktiválásához.
 
@@ -281,13 +281,13 @@ Ha már használja a Azure AD Privileged Identity Management-t, módosítsa a sz
 
 Javasoljuk, hogy azonosítsa az összes lehetséges felhasználót, aki katasztrofális lehet a szervezet számára, ha a hitelesítő adatai biztonságban vannak. Ezekhez a felhasználókhoz erős hitelesítési követelmények helyezhetők el, és az Azure AD feltételes hozzáférés használatával megtarthatja, hogy a felhasználónévvel és jelszóval jelentkezzen be az e-mailbe. A [feltételes hozzáférés használatával blokkolhatja az örökölt hitelesítést](../conditional-access/block-legacy-authentication.md), és [letilthatja az alapszintű hitelesítést](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) az Exchange Online-on keresztül.
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Töltse ki az Office 365-szerepkörök felülvizsgálatának értékelését (az Office 365 használata esetén)
+#### <a name="complete-a-roles-review-assessment-for-microsoft-365-roles-if-using-microsoft-365"></a>Szerepkörök felülvizsgálati értékelésének elvégzése Microsoft 365 szerepkörökhöz (ha Microsoft 365 használ)
 
 Értékelje ki, hogy az összes rendszergazda felhasználó a megfelelő szerepkörökben van-e (törölje és rendelje hozzá újra az értékelés alapján).
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Tekintse át az Office 365-ben használt biztonsági incidensek kezelési megközelítését, és hasonlítsa össze a saját szervezetével
+#### <a name="review-the-security-incident-management-approach-used-in-microsoft-365-and-compare-with-your-own-organization"></a>Tekintse át a Microsoft 365 használt biztonsági incidensek kezelési megközelítését, és hasonlítsa össze a saját szervezetével
 
-Ezt a jelentést a [biztonsági incidensek felügyeletéről töltheti le Microsoft Office 365-es](https://www.microsoft.com/download/details.aspx?id=54302)verzióban.
+Ezt a jelentést a [Microsoft 365 biztonsági incidensek felügyeletéről](https://www.microsoft.com/download/details.aspx?id=54302)töltheti le.
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Folytassa a helyszíni privilegizált rendszergazdai fiókok biztonságossá tételét
 
@@ -348,7 +348,7 @@ Javasoljuk, hogy a [Microsoft Cloud app Security](/cloud-app-security/what-is-cl
 * Az adatszivárgás megakadályozása
 * Csökkentse a kockázatkezelést és az automatizált fenyegetések megelőzését és a házirendek betartatását
 
-Az Cloud App Security SIEM-ügynök integrálja a Cloud App Securityt az SIEM-kiszolgálóval, hogy lehetővé tegye az Office 365-riasztások és-tevékenységek központosított figyelését. Ez a kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Securityről, és továbbítja azokat az SIEM-kiszolgálóra. További információ: Siem- [integráció](/cloud-app-security/siem).
+A Cloud App Security SIEM-ügynök a SIEM-kiszolgálóval integrálja az Cloud App Securityt, hogy lehetővé tegye Microsoft 365 riasztások és tevékenységek központosított figyelését. Ez a kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Securityről, és továbbítja azokat az SIEM-kiszolgálóra. További információ: Siem- [integráció](/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses"></a>4. fázis: a védelem folytatása
 
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Műveletek
+* Üzemeltetés
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások
@@ -387,8 +387,8 @@ A védett privilegizált hozzáférési ütemterv ezen végső szakasza a követ
 
 További információ: [hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](../devices/hybrid-azuread-join-plan.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>A [beépített Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) tagjainak áttekintése
-Hagyja ki ezt a lépést, ha nem az Office 365-et használja.
+#### <a name="review-members-of-built-in-microsoft-365-admin-roles"></a>A [beépített Microsoft 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) tagjainak áttekintése
+Hagyja ki ezt a lépést, ha nem használja a Microsoft 365.
 ‎
 #### <a name="validate-incident-response-plan"></a>Incidens-válasz tervének ellenőrzése
 
@@ -464,7 +464,7 @@ További információ arról, hogyan kezeli a Microsoft Office 365 a biztonsági
 
 **Válasz:** A nem Kiemelt fiókok használata az összes felhasználó és a legtöbb rendszergazda számára. Kezdje azzal, hogy kifejleszti a szervezeti lábnyomot, és meghatározza, hogy mely néhány rendszergazdai fióknak kell jogosultságot biztosítania. És figyelés az újonnan létrehozott rendszergazda felhasználók számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Microsoft adatvédelmi központ a termékbiztonság számára](https://www.microsoft.com/trustcenter/security) – a Microsoft Cloud Products és Services biztonsági funkciói
 

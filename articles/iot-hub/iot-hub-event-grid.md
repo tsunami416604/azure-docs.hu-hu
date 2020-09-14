@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327650"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056166"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
@@ -188,7 +188,7 @@ Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási 
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Csatlakoztatott és nem csatlakoztatott eszközökhöz kapcsolódó események korlátozásai
 
-Az eszközhöz tartozó kapcsolódási állapot eseményeinek fogadásához az eszköznek vagy egy "C2D fogadása" telemetria kell lennie, vagy az IOT hub használatával kell megadnia az "üzenetküldési üzenet" műveletet. Vegye figyelembe azonban, hogy ha egy eszköz AMQP protokollt használ az IOT hub-hoz való kapcsolódáshoz, akkor azt javasoljuk, hogy a kapcsolati állapottal kapcsolatos értesítései néhány perc múlva késleltetve legyenek. Ha az eszköz MQTT protokollt használ, IoT Hub megnyitva marad a C2D hivatkozás. A AMQP a C2D hivatkozást úgy nyithatja meg, hogy meghívja a [fogadási ASZINKRON API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)-t, az IOT hub C# SDK-t vagy az AMQP-hez készült [eszköz-ügyfelet](iot-hub-amqp-support.md#device-client).
+Az eszközhöz tartozó kapcsolódási állapot eseményeinek fogadásához az eszköznek vagy egy "C2D fogadása" telemetria kell lennie, vagy az IOT hub használatával kell megadnia az "üzenetküldési üzenet" műveletet. Vegye figyelembe azonban, hogy ha egy eszköz AMQP protokollt használ az IOT hub-hoz való kapcsolódáshoz, akkor azt javasoljuk, hogy a kapcsolati állapottal kapcsolatos értesítései néhány perc múlva késleltetve legyenek. Ha az eszköz MQTT protokollt használ, IoT Hub megnyitva marad a C2D hivatkozás. A AMQP a C2D hivatkozást úgy nyithatja meg, hogy meghívja a Receive aszinkron API-t a IoT Hub C# SDK-hoz vagy az AMQP-hez készült [ügyfélhez](iot-hub-amqp-support.md#device-client).
 
 A D2C hivatkozás meg van nyitva, ha telemetria küld. 
 
@@ -204,7 +204,7 @@ Az IoT Hub-eseményeket kezelő alkalmazásokkal érdemes figyelembe venni az al
 
 * Megtörténhet, hogy az üzenetek más sorrendben, vagy késve érkeznek. A ETAG mező használatával megtudhatja, hogy az objektumokkal kapcsolatos adatok naprakészek-e az eszköz által létrehozott vagy az eszköz által törölt események esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Próbálja ki a IoT Hub Events oktatóanyagot](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
@@ -214,4 +214,4 @@ Az IoT Hub-eseményeket kezelő alkalmazásokkal érdemes figyelembe venni az al
 
 * [Az Útválasztás IoT Hub események és üzenetek közötti különbségek összehasonlítása](iot-hub-event-grid-routing-comparison.md)
 
-* [Ismerje meg, hogyan használhatók a IoT telemetria-események a IoT térbeli elemzések megvalósításához a Azure Maps használatával](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [Ismerje meg, hogyan használhatók a IoT telemetria-események a IoT térbeli elemzések megvalósításához a Azure Maps használatával](../azure-maps/tutorial-iot-hub-maps.md)

@@ -3,7 +3,7 @@ title: Telepített StorSimple-eszköz hibáinak megoldása | Microsoft Docs
 description: Ismerteti, hogyan diagnosztizálhatja és javíthatja a jelenleg üzembe helyezett és működő StorSimple-eszközön előforduló hibákat.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
@@ -13,13 +13,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: twooley
-ms.openlocfilehash: e2e68c7016a37824f1bf307a676c39281d4d41d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507820"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056489"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Operatív StorSimple-eszköz hibáinak megoldása
 > [!NOTE]
@@ -63,7 +63,7 @@ A hibák numerikus sorrendben vannak felsorolva.
 | 390061 |A rendszer foglalt vagy nem érhető el. |Várjon néhány percet, majd próbálkozzon újra. Ha a hiba továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata a következő lépésekhez. |
 | 390143 |Hiba történt a 390143-es hibakód miatt. (Ismeretlen hiba.) |Ha a hiba továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata a következő lépésekhez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha nem tudja feloldani a problémát, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-contact-microsoft-support.md) segítségért. 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx

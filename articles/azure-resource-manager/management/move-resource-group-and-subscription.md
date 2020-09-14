@@ -2,14 +2,14 @@
 title: Erőforrások áthelyezése új előfizetésbe vagy erőforráscsoporthoz
 description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja a Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 09/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498871"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056660"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -19,8 +19,6 @@ A forrásoldali csoport és a célcsoport is zárolva van az áthelyezési műve
 
 Az erőforrás az áthelyezése során csak egy új erőforráscsoportba vagy előfizetésbe kerül. Az erőforrás helyét az áthelyezési művelet nem módosítja.
 
-Ha Azure Stack hubot használ, nem helyezhet át erőforrásokat a csoportok között.
-
 ## <a name="checklist-before-moving-resources"></a>Ellenőrzőlista az erőforrások áthelyezése előtt
 
 Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése előtt. Ezen feltételek ellenőrzésével a hibák elkerülhetőek.
@@ -29,6 +27,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
 1. Egyes szolgáltatások az erőforrások áthelyezésekor bizonyos korlátozásokkal vagy követelményekkel rendelkeznek. Ha a következő szolgáltatások bármelyikét áthelyezi, a mozgatás előtt ellenőrizze az útmutatást.
 
+   * Ha Azure Stack hubot használ, nem helyezhet át erőforrásokat a csoportok között.
    * [Útmutató App Services](./move-limitations/app-service-move-limitations.md)
    * [Útmutató az Azure DevOps Serviceshez](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klasszikus üzembe helyezési modell – útmutató](./move-limitations/classic-model-move-limitations.md) – klasszikus számítás, klasszikus tárolás, klasszikus virtuális hálózatok és Cloud Services
@@ -96,7 +95,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
 1. **Az előfizetések közötti áthelyezéshez az erőforrásnak és a hozzá tartozó erőforrásoknak ugyanabban az erőforráscsoporthoz kell lenniük, és együtt kell őket áthelyezni.** A felügyelt lemezekkel rendelkező virtuális gépek például megkövetelik, hogy a virtuális gép és a felügyelt lemezek együtt legyenek áthelyezve a többi függő erőforrással együtt.
 
-   Ha egy erőforrást új előfizetésre helyez át, ellenőrizze, hogy az erőforrás rendelkezik-e függő erőforrásokkal, és hogy azok ugyanabban az erőforráscsoporthoz találhatók-e. Ha az erőforrások nem ugyanabban az erőforráscsoporthoz találhatók, ellenőrizze, hogy az erőforrások összevonható-e ugyanabba az erőforráscsoporthoz. Ha igen, az összes erőforrást ugyanabba az erőforráscsoporthoz helyezheti át egy áthelyezési művelettel az erőforráscsoportok között.
+   Ha egy erőforrást új előfizetésre helyez át, ellenőrizze, hogy az erőforrás rendelkezik-e függő erőforrásokkal, és hogy azok ugyanabban az erőforráscsoporthoz találhatók-e. Ha az erőforrások nem ugyanabban az erőforráscsoporthoz találhatók, ellenőrizze, hogy az erőforrások kombinálhatók-e ugyanabba az erőforráscsoporthoz. Ha igen, az összes erőforrást ugyanabba az erőforráscsoporthoz helyezheti át egy áthelyezési művelettel az erőforráscsoportok között.
 
    További információ: [forgatókönyv az előfizetések közötti áthelyezéshez](#scenario-for-move-across-subscriptions).
 
@@ -167,23 +166,37 @@ Amíg a művelet még fut, továbbra is megkapja a 202 állapotkódot. Várjon a
 
 ## <a name="use-the-portal"></a>A portál használata
 
-Az erőforrások áthelyezéséhez válassza ki az erőforráscsoportot az adott erőforrásokkal, majd kattintson az **Áthelyezés** gombra.
+Az erőforrások áthelyezéséhez válassza ki az erőforrást tartalmazó erőforráscsoportot.
 
-![erőforrások áthelyezése](./media/move-resource-group-and-subscription/select-move.png)
+Ha megtekinti az erőforráscsoportot, az áthelyezés lehetőség le lesz tiltva.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="a Move lehetőség le van tiltva":::
+
+Az áthelyezés beállítás engedélyezéséhez válassza ki az áthelyezni kívánt erőforrásokat. Az összes erőforrás kiválasztásához jelölje be a jelölőnégyzetet a lista tetején. Vagy válassza az erőforrások külön lehetőséget.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="erőforrások kiválasztása":::
+
+Kattintson az **Áthelyezés** gombra.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="mozgatási beállítások":::
+
+Ez a gomb három lehetőséget biztosít:
+
+* Új erőforráscsoport áthelyezése.
+* Váltson át egy új előfizetésre.
+* Váltson át egy új régióra. A régiók módosításához lásd: [erőforrások áthelyezése régiók között (erőforráscsoport)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json).
 
 Válassza ki, hogy az erőforrásokat új erőforráscsoporthoz vagy új előfizetésre kívánja-e áthelyezni.
 
-Válassza ki az áthelyezni kívánt erőforrásokat és a cél erőforráscsoportot. Nyugtázza, hogy frissítenie kell a parancsfájlokat ezekhez az erőforrásokhoz, és kattintson **az OK gombra**. Ha az előző lépésben az előfizetés szerkesztése ikont választotta, ki kell választania a cél előfizetést is.
+Válassza ki a cél erőforráscsoportot. Nyugtázza, hogy frissítenie kell a parancsfájlokat ezekhez az erőforrásokhoz, és kattintson **az OK gombra**. Ha az új előfizetésre való áttérést választotta, ki kell választania a cél előfizetést is.
 
-![cél kiválasztása](./media/move-resource-group-and-subscription/select-destination.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="cél kiválasztása":::
 
-Az **értesítések**területen láthatja, hogy az áthelyezési művelet fut.
+Az erőforrások áthelyezésének ellenőrzése után megjelenik egy értesítés arról, hogy az áthelyezési művelet fut.
 
-![Áthelyezés állapotának megjelenítése](./media/move-resource-group-and-subscription/show-status.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="értesítési":::
 
 Ha a művelet befejeződött, értesítést kap az eredményről.
-
-![Áthelyezés eredményének megjelenítése](./media/move-resource-group-and-subscription/show-result.png)
 
 Ha hibaüzenetet kap, tekintse meg [Az Azure-erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezésével kapcsolatos](troubleshoot-move.md)témakört.
 
@@ -203,7 +216,7 @@ Ha hibaüzenetet kap, tekintse meg [Az Azure-erőforrások új erőforráscsopor
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 
-A meglévő erőforrások másik erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja az az [Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) parancsot. Adja meg az áthelyezni kívánt erőforrások erőforrás-azonosítóit. Az alábbi példa bemutatja, hogyan helyezhet át több erőforrást egy új erőforráscsoporthoz. A `--ids` paraméterben adja meg az áthelyezni kívánt erőforrás-azonosítók szóközzel tagolt listáját.
+A meglévő erőforrások másik erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja az az [Resource Move](/cli/azure/resource#az-resource-move) parancsot. Adja meg az áthelyezni kívánt erőforrások erőforrás-azonosítóit. Az alábbi példa bemutatja, hogyan helyezhet át több erőforrást egy új erőforráscsoporthoz. A `--ids` paraméterben adja meg az áthelyezni kívánt erőforrás-azonosítók szóközzel tagolt listáját.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -238,15 +251,15 @@ Ha hibaüzenetet kap, tekintse meg [Az Azure-erőforrások új erőforráscsopor
 
 **Kérdés: az erőforrás-áthelyezési művelet, amely általában néhány percet vesz igénybe, majdnem egy óráig futott. Van valami baj?**
 
-Az erőforrások áthelyezése egy összetett művelet, amely különböző fázisokat tartalmaz. Többek között az áthelyezni kívánt erőforrás erőforrás-szolgáltatóját is magában foglalja. Az erőforrás-szolgáltatók közötti függőségek miatt Azure Resource Manager 4 órát engedélyez a művelet befejezéséhez. Ez az időszak lehetővé teszi az erőforrás-szolgáltatók számára, hogy helyreálljon az átmeneti problémák miatt. Ha az áthelyezési kérelem a 4 órás időszakon belül van, a művelet továbbra is próbálkozik a befejezéssel, és lehetséges, hogy sikeres lesz. A forrás és a cél erőforráscsoport ebben az időszakban zárolva van a konzisztencia-problémák elkerülése érdekében.
+Az erőforrások áthelyezése egy összetett művelet, amely különböző fázisokat tartalmaz. Többek között az áthelyezni kívánt erőforrás erőforrás-szolgáltatóját is magában foglalja. Az erőforrás-szolgáltatók közötti függőségek miatt Azure Resource Manager 4 órát engedélyez a művelet befejezéséhez. Ez az időszak lehetővé teszi az erőforrás-szolgáltatók számára, hogy helyreálljon az átmeneti problémák miatt. Ha az áthelyezési kérelem a négy órás időszakon belül van, a művelet folyamatosan próbálkozik a végrehajtással, és a folyamat továbbra is sikeres lehet. A forrás és a cél erőforráscsoport ebben az időszakban zárolva van a konzisztencia-problémák elkerülése érdekében.
 
-**Kérdés: Miért van zárolva az erőforráscsoport 4 órán át az erőforrás áthelyezése során?**
+**Kérdés: Miért van zárolva az erőforráscsoport az erőforrás-áthelyezés során négy órán keresztül?**
 
-A 4 órás időszak az erőforrás-áthelyezés engedélyezett maximális időtartama. Az áthelyezett erőforrások módosításának megakadályozásához a forrás és a cél erőforráscsoport is zárolva lesz az erőforrás-áthelyezés időtartamára.
+Az áthelyezési kérelem legfeljebb négy órát vehet igénybe. Az áthelyezett erőforrások módosításának megakadályozásához a forrás és a cél erőforráscsoport is zárolva lesz az erőforrás-áthelyezés időtartamára.
 
-Az áthelyezési kérelemnek két fázisa van. Az első fázisban az erőforrás át lesz helyezve. A második fázisban az értesítéseket a rendszer az áthelyezett erőforrástól függő más erőforrás-szolgáltatóknak küldi el. Egy erőforráscsoport zárolható a teljes 4 órás időszakra, amikor egy erőforrás-szolgáltató vagy fázis meghibásodik. Az engedélyezett idő alatt a Resource Manager újrapróbálkozik a sikertelen lépéssel.
+Az áthelyezési kérelemnek két fázisa van. Az első fázisban az erőforrás át lesz helyezve. A második fázisban az értesítéseket a rendszer az áthelyezett erőforrástól függő más erőforrás-szolgáltatóknak küldi el. Egy erőforráscsoport zárolható a teljes négy órán keresztül, ha az erőforrás-szolgáltató egyik fázisa meghibásodik. Az engedélyezett idő alatt a Resource Manager újrapróbálkozik a sikertelen lépéssel.
 
-Ha egy erőforrás nem helyezhető át a 4 órás időszakon belül, a Resource Manager mindkét erőforráscsoportot feloldja. A sikeresen áthelyezett erőforrások a cél erőforráscsoporthoz tartoznak. A nem áthelyezni kívánt erőforrások a forrás erőforráscsoport felett maradnak.
+Ha egy erőforrás nem helyezhető át négy órán belül, a Resource Manager mindkét erőforráscsoportot feloldja. A sikeresen áthelyezett erőforrások a cél erőforráscsoporthoz tartoznak. A nem áthelyezni kívánt erőforrások a forrás erőforráscsoport felett maradnak.
 
 **Kérdés: milyen következményekkel jár a forrás-és a cél-erőforráscsoport zárolása az erőforrás-áthelyezés során?**
 
@@ -280,6 +293,6 @@ Egy másik gyakori példa egy virtuális hálózat áthelyezését jelenti. Elő
 
 Jelenleg az Azure-támogatás nem minden erőforrást helyez át. Az áthelyezést támogató erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](move-support-resources.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áthelyezni kívánt erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](move-support-resources.md).

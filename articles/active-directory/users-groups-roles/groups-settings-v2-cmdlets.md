@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794549"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056217"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
@@ -328,13 +328,13 @@ Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasz
 
 ## <a name="group-writeback-to-on-premises-preview"></a>Helyszíni visszaírási (előzetes verzió)
 
-Napjainkban számos csoport továbbra is a helyszíni Active Directory felügyelhető. A felhőalapú csoportok a helyszíni környezetbe való szinkronizálására irányuló kérések megválaszolásához az Office 365 groups visszaírási funkció az Azure AD-hez már elérhető előzetes verzióként.
+Napjainkban számos csoport továbbra is a helyszíni Active Directory felügyelhető. A Felhőbeli csoportok helyi környezetbe való szinkronizálására irányuló kérések megválaszolásához Microsoft 365 groups visszaírási funkció az Azure AD-hez már elérhető az előzetes verzióhoz.
 
-Az Office 365-csoportok létrehozása és kezelése a felhőben történik. A visszaírási funkció lehetővé teszi, hogy az Office 365-csoportokat terjesztési csoportként írja egy Active Directory erdőben, amelyen az Exchange telepítve van. A helyszíni Exchange-postaládákkal rendelkező felhasználók ezt követően e-maileket küldhetnek és fogadhatnak ezekből a csoportokból. A csoport visszaírási szolgáltatása nem támogatja az Azure AD biztonsági csoportokat vagy terjesztési csoportokat.
+A Microsoft 365 csoportok létrehozása és kezelése a felhőben történik. A visszaírási funkció lehetővé teszi, hogy a Microsoft 365 csoportokat terjesztési csoportként írja egy Active Directory erdőbe, amelyen az Exchange telepítve van. A helyszíni Exchange-postaládákkal rendelkező felhasználók ezt követően e-maileket küldhetnek és fogadhatnak ezekből a csoportokból. A csoport visszaírási szolgáltatása nem támogatja az Azure AD biztonsági csoportokat vagy terjesztési csoportokat.
 
 További részletekért tekintse meg a [Azure ad Connect Sync szolgáltatás](../hybrid/how-to-connect-syncservice-features.md)dokumentációját.
 
-Az Office 365 Group visszaírási a Azure Active Directory (Azure AD) nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhető. Az előzetes verziókkal kapcsolatos jogi információkhoz tekintse meg a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+A Microsoft 365 Group visszaírási az Azure Active Directory (Azure AD) nyilvános előzetes verziója, amely minden fizetős Azure AD-licenccel elérhető. Az előzetes verziókkal kapcsolatos jogi információkhoz tekintse meg a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>Következő lépések
 

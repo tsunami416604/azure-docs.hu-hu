@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4462ea0277193f0f8a4112cad5991d1e12c5f600
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652872"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058733"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -80,7 +80,7 @@ Debian 8 |  3.16.0-4-amd64 – 3.16.0-10-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0
 
 **Kiadás** | **Kernel verziója** 
 --- |  --- 
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  A [SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.34-Azure  
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  A [SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete](https://www.suse.com/support/kb/doc/?id=000019587) támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.34-Azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>Támogatott SUSE Linux Enterprise Server 15 kernel-verzió
@@ -100,7 +100,7 @@ SUSE Linux Enterprise Server 15 és 15 SP1 |  A rendszer minden SUSE 15 és 15 k
 
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
-Méret | Bármely Azure-beli VM-méret legalább két CPU-mag és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](https://docs.microsoft.com/azure/virtual-machines/sizes-general).
+Méret | Bármely Azure-beli VM-méret legalább két CPU-mag és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/sizes-general.md).
 Rendelkezésre állási csoportok | Egyelőre nem támogatott | Ha hozzáad egy Azure-beli virtuális gépet egy rendelkezésre állási csoporttal az alapértelmezett beállításokkal, az előkészítési folyamat sikertelen lesz. Dönthet úgy, hogy áthelyezi a virtuális gépet egy rendelkezésre állási zónába, vagy áthelyezi azt egyetlen példányú virtuális gépre. Ezeket a beállításokat a cél tulajdonságainak szerkesztése lapon módosíthatja.
 Rendelkezésre állási zónák | Támogatott | Támogatott, a célcsoportok támogatásának függvényében.
 Azure Gallery-lemezképek (közzétette: Microsoft) | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
@@ -113,15 +113,15 @@ Bővítmények | Nem támogatott | A bővítmények nem másolódnak át a célk
 
 ## <a name="supported-vm-storage-settings"></a>Támogatott virtuális gépek tárolási beállításai
 
-Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideiglenes lemez támogatását foglalja össze. Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-scalability-targets) és [Windows rendszerű](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets) virtuális gépekre vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
+Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideiglenes lemez támogatását foglalja össze. Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [Linux](../virtual-machines/linux/disk-scalability-targets.md) és [Windows rendszerű](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépekre vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
 
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
-OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk).
+OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/managed-disks-overview.md) információ a VM-lemezekről.
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez
 Adatlemez minimális mérete |  2 GB a felügyelt lemezekhez |
-Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](https://docs.microsoft.com/azure/virtual-machines/windows/sizesd) információ a virtuális gépek méreteiről.
+Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/windows/sizes.md) információ a virtuális gépek méreteiről.
 Adatlemez változási aránya | A Premium Storage esetében legfeljebb 10 MB/s lemezterület. A standard szintű tároláshoz legfeljebb 2 MB/s lemez adható meg. | Ha a lemez átlagos adatváltozási sebessége folyamatosan meghaladja a maximális értéket, az előkészítés nem fog megjelenni.<br/><br/>  Ha azonban a maximális értéket szórványosan túllépik, az előkészítés felmerülhet, de előfordulhat, hogy némileg késleltetett helyreállítási pontok jelenhetnek meg.
 Adatlemez (standard Storage-fiók) | Nem támogatott. | Módosítsa a tárolási típust a felügyelt lemezre, majd próbálja meg áthelyezni a virtuális gépet.
 Adatlemez (prémium szintű Storage-fiók) | Nem támogatott | Módosítsa a tárolási típust a felügyelt lemezre, majd próbálja meg áthelyezni a virtuális gépet.

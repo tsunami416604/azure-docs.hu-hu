@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762317"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055792"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
 
@@ -87,8 +87,9 @@ Virtuális WAN-útválasztás konfigurálásakor vegye figyelembe a következők
 * Ha több régióban Azure Firewall használ, az összes küllős virtuális hálózatot ugyanahhoz az útválasztási táblához kell társítani. Ha például a virtuális hálózatok egy részhalmaza lesz a Azure Firewallon, míg más virtuális hálózatok megkerüli a Azure Firewall ugyanabban a virtuális központban nem lehetséges.
 * VNet-kapcsolaton keresztül egyetlen következő ugrási IP-cím is konfigurálható.
 * A virtuális központ nem támogatja a statikus útvonalat a 0.0.0.0/0 és a következő ugrás Virtual Network kapcsolathoz (vagy egy berendezés IP-címéhez a VNet-kapcsolaton)
+* A 0.0.0.0/0 útvonalra vonatkozó összes információ a helyi központ útválasztási táblájára korlátozódik. Ez az útvonal nem terjed ki a hubok között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Útválasztás konfigurálásával kapcsolatban lásd: [a virtuális központ útválasztásának konfigurálása](how-to-virtual-hub-routing.md).
 

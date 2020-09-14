@@ -13,12 +13,12 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742955"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056028"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába a kétfaktoros ellenőrzési módszer használatával
 
@@ -39,14 +39,14 @@ A bejelentkezési élmény attól függően különbözik, hogy mit választ a m
 ## <a name="signing-in-with-a-phone-call"></a>Bejelentkezés telefonos hívással
 A következő információk ismertetik a kétlépéses ellenőrzési élményt a mobil vagy irodai telefon hívásával.
 
-1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.  
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például Microsoft 365 a felhasználónevével és jelszavával.  
 2. A Microsoft meghívja Önt.  
 3. Válaszolja meg a telefont, és nyomja meg a # billentyűt.  
 
 ## <a name="signing-in-with-a-text-message"></a>Bejelentkezés szöveges üzenettel
 A következő információk ismertetik a mobiltelefonra küldött szöveges üzenetekkel kapcsolatos kétlépéses ellenőrzési élményt:
 
-1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például Microsoft 365 a felhasználónevével és jelszavával.
 2. A Microsoft szöveges üzenetet küld Önnek, amely egy számsorozatot tartalmaz.
 3. Írja be a kódot a bejelentkezési oldalon megadott mezőbe.
 
@@ -54,7 +54,7 @@ A következő információk ismertetik a mobiltelefonra küldött szöveges üze
 Az alábbi információk az Microsoft Authenticator alkalmazás kétlépéses ellenőrzésekhez való használatának élményét ismertetik. Az alkalmazás két különböző módon használható. Leküldéses értesítéseket fogadhat az eszközén, vagy megnyithatja az alkalmazást egy ellenőrző kód beszerzéséhez.
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Bejelentkezés értesítéssel a Microsoft Authenticator alkalmazásból
-1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például Microsoft 365 a felhasználónevével és jelszavával.
 2. A Microsoft értesítést küld a Microsoft Authenticator alkalmazásnak az eszközön.
 
    ![A Microsoft értesítést küld](./media/multi-factor-authentication-end-user-signin/notify.png)
@@ -66,7 +66,7 @@ Az alábbi információk az Microsoft Authenticator alkalmazás kétlépéses el
 
 Ha az Microsoft Authenticator alkalmazást használja az ellenőrző kódok beolvasásához, akkor az alkalmazás megnyitásakor a fiók neve alatt egy szám jelenik meg. Ez a szám 30 másodpercenként változik, hogy ne használja ugyanazt a számot kétszer. Amikor a rendszer megkérdezi az ellenőrző kódot, nyissa meg az alkalmazást, és használja az aktuálisan megjelenő számot.
 
-1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például Microsoft 365 a felhasználónevével és jelszavával.
 2. A Microsoft egy ellenőrző kódot kér.
 
    ![Adja meg az ellenőrző kódot](./media/multi-factor-authentication-end-user-signin/verify3.png)
@@ -76,13 +76,13 @@ Ha az Microsoft Authenticator alkalmazást használja az ellenőrző kódok beol
 ## <a name="signing-in-with-an-alternate-method"></a>Bejelentkezés másik módszerrel
 Előfordulhat, hogy nem rendelkezik az előnyben részesített ellenőrzési módszerként beállított telefonnal vagy eszközzel. Ezért javasoljuk, hogy állítsa be a fiókja biztonsági mentési módszereit. A következő szakasz bemutatja, hogyan jelentkezhet be másik módszerrel, ha az elsődleges metódus nem érhető el.
 
-1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például Microsoft 365 a felhasználónevével és jelszavával.
 2. Válassza **a másik ellenőrzési lehetőség használata lehetőséget**. A beállítástól függően különböző ellenőrzési lehetőségek jelennek meg.
 3. Válasszon másik módszert, és jelentkezzen be.
 
    ![Alternatív módszer használata](./media/multi-factor-authentication-end-user-signin/alt.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információhoz juthat az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
 
 - Ismerje meg, hogyan [kezelheti a kétlépéses ellenőrzési beállításokat](multi-factor-authentication-end-user-manage-settings.md).

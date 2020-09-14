@@ -4,12 +4,12 @@ description: Kód nélküli alkalmazások teljesítményének figyelése bármil
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374286"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056098"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs lehetőségek – Java önálló ügynök a Azure Monitor Application Insights
 
@@ -38,8 +38,8 @@ Alapértelmezés szerint a Application Insights Java 3,0 előzetes verziója elv
 
 Megadhatja saját konfigurációs fájljának elérési útját a következők használatával
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`környezeti változó, vagy
-* `applicationinsights.configurationFile`Java rendszertulajdonság
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE` környezeti változó, vagy
+* `applicationinsights.configurationFile` Java rendszertulajdonság
 
 Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
@@ -113,18 +113,18 @@ Ha módosítani kívánja ezt a küszöbértéket:
 
 Ezek az érvényes `threshold` értékek, amelyeket megadhat a `ApplicationInsights.json` fájlban, és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek között:
 
-| `threshold`  | Log4j  | Logback | JÚL     |
-|--------------|--------|---------|---------|
-| KI          | KI    | KI     | KI     |
-| VÉGZETES        | VÉGZETES  | HIBA   | SÚLYOS  |
-| HIBA/SÚLYOS | HIBA  | HIBA   | SÚLYOS  |
-| FIGYELMEZTETÉS/FIGYELMEZTETÉS | FIGYELMEZTETI   | FIGYELMEZTETI    | FIGYELMEZTETÉS |
-| INFORMÁCIÓ         | INFORMÁCIÓ   | INFORMÁCIÓ    | INFORMÁCIÓ    |
-| CONFIG       | HIBAKERESÉS  | HIBAKERESÉS   | CONFIG  |
-| HIBAKERESÉS/PÉNZBÍRSÁG   | HIBAKERESÉS  | HIBAKERESÉS   | RÉSZLETES    |
-| KIFINOMULTABBAN        | HIBAKERESÉS  | HIBAKERESÉS   | KIFINOMULTABBAN   |
-| NYOMKÖVETÉS/LEGFINOMABB | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
-| ALL          | ALL    | ALL     | ALL     |
+| küszöbérték   | Log4j  | Logback | JÚL     |
+|-------------------|--------|---------|---------|
+| KI               | KI    | KI     | KI     |
+| VÉGZETES             | VÉGZETES  | HIBA   | SÚLYOS  |
+| HIBA (vagy súlyos) | HIBA  | HIBA   | SÚLYOS  |
+| Figyelmeztetés (vagy figyelmeztetés) | FIGYELMEZTETI   | FIGYELMEZTETI    | FIGYELMEZTETÉS |
+| INFORMÁCIÓ              | INFORMÁCIÓ   | INFORMÁCIÓ    | INFORMÁCIÓ    |
+| CONFIG            | HIBAKERESÉS  | HIBAKERESÉS   | CONFIG  |
+| HIBAKERESÉS (vagy kiváló)   | HIBAKERESÉS  | HIBAKERESÉS   | RÉSZLETES    |
+| KIFINOMULTABBAN             | HIBAKERESÉS  | HIBAKERESÉS   | KIFINOMULTABBAN   |
+| NYOMKÖVETÉS (vagy legfinomabb) | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX metrikák
 
@@ -134,7 +134,7 @@ Ha van olyan JMX mérőszáma, amelyet szeretne a rögzítéshez:
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Alapértelmezés szerint a Application Insights Java 3,0 előnézet 15 percenké
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést az **ös
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Alapértelmezés szerint a konzolhoz a `warn` következő konfigurációnak megf
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Ha a konzolra való bejelentkezés helyett egy fájlba szeretne bejelentkezni:
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

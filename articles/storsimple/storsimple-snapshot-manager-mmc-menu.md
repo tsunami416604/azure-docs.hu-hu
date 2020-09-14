@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager MMC menü műveletei | Microsoft Docs
 description: Ismerteti, hogyan használható a Microsoft Management Console (MMC) szabványos StorSimple Snapshot Manager.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508826"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056003"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Használja az MMC menü műveleteit a StorSimple Snapshot Manager
 
@@ -87,7 +87,7 @@ A lista **exportálása** művelettel egy vesszővel tagolt (CSV-) fájlba menth
    1. A **fájlnév** mezőben adja meg a CSV-fájl nevét, vagy kattintson a nyílra a legördülő listából való kiválasztáshoz.
    2. A fájltípus **mezőben kattintson** a nyílra, és válassza ki a kívánt fájltípust a legördülő listából.
    3. Csak a kijelölt elemek mentéséhez jelölje ki a sorokat, majd kattintson a **csak a kijelölt sorok mentése** jelölőnégyzetre. Az összes exportált lista mentéséhez törölje a jelölést a **csak a kijelölt sorok mentése** jelölőnégyzetből.
-   4. Kattintson a **Save** (Mentés) gombra.
+   4. Kattintson a **Mentés** gombra.
       
       ![Lista exportálása vesszővel elválasztott érték fájlként](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
@@ -98,7 +98,7 @@ A **Súgó** menü használatával megtekintheti a StorSimple Snapshot Manager �
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
 2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **Súgó**elemre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple Snapshot Manager felhasználói felületéről](storsimple-use-snapshot-manager.md).
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 

@@ -3,7 +3,7 @@ title: Mi az a StorSimple Snapshot Manager? | Microsoft Docs
 description: Ismerteti a StorSimple Snapshot Manager, annak architektúráját és funkcióit.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cc37dde7ed6930d476ed2325ad5a86f2f5cd083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7e9d73fa94acd2f31452de05ef3caee92d5cf3d
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506225"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055503"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Bevezetés a StorSimple Snapshot Manager
 
@@ -137,7 +137,7 @@ A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a közelg
 
 További információ a biztonsági mentési feladatok figyeléséről: a [StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez](storsimple-snapshot-manager-manage-backup-jobs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 * Töltse le a [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
 

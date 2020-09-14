@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795342"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056251"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
@@ -55,7 +55,7 @@ Ha már hozzáadott egy contoso.com-tartományt egy Azure AD-bérlőhöz, hozzá
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Mi a teendő, ha megváltoztatja a DNS-regisztrálót az egyéni tartománynévhez
 
-Ha megváltoztatja a DNS-regisztrálókat, az Azure AD-ben nincsenek további konfigurációs feladatok. A tartománynevet továbbra is használhatja megszakítás nélkül az Azure AD-vel. Ha az egyéni tartománynevet az Office 365, az Intune vagy más, egyéni tartományneveket használó szolgáltatásokkal használja az Azure AD-ben, tekintse meg a szolgáltatások dokumentációját.
+Ha megváltoztatja a DNS-regisztrálókat, az Azure AD-ben nincsenek további konfigurációs feladatok. A tartománynevet továbbra is használhatja megszakítás nélkül az Azure AD-vel. Ha az egyéni tartománynevet Microsoft 365, Intune-nal vagy más olyan szolgáltatással használja, amely az Azure AD-ben egyéni tartományneveket használ, tekintse meg a szolgáltatások dokumentációját.
 
 ## <a name="delete-a-custom-domain-name"></a>Egyéni tartománynév törlése
 
@@ -75,7 +75,7 @@ A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azur
 
 A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ez magában foglalja az Exchange-levelezésre képes biztonsági csoportokat és az elosztott listát; További információ: [levelezésre képes biztonsági csoportok eltávolítása](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
-* Az Office 365 tartományi előfizetési szolgáltatásokon keresztül vásárolt egy tartományt
+* A tartományt Microsoft 365 tartományi előfizetési szolgáltatásokon keresztül vásárolta
 * Ön egy másik ügyfél-szervezet nevében felügyelt partner
 
 A **ForceDelete** művelet részeként a következő műveletek végezhetők el:

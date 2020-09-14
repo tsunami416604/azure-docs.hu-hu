@@ -1,19 +1,19 @@
 ---
 title: Azure import/export-exportálási feladatok javítása – v1 | Microsoft Docs
 description: Ismerje meg, hogy miként javítható az Azure import/export szolgáltatás használatával létrehozott és futtatott exportálási feladatok.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0731848e1ff187afb6e9f607516dd74b6c16de9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520481"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056339"
 ---
 # <a name="repairing-an-export-job"></a>Exportálási feladat javítása
 Az exportálási feladatok befejezése után a helyszíni Microsoft Azure Import/Export eszközt a következő helyre futtathatja:  
@@ -150,7 +150,7 @@ G:\pictures\wild\canyon.jpg.properties
 
 Az eszköz letölti az ellenőrzést nem teljesítő összes összetevőt, és a meghajtón ugyanarra a fájlra írja át a rendszer.  
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

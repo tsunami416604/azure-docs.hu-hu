@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782481"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056285"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Nem felügyelhető szerepkörök Privileged Identity Management
 
@@ -35,9 +35,9 @@ A következő klasszikus előfizetés-rendszergazdai szerepkörök nem kezelhet�
 
 A klasszikus előfizetés-rendszergazdai szerepkörökkel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad rendszergazdai szerepköreit](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Mi a helyzet az Office 365 rendszergazdai szerepköreivel?
+## <a name="what-about-microsoft-365-admin-roles"></a>Mi a helyzet Microsoft 365 rendszergazdai szerepkörökkel?
 
-Az Azure AD-szerepkörök és a rendszergazdák portálon az összes Office 365 szerepkört támogatjuk, például az Exchange-rendszergazdát és a SharePoint-rendszergazdát, de nem támogatjuk az Exchange RBAC vagy a SharePoint RBAC belüli konkrét szerepköröket. További információ ezekről az Office 365-szolgáltatásokról: [office 365 rendszergazdai szerepkörök](/office365/admin/add-users/about-admin-roles).
+Az Azure AD-szerepkörök és a rendszergazdák portálon az összes Microsoft 365 szerepkört támogatjuk, például az Exchange-rendszergazdát és a SharePoint-rendszergazdát, de nem támogatjuk az Exchange RBAC vagy a SharePoint RBAC belüli konkrét szerepköröket. További információ ezekről a Microsoft 365 szolgáltatásokról: [Microsoft 365 rendszergazdai szerepkörök](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > A SharePoint-rendszergazdai szerepkörhöz, az eszköz rendszergazdai szerepköréhez és a Microsoft biztonsági és megfelelőségi központhoz hozzáférő szerepkörökhöz tartozó jogosult felhasználók a szerepkör aktiválása után akár néhány órával is előfordulhatnak késésben. Ezekkel a csapatokkal dolgozunk a problémák megoldásában.

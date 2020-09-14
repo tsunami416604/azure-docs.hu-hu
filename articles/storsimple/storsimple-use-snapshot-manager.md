@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager felhasználói felület | Microsoft Docs
 description: Ismerteti a StorSimple Snapshot Manager felhasználói felületét, és ismerteti, hogyan használható a biztonsági mentési feladatok és a biztonsági mentési katalógus kezelésére.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513736"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055911"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>A StorSimple Snapshot Manager felhasználói felület használata a biztonsági mentési feladatok és a biztonságimásolat-katalógus kezeléséhez
 
@@ -70,7 +70,7 @@ A következő táblázat a **fájl** menüben megjelenő elemeket ismerteti.
 | Menüelem | Description |
 |:--- |:--- |
 | Új |Az **új** gombra kattintva hozzon létre egy új konzolt a StorSimple Snapshot Manager alapján. |
-| Megoldatlan |Egy meglévő konzol megnyitásához kattintson a **Megnyitás** gombra. |
+| Megnyitás |Egy meglévő konzol megnyitásához kattintson a **Megnyitás** gombra. |
 | Mentés |Az aktuális konzol mentéséhez kattintson a **Mentés** gombra. |
 | Mentés másként |Kattintson a **Save as (Mentés másként** ) lehetőségre az aktuális konzol új, átnevezett példányának létrehozásához. A **Mentés másként** lehetőséggel testre szabhatja a nézetet, és mentheti későbbi lekérésre. Létrehozhat például olyan StorSimple Snapshot Manager beépülő modulokat, amelyek adott kiszolgálókra mutatnak. |
 | Beépülő modul hozzáadása/eltávolítása |Kattintson a **beépülő modul hozzáadása/eltávolítása** elemre beépülő modulok hozzáadásához vagy eltávolításához, illetve a csomópontok rendszerezéséhez a **hatókör** ablaktáblán. További információkért ugorjon a [beépülő modulok és bővítmények hozzáadása, eltávolítása és rendszerezése az MMC 3,0-ben](https://technet.microsoft.com/library/cc722035.aspx)című témakörben. |
@@ -114,7 +114,7 @@ A következő táblázat a StorSimple Snapshot Manager műveletek betűrendes li
 | Eszköz konfigurálása |Kattintson a jobb gombbal az **eszközök** csomópontra. |Kattintson az **eszköz konfigurálása** lehetőségre egyetlen eszköz vagy több eszköz konfigurálásához a Windows-gazdagéphez való kapcsolódáshoz. |
 | Biztonsági mentési szabályzat létrehozása |Tegye a következők egyikét:<ul><li>Kattintson a jobb gombbal a **biztonsági mentési házirendek**elemre.</li><li>Kattintson vagy bontsa ki a **kötetek csoportjai**elemet, majd kattintson a jobb gombbal a kötetre.</li><li>Kattintson vagy bontsa ki a **Backup Catalog**elemet, majd kattintson a jobb gombbal a kötet csoportra.</li></ul> |Kattintson a **biztonsági mentési szabályzat létrehozása** lehetőségre egy mennyiségi csoport ütemezett biztonsági mentésének konfigurálásához. |
 | Kötet csoport létrehozása |Tegye a következők egyikét:<ul><li>Kattintson a **kötetek** csomópontra, majd kattintson a jobb gombbal egy kötetre az **eredmények** ablaktábláján.</li><li>Kattintson a jobb gombbal a **kötetek csoportjai** csomópontra.</li></ul> |Kattintson a **kötet létrehozása** elemre a kötetek kötethez való hozzárendeléséhez. |
-| Törlés |Kattintson egy csomópontra vagy eredményre (ez az elem számos **művelet** menün és **művelet** ablaktáblán jelenik meg.) |A kijelölt csomópont vagy eredmény törléséhez kattintson a **Törlés** gombra. Amikor megjelenik a megerősítő párbeszédpanel, erősítse meg vagy szakítsa meg a törlést. |
+| Törlés |Kattintson egy csomópontra vagy eredményre (ez az elem számos **művelet** menün és  **művelet** ablaktáblán jelenik meg.) |A kijelölt csomópont vagy eredmény törléséhez kattintson a **Törlés** gombra. Amikor megjelenik a megerősítő párbeszédpanel, erősítse meg vagy szakítsa meg a törlést. |
 | Részletek |Kattintson az **eszközök** csomópontra, majd kattintson a jobb gombbal az eszközre az **eredmények** ablaktábláján. |A **részletek** elemre kattintva megtekintheti az eszköz konfigurációs adatait. |
 | Szerkesztés |Kattintson a **biztonsági mentési házirendek**elemre, majd kattintson a jobb gombbal egy házirendre az **eredmények** ablaktábláján. |A kötetek biztonsági mentési ütemtervének módosításához kattintson a **Szerkesztés** gombra. |
 | Exportálási lista |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **lista exportálása** lehetőségre egy lista vesszővel tagolt (CSV-) fájlban való mentéséhez. Ezt követően importálhatja ezt a fájlt egy táblázatkezelő alkalmazásba elemzés céljából. |
@@ -394,7 +394,7 @@ A következő táblázatok a **hatókör** panel egyes csomópontjainak billenty
 | Helyi menü | Eredmény |
 |:--- |:--- |
 | C# |Megnyitja az **eszköz konfigurálása** lapot. |
-| D |Frissíti az eszközök és az eszköz adatainak listáját. |
+| T |Frissíti az eszközök és az eszköz adatainak listáját. |
 | V |Megnyitja a **nézet** menüt. |
 | W |Új StorSimple Snapshot Manager-konzol megnyitása a **részletek** csomópontra összpontosítva. |
 | F |Frissíti a StorSimple Snapshot Manager-konzolt. |
@@ -447,7 +447,7 @@ A következő táblázatok a **hatókör** panel egyes csomópontjainak billenty
 | L |Megnyitja az **exportálási lista** lapot. |
 | H |Online súgó megnyitása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogy miként [használhatók az StorSimple Snapshot Manager az eszközök csatlakoztatásához és kezeléséhez](storsimple-snapshot-manager-manage-devices.md).
 

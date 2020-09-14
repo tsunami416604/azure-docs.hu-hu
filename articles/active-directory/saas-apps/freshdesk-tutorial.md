@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551055"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Oktatóanyag: Azure Active Directory integráció a Freshdeskbe
 
@@ -55,7 +55,7 @@ A Freshdeskbe Azure AD-be való integrálásának konfigurálásához hozzá kel
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **freshdeskbe** kifejezést a keresőmezőbe.
 1. Válassza ki a **freshdeskbe** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Freshdeskbe
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>Azure AD SSO konfigurálása és tesztelése a Freshdeskbe-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Freshdeskbe a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Freshdeskbe-ben.
 
@@ -81,9 +81,11 @@ Az Azure AD SSO és a Freshdeskbe konfigurálásához és teszteléséhez hajtsa
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő mintával: `https://<tenant-name>.freshdesk.com` vagy bármely más, a freshdeskbe által javasolt érték.
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő mintával: `https://<tenant-name>.freshdesk.com` vagy bármely más, a freshdeskbe által javasolt érték.
-
+     
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<tenant-name>.freshdesk.com/login/saml`
+    
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Freshdeskbe ügyfélszolgálati [csapatához](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a Freshdeskbe ügyfélszolgálati [csapatához](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. A Freshdeskbe alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, míg az **egyedi felhasználói azonosító** a **User. userPrincipalName** van leképezve, de a freshdeskbe azt várja, hogy a jogcím a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelés szerkesztéséhez kattintson a Szerkesztés ikonra, és módosítsa az attribútumok leképezését.
 
@@ -126,7 +128,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása

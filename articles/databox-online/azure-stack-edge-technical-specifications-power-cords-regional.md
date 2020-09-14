@@ -2,18 +2,18 @@
 title: Az Microsoft Azure Stack Edge hálózati technikai specifikációi a helyszín alapján | Microsoft Docs
 description: Ismerje meg az Azure Stack Edge-tápkábelek műszaki specifikációit.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: twooley
-ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 34f5b578581c5a11b3dbfba76f68819c2ed706d0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783977"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055928"
 ---
 # <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack peremhálózati tápkábelek specifikációi
 
@@ -23,7 +23,7 @@ Az Azure Stack Edge-eszköznek szüksége lesz egy olyan tápkábelre, amely az 
 
 A következő táblázat segítségével megkeresheti a régiójának megfelelő hálózati beállításokat:
 
-| Ország    | Névleges feszültség (V)| Aktuális besorolás (A)| Vezeték standard |Bemeneti összekötő|Kimeneti összekötő| Hosszúság mm |  
+| Country    | Névleges feszültség (V)| Aktuális besorolás (A)| Vezeték standard |Bemeneti összekötő|Kimeneti összekötő| Hosszúság mm |  
 |------------|---------------|------------|----|--|----|--|--|--|
 |Albánia|250|10|H05Z1Z1 3x 0,75|CEE 7|C13|1830|
 |Algéria|250|10|H05Z1Z1 3x 0,75|CEE 7|C13|1830|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981851"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058750"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Az IPv6 használatának áttekintése Azure Load Balancer
 
@@ -79,11 +79,11 @@ Korlátozások
 * A virtuális gépen lévő IPv6-végpont nem érhető el közvetlenül az internetre. A terheléselosztó mögött található. Csak a terheléselosztó szabályaiban megadott portok érhetők el IPv6-kapcsolaton keresztül.
 * Az IPv6 IdleTimeout-paraméterének módosítása **jelenleg nem támogatott**. Az alapértelmezett érték négy perc.
 * Az IPv6 loadDistributionMethod-paraméterének módosítása **jelenleg nem támogatott**.
-* A fenntartott IPv6 IP-címek (ahol a IP = statikus) **jelenleg nem támogatottak**.
+* Az alapszintű Load Balancer IPv6-értéke **dinamikus** SKU-hoz van zárolva.  Egy standard Load Balancer IPv6-jának **statikus** SKU-hoz van zárolva.
 * A NAT64 (IPv6-ról IPv4-re való fordítás) nem támogatott.
 * Egy olyan másodlagos hálózati adapter csatolása, amely egy IPv6-alhálózatra hivatkozik egy háttér-készletre, **jelenleg nem támogatott**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan helyezhet üzembe egy Load balancert IPv6-tal.
 

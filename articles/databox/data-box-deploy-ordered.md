@@ -2,18 +2,18 @@
 title: Oktatóanyag a Azure Data Box rendeléséhez | Microsoft Docs
 description: Ebben az oktatóanyagban megismerheti a Azure Data Box, egy hibrid megoldást, amely lehetővé teszi a helyszíni információk importálását az Azure-ba, valamint a Azure Data Box sorrendjét.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/09/2020
+ms.author: alkohli
+ms.openlocfilehash: 2ab74b87b287296c4ff975d5af75714c89001004
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783569"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055716"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -237,7 +237,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     ![Az 1-es Data Box lehetőség kiválasztása](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. A **sorrendben**válassza az **alapok** lapot. adja meg vagy válassza ki a következő adatokat, majd kattintson a **tovább gombra: adat célhely>**.
+6. A **sorrendben**válassza az **alapok** lapot. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Tovább: adatok célhelye>** elemet.
 
     |Beállítás  |Érték  |
     |---------|---------|
@@ -269,7 +269,18 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás lapblobként tölti fel a VHD-ket az előkészítési tárfiókba, majd felügyelt lemezekké konvertálja, és áthelyezi az erőforráscsoportba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-    A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
+    Kattintson a **Tovább gombra: a biztonság** lehetőségre.
+
+1. Ha a **Biztonság**területen engedélyezni szeretné a szoftveres kettős titkosítást, válassza **a dupla titkosítás engedélyezése lehetőséget a rendeléshez**. 
+
+   A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
+
+   > [!NOTE]
+   > Ha engedélyezi ezt a beállítást, megteheti, hogy a rendelés feldolgozása és az Adatmásolás tovább tart. Ez a beállítás a megrendelés létrehozása után nem módosítható.
+
+   ![Adatmező importálásának biztonsági képernyője, dupla titkosítás](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
 
 8. A **kapcsolattartási adatok**területen válassza a **+ szállítási címek hozzáadása**elemet.
 

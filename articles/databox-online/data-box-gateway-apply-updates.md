@@ -2,17 +2,17 @@
 title: Frissítés telepítése Azure Data Box Gateway Series-eszközön | Microsoft Docs
 description: Ismerteti, hogyan alkalmazhatók a frissítések a Azure Portal és a helyi webes KEZELŐFELÜLET használatával Azure Data Box Gateway Series-eszközhöz
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: twooley
-ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783875"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055963"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>A Azure Data Box Gateway frissítése
 
@@ -22,7 +22,7 @@ Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a frissítés te
 >
 > - Az **1911** -es frissítés megfelel az eszközön **1.6.1049.786** szoftver verziójának. A frissítéssel kapcsolatos további információkért nyissa meg a [kibocsátási megjegyzéseket](data-box-gateway-1911-release-notes.md).
 >
-> - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a Data Box Gateway egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszközön az eszköz szoftverfrissítés-frissítése akár 30 percet is igénybe vehet.
+> - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a Data Box Gateway egy egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz akár 30 percig is elérhetetlen lesz, amíg a szoftverfrissítés tart.
 
 Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
@@ -39,7 +39,7 @@ Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az es
 
 2. A **Device Updates (eszközök frissítése** ) panelen győződjön meg arról, hogy áttekintette a kibocsátási megjegyzések új szolgáltatásaihoz társított licencfeltételeket.
 
-    Választhat, hogy **letölti és telepíti** a frissítéseket, vagy csak **letölti** a frissítéseket. Ezután később is telepítheti ezeket a frissítéseket.
+    Választhat, hogy **letölti és telepíti** a frissítéseket, vagy csak **letölti** a frissítéseket. A letöltött frissítések telepítését későbbre halaszthatja.
 
     ![Szoftverfrissítés utáni szoftververzió](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
@@ -63,7 +63,7 @@ Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az es
 
     ![Szoftverfrissítés utáni szoftververzió](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** lehetőséget.
+    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** gombot.
   
     ![Szoftverfrissítés utáni szoftververzió](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -139,7 +139,7 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 
    ![eszköz frissítése](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. Kattintson az **Alkalmaz** elemre.
+3. Válassza az **Alkalmaz** lehetőséget.
 
    ![eszköz frissítése](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

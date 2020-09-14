@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd02f2dbb7666ba9f2134ffba4cf683e1e9ac67b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039064"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058700"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure biztonsági alapkonfiguráció az Azure nyilvános IP-címéhez
 
-Ez a biztonsági alapterv az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../security/benchmarks/overview.md) az Azure nyilvános IP-re vonatkozó útmutatást alkalmazza. Az Azure biztonsági teljesítményteszt az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** és az Azure nyilvános IP-címére vonatkozó kapcsolódó útmutatás szerint van csoportosítva. Az Azure-beli nyilvános IP-címekre nem alkalmazható **vezérlők** ki lettek zárva.
+Ez a biztonsági alapterv az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../security/benchmarks/overview.md) az Azure nyilvános IP-re vonatkozó útmutatást alkalmazza. Az Azure biztonsági teljesítményteszt az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** és az Azure nyilvános IP-címére vonatkozó kapcsolódó útmutatás szerint van csoportosítva. Az Azure-beli nyilvános IP-címekre nem alkalmazható **vezérlők** ki lettek zárva.  Vegye figyelembe, hogy az Azure nyilvános IP-címei nem tárolnak ügyféladatokat.
 
 Ha szeretné megtudni, hogy az Azure-beli nyilvános IP-cím hogyan teljes mértékben leképezi az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure nyilvános IP-biztonsági](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)alapkonfiguráció
 
@@ -46,7 +46,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
-**Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a konfigurációkat, és azonosíthatja a nyilvános IP-példányok módosításait. A vezérlési síkon (például Azure Portal) kívül a nyilvános IP-cím nem hoz a hálózati forgalomhoz kapcsolódó naplókat. 
+**Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a konfigurációkat, és azonosíthatja a nyilvános IP-példányok módosításait. A vezérlési síkon (például Azure Portal) kívül a nyilvános IP-cím nem hoz a hálózati forgalomhoz kapcsolódó naplókat.
 
 A nyilvános IP-cím eszközöket biztosít az Azure-beli virtuális hálózatokban lévő erőforrások figyelésére, diagnosztizálására, megtekintésére, valamint a naplók engedélyezésére vagy letiltására.
 

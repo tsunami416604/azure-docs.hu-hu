@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali partner-integrációk – Azure
 description: Ismerje meg a Windows rendszerű virtuális asztalok partnereit és a velük való integrációval kapcsolatos dokumentációt.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612367"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056408"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -46,7 +46,8 @@ a 10ZiG technológia, amelynek élvonalbeli vékony és zéró ügyfélszoftvere
 
 a 10ZiG's globális piaci vezetése a virtuális asztalok esetében a vékony és a nulla ügyfél-végponti eszközökön és a felügyeleti szoftvereken alapul, és az ügyfelekre való munkavégzésük példája. A vékony ügyfél hardvere elgondolkodva kiépített juttatási funkciókkal és lehetőségekkel rendelkezik, amelyekkel biztosítható, hogy az ügyfelek az igényeik alapján kapják meg a megfelelő ügyféleszközök igényeit. a 10ZiG testreszabja az eszközeit úgy, hogy a Windows-alapú és Linux-alapú ügyfelekkel is illeszkedjenek az ügyfél-környezetekhez, amelyek a lehető legjobb teljesítményt biztosítják a virtuális asztalok számára a felhőn belül és kívül is.
 
-- [Lépjen a partner webhelyére](https://www.10zig.com/about/microsoft-wvd).
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR).
+- [Lépjen a partner webhelyére](https://www.10zig.com/about/microsoft-windows-virtual-desktop).
 
 ## <a name="automai"></a>Automai
 
@@ -101,7 +102,7 @@ Windows rendszerű virtuális asztallal való használat esetén a ControlUp tov
 
 A Dell Technologies vékony ügyfelei a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltatások elérésére vannak optimalizálva. Képes megfelelni az együttműködésen alapuló szakemberektől származó igényeknek a grafikusan nagy teljesítményű felhasználók számára, a Wyse vékony ügyfelek kiváló minőségű számítástechnikai élményt biztosítanak az alkalmazások és tartalmak egyre növekvő számának kihasználásához. Ideális a térben korlátozott környezetekhez, a vékony ügyfelek alkalmazkodnak a sokoldalú Wyse és a csatlakoztatási lehetőségek széles választékához.
 
-A Wyse vékony ügyfelek a korlátozott támadási felülettel, a biztonsági megfelelőségi szabványok támogatásával és a többtényezős hitelesítéssel kapcsolatos speciális megoldásokkal vannak kialakítva. Szigorúan biztonságos, vékony ügyfeleket helyezhet üzembe a Dell-Exclusive Wyse ThinOS, vagy biztonságos hozzáférést érhet el a felhőalapú alkalmazásokhoz és virtuális munkaterületekhez a megerősített Wyse-ThinLinux kereskedelmi bevált kialakítással és Windows 10 IoT Enterprise-mel a Dell által hozzáadott biztonsági funkciókkal. A Wyse Management Suite biztonságos, HTTPS-alapú kommunikációval és Active Directory-hitelesítéssel tartja naprakészen a Wyse-végpontokat, a WMS Pro-hoz készült Mobile App pedig lehetővé teszi a kritikus riasztások megtekintését és a valós idejű parancsok egyetlen koppintással való elküldését.
+A Wyse vékony ügyfelek számára a korlátozott támadási felületek, a biztonsági megfelelőségi szabványok támogatása, valamint a többtényezős hitelesítés speciális megoldásait kell szem előtt tartani. A Windows 10 IoT Enterprise és a Dell által hozzáadott biztonsági funkciókkal nagyon biztonságos, vékony ügyfelek helyezhetők üzembe. A biztonságos, HTTPS-alapú kommunikáció és Active Directory-hitelesítés a szerepköralapú adminisztrációhoz a Wyse Management Suite mindig naprakészen tartja a Wyse-végpontokat, a WMS Pro-hoz készült Mobile App pedig lehetővé teszi a kritikus riasztások megtekintését és a valós idejű parancsok küldését egyetlen koppintással bármikor.
 
 - [Lépjen a partner webhelyére](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
 
@@ -190,6 +191,15 @@ A Lakeside szoftver digitális felhasználói felületének figyelési megoldás
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
 - [Lépjen a partner webhelyére](https://www.lakesidesoftware.com/assessments/wvd).
 
+## <a name="lenovo"></a>Lenovo
+
+![Lenovo-embléma](./media/partners/lenovo.png)
+
+A Lenovo vékony ügyfelei a kiszolgálóról futó ügyfélszámítógépek rugalmasságát, de a natív számítógép-képességet és a teljesítményt is lehetővé teszi a hálózat számára. A Lenovo vékony ügyfelei a Windows rendszerű virtuális asztali környezetek teljesítményét és intuitív kezelhetőséget biztosítanak, és a vállalat hálózatát a következő megbízhatósági szintre emelhetik. Minden egyes vékony ügyfél a Lenovo Terminal Manager licenccel rendelkezik, és a szervezetek zökkenőmentes és költséghatékony hardver-felügyeleti és üzembe helyezési lehetőségeket biztosítanak. Kis-és sokoldalúak is, így könnyen hozzáadhatók a meglévő Lenovo-környezetekhez.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB).
+- [Lépjen a partner webhelyére](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients).
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Liquidware embléma](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ A login VSI egy Windows rendszerű virtuális asztali értéknövelt szolgáltat
 
 - [Lépjen a partner webhelyére](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
+## <a name="nasuni"></a>Nasuni
+
+![Nasuni embléma](./media/partners/nasuni.png)
+
+A Nasuni Corp., a Cloud file Services vezető szolgáltatója és egy legfontosabb Azure Global ISV-partner, a Nasuni-alapú szoftveres platformot kínálja a modern virtuális asztalok modern tárolási megoldásának. A Nasuni az Azure Blob Storage kombinálva egyesíti az elsődleges file Storage (NAS), a fájlok biztonsági mentését, a vész-helyreállítást és a régiók közötti szinkronizálást egyetlen egységes megoldásban. A Nasuni segítségével a vállalatok a Windows rendszerű virtuális asztalok több felhasználási esetre, több Azure-régióban is üzembe helyezhetők, egyszerűsíthetik a felügyeletet, és biztosítják az üzletmenet folytonosságát. 
+
+Modern felhőalapú VDI-megoldásként a Windows rendszerű virtuális asztali környezet modern Cloud file Storage-t igényel. A VDI file Storage hagyományosan a hálózatra csatlakoztatott tárolón (NAS) és a helyileg található fájlkiszolgáló hardveren alapul, valamint a fájl biztonsági mentésének, visszaállításának és vész-helyreállításának biztosításához kapcsolódó szükséges technológia. Ezek a hagyományos megközelítések költségesek, komplexek a karbantartáshoz és felügyelethez, és nem egyszerűen méretezhetők. Emellett késést is jelentenek, ha egy modern felhőalapú VDI-megoldással (például a Windows Virtual Desktoptal) használják a fizikai távolságot, valamint az Azure-alapú asztali környezetek közötti, illetve a helyszíni tárterületen alapuló, lassabb WAN-kapcsolatot. A kifejezetten az Azure-hoz készült Nasuni-platform korlátlan tárolókapacitást és nagy teljesítményű fájl-hozzáférést biztosít. A Nasuni az azonos Azure-régiókban található Windows virtuális asztallal közösen helyezhetők el, így gazdaságos és nagy teljesítményű fájlokhoz is hozzáférhetnek egyetlen globális névtérhez. A Nasuni a Windows rendszerű virtuális asztali fájlok tárolását a hagyományos NAS-és Windows-fájlkiszolgálók költségeinek töredékéért tartalmazza, és beépített biztonsági mentéseket és vész-helyreállítást biztosít a költségek további csökkentése és az informatikai erőforrások felszabadítása érdekében.
+
+- [Lépjen a partner webhelyére](https://www.nasuni.com/partner/microsoft/#wvd).
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio embléma](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megk�
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Lépjen a partner webhelyére](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="nexthink"></a>Nexthink
+
+![Nexthink embléma](./media/partners/nexthink.png)
+
+A Nexthink egy Windows rendszerű virtuális asztali értéknövelt szolgáltató, amely segít a szervezeteknek az alkalmazottak digitális felhasználói élményének és termelékenységének magabiztos mérésében, kezelésében és fejlesztésében. A digitális alkalmazottak felhasználói felületének folyamatos beolvasása révén folyamatosan fejlesztheti a technológia azon képességét, hogy a munkahelye és az emberek számára is felhasználható legyen. 
+
+A jól látható munkahelyi erőforrásokkal rendelkező megoldások révén a Nexthink kontextust és betekintést nyújt a felhasználói bázisba. A Nexthink hatékony élmény-kezelési platformja segíti az IT-csapatok számára, hogy a Windows rendszerű virtuális asztali környezetbe való áttelepítést időben és sikeresen üzembe lehessen helyezni.
+
+- [Lépjen a partner webhelyére](https://www.nexthink.com/initiative/desktop-virtualization/).
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT).
 
 ## <a name="numecent"></a>Numecent
 
@@ -287,12 +319,16 @@ A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű vi
 
 ![Rimo3 embléma](./media/partners/rimo3.png)
 
-A Rimo3 a telepítés felgyorsításával és a folyamatos változások kezelésének javításával fokozza a Windows rendszerű virtuális asztali élményt. A Rimo3 informatikai csapatoknak gondoskodik az alkalmazás-munkaterhelések Azure-beli áttelepítési felkészültségének támogatásához szükséges ismeretekről. A felhasználók gyorsan és fájdalommentesen helyezhetnek üzembe alkalmazásokat és tesztelik azokat a célként megadott Windows virtuális asztal munkaterületen. A felhasználók proaktív módon is megismerhetik a változások következményeit, mivel a szervezet az új alkalmazásokat és frissítéseket összesíti. Végezetül a rendszergazdák Rimo3's intelligens füst-tesztelési képességet, és a felhasználói munkamenetek megszakítása nélkül automatizálják a funkciók tesztelését.
+A Rimo3 a könnyen használható, méretezhető és felhőalapú alkalmazás-modernizációs platformmal fokozza a Windows rendszerű virtuális asztali környezetet.
 
-A Rimo3 egy könnyen használható, méretezhető, automatizált alkalmazás-tesztelési platformot kínál. Ez a platform mindhárom alkalmazás-tesztelési alapképességet magában foglalja: kompatibilitás, funkcionalitás és teljesítmény. Lehetővé teszi a szervezetek, a vezetők és a csapatok számára az üzletmenet folytonosságának javítását, a változás gyorsabb elfogadását és a felhasználói élmény optimalizálását.
+Az informatikai csapatok számára a Rimo3 segít felderíteni, modernizálni és kezelni az alkalmazások számítási feladatait a Windows rendszerű virtuális asztalra való áttéréshez. A felhasználók automatikusan ellenőrizhetik az alkalmazás-portfólióját a Windows rendszerű virtuális asztali környezetbe való bevezetéshez vagy a MSIX-re való modernizációhoz alkalmas jelöltek felderítéséhez.  
+
+A felhasználók automatizálják az alkalmazások előzetes tesztelését, az alkalmazások MSIX való átalakítását és az átalakítás utáni tesztelést az automatikus szervizelés alkalmazása során, ha az alkalmazások nem megfelelően lettek konvertálva. Ennek eredménye egy modernizált, üzembe helyezésre kész MSIX-csomag. A Windows rendszerű virtuális asztali szolgáltatások minden kiadásával és frissítésével a felhasználók az üzembe helyezést megelőzően teljesen ellenőrizhetik az alkalmazásokat, és teljes körű megbízhatóságot és folyamatos kezelést biztosítanak.
+
+A felügyelt szolgáltatók esetében a Rimo3 segít kibővíteni a felügyelt szolgáltatásaikat a margók javítása érdekében, és segít a projekten alapuló bevételeknek az előfizetés-alapú ismétlődő bevételre való kiterjesztésében, és olyan ügyfelek számára, akik modernizálni és áthelyezni szeretnék a Windows virtuális asztalt, és hogyan kezelhetik a rendszeres frissítéseket az asztali munkaterületeken.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
-- [Lépjen a partner webhelyére](https://rimo3.com/outcomes/).
+- [Lépjen a partner webhelyére](https://rimo3.com/windows-virtual-desktop/).
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ a sepago innovációs és fejlesztési laborja big data-és AI-technológiák ha
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
 - [Lépjen a partner webhelyére](https://www.sepago.de/en/).
+
+## <a name="ssh2"></a>SSH2
+
+![SSH2 embléma](./media/partners/ssh2.png)
+
+Az SSH2 egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely az IT-csapatokat szoftverrel felgyorsítja az alkalmazás az aktuális platformról az Azure-beli Windows virtuális asztalra való továbbításának felgyorsításához. Az SSH2 lehetővé teszi, hogy felgyorsítsa az alkalmazások rögzítését az áttelepítési folyamat leegyszerűsítése érdekében. A SSH2's appCURE rögzíti a végponton futó alkalmazásokat, lehetővé teszi a frissítését és szervizelését, hogy átfogó lépést hozzon létre annak a sebességnek a használatával, amellyel a végfelhasználói környezetek végrehajthatók. 
+
+a appCURE rögzíti az alkalmazás adatait a futó alkalmazásokból, így biztosítva, hogy minden olyan pont értelmezhető legyen, amely hatással lehet a végfelhasználó alkalmazásaira. a appCURE ezután frissíti és továbbítja azokat az új Windows-beli virtuális asztalhoz. A jelenlegi környezet összes alkalmazás-integrációs pontjának rögzítésével a appCURE biztosítja a sebességet az IT-erőforrások optimalizálásához és a Migrálás jobb és gyorsabb megtervezéséhez, mint eddig, így lehetővé téve a szervezetek számára a gyorsabb éles működést.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
+- [Lépjen a partner oldalra](https://www.ssh2.xyz/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -334,6 +381,7 @@ a uberAgent vállalat nagy korlátokat biztosít a Windows rendszerű virtuális
 
 a uberAgent egy figyelési és elemzési termék, amely a végfelhasználói számítástechnika számára lett kialakítva, amely nem csupán az adatokat gyűjti, így az ügyfelek számára a fontos információk szerepelnek. a uberAgent saját mérőszámokkal rendelkezik, amelyek a felhasználói élmény, az alkalmazások és a végpontok biztonságának kulcsfontosságú szempontjait fedik le, és mindent megtudhat a Windows rendszerű virtuális asztali gépekről, anélkül, hogy ez befolyásolná a rendszerek felhasználói sűrűségét. a uberAgent leegyszerűsíti a hibaelhárítást, segíti a méretezést, és részletes információkkal szolgál az információbiztonság terén.
 
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39).
 - [Lépjen a partner webhelyére](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
 
 ## <a name="workspace-365"></a>Munkaterület 365
