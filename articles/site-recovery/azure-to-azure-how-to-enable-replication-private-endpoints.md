@@ -173,7 +173,7 @@ Hozzon létre egy privát DNS-zónát, amely lehetővé teszi, hogy a mobilitás
 
    1. Keresse meg a "saját DNS zóna" kifejezést a **minden szolgáltatás** keresési sávján, és válassza a legördülő menüből a "saját DNS zónák" lehetőséget.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Megjeleníti a "privát DNS-zóna" keresést a Azure Portal új erőforrások lapján.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Megjeleníti a privát DNS-zóna keresést a Azure Portal új erőforrások lapján.":::
 
    1. A "saját DNS zónák" lapon kattintson a ** \+ Hozzáadás** gombra az új zóna létrehozásának megkezdéséhez.
 
