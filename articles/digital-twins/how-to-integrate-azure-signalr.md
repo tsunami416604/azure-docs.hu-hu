@@ -34,7 +34,7 @@ Emellett az Azure-fiókjával is bejelentkezhet a [Azure Portalba](https://porta
 
 Az Azure Signaler szolgáltatást az alábbi elérési úton csatlakoztathatja az Azure Digital Twins szolgáltatáshoz. A diagram "A", "B" és "C" részeit a rendszer a [végpontok közötti oktatóanyag előfeltételének](tutorial-end-to-end.md)architektúra-diagramján mutatja be. Ebben az útmutatóban ezt a D. szakasz hozzáadásával fogja felépíteni.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben való megtekintése. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása. A D. szakasz a "Broadcast" címkével ellátott Azure-függvényhez tartozó, azonos Event Gridból áramló adatok megjelenítését jeleníti meg. a "Broadcast" az "egyeztetés" címkével ellátott másik Azure-függvénysel kommunikál, és a "szórás" és az "egyeztetés" is számítógépes eszközökkel kommunikál." lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben való megtekintése. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása. A D. szakasz a Broadcast címkével ellátott Azure-függvényhez tartozó, azonos Event Gridból áramló adatok megjelenítését jeleníti meg. a Broadcast az egyeztetés címkével ellátott másik Azure-függvénysel kommunikál, és a szórás és az egyeztetés is számítógépes eszközökkel kommunikál." lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
 
 ## <a name="download-the-sample-applications"></a>A minta alkalmazások letöltése
 
@@ -61,7 +61,7 @@ Először nyissa meg a böngészőt, ahol a Azure Portal meg van nyitva, és vé
 
 1. Válassza ki az ikont az elsődleges kapcsolódási karakterlánc másolásához.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Képernyőkép a Azure Portalről, amely a Signaler-példány kulcsok lapját jeleníti meg. Az elsődleges KAPCSOLÓDÁSi karakterlánc melletti "másolás a vágólapra" ikon ki van emelve." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Képernyőkép a Azure Portalről, amely a Signaler-példány kulcsok lapját jeleníti meg. Az elsődleges KAPCSOLÓDÁSi karakterlánc melletti másolás a vágólapra ikon ki van emelve." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
 Ezután indítsa el a Visual studiót (vagy egy tetszőleges szerkesztőprogramot), és nyissa meg a Code megoldást a *Azure_Digital_Twins_samples > ADTSampleApp* mappában. Ezután végezze el a következő lépéseket a függvények létrehozásához:
 
@@ -139,11 +139,11 @@ Ezután indítsa el a Visual studiót (vagy egy tetszőleges szerkesztőprogramo
 Ezután tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététele* című szakaszban](tutorial-end-to-end.md#publish-the-app) ismertetett lépéseket követve a *Kapcsolódás végpontok közötti megoldáshoz* című oktatóanyagot. Közzéteheti ugyanazt az App Service/Function alkalmazásban, amelyet a teljes körű oktatóanyag prereq használt, vagy létrehozhat egy újat – de érdemes lehet ugyanazt az eszközt használni a Duplikálás minimalizálásához. Továbbá fejezze be az alkalmazás közzétételét az alábbi lépésekkel:
 1. Gyűjtse össze az *egyeztetési* függvény **http-végpontjának URL-címét**. Ehhez nyissa meg a Azure Portal [Function apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) lapot, és válassza ki a függvény alkalmazást a listából. Az alkalmazás menüben válassza a *függvények* lehetőséget, majd válassza az *egyeztetés* funkciót.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal a Function alkalmazás nézetét, és a "functions" elem ki van emelve a menüben. A függvények listája megjelenik az oldalon, és az "egyeztetés" függvény is ki van emelve.":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal a Function alkalmazás nézetét, és a functions elem ki van emelve a menüben. A függvények listája megjelenik az oldalon, és az egyeztetés függvény is ki van emelve.":::
 
     A *függvény URL-címének lekérése* és az érték másolása a ** _/API_ használatával (ne szerepeljen az utolsó _/Negotiate?_)**. Ezt később fogja használni.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Az "egyeztetés" függvény Azure Portal nézete. A "függvény URL-címének beolvasása" gomb ki van emelve, az URL-cím része pedig az elejétől a "/API"":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Az egyeztetés függvény Azure Portal nézete. A függvény URL-címének beolvasása gomb ki van emelve, az URL-cím része pedig az elejétől a /API":::
 
 1. Végezetül az alábbi Azure CLI-paranccsal adja hozzá az Azure Signaler- **kapcsolódási karakterláncot** a korábbi verzióról a függvény alkalmazás beállításaihoz. A parancs [Azure Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest):
  
@@ -153,7 +153,7 @@ Ezután tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététe
 
     A parancs kimenete kinyomtatja az Azure-függvényhez beállított összes alkalmazást. A `AzureSignalRConnectionString` lista alján keresse meg a hozzáadásának ellenőrzését.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="A parancs kimenetének kivonata, amely egy "AzureSignalRConnectionString" nevű listaelemet mutat be":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="A parancs kimenetének kivonata, amely egy AzureSignalRConnectionString nevű listaelemet mutat be":::
 
 #### <a name="connect-the-function-to-event-grid"></a>A függvény összekötése Event Grid
 
@@ -172,7 +172,7 @@ Az *esemény-előfizetés létrehozása* lapon töltse ki a mezőket a következ
     - Töltse ki az **előfizetést**, az **erőforráscsoportot**, a **Function app** és a Function (*szórás*) **függvényt** . Ezek némelyike az előfizetés kiválasztása után automatikusan feltölthető.
     - Nyomja **meg a megerősítés jóváhagyása elemet**.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal esemény-előfizetés létrehozásának nézete. A fenti mezők ki vannak töltve, a "kijelölés megerősítése" és a "létrehozás" gomb ki van emelve.":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal esemény-előfizetés létrehozásának nézete. A fenti mezők ki vannak töltve, a kijelölés megerősítése és a létrehozás gomb ki van emelve.":::
 
 Az esemény- *előfizetés létrehozása* lapon kattintson a **create (létrehozás**) elemre.
 
