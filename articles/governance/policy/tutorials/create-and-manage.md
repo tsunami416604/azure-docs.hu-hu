@@ -426,7 +426,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Keresse meg és válassza ki a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót. A lap tetején válassza a **hozzárendelés** lehetőséget, hogy megnyissa a **biztonságos Get: hozzárendelés kezdeményezése** oldalon.
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Képernyőkép: a "hozzárendelés" gomb a kezdeményezési definíció lapon." border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Képernyőkép: a hozzárendelés gomb a kezdeményezési definíció lapon." border="false":::
 
    Azt is megteheti, hogy a jobb gombbal a kijelölt sorra kattint, vagy kiválasztja a sor végén található három pontot a helyi menühöz. Ezután válassza a **hozzárendelés**lehetőséget.
 
