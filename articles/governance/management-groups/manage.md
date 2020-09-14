@@ -82,14 +82,14 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
 1. **Törlés** kiválasztása
 
-   :::image type="content" source="./media/delete.png" alt-text="Képernyőkép a felügyeleti csoport oldaláról, a "Törlés" gombbal kiemelve." border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="Képernyőkép a felügyeleti csoport oldaláról, a Törlés gombbal kiemelve." border="false":::
 
    > [!TIP]
    > Ha az ikon le van tiltva, az egérmutatót az ikon fölé húzva megjelenik az OK.
 
 1. Ekkor megnyílik egy ablak, amely megerősíti, hogy törölni szeretné a felügyeleti csoportot.
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="Képernyőkép a "csoport törlése" megerősítési párbeszédpanelről a felügyeleti csoportok törléséhez." border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Képernyőkép a csoport törlése megerősítési párbeszédpanelről a felügyeleti csoportok törléséhez." border="false":::
 
 1. Válassza az **Igen** lehetőséget.
 
@@ -229,7 +229,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Válassza ki az előfizetést a listában a megfelelő AZONOSÍTÓval.
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="Képernyőkép az "előfizetés hozzáadása" lehetőségről a felügyeleti csoportba felvenni kívánt meglévő előfizetés kiválasztásához." border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Képernyőkép az előfizetés hozzáadása lehetőségről a felügyeleti csoportba felvenni kívánt meglévő előfizetés kiválasztásához." border="false":::
 
 1. Válassza a Save (Mentés) lehetőséget.
 
@@ -249,7 +249,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. A megnyíló menüben válassza ki a **szülő felügyeleti csoportot**.
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="Képernyőkép az "áthelyezés" ablakról és az előfizetés másik felügyeleti csoportba való áthelyezésének lehetőségeiről." border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="Képernyőkép az áthelyezés ablakról és az előfizetés másik felügyeleti csoportba való áthelyezésének lehetőségeiről." border="false":::
 
 1. Válassza a **Mentés** lehetőséget.
 
