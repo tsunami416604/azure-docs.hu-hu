@@ -4,12 +4,12 @@ description: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak ko
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212564"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530386"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 
@@ -35,9 +35,9 @@ Tranzakciós csomópont hozzáadása:
 
     ![Tranzakciós csomópont hozzáadása](./media/configure-transaction-nodes/add-node.png)
 
-    | Beállítás | Description |
+    | Beállítás | Leírás |
     |---------|-------------|
-    | Name | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
+    | Név | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
     | Jelszó | Állítson be egy erős jelszót. Használja a jelszót a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való eléréséhez.
 
 1. Válassza a **Létrehozás** lehetőséget.
@@ -52,7 +52,7 @@ A tranzakciós csomópont végpontjának részleteinek megtekintése:
 
 1. A Azure Portal navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontjára, és válassza az **Áttekintés**lehetőséget.
 
-    ![Végpontok](./media/configure-transaction-nodes/endpoints.png)
+    ![A képernyőfelvételek egy blockchain-tag tranzakciós csomópontjainak áttekintését jelenítik meg.](./media/configure-transaction-nodes/endpoints.png)
 
 A tranzakciós csomópont végpontok biztonságosak és hitelesítés szükségesek. A tranzakciós végponthoz Azure AD-hitelesítéssel, HTTPS alapszintű hitelesítéssel és HTTPS-kapcsolaton keresztüli hozzáférési kulccsal vagy a TLS protokollon keresztül érheti el a csatlakozást.
 
@@ -131,7 +131,7 @@ Válassza a Web3, a Nethereum, a szarvasgomba vagy a Web3j fület a használni k
 
 ![Mintakód](./media/configure-transaction-nodes/sample-code.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tranzakciós csomópontok konfigurálása az Azure CLI-vel](manage-cli.md)

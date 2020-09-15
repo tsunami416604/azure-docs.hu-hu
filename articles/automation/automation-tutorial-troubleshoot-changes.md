@@ -7,12 +7,12 @@ keywords: változások, nyomon követés, változások nyomon követése, leltá
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185806"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530539"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure-beli virtuális gépek változásainak hibáinak megoldása
 
@@ -99,7 +99,7 @@ A változások követése lehetőséggel kiválaszthatja a fájlok és beállít
     |---------|---------|
     |Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
     |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
-    |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+    |Group     | A fájlok logikai csoportosítására szolgáló csoportnév        |
     |Windows-beállításkulcs   | A fájl elérési útja, például: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="add-a-windows-file"></a>Windows-fájl hozzáadása
@@ -112,7 +112,7 @@ A változások követése lehetőséggel kiválaszthatja a fájlok és beállít
     |---------|---------|
     |Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
     |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
-    |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+    |Group     | A fájlok logikai csoportosítására szolgáló csoportnév        |
     |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”         |
     |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
     |Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
@@ -127,7 +127,7 @@ A változások követése lehetőséggel kiválaszthatja a fájlok és beállít
     |---------|---------|
     |Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
     |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
-    |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+    |Group     | A fájlok logikai csoportosítására szolgáló csoportnév        |
     |Elérési út megadása     | A fájl elérési útja, például: „/etc/*.conf”       |
     |Elérési út típusa     | Írja be a követni kívánt elem típusát. A lehetséges értékek a Fájl és a Címtár        |
     |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
@@ -218,9 +218,9 @@ Hasznos, ha követni tudja a végrehajtott módosításokat az Azure Portalon, d
 
 18. A riasztási e-mail tárgyának testreszabásához válassza a **műveletek testreszabása**lehetőséget. 
 
-19. A **szabály létrehozása**lapon válassza az **e-mail tárgya**, majd a **riasztási szabály létrehozása**lehetőséget. A riasztás figyelmezteti, ha egy frissítés telepítése sikeresen befejeződött, és tájékoztat róla, hogy mely számítógépeket érintett az adott frissítéstelepítés. Az alábbi képen egy, a W3SVC szolgáltatás leállítása esetén kapott e-mailre látható példa.
+19. A **szabály létrehozása**lapon válassza az **e-mail tárgya**, majd a **riasztási szabály létrehozása**lehetőséget. A riasztás figyelmezteti, ha egy frissítés telepítése sikeresen befejeződött, és tájékoztat róla, hogy mely számítógépeket érintett az adott frissítéstelepítés. A következő ábra egy, a W3SVC szolgáltatás leállításakor kapott e-mailt mutat be.
 
-    ![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![A képernyőfelvételen a W 3 S V C szolgáltatás leállításakor kapott e-mail-értesítés jelenik meg.](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

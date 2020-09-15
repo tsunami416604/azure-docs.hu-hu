@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684456"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531491"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
-Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítés egy Linux IoT Edge-eszközön platformmegbízhatósági modul (TPM) használatával. Az eszközök [kiépítési szolgáltatásával](../iot-dps/index.yml)automatikusan kiépítheti Azure IoT Edge eszközöket. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át az [automatikus kiépítési fogalmakat](../iot-dps/concepts-auto-provisioning.md) .
+Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítés egy Linux IoT Edge-eszközön platformmegbízhatósági modul (TPM) használatával. Az eszközök [kiépítési szolgáltatásával](../iot-dps/index.yml)automatikusan kiépítheti Azure IoT Edge eszközöket. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
 
 A feladatok a következők:
 
@@ -170,7 +170,7 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
    6. Ha szeretné, adjon hozzá egy címke értéket a **kezdeti eszköz iker állapotához** . A címkék használatával megcélozhatja az eszközök csoportjait a modulok üzembe helyezéséhez. További információ: IoT Edge- [modulok üzembe helyezése nagy léptékben](how-to-deploy-at-scale.md).
 
-   7. Kattintson a **Mentés** gombra.
+   7. Válassza a **Mentés** lehetőséget.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során.
 
@@ -283,6 +283,6 @@ iotedge list
 
 Ellenőrizheti, hogy a rendszer használta-e a Device kiépítési szolgáltatásban létrehozott egyéni regisztrációt. Navigáljon az eszköz kiépítési szolgáltatási példányához a Azure Portal. Nyissa meg a regisztráció részleteit a létrehozott egyéni regisztrációhoz. Figyelje meg, hogy a regisztráció állapota **hozzá van rendelve** , és az eszköz azonosítója megjelenik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A DPS-beléptetési folyamat lehetővé teszi az eszköz AZONOSÍTÓjának és az eszköz Twin-címkék egyidejű beállítását az új eszköz kiépítésekor. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezheti üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-at-scale.md) [Azure CLI használatával](how-to-deploy-cli-at-scale.md).

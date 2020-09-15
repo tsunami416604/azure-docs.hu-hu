@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400024"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530794"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
 
@@ -112,6 +112,8 @@ Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket 
    * VNet 7 és VNet 8 és VNet 4 NVA IP között 
    
    Az 5, 6, 7, 8 virtuális hálózatok nem kell közvetlenül a virtuális hubhoz csatlakoznia. Győződjön meg arról, hogy a virtuális hálózatok 5, 6, 7, 8 NSG engedélyezi a forgalmat az ág (VPN/ER/P2S) vagy a távoli virtuális hálózatok csatlakoztatott virtuális hálózatok számára. Például az virtuális hálózatok 5, 6 esetében biztosítania kell, hogy a NSG engedélyezze a helyszíni címek előtagjainak és a 2., 8. virtuális hálózatok, amelyek a távoli hubhoz csatlakoznak.
+
+A virtuális WAN nem támogatja azt a forgatókönyvet, amelyben a virtuális hálózatok 5, 6 csatlakozik a virtuális hubhoz, és a VNet 2 NVA IP-címen keresztül kommunikál. Ezért a virtuális hálózatok 5, 6 és VNet2 közötti kapcsolatra van szükség, és hasonlóképpen VNet 7, 8 és VNet 4 között kell lennie.
 
 2. Adjon hozzá egy összesített statikus útvonal-bejegyzést az virtuális hálózatok 2, 5, 6 és az 1. hub alapértelmezett útválasztási táblázatához.
 

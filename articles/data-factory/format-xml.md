@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a11b72024188fa434374110d9ce9e8cc69b2c6f0
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060968"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531712"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-formátum a Azure Data Factoryban
 
@@ -30,12 +30,12 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| típus             | Az adatkészlet Type tulajdonságát **XML-** re kell állítani. | Yes      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Yes      |
+| típus             | Az adatkészlet Type tulajdonságát **XML-** re kell állítani. | Igen      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
 | encodingName     | A tesztelési fájlok olvasására/írására szolgáló kódolási típus. <br>Az engedélyezett értékek a következők: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| No       |
 | nullValue | Megadja a null értékű karakterlánc-ábrázolást.<br/>Az alapértelmezett érték **üres karakterlánc**. | No |
 | tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | No |
-| típus<br>(*alatt `compression` *) | Az XML-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**, a **ZipDeflate**, a **TarGzip**, a **Snappy**vagy a **lz4**. Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési adatfolyam nem támogatja a "ZipDeflate".<br>**Megjegyzés** : Ha a másolási tevékenység használatával kibontja a **ZipDeflate** / **TarGzip** -fájl (oka) t, és a fájl alapú fogadó adattárba ír, a fájlok alapértelmezés szerint a mappába kerülnek, a `<path specified in dataset>/<folder named as source compressed file>/` `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [másolási tevékenység forrásaként](#xml-as-source) pedig megadhatja, hogy a rendszer a zip-fájl nevét a mappa szerkezeteként őrizze-e meg. | Nem.  |
+| típus<br>(*alatt `compression` *) | Az XML-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**, a **ZipDeflate**, a **TarGzip**, a **Snappy**vagy a **lz4**. Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési adatfolyam nem támogatja a "ZipDeflate".<br>**Megjegyzés** : Ha a másolási tevékenységgel kibontja a **ZipDeflate** / **TarGzip** -fájl (oka) t, és az írás a fájl alapú fogadó adattárba történik, az alapértelmezett fájlok a mappába kerülnek, a `<path specified in dataset>/<folder named as source compressed file>/` `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [másolási tevékenység forrásaként](#xml-as-source) pedig megadhatja, hogy meg kell-e őrizni a tömörített fájl (ok) nevét a mappa szerkezeteként. | Nem.  |
 | szint<br/>(*alatt `compression` *) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör. | No       |
 
 Az alábbi példa az Azure-beli XML-adatkészletet mutatja be Blob Storage:
@@ -75,7 +75,7 @@ A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulaj
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység forrásának Type tulajdonságát **XmlSource**értékre kell állítani. | Yes      |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **XmlSource**értékre kell állítani. | Igen      |
 | formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi **XML-olvasási beállítások** táblázatot. | No       |
 | storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
 
@@ -83,7 +83,7 @@ Támogatott **XML-olvasási beállítások** a következő alatt `formatSettings
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A formatSettings típusát **XmlReadSettings**értékre kell beállítani. | Yes      |
+| típus          | A formatSettings típusát **XmlReadSettings**értékre kell beállítani. | Igen      |
 | validationMode | Megadja, hogy az XML-séma érvényesíthető-e.<br>Az engedélyezett értékek a következők: **none** (alapértelmezett, nincs érvényesítés), **XSD** (ellenőrzés az XSD használatával), **DTD** (ellenőrzés a DTD használatával). | No |
 | namespacePrefixes | Névtér URI-ja az előtag-megfeleltetéshez, amely az XML-fájl elemzésekor használt mezők elnevezésére szolgál.<br/>Ha egy XML-fájl névteret tartalmaz, és a névtér engedélyezve van, alapértelmezés szerint a mezőnév ugyanaz, mint az XML-dokumentumban.<br>Ha a névtér URI-ja számára van definiálva elem ebben a térképen, a mező neve: `prefix:fieldName` . | No |
 | compressionProperties | Egy adott tömörítési kodekhez tartozó adatok kibontására szolgáló tulajdonságok csoportja. | No       |

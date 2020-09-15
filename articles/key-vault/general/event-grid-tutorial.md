@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 034bdce96d88deb31a071682a3c02200a64699dd
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087572"
+ms.locfileid: "90530505"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid
 
@@ -197,6 +197,6 @@ További információ:
 - Áttekintés: [Key Vault figyelése Azure Event Grid](event-grid-overview.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](event-grid-logicapps.md)
 - [Azure Key Vault Azure Event Gridi esemény sémája](../../event-grid/event-schema-key-vault.md)
-- [Azure Key Vault áttekintése](overview.md))
+- [Azure Key Vault áttekintése](overview.md)
 - [Azure Event Grid – áttekintés](../../event-grid/overview.md)
 - [Azure Automation áttekintése](../../automation/index.yml)

@@ -3,12 +3,12 @@ title: Tesztkörnyezet-házirendek kezelése a Azure DevTest Labsban | Microsoft
 description: Megtudhatja, hogyan határozhat meg olyan labor-házirendeket, mint a virtuálisgép-méretek, a virtuális gépek maximális száma felhasználónként és a Leállítás automatizálása
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290431"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530352"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>A labor összes szabályzatának kezelése Azure DevTest Labs
 
@@ -105,7 +105,7 @@ Az automatikus indítási házirend segítségével megadhatja, hogy mikor indul
 
 1. A labor **konfigurációjának és házirendjeinek** ablaktábláján válassza az **Automatikus indítás**lehetőséget.
    
-    ![Automatikus indítás](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![A képernyőfelvételen a virtuális gép automatikus indítási beállításai láthatók.](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. Ezzel **a** beállítással engedélyezheti a szabályzatot **, és** letilthatja azt.
 
@@ -120,7 +120,7 @@ Ha engedélyezve van, a rendszer nem alkalmazza automatikusan a szabályzatot az
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután meghatározta és alkalmazta a tesztkörnyezet különböző virtuálisgép-házirend-beállításait, a következő lépésekkel próbálkozhat:
 
 * A [megosztott IP-címek ismertetése](devtest-lab-shared-ip.md) – ismerteti, hogyan használják a megosztott IP-címeket a DevTest Labs szolgáltatásban, hogy minimálisra csökkentsék a laboratóriumi virtuális gépekhez való kapcsolódáshoz szükséges nyilvános IP-címek számát.

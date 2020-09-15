@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976995"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528419"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszközoldali SDK-val
 
@@ -23,7 +23,7 @@ Ezek a lépések bemutatják, hogyan használhatja a C#-hoz készült [Azure IoT
 
 A mintakód a Windows TPM-szimulátort használja az eszköz [Hardveres biztonsági moduljaként (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). 
 
-Ha nem ismeri az automatikus kiépítés folyamatát, tekintse át az [automatikus kiépítési fogalmakat](concepts-auto-provisioning.md)is. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit. 
+Ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 
@@ -49,7 +49,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 ## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
 
-1. Jelentkezzen be az Azure portálra. Válassza a **minden erőforrás** gombot a bal oldali menüben, és nyissa meg az eszköz kiépítési szolgáltatását. Az **Áttekintés** panelen jegyezze fel az **_azonosító hatókörének_** értékét.
+1. Jelentkezzen be az Azure Portalra. Válassza a **minden erőforrás** gombot a bal oldali menüben, és nyissa meg az eszköz kiépítési szolgáltatását. Az **Áttekintés** panelen jegyezze fel az **_azonosító hatókörének_** értékét.
 
     ![Másolja ki a kiépítési szolgáltatás azonosítójának hatókörét a portál paneljéről](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -65,7 +65,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
     dotnet run <IDScope>
     ```
 
-    Ez a parancs egy külön parancssorban fogja elindítani a TPM-lapka szimulátort. Windows rendszeren a Windows biztonsági riasztása megkérdezi, hogy szeretné-e engedélyezni a Simulator. exe programot a nyilvános hálózatokon való kommunikációhoz. A minta esetében megszakíthatja a kérelmet.
+    Ez a parancs egy külön parancssorban fogja elindítani a TPM-lapka szimulátort. Windows rendszeren olyan Windowsos biztonsági riasztás tapasztalható, amely megkérdezi, hogy szeretné-e engedélyezni Simulator.exe a nyilvános hálózatokon való kommunikációt. A minta esetében megszakíthatja a kérelmet.
 
 1. Az eredeti parancssorablakban megjelenik a **_jóváhagyó kulcs_**, a **_regisztrációs azonosító_**, valamint az eszköz beléptetéséhez szükséges javasolt **_eszköz-azonosító_** . Jegyezze fel ezeket az értékeket. Ezeket az értékeket fogja használni az eszköz kiépítési szolgáltatási példányában lévő egyéni regisztráció létrehozásához. 
    > [!NOTE]
@@ -105,7 +105,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Az **Áttekintés** panel felső részén kattintson a **Törlés** gombra a ablaktábla tetején.  
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Az **Áttekintés** panel felső részén kattintson a **Törlés** gombra a ablaktábla tetején.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy TPM-mel szimulált eszközt a gépen, és kiosztotta azt az IoT hubhoz a IoT Hub Device Provisioning Service használatával. A TPM-eszköz programozott módon történő regisztrálásának megismeréséhez folytassa a TPM-eszköz programozott beléptetését bemutató rövid útmutatóval. 
 

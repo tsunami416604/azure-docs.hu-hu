@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: a87769e1b67187a15daf3a256a2c1f4c79e10040
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6ed8e1deba7b3b2df03fa517a922721bcb8f8ad1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055520"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531236"
 ---
 # <a name="whats-new-in-custom-vision"></a>A Custom Vision újdonságai
 
@@ -25,7 +25,19 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegy
 
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), az Azure-erőforrásokhoz való egyéni hozzáférés kezelésére szolgáló engedélyezési rendszert. A Custom Vision-projektekhez való hozzáférés kezelésének megismeréséhez tekintse meg a [szerepköralapú hozzáférés-vezérlés](./role-based-access-control.md)című témakört.
+* Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), az Azure-erőforrásokhoz való egyéni hozzáférés kezelésére szolgáló engedélyezési rendszert. A Custom Vision-projektekhez való hozzáférés kezelésének megismeréséhez tekintse meg a [szerepköralapú hozzáférés-vezérlés](./role-based-access-control.md)című témakört.
+
+### <a name="subset-training"></a>A betanítás részhalmaza
+
+* Egy objektum-észlelési projekt betanításakor igény szerint betaníthatja az alkalmazott címkék egy részhalmazát. Ezt akkor érdemes megtenni, ha még nem alkalmazta elég bizonyos címkéket, de másokkal is rendelkezik. További információért kövesse a C# vagy a Python [ügyféloldali kódtár](./quickstarts/object-detection.md) útmutatóját.
+
+### <a name="azure-storage-notifications"></a>Azure Storage-értesítések
+
+* A Custom Vision-projektet egy Azure Blob Storage-várólistával integrálva leküldéses értesítéseket kaphat a projekt betanítási/exportálási tevékenységéről és a közzétett modellek biztonsági másolatáról. Ez a funkció akkor hasznos, ha el szeretné kerülni a szolgáltatás folyamatos lekérdezését az eredményekhez, amikor a hosszú műveletek futnak. Ehelyett a tárolási üzenetsor-értesítéseket integrálhatja a munkafolyamatba. További információért lásd a [Storage integrációs](./storage-integration.md) útmutatóját.
+
+### <a name="copy-and-move-projects"></a>Projektek másolása és áthelyezése
+
+* Mostantól egy Custom Vision-fiókból is másolhat projekteket másokba. Érdemes lehet egy projektet a fejlesztésből éles környezetbe áthelyezni, vagy egy projektről egy másik Azure-régióban lévő fiókra biztonsági másolatot készíteni az adatbiztonság növelése érdekében. További információkért tekintse meg a [projektek másolása és áthelyezése](./copy-move-projects.md) című útmutatót.
 
 ## <a name="september-2019"></a>2019. szeptember
 

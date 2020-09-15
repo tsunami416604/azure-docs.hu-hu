@@ -3,12 +3,12 @@ title: Azure Migrate replikációs berendezés
 description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate replikációs berendezését.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122098"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532120"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
 
@@ -129,7 +129,7 @@ Folyamatkiszolgáló | A Process Server replikációs adatokat fogad, optimaliz�
     - A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.
 5. A replikációs adatnaplók először egy gyorsítótárbeli Storage-fiókba helyezik az Azure-ban. A rendszer feldolgozza ezeket a naplókat, és az adattárolást egy Azure-beli felügyelt lemez tárolja.
 
-![Architektúra](./media/migrate-replication-appliance/architecture.png)
+![A diagram a replikálási folyamat architektúráját mutatja.](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Berendezések frissítése
 

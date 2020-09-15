@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: da821da08594180b9dd94728252e1a43c04fbde2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662041"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531661"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -33,13 +33,13 @@ A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault-r
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Leírás | Felhasználói engedély |
+| Művelet | Description | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
 |Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet|
 
-Az engedélyekkel és a hozzáférés-vezérléssel kapcsolatos további információkért lásd: [a Key Vault biztonságossá tétele](secure-your-key-vault.md).
+Az engedélyekkel és a hozzáférés-vezérléssel kapcsolatos további információkért lásd a [kulcstartó biztonságossá](secure-your-key-vault.md)tételét ismertető témakört.
 
 ## <a name="enabling-soft-delete"></a>Törlés engedélyezése
 
@@ -241,6 +241,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-- A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](soft-delete-overview.md)).
-- A Azure Key Vault használatának általános áttekintését lásd: [Mi az a Azure Key Vault?](overview.md)).
+- A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](soft-delete-overview.md).
+- A Azure Key Vault használatának általános áttekintése: [Mi az Azure Key Vault?](overview.md)
 

@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434738"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531423"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>A bérlős kiépítése 
 
-A kiépítési szolgáltatás által meghatározott kiosztási szabályzatok számos különböző foglalási forgatókönyvet támogatnak. Két gyakori forgatókönyv:
+Ez a cikk azt mutatja be, hogyan lehet biztonságosan kiosztani több szimmetrikus kulcsú eszközt a IoT hubok egy csoportjára a [kiosztási szabályzat](concepts-service.md#allocation-policy)használatával. A kiépítési szolgáltatás által meghatározott kiosztási szabályzatok számos különböző foglalási forgatókönyvet támogatnak. Két gyakori forgatókönyv:
 
 * **Térinformatikai/GeoLatency**: mivel az eszköz a helyek között mozog, a hálózati késést úgy javítja ki, hogy az eszköz az adott helyhez legközelebb eső IoT hub-ra van kiépítve. Ebben a forgatókönyvben a IoT hubok egy csoportja lesz kiválasztva a beléptetésekhez. Ezekhez a regisztrációhoz a **legalacsonyabb késési** kiosztási szabályzat van kiválasztva. A házirend hatására az eszköz kiépítési szolgáltatása kiértékeli az eszköz késését, és meghatározza a beépített IoT hub-t az IoT hubok csoportjából. 
 
@@ -83,7 +83,7 @@ Ebben a szakaszban a Azure Cloud Shell fogja használni két új regionális IoT
 
 Ebben a szakaszban egy új beléptetési csoportot fog létrehozni a bérlői eszközökhöz.  
 
-Az egyszerűség kedvéért ez a cikk [szimmetrikus kulcsú tanúsítványokat](concepts-symmetric-key-attestation.md) használ a beléptetéshez. A biztonságosabb megoldás érdekében érdemes lehet az [X. 509 tanúsítvány-igazolást](concepts-security.md#x509-certificates) használni egy megbízhatósági lánc használatával.
+Az egyszerűség kedvéért ez a cikk [szimmetrikus kulcsú tanúsítványokat](concepts-symmetric-key-attestation.md) használ a beléptetéshez. A biztonságosabb megoldás érdekében érdemes lehet az [X. 509 tanúsítvány-igazolást](concepts-x509-attestation.md) használni egy megbízhatósági lánc használatával.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg az eszköz kiépítési szolgáltatásának példányát.
 
@@ -357,7 +357,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Ha a létrehozás sikeres, futtassa a **prov \_ dev \_ Client \_sample.exet** mindkét virtuális gépen a bérlői eszköz minden egyes régióból való szimulálása érdekében. Figyelje meg, hogy minden eszköz a szimulált eszköz régióihoz legközelebb eső bérlői IoT hubhoz van lefoglalva.
+1. Ha a létrehozás sikeres, futtassa a **prov \_ dev \_ Client \_sample.exet ** mindkét virtuális gépen a bérlői eszköz minden egyes régióból való szimulálása érdekében. Figyelje meg, hogy minden eszköz a szimulált eszköz régióihoz legközelebb eső bérlői IoT hubhoz van lefoglalva.
 
     Futtassa a szimulációt:
     ```bash
@@ -398,7 +398,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
 
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy folytatja a jelen cikkben létrehozott erőforrásokkal való munkát, meghagyhatja őket. Ha nem tervezi tovább használni az erőforrást, a következő lépésekkel törölheti a cikkben létrehozott összes erőforrást a szükségtelen költségek elkerülése érdekében.
 
@@ -418,7 +418,7 @@ Az erőforráscsoport törlése név szerint:
 
 4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 - További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 

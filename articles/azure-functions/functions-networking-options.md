@@ -3,12 +3,13 @@ title: Az Azure Functions hálózatkezelési lehetőségei
 description: A Azure Functionsben elérhető összes hálózati beállítás áttekintése.
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385942"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530088"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -71,7 +72,7 @@ Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános cé
 
 További információ: a [Storage-fiókra vonatkozó követelmények](./functions-create-function-app-portal.md#storage-account-requirements).
 
-## <a name="use-key-vault-references"></a>Key Vault referenciák használata
+## <a name="use-key-vault-references"></a>Key Vault-referenciák használata
 
 Azure Key Vault hivatkozásokat használhat a Azure Functions alkalmazásban található Azure Key Vault titkok használatára a kód módosítása nélkül. A Azure Key Vault egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával.
 
@@ -86,7 +87,7 @@ Jelenleg a nem HTTP-trigger függvények a következő két módszer egyikével 
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Prémium csomag virtuális hálózati eseményindítókkal
 
-A Prémium csomag futtatásakor a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **virtuális hálózat triggerének támogatására** vonatkozó beállítás a [Azure Portal](https://portal.azure.com) **konfigurációs**  >  **függvény futtatókörnyezet-beállításai**területen található.
+A Prémium csomag futtatásakor a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **futtatókörnyezet-méretezés figyelése** beállítás a [Azure Portal](https://portal.azure.com) **konfigurációs**  >  **függvény futtatókörnyezetének beállításai**területen található.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 

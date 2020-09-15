@@ -1,8 +1,8 @@
 ---
 title: Különböző igazolási mechanizmusok használata az Azure IoT Hub Device Provisioning Service Client SDK-val
 description: Azure – útmutató a különböző igazolási mechanizmusok használatáról az Azure-beli Device kiépítési szolgáltatás (DPS) ügyféloldali SDK-val
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,16 +10,16 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687209"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531508"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Különböző igazolási mechanizmusok használata a Device Provisioning Service C-hez készült ügyféloldali SDK-jával
 
-Ez a cikk bemutatja, hogyan használhat különböző [igazolási mechanizmusokat](concepts-security.md#attestation-mechanism) a Device Provisioning Service C-hez készült ügyféloldali SDK-jával. Fizikai eszközt vagy szimulátort is használhat. A kiépítési szolgáltatás két igazolásimechanizmus-típus esetében támogatja a hitelesítést: az X.509 és a platformmegbízhatósági modul (TPM) esetében.
+Ez a cikk bemutatja, hogyan használhat különböző [igazolási mechanizmusokat](concepts-service.md#attestation-mechanism) a Device Provisioning Service C-hez készült ügyféloldali SDK-jával. Fizikai eszközt vagy szimulátort is használhat. A kiépítési szolgáltatás két igazolásimechanizmus-típus esetében támogatja a hitelesítést: az X.509 és a platformmegbízhatósági modul (TPM) esetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,11 +29,11 @@ A [szimulált eszköz létrehozását és üzembe helyezését](./quick-create-s
 
 Eszközgyártóként először az egyik támogatott típuson alapuló igazolási mechanizmust kell kiválasztania. A [Device Provisioning Service C-hez készült ügyféloldali SDK-ja](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) jelenleg a következő igazolási mechanizmusokat támogatja: 
 
-- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): A TPM bevett szabvány a legtöbb Windows-alapú eszközplatformhoz, valamint néhány Linux-/Ubuntu-alapú eszközhöz. Eszközgyártóként akkor választhatja ezt az igazolási mechanizmust, ha az eszközökön ezeknek az operációs rendszereknek az egyike fut, és egy bevett szabványt kíván használni. TPM-lapkák esetén csak külön-külön regisztrálhatja az eszközöket a Device Provisioning Service-ben. A TPM-szimulátort használhatja fejlesztési célokra Windows- vagy Linux-alapú fejlesztői gépeken.
+- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): A TPM bevett szabvány a legtöbb Windows-alapú eszközplatformhoz, valamint néhány Linux-/Ubuntu-alapú eszközhöz. Az eszköz gyártója akkor is kiválaszthatja ezt az igazolási mechanizmust, ha az eszközökön futó operációs rendszerek valamelyikét használja, és a rendszer egy meghatározott szabványt keres. TPM-lapkák esetén csak külön-külön regisztrálhatja az eszközöket a Device Provisioning Service-ben. A TPM-szimulátort használhatja fejlesztési célokra Windows- vagy Linux-alapú fejlesztői gépeken.
 
-- [X.509](https://cryptography.io/en/latest/x509/): Az X.509-tanúsítványok tárolhatók a [hardveres biztonsági modul (HSM)](concepts-security.md#hardware-security-module) néven ismert, viszonylag új lapkákon. A Microsoft dolgozik a RIoT- és a DICE-lapkákon, amelyek az X.509-tanúsítványokat használják. Az X.509-lapkákkal kötegelt eszközregisztrációt végezhet a portálon. Ez egyes nem Windows operációs rendszereket is támogat, például az embedOS rendszert. A Device Provisioning Service ügyféloldali SDK-ja támogatja egy X.509-eszközszimulátor használatát fejlesztési célokra. 
+- [X.509](https://cryptography.io/en/latest/x509/): Az X.509-tanúsítványok tárolhatók a [hardveres biztonsági modul (HSM)](concepts-service.md#hardware-security-module) néven ismert, viszonylag új lapkákon. A Microsoft dolgozik a RIoT- és a DICE-lapkákon, amelyek az X.509-tanúsítványokat használják. Az X.509-lapkákkal kötegelt eszközregisztrációt végezhet a portálon. Ez egyes nem Windows operációs rendszereket is támogat, például az embedOS rendszert. A Device Provisioning Service ügyféloldali SDK-ja támogatja egy X.509-eszközszimulátor használatát fejlesztési célokra. 
 
-További információt az IoT Hub Device Provisioning Service [biztonsági](concepts-security.md) és [automatikus regisztrációval kapcsolatos fogalmait](/azure/iot-dps/concepts-auto-provisioning) ismertető témakörben talál.
+További információ: IoT Hub Device Provisioning Service [igazolási mechanizmusok](concepts-service.md#attestation-mechanism).
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Támogatott igazolási mechanizmusok hitelesítésének engedélyezése
 

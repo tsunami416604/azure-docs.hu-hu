@@ -3,12 +3,12 @@ title: Használat elemzése az Azure Application Insights használatával | Micr
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800211"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532103"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -54,7 +54,7 @@ Megtudhatja, hogy mikor használják a felhasználók az alkalmazást, milyen la
 
 A felhasználók és a munkamenetek jelentés az adatait lapok vagy egyéni események alapján szűri, és azokat a tulajdonságok, például a hely, a környezet és a lap alapján szegmentálja. Saját szűrőket is hozzáadhat.
 
-![Felhasználók](./media/usage-overview/users.png)  
+![Képernyőfelvétel: a felhasználók áttekintő lapja egy fiktív vállalat számára.](./media/usage-overview/users.png)  
 
 A jobb oldali elemzések érdekes mintákat mutatnak az adathalmazban.  
 
@@ -71,7 +71,7 @@ Az adatmegőrzés segítségével megismerheti, hogy a felhasználók milyen gya
 - A valós felhasználói adathalmazok alapján alkotott hipotézisek 
 - Annak megállapítása, hogy probléma van-e az adatmegőrzéssel a termékben 
 
-![Megőrzés](./media/usage-overview/retention.png) 
+![Képernyőfelvétel: a megőrzés áttekintő lapja, amely azt mutatja, hogy a felhasználók milyen gyakran térnek vissza az alkalmazás használatára.](./media/usage-overview/retention.png) 
 
 A felső megőrzési vezérlők lehetővé teszik meghatározott események és időtartományok meghatározását a megőrzés kiszámításához. A középső gráf a megadott időtartomány alapján vizuálisan ábrázolja a teljes megőrzési arányt. Az alsó diagram az egyes adatmegőrzési időszakot jelöli. Ez a részletességi szint lehetővé teszi, hogy megtudja, mit csinálnak a felhasználók, és mi befolyásolhatja a visszatérő felhasználók részletesebb részletességét.  
 
@@ -110,7 +110,7 @@ További információ az [Egyéni eseményekről](./api-custom-events-metrics.md
 ### <a name="slice-and-dice-events"></a>Szeletek és kockák eseményei
 
 A felhasználók, a munkamenetek és az események eszközökön egyéni eseményeket adhat meg a felhasználó, az esemény neve és a tulajdonságok alapján.
-![Felhasználók](./media/usage-overview/users.png)  
+![Képernyőfelvétel: a felhasználók áttekintő lapja egy fiktív vállalat számára.](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>A telemetria megtervezése az alkalmazással
 
@@ -172,11 +172,11 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
    - [Tölcsérek](usage-funnels.md)
    - [Megőrzés](usage-retention.md)
-   - [Felhasználókövetés](usage-flows.md)
+   - [Felhasználói folyamatok](usage-flows.md)
    - [Munkafüzetek](../platform/workbooks-overview.md)
    - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
 

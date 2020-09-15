@@ -3,12 +3,12 @@ title: Kvóta hibái
 description: Ismerteti, Hogyan oldhatók fel az erőforrás-kvótával kapcsolatos hibák az erőforrások Azure Resource Manager használatával történő telepítésekor.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007792"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530420"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Erőforráskvótákkal kapcsolatos hibák elhárítása
 
@@ -95,7 +95,7 @@ A kvóta növeléséhez lépjen a portálra, és küldjön egy támogatási prob
 
 1. Válassza az **Előfizetések** lehetőséget.
 
-   ![Előfizetések](./media/error-resource-quota/subscriptions.png)
+   ![A képernyőfelvételen az Azure Portal menüjében a kiválasztott előfizetések láthatók.](./media/error-resource-quota/subscriptions.png)
 
 2. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
 

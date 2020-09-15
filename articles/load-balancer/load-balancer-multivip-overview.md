@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956372"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530828"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
@@ -163,9 +163,10 @@ A lebegőpontos IP-szabály típusa több terheléselosztó-konfigurációs mint
 
 * Több előtér-konfiguráció csak IaaS virtuális gépek esetén támogatott.
 * A lebegőpontos IP-szabállyal az alkalmazásnak a kimenő SNAT-folyamatok elsődleges IP-konfigurációját kell használnia. Ha az alkalmazás a vendég operációs rendszerben a visszacsatolási felületen konfigurált előtérbeli IP-címhez van kötve, az Azure kimenő SNAT nem érhető el a kimenő folyamat újraírásához, és a folyamat meghiúsul.  Tekintse át a [kimenő forgatókönyveket](load-balancer-outbound-connections.md).
+* A belső terheléselosztási forgatókönyvek esetében jelenleg nem támogatott a lebegőpontos IP-cím a másodlagos IP-konfigurációk esetében.
 * A nyilvános IP-címek a számlázásra érvényesek. További információt az [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/) című témakörben talál.
 * Az előfizetés korlátai érvényesek. További információ: [szolgáltatási korlátozások](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) a részletekért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [kimenő kapcsolatokat](load-balancer-outbound-connections.md) , hogy megértse, milyen hatással van több előtér a kimenő kapcsolat viselkedésére.

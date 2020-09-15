@@ -1,25 +1,27 @@
 ---
-title: Örökölt eszközök kiépítése szimmetrikus kulcsok használatával – Azure IoT Hub Device Provisioning Service
-description: A szimmetrikus kulcsok használata a régi eszközök kiépítéséhez az eszköz kiépítési szolgáltatásának (DPS) példányával
+title: Eszközök kiépítése szimmetrikus kulcsokkal – Azure IoT Hub Device Provisioning Service
+description: A szimmetrikus kulcsok használata eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásának (DPS) példányával
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434714"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529400"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Örökölt eszközök kiépítése szimmetrikus kulcsok használatával
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Eszközök kiépítése szimmetrikus kulcsú beléptetési csoportok használatával
 
-Számos régi eszközzel kapcsolatos gyakori probléma, hogy gyakran van olyan identitásuk, amely egyetlen információból áll. Ezek az azonosító adatok általában MAC-címek vagy sorozatszámok. Az örökölt eszközökhöz nem tartozhat tanúsítvány, TPM vagy más olyan biztonsági funkció, amely az eszköz biztonságos azonosítására szolgál. Az IoT hub eszköz-kiépítési szolgáltatása magában foglalja a szimmetrikus kulcs igazolását. A szimmetrikus kulcs igazolásával azonosítható egy eszköz, például a MAC-címe vagy sorozatszáma alapján.
+Ez a cikk bemutatja, hogyan lehet biztonságosan kiépíteni több szimmetrikus kulcsú eszközt egyetlen IoT Hub egy regisztrációs csoport használatával.
 
-Ha egyszerűen telepítheti a [hardveres biztonsági modult (HSM)](concepts-security.md#hardware-security-module) és a tanúsítványt, akkor ez jobb megoldás lehet az eszközök azonosításához és üzembe helyezéséhez. Mivel ez a megközelítés lehetővé teszi, hogy megkerüljék az összes eszközre telepített kód frissítését, és nem rendelkezik az eszköz lemezképében beágyazott titkos kulccsal.
+Egyes eszközökhöz nem tartozhat tanúsítvány, TPM vagy más olyan biztonsági funkció, amely az eszköz biztonságos azonosítására szolgál. A Device kiépítési szolgáltatás magában foglalja a [szimmetrikus kulcs igazolását](concepts-symmetric-key-attestation.md). A szimmetrikus kulcs igazolása az eszközök azonosítására szolgál olyan egyedi információk alapján, mint például a MAC-címe vagy a sorozatszám.
+
+Ha egyszerűen telepítheti a [hardveres biztonsági modult (HSM)](concepts-service.md#hardware-security-module) és a tanúsítványt, akkor ez jobb megoldás lehet az eszközök azonosításához és üzembe helyezéséhez. Mivel ez a megközelítés lehetővé teszi, hogy megkerüljék az összes eszközre telepített kód frissítését, és nem rendelkezik az eszköz lemezképében beágyazott titkos kulccsal.
 
 Ez a cikk azt feltételezi, hogy egyik HSM vagy tanúsítvány sem életképes megoldás. Azonban feltételezhető, hogy az eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásával valamilyen módon frissítheti az eszköz kódját. 
 
@@ -47,7 +49,7 @@ A cikkben bemutatott kód a gyors üzembe helyezési ponttal megegyező mintáza
 
 A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
@@ -73,7 +75,7 @@ Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimu
 
     Ez a művelet várhatóan több percig is eltarthat.
 
-4. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. Futtassa a következő parancsokat a `azure-iot-sdk-c` címtárból:
+4. Hozzon létre egy `cmake` alkönyvtárat a git-tárház gyökérkönyvtárában, és navigáljon a mappához. Futtassa a következő parancsokat a `azure-iot-sdk-c` címtárból:
 
     ```cmd/sh
     mkdir cmake
@@ -147,7 +149,8 @@ Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvén
 
 Az eszköz kulcsának létrehozásához használja a csoport főkulcsát az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC](https://wikipedia.org/wiki/HMAC) számításához, és Base64 formátumra alakítsa át az eredményt.
 
-Ne foglalja bele a csoport főkulcsát az eszköz kódjába.
+> [!WARNING]
+> Az eszköz kódjának csak az adott eszköz származtatott eszköz kulcsát kell tartalmaznia. Ne foglalja bele a csoport főkulcsát az eszköz kódjába. A feltört főkulcs veszélyeztetheti az általa hitelesített összes eszköz biztonságát.
 
 
 #### <a name="linux-workstations"></a>Linux-munkaállomások
@@ -283,7 +286,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 * [Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára](quick-create-simulated-device-symm-key.md)

@@ -1,18 +1,18 @@
 ---
 title: Port ütközés a szolgáltatások Azure HDInsight való indításakor
-description: Hibaelhárítási lépések és lehetséges megoldások az Azure HDInsight-fürtökkel való interakció során felmerülő problémákhoz.
+description: Hibaelhárítási lépések és lehetséges megoldások a portok ütközésével kapcsolatban az Azure HDInsight-fürtökkel való interakció során.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 4cb0d464a82d8da0a09f5391eb1d06dfacd84290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d39f31e9d52359d0c91317280a7f8db06c1c1b0
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76776221"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530964"
 ---
 # <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>Forgatókönyv: a port ütközik az Azure HDInsight szolgáltatásainak indításakor
 
@@ -26,7 +26,7 @@ Egy szolgáltatás nem indul el.
 
 A port ütközése létezik.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 ### <a name="method-1"></a>1. módszer
 
@@ -44,7 +44,7 @@ Ezután indítsa el a szolgáltatást.
 
 Indítsa újra a csomópontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

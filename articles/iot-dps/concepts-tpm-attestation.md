@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975278"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531593"
 ---
 # <a name="tpm-attestation"></a>TPM-igazolás
 
 A IoT Hub Device Provisioning Service egy olyan IoT Hub segítő szolgáltatás, amellyel a nulla érintéses eszköz kiépíthető a megadott IoT hubhoz. A Device kiépítési szolgáltatással több millió eszköz biztonságos módon is kiépíthető.
 
-Ez a cikk az identitás-igazolási folyamatot ismerteti [TPM](./concepts-device.md)használata esetén. A TPM a platformmegbízhatósági modul, és a hardveres biztonsági modul (HSM) típusa. Ez a cikk feltételezi, hogy diszkrét, belső vezérlőprogramot vagy integrált TPM-t használ. A szoftveresen emulált TPM a prototípus-készítéshez és teszteléshez alkalmasak, de nem biztosítják ugyanazt a biztonsági szintet, mint a diszkrét, a belső vezérlőprogram vagy az integrált TPM. A szoftveres TPM nem ajánlott éles környezetben használni. A TPM típusaival kapcsolatos további információkért tekintse [meg a TPM rövid bemutatása](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)című témakört.
+Ez a cikk platformmegbízhatósági modul (TPM) használatakor ismerteti az identitás igazolási folyamatát. A TPM a hardveres biztonsági modul (HSM) típusa. Ez a cikk feltételezi, hogy diszkrét, belső vezérlőprogramot vagy integrált TPM-t használ. A szoftveresen emulált TPM a prototípus-készítéshez és teszteléshez alkalmasak, de nem biztosítják ugyanazt a biztonsági szintet, mint a diszkrét, a belső vezérlőprogram vagy az integrált TPM. A szoftveres TPM nem ajánlott éles környezetben használni. A TPM típusaival kapcsolatos további információkért tekintse [meg a TPM rövid bemutatása](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)című témakört.
 
 Ez a cikk csak azokra az eszközökre vonatkozik, amelyek a TPM 2,0-es verziójú HMAC és azok hátirati kulcsaival rendelkeznek. A hitelesítéshez X. 509 tanúsítványokat használó eszközök esetében nem. A TPM a Trusted Computing Group iparági szintű, ISO szabványa, és a TPM a [teljes tpm 2,0 specifikációban](https://trustedcomputinggroup.org/tpm-library-specification/) , illetve az [ISO/IEC 11889 specifikációban](https://www.iso.org/standard/66510.html)is olvasható. A cikk azt is feltételezi, hogy ismeri a nyilvános és a titkos kulcs párokat, valamint azt, hogyan használják őket a titkosításhoz.
 
@@ -63,9 +63,9 @@ Az eszköz ezután aláírhat egy SAS-jogkivonatot a visszafejtett alkalom haszn
 
 ![Az eszköz újra létrehozza a kapcsolatot az eszköz kiépítési szolgáltatásával az EK tulajdonjogának ellenőrzéséhez](./media/concepts-tpm-attestation/step-three-validation.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az eszköz most csatlakozik IoT Hubhoz, és biztonságban van, hogy az eszközök kulcsai biztonságosan legyenek tárolva. Most, hogy tudja, hogy az eszköz kiépítési szolgáltatása hogyan biztonságos módon ellenőrzi az eszköz azonosítóját a TPM használatával, tekintse meg a következő cikkeket további információért:
 
-* [Ismerje meg az automatikus kiépítés összes fogalmát](./concepts-auto-provisioning.md)
+* [Ismerje meg a kiépítés fogalmait](about-iot-dps.md#provisioning-process)
 * Az [automatikus kiépítés használatának első lépései](./quick-setup-auto-provision.md) az SDK-k használatával a folyamat kezeléséhez.

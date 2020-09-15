@@ -6,29 +6,29 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: f522812f762b55ec61794101e6cd1ec15fb171ca
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/14/2020
+ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212105"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531059"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A leképezési adatfolyamban számos átalakítási tulajdonságot kifejezésként kell megadni. Ezek a kifejezések olyan oszlop-értékekkel, paraméterekkel, függvényekkel, operátorokkal és literálokból állnak, amelyek futási időben kiértékelik a Spark adattípust.
+A leképezési adatfolyamban számos átalakítási tulajdonságot kifejezésként kell megadni. Ezek a kifejezések olyan oszlop-értékekkel, paraméterekkel, függvényekkel, operátorokkal és literálokból állnak, amelyek futási időben kiértékelik a Spark adattípust. Az adatforgalom leképezése egy dedikált felülettel rendelkezik, amelynek célja, hogy segítse Önt a **kifejezés-szerkesztő**elnevezésű kifejezések létrehozásában. Az  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) -kódok kiemeléséhez, a szintaxis ellenőrzéséhez és az autocomplete értékhez való kihasználása lehetővé teszi, hogy a Kifejezésszerkesztő megkönnyítse az adatforgalom kiépítését. Ez a cikk azt ismerteti, hogy miként használható a Kifejezésszerkesztő az üzleti logikájának hatékony felépítéséhez.
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
+![Expression Builder](media/data-flow/expresion-builder.png "Kifejezésszerkesztő")
 
 ## <a name="open-expression-builder"></a>Expression Builder megnyitása
 
-A Azure Data Factory felhasználói élményben a kifejezés szerkesztési felülete Expression Builder néven ismert. A kifejezés logikájának megadásakor Data Factory az [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) -kód befejezését használja a kiemeléshez, a szintaxis ellenőrzéséhez és az autocomplete utasításhoz.
+A Kifejezésszerkesztő megnyitásához több belépési pont is van. Ezek mind függenek az adatfolyam-átalakítás adott környezetének. A leggyakoribb használati eset olyan átalakításokban [van, mint](data-flow-aggregate.md) a [származtatott oszlop](data-flow-derived-column.md) , és a felhasználók az adatáramlás kifejezésének nyelve alapján hoznak létre vagy frissíthetnek oszlopokat. A Kifejezésszerkesztő megnyitható úgy, hogy kiválasztja az oszlopok listájának **megnyitásához a kifejezés-szerkesztőt** . Az oszlop környezetére is kattinthat, és közvetlenül a kifejezéshez is megnyithatja a Kifejezésszerkesztő kifejezést.
 
-![Expression Builder](media/data-flow/xpb1.png "Kifejezésszerkesztő")
+![Nyitó Expression Builder származtatása](media/data-flow/open-expression-builder-derive.png "Nyitó Expression Builder származtatása")
 
-Az átalakításokban, mint például a származtatott oszlop és a szűrő, ahol a kifejezések kötelezőek, a Kifejezésszerkesztő megnyitásához válassza a kék kifejezés mezőt.
+Bizonyos átalakítások, mint például a [szűrő](data-flow-filter.md), a kék kifejezés szövegmezőre kattintva megnyílik a Kifejezésszerkesztő. 
 
 ![Kék kifejezés mező](media/data-flow/expressionbox.png "Kifejezésszerkesztő")
 
@@ -40,29 +40,52 @@ Azokban az esetekben, amikor egy kifejezés vagy literális érték érvényes b
 
 ![Dinamikus tartalom hozzáadása lehetőség](media/data-flow/add-dynamic-content.png "Kifejezésszerkesztő")
 
-## <a name="expression-language-reference"></a>Kifejezés nyelvi referenciája
+## <a name="expression-elements"></a>Kifejezés elemei
 
-Az adatfolyamatok leképezése beépített függvényekkel és operátorokkal rendelkezik, amelyek kifejezésekben használhatók. Az elérhető függvények listáját lásd: [Expression functions a leképezési adatfolyamban](data-flow-expression-functions.md).
+Az adatfolyamatok leképezése során a kifejezések oszlop-, paraméterek, függvények, helyi változók, operátorok és literálok állhatnak. A kifejezéseknek egy Spark-adattípusra kell kiértékelniük, például string, Boolean vagy Integer értékre.
 
-## <a name="column-names-with-special-characters"></a>Oszlopok nevei speciális karakterekkel
+![Kifejezés elemei](media/data-flow/expression-elements.png "Kifejezés elemei")
+
+### <a name="functions"></a>Functions
+
+Az adatfolyamatok leképezése beépített függvényekkel és operátorokkal rendelkezik, amelyek kifejezésekben használhatók. Az elérhető függvények listáját a [leképezési adatfolyam nyelvi referenciája](data-flow-expression-functions.md)című témakörben tekintheti meg.
+
+#### <a name="address-array-indexes"></a>Címterület-indexek
+
+Ha olyan oszlopokat vagy függvényeket ad meg, amelyek tömb típusokat adnak vissza, a szögletes zárójelek ([]) segítségével férnek hozzá egy adott elemhez. Ha az index nem létezik, a kifejezés a NULL értéket adja vissza.
+
+![Expression Builder-tömb](media/data-flow/expression-array.png "Kifejezési adatelőnézet")
+
+> [!IMPORTANT]
+> Az adatfolyamatok leképezése során a tömbök egy-alapúak, ami az első elemre hivatkozik az index alapján. Például a myArray [1] egy "myArray" nevű tömb első elemét fogja elérni.
+
+### <a name="input-schema"></a>Bemeneti séma
+
+Ha az adatfolyam bármely forrásában definiált sémát használ, az oszlopokat név szerint is hivatkozhat számos kifejezésben. Ha séma-eltolódást használ, explicit módon hivatkozhat oszlopokra az `byName()` vagy `byNames()` függvények vagy egyezés használatával.
+
+#### <a name="column-names-with-special-characters"></a>Oszlopok nevei speciális karakterekkel
 
 Ha speciális karaktereket vagy szóközöket tartalmazó oszlopnevek vannak, a nevet kapcsos zárójelekkel kell megadnia, hogy azok egy kifejezésben legyenek hivatkozva.
 
 ```{[dbo].this_is my complex name$$$}```
 
+### <a name="parameters"></a>Paraméterek
+
+A paraméterek olyan értékek, amelyeket a rendszer a folyamat futási idején átadott adatfolyamként továbbít. Egy paraméterre való hivatkozáshoz kattintson a paraméterre a **kifejezés elemek** nézetében, vagy hivatkozzon a neve előtt egy Dollar-jelre. Egy Parameter1 nevű paramétert például a következőre hivatkozhat: `$parameter1` . További információ: parameterizing- [leképezési adatforgalom](parameters-data-flow.md).
+
+### <a name="locals"></a>Figyelőpontjaival
+
+Ha több oszlop között osztja meg a logikát, vagy szeretné felosztják a logikát, létrehozhat egy helyi column\. belül Ha egy helyi hivatkozásra szeretne hivatkozni, kattintson a helyi **elemre a kifejezés elemei** nézetben, vagy hivatkozzon rá a neve előtt található kettőspontra. Például egy Helyi1 nevű helyi hivatkozásra a következő hivatkozik: `:local1` . További információ a helyiekről a [származtatott oszlop dokumentációjában olvasható](data-flow-derived-column.md#locals).
+
 ## <a name="preview-expression-results"></a>Előnézet kifejezés eredményei
 
-Ha a [hibakeresési mód](concepts-data-flow-debug-mode.md) be van kapcsolva, az élő Spark-fürt használatával megtekintheti a kifejezés kiértékelésének folyamatát. A logikájának összeállítása során valós időben hibakeresést végezhet a kifejezésben. 
+Ha a [hibakeresési mód](concepts-data-flow-debug-mode.md) be van kapcsolva, interaktív módon használhatja a hibakeresési fürtöt, hogy megtekintse a kifejezés kiértékelését. Válassza az adatelőnézet elem melletti **frissítés** lehetőséget az adatelőnézet eredményeinek frissítéséhez. Az egyes sorok kimenetét láthatja a bemeneti oszlopokban.
 
-![Folyamatban lévő előzetes verzió](media/data-flow/exp4b.png "Kifejezési adatelőnézet")
-
-A **frissítés** gombra kattintva frissítheti a kifejezés eredményét a forrás élő mintáján.
-
-![Frissítés gomb](media/data-flow/exp5.png "Kifejezési adatelőnézet")
+![Folyamatban lévő előzetes verzió](media/data-flow/preview-expression.png "Kifejezési adatelőnézet")
 
 ## <a name="string-interpolation"></a>Karakterlánc-interpoláció
 
-Az idézőjelek használatával literális karakterlánc-szöveget és kifejezéseket is lehet csatolni. Kifejezési függvények, oszlopok és paraméterek is megadhatók. A karakterlánc-interpolációval elkerülhető a karakterlánc-Összefűzés nagy mértékű használata, ha paraméterek szerepelnek a lekérdezési karakterláncokban. A kifejezés szintaxisának használatához kapcsos zárójelek közé kell tenni,
+A kifejezési elemeket használó hosszú karakterláncok létrehozásakor a karakterlánc-interpolációval egyszerűen hozhat létre összetett karakterlánc-logikát. A karakterlánc-interpoláció elkerüli a karakterláncok összefűzésének széles körű használatát, ha paraméterek szerepelnek a lekérdezési karakterláncokban. Az idézőjelek között idézőjelek közé kell foglalni a literális karakterláncot a kifejezésekkel együtt. Kifejezési függvények, oszlopok és paraméterek is megadhatók. A kifejezés szintaxisának használatához kapcsos zárójelek közé kell tenni,
 
 Néhány példa a karakterlánc-interpolációra:
 
@@ -72,7 +95,9 @@ Néhány példa a karakterlánc-interpolációra:
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
-## <a name="comment-expressions"></a>Megjegyzés kifejezései
+* ```"{:playerName} is a {:playerRating} player"```
+
+## <a name="commenting-expressions"></a>Megjegyzések kifejezései
 
 Megjegyzéseket fűzhet a kifejezésekhez egy egysoros és többsoros Megjegyzés szintaxisának használatával.
 
@@ -81,11 +106,11 @@ Az alábbi példák érvényes megjegyzéseket tartalmaznak:
 * ```/* This is my comment */```
 
 * ```/* This is a```
-*   ```multi-line comment */```
+* ```multi-line comment */```
 
 Ha a kifejezés tetején egy megjegyzést helyez el, az átalakítás szövegmezőben megjelenik az átalakítási kifejezések dokumentálása.
 
-![Megjegyzés az átalakítás szövegmezőben](media/data-flow/comments2.png "Megjegyzések")
+![Megjegyzés az átalakítás szövegmezőben](media/data-flow/comment-expression.png "Megjegyzések")
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 
@@ -103,13 +128,9 @@ Dupla perjelet használó példa:
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="address-array-indexes"></a>Címterület-indexek
-
-A tömböket visszaadó Expression függvények a zárójelek ([]) használatával kezelik a visszaadott tömb objektumain belüli indexeket. A tömb alapja az is.
-
-![Expression Builder-tömb](media/data-flow/expb2.png "Kifejezési adatelőnézet")
-
 ## <a name="keyboard-shortcuts"></a>Billentyűparancsok
+
+Az alábbi lista a Expression Builder-ben elérhető parancsikonokat tartalmazza. Kifejezések létrehozásakor a legtöbb IntelliSense-parancsikon elérhető.
 
 * CTRL + K CTRL + C: Megjegyzés teljes sor.
 * CTRL + K CTRL + U: Megjegyzés visszatartása.
@@ -118,7 +139,9 @@ A tömböket visszaadó Expression függvények a zárójelek ([]) használatáv
 * ALT + fel nyíl gomb: az aktuális sor feljebb helyezése.
 * CTRL + SZÓKÖZ: környezetfüggő súgó megjelenítése.
 
-## <a name="convert-to-dates-or-timestamps"></a>Konvertálás dátumokra vagy időbélyegekre
+## <a name="commonly-used-expressions"></a>Gyakran használt kifejezések
+
+### <a name="convert-to-dates-or-timestamps"></a>Konvertálás dátumokra vagy időbélyegekre
 
 Ha karakterlánc-konstansokat szeretne szerepeltetni az időbélyeg-kimenetben, csomagolja be a konverzióját ```toString()``` .
 
@@ -130,7 +153,7 @@ Az ezredmásodpercek időpontról dátumra vagy időbélyegre való konvertálá
 
 Az előző kifejezés végén lévő "l" záró érték hosszú típusra, beágyazott szintaxisként való átalakítást jelent.
 
-## <a name="find-time-from-epoch-or-unix-time"></a>Idő megkeresése az EPOCH vagy a Unix idő alapján
+### <a name="find-time-from-epoch-or-unix-time"></a>Idő megkeresése az EPOCH vagy a Unix idő alapján
 
 toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' éééé-hh-nn óó: PP: mm. ÉER) *) * 1000
 

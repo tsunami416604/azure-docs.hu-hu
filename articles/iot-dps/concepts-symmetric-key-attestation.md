@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020337"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531559"
 ---
 # <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
 
 Ez a cikk az identitás-igazolási folyamatot ismerteti, amikor szimmetrikus kulcsokat használ az eszköz kiépítési szolgáltatásához. 
 
-A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz kiépítési szolgáltatási példánnyal való hitelesítésére. Ez az igazolási módszer a "Hello World" felhasználói élményt jelöli olyan fejlesztők számára, akik még nem ismerik az eszközök üzembe helyezését, vagy nincsenek szigorú biztonsági követelmények. Az eszköz tanúsítványa [TPM](concepts-tpm-attestation.md) vagy [X. 509 tanúsítvány](concepts-security.md#x509-certificates) használatával biztonságosabb, és szigorúbb biztonsági követelményekhez kell használni őket.
+A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz kiépítési szolgáltatási példánnyal való hitelesítésére. Ez az igazolási módszer a "Hello World" felhasználói élményt jelöli olyan fejlesztők számára, akik még nem ismerik az eszközök üzembe helyezését, vagy nincsenek szigorú biztonsági követelmények. Az eszköz tanúsítványa [TPM](concepts-tpm-attestation.md) vagy [X. 509 tanúsítvány](concepts-x509-attestation.md) használatával biztonságosabb, és szigorúbb biztonsági követelményekhez kell használni őket.
 
 A szimmetrikus kulcsok beléptetése nagyszerű módszert kínál a régi eszközök számára, korlátozott biztonsági funkciókkal a felhőbe az Azure IoT keresztül. Az örökölt eszközökkel történő szimmetrikus kulcs-igazolással kapcsolatos további információkért lásd: [a szimmetrikus kulcsok használata örökölt eszközökkel](how-to-legacy-device-symm-key.md).
 
@@ -109,12 +109,12 @@ Vegye figyelembe a következő diagramot, amely egy gyári eszköz kulcsait jele
 
 Az egyes eszközök identitását a gyári regisztrációs azonosító és a származtatott eszköz kulcsa képviseli. Az eszköz kulcsát a rendszer soha nem másolja egy másik helyre, és a csoport kulcsát soha nem tárolja egy eszköz.
 
-Ha az eszköz kulcsai nincsenek telepítve a gyárban, a [hardveres biztonsági modul HSM](concepts-security.md#hardware-security-module) -et kell használnia az eszköz identitásának biztonságos tárolásához.
+Ha az eszköz kulcsai nincsenek telepítve a gyárban, a [hardveres biztonsági modul HSM](concepts-service.md#hardware-security-module) -et kell használnia az eszköz identitásának biztonságos tárolásához.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette a szimmetrikus kulcs igazolását, tekintse meg az alábbi cikkeket:
 
 * [Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára](quick-create-simulated-device-symm-key.md)
-* [Ismerje meg az automatikus kiépítés fogalmait](./concepts-auto-provisioning.md)
+* [Ismerje meg a kiépítés fogalmait](about-iot-dps.md#provisioning-process)
 * [Az automatikus kiépítés használatának első lépései](./quick-setup-auto-provision.md) 

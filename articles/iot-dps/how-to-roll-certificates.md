@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299263"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531406"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509 eszközök tanúsítványainak behelyezése
 
@@ -20,14 +20,14 @@ A IoT-megoldás életciklusa során be kell állítania a tanúsítványokat. A 
 
 A működés közbeni tanúsítványok az ajánlott biztonsági eljárások, amelyekkel a rendszer biztonságban is biztonságossá tehető. A [szabálysértési módszer elvállalásának](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)részeként a Microsoft azt javasolja, hogy a megelőző intézkedésekkel párhuzamosan legyen szükség reaktív biztonsági folyamatokra. Az eszköz tanúsítványait a biztonsági folyamatok részeként kell szerepeltetni. A tanúsítványok bevezetésének gyakorisága a megoldás biztonsági igényeitől függ. A fokozottan bizalmas adatokat tartalmazó megoldásokkal rendelkező ügyfelek napi rendszerességgel lefoglalhatják a tanúsítványokat, míg mások a tanúsítványokat minden pár évben elérhetik.
 
-A működés közbeni eszközök tanúsítványainak az eszközön és az IoT központban tárolt tanúsítvány frissítését is magukban foglalják. Ezt követően az eszköz kiépítheti saját magát az IoT hub-ban az eszköz kiépítési szolgáltatásával való normál [automatikus kiépítés](concepts-auto-provisioning.md) használatával.
+A működés közbeni eszközök tanúsítványainak az eszközön és az IoT központban tárolt tanúsítvány frissítését is magukban foglalják. Ezt követően az eszköz [kiépítheti](about-iot-dps.md#provisioning-process) magát az IoT hub használatával a normál kiépítéssel az eszköz kiépítési szolgáltatásával (DPS).
 
 
 ## <a name="obtain-new-certificates"></a>Új tanúsítványok beszerzése
 
 Számos módon szerezhet be új tanúsítványokat a IoT-eszközökhöz. Ezek közé tartozik az eszköz gyárból származó tanúsítványok beszerzése, a saját tanúsítványok generálása, valamint a tanúsítványok létrehozásával kapcsolatos harmadik fél felügyelete. 
 
-A tanúsítványokat a rendszer aláírja egymással, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványból egy [levélbeli tanúsítványra](concepts-security.md#end-entity-leaf-certificate)Bízzon. Az aláíró tanúsítvány a levél tanúsítványának a megbízhatósági lánc végén történő aláírásához használt tanúsítvány. Az aláíró tanúsítvány lehet legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy egy köztes tanúsítvány a megbízhatósági láncban. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
+A tanúsítványokat a rendszer aláírja egymással, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványból egy [levélbeli tanúsítványra](concepts-x509-attestation.md#end-entity-leaf-certificate)Bízzon. Az aláíró tanúsítvány a levél tanúsítványának a megbízhatósági lánc végén történő aláírásához használt tanúsítvány. Az aláíró tanúsítvány lehet legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy egy köztes tanúsítvány a megbízhatósági láncban. További információ: [X. 509 tanúsítványok](concepts-x509-attestation.md#x509-certificates).
  
 Az aláíró tanúsítvány két különböző módon szerezhető be. Az éles rendszerekhez javasolt első módszer az, ha az aláíró tanúsítványt egy főtanúsítvány-szolgáltatótól (CA) vásárolja meg. Így a láncok biztonsága egy megbízható forrásig megtörténik. 
 
@@ -36,7 +36,7 @@ A második módszer a saját X. 509-tanúsítványok létrehozása egy olyan esz
 
 ## <a name="roll-the-certificate-on-the-device"></a>A tanúsítvány behelyezése az eszközön
 
-Az eszközön lévő tanúsítványokat mindig biztonságos helyen kell tárolni, mint például a [hardveres biztonsági modul (HSM)](concepts-device.md#hardware-security-module). Az eszközök tanúsítványainak bekapcsolásának módja attól függ, hogyan lettek létrehozva és telepítve az eszközökre az első helyen. 
+Az eszközön lévő tanúsítványokat mindig biztonságos helyen kell tárolni, mint például a [hardveres biztonsági modul (HSM)](concepts-service.md#hardware-security-module). Az eszközök tanúsítványainak bekapcsolásának módja attól függ, hogyan lettek létrehozva és telepítve az eszközökre az első helyen. 
 
 Ha a tanúsítványait egy harmadik féltől kapta, meg kell vizsgálnia, hogyan használják a tanúsítványokat. A folyamat belefoglalható a Megállapodásba, vagy lehet egy különálló szolgáltatás is. 
 
@@ -75,7 +75,7 @@ Ha a tanúsítványokat biztonsági szabálysértésre válaszul végzi, a köve
 
     Ezeket a lépéseket az elsődleges és a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő sérül.
 
-    ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Biztonsági szabálysértéssel rendelkező egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. Ha a feltört tanúsítvány el lett távolítva a kiépítési szolgáltatásból, a tanúsítvány továbbra is felhasználható az IoT hub-kapcsolat létesítésére, amennyiben az eszköz regisztrálása ott létezik. A következő két módszer közül választhat: 
 
@@ -96,7 +96,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 
-    ![Egyéni regisztrációk kezelése a másodlagos tanúsítvány használatával](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![Egyéni regisztrációk kezelése a másodlagos tanúsítvány lejáratának használatával](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. Később, amikor az elsődleges tanúsítvány lejárt, térjen vissza, és törölje az elsődleges tanúsítványt az **aktuális tanúsítvány törlése** gombra kattintva.
 
@@ -118,7 +118,7 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 5. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Mentés** gombra. 
 
-    ![Az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![A feltört tanúsítványhoz tartozó új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. Ha a feltört tanúsítvány el lett távolítva a kiépítési szolgáltatásból, a tanúsítvány továbbra is használható az IoT hub eszköz-kapcsolatainak használatára, amíg az eszköz regisztrálása ott létezik. A következő két módszer közül választhat: 
 
@@ -136,9 +136,9 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 2. Kattintson a **köztes tanúsítvány**elemre, és **törölje az aktuális tanúsítványt**. Kattintson a mappa ikonra, és navigáljon a beléptetési csoportba feltöltendő új köztes tanúsítványhoz. Ha elkészült, kattintson a **Mentés** gombra. Ezeket a lépéseket mind az elsődleges, mind a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő sérül.
 
-    Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
+    Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-x509-attestation.md#x509-certificates).
 
-    ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![A feltört intermedierek egyéni regisztrációinak kezelése](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. Ha a feltört tanúsítvány el lett távolítva a kiépítési szolgáltatásból, a tanúsítvány továbbra is használható az IoT hub eszköz-kapcsolatainak használatára, amíg az eszköz regisztrálása ott létezik. A következő két módszer közül választhat: 
@@ -164,7 +164,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 3. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurálása területen. Ezután kattintson a **Mentés** gombra. 
 
-    ![Az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Válassza ki az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a lejárathoz](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. Később, amikor az elsődleges tanúsítvány lejárt, kattintson az eszköz kiépítési szolgáltatási példányának **tanúsítványok** fülére. Kattintson a lejárt tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, majd kattintson **az OK**gombra.
 
@@ -179,9 +179,9 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 
-    Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
+    Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-x509-attestation.md#x509-certificates).
 
-   ![Egyéni regisztrációk kezelése a másodlagos tanúsítvány használatával](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![Beléptetési csoportok kezelése a másodlagos tanúsítvány lejáratával](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. Később, amikor az elsődleges tanúsítvány lejárt, térjen vissza, és törölje az elsődleges tanúsítványt az **aktuális tanúsítvány törlése** gombra kattintva.
 
@@ -208,6 +208,6 @@ Ha egy tanúsítvány egy letiltott beléptetési bejegyzés részeként szerepe
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha többet szeretne megtudni az eszköz kiépítési szolgáltatásában található X. 509 tanúsítványokról, tekintse meg a következőt: [Biztonság](concepts-security.md) 
+- Ha többet szeretne megtudni az eszköz kiépítési szolgáltatásában található X. 509 tanúsítványokról, tekintse meg az [x. 509](concepts-x509-attestation.md) tanúsítványok igazolása című témakört. 
 - Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványoknak az Azure IoT Hub Device Provisioning Service használatával történő igazolásával kapcsolatos további információkért lásd: [tanúsítványok ellenőrzése](how-to-verify-certificates.md)
 - Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.

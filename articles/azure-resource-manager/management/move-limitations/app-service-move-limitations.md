@@ -3,12 +3,12 @@ title: Azure App Service erőforrások áthelyezése
 description: A Azure Resource Manager használatával áthelyezheti App Service erőforrásait egy új erőforráscsoporthoz vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042057"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531372"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Útmutató a App Service-erőforrások áthelyezéséhez
 
@@ -42,7 +42,7 @@ A webalkalmazás áthelyezéséhez válassza a javasolt lépések lehetőséget.
 
 Az erőforrások áthelyezése előtt el kell végeznie az ajánlott műveleteket. Az információ tartalmazza a webalkalmazás eredeti erőforrás-csoportját.
 
-![Javaslatok](./media/app-service-move-limitations/recommendations.png)
+![A képernyőfelvételen a Microsoft dot web-erőforrások áthelyezésének javasolt lépései láthatók.](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Támogatás áthelyezése
 
@@ -53,6 +53,6 @@ A következő témakörben megtudhatja, hogy mely App Service erőforrásokat le
 - [Microsoft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
 - [Microsoft. Web](../move-support-resources.md#microsoftweb)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../move-resource-group-and-subscription.md).

@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973441"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530862"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok bizonyítása az eszköz kiépítési szolgáltatásával
 
@@ -23,7 +23,7 @@ A birtokukban lévő igazolás a következő lépéseket foglalja magában:
 2. Hozzon létre egy X. 509 ellenőrző tanúsítványt az ellenőrző kóddal a tulajdonosként, és írja alá a tanúsítványt az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz tartozó titkos kulccsal.
 3. Töltse fel az aláírt ellenőrző tanúsítványt a szolgáltatásba. A szolgáltatás érvényesíti az ellenőrző tanúsítványt a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nyilvános részével, amely igazolja, hogy Ön rendelkezik a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány titkos kulcsával.
 
-A hitelesített tanúsítványok fontos szerepet játszanak a beléptetési csoportok használatakor. A tanúsítvány tulajdonjogának ellenőrzése további biztonsági réteget biztosít annak biztosításához, hogy a tanúsítvány feltöltője a tanúsítvány titkos kulcsának birtokában legyen. Az ellenőrzés megakadályozza, hogy egy rosszindulatú szereplő megszippantsa a forgalmat egy köztes tanúsítvány kinyerésével, és ezzel a tanúsítvánnyal hozzon létre egy regisztrációs csoportot a saját kiépítési szolgáltatásában, és hatékonyan eltérítse az eszközöket. Ha egy tanúsítványlánc tulajdonosát vagy köztes tanúsítványát igazolja, a rendszer igazolja, hogy rendelkezik a regisztrációs csoport részeként regisztrálni kívánt eszközökhöz tartozó levél-tanúsítványok létrehozásához szükséges engedéllyel. Emiatt a beléptetési csoportban konfigurált legfelső szintű vagy köztes tanúsítványnak hitelesített tanúsítványnak kell lennie, vagy az eszköz által a szolgáltatással végzett hitelesítés során megjelenő ellenőrzött tanúsítványnak kell lennie. A regisztrációs csoportokkal kapcsolatos további információkért lásd: [x. 509 tanúsítványok](concepts-security.md#x509-certificates) és [az eszközök hozzáférésének szabályozása a kiépítési szolgáltatáshoz x. 509 tanúsítvánnyal](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+A hitelesített tanúsítványok fontos szerepet játszanak a beléptetési csoportok használatakor. A tanúsítvány tulajdonjogának ellenőrzése további biztonsági réteget biztosít annak biztosításához, hogy a tanúsítvány feltöltője a tanúsítvány titkos kulcsának birtokában legyen. Az ellenőrzés megakadályozza, hogy egy rosszindulatú szereplő megszippantsa a forgalmat egy köztes tanúsítvány kinyerésével, és ezzel a tanúsítvánnyal hozzon létre egy regisztrációs csoportot a saját kiépítési szolgáltatásában, és hatékonyan eltérítse az eszközöket. Ha egy tanúsítványlánc tulajdonosát vagy köztes tanúsítványát igazolja, a rendszer igazolja, hogy rendelkezik a regisztrációs csoport részeként regisztrálni kívánt eszközökhöz tartozó levél-tanúsítványok létrehozásához szükséges engedéllyel. Emiatt a beléptetési csoportban konfigurált legfelső szintű vagy köztes tanúsítványnak hitelesített tanúsítványnak kell lennie, vagy az eszköz által a szolgáltatással végzett hitelesítés során megjelenő ellenőrzött tanúsítványnak kell lennie. Az X. 509 tanúsítvány igazolásával kapcsolatos további információkért lásd: [x. 509 tanúsítványok](concepts-x509-attestation.md) és [az eszközök hozzáférésének szabályozása a kiépítési szolgáltatáshoz x. 509 tanúsítvánnyal](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Egy X. 509 tanúsítvány nyilvános részének regisztrálása és egy ellenőrző kód beszerzése
 
@@ -69,7 +69,7 @@ A dokumentációban és az SDK-ban megadott PowerShell-és bash-parancsfájlok [
 
    ![Tanúsítvány-ellenőrzés feltöltése](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.
 - Ha szeretné megtudni, hogyan használhatja a szolgáltatás SDK-kat egy regisztrációs csoport létrehozásához, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.

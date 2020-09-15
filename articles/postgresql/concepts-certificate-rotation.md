@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: fcd27e84f479fa71d204e7d5a210ed16642d202b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: a746b004060d7a2f29e03aa98d4a9ade636afecb
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057266"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531899"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megértése Azure Database for PostgreSQL egyetlen kiszolgálón
 
@@ -87,7 +87,7 @@ Nincs szükség műveletre, ha nem SSL/TLS protokollt használ.
 Nem, nem kell újraindítani az adatbázis-kiszolgálót az új tanúsítvány használatának megkezdéséhez. Ez egy ügyféloldali változás, és a bejövő ügyfélkapcsolatoknak az új tanúsítvánnyal kell rendelkezniük ahhoz, hogy az adatbázis-kiszolgálóhoz csatlakozzanak.
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. mi történik, ha nem frissítem a főtanúsítványt a 2020-es (10/26/2020-as) október 26. előtt?
-Ha a főtanúsítványt a 2020. november 30. előtt nem frissíti, az SSL/TLS protokollon keresztül csatlakozó alkalmazások és a főtanúsítvány ellenőrzése nem fog tudni kommunikálni a PostgreSQL-adatbázis-kiszolgálóval, és az alkalmazás csatlakozási problémákat tapasztal a PostgreSQL-adatbázis-kiszolgálóval kapcsolatban.
+Ha nem frissíti a főtanúsítványt a 2020. október 26. előtt, az SSL/TLS protokollon keresztül csatlakozó alkalmazásokat, és ellenőrzi, hogy a főtanúsítvány nem fog-e kommunikálni a PostgreSQL-adatbázis-kiszolgálóval, és az alkalmazás csatlakozási problémákat tapasztal a PostgreSQL-adatbázis-kiszolgálóval kapcsolatban.
 
 ### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. meg kell tervezni egy karbantartási állásidőt ehhez a változáshoz?<BR>
 Nem. Mivel a változás csak az ügyféloldali oldalon történik az adatbázis-kiszolgálóhoz való kapcsolódáshoz, ehhez a változáshoz nem szükséges karbantartási állásidő.
@@ -95,7 +95,7 @@ Nem. Mivel a változás csak az ügyféloldali oldalon történik az adatbázis-
 ### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. Mi a teendő, ha nem tudok ütemezett állásidőt beolvasni ehhez a változáshoz, 2020 (10/26/2020). október 26-án?
 Mivel a kiszolgálóhoz való csatlakozáshoz használt ügyfeleknek frissíteniük kell a tanúsítvány adatait a [javítás szakaszban leírtak szerint,](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)ebben az esetben nem kell leállást biztosítani a kiszolgálónak.
 
-###  <a name="6-if-i-create-a-new-server-after-nov-30th-will-i-be-impacted"></a>6. Ha a november 30-án újabb kiszolgálót hozunk létre, hatással leszek rá?
+###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. Ha új kiszolgálót hoz létre a 2020. október 26. után, hatással lesz rá?
 Az 2020 (10/26/2020) után létrehozott kiszolgálók esetében az alkalmazásokhoz tartozó újonnan kiadott tanúsítványt használhatja az SSL használatával történő kapcsolódáshoz.
 
 ### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. milyen gyakran frissíti a Microsoft a tanúsítványait, vagy mi a lejárati szabályzat?

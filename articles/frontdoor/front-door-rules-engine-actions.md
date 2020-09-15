@@ -7,17 +7,17 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: f5110a7644d3ca33da5755f783f61ac35484ddb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1893c32ed486772e56432f6263626d0ee1a65df
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399276"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531882"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door szabálymotor műveletei
 
@@ -33,7 +33,7 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek a forrásnak k�
 
 ### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | HTTP-fejléc neve | Érték
+Műveletek | HTTP-fejléc neve | Érték
 -------|------------------|------
 Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
@@ -45,7 +45,7 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 ### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | HTTP-fejléc neve | Érték
+Műveletek | HTTP-fejléc neve | Érték
 -------|------------------|------
 Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
@@ -92,14 +92,14 @@ Egyéni továbbítási útvonal | Adja meg a kérések továbbításának elér�
 
 Ezekkel a beállításokkal szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat a lekérdezési karakterláncokat tartalmazó kérelmek esetében, és hogy az összes paraméter vagy a kijelölt paraméterek alapján gyorsítótárazza-e a tartalmakat. További beállításokkal felülírhatja az élettartam (TTL) értékét annak szabályozására, hogy mennyi ideig maradnak meg a tartalom a gyorsítótárban azon kérelmek esetében, amelyeknek a szabályai megfelelnek a feltételeknek. A gyorsítótárazás műveletként való kényszerítéséhez állítsa a gyorsítótárazás mezőt "engedélyezve" értékre. Ha ezt teszi, a következő lehetőségek jelennek meg: 
 
-Gyorsítótár viselkedése |  Leírás              
+Gyorsítótár viselkedése |  Description              
 ---------------|----------------
 Lekérdezési sztringek figyelmen kívül hagyása | Az eszköz gyorsítótárba helyezése után az összes további kérelem figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
 Minden egyedi URL gyorsítótárazása | Mindegyik egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot is, egyedi objektumként kezeli a saját gyorsítótárával.
 Megadott lekérdezési karakterláncok figyelmen kívül hagyása | A "lekérdezési paraméterek" beállításban felsorolt kérelem URL-lekérdezési karakterláncai figyelmen kívül lesznek hagyva a gyorsítótárazáshoz.
 Megadott lekérdezési karakterláncok belefoglalása | A "lekérdezési paraméterek" beállításban felsorolt kérelem URL-lekérdezési karakterláncai a gyorsítótárazáshoz használatosak.
 
-További mezők |  Leírás 
+További mezők |  Description 
 ------------------|---------------
 Dinamikus tömörítés | A bejárati ajtó dinamikusan tömörítheti a tartalmat az Edge-ben, így kisebb és gyorsabb választ kaphat.
 Lekérdezési paraméterek | A gyorsítótárazás alapjául szolgáló engedélyezett (vagy nem engedélyezett) paraméterek vesszővel tagolt listája.

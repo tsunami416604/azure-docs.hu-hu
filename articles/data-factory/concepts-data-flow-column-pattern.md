@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/21/2019
-ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606119"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531148"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopok mintáinak használata a leképezési adatfolyamban
 
@@ -27,17 +27,17 @@ Az oszlopok mintázata jelenleg a származtatott oszlop, az összesítés, a kiv
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Oszlopos minták származtatott oszlopban és összesítésben
 
-Ha egy származtatott oszlopban vagy egy összesített átalakítás összesítések lapján szeretne oszlop mintát felvenni, kattintson a plusz ikonra a meglévő oszlop jobb oldalán. Válassza az **oszlop hozzáadása minta**lehetőséget. 
+Ha egy származtatott oszlopba, összesítésbe vagy ablak átalakításba szeretne felvenni egy oszlopot, kattintson az oszlop **hozzáadása** elemre, vagy a meglévő származtatott oszlop melletti plusz ikonra. Válassza az **oszlop hozzáadása minta**lehetőséget.
 
-![oszlop mintázatai](media/data-flow/columnpattern.png "Oszlopminták")
+![oszlop mintázatai](media/data-flow/add-column-pattern.png "Oszlopminták")
 
 A [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md) segítségével adja meg a egyezési feltételt. Hozzon létre egy logikai kifejezést, amely a (z),, `name` `type` `stream` és oszlop alapján egyezik az oszlopokkal `position` . A minta minden olyan oszlopot érint, amely sodródik vagy definiálva lesz, ahol a feltétel igaz értéket ad vissza.
 
 Az egyeztetési feltétel alá tartozó két kifejezés mező adja meg az érintett oszlopok új neveit és értékeit. Ezzel a `$$` beállítással hivatkozhat a megegyező mező meglévő értékére. A bal oldali kifejezés mezőben a név és a jobb oldali kifejezés mező határozza meg az értéket.
 
-![oszlop mintázatai](media/data-flow/columnpattern2.png "Oszlopminták")
+![oszlop mintázatai](media/data-flow/edit-column-pattern.png "Oszlopminták")
 
-A fenti oszlop mintája minden dupla típusú oszlopra illeszkedik, és egy összesített oszlopot hoz létre egymás után. Az új oszlop neve az egyező oszlop neve az "_total" értékkel összefűzve. Az új oszlop értéke a meglévő dupla érték lekerekített, összesített összege.
+A fenti oszlop minta minden dupla típusú oszlopra illeszkedik, és egy származtatott oszlopot hoz létre egyezés alapján. Az `$$` oszlop neve mezőnek megfelelően a rendszer minden egyező oszlopot ugyanazzal a névvel frissíti. Az egyes oszlopok értéke a meglévő érték két tizedes pontra kerekítve.
 
 Az egyeztetési feltétel helyességének ellenőrzéséhez ellenőrizheti a **megvizsgálandó** lapon definiált oszlopok kimeneti sémáját, vagy beolvashatja az adatok pillanatképét az **adatelőnézet** lapon. 
 
@@ -73,16 +73,16 @@ Ha a megadott leképezés rendelkezik hierarchiával, akkor a szabályokon alapu
 
 ![szabály alapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
 
-A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a`két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
+A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a` két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Mintázattal egyező kifejezés értékei.
 
-* `$$`az egyes egyezések nevének vagy értékének lefordítása futási időben
-* `name`az egyes bejövő oszlopok nevét jelöli
-* `type`az egyes bejövő oszlopok adattípusát jelöli
-* `stream`az egyes adatfolyamokhoz társított nevet vagy a folyamat átalakítását jelöli
-* `position`az adatfolyamat oszlopainak sorszáma
+* `$$` az egyes egyezések nevének vagy értékének lefordítása futási időben
+* `name` az egyes bejövő oszlopok nevét jelöli
+* `type` az egyes bejövő oszlopok adattípusát jelöli
+* `stream` az egyes adatfolyamokhoz társított nevet vagy a folyamat átalakítását jelöli
+* `position` az adatfolyamat oszlopainak sorszáma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az adatátalakítások hozzárendelési folyamatának [kifejezési nyelvéről](data-flow-expression-functions.md)
 * Oszlopok mintáinak használata a fogadó [átalakításban](data-flow-sink.md) és az [átalakítás kiválasztása](data-flow-select.md) szabály alapú leképezéssel

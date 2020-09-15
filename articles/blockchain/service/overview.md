@@ -4,12 +4,12 @@ description: Az Azure Blockchain Service áttekintése
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8364f4b8f063611df08275ba4cbb3acb4be5d196
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076952"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530029"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -45,7 +45,7 @@ Felügyelt szolgáltatásként az Azure Blockchain Service biztosítja, hogy a B
 
 Emellett az Azure Blockchain szolgáltatás részletes mérőszámokat biztosít Azure Monitor szolgáltatáson keresztül, amely betekintést nyújt a csomópontok CPU-, memória-és tárterület-használati adataiba.  A Azure Monitor hasznos betekintést nyújt a blockchain hálózati tevékenységekkel, például a kibányászott tranzakciókkal, a tranzakciós várólista mélységével és az aktív kapcsolatokkal.  A metrikák testreszabhatók úgy, hogy nézeteiket szolgáltassanak a blockchain-alkalmazás szempontjából fontos adatokhoz.  Emellett a küszöbértékeket olyan riasztások segítségével is meghatározhatja, amelyek lehetővé teszik a felhasználók számára olyan műveletek elindítását, mint például az e-mailek vagy SMS-üzenetek elküldése, a logikai alkalmazás, az Azure-függvény futtatása vagy egy egyéni módon definiált webhookra
 
-![Mérőszámok](./media/overview/metrics.png)
+![A képernyőfelvétel megjeleníti a figyelést, a blokkok, a tranzakciók, a függőben lévő tranzakciók és a kezelt kérelmek értékeit.](./media/overview/metrics.png)
 
 Az Azure Log Analytics segítségével a felhasználók megtekinthetik a kvórum főkönyvéhez kapcsolódó naplókat, illetve egyéb fontos információkat, például a tranzakciós csomópontokhoz való kapcsolódási kísérleteket.
 
@@ -79,7 +79,7 @@ Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szaké
 * [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként próbálkozzon egy rövid útmutatóval, vagy további részletekért tekintse meg ezeket az erőforrásokat.
 * [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md) vagy [blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)

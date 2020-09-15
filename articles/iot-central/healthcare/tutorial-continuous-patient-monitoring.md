@@ -1,6 +1,6 @@
 ---
-title: Folyamatos beteg monitorozási alkalmazás létrehozása az Azure IoT Centralkal | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre folyamatos beteg-figyelési alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.
+title: Oktatóanyag – folyamatos beteg-figyelési alkalmazás létrehozása az Azure IoT Centralkal | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre folyamatos beteg-figyelési alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -8,18 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001825"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531270"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Oktatóanyag: folyamatos, beteg monitorozási alkalmazás sablonjának üzembe helyezése és áttekintése
 
-
-
-Ez az oktatóanyag bemutatja, hogyan kezdheti el az első lépéseket egy IoT Central folyamatos beteg monitorozási alkalmazás sablonjának üzembe helyezésével. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és mit tehet a következő lépésekben.
+Ez az oktatóanyag bemutatja, hogyan kezdheti el az első lépéseket egy IoT Central folyamatos beteg monitorozási alkalmazás sablonjának üzembe helyezésével. Megtudhatja, hogyan helyezheti üzembe és használhatja a sablont.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -29,10 +27,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-an-application-template"></a>Alkalmazás sablonjának létrehozása
 
-Navigáljon az [Azure IoT Central Application Manager webhelyére](https://apps.azureiotcentral.com/). Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson az **egészségügy** fülre. 
+Navigáljon az [Azure IoT Central Application Manager webhelyére](https://apps.azureiotcentral.com/). Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd válassza az **egészségügy** fület.
 
->[!div class="mx-imgBorder"] 
->![Az App Manager egészségügyi ellátása](media/app-manager-health.png)
+:::image type="content" source="media/app-manager-health.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 A **create app (alkalmazás létrehozása** ) gombra kattintva megkezdheti az alkalmazás létrehozását, majd bejelentkezhet a Microsoft személyes, munkahelyi vagy iskolai fiókjával. Az **új alkalmazás** lapra kerül.
 
@@ -52,7 +49,7 @@ Az alkalmazás létrehozása:
 
 ### <a name="dashboards"></a>Irányítópultok
 
-Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg monitorozási irányítópultján**kell megszállnia. A Lamna Healthcare egy fiktív kórházi rendszer, amely két kórházat tartalmaz: a Woodgrove kórházat és a Burkville kórházat. A Woodgrove Hospital ezen kezelői irányítópultján megtekintheti a sablonban található eszközök információit és telemetria, valamint parancsokat, feladatokat és műveleteket is végrehajthat. Az irányítópulton a következőket teheti:
+Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg monitorozási irányítópultján**kell megszállnia. A Lamna Healthcare egy fiktív kórházi rendszer, amely két kórházat tartalmaz: a Woodgrove kórházat és a Burkville kórházat. A Woodgrove Hospital Operator irányítópultján a következőket teheti:
 
 * Lásd: az eszköz telemetria és tulajdonságai, például az eszköz **töltöttségi szintje** vagy a **kapcsolati** állapota.
 
@@ -64,77 +61,71 @@ Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg
 
 * Módosítsa az eszköz **beteg állapotát** annak jelzésére, hogy az eszköz használatban van-e egy fekvőbeteg-vagy távoli forgatókönyvben.
 
->[!div class="mx-imgBorder"] 
->![Lamna](media/lamna-in-patient.png)
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Fekvőbeteg-állapot":::
 
-Az **Ugrás a távoli beteg irányítópultra** lehetőségre kattintva megtekintheti a Burkville Kórházhoz használt második operátor irányítópultját. Ez az irányítópult a műveletek, a telemetria és az információk hasonló készletét tartalmazza. Emellett több, a használatban lévő eszközt is láthat, és a **belső vezérlőprogram frissítését** is lehetővé teszi.
+A Burkville Kórház-kezelő irányítópultjának megnyitásához válassza a **Ugrás a távoli beteg irányítópultra** lehetőséget. Ez az irányítópult a műveletek, a telemetria és az információk hasonló készletét tartalmazza. Több eszközt is láthat a használatban, és a **belső vezérlőprogram frissítését** is választhatja.
 
->[!div class="mx-imgBorder"] 
->![Lamna távoli](media/lamna-remote.png)
-
-Mindkét irányítópulton bármikor visszatérhet ehhez a dokumentációhoz.
+:::image type="content" source="media/lamna-remote.png" alt-text="Távoli operátor irányítópultja":::
 
 ### <a name="device-templates"></a>Eszközök sablonjai
 
-Ha az **eszközbeállítások** lapra kattint, látni fogja, hogy a sablonhoz két különböző típusú eszköz tartozik:
+Ha kijelöli az **eszköz sablonokat**, a sablon két típusát látja:
 
-* **Smart vitals-javítás**: ez az eszköz egy olyan javítást jelent, amely különböző típusú létfontosságú jeleket mér. A kórházi és a kórházon kívüli betegek monitorozására is használható. Ha a sablonra kattint, látni fogja, hogy az eszközök, például az akkumulátorok és az eszközök hőmérsékletének elküldése mellett a javítás a beteg egészségügyi adatokat is elküldi, például a légzési ráta és a vérnyomás.
+* **Smart vitals-javítás**: ez az eszköz egy olyan javítást jelent, amely a különböző létfontosságú jeleket méri. A kórházi és a kórházon kívüli betegek figyelésére használatos. Ha kiválasztja a sablont, láthatja, hogy a javítás az eszközön lévő adatokat, például az akkumulátor szintjét és az eszköz hőmérsékletét, valamint a beteg egészségügyi adatokat, például a légzési arányt és a vérnyomást küldi.
 
-* **Intelligens térd zárójel**: ez az eszköz egy térd zárójelet jelöl, amelyet a betegek a térdtől való kiváltáskor használhatnak. Ha erre a sablonra kattint, az eszközön kívül olyan képességek jelennek meg, mint a mozgási és a gyorsítási tartomány.
+* **Intelligens térd zárójel**: ez az eszköz egy térd zárójelet jelöl, amelyet a páciensek a térdtől való kiváltáskor használnak. Ha ezt a sablont választja, megtekintheti az eszközök, a mozgási tartomány és a gyorsítás funkcióit.
 
->[!div class="mx-imgBorder"] 
->![Intelligens Vitals patch-eszköz sablonja](media/smart-vitals-device-template.png)
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Intelligens javítási sablon":::
 
-### <a name="device-groups"></a>Device groups 
-Az eszközcsoport lehetővé teszi, hogy logikailag csoportosítsa az eszközök készletét, majd tömeges lekérdezéseket vagy műveleteket hajtson végre rajtuk. 
+### <a name="device-groups"></a>Device groups
 
-Ha az eszközcsoport (eszközcsoport) lapra kattint, látni fogja, hogy az alkalmazás minden egyes eszköz-sablonjaihoz létrehozott néhány alapértelmezett erőforráscsoportot. Megfigyelheti, hogy két további, "eszközök kiosztása" és "az elavult belső vezérlőprogram" eszközöket használó minta-csoportot is létrehoztunk. Ezeket a minta-eszközöket bemenetként fogjuk használni a [feladatok](#jobs)futtatásához.
+Az erőforráscsoportok használatával logikailag csoportosíthatja az eszközök készletét, majd csoportos lekérdezéseket vagy műveleteket futtathat rajtuk.
+
+Ha kiválasztja az eszközcsoport fület, megjelenik egy alapértelmezett eszközcsoport az alkalmazásban található minden eszköz sablonhoz. Emellett két további, **elavult belső vezérlőprogram**-eszközzel rendelkező **eszközt is** létrehozhat. Ezeket [a minta](#jobs) eszközöket bemenetként használhatja az alkalmazás egyes feladatainak futtatásához.
 
 ### <a name="rules"></a>Szabályok
 
-A szabályok lapra ugráskor három, az alkalmazás sablonjában található szabály jelenik meg:
+Ha a **szabályok**lehetőséget választja, a sablon három szabálya látható:
 
-* **Kapcsos zárójel hőmérséklete**: Ez a szabály akkor aktiválódik, ha az intelligens térd zárójelének hőmérséklete nagyobb, mint 95 &deg; F egy 5 perces ablakban. Ezt a szabályt használhatja arra, hogy figyelmeztesse a betegeket és a gondozási csapatot, és távolról lehűtsük az eszközt.
+* **Kapcsos zárójel hőmérséklete**: Ez a szabály akkor aktiválódik, ha az intelligens térd zárójelének hőmérséklete nagyobb, mint 95 &deg; F egy 5 perces ablakban. Ez a szabály figyelmezteti a betegeket és a gondozási csapatot, és távolról lehűti az eszközt.
 
-* **Fall észlelve**: Ez a szabály akkor aktiválódik, ha a beteg bukása észlelhető. Ezt a szabályt egy olyan művelet konfigurálására használhatja, amely egy operatív csapat üzembe helyezését segíti az elhullott beteg számára.
+* **Csökkenés észlelhető**: Ez a szabály akkor aktiválódik, ha a beteg bukása észlelhető. Ezzel a szabállyal konfigurálható egy operatív csapat üzembe helyezésére szolgáló művelet, amely segítséget nyújt az elhullott páciensek számára.
 
-* **Alacsony javítási akkumulátor**: Ez a szabály akkor aktiválódik, ha az eszközön lévő akkumulátor töltöttségi szintje 10% alá esik. Ezt a szabályt használhatja arra, hogy elindítson egy értesítést a betegnek az eszköz feltöltéséhez.
+* **Alacsony javítási akkumulátor**: Ez a szabály akkor aktiválódik, ha az eszköz töltöttségi szintje 10% alá esik. Ezzel a szabállyal elindíthatja az értesítéseket a betegnek az eszközük feltöltéséhez.
 
->[!div class="mx-imgBorder"] 
->![Kapcsos zárójel hőmérséklete – magas szabály](media/brace-temp-rule.png)
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Szabályok":::
 
 ### <a name="jobs"></a>Feladatok
 
-A feladatok lehetővé teszik a tömeges műveletek futtatását egy [adott eszközön](#device-groups) , az eszközcsoport használatával bemenetként. Az alkalmazás sablonját két olyan feladattal láttuk el, amelyet a megoldás kezelője az eszközök életciklusának bizonyos pontjain kell futtatnia:
-* A **térd zárójel belső vezérlőprogram frissítése**: Ez a művelet az eszközök "elavult belső vezérlőprogram" nevű eszközét fogja találni, és egy parancs futtatásával frissítheti ezeket az eszközöket a térd kapcsos zárójel legújabb verziójára. Ez a példa azt feltételezi, hogy az eszközökön a "Update" parancs fogadására és a belső vezérlőprogram fájljainak közvetlenül a felhőből való beolvasására van lehetőség.  
+A feladatok lehetővé teszik a tömeges műveletek futtatását egy [adott eszközön](#device-groups) , az eszközcsoport használatával bemenetként. Az alkalmazás sablonja két olyan feladattal rendelkezik, amelyeket az operátor futtathat:
 
-* **Eszközök újbóli kiépítése**: Ha olyan eszközökkel rendelkezik, amelyekről nemrég tért vissza a kórházba, és újra kell kiépíteni a következő csoportba, a feladatot a kiépítési eszközök tömeges frissítéséhez is futtathatja. Ebben az esetben a rendszer az összes eszközt egy "eszközök kiosztása" nevű eszközcsoport-csoportba helyezi, és egy parancsot hajt végre a kiépítéshez. 
+* A **térd zárójel belső vezérlőprogram frissítése**: Ez a művelet **elavult belső vezérlőprogram** használatával megkeresi az eszközök csoportjának eszközeit, és futtat egy parancsot, amely frissíti ezeket az eszközöket a legújabb belső vezérlőprogram-verzióra. Ez a példa feltételezi, hogy az eszközök kezelhetik a **frissítési** parancsot, majd beolvassák a belső vezérlőprogram fájljait a felhőből.  
+
+* **Eszközök újbóli kiépítése**: olyan eszközöket tartalmaz, amelyek nemrég visszatértek a kórházba. Ez a feladattípus megkeresi az **eszközöket, és futtat** egy parancsot, hogy újra kiépítse őket a következő csoportba.
 
 ### <a name="devices"></a>Eszközök
 
-Kattintson az **eszközök** fülre, majd válassza ki a **Smart térd zárójel**egy példányát. Látni fogja, hogy a kiválasztott eszköz információinak megtekintéséhez három nézet áll rendelkezésre. Ezek a nézetek az eszköz sablonjának létrehozásakor jönnek létre és jelennek meg, ami azt jelenti, hogy az összes csatlakoztatott vagy szimulált eszközön konzisztensek lesznek.
+Válassza az **eszközök** fület, majd válassza ki a **Smart térd zárójel**egy példányát. A kiválasztott eszköz információit három nézetben tekintheti meg. Ezek a nézetek az eszköz sablonjának összeállítása során jönnek létre és jelennek meg. ezért ezek a nézetek konzisztensek az összes csatlakoztatott vagy szimulált eszközön.
 
-Az **irányítópult** nézet áttekintést nyújt azokról a telemetria és tulajdonságokról, amelyek a kezelő által vezérelt eszközről érkeznek.
+Az **irányítópult** nézet áttekintést nyújt az eszköz telemetria és tulajdonságairól.
 
-A **Tulajdonságok** lapon módosíthatja a felhő tulajdonságait, valamint az eszköz olvasási/írási tulajdonságait.
+A **Tulajdonságok** lapon szerkesztheti a felhő tulajdonságait, valamint az eszköz olvasási/írási tulajdonságait.
 
-A **parancsok** lap lehetővé teszi, hogy az eszköz sablonjának részeként modellezett parancsokat futtasson.
+A **parancsok** lapon parancsokat futtathat az eszközön.
 
->[!div class="mx-imgBorder"] 
->![Térd zárójelek nézetei](media/knee-brace-dashboard.png)
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Térd zárójelek irányítópultja":::
 
 ### <a name="data-export"></a>Adatexportálás
 
-Az adatexportálás lehetővé teszi, hogy folyamatosan exportálja IoT Central eszközének adatait a többi Azure-szolgáltatásba, beleértve a [FHIR készült Azure API](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)-t.
+Az adatexportálás lehetővé teszi, hogy az eszköz adatait folyamatosan exportálja más Azure-szolgáltatásokba, beleértve a [FHIR készült Azure API](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)-t.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az **adminisztráció > alkalmazás beállításai** között, és kattintson a **Törlés**gombra.
 
->[!div class="mx-imgBorder"] 
->![Alkalmazás törlése](media/admin-delete.png)
+:::image type="content" source="media/admin-delete.png" alt-text="Tiszta erőforrások":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan hozhat létre olyan szolgáltatói irányítópultot, amely kapcsolódik a IoT Central alkalmazáshoz.
 

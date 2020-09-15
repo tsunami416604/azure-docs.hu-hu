@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606535"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531923"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban
 
@@ -29,17 +29,18 @@ Válasszon ki egy meglévő oszlopot, vagy hozzon létre egy új számított osz
 
 Group By záradék használata nem kötelező egy összesített átalakításban.
 
-## <a name="aggregate-column"></a>Összesítő oszlop 
+## <a name="aggregate-columns"></a>Összesítő oszlopok
 
-Az összesítési kifejezések létrehozásához nyissa meg az **összesítések** lapot. Egy meglévő oszlopot felülírhat összesítéssel, vagy létrehozhat egy új mezőt új névvel. Az összesítési kifejezés az oszlopnév-választó melletti jobb oldali mezőben van megadva. A kifejezés szerkesztéséhez kattintson a szövegmezőre, hogy megnyissa a Kifejezésszerkesztő párbeszédpanelt. További összesítések hozzáadásához vigye a kurzort egy meglévő kifejezés fölé, és kattintson a plusz ikonra egy új aggregációs oszlop vagy [oszlop minta](concepts-data-flow-column-pattern.md)létrehozásához.
+Az összesítési kifejezések létrehozásához nyissa meg az **összesítések** lapot. Egy meglévő oszlopot felülírhat összesítéssel, vagy létrehozhat egy új mezőt új névvel. Az összesítési kifejezés az oszlopnév-választó melletti jobb oldali mezőben van megadva. A kifejezés szerkesztéséhez kattintson a szövegmezőre, majd nyissa meg a Kifejezésszerkesztő párbeszédpanelt. További összesítő oszlopok hozzáadásához kattintson a **Hozzáadás** az oszlopok fölé, vagy a meglévő összesítő oszlop melletti plusz ikonra. Válassza az **oszlop hozzáadása** vagy az **oszlop hozzáadása mintát**. Minden összesítési kifejezésnek legalább egy összesítő függvényt tartalmaznia kell.
 
-Minden összesítési kifejezésnek legalább egy összesítő függvényt tartalmaznia kell.
-
-![Összesített átalakítás összesített beállításai](media/data-flow/agg2.png "Összesített átalakítás összesített beállításai")
-
+![Összesítési beállítások](media/data-flow/aggregate-columns.png "Összesítési beállítások")
 
 > [!NOTE]
 > Hibakeresési módban a Kifejezésszerkesztő nem hozhat létre összesítő függvényekből származó adat-előnézeteket. Az összesített átalakításokhoz tartozó adatelőnézetek megtekintéséhez a Kifejezésszerkesztő bezárásához és az adatelőnézet lapon megtekintheti az adatokat.
+
+### <a name="column-patterns"></a>Oszlopminták
+
+Az [oszlopos minták](concepts-data-flow-column-pattern.md) használatával azonos összesítést alkalmazhat az oszlopok egy halmazára. Ez akkor hasznos, ha a bemeneti séma sok oszlopát szeretné megtartani, mivel azok alapértelmezés szerint el vannak dobva. Használjon egy heurisztikus, például a `first()` bemeneti oszlopok megőrzését az összesítésen keresztül.
 
 ## <a name="reconnect-rows-and-columns"></a>Sorok és oszlopok újracsatolása
 
@@ -107,6 +108,6 @@ MoviesYear aggregate(groupBy(year),
     avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ablak alapú összesítés definiálása az ablak- [transzformáció](data-flow-window.md) használatával

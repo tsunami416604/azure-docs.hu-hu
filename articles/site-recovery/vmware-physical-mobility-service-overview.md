@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047207"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530063"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
 
@@ -37,7 +37,7 @@ A leküldéses telepítés a Azure Portal futtatott feladatok szerves része a [
 
 - Győződjön meg arról, hogy a leküldéses telepítés összes [előfeltétele](vmware-azure-install-mobility-service.md) teljesül.
 - Győződjön meg arról, hogy az összes kiszolgálói konfiguráció megfelel a [VMWare virtuális gépek és a fizikai kiszolgálók Azure-ba való vész-helyreállítására szolgáló támogatási mátrix](vmware-physical-azure-support-matrix.md)feltételeinek.
-- A (z) 9,36-es [verziótól](https://support.microsoft.com/help/4578241/) kezdődően a (z) SUSE Linux Enterprise Server 11 SP4 esetében ellenőrizze, hogy a legújabb telepítő elérhető-e [a konfigurációs kiszolgálón és a kibővíthető folyamat kiszolgálóján](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) .
+- A 9,36-es verziótól kezdődően SUSE Linux Enterprise Server 11 SP3, RHEL 5, CentOS 5, a Debian 7 esetében győződjön meg arról, hogy a legújabb telepítő [elérhető a konfigurációs kiszolgálón és a kibővíthető folyamat kiszolgálóján](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server) .
 
 A leküldéses telepítési munkafolyamatot az alábbi szakaszokban ismertetjük:
 
@@ -202,30 +202,62 @@ A konfigurációs kiszolgálón lépjen a _%ProgramData%\ASR\home\svsystems\push
 Telepítőfájl | Operációs rendszer (csak 64-bit)
 --- | ---
 `Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+[Ha manuálisan szeretné letölteni és elhelyezni a mappában](#rhel-5-or-centos-5-server) | Red Hat Enterprise Linux (RHEL) 5 </br> 5. CentOS
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
+`Microsoft-ASR_UA_version_RHEL8-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 8 </br> CentOS 8
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 és SP3 szervizcsomagot tartalmaz.
-A [mappát manuálisan kell letölteni és elhelyezni](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
+[Ha manuálisan szeretné letölteni és elhelyezni a mappában](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | 11 SP4 SUSE Linux Enterprise Server
+`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6,4 </br> Oracle Enterprise Linux 6,5
+`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
+`Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16,04 LTS-kiszolgáló
-`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
+`Microsoft-ASR_UA_version_UBUNTU-18.04-64_GA_date_release.tar.gz` | Ubuntu Linux 18,04 LTS-kiszolgáló
+`Microsoft-ASR_UA_version_UBUNTU-20.04-64_GA_date_release.tar.gz` | Ubuntu Linux 20,04 LTS-kiszolgáló
+[Ha manuálisan szeretné letölteni és elhelyezni a mappában](#debian-7-server) | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+`Microsoft-ASR_UA_version_DEBIAN9-64_GA_date_release.tar.gz` | Debian 9
 
-### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>A legújabb mobilitási ügynök telepítőjének letöltése SUSE 11 SP3-kiszolgálóhoz
+## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>A legújabb mobilitási ügynök telepítőjének letöltése SUSE 11 SP3, RHEL 5, Debian 7 Server rendszerre
 
-Az 9,36-es [verziótól](https://support.microsoft.com/help/4578241/) kezdődően **SUSE Linux Enterprise Server 11 SP3 rendszerű gépek frissítésének vagy védelemmel való ellátásának előfeltétele** :
+### <a name="suse-11-sp3-server"></a>SUSE 11 SP3-kiszolgáló
+
+Az 9,36-es verziótól kezdődően **SUSE Linux Enterprise Server 11 SP3 rendszerű gépek frissítésének vagy védelemmel való ellátásának előfeltétele** :
 
 1. Győződjön meg arról, hogy a legújabb mobilitási ügynök telepítője le van töltve a Microsoft letöltőközpontból, és leküldéses telepítő adattárba helyezi a konfigurációs kiszolgálón és az összes kibővíthető folyamat
-2. [Töltse le](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) a SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét.
-3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét a következő elérési utakra
-    1. INSTALL_DIR \home\svsystems\pushinstallsvc\repository
-    1.  INSTALL_DIR \home\svsystems\admin\web\sw-mappák
-4. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz & másolja a telepítőt a harmadik lépésben említett elérési utakon.
-5. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+2. [Töltse le](site-recovery-whats-new.md) a legújabb SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét. A mobilitási ügynök legújabb verziója a [9,37](https://support.microsoft.com/help/4582666/)
+3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét a Path-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. A legújabb telepítő másolását követően indítsa újra az inmage PushInstall szolgáltatást. 
+1. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz, ismételje meg a 3. lépést és a 4. lépést.
+1. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
     1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
-    1. C:\Program Files (x86) \Microsoft Azure-hely Recovery\home\svsystems\admin\web\sw elérési útja
+
+### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 vagy CentOS 5 kiszolgáló
+
+A **RHEL 5 gép frissítésének vagy** a 9,36-es verziótól való védelemének előfeltétele:
+
+1. Győződjön meg arról, hogy a legújabb mobilitási ügynök telepítője le van töltve a Microsoft letöltőközpontból, és leküldéses telepítő adattárba helyezi a konfigurációs kiszolgálón és az összes kibővíthető folyamat
+2. [Töltse le](site-recovery-whats-new.md) a legújabb RHEL 5 vagy CentOS 5 Agent telepítőjét. A mobilitási ügynök legújabb verziója a [9,37](https://support.microsoft.com/help/4582666/)
+3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a RHEL 5 vagy CentOS 5 Agent telepítőjét az elérési útra – INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. A legújabb telepítő másolását követően indítsa újra az inmage PushInstall szolgáltatást. 
+1. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz, ismételje meg a 3. lépést és a 4. lépést.
+1. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+    1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
+
+## <a name="debian-7-server"></a>Debian 7 Server
+
+A **Debian 7 rendszerű gépek frissítésének vagy védelemének előfeltétele** a 9,36-es verziótól kezdve:
+
+1. Győződjön meg arról, hogy a legújabb mobilitási ügynök telepítője le van töltve a Microsoft letöltőközpontból, és leküldéses telepítő adattárba helyezi a konfigurációs kiszolgálón és az összes kibővíthető folyamat
+2. [Töltse le](site-recovery-whats-new.md) a legújabb Debian 7 Agent telepítőt. A mobilitási ügynök legújabb verziója a [9,37](https://support.microsoft.com/help/4582666/)
+3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a Debian 7 Agent telepítőjét az elérési útra – INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. A legújabb telepítő másolását követően indítsa újra az inmage PushInstall szolgáltatást. 
+1. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz, ismételje meg a 3. lépést és a 4. lépést.
+1. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+    1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002249"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531304"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitás megtervezése és méretezése az Azure Service Fabric
 
@@ -36,6 +36,9 @@ A virtuálisgép-méretezési csoportokon keresztüli automatikus skálázással
 
 > [!NOTE]
 > A Service Fabric állapot-nyilvántartó Service Fabric:/System/InfastructureService/<NODE_TYPE_NAME> minden olyan csomópont-típuson fut, amely ezüst vagy magasabb tartóssággal rendelkezik. Ez az egyetlen olyan rendszerszolgáltatás, amely az Azure-ban a fürtök bármelyik csomópont-típusán futtatható.
+
+> [!IMPORTANT]
+> Service Fabric az automatikus skálázás támogatja a `Default` és `NewestVM` a virtuálisgép-méretezési csoport [skálázási konfigurációját](../virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy.md).
 
 ## <a name="vertical-scaling-considerations"></a>Vertikális skálázási megfontolások
 
@@ -168,7 +171,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > Ha egy fürtben méretezi a méretezést, az eltávolított csomópont-vagy virtuálisgép-példány nem kifogástalan állapotban jelenik meg Service Fabric Explorerban. Ennek a viselkedésnek a magyarázata: [Service Fabric Explorerban megfigyelhető viselkedések](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). A következőket teheti:
-> * Hívja meg a [Remove-ServiceFabricNodeState parancsot](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) a megfelelő csomópont-névvel.
+> * Hívja meg a [Remove-ServiceFabricNodeState parancsot](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) a megfelelő csomópont-névvel.
 > * Telepítse az [Service Fabric autoscale Helper alkalmazást](https://github.com/Azure/service-fabric-autoscale-helper/) a fürtön. Ez az alkalmazás biztosítja, hogy a méretezett csomópontok törlődnek Service Fabric Explorerból.
 
 ## <a name="reliability-levels"></a>Megbízhatósági szintek

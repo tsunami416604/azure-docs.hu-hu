@@ -1,21 +1,21 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service SDK-eszközök használata
 description: Ez a dokumentum az Azure IoT Hub Device Provisioning Service (DPS) SDK-k fejlesztéséhez biztosított eszközöket tekinti át
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691628"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530845"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-k által biztosított eszközök használata a kiépítés fejlesztésének egyszerűsítése érdekében
-A IoT Hub Device Provisioning Service leegyszerűsíti a kiépítési folyamatot a biztonságos és skálázható módon történő [automatikus kiépítés](concepts-auto-provisioning.md) révén.  A biztonsági igazolás X. 509 tanúsítvány vagy platformmegbízhatósági modul (TPM) formájában szükséges.  A Microsoft [más biztonsági partnerekkel](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) is együttműködik a IoT-telepítés biztonságossá tétele érdekében. A hardveres biztonsági követelmények megismerése nagyon nagy kihívást jelenthet a fejlesztők számára. Az Azure IoT-létesítési szolgáltatás SDK-k készletét biztosítjuk, így a fejlesztők egy kényelmi réteget használhatnak a kiépítési szolgáltatással kommunikáló ügyfelek írásához. Az SDK-k emellett mintákat is biztosítanak a gyakori forgatókönyvekhez, valamint a biztonsági igazolások fejlesztésének egyszerűsítésére szolgáló eszközkészletet.
+A IoT Hub Device Provisioning Service a kiépítési folyamat leegyszerűsíti a biztonságos és skálázható módon történő [üzembe](about-iot-dps.md#provisioning-process) helyezést, valamint az igény szerinti kiépítés idejét.  A biztonsági igazolás X. 509 tanúsítvány vagy platformmegbízhatósági modul (TPM) formájában szükséges.  A Microsoft [más biztonsági partnerekkel](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) is együttműködik a IoT-telepítés biztonságossá tétele érdekében. A hardveres biztonsági követelmények megismerése nagyon nagy kihívást jelenthet a fejlesztők számára. Az Azure IoT-létesítési szolgáltatás SDK-k készletét biztosítjuk, így a fejlesztők egy kényelmi réteget használhatnak a kiépítési szolgáltatással kommunikáló ügyfelek írásához. Az SDK-k emellett mintákat is biztosítanak a gyakori forgatókönyvekhez, valamint a biztonsági igazolások fejlesztésének egyszerűsítésére szolgáló eszközkészletet.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Platformmegbízhatósági modul (TPM) szimulátor
 A [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) szabványos módon hivatkozhat a kulcsok biztonságos tárolására a platform hitelesítéséhez, vagy hivatkozhat a szabványt megvalósító modulokkal való interakcióhoz használt I/O-felületre. A TPM különálló hardverként, integrált hardverként, belső vezérlőprogram-vagy szoftver-alapúként is létezhetnek.  Éles környezetben a TPM különálló hardverként, integrált hardverként vagy belső vezérlőprogram-alapúként található az eszközön. A tesztelési fázisban egy szoftveres TPM-szimulátort biztosítanak a fejlesztők számára.  Ez a szimulátor jelenleg csak a Windows platformon való fejlesztéshez érhető el.
@@ -52,7 +52,7 @@ X. 509 tanúsítvány generálása a következő generátor használatával:
 2. Módosítsa a gyökeret az Azure-IOT-SDK-Java értékre.
 3. ```mvn install -DskipTests=true```Az összes szükséges csomag letöltéséhez és az SDK fordításához futtassa a parancsot.
 4. Navigáljon az X. 509 tanúsítvány-generátor gyökeréhez a alkalmazásban ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator``` .
-5. Build```mvn clean install```
+5. Build ```mvn clean install```
 6. Futtassa az eszközt az alábbi parancsokkal:
    ```
    cd target
@@ -65,5 +65,5 @@ Az **ügyfél** tanúsítványa a levél tanúsítványa az eszközön.  Az **ü
 
 A főtanúsítvány vagy a köztes tanúsítvány használatával létrehozhat egy regisztrációs csoportot vagy egyéni beléptetést [programozott](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) módon vagy a [portálon](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Fejlesztés az Azure IoT Hub és az Azure-hoz készült [Azure IOT SDK]( https://github.com/Azure/azure-iot-sdks) -val IoT hub Device Provisioning Service

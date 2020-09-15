@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604534"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530148"
 ---
 # <a name="manage-the-mobility-agent"></a>A Mobility-ügynök kezelése 
 
@@ -26,7 +26,7 @@ Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszol
 ## <a name="update-mobility-service-from-azure-portal"></a>Mobilitási szolgáltatás frissítése Azure Portal
 
 1. Mielőtt elkezdené, győződjön meg arról, hogy a konfigurációs kiszolgáló, a kibővíthető folyamat-kiszolgálók és a telepítés részét képező fő célkiszolgáló frissítése megtörtént, mielőtt frissíti a mobilitási szolgáltatást a védett gépeken.
-    1. A (z) 9,36-es [verziótól](https://support.microsoft.com/help/4578241/) kezdődően a (z) SUSE Linux Enterprise Server 11 SP4 esetében ellenőrizze, hogy a legújabb telepítő elérhető-e a [konfigurációs kiszolgálón és a kibővíthető folyamat kiszolgálóján](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
+    1. A 9,36-es verziótól kezdődően, SUSE Linux Enterprise Server 11 SP3, RHEL 5, CentOS 5, a Debian 7 esetében győződjön meg arról, hogy a legújabb telepítő [elérhető a konfigurációs kiszolgálón és a kibővíthető folyamat kiszolgálóján](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
 1. A portálon nyissa meg a tároló > **replikált elemeket**.
 1. Ha a konfigurációs kiszolgáló a legújabb verzió, megjelenik egy értesítés, amely beolvassa az "új site Recovery replikációs ügynök frissítése" című témakört. Kattintson ide a telepítéshez. "
 

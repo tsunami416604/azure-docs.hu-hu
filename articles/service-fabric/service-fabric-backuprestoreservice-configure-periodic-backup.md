@@ -1,16 +1,16 @@
 ---
 title: Rendszeres biztonsági mentési konfiguráció ismertetése
-description: Az alkalmazásadatok rendszeres biztonsági mentésének engedélyezéséhez használja Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját.
+description: Az Service Fabric rendszeres biztonsági mentési és visszaállítási funkciójának használatával konfigurálhatja a megbízható állapot-nyilvántartó szolgáltatások vagy Reliable Actors rendszeres biztonsági mentését.
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261224"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530913"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
 
@@ -119,7 +119,7 @@ A biztonsági mentési szabályzat a következő konfigurációkból áll:
 >
 
 * **Adatmegőrzési szabály**: a konfigurált tárolóban lévő biztonsági másolatok megőrzésére vonatkozó házirendet határozza meg. Csak az alapszintű adatmegőrzési szabályok támogatottak.
-    1. **Alapszintű adatmegőrzési szabály**: ez az adatmegőrzési szabály lehetővé teszi az optimális tárterület-kihasználtság biztosítását a nem szükséges biztonsági mentési fájlok eltávolításával. `RetentionDuration`megadható azt az időtartományt, ameddig a tárolóban meg kell őrizni a biztonsági mentéseket. `MinimumNumberOfBackups`egy opcionális paraméter, amely megadható, hogy a megadott számú biztonsági mentés mindig a-tól függetlenül megmaradjon `RetentionDuration` . Az alábbi példa azt szemlélteti, hogy a biztonsági másolatok _10_ napig megmaradjanak, és nem teszi lehetővé, hogy a biztonsági másolatok száma _20_alá kerüljön.
+    1. **Alapszintű adatmegőrzési szabály**: ez az adatmegőrzési szabály lehetővé teszi az optimális tárterület-kihasználtság biztosítását a nem szükséges biztonsági mentési fájlok eltávolításával. `RetentionDuration` megadható azt az időtartományt, ameddig a tárolóban meg kell őrizni a biztonsági mentéseket. `MinimumNumberOfBackups` egy opcionális paraméter, amely megadható, hogy a megadott számú biztonsági mentés mindig a-tól függetlenül megmaradjon `RetentionDuration` . Az alábbi példa azt szemlélteti, hogy a biztonsági másolatok _10_ napig megmaradjanak, és nem teszi lehetővé, hogy a biztonsági másolatok száma _20_alá kerüljön.
 
         ```json
         {

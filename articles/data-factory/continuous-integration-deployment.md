@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461884"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531219"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -639,7 +639,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 
 -   **Key Vault**. Ha olyan társított szolgáltatásokat használ, amelyek kapcsolati adatait Azure Key Vault tárolja, ajánlott külön kulcstárolókat tárolni a különböző környezetekben. Külön jogosultsági szinteket is beállíthat mindegyik kulcstartóhoz. Előfordulhat például, hogy nem szeretné, hogy a csapattagok rendelkezzenek a termelési titkokhoz szükséges engedélyekkel. Ha követi ezt a megközelítést, javasoljuk, hogy az összes fázisban ugyanazokat a titkos neveket tartsa meg. Ha megtartja ugyanazokat a titkos neveket, nem kell parametrizálja minden egyes kapcsolódási karakterláncot a CI/CD-környezetek között, mert az egyetlen dolog, ami megváltoztatja a kulcstároló nevét, amely egy külön paraméter.
 
--  **Erőforrás-elnevezés** Az ARM-sablon megkötése esetén a telepítés során felmerülő problémák akkor merülhetnek fel, ha az erőforrások a névben szóközt tartalmaznak. A Azure Data Factory csapat az erőforrások térköze helyett az "_" vagy a "-" karakterek használatát javasolja. Például "Pipeline_1" lenne egy előnyben részesített név a "folyamat 1" felett.
+-  **Erőforrás-elnevezés** Az ARM-sablonok korlátozásai miatt előfordulhat, hogy a telepítés során problémák merülnek fel, ha az erőforrások szóközt tartalmaznak a névben. A Azure Data Factory csapat az erőforrások térköze helyett az "_" vagy a "-" karakterek használatát javasolja. Például "Pipeline_1" lenne egy előnyben részesített név a "folyamat 1" felett.
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 

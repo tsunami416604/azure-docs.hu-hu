@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918043"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530692"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Oktatóanyag: Cognitive Search index lekérdezése a Power Appsből
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Power apps-fiók](http://make.powerapps.com)
+* [Power apps-fiók](https://make.powerapps.com)
 
 * [Hotelek – minta index](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 
 A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létrehoz egy egyéni összekötőt, amely a felhőben található keresési indexhez csatlakozik.
 
-1. [Jelentkezzen be](http://make.powerapps.com) a Power Apps szolgáltatásba.
+1. [Jelentkezzen be](https://make.powerapps.com) a Power Apps szolgáltatásba.
 
 1. A bal **oldalon bontsa ki az**  >  **Egyéni adatösszekötők**elemet.
  
@@ -256,7 +256,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Power apps lehetővé teszi az egyéni alkalmazások gyors alkalmazásának fejlesztését. Most, hogy már tudja, hogyan csatlakozhat egy keresési indexhez, többet tudhat meg arról, hogyan hozhat létre Rich vizualizációs élményt egy egyéni Power App-alkalmazásban.
 

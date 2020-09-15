@@ -3,19 +3,19 @@ title: Azok a régiók, amelyekben Video Indexer elérhető – Azure
 titleSuffix: Azure Media Services
 description: Ez a cikk a Azure Media Services Video Indexer elérhető Azure-régiókkal kapcsolatos információkat tárgyalja.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/08/2020
-ms.author: kumud
-ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 09/14/2020
+ms.author: juliako
+ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565327"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530937"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-régiók, amelyekben Video Indexer létezik
 
@@ -23,7 +23,18 @@ Video Indexer API-k olyan **Location** paramétert tartalmaznak, amelyet arra az
 
 ## <a name="locations"></a>Helyek
 
-A `location` paraméternek meg kell adni az Azure-régió kódjának nevét az értékeként. Ha az előnézeti módban Video Indexert használ, a értéket kell megtennie `"trial"` értékként. `trial` a paraméter alapértelmezett értéke `location` . Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](/cli/azure)-ben:
+A `location` paraméternek meg kell adni az Azure-régió kódjának nevét az értékeként. Ha az előnézeti módban Video Indexert használ, a értéket kell megtennie `"trial"` értékként. `trial` a paraméter alapértelmezett értéke `location` . Ellenkező esetben a fiókhoz tartozó Azure-régió kódjának beszerzéséhez és a hívás átirányításához használja a Azure Portal, vagy futtasson egy [Azure CLI](/cli/azure) -parancsot.
+
+### <a name="azure-portal"></a>Azure Portal
+
+1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre.
+1. Válassza ki a **felhasználói fiókok** elemet az oldal jobb felső sarkában.
+1. Keresse meg a fiókja helyét a jobb felső sarokban.  
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/location/location1.png" alt-text="Hely":::
+    
+###  <a name="cli-command"></a>CLI-parancs
 
 ```azurecli-interactive
 az account list-locations

@@ -1,22 +1,22 @@
 ---
 title: Azure Firewall veszélyforrások intelligencia-konfigurációja
-description: A fenyegetésekkel kapcsolatos intelligencia-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra.
+description: Megtudhatja, hogyan konfigurálhatja a fenyegetés-alapú szűrést a Azure Firewall szabályzatban, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568735"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530641"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall veszélyforrások intelligencia-konfigurációja
 
-A fenyegetésekkel kapcsolatos intelligencián alapuló szűrés beállítható úgy, hogy az Azure Firewall házirend riasztást küldjön, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.<br>
+A fenyegetésekkel kapcsolatos intelligencián alapuló szűrés beállítható úgy, hogy az Azure Firewall házirend riasztást küldjön, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.<br>
 
 Ha beállította a veszélyforrások felderítésére alapuló szűrést, a rendszer a társított szabályokat a NAT-szabályok, a hálózati szabályok vagy az alkalmazási szabályok előtt dolgozza fel.
 
@@ -56,6 +56,6 @@ A következő naplózási részlet egy aktivált szabályt mutat be:
 
 - **Bejövő tesztelés** – a rendszer a bejövő forgalomra vonatkozó riasztásokat jelenít meg, ha a TŰZFALon DNAT-szabályok vannak konfigurálva. Ez akkor is igaz, ha csak bizonyos források engedélyezettek a DNAT-szabályban, és a forgalom egyébként meg van tagadva. Azure Firewall az összes ismert porton nem jeleníti meg a riasztásokat; csak olyan lapolvasók esetében, amelyekről ismert, hogy rosszindulatú tevékenységet is folytatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Microsoft biztonsági intelligencia jelentésének](https://www.microsoft.com/en-us/security/operations/security-intelligence-report) áttekintése

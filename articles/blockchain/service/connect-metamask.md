@@ -4,12 +4,12 @@ description: Kapcsolódjon az Azure Blockchain Service networkhez a MetaMask has
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920579"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530437"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Gyors útmutató: az MetaMask használata intelligens szerződéshez való kapcsolódáshoz és üzembe helyezéshez
 
@@ -41,12 +41,12 @@ A Blockchain hálózathoz való kapcsolódáshoz az Azure Blockchain szolgáltat
 ## <a name="connect-metamask"></a>MetaMask összekötése
 
 1. Nyissa meg a MetaMask böngésző bővítményét, és jelentkezzen be.
-1. A hálózat legördülő menüben válassza az **Egyéni RPC**lehetőséget.
+1. A hálózat legördülő menüben válassza az  **Egyéni RPC**lehetőséget.
 
     ![Egyéni RPC](./media/connect-metamask/custom-rpc.png)
 
 1. Az **új hálózat > új RPC URL-** cím elemnél illessze be a fent lemásolt végpont-címet.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     Ha a kapcsolatok sikeresek voltak, a magánhálózat a hálózat legördülő menüben jelenik meg.
 
@@ -56,7 +56,7 @@ A Blockchain hálózathoz való kapcsolódáshoz az Azure Blockchain szolgáltat
 
 A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask és a Remix együttes használatával az intelligens szerződéseket üzembe helyezheti, és műveleteket hajthat végre.
 
-1. A böngészőjében lépjen a `https://remix.ethereum.org` helyre.
+1. A böngészőjében lépjen az `https://remix.ethereum.org` helyre.
 1. Válassza az **új fájl** elemet a **Kezdőlap** lap **fájl**területén.
 
     Nevezze el az új fájlt `simple.sol` .
@@ -87,9 +87,9 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
     ```
 
     Az **egyszerű szerződés** deklarál egy **Balance**nevű állapotjelző változót. Két függvény van definiálva. A **Hozzáadás** függvény egy számot ad hozzá az **egyenleghez**. A **Get** függvény az **Egyenleg**értékét adja vissza.
-1. A szerződés fordításához először válassza a szilárdtest-fordító ablaktáblát, majd válassza a **Simple. Sol fordítása**lehetőséget.
+1. A szerződés fordításához először válassza a szilárdtest-fordító ablaktáblát, majd válassza a  **Simple. Sol fordítása**lehetőséget.
 
-    ![Lefordítani](./media/connect-metamask/compile.png)
+    ![A képernyőfelvétel egy lefordított szerződést mutat be.](./media/connect-metamask/compile.png)
 
 1. Válassza a **központi telepítés & Futtatás** ablaktáblát, majd állítsa be a **környezetet** a **Web3** beadásához, hogy a blockchain-tag MetaMask-kapcsolaton keresztül kapcsolódjon.
 
@@ -97,7 +97,7 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
 
 1. Válassza ki az **egyszerű** szerződést, majd **telepítse**a t.
 
-    ![Üzembe helyezés](./media/connect-metamask/deploy.png)
+    ![A képernyőfelvételen megtekintheti az üzembe helyezést és a tranzakciók futtatását a kiválasztott szerződéssel, majd a kiválasztott elemet.](./media/connect-metamask/deploy.png)
 
 
 1. A MetaMask-értesítés figyelmezteti, ha nem rendelkezik elegendő összeggel a tranzakció végrehajtásához.
@@ -108,7 +108,7 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
 
     ![Gázárak](./media/connect-metamask/gas-price.png)
 
-    Kattintson a **Mentés** gombra.
+    Válassza a **Mentés** lehetőséget.
 
 1. Válassza a **megerősítés** lehetőséget az intelligens szerződés blockchain való telepítéséhez.
 1. A **központilag telepített szerződések** szakaszban bontsa ki az **egyszerű** szerződést.
@@ -134,7 +134,7 @@ Megtekintheti az **egyszerű** szerződések létrehozását, a tranzakciót **e
 
 A MetaMask lévő tranzakciók előzményeinek megtekintéséhez nyissa meg a MetaMask böngésző bővítményét, és tekintse meg az **Előzmények** szakaszt a központilag telepített szerződés és tranzakciók naplójához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a MetaMask böngésző bővítményét használta egy Azure Blockchain szolgáltatás-tranzakciós csomóponthoz való kapcsolódáshoz, egy intelligens szerződés üzembe helyezéséhez és egy tranzakció elküldéséhez a Blockchain. Próbálja ki a következő oktatóanyagot az Azure Blockchain Development Kit for Ethereum és a szarvasgomba használatával egy intelligens szerződési funkció egy tranzakción keresztül történő létrehozásához, létrehozásához, üzembe helyezéséhez és végrehajtásához.
 

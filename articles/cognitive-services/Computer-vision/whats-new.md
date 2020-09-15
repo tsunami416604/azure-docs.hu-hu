@@ -10,20 +10,35 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b8741d17c55a786d7a90d1c311039f2855adf43b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759206"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530658"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
 
+## <a name="september-2020"></a>2020. szeptember
+
+### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Az API v 3.1-es verziójának nyilvános előzetes verziója hozzáadja a japán OCR-t
+A Computer Vision Read API v 3.1 nyilvános előzetes verziója hozzáadja ezeket a képességeket:
+* OCR japán nyelvhez
+* Mindegyik szövegmezőnél jelezze, hogy a megjelenés a kézírás vagy a nyomtatási stílus, valamint a megbízhatósági pontszám (csak latin nyelvek esetén).
+* Többoldalas dokumentumok esetén csak a kijelölt lapok vagy az oldal tartománya számára kell szöveget kinyerni.
+
+* Az olvasási API előzetes verziója az angol, holland, francia, német, olasz, Japán, portugál, egyszerűsített kínai és spanyol nyelveket támogatja.
+
+További információért tekintse meg az [OLVASÁSI API áttekintése](concept-recognizing-text.md) című témakört.
+
+> [!div class="nextstepaction"]
+> [További információ az olvasási API v 3.1 nyilvános előzetes verziójáról 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
+
 ## <a name="july-2020"></a>2020. július
 
-### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>A Read API v 3.1 nyilvános előzetes verziója egyszerűsített kínai támogatást nyújt
+### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>Az API v 3.1 nyilvános előzetes verziójának olvasása az OCR használatával egyszerűsített kínai nyelven
 A Computer Vision Read API v 3.1 nyilvános előzetes verziója támogatja az egyszerűsített kínai verziót.
 
 * Az olvasási API előzetes verziója az angol, holland, francia, német, olasz, portugál, egyszerűsített kínai és spanyol nyelveket támogatja.
@@ -31,7 +46,7 @@ A Computer Vision Read API v 3.1 nyilvános előzetes verziója támogatja az eg
 További információért tekintse meg az [OLVASÁSI API áttekintése](concept-recognizing-text.md) című témakört.
 
 > [!div class="nextstepaction"]
-> [További információ az olvasási API v 3.1 nyilvános előzetes verziójáról](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [További információ az olvasási API v 3.1 nyilvános előzetes verziójának 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020. május
 Computer Vision API v 3.0 általánosan elérhető, az [OLVASÁSI API](concept-recognizing-text.md)frissítéseivel:

@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4a017f4b71a91f580a5281468a3f2bcbf7ba31b1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84687107"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531525"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: eszköz üzembe helyezése az Azure IoT Hub Device Provisioning Service használatával
 
-Az előző oktatóanyagban bemutattuk, hogyan állíthatja be, hogy az Azure IoT Hub Device Provisioning Service automatikusan regisztrálja az eszközöket az IoT Hubban. Ez az oktatóanyag azt mutatja be, hogyan állíthatók be az eszközök a gyártási folyamat során, ami lehetővé teszi az IoT Hub általi automatikus regisztrációt. Az eszköz regisztrálása az [igazolási eljárás](concepts-device.md#attestation-mechanism), az első indítás és a regisztrálási szolgáltatással létesített kapcsolat alapján történik. Ez az oktatóanyag a következő feladatokat mutatja be:
+Az előző oktatóanyagban bemutattuk, hogyan állíthatja be, hogy az Azure IoT Hub Device Provisioning Service automatikusan regisztrálja az eszközöket az IoT Hubban. Ez az oktatóanyag azt mutatja be, hogyan állíthatók be az eszközök a gyártási folyamat során, ami lehetővé teszi az IoT Hub általi automatikus regisztrációt. Az eszköz regisztrálása az [igazolási eljárás](concepts-service.md#attestation-mechanism), az első indítás és a regisztrálási szolgáltatással létesített kapcsolat alapján történik. Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Platformspecifikus Device Provisioning Services ügyfél-SDK kiépítése
@@ -29,7 +29,7 @@ Ehhez az oktatóanyag feltételezi, hogy már létrehozta a Device Provisioning 
 
 Ez az oktatóanyag az [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDK-k és tárak – C) adattárt használja, amely a C nyelvhez készült Device Provisioning Service ügyfél-SDK-t tartalmazza. Az SDK jelenleg Windows- és Ubuntu-implementációkon futó rendszerek számára kínál TPM- és X.509-támogatást. Ez az oktatóanyag egy Windows-fejlesztői ügyfél használatán alapul, amely a Visual Studióval való alapszintű jártasságot is feltételezi. 
 
-Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás előtt olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. 
+Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. 
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,7 +38,7 @@ Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás el
 
 A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
@@ -100,9 +100,9 @@ Attól függően, hogy az SDK-t fizikai TPM-/HSM-igazolás vagy X.509-tanúsítv
 
 - X.509-eszköz esetén be kell szereznie az eszköz(ök)höz kiadott tanúsítványokat. A kiépítési szolgáltatás kétféle regisztrációs bejegyzést tesz közzé, amelyek az X.509-igazolás mechanizmust használó eszközök hozzáférését szabályozzák. A szükséges tanúsítványok a használni kívánt regisztrációtípusoktól függnek.
 
-    - Egyéni regisztrációk: megadott különálló eszköz regisztrációja. Az ilyen típusú regisztrációs bejegyzéshez [végfelhasználói, vagy levéltanúsítványok](concepts-security.md#end-entity-leaf-certificate) szükségesek.
+    - Egyéni regisztrációk: megadott különálló eszköz regisztrációja. Az ilyen típusú regisztrációs bejegyzéshez [végfelhasználói, vagy levéltanúsítványok](concepts-x509-attestation.md#end-entity-leaf-certificate) szükségesek.
     
-    - Regisztrációs csoportok: Az ilyen típusú regisztrációs bejegyzéshez köztes vagy főtanúsítványok szükségesek. További információért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    - Regisztrációs csoportok: Az ilyen típusú regisztrációs bejegyzéshez köztes vagy főtanúsítványok szükségesek. További információért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Szimulált eszközök
 

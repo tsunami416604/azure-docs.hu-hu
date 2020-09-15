@@ -1,14 +1,14 @@
 ---
-title: Élő videó-elemzések IoT Edge kvóták – Azure
+title: Élő videó-elemzés IoT Edge kvóták és korlátozások – Azure
 description: Ez a cikk az élő videók elemzését ismerteti IoT Edge kvóták és korlátozások alapján.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750231"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529230"
 ---
 # <a name="quotas-and-limitations"></a>Kvóták és korlátozások
 
@@ -66,6 +66,10 @@ Az előzetes kiadás időpontjában a IoT Edge Live Video Analytics nem támogat
 * Több Storage-fiók is használható a Media Service-fiókkal.
 * Az egyszerű szolgáltatásnév adatait dinamikusan, újraindítás nélkül módosíthatja a modul kívánt tulajdonságaiban.
 
-## <a name="next-steps"></a>További lépések
+Csak az RTSP protokollt támogató IP-kamerákat lehet használni. Az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőségi termékek](https://www.onvif.org/conformant-products) lapon találja. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
+
+Emellett ezeket a kamerákat a H. 264 videó és az AAC hang használatára kell beállítani. Más kodekek jelenleg nem támogatottak. 
+
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](overview.md)

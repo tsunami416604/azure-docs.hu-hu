@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: több-bérlős adatbázis tervezése – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, tölthet fel és foglalhat le elosztott táblákat Azure Database for PostgreSQL nagy kapacitású (Citus).
+description: Ez az oktatóanyag bemutatja, hogyan tervezhet több-bérlős adatbázist Azure Database for PostgreSQL nagy kapacitású (Citus) használatával.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b28307783957af2613152c2a8305f3650aa352ac
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386392"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530726"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 

@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294390"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531389"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Korábban automatikusan kiépített eszközök kiépítése 
 
@@ -43,7 +43,7 @@ Egyéni regisztrációval rendelkező eszköz kiépítése:
 
 
 ## <a name="enrollment-groups"></a>Beléptetési csoportok
-Az X. 509 igazolásával az eszközök beléptetési csoporton keresztül is üzembe helyezhetők. A beléptetési csoportok az aláíró tanúsítvánnyal, vagy egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal vannak konfigurálva, és a tanúsítványhoz tartozó eszközökhöz való hozzáférés szabályozása a tanúsítvány láncában. További információ a regisztrációs csoportokról és az X. 509 tanúsítványokról a kiépítési szolgáltatással kapcsolatban: [x. 509 tanúsítványok](concepts-security.md#x509-certificates). 
+Az X. 509 igazolásával az eszközök beléptetési csoporton keresztül is üzembe helyezhetők. A beléptetési csoportok az aláíró tanúsítvánnyal, vagy egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal vannak konfigurálva, és a tanúsítványhoz tartozó eszközökhöz való hozzáférés szabályozása a tanúsítvány láncában. További információ a regisztrációs csoportokról és az X. 509 tanúsítványokról a kiépítési szolgáltatással kapcsolatban: [x. 509 tanúsítvány igazolása](concepts-x509-attestation.md). 
 
 A regisztrációs csoporton keresztül kiépített eszközök listájának megtekintéséhez tekintse meg a regisztrációs csoport adatait. Ezzel a módszerrel egyszerűen megtudhatja, hogy melyik IoT hub-eszköz lett kiépítve. Az eszközök listájának megtekintése: 
 

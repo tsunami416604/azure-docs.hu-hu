@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669039"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530743"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
 
-Az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)segítségével az X. 509 tanúsítvánnyal automatikusan kiépítheti IoT Edge eszközeit. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át az [automatikus kiépítési fogalmakat](../iot-dps/concepts-auto-provisioning.md) .
+Az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)segítségével az X. 509 tanúsítvánnyal automatikusan kiépítheti IoT Edge eszközeit. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy eszköz-kiépítési szolgáltatást az X. 509 tanúsítványokkal egy IoT Edge eszközön a következő lépésekkel:
 

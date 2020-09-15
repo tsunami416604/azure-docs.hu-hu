@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606506"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532030"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
 
@@ -20,25 +20,49 @@ ms.locfileid: "81606506"
 
 A származtatott oszlop átalakításával új oszlopokat hozhatja ki az adatfolyamban, vagy módosíthatja a meglévő mezőket.
 
-## <a name="derived-column-settings"></a>Származtatott oszlop beállításai
+## <a name="create-and-update-columns"></a>Oszlopok létrehozása és frissítése
 
-Meglévő oszlop felülbírálásához válassza ki azt az oszlop legördülő listából. Ellenkező esetben használja az oszlop kijelölése mezőt a szövegmezőbe, és írja be az új oszlop nevét. A származtatott oszlop kifejezésének létrehozásához kattintson a "kifejezés beírása" mezőre az adatfolyam- [kifejezés-szerkesztő](concepts-data-flow-expression-builder.md)megnyitásához.
+Származtatott oszlop létrehozásakor létrehozhat egy új oszlopot, vagy frissítheti a meglévőket. Az **oszlop** szövegmezőbe írja be a létrehozandó oszlopot. A séma meglévő oszlopának felülbírálásához használhatja az oszlop legördülő menüt. A származtatott oszlop kifejezésének létrehozásához kattintson a **kifejezés megadása** szövegmezőre. Megkezdheti a kifejezés beírását, vagy megnyithatja a kifejezés-szerkesztőt a logika létrehozásához.
 
-![Származtatott oszlop beállításai](media/data-flow/dc1.png "Származtatott oszlop beállításai")
+![Származtatott oszlop beállításai](media/data-flow/create-derive-column.png "Származtatott oszlop beállításai")
 
-További származtatott oszlopok hozzáadásához vigye a kurzort egy meglévő származtatott oszlop fölé, és kattintson a plusz ikonra. Válassza az **oszlop hozzáadása** vagy az **oszlop hozzáadása mintát**. Az oszlop mintái hasznosak lehetnek, ha az oszlopnevek a forrásokból származó változók. További információ: [Column Patterns](concepts-data-flow-column-pattern.md).
+További származtatott oszlopok hozzáadásához kattintson a **Hozzáadás** az oszlopok fölé, vagy a meglévő származtatott oszlop melletti plusz ikonra. Válassza az **oszlop hozzáadása** vagy az **oszlop hozzáadása mintát**.
 
-![Új származtatott oszlop kiválasztása](media/data-flow/columnpattern.png "Új származtatott oszlop kiválasztása")
+![Új származtatott oszlop kiválasztása](media/data-flow/add-derived-column.png "Új származtatott oszlop kiválasztása")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Sémák összeállítása a kimeneti séma ablaktáblán
+### <a name="column-patterns"></a>Oszlopminták
 
-A módosítani kívánt oszlopok és a séma hozzáadása a kimeneti séma ablaktáblán látható. Itt interaktív módon hozhat létre egyszerű és összetett adatstruktúrákat. További mezők hozzáadásához válassza az **oszlop hozzáadása**lehetőséget. Hierarchiák létrehozásához válassza az **aloszlop hozzáadása**elemet.
+Olyan esetekben, ahol a séma nincs explicit módon definiálva, vagy ha nagy mennyiségű oszlopot szeretne frissíteni, érdemes lehet oszlop-mintázatokat létrehozni. Az oszlopok mintázatai lehetővé teszik az oszlopok egyeztetését az oszlop metaadatainak alapján, és származtatott oszlopok létrehozása az egyes egyező oszlopokhoz. További információért olvassa el, [hogyan hozhat létre oszlopos mintákat](concepts-data-flow-column-pattern.md#column-patterns-in-derived-column-and-aggregate) a származtatott oszlop-átalakításban.
 
-![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
+![Oszlopminták](media/data-flow/column-pattern-derive.png "Oszlopminták")
+
+## <a name="building-schemas-using-the-expression-builder"></a>Sémák kiépítése a Expression Builder használatával
+
+A leképezési adatfolyam [-Kifejezésszerkesztő](concepts-data-flow-expression-builder.md)használatakor **a származtatott oszlopok szakaszban** hozhatja létre, szerkesztheti és kezelheti a származtatott oszlopokat. Az átalakításban létrehozott vagy módosított összes oszlop fel van sorolva. Az oszlop nevére kattintva interaktív módon kiválaszthatja, hogy melyik oszlopot vagy mintázatot kívánja szerkeszteni. További oszlop hozzáadásához válassza az **új létrehozása** lehetőséget, és adja meg, hogy egyetlen oszlopot vagy mintát kíván-e hozzáadni.
+
+![Új oszlop létrehozása](media/data-flow/derive-add-column.png "Új oszlop létrehozása")
+
+Összetett oszlopok használatakor aloszlopokat is létrehozhat. Ehhez kattintson a plusz ikonra bármely oszlop mellett, majd válassza az **aloszlop hozzáadása**lehetőséget. Az összetett típusok az adatforgalomban való kezelésével kapcsolatos további információkért lásd: [JSON-kezelés a leképezési folyamatokban](format-json.md#mapping-data-flow-properties).
+
+![Aloszlop hozzáadása](media/data-flow/derive-add-subcolumn.png "Aloszlop hozzáadása")
 
 Az összetett típusok az adatforgalomban való kezelésével kapcsolatos további információkért lásd: [JSON-kezelés a leképezési folyamatokban](format-json.md#mapping-data-flow-properties).
 
-![Összetett oszlop hozzáadása](media/data-flow/complexcolumn.png "Oszlopok hozzáadása")
+![Összetett oszlop hozzáadása](media/data-flow/derive-complex-column.png "Oszlopok hozzáadása")
+
+### <a name="locals"></a>Figyelőpontjaival
+
+Ha több oszlop között osztja meg a logikát, vagy a logikát szeretné felosztják, a származtatott oszlopok átalakításán belül is létrehozhat helyi beállításokat. A helyi olyan logikai halmaz, amely nem lesz propagálva a következő átalakításra. A helyi beállítások a kifejezés-szerkesztőben hozhatók létre, ha a **kifejezés elemek elemre** kattint, és kiválasztja a **területi beállításokat**. Hozzon létre egy újat az **új létrehozása**lehetőség kiválasztásával.
+
+![Helyi létrehozása](media/data-flow/create-local.png "Helyi létrehozása")
+
+A területi beállítások hivatkozhatnak bármely kifejezés elemre egy származtatott oszlopból, beleértve a függvényeket, a bemeneti sémát, a paramétereket és az egyéb területi beállításokat is. Ha más területi beállításokra hivatkozik, a sorrend nem számít, mivel a hivatkozott helyi verziónak a jelenleginek kell lennie.
+
+![Helyi 2 létrehozása](media/data-flow/create-local-2.png "Helyi 2 létrehozása")
+
+Ha egy származtatott oszlopban lévő helyire szeretne hivatkozni, kattintson a helyi **elemre a kifejezés elemek** nézetből, vagy hivatkozzon rá a neve előtt található kettőspontra. Például egy Helyi1 nevű helyi hivatkozásra a következő hivatkozik: `:local1` . Helyi definíció szerkesztéséhez vigye a kurzort a kifejezés elemei nézetben, és kattintson a ceruza ikonra.
+
+![Helyi beállítások használata](media/data-flow/using-locals.png "Helyi beállítások használata")
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -63,7 +87,7 @@ Az alábbi példa egy nevű származtatott oszlop `CleanData` , amely egy bejöv
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
-![Példa származtatása](media/data-flow/derive-script1.png "Példa származtatása")
+![Példa származtatása](media/data-flow/derive-script.png "Példa származtatása")
 
 Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
@@ -77,6 +101,6 @@ MoviesYear derive(
             ) ~> CleanData
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [leképezési adatfolyam kifejezésének nyelvéről](data-flow-expression-functions.md).

@@ -3,12 +3,12 @@ title: Azure Event Hubs – Apache Kafka események feldolgozása
 description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan dolgozhatja fel az Event hub-n keresztül betöltött Kafka-eseményeket Azure Stream Analytics használatával'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074920"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531287"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
 Ez a cikk bemutatja, hogyan továbbíthatja az adatstreameket a Event Hubsba, és hogyan dolgozhatja fel azokat Azure Stream Analytics használatával. Végigvezeti a következő lépéseken: 
@@ -136,7 +136,7 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 3. Cserélje le `[YourInputAlias]` a nevet a korábban létrehozott bemeneti aliasra. 
 4. Válassza az eszköztár **Save** (Mentés) elemét. 
 
-    ![Lekérdezés](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![A képernyőfelvételen a bemeneti és a kimeneti változók értékeit tartalmazó lekérdezési ablak látható.](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
@@ -170,5 +170,5 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan végezheti el a Event Hubs továbbítását a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Ha többet szeretne megtudni a Apache Kafka Event Hubsről, tekintse meg [Az Azure Event Hubs Apache Kafka fejlesztői útmutató](apache-kafka-developer-guide.md)című témakört. 

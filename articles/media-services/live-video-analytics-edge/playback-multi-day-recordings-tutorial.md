@@ -3,12 +3,12 @@ title: Több napos felvétel lejátszása – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Media Service API-kat többnapos folyamatos videofelvételek lejátszásához.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649091"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530573"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Oktatóanyag: több napos felvétel lejátszása  
 
@@ -72,11 +72,11 @@ Ezután a Visual Studio Code-ban nyissa meg az src/AMS-Asset-Player elemet. Ez a
 
 A Visual Studio Code-ban a bal oldalon (vagy a CTRL + SHIFT + D) a Futtatás ikonra kattintva megtekintheti az elérhető alkalmazásokat:
 
-![Futtatás](./media/playback-multi-day-recordings-tutorial/run.png)
+![Képernyőfelvétel: a Visual Studio Code egy menüje, amelyen a Futtatás elem van kiválasztva.](./media/playback-multi-day-recordings-tutorial/run.png)
  
 Válassza ki az AMS Asset Player alkalmazást a legördülő listából az alább látható módon, és nyomja le az F5 billentyűt a hibakeresés megkezdéséhez.
 
-![Hibakeresés](./media/playback-multi-day-recordings-tutorial/debug.png)
+![Képernyőfelvétel: egy menü megjelenítése a Visual Studio Code-ban az AMS Asset Player kiválasztásával.](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 A minta alkalmazás létrehozza és elindítja az alapértelmezett böngésző alkalmazást, és megnyitja az AMS-eszköz Player-lapját.
 
@@ -102,6 +102,6 @@ Ha a listában szereplő bármelyik bejegyzésre kattint, az alkalmazás létreh
 
 Azt is megteheti, hogy meghatározott kezdési és befejezési időpontokat használ az oldal alján található vezérlőkkel. A availableMedia-hívás eredményeit a jobb oldalon látható módon, a kezdő és a befejező időpontok megengedett értékeire mutató útmutatóként használhatja. Az időpontok és a befejezési szűrők részletes megkötéseit dokumentáljuk a útmutatóban [: a felvételek lejátszása](playback-recordings-how-to.md). Az időértékek kiválasztása után ha a Submit (küldés) gombra kattint, az alkalmazás betölti a lejátszót egy streaming URL-címmel, például: https://{hostname}/{locatorId}/Content. ISM/manifest (Format = mpd-Time-CSF, kezdő időpont = éééé-hh-NNTÓÓ: PP: MM, Befejezés = éééé-hh-NNTÓÓ: PP: mm)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszásra](event-based-video-recording-tutorial.md)

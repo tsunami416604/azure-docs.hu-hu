@@ -1,23 +1,23 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub használatával | Microsoft Docs
 description: Az Azure IoT Hub Device Provisioning Service (DPS) automatikus kiépítés használata a MXChip-IoT fejlesztői készlet a IoT Hubsal való regisztrálásához.
-author: liydu
-ms.author: liydu
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: jeffya
-ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotgra
+ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975652"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528653"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub
 
-Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioning Service [automatikus kiépítés](concepts-auto-provisioning.md)a MXChip-IoT fejlesztői készlet az azure-IoT hub való regisztrálásához. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT hub Device Provisioning Service a MXChip-IoT fejlesztői készlet Azure-IoT hub való [kiépítés](about-iot-dps.md#provisioning-process) . Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Konfigurálja az eszköz kiépítési szolgáltatásának globális végpontját egy eszközön.
 * X. 509 tanúsítvány létrehozásához használjon egyedi frissítési.
@@ -45,7 +45,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Egyedi eszköz titkos kulcsának mentése az eszköz biztonsági tárolóján
 
-Az automatikus kiépítés konfigurálható az eszköz [igazolási mechanizmusa](concepts-security.md#attestation-mechanism)alapján. A MXChip IoT fejlesztői készlet az [eszköz Identity kompozíciós motorját](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) használja a [Trusted Computing Group](https://trustedcomputinggroup.org). Az eszköz egyedi [X. 509 tanúsítványának](concepts-security.md#x509-certificates)létrehozásához a rendszer az STSAFE biztonsági chipben ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) mentett egyedi frissítési- **kulcsot** használja. A tanúsítvány később a beléptetési folyamathoz használatos az eszköz kiépítési szolgáltatásában, és a regisztráció során futásidőben.
+Az automatikus kiépítés konfigurálható az eszköz [igazolási mechanizmusa](concepts-service.md#attestation-mechanism)alapján. A MXChip IoT fejlesztői készlet az [eszköz Identity kompozíciós motorját](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) használja a [Trusted Computing Group](https://trustedcomputinggroup.org). Az eszköz egyedi [X. 509 tanúsítványának](concepts-x509-attestation.md)létrehozásához a rendszer az STSAFE biztonsági chipben ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) mentett egyedi frissítési- **kulcsot** használja. A tanúsítvány később a beléptetési folyamathoz használatos az eszköz kiépítési szolgáltatásában, és a regisztráció során futásidőben.
 
 A tipikus frissítési egy 64 karakterből álló karakterlánc, amely a következő mintában látható:
 
@@ -128,7 +128,7 @@ Ha problémákba ütközik, tekintse meg a IOT fejlesztői készlet [Gyakori ké
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan regisztrálhat egy eszközt biztonságosan az eszköz kiépítési szolgáltatásához az eszköz identitás-összeállítási motorjának használatával, hogy az eszköz automatikusan regisztrálja az Azure IoT Hub-t. 
 

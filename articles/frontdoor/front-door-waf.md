@@ -1,32 +1,40 @@
 ---
 title: Webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure Web Application Firewall (WAF) használatával | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan használhatja a webalkalmazási tűzfalat az Azure bejárati ajtó szolgáltatásával
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a webalkalmazási tűzfalat az Azure bejárati ajtó szolgáltatásával
 services: frontdoor
 documentationcenter: ''
 author: duongau
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2020
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1958481193b66c8cec2cb6a1ac6648a6900d70ac
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535431"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531202"
 ---
-# <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Webalkalmazások gyors méretezése és biztosítása az Azure-előtérben és az Azure webalkalmazási tűzfal (WAF) használatával
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure Web Application Firewall (WAF) használatával
 
 Számos webalkalmazás a COVID-19-re vonatkozó legutóbbi hetekben gyors növekedést észlelt a forgalomban. Emellett ezek a webalkalmazások is megfigyelik a kártékony forgalmat, beleértve a szolgáltatásmegtagadási támadásokat is. Az ilyen igények kezelésének hatékony módja, a forgalom felskálázása és a támadások elleni védelem lehetővé tétele, hogy az Azure WAF gyorsított, gyorsítótárazási és biztonsági rétegként állítsa be a webalkalmazás előtt. Ez a cikk útmutatást nyújt arról, hogyan lehet gyorsan beolvasni ezt az Azure-előtérben az Azure WAF Setup használatával az Azure-ban vagy azon kívül futó webalkalmazásokhoz. 
 
 Ebben az oktatóanyagban az Azure CLI használatával állíthatja be a WAF, de ezek a lépések teljes mértékben támogatottak Azure Portal, Azure PowerShell, Azure ARM és Azure REST API-k esetében is. 
 
-## <a name="prerequisites"></a>Előfeltételek
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+> [!div class="checklist"]
+> - Hozzon létre egy bejárati ajtót.
+> - Hozzon létre egy Azure WAF szabályzatot.
+> - Szabályrendszerek konfigurálása a WAF-házirendhez.
+> - WAF-házirend hozzárendelése a bejárati ajtóhoz
+> - Egyéni tartomány konfigurálása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben a blogban található utasítások az Azure parancssori felületét (CLI) használják. Tekintse meg ezt az útmutatót az [Azure CLI megkezdéséhez](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
@@ -40,8 +48,7 @@ az extension add --name front-door
 
 Megjegyzés: az alábbi parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciáját az előtérben](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest).
 
-## <a name="step-1-create-an-azure-front-door-afd-resource"></a>1. lépés: Azure bejárati ajtó (AFD) erőforrásának létrehozása
-
+## <a name="create-an-azure-front-door-afd-resource"></a>Azure bejárati ajtó (AFD) erőforrásának létrehozása
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
@@ -57,7 +64,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 A parancs sikeres végrehajtása után kapott válaszban keresse meg a "hostName" kulcsot, és jegyezze fel az értékét, amelyet egy későbbi lépésben használni fog. Az állomásnév a létrehozott AFD-erőforrás DNS-neve.
 
-## <a name="step-2-create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>2. lépés: Azure-beli WAF-profil létrehozása az Azure-beli előtérben lévő erőforrásokkal való használathoz
+## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Azure-beli WAF-profil létrehozása az Azure-beli előtérben lévő erőforrásokkal való használathoz
 
 ```azurecli-interactive 
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
@@ -75,7 +82,7 @@ A parancs sikeres végrehajtása után kapott válaszban keresse meg az "ID" kul
 
 /Subscriptions/**előfizetés azonosítója**/resourcegroups/**erőforráscsoport neve**/Providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF házirend neve**
 
-## <a name="step-3-add-managed-rulesets-to-this-waf-policy"></a>3. lépés: felügyelt szabályrendszerek hozzáadása ehhez a WAF-házirendhez
+## <a name="add-managed-rulesets-to-this-waf-policy"></a>Felügyelt szabályrendszerek hozzáadása ehhez a WAF-házirendhez
 
 Egy WAF szabályzatban hozzáadhat olyan felügyelt szabályrendszerek, amely a Microsoft által készített és felügyelt szabályok halmaza, és a teljes veszélyforrások elleni védelmet nyújt a jelölőnégyzetből. Ebben a példában két olyan szabályrendszerek (1) adunk hozzá, amely védelmet nyújt a gyakori webes fenyegetésekkel szemben, és (2) bot Protection szabályrendszert, amely védelmet biztosít a rosszindulatú robotok ellen
 
@@ -95,7 +102,7 @@ az network front-door waf-policy managed-rules add --policy-name <> --resource-g
 
 --Resource-Group az az erőforráscsoport, amelyet a WAF-erőforrásba helyezett.
 
-## <a name="step-4-associate-the-waf-policy-with-the-afd-resource"></a>4. lépés: a WAF szabályzat hozzárendelése a AFD-erőforráshoz
+## <a name="associate-the-waf-policy-with-the-afd-resource"></a>A WAF szabályzat hozzárendelése a AFD-erőforráshoz
 
 Ebben a lépésben társítjuk a WAF szabályzatot, amely a webalkalmazás előtt található AFD-erőforrással lett létrehozva.
 
@@ -113,7 +120,7 @@ Megjegyzés: a fenti példa arra az esetre mutat, ha nem egyéni tartományt has
 
 Ha nem használ egyéni tartományokat a webalkalmazásokhoz való hozzáféréshez, kihagyhatja a következő lépést: #5. Ebben az esetben a végfelhasználóknak a webalkalmazáshoz való kapcsolódáshoz a #1 lépésben beszerzett állomásnevet fogja biztosítani
 
-## <a name="step-5-configure-custom-domain-for-your-web-application"></a>5. lépés: egyéni tartomány konfigurálása a webalkalmazáshoz
+## <a name="configure-custom-domain-for-your-web-application"></a>Egyéni tartomány konfigurálása a webalkalmazáshoz
 
 Kezdetben a webalkalmazás egyéni tartományneve (amelyet az ügyfelek az alkalmazásra hivatkoznak, például www.contoso.com) arra a helyre mutattak, ahol a AFD bevezetése előtt futott. Az architektúra ezen változása után a AFD + WAF hozzáadásával az alkalmazás előtt az adott egyéni tartománynak megfelelő DNS-bejegyzésnek most erre a AFD-erőforrásra kell mutatnia. Ezt úgy teheti meg, hogy a DNS-kiszolgálón lévő bejegyzést újraképezi a AFD állomásnévvel, amelyet a #1 lépésben észlelt.
 
@@ -125,6 +132,23 @@ Emellett frissítenie kell a AFD-konfigurációt az [egyéni tartomány hozzáad
 
 Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt, rendelkeznie kell az [egyéni tartomány beállításához tartozó tanúsítványokkal a AFD-ben](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
 
-## <a name="step-6-lock-down-your-web-application"></a>6. lépés: a webalkalmazás zárolása
+## <a name="lock-down-your-web-application"></a>A webalkalmazás zárolása
 
 Az egyik választható ajánlott eljárás az, hogy csak a AFD élek kommunikáljanak a webalkalmazással. Ez a művelet gondoskodik arról, hogy senki ne kerüljék el a AFD-védelmet, és közvetlenül hozzáférjenek az alkalmazásaihoz. Ezt a zárolást úgy érheti el, ha meglátogatja a [AFD GYIK szakaszát](https://docs.microsoft.com/azure/frontdoor/front-door-faq) , és rámutatott arra a kérdésre, hogy csak a AFD fér hozzá a hozzáférési háttérrendszer-zároláshoz.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs szüksége az oktatóanyag erőforrásaira, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF házirendet.
+
+```azurecli-interactive
+  az group delete \
+    --name <>
+```
+– nevezze el az oktatóanyagban üzembe helyezett összes erőforrás erőforráscsoport-nevét.
+
+## <a name="next-steps"></a>Következő lépések
+
+Ha meg szeretné tudni, hogyan lehet elhárítani a bejárati ajtót, folytassa a útmutatók útmutatását.
+
+> [!div class="nextstepaction"]
+> [Gyakori útválasztási problémák elhárítása](front-door-troubleshoot-routing.md)

@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 261d85c60473749719830c380d8a4866d7561874
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438040"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530454"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -87,5 +87,5 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A Key Vault biztonságossá tétele](secure-your-key-vault.md))
+* [A Key Vault biztonságossá tétele](secure-your-key-vault.md)
 * [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](network-security.md)
