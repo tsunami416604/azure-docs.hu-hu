@@ -2,26 +2,12 @@
   href: index.yml
 - name: Fordító
   items:
-    - name: Áttekintés
-      items:
-        - name: Mi az a Translator?
-          href: translator-info-overview.md
-        - name: Nyelvi támogatás
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
-    - name: Rövid útmutatók
-      items:
-        - name: Szöveg lefordítása
-          href: quickstart-translate.md
-        - name: Szöveg átírása
-          href: quickstart-transliterate.md
-        - name: Nyelv felismerése
-          href: quickstart-detect.md
-        - name: Szófordítások keresése
-          href: quickstart-dictionary.md
-        - name: Támogatott nyelvek lekérése
-          href: quickstart-languages.md
-        - name: Mondat hosszának meghatározása
-          href: quickstart-sentences.md
+    - name: Mi az a Translator?
+      href: translator-info-overview.md
+    - name: Gyorsútmutató
+      href: quickstart-translator.md
+    - name: Nyelvi támogatás
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Oktatóanyagok
       items:
         - name: 'Translatort használó WPF-alkalmazás létrehozása, C#'
