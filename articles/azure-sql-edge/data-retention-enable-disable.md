@@ -61,7 +61,7 @@ A `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD = 
 - FILTER_COLUMN – a tábla azon oszlopának neve, amely annak megállapítására szolgál, hogy a sorok elavultak-e vagy sem. A szűrő oszlop csak a következő adattípusú oszlop lehet. 
     - Dátum
     - Idő adattípusúra
-    - Dátum/idő
+    - DateTime
     - DateTime2
     - DateTimeOffset
 - RETENTION_PERIOD – egész érték, amelyet egy egység leírója követ. Az engedélyezett egységek: nap, hét, hónap és év.

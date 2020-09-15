@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797542"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565464"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Csoport hozzáadása vagy eltávolítása egy másik csoportból a Azure Active Directory használatával
 Ebből a cikkből megtudhatja, hogyan adhat hozzá és távolíthat el egy csoportot egy másik csoportból Azure Active Directory használatával.
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan adhat hozzá és távolíthat el egy csopo
 Hozzáadhat egy meglévő biztonsági csoportot egy másik meglévő biztonsági csoporthoz (más néven beágyazott csoporthoz), egy csoporttag (alcsoport) és egy szülő csoport létrehozásához. A csoporttag örökli a szülő csoport attribútumait és tulajdonságait, és menti a konfigurációs időt.
 
 >[!Important]
->Jelenleg nem támogatjuk a következőket:<ul><li>Csoportok hozzáadása a helyszíni Active Directory szinkronizált csoportokhoz.</li><li>Biztonsági csoportok hozzáadása az Office 365-csoportokhoz.</li><li>Office 365-csoportok hozzáadása biztonsági csoportokhoz vagy más Office 365-csoportokhoz.</li><li>Alkalmazások kiosztása beágyazott csoportokhoz.</li><li>Licencek alkalmazása beágyazott csoportokra.</li><li>Terjesztési csoportok hozzáadása beágyazási forgatókönyvekben.</li></ul>
+>Jelenleg nem támogatjuk a következőket:<ul><li>Csoportok hozzáadása a helyszíni Active Directory szinkronizált csoportokhoz.</li><li>Biztonsági csoportok hozzáadása Microsoft 365 csoportokhoz.</li><li>Microsoft 365 csoportok hozzáadása biztonsági csoportokhoz vagy más Microsoft 365-csoportokhoz.</li><li>Alkalmazások kiosztása beágyazott csoportokhoz.</li><li>Licencek alkalmazása beágyazott csoportokra.</li><li>Terjesztési csoportok hozzáadása beágyazási forgatókönyvekben.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Csoport hozzáadása egy másik csoport tagjaként
 

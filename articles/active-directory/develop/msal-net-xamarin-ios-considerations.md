@@ -151,7 +151,7 @@ Ha kérdése van, vagy szeretne jelenteni egy problémát a MSAL.NET-ben, nyisso
 
 További információ a Xamarin iOS-es tulajdonságairól: a következő minta README.md-fájljának [iOS-specifikus szempontjait](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) ismertető bekezdése:
 
-Sample | Platform | Description
+Sample | Platform | Leírás
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Univerzális Windows-platform (UWP) | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan hitelesítheti a Microsoft személyes fiókjait és az Azure AD-t az Azure AD 2,0-végponton keresztül a MSAL használatával. Az alkalmazás azt is bemutatja, hogyan használható az eredményül kapott jogkivonat a Microsoft Graph eléréséhez.
 

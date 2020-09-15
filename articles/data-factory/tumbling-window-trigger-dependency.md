@@ -81,9 +81,9 @@ Az alábbi táblázat tartalmazza az ablak függőségének definiálásához sz
 
 | **Tulajdonság neve** | **Leírás**  | **Típus** | **Kötelező** |
 |---|---|---|---|
-| típus  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Yes |
+| típus  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Igen |
 | offset | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Időtartomány<br/>(óó: PP: SS) | Önálló függőség: igen<br/>Egyéb: nem |
-| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | No  |
+| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | Nem  |
 
 > [!NOTE]
 > A kihelyezett ablakos eseményindítók legfeljebb öt másik eseményindítótól függnek.

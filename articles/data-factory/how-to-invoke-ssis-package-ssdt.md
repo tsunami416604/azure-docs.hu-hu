@@ -11,13 +11,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 08/10/2020
-ms.openlocfilehash: 006b7db9f63f5ba74fee936383206b18c42aa038
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 09/06/2020
+ms.openlocfilehash: fb5b5cb0ac4a9ace7b5de5e92308da58fd2b1fec
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041850"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504944"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-csomagok végrehajtása az Azure-ban a SSDT-ből
 
@@ -45,7 +45,7 @@ Az Azure-kompatibilis projekt létrehozása után a rendszer felszólítja, hogy
 
 Ha azonnal szeretne csatlakozni a Azure-SSIS IRhoz, további részletekért lásd: [Csatlakozás a Azure-SSIS IRhoz](#connectssisir) . Később is csatlakozhat, ha a SSDT Megoldáskezelő ablakában a jobb gombbal rákattint a projekt csomópontjára, és megnyit egy menüt. Ezután válassza a **Kapcsolódás a SSIS Azure Data Factory** elemet a **SSIS Azure Data Factory** almenüjében.
 
-### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a>Azure – meglévő SSIS-projektek engedélyezése
+### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a> Azure – meglévő SSIS-projektek engedélyezése
 
 A meglévő SSIS-projektek esetében az alábbi lépéseket követve engedélyezheti az Azure-t:
 
@@ -57,13 +57,13 @@ A meglévő SSIS-projektek esetében az alábbi lépéseket követve engedélyez
 
    ![Visual Studio-konfiguráció kiválasztása](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Azure – a meglévő SSIS-projektek engedélyezése megköveteli a célkiszolgáló verziójának beállítását, hogy az Azure-SSIS IR által támogatott legkésőbbi legyen. Jelenleg Azure-SSIS IR alapértelmezett kompatibilitási szintje 140, ami egyenlő a **SQL Server 2017**értékkel. Győződjön meg arról, hogy a csomagok nem tartalmaznak olyan további összetevőket, amelyeket nem támogat a SQL Server 2017. Győződjön meg arról is, hogy az összes kompatibilis további összetevő is telepítve van a Azure-SSIS IR egyéni telepítéseken keresztül: [a Azure-SSIS IR testreszabása](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). A folytatáshoz kattintson a **tovább** gombra.
+3. Azure – a meglévő SSIS-projektek engedélyezése megköveteli a célkiszolgáló verziójának beállítását, hogy az Azure-SSIS IR által támogatott legkésőbbi legyen. Azure-SSIS IR jelenleg **SQL Server 2017**-alapú. Győződjön meg arról, hogy a csomagok nem tartalmaznak olyan további összetevőket, amelyeket nem támogat a SQL Server 2017. Győződjön meg arról is, hogy az összes kompatibilis további összetevő is telepítve van a Azure-SSIS IR egyéni telepítéseken keresztül: [a Azure-SSIS IR testreszabása](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). A folytatáshoz kattintson a **tovább** gombra.
 
    ![A célkiszolgáló verziójának váltása](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
 4. A projekt Azure-SSIS IRhoz való csatlakoztatásának befejezéséhez tekintse meg a [Csatlakozás a Azure-SSIS IRhoz](#connectssisir) című témakört.
 
-## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a>Azure-kompatibilis projektek összekapcsolása a Azure Data Factory SSIS
+## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a> Azure-kompatibilis projektek összekapcsolása a Azure Data Factory SSIS
 
 Az Azure-kompatibilis projektek ADF-SSIS való csatlakoztatásával feltöltheti a csomagokat Azure Filesba, és futtathatja azokat Azure-SSIS IR. Ezt a következő lépések végrehajtásával teheti meg:
 
@@ -117,7 +117,7 @@ Ha biztos benne, hogy egyes lehetséges Felhőbeli kompatibilitási problémák 
 
 ## <a name="execute-ssis-packages-in-azure"></a>SSIS-csomagok végrehajtása az Azure-ban
 
-### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a>Az Azure-kompatibilis beállítások konfigurálása
+### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a> Az Azure-kompatibilis beállítások konfigurálása
 
 A csomagok Azure-ban való végrehajtása előtt beállíthatja az Azure-ban engedélyezett beállításokat. Engedélyezheti például a Windows-hitelesítést a Azure-SSIS IR a helyszíni/Felhőbeli adattárak eléréséhez a következő lépések végrehajtásával:
 
@@ -151,7 +151,7 @@ Miután csatlakoztatta az Azure-t támogató projektjeit az ADF-hez való SSIS, 
 
 Ha a csomagok a helyi fájlrendszereken tárolt gyermek csomagokra hivatkozó csomagokat tartalmaznak, hajtsa végre az alábbi további lépéseket:
 
-1. Töltse fel a gyermek csomagokat a projektekhez kapcsolódó Azure Storage-fiókba Azure Filesba, és szerezzen be új univerzális elnevezési konvenció (UNC) elérési útját, például:`\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
+1. Töltse fel a gyermek csomagokat a projektekhez kapcsolódó Azure Storage-fiókba Azure Filesba, és szerezzen be új univerzális elnevezési konvenció (UNC) elérési útját, például: `\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
 
 2. A csomagok elérési útjának cseréje a Fájlkezelőben az új UNC elérési úttal
    - Ha a SSDT-t futtató helyi gép nem fér hozzá az új UNC elérési úthoz, megadhatja azt a file kapcsolatkezelő tulajdonságok paneljén.
@@ -168,7 +168,7 @@ A SSIS-csomagok Azure-ban való végrehajtása nem támogatja a **EncryptSensiti
 
 Ha a csomagok már úgy vannak konfigurálva, hogy **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** védelmi szinteket használjanak, változatlanok maradnak. Ha a csomagokat Azure Filesba tölti fel a Azure-SSIS IR-ban, a rendszer továbbra is véletlenszerűen generált titkosítási jelszavakat.
 
-### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a>Csomagok végrehajtási környezetének váltása
+### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a> Csomagok végrehajtási környezetének váltása
 
 Ha projekt-/csomagjait parametrizálja a projekt-telepítési modellben, több VS konfigurációt is létrehozhat a csomagok végrehajtási környezetének váltásához. Így környezet-specifikus értékeket is hozzárendelhet a projekt/csomag paramétereinek futtatásához. Javasoljuk, hogy a helyi és a felhőalapú környezetekben legalább két különböző VS konfigurációval rendelkezzen a csomagok végrehajtásához, így az Azure-ban is engedélyezheti projektjeit a felhő konfigurációjával. Íme egy lépésenkénti példa a csomagok végrehajtási környezetének váltására a helyi gép és az Azure között:
 
@@ -204,6 +204,6 @@ A csomag végrehajtásának megkezdése után a naplókat a SSDT **folyamatjelz�
 
 -  Az Azure-kompatibilis SSDT csak a kereskedelmi/globális Felhőbeli régiókat támogatja, és jelenleg nem támogatja a kormányzati/nemzeti Felhőbeli régiókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meggyőződött arról, hogy a csomagokat az Azure-ban futtatja a SSDT-ból, üzembe helyezheti és futtathatja őket az ADF-folyamatokban végrehajtható SSIS-csomag tevékenységként, lásd: [SSIS-csomagok futtatása az ADF-folyamatokban végrehajtható SSIS csomagként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

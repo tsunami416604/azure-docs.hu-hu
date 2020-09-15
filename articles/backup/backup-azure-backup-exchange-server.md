@@ -62,7 +62,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
 
    * Rövid távú védelmet szeretnék a lemezzel.
    * Online védelmet szeretnék.
-6. Kattintson a **Tovább** gombra.
+6. Válassza a **Tovább** gombot.
 7. Jelölje be az **eseutil futtatása az adatok sértetlenségének ellenőrzése** lehetőséget, ha szeretné megtekinteni az Exchange Server-adatbázisok integritását.
 
     Ha ezt a beállítást választja, a biztonsági mentés konzisztencia-ellenőrzése a DPM-kiszolgálón fog futni, hogy elkerülje az **eseutil** parancsnak az Exchange-kiszolgálón való futtatásával generált I/O-forgalmat.
@@ -72,7 +72,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
    > ![Eseutil-hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Kattintson a **Tovább** gombra.
+8. Válassza a **Tovább** gombot.
 9. Válassza ki az adatbázist a **másolási biztonsági mentéshez**, majd kattintson a **tovább**gombra.
 
    > [!NOTE]

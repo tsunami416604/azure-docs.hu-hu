@@ -1,19 +1,19 @@
 ---
 title: HBase-fürt migrálása egy új verzióra – Azure HDInsight
 description: Apache HBase-fürtök migrálása egy újabb verzióra az Azure HDInsight-ben.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079547"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503992"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase-fürt migrálása egy új verzióra
 
@@ -30,18 +30,18 @@ Az Apache HBase frissítése előtt győződjön meg arról, hogy a forrás-és 
 
 Íme egy példa a verzió kompatibilitási mátrixára. Az Y a kompatibilitást jelzi, az N pedig potenciális inkompatibilitást jelez:
 
-| Kompatibilitási típus | Főverzió| Másodlagos verzió | Patch |
+| Kompatibilitási típus | Főverzió| Alverzió | Patch |
 | --- | --- | --- | --- |
-| Ügyfél – kiszolgáló huzalok kompatibilitása | N | I | I |
-| Kiszolgáló – kiszolgáló kompatibilitás | N | I | I |
-| Fájlformátumok kompatibilitása | N | I | I |
-| Ügyfél API-kompatibilitása | N | I | I |
+| Ügyfél – kiszolgáló huzalok kompatibilitása | N | I | Y |
+| Kiszolgáló – kiszolgáló kompatibilitás | N | I | Y |
+| Fájlformátumok kompatibilitása | N | I | Y |
+| Ügyfél API-kompatibilitása | N | I | Y |
 | Ügyfél bináris kompatibilitása | N | N | I |
 | **Kiszolgálóoldali korlátozott API-kompatibilitás** |  |  |  |
-| Stable | N | I | I |
+| Stable | N | I | Y |
 | Fejlődő | N | N | I |
 | Instabil | N | N | N |
-| Függőségek kompatibilitása | N | I | I |
+| Függőségek kompatibilitása | N | I | Y |
 | Működési kompatibilitás | N | N | I |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Frissítés ugyanazzal az Apache HBase főverzióval
@@ -213,7 +213,7 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
 
 1. Ha az új fürt kielégítő, törölje az eredeti fürtöt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Apache HBase](https://hbase.apache.org/) és a HDInsight-fürtök frissítésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

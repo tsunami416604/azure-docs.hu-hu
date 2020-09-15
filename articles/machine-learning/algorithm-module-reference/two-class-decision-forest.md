@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: c98935781699510d84247f80367d5c57cb388f6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 4de0014abfde32fc4b863afe1cc9000b25d30e83
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137637"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503871"
 ---
 # <a name="two-class-decision-forest-module"></a>Kétosztályos döntési erdő modul
 
@@ -76,7 +76,6 @@ További információ: [döntési erdők](https://go.microsoft.com/fwlink/?LinkI
   
 5.  **A döntési fák maximális mélységéhez**adjon meg egy számot, amely korlátozza a döntési fa maximális mélységét. A fa mélységének növelésével növelheti a pontosságot, és megnövelheti a beilleszkedő és a megnövekedett betanítási időt is.
   
-6.  A **véletlenszerű felosztások száma a csomóponton**mezőben adja meg a fa egyes csomópontjainak kiépítésekor használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) egyes szintjeinek funkciói véletlenszerűen vannak osztva.
   
 7.  A **minták minimális száma a levél csomópontjainál**adja meg az esetek minimális számát, amely szükséges ahhoz, hogy bármely terminál csomópont (levél) a fában legyen létrehozva.
   
@@ -108,6 +107,6 @@ A betanítás befejezése után:
 
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
