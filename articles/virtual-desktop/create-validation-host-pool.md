@@ -6,21 +6,21 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008712"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526510"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
 
 >[!IMPORTANT]
 >Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md).
 
-A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mielőtt üzembe helyezi a gazdagép-készleteket az éles környezetben, javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet. A rendszer először alkalmazza a frissítéseket az érvényesítési gazdagépekre, így a szolgáltatás frissítéseinek figyelésével megfigyelheti őket az éles környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
+A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei, amelyek a Windows rendszerű virtuális asztali környezetben találhatók. Javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet, amelyben először a szolgáltatás frissítéseit alkalmazza a rendszer. Ez lehetővé teszi a szolgáltatások frissítéseinek figyelését, mielőtt a szolgáltatás alkalmazza azokat a standard vagy nem érvényesítési környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami leállást eredményezhet a normál környezetben lévő felhasználók számára.
 
-Annak biztosítása érdekében, hogy az alkalmazások a legújabb frissítésekkel működjenek, az ellenőrzési gazdagép-készletnek a lehető leghasonlónak kell lennie az éles környezetben lévő gazdagépekhez. A felhasználóknak az üzemi gazdagép-készlethez hasonlóan gyakran kell csatlakozniuk az ellenőrzési gazdagéphez. Ha automatizált tesztelést végez a gazdagép-készleten, az automatikus tesztelést is tartalmaznia kell az ellenőrzési gazdagépen.
+Annak biztosítása érdekében, hogy az alkalmazások a legújabb frissítésekkel működjenek, az érvényesítési gazdagépnek ugyanúgy kell lennie, mint amennyire csak lehetséges, a nem érvényesítési környezetben lévő gazdagépekhez hasonlóan. A felhasználóknak a szokásos gazdagép-készlethez hasonlóan gyakran kell csatlakozniuk az ellenőrzési gazdagéphez. Ha automatizált tesztelést végez a gazdagép-készleten, az automatikus tesztelést is tartalmaznia kell az ellenőrzési gazdagépen.
 
 Az érvényesítési gazdagépen lévő hibák hibakereséséhez használhatja a [diagnosztikai szolgáltatást](diagnostics-role-service.md) vagy a [Windows virtuális asztali hibaelhárítási cikkeit](troubleshoot-set-up-overview.md).
 
@@ -73,7 +73,7 @@ A szolgáltatás frissítései havonta történnek. Jelentős problémák eseté
 
 Ha vannak szolgáltatási frissítések, győződjön meg arról, hogy legalább egy kis csoporttal rendelkezik, amely minden nap bejelentkezik a környezet ellenőrzéséhez. Javasoljuk, hogy rendszeresen látogasson el a [TechCommunity-webhelyre](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true) , és kövesse az WVDUPdate-mel kapcsolatos bejegyzéseket, hogy értesüljön a szolgáltatás frissítéseiről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére.
 

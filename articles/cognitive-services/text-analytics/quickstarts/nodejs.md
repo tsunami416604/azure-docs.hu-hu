@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: a Text Analytics meghívásához használja a Node.jst REST API'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódokat, amelyekkel gyorsan megkezdheti az Azure Cognitive Services Text Analytics API használatának első lépéseit.
+description: Ez a rövid útmutató azt ismerteti, hogyan használhatók a Node.js az információk és a kód minták beszerzéséhez, hogy gyorsan megismerkedjen az Cognitive Services Azure-beli Text Analytics API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: fe9877649d850796b03e9f1c3554a1b9aa7344c3
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ecab49ce61e17853f6f8b48d68391798a37da0fd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407744"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527275"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Node.js használata a Text Analytics kognitív szolgáltatás meghívásához  
 <a name="HOLTop"></a>
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan [derítheti fel a nyelveket](#Detect), [el
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelvfelismerés
+## <a name="detect-language"></a>Nyelv felismerése
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
@@ -464,7 +464,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [!div class="nextstepaction"]
 > [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>További információ 
 
  [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

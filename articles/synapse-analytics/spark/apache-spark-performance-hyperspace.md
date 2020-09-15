@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: e87ecc14907c6e0618de47ffdbd334d8ba03ec99
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500622"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526340"
 ---
 # <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hipertér – indexelő alrendszer a Apache Spark
 
@@ -392,7 +392,8 @@ Egy Spark-DataFrame, amely az indexelni kívánt adatokra hivatkozik.
 Egy index konfigurációs objektum: IndexConfig, amely az index nevét, indexelt és belefoglalt oszlopait határozza meg.
 Első lépésként hozzon létre három hipertér indexet a mintaadatok közül: két index a "deptIndex1" és a "deptIndex2" nevű részleg-adatkészletben, valamint egy index a "empIndex" nevű alkalmazotti adatkészletben. Az egyes indexekhez szükség van egy megfelelő IndexConfig, hogy rögzítse a nevet az indexelt és a benne foglalt oszlopok oszlopainak listájával együtt. Az alábbi cella futtatása létrehozza ezeket a indexConfigs, és a kimenete felsorolja őket.
 
-Megjegyzés: az index oszlop olyan oszlop, amely megjelenik a szűrőkben vagy az illesztési feltételekben. A befoglalt oszlop egy olyan oszlop, amely megjelenik a Select/projektben.
+> [!Note]
+> Az index oszlop egy oszlop, amely megjelenik a szűrőkben vagy az illesztési feltételekben. A befoglalt oszlop egy olyan oszlop, amely megjelenik a Select/projektben.
 
 Például a következő lekérdezésben:
 
@@ -508,8 +509,9 @@ Az alábbi kód azt mutatja be, hogyan lehet listázni az összes elérhető ind
 
 Az alábbi cella a DataFrame "show" műveletét használja a sorok teljes kinyomtatásához, és táblázatos formában jeleníti meg az indexek részleteit. Minden egyes indexnél megtekintheti a metaadatokban tárolt hipertér összes információt. A következő értesítést azonnal megtekintheti:
 
-a "config. indexName", a "config. indexedColumns", a "config. includedColumns" és a "status. status" azok a mezők, amelyekhez a felhasználó általában hivatkozik.
-a hipertér automatikusan létrehozza a "dfSignature"-t, és minden index esetében egyedi. A hipertér ezt az aláírást belsőleg használja az index fenntartásához és a lekérdezési időben való kihasználásához.
+* a "config. indexName", a "config. indexedColumns", a "config. includedColumns" és a "status. status" azok a mezők, amelyekhez a felhasználó általában hivatkozik.
+* a hipertér automatikusan létrehozza a "dfSignature"-t, és minden index esetében egyedi. A hipertér ezt az aláírást belsőleg használja az index fenntartásához és a lekérdezési időben való kihasználásához.
+
 Az alábbi kimenetben mindhárom indexnek "aktív" állapotúnak kell lennie, valamint a nevüknek, az indexelt oszlopoknak és a tartalmazott oszlopoknak meg kell egyezniük a fenti index-konfigurációkban definiált értékkel.
 
 :::zone pivot = "programming-language-scala"
@@ -839,7 +841,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;csak az első öt sort &nbsp; mutatja&nbsp;
+&nbsp;&nbsp;Ez csak az első 5 sort &nbsp; mutatja&nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -1369,8 +1371,8 @@ Ha az eredeti olyan adatmennyiséget, amelyeken egy indexet hoztak létre, akkor
 
 Az alábbi két cella példa erre a forgatókönyvre mutat:
 
-Az első cella két további részleget helyez el az eredeti részlegek számára. Beolvassa és kinyomtatja a részlegek listáját, hogy ellenőrizze az új részlegek helyes hozzáadását. A kimenetben hat részleg látható összesen: négy régi és két új. A "refreshIndex" a "deptIndex1" frissítésének meghívása, hogy az index új részlegeket rögzítsen.
-A második cella a tartomány kiválasztási lekérdezésének példáját futtatja. Az eredményeknek mostantól négy részleget kell tartalmazniuk: kettőt a fenti lekérdezés futtatása előtt, a kettő pedig az imént hozzáadott új részlegek közül.
+* Az első cella két további részleget helyez el az eredeti részlegek számára. Beolvassa és kinyomtatja a részlegek listáját, hogy ellenőrizze az új részlegek helyes hozzáadását. A kimenetben hat részleg látható összesen: négy régi és két új. A "refreshIndex" a "deptIndex1" frissítésének meghívása, hogy az index új részlegeket rögzítsen.
+* A második cella a tartomány kiválasztási lekérdezésének példáját futtatja. Az eredményeknek mostantól négy részleget kell tartalmazniuk: kettőt a fenti lekérdezés futtatása előtt, a kettő pedig az imént hozzáadott új részlegek közül.
 
 ### <a name="specific-index-refresh"></a>Adott index frissítése
 

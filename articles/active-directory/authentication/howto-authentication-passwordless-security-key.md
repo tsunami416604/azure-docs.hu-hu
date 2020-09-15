@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 09/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116597"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526952"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -25,22 +25,22 @@ Azok a vállalatok, amelyek a jelszavakat ma és megosztott számítógépes kö
 Ez a dokumentum a biztonsági kulcson alapuló jelszavas hitelesítés engedélyezését összpontosítja. A cikk végén az Azure AD-fiókjával bejelentkezhet a web-alapú alkalmazásokba egy FIDO2 biztonsági kulccsal.
 
 > [!NOTE]
-> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Követelmények
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - A [kombinált biztonsági információk regisztrációjának előzetes](concept-registration-mfa-sspr-combined.md) verziójának engedélyezése
 - Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
-- A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli * *
+- A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli * *
 
 A webalkalmazásokhoz és szolgáltatásokhoz való bejelentkezéshez szükséges biztonsági kulcsok használatához olyan böngészőre van szükség, amely támogatja az WebAuthN protokollt. Ezek közé tartozik a Microsoft Edge, a Chrome, a Firefox és a Safari.
 
 ## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 
-Az Azure AD-hez csatlakoztatott eszközökön a Windows 10 1809-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
+Az Azure AD-hez csatlakoztatott eszközökön a Windows 10 1909-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
 
-A hibrid Azure AD-hez csatlakoztatott eszközökön a Windows 10 bennfentes Build 18945 vagy újabb verziójának kell futnia.
+A hibrid Azure AD-hez csatlakoztatott eszközöknek a Windows 10 2004-es vagy újabb verzióját kell futtatniuk.
 
 ## <a name="enable-passwordless-authentication-method"></a>Jelszóval nem rendelkező hitelesítési módszer engedélyezése
 
@@ -73,7 +73,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
-Az alábbi példában a felhasználó már kiépített egy FIDO2 biztonsági kulcsot. A felhasználó úgy is dönthet, hogy a Windows 10 1809-es vagy újabb verziójában egy támogatott böngészőn belül bejelentkezik a webes FIDO2 biztonsági kulcsával.
+Az alábbi példában a felhasználó már kiépített egy FIDO2 biztonsági kulcsot. A felhasználó úgy is dönthet, hogy a Windows 10 1903-es vagy újabb verziójában egy támogatott böngészőn belül bejelentkezik a webes FIDO2 biztonsági kulcsával.
 
 ![Biztonsági kulcs aláírása a Microsoft Edge-ben](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
@@ -97,7 +97,7 @@ A nyilvános előzetes verzióban nem érhető el a rendszergazdai kiépítés �
 
 Dolgozunk azon funkció támogatásán, amely lehetővé teszi az UPN-változást a hibrid Azure AD-hez csatlakoztatott és az Azure AD-hez csatlakoztatott eszközökön. Ha a felhasználó egyszerű felhasználóneve megváltozik, már nem módosíthatja a FIDO2 biztonsági kulcsait a módosításhoz. A megoldás az eszköz alaphelyzetbe állítása, és a felhasználónak újra regisztrálnia kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [FIDO2 biztonsági kulcs Windows 10-es bejelentkezés](howto-authentication-passwordless-security-key-windows.md)
 

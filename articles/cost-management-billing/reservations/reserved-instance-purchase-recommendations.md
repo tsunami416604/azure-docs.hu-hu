@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684609"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398426"
 ---
 # <a name="reservation-recommendations"></a>Foglalási javaslatok
 
@@ -25,6 +25,7 @@ A javaslatkalkulációs módszer magadásának lépései:
 2. A használati adatok alapján a motor szimulálja a költségeket a foglalásokkal és azok nélkül is.
 3. A költségek szimulálása különböző mennyiségek esetében történik, és a maximális megtakarítást eredményező mennyiség a javasolt mennyiség.
 4. Ha az erőforrásai rendszeresen le vannak állítva, a szimuláció nem fog megtakarítási lehetőséget találni, és nem ad vásárlási javaslatot.
+5. A javaslatszámítások figyelembe veszik az igény szerinti felhasználás díjaira vonatkozó esetleges különleges kedvezményeket.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Javaslatok az Azure Portalon
 
@@ -52,11 +53,11 @@ A foglalásokon való megtakarítás maximalizálása érdekében a javaslathoz 
 
 Az Azure Advisorben is elérhetők foglalásvásárlási javaslatok. Tartsa szem előtt az alábbi szempontokat:
 
-- Az Advisorban csak egyelőfizetéses hatókörre érvényes javaslatok érhetők el.
-- A javaslatokat az előző 30 napi használat figyelembevételével számítjuk ki.
+- Az Advisorban csak egyelőfizetéses hatókörre érvényes javaslatok érhetők el. Ha meg szeretné tekinteni a teljes számlázási hatókörre (számlázási fiók vagy számlázási profil) vonatkozó javaslatokat, lépjen az Azure Portal > Foglalások > Hozzáadás területre, és válassza ki azt a típust, amelyre vonatkozóan meg szeretné tekinteni a javaslatokat.
+- Az Advisorban elérhető javaslatok az előző 30 napi használatot veszik figyelembe.
 - A javasolt mennyiségek és megtakarítások, ahol lehetséges, 3 éves foglalási időszakra vonatkoznak. Ha a szolgáltatáshoz nem vásárolható 3 éves foglalás, akkor a javaslat az 1 éves foglalási áron alapul.
-- Az ajánlatok figyelembe veszik az igény szerinti felhasználás díjaira vonatkozó esetleges különleges kedvezményeket.
-- Ha megosztott hatókörrel rendelkező foglalást vásárol, az Advisor foglalásvásárlási javaslatai legfeljebb 30 napig láthatók.
+- A javaslatszámítások figyelembe veszik az igény szerinti felhasználás díjaira vonatkozó esetleges különleges kedvezményeket.
+- Ha megosztott hatókörrel rendelkező foglalást vásárol, az Advisor foglalásvásárlási javaslatai legfeljebb 5 napig láthatók.
 
 ## <a name="other-expected-api-behavior"></a>Egyéb várt API-viselkedés
 

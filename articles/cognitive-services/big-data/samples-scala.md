@@ -1,6 +1,6 @@
 ---
 title: Cognitive Services Big Rea Scala-mintákhoz
-description: Próbálja ki Cognitive Services mintákat a Pythonban Azure Databricks a MMLSpark-folyamat futtatásához big data.
+description: A MMLSpark folyamat futtatásához használja a Azure Databricks Cognitive Services a big data.
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 098b59b8de0d0d7e5c3929ce084276350c04810a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189814"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524963"
 ---
 # <a name="quick-examples"></a>Gyors példák
 
@@ -47,7 +47,7 @@ val serviceKey = "ADD-YOUR-SUBSCRIPTION-KEY"
 val location = "eastus"
 ```
 
-## <a name="text-analytics"></a>Szövegelemzés
+## <a name="text-analytics"></a>Text Analytics
 
 A [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás egy pontszámot ad vissza `0.0` , és `1.0` ahol az alacsony pontszámok értéke negatív, a magas pontszámot pedig pozitív hangulatra utal.  Az alábbi minta három egyszerű mondatot használ, és az egyes értékekhez tartozó hangulati pontszámot adja vissza.
 
@@ -79,7 +79,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 | Ez a Rush Hour-forgalom csalódott vagyok. | 0.023795604705810547                                  |
 | A sparkon nem rossz a kognitív szolgáltatások  | 0.8888956308364868                                    |
 
-## <a name="computer-vision"></a>Számítógépes látástechnológia
+## <a name="computer-vision"></a>Computer Vision
 
 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat.
 Ebben a példában a képek listáját címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
@@ -161,7 +161,7 @@ display(pipeline.fit(df).transform(df))
 | https://everydaypowerblog.com/wp-content/uploads/2014/01/Martin-Luther-King-Jr.-Quotes-18.jpg            |
 | https://tsal-eszuskq0bptlfh8awbb.stackpathdns.com/wp-content/uploads/2018/01/MartinLutherKingQuotes.jpg  |
 
-## <a name="speech-to-text"></a>Diktálás
+## <a name="speech-to-text"></a>Speech-to-Text
 
 A [beszédfelismerési](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) szolgáltatás szöveggé alakítja át a hanganyagot vagy a beszélt hangon lévő fájlokat. Ebben a példában két hangfájlt teszünk át. Az első fájl könnyen értelmezhető, a második pedig nagyobb kihívást jelent.
 
@@ -237,7 +237,7 @@ display(anamolyDetector.transform(df).select("timestamp", "value", "anomalies.is
 
 ### <a name="expected-result"></a>Várt eredmény
 
-| időbélyeg            |   value | isAnomaly   |
+| időbélyeg            |   Érték | isAnomaly   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Hamis       |
 | 1972-02-01T00:00:00Z |     799 | Hamis       |

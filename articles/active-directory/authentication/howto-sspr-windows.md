@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a6013ed47196e2300f56f0066c634da2a64fdee8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717353"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526867"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjén
 
@@ -40,7 +40,7 @@ A következő korlátozások vonatkoznak a SSPR használatára a Windows bejelen
 - A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz. Ez azt jelenti, hogy az eszközöknek a szervezet belső hálózatán vagy egy helyszíni tartományvezérlőhöz való hálózati hozzáféréssel rendelkező VPN-en kell lenniük.
 - Ha rendszerképet használ, a Sysprep futtatása előtt győződjön meg arról, hogy a webes gyorsítótár törlődik a beépített rendszergazda számára a profilmásolási lépés végrehajtása előtt. A lépéssel kapcsolatos további információkért tekintse meg az [Egyéni alapértelmezett felhasználói profil használata esetén](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)a terméktámogatási cikkben.
 - A következő beállításokat ismerheti meg a Windows 10-es eszközökön a jelszavak használatának és alaphelyzetbe állításának megakadályozása érdekében:
-    - Ha a v1809 előtti Windows 10-es verzióban a Ctrl + Alt + Del billentyűkombináció szükséges, a **jelszó alaphelyzetbe állítása** nem fog működni.
+    - Ha a v1909 előtti Windows 10-es verzióban a Ctrl + Alt + Del billentyűkombináció szükséges, a **jelszó alaphelyzetbe állítása** nem fog működni.
     - Ha a zárolási képernyő értesítései ki vannak kapcsolva, a **jelszó alaphelyzetbe állítása** nem fog működni.
     - Az *HideFastUserSwitching* értéke engedélyezve vagy 1
     - Az *DontDisplayLastUserName* értéke engedélyezve vagy 1
@@ -183,6 +183,6 @@ Amikor a felhasználók megpróbálnak bejelentkezni, megjelenik egy **új jelsz
 
 A szolgáltatás használatával kapcsolatos további információkért tekintse meg a [munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](../user-help/active-directory-passwords-update-your-own-password.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói regisztrációs élmény egyszerűbbé tétele érdekében [előre feltöltheti a felhasználói hitelesítési kapcsolattartási adatokat a SSPR](howto-sspr-authenticationdata.md).

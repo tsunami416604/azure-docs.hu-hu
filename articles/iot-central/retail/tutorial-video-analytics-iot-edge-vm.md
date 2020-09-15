@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – video Analytics IoT Edge-példány létrehozása az Azure-ban IoT Central (Linux rendszerű virtuális gép)
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy video Analytics IoT Edge-példányt a video Analytics-Object és a Motion Detection alkalmazás sablonnal.
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Linux rendszerű virtuális gépen a video Analytics-IoT Edge példányt a video Analytics-Object és a Motion Detection alkalmazás sablonnal.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038377"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526391"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Oktatóanyag: IoT Edge-példány létrehozása videó-elemzéshez (linuxos virtuális gép)
 
@@ -50,7 +50,7 @@ A következő táblázatban található információk segítségével fejezze be
 | ----- | ----- |
 | Előfizetés | Válassza ki az Azure-előfizetését. |
 | Erőforráscsoport | *LVA – RG* – az előző oktatóanyagban létrehozott erőforráscsoport. |
-| Régió       | *USA keleti régiója* |
+| Region       | *USA keleti régiója* |
 | DNS-címke előtagja | Válasszon egyedi DNS-előtagot a virtuális géphez. |
 | Rendszergazdai Felhasználónév | *AzureUser* |
 | Rendszergazdai jelszó | Adjon meg egy jelszót. Jegyezze fel a jelszót a *scratchpad.txt* fájlban, amelyet később használni fog. |
@@ -119,7 +119,7 @@ sudo docker ps
 
 A lista egy **LIVE555**nevű tárolót tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most telepítette a IoT Edge futtatókörnyezetet, a LVA modulokat és a Live555 szimulációs streamet egy Azure-on futó linuxos virtuális gépen.
 

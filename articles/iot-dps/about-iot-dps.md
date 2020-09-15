@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 450d0675f81f161e68a207fbe0460c68fcafef29
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683295"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526374"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. A IoT Hub Device Provisioning Service (DPS) egy olyan IoT Hub segítő szolgáltatása, amely lehetővé teszi, hogy az emberi beavatkozás nélkül, a megfelelő IoT hub-ra való leválasztást, valamint a jobb oldali üzembe helyezést. A DPS lehetővé teszi, hogy több millió eszköz biztonságos és skálázható módon legyen kiépítve.
@@ -88,7 +88,7 @@ A DPS számos funkcióval rendelkezik, így ideális megoldás az eszközök ki�
 * Az inaktív **adatok titkosítása** lehetővé teszi, hogy a DPS-ben lévő adatok titkosítva legyenek, és az 256 bites AES-titkosítással, az egyik legerősebb blokk titkosítási algoritmussal, valamint az FIPS 140-2-kompatibilis módon legyenek titkosítva és visszafejtve.
 
 
-Az eszközkiépítéssel kapcsolatban felmerülő alapelvekről és szolgáltatásokról az [eszközzel kapcsolatos alapelvek](concepts-device.md), [szolgáltatással kapcsolatos alapelvek](concepts-service.md) és [biztonsági alapelvek](concepts-security.md) szakaszokban szerezhet további információkat.
+Az eszközök üzembe helyezésével kapcsolatos fogalmakról és szolgáltatásokról további információt talál a [DPS terminológiával](concepts-service.md) foglalkozó témakörben, valamint az ugyanabban a szakaszban található további elméleti témakörökben.
 
 ## <a name="cross-platform-support"></a>Platformfüggetlen támogatás
 Az összes Azure IoT-szolgáltatáshoz hasonlóan a DPS több különböző operációs rendszerrel is együttműködik a platformmal. Az Azure számos [nyelven](https://github.com/Azure/azure-iot-sdks) kínál nyílt forráskódú SDK-kat az eszközök csatlakoztatásához és a szolgáltatás felügyeletéhez. A DPS a következő protokollokat támogatja az eszközök csatlakoztatásához:
@@ -119,11 +119,11 @@ További információ a kvótakorlátozásokról:
 * [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
-A DPS automatizálja az eszköz kiépítési folyamatát az Azure IoT Hub. További információk az [IoT Hubról](https://docs.microsoft.com/azure/iot-hub/).
+A DPS automatizálja az eszköz kiépítési folyamatát az Azure IoT Hub. További információ a [IoT hubról](https://docs.microsoft.com/azure/iot-hub/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Mostanra nagyjából átlátja az IoT-eszközök Azure-ban való kiépítését. A következő lépés egy teljes körű IoT-forgatókönyv kipróbálása.
 > [!div class="nextstepaction"]
-> [A IoT hub Device Provisioning Service beállítása a Azure Portal](quick-setup-auto-provision.md)
-> [létrehozásával és kiépítésével szimulált eszköz](quick-create-simulated-device.md)
-> [beállítása az üzembe helyezéshez](tutorial-set-up-device.md)
+> [IoT hub Device Provisioning Service beállítása a Azure Portal](quick-setup-auto-provision.md) 
+>  [Szimulált eszköz](quick-create-simulated-device.md) 
+>  létrehozása és kiépítése [Eszköz beállítása az üzembe helyezéshez](tutorial-set-up-device.md)

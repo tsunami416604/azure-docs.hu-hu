@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80529523"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527207"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Az Azure IoT-eszközök gyártóinak biztonsági eljárásai
 Ahogy egyre több gyártó bocsát ki IoT-eszközöket, hasznos lehet az általános gyakorlatokra vonatkozó útmutatást azonosítani. Ez a cikk az Azure IoT Device kiépítési szolgáltatással (DPS) való használatra vonatkozó ajánlott biztonsági eljárásokat foglalja össze.  
@@ -182,9 +182,9 @@ Az eszközök az üzembe helyezés előtt 6-12 hónapig is elhelyezhetők a rakt
 #### <a name="step-5-device-is-installed-into-the-location"></a>5. lépés: az eszköz telepítve van a helyre
 Miután az eszköz megérkezett a végső helyükre, az automatikus kiépítés a DPS használatával történik.
 
-További információkért lásd: az [alapfogalmak](concepts-auto-provisioning.md) és a [TPM-tanúsítvány](concepts-tpm-attestation.md)kiépítése. 
+További információ: [kiépítés](about-iot-dps.md#provisioning-process) és TPM- [igazolás](concepts-tpm-attestation.md). 
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 A jelen cikkben ajánlott biztonsági eljárások mellett az Azure IoT olyan erőforrásokat biztosít, amelyek segítséget nyújtanak a biztonságos hardver kiválasztásában és a biztonságos IoT-telepítések létrehozásában: 
 - Az Azure IoT [biztonsági javaslatai](../iot-fundamentals/security-recommendations.md) az üzembe helyezési folyamat irányításához. 

@@ -3,12 +3,12 @@ title: Tároló-példányok figyelése
 description: A számítási erőforrások (például a processzor és a memória) használatának figyelése a tárolók Azure Container Instancesban.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116367"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526697"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 
@@ -44,7 +44,7 @@ Egy több tárolót tartalmazó tároló csoportban használjon [dimenziót][mon
 1. Az **Áttekintés** oldalon válassza ki az egyik mérőszám-diagramot, például a **processzort**. 
 1. Válassza a **felosztás alkalmazása** gombot, és válassza a **tároló neve**lehetőséget.
 
-![dimenzió][dimension]
+![A képernyőfelvételek egy tároló példány metrikáit jelenítik meg, a kiválasztott felosztással és a tároló nevének kiválasztásával.][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Metrika beolvasása – Azure CLI
 
@@ -136,7 +136,7 @@ Timestamp            Name          Containername             Average
 2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-alapú figyelésről további információt az [Azure-alapú figyelés áttekintése][azure-monitoring] szakaszban talál.
 

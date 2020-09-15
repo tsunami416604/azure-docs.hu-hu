@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669238"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524997"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
 
@@ -63,7 +63,7 @@ Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 11. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
 12. Adja hozzá a létrehozott fiókot.
 13. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
-1. További lépés a SUSE Linux Enterprise Server 11 SP3 rendszerű gép frissítéséhez és védelméhez. [Győződjön meg arról, hogy a legújabb verzió elérhető a konfigurációs kiszolgálón](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
+1. További lépés a SUSE Linux Enterprise Server 11 SP3 vagy RHEL 5 vagy CentOS 5 vagy Debian 7 rendszerű gépek frissítéséhez és védelméhez. [Győződjön meg arról, hogy a legújabb verzió elérhető a konfigurációs kiszolgálón](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Vírusirtó a replikált gépeken
 

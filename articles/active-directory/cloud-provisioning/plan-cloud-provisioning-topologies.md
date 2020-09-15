@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect felhőalapú üzembe helyezés támogatott topológiák és forgatókönyvek
-description: Ez a témakör ismerteti az előfeltételeket és a hardverkövetelmények Felhőbeli üzembe helyezését.
+description: Ismerkedjen meg az Azure AD Connect Cloud kiépítést használó különböző helyszíni és Azure Active Directory (Azure AD) topológiákkal.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77620871"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526850"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect felhőalapú üzembe helyezés támogatott topológiák és forgatókönyvek
 Ez a cikk a Felhőbeli kiépítést Azure AD Connect használó különböző helyszíni és Azure Active Directory (Azure AD) topológiákat ismerteti. Ez a cikk csak a támogatott konfigurációkat és forgatókönyveket tartalmazza.
@@ -56,7 +56,7 @@ Példa erre a forgatókönyvre [: oktatóanyag: kísérleti Azure ad Connect fel
 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

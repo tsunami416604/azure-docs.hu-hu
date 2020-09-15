@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646847"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527088"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -71,9 +71,7 @@ Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse öss
 
 ### <a name="test-drive"></a>Tesztelési meghajtó
 
-A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt kipróbálhatja a "kipróbálás előtt" lehetőséget, ami növeli a konverziót és a magas minősítésű érdeklődők generációját. További információ: [Mi a test Drive](../what-is-test-drive.md).
-
-Ha egy tesztelési meghajtót egy meghatározott ideig szeretne engedélyezni, jelölje be a **Test Drive engedélyezése** jelölőnégyzetet. Ha el szeretné távolítani a tesztelési meghajtót az ajánlatból, törölje a jelet a jelölőnégyzetből.
+Ezen a ponton a Dynamics 365 Business Central ajánlatai nem támogatják a test drivet. Ha el szeretné távolítani a tesztelési meghajtót az ajánlatból, törölje a **Test Drive engedélyezése** jelölőnégyzet jelölését.
 
 ### <a name="customer-leads"></a>Ügyfél-érdeklődők
 

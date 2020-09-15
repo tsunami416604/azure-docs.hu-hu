@@ -4,12 +4,12 @@ description: Node.js-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcs
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386299"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527411"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Ismerkedés a Relay Hibrid kapcsolatok WebSockets szolgáltatással Node.js
 
@@ -52,7 +52,7 @@ Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
 2. Futtassa az ügyfélalkalmazást: egy Node.js parancssorba írja be a `node sender.js` parancsot, majd írjon be szöveget.
 3. Győződjön meg arról, hogy az alkalmazás konzolja kiírja a szöveget, amely az ügyfélalkalmazásban lett megadva.
 
-    ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![A konzol a Windows-kiszolgáló és az ügyfélalkalmazások tesztelésére is használható.](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 Gratulálunk, végpontok közötti hibrid kapcsolatok alkalmazást hozott létre a Node.js használatával.
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 50b61ce7e2ef2a551d41dcb82d7127071005c34e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020494"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525016"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Oktatóanyag: a blézer-kiszolgáló csevegési alkalmazásának létrehozása
 
@@ -28,6 +28,8 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és módosíthat egy blézer-
 * A [.net Core 3,0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) telepítése (verzió: >= 3.0.100)
 * A [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (verzió: >= 16,3) telepítése
 > A Visual Studio 2019 előzetes verziójának verziója is működik, amely az újabb .net Core-verzióra irányuló, legújabb Blazer Server-alkalmazás sablonjának kiadása.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="build-a-local-chat-room-in-blazor-server-app"></a>Helyi csevegési helyiség készítése a Blaze Server alkalmazásban
 
@@ -354,6 +356,8 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 1. Az alkalmazás futtatásához kattintson az <kbd>F5</kbd> gombra. Az alábbihoz hasonló módon cseveghet.
 
    [![Blazer – csevegés ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
@@ -397,6 +401,8 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    > Emellett a böngésző hibakereső üzemmódját is használhatja az <kbd>F12</kbd> használatával annak ellenőrzéséhez, hogy a forgalom már át lett irányítva az Azure Signaler szolgáltatásba.
 
    [![Blazer – csevegés – Azure ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="further-topic-enable-azure-signalr-service-in-local-development"></a>További témakör: az Azure Signaler szolgáltatás engedélyezése a helyi fejlesztésben
 
@@ -440,6 +446,8 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 >        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.Azure.SignalR"
 >      }
 >    ```
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

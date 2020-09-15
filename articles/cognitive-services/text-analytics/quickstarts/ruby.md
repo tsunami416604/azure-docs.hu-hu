@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: A Text Analytics API meghívása a Ruby használatával'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódokat, amelyekkel gyorsan megkezdheti az Azure Cognitive Services Text Analytics API használatának első lépéseit.
+description: Ez a rövid útmutató azt ismerteti, hogyan használható a Ruby az információk és a kód minták beszerzéséhez, hogy gyorsan megismerkedjen az Azure Cognitive Services Text Analytics API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 92a80dc69afbda76d57a09e01efc9b91ecb286ba
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 076276068b62ed1b7b30864e9a4227cd449c680e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027921"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527224"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a Ruby használatával
 <a name="HOLTop"></a>
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel [text Analytics]
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelvfelismerés
+## <a name="detect-language"></a>Nyelv felismerése
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
@@ -385,7 +385,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [!div class="nextstepaction"]
 > [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>További információ 
 
- [Text Analytics áttekintése](../overview.md)  
+ [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

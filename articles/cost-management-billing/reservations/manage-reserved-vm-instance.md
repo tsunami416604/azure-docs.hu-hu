@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684779"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400126"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
@@ -73,7 +73,7 @@ Egy foglalás hozzáférés-kezelésének delegálása:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Egy foglalás felosztása két foglalásba
 
- Miután egy foglalásban egynél több erőforrás-példányt vásárol, érdemes lehet a foglalásban lévő példányokat különböző előfizetésekhez hozzárendelni. Alapértelmezés szerint minden példánynak egy hatóköre van – vagy egyetlen előfizetés, vagy közös. Például megvásárolt 10 foglalási példányt, és megadta, hogy a foglalási hatókör legyen az A előfizetés, most pedig módosítani szeretné a foglalások hatókörét, hogy hét foglalásnak az A előfizetés, a maradék háromnak pedig a B előfizetés legyen a hatóköre. A foglalás felosztása lehetővé teszi a példányok elosztását a részletes hatókör-kezelés érdekében. A közös hatókör kiválasztásával leegyszerűsítheti az előfizetések közötti elosztást. Azonban költségkezelési vagy költséghatékonysági okokból konkrét mennyiségeket is hozzárendelhet az egyes előfizetésekhez.
+ Miután egy foglalásban egynél több erőforrás-példányt vásárol, érdemes lehet a foglalásban lévő példányokat különböző előfizetésekhez hozzárendelni. Alapértelmezés szerint minden példánynak egy hatóköre van – egyetlen előfizetés, erőforráscsoport vagy közös. Tegyük fel, hogy foglalást vásárolt 10 virtuálisgép-példányhoz, és megadta, hogy a foglalási hatókör legyen az A előfizetés, most pedig módosítani szeretné a foglalások hatókörét, hogy 7 virtuálisgép-példánynak az A előfizetés, a maradék háromnak pedig a B előfizetés legyen a hatóköre. A foglalás felosztása ezt lehetővé teszi. A foglalás felosztása után a rendszer törli az eredeti foglalásazonosítót, és két új foglalást hoz létre. A felosztás nem befolyásolja a foglalási rendelést – a felosztással nem jön létre új kereskedelmi tranzakció, és az új foglalások a felosztott foglaláséval megegyező befejezési dátummal rendelkeznek.
 
  A foglalások kettéosztásához használhatja a PowerShellt, a parancssori felületet, vagy az API-t.
 

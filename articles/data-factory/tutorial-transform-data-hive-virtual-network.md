@@ -1,6 +1,6 @@
 ---
 title: Adatátalakítás a kaptár használatával az Azure-ban Virtual Network
-description: Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben.
+description: A Azure PowerShell használatával létrehozhat egy Data Factory folyamatot, amely egy Azure-Virtual Network (VNet) található HDInsight-fürtön található kaptár-tevékenységgel alakítja át az Adatátalakítási tevékenységeket.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: bf696b79215843e392fcf510e35cc410ff9902a2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d2465a475371f2cf6b9379d474ccaee324adac10
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81409204"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524750"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 

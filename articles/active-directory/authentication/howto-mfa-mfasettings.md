@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068812"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526884"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -31,7 +31,7 @@ A Azure Portal a következő Azure Multi-Factor Authentication beállítások é
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Blokkolhatja, hogy bizonyos felhasználók képesek legyenek Azure Multi-Factor Authentication kérelmeket fogadni. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a blokkolt időponttól számítva 90 napig, vagy manuálisan feloldják a zárolást. |
 | [Csalási riasztás](#fraud-alert) | Olyan beállítások konfigurálása, amelyek lehetővé teszik a felhasználók számára a csalárd ellenőrzési kérelmek jelentését. |
 | [Értesítések](#notifications) | Az MFA-kiszolgálóról érkező események értesítéseinek engedélyezése. |
-| [ESKÜ tokenek](concept-authentication-methods.md#oath-tokens) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
+| [ESKÜ tokenek](concept-authentication-oath-tokens.md) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
 | [Telefonhívás beállításai](#phone-call-settings) | A Felhőbeli és a helyszíni környezetekhez kapcsolódó telefonhívások és üdvözlések beállításainak konfigurálása. |
 | Szolgáltatók | Ez megjeleníti a fiókjához esetlegesen hozzárendelt meglévő hitelesítési szolgáltatókat is. Az új hitelesítési szolgáltatók nem hozhatók létre szeptember 1-től 2018-ig |
 

@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – kísérleti Azure AD Connect felhőalapú kiépítés meglévő szinkronizált AD-erdőhöz
-description: oktatóanyag.
+description: Megtudhatja, hogyan tesztelheti a felhőalapú üzembe helyezést olyan tesztelési Active Directory erdőben, amely már szinkronizálva van Azure Active Directory (Azure AD) csatlakozási szinkronizálással.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86146814"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526935"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -223,7 +223,7 @@ Miután meggyőződött róla, hogy a kísérleti szervezeti egység felhasznál
  10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
  11. A befejezést követően kattintson a **Kilépés**gombra. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

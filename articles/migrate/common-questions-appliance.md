@@ -2,13 +2,13 @@
 title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.date: 09/15/2020
+ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514543"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526561"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -76,7 +76,7 @@ Az Azure Migrate készülék által gyűjtött adatokat az Azure-beli helyen tá
 További információ az adatok tárolásáról:
 
 - Az összegyűjtött adatokat a rendszer biztonságosan tárolja a Microsoft-előfizetések CosmosDB. Az Azure Migrate-projekt törlésekor a rendszer törli az adatvesztést. A tárterületet Azure Migrate kezeli. Nem választhat külön Storage-fiókot az összegyűjtött adatokhoz.
-- Ha [függőségi vizualizációt](concepts-dependency-visualization.md)használ, a gyűjtött adatokat az Azure-előfizetésében létrehozott Azure log Analytics-munkaterület Egyesült Államok tárolja. Az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében.
+- Ha [függőségi vizualizációt](concepts-dependency-visualization.md)használ, a gyűjtött adatokat az Azure-előfizetésében létrehozott Azure log Analytics-munkaterületen tárolja a rendszer. Az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében. 
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Mekkora mennyiségű adatfeltöltés történik a folyamatos profilkészítés során?
 

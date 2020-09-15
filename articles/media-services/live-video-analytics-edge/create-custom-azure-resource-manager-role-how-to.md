@@ -3,12 +3,12 @@ title: Hozzon létre egyéni Azure Resource Manager szerepkört, és rendelje ho
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni Azure Resource Manager szerepkört, és hogyan rendelhető hozzá az élő video Analytics szolgáltatáshoz az Azure CLI használatával IoT Edge.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043176"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526578"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Egyéni Azure Resource Manager szerepkör létrehozása és hozzárendelés az egyszerű szolgáltatáshoz
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Media Service-fiókkal, akkor a következő lépésekkel hozh
 1. Tallózással keresse meg a [Cloud Shell](https://shell.azure.com/).
 1. A rendszerhéj ablak bal oldalán található legördülő menüből válassza a "bash" lehetőséget a környezetében.
 
-    ![Bash](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
+    ![A képernyő capturs a rendszerhéj ablakában kiválasztott bash-t jeleníti meg.](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
 1. Állítsa be az Azure-előfizetést alapértelmezett fiókként a következő parancs sablonjának használatával:
     
     ```
@@ -163,7 +163,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 ```
 
 > [!NOTE]
-> `<appId>`az [egyszerű szolgáltatásnév létrehozása](#create-service-principal) lépés kimenetéről kérhető le.
+> `<appId>` az [egyszerű szolgáltatásnév létrehozása](#create-service-principal) lépés kimenetéről kérhető le.
 
 A fenti parancs kinyomtatja az egyszerű szolgáltatásnév objectId. 
 
@@ -253,7 +253,7 @@ Ezzel megerősíti, hogy az egyéni felhasználói szerepkört az alkalmazáshoz
     The client '<AadClientId>' with object id '<AadClientId>' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/write' over scope '/subscriptions/<yourSubscriptionId>/resourcegroups/testresourcegroup' or the scope is invalid. If access was recently granted, please refresh your credentials.
     ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 Jegyezze fel a cikk következő értékeit. Ezek az értékek szükségesek ahhoz, hogy konfigurálni tudja az élő videó Analytics IoT Edge moduljának Twin tulajdonságait, lásd: [modul Twin JSON-séma](module-twin-configuration-schema.md).
 

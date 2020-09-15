@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717965"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526986"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -32,8 +32,8 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 | [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli | X | X |
-| Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1903-es vagy újabb verziója szükséges | X |   |
+| A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli | X | X |
+| Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1909-es vagy újabb verziója szükséges | X |   |
 | A [hibrid Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join-hybrid.md) a Windows 10 2004-es vagy újabb verziója szükséges |   | X |
 | Teljes mértékben kijavítottuk a Windows Server 2016/2019 rendszerű tartományvezérlőket. |   | X |
 | [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 vagy újabb verzió |   | X |
@@ -56,7 +56,7 @@ A következő forgatókönyvek nem támogatottak:
 
 ## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 
-Az Azure AD-hez csatlakoztatott eszközök, amelyeket a szolgáltatás előzetes verziójában végez, a Windows 10 1809-es vagy újabb verzióját kell futtatnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
+Az Azure AD-hez csatlakoztatott eszközök, amelyeket a szolgáltatás előzetes verziójában végez, a Windows 10 1909-es vagy újabb verzióját kell futtatnia.
 
 A hibrid Azure AD-hez csatlakoztatott eszközöknek a Windows 10 2004-es vagy újabb verzióját kell futtatniuk.
 
@@ -125,7 +125,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. A létrehozott kiépítési csomag alkalmazásához tekintse meg a [kiépítési csomag alkalmazása](/windows/configuration/provisioning-packages/provisioning-apply-package)című témakört.
 
 > [!NOTE]
-> A Windows 10 1809-es verzióját futtató eszközökön a megosztott számítógépes üzemmódot (*EnableSharedPCMode*) is engedélyeznie kell. A funkció engedélyezésével kapcsolatos további információkért lásd: [megosztott vagy vendég számítógép beállítása Windows 10 rendszeren](/windows/configuration/set-up-shared-or-guest-pc).
+> A Windows 10 1903-es verzióját futtató eszközökön a megosztott számítógépes üzemmódot (*EnableSharedPCMode*) is engedélyeznie kell. A funkció engedélyezésével kapcsolatos további információkért lásd: [megosztott vagy vendég számítógép beállítása Windows 10 rendszeren](/windows/configuration/set-up-shared-or-guest-pc).
 
 ### <a name="enable-with-group-policy"></a>Engedélyezés Csoportházirend
 
@@ -158,7 +158,7 @@ Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a fun
    - Alkategória:
 1. A naplók rögzítéséhez használja a problémát a **probléma újbóli létrehozásához** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyszíni erőforrásokhoz való hozzáférés engedélyezése az Azure AD-hez és a hibrid Azure AD-hez csatlakoztatott eszközökhöz](howto-authentication-passwordless-security-key-on-premises.md)
 

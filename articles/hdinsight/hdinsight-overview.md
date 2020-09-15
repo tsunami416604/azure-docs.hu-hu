@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754871"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526629"
 ---
 # <a name="what-is-azure-hdinsight"></a>Mi az az Azure HDInsight?
 
@@ -27,13 +27,13 @@ A HDInsighton elérhető Hadoop-technológiák összetevőinek megtekintése: [A
 
 ## <a name="what-is-big-data"></a>Mik azok a big data típusú adatok?
 
-A big data gyűjtése egyre nagyobb mennyiségben és sebességgel, minden korábbinál többféle formátumban történik. Ezek lehetnek előzményadatok (azaz tárolt) vagy valós idejű adatok (vagyis a forrásból streamelt adatok). A big data leggyakoribb alkalmazási helyzetei: [A HDInsight használatára vonatkozó forgatókönyvek](#scenarios-for-using-hdinsight).
+A big data gyűjtése egyre nagyobb mennyiségben és sebességgel, minden korábbinál többféle formátumban történik. Ezek az adatok lehetnek előzményadatok (azaz tárolt) vagy valós idejű adatok (vagyis a forrásból streamelt adatok). A big data leggyakoribb alkalmazási helyzetei: [A HDInsight használatára vonatkozó forgatókönyvek](#scenarios-for-using-hdinsight).
 
 ## <a name="why-should-i-use-azure-hdinsight"></a>Miért érdemes használni az Azure HDInsight?
 
 Ez a szakasz felsorolja az Azure HDInsight képességeit.
 
-|Képesség  |Leírás  |
+|Képesség  |Description  |
 |---------|---------|
 |Natív felhőalapú     |     Az Azure HDInsight segítségével optimalizált fürtöket hozhat létre az Azure-ban a következőkhöz: [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md), [Spark](./spark/apache-spark-jupyter-spark-sql.md), [Interaktív lekérdezés (LLAP)](./interactive-query/apache-interactive-query-get-started.md), [Kafka](./kafka/apache-kafka-get-started.md), [Storm](./storm/apache-storm-tutorial-get-started-linux.md), [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) és  [ML-szolgáltatások](./r-server/r-server-overview.md). A HDInsight egy végpontok közötti SLA-t is biztosít az összes éles környezetben futó számítási feladathoz.  |
 |Alacsony költségű és méretezhető     | A HDInsight lehetővé teszi [scale](./hdinsight-administer-use-portal-linux.md#scale-clusters)a   munkaterhelések felfelé vagy lefelé méretezését.Csökkentheti a költségeket úgy, hogy [igény szerint létrehozza a fürtöket](./hdinsight-hadoop-create-linux-clusters-adf.md)   , és csak azért fizet, amit használ. A feladatokat adatfolyamatok létrehozásával is működtetheti. A leválasztott számítás és tárolás jobb teljesítményt és rugalmasságot biztosít. |
@@ -79,7 +79,7 @@ A HDInsight segítségével kiterjesztheti a meglévő helyszíni big data-infra
 
 A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tartalmaz, például lehetővé teszi összetevők, segédprogramok és nyelvek hozzáadását. A HDInsight a következő fürttípusokat kínálja:
 
-|Fürt típusa | Leírás |
+|Fürt típusa | Description |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Egy keretrendszer, amely HDFS, fonal-erőforrás-kezelést és egyszerű MapReduce programozási modellt használ a Batch-adatokat párhuzamosan feldolgozni és elemezni.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Egy nyílt forráskódú, párhuzamos feldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big-adatelemzési alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a Apache Spark a HDInsight-ben?](./spark/apache-spark-overview.md)|
@@ -129,7 +129,17 @@ A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő mo
 
 * [Az Excel és az Apache Hadoop összekötése a Microsoft kaptár ODBC-illesztővel](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (Windows szükséges)
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="in-region-data-residency"></a>Régión belüli adattárolás 
+
+A Spark, a Hadoop, a LLAP, a Storm és a MLService nem tárolja az ügyféladatokat, így ezek a szolgáltatások automatikusan kielégítik a régión belüli adattárolási követelményeket, beleértve azokat is, amelyek az [Adatvédelmi központban](https://azuredatacentermap.azurewebsites.net/)vannak meghatározva. 
+
+A Kafka és a HBase tárolja az ügyféladatokat. Ezeket az adatkészleteket a Kafka és a HBase automatikusan tárolja egyetlen régióban, így ez a szolgáltatás megfelel a régión belüli adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is. 
+
+
+Az ismerős üzleti intelligencia (BI) eszközei a Power Query beépülő modullal vagy a Microsoft kaptár ODBC-illesztővel integrált HDInsight-adatokkal rendelkeznek.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Hadoop-fürt létrehozása a HDInsight-ben](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * [Apache Spark-fürt létrehozása – Portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)

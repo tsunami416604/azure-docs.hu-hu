@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439622"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526323"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -107,7 +107,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     * **IoT Edge modul neve**: lvaEdge
     * **Rendszerkép URI-ja**: MCR.microsoft.com/Media/Live-Video-Analytics:1.0    
     
-    ![Hozzáadás](./media/deploy-iot-edge-device/add.png)
+    ![Képernyőfelvétel: a modul beállításai lap.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > Ne válassza a **Hozzáadás** lehetőséget, amíg meg nem adta a **modul beállításai**, a tároló- **létrehozási beállítások**és a **modul Twin-beállítások** lapjait a jelen eljárásban leírtak szerint.
@@ -217,7 +217,7 @@ A központi telepítés létrehozása után térjen vissza az IoT hub IoT Edge l
 Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 Állapotkód: 200 – az OK érték azt jelenti, hogy [az IoT Edge futtatókörnyezet](../../iot-edge/iot-edge-runtime.md) kifogástalan, és működik.
 
-![status](./media/deploy-iot-edge-device/status.png)
+![A képernyőfelvétel egy IoT Edge futtatókörnyezet állapotának értékét jeleníti meg.](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Közvetlen metódus meghívása
 
@@ -225,7 +225,7 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
 
 1. A létrehozott Edge-modulra kattintva megnyílik a konfigurációs lapja.  
 
-    ![Modulok](./media/deploy-iot-edge-device/modules.png)
+    ![Képernyőfelvétel: egy Edge-modul konfigurációs lapja.](./media/deploy-iot-edge-device/modules.png)
 1. Kattintson a közvetlen metódus menüpontra.
 
     > [!NOTE] 

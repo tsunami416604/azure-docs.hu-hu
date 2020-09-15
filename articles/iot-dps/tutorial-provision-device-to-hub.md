@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74975040"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526442"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: az eszköz kiépítése egy IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
 
@@ -28,12 +28,12 @@ Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, h
 
 A folytatás előtt győződjön meg arról, hogy [a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását](./tutorial-set-up-device.md) ismertető oktatóanyagban leírt módon konfigurálta az eszközt.
 
-Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás előtt olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket.
+Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését.
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>Az eszköz regisztrálása
 
-Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevőinek a Device Provisioning Service-hez adása. Ezek a biztonsági összetevők az eszköz [igazolási mechanizmusán](concepts-device.md#attestation-mechanism) alapulnak a következő módon:
+Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevőinek a Device Provisioning Service-hez adása. Ezek a biztonsági összetevők az eszköz [igazolási mechanizmusán](concepts-service.md#attestation-mechanism) alapulnak a következő módon:
 
 - TPM-alapú eszközökhöz a következőkre van szükség:
     - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*, amely a TPM-lapka gyártójától szerezhető be.  További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](https://technet.microsoft.com/library/cc770443.aspx) szakaszt.
@@ -48,7 +48,7 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 
-- **Regisztrációs csoportok** Közös igazolási mechanizmussal rendelkező eszközök csoportja. Nagy számú, azonos kívánt kezdeti konfigurációval rendelkező eszközhöz vagy azonos bérlőt célzó eszközökhöz érdemes regisztrációs csoportot használni. A regisztrációs csoportok identitásigazolásáról további információt a [Biztonság](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) részben talál.
+- **Regisztrációs csoportok** Közös igazolási mechanizmussal rendelkező eszközök csoportja. Nagy számú, azonos kívánt kezdeti konfigurációval rendelkező eszközhöz vagy azonos bérlőt célzó eszközökhöz érdemes regisztrációs csoportot használni. A regisztrációs csoportok identitásigazolásáról további információt a [Biztonság](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) részben talál.
 
     [![Csoportos regisztráció hozzáadása X. 509 tanúsítványhoz a portálon](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 

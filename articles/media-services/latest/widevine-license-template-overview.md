@@ -1,6 +1,6 @@
 ---
 title: A Azure Media Services v3 és a Widevine-licenc sablonjának áttekintése
-description: Ez a témakör áttekintést nyújt a Widevine-licencek konfigurálásához használt Widevine-licencekről.
+description: Ismerkedjen meg Azure Media Services a Widevine-licenccel, és hogyan konfigurálható a Widevine-licencek konfigurálása.
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea0eab6d420a4b74de93a1d35e178d6c57c2ad9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3d8cc24722832fac9b2d353a6d87772ffce6c0a4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298929"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527122"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>A Media Services v3 és a Widevine-licenc sablonjának áttekintése
 

@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226427"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526746"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből
 
@@ -104,7 +104,7 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |----------|------|-------------|
 | `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
 | `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
@@ -167,6 +167,14 @@ Az alábbi példa a HTTP-művelet JSON-definícióját mutatja be az alapul szol
    "type": "Http"
 }
 ```
+
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Tartalom az Application/x-www-Form-urlencoded típussal
+
+Ahhoz, hogy urlencoded adatokat szolgáltasson a törzsben egy HTTP-kérelemhez, meg kell adnia, hogy az adatokat a tartalom típusa tartalmazza-e `application/x-www-form-urlencoded` . A HTTP-trigger vagy művelet területen adja hozzá a `content-type` fejlécet. Állítsa be a fejléc értékét a következőre: `application/x-www-form-urlencoded` .
+
+Tegyük fel például, hogy rendelkezik egy logikai alkalmazással, amely HTTP POST-kérést küld egy webhelyre, amely támogatja a `application/x-www-form-urlencoded` típust. A művelet a következő módon jelenhet meg:
+
+![Képernyőkép: "Content-Type" fejlécet tartalmazó HTTP-kérelem, amely az "application/x-www-Form-urlencoded" értékre van beállítva.](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -263,4 +271,3 @@ Az trigger-és műveleti paraméterekkel kapcsolatos további információkért 
 
 * [Biztonságos hozzáférés és adathozzáférés a kimenő hívások más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)
-

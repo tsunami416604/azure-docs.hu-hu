@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386112"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527156"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -131,7 +131,7 @@ Elosztott terhelésű érvényesítő csomópontok száma | A hálózat részek�
 
 A virtuális gép és a tárolási rétegek hatással vannak a hálózati teljesítményre.  A következő táblázat segítségével kiválaszthatja a költséghatékonyságot:
 
-Virtuális gép SKU|Tárolási rétegek|Ár|Átviteli sebesség|Késés
+Virtuális gép SKU|Tárolási rétegek|Ár|Teljesítmény|Késés
 ---|---|---|---|---
 F1|Standard SSD|alacsony|alacsony|magas
 D2_v3|Standard SSD|közepes|közepes|közepes
@@ -150,7 +150,7 @@ Paraméter | Leírás | Példaérték
 Konzorciumi tag azonosítója | A konzorciumi hálózaton résztvevő egyes tagokhoz tartozó azonosító. Az ütközések elkerülése érdekében az IP-címtartomány konfigurálására szolgál. Magánhálózat esetén a tagok AZONOSÍTÓjának egyedinek kell lennie az ugyanazon a hálózaton lévő különböző szervezetek között.  Egyedi tag AZONOSÍTÓra van szükség, még akkor is, ha ugyanaz a szervezet több régióban is üzembe helyezi. Jegyezze fel ennek a paraméternek az értékét, mert meg kell osztania a többi csatlakozó taggal, hogy ne legyen ütközés. Az érvényes tartomány 0 és 255 között van. | 0
 Hálózati azonosító | Az üzembe helyezett konzorcium Ethereum hálózati azonosítója. Mindegyik Ethereum-hálózat saját hálózati AZONOSÍTÓval rendelkezik, és 1 a nyilvános hálózat azonosítója. Az érvényes tartomány 5 – 999 999 999 | 10101010
 Rendszergazdai Ethereum címe | A PoA-irányításban való részvételhez használt Ethereum-fiók címe. A MetaMask használatával létrehozhat egy Ethereum-címeket. |
-Speciális beállítások | Speciális beállítások a Ethereum beállításaihoz | Bekapcsolás
+Speciális beállítások | Speciális beállítások a Ethereum beállításaihoz | Engedélyezés
 Üzembe helyezés nyilvános IP-cím használatával | Ha a privát VNet van kiválasztva, a hálózat egy VNet-átjáró mögött van telepítve, és eltávolítja a társ-hozzáférési hozzáférést. A privát VNet esetében az összes tagnak VNet-átjárót kell használnia ahhoz, hogy a kapcsolódás kompatibilis legyen. | Nyilvános IP-cím
 Gáz korlátjának letiltása | A hálózat indítási blokkjának gáz-korlátja. | 50000000
 Visszazárási időszak blokkolása (mp) | Az üres blokkok létrehozásának gyakorisága, ha nincsenek tranzakciók a hálózaton. A magasabb szintű gyakoriság gyorsabb lesz, de nagyobb a tárolási költségek. | 15
@@ -166,7 +166,7 @@ A figyelés lehetővé teszi a hálózati naplózási erőforrás konfigurálás
 
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
-Figyelés | A figyelés engedélyezésének lehetősége | Bekapcsolás
+Figyelés | A figyelés engedélyezésének lehetősége | Engedélyezés
 Kapcsolódás meglévő Azure Monitor naplókhoz | Lehetőség új Azure Monitor naplók példányának létrehozására vagy meglévő példányhoz való csatlakozásra | Új létrehozása
 Hely | Az új példányt telepítő régió | USA keleti régiója
 Meglévő log Analytics-munkaterület azonosítója (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányának munkaterület-azonosítója||NA
@@ -174,7 +174,7 @@ Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor 
 
 Válassza az **OK** lehetőséget.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az összefoglalás segítségével tekintse át a megadott bemeneteket, és futtassa az alapszintű telepítés előtti ellenőrzést. A telepítése előtt letöltheti a sablont és a paramétereket.
 
@@ -279,7 +279,7 @@ A portál először a magas szintű hálózati statisztikákat és a csomóponto
 
 ![Kategóriák figyelése](./media/ethereum-poa-deployment/monitor-categories.png)
 
-A **csomópontok áttekintése** elem kiválasztásával megjelenítheti a csomópontos infrastruktúra statisztikáit.
+A **csomópontok áttekintése**  elem kiválasztásával megjelenítheti a csomópontos infrastruktúra statisztikáit.
 
 ![Csomópont statisztikái](./media/ethereum-poa-deployment/node-stats.png)
 
@@ -325,13 +325,13 @@ Biztonsági okokból az SSH-port elérését alapértelmezés szerint egy háló
 
 1. Válassza az **Allow-SSH** szabályt.
 
-    ![SSH – engedélyezés](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![A képernyőfelvételen az SSH-Allow kiválasztott áttekintő ablak látható.](./media/ethereum-poa-deployment/ssh-allow.png)
 
 1. Módosítási **művelet** **engedélyezése**
 
     ![SSH engedélyezése engedélyezése](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. Kattintson a **Mentés** gombra. A módosítások alkalmazása eltarthat néhány percig.
+1. Válassza a **Mentés** lehetőséget. A módosítások alkalmazása eltarthat néhány percig.
 
 A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Például:
 

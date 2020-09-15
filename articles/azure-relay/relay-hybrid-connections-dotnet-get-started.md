@@ -4,12 +4,12 @@ description: Egy C# konzolos alkalmazás írása Azure Relay Hibrid kapcsolatok 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934259"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527428"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Ismerkedés a hibrid Relay-kapcsolatok websocketjeivel a .NET-ben
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -52,11 +52,11 @@ A Visual Studióban egy C# nyelven íródott konzolalkalmazást hozunk létre az
 2. Futtassa az ügyfélalkalmazást, és adjon meg szöveget.
 3. Győződjön meg arról, hogy az alkalmazás konzolja megjeleníti a szöveget, amely az ügyfélalkalmazásban lett megadva.
 
-    ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![A konzol a Windows-kiszolgáló és az ügyfélalkalmazások tesztelésére is használható.](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 Gratulálunk, létrehozott egy teljes Hibrid kapcsolatok alkalmazást!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban olyan .NET-ügyfél-és kiszolgálói alkalmazásokat hozott létre, amelyek websocketeket használnak az üzenetek küldéséhez és fogadásához. A Azure Relay Hibrid kapcsolatok funkciója a HTTP használatával is támogatja az üzenetek küldését és fogadását. Ha szeretné megtudni, hogyan használhatja a HTTP-t a Azure Relay Hibrid kapcsolatok használatával, tekintse meg a [http](relay-hybrid-connections-http-requests-dotnet-get-started.md)rövid útmutatót.
 
 Ebben a rövid útmutatóban a .NET-keretrendszert használta az ügyfél-és kiszolgálói alkalmazások létrehozásához. Az ügyfél-és kiszolgálói alkalmazások Node.js használatával történő írásához tekintse meg a [Node.js WebSockets](relay-hybrid-connections-node-get-started.md) rövid útmutatóját vagy a [Node.js http](relay-hybrid-connections-http-requests-dotnet-get-started.md)-gyors útmutatót.

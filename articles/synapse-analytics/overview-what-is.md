@@ -6,15 +6,15 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 04/15/2020
+ms.date: 09/12/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: b93814c69a08dd757a390232804a00b2777bc20e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90051991"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524946"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
@@ -22,13 +22,7 @@ ms.locfileid: "90051991"
 
 A nagyvállalati elemzésnek bármilyen típusú, nyers, finomított vagy nagy mértékben feldolgozható adatmennyiséget kell biztosítania. Ez a szükséges vállalatok összevarrják a big data és az adattárház-technológiákat, például a Sparkot és az SQL-t olyan gazdag adatfolyamatokkal, amelyek a kapcsolódó tárolókban és az adattavakban egyaránt működnek. Az ehhez hasonló megoldások nehezen hozhatók létre, biztonságosak és karbantarthatók. Az Insight Enteprises igénybe vételéhez szükséges összetettségi késések.
 
-Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data elemzési rendszerek elemzésének idejét. A legfontosabb az, hogy az Azure szinapszis a nagyvállalati adattárházak, a big data használt **Spark** - **technológiák és az** adatintegrációs és az ETL/elt által használt **SQL** -technológiák közül a legjobbat egyesíti.
-
-Az Azure szinapszis egy webalapú **stúdió** -élményt nyújt, amely egyetlen helyet biztosít a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz.
-
-Az Azure szinapszis a legegyszerűbb és leggyorsabb módszert kínálja a vállalatok számára, hogy bármilyen méretű adatelemzést gyűjtsenek az adatokról, amelyek a legismertebbek. Mélyen integrálva van **Power bi** lehetővé teszi, hogy az adatmérnökök olyan elemzési megoldásokat építsenek, amelyek teljes körűen működnek az üzleti intelligencia biztosításához.
-
-Az Azure szinapszis emellett a **AzureML**beépített támogatásával lehetővé teszi a prediktív modell kialakítását és a fejlett elemzést a gépi tanulással.
+Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data elemzési rendszerek elemzésének idejét. A legfontosabb, hogy az Azure szinapszis a nagyvállalati adattárházak, a big data használt **Spark** -technológiák, valamint az adatintegrációs **és ETL** /elt által használt **SQL** -technológiák közül a legjobbat egyesíti. A szinapszis egy webalapú **stúdió** , amely egyetlen helyet biztosít a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis a többi Azure-szolgáltatással, például a **PowerBI**, a **CosmosDB**és a **AzureML**való szoros integrációt is tartalmaz.
 
 ## <a name="key-features--benefits"></a>A főbb funkciók & előnyök
 

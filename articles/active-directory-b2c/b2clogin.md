@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005344"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524980"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
-Ha a Azure Active Directory B2C (Azure AD B2C) alkalmazásban állít be egy identitás-szolgáltatót a regisztráláshoz és a bejelentkezéshez, meg kell adnia egy átirányítási URL-címet. Az alkalmazások és API-k már nem hivatkozhatnak *login.microsoftonline.com* . Ehelyett használja a *b2clogin.com* az összes új alkalmazáshoz, és telepítse át a meglévő alkalmazásokat a *login.microsoftonline.com* -ről a *b2clogin.com*-re.
+Ha a Azure Active Directory B2C (Azure AD B2C) alkalmazásban állít be egy identitás-szolgáltatót a regisztráláshoz és a bejelentkezéshez, meg kell adnia egy átirányítási URL-címet. Az alkalmazásokban és API-kkal már nem hivatkozhat *login.microsoftonline.com* a felhasználók hitelesítéséhez Azure ad B2C. Ehelyett használja a *b2clogin.com* az összes új alkalmazáshoz, és telepítse át a meglévő alkalmazásokat a *login.microsoftonline.com* -ről a *b2clogin.com*-re.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Login.microsoftonline.com elavulása
 
@@ -31,6 +31,23 @@ December 2019-án bejelentettük a login.microsoftonline.com-támogatás ütemez
 A login.microsoftonline.com elavulása az összes Azure AD B2C bérlőre érvényes, 2020. december 1-jén, és a meglévő bérlők számára egy (1) évet biztosít a b2clogin.com-re való Migrálás során. A 2019. december 04. után létrehozott új bérlők nem fogadják el a login.microsoftonline.com érkező kéréseket. Az összes funkció változatlan marad a b2clogin.com-végponton.
 
 A login.microsoftonline.com elavulása nem érinti Azure Active Directory bérlőket. Ez a módosítás csak Azure Active Directory B2C bérlőket érint.
+
+## <a name="what-endpoints-does-this-apply-to"></a>Milyen végpontokra vonatkozik ez a
+A b2clogin.com-re való áttérés csak olyan hitelesítési végpontokra vonatkozik, amelyek Azure AD B2C házirendeket (felhasználói folyamatokat vagy egyéni szabályzatokat) használnak a felhasználók hitelesítéséhez. Ezek a végpontok egy `<policy-name>` paraméterrel rendelkeznek, amely meghatározza, hogy mely házirendet Azure ad B2C kell használni. [További információ a Azure ad B2C szabályzatokról](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
+
+Ezek a végpontok a következőkhöz hasonlóak:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/authorize</code>
+
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/token</code>
+
+Azt is megteheti, hogy a `<policy-name>` lekérdezési paraméterként a következőket adta át:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/authorize?<b>p=\<policy-name\></b></code>
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/token?<b>p=\<policy-name\></b></code>
+
+> [!IMPORTANT]
+> A "Policy" paramétert használó végpontokat frissíteni kell, valamint az [identitás-szolgáltató átirányítási URL-címeit](#change-identity-provider-redirect-urls).
+
+Egyes Azure AD B2C ügyfelek az Azure AD Enterprise-bérlők megosztott funkcióit használják, például a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát. Ezek a funkciók az Azure AD login.microsoftonline.com-végpontokkal érhetők el, *amelyek nem tartalmaznak házirend-paramétert*. __Ezeket a végpontokat a rendszer nem érinti__.
 
 ## <a name="benefits-of-b2clogincom"></a>A b2clogin.com előnyei
 
@@ -45,8 +62,15 @@ Ha a *b2clogin.com* -t használja átirányítási URL-címként:
 Az alkalmazások *b2clogin.com*való áttelepíteni több módosítást is szükségessé tehet:
 
 * Módosítsa az átirányítási URL-címet az identitás-szolgáltató alkalmazásaiban a *b2clogin.com*hivatkozására.
-* Frissítse Azure AD B2C alkalmazásait a *b2clogin.com* használatára a felhasználói folyamat és a jogkivonat-végpont hivatkozásaiban.
+* Frissítse Azure AD B2C alkalmazásait a *b2clogin.com* használatára a felhasználói folyamat és a jogkivonat-végpont hivatkozásaiban. Ilyen lehet például a Microsoft Authentication Library (MSAL) hitelesítési függvénytár használatának frissítése.
 * Frissítse a [felhasználói felület testreszabására](custom-policy-ui-customization.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
+
+Egy régi végpont a következőhöz hasonló lehet:
+- <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
+Egy megfelelő frissített végpont A következőképpen fog kinézni:
+- <code><b>https://\<tenant-name\>.b2clogin.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
 
 ## <a name="change-identity-provider-redirect-urls"></a>Identitás-szolgáltató átirányítási URL-címeinek módosítása
 
@@ -129,7 +153,7 @@ this.clientApplication = new UserAgentApplication(
 );
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OWIN-alapú webalkalmazások b2clogin.com való áttelepítéséről: [OWIN-alapú webes API áttelepítése b2clogin.com](multiple-token-endpoints.md).
 

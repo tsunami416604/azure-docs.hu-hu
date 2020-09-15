@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: A Text Analytics API meghívása a Python használatával'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódokat, amelyekkel gyorsan megkezdheti az Azure Cognitive Services Text Analytics API használatának első lépéseit.
+description: Ez a rövid útmutató azt ismerteti, hogyan használható a Python az információk és a kódok megszerzéséhez, hogy gyorsan megismerkedjen az Azure Cognitive Services Text Analytics API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 34d1b62ed97b966c000ff81e8f7676c30338b6a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0ef870b6b2d3b88b13c16c8c2acbfcee7ed551c1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876767"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527241"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: a Text Analytics kognitív szolgáltatás meghívása a Python REST API használatával 
 <a name="HOLTop"></a>

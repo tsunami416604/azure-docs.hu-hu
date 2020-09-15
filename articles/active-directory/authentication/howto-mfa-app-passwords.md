@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224917"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526901"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Az Azure Multi-Factor Authentication engedélyezése és használata az alkalmazás jelszavait használó örökölt alkalmazásokkal
 
-Egyes alkalmazások, például az Office 2010 vagy a korábbi és az Apple mail előtt iOS 11, nem támogatják a többtényezős hitelesítést. Az alkalmazások nem úgy vannak konfigurálva, hogy elfogadják a hitelesítés másodlagos formáját vagy a kérést. Ha ezeket az alkalmazásokat biztonságos módon szeretné használni az Azure Multi-Factor Authentication a felhasználói fiókokhoz, az alkalmazás jelszavait is használhatja. Ezek az alkalmazások jelszavai lecserélték a hagyományos jelszót, hogy az alkalmazások megkerüljék a többtényezős hitelesítést, és megfelelően működjenek.
+Néhány régebbi, nem böngészőbeli alkalmazás, például az Office 2010 vagy a korábbi és az Apple Mail az iOS 11 előtt nem érti a hitelesítési folyamat szüneteltetését vagy megszakítását. Ha egy felhasználó engedélyezve van az Azure Multi-Factor Authentication számára, és megkísérli használni a régebbi, nem böngészőbeli alkalmazások egyikét, nem tudnak sikeresen hitelesíteni. Ha ezeket az alkalmazásokat biztonságos módon szeretné használni az Azure Multi-Factor Authentication a felhasználói fiókokhoz, az alkalmazás jelszavait is használhatja. Ezek az alkalmazások jelszavai lecserélték a hagyományos jelszót, hogy az alkalmazások megkerüljék a többtényezős hitelesítést, és megfelelően működjenek.
 
 A modern hitelesítés a Microsoft Office 2013-ügyfelek és újabb rendszerek esetében támogatott. Az Office 2013-ügyfelek, beleértve az Outlookot, támogatják a modern hitelesítési protokollokat, és lehetővé tehetik a kétlépéses ellenőrzéssel való munkát. Az ügyfél engedélyezése után az alkalmazás jelszavai nem szükségesek az ügyfélhez.
 
@@ -103,6 +103,6 @@ Amikor a felhasználók befejezik az Azure Multi-Factor Authentication kezdeti r
 
 A felhasználók a regisztráció után is létrehozhatnak alkalmazás-jelszavakat. További információk és részletes lépések a felhasználók számára: Mik az [alkalmazások jelszavai az Azure-ban multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan engedélyezhető a felhasználók számára az Azure-Multi-Factor Authentication gyors regisztrálása: a [kombinált biztonsági információk regisztrációjának áttekintése](concept-registration-mfa-sspr-combined.md).

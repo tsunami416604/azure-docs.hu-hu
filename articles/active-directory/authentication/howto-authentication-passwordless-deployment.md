@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717149"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527003"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -93,7 +93,7 @@ Vegye figyelembe az üzleti igényeket és az egyes hitelesítési módszerek ha
 
 Az alábbi táblázat a projekt során megvalósítandó használati eseteket ismerteti.
 
-| Terület | Leírás |
+| Terület | Description |
 | --- | --- |
 | **Hozzáférés** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok a rendszergazdák számára a közel valós időben történő naplózáshoz érhetők el. <br> A használati adatokat legalább 29 naponta letölti a vállalati rendszerbe, vagy az SIEM eszközt használja. |
@@ -160,7 +160,7 @@ Engedélyeznie kell a **kompatibilis FIDO2 biztonsági kulcsokat**. A Microsoft 
 -    A Windows 10 1809-es verziója támogatja a FIDO2 való bejelentkezést, és szükség lehet a FIDO2 Key gyártótól származó szoftverek telepítésére. Javasoljuk, hogy a 1903-es vagy újabb verziót használja. 
 
 **Hibrid Azure Active Directory tartományhoz csatlakoztatott eszközök esetén**: 
--    Windows 10 bennfentes Build 18945 vagy újabb verzió
+-    Windows 10 2004-es vagy újabb verzió
 -    A Windows Server 2016-es vagy 2019-es verzióját futtató, teljes mértékben javított tartományi kiszolgálók.
 -    A Azure AD Connect legújabb verziója
 
@@ -292,7 +292,7 @@ Kövesse az alábbi, a választott módszerhez igazított lépéseket.
 
 ### <a name="required-administrative-roles"></a>Szükséges rendszergazdai szerepkörök
 
-| Azure AD-szerepkör | Leírás |
+| Azure AD-szerepkör | Description |
 | --- | --- |
 | Globális rendszergazda|A legkevésbé magas jogosultsági szintű szerepkör lehetővé tenné a közös regisztrációs élmény megvalósítását. |
 | Hitelesítés rendszergazdája | A minimális jogosultsági szintű szerepkör képes a hitelesítési módszerek megvalósítására és kezelésére. |
@@ -326,7 +326,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 | A Windows 10 1809-es verziójában a felhasználó nem tudja kezelni a biztonsági kulcsot | Az 1809-es verzió használatához a FIDO2 kulcs gyártója által biztosított biztonsági kulcs-felügyeleti szoftvert kell használnia. Támogatásért forduljon a gyártóhoz. |
 | Azt hiszem, hogy a FIDO2 biztonsági kulcsa hibás lehet – hogyan tesztelhető. | Lépjen a [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) be, adja meg egy teszt fiók hitelesítő adatait, csatlakoztassa a gyanús biztonsági kulcsot, válassza a **+** képernyő jobb felső részén látható gombot, kattintson a Létrehozás gombra, és folytassa a létrehozás folyamatát. Ha ez a forgatókönyv meghiúsul, lehetséges, hogy az eszköz hibás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Jelszó nélküli biztonsági kulcsok engedélyezése az Azure AD-ba való bejelentkezéshez](howto-authentication-passwordless-security-key.md)
 - [Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)

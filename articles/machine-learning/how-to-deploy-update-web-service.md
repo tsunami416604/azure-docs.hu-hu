@@ -1,20 +1,23 @@
 ---
-title: Telepített webszolgáltatás frissítése
-author: gvashishtha
+title: Webszolgáltatások frissítése
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan frissíthet olyan webszolgáltatásokat, amelyek már telepítve vannak Azure Machine Learning
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 354d9b84c614447b6a957a6dba65984f4c97cac3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+author: gvashishtha
+ms.date: 07/31/2020
+ms.openlocfilehash: 52d7c42701e20c16272843a50c6c45847545d747
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645969"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525167"
 ---
 # <a name="update-a-deployed-web-service"></a>Központilag telepített webszolgáltatás frissítése
 
-Ez a cikk a Azure Machine Learning használatával üzembe helyezett webszolgáltatás üzembe helyezését mutatja be.
+Ebből a cikkből megtudhatja, hogyan frissítheti a Azure Machine Learning használatával üzembe helyezett webszolgáltatásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

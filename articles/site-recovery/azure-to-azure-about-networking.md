@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068370"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527377"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Tudnivalók az Azure-beli virtuális gépek vész-helyreállításáról
 
@@ -35,7 +35,7 @@ Ha Azure-ExpressRoute használ, vagy a helyszíni hálózatról az Azure-ba VPN-
 
 ![ügyfél – környezet](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-A hálózatok általában tűzfalak és hálózati biztonsági csoportok (NSG-EK) használatával védettek. A tűzfalak az URL-cím vagy az IP-alapú engedélyezési lista használatával vezérlik a hálózati kapcsolatot. A NSG olyan szabályokat biztosítanak, amelyek IP-címtartományok használatával vezérlik a hálózati kapcsolatot.
+A hálózatok általában tűzfalak és hálózati biztonsági csoportok (NSG-EK) használatával védettek. A hálózati kapcsolat vezérléséhez a szolgáltatás címkéit kell használni. A NSG több szolgáltatási címkét is engedélyezni kell a kimenő kapcsolatok vezérléséhez.
 
 >[!IMPORTANT]
 > Site Recovery nem támogatja hitelesített proxy használatát a hálózati kapcsolat vezérléséhez, és a replikáció nem engedélyezhető.
@@ -45,6 +45,8 @@ A hálózatok általában tűzfalak és hálózati biztonsági csoportok (NSG-EK
 
 Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolat vezérléséhez, engedélyezze ezeket a Site Recovery URL-címeket:
 
+>[!NOTE]
+> A kimenő kapcsolat vezérléséhez nem kell végrehajtani az IP-címeken alapuló engedélyezési listát.
 
 **URL-cím** | **Részletek**
 --- | ---

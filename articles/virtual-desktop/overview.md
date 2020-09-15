@@ -3,15 +3,15 @@ title: Mit takar a Windows Virtual Desktop? – Azure
 description: A Windows rendszerű virtuális asztal áttekintése.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661112"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527173"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
@@ -110,12 +110,10 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Ügyfél Microsoft Store
 
 > [!IMPORTANT]
 > A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
-
-> [!IMPORTANT]
-> A Windows virtuális asztal jelenleg nem támogatja a Távoli asztal ügyfelet a Windows áruházból. Az ügyfél támogatása egy későbbi kiadásban lesz hozzáadva.
 
 Ha többet szeretne megtudni az URL-címekről, fel kell oldania az ügyfelek használatát, lásd a [biztonságos URL-címek listáját](safe-url-list.md).
 

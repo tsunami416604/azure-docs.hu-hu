@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551322"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527309"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
-A Azure Monitor egy Log Analytics-munkaterületen tárolja a [napló](data-platform-logs.md) adatokat, amely egy Azure-erőforrás, valamint egy olyan tároló, amelybe az adatok gyűjtése, összesítése és felügyeleti határként szolgál. Noha az Azure-előfizetésben egy vagy több munkaterületet is üzembe helyezhet, több szempontot is figyelembe kell vennie, hogy a kezdeti üzembe helyezést kövesse a szervezet igényeinek megfelelő költséghatékony, felügyelhető és skálázható üzembe helyezést biztosító irányelvek alapján.
+A Azure Monitor egy Log Analytics-munkaterületen tárolja a [napló](data-platform-logs.md) adatokat, amely egy Azure-erőforrás, valamint egy olyan tároló, amelybe az adatok gyűjtése, összesítése és felügyeleti határként szolgál. Noha az Azure-előfizetésben egy vagy több munkaterületet is üzembe helyezhet, több szempontot is figyelembe kell vennie, hogy a kezdeti üzembe helyezést kövesse az irányelvek alapján, hogy költséghatékony, felügyelhető és skálázható üzembe helyezést biztosítson a szervezet igényeinek megfelelően.
 
 A munkaterületen lévő adatkészletek táblázatokba vannak rendezve, amelyek mindegyike különböző típusú adattípusokat tárol, és saját tulajdonságokkal rendelkezik, amelyek az adatforrást generáló erőforráson alapulnak. A legtöbb adatforrás a saját tábláiba fog írni egy Log Analytics munkaterületen.
 
@@ -131,7 +131,7 @@ A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfel
 
 Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
 
-Ahhoz, hogy értesítést kapjon a munkaterületen a approching vagy a betöltési mennyiség arányának elérésekor, hozzon létre egy [riasztási szabályt](alerts-log.md) a következő lekérdezéssel a riasztási logika alapján a nulla értékkel rendelkező eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
+Ahhoz, hogy értesítést kapjon a munkaterületen a approching vagy a betöltési mennyiség arányának elérésekor, hozzon létre egy [napló-riasztási szabályt](alerts-log.md) a következő lekérdezéssel a riasztási logika alapján a nullánál nagyobb eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
 
 A betöltési mennyiség elérte a küszöbérték 80%-át:
 ```Kusto
@@ -152,9 +152,9 @@ Operation
 
 ![Példa erőforrás-környezet kialakítására](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 
-Ez a forgatókönyv egyetlen munkaterület-kialakítást mutat be az IT-szervezet előfizetésében, amelyet nem korlátozza az adatszuverenitás vagy a szabályozások megfelelősége, vagy le kell képeznie azokat a régiókat, amelyekre az erőforrások telepítve vannak. Lehetővé teszi a szervezetek számára, hogy az Azure Access Management és a biztonságosabb hozzáférés-vezérlés révén jobban kihasználják a szervezet biztonsági és informatikai felügyeleti csapatait.
+Ez a forgatókönyv egyetlen munkaterület-kialakítást mutat be az IT-szervezet előfizetésében, amelyet nem korlátozza az adatszuverenitás vagy a szabályozások megfelelősége, vagy le kell képeznie azokat a régiókat, amelyekre az erőforrások telepítve vannak. Lehetővé teszi, hogy a szervezete biztonsági és informatikai felügyeleti csapata kihasználja a jobb integrációt az Azure Access Management szolgáltatással és biztonságosabb hozzáférés-vezérléssel.
 
-Az összes erőforrás, figyelési megoldás és elemzés, például a Application Insights és a Azure Monitor for VMs, a különböző csapatok által karbantartott infrastruktúra és alkalmazások támogatása úgy van konfigurálva, hogy az összegyűjtött naplózási adatokat az informatikai szervezetek központosított megosztott munkaterületére továbbítsák. Az egyes csoportokban lévő felhasználók hozzáférést kapnak a naplókhoz azokhoz az erőforrásokhoz, amelyekhez hozzáférést kaptak.
+Az összes erőforrás, figyelési megoldás és elemzés, például a Application Insights és a Azure Monitor for VMs, a különböző csapatok által karbantartott infrastruktúra és alkalmazások támogatása úgy van konfigurálva, hogy az összegyűjtött naplózási adatokat az informatikai szervezet központi megosztott munkaterületére továbbítsa. Az egyes csoportokban lévő felhasználók hozzáférést kapnak a naplókhoz azokhoz az erőforrásokhoz, amelyekhez hozzáférést kaptak.
 
 A munkaterület architektúrájának üzembe helyezése után a [Azure Policy](../../governance/policy/overview.md)használatával kényszerítheti ki ezt az Azure-erőforrásokra. Lehetővé teszi a szabályzatok meghatározását és az Azure-erőforrások megfelelőségének biztosítását, így az összes erőforrás-naplóját egy adott munkaterületre küldi el. Az Azure-beli virtuális gépekkel vagy a virtuálisgép-méretezési csoportokkal például olyan meglévő házirendeket használhat, amelyek kiértékelik a munkaterület megfelelőségét és a jelentés eredményeit, illetve testreszabhatók, ha nem megfelelőek.  
 
@@ -171,7 +171,7 @@ A modellre való Migrálás megtervezése során vegye figyelembe a következők
 * Távolítsa el az alkalmazás-Teams engedélyt a munkaterület olvasásához és lekérdezéséhez.
 * Engedélyezheti és konfigurálhatja azokat a figyelési megoldásokat, például a tárolók és/vagy Azure Monitor for VMs Azure Monitorét, az Automation-fiók (ok) t, valamint az eredeti munkaterületen üzembe helyezett felügyeleti megoldásokat, például a Update Management, a virtuális gépek indítását és leállítását stb..
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](manage-access.md)című témakört.
 

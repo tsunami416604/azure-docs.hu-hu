@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-minták – egyéni virtuálisgép-rendszerkép használata
-description: Ez a szkript létrehoz egy virtuálisgép-méretezési csoportot, amely egy egyéni virtuálisgép-rendszerképet használ a virtuális gépek példányainak forrásaként.
+description: Ez az Azure CLI-szkript létrehoz egy virtuálisgép-méretezési készletet, amely egy egyéni virtuálisgép-rendszerképet használ a virtuálisgép-példányok forrásaként.
 author: axayjo
 ms.author: akjosh
 ms.topic: sample
@@ -9,12 +9,12 @@ ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 8f8384667eb9f0c3fc0b3368ac38cbb3e25e979b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d5b7c2814bd6b4be5c0a2243cc61af3405054db4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499721"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526765"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport létrehozása egy egyéni virtuálisgép-rendszerképből az Azure CLI használatával
 Ez a szkript létrehoz egy virtuálisgép-méretezési csoportot, amely egy egyéni virtuálisgép-rendszerképet használ a virtuális gépek példányainak forrásaként.
@@ -42,5 +42,5 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vmss create](/cli/azure/vmss) | Létrehozza a virtuálisgép-méretezési csoportot, és csatlakoztatja a virtuális hálózathoz, alhálózathoz és hálózati biztonsági csoporthoz. Továbbá egy terheléselosztót is létrehoz, amely elosztja a forgalmat a virtuálisgép-példányok között. A parancs megadja emellett a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az group delete](/cli/azure/ad/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).

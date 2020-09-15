@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084328"
+ms.locfileid: "90527020"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -82,11 +82,15 @@ A jelszó nélküli bejelentkezéshez a következő útmutatók végrehajtásáv
 
 ## <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
 
+A (gyors identitás online) Szövetség segíti a nyílt hitelesítési szabványok előléptetését, és a jelszavak felhasználói hitelesítés formájában történő csökkentését. A FIDO2 a legújabb szabvány, amely magában foglalja a webes hitelesítési (WebAuthn) szabványt.
+
 A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. A parancs lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközbe épített platform-kulccsal.
 
-Az alkalmazottak a biztonsági kulcsok használatával bejelentkezhetnek az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezést is kaphatnak a Felhőbeli és helyszíni erőforrásaik számára. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
+A felhasználók regisztrálhatnak és kijelölhetnek egy FIDO2 biztonsági kulcsot a bejelentkezési felületen a hitelesítés fő eszközeként. Ezek a FIDO2 biztonsági kulcsok általában USB-eszközök, de a Bluetooth vagy az NFC használatát is használhatják. Ha a hitelesítést kezelő hardvereszközt használ, a rendszer megnöveli a fiók biztonságát, mivel nincs olyan jelszó, amely elérhetővé vagy kitalált.
 
-Az Azure AD-ben a FIDO2 biztonsági kulcsaival való bejelentkezés jelenleg előzetes verzióban érhető el.
+A FIDO2 biztonsági kulcsainak használatával bejelentkezhet az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezéssel bejelentkezhet a felhőbe és a helyszíni erőforrásaiba. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
+
+Az Azure AD-ben a FIDO2 biztonsági kulcsaival való bejelentkezés jelenleg előzetes verzióban érhető el. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -141,7 +145,6 @@ A FIDO2 biztonsági kulcsainak megkezdéséhez kövesse az alábbi útmutatókat
 > [!div class="nextstepaction"]
 > [Jelszó nélküli aláírás engedélyezése a FIDO2 biztonsági kulcsaival](howto-authentication-passwordless-security-key.md)
 
-
 ## <a name="what-scenarios-work-with-the-preview"></a>Milyen forgatókönyvek működnek az előzetes verzióban?
 
 Az Azure AD jelszó nélküli bejelentkezési funkciói jelenleg előzetes verzióban érhetők el. A következő szempontokat kell figyelembe venni:
@@ -161,7 +164,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 ||**Vállalati Windows Hello**|**Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással**|**FIDO2 biztonsági kulcsok**|
 |:-|:-|:-|:-|
-|**Előfeltételek**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
+|**Előfeltételek**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1903-es vagy újabb verzió<br>Azure Active Directory|
 |**Mód**|Platform|Szoftverek|Hardver|
 |**Rendszerek és eszközök**|Beépített platformmegbízhatósági modul (TPM) rendelkező számítógép<br>PIN-kód és biometriai felismerés |PIN-kód és biometriai felismerés telefonon|Microsoft-kompatibilis FIDO2 biztonsági eszközök|
 |**Felhasználó felület**|Bejelentkezés PIN-kód vagy biometrikus felismerés (arc, írisz vagy ujjlenyomat) használatával Windows-eszközökkel.<br>A Windows Hello-hitelesítés az eszközhöz van kötve; a felhasználónak az eszközre és egy bejelentkezési összetevőre is szüksége van, például PIN-kódot vagy biometrikus tényezőt a vállalati erőforrások eléréséhez.|Jelentkezzen be egy olyan mobiltelefonnal, amely ujjlenyomat-vizsgálatot, arc-vagy írisz-felismerést vagy PIN-kódot használ.<br>A felhasználók a SZÁMÍTÓGÉPRŐL vagy a mobiltelefonjára bejelentkezhetnek a munkahelyi vagy személyes fiókba.|Bejelentkezés a FIDO2 biztonsági eszközzel (biometria, PIN-kód és NFC)<br>A felhasználó a szervezeti vezérlők és a PIN-kód alapján végzett hitelesítés alapján képes hozzáférni az eszközhöz, például az USB biztonsági kulcsok és az NFC-kompatibilis intelligens kártyák, kulcsok vagy hordható eszközök használatával.|

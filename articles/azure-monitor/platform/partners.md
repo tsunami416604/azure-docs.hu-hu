@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030380"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526476"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -140,7 +140,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-További információ
+Tudjon meg többet
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -149,7 +149,7 @@ További információ
 
 ## <a name="moogsoft"></a>Moogsoft
 
-![Moogsoft](./media/partners/moogsoft.png)
+![Moogsoft embléma](./media/partners/moogsoft.png)
 
 A Moogsoft AIOps felgyorsítja az agilis üzleti átalakítást.
 

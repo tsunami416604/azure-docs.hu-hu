@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684864"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567911"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure-előfizetés fizetése számla alapján
 
@@ -67,7 +67,7 @@ Ha számlás fizetésre vált, az azt jelenti, hogy számláját a számlázási
      Adott régió és előfizetések sorozata:<br>
 
     - A **Vállalat neve** és a **Vállalat címe** értékének meg kell egyeznie az Azure-fiókhoz megadott adatokkal. További információkat az adatok megtekintéséről és frissítéséről [az Azure-fiók profiladatainak módosításával](change-azure-account-profile.md) kapcsolatos részben találhat.
-    - A hitelkeret jóváhagyása előtt meg kell adnia számlázási kapcsolattartási adatait az Azure Portalon. A kapcsolattartási adatoknak a bérszámfejtési vagy a pénzügyi részleg elérhetőségeit kell tartalmazniuk. A számlázási kapcsolattartási adatok frissítéséhez lépjen az [Azure Fiókközpontba](https://account.azure.com/Profile).
+    - A hitelkeret jóváhagyása előtt meg kell adnia számlázási kapcsolattartási adatait az Azure Portalon. A kapcsolattartási adatoknak a bérszámfejtési vagy a pénzügyi részleg elérhetőségeit kell tartalmazniuk. A számlázási kapcsolattartási adatok frissítéséhez nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 6. Ellenőrizze a kapcsolattartási adatokat és a kívánt kapcsolatfelvételi módot, majd válassza a **Létrehozás** lehetőséget.
 

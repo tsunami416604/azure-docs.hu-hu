@@ -3,12 +3,12 @@ title: Műveletnapló-riasztások létrehozása a laborokhoz Azure DevTest Labs
 description: Ez a cikk a Azure DevTest Labs a laborhoz tartozó műveletnapló-riasztások létrehozásának lépéseit ismerteti.
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 6c859e70ab8a101c533e16f9cb118e26727baa52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d5886ea26ddbeb07efc23d61d3197860620eebf3
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098947"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526357"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Műveletnapló-riasztások létrehozása a laborokhoz Azure DevTest Labs
 Ez a cikk azt ismerteti, hogyan lehet tevékenység-naplózási riasztásokat létrehozni a laborokhoz Azure DevTest Labsban (például virtuális gép létrehozásakor vagy egy virtuális gép törlésekor).
@@ -64,7 +64,7 @@ Ebben a példában riasztást hoz létre az összes felügyeleti művelethez egy
 ## <a name="view-alerts"></a>Riasztások megtekintése 
 1. **A riasztások az összes** felügyeleti művelethez (ebben a példában) jelennek meg. Előfordulhat, hogy a riasztások egy kis ideig eltartanak. 
 
-    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="Riasztások":::
+    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="A képernyőfelvétel megjeleníti a riasztásokat az irányítópulton.":::
 1. Ha a szám elemet választja egy oszlopban (például: **összes riasztás**), akkor a felmerült riasztások megjelennek. 
 
     :::image type="content" source="./media/activity-logs/all-alerts.png" alt-text="Minden riasztás":::
@@ -75,8 +75,8 @@ Ebben a példában riasztást hoz létre az összes felügyeleti művelethez egy
 
     :::image type="content" source="./media/activity-logs/alert-email.png" alt-text="Riasztási e-mail":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a műveleti csoportok különböző Művelettípus használatával történő létrehozásáról: [műveleti csoportok létrehozása és kezelése a Azure Portalban](../azure-monitor/platform/action-groups.md).
-- További információ a tevékenységi naplókról: [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md).
+- További információ a tevékenységi naplókról:  [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md).
 - A riasztások a tevékenység naplófájljaiban való beállításával kapcsolatos további információkért lásd: [riasztások a tevékenység naplójában](../azure-monitor/platform/activity-log-alerts.md).
 
