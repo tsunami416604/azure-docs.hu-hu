@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356661"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088970"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect Sync szolgáltatás árnyék-attribútumai
 A legtöbb attribútum ugyanolyan módon jelenik meg az Azure AD-ben, mint a helyszíni Active Directory. Bizonyos attribútumok azonban bizonyos speciális kezelést is tartalmazhatnak, és az Azure AD attribútum értéke eltérő lehet, mint amit a Azure AD Connect szinkronizál.
@@ -32,7 +32,7 @@ Egyes attribútumok két képviselettel rendelkeznek az Azure AD-ben. A helyszí
 Az árnyék attribútumai nem láthatók a Azure Portal vagy a PowerShell használatával. A koncepció megismerése pedig segít az olyan helyzetek megoldásában, amelyekben az attribútum különböző értékeket tartalmaz a helyszínen és a felhőben.
 
 A viselkedés jobb megismeréséhez tekintse meg a fabrikam következő példáját:  
-![Tartományok](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![A képernyőképen a Active Directory UPN-utótag látható, amely a hozzá tartozó, nem ellenőrzött és ellenőrzött Azure AD-tartományi értékkel rendelkezik.](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Több UPN-utótaggal rendelkeznek a helyszíni Active Directoryban, de csak egyszer voltak ellenőrizve.
 
 ### <a name="userprincipalname"></a>userPrincipalName
@@ -74,6 +74,6 @@ A ProxyCalc eltarthat egy ideig, hogy feldolgozza a felhasználó módosításai
 ### <a name="quarantined-attribute-values"></a>Karanténba helyezett attribútumok értékei
 A rendszer az árnyék attribútumokat is használja, ha ismétlődő attribútumok vannak megadva. További információ: [duplikált attribútum rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
 * A helyszíni [identitások integrálása a Azure Active Directorykal](whatis-hybrid-identity.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799802"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088289"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Monitor for VMs engedélyezése Azure Policy használatával
 Ez a cikk azt ismerteti, hogyan engedélyezhető Azure Monitor for VMs az Azure-beli virtuális gépekhez vagy az Azure arc (előzetes verzió) szolgáltatással összekapcsolt hibrid virtuális géphez Azure Policy használatával. Azure Policy lehetővé teszi olyan szabályzat-definíciók hozzárendelését, amelyek telepítik a szükséges ügynököket az Azure-környezet Azure Monitor for VMséhez, és automatikusan engedélyezik a virtuális gépek figyelését minden egyes virtuális gép létrehozásakor. Azure Monitor for VMs egy olyan szolgáltatást biztosít, amely lehetővé teszi a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Használja ezt a funkciót ahelyett, hogy közvetlenül a Azure Policy használatával kellene dolgoznia.
@@ -46,7 +46,7 @@ Ez ugyanaz az oldal, amellyel a Azure Policy egy kezdeményezést rendelhet hozz
 A **Parameters (paraméterek** ) lapon válasszon ki egy **log Analytics munkaterületet** , amelyet a hozzárendelésben szereplő összes virtuális gép használni fog. Ha különböző munkaterületeket szeretne megadni a különböző virtuális gépekhez, több hozzárendelést kell létrehoznia, amelyek mindegyike saját hatókörrel rendelkezik. 
 
    > [!NOTE]
-   > Ha a munkaterület a hozzárendelés hatókörén kívül esik, adja meg *log Analytics közreműködői* engedélyeit a szabályzat-HOZZÁRENDELÉS elsődleges azonosítójához. Ha ezt nem teszi meg, előfordulhat, hogy az üzembe helyezési hiba például a következő:`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > Ha a munkaterület a hozzárendelés hatókörén kívül esik, adja meg *log Analytics közreműködői* engedélyeit a szabályzat-HOZZÁRENDELÉS elsődleges azonosítójához. Ha ezt nem teszi meg, előfordulhat, hogy az üzembe helyezési hiba például a következő: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
 [![Munkaterület](media/vminsights-enable-at-scale-policy/assignment-workspace.png)](media/vminsights-enable-at-scale-policy/assignment-workspace.png#lightbox)
 
@@ -102,7 +102,7 @@ A megfelelőségi problémák enyhítésére szolgáló szervizelési feladat l�
 
 Kattintson a **szervizelés** elemre a Szervizelési feladat létrehozásához **, majd az** elindításához. Valószínűleg több szervizelési feladatot is létre kell hoznia, egyet az egyes szabályzat-definíciók esetében. Egy kezdeményezéshez nem hozható létre szervizelési feladat.
 
-[![Szervizkiszolgáló](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
+[![Képernyőfelvétel: a szabályzat szervizelési panelje a figyeléshez | Virtual Machines.](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
 
 
 A Szervizelési feladatok befejezését követően a virtuális gépeknek meg kell felelniük a Azure Monitor for VMs telepített és engedélyezett ügynököknek. 

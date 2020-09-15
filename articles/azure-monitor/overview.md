@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505822"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088629"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – áttekintés
 
@@ -42,13 +42,13 @@ Az Azure Monitor által összegyűjtött összes adat a két alapvető típus, a
 
 Számos Azure-erőforrás esetében Azure Monitor közvetlenül gyűjtött adatokat a Azure Portal áttekintő lapján láthatók. Tekintse meg például a virtuális gépeket, és láthatja, hogy a teljesítmény-mérőszámokat több diagram jeleníti meg. Kattintson bármelyik gráfra, hogy megnyissa az adatokat a Azure Portal [mérőszámok Explorerben](platform/metrics-charts.md) , amely lehetővé teszi, hogy az idő múlásával több mérőszám értékét is ábrázolja.  Megtekintheti a diagramokat interaktív módon, vagy rögzítheti azokat egy irányítópulton, és megtekintheti őket más vizualizációkkal.
 
-![Mérőszámok](media/overview/metrics.png)
+![A diagram megjeleníti a Metrikaböngészőbe áramló mérőszámokat a vizualizációkban való használatra.](media/overview/metrics.png)
 
 A Azure Monitor által gyűjtött naplózási adatokat elemezheti a [lekérdezésekkel](log-query/log-query-overview.md) , így gyorsan lekérheti, összevonhatja és elemezheti az összegyűjtött adatokat.  Lekérdezéseket hozhat létre és tesztelheti [log Analytics](./log-query/log-query-overview.md) használatával a Azure Portalban, majd közvetlenül elemezheti az adatelemzést különböző eszközökkel, vagy mentheti a lekérdezéseket a [vizualizációkkal](visualizations.md) vagy a [riasztási szabályokkal](platform/alerts-overview.md)való használatra.
 
 A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv](/azure/kusto/query/) egy olyan verzióját használja, amely az egyszerű naplózási lekérdezésekhez megfelelő, de olyan speciális funkciókat is tartalmaz, mint az összesítések, az illesztések és az intelligens elemzések. A lekérdezés nyelvét [több leckével](log-query/get-started-queries.md)is gyorsan megismerheti.  Azon felhasználók számára, akik már ismerik az [SQL](log-query/sql-cheatsheet.md) és [Splunk](log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
-![Naplók](media/overview/logs.png)
+![A diagram az elemzéshez Log Analyticsba áramló naplókat jeleníti meg.](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat gyűjt az Azure Monitor?
 
@@ -103,12 +103,12 @@ Amellett, hogy lehetővé teszi a figyelési adatok interaktív elemzését, a h
 
 A Azure Monitor riasztási szabályai a különböző szabályokban megosztható címzettek és műveletek egyedi készleteit tartalmazó [műveleti csoportok](platform/action-groups.md)használata. A követelmények alapján a műveleti csoportok olyan műveleteket hajthatnak végre, mint például a webhookok, hogy a riasztások elindítják a külső műveleteket, vagy integrálni tudják a ITSM-eszközökkel.
 
-![Riasztások](media/overview/alerts.png)
+![A képernyőképen a Azure Monitor súlyossággal, a teljes riasztásokkal és egyéb információkkal kapcsolatos riasztások láthatók.](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Automatikus méretezés
 Az automatikus méretezés lehetővé teszi, hogy az alkalmazás terhelésének kezeléséhez megfelelő mennyiségű erőforrást futtasson. Lehetővé teszi, hogy olyan szabályokat hozzon létre, amelyek a Azure Monitor által összegyűjtött mérőszámokat használják, így meghatározhatja, hogy mikor kell automatikusan erőforrásokat hozzáadni a terhelés növekedéséhez, és pénzt takaríthat meg a tétlenül ülő erőforrások eltávolításával. Megadhatja a példányok minimális és maximális számát, valamint a logikát az erőforrások növelése vagy csökkentése érdekében.
 
-![Automatikus méretezés](media/overview/autoscale.png)
+![A diagram az autoskálázást jeleníti meg, több kiszolgálóval a > 80%-os számú és két kiszolgálóval, amelyek a jelenlegi kapacitásként vannak megjelölve, és öt maximális értékkel rendelkeznek.](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>Figyelési adatgyűjtés megjelenítése
 Az olyan [vizualizációk](visualizations.md) , mint a diagramok és a táblázatok, hatékony eszközök a monitorozási és a különböző célközönségeknek való megjelenítéshez. A Azure Monitor saját funkciókat biztosít a figyelési adatmegjelenítéshez és más Azure-szolgáltatások kihasználása érdekében a különböző célközönségeknek való közzétételhez.
@@ -116,12 +116,12 @@ Az olyan [vizualizációk](visualizations.md) , mint a diagramok és a tábláza
 ### <a name="dashboards"></a>Irányítópultok
 Az [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md) lehetővé teszik a különböző típusú adatok, például a metrikák és a naplók összevonását a [Azure Portal](https://portal.azure.com)egyetlen ablaktáblájába. Igény szerint megoszthatja az irányítópultot más Azure-felhasználókkal. Az egész Azure Monitorban található elemek hozzáadhatók egy Azure-irányítópulthoz az összes naplózási lekérdezés vagy metrikák diagramjának kimenetén kívül. Létrehozhat például egy irányítópultot, amely a metrikák gráfját, a tevékenységek naplóit, a Application Insights használati diagramját, valamint egy napló lekérdezés kimenetét jeleníti meg.
 
-![Irányítópult](media/overview/dashboard.png)
+![A képernyőképen egy Azure-irányítópult látható, amely az alkalmazás-és biztonsági csempéket, valamint más testreszabható adatokat tartalmaz.](media/overview/dashboard.png)
 
 ### <a name="views"></a>Nézetek
 A [nézetek](./platform/view-designer.md) vizuálisan jelennek meg a naplófájlokban Azure monitor.  Minden nézet egy olyan csempét tartalmaz, amely a kritikus adatok összefoglalása mellett a vizualizációk, például a sávok és a vonalas diagramok kombinációját mutatja be.  A figyelési megoldások olyan nézeteket tartalmaznak, amelyek egy adott alkalmazás adatait összegzik, és létrehozhatja saját nézeteit is, amelyekkel adatokat lehet bemutatni bármely naplóból származó lekérdezésből. A Azure Monitor egyéb elemeihez hasonlóan a nézetek hozzáadhatók az Azure-irányítópultokhoz.
 
-![Nézet](media/overview/view.png)
+![Képernyőfelvétel: a tároló-figyelési megoldás csempéje, valamint a csempe kiválasztásakor megnyíló Részletes nézet.](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 A [Power bi](https://powerbi.microsoft.com) egy üzleti elemzési szolgáltatás, amely interaktív vizualizációkat biztosít különböző adatforrások között, és hatékony eszköz arra, hogy a szervezeten belül és kívül mások számára is elérhetővé tegyék az adatgyűjtést. A Power BI beállítható úgy, hogy a [rendszer automatikusan importálja a naplófájlokat a Azure monitorból](./platform/powerbi.md) , hogy kihasználhassa ezeket a további vizualizációkat.

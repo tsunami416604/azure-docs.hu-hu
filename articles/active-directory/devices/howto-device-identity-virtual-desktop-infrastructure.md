@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259353"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089666"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -52,12 +52,12 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 |   |   | Windows jelenlegi | Nem állandó | Igen<sup>5</sup> |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
 |   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
-|   |   | Windows jelenlegi | Nem állandó | Nem |
+|   |   | Windows jelenlegi | Nem állandó | No |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
-|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
+|   | Felügyelt | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
 | Az Azure AD-ban regisztrálva | Összevont/felügyelt | Windows jelenlegi/Windows lefelé – szint | Állandó/nem állandó | Nem alkalmazható |
 
 <sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 és a Windows Server 2019.
@@ -94,6 +94,6 @@ Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák 
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosításához (például a számítógép megjelenített nevének előtagjának használatával), agresszíven kell lennie ezeknek az eszközöknek a tisztításához, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
    - A Windows aktuális és alacsonyabb szintű, nem állandó VDI-telepítések esetén olyan eszközöket kell törölni, amelyeknek 15 napnál régebbi **ApproximateLastLogonTimestamp** van.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)

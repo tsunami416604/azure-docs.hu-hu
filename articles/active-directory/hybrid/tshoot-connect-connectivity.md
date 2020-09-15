@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541736"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088306"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
 Ez a cikk azt ismerteti, hogyan működik a Azure AD Connect és az Azure AD közötti kapcsolat, és hogyan lehet elhárítani a kapcsolódási problémákat. Ezeket a problémákat legvalószínűbben a proxykiszolgáló fogja látni a környezetben.
@@ -33,7 +33,7 @@ A Azure AD Connect a modern hitelesítést használja (a ADAL könyvtár haszná
 Ebben a cikkben bemutatjuk, hogyan kapcsolódhat a fabrikam az Azure AD-hez a proxyján keresztül. A proxykiszolgáló neve fabrikamproxy, és az 8080-es portot használja.
 
 Először is győződjön meg arról, hogy a [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) megfelelően van konfigurálva, és **Microsoft Azure ad a szinkronizálási szolgáltatást** egyszer újraindították a machine.config fájl frissítése után.
-![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
+![A képernyőfelvétel a Machine dot konfigurációs fájljának egy részét jeleníti meg.](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > Néhány nem Microsoft-blogban dokumentálja, hogy ehelyett miiserver.exe.config módosításokat kell végezni. Ez a fájl azonban minden frissítéskor felül van írva, így még akkor is, ha az a kezdeti telepítés során is működik, a rendszer leáll az első frissítéskor. Emiatt a javaslat a machine.config frissítésére szolgál.
@@ -44,7 +44,7 @@ A proxykiszolgáló számára is meg kell nyitni a szükséges URL-címeket. A h
 
 Ezen URL-címek közül az alábbi táblázat az Azure AD-hez való kapcsolódáshoz szükséges abszolút minimális érték. A lista nem tartalmaz olyan választható szolgáltatásokat, mint a jelszó-visszaírási vagy a Azure AD Connect Health. Itt dokumentáljuk a kezdeti konfiguráció hibaelhárításának segítségét.
 
-| URL-cím | Port | Leírás |
+| URL-cím | Port | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL-listák letöltésére használatos. |
 | \*. verisign.com |HTTP/80 |CRL-listák letöltésére használatos. |
@@ -60,7 +60,7 @@ A következő problémák a telepítővarázsló leggyakoribb hibái.
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Nincs megfelelően konfigurálva a telepítővarázsló
 Ez a hiba akkor jelenik meg, ha a varázsló nem tudja elérni a proxyt.
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![A képernyőképen a következő hibaüzenet látható: nem lehet érvényesíteni a hitelesítő adatokat.](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Ha ezt a hibát látja, ellenőrizze, hogy helyesen konfigurálta-e a [machine.config](how-to-connect-install-prerequisites.md#connectivity) .
 * Ha úgy tűnik, hogy helyes, kövesse a [proxy kapcsolatának ellenőrzése](#verify-proxy-connectivity) című témakör lépéseit, és ellenőrizze, hogy a probléma a varázslón kívül található-e.
@@ -83,7 +83,7 @@ Ha a telepítővarázsló sikeresen csatlakozik az Azure AD-hoz, de a jelszót n
 ### <a name="verify-proxy-connectivity"></a>Proxy kapcsolatának ellenőrzése
 Annak ellenőrzéséhez, hogy a Azure AD Connect-kiszolgáló rendelkezik-e tényleges kapcsolattal a proxyval és az internettel, a PowerShell használatával ellenőrizze, hogy a proxy engedélyezi-e a webes kérelmeket. A PowerShell-parancssorban futtassa a parancsot `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Technikailag az első hívás, `https://login.microsoftonline.com` és ez az URI is működik, de a másik URI gyorsabban reagál.)
 
-A PowerShell a machine.config konfigurációját használja a proxyhoz való kapcsolatfelvételhez. A WinHTTP/netsh beállításai nem befolyásolhatják ezeket a parancsmagokat.
+A PowerShell a machine.config fájl konfigurációját használja a proxyval való kapcsolatfelvételhez. A WinHTTP/Netsh beállításai nincsenek hatással ezekre a parancsmagokra.
 
 Ha a proxy megfelelően van konfigurálva, akkor sikeres állapotot kell kapnia: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
@@ -225,15 +225,15 @@ Váratlan hibaként jelenik meg a telepítési varázslóban. Akkor fordulhat el
 A Build Number 1.1.105.0 (kiadás: február 2016) kezdődő kiadások esetében a Bejelentkezési segéd kivonásra került. Ezt a szakaszt és a konfigurációt már nem kötelező megadni, de hivatkozásként kell tárolni.
 
 Az egyszeri bejelentkezési segéd működéséhez konfigurálni kell a WinHTTP-t. Ez a konfiguráció a [**netsh**](how-to-connect-install-prerequisites.md#connectivity)használatával végezhető el.
-![netsh](./media/tshoot-connect-connectivity/netsh.png)
+![A képernyőképen a netsh eszközt futtató parancssori ablak jelenik meg egy proxy beállításához.](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>A bejelentkezési Segéd nem lett megfelelően konfigurálva
 Ez a hiba akkor jelenik meg, ha a bejelentkezési Segéd nem éri el a proxyt, vagy a proxy nem engedélyezi a kérést.
-![nem netsh](./media/tshoot-connect-connectivity/nonetsh.png)
+![A képernyőképen a következő hibaüzenet látható: nem sikerült ellenőrizni a hitelesítő adatokat, ellenőrizze a hálózati kapcsolatot, valamint a tűzfal vagy a proxy beállításait.](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * Ha ezt a hibát látja, tekintse meg a proxy konfigurációját a [netsh](how-to-connect-install-prerequisites.md#connectivity) -ben, és ellenőrizze, hogy helyes-e.
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![Képernyőfelvétel: a netsh eszközt futtató parancssori ablak, amely a proxy konfigurációját jeleníti meg.](./media/tshoot-connect-connectivity/netshshow.png)
 * Ha úgy tűnik, hogy helyes, kövesse a [proxy kapcsolatának ellenőrzése](#verify-proxy-connectivity) című témakör lépéseit, és ellenőrizze, hogy a probléma a varázslón kívül található-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561027"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087303"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -59,10 +59,10 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
 
    Az erőforrás-végpontok a következők lehetnek (a régió változhat):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. A három kérelem fejlécének beállítása:
 
@@ -81,8 +81,8 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
 5. Illesszen be néhány JSON-dokumentumot olyan formátumban, amely érvényes a kívánt elemzéshez. Egy adott elemzéssel kapcsolatos további információkért tekintse meg az alábbi témaköröket:
 
   + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
-  + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)  
-  + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)  
+  + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
+  + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
   + [Entitások felismerése](text-analytics-how-to-entity-linking.md)  
 
 
@@ -90,9 +90,9 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
 
    A Poster esetében a válasz a következő ablakban, egyetlen JSON-dokumentumként jelenik meg, a kérelemben megadott összes dokumentum-AZONOSÍTÓhoz tartozó elemmel.
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>További információ 
 
- [A Text Analytics áttekintése](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
 
 ## <a name="next-steps"></a>Következő lépések

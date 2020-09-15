@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400780"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086402"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
@@ -275,7 +275,7 @@ Az alábbi kép egy példát mutat be alternatív útvonalak megjelenítésére 
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Az útválasztási szolgáltatás használata egy webalkalmazásban
 
-A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát a web-és Node.js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
+A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/javascript/api/azure-maps-rest/)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát a web-és Node.js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

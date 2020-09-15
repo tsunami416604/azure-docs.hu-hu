@@ -4,12 +4,12 @@ description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások sz�
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425993"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086759"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -307,7 +307,27 @@ az group list --tag Dept=IT
 
 ### <a name="handling-spaces"></a>Szóközök feldolgozása
 
-Ha a címke neve vagy értéke szóközt tartalmaz, néhány további lépést is végre kell hajtania. Az alábbi példa egy erőforráscsoport összes címkéjét az erőforrásaira alkalmazza, amikor a címkék szóközöket tartalmazhatnak.
+Ha a címke neve vagy értéke szóközt tartalmaz, néhány további lépést is végre kell hajtania. 
+
+Az `--tags` Azure CLI-ben található paraméterek elfogadják a karakterláncok tömbjét tartalmazó sztringet. Az alábbi példa egy olyan erőforráscsoport címkéit írja felül, amelyben a címkék szóközökkel és kötőjeltel rendelkeznek: 
+
+```azurecli-interactive
+TAGS=("Cost Center=Finance-1222" "Location=West US")
+az group update --name examplegroup --tags "${TAGS[@]}"
+```
+
+Használhatja ugyanazt a szintaxist, ha egy erőforráscsoportot vagy-erőforrást hoz létre vagy frissít a `--tags` paraméter használatával.
+
+Ha a paraméter használatával szeretné frissíteni a címkéket `--set` , a kulcsot és az értéket karakterláncként kell átadnia. Az alábbi példa egyetlen címkét fűz egy erőforráscsoporthoz:
+
+```azurecli-interactive
+TAG="Cost Center='Account-56'"
+az group update --name examplegroup --set tags."$TAG"
+```
+
+Ebben az esetben a címke értéke szimpla idézőjelekkel van megjelölve, mert az érték kötőjelet tartalmaz.
+
+Több erőforrásra is szükség lehet címkék alkalmazására. Az alábbi példa egy erőforráscsoport összes címkéjét az erőforrásaira alkalmazza, amikor a címkék szóközöket tartalmaznak:
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)

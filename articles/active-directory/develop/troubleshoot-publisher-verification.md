@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007553"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088323"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -39,10 +39,10 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
     1. Ha egy MPN-fiók már létezik, a rendszer felismeri, és hozzáadja a fiókhoz. 
     1. Lépjen a [partner profil oldalra](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , ahol megjelenik az MPN-azonosító és az elsődleges fiók kapcsolata
 
-- **Nem tudom, kik az Azure AD globális rendszergazdája (más néven vállalati rendszergazda vagy bérlői rendszergazda), hogyan találom meg őket? Mi a helyzet az alkalmazás rendszergazdájával vagy egy másik rendszergazdai szerepkörrel?**
+- **Nem tudom, kik az Azure AD globális rendszergazdája (más néven vállalati rendszergazda vagy bérlői rendszergazda), hogyan találom meg őket? Mi a helyzet az alkalmazás-rendszergazda vagy a Felhőbeli alkalmazás rendszergazdájával?**
     1. Jelentkezzen be az [Azure ad-portálra](https://aad.portal.azure.com) a szervezete elsődleges bérlője felhasználói fiókjának használatával
     1. Navigáljon a [szerepkör-kezelés](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) elemre
-    1. Kattintson a globális rendszergazda lehetőségre, vagy a kívánt rendszergazdai szerepkörre.
+    1. Kattintson a kívánt rendszergazdai szerepkörre
     1. Megjelenik a szerepkörhöz hozzárendelt felhasználók listája
 
 - **Nem tudom, kik az MPN-fiókomhoz tartozó rendszergazda (k)** Nyissa meg az [MPN felhasználói kezelés lapot](https://partner.microsoft.com/pcv/users) , és a felhasználók listájának szűrésével tekintse meg, hogy a felhasználók milyen rendszergazdai szerepkörökkel rendelkeznek.
@@ -51,22 +51,25 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
     1. Lépjen a [partner profiljához](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , és ellenőrizze, hogy: 
         - Az MPN-azonosító helyes. 
         - Nincsenek hibák vagy "függőben lévő műveletek", valamint a jogi üzleti profilban és a partneri adatokban található ellenőrzési állapot "engedélyezett" vagy "sikeres".
-    1. Nyissa meg az [MPN bérlői felügyelet oldalt](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) , és ellenőrizze, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy felhasználói fiókkal van-e aláírva a társított bérlők listáján.
-    1. Nyissa meg az [MPN-felhasználó felügyelete lapot](https://partner.microsoft.com/pcv/users) , és erősítse meg, hogy a bejelentkezéshez használt felhasználó globális rendszergazda, MPN-rendszergazda vagy rendszergazdai fiók.
+    1. Nyissa meg az [MPN bérlői felügyelet oldalt](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) , és ellenőrizze, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy felhasználói fiókkal van-e aláírva a társított bérlők listáján. Ha további bérlőt kell felvennie, kövesse az [itt](https://docs.microsoft.com/partner-center/multi-tenant-account)található utasításokat. Vegye figyelembe, hogy minden Ön által hozzáadott bérlő globális rendszergazdája globális rendszergazdai jogosultságokat kap a partner Center-fiókjában.
+    1. Nyissa meg az [MPN-felhasználó felügyelete lapot](https://partner.microsoft.com/pcv/users) , és erősítse meg, hogy a bejelentkezéshez használt felhasználó globális rendszergazda, MPN-rendszergazda vagy rendszergazdai fiók. Ha felhasználót kell hozzáadnia egy szerepkörhöz a partner Centerben, kövesse az [alábbi](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)utasításokat.
 
 - **Az Azure AD-portálra való bejelentkezéskor nem jelenik meg a regisztrált alkalmazások egyike sem. miért?** 
-    Előfordulhat, hogy az alkalmazás regisztrációja egy másik felhasználói fiókkal vagy egy másik Bérlővel lett létrehozva. Győződjön meg arról, hogy a megfelelő fiókkal van bejelentkezve abban a bérlőben, amelyben az alkalmazás regisztrációja létrejött.
+    Előfordulhat, hogy az alkalmazás regisztrációja egy másik felhasználói fiókkal lett létrehozva ebben a bérlőben, egy személyes/fogyasztói fiókban vagy egy másik bérlőben. Győződjön meg arról, hogy a megfelelő fiókkal van bejelentkezve abban a bérlőben, amelyben az alkalmazás regisztrációja létrejött.
 
-- **Hogyan tudni, ki az Azure AD-ban az alkalmazás regisztrációjának tulajdonosa?** 
-    Amikor bejelentkezett egy olyan bérlőbe, ahol az alkalmazás regisztrálva van, keresse meg az alkalmazás regisztrációi paneljét, kattintson az alkalmazásra, majd kattintson a tulajdonosok elemre.
+- **A multi-Factor Authentication szolgáltatással kapcsolatos hibaüzenetet kapok. Mit tegyek?** 
+    Győződjön meg arról, hogy a [többtényezős hitelesítés](../fundamentals/concept-fundamentals-mfa-get-started.md) engedélyezve van, és szükséges ahhoz a felhasználóhoz, amelyhez be van jelentkezve, és ehhez a forgatókönyvhöz be kell jelentkezni. Az MFA például a következő lehet:
+    - Mindig szükséges ahhoz, hogy a felhasználó bejelentkezzen
+    - [Az Azure-felügyelethez szükséges](../conditional-access/howto-conditional-access-policy-azure-management.md).
+    - [Azon rendszergazda típusához szükséges](../conditional-access/howto-conditional-access-policy-admin-mfa.md) , amelyhez be van jelentkezve.
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph API-hívások készítése 
 
 Ha probléma merül fel, de nem tudja megérteni, hogy mit lát a felhasználói felületen, érdemes lehet további hibaelhárítást végezni, ha Microsoft Graph hívásokat hajt végre az alkalmazás regisztrációs portálján végrehajtható műveletek végrehajtásához.
 
-Ezeknek a kéréseknek a legegyszerűbb módja a [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)használata. Érdemes lehet más lehetőségeket is megfontolni, például a [Poster](https://www.postman.com/)használatát, vagy a PowerShell használatával [webes kérést meghívni](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7).  
+Ezeknek a kéréseknek a legegyszerűbb módja a [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)használata. Érdemes lehet más lehetőségeket is megfontolni, például a [Poster](https://www.postman.com/)használatát, vagy a PowerShell használatával [webes kérést meghívni](/powershell/module/microsoft.powershell.utility/invoke-webrequest).  
 
-A Microsoft Graph az alkalmazás ellenőrzött közzétevőjét is beállíthatja és törölheti, és az eredményt az alábbi műveletek egyikének végrehajtása után ellenőrizheti. Az eredmény az alkalmazás regisztrációjának megfelelő [Application](/graph/api/resources/application?view=graph-rest-beta) objektumon és az alkalmazásból létrehozott [egyszerű szolgáltatásokon](/graph/api/resources/serviceprincipal?view=graph-rest-beta) is látható. Az objektumok közötti kapcsolattal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directoryban](app-objects-and-service-principals.md).  
+A Microsoft Graph az alkalmazás ellenőrzött közzétevőjét is beállíthatja és törölheti, és az eredményt az alábbi műveletek egyikének végrehajtása után ellenőrizheti. Az eredmény az alkalmazás regisztrációjának megfelelő [Application](/graph/api/resources/application) objektumon és az alkalmazásból létrehozott [egyszerű szolgáltatásokon](/graph/api/resources/serviceprincipal) is látható. Az objektumok közötti kapcsolattal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directoryban](app-objects-and-service-principals.md).  
 
 Példák néhány hasznos kérelemre:  
 
@@ -105,7 +108,7 @@ Reagálás
 ### <a name="get-verified-publisher-info-from-application"></a>Ellenőrzött közzétevői adatok beolvasása az alkalmazásból 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>Ellenőrzött közzétevői adatok beolvasása az egyszerű Szolgáltatásnévtől 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Ez a funkció nem támogatott e-mailben ellenőrzött bérlőn.
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-A célalkalmazás () alkalmazásnak rendelkeznie <AppId> kell közzétevő tartománnyal. Állítsa be a közzétevő tartományát, és próbálkozzon újra. 
-
-### <a name="publisherdomainisnotdnsverified"></a>PublisherDomainIsNotDNSVerified  
-
-A célalkalmazás közzétevő tartománya ( <publisherDomain> ) nem ellenőrzött tartomány ebben a bérlőben. Ellenőrizze a bérlői tartományt a DNS-ellenőrzés használatával, majd próbálkozzon újra. 
+A célalkalmazás ( \<AppId\> ) közzétevő tartományi készlettel kell rendelkeznie. Állítsa be a közzétevő tartományát, és próbálkozzon újra.
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 

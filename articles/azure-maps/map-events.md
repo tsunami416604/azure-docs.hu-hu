@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036442"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087269"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
 
@@ -26,7 +26,7 @@ Játsszon a lenti térképsel, és tekintse meg a jobb oldalon látható, a megf
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakció a térképsel – egér eseményei' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>a Térkép – az egér eseményei</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interakció a térképsel – egér eseményei' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>a Térkép – az egér eseményei</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>A Térkép rétegekkel való interakció
@@ -35,7 +35,7 @@ A következő kód kiemeli a kilőtt eseményt, amikor a szimbólum réteggel l�
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakció a térképekkel – rétegbeli események' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a CodePen-on Azure Maps () című témakört a <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Térkép – réteg eseményeivel</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='600' scrolling='no' title='Interakció a térképekkel – rétegbeli események' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a CodePen-on Azure Maps () című témakört a <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Térkép – réteg eseményeivel</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>Interakció a HTML-jelölővel
@@ -44,12 +44,12 @@ A következő kód hozzáadja a JavaScript-leképezési eseményeket egy HTML-je
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interakció a Térkép-HTML-jelölő eseményeivel' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a CodePen-on Azure Maps () által a <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Térkép-HTML jelölő eseményeivel kommunikáló</a> tollat <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Interakció a Térkép-HTML-jelölő eseményeivel' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a CodePen-on Azure Maps () által a <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Térkép-HTML jelölő eseményeivel kommunikáló</a> tollat <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 A következő táblázat felsorolja az összes támogatott leképezési osztály eseményét.
 
-| Esemény               | Leírás |
+| Esemény               | Description |
 |---------------------|-------------|
 | `boxzoomend`        | A "Box zoom" interakció befejezése után.|
 | `boxzoomstart`      | A "Box zoom" interakció indításakor indul el.|
@@ -98,18 +98,18 @@ A következő táblázat felsorolja az összes támogatott leképezési osztály
 | `sourceremoved`     | A rendszer kilőtte a `DataSource` `VectorTileSource` térképet, vagy eltávolítják azt.|
 | `styledata`         | Akkor következik be, amikor a Térkép stílusa betöltődik vagy módosul.|
 | `styleimagemissing` | Akkor aktiválódik, amikor egy réteg megpróbál betölteni egy rendszerképet a nem létező rendszerképből. |
-| `tokenacquired`     | HRE hozzáférési jogkivonat beszerzése esetén.|
-| `touchcancel`       | Akkor következik be, amikor egy touchcancel esemény kerül a térképen belül.|
-| `touchend`          | Akkor következik be, amikor egy touchend esemény kerül a térképen belül.|
-| `touchmove`         | Akkor következik be, amikor egy touchmove esemény kerül a térképen belül.|
-| `touchstart`        | Akkor következik be, amikor egy touchstart esemény kerül a térképen belül.|
+| `tokenacquired`     | Azure Active Directory hozzáférési jogkivonat beszerzése után aktiválódik.|
+| `touchcancel`       | Akkor `touchcancel` következik be, amikor esemény történik a térképen.|
+| `touchend`          | Akkor `touchend` következik be, amikor esemény történik a térképen.|
+| `touchmove`         | Akkor `touchmove` következik be, amikor esemény történik a térképen.|
+| `touchstart`        | Akkor `touchstart` következik be, amikor esemény történik a térképen.|
 | `wheel`             | Akkor következik be, amikor egy görgős esemény történik a térképen.|
 | `zoom`              | A felhasználói interakció vagy módszerek eredményeképpen az egyik nagyítási szintről a másikra történő animált áttérés során többször is elindítható.|
 | `zoomend`           | Közvetlenül a Térkép befejezése után az egyik nagyítási szintről a másikra való áttérést a felhasználói interakció vagy módszerek eredményeképpen végezheti el.|
 | `zoomstart`         | Közvetlenül a Térkép megkezdése előtt az egyik nagyítási szintről a másikra vált, a felhasználói interakció vagy módszerek eredményeképpen.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben talál részletes példákat:
 

@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279584"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087009"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -41,7 +41,7 @@ A dokumentum célja a Azure AD Connect kiépítési motor teljesítményének be
 
 A következő ábra a kiépítési motor magas szintű architektúráját mutatja egyetlen erdőhöz való csatlakozáshoz, bár több erdő is támogatott. Ez az architektúra azt mutatja be, hogy a különböző összetevők hogyan hatnak egymással.
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![A diagram bemutatja, hogyan hatnak a csatlakoztatott címtárak és Azure AD Connect kiépítési motor, beleértve az összekötő területét és a metaverse-összetevőket egy SQL Database. ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 A kiépítési motor csatlakozik az egyes Active Directory erdőkhöz és az Azure AD-hez. Az adatok az egyes könyvtárakból való olvasásának folyamatát importálásnak nevezzük. Az Exportálás a címtárak a kiépítési motorból való frissítését jelenti. A szinkronizálás kiértékeli az objektumok a kiépítési motoron belüli folyamatának szabályait. A további részletekért tekintse meg [Azure ad Connect Sync: az architektúra megismerése](./concept-azure-ad-connect-sync-architecture.md)című témakört.
 

@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949956"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087184"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákon keresztül
 
@@ -130,9 +130,13 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>A leképezési adatfolyam hibakeresésének használata normál munkanapokon
 
-Adatmérnökként minden nap feldolgozza a leképezési adatfolyamatok tervezését, összeállítását és tesztelését. Reggel be kell jelentkeznie az ADF felhasználói felületére, és engedélyeznie kell a hibakeresési módot az adatforgalomhoz. A hibakeresési munkamenetek alapértelmezett ÉLETTARTAMa 60 perc. A nap folyamán 8 óráig dolgozhat, így a hibakeresési munkamenet soha nem jár le. Ezért a napi díj a következő lesz:
+A Sam feladata, hogy minden nap megtervezze, kiépítse és tesztelje a leképezési folyamatokat. A Sam bejelentkezik az ADF felhasználói felületére reggel, és lehetővé teszi az adatfolyamatok hibakeresési módját. A hibakeresési munkamenetek alapértelmezett ÉLETTARTAMa 60 perc. A Sam 8 órán keresztül működik a nap folyamán, így a hibakeresési munkamenet soha nem jár le. Ezért a Sam napi díja a következő lesz:
 
 **8 (óra) x 8 (számításra optimalizált magok) x $0,193 = $12,35**
+
+Chris, egy másik adatmérnök is bejelentkezik az ADF-böngésző felhasználói felületére az adatprofilkészítés és az ETL tervezési munkája során. Chris nem működik együtt az ADF-ben, mint a Sam. Chris csak 1 órára kell használnia az adatfolyam-hibakeresőt ugyanabban az időszakban és a fenti Sam-nál is. A hibakeresési használatért felelős Chris inkurzív:
+
+**1 (óra) x 8 (általános célú magok) x $0,274 = $2,19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>A blob-tárolóban lévő adatátalakítások leképezése adatfolyamatokkal
 

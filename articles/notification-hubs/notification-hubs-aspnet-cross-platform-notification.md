@@ -5,24 +5,23 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017923"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088136"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Platformfüggetlen értesítések küldése az Azure Notification Hubs
 
@@ -38,9 +37,9 @@ Ez a cikk bemutatja, hogyan használhatja ki a sablonok előnyeit, hogy az össz
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Platformfüggetlen értesítések küldése sablonok használatával
 
-Ez a szakasz a [küldési értesítések küldése adott felhasználóknak az Azure Notification Hubs oktatóanyag segítségével] létrehozott mintakód használatával készült. A mintaalkalmazást a [GitHubról](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) töltheti le.
+Ez a szakasz a [küldési értesítések küldése adott felhasználóknak az Azure Notification Hubs oktatóanyag segítségével] létrehozott mintakód használatával készült. [A teljes mintát letöltheti a githubról](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
-Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatával, hajtsa végre a következő lépéseket:
+Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatával, tegye a következőket:
 
 1. A Visual Studióban **megoldáskezelő**bontsa ki a **vezérlők** mappát, majd nyissa meg a *RegisterController.cs* fájlt.
 
@@ -77,7 +76,7 @@ Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatá
 
     Ez a kód meghívja a platform-specifikus metódust, hogy natív regisztráció helyett sablon-regisztrációt hozzon létre. Mivel a sablon regisztrációja natív regisztrációból származik, nem kell módosítania a meglévő regisztrációkat.
 
-1. A **megoldáskezelő**a **vezérlők** mappában nyissa meg a *NotificationsController.cs* fájlt. Cserélje le az `Post` metódust az alábbi kódra:
+1. A **megoldáskezelő**a **vezérlők** mappában nyissa meg a **NotificationsController.cs** fájlt. Cserélje le az `Post` metódust az alábbi kódra:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

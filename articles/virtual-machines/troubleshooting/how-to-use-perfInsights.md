@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526639"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088561"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>A PerfInsights használata az Azure-ban
 
@@ -82,7 +82,7 @@ Ez a forgatókönyv egy speciális teljesítményszámláló-rögzítést futtat
 | IO-méret      | Átlagos bájt/adat kérése       |
 |              | Átlagos bájt/olvasás               |
 |              | Átlagos bájt/írás              |
-| Átviteli sebesség   | Adatmennyiség (bájt/s)                |
+| Teljesítmény   | Adatmennyiség (bájt/s)                |
 |              | Olvasott bájt/mp                |
 |              | Írt bájt/mp               |
 | Processzor-várólista hossza | Átlagos olvasási várólista hossza        |
@@ -165,7 +165,15 @@ Diskspd I/O-munkaterhelési tesztek (operációsrendszer-lemez [írás] és kés
 
 -  Ezt az eszközt a teljesítménnyel kapcsolatos problémát biztosító virtuális gépen kell futtatni. 
 
--  A következő operációs rendszerek támogatottak: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016; Windows 8,1 és Windows 10.
+-  A következő operációs rendszerek támogatottak:
+   * Windows Server 2019
+   * Windows Server 2016
+   * Windows Server 2012 R2
+   * Windows Server 2012
+   * Windows Server 2008 R2
+   * Windows 10
+   * Windows 8.1
+   * Windows 8
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Lehetséges problémák az eszköz éles virtuális gépeken való futtatásakor
 

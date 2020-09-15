@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874231"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088357"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: Log Analytics lekérdezések első lépései
 
@@ -42,7 +42,7 @@ A *sémák* a logikai kategóriák alatt csoportosított táblák gyűjteményei
 
 A séma táblái a Log Analytics munkaterület **táblák** lapján jelennek meg. A táblák oszlopokat tartalmaznak, amelyek mindegyike az oszlop neve melletti ikon által megjelenített adattípussal rendelkezik. Az **Event** tábla például olyan szöveges oszlopokat tartalmaz, mint a **számítógép** és a numerikus oszlopok, például a **EventCategory**.
 
-![Séma](media/get-started-portal/schema.png)
+![Képernyőfelvétel: a Azure Portal naplók oldal egy új lekérdezéssel, kiemelve a táblák panelt a kiemelt számítógép-és EventCategory.](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>Alapszintű lekérdezések írása és futtatása
 
@@ -120,7 +120,7 @@ A lekérdezés eredményeinek szűrése a `Event` **hibák** eseményeire a lek�
    
 1. Válassza a **szűrő**lehetőséget.
    
-   ![Szűrés](media/get-started-portal/filter.png)
+   ![A képernyőképen egy, a EventLevelName által az eredmények szűrésére szolgáló környezetfüggő menüt tartalmazó táblázat látható.](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Oszlopok rendezése, csoportosítása és kiválasztása
 Ha a lekérdezési eredményeket egy adott oszlop szerint szeretné rendezni (például **TimeGenerated [UTC]**), válassza az oszlop fejlécét. A növekvő és a csökkenő sorrend közötti váltáshoz válassza újra a fejlécet.
@@ -129,7 +129,7 @@ Ha a lekérdezési eredményeket egy adott oszlop szerint szeretné rendezni (p�
 
 Az eredmények rendezésének másik módja csoportok szerint történik. Ha egy adott oszlop alapján kívánja csoportosítani az eredményeket, húzza az oszlopfejléc fölé az oszlop fejlécét az **oszlop áthúzása feliratú oszlop fölé, és dobja el ide az oszlop csoportosításához**. Alcsoportok létrehozásához húzzon más oszlopokat a felső sávra. Átrendezheti a hierarchiát és a csoportok és alcsoportok rendezését a sávon.
 
-![Csoportok](media/get-started-portal/groups.png)
+![A képernyőképen a EventLevelName és a számítógép alcsoportjaival rendelkező lekérdezések eredményei láthatók.](media/get-started-portal/groups.png)
 
 Az eredmények oszlopainak elrejtéséhez vagy megjelenítéséhez válassza a tábla fölötti **oszlopok** lehetőséget, majd válassza ki vagy törölje a kívánt oszlopokat a legördülő listából.
 
@@ -191,7 +191,7 @@ Lekérdezés mentése:
    
 1. Ha Log Analytics munkaterületen található, adjon meg egy **kategóriát** a lekérdezési **tallózó** számára a lekérdezéshez. (A kategóriák nem érhetők el az Applications-lekérdezések lekérdezéséhez)
    
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
    
    ![Függvény mentése](media/get-started-portal/save-function.png)
 

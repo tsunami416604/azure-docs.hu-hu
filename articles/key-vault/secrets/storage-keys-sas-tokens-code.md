@@ -9,14 +9,14 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007417"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086776"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>Közös hozzáférésű jogosultságkód lexikális elemeinek beolvasása kódból
+# <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definíció létrehozása és közös hozzáférésű aláírási jogkivonatok beolvasása a kódban
 
 A Storage-fiókját a kulcstartóban tárolt közös hozzáférésű aláírás (SAS) jogkivonatokkal kezelheti. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz sas használatával](../../storage/common/storage-sas-overview.md).
 
@@ -41,9 +41,9 @@ Miután létrejött az SAS-definíció, lekérheti az a-t használó SAS-tokenek
 
 Ha a közös hozzáférésű aláírási jogkivonat hamarosan lejár, akkor újra lekérheti ugyanezt a titkot egy új létrehozásához.
 
+A Key Vault SAS-tokenről az Azure Storage-szolgáltatásokhoz való hozzáférésre vonatkozó beolvasással kapcsolatos útmutatóért lásd: [fiók sas használata a blob Service eléréséhez](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [biztosíthat korlátozott hozzáférést az Azure Storage-erőforrásokhoz sas használatával](../../storage/common/storage-sas-overview.md).
 - Ismerje meg, hogyan [kezelheti a Storage-fiókok kulcsait Key Vault és az Azure CLI](overview-storage-keys.md) vagy [Azure PowerShell](overview-storage-keys-powershell.md)használatával.
-- Tekintse meg a teljes [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) mintát.
-- További [Key Vault minták](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - Lásd: [felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

@@ -1,52 +1,56 @@
 ---
-title: A AMQP használata Java-üzenetküldési szolgáltatás API-& Azure Service Bus
-description: A Java Message Service (JMS) használata a Azure Service Bus és a Advanced Message Queueing Protocol (AMQP) 1,0 használatával.
+title: A AMQP használata a Java Message Service API-val és Azure Service Bus
+description: Használja a Java Message Service (JMS) szolgáltatást a Azure Service Bus és a Advanced Message Queueing Protocol (AMQP) 1,0.
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065777"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086691"
 ---
-# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>A Java Message Service (JMS) használata a Azure Service Bus és a AMQP 1,0
+# <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>A Java-Üzenetkezelő szolgáltatás használata a Azure Service Bus és a AMQP 1,0
 
 > [!WARNING]
-> Az alábbi útmutató a Java Message Service (JMS) 1,1 API **korlátozott támogatását** tartalmazza, és csak Azure Service Bus standard szintű csomag esetében létezik.
+> Ez a cikk a Java Message Service (JMS) 1,1 API *korlátozott támogatását* nyújtja, és csak a standard szintű Azure Service Bus esetében létezik.
 >
-> A Java Message Service (JMS) 2,0 API teljes támogatása csak az előzetes verzióban elérhető [prémium szintű Azure Service Bus](how-to-use-java-message-service-20.md)érhető el, ami kifejezetten ajánlott.
+> A Java Message Service 2,0 API teljes körű támogatása csak az előzetes verzióban elérhető [prémium szintű Azure Service Bus](how-to-use-java-message-service-20.md)érhető el. Javasoljuk, hogy ezt a szintet használja.
 >
 
-Ez a cikk azt ismerteti, hogyan használhatók a Java-alkalmazások Azure Service Bus üzenetkezelési funkciói (Queues and publish/subscribe) a népszerű Java Message Service-(JMS-) API-szabvány használatával. Ez a [cikk](service-bus-amqp-dotnet.md) azt ismerteti, hogyan végezheti el ugyanezt a Azure Service Bus .NET API használatával. A két útmutató együttes használatával megismerheti a AMQP 1,0-et használó platformok közötti üzenetkezelést.
+Ez a cikk azt ismerteti, hogyan használhatók a Java-alkalmazások Service Bus üzenetkezelési funkciói a népszerű JMS API standard használatával. Ezek az üzenetkezelési funkciók a várólistákat és a közzétételt, illetve a témakörökre való feliratkozást tartalmazzák. A [cikk](service-bus-amqp-dotnet.md) bemutatja, hogyan végezheti el ugyanezt a Azure Service Bus .NET API használatával. A két cikk együttes használatával a Advanced Message Queueing Protocol (AMQP) 1,0 használatával megismerheti a platformok közötti üzenetkezelést.
 
-A Advanced Message Queueing Protocol (AMQP) 1,0 egy hatékony, megbízható, vezeték nélküli üzenetkezelési protokoll, amellyel robusztus, platformfüggetlen üzenetkezelési alkalmazások hozhatók létre.
+A AMQP 1,0 egy hatékony, megbízható, vezeték nélküli üzenetkezelési protokoll, amellyel robusztus, platformfüggetlen üzenetkezelési alkalmazások hozhatók létre.
 
-A AMQP 1,0-es verziójának támogatása a Azure Service Bus azt jelenti, hogy a több platformon futó, felügyelt és feliratkozott üzenetkezelési funkciókat egy hatékony bináris protokoll használatával lehet használni. Emellett a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával létrehozott összetevőkből álló alkalmazásokat is készíthet.
+A AMQP 1,0-es verziójának támogatása a Service Bus azt jelenti, hogy egy hatékony bináris protokoll használatával használhatja a Queuing szolgáltatást, és közzéteheti a felügyelt üzenetkezelési funkciókat számos platformon. Létrehozhat olyan alkalmazásokat is, amelyek a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával készített összetevőkből állnak.
 
 ## <a name="get-started-with-service-bus"></a>A Service Bus használatának első lépései
-Ez az útmutató feltételezi, hogy már rendelkezik egy nevű várólistát tartalmazó Service Bus névtérrel `basicqueue` . Ha nem, akkor a [névtér és a várólista](service-bus-create-namespace-portal.md) a [Azure Portal](https://portal.azure.com)használatával hozható létre. Service Bus névterek és várólisták létrehozásával kapcsolatos további információkért lásd: [Service Bus Queues – első lépések](service-bus-dotnet-get-started-with-queues.md).
+
+Ez a cikk azt feltételezi, hogy már rendelkezik egy Service Bus névtérrel, amely egy nevű várólistát tartalmaz `basicqueue` . Ha nem, akkor a [névtér és a várólista](service-bus-create-namespace-portal.md) a [Azure Portal](https://portal.azure.com)használatával hozható létre. Service Bus névterek és várólisták létrehozásával kapcsolatos további információkért lásd: [Service Bus Queues – első lépések](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > A particionált várólisták és témakörök szintén támogatják a AMQP. További információ: [particionált üzenetküldési entitások](service-bus-partitioning.md) és [AMQP 1,0 támogatás Service Bus particionált várólistákhoz és témakörökhöz](./service-bus-amqp-protocol-guide.md).
 > 
 > 
 
-## <a name="downloading-the-amqp-10-jms-client-library"></a>A AMQP 1,0 JMS ügyféloldali kódtár letöltése
-Az Apache csontos JMS AMQP 1,0 ügyféloldali kódtár legújabb verziójának letöltésével kapcsolatos információkért látogasson el a következő webhelyre: [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) .
+## <a name="download-the-amqp-10-jms-client-library"></a>Töltse le a AMQP 1,0 JMS ügyféloldali függvénytárát
 
-A következő JAR-fájlokat fel kell vennie az Apache csontos JMS AMQP 1,0 Distribution Archive-ből a Java OSZTÁLYÚTVONAL-be a JMS-alkalmazások létrehozásakor és futtatásakor Service Bus használatával:
+Az Apache csontos JMS AMQP 1,0 ügyféloldali kódtár legújabb verziójának letöltéséről az [Apache csontos letöltési webhelyén](https://qpid.apache.org/download.html)tájékozódhat.
+
+A következő JAR-fájlokat hozzá kell adnia az Apache csontos JMS AMQP 1,0 Distribution Archive-ből a Java OSZTÁLYÚTVONAL környezeti változóhoz, amikor JMS-alkalmazásokat hoz létre és futtat a Service Bus használatával:
 
 * Geronimo-JMS \_ 1,1 \_ Spec-1.0. jar
 * Csontos-JMS-Client-[Version]. jar
 
 > [!NOTE]
-> Lehetséges, hogy a JMS JAR-nevek és-verziók megváltoztak. Részletekért lásd: [csontos JMS-AMQP 1,0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
+> Lehetséges, hogy a JMS JAR-nevek és-verziók megváltoztak. További információ: [csontos JMS AMQP 1,0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
-## <a name="coding-java-applications"></a>Java-alkalmazások kódolása
-### <a name="java-naming-and-directory-interface-jndi"></a>Java-elnevezési és könyvtári felület (JNDI)
-A JMS a Java elnevezési és könyvtári felületet (JNDI) használja a logikai nevek és a fizikai nevek közötti elkülönítés létrehozásához. A JMS két típusa oldható fel a JNDI: ConnectionFactory és a Destination használatával. A JNDI egy szolgáltatói modellt használ, amelyben különböző címtárszolgáltatás-szolgáltatásokat lehet csatlakoztatni a névfeloldási feladatok kezeléséhez. Az Apache csontos JMS AMQP 1,0 Library egy egyszerű, file-alapú JNDI-szolgáltatót tartalmaz, amely a következő formátumú tulajdonságok használatával van konfigurálva:
+## <a name="code-java-applications"></a>Java-alkalmazások kódolása
+
+### <a name="java-naming-and-directory-interface"></a>Java elnevezési és könyvtári felület
+
+A JMS a Java elnevezési és könyvtári felületet (JNDI) használja a logikai nevek és a fizikai nevek közötti elkülönítés létrehozásához. A JNDI: **ConnectionFactory** és a **Destination**típusú JMS objektumok két típusát oldják fel. A JNDI egy szolgáltatói modellt használ, amelyben különböző címtárszolgáltatás-szolgáltatásokat lehet csatlakoztatni a névfeloldási feladatok kezeléséhez. Az Apache csontos JMS AMQP 1,0 Library egy egyszerű, file-alapú JNDI-szolgáltatót tartalmaz, amely a következő formátumú tulajdonságok használatával van konfigurálva:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -61,16 +65,17 @@ connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].serv
 queue.QUEUE = queue1
 ```
 
-#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>A JNDI környezet beállítása és a ConnectionFactory konfigurálása
+#### <a name="set-up-jndi-context-and-configure-the-connectionfactory-object"></a>JNDI-környezet beállítása és a ConnectionFactory objektum konfigurálása
 
-A (z) "megosztott elérési szabályzatok" részében a [Azure Portal](https://portal.azure.com) az **elsődleges kapcsolati karakterlánc** alatt elérhető **ConnectionString**
+A hivatkozott kapcsolati sztring az **elsődleges kapcsolati sztringben**lévő [Azure Portal](https://portal.azure.com) megosztott hozzáférési házirendekben elérhető.
+
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
 ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
         
-// set up JNDI context
+// Set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
 hashtable.put("queue.QUEUE", "BasicQueue");
@@ -84,9 +89,10 @@ Destination queue = (Destination) context.lookup("QUEUE");
 ```
 
 #### <a name="configure-producer-and-consumer-destination-queues"></a>A gyártó és a fogyasztói cél várólisták konfigurálása
-A célhelynek a csontos Properties fájlban JNDI-szolgáltatóban való definiálásához használt bejegyzés formátuma a következő:
 
-A cél üzenetsor létrehozása a termelő számára – 
+A csontos tulajdonságok fájljának JNDI-szolgáltatójában a célhely definiálásához használt bejegyzés formátuma a következő:.
+
+Cél várólista létrehozása a gyártó számára:
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -96,11 +102,11 @@ Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey()
 
 Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-// Create Producer
+// Create producer
 MessageProducer producer = session.createProducer(queue);
 ```
 
-Cél üzenetsor létrehozása a fogyasztó számára – 
+Célvárólista létrehozása a fogyasztó számára:
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -110,18 +116,20 @@ Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey()
 
 Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-// Create Consumer
+// Create consumer
 MessageConsumer consumer = session.createConsumer(queue);
 ```
 
 ### <a name="write-the-jms-application"></a>A JMS alkalmazás írása
-Nem szükségesek speciális API-k vagy beállítások a JMS és a Service Bus használata esetén. Van azonban néhány korlátozás, amelyet később fog tárgyalni. Ahogy a JMS-alkalmazásokhoz hasonlóan, az első szükséges a JNDI-környezet konfigurációja, amely lehetővé tenné a **ConnectionFactory** és a célhelyek feloldását.
 
-#### <a name="configure-the-jndi-initialcontext"></a>A JNDI-InitialContext konfigurálása
-A JNDI környezet úgy van konfigurálva, hogy a konfigurációs adatok szórótábla átadja a javax.naming.InitialContext osztály konstruktorának. A szórótábla két kötelező eleme a kezdeti környezeti gyár neve és a szolgáltató URL-címe. A következő kód azt mutatja be, hogyan konfigurálható a JNDI-környezet a csontos tulajdonságok fájl-alapú JNDI-szolgáltatójának használatára a **servicebus. properties**nevű tulajdonságokkal.
+A JMS és a Service Bus használatával nem szükséges különleges API-k vagy beállítások. A későbbiekben néhány korlátozás vonatkozik rájuk. Ahogy a JMS-alkalmazásokhoz hasonlóan, az első szükséges, hogy a JNDI-környezet úgy legyen feloldva, hogy fel lehessen oldani egy **ConnectionFactory** objektumot és célhelyet.
+
+#### <a name="configure-the-jndi-initialcontext-object"></a>A JNDI InitialContext objektumának konfigurálása
+
+A JNDI környezet úgy van konfigurálva, hogy a konfigurációs adatok kivonatoló táblázatát átadja a javax.naming.InitialContext osztály konstruktorának. A kivonatoló tábla két szükséges eleme a kezdeti környezeti gyár és a szolgáltató URL-címe. A következő kód bemutatja, hogyan konfigurálhatja a JNDI környezetet úgy, hogy a csontos Properties fájl-alapú JNDI-szolgáltatót használja a **servicebus. properties**nevű tulajdonságokkal.
 
 ```java
-// set up JNDI context
+// Set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + \
 "?amqp.idleTimeout=120000&amqp.traceFrames=true");
@@ -130,10 +138,11 @@ hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInit
 Context context = new InitialContext(hashtable);
 ``` 
 
-### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Egy egyszerű JMS alkalmazás Service Bus üzenetsor használatával
-A következő példa program JMS TextMessages küld egy Service Bus üzenetsor számára a várólista logikai JNDI, és visszafogadja az üzeneteket.
+### <a name="a-simple-jms-application-that-uses-a-service-bus-queue"></a>Egy Service Bus-várólistát használó egyszerű JMS-alkalmazás
 
-Az összes forráskód-és konfigurációs információt elérheti a [Azure Service Bus Samples JMS-várólista](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart) rövid útmutatójában
+Az alábbi példában szereplő program szöveges üzeneteket küld egy Service Bus üzenetsor számára a várólista logikai JNDI, és visszafogadja az üzeneteket a JMS.
+
+Az összes forráskódot és konfigurációs információt elérheti a [Azure Service Bus Samples JMS-várólista](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)rövid útmutatójában.
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -153,9 +162,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 /**
- * This sample demonstrates how to send messages from a JMS Queue producer into
- * an Azure Service Bus Queue, and receive them with a JMS message consumer.
- * JMS Queue. 
+ * This sample demonstrates how to send messages from a JMS queue producer into
+ * an Azure Service Bus queue and receive them with a JMS message consumer.
+ * JMS queue. 
  */
 public class JmsQueueQuickstart {
 
@@ -173,7 +182,7 @@ public class JmsQueueQuickstart {
         // connection string. 
         ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
         
-        // set up JNDI context
+        // Set up JNDI context
         Hashtable<String, String> hashtable = new Hashtable<>();
         hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
         hashtable.put("queue.QUEUE", "BasicQueue");
@@ -184,12 +193,12 @@ public class JmsQueueQuickstart {
         // Look up queue
         Destination queue = (Destination) context.lookup("QUEUE");
 
-        // we create a scope here so we can use the same set of local variables cleanly 
-        // again to show the receive side separately with minimal clutter
+        // We create a scope here so we can use the same set of local variables cleanly 
+        // again to show the receive side separately with minimal clutter.
         {
-            // Create Connection
+            // Create connection
             Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
-            // Create Session, no transaction, client ack
+            // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
             // Create producer
@@ -210,17 +219,17 @@ public class JmsQueueQuickstart {
         }
 
         {
-            // Create Connection
+            // Create connection
             Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
             connection.start();
-            // Create Session, no transaction, client ack
+            // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
             // Create consumer
             MessageConsumer consumer = session.createConsumer(queue);
-            // create a listener callback to receive the messages
+            // Create a listener callback to receive the messages
             consumer.setMessageListener(message -> {
                 try {
-                    // receives message is passed to callback
+                    // Received message is passed to callback
                     System.out.printf("Received message %d with sq#: %s\n",
                             totalReceived.incrementAndGet(), // increments the tracking counter
                             message.getJMSMessageID());
@@ -230,7 +239,7 @@ public class JmsQueueQuickstart {
                 }
             });
 
-            // wait on the main thread until all sent messages have been received
+            // Wait on the main thread until all sent messages have been received
             while (totalReceived.get() < totalSend) {
                 Thread.sleep(1000);
             }
@@ -265,7 +274,7 @@ public class JmsQueueQuickstart {
 
             String connectionString = null;
 
-            // parse connection string from command line
+            // Parse connection string from command line
             Options options = new Options();
             options.addOption(new Option("c", true, "Connection string"));
             CommandLineParser clp = new DefaultParser();
@@ -274,7 +283,7 @@ public class JmsQueueQuickstart {
                 connectionString = cl.getOptionValue("c");
             }
 
-            // get overrides from the environment
+            // Get overrides from the environment
             String env = System.getenv(SB_SAMPLES_CONNECTIONSTRING);
             if (env != null) {
                 connectionString = env;
@@ -295,8 +304,9 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
+
 Adja át a **kapcsolati karakterláncot** a megosztott hozzáférési szabályzatokból az alkalmazás futtatásához.
-Alább látható az űrlap kimenete az alkalmazás futtatásával:
+A következő kimenet az alkalmazást futtató űrlap:
 
 ```Output
 > mvn clean package
@@ -328,7 +338,8 @@ Closing queue client.
 ```
 
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP-elrendezés és Service Bus művelet-hozzárendelés
-Itt látható, hogy egy AMQP-elrendezés hogyan fordítható le egy Service Bus műveletre:
+
+A AMQP-elrendezés egy Service Bus műveletre fordítható le:
 
 ```Output
 ACCEPTED = 1; -> Complete()
@@ -339,46 +350,50 @@ MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
 ## <a name="jms-topics-vs-service-bus-topics"></a>JMS témakörök és Service Bus témakörök
-A Azure Service Bus témakörök és előfizetések használata a Java Message Service (JMS) API-n keresztül alapvető küldési és fogadási képességeket biztosít. Kényelmes választás az alkalmazások más JMS-kompatibilis API-kkal való portolása, noha Service Bus témakörök eltérnek a JMS Témaköröktől, és néhány módosítást igényelnek. 
 
-Azure Service Bus témakörök üzeneteket továbbítanak az Azure Resource Management felületen, az Azure parancssori eszközein vagy a Azure Portal keresztül felügyelt, névvel ellátott, megosztott és tartós előfizetésekben. Az egyes előfizetések legfeljebb 2000 kiválasztási szabályt tesznek lehetővé, amelyek mindegyike tartalmaz egy szűrési feltételt, és az SQL-szűrők esetében metaadat-átalakítási műveletet is végezhet. Az egyes Szűrőfeltételek egyeztetése kiválasztja az előfizetésbe másolandó bemeneti üzenetet.  
+Service Bus témakörök és előfizetések használata a JMS API-n keresztül alapvető küldési és fogadási képességeket biztosít. Kényelmes választás, ha más JMS-kompatibilis API-kkal rendelkező alkalmazásokat is más-más JMS, Service Bus de a témakörök eltérőek, és csak néhány módosítást igényelnek.
 
-Az előfizetésből érkező üzenetek fogadása azonos a várólistákból érkező üzenetek fogadásával. Minden előfizetéshez tartozik egy kézbesítetlen levelek várólistája, valamint az üzenetek automatikus továbbítása egy másik várólistába vagy témakörbe. 
+Service Bus témakörök üzeneteket továbbítanak az Azure Resource Management felületen, az Azure parancssori eszközein vagy a Azure Portal felügyelt, névvel ellátott, megosztott és tartós előfizetésekre. Az egyes előfizetések legfeljebb 2 000 kiválasztási szabályt tesznek lehetővé, amelyek mindegyike tartalmaz egy szűrési feltételt, és az SQL-szűrők esetében metaadat-átalakítási műveletet is végezhet. Az egyes Szűrőfeltételek egyeztetése kiválasztja az előfizetésbe másolandó bemeneti üzenetet.  
 
-A JMS témakörök lehetővé teszik, hogy az ügyfelek dinamikusan hozzanak létre nem tartós és tartós előfizetőket, amelyek opcionálisan lehetővé teszik a Message választókkal való szűrést. A Service Bus nem támogatja ezeket a nem megosztott entitásokat. A Service Bus SQL-szűrési szabályának szintaxisa azonban hasonló a JMS által támogatott üzenet-választó szintaxishoz. 
+Az előfizetésből érkező üzenetek fogadása azonos a várólistákból érkező üzenetek fogadásával. Minden előfizetéshez tartozik egy kézbesítetlen levelek várólistája, valamint az üzenetek automatikus továbbítása egy másik várólistába vagy témakörbe.
 
-A JMS témakör közzétevő oldala kompatibilis a Service Busekkel, ahogy az ebben a mintában látható, de a dinamikus előfizetők nem. A következő topológia-alapú JMS API-k nem támogatottak a Service Bus. 
+A JMS témakörök lehetővé teszik, hogy az ügyfelek dinamikusan hozzanak létre nem tartós és tartós előfizetőket, amelyek opcionálisan lehetővé teszik a Message választókkal való szűrést. A Service Bus nem támogatja ezeket a nem megosztott entitásokat. Az Service Bus SQL-szűrési szabályának szintaxisa hasonló a JMS által támogatott üzenet-választói szintaxishoz.
+
+A JMS témakör közzétevő oldala kompatibilis a Service Busekkel, ahogy az ebben a mintában látható, de a dinamikus előfizetők nem. A következő topológia-alapú JMS API-k nem támogatottak a Service Bus.
 
 ## <a name="unsupported-features-and-restrictions"></a>Nem támogatott funkciók és korlátozások
-A következő korlátozások érvényesek, ha a JMS-t a AMQP 1,0-nél több mint Service Bus használatával használja, nevezetesen:
 
-* Egy **munkamenetben**csak egy **MessageProducer** vagy **MessageConsumer** engedélyezett. Ha több **MessageProducers** vagy **MessageConsumers** kell létrehoznia egy alkalmazásban, hozzon létre egy dedikált **munkamenetet** mindegyikhez.
+A következő korlátozások léteznek, ha a JMS-t használja a AMQP 1,0-nél több mint Service Bus, nevezetesen:
+
+* Egy munkamenetben csak egy **MessageProducer** vagy **MessageConsumer** objektum engedélyezett. Ha több **MessageProducer** vagy **MessageConsumer** objektumot kell létrehoznia egy alkalmazásban, hozzon létre egy dedikált munkamenetet mindegyikhez.
 * A felejtő témakör-előfizetések jelenleg nem támogatottak.
-* A **MessageSelectors** jelenleg nem támogatottak.
-* Az elosztott tranzakciók nem támogatottak (de a tranzakciós munkamenetek támogatottak).
+* A **MessageSelector** objektumok jelenleg nem támogatottak.
+* Az elosztott tranzakciók nem támogatottak, de a tranzakciós munkamenetek támogatottak.
 
-Emellett a Azure Service Bus a vezérlő síkot az adatsíkon osztja fel, így nem támogatja több JMS dinamikus topológiai funkcióját:
+Service Bus feldarabolja a vezérlő síkot az adatsíkon, így nem támogatja több JMS dinamikus topológiai funkcióját.
 
 | Nem támogatott metódus          | Csere erre                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
-| createDurableSubscriber     | Témakör-előfizetés létrehozása az üzenet-választóhoz                                 |
-| createDurableConsumer       | Témakör-előfizetés létrehozása az üzenet-választóhoz                                 |
-| createSharedConsumer        | Service Bus témakörök mindig megoszthatók, lásd fentebb                                       |
-| createSharedDurableConsumer | Service Bus témakörök mindig megoszthatók, lásd fentebb                                       |
-| createTemporaryTopic        | témakör létrehozása felügyeleti API/eszközök/portál használatával, a *AutoDeleteOnIdle* pedig lejárati időszakra |
-| createTopic                 | témakör létrehozása felügyeleti API/eszközök/portál használatával                                           |
-| Leiratkozás                 | a témakör felügyeleti API/eszközök/portál törlése                                             |
-| createBrowser               | támogatott. A Service Bus API betekintés () funkciójának használata                         |
-| createQueue                 | üzenetsor létrehozása felügyeleti API/eszközök/portál használatával                                           | 
-| createTemporaryQueue        | üzenetsor létrehozása felügyeleti API/eszközök/portál használatával a *AutoDeleteOnIdle* lejárati időszakra állítva |
-| receiveNoWait               | használja a Service Bus SDK által biztosított Receive () metódust, és a nagyon alacsony vagy a nulla időkorlátot határozza meg. |
+| createDurableSubscriber     | Hozzon létre egy témakör-előfizetést, amely az üzenet választóját adja meg.                                |
+| createDurableConsumer       | Hozzon létre egy témakör-előfizetést, amely az üzenet választóját adja meg.                                |
+| createSharedConsumer        | Service Bus témakörök mindig megoszthatók. Tekintse meg a "JMS témakörök és Service Bus témakörök" című szakaszt.                                    |
+| createSharedDurableConsumer | Service Bus témakörök mindig megoszthatók. Tekintse meg a "JMS témakörök és Service Bus témakörök" című szakaszt.                                      |
+| createTemporaryTopic        | Hozzon létre egy témakört a Management API, az eszközök vagy a portál *AutoDeleteOnIdle* , amely lejárati időszakra van beállítva. |
+| createTopic                 | Hozzon létre egy témakört a felügyeleti API, eszközök vagy a portál használatával.                                         |
+| Leiratkozás                 | Törölje a témakör-felügyeleti API-t, eszközöket vagy portált.                                            |
+| createBrowser               | Támogatott. Használja a Service Bus API betekintés () funkcióját.                         |
+| createQueue                 | Hozzon létre egy várólistát a felügyeleti API, eszközök vagy a portál használatával.                                           | 
+| createTemporaryQueue        | Hozzon létre egy várólistát a felügyeleti API, az eszközök vagy a portál használatával, amely lejárati időszakra van beállítva a *AutoDeleteOnIdle* . |
+| receiveNoWait               | Használja a Service Bus SDK által biztosított Receive () metódust, és nagyon alacsony vagy nulla időtúllépést ad meg. |
 
 ## <a name="summary"></a>Összefoglalás
-Ez az útmutató bemutatja, hogyan használhatók Service Bus felügyelt üzenetküldési funkciók (Queues and publish/subscribe) Java-ból a népszerű JMS API és a AMQP 1,0 használatával.
 
-Más nyelvekről is használhat Service Bus AMQP 1,0-et, beleértve a .NET, a C, a Python és a PHP-t is. Az ezekkel a különböző nyelvekkel létrehozott összetevők megbízhatóan és teljes hűséggel cserélhetik az üzeneteket a Service Bus AMQP 1,0-támogatásának használatával.
+Ez a cikk bemutatja, hogyan használhatja Service Bus felügyelt üzenetkezelési funkciókat, például a várólistákat és a közzétételi vagy előfizetési témákat a Java-ból a népszerű JMS API és a AMQP 1,0 használatával.
 
-## <a name="next-steps"></a>További lépések
+Más nyelvekről is használhat Service Bus AMQP 1,0, például .NET, C, Python és PHP. Az ezekkel a különböző nyelvekkel létrehozott összetevők megbízhatóan és teljes hűséggel cserélhetik az üzeneteket a Service Bus AMQP 1,0-támogatásának használatával.
+
+## <a name="next-steps"></a>Következő lépések
+
 * [AMQP 1,0-támogatás Azure Service Bus](service-bus-amqp-overview.md)
 * [A AMQP 1,0 használata a Service Bus .NET API-val](./service-bus-amqp-dotnet.md)
 * [Service Bus AMQP 1,0 fejlesztői útmutató](service-bus-amqp-dotnet.md)

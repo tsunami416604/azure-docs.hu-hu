@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5021b815da1419052ceb4d6114fbb2bc676fe8d6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672975"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088399"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>JSON-és adatstruktúrák használata Azure Monitor log-lekérdezésekben
 
@@ -85,7 +85,7 @@ print hosts_object
 | mvexpand hosts_object.hosts[0]
 ```
 
-![mvexpand](media/json-data-structures/mvexpand.png)
+![A képernyőfelvételen a hely, az állapot és a rate értékeit tartalmazó hosts_0 látható.](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
 `buildschema`A paranccsal lekérheti az objektum összes értékét azonosító sémát:
@@ -123,7 +123,7 @@ print hosts_object
 
 ![Séma létrehozása](media/json-data-structures/buildschema.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Azure Monitor a naplók használatával kapcsolatos további leckéket:
 
 - [Sztringműveletek](string-operations.md)

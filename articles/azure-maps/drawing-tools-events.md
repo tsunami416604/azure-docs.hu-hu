@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b5cbd5311c6070f59f8a5953d8b99789ab758c9c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524607"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089343"
 ---
 # <a name="drawing-tool-events"></a>Rajzolási eszköz eseményei
 
 Térképeken a rajzolási eszközök használatakor hasznos lehet reagálni bizonyos eseményekre, amikor a felhasználó a térképen rajzol. Ez a táblázat felsorolja az osztály által támogatott összes eseményt `DrawingManager` .
 
-| Esemény | Leírás |
+| Esemény | Description |
 |-------|-------------|
 | `drawingchanged` | Az alakzatban lévő bármely koordináta hozzáadása vagy módosítása történt. | 
 | `drawingchanging` | Akkor aktiválódik, amikor megjelenik egy alakzat előnézeti koordinátái. Ez az esemény például többször is kigyullad, mivel a rendszer a koordinátákat húzza. | 
@@ -31,7 +31,7 @@ Az alábbi kód azt mutatja be, hogyan működik a rajzolási eszközök modulj�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási eszközök eseményei" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási eszközök eseményei" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>rajzolási eszközeinek eseményeit</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -47,7 +47,7 @@ Ez a kód azt mutatja be, hogyan lehet figyelni a felhasználói rajzok alakzata
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="A rajzolt sokszög területének kijelölése" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="A rajzolt sokszög területének kijelölése" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/XWJdeja'>rajzolt sokszög területen</a> a CodePen-on lévő Azure Maps () elemnél <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -59,7 +59,7 @@ Ez a kód egy alakzat területén belüli érdeklődési pontokat keres, miután
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolás és keresés a sokszög területén" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolás és keresés a sokszög területén" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>, és keressen rá a sokszög területén</a> Azure Maps () elemre <a href='https://codepen.io/azuremaps'>@azuremaps</a> a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -67,11 +67,11 @@ Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>, és k
 
 ### <a name="create-a-measuring-tool"></a>Mérési eszköz létrehozása
 
-Az alábbi kód azt mutatja be, hogy a rajzolási események hogyan használhatók mérési eszköz létrehozásához. A az `drawingchanging` alakzat figyelésére szolgál, ahogy a rajzolás folyamatban van. Ahogy a felhasználó áthelyezi az egeret, a rendszer kiszámítja az alakzat dimenzióit. Az `drawingcomplete` esemény a végső számítást végzi az alakzaton a rajzolást követően. Az `drawingmodechanged` esemény segítségével határozható meg, hogy a felhasználó mikor váltson rajzolási módba. Emellett az `drawingmodechanged` esemény törli a vásznat, és törli a régi mérési adatokat.
+Az alábbi kód azt mutatja be, hogy a rajzolási események hogyan használhatók mérési eszköz létrehozásához. A az `drawingchanging` alakzat figyelésére szolgál, ahogy a rajzolás folyamatban van. Ahogy a felhasználó áthelyezi az egeret, a rendszer kiszámítja az alakzat dimenzióit. Az `drawingcomplete` esemény a végső számítást végzi az alakzaton a rajzolást követően. Az `drawingmodechanged` esemény segítségével határozható meg, hogy a felhasználó mikor váltson rajzolási módba. Emellett az  `drawingmodechanged` esemény törli a vásznat, és törli a régi mérési adatokat.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Mérési eszköz" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Mérési eszköz" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>mérési eszközét</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

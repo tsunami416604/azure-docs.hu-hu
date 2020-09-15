@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9c9f286b9d81c89844582698ac98833f10bcaade
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923704"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086657"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * További lépések
+> * Következő lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -322,12 +322,13 @@ Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul el
 
 Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban**. A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
 
-Kapcsolatok létrehozásához vegyen fel egy utasítást a `using` kapcsolati alaptípushoz az SDK-ban: Ha már hozzá van adva, hagyja ki ezt a lehetőséget.
+Ahhoz, hogy kapcsolatokat lehessen létrehozni, szüksége lesz a `Azure.DigitalTwins.Core.Serialization` névtérre. Ezt az utasítást korábban a projekthez adta hozzá `using` :
+
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
-Ezután adjon hozzá egy új statikus metódust a `Program` osztályhoz a `Main` metódus alá:
+Adjon hozzá egy új statikus metódust a `Program` osztályhoz a `Main` metódus alá:
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -542,7 +543,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

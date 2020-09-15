@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752009"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088493"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetőek el az Azure-ban?
 
@@ -23,7 +23,7 @@ Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike 
 
 Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a standard SSD és a standard merevlemez-meghajtók (HDD) összehasonlítását ismerteti a felügyelt lemezekhez, amelyek segítségével eldöntheti, hogy mi a használat.
 
-| Részletek | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
+| Részlet | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Lemeztípus   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
@@ -71,7 +71,7 @@ Ha szeretné megkezdeni az ultra-lemezek használatát, tekintse meg a tárgyat 
 
 Az Azure Premium SSD-k nagy teljesítményű és kis késleltetésű lemezes támogatást biztosítanak a virtuális gépek (VM) számára a bemeneti/kimeneti (i/o) igényű számítási feladatokhoz. A Premium Storage-lemezek sebességének és teljesítményének kihasználásához áttelepítheti a meglévő VM-lemezeket prémium SSD-re. A prémium SSD-k megfelelőek a kritikus fontosságú üzemi alkalmazások számára. A prémium SSD-k csak a Premium Storage-kompatibilis virtuálisgép-sorozatokkal használhatók.
 
-Ha többet szeretne megtudni az Azure-ban Windows vagy Linux rendszerhez készült egyéni virtuálisgép-típusokról és-méretekről, beleértve a Premium Storage-kompatibilis méreteket, lásd: [virtuális gépek méretei az Azure-ban](sizes.md). Ha többet szeretne megtudni az Azure-beli VM-típusokról és-méretekről, például a Premium Storage-kompatibilis méretekről, tekintse meg a [virtuális gépek méretei az Azure-ban](sizes.md)című témakört. Ezek közül bármelyik cikkből megtudhatja, hogy az egyes virtuálisgép-méretekkel kapcsolatos cikkek alapján megállapíthatja, hogy a prémium szintű Storage kompatibilis-e.
+Ha többet szeretne megtudni az Azure-ban Windows vagy Linux rendszerhez készült egyéni virtuálisgép-típusokról és-méretekről, beleértve a Premium Storage-kompatibilis méreteket, lásd: [virtuális gépek méretei az Azure-ban](sizes.md). Ebből a cikkből megtudhatja, hogy az egyes virtuálisgép-méretekről szóló cikkekben a Premium Storage-kompatibilis-e.
 
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
@@ -147,6 +147,6 @@ Az ultra Disk díjszabásáról az [Azure Disks díjszabását ismertető oldalo
 
 A lemezes foglalás az a lehetőség, hogy a lemezes tárterületet egy évig előre, kedvezményes áron vásárolja meg, ami csökkenti a teljes költségeket. A lemezes foglalások megvásárlásakor kiválaszthat egy adott lemezes SKU-t egy adott régióban, például a 10 P30 (1TiB) prémium SSD-ket az USA 2. keleti régiójában egy éves időszakra. A foglalási élmény a fenntartott virtuális gépek (VM) példányaihoz hasonló. A megtakarítások maximalizálása érdekében a virtuális gépek és a lemezek foglalása is megtehető. Az Azure-lemezek foglalása egyéves kötelezettségvállalási tervet biztosít a P30 (1TiB) prémium SSD-SKU-k számára a P80 (32 TiB) és az összes éles régióban. A fenntartott lemezek díjszabásával kapcsolatos további információkért lásd az [Azure Disks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kezdéshez tekintse meg [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) .

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 429baa4d5dc85476192758e4500f4c1f14610e6d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77198292"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089309"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>A rajzolási eszközök modulban található interakciós típusok és billentyűparancsok
 
@@ -21,9 +21,9 @@ Ez a cikk az alakzatok rajzolásának és szerkesztésének különböző módja
 
 A rajzolási kezelő három különböző módszert támogat a térképekkel való interakciók rajzolásához.
 
-* `click`– A koordinátákat a rendszer az egér vagy érintés kattintásakor adja hozzá.
-* `freehand `– A koordinátákat akkor adja hozzá a rendszer, amikor az egérmutatót a Térkép fölé húzza.
-* `hybrid`– A koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés kattint, vagy húzza a húzást.
+* `click` – A koordinátákat a rendszer az egér vagy érintés kattintásakor adja hozzá.
+* `freehand ` – A koordinátákat akkor adja hozzá a rendszer, amikor az egérmutatót a Térkép fölé húzza.
+* `hybrid` – A koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés kattint, vagy húzza a húzást.
 
 ## <a name="how-to-draw-shapes"></a>Alakzatok rajzolása
 
@@ -141,12 +141,12 @@ A rajzolási eszközök támogatják a billentyűparancsokat. Ezek a billentyűp
 | `Escape` | Megszakítja a folyamatban lévő összes rajzot, és a rajzolási módot Üresjáratra állítja. A fókusz a legfelső szintű Térkép elemre lép.  |
 | `F` | Egy pontot, vonalat vagy sokszöget tartalmazó koordinátákat helyez el, ha az egér a Térkép fölé esik. A térképre kattintáskor vagy hibrid módban való kattintással egyenértékű művelet. Ez a parancsikon pontosabb és gyorsabb rajzok használatát teszi lehetővé. Az egér mozgatásához és a többi gomb megnyomásához használhatja az egeret a lenyomásos kézmozdulattal. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a rajzolási eszközök modul osztályairól:
 
 > [!div class="nextstepaction"]
-> [Rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

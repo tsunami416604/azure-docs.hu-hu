@@ -7,13 +7,13 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: c8f431a609dafc1064b901cfdda8d170124cf0f9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987511"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089122"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
 - Egy kapacitás-készlet
 - Egy NFS-kötet a Azure NetApp Files
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
@@ -67,6 +67,14 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
+# <a name="template"></a>[Sablon](#tab/template)
+
+Nincsenek.  
+
+A Azure Portal, a PowerShell vagy az Azure CLI használatával regisztrálhat a Azure NetApp Files és a NetApp erőforrás-szolgáltatóra.  
+
+További információért lásd: [Azure NetApp Files regisztrálása](azure-netapp-files-register.md) . 
+
 ---
 
 ## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
@@ -105,7 +113,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
     > [!NOTE]
     > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) .
-    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt:`Get-AzLocation | select Location`
+    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt: `Get-AzLocation | select Location`
     >
 
 1. Hozzon létre egy új erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával:
@@ -132,7 +140,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
     > [!NOTE]
     > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) .
-    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt:`az account list-locations --query "[].{Region:name}" --out table`
+    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt: `az account list-locations --query "[].{Region:name}" --out table`
     >
 
 2. Hozzon létre egy új erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) paranccsal:
@@ -151,6 +159,17 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[Sablon](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók egy Azure Resource Manager sablonban (ARM-sablon) a [Microsoft. NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) erőforrás használatával. A kód futtatásához töltse le a [teljes ARM-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
@@ -213,6 +232,16 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[Sablon](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+A következő kódrészlet azt mutatja be, hogyan hozhat létre kapacitási készletet egy Azure Resource Manager sablonban (ARM-sablon) a [Microsoft. NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) erőforrás használatával. A kód futtatásához töltse le a [teljes ARM-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,9 +382,23 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[Sablon](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+A következő kódrészletek bemutatják, hogyan állíthat be egy VNet, és hogyan hozhat létre Azure NetApp Files kötetet egy Azure Resource Manager sablonban (ARM-sablon). A VNet telepítője a [Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) erőforrást használja. A kötet létrehozása a [Microsoft. NetApp/netAppAccounts/capacityPools/Volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) erőforrást használja. A kód futtatásához töltse le a [teljes ARM-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -379,7 +422,7 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
 
 4. Adja meg az erőforráscsoport nevét (myRG1) annak megerősítéséhez, hogy véglegesen törölni kívánja az erőforráscsoportot és az összes erőforrást, majd kattintson a **Törlés**gombra.
 
-    ![Erőforráscsoport törlése](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Erőforráscsoport törlésének megerősítése](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,9 +450,16 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[Sablon](#tab/template)
+
+Nincsenek.
+
+Az erőforráscsoport törléséhez használja a Azure Portal, a PowerShellt vagy az Azure CLI-t.   
+
 ---
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 > [!div class="nextstepaction"]
 > [Azure NetApp Files tárolási hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)   

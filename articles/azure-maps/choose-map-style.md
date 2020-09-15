@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036793"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089564"
 ---
 # <a name="change-the-style-of-the-map"></a>A térkép stílusának módosítása
 
@@ -82,7 +82,7 @@ Az alapszintű Térkép stílusa a függvénnyel frissíthető, `setStyle` és b
 map.setStyle({ style: 'satellite' });
 ```
 
-A következő kódban a térképi példány betöltését követően a Térkép stílusa a `grayscale_dark` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) függvény használatával frissül.
+A következő kódban a térképi példány betöltését követően a Térkép stílusa a `grayscale_dark` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) függvény használatával frissül.
 
 <br/>
 
@@ -97,14 +97,14 @@ A Style Picker két különböző elrendezési lehetőséggel rendelkezik: `icon
 
 Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látható `icon` .
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Style Picker-lista elrendezése":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Style Picker ikon elrendezése":::
 
 Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látható `list` .
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Style Picker-lista elrendezése":::
 
 > [!IMPORTANT]
->Alapértelmezés szerint a Style Picker vezérlő felsorolja az Azure Maps S0 díjszabási szintjénél elérhető összes stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a `mapStyle` Style Picker (stílus kiválasztása) lehetőséggel. Ha S1-et használ, és az összes elérhető stílust meg szeretné jeleníteni, állítsa a `mapStyles` Style Picker kapcsolót a következőre: `"all"` .
+> Alapértelmezés szerint a Style Picker vezérlő felsorolja az Azure Maps S0 díjszabási szintjénél elérhető összes stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a `mapStyle` Style Picker (stílus kiválasztása) lehetőséggel. Ha S1-et használ, és az összes elérhető stílust meg szeretné jeleníteni, állítsa a `mapStyles` Style Picker kapcsolót a következőre: `"all"` .
 
 A következő kód bemutatja, hogyan bírálhatja felül az alapértelmezett `mapStyles` alapstílusok listáját. Ebben a példában a `mapStyles` Style Picker vezérlőelem által megjelenített alapstílusokat szeretnénk listázni.
 
@@ -113,7 +113,7 @@ A következő kód bemutatja, hogyan bírálhatja felül az alapértelmezett `ma
 <iframe height='500' scrolling='no' title='A Style Picker hozzáadása' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Style Picker hozzáadásával</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

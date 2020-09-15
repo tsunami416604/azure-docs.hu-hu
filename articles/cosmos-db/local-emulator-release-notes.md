@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: f8df1a62ace8a1f094a708b752e175f3299d0ee0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 268470f846f31e3577b12c217ddcb3c128136101
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053174"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086640"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -28,9 +28,10 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 
 ### <a name="2115-08232020"></a>2.11.5 (08/23/2020)
 
-- Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre: 
-* "/EnablePreview" – lehetővé teszi az előzetes verziójú funkciókat a Cosmos Emulator számára; Ezek olyan szolgáltatások, amelyek még fejlesztés alatt állnak, és a CI és a Sample Writing használatával érhetők el.
-* "/EnableAadAuthentication" – lehetővé teszi, hogy a Cosmos emulátor fogadja el az egyéni HRE-jogkivonatokat a Cosmos főkulcsok alternatívájaként. Ez a funkció még fejlesztés alatt áll; az adott szerepkör-hozzárendelések és más engedélyek kapcsolódó beállításai jelenleg nem támogatottak.
+Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre: 
+
+* "/EnablePreview" – lehetővé teszi az emulátor előzetes funkcióinak használatát. Az előzetes verzióban még fejlesztés alatt álló funkciók is elérhetők a CI és a Sample Writing használatával.
+* "/EnableAadAuthentication" – lehetővé teszi, hogy az emulátor fogadja az egyéni HRE-jogkivonatokat az Azure Cosmos főkulcsainak alternatívájaként. Ez a funkció továbbra is fejlesztés alatt áll; az adott szerepkör-hozzárendelések és más engedélyek kapcsolódó beállításai jelenleg nem támogatottak.
 
 ### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378015"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086880"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
 
@@ -24,7 +24,7 @@ Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt 
 
 Ez az oktatóanyag bemutatja, hogyan automatizálható a titkok rendszeres elforgatása olyan adatbázisokhoz és szolgáltatásokhoz, amelyek a hitelesítő adatok egy készletét használják. Pontosabban, ez az oktatóanyag a Azure Key Vaultokban tárolt jelszavakat SQL Server Azure Event Grid értesítés által aktivált függvény használatával forgatja el:
 
-![Rotációs megoldás diagramja](../media/rotate1.png)
+![Rotációs megoldás diagramja](../media/rotate-1.png)
 
 1. Harminc nappal a titok lejárati dátuma előtt Key Vault közzéteszi a "közeljövőben" eseményt Event Grid.
 1. Event Grid ellenőrzi az esemény-előfizetéseket, és HTTP POST használatával hívja meg az eseményre előfizetett Function app-végpontot.
@@ -46,10 +46,10 @@ Az alábbi telepítési hivatkozás használható, ha nincs meglévő Key Vault 
 
 1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation**.
 1. Az **SQL**-rendszergazdai bejelentkezés területen írja be az SQL-rendszergazda bejelentkezési nevét. 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Erőforráscsoport létrehozása](../media/rotate2.png)
+    ![Hozzon létre egy erőforráscsoportot](../media/rotate-2.png)
 
 Most már rendelkezik egy Key Vault és egy SQL Server-példánnyal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -91,7 +91,7 @@ A Function alkalmazáshoz a következő összetevők szükségesek:
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
-   ![Válassza a felülvizsgálat + létrehozás lehetőséget](../media/rotate3.png)
+   ![Válassza a felülvizsgálat + létrehozás lehetőséget](../media/rotate-3.png)
 
 Az előző lépések elvégzése után egy Storage-fiókkal, egy kiszolgálófarmhoz és egy Function-alkalmazással fog rendelkezni. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -207,11 +207,11 @@ Egy rövid lejárati dátummal rendelkező titkos kulcs létrehozásához `Secre
 
 A titkos kód elforgatásának ellenőrzéséhez nyissa meg a **Key Vault**  >  **Secrets**:
 
-![Ugrás a titkokra](../media/rotate8.png)
+![Ugrás a titkokra](../media/rotate-8.png)
 
 Nyissa meg a titkos **sqlPassword** , és tekintse meg az eredeti és az elforgatott verziót:
 
-![A titkos sqluser megnyitása](../media/rotate9.png)
+![A titkos sqluser megnyitása](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
@@ -245,6 +245,6 @@ Amikor az alkalmazás megnyílik a böngészőben, látni fogja a **generált ti
 ## <a name="learn-more"></a>Tudjon meg többet
 
 - Oktatóanyag: [az erőforrások rotációja két hitelesítő adatokkal](tutorial-rotation-dual.md)
-- Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](../general/event-grid-overview.md)
+- Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)
-- [Azure Key Vault Azure Event Gridi esemény sémája (előzetes verzió)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault Azure Event Gridi esemény sémája](../../event-grid/event-schema-key-vault.md)

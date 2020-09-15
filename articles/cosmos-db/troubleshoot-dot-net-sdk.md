@@ -3,18 +3,18 @@ title: Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztiz
 description: A .NET SDK használatakor olyan szolgáltatásokat használhat, mint az ügyféloldali naplózás és más külső eszközök a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 06/16/2020
+ms.date: 09/12/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d7ed48354b3666a3ec544ffb66724bc605041c90
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021901"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086987"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -28,6 +28,7 @@ Ez a cikk általános problémákról, megkerülő megoldásokról, diagnosztika
 A .NET SDK ügyféloldali logikai ábrázolást biztosít a Azure Cosmos DB SQL API eléréséhez. Ez a cikk azokat az eszközöket és módszereket ismerteti, amelyek segítenek megoldani a problémákat.
 
 ## <a name="checklist-for-troubleshooting-issues"></a>Ellenőrzőlista hibaelhárítási problémákhoz
+
 Mielőtt éles környezetben áthelyezi az alkalmazást, vegye figyelembe a következő ellenőrzőlistát. Az ellenőrzőlista használatával több gyakori probléma is megjelenhet. A probléma megoldásához gyorsan is diagnosztizálhatja a problémát:
 
 *    Használja a legújabb [SDK](sql-api-sdk-dotnet-standard.md)-t. Az előzetes verziójú SDK-kat nem ajánlott éles környezetben használni. Ez megakadályozza a már kijavított ismert problémák elkerülését.
@@ -54,7 +55,7 @@ A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni
 
 ## <a name="common-error-status-codes"></a>Gyakori hibák állapotkódok <a id="error-codes"></a>
 
-| Állapotkód | Leírás | 
+| Állapotkód | Description | 
 |----------|-------------|
 | 400 | Hibás kérés (a hibaüzenettől függ)| 
 | 401 | [Nincs engedélyezve](troubleshoot-unauthorized.md) | 
@@ -99,10 +100,15 @@ Ennek a késésnek több oka lehet:
     * [Gyorsított hálózatkezelés engedélyezése egy meglévő virtuális gépen](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
     * Érdemes lehet [magasabb végpontú virtuális gépet](../virtual-machines/windows/sizes.md)használni.
 
-### <a name="slow-query-performance"></a>Lassú lekérdezési teljesítmény
-A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, hogy a lekérdezés hol tölti le a legtöbb időt. A lekérdezési mérőszámokból megtekintheti, hogy mennyi időt tölt a háttér és a-ügyfél.
+### <a name="common-query-issues"></a>Gyakori lekérdezési problémák
+
+A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, hogy a lekérdezés hol tölti le a legtöbb időt. A lekérdezési mérőszámokból megtekintheti, hogy mennyi időt tölt a háttér és a-ügyfél. További információ a [lekérdezések teljesítményének hibaelhárításáról](troubleshoot-query-performance.md).
+
 * Ha a háttérbeli lekérdezés gyorsan visszatér, és nagy időt tölt az ügyfélen, ellenőrizze a terhelést a gépen. Valószínű, hogy nincs elegendő erőforrás, és az SDK arra vár, hogy az erőforrások elérhetők legyenek a válasz kezelésére.
-* Ha a háttérbeli lekérdezés lassú, próbálkozzon [a lekérdezés optimalizálásával](optimize-cost-queries.md) , és tekintse meg az aktuális [indexelési házirendet](index-overview.md) 
+* Ha a háttérbeli lekérdezés lassú, próbálja meg [optimalizálni a lekérdezést](troubleshoot-query-performance.md) , és tekintse meg az aktuális [indexelési házirendet](index-overview.md) .
+
+    > [!NOTE]
+    > A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

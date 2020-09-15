@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121391"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088544"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -78,12 +78,12 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - Profilkészítési rögzítés a PROCESSZORon és a CPU-használat feldolgozása 5 másodperces intervallumban
   - Profilkészítés – a folyamatok memória-használatának 5 másodperces intervallumon belüli rögzítése
 
-- Hálózat  
+- Hálózatkezelés  
   - Adapterek statisztikáit tartalmazó hálózati adapterek listája
   - Hálózati útválasztási táblázat
   - Nyitott portok és állapot
 
-- Storage
+- Tárolás
   - Eszközök listájának letiltása
   - Partíciók listája
   - Csatlakoztatási pontok listája
@@ -130,10 +130,10 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
 
     | Disztribúció               | Verzió                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux kiszolgáló        | 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Marketplace-rendszerkép)|
+    | Oracle Linux kiszolgáló        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
     | CentOS                     | 6,5 [ `*` ], 7,6                                    |
     | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
-    | Ubuntu                     | 14.04, 16.04, 18.04                               |
+    | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
     | Debian                     | 8, 9, 10 [ `*` ]                                    |
     | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
@@ -247,7 +247,7 @@ A **Linux** lapon a virtuális gépen futó hardverre és operációs rendszerre
 
 ![A Linux lap képernyőképe](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. Ha a Microsoft ügyfélszolgálata munkatársaival dolgozik, kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 

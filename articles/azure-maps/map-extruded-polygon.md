@@ -9,27 +9,27 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: cd12242367c6f3b5b2c64df28f7f5e52cf1a4f97
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d7444ec0acd17ae0ad08f4932c109c5cf0d3fb9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282874"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087252"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Sokszög-kihúzási réteg hozzáadása a térképhez
 
-Ebből a cikkből megtudhatja, hogyan használhatja a sokszög-kihúzási réteget, hogy a `Polygon` és a `MultiPolygon` szolgáltatáshoz tartozó geometriákat extrudált alakzatokként jelenítse A Azure Maps web SDK támogatja a kör geometriáinak megjelenítését a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)meghatározottak szerint. Ezek a körök a térképen való megjelenítéskor sokszögekre alakíthatók. Az Atlas becsomagolásakor az összes funkció geometriája könnyen frissíthető [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztálya
+Ebből a cikkből megtudhatja, hogyan használhatja a sokszög-kihúzási réteget, hogy a `Polygon` és a `MultiPolygon` szolgáltatáshoz tartozó geometriákat extrudált alakzatokként jelenítse A Azure Maps web SDK támogatja a kör geometriáinak megjelenítését a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)meghatározottak szerint. Ezek a körök a térképen való megjelenítéskor sokszögekre alakíthatók. Az Atlas becsomagolásakor az összes funkció geometriája könnyen frissíthető [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) osztálya
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Sokszög kihúzási rétegének használata
 
-A [sokszög kihúzási rétegének](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege `Polygon` kihúzott alakzatként jeleníti meg a és a funkciók területét `MultiPolygon` . A `height` `base` sokszög kihúzási rétegének és tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben**. A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
+A [sokszög kihúzási rétegének](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege `Polygon` kihúzott alakzatként jeleníti meg a és a funkciók területét `MultiPolygon` . A  `height` `base` sokszög kihúzási rétegének és tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben**. A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
 
 > [!Note]
 > A `base` sokszög kihúzási rétegében megadott érték nem lehet kisebb, mint az `height` .
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Extrudált sokszög" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Extrudált sokszög" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>extrudált sokszögét</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
@@ -39,7 +39,7 @@ A choropleth-leképezések a sokszög kihúzási réteg használatával állíth
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Extrudált choropleth Térkép" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Extrudált choropleth Térkép" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/eYYYNox'>extrudált choropleth térképét</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -47,7 +47,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/eYYYNox'>extrudál
 
 Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)feljegyzett körök definícióját adja meg. Egy extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` tulajdonsággal rendelkező szolgáltatást, `subType` `Circle` valamint egy számozott `Radius` tulajdonságot, amely a sugarat a **méterben**jelöli. Például:
 
-```Javascript
+```javascript
 {
     "type": "Feature",
     "geometry": {
@@ -65,7 +65,7 @@ A Azure Maps web SDK ezeket a `Point` funkciókat `Polygon` a motorháztető ala
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="A drone-légtér sokszöge" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="A drone-légtér sokszöge" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>a tollat</a> a Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>-on.
 </iframe>
 
@@ -75,18 +75,18 @@ A sokszög kihúzási rétegének számos stílusa van. Itt látható egy eszkö
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg Azure Maps () által <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> tollat a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg Azure Maps () által <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> tollat a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
+> [Sokszög](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [sokszög kihúzási rétege](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
+> [sokszög kihúzási rétege](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
 
 További források:
 
