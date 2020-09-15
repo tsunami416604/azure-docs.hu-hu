@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662532"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561635"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez a Python SDK-val
 
@@ -36,7 +36,11 @@ Ebben a cikkben a számítási célok létrehozásához és kezeléséhez haszn�
 
 ## <a name="limitations"></a>Korlátozások
 
-A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* Ne **hozzon létre több egyidejű mellékletet ugyanahhoz a számítási** feladatokhoz a munkaterületen. Például egy Azure Kubernetes Service-fürt csatolása egy munkaterülethez két különböző név használatával. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
+
+    Ha újra csatolni szeretné a számítási célt, például a TLS vagy más fürtkonfiguráció módosítása beállítást, először el kell távolítania a meglévő mellékletet.
+
+* A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>Mi a számítási cél?
 
@@ -269,6 +273,9 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 
    A DSVM a munkaterülethez [Azure Machine learning Studio használatával](how-to-create-attach-compute-studio.md#attached-compute)is csatlakoztathatja.
 
+    > [!WARNING]
+    > Ne hozzon létre egyszerre több, egyidejű mellékletet ugyanahhoz a DSVM a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
+
 1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a DSVM számítási célhoz. A Docker és a Conda a DSVM lévő képzési környezet létrehozásához és konfigurálásához használható.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
@@ -313,6 +320,9 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
    ```
 
    A HDInsight-fürtöt [Azure Machine learning Studio használatával](how-to-create-attach-compute-studio.md#attached-compute)is csatlakoztathatja a munkaterülethez.
+
+    > [!WARNING]
+    > Ne hozzon létre egyszerre több, egyidejű mellékletet ugyanahhoz a HDInsight a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 
 1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a HDI számítási célhoz. 
 
@@ -360,6 +370,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> Ne hozzon létre több egyidejű mellékletet ugyanahhoz a Azure Batch a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -414,6 +427,9 @@ except ComputeTargetException:
 
 Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-databricks) .
 
+> [!WARNING]
+> Ne hozzon létre több egyidejű mellékletet ugyanahhoz a Azure Databricks a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 A Azure Data Lake Analytics egy big data elemzési platform az Azure-felhőben. A számítási célként Azure Machine Learning folyamattal is használható.
@@ -464,6 +480,9 @@ except ComputeTargetException:
 
 Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-adla) .
 
+> [!WARNING]
+> Ne hozzon létre egyszerre több, egyidejű mellékletet ugyanahhoz a ADLA a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
+
 > [!TIP]
 > Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) másolhatja az Adatmásolást a betanítás előtt.
 
@@ -475,7 +494,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A számítási erőforrás segítségével [elküldheti a betanítási futtatást](how-to-set-up-training-targets.md).
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.

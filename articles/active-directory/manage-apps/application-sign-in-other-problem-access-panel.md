@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231180"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563913"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
 
@@ -33,7 +33,7 @@ A felhasználók által megjelenített alkalmazások típusa a következő kateg
 -   Meglévő SSO-megoldásokkal rendelkező alkalmazások
 
 Íme néhány dolog, amelyből megtudhatja, hogy megjelenjen-e az alkalmazás, vagy sem.
-- Győződjön meg arról, hogy az alkalmazás hozzá van adva az Azure AD-hoz, és ellenőrizze, hogy a felhasználó hozzá van-e rendelve. További információ: a gyors üzembe helyezési [sorozat az alkalmazások kezelésében](view-applications-portal.md).
+- Győződjön meg arról, hogy az alkalmazás hozzá van adva az Azure AD-hoz, és ellenőrizze, hogy a felhasználó hozzá van-e rendelve. További információ: a gyors üzembe helyezési [sorozat az alkalmazások kezelésében](add-application-portal.md).
 - Ha egy alkalmazás nemrég lett hozzáadva, a felhasználó kijelentkezik és újra visszakerül. 
 - Ha az alkalmazáshoz licenc szükséges, például az Office, akkor győződjön meg arról, hogy a felhasználó hozzá van rendelve a megfelelő licenchez.
 - A licencelési módosítások elvégzéséhez szükséges idő a csoport méretétől és összetettségtől függően változhat.
@@ -192,5 +192,5 @@ Ha elérhető, nyisson meg egy támogatási jegyet a következő információkka
 -   Az időzóna és az idő/időkeret a hiba bekövetkezésekor
 -   Hegedűs nyomkövetései
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)

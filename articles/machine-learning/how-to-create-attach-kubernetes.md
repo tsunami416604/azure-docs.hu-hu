@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: edd4cc28c6d59f1d6e0c9cabfd5855c72bd3fe73
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661839"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564338"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,6 +68,83 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 
     - [Csomópontok számának manuális skálázása egy AK-fürtben](../aks/scale-cluster.md)
     - [Fürt autoskálázásának beállítása az AK-ban](../aks/cluster-autoscaler.md)
+
+## <a name="azure-kubernetes-service-version"></a>Az Azure Kubernetes Service verziója
+
+Az Azure Kubernetes szolgáltatás lehetővé teszi, hogy különböző Kubernetes-verziók használatával hozzon létre egy fürtöt. További információ az elérhető verziókról: [támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban](/azure/aks/supported-kubernetes-versions).
+
+Ha az alábbi módszerek egyikével **hozza létre** az Azure Kubernetes Service-fürtöt, akkor a létrehozott fürt *verziója nem választható* :
+
+* Azure Machine Learning Studio vagy a Azure Portal Azure Machine Learning szakasza.
+* Machine Learning bővítmény az Azure CLI-hez.
+* Azure Machine Learning SDK.
+
+Az AK-fürtök létrehozásának módszerei a fürt __alapértelmezett__ verzióját használják. *Az alapértelmezett verzió módosul az idő múlásával* , mivel az új Kubernetes verziók elérhetővé válnak.
+
+Meglévő AK-fürt **csatolásakor** az összes jelenleg támogatott AK-verziót támogatjuk.
+
+> [!NOTE]
+> Lehetnek olyan Edge-esetek, amikor egy régebbi fürttel rendelkezik, amely már nem támogatott. Ebben az esetben a csatolási művelet hibát ad vissza, és felsorolja a jelenleg támogatott verziókat.
+>
+> **Előnézeti** verziókat is csatolhat. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. Az előzetes verziójú verziók használatának támogatása korlátozott lehet. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+### <a name="available-and-default-versions"></a>Elérhető és alapértelmezett verziók
+
+Az elérhető és az alapértelmezett AK-verziók megkereséséhez használja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -parancsot az [AK Get-Versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions)paranccsal. A következő parancs például az USA nyugati régiójában elérhető verziókat adja vissza:
+
+```azurecli-interactive
+az aks get-versions -l westus -o table
+```
+
+A parancs kimenete az alábbi szöveghez hasonló:
+
+```text
+KubernetesVersion    Upgrades
+-------------------  ----------------------------------------
+1.18.6(preview)      None available
+1.18.4(preview)      1.18.6(preview)
+1.17.9               1.18.4(preview), 1.18.6(preview)
+1.17.7               1.17.9, 1.18.4(preview), 1.18.6(preview)
+1.16.13              1.17.7, 1.17.9
+1.16.10              1.16.13, 1.17.7, 1.17.9
+1.15.12              1.16.10, 1.16.13
+1.15.11              1.15.12, 1.16.10, 1.16.13
+```
+
+A fürt Azure Machine Learning használatával történő **létrehozásakor** használt alapértelmezett verzió megkereséséhez használja a `--query` paramétert az alapértelmezett verzió kiválasztásához:
+
+```azurecli-interactive
+az aks get-versions -l westus --query "orchestrators[?default == `true`].orchestratorVersion" -o table
+```
+
+A parancs kimenete az alábbi szöveghez hasonló:
+
+```text
+Result
+--------
+1.16.13
+```
+
+Ha **programozottan szeretné megtekinteni az elérhető verziókat**, használja a [Container Service ügyfél-lista](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
+
+A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alapértelmezett verzió megkereséséhez keresse meg azt a bejegyzést, ahol `orchestratorType` az a `Kubernetes` és `default` az `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. A következő JSON-kódrészlet egy példa bejegyzést mutat be:
+
+```json
+...
+ {
+        "orchestratorType": "Kubernetes",
+        "orchestratorVersion": "1.16.13",
+        "default": true,
+        "upgrades": [
+          {
+            "orchestratorType": "",
+            "orchestratorVersion": "1.17.7",
+            "isPreview": false
+          }
+        ]
+      },
+...
+```
 
 ## <a name="create-a-new-aks-cluster"></a>Új AK-fürt létrehozása
 
@@ -203,7 +280,7 @@ Az AK-fürtök portálon való csatlakoztatásával kapcsolatos információkér
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
 * [Modell üzembe helyezése Azure Kubernetes Service-fürtön](how-to-deploy-azure-kubernetes-service.md)

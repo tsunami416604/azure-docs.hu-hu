@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76275116"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564151"
 ---
 # <a name="available-regions-for-your-storsimple"></a>A StorSimple elérhető régiók
 
@@ -39,7 +39,7 @@ A StorSimple Eszközkezelő szolgáltatás első létrehozásakor meg kell adnia
 
 Itt találja azokat a régiókat, ahol a StorSimple Eszközkezelő szolgáltatás elérhető az Azure nyilvános felhőben, és üzembe helyezhető.
 
-![storsimple-Device-Manager-Service-Regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![Képernyőfelvétel: a StorSimple Eszközkezelő a hely listáról kiemelve.](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Azure Government felhő esetén a StorSimple Eszközkezelő szolgáltatás US Gov Iowa és US Gov Virginia adatközpontokban érhető el.
 

@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7c178f0bb54cb815b25259c819d15d10b3671c79
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070938"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564185"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
 
@@ -73,7 +73,7 @@ Használja az `Connect-AzAccount` parancsot, és kövesse a képernyőn megjelen
 Connect-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Új erőforráscsoport PowerShell-lel való létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot:
 
@@ -103,7 +103,7 @@ Ha be szeretné jelentkezni a CLI helyi telepítésére, győződjön meg arról
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group) parancsot.
 
@@ -163,6 +163,7 @@ Ha prémium szintű fájlmegosztást szeretne létrehozni a Azure PowerShell mod
 ```powershell
 New-AzStorageShare `
    -Name myshare `
+   -EnabledProtocol SMB `
    -Context $storageAcct.Context
 ```
 
@@ -177,6 +178,7 @@ Prémium fájlmegosztás Azure CLI-vel való létrehozásához használja az az 
 az storage share create \
     --account-name $STORAGEACCT \
     --account-key $STORAGEKEY \
+    --enabled-protocol SMB \
     --name "myshare" 
 ```
 ---
@@ -208,7 +210,7 @@ az group delete --name myResourceGroup
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy prémium szintű fájlmegosztást hozott létre. Ha többet szeretne megtudni a fiók által kínált teljesítményről, folytassa a tervezési útmutató teljesítményszint szakaszával.
 

@@ -12,18 +12,18 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: b1f23d52b96e708a16adbbf6098de4b7ab0423e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1eaef57f46bf6373fdd2a73575bb028904ef108b
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052103"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561650"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
 Az egyszeri bejelentkezés azt jelenti, hogy a felhasználóknak nem kell bejelentkezniük minden általuk használt alkalmazásba. A felhasználó egyszer jelentkezik be, és a rendszer a hitelesítő adatokat is használja más alkalmazásokhoz.
 
-Ha Ön a végfelhasználó, valószínűleg nem érdekli az egyszeri bejelentkezés részletei. Csak azokat az alkalmazásokat szeretné használni, amelyekkel hatékonyabbá teheti a jelszavát. Az alkalmazások a következő címen találhatók: https://myapplications.microsoft.com .
+Ha Ön a végfelhasználó, valószínűleg nem érdekli az egyszeri bejelentkezés részletei. Csak azokat az alkalmazásokat szeretné használni, amelyekkel hatékonyabbá teheti a jelszavát. Az alkalmazások a következő címen találhatók: https://myapps.microsoft.com .
  
 Ha Ön rendszergazda vagy informatikai szakember, olvassa el a következőt: További információ az egyszeri bejelentkezésről és az Azure-beli megvalósításáról.
 
@@ -53,7 +53,7 @@ Az egyszeri bejelentkezés megvalósításának módja attól függ, hogy hol fu
 > [!TIP]
 > A felhőben üzemeltetett alkalmazásokat szolgáltatásként szolgáló (SaaS) alkalmazásoknak is nevezik. 
 
-A felhőben üzemeltetett alkalmazások egyszeri bejelentkezése egyszerű. Tudatja az identitás-szolgáltatóval, hogy az alkalmazás használatban van. Ezután konfigurálja úgy az alkalmazást, hogy megbízzon az identitás-szolgáltatóban. Ha szeretné megtudni, hogyan használhatja az Azure AD-t az alkalmazások identitás-szolgáltatójának használatára, tekintse [meg](view-applications-portal.md)a gyors üzembe helyezési útmutatót
+A felhőben üzemeltetett alkalmazások egyszeri bejelentkezése egyszerű. Tudatja az identitás-szolgáltatóval, hogy az alkalmazás használatban van. Ezután konfigurálja úgy az alkalmazást, hogy megbízzon az identitás-szolgáltatóban. Ha szeretné megtudni, hogyan használhatja az Azure AD-t az alkalmazások identitás-szolgáltatójának használatára, tekintse [meg](add-application-portal.md)a gyors üzembe helyezési útmutatót
 
 > [!TIP]
 > A felhő és az Internet kifejezések gyakran használhatók felcserélhetővé. Ennek oka a hálózati diagramok használata. Gyakori, hogy egy diagramon a Felhőbeli alakzattal rendelkező nagyméretű számítógép-hálózatokat jelöli, mert nem lehetséges az összes összetevő rajzolása. Az Internet a legismertebb hálózat, így könnyen használhatók a feltételek. A számítógépek hálózata azonban megalkotható egy felhőben is.
@@ -68,6 +68,6 @@ Hitelesítés alapjai: összevonás | Azure Active Directory
 > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Az egyszeri bejelentkezés beállításai](sso-options.md)

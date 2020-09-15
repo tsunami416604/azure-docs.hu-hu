@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 78007c9f153267b72a94dc4b4024155dee6beb88
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442973"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562009"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 
@@ -30,7 +30,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevé
 
 A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy másolási tevékenységet használ az adatok SQL Serverból egy Azure-Blob Storageba való másolásához. Ezt követően egy adatfolyam-tevékenység vagy egy Databricks-jegyzetfüzet tevékenység használatával feldolgozhatja és átalakíthatja a blob Storage-ból származó adatok egy olyan Azure-beli szinapszis Analytics-készletbe való feldolgozását, amely az üzleti intelligencia jelentéskészítési megoldásaira épül.
 
-Data Factory három tevékenységgel rendelkezik: az [adattovábbítási tevékenységek](copy-activity-overview.md), [az Adatátalakítási tevékenységek](transform-data.md)és a [vezérlési tevékenységek](control-flow-web-activity.md). Minden tevékenység nulla vagy több bemeneti [adatkészletet](concepts-datasets-linked-services.md) képes fogadni, és egy vagy több kimeneti [adatkészletet](concepts-datasets-linked-services.md) képes előállítani. Az alábbi ábrán a folyamat, a tevékenység és az adat-előállító adatkészlete közötti kapcsolat látható:
+Data Factory három tevékenységgel rendelkezik: az [adattovábbítási tevékenységek](copy-activity-overview.md), [az Adatátalakítási tevékenységek](transform-data.md)és a [vezérlési tevékenységek](#control-flow-activities). Minden tevékenység nulla vagy több bemeneti [adatkészletet](concepts-datasets-linked-services.md) képes fogadni, és egy vagy több kimeneti [adatkészletet](concepts-datasets-linked-services.md) képes előállítani. Az alábbi ábrán a folyamat, a tevékenység és az adat-előállító adatkészlete közötti kapcsolat látható:
 
 ![Az adatkészlet, a tevékenység és a folyamat közötti kapcsolat](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -69,7 +69,7 @@ További információkért tekintse meg az [adatátalakítási tevékenységekr�
 ## <a name="control-flow-activities"></a>Vezérlési folyamat tevékenységei
 A támogatott átvitelvezérlési tevékenységek a következők:
 
-Vezérlési tevékenység | Description
+Vezérlési tevékenység | Leírás
 ---------------- | -----------
 [Változó hozzáfűzése](control-flow-append-variable-activity.md) | Adjon hozzá egy értéket egy meglévő tömb változóhoz.
 [Folyamat végrehajtása](control-flow-execute-pipeline-activity.md) | A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
@@ -106,11 +106,11 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 }
 ```
 
-Címke | Description | Típus | Kötelező
+Címke | Leírás | Típus | Kötelező
 --- | ----------- | ---- | --------
-name | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Sztring | Yes
+name | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Sztring | Igen
 leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | No
-tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Yes
+tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 parameters | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | No
 Egyidejűség | A folyamat egyidejű futtatások maximális száma. Alapértelmezés szerint nincs maximum. Ha elérte a párhuzamossági korlátot, a rendszer a folyamatban lévő további folyamatokat várólistára helyezi, amíg a korábbi verziók befejeződik. | Szám | No 
 Széljegyzetek | A folyamathoz társított címkék listája | Tömb | No
@@ -143,9 +143,9 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 
 Címke | Leírás | Kötelező
 --- | ----------- | ---------
-name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás () karakterrel kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li></ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Yes
-típus | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Yes
+name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás () karakterrel kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Igen</li></ul>
+leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
+típus | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Igen
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | No
 szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ez a tulajdonság egy időtúllépési és újrapróbálkozási viselkedést tartalmaz. Ha nincs megadva, a rendszer az alapértelmezett értékeket használja. További információkat a [Tevékenységszabályzat](#activity-policy) szakaszban talál. | No
@@ -182,7 +182,7 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
 }
 ```
 
-JSON-név | Description | Megengedett értékek | Kötelező
+JSON-név | Leírás | Megengedett értékek | Kötelező
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Időtartomány | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
@@ -208,9 +208,9 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 
 Címke | Leírás | Kötelező
 --- | ----------- | --------
-name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li><ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Yes
-típus | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Yes
+name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Igen</li><ul>
+leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
+típus | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Igen
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | No
 dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információ: tevékenység- [függőség](#activity-dependency). | No
 
@@ -401,7 +401,7 @@ Tegyük fel például, hogy van egy ütemező triggere, "trigger A", amelyet sze
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A folyamatok tevékenységekkel együtt történő létrehozásáról részletes útmutatást a következő oktatóanyagokban talál:
 
 - [Másolási tevékenységgel rendelkező folyamat létrehozása](quickstart-create-data-factory-powershell.md)

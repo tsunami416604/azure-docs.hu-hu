@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654327"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563692"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
-A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
+A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
 
 Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori kérdésekre ad választ, beleértve a Azure File Sync használatát Azure Files használatával. Ha nem látja a választ a kérdésére, felveheti velünk a kapcsolatot a következő csatornákon keresztül (növekvő sorrendben):
 
@@ -31,7 +31,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="file-access-options"></a>
   **Milyen különböző módokon férhet hozzá a Azure Files lévő fájlokhoz?**  
-    Az SMB 3,0 protokoll használatával csatlakoztathatja a fájlmegosztást a helyi számítógépen, vagy használhat olyan eszközöket, mint a [Storage Explorer](https://storageexplorer.com/) a fájlmegosztás fájljainak eléréséhez. Az alkalmazásból a Storage ügyféloldali kódtárait, a REST API-kat, a PowerShellt vagy az Azure CLI-t használhatja az Azure-fájlmegosztás fájljainak eléréséhez.
+    Az SMB-fájlmegosztás az SMB 3,0 protokoll használatával csatlakoztatható a helyi gépre, vagy használhat olyan eszközöket, mint a [Storage Explorer](https://storageexplorer.com/) a fájlmegosztás fájljainak eléréséhez. Az NFS-fájlmegosztás csatlakoztatható a helyi gépen a Azure Portal által megadott parancsfájl másolásával/beillesztésével. Az alkalmazásból a Storage ügyféloldali kódtárait, a REST API-kat, a PowerShellt vagy az Azure CLI-t használhatja az Azure-fájlmegosztás fájljainak eléréséhez.
 
 * <a id="what-is-afs"></a>
   **Mi az Azure File Sync?**  
@@ -43,12 +43,12 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     
     Az Azure Blob Storage olyan nagy méretű, Felhőbeli natív alkalmazások esetében hasznos, amelyeknek strukturálatlan adatmennyiséget kell tárolniuk. A teljesítmény és a méretezés maximalizálása érdekében az Azure Blob Storage egy egyszerű tárolási absztrakció, mint a valódi fájlrendszer. Az Azure Blob Storage-t csak REST-alapú ügyféloldali kódtárak (vagy közvetlenül a REST-alapú protokollon keresztül) érheti el.
 
-    Azure Files kifejezetten fájlrendszer. Azure Files rendelkezik a fájl összes olyan absztrakt nevével, amelyet a helyszíni operációs rendszerekkel kapcsolatos évek óta ismer és szeret. Az Azure Blob Storage-hoz hasonlóan a Azure Files REST-felületet és REST-alapú ügyféloldali kódtárakat is biztosít. Az Azure Blob Storage szolgáltatástól eltérően a Azure Files SMB-hozzáférést biztosít az Azure-fájlmegosztás számára. Az SMB használatával közvetlenül csatlakoztathat egy Azure-fájlmegosztást a Windows, Linux vagy macOS rendszeren, akár helyszíni, akár Felhőbeli virtuális gépeken, anélkül, hogy kódot kellene írnia, vagy bármilyen speciális illesztőprogramot csatolhat a fájlrendszerhez. Az Azure-fájlmegosztás a helyszíni fájlkiszolgálók esetében is gyorsítótárazható Azure File Sync használatával a gyors elérés érdekében, az adatforgalom helyétől függően. 
+    Azure Files kifejezetten fájlrendszer. Azure Files rendelkezik a fájl összes olyan absztrakt nevével, amelyet a helyszíni operációs rendszerekkel kapcsolatos évek óta ismer és szeret. Az Azure Blob Storage-hoz hasonlóan a Azure Files REST-felületet és REST-alapú ügyféloldali kódtárakat is biztosít. Az Azure Blob Storage szolgáltatástól eltérően a Azure Files SMB-vagy NFS-hozzáférést biztosít az Azure-fájlmegosztás számára. A fájlmegosztás közvetlenül csatlakoztatható Windows, Linux vagy macOS rendszerű számítógépeken, akár helyszíni, akár Felhőbeli virtuális gépeken, anélkül, hogy kódot kellene írnia, vagy speciális illesztőprogramokat kellene csatolni a fájlrendszerhez. Az Azure SMB-fájlmegosztást a helyszíni fájlkiszolgálók esetében Azure File Sync használatával is gyorsítótárazhatja a gyors hozzáférés érdekében, az adatforgalom helyétől függően. 
    
     Az Azure Files és az Azure Blob Storage közötti különbségek részletesebb leírását lásd: [az alapszintű Azure Storage szolgáltatás bemutatása](../common/storage-introduction.md). További információ az Azure Blob Storage-ról: [Bevezetés a blob Storage](../blobs/storage-blobs-introduction.md)-ba.
 
 * <a id="files-versus-disks"></a>**Miért érdemes Azure-fájlmegosztást használni az Azure-lemezek helyett?**  
-    Az Azure-lemezeken található lemezek egyszerűen egy lemez. Az Azure-lemezek értékének lekéréséhez csatolni kell egy lemezt az Azure-ban futó virtuális géphez. Az Azure-lemezek minden olyan eszközhöz használhatók, amely a helyszíni kiszolgálók lemezét fogja használni. Használhatja operációs rendszer lemezként, mint egy operációs rendszer vagy egy alkalmazás dedikált tárterülete. Az Azure-lemezek érdekes használata egy olyan fájlkiszolgáló létrehozása a felhőben, amely ugyanazon a helyen használható, ahol Azure-fájlmegosztást is használhat. Egy fájlkiszolgáló Virtual Machines Azure-beli üzembe helyezése nagy teljesítményű megoldás az Azure-ban, ha olyan központi telepítési beállításokat igényel, amelyeket a Azure Files jelenleg nem támogat (például NFS protokoll-támogatás vagy Premium Storage). 
+    Az Azure-lemezeken található lemezek egyszerűen egy lemez. Az Azure-lemezek értékének lekéréséhez csatolni kell egy lemezt az Azure-ban futó virtuális géphez. Az Azure-lemezek minden olyan eszközhöz használhatók, amely a helyszíni kiszolgálók lemezét fogja használni. Használhatja operációs rendszer lemezként, mint egy operációs rendszer vagy egy alkalmazás dedikált tárterülete. Az Azure-lemezek érdekes használata egy olyan fájlkiszolgáló létrehozása a felhőben, amely ugyanazon a helyen használható, ahol Azure-fájlmegosztást is használhat. Egy fájlkiszolgáló Virtual Machines Azure-beli üzembe helyezése nagy teljesítményű megoldás az Azure-ban való tároláshoz, ha olyan központi telepítési beállításokat igényel, amelyeket a Azure Files jelenleg nem támogat. 
 
     Ha azonban az Azure-lemezeket futtató fájlkiszolgáló a háttérbeli tárolóként jellemzően sokkal drágább, mint az Azure-fájlmegosztás használata, néhány ok miatt. Először is, a lemezes tárolás kifizetése mellett fizetnie kell egy vagy több Azure-beli virtuális gép futtatásának költségeiért. Másodszor, a fájlkiszolgáló futtatásához használt virtuális gépeket is kezelnie kell. Tegyük fel, hogy az operációs rendszer frissítéseiért felelős. Végül, ha végül a helyszíni gyorsítótárba helyezi az adattárolást, a replikációs technológiák (például a elosztott fájlrendszer replikáció (DFSR)) beállítása és kezelése a következő módon történik.
 
@@ -58,17 +58,18 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="get-started"></a>
   **Hogyan az Azure Files használatának megkezdése?**  
-   A Azure Files első lépései egyszerűek. Először [hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md), majd csatlakoztassa az előnyben részesített operációs rendszerhez: 
+   A Azure Files első lépései egyszerűek. Először [hozzon létre egy SMB-fájlmegosztást](storage-how-to-create-file-share.md) , vagy hozzon [létre egy NFS-megosztást](storage-files-how-to-create-nfs-shares.md), majd csatlakoztassa az előnyben részesített operációs rendszerhez: 
 
-  * [Csatlakoztatás Windows rendszeren](storage-how-to-use-files-windows.md)
-  * [Csatlakoztatás Linuxon](storage-how-to-use-files-linux.md)
-  * [Csatlakoztatás macOS-ben](storage-how-to-use-files-mac.md)
+  * [SMB-megosztás csatlakoztatása a Windowsban](storage-how-to-use-files-windows.md)
+  * [SMB-megosztás csatlakoztatása Linux rendszeren](storage-how-to-use-files-linux.md)
+  * [SMB-megosztás csatlakoztatása macOS-ben](storage-how-to-use-files-mac.md)
+  * [NFS-fájlmegosztás csatlakoztatása](storage-files-how-to-mount-nfs-shares.md)
 
     Az Azure-fájlmegosztás a szervezeten belüli éles fájlmegosztás helyett történő üzembe helyezésével kapcsolatos részletes útmutatót a [Azure Files központi telepítésének tervezése](storage-files-planning.md)című témakörben talál.
 
 * <a id="redundancy-options"></a>
   **Milyen tárolási redundancia-beállításokat támogat a Azure Files?**  
-    Jelenleg a Azure Files támogatja a helyileg redundáns tárolást (LRS), a Zone redundáns tárolást (ZRS), a Geo-redundáns tárolást (GRS) és a Geo-zóna-redundáns tárolást (GZRS). Azt tervezzük, hogy a jövőben támogatni kell az olvasási hozzáférésű geo-redundáns (RA-GRS) tárhelyet, de nem rendelkezünk a megosztás időkeretével.
+    Jelenleg a Azure Files támogatja a helyileg redundáns tárolást (LRS), a Zone redundáns tárolást (ZRS), a Geo-redundáns tárolást (GRS) és a Geo-zóna-redundáns tárolást (GZRS). A prémium szintű Azure Files jelenleg csak a LRS és a ZRS támogatja.
 
 * <a id="tier-options"></a>
   **Milyen tárolási rétegek támogatottak a Azure Files?**  
@@ -283,6 +284,23 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
     Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor. A Windows ACL-ek továbbra is támogatottak a REST-alapú eszközökön: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
+## <a name="network-file-system"></a>Hálózati fájlrendszer
+
+* <a id="when-to-use-nfs"></a>
+**Mikor érdemes használni a Azure Files NFS-t?**
+
+    Lásd: [NFS-megosztások (előzetes verzió)](storage-files-compare-protocols.md#nfs-shares-preview).
+
+* <a id="backup-nfs-data"></a>
+**Hogyan NFS-megosztásokban tárolt biztonsági mentési adatforgalom?**
+
+    Az NFS-megosztásokon tárolt adatok biztonsági mentését elvégezheti az ismerős eszközök, például az rsync vagy a harmadik féltől származó biztonsági mentési partnereink termékeinek használatával. Több biztonsági mentési partner, például a [CommVault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), a [Veeam](https://www.veeam.com/blog/?p=123438)és a [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) része a kezdeti előzetes verziónak, és kibővítettük a megoldásaikat a Azure Files SMB 3,0 és NFS 4,1 használatával.
+
+* <a id="migrate-nfs-data"></a>
+**Áttelepíthetem a meglévőket NFS-megosztásba?**
+
+    Egy régión belül olyan szabványos eszközöket használhat, mint az scp, az rsync vagy a SSHFS az adatátvitelhez. Mivel az Azure Files NFS több számítási példányból is elérhető egyszerre, a párhuzamos feltöltések segítségével javíthatja a sebességek másolását. Ha egy adott régión kívülről szeretne adatokat használni, VPN vagy Expressroute használatával csatlakoztassa a fájlrendszert a helyszíni adatközpontból.
+
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 
 * <a id="port-445-blocked"></a>
@@ -432,7 +450,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 **Hogyan Azure Files az IBM MQ-val?**  
     Az IBM kiadott egy olyan dokumentumot, amely segítséget nyújt az IBM MQ-ügyfeleknek az IBM szolgáltatással való Azure Files konfigurálásában. További információ: az [IBM MQ többpéldányos üzenetsor-kezelő beállítása Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)

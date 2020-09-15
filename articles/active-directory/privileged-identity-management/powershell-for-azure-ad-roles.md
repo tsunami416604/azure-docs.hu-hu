@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1aa0eb0988474a21fbf77ea08ce14a5fa9fb21bc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421909"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564117"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell Azure AD-szerepkörökhöz Privileged Identity Management
 
@@ -30,7 +30,7 @@ Ez a cikk a Azure Active Directory (Azure AD) PowerShell-parancsmagok használat
 > [!Note]
 > A hivatalos PowerShell csak akkor támogatott, ha a Azure AD Privileged Identity Management új verzióját támogatja. Lépjen a Privileged Identity Managementra, és győződjön meg róla, hogy a következő szalagcím szerepel a gyors üzembe helyezés panelen.
 > [![tekintse át a Privileged Identity Management telepített verzióját](media/pim-how-to-add-role-to-user/pim-new-version.png "Válassza az Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Ha nem rendelkezik ezzel a bannerrel, várjon, amíg jelenleg a következő heteken belül bevezetjük a frissített élményt.
-> Az Privileged Identity Management PowerShell-parancsmagok az Azure AD előzetes verziójának moduljában támogatottak. Ha egy másik modult használ, és a modul mostantól hibaüzenetet ad vissza, kezdje el használni ezt az új modult. Ha olyan éles rendszerek vannak, amelyek egy másik modulra épülnek, lépjen kapcsolatba a következővelpim_preview@microsoft.com
+> Az Privileged Identity Management PowerShell-parancsmagok az Azure AD előzetes verziójának moduljában támogatottak. Ha egy másik modult használ, és a modul mostantól hibaüzenetet ad vissza, kezdje el használni ezt az új modult. Ha olyan éles rendszerek vannak, amelyek egy másik modulra épülnek, lépjen kapcsolatba a következővel: [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) .
 
 ## <a name="installation-and-setup"></a>Telepítés és beállítás
 
@@ -54,7 +54,7 @@ Ez a cikk a Azure Active Directory (Azure AD) PowerShell-parancsmagok használat
     ![A szervezet AZONOSÍTÓjának megkeresése az Azure AD-szervezet tulajdonságainál](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> A következő fejezetekben egyszerű példákat talál, amelyek segítségével megkezdheti a működést. A következő parancsmagokkal kapcsolatos részletesebb dokumentációt itt talál: https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management . A providerID paraméterben azonban a "aadRoles" értékre kell cserélni a "azureResources" kifejezést. Az Azure AD-szervezethez tartozó szervezet AZONOSÍTÓját is meg kell jegyeznie resourceId paraméterként.
+> A következő fejezetekben egyszerű példákat talál, amelyek segítségével megkezdheti a működést. A következő parancsmagokkal kapcsolatos részletesebb dokumentációt itt talál: [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . A providerID paraméterben azonban a "aadRoles" értékkel kell helyettesíteni a "azureResources" kifejezést. Arra is emlékeznie kell, hogy az Azure AD-szervezet bérlői AZONOSÍTÓját resourceId paraméterként használja.
 
 ## <a name="retrieving-role-definitions"></a>Szerepkör-definíciók beolvasása
 
@@ -135,7 +135,7 @@ Ez a parancsmag majdnem azonos a szerepkör-hozzárendelés létrehozásához ha
 Az alábbi parancsmaggal kérheti le az összes szerepkör-beállítást az Azure AD-szervezetben.
 
 ```powershell
-Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'"
 ```
 
 A beállításban négy fő objektum található. A PIM jelenleg csak három objektumot használ. A UserMemberSettings az aktiválási beállítások, a AdminEligibleSettings a jogosult hozzárendelések hozzárendelési beállításai, a AdminmemberSettings pedig az aktív hozzárendelések hozzárendelési beállításai.
@@ -145,8 +145,10 @@ A beállításban négy fő objektum található. A PIM jelenleg csak három obj
 A szerepkör-beállítás frissítéséhez be kell szereznie egy adott szerepkör meglévő beállítási objektumát, és módosítania kell azt:
 
 ```powershell
-$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-$setting.UserMemberSetting.justificationRule = '{"required":false}'
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq 'tenant id' and RoleDefinitionId eq 'role id'"
+$settinga = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting
+$settinga.RuleIdentifier = "JustificationRule"
+$settinga.Setting = '{"required":false}'
 ```
 
 Ezután előre elvégezheti a beállítást, és alkalmazhatja egy adott szerepkör egyik objektumára az alábbi ábrán látható módon. Az azonosító itt a szerepkör-beállítási azonosító, amely a lista szerepkör-beállítások parancsmagjának eredményéről kérhető le.
@@ -155,7 +157,7 @@ Ezután előre elvégezheti a beállítást, és alkalmazhatja egy adott szerepk
 Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

@@ -6,12 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255217"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564100"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
 
@@ -24,7 +24,7 @@ Az AK-t tartalmazó munkafolyamatok esetében a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | Bejelentkezés a Private Container registrybe (ACR) |
-|**Buildelés** | Build & a tároló rendszerképének leküldése  |
+|**Létrehozás** | Build & a tároló rendszerképének leküldése  |
 |**Telepítés** | 1. a cél AK-fürt beállítása |
 | |2. hozzon létre egy általános/Docker-beállításjegyzékbeli titkot a Kubernetes-fürtben  |
 ||3. üzembe helyezés a Kubernetes-fürtön|
@@ -56,7 +56,7 @@ A titkok konfigurálásához kövesse a következő lépéseket:
 
 1. A [githubon](https://github.com/)tallózással keresse meg a tárházat, válassza a **beállítások > titkok > új titok hozzáadása**lehetőséget.
 
-    ![titkok](media/kubernetes-action/secrets.png)
+    ![Képernyőfelvétel: az új titkos kulcs hozzáadása egy adattárhoz.](media/kubernetes-action/secrets.png)
 
 2. Illessze be a fenti parancs tartalmát a `az cli` titkos változó értékére. Például: `AZURE_CREDENTIALS`.
 
@@ -67,7 +67,7 @@ A titkok konfigurálásához kövesse a következő lépéseket:
 
 4. A titkokat az alább látható módon fogja látni.
 
-    ![kubernetes – titkok](media/kubernetes-action/kubernetes-secrets.png)
+    ![Képernyőfelvétel: egy adattár meglévő titkait jeleníti meg.](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Tároló lemezképének létrehozása és üzembe helyezése az Azure Kubernetes Service-fürtön
 
@@ -129,7 +129,7 @@ jobs:
           demo-k8s-secret
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GitHubon különböző adattárakban találhatja meg a műveleteket, melyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub a CI/CD-hez való használatához és az alkalmazások Azure-beli üzembe helyezéséhez.
 

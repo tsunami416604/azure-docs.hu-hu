@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049927"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561533"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -380,7 +380,7 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. Állítsa be a forgatókönyveket és a várt eredményeket a HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásának módja alapján.
 
-| Szabályzat| Használati eset| Várt eredmény |
+| Szabályzat| Forgatókönyv| Várt eredmény |
 | - | - | - |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| A meghatalmazott felhasználó bejelentkezik az alkalmazásba egy megbízható helyen/munkahelyen| A felhasználónak nem kell megadnia az MFA-t |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| Az engedélyezve lévő felhasználó bejelentkezik az alkalmazásba, és nem megbízható helyen/munkahelyen| A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet |
@@ -448,7 +448,7 @@ Ha az újonnan megvalósított szabályzatokat vissza kell állítania, használ
 
 A HITELESÍTÉSSZOLGÁLTATÓI házirendek felügyeletéhez és kezeléséhez használja a következő kezelési lehetőségeket:
 
-![kezelés – hozzáférés](media/plan-conditional-access/manage-access.png)
+![A képernyőképen a C házirendek kezelési lehetőségei láthatók, többek között a nevesített helyszínek, az egyéni vezérlők, a Használati feltételek, a V P N kapcsolat és a kiválasztott klasszikus szabályzatok.](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>Nevesített helyek
@@ -495,7 +495,7 @@ Miután összegyűjtötte az adatokat, tekintse meg a következő forrásokat:
 
 * [A mi-if eszköz használata](troubleshoot-conditional-access-what-if.md) – megtudhatja, miért nem adott meg egy házirendet egy adott felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a többtényezős hitelesítésről](../authentication/concept-mfa-howitworks.md)
 

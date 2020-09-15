@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c9f286b9d81c89844582698ac98833f10bcaade
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086657"
+ms.locfileid: "90561550"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * Következő lépések
+> * További lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,7 +112,7 @@ A hitelesítéshez három információra van szüksége:
 >[!TIP]
 > Ha nem ismeri a *címtár-(bérlői) azonosítóját*, a következő parancs futtatásával kérheti le [Azure Cloud Shell](https://shell.azure.com):
 > 
-> ```azurecli-interactive
+> ```azurecli
 > az account show --query tenantId
 > ```
 
@@ -543,7 +543,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

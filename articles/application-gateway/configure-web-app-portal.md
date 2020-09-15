@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595710"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563753"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
 
@@ -67,9 +67,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 5. A HTTP-beállítás létrehozásához kattintson **az OK** gombra.
 
-   ![HTTP – setting1](./media/configure-web-app-portal/http-setting1.png)
+   ![A képernyőképen az App Service-hez és az OK kiválasztásához használt H T t P beállítás panel látható.](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP – setting2](./media/configure-web-app-portal/http-setting2.png)
+   ![A képernyőképen egy állapot-mintavétel jelenik meg, amelyen a kiválasztható állomásnév és a kijelölt gazdagép neve képernyő háttér http-beállítások](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -85,7 +85,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 5. A szabály mentéséhez kattintson **az OK** gombra.
 
-   ![Szabály](./media/configure-web-app-portal/rule.png)
+   ![A képernyőképen az alapszintű szabály hozzáadása panel látható a figyelővel, a háttér-készlettel és a H T T T P beállítással.](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>További konfiguráció az App Service relatív elérési útjára történő átirányítás esetén
 
@@ -99,6 +99,6 @@ A példákban telepített webalkalmazások nyilvános IP-címeket használnak, a
 
 A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az App Service-ről és az Application Gateway további több-bérlős támogatásáról, tekintse meg a [több-bérlős szolgáltatás támogatása az Application gatewayrel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)című témakört.

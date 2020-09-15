@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: e85937103e94a0fbb8dd8be92bb22ee5078df70a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d91ae0f3db9ad3637043f9eb7472539d8aba2c8d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087320"
+ms.locfileid: "90563037"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Egy minta Azure digitális Twins-forgatókönyv megismerése a ADT Explorer használatával
 
@@ -102,13 +102,13 @@ Az ablak tetején található *Bejelentkezés* gombra kattintva állítsa be, ho
 Adja meg az [Előfeltételek](#prerequisites) szakaszban korábban összegyűjtött fontos adatokat:
 * Alkalmazás (ügyfél) azonosítója
 * Címtár (bérlő) azonosítója
-* ADT URL-cím a *https://{instance Host Name}* formátumban
+* Azure digitális Twins-példány URL-címe a *https://{instance Host Name}* formátumban
 
 >[!NOTE]
 > Bármikor újra felkeresheti vagy szerkesztheti ezeket az adatokat. Ehhez jelölje ki ugyanazt az ikont, ha újra fel szeretné húzni a bejelentkezési mezőt. A rendszer megtartja a beadott értékeket.
 
 > [!TIP]
-> Ha egy SignalRService. subscribe hibaüzenet jelenik meg a kapcsolódáskor, győződjön meg arról, hogy a ADT URL-címe a *https://* előtaggal van ellátva.
+> Ha a `SignalRService.subscribe` csatlakozáskor hibaüzenet jelenik meg, győződjön meg arról, hogy az Azure digitális Twins URL-címe a *https://*-vel kezdődik.
 
 Ha megjelenik a Microsoft előugró ablakát *kérő engedély* , adja meg az alkalmazás jóváhagyását, és fogadja el a folytatást.
 
@@ -321,7 +321,7 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**ADT_Explorer.zip**_ és _**Azure_Digital_Twins_samples.zip**_).
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 196b1dda17de1c9430ab048ac90d1d10b6a595b4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104690"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562451"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló kezelése a Azure Portal használatával
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MariaDB-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
@@ -34,7 +34,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 2. Válassza ki az **általános célú** vagy a **memória optimalizált**elemet attól függően, hogy mit kíván méretezni. 
 
-    ![változás – díjszabás – réteg](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![Képernyőfelvétel: a kiválasztott árképzési csomaggal rendelkező Azure Portal és a memóriára optimalizált kiválasztott érték.](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > A rétegek módosítása a kiszolgáló újraindítását eredményezi.
@@ -79,7 +79,7 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
-   ![jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
+   ![A képernyőképen a jelszó alaphelyzetbe állítása és a Jelszó megerősítése párbeszédpanel jelenik meg.](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Az új jelszó mentéséhez kattintson **az OK gombra** .
 
@@ -94,7 +94,7 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy ez a kiszolgáló, amelyet törölni szeretne.
 
-    ![Törlés megerősítése](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![Képernyőfelvétel: egy párbeszédpanel, amely ellenőrzi, hogy törölni kívánja-e a visszafordíthatatlan adatbázist.](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > A kiszolgáló törlése visszafordíthatatlan.

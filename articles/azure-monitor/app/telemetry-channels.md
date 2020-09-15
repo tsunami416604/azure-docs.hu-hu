@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918400"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564015"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
 
@@ -153,13 +153,25 @@ A rövid válasz az, hogy a beépített csatornák egyike sem nyújt tranzakció
 
 Bár a csomagjának és névterének neve tartalmazza a "WindowsServer" nevet, ez a csatorna a Windows rendszeren kívül más rendszerek esetében is támogatott, a következő kivétellel. A Windowstól eltérő rendszereken a csatorna alapértelmezés szerint nem hoz létre helyi tároló mappát. Létre kell hoznia egy helyi tárolási mappát, és konfigurálnia kell a csatornát a használatára. A helyi tárterület konfigurálása után a csatorna ugyanúgy működik az összes rendszeren.
 
+> [!NOTE]
+> A kiadás 2.15.0-beta3 és a nagyobb helyi tárterület mostantól automatikusan létrejön a Linux, Mac és Windows rendszerekhez. Nem Windows rendszerű rendszerek esetén az SDK a következő logika alapján automatikusan létrehoz egy helyi tárolási mappát:
+> - `${TMPDIR}` -Ha a `${TMPDIR}` környezeti változó be van állítva, a rendszer ezt a helyet használja.
+> - `/var/tmp` – Ha az előző hely nem létezik, próbálkozzon `/var/tmp` .
+> - `/tmp` – Ha az előző helyszínek közül mindkettő nem létezik, próbálkozzon `tmp` . 
+> - Ha a helyek egyike sem létezik, a helyi tárterület nem jön létre, és a manuális konfigurálásra továbbra is szükség van. [A teljes megvalósítás részleteit](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Az SDK ideiglenes helyi tárolót hoz létre? Titkosítottak-e az adattárolóban tárolt adatforgalom?
 
 Az SDK hálózati problémák vagy a szabályozás során tárolja a helyi tárolóban lévő telemetria-elemeket. Ezek az adatforgalom nem helyileg titkosított.
 
 Windows rendszerek esetében az SDK automatikusan létrehoz egy ideiglenes helyi mappát a (z)% TEMP% vagy% LOCALAPPDATA% könyvtárban, és korlátozza a hozzáférést a rendszergazdákhoz és az aktuális felhasználóhoz.
 
-A Windows rendszertől eltérő rendszerek esetén az SDK nem hozza létre automatikusan a helyi tárterületet, így alapértelmezés szerint nem tárolja az adattárolást. Saját maga is létrehozhat egy tárolási könyvtárat, és beállíthatja a csatornát a használatára. Ebben az esetben Ön a felelős a címtár biztonságának biztosításáért.
+A Windows rendszertől eltérő rendszerek esetén az SDK nem hozza létre automatikusan a helyi tárterületet, így alapértelmezés szerint nem tárolja az adattárolást.
+
+> [!NOTE]
+> A kiadás 2.15.0-beta3 és a nagyobb helyi tárterület mostantól automatikusan létrejön a Linux, Mac és Windows rendszerekhez. 
+
+ Saját maga is létrehozhat egy tárolási könyvtárat, és beállíthatja a csatornát a használatára. Ebben az esetben Ön a felelős a címtár biztonságának biztosításáért.
 További információ az adatvédelem [és az adatvédelem terén](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK

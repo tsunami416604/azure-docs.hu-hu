@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689214"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563862"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect Sync: az architektúra megismerése
 Ez a témakör a Azure AD Connect Sync alapszintű architektúráját ismerteti. Számos szempontból hasonló az előzőekhez MIIS 2003, ILM 2007 és FIM 2010. Azure AD Connect szinkronizálás a technológiák fejlődése. Ha ismeri a korábbi technológiák bármelyikét, a jelen témakör tartalma is ismerős lesz. Ha még nem ismeri a szinkronizálást, akkor ez a témakör Önnek szól. Azonban nem kell tudnia, hogy a témakör részletei sikeresek legyenek ahhoz, hogy a testreszabások Azure AD Connect szinkronizálást (ez a témakör szinkronizálási motornak hívják).
@@ -36,7 +36,7 @@ A szinkronizálási motor egy **összekötő**nevű modulon belül beágyazza az
 
 Az összekötők olyan API-hívásokat tesznek elérhetővé, amelyek egy csatlakoztatott adatforrással (olvasási és írási) identitási adatokat cserélnek. Az Extensible connectivity Framework használatával egyéni összekötőt is hozzáadhat. Az alábbi ábra azt szemlélteti, hogy az összekötő hogyan kapcsol össze egy csatlakoztatott adatforrást a Szinkronizáló motorral.
 
-![Tevékenységének Ossz1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![Az ábrán egy összekötő nevű vonal van társítva egy csatlakoztatott adatforrást és egy szinkronizáló motort.](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 Az adatforgalom mindkét irányban elvégezhető, de egyszerre nem lehet mindkét irányban felfolyni. Más szóval egy összekötő konfigurálható úgy, hogy lehetővé tegye az adatok átvitelét a csatlakoztatott adatforrásból a motor vagy a szinkronizálási motorról a csatlakoztatott adatforrásba, de csak az egyik objektum és attribútum esetében lehet egyszerre egy adott művelet. Az irány különböző objektumok és különböző attribútumok esetében eltérő lehet.
 
@@ -62,7 +62,7 @@ A **metaverse** egy tárolóhely, amely a több csatlakoztatott adatforrásból 
 
 A következő ábra az összekötő területének névterét és a metaverse-névteret mutatja a Szinkronizáló motoron belül.
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![A diagramon egy összekötőhöz csatlakozó, összekötőként szolgáló adatforrást és egy szinkronizáló motort láthat, amely a Connector és a metaverse névterekhez van elkülönítve.](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>Szinkronizáló motor Identity Objects
 A Szinkronizáló motorban lévő objektumok a csatlakoztatott adatforrásban lévő objektumok vagy a motort szinkronizáló integrált nézet szerint jelennek meg. Minden szinkronizáló motor objektumnak globálisan egyedi azonosítóval (GUID) kell rendelkeznie. A GUID azonosítók adatintegritást és expressz kapcsolatokat biztosítanak az objektumok között.
@@ -97,13 +97,13 @@ Az átmeneti objektumok lehetnek importálási objektumok vagy exportálási obj
 
 A következő ábra egy olyan importálási objektumot mutat be, amely a csatlakoztatott adatforrásban lévő objektumot jelöli.
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![Ábrán egy olyan importálási objektum látható, amely a csatlakoztatott adatforrásból a Szinkronizáló motorban található összekötő-terület névterére mutat.](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 A Szinkronizáló motor a metaverse-ban objektum-információ használatával hoz létre exportálási objektumot. Az exportálási objektumokat a rendszer a következő kommunikációs munkamenet során exportálja a csatlakoztatott adatforrásba. A szinkronizálási motor szempontjából az exportálási objektumok még nem léteznek a csatlakoztatott adatforrásban. Ezért az exportálási objektumhoz tartozó Anchor attribútum nem érhető el. Miután az objektumot a Szinkronizáló motortól kapta, a csatlakoztatott adatforrás egyedi értéket hoz létre az objektum Anchor attribútumához.
 
 Az alábbi ábra azt szemlélteti, hogyan hozható létre exportálási objektum a metaverse-beli Identity Information használatával.
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![A diagramon egy, a metaverse-ból az összekötő területére, majd a csatlakoztatott adatforrásra indított exportálási objektum látható.](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 A Szinkronizáló motor megerősíti az objektum exportálását az objektumnak a csatlakoztatott adatforrásból való újraimportálásával. Az objektumok exportálása akkor válik elérhetővé, ha a szinkronizálási motor a következő importálás során fogadja őket a csatlakoztatott adatforrásból.
 
@@ -132,7 +132,7 @@ Ha egy előkészítési objektum a szinkronizálás során egy csatlakoztatott o
 
 Egyetlen összekötő terület objektum csak egy metaverse-objektumhoz kapcsolható. Az egyes metaverse-objektumok azonban az alábbi ábrán látható módon több összekötő területhez is összekapcsolhatók ugyanahhoz a különböző összekötő-terekhez.
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![A diagramon két csatlakoztatott adatobjektum van társítva egy olyan szinkronizáló motorhoz, amely csatlakoztatott objektumokkal és egy megszüntetett objektummal rendelkezik.](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 Az előkészítési objektum és a metaverse objektum közötti csatolt kapcsolat állandó, és csak a megadott szabályok alapján távolítható el.
 
@@ -157,7 +157,7 @@ Az exportálási folyamat során a szinkronizálási motor leküldi az átmeneti
 
 Az alábbi ábrán látható, hogy az egyes folyamatok hogyan alakulnak át az egyik csatlakoztatott adatforrásból egy másikba.
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![Az ábrán látható, hogy a csatlakoztatott adatokból származó azonosító információk a kapcsolódó adatokra (Importálás) a metaverse-ről összekötő területre (synchonization) és a csatlakoztatott adatokra (exportálásra) mutatnak.](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>Importálási folyamat
 Az importálási folyamat során a szinkronizálási motor kiértékeli az azonosítási adatok frissítéseit. A Szinkronizáló motor összehasonlítja a csatlakoztatott adatforrástól kapott azonosító adatokat egy átmeneti objektum azonosító adataival, és meghatározza, hogy az előkészítési objektum frissítést igényel-e. Ha szükség van az előkészítési objektum új adattal való frissítésére, az előkészítési objektum függőben lévő importálásként van megjelölve.
@@ -252,7 +252,7 @@ A csatlakoztatott adatforrás egyik folyamata például megváltoztathatja az ob
 
 A szinkronizálási motor tárolja az egyes átmeneti objektumok exportálási és importálási állapotára vonatkozó információkat. Ha a legutóbbi exportálás óta megváltoztak az attribútum-befoglalási listán megadott attribútumok értékei, az importálási és exportálási állapot tárolása lehetővé teszi a szinkronizálási motor megfelelő reagálását. A szinkronizálási motor az importálási folyamat segítségével megerősíti a csatlakoztatott adatforrásba exportált attribútum-értékeket. Az importált és az exportált információk összehasonlítása az alábbi ábrán látható módon lehetővé teszi a szinkronizálási motor számára annak meghatározását, hogy az Exportálás sikeres volt-e, vagy hogy meg kell-e ismételni.
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![Az ábrán egy objektum szinkronizálása látható az összekötő és a csatlakoztatott adat között az összekötőn keresztül.](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 Ha például a szinkronizálási motor exportálja a C attribútumot, amelynek értéke 5, egy csatlakoztatott adatforráshoz, a a C = 5 értéket tárolja az exportálási állapot memóriájában. Az objektum minden további exportálásakor a rendszer megkísérli a C = 5 exportálását a csatlakoztatott adatforrásba, mivel a Szinkronizáló motor azt feltételezi, hogy ez az érték nem lett tartósan alkalmazva az objektumra (azaz ha a csatlakoztatott adatforrásból nem történt meg a másik érték importálása). Az exportálási memória törlődik, ha a C = 5 fogadása az objektumon végzett importálási művelet során történik.
 

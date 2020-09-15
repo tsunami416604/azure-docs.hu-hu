@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 08d80a5ec2099147c12bcecd3b52d64429837285
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613831"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563964"
 ---
 # <a name="meshes"></a>Hálók
 
 ## <a name="mesh-resource"></a>Háló erőforrás
 
-A rácsvonalak egy nem módosítható [megosztott erőforrás](../concepts/lifetime.md), amely csak [modell-átalakítással](../how-tos/conversion/model-conversion.md)hozható létre. A rácsvonalak egy vagy több *alhálót*tartalmaznak. Minden alháló egy olyan [anyagra](materials.md) hivatkozik, amelyben alapértelmezés szerint meg kell jeleníteni. Ha a hálót 3D területre kívánja elhelyezni, adjon hozzá egy [MeshComponent](#meshcomponent) egy [entitáshoz](entities.md).
+A rácsvonalak egy nem módosítható [megosztott erőforrás](../concepts/lifetime.md), amely csak [modell-átalakítással](../how-tos/conversion/model-conversion.md)hozható létre. A rácsvonalak egy vagy több *alhálót* tartalmaznak a [raycast-lekérdezések](../overview/features/spatial-queries.md)fizikai ábrázolásával együtt. Minden alháló egy olyan [anyagra](materials.md) hivatkozik, amelyben alapértelmezés szerint meg kell jeleníteni. Ha a hálót 3D területre kívánja elhelyezni, adjon hozzá egy [MeshComponent](#meshcomponent) egy [entitáshoz](entities.md).
 
 ### <a name="mesh-resource-properties"></a>Rácsvonal erőforrásának tulajdonságai
 
@@ -38,6 +38,39 @@ Az `MeshComponent` osztály egy rácsvonal-erőforrás példányának elhelyezé
 
 * **UsedMaterials:** A ténylegesen felhasznált anyagok tömbje az egyes alhálók esetében. Azonos lesz az *anyagok* tömbben lévő adatokkal, nem null érték esetén. Ellenkező esetben a Mesh-példányban található *anyagok* tömb értékét tartalmazza.
 
+### <a name="sharing-of-meshes"></a>Rácsvonalak megosztása
+
+Egy `Mesh` erőforrás több háló-összetevő példánya között is megosztható. Emellett a `Mesh` háló összetevőhöz rendelt erőforrás bármikor programozott módon módosítható. Az alábbi kód a rácsvonalak klónozását mutatja be:
+
+```cs
+Entity CloneEntityWithModel(RemoteManager manager, Entity sourceEntity)
+{
+    MeshComponent meshComp = sourceEntity.FindComponentOfType<MeshComponent>();
+    if (meshComp != null)
+    {
+        Entity newEntity = manager.CreateEntity();
+        MeshComponent newMeshComp = manager.CreateComponent(ObjectType.MeshComponent, newEntity) as MeshComponent;
+        newMeshComp.Mesh = meshComp.Mesh; // share the mesh
+        return newEntity;
+    }
+    return null;
+}
+```
+
+```cpp
+ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHandle<Entity> sourceEntity)
+{
+    if (ApiHandle<MeshComponent> meshComp = sourceEntity->FindComponentOfType<MeshComponent>())
+    {
+        ApiHandle<Entity> newEntity = *manager->CreateEntity();
+        ApiHandle<MeshComponent> newMeshComp = manager->CreateComponent(ObjectType::MeshComponent, newEntity)->as<RemoteRendering::MeshComponent>();
+        newMeshComp->SetMesh(meshComp->GetMesh()); // share the mesh
+        return newEntity;
+    }
+    return nullptr;
+}
+```
+
 ## <a name="api-documentation"></a>API-dokumentáció
 
 * [C# háló osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
@@ -45,6 +78,7 @@ Az `MeshComponent` osztály egy rácsvonal-erőforrás példányának elhelyezé
 * [C++ háló osztály](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
 * [C++ MeshComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 
 * [Anyagok](materials.md)

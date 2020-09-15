@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203214"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562876"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -32,6 +32,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 - [Azure Active Directory](active-directory-technical-profile.md) – támogatást nyújt a Azure Active Directory B2C felhasználói felügyelethez.
 - [Azure multi-Factor Authentication](multi-factor-auth-technical-profile.md) – támogatást nyújt a telefonszámoknak az Azure multi-Factor Authentication (MFA) használatával történő ellenőrzéséhez. 
 - [Jogcím-átalakítás](claims-transformation-technical-profile.md) – hívja meg a kimeneti jogcímek átalakítását a jogcímek értékeinek módosításához, a jogcímek érvényesítéséhez, illetve a kimeneti jogcímek alapértelmezett értékének megadásához.
+- [Azonosító jogkivonat-emlékeztető](id-token-hint.md) – ellenőrzi a `id_token_hint` JWT-jogkivonat aláírását, a kiállító nevét és a jogkivonat célközönségét, és Kinyeri a jogcímet a bejövő jogkivonatból.
 - [JWT jogkivonat kiállítója](jwt-issuer-technical-profile.md) – a függő entitás alkalmazásának visszaadott JWT-tokent bocsát ki.
 - [OAuth1](oauth1-technical-profile.md) – összevonás bármely OAuth 1,0 protokoll-identitás-szolgáltatóval.
 - [OAuth2](oauth2-technical-profile.md) – összevonás bármely OAuth 2,0 protokoll-identitás-szolgáltatóval.
@@ -103,7 +104,7 @@ Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil ta
 </TechnicalProfile>
 ```
 
-Mind a **HRE-UserReadUsingAlternativeSecurityId** , mind a **HRE-UserReadUsingAlternativeSecurityId** nem adja meg a szükséges **protokoll** elemet, mert az a **HRE-Common** Technical profilban van megadva.
+Mind a **HRE-UserReadUsingAlternativeSecurityId** , mind a  **HRE-UserReadUsingAlternativeSecurityId** nem adja meg a szükséges **protokoll** elemet, mert az a **HRE-Common** Technical profilban van megadva.
 
 ```xml
 <TechnicalProfile Id="AAD-Common">

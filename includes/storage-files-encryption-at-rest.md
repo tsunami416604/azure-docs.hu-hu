@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed061234da27716bfcdaf1cc065568908108f90a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77597815"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563442"
 ---
-A Azure Files tárolt összes adatok titkosítva maradnak az Azure Storage Service encryption (SSE) használatával. A Storage szolgáltatás titkosítása a Windows BitLockerhez hasonlóan működik: az adattitkosítás a fájlrendszer szintje alatt történik. Mivel az adattitkosítás az Azure-fájlmegosztás fájlrendszere alatt történik, mivel a lemezre van kódolva, nem szükséges hozzáférni az ügyfélen alapuló kulcshoz az Azure-fájlmegosztás olvasásához vagy írásához.
+A Azure Files tárolt összes adatok titkosítva maradnak az Azure Storage Service encryption (SSE) használatával. A Storage szolgáltatás titkosítása a Windows BitLockerhez hasonlóan működik: az adattitkosítás a fájlrendszer szintje alatt történik. Mivel az adattitkosítás az Azure-fájlmegosztás fájlrendszere alatt történik, mivel a lemezre van kódolva, nem szükséges hozzáférni az ügyfélen alapuló kulcshoz az Azure-fájlmegosztás olvasásához vagy írásához. A REST titkosítás az SMB-és NFS-protokollokra is érvényes.
 
 Alapértelmezés szerint a Azure Filesban tárolt adatforgalom Microsoft által felügyelt kulcsokkal van titkosítva. A Microsoft által felügyelt kulcsokkal a Microsoft a kulcsokat az adat titkosítására és visszafejtésére, valamint az azok rendszeres elforgatására felelős. Azt is megteheti, hogy felügyeli a saját kulcsait, így szabályozhatja a rotációs folyamatot. Ha úgy dönt, hogy az ügyfél által felügyelt kulcsokkal titkosítja a fájlmegosztást, Azure Files jogosult a kulcsok elérésére az ügyfelektől érkező olvasási és írási kérések teljesítéséhez. Az ügyfél által felügyelt kulcsokkal bármikor visszavonhatja ezt az engedélyt, de ez azt jelenti, hogy az Azure-fájlmegosztás többé nem lesz elérhető az SMB-n vagy a legtöbbet a kiosztott API-n keresztül.
 

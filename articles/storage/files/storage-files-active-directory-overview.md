@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447251"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561823"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -78,6 +78,7 @@ Az alábbi táblázat összefoglalja az Azure AD DS és a helyszíni AD DS támo
 - Az Azure AD DS és a helyszíni AD DS hitelesítés nem támogatja a számítógép-fiókok hitelesítését. Ehelyett érdemes lehet szolgáltatás-bejelentkezési fiókot használni.
 - Sem az Azure AD DS hitelesítés, sem a helyszíni AD DS hitelesítés nem támogatott az Azure AD-hez csatlakoztatott eszközökön vagy az Azure AD-ban regisztrált eszközökön.
 - Az Azure-fájlmegosztás csak az alábbi tartományi szolgáltatások egyikén támogatja az identitás alapú hitelesítést: [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) vagy helyszíni [Active Directory tartományi szolgáltatások (AD DS)](#ad-ds).
+- A hálózati fájlrendszer (NFS) nem támogatja az olyan identitás-alapú hitelesítési módszert, amely előzetes verzióban érhető el.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Az identitás-alapú hitelesítés előnyei
 A Azure Files identitás-alapú hitelesítése számos előnyt kínál a megosztott kulcsos hitelesítés használata esetén:

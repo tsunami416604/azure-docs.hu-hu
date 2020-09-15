@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1a7ab90cccd78c3b005487938432a0f955d50738
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380862"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561431"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -40,7 +40,7 @@ Az eszköz-szimulátor **Node.js**10.0. x vagy újabb verzión alapul. [*A fejle
 
 Az alábbi ábra a megoldás architektúráját mutatja be az Azure Digital Twins és a Device kiépítési szolgáltatás használatával. Az eszköz kiépítése és a kivonási folyamat is megjelenik.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a kiosztás címkével ellátott Azure-függvény használatával. A manuális eszköz törlése műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a "kiosztás" címkével ellátott Azure-függvény használatával. A manuális "eszköz törlése" műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
 
 Ez a cikk két szakaszra oszlik:
 * [*Eszköz automatikus kiépítése az eszköz kiépítési szolgáltatásával*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ Az architektúra egyes lépéseinek mélyebb magyarázatához tekintse meg az eg
 
 Ebben a szakaszban az eszköz kiépítési szolgáltatását az Azure digitális Twins-hoz csatlakoztatja, hogy automatikusan kiépítse az eszközöket az alábbi elérési úton. Ez a [korábban](#solution-architecture)bemutatott teljes architektúra kivonata.
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Flow kiépítése – a megoldás architektúra-diagramjának kivonata, amely a folyamat egyes részeit címkézi. Az adatforgalom egy termosztátos eszköz és a DPS (1 for Device > DPS és 5 a DPS > eszköz esetében) között zajlik. Az adatok a DPS-ből a IoT Hub (4) és az Azure digitális Twins (3) rendszerbe is áramlanak a kiosztás (2) címkével ellátott Azure-függvény használatával.":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Flow kiépítése – a megoldás architektúra-diagramjának kivonata, amely a folyamat egyes részeit címkézi. Az adatforgalom egy termosztátos eszköz és a DPS (1 for Device > DPS és 5 a DPS > eszköz esetében) között zajlik. Az adatok a DPS-ből a IoT Hub (4) és az Azure digitális Twins (3) rendszerbe is áramlanak a "kiosztás" (2) címkével ellátott Azure-függvény használatával.":::
 
 Itt látható a folyamat folyamatábrája:
 1. Az eszköz kapcsolatba lép a DPS-végponttal, és azonosítja az azonosító adatokat, hogy igazolja az identitását.
@@ -71,7 +71,7 @@ Hozzon létre egy eszköz-kiépítési szolgáltatási példányt, amely a IoT-e
 
 A következő Azure CLI-parancs létrehoz egy eszköz-kiépítési szolgáltatást. Meg kell adnia egy nevet, egy erőforráscsoportot és egy régiót. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-```azurecli-interactive
+```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ A következő lépésben környezeti változókat kell beállítania a Function 
 
 Adja hozzá a beállítást az alábbi Azure CLI-paranccsal:
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ Győződjön meg arról, hogy az engedélyek és a felügyelt identitás szerepk
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ Látnia kell az eszközt, amely regisztrálva van, és csatlakoztatva van IoT Hu
 
 A cikkben beállított folyamat eredményeképpen az eszköz automatikusan regisztrálva lesz az Azure digitális Twins-ban. A következő [Azure digitális Twins CLI](how-to-use-cli.md) -paranccsal megkeresheti az eszköz két részét a létrehozott Azure digitális Twins-példányban.
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -304,7 +304,7 @@ Meg kell jelennie az Azure Digital Twins-példányban található eszköz két r
 
 Ebben a szakaszban IoT Hub életciklus-eseményeket csatlakoztat az Azure digitális Twins-hoz, hogy az alábbi elérési úton automatikusan kivonja az eszközöket. Ez a [korábban](#solution-architecture)bemutatott teljes architektúra kivonata.
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Az eszköz kivonása – a megoldás architektúra diagramjának kivonata, amely a folyamat egyes részeit címkézi. A termosztátos eszköz a diagramon az Azure-szolgáltatásokhoz való csatlakozás nélkül jelenik meg. A manuális eszköz törlése műveletből származó adatok IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure digitális Twins (3) használatával áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Az eszköz kivonása – a megoldás architektúra diagramjának kivonata, amely a folyamat egyes részeit címkézi. A termosztátos eszköz a diagramon az Azure-szolgáltatásokhoz való csatlakozás nélkül jelenik meg. A manuális "eszköz törlése" műveletből származó adatok IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure digitális Twins (3) használatával áramlanak.":::
 
 Itt látható a folyamat folyamatábrája:
 1. Egy külső vagy manuális folyamat elindít egy eszköz törlését IoT Hubban.
@@ -449,13 +449,13 @@ A következő lépésben környezeti változókat kell beállítania a Function 
 
 Adja hozzá a beállítást az Azure CLI-paranccsal. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 Ezután konfigurálnia kell a Function környezeti változót az újonnan létrehozott Event hubhoz való csatlakozáshoz.
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ Az eszköz automatikusan el lesz távolítva az Azure digitális Twins-ból.
 
 A következő [Azure digitális Twins CLI](how-to-use-cli.md) -paranccsal ellenőrizheti, hogy az eszköz két példánya az Azure Digital Twins-példánnyal lett-e törölve.
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 <!-- 
@@ -514,7 +514,7 @@ az ad app delete --id <your-application-ID>
 
 Ezután törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az eszközökhöz létrehozott digitális Twins-ket az Azure Digital Twins szolgáltatásban tárolja a rendszer, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. Ha többet szeretne megtudni erről a fogalomról, olvassa el a következőt:
 

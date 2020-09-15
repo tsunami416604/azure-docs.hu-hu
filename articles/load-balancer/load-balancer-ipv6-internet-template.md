@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803735"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562519"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó megoldás üzembe helyezése IPv6-sablonnal sablon használatával
 
@@ -38,7 +38,7 @@ Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A t
 
 A következő ábra azt szemlélteti, hogy a cikkben ismertetett példa sablonnal milyen terheléselosztási megoldás van üzembe helyezve.
 
-![Terheléselosztói forgatókönyv](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![Ábrán látható példa az ebben a cikkben használt forgatókönyvre, beleértve az interneten keresztül Azure Load Balancer csatlakoztatott munkaállomás-ügyfelet, amely két virtuális géphez csatlakozik.](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 Ebben a forgatókönyvben a következő Azure-erőforrásokat fogja létrehozni:
 
@@ -55,43 +55,43 @@ Ez a cikk az [Azure gyorsindítási sablonok](https://azure.microsoft.com/docume
 1. Nyissa meg a Azure Portalt, és jelentkezzen be egy olyan fiókkal, amely jogosult virtuális gépek és hálózati erőforrások létrehozására egy Azure-előfizetésen belül. Emellett, ha nem használ meglévő erőforrásokat, a fióknak engedéllyel kell rendelkeznie az erőforráscsoport és a Storage-fiók létrehozásához.
 2. Kattintson az "+ új" gombra a menüből, majd írja be a "sablon" kifejezést a keresőmezőbe. A keresési eredmények közül válassza a "Template deployment" lehetőséget.
 
-    ![LB-IPv6-Portal-2. lépés](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![Képernyőfelvétel: a Azure Portal új és Template deployment kiválasztva.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Az összes panelen kattintson a "Template deployment" elemre.
 
-    ![LB-IPv6-Portal-3. lépés](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![A képernyőfelvételen a piactéren Template deployment látható.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Kattintson a Létrehozás gombra.
 
-    ![LB-IPv6-Portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![A képernyőfelvételen a piactér Template deployment leírását láthatja.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Kattintson a "sablon szerkesztése" elemre. Törölje a meglévő tartalmakat, és másolja/illessze be a sablonfájl teljes tartalmát (a kezdő és a befejező {} érték belefoglalásához), majd kattintson a Save (Mentés) gombra.
 
     > [!NOTE]
     > Ha a Microsoft Internet Explorert használja, a beillesztéskor egy párbeszédpanel jelenik meg, amely arra kéri, hogy engedélyezze a hozzáférést a Windows vágólaphoz. Kattintson a hozzáférés engedélyezése lehetőségre.
 
-    ![LB-IPv6-Portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![A képernyőképen egy egyéni központi telepítés Firest lépése látható, amely a sablon szerkesztése.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Kattintson a paraméterek szerkesztése elemre. A parameters (paraméterek) panelen adja meg az értékeket a sablon paramétereinek szakaszban, majd kattintson a Save (Mentés) gombra a paraméterek panel bezárásához. Az egyéni üzembe helyezés panelen válassza ki az előfizetést, egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Ha létrehoz egy erőforráscsoportot, válassza ki az erőforráscsoport helyét. Ezután kattintson a **jogi feltételek**elemre, majd a jogi feltételek **megvásárlása** elemre. Az Azure megkezdi az erőforrások üzembe helyezését. Az összes erőforrás üzembe helyezése több percet vesz igénybe.
 
-    ![LB-IPv6-Portal-Step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![Képernyőfelvétel: az egyéni üzembe helyezés lépései, a sablon paramétereinek megadásával kezdődően.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     A paraméterekkel kapcsolatos további információkért tekintse meg a cikk későbbi, a [sablon paramétereinek és változóinak](#template-parameters-and-variables) című szakaszát.
 
 7. A sablon által létrehozott erőforrások megtekintéséhez kattintson a Tallózás gombra, görgessen le a listára, amíg meg nem jelenik az "erőforráscsoportok", majd kattintson rá.
 
-    ![LB-IPv6-Portal-Step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![A képernyőképen a kiválasztott tallózási és erőforráscsoportok Azure Portal látható.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Az erőforráscsoportok panelen kattintson a 6. lépésben megadott erőforráscsoport nevére. Ekkor megjelenik az összes telepített erőforrás listája. Ha minden rendben volt, azt az "utolsó üzembe helyezés" szakasz "sikeres" értékének kell megjelennie. Ha nem, győződjön meg arról, hogy a használt fiók rendelkezik a szükséges erőforrások létrehozásához szükséges engedélyekkel.
 
-    ![LB-IPv6-Portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![A képernyőképen az erőforráscsoport utolsó üzemelő példányának állapota látható, ebben a példában a sikeres.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Ha a 6. lépés befejezése után azonnal böngészhet az erőforráscsoportok között, a "legutóbbi üzembe helyezés" a "telepítés" állapotot jeleníti meg, miközben az erőforrások üzembe helyezése történik.
 
 9. Kattintson a "myIPv6PublicIP" elemre az erőforrások listájában. Láthatja, hogy az IP-cím alatt IPv6-címmel rendelkezik, és a DNS-neve a 6. lépésben a dnsNameforIPv6LbIP paraméterhez megadott érték. Ez az erőforrás a nyilvános IPv6-cím és az internetes ügyfelek számára elérhető állomásnév.
 
-    ![LB-IPv6-Portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![A képernyőképen az IPv6 nyilvános címe látható.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 

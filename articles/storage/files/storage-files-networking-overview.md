@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464810"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563335"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files hálózati megfontolások 
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
 
-- A megosztás elérése közvetlenül az SMB-vagy a kiosztott protokollon keresztül. Ez a hozzáférési minta elsősorban akkor alkalmazható, ha a lehető legtöbb helyszíni kiszolgálót el szeretné távolítani.
+- A megosztás közvetlenül a Server Message Block (SMB), a Network File System (NFS) (előzetes verzió) vagy a FileR protokoll használatával érhető el. Ez a hozzáférési minta elsősorban akkor alkalmazható, ha a lehető legtöbb helyszíni kiszolgálót el szeretné távolítani.
 - Az Azure-fájlmegosztás gyorsítótárának létrehozása egy helyszíni kiszolgálón (vagy egy Azure-beli virtuális gépen) Azure File Sync használatával, valamint a fájlmegosztás adatainak elérése a helyszíni kiszolgálóról az Ön által választott protokollal (SMB, NFS, FTPS stb.) a használati esethez. Ez a hozzáférési minta hasznos, mivel az a legjobbat ötvözi a helyszíni teljesítmény és a Felhőbeli skálázás, valamint a kiszolgáló nélküli (például Azure Backup) szolgáltatások számára.
 
 Ez a cikk azt ismerteti, hogyan kell konfigurálni a hálózatkezelést, ha a használati eset a Azure File Sync használata helyett közvetlenül az Azure-fájlmegosztás elérését kéri. A Azure File Sync központi telepítés hálózatkezelési szempontjaival kapcsolatos további információkért lásd: [Azure file Sync hálózatkezelési megfontolások](storage-sync-files-networking-overview.md).
@@ -29,17 +29,17 @@ Javasoljuk, hogy a fogalmi útmutató elolvasása előtt olvassa el a [Azure Fil
 ## <a name="accessing-your-azure-file-shares"></a>Az Azure-fájlmegosztás elérése
 Amikor egy Azure-fájlmegosztást telepít egy Storage-fiókon belül, a fájlmegosztás azonnal elérhető lesz a Storage-fiók nyilvános végpontján keresztül. Ez azt jelenti, hogy a hitelesített kérések, például a felhasználó bejelentkezési identitása által engedélyezett kérések, biztonságosan származhatnak az Azure-on belül vagy kívül is. 
 
-Számos felhasználói környezetben a helyszíni munkaállomás Azure-fájlmegosztás kezdeti csatlakoztatása sikertelen lesz, noha az Azure-beli virtuális gépekről való csatlakoztatások sikeresek lesznek. Ennek az az oka, hogy számos szervezet és internetszolgáltató (ISP) blokkolja az SMB által a kommunikációhoz használt portot, a 445-es portot. Ez a gyakorlat az SMB protokoll örökölt és elavult verzióira vonatkozó biztonsági útmutatásból származik. Bár az SMB 3,0 egy internet-biztonságos protokoll, az SMB régebbi verziói, különösen az SMB 1,0. Az Azure-fájlmegosztás csak az SMB 3,0-n keresztül érhető el, és a legbiztonságosabb protokoll (amely szintén egy internetes biztonságos protokoll) a nyilvános végponton keresztül.
+Számos felhasználói környezetben a helyszíni munkaállomás Azure-fájlmegosztás kezdeti csatlakoztatása sikertelen lesz, noha az Azure-beli virtuális gépekről való csatlakoztatások sikeresek lesznek. Ennek az az oka, hogy számos szervezet és internetszolgáltató (ISP) blokkolja az SMB által a kommunikációhoz használt portot, a 445-es portot. Az NFS-megosztások nem rendelkeznek ezzel a hibával. Ez a gyakorlat az SMB protokoll örökölt és elavult verzióira vonatkozó biztonsági útmutatásból származik. Bár az SMB 3,0 egy internet-biztonságos protokoll, az SMB régebbi verziói, különösen az SMB 1,0. Az Azure-fájlmegosztás csak az SMB 3,0-n keresztül érhető el, és a legbiztonságosabb protokoll (amely szintén egy internetes biztonságos protokoll) a nyilvános végponton keresztül.
 
-Mivel az Azure-fájlmegosztás a helyszínen való elérésének legegyszerűbb módja a helyszíni hálózat megnyitása a 445-es portra, a Microsoft a következő lépéseket javasolja az SMB 1,0 eltávolításához a környezetből:
+Mivel az Azure SMB-fájlmegosztás a helyszínen való elérésének legegyszerűbb módja a helyszíni hálózat megnyitása a 445-es portra, a Microsoft a következő lépéseket javasolja az SMB 1,0 eltávolításához a környezetből:
 
 1. Győződjön meg arról, hogy az SMB 1,0 el lett távolítva vagy le van tiltva a szervezet eszközein. A Windows és a Windows Server összes jelenleg támogatott verziója támogatja az SMB 1,0 eltávolítását vagy letiltását, és a Windows 10-es verziótól kezdődően a 1709-es verziójától kezdve az SMB 1,0 nincs telepítve a Windows rendszerben alapértelmezés szerint. Ha többet szeretne megtudni az SMB 1,0 letiltásáról, tekintse meg az operációs rendszerre vonatkozó oldalakat:
     - [A Windows/Windows Server védelme](storage-how-to-use-files-windows.md#securing-windowswindows-server)
     - [A Linux biztonságossá tétele](storage-how-to-use-files-linux.md#securing-linux)
-2. Győződjön meg arról, hogy a szervezeten belül egyetlen termék sem igényel SMB 1,0-t, és távolítsa el azokat. Egy SMB1- [adatközpontot](https://aka.ms/stillneedssmb1)tartunk fenn, amely tartalmazza az összes, a Microsoft számára ismert, az SMB 1,0-t megkövetelő, első és harmadik féltől származó terméket. 
-3. Választható Külső gyártótól származó tűzfalat használhat a szervezete helyszíni hálózatán, hogy megakadályozza az SMB 1,0-forgalomnak a szervezeti határának elhagyását.
+1. Győződjön meg arról, hogy a szervezeten belül egyetlen termék sem igényel SMB 1,0-t, és távolítsa el azokat. Egy SMB1- [adatközpontot](https://aka.ms/stillneedssmb1)tartunk fenn, amely tartalmazza az összes, a Microsoft számára ismert, az SMB 1,0-t megkövetelő, első és harmadik féltől származó terméket. 
+1. Választható Külső gyártótól származó tűzfalat használhat a szervezete helyszíni hálózatán, hogy megakadályozza az SMB 1,0-forgalomnak a szervezeti határának elhagyását.
 
-Ha a szervezete megköveteli a 445-as port használatát házirend vagy szabályozás miatt, vagy ha a szervezete az Azure-ba irányuló adatforgalmat igényli a determinisztikus elérési útjának követéséhez, használhatja az Azure VPN Gateway vagy a ExpressRoute-t az Azure-fájlmegosztás forgalmának bújtatásához.
+Ha a szervezete megköveteli a 445-as port használatát házirend vagy szabályozás miatt, vagy ha a szervezete az Azure-ba irányuló adatforgalmat igényli a determinisztikus elérési útjának követéséhez, használhatja az Azure VPN Gateway vagy a ExpressRoute-t az Azure-fájlmegosztás forgalmának bújtatásához. Az NFS-megosztások nem igénylik ezt, mert nincs szükségük a 445-es portra.
 
 > [!Important]  
 > Még ha úgy dönt, hogy alternatív módszert használ az Azure-fájlmegosztás eléréséhez, a Microsoft továbbra is javasolja az SMB 1,0 eltávolítását a környezetből.
@@ -47,7 +47,7 @@ Ha a szervezete megköveteli a 445-as port használatát házirend vagy szabály
 ### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>Virtuális magánhálózat vagy ExpressRoute feletti forgalom bújtatása
 Amikor hálózati alagutat hoz létre a helyszíni hálózat és az Azure között, a helyszíni hálózatot egy vagy több Azure-beli virtuális hálózattal társítja. Egy [virtuális hálózat](../../virtual-network/virtual-networks-overview.md)vagy VNet hasonló egy hagyományos hálózathoz, amelyet a helyszínen fog üzemeltetni. Az Azure Storage-fiókokhoz vagy az Azure-beli virtuális gépekhez hasonlóan a VNet egy erőforráscsoport-ban üzembe helyezett Azure-erőforrás. 
 
-Azure Files a következő mechanizmusokat támogatja a helyszíni munkaállomások és a kiszolgálók és az Azure közötti adatforgalom bújtatásához:
+A Azure Files a következő mechanizmusokat támogatja a helyszíni munkaállomások és-kiszolgálók, valamint az Azure SMB/NFS-fájlmegosztás közötti forgalom bújtatásához:
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): a VPN Gateway egy adott típusú virtuális hálózati átjáró, amely egy Azure-beli virtuális hálózat és egy másik hely (például a helyszíni) közötti titkosított forgalom küldésére szolgál az interneten keresztül. Az Azure VPN Gateway egy olyan Azure-erőforrás, amely egy, a Storage-fiók vagy más Azure-erőforrás melletti erőforráscsoporthoz is telepíthető. A VPN-átjárók két különböző típusú kapcsolatot tesznek elérhetővé:
     - [Pont – hely (P2S) VPN](../../vpn-gateway/point-to-site-about.md) Gateway-kapcsolatok, amelyek az Azure és az egyes ügyfelek közötti VPN-kapcsolatok. Ez a megoldás elsősorban olyan eszközök esetében hasznos, amelyek nem részei a szervezete helyszíni hálózatának, például a távmunkát, akik az Azure-fájlmegosztás otthonról, kávézóból vagy hotelből való csatlakoztatására szeretnének. Ha a P2S VPN-kapcsolatot Azure Files használatával szeretné használni, konfigurálnia kell egy P2S VPN-kapcsolatot minden olyan ügyfél számára, amelyhez csatlakozni szeretne. A P2S VPN-kapcsolat központi telepítésének egyszerűsítése érdekében tekintse meg a [pont – hely (P2S) VPN konfigurálása a Azure Files Windows](storage-files-configure-p2s-vpn-windows.md) rendszeren, és [konfigurálja a pont – hely (P2S) VPN-t a Linux rendszeren a Azure Files használatával való használatra](storage-files-configure-p2s-vpn-linux.md).
@@ -139,15 +139,22 @@ A Storage-fiókokhoz való hozzáférés korlátozásának két módja van:
 - Hozzon létre egy vagy több privát végpontot a Storage-fiókhoz, és korlátozza a nyilvános végponthoz való hozzáférést. Ez biztosítja, hogy csak a kívánt virtuális hálózatokból származó forgalom férhessenek hozzá az Azure-fájlmegosztás számára a Storage-fiókon belül.
 - Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra. Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-cím használatával fér hozzá a Storage-fiókhoz.
 
+> [!NOTE]
+> Az NFS-megosztások a nyilvános IP-címen keresztül nem férhetnek hozzá a Storage-fiók nyilvános végpontja számára, a virtuális hálózatok használatával csak a Storage-fiók nyilvános végpontját érhetik el. Az NFS-megosztások privát végpontok használatával is hozzáférhetnek a Storage-fiókhoz.
+
 A Storage-fiók tűzfala konfigurálásával kapcsolatos további információkért lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="encryption-in-transit"></a>Titkosítás az átvitel során
+
+> [!IMPORTANT]
+> Ez a szakasz az SMB-megosztások továbbítási adatainak titkosítását ismerteti. Az NFS-megosztásokkal történő átvitel titkosításával kapcsolatos részletekért lásd: [Biztonság](storage-files-compare-protocols.md#security).
+
 Alapértelmezés szerint az összes Azure Storage-fióknál engedélyezve van az átvitel titkosítása. Ez azt jelenti, hogy amikor az SMB-n keresztül csatlakoztat egy fájlmegosztást, vagy a kiosztott protokollon keresztül éri el (például a Azure Portal, a PowerShell/CLI vagy az Azure SDK-k használatával), Azure Files csak akkor engedélyezi a kapcsolatot, ha az SMB 3.0 + titkosítással vagy HTTPS-vel van ellátva. Azok az ügyfelek, amelyek nem támogatják az SMB 3,0-et vagy az SMB 3,0-et támogató ügyfeleket, de az SMB-titkosítást nem, nem fogják tudni csatlakoztatni az Azure-fájlmegosztást, ha engedélyezve van az átvitel titkosítása. Ha további információt szeretne arról, hogy mely operációs rendszerek támogatják az SMB 3,0 titkosítást, tekintse meg a [Windows](storage-how-to-use-files-windows.md), a [MacOS](storage-how-to-use-files-mac.md)és a [Linux](storage-how-to-use-files-linux.md)részletes dokumentációját. A PowerShell, CLI és SDK összes jelenlegi verziója támogatja a HTTPS-t.  
 
 Egy Azure Storage-fiók esetében letilthatja a titkosítást az átvitel során. Ha a titkosítás le van tiltva, akkor a Azure Files az SMB 2,1, az SMB 3,0 titkosítás nélkül, és nem titkosított, nem titkosított API-hívásokat tesz lehetővé HTTP-n keresztül. Az átvitel közbeni titkosítás letiltásának elsődleges oka az olyan örökölt alkalmazások támogatása, amelyeknek régebbi operációs rendszeren kell futniuk, például Windows Server 2008 R2 vagy régebbi Linux-disztribúció. Azure Files csak az Azure-fájlmegosztás azonos Azure-régiójában lévő SMB 2,1-kapcsolatokat engedélyezi. Az Azure-fájlmegosztás (például a helyszíni vagy egy másik Azure-régió) Azure-régióján kívüli SMB 2,1-ügyfél nem fog tudni hozzáférni a fájlmegosztás eléréséhez.
 
 További információ az átvitel közbeni titkosításról: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Az Azure Files áttekintése](storage-files-introduction.md)
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+- [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

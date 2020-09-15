@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563569"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563148"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Mik a Azure Firewall Manager architektúrájának lehetőségei?
 
@@ -44,8 +44,9 @@ A következő táblázat összehasonlítja ezt a két architektúrát, és segí
 |**Több biztonsági szolgáltató támogatása**|A manuálisan konfigurált kényszerített bújtatás külső tűzfalakhoz való használata támogatott|Automatikus támogatás két biztonsági szolgáltatóhoz: Azure Firewall a privát forgalom szűréséhez és külső fél számára internetes szűréshez|
 |**Web Application Firewall az Application Gatewayen** |Virtual Network támogatott|Jelenleg támogatott a küllős hálózaton|
 |**Hálózati virtuális berendezés**|Virtual Network támogatott|Jelenleg támogatott a küllős hálózaton|
+|**Standard szintű támogatás Azure DDoS Protection**|Igen|Nem|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure Firewall Manager üzembe helyezésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.

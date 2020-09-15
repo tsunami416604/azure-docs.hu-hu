@@ -8,17 +8,17 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9c569e65546853c4e9c8c460d29041e4bb829c09
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034583"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564202"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure CLI-vel
-Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
+Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztás támogatja az iparági szabványnak megfelelő SMB-protokollt, a hálózati fájlrendszer (NFS) protokollját (előzetes verzió), és lehetővé teszi a fájlmegosztás használatát több gépen, alkalmazásban és példányban. 
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -83,6 +83,7 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $shareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 ```
 
@@ -174,6 +175,7 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $otherShareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 
 az storage directory create \
@@ -203,7 +205,7 @@ az storage file list \
     --output table
 ```
 
-Habár a `az storage file copy start` parancs kényelmes az Azure-fájlmegosztás, a Migrálás és a nagyobb adatátvitelek között, a `rsync` MacOS és a Linux és `robocopy` a Windows rendszereken is ajánlott. `rsync`és az `robocopy` SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
+Habár a `az storage file copy start` parancs kényelmes az Azure-fájlmegosztás, a Migrálás és a nagyobb adatátvitelek között, a `rsync` MacOS és a Linux és `robocopy` a Windows rendszereken is ajánlott. `rsync` és az `robocopy` SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
 
 ## <a name="create-and-manage-share-snapshots"></a>Megosztási pillanatképek létrehozása és felügyelete
 Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A megosztási pillanatképek hasonlók néhány, esetleg már ismert operációsrendszer-technológiához:
@@ -287,7 +289,7 @@ az storage share delete \
     --output none
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha elkészült, a [`az group delete`](/cli/azure/group) parancs használatával távolíthatja el az erőforráscsoportot és az összes kapcsolódó erőforrást: 
 
 ```azurecli-interactive 
@@ -323,4 +325,4 @@ Alternatív megoldásként egyenként is eltávolíthatja az erőforrásokat.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Mi az Azure Files?](storage-files-introduction.md)
+> [Mi az az Azure Files?](storage-files-introduction.md)

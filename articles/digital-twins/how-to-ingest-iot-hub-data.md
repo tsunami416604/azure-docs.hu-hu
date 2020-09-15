@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d720d77773e506a13f176723ab4583613f1e625
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e6c200f0bec90fb73122e50885f2e6ad7420aeb
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291755"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564389"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -64,7 +64,7 @@ A modell így néz ki:
 
 A **modell az ikrek-példányba való feltöltéséhez**nyissa meg az Azure CLI-t, és futtassa a következő parancsot:
 
-```azurecli-interactive
+```azurecli
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
@@ -72,7 +72,7 @@ az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;
 
 Ezután **létre kell hoznia egy IKeret a modell használatával**. A következő parancs használatával hozzon létre egy dupla értéket, és állítsa be a 0,0 kezdeti hőmérsékleti értékként.
 
-```azurecli-interactive
+```azurecli
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
@@ -221,7 +221,7 @@ A fenti eszköz-szimulátor futtatásakor a rendszer megváltoztatja a digitáli
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
-```azurecli-interactive
+```azurecli
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
 ```
 
@@ -251,7 +251,7 @@ A kimenetnek az alábbihoz hasonló hőmérsékleti értéket kell tartalmaznia:
 
 Az érték változásának megtekintéséhez futtassa többször a fenti lekérdezési parancsot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins szolgáltatással való bejövő és kimenő adatforgalomról:
 * [*Fogalmak: integráció más szolgáltatásokkal*](concepts-integration.md)

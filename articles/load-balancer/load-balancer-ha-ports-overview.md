@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639851"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564049"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
@@ -97,7 +97,7 @@ Ha a forgatókönyve megköveteli, hogy egynél több portot kell konfigurálnia
 - A flow-szimmetria (elsősorban a NVA-forgatókönyvek esetében) a háttér-példány és egyetlen hálózati adapter (és egy IP-konfiguráció) esetében csak akkor támogatott, ha a fenti ábrán látható módon használja, és a HA portok terheléselosztási szabályait használja. Semmilyen más esetben nincs megadva. Ez azt jelenti, hogy két vagy több Load Balancer erőforrás és a hozzájuk tartozó szabályok független döntéseket hoznak, és soha nem koordinálják őket. Tekintse meg a [hálózati virtuális berendezések](#nva)leírását és ábráját. Ha több hálózati adaptert használ, vagy a NVA egy nyilvános és belső Load Balancer között használja, a flow-szimmetria nem érhető el.  Ezt megteheti, ha a forrás NAT'ing a bejövő forgalmat a készülék IP-címére, hogy a válaszok ugyanarra a NVA érkezzenek.  Javasoljuk azonban, hogy egyetlen hálózati adaptert használjon, és használja a fenti ábrán látható hivatkozási architektúrát.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Megtudhatja, hogyan konfigurálhat ha portokat a ILB a portálon](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), a [powershellen](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), a [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)-n vagy a [sablonokon](load-balancer-get-started-ilb-arm-template.md)keresztül.
+- [Megtudhatja, hogyan konfigurálhat ha portokat a ILB a portálon](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), a [powershellen](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), a [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)-n vagy a [sablonokon](quickstart-load-balancer-standard-internal-template.md)keresztül.
 - [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)

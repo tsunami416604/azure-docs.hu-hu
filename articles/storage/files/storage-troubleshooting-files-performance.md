@@ -7,14 +7,17 @@ ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cffac114cacd05e04e149af96d1678b536db7fec
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782370"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564236"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
+# <a name="troubleshoot-azure-files-performance-issues-smb"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files (SMB)
+
+> [!IMPORTANT]
+> A cikk tartalma csak az SMB-megosztásokra vonatkozik.
 
 Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problémákat sorolja fel. A probléma előfordulásakor lehetséges okokat és megkerülő megoldásokat biztosít.
 
@@ -203,7 +206,37 @@ Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokho
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>Lásd még
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Riasztások létrehozása, ha a prémium fájlmegosztás a szabályozás irányába mutat
+
+1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
+2. A figyelés szakaszban kattintson a **riasztások** , majd az **+ új riasztási szabály**elemre.
+3. Kattintson az **erőforrás szerkesztése**lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész**gombra. Ha például a Storage-fiók neve contoso, válassza ki a contoso/fájl erőforrást.
+4. Feltétel hozzáadásához kattintson a **feltétel kiválasztása** elemre.
+5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **kimenő** forgalom metrikáját.
+
+  > [!NOTE]
+  > 3 külön riasztást kell létrehoznia, amely riasztást kap, ha a bejövő, kimenő vagy tranzakciós érték meghaladja a beállított küszöbértéket. Ennek az az oka, hogy a rendszer csak akkor küld riasztást, ha az összes feltétel teljesül. Tehát ha az összes feltételt egy riasztásban elhelyezi, csak akkor kell riasztást kapnia, ha a bejövő forgalom, a kimenő forgalom és a tranzakciók túllépik a küszöbértéket.
+
+6. Görgessen le. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás**lehetőséget.
+7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
+8. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész**gombra.
+
+  > [!NOTE]
+  > A kimenő, bejövő és tranzakciós mérőszámok percenkénti forgalomban vannak, bár a kimenő forgalom, a bejövő forgalom és a IOPS másodpercenkénti száma. (az Összesítés részletességének ismertetése – > percenként = több zajos, tehát válasszon diff-t) Ezért például ha a kiépített kimenő forgalom 90 MiB/másodperc, és azt szeretné, hogy a küszöbérték a kiépített kimenő forgalom 80%-ában legyen kiválasztva, akkor a következő riasztási paramétereket kell kiválasztania: 75497472 a **küszöbértékhez**, nagyobb vagy egyenlő az **operátorhoz**, és az **összesítési típus**átlaga. Attól függően, hogy milyen zajos a riasztás, kiválaszthatja, hogy mely értékek legyenek kiválasztva az Összesítés részletessége és a kiértékelés gyakorisága alapján. Ha például azt szeretném, hogy a riasztásom megtekintse az óra időtartamára vonatkozó átlagos beérkező adatokat, és szeretném, hogy a riasztási szabályt óránként futtassák, akkor 1 órát választok az **Összesítés részletessége** és 1 óra **alapján a kiértékelés gyakorisága**érdekében.
+
+9. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+11. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
+
+  > [!NOTE]
+  > Ha értesítést szeretne kapni, ha a prémium szintű fájlmegosztás a kiépített bejövő forgalom miatt le van zárva, kövesse ugyanezeket a lépéseket, az 5. lépésben leírtak szerint pedig válassza a **bejövő** forgalom metrikáját.
+
+  > [!NOTE]
+  > Ha értesítést szeretne kapni, ha a prémium fájlmegosztás a kiépített IOPS miatt le van zárva, néhány módosítást kell végeznie. Az 5. lépésben válassza ki a **tranzakciók** metrikáját. Továbbá a 10. lépésnél az **összesítési típus** egyetlen lehetősége a teljes. Ezért a küszöbérték a kiválasztott összesítési részletességtől függ. Ha például azt szeretné, hogy a küszöbérték a kiépített alapszintű IOPS 80%-ában van megadva, és az **Összesítés részletessége**1 órát választotta, a **küszöbérték** az alapszintű IOPS (bájtban) x 0,8 x 3600. A módosítások mellett kövesse a fent felsorolt lépéseket. 
+
+Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
+
+## <a name="see-also"></a>További információ
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)](storage-files-faq.md)

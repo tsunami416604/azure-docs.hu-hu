@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 6dc22086ed97a301e225518465482e9cd7300e11
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563828"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -87,6 +87,7 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
 |A tömeges IP-cím hozzáadása nem sikerül|Ha több nyilvános IP-címet ad hozzá, a biztonságos központ tűzfala sikertelen állapotba kerül.|Kisebb nyilvános IP-cím növekmények hozzáadása. Például adjon hozzá 10-et egyszerre.|
 |Az alkalmazási szabályok nem működnek olyan biztonságos központban, amelyben az egyéni DNS (előzetes verzió) konfigurálva van.|Az egyéni DNS (előzetes verzió) nem működik olyan biztonságos központi telepítések és központi virtuális hálózati telepítések esetén, ahol a kényszerített bújtatás engedélyezve van.|Javítás a vizsgálat alatt.|
+|A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás
 
 ## <a name="next-steps"></a>További lépések
 

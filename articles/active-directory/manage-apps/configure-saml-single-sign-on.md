@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441918"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562604"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés konfigurálása
 
@@ -27,7 +27,7 @@ Az alkalmazások felügyeletének rövid útmutató [sorozatában](view-applicat
 
 Az Azure AD használata az identitás-szolgáltatóként (identitásszolgáltató) és az egyszeri bejelentkezés (SSO) beállítása a használt alkalmazástól függően egyszerű vagy összetett lehet. Néhány alkalmazás csak néhány művelettel állítható be. Másoknak részletes konfigurációra van szükségük. A gyors üzembe helyezéshez járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . Ha a hozzáadott alkalmazás egyszerű, akkor valószínűleg nem kell elolvasnia ezt a cikket. Ha a hozzáadott alkalmazáshoz egyéni konfiguráció szükséges az SAML-alapú egyszeri bejelentkezéshez, akkor ez a cikk Önnek szól.
 
-A gyors üzembe helyezési [sorozatban](view-applications-portal.md)van egy cikk, amely az egyszeri bejelentkezés konfigurálását ismerteti. Itt megismerheti, hogyan érheti el az alkalmazás SAML-konfigurációs lapját. Az SAML-konfiguráció oldal öt szakaszt tartalmaz. Ezeket a szakaszokat részletesen ismertetjük ebben a cikkben.
+A gyors üzembe helyezési [sorozatban](add-application-portal-setup-sso.md)van egy cikk, amely az egyszeri bejelentkezés konfigurálását ismerteti. Itt megismerheti, hogyan érheti el az alkalmazás SAML-konfigurációs lapját. Az SAML-konfiguráció oldal öt szakaszt tartalmaz. Ezeket a szakaszokat részletesen ismertetjük ebben a cikkben.
 
 > [!IMPORTANT] 
 > Vannak olyan helyzetek, amikor az **egyszeri bejelentkezési** lehetőség nem fog megjelenni a navigációban a **vállalati alkalmazásokban**lévő alkalmazásokhoz. 
@@ -42,9 +42,9 @@ A gyors üzembe helyezési [sorozatban](view-applications-portal.md)van egy cikk
 Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is megadhatja az értékeket, vagy feltöltheti a metaadatokat a mezők értékének kinyeréséhez.
 
 > [!TIP]
-> Számos alkalmazás már előre konfigurálva van az Azure AD-vel való együttműködésre. Ezek az alkalmazások az alkalmazások katalógusában jelennek meg, amelyekkel megkereshet egy alkalmazást az Azure AD-bérlőhöz való hozzáadásakor. A gyors üzembe helyezési [sorozat](view-applications-portal.md) végigvezeti a folyamaton. A katalógusban található alkalmazásokhoz részletes, lépésről lépésre, útmutatást kell beállítani. A lépések eléréséhez kattintson az alkalmazás SAML-konfiguráció lapján található hivatkozásra, amelyet a rövid útmutatóban leírtak szerint, vagy a [SaaS app Configuration oktatóanyagokban](../saas-apps/tutorial-list.md)böngészhet az összes alkalmazás-konfigurációs oktatóanyag listájában.
+> Számos alkalmazás már előre konfigurálva van az Azure AD-vel való együttműködésre. Ezek az alkalmazások az alkalmazások katalógusában jelennek meg, amelyekkel megkereshet egy alkalmazást az Azure AD-bérlőhöz való hozzáadásakor. A gyors üzembe helyezési [sorozat](add-application-portal-setup-sso.md) végigvezeti a folyamaton. A katalógusban található alkalmazásokhoz részletes, lépésről lépésre, útmutatást kell beállítani. A lépések eléréséhez kattintson az alkalmazás SAML-konfiguráció lapján található hivatkozásra, amelyet a rövid útmutatóban leírtak szerint, vagy a [SaaS app Configuration oktatóanyagokban](../saas-apps/tutorial-list.md)böngészhet az összes alkalmazás-konfigurációs oktatóanyag listájában.
 
-| Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Description |
+| Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
 |:--|:--|:--|:--|
 | **Azonosító (entitásazonosító)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. Adjon meg egy URL-címet, amely a következő mintát használja: "https:// <subdomain> . contoso.com". *Ez az érték az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként is megkereshető* . |
 | **Válasz URL-címe** | Kötelező | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. A további válasz URL-címek mezővel több válasz URL-címet is megadhat. Előfordulhat például, hogy több altartományhoz is szüksége van további válasz URL-címekre. Vagy tesztelési célból egyszerre több válasz URL-címet (helyi gazdagépet és nyilvános URL-címeket) is megadhat. |
@@ -57,7 +57,7 @@ Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is me
 Amikor egy felhasználó hitelesíti magát az alkalmazásban, az Azure AD egy SAML-jogkivonatot bocsát ki a felhasználótól, amely egyedileg azonosítja azokat. Alapértelmezés szerint ez az információ tartalmazza a felhasználó felhasználónevét, e-mail-címét, utónevét és vezetéknevét. Előfordulhat, hogy testre kell szabnia ezeket a jogcímeket, ha például az alkalmazásnak konkrét jogcím-értékeket vagy a felhasználónévtől eltérő **nevet** kell megadni. 
 
 > [!IMPORTANT]
-> Számos alkalmazás már előre konfigurálva van, és az alkalmazás-katalógusban nem kell aggódnia a felhasználói és csoportos jogcímek beállításával kapcsolatban. A gyors üzembe helyezési [sorozat](view-applications-portal.md) végigvezeti az alkalmazások hozzáadásának és konfigurálásának lépésein.
+> Számos alkalmazás már előre konfigurálva van, és az alkalmazás-katalógusban nem kell aggódnia a felhasználói és csoportos jogcímek beállításával kapcsolatban. A gyors üzembe helyezési [sorozat](add-application-portal.md) végigvezeti az alkalmazások hozzáadásának és konfigurálásának lépésein.
 
 
 Az **egyedi felhasználói azonosító (Name ID)** azonosító értéke kötelező jogcím, és fontos. Az alapértelmezett érték a *User. userPrincipalName*. A felhasználói azonosító egyedi módon azonosítja az alkalmazás egyes felhasználóit. Ha például az e-mail-cím a felhasználónév és az egyedi azonosító is egyben, állítsa be a *user.mail* értéket.
@@ -79,7 +79,7 @@ Ha többet szeretne megtudni az SAML-jogcímek testreszabásáról, tekintse meg
 Az Azure AD egy tanúsítványt használ az alkalmazásnak küldött SAML-tokenek aláírásához. Erre a tanúsítványra van szüksége az Azure AD és az alkalmazás közötti megbízhatósági kapcsolat beállításához. A tanúsítvány formátumával kapcsolatos részletekért tekintse meg az alkalmazás SAML-dokumentációját. További információ: [tanúsítványok kezelése összevont egyszeri bejelentkezéshez](manage-certificates-for-federated-single-sign-on.md) és [speciális tanúsítvány-aláírási beállítások az SAML-jogkivonatban](certificate-signing-options.md).
 
 > [!IMPORTANT]
-> Számos alkalmazás már előre konfigurálva van, és az alkalmazás-katalógusban nem kell belefoglalni a tanúsítványokra. A gyors üzembe helyezési [sorozat](view-applications-portal.md) végigvezeti az alkalmazások hozzáadásának és konfigurálásának lépésein.
+> Számos alkalmazás már előre konfigurálva van, és az alkalmazás-katalógusban nem kell belefoglalni a tanúsítványokra. A gyors üzembe helyezési [sorozat](add-application-portal.md) végigvezeti az alkalmazások hozzáadásának és konfigurálásának lépésein.
 
 Az Azure AD-ből az aktív tanúsítvány Base64 vagy RAW formátumban tölthető le közvetlenül az **SAML-t tartalmazó fő set egyszeri bejelentkezéssel** . Azt is megteheti, hogy az aktív tanúsítványt letölti az alkalmazás metaadatainak XML-fájljának használatával vagy az alkalmazás-összevonás metaadat-URL-címével. Ha szeretné megtekinteni, létrehozni vagy letölteni a tanúsítványokat (aktív vagy inaktív), kövesse az alábbi lépéseket.
 
@@ -128,7 +128,7 @@ Ha hibaüzenet jelenik meg, hajtsa végre a következő lépéseket:
 További információ: [SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban](../azuread-dev/howto-v1-debug-saml-sso-issues.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)

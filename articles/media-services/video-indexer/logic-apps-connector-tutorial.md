@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 6c46195572fc4495b35f5ec44421440975ab9ffc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16a28ee01606fa9067c279183ca6c02b2857bcd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531355"
+ms.locfileid: "90563845"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
@@ -58,7 +58,7 @@ Az első folyamat beállításához meg kell adnia a Video Indexer API-kulcsot �
 
 Ha kapcsolódhat az Azure Storage-hoz és Video Indexer-fiókokhoz, lépjen a "blob hozzáadása vagy módosításakor" triggerre, és válassza ki azt a tárolót, ahová a videofájlokat helyezni fogja. 
 
-![Storage-tároló](./media/logic-apps-connector-tutorial/container.png)
+![Képernyőfelvétel: a blob hozzáadásakor vagy módosításakor megjelenő párbeszédpanel, ahol kijelölhet egy tárolót.](./media/logic-apps-connector-tutorial/container.png)
 
 Ezután nyissa meg az "SAS URI létrehozása elérési út alapján" műveletet, és válassza ki a fájlok listájának elérési útját a dinamikus tartalom beállításai közül.  
 
@@ -120,7 +120,7 @@ Próbálja ki az újonnan létrehozott logikai alkalmazást vagy a Power automat
 
 Ha elkészült ezzel az Oktatóanyaggal, nyugodtan megtarthatja ezt a logikai alkalmazást, vagy automatizálhatja a megoldást, ha szükséges. Ha azonban nem szeretné megtartani ezt a futást, és nem szeretné számlázni, kapcsolja ki mindkét folyamatot, ha a Power automatizálás szolgáltatást használja. Ha Logic Apps használ, tiltsa le mindkét folyamatot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag csak egy Video Indexer összekötőt mutat be. A Video Indexer által biztosított API-hívások Video Indexer összekötőket is használhat. Például: az adatok feltöltése és lekérése, az eredmények lefordítása, a beágyazható widgetek beolvasása és a modellek testreszabása is. Ezen kívül dönthet úgy is, hogy a műveleteket különböző forrásokon, például a fájlok adattárakon vagy az elküldött e-maileken alapuló módon indítja el. Ezután megadhatja, hogy az eredmények frissítése a megfelelő infrastruktúrára vagy alkalmazásra történjen, vagy tetszőleges számú műveleti elemet állítson elő.  
 

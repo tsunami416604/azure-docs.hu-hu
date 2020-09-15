@@ -1,22 +1,25 @@
 ---
-title: Azure Files problémák elhárítása a Windows rendszerben | Microsoft Docs
-description: Hibaelhárítás Azure Files problémák a Windows rendszerben. A Windows-ügyfelekről való csatlakozáskor Azure Files kapcsolódó gyakori problémák és a lehetséges megoldások megtekintése.
+title: Azure Files-problémák hibaelhárítása Windowson
+description: Hibaelhárítás Azure Files problémák a Windows rendszerben. A Windows-ügyfelekről való csatlakozáskor Azure Files kapcsolódó gyakori problémák és a lehetséges megoldások megtekintése. Csak SMB-megosztások esetén
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532392"
+ms.locfileid: "90564253"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
 
 Ez a cikk a Windows-ügyfelekről való csatlakozáskor Microsoft Azure fájlokkal kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tartalmazza. A cikkben található hibaelhárítási lépések mellett a [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)is használható   annak biztosítására, hogy a Windows-ügyfél környezete megfelelő előfeltételekkel rendelkezik. A AzFileDiagnostics automatizálja a jelen cikkben említett legtöbb tünet észlelését, és segít az optimális teljesítmény érdekében a környezet beállításában. Ezeket az információkat a [Azure Files shares-hibakeresőben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) is megtalálhatja, amely segítséget nyújt a Azure Files-megosztások csatlakoztatása/leképezése/csatlakoztatása vagy csatlakoztatása terén.
+
+> [!IMPORTANT]
+> A cikk tartalma csak az SMB-megosztásokra vonatkozik.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>5. hiba az Azure-fájlmegosztás csatlakoztatásakor
@@ -54,7 +57,7 @@ Ellenőrizze, hogy az engedélyek helyesen vannak-e konfigurálva:
 
 - **Active Directory (ad)** lásd: [megosztási szintű engedélyek társítása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
 
-    A megosztási szintű engedélyek hozzárendelései olyan csoportok és felhasználók számára támogatottak, amelyek a Active Directory (AD) szolgáltatásból Azure Active Directory (HRE) Azure AD Connect használatával lettek szinkronizálva.  Győződjön meg arról, hogy a csoportoknak és a megosztott megosztási szintű engedélyekkel rendelkező felhasználók nem támogatják a "csak felhőalapú" csoportokat.
+    A megosztási szintű engedélyek hozzárendelései olyan csoportok és felhasználók számára támogatottak, amelyek a Active Directory (AD) szolgáltatásból Azure Active Directory (Azure AD) Azure AD Connect használatával szinkronizálhatók.  Győződjön meg arról, hogy a csoportoknak és a megosztott megosztási szintű engedélyekkel rendelkező felhasználók nem támogatják a "csak felhőalapú" csoportokat.
 - **Azure Active Directory Domain Services (Azure AD DS)** lásd: [hozzáférési engedélyek kiosztása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>

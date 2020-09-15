@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613891"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561873"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
 
@@ -137,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>Szimuláció
 
 `GraphicsApiType.SimD3D11` a szimulált kötés, és ha be van jelölve, a a `GraphicsBindingSimD3d11` grafikus kötést hozza létre. Ez az interfész szimulálja a fej mozgását, például egy asztali alkalmazásban, és megjelenít egy monoscopic képet.
+
+A szimulációs kötés megvalósításához fontos megérteni a helyi kamera és a távoli keret közötti különbséget a [kamera](../overview/features/camera.md) oldalon leírtak szerint.
+
+Két kamera szükséges:
+
+* **Helyi kamera**: Ez a kamera az aktuális kamera pozícióját jelöli, amelyet az alkalmazás logikája vezérel.
+* **Proxy kamera**: Ez a kamera megegyezik a kiszolgáló által elindított aktuális *távoli kerettel* . Mivel az ügyfél a keretet kérő és a hozzá tartozó megérkezési időt késlelteti, a *távoli keret* mindig egy kicsit a helyi kamera mozgása mögött.
+
+Az alapszintű megközelítés az, hogy a távoli rendszerkép és a helyi tartalom is egy off-screen célra jelenik meg a proxy kamera használatával. A rendszer ezután újratervezi a proxy képét a helyi kamera területére, ami további magyarázatot mutat a [késői fázisok újravetítése](../overview/features/late-stage-reprojection.md)során.
+
 A telepítő egy kicsit nagyobb szerepet játszik, és a következőképpen működik:
 
 #### <a name="create-proxy-render-target"></a>Proxy megjelenítési cél létrehozása
 
-A távoli és a helyi tartalmat egy "proxy" nevű bemásolási szín/mélység megjelenítési célra kell megjeleníteni a függvény által biztosított proxy-kamerás adat használatával `GraphicsBindingSimD3d11.Update` . A proxynak meg kell egyeznie a hátsó puffer felbontásával. Ha a munkamenet elkészült, a `GraphicsBindingSimD3d11.InitSimulation` csatlakozás előtt meg kell hívni a következőhöz:
+A távoli és a helyi tartalmat egy "proxy" nevű bemásolási szín/mélység megjelenítési célra kell megjeleníteni a függvény által biztosított proxy-kamerás adat használatával `GraphicsBindingSimD3d11.Update` .
+
+A proxynak meg kell egyeznie a hátsó puffer felbontásával, és *DXGI_FORMAT_R8G8B8A8_UNORM* vagy *DXGI_FORMAT_B8G8R8A8_UNORM* formátumban kell lennie. Ha a munkamenet elkészült, a `GraphicsBindingSimD3d11.InitSimulation` csatlakozás előtt meg kell hívni a következőhöz:
 
 ```cs
 AzureSession currentSession = ...;
@@ -242,6 +254,8 @@ else
 * [C++ GraphicsBindingWmrD3d11 osztály](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
 * [C++ GraphicsBindingSimD3d11 osztály](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingsimd3d11)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+* [Fényképezőgép](../overview/features/camera.md)
+* [Újravetítés késői fázisban](../overview/features/late-stage-reprojection.md)
 * [Oktatóanyag: távolról megjelenített modellek megtekintése](../tutorials/unity/view-remote-models/view-remote-models.md)

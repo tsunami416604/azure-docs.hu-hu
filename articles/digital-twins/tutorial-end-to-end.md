@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401775"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563794"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -162,13 +162,13 @@ Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elér
 
 Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni.
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet *principalId* mezőjét.
 
-```azurecli-interactive
+```azurecli
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
@@ -188,7 +188,7 @@ Ebben a lépésben egy szimulált termosztátos eszközt fog összekötni [IoT h
 
 Ez a végpontok közötti forgatókönyv (**B nyíl**) ezen részén történik:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a B nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a "B" nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
 
 Az eszköz kapcsolódásának beállításához a következő műveleteket kell végrehajtania:
 1. Hozzon létre egy IoT hub-t, amely a szimulált eszközt felügyeli
@@ -203,7 +203,7 @@ Az Azure Digital Twins úgy lett kialakítva, hogy [IoT hub](../iot-hub/about-io
 
 Azure Cloud Shell a paranccsal hozzon létre egy új IoT hubot:
 
-```azurecli-interactive
+```azurecli
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -242,7 +242,7 @@ Ez a szakasz létrehoz egy eszközt a IoT Hub a *THERMOSTAT67*azonosítóval. A 
 
 A Azure Cloud Shellban hozzon létre egy eszközt a IoT Hubban a következő paranccsal:
 
-```azurecli-interactive
+```azurecli
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -330,7 +330,7 @@ Ebben a szakaszban létrehoz egy Event Grid-témakört, majd létrehoz egy végp
 
 Azure Cloud Shell a következő parancs futtatásával hozzon létre egy Event Grid-témakört:
 
-```azurecli-interactive
+```azurecli
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
@@ -441,7 +441,7 @@ A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az er�
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 
@@ -453,7 +453,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 

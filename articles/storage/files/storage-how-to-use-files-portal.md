@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f68d9f620b686ab20e93584bdd7c024d8a943577
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7e703137b7954dd152f976069770a0c8c4a0f34c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036538"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564168"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure Portallal 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások [Azure Portallal](https://portal.azure.com/) való használatának alapvető lépéseit mutatja be.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
@@ -36,7 +36,7 @@ Azure-fájlmegosztás létrehozása:
 A fájlmegosztások neve kisbetűket, számokat és kötőjeleket tartalmazhat, de nem kezdődhet kötőjellel. A fájlmegosztások és fájlok elnevezésére vonatkozó információkért lásd: [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása).
 
 ## <a name="use-your-azure-file-share"></a>Az Azure-fájlmegosztás használata
-Az Azure Files két módszert biztosít a fájloknak és mappáknak az Azure-fájlmegosztásban való használatához: az iparági szabvány [Server Message Block (SMB) protokollt](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) és a [Fájl REST protokollt](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
+A Azure Files három módszert biztosít az Azure-fájlmegosztás fájljainak és mappáinak kezeléséhez: az iparági szabványnak megfelelő [SMB protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx), a hálózati fájlrendszer (NFS) protokollja (előzetes verzió) és a [file Rest protokoll](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
 
 A fájlmegosztás SMB-vel való csatlakoztatásához tekintse meg a használt operációs rendszernek megfelelő dokumentumot az alábbiak közül:
 - [Windows](storage-how-to-use-files-windows.md)
@@ -78,10 +78,10 @@ A fájlok feltöltésének bemutatása érdekében először létre kell hoznia 
 #### <a name="download-a-file"></a>Fájl letöltése
 A fájlra a jobb gombbal kattintva letöltheti a feltöltött fájl másolatát. Miután a letöltés gombra kattintott, a pontos élmény az operációs rendszertől és a használt böngészőtől függ.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Mi az Azure Files?](storage-files-introduction.md)
+> [Mi az az Azure Files?](storage-files-introduction.md)

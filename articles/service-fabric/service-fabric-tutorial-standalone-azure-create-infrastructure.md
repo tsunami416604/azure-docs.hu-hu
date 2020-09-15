@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az A
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75614009"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561840"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Azure VM-infrastruktúra létrehozása Service Fabric-fürt üzemeltetéséhez
 
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
 
 8. Ezután állítsa a **NIC hálózati biztonsági csoportot** a **speciális**elemre. Hozzon létre egy új biztonsági csoportot, és adja meg a nevét, és hozza létre a következő szabályokat a TCP-forgalom bármely forrásból való engedélyezéséhez:
 
-   ![SF – bejövő][sf-inbound]
+   ![A képernyőképen a bejövő TCP-forgalom engedélyezéséhez szükséges szabályok létrehozása látható.][sf-inbound]
 
    * Port `3389` , RDP és ICMP esetén (alapszintű kapcsolat).
    * Portok `19000-19003` Service Fabric.
@@ -61,7 +61,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
 
 9. Adjon hozzá egy másik szabályt. Állítsa a forrást a **szolgáltatás címkére** , és állítsa a forrás szolgáltatás címkéjét **VirtualNetwork**értékre. Service Fabric a következő portok megnyitását igényli a fürtön belüli kommunikációhoz: 135137-139, 445, 20001-20031, 20606-20861.
 
-   ![vnet – bejövő][vnet-inbound]
+   ![A képernyőképen a fürt TCP-forgalmának engedélyezéséhez szükséges szabályok létrehozása látható.][vnet-inbound]
 
 10. A többi lehetőség is elfogadható az alapértelmezett állapotukban. Ha szeretné, tekintse át őket, majd indítsa el a virtuális gépet.
 
@@ -118,7 +118,7 @@ Indítsa el a két további **Virtual Machines**, és ügyeljen rá, hogy az el�
 
    A példányok most már készen állnak a Service Fabricra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat első részében megtanulta, hogyan indíthat el három Azure-beli virtuálisgép-példányt, és hogyan konfigurálhatja őket a Service Fabric telepítéséhez:
 

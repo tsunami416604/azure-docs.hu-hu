@@ -4,14 +4,14 @@ description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929329"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562791"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, -megőrzés és -tárolás az Application Insightsban
 
 Ha telepíti az [Azure Application Insights][start] SDK-t az alkalmazásban, az telemetria küld az alkalmazásról a felhőre. Természetesen a felelős fejlesztők pontosan tudni szeretnék, hogy milyen adat érkezik, mi történik az adatmennyiséggel, és hogyan tarthatják kézben az irányítást. Különösen a bizalmas adatok küldhetők, hol tárolják, és mennyire biztonságosak? 
 
@@ -128,7 +128,7 @@ Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurál
 
 `C:\Users\username\AppData\Local\Temp` az adatmegőrzéshez használatos. Ez a hely nem konfigurálható a konfigurációs könyvtárból, és a mappa elérésére vonatkozó engedélyek az adott felhasználóra korlátozódnak a szükséges hitelesítő adatokkal. (További információ: [implementáció](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
 Alapértelmezés szerint `ServerTelemetryChannel` az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját használja `%TMP%` . (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.)
 
@@ -153,7 +153,16 @@ Kód használatával:
 
 ### <a name="netcore"></a>NetCore
 
-Alapértelmezés szerint `ServerTelemetryChannel` az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját használja `%TMP%` . (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.) Linux-környezetben a helyi tárterület le lesz tiltva, kivéve, ha meg van adva egy tárolási mappa.
+Alapértelmezés szerint `ServerTelemetryChannel` az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját használja `%TMP%` . (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.) 
+
+Linux-környezetben a helyi tárterület le lesz tiltva, kivéve, ha meg van adva egy tárolási mappa.
+
+> [!NOTE]
+> A kiadás 2.15.0-beta3 és a nagyobb helyi tárterület mostantól automatikusan létrejön a Linux, Mac és Windows rendszerekhez. Nem Windows rendszerű rendszerek esetén az SDK a következő logika alapján automatikusan létrehoz egy helyi tárolási mappát:
+> - `${TMPDIR}` -Ha a `${TMPDIR}` környezeti változó be van állítva, a rendszer ezt a helyet használja.
+> - `/var/tmp` – Ha az előző hely nem létezik, próbálkozzon `/var/tmp` .
+> - `/tmp` – Ha az előző helyszínek közül mindkettő nem létezik, próbálkozzon `tmp` . 
+> - Ha a helyek egyike sem létezik, a helyi tárterület nem jön létre, és a manuális konfigurálásra továbbra is szükség van. [A teljes megvalósítás részleteit](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
 
 A következő kódrészlet bemutatja, hogyan állítható be `ServerTelemetryChannel.StorageFolder` az `ConfigureServices()` osztály metódusában `Startup.cs` :
 
@@ -211,7 +220,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](/windows-server/security/tls/tls-registry-settings) lapját.  |
 | Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | N.A.
+|Windows Vista | Nem támogatott. | N/A
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 

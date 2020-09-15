@@ -6,12 +6,12 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7614dd1d60bad5c124269ae2af02d30a5aacfe3e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658846"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564032"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Tervező megtekintése a munkafüzetek átalakításának összegzéséhez és eléréséhez
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan kiváltja és lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk részletesen ismerteti, hogyan hozhat létre áttekintés-összefoglalást és a munkafüzetek eléréséhez szükséges engedélyeket.
@@ -21,7 +21,7 @@ A tervező felhasználók megtekinthetik, hogy az áttekintő csempék nézeteke
 
 Kihasználhatja az Azure-irányítópultok magas szintű testreszabási funkcióinak előnyeit, amelyek lehetővé teszik a rögzített elemek és vizualizációk automatikus frissítését, áthelyezését, méretezését és további szűrését. 
 
-![Irányítópult](media/view-designer-conversion-access/dashboard.png)
+![A képernyőképen egy testreszabott Azure-irányítópult szerepel a munkaterület összefoglalása című ábrán.](media/view-designer-conversion-access/dashboard.png)
 
 Hozzon létre egy új Azure-irányítópultot, vagy válasszon ki egy meglévő irányítópultot a munkafüzet-elemek rögzítésének megkezdéséhez.
 

@@ -4,18 +4,18 @@ description: Az Azure Files szolgáltatás áttekintése, amely lehetővé teszi
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 03/10/2018
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4590a881fbc42467d55c3440d09f4770f447e97f
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666797"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563386"
 ---
 # <a name="what-is-azure-files"></a>Mi az Azure Files?
-Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amely az iparági szabványos [Server Message Block (SMB) protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) keresztül érhető el. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. Emellett az Azure-fájlmegosztások gyorsítótárazhatók Windows Servereken az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors elérés érdekében.
+A Azure Files teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) vagy a [hálózati fájlrendszer (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System)keresztül érhető el. Az Azure-fájlmegosztást a felhő vagy a helyszíni üzemelő példányok párhuzamosan is csatlakoztathatja. Azure Files SMB-fájlmegosztás elérhető Windows, Linux és macOS rendszerű ügyfelekről. Azure Files NFS-fájlmegosztás elérhető Linux vagy macOS rendszerű ügyfelekről. Emellett Azure Files az SMB-fájlmegosztás gyorsítótárazása a Windows-kiszolgálókon Azure File Sync a gyors elérés érdekében, ahol az adatforgalom használatban van.
 
 ## <a name="videos"></a>Videók
 | Azure File Sync bemutatása | Azure Files szinkronizálással (Ignite 2019)  |
@@ -30,7 +30,7 @@ Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, am
 Az Azure-fájlmegosztások az alábbiakra használhatók:
 
 * **Helyszíni fájlkiszolgálók lecserélése vagy kiegészítése**:  
-    Az Azure Files használatával teljes mértékben lecserélheti vagy kiegészítheti a hagyományos helyszíni fájlkiszolgálókat vagy NAS-eszközöket. Az Azure-fájlmegosztások közvetlenül csatlakoztathatók a népszerű operációs rendszerekhez (például Windows, macOS és Linux) a földrajzi helyüktől függetlenül. Az Azure-fájlmegosztások az Azure File Sync használatával replikálhatók helyszíni vagy felhőalapú Windows Serverekre, az adatok a használat helyéhez közeli nagy teljesítményű és elosztott gyorsítótárazása érdekében. Az [Azure Files ad-hitelesítés](storage-files-active-directory-overview.md)legújabb kiadásával az Azure-fájlmegosztás továbbra is képes együttműködni a helyszíni Active Directoryval a hozzáférés-vezérléshez. 
+    Az Azure Files használatával teljes mértékben lecserélheti vagy kiegészítheti a hagyományos helyszíni fájlkiszolgálókat vagy NAS-eszközöket. Az Azure-fájlmegosztások közvetlenül csatlakoztathatók a népszerű operációs rendszerekhez (például Windows, macOS és Linux) a földrajzi helyüktől függetlenül. Az Azure file SMB-fájlmegosztás Azure File Sync is replikálható a Windows-kiszolgálókkal a helyszíni vagy a felhőben, a teljesítményre és az elosztott gyorsítótárazásra a használatban lévő adat alapján. Az [Azure Files ad-hitelesítés](storage-files-active-directory-overview.md)legújabb kiadásával az Azure file SMB-fájlmegosztás továbbra is képes együttműködni a helyszíni Active Directoryval a hozzáférés-vezérléshez. 
 
 * **A "lift and SHIFT" alkalmazások**:  
     Az Azure Files segítségével könnyedén „átemelhetők” azok az alkalmazások a felhőbe, amelyekhez fájlmegosztás szükséges a fájlalkalmazások és a felhasználók adatainak tárolásához. Az Azure Files az alkalmazást és az adatokat egyaránt az Azure-ba áthelyező „klasszikus”, és az adatokat az Azure Filesba áthelyező és az alkalmazást továbbra is a helyszíni környezetben futtató „hibrid” átemelési forgatókönyvet is támogatja. 
@@ -45,9 +45,11 @@ Az Azure-fájlmegosztások az alábbiakra használhatók:
 
     * Fejlesztés **/tesztelés/hibakeresés**:  
         Amikor a fejlesztők vagy rendszergazdák a felhőben végeznek munkálatokat a virtuális gépen, gyakran van szükségük ugyanazokra az eszközökre vagy segédprogramokra. Az ilyen segédprogramok és eszközök az egyes virtuális gépekre másolása időigényes feladat. Az Azure-fájlmegosztások a virtuális gépekre történő helyi csatlakoztatásával a fejlesztők és a rendszergazdák gyorsan hozzáférhetnek eszközeikhez és segédprogramjaikhoz másolás nélkül.
+* **Tárolókra bontás**:  
+    Az Azure-fájlmegosztás az állapot-nyilvántartó tárolók állandó köteteiként használható. A tárolók a "Build Once, bárhol" funkciót biztosítják, amelyek lehetővé teszik a fejlesztők számára az innováció felgyorsítását. Ahhoz, hogy a tárolók minden indításkor hozzáférjenek a nyers adatszolgáltatáshoz, egy megosztott fájlrendszerre van szükség ahhoz, hogy a tárolók hozzáférhessenek a fájlrendszerhez, függetlenül attól, hogy melyik példányt futnak.
 
 ## <a name="key-benefits"></a>Főbb előnyök
-* **Megosztott hozzáférés**. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, ezért zökkenőmentesen lecserélheti helyszíni fájlmegosztásait Azure-fájlmegosztásokra, és nem kell aggódnia az alkalmazások kompatibilitása miatt. A fájlrendszerek több gépen, alkalmazásban/példányban történő megosztásának lehetősége az Azure Files egyik jelentős előnye a megoszthatóságot igénylő alkalmazások esetében. 
+* **Megosztott hozzáférés**. Az Azure-fájlmegosztás támogatja az iparági szabványnak megfelelő SMB-és NFS-protokollokat, ami azt jelenti, hogy zökkenőmentesen lecserélheti a helyszíni fájlmegosztást az Azure-fájlmegosztás használatával anélkül, hogy az alkalmazások kompatibilitásával kellene foglalkoznia. A fájlrendszerek több gépen, alkalmazásban/példányban történő megosztásának lehetősége az Azure Files egyik jelentős előnye a megoszthatóságot igénylő alkalmazások esetében. 
 * **Teljes mértékben felügyelt**. Az Azure-fájlmegosztások anélkül is létrehozhatók, hogy felügyelnie kellene a hardvereket vagy az operációs rendszert. Ez azt jelenti, hogy nincs szükség a kiszolgáló operációs rendszerének kritikus fontosságú frissítésekkel történő javítására vagy a hibás merevlemezek cseréjére.
 * **Parancsfájlok és eszközök**. A PowerShell-parancsmagok és az Azure CLI használatával az Azure-fájlmegosztásokat az Azure-alkalmazások felügyeletének részeként hozhatja létre, csatlakoztathatja és kezelheti. Az Azure-fájlmegosztásokat az Azure Portalról és az Azure Storage Explorerrel hozhatja létre és kezelheti. 
 * **Rugalmasság**. Az Azure Files szolgáltatást a kezdetektől úgy hozták létre, hogy folyamatosan rendelkezésre álljon. Ha lecseréli helyszíni fájlmegosztásait az Azure Filesra, akkor többé nem kell helyi áramkimaradásokkal vagy hálózati hibákkal megküzdenie. 
@@ -55,6 +57,7 @@ Az Azure-fájlmegosztások az alábbiakra használhatók:
 
 ## <a name="next-steps"></a>Következő lépések
 * [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)
-* [Csatlakozás és csatlakoztatás Windows rendszeren](storage-how-to-use-files-windows.md)
-* [Csatlakoztatás Linux rendszeren](storage-how-to-use-files-linux.md)
-* [Csatlakozás és csatlakoztatás macOS rendszeren](storage-how-to-use-files-mac.md)
+* [SMB-megosztás csatlakoztatása és csatlakoztatása Windows rendszeren](storage-how-to-use-files-windows.md)
+* [SMB-megosztás csatlakoztatása és csatlakoztatása Linux rendszeren](storage-how-to-use-files-linux.md)
+* [SMB-megosztás csatlakoztatása és csatlakoztatása macOS-en](storage-how-to-use-files-mac.md)
+* [NFS-megosztás létrehozása](storage-files-how-to-create-nfs-shares.md)

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268808"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563896"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -105,24 +105,24 @@ az iOS-és Android-eszközök csak az Azure AD regisztrálva lehetnek. A követk
 | Megfontolandó | Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás |
 | - | - | - | - |
 | **Ügyféloldali operációs rendszerek**| | |  |
-| Windows 10-eszközök| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Windows Down szintű eszközök (Windows 8,1 vagy Windows 7)| | | ![Ellenőrizze](./media/plan-device-deployment/check.png) |
+| Windows 10-eszközök| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| Windows Down szintű eszközök (Windows 8,1 vagy Windows 7)| | | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
 |**Bejelentkezési beállítások**| | |  |
-| Végfelhasználói helyi hitelesítő adatok| ![Ellenőrizze](./media/plan-device-deployment/check.png)| |  |
-| Jelszó| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| PIN-kód az eszközhöz| ![Ellenőrizze](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![Ellenőrizze](./media/plan-device-deployment/check.png)| |  |
-| Vállalati Windows Hello| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| 2,0 biztonsági kulcsok| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator alkalmazás (jelszóval nem rendelkező)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
+| Végfelhasználói helyi hitelesítő adatok| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| |  |
+| Jelszó| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| PIN-kód az eszközhöz| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| |  |
+| Vállalati Windows Hello| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| 2,0 biztonsági kulcsok| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator alkalmazás (jelszóval nem rendelkező)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
 |**Főbb képességek**| | |  |
-| Egyszeri bejelentkezés a Felhőbeli erőforrásokhoz| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Egyszeri bejelentkezés a helyszíni erőforrásokba| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Feltételes hozzáférés <br> (Az eszközök megfelelőségének megjelölése kötelező) <br> (A MDM-nek kell kezelnie)| ![Ellenőrizze](./media/plan-device-deployment/check.png) | ![Ellenőrizze](./media/plan-device-deployment/check.png)|![Ellenőrizze](./media/plan-device-deployment/check.png) |
-Feltételes hozzáférés <br>(Hibrid Azure AD-hez csatlakoztatott eszközök megkövetelése)| | | ![Ellenőrizze](./media/plan-device-deployment/check.png)
-| Önkiszolgáló jelszó-visszaállítás a Windows bejelentkezési képernyőjéről| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Windows Hello PIN-kód alaphelyzetbe állítása| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Vállalati állapot barangolása az eszközök között| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
+| Egyszeri bejelentkezés a Felhőbeli erőforrásokhoz| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| Egyszeri bejelentkezés a helyszíni erőforrásokba| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| Feltételes hozzáférés <br> (Az eszközök megfelelőségének megjelölése kötelező) <br> (A MDM-nek kell kezelnie)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+Feltételes hozzáférés <br>(Hibrid Azure AD-hez csatlakoztatott eszközök megkövetelése)| | | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)
+| Önkiszolgáló jelszó-visszaállítás a Windows bejelentkezési képernyőjéről| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| Windows Hello PIN-kód alaphelyzetbe állítása| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
+| Vállalati állapot barangolása az eszközök között| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Azure AD-regisztráció 
@@ -239,9 +239,9 @@ A támogatott és nem támogatott platformok áttekintése integrált eszközök
 
 | Eszközfelügyeleti eszközök| Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás|
 | - | - | - | - |
-| [Mobileszköz-felügyelet (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
-| [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
-| [Csoportházirend](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Csak Windows)| | | ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
+| [Mobileszköz-felügyelet (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|  |
+| [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)| ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|  |
+| [Csoportházirend](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Csak Windows)| | | ![Jelölje be ezeket az értékeket.](./media/plan-device-deployment/check.png)|  |
 
 
 

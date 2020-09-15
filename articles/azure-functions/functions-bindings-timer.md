@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 88160d82cb7cc0a012d63445f101a1f2a3740da0
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569279"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563087"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -217,7 +217,7 @@ public void keepAlive(
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TimerTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -249,6 +249,7 @@ Időzítő eseményindító függvény meghívásakor a függvény egy időzít�
 ```
 
 A `IsPastDue` tulajdonság az, `true` amikor az aktuális függvény meghívása az ütemezettnél későbbi. Előfordulhat például, hogy egy Function alkalmazás újraindítása miatt a hívás kimarad.
+
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB kifejezések 
 
@@ -282,6 +283,8 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |`"0 30 9 * * 1-5"`|minden hétköznap 9:30 órakor|
 |`"0 30 9 * Jan Mon"`|Január 9:30 órakor|
 
+> [!NOTE]
+> A NCRONTAB kifejezéshez **hat mező** formátum szükséges. Az Azure nem támogatja az öt mezőből származó cron-kifejezéseket.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB időzónái
 
@@ -329,7 +332,7 @@ A várólista-triggertől eltérően az időzítő trigger nem próbálkozik új
 
 További információ arról, hogy mi a teendő, ha az időzítő trigger nem a várt módon működik, lásd: [kivizsgálás és jelentéskészítési hibák az időzítő által aktivált függvények nem égetéssel](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ugrás olyan rövid útmutatóra, amely időzítő-triggert használ](functions-create-scheduled-function.md)

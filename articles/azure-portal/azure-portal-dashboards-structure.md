@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459219"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561601"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Az Azure-irányítópultok struktúrája
 Ez a dokumentum egy Azure-irányítópult szerkezetét mutatja be példaként a következő irányítópult használatával:
@@ -329,16 +329,16 @@ A __position__ tulajdonság tartalmazza az __x__, __y__, __rowSpan__és __colSpa
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![rács – egységek](./media/azure-portal-dashboards-structure/grid-units.png)
+![A képernyőfelvételen látható, hogy egy négyzetes rács kiemelve van a rácson.](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>A metaadat-objektum
 Az egyes részek metaadat-tulajdonsággal rendelkeznek, egy objektumhoz csak egy __típus__nevű kötelező tulajdonság tartozik. Ez a karakterlánc közli a portálon, hogy melyik csempe látható. A példában szereplő irányítópult az alábbi típusú csempéket használja:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`– A figyelési metrikák megjelenítéséhez használatos
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`– Olyan szövegekkel vagy képekkel való megjelenítésre használható, amelyek alapszintű formázással rendelkeznek a listához, a hivatkozásokhoz stb.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`– A YouTube-on, a Channel9-ben és bármely más, a HTML-videó címkéjén használható videó megjelenítésére szolgál.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`– Egy Azure-beli virtuális gép nevének és állapotának megjelenítésére szolgál.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – A figyelési metrikák megjelenítéséhez használatos
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Olyan szövegekkel vagy képekkel való megjelenítésre használható, amelyek alapszintű formázással rendelkeznek a listához, a hivatkozásokhoz stb.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – A YouTube-on, a Channel9-ben és bármely más, a HTML-videó címkéjén használható videó megjelenítésére szolgál.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Egy Azure-beli virtuális gép nevének és állapotának megjelenítésére szolgál.
 
 A különböző típusú részek saját konfigurációval rendelkeznek. A lehetséges konfigurációs tulajdonságokat a __bemenetek__, a __Beállítások__és az __eszközök__nevezzük. 
 

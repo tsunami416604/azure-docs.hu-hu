@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68985945"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564423"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>A Azure Data Box biztonságos telepítése és működtetése
 ![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png)
@@ -24,7 +24,7 @@ A Azure Data Box használata előtt olvassa el az ebben a cikkben található ö
 ## <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
 Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállításakor és futtatásakor betartandó biztonsági óvintézkedéseket.
 
-| Ikon | Description |
+| Ikon | Leírás |
 |:--- |:--- |
 | ![Veszélyforrás ikon ](./media/data-box-safety/warning_icon.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
 | ![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
@@ -120,7 +120,7 @@ A rendszer tesztelte a készüléket, és úgy találta, hogy megfelel az "a" os
 
 Ez az eszköz megfelel az FCC-szabályok és az iparági kanadai licencek alól mentesített RSS-szabványoknak. A művelet a következő két feltétel hatálya alá esik: (1) Ez az eszköz nem okoz káros interferenciát, és (2) az eszköznek el kell fogadnia a kapott interferenciát, beleértve az interferenciát is, ami az eszköz nemkívánatos működéséhez vezethet.
 
-![Kanada](./media/data-box-safety/canada.png)
+![A képernyőképen a Kanada számára szükséges értesítés látható.](./media/data-box-safety/canada.png)
 
 A KÖVETKEZŐ LEHET: ICES-3 (A)/NMB-3 (A)
 
@@ -154,7 +154,7 @@ Faxszám: + 353 1 706 4110
 
 **Japán**
 
-![Japán](./media/data-box-safety/japan.png)
+![A képernyőképen egy, a japán számára szükséges értesítés jelenik meg.](./media/data-box-safety/japan.png)
 
 <!--**South Korea**
 

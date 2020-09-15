@@ -4,14 +4,14 @@ description: Virtuális gépek/fizikai kiszolgálók feladatátvétele az Azure-
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309968"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563981"
 ---
-# <a name="run-a-failover-from-on-premises-to-azure"></a>Feladatátvétel futtatása a helyszínről az Azure-ba
+# <a name="run-a-failover-from-on-premises-to-azure"></a>Feladatátvétel futtatása a helyszíni rendszerről az Azure-ba
 
 Ez a cikk bemutatja, hogyan hajthat végre feladatátvételt a helyszíni gépeken az Azure-ban [Azure site Recovery](site-recovery-overview.md)
 
@@ -32,7 +32,7 @@ Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH hasz
 
 **Feladatátvétel után** | **Hely** | **Műveletek**
 --- | --- | ---
-**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
+**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
 **Linux rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 
 
@@ -46,7 +46,7 @@ Futtassa a helyreállítási terv feladatátvételét a következőképpen:
 1. A site Recovery-tárolóban válassza a **helyreállítási tervek**  >  *recoveryplan_name*lehetőséget.
 2. Kattintson a **feladatátvétel**elemre.
 
-    ![Feladatátvétel](./media/site-recovery-failover/Failover.png)
+    ![Képernyőfelvétel: a ADRP ablaktábla, amely a több menüből kiválasztott feladatátvételt jeleníti meg.](./media/site-recovery-failover/Failover.png)
 
 3. A **feladatátvétel**  >  **feladatátvételi irányában**hagyja meg az alapértelmezett értéket, ha az Azure-ba végzi a replikálást.
 4. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyre a **feladatátvételt**végre szeretné adni.
@@ -138,7 +138,7 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
     - Azonos IP-cím megőrzése: az Azure-beli virtuális gépen ugyanazt az IP-címet használhatja, mint a helyszíni gép számára.
     - Eltérő IP-cím használata: használhat másik IP-címet az Azure-beli virtuális géphez.
     - [További](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) információ a belső IP-címek beállításáról.
-- **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információk](concepts-public-ip-address-with-site-recovery.md).
+- **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információ](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>További lépések

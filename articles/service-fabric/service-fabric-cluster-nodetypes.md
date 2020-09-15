@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261103"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561890"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric Node-típusok és virtuálisgép-méretezési csoportok
 
@@ -32,7 +32,7 @@ Méretezési csoport skálázásakor létrejön egy új példány. Az új méret
 
 Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB- &lt; Node Type name &gt; **. Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
 
-![További források][Resources]
+![A képernyőképen egy olyan erőforráscsoport látható, amelyben két terheléselosztó van kiemelve.][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Virtuálisgép-bővítmény Service Fabric
 
@@ -85,10 +85,10 @@ A tulajdonságok leírása a következő:
 | nicPrefixOverride | sztring | Alhálózat-előtag, például "10.0.0.0/24" |
 | commonNames | karakterlánc [] | Telepített fürtözött tanúsítványok köznapi nevei |
 | x509StoreName | sztring | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
-| typeHandlerVersion | 1.1 | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
+| typeHandlerVersion | 1,1 | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
 | dataPath | sztring | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a ["bárhonnan üzembe helyezhető" funkció áttekintését, valamint az Azure által felügyelt fürtökkel való összehasonlítást](service-fabric-deploy-anywhere.md).
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253851"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561578"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway átirányítási áttekintés
 
@@ -37,7 +37,7 @@ Az Application Gateway átirányítási támogatása a következő funkciókat n
    Ez a típusú átirányítás lehetővé teszi a HTTP-t a HTTPS-átirányítás csak egy adott hely területén, például egy bevásárlókosár terület, amelyet a/cart/* jelöl.
 - **Átirányítás külső helyre**
 
-![átirányítani](./media/redirect-overview/redirect.png)
+![A diagramon a felhasználók és az alkalmazás-átjárók, valamint a kettő közötti kapcsolatok láthatók, beleértve a nem engedélyezett H T P piros nyilat, a nem megengedett 301 közvetlen piros nyilat, valamint a zárolt H T P-t egy zöld nyílra.](./media/redirect-overview/redirect.png)
 
 Ezzel a módosítással az ügyfeleknek létre kell hozniuk egy új átirányítási konfigurációs objektumot, amely meghatározza azt a célként figyelőt vagy külső helyet, amelyre az átirányítás szükség van. A konfigurációs elem olyan beállításokat is támogat, amelyek lehetővé teszik az URI elérési út és a lekérdezési karakterlánc hozzáfűzését az átirányított URL-címhez. Kiválaszthatja az átirányítás típusát is. A létrehozást követően ez az átirányítási konfiguráció egy új szabály segítségével csatlakozik a forrás-figyelőhöz. Alapszintű szabály használatakor az átirányítási konfiguráció a forrás-figyelőhöz van társítva, és globális átirányítás. Elérésiút-alapú szabály használatakor az átirányítási konfiguráció az URL-cím elérési útja alapján van meghatározva. Ezért csak a helyek adott elérési útjára vonatkozik.
 

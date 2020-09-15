@@ -8,32 +8,34 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: a9e5660e6fbf1e1329af8622e982d44a4da3d86b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 787e9efa8ef11a83b63719cad51f9b26e055620d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033608"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562175"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
 Ez az oktatóanyag azt mutatja be, hogyan használható az Azure szinapszis Studio Apache Spark feladatdefiníció létrehozásához, majd egy Apache Spark-készletbe való beküldéséhez.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
-
-* Apache Spark feladatdefiníció létrehozása a PySpark (Python)
-* Apache Spark feladatdefiníció létrehozása a Sparkhoz (Scala)
-* Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#/F #)
-* Apache Spark feladatdefiníció beküldése batch-feladatokként
-* Apache Spark feladatdefiníció hozzáadása a folyamathoz
+> [!div class="checklist"]
+>
+> - Apache Spark feladatdefiníció létrehozása a PySpark (Python)
+> - Apache Spark feladatdefiníció létrehozása a Sparkhoz (Scala)
+> - Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#/F #)
+> - Apache Spark feladatdefiníció beküldése batch-feladatokként
+> - Apache Spark feladatdefiníció hozzáadása a folyamathoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 
 * Egy Azure szinapszis Analytics-munkaterület. Útmutatásért lásd: [Azure szinapszis Analytics-munkaterület létrehozása](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
-* Egy Apache Spark készlet
-* Egy ADLS Gen2 Storage-fiók. A használni kívánt ADLS Gen2 fájlrendszer Storage blob-adattulajdonosának kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
+* Egy Apache Spark készlet.
+* Egy ADLS Gen2 Storage-fiók. A használni kívánt ADLS Gen2 fájlrendszer **Storage blob-Adattulajdonosának** kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
+* Ha nem szeretné használni a munkaterület alapértelmezett tárolóját, kapcsolja össze a szükséges ADLS Gen2 Storage-fiókot a szinapszis Studióban. 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Apache Spark feladatdefiníció létrehozása a PySpark (Python)
 
@@ -41,23 +43,29 @@ Ebben a szakaszban a PySpark (Python) Apache Spark feladatainak definícióját 
 
 1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
-2. A **WordCount.py** és a **shakespear.txt**letöltéséhez Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) is megtekintheti a fájlokat. Ezután töltse fel ezeket a fájlokat az Azure Storage-ba: kattintson **az adatok**elemre, válassza a **Storage-fiókok**lehetőséget, és töltse fel a kapcsolódó fájlokat a ADLS Gen2 fájlrendszerbe. Hagyja ki ezt a lépést, ha a fájlok már az Azure Storage-ban vannak. 
+2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) nyissa meg a mintaképeket **python.zipához **, majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount.py** és **shakespeare.txt** fájlokat. 
+
+     ![Példák a fájlokra](./media/apache-spark-job-definitions/sample-files.png)
+
+3. Kattintson az **adatok**   ->  **csatolt**   ->  **Azure Data Lake Storage Gen2**elemre, és töltse fel a **WordCount.py**,   és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe. 
 
      ![Python-fájl feltöltése](./media/apache-spark-job-definitions/upload-python-file.png)
 
-3. Kattintson a hub **fejlesztése** elemre, válassza a **Spark-feladatok definíciói** elemet a bal oldali ablaktáblán, majd kattintson a... elemre. Művelet csomópont a Spark- **feladatdefiníció**mellett, majd válassza a helyi menü **új Spark-feladatok meghatározása** elemét.
+4. Kattintson a hub **fejlesztése** elemre, kattintson a "+" ikonra, és válassza a **Spark** -feladatdefiníció lehetőséget egy új Spark-feladatdefiníció létrehozásához. 
 
      ![új definíció létrehozása a Pythonhoz](./media/apache-spark-job-definitions/create-new-definition.png)
 
-4. Válassza a **PySpark (Python)** elemet a Apache Spark Job definition Main ablak nyelv legördülő listájában.
+5. Válassza a **PySpark (Python)** elemet a Apache Spark Job definition Main ablak nyelv legördülő listájában.
 
-5. Adja meg Apache Spark-feladatdefiníció adatait. A mintaadatok másolására is lehetőség van.
+     ![Python kiválasztása](./media/apache-spark-job-definitions/select-python.png)
+
+6. Adja meg Apache Spark-feladatdefiníció adatait. 
 
      |  Tulajdonság   | Leírás   |  
      | ----- | ----- |  
-     |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. Minta `job definition sample`|
-     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta `abfss://…/path/to/wordcount.py`|
-     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. <br> Minta `job definition sample`|
+     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. <br> Minta `abfss://…/path/to/wordcount.py`|
+     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. <br> Minta: `abfss://…/path/to/shakespeare.txt``abfss://…/path/to/result` <br> *Megjegyzés: a minta-feladatdefiníció két argumentuma szóközzel van elválasztva.*|
      |Hivatkozási fájlok| A fő definíciós fájlban való hivatkozáshoz használt további fájlok. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. |
      |Spark-készlet| A rendszer elküldi a feladatot a kiválasztott Apache Spark-készletbe.|
      |Spark-verzió| A Apache Spark-készletet futtató Apache Spark verziója.|
@@ -67,7 +75,7 @@ Ebben a szakaszban a PySpark (Python) Apache Spark feladatainak definícióját 
 
      ![A Spark-feladatdefiníció értékének beállítása a Pythonhoz](./media/apache-spark-job-definitions/create-py-definition.png)
 
-6. Válassza a **Közzététel** lehetőséget a Apache Spark feladatdefiníció mentéséhez.
+7. Kattintson a **Közzététel** gombra a Apache Spark feladatdefiníció mentéséhez.
 
      ![a-konfiguráció közzétételének meghatározása](./media/apache-spark-job-definitions/publish-py-definition.png)
 
@@ -77,23 +85,28 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
 
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
- 2. A **WordCount. jar** és a **shakespear.txt**letöltéséhez Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) megtekintheti a fájlokat. Ezután töltse fel ezeket a fájlokat az Azure Storage-ba: kattintson **az adatok**elemre, válassza a **Storage-fiókok**lehetőséget, és töltse fel a kapcsolódó fájlokat a ADLS Gen2 fájlrendszerbe. Hagyja ki ezt a lépést, ha a fájlok már az Azure Storage-ban vannak. 
+ 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) nyissa meg a mintaképeket **scala.zipához **, majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount. jar** és **shakespeare.txt** fájlokat. 
+ 
+     ![Sample Files Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
+
+ 3. Kattintson az **adatok**   ->  **csatolt**   ->  **Azure Data Lake Storage Gen2**elemre, és töltse fel a **WordCount. jar**fájlt,   és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
  
      ![a Scala-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 3. Kattintson a hub **fejlesztése** elemre, válassza a **Spark-feladatok definíciói** elemet a bal oldali ablaktáblán, majd kattintson a... elemre. Művelet csomópont a Spark- **feladatdefiníció**mellett, majd válassza a helyi menü **új Spark-feladatok meghatározása** elemét.
-     ![új definíció létrehozása a Scala számára](./media/apache-spark-job-definitions/create-new-definition.png)
+ 4. Kattintson a hub **fejlesztése** elemre, kattintson a "+" ikonra, és válassza a **Spark** -feladatdefiníció lehetőséget egy új Spark-feladatdefiníció létrehozásához. (A minta képe megegyezik a **Apache Spark Job Definition (Python) PySpark létrehozásához szükséges**4. lépéssel.)
 
- 4. Válassza ki a **Spark (Scala)** elemet a Apache Spark Job definition Main ablak nyelv legördülő listájában.
+ 5. Válassza ki a **Spark (Scala)** elemet a Apache Spark Job definition Main ablak nyelv legördülő listájában.
 
- 5. Adja meg Apache Spark-feladatdefiníció adatait. A mintaadatok másolására is lehetőség van.
+     ![a Scala kiválasztása](./media/apache-spark-job-definitions/select-scala.png)
+
+ 6. Adja meg Apache Spark-feladatdefiníció adatait. A mintaadatok másolására is lehetőség van.
 
      |  Tulajdonság   | Leírás   |  
      | ----- | ----- |  
-     |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. Minta `job definition sample`|
-     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy JAR-fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta `abfss://…/path/to/wordcount.jar`|
-     |Fő osztály neve| A fő definíciós fájlban lévő teljes azonosító vagy fő osztály. Minta `WordCount`|
-     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. <br> Minta `scala`|
+     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy JAR-fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. <br> Minta `abfss://…/path/to/wordcount.jar`|
+     |Fő osztály neve| A fő definíciós fájlban lévő teljes azonosító vagy fő osztály. <br> Minta `WordCount`|
+     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. <br> Minta: `abfss://…/path/to/shakespeare.txt``abfss://…/path/to/result` <br> *Megjegyzés: a minta-feladatdefiníció két argumentuma szóközzel van elválasztva.* |
      |Hivatkozási fájlok| A fő definíciós fájlban való hivatkozáshoz használt további fájlok. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba.|
      |Spark-készlet| A rendszer elküldi a feladatot a kiválasztott Apache Spark-készletbe.|
      |Spark-verzió| A Apache Spark-készletet futtató Apache Spark verziója.|
@@ -103,34 +116,37 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
 
      ![A Spark-feladatdefiníció értékének beállítása a Scala számára](./media/apache-spark-job-definitions/create-scala-definition.png)
 
- 6. Válassza a **Közzététel** lehetőséget a Apache Spark feladatdefiníció mentéséhez.
+ 7. Kattintson a **Közzététel** gombra a Apache Spark feladatdefiníció mentéséhez.
 
-     ![a Scala definíciójának közzététele](./media/apache-spark-job-definitions/publish-scala-definition.png)
-
+      ![a Scala definíciójának közzététele](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 ## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#/F #)
 
 Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET Sparkhoz (C#/F #).
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
- 2. A **wordcount.zip** és a **shakespear.txt**letöltéséhez [Apache Spark feladatdefiníció létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) tekintse meg a fájlok mintaképét. Ezután töltse fel ezeket a fájlokat az Azure Storage-ba: kattintson **az adatok**elemre, válassza a **Storage-fiókok**lehetőséget, és töltse fel a kapcsolódó fájlokat a ADLS Gen2 fájlrendszerbe. Hagyja ki ezt a lépést, ha a fájlok már az Azure Storage-ban vannak. 
+ 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) nyissa meg a mintaképeket **dotnet.zipához **, majd bontsa ki a tömörített csomagot, és bontsa ki a **wordcount.zip** és **shakespeare.txt** fájlokat. 
 
-     ![DotNet-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-scala-structure.png)
+     ![DotNet-minta](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Kattintson a hub **fejlesztése** elemre, válassza a **Spark-feladatok definíciói** elemet a bal oldali ablaktáblán, majd kattintson a... elemre. Művelet csomópont a Spark- **feladatdefiníció**mellett, majd válassza a helyi menü **új Spark-feladatok meghatározása** elemét.
+ 3. Kattintson az **adatok**   ->  **csatolt**   ->  **Azure Data Lake Storage Gen2**elemre, és töltse fel **wordcount.zip**   és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
+ 
+     ![DotNet-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
-     ![új definíció létrehozása a DotNet számára](./media/apache-spark-job-definitions/create-new-definition.png)
+ 4. Kattintson a hub **fejlesztése** elemre, kattintson a "+" ikonra, és válassza a **Spark** -feladatdefiníció lehetőséget egy új Spark-feladatdefiníció létrehozásához. (A minta képe megegyezik a **Apache Spark Job Definition (Python) PySpark létrehozásához szükséges**4. lépéssel.)
 
- 4. Válassza a **.net Spark (C#/f #)** lehetőséget a Apache Spark Job definition főablakában található nyelv legördülő listából.
+ 5. Válassza a **.net Spark (C#/f #)** lehetőséget a Apache Spark Job definition főablakában található nyelv legördülő listából.
 
- 5. Adja meg Apache Spark-feladatdefiníció adatait. A mintaadatok másolására is lehetőség van.
+     ![a DotNet kiválasztása](./media/apache-spark-job-definitions/select-dotnet.png)
+
+ 6. Adja meg Apache Spark-feladatdefiníció adatait. A mintaadatok másolására is lehetőség van.
     
      |  Tulajdonság   | Leírás   |  
      | ----- | ----- |  
-     |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. Minta `job definition sample`|
-     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon egy ZIP-fájlt, amely tartalmazza a .NET for Apache Spark alkalmazást (azaz a fő végrehajtható fájlt, a felhasználó által definiált függvényeket tartalmazó DLL-eket és az egyéb szükséges fájlokat) a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta `abfss://…/path/to/wordcount.zip`|
-     |Fő végrehajtható fájl| A fő végrehajtható fájl a fő definíciós ZIP-fájlban. Minta `WordCount`|
-     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. <br> Minta `dotnet`|
+     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon egy ZIP-fájlt, amely tartalmazza a .NET for Apache Spark alkalmazást (azaz a fő végrehajtható fájlt, a felhasználó által definiált függvényeket tartalmazó DLL-eket és az egyéb szükséges fájlokat) a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. <br> Minta `abfss://…/path/to/wordcount.zip`|
+     |Fő végrehajtható fájl| A fő végrehajtható fájl a fő definíciós ZIP-fájlban. <br> Minta `WordCount`|
+     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. <br> Minta: `abfss://…/path/to/shakespeare.txt``abfss://…/path/to/result` <br> *Megjegyzés: a minta-feladatdefiníció két argumentuma szóközzel van elválasztva.* |
      |Hivatkozási fájlok| További fájlok szükségesek a munkavégző csomópontok számára a .NET Apache Spark alkalmazáshoz való végrehajtásához, amely nem szerepel a fő definíciós ZIP-fájlban (azaz függő tégelyekben, a felhasználó által definiált függvény dll-jei és más konfigurációs fájlokban). A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba.|
      |Spark-készlet| A rendszer elküldi a feladatot a kiválasztott Apache Spark-készletbe.|
      |Spark-verzió| A Apache Spark-készletet futtató Apache Spark verziója.|
@@ -138,22 +154,22 @@ Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET S
      |Végrehajtó mérete| A feladathoz megadott Apache Spark készletben megadott végrehajtók számára használandó magok és memória száma.|
      |Illesztőprogram mérete| A feladathoz megadott Apache Spark készletben megadott illesztőprogramhoz használandó magok és memória száma.|
 
-     ![A Spark-feladatdefiníció értékének beállítása a DotNet-hez](./media/apache-spark-job-definitions/create-net-definition.png)
+     ![A Spark-feladatdefiníció értékének beállítása a DotNet-hez](./media/apache-spark-job-definitions/create-dotnet-definition.png)
 
- 6. Válassza a **Közzététel** lehetőséget a Apache Spark feladatdefiníció mentéséhez.
+ 7. Kattintson a **Közzététel** gombra a Apache Spark feladatdefiníció mentéséhez.
 
-      ![DotNet-definíció közzététele](./media/apache-spark-job-definitions/publish-net-definition.png)
+      ![DotNet-definíció közzététele](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark feladatdefiníció beküldése batch-feladatokként
 
-Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache Spark készletbe. Győződjön meg arról, hogy a ADLS Gen2 fájlrendszer Storage blob-adattulajdonosa, amellyel dolgozni szeretne. Ha nem, manuálisan kell hozzáadnia az engedélyt.
+Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache Spark készletbe. Győződjön meg arról, hogy a ADLS Gen2 fájlrendszer **Storage blob-Adattulajdonosa** , amellyel dolgozni szeretne. Ha nem, manuálisan kell hozzáadnia az engedélyt.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>1. forgatókönyv: Apache Spark feladatdefiníció elküldése
  1. Az Apache Spark-feladatdefiníció ablak megnyitásához kattintson rá.
 
       ![Az elküldéshez nyissa meg a Spark-feladatdefiníció ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
- 2. Kattintson a **Küldés** ikonra a projektnek a kiválasztott Apache Spark készletbe való beküldéséhez. Az Apache Spark alkalmazás LogQuery megtekintéséhez kattintson a **Spark-figyelés URL-címe** fülre.
+ 2. Kattintson a **Submit (Küldés** ) gombra a projektnek a kiválasztott Apache Spark készletbe való beküldéséhez. Az Apache Spark alkalmazás LogQuery megtekintéséhez kattintson a **Spark-figyelés URL-címe** fülre.
 
     ![A Spark-feladatdefiníció elküldéséhez kattintson a Küldés gombra.](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
@@ -161,17 +177,17 @@ Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache S
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>2. forgatókönyv: folyamatban lévő Apache Spark-feladatok megtekintése
 
- 1. Kattintson a **figyelés**elemre, majd válassza a **Spark-alkalmazások** lehetőséget. Megtalálhatja az elküldött Apache Spark alkalmazást.
+ 1. Kattintson a **figyelés**elemre, majd válassza a **Apache Spark alkalmazások** lehetőséget. Megtalálhatja az elküldött Apache Spark alkalmazást.
 
      ![Spark-alkalmazás megtekintése](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 2. Ezután kattintson a Apache Spark alkalmazásra, a **LogQuery** ablak jelenik meg. A **LogQuery**-ből megtekintheti a feladatok végrehajtásának folyamatát.
+ 2. Ezután kattintson egy Apache Spark alkalmazásra, a **SparkJobDefinition** -feladatok ablak jelenik meg. Itt megtekintheti a feladatok végrehajtásának folyamatát.
      
      ![Spark-alkalmazás LogQuery megtekintése](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>3. forgatókönyv: kimeneti fájl keresése
 
- 1. Kattintson **az**adatelemre, majd válassza a **Storage-fiókok**lehetőséget. Sikeres Futtatás után nyissa meg a ADLS Gen2 tárolót, és győződjön meg róla, hogy a kimenetek jönnek létre.
+ 1. Kattintson **az**  ->  **adatcsatolt**  ->  **Azure Data Lake Storage Gen2** (hozhaobdbj) elemre, nyissa meg a korábban létrehozott **Result** mappát, lépjen az eredmény mappájába, és ellenőrizze, hogy létrejött-e a kimenet.
 
      ![Kimeneti fájl megtekintése](./media/apache-spark-job-definitions/view-output-file.png)
 
@@ -183,11 +199,11 @@ Ebben a szakaszban egy Apache Spark feladatdefiníció hozzáadása a folyamatho
 
  2. Kattintson a jobb felső sarokban lévő ikonra Apache Spark feladatdefiníció, válassza a **meglévő folyamat**vagy az **új folyamat**elemet. További információért tekintse meg a folyamat lapját.
 
-     ![Hozzáadás a folyamathoz](./media/apache-spark-job-definitions/add-to-pipeline01.png)
+     ![Hozzáadás a pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
-     ![Hozzáadás a folyamathoz](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+     ![Hozzáadás a pipeline2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag azt mutatja be, hogyan használható az Azure szinapszis Studio Apache Spark feladatdefiníció létrehozásához, majd egy Apache Spark-készletbe való beküldéséhez. Ezután az Azure szinapszis Studio használatával létrehozhat Power BI adatkészleteket, és kezelheti a Power BI adatokat.
 

@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be folyam
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260365"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563930"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
@@ -139,7 +139,7 @@ Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizz
 
 A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást Azure DevOpsba.
 
-A kód írása közben eszközölt módosításokat a Visual Studio automatikusan követi. A helyi Git-adattár módosításainak véglegesítéséhez válassza ki a függőben lévő módosítások ikonját (![Függőben][pending]), amely a képernyő jobb oldalának alján lévő állapotsávon található.
+A kód írása közben eszközölt módosításokat a Visual Studio automatikusan követi. A helyi Git-adattár módosításainak véglegesítéséhez válassza ki a függőben lévő módosítások ikonját (![A függőben lévő módosítások ikon egy ceruzát és egy számot jelenít meg.][pending]), amely a képernyő jobb oldalának alján lévő állapotsávon található.
 
 A Team Explorer **Changes** (Módosítások) nézetében adjon meg egy üzenetet a frissítés leírásával, majd véglegesítse a módosításokat.
 

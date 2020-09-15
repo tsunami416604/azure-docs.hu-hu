@@ -3,12 +3,12 @@ title: Service Fabric-fürt létrehozása az Azure Portalon
 description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban a Azure Portal és a Azure Key Vault használatával.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259321"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563726"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -128,42 +128,42 @@ A képernyők használatával hozzáadhat vagy felhasználhat egy meglévő kulc
 
 Az előző folyamat befejezéséig ellenáll a képernyőről való navigálás kísértésének.
 
-![CreateKeyVault]
+![Képernyőfelvétel: a Security (biztonság) lap, amely alapszintű a Key Vault panelen van kiválasztva, és létrehozza a Key Vault panelt.][CreateKeyVault]
 
 Most, hogy létrehozta a kulcstartót, szerkessze a Key Vault hozzáférési szabályzatait. 
 
-![CreateKeyVault2]
+![Képernyőfelvétel: a Service Fabric-fürt létrehozása panel 3. lehetőséggel kiválasztott biztonsági beállítással, valamint annak magyarázatával, hogy a kulcstartó nincs engedélyezve.][CreateKeyVault2]
 
 Kattintson a **hozzáférési házirendek szerkesztése**, majd a **speciális hozzáférési szabályzatok megjelenítése** elemre, és engedélyezze az Azure Virtual Machines való hozzáférést az üzembe helyezéshez. Javasoljuk, hogy engedélyezze a sablon központi telepítését is. Ha elvégezte a beállításokat, ne felejtsen el a **Save (Mentés** ) gombra kattintani, és lépjen ki a **hozzáférési házirendek** panelről.
 
-![CreateKeyVault3]
+![A képernyőfelvétel megjeleníti a Service Fabric fürt létrehozása panelt, amelyen megnyílik a biztonsági ablaktábla, és megnyílik a hozzáférési házirendek ablaktábla.][CreateKeyVault3]
 
 Adja meg a tanúsítvány nevét, majd kattintson **az OK**gombra.
 
-![CreateKeyVault4]
+![Képernyőfelvétel: a Service Fabric-fürt létrehozása panel a korábban megjelenő biztonsági beállítással, de nem tartalmazza azt a magyarázatot, hogy a kulcstartó nincs engedélyezve.][CreateKeyVault4]
 
 #### <a name="custom-option"></a>Egyéni beállítás
 Ugorja át ezt a szakaszt, ha már végrehajtotta az **alapszintű** beállítás lépéseit.
 
-![SecurityCustomOption]
+![Képernyőfelvétel: a fürt biztonsági beállításainak konfigurálása párbeszédpanel.][SecurityCustomOption]
 
 A Biztonság lap elvégzéséhez szüksége lesz a forrás Key vaultra, a tanúsítvány URL-címére és a tanúsítvány ujjlenyomatára vonatkozó információkra. Ha nincs kéznél, nyisson meg egy böngészőablakot, és a Azure Portal tegye a következőket
 
 1. Navigáljon a Key Vault szolgáltatáshoz.
 2. Válassza a "tulajdonságok" fület, és másolja az "erőforrás-azonosító" kifejezést a "forrás Key Vault" értékre a másik böngészőablakban. 
 
-    ![CertInfo0]
+    ![A képernyőfelvételen a kulcstartó Tulajdonságok ablak látható.][CertInfo0]
 
 3. Most válassza a "tanúsítványok" fület.
 4. Kattintson a tanúsítvány ujjlenyomatára, amely a verziók lapra lép.
 5. Kattintson a jelenlegi verzió alatt látható GUID-azonosítóra.
 
-    ![CertInfo1]
+    ![Képernyőfelvétel: a Key Vault tanúsítványának ablaka][CertInfo1]
 
 6. Ekkor az alábbihoz hasonló képernyőn kell megjelennie. Másolja a hexadecimális SHA-1 ujjlenyomatot a "Tanúsítvány ujjlenyomata" értékre a másik böngészőablakban
 7. Másolja a "titkos azonosító" kifejezést a "tanúsítvány URL-címe" értékre más böngészőablakban.
 
-    ![CertInfo2]
+    ![Képernyőfelvétel: a tanúsítvány verziószáma párbeszédpanel, amely a tanúsítvány-azonosító másolására szolgáló lehetőséget jeleníti meg.][CertInfo2]
 
 Jelölje be a **Speciális beállítások konfigurálása** jelölőnégyzetet a **rendszergazdai ügyfél** és a **csak olvasási jogosultsággal**rendelkező ügyfelek tanúsítványainak megadásához. Ezekben a mezőkben adja meg a rendszergazdai ügyféltanúsítvány ujjlenyomatát és a csak olvasási jogosultsággal rendelkező felhasználói ügyféltanúsítvány ujjlenyomatát, ha van ilyen. Amikor a rendszergazdák megpróbálnak csatlakozni a fürthöz, csak akkor kapnak hozzáférést, ha az itt megadott ujjlenyomat-értékekkel egyező tanúsítvánnyal rendelkeznek.  
 
@@ -173,7 +173,7 @@ Most már készen áll a fürt üzembe helyezésére. Mielőtt ezt megtenné, t�
 
 A fürt létrehozásának befejezéséhez kattintson a **Létrehozás**gombra. Igény szerint letöltheti a sablont.
 
-![Összegzés]
+![Képernyőfelvétel: az Service Fabric-fürt összefoglalásának létrehozása lap, amely egy tanúsítvány megtekintésére és letöltésére szolgáló hivatkozást mutat be.][Summary]
 
 A létrehozás folyamatát az értesítésekben követheti nyomon. (Kattintson a "harang" ikonra a képernyő jobb felső sarkában található állapotjelző sáv közelében.) Ha a fürt létrehozásakor a **rögzítés a kezdőpulton** elemre kattintott, akkor a **Service Fabric-fürt üzembe helyezése** a **kezdőképernyőn** rögzített állapotban jelenik meg. Ez a folyamat hosszabb időt is igénybe vehet. 
 
@@ -198,7 +198,7 @@ A fürt irányítópult paneljének **csomópont-figyelő** szakasza a kifogást
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
 A fürtben megadott NodeTypes mindegyike egy virtuálisgép-méretezési csoportba kerül, amely beállítja a beállítását. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezen a ponton van egy biztonságos fürt, amely tanúsítványokat használ a felügyeleti hitelesítéshez. Ezután [kapcsolódjon a fürthöz](service-fabric-connect-to-secure-cluster.md) , és Ismerje meg, hogyan [kezelheti az alkalmazási titkokat](service-fabric-application-secret-management.md).  Emellett megismerheti [Service Fabric támogatási lehetőségeit](service-fabric-support.md).
 
 <!-- Links -->
@@ -230,7 +230,7 @@ Ezen a ponton van egy biztonságos fürt, amely tanúsítványokat használ a fe
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Összefoglalás]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

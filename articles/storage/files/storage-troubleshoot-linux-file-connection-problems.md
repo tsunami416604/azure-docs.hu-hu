@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904921"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564270"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>A Linux (SMB) Azure Files problémáinak elhárítása
 
 Ez a cikk a Linux-ügyfelekről való csatlakozáskor Azure Files kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tartalmazza. 
 
 A cikkben található hibaelhárítási lépések mellett a [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) használatával biztosíthatja, hogy a Linux-ügyfél megfelelő előfeltételekkel rendelkezik. A AzFileDiagnostics automatizálja a jelen cikkben említett legtöbb tünet észlelését. Segít az optimális teljesítmény elérésében a környezet beállításában. Ezeket az információkat a [Azure Files shares-hibakeresőben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)is megtalálhatja. A hibakereső útmutatást nyújt a Azure Files-megosztások csatlakoztatásához, leképezéséhez és csatlakoztatásához szükséges problémák megoldásához.
+
+> [!IMPORTANT]
+> A cikk tartalma csak az SMB-megosztásokra vonatkozik.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nem lehet csatlakozni az Azure-fájlmegosztás eléréséhez vagy csatlakoztatásához
 
@@ -80,7 +83,7 @@ Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően va
 
 A Linux rendszerben a következőhöz hasonló hibaüzenet jelenik meg:
 
-**\<filename>[engedély megtagadva] Túllépte a lemez kvótáját**
+**\<filename> [engedély megtagadva] Túllépte a lemez kvótáját**
 
 ### <a name="cause"></a>Ok
 
@@ -107,7 +110,7 @@ Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához
     - Használjon [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
     - A CP vagy a dd párhuzamosan történő használata a másolási sebesség növelését eredményezheti, a szálak száma a használati esettől és a számítási feladatoktól függ. A következő példák hat-ot használnak: 
     - CP-példa (a CP a fájlrendszer alapértelmezett méretét fogja használni az adathalmaz méretének megfelelően): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
-    - dd-példa (ez a parancs explicit módon beállítja az adatrészlet méretét 1 MiB-re):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - dd-példa (ez a parancs explicit módon beállítja az adatrészlet méretét 1 MiB-re): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Nyílt forráskódú, külső gyártótól származó eszközök, például:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – fájlokat rendez, és partícióba csomagolja őket.
@@ -115,7 +118,7 @@ Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához
         - [Több](https://github.com/pkolano/mutil) szálat összefűzött CP-és md5sum GNU-coreutils alapján.
 - Ha előre állítja be a fájl méretét, ahelyett, hogy minden írási kiterjesztést ír, a segít a másolási sebesség javításában olyan helyzetekben, ahol ismert a fájl mérete. Ha az írások kiterjesztését el kell kerülni, megadhatja a célfájl méretét a `truncate - size <size><file>` paranccsal. Ezt követően a `dd if=<source> of=<target> bs=1M conv=notrunc` parancs a forrásfájl méretének ismételt frissítése nélkül másolja a forrásfájlt. Megadhatja például a célfájl méretét a másolni kívánt összes fájlhoz (tegyük fel, hogy a megosztás a/mnt/Share alatt van csatlakoztatva):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - Ezután másolja a fájlokat a párhuzamos írások kiterjesztése nélkül:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - Ezután másolja a fájlokat a párhuzamos írások kiterjesztése nélkül: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Csatlakoztatási hiba (115): folyamatban lévő művelet" Azure Files csatlakoztatása az SMB 3,0 használatával
@@ -183,7 +186,7 @@ Bizonyos esetekben az **serverino** csatlakoztatási lehetőség az **ls** paran
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Azt is megtudhatja, hogy a megfelelő beállításokat használja-e a **sudo Mount | grep CIFS** parancs futtatásával és a kimenetének ellenőrzésével. A következő példában a kimenet látható:
+Azt is megtudhatja, hogy a megfelelő beállításokat használja-e a  **sudo Mount | grep CIFS** parancs futtatásával és a kimenetének ellenőrzésével. A következő példában a kimenet látható:
 
 ```
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)

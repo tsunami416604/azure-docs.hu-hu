@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510370"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563505"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás Linuxról hibrid Felhőbeli üzembe helyezésre Azure File Sync
 
-A Azure File Sync a közvetlenül csatlakoztatott tárolóval (DAS) rendelkező Windows Server-példányokon működik. Nem támogatja a Linux vagy a távoli SMB-megosztás közötti szinkronizálást.
+A Azure File Sync a közvetlenül csatlakoztatott tárolóval (DAS) rendelkező Windows Server-példányokon működik. Nem támogatja a Linux-ügyfelek vagy a távoli SMB-megosztások, illetve a hálózati fájlrendszer (NFS) megosztások közötti szinkronizálást.
 
 Ennek eredményeképpen a Fájlszolgáltatások hibrid telepítésre való átalakítása a Windows Serverre való áttelepítést teszi szükségessé. Ez a cikk végigvezeti Önt az áttelepítés megtervezésén és végrehajtásán.
 
@@ -201,7 +201,7 @@ Elvégezte egy megosztás vagy megosztások egy csoportjának egy közös gyök�
 A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egyszerre egy Azure-fájlmegosztás hatókörét dolgozza fel.
 
 > [!WARNING]
-> Miután áthelyezte a Linux Samba-kiszolgálóról a Windows Server-példányra, és az áttelepítés elkészült, térjen vissza a Azure Portal *összes* szinkronizálási csoportjához. Állítsa be a Felhőbeli rétegű kötetek szabad területének százalékos arányát a gyorsítótár kihasználtságának megfelelő értékre, például 20 százalékra. 
+> Miután áthelyezte a Linux Samba-kiszolgálóról a Windows Server-példányra, és az áttelepítés elkészült, térjen vissza a Azure Portal *összes*  szinkronizálási csoportjához. Állítsa be a Felhőbeli rétegű kötetek szabad területének százalékos arányát a gyorsítótár kihasználtságának megfelelő értékre, például 20 százalékra. 
 
 A felhő-rétegek kötetének szabad területére vonatkozó szabályzat a kötet szintjén működik, és lehetséges, hogy több kiszolgálói végpont is szinkronizálja azt. Ha nem szeretné, hogy a szabad terület még egy kiszolgálói végponton is módosítható legyen, a szinkronizálás továbbra is alkalmazza a legszigorúbb szabályt, és a szabad lemezterület 99%-ban való megtartására tesz kísérletet. Előfordulhat, hogy a helyi gyorsítótárat a rendszer nem a várt módon hajtja végre. A teljesítmény elfogadható lehet, ha a cél az, hogy egy olyan kötethez tartozó névtér legyen, amely csak ritkán használt archivált adatmennyiséget tartalmaz, és egy másik forgatókönyv esetén a tárterület többi részét is fenntartja.
 
