@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: Naplóadatok
           items:
-            - name: Naplóadat-szerkezet
-              href: log-query/logs-structure.md
             - name: Lekérdezési hatókör
               href: log-query/scope.md
-            - name: Szokásos tulajdonságok
-              href: platform/log-standard-properties.md
+            - name: Standard oszlopok
+              href: platform/log-standard-columns.md
             - name: Számítógépcsoportok
               href: platform/computer-groups.md
         - name: Lekérdezés nyelve

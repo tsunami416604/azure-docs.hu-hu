@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Az Azure biztonsági teljesítménytesztjeinek dokumentációja
+title: Az Azure biztonsági teljesítménytesztjének dokumentációja
 summary: Az ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan védheti meg a felhőalapú megoldásait az Azure-ban.
 metadata:
-  title: Az Azure biztonsági teljesítménytesztjei
+  title: Azure-biztonsági teljesítményteszt
   description: Az Azure biztonsági teljesítménytesztje olyan javaslatokat tartalmaz, amelyekkel nagyobb biztonságban tudhatja alkalmazásait és adatait az Azure-ban.
   services: security
   ms.service: security
@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
+  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213551"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90058665"
 landingContent:
 - title: Tudnivalók az Azure biztonsági teljesítménytesztjéről
   linkLists:
@@ -34,22 +34,22 @@ landingContent:
       url: ../../security-center/index.yml
     - text: Azure-biztonság – Alapismeretek
       url: ../fundamentals/index.yml
-- title: Az Azure biztonsági teljesítményteszt vezérlői
+- title: Az Azure biztonsági teljesítményteszt 2-es verziójának vezérlői
   linkLists:
   - linkListType: overview
     links:
     - text: Hálózati biztonság
-      url: security-control-network-security.md
-    - text: Naplózás és figyelés
-      url: security-control-logging-monitoring.md
-    - text: Identitás- és hozzáférés-vezérlés
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: Identitáskezelés
+      url: security-controls-v2-identity-management.md
+    - text: Emelt szintű hozzáférés
+      url: security-controls-v2-privileged-access.md
     - text: Adatvédelem
-      url: security-control-data-protection.md
-    - text: Biztonságirés-kezelés
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: Eszközkezelés
+      url: security-controls-v2-asset-management.md
     - text: Részletek
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
 - title: A számítások biztonsági alapkonfigurációi
   linkLists:
   - linkListType: overview

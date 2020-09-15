@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: Használati útmutató
   items:
+    - name: Manuális migrálás
+      href: manual-migration.md
     - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
       items:
         - name: Kapcsolódás a Windows asztali ügyféllel

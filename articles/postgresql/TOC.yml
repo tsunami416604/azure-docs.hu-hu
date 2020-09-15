@@ -4,6 +4,10 @@
   items:
     - name: Mi az az Azure DB for PostgreSQL?
       href: overview.md
+    - name: Szolgáltatási hírek
+      items:
+        - name: Az SSL-főtanúsítvány lejár
+          href: concepts-certificate-rotation.md
 - name: Rövid útmutatók
   expanded: true
   items:

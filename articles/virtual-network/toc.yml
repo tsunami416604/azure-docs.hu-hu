@@ -91,6 +91,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Útválasztási beállítás
           href: routing-preference-overview.md
+        - name: A nyilvános IP-cím biztonsági alapkonfigurációja
+          href: public-ip-security-baseline.md
     - name: Biztonság
       items:
         - name: Network security groups (Hálózati biztonsági csoportok)

@@ -25,6 +25,8 @@
   items:
     - name: 'Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása'
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Blazor Server-csevegőalkalmazás létrehozása
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: Példák
   items:
     - name: Kódminták

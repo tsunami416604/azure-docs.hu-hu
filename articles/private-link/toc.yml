@@ -42,7 +42,7 @@
       href: create-private-endpoint-storage-portal.md
     - name: Privát csatlakozás Cosmos DB-fiókhoz
       href: create-private-endpoint-cosmosdb-portal.md
-    - name: Privát csatlakozás webalkalmazásokhoz
+    - name: Privát csatlakozás webalkalmazáshoz
       href: create-private-endpoint-webapp-portal.md
     - name: Privát végpont hálózati szabályzatainak letiltása
       href: disable-private-endpoint-network-policy.md

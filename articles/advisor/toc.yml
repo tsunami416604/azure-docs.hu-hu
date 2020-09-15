@@ -41,6 +41,8 @@
       href: advisor-quick-fix.md
     - name: Advisor-adatok az Azure Resource Graph-ban
       href: advisor-azure-resource-graph.md
+    - name: Advisor-pontszám felhasználása
+      href: azure-advisor-score.md
 - name: Referencia
   items:
     - name: Security Center

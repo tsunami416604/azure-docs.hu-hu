@@ -11,6 +11,8 @@
 - name: Rövid útmutatók
   expanded: true
   items:
+    - name: Példány létrehozása – CLI
+      href: get-started-create-service-instance-cli.md
     - name: Példány létrehozása – Portal
       href: get-started-create-service-instance.md
     - name: Példány létrehozása – PowerShell

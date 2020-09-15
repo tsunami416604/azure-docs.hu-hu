@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: bc856e9a6a20c262f49cb4c2a730d8ba5157530a
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: e0f15382d61558e72dd9c1e4ecf108bdf1655160
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337058"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90017353"
 landingContent:
 - title: Energiaipari megoldások létrehozása
   linkLists:
@@ -31,18 +31,32 @@ landingContent:
       text: Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása
     - url: tutorial-solar-panel-app.md
       text: Napelempanel monitorozására szolgáló alkalmazás létrehozása
-- title: Csatlakozás
+- title: Eszközök csatlakoztatása és fejlesztése
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Eszközfejlesztőknek szóló áttekintés
+      url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: Eszközsablon beállítása
-      url: ../core/howto-set-up-template.md
-    - text: Eszköz csatlakoztatása
-      url: ../core/tutorial-connect-device.md
+    - text: Eszköz csatlakoztatása (Node.js)
+      url: ../core/tutorial-connect-device-nodejs.md
+    - text: Eszköz csatlakoztatása (Python)
+      url: ../core/tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: Eszközkapcsolatok
+      url: ../core/concepts-get-connected.md
+    - text: Eszközsablonok
+      url: ../core/concepts-device-templates.md
   - linkListType: how-to-guide
     links:
-    - text: Más IoT-felhők csatlakoztatása
-      url: ../core/howto-build-iotc-device-bridge.md
+    - text: Sablon beállítása
+      url: ../core/howto-set-up-template.md
+    - text: Azure Sphere-eszköz csatlakoztatása
+      url: ../core/howto-connect-sphere.md
+    - text: Eszközkapcsolatok hibaelhárítása
+      url: ../core/troubleshoot-connection.md
 - title: A kapcsolat fenntartása
   linkLists:
   - linkListType: tutorial

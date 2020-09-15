@@ -479,7 +479,7 @@
                   items:
                     - name: Virtuális gépről
                       href: ../image-version-vm-cli.md
-                    - name: VHD-ből vagy pillanatképből
+                    - name: Felügyelt lemezről vagy pillanatképből
                       href: ../image-version-snapshot-cli.md
                     - name: Migrálás felügyelt rendszerképből
                       href: ../image-version-managed-image-cli.md
@@ -501,7 +501,7 @@
                   items:
                     - name: Virtuális gépről
                       href: ../image-version-vm-powershell.md
-                    - name: VHD-ből vagy pillanatképből
+                    - name: Felügyelt lemezről vagy pillanatképből
                       href: ../image-version-snapshot-powershell.md
                     - name: Migrálás felügyelt rendszerképből
                       href: ../image-version-managed-image-powershell.md
@@ -542,14 +542,16 @@
               href: image-builder-overview.md
             - name: Az Azure parancssori felület használatával
               href: image-builder.md
-            - name: Virtuális gép létrehozása virtuális hálózat használatával – parancssori felület
+            - name: VNET használata – parancssori felület
               href: image-builder-vnet.md
-            - name: Engedélyek konfigurálása – parancssori felület
-              href: image-builder-permissions-cli.md
-            - name: Engedélyek konfigurálása – PowerShell
-              href: image-builder-permissions-powershell.md
             - name: Hálózatkezelési lehetőségek
               href: image-builder-networking.md
+            - name: Engedélyek konfigurálása
+              items:
+                - name: parancssori felület
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
             - name: DevOps-feladat
               href: image-builder-devops-task.md
             - name: ARM-sablon referenciája

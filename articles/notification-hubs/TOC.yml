@@ -113,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: A Notification Hubs üzembe helyezése és kezelése az Azure PowerShell-lel
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: Leküldéses értesítések biztonságos küldése a felhasználóknak
+    - name: Biztonságos értesítések küldése a felhasználóknak
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: Regisztrációk tömeges exportálása és importálása
       href: export-modify-registrations-bulk.md

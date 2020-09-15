@@ -61,6 +61,8 @@
       href: ../../azure-databricks/security-baseline.md
     - name: Az Azure DNS biztonsági alapkonfigurációja
       href: ../../dns/security-baseline.md
+    - name: Az Azure DevTest Labs biztonsági alapkonfigurációja
+      href: ../../devtest-labs/security-baseline.md
     - name: Az Azure Firewall biztonsági alapkonfigurációja
       href: ../../firewall/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja
@@ -73,8 +75,14 @@
       href: ../../machine-learning/security-baseline.md
     - name: Az Azure Policy biztonsági alapkonfigurációja
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Az Azure Private Link biztonsági alapkonfigurációja
+      href: ../../private-link/security-baseline.md
+    - name: Az Azure-beli nyilvános IP-cím biztonsági alapkonfigurációja
+      href: ../../virtual-network/public-ip-security-baseline.md
     - name: Az Azure Resource Graph biztonsági alapkonfigurációja
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Az Azure Sentinel biztonsági alapkonfigurációja
+      href: ../../sentinel/security-baseline.md
     - name: Az Azure SQL Database biztonsági alapkonfigurációja
       href: ../../sql-database/security-baseline.md
     - name: Az Azure Storage biztonsági alapkonfigurációja

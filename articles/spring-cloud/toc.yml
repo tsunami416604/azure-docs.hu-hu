@@ -47,6 +47,8 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Az Azure Spring Cloud üzembe helyezése virtuális hálózaton
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+    - name: Felügyelt identitás használata az Azure Functions meghívásához egy Azure Spring Cloud-alkalmazásból
+      href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Alapelvek
   items:
     - name: Az alkalmazások és az üzembe helyezés bemutatása

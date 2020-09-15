@@ -4,7 +4,7 @@
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Áttekintés
   items:
-    - name: Mi az az Azure Synapse Analytics?
+    - name: Mi az az Azure Synapse?
       href: overview-what-is.md
     - name: Első lépések
       items:
@@ -36,10 +36,10 @@
   items:
     - name: Synapse-munkaterület létrehozása az Azure Portal használatával
       href: quickstart-create-workspace.md
-    - name: Üzembe helyezés sablon használatával
-      href: quickstart-deployment-template-workspaces.md
     - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure CLI-vel
       href: quickstart-create-workspace-cli.md
+    - name: Üzembe helyezés sablon használatával
+      href: quickstart-deployment-template-workspaces.md
     - name: A Synapse Studio használata
       href: quickstart-synapse-studio.md
     - name: Power BI-munkaterület csatolása
@@ -70,7 +70,7 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Oktatóanyagok
   items:
-    - name: Apache Spark-alkalmazások futtatása Spark-készletekhez
+    - name: Apache Spark-alkalmazások futtatása
       href: ./spark/intellij-tool-synapse.md
     - name: Spark-feladatdefiníciók
       href: ./spark/apache-spark-job-definitions.md
@@ -84,7 +84,7 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Adatelemző
       items:
-        - name: Az igény szerinti SQL használata az elemzéshez és a Synapse Studio használata a vizualizációhoz
+        - name: Az igény szerinti SQL használata adatelemzéshez
           href: ./sql/tutorial-data-analyst.md
 - name: Példák
   href: 'https://github.com/Azure-Samples/Synapse'
@@ -372,9 +372,9 @@
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 'Eszközök integrációja (AI, ETL, BI)'
       items:
-        - name: Az Azure Synapse Analytics Studio hibaelhárítása
+        - name: A Synapse Studio hibaelhárítása
           href: troubleshoot/troubleshoot-synapse-studio.md
-        - name: Az Azure Synapse Analytics Studio hibaelhárítása a PowerShellel
+        - name: A Synapse Studio kapcsolati problémáinak hibaelhárítása
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
 - name: Útmutató
   items:
@@ -422,7 +422,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Frissítés 2. generációs verzióra
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Adatfeldolgozás és -előkészítés
+    - name: Adatok betöltése és előkészítése
       items:
         - name: Az adattárházba
           items:
@@ -869,7 +869,7 @@
               href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Saját üzemeltetésű integrációs futtatókörnyezetek hibaelhárítása
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Eszközök csatlakoztatása a Synapse Analyticshez
+    - name: Eszközök csatlakoztatása Synapse-munkaterületekhez
       items:
         - name: Synapse SQL
           items:

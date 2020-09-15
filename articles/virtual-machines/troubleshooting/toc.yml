@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: A virtuális gép nem válaszol a naplózáskonfigurációs szabályzat alkalmazása közben
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: A virtuális gép nem válaszol az alapértelmezett tartományvezérlő-szabályzat alkalmazása közben
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: A virtuális gép nem válaszol a csoportszabályzat alkalmazásakor
           href: unresponsive-vm-apply-group-policy.md
         - name: A virtuális gép nem válaszol a biztonsági szabályzat alkalmazásakor

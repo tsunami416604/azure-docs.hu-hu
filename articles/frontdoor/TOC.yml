@@ -7,8 +7,10 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Bejárati ajtó létrehozása
+    - name: Belépési pont létrehozása – Portal
       href: quickstart-create-front-door.md
+    - name: Belépési pont létrehozása – ARM-sablon
+      href: quickstart-create-front-door-template.md
 - name: Oktatóanyagok
   items:
     - name: Egyéni tartomány hozzáadása a bejárati ajtóhoz

@@ -37,7 +37,7 @@
           href: ./hdinsight-sdk-python-samples.md
         - name: Azure-minták böngészője
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
-    - name: Alapelvek
+    - name: Fogalmak
       items:
         - name: Apache-összetevők a HDInsighton
           href: ./hdinsight-component-versioning.md
@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: Kezelés
           items:
+            - name: Függőségek kezelése
+              items:
+                - name: Spark-alkalmazások függőségeinek kezelése
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: Jar-függőségek biztonságos kezelése
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Python-környezet biztonságos kezelése
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: Fürterőforrások kezelése
               href: ./spark/apache-spark-resource-manager.md
             - name: Apache Spark-alkalmazások kezelése kiterjesztett előzménykiszolgálóval
               href: ./spark/apache-azure-spark-history-server.md
             - name: Gyorsítótárazás engedélyezése I/O gyorsítótárral
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Jar-függőségek kezelése
-              href: ./spark/manage-jar-dependency.md
             - name: Notebookok használata az Apache Sparkban
               items:
                 - name: Helyi Jupyter notebook használata
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: 'Külső csomagok használata Jupyterrel, cellafunkciók használatával'
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin-notebookok használata
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: Használat más Azure-szolgáltatásokkal

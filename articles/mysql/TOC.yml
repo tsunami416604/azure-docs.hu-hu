@@ -6,6 +6,10 @@
       href: overview.md
     - name: Melyik MySQL-beállítást válasszam?
       href: select-right-deployment-type.md
+    - name: Szolgáltatási hírek
+      items:
+        - name: Az SSL-főtanúsítvány lejár
+          href: concepts-certificate-rotation.md
 - name: Rövid útmutatók
   expanded: true
   items:
