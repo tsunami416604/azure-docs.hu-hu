@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060917"
+ms.locfileid: "90069577"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz
 
@@ -69,6 +69,9 @@ A bérlői szintű rendszergazdai jóváhagyás engedélyezése **Alkalmazásreg
 4. Válassza az **API-engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása**lehetőségre.
 5. Körültekintően tekintse át az alkalmazás által igényelt engedélyeket.
 6. Ha elfogadja az alkalmazás által igényelt engedélyeket, engedélyezze a jóváhagyást. Ha nem, kattintson a **Mégse** gombra, vagy az ablak bezárásához.
+
+> [!WARNING]
+> A bérlői szintű rendszergazdai jóváhagyás **Alkalmazásregisztrációkon** keresztül történő megadása visszavonja azokat az engedélyeket, amelyek korábban megadták a bérlői szintű jogosultságokat. A felhasználók által korábban a saját nevében megadott engedélyeket a rendszer nem érinti. 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Az URL-cím létrehozása a bérlői szintű rendszergazdai jóváhagyás biztosításához
 

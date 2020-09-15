@@ -4,25 +4,23 @@ description: Ebből az oktatóanyagból elsajátíthatja, hogy hogyan küldhet �
 documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 03/22/2019
+ms.custom: mvc
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 865aaf748fd8fad5f10350cb5b57d31b3eadf7a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 97a6a45ab01fc113b79a48ba7fcb246d528684be
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018042"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090057"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával
 
@@ -30,7 +28,7 @@ ms.locfileid: "89018042"
 
 ## <a name="overview"></a>Áttekintés
 
-Az oktatóanyag bemutatja, hogy hogyan küldhetők leküldéses értesítések adott alkalmazásfelhasználónak, adott eszközre az Azure Notification Hubs használatával. Az ASP.NET WebAPI háttérrendszer az ügyfelek hitelesítésére szolgál. Amikor a háttérrendszer hitelesíti az ügyfélalkalmazás felhasználóját, automatikusan hozzáad egy címkét az értesítés regisztrációjához. A háttérrendszer ezt a címkét használja, hogy értesítéseket küldjön az adott felhasználónak.
+Ez az oktatóanyag azt ismerteti, hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére egy adott alkalmazás felhasználója számára egy adott eszközön. Az ASP.NET WebAPI háttérrendszer az ügyfelek hitelesítésére szolgál. Amikor a háttérrendszer hitelesíti az ügyfélalkalmazás felhasználóját, automatikusan hozzáad egy címkét az értesítés regisztrációjához. A háttérrendszer ezt a címkét használja, hogy értesítéseket küldjön az adott felhasználónak.
 
 > [!NOTE]
 > Az oktatóanyaghoz tartozó befejezett kód a [githubon](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)található.
@@ -66,7 +64,7 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
 5. A találatok listájában kattintson a **System.Net.Http** elemre, majd az **Install** (Telepítés) parancsra. Fejezze be a telepítést.
 6. A NuGet **Search** (Keresés) mezőjébe írja be a **Json.net** kifejezést. Telepítse a **Newtonsoft.json** csomagot, majd zárja be a NuGet-csomagkezelő ablakát.
 7. A Megoldáskezelőben megnyitott **WindowsApp** projektben kattintson duplán a **MainPage.xaml** fájlra a Visual Studio-szerkesztőben való megnyitásához.
-8. Az `MainPage.xaml` XML-kódban cserélje le a `<Grid>` szakaszt a következő kódra: Ez a kód hozzáadja a felhasználónevet és a jelszó szövegmezőt, amelyet a felhasználó hitelesít. Emellett szövegmezőket is felvesz az értesítési üzenethez, valamint a felhasználónevet jelölő címkét, amely a következő értesítést kapja:
+8. A `MainPage.xaml` fájlban cserélje le a `<Grid>` szakaszt a következő kódra: Ez a kód felvesz egy felhasználónevet és egy jelszót tartalmazó szövegmezőt, amelyet a felhasználó hitelesít. Emellett szövegmezőket is felvesz az értesítési üzenethez, valamint a felhasználónevet jelölő címkét, amely a következő értesítést kapja:
 
     ```xml
     <Grid>
@@ -118,6 +116,7 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
         </StackPanel>
     </Grid>
     ```
+
 9. A Megoldáskezelő nyissa meg a `MainPage.xaml.cs` **(Windows 8,1)** és a **(Windows Phone-telefon 8,1)** projekteket tartalmazó fájlt. Adja hozzá a következő `using` utasításokat mindkét fájl elejéhez:
 
     ```csharp
@@ -128,11 +127,13 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
+
 10. A `MainPage.xaml.cs` **WindowsApp** projektben adja hozzá a következő tagot a `MainPage` osztályhoz. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
+
 11. Adja hozzá az alábbi kódot a `MainPage.xaml.cs` **(Windows 8,1)** és **(Windows Phone-telefon 8,1)** projektekhez tartozó Főoldal-osztályhoz.
 
     A `PushClick` metódus a **Send Push** (Leküldéses értesítés küldése) gomb kattintáskezelője. A háttérrendszer meghívásával aktiválja egy értesítés küldését az összes olyan eszközre, amely a `to_tag` paraméterrel egyező felhasználónév-címkével rendelkezik. Az értesítési üzenet küldése a kérés törzsében található JSON-tartalomként történik.
@@ -215,13 +216,15 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. Nyissa meg az `App.xaml.cs` eseménykezelőt, és keresse meg a hívást `InitNotificationsAsync()` `OnLaunched()` . Tegye megjegyzésbe vagy törölje az `InitNotificationsAsync()` meghívását. A gombkezelő inicializálja az értesítések regisztrálását.
+
+12. Nyissa meg az `App.xaml.cs` eseménykezelőt, és keresse meg a hívást `InitNotificationsAsync()` `OnLaunched()` . Tegye megjegyzésbe vagy törölje az `InitNotificationsAsync()` meghívását. A gomb kezelője inicializálja az értesítési regisztrációkat:
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
+
 13. Kattintson a jobb gombbal a **WindowsApp** projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az osztályt `RegisterClient.cs` , majd kattintson az **OK** gombra az osztály létrehozásához.
 
     Ez az osztály burkolja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](/previous-versions/azure/azure-services/dn743807(v=azure.100)) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A helyi tárterületen tárolt hitelesítési jogkivonatot használ, amikor a **Login and register** (Bejelentkezés és regisztráció) gombra kattint.
@@ -236,7 +239,8 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
     using System.Threading.Tasks;
     using System.Linq;
     ```
-15. Adja hozzá a következő kódot a(z) `RegisterClient` osztálydefiníciójához:
+
+15. Adja hozzá a következő kódot az `RegisterClient` osztály definíciójában:
 
     ```csharp
     private string POST_URL;
@@ -323,6 +327,7 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
 
     }
     ```
+
 16. Mentse az összes módosítást.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
@@ -332,8 +337,8 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
 3. Kattintson a **Login and register** (Bejelentkezés és regisztráció) gombra, és ellenőrizze, hogy a párbeszédpanel megjeleníti-e a sikeres bejelentkezés tényét. Ez a kód engedélyezi a **Send Push** (Leküldéses értesítés küldése) gombot is.
 
     ![Képernyőkép a Notification Hubs alkalmazásról, amely a Felhasználónév és a jelszó kitöltését mutatja.][14]
-5. Ezt követően adja meg a regisztrált felhasználónevet a **Recipient Username Tag** (Címzett felhasználónév-címke) mezőben. Adjon meg egy értesítési üzenetet, és kattintson a **Send Push** (Leküldéses értesítés küldése) gombra.
-6. Csak az egyező felhasználónév-címkével regisztrált eszközök kapják meg az értesítési üzenetet.
+4. Ezt követően adja meg a regisztrált felhasználónevet a **Recipient Username Tag** (Címzett felhasználónév-címke) mezőben. Adjon meg egy értesítési üzenetet, és kattintson a **Send Push** (Leküldéses értesítés küldése) gombra.
+5. Csak az egyező felhasználónév-címkével regisztrált eszközök kapják meg az értesítési üzenetet.
 
     ![Képernyőkép a Notification Hubs-alkalmazásról, amely a leküldett üzenetet mutatja.][15]
 

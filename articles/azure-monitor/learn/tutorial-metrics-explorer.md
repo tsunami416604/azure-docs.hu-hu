@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79082812"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090091"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
 Azure Portal a metrikák Explorer a Azure Monitor egyik funkciója, amely lehetővé teszi, hogy diagramokat hozzon létre a metrikák értékeiből, vizuálisan korrelálja a trendeket, és vizsgálja meg a mérőszámok és a dips értékeit. A metrikák Explorerrel megvizsgálhatja az Azure-erőforrások állapotát és kihasználtságát, illetve diagramokat rajzolhat az egyéni metrikák használatával. 
@@ -52,7 +52,7 @@ A metrikák Explorert a Azure Monitor menüjéből vagy a Azure Portal erőforr�
 
 4. Szükség esetén módosíthatja a metrikák **összesítését**. Ez határozza meg, hogy a metrikai értékek hogyan legyenek összesítve a gráf időbeli részletessége során. Ha például az időrészletesség 15 percre van beállítva, és az Összesítés értéke Sum, akkor a gráf minden pontja az összes összegyűjtött érték összege lesz az egyes 15 percenkénti szegmensekben.
 
-    ![Diagram](media/tutorial-metrics-explorer/chart.png)
+    ![A képernyőképen egy, a contosoretailweb-ra vonatkozó összegű bejövő forgalomra vonatkozó diagram látható.](media/tutorial-metrics-explorer/chart.png)
 
 5. Használja a **metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több, ugyanabban a diagramban ábrázolt mérőszámot szeretne látni. Egyetlen nézetben több diagram esetében válassza az **új diagram** gombot.
 

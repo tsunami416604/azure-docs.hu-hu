@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ab2c584b1e62ac8296c4e9489a72489cd815fc3c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024136"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089853"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -122,7 +122,7 @@ A Linux rendszerben a számítógépnek nyilvános vagy nyilvános frissítési 
 
 További információ a Linux rendszerhez készült Log Analytics-ügynök telepítéséről és a legújabb verzió letöltéséről: [log Analytics Agent for Linux](../../azure-monitor/platform/agent-linux.md).
 
-Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) lemezképből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat frissítési infrastruktúrához (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md) . Minden más Linux-disztribúciót a terjesztés által támogatott módszerek használatával kell frissíteni a disztribúció online fájl-tárházában.
+Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) lemezképből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat frissítési infrastruktúrához (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md) . Minden más Linux-disztribúciót a terjesztés által támogatott módszerek használatával kell frissíteni a disztribúció online fájl-tárházában.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -136,7 +136,7 @@ Update Management az ebben a szakaszban ismertetett erőforrásokat használja. 
 
 A Update Management engedélyezése után a Log Analytics munkaterülethez közvetlenül csatlakoztatott Windows-gépeket a rendszer automatikusan hibrid Runbook-feldolgozóként konfigurálja a Update Management támogató runbookok támogatásához.
 
-Az Update Management által felügyelt összes Windows-gép a hibrid munkavégző csoportok ablaktáblán, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A csoportok az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a Update Management támogatására szolgálnak.
+Az Update Management által felügyelt összes Windows-gép a hibrid munkavégző csoportok ablaktáblán, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A csoportok az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a Update Management támogatására szolgálnak. A hibrid Runbook-feldolgozóként konfigurált Windows-gépek listájának megtekintéséhez tekintse meg a [hibrid Runbook-feldolgozók megtekintése](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)című témakört.
 
 A Windows rendszerű gépet hozzáadhatja az Automation-fiókjában lévő hibrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja a Update Management és a hibrid Runbook-feldolgozó csoport tagságához. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
 
@@ -164,9 +164,9 @@ A következő táblázat ismerteti a Update Management által támogatott csatla
 
 | Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
-| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505839"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090074"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból
 
@@ -84,7 +84,7 @@ Az adatok beolvasása egy Log Analytics munkaterületről a Kusto lekérdezési 
     > [!NOTE]
     > Ha a Azure Monitor menüből nyit meg naplókat, a hatókör a Log Analytics munkaterületre lesz beállítva. Ebben az esetben minden lekérdezés tartalmazni fogja a munkaterület összes rekordját.
    
-    ![Naplók](media/tutorial-resource-logs/logs.png)
+    ![Képernyőfelvétel: egy logikai alkalmazás naplóit jeleníti meg, amelyek egy új lekérdezést jelenítenek meg a logikai alkalmazás neve kiemelve.](media/tutorial-resource-logs/logs.png)
 
 4. A példában szereplő szolgáltatás erőforrás-naplókat ír a **AzureDiagnostics** táblába, de más szolgáltatások is írhatnak más táblákba. A különböző Azure-szolgáltatások által használt táblák esetében lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/resource-logs-schema.md) .
 

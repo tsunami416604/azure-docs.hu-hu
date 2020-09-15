@@ -1,23 +1,23 @@
 ---
-title: Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
+title: Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elháríthatja a Azure Cosmos DB SQL-lekérdezéssel kapcsolatos problémákat.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117913"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089989"
 ---
-# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 
-Ez a cikk részletesen ismerteti a Azure Cosmos DB-lekérdezések hibaelhárításának általános javasolt megközelítését. Habár nem veszi figyelembe a jelen cikkben ismertetett lépéseket a lehetséges lekérdezési problémákkal kapcsolatos teljes körű védekezéssel, a leggyakoribb teljesítménybeli tippeket is itt találja. Ezt a cikket a Azure Cosmos DB Core (SQL) API-ban lassú vagy költséges lekérdezések hibaelhárításához érdemes használni. [Diagnosztikai naplókat](cosmosdb-monitor-resource-logs.md) is használhat a lassú vagy jelentős mennyiségű átviteli sebességet használó lekérdezések azonosítására.
+Ez a cikk részletesen ismerteti a Azure Cosmos DB-lekérdezések hibaelhárításának általános javasolt megközelítését. Habár nem veszi figyelembe a jelen cikkben ismertetett lépéseket a lehetséges lekérdezési problémákkal kapcsolatos teljes körű védekezéssel, a leggyakoribb teljesítménybeli tippeket is itt találja. Ezt a cikket az Azure Cosmos DB Core (SQL) API lassú vagy költséges lekérdezéseinek kezdeti hibaelhárításához érdemes használni. A [diagnosztikai naplókat](cosmosdb-monitor-resource-logs.md) is használhatja a lassú vagy jelentős mennyiségű átviteli sebességet használó lekérdezések azonosítására.
 
 A lekérdezési optimalizálásokat széles körben kategorizálhatja Azure Cosmos DBban:
 
@@ -26,22 +26,21 @@ A lekérdezési optimalizálásokat széles körben kategorizálhatja Azure Cosm
 
 Ha csökkenti egy lekérdezés RU-díját, szinte biztosan csökkenti a késést is.
 
-Ez a cikk példákat tartalmaz, amelyeket újra létrehozhat a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészlet használatával.
+Ez a cikk példákat tartalmaz, amelyeket újra létrehozhat a [táplálkozási adatkészlet](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)használatával.
 
 ## <a name="common-sdk-issues"></a>Általános SDK-problémák
 
 Az útmutató elolvasása előtt érdemes megfontolni az olyan általános SDK-problémákat, amelyek nem kapcsolódnak a lekérdezési motorhoz.
 
-- A legjobb teljesítmény érdekében kövesse ezeket a [teljesítménnyel kapcsolatos tippeket](performance-tips.md).
-    > [!NOTE]
-    > A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez.
+- Kövesse az alábbi [SDK-teljesítménnyel kapcsolatos tippeket](performance-tips.md).
+    - [A .NET SDK hibaelhárítási útmutatója](troubleshoot-dot-net-sdk.md)
+    - [A Java SDK hibaelhárítási útmutatója](troubleshoot-java-sdk-v4-sql.md)
 - Az SDK lehetővé teszi a beállítását a `MaxItemCount` lekérdezésekhez, de nem adhat meg minimális számú tételt.
     - A kódnak minden oldalméret, nulláról a értékre kell kezelnie `MaxItemCount` .
-    - Egy oldal elemeinek száma mindig kisebb vagy egyenlő lesz a megadott értékkel `MaxItemCount` . A azonban `MaxItemCount` szigorúan maximális, és ennél az értéknél kevesebb eredmény lehet.
 - Időnként előfordulhat, hogy a lekérdezések üres lapokkal is rendelkezhetnek, még akkor is, ha egy jövőbeli oldal eredményei vannak. Ennek oka a következő lehet:
     - Az SDK-t több hálózati hívás is végezheti.
     - Előfordulhat, hogy a lekérdezés hosszú időt vesz fel a dokumentumok beolvasására.
-- Minden lekérdezés folytatási jogkivonattal rendelkezik, amely lehetővé teszi a lekérdezés folytatását. Ügyeljen arra, hogy a lekérdezés teljes mértékben le legyen ürítve. Tekintse meg az SDK-mintákat, és használjon `while` hurkot a `FeedIterator.HasMoreResults` teljes lekérdezés kiürítéséhez.
+- Minden lekérdezés folytatási jogkivonattal rendelkezik, amely lehetővé teszi a lekérdezés folytatását. Ügyeljen arra, hogy a lekérdezés teljes mértékben le legyen ürítve. További információ [az eredmények több oldalának kezelésére](sql-query-pagination.md#handling-multiple-pages-of-results)
 
 ## <a name="get-query-metrics"></a>Lekérdezési metrikák beolvasása
 
@@ -488,7 +487,7 @@ A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével műk
 
 A lekérdezések az eredmények előzetes beolvasására lettek kialakítva, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javítására nyújt segítséget. A MaxBufferedItemCount beállítása korlátozza az előre beolvasott eredmények számát. Ha ezt az értéket a visszaadott várt számú eredmény (vagy egy magasabb szám) értékre állítja, a lekérdezés a lehető legtöbb előnyt érheti el az előzetes beolvasáskor. Ha a-1 értéket adja meg, a rendszer automatikusan meghatározza a pufferbe kerülő elemek számát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan méri a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
 * [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)

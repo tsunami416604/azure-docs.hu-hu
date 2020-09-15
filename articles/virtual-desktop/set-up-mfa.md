@@ -3,15 +3,15 @@ title: Azure-Multi-Factor Authentication beállítása a Windows rendszerű virt
 description: Az Azure Multi-Factor Authentication beállítása a fokozott biztonság érdekében a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017777"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089921"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Az Azure Multi-Factor Authentication engedélyezése Windows Virtual Desktophoz
 
@@ -48,10 +48,19 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
 7. Válassza a **Kész** lehetőséget.
 8. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**lehetőséget.
 9. Válassza ki a következő alkalmazások egyikét, amely alapján a Windows rendszerű virtuális asztali verziót használja.
-   - Ha a Windowsos virtuális asztalt (klasszikus) használja, válassza ki ezt az alkalmazást:
+   
+   - Ha a Windows Virtual Desktopot (klasszikus) használja, válassza a következő alkalmazásokat:
+       
        - **Windows rendszerű virtuális asztal** (alkalmazás-azonosító 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Windows rendszerű virtuális asztali ügyfél** (alkalmazás-azonosító fa4345a4-a730-4230-84a8-7d9651b86739), amely lehetővé teszi szabályzatok beállítását a webes ügyfélen
+       
+        Ezt követően ugorjon előre a 11. lépésre.
+
    - Ha a Windows rendszerű virtuális asztalt használja, válassza a következő alkalmazást:
+       
        -  **Windows rendszerű virtuális asztal** (alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07)
+       
+        Ezt követően folytassa a 10. lépéssel.
 
    >[!IMPORTANT]
    > Ne válassza ki a Windows rendszerű virtuális asztali Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63) nevű alkalmazást. Ez az alkalmazás csak a felhasználói hírcsatorna beolvasására szolgál, és nem rendelkezhet MFA-val.

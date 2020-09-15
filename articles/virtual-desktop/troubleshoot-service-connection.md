@@ -1,17 +1,17 @@
 ---
 title: A Windows rendszerű virtuális asztali kapcsolat hibáinak megoldása – Azure
-description: Az ügyfélkapcsolatok Windows virtuális asztali bérlői környezetben való beállításakor felmerülő problémák megoldása.
+description: Problémák megoldása a Windows rendszerű virtuális asztali bérlői környezetben a szolgáltatási kapcsolatok beállítása során.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009375"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089904"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
 
@@ -40,7 +40,13 @@ A felhasználók elindíthatják Távoli asztal-ügyfeleket, és képesek hitele
 
 4. Ha a felhasználó egy Azure Active Directory (AD) felhasználói csoport tagja, győződjön meg róla, hogy a felhasználói csoport a terjesztési csoport helyett biztonsági csoport. A Windows virtuális asztal nem támogatja az Azure AD terjesztési csoportokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>A felhasználó elveszíti a meglévő hírcsatornát, és nem jelenik meg távoli erőforrás (nincs hírcsatorna)
+
+Ez a hiba általában akkor jelenik meg, ha egy felhasználó áthelyezte az előfizetést egy Azure AD-bérlőből egy másikba. Ennek eredményeképpen a szolgáltatás elveszti a felhasználói hozzárendeléseinek nyomon követését, mivel ezek továbbra is a régi Azure AD-bérlőhöz vannak kötve.
+
+Ennek megoldásához mindössze annyit kell tennie, hogy újra hozzárendeli a felhasználókat az alkalmazás-csoportjaihoz.
+
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört

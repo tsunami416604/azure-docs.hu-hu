@@ -4,12 +4,12 @@ description: Testreszabhatja a C# .NET chat robotot egy személyre szabott hurok
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935653"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089887"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Oktatóanyag: személyre szabott használata a .NET-csevegési robotban
 
@@ -21,7 +21,7 @@ Használjon egy C# .NET chat-robotot egy személyre szabott hurok használatáva
 > [!div class="checklist"]
 > * Az Azure-erőforrások beállítása
 > * A bot konfigurálása és futtatása
-> * A robottal való interakció a robot Emulator használatával
+> * A robot használata a bot Framework Emulator használatával
 > * Annak megismerése, hogy a robot hogyan használja a személyre szabott
 
 
@@ -174,7 +174,7 @@ Tartsa meg a webhelyet, mert az oktatóanyag leírja, hogy mit csinál a robot, 
 
 ## <a name="set-up-the-bot-emulator"></a>A robot-emulátor beállítása
 
-1. Nyissa meg a robot Emulatort, és válassza a **robot megnyitása**lehetőséget.
+1. Nyissa meg a bot Framework Emulatort, és válassza a **robot megnyitása**lehetőséget.
 
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Képernyőkép a robot-emulátor indítási képernyőjéről.":::
 
@@ -430,7 +430,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat
 * Törölje a minta projekt könyvtárát.
 * Törölje a személyre szabott és LUIS-erőforrást a Azure Portal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Personalizer működése](how-personalizer-works.md)
 * [Funkciók](concepts-features.md): a funkciókkal és környezettel kapcsolatos fogalmak megismerése
 * [Jutalmak](concept-rewards.md): tudnivalók a jutalmak kiszámításáról

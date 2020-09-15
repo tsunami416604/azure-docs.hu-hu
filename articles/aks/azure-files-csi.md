@@ -5,53 +5,55 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 018275b6db4c2d2d1059f35077f74a6f45ec3ba9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089870"
 ---
-# <a name="use-the-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>A Azure Files Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes Service-ben (ak) (előzetes verzió)
-A Azure Files CSI-illesztőprogram egy, az AK által használt [CSI-specifikációnak](https://github.com/container-storage-interface/spec/blob/master/spec.md) megfelelő illesztőprogram a Azure Files-megosztások életciklusának kezeléséhez. 
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>A Azure Files Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes Service-ben (ak) (előzetes verzió)
 
-A Container Storage Interface (CSI) egy olyan szabvány, amely tetszőleges blokk-és file Storage-rendszerek számára teszi elérhetővé a Kubernetes tárolt számítási feladatokat. A CSI használatával az Azure Kubernetes Service (ak) mostantól képes írni, üzembe helyezni és megismételni a beépülő modult a Kubernetes meglévő tárolási rendszereinek új vagy javító funkcióinak megadásával anélkül, hogy meg kellene érintenie az alapvető Kubernetes-kódot, és várnia kell a kiadási ciklusokra.
+A Azure Files Container Storage Interface (CSI) illesztőprogramja az Azure Kubernetes Service (ak) által használt [CSI-specifikációnak](https://github.com/container-storage-interface/spec/blob/master/spec.md)megfelelő illesztőprogram a Azure Files-megosztások életciklusának kezeléséhez.
+
+A CSI egy olyan szabvány, amely tetszőleges blokk-és file Storage-rendszereket helyez el a Kubernetes-alapú tároló-munkaterhelések számára. A CSI bevezetésével és használatával mostantól írhat, telepíthet és megismételheti a beépülő modulokat, hogy új vagy javítsa a meglévő tárolási rendszereket a Kubernetes anélkül, hogy meg kellene érintenie az alapvető Kubernetes-kódot, és várnia kell a kiadási ciklusokra.
 
 Ha a CSI-illesztőprogram támogatásával szeretne létrehozni egy AK-fürtöt, tekintse [meg a CSI-illesztőprogramok engedélyezése az Azure-lemezekhez és a Azure Files az AK](csi-storage-drivers.md)
 
 >[!NOTE]
-> A *"beépített illesztőprogramok"* kifejezés az alapszintű kubernetes-kód részét képező aktuális tároló-illesztőprogramokat és a beépülő modulokat tartalmazó új CSI-illesztőprogramokat tartalmazza.
+> A *fában lévő illesztőprogramok* az alapszintű Kubernetes-kód részét képező, az új CSI-illesztőprogramok, amelyek beépülő modulok.
 
-## <a name="use-a-persistent-volume-pv-with-azure-files"></a>Állandó kötet (PV) használata Azure Files
+## <a name="use-a-persistent-volume-with-azure-files"></a>Állandó kötet használata Azure Files
 
-Az [állandó kötetek](concepts-storage.md#persistent-volumes) a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelölik. Egy állandó kötetet egy vagy több hüvely is használhat, és dinamikusan vagy statikusan kiépíthető. Ha több hüvelynek egyidejű hozzáférésre van szüksége ugyanahhoz a tárolási kötethez, akkor a Azure Files használatával csatlakozhat a [Server Message Block (SMB) protokollal][smb-overview]. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan egy Azure Files-megosztást egy Azure Kubernetes-szolgáltatási (ak-) fürtön több hüvely használatával. Statikus kiépítés esetén lásd: [a kötet manuális létrehozása és használata Azure Files megosztással](azure-files-volume.md).
+Az [állandó kötet (PV)](concepts-storage.md#persistent-volumes) a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. A PV-t egy vagy több hüvely is használhatja, és dinamikusan vagy statikusan kiépíthető. Ha több hüvelynek egyidejű hozzáférésre van szüksége ugyanahhoz a tárolási kötethez, akkor a Azure Files használatával csatlakozhat a [Server Message Block (SMB) protokollal][smb-overview]. Ez a cikk bemutatja, hogyan hozhat létre dinamikusan egy Azure Files-megosztást egy AK-fürt több hüvelye általi használatra. Statikus kiépítés esetén tekintse [meg a kötetek manuális létrehozása és használata Azure Files megosztással](azure-files-volume.md)című témakört.
 
 A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-using-the-built-in-storage-classes"></a>Azure Files PVs dinamikus létrehozása a beépített tárolási osztályok használatával
-A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName*:
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Azure Files PVs dinamikus létrehozása a beépített tárolási osztályok használatával
 
-* *Standard_LRS* standard, helyileg redundáns tárolás
-* *Standard_GRS* – szabványos geo-redundáns tárolás
-* *Standard_ZRS* – szabványos zóna redundáns tárolója
-* *Standard_RAGRS* – szabványos olvasási hozzáférésű geo-redundáns tárolás
-* *Premium_LRS* – prémium helyileg redundáns tárolás
+A tárolási osztályok a Azure Files megosztások létrehozásának módját határozzák meg. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára a tárolási osztállyal való használatra a Azure Files megosztások tárolásához. Válasszon az alábbi [Azure Storage-redundancia SKU][storage-skus] - *skuName*közül:
+
+* **Standard_LRS**: standard, helyileg redundáns tárolás
+* **Standard_GRS**: standard geo-redundáns tárolás
+* **Standard_ZRS**: standard zóna – redundáns tárolás
+* **Standard_RAGRS**: standard olvasási hozzáférésű geo-redundáns tárolás
+* **Premium_LRS**: prémium helyileg redundáns tárolás
 
 > [!NOTE]
-> Azure Files támogatja a Premium Storage-t, a prémium szintű fájlmegosztás minimális 100 GB.
+> Azure Files támogatja az Azure Premium Storaget. A prémium fájlmegosztás minimális megosztása 100 GB.
 
-Ha a Storage CSI-illesztőprogramokat az AK-on használja, 2 további beépített, `StorageClasses` amely a **Azure Files CSI Storage-illesztőprogramokat**használja. A további CSI-tárolási osztályok a fürttel együtt a fában alapértelmezett tárolási osztályok mellett jönnek létre.
+Ha a Storage CSI-illesztőprogramokat használja az AK-on, két további beépített, `StorageClasses` amely a Azure Files CSI Storage-illesztőprogramokat használja. A további CSI-tárolási osztályok a fürttel együtt a fában alapértelmezett tárolási osztályok mellett jönnek létre.
 
-- `azurefile-csi` -Az Azure standard Storage használatával létrehoz egy Azure-fájlmegosztást. 
-- `azurefile-csi-premium` – Az Azure Premium Storage használatával létrehoz egy Azure-fájlmegosztást. 
+- `azurefile-csi`: Az Azure standard Storage használatával hoz létre Azure Files megosztást.
+- `azurefile-csi-premium`: Az Azure Premium Storage használatával hoz létre egy Azure Files-megosztást.
 
-A visszaigénylési házirend mindkét tárolási osztályban biztosítja, hogy az alapul szolgáló Azure-fájlmegosztás törölve legyen a megfelelő állandó kötet törlésekor. A tárolási osztályok azt is konfigurálja, hogy a fájlmegosztás bővíthető legyen, csak az állandó mennyiségi jogcímet kell módosítania az új mérettel.
+A visszaigénylési házirend mindkét tárolási osztályban biztosítja, hogy az alapul szolgáló Azure Files-megosztás törölve legyen a megfelelő PV törlésekor. A tárolási osztályok azt is konfigurálja, hogy a fájlmegosztás bővíthető legyen, csak az állandó mennyiségi jogcímet (PVC) kell szerkesztenie az új mérettel.
 
-A tárolási osztályok kihasználása érdekében hozzon létre egy [állandó mennyiségi jogcímet (PVC)](concepts-storage.md#persistent-volume-claims) és a megfelelő Pod-t, amely hivatkozik és kihasználja őket. A tárolási osztályok alapján a tárolók automatikus kiépítéséhez állandó mennyiségi jogcím (PVC) használatos. A PVC az előre létrehozott tárolási osztályok egyikét vagy egy felhasználó által definiált tárolási osztályt használhat Azure Files megosztás létrehozásához a kívánt SKU-hoz és mérethez. Ha létrehoz egy Pod-definíciót, a rendszer az állandó kötet jogcímet adja meg a kívánt tár igényléséhez.
+A tárolási osztályok használatához hozzon létre egy [PVC](concepts-storage.md#persistent-volume-claims) -t és egy megfelelő Pod-t, amely hivatkozik és használja azokat. A virtuális gépek a tárolók alapján automatikusan kiépítik a tárterületet. A PVC az előre létrehozott tárolási osztályok egyikét vagy egy felhasználó által definiált tárolási osztályt használhat Azure Files megosztás létrehozásához a kívánt SKU-hoz és mérethez. Ha létrehoz egy Pod-definíciót, a rendszer a PVC-t úgy adja meg, hogy kérje a kívánt tárterületet.
 
-Hozzon létre egy olyan [állandó mennyiségi jogcímet és Pod-t `outfile` , amely az aktuális dátumot](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) a [kubectl Apply][kubectl-apply] paranccsal kinyomtatja:
+Hozzon létre egy [példát a PVC és a pod objektumra, `outfile` amely az aktuális dátumot](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) a [kubectl Apply][kubectl-apply] paranccsal kinyomtatja:
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -61,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-Ha a pod futó állapotban van, ellenőrizheti, hogy a fájlmegosztás megfelelően van-e csatlakoztatva az alábbi parancs futtatásával, és a kimenet ellenőrzése a következőt tartalmazza `outfile` : 
+Ha a pod futó állapotban van, ellenőrizheti, hogy a fájlmegosztás megfelelően van-e csatlakoztatva az alábbi parancs futtatásával, és a kimenet ellenőrzése a következőt tartalmazza `outfile` :
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -76,7 +78,7 @@ Az alapértelmezett tárolási osztályok a leggyakoribb forgatókönyvek, de ne
 
 A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes csatlakoztatott fájlmegosztás esetében. Megadhatja a különböző csatlakoztatási beállításokat a tárolási osztály objektumon.
 
-Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és illessze be a következő példa jegyzékfájlt: 
+Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és illessze be a következő példa jegyzékfájlt:
 
 ```yaml
 kind: StorageClass
@@ -107,7 +109,7 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Az Azure Files CSI-illesztőprogram támogatja az állandó kötetek és a mögöttes fájlmegosztás [pillanatképének](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) létrehozását. 
+A Azure Files CSI-illesztőprogram támogatja az állandó kötetek és a mögöttes fájlmegosztás [pillanatképének](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) létrehozását.
 
 Hozzon létre egy [mennyiségi pillanatkép-osztályt](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml) a [kubectl Apply][kubectl-apply] paranccsal:
 
@@ -117,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-Hozzon létre egy [kötet-pillanatképet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) az [oktatóanyag elején dinamikusan létrehozott](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes)PVC-ből `pvc-azurefile` .
+Hozzon létre egy [kötet-pillanatképet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) az [oktatóanyag elején dinamikusan létrehozott](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)PVC-ből `pvc-azurefile` .
 
 
 ```bash
@@ -156,14 +158,14 @@ Status:
 Events:                                <none>
 ```
 
-## <a name="resize-a-persistent-volume-pv"></a>Állandó kötet átméretezése (PV)
+## <a name="resize-a-persistent-volume"></a>Állandó kötet átméretezése
 
-A PVC számára nagyobb kötetet igényelhet. Szerkessze a PVC objektumot, és válasszon nagyobb méretet. Ez a módosítás elindítja az alapul szolgáló kötet kiterjesztését, amely biztonsági másolatot készít a PersistentVolume. 
+A PVC számára nagyobb kötetet igényelhet. Szerkessze a PVC objektumot, és válasszon nagyobb méretet. Ez a módosítás elindítja az alapul szolgáló kötet kiterjesztését, amely a PV-t támogatja.
 
-> [!NOTE] 
-> Egy új PersistentVolume soha nem jön létre a jogcím kielégítése érdekében. Ehelyett a rendszer átméretezi egy meglévő kötetet.
+> [!NOTE]
+> Egy új PV soha nem jön létre, hogy kielégítse a jogcímet. Ehelyett a rendszer átméretezi egy meglévő kötetet.
 
-Az AK-ban a beépített `azurefile-csi` tárolási osztály már támogatja a bővítést, így a [korábban a tárolási osztállyal létrehozott PVC-t használja fel](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes). A PVC kért egy 100Gi-fájlmegosztást, a futtatásával ellenőrizheti, hogy:
+Az AK-ban a beépített `azurefile-csi` tárolási osztály már támogatja a bővítést, ezért használja a [korábban létrehozott PVC-t ezzel a tárolási osztállyal](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes). A PVC kért egy 100Gi-fájlmegosztást. A futtatásával a következőket ellenőrizheti:
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -180,7 +182,7 @@ $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azurefile patched
 ```
 
-Győződjön meg arról, hogy mind a PVC, mind a hüvelyen belül található fájlrendszer megjeleníti az új méretet:
+Győződjön meg arról, hogy mind a PVC, mind a fájlrendszer a pod-on belül az új méretet mutatja:
 
 ```console
 $ kubectl get pvc pvc-azurefile
@@ -194,9 +196,9 @@ Filesystem                                                                      
 
 ## <a name="windows-containers"></a>Windows-tárolók
 
-Az Azure Files CSI-illesztőprogram a Windows-csomópontokat és-tárolókat is támogatja, ha Windows-tárolókat szeretne használni a Windows- [tárolók oktatóanyag](windows-container-cli.md) használatával Windows-csomópontok készletének hozzáadásához.
+A Azure Files CSI-illesztőprogram a Windows-csomópontokat és-tárolókat is támogatja. Ha Windows-tárolókat szeretne használni, kövesse a Windows- [tárolók oktatóanyagot](windows-container-cli.md) a Windows-csomópontok hozzáadásához.
 
-Ha már rendelkezik Windows-csomóponttal, használja ki a beépített tárolási osztályokat, `azurefile-csi` vagy hozzon létre egyéni fájlokat. Üzembe helyezhet egy olyan, [Windows-alapú állapot-nyilvántartó készletet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) , amely időbélyegeket ment egy fájlba, ha `data.txt` az alábbi parancsot telepíti a [kubectl Apply][kubectl-apply] paranccsal:
+A Windows-csomópontok készletének használata után használja a beépített tárolási osztályokat, `azurefile-csi` vagy hozzon létre egyéni fájlokat. Olyan [Windows-alapú állapot-nyilvántartó készletet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) helyezhet üzembe, amely időbélyegeket ment egy fájlba, ha a `data.txt` következő parancsot telepíti a [kubectl Apply][kubectl-apply] paranccsal:
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -218,8 +220,8 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure-lemezek CSI-illesztőprogramjának használatáról további információt az [Azure-lemezek használata a CSI-illesztőprogramokkal](azure-disk-csi.md)című témakörben talál.
-- További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-storage]
+- Az Azure-lemezek CSI-illesztőprogramjainak használatáról további információt az [Azure-lemezek használata a CSI-illesztőprogramokkal](azure-disk-csi.md)című témakörben talál.
+- További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban][operator-best-practices-storage].
 
 
 <!-- LINKS - external -->
