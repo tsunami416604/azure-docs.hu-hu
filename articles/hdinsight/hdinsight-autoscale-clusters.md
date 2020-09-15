@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090108"
+ms.locfileid: "90532188"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök autoskálázása
 
@@ -68,7 +68,7 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 > [!Important]
 > Az Azure HDInsight automatikus skálázási funkciója 2019. november 7. óta általánosan elérhető a Spark- és Hadoop-fürtökhöz, és olyan fejlesztéseket tartalmaz, amelyek a funkció előzetes verziójában nem voltak elérhetők. Ha a 2019. november 7. előtt létrehozott egy Spark-fürtöt, és használni szeretné rajta az automatikus skálázási funkciót, akkor azt az eljárást javasoljuk, hogy hozzon létre egy új fürtöt, és azon engedélyezze az automatikus skálázást.
 >
-> Az automatikus skálázás az Interactive Query- (LLAP) és HBase-fürtökhöz továbbra is előzetes verzióként érhető el. Az automatikus skálázás kizárólag a Spark-, Hadoop-, Interactive Query és HBase-fürtökhöz érhető el.
+> Az interaktív lekérdezés (LLAP) az általános elérhetőség érdekében a 2020-es augusztus 27-én megjelent. A HBase-fürtök még előzetes verzióban érhetők el. Az automatikus skálázás kizárólag a Spark-, Hadoop-, Interactive Query és HBase-fürtökhöz érhető el.
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
@@ -81,7 +81,7 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 \* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Fürt létrehozása terheléselosztási alapú automatikus skálázással
 

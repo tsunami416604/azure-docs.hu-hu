@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520656"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532324"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Az eszközök regisztrálásának kezelése az Azure Device kiépítési szolgáltatás SDK-k használatával
 Az *eszközök* regisztrálása egyetlen eszköz vagy eszközök egy csoportját hozza létre, amelyek egy bizonyos ponton regisztrálhatnak az eszköz kiépítési szolgáltatásával. A beléptetési rekord tartalmazza az eszköz (ek) kezdeti kívánt konfigurációját a regisztráció részeként, beleértve a kívánt IoT hubot is. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás számára az Azure IoT-létesítési szolgáltatás SDK-k használatával programozott módon.  Az SDK-k a GitHubon érhetők el ugyanazon a tárházon, mint az Azure IoT SDK-k.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Szerezze be a kapcsolatok karakterláncát az eszköz kiépítési szolgáltatásának példányáról.
-* Szerezze be az eszköz biztonsági összetevőit a használt [igazolási mechanizmushoz](concepts-security.md#attestation-mechanism) :
+* Szerezze be az eszköz biztonsági összetevőit a használt [igazolási mechanizmushoz](concepts-service.md#attestation-mechanism) :
     * [**Platformmegbízhatósági modul (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Egyéni regisztráció: regisztrációs azonosító és TPM-kiterjesztési kulcs fizikai eszközről vagy TPM-szimulátorból.
         * A regisztrációs csoport nem vonatkozik a TPM-igazolásra.

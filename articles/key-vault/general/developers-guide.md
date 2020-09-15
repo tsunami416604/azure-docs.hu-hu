@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394754"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532290"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -24,7 +24,7 @@ Key Vault lehetővé teszi a bizalmas adatok biztonságos elérését az alkalma
 - Az alkalmazás a kulcsokat az aláíráshoz és a titkosításhoz is használhatja, és az alkalmazáson kívül is tartja a kulcskezelő szolgáltatást, így a megoldás földrajzilag elosztott alkalmazásként is használható.
 - Key Vault tanúsítványok kezelése. További információ: [tanúsítványok](../certificates/about-certificates.md)
 
-További általános információk a Azure Key Vaultről: [Mi az Key Vault](overview.md)).
+További általános információk a Azure Key Vaultről: [Mi az Key Vault](overview.md).
 
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
@@ -140,7 +140,7 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault áttekintések és fogalmak
 
-- [Key Vault-törlési viselkedés](soft-delete-overview.md)) egy olyan funkciót ismertet, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
+- Key Vault a helyreállítható [törlési viselkedés](soft-delete-overview.md) olyan funkciót ismertet, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
 - [Key Vault az ügyfelek szabályozása](overview-throttling.md) a szabályozás alapvető fogalmait, és az alkalmazás megközelítését kínálja.
 - [Key Vault biztonsági világok](overview-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.
 

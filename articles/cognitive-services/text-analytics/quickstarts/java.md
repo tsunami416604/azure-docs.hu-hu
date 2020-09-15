@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: a Text Analytics meghívása a Java használatával REST API'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódokat, amelyekkel gyorsan megkezdheti az Azure Cognitive Services Text Analytics API használatának első lépéseit.
+description: Ez a rövid útmutató azt ismerteti, hogyan használható a Java az információk és a kódok megszerzéséhez, hogy gyorsan megismerkedjen az Azure Cognitive Services Text Analytics API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: f8f9d76e5f1584ce54897950d7e35e2b22ba958e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319779"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532273"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Gyors útmutató: az Azure Text Analytics kognitív szolgáltatás meghívása a Java használatával
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelvfelismerés
+## <a name="detect-language"></a>Nyelv felismerése
 
 A Nyelvfelismerés API észleli a szöveges dokumentum nyelvét az [észlelési nyelv módszer](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)használatával.
 
@@ -706,7 +706,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

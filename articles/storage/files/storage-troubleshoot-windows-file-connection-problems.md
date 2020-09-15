@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061206"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532392"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -369,7 +369,7 @@ Ezt a hibát valószínűleg a Join-AzStorageAccountforAuth parancsban lévő sz
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure Files helyszíni AD DS hitelesítés támogatása AES 256 Kerberos-titkosításhoz
 
-Az AES 256 Kerberos-titkosítási támogatást bevezetett Azure Files helyszíni AD DS hitelesítéshez a [AzFilesHybrid modul v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Ha engedélyezte a AD DS hitelesítést a v 0.2.2 alacsonyabb verziójú modulnál, le kell töltenie a legújabb AzFilesHybrid-modult (v 0.2.2 +), és az alábbi PowerShellt kell futtatnia. Ha még nem engedélyezte AD DS hitelesítését a Storage-fiókjában, ezt az [útmutatót](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) az engedélyezéshez követheti. Ha a funkciót a AzFilesHybrid modul v 0.2.2 vagy újabb verziójának engedélyezése során végezte el, nem kell újrafuttatnia a PowerShellt. 
+Az AES 256 Kerberos-titkosítási támogatást bevezetett Azure Files helyszíni AD DS hitelesítéshez a [AzFilesHybrid modul v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Ha engedélyezte a AD DS hitelesítést a v 0.2.2 alacsonyabb verziójú modulnál, le kell töltenie a legújabb AzFilesHybrid-modult (v 0.2.2 +), és az alábbi PowerShellt kell futtatnia. Ha még nem engedélyezte AD DS hitelesítését a Storage-fiókjában, ezt az [útmutatót](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) az engedélyezéshez követheti. 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

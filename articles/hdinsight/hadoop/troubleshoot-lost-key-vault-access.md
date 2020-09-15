@@ -1,18 +1,18 @@
 ---
 title: Az Azure HDInsight-fürtök lemezes titkosítása elveszti Key Vault hozzáférését
-description: Hibaelhárítási lépések és lehetséges megoldások az Azure HDInsight-fürtökkel való interakció során felmerülő problémákhoz.
+description: Hibaelhárítási lépések és lehetséges megoldások Key Vault hozzáférési problémákhoz az Azure HDInsight-fürtökkel való interakció során.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461531"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532562"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Forgatókönyv: a lemez titkosításával rendelkező Azure HDInsight-fürtök elvesztik Key Vault hozzáférését
 
@@ -28,11 +28,11 @@ A riasztás biztosítja, hogy a KV elérhető legyen a fürtcsomópontok közöt
 
 Keresse meg az Apache Ambari felhasználói felületét, ahol további információkat talál a **lemezes titkosítási Key Vault állapotáról**. Ez a riasztás részletesen ismerteti az ellenőrzési hibák okát.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 ### <a name="kvaad-outage"></a>KV/HRE leállás
 
-További részletekért tekintse meg a [Azure Key Vault rendelkezésre állási és redundancia](../../key-vault/general/disaster-recovery-guidance.md) és az Azure status oldalát.https://status.azure.com/
+További részletekért tekintse meg a [Azure Key Vault rendelkezésre állási és redundancia](../../key-vault/general/disaster-recovery-guidance.md) és az Azure status oldalát. https://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>KV véletlen törlés
 
@@ -80,7 +80,7 @@ A hozzáférési szabályzatok rendszeres naplózása és tesztelése.
 * Lejárati készlet nélküli kulcsot használjon.
 * Ha a lejáratot be kell állítani, a kulcsokat a lejárati dátum előtt kell elforgatni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

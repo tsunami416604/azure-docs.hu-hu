@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b88fb32fd4bc07bbaaaf8834646e8d585491dc6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395689"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532545"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-áramkörök áthelyezése a Klasszikusból a Resource Manager-alapú üzemi modellbe a PowerShell használatával
 
@@ -95,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 Klasszikus módban egy ExpressRoute-áramkör nem rendelkezik egy régióhoz kötött koncepcióval. A Resource Managerben azonban minden erőforrást egy Azure-régióhoz kell rendelni. A Move-AzExpressRouteCircuit parancsmagban megadott régió technikailag bármely régió lehet. A szervezeti célokra érdemes lehet olyan régiót választani, amely szorosan reprezentálja a társi helyet.
 
 > [!NOTE]
-> Az áthelyezés befejezése után a rendszer az előző parancsmagban szereplő új nevet fogja használni az erőforrás kezeléséhez. Az áramkör alapvetően átnevezve lesz.
-> 
+> * Miután a klasszikus ExpressRoute-áramkört a Resource Manager-alapú üzemi modellbe helyezte, alapértelmezés szerint a klasszikus és a Resource Manager-alapú üzemi modellhez is hozzáférhet.
+> * Az előző parancsmagban szereplő új nevet fogja használni a rendszer az erőforrás kezeléséhez. Az áramkör alapvetően átnevezve lesz.
 
 ## <a name="modify-circuit-access"></a>Áramköri hozzáférés módosítása
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>A ExpressRoute áramkör-hozzáférés engedélyezése mindkét üzembe helyezési modellhez
 
-A klasszikus ExpressRoute-áramkör Resource Manager-alapú üzemi modellbe való áthelyezése után mindkét üzemi modellhez engedélyezheti a hozzáférést. A következő parancsmagok futtatásával engedélyezheti mindkét telepítési modell elérését:
+Engedélyezheti a hozzáférést a klasszikus üzemi modellhez a Resource Manager-alapú üzemi modellben létrehozott ExpressRoute-áramkörökhöz. A következő parancsmagok futtatásával engedélyezheti mindkét telepítési modell elérését:
 
 1. Az áramkör részleteinek beolvasása.
 

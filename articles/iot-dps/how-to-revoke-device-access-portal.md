@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299257"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532341"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Eszköz regisztrálása az Azure-ból IoT Hub Device Provisioning Service
 
 Az eszköz hitelesítő adatainak megfelelő kezelése elengedhetetlen a nagy horderejű rendszerek, például a IoT-megoldások számára. Az ilyen rendszerekre vonatkozó ajánlott eljárás az, hogy az eszközök hozzáférésének visszavonása a hitelesítő adataik miatt visszavonható legyen, függetlenül attól, hogy a megosztott hozzáférési aláírások (SAS) tokenje vagy az X. 509 tanúsítványa sérült-e. 
 
-Az eszközök kiépítési szolgáltatásának beléptetése lehetővé teszi, hogy az eszköz [automatikusan kiépíthető](concepts-auto-provisioning.md)legyen. A kiépített eszköz olyan, amely IoT Hub regisztrálva van, lehetővé téve, hogy megkapja a kezdeti [eszköz Twin](~/articles/iot-hub/iot-hub-devguide-device-twins.md) állapotát, és megkezdje a jelentéskészítési telemetria-adatgyűjtést. Ez a cikk azt ismerteti, hogyan lehet lemondani egy eszköz regisztrációját a kiépítési szolgáltatási példányról, ami megakadályozza, hogy a jövőben újra kiépíthető legyen.
+Az eszközök kiépítési szolgáltatásban [való regisztrálása](about-iot-dps.md#provisioning-process)lehetővé teszi az eszköz kiosztását. A kiépített eszköz olyan, amely IoT Hub regisztrálva van, lehetővé téve, hogy megkapja a kezdeti [eszköz Twin](~/articles/iot-hub/iot-hub-devguide-device-twins.md) állapotát, és megkezdje a jelentéskészítési telemetria-adatgyűjtést. Ez a cikk azt ismerteti, hogyan lehet lemondani egy eszköz regisztrációját a kiépítési szolgáltatási példányról, ami megakadályozza, hogy a jövőben újra kiépíthető legyen.
 
 > [!NOTE] 
 > Ügyeljen arra, hogy a hozzáférését visszavonó eszközök újrapróbálkozási szabályzata. Előfordulhat például, hogy egy végtelen újrapróbálkozási házirenddel rendelkező eszköz folyamatosan próbálkozik a kiépítési szolgáltatással való regisztrálással. Ez a helyzet felhasználja a szolgáltatási erőforrásokat, és valószínűleg hatással van a teljesítményre.

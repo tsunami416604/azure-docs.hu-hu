@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag a Azure Portal GPU-val való kapcsolódáshoz, konfiguráláshoz, aktiváláshoz Azure Stack Edge-eszközhöz | Microsoft Docs
-description: Az Azure Stack Edge GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
+description: Ismerje meg, hogyan csatlakozhat a Azure Stack Edge-eszközhöz egy beépített GPU-val a helyi webes felhasználói felület használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: ac3ba2583e0f9a42b7f139538eee04de8980b492
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421356"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532256"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Oktatóanyag: Kapcsolódás Azure Stack Edge-hez GPU használatával
 
@@ -48,15 +48,15 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
     Az eszköz hátlapja némileg eltérő lehet a kapott modelltől függően. További információ: [az eszköz csatlakoztatása](azure-stack-edge-gpu-deploy-install.md#cable-the-device).
 
 
-3. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes FELÜLETét a következő címen: `https://192.168.100.10` .  
-    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt.
+3. Nyissa meg egy böngészőablakot, és lépjen az eszköz helyi webes felhasználói felületére a `https://192.168.100.10` címen.  
+    Ez a művelet eltarthat pár percig, miután bekapcsolta az eszközt.
 
-    Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával. 
+    Megjelenik egy hiba vagy egy figyelmeztetés, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával. 
    
     ![A webhely biztonsági tanúsítványának hibaüzenete](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
 4. Válassza **a folytatás ehhez a weboldalhoz**lehetőséget.  
-    Ezek a lépések a használt böngészőtől függően eltérőek lehetnek.
+    Ezek a lépések eltérők lehetnek, attól függően, hogy milyen böngészőt használ.
 
 5. Jelentkezzen be az eszköz webes felhasználói felületére. Az alapértelmezett jelszó a *jelszó1*. 
    
