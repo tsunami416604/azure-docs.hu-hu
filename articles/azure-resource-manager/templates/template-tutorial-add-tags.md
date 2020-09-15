@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ce25047ae93a332b62b7e785b23da5794031a98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ace23e392d90e77c02df7861df96c066c82eee33
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497511"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069067"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Oktatóanyag: Címkék hozzáadása az ARM-sablonhoz
 
@@ -72,7 +72,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
+> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -96,7 +96,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban címkéket adott hozzá az erőforrásokhoz. A következő oktatóanyagban megtudhatja, hogyan használhatók a paraméterek a sablonban az értékek átadásának egyszerűbbé tételéhez.
 

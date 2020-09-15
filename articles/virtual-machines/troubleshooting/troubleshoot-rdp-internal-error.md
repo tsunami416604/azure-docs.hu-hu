@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235162"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069764"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez
 
@@ -26,7 +26,7 @@ Ez a cikk olyan hibát ismertet, amely akkor fordulhat elő, amikor a Microsoft 
 
 ## <a name="symptoms"></a>Hibajelenségek
 
-Nem csatlakozhat Azure-beli virtuális géphez a távoli asztal protokoll (RDP) használatával. A kapcsolatok beragadnak a "távoli konfigurálás" szakaszban, vagy a következő hibaüzenet jelenik meg:
+Nem csatlakozhat Azure-beli virtuális géphez a távoli asztal protokoll (RDP) használatával. A kapcsolatok beragadnak a **távoli konfigurálása** szakaszba, vagy a következő hibaüzenet jelenik meg:
 
 - Belső RDP-hiba
 - Belső hiba történt
@@ -35,22 +35,26 @@ Nem csatlakozhat Azure-beli virtuális géphez a távoli asztal protokoll (RDP) 
 
 ## <a name="cause"></a>Ok
 
-Ez a probléma a következő okok miatt fordulhat elő:
+A probléma a következő okok miatt fordulhat elő:
 
+- Lehetséges, hogy a virtuális gépet megtámadták.
 - A helyi RSA titkosítási kulcsok nem érhetők el.
 - A TLS protokoll le van tiltva.
 - A tanúsítvány sérült vagy lejárt.
 
 ## <a name="solution"></a>Megoldás
 
-Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+A probléma megoldásához hajtsa végre az alábbi részekben ismertetett lépéseket. Mielőtt elkezdené, készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
 
-A probléma elhárításához használja a soros konzolt, vagy [javítsa ki a virtuális gépet](#repair-the-vm-offline) úgy, hogy a virtuális gép operációsrendszer-lemezét egy helyreállítási virtuális géphez csatolja.
+### <a name="check-rdp-security"></a>RDP-biztonság keresése
 
+Először ellenőrizze, hogy az RDP-port 3389-es hálózati biztonsági csoportja nem biztonságos (nyílt). Ha nem biztonságos, és \* a bejövő forrás IP-címeként jelenik meg, korlátozza az RDP-portot egy különös-felhasználó IP-címére, majd tesztelje az RDP-hozzáférést. Ha ez nem sikerül, hajtsa végre a következő szakaszban ismertetett lépéseket.
 
 ### <a name="use-serial-control"></a>Soros vezérlő használata
 
-Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+A soros konzollal vagy a virtuális [gép offline állapotba](#repair-the-vm-offline) állításával csatlakoztassa a virtuális gép operációsrendszer-lemezét egy helyreállítási virtuális géphez.
+
+A kezdéshez kapcsolódjon a [soros konzolhoz, és nyisson meg egy PowerShell-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Ha a soros konzol nincs engedélyezve a virtuális gépen, lépjen a [virtuális gép kijavítása offline](#repair-the-vm-offline) szakaszra.
 
 #### <a name="step-1-check-the-rdp-port"></a>1. lépés: az RDP-port keresése

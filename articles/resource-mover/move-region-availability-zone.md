@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: fdd564618232ce7fde5a76fb9c37937113f179b2
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670624"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061876"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Azure-beli virtuális gépek áthelyezése egy rendelkezésre állási zónába egy másik régióban
 
@@ -71,8 +71,7 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
     ![Gomb – első lépések](./media/move-region-availability-zone/get-started.png)
 
 3. Az **erőforrások áthelyezése**  >  **forrás + cél**területen válassza ki a forrás-előfizetést és a régiót.
-4. A **cél**mezőben válassza ki azt a régiót, amelyre át szeretné helyezni a virtuális gépeket. 
-5. A **metaadatok régióban**válassza ki, hogy hol szeretné tárolni az áthelyezett erőforrásokra vonatkozó metaadatokat. Egy erőforráscsoport kifejezetten erre a célra lett létrehozva. Ezután kattintson a **Tovább** gombra.
+4. A **cél**mezőben válassza ki azt a régiót, amelyre át szeretné helyezni a virtuális gépeket. Ezután kattintson a **Tovább** gombra.
 
      ![A forrás és a cél előfizetése/régiója kitöltésére szolgáló oldal](./media/move-region-availability-zone/source-target.png)
 

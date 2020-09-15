@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441476"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069628"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -157,7 +157,7 @@ A Storage Sync szolgáltatás üzembe helyezéséhez lépjen a [Azure Portal](ht
 
 A megnyíló panelen adja meg a következőket:
 
-- **Name (név**): a Storage Sync szolgáltatás egyedi neve (/előfizetés).
+- **Name (név**): a Storage Sync szolgáltatás egyedi neve (régiónként).
 - **Előfizetés**: az előfizetés, amelyben létre szeretné hozni a Storage Sync szolgáltatást. A szervezet konfigurációs stratégiájától függően előfordulhat, hogy egy vagy több előfizetéshez fér hozzá. Az Azure-előfizetés az egyes felhőalapú szolgáltatások (például a Azure Files) számlázásának legalapvetőbb tárolója.
 - **Erőforráscsoport**: az erőforráscsoport az Azure-erőforrások logikai csoportja, például egy Storage-fiók vagy egy Storage Sync szolgáltatás. Létrehozhat egy új erőforráscsoportot, vagy használhat meglévő erőforráscsoportot Azure File Synchoz. (Az erőforráscsoportok tárolóként való használatát javasoljuk, hogy a szervezet számára logikailag elkülönítse az erőforrásokat, például a HR-erőforrások vagy egy adott projekt erőforrásainak csoportosítását.)
 - **Hely**: az a régió, amelyben a Azure file Sync központilag telepíteni kívánja. Ebben a listában csak a támogatott régiók érhetők el.

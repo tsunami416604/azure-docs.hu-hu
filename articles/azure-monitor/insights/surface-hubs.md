@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662501"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085348"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Felszíni hubok figyelése Azure Monitorekkel az állapotuk nyomon követéséhez
 
@@ -60,7 +60,7 @@ Ha nem használja az Intune-t a környezet kezeléséhez, manuálisan is regiszt
 3. Kattintson **erre az eszközre**, majd a **figyelés**területen kattintson a **log Analytics beállítások konfigurálása**elemre.
 4. Válassza a **figyelés engedélyezése**lehetőséget.
 5. A Log Analytics beállítások párbeszédpanelen írja be a Log Analytics **munkaterület azonosítóját** , és írja be a **munkaterület kulcsát**.  
-   ![beállítások](./media/surface-hubs/settings.png)
+   ![A képernyőfelvétel a Microsoft Operations Manager Suite beállításait mutatja be a figyelés engedélyezése jelölőnégyzetet, valamint a munkaterület-AZONOSÍTÓhoz és a munkaterület-kulcshoz tartozó szövegmezőket.](./media/surface-hubs/settings.png)
 6. A konfiguráció befejezéséhez kattintson **az OK** gombra.
 
 Megjelenik egy megerősítés, amely azt jelzi, hogy a konfigurációt sikerült-e alkalmazni az eszközön. Ha igen, megjelenik egy üzenet arról, hogy az ügynök sikeresen csatlakozott Azure Monitorhoz. Az eszköz ezután megkezdi az adatok küldését Azure Monitorba, ahol megtekintheti és elvégezheti azt.
@@ -76,6 +76,6 @@ Ha a Surface Hub csempére kattint, az eszköz állapota megjelenik.
 
 [Riasztásokat](../platform/alerts-overview.md) meglévő vagy egyéni naplók alapján is létrehozhat. Az adatAzure Monitor a felületi hubokból gyűjtött adatok alapján megkeresheti az eszközökhöz definiált feltételekkel kapcsolatos problémákat és riasztásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A részletes Surface Hub-információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Riasztásokat](../platform/alerts-overview.md) hozhat létre, amelyekkel értesítést küldhet, ha problémák merülnek fel a Surface hubokban.

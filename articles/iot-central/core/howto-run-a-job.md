@@ -7,12 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 09/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 82a370bcda2d762abb36e6e43ab755c45348e4c5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020007"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060815"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
 
@@ -38,7 +38,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre és futtathat egy feladatot eg
 
     Válassza a **Mentés és kilépés** lehetőséget a feladat a **feladatok** lapon lévő mentett feladatok listájához való hozzáadásához. Később visszatérhet egy feladathoz a mentett feladatok listájából.
 
-    Kattintson a **tovább** gombra a **felülvizsgálati** lapra való áttéréshez. A * * felülvizsgálat * * * * oldal a feladatok konfigurációjának részleteit jeleníti meg. Válassza a **Futtatás** lehetőséget a feladatok elküldéséhez.
+    Kattintson a **tovább** gombra a **felülvizsgálati** lapra való áttéréshez. A **felülvizsgálati** oldal a feladatok konfigurációjának részleteit jeleníti meg. Válassza a **Futtatás** lehetőséget a feladatok elküldéséhez.
 
     :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="A feladatok varázsló Áttekintés lapjának képernyőképe":::
 

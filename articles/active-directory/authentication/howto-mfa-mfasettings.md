@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023839"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068812"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -156,7 +156,7 @@ Ha a Egyesült Államok nem konfigurálta az MFA-hívó AZONOSÍTÓját, a Micro
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> Ha az Azure Multi-Factor Authentication hívásokat a nyilvános telefonos hálózaton keresztül helyezi át, időnként olyan szolgáltatón keresztül irányítják őket, amely nem támogatja a hívó AZONOSÍTÓját. Emiatt a hívó azonosítója nem garantált, noha az Azure Multi-Factor Authentication mindig elküldi.
+> Ha az Azure Multi-Factor Authentication hívásokat a nyilvános telefonos hálózaton keresztül helyezi át, akkor a hívások néha egy olyan szolgáltatón keresztül jutnak át, amely nem támogatja a hívó AZONOSÍTÓját. Emiatt a hívó azonosítója nem garantált, noha az Azure Multi-Factor Authentication mindig elküldi. Ez mind a telefonhívásokra, mind az Azure Multi-Factor Authentication által biztosított szöveges üzenetekre vonatkozik. Ha ellenőriznie kell, hogy egy szöveges üzenet az Azure Multi-Factor Authenticationról van-e, tekintse meg, [milyen SMS-eket használnak az üzenetek küldéséhez?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 A saját hívóazonosító számának konfigurálásához hajtsa végre a következő lépéseket:
 
@@ -268,7 +268,7 @@ A következő lépések végrehajtásával feltételes hozzáférési szabályok
 1. Adja meg a hely nevét.
 1. Válassza **a megjelölés megbízható helyként**lehetőséget.
 1. Adja meg az IP-címtartományt CIDR-jelöléssel a környezethez, például *40.77.182.32/27*.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
 

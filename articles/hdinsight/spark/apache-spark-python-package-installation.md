@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873755"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060747"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
-
-> [!div class="op_single_selector"]
-> * [A Cell Magic használata](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Parancsfájl-művelet használata](apache-spark-python-package-installation.md)
 
 A HDInsight két beépített Python-telepítéssel rendelkezik a Spark-fürtben, az anaconda Python 2,7 és a Python 3,5. Előfordulhat, hogy az ügyfeleknek testre kell szabnia a Python-környezetet. Például külső Python-csomagok vagy más Python-verziók telepítéséhez. Itt bemutatjuk a Python-környezetek biztonságos kezelésének bevált gyakorlatát Apache Spark-fürtökön a HDInsight-on.
 
@@ -60,9 +56,9 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
 1. Python virtuális környezet létrehozása a Conda használatával. A virtuális környezetek elkülönített lemezterületet biztosítanak a projektekhez, és nem kell másokat feltörni. A Python virtuális környezet létrehozásakor megadhatja a használni kívánt Python-verziót. Még akkor is létre kell hoznia virtuális környezetet, ha a Python 2,7 és a 3,5-et szeretné használni. Ez a követelmény annak biztosítása, hogy a fürt alapértelmezett környezete ne legyen kitört. Hozzon létre parancsfájl-műveleteket a fürtön az alábbi szkripttel rendelkező összes csomóponton egy Python virtuális környezet létrehozásához.
 
-    -   `--prefix`Megadja azt az elérési utat, ahol a Conda virtuális környezete él. Az itt megadott elérési út alapján több konfigurációt is meg kell változtatni. Ebben a példában a py35new használjuk, mivel a fürtön már létezik egy py35 nevű meglévő virtuális környezet.
-    -   `python=`Megadja a virtuális környezet Python-verzióját. Ebben a példában az 3,5-es verziót használjuk, amely megegyezik a fürt beépített verziójával. A virtuális környezet létrehozásához más Python-verziókat is használhat.
-    -   `anaconda`Megadja az anaconda-csomagok virtuális környezetben való telepítéséhez szükséges package_spec.
+    -   `--prefix` Megadja azt az elérési utat, ahol a Conda virtuális környezete él. Az itt megadott elérési út alapján több konfigurációt is meg kell változtatni. Ebben a példában a py35new használjuk, mivel a fürtön már létezik egy py35 nevű meglévő virtuális környezet.
+    -   `python=` Megadja a virtuális környezet Python-verzióját. Ebben a példában az 3,5-es verziót használjuk, amely megegyezik a fürt beépített verziójával. A virtuális környezet létrehozásához más Python-verziókat is használhat.
+    -   `anaconda` Megadja az anaconda-csomagok virtuális környezetben való telepítéséhez szükséges package_spec.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
@@ -76,8 +72,8 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     - Conda-csatorna használata:
 
-        -   `seaborn`a csomag neve, amelyet telepíteni szeretne.
-        -   `-n py35new`adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
+        -   `seaborn` a csomag neve, amelyet telepíteni szeretne.
+        -   `-n py35new` adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
@@ -92,8 +88,8 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     - Conda-csatorna használata:
 
-        -   `numpy=1.16.1`a telepítendő csomag neve és verziószáma.
-        -   `-n py35new`adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
+        -   `numpy=1.16.1` a telepítendő csomag neve és verziószáma.
+        -   `-n py35new` adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
@@ -132,7 +128,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     4. Mentse a módosításokat, és indítsa újra az érintett szolgáltatásokat. Ezeknek a változásoknak a Spark2 szolgáltatás újraindítására van szükségük. A Ambari felhasználói felülete kérni fogja a szükséges újraindítási emlékeztetőt, majd kattintson az Újraindítás gombra az összes érintett szolgáltatás újraindításához.
 
-        ![Spark-konfiguráció módosítása a Ambari használatával](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Szolgáltatások újraindítása](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. Ha az újonnan létrehozott virtuális környezetet szeretné használni a Jupyter-on. Módosítsa a Jupyter konfigurációit, és indítsa újra a Jupyter. Futtasson parancsfájl-műveleteket minden olyan fejléc-csomóponton az alábbi utasítással, hogy az új, létrehozott virtuális környezethez Jupyter. Ügyeljen arra, hogy módosítsa a virtuális környezethez megadott előtag elérési útját. A parancsfájl futtatása után indítsa újra a Jupyter szolgáltatást a Ambari felhasználói felületén, hogy elérhetővé tegye ezt a módosítást.
 

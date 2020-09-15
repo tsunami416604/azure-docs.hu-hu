@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459521"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085994"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
@@ -26,7 +26,7 @@ Azure Monitor a megoldások **áttekintése** oldal megjeleníti a log Analytics
 
 A képernyő felső részén található legördülő listák használatával módosíthatja a munkaterületet vagy a csempék időtartományát. Kattintson a csempére egy megoldás megnyitásához, amely részletesebb elemzést tartalmaz az összegyűjtött adatokról.
 
-[![Áttekintés](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![Képernyőfelvétel: a Azure Portal menü a kiválasztott megoldásokkal és a megoldások ablaktáblán megjelenített megoldásokkal.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, és a megoldáshoz tartozó összes erőforrást ugyanúgy megtekintheti, mint bármely más erőforrást. Például a megoldásban szereplő összes naplózási lekérdezés megjelenik a [lekérdezési](../log-query/get-started-portal.md#load-queries) lekérdezésekben a **megoldás-lekérdezések** területen, ha ad hoc elemzést végez a [naplók](../log-query/log-query-overview.md)lekérdezésével.
 

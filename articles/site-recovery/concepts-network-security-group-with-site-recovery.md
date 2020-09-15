@@ -1,20 +1,20 @@
 ---
 title: Hálózati biztonsági csoportok Azure Site Recoverykal | Microsoft Docs
 description: Ismerteti, hogyan használhatók a hálózati biztonsági csoportok a Azure Site Recovery a vész-helyreállításhoz és az áttelepítéshez
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292364"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069679"
 ---
-# <a name="network-security-groups-with-azure-site-recovery"></a>Hálózati biztonsági csoportok Azure Site Recovery
+# <a name="network-security-groups-with-azure-site-recovery"></a>Hálózati biztonsági csoportok Site Recoveryvel
 
 A hálózati biztonsági csoportok a virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozására szolgálnak. A [hálózati biztonsági csoport (NSG)](../virtual-network/security-overview.md#network-security-groups) olyan biztonsági szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, portja és protokollja alapján.
 
@@ -71,7 +71,7 @@ A korábban ismertetett [példa példáját](concepts-network-security-group-wit
 
 A NSG létrehozása és konfigurálása után javasoljuk, hogy futtasson egy [feladatátvételi tesztet](azure-to-azure-tutorial-dr-drill.md) a megírt NSG-társítások és a feladatátvétel utáni Virtuálisgép-kapcsolat ellenőrzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 -    További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md#network-security-groups).
 -    További információ a NSG [biztonsági szabályairól](../virtual-network/security-overview.md#security-rules).
 -    További információ az NSG [érvényes biztonsági szabályairól](../virtual-network/diagnose-network-traffic-filter-problem.md) .

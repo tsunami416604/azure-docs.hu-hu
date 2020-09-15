@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0718151039d88ffb76a07ce082c08fb011dab88b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653396"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061604"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Oktatóanyag: Azure SQL Database-erőforrások áthelyezése egy másik régióba
 
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd. Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,7 +77,6 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 
 3. Az **erőforrások áthelyezése**  >  **forrás + cél**területen válassza ki a forrás-előfizetést és a régiót.
 4. A **cél**mezőben válassza ki azt a régiót, ahová át szeretné helyezni az erőforrásokat. Ezután kattintson a **Tovább** gombra.
-5. A **metaadatok régióban**válassza ki, hogy hol szeretné tárolni az áthelyezett erőforrásokra vonatkozó metaadatokat. Egy erőforráscsoport kifejezetten erre a célra lett létrehozva. Ezután kattintson a **Tovább** gombra.
 
     ![A forrás és a cél régió kiválasztására szolgáló lap](./media/tutorial-move-region-sql/source-target.png)
 

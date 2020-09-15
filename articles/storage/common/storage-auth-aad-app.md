@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/14/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5a39b08f34bec5ee1db42cde1fb171452d0efd3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018807"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069815"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Jogkivonat beszerzése az Azure AD-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez
 
-A Azure Active Directory (Azure AD) az Azure Blob Storage vagy a üzenetsor Storage szolgáltatással való használatának egyik legfőbb előnye, hogy a hitelesítő adatait már nem kell a kódban tárolni. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformról (korábban Azure AD). Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD visszaadja a hozzáférési jogkivonatot az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti a kérelmeket az Azure Blob Storage-ba vagy a várólista-tárolóba.
+A Azure Active Directory (Azure AD) az Azure Blob Storage vagy a üzenetsor Storage szolgáltatással való használatának egyik legfőbb előnye, hogy a hitelesítő adatait már nem kell a kódban tárolni. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD visszaadja a hozzáférési jogkivonatot az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti a kérelmeket az Azure Blob Storage-ba vagy a várólista-tárolóba.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a natív alkalmazást vagy webalkalmazást a Microsoft Identity platform 2,0-alapú hitelesítéshez. A kód például a .NET, más nyelveken pedig hasonló megközelítést használ. A Microsoft Identity platform 2,0-es verziójával kapcsolatos további információkért lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../../active-directory/develop/v2-overview.md).
 
@@ -27,7 +27,7 @@ A OAuth 2,0 kód engedélyezési folyamatának áttekintését lásd: [hozzáfé
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Szerepkör kiosztása egy Azure AD rendszerbiztonsági tag számára
 
-Egy rendszerbiztonsági tag Azure Storage-alkalmazásból történő hitelesítéséhez először konfigurálja a szerepkör alapú hozzáférés-vezérlés (RBAC) beállításait az adott rendszerbiztonsági tag számára. Az Azure Storage az Azure beépített szerepköreit határozza meg, amelyek magukban foglalják a tárolók és a várólisták engedélyeit. Ha az Azure-szerepkör egy rendszerbiztonsági tag számára van rendelve, a rendszerbiztonsági tag hozzáférést kap az adott erőforráshoz. További információ: a [hozzáférési jogosultságok kezelése az Azure Blob és a üzenetsor adatai számára a RBAC használatával](storage-auth-aad-rbac.md).
+Egy rendszerbiztonsági tag Azure Storage-alkalmazásból történő hitelesítéséhez először konfigurálja a szerepkör alapú hozzáférés-vezérlés (RBAC) beállításait az adott rendszerbiztonsági tag számára. Az Azure Storage olyan beépített szerepköröket határoz meg, amelyek magukban foglalják a tárolók és a várólisták engedélyeit. Ha a RBAC szerepkör hozzá van rendelve egy rendszerbiztonsági tag számára, a rendszerbiztonsági tag hozzáférést kap az adott erőforráshoz. További információ: a [hozzáférési jogosultságok kezelése az Azure Blob és a üzenetsor adatai számára a RBAC használatával](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Alkalmazás regisztrálása Azure AD-Bérlővel
 
@@ -127,39 +127,78 @@ Egy befejezett minta webalkalmazás, amely tokent vásárol, és az Azure Storag
 
 Telepítse az Azure Storage ügyféloldali kódtárat a Visual studióból. A **Tools** (Eszközök) menüben válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelői konzol) lehetőséget. Írja be a következő parancsokat a konzol ablakába a szükséges csomagok telepítéséhez a .NET-hez készült Azure Storage ügyféloldali kódtáraból:
 
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+```console
+Install-Package Azure.Storage.Blobs
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
+```
+
+Ezután adja hozzá a következő using utasításokat a HomeController.cs-fájlhoz:
+
+```csharp
+using Microsoft.Identity.Web; //MSAL library for getting the access token
+using Azure.Storage.Blobs;
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
-Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
 ```
 
 Ezután adja hozzá a következő using utasításokat a HomeController.cs-fájlhoz:
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 ```
+
+---
 
 #### <a name="create-a-block-blob"></a>Blokkos blob létrehozása
 
 Adja hozzá a következő kódrészletet egy blokk blob létrehozásához:
 
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+```csharp
+private static async Task<string> CreateBlob(TokenAcquisitionTokenCredential tokenCredential)
+{
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    BlobClient blobClient = new BlobClient(blobUri, tokenCredential);
+
+    string blobContents = "Blob created by Azure AD authenticated user.";
+    byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+    using (MemoryStream stream = new MemoryStream(byteArray))
+    {
+        await blobClient.UploadAsync(stream);
+    }
+    return "Blob successfully created";
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
 {
-    // Create a blob on behalf of the user
+    // Create a blob on behalf of the user.
     TokenCredential tokenCredential = new TokenCredential(accessToken);
     StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
-    // Replace the URL below with your storage account URL
-    CloudBlockBlob blob =
-        new CloudBlockBlob(
-            new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-            storageCredentials);
+    // Replace the URL below with the URL to your blob.
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    CloudBlockBlob blob = new CloudBlockBlob(blobUri, storageCredentials);
     await blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
     return "Blob successfully created";
 }
 ```
+
+---
 
 > [!NOTE]
 > A blob-és üzenetsor-műveletek OAuth 2,0-tokenrel való engedélyezéséhez a HTTPS protokollt kell használnia.
@@ -175,69 +214,25 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-#### <a name="get-an-oauth-token-from-azure-ad"></a>OAuth-token beszerzése az Azure AD-ből
+#### <a name="get-an-access-token-from-azure-ad"></a>Hozzáférési token lekérése a Microsoft Azure Active Directory-ból
 
 Ezután adjon hozzá egy metódust, amely jogkivonatot kér az Azure AD-től a felhasználó nevében. Ez a metódus határozza meg azt a hatókört, amelyhez engedélyeket kell megadni. Az engedélyekkel és hatókörökkel kapcsolatos további információkért tekintse [meg a Microsoft Identity platform végpontjának engedélyek és](../../active-directory/develop/v2-permissions-and-consent.md)hozzájárulások című témakörét.
 
 Az erőforrás-AZONOSÍTÓval hozza létre azt a hatókört, amelyhez a jogkivonat beszerzését kéri. A példa a hatókört az erőforrás-azonosító és a beépített hatókör használatával hozza létre `user_impersonation` , amely azt jelzi, hogy a jogkivonatot a felhasználó nevében kérték.
 
-Ne feledje, hogy előfordulhat, hogy a felhasználót egy olyan felülettel kell bemutatnia, amely lehetővé teszi a felhasználó számára, hogy a jogkivonatot az ő nevében kérje. Ha beleegyezik a jóváhagyásra, a példa megkeresi a **MsalUiRequiredException** , és egy másik módszert hív meg a jóváhagyás iránti kérés megkönnyítése érdekében:
+Ne feledje, hogy előfordulhat, hogy a felhasználót olyan felülettel kell bemutatnia, amely lehetővé teszi, hogy a felhasználó beleegyezik a jogkivonat kérelmére:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new string[] { "https://storage.azure.com/user_impersonation" })]
 public async Task<IActionResult> Blob()
 {
-    var scopes = new string[] { "https://storage.azure.com/user_impersonation" };
-    try
-    {
-        var accessToken =
-            await _tokenAcquisition.GetAccessTokenOnBehalfOfUser(HttpContext, scopes);
-        ViewData["Message"] = await CreateBlob(accessToken);
-        return View();
-    }
-    catch (MsalUiRequiredException ex)
-    {
-        AuthenticationProperties properties =
-            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
-        return Challenge(properties);
-    }
+    string message = await CreateBlob(new TokenAcquisitionTokenCredential(_tokenAcquisition));
+    ViewData["Message"] = message;
+    return View();
 }
 ```
 
-A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak a védett erőforrások elérésére a nevükben. A Microsoft Identity platform 2,0 támogatja a növekményes hozzáférést, ami azt jelenti, hogy egy rendszerbiztonsági tag először is kérheti le az engedélyek minimális készletét, és szükség szerint adja hozzá az engedélyeket. Ha a kód hozzáférési jogkivonatot kér, adja meg az alkalmazás által a paraméterben megadott időpontban szükséges engedélyek hatókörét `scope` . További információ **a növekményes** beleegyező engedélyekről: a [Microsoft Identity platform (v 2.0) frissítése](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)
-
-A következő módszer a növekményes belefoglalási kérelemhez tartozó hitelesítési tulajdonságokat hozza létre:
-
-```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
-                                                                                    MsalUiRequiredException ex)
-{
-    AuthenticationProperties properties = new AuthenticationProperties();
-
-    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
-    string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
-                                                 scopes.Union(additionalBuildInScopes).ToList());
-
-    // Attempt to set the login_hint so that the logged-in user is not presented
-    // with an account selection dialog.
-    string loginHint = HttpContext.User.GetLoginHint();
-    if (!string.IsNullOrWhiteSpace(loginHint))
-    {
-        properties.SetParameter<string>(OpenIdConnectParameterNames.LoginHint, loginHint);
-
-        string domainHint = HttpContext.User.GetDomainHint();
-        properties.SetParameter<string>(OpenIdConnectParameterNames.DomainHint, domainHint);
-    }
-
-    // Specify any additional claims that are required (for instance, MFA).
-    if (!string.IsNullOrEmpty(ex.Claims))
-    {
-        properties.Items.Add("claims", ex.Claims);
-    }
-
-    return properties;
-}
-```
+A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak a védett erőforrások elérésére a nevükben. A Microsoft Identity platform 2,0 támogatja a növekményes hozzáférést, ami azt jelenti, hogy egy rendszerbiztonsági tag először is kérheti le az engedélyek minimális készletét, és szükség szerint adja hozzá az engedélyeket. Ha a kód hozzáférési jogkivonatot kér, adja meg az alkalmazás által a paraméterben megadott időpontban szükséges engedélyek hatókörét `scope` . További információ a növekményes megállapodásról: [növekményes és dinamikus beleegyezett](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 ## <a name="view-and-run-the-completed-sample"></a>A befejezett minta megtekintése és futtatása
 
@@ -271,12 +266,10 @@ Ezután frissítse a fájl *appsettings.jsa* saját értékeivel, a következők
 
 ### <a name="update-the-storage-account-and-container-name"></a>A Storage-fiók és a tároló nevének frissítése
 
-A *HomeController.cs* fájlban frissítse a blokk blobra hivatkozó URI-t a Storage-fiók és a tároló nevének használatára:
+A *HomeController.cs* fájlban frissítse a blokk blobra hivatkozó URI-t a Storage-fiók és a tároló nevének használatára, és az értékeket cserélje le a saját értékeire a szögletes zárójelben:
 
-```csharp
-CloudBlockBlob blob = new CloudBlockBlob(
-                      new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-                      storageCredentials);
+```html
+https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
 
 ### <a name="enable-implicit-grant-flow"></a>Implicit engedélyezési folyamat engedélyezése

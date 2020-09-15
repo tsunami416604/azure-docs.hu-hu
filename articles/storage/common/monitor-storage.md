@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 0c4178513c5a6027b3261d6d7975d4ec7cc55c6a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500419"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085790"
 ---
 # <a name="monitoring-azure-storage"></a>Az Azure Storage figyelése
 
@@ -76,7 +76,11 @@ Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A nap
 
 ## <a name="configuration"></a>Konfiguráció
 
-A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, az Azure CLI vagy a PowerShell használatával történő létrehozásával kapcsolatban lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
+A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. 
+
+Diagnosztikai beállítás létrehozásához a Azure Portal, az Azure CLI vagy a PowerShell használatával tekintse meg a [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md)című témakört. 
+
+Diagnosztikai beállítást létrehozó Azure Resource Manager sablon megjelenítéséhez tekintse meg az [Azure Storage diagnosztikai beállításai](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)című témakört.
 
 Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, amelyhez engedélyezni szeretné a naplókat, például blob, üzenetsor, tábla vagy fájl. Data Lake Storage Gen2 nem jelenik meg tárolási típusként. Ennek az az oka, hogy Data Lake Storage Gen2 a blob Storage számára elérhető képességek halmaza. 
 
@@ -124,7 +128,7 @@ Az Azure Storage-t tartalmazó összes Azure Monitor támogatási mérőszámok 
 
 #### <a name="list-the-metric-definition"></a>A metrika definíciójának listázása
 
-Megtekintheti a Storage-fiók vagy az egyéni tárolási szolgáltatás metrika-definícióját, például a blobot, a fájlt, a táblát vagy a várólista-szolgáltatást. Használja a [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition?view=azps-3.3.0) parancsmagot.
+Megtekintheti a Storage-fiók vagy az egyéni tárolási szolgáltatás metrika-definícióját, például a blobot, a fájlt, a táblát vagy a várólista-szolgáltatást. Használja a [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) parancsmagot.
 
 Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy egy egyéni tárolási szolgáltatás erőforrás-azonosítójával, például a blob, fájl, tábla vagy üzenetsor szolgáltatáshoz. Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
@@ -135,7 +139,7 @@ Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-f
 
 #### <a name="reading-metric-values"></a>Metrika értékeinek olvasása
 
-Elolvashatja a Storage-fiók vagy az egyéni tárolási szolgáltatás, például a blob, fájl, tábla vagy üzenetsor szolgáltatás fiók szintű metrikájának értékét. Használja a [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) parancsmagot.
+Elolvashatja a Storage-fiók vagy az egyéni tárolási szolgáltatás, például a blob, fájl, tábla vagy üzenetsor szolgáltatás fiók szintű metrikájának értékét. Használja a [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) parancsmagot.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -146,7 +150,7 @@ Elolvashatja a Storage-fiók vagy az egyéni tárolási szolgáltatás, példáu
 
 #### <a name="list-the-account-level-metric-definition"></a>A fiók szintű metrika definíciójának listázása
 
-Megtekintheti a Storage-fiók vagy az egyéni tárolási szolgáltatás metrika-definícióját, például a blobot, a fájlt, a táblát vagy a várólista-szolgáltatást. Használja az az [monitor Metrics List-fogalommeghatározások](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list-definitions) parancsot.
+Megtekintheti a Storage-fiók vagy az egyéni tárolási szolgáltatás metrika-definícióját, például a blobot, a fájlt, a táblát vagy a várólista-szolgáltatást. Használja az az [monitor Metrics List-fogalommeghatározások](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) parancsot.
  
 Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy egy egyéni tárolási szolgáltatás erőforrás-azonosítójával, például a blob, fájl, tábla vagy üzenetsor szolgáltatáshoz. Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
@@ -156,7 +160,7 @@ Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-f
 
 #### <a name="read-account-level-metric-values"></a>Fiók szintű metrika értékeinek olvasása
 
-Megtekintheti a Storage-fiók vagy az egyéni tárolási szolgáltatás metrikai értékeit, például a blob, fájl, tábla vagy üzenetsor szolgáltatást. Használja az az [monitor metrika List](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) parancsot.
+Megtekintheti a Storage-fiók vagy az egyéni tárolási szolgáltatás metrikai értékeit, például a blob, fájl, tábla vagy üzenetsor szolgáltatást. Használja az az [monitor metrika List](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) parancsot.
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -327,7 +331,7 @@ Bemutatunk egy példát:
 
 Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál. 
 
-![Naplók](media/monitor-storage/event-hub-log.png)
+![Auditnaplók](media/monitor-storage/event-hub-log.png)
 
 A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 50881071380bbe5d245ed458d162e62bfabd108a
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322466"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061495"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
@@ -48,16 +48,15 @@ Az alábbi lépések végrehajtásával elemzési lekérdezéseket futtathat a A
 
 1. A fiókja mostantól engedélyezve van a szinapszis-hivatkozás használatára. Ezután olvassa el az analitikai tárolóval rendelkező tárolók létrehozása a működési adatok tranzakciós tárolóból az analitikai tárolóba való replikálásának automatikus megkezdéséhez című témakört.
 
-### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-
-A [Azure Resource Manager sablon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) létrehoz egy szinapszis hivatkozást, amely lehetővé teszi az Azure Cosmos-fiók SQL API-hoz való használatát. Ez a sablon létrehoz egy core (SQL) API-fiókot az egyik régióban egy olyan tárolóval, amelyen engedélyezve van az analitikai TTL, valamint a manuális vagy automatikus méretezési sebesség használata. A sablon üzembe helyezéséhez kattintson az **üzembe helyezés az Azure** -ra lehetőségre a readme oldalon.
+> [!NOTE]
+> A szinapszis-hivatkozás bekapcsolása nem kapcsolja be automatikusan az analitikai tárolót. Miután engedélyezte a szinapszis hivatkozását a Cosmos DB fiókon, engedélyezze az analitikai tárolót a tárolókban a létrehozásuk során, hogy elindítsa a művelet adatait az analitikai tárolóba. 
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Azure Cosmos-tároló létrehozása analitikai tárolóval
 
 A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cosmos-tárolón. A tároló létrehozása során a Azure Portal vagy a `analyticalTTL` tulajdonságot a Azure Cosmos db SDK-k használatával végezheti el.
 
 > [!NOTE]
-> Jelenleg engedélyezheti az analitikai tárolót az **új** tárolók számára (az új és a meglévő fiókokban egyaránt).
+> Jelenleg engedélyezheti az analitikai tárolót az **új** tárolók számára (az új és a meglévő fiókokban egyaránt). A meglévő-tárolók adatait áttelepítheti az új tárolókra [Azure Cosmos db áttelepítési eszközök használatával.](cosmosdb-migrationchoices.md)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -211,6 +210,10 @@ A [Csatlakozás az Azure szinapszishoz hivatkozásra kattintva](../synapse-analy
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> Lekérdezés a szinapszis Spark használatával
 
 Kövesse a [lekérdezés Azure Cosmos db analitikus tároló](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md) című cikk utasításait a szinapszis Spark lekérdezésével kapcsolatban. Ebből a cikkből megtudhatja, hogyan kezelheti az analitikai tárolót a szinapszis-kézmozdulatokkal. Ezek a kézmozdulatok akkor láthatók, ha a jobb gombbal egy tárolóra kattint. A kézmozdulatokkal gyorsan létrehozhatja a kódot, és megszabhatja az igényeinek megfelelően. Emellett ideálisak arra is, hogy egyetlen kattintással felfedezzék az adatgyűjtést.
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
+
+A [Azure Resource Manager sablon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) létrehoz egy szinapszis hivatkozást, amely lehetővé teszi az Azure Cosmos-fiók SQL API-hoz való használatát. Ez a sablon létrehoz egy core (SQL) API-fiókot az egyik régióban egy olyan tárolóval, amelyen engedélyezve van az analitikai TTL, valamint a manuális vagy automatikus méretezési sebesség használata. A sablon üzembe helyezéséhez kattintson az **üzembe helyezés az Azure** -ra lehetőségre a readme oldalon.
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Bevezetés az Azure Synpase link-Samples használatába
 

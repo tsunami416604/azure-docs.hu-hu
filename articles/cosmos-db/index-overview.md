@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760872"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068387"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
@@ -108,13 +108,13 @@ A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének 
    SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
-- `ORDER BY`lekérdezések
+- `ORDER BY` lekérdezések
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`lekérdezések
+- `JOIN` lekérdezések
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -135,7 +135,7 @@ A **térbeli** indexek hatékony lekérdezéseket tesznek lehetővé térinforma
 - Térinformatika a lekérdezéseken belül:
 
    ```sql
-   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] })
    ```
 
 - Térinformatikai metsző lekérdezések:
@@ -150,7 +150,7 @@ A térbeli indexek megfelelően formázott [GeoJSON](geospatial.md) -objektumoko
 
 Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn végez műveleteket. Az összetett index típusa a következő:
 
-- `ORDER BY`több tulajdonság lekérdezései:
+- `ORDER BY` több tulajdonság lekérdezései:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
@@ -168,7 +168,7 @@ Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Mindaddig, amíg az egyik szűrési predikátum az egyik indexet használja, a lekérdezési motor kiértékeli, hogy először a REST ellenőrzése előtt. Ha például SQL-lekérdezéssel rendelkezik, például:`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Mindaddig, amíg az egyik szűrési predikátum az egyik indexet használja, a lekérdezési motor kiértékeli, hogy először a REST ellenőrzése előtt. Ha például SQL-lekérdezéssel rendelkezik, például: `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * A fenti lekérdezés először szűrni fogja azokat a bejegyzéseket, ahol a firstName = "Andrew" kifejezést használja az index használatával. Ezután továbbítja az összes firstName = "Andrew" bejegyzést egy későbbi folyamaton keresztül, hogy kiértékelje a tartalmazza a szűrő predikátumát.
 
@@ -185,7 +185,7 @@ Vegyük például a következő lekérdezést: `SELECT location FROM location IN
 > [!NOTE]
 > Egy olyan `ORDER BY` záradék, amelyet egy adott tulajdonság megrendelése *mindig* egy tartomány indexre van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. Hasonlóképpen, a `ORDER BY` több tulajdonság által megrendelést igénylő lekérdezésnek *mindig* összetett indexre van szüksége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatos további információkért olvassa el a következő cikkeket:
 

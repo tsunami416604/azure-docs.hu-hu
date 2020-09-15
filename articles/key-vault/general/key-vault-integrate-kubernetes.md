@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: c3813210808138f02f664a5445ef6faefc9591dc
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031959"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061801"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -70,7 +70,7 @@ Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI ha
     ```azurecli
     kubectl version
     ```
-1. Győződjön meg arról, hogy a Kubernetes verziója 1.16.0 vagy újabb. A következő parancs frissíti a Kubernetes-fürtöt és a csomópont-készletet is. A parancs végrehajtása néhány percet is igénybe vehet. Ebben a példában az erőforráscsoport *contosoResourceGroup*, a Kubernetes-fürt pedig *contosoAKSCluster*.
+1. Győződjön meg arról, hogy a Kubernetes verziója 1.16.0 vagy újabb. Windows-fürtök esetén győződjön meg arról, hogy a Kubernetes verziója 1.18.0 vagy újabb. A következő parancs frissíti a Kubernetes-fürtöt és a csomópont-készletet is. A parancs végrehajtása néhány percet is igénybe vehet. Ebben a példában az erőforráscsoport *contosoResourceGroup*, a Kubernetes-fürt pedig *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ A saját kulcstartó létrehozásához és a titkos kulcsok beállításához k�
 
 ## <a name="create-your-own-secretproviderclass-object"></a>Saját SecretProviderClass objektum létrehozása
 
-Ha a Secrets Store CSI-illesztőprogramhoz tartozó, szolgáltatói specifikus paraméterekkel rendelkező egyéni SecretProviderClass-objektumot szeretne létrehozni, [használja ezt a sablont](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml). Ez az objektum identitás-hozzáférést biztosít a kulcstartóhoz.
+Ha a Secrets Store CSI-illesztőprogramhoz tartozó, szolgáltatói specifikus paraméterekkel rendelkező egyéni SecretProviderClass-objektumot szeretne létrehozni, [használja ezt a sablont](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml). Ez az objektum identitás-hozzáférést biztosít a kulcstartóhoz.
 
 A minta SecretProviderClass YAML fájljában adja meg a hiányzó paramétereket. A következő paraméterek szükségesek:
 
-* **userAssignedIdentityID**: az egyszerű szolgáltatásnév ügyfél-azonosítója
+* **userAssignedIdentityID**: # [kötelező] Ha egyszerű szolgáltatásnevet használ, az ügyfél-azonosító segítségével megadhatja, hogy melyik felhasználóhoz rendelt felügyelt identitást kívánja használni. Ha felhasználó által hozzárendelt identitást használ a virtuális gép felügyelt identitása, akkor az identitás ügyfél-azonosítóját kell megadnia. Ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
 * **keyvaultName**: a kulcstartó neve
 * **objektumok**: a csatlakoztatni kívánt titkos tartalom tárolója
     * **objectName**: a titkos tartalom neve
     * **objektumtípus**: az objektum típusa (titok, kulcs, tanúsítvány)
-* **resourceGroup**: az erőforráscsoport neve
-* **subscriptionId**: a kulcstartó előfizetés-azonosítója
+* **resourceGroup**: a kulcstartó erőforráscsoporthoz tartozó [verzió < 0.0.4] nevű erőforráscsoport neve
+* **subscriptionId**: a kulcstartó előfizetés-azonosítója # [a (z) < 0.0.4-verzióhoz szükséges] a kulcstartó előfizetés-azonosítója
 * **tenantID**: a Key Vault bérlői azonosítója vagy CÍMTÁR-azonosítója
+
+Az összes kötelező mező dokumentációja itt érhető el: [hivatkozás](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 A frissített sablon a következő kódban látható. Töltse le YAML-fájlként, és töltse ki a kötelező mezőket. Ebben a példában a Key Vault **contosoKeyVault5**van. Két titkot, **secret1** és **secret2**tartalmaz.
 
@@ -210,6 +212,11 @@ Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket 
 1. Felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához vagy olvasásához az AK-fürtnek hozzá kell rendelnie a [felügyelt identitás-kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkört. Győződjön meg arról, hogy a **$clientId** a Kubernetes-fürt clientId. A hatókör esetében az Azure-előfizetési szolgáltatás alatt lesz, különösen az AK-fürt létrehozásakor létrejött csomópont-erőforráscsoport. Ez a hatókör gondoskodik arról, hogy csak az adott csoportba tartozó erőforrásokat érinti az alábbi szerepkörök. 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP

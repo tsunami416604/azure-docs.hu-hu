@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033659"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069475"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -46,68 +46,68 @@ A saját üzemeltetésű IR/Shared IR-ben futó sikertelen tevékenységek eset�
 > A naplózási és a feltöltési kérelmeket az összes online saját üzemeltetésű IR-példányon végrehajtja a rendszer. Győződjön meg arról, hogy az összes saját üzemeltetésű IR-példány online állapotban van, ha a hiányzó naplók. 
 
 
-## <a name="self-hosted-ir-general-failure-or-error"></a>Saját üzemeltetésű IR általános hiba vagy hiba
+## <a name="self-hosted-ir-general-failure-or-error"></a>Helyi integrációs modul – általános meghibásodás vagy hiba
 
-### <a name="tlsssl-certificate-issue"></a>TLS/SSL-tanúsítvány hibája
+### <a name="tlsssl-certificate-issue"></a>TLS-/SSL-tanúsítványhiba
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-Ha a TLS/SSL-tanúsítványt (Advanced) szeretné engedélyezni a saját üzemeltetésű **IR-Configuration Manager**az  ->  **intranetről**, a TLS/SSL-tanúsítvány kiválasztása után, az alábbi hiba jelenik meg:
+Ha TLS-/SSL-tanúsítványt szeretné engedélyezni (haladó) a **Helyi integrációs modul – konfigurációkezelő** -> **Távoli hozzáférés intranetről** használatával, a TLS-/SSL-tanúsítvány kiválasztása után az alábbi hiba jelenik meg:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
-A fenti esetben a felhasználó az utolsó elemként a "microsoft.com" nevű tanúsítványt használja.
+A fenti esetben a felhasználó azt a tanúsítványt használja, amely nevének végén a „microsoft.com” áll.
 
 #### <a name="cause"></a>Ok
 
-Ez egy ismert probléma a WCF-ben: a WCF TLS/SSL-ellenőrzés csak a SAN-ban lévő utolsó DNSName ellenőrzi. 
+Ez egy ismert probléma a WCF-ben: A WCF TLS-/SSL-ellenőrzési funkciója csak az SAN utolsó DNS-nevét ellenőrzi. 
 
 #### <a name="resolution"></a>Feloldás
 
-A helyettesítő tanúsítvány támogatott a Azure Data Factory v2 saját üzemeltetésű IR-ben. Ez a probléma általában azért fordul elő, mert az SSL-tanúsítvány nem megfelelő. A SAN-beli utolsó DNSName érvényesnek kell lennie. Kövesse az alábbi lépéseket az ellenőrzéshez. 
+Az altartományokra is kibővített tanúsítvány támogatott az Azure Data Factory v2 helyi integrációs moduljában. Ez a probléma általában akkor jelentkezik, ha az SSL-tanúsítvány nem megfelelő. Az SAN utolsó DNS-nevének érvényesnek kell lennie. Az ellenőrzéshez kövesse az alábbi lépéseket. 
 1.  Nyissa meg a felügyeleti konzolt, és a tanúsítvány részletei között kattintson a *tulajdonos* és a *tulajdonos alternatív neve* elemre. A fenti esetben például a *tulajdonos alternatív neve*("DNS Name = Microsoft.com.com") utolsó eleme nem legitim.
 2.  A hibás DNS-név eltávolításához vegye fel a kapcsolatot a tanúsítvány kiállító vállalatával.
 
-### <a name="concurrent-jobs-limit-issue"></a>Az egyidejű feladatok korlátja probléma
+### <a name="concurrent-jobs-limit-issue"></a>Egyidejű feladatok korlátjával kapcsolatos probléma
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-Amikor a Azure Data Factory felhasználói felületen korlátozza az egyidejű feladatok korlátját, a rendszer örökre *frissítésként* lefagy.
-Az egyidejű feladatok maximális értéke 24 értékre van állítva, és meg szeretné emelni a számot, hogy a feladatok gyorsabban fussanak. A megadható minimális érték 3, a megadható maximális érték pedig 32. Az értéket 24 – 32 értékre növelte, és a *frissítés* gombra kattintva a felhasználói felületen megakadt *a frissítés, ahogy az* alábbiakban látható. A frissítés után az ügyfél továbbra is 24-ként látta el az értéket, és soha nem frissült 32-ra.
+Amikor növelni próbálja az egyidejű feladatokra vonatkozó korlátot az Azure Data Factory felhasználói felületén, a rendszer *frissítés* közben lefagy.
+Az egyidejű feladatok maximális értéke 24-re van beállítva, és növelni szeretné ezt a számot, hogy a feladatok gyorsabban futhassanak. A megadható minimális érték 3, a megadható maximális érték pedig 32. Az értéket 24 – 32 értékre növelte, és a *frissítés* gombra kattintva a felhasználói felületen megakadt *a frissítés, ahogy az* alábbiakban látható. A frissítés után az ügyfél továbbra is a 24-es értéket látta, az soha nem frissült 32-re.
 
 ![Frissítés állapota](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>Ok
 
-A beállításra vonatkozó korlátozás a számítógép logicCore és a memóriától függ, egyszerűen beállíthatja egy kisebb értékre (például 24), és megtekintheti az eredményt.
+A beállításra korlátozás vonatkozik, mivel az érték a számítógép logicCore és Memória értékeitől függ, módosíthatja tehát egyszerűen egy kisebb értékre (például 24-re), és láthatja az eredményt.
 
 > [!TIP] 
 > - A logikai alapértékek számáról és a gép logikai alapszámának megkereséséről [ebben a cikkben](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)talál további információkat.
 > - A Math. log kiszámításával kapcsolatos további információkért tekintse meg [ezt a cikket](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
-### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Saját üzemeltetésű IR HA SSL-tanúsítvány probléma
+### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Helyi integrációs modul magas rendelkezésre állású SSL-tanúsítványával kapcsolatos probléma
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-A saját üzemeltetésű IR-munkacsomópont a következő hibát jelezte:
+A helyi integrációs modul munkacsomópontja az alábbi hibát jelentette:
 
 `Failed to pull shared states from primary node net.tcp://abc.cloud.corp.Microsoft.com:8060/ExternalService.svc/. Activity ID: XXXXX The X.509 certificate CN=abc.cloud.corp.Microsoft.com, OU=test, O=Microsoft chain building failed. The certificate that was used has a trust chain that cannot be verified. Replace the certificate or change the certificateValidationMode. The revocation function was unable to check revocation because the revocation server was offline.`
 
 #### <a name="cause"></a>Ok
 
-Az SSL/TLS-kézfogással kapcsolatos esetek kezelésekor előfordulhat, hogy a tanúsítványlánc ellenőrzésével kapcsolatos problémák merülhetnek fel. 
+Az SSL-/TLS-kézfogással kapcsolatos esetek kezelésekor előfordulhat, hogy tanúsítványlánc-ellenőrzéssel kapcsolatos problémákba ütközünk. 
 
 #### <a name="resolution"></a>Feloldás
 
 - Íme egy gyors és intuitív módszer az X. 509 tanúsítványlánc-létrehozási hiba megoldásához.
  
-    1. Exportálja a tanúsítványt, amelyet ellenőrizni kell. Lépjen a számítógép-tanúsítvány kezelése elemre, és keresse meg az ellenőriznie kívánt tanúsítványt, és kattintson a jobb gombbal az **összes feladat**  ->  **Exportálás**lehetőségre.
+    1. Exportálja az ellenőrizni kívánt tanúsítványt. Lépjen a Számítógép-tanúsítvány kezelése területre, keresse meg az ellenőrizni kívánt tanúsítványt, majd kattintson a jobb egérgombbal a **Minden feladat** -> **Exportálás** elemre.
     
         ![Tevékenységek exportálása](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. Másolja az exportált tanúsítványt az ügyfélszámítógépre. 
-    3. Az ügyfél oldalán futtassa az alábbi parancsot a CMD-ben. Győződjön meg arról, hogy az alábbi *\<certificate path>* és *\<output txt file path>* a helyőrzők a kapcsolódó elérési utakkal lettek lecserélve.
+    3. Az ügyféloldalon futtassa a CMD-ben az alábbi parancsot. Győződjön meg arról, hogy az alábbi *\<certificate path>* és *\<output txt file path>* a helyőrzők a kapcsolódó elérési utakkal lettek lecserélve.
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
@@ -118,7 +118,7 @@ Az SSL/TLS-kézfogással kapcsolatos esetek kezelésekor előfordulhat, hogy a t
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. Ellenőrizze, hogy van-e hiba a kimeneti txt-fájlban. A hiba összegzése a txt-fájl végén található.
+    4. Ellenőrizze, hogy van-e hiba a kimeneti TXT-fájlban. A hiba összegzését a TXT-fájl végén találja.
 
         Például: 
 
@@ -138,15 +138,15 @@ Az SSL/TLS-kézfogással kapcsolatos esetek kezelésekor előfordulhat, hogy a t
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Ezután megnyílik az **URL-lekérési eszköz** . Az AIA, a CDP és az OCSP tanúsítványait a **beolvasás** gombra kattintva ellenőrizheti.
+    1. Ezután megnyílik az **URL-lekérési eszköz**. Az AIA-, CDP- és OCSP-tanúsítványok ellenőrzéséhez kattintson a **Beolvasás** gombra.
 
         ![Lekérés gomb](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        A tanúsítványlánc sikeresen felépíthető, ha az AIA tanúsítványa "ellenőrzött", és a CDP vagy az OCSP tanúsítványa "ellenőrizve".
+        A tanúsítványlánc sikeresen létrehozható, ha az AIA-tanúsítvány állapota „Ellenőrzött”, valamint a CDP- vagy OCSP-tanúsítvány állapota is „Ellenőrzött”.
 
-        Ha az AIA és a CDP beolvasása során hiba lép fel, akkor működjön együtt a hálózati csapattal, hogy az ügyfélszámítógép készen álljon a cél URL-címhez való csatlakozásra. Elég lesz, ha a http-elérési út vagy az LDAP-elérési út ellenőrizhető.
+        Ha az AIA és a CDP lekérése során hiba lép fel, működjön együtt a hálózatkezelésért felelős csapattal az ügyfélgép a cél URL-címhez való csatlakoztatásának előkészítésében. Elegendő, ha a HTTP- vagy az LDAP-útvonal ellenőrizhető.
 
-### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>A saját üzemeltetésű IR nem tudja betölteni a fájlt vagy a szerelvényt
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>A helyi integrációs modul nem tudja betölteni a fájlt vagy a szerelvényt
 
 #### <a name="symptoms"></a>Hibajelenségek
 
@@ -165,7 +165,7 @@ Ha folyamat-figyelőt használ, a következő eredményt láthatja:
 > [!TIP] 
 > Az alábbi képernyőképen látható módon állíthatja be a szűrőt.
 > Azt mondja nekünk, hogy a dll- **rendszer. a ValueTuple** nem a GAC-hoz kapcsolódó mappában, vagy a *c:\Program Files\microsoft Integration Runtime\4.0\Gateway*vagy a *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* mappában található.
-> Alapvetően a rendszer először a *GAC* -mappából tölti be a DLL-t, majd a *megosztott* és végül az *átjáró* mappából. Ezért a DLL-t bármely olyan elérési útra helyezheti el, amely hasznos lehet.
+> A rendszer a DLL-t alapvetően először a *GAC*-mappából tölti be, majd a *Közös*, végül pedig az *Átjáró* mappából. Ezért a DLL-t bármely olyan elérési útra áthelyezheti, amely hasznos lehet.
 
 ![Szűrők beállítása](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -173,7 +173,7 @@ Ha folyamat-figyelőt használ, a következő eredményt láthatja:
 
 Megtalálhatja, hogy a **System.ValueTuple.dll** a *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* mappában található. A probléma megoldásához másolja a **System.ValueTuple.dll** a *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* mappába.
 
-Ugyanezt a módszert használhatja más fájlok vagy szerelvények hiányzó problémáinak megoldásához.
+Ugyanezt a módszert használhatja más, hiányzó fájllal vagy szerelvénnyel kapcsolatos problémák megoldásához is.
 
 #### <a name="more-information"></a>További információ
 
@@ -186,77 +186,77 @@ Az alábbi hibaüzenetből tisztán láthatja a szerelvény *rendszerét. a Valu
 A GAC-val kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Hiányzó saját üzemeltetésű IR-kulcs naplózása
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>A helyi integrációs modul hiányzó kulcsának naplózása
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-A saját üzemeltetésű integrációs modul hirtelen offline állapotba kerül a kulcs nélkül, az Eseménynaplóban az alábbi hibaüzenet jelenik meg: `Authentication Key is not assigned yet`
+A kulcs hiányában a helyi integrációs modul hirtelen offline állapotba lép, az eseménynaplóban az alábbi hibaüzenet jelenik meg: `Authentication Key is not assigned yet`
 
 ![Hiányzó hitelesítési kulcs](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
 #### <a name="cause"></a>Ok
 
-- A saját üzemeltetésű IR-csomópont vagy logikai saját üzemeltetésű integrációs modul törölve van a portálon.
-- A rendszer tiszta eltávolítást végez.
+- A helyi integrációs modul csomópontja vagy a logikai helyi integrációs modul törölve lett a portálon.
+- Egyszerű eltávolítás történt.
 
 #### <a name="resolution"></a>Feloldás
 
-Ha a fenti okok egyike sem érvényes, akkor nyissa meg a következő mappát: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*, és ellenőrizze, hogy a rendszer törli-e a **konfigurációk** nevű fájlt. Ha törölve van, kövesse az [itt](https://www.netwrix.com/how_to_detect_who_deleted_file.html) található utasításokat a fájl törlésének naplózásához.
+Ha a fenti okok egyike sem érvényes, akkor nyissa meg a következő mappát: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*, és ellenőrizze, hogy a rendszer törli-e a **konfigurációk** nevű fájlt. Ha igen, akkor kövesse az [itt található](https://www.netwrix.com/how_to_detect_who_deleted_file.html) utasításokat, hogy megtudja, ki törölte a fájlt.
 
 ![Konfigurációs fájl keresése](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
 
-### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>A saját üzemeltetésű integrációs modul nem használható két helyszíni adattárolók áthidalása érdekében
+### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>A helyi integrációs modul nem használható két helyszíni adattároló áthidalásához
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-Miután létrehozta a saját üzemeltetésű IRs-t a forrás-és a célhelyek számára, a két IRs-t össze szeretné kapcsolni a másolás befejezéséhez. Ha az adattárak különböző virtuális hálózatok vannak konfigurálva, vagy nem tudják megérteni az átjáró mechanizmusát, a következőhöz hasonló hibák lépnek fel: *a forrás illesztőprogramja nem található a cél IR-ben*; *a cél IR nem fér hozzá a forráshoz*.
+Miután létre lett hozva a helyi integrációs modult a forrás- és a céladattárolók esetében is, össze szeretné kapcsolni a két integrációs modult a másolás befejezéséhez. Ha az adattárak különböző virtuális hálózatok vannak konfigurálva, vagy nem tudják megérteni az átjáró mechanizmusát, a következőhöz hasonló hibák lépnek fel: *a forrás illesztőprogramja nem található a cél IR-ben*; *a cél IR nem fér hozzá a forráshoz*.
  
 #### <a name="cause"></a>Ok
 
-A saját üzemeltetésű integrációs modul egy másolási tevékenység központi csomópontjának lett kialakítva, nem pedig az egyes adattárokhoz telepítendő ügyfél-ügynöknek.
+A helyi integrációs modul a másolási tevékenység központi csomópontjaként lett kialakítva, nem pedig az egyes adattárolók esetében telepítendő ügyfélügynökként.
  
-A fenti esetben az egyes adattárokhoz tartozó társított szolgáltatást ugyanazzal az IR-vel kell létrehozni, és az IR-nek képesnek kell lennie az adattárak elérésére a hálózaton keresztül. Függetlenül attól, hogy az IR telepítve van-e a forrás adattárral, a rendeltetési adattárral vagy egy harmadik gépen, ha két társított szolgáltatás eltérő IRs-vel lett létrehozva, de ugyanabban a másolási tevékenységben használják, a cél IR lesz használatban, és mindkét adattár illesztőprogramjait telepíteni kell a cél IR-gépen.
+A fenti esetben az egyes adattárolókhoz tartozó társított szolgáltatást ugyanazzal az integrációs modullal kell létrehozni, és az integrációs modulnak képesnek kell lennie az adattárolók elérésére a hálózaton keresztül. Függetlenül attól, hogy az integrációs modul a forrás adattárolóval, a cél adattárolóval vagy egy külső gépen lett telepítve, ha a két társított szolgáltatás eltérő integrációs modullal lett létrehozva, de azonos másolási tevékenységben használják őket, a rendszer a cél integrációs modult fogja használni, és mindkét adattároló illesztőit telepíteni kell a cél integrációs modul gépén.
 
 #### <a name="resolution"></a>Feloldás
 
-Telepítse az illesztőprogramokat a forrás és a cél számára a cél IR-re, és győződjön meg arról, hogy az hozzáfér a forrás adattárolóhoz.
+Telepítse a forrás- és a célhely illesztőit a cél integrációs modulon, és győződjön meg arról, hogy az hozzáfér a forrás adattárolóhoz.
  
-Ha a forgalom nem haladhat át a hálózaton két adattár között (például két virtuális hálózatok van konfigurálva), akkor előfordulhat, hogy a másolást nem fejezi be egyetlen tevékenységben, még az IR-vel is. Ebben az esetben két másolási tevékenységet hozhat létre két IRs-vel, amelyek mindegyike egy, az 1. adattárból az Azure Blob Storageba másolható, egy másik pedig az Azure Blob Storageról a 2. adattárba való másoláshoz. Ez szimulálhatja azt a követelményt, hogy az IR használatával olyan hidat hozzon létre, amely összekapcsolja a két leválasztott adattárat.
+Ha az adatforgalom nem tud áthaladni a két adattároló közötti hálózaton (például kétféle virtuális hálózaton lettek konfigurálva), akkor előfordulhat, hogy a másolást nem fejezi be egyetlen tevékenységben, még akkor sem, ha az integrációs modul telepítve van. Ebben az esetben létrehozhat két másolási tevékenységet két integrációs modullal, mindegyiket egy-egy virtuális hálózatban: Egy integrációs modul az 1. adattárolóból való másoláshoz az Azure Blob Storage-be, egy másik pedig az Azure Blob Storage-ból való másoláshoz a 2. adattárolóba. Ezzel szimulálható azt a követelmény, hogy a két szétkapcsolt adattárolót összekötő hidat az integrációs modul használatával kell létrehozni.
 
 
-### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>A hitelesítő adatok szinkronizálásának hibája miatt a hitelesítő adat elvész
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>A hitelesítő adatok szinkronizálási hibája miatt hitelesítőadat-vesztés történt a magas rendelkezésreállási szinten
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-A "XXXXXXXXXX" adatforrás hitelesítő adatait a rendszer törli az aktuális Integration Runtime-csomópontról a hasznos adatokkal, ha törli a kapcsolati szolgáltatást a Azure Portalon, vagy ha a feladat nem megfelelő adattartalommal rendelkezik, hozzon létre egy új link Service-t a hitelesítő adatokkal.
+A rendszer törölte az adatforrás hitelesítő adatait („XXXXXXXXXX”) az aktuális integrációsmodul-csomópontról a következő hasznos adattal: „amikor törli a kapcsolati szolgáltatást az Azure Portalon, vagy a feladat hibás hasznos adattal rendelkezik, újból hozzon létre egy új kapcsolati szolgáltatást a hitelesítő adataival”.
 
 #### <a name="cause"></a>Ok
 
-A saját üzemeltetésű integrációs modul két csomóponttal, de nem a hitelesítő adatok szinkronizálási állapotában van kiépítve, ami azt jelenti, hogy a diszpécser csomópontban tárolt hitelesítő adatok nem szinkronizálhatók más munkavégző csomópontokkal. Ha bármely feladatátvétel a kiosztó csomópontról a feldolgozó csomópontra történik, de a hitelesítő adatok csak a korábbi diszpécser csomópontban léteztek, a feladat sikertelen lesz, amikor a hitelesítő adatokhoz próbál hozzáférni, és a fenti hibaüzenetet fogja érinteni.
+A helyi integrációs modul két csomóponttal lett létrehozva a magas rendelkezésreállási módban, de a hitelesítő adataik nincsenek szinkronizálva, ami azt jelenti, hogy a kézbesítő csomópontban tárolt hitelesítő adatok nem lettek szinkronizálva a többi munkavégző csomóponttal. Ha bármilyen feladatátvétel történik a kézbesítő csomópontból a munkavégző csomópontba, de a hitelesítő adatok csak a korábbi kézbesítő csomópontban voltak megtalálhatók, akkor a feladat meghiúsul, amikor a hitelesítő adatokhoz próbál hozzáférni, és a fenti hibaüzenet jelenik meg.
 
 #### <a name="resolution"></a>Feloldás
 
-A probléma elkerülésének egyetlen módja annak biztosítása, hogy két csomópont legyen hitelesítő adatok szinkronizálási állapota. Ellenkező esetben az új kiosztó hitelesítő adatait újra be kell jelentkeznie.
+A probléma elkerülésének egyetlen módja annak biztosítása, hogy a két csomópont hitelesítő adatai szinkronizálva legyenek. Máskülönben az új kézbesítő esetében újra meg kell adnia a hitelesítő adatokat.
 
 
-### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Hiányzó titkos kulcs miatt nem lehet kijelölni a tanúsítványt
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>A tanúsítvány nem választható ki a hiányzó titkos kulcs miatt
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-1.  PFX-fájl importálása a tanúsítványtárolóba.
-2.  Ha az IR Configuration Manager felhasználói felületen keresztül kiválasztja a tanúsítványt, a következő hibaüzenet jelenik meg:
+1.  Importálja a PFX-fájlt a tanúsítványtárolóba.
+2.  Ha az integrációs modul konfigurációkezelőjének felhasználói felületén keresztül választja ki a tanúsítványt, a következő hibaüzenet jelenik meg:
 
     ![Hiányzó titkos kulcs](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>Ok
 
-- A felhasználói fiók alacsony jogosultsággal rendelkezik, és nem fér hozzá a titkos kulcshoz.
-- A tanúsítvány aláírásként lett létrehozva, de nem a Key Exchange.
+- A felhasználói fiók kevés jogosultsággal rendelkezik, és nem fér hozzá a titkos kulcshoz.
+- A tanúsítvány aláírásként, de nem kulcscsereként lett létrehozva.
 
 #### <a name="resolution"></a>Feloldás
 
-1.  Olyan Kiemelt fiókot használjon, amely hozzáfér a titkos kulcshoz a felhasználói felület működtetéséhez.
+1.  Olyan rendszerjogosultságú fiókot használjon a felhasználói felület esetében, amely hozzáfér a titkos kulcshoz.
 2.  A tanúsítvány importálásához futtassa az alábbi parancsot:
     
     ```
@@ -574,50 +574,6 @@ Végezze el a netmon nyomkövetést, és elemezze tovább.
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
     Ezért be kell vonnia a hálózati csapatot annak ellenőrzéséhez, hogy a negyedik Ugrás a saját üzemeltetésű integrációs modulból származik-e. Ha a tűzfal Linux rendszer, akkor ellenőrizze, hogy az eszköz miért állítja vissza a csomagot a TCP 3 kézfogás után. Ha azonban nem tudja, hol kell megvizsgálnia a vizsgálatot, próbálja meg a netmon-nyomkövetést a saját üzemeltetésű integrációs modulból és a tűzfalból összekapcsolni a problémás idő alatt, hogy kiderítse, melyik eszköz állíthatja alaphelyzetbe ezt a csomagot Ebben az esetben arra is szükség van, hogy a hálózati csapatot tovább folytassa.
-
-### <a name="how-to-collect-netmon-trace"></a>Netmon-nyomkövetés gyűjtése
-
-1.  Töltse le a netmon-eszközöket [erről a webhelyről](https://cnet-downloads.com/network-monitor), és telepítse azt a kiszolgálói gépre (a problémával rendelkező kiszolgálóra) és az ügyfélre (például saját üzemeltetésű IR-re).
-
-2.  Hozzon létre egy mappát, például a következő elérési úton: *D:\netmon*. Győződjön meg arról, hogy elegendő lemezterülettel rendelkezik a napló mentéséhez.
-
-3.  Az IP-cím és a port adatainak rögzítése. 
-    1. Indítson el egy parancssort.
-    2. Válassza a Futtatás rendszergazdaként lehetőséget, és futtassa a következő parancsot:
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  Rögzítse a netmon nyomkövetését (hálózati csomag).
-    1. Indítson el egy parancssort.
-    2. Válassza a Futtatás rendszergazdaként lehetőséget, és futtassa a következő parancsot:
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. A hálózat lap rögzítéséhez három különböző parancsot használhat:
-        - A: RoundRobin file parancs (ez csak egy fájlt fog rögzíteni, és felülírja A régi naplókat).
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - B. lehetőség: láncolt fájl parancs (ez az új fájlt fogja létrehozni, ha elérte a 200 MB-ot).
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - C. lehetőség: ütemezett fájl parancs.
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  Nyomja le a **CTRL + C** billentyűkombinációt a netmon nyomkövetés rögzítésének leállításához.
- 
-> [!NOTE]
-> Ha csak a netmon nyomkövetést szeretné összegyűjteni az ügyfélszámítógépen, kérje le a kiszolgáló IP-címét, hogy segítsen a nyomkövetés elemzésében.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon-nyomkövetés elemzése
 

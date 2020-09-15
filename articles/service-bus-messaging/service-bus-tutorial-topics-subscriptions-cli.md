@@ -5,12 +5,12 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189796"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069696"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Az Azure CLI használata Service Bus témakör és előfizetések létrehozásához a témakörben
 Ebben a rövid útmutatóban az Azure CLI használatával hozzon létre egy Service Bus témakört, majd hozzon létre előfizetéseket ehhez a témakörhöz. 
@@ -80,7 +80,7 @@ Minden egyes [témakörre való előfizetés](service-bus-messaging-overview.md#
 9. Hozzon létre egy szűrőt a harmadik előfizetésen egy szűrő használatával az ügyfél tulajdonságaival ( `StoreId` nem a `Store1` ,, `Store2` `Store3` vagy `Store4` ).
 
     ```azurecli-interactive
-    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId NOT IN ('Store1','Store2','Store3', 'Store4')"     
     ```
 10. Futtassa a következő parancsot a névtér elsődleges kapcsolódási karakterláncának lekéréséhez. Ezt a kapcsolati karakterláncot használja a várólistához való kapcsolódáshoz, valamint az üzenetek küldéséhez és fogadásához. 
 

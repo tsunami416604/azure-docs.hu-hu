@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9e841cccdfb3d304d63eb19b45be5555eea2a66c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497528"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069407"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Oktatóanyag: erőforrás hozzáadása az ARM-sablonhoz
 
@@ -85,7 +85,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
+> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
 
 Két lehetséges üzembe helyezési hiba merülhet fel:
 
@@ -120,7 +120,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy egyszerű sablont egy Azure Storage-fiók üzembe helyezéséhez.  A későbbi oktatóanyagokban megtudhatja, hogyan adhat hozzá paramétereket, változókat, erőforrásokat és kimeneteket egy sablonhoz. Ezek a funkciók sokkal összetettebb sablonok építőelemei.
 

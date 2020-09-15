@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115866"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085603"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -84,14 +84,14 @@ A szabályzattal megadhatja azt az időpontot, ameddig az első munkamenet-jogki
 A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat élettartamának szabályait tartalmazza. A szabályzat tulajdonságai segítségével szabályozhatja a megadott jogkivonat-élettartamot. Ha nincs beállítva házirend, a rendszer kényszeríti az alapértelmezett élettartam értékét.
 
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurálható jogkivonat élettartamának tulajdonságai
-| Tulajdonság | Házirend tulajdonságának karakterlánca | Befolyásolja | Alapértelmezett | Minimális | Maximum |
+| Tulajdonság | Házirend tulajdonságának karakterlánca | Befolyásolja | Alapértelmezett | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférési jogkivonat élettartama |<sup>2</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
 | Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
 | Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |180 nap<sup>1</sup> |
+| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |180 nap<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
 * <sup>2</sup> A Microsoft Teams Web Client működésének biztosítása érdekében ajánlott a AccessTokenLifetime 15 percnél hosszabb ideig megőrizni a Microsoft Teams szolgáltatásban.
@@ -400,7 +400,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |A szabályzat nevének karakterlánca |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -413,7 +413,7 @@ Get-AzureADPolicy
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code>Választható |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> Választható |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -441,10 +441,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |A szabályzat nevének karakterlánca |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>Választható |A szabályzat összes szabályát tartalmazó sztringesített JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>Választható |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>Választható |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> Választható |A szabályzat összes szabályát tartalmazó sztringesített JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> Választható |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> Választható |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 

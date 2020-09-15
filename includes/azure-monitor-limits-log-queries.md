@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83754842eeb4b5d609596045c11451e898960b9a
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82072637"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90064848"
 ---
 ### <a name="general-query-limits"></a>Általános lekérdezési korlátok
 
@@ -30,8 +30,8 @@ Azure Monitor több szabályozási korláttal rendelkezik a túlzott számú lek
 | Measure | Felhasználónként korlátozva | Leírás |
 |:---|:---|:---|
 | Egyidejű lekérdezések | 5 | Ha a felhasználó számára már 5 lekérdezés fut, minden új lekérdezés egy felhasználónkénti egyidejűségi sorba kerül. Ha az egyik futó lekérdezés véget ér, a rendszer a következő lekérdezést fogja lekérni a várólistából, és elindítja azt. Ez nem tartalmazza a riasztási szabályok lekérdezéseit.
-| A párhuzamossági várólistán lévő idő | 2,5 perc | Ha egy lekérdezés több mint 2,5 percet vesz igénybe a várólistán anélkül, hogy el kellene indítani, a rendszer a 429-es kóddal megszakítja a HTTP-hibaüzenetet. |
-| Összes lekérdezés a egyidejűségi várólistában | 40 | Ha a várólistán lévő lekérdezések száma eléri a 40-et, a további lekérdezések elutasítása a 429-es HTTP-hibakód alapján történik. Ez a szám a egyszerre futtatható 5 lekérdezésen kívül esik. |
+| A párhuzamossági várólistán lévő idő | 3 perc | Ha egy lekérdezés több mint 3 percen belül a várólistán található, az elindítása nélkül, akkor a 429-as kóddal rendelkező HTTP-hiba miatt leáll. |
+| Összes lekérdezés a egyidejűségi várólistában | 200 | Ha a várólistán lévő lekérdezések száma eléri a 200-et, a további lekérdezések elutasítása a 429-es HTTP-hibakód alapján történik. Ez a szám a egyszerre futtatható 5 lekérdezésen kívül esik. |
 | Lekérdezések sebessége | 200-lekérdezések száma 30 másodpercenként | Ez az általános mérték, amellyel a lekérdezéseket egyetlen felhasználó elküldheti az összes munkaterülethez.  Ez a korlát a vizualizációs részek, például az Azure-irányítópultok és a Log Analytics munkaterület összefoglalás lapja által kezdeményezett programozott lekérdezésekre és lekérdezésekre vonatkozik. |
 
 - Optimalizálja a lekérdezéseket a [Azure monitorban található naplók optimalizálása](../articles/azure-monitor/log-query/query-optimization.md)című témakörben leírtak szerint.

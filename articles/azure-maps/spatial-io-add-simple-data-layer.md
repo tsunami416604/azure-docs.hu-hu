@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282806"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085192"
 ---
 # <a name="add-a-simple-data-layer"></a>Egyszerű adatréteg hozzáadása
 
@@ -57,7 +57,7 @@ A következő kód a fenti pont funkciót jeleníti meg az egyszerű adatréteg 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Az egyszerű adatréteg használata" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Lásd a tollat <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>az egyszerű adatréteget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Az egyszerű adatréteg használata" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Lásd a tollat <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>az egyszerű adatréteget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Az egyszerű adatréteg valódi ereje a következőket tartalmazhatja:
@@ -70,7 +70,7 @@ Például az XML-adatcsatornák elemzésekor előfordulhat, hogy nem ismeri a fu
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Az adatrétegek egyszerű beállításai" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>egyszerű adatrétegének beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Az adatrétegek egyszerű beállításai" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>egyszerű adatrétegének beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -102,7 +102,7 @@ Ha a szolgáltatás egy `Point` vagy a `MultiPoint` , és a szolgáltatás nem r
 | `radius` | `size`<sup>1</sup>, `marker-size` <sup>2</sup>, `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1 \] a `size` és az `scale` értékek skaláris értéknek minősülnek, és megszorozzák őket`8`
+\[1 \] a `size` és az `scale` értékek skaláris értéknek minősülnek, és megszorozzák őket `8`
 
 \[2 \] Ha a GitHub `marker-size` beállítás meg van adva, a rendszer a következő értékeket fogja használni a RADIUS-hez.
 
@@ -114,11 +114,11 @@ Ha a szolgáltatás egy `Point` vagy a `MultiPoint` , és a szolgáltatás nem r
 
 A fürtöket a buborék réteg is megjeleníti. Alapértelmezés szerint a fürt sugara a következőre van beállítva: `16` . A fürt színe a fürtben lévő pontok számától függ, az alábbiakban meghatározottak szerint:
 
-| pontok száma | Szín (Color)    |
+| pontok száma | Color    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
-| &lt;10     | `green`  |
+| &lt; 10     | `green`  |
 
 ### <a name="symbol-style-properties"></a>Szimbólum stílusa tulajdonságai
 
@@ -171,7 +171,7 @@ Ha a funkció egy `Polygon` vagy a `MultiPolygon` , és a `height` tulajdonság 
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
 | `height` | `height` | `0` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

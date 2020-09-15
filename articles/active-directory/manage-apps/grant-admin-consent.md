@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667608"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060917"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz
 
@@ -88,7 +88,7 @@ ahol:
 Ahogy mindig, körültekintően tekintse át az alkalmazások kérelmének engedélyeit a jóváhagyás megadása előtt.
 
 > [!WARNING]
-> A bérlői szintű rendszergazdai jóváhagyás ezen az URL-címen keresztül történő megadása visszavonja azokat az engedélyeket, amelyek korábban már megadták a bérlői szintű jogosultságokat. A felhasználók által a saját nevében korábban ggranted engedélyeket a rendszer nem érinti. 
+> A bérlői szintű rendszergazdai jóváhagyás ezen az URL-címen keresztül történő megadása visszavonja azokat az engedélyeket, amelyek korábban már megadták a bérlői szintű jogosultságokat. A felhasználók által korábban a saját nevében megadott engedélyeket a rendszer nem érinti. 
 
 ## <a name="next-steps"></a>Következő lépések
 

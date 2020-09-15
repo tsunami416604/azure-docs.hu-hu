@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719145"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084209"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Nyelvi csomagok hozzáadása Windows 10 több munkamenetes rendszerképhez
 
@@ -30,7 +30,7 @@ Több nyelv hozzáadásához a következő dolgokra van szükség a Windows 10-e
 
 - Azure-beli virtuális gép (VM) a Windows 10 Enterprise multi-session, 1903-es vagy újabb verziójával
 
-- A lemezkép által használt operációsrendszer-verzió 1. lemeze, az ISO és az igény szerinti szolgáltatás (Franciaország). Innen töltheti le őket:
+- Az ISO, az igény szerinti szolgáltatás (Franciaország tengerentúli) 1. lemeze és a beérkezett fájlok mappa ISO-je a lemezkép által használt operációsrendszer-verzióhoz. Innen töltheti le őket:
      
      - Nyelv ISO:
         - [Windows 10, 1903-es vagy 1909-es nyelvi csomag ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ Több nyelv hozzáadásához a következő dolgokra van szükség a Windows 10-e
      - Franciaország tengerentúli lemeze 1 ISO:
         - [Windows 10, 1903-es vagy 1909-es verziójú, 1. lemez ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10, 2004-es verzió, Franciaország 1. lemeze ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - Beérkezett alkalmazások ISO:
+        - [Windows 10, 1903-es vagy 1909-es bejövő alkalmazások ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10, 2004-es verziójú beérkezett alkalmazások ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Egy Azure Files megosztás vagy fájlmegosztás egy Windows fájlkiszolgáló virtuális gépen
 
@@ -47,15 +51,16 @@ Több nyelv hozzáadásához a következő dolgokra van szükség a Windows 10-e
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>A nyelvi csomagok és szolgáltatások igény szerinti tárházának létrehozása
 
-A nyelvi csomagok és a FODs tartalmának tárházának létrehozása:
+A nyelvi csomagok és FODs, valamint a beérkezett fájlok mappáinak tárházának létrehozása a következő helyen:
 
-1. Az Azure-beli virtuális gépeken töltse le a Windows 10 multi-Language ISO-és FODs a Windows 10 Enterprise multi-session, 1903, 1909 és 2004 rendszerképeket az [Előfeltételek](#prerequisites)hivatkozásaiban.
+1. Egy Azure-beli virtuális gépen töltse le a Windows 10-es multi-Language ISO, a FODs és a beérkezett fájlok alkalmazásait a Windows 10 Enterprise multi-session, a 1903/1909-es és a 2004-es verzióra az [Előfeltételek](#prerequisites)hivatkozásaiban.
 
 2. Nyissa meg és csatlakoztassa az ISO-fájlokat a virtuális gépen.
 
 3. Nyissa meg a Language Pack ISO-t, és másolja a tartalmat a **LocalExperiencePacks** és az **x64 \\ Langpacks** mappából, majd illessze be a tartalmat a fájlmegosztásba.
 
 4. Nyissa meg az Franciaország-beli **ISO-fájlt**, másolja ki az összes tartalmát, majd illessze be a fájlmegosztást.
+5. Nyissa meg a beérkezett fájlok **amd64fre** mappáját, és másolja a tárházban lévő tartalmat az előkészített Beérkezett üzenetek mappájába.
 
      >[!NOTE]
      > Ha korlátozott tárterülettel dolgozik, csak azokat a nyelveket másolja, amelyekről a felhasználók számára szüksége van. A fájlokat egymástól eldöntheti, ha a fájlneveit a nyelvi kódokat keresi. A francia fájlban például a "fr-FR" kód szerepel a névben. Az összes elérhető nyelvhez tartozó nyelvi kódok teljes listájáért lásd: [elérhető nyelvi csomagok a Windowshoz](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
@@ -66,7 +71,7 @@ A nyelvi csomagok és a FODs tartalmának tárházának létrehozása:
      > [!div class="mx-imgBorder"]
      > ![A japán nyelvi csomagok példája a "Jpan" nyelvi címkével a fájlnevekben.](media/language-pack-example.png)
 
-5. Állítsa be az engedélyeket a nyelvi tartalom tárházának megosztására, hogy rendelkezzen olvasási hozzáféréssel az egyéni rendszerkép létrehozásához használni kívánt virtuális gépről.
+6. Állítsa be az engedélyeket a nyelvi tartalom tárházának megosztására, hogy rendelkezzen olvasási hozzáféréssel az egyéni rendszerkép létrehozásához használni kívánt virtuális gépről.
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Egyéni Windows 10 Enterprise több munkamenetből álló rendszerkép manuális létrehozása
 
@@ -75,7 +80,7 @@ Egyéni Windows 10 Enterprise több munkamenetből álló rendszerkép manuális
 1. Helyezzen üzembe egy Azure-beli virtuális gépet, majd nyissa meg az Azure-katalógust, és válassza ki a Windows 10 Enterprise-munkamenet aktuális verzióját, amelyet használ.
 2. A virtuális gép üzembe helyezése után helyi rendszergazdaként az RDP használatával csatlakozhat hozzá.
 3. Győződjön meg arról, hogy a virtuális gép rendelkezik a legújabb Windows-frissítésekkel. Töltse le a frissítéseket, és szükség esetén indítsa újra a virtuális gépet.
-4. Kapcsolódjon a nyelvi csomaghoz és a FTM-fájlmegosztás adattárához, és csatlakoztassa egy betűjelű meghajtóhoz (például az E meghajtón).
+4. Kapcsolódjon a nyelvi csomaghoz, Franciaország tengerentúli megyéihez és a beérkezett alkalmazások fájlmegosztás-tárházához, és csatlakoztassa egy betűjelű meghajtóhoz (például az E meghajtóra).
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Egyéni Windows 10 Enterprise több munkamenetből álló rendszerkép automatikus létrehozása
 
@@ -161,6 +166,56 @@ A parancsfájl eltarthat egy ideig a telepítendő nyelvek számától függően
 
 Ha a parancsfájl futása befejeződött, ellenőrizze, hogy a nyelvi csomagok megfelelően vannak-e telepítve, **majd a**  >  **Beállítások**  >  **időpontja & a nyelv**  >  **nyelve**. Ha a nyelvi fájlok vannak, akkor minden be van állítva.
 
+Miután további nyelveket adott hozzá a Windows-rendszerképhez, a beérkezett fájlok alkalmazásait is frissíteni kell a hozzáadott nyelvek támogatásához. Ezt úgy teheti meg, hogy az előre telepített alkalmazásokat a beérkezett fájlok ISO-ból származó tartalommal együtt frissít. A frissítés leválasztott környezetben való végrehajtásához (nem lehetséges a virtuális gép internet-hozzáférése) az alábbi PowerShell-parancsfájl segítségével automatizálhatja a folyamatot.
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>Az ISO-ben található beérkezett fájlok alkalmazás nem az előre telepített Windows-alkalmazások legújabb verziói. Az összes alkalmazás legújabb verziójának lekéréséhez frissítenie kell az alkalmazásokat a Windows áruházbeli alkalmazással, és a további nyelvek telepítése után manuálisan kell keresnie a frissítéseket.
+
 Ha elkészült, győződjön meg róla, hogy leválasztja a megosztást.
 
 ## <a name="finish-customizing-your-image"></a>A rendszerkép testre szabásának befejezése
@@ -183,9 +238,9 @@ A Sysprep futtatása:
 
 ## <a name="enable-languages-in-windows-settings-app"></a>Nyelvek engedélyezése a Windows beállításai alkalmazásban
 
-Végül hozzá kell adnia a nyelvet az egyes felhasználók nyelvi listájához, hogy a beállítások menüben ki tudják választani a kívánt nyelvet.
+Végül, miután telepítette a gazdagépet, hozzá kell adnia a nyelvet az egyes felhasználók nyelvi listájához, hogy a beállítások menüben ki tudják választani a kívánt nyelvet.
 
-Annak biztosítása érdekében, hogy a felhasználók kiválaszthatják a telepített nyelveket, jelentkezzen be felhasználóként, majd futtassa a következő PowerShell-parancsmagot a telepített nyelvi csomagok hozzáadásához a nyelvek menühöz. Ezt a parancsfájlt automatikus feladatként is beállíthatja, amely akkor aktiválódik, amikor a felhasználó bejelentkezik a munkamenetbe.
+Annak biztosítása érdekében, hogy a felhasználók kiválaszthatják a telepített nyelveket, jelentkezzen be felhasználóként, majd futtassa a következő PowerShell-parancsmagot a telepített nyelvi csomagok hozzáadásához a nyelvek menühöz. A parancsfájlt beállíthatja automatikus feladat vagy bejelentkezési parancsfájlként is, amely akkor aktiválódik, amikor a felhasználó bejelentkezik a munkamenetbe.
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList
@@ -197,7 +252,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 Miután a felhasználó módosítja a nyelvi beállításokat, ki kell jelentkeznie a Windows rendszerű virtuális asztali munkamenetből, és újra be kell jelentkeznie a módosítások érvénybe léptetéséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kíváncsi a nyelvi csomagok ismert problémáira, tekintse meg [a nyelvi csomagok hozzáadása a Windows 10 1803-es és újabb verzióiban: ismert problémák](/windows-hardware/manufacture/desktop/language-packs-known-issue)című témakört.
 

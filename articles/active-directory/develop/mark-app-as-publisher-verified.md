@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006944"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085705"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése
 
-Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő a Microsoft Partner Network (MPN) fiók használatával ellenőrizte az identitását, és az alkalmazás regisztrálásával társította ezt az MPN-fiókot. Ez a cikk a [közzétevői ellenőrzés (előzetes verzió)](publisher-verification-overview.md) folyamatának befejezését ismerteti.
+Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő a Microsoft Partner Network (MPN) fiók használatával ellenőrizte az identitását, és az alkalmazás regisztrálásával társította ezt az MPN-fiókot. Ez a cikk bemutatja, hogyan végezheti el a [közzétevő ellenőrzési](publisher-verification-overview.md) folyamatát.
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyorsútmutató
 Ha már regisztrált a Microsoft Partner Network (MPN) szolgáltatásban, és teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), azonnal megkezdheti az első lépéseket: 
 
-1. Navigáljon az [alkalmazás regisztrációs portálra](https://aka.ms/PublisherVerificationPreview).
+1. Bejelentkezés az [alkalmazás regisztrációs portálján](https://aka.ms/PublisherVerificationPreview) a [multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) használatával
 
 1. Válasszon ki egy alkalmazást, és kattintson a **branding**elemre. 
 
@@ -40,9 +40,9 @@ Az egyes előnyökkel, követelményekkel és gyakori kérdésekkel kapcsolatos 
 ## <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése
 Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), majd kövesse az alábbi lépéseket az alkalmazás (ok) megjelöléséhez a közzétevő által ellenőrzöttként.  
 
-1. Győződjön meg arról, hogy olyan szervezeti (Azure AD-) fiókkal van bejelentkezve, amely jogosult a Közzétevőként megjelölni kívánt alkalmazás (ok) módosítására, valamint a fiókpartner MPN-fiókjára. 
+1. Győződjön meg arról, hogy a [többtényezős hitelesítéssel](../fundamentals/concept-fundamentals-mfa-get-started.md) olyan szervezeti (Azure ad-) fiókkal jelentkezett be, amely jogosult a közzétevőként megjelölni kívánt alkalmazás (ok) módosítására, valamint a fiókpartner MPN-fiókjára.
 
-    - Az Azure AD-ben a felhasználónak vagy az alkalmazás tulajdonosának kell lennie, vagy a következő szerepkörök egyikével kell rendelkeznie: Application admin, Cloud Application admin, globális rendszergazda. 
+    - Az Azure AD-ben a felhasználónak a következő szerepkörök egyikének kell lennie: Application admin, Cloud Application admin, globális rendszergazda. 
 
     - A partner Centerben ennek a felhasználónak a következő szerepkörökkel kell rendelkeznie: MPN-rendszergazda, fiókok rendszergazdája vagy globális rendszergazda (ez az Azure AD-ben elsajátított megosztott szerepkör). 
 
@@ -50,11 +50,9 @@ Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-ver
 
 1. Kattintson arra az alkalmazásra, amelyet Közzétevőként szeretne megjelölni, és nyissa meg a branding (védjegyezés) panelt. 
 
-1. Győződjön meg arról, hogy az alkalmazás közzétevői tartománya megfelelően van beállítva. Ennek a tartománynak a következőnek kell lennie: 
+1. Győződjön meg arról, hogy az alkalmazás [közzétevői tartománya](howto-configure-publisher-domain.md) be van állítva. 
 
-    - Az Azure AD-bérlőt DNS-hitelesítésű egyéni tartományként adja hozzá,  
-
-    - Az MPN-fiók ellenőrzési folyamata során használt e-mail-cím tartományának felel meg. 
+1. Győződjön meg arról, hogy a bérlő vagy a DNS által ellenőrzött [egyéni tartomány](../fundamentals/add-custom-domain.md) megegyezik az MPN-fiók ellenőrzési folyamata során használt e-mail-cím tartományával.
 
 1. Kattintson az **MPN-azonosító hozzáadása elemre a kiadó ellenőrzéséhez** az oldal alján. 
 
@@ -72,7 +70,7 @@ Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-ver
 
 1. Azok a felhasználók, akik megkérik az alkalmazás belefoglalását, azonnal megkezdik a jelvény megtekintését, miután sikeresen elvégezte a folyamatot, bár ez eltarthat egy ideig, amíg a rendszer replikálja. 
 
-1. Tesztelje ezt a funkciót úgy, hogy bejelentkezik az alkalmazásba, és gondoskodik arról, hogy az ellenőrzött jelvény a beleegyezési képernyőn jelenik meg. Ha olyan felhasználóként jelentkezett be, aki már kapott beleegyezett az alkalmazásba, a *kérések* lekérdezése paraméterrel kényszerítheti a beleegyezés kérését. 
+1. Tesztelje ezt a funkciót úgy, hogy bejelentkezik az alkalmazásba, és gondoskodik arról, hogy az ellenőrzött jelvény a beleegyezési képernyőn jelenik meg. Ha olyan felhasználóként jelentkezett be, aki már kapott beleegyezett az alkalmazásba, a *kérések* lekérdezése paraméterrel kényszerítheti a beleegyezés kérését. Ezt a paramétert csak tesztelésre kell használni, és soha nem kell az alkalmazás kéréseibe kódolni.
 
 1. Szükség szerint ismételje meg a folyamatot minden olyan alkalmazáshoz, amelyhez meg szeretné jeleníteni a jelvényt. A Microsoft Graph használatával a lehető leggyorsabban elvégezhető tömegesen, a PowerShell-parancsmagok pedig hamarosan elérhetők lesznek. További információért tekintse meg a [Microsoft API Graph-hívások készítése](troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) című témakört. 
 

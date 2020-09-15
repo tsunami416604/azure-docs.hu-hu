@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali felhasználók hírcsatornáinak 
 description: A Windows rendszerű virtuális asztali felhasználók hírcsatornáinak testreszabása PowerShell-parancsmagokkal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009120"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084294"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>A Windows rendszerű virtuális asztali felhasználók hírcsatornájának testreszabása
 
@@ -107,15 +107,15 @@ A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy e
 
 3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet.
 
-4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét.
+4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét. (Ha például szerkeszteni szeretné az asztali alkalmazás csoport megjelenítendő nevét, válassza ki az **asztal**nevű alkalmazást.)
 
 5. A képernyő bal oldalán található menüben válassza az **alkalmazások** lehetőséget.
 
 6. Válassza ki a frissíteni kívánt alkalmazást, majd adjon meg egy új **megjelenítendő nevet**.
 
-7. Kattintson a **Mentés** gombra. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
+7. Válassza a **Mentés** lehetőséget. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe a teszteléshez. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
 

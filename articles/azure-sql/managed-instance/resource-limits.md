@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587310"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069594"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 > [!Important]
 > A üzletileg kritikus Service-szintű szolgáltatás a felügyelt SQL-példány (másodlagos replika) egy további beépített példányát biztosítja, amely csak olvasható számítási feladatokhoz használható. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikai/jelentéskészítési lekérdezéseket, akkor a virtuális mag és a memóriát is megkezdheti ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodperccel az elsődleges példány mögött van, ezért olyan jelentéskészítési/elemzési munkaterhelések kiszervezésére lett kialakítva, amelyeknek nincs szükségük pontos aktuális állapotára. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
-| **Funkció** | **általános célú** | **üzletileg kritikus** |
+| **Funkció** | **általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*A csak olvasható lekérdezések esetében azonos számú virtuális mag van hozzárendelve. |
 | Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
@@ -99,12 +99,12 @@ Ebben a cikkben további információt talál az [SQL felügyelt példány-kész
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>A fájl i/o-jellemzői általános célú szinten
 
-A általános célú szolgáltatási szinten minden adatbázisfájl dedikált IOPS és átviteli sebességet kap, amely a fájlmérettől függ. A nagyobb adatfájlok nagyobb IOPS és átviteli sebességet kapnak. Az adatbázisfájlok IO-jellemzői az alábbi táblázatban láthatók:
+A általános célú szolgáltatási szinten minden adatbázisfájl dedikált IOPS és átviteli sebességet kap, amely a fájlmérettől függ. A nagyobb fájlok több IOPS és átviteli sebességet kapnak. Az adatbázisfájlok IO-jellemzői az alábbi táblázatban láthatók:
 
-| Fájlméret | >= 0 és <= 128 GiB | >128 és <= 256 GiB | >256 és <= 512 GiB | >0,5 és <= 1 TiB    | >1 és <= 2 TiB    | >2 és <= 4 TiB | >4 és <= 8 TiB |
+| Fájlméret | >= 0 és <= 128 GiB | >128 és <= 512 GiB | >0,5 és <= 1 TiB    | >1 és <= 2 TiB    | >2 és <= 4 TiB | >4 és <= 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
-| Átviteli sebesség fájlonként | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
+| IOPS       | 500   | 2300              | 5000              | 7500              | 7500              | 12 500   |
+| Átviteli sebesség fájlonként | 100 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
 
 Ha bizonyos adatbázisfájlok esetében magas IO-késleltetést észlel, vagy ha azt látja, hogy a IOPS/átviteli sebesség eléri a korlátot, [a fájlméret növelésével](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)növelheti a teljesítményt.
 
@@ -161,7 +161,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 Ha az aktuális régiókban több példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

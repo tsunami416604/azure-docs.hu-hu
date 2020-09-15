@@ -1,16 +1,16 @@
 ---
 title: Fizikai alapú renderelési anyagok beállítása a Maya-ban
 description: Elmagyarázza, hogyan állíthat be fizikailag alapú renderelési anyagokat a Maya-ben, és hogyan exportálhatja őket FBX formátumba.
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85373241"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084396"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Oktatóanyag: fizikailag alapú renderelési anyagok beállítása a Maya-ban
 
@@ -112,11 +112,11 @@ Miután beállította az exportálási konfigurációt, a jobb alsó sarokban v�
 
 ![Adathordozók beágyazása](media/embedding-media.jpg)
 
-## <a name="conclusion"></a>Tanulság
+## <a name="conclusion"></a>Összegzés
 
 Általánosságban elmondható, hogy az ilyen típusú anyagok reálisak, mert a fény valós fizikáján alapulnak. Ez egy további alámerülés hatást eredményez, amely úgy tűnik, hogy a jelenet valóban létezik a valós világban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már tudja, hogyan állíthat be speciális világítású anyagokat a jelenetekben található objektumokhoz. Arról is tájékozódhat, hogyan exportálhatja az objektumokat az Azure távoli renderelés által támogatott FBX formátumba. A következő lépés a FBX fájl átalakítása és megjelenítése az Azure-beli távoli renderelésben.
 

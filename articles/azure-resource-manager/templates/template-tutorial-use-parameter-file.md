@@ -6,12 +6,12 @@ ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff3ba6bdf93fd51b3b78fce2bc82404423c427ba
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667439"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069509"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Oktatóanyag: paraméterek használata az ARM-sablon üzembe helyezéséhez
 
@@ -128,7 +128,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
+> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -146,7 +146,7 @@ A központi telepítés ellenőrzéséhez tekintse meg az Azure Portal lévő er
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, készen áll a sablonok Azure-ba történő üzembe helyezésének bevezetésére. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226675"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084328"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -45,7 +45,7 @@ A következő lépések bemutatják, hogyan működik a bejelentkezési folyamat
 ![A vállalati Windows Hello szolgáltatásban a felhasználói bejelentkezéshez szükséges lépéseket ismertető ábra](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. A felhasználó biometrikus vagy PIN-kód típusú kézmozdulattal jelentkezik be a Windowsba. A kézmozdulat feloldja a vállalati Windows Hello-kulcs zárolását, és elküldjük a Cloud Authentication biztonsági támogatási szolgáltatónak, amelyet a *Felhőbeli AP-szolgáltatónak*nevezünk.
-1. A Felhőbeli AP-szolgáltató az Azure AD-ből kér egy alkalomot.
+1. A Cloud AP Provider egy egyszer használatos (véletlenszerű, tetszőleges számú) Azure AD-t kér.
 1. Az Azure AD egy egypéldányos értéket ad vissza, amely 5 percig érvényes.
 1. A Felhőbeli AP-szolgáltató aláírja az időpontot a felhasználó titkos kulcsa alapján, és visszaadja az aláírt alkalmi lehetőséget az Azure AD-nek.
 1. Az Azure AD a felhasználó biztonságos regisztrált nyilvános kulcsával érvényesíti az aláírt alkalmi használatot az egyszeres aláírással. Az aláírás ellenőrzése után az Azure AD ezt követően érvényesíti a visszaadott, aláírt időpontot. Az egyszeres hitelesítés ellenőrzése után az Azure AD létrehoz egy elsődleges frissítési tokent (PRT) az eszköz átviteli kulcsához titkosított munkamenetkulcs használatával, és visszaadja a Felhőbeli AP-szolgáltatónak.

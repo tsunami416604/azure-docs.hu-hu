@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce6325abf34813a9ca397f5bcbe2e774af3442d4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535076"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061478"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
 
@@ -28,7 +28,7 @@ A AzFilesHybrid PowerShell-modul parancsmagai elvégzik a szükséges módosít�
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid modul letöltése
 
-- [Töltse le és csomagolja ki a AzFilesHybrid modult](https://github.com/Azure-Samples/azure-files-samples/releases) (GA-modul: v 0.2.0 +)
+- [Töltse le és csomagolja ki a AzFilesHybrid modult (GA-modul: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Vegye figyelembe, hogy az AES 256 Kerberos-titkosítás támogatott a v 0.2.2 vagy újabb verziókban. Ha engedélyezte a szolgáltatást a v 0.2.2 alatti AzFilesHybrid-verzióval, és frissíteni szeretné az AES 256 Kerberos-titkosítás támogatásához, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems). 
 - Telepítse és hajtsa végre a modult egy olyan eszközön, amely tartományhoz van csatlakoztatva a helyszíni AD DS olyan AD DS hitelesítő adatokkal, amelyek engedéllyel rendelkeznek a szolgáltatás bejelentkezési fiókjának vagy a célszámítógép fiókjának létrehozásához a cél AD-ben.
 -  Futtassa a parancsfájlt egy helyszíni AD DS hitelesítő adat használatával, amely szinkronizálva van az Azure AD-vel. A helyszíni AD DS hitelesítő adatának a Storage-fiók tulajdonosa vagy a közreműködő Azure-szerepkör engedélyekkel kell rendelkeznie.
 
@@ -151,7 +151,7 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel sikeresen engedélyezte a szolgáltatást a Storage-fiókjában. A szolgáltatás használatához hozzá kell rendelnie a megosztási szintű engedélyeket. Folytassa a következő szakasszal.
 

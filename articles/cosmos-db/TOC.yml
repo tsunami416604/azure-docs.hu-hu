@@ -967,6 +967,8 @@
         - name: Resource Manager-sablonok használata
           href: manage-sql-with-resource-manager.md
           displayName: ARM
+        - name: Áthelyezés régiók között
+          href: how-to-move-regions.md
     - name: Globális terjesztés
       items:
         - name: Több főkiszolgálós telepítés konfigurálása

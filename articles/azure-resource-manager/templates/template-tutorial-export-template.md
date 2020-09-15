@@ -6,12 +6,12 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6a2c59a9cbaddc02159ee89497900509f33772c0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650060"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069543"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -36,7 +36,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Adja meg a következőt:
 
     - **Előfizetés**: válassza ki az Azure-előfizetését.
@@ -48,7 +48,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
     ![Resource Manager-sablon exportálása sablon portál](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra. Az erőforrás létrehozása néhány percet vesz igénybe.
+1. Válassza a **Létrehozás** lehetőséget. Az erőforrás létrehozása néhány percet vesz igénybe.
 
 ## <a name="export-template"></a>Sablon exportálása
 
@@ -111,7 +111,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a hibakeresési naplók megjelenítéséhez használja a **Debug** kapcsolót a telepítési paranccsal.  A teljes hibakeresési naplók megjelenítéséhez használhatja a **részletes** kapcsolót is.
+> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 

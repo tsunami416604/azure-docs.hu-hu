@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651804"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084660"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -151,11 +151,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> A Bayes mintavételezés nem támogatja a korai megszakítási házirendet (lásd: [a korai megszakítási házirend meghatározása](#specify-early-termination-policy)). A Bayes paraméter mintavételének használatakor állítsa be `early_termination_policy = None` , vagy hagyja ki a `early_termination_policy` paramétert.
+> A Bayes mintavételezés nem támogatja a korai megszakítási házirendet (lásd: [a korai megszakítási házirend meghatározása](#early-termination)). A Bayes paraméter mintavételének használatakor állítsa be `early_termination_policy = None` , vagy hagyja ki a `early_termination_policy` paramétert.
 
-<a name='specify-primary-metric-to-optimize'/>
-
-## <a name="specify-primary-metric"></a>Elsődleges metrika meghatározása
+## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Elsődleges metrika meghatározása
 
 Itt adhatja meg azt az [elsődleges metrikát](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) , amelyet a hiperparaméter-hangolási kísérlettel optimalizálni szeretne. Minden betanítási Futtatás kiértékelése az elsődleges metrika esetében történik. Nem megfelelően végrehajtott futtatások (ha az elsődleges metrika nem felel meg a korai megszakítási szabályzat által meghatározott feltételeknek), a rendszer leállítja. Az elsődleges metrika neve mellett megadhatja az optimalizálás célját is – függetlenül attól, hogy maximalizálni vagy csökkenteni szeretné az elsődleges metrikát.
 
@@ -169,9 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 A futtatások optimalizálása a "pontosság" maximalizálása érdekében.  Ügyeljen rá, hogy a betanítási parancsfájlban naplózza ezt az értéket.
 
-<a name='log-metrics-for-hyperparameter-tuning'/>
-
-### <a name="log-metrics-for-hyperparameter-tuning"></a>Hiperparaméter hangolásának naplózási mérőszámai
+### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> Elsődleges metrika meghatározása
 
 A modell betanítási parancsfájljának a modell betanítása során be kell jelentkeznie a megfelelő mérőszámokra. A hiperparaméter hangolás konfigurálásakor meg kell adnia a futtatási teljesítmény kiértékeléséhez használandó elsődleges metrikát. (Lásd: [elsődleges metrika meghatározása az optimalizáláshoz](#specify-primary-metric-to-optimize).)  A betanítási parancsfájlban be kell jelentkeznie ezt a metrikát, hogy elérhető legyen a hiperparaméter hangolási folyamat számára.
 
@@ -184,8 +180,6 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 A betanítási szkript kiszámítja a (z `val_accuracy` ) és a "pontosság", amely elsődleges metrikaként szolgál. Minden alkalommal, amikor a metrika be van jelentkezve, a hiperparaméter tuning szolgáltatás fogadja. A modell fejlesztője határozza meg, hogy milyen gyakran jelentse ezt a metrikát.
-
-<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Korai megszakítási szabályzat meghatározása
 

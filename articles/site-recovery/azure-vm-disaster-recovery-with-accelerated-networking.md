@@ -3,18 +3,18 @@ title: Gyorsított hálózatkezelés engedélyezése az Azure-beli virtuális g�
 description: Útmutató a gyorsított hálózatkezelés engedélyezéséhez Azure Site Recovery Azure-beli virtuális gépek vész-helyreállításához
 services: site-recovery
 documentationcenter: ''
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: harshacs
+ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835850"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068013"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Gyorsított hálózatkezelés az Azure-beli virtuális gépek vész-helyreállításával
 
@@ -85,7 +85,7 @@ Ha a replikáció engedélyezése után engedélyezte a gyorsított hálózatkez
 
 A fenti folyamatot a meglévő replikált virtuális gépek esetében is követni kell, amelyek korábban nem lettek automatikusan engedélyezve a gyorsított hálózatkezelés Site Recovery.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a gyorsított hálózatkezelés előnyeiről](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits).
 - További információ a [Windows rendszerű virtuális gépek](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) és a [linuxos virtuális gépek](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints)gyorsított hálózatkezelésével kapcsolatos korlátozásokról és korlátozásokról.
 - További információ az alkalmazások feladatátvételének automatizálására szolgáló [helyreállítási tervekről](site-recovery-create-recovery-plans.md) .

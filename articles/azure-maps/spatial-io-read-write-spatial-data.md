@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7c588e1db7cbf35d2a5192805674f88905599e8e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816762"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085141"
 ---
 # <a name="read-and-write-spatial-data"></a>Térbeli adatok beolvasása és írása
 
@@ -41,7 +41,7 @@ Tömörített fájl (zip vagy KMZ) beolvasásakor a rendszer kibontja és beolva
 
 Az olvasási függvény eredménye egy `SpatialDataSet` objektum. Ez az objektum kiterjeszti a GeoJSON FeatureCollection osztályt. Könnyedén átadható a `DataSource` szolgáltatásnak, hogy egy térképen jelenítse meg a funkcióit. A `SpatialDataSet` nem csak a szolgáltatással kapcsolatos információkat tartalmaz, de tartalmazhat KML-fedéseket, feldolgozási mérőszámokat és egyéb részleteket is, az alábbi táblázatban leírtak szerint.
 
-| Tulajdonság neve | Típus | Leírás | 
+| Tulajdonság neve | Típus | Description | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Az adatkészletben lévő összes adat határoló mezője. |
 | `features` | `Feature[]` | Az adatkészleten belüli GeoJSON-funkciók. |
@@ -160,7 +160,7 @@ A a `GmlReader` következő srid azonosítókat egyikével rendelkező koordiná
 - EPSG: 4269, EPSG: 4283, EPSG: 4258, EPSG: 4308, EPSG: 4230, EPSG: 4272, EPSG: 4271, EPSG: 4267, EPSG: 4608, EPSG: 4674, valószínűleg kis mennyiségű hibával.
 - EPSG: 3857, EPSG: 102100, EPSG: 3785, EPSG: 900913, EPSG: 102113, EPSG: 41001, EPSG: 54004
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 
@@ -174,10 +174,10 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [SpatialDataSetStats](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
 
 > [!div class="nextstepaction"]
-> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader?view=azure-maps-typescript-latest)
+> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader)
 
 > [!div class="nextstepaction"]
-> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter?view=azure-maps-typescript-latest)
+> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter)
 
 > [!div class="nextstepaction"]
 > [Atlas. IO. OGC. WKT függvények](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)

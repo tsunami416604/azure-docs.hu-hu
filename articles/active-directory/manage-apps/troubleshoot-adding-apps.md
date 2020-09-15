@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás Azure Active Directory való hozzáadásával kapcsolatos gyakori problémák elhárítása
-description: Az alkalmazások Azure Active Directory való hozzáadásakor fellépő gyakori problémák elhárítása.
+title: Alkalmazások Azure Active Directory való hozzáadásával vagy eltávolításával kapcsolatos gyakori problémák elhárítása
+description: Az alkalmazások Azure Active Directory való hozzáadásakor vagy eltávolításakor fellépő gyakori problémák elhárítása.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410417"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068030"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>Alkalmazás Azure Active Directory való hozzáadásával kapcsolatos gyakori problémák elhárítása
-Ez a cikk segít megérteni, hogy az emberek milyen gyakori problémákkal szembesülnek az alkalmazások Azure Active Directory való hozzáadásakor.
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Alkalmazások Azure Active Directory való hozzáadásával vagy eltávolításával kapcsolatos gyakori problémák elhárítása
+Ebből a cikkből megtudhatja, hogy az emberek milyen gyakori problémákkal szembesülnek az alkalmazások Azure Active Directory való hozzáadásakor vagy eltávolításakor.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Rákattintottam a "Hozzáadás" gombra, és az alkalmazásom hosszú ideig tartott
 Bizonyos körülmények között akár 1-2 percet is igénybe vehet, hogy egy alkalmazás megjelenjen a címtárhoz való hozzáadás után. Habár ez nem a szokásosan várt teljesítmény, az alkalmazás hozzáadása folyamatban van. ehhez kattintson az **értesítések** ikonra (a harangra) a [Azure Portal](https://portal.azure.com/) jobb felső sarkában, és keressen az **alkalmazás hozzáadása** feliratú **folyamatban** vagy **befejezett** értesítésben.
@@ -34,6 +34,16 @@ Ha **a** **Hozzáadás** gombra kattintva hibát tapasztal, **hibaüzenet** jele
 Ha segítségre van szüksége az alkalmazások megismeréséhez, tekintse át az SaaS-alkalmazások Azure Active Directory cikkekkel való [integrálására szolgáló oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) .
 
 Ezen kívül az [Azure ad Applications dokumentumtára](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítséget nyújt az Azure ad-vel való egyszeri bejelentkezésről és annak működéséről.
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Törölni szeretném az alkalmazást, de a törlés gomb le van tiltva
+
+A törlés gomb a következő esetekben le lesz tiltva:
+
+- Ha a vállalati alkalmazás területen nem rendelkezik a következő szerepkörök valamelyikével: globális rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás rendszergazdája vagy az egyszerű szolgáltatásnév tulajdonosa.
+
+- A Microsoft-alkalmazások esetében nem fogja tudni törölni azokat a felhasználói felületen a szerepkörtől függetlenül.
+
+- Felügyelt identitásnak megfelelő servicePrincipals. A felügyelt identitások egyszerű szolgáltatása nem törölhető a vállalati alkalmazások panelen. Az Azure-erőforrást kell megadnia a kezeléséhez. További információ a [felügyelt identitásról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portál értesítés részleteinek megtekintése
 Az alábbi lépéseket követve megtekintheti a portál összes értesítésének részleteit:

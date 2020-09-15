@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali környezetbeli gazdagép-készlet l
 description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali környezet telepítése során.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121374"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084413"
 ---
 # <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
@@ -46,6 +46,12 @@ Ha a művelet túllépi a kvóta korlátját, a következő műveletek közül v
 - Hozzon létre egy új címkészletet ugyanazzal a paraméterekkel, de kevesebb virtuális géppel és virtuálisgép-maggal.
 
 - Nyissa meg a böngésző statusMessage mezőjében látható hivatkozást, hogy küldjön egy kérést az Azure-előfizetéshez tartozó kvóta növelésére a megadott virtuálisgép-SKU-ra vonatkozóan.
+
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>Hiba: a felhasználói hozzárendelések nem jelennek meg az alkalmazás csoportjaiban.
+
+Ok: Ez a hiba általában akkor fordul elő, ha áthelyezte az előfizetést 1 Azure Active Directory (AD) bérlőről egy másikra. Ha a régi hozzárendelések továbbra is a régi Azure AD-bérlőhöz vannak kötve, akkor a Azure Portal elvesznek.
+
+Javítás: a felhasználókat újra hozzá kell rendelnie az alkalmazás-csoportokhoz.
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager sablon hibái
 
@@ -88,7 +94,7 @@ A probléma megoldásához tegye a következőket:
 3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
 4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.
 
-### <a name="error-your-deployment-failedunauthorized"></a>Hiba: a telepítés nem sikerült. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Hiba: Your deployment failed...\Unauthorized (Sikertelen üzembe helyezés...\Jogosulatlan)
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -109,7 +115,7 @@ A probléma megoldásához tegye a következőket:
 
 **Javítás:** A PowerShell használatával történő bejelentkezéssel ellenőrizze, hogy a Windows rendszerű virtuális asztali környezet kifogástalan állapotú-e. Fejezze be a virtuális gép regisztrációját manuálisan a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md)-lel.
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: a megadott rendszergazdai Felhasználónév nem engedélyezett
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: The Admin Username specified isn't allowed (A megadott rendszergazdai felhasználónév nem engedélyezett)
 
 > [!div class="mx-imgBorder"]
 > ![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](media/failure-username.png)
@@ -127,7 +133,7 @@ Nyers hiba – példa:
 
 **Javítás:** Frissítse a felhasználónevet, vagy használjon más felhasználókat.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: a virtuális gép hibát jelzett a bővítmény feldolgozásakor
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: VM has reported a failure when processing extension (A virtuális gép hibát jelentett egy bővítmény feldolgozásakor)
 
 > [!div class="mx-imgBorder"]
 > ![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](media/failure-processing.png)
@@ -259,7 +265,7 @@ the VM.\\\"
 
 **Javítás:** Helyezze a munkamenet-gazdagépet kiürítési módba, jelentkezzen ki az összes felhasználót a munkamenet-gazdagépről, majd törölje a gazdagépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).

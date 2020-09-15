@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053048"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084736"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: ütemező
 Ez a témakör a Azure AD Connect Sync (Sync Engine) beépített feladatütemezőjét ismerteti.
@@ -79,7 +79,7 @@ Azure AD Connect korábbi verzióiban a **isStagingModeEnabled** a set-ADSyncSch
 Az ütemező konfigurációját az Azure AD tárolja. Ha átmeneti kiszolgálóval rendelkezik, az elsődleges kiszolgáló változásai az átmeneti kiszolgálót is érintik (kivéve a IsStagingModeEnabled-t).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
-Szintaxis`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
+Szintaxis `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 d-nap, óó-óra, mm-perc, SS-másodperc
 
 Például: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
@@ -160,12 +160,15 @@ Példa: Ha módosította az "AD-erdő" összekötőhöz tartozó szinkronizálá
 ## <a name="stop-the-scheduler"></a>Ütemező leállítása
 Ha az ütemező jelenleg szinkronizálási ciklust futtat, lehet, hogy le kell állítania. Ha például elindítja a telepítővarázslót, és a következő hibaüzenet jelenik meg:
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Képernyőfelvétel: a konfigurációs hibaüzenet nem módosítható.](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 Ha egy szinkronizálási ciklus fut, nem végezheti el a konfigurációs módosításokat. Megvárhatja, amíg az ütemező befejezte a folyamatot, de leállíthatja azt is, hogy azonnal el tudja végezni a módosításokat. Az aktuális ciklus leállítása nem ártalmas, és a függőben lévő módosítások a következő futtatással lesznek feldolgozva.
 
 1. Először is mondja el, hogy az ütemező leállítja a jelenlegi ciklust a PowerShell-parancsmaggal `Stop-ADSyncSyncCycle` .
-2. Ha 1.1.281 előtti buildet használ, akkor az ütemező leállítása nem állítja le az aktuális összekötőt az aktuális feladatból. Az összekötő leállításának kényszerítéséhez végezze el a következő műveleteket: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Ha 1.1.281 előtti buildet használ, akkor az ütemező leállítása nem állítja le az aktuális összekötőt az aktuális feladatból. Az összekötő leállításának kényszerítéséhez végezze el a következő műveleteket:
+
+   ![Képernyőfelvétel: Synchronization Service Manager kiválasztott összekötők és a kijelölt leállítás művelettel jelölt futó összekötő.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * Indítsa el a **szinkronizálási szolgáltatást** a Start menüből. Nyissa meg az **Összekötők**elemet, jelölje ki az összekötőt a-t **futtató**állapottal, majd válassza a **Leállítás** lehetőséget a műveletek közül.
 
 Az ütemező továbbra is aktív, és a következő lehetőségnél újra elindul.
@@ -212,7 +215,7 @@ A fenti képen az első sor olyan állapotból származik, amelyben a Szinkroniz
 ## <a name="scheduler-and-installation-wizard"></a>Ütemező és telepítővarázsló
 A telepítővarázsló indításakor az ütemező átmenetileg fel lesz függesztve. Ennek a viselkedésnek az az oka, hogy a konfiguráció módosításait feltételezi, és ezek a beállítások nem alkalmazhatók, ha a Szinkronizáló motor aktívan fut. Ezért ne hagyja meg a telepítővarázsló megnyitását, mert leállítja a szinkronizációs motort a szinkronizálási műveletek végrehajtásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

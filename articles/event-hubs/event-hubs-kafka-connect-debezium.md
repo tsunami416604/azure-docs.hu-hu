@@ -1,16 +1,16 @@
 ---
 title: Az Azure Event Hubs (előzetes verzió) Apache Kafka-csatlakozási funkciójának integrálása az adatváltozások rögzítésének Debezium
-description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Apache Spark az Azure Event Hubs for Kafka szolgáltatással.
+description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Debezium az Azure Event Hubs for Kafka szolgáltatással.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136888"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061682"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Az Azure Event Hubs (előzetes verzió) Apache Kafka csatlakozási támogatásának integrálása az adatváltozások rögzítésének Debezium
 
@@ -51,7 +51,7 @@ Ez a szakasz a következő témaköröket tartalmazza:
 ### <a name="download-and-setup-debezium-connector"></a>Debezium-összekötő letöltése és beállítása
 Az összekötő letöltéséhez és beállításához kövesse az [Debezium dokumentációjának](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector) legfrissebb utasításait.
 
-- Töltse le az összekötő beépülő moduljának archívumát. Az összekötő verziójának letöltéséhez például `1.2.0` használja a következő hivatkozást:https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
+- Töltse le az összekötő beépülő moduljának archívumát. Az összekötő verziójának letöltéséhez például `1.2.0` használja a következő hivatkozást: https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
 - Bontsa ki a JAR-fájlokat, és másolja őket a [Kafka kapcsolódási beépülő modul. Path](https://kafka.apache.org/documentation/#connectconfigs)fájlba.
 
 
@@ -133,7 +133,7 @@ Hozzon létre egy konfigurációs fájlt ( `pg-source-connector.json` ) a Postgr
 ```
 
 > [!TIP]
-> `database.server.name`az attribútum egy logikai név, amely azonosítja és megadja a megfigyelt PostgreSQL adatbázis-kiszolgáló/fürt névterét. Részletes információkért lásd a [Debezium dokumentációját](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) .
+> `database.server.name` az attribútum egy logikai név, amely azonosítja és megadja a megfigyelt PostgreSQL adatbázis-kiszolgáló/fürt névterét. Részletes információkért lásd a [Debezium dokumentációját](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) .
 
 Az összekötő egy példányának létrehozásához használja a Kafka kapcsolódási REST API végpontját:
 

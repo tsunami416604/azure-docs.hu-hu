@@ -3,12 +3,12 @@ title: Az Azure Event Hubs Apache Kafka kapcsolatos hibáinak elhárítása
 description: Ez a cikk bemutatja, hogyan lehet elhárítani a problémákat az Azure Event Hubs for Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090569"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061427"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs Apache Kafka hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket nyújt a Event Hubs Apache Kafka való használatakor futtatott problémákhoz. 
@@ -55,14 +55,14 @@ Ha a Kafka Event Hubs-on való használata során problémák merülnek fel, tek
 - **SASL-hitelesítés** – a keretrendszernek a Event Hubs által megkövetelt hitelesítési protokollal való együttműködésre való beszerzése nehezebb, mint a szemnek. Ellenőrizze, hogy a SASL-hitelesítéshez használt keretrendszer erőforrásaival hogyan lehet elhárítani a konfigurációt. 
 
 ## <a name="limits"></a>Korlátok
-Apache Kafka és Event Hubs Kafka. A legtöbb esetben Event Hubs Kafka ugyanazokat az alapértékeket, tulajdonságokat, hibakódokat és általános viselkedést eredményezi, amelyeket Apache Kafka. A két explicit módon eltérő példányok (vagy ahol a Event Hubs korlátozza, hogy a Kafka nem) alább látható:
+Apache Kafka és Event Hubs Kafka. A legtöbb esetben az Azure Event Hubs Kafka felülete ugyanazokat az alapértékeket, tulajdonságokat, hibakódokat és általános viselkedést eredményezi, mint Apache Kafka. A két explicit módon eltérő példányok (vagy ahol a Event Hubs korlátozza, hogy a Kafka nem) alább látható:
 
 - A tulajdonság maximális hossza `group.id` 256 karakter.
 - A maximális méret `offset.metadata.max.bytes` 1024 bájt
-- Az eltolási véglegesítés 4 hívás/másodpercre van szabályozva, legfeljebb 1 MB belső napló méretével
+- Az eltolás véglegesíti a másodpercenkénti 4 hívás/másodperc értékre, a belső naplók maximális mérete 1 MB
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekintse meg a következő cikkeket:  
 
 - [Apache Kafka fejlesztői útmutató Event Hubs](apache-kafka-developer-guide.md)

@@ -1,21 +1,21 @@
 ---
 title: A PBR-anyagok beállítása a 3ds Max-ban
 description: Elmagyarázza, hogyan állíthat be fizikailag alapú renderelési anyagokat a 3ds Max-ban, és hogyan exportálhatja őket FBX formátumba.
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078044"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084464"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Oktatóanyag: fizikailag vezérelt renderelési anyagok beállítása a 3ds Max-ban
 
 ## <a name="overview"></a>Áttekintés
-Az oktatóanyag segítségével megtanulhatja a következőket:
+Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 >[!div class="checklist"]
 >
@@ -173,7 +173,7 @@ Az exportálási folyamatba való áttérés előtt megfontolandó utolsó lép�
 
 1. Kattintson a jobb gombbal a kijelölésre, és válassza a **beállítás elérési útja**lehetőséget.
 
-1. Az **eszköz elérési útjának megadása** mezőben válassza ki a textúrák helyi elérési útját, és cserélje le a következőre: `.\` .  Kattintson az **OK** gombra. 
+1. Az **eszköz elérési útjának megadása** mezőben válassza ki a textúrák helyi elérési útját, és cserélje le a következőre: `.\` .  Válassza az **OK** lehetőséget. 
 
     Az eszköz nyomon követésére szolgáló ablak a következő képernyőképen látható módon fog frissülni. A frissítés eltarthat egy ideig, attól függően, hogy a jelenet hány textúrákat tartalmaz, és milyen nagy a jelenet.
 ![Screensthot, amely megjeleníti a frissített eszköz követési ablakát.](media/3dsmax/resolve-textures.jpg)
@@ -227,7 +227,7 @@ Most, hogy elvégezte a textúra elérési útjaihoz viszonyított relatív ért
 
 Általánosságban elmondható, hogy az ilyen típusú anyagok reálisak, mert a fény valós fizikáján alapulnak. Ez egy további alámerülés hatást eredményez, amely úgy tűnik, hogy a jelenet valóban létezik a valós világban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már tudja, hogyan állíthat be speciális világítású anyagokat a jelenetekben található objektumokhoz. Arról is tájékozódhat, hogyan exportálhat objektumokat FBX formátumba, amelyet az Azure távoli renderelése támogat. A következő lépés a FBX fájl átalakítása és megjelenítése az Azure-beli távoli renderelésben.
 

@@ -1,6 +1,6 @@
 ---
 title: Spring-adatAzure Cosmos DB v3 az SQL API kibocsátási megjegyzésekhez és erőforrásokhoz
-description: Ismerje meg az SQL API-hoz készült Spring-adatok Azure Cosmos DB v3-as verzióját, beleértve a kiadási dátumokat, a kivonási dátumokat és a Azure Cosmos DB SQL aszinkron Java SDK egyes verzióiban végrehajtott módosításokat.
+description: Ismerje meg az SQL API-hoz készült Spring-adatok Azure Cosmos DB v3-as verzióját, beleértve a kiadási dátumokat, a kivonulási dátumokat, valamint a Azure Cosmos DB SQL aszinkron Java SDK egyes verzióiban végrehajtott módosításokat.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228035"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068736"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v3 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -36,20 +36,20 @@ ms.locfileid: "89228035"
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
-A Spring-adatAzure Cosmos DB v3 for Core (SQL) lehetővé teszi a fejlesztők számára, hogy Azure Cosmos DB használjanak a Spring Applications szolgáltatásban. A Spring-adatAzure Cosmos DB teszi elérhetővé a Spring-adatfelületet az adatbázisok és gyűjtemények, a dokumentumok kezelése és a lekérdezések kiállítása során. A szinkronizálási és aszinkron (reaktív) API-k ugyanabban a Maven-összetevőben támogatottak. 
+A Spring-adatAzure Cosmos DB a Core (SQL) 3-as verziójának köszönhetően a fejlesztők a Azure Cosmos DBt a Spring Applications szolgáltatásban használhatják. A Spring-adatAzure Cosmos DB teszi elérhetővé a Spring-adatfelületet az adatbázisok és gyűjtemények, a dokumentumok kezelése és a lekérdezések kiállítása során. A szinkronizálási és aszinkron (reaktív) API-k ugyanabban a Maven-összetevőben támogatottak. 
 
-A Spring-adatAzure Cosmos DB a Spring adatkeretrendszertől függ. Azure Cosmos DB SDK-csapat kiad Maven-összetevőket a Spring-adatv 2.2-es és a v 2.3-as verzióhoz.
+A Spring-adatAzure Cosmos DB a Spring adatkeretrendszertől függ. A Azure Cosmos DB SDK csapata a 2,2-es és a 2,3-os tavaszi adatverziók Maven-összetevőit bocsátja ki.
 
-A [Spring Framework](https://spring.io/projects/spring-framework) egy programozási és konfigurációs modell, amely egyszerűbbé teszi a Java-alkalmazások fejlesztését. A szervezet webhelyének felidézéséhez a Spring leegyszerűsíti a függőségi befecskendezést használó alkalmazások "vízvonalát". Számos fejlesztő, mint például a Spring, az alkalmazások fejlesztése és tesztelése is egyszerűbb lesz. A [Spring boot](https://spring.io/projects/spring-boot) kiterjeszti ezt a gondolatot a vízvezetékek kezelésére a webalkalmazások és a szolgáltatások fejlesztésének szem előtt tartásával. A [Spring-adatok](https://spring.io/projects/spring-data) egy programozási modell és keretrendszer az adattárolók, Azure Cosmos db például a Spring vagy Spring rendszerindítási alkalmazás környezetében való hozzáféréshez. 
+A [Spring Framework](https://spring.io/projects/spring-framework) egy programozási és konfigurációs modell, amely megkönnyíti a Java-alkalmazások fejlesztését. A Spring leegyszerűsíti az alkalmazások "vízmennyiségét" a függőségi befecskendezés használatával. Számos fejlesztő, mint például a Spring, egyszerűbbvé teszi az alkalmazások létrehozását és tesztelését. A [Spring boot](https://spring.io/projects/spring-boot) kiterjeszti a vízvezetékek kezelését a webalkalmazások és a szolgáltatások fejlesztésének szem előtt tartásával. A [Spring-adatok](https://spring.io/projects/spring-data) egy programozási modell és keretrendszer az adattárolók eléréséhez, például a Azure Cosmos db egy Spring vagy Spring rendszerindítási alkalmazás kontextusában. 
 
 Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alkalmazásaiban a Spring-alapú adatAzure Cosmos DBek is használhatók.
 
 > [!IMPORTANT]  
-> Ezek a kibocsátási megjegyzések a Spring-adatAzure Cosmos DBek v3 verziójára vonatkoznak. A v2 kibocsátási megjegyzéseit [itt](sql-api-sdk-java-spring-v2.md)találja. 
+> Ezek a kibocsátási megjegyzések a Spring-adatmennyiségek Azure Cosmos DB 3. verziójára vonatkoznak. [A 2. verzió kibocsátási megjegyzéseit itt](sql-api-sdk-java-spring-v2.md)találja. 
 >
-> A Spring-adatAzure Cosmos DB csak az SQL API-t támogatja.
+> A Spring-alapú adatAzure Cosmos DB csak az SQL API-t támogatja.
 >
-> A következő útmutatók támogatják a rugós adatAzure Cosmos DB API-k használatát:
+> Tekintse meg ezeket a cikkeket a más Azure Cosmos DB API-k tavaszi adataival kapcsolatban:
 > * [Spring-adatforrások az Apache Cassandra és a Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [Spring-adatMongoDB Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
 > * [Spring-adatGremlin Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
@@ -61,31 +61,31 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
-### <a name="navigate-the-tabs-above-for-basic-spring-data-azure-cosmos-db-samples"></a>A fenti lapokon navigáljon az alapszintű Spring-adatok Azure Cosmos DB mintákhoz.
+#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Ezek a lapok alapszintű Spring-adatok Azure Cosmos DB mintákat tartalmaznak.
 
 # <a name="pomxml"></a>[pom.xml](#tab/pom)
 
 ### <a name="configure-dependencies"></a>Függőségek konfigurálása
 
-Két rugós adatAzure Cosmos DB v3 Maven-összetevő érhető el.
+Két rugós adatAzure Cosmos DB 3. verziójú Maven-összetevő érhető el.
 
-A Spring adatkeretrendszer v 2.2-es verziójának függvénye:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- A Spring adatkeretrendszer 2,2-es verziójától függő összetevő:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
-A Spring adatkeretrendszer v 2.3-tól függő összetevő:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-3-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- A Spring adatkeretrendszer 2,3-es verziójától függő összetevő:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
 # <a name="connect"></a>[Kapcsolódás](#tab/connect)
 
@@ -114,37 +114,35 @@ cosmos.queryMetricsEnabled=true
 
 # <a name="query"></a>[Lekérdezés](#tab/queries)
 
-### <a name="query"></a>Lekérdezés
-
 [Lekérdezés](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
 
 ---
 
-## <a name="helpful-content"></a>Hasznos tartalom
+## <a name="resources"></a>Erőforrások
 
-| Tartalom | Spring adatkeretrendszer v 2.2 | Spring adatkeretrendszer v 2.3 |
+| Erőforrás | Spring adatkeretrendszer 2,2 | Spring adatkeretrendszer 2,3 |
 |---|---|
 | **SDK letöltése** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**Közreműködés az SDK-val** | [Spring-adatAzure Cosmos DB-tárház a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Spring-adatAzure Cosmos DB-tárház a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
+|**Közreműködés az SDK-ban** | [Spring-adatAzure Cosmos DB-tárház a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Spring-adatAzure Cosmos DB-tárház a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
 |**Oktatóanyag**| [Spring-adatAzure Cosmos DB oktatóanyag a GitHubon](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Spring-adatAzure Cosmos DB oktatóanyag a GitHubon](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>Kiadási előzmények
 
 ### <a name="300-beta2-unreleased"></a>3.0.0-Beta. 2 (nem kiadott)
 
-### <a name="300-beta1-2020-08-17"></a>3.0.0-Beta. 1 (2020-08-17)
+### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (augusztus 17, 2020)
 #### <a name="new-features"></a>Új funkciók
-* A csoport AZONOSÍTÓjának frissítése a következőre: `com.azure` .
-* Az összetevő-azonosító frissítve a következőre: `azure-spring-data-2-3-cosmos` .
-* Az Azure-Cosmos SDK függőségének frissítése megtörtént `4.3.2-beta.2` .
-* Naplózási entitások támogatása – a createdBy, a createdDate, a lastModifiedBy és a lastModifiedDate megjegyzésekkel ellátott mezőinek automatikus kezelése.
-* `@GeneratedValue` Megjegyzések támogatása a típusú azonosító mezőkhöz az automatikus azonosító létrehozásához `String` .
-* Többadatbázisos konfiguráció támogatása egyetlen Cosmos-fiókhoz több adatbázissal és több adatbázissal rendelkező több Cosmos-fiókkal.
-* A `@Version` jegyzetek támogatása bármely karakterlánc-mezőben.
-* A frissített szinkronizálási API-k `Iterable` a típus helyett típusokba térnek vissza `List` .
-* `CosmosClientBuilder`A Cosmos SDK-ból a Spring Bean-ként van kitéve az `@Configuration` osztálynak.
-* Frissítve `CosmosConfig` , hogy tartalmazza a lekérdezési metrikákat és a válasz diagnosztikai processzor implementációját.
-* Az `Optional` egyértékű lekérdezések adattípusának támogatása.
+* Frissíti a csoport AZONOSÍTÓját a következőre: `com.azure` .
+* Frissíti az összetevő AZONOSÍTÓját a következőre: `azure-spring-data-2-3-cosmos` .
+* Frissíti az Azure-Cosmos SDK-függőségét `4.3.2-beta.2` .
+* Támogatást nyújt a naplózási entitások számára: automatikus felügyelet,,, `createdBy` `createdDate` `lastModifiedBy` és `lastModifiedDate` jegyzetekkel ellátott mezők.
+* Hozzáadja a `@GeneratedValue` jegyzetek támogatását az automatikus azonosító létrehozásához a típusú azonosítók mezőihez `String` .
+* Többadatbázisos konfiguráció támogatása több adatbázissal rendelkező önálló Azure Cosmos DB-fiókokhoz és több Azure Cosmos DB-fiókhoz több adatbázissal.
+* A jegyzet támogatását `@Version` bármely karakterlánc-mezőhöz hozzáadja.
+* A szinkronizált API-k visszatérési típusai a következő `Iterable` helyett típusok: `List` .
+* `CosmosClientBuilder`A Azure Cosmos db SDK-ból Spring Bean-ként teszi elérhetővé a `@Configuration` osztályt.
+* `CosmosConfig`A frissítések tartalmazzák a lekérdezési metrikákat és a válasz diagnosztikai processzor implementációját.
+* A támogatja az `Optional` egyértékű lekérdezések adattípusának visszaadását.
 #### <a name="renames"></a>Átnevezi
 * `CosmosDbFactory` a következőre: `CosmosFactory` .
 * `CosmosDBConfig` a következőre: `CosmosConfig` .
@@ -154,22 +152,22 @@ cosmos.queryMetricsEnabled=true
 * `DocumentQuery` a következőre: `CosmosQuery` .
 * az Application. properties jelzője a következőre: `populateQueryMetrics` `queryMetricsEnabled` .
 #### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* Diagnosztikai naplózási feladat ütemezése a `Parallel` szálak számára a nagymennyiségű I/O-szálak blokkolásának elkerülése érdekében.
-* A törlési művelet rögzített optimista zárolása.
-* Kijavítva a záradékkal kapcsolatos lekérdezések Escape-hibáját `IN` .
-* Kijavítva a hiba, amely lehetővé teszi `long` az adattípust `@Id` .
-* Kijavítottuk a problémát azáltal, hogy a, a, `boolean` `long` `int` `double` as típusú adattípusokat a `@PartitionKey` jegyzetekhez.
-* `IgnoreCase`  &  `AllIgnoreCase` A Case-lekérdezések kihagyására szolgáló rögzített kulcsszavak
-* A rendszer az alapértelmezett 4000-es értéket törölte a tárolók automatikus létrehozásakor.
+* Diagnosztikai naplózási feladat ütemezése a `Parallel` szálak számára a nagyszámú I/O-szálak blokkolásának elkerülése érdekében.
+* Megjavítja a törlési művelet optimista zárolását.
+* Kijavítja a záradékhoz tartozó lekérdezések Escape-problémáját `IN` .
+* Kijavítja a problémát azáltal, hogy engedélyezi `long` az adattípust `@Id` .
+* Kijavítja a problémát azáltal, hogy lehetővé teszi a,, `boolean` `long` `int` és `double` adattípusokat a `@PartitionKey` jegyzethez.
+* Javítások `IgnoreCase` és `AllIgnoreCase` kulcsszavak a kis-és nagybetűk lekérdezésének mellőzéséhez.
+* Eltávolítja a 4 000-es alapértelmezett értéket, ha a tárolók automatikusan létrejönnek.
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
+További információ a [Azure Cosmos DBról](https://azure.microsoft.com/services/cosmos-db/).
 
-A Spring Framework szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [projekt kezdőlapját](https://spring.io/projects/spring-framework).
+További információ a [Spring Framework](https://spring.io/projects/spring-framework)-ről.
 
-A Spring boot szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [projekt kezdőlapját](https://spring.io/projects/spring-boot).
+További információ a [Spring boot](https://spring.io/projects/spring-boot)-ről.
 
-Ha többet szeretne megtudni a Spring-információkról, tekintse meg a [projekt kezdőlapját](https://spring.io/projects/spring-data).
+További információ a [Spring-adatforrásokról](https://spring.io/projects/spring-data).

@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516396"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084430"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Gyors útmutató: Azure-beli virtuális gép figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-beli virtuális gépekről a létrehozásuk pillanatában. Ebben a rövid útmutatóban röviden ismerteti az Azure-beli virtuális gépek számára automatikusan összegyűjtött adatokat, valamint azt, hogy miként tekintheti meg a Azure Portalban. Ezután engedélyezi [Azure monitor for VMS](../insights/vminsights-overview.md) a virtuális géphez, amely lehetővé teszi az ügynökök számára a virtuális gép számára az adatok gyűjtését és elemzését a vendég operációs rendszerből, beleértve a folyamatokat és a függőségeiket.
@@ -48,7 +48,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 6. A virtuális gépet az előfizetésében szereplő összes más virtuális géppel megtekintheti. Válassza a **nem figyelt** lapot, ha szeretné megtekinteni az előfizetésében nem szereplő virtuális gépeket.
 
-    ![Első lépések](media/quick-monitor-azure-vm/get-started.png)
+    ![Bevezetés](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Munkaterület konfigurálása
@@ -85,15 +85,15 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 7. Kattintson a virtuális gépre, majd válassza a **teljesítmény** fület, amely a **figyelés** menü **elemzése csempén** található. Ez a virtuális gép vendég operációs rendszerében gyűjtött teljesítményszámlálók kiválasztási csoportját mutatja be. Görgessen lefelé a további számlálók megjelenítéséhez, és mozgassa az egeret egy gráfra az átlag és a százalékos érték különböző időpontokban való megtekintéséhez.
 
-    ![Teljesítmény](media/quick-monitor-azure-vm/performance.png)
+    ![A képernyőfelvételen a teljesítmény panel látható.](media/quick-monitor-azure-vm/performance.png)
 
 9. Válassza a **Térkép** lehetőséget a Maps funkció megnyitásához, amely a virtuális gépen futó folyamatokat és azok függőségeit jeleníti meg. Válassza a **Tulajdonságok** lehetőséget a Tulajdonságok ablaktábla megnyitásához, ha még nincs megnyitva.
 
-    ![Térkép](media/quick-monitor-azure-vm/map.png)
+    ![A képernyőképen a Térkép ablaktábla látható.](media/quick-monitor-azure-vm/map.png)
 
 11. Bontsa ki a virtuális gép folyamatait. Válassza ki az egyik folyamatot a részletek megtekintéséhez és a függőségek kiemeléséhez.
 
-    ![Folyamatok](media/quick-monitor-azure-vm/processes.png)
+    ![Képernyőfelvétel: a Térkép ablaktábla a virtuális gépek kibontott folyamataival bővült.](media/quick-monitor-azure-vm/processes.png)
 
 12. Válassza újra a virtuális gépet, majd válassza a **naplózási események**lehetőséget. 
 

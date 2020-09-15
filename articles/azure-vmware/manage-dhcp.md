@@ -3,12 +3,12 @@ title: A DHCP létrehozása és kezelése
 description: Ez a cikk bemutatja, hogyan kezelheti a DHCP-t az Azure VMware megoldásban.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3fc3de228179925afdf1b7c1015c577fd9c4c924
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752171"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069560"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>A DHCP létrehozása és kezelése az Azure VMWare-megoldásban
 
@@ -56,7 +56,7 @@ A DHCP-kiszolgáló létrehozása után hozzá kell adnia egy hálózati szegmen
 
 ## <a name="create-dhcp-relay-service"></a>DHCP-továbbító szolgáltatás létrehozása
 
-1. Az NXT-T ablakban válassza a **hálózatkezelés** fület, majd az **IP-kezelés**területen válassza a **DHCP**lehetőséget. Válassza a **kiszolgáló hozzáadása**lehetőséget. Válassza a DHCP-továbbító lehetőséget a **kiszolgáló típusa mezőben** , majd adja meg a továbbító kiszolgáló kiszolgálójának nevét és IP-címét. A módosítások mentéséhez válassza a **Mentés** gombot.
+1. A NSX-T ablakban válassza a **hálózatkezelés** fület, majd az **IP-kezelés**területen válassza a **DHCP**lehetőséget. Válassza a **kiszolgáló hozzáadása**lehetőséget. Válassza a DHCP-továbbító lehetőséget a **kiszolgáló típusa mezőben** , majd adja meg a továbbító kiszolgáló kiszolgálójának nevét és IP-címét. A módosítások mentéséhez válassza a **Mentés** gombot.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-továbbító kiszolgáló létrehozása" border="true":::
 

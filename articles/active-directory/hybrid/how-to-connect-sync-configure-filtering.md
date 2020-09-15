@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662557"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084838"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. A Microsoft 365 számítási feladatokat, például az Exchange Online-t és a Skype vállalati verziókat használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
@@ -217,7 +217,7 @@ A bejövő szűrés az alapértelmezett konfigurációt használja, ahol az Azur
 A bejövő szűrés során a **hatókör** hatékonyságát használva határozza meg, hogy mely objektumokat szinkronizálni vagy ne szinkronizálni. Itt végezheti el a saját szervezet igényeinek megfelelő módosításokat. A hatókör modul tartalmaz egy **csoportot** és egy **záradékot** annak meghatározásához, hogy egy szinkronizálási szabály hatókörben van-e. Egy csoport egy vagy több záradékot tartalmaz. Létezik egy logikai "és" kifejezés több záradék között, valamint logikai "vagy" több csoport között.
 
 Nézzünk egy példát:  
-![A hatóköri szűrők hozzáadására példát bemutató képernyőkép](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Egy képernyőkép, amely a hatóköri szűrők hozzáadására mutat példát.](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Ennek a következőnek kell lennie: **(részleg = IT) vagy (részleg = értékesítés és c = US)**.
 
 A következő példákban és lépésekben példaként használja a felhasználói objektumot, de ezt minden objektumtípus esetében használhatja.
@@ -275,7 +275,7 @@ Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók
 1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
 2. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a **Start** menüből.
 3. A **szabályok típusa**alatt kattintson a **kimenő**elemre.
-4. A használt csatlakozási verziótól függően keresse meg a **HRE – User JOIN** vagy a **HRE-User JOIN SOAInAD**nevű szabályt, és kattintson a **Szerkesztés**gombra.
+4. Az Ön által használt csatlakozási verziótól függően keresse meg az **Azure ad – User JOIN** vagy **Az Azure ad-User JOIN SOAInAD**nevű szabályt, és kattintson a **Szerkesztés**gombra.
 5. Az előugró ablakban válaszoljon az **Igen** gombra a szabály másolatának létrehozásához.
 6. A **Leírás** lapon módosítsa a **sorrendet** egy nem használt értékre (például 50).
 7. A bal oldali navigációs sávon kattintson a **hatókör szűrő** elemre, majd kattintson a **záradék hozzáadása**lehetőségre. Az **attribútum**területen válassza az **e-mail**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a ** \@ contoso.com**, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **userPrincipalName**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a következőt: ** \@ contoso.com**.
@@ -300,7 +300,7 @@ A szinkronizálás után a rendszer az összes módosítást exportálja. Mielő
 
 1. Indítson el egy parancssort, és nyissa meg a következőt: `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. Futtassa az `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
-   Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
+   Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD esetében az "contoso.com – Azure AD" kifejezéshez hasonló név szerepel.
 3. Futtassa az `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
 4. Most már van egy fájlja a (z)% Temp% megnevezett export.csvban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.

@@ -3,16 +3,16 @@ title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017566"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069832"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
-Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni a VMware ESXi gazdagépeken/vCenter Servereken futó VMware virtuális gépekről az Azure-ban Azure Backup Server használatával.
+Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni a VMware ESXi gazdagépeken/vCenter Servereken futó VMware virtuális gépekről az Azure-ban Azure Backup Server (MABS) használatával.
 
 Ez a cikk a következőket ismerteti:
 
@@ -21,6 +21,31 @@ Ez a cikk a következőket ismerteti:
 - Adja hozzá a fiók hitelesítő adatait Azure Backuphoz.
 - Adja hozzá a vCenter-vagy ESXi-kiszolgálót a Azure Backup Serverhoz.
 - Állítson be egy védelmi csoportot, amely tartalmazza azokat a VMware virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni, adja meg a biztonsági mentési beállításokat, és ütemezze a biztonsági mentést.
+
+## <a name="supported-vmware-features"></a>Támogatott VMware-funkciók
+
+A MABS a következő funkciókat biztosítja a VMware virtuális gépek biztonsági mentésekor:
+
+- Ügynök nélküli biztonsági mentés: a MABS nem kell telepítenie az ügynököt a vCenter vagy ESXi-kiszolgálóra a virtuális gép biztonsági mentéséhez. Ehelyett csak adja meg az IP-címet vagy a teljes tartománynevet (FQDN), valamint a VMware-kiszolgáló MABS-vel történő hitelesítéséhez használt bejelentkezési hitelesítő adatokat.
+- Felhőalapú integrált biztonsági mentés: a MABS védi a számítási feladatokat a lemezre és a felhőbe. A MABS biztonsági mentési és helyreállítási munkafolyamata segítségével kezelheti a hosszú távú adatmegőrzést és a telephelyen kívüli biztonsági mentést.
+- A vCenter által felügyelt virtuális gépek észlelése és védelme: a MABS észleli és védi a VMware-kiszolgálón (vCenter vagy ESXi-kiszolgálón) üzembe helyezett virtuális gépeket. Az üzembe helyezés méretének növekedésével a vCenter segítségével kezelheti a VMware-környezetet. A MABS a vCenter által felügyelt virtuális gépeket is észleli, így lehetővé teszi a nagyméretű központi telepítések biztosítását.
+- Mappa szintű automatikus védelem: a vCenter lehetővé teszi a virtuális gépek megszervezését a virtuálisgép-mappákban. A MABS észleli ezeket a mappákat, és lehetővé teszi a virtuális gépek a mappa szintjén történő védelemmel való ellátását, és tartalmazza az összes almappát. A mappák védelme során a MABS nem csak a mappában lévő virtuális gépeket védi, hanem a később hozzáadott virtuális gépeket is védi. A MABS naponta észleli az új virtuális gépeket, és automatikusan megvédi azokat. Amikor a virtuális gépeket rekurzív mappákba rendezi, a MABS automatikusan észleli és védi a rekurzív mappákban üzembe helyezett új virtuális gépeket.
+- A MABS védi a helyi lemezen, a hálózati fájlrendszeren (NFS) vagy a fürtön tárolt virtuális gépeket.
+- A MABS a terheléselosztáshoz áttelepített virtuális gépeket védi: mivel a virtuális gépeket áttelepítik a terheléselosztáshoz, a MABS automatikusan észleli és folytatja a virtuális gép védelmét.
+- A MABS a teljes virtuális gép helyreállítása nélkül állíthatja helyre a fájlokat és mappákat egy Windows rendszerű virtuális gépről, ami segít a szükséges fájlok gyorsabb helyreállításában.
+
+## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
+
+A VMware virtuális gépek biztonsági mentésének megkezdése előtt tekintse át a következő listát a korlátozásokról és előfeltételekről.
+
+- Ha a MABS-t használja a vCenter-kiszolgáló (Windows rendszeren futó) Windows-kiszolgálóként való védelemmel való ellátásához a-kiszolgáló teljes tartománynevének használatával, akkor a kiszolgáló teljes tartománynevének használatával nem védhető a vCenter-kiszolgáló VMware-kiszolgálóként.
+  - A vCenter Server statikus IP-címét megkerülő megoldásként használhatja.
+  - Ha a teljes tartománynevet szeretné használni, állítsa le a védelmet Windows-kiszolgálóként, távolítsa el a védelmi ügynököt, majd adja hozzá VMware-kiszolgálóként a teljes tartománynevet használva.
+- Ha a vCenter használatával felügyeli az ESXi-kiszolgálókat a környezetben, adja hozzá a vCenter (és nem ESXi) a MABS védelmi csoportjához.
+- A felhasználói pillanatképekről nem készíthető biztonsági másolat az első MABS biztonsági mentés előtt. Miután a MABS elvégezte az első biztonsági mentést, biztonsági másolatot készíthet a felhasználói pillanatképekről.
+- A MABS nem tudja biztosítani a VMware virtuális gépeket csatlakoztatott lemezekkel és fizikai nyers eszközök hozzárendelésével (pRDM).
+- A MABS nem tudja felderíteni vagy megóvni a VMware-Vapp.
+- A MABS nem tudja megóvni a meglévő pillanatképekkel rendelkező VMware virtuális gépeket.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -392,7 +417,7 @@ A feladatok számát a beállításkulcs használatával módosíthatja az aláb
 
 A 6,7-es vSphere biztonsági mentéséhez tegye a következőket:
 
-- A TLS 1,2 engedélyezése a DPM-kiszolgálón
+- A TLS 1,2 engedélyezése a MABS-kiszolgálón
 
 >[!NOTE]
 >A VMWare 6,7-es verziójában a TLS engedélyezve volt a kommunikációs protokollként.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531259"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069798"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>A Key Vault szolgáltatás figyelése Azure Monitor for Key Vault (előzetes verzió)
 A Key Vault (előzetes verzió) Azure Monitor a kulcstartók átfogó figyelését teszi lehetővé a Key Vault kérelmek, a teljesítmény, a hibák és a késések egységes áttekintésével.
@@ -76,16 +76,6 @@ A munkafüzetben lévő oszlopok feltételes színkódolással vagy intenzitást
 A munkafüzet megjeleníti a sikereket (2xx), a hitelesítési hibákat (401/403 állapotkódok), a szabályozást (429 állapotkódok) és más hibákat (4xx).
 
 Ha jobban meg szeretné ismerni az egyes állapotkódok által képviselt kódokat, javasoljuk, hogy olvassa el [Azure Key Vault állapot-és reagálási kódok](../../key-vault/general/authentication-requests-and-responses.md)dokumentációját.
-
-## <a name="operations--latency-workbook"></a>Műveletek & késési munkafüzet
-
-A lap tetején válassza az **operations & késés** lehetőséget, és megnyílik az **Operations & késése** lap. Ezen a lapon üzembe helyezhetők a kulcstartók a figyeléshez. További részletekért tekintse [meg a Key vaultok figyelésre való konfigurálását](#configuring-your-key-vaults-for-monitoring) ismertető szakaszt.
-
-Láthatja, hogy a rendszer hány kulcstartót engedélyez a naplózáshoz. Ha legalább egy tároló megfelelően van konfigurálva, akkor látni fogja azokat a táblákat, amelyek megjelenítik az egyes kulcstartók műveleteit és állapotkódeit. Az egyes sorok részletek szakaszára kattintva további információkat kaphat az egyes műveletekről.
-
-![Képernyőfelvétel a műveleti és késési diagramokról](./media/key-vaults-insights-overview/logs.png)
-
-Ha nem lát semmilyen adatfájlt a szakaszhoz, tekintse át a Azure Key Vault naplók engedélyezésének első szakaszát, vagy ellenőrizze az alábbi hibaelhárítási szakaszt.
 
 ## <a name="view-from-a-key-vault-resource"></a>Megtekintés Key Vault erőforrásból
 
@@ -192,20 +182,10 @@ Kihasználjuk az "automatikus" időkeretet, ezért attól függ, hogy milyen id�
 
 Az időtartomány az irányítópult beállításaitól függ.
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Miért nem látok semmilyen adat a Key Vault az Operations & késési szakaszban
-
-A naplókon alapuló adatai megtekintéséhez engedélyeznie kell a naplókat a figyelni kívánt kulcstartók mindegyikén. Ez az egyes kulcstartó diagnosztikai beállításai alatt végezhető el. Az adatait egy kijelölt Log Analytics munkaterületre kell küldenie.
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Már Engedélyeztem a naplókat a Key Vault, miért nem látom az adataimat az Operations & késéssel
-
-A diagnosztikai naplók jelenleg nem működnek visszamenőlegesen, így az adatai csak akkor jelennek meg, ha a kulcstartók műveleteket hajtottak végre. Ezért eltarthat egy ideig, akár órákig, akár egy napig, attól függően, hogy milyen aktív a Key Vault.
-
-Emellett, ha nagy számú kulcstartót és előfizetést választott ki, előfordulhat, hogy a lekérdezési korlátozások miatt nem tudja megtekinteni az adatait. Ha szeretné megtekinteni az adatait, előfordulhat, hogy csökkentenie kell a kiválasztott előfizetések vagy kulcstartók számát. 
-
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Mi a teendő, ha más típusú vagy saját vizualizációkat szeretnék látni? Hogyan módosíthatom a Key Vault
 
 Szerkesztheti a meglévő munkafüzetet a szerkesztési mód használatával, majd mentheti a munkáját új munkafüzetként, amely az összes új módosítást tartalmazni fogja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.

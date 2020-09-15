@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 520c2d4fd258bfab5a5a1e0abf890d58bb98fbdc
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652973"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068047"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
@@ -24,7 +24,13 @@ Ez a cikk az Azure- [erőforrás-mozgatóval](overview.md)kapcsolatos gyakori k�
 
 Az erőforrás-mozgató szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. A termelési munkaterhelések támogatottak.
 
-## <a name="region-move"></a>Régió áthelyezése
+
+
+## <a name="moving-across-regions"></a>Áthelyezés régiók között
+
+### <a name="can-i-move-resources-across-any-regions"></a>Helyezhetek át erőforrásokat bármely régióban?
+
+Jelenleg az [adott régióban elérhető erőforrástípusok](https://azure.microsoft.com/global-infrastructure/services/)függvényében bármely forrás nyilvános régióból áthelyezheti az erőforrásokat a cél nyilvános régióba. A Azure Government-régiók erőforrásainak áthelyezése jelenleg nem támogatott.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Milyen erőforrásokat helyezhetek át a régiók között az erőforrás-mozgató használatával?
 
@@ -34,13 +40,19 @@ Az erőforrás-mozgató használatával jelenleg a következő erőforrásokat h
 - Hálózati adapterek (NIC-k)
 - Rendelkezésre állási csoportok 
 - Azure-beli virtuális hálózatok 
-- Nyilvános IP-címek hálózati biztonsági csoportok (NSG)
+- Nyilvános IP-címek
+- Hálózati biztonsági csoportok (NSG-k)
 - Belső és nyilvános terheléselosztó 
 - Azure SQL Database-adatbázisok és rugalmas készletek
 
+
+### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Át lehet helyezni az erőforrásokat az előfizetések között, amikor áthelyezem őket a régiók között?
+
+Az erőforrásoknak a célhelyre való áthelyezése után módosíthatja az előfizetést. [További](../azure-resource-manager/management/move-resource-group-and-subscription.md) információ az erőforrások másik előfizetésre való áthelyezéséről. 
+
 ### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Hol tárolja a rendszer a régióhoz tartozó metaadatokat?
 
-Ez egy [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) -adatbázisban, az [Azure Blob Storage](../storage/common/storage-service-encryption.md)-ban, egy Microsoft-előfizetésben tárolódik.
+Ez egy [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) -adatbázisban, az [Azure Blob Storage](../storage/common/storage-service-encryption.md)-ban, egy Microsoft-előfizetésben tárolódik. Jelenleg a metaadatok tárolása az USA 2. keleti régiójában és Észak-Európában történik. Ezt a lefedettséget más régiókban is kiterjesztjük. Ez nem korlátozza az erőforrások áthelyezését a nyilvános régiók között.
 
 ### <a name="is-the-collected-metadata-encrypted"></a>Titkosították-e az összegyűjtött metaadatokat?
 

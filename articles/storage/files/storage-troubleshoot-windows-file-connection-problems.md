@@ -4,15 +4,15 @@ description: Hibaelhárítás Azure Files problémák a Windows rendszerben. A W
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 08/31/2019
+ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437377"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061206"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -366,6 +366,18 @@ Ez a hiba akkor fordulhat elő, ha a RID-főkiszolgáló FSMO-szerepkört birtok
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Hiba: „Nem köthetők a pozicionálás paraméterek, mert nincsenek nevek megadva.”
 
 Ezt a hibát valószínűleg a Join-AzStorageAccountforAuth parancsban lévő szintaktikai hiba váltja ki.  Ellenőrizze a hibás helyesírású vagy szintaktikai hibákat a parancsban, és ellenőrizze, hogy a AzFilesHybrid modul legújabb verziója https://github.com/Azure-Samples/azure-files-samples/releases) van-e telepítve.  
+
+## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure Files helyszíni AD DS hitelesítés támogatása AES 256 Kerberos-titkosításhoz
+
+Az AES 256 Kerberos-titkosítási támogatást bevezetett Azure Files helyszíni AD DS hitelesítéshez a [AzFilesHybrid modul v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Ha engedélyezte a AD DS hitelesítést a v 0.2.2 alacsonyabb verziójú modulnál, le kell töltenie a legújabb AzFilesHybrid-modult (v 0.2.2 +), és az alábbi PowerShellt kell futtatnia. Ha még nem engedélyezte AD DS hitelesítését a Storage-fiókjában, ezt az [útmutatót](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) az engedélyezéshez követheti. Ha a funkciót a AzFilesHybrid modul v 0.2.2 vagy újabb verziójának engedélyezése során végezte el, nem kell újrafuttatnia a PowerShellt. 
+
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
+```
+
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

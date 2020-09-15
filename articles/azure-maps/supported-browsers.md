@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002929"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085025"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
 
-A Azure Maps web SDK egy [Atlas. isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)nevű segítő függvényt biztosít. Ez a függvény észleli, hogy a webböngészőnek van-e legalább WebGL-funkciója, amely a Térkép vezérlőelem betöltésének és megjelenítésének támogatásához szükséges. Íme egy példa arra, hogyan használhatja a függvényt:
+A Azure Maps web SDK egy [Atlas. isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)nevű segítő függvényt biztosít. Ez a függvény észleli, hogy a webböngészőnek van-e legalább WebGL-funkciója, amely a Térkép vezérlőelem betöltésének és megjelenítésének támogatásához szükséges. Íme egy példa arra, hogyan használhatja a függvényt:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -40,7 +40,7 @@ A Azure Maps web SDK a következő asztali böngészőket támogatja:
 
 Lásd még: [korábbi böngészők megcélzása](#Target-Legacy-Browsers) a cikk későbbi részében.
 
-## <a name="mobile"></a>Mobiltelefon
+## <a name="mobile"></a>Mobil
 
 A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
@@ -72,7 +72,7 @@ Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure M
 </iframe>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps web SDK-ról:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003881"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069747"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -41,7 +41,7 @@ A metrikák alapértelmezés szerint engedélyezve vannak. Az Azure digitális T
 4. A metrikák adataira vonatkozó riasztásokat úgy is beállíthatja, hogy a menüben kiválasztja a **riasztások** lehetőséget, majd az **+ új riasztási szabályt**.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="A riasztások oldal és a hozzáadni kívánt gomb képernyőképe":::
 
-    A folyamattal kapcsolatos további információkért lásd [*: Hibaelhárítás: a diagnosztika beállítása*](troubleshoot-diagnostics.md).
+    Erről a folyamatról a [*Hibaelhárítás: riasztások beállítása*](troubleshoot-alerts.md)című témakörben olvashat bővebben.
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure digitális Twins-metrikák és azok használatának módjai
 
@@ -56,8 +56,8 @@ Az API-kérelmekkel rendelkező metrikák:
 | Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-kérések (előzetes verzió) | Darabszám | Összesen | A digitális ikrek olvasási, írási, törlési és lekérdezési műveleteire vonatkozó API-kérések száma. |  Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege |
-| ApiRequestsFailureRate | API-kérelmek meghibásodási aránya (előzetes verzió) | Százalék | Average | A szolgáltatás által a példányhoz kapott API-kérelmek százalékos aránya (500) a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteinek belső hibája (). | Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege
-| ApiRequestsLatency | API-kérelmek késése (előzetes verzió) | Ezredmásodpercben | Average | Az API-kérelmek válaszideje. Ez arra az időre vonatkozik, amikor a kérést az Azure Digital Twins fogadja, amíg a szolgáltatás nem küld sikeres/sikertelen eredményt a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteihez. | Hitelesítés <br>Művelet <br>Protokoll |
+| ApiRequestsFailureRate | API-kérelmek meghibásodási aránya (előzetes verzió) | Százalék | Átlag | A szolgáltatás által a példányhoz kapott API-kérelmek százalékos aránya (500) a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteinek belső hibája (). | Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege
+| ApiRequestsLatency | API-kérelmek késése (előzetes verzió) | Ezredmásodpercben | Átlag | Az API-kérelmek válaszideje. Ez arra az időre vonatkozik, amikor a kérést az Azure Digital Twins fogadja, amíg a szolgáltatás nem küld sikeres/sikertelen eredményt a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteihez. | Hitelesítés <br>Művelet <br>Protokoll |
 
 #### <a name="billing-metrics"></a>Számlázási mérőszámok
 
@@ -70,7 +70,7 @@ A számlázással elvégezhető mérőszámok:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Számlázási API-műveletek (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins szolgáltatásban végrehajtott API-kérelmek számának számlázási mérőszáma. | Fogyasztásmérő azonosítója |
 | BillingMessagesProcessed | Feldolgozott számlázási üzenetek (előzetes verzió) | Darabszám | Összesen | Számlázási metrika az Azure digitális Twins-ból külső végpontokra küldött üzenetek számának megadásához. | Fogyasztásmérő azonosítója |
-| BillingQueryUnits | Számlázási lekérdezési egységek (előzetes verzió) | Darabszám | Összesen | A lekérdezési egységek száma, a szolgáltatások erőforrás-felhasználásának belsőleg számított mértéke, a lekérdezések végrehajtásához felhasználva. A lekérdezési egységek méréséhez rendelkezésre áll egy segítő API is: [QueryChargeHelper Class](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | Fogyasztásmérő azonosítója |
+| BillingQueryUnits | Számlázási lekérdezési egységek (előzetes verzió) | Darabszám | Összesen | A lekérdezési egységek száma, a szolgáltatások erőforrás-felhasználásának belsőleg számított mértéke, a lekérdezések végrehajtásához felhasználva. A lekérdezési egységek méréséhez rendelkezésre áll egy segítő API is: [QueryChargeHelper Class](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Fogyasztásmérő azonosítója |
 
 #### <a name="ingress-metrics"></a>Bejövő metrikák
 
@@ -79,8 +79,8 @@ Adatbevitelsel ellátott mérőszámok:
 | Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Bejövő események (előzetes verzió) | Darabszám | Összesen | A bejövő telemetria események száma az Azure digitális Twins-ban. | Eredmény |
-| IngressEventsFailureRate | Bejövő események meghibásodási aránya (előzetes verzió) | Százalék | Average | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Eredmény |
-| IngressEventsLatency | Bejövő események késése (előzetes verzió) | Ezredmásodpercben | Average | Az az idő, amikor egy esemény megérkezik, amikor készen áll az Azure digitális ikrek általi egressed, és ekkor a szolgáltatás sikeres/sikertelen eredményt küld. | Eredmény |
+| IngressEventsFailureRate | Bejövő események meghibásodási aránya (előzetes verzió) | Százalék | Átlag | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Eredmény |
+| IngressEventsLatency | Bejövő események késése (előzetes verzió) | Ezredmásodpercben | Átlag | Az az idő, amikor egy esemény megérkezik, amikor készen áll az Azure digitális ikrek általi egressed, és ekkor a szolgáltatás sikeres/sikertelen eredményt küld. | Eredmény |
 
 #### <a name="routing-metrics"></a>Útválasztási metrikák
 
@@ -89,14 +89,14 @@ Az útválasztással elvégezhető mérőszámok:
 | Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Továbbított üzenetek (előzetes verzió) | Darabszám | Összesen | Az Azure-szolgáltatásokhoz (például Event hub, Service Bus vagy Event Grid) továbbított üzenetek száma. | Végpont típusa, <br>Eredmény |
-| RoutingFailureRate | Útválasztási hibák aránya (előzetes verzió) | Százalék | Average | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Eredmény |
-| RoutingLatency | Útválasztási késés (előzetes verzió) | Ezredmásodpercben | Average | Az Azure Digital Twins-ból átirányított esemény között eltelt idő a végponti Azure-szolgáltatásba (például Event hub, Service Bus vagy Event Grid) való közzétételkor. | Végpont típusa, <br>Eredmény |
+| RoutingFailureRate | Útválasztási hibák aránya (előzetes verzió) | Százalék | Átlag | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Eredmény |
+| RoutingLatency | Útválasztási késés (előzetes verzió) | Ezredmásodpercben | Átlag | Az Azure Digital Twins-ból átirányított esemény között eltelt idő a végponti Azure-szolgáltatásba (például Event hub, Service Bus vagy Event Grid) való közzétételkor. | Végpont típusa, <br>Eredmény |
 
 ## <a name="dimensions"></a>Dimenziók
 
 A dimenziók segítenek azonosítani a metrikák további részleteit. Az útválasztási metrikák némelyike végponti információkat biztosít. Az alábbi táblázat felsorolja a méretek lehetséges értékeit.
 
-| Dimenzió | Értékek |
+| Méret | Értékek |
 | --- | --- |
 | Hitelesítés | OAuth |
 | Művelet (API-kérelmek esetén) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/READ, <br>Microsoft. DigitalTwins/eventroutes/READ, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modellek/olvasás, <br>Microsoft. DigitalTwins/modellek/írás, <br>Microsoft. DigitalTwins/models/DELETE, <br>Microsoft. DigitalTwins/lekérdezés/művelet |

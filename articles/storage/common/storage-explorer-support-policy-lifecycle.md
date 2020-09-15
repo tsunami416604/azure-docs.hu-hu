@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 30eaa9b9f8700877607af047e5e64eca65471545
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: bf9cda37e0cc8186938a316c87bcc69a7a7370b8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759597"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085280"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure Storage Explorer támogatási életciklus és szabályzat
 
@@ -41,6 +41,8 @@ Ez a táblázat a Azure Storage Explorer minden kiadásának kiadási dátumát 
 
 | Storage Explorer verziója  | Kiadási dátum       | A támogatási dátum vége |
 |:-------------------------:|:------------------:|:-------------------:|
+| v 1.15.1                   | Szeptember 2., 2020  | Szeptember 2., 2021   |
+| v 1.15.0                   | Augusztus 27., 2020    | Augusztus 27., 2021     |
 | v 1.14.2                   | Július 16., 2020      | Július 16., 2021       |
 | v 1.14.1                   | Július 14., 2020      | Július 14., 2021       |
 | v 1.14.0                   | Június 24., 2020      | Július 14., 2021       |

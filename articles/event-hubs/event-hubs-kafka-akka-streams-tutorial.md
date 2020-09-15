@@ -3,15 +3,16 @@ title: A Apache Kafka-Azure Event Hubs-hoz készült beadási streamek használa
 description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók az Azure Event hub-ba a kiszolgált adatfolyamok.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320207"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061699"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Akka Streams használata az Apache Kafkához készült Event Hubs szolgáltatással
-Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja a kisegítő adatfolyamokat egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Kafka Azure-Event Hubs [Apache Kafka 1,0-es verzióval támogatott.](https://kafka.apache.org/10/documentation.html)
+
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatók a Event Hubs-támogatás a Apache Kafkahoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -129,7 +130,7 @@ Ha az Event hub eseményeivel rendelkezik (például ha a gyártó is fut), akko
 
 Tekintse meg a bevezetési [Streams Kafka-útmutatót](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) , ahol részletesebb információkat találhat a bevezető streamekről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő cikkeket:  
 
 - [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
