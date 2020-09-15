@@ -3,17 +3,17 @@ title: 'Gyakori kérdések: SRE és DevOps | Microsoft Docs'
 titleSuffix: Azure
 description: 'Gyakori kérdések: a SRE és a DevOps közötti kapcsolat megismerése'
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: e917c609b484b1a58377fea2f6cdd75dde30ca6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196412"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090329"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Gyakori kérdések: mi a kapcsolat a SRE és a DevOps között?
 
@@ -24,8 +24,8 @@ A site megbízhatósági mérnöki és DevOps közötti kapcsolat a következő 
 A SRE és a DevOps egyaránt modern operatív eljárások, amelyeket a rendszer a következő kihívásokra reagálva hozott létre és fejlesztett ki:
 
 - az éles környezetek és a fejlesztési folyamatok egyre összetettebbek
-- az üzleti függőség növelése ezen környezetek folyamatos működésével
-- a dolgozók lineáris méretezése a környezetek méretével
+- ezen környezetek üzleti függőségének növekedése
+- a munkaerő lineáris méretezésének nehézsége a környezetek méretével együtt
 - a működési stabilitás megőrzése mellett még gyorsabban kell mozogni
 
 Mindkét működési gyakorlat olyan témákat érint, amelyek kritikus fontosságúak ezeknek a kihívásoknak a kezeléséhez, például a monitorozáshoz, a megfigyeléshez, az automatizáláshoz, a dokumentációhoz és a kollaboratív szoftverfejlesztés eszközeihez.

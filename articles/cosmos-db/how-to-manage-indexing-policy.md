@@ -7,16 +7,19 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 2b1fe86c09349a25c8ebfda38ffc3ec352fdaba3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 36107f69fb51e16ef8f8a6213afc9b153165ab4c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019555"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090587"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 
 Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési házirendek](index-policy.md) alapján indexeli az adatkészleteket. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata minden sztring vagy szám esetében tartományindexeket kényszerít. Ez a szabályzat saját egyéni indexelési szabályzattal felülbírálható.
+
+> [!NOTE]
+> A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik. Ismerkedjen meg az indexeléssel [Azure Cosmos db API-MongoDB](mongodb-indexing.md).
 
 ## <a name="indexing-policy-examples"></a>Indexelési szabályzat példái
 

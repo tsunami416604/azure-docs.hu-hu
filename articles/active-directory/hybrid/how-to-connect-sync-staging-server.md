@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356950"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090125"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: átmeneti kiszolgáló és vész-helyreállítás
 Ha egy kiszolgáló átmeneti módban van, módosíthatja a konfigurációt, és előkészítheti a módosításokat a kiszolgáló aktív állapotba helyezése előtt. Azt is lehetővé teszi, hogy teljes importálást és teljes szinkronizálást futtasson annak ellenőrzéséhez, hogy az összes módosítás várható-e, mielőtt a módosításokat elvégezte az éles környezetben.
@@ -57,7 +57,7 @@ A metódus alkalmazásához kövesse az alábbi lépéseket:
 
 #### <a name="prepare"></a>Előkészítés
 1. Telepítse a Azure AD Connectt, válassza ki az **átmeneti üzemmódot**, és törölje a **szinkronizálás elindítása** a telepítővarázsló utolsó lapján. Ez a mód lehetővé teszi a szinkronizálási motor manuális futtatását.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![A képernyőképen látható a konfigurálásra kész lap a Azure AD Connect párbeszédpanelen.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Jelentkezzen ki/jelentkezzen be, és a Start menüben válassza a **szinkronizálási szolgáltatás**elemet.
 
 #### <a name="configuration"></a>Konfiguráció
@@ -72,8 +72,8 @@ Ha egyéni módosításokat hajtott végre az elsődleges kiszolgálón, és ös
 Ezzel elvégezte az Azure AD és a helyszíni Active Directory módosításainak exportálását (ha az Exchange hibrid üzembe helyezést használja). A következő lépésekkel megvizsgálhatja, hogy mi a változás, mielőtt ténylegesen elindítja az exportálást a címtárakba.
 
 #### <a name="verify"></a>Ellenőrzés
-1. Indítsa el a parancssort, és nyissa meg a következő parancsot`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Run: az `csexport "Name of Connector" %temp%\export.xml /f:x` összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
+1. Indítsa el a parancssort, és nyissa meg a következő parancsot `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Run: az `csexport "Name of Connector" %temp%\export.xml /f:x` összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD esetében az "contoso.com – Azure AD" kifejezéshez hasonló név szerepel.
 3. Futtatás: a `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` (z)% Temp% nevű fájlban található export.csv, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 4. Végezze el a szükséges módosításokat az adatokat vagy a konfigurációban, majd futtassa újra ezeket a lépéseket (Importálás és szinkronizálás és ellenőrzés), amíg az exportálandó módosítások várhatóak lesznek.
 
@@ -267,7 +267,7 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Áttekintő témakörök**  
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)  

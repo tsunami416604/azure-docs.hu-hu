@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322907"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090176"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
 
@@ -66,7 +66,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
 
 1. A Azure Portal hajtson végre egy log-lekérdezést a következőhöz: `VMware_CL` . Amikor Azure Monitor gyűjti a syslog-adatokat, megőrzi a syslog formátumát. A portálon bizonyos mezők rögzítése történik, például az *állomásnév* és a *processname*.  
 
-    ![típus](./media/vmware/type.png)  
+    ![A képernyőképen a Type = VMware_CL egy időbélyeggel rendelkező napló-lekérdezés látható.](./media/vmware/type.png)  
 
     Ha a nézet naplójának keresési eredményei hasonlóak a fenti képen láthatóhoz, akkor a VMware Monitoring megoldás irányítópultjának használatára van beállítva.  
 
@@ -75,7 +75,7 @@ A VMware Monitoring megoldás különféle teljesítménymutatókat és adatokat
 
 Az alábbi táblázat az adatgyűjtés módszereit és az adatok gyűjtésének egyéb részleteit mutatja be.
 
-| platform | Linux-Log Analytics ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
+| platform | Linux-Log Analytics ügynök | System Center Operations Manager ügynök | Azure Storage | Operations Manager kötelező? | A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés | gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 percenként |
 
@@ -105,7 +105,7 @@ A következő táblázat példákat mutat be a VMware Monitoring megoldás álta
 ## <a name="vmware-monitoring-solution-overview"></a>VMware Monitoring megoldás áttekintése
 A VMware csempe megjelenik a Log Analytics munkaterületen. Magas szintű áttekintést nyújt a hibákról. Amikor rákattint a csempére, egy irányítópult-nézetet nyithat meg.
 
-![csempéző](./media/vmware/tile.png)
+![A képernyőképen látható a VMware csempe, amely kilenc hibát jelenít meg.](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Navigáljon az irányítópult nézetbe
 A **VMware** irányítópult nézetében a pengék a következők szerint vannak rendezve:
@@ -147,13 +147,13 @@ Ha további ESXi-gazdagép virtuális gépek létrehozási információit szeret
 #### <a name="common-log-queries"></a>Gyakori naplók lekérdezései
 A megoldás más hasznos lekérdezéseket is tartalmaz, amelyek segíthetnek az ESXi-gazdagépek, például a nagy tárterület, a tárolási késés és az elérési út meghibásodásának kezelésében.
 
-![lekérdezések](./media/vmware/queries.png)
+![A képernyőképen az ajánlott KERESÉSek láthatók, amelyek hasznos tárolt lekérdezések.](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Lekérdezések mentése
 A naplófájlok mentése a Azure Monitor egy szabványos funkciója, amely segítséget nyújt a hasznosnak ítélt lekérdezések megtartásában. Ha olyan lekérdezést hoz létre, amelyet hasznosnak talál, mentse azt a **Kedvencek**elemre kattintva. A mentett lekérdezésekkel könnyedén újra felhasználhatja később a saját [irányítópult](../learn/tutorial-logs-dashboards.md) oldaláról, ahol létrehozhat saját egyéni irányítópultokat is.
 
-![DockerDashboardView](./media/vmware/dockerdashboardview.png)
+![A képernyőképen egy egyéni irányítópulton, a visszavonás, az exportálás, a riasztás, a mentés, a kedvencek és az előzmények ikonjai láthatók.](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Riasztások létrehozása lekérdezésekből
 A lekérdezések létrehozása után érdemes lehet a lekérdezésekkel riasztást küldeni, ha adott események történnek. Riasztások létrehozásával kapcsolatos információkért tekintse [meg a log Analytics riasztásait](../platform/alerts-overview.md) . A lekérdezések és az egyéb lekérdezési példák esetében tekintse meg a [VMware Monitor log Analytics blogbejegyzés használatával](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) című témakört.

@@ -12,21 +12,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078629"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090258"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nem lehet a Távoli asztalt a virtuális géphez kapcsolni, mert a hálózati adapter le van tiltva
 
 Ez a cikk azt ismerteti, hogyan oldható meg egy olyan probléma, amelyben nem lehet Távoli asztal kapcsolatot létesíteni az Azure Windows Virtual Machines (VM) szolgáltatással, ha a hálózati adapter le van tiltva.
 
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Az Azure-beli virtuális gépekhez nem lehet RDP-kapcsolatot vagy bármilyen más típusú kapcsolatot létesíteni bármely más porttal, mert a virtuális gép hálózati adaptere le van tiltva.
+
+![Képernyőkép, amely azt a virtuális gépet jeleníti meg, amelyben a hálózati adapter le van választva.](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![Képernyőkép, amely azt a virtuális gépet jeleníti meg, amelyben a hálózati adapter le van tiltva.](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
 
 ## <a name="solution"></a>Megoldás
 
@@ -36,8 +41,7 @@ A virtuális gép felületének engedélyezéséhez használja a soros vezérlé
 
 ### <a name="use-serial-control"></a>Soros vezérlő használata
 
-1. Kapcsolódjon a [soros konzolhoz, és nyissa meg a cmd-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](#reset-network-interface)című témakört.
+1. Kapcsolódjon a [soros konzolhoz, és nyissa meg a cmd-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](#reset-network-interface)című témakört.
 2. Győződjön meg arról, hogy a hálózati adapter állapota:
 
     ```console

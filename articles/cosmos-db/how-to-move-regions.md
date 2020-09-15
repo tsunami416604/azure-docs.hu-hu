@@ -1,72 +1,81 @@
 ---
-title: Megtudhatja, hogyan helyezhet át egy Azure Cosmos DB-fiókot egy másik régióba
-description: Megtudhatja, hogyan helyezhet át egy Azure Cosmos DB-fiókot egy másik régióba
+title: Azure Cosmos DB-fiók áthelyezése másik régióba
+description: Megtudhatja, hogyan helyezhet át egy Azure Cosmos DB fiókot egy másik régióba.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 60c28a96008355491c058cd08dbbb3a1cbffad98
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: b34bc81f48b806b1016fbbd19d3ebc8bfef908c2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059369"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090533"
 ---
-# <a name="how-to-move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB fiók áthelyezése másik régióba
+# <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB-fiók áthelyezése másik régióba
 
-Ez a cikk azt ismerteti, hogyan helyezhet át egy olyan régiót, ahol az adatok replikálódnak Azure Cosmos DB, illetve hogyan telepítheti át a fiók (Azure Resource Manager) meta-adatait, valamint az egyik régióból a másikba történő adatátvitelt.
+Ez a cikk a következőkkel foglalkozik:
+
+- Helyezzen át egy olyan régiót, amelyben a rendszer replikálja az adatAzure Cosmos DB.
+- A fiók (Azure Resource Manager) metaadatainak és adatainak áttelepíthetők az egyik régióból a másikba.
 
 ## <a name="move-data-from-one-region-to-another"></a>Adatok áthelyezése egyik régióból a másikba
 
-Azure Cosmos DB támogatja az adatreplikálást natív módon, így az adatok az egyik régióból a másikba való áthelyezése egyszerű, és a Azure Portal, a Azure PowerShell vagy az Azure parancssori felület használatával valósítható meg, és a következő lépések végrehajtásával jár:
+A Azure Cosmos DB natív módon támogatja az adatreplikálást, így az adatok egyik régióból a másikba való áthelyezése egyszerű. Ezt a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezheti el. A következő lépésekkel jár:
 
-1. Új régió hozzáadása a fiókhoz
+1. Adjon hozzá egy új régiót a fiókhoz.
 
-    Új régió Azure Cosmos DB-fiókhoz való hozzáadásához tekintse meg a [régiók hozzáadása/eltávolítása egy Azure Cosmos db-fiókhoz](how-to-manage-database-account.md#addremove-regions-from-your-database-account) című témakört.
+    Ha új régiót szeretne felvenni egy Azure Cosmos DB-fiókba, tekintse meg a [régiók hozzáadása/eltávolítása egy Azure Cosmos db-fiókhoz](how-to-manage-database-account.md#addremove-regions-from-your-database-account)című témakört.
 
-1. Manuális feladatátvétel végrehajtása az új régióban
+1. Végezzen manuális feladatátvételt az új régióra.
 
-    Abban az esetben, ha az eltávolítandó régió jelenleg a fiók írási régiója, akkor a fent hozzáadott új régióban feladatátvételt kell kezdeményezni. Ez egy nulla állásidőt okozó művelet. Ha egy több régióból álló fiókban helyez át egy olvasási régiót, kihagyhatja ezt a lépést. Feladatátvétel elindításához lásd: [manuális feladatátvétel végrehajtása Azure Cosmos-fiókon](how-to-manage-database-account.md#manual-failover)
+    Ha az eltávolítandó régió jelenleg a fiók írási régiója, el kell indítania a feladatátvételt az előző lépésben hozzáadott új régióba. Ez egy nulla állásidőt okozó művelet. Ha egy olvasási régiót egy több régióból álló fiókba helyez át, akkor kihagyhatja ezt a lépést. 
+    
+    A feladatátvétel elindításához lásd: [manuális feladatátvétel végrehajtása Azure Cosmos-fiókon](how-to-manage-database-account.md#manual-failover).
 
-1. Az eredeti régió eltávolítása
+1. Távolítsa el az eredeti régiót.
 
-    Régió eltávolítása egy Azure Cosmos DB fiókból: [régiók hozzáadása/eltávolítása egy Azure Cosmos db-fiókhoz](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+    Ha el szeretne távolítani egy régiót egy Azure Cosmos DB-fiókból, tekintse [meg a régiók hozzáadása/eltávolítása a Azure Cosmos db-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)című témakört.
 
-## <a name="migrate-azure-cosmos-db-account-meta-data"></a>Azure Cosmos DB-fiók meta-adatfájljainak migrálása
+## <a name="migrate-azure-cosmos-db-account-metadata"></a>Azure Cosmos DB-fiók metaadatainak migrálása
 
-A Azure Cosmos DB nem támogatja natív módon a fiók metaadatainak áttelepítését az egyik régióból a másikba. Ha a fiók metaadatait és az ügyféladatokat is át szeretné telepíteni az egyik régióból a másikba, létre kell hoznia egy új fiókot a kívánt régióban, majd manuálisan át kell másolnia azokat. Az SQL API-hoz közel nulla állásidő-áttelepítéshez a [ChangeFeed](change-feed.md) vagy egy olyan eszközt kell használnia, amely kihasználja azt. Ha MongoDB API-t, Cassandra-t vagy más API-t telepít át, vagy ha többet szeretne megtudni az adatfiókok közötti áttelepítési lehetőségekről, tekintse [meg a helyszíni vagy a Felhőbeli adatAzure Cosmos DBra való Migrálás lehetőségeit](cosmosdb-migrationchoices.md) Az alábbi lépések bemutatják, hogyan telepíthet át egy Azure Cosmos DB-fiókot az SQL API-hoz és annak adatait az egyik régióból a másikba:
+Azure Cosmos DB nem támogatja natív módon a fiók metaadatainak áttelepítését az egyik régióból a másikba. Ha a fiók metaadatait és az ügyféladatokat is át szeretné telepíteni az egyik régióból a másikba, létre kell hoznia egy új fiókot a kívánt régióban, majd manuálisan kell átmásolnia az adatokat. 
 
-1. Új Azure Cosmos DB fiók létrehozása a kívánt régióban
+Az SQL API-hoz közel nulla leállás miatti áttelepítés szükséges a [módosítási hírcsatorna](change-feed.md) vagy az azt használó eszköz használatához. Ha a MongoDB API-t, a Cassandra APIt vagy egy másik API-t telepít át, vagy további információt szeretne a fiókok közötti adatáttelepítés lehetőségeiről, tekintse [meg a helyszíni vagy a Felhőbeli információk áttelepítésének beállításait a Azure Cosmos db](cosmosdb-migrationchoices.md). 
 
-    Ha Azure Portal, PowerShell vagy CLI használatával szeretne új fiókot létrehozni, [hozzon létre egy Azure Cosmos db fiókot](how-to-manage-database-account.md#create-an-account).
+A következő lépések bemutatják, hogyan telepíthet át egy Azure Cosmos DB fiókot az SQL API-hoz és az adatokhoz az egyik régióból a másikba:
 
-1. Új adatbázis és tároló létrehozása
+1. Hozzon létre egy új Azure Cosmos DB fiókot a kívánt régióban.
 
-    Új adatbázis és tároló létrehozásához tekintse meg [Az Azure Cosmos-tároló létrehozása](how-to-create-container.md) című témakört.
+    Ha új fiókot szeretne létrehozni a Azure Portal, a PowerShell vagy az Azure CLI használatával, tekintse meg a [Azure Cosmos db fiók létrehozása](how-to-manage-database-account.md#create-an-account)című témakört.
 
-1. Az adatáttelepítés a Azure Cosmos DB élő adatáttelepítési eszközzel
+1. Hozzon létre egy új adatbázist és tárolót.
 
-    Az adatgyűjtés közel nulla állásidővel való áttelepítéséhez lásd: [Azure Cosmos db élő adatáttelepítési eszköz](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
+    Új adatbázis és tároló létrehozásához tekintse meg [Az Azure Cosmos-tároló létrehozása](how-to-create-container.md)című témakört.
 
-1. Alkalmazás-összekapcsolási sztring frissítése
+1. Az adatáttelepítés a Azure Cosmos DB élő adatáttelepítési eszköz használatával történik.
 
-    Ha az élő áttelepítési eszköz továbbra is fut, frissítse a kapcsolódási adatokat az alkalmazások új központi telepítésében. Az alkalmazáshoz tartozó végpontokat és kulcsokat a Azure Portal kérheti le.
+    Ha közel nulla állásidővel szeretné áttelepíteni az adatátvitelt, tekintse meg [Azure Cosmos db élő adatáttelepítési eszközt](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator).
 
-    :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása":::
+1. Frissítse az alkalmazás-összekapcsolási karakterláncot.
 
-1. Kérelmek átirányítása új alkalmazásba
+    Ha az élő adatáttelepítési eszköz továbbra is fut, frissítse a kapcsolódási adatokat az alkalmazás új központi telepítésében. Az alkalmazáshoz tartozó végpontokat és kulcsokat a Azure Portal kérheti le.
 
-    Ha az új alkalmazás csatlakoztatva van Azure Cosmos DB az ügyfelek kérelmeit átirányíthatja az új központi telepítésre.
+    :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="A Azure Portal hozzáférés-vezérlése, amely a NoSQL adatbázis-biztonságot mutatja be.":::
 
-1. A már nem szükséges erőforrások törlése
+1. Kérelmek átirányítása az új alkalmazásba.
+
+    Miután az új alkalmazás csatlakoztatva lett Azure Cosmos DBhoz, átirányíthatja az ügyfelek kérelmeit az új központi telepítésre.
+
+1. Törölje a már nem szükséges erőforrásokat.
 
     Ha a kérések mostantól teljesen átirányítva lettek az új példányra, törölheti a régi Azure Cosmos DB fiókot és az élő adatmigráló eszközt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure Cosmos-fiók, valamint az adatbázis és a tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
+Az Azure Cosmos-fiók, valamint az adatbázisok és tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 
 * [Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)
 * [Adatcsatorna módosítása Azure Cosmos DB](change-feed.md)

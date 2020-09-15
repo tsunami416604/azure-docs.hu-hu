@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440575"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090601"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -40,7 +40,7 @@ Az ingyenes (licenc nélküli) és a fizetős (licencelt) összetevőket is tele
 
 A következő korlátozások érvényesek kizárólag a szabványos egyéni telepítésekre:
 
-- Ha a szkriptben lévő *gacutil.exet * kívánja használni a globális szerelvény-gyorsítótárban (GAC) lévő szerelvények telepítéséhez, meg kell adnia *gacutil.exe* az egyéni telepítés részeként. Vagy használhatja a *nyilvános előzetes* tárolóban megadott másolatot, amelyet később az "utasítások" szakaszban ismertetünk.
+- Ha a szkriptben lévő *gacutil.exet * kívánja használni a globális szerelvény-gyorsítótárban (GAC) lévő szerelvények telepítéséhez, meg kell adnia *gacutil.exe* az egyéni telepítés részeként. Vagy használhatja a *nyilvános előzetes* tárolóban található *minta* mappában megadott másolatot is, amely az alábbi **szabványos egyéni telepítési minták** szakaszban található.
 
 - Ha a parancsfájl egyik almappájára szeretne hivatkozni, a *msiexec.exe* nem támogatja a `.\` gyökérkönyvtárra hivatkozó jelölést. Használjon olyan parancsot, mint a `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 

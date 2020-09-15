@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028549"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090652"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure teljesítménydiagnosztikai virtuálisgép-bővítmény Windowsra
 
@@ -29,7 +29,15 @@ Az Azure Performance Diagnostics VM-bővítmény segít a Windows rendszerű vir
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a bővítmény a Windows Server 2008 R2, a Windows Server 2012, a Windows Server 2012 R2 és a Windows Server 2016 rendszerre telepíthető. A Windows 8,1 és a Windows 10 rendszerre is telepíthető.
+Ez a bővítmény telepíthető a következőre
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>Bővítményséma
 A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítményének sémáját mutatja be. Ehhez a bővítményhez meg kell adni egy Storage-fiók nevét és kulcsát a diagnosztika kimenetének és jelentésének tárolásához. Ezek az értékek érzékenyek. A Storage-fiók kulcsát védett beállítási konfigurációban kell tárolni. Az Azure virtuálisgép-bővítmény védett beállítási adatvédelme titkosítva van, és csak a cél virtuális gépen van visszafejtve. Vegye figyelembe, hogy a **storageAccountName** és a **storageAccountKey** a kis-és nagybetűk megkülönböztetése. Az egyéb szükséges paraméterek a következő szakaszban vannak felsorolva.
@@ -208,7 +216,7 @@ Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal i
 }
 ```
 
-## <a name="powershell-deployment"></a>PowerShell-telepítés
+## <a name="powershell-deployment"></a>A PowerShell telepítése
 A `Set-AzVMExtension` parancs használatával üzembe helyezhető az Azure Performance Diagnostics virtuálisgép-bővítmény egy meglévő virtuális gépre.
 
 PowerShell

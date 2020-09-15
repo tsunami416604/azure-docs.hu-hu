@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70080604"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090635"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek teljesítménydiagnosztikája
 
@@ -33,11 +33,28 @@ A teljesítmény-diagnosztika közvetlenül a Azure Portal futtatható, ahol át
 
 ### <a name="windows"></a>Windows
 
-Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8,1, Windows Server 2016, Windows Server 2012, Windows Server 2012 Datacenter, Windows Server 2012 R2, Windows Server 2012 R2 Datacenter, Windows Server 2012 R2 standard, Windows Server 2012 standard, Windows Server 2008 R2, Windows Server 2008 R2 Datacenter, Windows Server 2008 R2 Enterprise, Windows Server 2008 R2 Foundation, Windows Server 2008 R2 SP1 , Windows Server 2008 R2 standard.
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Piactéri rendszerkép), CentOS 6,5 [ `*` ], 7,6, RHEL 7,2, 7,5, 8,0 [ `*` ], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10 [ `*` ], SLES 12 SP4 [ `*` ]
+- A következő eloszlások jelenleg támogatottak:
+
+    | Disztribúció               | Verzió                                         |
+    |----------------------------|-------------------------------------------------|
+    | Oracle Linux kiszolgáló        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
+    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
+    | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
+    | Debian                     | 8, 9, 10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
+    |                            |                                                   |
 
 >[!Note]
 >[ `*` ] Tekintse meg az [ismert problémákat](how-to-use-perfinsights-linux.md#known-issues)
@@ -197,7 +214,7 @@ Minden teljesítményteszt-futtatás két szakaszból áll:
 
 Jelenleg a virtuálisgép-bővítmény telepítésének befejezésekor nem lehet egyszerűen megismerni a módját. A virtuálisgép-bővítmény telepítéséhez általában körülbelül 45 másodperc és 1 percet vesz igénybe. A virtuálisgép-bővítmény telepítése után futtathatja a Reprodukálási lépéseit, hogy a teljesítmény-diagnosztika rögzítse a megfelelő adathalmazt a hibaelhárításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tudja megállapítani a probléma okát, és további segítségre van szüksége, a teljesítmény-diagnosztikai megállapítások és jelentések áttekintése után megnyithatja a támogatási jegyet a Microsoft ügyfélszolgálatával.
 

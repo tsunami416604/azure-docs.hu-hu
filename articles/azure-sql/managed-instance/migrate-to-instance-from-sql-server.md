@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209485"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090227"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -126,7 +126,7 @@ Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban elérhető
 
 Az alábbi ábra a folyamat magas szintű áttekintését tartalmazza:
 
-![áttelepítési folyamat](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![A diagramon SQL Server egy, az Azure Storage-ba irányuló URL-cím és az Azure Storage-ba irányuló URL-cím átadására szolgáló nyíl.](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 Az alábbi táblázat a forrás SQL Server a futtatott verziótól függően használható módszerekkel kapcsolatos további információkat tartalmazza:
 

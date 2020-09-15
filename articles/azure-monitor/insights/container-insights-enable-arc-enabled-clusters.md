@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure Monit
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Monitor az Azure arc-kompatibilis Kubernetes-fürtökön található tárolók esetében.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092881"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090618"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Az Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése
 
@@ -124,7 +124,7 @@ Ha engedélyezni szeretné a fürt figyelését a korábban letöltött PowerShe
 4. Ha meglévő Azure Monitor Log Analytics munkaterületet szeretne használni, konfigurálja a változót `$logAnalyticsWorkspaceResourceId` a munkaterület erőforrás-azonosítóját jelképező megfelelő értékkel. Ellenkező esetben állítsa a (z) változót a (z) értékre, `""` és a parancsfájl létrehoz egy alapértelmezett munkaterületet a fürt-előfizetés alapértelmezett erőforrás-csoportjában, ha még nem létezik a régióban. A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<SubscriptionID> - \<Region> *formátumához hasonlít.
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Ha az arc-kompatibilis Kubernetes-fürt proxykiszolgálón keresztül kommunikál, konfigurálja a változót a `$proxyEndpoint` proxykiszolgáló URL-címével. Ha a fürt nem proxykiszolgálón keresztül kommunikál, akkor beállíthatja a értéket a következőre: `""` .  További információ: proxy- [végpont konfigurálása](#configure-proxy-endpoint) a cikk későbbi részében.
@@ -199,7 +199,7 @@ A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mie
 
 A tárolók számára Azure Monitor tároló ügynökkel konfigurálható egy proxy végpont, amely lehetővé teszi, hogy az a proxykiszolgáló használatával kommunikáljon. A tároló ügynök és a Azure Monitor közötti kommunikáció HTTP-vagy HTTPS-proxykiszolgáló lehet, és a névtelen és az alapszintű hitelesítés (username/Password) is támogatott.
 
-A proxy konfigurációs értékének szintaxisa a következő:`[protocol://][user:password@]proxyhost[:port]`
+A proxy konfigurációs értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Ha a proxykiszolgáló nem igényel hitelesítést, akkor továbbra is meg kell adnia egy psuedo felhasználónevet vagy jelszót. Ez lehet bármilyen Felhasználónév vagy jelszó.
@@ -232,7 +232,7 @@ Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-cím�
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a figyelés engedélyezve van az arc-kompatibilis Kubernetes-fürt és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtéséhez, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
 

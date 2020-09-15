@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022123"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090346"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs biztonságos leküldés
 
@@ -43,7 +43,7 @@ Magas szinten a folyamat a következő:
    * Az eszköz kapcsolatba lép a biztonságos adattartalmat kérő háttérrel.
    * Az alkalmazás értesítésként jeleníti meg a hasznos adatokat az eszközön.
 
-Fontos megjegyezni, hogy az előző folyamat során (és ebben az oktatóanyagban) feltételezzük, hogy az eszköz helyi tárolóban tárolja a hitelesítési jogkivonatot, miután a felhasználó bejelentkezik. Ez zökkenőmentes élményt garantál, mivel az eszköz a token használatával lekérheti az értesítés biztonságos hasznos adatait. Ha az alkalmazás nem tárolja a hitelesítési jogkivonatokat az eszközön, vagy ha ezek a jogkivonatok elévülnek, akkor az értesítés fogadásakor a felhasználónak az alkalmazás elindítását kérő általános értesítésnek kell megjelennie. Az alkalmazás ezután hitelesíti a felhasználót, és megjeleníti az értesítési adattartalmat.
+Fontos megjegyezni, hogy az előző folyamat során (és ebben az oktatóanyagban) feltételezzük, hogy az eszköz helyi tárolóban tárolja a hitelesítési jogkivonatot, miután a felhasználó bejelentkezik. Ez zökkenőmentes élményt garantál, mivel az eszköz a token használatával lekérheti az értesítés biztonságos hasznos adatait. Ha az alkalmazás nem tárolja a hitelesítési jogkivonatokat az eszközön, vagy ha ezek a jogkivonatok lejárnak, az eszközön az értesítés fogadásakor egy általános értesítés jelenik meg, amely arra kéri a felhasználót, hogy indítsa el az alkalmazást. Az alkalmazás ezután hitelesíti a felhasználót, és megjeleníti az értesítési adattartalmat.
 
 Ez a biztonságos leküldéses oktatóanyag a leküldéses értesítések biztonságos küldését mutatja be. Az oktatóanyag a [felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagra épül, ezért először végre kell hajtania az oktatóanyag lépéseit.
 
@@ -119,8 +119,8 @@ A cél eléréséhez meg kell írni a logikát, hogy a biztonságos tartalmat le
 
     Ez a metódus a megosztott beállításokban tárolt hitelesítő adatok használatával hívja meg az alkalmazás háttér-visszaállítását.
 
-4. Most meg kell kezelnie a beérkező értesítést, és a fenti módszer használatával le kell kérni a megjelenítendő tartalmat. Először is engedélyezni kell, hogy az iOS-alkalmazás a háttérben fusson, amikor leküldéses értesítést kap. A **Xcode**válassza ki az alkalmazás projektjét a bal oldali panelen, majd kattintson a fő alkalmazás céljára a **célok** szakaszban a központi ablaktáblán.
-5. Ezután kattintson a **funkciók** fülre a központi ablaktábla tetején, és jelölje be a **távoli értesítések** jelölőnégyzetet.
+4. Most kezelje a bejövő értesítést, és a fenti módszer használatával kérje le a megjelenítendő tartalmat. Először is engedélyezze, hogy az iOS-alkalmazás a háttérben fusson, amikor leküldéses értesítést kap. A **Xcode**válassza ki az alkalmazás projektjét a bal oldali panelen, majd kattintson a fő alkalmazás céljára a **célok** szakaszban a központi ablaktáblán.
+5. Ezután kattintson a központi ablaktábla tetején található **képességek** fülre, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
     ![Képernyőkép a XCode-ról, a kiválasztott alkalmazás-projekt és a képességek lap megnyitásával. A távoli értesítések jelölőnégyzet be van jelölve.][IOS1]
 

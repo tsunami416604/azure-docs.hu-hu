@@ -1,22 +1,21 @@
 ---
-title: Fizikai kiszolgálók felmérése az Azure-ba való Migrálás Azure Migrate Server Assessment használatával
-description: Ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez Azure Migrate Server Assessment használatával.
+title: Az AWS-példányok értékelése az Azure-ba való Migrálás Azure Migrate Server Assessment használatával
+description: Útmutatás az AWS-példányok kiértékeléséhez az Azure-ba való áttelepítéshez Azure Migrate Server Assessment használatával.
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
+ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
 ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090445"
+ms.locfileid: "90108778"
 ---
-# <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Oktatóanyag: fizikai kiszolgálók értékelése az Azure-ba való áttelepítéshez
+# <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>Oktatóanyag: AWS-példányok értékelése az Azure-ba való áttelepítéshez
 
 Az Azure-ba való Migrálás részeként felméri a helyszíni számítási feladatokat a felhő készültségének mérésére, a kockázatok azonosítására, valamint a költségek és a bonyolultság megbecslésére.
 
-Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez a Azure Migrate: Server Assessment Tool használatával.
-
+Ez a cikk bemutatja, hogyan értékelheti Amazon Web Services (AWS) példányait az Azure-ba való áttelepítéshez a Azure Migrate: Server Assessment Tool használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -31,10 +30,8 @@ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingy
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Mielőtt elkezdené ezt az oktatóanyagot, hogy felmérjék az Azure-beli virtuális gépekre való áttelepítést, győződjön meg róla, hogy felderítette az értékelni kívánt gépeket:
-    - Az Azure Migrate berendezéssel rendelkező gépek felderítéséhez [kövesse ezt az oktatóanyagot](tutorial-discover-physical.md). 
-    - Ha egy importált CSV-fájlt használó gépeket szeretne felderíteni, [kövesse ezt az oktatóanyagot](tutorial-discover-import.md).
-- Győződjön meg arról, hogy a felmérni kívánt fizikai gépek nem futnak a Windows Server 2003 vagy a SUSE Linux rendszeren. Ezek a gépek nem támogatják az értékelést.
+- Mielőtt elkezdené az oktatóanyag lépéseit, végezze el az első oktatóanyagot ebben a sorozatban, hogy [felderítse a helyszíni leltárt](tutorial-discover-aws.md). 
+- Győződjön meg arról, hogy az AWS-példányok nem futnak a Windows Server 2003 vagy a SUSE Linux rendszeren. Ezek a gépek nem támogatják az értékelést.
 
 
 ## <a name="decide-which-assessment-to-run"></a>Döntse el, hogy melyik értékelést szeretné futtatni
@@ -53,22 +50,21 @@ Az értékelést a következőképpen futtathatja:
 
 1. A **kiszolgálók** lapon > **Windows-és Linux-kiszolgálók**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
 
-   ![Az értékelés és a kiszolgálók áttelepítése gomb helye](./media/tutorial-assess-physical/assess.png)
+   ![Az értékelés és a kiszolgálók áttelepítése gomb helye](./media/tutorial-assess-aws/assess.png)
 
-2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **értékelés**elemre.
+2. A * * Azure Migrate: kiszolgáló értékelése területen kattintson az **értékelés**elemre.
 
-    ![Az értékelés gomb helye](./media/tutorial-assess-physical/assess-servers.png)
+    ![Az értékelés gomb helye](./media/tutorial-assess-aws/assess-servers.png)
 
 3. A **kiszolgálók**  >  **felmérési típusának**értékelése területen válassza az **Azure virtuális gép**lehetőséget.
 4. A **felderítés forrása**:
 
     - Ha a berendezést használó gépeket észlelt, válassza a **Azure Migrate készülékről felderített gépek**lehetőséget.
     - Ha egy importált CSV-fájlt használó gépeket észlelt, válassza az **importált gépek**lehetőséget. 
-    
 5. Adja meg az értékelés nevét. 
 6. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
 
-    ![Az összes megtekintése gomb helye az értékelési tulajdonságok áttekintéséhez](./media/tutorial-assess-physical/assessment-name.png)
+    ![Az összes megtekintése gomb helye az értékelési tulajdonságok áttekintéséhez](./media/tutorial-assess-aws/assessment-name.png)
 
 7. Az **értékelés tulajdonságai**  >  **cél tulajdonságai**:
     - A **célhely**mezőben válassza ki azt az Azure-régiót, amelyre az áttelepítést szeretné végezni.
@@ -88,7 +84,7 @@ Az értékelést a következőképpen futtathatja:
     - A virtuálisgép- **sorozat**mezőben határozza meg, hogy milyen Azure-beli virtuálisgép-sorozatot szeretne figyelembe venni.
         - Ha teljesítmény-alapú értékelést használ, a Azure Migrate egy értéket javasol Önnek.
         - Szükség szerint módosítsa a beállításokat. Ha például nem rendelkezik olyan éles környezettel, amely az Azure-beli sorozatú virtuális gépeket igényli, kizárhatja a sorozatot a sorozatok listájáról.
-    - A **Comfort Factor (kényelmi tényező**) mezőben adja meg az értékelés során használni kívánt puffert. Ez olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat várható növekedése. Ha például két kényelmi tényezőt használ: az **összetevő**  |  **tényleges kihasználtsága**a  |  **Comfort Factor (2,0) magok hozzáadása** | 2 | 4 memória | 8 GB | 16 GB    
+    - A **Comfort Factor (kényelmi tényező**) mezőben adja meg az értékelés során használni kívánt puffert. Ez olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat várható növekedése. Ha például két kényelmi tényezőt használ: **részletek**  |  **kihasználtsága**  |  **Add Comfort Factor (2,0)** Read IOPS | 100 | 200 Write IOPS | 100 | 200 olvasási átviteli sebesség | 100 Mbps | 200 Mbps írási teljesítmény | 100 Mbps | 200 Mbps
    
 9. A **díjszabásban**:
     - Az **ajánlat**mezőben válassza ki az [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) , ha regisztrálva van. A kiszolgáló értékelése alapján megbecsülhető az ajánlat díja.
@@ -104,7 +100,7 @@ Az értékelést a következőképpen futtathatja:
 
 10. Ha módosítja a módosításokat, kattintson a **Save (Mentés** ) gombra.
 
-    ![Értékelés tulajdonságai](./media/tutorial-assess-physical/assessment-properties.png)
+    ![Értékelés tulajdonságai](./media/tutorial-assess-aws/assessment-properties.png)
 
 11. A **kiszolgálók értékelése**területen kattintson a **tovább**gombra.
 12. Az **értékelendő gépek kiválasztása**területen válassza az **új létrehozása**elemet, és adja meg a csoportnév nevet. 
@@ -128,7 +124,7 @@ Az értékelés a következőket írja le:
 1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelések**melletti számra.
 2. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához. Példa (csak becslések és költségek például): 
 
-    ![Értékelés összegzése](./media/tutorial-assess-physical/assessment-summary.png)
+    ![Értékelés összegzése](./media/tutorial-assess-aws/assessment-summary.png)
 
 3. Tekintse át az értékelés összegzését. Szerkesztheti az értékelési tulajdonságokat is, vagy újraszámíthatja az értékelést.
  
@@ -161,12 +157,13 @@ Az értékelés összegzése az Azure-ban futó virtuális gépek becsült szám
 
 A kiszolgáló értékelése megbízhatósági minősítést rendel a teljesítmény-alapú értékelésekhez. Az értékelés az egyik csillagból (legalacsonyabb) és öt csillagra (a legmagasabbra) mutat.
 
-![Megbízhatósági minősítés](./media/tutorial-assess-physical/confidence-rating.png)
+![Megbízhatósági minősítés](./media/tutorial-assess-aws/confidence-rating.png)
 
 A megbízhatósági minősítés segít megbecsülni a méretre vonatkozó ajánlások megbízhatóságát az értékelés során. A minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állásán alapul.
 
 > [!NOTE]
 > A megbízhatósági minősítések nem vannak hozzárendelve, ha CSV-fájl alapján hoz létre értékelést.
+
 
 A megbízhatósági minősítések a következők.
 

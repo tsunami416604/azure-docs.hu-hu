@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6025e1c257ad7b94586ceb4f89c02c3a44c59c3e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462173"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090312"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -147,6 +147,7 @@ Szüksége lesz egy folyamatos integrációs (CI) build folyamatra, amely közz�
 Válassza ki az **alapszintű** sablont, és másolja az alábbi YAML-kódrészletet, amely létrehozza a Java-projektet, és teszteket futtat az Apache Maven használatával:
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -203,13 +204,13 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
 
 - Válassza a **Mentés és Futtatás**lehetőséget, majd válassza **a végrehajtás közvetlenül a főágra**lehetőséget, majd kattintson a **Mentés és Futtatás** gombra.
 
-- A rendszer elindít egy új futtatást. Várjon, amíg a Futtatás befejeződik.
+- A rendszer elindít egy új futtatást. Várja meg, amíg a futtatás befejeződik.
 
 * * * 
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>A Linux rendszerű virtuális gépen való üzembe helyezéshez szükséges CD-lépések megadása
 
-1. Szerkessze a fenti folyamatot, és vegyen fel egy [telepítési feladatot](/azure/devops/pipelines/process/deployment-jobs) úgy, hogy a környezetre és a virtuálisgép-erőforrásokra hivatkozik, amelyeket korábban az alábbi YAML-szintaxissal használ:
+1. Módosítsa a fenti folyamat YAML-fájlját úgy, hogy az a környezetre és a korábban a YAML szintaxist használó virtuálisgép-erőforrásokra hivatkozó [központi telepítési feladatot](/azure/devops/pipelines/process/deployment-jobs) tartalmazzon:
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. A környezetből kiválaszthatja a virtuális gépek meghatározott készleteit, hogy a központi telepítést a környezetben minden egyes virtuális géphez definiált **címkék** megadásával kapja meg.
 [Itt](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
@@ -295,7 +295,7 @@ A környezet üzembe helyezési nézete biztosítja a véglegesítés és a munk
   
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Folytathatja az imént létrehozott [folyamat testreszabását](/azure/devops/pipelines/customize-pipeline) .
 - Ha szeretné megtudni, hogy mit tehet a YAML-folyamatokban, tekintse meg a [YAML-séma referenciáját](/azure/devops/pipelines/yaml-schema).
 - Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.

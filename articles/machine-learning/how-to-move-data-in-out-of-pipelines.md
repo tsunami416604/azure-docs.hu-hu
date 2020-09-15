@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 6744bbf2e77fa0ec275350678e75ff094eec82e0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 806b25fea208afae63ca6be704b22808578d5ba2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650381"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090669"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -40,7 +40,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 
 A következők szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 
@@ -85,7 +85,7 @@ Miután létrehozott egy elnevezett bemenetet, kiválaszthatja a hozzáférési 
 
 Adatkészlet átadása a folyamat lépéseire:
 
-1. `TabularDataset.as_named_inputs()` `FileDataset.as_named_input()` Objektum létrehozásához használja a (z) vagy a (nem) lehetőséget. `DatasetConsumptionConfig`
+1. `TabularDataset.as_named_input()` `FileDataset.as_named_input()` Objektum létrehozásához használja a (z) vagy a (nem) lehetőséget. `DatasetConsumptionConfig`
 1. `as_mount()` `as_download()` Hozzáférési mód beállítása vagy használata
 1. Adja át az adatkészleteket a folyamat lépéseire a `arguments` vagy a `inputs` argumentum használatával.
 
@@ -97,7 +97,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    inputs=[iris_dataset.as_named_inputs('iris').as_mount()]
+    inputs=[iris_dataset.as_named_input('iris').as_mount()]
 )
 ```
 
@@ -112,7 +112,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    inputs=[train.as_named_inputs('train').as_download(), test.as_named_inputs('test').as_download()]
+    inputs=[train.as_named_input('train').as_download(), test.as_named_input('test').as_download()]
 )
 ```
 
@@ -127,8 +127,8 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_inputs('train').as_download()]
-    inputs=[test.as_named_inputs('test').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    inputs=[test.as_named_input('test').as_download()]
 )
 
 # In pipeline script
