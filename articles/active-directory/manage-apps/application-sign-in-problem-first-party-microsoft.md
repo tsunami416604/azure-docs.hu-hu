@@ -1,6 +1,6 @@
 ---
 title: Problémák a Microsoft-alkalmazásba való bejelentkezéskor | Microsoft Docs
-description: Az első féltől származó Microsoft-alkalmazásokba az Azure AD-vel való bejelentkezéskor felmerülő gyakori problémák elhárítása (például az Office 365)
+description: Az első féltől származó Microsoft-alkalmazásokhoz az Azure AD használatával való bejelentkezéskor előforduló gyakori problémák elhárítása (például Microsoft 365).
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759283"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707951"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémák a Microsoft-alkalmazásba való bejelentkezéskor
 
-A Microsoft-alkalmazások (például az Office 365 Exchange, a SharePoint, a Yammer stb.) a harmadik féltől származó SaaS-alkalmazásokkal vagy más, az Azure AD-val való integrációs szolgáltatással integrált módon vannak társítva és felügyelve.
+A Microsoft-alkalmazások (például az Exchange, a SharePoint, a Yammer stb.) a harmadik féltől származó SaaS-alkalmazásokkal vagy más, az Azure AD-vel integrált egyszeri bejelentkezéshez használt alkalmazásokkal vannak társítva és kezelve.
 
 A felhasználók három fő módon érhetik el a Microsoft által közzétett alkalmazásokat.
 
--   Az Office 365 vagy más fizetős csomag alkalmazásaiban a felhasználók a **licenc-hozzárendelésen** keresztül közvetlenül a felhasználói fiókjához vagy egy csoporton keresztül kapnak hozzáférést a csoport alapú licenc-hozzárendelési képességgel.
+-   A Microsoft 365 vagy más fizetős csomag alkalmazásaiban a felhasználók közvetlenül a felhasználói fiókjához vagy a csoport alapú licenc-hozzárendelési képességgel rendelkező csoporton keresztül kapnak hozzáférést a **licenc-hozzárendelésen** keresztül.
 
 -   Azon alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók a **felhasználói engedélyeken**keresztül kaphatnak hozzáférést. Ez azt jelenti, hogy az alkalmazásba bejelentkeznek az Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszik, hogy a fiókja korlátozott mennyiségű adathalmazhoz hozzáférjen.
 
@@ -61,7 +61,7 @@ A következő gyakori problémákkal találkozhat, amikor a felhasználók nem t
 
   * Győződjön meg arról, hogy a **felhasználói fiók létezik** a Azure Active Directoryban. [Annak ellenőrzése, hogy létezik-e felhasználói fiók a Azure Active Directory](#problems-with-the-users-account)
 
-  * Győződjön meg arról, hogy a felhasználó fiókja **engedélyezve** van a bejelentkezéshez. [ellenőrizze a felhasználó fiókjának állapotát](#problems-with-the-users-account) .
+  * Győződjön meg arról, hogy a felhasználó fiókja **engedélyezve** van a bejelentkezésekhez. [Felhasználói fiók állapotának megkeresése](#problems-with-the-users-account)
 
   * Győződjön meg arról, hogy a felhasználó **jelszava nem járt le vagy nem felejtette el.** [A felhasználó jelszavának](#reset-a-users-password) alaphelyzetbe állítása vagy az önkiszolgáló [jelszó-visszaállítás engedélyezése](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -438,7 +438,7 @@ Egyetlen feltételes hozzáférési szabályzat ellenőrzése vagy ellenőrzése
 7. Ellenőrizze, hogy nincsenek-e olyan konkrét feltételek, hozzárendelések vagy egyéb beállítások, amelyek blokkolják a felhasználói hozzáférést.
 
    >[!NOTE]
-   >Előfordulhat, hogy ideiglenesen le szeretné tiltani ezt a házirendet annak biztosításához, hogy ne befolyásolja a bejelentkezéseket. Ehhez állítsa a **házirend engedélyezése** kapcsolót **nem** értékre, majd kattintson a **Mentés** gombra.
+   >Előfordulhat, hogy ideiglenesen le szeretné tiltani ezt a házirendet annak biztosítása érdekében, hogy ne befolyásolja a bejelentkezéseket. Ehhez állítsa a **házirend engedélyezése** kapcsolót **nem** értékre, majd kattintson a **Mentés** gombra.
    >
    >
 
@@ -470,7 +470,7 @@ Egyetlen alkalmazás jelenleg konfigurált feltételes hozzáférési házirendj
 9.  Ellenőrizze, hogy nincsenek-e konkrét feltételek, hozzárendelések vagy más olyan beállítások, amelyek blokkolják a felhasználói hozzáférést.
 
      >[!NOTE]
-     >Előfordulhat, hogy ideiglenesen le szeretné tiltani ezt a házirendet annak biztosításához, hogy ne befolyásolja a bejelentkezéseket. Ehhez állítsa a **házirend engedélyezése** kapcsolót **nem** értékre, majd kattintson a **Mentés** gombra.
+     >Előfordulhat, hogy ideiglenesen le szeretné tiltani ezt a házirendet annak biztosítása érdekében, hogy ne befolyásolja a bejelentkezéseket. Ehhez állítsa a **házirend engedélyezése** kapcsolót **nem** értékre, majd kattintson a **Mentés** gombra.
      >
      >
 

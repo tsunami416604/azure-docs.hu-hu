@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 90d51d7eb5425530ebad0fc9ac66ba2c95776076
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564896"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708138"
 ---
 # <a name="azure-file-share-protocols"></a>Azure fájlmegosztás protokollok
 
@@ -55,7 +55,7 @@ Az Azure-fájlmegosztás NFS 4,1-mel való csatlakoztatása jelenleg előzetes v
 Az NFS Azure Files a következőkhöz ideális:
 
 - A POSIX-kompatibilis fájlmegosztást, kis-és nagybetűket megkülönböztető vagy UNIX-stílusú engedélyeket igénylő munkaterhelések (UID/GID).
-- Olyan Linux-központú számítási feladatok, amelyek nem igénylik az SMB-hozzáférést.
+- Linux-központú munkaterhelések, amelyek nem igényelnek Windows-hozzáférést.
 
 ### <a name="security"></a>Biztonság
 

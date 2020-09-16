@@ -2,11 +2,37 @@
   href: index.yml
 - name: Introduction (Bevezetés)
   href: introduction.md
-- name: Biztonsági vezérlők
+- name: Biztonsági vezérlők (2-es verzió)
   expanded: true
   items:
     - name: Az Azure-beli biztonsági vezérlők áttekintése
       href: overview.md
+    - name: Hálózati biztonság
+      href: security-controls-v2-network-security.md
+    - name: Identitáskezelés
+      href: security-controls-v2-identity-management.md
+    - name: Emelt szintű hozzáférés
+      href: security-controls-v2-privileged-access.md
+    - name: Adatvédelem
+      href: security-controls-v2-data-protection.md
+    - name: Eszközkezelés
+      href: security-controls-v2-asset-management.md
+    - name: Naplózás és fenyegetésészlelés
+      href: security-controls-v2-logging-threat-detection.md
+    - name: Incidensmegoldás
+      href: security-controls-v2-incident-response.md
+    - name: Állapot- és biztonságirés-kezelés
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: Végpontbiztonság
+      href: security-controls-v2-endpoint-security.md
+    - name: Biztonsági másolat és helyreállítás
+      href: security-controls-v2-backup-recovery.md
+    - name: Irányítás és stratégia
+      href: security-controls-v2-governance-strategy.md
+- name: Biztonsági vezérlők (1-es verzió)
+  items:
+    - name: Az Azure-beli biztonsági vezérlők áttekintése (1-es verzió)
+      href: overview-v1.md
     - name: Hálózati biztonság
       href: security-control-network-security.md
     - name: Naplózás és figyelés

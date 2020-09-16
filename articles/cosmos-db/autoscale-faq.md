@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449515"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708002"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Az előző rétegű modellel létrehozott erőforrásokat a rendszer automatikus
 
 Ha például korábban a 400 és 4000 RU/s közötti skálázási szintet választotta, az adatbázis vagy a tároló mostantól a 4000 RU/s értékkel rendelkező maximális RU/s-ként jelenik meg, amely a 400 és a 4000 RU/s közötti skálán látható. Itt módosíthatja a maximális RU/s értéket egy egyéni értékre, hogy megfeleljen a munkaterhelésnek. 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>Milyen gyorsan méretezhető a vertikális felskálázás a forgalomban lévő tüskék alapján?
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>Milyen gyorsan méretezhető a vertikális felskálázás a forgalomban lévő tüskék alapján?
 Az autoskálázással a rendszer a `T` `0.1 * Tmax` Bejövő forgalom alapján a és a tartományon belüli átviteli SEBESSÉGET (ru/s) méretezi `Tmax` . Mivel a skálázás automatikus és azonnali, bármikor felhasználható a késleltetés nélküli kiépítés `Tmax` . 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>Hogyan meghatározni, hogy a rendszer milyen RU/s-ra van méretezve?
@@ -135,7 +135,7 @@ Ha a teljes felhasznált RU/s érték meghaladja az adatbázis vagy tároló max
 > [!NOTE]
 > Az Azure Cosmos DB ügyféloldali SDK-k és adatimportálási eszközök (Azure Data Factory, tömeges végrehajtó kódtár) automatikusan újrapróbálkoznak a 429s, így az alkalmi 429s is rendben vannak. A tartósan nagy mennyiségű 429s arra utalhat, hogy emelnie kell a maximális RU/mp-t, vagy a particionálási stratégiát egy [gyors partícióra](#autoscale-rate-limiting)vonatkozóan át kell tekintenie.
 
-### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a>Továbbra is látható a 429s (szabályozás/arány korlátozása), ha engedélyezve van az autoskálázás? 
+### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a> Továbbra is látható a 429s (szabályozás/arány korlátozása), ha engedélyezve van az autoskálázás? 
 Igen. 429-es hiba két esetben jelentkezhet. Először is, ha a teljes felhasznált RU/s meghaladja az adatbázis vagy tároló maximális RU/s értékeit, a szolgáltatás ennek megfelelően szabályozza a kérelmeket. 
 
 Másodszor, ha van egy gyakori partíció, azaz egy logikai partíciós kulcs értéke, amely aránytalanul nagyobb mennyiségű kérést tartalmaz a többi partíciós kulcs értékeihez képest, lehetséges, hogy a mögöttes fizikai partíció túllépi az RU/s költségvetést. A gyakori hozzáférésű partíciók elkerülésének ajánlott eljárása [egy megfelelő partíciókulcs kiválasztása](partitioning-overview.md#choose-partitionkey), amellyel a tárterület és az átviteli sebesség egyenlően osztható ki. 

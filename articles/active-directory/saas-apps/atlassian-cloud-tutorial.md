@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8548e7449056ecb1f211d5dd026544bf7e1375cc
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686071"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708189"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Oktatóanyag: a Atlassian-felhő integrálása Azure Active Directory
 
@@ -163,7 +163,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![image](./media/atlassian-cloud-tutorial/default-attributes.png)
    
-   1. Attribútum-hozzárendelés egy Office 365-licenccel rendelkező Azure AD-bérlőhöz
+   1. Attribútum-hozzárendelés egy Microsoft 365 licenccel rendelkező Azure AD-bérlőhöz
       
       a. Kattintson az **egyedi felhasználói azonosítóra (Name ID)** vonatkozó jogcímre
 
@@ -177,13 +177,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
       ![image](common/default-attributes.png)
       
-   1. Attribútum-hozzárendelés egy Office 365-licenccel nem rendelkező Azure AD-bérlőhöz 
+   1. Attribútumok leképezése Microsoft 365 licenc nélküli Azure AD-bérlőhöz 
 
       a. Kattintson a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` jogcímre.
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Míg az Azure nem tölti fel a **User. mail** attribútumot az Azure ad-bérlők által az Office 365-licencek nélkül létrehozott felhasználók számára, és az e-maileket a **userPrincipalName** attribútumban tárolja az ilyen felhasználók számára. A Atlassian Cloud elvárja, hogy a **NameIdentifier** (**egyedi felhasználói azonosító**) a felhasználó e-mail-címére legyen leképezve (**User. userPrincipalName**).  Szerkessze a **forrás attribútumot**  , és módosítsa a **User. userPrincipalName**értékre. Mentse a jogcím módosításait.
+      b. Míg az Azure nem tölti fel a **User. mail** attribútumot az Azure ad-bérlőben létrehozott felhasználók számára Microsoft 365 licencek nélkül, és az e-maileket a **userPrincipalName** attribútumban tárolja az ilyen felhasználók számára. A Atlassian Cloud elvárja, hogy a **NameIdentifier** (**egyedi felhasználói azonosító**) a felhasználó e-mail-címére legyen leképezve (**User. userPrincipalName**).  Szerkessze a **forrás attribútumot**  , és módosítsa a **User. userPrincipalName**értékre. Mentse a jogcím módosításait.
 
       ![image](./media/atlassian-cloud-tutorial/set-email.png)
          
@@ -201,7 +201,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

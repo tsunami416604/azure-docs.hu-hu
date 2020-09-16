@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ea66f044664082b547d1b012d7253cd6443e8610
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bb8eef01e2673c3f84b1678a93b4bd168f1faf63
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052766"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708121"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció okosan
 
@@ -134,7 +134,7 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
     ![Azonnali bejelentkezés](./media/clever-tutorial/ic798984.png "Azonnali bejelentkezés")
 
     > [!NOTE]
-    > Az egyszeri bejelentkezés teszteléséhez fel kell vennie a kapcsolatot az [intelligens ügyfél-támogatási csapattal](https://clever.com/about/contact/) , hogy engedélyezze az Office 365 SSO-t a háttérben.
+    > Az egyszeri bejelentkezés teszteléséhez kapcsolatba kell lépnie az [intelligens ügyfél-támogatási csapattal](https://clever.com/about/contact/) , hogy engedélyezze Microsoft 365 egyszeri bejelentkezést a háttérben.
 
 1. Az **azonnali bejelentkezés** oldalon hajtsa végre a következő lépéseket:
  

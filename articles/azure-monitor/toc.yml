@@ -564,7 +564,7 @@
               href: platform/itsmc-overview.md
             - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
               href: platform/itsmc-connections.md
-            - name: Biztonságos exportálás integrálása
+            - name: Integrálás a Secure Exporttal
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager-webalkalmazás létrehozása
               href: platform/itsmc-service-manager-script.md

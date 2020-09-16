@@ -83,6 +83,8 @@
           href: troubleshoot-critical-service-failed-boot-error.md
         - name: Rendszerindítási hiba elhárítása – Az állapot nem található
           href: boot-error-status-not-found.md
+        - name: Hibaelhárítás – a Windows nem tudta befejezni a rendszer konfigurálását
+          href: windows-could-not-configure-system.md
         - name: A Windows Update telepítési kapacitásának hibaelhárítása
           href: windows-update-installation-capacity.md
         - name: Nem rendszerindító lemez

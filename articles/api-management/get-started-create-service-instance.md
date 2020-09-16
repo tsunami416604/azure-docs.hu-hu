@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 104e1873a56d1ecf6e9f11a271344e9b4073e780
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033355"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708206"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása a Azure Portal használatával
 
@@ -56,7 +56,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 3. Kattintson a **Létrehozás** gombra.
 
     > [!TIP]
-    > Általában 20 – 30 percet vesz igénybe egy API Management szolgáltatás létrehozása és aktiválása. A **Rögzítés az irányítópulton** lehetőség használatával könnyebben megtalálhatja az újonnan létrehozott szolgáltatást.
+    > Ezen a szinten 30 és 40 percet is igénybe vehet egy API Management szolgáltatás létrehozása és aktiválása. A **Rögzítés az irányítópulton** lehetőség használatával könnyebben megtalálhatja az újonnan létrehozott szolgáltatást.
 
 [!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
 
@@ -84,7 +84,7 @@ Ha már nincs rájuk szükség, eltávolíthatja az erőforráscsoportot és az 
 
    :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Erőforráscsoport törlése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az első API importálása és közzététele](import-and-publish.md)

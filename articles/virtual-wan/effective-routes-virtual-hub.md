@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762266"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708070"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Virtuális központ érvényes útvonalainak megtekintése
 
@@ -50,6 +50,8 @@ A táblázat alján található görgetősáv használatával megtekintheti az "
 * A virtuális hálózati kapcsolat, a VPN-kapcsolat vagy egy ExpressRoute-kapcsolat szerkesztése során az **alapértelmezett propagálási útvonal** mező látható az Azure Virtual WAN portálon. Ebben a mezőben a **enableInternetSecurity** jelző látható, amely a ExpressRoute és a VPN-kapcsolatok esetében mindig "false", de a virtuális hálózati kapcsolatok esetében "igaz".
 
 * Ha a virtuális gép hálózati adapterén tekinti meg a tényleges útvonalakat, ha a következő ugrást "Virtual Network átjáróként" látja, akkor ez azt jelenti, hogy a virtuális központ útválasztója, ha a virtuális gép egy virtuális WAN-hubhoz van csatlakoztatva.
+
+* Egy virtuális központ útválasztási táblájának érvényes útvonalait csak akkor kell megtekinteni, ha a virtuális hubhoz legalább egy kapcsolat (VPN/ER/VNET) csatlakozik.
 
 ## <a name="next-steps"></a>További lépések
 
