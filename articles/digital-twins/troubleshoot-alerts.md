@@ -48,7 +48,7 @@ A mezők kitöltését bemutató útmutató a [*Microsoft Azure riasztások átt
 
 A jel kiválasztása után a rendszer kérni fogja a riasztás logikájának konfigurálását. Szűrheti a dimenziót, megadhatja a riasztás küszöbértékét, és beállíthatja a feltétel ellenőrzésének gyakoriságát. Íme egy példa arra, hogy mikor kell beállítani a riasztást, ha az átlagos útválasztási hiba arányának mérőszáma 5% fölé esik.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="A második, a jel logikai oldalának konfigurálását bemutató képernyőkép. A lapon láthatók a metrikák előzményei, egy olyan dimenzióval szűrhetők, mint a Event Grid műveletek, valamint egy szakasz a riasztási logika meghatározásához, például az "átlag nagyobb, mint 5"":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="A második, a jel logikai oldalának konfigurálását bemutató képernyőkép. A lapon láthatók a metrikák előzményei, egy olyan dimenzióval szűrhetők, mint a Event Grid műveletek, valamint egy szakasz a riasztási logika meghatározásához, például az átlag nagyobb, mint 5":::
 
 ### <a name="verify-success"></a>Sikeres ellenőrzés
 
