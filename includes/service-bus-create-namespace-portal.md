@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75927750"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606361"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 A Service Bus-üzenetküldési entitások Azure-ban való használatának megkezdéséhez először létre kell hoznia egy, az Azure-ban egyedi névvel rendelkező névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 Névtér létrehozása:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 2. A portál bal oldali navigációs paneljén válassza az **+ erőforrás létrehozása**lehetőséget, válassza az **integráció**lehetőséget, majd válassza a **Service Bus**lehetőséget.
 
     ![Hozzon létre egy erőforrás-> integráció-> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
@@ -33,7 +33,7 @@ Névtér létrehozása:
     4. Az **előfizetés**mezőben válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni a névteret.
     5. Az **erőforráscsoport**mezőben válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér él, vagy hozzon létre egy újat.      
     6. A **hely**mezőben válassza ki azt a régiót, amelyben a névteret üzemeltetni szeretné.
-    7. Válassza a **Létrehozás** lehetőséget. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+    7. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
    
         ![Névtér létrehozása](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Győződjön meg arról, hogy a Service Bus-névtér üzembe helyezése sikeresen megtörtént. Az értesítések megtekintéséhez válassza a **harang ikont (riasztások)** az eszköztáron. Válassza ki az **erőforráscsoport nevét** az értesítésben a képen látható módon. Megjelenik a Service Bus-névteret tartalmazó erőforráscsoport.
@@ -53,10 +53,10 @@ Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös 
 2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
 3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
    
-    ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![A képernyőképen a közös hozzáférésű házirendek ablak látható, amelynek a szabályzata ki van emelve.](./media/service-bus-create-namespace-portal/connection-info.png)
 4. A **Szabályzat: RootManageSharedAccessKey** ablakban az **Elsődleges kapcsolati sztring** melletti Másolás gombra kattintva másolja a kapcsolati sztringet a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
    
-    ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![A képernyőképen egy RootManageSharedAccessKey nevű s-szabályzat látható, amely kulcsokat és a kapcsolatok karakterláncait tartalmazza.](./media/service-bus-create-namespace-portal/connection-string.png)
 5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
 
 <!--Image references-->

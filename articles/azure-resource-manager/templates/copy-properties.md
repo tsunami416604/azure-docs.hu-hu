@@ -2,17 +2,19 @@
 title: Egy tulajdonság több példányának meghatározása
 description: A másolási művelettel egy Azure Resource Manager sablonban több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678460"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605243"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-(ARM-) sablonban. Ha hozzáadja a **Másolás** elemet a sablon egyik erőforrásának Properties (Tulajdonságok) szakaszához, akkor dinamikusan állíthatja be a tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban (ARM-sablon). Ha hozzáadja a **Másolás** elemet a sablon egyik erőforrásának Properties (Tulajdonságok) szakaszához, akkor dinamikusan állíthatja be a tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
+
+A másolást csak legfelső szintű erőforrásokkal használhatja, még akkor is, ha a másolást egy tulajdonságra alkalmazza. A gyermek-erőforrások legfelső szintű erőforrásra történő módosításával kapcsolatos tudnivalókat [az alárendelt erőforrás iterációjában](copy-resources.md#iteration-for-a-child-resource)talál.
 
 A másolás [erőforrásokat](copy-resources.md), [változókat](copy-variables.md)és [kimeneteket](copy-outputs.md)is használhat.
 
@@ -252,7 +254,7 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 
 Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tulajdonság egynél több értékét hozza létre.
 
-|Sablon  |Description  |
+|Sablon  |Leírás  |
 |---------|---------|
 |[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
 

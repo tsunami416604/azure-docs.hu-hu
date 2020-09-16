@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640446"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605090"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Üzletági alkalmazások fejlesztése a Azure Active Directory
-Ez az útmutató áttekintést nyújt az üzletági (LoB) alkalmazások Azure Active Directory (AD) való fejlesztéséről. A célközönség a Active Directory/Office 365 globális rendszergazdák számára készült.
+Ez az útmutató áttekintést nyújt az üzletági (LoB) alkalmazások Azure Active Directory (AD) való fejlesztéséről. A célközönség Active Directory/Microsoft 365 globális rendszergazdák.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure AD-vel integrált alkalmazások fejlesztése lehetővé teszi a felhasználók számára, hogy az Office 365-ben egyszeri bejelentkezéssel jelentkezzenek be. Az alkalmazás az Azure AD-ben való használata lehetővé teszi az alkalmazás hitelesítési házirendjének szabályozását. További információ a feltételes hozzáférésről és az alkalmazások a többtényezős hitelesítéssel (MFA) való védelemmel kapcsolatban: [hozzáférési szabályok konfigurálása](../conditional-access/app-based-mfa.md).
+Az Azure AD-vel integrált alkalmazások kiépítése lehetővé teszi a felhasználók számára, hogy Microsoft 365 segítségével egyszeri bejelentkezéssel jelentkezzenek be. Az alkalmazás az Azure AD-ben való használata lehetővé teszi az alkalmazás hitelesítési házirendjének szabályozását. További információ a feltételes hozzáférésről és az alkalmazások a többtényezős hitelesítéssel (MFA) való védelemmel kapcsolatban: [hozzáférési szabályok konfigurálása](../conditional-access/app-based-mfa.md).
 
 Regisztrálja az alkalmazást Azure Active Directory használatához. Az alkalmazás regisztrálása azt jelenti, hogy a fejlesztők az Azure AD használatával hitelesítik a felhasználókat, és felhasználói erőforrásokhoz, például e-mailekhez, naptárhoz és dokumentumokhoz férhetnek hozzá.
 

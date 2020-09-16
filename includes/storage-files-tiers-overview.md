@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 034f5c487750600910cb32f73bcc6ea243b3ec6f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563441"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90606659"
 ---
 A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós optimalizált, a gyakori és a ritka elérésű csomagokat, hogy lehetővé tegye a megosztások testreszabását a forgatókönyv teljesítményére és árára vonatkozó követelmények szerint:
 
@@ -24,6 +24,6 @@ A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós opti
 
 A prémium fájlmegosztás csak kiépített számlázási modellben érhető el. A prémium szintű fájlmegosztás kiépített számlázási modelljével kapcsolatos további információkért lásd a [prémium szintű fájlmegosztás kiépítés ismertetése](../articles/storage/files/storage-files-planning.md#understanding-provisioning-for-premium-file-shares)című témakört. A standard fájlmegosztás, beleértve a tranzakciós optimalizált, a gyors és a lassú fájlmegosztást is, a díjköteles számlázással érhető el.
 
-A gyakori és ritka elérésű fájlmegosztás az összes Azure-beli nyilvános régióban elérhető. A tranzakciós optimalizált fájlmegosztás minden Azure-régióban elérhető, beleértve a nemzeti Felhőbeli régiókat is.
+A gyakori és ritka elérésű fájlmegosztás az összes Azure nyilvános és Azure Government régióban elérhető. A tranzakciós optimalizált fájlmegosztás minden Azure-régióban elérhető, beleértve az Azure China-t és az Azure Germany-régiókat.
 
 A gyakori vagy ritka elérésű fájlmegosztás üzembe helyezésével kapcsolatban lásd: [gyors vagy lassú fájlmegosztás létrehozása](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 

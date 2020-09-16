@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371742"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606267"
 ---
 Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell teljesülniük:
 
@@ -80,7 +80,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse ***VPNProfile.xmlként*** ugyanabba a mappába, mint **devicecert.ps1**. Szerkessze a következő szöveget a környezetének megfelelően.
+1. Másolja az alábbi szöveget, és mentse ***VPNProfile.xmlként *** ugyanabba a mappába, mint **devicecert.ps1**. Szerkessze a következő szöveget a környezetének megfelelően.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -123,18 +123,18 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![A képernyőképen egy parancssori ablak látható, amely a PowerShell 64 bites verzióját indítja el.](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. A PowerShellben váltson arra a mappára, ahol **devicecert.ps1** és **VPNProfile.xml** található, és futtassa a következő parancsot:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![A képernyőképen egy PowerShell-ablak látható, amely a MachineCertTest futtatását futtatja a devicesert parancsfájl használatával.](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. Futtassa a **Rasphone**.
 
-   ![Rasphone](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![A képernyőképen egy Futtatás párbeszédpanel jelenik meg, amelyen a Rasphone ki van választva.](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. Keresse meg a **MachineCertTest** bejegyzést, és kattintson a **kapcsolat**elemre.
 
-   ![Kapcsolódás](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![A képernyőfelvétel egy hálózati kapcsolat párbeszédpanelt jelenít meg a kiválasztott MachineCertTest és egy csatlakozás gombbal.](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. Ha a kapcsolatok sikeresek, indítsa újra a számítógépet. Az alagút automatikusan fog összekapcsolást.

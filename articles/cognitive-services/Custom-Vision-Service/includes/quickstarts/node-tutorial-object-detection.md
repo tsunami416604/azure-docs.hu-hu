@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c88bed39c58b21464a7b97e54c80752a2552f8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511309"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604857"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision ügyféloldali kódtár használatát Node.js használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node.js alkalmazás létrehozásához.
+Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision ügyféloldali függvénytárának használatának megkezdéséhez a Node.js számára egy objektum-észlelési modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha kód írása _nélkül_ szeretne létrehozni és betanítani egy objektum-észlelési modellt, tekintse meg a [böngészőalapú útmutatást](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision ügyféloldal
 
 ## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-A Custom Vision-szolgáltatás ügyféloldali kódtárainak telepítéséhez a projekt Node.jséhez futtassa a következő parancsokat:
+Ahhoz, hogy Node.js Custom Vision rendszerkép-elemzési alkalmazást, szüksége lesz a Custom Vision NPM-csomagokra. A telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -37,7 +40,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 Hozzon létre egy *sample.js* nevű új fájlt a kívánt Project-címtárban.
 
-### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-the-custom-vision-project"></a>A Custom Vision projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Szúrja be az előfizetési kulcsokat a megfelelő definíciók között, és állítsa a sampleDataRoot Path értéket a rendszerkép mappájának elérési útjára. Győződjön meg arról, hogy a végpont értéke megegyezik a [Customvision.ai](https://www.customvision.ai/)címen létrehozott betanítási és előrejelzési végpontokkal. Vegye figyelembe, hogy az objektum-észlelés és a képbesorolási projekt létrehozása közötti különbség a **createProject** -hívásban megadott tartomány.
 
@@ -78,7 +81,7 @@ async function asyncForEach (array, callback) {
     const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
 ```
 
-### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
+## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
 Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.js*végéhez:
 
@@ -87,7 +90,7 @@ Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a köve
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
+## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 Ha képeket címkéz az objektum-észlelési projektekben, az egyes címkézett objektumok régióját normalizált koordináták használatával kell megadnia. 
 
@@ -173,7 +176,7 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététel
+## <a name="train-and-publish-the-project"></a>A projekt betanítása és közzététele
 
 Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
@@ -229,7 +232,11 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. A következő képzési útmutató a képbesorolással foglalkozik, de az alapelvei hasonlóak az objektumok észleléséhez.
+Most végrehajtotta az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [SDK-referenciák dokumentációja (képzés)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK-referenciák dokumentációja (előrejelzés)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

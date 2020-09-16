@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "75450830"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606201"
 ---
 1. Válassza a **VPN-helyek összekapcsolása** lehetőséget a **helyek összekapcsolását** ismertető lap megnyitásához.
 
-    ![csatlakozni](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "csatlakozásra")
+    ![Képernyőfelvétel: a virtuális központ csatlakoztatott helyeinek panelje, amely a Előmegosztott kulcs és a társított beállításokhoz készült.](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "csatlakozásra")
 
    Hajtsa végre a következő mezőket:
 
@@ -28,7 +28,7 @@ ms.locfileid: "75450830"
 2. Válassza a **Kapcsolódás** lehetőséget.
 3. Néhány percen belül a hely megjeleníti a kapcsolat és a kapcsolat állapotát.
 
-   ![állapota](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![A képernyőképen a V P N helyek közötti kapcsolat és a kapcsolat állapota látható.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    A **kapcsolatok állapota:** Ez a kapcsolat Azure-erőforrásának állapota, amely összekapcsolja a VPN-helyet az Azure hub VPN-átjáróján. Ha a vezérlési sík működése sikeres, az Azure VPN Gateway és a helyszíni VPN-eszköz továbbra is kapcsolatot létesít.
 

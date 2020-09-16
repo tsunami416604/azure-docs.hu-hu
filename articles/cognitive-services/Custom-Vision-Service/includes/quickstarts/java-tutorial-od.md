@@ -3,15 +3,18 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 1c72415a0d3dd6bc16eab435ad712225e9ec776e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/15/2020
+ms.openlocfilehash: 107cc24cc03c7f8716f4ee0577fc2372668adcd9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533218"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604853"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket az Custom Vision ügyféloldali kódtár használatával a Java segítségével egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt alapértelmezett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához.
+Ez az útmutató útmutatást és mintakód segítséget nyújt a Java-hoz készült Custom Vision ügyféloldali kódtárat használó objektum-észlelési modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha kód írása _nélkül_ szeretne létrehozni és betanítani egy objektum-észlelési modellt, tekintse meg a [böngészőalapú útmutatást](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -20,9 +23,9 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket az Custom
 - Telepített [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Az Custom Vision ügyféloldali kódtár és mintakód beszerzése
+## <a name="get-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali könyvtárának beolvasása
 
-A Custom Visiont használó Java-alkalmazás megírásához a Custom Vision Maven-csomagokra lesz szüksége. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
+Ha olyan rendszerkép-elemzési alkalmazást szeretne írni, amelynek Custom Vision javát használ, szüksége lesz a Custom Vision Maven-csomagokra. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
 
 A Custom Vision ügyféloldali kódtár a Maven Central adattárában található:
 - [Betanítási SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
@@ -48,7 +51,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Keresse meg a **runSample** metódust, és véleményezze a **ImageClassification_Sample** metódus hívása &mdash; Ez a metódus végrehajtja a képbesorolási forgatókönyvet, amely nem szerepel ebben az útmutatóban. Az **ObjectDetection_Sample** metódus valósítja meg ennek a rövid útmutatónak az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot. 
 
-## <a name="create-a-new-custom-vision-service-project"></a>Új Custom Vision Service projekt létrehozása
+## <a name="create-a-new-custom-vision-project"></a>Új Custom Vision-projekt létrehozása
 
 Lépjen a kódblokkra, amely egy betanítási ügyfelet és egy objektumészlelési projektet hoz létre. A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. A projekt létrehozásakor további beállítások megadásához tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) metódus túlterhelését (a [Kiderítő webportál összeállításának](../../get-started-build-detector.md) útmutatója).
 
@@ -101,7 +104,10 @@ Tekintse meg a konzolon a naplózási és az előrejelzési eredményeket. Ezut�
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. A következő képzési útmutató a képbesorolással foglalkozik, de az alapelvei hasonlóak az objektumok észleléséhez.
+Most végrehajtotta az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [Az SDK dokumentációja](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)

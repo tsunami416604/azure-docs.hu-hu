@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 763b5a9f4c471e338dd493c85ce93a67810b5134
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426299"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604325"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Alkalmazás felhasználó-hozzárendelésének kezelése Azure Active Directory
 
@@ -28,7 +28,7 @@ A nagyobb fokú szabályozás érdekében a vállalati alkalmazások bizonyos t�
 > Ha egy alkalmazáshoz rendel hozzá egy csoportot, akkor csak a csoport felhasználói férhetnek hozzá. A hozzárendelés nem kaszkádba ágyazott csoportokba kerül.
 
 > [!NOTE]
-> A csoport alapú hozzárendeléshez prémium szintű Azure Active Directory P1 vagy P2 kiadás szükséges. A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagságok és az Office 365-csoportok jelenleg nem támogatottak. A cikkben tárgyalt funkciókra vonatkozó további licencelési követelményekért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory). 
+> A csoport alapú hozzárendeléshez prémium szintű Azure Active Directory P1 vagy P2 kiadás szükséges. A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagságok és Microsoft 365 csoportok jelenleg nem támogatottak. A cikkben tárgyalt funkciókra vonatkozó további licencelési követelményekért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory). 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>Alkalmazás konfigurálása felhasználói hozzárendelés megköveteléséhez
 
@@ -151,7 +151,7 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
 - [Azure AD-beli alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
 - [Az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)

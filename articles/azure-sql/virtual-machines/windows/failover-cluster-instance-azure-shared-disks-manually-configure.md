@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611796"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604444"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,13 +33,13 @@ További információért lásd: az Azure-beli [virtuális gépekkel](failover-c
 A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie:
 
 - Azure-előfizetés. Az első lépések [ingyenesek](https://azure.microsoft.com/free/). 
-- Két vagy több, az USA-ban létrehozott, egyazon [rendelkezésre állási](../../../virtual-machines/linux/tutorial-availability-sets.md) csoportban és a [közelségi elhelyezési csoporton](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)belül [előkészített Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md) , a tartalék tartomány és a frissítési tartomány értéke **1**. 
+- [Két vagy több Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md). A [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md) csoportok és a [közelségi elhelyezési csoportok](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) egyaránt támogatottak. Ha a PPG-t használja, az összes csomópontnak ugyanabban a csoportban kell lennie.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
 - A [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)legújabb verziója. 
 
 
 ## <a name="add-azure-shared-disk"></a>Azure megosztott lemez hozzáadása
-Helyezzen üzembe egy felügyelt prémium SSD lemezt, amelyen engedélyezve van a megosztott lemez szolgáltatás. Állítsa `maxShares` a **2** értékre, hogy a lemez egyszerre legyen megosztva a két és a. 
+Helyezzen üzembe egy felügyelt prémium SSD lemezt, amelyen engedélyezve van a megosztott lemez szolgáltatás. Állítsa be úgy a csomópontok `maxShares` számát, hogy a lemez megosztható legyen az összes%- **os** csomóponton belül. 
 
 Vegyen fel egy Azure-beli megosztott lemezt a következő módon: 
 
@@ -213,13 +213,13 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Kapcsolat konfigurálása 
 
-Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné irányítani, konfigurálja a környezetének megfelelő kapcsolódási lehetőséget. Létrehozhat egy [Azure Load balancert](hadr-vnn-azure-load-balancer-configure.md) , vagy ha a SQL Server 2019 és a Windows Server 2016 (vagy újabb) rendszert használja, megtekintheti helyette az [elosztott hálózat neve](hadr-distributed-network-name-dnn-configure.md) funkciót. 
+Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné irányítani, konfigurálja a környezetének megfelelő kapcsolódási lehetőséget. Létrehozhat egy [Azure Load balancert](hadr-vnn-azure-load-balancer-configure.md) , vagy ha SQL Server 2019 CU2 + és Windows Server 2016 (vagy újabb) rendszert használ, akkor az [elosztott hálózat neve](hadr-distributed-network-name-dnn-configure.md) funkciót is megtekintheti. 
 
 ## <a name="limitations"></a>Korlátozások
 
 - Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](hadr-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](hadr-distributed-network-name-dnn-configure.md). 
 

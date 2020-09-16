@@ -2,14 +2,14 @@
 title: Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 description: Az egyéni képkészletek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852412"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605192"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -43,7 +43,9 @@ A forgatókönyvhöz konfigurált megosztott rendszerkép használata több elő
 - **Megosztott Képgyűjteményi rendszerkép** Megosztott rendszerkép létrehozásához felügyelt rendszerkép-erőforrást kell létrehoznia, vagy létre kell hoznia. A lemezképet létre kell hozni a virtuális gép operációsrendszer-lemezének pillanatképei és opcionálisan csatlakoztatott adatlemezei között.
 
 > [!NOTE]
-> A megosztott rendszerképnek a Batch-fiókkal megegyező előfizetésben kell lennie. A rendszerkép különböző régiókban lehet, amíg a Batch-fiókkal azonos régióban található replikák találhatók.
+> Ha a megosztott rendszerkép nem ugyanabban az előfizetésben van, mint a Batch-fiók, [regisztrálnia kell a Microsoft.BatCH erőforrás-szolgáltatót](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) az előfizetéshez. A két előfizetésnek ugyanabban az Azure AD-bérlőben kell lennie.
+>
+> A rendszerkép egy másik régióban is lehet, amíg a Batch-fiókkal megegyező régióban található replikák vannak.
 
 Ha egy Azure AD-alkalmazással hoz létre egyéni képtárat egy megosztott képkatalógus-lemezképpel, az alkalmazásnak rendelkeznie kell egy [Azure beépített szerepkörrel](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , amely hozzáférést biztosít a megosztott rendszerképhez. Ezt a hozzáférést a Azure Portal a megosztott rendszerképre való navigálással, a **hozzáférés-vezérlés (iam)** lehetőség kiválasztásával, valamint az alkalmazáshoz tartozó szerepkör-hozzárendelés hozzáadásával adhatja meg.
 
@@ -87,7 +89,7 @@ Miután sikeresen létrehozta a felügyelt rendszerképet, létre kell hoznia eg
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Készlet létrehozása megosztott rendszerképből az Azure CLI használatával
 
-Ha az Azure CLI használatával szeretne létrehozni egy készletet a megosztott rendszerképből, használja az `az batch pool create` parancsot. Határozza meg a megosztott rendszerkép AZONOSÍTÓját a `--image` mezőben. Győződjön meg arról, hogy az operációs rendszer típusa és az SKU megfelel a következő által megadott verzióknak:`--node-agent-sku-id`
+Ha az Azure CLI használatával szeretne létrehozni egy készletet a megosztott rendszerképből, használja az `az batch pool create` parancsot. Határozza meg a megosztott rendszerkép AZONOSÍTÓját a `--image` mezőben. Győződjön meg arról, hogy az operációs rendszer típusa és az SKU megfelel a következő által megadott verzióknak: `--node-agent-sku-id`
 
 > [!NOTE]
 > Az Azure AD használatával kell hitelesítenie magát. Ha megosztott kulcsos hitelesítést használ, akkor hitelesítési hibaüzenetet kap.  
@@ -220,7 +222,7 @@ Ha egy megosztott rendszerkép használatával több száz vagy több ezer virtu
 
 - **Átméretezési időtúllépés.** Ha a készlet rögzített számú csomópontot tartalmaz (ha nem rendelkezik az autoskálázással), növelje a `resizeTimeout` készlet tulajdonságát a készlet méretétől függően. Minden 1000 virtuális gép esetében az ajánlott átméretezési időkorlát legalább 15 percet vesz igénybe. Például egy 2000 virtuális géppel rendelkező készlet ajánlott átméretezési időtúllépése legalább 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Batch részletes áttekintését lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).
 - Ismerje meg a [megosztott képtárat](../virtual-machines/windows/shared-image-galleries.md).

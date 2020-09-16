@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763465"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605158"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
@@ -32,7 +32,7 @@ Annak szabályozásához, hogy a felhasználók milyen esetekben engedélyezheti
 
 * **Felhasználói jóváhagyás letiltása** – a felhasználók nem adhatnak engedélyeket az alkalmazásoknak. A felhasználók továbbra is bejelentkezhetnek azokba az alkalmazásokba, amelyekre korábban beleegyezett, vagy amelyeket a rendszergazdák jóváhagytak a nevükben, de nem jogosultak új engedélyekre vagy új alkalmazásokra. Csak azok a felhasználók férhetnek hozzá az új engedélyekhez vagy új alkalmazásokhoz, akik engedélyt kaptak a hozzájárulás engedélyezésére.
 
-* A felhasználók beleegyeznek **az ellenőrzött közzétevők alkalmazásaiba, de csak a kiválasztott engedélyekhez (előzetes verzió)** – az összes felhasználó csak a [hitelesített közzétevő](../develop/publisher-verification-overview.md) és a bérlőben regisztrált alkalmazások által közzétett alkalmazások számára engedélyezheti a jóváhagyást. A felhasználók csak az "alacsony hatású" besorolású engedélyekkel rendelkezhetnek.
+* A felhasználók beleegyeznek **az ellenőrzött közzétevők alkalmazásaiba, de csak a kiválasztott engedélyekhez (előzetes verzió)** – az összes felhasználó csak a [hitelesített közzétevő](../develop/publisher-verification-overview.md) és a bérlőben regisztrált alkalmazások által közzétett alkalmazások számára engedélyezheti a jóváhagyást. A felhasználók csak az "alacsony hatás" besorolású engedélyeket vehetik igénybe, más néven "alacsony kockázat". Az egyik szervezet, például a felhasználók e-mail-címeit megtekintő alkalmazás alacsony kockázatnak számít, valószínűleg egy másik szervezet számára magas kockázatnak számít. Ezért az "alacsony kockázatú" engedélyeket a bérlő rendszergazdája állítja be.
 
   Győződjön meg arról, hogy az [engedélyek besorolásával](#configure-permission-classifications-preview) kiválaszthatja, hogy a felhasználók milyen engedélyeket adhatnak hozzá.
 
@@ -56,7 +56,7 @@ A felhasználói beleegyező beállítások konfigurálása a Azure Portal haszn
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>Felhasználói beleegyező beállítások konfigurálása a PowerShell használatával
 
-A legújabb Azure AD PowerShell előzetes [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)használatával kiválaszthatja, hogy melyik engedélyezési szabályzat szabályozza az alkalmazások felhasználói belekötését.
+A legújabb Azure AD PowerShell előzetes [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)használatával kiválaszthatja, hogy melyik engedélyezési szabályzat szabályozza az alkalmazások felhasználói belekötését.
 
 * **Felhasználói** beleegyezikés letiltása – a felhasználói engedély letiltásához állítsa be a felhasználói beleegyezikés megadására vonatkozó engedélyezési házirendeket:
 
@@ -109,7 +109,7 @@ Ebben a példában az egyszeri bejelentkezéshez minimálisan szükséges enged�
 
 ### <a name="classify-permissions-using-powershell"></a>Engedélyek osztályozása a PowerShell használatával
 
-Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell előzetes [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)-modult is. Az engedélyek besorolása az API **ServicePrincipal** objektumán van konfigurálva, amely közzéteszi az engedélyeket.
+Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell előzetes [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)-modult is. Az engedélyek besorolása az API **ServicePrincipal** objektumán van konfigurálva, amely közzéteszi az engedélyeket.
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>Egy API aktuális engedélyezési besorolásának beolvasása:
 
@@ -196,9 +196,9 @@ Ebben a példában minden csoport tulajdonosa jogosult a csoportok adatokhoz hoz
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Csoport tulajdonosi engedélyének konfigurálása a PowerShell használatával
 
-A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)Azure ad PowerShell-előnézeti moduljának használatával engedélyezheti vagy letilthatja a csoport tulajdonosai számára, hogy a szervezet adataihoz hozzáférjenek a saját csoportok számára.
+A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)Azure ad PowerShell-előnézeti moduljának használatával engedélyezheti vagy letilthatja a csoport tulajdonosai számára, hogy a szervezet adataihoz hozzáférjenek a saját csoportok számára.
 
-1. Győződjön meg arról, hogy a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) modult és a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modult is telepítette.
+1. Győződjön meg arról, hogy a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modult és a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modult is telepítette.
 
     ```powershell
     Remove-Module AzureAD
@@ -228,7 +228,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
 
 1. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
 
-    | Beállítás       | Típus         | Description  |
+    | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |
@@ -271,7 +271,7 @@ A kockázatalapú lépésekre [vonatkozó](https://docs.microsoft.com/microsoft-
 
 Kockázatos beleegyezési kérelem észlelésekor a beleegyezés kérése üzenet jelenik meg, amely jelzi, hogy a rendszergazda jóváhagyása szükséges. Ha a [rendszergazdai hozzájárulási kérelem munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó a kérést egy rendszergazdának küldheti el további áttekintés céljából közvetlenül a hozzájárulási kérésből. Ha nincs engedélyezve, a következő üzenet jelenik meg:
 
-* **AADSTS90094:** &lt; &gt;a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
+* **AADSTS90094:** &lt; &gt; a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
 Ebben az esetben a naplózási esemény a "ApplicationManagement" kategóriába kerül, az "alkalmazás beleegyezése", a "kockázatos alkalmazás észlelése" állapot oka is.
 
@@ -280,13 +280,13 @@ Ebben az esetben a naplózási esemény a "ApplicationManagement" kategóriába 
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú lépésenkénti belefoglalási engedély letiltása vagy újbóli engedélyezése a PowerShell használatával
 
-A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)Azure ad PowerShell-előnézeti modullal letilthatja a rendszergazdai belefoglaláshoz szükséges lépéseket olyan esetekben, amikor a Microsoft észleli a kockázatokat, vagy ha korábban letiltották, újra engedélyezi.
+A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)Azure ad PowerShell-előnézeti modullal letilthatja a rendszergazdai belefoglaláshoz szükséges lépéseket olyan esetekben, amikor a Microsoft észleli a kockázatokat, vagy ha korábban letiltották, újra engedélyezi.
 
 Ezt a fentiekben látható lépések végrehajtásával is megteheti a [csoport tulajdonosi engedélyének a PowerShell használatával történő konfigurálásához](#configure-group-owner-consent-using-powershell), de más beállítások értékét is behelyettesítheti. A lépések három különbséggel rendelkeznek: 
 
 1. A kockázati alapú lépésekre vonatkozó beleegyezés értékeinek ismertetése:
 
-    | Beállítás       | Típus         | Description  |
+    | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 

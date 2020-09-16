@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 7957c6a3fdc8cb798292d03092ee1442b2c0a6bc
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004510"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605107"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése Availability Zonesba
 
@@ -28,7 +28,7 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 - Virtuális gépek áthelyezése egy rendelkezésre állási csoportba egy adott régióban lévő Availability Zonesba
 
 > [!IMPORTANT]
-> Ha az Azure-beli virtuális gépeket egy másik régió régiójában lévő rendelkezésre állási zónába szeretné áthelyezni, az [Azure-erőforrás-mozgató](../resource-mover/move-region-availability-zone.md)használatát javasoljuk. Az erőforrás-mozgató nyilvános előzetes verzióban érhető el, és a következőket biztosítja:
+> Ha az Azure-beli virtuális gépeket egy másik régióban lévő rendelkezésre állási zónába kívánja áthelyezni, azt javasoljuk, hogy használja az [Azure-erőforrást](../resource-mover/move-region-availability-zone.md). Az erőforrás-mozgató nyilvános előzetes verzióban érhető el, és a következőket biztosítja:
 > - Egyetlen központ az erőforrások régiók közötti áthelyezéséhez.
 > - Csökkentheti a mozgatási időt és a bonyolultságot. Minden, amire szüksége van, egyetlen helyen kell lennie.
 > - Egyszerű és egységes felület a különböző típusú Azure-erőforrások áthelyezéséhez.
@@ -156,7 +156,7 @@ Nyissa meg a virtuális gépet. Válassza a **replikáció letiltása**lehetős�
 > [!IMPORTANT]
 > Az előző lépésben elkerülheti, hogy az áthelyezés után Site Recovery replikáció után ne kelljen fizetni. A forrás replikálási beállításai automatikusan törlődnek. Vegye figyelembe, hogy a replikáció részeként telepített Site Recovery bővítmény nem törlődik, és manuálisan el kell távolítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megnövelte az Azure-beli virtuális gépek rendelkezésre állását a rendelkezésre állási csoport vagy a rendelkezésre állási zónába való áttéréssel. Most már beállíthatja az áthelyezett virtuális gép vész-helyreállítását.
 

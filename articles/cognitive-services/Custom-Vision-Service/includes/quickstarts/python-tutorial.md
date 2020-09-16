@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: a091222b01669c6b83c599787c61dcd6b62b05d0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508538"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604975"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket a Custom Vision-ügyféloldali kódtár és a Python használatával a rendszerkép-besorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
+Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision a Pythonhoz készült ügyféloldali kódtár használatának megkezdéséhez a rendszerkép-besorolási modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha a besorolási modellt kód írása _nélkül_ szeretné felépíteni és betanítani, tekintse meg a [böngészőalapú útmutatást](../../getting-started-build-a-classifier.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -20,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket a Custom 
 
 ## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-A Pythonhoz készült Custom Vision Service ügyféloldali kódtára telepítéséhez futtassa a következő parancsot a PowerShellben:
+Ha Custom Vision for Pythont szeretne írni egy rendszerkép-elemzési alkalmazásba, szüksége lesz a Custom Vision ügyféloldali könyvtárára. Futtassa a következő parancsot a PowerShellben:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -34,7 +37,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkönyvtárban.
 
-### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-the-custom-vision-project"></a>A Custom Vision projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
@@ -62,7 +65,7 @@ print ("Creating project...")
 project = trainer.create_project("My New Project")
 ```
 
-### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
+## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
 Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.py* fájl végéhez:
 
@@ -72,7 +75,7 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
+## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
 
@@ -104,7 +107,7 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
+## <a name="train-and-publish-the-project"></a>A projekt betanítása és közzététele
 
 Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
@@ -123,7 +126,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+## <a name="use-the-prediction-endpoint"></a>Az előrejelzési végpont használata
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -176,3 +179,6 @@ Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat mi
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [Az SDK dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: c58fdd38c4221c03778b2c769620bf7911aaded8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670521"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604478"
 ---
 # <a name="modify-target-settings"></a>Cél beállításainak módosítása
 
@@ -42,10 +42,10 @@ A módosítható konfigurációs beállítások összegzése a táblázatban lá
 **Hálózati erőforrások** | A Virtual Networks (virtuális hálózatok)/Network biztonsági csoportok/hálózati adapterek beállításai:<br/><br/> – Hozzon létre egy új erőforrást ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új erőforrást egy másik névvel a célként megadott régióban.<br/><br/> – Egy meglévő hálózati erőforrást használhat a célként megadott régióban.<br/><br/> Ha új cél-erőforrást hoz létre, a módosított beállítások kivételével a forrás erőforrással megegyező beállításokat rendel hozzá.
 **Nyilvános IP-cím neve** | Adja meg a nevet.
 **Nyilvános IP-cím SKU** | Határozza meg az [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)-t.
-**Nyilvános IP-cím zóna** | A [zóna](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) megadása a szabványos nyilvános IP-címekhez.<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **területi**értéket.
+**Nyilvános IP-cím zóna** | A [zóna](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) megadása a szabványos nyilvános IP-címekhez.<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
 **Terheléselosztó neve** | Adja meg a nevet.
 **Terheléselosztó SKU** | Alapszintű vagy standard. A standard használatát javasoljuk.
-**Terheléselosztó zónája** | Határozza meg a terheléselosztó zónáját. <br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **területi**értéket.
+**Terheléselosztó zónája** | Határozza meg a terheléselosztó zónáját. <br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
 **Erőforrás-függőségek** | Az egyes függőségek beállításai:<br/><br/>– Az erőforrás a forrástól függő erőforrásokat használ, amelyek átkerülnek a célként megadott régióba.<br/><br/> – Az erőforrás a célként megadott régióban található különböző függő erőforrásokat használja. Ebben az esetben a megcélzott régióban található hasonló erőforrások közül választhat.
 
 ### <a name="edit-vm-target-settings"></a>Virtuálisgép-cél beállításainak szerkesztése
@@ -93,6 +93,6 @@ Egy Azure SQL Database erőforráshoz tartozó cél beállításait a következ�
 1. Az **egyes régiókban**a módosítani kívánt erőforráshoz kattintson a **cél konfigurációs** bejegyzésre.
 2. A **konfigurációs beállítások**területen határozza meg a fenti táblázatban összefoglalt célként megadott beállításokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure-beli virtuális gép áthelyezése](tutorial-move-region-virtual-machines.md) egy másik régióba.

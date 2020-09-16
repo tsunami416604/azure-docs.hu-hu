@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639919"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604104"
 ---
 # <a name="managing-access-to-apps"></a>Az alkalmazásokhoz való hozzáférés kezelése
 
@@ -54,11 +54,11 @@ Egyes alkalmazások esetében a felhasználói hozzárendelés megkövetelésén
 Az Azure AD [számos testreszabható módszert](end-user-experiences.md) biztosít az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezeten belül:
 
 * Azure AD-alkalmazások
-* Office 365 Application Launcher
+* Microsoft 365 Application Launcher
 * Közvetlen bejelentkezés az összevont alkalmazásokba (Service-PR)
 * Mélyhivatkozások az összevont, jelszóalapú vagy meglévő alkalmazásokhoz
 
-Megtudhatja, hogy a vállalati alkalmazáshoz hozzárendelt felhasználók láthatják-e az alkalmazások és az Office 365 Application Launcher alkalmazásban.
+Megtudhatja, hogy a vállalati alkalmazásokhoz rendelt felhasználók láthatják-e az alkalmazásokban és Microsoft 365 az Application launcherben.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Példa: összetett alkalmazás-hozzárendelés az Azure AD-vel
 Vegyünk egy olyan alkalmazást, mint például a Salesforce. Számos szervezetben a Salesforce elsődlegesen a marketing-és értékesítési csapatok használják. Gyakran a marketing csapat tagjai magas jogosultsági szintű hozzáféréssel rendelkeznek a Salesforce, míg az értékesítési csapat tagjai korlátozott hozzáféréssel rendelkeznek. Sok esetben az információkkal dolgozó szakemberek széles köre korlátozott hozzáféréssel rendelkezik az alkalmazáshoz. Az ezekre a szabályokra vonatkozó kivételek bonyolítják az ügyet. Gyakran a marketing-vagy értékesítési vezető csapatok előjoga, hogy felhasználói hozzáférést biztosítson, vagy a szerepköröket az általános szabályoktól függetlenül módosítsa.
@@ -78,20 +78,20 @@ A rendszergazdák az [Azure ad feltételes hozzáférést](../conditional-access
 
 ## <a name="access-to-microsoft-applications"></a>Hozzáférés a Microsoft-alkalmazásokhoz
 
-A Microsoft-alkalmazások (például az Office 365 Exchange, a SharePoint, a Yammer stb.) a harmadik féltől származó SaaS-alkalmazásokkal vagy más, az Azure AD-val való integrációs szolgáltatással integrált módon vannak társítva és felügyelve.
+A Microsoft-alkalmazások (például az Exchange, a SharePoint, a Yammer stb.) a harmadik féltől származó SaaS-alkalmazásokkal vagy más, az Azure AD-vel integrált egyszeri bejelentkezéshez használt alkalmazásokkal vannak társítva és kezelve.
 
 A felhasználók három fő módon érhetik el a Microsoft által közzétett alkalmazásokat.
 
-- Az Office 365 vagy más fizetős csomag alkalmazásaiban a felhasználók a **licenc-hozzárendelésen** keresztül közvetlenül a felhasználói fiókjához vagy egy csoporton keresztül kapnak hozzáférést a csoport alapú licenc-hozzárendelési képességgel.
+- A Microsoft 365 vagy más fizetős csomag alkalmazásaiban a felhasználók közvetlenül a felhasználói fiókjához vagy a csoport alapú licenc-hozzárendelési képességgel rendelkező csoporton keresztül kapnak hozzáférést a **licenc-hozzárendelésen** keresztül.
 - Azon alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók a [felhasználói engedélyeken](configure-user-consent.md)keresztül kaphatnak hozzáférést. Ez azt jelenti, hogy az alkalmazásba bejelentkeznek az Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszik, hogy a fiókja korlátozott mennyiségű adathalmazhoz hozzáférjen.
 - Az olyan alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók [rendszergazdai engedélyen](manage-consent-requests.md)keresztül is kaphatnak hozzáférést. Ez azt jelenti, hogy a rendszergazda azt állapította meg, hogy az alkalmazást mindenki használhatja a szervezeten belül, így egy globális rendszergazdai fiókkal jelentkezik be az alkalmazásba, és hozzáférést biztosít mindenki számára a szervezeten belül.
 
-Egyes alkalmazások ezeket a metódusokat kombinálják. Bizonyos Microsoft-alkalmazások például egy Office 365-előfizetés részét képezik, de továbbra is beleegyezik.
+Egyes alkalmazások ezeket a metódusokat kombinálják. Bizonyos Microsoft-alkalmazások például egy Microsoft 365-előfizetés részét képezik, de továbbra is beleegyezik.
 
-A felhasználók Office 365-portálon keresztül érhetik el az Office 365-alkalmazásokat. Az Office 365-alkalmazásokat a saját alkalmazások mappában is megjelenítheti vagy elrejtheti az [office 365 láthatósági kapcsolóval](hide-application-from-user-portal.md) a címtár **felhasználói beállításaiban**. 
+A felhasználók Office 365-portálon keresztül férhetnek hozzá Microsoft 365 alkalmazásokhoz. Megtekintheti vagy elrejtheti Microsoft 365 alkalmazásait a saját alkalmazások között az [Office 365 láthatósági kapcsolóval](hide-application-from-user-portal.md) a címtár **felhasználói beállításaiban**. 
 
 A vállalati alkalmazásokhoz hasonlóan a felhasználók bizonyos Microsoft-alkalmazásokhoz is [hozzárendelhetők](assign-user-or-group-access-portal.md) a Azure Portalon keresztül, vagy ha a portál lehetőség nem érhető el, a PowerShell használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Alkalmazások védelme feltételes hozzáféréssel](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Önkiszolgáló csoport kezelése/SSAA](../users-groups-roles/groups-self-service-management.md)

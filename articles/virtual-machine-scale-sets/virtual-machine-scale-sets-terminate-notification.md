@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207515"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603832"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure-beli virtuális gépek méretezésicsoport-példányainak megszüntetési értesítése
 A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. A megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által meghatározott késési korláttól függ.
@@ -91,7 +91,7 @@ Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag haszn
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -VMScaleSetName "myScaleSet" `
-  -TerminateScheduledEvents $true
+  -TerminateScheduledEvents $true `
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 15
 ```
 A fenti példa lehetővé teszi az értesítések leállítását egy meglévő méretezési csoporton, és 15 perces időkorlátot állít be a megszakítási eseményhez.

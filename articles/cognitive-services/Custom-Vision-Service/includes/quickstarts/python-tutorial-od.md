@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 21ee22e7a493a6bbc8b5934e353db7c59b4aa17d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/15/2020
+ms.openlocfilehash: 16fbffa31563920e28538a961e621c894d105173
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533396"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604904"
 ---
-Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket az Custom Vision ügyféloldali kódtár és a Python használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
+Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision a Pythonhoz készült ügyféloldali kódtár használatának megkezdéséhez egy objektum-észlelési modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha kód írása _nélkül_ szeretne létrehozni és betanítani egy objektum-észlelési modellt, tekintse meg a [böngészőalapú útmutatást](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -20,7 +23,7 @@ Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket az Custom Vision ü
 
 ## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-A Pythonhoz készült Custom Vision Service ügyféloldali kódtára telepítéséhez futtassa a következő parancsot a PowerShellben:
+Ha Custom Vision for Pythont szeretne írni egy rendszerkép-elemzési alkalmazásba, szüksége lesz a Custom Vision ügyféloldali könyvtárára. Futtassa a következő parancsot a PowerShellben:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -36,7 +39,7 @@ A képeket letöltheti a [Python példákkal](https://github.com/Azure-Samples/c
 
 Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkönyvtárban.
 
-### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-the-custom-vision-project"></a>A Custom Vision projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
@@ -67,7 +70,7 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
+## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
 Ha a projektben szeretné létrehozni az objektum címkéit, adja hozzá a következő kódot a *sample.py*végéhez:
 
@@ -77,7 +80,7 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
+## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 Ha képeket címkéz az objektum-észlelési projektekben, az egyes címkézett objektumok régióját normalizált koordináták használatával kell megadnia.
 
@@ -170,7 +173,7 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététel
+## <a name="train-and-publish-the-project"></a>A projekt betanítása és közzététele
 
 Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
@@ -194,7 +197,7 @@ print ("Done!")
 >
 > Igény szerint betaníthatja az alkalmazott címkék egy részhalmazát. Ezt akkor érdemes megtenni, ha még nem alkalmazta elég bizonyos címkéket, de másokkal is rendelkezik. A **[train_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** hívásban állítsa a választható paramétert *selected_tags* a használni kívánt címkék azonosító sztringek listájára. A modell betanításával csak a listán szereplő címkéket ismeri fel a rendszer.
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+## <a name="use-the-prediction-endpoint"></a>Az előrejelzési végpont használata
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -229,7 +232,10 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. A következő képzési útmutató a képbesorolással foglalkozik, de az alapelvei hasonlóak az objektumok észleléséhez.
+Most végrehajtotta az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [Az SDK dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

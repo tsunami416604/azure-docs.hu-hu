@@ -2,24 +2,27 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 8af5d8ad2ed4d623d7128ffa5fba3c9e3647a057
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/15/2020
+ms.openlocfilehash: c9f5b5e84955c1974c19d0ccff1a89560fd3e78a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90533253"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604856"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket a Custom Vision ügyféloldali függvénytárának a C# használatával történő létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt alapértelmezett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját .NET-alkalmazás létrehozásához. 
+Ez az útmutató útmutatást és mintakód segítséget nyújt a C# Custom Vision ügyféloldali függvénytárának használatának megkezdéséhez az objektum-észlelési modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha kód írása _nélkül_ szeretne létrehozni és betanítani egy objektum-észlelési modellt, tekintse meg a [böngészőalapú útmutatást](../../get-started-build-detector.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Az Custom Vision ügyféloldali kódtár és mintakód beszerzése
+## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-Custom Visiont használó .NET-alkalmazás írásához szüksége lesz a Custom Vision NuGet-csomagokra. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
+Ha Custom Vision for .NET-alapú rendszerkép-elemzési alkalmazást szeretne írni, szüksége lesz a Custom Vision NuGet-csomagokra. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -87,7 +90,7 @@ A közzétett iterációhoz megadott név felhasználható az előrejelzési ké
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction_endpoint)]
 
-## <a name="use-the-prediction-endpoint"></a>Az előrejelzési végpont használata
+## <a name="test-the-prediction-endpoint"></a>Az előrejelzési végpont tesztelése
 
 A szkript ezen része betölti a teszt képét, lekérdezi a modell végpontját, és kiírja az előrejelzési adatokat a konzolra.
 
@@ -113,7 +116,10 @@ Ezt követően ellenőrizheti, hogy a rendszerkép ( **images/test/** ) címkéj
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan végezheti el az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
+Most végrehajtotta az objektum-észlelési folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [Az SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)

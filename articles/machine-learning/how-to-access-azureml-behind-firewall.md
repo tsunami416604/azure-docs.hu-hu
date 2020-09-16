@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660008"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604410"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -33,6 +33,10 @@ A tűzfalon hozzon létre egy olyan _szabályt_ , amely engedélyezi a jelen cik
 >
 > A Azure Firewall konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
+## <a name="routes"></a>Útvonalak
+
+A Azure Machine Learning erőforrásokat tartalmazó alhálózat kimenő útvonalának konfigurálásakor a betanítási környezet biztonságossá tételéhez használja a [kényszerített bújtatás](how-to-secure-training-vnet.md#forced-tunneling) szakasz útmutatását.
+
 ## <a name="microsoft-hosts"></a>Microsoft-gazdagépek
 
 Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkaterület használatával. A Azure Machine Learning munkaterület egyaránt használ különböző állomásnévket.
@@ -41,6 +45,8 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 
 | **Állomásnév** | **Cél** |
 | ---- | ---- |
+| **login.microsoftonline.com** | Hitelesítés |
+| **management.azure.com** | A munkaterület adatainak beolvasásához használatos |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
 | **default.exp-tas.com** | A Azure Machine Learning Studio használja |
@@ -59,13 +65,16 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 | **\*. notebooks.azure.net** | Azure Machine Learning Studióban található jegyzetfüzetek szükségesek. |
 | **graph.windows.net** | Jegyzetfüzetekhez szükséges |
 
+> [!TIP]
+> Ha összevont identitást szeretne használni, kövesse az [ajánlott eljárásokat Active Directory összevonási szolgáltatások (AD FS) cikk biztonságossá tételéhez](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) .
+
 ## <a name="python-hosts"></a>Python-gazdagépek
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
 | **Állomásnév** | **Cél** |
 | ---- | ---- |
-| **anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
+| **anaconda.com**</br>**\*. anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
 | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
 | **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a ** \* . pythonhosted.org**is engedélyeznie kell. |
 
@@ -89,7 +98,7 @@ A Azure Government-régiókhoz szükséges URL-címek.
 | **usgovarizona.api.ml.azure.us** | Az USA – Arizona régió |
 | **usgovvirginia.api.ml.azure.us** | Az USA-Virginia régió |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](../firewall/tutorial-firewall-deploy-portal.md)
 * [Biztonságos Azure ML-kísérletezés és következtetési feladatok egy Azure-beli virtuális hálózaton belül](how-to-network-security-overview.md)

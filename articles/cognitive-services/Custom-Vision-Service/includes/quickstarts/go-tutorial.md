@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 918ac54836adf6ad12934d7e30cf88f2786e1fba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: 481c0d85420ab2cc57f5636ed1862a525ace553b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508534"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604972"
 ---
-Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével megkezdheti a Custom Vision ügyféloldali függvénytár használatát a go használatával a rendszerkép-besorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját Go-alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
+Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision ügyféloldali kódtár a Go-hoz való használatának megkezdéséhez a rendszerkép-besorolási modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha a besorolási modellt kód írása _nélkül_ szeretné felépíteni és betanítani, tekintse meg a [böngészőalapú útmutatást](../../getting-started-build-a-classifier.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -19,7 +22,7 @@ Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével m
 
 ## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-Az Custom Vision Service ügyféloldali függvénytárának telepítéséhez futtassa a következő parancsot a PowerShellben:
+Ha Custom Vision for go-val szeretné írni a rendszerkép-elemzési alkalmazást, szüksége lesz a Custom Vision szolgáltatás ügyféloldali könyvtárára. Futtassa a következő parancsot a PowerShellben:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -38,7 +41,7 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 Hozzon létre egy *sample. go* nevű új fájlt a kívánt Project-címtárban.
 
-### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-the-custom-vision-project"></a>A Custom Vision projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
@@ -80,7 +83,7 @@ func main() {
     }
 ```
 
-### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
+## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
 Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *minta végéhez. Ugrás*:
 
@@ -90,7 +93,7 @@ hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree ta
 cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
+## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
 
@@ -123,7 +126,7 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
+## <a name="train-and-publish-the-project"></a>A projekt betanítása és közzététele
 
 Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
@@ -143,7 +146,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+## <a name="use-the-prediction-endpoint"></a>Az előrejelzési végpont használata
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -194,3 +197,7 @@ Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat mi
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [SDK-referenciák dokumentációja (képzés)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK-referenciák dokumentációja (előrejelzés)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

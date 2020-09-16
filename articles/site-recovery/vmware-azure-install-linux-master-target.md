@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130144"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604682"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linux fő célkiszolgáló telepítése feladat-visszavételhez
 A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
@@ -48,16 +48,7 @@ Hozza létre a fő célt a következő méretezési irányelveknek megfelelően:
 - **Operációsrendszer-lemez mérete**: 100 GB vagy több (operációs rendszer telepítéséhez)
 - **További lemez mérete az adatmegőrzési meghajtó számára**: 1 TB
 - **CPU-magok**: 4 mag vagy több
-
-A következő Ubuntu-kernelek támogatottak.
-
-
-|Kernel sorozat  |Támogatás legfeljebb  |
-|---------|---------|
-|4.4      |4.4.0-81 – általános         |
-|4,8      |4.8.0-56 – általános         |
-|4,10     |4.10.0 – 24 – általános        |
-
+- **Kernel**: 4,16. *
 
 ## <a name="deploy-the-master-target-server"></a>A fő célkiszolgáló üzembe helyezése
 
@@ -283,7 +274,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
     ./install -q -d /usr/local/ASR -r MT -v VmWare
     ```
 
-2. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse **passphrase.txtként** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
+2. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse **passphrase.txtként ** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
 
     `echo <passphrase> >passphrase.txt`
 
@@ -360,7 +351,7 @@ Látni fogja, hogy a **Version (verzió** ) mező a fő cél verziószámát adj
 `sudo systemctl restart networking`
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A fő cél telepítésének és regisztrálásának befejeződése után a fő cél a **site Recovery infrastruktúra** **fő célhely** szakaszában jelenik meg, a konfigurációs kiszolgáló áttekintése alatt.
 
 Most már folytathatja az ismételt [védelmet](vmware-azure-reprotect.md), majd a feladat-visszavétel után is.

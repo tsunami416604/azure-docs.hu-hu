@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 72f12ece3c939ee8fbaecbec377d18c5bb3b0a49
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294611"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605039"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions Azure Service Bus trigger
 
 A Service Bus triggerrel válaszolhat Service Bus üzenetsor vagy témakör üzeneteire. A bővítmény 3.1.0 kezdődően a munkamenet-kompatibilis üzenetsor vagy témakör aktiválható.
 
-További információ a telepítésről és a konfigurációról: [Áttekintés](functions-bindings-service-bus-output.md).
+További információ a telepítésről és a konfigurációról: [Áttekintés](functions-bindings-service-bus.md).
 
 ## <a name="example"></a>Példa
 
@@ -290,7 +290,7 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBusTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "ServiceBusTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -359,7 +359,7 @@ Az a `maxAutoRenewDuration` *host.json*konfigurálható, amely a [OnMessageOptio
 
 A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a tulajdonságok az [üzenet](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) osztály tagjai.
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`ContentType`|`string`|A küldő és a fogadó által az alkalmazásspecifikus logikához használt tartalomtípus-azonosító.|
 |`CorrelationId`|`string`|A korrelációs azonosító.|
@@ -378,6 +378,6 @@ A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-exp
 
 Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#example) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Service Bus üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-service-bus-output.md)

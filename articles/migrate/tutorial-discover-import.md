@@ -1,34 +1,38 @@
 ---
-title: Helyszíni kiszolgálók felderítése egy importált CSV-fájllal Azure Migrate Server Assessment használatával
+title: Helyszíni kiszolgálók értékelése az importált CSV-fájllal Azure Migrate Server Assessment használatával
 description: Ismerteti, hogyan lehet felderíteni a helyszíni kiszolgálókat az Azure-ba való áttelepítéshez egy importált CSV-fájllal Azure Migrate Server Assessment használatával
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 6526961df225e4f347216428141e8217043161df
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90064318"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604223"
 ---
-# <a name="tutorial-discover-servers-using-an-imported-csv-file"></a>Oktatóanyag: kiszolgálók felderítése importált CSV-fájl használatával
+# <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Oktatóanyag: kiszolgálók értékelése importált CSV-fájl használatával
 
 Az Azure-ba való Migrálás részeként felderítheti a helyszíni leltárt és munkaterheléseket. 
 
-Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel a helyszíni VMware virtuális gépeket (VM-EK) a Azure Migrate: Server Assessment Tool használatával, egy CSV-fájl importálásával. 
+Ebből az oktatóanyagból megtudhatja, hogyan értékelheti a helyszíni gépeket a Azure Migrate: Server Assessment Tool eszközzel, az importált vesszővel elválasztott értékeket tartalmazó (CSV) fájl használatával. 
 
-Ha CSV-fájlt használ, nem kell beállítania a Azure Migrate berendezést a kiszolgálók felderítéséhez. Megadhatja a fájlban megosztott adatmennyiséget, és az adatmennyiség nagy része nem kötelező. Ez a módszer a következő esetekben hasznos:
+Ha CSV-fájlt használ, nem kell beállítania a Azure Migrate berendezést a kiszolgálók felderítéséhez és értékeléséhez. Megadhatja a fájlban megosztott adatmennyiséget, és az adatmennyiség nagy része nem kötelező. Ez a módszer a következő esetekben hasznos:
 
 - A berendezés üzembe helyezése előtt létre szeretne hozni egy gyors, kezdeti értékelést.
 - A Azure Migrate berendezés nem helyezhető üzembe a szervezetében.
 - A helyszíni kiszolgálókhoz való hozzáférést engedélyező hitelesítő adatok nem oszthatók meg.
 - A biztonsági korlátozások megakadályozzák a készülék által az Azure-ba gyűjtött adatok összegyűjtését és küldését.
 
+> [!NOTE]
+> A CSV-fájllal importált kiszolgálók nem telepíthetők át.
+
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Azure-fiók beállítása
-> * Azure Migrate projekt beállítása.
+> * Azure Migrate projekt beállítása
 > * CSV-fájl előkészítése
-> * Importálja a fájlt.
+> * A fájl importálása
+> * Kiszolgálók értékelése
 
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges. 
@@ -43,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingy
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
-Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
+Azure Migrate projekt létrehozásához az alábbiakkal rendelkező fiókra van szükség:
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
 - Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
 
@@ -73,7 +77,7 @@ Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajd
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
-Hozzon létre egy új Azure Migrate projektet.
+Hozzon létre egy új Azure Migrate projektet, ha még nem rendelkezik ilyennel.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
@@ -83,7 +87,7 @@ Hozzon létre egy új Azure Migrate projektet.
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-import/new-project.png)
 
-7. Válassza a **Létrehozás** lehetőséget.
+7. Kattintson a **Létrehozás** gombra.
 8. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
 
 A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
@@ -113,11 +117,11 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket:
 
 **Mezőnév** | **Kötelező** | **Részletek**
 --- | --- | ---
-**Kiszolgáló neve** | Yes | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
+**Kiszolgáló neve** | Igen | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
 **IP-cím** | No | Kiszolgáló címe.
-**Cores** | Yes | A kiszolgáló számára lefoglalt processzor-magok száma.
-**Memória** | Yes | A kiszolgálóhoz lefoglalt összes memória (MB).
-**Operációs rendszer neve** | Yes | Kiszolgálói operációs rendszer. <br/> Az értékelés felismeri azokat az operációs rendszerek neveit, amelyek megfelelnek vagy tartalmazzák [a listában szereplő](#supported-operating-system-names) neveket.
+**Cores** | Igen | A kiszolgáló számára lefoglalt processzor-magok száma.
+**Memória** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
+**Operációs rendszer neve** | Igen | Kiszolgálói operációs rendszer. <br/> Az értékelés felismeri azokat az operációs rendszerek neveit, amelyek megfelelnek vagy tartalmazzák [a listában szereplő](#supported-operating-system-names) neveket.
 **Operációs rendszer verziója** | No | Kiszolgáló operációs rendszerének verziója.
 **Operációs rendszer architektúrája** | No | Kiszolgálói operációs rendszer architektúrája <br/> Az érvényes értékek: x64, x86, amd64, 32 bites vagy 64 bites
 **Lemezek száma** | No | Nem szükséges, ha az egyes lemezek adatait megadja.
@@ -157,7 +161,7 @@ Ha például egy második lemez összes mezőjét meg szeretné adni, adja hozz�
 
 ## <a name="import-the-server-information"></a>A kiszolgáló adatainak importálása
 
-Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat az értékelésbe.
+Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a CSV-fájlt a kiszolgáló-értékelésbe.
 
 1. Azure Migrate a **gépek felderítése**területen lépjen a befejezett sablonra.
 2. Válassza az **Importálás** lehetőséget.
@@ -169,7 +173,7 @@ Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat az
         1. Töltse le a CSV-fájlt, amely mostantól tartalmazza a hiba részleteit.
         1. Szükség szerint tekintse át és oldja meg a hibákat. 
         1. Töltse fel újra a módosított fájlt.
-4. Az importálási állapot **befejezése után**a kiszolgáló adatai importálása megtörtént.
+4. Az importálási állapot **befejezése után**a kiszolgáló adatai importálása megtörtént. Frissítés, ha az importálási folyamat úgy tűnik, hogy nem fejeződött be.
 
 ## <a name="update-server-information"></a>Kiszolgáló adatainak frissítése
 
@@ -193,7 +197,7 @@ A CSV-fájlban megadott operációs rendszer nevének tartalmaznia kell és egye
 --- | --- | --- | ---
 Apple Mac OS X 10<br/>3. Asianux<br/>4. Asianux<br/>5. Asianux<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Serenity Systems eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server küszöbértéke<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

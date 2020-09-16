@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797097"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606183"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. az Azure AD-bérlő létrehozása
 
@@ -77,7 +77,7 @@ Regisztrálja a VPN-ügyfelet az Azure AD-bérlőben.
 
 6. Ha a rendszer kéri, válassza az **elfogadás** lehetőséget.
 
-    ![Elfogadás](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![Képernyőfelvétel: az Ön szervezete és a kérelemre vonatkozó információk elfogadását kérő ablak.](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. Az Azure AD-ben a **vállalati alkalmazásokban**megjelenik a felsorolt **Azure VPN** .
 
@@ -128,7 +128,7 @@ Ebben a lépésben további alkalmazásokat fog regisztrálni a különböző fe
 
 Rendelje hozzá a felhasználókat az alkalmazásaihoz.
 
-1. Az **Azure ad-> vállalati alkalmazások**területen válassza ki az újonnan regisztrált alkalmazást, és kattintson a **Tulajdonságok**elemre. Győződjön meg arról, hogy a **felhasználó-hozzárendelés szükséges?** beállítás értéke **Igen**. Kattintson a **Save** (Mentés) gombra.
+1. Az **Azure ad-> vállalati alkalmazások**területen válassza ki az újonnan regisztrált alkalmazást, és kattintson a **Tulajdonságok**elemre. Győződjön meg arról, hogy a **felhasználó-hozzárendelés szükséges?** beállítás értéke **Igen**. Kattintson a **Mentés** gombra.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 
@@ -136,6 +136,6 @@ Rendelje hozzá a felhasználókat az alkalmazásaihoz.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. A **hozzárendelés hozzáadása**alatt kattintson a **felhasználók és csoportok**elemre. Válassza ki azokat a felhasználókat, akik számára elérhetővé szeretné tenni a VPN-alkalmazást. Kattintson a **Kiválasztás** gombra.
+3. A **hozzárendelés hozzáadása**alatt kattintson a **felhasználók és csoportok**elemre. Válassza ki azokat a felhasználókat, akik számára elérhetővé szeretné tenni a VPN-alkalmazást. Kattintson a **Kiválasztás** elemre.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

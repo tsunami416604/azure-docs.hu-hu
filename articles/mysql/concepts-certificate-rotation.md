@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 9c5c4247ab01a571613cad4f33832de152909b11
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: dd009542adffed2f459534c943e3a873678ecd35
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527105"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604920"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megismerése Azure Database for MySQL
 
@@ -27,13 +27,20 @@ Az új tanúsítvány a 2020-es (10/26/2020-as) október 26-án kezdődően lesz
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hogyan tudni, hogy az adatbázis érintett lesz-e?
 
-Az SSL/TLS protokollt használó összes alkalmazás és annak ellenőrzése, hogy a főtanúsítványnak frissítenie kell-e a főtanúsítványt a Azure Database for MySQLhoz való kapcsolódáshoz. Ha jelenleg nem használ SSL/TLS-t, az alkalmazás rendelkezésre állása nincs hatással. [Itt](concepts-ssl-connection-security.md#ssl-default-settings)ellenőrizheti, hogy az ügyfélalkalmazás megpróbál-e SSL-módot használni az előre definiált megbízható HITELESÍTÉSSZOLGÁLTATÓ (CA) használatával.
+Minden SSL/TLS protokollt használó alkalmazás, és ellenőrizze, hogy a főtanúsítványnak frissítenie kell-e a főtanúsítványt. A kapcsolati karakterlánc áttekintésével megtekintheti, hogy a kapcsolatok ellenőrzik-e a főtanúsítványt.
+-   Ha a kapcsolatok karakterlánca tartalmazza a `sslmode=verify-ca` vagy a
+-   Ha a kapcsolódási karakterlánc tartalmaz `sslmode=disable` , nem szükséges frissítenie a tanúsítványokat.
+-   Ha a kapcsolódási karakterlánc magában foglalja a, `sslmode=allow` `sslmode=prefer` vagy a `sslmode=require` -t, nem szükséges frissítenie a tanúsítványokat. 
+-   Ha a kapcsolódási karakterlánc nem adott sslmode, nem szükséges frissítenie a tanúsítványokat.
+
+Ha olyan ügyfelet használ, amely el tudja olvasni a kapcsolódási karakterláncot, tekintse át az ügyfél dokumentációját, és Ismerje meg, hogy igazolja-e a tanúsítványokat.
+A Azure Database for MySQL sslmode áttekintéséhez tekintse át az [SSL-mód leírásait](concepts-ssl-connection-security.md#ssl-default-settings).
 
 Annak elkerülése érdekében, hogy az alkalmazás rendelkezésre állása megszakadjon a tanúsítványok váratlan visszavonása vagy a visszavont tanúsítvány frissítése miatt, tekintse meg a [**"mire van szükség a kapcsolat fenntartásához"**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) című szakaszt.
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Mit kell tennem a kapcsolat fenntartásához
 
-Az alábbi lépések végrehajtásával elkerülhető, hogy az alkalmazás rendelkezésre állása megszakadjon a tanúsítványok váratlan visszavonása miatt, vagy egy visszavont tanúsítvány frissítése:
+Az alábbi lépéseket követve elkerülhető, hogy az alkalmazás a tanúsítványok váratlanul visszavont állapotba helyezése miatt megszakadjon, vagy egy visszavont tanúsítvány frissítését. Az a gondolat, hogy létre kell hoznia egy új *. PEM* -fájlt, amely kombinálja az aktuális tanúsítványt és az újat, és az SSL-tanúsítvány érvényesítése során az engedélyezett értékek egyszer lesznek használva. Tekintse át az alábbi lépéseket:
 
 *   Töltse le a BaltimoreCyberTrustRoot & DigiCertGlobalRootG2 legfelső szintű HITELESÍTÉSSZOLGÁLTATÓját az alábbi hivatkozások közül:
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -72,11 +79,10 @@ Az alábbi lépések végrehajtásával elkerülhető, hogy az alkalmazás rende
 *   Cserélje le az eredeti legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI PEM-fájlt a kombinált legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI fájlra, és indítsa újra az alkalmazást/ügyfelet.
 *   A jövőben a kiszolgálói oldalon üzembe helyezett új tanúsítvány után a HITELESÍTÉSSZOLGÁLTATÓ PEM-fájlját a DigiCertGlobalRootG2. CRT. PEM értékre módosíthatja.
 
-## <a name="what-can-be-the-impact"></a>Milyen hatással lehet?
+## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Milyen hatással lehet a tanúsítvány frissítésére?
 Ha az itt dokumentált Azure Database for MySQL kiállított tanúsítványt használja, előfordulhat, hogy az alkalmazás rendelkezésre állása megszakad, mert az adatbázis nem érhető el. Az alkalmazástól függően különböző hibaüzenetek jelenhetnek meg, többek között a következők:
 *   Érvénytelen tanúsítvány/visszavont tanúsítvány
 *   A kapcsolat időtúllépés miatt megszakadt
-*   Hiba, ha van ilyen
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -89,23 +95,36 @@ Nem, nem kell újraindítani az adatbázis-kiszolgálót az új tanúsítvány h
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. mi történik, ha nem frissítem a főtanúsítványt a 2020-es (10/26/2020-as) október 26. előtt?
 Ha nem frissíti a főtanúsítványt a 2020. október 26. előtt, az SSL/TLS-kapcsolaton keresztül csatlakozó alkalmazások és a főtanúsítvány ellenőrzése nem fog tudni kommunikálni a MySQL adatbázis-kiszolgálóval, és az alkalmazás kapcsolódási problémákat tapasztal a MySQL-adatbázis-kiszolgálóval kapcsolatban.
 
-### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. meg kell tervezni egy karbantartási állásidőt ehhez a változáshoz?<BR>
-Nem. Mivel a változás csak az ügyféloldali oldalon történik az adatbázis-kiszolgálóhoz való kapcsolódáshoz, ehhez a változáshoz nem szükséges karbantartási állásidő.
+### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. milyen hatással van a App Service és a Azure Database for MySQL használata?
+Az Azure app Services esetében a Azure Database for MySQLhoz való csatlakozás két lehetséges forgatókönyvet tartalmazhat, amelyek attól függnek, hogy miként használja az SSL-t az alkalmazással.
+*   Ez az új tanúsítvány App Service platform szinten lett hozzáadva. Ha az alkalmazásban App Service platformon található SSL-tanúsítványokat használja, nincs szükség beavatkozásra.
+*   Ha explicit módon az SSL-tanúsítvány elérési útját is tartalmazza a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára.
 
-### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. Mi a teendő, ha nem tudok ütemezett állásidőt beolvasni ehhez a változáshoz, 2020 (10/26/2020). október 26-án?
+### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. milyen hatással van az Azure Kubernetes Services (ak) használata a Azure Database for MySQL?
+Ha az Azure Kubernetes Services (ak) használatával próbál csatlakozni a Azure Database for MySQLhoz, hasonló a dedikált ügyfelek gazdagép-környezetéhez való hozzáféréshez. Tekintse át a lépéseket [itt](../aks/ingress-own-tls.md).
+
+### <a name="6-what-is-the-impact-if-using-azure-data-factory-to-connect-to-azure-database-for-mysql"></a>6. milyen hatással van a Azure Data Factory használata a Azure Database for MySQLhoz való kapcsolódásra?
+A Azure Integration Runtimet használó összekötők esetében az összekötő kihasználja a Windows tanúsítványtárolóban található tanúsítványokat az Azure által üzemeltetett környezetben. Ezek a tanúsítványok már kompatibilisek az újonnan alkalmazott tanúsítványokkal, ezért nincs szükség beavatkozásra.
+
+A saját üzemeltetésű Integration Runtime használó összekötő esetében, ha explicit módon felveszi az SSL-tanúsítvány elérési útját a kapcsolati karakterláncba, le kell töltenie az [új tanúsítványt](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) , és frissítenie kell a kapcsolati karakterláncot a használatára.
+
+### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. meg kell tervezni egy adatbázis-kiszolgáló karbantartási állásidőt ehhez a változáshoz?
+Nem. Mivel a változás csak az ügyféloldali oldalon csatlakozik az adatbázis-kiszolgálóhoz, nincs szükség karbantartási állásidőre az adatbázis-kiszolgáló számára ehhez a változáshoz.
+
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. Mi a teendő, ha nem tudok ütemezett állásidőt beolvasni ehhez a változáshoz, 2020 (10/26/2020). október 26-án?
 Mivel a kiszolgálóhoz való csatlakozáshoz használt ügyfeleknek frissíteniük kell a tanúsítvány adatait a [javítás szakaszban leírtak szerint,](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)ebben az esetben nem kell leállást biztosítani a kiszolgálónak.
 
-###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. Ha új kiszolgálót hoz létre a 2020. október 26. után, hatással lesz rá?
+### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. Ha új kiszolgálót hoz létre a 2020. október 26. után, hatással lesz rá?
 Az 2020 (10/26/2020) után létrehozott kiszolgálók esetében az alkalmazásokhoz tartozó újonnan kiadott tanúsítványt használhatja az SSL használatával történő kapcsolódáshoz.
 
-### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. milyen gyakran frissíti a Microsoft a tanúsítványait, vagy mi a lejárati szabályzat?
+### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. milyen gyakran frissíti a Microsoft a tanúsítványait, vagy mi a lejárati szabályzat?
 Az Azure Database for MySQL által használt tanúsítványokat a megbízható hitelesítésszolgáltatók (CA) biztosítják. Így a tanúsítványok Azure Database for MySQL-on való támogatása a CA által támogatott tanúsítványok támogatásához van kötve. Ebben az esetben azonban előfordulhat, hogy az előre meghatározott tanúsítványokban nem előre látható hibák vannak, amelyeket a lehető leghamarabb meg kell oldani.
 
-### <a name="8-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>8. ha olvasási replikákat használok, ezt a frissítést csak a főkiszolgálón vagy az összes olvasási replikán kell elvégezni?
-Mivel ez a frissítés ügyféloldali módosítás, ha az ügyfél a másodpéldány-kiszolgálóról olvassa az adatok olvasását, akkor a módosításokat is alkalmazni kell az ügyfeleken. 
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. ha olvasási replikákat használok, ezt a frissítést csak a főkiszolgálón vagy az olvasási replikán kell elvégezni?
+Mivel ez a frissítés ügyféloldali módosítás, ha az ügyfél a másodpéldány-kiszolgálóról olvassa az adatok olvasását, akkor a módosításokat is alkalmaznia kell az ügyfeleken.
 
-### <a name="9-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>9. van-e kiszolgálóoldali lekérdezés annak ellenőrzéséhez, hogy az SSL használatban van-e?
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. van-e kiszolgálóoldali lekérdezés annak ellenőrzéséhez, hogy az SSL használatban van-e?
 Annak ellenőrzéséhez, hogy SSL-kapcsolatot használ-e a kiszolgálóhoz való kapcsolódáshoz, tekintse meg az [SSL-ellenőrzést](howto-configure-ssl.md#step-4-verify-the-ssl-connection).
 
-### <a name="10-what-if-i-have-further-questions"></a>10. Mi a teendő, ha további kérdéseim vannak?
+### <a name="13-what-if-i-have-further-questions"></a>13. Mi a teendő, ha további kérdéseim vannak?
 Ha kérdése van, választ kaphat a [Microsoft Q&a](mailto:AzureDatabaseforMySQL@service.microsoft.com)közösségi szakértőitől. Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége,  [vegye fel velünk a kapcsolatot](mailto:AzureDatabaseforMySQL@service.microsoft.com)

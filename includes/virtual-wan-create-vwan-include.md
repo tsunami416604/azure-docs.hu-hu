@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 56f79bf38b627f80d73b59dbbfbb73dddd809458
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c9c8fa8099848eec09e689bf9491f71f378e9e3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525166"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606665"
 ---
 Egy böngészőből lépjen az Azure Portalra, majd jelentkezzen be az Azure-fiókjával.
 
@@ -21,7 +21,7 @@ Egy böngészőből lépjen az Azure Portalra, majd jelentkezzen be az Azure-fi�
 1. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
 1. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
-   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="A képernyőfelvétel a WAN létrehozása panelt jeleníti meg, ahol az alapok lap van kiválasztva.":::
 
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
    * **Erőforráscsoport** – új létrehozása vagy meglévő használata.

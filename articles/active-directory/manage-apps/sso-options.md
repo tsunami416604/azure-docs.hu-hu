@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469813"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604206"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Egyszeri bejelentkezési lehetőségek az Azure AD-ben
 
@@ -24,7 +24,7 @@ Az egyszeri bejelentkezés számos előnyt biztosít a hagyományos bejelentkez�
 
 - **Egyszeri bejelentkezés**esetén a felhasználók egyszer jelentkeznek be egyetlen fiókkal a tartományhoz csatlakoztatott eszközök, a vállalati erőforrások, a szolgáltatott szoftver (SaaS) alkalmazások és a webalkalmazások eléréséhez. A bejelentkezést követően a felhasználó az Office 365 portálról vagy a saját alkalmazásaiból is indíthat alkalmazásokat. A rendszergazdák központilag konfigurálhatják a felhasználói fiókok felügyeletét, és a csoporttagság alapján automatikusan hozzáadhatják vagy eltávolíthatják az alkalmazásokhoz való felhasználói hozzáférést.
 
-- **Egyszeri bejelentkezés nélkül a**felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük minden alkalmazásba. Az informatikai részlegnek az egyes alkalmazásokhoz (például az Office 365, a Box és a Salesforce) tartozó felhasználói fiókokat kell létrehoznia és frissítenie. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk arra, hogy bejelentkezzenek az egyes alkalmazásokra.
+- **Egyszeri bejelentkezés nélkül a**felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük minden alkalmazásba. Az informatikai részlegnek az egyes alkalmazásokhoz (például Microsoft 365, Box és Salesforce) tartozó felhasználói fiókokat kell létrehoznia és frissítenie. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk arra, hogy bejelentkezzenek az egyes alkalmazásokra.
 
 További információ az egyszeri bejelentkezésről: [Mi az egyszeri bejelentkezés?](what-is-single-sign-on.md).
 
@@ -137,7 +137,7 @@ A csatolt bejelentkezés lehetővé teszi, hogy az Azure AD egyszeri bejelentkez
 
 ### <a name="linked-sign-on-for-application-migration"></a>Csatolt bejelentkezés az alkalmazás áttelepítéséhez
 
-A csatolt bejelentkezés egységes felhasználói élményt biztosíthat az alkalmazások egy adott időszakban történő áttelepítésekor. Ha Azure Active Directoryre telepíti át az alkalmazásokat, a csatolt bejelentkezés használatával gyorsan közzéteheti az összes áttelepíteni kívánt alkalmazás hivatkozásait.  A felhasználók a [MyApps-portálon](../user-help/active-directory-saas-access-panel-introduction.md) vagy az [Office 365 Application launcherben](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)is megtalálhatják a hivatkozásokat. A felhasználók nem tudják, hogy egy csatolt alkalmazást vagy egy áttelepített alkalmazást érnek el.  
+A csatolt bejelentkezés egységes felhasználói élményt biztosíthat az alkalmazások egy adott időszakban történő áttelepítésekor. Ha Azure Active Directoryre telepíti át az alkalmazásokat, a csatolt bejelentkezés használatával gyorsan közzéteheti az összes áttelepíteni kívánt alkalmazás hivatkozásait.  A felhasználók a [MyApps-portálon](../user-help/active-directory-saas-access-panel-introduction.md) vagy a [Microsoft 365 Application launcherben](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)is megtalálhatják a hivatkozásokat. A felhasználók nem tudják, hogy egy csatolt alkalmazást vagy egy áttelepített alkalmazást érnek el.  
 
 Miután egy felhasználó hitelesített egy csatolt alkalmazással, létre kell hoznia egy fiókot ahhoz, hogy a végfelhasználó egyszeri bejelentkezéses hozzáférést biztosítson. A fiók rekordjának kiépítési folyamata automatikusan vagy a rendszergazda által manuálisan is megtörténhet.
 

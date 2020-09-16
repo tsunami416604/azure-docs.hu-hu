@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: Hierarchikus állapot felülbírálása
   href: override-hierarchical-state.md
+- name: Kamera
+  href: camera.md
 - name: Előkészítési terület
   href: stage-space.md
 - name: Újravetítés késői fázisban

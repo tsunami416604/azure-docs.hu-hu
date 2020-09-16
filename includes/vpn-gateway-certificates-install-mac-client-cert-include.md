@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179012"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606841"
 ---
 Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
@@ -23,4 +23,4 @@ Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvá
    ![Tanúsítványok hozzáadása](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
 3. Adja meg az ügyféltanúsítvány exportálásakor létrehozott jelszót. A jelszó védi a tanúsítvány titkos kulcsát. A telepítés befejezéséhez kattintson **az OK** gombra.
 
-   ![Jelszó](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   ![A képernyőképen egy párbeszédpanel jelenik meg, amely felszólítja a jelszó megadására.](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

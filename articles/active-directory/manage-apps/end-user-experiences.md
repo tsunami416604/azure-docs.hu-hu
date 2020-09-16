@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: d3b7dbbb9aab29e083795025ad5bf7381a4fa0ee
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231214"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605124"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
 
 Azure Active Directory (Azure AD) számos testreszabható módszert kínál az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezetben:
 
 * Azure AD-alkalmazások
-* Office 365 Application Launcher
+* Microsoft 365 Application Launcher
 * Közvetlen bejelentkezés az összevont alkalmazásokba
 * Mélyhivatkozások az összevont, jelszóalapú vagy meglévő alkalmazásokhoz
 
@@ -35,13 +35,13 @@ A My apps on https://myapps.microsoft.com egy webalapú portál, amely lehetőv�
 
 Alapértelmezés szerint az összes alkalmazás egyetlen oldalon jelenik meg. Azonban a gyűjtemények segítségével csoportosíthatja a kapcsolódó alkalmazásokat, és egy külön lapon is bemutathatja őket, így könnyebben megtalálhatja őket. A gyűjtemények segítségével például létrehozhat logikai csoportosításokat az alkalmazások számára adott feladatok, feladatok, projektek és így tovább. További információ: [gyűjtemények létrehozása a saját alkalmazások portálon](access-panel-collections.md). 
 
-A saját alkalmazások el vannak különítve a Azure Portaltól, és nincs szükség arra, hogy a felhasználóknak Azure-előfizetéssel vagy Office 365-előfizetéssel rendelkezzen.
+A saját alkalmazások el vannak különítve a Azure Portaltól, és nincs szükség arra, hogy a felhasználók Azure-előfizetéssel vagy Microsoft 365-előfizetéssel rendelkezzenek.
 
 Az Azure AD-vel kapcsolatos további információkért tekintse meg az [alkalmazások bevezetését](../user-help/active-directory-saas-access-panel-introduction.md)ismertető témakört.
 
-## <a name="office-365-application-launcher"></a>Office 365 Application Launcher
+## <a name="microsoft-365-application-launcher"></a>Microsoft 365 Application Launcher
 
-Az Office 365-et üzembe helyező szervezetek esetében az Azure AD-n keresztül a felhasználókhoz rendelt alkalmazások is megjelennek az Office 365-portálon [https://portal.office.com/myapps](https://portal.office.com/myapps) . Így egyszerűen és kényelmesen elindíthatja az alkalmazásait anélkül, hogy második portált kellene használnia, és az Office 365-et használó szervezetek számára ajánlott alkalmazás-indítási megoldás.
+A Microsoft 365 üzembe helyezett szervezetek esetében az Azure AD-n keresztül a felhasználókhoz rendelt alkalmazások az Office 365 portálon is megjelennek [https://portal.office.com/myapps](https://portal.office.com/myapps) . Így a szervezet felhasználói egyszerűen és kényelmesen indíthatják el alkalmazásaikat anélkül, hogy egy második portált kellene használniuk, és az ajánlott alkalmazás-indítási megoldás a Microsoft 365 használó szervezeteknek.
 
 Az Office 365 Application Launcher szolgáltatással kapcsolatos további információkért tekintse [meg az alkalmazás megjelenése az office 365 app launcherben](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)című témakört.
 
@@ -53,7 +53,7 @@ Az SAML 2,0, a WS-Federation vagy az OpenID Connect szolgáltatást támogató l
 
 Az Azure AD Emellett támogatja a közvetlen egyszeri bejelentkezést a jelszó-alapú egyszeri bejelentkezést, a csatolt egyszeri bejelentkezést és az összevont egyszeri bejelentkezést támogató egyes alkalmazásokra.
 
-Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek az Azure AD bejelentkezési folyamatán keresztül küldenek felhasználót egy adott alkalmazáshoz anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD saját alkalmazásaiból vagy az Office 365-ból. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
+Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek egy adott alkalmazáshoz az Azure AD bejelentkezési folyamatán keresztül küldik el a felhasználót anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD saját alkalmazásaiból vagy Microsoft 365. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
 
 ![Felhasználói hozzáférési URL-cím – példa a Twitter tulajdonságaiban](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -67,10 +67,10 @@ Az alkalmazásokhoz hasonló szervezeti URL-címekhez hasonlóan az URL-cím az 
 
 Ha egy jogosult felhasználó rákattint az adott alkalmazásra vonatkozó hivatkozások egyikére, először a szervezeti bejelentkezési oldal jelenik meg (feltéve, hogy még nincsenek bejelentkezve), és a bejelentkezést követően a rendszer átirányítja az alkalmazásba az alkalmazások első leállítása nélkül. Ha a felhasználó nem rendelkezik az alkalmazás eléréséhez szükséges előfeltételekkel, például a jelszó-alapú egyszeri bejelentkezés böngésző bővítményével, akkor a hivatkozás arra kéri a felhasználót, hogy telepítse a hiányzó bővítményt. A hivatkozás URL-címe szintén állandó marad, ha az alkalmazás egyszeri bejelentkezési konfigurációja megváltozik.
 
-Ezek a kapcsolatok ugyanazokat a hozzáférés-vezérlési mechanizmusokat használják, mint az alkalmazások és az Office 365, és csak azok a felhasználók és csoportok lesznek képesek a hitelesítésre, akik az alkalmazáshoz vannak rendelve a Azure Portal. Azonban minden olyan felhasználó számára, aki nem engedélyezett, megjelenik egy üzenet arról, hogy nem kaptak hozzáférést, és az alkalmazások betöltésére szolgáló hivatkozásra kattintva megtekintheti azokat az elérhető alkalmazásokat, amelyekhez hozzáféréssel rendelkeznek.
+Ezek a hivatkozások ugyanazokat a hozzáférés-vezérlési mechanizmusokat használják, mint az alkalmazások és a Microsoft 365, és csak azok a felhasználók vagy csoportok lesznek sikeresek a hitelesítésben, amelyek a Azure Portal alkalmazáshoz vannak rendelve. Azonban minden olyan felhasználó számára, aki nem engedélyezett, megjelenik egy üzenet arról, hogy nem kaptak hozzáférést, és az alkalmazások betöltésére szolgáló hivatkozásra kattintva megtekintheti azokat az elérhető alkalmazásokat, amelyekhez hozzáféréssel rendelkeznek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
-* [Mi az egyszeri bejelentkezés?](what-is-single-sign-on.md)
+* [Mi az az egyszeri bejelentkezés?](what-is-single-sign-on.md)
 * [Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal](plan-an-application-integration.md)

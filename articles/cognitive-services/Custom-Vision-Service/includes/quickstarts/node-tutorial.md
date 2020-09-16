@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8356acbf2e048ba62676f296be2ac14add445df2
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508537"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604976"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el a Custom Vision ügyféloldali függvénytár használatát a Node.js a rendszerkép-besorolási modell összeállításához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node.js alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
+Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision ügyféloldali függvénytárának használatának megkezdéséhez a Node.js számára a rendszerkép-besorolási modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+
+> [!NOTE]
+> Ha a besorolási modellt kód írása _nélkül_ szeretné felépíteni és betanítani, tekintse meg a [böngészőalapú útmutatást](../../getting-started-build-a-classifier.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el a Custom Vision ügyféloldali
 
 ## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-A Node.js Custom Vision Service ügyféloldali kódtár telepítéséhez futtassa a következő parancsot a PowerShellben:
+Ahhoz, hogy Node.js Custom Vision rendszerkép-elemzési alkalmazást, szüksége lesz a Custom Vision NPM-csomagokra. A telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -36,7 +39,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 Hozzon létre egy *sample.js* nevű új fájlt a kívánt Project-címtárban.
 
-### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-the-custom-vision-project"></a>A Custom Vision projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Szúrja be az előfizetési kulcsokat a megfelelő definíciók között, és állítsa a sampleDataRoot Path értéket a rendszerkép mappájának elérési útjára. Győződjön meg arról, hogy a végpont értéke megegyezik a [Customvision.ai](https://www.customvision.ai/)címen létrehozott betanítási és előrejelzési végpontokkal. Vegye figyelembe, hogy az objektum-észlelés és a képbesorolási projekt létrehozása közötti különbség a **createProject** -hívásban megadott tartomány.
 
@@ -66,7 +69,7 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
     const sampleProject = await trainer.createProject("Sample Project");
 ```
 
-### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
+## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
 Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.js*végéhez:
 
@@ -75,7 +78,7 @@ Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a köve
     const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 ```
 
-### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
+## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
 
@@ -101,7 +104,7 @@ A minta képek projekthez adásához, helyezze el a következő kódot a címke 
     await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
+## <a name="train-and-publish-the-classifier"></a>Az osztályozó betanítása és közzététele
 
 Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
@@ -122,7 +125,7 @@ Ez a kód létrehozza az előrejelzési modell első iterációját, majd közz�
     await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+## <a name="use-the-prediction-endpoint"></a>Az előrejelzési végpont használata
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -175,3 +178,7 @@ Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat mi
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
+
+* [Mi a Custom Vision?](../../overview.md)
+* [SDK-referenciák dokumentációja (képzés)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK-referenciák dokumentációja (előrejelzés)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

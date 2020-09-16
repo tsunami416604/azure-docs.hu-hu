@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562604"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605141"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés konfigurálása
 
@@ -48,7 +48,7 @@ Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is me
 |:--|:--|:--|:--|
 | **Azonosító (entitásazonosító)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. Adjon meg egy URL-címet, amely a következő mintát használja: "https:// <subdomain> . contoso.com". *Ez az érték az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként is megkereshető* . |
 | **Válasz URL-címe** | Kötelező | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. A további válasz URL-címek mezővel több válasz URL-címet is megadhat. Előfordulhat például, hogy több altartományhoz is szüksége van további válasz URL-címekre. Vagy tesztelési célból egyszerre több válasz URL-címet (helyi gazdagépet és nyilvános URL-címeket) is megadhat. |
-| **Bejelentkezési URL-cím** | Kötelező | Nincs megadva | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítja el az alkalmazást az Office 365 vagy az Azure AD saját alkalmazásaiból. Ha üres, az Azure AD identitásszolgáltató-bejelentkezést végez, ha a felhasználó az Office 365, az Azure AD saját alkalmazások vagy az Azure AD SSO URL-címéről indítja el az alkalmazást.|
+| **Bejelentkezési URL-cím** | Kötelező | Nincs megadva | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítja el az alkalmazást Microsoft 365 vagy az Azure AD saját alkalmazásaiból. Ha üres, az Azure AD identitásszolgáltató-bejelentkezést végez, ha a felhasználó Microsoft 365, Azure AD saját alkalmazások vagy az Azure AD SSO URL-címéről indítja el az alkalmazást.|
 | **Továbbítási állapot** | Választható | Választható | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címe. Néhány alkalmazás azonban eltérő módon használja ezt a mezőt. További információt az alkalmazás forgalmazójától kérhet.
 | **Kijelentkezési URL-cím** | Választható | Választható | Az SAML-kijelentkezési válaszok visszaküldésére szolgál az alkalmazásnak.
 

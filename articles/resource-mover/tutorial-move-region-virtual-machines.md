@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d00557e2279d236ff96a73c3a090097fbe6e5f1b
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061774"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603968"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Oktatóanyag: Azure-beli virtuális gépek áthelyezése régiók között
 
@@ -68,6 +68,7 @@ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingy
 Válassza ki az áthelyezni kívánt erőforrásokat.
 
 - A kiválasztott forrástartományban található erőforráscsoportok összes támogatott erőforrástípus megjelenik.
+- A régiók közötti áthelyezéshez már hozzáadott erőforrások nem jelennek meg.
 - Az erőforrásokat egy olyan célcsoportba helyezi át, amely ugyanabban az előfizetésben található, mint a forrásoldali régió. Ha módosítani szeretné az előfizetést, ezt az erőforrások áthelyezése után teheti meg.
 
 1. A Azure Portal keresse meg az *erőforrás-mozgató*kifejezést. Ezután a **szolgáltatások**területen válassza az **Azure-erőforrás mozgató**lehetőséget.
@@ -89,7 +90,7 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
     ![Az áthelyezni kívánt virtuális gépek kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  Az **áthelyezni kívánt erőforrásokhoz**kattintson a **tovább**gombra.
-9. A **felülvizsgálat + Hozzáadás**elemnél ellenőrizze a forrás-és a célhely beállításait. Győződjön meg arról, hogy tudomásul veszi, hogy az áthelyezéssel kapcsolatos metaadatok a metaadatok régiójában erre a célra létrehozott erőforráscsoporthoz lesznek tárolva.
+9. A **felülvizsgálat + Hozzáadás**elemnél ellenőrizze a forrás-és a célhely beállításait. 
 
     ![Lap a beállítások áttekintéséhez és az áthelyezés folytatásához](./media/tutorial-move-region-virtual-machines/review.png)
 10. Az erőforrások hozzáadásának megkezdéséhez kattintson a **Folytatás**gombra.
@@ -234,7 +235,8 @@ Ha szeretné befejezni az áthelyezési folyamatot, véglegesítse az áthelyez�
 
 ## <a name="configure-settings-after-the-move"></a>Beállítások konfigurálása az áthelyezés után
 
-A mobilitási szolgáltatás nem lesz automatikusan eltávolítva a virtuális gépekről. Távolítsa el manuálisan, vagy hagyja meg, ha azt tervezi, hogy újra áthelyezi a kiszolgálót.
+- A mobilitási szolgáltatás nem lesz automatikusan eltávolítva a virtuális gépekről. Távolítsa el manuálisan, vagy hagyja meg, ha azt tervezi, hogy újra áthelyezi a kiszolgálót.
+- Módosítsa az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szabályait az áthelyezés után.
 
 ## <a name="delete-source-resources-after-commit"></a>Forrás erőforrásainak törlése a véglegesítés után
 
@@ -258,7 +260,7 @@ A következőképpen törölheti:
     - Az áthelyezési gyűjtemény neve: ```movecollection-<sourceregion>-<target-region>``` .
     - A cache Storage-fiók neve ```resmovecache<guid>```
     - A tár neve: ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

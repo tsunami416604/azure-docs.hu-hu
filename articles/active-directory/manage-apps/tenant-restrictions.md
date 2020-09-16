@@ -12,22 +12,22 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285900"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604172"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
-Azok a nagyméretű szervezetek, amelyek hangsúlyozzák a biztonságot, hogy a Felhőbeli szolgáltatásokra, például az Office 365-re kívánnak áttérni, de tudniuk kell, hogy a felhasználók csak a jóváhagyott erőforrásokat férhetnek hozzá A vállalatok hagyományosan korlátozzák a tartományneveket vagy az IP-címeket, amikor a hozzáférést szeretnék kezelni. Ez a megközelítés egy olyan világban meghiúsul, ahol a szolgáltatott szoftverek (vagy SaaS-alkalmazások) nyilvános felhőben futnak, és megosztott tartományneveket futtatnak, például a [Outlook.Office.com](https://outlook.office.com/) és a [login.microsoftonline.com](https://login.microsoftonline.com/). Ezeknek a címeknek a blokkolása révén a felhasználók teljes mértékben hozzáférhetnek az Outlookhoz a világhálón ahelyett, hogy csak a jóváhagyott identitásokra és erőforrásokra korlátozzák őket.
+Nagyvállalatok, amelyek hangsúlyozzák, hogy a biztonság szeretne áttérni a Felhőbeli szolgáltatásokra, például a Microsoft 365re, de tudnia kell, hogy a felhasználók csak a jóváhagyott erőforrásokhoz férhetnek hozzá. A vállalatok hagyományosan korlátozzák a tartományneveket vagy az IP-címeket, amikor a hozzáférést szeretnék kezelni. Ez a megközelítés egy olyan világban meghiúsul, ahol a szolgáltatott szoftverek (vagy SaaS-alkalmazások) nyilvános felhőben futnak, és megosztott tartományneveket futtatnak, például a [Outlook.Office.com](https://outlook.office.com/) és a [login.microsoftonline.com](https://login.microsoftonline.com/). Ezeknek a címeknek a blokkolása révén a felhasználók teljes mértékben hozzáférhetnek az Outlookhoz a világhálón ahelyett, hogy csak a jóváhagyott identitásokra és erőforrásokra korlátozzák őket.
 
-A kihíváshoz tartozó Azure Active Directory (Azure AD) megoldás a bérlői korlátozások nevű szolgáltatás. A bérlői korlátozásokkal a szervezetek az Azure AD-bérlő alapján vezérelhetik a SaaS-Felhőbeli alkalmazásokhoz való hozzáférést az egyszeri bejelentkezéshez használt alkalmazások esetében. Előfordulhat például, hogy engedélyezni szeretné a szervezet Office 365-alkalmazásaihoz való hozzáférést, és megakadályozza, hogy az azonos alkalmazások más szervezetek példányaihoz hozzáférjenek.  
+A kihíváshoz tartozó Azure Active Directory (Azure AD) megoldás a bérlői korlátozások nevű szolgáltatás. A bérlői korlátozásokkal a szervezetek az Azure AD-bérlő alapján vezérelhetik a SaaS-Felhőbeli alkalmazásokhoz való hozzáférést az egyszeri bejelentkezéshez használt alkalmazások esetében. Előfordulhat például, hogy engedélyezni szeretné a szervezet Microsoft 365 alkalmazásaihoz való hozzáférést, és megakadályozza, hogy az azonos alkalmazások más szervezetek példányaihoz hozzáférjenek.  
 
 A bérlői korlátozásokkal a szervezetek meghatározhatják azon bérlők listáját, amelyekhez a felhasználók hozzáférhetnek. Az Azure AD ezt követően csak az engedélyezett bérlők számára biztosít hozzáférést.
 
-Ez a cikk az Office 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazásokat használ az Office 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy az összes szükséges bérlő engedélyezett. A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
+Ez a cikk a Microsoft 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazásokat használ az Microsoft 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy az összes szükséges bérlő engedélyezett. A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Működés
 
@@ -37,11 +37,11 @@ A teljes megoldás a következő összetevőket tartalmazza:
 
 2. Helyszíni **proxykiszolgáló-infrastruktúra**: ez az infrastruktúra TRANSPORT Layer Security (TLS) ellenőrzésre alkalmas proxy eszköz. A proxyt úgy kell konfigurálni, hogy beszúrja az engedélyezett bérlők listáját tartalmazó fejlécet az Azure AD-ba irányuló forgalomba.
 
-3. **Ügyfélszoftver**: a bérlői korlátozások támogatásához az ügyfélszoftvernek közvetlenül az Azure ad-ből kell kérnie a jogkivonatokat, hogy a proxy-infrastruktúra képes legyen a forgalom elfogására. A böngészőalapú Office 365-alkalmazások jelenleg támogatják a bérlői korlátozásokat, mint a modern hitelesítést használó Office-ügyfeleket (például OAuth 2,0).
+3. **Ügyfélszoftver**: a bérlői korlátozások támogatásához az ügyfélszoftvernek közvetlenül az Azure ad-ből kell kérnie a jogkivonatokat, hogy a proxy-infrastruktúra képes legyen a forgalom elfogására. A böngészőalapú Microsoft 365 alkalmazások jelenleg támogatják a bérlői korlátozásokat, mint a modern hitelesítést használó Office-ügyfeleket (például OAuth 2,0).
 
-4. **Modern hitelesítés**: a Cloud servicesnek modern hitelesítést kell használnia a bérlői korlátozások használatához, és le kell tiltania az összes nem engedélyezett bérlő hozzáférését. Az Office 365 Cloud Servicest úgy kell konfigurálni, hogy alapértelmezés szerint modern hitelesítési protokollokat használjanak. A modern hitelesítést támogató Office 365-támogatással kapcsolatos legfrissebb információkért olvassa el a [frissített Office 365 – modern hitelesítés](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)című témakört.
+4. **Modern hitelesítés**: a Cloud servicesnek modern hitelesítést kell használnia a bérlői korlátozások használatához, és le kell tiltania az összes nem engedélyezett bérlő hozzáférését. Az Microsoft 365 Cloud Servicest úgy kell konfigurálni, hogy alapértelmezés szerint modern hitelesítési protokollokat használjanak. A modern hitelesítés Microsoft 365 támogatásával kapcsolatos legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítés](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)című témakört.
 
-A következő ábra a magas szintű forgalmat mutatja be. A bérlői korlátozások csak az Azure AD-ra irányuló adatforgalomra, az Office 365 Cloud Servicesre nem vonatkoznak. Ez a különbség azért fontos, mert az Azure AD-hitelesítéshez használt forgalom mennyisége általában sokkal alacsonyabb, mint a forgalom mennyisége olyan SaaS-alkalmazásokhoz, mint az Exchange Online és a SharePoint Online.
+A következő ábra a magas szintű forgalmat mutatja be. A bérlői korlátozások csak az Azure AD-ra irányuló adatforgalomra vonatkozó TLS-vizsgálatot igényelnek, a Microsoft 365 Cloud Services esetében nem. Ez a különbség azért fontos, mert az Azure AD-hitelesítéshez használt forgalom mennyisége általában sokkal alacsonyabb, mint a forgalom mennyisége olyan SaaS-alkalmazásokhoz, mint az Exchange Online és a SharePoint Online.
 
 ![Bérlői korlátozások – forgalom folyamatábrája](./media/tenant-restrictions/traffic-flow.png)
 
@@ -63,7 +63,7 @@ A következő konfiguráció szükséges a bérlői korlátozások a proxy-infra
 
 - Az ügyfeleknek meg kell bízniuk a proxy által a TLS-kommunikációhoz benyújtott tanúsítványlánc számára. Ha például egy belső [nyilvános kulcsokra épülő infrastruktúra (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) tanúsítványait használja, a belső kiállító főtanúsítvány-hitelesítésszolgáltató tanúsítványának megbízhatónak kell lennie.
 
-- Ez a funkció az Office 365-előfizetések részét képezi, de ha bérlői korlátozásokkal szeretné szabályozni a más SaaS-alkalmazásokhoz való hozzáférést, akkor prémium szintű Azure AD 1 licenc szükséges.
+- Ez a funkció Microsoft 365 előfizetések részét képezi, de ha bérlői korlátozásokkal szeretné szabályozni a más SaaS-alkalmazásokhoz való hozzáférést, akkor prémium szintű Azure AD 1 licenc szükséges.
 
 #### <a name="configuration"></a>Konfiguráció
 
@@ -129,16 +129,16 @@ A Azure Portal többi jelentéséhez hasonlóan szűrőket is használhat a jele
 - **Hely**
 - **Cél bérlő azonosítója**
 
-## <a name="office-365-support"></a>Office 365-támogatás
+## <a name="microsoft-365-support"></a>Microsoft 365-támogatás
 
-Az Office 365-alkalmazásoknak két feltételnek kell megfelelniük a bérlői korlátozások teljes körű támogatásához:
+Microsoft 365 alkalmazásoknak két feltételnek kell megfelelniük a bérlői korlátozások teljes körű támogatásához:
 
 1. A használt ügyfél támogatja a modern hitelesítést.
 2. A modern hitelesítés engedélyezve van a felhőalapú szolgáltatás alapértelmezett hitelesítési protokollja.
 
 Tekintse meg a [frissített office 365 modern hitelesítést](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) a legújabb információkra, amelyekkel az Office-ügyfelek jelenleg támogatják a modern hitelesítést. Az oldal hivatkozásokat is tartalmaz, amelyekkel a modern hitelesítés engedélyezhető az adott Exchange Online és a Skype vállalati online bérlők számára. A SharePoint Online alapértelmezés szerint már lehetővé teszi a modern hitelesítés használatát.
 
-Az Office 365 böngésző-alapú alkalmazások (az Office-portál, a Yammer, a SharePoint-webhelyek, az Outlook a weben és egyebek) jelenleg is támogatja a bérlői korlátozásokat. A vastag ügyfelek (az Outlook, a Skype vállalati verzió, a Word, az Excel, a PowerPoint stb.) csak a modern hitelesítés használata esetén tudják kényszeríteni a bérlői korlátozásokat.  
+Microsoft 365 böngészőalapú alkalmazások (az Office-portál, a Yammer, a SharePoint-webhelyek, az Outlook a weben és még sok más) jelenleg is támogatja a bérlői korlátozásokat. A vastag ügyfelek (az Outlook, a Skype vállalati verzió, a Word, az Excel, a PowerPoint stb.) csak a modern hitelesítés használata esetén tudják kényszeríteni a bérlői korlátozásokat.  
 
 A modern hitelesítést támogató Outlook és Skype vállalati ügyfelek továbbra is használhatnak örökölt protokollokat a bérlők esetében, ahol nincs engedélyezve a modern hitelesítés, ami gyakorlatilag megkerüli a bérlői korlátozásokat. A bérlői korlátozások az örökölt protokollokat használó alkalmazásokat letilthatják, ha a hitelesítés során kapcsolatba kerülnek a login.microsoftonline.com, a login.microsoft.com vagy a login.windows.net.
 

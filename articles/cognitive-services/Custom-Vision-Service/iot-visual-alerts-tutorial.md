@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244669"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604291"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Az alkalmazás használatával betaníthatja Custom Vision projektjét.
 > * Az alkalmazás segítségével valós időben lehet új képeket kipróbálni, és elküldeni az eredményeket az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd. 
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +52,7 @@ A IoT vizuális riasztások alkalmazás folytonos hurokban fut, és szükség sz
 * **Várakozás a betanított modellre**: ebben az állapotban az alkalmazás meghívja a Custom Vision API-t másodpercenként, hogy meggyőződjön arról, hogy a célként megadott projekt tartalmaz-e betanított iterációt. Ha megtalál egyet, letölti a megfelelő ONNX-modellt egy helyi fájlba, és a **pontozás** állapotra vált.
 * **Pontozás**: ebben az állapotban az alkalmazás a Windows ml-t használja a kamera egyetlen keretének kiértékeléséhez a helyi ONNX modellből. Az eredményül kapott képbesorolás megjelenik a képernyőn, és üzenetet küld a IoT Hubnak. Az alkalmazás ezután egy másodpercig alvó állapotba helyezi az új rendszerkép pontozását.
 
-## <a name="understand-the-code-structure"></a>A kód szerkezetének megismerése
+## <a name="examine-the-code-structure"></a>A kód szerkezetének vizsgálata
 
 A következő fájlok kezelik az alkalmazás fő funkcióit.
 
@@ -98,13 +98,13 @@ Az alkalmazás lemezképek rögzítése közben ki kell tenni a kamerát a felde
 
 ## <a name="train-the-custom-vision-model"></a>A Custom Vision modell betanítása
 
-Ha az alkalmazás befejezte a lemezképek rögzítését, feltölti őket, majd átvált a **betanított modell** állapotára. Ekkor meg kell adnia a [Custom Vision portált](https://www.customvision.ai/) , és létre kell hoznia egy modellt az új betanítási lemezképek alapján. Az alábbi animáció a folyamat példáját mutatja be.
+Ha az alkalmazás befejezte a lemezképek rögzítését, feltölti őket, majd átvált a **betanított modell** állapotára. Ezen a ponton a [Custom Vision webhelyre](https://www.customvision.ai/) kell lépnie, és létre kell hoznia egy modellt az új betanítási lemezképek alapján. Az alábbi animáció a folyamat példáját mutatja be.
 
 ![Animáció: a banán több rendszerképének címkézése](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 A folyamat megismétlése saját forgatókönyv esetén:
 
-1. Jelentkezzen be a [Custom Vision portálra](http://customvision.ai).
+1. Jelentkezzen be a [Custom Vision webhelyére](http://customvision.ai).
 1. Keresse meg a célként megadott projektet, amely most már rendelkezik az alkalmazás által feltöltött összes betanítási képpel.
 1. Minden olyan vizualizációs állapothoz, amelyet azonosítani szeretne, válassza ki a megfelelő lemezképeket, és manuálisan alkalmazza a címkét.
     * Ha például a cél az, hogy különbséget tegyen egy üres helyiség és egy olyan hely között, amelyben a személyek szerepelnek, javasoljuk, hogy öt vagy több képet válasszon ki az emberekkel új osztályként, **emberekként**, és öt vagy több, a **negatív** címkével nem rendelkező képet. Ez segít a modellnek a két állapot közötti különbségtételben.

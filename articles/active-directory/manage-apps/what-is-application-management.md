@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299881"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604121"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
@@ -49,7 +49,7 @@ A szervezetekben gyakran több száz alkalmazás is van, amitől a felhasználó
 
 ## <a name="how-does-azure-ad-work-with-applications"></a>Hogyan működik az Azure AD az alkalmazásokkal?
 
-Az Azure AD leegyszerűsíti az alkalmazások kezelésének módját azáltal, hogy egyetlen identitási rendszert biztosít a Felhőbeli és a helyszíni alkalmazások számára. A szolgáltatott szoftverek (SaaS), helyszíni alkalmazások és üzletági (LOB) alkalmazások is hozzáadhatók az Azure AD-hez. Ezután a felhasználók egyszer bejelentkeznek az alkalmazások biztonságos és zökkenőmentes eléréséhez, valamint az Office 365 és a Microsoft egyéb üzleti alkalmazásaihoz. A [felhasználók üzembe helyezésének automatizálásával](../app-provisioning/user-provisioning.md)csökkentheti az adminisztrációs költségeket. A többtényezős hitelesítést és a feltételes hozzáférési szabályzatokat is használhatja a biztonságos alkalmazás-hozzáférés biztosításához.
+Az Azure AD leegyszerűsíti az alkalmazások kezelésének módját azáltal, hogy egyetlen identitási rendszert biztosít a Felhőbeli és a helyszíni alkalmazások számára. A szolgáltatott szoftverek (SaaS), helyszíni alkalmazások és üzletági (LOB) alkalmazások is hozzáadhatók az Azure AD-hez. Ezután a felhasználók egyszer bejelentkeznek az alkalmazások biztonságos és zökkenőmentes eléréséhez, valamint a Microsoft Microsoft 365 és más üzleti alkalmazásaihoz. A [felhasználók üzembe helyezésének automatizálásával](../app-provisioning/user-provisioning.md)csökkentheti az adminisztrációs költségeket. A többtényezős hitelesítést és a feltételes hozzáférési szabályzatokat is használhatja a biztonságos alkalmazás-hozzáférés biztosításához.
 
 ![Az Azure AD-n keresztül összevont alkalmazásokat bemutató diagram](media/what-is-application-management/app-management-overview.png)
 
@@ -59,7 +59,7 @@ A **nagyvállalati alkalmazásokhoz** és az Azure ad-vel való felügyelethez n
 
 - **Azure ad Gallery-alkalmazások** – az Azure ad tartalmaz egy katalógust, amely az Azure ad-vel való egyszeri bejelentkezéshez előre integrált, több ezer alkalmazást tartalmaz. A vállalat által használt alkalmazások egy része valószínűleg megtalálható a katalógusban. [Ismerje meg az alkalmazások integrálásának megtervezését](plan-an-application-integration.md), vagy a [SaaS-alkalmazás oktatóanyagokban](https://docs.microsoft.com/azure/active-directory/saas-apps/)részletes integrációs lépéseket kaphat az egyes alkalmazásokhoz.
 
-- Helyszíni **alkalmazások alkalmazásproxy** használatával – az Azure ad Application proxy segítségével a helyszíni webalkalmazásokat az Azure ad-vel integrálva támogathatja az egyszeri bejelentkezést. Ezután a végfelhasználók ugyanúgy férhetnek hozzá a helyszíni webalkalmazásokhoz, mint az Office 365 és más SaaS-alkalmazások, lásd: [távoli hozzáférés biztosítása helyszíni alkalmazásokhoz az Azure ad alkalmazásproxy használatával](application-proxy.md).
+- Helyszíni **alkalmazások alkalmazásproxy** használatával – az Azure ad Application proxy segítségével a helyszíni webalkalmazásokat az Azure ad-vel integrálva támogathatja az egyszeri bejelentkezést. Ezután a végfelhasználók ugyanúgy férhetnek hozzá a helyszíni webalkalmazásokhoz, mint a Microsoft 365 és más SaaS-alkalmazásokhoz, lásd: [távoli hozzáférés biztosítása helyszíni alkalmazásokhoz az Azure ad alkalmazásproxy használatával](application-proxy.md).
 
 - **Testreszabott alkalmazások** – a saját üzletági alkalmazásai kiépítésekor az egyszeri bejelentkezés támogatásához integrálhatja őket az Azure ad-vel. Az alkalmazás Azure AD-vel való regisztrálásával szabályozhatja az alkalmazás hitelesítési házirendjét. További információ: [útmutató a fejlesztőknek](developer-guidance-for-integrating-applications.md).
 
@@ -77,7 +77,7 @@ A [feltételes hozzáféréssel](../conditional-access/concept-conditional-acces
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Termelékenység növelése egyszeri bejelentkezéssel
 
-Az egyszeri bejelentkezés (SSO) a bejelentkezési kérések számának csökkentésével vagy a kérések kiiktatásával kiváló bejelentkezési élményt biztosít a meglévő felhasználók számára a különböző alkalmazások és az Office 365 esetében. A felhasználó egységesebb környezetet érzékel és kevésbé zavarja a sok bejelentkezési kérés és a sokféle jelszó kezelésének szükségessége. Az üzleti csoport az önkiszolgálással és a dinamikus tagsággal kezelni és engedélyezni tudja a hozzáféréseket. Az alkalmazáshoz való hozzáférések kezelésének a vállalaton belül a megfelelő emberek számára történő lehetővé tétele javítja az azonosítási rendszer biztonságát.
+Az egyszeri bejelentkezés (SSO) az alkalmazások és Microsoft 365 számára való engedélyezése kiváló bejelentkezési élményt biztosít a meglévő felhasználók számára a bejelentkezési kérések csökkentésével vagy megszüntetésével. A felhasználó egységesebb környezetet érzékel és kevésbé zavarja a sok bejelentkezési kérés és a sokféle jelszó kezelésének szükségessége. Az üzleti csoport az önkiszolgálással és a dinamikus tagsággal kezelni és engedélyezni tudja a hozzáféréseket. Az alkalmazáshoz való hozzáférések kezelésének a vállalaton belül a megfelelő emberek számára történő lehetővé tétele javítja az azonosítási rendszer biztonságát.
 
 Az egyszeri bejelentkezés javítja a biztonságot. Az *egyszeri bejelentkezés nélkül* a rendszergazdáknak minden egyes alkalmazáshoz külön kell felhasználói fiókokat létrehozni és frissíteni, ami időbe kerül. A felhasználóknak is többféle hitelesítő adatot kell nyomon követniük az alkalmazásaik eléréséhez. Ennek eredményeképpen a felhasználók hajlanak arra, hogy leírják a jelszavaikat vagy másféle jelszókezelési megoldást használjanak, ami adatbiztonsági kockázatot jelent. [További információ az egyszeri bejelentkezésről](what-is-single-sign-on.md).
 

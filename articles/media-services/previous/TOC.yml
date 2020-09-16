@@ -318,33 +318,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: Többszörös DRM referenciaterve
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: Elemzés
-      href: media-services-analytics-overview.md
-      items:
-        - name: Média elemzése az Azure Portallal
-          href: media-services-portal-analyze.md
-        - name: Feldolgozás a 2. indexelővel
-          href: media-services-process-content-with-indexer2.md
         - name: Feldolgozás az indexelővel
           href: media-services-index-content.md
           items:
             - name: Előre beállított feladat
               href: indexer-task-preset.md
-        - name: Feldolgozás arcérzékelővel
-          href: media-services-face-and-emotion-detection.md
-        - name: Feldolgozás mozgásérzékelővel
-          href: media-services-motion-detection.md
         - name: Feldolgozás a Face Redactorral
           href: media-services-face-redaction.md
           items:
             - name: Útmutatás a Face Redactorhoz
               href: media-services-redactor-walkthrough.md
-        - name: Feldolgozás video-miniatűrökkel
-          href: media-services-video-summarization.md
-        - name: Feldolgozás OCR-rel
-          href: media-services-video-optical-character-recognition.md
-        - name: Tartalommoderátorral rendelkező folyamat
-          href: media-services-content-moderation.md
     - name: Telemetria konfigurálása
       href: media-services-telemetry-overview.md
       items:

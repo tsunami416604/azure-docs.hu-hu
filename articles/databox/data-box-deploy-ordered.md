@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 2ab74b87b287296c4ff975d5af75714c89001004
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055716"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604308"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -268,6 +268,8 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     ![Felügyelt lemez Data Box sorrendje](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás lapblobként tölti fel a VHD-ket az előkészítési tárfiókba, majd felügyelt lemezekké konvertálja, és áthelyezi az erőforráscsoportba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+   > [!NOTE]
+   > Ha egy oldal blobját nem sikerült felügyelt lemezre átalakítani, a Storage-fiókban marad, és a tárterületért kell fizetnie.
 
     Kattintson a **Tovább gombra: a biztonság** lehetőségre.
 
@@ -312,7 +314,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
 
 1. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor a CLI-parancs futtatásával hozza létre a Data Box sorrendet. A következő táblázat a paraméterek beállításait tartalmazza `az databox job create` :
 
-   | Beállítás (paraméter) | Description |  Mintaérték |
+   | Beállítás (paraméter) | Leírás |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |name| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -431,7 +433,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
 
 2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
 
-    | Beállítás (paraméter) | Description |  Mintaérték |
+    | Beállítás (paraméter) | Leírás |  Mintaérték |
     |---|---|---|
     |ResourceGroupName [kötelező]| Meglévő erőforráscsoport használata. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
     |Név [kötelező]| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -806,7 +808,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

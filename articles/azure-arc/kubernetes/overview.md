@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723724"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604801"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Mi az az Azure arc-kompatibilis Kubernetes előzetes verziója?
 
@@ -51,12 +51,15 @@ Az Azure arc-kompatibilis Kubernetes az alábbi forgatókönyveket támogatja:
 
 * Házirendek alkalmazása a Kubernetes Azure Policy használatával. 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>Támogatott régiók 
 
 Az Azure arc-kompatibilis Kubernetes jelenleg a következő régiókban támogatott: 
 
 * USA keleti régiója 
 * Nyugat-Európa
+
 
 ## <a name="next-steps"></a>További lépések
 

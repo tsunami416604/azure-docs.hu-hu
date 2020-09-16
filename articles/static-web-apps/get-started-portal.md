@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434781"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604087"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rövid útmutató: az első statikus webalkalmazás felépítése a Azure Portal
 
@@ -65,7 +65,7 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
     # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
     1. Válassza az **Egyéni** lehetőséget a _Build-előállítók_ legördülő listából
-    1. Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
+    1. Az alapértelmezett érték megtartása az _alkalmazás helye_ mezőben
     1. Az alapértelmezett érték törlése az _API helye_ mezőben
     1. Hagyja üresen az alkalmazás-összetevő _helye_ mezőt
 
@@ -92,7 +92,7 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
     ---
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
     :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
@@ -119,7 +119,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

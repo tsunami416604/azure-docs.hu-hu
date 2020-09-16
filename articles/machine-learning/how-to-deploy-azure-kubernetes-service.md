@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: da6554ae3b7df9962e1f57ac652567c282227d64
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bfc285f68e8a44b6b09fc63d9b2775a047955a37
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661653"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604665"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,39 @@ Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterüle
 
     - Ha a modelleket GPU-csomópontokra vagy FPGA-csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy fürtöt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
 
+## <a name="understand-the-deployment-processes"></a>Az üzembe helyezési folyamatok ismertetése
+
+Az "üzemelő példány" szó mind a Kubernetes, mind a Azure Machine Learning esetében használatos. Az "üzembe helyezés" a két kontextusban eltérő jelentésekkel rendelkezik. A Kubernetes-ben a a egy `Deployment` konkrét entitás, amely egy DEKLARATÍV YAML-fájllal van megadva. A Kubernetes `Deployment` meghatározott életciklussal és konkrét kapcsolatokkal rendelkezik más Kubernetes-entitásokkal, például a és a szolgáltatással `Pods` `ReplicaSets` . Megtudhatja, hogyan Kubernetes a docs és a videók a [Kubernetes?](https://aka.ms/k8slearning)című témakörben.
+
+Azure Machine Learning az "üzembe helyezés" a projekt erőforrásainak elérhetővé tételéhez és tisztításához szükséges általánosabb értelemben használatos. Az üzembe helyezés részét Azure Machine Learning lépések a következők:
+
+1. A Project mappában lévő fájlok tömörítése, figyelmen kívül hagyva a. amlignore vagy. gitignore fájlban megadott fájlokat.
+1. A számítási fürt vertikális felskálázása (a Kubernetes-re vonatkozik)
+1. A Docker kiépítése vagy letöltése a számítási csomópontra (a Kubernetes-re vonatkozik)
+    1. A rendszer a következőképpen számítja ki a kivonatot: 
+        - A kiinduló rendszerkép 
+        - Egyéni Docker-lépések (lásd: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - A Conda-definíció YAML (lásd: [létrehozás & a szoftveres környezetek használata Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. A rendszer ezt a kivonatot használja a munkaterület Azure Container Registry (ACR) keresésének kulcsaként.
+    1. Ha nem található, akkor a globális ACR-beli egyezést keresi
+    1. Ha nem található, a rendszer létrehoz egy új rendszerképet (amely gyorsítótárazva lesz, és leküldi a munkaterület ACR-nek).
+1. A tömörített projektfájl letöltése a számítási csomóponton lévő ideiglenes tárhelyre
+1. Projektfájl kicsomagolása
+1. A számítási csomópont végrehajtása `python <entry script> <arguments>`
+1. A `./outputs` munkaterülethez társított Storage-fiókba írt naplók, modellező fájlok és egyéb fájlok mentése
+1. A számítási felskálázás, beleértve az ideiglenes tárolók eltávolítását (a Kubernetes-re vonatkozik)
+
+### <a name="azure-ml-router"></a>Azure ML-útválasztó
+
+Az előtér-összetevő (azureml-FE), amely a bejövő következtetési kérelmeket átirányítja a telepített szolgáltatásokra, a rendszer igény szerint automatikusan méretezi. A azureml-Fe méretezése az AK-fürt célján és méretén (csomópontok száma) alapul. A fürt célját és csomópontjait AK- [fürt létrehozásakor vagy csatolásakor](how-to-create-attach-kubernetes.md)kell konfigurálni. Fürtben egy azureml-Fe szolgáltatás található, amely több hüvelyen is futhat.
+
+> [!IMPORTANT]
+> Ha olyan fürtöt használ, amely __dev-testként__van konfigurálva, az önméretező **le van tiltva**.
+
+A Azureml-Fe egyszerre több magot használ, és (horizontálisan) több hüvelyt használ. A vertikális Felskálázási döntés végrehajtásakor a rendszer a bejövő következtetési kérelmek továbbításához szükséges időt használja. Ha ez az idő meghaladja a küszöbértéket, felskálázás történik. Ha a bejövő kérelmek átirányításának ideje továbbra is meghaladja a küszöbértéket, kibővíthető.
+
+A-re és a-re történő skálázáskor a rendszer a CPU-használatot használja. Ha a CPU-használat küszöbértéke teljesül, a rendszer először az előtér végét fogja méretezni. Ha a CPU-használat csökken a skálázási küszöbértékre, akkor a méretezési művelet történik. A fel-és kiskálázás csak akkor történik meg, ha elegendő fürterőforrás áll rendelkezésre.
+
 ## <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
 
 Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
@@ -67,7 +100,9 @@ Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozz
 > [!NOTE]
 > A telepítendő modellek száma az üzemelő példányok esetében 1 000 modellre korlátozódik (tárolóként).
 
-### <a name="using-the-sdk"></a>Az SDK használata
+<a id="using-the-cli"></a>
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -91,7 +126,7 @@ Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel
 * [Modell. Deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [Webszolgáltatás. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>A parancssori felület használata
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 A CLI használatával történő üzembe helyezéshez használja a következő parancsot. Cserélje le az `myaks` t az AK számítási cél nevére. Cserélje le a `mymodel:1` nevet a regisztrált modell nevére és verziójára. Cserélje le `myservice` a nevet a következő szolgáltatáshoz:
 
@@ -103,36 +138,57 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference.
 
-### <a name="using-vs-code"></a>A VS Code használata
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 A VS Code használatával kapcsolatos információkért lásd: [üzembe helyezés az AK-n keresztül a vs Code bővítménnyel](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
 
 > [!IMPORTANT]
 > A VS code-on keresztül történő üzembe helyezéshez az AK-fürt létrehozása vagy a munkaterülethez való csatolása szükséges.
 
-### <a name="understand-the-deployment-processes"></a>Az üzembe helyezési folyamatok ismertetése
+---
 
-Az "üzemelő példány" szó mind a Kubernetes, mind a Azure Machine Learning esetében használatos. Az "üzembe helyezés" a két kontextusban eltérő jelentésekkel rendelkezik. A Kubernetes-ben a a egy `Deployment` konkrét entitás, amely egy DEKLARATÍV YAML-fájllal van megadva. A Kubernetes `Deployment` meghatározott életciklussal és konkrét kapcsolatokkal rendelkezik más Kubernetes-entitásokkal, például a és a szolgáltatással `Pods` `ReplicaSets` . Megtudhatja, hogyan Kubernetes a docs és a videók a [Kubernetes?](https://aka.ms/k8slearning)című témakörben.
+### <a name="autoscaling"></a>Automatikus skálázás
 
-Azure Machine Learning az "üzembe helyezés" a projekt erőforrásainak elérhetővé tételéhez és tisztításához szükséges általánosabb értelemben használatos. Az üzembe helyezés részét Azure Machine Learning lépések a következők:
+Az Azure ML-modellek automatikus skálázását kezelő összetevő a azureml-FE, amely egy intelligens kérelem-útválasztó. Mivel az összes következtetési kérelem áthalad rajta, a szükséges adattal rendelkezik a telepített modell (ek) automatikus skálázásához.
 
-1. A Project mappában lévő fájlok tömörítése, figyelmen kívül hagyva a. amlignore vagy. gitignore fájlban megadott fájlokat.
-1. A számítási fürt vertikális felskálázása (a Kubernetes-re vonatkozik)
-1. A Docker kiépítése vagy letöltése a számítási csomópontra (a Kubernetes-re vonatkozik)
-    1. A rendszer a következőképpen számítja ki a kivonatot: 
-        - A kiinduló rendszerkép 
-        - Egyéni Docker-lépések (lásd: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - A Conda-definíció YAML (lásd: [létrehozás & a szoftveres környezetek használata Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
-    1. A rendszer ezt a kivonatot használja a munkaterület Azure Container Registry (ACR) keresésének kulcsaként.
-    1. Ha nem található, akkor a globális ACR-beli egyezést keresi
-    1. Ha nem található, a rendszer létrehoz egy új rendszerképet (amely gyorsítótárazza és regisztrálva lesz a munkaterület ACR-ben)
-1. A tömörített projektfájl letöltése a számítási csomóponton lévő ideiglenes tárhelyre
-1. Projektfájl kicsomagolása
-1. A számítási csomópont végrehajtása `python <entry script> <arguments>`
-1. A `./outputs` munkaterülethez társított Storage-fiókba írt naplók, modellező fájlok és egyéb fájlok mentése
-1. A számítási felskálázás, beleértve az ideiglenes tárolók eltávolítását (a Kubernetes-re vonatkozik)
+> [!IMPORTANT]
+> * Ne **engedélyezze a Kubernetes horizontális Pod autoskálázást (hPa) a modellek üzembe helyezéséhez**. Ez azt eredményezi, hogy a két automatikus skálázási összetevő versenyez egymással. A Azureml-Fe úgy lett kialakítva, hogy az Azure ML által üzembe helyezett modellek automatikusan méretezhetőek legyenek, ahol a HPA-nak ki kell találnia vagy közelítenie kell a modell kihasználtságát egy általános metrika, például a CPU-használat vagy egy egyéni metrika
+> 
+> * **A Azureml-Fe nem méretezi a csomópontok számát egy AK-fürtben**, mert ez váratlan költségmegtakarítást eredményezhet. Ehelyett a **modell replikáinak számát** a fizikai fürt határain belül méretezi. Ha a fürtön belüli csomópontok számát kell méreteznie, manuálisan méretezheti a fürtöt, vagy [konfigurálhatja az AK-fürt automéretezőjét](/azure/aks/cluster-autoscaler).
 
-Ha AK-t használ, a számítási felskálázás és a lefelé történő méretezés a Kubernetes által vezérelt, a fent ismertetett Docker használatával. 
+Az automatikus skálázást `autoscale_target_utilization` `autoscale_min_replicas` a, a és az `autoscale_max_replicas` AK webszolgáltatáshoz tartozó beállítások szabályozzák. Az alábbi példa bemutatja, hogyan engedélyezheti az automatikus skálázást:
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+A vertikális felskálázásra vagy lefelé irányuló döntések az aktuális tároló-replikák kihasználtságán alapulnak. A foglalt replikák (egy kérelem feldolgozása) száma osztva az aktuális replikák teljes számával. Ha ez a szám meghaladja a számot `autoscale_target_utilization` , a rendszer több replikát hoz létre. Ha alacsonyabb, a replikák csökkennek. Alapértelmezés szerint a cél kihasználtsága 70%.
+
+A replikák hozzáadására vonatkozó döntések lelkesek és gyorsak (körülbelül 1 másodperc). A replikák eltávolítására vonatkozó döntések konzervatívak (körülbelül 1 perc).
+
+A szükséges replikák kiszámításához használja a következő kódot:
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+A, a és a beállításával kapcsolatos további tudnivalókért `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` tekintse meg a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modul referenciáját.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellek üzembe helyezése az AK-ban vezérelt bevezetéssel (előzetes verzió)
 
@@ -224,7 +280,6 @@ endpoint.delete_version(version_name="versionb")
 
 ```
 
-
 ## <a name="web-service-authentication"></a>Webszolgáltatás-hitelesítés
 
 Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __kulcs alapú__ hitelesítés alapértelmezés szerint engedélyezve van. Engedélyezheti a __jogkivonat-alapú__ hitelesítést is. A jogkivonat-alapú hitelesítéshez az szükséges, hogy az ügyfelek egy Azure Active Directory fiókot használjanak a hitelesítési jogkivonat igényléséhez, amely a központilag telepített szolgáltatásra irányuló kérések elvégzésére szolgál.
@@ -271,7 +326,7 @@ print(token)
 >
 > Jogkivonat lekéréséhez az Azure Machine Learning SDK-t vagy az az [ml Service Get-Access-Token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) parancsot kell használnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonságos következtetési környezet az Azure Virtual Network](how-to-secure-inferencing-vnet.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)

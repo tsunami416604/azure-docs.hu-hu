@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525164"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606880"
 ---
 1. A virtuális WAN portál lapjának **kapcsolat** szakaszában válassza a **VPN-helyek** lehetőséget a VPN-helyek lap megnyitásához.
 2. A **VPN-helyek** lapon kattintson a **+Hely létrehozása** elemre.
 
-   ![Alapbeállítások](./media/virtual-wan-tutorial-site-include/basics.png "Alapbeállítások")
+   ![Képernyőfelvétel: a V P N hely és hely közötti ablak, amelyen megnyílik a VPN-hely létrehozása ablaktábla.](./media/virtual-wan-tutorial-site-include/basics.png "Alapvető beállítások")
 3. A **VPN-hely létrehozása** lap **alapok** lapján végezze el a következő mezőket:
 
     * **Régió** – előzőleg helynek nevezzük. Ez az a hely, ahol létre szeretné hozni a hely erőforrását a alkalmazásban.
@@ -29,7 +29,7 @@ ms.locfileid: "86525164"
     * **Hubok** – az a hub, amelyhez csatlakozni szeretne a helyhez. A helyek csak olyan hubokhoz csatlakoztathatók, amelyeken VPN Gateway található. Ha nem látja a hubot, először hozzon létre egy VPN-átjárót az adott központban.
 4. Válassza a **hivatkozások** lehetőséget az ág fizikai hivatkozásaival kapcsolatos információk hozzáadásához. Ha egy virtuális WAN-partner CPE-eszközzel rendelkezik, egyeztessen velük, hogy az információk az Azure-ral együtt, a saját rendszeréből való feltöltésük részeként legyenek-e kicserélve.
 
-   ![linkek](./media/virtual-wan-tutorial-site-include/links.png "Hivatkozások")
+   ![Képernyőfelvétel: a V P N hely létrehozása ablaktábla, ahol a hivatkozások lap van kiválasztva.](./media/virtual-wan-tutorial-site-include/links.png "Hivatkozások")
 
     * **Hivatkozás neve** – a VPN-helyen található fizikai hivatkozáshoz megadni kívánt név. Példa: mylink1.
     * **Szolgáltató neve** : a VPN-helyen található fizikai hivatkozás neve. Példa: ATT, Verizon.

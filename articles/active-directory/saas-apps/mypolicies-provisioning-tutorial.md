@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548042"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604461"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés myPolicies konfigurálása
 
@@ -101,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lap](common/provisioning-automatic.png)
+    ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg `https://<myPoliciesCustomDomain>.mypolicies.com/scim` a **bérlői URL-címet** , ahol a a `<myPoliciesCustomDomain>` myPolicies egyéni tartománya. Az URL-címről lekérheti a myPolicies-ügyfél tartományát.
 Példa: `<demo0-qa>` . mypolicies.com.
@@ -122,7 +122,18 @@ Példa: `<demo0-qa>` . mypolicies.com.
 
 10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található myPolicies. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a myPolicies felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![myPolicies felhasználói leképezések](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |Attribútum|Típus|
+   |---|---|
+   |userName (Felhasználónév)|Sztring|
+   |Active|Logikai|
+   |e-mailek [type EQ "work"]. Value|Sztring|
+   |név. givenName|Sztring|
+   |név. familyName|Sztring|
+   |név. formázott|Sztring|
+   |externalId|Sztring|
+   |címek [type EQ "work"]. Country|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+
 
 11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -146,6 +157,10 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * a myPolicies mindig **felhasználónevet**, **e-mail-címet** és **externalId**kell megadni.
 * a myPolicies nem támogatja a felhasználói attribútumok rögzített törlését.
+
+## <a name="change-log"></a>Változási napló
+
+* 09/15/2020 – az "ország" attribútum támogatása a felhasználók számára.
 
 ## <a name="additional-resources"></a>További források
 

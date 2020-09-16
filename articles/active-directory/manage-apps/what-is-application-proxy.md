@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640514"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604138"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Helyszíni alkalmazások közzététele az Azure AD Application Proxy használatával távoli felhasználók számára
 
@@ -29,7 +29,7 @@ A belső alkalmazások a hálózaton kívülről való biztonságos eléréséne
 
 Számos szervezet azt feltételezi, hogy felügyelet alatt állnak, és védettek, ha az erőforrások a vállalati hálózatok határain belül vannak. A mai digitális munkahelyen azonban ez a határ a felügyelt mobileszközök és a Felhőbeli erőforrások és szolgáltatások terén bővült. Most már kezelni kell a felhasználói identitások és az eszközökön és alkalmazásokban tárolt adatok védelmének összetettségét.
 
-Lehet, hogy már használja az Azure AD-t a felhőben lévő azon felhasználók felügyeletéhez, akiknek hozzá kell férniük az Office 365 és más SaaS-alkalmazásokhoz, valamint a helyszínen üzemeltetett webalkalmazásokhoz. Ha már rendelkezik az Azure AD-vel, egyetlen ellenőrzési síkon használhatja azt, hogy zökkenőmentes és biztonságos hozzáférést biztosítson a helyszíni alkalmazásokhoz. Vagy lehet, hogy továbbra is tervezi a felhőbe való áttérést. Ha igen, megkezdheti a felhőbe való utazást az alkalmazásproxy bevezetésével és az első lépéssel egy erős identitás-alaprendszer kiépítése felé.
+Lehet, hogy már használja az Azure AD-t a felhőben lévő azon felhasználók felügyeletéhez, akiknek Microsoft 365 és más SaaS-alkalmazásokhoz, valamint a helyszínen üzemeltetett webalkalmazásokhoz is hozzá kell férniük. Ha már rendelkezik az Azure AD-vel, egyetlen ellenőrzési síkon használhatja azt, hogy zökkenőmentes és biztonságos hozzáférést biztosítson a helyszíni alkalmazásokhoz. Vagy lehet, hogy továbbra is tervezi a felhőbe való áttérést. Ha igen, megkezdheti a felhőbe való utazást az alkalmazásproxy bevezetésével és az első lépéssel egy erős identitás-alaprendszer kiépítése felé.
 
 Az alábbi lista néhány olyan dolgot mutat be, amely lehetővé teszi, hogy az App proxyt egy hibrid, párhuzamosan használható forgatókönyvben implementálja:
 
@@ -53,7 +53,7 @@ Korábban a vezérlési sík védi a támadók belső erőforrásait, miközben 
 * Felhasználók hitelesítése a peremhálózaton lévő webkiszolgálókon
 * A VPN-hozzáférés megőrzése a távoli felhasználók számára a VPN-ügyfélszoftver elosztásával és konfigurálásával. Emellett a DMZ-ben a tartományhoz csatlakoztatott kiszolgálók is megmaradnak, amelyek sebezhetőek lehetnek a külső támadásokkal szemben.
 
-Napjaink Felhőbeli első világában az Azure AD a legmegfelelőbben szabályozza, hogy ki és mi jut a hálózatra. Az Azure AD Application Proxy integrálható a modern hitelesítéssel és a felhőalapú technológiákkal, például az SaaS-alkalmazásokkal és az identitás-szolgáltatókkal. Ez az integráció lehetővé teszi a felhasználók számára, hogy bárhonnan hozzáférjenek az alkalmazásokhoz. A mai digitális munkahely esetében nem csupán az App proxy, hanem biztonságosabb, mint a VPN-és fordított proxy-megoldások, és egyszerűbben valósítható meg. A távoli felhasználók ugyanúgy férhetnek hozzá a helyszíni alkalmazásokhoz, mint az Azure AD-vel integrált O365 és más SaaS-alkalmazásokhoz. Nem szükséges módosítani vagy frissíteni az alkalmazásokat ahhoz, hogy használhatók legyenek az alkalmazásproxyval. Az App proxy továbbá nem igényli a bejövő kapcsolatok megnyitását a tűzfalon keresztül. Az App proxyval egyszerűen beállíthatja és elfelejtheti.
+Napjaink Felhőbeli első világában az Azure AD a legmegfelelőbben szabályozza, hogy ki és mi jut a hálózatra. Az Azure AD Application Proxy integrálható a modern hitelesítéssel és a felhőalapú technológiákkal, például az SaaS-alkalmazásokkal és az identitás-szolgáltatókkal. Ez az integráció lehetővé teszi a felhasználók számára, hogy bárhonnan hozzáférjenek az alkalmazásokhoz. A mai digitális munkahely esetében nem csupán az App proxy, hanem biztonságosabb, mint a VPN-és fordított proxy-megoldások, és egyszerűbben valósítható meg. A távoli felhasználók ugyanúgy férhetnek hozzá a helyszíni alkalmazásokhoz, mint a Microsoft és az Azure AD-vel integrált SaaS-alkalmazások. Nem szükséges módosítani vagy frissíteni az alkalmazásokat ahhoz, hogy használhatók legyenek az alkalmazásproxyval. Az App proxy továbbá nem igényli a bejövő kapcsolatok megnyitását a tűzfalon keresztül. Az App proxyval egyszerűen beállíthatja és elfelejtheti.
 
 ## <a name="the-future-of-remote-access"></a>A távelérés jövője
 
@@ -72,7 +72,7 @@ Az Application proxy segítségével az Azure AD nyomon követi azokat a felhasz
 
 ### <a name="an-overview-of-how-app-proxy-works"></a>Az App proxy működésének áttekintése
 
-Az alkalmazásproxy egy Azure AD-szolgáltatás, amelyet a Azure Portal konfigurál. Lehetővé teszi egy külső nyilvános HTTP/HTTPS URL-végpont közzétételét az Azure-felhőben, amely egy belső alkalmazáskiszolgáló URL-címéhez csatlakozik a szervezetében. Ezek a helyszíni webalkalmazások az Azure AD-vel integrálhatók az egyszeri bejelentkezés támogatásához. A végfelhasználók ugyanúgy érhetik el a helyszíni webalkalmazásokat, mint az Office 365 és más SaaS-alkalmazások elérését.
+Az alkalmazásproxy egy Azure AD-szolgáltatás, amelyet a Azure Portal konfigurál. Lehetővé teszi egy külső nyilvános HTTP/HTTPS URL-végpont közzétételét az Azure-felhőben, amely egy belső alkalmazáskiszolgáló URL-címéhez csatlakozik a szervezetében. Ezek a helyszíni webalkalmazások az Azure AD-vel integrálhatók az egyszeri bejelentkezés támogatásához. A végfelhasználók a helyi webalkalmazásokhoz ugyanúgy férhetnek hozzá, mint a Microsoft 365 és más SaaS-alkalmazásokhoz.
 
 A szolgáltatás összetevői közé tartozik a felhőben futtatott alkalmazásproxy-összekötő, amely egy egyszerűsített ügynök, amely egy helyszíni kiszolgálón, az Azure AD-ben pedig az identitás-szolgáltatón fut. Mindhárom összetevő együttműködik, hogy a felhasználó számára egyszeri bejelentkezést biztosítson a helyszíni webalkalmazásokhoz való hozzáféréshez.
 
@@ -186,7 +186,7 @@ Ezen a ponton az Application proxy használatával a helyszíni alkalmazások k�
 * **WebSockets használatával csatlakozó alkalmazások közzététele**. A [Qlik Sense](application-proxy-qlik.md) támogatás nyilvános előzetes verzióban érhető el, és a jövőben más alkalmazásokra is kiterjed.
 * **Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz**. Az Azure AD Application Proxy webalkalmazások közzétételére is használható, de az Azure AD Authentication Library (ADAL) szolgáltatással konfigurált [natív ügyfélalkalmazások](application-proxy-configure-native-client-application.md) közzétételére is használható. A natív ügyfélalkalmazások eltérnek a webalkalmazások, mert azok egy eszközre vannak telepítve, míg a Web Apps böngészőn keresztül érhető el.
 
-## <a name="conclusion"></a>Tanulság
+## <a name="conclusion"></a>Összegzés
 
 A munkánk és az általunk használt eszközök gyorsan változnak. Ha több alkalmazott dolgozik a saját eszközein, és a szolgáltatott szoftveres (SaaS) alkalmazások átható használatát, a szervezeteknek az adatkezelést és az adatvédelmet is ki kell alakítani. A vállalatok már nem működnek kizárólag saját falain belül, és egy olyan árok védi őket, amely körülveszi a szegélyét. Az adattovábbítás több helyre, mint valaha – a helyszíni és a felhőalapú környezetek között. Ez az evolúció hozzájárult a felhasználók termelékenységének növeléséhez és a közös együttműködéshez, ugyanakkor nagyobb kihívást jelent a bizalmas adatok védelme is.
 
@@ -195,14 +195,14 @@ Függetlenül attól, hogy az Azure AD-t használja-e egy hibrid párhuzamos for
 A szervezeteknek a következő előnyök kihasználásával kell megkezdeniük az App proxy előnyeit:
 
 * Helyszíni alkalmazások közzététele külsőleg, a hagyományos VPN-vagy más helyszíni webes közzétételi megoldások és a DMZ megközelítésének fenntartása nélkül
-* Egyszeri bejelentkezés az összes alkalmazásba, legyen az Office 365 vagy más SaaS-alkalmazás, beleértve a helyszíni alkalmazásokat is
-* A felhőalapú méretezés biztonsága, ahol az Azure AD kihasználja az Office 365 telemetria a jogosulatlan hozzáférés megakadályozása érdekében
+* Egyszeri bejelentkezés az összes alkalmazásba, legyen az Microsoft 365 vagy más SaaS-alkalmazás, beleértve a helyszíni alkalmazásokat is
+* A felhőalapú méretezés biztonsága, ahol az Azure AD kihasználja Microsoft 365 telemetria a jogosulatlan hozzáférés megakadályozása érdekében
 * Intune-integráció a vállalati forgalom hitelesítésének biztosításához
 * A felhasználói fiókok kezelésének központosítása
 * Automatikus frissítések a legújabb biztonsági javítások biztosításához
 * Új funkciók, mint azok kiadása; a legutóbbi támogatás az SAML egyszeri bejelentkezéshez és az alkalmazás-cookie-k részletesebb kezeléséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure AD Application Proxy tervezésével, működésével és kezelésével kapcsolatos információkért lásd: Azure-beli [ad Application proxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md).
 * Egy élő bemutató beléptetéséhez vagy az ingyenes 90 napos próbaverzió kiértékeléséhez tekintse meg a [Enterprise Mobility + Security első lépéseivel foglalkozó](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)témakört.

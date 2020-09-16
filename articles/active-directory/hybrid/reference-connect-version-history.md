@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018441"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604070"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -159,7 +159,7 @@ Ez a gyorsjavítás-Build javít egy problémát a build 1.5.20.0, ha klónozott
 ### <a name="release-status"></a>Kiadás állapota
 12/9/2019: kiadás letölthető. Nem érhető el az automatikus frissítéssel.
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
-- Frissítettük a jelszó-kivonatok szinkronizálását a Azure AD Domain Services számára a Kerberos-kivonatok kitöltésének megfelelő kiszámításához.  Ez a szolgáltatás a Azue AD-ből a Azure AD Domain Servicesba való jelszó-szinkronizálás során javítja a teljesítményt.
+- Frissítettük a jelszó-kivonatok szinkronizálását a Azure AD Domain Services számára a Kerberos-kivonatok kitöltésének megfelelő kiszámításához.  Ez a szolgáltatás az Azure AD-ből a Azure AD Domain Servicesba való jelszó-szinkronizálás során javítja a teljesítményt.
 - A megbízható munkamenetek támogatása a hitelesítési ügynök és a Service Bus között.
 - Ez a kiadás a hitelesítési ügynök és a Cloud Services közötti kommunikációra kényszeríti a TLS 1,2-et.
 - A rendszer egy DNS-gyorsítótárat adott hozzá a hitelesítési ügynök és a Cloud Services közötti WebSocket-kapcsolatokhoz.
@@ -208,13 +208,13 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 - Az új hibaelhárítási eszközök segítenek a "felhasználó nem szinkronizált", "csoport nem szinkronizált" vagy "csoporttag nem szinkronizált" forgatókönyvek hibaelhárításában.
-- A nemzeti felhők támogatásának hozzáadása Azure AD Connect hibaelhárítási parancsfájlban 
+- Adja hozzá a nemzeti felhők támogatását Azure AD Connect hibaelhárítási parancsfájlban.
 - Az ügyfeleket tájékoztatni kell arról, hogy a MIIS_Service elavult WMI-végpontjai már el lettek távolítva. A WMI-műveleteket most PS-parancsmagok használatával kell elvégezni.
-- Biztonsági fejlesztés a korlátozott delegálás alaphelyzetbe állításával a AZUREADSSOACC objektumon
+- Biztonsági fejlesztés azáltal, hogy a korlátozott delegálást alaphelyzetbe állítja a AZUREADSSOACC objektumon.
 - Szinkronizálási szabály hozzáadásakor/szerkesztésekor, ha az összekötő sémában található, de az összekötőhöz nem hozzáadott attribútumok vannak, akkor az attribútumok automatikusan hozzáadódnak az összekötőhöz. Ugyanez vonatkozik a szabály által érintett objektum típusára is. Ha bármilyen adat hozzá lett adva az összekötőhöz, az összekötő a következő szinkronizálási ciklusban teljes importálásra lesz megjelölve.
 - Az új Azure AD Connect központi telepítések nem támogatják a vállalati vagy tartományi rendszergazdákat, mivel az összekötő fiók már nem támogatott. A jelenlegi Azure AD Connect vállalati vagy tartományi rendszergazda használatával üzemelő központi telepítések nem érintik ezt a kiadást.
 - A szinkronizálási kezelőben teljes szinkronizálás fut a szabály létrehozása/szerkesztése/törlése során. Egy előugró ablak jelenik meg minden olyan szabály változásakor, amely értesíti a felhasználót, ha teljes Importálás vagy teljes szinkronizálás fut.
-- Az "összekötők > tulajdonságok > kapcsolat" oldal jelszavával kapcsolatos hibák elhárításának további lépései
+- Az "összekötők > tulajdonságok > kapcsolat" lapon a hibák elhárításához hozzáadott problémák elhárítása.
 - A szinkronizálási szolgáltatás kezelőjének elavult figyelmeztetést adott az összekötő tulajdonságlapján. Ez a figyelmeztetés értesíti a felhasználót, hogy a módosításokat a Azure AD Connect varázslón keresztül kell elvégezni.
 - Új hiba történt a felhasználó jelszavas házirendjével kapcsolatos problémák esetén.
 - A tartományok és szervezeti egységek szűrése által a csoportosítási szűrők helytelen konfigurálásának megakadályozása. A csoport szűrése hibaüzenetet jelenít meg, ha a megadott csoport tartománya/szervezeti egysége már ki van szűrve, és a felhasználó továbbra is továbblép, amíg a probléma fel nem oldódik.
@@ -233,7 +233,7 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 - A Súgó előugró ablakai mostantól a billentyűzet fókuszában jelennek meg.
 - Ha az összes ütköző alkalmazás 6 órán keresztül fut, akkor a frissítés után folytassa a frissítést.
 - A címtár-bővítmények kiválasztásakor az ügyfél által 100-ig kiválasztható attribútumok száma. Ez megakadályozza, hogy a hiba az exportálás során bekövetkezik, mivel az Azure-ban legfeljebb 100 kiterjesztési attribútum adható meg.
-- Kijavított egy hibát, hogy az AD-kapcsolati parancsfájl robusztusabb legyen
+- Kijavított egy hibát, hogy az AD kapcsolódási parancsfájl robusztusabb legyen.
 - Kijavított egy hibát, hogy Azure AD Connect telepítsen egy olyan gépre, amely egy meglévő nevesített Pipes WCF szolgáltatást használ.
 - Továbbfejlesztett diagnosztika és hibaelhárítás a csoportházirendekben, amelyek nem teszik lehetővé, hogy a ADSync szolgáltatás az első telepítésekor induljon el.
 - Kijavítva egy hiba, amelyben a Windows rendszerű számítógép megjelenítendő neve helytelenül lett írva.
@@ -248,7 +248,7 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 >
 > Ennek megoldásához importálnia kell a **AdSync** modult, majd futtatnia kell a `Set-ADSyncDirSyncConfiguration` PowerShell-parancsmagot a Azure ad Connect kiszolgálón.  A következő lépéseket hajthatja végre:
 >
->1. Nyissa meg a PowerShellt administator módban.
+>1. Nyissa meg a PowerShellt rendszergazdai módban.
 >2. Futtassa az `Import-Module "ADSync"` parancsot.
 >3. Futtassa az `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
  
@@ -261,5 +261,5 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 - A Microsoft Azure Active Directory Connect build 1.3.20.0 található, a jogosultságok kiterjesztésével kapcsolatos sebezhetőség javítva.  Ez a biztonsági rés bizonyos körülmények között lehetővé teheti, hogy egy támadó egy kiemelt fiók környezetében két PowerShell-parancsmagot hajtson végre, és magas jogosultsági szintű műveleteket hajtson végre.  Ez a biztonsági frissítés a parancsmagok letiltásával oldja meg a problémát. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

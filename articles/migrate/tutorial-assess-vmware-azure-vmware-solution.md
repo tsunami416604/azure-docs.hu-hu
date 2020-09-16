@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan értékelheti a VMware virtuális gépeket az A
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 7bd0a4c6d4c447e0d872c2d40ad1f1990289fe84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108725"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604240"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Oktatóanyag: VMware virtuális gépek felmérése az AVS-re való áttelepítéshez
 
@@ -113,28 +113,37 @@ Az értékelést a következőképpen futtathatja:
 
 ## <a name="review-an-assessment"></a>Értékelés áttekintése
 
-Az értékelés a következőket írja le:
+Egy AVS-értékelés leírja:
 
-- **AVS-re kész**: a gép áttelepíthető az Azure AVS-be, bármilyen módosítás nélkül. A gép AVS-ben indul el, teljes AVS-támogatással.
-- **Feltételekkel kész**: a gép kompatibilitási problémákba ütközhet a jelenlegi vSphere-verzióval. Előfordulhat, hogy a telepített VMware-eszközökre vagy egyéb beállításokra van szükség, mielőtt az AVS-ben teljes funkcionalitással rendelkezik.
-- **Nem áll készen az AVS-re**: a virtuális gép nem indul el az AVS-ben. Ha például egy helyszíni VMware virtuális gépnek van egy külső eszköze (például CD-ROM), amelyhez VMware VMotion használ, a VMotion művelet meghiúsul.
-- **Készültség ismeretlen**: Azure Migrate nem tudta megállapítani a gépek készültségét, mert nem áll rendelkezésre elegendő, a helyszíni környezetből gyűjtött metaadatok.
+- AVS-készültség: azt határozza meg, hogy a helyszíni virtuális gépek alkalmasak-e az Azure VMware-megoldásra (AVS) való áttelepítésre.
+- AVS-csomópontok száma: a virtuális gépek futtatásához szükséges AVS-csomópontok becsült száma.
+- Használat az AVS-csomópontok között: a processzor, a memória és a tárhely kihasználtsága az összes csomóponton keresztül.
+- Havi költségbecslés: a helyszíni virtuális gépeket futtató összes Azure VMware Solution (AVS) csomópont becsült havi költségei.
+
+## <a name="view-an-assessment"></a>Értékelés megtekintése
 
 Értékelés megtekintése:
 
 1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelések**melletti számra.
-2. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához. Példa (csak becslések és költségek például): 
-
-    ![Értékelés összegzése](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
-
+2. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához. 
 3. Tekintse át az értékelés összegzését. Szerkesztheti az értékelési tulajdonságokat is, vagy újraszámíthatja az értékelést.
  
- 
+
 ### <a name="review-readiness"></a>Készültség áttekintése
 
 1. Kattintson az **Azure-készültség**elemre.
 2. Az **Azure készültségi**területén tekintse át a virtuális gép állapotát.
-3. Válasszon ki egy **Azure-készültségi** állapotot. Megtekintheti a VM-készültség részleteit. A virtuális gép részleteit is megtekintheti, beleértve a számítási, tárolási és hálózati beállításokat.
+
+    - **AVS-re kész**: a gép áttelepíthető az Azure AVS-be, bármilyen módosítás nélkül. A gép AVS-ben indul el, teljes AVS-támogatással.
+    - **Feltételekkel kész**: a gép kompatibilitási problémákba ütközhet a jelenlegi vSphere-verzióval. Előfordulhat, hogy a telepített VMware-eszközökre vagy egyéb beállításokra van szükség, mielőtt az AVS-ben teljes funkcionalitással rendelkezik.
+    - **Nem áll készen az AVS-re**: a virtuális gép nem indul el az AVS-ben. Ha például egy helyszíni VMware virtuális gépnek van egy külső eszköze (például CD-ROM), amelyhez VMware VMotion használ, a VMotion művelet meghiúsul.
+ - **Készültség ismeretlen**: Azure Migrate nem tudta megállapítani a gépek készültségét, mert nem áll rendelkezésre elegendő, a helyszíni környezetből gyűjtött metaadatok.
+
+3. Tekintse át a javasolt eszközt.
+
+    - VMware HCX vagy Enterprise: VMware-es gépek esetén a VMWare Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. tudj meg többet.
+    - Ismeretlen: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-gépek esetében azonban javasolt a VMware Hybrid Cloud Extension (HCX) megoldás használata.
+4. Kattintson egy AVS-készültségi állapotra. Megtekintheti a VM-készültség részleteit, és részletesen megtekintheti a virtuális gép részleteit, beleértve a számítási, tárolási és hálózati beállításokat.
 
 ### <a name="review-cost-estimates"></a>Költségbecslések áttekintése
 
@@ -142,11 +151,11 @@ Az értékelés összegzése az Azure-ban futó virtuális gépek becsült szám
 
 1. Tekintse át a havi teljes költséget. A költségek összesítése az összes virtuális gép számára történik a vizsgált csoportban.
 
-    - A költségbecslés a gép, a lemezek és a hozzá tartozó tulajdonságok méretére vonatkozó javaslatok alapján történik.
-    - A számítási és tárolási költségek becsült havi költségei láthatók.
-    - A költségbecslés a helyszíni virtuális gépek Azure-beli virtuális gépeken való futtatására szolgál. A becslés nem veszi figyelembe a Pásti vagy az SaaS költségeit.
+    - A költségbecslés az összes virtuális gép erőforrás-követelményeit figyelembe véve szükséges AVS-csomópontok számától függ.
+    - Mivel az AVS díjszabása csomópontként történik, a teljes költség nem rendelkezik számítási költséggel és a tárolási költség eloszlásával.
+    - A költségbecslés a helyszíni virtuális gépek AVS-ben való futtatására szolgál. Azure Migrate Server Assessment nem veszi figyelembe a Pásti vagy az SaaS költségeit.
 
-2. Tekintse át a havi tárolási költségeket. A nézet a kiértékelt csoport összesített tárolási költségeit jeleníti meg, a különböző típusú tárolási lemezek felosztásával. 
+2. Tekintse át a havi tárolási becsléseket. A nézet a kiértékelt csoport összesített tárolási költségeit jeleníti meg, a különböző típusú tárolási lemezek felosztásával. 
 3. A részletezést lenyomva megtekintheti az adott virtuális gépek részletes költségeit.
 
 ### <a name="review-confidence-rating"></a>Megbízhatósági minősítés áttekintése
@@ -172,7 +181,7 @@ A megbízhatósági minősítések a következők.
 
 [További](concepts-assessment-calculation.md#confidence-ratings-performance-based) információ a megbízhatósági minősítésekről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [függőségi leképezést](concepts-dependency-visualization.md)használó számítógép-függőségek keresése.
 - [Ügynök](how-to-create-group-machine-dependencies-agentless.md) [nélküli vagy ügynök-alapú](how-to-create-group-machine-dependencies.md) függőség leképezésének beállítása.

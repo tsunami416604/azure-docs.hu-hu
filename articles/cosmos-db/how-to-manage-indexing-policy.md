@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 36107f69fb51e16ef8f8a6213afc9b153165ab4c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a1848adfd61d9d8f6db0bb16fe75c04b4a22005
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090587"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604274"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 
 Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési házirendek](index-policy.md) alapján indexeli az adatkészleteket. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata minden sztring vagy szám esetében tartományindexeket kényszerít. Ez a szabályzat saját egyéni indexelési szabályzattal felülbírálható.
 
 > [!NOTE]
-> A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik. Ismerkedjen meg az indexeléssel [Azure Cosmos db API-MongoDB](mongodb-indexing.md).
+> A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik. Ismerkedjen meg a [Azure Cosmos db API-MongoDB](mongodb-indexing.md) és a [másodlagos indexeléshez Azure Cosmos db Cassandra APIban.](cassandra-secondary-index.md)
 
 ## <a name="indexing-policy-examples"></a>Indexelési szabályzat példái
 
@@ -750,7 +750,7 @@ response = database_client.replace_container(container_client, container['partit
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

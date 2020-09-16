@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/15/2020
+ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468640"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605175"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -82,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 Az előfizetési szintű központi telepítések parancsai eltérnek az erőforráscsoport-telepítések parancsaitól.
 
-Az Azure CLI esetén használja az [az Deployment sub Create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create). A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
+Az Azure CLI esetén használja az [az Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create). A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
 
 ```azurecli-interactive
 az deployment sub create \
@@ -162,9 +162,7 @@ Az előfizetési szintű központi telepítések esetében néhány fontos szemp
 
 * A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
 * A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
-* Ne használja a [resourceId ()](template-functions-resource.md#resourceid) parancsot az előfizetés szintjén üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
-
-  Ehelyett használja a [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) függvényt.
+* Ne használja a [resourceId ()](template-functions-resource.md#resourceid) parancsot az előfizetés szintjén üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez. Ehelyett használja a [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) függvényt.
 
   Ha például egy előfizetéshez telepített házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
@@ -483,7 +481,7 @@ Az alábbi példa létrehoz egy erőforráscsoportot, egy zárolást alkalmaz r�
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments)találhatók.

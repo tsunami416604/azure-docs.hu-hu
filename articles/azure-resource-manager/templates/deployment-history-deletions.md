@@ -2,19 +2,21 @@
 title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
-ms.date: 08/07/2020
-ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 09/15/2020
+ms.openlocfilehash: 1d4f49fe6b90e672b65aa97971426186384da02f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986508"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605209"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
 Minden alkalommal, amikor telepít egy sablont, a központi telepítésre vonatkozó információkat az üzembe helyezési előzményekbe írja a rendszer. Az egyes erőforráscsoportok az üzembe helyezési előzményekben legfeljebb 800 üzemelő példányra korlátozódnak.
 
-Azure Resource Manager automatikusan törli az előzményekből a korlát közelében lévő központi telepítéseket. Az automatikus törlés a korábbi viselkedés változása. Korábban a telepítési előzményekből manuálisan kellett törölni a központi telepítéseket, hogy elkerülje a hiba beolvasását. **Ez a változás a 2020-es augusztus 6-án lett implementálva.**
+Azure Resource Manager automatikusan törli az előzményekből a korlát közelében lévő központi telepítéseket. Az automatikus törlés a korábbi viselkedés változása. Korábban a telepítési előzményekből manuálisan kellett törölni a központi telepítéseket, hogy elkerülje a hiba beolvasását. Ez a változás a 2020-es augusztus 6-án lett implementálva.
+
+**Az erőforráscsoport-telepítések esetében az automatikus törlések támogatottak. Jelenleg az [előfizetés](deploy-to-subscription.md), a [felügyeleti csoport](deploy-to-management-group.md)és a [bérlői](deploy-to-tenant.md) központi telepítések központi telepítési előzményeiben üzemelő példányok nincsenek törölve.**
 
 > [!NOTE]
 > Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
