@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/06/2020
+ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505107"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602931"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -111,6 +111,8 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
     - **Hozzáférés jóváhagyása** – a felhasználó hozzáférésének jóváhagyása
     - **Javaslatok készítése** – a rendszer javaslata a felhasználó folyamatos hozzáférésének megtagadására vagy jóváhagyására
 
+    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings-preview-new.png)
+
 4. Előnézet A megtagadott felhasználókra vonatkozó művelet végrehajtásával adhatja meg, hogy mi történik a vendég felhasználókkal, ha azok meg vannak tagadva.
     - Az **1. lehetőség** eltávolítja a megtagadott felhasználó hozzáférését az áttekintett csoporthoz vagy alkalmazáshoz, továbbra is bejelentkezhet a bérlőbe. 
     - A **2. lehetőség** megakadályozza, hogy a megtagadott felhasználók bejelentkezzenek a bérlőbe, függetlenül attól, hogy vannak-e hozzáférésük más erőforrásokhoz. Ha hiba történt, vagy ha egy rendszergazda úgy dönt, hogy újra engedélyezi az egyik hozzáférését, akkor a felhasználó letiltását követő 30 napon belül megteheti. Ha a letiltott felhasználók nem végeznek műveleteket, a rendszer törli a bérlőről.
@@ -123,8 +125,6 @@ Ha többet szeretne megtudni az olyan vendég felhasználók eltávolítására 
 ### <a name="advanced-settings"></a>Speciális beállítások
 
 1. További beállítások megadásához bontsa ki a **Speciális beállítások** szakaszt.
-
-    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Állítsa be a **javaslatok megjelenítése** lehetőséget **, hogy** megjelenjenek a felülvizsgálók a felhasználó hozzáférési adatai alapján.
 
@@ -169,7 +169,7 @@ Ha a vendégek felülvizsgálók vannak hozzárendelve, és nem fogadták el a m
 
 Az API-k használatával hozzáférési felülvizsgálatokat is létrehozhat. A csoportok és alkalmazás-felhasználók hozzáférési felülvizsgálatának kezelése a Azure Portalban Microsoft Graph API-k használatával is elvégezhető. További információt az [Azure ad hozzáférési felülvizsgálatok API-referenciája](/graph/api/resources/accessreviews-root?view=graph-rest-beta)című témakörben talál. A mintakód esetében tekintse meg [Az Azure ad hozzáférési felülvizsgálatok Microsoft Graph használatával történő beolvasásának példáját](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférésének ellenőrzése](perform-access-review.md)
 - [Csoportok vagy alkalmazások hozzáférésének áttekintése](review-your-access.md)

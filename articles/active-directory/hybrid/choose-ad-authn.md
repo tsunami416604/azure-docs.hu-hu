@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279346"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602370"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -86,7 +86,7 @@ A döntéssel kapcsolatos kérdések részletei:
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>Felhőbeli hitelesítés: jelszó-kivonat szinkronizálása
 
-* **Erőfeszítés**. A jelszó-kivonatolási szinkronizáláshoz a legkevesebb erőfeszítést kell tenni az üzembe helyezés, a karbantartás és az infrastruktúra terén.  Ez az erőkifejtési szint jellemzően olyan szervezetekre vonatkozik, amelyeknek csak a felhasználóknak kell bejelentkezniük az Office 365, az SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokhoz. Ha be van kapcsolva, a jelszó-kivonat szinkronizálása a Azure AD Connect szinkronizálási folyamatának része, és két percenként fut.
+* **Erőfeszítés**. A jelszó-kivonatolási szinkronizáláshoz a legkevesebb erőfeszítést kell tenni az üzembe helyezés, a karbantartás és az infrastruktúra terén.  Ez az adatszint általában olyan szervezetekre vonatkozik, amelyeknek csak a felhasználóknak kell bejelentkezniük Microsoft 365, SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokhoz. Ha be van kapcsolva, a jelszó-kivonat szinkronizálása a Azure AD Connect szinkronizálási folyamatának része, és két percenként fut.
 
 * **Felhasználói élmény**. A felhasználók bejelentkezési élményének javításához helyezzen üzembe zökkenőmentes egyszeri bejelentkezést jelszó-kivonatolási szinkronizálással. Ha a felhasználók bejelentkeznek, a zökkenőmentes egyszeri bejelentkezés kiküszöböli a szükségtelen kéréseket.
 
@@ -175,11 +175,11 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 |Megfontolandó|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
 |Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincs|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincs|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
+|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincsenek|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
+|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincsenek|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van TLS/SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
 |Van állapot-figyelési megoldás?|Nem szükséges|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Yes|
+|A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|
 |Milyen típusú bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + jelszó<br><br>sAMAccountName + jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány-és intelligens kártyás hitelesítés](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Másodlagos bejelentkezési azonosító](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Támogatott a vállalati Windows Hello?|[Kulcs megbízhatósági modellje](/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Kulcs megbízhatósági modellje](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*A Windows Server 2016-tartomány működési szintjét igényli*|[Kulcs megbízhatósági modellje](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Tanúsítvány megbízhatósági modellje](/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Mik a többtényezős hitelesítési lehetőségek?|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA-kiszolgáló](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Harmadik féltől származó MFA](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|
@@ -203,7 +203,7 @@ A jelszó-kivonatolási szinkronizálást a választott hitelesítési módszerh
 
 2. **A helyszíni leállás túlélése**.  Egy, a Cyber-támadás vagy a katasztrófa miatti helyszíni kimaradás következményei jelentősek lehetnek, a megbénult szervezettől kezdve a támadók nem tudják kezelni a támadásokat. A közelmúltban számos szervezet volt a kártevők elleni támadás, beleértve a megtalált ransomware is, ami miatt a helyszíni kiszolgálók leállnak. Ha a Microsoft segítséget nyújt az ügyfeleknek az ilyen típusú támadások kezelésében, két szervezetet lát:
 
-   * Azok a szervezetek, amelyek korábban is bekapcsolták az összevont vagy átmenő hitelesítéshez használt jelszó-kivonatolási szinkronizálást, megváltoztatták elsődleges hitelesítési módszereiket, hogy a jelszó-kivonatolási szinkronizálást használják. Egy órán belül ismét online állapotba kerültek. Ha az Office 365-on keresztül fér hozzá az e-mailekhez, a problémák megoldásához és más felhőalapú számítási feladatokhoz való hozzáféréshez is dolgozott.
+   * Azok a szervezetek, amelyek korábban is bekapcsolták az összevont vagy átmenő hitelesítéshez használt jelszó-kivonatolási szinkronizálást, megváltoztatták elsődleges hitelesítési módszereiket, hogy a jelszó-kivonatolási szinkronizálást használják. Egy órán belül ismét online állapotba kerültek. A Microsoft 365 használatával történő e-mailekhez való hozzáférés révén a problémák megoldásához és más felhőalapú számítási feladatokhoz való hozzáféréshez is kapcsolódott.
 
    * Azok a szervezetek, amelyeknek korábban nem engedélyezték a jelszó-kivonatolási szinkronizálást, nem megbízható külső fogyasztói e-mail-rendszerekre kellett volna rendelkezniük a problémák megoldásához. Ezekben az esetekben hetekig tartották a helyszíni identitás-infrastruktúrát, mielőtt a felhasználók újra bejelentkeznek a felhőalapú alkalmazásokba.
 
@@ -215,7 +215,7 @@ Ez a cikk a felhőalapú alkalmazásokhoz való hozzáférés támogatásához a
 
 Vegye figyelembe az egyes hitelesítési módszereket. A megoldás üzembe helyezésének erőfeszítése, valamint a bejelentkezési folyamat felhasználói tapasztalata az üzleti igények kielégítése érdekében? Értékelje ki, hogy a szervezetnek szüksége van-e az egyes hitelesítési módszerek speciális forgatókönyvekre és üzletmenet-folytonossági szolgáltatásaira. Végezetül értékelje ki az egyes hitelesítési módszerek szempontjait. Ezek közül bármelyiket meggátolja az Ön döntésének megvalósításában?
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Napjaink világában a fenyegetések napi 24 órában jelennek meg, és bárhonnan érkeznek. Implementálja a megfelelő hitelesítési módszert, és csökkenti a biztonsági kockázatokat, és gondoskodik az identitások védelméről.
 

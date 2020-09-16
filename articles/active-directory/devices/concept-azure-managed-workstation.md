@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672663"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601384"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
@@ -64,7 +64,7 @@ A biztonságos munkaállomás használatakor minden felhasználó és operátor 
 * Nagyon érzékeny munkaállomás, például gyors fizetési terminál
 * Kereskedelmi titkokat kezelő munkaállomás
 
-A kockázat csökkentése érdekében emelt szintű biztonsági ellenőrzéseket kell megvalósítani a fiókokat használó, Kiemelt munkaállomások számára. További információkért tekintse meg a [Azure Active Directory funkció üzembe helyezési útmutatóját](../fundamentals/active-directory-deployment-checklist-p2.md), az [Office 365 menetrendjét](https://aka.ms/o365secroadmap)és az emelt [szintű hozzáférési ütemterv biztonságossá](https://aka.ms/sparoadmap)tételét ismertető témakört.
+A kockázat csökkentése érdekében emelt szintű biztonsági ellenőrzéseket kell megvalósítani a fiókokat használó, Kiemelt munkaállomások számára. További információ: [Azure Active Directory funkció üzembe helyezési útmutatója](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 ütemterv](https://aka.ms/o365secroadmap), valamint a [privilegizált hozzáférési ütemterv biztonságossá tétele](https://aka.ms/sparoadmap)).
 
 ## <a name="why-use-dedicated-workstations"></a>Miért érdemes dedikált munkaállomásokat használni?
 
@@ -73,7 +73,7 @@ Habár lehetőség van a biztonság hozzáadására egy meglévő eszközön, é
 Az e-mailen és a webböngészésen keresztül egyre növekvő számú támadási vektor teszi lehetővé, hogy az eszköz megbízható legyen. Ez az útmutató azt feltételezi, hogy egy dedikált munkaállomás el van különítve a szabványos termelékenységtől, a böngészéstől és az e-mailtől. A hatékonyság, a webböngészés és az e-mailek eszközről való eltávolítása negatív hatással lehet a hatékonyságra. Ez a védelem azonban általában elfogadható olyan helyzetekben, amikor a feladat feladatai kifejezetten nem igénylik, és a biztonsági incidensek kockázata magas.
 
 > [!NOTE]
-> A webböngészés itt az olyan tetszőleges webhelyekhez való általános hozzáférésre utal, amelyek nagy kockázatú tevékenységnek lehetnek kitéve. Az ilyen böngészés nem különbözik a webböngészők kis számú, jól ismert felügyeleti webhelyének eléréséhez, mint például az Azure, az Office 365, más felhőalapú szolgáltatók és SaaS-alkalmazások.
+> A webböngészés itt az olyan tetszőleges webhelyekhez való általános hozzáférésre utal, amelyek nagy kockázatú tevékenységnek lehetnek kitéve. Az ilyen böngészés nem különbözik a webböngészők kis számú, jól ismert felügyeleti webhelyének eléréséhez, például az Azure, a Microsoft 365, a többi felhőalapú szolgáltató és az SaaS-alkalmazásokhoz.
 
 Az adattárolási stratégiák megszigorítják a biztonságot azáltal, hogy növelik azon vezérlők számát és típusát, amelyek megakadályozzák, hogy a támadók hozzáférjenek az érzékeny eszközökhöz. A cikkben ismertetett modell egy többszintű jogosultságok kialakítását használja, és bizonyos eszközökre korlátozza a rendszergazdai jogosultságokat.
 

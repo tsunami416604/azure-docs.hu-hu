@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253392"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601962"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Útmutató: jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
 A felhasználók a személyes és munkahelyi feladatokhoz egyaránt rendszeresen használják a mobileszközök használatát. A munkavégzés hatékonysága érdekében a szervezetek emellett azt is meg szeretnék akadályozni, hogy a potenciálisan nem biztonságos alkalmazások adatvesztést okoznak. A feltételes hozzáférés révén a szervezetek korlátozhatják a jóváhagyott (modern hitelesítésre képes) ügyfélalkalmazások hozzáférését.
 
-Ez a cikk két forgatókönyvet mutat be a feltételes hozzáférési házirendek konfigurálásához olyan erőforrásokhoz, mint az Office 365, az Exchange Online és a SharePoint Online.
+Ez a cikk két forgatókönyvet mutat be a feltételes hozzáférési házirendek konfigurálásához olyan erőforrásokhoz, mint a Microsoft 365, az Exchange Online és a SharePoint Online.
 
-- [1. forgatókönyv: az Office 365-alkalmazásokhoz jóváhagyott ügyfélalkalmazás szükséges](#scenario-1-office-365-apps-require-an-approved-client-app)
+- [1. forgatókönyv: Microsoft 365 alkalmazásokhoz jóváhagyott ügyfélalkalmazás szükséges](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
 - [2. forgatókönyv: az Exchange Online és a SharePoint Online alkalmazáshoz jóváhagyott ügyfélalkalmazás szükséges](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 A feltételes hozzáférésben ez a funkció egy jóváhagyott ügyfélalkalmazás megkövetelése. A jóváhagyott ügyfélalkalmazások listáját itt tekintheti meg: [jóváhagyott ügyfélalkalmazás-követelmény](concept-conditional-access-grant.md#require-approved-client-app).
@@ -32,9 +32,9 @@ A feltételes hozzáférésben ez a funkció egy jóváhagyott ügyfélalkalmaz�
 > [!NOTE]
 > Az iOS-és Android-eszközökhöz jóváhagyott ügyfélalkalmazások megköveteléséhez ezeket az eszközöket először regisztrálni kell az Azure AD-ben.
 
-## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>1. forgatókönyv: az Office 365-alkalmazásokhoz jóváhagyott ügyfélalkalmazás szükséges
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>1. forgatókönyv: Microsoft 365 alkalmazásokhoz jóváhagyott ügyfélalkalmazás szükséges
 
-Ebben az esetben a contoso úgy döntött, hogy a mobileszközök használó felhasználók hozzáférhetnek az Office 365 összes szolgáltatásához, ha jóváhagyott ügyfélalkalmazások, például az Outlook Mobile, a OneDrive és a Microsoft Teams szolgáltatást használják. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+Ebben az esetben a contoso úgy döntött, hogy a mobileszközök használó felhasználók hozzáférhetnek az összes Microsoft 365 szolgáltatáshoz, feltéve, hogy a jóváhagyott ügyfélalkalmazások, például az Outlook Mobile, a OneDrive és a Microsoft Teams használata engedélyezett. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
 A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy egy jóváhagyott ügyfélalkalmazás használatát meg lehessen követelni a mobileszközökön.
 
@@ -46,7 +46,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 (előzetes verzió)** lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
@@ -65,7 +65,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
 1. **Feltételek**:
    1. **Ügyfélalkalmazások (előzetes verzió)**:
@@ -93,7 +93,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online** és az **Office 365 SharePoint Online**lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
@@ -112,7 +112,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
 1. **Feltételek**:
    1. **Ügyfélalkalmazások (előzetes verzió)**:
@@ -128,8 +128,8 @@ Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzáre
 
 ## <a name="next-steps"></a>További lépések
 
-[Mi az a feltételes hozzáférés?](overview.md)
+[Mit jelent a feltételes hozzáférés?](overview.md)
 
 [Feltételes hozzáférési összetevők](concept-conditional-access-policies.md)
 
-[Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
+[Gyakori feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)

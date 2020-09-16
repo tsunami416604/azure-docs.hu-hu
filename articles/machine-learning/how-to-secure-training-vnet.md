@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2a322c26df0f4fc388ded394f5a65de51f01ca45
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5a71476db6f57841a0057de5b8c95f07ef5d90ad
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664557"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603084"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -181,6 +181,9 @@ Ez kétféleképpen valósítható meg:
 
     ![UDR – példa a címek előtagjaként való használatra](./media/how-to-enable-virtual-network/user-defined-route.png)
 
+    > [!IMPORTANT]
+    > Az IP-címek idővel változhatnak.
+
     Az Ön által meghatározott UDR kívül az Azure Storage-ba irányuló kimenő forgalmat a helyszíni hálózati berendezésen keresztül kell engedélyezni. A forgalom URL-címei a következő formákban találhatók: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` és `<account>.blob.core.windows.net` . 
 
     További információ: [Azure batch készlet létrehozása egy virtuális hálózaton](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
@@ -307,7 +310,7 @@ Ha nem szeretné használni az alapértelmezett kimenő szabályokat, és szeret
 
 Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat harmadik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

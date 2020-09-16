@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948827"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601520"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -98,7 +98,7 @@ A megfelelőként megjelölt eszközök esetében feltételezhető, hogy:
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Forgatókönyv: eszközök beléptetésének megkövetelése iOS-és Android-eszközökön
 
-Ebben az esetben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil hozzáférésnek regisztrált eszközt kell használnia. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+Ebben az esetben a contoso úgy döntött, hogy Microsoft 365 erőforrásokhoz való összes mobil hozzáférését regisztrált eszközt kell használnia. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
 A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy megkövetelje a regisztrált mobileszköz használatát.
 
@@ -124,6 +124,6 @@ Az [OAuth folyamat](../develop/v2-oauth2-device-code.md)használatakor a felügy
 
 Windows 7, iOS, Android, macOS és néhány külső webböngészőben az Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja. Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhassa a böngészőt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az eszköz alapú feltételes hozzáférési szabályzatnak a környezetben való konfigurálása előtt tekintse át a [Azure Active Directory a feltételes hozzáférés ajánlott eljárásait](best-practices.md).

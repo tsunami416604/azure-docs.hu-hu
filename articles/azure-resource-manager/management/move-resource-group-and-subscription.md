@@ -2,14 +2,14 @@
 title: Erőforrások áthelyezése új előfizetésbe vagy erőforráscsoporthoz
 description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja a Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056660"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603152"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -172,7 +172,7 @@ Ha megtekinti az erőforráscsoportot, az áthelyezés lehetőség le lesz tiltv
 
 :::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="a Move lehetőség le van tiltva":::
 
-Az áthelyezés beállítás engedélyezéséhez válassza ki az áthelyezni kívánt erőforrásokat. Az összes erőforrás kiválasztásához jelölje be a jelölőnégyzetet a lista tetején. Vagy válassza az erőforrások külön lehetőséget.
+Az áthelyezés beállítás engedélyezéséhez válassza ki az áthelyezni kívánt erőforrásokat. Az összes erőforrás kiválasztásához jelölje be a jelölőnégyzetet a lista tetején. Vagy válassza az erőforrások külön lehetőséget. Az erőforrások kiválasztása után az áthelyezés beállítás engedélyezve van.
 
 :::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="erőforrások kiválasztása":::
 
@@ -293,6 +293,6 @@ Egy másik gyakori példa egy virtuális hálózat áthelyezését jelenti. Elő
 
 Jelenleg az Azure-támogatás nem minden erőforrást helyez át. Az áthelyezést támogató erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](move-support-resources.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az áthelyezni kívánt erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](move-support-resources.md).

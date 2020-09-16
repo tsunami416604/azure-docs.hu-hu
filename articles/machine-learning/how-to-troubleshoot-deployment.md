@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 4a0601e2821920e7de3b389d9acfd78598ef67ee
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019291"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602633"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 
 
@@ -24,7 +24,7 @@ Megtudhatja, hogyan oldhatja fel az általános Docker-telepítési hibákat a A
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
@@ -34,14 +34,12 @@ Megtudhatja, hogyan oldhatja fel az általános Docker-telepítési hibákat a A
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>A Machine learning-modellek Docker-telepítésének lépései
 
-Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre.
-
-A modell üzembe helyezésének ajánlott módja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API használata egy [környezeti](how-to-use-environments.md) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás alapszintű Docker-rendszerképet hoz létre az üzembe helyezési fázis során, és egyetlen hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
+Azure Machine Learning-modell telepítésekor a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-t és egy [környezeti](how-to-use-environments.md) objektumot kell használni. A szolgáltatás alapszintű Docker-rendszerképet hoz létre az üzembe helyezési fázis során, és egyetlen hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
 
 1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
 
 2. Következtetési konfiguráció meghatározása:
-    1. Hozzon létre egy [környezeti](how-to-use-environments.md) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
+    1. Hozzon létre egy [környezeti](how-to-use-environments.md) objektumot. Ez az objektum használhatja a függőségeket egy környezeti YAML-fájlban, amely az egyik kurátori környezet.
     2. Hozzon létre egy következtetési konfigurációt (InferenceConfig-objektumot) a környezet és a pontozási parancsfájl alapján.
 
 3. A modell üzembe helyezése az Azure Container instance (ACI) szolgáltatásban vagy az Azure Kubernetes szolgáltatásban (ak).
@@ -52,7 +50,7 @@ További információ a folyamatról a [modellkezelés](concept-model-management
 
 Ha bármilyen problémába ütközik, az első lépés az, hogy az üzembe helyezési feladatot (előző Leírás) a probléma elkülönítése érdekében egyedi lépésekbe bontsa.
 
-Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](how-to-use-environments.md) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
+A [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) [környezeti](how-to-use-environments.md) objektummal bemeneti paraméterként való használatakor a kód három fő lépésből bontható:
 
 1. A modell regisztrálása. Íme néhány mintakód:
 
@@ -95,11 +93,11 @@ Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model.
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-Miután megszakította az üzembe helyezés folyamatát az egyes feladatokra, megvizsgáljuk a leggyakoribb hibákat.
+Az üzembe helyezési folyamat az egyes feladatokba való bontásával könnyebben azonosítható a leggyakoribb hibák némelyike.
 
 ## <a name="debug-locally"></a>Helyi hibakeresés
 
-Ha az ACI-ban vagy AKS-ben történő üzembe helyezés közben ütközik problémákba, próbálja meg helyi webszolgáltatásként üzembe helyezni a modellt. Helyi webszolgáltatás használatával könnyebben háríthatók el a problémák. A modellt tartalmazó Docker-rendszerkép le van töltve, és elindult a helyi rendszeren.
+Ha a modell ACI-vagy AK-beli üzembe helyezése során problémák merülnek fel, telepítse helyi webszolgáltatásként. Helyi webszolgáltatás használatával könnyebben háríthatók el a problémák.
 
 A [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) -tárházban talál egy [helyi telepítési jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) egy futtatható-példa megismeréséhez.
 
@@ -128,9 +126,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Ha saját Conda-specifikációs YAML határoz meg, akkor a azureml alapértelmezett értékeit kell megadnia a >= 1.0.45 verzióval pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
+Ha saját Conda-specifikációs YAML határoz meg, sorolja fel a azureml alapértelmezett verzióját (>= 1.0.45) pip-függőségként. Ez a csomag a modell webszolgáltatásként való üzemeltetéséhez szükséges.
 
-Ezen a ponton a megszokott módon dolgozhat a szolgáltatással. Az alábbi kód például a szolgáltatásnak küldött adatokat mutatja be:
+Ezen a ponton a megszokott módon dolgozhat a szolgáltatással. A következő kód az adatok szolgáltatásba küldését mutatja be:
 
 ```python
 import json
@@ -189,7 +187,7 @@ A hibát a következő értékének növelésével kezelheti: `memory_gb``deploy
  
 ## <a name="container-cannot-be-scheduled"></a>A tároló nem ütemezhető
 
-Egy szolgáltatás Azure Kubernetes szolgáltatásbeli számítási célra való telepítésekor a Azure Machine Learning megkísérli a szolgáltatás ütemezését a kért mennyiségű erőforrással. Ha 5 perc elteltével nem érhetők el csomópontok a fürtben a megfelelő mennyiségű erőforrással, a telepítés sikertelen lesz az üzenettel `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Ezt a hibát a további csomópontok hozzáadásával, a csomópontok SKU-jának módosításával vagy a szolgáltatás erőforrás-követelményeinek módosításával kezelheti. 
+Egy szolgáltatás Azure Kubernetes szolgáltatásbeli számítási célra való telepítésekor a Azure Machine Learning megkísérli a szolgáltatás ütemezését a kért mennyiségű erőforrással. Ha a fürtben nincsenek elérhető csomópontok a megfelelő mennyiségű erőforrás 5 perc után, akkor a telepítés sikertelen lesz. A hibaüzenet a következő: `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Ezt a hibát a további csomópontok hozzáadásával, a csomópontok SKU-jának módosításával vagy a szolgáltatás erőforrás-követelményeinek módosításával kezelheti. 
 
 A hibaüzenet általában azt jelzi, hogy melyik erőforrásra van szüksége – például ha megjelenik egy hibaüzenet, amely azt jelzi, hogy `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` a szolgáltatás a GPU-t igényli, és a fürtben három olyan csomópont van, amely nem rendelkezik elérhető GPU-val. Ez több csomópont hozzáadásával oldható meg, ha GPU SKU-t használ, váltson GPU-t támogató SKU-ra, ha nem a GPU-k használatára van szüksége, és nem módosítja a környezetet.  
 
@@ -239,13 +237,16 @@ A 502 állapotkód azt jelzi, hogy a szolgáltatás kivételt okozott, vagy öss
 
 ## <a name="http-status-code-503"></a>HTTP-állapotkód 503
 
-Az Azure Kubernetes szolgáltatás központi telepítései támogatják az automatikus skálázást, amely lehetővé teszi a replikák hozzáadását a további terhelések támogatásához. Az automatikus skálázás azonban úgy van kialakítva, hogy kezelje a terhelés **fokozatos** változásait. Ha a kérések másodpercenként nagy számú tüskéket kapnak, az ügyfelek a 503-as HTTP-állapotkódot kapják meg.
+Az Azure Kubernetes szolgáltatás központi telepítései támogatják az automatikus skálázást, amely lehetővé teszi a replikák hozzáadását a további terhelések támogatásához. Az automatikus skálázás a terhelés **fokozatos** változásainak kezelésére szolgál. Ha a kérések másodpercenként nagy számú tüskéket kapnak, az ügyfelek a 503-as HTTP-állapotkódot kapják meg. Annak ellenére, hogy az autoskálázás gyorsan működik, a további tárolók létrehozásához nagy mennyiségű időt vesz igénybe.
+
+A vertikális felskálázásra vagy lefelé irányuló döntések az aktuális tároló-replikák kihasználtságán alapulnak. A foglalt replikák (egy kérelem feldolgozása) száma osztva az aktuális replikák teljes számával. Ha ez a szám meghaladja a számot `autoscale_target_utilization` , a rendszer több replikát hoz létre. Ha alacsonyabb, a replikák csökkennek. A replikák hozzáadására vonatkozó döntések lelkesek és gyorsak (körülbelül 1 másodperc). A replikák eltávolítására vonatkozó döntések konzervatívak (körülbelül 1 perc). Alapértelmezés szerint az automatikus skálázási cél kihasználtsága **70%-ra**van állítva, ami azt jelenti, hogy a szolgáltatás **legfeljebb 30%**-os terhelést képes kezelni a másodpercenkénti kérésekben (RPS).
 
 Két olyan dolog van, amely segíthet megelőzni a 503-es állapotkódot:
 
-* Módosítsa a kihasználtsági szintet, amelynél az automatikus skálázás új replikákat hoz létre.
-    
-    Alapértelmezés szerint az automatikus skálázási cél kihasználtsága 70%-ra van állítva, ami azt jelenti, hogy a szolgáltatás legfeljebb 30%-os terhelést képes kezelni a másodpercenkénti kérésekben (RPS). A kihasználtsági célt úgy állíthatja be, `autoscale_target_utilization` hogy alacsonyabb értéket állít be.
+> [!TIP]
+> Ezt a két megközelítést külön vagy kombinálva lehet használni.
+
+* Módosítsa a kihasználtsági szintet, amelynél az automatikus skálázás új replikákat hoz létre. A kihasználtsági célt úgy állíthatja be, `autoscale_target_utilization` hogy alacsonyabb értéket állít be.
 
     > [!IMPORTANT]
     > Ez a változás nem eredményezi a replikák *gyorsabb*létrehozását. Ehelyett alacsonyabb kihasználtsági küszöbértékben jönnek létre. Ahelyett, hogy megvárná, amíg a szolgáltatás 70%-ot nem használ, az érték 30%-ra való módosítása a replikákat a 30%-os kihasználtság esetén hozza létre.
@@ -286,11 +287,13 @@ A felesleges hívások eltávolításához módosítsa a score.py, vagy próbál
 
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 
-Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a modell üzembe helyezésében található Python-kóddal. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A Visual Studio Code és a debugpy használatával a Docker-tárolón belül futó kód is csatolható. További információkért tekintse meg az [interaktív hibakeresést a vs Code útmutatóban](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
+Előfordulhat, hogy interaktívan kell hibakeresést végeznie a modell üzembe helyezésében található Python-kóddal. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A Visual Studio Code és a debugpy használatával a Docker-tárolón belül futó kód is csatolható.
+
+További információkért tekintse meg az [interaktív hibakeresést a vs Code útmutatóban](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
 
 ## <a name="model-deployment-user-forum"></a>[Modell üzembe helyezésének felhasználói fóruma](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049264"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601588"
 ---
 # <a name="conditional-access-block-access"></a>Feltételes hozzáférés: hozzáférés letiltása
 
@@ -40,7 +40,7 @@ A feltételes hozzáférési szabályzatok hatékony eszközök, ezért javasolj
 
 A következő lépések segítséget nyújtanak a feltételes hozzáférési szabályzatok létrehozásához, hogy letiltsák a hozzáférést az összes alkalmazáshoz, kivéve az [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) -at, ha a felhasználók nem megbízható hálózaton vannak. Ezek a szabályzatok a [csak jelentési üzemmódba](howto-conditional-access-insights-reporting.md) kerülnek, így a rendszergazdák meghatározhatják, hogy milyen hatással lesznek a meglévő felhasználókra. Ha a rendszergazdák kényelmesek, hogy a szabályzatok a kívánt módon érvényesek **, a**következőre válthatnak.
 
-Az első házirend letiltja az összes alkalmazáshoz való hozzáférést, kivéve az Office 365-alkalmazásait, ha nem megbízható helyen vannak.
+Az első házirend blokkolja a hozzáférést az összes alkalmazáshoz, kivéve Microsoft 365 alkalmazásokat, ha nem megbízható helyen van.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
@@ -64,7 +64,7 @@ Az első házirend letiltja az összes alkalmazáshoz való hozzáférést, kiv�
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-Az alábbi második szabályzatot kell létrehoznia a többtényezős hitelesítés megköveteléséhez vagy egy megfelelő eszközhöz az Office 365 felhasználói számára.
+Az alábbiakban egy második szabályzatot hozhat létre a többtényezős hitelesítés megkövetelése vagy egy megfelelő eszköz számára a Microsoft 365 felhasználói számára.
 
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
@@ -80,7 +80,7 @@ Az alábbi második szabályzatot kell létrehoznia a többtényezős hitelesít
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

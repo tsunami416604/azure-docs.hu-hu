@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321667"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601306"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory identitás-és hozzáférés-kezelési műveletek útmutatója
 
@@ -35,8 +35,8 @@ A Azure Active Directory kezeléséhez olyan kulcsfontosságú működési felad
 | :- | :- |
 | Az Azure-előfizetések létrehozási folyamatának meghatározása | Szervezettől függően |
 | Annak eldöntése, hogy ki kap Enterprise Mobility + Security licenceket | IAM Operations csapat |
-| Döntse el, hogy ki kapja meg az Office 365-licenceket | Termelékenységi csapat |
-| Döntse el, hogy ki kap más licenceket, például Dynamics, VSO | Alkalmazás tulajdonosa |
+| Annak eldöntése, hogy ki kap Microsoft 365 licenceket | Termelékenységi csapat |
+| Döntse el, hogy ki kap más licenceket, például a Dynamics, a Visual Studio Codespaces | Alkalmazás tulajdonosa |
 | Licencek hozzárendelése | IAM Operations csapat |
 | Licenc-hozzárendelési hibák elhárítása és szervizelése | IAM Operations csapat |
 | Identitások kiépítése az alkalmazásokban az Azure AD-ben | IAM Operations csapat |
@@ -140,7 +140,7 @@ A [Azure ad Connect Configuration documenter](https://github.com/Microsoft/AADCo
 
 A Azure Active Directory a Microsoft Cloud Services [csoportos licencelése](./active-directory-licensing-whatis-azure-portal.md) révén egyszerűsíti a licencek kezelését. Így a IAM a csoportok infrastruktúráját és delegált felügyeletét biztosítja a szervezetek megfelelő csoportjai számára. Több módon is beállíthatja a csoportok tagságát az Azure AD-ben, beleértve a következőket:
 
-- A helyszíni csoportokból **szinkronizálva** a helyszíni címtárakból is származhatnak, ami jó illeszkedést jelenthet olyan szervezetek számára, amelyek olyan csoport-felügyeleti folyamatokkal rendelkeznek, amelyek kiterjeszthetők az Office 365-licencek hozzárendeléséhez.
+- A helyszíni csoportokkal **szinkronizálva** a helyszíni címtárakból is származhat, ami jó illeszkedést jelenthet olyan szervezetek számára, amelyek olyan csoportos felügyeleti folyamatokkal rendelkeznek, amelyek kiterjeszthetők a licencek Microsoft 365-ben való hozzárendelésére.
 
 - **Attribútum-alapú/dinamikus** csoportok hozhatók létre a felhőben egy felhasználói attribútumokon alapuló kifejezés alapján, például a részleg az "értékesítés". Az Azure AD megtartja a csoport tagjait, és összhangban tartja a definiált kifejezéssel. Ha ezt a csoportot használja a licenc-hozzárendeléshez, az attribútum-alapú licenc-hozzárendelést is lehetővé teszi, amely kiválóan alkalmas a címtárban magas adatminőséggel rendelkező szervezetek számára.
 
@@ -188,7 +188,7 @@ Az [alapértelmezett különbözeti szinkronizálás](../hybrid/how-to-connect-s
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect ajánlott olvasmányok hibaelhárítása
 
-- [Címtár attribútumainak előkészítése az Office 365-vel való szinkronizáláshoz a IdFix eszköz használatával – Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Címtár attribútumainak előkészítése a Microsoft 365sal való szinkronizáláshoz a IdFix eszköz használatával](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: hibák elhárítása szinkronizálás közben](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Összegzés
@@ -201,6 +201,6 @@ A biztonságos identitás-infrastruktúrának öt aspektusa van. Ebben a listáb
 - Egyszerűsítse a licencek kezelését és az alkalmazások hozzárendelését.
 - A felhasználók üzembe helyezésének automatizálása az alkalmazásokban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a [hitelesítési kezelési ellenőrzésekkel és műveletekkel](active-directory-ops-guide-auth.md).

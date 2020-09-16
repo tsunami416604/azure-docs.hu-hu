@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087303"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601095"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -46,6 +46,30 @@ Jelenleg minden Text Analytics művelethez ugyanazokat a dokumentumokat lehet el
 |`language` | 2 karakteres [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kód [támogatott nyelvhez](../text-analytics-supported-languages.md) | Változó | Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások összekapcsolásához szükséges. a nyelvfelismerés nem kötelező. Nincs hiba, ha kizárják, de az elemzés a nélkül meggyengül. A nyelvi kódnak meg kell egyeznie az `text` Ön által megadott értékkel. |
 
 A korlátokkal kapcsolatos további információkért tekintse meg a [text Analytics áttekintés > az adatkorlátok](../overview.md#data-limits)című témakört. 
+
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Sample text to be sent to the text analytics api."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    },
+    {
+      "language": "en",
+      "id": "3",
+      "text": "Pike place market is my favorite Seattle attraction."
+    }
+  ]
+}
+```
+
 
 ## <a name="set-up-a-request-in-postman"></a>Kérelem beállítása a Poster-ban
 
@@ -95,7 +119,7 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
  [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Nyelv felismerése](text-analytics-how-to-language-detection.md)

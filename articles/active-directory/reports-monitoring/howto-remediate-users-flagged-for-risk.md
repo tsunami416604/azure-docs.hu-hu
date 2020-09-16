@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231163"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600500"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
@@ -42,9 +42,9 @@ A kockázati jelentésre megjelölt felhasználók a következő műveleteket ha
 
 További információ: [a kockázat biztonsági jelentésére megjelölt felhasználók](../identity-protection/overview-identity-protection.md).
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-előfizetés Office 365-ügyfelek számára
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Azure AD-előfizetés Microsoft 365 ügyfeleknek
 
-Az Office 365 hitelesítő adatait használhatja az **Azure felügyeleti központ**eléréséhez is. Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
+A Microsoft 365 hitelesítő adatait is használhatja az **Azure felügyeleti központ**eléréséhez. Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
 
 A kockázati jelentésekhez **megjelölt felhasználók** elérése a Microsoft 365 felügyeleti központban:
 
@@ -79,7 +79,7 @@ Végezze el a következő műveleteket az érintett fiókok javításához és a
 
     h. Napló létrehozása a rendszergazdának a felülvizsgálathoz.
 
-4. Vizsgálja meg az Office 365-bérlőt és a többi informatikai infrastruktúrát, beleértve az összes bérlőbeállítást, felhasználói fiókokat és a felhasználónkénti konfigurációs beállításokat, hogy nem hajtottak-e rajtuk végre módosításokat. Keressen perzisztenciára utaló jeleket, valamint ellenőrizze, hogy egy esetleges támadónak a behatolási kísérlet során sikerült-e hozzáférnie a VPN-hitelesítőadatokhoz vagy más vállalati erőforrásokhoz. 
+4. Vizsgálja meg Microsoft 365 bérlőjét és egyéb informatikai infrastruktúráját, beleértve a bérlői beállítások, a felhasználói fiókok és a felhasználónkénti konfigurációs beállítások áttekintését a lehetséges módosításokhoz. Keressen perzisztenciára utaló jeleket, valamint ellenőrizze, hogy egy esetleges támadónak a behatolási kísérlet során sikerült-e hozzáférnie a VPN-hitelesítőadatokhoz vagy más vállalati erőforrásokhoz. 
 
 5.  A vizsgálat részeként gondolja át, hogy értesítenie kell-e a kormányzati hatóságokat, beleértve a bűnüldöző szerveket is.
 
@@ -89,7 +89,7 @@ Ezenkívül el a következőket kell elvégeznie:
 - [A naplózási folyamat lehetővé teszi](https://aka.ms/improvesecurity) a tevékenység elemzését a bérlőben. Ha elkészült, a naplózási tároló megkezdi a tevékenységek naplóinak feltöltését. Ezen a ponton a [biztonsági és megfelelőségi központ keresési és vizsgálati erőforrásait](https://aka.ms/sccsearch)is kihasználhatja. 
 - Tekintse át az összes postafiók engedélyek delegálásával és levelek továbbításával kapcsolatos szabályait. Ezzel a [PowerShell-szkripttel](https://aka.ms/delegateforwardrules) végezheti el ezt a feladatot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 * [Kockázatosként megjelölt felhasználók](../identity-protection/overview-identity-protection.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321956"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601307"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
 
@@ -125,9 +125,9 @@ Ha a szervezete jelenleg nem rendelkezik olyan programmal, amely figyeli a vált
 
 ### <a name="notifications"></a>Értesítések
 
-A Microsoft e-mailes kommunikációt küld a rendszergazdáknak a szolgáltatás különböző változásainak, a szükséges konfigurációs frissítéseknek és a rendszergazdai beavatkozást igénylő hibáknak a bejelentéséhez. Fontos, hogy az ügyfelek az értesítő e-mail-címeket úgy állítsa be, hogy az értesítéseket a megfelelő csapattagok kapják meg, akik elfogadják és felhasználhatják az összes értesítést. Azt javasoljuk, hogy több címzettet adjon hozzá az [Office 365 Message Center](/office365/admin/manage/message-center) szolgáltatáshoz, és kérje meg, hogy az értesítéseket (beleértve Azure ad Connect Health értesítéseket) egy terjesztési listára vagy megosztott postaládába küldje el. Ha egy e-mail-címmel rendelkező globális rendszergazdai fiókkal rendelkezik, mindenképpen legalább két, e-mail-kompatibilis fiókot kell konfigurálnia.
+A Microsoft e-mailes kommunikációt küld a rendszergazdáknak a szolgáltatás különböző változásainak, a szükséges konfigurációs frissítéseknek és a rendszergazdai beavatkozást igénylő hibáknak a bejelentéséhez. Fontos, hogy az ügyfelek az értesítő e-mail-címeket úgy állítsa be, hogy az értesítéseket a megfelelő csapattagok kapják meg, akik elfogadják és felhasználhatják az összes értesítést. Javasoljuk, hogy adjon hozzá több címzettet az [üzenetközpont](/office365/admin/manage/message-center) számára, és kérje meg, hogy a rendszer elküldje az értesítéseket (beleértve Azure ad Connect Health értesítéseket) egy terjesztési listához vagy egy megosztott postaládához. Ha egy e-mail-címmel rendelkező globális rendszergazdai fiókkal rendelkezik, mindenképpen legalább két, e-mail-kompatibilis fiókot kell konfigurálnia.
 
-Az Azure AD két "feladó" címet használ: az <o365mc@email2.microsoft.com> Office 365 Message Center-értesítéseket küld, és a következőhöz <azure-noreply@microsoft.com> kapcsolódó értesítéseket küld:
+Az Azure AD két "feladó" címet használ: az <o365mc@email2.microsoft.com> üzenetsor-értesítéseket küldi, és a következőhöz <azure-noreply@microsoft.com> kapcsolódó értesítéseket küld:
 
 - [Azure AD-hozzáférési felülvizsgálatok](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket kü
 | Értesítés forrása | Az Elküldések | Hol érdemes megnézni |
 |:-|:-|:-|
 | Technikai kapcsolattartó | Szinkronizálási hibák | Azure Portal – Tulajdonságok panel |
-| Office 365 üzenetközpont | Az Identity Services és a O365 háttér-szolgáltatásainak incidens-és romlási megjegyzései | Office-portál |
+| Üzenetközpont | Az Identity Services és a Microsoft 365 háttérbeli szolgáltatások incidens-és romlási megjegyzései | Office-portál |
 | Identity Protection heti kivonata | Identity Protection-kivonatoló | Azure AD Identity Protection panel |
 | Azure AD Connect Health | Riasztási értesítések | Azure Portal – Azure AD Connect Health panel |
 | Vállalati alkalmazások értesítései | Értesítések, amikor a tanúsítványok lejárnak és kiépítési hibák | Azure Portal – vállalati alkalmazás panel (minden alkalmazás saját e-mail-cím beállítással rendelkezik) |
 
 #### <a name="notifications-recommended-reading"></a>Ajánlott olvasási értesítések
 
-- [Megváltoztathatja a munkahely címeit, a technikai kapcsolattartási és egyéb Office-365](/office365/admin/manage/change-address-contact-and-more)
+- [Megváltoztathatja a munkahely címeit, a technikai kapcsolattartást és egyebeket](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>Működési felületi terület
 
@@ -172,7 +172,7 @@ A [réteg modell](/windows-server/identity/securing-privileged-access/securing-p
 
 A tartományvezérlők esetében ugyanúgy zárja be a helyszíni identitás-összetevők, például a Azure AD Connect, a AD FS és az SQL-szolgáltatások elérését.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista segít megtalálni azokat a műveleteket, amelyeket el kell végeznie a Azure Active Directory (Azure AD) műveleteinek optimalizálása érdekében.
 
@@ -184,6 +184,6 @@ A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista seg
 - AD FS zárolása.
 - A helyszíni identitás-összetevőkkel rendelkező gépekhez való hozzáférés zárolása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át az [Azure ad telepítési terveit](active-directory-deployment-plans.md) a nem telepített képességek megvalósítására vonatkozó részletekért.

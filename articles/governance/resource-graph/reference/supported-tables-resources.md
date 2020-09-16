@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 09/04/2020
+ms.date: 09/15/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: b81ffcdde074978a9a72c5ab651ec2c5556870bd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488320"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600602"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -63,6 +63,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. aadiam/azureadmetrics
 - Microsoft. aadiam/privatelinkforazuread
 - Microsoft. aadiam/bérlők
+- Microsoft. agfoodplatform/farmbeats
 - Microsoft. aisupercomputer/fiókok
 - Microsoft. aisupercomputer/fiókok/Feladatcsoportok
 - Microsoft. aisupercomputer/fiókok/Feladatcsoportok/feladatok
@@ -80,6 +81,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/konfigurációk
 - Microsoft. Automation/automationaccounts/runbookok
+- Microsoft. autonomousdevelopmentplatform/fiókok
 - Microsoft. autonomoussystems/munkaterületek
 - Microsoft. AVS/privateclouds
 - Microsoft. azconfig/configurationstores
@@ -94,6 +96,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. azuredata/sqlserverinstances
 - Microsoft. azuredata/sqlserverregistrations
 - Microsoft. azurestack/edgesubscriptions
+- Microsoft. azurestack/linkedsubscriptions
 - Microsoft. azurestack/regisztrációk
 - Microsoft. azurestackhci/fürtök
 - Microsoft. baremetal/consoleconnections
@@ -168,6 +171,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. tárolószolgáltatás/containerservices
 - Microsoft. tárolószolgáltatás/managedclusters
 - Microsoft. tárolószolgáltatás/openshiftmanagedclusters
+- Microsoft. contoso/fürtök
 - Microsoft. contoso/alkalmazottak
 - Microsoft. costmanagement/összekötők
 - Microsoft. customproviders/resourceproviders
@@ -250,6 +254,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. hybridnetwork/eszközök
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. importexport/feladatok
+- Microsoft. industrydatalifecycle/basemodels
 - Microsoft. industrydatalifecycle/custodiancollaboratives
 - Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. industrydatalifecycle/membercollaboratives
@@ -265,6 +270,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. bepillantások/notificationgroups
 - Microsoft. bepillantások/notificationrules
 - Microsoft. bepillantások/privatelinkscopes
+- Microsoft. bepillantások/querypacks
 - Microsoft. bepillantások/scheduledqueryrules
 - Microsoft. bepillantások/webtesztek
 - Microsoft. bepillantások/munkafüzetek
@@ -414,6 +420,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Resources/templatespecs/Versions
 - Microsoft. SaaS/alkalmazások
 - Microsoft. Scheduler/feladatgyűjtemények
+- Microsoft. SCVMM/vmmservers
 - Microsoft. Search/searchservices
 - Microsoft. Security/automations
 - Microsoft. Security/iotsecuritysolutions
@@ -523,6 +530,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - wandisco. Fusion/fusiongroups/managedonpremzones
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
+- wandisco. Fusion/áttelepítések
+- wandisco. Fusion/migrálók/célok
 
 ## <a name="securityresources"></a>securityresources
 
@@ -536,7 +545,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Security/securescores
 - Microsoft. Security/securescores/securescorecontrols
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

@@ -5,23 +5,31 @@ description: Az Azure Cognitive Services a REST API-kkal rendelkező Cloud Servi
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív szolgáltatások, AI szolgáltatás, kognitív megoldások, kognitív mesterséges intelligencia, kognitív szoftverek, AI-szolgáltatások, kognitív AI, kognitív ismeretek
+keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív megoldások, AI-szolgáltatások, kognitív ismeretek, kognitív funkciók
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 6490b3cf2d3813a2740c548f778e65f1df6e7b01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379286"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603658"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
-Az Azure Cognitive Services a REST API-kkal rendelkező Cloud Services és az ügyféloldali kódtár SDK-k, amelyek segítségével a fejlesztők kognitív intelligens alkalmazásokat hozhatnak létre közvetlen mesterséges intelligencia (AI) vagy adattudományi képességek vagy ismeretek nélkül. Az Azure Cognitive Services lehetővé teszi a fejlesztők számára, hogy az alkalmazásaikban egyszerűen vegyenek fel kognitív funkciókat. Az Azure Cognitive Services célja, hogy segítse a fejlesztőket az olyan alkalmazások létrehozásában, amelyek megtekinthetik, meghallgatják, megértik, megértették és megkezdik az okot. Az Azure Cognitive Servicesban található szolgáltatások katalógusa öt fő pillérbe osztható – jövőkép, beszéd, nyelv, Web Search és döntés.
+Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltatások és az ügyféloldali kódtár SDK-k, amelyek segítségével a fejlesztők kognitív intelligenciát hozhatnak létre az alkalmazásokban anélkül, hogy közvetlen mesterséges intelligencia (AI) vagy adattudományi ismereteket vagy ismereteiket kellene létrehozniuk. Az Azure Cognitive Services lehetővé teszi, hogy a fejlesztők könnyen hozzá tudják adni a kognitív funkciókat az alkalmazásaikban olyan kognitív megoldásokkal, amelyek megtekinthetik, meghallgatják, megértették, megértik, sőt, akár
+
+Az AI-szolgáltatások katalógusa, amelyek a kognitív megértést biztosítják, öt fő pillérbe sorolhatók:
+
+* Látás
+* Beszéd
+* Nyelv
+* Web Search
+* Döntés
 
 Az új dokumentáció aktuális listája a [Cognitive Services docs újdonságai](whats-new-docs.md)című dokumentumban olvasható.
 
@@ -29,7 +37,7 @@ Az új dokumentáció aktuális listája a [Cognitive Services docs újdonságai
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision szolgáltatás a képek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális kognitív algoritmusokhoz.|
+|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Számítógépes látástechnológia")|A Computer Vision szolgáltatás a képek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális kognitív algoritmusokhoz.|
 |[Egyéni vizuális szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Egyéni vizuális szolgáltatás")|A Custom Vision Service segítségével egyéni rendszerkép-osztályozók hozhatók létre.|
 |[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
 |[Űrlap-felismerő](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (előzetes verzió)|Az űrlap-felismerő azonosítja és kigyűjti a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután a a strukturált adatokat is megjeleníti, beleértve az eredeti fájlban lévő kapcsolatokat is.|
@@ -65,8 +73,8 @@ Az új dokumentáció aktuális listája a [Cognitive Services docs újdonságai
 |:-----------|:------------------|
 |[Bing – Hírkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing – Hírkeresés")|Bing News Search a felhasználó lekérdezéséhez kapcsolódó Hírek listáját adja vissza.|
 |[Bing – Videokeresés](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing – Videokeresés")|Bing Video Search a felhasználó lekérdezéséhez tartozó videók listáját adja vissza.|
-|[Bing Web Search](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Web Search")|Bing Web Search a felhasználó lekérdezéséhez szükséges keresési eredmények listáját adja vissza.|
-|[Bing Autosuggest](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing Autosuggest")|Bing Autosuggest lehetővé teszi részleges keresési lekérdezési kifejezés küldését a Bing számára, és a javasolt lekérdezések listájának visszaadása.|
+|[Bing – Internetes keresés](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing – Internetes keresés")|Bing Web Search a felhasználó lekérdezéséhez szükséges keresési eredmények listáját adja vissza.|
+|[Bing – Automatikus kiegészítés](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing – Automatikus kiegészítés")|Bing Autosuggest lehetővé teszi részleges keresési lekérdezési kifejezés küldését a Bing számára, és a javasolt lekérdezések listájának visszaadása.|
 |[Bing – Egyéni keresés](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing – Egyéni keresés")|Bing Custom Search lehetővé teszi, hogy testreszabott keresési funkciókat hozzon létre az Ön számára fontos témakörökhöz.|
 |[Bing – Entitáskeresés](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing – Entitáskeresés")|Bing Entity Search a Bing által megadott entitásokra vonatkozó információkat ad vissza a felhasználó lekérdezéséhez.|
 |[Bing – Képkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing – Képkeresés")|Bing Image Search visszaadja a felhasználó lekérdezéséhez szükséges képek megjelenítését.|
@@ -79,8 +87,17 @@ Az új dokumentáció aktuális listája a [Cognitive Services docs újdonságai
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Anomália detektor](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomáliadetektor") (előzetes verzió)|Az anomáliák detektorral figyelheti és azonosíthatja a rendellenességeket az idősorozat-adataiban.|
-|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Tartalommoderátor")|Content Moderator a lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|
+|[Tartalommoderátor](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Tartalommoderátor")|Content Moderator a lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|
 |[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|A személyre szabás lehetővé teszi, hogy kiválassza a legjobb élményt, amelyet a felhasználók láthatnak, valós idejű viselkedésük alapján.|
+
+## <a name="learn-with-the-quickstarts"></a>Ismerkedjen meg a gyors útmutatókkal
+
+A Cognitive Services-erőforrások gyakorlati útmutatókkal történő létrehozásával kapcsolatos tudnivalók a használatával:
+
+* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure Portal")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK-ügyfél kódtárai](cognitive-services-apis-create-account-cli.md?tabs=windows "kognitív-szolgáltatások-API-k-fiók-ügyfél-könyvtár? Pivots = Programming-Language-csharp")
+* [Azure Resource Manager- (ARM-) sablonok](resource-manager-template.md?tabs=portal "Azure Resource Manager- (ARM-) sablonok")
 
 ## <a name="subscription-management"></a>Előfizetés-kezelés
 
@@ -118,8 +135,11 @@ Az adatvédelem és az adatkezelés megismeréséhez nyissa meg a [megbízhatós
 
 ## <a name="support"></a>Támogatás
 
-Cognitive Services több [támogatási lehetőség](cognitive-services-support-options.md "támogatási lehetőségek")is rendelkezésre áll.
+A Cognitive Services számos [támogatási lehetőséget](cognitive-services-support-options.md "támogatási lehetőségek")biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+
+
+
+## <a name="next-steps"></a>További lépések
 
 * [Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md "Cognitive Services-fiók létrehozása")

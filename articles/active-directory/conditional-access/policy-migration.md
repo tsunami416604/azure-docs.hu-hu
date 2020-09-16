@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185911"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601654"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>A feltételes hozzáférés klasszikus szabályzatának áttelepítése
 
@@ -73,9 +73,9 @@ A házirend-Összevonás kontextusában a következő szempontok fontosak:
    - Ha a forgatókönyve megköveteli, több feltételt is egyesíteni kell. 
    - Válasszon több engedélyezési követelményt hozzáférés-vezérlésként, és kombinálja őket logikai *vagy* (a kijelölt vezérlők valamelyikének megkövetelése) vagy logikai *és* (az összes kijelölt vezérlő megkövetelése) beállítással.
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="exchange-online"></a>Exchange Online
 
-Ha olyan klasszikus házirendeket szeretne áttelepíteni az **Office 365 Exchange Online** -hoz, amelyek **Exchange Active Sync** ügyfél-alkalmazási feltételként szerepelnek, előfordulhat, hogy nem tudja összevonni őket egy új szabályzatba. 
+Ha olyan klasszikus házirendeket szeretne áttelepíteni az **Exchange Online** -hoz, amelyek **Exchange Active Sync** ügyfél-alkalmazási feltételként szerepelnek, előfordulhat, hogy nem tudja összevonni őket egyetlen új szabályzatba. 
 
 Ez például az az eset, ha az összes ügyfélalkalmazás-típust támogatni szeretné. Egy olyan új szabályzatban, amely **Exchange Active Sync** ügyfél-alkalmazási feltételként, nem választhat más ügyfélalkalmazások közül.
 
@@ -89,7 +89,7 @@ Ha van olyan új szabályzata, amely **Exchange Active Sync** ügyfél-alkalmaz�
 
 ![Feltételes hozzáférési feltételek](./media/policy-migration/16.png)
  
-Az Office 365 Exchange Online-hoz készült, alkalmazáson alapuló klasszikus házirendek, amelyek tartalmazzák a **Exchange Active Sync** as Client apps-feltételt, lehetővé teszik a **támogatott** és nem **támogatott** eszközök platformját Habár a kapcsolódó új házirendekben nem konfigurálhat egyedi eszközöket, csak a [támogatott eszközökre](concept-conditional-access-conditions.md#device-platforms) korlátozhatja a támogatást. 
+Az olyan, az Exchange Online-hoz készült alkalmazás-alapú klasszikus házirendek, amelyek **Exchange Active Sync** ügyfél-alkalmazási feltételnek teszik lehetővé a **támogatott** **és a nem támogatott eszközök** platformját. Habár a kapcsolódó új házirendekben nem konfigurálhat egyedi eszközöket, csak a [támogatott eszközökre](concept-conditional-access-conditions.md#device-platforms) korlátozhatja a támogatást. 
 
 ![Feltételes hozzáférés az Exchange ActiveSync kiválasztása](./media/policy-migration/65.png)
 

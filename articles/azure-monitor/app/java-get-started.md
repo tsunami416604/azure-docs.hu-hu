@@ -6,16 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326919"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602465"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
-Ebben a rövid útmutatóban a Application Insights használatával automatikusan kérheti a kérelmeket, nyomon követheti a függőségeket, és összegyűjtheti a teljesítményszámlálókat, diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket, és kódot írhat az alkalmazással kapcsolatos felhasználók nyomon követéséhez.
+
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)vonatkozó irányelveket.
+
+Ebben a rövid útmutatóban az Application Insights SDK-t használja a rendszer, a függőségek nyomon követéséhez és a teljesítményszámlálók összegyűjtéséhez, a teljesítménnyel kapcsolatos problémák és kivételek diagnosztizálásához, valamint kód írásához a felhasználók által az alkalmazással való használat nyomon követéséhez.
 
 Az Application Insights egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalmazásokat támogatja.
 
@@ -77,9 +81,9 @@ Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsigh
 
 ### <a name="questions"></a>Kérdések
 * *Mi a kapcsolat a és az `-web-auto` `-web` összetevők között `-core` ?*
-  * `applicationinsights-web-auto`olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, ha automatikusan regisztrálja a Application Insights servlet szűrőt futásidőben.
-  * `applicationinsights-web`olyan metrikákat is biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, de az alkalmazásban manuálisan kell regisztrálni az Application Insights servlet-szűrőt.
-  * `applicationinsights-core`csak az operációs rendszer nélküli API-t biztosítja, például ha az alkalmazás nem servlet-alapú.
+  * `applicationinsights-web-auto` olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, ha automatikusan regisztrálja a Application Insights servlet szűrőt futásidőben.
+  * `applicationinsights-web` olyan metrikákat is biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, de az alkalmazásban manuálisan kell regisztrálni az Application Insights servlet-szűrőt.
+  * `applicationinsights-core` csak az operációs rendszer nélküli API-t biztosítja, például ha az alkalmazás nem servlet-alapú.
   
 * *Hogyan frissíthetek az SDK legújabb verziójára?*
   * Ha Gradle vagy Mavent használ...
@@ -193,22 +197,10 @@ Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használ
 
     (Ez az összetevő lehetővé teszi a teljesítményszámlálókat.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring boot)
+## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AK, virtuális gépek konfigurációja
 
-A Windows rendszeren futó Spring boot-alkalmazások további konfigurálást igényelnek az Azure App Services-on való futtatáshoz. Módosítsa **web.config** és adja hozzá a következő konfigurációt:
+Az Azure Resource Providers szolgáltatásban futtatott alkalmazások monitorozásának legjobb és legegyszerűbb megközelítése az Application Insights automatikus rendszerállapotának használata a [Java 3,0-ügynökön](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)keresztül.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <handlers>
-            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
-        </handlers>
-        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
-        </httpPlatform>
-    </system.webServer>
-</configuration>
-```
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
 A nem kezelt kivételeket és a kérelmekkel kapcsolatos hibákat a Application Insights webes szűrő automatikusan gyűjti.
@@ -259,7 +251,7 @@ További gyűjtendő teljesítményszámlálókat határozhat meg.
 * `displayName`– Az Application Insights portálon megjelenő név.
 * `objectName`– A JMX objektum neve.
 * `attribute`– A JMX objektum nevének lehívni kívánt attribútuma
-* `type`(nem kötelező) – a JMX objektum attribútumának típusa:
+* `type` (nem kötelező) – a JMX objektum attribútumának típusa:
   * Alapértelmezett: egyszerű típus, például int vagy long.
   * `composite`: a teljesítményszámláló-adatok az „Attribútum.Adat” formátumban szerepelnek
   * `tabular`: a teljesítményszámláló-adatok táblázatsor formájában szerepelnek

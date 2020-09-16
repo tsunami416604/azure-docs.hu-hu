@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049536"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602003"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -120,9 +120,9 @@ Akár 24 óráig is eltarthat, amíg a szabályzat érvénybe lép.
 
 A **többi ügyfél** feltételéhez kiválaszthatja az összes elérhető engedélyezési vezérlőt; a végfelhasználói élmény azonban mindig ugyanaz a letiltott hozzáférés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 - Ha még nem ismeri a feltételes hozzáférési szabályzatok konfigurálását, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáférés](../authentication/tutorial-enable-azure-mfa.md) egy példához című témakört.
 - A modern hitelesítés támogatásával kapcsolatos további információkért lásd: [Hogyan működik a modern hitelesítés az office 2013 és az office 2016 ügyfélalkalmazások számára](/office365/enterprise/modern-auth-for-office-2013-and-2016) . 
-- [Többfunkciós eszköz vagy alkalmazás beállítása e-mailek küldésére az Office 365 és Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Többfunkciós eszköz vagy alkalmazás beállítása az e-mailek küldéséhez Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

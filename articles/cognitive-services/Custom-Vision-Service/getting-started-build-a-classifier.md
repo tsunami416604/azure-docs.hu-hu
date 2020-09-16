@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44d5a4ae800e87404e5a207727c22a75f0fb75c8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551352"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602795"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Gyors útmutató: osztályozó készítése Custom Vision
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy osztályozó a Custom Vision webhelyén. Az osztályozó modell létrehozása után használhatja a Custom Vision szolgáltatást a rendszerkép besorolásához.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy rendszerképet a Custom Vision webhelyén. Miután létrehozta a modellt, tesztelheti az új rendszerképeket, és végül integrálhatja azt a saját rendszerkép-felismerő szoftverbe.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azon lemezképek összessége, amelyekkel betaníthatja az osztályozó. A képek kiválasztására vonatkozó tippek alább találhatók.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision erőforrások létrehozása a Azure Portal
+## <a name="create-custom-vision-resources"></a>Custom Vision erőforrások létrehozása
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +45,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 1. Adja meg a projekt nevét és leírását. Ezután válasszon ki egy erőforráscsoportot. Ha a bejelentkezett fiók egy Azure-fiókhoz van társítva, az erőforráscsoport legördülő lista megjeleníti az összes olyan Azure-erőforráscsoportot, amely Custom Vision Service erőforrást tartalmaz. 
 
    > [!NOTE]
-   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Győződjön meg arról is, hogy a Custom Vision-portálon ugyanazt a "könyvtárat" választotta, mint a Azure Portal, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
+   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Továbbá erősítse meg, hogy ugyanazt a "könyvtárat" választotta a Custom Vision webhelyén abban a Azure Portal könyvtárban, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
 
 1. Válasszon __besorolást__ a __Project Types__elemnél. Ezután a __besorolási típusok__területen válassza a **többcímkés** vagy a **többosztályos**lehetőséget a használati esettől függően. A többcímkés besorolás tetszőleges számú címkét alkalmaz egy képre (nulla vagy több), míg a többosztályos besorolás a képeket egyetlen kategóriába rendezi (minden elküldött kép a legvalószínűbb címkére lesz rendezve). Ha szeretné, később módosíthatja a besorolási típust.
 
@@ -56,7 +56,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
     |__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
     |__Arcrészek__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák.|
-    |__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
+    |__Kiskereskedelem__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
     |__Kompakt tartományok__| A mobileszközök valós idejű besorolásának korlátaira optimalizált. A kompakt tartományok által generált modellek helyileg is futtathatók.|
 
 1. Végül válassza a __projekt létrehozása__lehetőséget.
@@ -120,3 +120,4 @@ Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre és taníthat kép
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)
 
+* [Mi a Custom Vision?](./overview.md)

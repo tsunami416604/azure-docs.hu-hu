@@ -4,18 +4,18 @@ description: Ismerkedjen meg Azure App Service az első Python-alkalmazás üzem
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: c64971303a2fefb25a73f0a8e8900c14ef05486c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568914"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603611"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
 Ebben a rövid útmutatóban egy Python-webalkalmazást helyez üzembe a [Linuxon](overview.md#app-service-on-linux), az Azure rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatásának app Service. A helyi [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) a Mac, Linux vagy Windows rendszerű számítógépeken használható. Az Ön által konfigurált webalkalmazás ingyenes App Service szintet használ, így a cikk során nem jár költségekkel.
 
-> [!NOTE]
+> [!TIP]
 > Ha egy IDE-n keresztül szeretné telepíteni az alkalmazásokat, tekintse **[meg a Python-alkalmazások üzembe helyezése a Visual Studio Code-ból való app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** című témakört.
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása

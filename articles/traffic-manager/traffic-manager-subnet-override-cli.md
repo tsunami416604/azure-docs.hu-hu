@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: b66f1f0061f697349afae21f5f9c63a4089c2794
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c43b85f3c4b8d1b750e9f97e0be812bee683c702
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401707"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600796"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Alhálózat Traffic Manager felülbírálása az Azure CLI használatával
 
@@ -43,8 +43,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Frissítse a Traffic Manager végpontot az alhálózat felülbírálásával.
 Az Azure CLI használatával frissítse a végpontot az [az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)paranccsal.
 
-```azurecli
-
+```azurecli-interactive
 ### Add a range of IPs ###
 az network traffic-manager endpoint update \
     --name MyEndpoint \
@@ -60,22 +59,21 @@ az network traffic-manager endpoint update \
     --resource-group MyResourceGroup \
     --subnets 9.10.11.0:24 \
     --type AzureEndpoints
-
 ```
 
 Az IP-címtartományok eltávolításához futtassa az az [Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) parancsot a **--Remove** kapcsolóval.
 
-```azurecli
-
+```azurecli-interactive
 az network traffic-manager endpoint update \
     --name MyEndpoint \
     --profile-name MyTmProfile \
     --resource-group MyResourceGroup \
     --remove subnets \
     --type AzureEndpoints
-
 ```
+
 ## <a name="next-steps"></a>Következő lépések
+
 További információ a Traffic Manager [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md).
 
 Tudnivalók az [alhálózat forgalmáról – útválasztási módszer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

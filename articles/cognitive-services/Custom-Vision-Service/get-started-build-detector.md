@@ -1,33 +1,33 @@
 ---
 title: Egy objektum-detektor létrehozása – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy rendszerkép-besorolási modellt a Custom Vision webhellyel.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektor-modellt a Custom Vision webhellyel.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 234c80e84e11579a66737c3e5efedfda34182ac5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549547"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602863"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. A detektor modell létrehozása után használhatja a Custom Vision szolgáltatást az objektumok észleléséhez.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. Miután létrehozta a modellt, tesztelheti az új rendszerképeket, és végül integrálhatja azt a saját rendszerkép-felismerő szoftverbe.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Lemezképek készlete, amelyekkel betaníthatja a detektor modelljét. A GitHubon használhatja a [minta lemezképek](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) készletét. Emellett az alábbi tippek alapján is kiválaszthatja saját képeit.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision erőforrások létrehozása a Azure Portal
+## <a name="create-custom-vision-resources"></a>Custom Vision erőforrások létrehozása
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +45,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 1. Adja meg a projekt nevét és leírását. Ezután válasszon ki egy erőforráscsoportot. Ha a bejelentkezett fiók egy Azure-fiókhoz van társítva, az erőforráscsoport legördülő lista megjeleníti az összes olyan Azure-erőforráscsoportot, amely Custom Vision Service erőforrást tartalmaz. 
 
    > [!NOTE]
-   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Győződjön meg arról is, hogy a Custom Vision-portálon ugyanazt a "könyvtárat" választotta, mint a Azure Portal, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
+   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Továbbá erősítse meg, hogy ugyanazt a "könyvtárat" választotta a Custom Vision webhelyén abban a Azure Portal könyvtárban, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
 
 1. Válassza az __objektum felismerése__ a __projektek típusai__alatt lehetőséget.
 
@@ -118,3 +118,4 @@ Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre és taníthat e
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)
 
+* [Mi a Custom Vision?](./overview.md)

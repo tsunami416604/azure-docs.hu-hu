@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229922"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603509"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -89,7 +89,7 @@ A naplózási adat a következő mezőkön szűrhető:
 
 A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltatások legördülő listájából válasszon ki:
 
-- Összes
+- Mind
 - HRE-kezelés UX
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése
@@ -111,7 +111,7 @@ A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltat�
 
 A **Kategória** szűrővel a következő szűrők közül választhat:
 
-- Összes
+- Mind
 - AdministrativeUnit
 - ApplicationManagement
 - Hitelesítés
@@ -138,7 +138,7 @@ Az összes naplózási tevékenység listáját a Graph API használatával szer
 
 Az **állapot** szűrő lehetővé teszi a szűrést egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
 
-- Összes
+- Mind
 - Success
 - Hiba
 
@@ -208,13 +208,13 @@ Ha szeretné áttekinteni az alkalmazásokkal kapcsolatos naplózási adatait, a
 
 ![Naplók](./media/concept-audit-logs/enterpriseapplications.png "Naplók")
 
-## <a name="office-365-activity-logs"></a>Office 365-tevékenységek naplói
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 tevékenység naplói
 
-Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központból](/office365/admin/admin-overview/about-the-admin-center)tekintheti meg. Annak ellenére, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenységek naplóiról. 
+A [Microsoft 365 felügyeleti központban](/office365/admin/admin-overview/about-the-admin-center)megtekintheti Microsoft 365 tevékenység naplóit. Annak ellenére, hogy Microsoft 365 tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, csak a Microsoft 365 felügyeleti központ biztosít teljes képet a Microsoft 365 tevékenység naplófájljairól. 
 
-Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
+Az [Office 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview)-k használatával programozott módon is elérheti a Microsoft 365 tevékenység naplóit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD naplózott tevékenységekre vonatkozó referencia](reference-audit-activities.md)
 - [Azure AD-jelentések adatmegőrzési referenciája](reference-reports-data-retention.md)

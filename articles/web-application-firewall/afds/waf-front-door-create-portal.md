@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79475841"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602217"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Oktatóanyag: webalkalmazási tűzfal szabályzatának létrehozása az Azure-beli előtérben a Azure Portal használatával
 
@@ -68,7 +68,7 @@ Ha működés közben szeretné látni a WAF, az **észleléstől** kezdve a **m
 
 Egyéni szabály létrehozásához válassza az egyéni **szabály hozzáadása** lehetőséget az **Egyéni szabályok** szakaszban. Ezzel elindítja az egyéni szabály konfigurálása lapot. Az alábbi példa egy egyéni szabály konfigurálását mutatja be egy kérelem blokkolására, ha a lekérdezési karakterlánc **blockme**tartalmaz.
 
-![WAF házirend mód módosítása](../media/waf-front-door-create-portal/customquerystring2.png)
+![Egyéni szabályok](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>Alapértelmezett szabálykészlet (DRS)
 
@@ -76,8 +76,11 @@ Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés sz
 
  ![WAF-szabálykészlet módosítása](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Azure webalkalmazási tűzfalról](../overview.md) 
->  [További információ az Azure bejáratáról](../../frontdoor/front-door-overview.md)
+> [További információ az Azure bejáratáról](../../frontdoor/front-door-overview.md)

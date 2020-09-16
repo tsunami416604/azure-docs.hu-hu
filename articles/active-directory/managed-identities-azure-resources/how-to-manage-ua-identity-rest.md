@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04eb0eb3741a388b375cf7d8c6455bfd4a17b39
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266340"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601163"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése REST API-hívások használatával
 
@@ -38,8 +38,6 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre, listázhat és törölhet e
 - Ha a [Windows alrendszert Linux](/windows/wsl/about) vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)használja, [telepítse az Azure CLI helyi konzolt](/cli/azure/install-azure-cli).
 - Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure-ba `az login` egy olyan fiókkal, amely az Azure-előfizetéshez van társítva, vagy a felhasználó által hozzárendelt felügyelt személyazonossági adatokat szeretné lekérni.
 - Egy tulajdonosi hozzáférési jogkivonat lekérése `az account get-access-token` a használatával a következő, felhasználó által hozzárendelt felügyelt identitás-műveletek végrehajtásához.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 

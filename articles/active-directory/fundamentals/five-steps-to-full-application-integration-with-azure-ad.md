@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319746"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601248"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Öt lépés az összes alkalmazás integrálásához az Azure AD-vel
 
@@ -70,7 +70,7 @@ A felderítési folyamat során előfordulhat, hogy az informatikai részleg ál
 
 Tettünk közzé útmutatást az alkalmazások Azure AD-vel való integrálásának üzleti folyamatának kezeléséhez, beleértve a [plakátot](https://aka.ms/AppOnePager) és a [bemutatót](https://aka.ms/AppGuideline) , amellyel az üzleti és az alkalmazás-tulajdonosok tudatában és érdeklik. Ezeket a mintákat saját arculatával módosíthatja, és közzéteheti azokat a céges portálon, a hírlevélen vagy más médiumon keresztül, amikor befejezi a folyamat befejezését.
 
-A kezdéshez jó kiindulópont a Active Directory összevonási szolgáltatások (AD FS) (ADFS) használatának kiértékelése. Számos szervezet használja az ADFS-t az SaaS-alkalmazásokkal, az egyéni üzletági alkalmazásokkal és az Office 365 és az Azure AD-alapú alkalmazásokkal való hitelesítéshez:
+A kezdéshez jó kiindulópont a Active Directory összevonási szolgáltatások (AD FS) (ADFS) használatának kiértékelése. Számos szervezet használja az ADFS-t az SaaS-alkalmazásokkal, az egyéni üzletági alkalmazásokkal és a Microsoft 365 és az Azure AD-alapú alkalmazásokkal való hitelesítéshez:
 
 ![A diagramon a helyszíni alkalmazások, az üzletági alkalmazások, az SaaS-alkalmazások, valamint az Azure AD-n keresztül az Office 365 minden pontokkal összekapcsolható Active Directory és AD FS.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
@@ -107,6 +107,6 @@ A fejlesztők a platformot használhatják a belső használatra szánt alkalmaz
 
 Egy videó- [sorozatot](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) biztosítunk, amely átfogó bevezetést nyújt a platformhoz, valamint számos, a támogatott nyelveken és platformokon elérhető [kódrészletet](../develop/sample-v2-code.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások](../manage-apps/migration-resources.md)

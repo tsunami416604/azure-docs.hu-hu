@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567350"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600721"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
@@ -35,6 +35,14 @@ Privileged Identity Management használatához a következő licencek egyike sz�
 - Enterprise Mobility + Security (EMS) E5
 
 További információ: [a Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
+
+> [!Note]
+> Ha egy prémium P2 licenccel rendelkező Azure AD-szervezet Kiemelt szerepkörben aktív felhasználója az Azure AD-ben **szerepköröket és rendszergazdákat** keres, és kiválasztja a szerepkört (vagy akár csak Privileged Identity Management):
+>
+> - Automatikusan engedélyezzük a PIM-t a szervezet számára
+> - A saját tapasztalataink szerint a "normál" szerepkör-hozzárendelés vagy egy jogosult szerepkör-hozzárendelés rendelhető hozzá
+>
+> Ha a PIM engedélyezve van, nincs semmilyen más hatással a szervezetre, hogy aggódnia kell. További hozzárendelési lehetőségeket biztosít, például az aktív és a befejezési időpontot. A PIM Emellett lehetővé teszi a szerepkör-hozzárendelések hatókörének meghatározását a felügyeleti egységek és az egyéni szerepkörök használatával. Ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, néhány további e-mailt is indíthat, például a PIM heti kivonatát. Előfordulhat, hogy az MS-PIM szolgáltatásnév is megjelenik a szerepkör-hozzárendeléshez kapcsolódó naplóban. Ez egy várt változás, amelynek nincs hatása a munkafolyamatra.
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>A PIM előkészítése Azure AD-szerepkörökhöz
 
@@ -59,7 +67,7 @@ A Privileged Identity Management beállítása után megismerheti a módját.
 
 ![Navigációs ablak Privileged Identity Management feladatok és kezelési beállítások megjelenítése](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Feladat + kezelés | Description |
+| Feladat + kezelés | Leírás |
 | --- | --- |
 | **Saját szerepkörök**  | Megjeleníti az Önhöz hozzárendelt jogosult és aktív szerepkörök listáját. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
 | **Saját kérések** | Megjeleníti a jogosult szerepkör-hozzárendelések aktiválásához függőben lévő kéréseit. |
@@ -88,7 +96,7 @@ A Privileged Identity Management megnyitásának megkönnyítéséhez adjon hozz
 
     ![Privileged Identity Management gyors üzembe helyezési csempe az irányítópulton](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Azure-erőforrásokhoz való hozzáférés kezelése Privileged Identity Management](pim-resource-roles-discover-resources.md)

@@ -3,12 +3,12 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67111ecb215f4976dd8d3bbe0b901e68c3ef10ec
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564066"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602387"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -48,13 +48,13 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 
 [Azure-ív](../../azure-arc/index.yml):
 
-- Hibrid kiszolgálók kezelése a skálán – [Azure arc for Servers (előzetes verzió)](../../azure-arc/servers/overview.md):
-  - A [Windows Server vagy Linux rendszerű gépek összekötése az Azure](../../azure-arc/servers/onboard-portal.md) -on kívül az Azure-ban delegált előfizetésekkel és/vagy erőforráscsoportok
+- Hibrid kiszolgálók kezelése a skálán – [Azure arc-kompatibilis kiszolgálók (előzetes verzió)](../../azure-arc/servers/overview.md):
+  - Az Azure-on kívüli delegált előfizetésekhez és/vagy erőforráscsoportokhoz [csatlakoztatott Windows Server-vagy Linux-alapú gépek felügyelete](../../azure-arc/servers/onboard-portal.md)
   - Csatlakoztatott gépek kezelése Azure-konstrukciók használatával, például Azure Policy és címkézés
   - Győződjön meg arról, hogy ugyanazokat a szabályzatokat alkalmazza az ügyfelek hibrid környezetei között
   - Azure Security Center használata az ügyfelek hibrid környezetei közötti megfelelés figyeléséhez
 - Hibrid Kubernetes-fürtök kezelése a skálán – [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../../azure-arc/kubernetes/overview.md):
-  - [Kubernetes-fürt összekötése az Azure](../../azure-arc/kubernetes/connect-cluster.md) -beli ív használatával delegált előfizetések és/vagy erőforráscsoportok az Azure-ban
+  - Az Azure-ban delegált előfizetésekhez és/vagy erőforráscsoportokhöz [kapcsolódó Kubernetes-fürtök kezelése](../../azure-arc/kubernetes/connect-cluster.md)
   - [GitOps használata](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) csatlakoztatott fürtökhöz
   - Házirendek betartatása a csatlakoztatott fürtök között
 

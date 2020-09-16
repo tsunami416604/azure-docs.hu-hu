@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 64250863e5bab4776c129935e56db190e5bd36ee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497664"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602608"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása az Azure CLI-vel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy IoT hubot és egy IoT Hub Device Provisioning Servicet az Azure CLI használatával, és hogyan kapcsolhatja össze a két szolgáltatást. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
 > Az IoT hub és az ebben a rövid útmutatóban létrehozott kiépítési szolgáltatás a DNS-végpontként nyilvánosan felderíthetővé válik. Ha úgy dönt, hogy megváltoztatja ezen erőforrások nevét, ügyeljen arra, hogy ne adjon meg bizalmas adatokat.
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> Ez a két parancs a Bash alatt futó gazdagépek esetében érvényesek. Ha helyi Windows/CMD rendszerhéjat vagy PowerShell-gazdagépet használ, módosítania kell a parancsokat az adott környezetnek megfelelő szintaxis használatára.
+> Ez a két parancs a Bash alatt futó gazdagépek esetében érvényesek.
+> 
+> Ha helyi Windows/CMD rendszerhéjt vagy PowerShell-gazdagépet használ, módosítsa a parancsokat úgy, hogy az adott környezetnek megfelelő szintaxist használják.
+>
+> Ha Azure Cloud Shell használ, ellenőrizze, hogy a környezet legördülő menüje a rendszerhéj ablakának bal oldalán található-e: **bash**.
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>Az IoT Hub és az eszközkiépítési szolgáltatás csatolása

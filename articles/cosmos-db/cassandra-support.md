@@ -1,29 +1,29 @@
 ---
 title: Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók
 description: További tudnivalók az Apache Cassandra-funkciók támogatásáról az Azure Cosmos DB Cassandra API-ban
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 09/14/2020
+ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118984"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602812"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB Cassandra API-val a Cassandra Query Language (CQL) 4-es verziójú [vezetékes protokollal](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) kompatibilis, nyílt forráskódú Cassandra ügyfél [illesztőprogramjaival](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) kommunikálhat. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB Cassandra API a CQL bináris protokoll v4 [Wire Protocol](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) -kompatibilis nyílt forráskódú Cassandra [-ügyfélszoftverek használatával](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)kommunikálhat. 
 
-Az Azure Cosmos DB Cassandra API használatával kihasználhatja az Apache Cassandra API-k előnyeit, valamint az Azure Cosmos DB által biztosított vállalati képességeket. A vállalati képességek magukban foglalják a [globális terjesztést](distribute-data-globally.md), az [automatikus horizontális felskálázás particionálását](partition-data.md), rendelkezésre állási és késési garanciát, az inaktív adatok titkosítását, a biztonsági mentéseket és még sok más.
+Az Azure Cosmos DB Cassandra API használatával kihasználhatja az Apache Cassandra API-k előnyeit, valamint az Azure Cosmos DB által biztosított vállalati képességeket. A vállalati képességek magukban foglalják a [globális terjesztést](distribute-data-globally.md), az [automatikus horizontális felskálázás particionálását](cassandra-partitioning.md), rendelkezésre állási és késési garanciát, az inaktív adatok titkosítását, a biztonsági mentéseket és még sok más.
 
 ## <a name="cassandra-protocol"></a>Cassandra protokoll 
 
-Az Azure Cosmos DB Cassandra API a CQL **4-es verziójával** kompatibilis. A támogatott CQL-parancsok, -eszközök, -korlátozások és -kivételeket alább láthatók. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia az Azure Cosmos DB Cassandra API-hoz.
+A Azure Cosmos DB Cassandra API kompatibilis a Cassandra Query Language (CQL) v 3.11 API-val (a 2. x verzióval visszamenőlegesen kompatibilis). A támogatott CQL-parancsok, -eszközök, -korlátozások és -kivételeket alább láthatók. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia az Azure Cosmos DB Cassandra API-hoz.
 
 ## <a name="cassandra-driver"></a>Cassandra-illesztőprogram
 
@@ -37,61 +37,149 @@ Az Azure Cosmos DB Cassandra API a következő Cassandra-illesztőprogramverzió
 * [PHP 1.3](https://github.com/datastax/php-driver)  
 * [Gocql](https://github.com/gocql/gocql)  
  
+
 ## <a name="cql-data-types"></a>CQL-adattípusok 
 
 Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 
-* ascii  
-* bigint  
-* blob  
-* logikai  
-* számláló  
-* dátum  
-* tizedes tört  
-* double  
-* lebegőpontos  
-* kimerevítve  
-* inet  
-* int  
-* lista  
-* halmaz  
-* smallint  
-* szöveg  
-* time  
-* időbélyeg  
-* timeuuid  
-* tinyint  
-* rekord  
-* uuid  
-* varchar  
-* varint  
-* rekordok  
-* udts  
-* map  
+|Parancs  |Támogatott |
+|---------|---------|
+| ascii  | Igen |
+| bigint  | Igen |
+| blob  | Igen |
+| boolean  | Igen |
+| számláló  | Igen |
+| dátum  | Igen |
+| tizedes tört  | Igen |
+| double  | Igen |
+| float  | Igen |
+| kimerevítve  | Igen |
+| inet  | Igen |
+| int  | Igen |
+| list  | Igen |
+| halmaz  | Igen |
+| smallint  | Igen |
+| szöveg  | Igen |
+| time  | Igen |
+| időbélyeg  | Igen |
+| timeuuid  | Igen |
+| tinyint  | Igen |
+| rekord  | Igen |
+| uuid  | Igen |
+| varchar  | Igen |
+| varint  | Igen |
+| rekordok | Igen | 
+| udts  | Igen |
+| map | Igen |
 
 ## <a name="cql-functions"></a>CQL-függvények
 
 Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 
-* Jogkivonat  
-* Aggregátumfüggvények
-  * min., max., átlag, darabszám
-* Blob-konverziós függvények 
-  * typeAsBlob(value)  
-  * blobAsType(value)
-* UUID és timeuuid függvények 
-  * dateOf()  
-  * now()  
-  * minTimeuuid()  
-  * unixTimestampOf()  
-  * toDate(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toUnixTimestamp(timeuuid)  
-  * toDate(timestamp)  
-  * toUnixTimestamp(timestamp)  
-  * toTimestamp(date)  
-  * toUnixTimestamp(date) 
+|Parancs  |Támogatott |
+|---------|---------|
+| Jogkivonat | Igen |
+| ttl | Igen |
+| writetime | Igen |
+| típuskonverzió | No |
+
+\* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` nem támogatott.
+
+
+Összesítő függvények:
+
+|Parancs  |Támogatott |
+|---------|---------|
+| p | Igen |
+| max. | Igen |
+| AVG | Igen |
+| count | Igen |
+
+BLOB-átalakítási függvények:
+ 
+|Parancs  |Támogatott |
+|---------|---------|
+| typeAsBlob(value)   | Igen |
+| blobAsType(value) | Igen |
+
+
+UUID és timeuuid függvények:
+ 
+|Parancs  |Támogatott |
+|---------|---------|
+| dateOf()  | Igen |
+| now()  | Igen |
+| minTimeuuid()  | Igen |
+| unixTimestampOf()  | Igen |
+| toDate(timeuuid)  | Igen |
+| toTimestamp(timeuuid)  | Igen |
+| toUnixTimestamp(timeuuid)  | Igen |
+| toDate(timestamp)  | Igen |
+| toUnixTimestamp(timestamp)  | Igen |
+| toTimestamp(date)  | Igen |
+| toUnixTimestamp(date) | Igen |
+
+
   
+## <a name="cql-commands"></a>CQL-parancsok
+
+Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra API-fiókok esetében.
+
+|Parancs  |Támogatott |
+|---------|---------|
+| SZŰRÉS ENGEDÉLYEZÉSE | Igen |
+| LEMEZTERÜLET MÓDOSÍTÁSA | N/A (Pásti szolgáltatás, belső replikáció felügyelt)|
+| MÓDOSÍTHATÓ ANYAGÚ NÉZET | No |
+| SZEREPKÖR MÓDOSÍTÁSA | No |
+| ALTER TABLE | Igen |
+| MÓDOSÍTÁS TÍPUSA | No |
+| FELHASZNÁLÓ MÓDOSÍTÁSA | No |
+| BATCH | Igen (csak nem naplózott köteg)|
+| KOMPAKT TÁROLÓ | N/A (Pásti szolgáltatás) |
+| ÖSSZESÍTÉS LÉTREHOZÁSA | No | 
+| EGYÉNI INDEX LÉTREHOZÁSA (SASI) | No |
+| CREATE INDEX | Igen (az [index nevének megadása](cassandra-secondary-index.md)és a fürtözési kulcsok indexelése nélkül, vagy a teljes fagyasztott gyűjtemény nem támogatott) |
+| FÜGGVÉNY LÉTREHOZÁSA | No |
+| SZÓKÖZ létrehozása (replikációs beállítások figyelmen kívül hagyva) | Igen |
+| ANYAGELSZÁMOLÁSÚ NÉZET LÉTREHOZÁSA | No |
+| CREATE TABLE | Igen |
+| TRIGGER LÉTREHOZÁSA | No |
+| LÉTREHOZÁS TÍPUSA | Igen |
+| SZEREPKÖR LÉTREHOZÁSA | No |
+| FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | No |
+| DELETE | Igen |
+| Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Igen |
+| ÖSSZESÍTÉS ELDOBÁSA | No |
+| DROP FÜGGVÉNY | No |
+| DROP INDEX | Igen |
+| SZÓKÖZ ELDOBÁSA | Igen |
+| ANYAGOS NÉZET ELDOBÁSA | No |
+| SZEREPKÖR ELDOBÁSA | No |
+| TÁBLÁZAT ELDOBÁSA | Igen |
+| TRIGGER ELDOBÁSA | No | 
+| DROP TYPE | Igen |
+| FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | No |
+| GRANT | No |
+| INSERT | Igen |
+| INSERT (könnyű tranzakciók IF feltétellel)| Igen |
+| ENGEDÉLYEK LISTÁZÁSA | No |
+| SZEREPKÖRÖK LISTÁZÁSA | No |
+| FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | No |
+| VISSZAVONJA | No |
+| SELECT | Igen |
+| SELECT (könnyűsúlyú tranzakciók IF feltétellel)| No |
+| UPDATE | Igen |
+| FRISSÍTÉS (kis-és nagyméretű tranzakciók, ha feltétellel)| No |
+| TRUNCATE | No |
+| USE | Igen |
+
+## <a name="json-support"></a>JSON-támogatás
+|Parancs  |Támogatott |
+|---------|---------|
+| JSON KIVÁLASZTÁSA | Igen |
+| JSON BESZÚRÁSA | Igen |
+| fromJson() | No |
+| toJson() | No |
 
 
 ## <a name="cassandra-api-limits"></a>A Cassandra API korlátai
@@ -108,9 +196,12 @@ Az Azure Cosmos DB Cassandra API egy felügyelt szolgáltatási platform. A für
 
 Egy üzemeltetett natív Cassandra shellt (CQLSH v 5.0.1) közvetlenül a [Azure Portal](data-explorer.md) vagy az [Azure Cosmos Explorer](https://cosmos.azure.com/)adatkezelő lehet megnyitni. A CQL-rendszerhéj engedélyezése előtt engedélyeznie kell [a jegyzetfüzetek](enable-notebooks.md) szolgáltatást a fiókjában (ha még nincs engedélyezve, akkor a rendszer rákérdez a gombra `Open Cassandra Shell` ). Jelölje be a Kiemelt Megjegyzés a [jegyzetfüzetek engedélyezése Azure Cosmos db-fiókok](enable-notebooks.md) számára támogatott Azure-régiók számára című részt.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH megnyitása":::
 
 A helyi gépre telepített CQLSH használatával a Azure Cosmos DB Cassandra API is csatlakozhat. Az Apache Cassandra 3.1.1-es verziójában a környezeti változók beállításával működik a doboz. A következő részekben a CQLSH-t használó Windowson vagy Linuxon Cassandra API telepítéséhez, konfigurálásához és a Azure Cosmos DBhoz való kapcsolódáshoz szükséges utasítások találhatók.
+
+> [!NOTE]
+> A Azure Cosmos DB Cassandra API létesített kapcsolatai nem fognak működni a CQLSH DataStax Enterprise (DSE) verziójával. A Cassandra APIhoz való csatlakozáskor ügyeljen arra, hogy csak a nyílt forráskódú Apache Cassandra-verziókat használja a CQLSH. 
 
 **Windows**
 
@@ -142,22 +233,6 @@ export SSL_VALIDATE=false
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
 
 ```
-
-## <a name="cql-commands"></a>CQL-parancsok
-
-Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra API-fiókok esetében.
-
-* LEMEZTERÜLET létrehozása (a parancs replikációs beállításai figyelmen kívül lesznek hagyva)
-* CREATE TABLE 
-* INDEX létrehozása (az index nevének megadása nélkül, és a teljes befagyasztott indexek még nem támogatottak)
-* SZŰRÉS ENGEDÉLYEZÉSE
-* ALTER TABLE 
-* USE 
-* INSERT 
-* SELECT 
-* UPDATE 
-* BATCH – csak nem naplózott parancsok használata támogatott 
-* DELETE
 
 A CQL v4-kompatibilis SDK-n keresztül végrehajtott összes szifilisz-művelet további információkat ad vissza a hibákról és a kért egységekről. A TÖRLÉSi és frissítési parancsokat a kiépített átviteli sebesség leghatékonyabb kihasználásának biztosítása érdekében figyelembe kell venni az erőforrás-szabályozással.
 

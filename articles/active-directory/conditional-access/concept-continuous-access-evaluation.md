@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437241"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601758"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -48,26 +48,26 @@ A folyamatos hozzáférés kiértékelése úgy történik, hogy a szolgáltatá
 - A rendszergazda explicit módon visszavonja a felhasználó összes frissítési jogkivonatát.
 - Emelt szintű felhasználói kockázat észlelhető Azure AD Identity Protection
 
-Ez a folyamat lehetővé teszi, hogy a felhasználók ne férhessenek hozzá a szervezeti SharePoint Online-fájlokhoz, e-mailekhez, naptárhoz vagy feladatokhoz, valamint a O365-ügyfelektől a csapatok ezen kritikus események valamelyike után. 
+Ez a folyamat lehetővé teszi, hogy a felhasználók ne férhessenek hozzá a szervezeti SharePoint Online-fájlokhoz, e-mailekhez, naptárhoz vagy feladatokhoz, illetve a Microsoft 365 ügyfélalkalmazások tagjaihoz, a kritikus események egyike után. 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Feltételes hozzáférési szabályzat kiértékelése (előzetes verzió)
 
 Az Exchange és a SharePoint képes szinkronizálni a feltételes hozzáférési házirendeket, hogy azok a szolgáltatáson belül is kiértékelhető legyenek.
 
-Ez a folyamat lehetővé teszi, hogy a felhasználók a hálózati hely megváltozása után azonnal hozzáférjenek a szervezeti fájlokhoz, e-mailekhez, naptárhoz vagy feladatokhoz a O365 vagy a SharePoint Online-hoz.
+Ez a folyamat lehetővé teszi, hogy a felhasználók a hálózati hely megváltozása után azonnal hozzáférjenek a szervezeti fájlokhoz, e-mailekhez, naptárhoz vagy feladatokhoz Microsoft 365 ügyfélalkalmazások vagy a SharePoint Online számára.
 
 > [!NOTE]
 > Nem minden alkalmazás-és erőforrás-szolgáltató kombináció támogatott. Lásd az alábbi táblázatot. Az Office a Word, az Excel és a PowerPoint alkalmazásra hivatkozik
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Támogatott | Támogatott | Nem támogatott | Nem támogatott | Támogatott |
-| Exchange Online | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
+| **szabályozásáról** | Támogatott | Támogatott | Nem támogatott | Nem támogatott | Támogatott |
+| **Exchange Online** | Támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 
 | | Office Web Apps | Office Win32-alkalmazások | IOS-es Office | Androidos Office | Mac-iroda |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Támogatott | Támogatott | Nem támogatott | Támogatott | Támogatott |
-| Exchange Online | Támogatott | Támogatott | Nem támogatott | Támogatott | Támogatott |
+| **szabályozásáról** | Támogatott | Támogatott | Nem támogatott | Támogatott | Támogatott |
+| **Exchange Online** | Támogatott | Támogatott | Nem támogatott | Támogatott | Támogatott |
 
 ### <a name="client-side-claim-challenge"></a>Ügyféloldali jogcímek kihívása
 
@@ -183,6 +183,6 @@ Ha a felhasználót a letiltást követően engedélyezi. A fiók engedélyezés
 
 A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure AD-hez csatlakoztatott eszköz?
-description: Megtudhatja, hogyan segítheti a környezet erőforrásaihoz hozzáférő eszközök felügyeletét.
+description: Ismerje meg az Azure AD-hez csatlakoztatott eszközöket, valamint azt, hogy az eszköz-identitás kezelése hogyan segítheti a környezet erőforrásaihoz hozzáférő eszközök felügyeletét.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923730"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601452"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
@@ -58,7 +58,7 @@ Habár az Azure AD elsősorban az olyan cégek számára készült, amelyek nem 
 
 - Ha váltani kíván egy felhőalapú infrastruktúrára az Azure AD és egy mobileszköz-felügyeleti megoldás, például az Intune használatával.
 - Ha nem használhat helyszíni tartománycsatlakoztatást, például ha mobileszközöket, táblagépeket és telefonokat szeretne felügyelet alá vonni.
-- Ha a felhasználóknak elsősorban Office 365- vagy egyéb Azure AD-ben integrált SaaS-alkalmazásokhoz kell hozzáférnie.
+- A felhasználóknak elsősorban az Azure AD-vel integrált Microsoft 365 vagy más SaaS-alkalmazásokhoz kell hozzáférnie.
 - Ha felhasználók egy csoportját az Azure AD-ben szeretné felügyelni az Active Directory helyett. Ez a forgatókönyv például a szezonális feldolgozók, a vállalkozók vagy a tanulók számára is alkalmazható.
 - Ha csatlakozási lehetőséget kíván nyújtani a korlátozott helyszíni infrastruktúrájú távoli fiókirodákban tartózkodó felhasználóknak.
 

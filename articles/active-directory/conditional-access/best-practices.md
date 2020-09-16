@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948453"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601979"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -57,7 +57,7 @@ Az összes házirend kikényszerítve két fázisban:
    - A nem teljesített követelmények azonosításához használja az 1. fázisban összegyűjtött munkamenet részleteit. 
    - Ha van olyan házirend, amely a hozzáférés blokkolására van konfigurálva, a tiltás engedélyezése vezérlővel a kényszerítés le lesz tiltva, és a felhasználó blokkolva lesz. 
    - A felhasználónak ezután meg kell adnia további, az 1. fázisban nem teljesített támogatás-vezérlési követelményeket az alábbi sorrendben, amíg a szabályzat nem teljesül:  
-      - Multi-Factor Authentication 
+      - Többtényezős hitelesítés 
       - Jóváhagyott ügyfélalkalmazás/alkalmazás-védelmi szabályzat 
       - Felügyelt eszköz (megfelelő vagy hibrid Azure AD-csatlakozás) 
       - Használati feltételek 
@@ -97,13 +97,13 @@ Minden bejelentkezéskor Azure Active Directory kiértékel minden házirendet, 
 
 Igen, az Exchange ActiveSync használatát feltételes hozzáférési szabályzatban használhatja.
 
-Egyes felhőalapú alkalmazások, például a SharePoint Online és az Exchange Online is támogatják az örökölt hitelesítési protokollokat. Ha egy ügyfélalkalmazás örökölt hitelesítési protokollt használ egy felhőalapú alkalmazás eléréséhez, az Azure AD nem kényszerítheti ki a feltételes hozzáférési szabályzatot erre a hozzáférési kísérletre. Annak megakadályozása érdekében, hogy egy ügyfélalkalmazás megkerüljék a házirendek kényszerítését, ellenőriznie kell, hogy csak a modern hitelesítést lehet-e engedélyezni az érintett Felhőbeli alkalmazásokban.
+Egyes felhőalapú alkalmazások, például a SharePoint és az Exchange Online is támogatják az örökölt hitelesítési protokollokat. Ha egy ügyfélalkalmazás örökölt hitelesítési protokollt használ egy felhőalapú alkalmazás eléréséhez, az Azure AD nem kényszerítheti ki a feltételes hozzáférési szabályzatot erre a hozzáférési kísérletre. Annak megakadályozása érdekében, hogy egy ügyfélalkalmazás megkerüljék a házirendek kényszerítését, ellenőriznie kell, hogy csak a modern hitelesítést lehet-e engedélyezni az érintett Felhőbeli alkalmazásokban.
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan konfigurálhatja a feltételes hozzáférést az Office 365-alkalmazásokkal?
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>Hogyan konfigurálhatja a feltételes hozzáférést Microsoft 365 alkalmazásokkal?
 
-Mivel az Office 365-alkalmazások egymással kapcsolódnak egymáshoz, javasoljuk, hogy a leggyakrabban használt alkalmazásokat a szabályzatok létrehozásakor együtt adja hozzá.
+Mivel Microsoft 365 alkalmazások kapcsolódnak egymáshoz, javasoljuk, hogy a leggyakrabban használt alkalmazásokat a szabályzatok létrehozásakor együtt adja hozzá.
 
-A gyakori összekapcsolt alkalmazások közé tartozik a Microsoft Flow, a Microsoft Planner, a Microsoft Teams, az Office 365 Exchange Online, az Office 365 SharePoint Online és az Office 365 Yammer.
+A közös összekapcsolt alkalmazások közé tartoznak a Microsoft Flow, a Microsoft Planner, a Microsoft Teams, az Exchange Online, a SharePoint és a Yammer.
 
 Fontos olyan házirendek esetében, amelyek felhasználói interakciókat igényelnek, például a többtényezős hitelesítést, amikor a hozzáférés egy munkamenet vagy feladat elején van szabályozva. Ha nem, a felhasználók bizonyos feladatokat nem tudnak végrehajtani egy alkalmazáson belül. Ha például többtényezős hitelesítést igényel a nem felügyelt eszközökön a SharePoint eléréséhez, de nem az e-mailekhez, az e-mailben dolgozó felhasználók nem tudnak SharePoint-fájlokat csatolni egy üzenethez. További információt a cikk a [feltételes hozzáférés Azure Active Directory szolgáltatás függőségei](service-dependencies.md)című cikkben talál.
 
@@ -150,7 +150,7 @@ Ajánlott eljárásként hozzon létre egy felhasználói fiókot:
 
 További információért lásd: [Klasszikus szabályzatok áttelepítése az Azure Portalon](policy-migration.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha tudni szeretné:
 

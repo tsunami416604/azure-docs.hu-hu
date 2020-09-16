@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948266"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601673"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
 
@@ -44,7 +44,7 @@ A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, am
 - Word, Excel, PowerPoint online
 - OneNote online
 - Office.com
-- O365 felügyeleti portál
+- Microsoft 365 felügyeleti portál
 - Exchange Online
 - SharePoint és OneDrive
 - Csapat webes ügyfele
@@ -134,7 +134,7 @@ A What-if eszköz használatával szimulálhatja a felhasználót a célalkalmaz
 
 Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információkért tekintse meg a [Azure Active Directory a feltételes hozzáférésre vonatkozó ajánlott eljárásokat](best-practices.md)ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../authentication/tutorial-enable-azure-mfa.md)című cikket.
 * Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

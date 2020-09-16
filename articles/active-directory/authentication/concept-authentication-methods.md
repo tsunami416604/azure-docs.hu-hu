@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: dcbfd05df84e32423df425f3bdd231a26e4f3bca
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527044"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602037"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -36,21 +36,18 @@ Ha olyan szolgáltatásokat telepít, mint például az Azure Multi-Factor Authe
 
 Az alábbi táblázat az elérhető hitelesítési módszerek biztonsági szempontjait ismerteti. A rendelkezésre állás azt jelzi, hogy a felhasználó használhatja-e a hitelesítési módszert, nem a szolgáltatás rendelkezésre állását az Azure AD-ben:
 
-| Hitelesítési módszer       | Biztonság | Használhatóság | Phisable? | A csatorna megjelenő? | Rendelkezésre állás |
-|-----------------------------|:--------:|:---------:|:---------:|:-----------------:|:------------:|
-| FIDO2 biztonsági kulcs          | Magas     | Magas      | Nem        | Nem                | Magas         |
-| A Microsoft Authenticator alkalmazás | Magas     | Magas      | Igen       | Nem <sup>1</sup>   | Magas         |
-| Vállalati Windows Hello  | Magas     | Magas      | Nem        | Nem                | Magas         |
-| Hardveres eskü tokenek        | Közepes   | Közepes    | Igen       | Nem                | Magas         |
-| Szoftveres eskü-tokenek        | Közepes   | Közepes    | Igen       | Nem <sup>2</sup>   | Magas         |
-| SMS                         | Közepes   | Magas      | Igen       | Igen               | Közepes       |
-| Hang                       | Közepes   | Közepes    | Igen       | Igen               | Közepes       |
-| Jelszó                    | Alacsony      | Magas      | Igen       | Igen               | Magas         |
+| Hitelesítési módszer          | Biztonság | Használhatóság | Rendelkezésre állás |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Vállalati Windows Hello     | Magas     | Magas      | Magas         |
+| A Microsoft Authenticator alkalmazás    | Magas     | Magas      | Magas         |
+| FIDO2 biztonsági kulcs (előzetes verzió)   | Magas     | Magas      | Magas         |
+| A hardver-tokenek ESKÜje (előzetes verzió) | Közepes   | Közepes    | Magas         |
+| Az eskü szoftver jogkivonatai           | Közepes   | Közepes    | Magas         |
+| SMS                            | Közepes   | Magas      | Közepes       |
+| Hang                          | Közepes   | Közepes    | Közepes       |
+| Jelszó                       | Alacsony      | Magas      | Magas         |
 
-<sup>1</sup> a jelszóval nem rendelkező módban, ha az alkalmazás regisztrálva van egy adott eszközön<br />
-<sup>2</sup> ha az alkalmazásnak PIN-kódot kell megadnia a zárolás feloldásához
-
-A biztonsági rések és a támadási vektorok részletes ismertetését lásd: [Channel-Jacks és valós idejű adathalászat](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+A biztonsággal kapcsolatos további információkért lásd: [hitelesítési sebezhetőségek és támadási vektorok](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
 
 > [!TIP]
 > A rugalmasság és a használhatóság érdekében javasoljuk, hogy használja a Microsoft Authenticator alkalmazást. Ez a hitelesítési módszer a legjobb felhasználói élményt és több módot kínál, például a jelszavakat, az MFA leküldéses értesítéseit és az eskü-kódokat.
@@ -63,9 +60,9 @@ A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszer
 
 | Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| FIDO2 biztonsági kulcsok (előzetes verzió)  | Igen                    | MFA                       |
-| A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
 | Vállalati Windows Hello     | Igen                    | MFA                       |
+| A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
+| FIDO2 biztonsági kulcs (előzetes verzió)   | Igen                    | MFA                       |
 | A hardver-tokenek ESKÜje (előzetes verzió) | No                     | MFA                       |
 | Az eskü szoftver jogkivonatai           | No                     | MFA                       |
 | SMS                            | Igen (előzetes verzió)          | MFA és SSPR              |
@@ -76,11 +73,11 @@ Az összes hitelesítési módszer konfigurálható a Azure Portalban, és egyre
 
 Ha többet szeretne megtudni az egyes hitelesítési módszerek működéséről, tekintse meg a következő külön fogalmi cikkeket:
 
-* [FIDO2 biztonsági kulcsok (előzetes verzió)](concept-authentication-passwordless.md#fido2-security-keys)
-* [A Microsoft Authenticator alkalmazás](concept-authentication-authenticator-app.md)
 * [Vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)
-* [Az eskü szoftver jogkivonatai](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [A Microsoft Authenticator alkalmazás](concept-authentication-authenticator-app.md)
+* [FIDO2 biztonsági kulcs (előzetes verzió)](concept-authentication-passwordless.md#fido2-security-keys)
 * [A hardver-tokenek ESKÜje (előzetes verzió)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [Az eskü szoftver jogkivonatai](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS- [Bejelentkezés (előzetes verzió)](howto-authentication-sms-signin.md) és [ellenőrzés](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Telefonhívás ellenőrzése](concept-authentication-phone-options.md)
 * Jelszó
@@ -94,7 +91,7 @@ A következő további ellenőrzési módszerek használhatók bizonyos helyzete
 * [Biztonsági kérdések](concept-authentication-security-questions.md) – csak a SSPR esetében használatos
 * [E-mail-cím](concept-sspr-howitworks.md#authentication-methods) – csak a SSPR esetében használatos
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 

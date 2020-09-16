@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042479"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601826"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -149,27 +149,27 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 | Ügyfélalkalmazások | Cél szolgáltatás | Platform |
 | --- | --- | --- |
 | Dynamics CRM-alkalmazás | Dynamics CRM | Windows 10, Windows 8,1, iOS és Android |
-| Mail/Calendar/People app, Outlook 2016, Outlook 2013 (modern hitelesítéssel)| Office 365 Exchange Online | Windows 10 |
+| Mail/Calendar/People app, Outlook 2016, Outlook 2013 (modern hitelesítéssel)| Exchange Online | Windows 10 |
 | MFA-és tartózkodási hely szabályzata alkalmazások számára. Az eszközökön alapuló házirendek nem támogatottak.| A saját alkalmazások app Service | Android és iOS |
 | Microsoft Teams Services – Ez vezérli a Microsoft Teams és az összes ügyfélalkalmazás használatát támogató összes szolgáltatást – Windows Desktop, iOS, Android, WP és Web Client | Microsoft Teams | Windows 10, Windows 8,1, Windows 7, iOS, Android és macOS |
-| Office 2016-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive-szinkronizálási ügyfél](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8,1, Windows 7 |
-| Office 2016-alkalmazások, univerzális Office-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive Sync Client](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (Word, Excel, PowerPoint, csak OneNote). | Office 365 SharePoint Online | macOS |
-| Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
-| Office Mobile-alkalmazások | Office 365 SharePoint Online | Android, iOS |
-| Office Yammer-alkalmazás | Office 365 Yammer | Windows 10, iOS, Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (macOS-es iroda) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (modern hitelesítéssel), Skype vállalati verzió (modern hitelesítéssel) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
-| Outlook Mobile alkalmazás | Office 365 Exchange Online | Android, iOS |
-| Power BI alkalmazás | Power BI szolgáltatásban | Windows 10, Windows 8,1, Windows 7, Android és iOS |
-| Skype Vállalati verzió | Office 365 Exchange Online| Android, iOS |
+| Office 2016-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive-szinkronizálási ügyfél](/onedrive/enable-conditional-access) | SharePoint | Windows 8,1, Windows 7 |
+| Office 2016-alkalmazások, univerzális Office-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive Sync Client](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (Word, Excel, PowerPoint, csak OneNote). | SharePoint | macOS |
+| Office 2019| SharePoint | Windows 10, macOS |
+| Office Mobile-alkalmazások | SharePoint | Android, iOS |
+| Office Yammer-alkalmazás | Yammer | Windows 10, iOS, Android |
+| Outlook 2019 | SharePoint | Windows 10, macOS |
+| Outlook 2016 (macOS-es iroda) | Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (modern hitelesítéssel), Skype vállalati verzió (modern hitelesítéssel) | Exchange Online | Windows 8,1, Windows 7 |
+| Outlook Mobile alkalmazás | Exchange Online | Android, iOS |
+| Power BI alkalmazás | Power BI szolgáltatás | Windows 10, Windows 8,1, Windows 7, Android és iOS |
+| Skype Vállalati verzió | Exchange Online| Android, iOS |
 | Visual Studio Team Services-alkalmazás | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS és Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-ügyfelek
 
 - A szervezetek csak akkor választhatják ki az Exchange ActiveSync-ügyfeleket, ha szabályzatot rendelnek hozzá felhasználókhoz vagy csoportokhoz. Az összes **felhasználó**, a **vendég és a külső felhasználók**, illetve a **címtárbeli szerepkörök** kiválasztásával az összes felhasználó le lesz tiltva.
-- Az Exchange ActiveSync-ügyfelekhez rendelt szabályzat létrehozásakor az **Office 365 Exchange Online** csak a Szabályzathoz rendelt felhőalapú alkalmazás lehet. 
+- Exchange ActiveSync-ügyfelekhez rendelt szabályzat létrehozásakor az **Exchange Online** csak a Szabályzathoz rendelt felhőalapú alkalmazás lehet. 
 - A szervezetek a szabályzat hatókörét meghatározott platformokra szűkítik az **eszköz platformok** feltételének használatával.
 
 Ha a házirendhez rendelt hozzáférés-vezérlés **jóváhagyott ügyfélalkalmazás használatát igényli**, a rendszer a felhasználót az Outlook Mobile-ügyfél telepítésére és használatára irányítja. Abban az esetben, ha a **többtényezős hitelesítés** szükséges, az érintett felhasználók le vannak tiltva, mert az egyszerű hitelesítés nem támogatja a többtényezős hitelesítést.

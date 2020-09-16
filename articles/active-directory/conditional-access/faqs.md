@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253239"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601637"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Feltételes hozzáférés Azure Active Directory – gyakori kérdések
 
@@ -59,7 +59,7 @@ További információkért tekintse meg a [feltételes hozzáférési szolgálta
 
 Miután engedélyezte a feltételes hozzáférési szabályzatokat a bérlőhöz a Microsoft Teams szolgáltatásban, bizonyos lapok nem fognak működni az asztali ügyfélen a várt módon. Az érintett lapfülek azonban a Microsoft Teams Web Client használatakor működnek. Az érintett lapok tartalmazhatnak Power BI, Forms, VSTS, PowerApps és SharePoint-listát.
 
-Az érintett lapok megjelenítéséhez az Edge, az Internet Explorer vagy a Chrome alkalmazásban kell használni a Teams webes ügyfelet, amelyen telepítve van a Windows 10-es fiók bővítmény. Egyes lapok a webes hitelesítéstől függenek, amely nem működik a Microsoft Teams asztali ügyfélprogramban, ha a feltételes hozzáférés engedélyezve van. A Microsoft a partnerekkel együttműködve engedélyezi ezeket a forgatókönyveket. A mai napig engedélyezte a Planner, a OneNote és a stream scenrarios bevonásával.
+Az érintett lapok megjelenítéséhez az Edge, az Internet Explorer vagy a Chrome alkalmazásban kell használni a Teams webes ügyfelet, amelyen telepítve van a Windows 10-es fiók bővítmény. Egyes lapok a webes hitelesítéstől függenek, amely nem működik a Microsoft Teams asztali ügyfélprogramban, ha a feltételes hozzáférés engedélyezve van. A Microsoft a partnerekkel együttműködve engedélyezi ezeket a forgatókönyveket. A mai napig engedélyezték a Planner, a OneNote és a stream használatát.
 
 ## <a name="next-steps"></a>További lépések
 

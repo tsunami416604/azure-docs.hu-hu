@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321718"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601364"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -95,7 +95,7 @@ A jelszó önmagában nem elég biztonságos ahhoz, hogy a rossz szereplők hozz
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Helyszíni kimaradások hitelesítésének rugalmassága
 
-Az egyszerűség előnyei és a kiszivárgott hitelesítő adatok észlelésének engedélyezése mellett az Azure AD Password hash Sync (PHS) és az Azure MFA lehetővé teszi a felhasználók számára, hogy a helyszíni leállások miatt a maihoz, például a [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)-hez hozzáférjenek az SaaS-alkalmazásokhoz és az Office 365-hez. Az PHS is engedélyezhető az összevonással együtt. A PHS engedélyezése lehetővé teszi a hitelesítés tartalékát, ha az összevonási szolgáltatások nem érhetők el.
+Az egyszerűség előnyei és a kiszivárgott hitelesítő adatok észlelése mellett az Azure AD Password hash Sync (PHS) és az Azure MFA lehetővé teszi a felhasználók számára az SaaS-alkalmazások elérését, Microsoft 365 és a helyszíni leállások dacára a maihoz, például a [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)miatt. Az PHS is engedélyezhető az összevonással együtt. A PHS engedélyezése lehetővé teszi a hitelesítés tartalékát, ha az összevonási szolgáltatások nem érhetők el.
 
 Ha a helyszíni szervezet nem rendelkezik leállás utáni rugalmassági stratégiával, vagy amely nem integrált az Azure AD-vel, akkor az Azure AD-PHS kell telepítenie, és meg kell határoznia egy vész-helyreállítási tervet, amely PHS tartalmaz. Az Azure AD-PHS engedélyezése lehetővé teszi a felhasználók számára az Azure AD-beli hitelesítését, ha a helyszíni Active Directory elérhetetlenné válnak.
 
@@ -249,7 +249,7 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 - Több alkalmazásra is alkalmazható alapszabályzatok kis készlete
 - Hozzon létre üres kivételi csoportokat, és vegye fel őket a szabályzatokhoz, hogy legyen egy kivételi stratégia
 - A [break Glass](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) -fiókok MFA-vezérlők nélküli megtervezése
-- Egységes felhasználói élményt biztosíthat az Office 365 ügyfélalkalmazások, például a csapatok, a OneDrive for Business, az Outlook stb. számára. ugyanazon vezérlők megvalósításával olyan szolgáltatásokhoz, mint az Exchange Online és a SharePoint Online
+- Egységes felhasználói élményt biztosíthat Microsoft 365 ügyfélalkalmazások, például csapatok, OneDrive, Outlook stb.) számára. ugyanazon vezérlők megvalósításával olyan szolgáltatásokhoz, mint az Exchange Online és a SharePoint Online
 - A szabályzatokhoz való hozzárendelést olyan csoportokon keresztül kell megvalósítani, amelyek nem egyéniek
 - A szabályzatokban használt kivételi csoportok rendszeres felülvizsgálatával korlátozható, hogy a felhasználók ne legyenek a biztonsági testhelyzetben. Ha saját Azure AD P2-t használ, a hozzáférési felülvizsgálatok segítségével automatizálhatja a folyamatot
 
@@ -302,7 +302,7 @@ Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálha
 
 | Erőforrás | Engedély |
 | :- | :- |
-| Office 365 Exchange Online | EAS. AccessAsUser. All |
+| Exchange Online | EAS. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
 | Microsoft Graph API | Mail. Read |
@@ -339,7 +339,7 @@ Az alábbiakban láthatók azok a felhasználói és csoportos beállítások, a
 
 #### <a name="group-settings"></a>Csoportbeállítások
 
-**Önkiszolgáló csoportok kezelése/a felhasználók létrehozhatnak biztonsági csoportokat/O365 csoportokat.** Ha a felhőben nincsenek a csoportokra érvényes önkiszolgáló kezdeményezés, az ügyfelek dönthetnek úgy, hogy kikapcsolják, amíg készen nem állnak a funkció használatára.
+**Önkiszolgáló csoportok kezelése/a felhasználók létrehozhatnak biztonsági csoportokat vagy Microsoft 365 csoportokat.** Ha a felhőben nincsenek a csoportokra érvényes önkiszolgáló kezdeményezés, az ügyfelek dönthetnek úgy, hogy kikapcsolják, amíg készen nem állnak a funkció használatára.
 
 #### <a name="groups-recommended-reading"></a>Ajánlott olvasási csoportok
 
@@ -389,6 +389,6 @@ A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segí
 - A felhasználók és a csoportok beállításainak zárolása.
 - Az Azure AD-naplók hosszú távú tárolásának engedélyezése a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a [személyazonosság-irányítási operatív ellenőrzésekkel és műveletekkel](active-directory-ops-guide-govern.md).

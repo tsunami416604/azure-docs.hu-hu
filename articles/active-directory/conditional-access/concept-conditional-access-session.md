@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993854"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601809"
 ---
 # <a name="conditional-access-session"></a>Feltételes hozzáférés: munkamenet
 
@@ -57,7 +57,7 @@ A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, am
 - Word, Excel, PowerPoint online
 - OneNote online
 - Office.com
-- O365 felügyeleti portál
+- Microsoft 365 felügyeleti portál
 - Exchange Online
 - SharePoint és OneDrive
 - Csapat webes ügyfele

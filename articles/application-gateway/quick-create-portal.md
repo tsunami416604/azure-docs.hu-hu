@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961958"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601350"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal
 
@@ -25,8 +25,6 @@ Az Application Gateway az alkalmazás webes forgalmát egy háttér-készlet ado
 Ezt a rövid útmutatót [Azure PowerShell](quick-create-powershell.md) vagy az [Azure CLI](quick-create-cli.md)használatával is elvégezheti.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -171,7 +169,7 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
 2. A következő parancs futtatásával telepítse az IIS-t a virtuális gépre. Szükség esetén módosítsa a *Location* paramétert: 
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
@@ -197,11 +195,10 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
 5. A **cél**területen válassza ki a **myVM** és **myVM2** virtuális gépeket, valamint a hozzájuk társított hálózati adaptereket a legördülő listából.
 
-
    > [!div class="mx-imgBorder"]
    > ![Háttérkiszolgálók hozzáadása](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 7. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
 
@@ -228,7 +225,7 @@ Az erőforráscsoport törlése:
 3. Az **erőforráscsoport lapon**válassza az **erőforráscsoport törlése**elemet.
 4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Application Gateway konfigurálása TLS-megszakítással a Azure Portal használatával](create-ssl-portal.md)

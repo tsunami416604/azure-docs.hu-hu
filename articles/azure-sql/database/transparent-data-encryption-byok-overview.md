@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318291"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602669"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -93,6 +93,10 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 - A kulcsnak *engedélyezett* állapotban kell lennie.
 
 - Ha meglévő kulcsot importál a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokat (. pfx,. byok vagy. backup) adja meg.
+
+> [!NOTE]
+> Az Azure SQL mostantól támogatja a felügyelt HSM-ben tárolt RSA-kulcs használatát TDE-védőként. Ez a funkció **nyilvános előzetes**verzióban érhető el. Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az FIPS 140-2 3. szintű hitelesített HSM használatával. További információ a [felügyelt HSM](https://aka.ms/mhsm).
+
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Javaslatok az ügyfél által felügyelt TDE konfigurálásához
 
@@ -205,7 +209,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 

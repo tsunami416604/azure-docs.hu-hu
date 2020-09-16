@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641364"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600945"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazás-hitelesítés áthelyezése Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directoryra
 
@@ -35,7 +35,7 @@ Ha olyan helyszíni címtárral rendelkezik, amely felhasználói fiókokat tart
 
 A felhasználók közvetlenül a helyszíni Active Directory is hitelesíthetők. A Active Directory összevonási szolgáltatások (AD FS) (AD FS) egy szabványon alapuló helyszíni Identitáskezelő szolgáltatás. AD FS kiterjeszti az egyszeri bejelentkezés (SSO) funkcióinak használatát a megbízható üzleti partnerek között anélkül, hogy a felhasználóknak külön kell bejelentkezniük az egyes alkalmazásokra. Ez az összevonás.
 
-Számos szervezet rendelkezik olyan szoftverrel (SaaS) vagy egyéni üzletági (LOB) alkalmazásokkal, amelyek közvetlenül összevontak a AD FSba, az Office 365 és az Azure AD-alapú alkalmazások mellett. 
+Számos szervezet rendelkezik olyan szoftverrel (SaaS) vagy egyéni üzletági (LOB) alkalmazásokkal, amelyek közvetlenül összevontak a AD FSba Microsoft 365 és az Azure AD-alapú alkalmazások mellett. 
 
 ![Közvetlenül a helyszínen csatlakoztatott alkalmazások](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
@@ -199,13 +199,13 @@ Az alábbi táblázat egy AD FS függő entitás megbízhatósága Azure AD Ente
 
 | Konfigurációs beállítás| AD FS| Konfigurálás az Azure AD-ben| SAML-jogkivonat |
 | - | - | - | - |
-| **Alkalmazás bejelentkezési URL-címe** <p>Az alkalmazásba a szolgáltató (SP) által kezdeményezett SAML-folyamatba bejelentkező felhasználó URL-címe.| n.a.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| n.a. |
+| **Alkalmazás bejelentkezési URL-címe** <p>Az alkalmazásba a szolgáltató (SP) által kezdeményezett SAML-folyamatba bejelentkező felhasználó URL-címe.| N/A| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N/A |
 | **Alkalmazás válasz URL-címe** <p>Az alkalmazás URL-címe az identitás-szolgáltató (identitásszolgáltató) szemszögéből. A identitásszolgáltató elküldi a felhasználót és a tokent, miután a felhasználó bejelentkezett a identitásszolgáltató.  Ezt az SAML-jogcímek **fogyasztói végpontjának**is nevezzük.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| A cél elem az SAML-jogkivonatban. Példaérték: `https://contoso.my.salesforce.com` |
-| **Alkalmazás kijelentkezési URL-címe** <p>Ezt az URL-címet kell elküldeni a "kijelentkezési tisztítási" kérések elküldésekor, amikor egy felhasználó kijelentkezik az alkalmazásból. A identitásszolgáltató elküldi a kérést, hogy kijelentkezzen a felhasználótól az összes többi alkalmazásból is.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| n.a. |
+| **Alkalmazás kijelentkezési URL-címe** <p>Ezt az URL-címet kell elküldeni a "kijelentkezési tisztítási" kérések elküldésekor, amikor egy felhasználó kijelentkezik az alkalmazásból. A identitásszolgáltató elküldi a kérést, hogy kijelentkezzen a felhasználótól az összes többi alkalmazásból is.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N/A |
 | **Alkalmazásazonosító** <p>Ez az alkalmazás azonosítója a identitásszolgáltató szemszögéből. A bejelentkezési URL-cím értéke gyakran használatos az azonosítóhoz (de nem mindig).  Néha az alkalmazás meghívja ezt az "Entity ID"-t.| Az **azonosítók** lap kijelölése|Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| Leképezi az SAML-jogkivonat **célközönség** elemét. |
-| **Alkalmazás összevonási metaadatai** <p>Ez az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.| A **figyelés** lap kiválasztása| N/A. Az Azure AD nem támogatja az alkalmazások összevonási metaadatainak közvetlen felhasználását. Az összevonási metaadatokat manuálisan is importálhatja.| n.a. |
+| **Alkalmazás összevonási metaadatai** <p>Ez az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.| A **figyelés** lap kiválasztása| N/A. Az Azure AD nem támogatja az alkalmazások összevonási metaadatainak közvetlen felhasználását. Az összevonási metaadatokat manuálisan is importálhatja.| N/A |
 | **Felhasználói azonosító/név azonosítója** <p>A felhasználó identitását az Azure AD-ből vagy az AD FS-ből az alkalmazás felé egyértelműen azonosító attribútum.  Ez az attribútum általában a felhasználó egyszerű felhasználóneve vagy e-mail-címe.| Jogcím-szabályok. A legtöbb esetben a jogcím szabály a NameIdentifier végződő típussal rendelkező jogcímet bocsát ki.| Az azonosítót a **felhasználói attribútumok és jogcímek**fejléce alatt találja. Alapértelmezés szerint a rendszer az UPN-t használja| Leképezi az SAML-token **NameID** elemét. |
-| **Egyéb jogcímek** <p>A identitásszolgáltató és az alkalmazás között gyakran küldött egyéb jogcím-információk közé tartozik például az utónév, a vezetéknév, az E-mail cím és a csoporttagság.| Az AD FS-ben ez a függő entitásra vonatkozó egyéb jogcímszabályokként található meg.| Az azonosító a fejléc **felhasználói attribútumok & jogcímek**alatt található. Válassza ki az **Egyéb felhasználói attribútumok megtekintése** és szerkesztése elemet.| n.a. |
+| **Egyéb jogcímek** <p>A identitásszolgáltató és az alkalmazás között gyakran küldött egyéb jogcím-információk közé tartozik például az utónév, a vezetéknév, az E-mail cím és a csoporttagság.| Az AD FS-ben ez a függő entitásra vonatkozó egyéb jogcímszabályokként található meg.| Az azonosító a fejléc **felhasználói attribútumok & jogcímek**alatt található. Válassza ki az **Egyéb felhasználói attribútumok megtekintése** és szerkesztése elemet.| N/A |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>A Térkép identitás-szolgáltatója (identitásszolgáltató) beállításai
@@ -406,7 +406,7 @@ Ebben a táblázatban néhány hasznos engedély szerepel, de a lehetőségek é
 | A kérelemben megadott jogcímek| Ez a beállítás nem telepíthető át| Ez a beállítás nem telepíthető át |
 
 
-Példa a megbízható helyek kizárási beállításának konfigurálására az Azure Portalon:
+Példa a megbízható helyek kizárási beállításának konfigurálására a Azure Portalban:
 
 ![A hozzáférés-vezérlési szabályzatok leképezése képernyőkép](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-3.png)
 

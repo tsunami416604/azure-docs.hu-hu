@@ -5,14 +5,14 @@ description: Ismerje meg, hogyan hozhat létre egyéni Intune-profilt az Azure V
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5a754a14cada1547a83e29d474e9b77aed7a2728
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024349"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602193"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Intune-profil létrehozása VPN-ügyféloldali profilok üzembe helyezéséhez
 
@@ -54,17 +54,7 @@ Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](https://docs.micro
     </VPNProfile>
    ```
 1. Módosítsa a és a közötti bejegyzést ```<ServerUrlList>``` ```</ServerUrlList>``` a letöltött profil (azurevpnconfig.xml) bejegyzéseivel. Módosítsa a "TrustedNetworkDetection" FQDN-t úgy, hogy az illeszkedjen a környezetéhez.
-1. Nyissa meg az Azure letöltött profilt (azurevpnconfig.xml), és másolja a tartalmat a vágólapra a szöveg kiemelésével, és nyomja le a <ctrl> + C billentyűkombinációt. másolja a következő AzVpnProfile-sorok között, de ne másolja maguk a AzVpnProfile sorokat:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-
-   For example - copy the text in your xml that is located here.
-
-   </AzVpnProfile>
-   ```
+1. Nyissa meg az Azure letöltött profilt (azurevpnconfig.xml), és másolja a teljes tartalmat a vágólapra a szöveg kiemelésével és a CTRL + C billentyűkombinációval. 
 1. Illessze be a másolt szöveget az előző lépésből a címkék között a 2. lépésben létrehozott fájlba ```<CustomConfiguration>  </CustomConfiguration>``` . Mentse a fájlt egy XML-bővítménnyel.
 1. Jegyezze fel az értéket a ```<name>  </name>``` címkékben. Ez a profil neve. Erre a névre szüksége lesz, amikor létrehozza a profilt az Intune-ban. Zárjuk be a fájlt, és jegyezze fel a mentési helyét.
 
@@ -95,6 +85,6 @@ Ebben a szakaszban egy Microsoft Intune-profilt hoz létre egyéni beállításo
     :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Profil létrehozása":::
 1. Az egyéni profil létrehozása megtörtént. A profil üzembe helyezésének Microsoft Intune lépéseiért lásd: [felhasználói és eszköz profilok társítása](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a pont – hely kapcsolatról: [Tudnivalók a pont – hely](point-to-site-about.md)kapcsolatról.

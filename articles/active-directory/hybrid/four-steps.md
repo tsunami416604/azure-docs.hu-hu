@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279329"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600797"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
 
@@ -46,7 +46,7 @@ Az Azure AD lehetővé teszi, hogy a rendszergazdák [alkalmazásokat vegyenek f
 Miután hozzáadta az alkalmazásokat az Azure AD-katalógushoz, a felhasználók megtekinthetik a hozzájuk rendelt alkalmazásokat, és igény szerint kereshetnek és igényelhetnek más alkalmazásokat. Az Azure AD [számos módszert](../manage-apps/end-user-experiences.md) biztosít a felhasználók számára az alkalmazások eléréséhez:
 
 * Hozzáférési panel/saját alkalmazások
-* Az Office 365 appindítója
+* Microsoft 365 alkalmazásindító
 * Közvetlen bejelentkezés az összevont alkalmazásokba
 * Közvetlen bejelentkezési hivatkozások
 
@@ -115,7 +115,7 @@ A helyszíni Active Directoryekkel rendelkező szervezeteknek Azure AD Connect h
 
 Az Azure AD-ben a Felhőbeli hitelesítés engedélyezésének legegyszerűbb és ajánlott módja a [jelszó-kivonat szinkronizálásának](./how-to-connect-password-hash-synchronization.md) (PHS) engedélyezése. Más szervezetek is dönthetnek az [átmenő hitelesítés](./how-to-connect-pta-quick-start.md) (PTA ESP) engedélyezésében.
 
-Függetlenül attól, hogy a PHS vagy a PTA elemet választja, ne felejtsen el [zökkenőmentes egyszeri bejelentkezést](./how-to-connect-sso.md) engedélyezni, hogy a felhasználók hozzáférhessenek a felhőalapú alkalmazásokhoz anélkül, hogy a Windows 7 és 8 rendszerű eszközöket használják a vállalati hálózaton. Egyszeri bejelentkezés nélkül a felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük az egyes alkalmazásokra. Hasonlóképpen, az informatikai részlegnek létre kell hoznia és frissítenie kell a felhasználói fiókokat az egyes alkalmazásokhoz, például az Office 365, a Box és a Salesforce. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk az egyes alkalmazásokra való bejelentkezésre. Egy szabványosított egyszeri bejelentkezési mechanizmus biztosítása a teljes vállalat számára létfontosságú a legjobb felhasználói élmény, a kockázat csökkentése, a jelentés és a szabályozás terén.
+Függetlenül attól, hogy a PHS vagy a PTA elemet választja, ne felejtsen el [zökkenőmentes egyszeri bejelentkezést](./how-to-connect-sso.md) engedélyezni, hogy a felhasználók hozzáférhessenek a felhőalapú alkalmazásokhoz anélkül, hogy a Windows 7 és 8 rendszerű eszközöket használják a vállalati hálózaton. Egyszeri bejelentkezés nélkül a felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük az egyes alkalmazásokra. Hasonlóképpen, az informatikai részlegnek is létre kell hoznia és frissítenie kell az egyes alkalmazásokhoz tartozó felhasználói fiókokat, például a Microsoft 365, a Box és a Salesforce. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk az egyes alkalmazásokra való bejelentkezésre. Egy szabványosított egyszeri bejelentkezési mechanizmus biztosítása a teljes vállalat számára létfontosságú a legjobb felhasználói élmény, a kockázat csökkentése, a jelentés és a szabályozás terén.
 
 A AD FS vagy egy másik helyszíni hitelesítési szolgáltatót használó szervezetek esetében az Azure AD-re való áttéréssel az identitás-szolgáltató csökkentheti a bonyolultságot, és javíthatja a rendelkezésre állást. Ha nem rendelkezik konkrét használati esetekkel az összevonás használatához, javasoljuk, hogy az összevont hitelesítésből telepítse át a PHS és a zökkenőmentes SSO-t, illetve a PTA SSO-t és a zökkenőmentes egyszeri bejelentkezést. További információ: [áttelepítés az összevonás és jelszó kivonatának szinkronizálása a Azure Active Directoryhoz](./plan-migrate-adfs-password-hash-sync.md).
 
@@ -156,7 +156,7 @@ A felhasználók az alkalmazásokhoz való hozzárendelése a csoportok használ
 * Attribútum – a dinamikus csoporttagság alapján
 * Delegálás az alkalmazás tulajdonosainak
 
-Az Azure AD lehetővé teszi az erőforrásokhoz való hozzáférés kezelését a biztonsági csoportok és az Office 365-csoportok használatával. Ezeket a csoportokat egy csoport tulajdonosa felügyelheti, aki jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Ez a szolgáltatás önkiszolgáló [csoportként](../users-groups-roles/groups-self-service-management.md)ismert, így időt takaríthat meg azzal, hogy lehetővé teszi, hogy a csoport tulajdonosai nem rendelkeznek rendszergazdai szerepkörrel a csoportok létrehozásához és kezeléséhez anélkül, hogy a rendszergazdáknak kellene hagyatkozni a kéréseik kezeléséhez.
+Az Azure AD lehetővé teszi az erőforrásokhoz való hozzáférés kezelését a biztonsági csoportok és Microsoft 365 csoportok használatával. Ezeket a csoportokat egy csoport tulajdonosa felügyelheti, aki jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Ez a szolgáltatás önkiszolgáló [csoportként](../users-groups-roles/groups-self-service-management.md)ismert, így időt takaríthat meg azzal, hogy lehetővé teszi, hogy a csoport tulajdonosai nem rendelkeznek rendszergazdai szerepkörrel a csoportok létrehozásához és kezeléséhez anélkül, hogy a rendszergazdáknak kellene hagyatkozni a kéréseik kezeléséhez.
 
 ## <a name="step-4---operationalize-your-insights"></a>4. lépés – az működővé tenni
 
@@ -212,7 +212,7 @@ Az árnyék felfedése mellett a [Microsoft Cloud app Security](/cloud-app-secur
 
 *"A Cloud App Security gyorsan észlelheti a rendellenességeket, és műveleteket végezhet."* --- [Eric LePenske, vezető menedzser, információbiztonság, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A hibrid identitási megoldások megvalósításának számos aspektusa van, de ez a négy lépésből álló ellenőrzőlista segít egy olyan identitás-infrastruktúra gyors megvalósításában, amely lehetővé teszi a felhasználók számára, hogy hatékonyabbá és biztonságosabbá tegyék a felhasználókat.
 
@@ -265,7 +265,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 ||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
 ||A támogatási hívások illesztőprogramjainak ismertetése|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan növelheti a biztonságos testhelyzetet a Azure Active Directory képességeivel, és ez az öt lépésből álló ellenőrzőlista – [öt lépés az identitás-infrastruktúra biztonságossá](https://aka.ms/securitysteps)tételéhez.
 

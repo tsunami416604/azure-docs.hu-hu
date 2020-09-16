@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel a helyszíni fizikai kiszolgál�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: d886d69e3ef40092af3d0d1e3d489d0d87fa343c
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 0436ce3a02b6e271a62fe827d1a2d9a8b77dbfbe
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90064355"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600738"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Oktatóanyag: fizikai kiszolgálók felderítése kiszolgáló-értékeléssel
 
@@ -94,7 +94,7 @@ Hozzon létre egy új Azure Migrate projektet.
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-physical/new-project.png)
 
-7. Válassza a **Létrehozás** lehetőséget.
+7. Kattintson a **Létrehozás** gombra.
 8. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
 
 A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
@@ -104,19 +104,51 @@ A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá
 
 ## <a name="set-up-the-appliance"></a>A készülék beállítása
 
-Ha a készüléket fizikai gépen szeretné beállítani, egy [megfelelő gépen](#prerequisites)letöltheti és futtathatja a telepítő szkriptjét. A készülék létrehozása után első alkalommal be kell állítania azt, és regisztrálnia kell a Azure Migrate projektben.
+A készülék beállítása:
+- Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+- Töltse le a Azure Migrate telepítő parancsfájlt tartalmazó tömörített fájlt a Azure Portal.
+- Bontsa ki a tömörített fájl tartalmát. Indítsa el a PowerShell-konzolt rendszergazdai jogosultságokkal.
+- Futtassa a PowerShell-szkriptet a berendezés webalkalmazásának elindításához.
+- Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
+
+### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
+
+1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+2. A **Discover Machines**szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
+3. **1.: Azure Migrate Project-kulcs létrehozásakor**adja meg a fizikai vagy virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
+1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
+1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
+1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="download-the-installer-script"></a>A telepítő parancsfájl letöltése
 
-Töltse le a készülék tömörített fájlját.
-
-1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
-2. A **felderítési gépeken**a  >  **gépek virtualizáltak?** kattintson a **nem virtualizált/egyéb**elemre.
-3. A tömörített fájl letöltéséhez kattintson a **Letöltés** gombra.
+**2.: töltse le Azure Migrate készüléket**, és kattintson a **Letöltés**gombra.
 
 
-### <a name="install-the-appliance"></a>A készülék telepítése
+### <a name="verify-security"></a>Biztonság ellenőrzése
 
+A telepítése előtt győződjön meg arról, hogy a tömörített fájl biztonságos.
+
+1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
+2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához:
+    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    - Példa a nyilvános felhő használatára: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
+    - Példa kormányzati felhő használatára: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
+3.  Ellenőrizze a készülék legújabb verzióit és a kivonatoló értékeket:
+    - Nyilvános felhő esetén:
+
+        **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
+        --- | --- | ---
+        Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
+
+    - Azure Government esetén:
+
+        **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
+        --- | --- | ---
+        Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
+ 
+
+### <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
 A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
@@ -134,80 +166,82 @@ Futtassa a szkriptet a következő módon:
 3. Módosítsa a PowerShell könyvtárat arra a mappára, ahol a rendszer kibontotta a tartalmat a letöltött tömörített fájlból.
 4. Futtassa a **AzureMigrateInstaller.ps1** nevű szkriptet a következő parancs futtatásával:
 
-    - Nyilvános felhő esetén: ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
-    - Azure Government esetén: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+    - Nyilvános felhő esetén: 
+    
+        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
+    - Azure Government esetén: 
+    
+        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 
     A szkript a készülék webalkalmazásának sikeres befejeződése után elindítja a készüléket.
 
 Ha bármilyen probléma merül fel, a parancsfájl-naplókat a C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log naplófájlban érheti el a hibaelhárításhoz.
 
 
+
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
-A készülék hozzáférését a következőképpen tekintheti meg:
-
-1. Győződjön meg arról, hogy a készülék számítógépe tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhők számára.
-2. Győződjön meg arról, hogy ezek a portok nyitva vannak a készülék gépén:
-
-    - Engedélyezze a bejövő kapcsolatokat a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.
-    - Engedélyezze a bejövő kapcsolatokat a 44368-as porton a berendezés webalkalmazásának távoli eléréséhez a következő URL-címen: https://<Appliance-IP-vagy-Name>:44368.
-    - Engedélyezze a kimenő kapcsolatokat a 443-as porton (HTTPS) a felderítési és a teljesítmény-metaadatok küldéséhez Azure Migrate.
-
+Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhők számára.
 
 ### <a name="configure-the-appliance"></a>A berendezés konfigurálása
 
 Állítsa be a készüléket első alkalommal.
 
-1. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a virtuális géphez, és nyissa meg a berendezés webalkalmazásának URL-címét: **https://*készülék neve vagy IP-címe*: 44368**.
+1. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a berendezéshez, és nyissa meg a berendezés webalkalmazásának URL-címét: **https://*készülék neve vagy IP-címe*: 44368**.
 
-   Másik lehetőségként megnyithatja az alkalmazást a készülék asztaláról az alkalmazás parancsikonjának kiválasztásával.
-2. A Azure Migrate Appliance-webalkalmazásban > az **Előfeltételek beállításához**tekintse át/fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
-3. A készülék ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel, és hogy a virtuális gépen lévő idő szinkronban van-e az internetes idő alatt.
-    - Ha proxyt használ, kattintson a **proxy beállítása** elemre, és adja meg a proxy címe és portját (a következő formátumban: http://ProxyIPAddress vagy http://ProxyFQDN) . 
-    - Hitelesítő adatok megadása, ha a proxy hitelesítést igényel. Csak a HTTP-proxyk használata támogatott.
-4. A készülék telepíti a legújabb Azure Migrate frissítéseket
-5. Tekintse át a beállításokat, és kattintson a **Folytatás**gombra.
-
+   Másik lehetőségként megnyithatja az alkalmazást az asztalról az alkalmazás parancsikonra kattintva.
+2. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
+1. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
+    - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
+        - Kattintson a **proxy beállítása** elemre, és adja meg a proxy címe (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
+        - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
+        - Csak a HTTP-proxyk használata támogatott.
+        - Ha hozzáadta a proxy részleteit, vagy letiltotta a proxyt és/vagy a hitelesítést, kattintson a **Save (Mentés** ) gombra a kapcsolat ismételt elindításához.
+    - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken a kiszolgáló felderítésének megfelelő működéséhez az idő szinkronizálása szükséges.
+    - **Frissítések telepítése**: Azure Migrate Server Assessment ellenőrzi, hogy a készüléken telepítve vannak-e a legújabb frissítések. Az ellenőrzések befejezése után a berendezés **megtekintése** lehetőségre kattintva megtekintheti a készüléken futó összetevők állapotát és verzióit.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. A **Azure Migrate regisztrálása**lapon válassza a **Bejelentkezés**lehetőséget. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
+1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése**lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Kattintson a **Bejelentkezés**elemre. Egy új böngésző lapon nyit meg egy Azure-beli bejelentkezési kérést. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
+1. Az új lapon jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
+   
+   A PIN-kóddal való bejelentkezés nem támogatott.
+3. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz. 
+4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](tutorial-prepare-physical.md) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
+1. A készülék sikeres regisztrálása után a **részletek megtekintése**lehetőségre kattintva megtekintheti a regisztráció részleteit.
 
-    ![A készülék regisztrálásának megkezdéséhez kattintson a Bejelentkezés gombra.](./media/tutorial-discover-physical/register.png)
-
-2. A **bejelentkezési** oldalon jelentkezzen be az Azure-beli felhasználónevével és jelszavával. A PIN-kóddal való bejelentkezés nem támogatott.
-3. A sikeres bejelentkezést követően térjen vissza az alkalmazáshoz.
-4. A **Azure Migrate regisztrálása**területen válassza ki azt az előfizetést, amelyben a Azure Migrate projekt létrejött, majd válassza ki a projektet.
-5. Adja meg a berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
-6. Válassza a **Regisztráció** lehetőséget. Ezután kattintson a **Continue** (Folytatás) gombra. Egy üzenetben a sikeres regisztráció látható.
-
-    ![Adja meg az előfizetés, a projekt és a berendezés nevét, és regisztrálja a készüléket](./media/tutorial-discover-physical/success-register.png)
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
 
-A készülék a fizikai kiszolgálóhoz csatlakozik a felderítéshez.
+Most kapcsolódjon a készülékről a felderíteni kívánt fizikai kiszolgálókhoz, és indítsa el a felderítést.
 
-1. Kattintson a **hitelesítő adatok hozzáadása** elemre azon fiók hitelesítő adatainak megadásához, amelyet a berendezés a kiszolgálók felderítéséhez használ majd.  
-2. Jelentkezzen be a felhasználónévvel és a jelszóval. A kulccsal való bejelentkezés nem támogatott. Emellett a felhasználónak a legfelső szintű bejelentkezési azonosítónak vagy a helyi rendszergazdai csoportnak kell lennie.
-3. Adja meg az **operációs rendszert**, a hitelesítő adatok rövid nevét, valamint a felhasználónevet és a jelszót. Ezután kattintson az **Add** (Hozzáadás) gombra.
-Több hitelesítő adatot is hozzáadhat a Windows-és Linux-kiszolgálókhoz.
-4. Kattintson a **kiszolgáló hozzáadása**elemre, és adja meg a kiszolgáló adatait – FQDN/IP-cím és a hitelesítő adatok rövid neve (egy sor, soronként egy bejegyzés) a kiszolgálóhoz való kapcsolódáshoz.
-5. Kattintson a **Validate** (Érvényesítés) elemre. Az ellenőrzés után megjelenik a felderíthető kiszolgálók listája.
-    - Ha egy kiszolgáló érvényesítése meghiúsul, tekintse át a hibát az **állapot** oszlopban látható ikon fölé helyezve. Javítsa ki a hibákat, és ismételje meg az érvényesítést.
-    - Kiszolgáló eltávolításához válassza a > **Törlés**lehetőséget.
-6. Az ellenőrzés után kattintson a Mentés gombra, **és indítsa** el a felderítést a felderítési folyamat elindításához.
-
-Ez elindítja a felderítést. A kiszolgálók általában kevesebb, mint két percet vesznek igénybe a metaadatoknak a Azure Portalban való megjelenítéséhez.
+1. Az **1. lépés: hitelesítő adatok megadása a Windows-és Linux-alapú fizikai vagy virtuális kiszolgálók felderítéséhez**kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** egy Windows-vagy Linux-kiszolgálóhoz. Kattintson a **Save (Mentés**) gombra.
+1. Ha egyszerre több hitelesítő adatot szeretne felvenni, kattintson a **továbbiak hozzáadása** elemre, és adjon hozzá további hitelesítő adatokat. A fizikai kiszolgálók felderítéséhez több hitelesítő adat is támogatott.
+1. A **2. lépés: fizikai vagy virtuális kiszolgáló adatainak**megadása elemnél kattintson a **felderítési forrás hozzáadása** lehetőségre a kiszolgáló **IP-címének/teljes tartománynevének** és a kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítő adatok rövid nevének megadásához.
+1. Egyszerre **egyetlen elemet is hozzáadhat** , vagy egy menetben **több elemet is hozzáadhat** . Lehetőség van arra is, hogy a kiszolgáló adatait a **CSV importálásával**adja meg.
 
 
-## <a name="verify-discovered-vms-in-the-portal"></a>Felderített virtuális gépek ellenőrzése a portálon
+    - Ha az **egyetlen elem hozzáadása**lehetőséget választja, kiválaszthatja az operációs rendszer típusát, megadhatja a hitelesítő adatok rövid nevét, a kiszolgáló **IP-címét vagy teljes tartománynevét** , majd kattintson a **Mentés**gombra.
+    - Ha úgy dönt, hogy **több elemet ad hozzá**, egyszerre több rekordot is hozzáadhat, ha a szövegmezőben a hitelesítő adatok rövid nevét adja meg a kiszolgáló **IP-címe/teljes tartományneve** mezőben. **Ellenőrizze** a hozzáadott rekordokat, és kattintson a **Save (Mentés**) gombra.
+    - Ha a **CSV importálása** _(alapértelmezés szerint kiválasztva)_ lehetőséget választja, letöltheti a CSV-sablonfájl fájlját, feltöltheti a fájlt a kiszolgáló **IP-címével/teljes tartománynevével** , valamint a hitelesítő adatok rövid nevét. Ezután importálja a fájlt a készülékbe, **ellenőrizze** a fájlban szereplő rekordokat, és kattintson a **Mentés**gombra.
 
-A felderítést követően ellenőrizheti, hogy a virtuális gépek megjelennek-e a Azure Portalban:
+1. A Save (Mentés) gombra kattintva a készülék megpróbálhatja érvényesíteni a hozzáadott kiszolgálókhoz való kapcsolódást, és megjeleníti az **ellenőrzési állapotot** a táblában az egyes kiszolgálókon.
+    - Ha egy kiszolgáló érvényesítése meghiúsul, tekintse át a hibát, ha a tábla állapot oszlopában a **sikertelen érvényesítés** gombra kattint. Javítsa ki a problémát, és ismételje meg az érvényesítést.
+    - Kiszolgáló eltávolításához kattintson a **Törlés**gombra.
+1. A felderítés megkezdése előtt bármikor **újraérvényesítheti** a kiszolgálókkal való kapcsolatot.
+1. Kattintson a **felderítés indítása**gombra a sikeresen érvényesített kiszolgálók felderítésének elindításához. A felderítés sikeres elindítása után megtekintheti a felderítési állapotot a tábla minden egyes kiszolgálóján.
+
+
+Ez elindítja a felderítést. Kiszolgálónként körülbelül 2 percet vesz igénybe, hogy a felderített kiszolgáló metaadatai megjelenjenek a Azure Portalban.
+
+## <a name="verify-servers-in-the-portal"></a>Kiszolgálók ellenőrzése a portálon
+
+A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
 1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-** Servers  >  **Azure Migrate: kiszolgáló értékelése**lapon válassza ki a **felderített kiszolgálók**darabszámát megjelenítő ikont.
-
-## <a name="next-steps"></a>Következő lépések
+2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-assess-physical.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

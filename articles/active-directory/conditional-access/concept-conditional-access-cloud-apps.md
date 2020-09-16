@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948402"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602064"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -55,9 +55,9 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
-- Office 365 SharePoint Online
-- Office 365 Yammer
+- Exchange Online
+- SharePoint
+- Yammer
 - Office Delve
 - Office-Sway
 - Outlook Groups
@@ -69,7 +69,7 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 
 ### <a name="office-365-preview"></a>Office 365 (előzetes verzió)
 
-Az Office 365 olyan felhőalapú hatékonyságnövelő és együttműködési szolgáltatásokat nyújt, mint például az Exchange, a SharePoint és a Microsoft teams. Az Office 365 Cloud Services szorosan integrált a zökkenőmentes és együttműködő élmény biztosítása érdekében. Ez az integráció zavart okozhat a házirendek létrehozásakor, mivel egyes alkalmazások, például a Microsoft-csapatok függőségekkel rendelkeznek másokkal, például a SharePoint vagy az Exchange használatával.
+A Microsoft 365 felhőalapú hatékonyságnövelő és együttműködési szolgáltatásokat nyújt, mint például az Exchange, a SharePoint és a Microsoft teams. A Microsoft 365 Cloud Services szorosan integrálva van a zökkenőmentes és együttműködő élmény biztosítása érdekében. Ez az integráció zavart okozhat a házirendek létrehozásakor, mivel egyes alkalmazások, például a Microsoft-csapatok függőségekkel rendelkeznek másokkal, például a SharePoint vagy az Exchange használatával.
 
 Az Office 365 (előzetes verzió) alkalmazás lehetővé teszi, hogy egyszerre lehessen megcélozni ezeket a szolgáltatásokat. Javasoljuk, hogy az új Office 365 (előzetes verzió) alkalmazást az egyes felhőalapú alkalmazások célzása helyett a [szolgáltatási függőségek](service-dependencies.md)elkerülése érdekében használja. Az alkalmazások csoportjának megcélzása segít elkerülni a nem konzisztens házirendek és függőségek miatt felmerülő problémákat.
 
@@ -82,10 +82,10 @@ Az Office 365 (előzetes verzió) ügyfélalkalmazás részét képező legfonto
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
-   - Office 365 Exchange Online
-   - Office 365 SharePoint Online
-   - Office 365 Search Service
-   - Office 365 Yammer
+   - Exchange Online
+   - SharePoint Online
+   - Microsoft 365 Search Service
+   - Yammer
    - Office Delve
    - Office Online
    - Office.com
@@ -127,7 +127,7 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 
 A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégezhetnek. Az egyetlen jelenleg támogatott művelet a **biztonsági információk regisztrálása**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzat kikényszerítse azokat a felhasználókat, akik a kombinált regisztrációhoz engedélyezve vannak a biztonsági információik regisztrálásához. További információt a következő cikkben talál: [kombinált biztonsági információk regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: feltételek](concept-conditional-access-conditions.md)
 

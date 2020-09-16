@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530403"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600653"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
@@ -90,7 +90,10 @@ Az erőforrás-mozgató felügyelt identitás nem rendelkezik a szükséges szer
 Az erőforrás-mozgató felügyelt identitás *none*értékre lett visszaállítva. | Egy rendszerhez rendelt identitás újraengedélyezése a gyűjtemény áthelyezése > **identitásban**. Azt is megteheti, hogy újra hozzáadja az erőforrást a **Hozzáadás erőforrásokhoz**, ami ugyanezt teszi.  
 Az előfizetés átkerült egy másik bérlőre. | Tiltsa le, majd engedélyezze a felügyelt identitást az áthelyezési gyűjtemény számára.
 
+### <a name="how-can-i-do-multiple-moves-together"></a>Hogyan végezhetek együtt több lépést?
 
-## <a name="next-steps"></a>Következő lépések
+Szükség szerint módosítsa a forrás-és a cél kombinációt a portálon a módosítás lehetőség használatával.
+
+## <a name="next-steps"></a>További lépések
 
 [További](about-move-process.md) információ az erőforrás-mozgató összetevőkről és az áthelyezési folyamatról.

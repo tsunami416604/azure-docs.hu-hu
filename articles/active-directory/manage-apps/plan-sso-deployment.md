@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642384"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603339"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -28,7 +28,7 @@ Az egyszeri bejelentkezés (SSO) azt jelenti, hogy az összes alkalmazást és e
 
 Az egyszeri bejelentkezés (SSO) biztonsági és kényelmi funkciókat biztosít, amikor a felhasználók bejelentkeznek Azure Active Directory (Azure AD) alkalmazásaiba. 
 
-Számos szervezet a szoftveres (SaaS) alkalmazásokra támaszkodik, például az Office 365, a Box és a Salesforce a végfelhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak meg kell emlékezniük a jelszóra.
+Számos szervezet a szoftveres (SaaS) alkalmazásokra támaszkodik, például a Microsoft 365, a Box és a Salesforce a végfelhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak meg kell emlékezniük a jelszóra.
 
 Az Azure Marketplace-en több mint 3000 alkalmazás található előre integrált SSO-kapcsolattal, így könnyen integrálható a bérlőbe.
 
@@ -118,7 +118,7 @@ A hozzáférési felülvizsgálatok beállítása során megtervezni kívánt f�
 
 Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismereteket tartalmaznak](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). 
 
-A biztonsági és a tevékenységgel kapcsolatos jelentések egyaránt elérhetők. A biztonsági jelentések megjelenítik a kockázatot jelentő felhasználókat és a kockázatos bejelentkezéseket. a tevékenységek jelentései segítenek megérteni a szervezet felhasználói viselkedését a bejelentkezési tevékenység részletes ismertetésével és az összes bejelentkezés naplózási nyomvonalának biztosításával. A jelentések segítségével kezelheti a kockázatokat, növelheti a hatékonyságot és figyelheti a megfelelőséget.
+A biztonsági és a tevékenységgel kapcsolatos jelentések egyaránt elérhetők. A biztonsági jelentések megjelenítik a kockázatnak megjelölt felhasználókat és a kockázatos bejelentkezéseket. A tevékenységgel kapcsolatos jelentések segítenek megérteni a szervezet felhasználói viselkedését a bejelentkezési tevékenység részletes ismertetésével, valamint az összes bejelentkezés naplózási nyomvonalának biztosításával. A jelentések segítségével kezelheti a kockázatokat, növelheti a hatékonyságot és figyelheti a megfelelőséget.
 
 | Jelentés típusa | Hozzáférési felülvizsgálat | Biztonsági jelentések | Bejelentkezési jelentés |
 |-------------|---------------|------------------|----------------|
@@ -235,11 +235,11 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincs |
+| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincsenek |
 | Identity admin | Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
+| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
+| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
 
 Javasoljuk, hogy az [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
 
@@ -285,7 +285,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Problémák az egyéni portálról való bejelentkezéskor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [Problémák az alkalmazásokból való bejelentkezéskor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Probléma a Saját alkalmazásokból való bejelentkezésnél](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [Hiba az alkalmazás bejelentkezési oldalán](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 
@@ -303,7 +303,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [SAML-alapú SSO hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 

@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b6f6d0e941737eb1e8d3a8a1fa3b9a68e42a1b02
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: b2e5a7f6207710d000b6b997df437b100863125f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032652"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600755"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
@@ -21,7 +21,7 @@ Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes szolgáltatás, amely
 
 A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -71,7 +71,7 @@ Nyissa meg Cloud Shell a `>_` Azure Portal tetején található gomb használat�
 
 Az [aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára. A következő példa lekéri a *myResourceGroup* erőforrásban lévő *myAKSCluster* fürtnév hitelesítő adatait:
 
-```azurecli-interactive
+```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
@@ -244,7 +244,7 @@ Ha meg szeretné tekinteni a `azure-vote-front` Pod-naplókat, válassza a **tá
 
 Ha a fürtre már nincs szükség, törölje az erőforráscsoportot. Ezzel törli az összes társított erőforrást is. A művelet elvégezhető a Azure Portalban, ha a **Törlés** gombra KATTINT az AK-fürt irányítópultján. Azt is megteheti, hogy az az [AK delete][az-aks-delete] parancs használható a Cloud Shellban:
 
-```azurecli-interactive
+```azurecli
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
@@ -257,7 +257,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe.
 

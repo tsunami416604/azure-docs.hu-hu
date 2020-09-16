@@ -8,26 +8,28 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/15/2020
-ms.openlocfilehash: f042c171c120b7b5dd9b011bca2c2243be664767
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e4cee699bf18b340d0bb1cbe783bdedcca537db6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530624"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602948"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
-Az Azure Cognitive Search ([korábbi nevén "Azure Search"](whats-new.md#new-service-name)) egy felhőalapú keresési szolgáltatás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá.
+Az Azure Cognitive Search ([korábbi nevén "Azure Search"](whats-new.md#new-service-name)) egy felhőalapú keresési szolgáltatás, amely lehetővé teszi, hogy a fejlesztők API-kat és eszközöket kínáljanak a webes, mobil-és Nagyvállalati alkalmazások privát, heterogén tartalmainak gazdag keresési élményének kialakításához.
 
-Cognitive Search biztosít indexelési és lekérdezési motort, valamint a keresési indexek állandó tárolását. A tartalomhoz kapcsolódó külső adattárak és a lekérdezési kérelmeket küldő és a válaszokat kezelő ügyfélalkalmazás között szerepel. A keresési szolgáltatás két elsődleges munkaterhelése tartalmazza az *indexelést* és a *lekérdezést*.
+Cognitive Search szolgáltatás létrehozásakor az indexelési és lekérdezési motor, a keresési indexek állandó tárolása, amelyet létrehoz és kezel, valamint egy lekérdezési nyelvet, amely egyszerű és összetett lekérdezéseket készít. A Search szolgáltatás más Azure-szolgáltatásokkal integrálható *Indexelő* formájában, amely automatizálja az adatok betöltését/lekérését az Azure-adatforrásokból, valamint olyan *szakértelmével* , amelyek az AI-feldolgozást Cognitive Services, például a képek és a szövegek elemzésével dolgozzák fel.
 
 ![Azure Cognitive Search-architektúra](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Cognitive Search-architektúra")
 
-Az indexelés akkor történik meg, amikor a kód vagy eszköz definiál egy index sémát, és betölti az adatait a keresési szolgáltatásba. Lehetőség van arra is, hogy kognitív képességeket adjon az indexelés során az AI-folyamatok alkalmazásához. Így új információkat és struktúrákat hozhat létre, amelyek hasznosak lehetnek a keresési és a tudásalapú adatbányászati forgatókönyvek esetében.
+A keresési szolgáltatás építészeti szempontból az adatokat tartalmazó külső adattárak és a lekérdezési kérelmeket küldő és a válaszokat kezelő ügyfélalkalmazás között helyezkedik el. A keresési szolgáltatás két elsődleges munkaterhelése az *indexelés* és a *lekérdezés*.
 
-Ha már létezik index, az ügyfélalkalmazás kérelmeket küld egy keresési szolgáltatásnak, és kezeli a válaszokat. A keresési élmény az Azure Cognitive Search API-jai használatával van meghatározva az ügyfélen, és a lekérdezés végrehajtása a saját szolgáltatásában létrehozott, saját és tárolt keresési indexen keresztül történik.
+Az indexelés hozzáadja a tartalmat a keresési szolgáltatáshoz, és kereshetővé teszi. Belsőleg a bejövő szövegeket a rendszer tokenekre dolgozza fel, és a gyors egyeztetés érdekében fordított indexekben tárolja őket. Az index séma meghatározza a kereshető tartalom szerkezetét. Az indexelés során lehetősége van arra, hogy a Microsofttól vagy az Ön által létrehozott egyéni szakemberektől előre definiált *kognitív képességeket*is felvehet. Az eredményül kapott elemzések és átalakítások olyan új információkat és struktúrákat hozhatnak létre, amelyek korábban még nem léteztek, és számos keresési és tudásbázisbeli megoldáshoz biztosítanak magas rendelkezésre állást.
 
-A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SDK-n](search-howto-dotnet-sdk.md) keresztül tudja elérni, mely elfedi az információk kiolvasásának mögöttes komplexitását. A szolgáltatás felügyeletéhez és a tartalomkezeléshez használható Azure Portal is használhatja, az indexek prototípusának és lekérdezésének eszközeivel. Mivel a szolgáltatás a felhőben fut, az infrastruktúrát és a rendelkezésre állást a Microsoft felügyeli.
+Ha egy indexet kereshető adatokkal tölt fel, az ügyfélalkalmazás lekérdezési kérelmeket küld egy keresési szolgáltatásnak, és kezeli a válaszokat. A keresési élmény az Azure-Cognitive Search API-jai használatával van meghatározva az ügyfélen, és tartalmazhatja a relevancia finomhangolását, az automatikus kiegészítést, a szinonimák megfeleltetését, a mintázat megfeleltetését, a szűrést és a rendezést.
+
+A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SDK-n](search-howto-dotnet-sdk.md) keresztül tudja elérni, mely elfedi az információk kiolvasásának mögöttes komplexitását. A szolgáltatás felügyeletéhez és a tartalomkezeléshez használható Azure Portal is használhatja, az indexek és a szakértelmével prototípusának és lekérdezésének eszközeivel. Mivel a szolgáltatás a felhőben fut, az infrastruktúrát és a rendelkezésre állást a Microsoft felügyeli.
 
 ## <a name="when-to-use-cognitive-search"></a>Mikor kell használni a Cognitive Search
 
@@ -37,7 +39,7 @@ Az Azure Cognitive Search kiválóan alkalmas a következő alkalmazási forgat�
 
 + A kereséssel kapcsolatos szolgáltatások egyszerű implementálása. A keresési API-k leegyszerűsítik a lekérdezések építését, a sokoldalú navigációt, a szűrőket (beleértve a Geo-térbeli keresést), a szinonimák leképezését, az automatikus kiegészítést A beépített funkciók használatával a kereskedelmi webkeresőmotorokhoz hasonló keresési élményekhez is kielégítheti a végfelhasználói elvárásokat.
 
-+ A nyers tartalom nagy, nem megkülönböztethető szöveg-vagy képfájl, illetve az Azure Blob Storage-ban vagy Cosmos DBban tárolt alkalmazásfájlok. Az indexelés során [kognitív képességeket](cognitive-search-concept-intro.md) alkalmazhat szöveg kinyeréséhez, struktúra létrehozásához vagy új információk, például lefordított szöveg vagy entitások létrehozásához.
++ A nyers tartalom nagy, nem megkülönböztethető szöveg-vagy képfájl, illetve az Azure Blob Storage-ban vagy Cosmos DBban tárolt alkalmazásfájlok. Az indexelés során a [kognitív képességek](cognitive-search-concept-intro.md) alkalmazásával azonosíthatja és kinyerheti a szöveget, létrehozhat struktúrát, vagy létrehozhat új adatokat, például lefordított szöveget vagy entitásokat.
 
 + A tartalomnak nyelvi vagy egyéni szöveges elemzésre van szüksége. Ha nem angol nyelvű tartalommal rendelkezik, az Azure Cognitive Search a Lucene-elemzőket és a Microsoft természetes nyelvi processzorait is támogatja. Az elemzőket úgy is konfigurálhatja, hogy a nyers tartalom speciális feldolgozását, például a Mellékjelek kiszűrését, illetve a mintázatok felismerését és a karakterláncokban való megőrzését.
 

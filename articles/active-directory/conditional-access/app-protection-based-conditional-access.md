@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641024"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601945"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
 A felhasználók a személyes és munkahelyi feladatokhoz egyaránt rendszeresen használják a mobileszközök használatát. A munkavégzés hatékonysága érdekében a szervezetek emellett azt is meg szeretnék akadályozni, hogy a potenciálisan nem biztonságos alkalmazások adatvesztést okoznak. A feltételes hozzáféréssel a szervezetek a jóváhagyott (modern hitelesítésre képes) ügyfélalkalmazások hozzáférését a rájuk alkalmazott Intune app Protection-szabályzatokkal korlátozhatják.
 
-Ez a cikk három forgatókönyvet mutat be a feltételes hozzáférési házirendek konfigurálásához olyan erőforrásokhoz, mint az Office 365, az Exchange Online és a SharePoint Online.
+Ez a cikk három forgatókönyvet mutat be a feltételes hozzáférési házirendek konfigurálásához olyan erőforrásokhoz, mint a Microsoft 365, az Exchange Online és a SharePoint.
 
-- [1. forgatókönyv: az Office 365-alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
+- [1. forgatókönyv: Microsoft 365 alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel](#scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies)
 - [2. forgatókönyv: a böngésző alkalmazásai jóváhagyott alkalmazásokat igényelnek az alkalmazás védelmi házirendjeivel](#scenario-2-browser-apps-require-approved-apps-with-app-protection-policies)
-- [3. forgatókönyv: az Exchange Online és a SharePoint Online esetében jóváhagyott ügyfélalkalmazás és alkalmazás-védelmi szabályzat szükséges](#scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
+- [3. forgatókönyv: az Exchange Online és a SharePoint jóváhagyott ügyfélalkalmazás-és alkalmazás-védelmi szabályzatot igényel](#scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy)
 
 A feltételes hozzáférésben ezek az ügyfélalkalmazások ismertek, hogy védelmet kapnak az alkalmazás védelmi házirendjével. Az alkalmazás-védelmi szabályzatokkal kapcsolatos további információkért tekintse meg az [app Protection-házirendek áttekintése](/intune/apps/app-protection-policy) című cikket.
 
@@ -36,13 +36,13 @@ A feltételes hozzáférésben ezek az ügyfélalkalmazások ismertek, hogy véd
 > [!NOTE]
 > "A kijelölt vezérlők egyikének megkövetelése" az engedélyezési vezérlők területen, például egy vagy záradék. Ez a házirend lehetővé teszi a felhasználók számára, hogy olyan alkalmazásokat használjanak, amelyek támogatják az **alkalmazás-védelmi házirend megkövetelését** vagy a **jóváhagyott ügyfélalkalmazás** -engedélyezési vezérlőket. Az **alkalmazás védelmi szabályzatának megkövetelése** akkor lép érvénybe, ha az alkalmazást mindkét házirend támogatja. További információ arról, hogy mely alkalmazások támogatják az **alkalmazás-védelmi házirend megkövetelése** vezérlő használatát: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md#require-app-protection-policy).
 
-## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>1. forgatókönyv: az Office 365-alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel
+## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>1. forgatókönyv: Microsoft 365 alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel
 
-Ebben az esetben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil hozzáférésnek jóváhagyott ügyfélalkalmazások, például az Outlook Mobile és a OneDrive használatát kell használnia, melyet a hozzáférés megkezdése előtt egy app Protection-szabályzat véd. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+Ebben az esetben a contoso úgy döntött, hogy az Microsoft 365 erőforrásokhoz való összes mobil hozzáférésnek jóváhagyott ügyfélalkalmazások, például az Outlook Mobile és a OneDrive használatát kell használnia, amely a hozzáférés megkezdése előtt egy app Protection-házirend által védett. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
 A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a jóváhagyott ügyfélalkalmazás használatát kötelezővé lehessen tenni a mobileszközökön.
 
-**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Office 365-hez**
+**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása Microsoft 365hoz**
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
@@ -89,11 +89,11 @@ Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzáre
 
 ## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>2. forgatókönyv: a böngésző alkalmazásai jóváhagyott alkalmazásokat igényelnek az alkalmazás védelmi házirendjeivel
 
-Ebben a forgatókönyvben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil webböngészési hozzáféréshez jóváhagyott ügyfélalkalmazás szükséges, például az iOS és az Android rendszerhez készült Edge, a hozzáférés megkezdése előtt egy alkalmazás-védelmi szabályzat védi. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+Ebben a forgatókönyvben a contoso úgy döntött, hogy az Microsoft 365-erőforrásokhoz való összes mobil webböngészésnek egy jóváhagyott ügyfélalkalmazás, például az iOS és Android rendszerhez való hozzáférését kell használnia, a hozzáférés megkezdése előtt egy app Protection-házirend által védett alkalmazás. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
 A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a jóváhagyott ügyfélalkalmazás használatát kötelezővé lehessen tenni a mobileszközökön.
 
-**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Office 365-hez**
+**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása Microsoft 365hoz**
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
@@ -120,13 +120,13 @@ A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a j�
 
 Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
-## <a name="scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>3. forgatókönyv: az Exchange Online és a SharePoint Online esetében jóváhagyott ügyfélalkalmazás és alkalmazás-védelmi szabályzat szükséges
+## <a name="scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy"></a>3. forgatókönyv: az Exchange Online és a SharePoint jóváhagyott ügyfélalkalmazás-és alkalmazás-védelmi szabályzatot igényel
 
 Ebben az esetben a contoso úgy döntött, hogy a felhasználók csak akkor férhetnek hozzá a mobileszközök e-mail-és SharePoint-adataihoz, ha olyan jóváhagyott ügyfélalkalmazás-alkalmazást használnak, mint az alkalmazás-védelmi szabályzat által védett Outlook Mobile. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
 A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy egy jóváhagyott ügyfélalkalmazás használatát meg lehessen követelni a mobileszközök és az Exchange ActiveSync-ügyfelek számára.
 
-**1. lépés: az Android-és iOS-alapú modern hitelesítési ügyfelekre vonatkozó szabályzat, amely a jóváhagyott ügyfélalkalmazás és az alkalmazás-védelmi szabályzat használatát igényli az Exchange Online-hoz és a SharePoint Online-hoz való hozzáféréshez.**
+**1. lépés: az Android-és iOS-alapú modern hitelesítési ügyfelekre vonatkozó szabályzat, amely a jóváhagyott ügyfélalkalmazás és az alkalmazás-védelmi szabályzat használatát igényli az Exchange Online és a SharePoint eléréséhez.**
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
@@ -169,7 +169,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 
 Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Mit jelent a feltételes hozzáférés?](overview.md)
 
