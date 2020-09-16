@@ -17,15 +17,15 @@ ms.locfileid: "80875041"
 ---
 ## <a name="gathering-required-parameters"></a>A szükséges paraméterek összegyűjtése
 
-Három elsődleges paraméter van a szükséges összes Cognitive Services tárolóhoz. A végfelhasználói licencszerződés (EULA) értékének a következőnek kell lennie: `accept`. Emellett a végponti URL-cím és az API-kulcs is szükséges.
+Három elsődleges paraméter van a szükséges összes Cognitive Services tárolóhoz. A végfelhasználói licencszerződés (EULA) értékének a következőnek kell lennie: `accept` . Emellett a végponti URL-cím és az API-kulcs is szükséges.
 
-### <a name="endpoint-uri-endpoint_uri"></a>Végpont URI-ja`{ENDPOINT_URI}`
+### <a name="endpoint-uri-endpoint_uri"></a>Végpont URI-ja `{ENDPOINT_URI}`
 
-A **végpont** URI-értéke a megfelelő kognitív szolgáltatás erőforrásának Azure Portal *Áttekintés* lapján érhető el. Navigáljon az *Áttekintés* lapra, vigye a kurzort a végpont fölé `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> , és egy ikon jelenik meg. Szükség esetén másolja és használja.
+A **végpont** URI-értéke a megfelelő kognitív szolgáltatás erőforrásának Azure Portal *Áttekintés* lapján érhető el. Navigáljon az *Áttekintés* lapra, vigye a kurzort a végpont fölé, és egy `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> ikon jelenik meg. Szükség esetén másolja és használja.
 
 ![A végpont URI-ja összegyűjtése későbbi használatra](../media/overview-endpoint-uri.png)
 
-### <a name="keys-api_key"></a>Kulcsok`{API_KEY}`
+### <a name="keys-api_key"></a>Kulcsok `{API_KEY}`
 
 Ez a kulcs a tároló elindítására szolgál, és a megfelelő kognitív szolgáltatási erőforrás Azure Portal kulcsok lapján érhető el. Navigáljon a *kulcsok* oldalra, és kattintson az `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> ikonra.
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -19,9 +19,9 @@ ms.locfileid: "77134629"
 
 2. A bal oldali menüben válassza az **erőforrás létrehozása**lehetőséget.
    
-   ![Erőforrás létrehozása a Azure Portalban](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-0.png)
+   ![Erőforrás létrehozása az Azure Portalon](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-0.png)
    
-3. Az **új** lapon válassza az **adatbázisok** > **Azure Cosmos db**elemet.
+3. Az **új** lapon válassza az **adatbázisok**  >  **Azure Cosmos db**elemet.
    
    ![Az Azure Portal Adatbázisok panelje](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-1.png)
    
@@ -37,7 +37,7 @@ ms.locfileid: "77134629"
 
     Válassza a **felülvizsgálat + létrehozás**lehetőséget. Kihagyhatja a **hálózat** és **címkék** szakaszt. 
 
-    ![Az Azure Cosmos DB új fiók lapja](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
+    ![Az Azure Cosmos DB Új fiók lapja](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
 
 4. A fiók létrehozása eltarthat néhány percig. Várja meg, amíg a portálon megjelenik a **gratuláló oldal. A Azure Cosmos DB-fiókja létrejött**.
 

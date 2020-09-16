@@ -209,6 +209,6 @@ Ha az FPS Server SDK 3-as vagy 4-es verziójú verzióját használja, és ha eg
 
 [A gyakori kérdések a hibaelhárítással kapcsolatban nyújtanak segítséget](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [AES-128 használatával történő védelem](protect-with-aes128.md) ismertetése

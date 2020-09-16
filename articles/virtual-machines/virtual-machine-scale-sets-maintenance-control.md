@@ -48,7 +48,7 @@ A karbantartási konfigurációkat a következő lehetőségek bármelyikével h
 - [Azure PowerShell](virtual-machine-scale-sets-maintenance-control-powershell.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan szabályozhatja, hogy az Azure-beli virtuálisgép-méretezési csoportokra hogyan kell karbantartani a karbantartást és a PowerShellt.
 

@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "77474234"
 ---
-A tárolóra irányuló lekérdezések számlázása az Azure-erőforrás díjszabási szintjénél történik `ApiKey`.
+A tárolóra irányuló lekérdezések számlázása az Azure-erőforrás díjszabási szintjénél történik `ApiKey` .
 
 Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak.
 
@@ -25,6 +25,6 @@ A tárolónak a számlázási argumentum értékeit kell futtatnia. Ezek az ért
 
 | Beállítás | Leírás |
 |--------|-------------|
-| `ApiKey` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás API-kulcsa.<br/>Ennek a beállításnak az értékét a ben `Billing`megadott kiépített erőforráshoz tartozó API-kulcsra kell beállítani. |
+| `ApiKey` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás API-kulcsa.<br/>Ennek a beállításnak az értékét a ben megadott kiépített erőforráshoz tartozó API-kulcsra kell beállítani `Billing` . |
 | `Billing` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás végpontja.<br/>Ennek a beállításnak az értékét egy kiépített Azure-erőforrás végpont-URI-azonosítójának kell beállítania.|
 | `Eula` | Azt jelzi, hogy elfogadta a tároló licencét.<br/>Ennek a beállításnak az értékét az **elfogadás**értékre kell beállítani. |

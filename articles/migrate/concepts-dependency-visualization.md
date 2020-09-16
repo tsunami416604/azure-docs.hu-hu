@@ -83,7 +83,7 @@ Adatexportálás | Az elmúlt 30 nap során az adatletöltés CSV formátumban i
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ügynök-alapú függőségi vizualizáció [beállítása](how-to-create-group-machine-dependencies.md) .
 - [Próbálja ki](how-to-create-group-machine-dependencies-agentless.md) az ügynök nélküli függőségi vizualizációt a VMWare virtuális gépekhez.

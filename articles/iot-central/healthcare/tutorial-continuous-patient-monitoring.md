@@ -67,7 +67,7 @@ A Burkville Kórház-kezelő irányítópultjának megnyitásához válassza a *
 
 :::image type="content" source="media/lamna-remote.png" alt-text="Távoli operátor irányítópultja":::
 
-### <a name="device-templates"></a>Eszközök sablonjai
+### <a name="device-templates"></a>Eszközsablonok
 
 Ha kijelöli az **eszköz sablonokat**, a sablon két típusát látja:
 
@@ -125,7 +125,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az **ad
 
 :::image type="content" source="media/admin-delete.png" alt-text="Tiszta erőforrások":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan hozhat létre olyan szolgáltatói irányítópultot, amely kapcsolódik a IoT Central alkalmazáshoz.
 

@@ -47,7 +47,7 @@ val serviceKey = "ADD-YOUR-SUBSCRIPTION-KEY"
 val location = "eastus"
 ```
 
-## <a name="text-analytics"></a>Text Analytics
+## <a name="text-analytics"></a>Szövegelemzés
 
 A [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás egy pontszámot ad vissza `0.0` , és `1.0` ahol az alacsony pontszámok értéke negatív, a magas pontszámot pedig pozitív hangulatra utal.  Az alábbi minta három egyszerű mondatot használ, és az egyes értékekhez tartozó hangulati pontszámot adja vissza.
 
@@ -79,7 +79,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 | Ez a Rush Hour-forgalom csalódott vagyok. | 0.023795604705810547                                  |
 | A sparkon nem rossz a kognitív szolgáltatások  | 0.8888956308364868                                    |
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Számítógépes látástechnológia
 
 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat.
 Ebben a példában a képek listáját címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
