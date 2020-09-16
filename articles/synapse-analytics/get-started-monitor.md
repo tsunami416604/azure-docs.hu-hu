@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 43ed46f56be1ad4fa2aa643a6ed06f8fbe094a5b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f8be96fb008471d040839141a230c13b8f1657a5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352798"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708172"
 ---
 # <a name="monitor-your-synapse-workspace"></a>A szinapszis-munkaterület figyelése
 
@@ -48,8 +48,7 @@ Nyissa meg a szinapszis Studio alkalmazást, és navigáljon a **figyelő** köz
 1. Keresse meg az adott SQL-kérelmet, és vigye az egérmutatót az adott elemre. Ha a hover, megjelenik egy SQL-parancsfájl ikon.
 1. Kattintson az SQL-parancsfájl ikonra az SQL-kérelem teljes szövegének megtekintéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure szinapszis Analytics (munkaterületek – előzetes verzió)](overview-what-is.md)
-
+> [Ismerkedés a Knowledge centerrel](get-started-knowledge-center.md)

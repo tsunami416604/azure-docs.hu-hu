@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320868"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705333"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -92,7 +92,7 @@ Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi pro
 > [!WARNING]
 > A biztonsági beállítások engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-fundamentals-block-legacy-authentication.md).
 
-- [Többfunkciós eszköz vagy alkalmazás beállítása e-mailek küldésére az Office 365 és Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [Többfunkciós eszköz vagy alkalmazás beállítása az e-mailek küldéséhez Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>A Kiemelt műveletek védelme
 
@@ -175,6 +175,6 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem**értékre.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)

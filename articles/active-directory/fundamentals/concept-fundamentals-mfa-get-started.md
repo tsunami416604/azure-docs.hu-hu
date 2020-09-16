@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554650"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705401"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>A szervezethez tartozó Azure-Multi-Factor Authentication áttekintése
 
@@ -34,10 +34,10 @@ Az Azure AD ingyenes előnyeit kihasználó ügyfelek [biztonsági alapértékek
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Vállalati verzió, E3 vagy E5
 
-Az Office 365-ügyfeleknél két lehetőség közül választhat:
+A Microsoft 365 rendelkező ügyfeleknek két lehetősége van:
 
 * Az Azure Multi-Factor Authentication az összes felhasználó számára engedélyezve van vagy le van tiltva az összes bejelentkezési esemény esetében. Nincs lehetőség a többtényezős hitelesítés engedélyezésére a felhasználók egy részhalmaza számára, vagy csak bizonyos esetekben. A felügyelet az Office 365-portálon keresztül történik. 
-* A jobb felhasználói élmény érdekében frissítsen prémium szintű Azure AD P1-re vagy P2-re, és használja a feltételes hozzáférést. További információ: az Office 365-erőforrások védelme többtényezős hitelesítéssel.
+* A jobb felhasználói élmény érdekében frissítsen prémium szintű Azure AD P1-re vagy P2-re, és használja a feltételes hozzáférést. További információ: biztonságos Microsoft 365 erőforrások a többtényezős hitelesítéssel.
 
 ## <a name="azure-ad-premium-p1"></a>Prémium szintű Azure AD P1
 

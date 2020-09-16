@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543924"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705622"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből
 
@@ -76,13 +76,13 @@ Az Azure AD alapértelmezés szerint támogatja a több-bérlős alkalmazásokat
 ## <a name="consent-framework"></a>Jóváhagyási keretrendszer
 
 A több-bérlős webes és natív ügyfélalkalmazások fejlesztéséhez használhatja az Azure AD-beli engedélyezési keretrendszert. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést egy Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Előfordulhat, hogy a következő webes API-kat is el kell érnie:
-- Az Azure AD, az Intune és az Office 365 szolgáltatásainak eléréséhez Microsoft Graph API.
+- Az Microsoft Graph API, amely az Azure AD, az Intune és a szolgáltatások elérésére Microsoft 365.
 - Más Microsoft-szolgáltatások API-jai.
 - Saját webes API-k.
 
 A keretrendszer egy felhasználó vagy egy rendszergazda azon alapul, amely beleegyezik egy olyan alkalmazásba, amely a címtárban való regisztrálást kéri. Előfordulhat, hogy a regisztráció a címtáradatok elérését is magában foglalja. A beleegyező engedély megadása után az ügyfélalkalmazás meghívja a Microsoft Graph API-t a felhasználó nevében, és igény szerint használhatja az információt.
 
-A [Microsoft Graph API](https://developer.microsoft.com/graph/) hozzáférést biztosít az Office 365-beli adateléréshez, például:
+A [Microsoft Graph API](https://developer.microsoft.com/graph/) Microsoft 365hoz biztosít hozzáférést, például:
 
 - Naptárak és üzenetek az Exchange-ből.
 - Helyek és listázza a SharePointból.
@@ -121,7 +121,7 @@ Az alábbi lépések bemutatják, hogyan működik az alkalmazás fejlesztője �
 
 3. Ha a felhasználó még nincs hitelesítve, az Azure AD/Authorize-végpont bekéri a bejelentkezést.
 
-    ![Hitelesítés](./media/openidoauth-tutorial/authentication.png)
+    ![A fiók bejelentkezési kérésének képernyőképe](./media/openidoauth-tutorial/authentication.png)
 
 4. Miután a felhasználó bejelentkezett, az Azure AD megállapítja, hogy a felhasználónak meg kell-e jelenítenie egy beleegyező lapot. Ez a meghatározás azon alapul, hogy a felhasználó (vagy a szervezet rendszergazdája) már megadta-e az alkalmazáshoz való hozzájárulásukat.
 

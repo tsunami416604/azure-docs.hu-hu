@@ -1,6 +1,6 @@
 ---
 title: SaaS-alkalmazások konfigurálása B2B-együttműködéshez – Azure AD
-description: Kód- és a PowerShell-minták az Azure Active Directory B2B-együttműködéshez
+description: Megtudhatja, hogyan konfigurálhat SaaS-alkalmazásokat Azure Active Directory B2B-együttműködéshez, és hogyan tekinthet meg további rendelkezésre álló erőforrásokat.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909611"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705510"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-alkalmazások B2B-együttműködéshez
 
@@ -98,12 +98,12 @@ Az SAML protokollon alapuló összevonás használatával engedélyezheti a felh
 
 A Dropbox meghívásokhoz hasonlóan a Box-meghívásoknak is be kell váltaniuk a meghívót a Box alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [Dinamikus csoportok és B2B-együttműködés](use-dynamic-groups.md)
 - [B2B együttműködés felhasználói jogcímek leképezése](claims-mapping.md)
-- [Külső Office 365-megosztás](o365-external-user.md)
+- [Külső megosztás Microsoft 365](o365-external-user.md)
 
