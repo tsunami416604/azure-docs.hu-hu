@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Samanage-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Samanage között.
+title: 'Oktatóanyag: Azure Active Directory integráció a SolarWinds Service Desk szolgáltatással (korábban Samanage) | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a SolarWinds Service Desk (korábban Samanage) között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543533"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707577"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Oktatóanyag: Azure Active Directory integráció a Samanage
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Oktatóanyag: Azure Active Directory integráció a SolarWinds Service Desk szolgáltatással (korábban Samanage)
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Samanage a Azure Active Directory (Azure AD) szolgáltatással.
-A Samanage és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SolarWinds a Azure Active Directory (Azure AD) szolgáltatással.
+A SolarWinds és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Samanage.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Samanage (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a SolarWinds.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a SolarWinds (egyszeri bejelentkezés) az Azure AD-fiókokkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Samanage való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció a SolarWinds Service Desk (korábban Samanage) szolgáltatással való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
 * Samanage egyszeri bejelentkezésre engedélyezett előfizetés
@@ -41,15 +41,15 @@ Az Azure AD-integráció Samanage való konfigurálásához a következő elemek
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Samanage támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A SolarWinds támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-samanage-from-the-gallery"></a>Samanage hozzáadása a gyűjteményből
+## <a name="adding-solarwinds-from-the-gallery"></a>SolarWinds hozzáadása a gyűjteményből
 
-A Samanage Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Samanage a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A SolarWinds Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a SolarWinds a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha Samanage szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+**Ha SolarWinds szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** bal oldali navigációs paneljén válassza a **Azure Active Directory** ikont.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ A Samanage Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Samanage**kifejezést, válassza a **Samanage** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **SolarWinds**kifejezést, válassza a **SolarWinds** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Samanage az eredmények listájában](common/search-new-app.png)
+     ![SolarWinds az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Samanage-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Samanage kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SolarWinds-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SolarWinds kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés Samanage való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Samanage egyszeri bejelentkezés konfigurálása](#configure-samanage-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[SolarWinds Service Desk egyszeri bejelentkezésének konfigurálása](#configure-solarwinds-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre Samanage-teszt felhasználót](#create-samanage-test-user)** – hogy a Samanage Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+5. **[SolarWinds Service Desk-teszt felhasználó létrehozása](#create-solarwinds-test-user)** – a SolarWinds Service Desk Britta, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés Samanage való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezés SolarWinds való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Samanage** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SolarWinds** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés Samanage való konfigurálásához hajtsa v�
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. A **Samanage beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **SolarWinds beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ Az Azure AD egyszeri bejelentkezés Samanage való konfigurálásához hajtsa v�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-samanage-single-sign-on"></a>Samanage egyszeri bejelentkezés konfigurálása
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. Egy másik böngészőablakban jelentkezzen be a Samanage vállalati webhelyre rendszergazdaként.
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>A SolarWinds Service Desk egyszeri bejelentkezésének konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a SolarWinds vállalati webhelyre rendszergazdaként.
 
 2. Kattintson az **irányítópult** elemre, és válassza a **beállítás** lehetőséget a bal oldali navigációs panelen.
    
@@ -150,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Samanage való konfigurálásához hajtsa v�
  
     f. Nyissa meg Azure Portal a Jegyzettömbből letöltött Base-64 kódolású tanúsítványt, másolja a vágólapra a tartalmát, majd illessze be az **Identity Provider x. 509-tanúsítvány beillesztése** szövegmezőbe.
  
-    : Kattintson **a felhasználók létrehozása lehetőségre, ha nem léteznek a Samanage-ben**.
+    : Kattintson **a felhasználók létrehozása lehetőségre, ha nem léteznek a SolarWinds-ben**.
  
     h. Kattintson a **Frissítés** parancsra.
 
@@ -177,19 +179,17 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Samanage hozzáférésének biztosításával.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a SolarWinds hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Samanage**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **SolarWinds**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Samanage**lehetőséget.
-
-    ![Az Samanage hivatkozás az alkalmazások listájában](common/all-applications.png)
+2. Az alkalmazások listában válassza a **SolarWinds**lehetőséget.
 
 3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -205,14 +205,14 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-samanage-test-user"></a>Samanage-tesztelési felhasználó létrehozása
+### <a name="create-solarwinds-test-user"></a>SolarWinds-tesztelési felhasználó létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Samanage, a Samanage kell kiépíteni őket.  
-Samanage esetén a kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a SolarWinds, a SolarWinds kell kiépíteni őket.  
+SolarWinds esetén a kiépítés manuális feladat.
 
 **Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a Samanage vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be a SolarWinds vállalati webhelyre rendszergazdaként.
 
 2. Kattintson az **irányítópult** elemre, és válassza a **beállítás** elemet a bal oldali navigációs sávon.
    
@@ -231,13 +231,13 @@ Samanage esetén a kiépítés manuális feladat.
     ![Felhasználó létrehozása](./media/samanage-tutorial/tutorial_samanage_008.png "Felhasználó létrehozása")
    
    >[!NOTE]
-   >A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve erősítse meg a fiókját, mielőtt az aktívvá válna. A Samanage által biztosított egyéb Samanage-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.
+   >A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve erősítse meg a fiókját, mielőtt az aktívvá válna. A SolarWinds által biztosított egyéb SolarWinds-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Samanage csempére kattint, automatikusan be kell jelentkeznie arra a Samanage, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SolarWinds csempére kattint, automatikusan be kell jelentkeznie arra a SolarWinds, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4fb616860cb1e85c6249329f3679de0d29b72e61
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018832"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707917"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -150,9 +150,11 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 Az Azure CLI-vel való replikációs házirend létrehozásához először telepítse az Azure CLI-verziót 2.11.1 vagy újabb verzióra. További információ: Ismerkedés [Az Azure CLI-vel](/cli/azure/get-started-with-azure-cli).
 
-Ezután engedélyezze a blob-verziószámozást a forrás-és a cél Storage-fiókokon, és engedélyezze a fiók módosítási csatornáját. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+Ezután engedélyezze a blob-verziószámozást a forrás-és a cél Storage-fiókokon, és engedélyezze a fiók módosítási csatornáját az az [Storage Account blob-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) parancs meghívásával. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
 ```azurecli
+az login
+
 az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
@@ -174,24 +176,24 @@ Hozza létre a forrás-és a cél tárolókat a megfelelő Storage-fiókjaiban.
 ```azurecli
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container3 \
+    --name source-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container4 \
+    --name source-container-2 \
     --auth-mode login
 
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container3 \
+    --name dest-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container4 \
+    --name dest-container-1 \
     --auth-mode login
 ```
 
-Hozzon létre egy új replikációs házirendet és a társított szabályokat a célhelyen.
+Hozzon létre egy új replikációs házirendet és egy társított szabályt a célhelyen az az [Storage Account vagy a-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create)paranccsal.
 
 ```azurecli
 az storage account or-policy create \
@@ -199,21 +201,26 @@ az storage account or-policy create \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
-    --source-container source-container3 \
-    --destination-container dest-container3 \
-    --min-creation-time '2020-05-10T00:00:00Z' \
+    --source-container source-container-1 \
+    --destination-container dest-container-1 \
+    --min-creation-time '2020-09-10T00:00:00Z' \
     --prefix-match a
 
+```
+
+Az Azure Storage az új szabályzathoz tartozó házirend-azonosítót állítja be a létrehozásakor. Ha további szabályokat szeretne felvenni a szabályzatba, hívja meg az az [Storage Account vagy a-Policy szabályt](/cli/azure/storage/account/or-policy/rule#az_storage_account_or_policy_rule_add) , és adja meg a szabályzat azonosítóját.
+
+```azurecli
 az storage account or-policy rule add \
     --account-name <dest-storage-account> \
-    --destination-container dest-container4 \
-    --policy-id <policy-id> \
     --resource-group <resource-group> \
-    --source-container source-container4 \
+    --source-container source-container-2 \
+    --destination-container dest-container-2 \
+    --policy-id <policy-id> \
     --prefix-match b
 ```
 
-Hozza létre a szabályzatot a forrásoldali fiókban a szabályzat azonosítója alapján.
+Ezután hozza létre a szabályzatot a forrásoldali fiókban a házirend-azonosító használatával.
 
 ```azurecli
 az storage account or-policy show \
@@ -229,16 +236,16 @@ az storage account or-policy show \
 
 ### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>Az objektumok replikálásának konfigurálása, ha csak a célként megadott fiókhoz fér hozzá
 
-Ha nem rendelkezik engedéllyel a forrásként szolgáló Storage-fiókhoz, konfigurálhatja az objektum-replikálást a célhelyen, és megadhat egy JSON-fájlt, amely tartalmazza a házirend-definíciót egy másik felhasználó számára, hogy ugyanazt a házirendet hozza létre a forrás fiókon. Ha például a forrásoldali fiók egy másik Azure AD-bérlőn található a célhelyen, akkor ezt a módszert kell használnia az objektum-replikáció konfigurálásához. 
+Ha nem rendelkezik engedéllyel a forrásként szolgáló Storage-fiókhoz, konfigurálhatja az objektum-replikálást a célhelyen, és megadhat egy JSON-fájlt, amely tartalmazza a házirend-definíciót egy másik felhasználó számára, hogy ugyanazt a házirendet hozza létre a forrás fiókon. Ha például a forrásoldali fiók egy másik Azure AD-bérlőn található a célhelyen, akkor ezt a módszert használhatja az objektumok replikálásának konfigurálásához.
 
 Ne feledje, hogy a házirend létrehozásához hozzá kell rendelnie a Azure Resource Manager **közreműködő** szerepkört a célként megadott Storage-fiók szintjére vagy magasabbra. További információ: [Azure-beli beépített szerepkörök](../../role-based-access-control/built-in-roles.md) az azure szerepköralapú Access Control (RBAC) dokumentációjában.
 
-A következő táblázat összefoglalja, hogy mely értékeket kell használni a JSON-fájlban lévő házirend-AZONOSÍTÓhoz az egyes forgatókönyvekben.
+A következő táblázat összefoglalja, hogy mely értékeket kell használni a JSON-fájlban a szabályzat-AZONOSÍTÓhoz és a szabály-azonosítóhoz.
 
-| Ha létrehoz egy JSON-fájlt ehhez a fiókhoz... | Állítsa be a házirend-azonosítót erre az értékre... |
+| Ha létrehoz egy JSON-fájlt ehhez a fiókhoz... | Állítsa be a szabályzat AZONOSÍTÓját és a szabály azonosítóit erre az értékre... |
 |-|-|
-| Cél fiók | A sztring *alapértelmezett*értéke. Az Azure Storage létrehozza a szabályzat AZONOSÍTÓját. |
-| Forrásoldali fiók | A fiókban definiált szabályokat tartalmazó JSON-fájl letöltésekor visszaadott házirend-azonosító. |
+| Cél fiók | A sztring *alapértelmezett*értéke. Az Azure Storage létrehozza a szabályzat AZONOSÍTÓját és a szabály azonosítóit. |
+| Forrásoldali fiók | A házirend-azonosító és a szabály-azonosítók azon értékei, amelyeket a rendszer a célkiszolgálón a JSON-fájlként megadott szabályzat letöltésekor adott vissza. |
 
 Az alábbi példa egy replikációs házirendet definiál a célszámítógépen egyetlen olyan szabállyal, amely megfelel a *b* előtagnak, és beállítja a replikálni kívánt Blobok minimális létrehozási idejét. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
@@ -307,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Ha a JSON-fájllal szeretné definiálni a replikációs házirendet a PowerShell használatával, kérje le a helyi fájlt, és konvertálja a JSON-ből egy objektumra. Ezután hívja meg a [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) parancsot a házirend konfigurálásához a forrás fiókon, az alábbi példában látható módon. Ne felejtse el lecserélni az értékeket a szögletes zárójelben, a fájl elérési útját pedig a saját értékeire:
+Ha a JSON-fájllal szeretné konfigurálni a replikációs házirendet a PowerShell használatával, kérje le a helyi fájlt, és konvertálja a JSON-ből egy objektumra. Ezután hívja meg a [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) parancsot a házirend konfigurálásához a forrás fiókon, az alábbi példában látható módon. Ne felejtse el lecserélni az értékeket a szögletes zárójelben, a fájl elérési útját pedig a saját értékeire:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -321,7 +328,24 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+Ha meg szeretné írni a cél fiók replikációs szabályzatának definícióját az Azure CLI-ből származó JSON-fájlra, hívja meg az az [Storage Account vagy a-Policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) parancsot és a kimenetet egy fájlba.
+
+A következő példa egy *policy.js*nevű JSON-fájlba írja a házirend-definíciót. Ne felejtse el lecserélni az értékeket a szögletes zárójelben, a fájl elérési útját pedig a saját értékeire:
+
+```azurecli
+az storage account or-policy show \
+    --account-name <dest-account-name> \
+    --policy-id  <policy-id> > policy.json
+```
+
+Ha a JSON-fájl használatával szeretné konfigurálni a replikációs házirendet az Azure CLI-vel, hívja meg az az [Storage Account vagy a-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create) parancsot, és hivatkozzon a *policy.js* fájlra. Ne felejtse el lecserélni az értékeket a szögletes zárójelben, a fájl elérési útját pedig a saját értékeire:
+
+```azurecli
+az storage account or-policy create \
+    -resource-group <resource-group> \
+    --source-account <source-account-name> \
+    --policy @policy.json
+```
 
 ---
 
@@ -360,19 +384,19 @@ A replikációs szabályzat eltávolításához törölje a megfelelő házirend
 
 ```azurecli
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <source-storage-account> \
     --resource-group <resource-group>
 
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <dest-storage-account> \
     --resource-group <resource-group>
 ```
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Objektum-replikáció áttekintése](object-replication-overview.md)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

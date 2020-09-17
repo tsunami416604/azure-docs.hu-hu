@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 16a28ee01606fa9067c279183ca6c02b2857bcd7
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: fbd86b34bd6f7da8c9f49e212e397d003b71fab5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563845"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707934"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
@@ -21,12 +21,15 @@ Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer
 
 Ahhoz, hogy az integráció még könnyebbé váljon, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)támogatjuk az   API-val kompatibilis Logic apps és [automatizálási](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   összekötőket. Az összekötők segítségével egyéni munkafolyamatokat állíthat be, amelyekkel hatékonyan indexelheti és kinyerheti a nagy mennyiségű videó-és hangfájlból származó elemzéseket anélkül, hogy egyetlen sor kódot kellene írnia. Emellett az integrációs összekötők segítségével jobb láthatóságot biztosít a munkafolyamat állapotával és a hibakereséshez.  
 
-Ha segítségre van szüksége a Video Indexer-összekötők gyors megkezdéséhez, egy példát láthat a logikai alkalmazásra és a beállítható automatizálási megoldásra. 
+Ha segítségre van szüksége a Video Indexer-összekötők gyors megkezdéséhez, egy példát láthat a logikai alkalmazásra és a beállítható automatizálási megoldásra. Ez az oktatóanyag bemutatja, hogyan állíthatja be a folyamatokat a Logic Apps használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyagban szereplő "a videó automatikus feltöltése és indexelése" forgatókönyv két különböző, együttesen működő folyamatból áll. 
+* Az első folyamat akkor aktiválódik, ha egy blobot hozzáadnak vagy módosítanak egy Azure Storage-fiókban. Feltölti az új fájlt Video Indexer egy visszahívási URL-címmel, hogy értesítést küldjön az indexelési művelet befejeződése után. 
+* A második folyamat a visszahívási URL-cím alapján aktiválódik, és elmenti a kinyert adatmennyiségeket egy JSON-fájlba az Azure Storage-ban. Ez a kétfolyamatos megközelítés a nagyobb fájlok aszinkron feltöltésének és indexelésének támogatására szolgál. 
+
+Ez az oktatóanyag a Logic App használatával mutatja be a következőket:
 
 > [!div class="checklist"]
-> * Videó automatikus feltöltése és indexelése
 > * A fájlfeltöltés folyamatának beállítása
 > * A JSON-kibontási folyamat beállítása
 
@@ -34,19 +37,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először is szüksége lesz egy Video Indexer fiókra, valamint az API-k API-kulcson keresztüli elérésére. 
+* Először is szüksége lesz egy Video Indexer fiókra, valamint az API-k [API-kulcson keresztüli elérésére](video-indexer-use-apis.md). 
+* Szüksége lesz egy Azure Storage-fiókra is. Tartsa szem előtt a Storage-fiókhoz tartozó hozzáférési kulcsot. Hozzon létre két tárolót – az egyiket, hogy a-ben, a-ben és a-ban a Video Indexer által generált bepillantást tárolja.  
+* Ezután két különálló folyamatot kell megnyitnia Logic Apps vagy energiagazdálkodási automatizáláson (attól függően, hogy melyiket használja). 
 
-Szüksége lesz egy Azure Storage-fiókra is. Tartsa szem előtt a Storage-fiókhoz tartozó hozzáférési kulcsot. Hozzon létre két tárolót – az egyiket, hogy a-ben, a-ben és a-ban a Video Indexer által generált bepillantást tárolja.  
+## <a name="set-up-the-first-flow---file-upload"></a>Az első folyamat – fájl feltöltésének beállítása   
 
-Ezután két különálló folyamatot kell megnyitnia Logic Apps vagy energiagazdálkodási automatizáláson (attól függően, hogy melyiket használja).  
-
-## <a name="upload-and-index-your-video-automatically"></a>Videó automatikus feltöltése és indexelése 
-
-Ez a forgatókönyv két különböző, együttesen működő folyamatból áll. Az első folyamat akkor aktiválódik, ha egy blobot hozzáadnak vagy módosítanak egy Azure Storage-fiókban. Feltölti az új fájlt Video Indexer egy visszahívási URL-címmel, hogy értesítést küldjön az indexelési művelet befejeződése után. A második folyamat a visszahívási URL-cím alapján aktiválódik, és elmenti a kinyert adatmennyiségeket egy JSON-fájlba az Azure Storage-ban. Ez a kétfolyamatos megközelítés a nagyobb fájlok aszinkron feltöltésének és indexelésének támogatására szolgál. 
-
-### <a name="set-up-the-file-upload-flow"></a>A fájlfeltöltés folyamatának beállítása 
-
-Az első folyamat akkor aktiválódik, amikor egy blob bekerül az Azure Storage-tárolóba. Az aktiválás után a rendszer létrehoz egy SAS URI-t, amelynek használatával feltöltheti és indexelheti a videót a Video Indexerban. Kezdje a következő folyamat létrehozásával. 
+Az első folyamat akkor aktiválódik, amikor egy blob bekerül az Azure Storage-tárolóba. Az aktiválás után a rendszer létrehoz egy SAS URI-t, amelynek használatával feltöltheti és indexelheti a videót a Video Indexerban. Ebben a szakaszban a következő folyamatot fogja létrehozni. 
 
 ![Fájlfeltöltés folyamata](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,11 +53,13 @@ Az első folyamat beállításához meg kell adnia a Video Indexer API-kulcsot �
 
 ![Kapcsolat neve és API-kulcs](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Ha kapcsolódhat az Azure Storage-hoz és Video Indexer-fiókokhoz, lépjen a "blob hozzáadása vagy módosításakor" triggerre, és válassza ki azt a tárolót, ahová a videofájlokat helyezni fogja. 
+Miután kapcsolódhat az Azure Storage-hoz, és Video Indexer fiókokhoz, megkeresheti és kiválaszthatja a "blob hozzáadása vagy módosítása" triggert **Logic apps Designerben**. Válassza ki azt a tárolót, ahová a videofájlokat helyezni fogja. 
 
 ![Képernyőfelvétel: a blob hozzáadásakor vagy módosításakor megjelenő párbeszédpanel, ahol kijelölhet egy tárolót.](./media/logic-apps-connector-tutorial/container.png)
 
-Ezután nyissa meg az "SAS URI létrehozása elérési út alapján" műveletet, és válassza ki a fájlok listájának elérési útját a dinamikus tartalom beállításai közül.  
+Ezután keresse meg és válassza ki az "SAS URI létrehozása elérési út alapján" műveletet. A művelethez tartozó párbeszédpanelen válassza ki a fájlok listájának elérési útját a dinamikus tartalom beállításainál.  
+
+Emellett adjon hozzá egy új "Shared Access Protocol" paramétert. A paraméter értékeként válassza a HttpsOnly lehetőséget.
 
 ![SAS URI elérési út alapján](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
@@ -78,7 +77,7 @@ Használhatja az alapértelmezett értéket a többi paraméterhez, vagy beáll�
 
 Kattintson a Save (Mentés) gombra, és térjünk át a második folyamat konfigurálásához, hogy a feltöltés és az indexelés befejezése után kinyerje a bepillantást. 
 
-## <a name="set-up-the-json-extraction-flow"></a>A JSON-kibontási folyamat beállítása 
+## <a name="set-up-the-second-flow---json-extraction"></a>A második folyamat beállítása – JSON-Kibontás  
 
 Az első folyamat feltöltésének és indexelésének befejezése HTTP-kérést küld a megfelelő visszahívási URL-címmel a második folyamat elindításához. Ezután lekéri a Video Indexer által generált megállapításokat. Ebben a példában az indexelési feladatoknak az Azure Storage-ban tárolt kimenetét fogja tárolni.  Azonban a kimenettel elvégezhető.  
 
@@ -104,7 +103,7 @@ Nyissa meg a "blob létrehozása" műveletet, és válassza ki annak a mappának
 
 Ez a kifejezés a "video index beolvasása" művelet kimenetét veszi át ebből a folyamatból. 
 
-Kattintson a "folyamat mentése" gombra. 
+Kattintson a **folyamat mentése**gombra. 
 
 A folyamat mentése után a rendszer egy HTTP POST URL-címet hoz létre az triggerben. Másolja az URL-címet az triggerből. 
 

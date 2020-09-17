@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119437"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705860"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -42,7 +42,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy megfelel az előfeltételekne
 
 [Azure Government](../../azure-government/index.yml) alkalmazások használhatják az Azure ad Government-identitásokat és az Azure ad nyilvános identitásait a felhasználók hitelesítéséhez. Mivel ezen identitások bármelyikét felhasználhatja, el kell döntenie, hogy melyik szolgáltatói végpontot válassza ki a forgatókönyvhöz:
 
-- Nyilvános Azure AD: gyakran használt, ha a szervezete már rendelkezik Azure AD nyilvános Bérlővel az Office 365 (Public vagy GCC) vagy más alkalmazás támogatásához.
+- Nyilvános Azure AD: gyakran használt, ha a szervezete már rendelkezik egy nyilvános Azure AD-Bérlővel Microsoft 365 (nyilvános vagy GCC) vagy más alkalmazás támogatásához.
 - Azure AD Government: gyakran használt, ha a szervezete már rendelkezik Azure AD Government-Bérlővel az Office 365 (GCC High vagy DoD) támogatásához, vagy egy új bérlőt hoz létre az Azure AD Governmentben.
 
 Miután eldöntötte, hogy elvégezte az alkalmazás regisztrálását, külön figyelmet igényel. Ha az Azure AD nyilvános identitásait választja a Azure Government alkalmazáshoz, regisztrálnia kell az alkalmazást az Azure AD nyilvános bérlőben.
@@ -122,8 +122,8 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 Ebben a kódban:
 
-- `Enter_the_Application_Id_here`az alkalmazás **(ügyfél) azonosítójának** értéke a regisztrált alkalmazáshoz.
-- `Enter_the_Tenant_Info_Here`az a következő lehetőségek egyikére van beállítva:
+- `Enter_the_Application_Id_here` az alkalmazás **(ügyfél) azonosítójának** értéke a regisztrált alkalmazáshoz.
+- `Enter_the_Tenant_Info_Here` az a következő lehetőségek egyikére van beállítva:
     - Ha az alkalmazás támogatja a **szervezeti címtárban lévő fiókokat**, cserélje le ezt az értéket a BÉRLŐi azonosítóra vagy a bérlő nevére (például contoso.microsoft.com).
     - Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket a következőre: `organizations` .
 
@@ -132,7 +132,7 @@ Ebben a kódban:
     > [!NOTE]
     > A személyes Microsoft-fiókok nem támogatottak az országos felhőkben.
 
-- `graphEndpoint`a Microsoft Cloud az Egyesült Államok kormányának Microsoft Graph végpontja.
+- `graphEndpoint` a Microsoft Cloud az Egyesült Államok kormányának Microsoft Graph végpontja.
 
    Az összes országos felhők Microsoft Graph végpontjának megkereséséhez lásd: [Microsoft Graph végpontok az országos felhőkben](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 

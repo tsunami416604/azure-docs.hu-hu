@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034576"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707492"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -41,6 +41,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az Azure Active Directory jogosultságok felügyeletének üzembe helyezési folyamatának lépésenkénti bemutatásához, beleértve az első hozzáférési csomag létrehozását is, tekintse meg a következő videót:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
+
+Microsoft Graph használatával programozott módon is létrehozhat hozzáférési csomagokat. Egy olyan oktatóanyaghoz, amely bemutatja, hogyan hozhat létre programozott módon egy hozzáférési csomagot, tekintse meg a [jogosultságok kezelése API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta)-t.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,7 +108,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
 9. A csoportok kiválasztása panelen keresse meg és válassza ki a korábban létrehozott **marketing-erőforrások** csoportot.
 
-    Alapértelmezés szerint az **általános** katalóguson belüli és kívüli csoportok láthatók. Ha kijelöl egy csoportot az **általános** katalóguson kívül, a rendszer hozzáadja az **általános** katalógushoz.
+     Alapértelmezés szerint a csoportok az általános katalóguson belül jelennek meg. Ha kijelöl egy csoportot az általános katalóguson kívül, amelyet láthat, ha bejelöli az **összes** megjelenítése jelölőnégyzetet, a rendszer hozzáadja az általános katalógushoz.
 
     ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
@@ -134,7 +136,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
     ![Új hozzáférési csomag – kérelmek lap – felhasználók és csoportok kiválasztása](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-16. Válassza a **Kiválasztás** lehetőséget.
+16. Kattintson a **Kiválasztás** elemre.
 
 17. Görgessen le a **jóváhagyás** és a **kérelmek engedélyezése** szakaszban.
 

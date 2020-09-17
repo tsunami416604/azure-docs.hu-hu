@@ -2,18 +2,18 @@
 title: Az Azure Application Insights hibáinak megoldása Snapshot Debugger
 description: Ez a cikk hibaelhárítási lépéseket és információkat nyújt a Application Insights Snapshot Debugger engedélyezésével vagy használatával kapcsolatos problémákat okozó fejlesztőknek.
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671409"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707832"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
-Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő útmutatást használhatja a hibák megoldásához:. Számos különböző oka lehet annak, hogy a pillanatképek miért nem jönnek létre. A pillanatkép állapotának ellenőrzését futtatva azonosíthatja a lehetséges gyakori okok némelyikét.
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
+Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő útmutatást használhatja a hibák megoldásához:. Számos különböző oka lehet annak, hogy a pillanatképek létrehozása nem történt meg. A pillanatkép állapotának ellenőrzését futtatva azonosíthatja a lehetséges gyakori okok némelyikét.
 
 ## <a name="use-the-snapshot-health-check"></a>A pillanatkép-állapot-ellenőrzési eszköz használata
 Számos gyakori probléma miatt az Open debug pillanatkép nem jelenik meg. Elavult Snapshot Collector használata, például:; a napi feltöltési korlát elérése; vagy lehet, hogy a pillanatkép csak hosszú időt vesz fel a feltöltéshez. Az általános problémák elhárításához használja a pillanatkép állapotának ellenőrzését.
@@ -32,13 +32,37 @@ Ha ez nem oldja meg a problémát, tekintse meg a következő kézi hibaelhárí
 
 Győződjön meg arról, hogy a megfelelő kialakítási kulcsot használja a közzétett alkalmazásban. A rendszerállapot-kulcsot általában a ApplicationInsights.config fájlból olvassa be a rendszer. Ellenőrizze, hogy az érték megegyezik-e a portálon megjelenő Application Insights erőforrás rendszerállapot-kulcsával.
 
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL-ügyfélbeállítások (ASP.NET) keresése
+
+Ha Azure App Service vagy az IIS szolgáltatásban egy virtuális gépen üzemeltetett ASP.NET-alkalmazás található, akkor az alkalmazás a hiányzó SSL biztonsági protokoll miatt nem tud csatlakozni a Snapshot Debugger szolgáltatáshoz.
+[A Snapshot Debugger végponthoz a TLS 1,2-es verziója szükséges](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Az SSL biztonsági protokollok készlete a httpRuntime targetFramework értékének egyike, amely a System. Web szakaszban található, web.config. Ha a httpRuntime targetFramework: 4.5.2 vagy alacsonyabb, akkor a TLS 1,2 alapértelmezés szerint nem szerepel.
+
+> [!NOTE]
+> A httpRuntime targetFramework értéke független az alkalmazás létrehozásakor használt cél-keretrendszertől.
+
+A beállítás megadásához nyissa meg web.config fájlt, és keresse meg a System. Web szakaszt. Győződjön meg arról, hogy a `targetFramework` for `httpRuntime` értéke 4,6 vagy újabb.
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> A httpRuntime targetFramework értékének módosítása megváltoztatja az alkalmazásra alkalmazott futásidejű hirtelen fordulatokat, és más, finom viselkedési változásokat eredményezhet. Ezt a módosítást követően feltétlenül tesztelje alaposan az alkalmazást. A kompatibilitási változások teljes listáját a következő témakörben tekintheti meg: https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+
+> [!NOTE]
+> Ha a targetFramework értéke 4,7 vagy újabb, akkor a Windows meghatározza az elérhető protokollokat. Azure App Service a TLS 1,2 elérhető. Ha azonban saját virtuális gépet használ, lehetséges, hogy engedélyeznie kell a TLS 1,2-et az operációs rendszerben.
+
 ## <a name="preview-versions-of-net-core"></a>A .NET Core előzetes verziói
 Ha az alkalmazás a .NET Core előzetes verzióját használja, és Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) keresztül volt engedélyezve, akkor előfordulhat, hogy Snapshot Debugger nem indul el. Kövesse az [Snapshot Debugger engedélyezése más környezetekhez](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című témakör utasításait, hogy a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ***NuGet-csomagot*** az alkalmazással együtt, a [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)is engedélyezze.
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Frissítés a NuGet csomag legújabb verziójára
 
-Ha Snapshot Debugger engedélyezte a [portálon a Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), akkor az alkalmazásnak már a legújabb NuGet-csomagot kell futtatnia. Ha a Snapshot Debugger a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomaggal együtt engedélyezte, a Visual Studio NuGet csomagkezelő segítségével ellenőrizze, hogy a Microsoft. ApplicationInsights. snapshotcollector nugetcsomag legújabb verzióját használja-e. A kibocsátási megjegyzések a következő címen találhatók:https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Ha Snapshot Debugger engedélyezte a [portálon a Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), akkor az alkalmazásnak már a legújabb NuGet-csomagot kell futtatnia. Ha a Snapshot Debugger a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomaggal együtt engedélyezte, a Visual Studio NuGet csomagkezelő segítségével ellenőrizze, hogy a Microsoft. ApplicationInsights. snapshotcollector nugetcsomag legújabb verzióját használja-e. A kibocsátási megjegyzések a következő címen találhatók: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>A feltöltő naplók keresése
 
@@ -84,7 +108,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 Az előző példában a kialakítási kulcs a `c12a605e73c44346a984e00000000000` . Ennek az értéknek meg kell egyeznie az alkalmazás kialakítási kulcsával.
 A minidump az AZONOSÍTÓval rendelkező pillanatképhez van társítva `139e411a23934dc0b9ea08a626db16c5` . Ezt az azonosítót később is használhatja, hogy megkeresse a társított kivétel telemetria Application Insights Analyticsben.
 
-A feltöltő 15 percenként megkeresi az új PDBs. Íme egy példa:
+A feltöltő 15 percenként megkeresi az új PDBs. Bemutatunk egy példát:
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -140,7 +164,7 @@ Az alábbi lépéseket követve konfigurálhatja a Cloud Service-szerepkört egy
    }
    ```
 
-3. A szerepkör ApplicationInsights.config fájljának frissítése a által használt ideiglenes mappa helyének felülbírálásához`SnapshotCollector`
+3. A szerepkör ApplicationInsights.config fájljának frissítése a által használt ideiglenes mappa helyének felülbírálásához `SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 5a0a158f91695bb0aba07aa412f5ba234906d493
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322500"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707696"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Gyors útmutató: felhasználók kiosztása az Azure AD-t használó alkalmazásokhoz identitás-szolgáltatóként
 
@@ -34,11 +34,11 @@ Ha felhasználókat szeretne hozzárendelni az Azure AD-bérlőhöz hozzáadott 
 >[!IMPORTANT]
 >A rövid útmutató lépéseinek teszteléséhez használjon nem éles környezetet.
 
-## <a name="assign-users-to-an-app"></a>Felhasználók kiosztása egy alkalmazáshoz
+## <a name="assign-users-to-an-app"></a>Felhasználók hozzárendelése egy alkalmazáshoz
 1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
 2. A bal oldali navigációs menüben válassza a **felhasználók és csoportok**lehetőséget.
    > [!NOTE]
-   > A Microsoft 365 és az Office 365-alkalmazások némelyike a PowerShell használatát igényli. 
+   > Néhány Microsoft 365 alkalmazás a PowerShell használatát igényli. 
 3. Válassza a **felhasználó hozzáadása** gombot.
 4. A **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
 5. Válassza ki azt a felhasználót vagy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz. A keresőmezőbe írja be a felhasználó vagy a csoport nevét is. Több felhasználót és csoportot is kiválaszthat, és a **kiválasztott elemek**területen megjelennek a kiválasztások.
@@ -46,7 +46,7 @@ Ha felhasználókat szeretne hozzárendelni az Azure AD-bérlőhöz hozzáadott 
     > Ha egy alkalmazáshoz rendel hozzá egy csoportot, akkor csak a csoport felhasználói férhetnek hozzá. A hozzárendelés nem kaszkádba ágyazott csoportokba kerül.
 
     > [!NOTE]
-    > A csoport alapú hozzárendeléshez prémium szintű Azure Active Directory P1 vagy P2 kiadás szükséges. A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagságok és az Office 365-csoportok jelenleg nem támogatottak. A cikkben tárgyalt funkciókra vonatkozó további licencelési követelményekért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory). 
+    > A csoport alapú hozzárendeléshez prémium szintű Azure Active Directory P1 vagy P2 kiadás szükséges. A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagságok és Microsoft 365 csoportok jelenleg nem támogatottak. A cikkben tárgyalt funkciókra vonatkozó további licencelési követelményekért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory). 
 6. Ha elkészült, válassza a **kiválasztás**lehetőséget.
    ![Felhasználó vagy csoport társítása az alkalmazáshoz](./media/assign-user-or-group-access-portal/assign-users.png)
 7. A **felhasználók és csoportok** panelen válasszon ki egy vagy több felhasználót vagy csoportot a listából, majd kattintson a panel alján található **kiválasztás** gombra.
@@ -62,7 +62,7 @@ Ha felhasználókat szeretne hozzárendelni az Azure AD-bérlőhöz hozzáadott 
 
 Ha elkészült a gyors üzembe helyezéssel, vegye fontolóra az alkalmazás törlését. Így megőrizheti a teszt bérlőjét. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan állíthatja be az egyszeri bejelentkezést az alkalmazásokhoz.
 > [!div class="nextstepaction"]

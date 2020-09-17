@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377862"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707407"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz az Azure AD Application Proxy
 
@@ -24,7 +24,7 @@ Azure Active Directory alkalmazásproxy biztonságos távoli hozzáférést bizt
 
 Az Azure AD-alkalmazásproxy használata:
 
-- **Egyszerűen használható**. A felhasználók ugyanúgy férhetnek hozzá a helyszíni alkalmazásokhoz, mint az Azure AD-vel integrált O365 és más SaaS-alkalmazásokhoz. Nem szükséges módosítani vagy frissíteni az alkalmazásokat ahhoz, hogy használhatók legyenek az alkalmazásproxyval.
+- **Egyszerűen használható**. A felhasználók ugyanúgy férhetnek hozzá a helyszíni alkalmazásokhoz, mint az Azure AD-vel integrált Microsoft 365 és más SaaS-alkalmazásokhoz. Nem szükséges módosítani vagy frissíteni az alkalmazásokat ahhoz, hogy használhatók legyenek az alkalmazásproxyval.
 
 - **Biztonságos**. A helyszíni alkalmazások az Azure engedélyezési vezérlőit és biztonsági elemzéseit is használhatják. A helyszíni alkalmazások például használhatják a feltételes hozzáférést és a kétlépéses ellenőrzést. Az alkalmazásproxy nem igényli a bejövő kapcsolatok megnyitását a tűzfalon keresztül.
 
@@ -72,6 +72,6 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 | Active Directory (AD) | Active Directory a tartományi fiókok hitelesítésének végrehajtásához a helyszínen fut. Ha az egyszeri bejelentkezés konfigurálva van, az összekötő az AD-vel kommunikálva további hitelesítést hajt végre.
 | Helyszíni alkalmazás | Végül a felhasználó hozzáférhet egy helyszíni alkalmazáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával.
 

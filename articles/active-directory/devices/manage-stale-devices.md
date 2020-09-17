@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184941"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705537"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
@@ -175,10 +175,10 @@ A különböző típusokról az [eszközfelügyeletet áttekintő](overview.md) 
 
 Meghiúsul minden hitelesítés, amelynek keretében az eszköz végezné a hitelesítést az Azure AD-vel. Néhány gyakori példa:
 
-- **Hibrid Azure ad-hez csatlakoztatott eszköz** – előfordulhat, hogy a felhasználók használhatják az eszközt a helyszíni tartományba való bejelentkezéshez. Az Azure AD-erőforrásokhoz, például az Office 365-höz viszont nem tudnak hozzáférni.
+- **Hibrid Azure ad-hez csatlakoztatott eszköz** – előfordulhat, hogy a felhasználók használhatják az eszközt a helyszíni tartományba való bejelentkezéshez. Azonban nem férhetnek hozzá az Azure AD-erőforrásokhoz, például a Microsoft 365hoz.
 - **Azure AD-hez csatlakoztatott eszköz** – A felhasználók nem használhatják az eszközt bejelentkezésre. 
-- **Mobileszköz** – A felhasználók nem férhetnek hozzá az Azure AD-erőforrásokhoz, például az Office 365-höz. 
+- **Mobileszközök** – a felhasználó nem férhet hozzá az Azure ad-erőforrásokhoz, például a Microsoft 365hoz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).

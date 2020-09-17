@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235638"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706453"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -64,7 +64,7 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 |---|---|---|---|
 | Felhasználók és csoportok kezelése az Azure AD-ben| √| √| Csak felhasználó |
 | A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √*| √*| Csak felhasználó * |
-| A felhasználók és csoportok feletti adathozzáférés a O365-alapú adathozzáféréshez (csapatok, SharePoint, E-mail, naptár, dokumentumok stb.) való kiépítés során történik.| X +| √| X |
+| A felhasználókon és a csoportokon kívüli adathozzáférés a Microsoft 365-adatkapcsolathoz való kiépítés során (csapatok, SharePoint, E-mail, naptár, dokumentumok stb.)| X +| √| X |
 | Felhasználók létrehozása, olvasása és frissítése üzleti szabályok alapján| √| √| √ |
 | Felhasználók törlése üzleti szabályok alapján| √| √| X |
 | Automatikus felhasználó-kiépítés kezelése a Azure Portal összes alkalmazásához| √| X| √ |
@@ -91,7 +91,7 @@ Az Azure AD kiépítési szolgáltatás felhasználói SCIM kapcsolatos további
 
 Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a [Microsoft Graphban](/graph/api/overview?view=graph-rest-1.0)elérhető több száz más adatmennyiséget. 
 
-Több mint 15 000 000 szervezet és a Fortune 500 90%-a az Azure AD-t használja a Microsoft Cloud Services, például az Office 365, a Microsoft Azure, a nagyvállalati mobilitási csomag vagy a Microsoft 365ra való feliratkozáskor. A Microsoft Graph használatával integrálhatja az alkalmazást a felügyeleti munkafolyamatokkal, például az alkalmazottak bevezetésével (és megszüntetésével), a profil karbantartásával és egyéb lehetőségekkel. 
+Több mint 15 000 000 szervezet és 90% of Fortune 500 vállalat használja az Azure AD-t a Microsoft Cloud Services, például a Microsoft 365, a Microsoft Azure vagy a nagyvállalati mobilitási csomagra való feliratkozáskor. A Microsoft Graph használatával integrálhatja az alkalmazást a felügyeleti munkafolyamatokkal, például az alkalmazottak bevezetésével (és megszüntetésével), a profil karbantartásával és egyéb lehetőségekkel. 
 
 További információ a kiépítés Microsoft Graph használatáról:
 

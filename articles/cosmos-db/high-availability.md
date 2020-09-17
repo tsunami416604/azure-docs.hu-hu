@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605330"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706816"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás az Azure Cosmos DB használatával
 
@@ -62,7 +62,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Többrégiós fiókok egyetlen írási régióval (olvasási régió kimaradása)
 
 - Az olvasási régió meghibásodása esetén az Azure Cosmos-fiókok bármely konzisztencia-szintet, vagy a három vagy több olvasási régióval való erős konzisztencia esetén is magas rendelkezésre állást biztosítanak az olvasáshoz és íráshoz.
-- Az Azure Cosmos-fiókok erős konzisztencia használatával két vagy kevesebb olvasási régióval rendelkeznek (amely magában foglalja az olvasási & írási régiót is), az olvasási régió meghibásodása során elveszíti az írási rendelkezésre állást, de a fennmaradó régiók olvasási rendelkezésre állását fogja fenntartani.
+- Az Azure Cosmos-fiókok erős konzisztencia használatával két vagy kevesebb olvasási régióval rendelkeznek (amely magában foglalja az olvasási & írási régiót is), az olvasási régió meghibásodása során elveszítik az írási írási rendelkezésre állást.
 - Az érintett régiót a rendszer automatikusan leválasztja, és offline állapotba állítja. A [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -k átirányítják az olvasási hívásokat a következő elérhető régióba az előnyben részesített régiók listájában.
 - Ha a régiók rangsorolt listáján egyetlen régió sem érhető el, a beérkező kérések automatikusan az aktuális írási régióra váltanak vissza.
 - Az olvasási régió meghibásodásának kezeléséhez nincs szükség módosításra az alkalmazás kódjában. Amikor az érintett olvasási régió újra online állapotba kerül, automatikusan szinkronizál az aktuális írási régióval, és ismét elérhető lesz az olvasási kérések kiszolgálásához.
@@ -137,12 +137,12 @@ Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezh
 
 - Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután olvassa el a következő cikkeket:
 
 - [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
 - [Kiosztott átviteli sebesség globális méretezése](scaling-throughput.md)
 - [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
-- [Azure Cosmos DB konzisztenciáji szintjei](consistency-levels.md)
+- [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md)
 - [Cosmos-fiók konfigurálása több írási régióval](how-to-multi-master.md)

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563913"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707968"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
 
@@ -27,7 +27,7 @@ Ha többet szeretne megtudni az Azure AD-alkalmazás identitás-szolgáltatóké
 Ezek az alkalmazások az Azure AD-portálon a felhasználó nevében konfigurálhatók. Az alkalmazást megfelelően kell konfigurálni, és hozzá kell rendelni ahhoz a felhasználóhoz vagy csoporthoz, amelyhez a felhasználó tartozik, hogy az alkalmazás megjelenjen a saját alkalmazásokban. 
 
 A felhasználók által megjelenített alkalmazások típusa a következő kategóriákba tartozhat:
--   Microsoft 365 és Office 365 alkalmazások
+-   Alkalmazások Microsoft 365
 -   Összevonási alapú egyszeri bejelentkezéssel konfigurált Microsoft és harmadik féltől származó alkalmazások
 -   Jelszó-alapú SSO-alkalmazások
 -   Meglévő SSO-megoldásokkal rendelkező alkalmazások
@@ -163,7 +163,7 @@ Ha licencet szeretne hozzárendelni egy felhasználóhoz, kövesse az alábbi l�
 11. Kattintson a **hozzárendelés** gombra a licencek ehhez a felhasználóhoz való hozzárendeléséhez.
 
 ## <a name="troubleshooting-deep-links"></a>Mély hivatkozások hibaelhárítása
-A részletes hivatkozások vagy a felhasználói hozzáférési URL-címek arra utalnak, hogy a felhasználók a jelszó-SSO-alkalmazásaikat közvetlenül a böngészők URL-sávjában érhetik el. Ha megnyitja ezt a hivatkozást, a felhasználók automatikusan bejelentkeznek az alkalmazásba anélkül, hogy először az alkalmazásaikat kellene bejelentkezniük. A hivatkozás ugyanaz, mint amelyet a felhasználók az Office 365 Application Launcher használatával férnek hozzá ezekhez az alkalmazásokhoz.
+A részletes hivatkozások vagy a felhasználói hozzáférési URL-címek arra utalnak, hogy a felhasználók a jelszó-SSO-alkalmazásaikat közvetlenül a böngészők URL-sávjában érhetik el. Ha megnyitja ezt a hivatkozást, a felhasználók automatikusan bejelentkeznek az alkalmazásba anélkül, hogy először az alkalmazásaikat kellene bejelentkezniük. A hivatkozás ugyanaz, mint amelyet a felhasználók a Microsoft 365 Application Launcher használatával férnek hozzá ezekhez az alkalmazásokhoz.
 
 ### <a name="checking-the-deep-link"></a>A mély hivatkozás ellenőrzése
 

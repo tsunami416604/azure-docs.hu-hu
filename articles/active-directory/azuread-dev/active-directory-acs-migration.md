@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117787"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706251"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
@@ -99,9 +99,9 @@ Az ebben a szakaszban ismertetett lépéseket követve megállapíthatja, hogy m
 
 ### <a name="check-which-applications-will-be-impacted"></a>Annak meghatározása, hogy mely alkalmazásokat érinti a rendszer
 
-1. Használja az előző lépés névterét, és lépjen a következőre:`https://<namespace>.accesscontrol.windows.net`
+1. Használja az előző lépés névterét, és lépjen a következőre: `https://<namespace>.accesscontrol.windows.net`
 
-    Ha például az egyik névtér a contoso-test, ugorjon a következőre:`https://contoso-test.accesscontrol.windows.net`
+    Ha például az egyik névtér a contoso-test, ugorjon a következőre: `https://contoso-test.accesscontrol.windows.net`
 
 2. A **megbízhatósági kapcsolatok**területen válassza a **függő entitások alkalmazások** lehetőséget, hogy megtekintse azon alkalmazások LISTÁJÁT, amelyeket az ACS-nyugdíjazás érint.
 3. Ismételje meg a 1-2. lépést minden más ACS-névtérnél.
@@ -173,7 +173,7 @@ Sajnos nincs olyan szolgáltatás, amely az összes egyenértékű funkciót fel
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrálás Azure Active Directoryre
 
-Az alkalmazások és szolgáltatások közvetlenül az Azure AD-vel való integrálásának elérési útja. Az Azure AD a Microsoft munkahelyi vagy iskolai fiókjainak felhőalapú identitás-szolgáltatója. Az Azure AD az Office 365, az Azure és még sok más identitás-szolgáltató. Hasonló összevont hitelesítési képességeket biztosít a Access Controlhoz, de nem támogatja az összes Access Control funkciót. 
+Az alkalmazások és szolgáltatások közvetlenül az Azure AD-vel való integrálásának elérési útja. Az Azure AD a Microsoft munkahelyi vagy iskolai fiókjainak felhőalapú identitás-szolgáltatója. Az Azure AD a Microsoft 365, az Azure és még sok más identitás-szolgáltató. Hasonló összevont hitelesítési képességeket biztosít a Access Controlhoz, de nem támogatja az összes Access Control funkciót. 
 
 Az elsődleges példa a közösségi identitás-szolgáltatók, például a Facebook, a Google és a Yahoo összevonása. Ha a felhasználók ilyen típusú hitelesítő adatokkal jelentkeznek be, az Azure AD nem a megoldás. 
 
@@ -316,7 +316,7 @@ A Access Control szolgáltatásbeli identitásokat jellemzően a kiszolgálók k
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrálás Azure Active Directoryre
 
-Erre a hitelesítési folyamatra vonatkozó Javaslatunk a [Azure Active Directoryba](https://azure.microsoft.com/develop/identity/signin/)való Migrálás. Az Azure AD a Microsoft munkahelyi vagy iskolai fiókjainak felhőalapú identitás-szolgáltatója. Az Azure AD az Office 365, az Azure és még sok más identitás-szolgáltató. 
+Erre a hitelesítési folyamatra vonatkozó Javaslatunk a [Azure Active Directoryba](https://azure.microsoft.com/develop/identity/signin/)való Migrálás. Az Azure AD a Microsoft munkahelyi vagy iskolai fiókjainak felhőalapú identitás-szolgáltatója. Az Azure AD a Microsoft 365, az Azure és még sok más identitás-szolgáltató. 
 
 Az Azure AD-t a kiszolgálók közötti hitelesítéshez is használhatja az OAuth-ügyfél hitelesítő adatainak megadása Azure AD-implementáció használatával. A következő táblázat összehasonlítja a kiszolgáló és a kiszolgáló közötti hitelesítés Access Control képességeit, amelyek az Azure AD-ben elérhetők.
 

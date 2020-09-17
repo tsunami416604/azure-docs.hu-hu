@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 46116fd7157b6a1cf8112613703aa2388b3ba7d3
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056183"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707526"
 ---
 # <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
 
@@ -24,13 +24,8 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szinapszis-munk
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
 1. A keresési eredmények között, a **szolgáltatások**területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
-1. Válassza a **Hozzáadás** lehetőséget a munkaterület létrehozásához a következő beállítások használatával:
-
-    |Tab|Beállítás | Ajánlott érték | Leírás |
-    |---|---|---|---|
-    |Alapvető beállítások|**Munkaterület neve**|Bármilyen nevet megadhat.| Ebben a dokumentumban a **sajátmunkaterület**-t fogjuk használni.|
-    |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése.|
-
+1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
+1. Az **alapvető beállítások**területen válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
 1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
     1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
@@ -119,9 +114,9 @@ Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előf
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés SQL-készlet használatával](get-started-analyze-sql-pool.md)

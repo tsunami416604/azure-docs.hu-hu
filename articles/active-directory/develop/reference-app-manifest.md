@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115067"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705745"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
@@ -82,7 +82,7 @@ Példa:
 | :--- | :--- |
 | Bővítmények | Gyűjtemény |
 
-Meghatározza azt az egyéni viselkedést, amelyet a felhasználó szolgáltatás használhat az alkalmazások adott környezetben való meghívásához. Előfordulhat például, hogy a file streameket megjelenítő alkalmazások a `addIns` "FileHandler" funkció tulajdonságát is megadhatják. Ez a paraméter lehetővé teszi, hogy az Office 365-hez hasonló szolgáltatások hívja meg az alkalmazást egy olyan dokumentum kontextusában, amelyben a felhasználó dolgozik.
+Meghatározza azt az egyéni viselkedést, amelyet a felhasználó szolgáltatás használhat az alkalmazások adott környezetben való meghívásához. Előfordulhat például, hogy a file streameket megjelenítő alkalmazások a `addIns` "FileHandler" funkció tulajdonságát is megadhatják. Ez a paraméter lehetővé teszi olyan szolgáltatások használatát, mint a Microsoft 365 az alkalmazás hívása egy olyan dokumentum kontextusában, amelyben a felhasználó dolgozik.
 
 Példa:
 
@@ -193,8 +193,8 @@ Támogatott.
 Az alkalmazás által `groups` várt felhasználói vagy OAuth 2,0 hozzáférési jogkivonatban kiadott jogcímet konfigurálja. Az attribútum beállításához használja a következő érvényes karakterlánc-értékek egyikét:
 
 - `"None"`
-- `"SecurityGroup"`(biztonsági csoportokhoz és Azure AD-szerepkörökhöz)
-- `"All"`(ez az összes olyan biztonsági csoportot, terjesztési csoportot és Azure AD-címtárbeli szerepkört megkapja, amely tagja a bejelentkezett felhasználónak.
+- `"SecurityGroup"` (biztonsági csoportokhoz és Azure AD-szerepkörökhöz)
+- `"All"` (ez az összes olyan biztonsági csoportot, terjesztési csoportot és Azure AD-címtárbeli szerepkört megkapja, amely tagja a bejelentkezett felhasználónak.
 
 Példa:
 
@@ -433,8 +433,8 @@ Példa:
 | :--- | :--- |
 | parentalControlSettings | Sztring |
 
-- `countriesBlockedForMinors`azokat az országokat/régiókat határozza meg, amelyekben az alkalmazás a kiskorúak számára le van tiltva.
-- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható a következőre:,,, `Allow` `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids` vagy `BlockMinors` .
+- `countriesBlockedForMinors` azokat az országokat/régiókat határozza meg, amelyekben az alkalmazás a kiskorúak számára le van tiltva.
+- `legalAgeGroupRule` meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható a következőre:,,, `Allow` `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids` vagy `BlockMinors` .
 
 Példa:
 
@@ -555,8 +555,8 @@ Példa:
 
 A dinamikus beleegyezőség révén a rendszergazda beleegyezik a `requiredResourceAccess` rendszergazdai jogosultságokkal, és a felhasználók beleegyeznek a statikus beleegyezett. Ez a paraméter azonban nem teszi elérhetővé a felhasználói beleegyező élményt az általános esethez.
 
-- `resourceAppId`annak az erőforrásnak az egyedi azonosítója, amelyhez az alkalmazásnak hozzá kell férnie. Ennek az értéknek meg kell egyeznie a célként megadott erőforrás-alkalmazásban deklarált appId.
-- `resourceAccess`a egy olyan tömb, amely felsorolja az alkalmazás által a megadott erőforrás által igényelt OAuth 2.0 engedély-hatóköröket és alkalmazás-szerepköröket. A `id` `type` megadott erőforrások és értékek értékét tartalmazza.
+- `resourceAppId` annak az erőforrásnak az egyedi azonosítója, amelyhez az alkalmazásnak hozzá kell férnie. Ennek az értéknek meg kell egyeznie a célként megadott erőforrás-alkalmazásban deklarált appId.
+- `resourceAccess` a egy olyan tömb, amely felsorolja az alkalmazás által a megadott erőforrás által igényelt OAuth 2.0 engedély-hatóköröket és alkalmazás-szerepköröket. A `id` `type` megadott erőforrások és értékek értékét tartalmazza.
 
 Példa:
 
@@ -609,10 +609,10 @@ Példa:
 | signInAudience | Sztring |
 
 Megadja, hogy az aktuális alkalmazás milyen Microsoft-fiókokat támogat. A támogatott értékek a következők:
-- `AzureADMyOrg`– Microsoft munkahelyi vagy iskolai fiókkal rendelkező felhasználók a szervezeti Azure AD-bérlőben (például egyetlen bérlő)
-- `AzureADMultipleOrgs`-Microsoft munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőben (például több-bérlős)
-- `AzureADandPersonalMicrosoftAccount`– Személyes Microsoft-fiók vagy munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőben
-- `PersonalMicrosoftAccount`– A szolgáltatásokhoz, például az Xboxhoz és a Skype-hoz való bejelentkezéshez használt személyes fiókok.
+- `AzureADMyOrg` – Microsoft munkahelyi vagy iskolai fiókkal rendelkező felhasználók a szervezeti Azure AD-bérlőben (például egyetlen bérlő)
+- `AzureADMultipleOrgs` -Microsoft munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőben (például több-bérlős)
+- `AzureADandPersonalMicrosoftAccount` – Személyes Microsoft-fiók vagy munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőben
+- `PersonalMicrosoftAccount` – A szolgáltatásokhoz, például az Xboxhoz és a Skype-hoz való bejelentkezéshez használt személyes fiókok.
 
 Példa:
 

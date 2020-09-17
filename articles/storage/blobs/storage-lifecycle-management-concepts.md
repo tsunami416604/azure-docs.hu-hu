@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604007"
+ms.locfileid: "90707764"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -87,7 +87,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
    > [!IMPORTANT]
    > A legutóbbi hozzáférési idő követésének előzetes verziója csak a nem éles használatra használható. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
    
-   További információ az **utolsó elért** lehetőségről: az [adatok áthelyezése az utolsó hozzáférés dátuma (előzetes verzió) alapján](#move-data-based-on-last-accessed-date-preview).
+   Az **utolsó elérhető** beállítás használatához a Azure Portal **életciklus-kezelés** lapján válassza a **hozzáférés-követés engedélyezése** lehetőséget. További információ az **utolsó elért** lehetőségről: az [adatok áthelyezése az utolsó hozzáférés dátuma (előzetes verzió) alapján](#move-data-based-on-last-accessed-date-preview).
 
 1. Ha a **részletek** lapon a **Blobok korlátozása szűrőkkel** lehetőséget választotta, akkor a szűrő **beállítása** elemre kattintva hozzáadhat egy opcionális szűrőt. A következő példa a *mylifecyclecontainer* tárolóban lévő blobokra szűri a "log" kezdetű blobokat.
 
@@ -376,6 +376,8 @@ Az **utolsó hozzáférés** lehetőség a következő régiókban érhető el e
 
 > [!IMPORTANT]
 > A legutóbbi hozzáférési idő követésének előzetes verziója csak a nem éles használatra használható. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
+
+Az **utolsó elérhető** beállítás használatához a Azure Portal **életciklus-kezelés** lapján válassza a **hozzáférés-követés engedélyezése** lehetőséget.
 
 #### <a name="how-last-access-time-tracking-works"></a>Az utolsó hozzáférés időpontjának nyomon követése
 

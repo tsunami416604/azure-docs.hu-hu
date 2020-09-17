@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017525"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707815"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Google Cloud (G Suite) összekötővel
 
@@ -72,9 +72,9 @@ Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
     Az e-mail-attribútum minden érvényes Exchange-licenccel rendelkező felhasználó számára automatikusan fel van töltve. Ha a felhasználó nem rendelkezik e-mail-üzenettel, akkor a rendszer ezt a hibaüzenetet kapja, mivel az alkalmazásnak hozzáférést kell adnia ehhez az attribútumhoz.
 
-    A portal.office.com rendszergazdai fiókkal, majd a felügyeleti központban, a számlázásban, az előfizetések területen válassza ki az Office 365-előfizetést, majd kattintson a hozzárendelés felhasználókhoz lehetőségre, válassza ki azokat a felhasználókat, akikkel ellenőriznie szeretné az előfizetését, és a jobb oldali ablaktáblában kattintson a licencek szerkesztése lehetőségre.
+    A portal.office.com rendszergazdai fiókkal, majd a felügyeleti központban, a számlázásban, az előfizetések területen válassza ki a Microsoft 365 előfizetését, majd kattintson a hozzárendelés felhasználókhoz lehetőségre, válassza ki azokat a felhasználókat, akikkel az előfizetését ellenőriznie szeretné, majd a jobb oldali ablaktáblán kattintson a licencek szerkesztése lehetőségre.
 
-    A O365-licenc hozzárendelése után néhány percet is igénybe vehet. Ezt követően a User. mail attribútum automatikusan ki lesz töltve, és a problémát fel kell oldani.
+    A Microsoft 365 licenc hozzárendelése után néhány percet is igénybe vehet. Ezt követően a User. mail attribútum automatikusan ki lesz töltve, és a problémát fel kell oldani.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -185,7 +185,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -240,7 +240,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) összekötő tesztelési felhasználó létrehozása
 
-Ennek a szakasznak a célja [egy olyan felhasználó létrehozása a Google Cloud (G Suite) összekötőn](https://support.google.com/a/answer/33310?hl=en) , amelynek neve B. Simon. Miután a felhasználó manuálisan létrejött a Google Cloud (G Suite)-összekötőben, a felhasználó már bejelentkezhet az Office 365 bejelentkezési hitelesítő adataival.
+Ennek a szakasznak a célja [egy olyan felhasználó létrehozása a Google Cloud (G Suite) összekötőn](https://support.google.com/a/answer/33310?hl=en) , amelynek neve B. Simon. Miután a felhasználó manuálisan létrejött a Google Cloud (G Suite) összekötőben, a felhasználó bejelentkezhet a Microsoft 365 bejelentkezési hitelesítő adataival.
 
 A Google Cloud (G Suite) összekötő a felhasználók automatikus üzembe helyezését is támogatja. Az automatikus felhasználó-kiépítés konfigurálásához először [konfigurálnia kell a Google Cloud (G Suite) összekötőt a felhasználók automatikus kiépítési felállításához](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 

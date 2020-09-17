@@ -13,22 +13,22 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141550"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706132"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory jóváhagyási keretrendszere
 
-A Azure Active Directory (Azure AD) engedélyezési keretrendszere megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztését. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést olyan Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Emellett a saját webes API-jai mellett olyan webes API-kat is el kell érniük, mint például a Microsoft Graph API (az Azure AD, az Intune és az Office 365-es szolgáltatások eléréséhez) és más Microsoft-szolgáltatások API-jai.
+A Azure Active Directory (Azure AD) engedélyezési keretrendszere megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztését. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést olyan Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Emellett a saját webes API-jai mellett olyan webes API-kat is el kell érniük, mint a Microsoft Graph API (az Azure AD, az Intune és a szolgáltatások eléréséhez a Microsoft 365) és más Microsoft-szolgáltatások API-jait.
 
-A keretrendszer egy olyan felhasználó vagy rendszergazda számára, aki beleegyezik egy olyan alkalmazásba, amely megkéri a címtárban való regisztrálást, ami a címtáradatok elérését is magában foglalja. Ha például egy webügyfél-alkalmazásnak meg kell olvasnia a felhasználóhoz tartozó naptári adatokat az Office 365-ből, akkor először a felhasználónak kell megadnia az ügyfélalkalmazás belefoglalását. A belefoglalást követően az ügyfélalkalmazás meghívja a Microsoft Graph API-t a felhasználó nevében, és igény szerint használhatja a naptári adatokat. A [Microsoft Graph API](https://developer.microsoft.com/graph) hozzáférést biztosít az Office 365-beli adatokhoz (például az Exchange-ről, webhelyekről és a sharepointból származó, a OneDrive származó, a OneNote-ból származó, a plannertől származó és az Excel-munkafüzetekből származó, valamint a Microsoft Cloud servicesből származó, az Azure ad-ból származó és más adatobjektumokból származó adatokhoz.
+A keretrendszer egy olyan felhasználó vagy rendszergazda számára, aki beleegyezik egy olyan alkalmazásba, amely megkéri a címtárban való regisztrálást, ami a címtáradatok elérését is magában foglalja. Ha például egy webalkalmazásnak a Microsoft 365 felhasználóhoz tartozó naptári adatokat kell beolvasnia, akkor először a felhasználónak kell megadnia az ügyfélalkalmazás belefoglalását. A belefoglalást követően az ügyfélalkalmazás meghívja a Microsoft Graph API-t a felhasználó nevében, és igény szerint használhatja a naptári adatokat. A [Microsoft Graph API](https://developer.microsoft.com/graph) hozzáférést biztosít a Microsoft 365 (például a SharePoint, a OneDrive, a OneNote által küldött, a plannertől származó feladatok és az Excelből származó munkafüzetek), valamint az Azure ad-től származó és más Microsoft Cloud Services-adatobjektumokból származó adatokhoz.
 
 A hozzájárulási keretrendszer a OAuth 2,0-ra és annak különböző folyamataira épül, például az engedélyezési kód engedélyezésére és az ügyfél hitelesítő adataira a nyilvános vagy bizalmas ügyfelek használatával. Az OAuth 2,0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazás (például telefon, tábla, kiszolgáló vagy webalkalmazás) kiépítését, és hozzáférést biztosít a szükséges erőforrásokhoz.
 
-További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v2-oauth2-auth-code-flow.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](./authentication-vs-authorization.md)használatával. További információ az Office 365-hez való jogosult hozzáférésről Microsoft Graphon keresztül: az [alkalmazás hitelesítése Microsoft Graph](/graph/)használatával.
+További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v2-oauth2-auth-code-flow.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](./authentication-vs-authorization.md)használatával. További információ az Microsoft 365 Microsoft Graph használatával való jogosult hozzáférésről: az [alkalmazás hitelesítése Microsoft Graphsal](/graph/).
 
 ## <a name="consent-experience---an-example"></a>Beleegyező felhasználói élmény – példa
 
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
    > [!IMPORTANT]
    > A explicit beleegyezés megadása az **engedélyek megadása** gomb használata jelenleg szükséges a ADAL.js használó egyoldalas alkalmazásokhoz (Spa). Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
 * További részletekért tekintse meg, [Hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll-rétegben az engedélyezési kód engedélyezése folyamat során.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)

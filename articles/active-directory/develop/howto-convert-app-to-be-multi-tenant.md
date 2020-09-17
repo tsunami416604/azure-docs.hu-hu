@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141364"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705894"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -53,7 +53,7 @@ Alapértelmezés szerint a Azure Portal használatával létrehozott alkalmazás
 
 Egyetlen bérlős alkalmazásban a bejelentkezési kérelmeket a rendszer a bérlő bejelentkezési végpontjának küldi el. A végpont contoso.onmicrosoft.com például a következő lesz: `https://login.microsoftonline.com/contoso.onmicrosoft.com` . A bérlői végpontnak küldött kérések bejelentkezhetnek a bérlőbe az adott bérlő alkalmazásaiba.
 
-Egy több-bérlős alkalmazás esetében az alkalmazás nem tudja, hogy melyik bérlőről származik a felhasználó, így nem küldhet kéréseket a bérlői végpontnak. Ehelyett a rendszer a kérelmeket egy olyan végpontnak küldi, amely az összes Azure AD-bérlőre kiterjed:`https://login.microsoftonline.com/common`
+Egy több-bérlős alkalmazás esetében az alkalmazás nem tudja, hogy melyik bérlőről származik a felhasználó, így nem küldhet kéréseket a bérlői végpontnak. Ehelyett a rendszer a kérelmeket egy olyan végpontnak küldi, amely az összes Azure AD-bérlőre kiterjed: `https://login.microsoftonline.com/common`
 
 Ha a Microsoft Identity platform kérést kap a/gyakori hibák-végponton, akkor a a felhasználót a és a rendszerbe írja, ezért felfedi, hogy a felhasználó melyik bérlőből származik. Az/gyakori hibák-végpont az Azure AD által támogatott összes hitelesítési protokollal működik: OpenID Connect, OAuth 2,0, SAML 2,0 és WS-Federation.
 
@@ -153,7 +153,7 @@ A jelen cikk végén a [kapcsolódó tartalom](#related-content) szakasza egy t�
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Több réteg több bérlőnél
 
-Hasonló eset történik, ha az alkalmazás különböző szintjei különböző bérlők számára vannak regisztrálva. Vegyünk például egy olyan natív ügyfélalkalmazás létrehozását, amely meghívja az Office 365 Exchange Online API-t. A natív alkalmazás fejlesztéséhez, valamint a natív alkalmazásnak az ügyfél bérlőben való futtatásához az Exchange Online egyszerű szolgáltatásának jelen kell lennie. Ebben az esetben a fejlesztőnek és az ügyfélnek meg kell vásárolnia az Exchange Online-t az egyszerű szolgáltatásnév létrehozásához a bérlők számára.
+Hasonló eset történik, ha az alkalmazás különböző szintjei különböző bérlők számára vannak regisztrálva. Vegyünk például egy olyan natív ügyfélalkalmazás létrehozását, amely meghívja az Exchange Online API-t. A natív alkalmazás fejlesztéséhez, valamint a natív alkalmazásnak az ügyfél bérlőben való futtatásához az Exchange Online egyszerű szolgáltatásának jelen kell lennie. Ebben az esetben a fejlesztőnek és az ügyfélnek meg kell vásárolnia az Exchange Online-t az egyszerű szolgáltatásnév létrehozásához a bérlők számára.
 
 Ha egy, a Microsofttól eltérő szervezet által létrehozott API-t használ, az API fejlesztőinek biztosítaniuk kell, hogy az ügyfelek beleegyezett az alkalmazásba az ügyfelek bérlői számára. Az ajánlott kialakítás a harmadik féltől származó fejlesztő számára, hogy az API-t úgy hozza létre, hogy webes ügyfélként is működhet a regisztráció megvalósításához. Ehhez tegye a következőket:
 
@@ -179,9 +179,9 @@ Ha egy rendszergazda a bérlő összes felhasználója számára engedélyez egy
 
 A több-bérlős alkalmazások hozzáférési tokeneket is kérhetnek az Azure AD által védett API-k meghívásához. Ha a Active Directory-hitelesítési tár (ADAL) több-bérlős alkalmazással való használata során gyakran előfordul, hogy a rendszer először a/gyakori hibák-t használó felhasználó jogkivonatát kéri le, választ kap, majd egy későbbi tokent kér ugyanahhoz a felhasználóhoz is a/Common. használatával. Mivel az Azure AD válasza egy bérlőtől származik, és nem/gyakori hibák, a ADAL gyorsítótárazza a jogkivonatot a bérlőtől. A/gyakori hibák a felhasználó hozzáférési jogkivonatának beolvasására irányuló hívása nem éri el a gyorsítótár bejegyzését, és a rendszer felszólítja a felhasználót, hogy jelentkezzen be újra. Ha el szeretné kerülni a gyorsítótár hiányzó számát, győződjön meg arról, hogy a bérlő végpontján már bejelentkezett felhasználóra vonatkozó további hívások történnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri bejelentkezést (SSO) az alkalmazás és az Azure AD között, a Microsoft-erőforrások, például az Office 365 által elérhető API-k eléréséhez is frissítheti az alkalmazást. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot. Ha többet szeretne megtudni az Azure AD-hez és az Office 365-szolgáltatásokhoz, például az Exchange, a SharePoint, a OneDrive, a OneNote és más rendszerekhez, látogasson el [Microsoft Graph API][MSFT-Graph-overview]-ra.
+Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri bejelentkezést (SSO) az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások (például Microsoft 365) által elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot. Ha többet szeretne megtudni az Azure AD-hez és Microsoft 365 szolgáltatásokhoz, például az Exchange, a SharePoint, a OneDrive, a OneNote és más rendszerekhez, látogasson el [Microsoft Graph API][MSFT-Graph-overview]-ra.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 

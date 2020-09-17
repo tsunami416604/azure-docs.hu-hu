@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235693"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706357"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -50,9 +50,9 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A Felhőbeli HR-alkalmazásból Active Directory vagy az Azure AD-be való közvetlen felhasználói üzembe helyezés szükséges.
 - A Felhőbeli HR-alkalmazásból beszerzett adatok használatával kell kiépíteni a felhasználókat.
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
-- Az Office 365 e-mail-cím használata.
+- E-mailek Microsoft 365 használata.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -61,14 +61,14 @@ A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás
 Ez a cikk a következő kifejezéseket használja:
 
 - **Forrásoldali rendszer**: az Azure ad által kiépített felhasználók tárháza. Ilyen például egy Felhőbeli HR-alkalmazás, például a munkanap vagy a SuccessFactors.
-- Célrendszer: az Azure AD által **kiépített**felhasználók tárháza. Ilyenek például az Active Directory, az Azure AD, az Office 365 vagy más SaaS-alkalmazások.
+- Célrendszer: az Azure AD által **kiépített**felhasználók tárháza. Ilyenek például a következők: Active Directory, Azure AD, Microsoft 365 vagy más SaaS-alkalmazás.
 - **Csatlakozások**– a kimaradók folyamata: az új bérletek, átadások és leállítások kifejezése, amely egy FELHŐbeli HR-alkalmazás a rekordok rendszereként való használatával történik. A folyamat akkor fejeződik be, amikor a szolgáltatás sikeresen kiépíti a szükséges attribútumokat a célszámítógépen.
 
 ### <a name="key-benefits"></a>Főbb előnyök
 
 A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előnyöket kínálja:
 
-- **Növelje a termelékenységet:** Mostantól automatizálhatja a felhasználói fiókok és az Office 365-licencek hozzárendelését, és hozzáférést biztosíthat a kulcsfontosságú csoportokhoz. A hozzárendelések automatizálása lehetővé teszi, hogy az új Hirek azonnal hozzáférjenek a feladathoz, és növelik a termelékenységet.
+- **Növelje a termelékenységet:** Mostantól automatizálhatja a felhasználói fiókok és Microsoft 365 licencek hozzárendelését, és hozzáférést biztosíthat a kulcsfontosságú csoportokhoz. A hozzárendelések automatizálása lehetővé teszi, hogy az új Hirek azonnal hozzáférjenek a feladathoz, és növelik a termelékenységet.
 - **Kockázat kezelése:** Növelheti a biztonságot úgy, hogy az alkalmazottak állapota vagy csoporttagságok alapján automatizálja a módosításokat a Felhőbeli HR-alkalmazásból származó adatokkal. A változások automatizálása biztosítja, hogy a felhasználói identitások és a Key apps hozzáférése automatikusan megtörténjen, amikor a felhasználók áttérnek vagy elhagyják a szervezetet.
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
@@ -178,7 +178,7 @@ Az Ön döntése alapján válasszon egyet a telepítési forgatókönyvek köz�
 
 A következő éles konfigurációt javasoljuk:
 
-|Követelmény|Javaslat|
+|Követelmény|Ajánlás|
 |:-|:-|
 |Telepítendő Azure AD Connect kiépítési ügynökök száma|Kettő (a magas rendelkezésre álláshoz és a feladatátvételhez)
 |A konfigurálni kívánt kiépítési összekötő-alkalmazások száma|Egy alkalmazás/gyermektartomány|
@@ -192,7 +192,7 @@ Ez a forgatókönyv magában foglalja a felhasználókat a Cloud HR-alkalmazásb
 
 A következő éles konfigurációt javasoljuk:
 
-|Követelmény|Javaslat|
+|Követelmény|Ajánlás|
 |:-|:-|
 |A helyszíni üzembe helyezéshez Azure AD Connect kiépítési ügynökök száma|Két különálló Active Directory erdőben|
 |A konfigurálni kívánt kiépítési összekötő-alkalmazások száma|Egy alkalmazás/gyermektartomány|

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363068b74bf7639460da4fa80f0e661f3b8a88b9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568812"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707628"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusától, a [szerepkörük hozzárendeléseitől](active-directory-users-assign-role-azure-portal.md), valamint az egyes objektumok tulajdonosainak. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyeket csak az Azure AD felhasználói beállításaiban lehet módosítani.
@@ -36,7 +36,7 @@ Felhasználók és kapcsolatok | <ul><li>Felhasználók és kapcsolatok összes 
 Csoportok | <ul><li>Biztonsági csoportok létrehozása<li>Microsoft 365 csoportok létrehozása<li>Minden csoporttulajdonság olvasása<li>Nem rejtett csoporttagságok olvasása<li>Rejtett Microsoft 365 csoporttagságok olvasása az összekapcsolt csoportokhoz<li>A felhasználó tulajdonában lévő csoportok tulajdonságainak, tulajdonosának és tagságának kezelése<li>Vendégek hozzáadása saját csoportokhoz<li>Dinamikus tagsági beállítások kezelése<li>Saját csoportok törlése<li>Tulajdonosi Microsoft 365 csoportok visszaállítása</li></ul> | <ul><li>Az összes nem rejtett csoport tulajdonságainak olvasása, beleértve a tagságot és a tulajdonjogot (még nem csatlakoztatott csoportok)<li>Rejtett Microsoft 365 csoporttagság beolvasása az összekapcsolt csoportokhoz<li>Csoportok keresése megjelenítendő név vagy ObjectId szerint (ha engedélyezve van)</li></ul> | Nincs engedély
 Alkalmazások | <ul><li>Új alkalmazás regisztrálása (létrehozása)<li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<li>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<li>Felhasználó alkalmazásjelszavának létrehozása vagy törlése<li>Saját alkalmazások törlése<li>Saját alkalmazások visszaállítása</li></ul> | <ul><li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása</li></ul> | <ul><li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása
 Eszközök</li></ul> | <ul><li>Minden eszköztulajdonság olvasása<li>Saját eszközök minden tulajdonságának olvasása</li></ul> | Nincs engedély | Nincs engedély
-Címtár | <ul><li>Minden vállalati adat olvasása<li>Minden tartomány olvasása<li>Minden partnerszerződés olvasása</li></ul> | <ul><li>Megjelenített név és ellenőrzött tartományok olvasása</li></ul> | <ul><li>Megjelenített név és ellenőrzött tartományok olvasása</li></ul>
+Címtár | <ul><li>Minden vállalati adat olvasása<li>Minden tartomány olvasása<li>Minden partnerszerződés olvasása</li></ul> | <ul><li>Cég megjelenítendő nevének olvasása<li>Minden tartomány olvasása</li></ul> | <ul><li>Cég megjelenítendő nevének olvasása<li>Minden tartomány olvasása</li></ul>
 Szerepkörök és hatókörök | <ul><li>Minden rendszergazdai szerepkör és tagság olvasása<li>Felügyeleti egységek minden tulajdonságának és tagságának olvasása</li></ul> | Nincs engedély | Nincs engedély
 Előfizetések | <ul><li>Minden előfizetés olvasása<li>Szolgáltatáscsomag-tag engedélyezése</li></ul> | Nincs engedély | Nincs engedély
 Házirendek | <ul><li>Szabályzatok minden tulajdonságának olvasása<li>Saját szabályzat minden tulajdonságának kezelése</li></ul> | Nincs engedély | Nincs engedély
@@ -141,7 +141,7 @@ A felhasználók a következő műveleteket hajthatják végre a tulajdonos csop
 | Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
 * További információ az Azure AD-rendszergazdai szerepkörök hozzárendeléséről: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md)

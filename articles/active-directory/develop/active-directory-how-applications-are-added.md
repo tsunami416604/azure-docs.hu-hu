@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115764"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706183"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
 
@@ -70,9 +70,9 @@ Az Application Objects szolgáltatáshoz hasonlóan az egyszerű szolgáltatáso
 
 * Amikor a felhasználók bejelentkeznek egy, az Azure AD-vel integrált, harmadik féltől származó alkalmazásba
   * A bejelentkezés során a felhasználóknak engedélyt kell adniuk az alkalmazásnak, hogy hozzáférjenek a profiljához és egyéb engedélyekhez. A beleegyezés megadásának első személye egy egyszerű szolgáltatásnév, amely a címtárba felvenni kívánt alkalmazást jelöli.
-* Amikor a felhasználók bejelentkeznek a Microsoft online szolgáltatásokba, például az [Office 365](https://products.office.com/) -be
-  * Amikor előfizet az Office 365-re, vagy megkezdi a próbaverziót, egy vagy több egyszerű szolgáltatásnév jön létre a címtárban, amely az Office 365-hoz kapcsolódó összes funkció kiszolgálásához használt különböző szolgáltatásokat jelképezi.
-  * Néhány Office 365-szolgáltatás, például a SharePoint, az egyszerű szolgáltatás létrehozása, amely lehetővé teszi az összetevők közötti biztonságos kommunikációt, beleértve a munkafolyamatokat is.
+* Amikor a felhasználók bejelentkeznek a Microsoft online szolgáltatásokba, például [Microsoft 365](https://products.office.com/)
+  * Amikor előfizet Microsoft 365re, vagy megkezdi a próbaverziót, a rendszer egy vagy több egyszerű szolgáltatást hoz létre a címtárban a Microsoft 365hoz társított összes funkció biztosításához használt különböző szolgáltatásokhoz.
+  * Néhány Microsoft 365-szolgáltatás, például a SharePoint, az egyszerű szolgáltatás létrehozása folyamatban van az összetevők közötti biztonságos kommunikáció érdekében, beleértve a munkafolyamatokat is.
 * Amikor egy rendszergazda felvesz egy alkalmazást az alkalmazás-gyűjteményből (ez egy mögöttes alkalmazás-objektumot is létrehoz)
 * Alkalmazás hozzáadása az [Azure ad Application proxy](../manage-apps/application-proxy.md) használatához
 * Alkalmazás összekapcsolása egyszeri bejelentkezéshez SAML vagy jelszó egyszeri bejelentkezés (SSO) használatával
@@ -116,7 +116,7 @@ Az alkalmazások az Azure AD-be való hozzáadásával kihasználhatják az ált
 * Egyszeri bejelentkezés az összevonás vagy a jelszó használatával
 * A felhasználók üzembe helyezése és szinkronizálása
 * Szerepköralapú hozzáférés-vezérlés – a címtár használatával határozhatja meg az alkalmazás szerepköreit a szerepköralapú engedélyezési ellenőrzések végrehajtásához egy alkalmazásban.
-* OAuth engedélyezési szolgáltatások – az Office 365 és más Microsoft-alkalmazások által használt API-khoz és erőforrásokhoz való hozzáférés engedélyezése
+* OAuth engedélyezési szolgáltatások – a Microsoft 365 és más Microsoft-alkalmazások által használt API-khoz és erőforrásokhoz való hozzáférés engedélyezéséhez
 * Alkalmazás közzététele és proxy – alkalmazás közzététele egy magánhálózat és az internet között
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kinek van engedélye alkalmazások hozzáadására az Azure AD-példányhoz?

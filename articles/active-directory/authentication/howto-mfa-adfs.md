@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dac17c8592530c06dd761914e7f556b35c3674b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202986"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706319"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 
@@ -50,7 +50,7 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 
 Az adminisztrátorok a megbízható IP-címek segítségével megkerülhetik a kétlépéses ellenőrzést olyan IP-címek vagy összevont felhasználók esetében, akiknek a kérései a saját intranetes hálózatukról származnak. A következő szakaszok leírják az Azure Multi-Factor Authentication megbízható IP-címei és az összevont felhasználók konfigurálását, valamint a kétlépéses ellenőrzés megkerülését, amikor egy kérés összevont felhasználó intranetes hálózatáról származik. Ehhez úgy kell konfigurálni az AD FS-t, hogy áteresztést vagy a bejövő jogcímsablonok szűrését használja a vállalati hálózaton belüli jogcímtípushoz.
 
-Ez a példa az Office 365-öt használja a függőentitás-megbízhatóságokhoz.
+Ez a példa Microsoft 365t használ a függő entitás megbízhatóságához.
 
 ### <a name="configure-the-ad-fs-claims-rules"></a>Az AD FS-jogcímszabályok konfigurálása
 
@@ -97,4 +97,4 @@ Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 4. A Szolgáltatásbeállítások oldalon, a **megbízható IP**-címek területen válassza a **többtényezős hitelesítés kihagyása az összevont felhasználók számára az intraneten**lehetőséget.  
 5. Kattintson a **Mentés**gombra.
 
-Ennyi az egész! Ekkor az összevont Office 365-felhasználóknak csak az MFA-t kell használniuk, amikor egy jogcím a vállalati intraneten kívülről származik.
+Ennyi az egész! Ezen a ponton az összevont Microsoft 365 felhasználóknak csak az MFA használatát kell használniuk, ha egy jogcím a vállalati intraneten kívülről származik.

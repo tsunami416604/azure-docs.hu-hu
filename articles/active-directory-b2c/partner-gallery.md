@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049866"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706676"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -37,12 +37,13 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 | ![embléma](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
 | ![embléma](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
 | ![embléma](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
+| ![embléma](./media/partner-gallery/saviynt-logo.png) | A [Saviynt](./partner-saviynt.md) Felhőbeli natív platform intelligens elemzési funkciókat használ, és lehetővé teszi az alkalmazások integrálását az informatikai modernizáció egyszerűsítése és a jobb biztonság, irányítás és megfelelőség elősegítése érdekében. Az üzleti modernizáció megváltoztatja a vállalatoknak a hozzáférési kérelmek felülvizsgálati módszereit, a hozzáférési felülvizsgálatokat, a jelentés-elemzéseket és a minősítési kampányok egyszerűsítését.  |
 | ![embléma](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, a többtényezős hitelesítést és a digitális licencek vizsgálatát.|
 | ![embléma](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldást biztosít a többtényezős hitelesítés (MFA) SMS egyszeri jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések, valamint a Payment Services-irányelv 2 (PSD2) direktíva követelményeinek teljesítéséhez.|
 | ![embléma](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |
 | ![embléma](./media/partner-gallery/whoiam-logo.png) | A [WhoIAM](./partner-whoiam.md) egy márkás identitáskezelésrendszer-(BRIMS-) alkalmazás, amely lehetővé teszi, hogy a szervezetek hang-, SMS-és e-mail-cím alapján ellenőrizzék a felhasználói bázist. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Válasszon egy partnert a fenti táblázatban, hogy megtudja, hogyan integrálhatja megoldásait a Azure AD B2Cával.
 

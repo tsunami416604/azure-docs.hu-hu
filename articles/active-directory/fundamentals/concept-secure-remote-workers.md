@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320035"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705367"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Az Azure AD-vel gyorsan reagálhat a biztonságos identitásokra
 
@@ -42,16 +42,15 @@ Ez az útmutató azt feltételezi, hogy a felhőben csak a hibrid identitások l
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez a ellenőrzőlista egy biztonságos és biztonságos identitás-infrastruktúrára koncentrál, amely lehetővé teszi a felhasználók számára a távoli munkát. Az identitás védelme csak a biztonsági történet részét képezi, az adatok, az alkalmazások és az eszközök védelmét is figyelembe kell venni.
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Útmutatás ingyenes Azure AD vagy Office 365-ügyfelek számára.
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Útmutató ingyenes Azure AD, Office 365 vagy Microsoft 365 ügyfelekhez.
 
-A következő táblázat számos javaslatot tartalmaz arra vonatkozóan, hogy ingyenes Azure AD vagy az Office 365-alkalmazás ügyfeleinek kell megtenniük a felhasználói identitások elleni védekezést:
+Számos javaslattal rendelkezik, amelyekkel az ingyenes Azure AD, az Office 365 vagy Microsoft 365 alkalmazás ügyfeleinek meg kell tenniük a felhasználói identitások elleni védekezést, az alábbi táblázat a következő előfizetések fő műveleteit célozza meg:
 
-- Office 365 (O365 E1, E3, E5, F1, a1, a3, a5)
-- Office 365 Business (Essentials, Business, Business Premium)
-- Microsoft 365 (M365 Business, a1)
+- Office 365 (Office 365 E1, E3, E5, F1, a1, a3, a5)
+- Microsoft 365 (üzleti alapszintű, vállalati alkalmazások, Business Standard, Business Premium, a1)
 - Ingyenes Azure AD (az Azure, a Dynamics 365, az Intune és a Power platform részeként)
 
-| Javasolt művelet | Részletek |
+| Javasolt művelet | Részlet |
 | --- | --- |
 | [Biztonsági alapértékek engedélyezése](concept-fundamentals-security-defaults.md) | Az összes felhasználói identitás és alkalmazás védetté tétele az MFA engedélyezésével és a régi hitelesítés blokkolásával |
 | [Jelszó-kivonat szinkronizálásának engedélyezése](../hybrid/how-to-connect-password-hash-synchronization.md) (hibrid identitások használata esetén) | Redundancia biztosítása a hitelesítéshez és a biztonság növelése (beleértve az intelligens zárolást, az IP-zárolást és a kiszivárgott hitelesítő adatok felderítésének lehetőségét) |
@@ -74,7 +73,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 - Enterprise Mobility + Security (EMS E3)
 - Microsoft 365 (M365 E3, a3, F1, F3)
 
-| Javasolt művelet | Részletek |
+| Javasolt művelet | Részlet |
 | --- | --- |
 | [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
@@ -104,7 +103,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 - Enterprise Mobility + Security (EMS E5)
 - Microsoft 365 (M365 E5, a5)
 
-| Javasolt művelet | Részletek |
+| Javasolt művelet | Részlet |
 | --- | --- |
 | [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
@@ -129,7 +128,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
 | [Privileged Identity Management engedélyezése](../privileged-identity-management/pim-configure.md) | Lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés felügyeletét, vezérlését és figyelését, valamint a rendszergazdák hozzáférését csak szükség esetén és jóváhagyással |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure AD egyes funkcióinak részletes üzembe helyezési útmutatóját az [Azure ad Project üzembehelyezési csomagjaiban](active-directory-deployment-plans.md)tekintheti meg.
 

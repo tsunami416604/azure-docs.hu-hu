@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178824"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705996"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
@@ -154,7 +154,7 @@ A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározotta
 
 A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározottak szerint a védett erőforrásokat üzemeltető kiszolgáló, amely képes a [hozzáférési jogkivonatot](#access-token)futtató [ügyfélalkalmazások](#client-application) által a védett erőforrásokra vonatkozó kérések fogadására és megválaszolására. Más néven védett erőforrás-kiszolgáló vagy erőforrás-alkalmazás.
 
-Az erőforrás-kiszolgáló elérhetővé teszi az API-kat, és kikényszeríti a védett erőforrások elérését [hatókörökön](#scopes) és [szerepkörökön](#roles)keresztül a OAuth 2,0 engedélyezési keretrendszer használatával. Ilyenek például a [Microsoft Graph API][Microsoft-Graph] , amely hozzáférést biztosít az Azure ad-bérlői információhoz, valamint az Office 365 API-kat, amelyek hozzáférést biztosítanak a levelezéshez és a naptárhoz.
+Az erőforrás-kiszolgáló elérhetővé teszi az API-kat, és kikényszeríti a védett erőforrások elérését [hatókörökön](#scopes) és [szerepkörökön](#roles)keresztül a OAuth 2,0 engedélyezési keretrendszer használatával. Ilyenek például a [Microsoft Graph API][Microsoft-Graph] , amely hozzáférést biztosít az Azure ad-bérlői információhoz, valamint a Microsoft 365 API-kat, amelyek hozzáférést biztosítanak az olyan adatszolgáltatásokhoz, mint a levelezés és a naptár
 
 Akárcsak egy ügyfélalkalmazás esetében, az erőforrás-alkalmazás identitásának konfigurációja az Azure AD-bérlőben való [regisztrációval](#application-registration) történik, amely az alkalmazás és a szolgáltatás egyszerű objektumát is megadja. Egyes Microsoft által biztosított API-k (például a Microsoft Graph API) a kiépítés során minden bérlőn elérhetők előre regisztrált egyszerű szolgáltatások.
 
@@ -172,7 +172,7 @@ A [szerepkörökhöz](#roles)hasonlóan a hatókörök lehetővé teszik az [er�
 
 A hatókörök erőforrás-definiált karakterláncok (például "mail. Read", "Directory. ReadWrite. all"), a [Azure Portal][AZURE-portal] felügyelve az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül, és az erőforrás [oauth2Permissions tulajdonságában][Graph-Sp-Resource]vannak tárolva. A Azure Portal az ügyfélalkalmazások [delegált engedélyeinek](#permissions) konfigurálására is használható a hatókör eléréséhez.
 
-Az ajánlott eljárás elnevezési konvenció az "erőforrás. Operation. megkötés" formátum használata. Az Microsoft Graph API által elérhető hatókörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Az Office 365-szolgáltatások által közzétett hatókörökkel kapcsolatban lásd: [office 365 API-engedélyek referenciája][O365-Perm-Ref].
+Az ajánlott eljárás elnevezési konvenció az "erőforrás. Operation. megkötés" formátum használata. Az Microsoft Graph API által elérhető hatókörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Microsoft 365 szolgáltatások által közzétett hatókörökkel kapcsolatban lásd: [Microsoft 365 API-engedélyek referenciája][O365-Perm-Ref].
 
 ## <a name="security-token"></a>biztonsági jogkivonat
 
@@ -202,7 +202,7 @@ Az Azure AD-címtár egy példányát Azure AD-bérlőnek nevezzük. Számos fun
 * felhasználói fiókok és regisztrált alkalmazások hitelesítése
 * A különböző protokollok támogatásához szükséges REST-végpontok, például a OAuth2 és az SAML, beleértve az [engedélyezési végpontot](#authorization-endpoint), a [jogkivonat-végpontot](#token-endpoint) és a [több-bérlős alkalmazások](#multi-tenant-application)által használt "Common" végpontot.
 
-Az Azure AD-bérlők létrehozása/az Azure-beli és az Office 365-előfizetésekhez vannak társítva a regisztráció során, amely az előfizetéshez & hozzáférés-kezelési funkciókat biztosít. Az Azure-előfizetés rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal használatával. Megtudhatja, [hogyan szerezhet be egy Azure Active Directory bérlőt][AAD-How-To-Tenant] a bérlőhöz való hozzáférés különböző módjaival kapcsolatos részletekért. Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiről, valamint az előfizetés Azure AD-bérlőhöz való hozzárendelésével és hozzáadásával kapcsolatos információkért lásd: az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz][AAD-How-Subscriptions-Assoc] .
+Az Azure AD-bérlők létrehozása/társítása az Azure-hoz, és Microsoft 365 előfizetéseket a regisztráció során, az identitás & az előfizetés hozzáférés-kezelési funkcióit biztosítva. Az Azure-előfizetés rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal használatával. Megtudhatja, [hogyan szerezhet be egy Azure Active Directory bérlőt][AAD-How-To-Tenant] a bérlőhöz való hozzáférés különböző módjaival kapcsolatos részletekért. Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiről, valamint az előfizetés Azure AD-bérlőhöz való hozzárendelésével és hozzáadásával kapcsolatos információkért lásd: az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz][AAD-How-Subscriptions-Assoc] .
 
 ## <a name="token-endpoint"></a>jogkivonat-végpont
 

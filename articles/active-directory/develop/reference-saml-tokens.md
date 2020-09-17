@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 254fa03310bac9c5c478d9297145f88773c1a7b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6dda32bb2bab4123ede0133b31625c499380fd59
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648617"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705707"
 ---
 # <a name="saml-token-claims-reference"></a>SAML-token jogcímek referenciája
 
@@ -33,7 +33,7 @@ A Microsoft Identity platform számos különböző típusú biztonsági jogkivo
 > | Hitelesítési időpont | |A hitelesítés dátumát és időpontját rögzíti. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |Hitelesítési módszer | `amr` |Azt határozza meg, hogy a jogkivonat tárgya hogyan lett hitelesítve. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Utónév | `given_name` |A felhasználó első vagy "megadott" nevét adja meg az Azure AD felhasználói objektumán. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
-> |Csoportok | `groups` |A tulajdonos csoportjának tagságát képviselő objektumazonosítók benyújtása. Ezek az értékek egyediek (lásd: objektumazonosító), és biztonságosan használhatók a hozzáférés felügyeletéhez, például az erőforrásokhoz való hozzáférés engedélyezésének kényszerítéséhez. A groups jogcímben szereplő csoportok alkalmazáson belüli alapon vannak konfigurálva, az alkalmazás jegyzékfájljának "groupMembershipClaims" tulajdonságával. A Null érték kizárja az összes csoportot, a "SecurityGroup" érték pedig csak Active Directory biztonsági csoportba tartozó tagságot tartalmaz, az "all" érték pedig a biztonsági csoportokat és az Office 365 terjesztési listáját is tartalmazza. <br><br> **Megjegyzések**: <br> Ha a felhasználó által birtokolt csoportok száma meghaladja a korlátot (az SAML esetében 150, 200 a JWT esetében), a rendszer felveszi a túllépési jogcímet, amely a felhasználóhoz tartozó csoportok listáját tartalmazó gráf végpontra mutat. a. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
+> |Csoportok | `groups` |A tulajdonos csoportjának tagságát képviselő objektumazonosítók benyújtása. Ezek az értékek egyediek (lásd: objektumazonosító), és biztonságosan használhatók a hozzáférés felügyeletéhez, például az erőforrásokhoz való hozzáférés engedélyezésének kényszerítéséhez. A groups jogcímben szereplő csoportok alkalmazáson belüli alapon vannak konfigurálva, az alkalmazás jegyzékfájljának "groupMembershipClaims" tulajdonságával. A Null érték kizárja az összes csoportot, a "SecurityGroup" érték pedig csak Active Directory biztonsági csoporttagság részét fogja tartalmazni, az "all" érték pedig a biztonsági csoportokat és a Microsoft 365 terjesztési listát is tartalmazza. <br><br> **Megjegyzések**: <br> Ha a felhasználó által birtokolt csoportok száma meghaladja a korlátot (az SAML esetében 150, 200 a JWT esetében), a rendszer felveszi a túllépési jogcímet, amely a felhasználóhoz tartozó csoportok listáját tartalmazó gráf végpontra mutat. a. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
 > | Csoportok keretén túli kijelző | `groups:src1` | A nem hossz-korlátozott, de a jogkivonat esetében túl nagy méretű jogkivonat-kérelmek esetén a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Az SAML esetében ez a jogcím helyett új jogcímként lesz hozzáadva `groups` . | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Identitásszolgáltató | `idp` |A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállítói jogcímek értékével, kivéve, ha a felhasználói fiók a kiállítótól eltérő bérlőn található. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |A jogkivonat kiállításának időpontját tárolja. Gyakran használják a jogkivonat frissességének mérésére. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
@@ -152,7 +152,7 @@ Ez egy tipikus SAML-token mintája.
 </t:RequestSecurityTokenResponse>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a jogkivonat-élettartam szabályzatának Microsoft Graph API-val történő kezeléséről, tekintse meg az [Azure ad-házirend erőforrásának áttekintését](/graph/api/resources/policy).
 * [Egyéni és választható jogcímeket](active-directory-optional-claims.md) adhat hozzá az alkalmazás jogkivonatához.

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564270"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707645"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>A Linux (SMB) Azure Files problémáinak elhárítása
 
@@ -21,7 +21,7 @@ Ez a cikk a Linux-ügyfelekről való csatlakozáskor Azure Files kapcsolatos gy
 A cikkben található hibaelhárítási lépések mellett a [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) használatával biztosíthatja, hogy a Linux-ügyfél megfelelő előfeltételekkel rendelkezik. A AzFileDiagnostics automatizálja a jelen cikkben említett legtöbb tünet észlelését. Segít az optimális teljesítmény elérésében a környezet beállításában. Ezeket az információkat a [Azure Files shares-hibakeresőben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)is megtalálhatja. A hibakereső útmutatást nyújt a Azure Files-megosztások csatlakoztatásához, leképezéséhez és csatlakoztatásához szükséges problémák megoldásához.
 
 > [!IMPORTANT]
-> A cikk tartalma csak az SMB-megosztásokra vonatkozik.
+> A cikk tartalma csak az SMB-megosztásokra vonatkozik. Az NFS-megosztásokkal kapcsolatos részletekért lásd: az [Azure NFS-fájlmegosztás hibáinak megoldása](storage-troubleshooting-files-nfs.md).
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nem lehet csatlakozni az Azure-fájlmegosztás eléréséhez vagy csatlakoztatásához
 

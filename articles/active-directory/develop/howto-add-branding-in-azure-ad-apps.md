@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226641"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706200"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -36,7 +36,7 @@ Ebben a cikkben:
 A Microsoft kétféle felhasználói fiókot kezel:
 
 - **Személyes fiókok** (korábban Windows Live ID). Ezek az *egyes* felhasználók és a Microsoft közötti kapcsolatot képviselik, és a Microsoft fogyasztói eszközökhöz és szolgáltatásokhoz való hozzáférését biztosítják. Ezek a fiókok személyes használatra vannak szánva.
-- **Munkahelyi vagy iskolai fiókok.** A fiókokat a Microsoft felügyeli az Azure Active Directory-t használó vállalatok nevében. A fiókok az Office 365-be és a Microsoft egyéb üzleti szolgáltatásaiba való bejelentkezésre szolgálnak.
+- **Munkahelyi vagy iskolai fiókok.** A fiókokat a Microsoft felügyeli az Azure Active Directory-t használó vállalatok nevében. Ezek a fiókok a Microsoft Microsoft 365 és egyéb üzleti szolgáltatásaiba való bejelentkezéshez használhatók.
 
 A Microsoft munkahelyi vagy iskolai fiókokat a szervezetek (vállalatok, iskolák, kormányhivatalok) jellemzően a végfelhasználókhoz (alkalmazottak, diákok, köztisztviselők) rendelik. Ezek a fiókok közvetlenül a felhőben (az Azure AD platformon) vannak elsajátítva, vagy egy helyszíni címtárból, például a Windows Server Active Directoryról szinkronizálva az Azure AD-be. A Microsoft a munkahelyi vagy iskolai fiókok *felügyelője*, de azok a szervezetek tulajdonában állnak, és a szervezetek felügyelik őket.
 
@@ -49,7 +49,7 @@ A Microsoft nem jeleníti meg a végfelhasználóknak az Azure vagy az Active Di
 
 ## <a name="user-account-pictogram"></a>A felhasználói fiók piktogramja
 
-Az irányelvek korábbi verziójában a „kék jelvény” piktogram használatát javasoltuk. A felhasználói és fejlesztői visszajelzések alapján ehelyett jelenleg a Microsoft embléma használatát javasoljuk. A Microsoft embléma elősegíti, hogy a felhasználók könnyebben felismerjék, hogy az Office 365-höz vagy más Microsoft üzleti szolgáltatásokhoz használt fiókjukat is használhatják, ha be szeretnének lépni az alkalmazásba.
+Az irányelvek korábbi verziójában a „kék jelvény” piktogram használatát javasoltuk. A felhasználói és fejlesztői visszajelzések alapján ehelyett jelenleg a Microsoft embléma használatát javasoljuk. A Microsoft emblémája segít a felhasználóknak megérteni, hogy felhasználhatják a Microsoft 365 vagy más Microsoft üzleti szolgáltatásokkal használt fiókot az alkalmazásba való bejelentkezéshez.
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Regisztrálás és bejelentkezés az Azure AD szolgáltatással
 
@@ -63,13 +63,13 @@ Az alkalmazása eltérően működhet regisztráció és bejelentkezés esetén.
 
 Az „Alkalmazás beszerzése” hivatkozás átirányítja a felhasználót az Azure AD hozzáférési megadása (engedélyezés) oldalra, hogy a szervezet rendszergazdája engedélyezhesse, hogy az alkalmazás hozzáférhessen a szervezet Microsoft által szolgáltatott adataihoz. További részletek a hozzáférés kéréséről az [Alkalmazások integrálása az Azure Active Directoryval](./quickstart-register-app.md) cikkben találhatók.
 
-Miután a rendszergazdák beleegyeznek az alkalmazásba, választhatják, hogy hozzáadják a felhasználók Office 365 app Launcher-felületéhez (elérhető a Waffle és a verzióból [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
+Miután a rendszergazdák beleegyeznek az alkalmazásba, dönthetnek úgy, hogy hozzáadják a felhasználók Microsoft 365 app Launcher felületéhez (elérhető a Waffle és a from verzióból [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
 
 ![A Microsoft emblémát és a "Hozzáadás a saját szervezethez" szöveget megjelenítő gomb](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
 
-> *Ha már használja az Office 365-et vagy más üzleti szolgáltatást a Microsofttól, megadhatja <your_app_name> hozzáférést a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek <your_app_name> a meglévő munkahelyi fiókjaikkal.*
+> *Ha már használja Microsoft 365 vagy más üzleti szolgáltatást a Microsofttól, <your_app_name> hozzáférést biztosíthat a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek <your_app_name> a meglévő munkahelyi fiókjaikkal.*
 
 A hivatalos Microsoft embléma letöltéséhez az alkalmazáshoz kattintson a jobb gombbal a választott emblémára, majd mentse a gépére.
 
@@ -102,7 +102,7 @@ Ha hivatalos képeket szeretne letölteni az alkalmazáshoz, kattintson a jobb g
 
 **HASZNÁLJA** a „Munkahelyi vagy iskolai fiók” és „Bejelentkezés Microsofttal” gombok kombinációját, hogy több információt szolgáltasson a végfelhasználóknak arról, hogy használhatják-e a fiókjukat a bejelentkezéshez. **NE HASZNÁLJA** a „vállalati fiók”, „üzleti fiók”, „céges fiók” vagy más ezekhez hasonló kifejezéseket.
 
-**NE HASZNÁLJA** az „Office 365 ID” vagy „Azure ID” kifejezéseket. Az Office 365 egy Microsoft felhasználói ajánlat neve is, amely nem használja az Azure AD-t a hitelesítéshez.
+**Ne** használja a "Microsoft 365 id" vagy az "Azure id" kifejezést. A Microsoft 365 a Microsoft vásárlói ajánlatának neve is, amely nem használja az Azure AD-t a hitelesítéshez.
 
 **NE** változtassa meg a Microsoft emblémát.
 

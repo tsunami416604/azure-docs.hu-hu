@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e009516721473554517d1677bdef7a7451e4007
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564869"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705214"
 ---
 Az előzetes verzióban az NFS a következő korlátozásokkal rendelkezik:
 
 - Az NFS 4,1 jelenleg csak a [protokoll specifikációjának](https://tools.ietf.org/html/rfc5661)kötelező funkcióit támogatja. Nem használhatók olyan választható funkciók, mint a delegálások és az összes típusú visszahívás, a zárolási frissítések és a visszalépések, valamint a Kerberos-hitelesítés és a titkosítás.
-- Ha a kérések többsége metaadat-központú, akkor a késés a nyitott/záró műveletekhez képest rosszabb lesz.
+- Ha a kérések többsége metaadat-központú, akkor a késés az olvasási/írási/frissítési műveletekhez képest rosszabb lesz.
 - Létre kell hoznia egy új Storage-fiókot az NFS-megosztás létrehozásához.
 - Csak a felügyeleti sík REST API-jai támogatottak. Az adatsíkok REST API-jai nem érhetők el, ami azt jelenti, hogy az olyan eszközök, mint a Storage Explorer, nem működnek együtt az NFS-megosztásokkal, és az NFS-megosztási adatok is megtekinthetők a Azure Portalban.
 - Csak a prémium szint esetén érhető el.

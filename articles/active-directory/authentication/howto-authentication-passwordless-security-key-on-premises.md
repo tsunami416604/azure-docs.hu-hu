@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526969"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706336"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
 
@@ -57,7 +57,7 @@ A szervezeteknek a következő szoftverekre vonatkozó követelményeket is meg 
 
 A forgatókönyv az egyszeri bejelentkezést (SSO) is támogatja a következő esetekben:
 
-- Felhőbeli erőforrások, például az Office 365 és más SAML-kompatibilis alkalmazások esetében.
+- Olyan felhőalapú erőforrásokhoz, mint a Microsoft 365 és más SAML-kompatibilis alkalmazások.
 - Helyszíni erőforrásokhoz és a Windows-alapú hitelesítéshez a webhelyek számára. Az erőforrások tartalmazhatnak olyan webhelyeket és SharePoint-webhelyeket, amelyekhez IIS-hitelesítés szükséges, illetve az NTLM-hitelesítést használó erőforrások is.
 
 ### <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
@@ -197,6 +197,6 @@ Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a ta
 
 Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a kimenetét `nltest /dsgetdc:contoso /keylist /kdc` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a jelszóval nem rendelkező](concept-authentication-passwordless.md)

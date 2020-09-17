@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881365"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705639"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Bérlet Azure Active Directory
 
@@ -35,8 +35,8 @@ A Azure Portalban úgy konfigurálhatja az alkalmazást, hogy egybérlős vagy t
 | Célközönség | Egyetlen/több-bérlős | Kik jelentkezhetnek be | 
 |----------|--------| ---------|
 | Csak ebben a könyvtárban lévő fiókok | Egybérlős alkalmazás | A címtárban lévő összes felhasználói és vendég fiók használhatja az alkalmazást vagy az API-t.<br>*Akkor használja ezt a beállítást, ha a célközönség belső a szervezete számára.* |
-| Fiókok bármely Azure AD-címtárban | Több-bérlős | A Microsoft által használt munkahelyi vagy iskolai fiókkal rendelkező felhasználók és vendégek az alkalmazást vagy az API-t használhatják. Ilyenek például az Office 365-et használó iskolák és vállalkozások.<br>*Akkor használja ezt a lehetőséget, ha a célközönség üzleti vagy oktatási ügyfél.* |
-| Fiókok bármely Azure AD-címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com) | Több-bérlős | Minden munkahelyi vagy iskolai felhasználó, vagy személyes Microsoft-fiók használhatja az alkalmazást vagy az API-t. Olyan iskolákat és vállalkozásokat foglal magába, amelyek az Office 365-et használják, valamint olyan személyes fiókokat, amelyeket az Xbox és a Skype szolgáltatásba való bejelentkezéshez használtak.<br>*Ezzel a beállítással megcélozhatja a Microsoft-fiókok legszélesebb körét.* | 
+| Fiókok bármely Azure AD-címtárban | Több-bérlős | A Microsoft által használt munkahelyi vagy iskolai fiókkal rendelkező felhasználók és vendégek az alkalmazást vagy az API-t használhatják. Ez magában foglalja a Microsoft 365t használó iskolákat és vállalkozásokat is.<br>*Akkor használja ezt a lehetőséget, ha a célközönség üzleti vagy oktatási ügyfél.* |
+| Fiókok bármely Azure AD-címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com) | Több-bérlős | Minden munkahelyi vagy iskolai felhasználó, vagy személyes Microsoft-fiók használhatja az alkalmazást vagy az API-t. Olyan iskolákat és vállalkozásokat foglal magába, amelyek a Microsoft 365 és a személyes fiókokat használják, amelyek az Xbox és a Skype szolgáltatásba való bejelentkezéshez használatosak.<br>*Ezzel a beállítással megcélozhatja a Microsoft-fiókok legszélesebb körét.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Ajánlott eljárások több-bérlős alkalmazásokhoz
 

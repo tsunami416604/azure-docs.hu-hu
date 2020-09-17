@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform-hatókörök, engedélyek és beleegyezik
-description: Az engedélyezés leírása a Microsoft Identity platform végpontján, beleértve a hatóköröket, az engedélyeket és a jóváhagyást.
+description: Tudnivalók a Microsoft Identity platform végpontjának engedélyezéséről, beleértve a hatóköröket, az engedélyeket és a jóváhagyást.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263227"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705690"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
 
@@ -27,12 +27,12 @@ A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési 
 
 A Microsoft Identity platform implementálja a [OAuth 2,0](active-directory-v2-protocols.md) hitelesítési protokollt. A OAuth 2,0 egy olyan módszer, amellyel a harmadik féltől származó alkalmazások a felhasználók nevében férhetnek hozzá a webkiszolgálók erőforrásaihoz. Bármely, a Microsoft Identity platformmal integrált webszolgáltatáshoz erőforrás-azonosító vagy *alkalmazás-azonosító URI*tartozik. Például a Microsoft számos webes erőforrása többek között:
 
-* Microsoft Graph:`https://graph.microsoft.com`
-* Office 365 mail API:`https://outlook.office.com`
-* Azure Key Vault:`https://vault.azure.net`
+* Microsoft Graph: `https://graph.microsoft.com`
+* Microsoft 365 mail API: `https://outlook.office.com`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Javasoljuk, hogy az Office 365 mail API helyett az Microsoft Graph-et használja.
+> Azt javasoljuk, hogy Microsoft 365 mail API helyett Microsoft Graph használjon.
 
 Ugyanez érvényes a Microsoft Identity platformmal integrált, harmadik féltől származó erőforrások esetében is. Ezen erőforrások bármelyike meghatározhat olyan engedélyeket is, amelyek az adott erőforrás funkcióinak kisebb adattömbökbe való felosztására használhatók. A [Microsoft Graph](https://graph.microsoft.com) például a következő feladatok elvégzésére vonatkozó engedélyekkel rendelkezik, egyebek között:
 
@@ -44,9 +44,9 @@ Az ilyen típusú engedélyek meghatározásával az erőforrás részletesen sz
 
 A OAuth 2,0-ben az ilyen típusú engedélyeket *hatóköröknek*nevezzük. Ezeket gyakran *engedélyeknek*is nevezzük. Az engedélyek a Microsoft Identity platformban karakterlánc-értékként jelennek meg. Ha folytatja a Microsoft Graph példát, az egyes engedélyek sztring értéke a következő:
 
-* A felhasználó naptárának beolvasása a következő használatával:`Calendars.Read`
-* Írás a felhasználó naptárába a következő használatával:`Calendars.ReadWrite`
-* E-mail küldése felhasználóként a általi használatával`Mail.Send`
+* A felhasználó naptárának beolvasása a következő használatával: `Calendars.Read`
+* Írás a felhasználó naptárába a következő használatával: `Calendars.ReadWrite`
+* E-mail küldése felhasználóként a általi használatával `Mail.Send`
 
 Az alkalmazások leggyakrabban a Microsoft Identity platform engedélyezés végpontjának megadásával kérik le ezeket az engedélyeket. Bizonyos magas jogosultsági szintű engedélyek azonban csak a rendszergazdai engedélyekkel adhatók meg, és a kérés/engedélyezés a [rendszergazdai engedélyezési végpont](v2-permissions-and-consent.md#admin-restricted-permissions)használatával lehetséges. További információért olvassa el a következőt:.
 
@@ -134,9 +134,9 @@ Emellett az alkalmazásoknak a rendszergazdai engedélyezési végpontot kell ha
 
 A Microsoft ökoszisztéma bizonyos magas jogosultsági szintű engedélyei a *rendszergazda által korlátozottra*állíthatók be. Ilyen típusú engedélyek például a következők:
 
-* Az összes felhasználó teljes profiljának olvasása a következő használatával:`User.Read.All`
-* Adatírás a szervezet könyvtárába a következő használatával:`Directory.ReadWrite.All`
-* A szervezet címtárában lévő összes csoport olvasása a következő használatával:`Groups.Read.All`
+* Az összes felhasználó teljes profiljának olvasása a következő használatával: `User.Read.All`
+* Adatírás a szervezet könyvtárába a következő használatával: `Directory.ReadWrite.All`
+* A szervezet címtárában lévő összes csoport olvasása a következő használatával: `Groups.Read.All`
 
 Bár a felhasználói felhasználók hozzáférést biztosíthatnak az ilyen típusú adatokhoz, a szervezeti felhasználók csak a bizalmas vállalati adatokhoz való hozzáférést biztosítják. Ha az alkalmazás egy szervezeti felhasználótól kéri a fenti engedélyek egyikének elérését, a felhasználó hibaüzenetet kap, amely szerint nem jogosult beleegyezni az alkalmazás engedélyeivel.
 
@@ -193,7 +193,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Paraméter        | Állapot        | Leírás                                                                                |
+| Paraméter        | Condition (Állapot)        | Leírás                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A GUID vagy a felhasználóbarát név formátumban adható meg, vagy általános módon hivatkozik a szervezetekre, ahogyan az a példában látható. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlői azonosítót, ha lehetséges. |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
@@ -283,7 +283,7 @@ Ebben a példában a felhasználó nem rendelkezik beleegyezéssel az ügyfél �
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>3. példa: a felhasználó beleegyezett, és az ügyfél további hatóköröket kér
 
-Ebben a példában a felhasználó már beleegyezett az `mail.read` ügyfélhez. Az ügyfél regisztrálva van a `contacts.read` hatókörben a regisztrációjában. Ha az ügyfél kérelmet küld egy jogkivonat számára a és a kérelmének megadásához `scope=https://graph.microsoft.com/.default` `prompt=consent` , akkor a felhasználó az alkalmazás által regisztrált engedélyeket az összes (és csak) beleegyezési képernyője fogja látni. `contacts.read`jelen lesz a beleegyezési képernyőn, de `mail.read` nem. A visszaadott token Microsoft Graph lesz, és a következőt fogja tartalmazni: `mail.read` és `contacts.read` .
+Ebben a példában a felhasználó már beleegyezett az `mail.read` ügyfélhez. Az ügyfél regisztrálva van a `contacts.read` hatókörben a regisztrációjában. Ha az ügyfél kérelmet küld egy jogkivonat számára a és a kérelmének megadásához `scope=https://graph.microsoft.com/.default` `prompt=consent` , akkor a felhasználó az alkalmazás által regisztrált engedélyeket az összes (és csak) beleegyezési képernyője fogja látni. `contacts.read` jelen lesz a beleegyezési képernyőn, de `mail.read` nem. A visszaadott token Microsoft Graph lesz, és a következőt fogja tartalmazni: `mail.read` és `contacts.read` .
 
 ### <a name="using-the-default-scope-with-the-client"></a>A/.default hatókör használata az ügyféllel
 

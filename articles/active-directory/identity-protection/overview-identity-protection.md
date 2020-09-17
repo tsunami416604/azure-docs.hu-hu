@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b8b19b8e928a220efa8a445ff033582e0f13c6de
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437700"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707730"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -102,14 +102,14 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Képesség | Részletek  | Ingyenes Azure AD/Office 365 alkalmazások | Prémium szintű Azure AD P1|Prémium szintű Azure AD P2 |
+| Képesség | Részletek  | Ingyenes Azure AD/Microsoft 365 alkalmazások | Prémium szintű Azure AD P1|Prémium szintű Azure AD P2 |
 | --- | --- | --- | --- | --- |
 | Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával)  | Nem | Nem |Igen | 
 | Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával)  | Nem |  Nem |Igen |
 | Biztonsági jelentések | Áttekintés |  Nem | Nem |Igen |
 | Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
 | Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
-| Biztonsági jelentések | Kockázatészlelések   | Nem | Korlátozott információ| Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatészlelések   | No | Korlátozott információ| Teljes hozzáférés|
 | Értesítések | Veszélyeztetett felhasználók észlelt riasztásai  | Nem | Nem |Igen |
 | Értesítések | Heti kivonat| Nem | Nem | Igen | 
 | | MFA-regisztrációs szabályzat | Nem | Nem | Igen |

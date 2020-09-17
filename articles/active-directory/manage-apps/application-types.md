@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400721"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707883"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Alkalmazások megtekintése az Azure AD-Bérlővel az Identitáskezelés kezeléséhez
 Az [alkalmazások felügyeletének](view-applications-portal.md) gyors üzembe helyezési sorozata az alapismereteket mutatja be. Ez azt mutatja be, hogyan tekintheti meg az összes alkalmazást az Azure AD-Bérlővel az Identitáskezelés kezeléséhez. Ez a cikk egy kicsit mélyebben ismerteti a megtalált alkalmazások típusait.
@@ -27,7 +27,7 @@ Ha az **összes alkalmazásra**szűri, a **minden alkalmazás** **lista** megjel
    - **Azure ad-Alkalmazásregisztrációk** – a bérlőhöz hozzáadott alkalmazások az Azure ad portálon található **Alkalmazásregisztrációk** lehetőséggel. Az Open ID csatlakozási és OAuth szabványokat használó, általában egyéni fejlesztésű alkalmazások.
    - **Alkalmazásproxy-alkalmazások** – egy olyan alkalmazás, amely a helyszíni környezetben fut, és biztonságos egyszeri bejelentkezést kíván biztosítani a külsőleg
 - A szolgáltatásba való regisztráláskor vagy a szolgáltatásba való beléptetéskor egy, az Azure Active Directory-vel integrált, külső gyártótól származó alkalmazás. Az egyik példa a [Smartsheet](https://app.smartsheet.com/b/home) vagy a [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
-- Microsoft-alkalmazások, például Microsoft 365 vagy Office 365.
+- Microsoft-alkalmazások, például Microsoft 365.
 - Új alkalmazás regisztrációjának hozzáadásakor hozzon létre egy egyéni fejlesztésű alkalmazást az [alkalmazás-beállításjegyzék](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration) használatával
 - Új alkalmazás regisztrációjának hozzáadásakor hozzon létre egy egyéni fejlesztésű alkalmazást a [v 2.0 alkalmazás regisztrációs portálján](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 - Alkalmazás hozzáadásakor a Visual Studio [ASP.net-hitelesítési módszereivel](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásaival](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) fejleszt
@@ -38,5 +38,5 @@ Ha az **összes alkalmazásra**szűri, a **minden alkalmazás** **lista** megjel
 
 További információ arról, hogy miként és miért történik az alkalmazások hozzáadása a címtárhoz: [Hogyan lesznek hozzáadva az alkalmazások az Azure ad](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)-hez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése Azure Active Directory](what-is-application-management.md)

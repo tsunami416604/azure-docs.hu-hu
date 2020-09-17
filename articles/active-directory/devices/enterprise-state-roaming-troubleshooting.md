@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267241"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705724"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A Azure Active Directory Enterprise State Roaming beállításainak hibaelhárítása
 
@@ -78,9 +78,9 @@ Enterprise State Roaming megköveteli, hogy az eszköz regisztrálva legyen az A
 
 Bizonyos körülmények között a Enterprise State Roaming nem tud szinkronizálni az adatszinkronizálást, ha az Azure Multi-Factor Authentication konfigurálva van. További információ ezekről a jelenségekről: támogatási dokumentum [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Lehetséges probléma**: Ha az eszköz úgy van konfigurálva, hogy a Azure Active Directory portálon multi-Factor Authentication igényelni, előfordulhat, hogy a Windows 10-es eszközre jelszóval való bejelentkezéskor nem lehet szinkronizálni a beállításokat. Az ilyen típusú Multi-Factor Authentication-konfiguráció egy Azure-beli rendszergazdai fiók megvédésére szolgál. A rendszergazda felhasználók továbbra is tudnak szinkronizálni a Windows 10-es eszközökre való bejelentkezéssel Microsoft Passport for Work PIN-kóddal vagy a Multi-Factor Authentication elvégzésével más Azure-szolgáltatások, például az Office 365 elérésével.
+**Lehetséges probléma**: Ha az eszköz úgy van konfigurálva, hogy a Azure Active Directory portálon multi-Factor Authentication igényelni, előfordulhat, hogy a Windows 10-es eszközre jelszóval való bejelentkezéskor nem lehet szinkronizálni a beállításokat. Az ilyen típusú Multi-Factor Authentication-konfiguráció egy Azure-beli rendszergazdai fiók megvédésére szolgál. A rendszergazda felhasználók továbbra is tudnak szinkronizálni a Windows 10-es eszközökre való bejelentkezéssel Microsoft Passport for Work PIN-kóddal vagy a Multi-Factor Authentication elvégzésével, miközben más Azure-szolgáltatásokhoz, például Microsoft 365hoz férnek hozzá.
 
-**Lehetséges probléma**: a szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja a Active Directory összevonási szolgáltatások (AD FS) multi-Factor Authentication feltételes hozzáférési szabályzatot, és a hozzáférési token lejár az eszközön. Győződjön meg arról, hogy bejelentkezik, majd kijelentkezik a Microsoft Passport for Work PIN-kód vagy a teljes Multi-Factor Authentication használatával más Azure-szolgáltatások, például az Office 365 eléréséhez.
+**Lehetséges probléma**: a szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja a Active Directory összevonási szolgáltatások (AD FS) multi-Factor Authentication feltételes hozzáférési szabályzatot, és a hozzáférési token lejár az eszközön. Ügyeljen arra, hogy jelentkezzen be, és jelentkezzen ki a Microsoft Passport for Work PIN-kóddal, vagy fejezze be a Multi-Factor Authenticationt más Azure-szolgáltatások, például a Microsoft 365 eléréséhez
 
 ### <a name="event-viewer"></a>Eseménynapló
 
