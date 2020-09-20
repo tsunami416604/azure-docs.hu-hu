@@ -1,181 +1,181 @@
 ---
 title: Az Azure Backup díjszabása
-description: Megtudhatja, hogyan becsülheti meg a költségvetési Azure Backup díjszabásának költségeit.
+description: Ismerje meg, hogyan végezhet költségbecslést az Azure Backup díjszabásával kapcsolatban.
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
 ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
 ms.locfileid: "88654531"
 ---
 # <a name="azure-backup-pricing"></a>Az Azure Backup díjszabása
 
-Ha többet szeretne megtudni a Azure Backup díjszabásáról, látogasson el a [Azure Backup díjszabási oldalára](https://azure.microsoft.com/pricing/details/backup/).
+Az Azure Backup díjszabásával kapcsolatban lásd az [Azure Backup díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/backup/).
 
-## <a name="download-detailed-estimates-for-azure-backup-pricing"></a>Részletes becslések letöltése Azure Backup díjszabásról
+## <a name="download-detailed-estimates-for-azure-backup-pricing"></a>Részletes becslések letöltése az Azure Backup díjszabása alapján
 
-Ha szeretné megbecsülni a költségvetést vagy a költségek összehasonlítását, töltse le a részletes [Azure Backup díjszabását](https://aka.ms/AzureBackupCostEstimates).  
+Ha költségvetési vagy árösszevetési célokból szeretne becslést készíteni, töltse le a részletes [Azure Backup díjszabásbecslőt](https://aka.ms/AzureBackupCostEstimates).  
 
-### <a name="what-does-the-estimator-contain"></a>Mit tartalmaz a kalkulátor?
+### <a name="what-does-the-estimator-contain"></a>Mit tartalmaz a becslő?
 
-A Azure Backup Cost kalkulátor adatlapjának segítségével megbecsülheti az összes lehetséges munkaterhelést, amelyről biztonsági másolatot szeretne készíteni Azure Backup használatával. Ezek a számítási feladatok a következők:
+Az Azure Backup költségbecslő lapja lehetővé teszi az összes olyan számítási feladat becslését, amelyekről biztonsági másolatot szeretne készíteni az Azure Backup használatával. Ezek közé a számítási feladatok közé tartoznak a következők:
 
 - Azure-beli virtuális gépek
 - Helyszíni kiszolgálók
-- SQL Azure-beli virtuális gépeken
-- SAP HANA Azure-beli virtuális gépeken
-- Azure Files-megosztások
+- SQL az Azure-beli virtuális gépeken
+- SAP HANA az Azure-beli virtuális gépeken
+- Azure-fájlmegosztások
 
-## <a name="estimate-costs-for-backing-up-azure-vms-or-on-premises-servers"></a>Az Azure-beli virtuális gépek vagy a helyszíni kiszolgálók biztonsági mentésével kapcsolatos költségek becslése
+## <a name="estimate-costs-for-backing-up-azure-vms-or-on-premises-servers"></a>Az Azure-beli virtuális gépek vagy helyszíni kiszolgálók biztonsági mentésének költségbecslése
 
-Az Azure-beli virtuális gépek vagy a helyszíni kiszolgálók Azure Backup használatával történő biztonsági mentésével kapcsolatos költségek megbecsléséhez a következő paramétereket kell megadnia:
+Az Azure-beli virtuális gépek vagy helyszíni kiszolgálók Azure Backuppal végzett biztonsági mentési költségeinek megbecsléséhez a következő paraméterekre lesz szüksége:
 
-- Azon virtuális gépek vagy helyszíni kiszolgálók mérete, amelyekről biztonsági mentést szeretne készíteni
-  - Adja meg a biztonsági mentéshez szükséges lemezek vagy kiszolgálók "felhasznált méretét".
+- Azon virtuális gépek vagy helyszíni kiszolgálók mérete, amelyekről biztonsági másolatot szeretne készíteni
+  - Adja meg azon lemezek vagy kiszolgálók kihasznált területének méretét, amelyekről biztonsági másolatot kíván készíteni
 
-- A mérettel rendelkező kiszolgálók száma
+- Az ilyen méretű kiszolgálók száma
 
-- Milyen mennyiségű adatforgalom várható a kiszolgálókon?<br>
-  A forgalom az adatváltozások mennyiségére utal. Ha például a virtuális gép 200 GB-nyi adatról készített biztonsági mentést, és minden nap 10 GB-ot módosít, a napi forgalom 5%.
+- Mi az adatváltozás várt mértéke ezeken a kiszolgálókon?<br>
+  Az adatváltozás azt jelenti, hogy milyen mennyiségű adatmódosítás várható. Ha például egy virtuális gépen 200 GB adatról szeretne biztonsági másolatot készíteni, és ebből 10 GB változik minden nap, akkor a napi változás 5%.
 
-  - A nagyobb adatforgalom azt jelenti, hogy több adattal kell biztonsági másolatot készíteni
+  - A nagyobb változási arány azt jelenti, hogy több adatról kell biztonsági másolatot készíteni.
 
-  - A fájlkiszolgálók és a **magas** , ha adatbázisok futtatásakor **alacsony** vagy **közepes** értéket vesz igénybe.
+  - Válassza az **Alacsony** vagy a **Közepes** értéket a fájlkiszolgálókhoz, és a **Magas** értéket, ha adatbázisokat futtat.
 
-  - Ha ismeri a **(z)%-os**adatváltozást, használhatja a **saját% megadása** lehetőséget.
+  - Ha ismeri a **változás százalékát**, használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
 
 - Válassza ki a biztonsági mentési szabályzatot
 
-  - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
+  - Várhatóan mennyi ideig lesznek megőrizve a „napi” biztonsági másolatok? (napokban)
 
-  - Mennyi ideig tart a heti biztonsági másolatok megőrzése? (hetek)
+  - Várhatóan mennyi ideig lesznek megőrizve a „heti” biztonsági másolatok? (hetekben)
 
-  - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
+  - Várhatóan mennyi ideig lesznek megőrizve a „havi” biztonsági másolatok? (hónapokban)
 
-  - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
+  - Várhatóan mennyi ideig lesznek megőrizve az „évi” biztonsági másolatok? (években)
 
-  - Mennyi ideig tart az azonnali visszaállítási Pillanatképek megőrzése? (1-5 nap)
+  - Várhatóan mennyi ideig lesznek megőrizve az „azonnali visszaállítási pillanatképek”? (1-5 nap)
 
-    - Ez a beállítás lehetővé teszi, hogy a lemezeken tárolt Pillanatképek gyors használatával akár hét nap múlva visszaállítsa a visszaállítást.
+    - Ezzel a lehetőséggel akár egy hét nappal korábbi állapotról is gyorsan végezhet visszaállítást, lemezeken tárolt pillanatképekről.
 
-- **Opcionális** – szelektív lemezes biztonsági mentés
+- **Választható** – Szelektív lemezes biztonsági mentés
 
-  - Ha a **szelektív lemezes biztonsági mentés** lehetőséget használja az Azure-beli virtuális gépek biztonsági mentése során, válassza a **lemez kizárása** lehetőséget, és adja meg a biztonsági mentésből kizárt lemezek százalékos arányát a méret szempontjából. Ha például van egy virtuális gép, amely az egyes lemezeken a 200 GB-ot használó három lemezhez csatlakozik, és ha ki szeretne zárni kettőt a biztonsági mentésből, írja be a következőt: 66,7%.
+  - Ha a **Szelektív lemezes biztonsági mentést** használja az Azure-beli virtuális gépek biztonsági mentéséhez, válassza a **Lemez kizárása** lehetőséget, és adja meg a biztonsági mentésből kizárt lemezek méretének százalékos arányát. Ha például egy virtuális gép három lemezhez csatlakozik, ahol mindegyik lemezen 200 GB van használatban, és kettőt ki szeretne zárni a biztonsági mentésből, írja be a 66,7% értéket.
 
-- **Opcionális** – biztonsági mentési tárterület-redundancia
+- **Választható** – Biztonsági mentési tár redundanciája
 
-  - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre. Válassza a **RAGRS** lehetőséget a lapon, ha szeretné megismerni a költségeket, amikor a [régiók közötti visszaállítás](backup-azure-arm-restore-vms.md#cross-region-restore) engedélyezve van a biztonsági másolatokhoz.
+  - Ez azon tárfiók redundanciáját jelöli, amelyre a biztonsági mentés adatai kerülnek. A legmagasabb rendelkezésre álláshoz a **GRS** használatát javasoljuk. Ez gondoskodik róla, hogy a biztonsági mentés adatainak másolata egy másik régióban legyen tárolva, így több megfelelőségi szabvány követelményeinek is megfelelhet. Módosítsa a redundanciát **LRS** értékre, ha vállalati szintű biztonsági mentést nem igénylő fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot. Válassza a lapon az **RAGRS** lehetőséget, ha tisztában szeretne lenni a költségekkel, amikor engedélyezett a [régiók közötti visszaállítás](backup-azure-arm-restore-vms.md#cross-region-restore) a biztonsági másolatokhoz.
 
-- **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
+- **Választható** – Regionális díjszabás módosítása vagy kedvezményes díjszabás érvényesítése
 
-  - Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslések esetében?** lehetőségre, és adja meg azokat a díjakat, amelyeknek a becsléseit futtatni kívánja.
+  - Ha egy másik régióra vagy kedvezményes díjakra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget a **másik régióra vonatkozó becslések kipróbálásának** lehetőségénél, és adja meg azokat a díjszabásokat, amelyekkel a becsléseket futtatni szeretné.
 
-## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Az SQL-kiszolgálók Azure-beli virtuális gépeken történő biztonsági mentésének becsült költségei
+## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Azure-beli virtuális gépeken futó SQL-kiszolgálók biztonsági mentésével kapcsolatos költségek becslése
 
-Ha az Azure-beli virtuális gépeken futó SQL Server-kiszolgálók biztonsági mentésének költségeit szeretné megbecsülni Azure Backup használatával, a következő paramétereket kell megadnia:
+Az Azure-beli virtuális gépeken futó SQL-kiszolgálók Azure Backuppal végzett biztonsági mentési költségeinek megbecsléséhez a következő paraméterekre lesz szüksége:
 
-- Azon SQL-kiszolgálók mérete, amelyekről biztonsági mentést szeretne készíteni
+- Azon SQL-kiszolgálók mérete, amelyekről biztonsági másolatot szeretne készíteni
 
-- A fenti mérettel rendelkező SQL-kiszolgálók száma
+- Az ilyen méretű SQL-kiszolgálók száma
 
-- Mi a várt tömörítés az SQL Server biztonsági mentési adataihoz?
+- Mi az SQL-kiszolgálók biztonsági mentési adatainak várt tömörítési aránya?
 
-  - A legtöbb Azure Backup ügyfél azt látja, hogy a biztonsági mentési adatmennyiség 80%-os tömörítéssel van összehasonlítva az SQL-kiszolgáló méretével, ha az SQL-tömörítés **engedélyezve**van
+  - A legtöbb Azure Backup-ügyfél azt tapasztalja, hogy a biztonsági mentési adatok tömörítése 80%-os az SQL-kiszolgáló méretéhez képest, amikor az SQL-tömörítés **engedélyezve van**.
 
-  - Ha várhatóan eltérő tömörítést szeretne látni, adja meg az ebben a mezőben szereplő számot.
+  - Ha más tömörítési arányt szeretne, írja be a számot ebbe a mezőbe.
 
-- Mi a naplózott biztonsági másolatok várható mérete?
+- Mi a naplók biztonsági másolatának várt mérete?
 
-  - A (z)% a napi naplózási méretet jelöli az SQL Server méretének%-ában
+  - A % a napi mentett naplóméretet jelzi az SQL-kiszolgáló méretének százalékában megadva.
 
-- Milyen mennyiségű napi adatforgalom várható a kiszolgálókon?
+- Mi a várt napi adatváltozás ezeken a kiszolgálókon?
 
-  - Az adatbázisok jellemzően "magas" adatforgalommal rendelkeznek
+  - Általában az adatbázisokon „magas” az adatváltozás mértéke.
 
-  - Ha ismeri a **(z)%-os**adatváltozást, használhatja a **saját% megadása** lehetőséget.
+  - Ha ismeri a **változás százalékát**, használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
 
 - Válassza ki a biztonsági mentési szabályzatot
 
   - Biztonsági mentés típusa
 
-    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a heti/havi/éves teljes biztonsági mentéssel. A Azure Backup egy kattintással is visszaállíthatja a különbségeket.
+    - A leghatékonyabb választható szabályzat a **Napi különbözeti**, heti/havi/éves teljes biztonsági mentésekkel. Az Azure Backup egyetlen kattintással visszaállítást tud végezni a különbözeti mentésekből.
 
-    - Azt is beállíthatja, hogy a szabályzat napi/heti/havi/éves teljes biztonsági mentéssel rendelkezzen. Ezzel a beállítással a rendszer valamivel több tárterületet használ, mint az első lehetőség.
+    - Napi/heti/havi/éves teljes biztonsági mentést megkövetelő szabályzatot is választhat. Ez a lehetőség kissé több tárhelyet foglal, mint az első.
 
-  - Mennyi ideig tart a "napló" biztonsági mentések megőrzése? (napban) [7-35]
+  - Várhatóan mennyi ideig lesznek megőrizve a „naplók” biztonsági másolatai? (napokban) [7-35]
 
-  - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
+  - Várhatóan mennyi ideig lesznek megőrizve a „napi” biztonsági másolatok? (napokban)
 
-  - Mennyi ideig tart a heti biztonsági másolatok megőrzése? (hetek)
+  - Várhatóan mennyi ideig lesznek megőrizve a „heti” biztonsági másolatok? (hetekben)
 
-  - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
+  - Várhatóan mennyi ideig lesznek megőrizve a „havi” biztonsági másolatok? (hónapokban)
 
-  - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
+  - Várhatóan mennyi ideig lesznek megőrizve az „évi” biztonsági másolatok? (években)
 
-- **Opcionális** – biztonsági mentési tárterület-redundancia
+- **Választható** – Biztonsági mentési tár redundanciája
 
-  - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre.
+  - Ez azon tárfiók redundanciáját jelöli, amelyre a biztonsági mentés adatai kerülnek. A legmagasabb rendelkezésre álláshoz a **GRS** használatát javasoljuk. Ez gondoskodik róla, hogy a biztonsági mentés adatainak másolata egy másik régióban legyen tárolva, így több megfelelőségi szabvány követelményeinek is megfelelhet. Módosítsa a redundanciát **LRS** értékre, ha vállalati szintű biztonsági mentést nem igénylő fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot.
 
-- **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
+- **Választható** – Regionális díjszabás módosítása vagy kedvezményes díjszabás érvényesítése
 
-  - Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslések esetében?** lehetőségre, és adja meg azokat a díjakat, amelyeknek a becsléseit futtatni kívánja.
+  - Ha egy másik régióra vagy kedvezményes díjakra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget a **másik régióra vonatkozó becslések kipróbálásának** lehetőségénél, és adja meg azokat a díjszabásokat, amelyekkel a becsléseket futtatni szeretné.
 
-## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>A SAP HANA-kiszolgálók Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos költségek becslése
+## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók biztonsági mentésével kapcsolatos költségek becslése
 
-Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backup használatával történő biztonsági mentésével kapcsolatos költségek megbecsléséhez a következő paraméterekre lesz szüksége:
+Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backuppal végzett biztonsági mentési költségeinek megbecsléséhez a következő paraméterekre lesz szüksége:
 
-- Azon SAP HANA adatbázisok teljes mérete, amelyekről biztonsági mentést szeretne készíteni. Az egyes adatbázisok teljes biztonsági mentési méretének összegének kell lennie, amelyet SAP HANA jelentett.
-- A fenti mérettel rendelkező SAP HANA kiszolgálók száma
-- Mi a naplózott biztonsági másolatok várható mérete?
+- Azon SAP HANA-adatbázisok teljes mérete, amelyekről biztonsági másolatot szeretne készíteni. Ez a SAP HANA által jelentett adatbázisok összesített teljes biztonsági mentési mérete.
+- Az ilyen méretű SAP HANA-kiszolgálók száma
+- Mi a naplók biztonsági másolatának várt mérete?
   
-  - A (z)% megadja az átlagos napi naplózási méretet a SAP HANA adatbázisok teljes méretének%-ában, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón
-- Milyen mennyiségű napi adatforgalom várható a kiszolgálókon?
-  - A (z)% az átlagos napi adatváltozási méretet jelzi SAP HANA adatbázisok teljes méretének%-ában, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón
-  - Az adatbázisok jellemzően "magas" adatforgalommal rendelkeznek
-  - Ha ismeri a **(z)%-os**adatváltozást, használhatja a **saját% megadása** lehetőséget.
+  - A % az átlagos napi mentett naplóméretet jelzi azon SAP HANA-adatbázisok teljes méretének százalékaként megadva, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón.
+- Mi a várt napi adatváltozás ezeken a kiszolgálókon?
+  - A % az átlagos napi adatváltozási méretet jelzi azon SAP HANA-adatbázisok teljes méretének százalékaként megadva, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón.
+  - Általában az adatbázisokon „magas” az adatváltozás mértéke.
+  - Ha ismeri a **változás százalékát**, használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
 - Válassza ki a biztonsági mentési szabályzatot
   - Biztonsági mentés típusa
-    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a **heti/havi/éves** teljes biztonsági mentéssel. A Azure Backup egy kattintással is visszaállíthatja a különbségeket.
-    - Azt is beállíthatja, hogy a szabályzat **napi/heti/havi/éves** teljes biztonsági mentéssel rendelkezzen. Ezzel a beállítással a rendszer valamivel több tárterületet használ, mint az első lehetőség.
-  - Mennyi ideig tart a "napló" biztonsági mentések megőrzése? (napban) [7-35]
-  - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
-  - Mennyi ideig tart a heti biztonsági másolatok megőrzése? (hetek)
-  - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
-  - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
-- **Opcionális** – biztonsági mentési tárterület-redundancia
+    - A leghatékonyabb választható szabályzat a **Napi különbözeti**, **heti/havi/éves** teljes biztonsági mentésekkel. Az Azure Backup egyetlen kattintással visszaállítást tud végezni a különbözeti mentésekből.
+    - **Napi/heti/havi/éves** teljes biztonsági mentést megkövetelő szabályzatot is választhat. Ez a lehetőség kissé több tárhelyet foglal, mint az első.
+  - Várhatóan mennyi ideig lesznek megőrizve a „naplók” biztonsági másolatai? (napokban) [7-35]
+  - Várhatóan mennyi ideig lesznek megőrizve a „napi” biztonsági másolatok? (napokban)
+  - Várhatóan mennyi ideig lesznek megőrizve a „heti” biztonsági másolatok? (hetekben)
+  - Várhatóan mennyi ideig lesznek megőrizve a „havi” biztonsági másolatok? (hónapokban)
+  - Várhatóan mennyi ideig lesznek megőrizve az „évi” biztonsági másolatok? (években)
+- **Választható** – Biztonsági mentési tár redundanciája
   
-  - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre.
-- **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
+  - Ez azon tárfiók redundanciáját jelöli, amelyre a biztonsági mentés adatai kerülnek. A legmagasabb rendelkezésre álláshoz a **GRS** használatát javasoljuk. Ez gondoskodik róla, hogy a biztonsági mentés adatainak másolata egy másik régióban legyen tárolva, így több megfelelőségi szabvány követelményeinek is megfelelhet. Módosítsa a redundanciát **LRS** értékre, ha vállalati szintű biztonsági mentést nem igénylő fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot.
+- **Választható** – Regionális díjszabás módosítása vagy kedvezményes díjszabás érvényesítése
   
-  - Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslések esetében?** lehetőségre, és adja meg azokat a díjakat, amelyeknek a becsléseit futtatni kívánja.
+  - Ha egy másik régióra vagy kedvezményes díjakra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget a **másik régióra vonatkozó becslések kipróbálásának** lehetőségénél, és adja meg azokat a díjszabásokat, amelyekkel a becsléseket futtatni szeretné.
   
-## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentésével kapcsolatos költségek becslése
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésének becsült költségei
 
-Az Azure-fájlmegosztás biztonsági mentésének költségeit a Azure Backup által kínált [Pillanatkép-alapú biztonsági mentési megoldással](azure-file-share-backup-overview.md) lehet megbecsülni, a következő paraméterekre lesz szüksége:
+Az Azure-fájlmegosztások Azure Backup által nyújtott [pillanatkép-alapú biztonsági mentési megoldással](azure-file-share-backup-overview.md) végzett mentési költségeinek megbecsléséhez a következő paraméterekre lesz szüksége:
 
-- Azon fájlmegosztás mérete (**GB-ban**), amelyekről biztonsági másolatot szeretne készíteni.
+- Azon fájlmegosztások mérete (**GB-ban**), amelyekről biztonsági másolatot szeretne készíteni.
 
-- Ha biztonsági mentést szeretne készíteni a fájlmegosztás több Storage-fiók között, adja meg a fenti mérettel rendelkező fájlmegosztás tárolására szolgáló tárolási fiókok számát.
+- Ha több tárfiók között megoszló fájlmegosztásokról szeretne biztonsági másolatot készíteni, adja meg a fenti méretű fájlmegosztásokat futtató tárfiókok számát.
 
-- Az adatváltozás várható mennyisége azon fájlmegosztás esetében, amelyekről biztonsági másolatot szeretne készíteni. <br>A forgalom az adatok változásának mennyiségére utal, és közvetlenül befolyásolja a pillanatképek tárolási méretét. Ha például egy fájlmegosztás 200 GB-nyi adatról készít biztonsági mentést, és minden nap 10 GB-nyi változás történik, a napi forgalom 5%.
-  - A magasabb adatforgalom azt jelenti, hogy a fájlmegosztás tartalmának minden napján nagy mennyiségű adat változik, így a növekményes pillanatfelvétel (csak az adatváltozások rögzítése) is nagyobb.
-  - Válassza az alacsony (1%), a mérsékelt (3%) vagy a magas (5%) értéket a fájlmegosztás jellemzői és használata alapján.
-  - Ha ismeri a **fájlmegosztás pontos** adatforgalmát, akkor a legördülő menüből kiválaszthatja a **saját% megadása** lehetőséget. Értékek meghatározása (%) napi, heti, havi és éves adatforgalom esetén.
+- Azon fájlmegosztások adatváltozásának várt mennyisége, amelyekről biztonsági másolatot szeretne készíteni. <br>Az adatváltozás azt jelenti, hogy milyen mennyiségű adatmódosítás várható, és közvetlen hatással van a pillanatkép tárolóméretére. Ha például egy fájlmegosztáson 200 GB adatról szeretne biztonsági másolatot készíteni, és ebből 10 GB változik minden nap, akkor a napi változás 5%.
+  - A magasabb mértékű adatváltozás azt jelenti, hogy a fájlmegosztás tartalmában minden nap nagy mennyiségű adat változik, így a (csak az adatváltozásokat rögzítő) növekményes pillanatkép mérete is nagyobb lesz.
+  - A fájlmegosztás jellemzői és használati adatai alapján válassza az Alacsony (1%), Közepes (3%) vagy Magas (5%) értéket.
+  - Ha ismeri a fájlmegosztás pontos **változási százalékát**, kiválaszthatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget a legördülő listából. Határozza meg a napi, heti, havi és éves adatváltozási értékeket (%-ban).
 
-- A Storage-fiók típusa (standard vagy prémium) és a tároló-redundancia beállítása a biztonsági másolatba mentett fájlmegosztást tároló fiók számára. <br>Az Azure-fájlmegosztás jelenlegi biztonsági mentési megoldásában a pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás. Így a pillanatképekhez kapcsolódó tárolási költség az Azure Files számla részeként kerül kiszámlázásra, a biztonsági másolatban szereplő fájlmegosztás és Pillanatképek tárolási fiókjának a fiók típusa és a redundancia beállítása alapján.
+- A tárfiók típusa (standard vagy prémium) és a biztonsági mentési fájlmegosztást tartalmazó tárfiók tárhely-redundanciájának beállítása. <br>Az Azure-fájlmegosztások jelenlegi biztonsági mentési megoldásában a pillanatképeket ugyanaz a tárfiók tárolja, mint a biztonsági mentési fájlmegosztást. Így a pillanatképekkel társított tárolási költség az Azure Files számláiban van feltüntetve, és a biztonsági mentési fájlmegosztást és pillanatképeket tartalmazó tárfiók fióktípusának és redundancia-beállításának megfelelő pillanatkép-díjszabáson alapul.
 
 - Különböző biztonsági másolatok megőrzése
-  - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
-  - Mennyi ideig tart a heti biztonsági másolatok megőrzése? (hetek)
-  - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
-  - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
+  - Várhatóan mennyi ideig lesznek megőrizve a „napi” biztonsági másolatok? (napokban)
+  - Várhatóan mennyi ideig lesznek megőrizve a „heti” biztonsági másolatok? (hetekben)
+  - Várhatóan mennyi ideig lesznek megőrizve a „havi” biztonsági másolatok? (hónapokban)
+  - Várhatóan mennyi ideig lesznek megőrizve az „évi” biztonsági másolatok? (években)
 
-  Tekintse meg az [Azure file share támogatási mátrixot](azure-file-share-support-matrix.md#retention-limits) az egyes kategóriákban támogatott adatmegőrzési értékek maximális számaként.
+  Az egyes kategóriák maximális támogatott megőrzési értékeit [az Azure-fájlmegosztás támogatási mátrixában](azure-file-share-support-matrix.md#retention-limits) találja.
 
-- **Opcionális** – a regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása.
-  - Az USA keleti régiója számára az alapértelmezett érték a pillanatkép-tároláshoz és a védett példányok díja a kalkulátorban. Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslésekhez?** lehetőségre, és adja meg azokat a díjakat, amelyeken a becsléseket futtatni kívánja.
+- **Választható** – Regionális díjszabás módosítása vagy kedvezményes díjszabás érvényesítése.
+  - A becslőben a pillanatkép-tárolás GB-onkénti költségeihez és a védett példány költségeihez beállított alapértelmezett értékek az USA keleti régiójára vonatkoznak. Ha egy másik régióra vagy kedvezményes díjakra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget a **másik régióra vonatkozó becslések kipróbálásának** lehetőségénél, és adja meg azokat a díjszabásokat, amelyekkel a becsléseket futtatni szeretné.
 
 ## <a name="next-steps"></a>További lépések
 

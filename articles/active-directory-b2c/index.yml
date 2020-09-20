@@ -12,122 +12,134 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: fe0fc7f20a81d9b887a61ca382dafcb69fc420d2
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 34cb40d385b007f8a41a6700448a1591b714c096
+  ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78187712"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90562757"
 landingContent:
-- title: Az alapok elsajátítása
+- title: Azure AD B2C
   linkLists:
   - linkListType: overview
     links:
     - text: Mi az az Azure AD B2C?
       url: overview.md
+    - text: External Identities számára készült megoldások összehasonlítása
+      url: https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Bevezetés az Azure AD B2C használatába
+      url: tutorial-create-tenant.md
     - text: Műszaki jellemzők és funkciók áttekintése
       url: technical-overview.md
-  - linkListType: get-started
-    links:
-    - text: Azure AD B2C bérlő létrehozása
-      url: tutorial-create-tenant.md
-    - text: Egy alkalmazás regisztrálása
-      url: tutorial-register-applications.md
-    - text: Felhasználói folyamatok beállítása
-      url: tutorial-create-user-flows.md
-  - linkListType: video
-    links:
-    - text: Mi az az Azure AD B2C? (9:35)
-      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
-- title: Identitás hozzáadása az ASP.NET-alkalmazásokhoz
+    - text: Díjszabás
+      url: https://azure.microsoft.com/pricing/details/active-directory-b2c/
+- title: Alapvető beállítások
   linkLists:
-  - linkListType: quickstart
+  - linkListType: learn
     links:
-    - text: Bejelentkezés beállítása
-      url: quickstart-web-app-dotnet.md
-  - linkListType: tutorial
-    links:
-    - text: Felhasználók hitelesítése .NET-webalkalmazások esetén
-      url: tutorial-web-app-dotnet.md
-    - text: API-hozzáférés biztosítása .NET-webalkalmazásokhoz
-      url: tutorial-web-api-dotnet.md
-    - text: Vállalati és közösségi bejelentkezés engedélyezése
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Kódminták webalkalmazásokhoz és API-khoz
-      url: code-samples.md#web-apps-and-apis
-- title: Identitás hozzáadása az egyoldalas alkalmazásokhoz
+    - text: Hitelesítés és engedélyezés
+      url: https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Tokenek
+      url: https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Protokollok
+      url: https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Hitelesítési kódtár
+      url: https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 'Webhely készítése: HTML, CSS, JavaScript'
+      url: https://docs.microsoft.com/learn/modules/build-simple-website/
+- title: Gyakori használati helyzetek
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: Bejelentkezés beállítása
-      url: quickstart-single-page-app.md
-  - linkListType: tutorial
-    links:
-    - text: Felhasználók hitelesítése az egyoldalas alkalmazásokban
-      url: tutorial-single-page-app.md
-    - text: API-hozzáférés biztosítása egyoldalas alkalmazásokhoz
-      url: tutorial-single-page-app-webapi.md
-    - text: Vállalati és közösségi bejelentkezés engedélyezése
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Kódminták egyoldalas alkalmazásokhoz
-      url: code-samples.md#single-page-apps
-- title: Identitás hozzáadása asztali alkalmazásokhoz
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Bejelentkezés beállítása
-      url: quickstart-native-app-desktop.md
-  - linkListType: tutorial
-    links:
-    - text: Felhasználók hitelesítése a natív ügyfelekben
-      url: tutorial-desktop-app.md
-    - text: API-hozzáférés biztosítása a natív ügyfeleknek
-      url: tutorial-desktop-app-webapi.md
-    - text: Vállalati és közösségi bejelentkezés engedélyezése
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Kódminták mobil- és asztali alkalmazásokhoz
-      url: code-samples.md
-- title: Gyakori identitáskezelési forgatókönyvek konfigurálása
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: A felhasználói folyamatok bemutatása
+    - text: Önkiszolgáló bejelentkezés engedélyezése
       url: user-flow-overview.md
+    - text: 'Közösségi és munkahelyi identitások hozzáadása: OIDC/OAuth2/SAML'
+      url: tutorial-add-identity-providers.md
+    - text: Az egyszeri bejelentkezés (SSO) engedélyezése
+      url: session-overview.md
+    - text: A felhasználói felület/felhasználói élmény testreszabása
+      url: customize-ui-overview.md
+    - text: Felhasználók és alkalmazások migrálása
+      url: user-migration.md
+- title: Bejelentkezés hozzáadása az alkalmazásokhoz
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: 'Gyorsútmutató: Webalkalmazás'
+      url: quickstart-web-app-dotnet.md
+    - text: Natív/mobilalkalmazás
+      url: code-samples.md#mobile-and-desktop-apps
+    - text: Egyoldalas alkalmazás
+      url: code-samples.md#single-page-apps
+    - text: Webalkalmazás
+      url: code-samples.md#web-apps-and-apis
+- title: 'Engedélyezés: API-k hívása és biztonságossá tétele'
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Felhasználók regisztrációja és bejelentkezése
-      url: tutorial-create-user-flows.md
-    - text: A kezelőfelület testreszabása
-      url: customize-ui-overview.md
-    - text: Facebook-fiókkal történő bejelentkezés engedélyezése
-      url: identity-provider-facebook.md
-  - linkListType: video
-    links:
-    - text: Az alapszintű szabályzatok konfigurálása (9:41)
-      url: https://www.youtube.com/watch?v=nWJ3m82536A
-- title: Speciális identitáskezelési forgatókönyvek létrehozása
+    - text: Hozzáférési jogkivonat kérése
+      url: access-tokens.md
+    - text: Az API regisztrálása és biztonságossá tétele
+      url: tutorial-web-api-dotnet.md
+    - text: 'Minták: Webalkalmazások és API-k'
+      url: code-samples.md#web-apps-and-apis
+    - text: Integrálás API-átjáróval
+      url: secure-api-management.md?tabs=app-reg-ga
+- title: Biztonság, adatvédelem és megfelelőség
   linkLists:
   - linkListType: concept
     links:
-    - text: Az egyéni szabályzatok bemutatása
-      url: custom-policy-overview.md
+    - text: Fenyegetések kezelése
+      url: threat-management.md
+    - text: A felhasználói adatok tárolási helyének megismerése
+      url: data-residency.md
+    - text: Előírások
+      url: overview.md
+    - text: Felhasználói hozzáférés és használati feltételek
+      url: manage-user-access.md
+- title: Üzemeltetés
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Felhasználók regisztrációja és bejelentkezése
-      url: custom-policy-get-started.md
-    - text: A kezelőfelület testreszabása
-      url: custom-policy-ui-customization.md
-    - text: Több-bérlős Azure AD-bejelentkezés engedélyezése
-      url: identity-provider-azure-ad-multi-tenant-custom.md
-    - text: Saját üzleti logika hozzáadása REST API-kkal
-      url: custom-policy-rest-api-claims-validation.md
-  - linkListType: video
+    - text: CI-/CD-folyamat
+      url: deploy-custom-policies-devops.md
+    - text: Figyelés
+      url: azure-monitor.md
+    - text: Szerepköralapú hozzáférés a rendszergazdák számára
+      url: overview.md
+    - text: Felhasználókezelés
+      url: manage-user-accounts-graph-api.md
+    - text: Hibaelhárítás
+      url: troubleshoot-custom-policies.md?tabs-app-reg-ga
+    - text: Ajánlott eljárások
+      url: best-practices.md
+- title: További források
+  linkLists:
+  - linkListType: overview
     links:
-    - text: Bonyolultabb használati esetek az Azure AD B2C-vel (4:54)
-      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework
+    - text: GitHub
+      url: https://github.com/azure-ad-b2c/samples
+    - text: YouTube
+      url: https://www.youtube.com/results?search_query=azure+ad+b2c
+    - text: Oktatás
+      url: solution-articles.md
+    - text: Szolgáltatási hírek
+      url: https://azure.microsoft.com/updates/?product=active-directory-b2c
+    - text: Gyakori kérdések
+      url: faq.md
+    - text: Microsoft ügyfélszolgálata
+      url: support-options.md
+- title: Gyakori integrációk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 'Azure Monitor: Naplók megőrzése és elemzése'
+      url: azure-monitor.md
+    - text: 'Azure DevOps Services: CI/CD-folyamatok létrehozása'
+      url: deploy-custom-policies-devops.md
+    - text: 'Application Insights: Hibaelhárítás és felhasználói megállapítások lekérése'
+      url: troubleshoot-with-application-insights.md
+    - text: Integrálás technológiai partnereinkkel
+      url: partner-gallery.md

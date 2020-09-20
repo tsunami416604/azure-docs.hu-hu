@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Az Azure NetApp Files hálózattervezési irányelvei
       href: azure-netapp-files-network-topologies.md
+    - name: Régiók közötti replikáció
+      items:
+        - name: A régiók közötti replikáció ismertetése
+          href: cross-region-replication-introduction.md
+        - name: A régiók közötti replikációra vonatkozó követelmények és megfontolandó szempontok
+          href: cross-region-replication-requirements-considerations.md
     - name: Megoldások
       items:
         - name: Megoldásarchitektúrák az Azure NetApp Filesszal
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Kötetek szolgáltatásszintjének dinamikus módosítása
       href: dynamic-change-volume-service-level.md
+    - name: Régiók közötti replikációk kezelése
+      items:
+        - name: Replikációs társviszony létrehozása
+          href: cross-region-replication-create-peering.md
+        - name: Replikációs kapcsolat állapotának megjelenítése
+          href: cross-region-replication-display-health-status.md
+        - name: Vészhelyreállítás kezelése
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Replikációk törlése
+          href: cross-region-replication-delete.md
     - name: Fejlesztés
       items:
         - name: REST API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: Az Azure NetApp Files erőforrás-szolgáltatójának hibaelhárítása
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Hibaelhárítás
+      items:
+        - name: Régiók közötti replikáció hibaelhárítása
+          href: troubleshoot-cross-region-replication.md
 - name: Referencia
   items:
     - name: REST

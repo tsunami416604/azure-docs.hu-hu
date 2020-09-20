@@ -3,9 +3,11 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az az Azure Cognitive Search?
+    - name: Mi az a Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Újdonságok
+    - name: A Cognitive Search funkciói
+      href: search-features-list.md
+    - name: A Cognitive Search újdonságai
       href: whats-new.md
 - name: Rövid útmutatók
   items:
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: Keresési API
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: Felügyeleti API
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: Keresési API
+          href: /java/api/overview/azure/search-documents-readme
         - name: Felügyeleti API
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: Keresési API
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: Felügyeleti API
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: Keresési API
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: Felügyeleti API
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: OData nyelvi referencia
       items:
         - name: Áttekintés

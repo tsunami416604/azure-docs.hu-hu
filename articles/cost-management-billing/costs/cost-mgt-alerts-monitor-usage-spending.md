@@ -3,17 +3,17 @@ title: A használat és a költések monitorozása költségriasztásokkal
 description: Ez a cikk azt ismerteti, hogyan segítenek a költségriasztások az Azure Cost Management-használat és -költségek monitorozásában.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 09/03/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: aeeb630cf15aedd62c085e2070e08fd223656094
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683436"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531338"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Költségriasztások használata a használat és a kiadások monitorozásához
 
@@ -25,23 +25,25 @@ A költségvetési riasztások értesítést küldenek arról, ha a költségek 
 
 Az Azure Portalon a költségvetéseket a költségek határozzák meg. Az Azure Consumption API használatakor a költségvetések a költségek vagy a felhasználás mértéke alapján lesznek meghatározva. A költségvetési riasztások a költségalapú és a használatalapú költségvetést is támogatják. A költségvetési riasztások automatikusan jönnek létre, amikor teljesülnek a költségvetési riasztás feltételei. Az Azure Portalon megtekintheti az összes költségriasztást. Amint létrejön egy riasztás, megjelenik a költségriasztásokban. A rendszer riasztási e-mailt is küld a költségvetés riasztási címzettjeinek listájában szereplők számára.
 
+A Budget API használatával más nyelven küldheti el az e-mailes riasztásokat. További információ: [Támogatott területi beállítások a költségvetési riasztások e-mailjeihez](manage-automation.md#supported-locales-for-budget-alert-emails).
+
 ## <a name="credit-alerts"></a>Kreditriasztások
 
 A kreditriasztások értesítik, ha felhasználta az Azure-kredit pénzügyi keretét. A pénzügyi keretek Nagyvállalati Szerződéssel rendelkező szervezetek számára elérhetők. A jóváírási riasztások automatikusan létrejönnek az Azure-kreditek egyenlegének 90%-os és 100%-os felhasználásakor. Amint létrejön egy riasztás, megjelenik a költségriasztásokban és az e-mailekben, amelyeket a fiók tulajdonosai kapnak.
 
 ## <a name="department-spending-quota-alerts"></a>Részleg költségkvótáinak riasztásai
 
-A részlegek költségkvótájának riasztásai értesítik, ha a részleg költségei elérik a kvóta meghatározott küszöbértékét. A költségkvótát az EA Portalon lehet konfigurálni. A küszöbértékek elérésekor a részleg tulajdonosai e-mailt kapnak, és ez megjelenik a költségriasztásokban is. Például a kvóta 50 vagy 75%-ának elérésekor.
+A részlegek költségkvótájának riasztásai értesítik, ha a részleg költségei elérik a kvóta meghatározott küszöbértékét. A költségkvótát az EA portálon lehet konfigurálni. A küszöbértékek elérésekor a részleg tulajdonosai e-mailt kapnak, és ez megjelenik a költségriasztásokban is. Például a kvóta 50 vagy 75%-ának elérésekor.
 
 ## <a name="supported-alert-features-by-offer-categories"></a>Támogatott riasztási funkciók az ajánlati kategóriák alapján
 
-A riasztástípusok támogatottsága az Azure-fiók típusától függ (Microsoft-ajánlat). Az alábbi táblázat összefoglalja, hogy mely Microsoft-ajánlatok mely riasztási funkciókat támogatják. A Microsoft-ajánlatok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md).
+A riasztástípusok támogatottsága az Azure-fiók típusától függ (Microsoft-ajánlat). Az alábbi táblázat összefoglalja, hogy mely Microsoft-ajánlatok mely riasztástípusokat támogatják. A Microsoft-ajánlatok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md).
 
 | Riasztástípus | Nagyvállalati Szerződés | Microsoft-ügyfélszerződés | Web Direct/Használatalapú fizetés |
 |---|---|---|---|
 | Költségvetés | ✔ | ✔ | ✔ |
 | Kredit | ✔ |✘ | ✘ |
-| Részleg költségkvótája | ✔ | ✘ | ✘ |
+| Részleg költségkvótái | ✔ | ✘ | ✘ |
 
 
 
@@ -51,11 +53,11 @@ A költségriasztások megtekintéséhez nyissa meg a kívánt hatókört az Azu
 
 ![Szemléltető kép, amelyen a Cost Managementben megjelenített riasztások láthatók](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
-Az aktív és bezárt riasztások teljes száma a költségriasztások oldalán jelenik meg.
+Az aktív és bezárt riasztások teljes száma a költségriasztások oldalon jelenik meg.
 
 Minden riasztás megjeleníti a riasztástípust. A költségvetési riasztások megjelenítik, hogy miért lettek létrehozva, illetve hogy melyik költségvetésre vonatkoznak. Minden egyes riasztás megjeleníti a létrehozás dátumát, az állapotát és a riasztás által érintett hatókört (előfizetés vagy felügyeleti csoport).
 
-Lehetséges állapotok például az **aktív** és **bezárt**. Az aktív állapot jelzi, hogy a riasztás még mindig releváns. A bezárt állapot azt jelzi, hogy valaki már nem relevánsként jelölte meg a riasztást.
+Lehetséges állapotok például az **aktív** és **bezárt**. Az aktív állapot jelzi, hogy a riasztás még mindig releváns. Az bezárt állapot azt jelzi, hogy valaki már nem relevánsként jelölte meg a riasztást.
 
 Válasszon ki egy riasztást a listából a részletek megtekintéséhez. A riasztási részletek további információt jelenítenek meg a riasztásról. A költségvetési riasztások egy hivatkozást is tartalmaznak az adott költségvetéshez. Ha egy költségvetési riasztáshoz javaslat áll rendelkezésre, akkor a javaslatra mutató hivatkozás is megjelenik. A költségvetési, kredit- és a részlegek költségkvótáinak riasztásai egy hivatkozással rendelkeznek a költségelemzéshez, ahol megtekintheti a riasztás hatókörének költségeit. Az alábbi példa egy részleg kiadásait mutatja be a riasztási részletekkel.
 

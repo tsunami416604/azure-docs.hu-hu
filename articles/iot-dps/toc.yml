@@ -15,40 +15,52 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-sablon
           href: quick-setup-auto-provision-rm.md
-    - name: Egyetlen eszköz kiépítése
+    - name: Szimmetrikus kulccsal rendelkező eszköz kiépítése
       items:
-        - name: Szimmetrikus kulcsú igazolás
-          items:
-            - name: C#
-              href: quick-create-simulated-device-symm-key.md
-            - name: Java
-              href: quick-create-simulated-device-symmetric-key-java.md
-            - name: Python
-              href: quick-create-device-symmetric-key-python.md
-        - name: X.509 tanúsítványigazolás
-          items:
-            - name: C#
-              href: quick-create-simulated-device-x509.md
-            - name: Java
-              href: quick-create-simulated-device-x509-java.md
-            - name: C#
-              href: quick-create-simulated-device-x509-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-x509-node.md
-            - name: Python
-              href: quick-create-simulated-device-x509-python.md
-        - name: Szimulált TPM-eszközigazolás
-          items:
-            - name: C#
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: C#
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
+        - name: C#
+          href: quick-create-simulated-device-symm-key.md
+        - name: Java
+          href: quick-create-simulated-device-symmetric-key-java.md
+        - name: Python
+          href: quick-create-device-symmetric-key-python.md
+    - name: X.509-tanúsítvánnyal rendelkező eszköz üzembe helyezése
+      items:
+        - name: C#
+          href: quick-create-simulated-device-x509.md
+        - name: Java
+          href: quick-create-simulated-device-x509-java.md
+        - name: C#
+          href: quick-create-simulated-device-x509-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-x509-node.md
+        - name: Python
+          href: quick-create-simulated-device-x509-python.md
+- name: Oktatóanyagok
+  items:
+    - name: 1 – Több eszköz kiépítése regisztrációs csoportokkal
+      href: how-to-legacy-device-symm-key.md
+    - name: 2 – Eszközök kiépítése több hubon
+      items:
+        - name: Több hub összekapcsolása a DPS-szel
+          href: tutorial-provision-multiple-hubs.md
+        - name: Több-bérlős regisztráció
+          href: how-to-provision-multitenant.md
+        - name: Egyéni kiosztási szabályzatok használata
+          href: how-to-use-custom-allocation-policies.md
+- name: Példák
+  items:
+    - name: Szimulált TPM-eszközigazolás mintája
+      items:
+        - name: C#
+          href: quick-create-simulated-device.md
+        - name: Java
+          href: quick-create-simulated-device-tpm-java.md
+        - name: C#
+          href: quick-create-simulated-device-tpm-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-tpm-node.md
+        - name: Python
+          href: quick-create-simulated-device-tpm-python.md
     - name: Eszközregisztrációk létrehozása DPS API-k használatával
       items:
         - name: Csoportos regisztráció X.509 tanúsítványigazolás használatával
@@ -71,51 +83,33 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-- name: Oktatóanyagok
-  items:
-    - name: 1 – Felhőerőforrások beállítása
-      href: tutorial-set-up-cloud.md
-    - name: 2 – Eszköz beállítása
-      href: tutorial-set-up-device.md
-    - name: 3 – Eszköz kiépítése egy IoT hubon
-      items:
-        - name: C#
-          href: tutorial-provision-device-to-hub.md
-        - name: C#
-          href: tutorial-net-provision-device-to-hub.md
-    - name: 4 – Eszközök kiépítése több hubon
-      href: tutorial-provision-multiple-hubs.md
-    - name: 5 – Csoportos regisztrációk beállítása
-      href: tutorial-group-enrollments.md
 - name: Alapelvek
   items:
-    - name: Automatikus üzembe helyezés
-      href: concepts-auto-provisioning.md
-    - name: Ismételt regisztráció
-      href: concepts-device-reprovision.md
-    - name: Eszközök
-      href: concepts-device.md
-    - name: Biztonság
-      href: concepts-security.md
-    - name: TLS-támogatás
-      href: tls-support.md
-    - name: Virtuális hálózatok támogatása
-      href: virtual-network-support.md
-    - name: Szolgáltatás
+    - name: DPS-terminológia
       href: concepts-service.md
-    - name: A DPS IP-címek ismertetése
-      href: iot-dps-understand-ip-address.md
-    - name: TPM-igazolás
-      href: concepts-tpm-attestation.md
     - name: Szimmetrikus kulcsú igazolás
       href: concepts-symmetric-key-attestation.md
+    - name: X.509 tanúsítványigazolás
+      href: concepts-x509-attestation.md
+    - name: TPM-igazolás
+      href: concepts-tpm-attestation.md
+    - name: Szerepkörök és műveletek
+      href: concepts-roles-operations.md
+    - name: Virtuális hálózatok támogatása
+      href: virtual-network-support.md
+    - name: Ismételt regisztráció
+      href: concepts-device-reprovision.md
+    - name: A DPS IP-címek ismertetése
+      href: iot-dps-understand-ip-address.md
+    - name: TLS-támogatás
+      href: tls-support.md
     - name: Biztonsági eljárások eszközgyártók számára
       href: concepts-device-oem-security-practices.md
 - name: Útmutatók
   items:
     - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
       href: how-to-connect-mxchip-iot-devkit.md
-    - name: Device Provisioning Service konfigurációjának kezelése
+    - name: Device Provisioning Service kezelése
       items:
         - name: Regisztrációk kezelése – portál
           href: how-to-manage-enrollments.md
@@ -131,14 +125,12 @@
           href: how-to-revoke-device-access-portal.md
         - name: Megszüntetés kezelése
           href: how-to-unprovision-devices.md
-    - name: Device Provisioning Service kezelése
-      items:
-        - name: Device Provisioning Service konfigurálása az Azure CLI-vel
-          href: how-to-manage-dps-with-cli.md
         - name: Regisztrációs szolgáltatási API-k hozzáférésének vezérlése
           href: how-to-control-access.md
         - name: IP-szűrés konfigurálása
           href: iot-dps-ip-filtering.md
+        - name: Device Provisioning Service konfigurálása az Azure CLI-vel
+          href: how-to-manage-dps-with-cli.md
     - name: IoT Edge-eszközök regisztrálása
       items:
         - name: Linux
@@ -149,12 +141,6 @@
           maintainContext: true
     - name: Igazolási mechanizmusok használata SDK-val
       href: use-hsm-with-sdk.md
-    - name: Több-bérlős regisztráció
-      href: how-to-provision-multitenant.md
-    - name: Egyéni kiosztási szabályzatok használata
-      href: how-to-use-custom-allocation-policies.md
-    - name: Szimmetrikus kulcsok használata régi eszközökön
-      href: how-to-legacy-device-symm-key.md
     - name: Fejlesztés SDK-eszközökkel
       href: how-to-use-sdk-tools.md
     - name: További adatok küldése eszközökről

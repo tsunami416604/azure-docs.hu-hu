@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
+ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068736"
+ms.lasthandoff: 09/19/2020
+ms.locfileid: "90817870"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v3 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -67,22 +67,10 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 
 ### <a name="configure-dependencies"></a>Függőségek konfigurálása
 
-Két rugós adatAzure Cosmos DB 3. verziójú Maven-összetevő érhető el.
-
-- A Spring adatkeretrendszer 2,2-es verziójától függő összetevő:
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-      <version>latest</version>
-  </dependency>
-  ```
-
-- A Spring adatkeretrendszer 2,3-es verziójától függő összetevő:
-  ```xml
-  <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <artifactId>azure-spring-data-cosmos</artifactId>
       <version>latest</version>
   </dependency>
   ```
@@ -93,7 +81,7 @@ Két rugós adatAzure Cosmos DB 3. verziójú Maven-összetevő érhető el.
 
 Azure Cosmos DB fiók és tároló adatainak megadása. A Spring-alapú adatAzure Cosmos DB automatikusan létrehozza az ügyfelet, és csatlakozik a tárolóhoz.
 
-[alkalmazás. properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-2-cosmos-java-getting-started/src/main/resources/application.properties):
+[alkalmazás. properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
 ```
 cosmos.uri=${ACCOUNT_HOST}
 cosmos.key=${ACCOUNT_KEY}
@@ -108,30 +96,46 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Dokumentumok műveletei
 
-[Létrehozás](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Create)]
+Létrehozása
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
 
-[Törlés](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Delete)]
+Törlés:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
 
 # <a name="query"></a>[Lekérdezés](#tab/queries)
 
-[Lekérdezés](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
+Lekérdezés:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
 
 ---
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
-| Erőforrás | Spring adatkeretrendszer 2,2 | Spring adatkeretrendszer 2,3 |
-|---|---|
-| **SDK letöltése** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**Közreműködés az SDK-ban** | [Spring-adatAzure Cosmos DB-tárház a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Spring-adatAzure Cosmos DB-tárház a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**Oktatóanyag**| [Spring-adatAzure Cosmos DB oktatóanyag a GitHubon](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Spring-adatAzure Cosmos DB oktatóanyag a GitHubon](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+* **Közreműködés az SDK-** ban: [Spring-adatAzure Cosmos db-tárház a githubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
+
+* **Oktatóanyag**: [Spring-adatAzure Cosmos db oktatóanyag a githubon](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
 ## <a name="release-history"></a>Kiadási előzmények
 
-### <a name="300-beta2-unreleased"></a>3.0.0-Beta. 2 (nem kiadott)
+### <a name="300-beta2-september-17-2020"></a>3.0.0-Beta. 2 (szeptember 17, 2020)
+
+#### <a name="new-features"></a>Új funkciók
+
+* Az összetevő-azonosító frissítve a következőre: `azure-spring-data-cosmos` .
+* Frissítve az Azure-Cosmos-függőséggel `4.5.0` .
+* `Query Annotation` natív lekérdezések támogatása.
+* A Java 11 támogatása.
+* Beágyazott partíciós kulcs támogatása a megjegyzések mező kiírásával `partitionKeyPath` `@Container` .
+* A `limit` lekérdezési típus támogatása, amely lehetővé teszi `top` , `first` hogy az adattár API-k meghatározásakor használható legyen.
+
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+
+* Rögzített beágyazott partíciós hiba a jegyzettel való használatkor `@GeneratedValue` .
 
 ### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (augusztus 17, 2020)
+
 #### <a name="new-features"></a>Új funkciók
+
 * Frissíti a csoport AZONOSÍTÓját a következőre: `com.azure` .
 * Frissíti az összetevő AZONOSÍTÓját a következőre: `azure-spring-data-2-3-cosmos` .
 * Frissíti az Azure-Cosmos SDK-függőségét `4.3.2-beta.2` .
@@ -143,7 +147,9 @@ cosmos.queryMetricsEnabled=true
 * `CosmosClientBuilder`A Azure Cosmos db SDK-ból Spring Bean-ként teszi elérhetővé a `@Configuration` osztályt.
 * `CosmosConfig`A frissítések tartalmazzák a lekérdezési metrikákat és a válasz diagnosztikai processzor implementációját.
 * A támogatja az `Optional` egyértékű lekérdezések adattípusának visszaadását.
+
 #### <a name="renames"></a>Átnevezi
+
 * `CosmosDbFactory` a következőre: `CosmosFactory` .
 * `CosmosDBConfig` a következőre: `CosmosConfig` .
 * `CosmosDBAccessException` a következőre: `CosmosAccessException` .
@@ -151,7 +157,9 @@ cosmos.queryMetricsEnabled=true
 * `DocumentIndexingPolicy` Jegyzet a jegyzethez `CosmosIndexingPolicy` .
 * `DocumentQuery` a következőre: `CosmosQuery` .
 * az Application. properties jelzője a következőre: `populateQueryMetrics` `queryMetricsEnabled` .
+
 #### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+
 * Diagnosztikai naplózási feladat ütemezése a `Parallel` szálak számára a nagyszámú I/O-szálak blokkolásának elkerülése érdekében.
 * Megjavítja a törlési művelet optimista zárolását.
 * Kijavítja a záradékhoz tartozó lekérdezések Escape-problémáját `IN` .
@@ -161,9 +169,11 @@ cosmos.queryMetricsEnabled=true
 * Eltávolítja a 4 000-es alapértelmezett értéket, ha a tárolók automatikusan létrejönnek.
 
 ## <a name="faq"></a>GYIK
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 További információ a [Azure Cosmos DBról](https://azure.microsoft.com/services/cosmos-db/).
 
 További információ a [Spring Framework](https://spring.io/projects/spring-framework)-ről.

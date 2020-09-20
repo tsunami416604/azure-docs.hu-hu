@@ -11,58 +11,58 @@ ms.author: dacurwin
 ms.custom: include file
 ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
 ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/23/2020
 ms.locfileid: "87003833"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-A Recovery Services-tároló egy felügyeleti entitás, amely az idő múlásával létrehozott helyreállítási pontokat tárolja, és felületet biztosít a biztonsági mentéssel kapcsolatos műveletek elvégzéséhez. Ezek közé tartoznak az igény szerinti biztonsági másolatok készítése, a visszaállítások végrehajtása és a biztonsági mentési szabályzatok létrehozása.
+A Recovery Services-tároló egy olyan felügyeleti entitás, amely eltárolja az idők során létrehozott biztonsági mentéseket, és egy felületet biztosít a biztonsági mentésekkel kapcsolatos műveletek végrehajtásához. Ezek közé tartoznak az igény szerinti biztonsági másolatok készítése, a visszaállítások végrehajtása, illetve a biztonsági mentési szabályzatok létrehozása.
 
 Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az előfizetésbe a [Azure Portalban](https://portal.azure.com/).
+1. Jelentkezzen be az előfizetésébe az [Azure Portalon](https://portal.azure.com/).
 
-1. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
+1. A bal oldali menüben válassza a **Minden szolgáltatás** lehetőséget.
 
-    ![Minden szolgáltatás kiválasztása](./media/backup-create-rs-vault/click-all-services.png)
+    ![Válassza a Minden szolgáltatás elemet](./media/backup-create-rs-vault/click-all-services.png)
 
-1. A **minden szolgáltatás** párbeszédpanelen írja be a *Recovery Services*értéket. Az erőforrás-szűrők listája a bemenet alapján. Az erőforrások listájában válassza a **Recovery Services**-tárolók lehetőséget.
+1. A **Minden szolgáltatás** párbeszédpanelen írja be a következőt: *Recovery Services*. A rendszer a megadott kulcsszavak alapján szűri az erőforrások listáját. Az erőforrások listájából válassza a **Recovery Services-tárolók** elemet.
 
-    ![Adja meg és válassza ki Recovery Services tárolókat](./media/backup-create-rs-vault/all-services.png)
+    ![Recovery Services-tárolók megadása és kiválasztása](./media/backup-create-rs-vault/all-services.png)
 
     Megjelenik az előfizetésben található Recovery Services-tárolók listája.
 
-1. A **Recovery Services** -tárolók irányítópultján válassza a **Hozzáadás**lehetőséget.
+1. A **Recovery Services-tárolók** irányítópultján kattintson a **Hozzáadás** elemre.
 
     ![Recovery Services-tároló hozzáadása](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    Megnyílik az **Recovery Services** -tároló párbeszédpanel. Adja meg a **név**, az **előfizetés**, az **erőforráscsoport**és a **hely**értékét.
+    Megnyílik a **Recovery Services-tároló** párbeszédpanel. Adja meg a **Név**, **Előfizetés**, **Erőforráscsoport** és **Hely** mező értékét.
 
-    ![A Recovery Services-tároló konfigurálása](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![Recovery Services-tároló konfigurálása](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Név**: adjon meg egy rövid nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetésben. Olyan nevet adjon meg, amely legalább 2 karakterből áll, de legfeljebb 50 karakterből állhat. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat.
-   - **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha csak egy előfizetés tagja, akkor ezt a nevet fogja látni. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Több választási lehetőség is van, ha a munkahelyi vagy iskolai fiók egynél több Azure-előfizetéshez van társítva.
-   - **Erőforráscsoport**: használjon meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata**lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a nevet. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../articles/azure-resource-manager/management/overview.md)).
-   - **Hely**: válassza ki a tároló földrajzi régióját. Ha tárolót szeretne létrehozni az adatforrások védelme érdekében, a tárolónak ugyanabban a régióban *kell lennie* , mint az adatforrásnak.
+   - **Név**: Adjon meg egy, a tárolót azonosító rövid nevet. A névnek egyedinek kell lennie az Azure-előfizetésben. Olyan nevet adjon meg, amely legalább 2, legfeljebb 50 karakterből áll. A névnek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
+   - **Előfizetés**: Válassza ki a használni kívánt előfizetést. Ha csak egyetlen előfizetés tagja, azt a nevet fogja látni. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a munkahelyi vagy iskolai fiók több Azure-előfizetéshez van társítva.
+   - **Erőforráscsoport**: Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megjelenítéséhez válassza ki a **Meglévő használata** elemet, majd válasszon egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához kattintson az **Új létrehozása** elemre, majd adjon meg egy nevet. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/management/overview.md).
+   - **Hely**: Válassza ki a tároló földrajzi régióját. Az adatforrások védelmére létrehozott tárolónak ugyanabban a régióban *kell* lennie, mint az adott adatforrásnak.
 
       > [!IMPORTANT]
-      > Ha nem biztos benne, hogy az adatforrás hol található, akkor zárjuk be a párbeszédpanelt. Nyissa meg az erőforrások listáját a portálon. Ha több régióban rendelkezik adatforrásokkal, minden régióhoz hozzon létre egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, mielőtt létrehozza a tárolót egy másik helyhez. Nem kell megadnia a tárolási fiókokat a biztonsági másolatok tárolásához. A Recovery Services-tároló és a Azure Backup automatikusan kezeli.
+      > Ha nem biztos az adatforrás helyében, zárja be a párbeszédpanelt. Nyissa meg az erőforrások listáját a portálon. Ha több régióban rendelkezik adatforrásokkal, minden egyes régióban hozzon létre egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, mielőtt létrehozná a következő tárolót egy másik helyen. Az adatok biztonsági másolatának tárolásához nincs szükség tárfiókok megadására. A Recovery Services-tároló és az Azure Backup szolgáltatás ezt automatikusan kezeli.
       >
       >
 
-1. Az értékek megadása után válassza a **felülvizsgálat + létrehozás**elemet.
+1. Az értékek megadása után válassza a **Felülvizsgálat + létrehozás** elemet.
 
-    ![A Recovery Services-tároló létrehozása](./media/backup-create-rs-vault/review-and-create.png)
+    ![Recovery Services-tároló létrehozása](./media/backup-create-rs-vault/review-and-create.png)
 
-1. Ha készen áll az Recovery Services-tároló létrehozására, válassza a **Létrehozás**lehetőséget.
+1. Amikor készen áll a Recovery Services-tároló létrehozására, válassza a **Létrehozás** elemet.
 
-    ![A Recovery Services-tároló létrehozása](./media/backup-create-rs-vault/click-create-button.png)
+    ![Recovery Services-tároló létrehozása](./media/backup-create-rs-vault/click-create-button.png)
 
-    A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területről. A tároló létrehozása után a Recovery Services-tárolók listájában látható. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
+    A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az állapotértesítéseket a portál jobb felső sarkában található **Értesítések** területen. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában. Ha nem látja a tárat, válassza a **Frissítés** lehetőséget.
 
-     ![A Backup-tárolók listájának frissítése](./media/backup-create-rs-vault/refresh-button.png)
+     ![Biztonsági mentési tárak listájának frissítése](./media/backup-create-rs-vault/refresh-button.png)
 
 >[!IMPORTANT]
-> Javasoljuk, hogy a biztonsági mentések konfigurálása előtt tekintse át a **tárolási replikálási típus** és a **biztonsági beállítások** alapértelmezett beállításait. További információt a [tárolási redundancia beállítása](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) című szakaszban talál.
+> Javasoljuk, hogy a tárban a biztonsági mentések konfigurálása előtt tekintse át a **Tárolóreplikáció típusa** és a **Biztonsági beállítások** alapértelmezett beállításait. További információt a [Tárhely-redundancia beállítása](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) szakaszban talál.

@@ -10,20 +10,20 @@ ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84905867"
 ---
-A App Service alkalmazás kódjában létrehozott konzol naplófájljainak eléréséhez kapcsolja be a diagnosztikai naplózást a következő parancs futtatásával a [Cloud Shellban](https://shell.azure.com):
+Az alkalmazáskódból létrehozott konzolnaplók App Service-ben történő eléréséhez kapcsolja be a diagnosztikai naplózást a következő parancs a [Cloud Shellben](https://shell.azure.com) történő futtatásával:
 
 ```azurecli-interactive
 az webapp log config --resource-group <resource-group-name> --name <app-name> --application-logging true --level Verbose
 ```
 
-A lehetséges értékei a `--level` következők:,,, `Error` `Warning` `Info` és `Verbose` . Minden további szint az előző szintet tartalmazza. Például: `Error` csak a hibaüzeneteket tartalmazza, és `Verbose` tartalmazza az összes üzenetet.
+A `--level` lehetséges értékei: `Error`, `Warning`, `Info` és `Verbose`. Minden szint tartalmazza az azt megelőző szintet. Például: az `Error` csak a hibaüzeneteket tartalmazza, a `Verbose` pedig az összes üzenetet.
 
-Miután bekapcsolta a diagnosztikai naplózást, a következő parancs futtatásával tekintheti meg a log streamet:
+Ha a diagnosztikai naplózás be van kapcsolva, futtassa a következő parancsot a naplóstream megtekintéséhez:
 
 ```azurecli-interactive
 az webapp log tail --resource-group <resource-group-name> --name <app-name>
@@ -32,6 +32,6 @@ az webapp log tail --resource-group <resource-group-name> --name <app-name>
 Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
 
 > [!NOTE]
-> A naplófájlokat a böngészőből is ellenőrizheti `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
+> A naplófájlokat a böngészőből is megtekintheti a következő címen: `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a következőt: `Ctrl` + `C` .
+A `Ctrl`+`C` billentyűparanccsal bármikor leállíthatja a naplóstreamelést.

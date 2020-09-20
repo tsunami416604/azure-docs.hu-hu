@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322279"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527139"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -106,7 +106,7 @@ A költségvetés összegének konfigurálása után válassza a **Következő**
 
 Ha e-maileket szeretne kapni, vegye fel az azure-noreply@microsoft.com címet a jóváhagyott küldők listájára, hogy az e-mailek ne kerüljenek a levélszemét mappájába. Az értesítésekkel kapcsolatban a [költségriasztások használatát](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) ismertető cikkben tekinthet meg további információt.
 
-Az alábbi példában a rendszer egy e-mail-riasztást hoz létre a költségvetés 90%-ának az elérésekor. Ha a Budgets API-val hoz létre költségvetést, szerepköröket is rendelhet adott személyekhez, hogy riasztásokat kaphassanak. A szerepkörök személyekhez rendelése nem támogatott az Azure Portalon. További információ a Budgets API-ról: [Budgets API](/rest/api/consumption/budgets).
+Az alábbi példában a rendszer egy e-mail-riasztást hoz létre a költségvetés 90%-ának az elérésekor. Ha a Budgets API-val hoz létre költségvetést, szerepköröket is rendelhet adott személyekhez, hogy riasztásokat kaphassanak. A szerepkörök személyekhez rendelése nem támogatott az Azure Portalon. További információ a Budgets API-ról: [Budgets API](/rest/api/consumption/budgets). Ha más nyelven szeretné elküldeni az e-mailes riasztásokat, tekintse meg a következő témakört: [Támogatott területi beállítások a költségvetési riasztások e-mailjeihez](manage-automation.md#supported-locales-for-budget-alert-emails).
 
 A riasztási korlátok a megadott költségvetési küszöbérték 0,01 és 1000% közötti tartományát támogatják.
 

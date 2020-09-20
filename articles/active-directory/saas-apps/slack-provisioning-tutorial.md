@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: felhasználó kiépítés a Slackhez – Azure AD'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok Tartalékidőre való automatikus kiépítéséhez és üzembe helyezéséhez.
+title: 'Oktatóanyag: Felhasználók átadása a Slackhez – Azure AD'
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a felhasználói fiókok Slackbe való automatikus átadására és megszüntetésére.
 services: active-directory
 author: ArvindHarinder1
 manager: CelesteDG
@@ -10,189 +10,189 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: MT
+ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527825"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563029"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: a tartalékidő konfigurálása a felhasználók automatikus kiépítési felállításához
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: A Slack konfigurálása a felhasználók automatikus átadására
 
-Ennek az oktatóanyagnak a célja, hogy megmutassa, milyen lépéseket kell elvégeznie a Slack és az Azure AD-ben, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Slackbe. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
+Ennek az oktatóanyagnak az a célja, hogy bemutassa a felhasználói fiókok Azure AD-ból Slackbe való átadása és azok megszüntetése érdekében a Slackben és az Azure AD-ban elvégzendő lépéseket. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
 > * Felhasználók létrehozása a Slackben
-> * Felhasználók eltávolítása a Slackben, ha már nincs szükség hozzáférésre
-> * Felhasználói attribútumok szinkronizálása az Azure AD és a Slack között
-> * Csoportok és csoporttagságok kiépítése a Slackben
-> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) a slackbe (ajánlott)
+> * Felhasználók eltávolítása a Slackben, ha már nincs szükségük hozzáférésre
+> * A felhasználói attribútumok folyamatos szinkronizálása az Azure AD és a Slack között
+> * Csoportok és csoporttagságok átadása a Slackbe
+> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) a Slackbe (ajánlott)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
-* [Egy Azure ad-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda).
-* Egy Slack-bérlő a [plusz csomaggal](https://aadsyncfabric.slack.com/pricing) vagy a jobb engedélyezéssel.
-* Felhasználói fiók a Slackben a csapat rendszergazdai engedélyeivel.
+* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda).
+* Egy [Plus](https://aadsyncfabric.slack.com/pricing) vagy magasabb szintű csomagot használó Slack-bérlő.
+* Egy csapatrendszergazdai engedélyekkel rendelkező felhasználói fiók a Slackben.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
-1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
-2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Határozza meg, hogy az [Azure ad és a Slack között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
+1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, milyen adatokat [képez le az Azure AD és a Slack között](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>2. lépés Slack hozzáadása az Azure AD Application Galleryből
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>2. lépés A Slack hozzáadása az Azure AD-alkalmazáskatalógusból
 
-Az Azure AD-alkalmazás-katalógusban a Slack hozzáadásával megkezdheti a kiépítés kezelését. Ha korábban már telepítette a Slack for SSO-t, ugyanazt az alkalmazást használhatja. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
+Adja hozzá a Slacket az Azure AD-alkalmazáskatalógusból a Slackbe való átadás kezelésének megkezdéséhez. Ha korábban egyszeri bejelentkezésre állította be a Slacket, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
 
-## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>3. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
+## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>3. lépés Az átadás hatókörében lévő személyek meghatározása 
 
-Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
+Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
 
-* Amikor felhasználókat és csoportokat rendel a Slackhez, ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+* Amikor felhasználókat és csoportokat rendel a Slackhez, az **alapértelmezett hozzáféréstől** eltérő szerepkört kell választania. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
 
-* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>4. lépés: Az automatikus felhasználó-kiépítés beállítása a Slackre 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>4. lépés: A felhasználók Slackbe való automatikus átadásának konfigurálása 
 
-Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesítési API-val való összekapcsolásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és csoport-hozzárendelésen alapuló elosztott felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
+Ez a szakasz végigvezeti az Azure AD a Slack felhasználóifiók-átadási API-jához való csatlakoztatásán, valamint az átadási szolgáltatás konfigurálásán a hozzárendelt felhasználói fiókok létrehozására, frissítésére és letiltására a Slackben az Azure AD felhasználó- és csoport-hozzárendelései alapján.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-ben:
+### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>A felhasználói fiókok Slackbe való automatikus átadásának konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **tartalékidő**elemet.
+2. Az alkalmazások listájában válassza a **Slack** elemet.
 
-    ![A Slack hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A Slack hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. Ekkor megnyílik a tartalékidő-engedélyezési párbeszédpanel egy új böngészőablakban.
+5. A **Rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre. Ez megnyit egy Slack-engedélyezési párbeszédpanelt egy új böngészőablakban.
 
-    ![Engedélyezés](media/slack-provisioning-tutorial/authorization.png)
+    ![A képernyőképen a Rendszergazdai hitelesítő adatok engedélyezése gomb látható.](media/slack-provisioning-tutorial/authorization.png)
 
 
-6. Az új ablakban jelentkezzen be a Slack használatával a csapat rendszergazdai fiókjával. az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a Slack-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés**lehetőséget. Ha elkészült, térjen vissza a Azure Portal a létesítési konfiguráció befejezéséhez.
+6. Az új ablakban jelentkezzen be a Slackbe a csapatrendszergazdai fiókjával. A megjelenő párbeszédpanelen válassza ki azt a Slack-csapatot, amelyhez engedélyezni szeretné az átadást, majd válassza az **Engedélyezés** lehetőséget. Miután végzett, lépjen vissza az Azure Portalra az átadás konfigurációjának befejezéséhez.
 
     ![Engedélyezési párbeszédpanel](./media/slack-provisioning-tutorial/slackauthorize.png)
 
-7. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a Slack-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Slack-fiókja rendelkezik rendszergazdai jogosultságokkal, majd próbálja megismételni az "engedélyezés" lépést.
+7. Az Azure Portalon kattintson a **Kapcsolat tesztelése** lehetőségre annak ellenőrzéséhez, hogy az Azure AD tud-e csatlakozni a Slack alkalmazáshoz. Ha a kapcsolat meghiúsul, ellenőrizze, hogy a Slack-fiók csapatrendszergazdai engedélyekkel rendelkezik-e, majd próbálja megismételni az engedélyezési lépést.
 
-8. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
+8. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
-10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a slackhez**lehetőséget.
+10. A Leképezések szakaszban válassza az **Azure Active Directory-felhasználók szinkronizálása a Slackkel** lehetőséget.
 
-11. Az **attribútum-hozzárendelések** szakaszban tekintse át azokat a felhasználói attribútumokat, amelyeket szinkronizálni fog az Azure ad-ből a slackbe. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez a Slack felhasználói fiókjainak megfelelően lesznek felhasználva. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+11. Az **Attribútumleképezések** szakaszban tekintse át az Azure AD-ből a Slackbe szinkronizálni kívánt felhasználói attribútumokat. Vegye figyelembe, hogy a rendszer az **Egyező** tulajdonságokként kiválasztott attribútumokkal egyezteti a Slackben a felhasználói fiókokat a frissítési műveletekhez. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
    |Attribútum|Típus|
    |---|---|
-   |Active|Logikai|
+   |active|Logikai|
    |externalId|Sztring|
    |displayName|Sztring|
-   |név. familyName|Sztring|
-   |név. givenName|Sztring|
+   |name.familyName|Sztring|
+   |name.givenName|Sztring|
    |cím|Sztring|
-   |e-mailek [type EQ "work"]. Value|Sztring|
+   |emails[type eq "work"].value|Sztring|
    |userName (Felhasználónév)|Sztring|
-   |Becenév|Sztring|
-   |címek [type EQ "nem típusos"]. streetAddress|Sztring|
-   |címek [type EQ "nem típusos"]. helység|Sztring|
-   |címek [típus EQ "nem típusos"]. régió|Sztring|
-   |címek [type EQ "nem típusos"]. irányítószám|Sztring|
-   |címek [típus EQ "nem típusos"]. ország|Sztring|
-   |phoneNumbers [type EQ "Mobile"]. Value|Sztring|
-   |phoneNumbers [type EQ "work"]. Value|Sztring|
-   |szerepkörök [elsődleges EQ "true"]. Value|Sztring|
+   |nickName|Sztring|
+   |addresses[type eq "untyped"].streetAddress|Sztring|
+   |addresses[type eq "untyped"].locality|Sztring|
+   |addresses[type eq "untyped"].region|Sztring|
+   |addresses[type eq "untyped"].postalCode|Sztring|
+   |addresses[type eq "untyped"].country|Sztring|
+   |phoneNumbers[type eq "mobile"].value|Sztring|
+   |phoneNumbers[type eq "work"].value|Sztring|
+   |roles[primary eq "True"].value|Sztring|
    |területi beállítás|Sztring|
-   |név. honorificPrefix|Sztring|
-   |fényképek [type EQ "Photo"]. Value|Sztring|
+   |name.honorificPrefix|Sztring|
+   |photos[type eq "photo"].value|Sztring|
    |profileUrl|Sztring|
    |timezone|Sztring|
    |userType|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Department|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Manager|Referencia|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. employeeNumber|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. costCenter|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. szervezet|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Division|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.department|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|Referencia|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.division|Sztring|
 
-12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a slackhez**lehetőséget.
+12. A **Leképezések** szakaszban válassza az **Azure Active Directory-csoportok szinkronizálása a Slackkel** lehetőséget.
 
-13. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a slackbe szinkronizálni kívánt csoport attribútumait. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletek során a tartalékidőben lévő csoportoknak megfelelően lesznek felhasználva. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+13. Az **Attribútumleképezések** szakaszban tekintse át az Azure AD-ből a Slackbe szinkronizálni kívánt csoportattribútumokat. Vegye figyelembe, hogy a rendszer az **Egyező** tulajdonságokként kiválasztott attribútumokkal egyezteti a Slackben a csoportokat a frissítési műveletekhez. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
       |Attribútum|Típus|
       |---|---|
       |displayName|Sztring|
       |tagok|Referencia|
 
-14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-15. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a Slack számára, módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
+15. Ha engedélyezni szeretné az Azure AD átadási szolgáltatását a Slackhez, a **Beállítások** szakaszban módosítsa a **Kiépítési állapot** beállítást **Be** értékre.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-16. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni a Slackhez a **Beállítások** szakaszban **lévő kívánt** értékek kiválasztásával.
+16. A **Beállítások** szakasz **Hatókör** területén a kívánt értékek kiválasztásával határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket át szeretne adni a Slackbe.
 
-    ![Kiépítési hatókör](common/provisioning-scope.png)
+    ![Átadási hatókör](common/provisioning-scope.png)
 
-17. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+17. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
+Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
 
 ## <a name="step-5-monitor-your-deployment"></a>5. lépés Az üzemelő példány figyelése
-Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
+Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
-1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
-2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
-3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-* A Slack **DisplayName** attribútumának konfigurálásakor vegye figyelembe a következő viselkedéseket:
+* A Slack **displayName** attribútumának konfigurálásakor ügyeljen a következő viselkedésekre:
 
-  * Az értékek nem teljesen egyediek (például 2 felhasználó rendelkezhet ugyanazzal a megjelenítendő névvel)
+  * Az értékek nem teljesen egyediek (például 2 felhasználónak ugyanaz lehet a megjelenített neve).
 
-  * Támogatja a nem angol nyelvű karaktereket, szóközöket és nagybetűket. 
+  * Támogatja a nem angol karakterek, a szóközök és a nagybetűk használatát. 
   
-  * Az engedélyezett írásjelek közé tartoznak az időszakok, az aláhúzások, a kötőjelek, az aposztrófok, a zárójelek (például **([{}])**) és az elválasztók (például: **/;**).
+  * Az engedélyezett írásjelek közé tartozik a pont, az aláhúzás, a kötőjel, az aposztróf, a zárójel (például **( [ { } ] )** ) és az elválasztók (például **, / ;** ).
   
-  * a displayName tulajdonságnak nem lehet "@" karaktere. Ha a "@" szerepel, a kiépítési naplókban a "AttributeValidationFailed" leírással megtalálhatja a kihagyott eseményt.
+  * A displayName tulajdonságban nem szerepelhet @ karakter. Ha @ karakter szerepel benne, kihagyott esemény jelenhet meg az átadási naplókban az AttributeValidationFailed leírással.
 
-  * Csak akkor frissül, ha ez a két beállítás konfigurálva van a Slack munkahelyi/szervezeti **profiljának szinkronizálásához** , és a **felhasználók nem változtathatják meg a megjelenítendő nevüket**.
+  * Csak akkor frissül, ha ez a két beállítás konfigurálva van a Slack munkahelyén/szervezetében – **Profil szinkronizálása engedélyezve** és **A felhasználók nem módosíthatják a megjelenített nevüket**.
 
-* A Slack **username** attribútumának 21 karakternél rövidebbnek kell lennie, és egyedi értékkel kell rendelkeznie.
+* A Slack **userName** attribútuma 21-nél kevesebb karakterből állhat, és egyedi értékűnek kell lennie.
 
-* A Slack csak a **felhasználónévvel** és az **e-mail-címmel**való megfeleltetést engedélyezi.  
+* A Slack csak a **userName** és az **email** attribútummal való egyeztetést engedélyezi.  
   
-* Az általános erorr-kódokat a hivatalos Slack dokumentációjában dokumentálja – https://api.slack.com/scim#errors
+* A gyakori hibakódok a Slack hivatalos dokumentációjában találhatóak meg – https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Változási napló
 
-* 06/16/2020 – a módosított DisplayName attribútum csak az új felhasználó létrehozásakor frissül.
+* 2020. 06. 16. – A módosított DisplayName attribútum csak új felhasználó létrehozásakor frissíthető.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)

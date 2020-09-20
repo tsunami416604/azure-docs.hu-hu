@@ -1072,6 +1072,8 @@
               href: troubleshoot-not-found.md
             - name: Hibaelhárítás – Nem engedélyezett
               href: troubleshoot-unauthorized.md
+            - name: SDK rendelkezésre állása többrégiós környezetekben
+              href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
             - name: Általános hibaelhárítás – .NET SDK

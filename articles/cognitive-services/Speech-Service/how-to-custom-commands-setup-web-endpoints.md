@@ -1,7 +1,7 @@
 ---
 title: Webes végpontok beállítása (előzetes verzió)
 titleSuffix: Azure Cognitive Services
-description: webes végpontok beállítása egyéni parancsokhoz
+description: webes végpontok beállítása a custom commands-alkalmazáshoz
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -12,117 +12,117 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
 ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86027681"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
-Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni parancsok alkalmazásban, amely lehetővé teszi, hogy HTTP-kéréseket hozzon egy ügyfélalkalmazás számára. A következő feladatokat kell végrehajtania:
+Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom Commands-alkalmazásokban, amelyek lehetővé teszik, hogy HTTP-kéréseket küldjön egy ügyfélalkalmazásból. Az alábbi feladatokat fogja elvégezni:
 
-- Webes végpontok beállítása egyéni parancsok alkalmazásban
-- Webes végpontok hívása egyéni parancsok alkalmazásban
+- Webes végpontok beállítása a Custom Commands-alkalmazásban
+- Webes végpontok hívása a Custom Commands-alkalmazásban
 - A webes végpontok válaszának fogadása 
-- Webes végpontok válaszának integrálása egyéni JSON-adattartalomba, küldés és megjelenítés egy C# UWP Speech SDK-ügyfélalkalmazás alapján
+- Webes végpontok válaszának integrálása egyéni JSON-adatokba, elküldése, illetve vizualizációja egy C# UWP Speech SDK-ügyfélalkalmazásból
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * Egy Azure-előfizetési kulcs a Speech Service-hez: [egyszeri](get-started.md) letöltés vagy létrehozás a [Azure Portal](https://portal.azure.com)
-> * Egy korábban [létrehozott egyéni parancsok alkalmazás](quickstart-custom-commands-application.md)
-> * Egy beszédfelismerési SDK-val rendelkező ügyfélalkalmazás: [útmutató: tevékenység befejezése az ügyfélalkalmazás számára](./how-to-custom-commands-setup-speech-sdk.md)
+> * Egy Azure-előfizetői azonosító a Speech szolgáltatáshoz: [Szerezzen be egyet ingyen](get-started.md), vagy hozza létre az [Azure Portalon](https://portal.azure.com)
+> * Egy korábban [létrehozott Custom Commands-alkalmazás](quickstart-custom-commands-application.md)
+> * Ügyfélalkalmazás engedélyezett Speech SDK-val: [Útmutató: Az ügyfélalkalmazással folytatott tevékenység befejezése](./how-to-custom-commands-setup-speech-sdk.md)
 
 ## <a name="setup-web-endpoints"></a>Webes végpontok beállítása
 
-1. Nyissa meg a korábban létrehozott egyéni parancsok alkalmazást. 
-1. Nyissa meg a "webes végpontok" lapot, és kattintson az "új webes végpont" elemre.
+1. Nyissa meg a korábban létrehozott Custom Commands-alkalmazást. 
+1. Nyissa meg a „Webes végpontok” elemet, majd kattintson az „Új webes végpont” lehetőségre.
 
    > [!div class="mx-imgBorder"]
    > ![Új webes végpont](media/custom-commands/setup-web-endpoint-new-endpoint.png)
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
-   | Name | UpdateDeviceState | A webes végpont neve. |
-   | URL-cím | https://webendpointexample.azurewebsites.net/api/DeviceState | Annak a végpontnak az URL-címe, amelyet az egyéni alkalmazásnak szeretne beszélni. |
-   | Metódus | POST | Az engedélyezett interakciók (például GET, POST) és a végpont.|
-   | Fejlécek | Kulcs: alkalmazás, érték: a applicationId első 8 számjegyének elkészítése | A kérelem fejlécében szerepeltetni kívánt fejléc-paraméterek.|
+   | Név | UpdateDeviceState | A webes végpont neve. |
+   | URL-cím | https://webendpointexample.azurewebsites.net/api/DeviceState | Annak a végpontnak az URL-címe, amellyel azt szeretné, hogy a Custom Commands-alkalmazása kommunikáljon. |
+   | Metódus | POST | A végpontján engedélyezett interakciók (például: GET, POST).|
+   | Fejlécek | Kulcs: alkalmazás, Érték: az applicationId első 8 számjegye | A kérelemfejlécben megadandó fejlécparaméterek.|
 
     > [!NOTE]
-    > - Az [Azure Function](https://docs.microsoft.com/azure/azure-functions/)használatával létrehozott webes végpont, amely összekapcsolja az adatbázist, amely a televízió és a ventilátor eszköz állapotát menti
-    > - A javasolt fejléc csak a példában szereplő végponthoz szükséges.
-    > - Annak érdekében, hogy a fejléc értéke egyedi legyen a példában szereplő végponton, a applicationId első 8 számjegyét használja
-    > - A valós világban a webes végpont az eszközöket kezelő [IOT hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) végpontja lehet.
+    > - Az [Azure Function](https://docs.microsoft.com/azure/azure-functions/) használatával létrehozott webes végpontpélda, amely ahhoz az adatbázishoz csatlakozik, amely menti a televízió és a ventilátor eszközállapotát
+    > - A javasolt fejléc csak a példavégponthoz szükséges
+    > - Annak érdekében, hogy a fejléc értéke egyedi legyen a példában szereplő végpontban, használja az applicationId első 8 számjegyét
+    > - Valós helyzetben a webes végpont az eszközeit kezelő [IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) végpontja lehet.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="call-web-endpoints"></a>Webes végpontok hívása
 
-1. Nyissa meg a **TurnOnOff** parancsot, válassza a **ConfirmationResponse** lehetőséget a befejezési szabály területen, majd válassza **a művelet hozzáadása**lehetőséget.
-1. Az **új művelet típusa**területen válassza a **hívás webes végpont** elemet.
-1. A **művelet szerkesztése – végpontok**területen válassza a **UpdateDeviceState**elemet, amely az általunk létrehozott webes végpont.  
-1. A **konfiguráció**területen tegye a következő értékeket: 
+1. Lépjen a **TurnOnOff** parancsra, válassza a **ConfirmationResponse** befejezési szabályt, majd válassza a **Művelet hozzáadása** lehetőséget.
+1. Az **Új művelet – Típus** elemnél válassza a **Webes végpont hívása** lehetőséget
+1. A **Művelet szerkesztése – Végpontok** elemnél válassza az **UpdateDeviceState** lehetőséget, ami a létrehozott webes végpont.  
+1. A **Konfigurálás** elemnél adja meg a következő értékeket: 
    > [!div class="mx-imgBorder"]
-   > ![Webes végpontok műveleti paramétereinek hívása](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
+   > ![Webes végpontok hívásának műveletparaméterei](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
    | Végpontok | UpdateDeviceState | A műveletben hívni kívánt webes végpont. |
-   | Lekérdezési paraméterek | Item = {SubjectDevice} &&érték = {javítás OnOff} | A webes végpont URL-címéhez hozzáfűzni kívánt lekérdezési paraméterek.  |
-   | Szövegtörzs tartalma | N.A. | A kérelem törzsének tartalma. |
+   | Lekérdezési paraméterek | item={SubjectDevice}&&value={OnOff} | A webes végpont URL-címéhez hozzáfűzendő lekérdezési paraméterek.  |
+   | Törzs tartalma | N/A | A kéréstörzs tartalma. |
 
     > [!NOTE]
-    > - A javasolt lekérdezési paraméterek csak a példában szereplő végponthoz szükségesek
+    > - A javasolt lekérdezési paraméterek csak a példavégponthoz szükségesek
 
-1. A **sikeres művelet végrehajtásához**válassza a **beszédfelismerési válasz küldése**lehetőséget.
+1. A **Siker esetén – Végrehajtandó művelet** elemnél válassza a **Szóbeli válasz küldése** lehetőséget.
     
-    Az **egyszerű szerkesztőben**írja be a értéket `{SubjectDevice} is {OnOff}` .
+    Az **Egyszerű szerkesztőben** adja meg a következőt: `{SubjectDevice} is {OnOff}`.
    
    > [!div class="mx-imgBorder"]
-   > ![A webes végpontok műveletének hívása sikeres](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![Webes végpontok hívása művelet siker esetén](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
-   | Végrehajtandó művelet | Beszédfelismerési válasz küldése | Végrehajtandó művelet, ha a webes végpontra irányuló kérelem sikeres |
+   | Végrehajtandó művelet | Szóbeli válasz küldése | A webes végpontra irányuló kérés sikeressége esetén végrehajtandó művelet |
    
    > [!NOTE]
-   > - A használatával közvetlenül is elérheti a mezőket a http-válaszban `{YourWebEndpointName.FieldName}` . Például:`{UpdateDeviceState.TV}`
+   > - A HTTP-válasz mezőit közvetlenül is elérheti a `{YourWebEndpointName.FieldName}` használatával. Például: `{UpdateDeviceState.TV}`
 
-1. A **sikertelen művelet végrehajtásához**válassza a **beszédfelismerési válasz küldése** lehetőséget.
+1. A **Hiba esetén – Végrehajtandó művelet** elemnél válassza a **Szóbeli válasz küldése** lehetőséget.
 
-    Az **egyszerű szerkesztőben**írja be a értéket `Sorry, {WebEndpointErrorMessage}` .
+    Az **Egyszerű szerkesztőben** adja meg a következőt: `Sorry, {WebEndpointErrorMessage}`.
 
    > [!div class="mx-imgBorder"]
-   > ![Hiba esetén a webes végpontok hívása művelet](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
+   > ![Webes végpontok hívása művelet hiba esetén](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
-   | Végrehajtandó művelet | Beszédfelismerési válasz küldése | Végrehajtandó művelet, ha a webes végpontra irányuló kérelem meghiúsul |
+   | Végrehajtandó művelet | Szóbeli válasz küldése | A webes végpontra irányuló kérés meghiúsulása esetén végrehajtandó művelet |
 
    > [!NOTE]
-   > - A(z) `{WebEndpointErrorMessage}` nem kötelező. Ha nem szeretne hibaüzenetet kitenni, távolítsa el.
-   > - A példában szereplő végponton a http-választ a gyakori hibákra, például a hiányzó fejléc-paraméterekre vonatkozó részletes hibaüzenetek küldi vissza. 
+   > - A(z) `{WebEndpointErrorMessage}` nem kötelező. Eltávolíthatja, ha nem kíván hibaüzeneteket megjeleníteni.
+   > - A példában szereplő végpontban a HTTP-választ részletes hibaüzenetekkel küldjük vissza, amelyek olyan gyakori hibákról értesítenek, mint például a hiányzó fejlécparaméterek. 
 
-### <a name="try-it-out-in-test-portal"></a>Kipróbálás a tesztelési portálon
-- Sikeres válasz \
+### <a name="try-it-out-in-test-portal"></a>Próbálja ki a tesztportálon
+- Válasz Siker esetén\
 Mentés, betanítás és tesztelés
    > [!div class="mx-imgBorder"]
-   > ![A webes végpontok műveletének hívása sikeres](media/custom-commands/setup-web-endpoint-on-success-response.png)
-- Sikertelen válasz \
-A lekérdezési paraméterek egyikének eltávolítása, mentés, újraképzés és tesztelés
+   > ![Webes végpontok hívása művelet siker esetén](media/custom-commands/setup-web-endpoint-on-success-response.png)
+- Válasz Hiba esetén\
+Egy lekérdezési paraméter eltávolítása, mentés, betanítás és tesztelés
    > [!div class="mx-imgBorder"]
-   > ![A webes végpontok műveletének hívása sikeres](media/custom-commands/setup-web-endpoint-on-fail-response.png)
+   > ![Webes végpontok hívása művelet siker esetén](media/custom-commands/setup-web-endpoint-on-fail-response.png)
 
-## <a name="integrate-with-client-application"></a>Integrálás az ügyfélalkalmazás alkalmazásával
+## <a name="integrate-with-client-application"></a>Integrálás ügyfélalkalmazással
 
-[Útmutató: tevékenység küldése az ügyfélalkalmazás számára (előzetes verzió)](./how-to-custom-commands-send-activity-to-client.md)a **küldési tevékenység hozzáadása az ügyfélhez** művelet. A rendszer elküldi a tevékenységet az ügyfélalkalmazás számára, hogy a **webes végpont** művelete sikeres-e, vagy sem.
-Azonban a legtöbb esetben csak akkor szeretne tevékenységet küldeni az ügyfélalkalmazás számára, ha a webes végpontra irányuló hívás sikeres. Ebben a példában ez az, amikor az eszköz állapota sikeresen frissült.
+Az [Útmutató: Tevékenység küldése az ügyfélalkalmazásnak (előzetes verzió)](./how-to-custom-commands-send-activity-to-client.md) során hozzáadott egy **Tevékenység küldése az ügyfélnek** műveletet. A rendszer attól függetlenül elküldi a tevékenységet az ügyfélalkalmazásnak, hogy a **Webes végpont hívása** művelet sikeres volt-e.
+A legtöbb esetben azonban csak akkor szeretné elküldeni a tevékenységet az ügyfélalkalmazásnak, amikor a webes végpont hívása sikeres. Ebben a példában ez akkor történik, amikor az eszköz állapota sikeresen frissül.
 
-1. Törölje a **küldési tevékenységet a korábban hozzáadott ügyfél-** művelethez.
-1. Hívás webes végpontjának szerkesztése: 
-    1. A **konfiguráció**területen győződjön meg arról, hogy a **lekérdezési paraméterek**`item={SubjectDevice}&&value={OnOff}`
-    1. A **sikeres**művelet esetén a **tevékenység küldése az ügyfélnek** **művelet végrehajtásához** módosítsa a műveletet.
-    1. Másolja az alábbi JSON-t a **tevékenység tartalmába**
+1. Törölje a korábban hozzáadott **Tevékenység küldése az ügyfélnek** műveletet.
+1. Webes végpont hívásának szerkesztése: 
+    1. A **Konfigurálás** lapon győződjön meg róla, hogy a **Lekérdezési paraméterek** értéke `item={SubjectDevice}&&value={OnOff}`
+    1. A **Siker esetén** elemnél módosítsa a **Végrehajtandó művelet** beállítást **Tevékenység küldése az ügyfélnek** lehetőségre
+    1. Másolja az alábbi JSON-t a **Tevékenység tartalma** mezőbe
    ```json
    {
      "type": "event",
@@ -132,12 +132,12 @@ Azonban a legtöbb esetben csak akkor szeretne tevékenységet küldeni az ügyf
    }
    ```
     > [!div class="mx-imgBorder"]
-    > ![Sikeres művelet küldése](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
+    > ![Tevékenység küldése siker esetén](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
-Most csak akkor küld tevékenységet az ügyfélnek, ha a webes végpontra irányuló kérelem sikeres.
+Mostantól a tevékenységet csak akkor küldi el az ügyfélnek, ha a webes végpontra irányuló kérés sikeres.
 
-### <a name="create-visuals-for-syncing-device-state"></a>Vizualizációk létrehozása az eszköz állapotának szinkronizálásához
-Adja hozzá a következő XML-kódot a `MainPage.xaml` `"EnableMicrophoneButton"` blokk fölé.
+### <a name="create-visuals-for-syncing-device-state"></a>Vizualizációk létrehozása az eszközállapotok szinkronizálásához
+Adja hozzá a következő XML-t a `MainPage.xaml` fájlhoz az `"EnableMicrophoneButton"` blokk felett.
 
 ```xml
 <Button x:Name="SyncDeviceStateButton" Content="Sync Device State"
@@ -147,9 +147,9 @@ Adja hozzá a következő XML-kódot a `MainPage.xaml` `"EnableMicrophoneButton"
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Eszköz állapotának szinkronizálása 
+### <a name="sync-device-state"></a>Eszközállapot szinkronizálása 
 
-A alkalmazásban `MainPage.xaml.cs` adja hozzá a hivatkozást `using Windows.Web.Http;` . Adja hozzá a következő kódot a `MainPage` osztályhoz. Ez a metódus GET kérelmet küld a példában szereplő végpontnak, és kibontja az alkalmazás aktuális állapotát. Ügyeljen arra, hogy `<your_app_name>` az egyéni parancs webes végpontjában a **fejlécben** használt értékre váltson.
+A `MainPage.xaml.cs` alatt vegye fel az `using Windows.Web.Http;` hivatkozást. Adja hozzá az alábbi kódot a `MainPage` osztályhoz. Ez a metódus egy GET-kérést küld a példavégpontnak, és kinyeri az aktuális eszközállapotot az alkalmazása számára. Ne feledje megváltoztatni a `<your_app_name>` kifejezést arra az értékre, amelyet a Custom Command webes végpontjának **fejlécében** használt
 
 ```C#
 private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs e)
@@ -192,18 +192,18 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 ## <a name="try-it-out"></a>Próba
 
 1. Az alkalmazás elindítása
-1. Kattintson az eszköz állapotának szinkronizálása elemre. \
-Ha az előző szakaszban kipróbálta az alkalmazást `turn on tv` , a TV a következőt jeleníti meg: "on".
+1. Kattintson az Eszközállapot szinkronizálása elemre.\
+Ha az előző szakaszban az alkalmazást a `turn on tv` használatával tesztelte, a televízió „on” (bekapcsolva) állapotban jelenik meg.
     > [!div class="mx-imgBorder"]
-    > ![Eszköz állapotának szinkronizálása](media/custom-commands/setup-web-endpoint-sync-device-state.png)
-1. Válassza a mikrofon engedélyezése lehetőséget.
-1. A beszélgetés gomb kiválasztása
-1. Mondani`turn on the fan`
-1. A ventilátor vizualizációs állapotának "on" értékre kell váltania
+    > ![Eszközállapot szinkronizálása](media/custom-commands/setup-web-endpoint-sync-device-state.png)
+1. Válassza a Mikrofon engedélyezése lehetőséget
+1. Válassza a Beszéd gombot
+1. Mondja a következőt: `turn on the fan`
+1. A ventilátor vizuális állapotának „on” (bekapcsolva) állapotra kell váltania
     > [!div class="mx-imgBorder"]
     > ![Ventilátor bekapcsolása](media/custom-commands/setup-web-endpoint-turn-on-fan.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [CI/CD-folyamat engedélyezése az egyéni parancsok alkalmazáshoz](./how-to-custom-commands-deploy-cicd.md)
+> [CI-/CD-folyamat engedélyezése a Custom Commands-alkalmazás számára](./how-to-custom-commands-deploy-cicd.md)

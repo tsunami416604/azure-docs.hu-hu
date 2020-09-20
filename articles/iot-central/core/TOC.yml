@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Legutóbbi frissítések
       items:
+        - name: '2020. augusztus: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
         - name: '2020. július: új és továbbfejlesztett funkciók'
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
         - name: '2020. június: új és továbbfejlesztett funkciók'

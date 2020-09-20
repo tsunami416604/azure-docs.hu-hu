@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: Tárolópéldány üzembe helyezése – Docker parancssori felülete
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: Oktatóanyagok
   items:
     - name: Tárolórendszerkép létrehozása és üzembe helyezése
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: Tárolócsoport üzembe helyezése – Resource Manager
           href: container-instances-multi-container-group.md
+        - name: Tárolócsoport üzembe helyezése – Docker Compose
+          href: tutorial-docker-compose.md
     - name: Integráció az Azure-szolgáltatásokkal
       items:
         - name: Aktiválás az Azure Functions szolgáltatással

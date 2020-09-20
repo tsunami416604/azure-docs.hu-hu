@@ -592,7 +592,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Lemeztitkosítás – gyakori kérdések
               href: disk-encryption-faq.md
-            - name: Lemeztitkosítás – Előző verzió (AAD)
+            - name: Lemeztitkosítás – Előző verzió (Azure AD)
               items:
                 - name: Áttekintés
                   href: disk-encryption-overview-aad.md
@@ -670,7 +670,7 @@
           href: nested-virtualization.md
         - name: Automatikus virtuálisgép-vendég-javítás (előzetes verzió)
           href: automatic-vm-guest-patching.md
-    - name: Platformkarbantartás
+    - name: Karbantartásszabályozás
       items:
         - name: Karbantartási értesítések
           items:
@@ -682,7 +682,7 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Karbantartásszabályozás
+        - name: Platformkarbantartás
           items:
             - name: Áttekintés
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -696,6 +696,16 @@
           href: scheduled-events.md
         - name: Windows ütemezettesemény-szolgáltatás
           href: scheduled-event-service.md
+        - name: Virtuálisgép-méretezési csoport operációsrendszer-rendszerképének frissítései
+          items:
+            - name: Operációs rendszer automatikus frissítései
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Karbantartásszabályozás
+              items:
+                - name: Áttekintés (Előzetes verzió)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (előzetes verzió)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Virtuális gépek monitorozása
       items:
         - name: Ügynökök

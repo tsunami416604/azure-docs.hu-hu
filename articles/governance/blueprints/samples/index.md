@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031874"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530981"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -42,7 +42,8 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 
 ## <a name="samples-strategy"></a>Mintastratégia
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Tervminta-stratégia" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="Az ábra bemutatja, hova illenek be a tervminták az architektúra összetettsége vagy a megfelelőségi követelmények szempontjából." border="false":::
+   Egy koordináta-rendszert ír le, amelyen az X tengely az architektúra összetettségét, az Y tengely pedig a megfelelőségi követelményeket jelöli.  Az architektúra összetettsége növekedésének és a megfelelőségi követelmények szigorodásának megfelelően alkalmazzon standard tervmintákat az E régióban kijelölt portálról.  Az Azure-ral most ismerkedő ügyfelek a felhőbevezetési keretrendszeren (C A F) alapuló alaprendszer és célzóna az A és a B régió által jelölt terveit használhatják.  A fennmaradó terület az ügyfelek és partnerek által létrehozott egyéni terveknek van szánva a C, D és F régióban. :::image-end:::
 
 A felhőbevezetési keretrendszer alaprendszere és a felhőbevezetési keretrendszer célzónájának terve azt feltételezi, hogy az ügyfél egy meglévő üres előfizetést készít elő a helyszíni objektumok vagy számítási feladatok Azure-ba történő migrálására.
 (Az A és B régió az ábrán.)  

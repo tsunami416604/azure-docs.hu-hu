@@ -1,14 +1,14 @@
 ---
 title: A felhőbevezetési keretrendszer alaprendszerének tervmintája – Áttekintés
 description: Az Azure Foundationhöz készült felhőbevezetési keretrendszer tervmintájának áttekintése és architektúrája.
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852344"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531695"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszerhez tartozó tervminta áttekintése
 
@@ -18,7 +18,9 @@ Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszer (CAF) alaprends
 
 A felhőbevezetési keretrendszer alaprendszeréhez tartozó tervminta olyan ajánlott infrastruktúra-erőforrásokat helyez üzembe az Azure-ban, amelyek segítségével a szervezetek bevezethetik a felhőtulajdon kezeléséhez szükséges alaprendszer-vezérlőket. Ez a minta olyan erőforrásokat, szabályzatokat és sablonokat helyez üzembe és kényszerít ki, amelyek lehetővé teszik a szervezetek számára, hogy magabiztosan vegyék használatba az Azure-t.
 
-:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="A felhőbevezetési keretrendszer alaprendszerének ábrája bemutatja, hogy a rendszer miket telepít a felhőbevezetési keretrendszer alaprendszer létrehozásával kapcsolatos útmutatása részeként az Azure megismerése érdekében" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="A felhőbevezetési keretrendszer alaprendszerének ábrája bemutatja, hogy a rendszer miket telepít a felhőbevezetési keretrendszer alaprendszerének létrehozásával kapcsolatos útmutatás részeként az Azure megismerése érdekében." border="false":::
+   Bemutatja a felhőbevezetési keretrendszer alaprendszertervének üzembe helyezésével elérhető Azure-architektúrát.  Ez naplók tárolására szolgáló tárfiókokból és a tárfiókban való tároláshoz konfigurált Log Analyticsből álló erőforráscsoportokkal rendelkező előfizetésekre vonatkozik. Az Azure Security Center standard beállításával konfigurált Azure Key Vaultot is bemutatja. Ezek az alapvető infrastruktúrák az Azure Active Directoryval érhetők el, és az Azure Policyvel kényszeríthetők ki.     
+:::image-end:::
 
 Ez az implementálás több Azure-szolgáltatást foglal magába a biztonságos, teljes körűen felügyelt, vállalati használatra kész alaprendszer biztosítása érdekében. A környezet összetevői:
 

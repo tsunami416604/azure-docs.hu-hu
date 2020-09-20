@@ -340,8 +340,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Méretezési csoportok hálózatkezelése
           href: virtual-machine-scale-sets-networking.md
-        - name: Operációs rendszer automatikus frissítései
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Operációs rendszer rendszerképének frissítései
+          items:
+            - name: Operációs rendszer automatikus frissítései
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: Karbantartásszabályozás
+              items:
+                - name: Áttekintés (Előzetes verzió)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (előzetes verzió)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: Példányok automatikus javítása
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Példányvédelem

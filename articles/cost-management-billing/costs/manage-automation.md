@@ -3,17 +3,17 @@ title: Azure-költségek kezelése automatizálással
 description: Ez a cikk az Azure-költségek automatizálással való kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684405"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526646"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -161,6 +161,70 @@ A Budgets API GET-hívása nem adja vissza a költségelemzésben szereplő aktu
 ### <a name="automate-budget-creation"></a>Költségvetések létrehozásának automatizálása
 
 A költségvetések létrehozását a [Budgets API](/rest/api/consumption/budgets)-val automatizálhatja. Emellett [költségvetési sablonnal](quick-create-budget-template.md) is létrehozhat költségvetést. A sablonokkal könnyedén egységesítheti az Azure-beli üzemelő példányokat, ráadásul a költségszabályozás megfelelően konfigurálva és érvényesítve lesz.
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>Támogatott területi beállítások a költségvetési riasztások e-mailjeihez
+
+A költségvetések használatakor riasztást kap, ha a költségek túllépnek egy meghatározott küszöbértéket. Költségvetésenként legfeljebb öt címzettet állíthat be. A címzettek az e-mailes riasztásokat a költségvetési küszöbérték átlépésétől számított 24 órán belül kapják meg. Előfordulhat, hogy egy címzettnek más nyelven kell fogadnia az e-mailt. A következő nyelvkultúra-kódokat használhatja a Budgets API-val. A kulturális kódot a `locale` paraméterrel adhatja meg, a következő példához hasonló módon.
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+A kulturális kód által támogatott nyelvek:
+
+| Kulturális kód| Nyelv |
+| --- | --- |
+| hu-hu | angol (Egyesült Államok) |
+| ja-jp | Japán (Japán) |
+| zh-cn | kínai (egyszerűsített, Kína) |
+| de-de | Német (Németország) |
+| es-es | Spanyol (Spanyolország, nemzetközi) |
+| fr-fr | Francia (Franciaország) |
+| it-it | Olasz (Olaszország) |
+| ko-kr | Koreai (Dél-Korea) |
+| pt-br | Portugál (Brazília) |
+| ru-ru | Orosz (Oroszország) |
+| zh-tw | kínai (hagyományos, Tajvan) |
+| cs-cz | Cseh (Cseh Köztársaság) |
+| pl-pl | Lengyel (Lengyelország) |
+| tr-tr | Török (Törökország) |
+| da-dk | Dán (Dánia) |
+| dn-gb | angol (Egyesült Királyság) |
+| hu-hu | Magyar (Magyarország) |
+| nb-bo | Norvég bokmal (Norvégia) |
+| nl-nl | Holland (Hollandia) |
+| pt-pt | Portugál (Portugália) |
+| sv-se | Svéd (Svédország) |
 
 #### <a name="common-budgets-api-configurations"></a>Gyakori Budgets API-konfigurációk
 

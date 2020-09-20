@@ -51,6 +51,18 @@
   href: code-samples.md
 - name: Alapelvek
   items:
+    - name: External Identities számára készült megoldások összehasonlítása
+      href: 'https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+    - name: Az alapok elsajátítása
+      items:
+        - name: Hitelesítés és engedélyezés
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: Tokenek
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: Protokollok
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: Hitelesítési kódtár
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
     - name: Ajánlott eljárások az Azure AD B2C használatához
       href: best-practices.md
     - name: Alkalmazástípusok
@@ -341,9 +353,11 @@
                       href: aad-sspr-technical-profile.md
                     - name: Jogcím-átalakítás
                       href: claims-transformation-technical-profile.md
-                    - name: Feltételes hozzáférés technikai profilja
+                    - name: Feltételes hozzáférés
                       href: conditional-access-technical-profile.md
                       displayName: ca
+                    - name: Azonosító jogkivonatokra vonatkozó tippek
+                      href: id-token-hint.md
                     - name: JWT-jogkivonatkiállító
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1
@@ -388,12 +402,14 @@
           href: partner-idology.md
         - name: itsme
           href: partner-itsme.md
-        - name: LexisNexis
-          href: partner-lexisnexis.md
         - name: Jumio
           href: partner-jumio.md
+        - name: LexisNexis
+          href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
+        - name: Saviynt
+          href: partner-saviynt.md
         - name: Trusona
           href: partner-trusona.md
         - name: Twilio

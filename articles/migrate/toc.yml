@@ -28,8 +28,6 @@
           href: tutorial-discover-physical.md
         - name: AWS-példányok felderítése
           href: tutorial-discover-aws.md
-        - name: Importált kiszolgálók felderítése
-          href: tutorial-discover-import.md
     - name: Értékelés
       items:
         - name: VMware virtuális gépek felmérése Azure-beli virtuális gépekbe történő migráláshoz
@@ -42,6 +40,8 @@
           href: tutorial-assess-physical.md
         - name: AWS-példányok felmérése az Azure-ba való migráláshoz
           href: tutorial-assess-aws.md
+        - name: Importált kiszolgálók felmérése
+          href: tutorial-discover-import.md
     - name: Migrate
       items:
         - name: VMware virtuális gépek migrálása

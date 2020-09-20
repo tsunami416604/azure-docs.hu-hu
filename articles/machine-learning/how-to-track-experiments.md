@@ -1,7 +1,7 @@
 ---
-title: Log ML-kísérletek & metrikák
+title: ML-kísérletek és -metrikák naplózása
 titleSuffix: Azure Machine Learning
-description: Figyelje az Azure ML-kísérleteit, és figyelje a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. Adja hozzá a naplózást a betanítási parancsfájlhoz a Run. log, a Run. start_logging vagy a ScriptRunConfig használatával.
+description: Monitorozza az Azure ML-kísérleteket és a futtatási metrikákat a modell-létrehozási folyamat továbbfejlesztése érdekében. Adjon naplózást a betanítási szkripthez a run.log, Run.start_logging vagy ScriptRunConfig paranccsal.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -13,58 +13,58 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
 ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/10/2020
 ms.locfileid: "89650620"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Naplózás engedélyezése az Azure ML betanítási futtatásában
+# <a name="enable-logging-in-azure-ml-training-runs"></a>Naplózás engedélyezése az Azure ML betanítási futtatásaiban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-A Azure Machine Learning Python SDK lehetővé teszi a valós idejű információk naplózását az alapértelmezett Python-naplózási csomag és az SDK-specifikus funkciók használatával. Helyileg is bejelentkezhet, és naplókat küldhet a munkaterületre a portálon.
+Az Azure Machine Learning Python SDK az alapértelmezett Python naplózási csomaggal és SDK-specifikus funkciókkal is lehetővé teszi valós idejű információk naplózását. Naplózhat helyben, és elküldheti a naplókat a portálon lévő munkaterületekre.
 
-A naplók segítségével diagnosztizálhatja a hibákat és a figyelmeztetéseket, vagy nyomon követheti a teljesítmény mérőszámait, például a paramétereket és a modell teljesítményét. Ebből a cikkből megtudhatja, hogyan engedélyezheti a naplózást a következő esetekben:
+A naplókkal diagnosztizálhatja a hibákat és a figyelmeztetéseket, vagy nyomon követheti a teljesítménymetrikákat, például a paramétereket és a modell teljesítményét. Ebben a cikkben azzal fog megismerkedni, hogyan engedélyezheti a naplózást a következő forgatókönyvekben:
 
 > [!div class="checklist"]
-> * Interaktív betanítási tanfolyamok
+> * Interaktív betanítási munkamenetek
 > * Betanítási feladatok elküldése a ScriptRunConfig használatával
 > * Python natív `logging` beállításai
 > * Naplózás további forrásokból
 
 
 > [!TIP]
-> Ez a cikk bemutatja, hogyan figyelheti a modell betanítási folyamatát. Ha érdekli az Azure Machine learning erőforrás-felhasználásának és eseményeinek figyelése, például a kvóták, a befejezett betanítási futtatások vagy a modellen végzett központi telepítések, tekintse meg a [figyelés Azure Machine learning](monitor-azure-machine-learning.md).
+> Ez a cikk a modell betanítási folyamatának monitorozását mutatja be. Ha az erőforrás-használatot és az eseményeket szeretné monitorozni az Azure Machine Learningből, például a kvótákat, a befejezett betanítási futtatásokat vagy a modell kész üzemelő példányait, tekintse meg [az Azure Machine Learning monitorozásával](monitor-azure-machine-learning.md) kapcsolatos szakaszt.
 
 ## <a name="data-types"></a>Adattípusok
 
-Több adattípust is naplózhat, beleértve a skaláris értékeket, a listát, a táblákat, a képeket, a címtárakat és egyebeket. További információt és Python-programkódot a különböző adattípusokkal kapcsolatban a [futtatási osztály hivatkozása lapon](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)talál.
+Többféle adattípust is naplózhat, például skaláris értékeket, listákat, táblákat, rendszerképeket, könyvtárakat és egyebeket. További információt és a különböző adattípusok Python-kódmintáit a [futtatási osztály referenciaoldalán](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) találja.
 
 ## <a name="interactive-logging-session"></a>Interaktív naplózási munkamenet
 
-Az interaktív naplózási munkameneteket általában notebook-környezetekben használják. A [Experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) metódus egy interaktív naplózási munkamenetet indít el. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához. A [Run. Complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
+Az interaktív naplózási munkameneteket általában jegyzetfüzet típusú környezetekben használják. Az [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) metódus elindít egy interaktív naplózási munkamenetet. A munkamenet során naplózott összes metrika a kísérlet futtatási rekordjába kerül. A [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
 
-## <a name="scriptrunconfig-logs"></a>ScriptRunConfig-naplók
+## <a name="scriptrunconfig-logs"></a>ScriptRunConfig naplók
 
-Ebből a szakaszból megtudhatja, hogyan adhat hozzá naplózási kódot a ScriptConfig-futtatásokban. A [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) osztály használatával a parancsfájlok és a környezetek is beágyazható az ismételhető futtatásokhoz. Ezt a lehetőséget is használhatja a Visual Jupyter notebookok figyelésére szolgáló widget megjelenítéséhez.
+Ebben a szakaszban azt ismertetjük, hogyan adhat meg naplózási kódot a ScriptConfig-futtatásokban. A [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) osztállyal szkripteket és környezeteket ágyazhat be ismételhető futtatásokhoz. Ezzel a lehetőséggel azt is megteheti, hogy megjelenít egy vizuális Jupyter Notebooks-vezérlőt a monitorozáshoz.
 
-Ez a példa egy paramétert hajt végre az alfa-értékek fölé, és az eredményeket a [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) metódus használatával rögzíti.
+Ez a példa paraméteres frissítést végez az alfa értékeken, és az eredményeket a [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) metódussal rögzíti.
 
-1. Hozzon létre egy képzési parancsfájlt, amely tartalmazza a naplózási logikát `train.py` .
+1. Hozza létre a naplózási logikát tartalmazó `train.py` betanítási szkriptet.
 
-   [! code-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [!code-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
-1. Küldje ```train.py``` el a szkriptet, hogy az a felhasználó által felügyelt környezetben fusson. A teljes parancsfájl mappáját beküldi a rendszer a betanításhoz.
+1. Küldje be a ```train.py``` szkriptet a felhasználó által kezelt környezetekben való futtatáshoz. A rendszer a teljes szkriptmappát elküldi a betanításhoz.
 
-   [! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? név = src)] [! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? név = Futtatás)]
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
-    A `show_output` paraméter bekapcsolja a részletes naplózást, amely lehetővé teszi a betanítási folyamat részleteit, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információk megtekintését. A következő kód használatával bekapcsolhatja a részletes naplózást a kísérlet elküldésekor.
+    A `show_output` paraméter bekapcsolja a részletes naplózást, amely lehetővé teszi a betanítási folyamat részleteinek, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információknak a megtekintését. A következő kóddal kapcsolja be a részletes naplózást a kísérlet beküldésekor.
 
 ```python
 run = exp.submit(src, show_output=True)
 ```
 
-Ugyanezt a paramétert használhatja a `wait_for_completion` függvényben az eredményül kapott futtatásnál is.
+Ugyanezt a paramétert használhatja az eredményül kapott futtatás `wait_for_completion` függvényén.
 
 ```python
 run.wait_for_completion(show_output=True)
@@ -72,7 +72,7 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="native-python-logging"></a>Natív Python-naplózás
 
-Az SDK egyes naplói tartalmazhatnak olyan hibát, amely arra utasítja a naplózási szint beállítását, hogy a HIBAKERESÉSt végezzen. A naplózási szint megadásához adja hozzá a következő kódot a parancsfájlhoz.
+Az SDK egyes naplói olyan hibát tartalmazhatnak, amely arra utasítja, hogy a naplózást állítja DEBUG (hibakeresési) szintre. A naplózási szint beállításához adja a következő kódot a szkripthez.
 
 ```python
 import logging
@@ -81,22 +81,22 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## <a name="additional-logging-sources"></a>További naplózási források
 
-A Azure Machine Learning a betanítás során más forrásokból is naplózhat adatokat, például a gépi tanulási futtatásokat vagy a feladatokat futtató Docker-tárolókat. Ezek a naplók nincsenek dokumentálva, de ha problémákba ütközik, és a Microsoft támogatási szolgálatával fordulnak elő, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat tudják használni.
+Az Azure Machine Learning a betanítás során más forrásokból, például automatizált gépi tanulási futtatásokból vagy a feladatokat futtató Docker-tárolókból származó adatokat is tud naplózni. Ezek a naplók nincsenek dokumentálva, de ha problémákba ütközik, és kapcsolatba lép a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ők tudják használni ezeket a naplókat.
 
-A Azure Machine Learning Designer (előzetes verzió) metrikáinak naplózásával kapcsolatos információkért lásd: [mérőszámok naplózása a Designerben (előzetes verzió)](how-to-track-designer-experiments.md)
+Az Azure Machine Learning-tervező (előzetes verzió) naplózási metrikáiról [az előzetes verziójú tervezőben végzett metrikanaplózással](how-to-track-designer-experiments.md) kapcsolatos témakörben talál információt.
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
-A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
-* [használati útmutató – azureml/képzés/helyi betanítás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [használati útmutató – azureml/Track-and-monitor-kísérletek/naplózás – API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
+A cikkben szereplő fogalmakat a következő jegyzetfüzetek mutatják be:
+* [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Azure Machine Learning használatáról a következő cikkekben talál további információt:
+Ezekben a cikkekben többet tudhat meg az Azure Machine Learning használatáról:
 
-* Megtudhatja, hogyan [naplózhat metrikákat Azure Machine learning Designerben (előzetes verzió)](how-to-track-designer-experiments.md).
+* Ismerje meg, hogyan [naplózhat metrikákat az Azure Machine Learning-tervezőben (előzetes verzió)](how-to-track-designer-experiments.md).
 
-* Megtudhatja, hogyan regisztrálhat a legjobb modellt, és hogyan helyezheti üzembe az oktatóanyagban, hogyan [taníthatja be a rendszerképek besorolási modelljét Azure Machine learning](tutorial-train-models-with-aml.md).
+* [A képosztályozási modellek Azure Machine Learninggel való betanításával](tutorial-train-models-with-aml.md) kapcsolatos témakörben talál példát arra, hogyan regisztrálhatja a legjobb modellt, és hogyan helyezheti üzembe.

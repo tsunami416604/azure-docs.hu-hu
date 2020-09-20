@@ -20,19 +20,11 @@
       href: quickstart-load-balancer-standard-internal-powershell.md
     - name: Belső terheléselosztó létrehozása – Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
+    - name: Belső terheléselosztó létrehozása – ARM-sablon
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Belső terheléselosztó
-      items:
-        - name: Belső Load Balancer létrehozása – portál
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Belső Load Balancer létrehozása – Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Belső Load Balancer létrehozása – Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Belső Load Balancer létrehozása – ARM-sablon
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Virtuális gép terheléselosztása adott rendelkezésre állási zónán belül
