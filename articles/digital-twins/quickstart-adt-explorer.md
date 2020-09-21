@@ -144,7 +144,7 @@ A *modell nézet* mezőben nyomja meg a *modell feltöltése* ikont.
 3. Az Azure-fiókba való bejelentkezéshez kattintson a felugró ablakra.
 
 >[!NOTE]
->Ha a következő hibaüzenet jelenik meg :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba: hiba történt a modellek beolvasásakor: ClientAuthError: hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. egy Bezárás gomb alul" border="false"::: 
+>Ha a következő hibaüzenet jelenik meg :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba hiba történt a modellek beolvasásakor ClientAuthError hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. egy Bezárás gomb alul" border="false"::: 
 > Próbálja meg letiltani a felugró ablakok blokkolása vagy egy másik böngésző használatával.
 
 A ADT Explorer ekkor feltölti ezeket a modell-fájlokat az Azure Digital Twins-példányba. Meg kell jelennie a *modell nézet* mezőben, amely megjeleníti a felhasználóbarát neveket és a teljes modell azonosítóit. A *modellre* vonatkozó információk megtekintése buborékok lehetőségre kattintva megtekintheti a mögöttes DTDL-kódot.
