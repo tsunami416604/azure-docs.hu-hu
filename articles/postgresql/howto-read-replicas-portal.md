@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274543"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884481"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
 
@@ -39,17 +39,17 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 
 2. A kiszolgáló menüjében válassza a **replikálás**lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika**, létrehozhat olvasási replikákat. 
 
-3. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Válassza a **Mentés** lehetőséget.
+3. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Kattintson a **Mentés** gombra.
 
-   ![Azure Database for PostgreSQL – replikálás – replika beállítása és mentés](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL – replikálás – replika beállítása és mentés":::
 
 4. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen**lehetőség kiválasztásával.
 
-   ![Azure Database for PostgreSQL – replikálás – újraindítás megerősítése](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikálás – újraindítás megerősítése":::
 
 5. A művelet befejezését követően két Azure Portal értesítést fog kapni. A kiszolgálói paraméter frissítése egyetlen értesítéssel történik. A kiszolgáló azonnali újraindítására vonatkozóan egy másik értesítés is van, amely azonnal következik.
 
-   ![Sikeres értesítések](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Sikeres értesítések":::
 
 6. Frissítse a Azure Portal lapot a replikálási eszköztár frissítéséhez. Most már létrehozhat olvasási replikákat ehhez a kiszolgálóhoz.
    
@@ -63,15 +63,15 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 3. Válassza a **replika hozzáadása**lehetőséget.
 
-   ![Replika hozzáadása](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Replika hozzáadása":::
 
 4. Adja meg az olvasási replika nevét. 
 
-    ![A replika neve](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="A replika neve":::
 
 5. Válassza ki a replika helyét. Az alapértelmezett hely megegyezik a főkiszolgálóval.
 
-    ![Hely kiválasztása](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Válasszon helyet":::
 
    > [!NOTE]
    > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
@@ -80,7 +80,7 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 Az olvasási replika létrehozása után a **replikálási** ablakból lehet megtekinteni:
 
-![Az új replika megtekintése a replikálási ablakban](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="Az új replika megtekintése a replikálási ablakban":::
  
 
 > [!IMPORTANT]
@@ -102,15 +102,15 @@ Ha le szeretné állítani a főkiszolgáló és egy olvasási replika közötti
 
 3. Válassza ki azt a másodpéldány-kiszolgálót, amelynél le szeretné állítani a replikálást.
 
-   ![A replika kijelölése](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="A replika kijelölése":::
  
 4. Válassza a **replikálás leállítása**lehetőséget.
 
-   ![Válassza a replikáció leállítása lehetőséget](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Válassza a replikáció leállítása lehetőséget":::
  
 5. A replikáció leállításához kattintson **az OK gombra** .
 
-   ![A replikáció leállításának megerősítése](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="A replikáció leállításának megerősítése":::
  
 
 ## <a name="delete-a-master-server"></a>Főkiszolgáló törlése
@@ -125,11 +125,11 @@ Ha törölni szeretne egy kiszolgálót a Azure Portalból, kövesse az alábbi 
 
 2. Nyissa meg a kiszolgáló **Áttekintés** lapját. Válassza a **Törlés** elemet.
 
-   ![A kiszolgáló áttekintése lapon válassza a főkiszolgáló törlését](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="A kiszolgáló áttekintése lapon válassza a főkiszolgáló törlését":::
  
 3. Adja meg a törlendő főkiszolgáló nevét. A főkiszolgáló törlésének megerősítéséhez válassza a **Törlés** lehetőséget.
 
-   ![A fő kiszolgáló törlésének megerősítése](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="A fő kiszolgáló törlésének megerősítése":::
  
 
 ## <a name="delete-a-replica"></a>Replika törlése
@@ -137,7 +137,7 @@ A főkiszolgálók törléséhez hasonlóan törölhet egy olvasási replikát i
 
 - A Azure Portalban nyissa meg az olvasási replika **Áttekintés** lapját. Válassza a **Törlés** elemet.
 
-   ![A replika áttekintése lapon válassza a (z) lehetőséget a replika törléséhez.](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="A replika áttekintése lapon válassza a (z) lehetőséget a replika törléséhez.":::
  
 Az olvasási replikát a **replikálási** ablakból is törölheti a következő lépések végrehajtásával:
 
@@ -147,15 +147,15 @@ Az olvasási replikát a **replikálási** ablakból is törölheti a következ�
 
 3. Válassza ki a törlendő olvasási replikát.
 
-   ![Válassza ki a törölni kívánt replikát](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Válassza ki a törölni kívánt replikát":::
  
 4. Válassza a **replika törlése**lehetőséget.
 
-   ![Replika törlésének kiválasztása](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Replika törlésének kiválasztása":::
  
 5. Adja meg a törlendő replika nevét. A replika törlésének megerősítéséhez válassza a **Törlés** lehetőséget.
 
-   ![A te replika törlésének megerősítése](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="A te replika törlésének megerősítése":::
  
 
 ## <a name="monitor-a-replica"></a>Replika figyelése
@@ -166,9 +166,9 @@ A **replikák közötti maximális késés** a főkiszolgáló és a legnagyobb 
 
 1.  A Azure Portal válassza ki a Master Azure Database for PostgreSQL-kiszolgálót.
 
-2.  Válassza a **Metrika** lehetőséget. A **metrikák** ablakban válassza a **maximális késés a replikák között**lehetőséget.
+2.  Válassza a **Metrikák** lehetőséget. A **metrikák** ablakban válassza a **maximális késés a replikák között**lehetőséget.
 
-    ![A replikák közötti maximális késés figyelése](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="A replikák közötti maximális késés figyelése":::
  
 3.  Az **összesítéshez**válassza a **Max**lehetőséget.
 
@@ -178,9 +178,9 @@ A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció �
 
 1. A Azure Portal válassza ki a Azure Database for PostgreSQL olvasási replikát.
 
-2. Válassza a **Metrika** lehetőséget. A **metrikák** ablakban válassza a **replika késése**elemet.
+2. Válassza a **Metrikák** lehetőséget. A **metrikák** ablakban válassza a **replika késése**elemet.
 
-   ![A replika késésének figyelése](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="A replika késésének figyelése":::
  
 3. Az **összesítéshez**válassza a **Max**lehetőséget. 
  

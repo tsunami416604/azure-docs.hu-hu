@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884302"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával
 
@@ -28,16 +28,16 @@ A kiszolgáló létrehozásakor a **díjszabási** szinten ablakban beállíthat
 
 Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási rétegek** ablakban a **helyi redundáns** vagy **földrajzilag redundáns** biztonsági másolatokat választhatja a kiszolgáló számára. Ezen az ablakban is kiválaszthatja a **biztonsági mentés megőrzési időtartamát** – mennyi ideig (hány nap múlva) kívánja tárolni a kiszolgáló biztonsági másolatait.
 
-   ![Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
 További információ ezekről az értékekről a létrehozás során: [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md)gyors üzembe helyezése.
 
 A kiszolgáló biztonsági mentési megőrzési időszaka a következő lépésekkel módosítható:
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza ki az Azure Database for PostgreSQL kiszolgálóját. Ez a művelet megnyitja az **Áttekintés** lapot.
 3. Válassza ki az **árképzési szintet** a menü **Beállítások**területén. A csúszka használatával megváltoztathatja a **biztonsági mentés megőrzési időtartamát** 7 és 35 nap között.
 Az alábbi képernyőképen a 34 napra nőtt.
-![A biztonsági másolatok megőrzési időszaka nagyobb](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="A biztonsági másolatok megőrzési időszaka nagyobb":::
 
 4. A módosítás megerősítéséhez kattintson **az OK** gombra.
 
@@ -53,11 +53,11 @@ A következő lépésekkel állíthatja vissza a kiszolgálót egy időpontra:
 
 2. A kiszolgáló **Áttekintés** lapjának eszköztárán válassza a **visszaállítás**lehetőséget.
 
-   ![Azure Database for PostgreSQL – áttekintés – visszaállítás gomb](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL – áttekintés – visszaállítás gomb":::
 
 3. Töltse ki a Visszaállítás űrlapot a szükséges információkkal:
 
-   ![Azure Database for PostgreSQL – adatok visszaállítása](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL – adatok visszaállítása":::
    - **Visszaállítási pont**: válassza ki azt az időpontot, amelyet vissza szeretne állítani.
    - **Célkiszolgáló**: adja meg az új kiszolgáló nevét.
    - **Hely**: nem választhatja ki a régiót. Alapértelmezés szerint ugyanaz, mint a forráskiszolgáló.
@@ -101,7 +101,7 @@ Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta,
    
    :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Válassza a biztonsági mentés lehetőséget.":::
 
-7. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás** elemet. 
+7. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás**lehetőséget. 
    
    :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Folytassa a biztonsági mentéssel.":::
 

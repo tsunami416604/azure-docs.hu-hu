@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2551a3c860dbdf27e7c9473e88c3a3293f575faa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769775"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883959"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 
@@ -28,7 +28,7 @@ Ebből a témakörből megtudhatja, hogyan tekintheti meg és dolgozza fel a kap
 * A Security Center riasztások létrehozási módjának áttekintését lásd: [how Azure Security Center észleli és reagál a fenyegetésekre](security-center-alerts-overview.md).
 
 > [!NOTE]
-> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítéshez válassza az árképzési szintet a [biztonsági házirendben](tutorial-security-policy.md). További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
+> A speciális észlelések engedélyezéséhez engedélyezze az Azure Defendert. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítéshez válassza az árképzési szintet a [biztonsági házirendben](tutorial-security-policy.md). További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások, például a tűzfalak és a végpontvédelmi megoldások naplóadatait a valós fenyegetések észlelése és a téves riasztások számának csökkentése érdekében. A Security Centerben megtekinthető a rangsorolt biztonsági riasztások listája, ezenkívül a probléma gyors vizsgálatára vonatkozó információk és a támadás elhárításával kapcsolatos javaslatok is megjelennek.
@@ -38,7 +38,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 ## <a name="manage-your-security-alerts"></a>Biztonsági riasztások kezelése
 
-1. A Security Center irányítópulton tekintse meg a **fenyegetések elleni védelem** csempéjét a riasztások megtekintéséhez és áttekintéséhez.
+1. A Security Center irányítópulton tekintse meg a  **fenyegetések elleni védelem** csempéjét a riasztások megtekintéséhez és áttekintéséhez.
 
     ![Biztonsági riasztások csempe a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
@@ -64,7 +64,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
      
     ![Javaslatok a biztonsági riasztásokkal kapcsolatos teendők](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    A jobb oldali ablaktáblán is a **Take Action (művelet** ) lap jelenik meg. ezen a lapon további műveleteket végezhet a biztonsági riasztással kapcsolatban. Műveletek, például:
+    A jobb oldali ablaktáblán a **Take Action (művelet** ) lap is látható. Ezen a lapon további műveleteket végezhet a biztonsági riasztással kapcsolatban. Műveletek, például:
     - *A fenyegetés enyhítése* – a biztonsági riasztás manuális szervizelési lépéseit nyújtja
     - A *jövőbeli támadások megelőzése* – biztonsági ajánlásokat biztosít a támadási felület csökkentéséhez, a biztonsági helyzet növeléséhez, és ezáltal a jövőbeli támadások megelőzése érdekében
     - *Automatizált válasz indítása* – lehetővé teszi, hogy a logikai alkalmazás a biztonsági riasztásra adott válaszként legyen aktiválva

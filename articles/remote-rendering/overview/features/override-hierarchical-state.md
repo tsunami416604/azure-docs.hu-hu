@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024400"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884194"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
@@ -24,7 +24,7 @@ Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső
 * Az első összetevő a modell legfelső szintű csomópontjára van rendelve, és a teljes autó transzparens megjelenítését kapcsolja be.
 * A második összetevő a motor gyökérszintű csomópontjára van hozzárendelve, és ismét felülbírálja az állapotot, ha explicit módon kikapcsolja a megtekintési módot.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A felülbírálható állapotok rögzített halmaza:
 
@@ -45,6 +45,10 @@ A felülbírálható állapotok rögzített halmaza:
   ![Kijelölt rész kiemelésére szolgáló tagolási beállítás](./media/selection-outline.png)
 
 * **`DisableCollision`**: A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
+
+* **`UseCutPlaneFilterMask`**: A kivágási sík kijelölésének vezérléséhez használjon egyéni szűrő bitet. Ez a jelző határozza meg, hogy az egyes szűrő maszkot kell-e használni vagy örökölni a szülőtől. A szűrő Bite maszkja maga a tulajdonságon keresztül van beállítva `CutPlaneFilterMask` . A szűrés működésével kapcsolatos részletes információkért tekintse meg a [szelektív kivágású síkok című bekezdést](cut-planes.md#selective-cut-planes).
+![Szelektív kivágott síkok](./media/selective-cut-planes.png)
+
 
 > [!TIP]
 > A teljes algráfok láthatóságának és térbeli lekérdezésének kikapcsolásához a `enabled` játék egy objektumának állapotát lehet váltani. Ha egy hierarchia le van tiltva, akkor ez előnyt élvez a következővel kapcsolatban: `HierarchicalStateOverrideComponent` .
