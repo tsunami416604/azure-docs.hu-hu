@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651092"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893567"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -184,7 +184,7 @@ Nincs univerzális válasz arra, hogy "Hogyan tudni, ha újra kell tanítani?" A
 - Hasonlítsa össze az új modell kimeneteit a régi modellel
 - Előre definiált feltételek használata annak kiválasztásához, hogy a régi modellt kell-e cserélni 
 
-A fenti lépések témája, hogy az átképzésnek automatizáltnak kell lennie, nem ad hoc. [Azure Machine learning folyamatok](concept-ml-pipelines.md) jó választ adnak az adatelőkészítéssel, a képzéssel, az ellenőrzéssel és az üzembe helyezéssel kapcsolatos munkafolyamatok létrehozásához. A [Azure Machine learning Designer (előzetes verzió) használatával olvassa be a modellek újratanítása](how-to-retrain-designer.md) című témakört, amelyből megtudhatja, hogyan illeszkedik a folyamatok és a Azure Machine learning Designer egy átképzési forgatókönyv 
+A fenti lépések témája, hogy az átképzésnek automatizáltnak kell lennie, nem ad hoc. [Azure Machine learning folyamatok](concept-ml-pipelines.md) jó választ adnak az adatelőkészítéssel, a képzéssel, az ellenőrzéssel és az üzembe helyezéssel kapcsolatos munkafolyamatok létrehozásához. Olvassa el a [modellek újratanítása Azure Machine learning Designer](how-to-retrain-designer.md) segítségével című témakört, amelyből megtudhatja, hogyan illeszkedik a folyamatok és a Azure Machine learning Designer egy átképzési forgatókönyvbe 
 
 ## <a name="automate-the-ml-lifecycle"></a>A ML életciklus automatizálása 
 

@@ -2,19 +2,18 @@
 title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/16/2020
+ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894518"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
 Ez a cikk a Microsoft Azure Service Busokkal kapcsolatos gyakori kérdéseket tárgyalja. Az Azure- [támogatási GYIK](https://azure.microsoft.com/support/faq/) általános Azure-díjszabást és támogatási információkat is talál.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Általános kérdések a Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
@@ -36,6 +35,9 @@ Particionált entitások használata esetén a rendezés nem biztosítható. Abb
 
  A particionált entitások már nem támogatottak a [Premium SKU](service-bus-premium-messaging.md)-ban. 
 
+### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Hol tárolja Azure Service Bus az ügyféladatokat?
+Azure Service Bus az ügyféladatokat tárolja. Ezeket az adategységeket a Service Bus egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régiókban tárolt adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
 Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
 
@@ -48,7 +50,7 @@ Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell 
 | Protokoll | Portok | Részletek | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
 | HTTP, HTTPS | 80, 443 | 
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Milyen IP-címeket kell hozzáadni az engedélyezési listához?
@@ -59,9 +61,9 @@ Az alábbi lépéseket követve megkeresheti a kapcsolatok listájához hozzáad
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ez az IP-cím statikus. Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . 
 
-Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
+Ha a **zóna redundanciát** használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
 1. Először futtassa az nslookupt a névtéren.
 
@@ -76,6 +78,9 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
     <name>-s3.cloudapp.net
     ```
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
+
+    > [!NOTE]
+    > A parancs által visszaadott IP-cím `nslookup` nem statikus IP-cím. Azonban állandó marad, amíg a mögöttes központi telepítést nem törlik, vagy áthelyezik egy másik fürtre.
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Hol találhatom meg az ügyfél által a névtérbe küldött/fogadott üzenetek IP-címét? 
 Nem naplózjuk a névtérbe irányuló üzeneteket küldő vagy fogadó ügyfelek IP-címeit. Kulcsok újragenerálása, hogy az összes meglévő ügyfél ne végezzen hitelesítést és tekintse át a szerepköralapú hozzáférés-vezérlés ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) beállításait annak biztosítására, hogy csak az engedélyezett felhasználók vagy alkalmazások férhessenek hozzá a névtérhez. 
@@ -158,7 +163,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
 * [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

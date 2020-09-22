@@ -11,15 +11,14 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 08685a6ebfcbfced91c3685635c40ff48030fe38
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669577"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893466"
 ---
 # <a name="connect-to-azure-storage-services"></a>Csatlakozás Azure Storage-szolgáltatásokhoz
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan **csatlakozhat az Azure Storage-szolgáltatásokhoz Azure Machine learning adattáron keresztül**. Az adattárolók biztonságosan csatlakoznak az Azure Storage szolgáltatáshoz a hitelesítő adatok és az eredeti adatforrások integritásának veszélyeztetése nélkül. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Az adattárolók létrehozásához és regisztrálásához használhatja a [Azure Machine learning PYTHON SDK](#python) -t vagy a [Azure Machine learning Studio alkalmazást](#studio) .
 
@@ -32,7 +31,7 @@ Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Egy [támogatott tárolási típusú](#matrix)Azure Storage-fiók.
 
@@ -54,7 +53,7 @@ A következők szükségesek:
     Amikor létrehoz egy munkaterületet, az Azure Blob-tároló és az Azure-fájlmegosztás automatikusan adattárként lesz regisztrálva a munkaterületen. Ezek neve `workspaceblobstore` és `workspacefilestore` , illetve. A a `workspaceblobstore` munkaterület-összetevők és a Machine learning-kísérletek naplófájljainak tárolására szolgál. Az **alapértelmezett adattárként** is be van állítva, és nem törölhető a munkaterületről. A a `workspacefilestore` [számítási példányon](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)keresztül engedélyezve lévő jegyzetfüzetek és R-parancsfájlok tárolására szolgál.
     
     > [!NOTE]
-    > A Azure Machine Learning Designer (előzetes verzió) automatikusan létrehoz egy **azureml_globaldatasets** nevű adattárat, amikor megnyit egy mintát a tervező kezdőlapján. Ez az adattár csak minta adatkészleteket tartalmaz. A bizalmas adatokhoz való hozzáféréshez **ne** használja ezt az adattárt.
+    > Azure Machine Learning Designer automatikusan létrehoz egy **azureml_globaldatasets** nevű adattárat, amikor megnyit egy mintát a tervező kezdőlapján. Ez az adattár csak minta adatkészleteket tartalmaz. A bizalmas adatokhoz való hozzáféréshez **ne** használja ezt az adattárt.
 
 <a name="matrix"></a>
 
@@ -259,7 +258,7 @@ Az alapértelmezett adattár a következő kóddal is módosítható. Ez a képe
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Description |
+| Metódus | Adattár-hozzáférés | Leírás |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |

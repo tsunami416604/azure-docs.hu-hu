@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Rugalmas kiszolgáló dokumentációja
+summary: A rugalmas Azure Database for MySQL-kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. Az Azure Database for MySQL-ben végzett alkalmazásfejlesztéssel kiaknázhatja az Ön által választott nyílt forráskódú eszközök és platform előnyeit. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a MySQL-hez készült Azure Database használatát.
+metadata:
+  description: A rugalmas Azure Database for MySQL-kiszolgáló egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amelyet a MySQL Community Edition működtet.
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/21/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: 09086af6cee517f9e30657802934d0f7fb1b14a9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928780"
+landingContent:
+- title: A rugalmas kiszolgálóról (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a rugalmas kiszolgáló?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Rugalmas kiszolgáló létrehozása
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: PHP-alkalmazás létrehozása rugalmas kiszolgálóval
+      url: tutorial-php-database-app.md
+  - linkListType: whats-new
+    links:
+    - text: Tekintse meg blogunkat
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Kezelés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Számítási és tárolási lehetőségek
+      url: concepts-compute-storage.md
+    - text: MySQL-verziók
+      url: concepts-supported-versions.md
+    - text: Hálózatkezelés
+      url: concepts-networking.md
+    - text: Monitor
+      url: concepts-monitoring.md
+    - text: Naplók
+      url: concepts-audit-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kiszolgáló kezelése
+      url: how-to-manage-server-portal.md
+    - text: Kiszolgáló leállítása/indítása
+      url: how-to-stop-start-server-portal.md
+    - text: Naplók konfigurálása és elérése
+      url: how-to-configure-slow-query-logs-portal.md
+    - text: Karbantartás ütemezése
+      url: how-to-maintenance-portal.md
+- title: Az üzletmenet folytonossága
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az üzletmenet folytonossága – áttekintés
+      url: concepts-business-continuity.md
+    - text: Magas rendelkezésre állás
+      url: concepts-high-availability.md
+    - text: Biztonsági mentés és visszaállítás
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kiszolgáló visszaállítása
+      url: how-to-restore-server-portal.md
+- title: Kapcsolódás
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Csatlakozás PHP használatával
+      url: connect-php.md
+    - text: Csatlakozás MySQL Workbench használatával
+      url: connect-workbench.md
+    - text: Csatlakozás Python használatával
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: Webalkalmazás csatlakoztatása virtuális hálózaton
+      url: tutorial-webapp-server-vnet.md
+- title: Migrate
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Online migrálás
+      url: ../howto-migrate-online.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI – fejlesztői segédletek
+      url: /cli/azure/mysql
+    - text: REST API – fejlesztői segédletek
+      url: /rest/api/mysql/
+    - text: Azure Resource Manager-sablonok
+      url: /azure/templates/microsoft.dbformysql/allversions

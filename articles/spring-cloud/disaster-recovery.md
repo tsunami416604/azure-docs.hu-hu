@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076030"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892555"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud vész-helyreállítás
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Ez a cikk azokat a stratégiákat ismerteti, amelyekkel biztosíthatja, hogy az Azure Spring Cloud-alkalmazásai a leállás során is védve legyenek.  Előfordulhat, hogy bármely régió vagy adatközpont a regionális katasztrófák által okozott állásidőt tapasztalhatja, de a gondos tervezés csökkentheti az ügyfelekre gyakorolt hatást.
 
@@ -51,7 +53,7 @@ Két különböző régióban (az USA keleti régiójában és Nyugat-Európába
 3. Hozzon létre egy Traffic Managert és két végpontot: [hozzon létre egy Traffic Manager profilt a Azure Portal használatával](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
 
 Itt látható a Traffic Manager-profil:
-* Traffic Manager DNS-név:`http://asc-bcdr.trafficmanager.net`
+* Traffic Manager DNS-név: `http://asc-bcdr.trafficmanager.net`
 * Végponti profilok: 
 
 | Profil | Típus | Cél | Prioritás | Egyéni fejléc beállításai |
@@ -62,3 +64,8 @@ Itt látható a Traffic Manager-profil:
 4. Hozzon létre egy CNAME rekordot a DNS-zónában: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
 
 5. Most a környezet teljesen be van állítva. Az ügyfeleknek el kell tudniuk érni az alkalmazást a következőn keresztül: bcdr-test.contoso.com
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)
+ 

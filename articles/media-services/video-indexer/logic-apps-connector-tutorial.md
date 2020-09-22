@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: fbd86b34bd6f7da8c9f49e212e397d003b71fab5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707934"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882886"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
@@ -119,7 +119,7 @@ Próbálja ki az újonnan létrehozott logikai alkalmazást vagy a Power automat
 
 Ha elkészült ezzel az Oktatóanyaggal, nyugodtan megtarthatja ezt a logikai alkalmazást, vagy automatizálhatja a megoldást, ha szükséges. Ha azonban nem szeretné megtartani ezt a futást, és nem szeretné számlázni, kapcsolja ki mindkét folyamatot, ha a Power automatizálás szolgáltatást használja. Ha Logic Apps használ, tiltsa le mindkét folyamatot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag csak egy Video Indexer összekötőt mutat be. A Video Indexer által biztosított API-hívások Video Indexer összekötőket is használhat. Például: az adatok feltöltése és lekérése, az eredmények lefordítása, a beágyazható widgetek beolvasása és a modellek testreszabása is. Ezen kívül dönthet úgy is, hogy a műveleteket különböző forrásokon, például a fájlok adattárakon vagy az elküldött e-maileken alapuló módon indítja el. Ezután megadhatja, hogy az eredmények frissítése a megfelelő infrastruktúrára vagy alkalmazásra történjen, vagy tetszőleges számú műveleti elemet állítson elő.  
 

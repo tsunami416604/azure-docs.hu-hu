@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a telepítéshez – kicsomagolás, rack, Cable Azure Stack Edge fizikai eszköz | Microsoft Docs
-description: A Azure Stack Edge telepítésével kapcsolatos második oktatóanyag a fizikai eszköz kicsomagolását, állványának és kábelének kicsomagolását, valamint csatlakoztatását ismerteti.
+title: Oktatóanyag a telepítéshez – kicsomagolás, rack, Cable Azure Stack Edge Pro fizikai eszköz | Microsoft Docs
+description: A Azure Stack Edge Pro telepítésének második oktatóanyaga a fizikai eszköz kicsomagolásával, állványával és csatlakoztatásával kapcsolatos.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 429fe0c4db4a7825a6a98aa5d2cd6af609a34a61
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82570999"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894202"
 ---
-# <a name="tutorial-install-azure-stack-edge"></a>Oktatóanyag: Azure Stack Edge telepítése
+# <a name="tutorial-install-azure-stack-edge-pro"></a>Oktatóanyag: Azure Stack Edge Pro telepítése
 
-Ez az oktatóanyag azt ismerteti, hogyan telepítheti Azure Stack Edge fizikai eszközét. A telepítési eljárás magában foglalja az eszköz kicsomagolását, az állvány csatlakoztatását és a kábelezést. 
+Ez az oktatóanyag azt ismerteti, hogyan telepítheti Azure Stack Edge Pro fizikai eszközét. A telepítési eljárás magában foglalja az eszköz kicsomagolását, az állvány csatlakoztatását és a kábelezést. 
 
 A telepítés elvégzése körülbelül két órát is igénybe vehet.
 
@@ -37,12 +37,12 @@ A fizikai eszközök telepítésének előfeltételei a következők:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* Végrehajtotta az [Azure stack Edge üzembe helyezésének előkészítése](azure-stack-edge-deploy-prep.md)című témakör összes lépését.
+* Elvégezte az [Azure stack Edge Pro üzembe helyezésének előkészítése](azure-stack-edge-deploy-prep.md)című témakör összes lépését.
     * Létrehozott egy Azure Stack Edge-erőforrást az eszköz üzembe helyezéséhez.
     * Létrehozta az aktiválási kulcsot az eszköz Azure Stack Edge-erőforrással való aktiválásához.
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>Az Azure Stack Edge fizikai eszközhöz
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>A Azure Stack Edge Pro fizikai eszközhöz
 
 Az eszköz üzembe helyezése előtt:
 
@@ -58,7 +58,7 @@ Az eszköz üzembe helyezése előtt:
 
 Előkészületek:
 
-- Tekintse át az Azure Stack Edge üzembe helyezésének hálózati követelményeit, és konfigurálja az adatközponti hálózatot a követelmények szerint. További információ: [Azure stack Edge hálózati követelmények](azure-stack-edge-system-requirements.md#networking-port-requirements).
+- Tekintse át a Azure Stack Edge Pro üzembe helyezésének hálózati követelményeit, és konfigurálja az adatközponti hálózatot a követelmények szerint. További információ: [Azure stack Edge Pro hálózati követelmények](azure-stack-edge-system-requirements.md#networking-port-requirements).
 
 - Győződjön meg arról, hogy az eszköz optimális működéséhez 20 Mbps sebesség szükséges.
 
@@ -70,12 +70,12 @@ Az eszköz egyetlen dobozban érkezik. Az eszköz kibontásához hajtsa végre a
 1. Helyezze a csomagot egy sima, vízszintes felületre.
 2. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a doboz vagy a csomagolás súlyosan sérült, ne nyissa meg. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával, ahol szakembereink segíthetnek felmérni, hogy az eszköz működőképes állapotban van-e.
 3. Bontsa ki a dobozt. A csomag felbontása után ellenőrizze, hogy megvannak-e a következők:
-    - Egyetlen ház Azure Stack Edge-eszköz
+    - Egyetlen ház Azure Stack Edge Pro-eszköz
     - Két tápkábel
     - Egy vasúti készlet szerelvény
     - Biztonsági, környezeti és szabályozási tájékoztató füzet
 
-Ha nem kapta meg az itt felsorolt összes elemet, forduljon Azure Stack Edge ügyfélszolgálatához. A következő lépés az eszköz csatlakoztatása.
+Ha nem kapta meg az itt felsorolt összes elemet, lépjen kapcsolatba Azure Stack Edge Pro-támogatással. A következő lépés az eszköz csatlakoztatása.
 
 
 ## <a name="rack-the-device"></a>Az eszköz állványra szerelése
@@ -83,7 +83,7 @@ Ha nem kapta meg az itt felsorolt összes elemet, forduljon Azure Stack Edge üg
 Az eszközt a standard 19 hüvelykes állványra kell telepíteni. A következő eljárással csatlakoztathatja az eszközt egy standard 19 hüvelykes állványra.
 
 > [!IMPORTANT]
-> Azure Stack Edge-eszközöknek rack-csatlakoztatással kell rendelkezniük a megfelelő működéshez.
+> Azure Stack Edge Pro-eszközöknek rack-csatlakoztatással kell rendelkezniük a megfelelő működéshez.
 
 
 ### <a name="prerequisites"></a>Előfeltételek
@@ -157,11 +157,11 @@ Keresse meg a következő összetevőket a Rail Kit szerelvény telepítéséhez
 
 ## <a name="cable-the-device"></a>Az eszköz bekábelezése
 
-Irányítsa a kábeleket, majd csatlakoztassa az eszközt. Az alábbi eljárások azt ismertetik, hogyan lehet az Azure Stack Edge-eszközt az áramellátáshoz és a hálózathoz.
+Irányítsa a kábeleket, majd csatlakoztassa az eszközt. Az alábbi eljárások azt ismertetik, hogyan lehet a Azure Stack Edge Pro-eszközt az áramellátáshoz és a hálózathoz.
 
 Az eszköz kábelezésének megkezdése előtt a következőkre lesz szüksége:
 
-- Az Azure Stack Edge fizikai eszköz, kicsomagolt és rack csatlakoztatása.
+- A Azure Stack Edge Pro fizikai eszköz, a kicsomagolt és a rack csatlakoztatása.
 - Két tápkábel.
 - Legalább egy 1-GbE RJ-45 hálózati kábel a felügyeleti felülethez való csatlakozáshoz. Az eszközön két 1-GbE hálózati adapter (egy felügyeleti és egy adathálózati) található.
 - Egy 25-GbE SFP+ rézkábel minden konfigurálni kívánt adathálózati adapterhez. Legalább egy adathálózati adaptert a 2. port, a 3. port, az 5. port vagy a 6-os port közül kell csatlakoztatni az internethez (az Azure-hoz való csatlakozással).  
@@ -170,9 +170,9 @@ Az eszköz kábelezésének megkezdése előtt a következőkre lesz szüksége:
 > [!NOTE]
 > - Ha csak egy adathálózati adaptert csatlakoztat, javasoljuk, hogy használjon 25/10 GbE hálózati adaptert, például a 3. portot, a 4-es portot, az 5. portot vagy a 6-os PORTOT az Azure-ba való adatküldéshez. 
 > - A legjobb teljesítmény érdekében és nagy mennyiségű adat kezeléséhez fontolja meg az összes adatport csatlakoztatását.
-> - Az Azure Stack Edge-eszköznek csatlakoznia kell az adatközpont-hálózathoz, hogy az képes legyen az adatok adatforrás-kiszolgálókról történő betöltésére.
+> - Az Azure Stack Edge Pro-eszköznek csatlakoznia kell az adatközpont-hálózathoz, hogy az adatforrás-kiszolgálókról is képes legyen az adatok betöltésére.
 
-Az Azure Stack Edge-eszközön:
+Azure Stack Edge Pro-eszközön:
 
 - Az előlapon a lemezmeghajtók és a főkapcsoló gomb található.
 
@@ -213,7 +213,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, például a következőket:
+Ebben az oktatóanyagban megtanulta Azure Stack Edge Pro-témaköröket, például a következőket:
 
 > [!div class="checklist"]
 > * Az eszköz kicsomagolása
@@ -223,4 +223,4 @@ Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, példáu
 A következő oktatóanyag az eszköz csatlakoztatását, beállítását és aktiválását mutatja be.
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge összekapcsolásának és beállításának beállítása](./azure-stack-edge-deploy-connect-setup-activate.md)
+> [Azure Stack Edge Pro összekapcsolásának és beállításának beállítása](./azure-stack-edge-deploy-connect-setup-activate.md)

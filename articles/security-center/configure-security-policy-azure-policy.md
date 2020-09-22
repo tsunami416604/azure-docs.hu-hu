@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77430941"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894793"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Biztonsági házirend konfigurálása Azure Policy a REST API használatával
 
@@ -115,7 +115,7 @@ Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## <a name="policy-names-reference"></a>Házirend-nevek leírása<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>Házirend-nevek leírása <a name="policy-names"></a>
 
 |Házirend neve Security Center|A szabályzat neve Azure Policyban jelenik meg |Házirend-effektus paraméterének neve|
 |----|----|----|
@@ -124,17 +124,17 @@ Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
 |System updates (Rendszerfrissítések) |Hiányzó rendszerfrissítések figyelése Azure Security Center |systemUpdatesMonitoringEffect|
 |Storage-titkosítás |Naplózni kell a tűrfiókok hiányzó blobtitkosítását |storageEncryptionMonitoringEffect|
 |JIT hálózati hozzáférés |A lehetséges hálózati igény szerinti (JIT) hozzáférés figyelése Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptív alkalmazásvezérlők |A lehetséges alkalmazások engedélyezési listájának figyelése Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Adaptív alkalmazásvezérlők |A lehetséges alkalmazás-engedélyezési listának figyelése Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
 |Network security groups (Hálózati biztonsági csoportok) |A megengedhető hálózati hozzáférés figyelése Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Biztonsági konfigurációk |Operációs rendszer biztonsági réseinak figyelése Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Endpoint Protection |Hiányzó Endpoint Protection figyelése Azure Security Center |endpointProtectionMonitoringEffect |
 |Lemeztitkosítás |Titkosítatlan virtuálisgép-lemezek figyelése Azure Security Center |diskEncryptionMonitoringEffect|
-|Sebezhetőségi felmérés |VIRTUÁLIS gépek biztonsági Réseinak figyelése Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
+|Biztonsági rések felmérése |VIRTUÁLIS gépek biztonsági Réseinak figyelése Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Web application firewall (Webalkalmazási tűzfal) |Nem védett webalkalmazás figyelése Azure Security Center |webApplicationFirewallMonitoringEffect |
 |Next generation firewall (Új generációs tűzfal) |Nem védett hálózati végpontok figyelése Azure Security Center| |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
 

@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651512"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893362"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)-ban, az automatikus gépi tanulás, a AutoML használatával. 
 
@@ -38,7 +38,7 @@ Ehhez a cikkhez szükséges,
 
 * Egy Azure Machine Learning-munkaterület. A munkaterület létrehozásával kapcsolatban tekintse meg [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md)című témakört.
 
-* Ez a cikk azt feltételezi, hogy alapszintű ismerettel rendelkezik egy automatizált gépi tanulási kísérlet beállításával. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy az [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg az alapszintű gépi tanulási kísérlet tervezési mintáit.
+* Ez a cikk azt feltételezi, hogy az automatikus gépi tanulási kísérlet beállítása némi ismerettel rendelkezik. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy a [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg a fő automatizált gépi tanulási kísérlet kialakítási mintáit.
 
 ## <a name="preparing-data"></a> Az adatok előkészítése
 
@@ -253,7 +253,7 @@ Ha engedélyezni szeretné a DNN a Azure Machine Learning Studióban létrehozot
 
 Az automatikus ML lehetővé teszi, hogy a felhasználók natív idősorozatú és mély tanulási modelleket is biztosítanak a javaslatrendszer részeként. 
 
-Modellek| Description | Előnyök
+Modellek| Leírás | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek beszerzésének valószínűsége 50%, függetlenül attól, hogy a mai, a holnapi vagy a jövő évi tükrözést szeretné-e megtekinteni.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.

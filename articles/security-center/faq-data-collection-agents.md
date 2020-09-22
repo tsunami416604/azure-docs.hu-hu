@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011854"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894811"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -29,9 +29,9 @@ A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a vi
 
 Nem. A Security Center által létrehozott munkaterületek, miközben a csomópontok számlázása Azure Monitor naplókhoz van konfigurálva, nem számítunk fel Azure Monitor naplók díját. Security Center számlázás mindig a Security Center biztonsági házirendje és a munkaterületre telepített megoldások alapján történik:
 
-- **Ingyenes szintű** – Security Center engedélyezi az "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Az ingyenes szintet nem számoljuk fel.
+- **Azure Defender off** – Security Center engedélyezi az "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Nem számítunk fel díjat, ha az Azure Defender ki van kapcsolva.
 
-- **Standard szintű** – a Security Center engedélyezi a "biztonsági" megoldást az alapértelmezett munkaterületen.
+- Az **Azure Defender on** – Security Center engedélyezi a "biztonsági" megoldást az alapértelmezett munkaterületen.
 
 További információ a díjszabásról: [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -118,7 +118,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
     > [!NOTE]
     > A legördülő menüben csak azok a munkaterületek jelennek meg, amelyekhez hozzáférése van az Azure-előfizetéséhez.
 
-1. Válassza a **Mentés** lehetőséget. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
+1. Kattintson a **Mentés** gombra. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
 
     - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **csak az új virtuális gépeken legyenek érvényesek**. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
     - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek**legyenek. Továbbá a Security Center létrehozott munkaterülethez csatlakozó összes virtuális gép újra csatlakozik az új cél munkaterülethez.
@@ -164,7 +164,7 @@ Ha eltávolítja a Microsoft figyelési bővítményt, Security Center nem tud b
 
 Az előfizetésekhez tartozó automatikus kiépítés kikapcsolható a biztonsági házirendben, de ez nem ajánlott. Az automatikus kiépítési korlátok kikapcsolásával Security Center javaslatok és riasztások. Az automatikus kiépítés letiltása:
 
-1. Ha az előfizetése konfigurálva van a standard csomagra, nyissa meg az előfizetéshez tartozó biztonsági házirendet, és válassza az **ingyenes** szintet.
+1. Ha az előfizetéshez engedélyezve van az Azure Defender, nyissa meg az előfizetéshez tartozó biztonsági házirendet, és válassza ki az **Azure Defender**szolgáltatást.
 
    ![Tarifacsomag][1]
 

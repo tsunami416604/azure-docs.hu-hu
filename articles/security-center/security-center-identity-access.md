@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590234"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894562"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
@@ -63,9 +63,7 @@ Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](ht
 - Ha az AD ingyenes kiadást használja, engedélyezze a Azure Active Directory **biztonsági alapértelmezéseit** az ad- [dokumentációban](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)leírtak szerint.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikkeket:
 
-- [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
-- [Az Azure SQL-szolgáltatás és-adatok védelme Azure Security Center](security-center-sql-service-recommendations.md)

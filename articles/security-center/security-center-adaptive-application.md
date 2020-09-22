@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276762"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894720"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -50,8 +50,8 @@ Ha az ismert alkalmazások listáját definiálja, és riasztásokat állít el�
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Általános elérhetőség|
-|Árképzési|Standard csomag|
+|Kiadás állapota:|Általánosan elérhető (GA)|
+|Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Támogatott gépek:|![Igen ](./media/icons/yes-icon.png) , Windows és Linux rendszerű Azure-és nem Azure-beli gépek<br>![Igen ](./media/icons/yes-icon.png) [Azure arc](https://docs.microsoft.com/azure/azure-arc/) -gépek|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági olvasó** és **olvasó** szerepkörök a csoportok és az ismert biztonságos alkalmazások listáját egyaránt megtekinthetik<br>A **közreműködő** és a **biztonsági rendszergazdai** szerepkörök egyaránt módosíthatják a csoportokat és az ismert alkalmazások listáját|
 |Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
@@ -65,7 +65,9 @@ Ha a Security Center az előfizetésekben lévő olyan csoportokat azonosított,
 
 Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők lapot, ahol megtekintheti a javasolt ismert biztonságos alkalmazások és számítógépcsoportok listáját.
 
-1. A Security Center menüjében válassza az **adaptív alkalmazások vezérlői**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     Megnyílik az **adaptív alkalmazás-vezérlők** lap a virtuális gépekkel a következő lapokon csoportosítva:
 
@@ -86,7 +88,7 @@ Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők la
       - Ez egy olyan Windows-gép, amelyen már meglévő [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -házirend van engedélyezve egy csoportházirend-objektum vagy egy helyi biztonsági házirend segítségével.
 
       > [!TIP]
-      > Security Centernek legalább két hétig kell lennie, hogy meghatározza a számítógépek csoportjaira vonatkozó egyedi ajánlásokat. Azok a gépek, amelyek nemrég lettek létrehozva, vagy olyan előfizetésekhez tartoznak, amelyek csak a standard szintű csomaggal lettek engedélyezve, a **No javaslat** lapon jelennek meg.
+      > Security Centernek legalább két hétig kell lennie, hogy meghatározza a számítógépek csoportjaira vonatkozó egyedi ajánlásokat. Azok a gépek, amelyek nemrég lettek létrehozva, vagy olyan előfizetésekhez tartoznak, amelyek csak nemrég voltak engedélyezve az Azure Defenderrel, a **No javaslat** lapon jelennek meg.
 
 
 1. Nyissa meg az **ajánlott** lapot. Megjelenik az ajánlott engedélyezési listával rendelkező gépek csoportjai.
@@ -121,7 +123,7 @@ Dönthet úgy, hogy egy adott számítógépcsoport engedélyezési listáját a
 
 A számítógépek csoportjára vonatkozó szabályok szerkesztése:
 
-1. A Security Center menüjében válassza az **adaptív alkalmazások vezérlői**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
 
 1. A **konfigurált** lapon válassza ki a szerkeszteni kívánt szabályt tartalmazó csoportot.
 
@@ -169,7 +171,7 @@ A problémák megoldásához:
 
 ## <a name="audit-alerts-and-violations"></a>Riasztások és szabálysértések naplózása
 
-1. A Security Center menüjében válassza az **adaptív alkalmazások vezérlői**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
 
 1. Ha olyan gépeket szeretne látni, amelyeken a legutóbbi riasztások vannak, tekintse át a **configured (konfigurált** ) lapon felsorolt csoportokat.
 
@@ -184,6 +186,8 @@ A problémák megoldásához:
 ## <a name="move-a-machine-from-one-group-to-another"></a>Gép áthelyezése egyik csoportból a másikba
 
 Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmazás-vezérlési házirendet annak a csoportnak a beállításaira módosítja, amelyre áthelyezte. A számítógépeket egy konfigurált csoportból nem konfigurált csoportba is áthelyezheti, ezzel eltávolítja a gépre alkalmazott összes alkalmazás-ellenőrzési szabályt.
+
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
 
 1. Az **adaptív alkalmazás vezérlői** lap **konfigurált** lapján válassza ki az áthelyezni kívánt gépet tartalmazó csoportot.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477595"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893801"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
 
-Ez a cikk bemutatja, hogyan használhatja a Azure Machine Learning Designer (előzetes verzió) szűrő alapú funkciójának kiválasztási modulját. Ez a modul segít azonosítani a bemeneti adatkészletben található azon oszlopokat, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer szűrő alapú funkció-kiválasztási modulja. Ez a modul segít azonosítani a bemeneti adatkészletben található azon oszlopokat, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
 
 Általánosságban a *szolgáltatás kiválasztása* arra utal, hogy a megadott kimenet alapján statisztikai teszteket alkalmazzon a bemenetekre. A cél annak meghatározása, hogy mely oszlopok legyenek a kimenet prediktív megjelenítése. A szűrésen alapuló funkció kiválasztási modulja több szolgáltatás-kiválasztási algoritmust is biztosít, amelyek közül választhat. A modul olyan korrelációs módszereket tartalmaz, mint például a Pearson korrelációs és a KHI-négyzetes értékek. 
 
@@ -133,7 +133,7 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 -   Ha egy szolgáltatásként kijelölt oszlop minden hiányzó értékkel rendelkezik, a modul nulla pontszámot rendel hozzá.   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

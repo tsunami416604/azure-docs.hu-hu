@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a8fbf9f2890ef169016108db61c93bfe6dd44326
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881913"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Functions kimenete
 
@@ -25,7 +25,7 @@ A Azure Stream Analytics HTTP-eseményindítók használatával hívja meg Azure
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Függvényalkalmazás |A Azure Functions alkalmazás neve. |
-| Függvény |A függvény neve a Azure Functions alkalmazásban. |
+| Funkció |A függvény neve a Azure Functions alkalmazásban. |
 | Kulcs |Ha egy másik előfizetésből származó Azure-függvényt szeretne használni, ezt megteheti a függvény eléréséhez szükséges kulcs megadásával. |
 | Köteg maximális mérete |Olyan tulajdonság, amely lehetővé teszi az Azure-függvénynek elküldhető kimeneti kötegek maximális méretének beállítását. A bemeneti egység bájtban van. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB). |
 | Kötegek maximális száma  |Olyan tulajdonság, amely lehetővé teszi, hogy megadhatja az egyes kötegekben a Azure Functionsba küldendő események maximális számát. Az alapértelmezett érték 100. |
@@ -54,4 +54,4 @@ Az alapértelmezett köteg mérete 262 144 bájt (256 KB). Az események alapér
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával](quick-create-azure-resource-manager.md)
 * [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
 * [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md)
+* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)

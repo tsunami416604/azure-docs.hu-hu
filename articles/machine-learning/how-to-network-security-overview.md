@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 57746b833e238bbd0cc99ba103f710a9239ee5ba
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664572"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893188"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Forgatókönyv | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Használati eset | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 
@@ -63,22 +63,6 @@ A következő öt szakasz bemutatja, hogyan védheti meg a fent ismertetett hál
 1. Gondoskodjon a [**következtetési környezet**](#secure-the-inferencing-environment)védelméről.
 1. Opcionálisan: a [**Studio funkciójának engedélyezése**](#optional-enable-studio-functionality).
 1. [ **Tűzfalbeállítások** konfigurálása](#configure-firewall-settings)
-
-> [!TIP]
->  A virtuális hálózatok és az Azure-szolgáltatások egyes kombinációi nagyvállalati kiadási munkaterületet igényelnek. A következő táblázat segítségével megismerheti, hogy milyen forgatókönyvek szükségesek a vállalati kiadáshoz:
->
-> | Forgatókönyv | Enterprise</br>Edition | Alapszintű</br>Edition |
-> | ----- |:-----:|:-----:| 
-> | Nincs virtuális hálózat vagy privát hivatkozás | ✔ | ✔ |
-> | Privát hivatkozás nélküli munkaterület. Egyéb erőforrások (a Azure Container Registry kivételével) egy virtuális hálózaton | ✔ | ✔ |
-> | Privát hivatkozás nélküli munkaterület. Egyéb források privát hivatkozással | ✔ | |
-> | Munkaterület privát hivatkozással. Egyéb erőforrások (a Azure Container Registry kivételével) egy virtuális hálózaton | ✔ | ✔ |
-> | Munkaterület és bármely más, privát hivatkozással rendelkező erőforrás | ✔ | |
-> | Munkaterület privát hivatkozással. Egyéb források magánhálózati vagy virtuális hálózat nélkül | ✔ | ✔ |
-> | Azure Container Registry virtuális hálózaton | ✔ | |
-> | Ügyfél által felügyelt kulcsok a munkaterülethez | ✔ | |
->
-
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>A munkaterület és a kapcsolódó erőforrások védelme
 

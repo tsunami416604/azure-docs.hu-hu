@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 247a0bef8e166c72f185f2d384067fc5814a602e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137773"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893751"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Többosztályos logisztikai regressziós modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy logisztikai regressziós modellt, amely több érték előrejelzésére is használható.
 
@@ -72,6 +72,6 @@ A többosztályos logisztikai regresszió esetében az osztályozó használatá
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

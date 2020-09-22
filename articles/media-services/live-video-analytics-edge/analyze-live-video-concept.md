@@ -3,12 +3,12 @@ title: Élő videó elemzése rögzítés nélkül – Azure
 description: A Media Graph használatával egyszerűen kinyerheti az elemzéseket egy élő videó streamből, anélkül, hogy azt fel kellene vennie a felhőben. Ez a cikk a koncepciót ismerteti.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566742"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893043"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Élő videó elemzése rögzítés nélkül
 
@@ -40,7 +40,7 @@ Ebben az adathordozó-gráfban a frame rate Filter processzor csomópont csökke
 Ennek a példának a továbbfejlesztése egy mozgásérzékelős processzor használata a frame rate szűrő processzor-csomópontja előtt. Ez csökkenti a következtetést, mivel a rendszer csak akkor használja a szolgáltatás terhelését, ha a videóban mozgási tevékenység van használatban.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="Élő videó-elemzés az észlelt képkockák alapján, külső viszonyítási modul használatával":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Élő videó-elemzés az észlelt képkockák alapján, külső viszonyítási modul használatával":::
 
 ## <a name="next-steps"></a>Következő lépések
 

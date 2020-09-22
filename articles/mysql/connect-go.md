@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 154c41c6799bb251f30991fde05f6eacc5de57da
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a9fc43c2b9b95022f9036fc5410c314c1546d1ea
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185944"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882533"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: kapcsolódás és adatlekérdezés a go Language használatával Azure Database for MySQL
 
@@ -86,7 +86,7 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
- ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-go/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-go/1_server-overview-name-login.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
    
 
 ## <a name="build-and-run-go-code"></a>Go kód felépítése és futtatása 

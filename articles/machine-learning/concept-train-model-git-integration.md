@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893557"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -70,12 +70,10 @@ A git-adatokat egy tanítási Futtatás tulajdonságai tárolják. Ezeket az inf
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet.
+1. A [Studio portálon](https://ml.azure.com)válassza ki a munkaterületet.
 1. Válassza a __kísérletek__lehetőséget, majd válassza ki az egyik kísérletet.
 1. Válassza ki a __futtatások száma__ oszlop egyik futtatását.
-1. Válassza a __naplók__lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __ ### \_ Azure__-ban kezdődik.
-
-    ![A # # #_azure bejegyzés a portálon](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. Válassza a __kimenetek + naplók__lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __ ### \_ Azure__-ban kezdődik.
 
 A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 

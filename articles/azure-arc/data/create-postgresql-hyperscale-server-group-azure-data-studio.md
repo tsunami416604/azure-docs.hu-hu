@@ -1,0 +1,85 @@
+---
+title: Azure arc-kompatibilis PostgreSQL-nagy kapacitású létrehozása Azure Data Studio használatával
+description: Azure arc-kompatibilis PostgreSQL-nagy kapacitású létrehozása Azure Data Studio használatával
+services: azure-arc
+ms.service: azure-arc
+ms.subservice: azure-arc-data
+author: TheJY
+ms.author: jeanyd
+ms.reviewer: mikeray
+ms.date: 09/22/2020
+ms.topic: how-to
+ms.openlocfilehash: af0cdb814433b739b15d79bec9cb399cf0a2fef7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90939924"
+---
+# <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure arc-kompatibilis PostgreSQL-nagy kapacitású létrehozása Azure Data Studio használatával
+
+Ez a dokumentum végigvezeti a Azure Data Studio használatának lépésein az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoportok kiépítéséhez.
+
+[!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
+
+[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="connect-to-the-azure-arc-data-controller"></a>Kapcsolódás az Azure arc-adatkezelőhöz
+
+Példány létrehozása előtt jelentkezzen be az Azure arc-adatkezelőbe, ha még nincs bejelentkezve.
+
+```console
+azdata login
+```
+
+Ekkor a rendszer kérni fogja a névteret, amelyben az adatvezérlőt létrehozták, a felhasználónevet és a jelszót, hogy bejelentkezzen a vezérlőbe.
+
+> Ha ellenőriznie kell a névteret, a futtatásával ```kubectl get pods -A``` lekérheti a fürtben található összes névtér listáját.
+
+```console
+Username: arcadmin
+Password:
+Namespace: arc
+Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
+```
+
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása
+
+1. Azure Data Studio elindítása
+1. A kapcsolatok lapon kattintson a bal felső sarokban található három pontra, és válassza az "új központi telepítés" lehetőséget.
+1. A központi telepítési lehetőségek közül válassza a **PostgreSQL nagy kapacitású Server Group-Azure arc** lehetőséget.
+    >[!NOTE]
+    > Ha még nincs telepítve, a rendszer kérni fogja, hogy telepítse a CLI-t `azdata` .
+1. Fogadja el az adatvédelmi és a licencfeltételeket, majd kattintson a lenti **kijelölés** elemre.
+1. A PostgreSQL nagy kapacitású-kiszolgálócsoport üzembe helyezése – Azure arc panelen adja meg a következő adatokat:
+   - Adja meg a kiszolgálócsoport nevét
+   - Adja meg és erősítse meg a _postgres_ rendszergazda felhasználójának jelszavát.
+   - Válassza ki az adattárolási osztályt a megfelelő értékként
+   - A naplókhoz megfelelő tárolási osztály kiválasztása
+   - A biztonsági másolatok megfelelő tárolási osztályának kiválasztása
+   - Válassza ki a kiépíteni kívánt munkavégző csomópontok számát
+1. Kattintson a **telepítés** gombra
+
+Ezzel elindítja az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozását az adatkezelőn.
+
+Néhány percen belül sikeresen befejeződött a létrehozás.
+
+## <a name="next-steps"></a>Következő lépések
+- [Kiszolgálócsoport kezelése Azure Data Studio használatával](manage-postgresql-hyperscale-server-group-with-azure-data-studio.md)
+- [A kiszolgálócsoport figyelése](monitor-grafana-kibana.md)
+- Olvassa el a Azure Database for PostgreSQL nagy kapacitású kapcsolatos fogalmakat és útmutatókat az adatok több PostgreSQL nagy kapacitású-csomóponton keresztüli terjesztéséhez, valamint az Azure Database postgres nagy kapacitású nyújtotta előnyök kihasználása érdekében. :
+    * [Csomópontok és táblák](../../postgresql/concepts-hyperscale-nodes.md)
+    * [Alkalmazás típusának meghatározása](../../postgresql/concepts-hyperscale-app-type.md)
+    * [Elosztási oszlop kiválasztása](../../postgresql/concepts-hyperscale-choose-distribution-column.md)
+    * [Tábla közös elhelyezése](../../postgresql/concepts-hyperscale-colocation.md)
+    * [Táblák elosztása és módosítása](../../postgresql/howto-hyperscale-modify-distributed-tables.md)
+    * [Több-bérlős adatbázis tervezése](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
+    * [Valós idejű elemzési irányítópult kialakítása](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
+
+    > \* A fenti dokumentumokban hagyja ki a **bejelentkezett szakaszt a Azure Portalba**, & **hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus)**. Implementálja az Azure arc üzembe helyezésének hátralévő lépéseit. Ezek a részek Azure Database for PostgreSQL az Azure-felhőben nagy kapacitású (Citus) jellemzőek, de a dokumentumok egyéb részei közvetlenül alkalmazhatók az Azure arc-kompatibilis PostgreSQL-nagy kapacitású.
+
+- [A Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoport felskálázása](scale-out-postgresql-hyperscale-server-group.md)
+- [Tárolási konfiguráció és Kubernetes-tárolási fogalmak](storage-configuration.md)
+- [Állandó mennyiségi jogcímek kiterjesztése](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
+- [Kubernetes erőforrás-modell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
+

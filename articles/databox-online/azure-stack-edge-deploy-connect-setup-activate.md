@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure Stack Edge-eszköz csatlakoztatásához, konfigurálásához, aktiválásához Azure Portalban | Microsoft Docs
-description: Az Azure Stack Edge üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
+title: Oktatóanyag a Azure Stack Edge Pro-eszköz csatlakoztatásához, konfigurálásához, aktiválásához Azure Portal-ben | Microsoft Docs
+description: Az Azure Stack Edge Pro üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84608434"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894260"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Oktatóanyag: Azure Stack Edge összekapcsolása, beállítása és aktiválása 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Oktatóanyag: a Azure Stack Edge Pro összekapcsolása, beállítása és aktiválása 
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és aktiválni a Azure Stack Edge-eszközt a helyi webes felhasználói felület használatával.
+Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és aktiválni a Azure Stack Edge Pro-eszközt a helyi webes felhasználói felület használatával.
 
 A telepítés és az aktiválás folyamata körülbelül 20 percet vesz igénybe.
 
@@ -31,32 +31,32 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Stack Edge-eszköz konfigurálása és beállítása előtt győződjön meg az alábbiakról:
+Az Azure Stack Edge Pro-eszköz konfigurálása és beállítása előtt győződjön meg az alábbiakról:
 
-* A fizikai eszközt a [Azure stack Edge telepítése](azure-stack-edge-deploy-install.md)című részletesen telepítette.
-* Az Azure Stack Edge-eszköz kezeléséhez létrehozott Azure Stack Edge-szolgáltatásból aktiválhatja az aktiválási kulcsot. További információ: [felkészülés a Azure stack Edge üzembe helyezésére](azure-stack-edge-deploy-prep.md).
+* A fizikai eszközt a [Azure stack Edge Pro telepítésének](azure-stack-edge-deploy-install.md)részletesen telepítette.
+* Az Azure Stack Edge Pro-eszköz kezeléséhez létrehozott Azure Stack Edge-szolgáltatásból aktiválhatja az aktiválási kulcsot. További információért látogasson el a [felkészülés a Azure stack Edge Pro üzembe helyezéséhez](azure-stack-edge-deploy-prep.md)című témakörre.
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Kapcsolódás a helyi webes felhasználói felület telepítéséhez
 
-1. Konfigurálja az Ethernet-adaptert a számítógépén az Azure Stack Edge-eszközhöz való csatlakozáshoz a 192.168.100.5 és az alhálózat 255.255.255.0 statikus IP-címével.
+1. Konfigurálja az Ethernet-adaptert a számítógépén az Azure Stack Edge Pro-eszközhöz a 192.168.100.5 és az alhálózat 255.255.255.0 statikus IP-címével való csatlakozáshoz.
 
 2. A számítógép csatlakoztatása az 1. PORThoz az eszközön. Az alábbi ábra segítségével azonosíthatja az eszközön az 1. PORTOT.
 
     ![Egy bekábelezett eszköz hátlapja](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
-3. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes FELÜLETét a következő címen: `https://192.168.100.10` .  
-    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt.
+3. Nyissa meg egy böngészőablakot, és lépjen az eszköz helyi webes felhasználói felületére a `https://192.168.100.10` címen.  
+    Ez a művelet eltarthat pár percig, miután bekapcsolta az eszközt.
 
-    Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
+    Megjelenik egy hiba vagy egy figyelmeztetés, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
    
     ![A webhely biztonsági tanúsítványának hibaüzenete](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
 4. Válassza **a folytatás ehhez a weboldalhoz**lehetőséget.  
-    Ezek a lépések a használt böngészőtől függően eltérőek lehetnek.
+    Ezek a lépések eltérők lehetnek, attól függően, hogy milyen böngészőt használ.
 
 5. Jelentkezzen be az eszköz webes felhasználói felületére. Az alapértelmezett jelszó a *jelszó1*. 
    
-    ![Azure Stack Edge-eszköz bejelentkezési lapja](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Azure Stack Edge Pro-eszköz bejelentkezési lapja](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. A parancssorban módosítsa az eszköz rendszergazdai jelszavát.  
     Az új jelszónak 8 és 16 karakter közöttinek kell lennie. A következő karakterek közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és speciális karakterek.
@@ -75,18 +75,18 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
     ![Helyi webes felhasználói felület "eszköznév" lapja](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. Választható A bal oldali ablaktáblán válassza a **hálózati beállítások** lehetőséget, majd konfigurálja a beállításokat.  
-    A fizikai eszközön hat hálózati adapter található. Az 1. és a 2. port 1 GB/s hálózati adapter. A 3. port, a 4-es port, az 5. port és a 6-os PORT mind a 25 GB-os hálózati adapterek, amelyek 10 GB/s hálózati adapterként is használhatók. Az 1. PORT automatikusan csak felügyeleti portként van konfigurálva, a 2-es port pedig minden adatport. A **hálózati beállítások** lap az alábbi ábrán látható.
+    A fizikai eszközön hat hálózati adapter található. A PORT 1 és PORT 2 jelzésű portok 1 Gbps hálózati adapterek. A 3. port, a 4-es port, az 5. port és a 6-os PORT mind a 25 GB-os hálózati adapterek, amelyek 10 GB/s hálózati adapterként is használhatók. Az 1. PORT automatikusan csak felügyeleti portként van konfigurálva, a 2-es port pedig minden adatport. A **hálózati beállítások** lap az alábbi ábrán látható.
     
     ![Helyi webes felhasználói felület "hálózati beállítások" lapja](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    A hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
+    A hálózati beállítások konfigurálása közben figyeljen a következőkre:
 
-   - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendeli az IP-címet, az alhálózatot, az átjárót és a DNS-t.
+   - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot, egy átjárót és egy DNS-t.
    - Ha a DHCP nincs engedélyezve, szükség esetén statikus IP-címeket is hozzárendelhet.
    - A hálózati adaptert IPv4-ként is konfigurálhatja.
 
      >[!NOTE] 
-     > Azt javasoljuk, hogy ne váltson át a hálózati adapter helyi IP-címére statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ, és a DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz regisztrálva van a szolgáltatásban, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
+     > Azt javasoljuk, hogy a hálózati adapter helyi IP-címét ne módosítsa statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ és DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha DHCP-címre szeretne váltani, várjon, amíg az eszköz regisztrálja magát a szolgáltatásban, majd hajtsa végre a módosítást. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
 
 3. Választható A bal oldali ablaktáblán válassza a **webproxy beállításai**lehetőséget, majd konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, ha webproxyt használ, csak ezen a lapon konfigurálhatja.
    
@@ -96,7 +96,7 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
    
    a. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number` . A HTTPS URL-címek nem támogatottak.
 
-   b. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget. Ha engedélyezi a számítást, és a IoT Edge modult használja az Azure Stack Edge-eszközön, javasoljuk, hogy a webproxy-hitelesítést a **none**értékre állítsa be. Az **NTLM** nem támogatott.
+   b. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget. Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne állítsa be a **none**értékre. Az **NTLM** nem támogatott.
 
    c. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 
@@ -104,8 +104,8 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
 
    > [!NOTE]
    > A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához.
-   > Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.
-   > Az átlátszó proxyk jellemzően Azure Stack peremhálózati környezettel működnek.
+   > Azok a proxyk, amelyek megpróbálják megszakítani és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítványukkal) nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.
+   > Általában az átlátszó proxyk jól működnek Azure Stack Edge Pro-val.
 
 4. Választható A bal oldali panelen válassza az **időbeállítások**lehetőséget, majd konfigurálja az adott eszközhöz tartozó időzónát és az elsődleges és másodlagos NTP-kiszolgálókat.  
     Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.
@@ -133,8 +133,8 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
 
 6. A bal oldali ablaktáblán válassza a **felhő beállításai**lehetőséget, majd aktiválja az eszközt a Azure Portal Azure stack Edge szolgáltatásával.
     
-    1. Az **aktiválási kulcs** mezőben adja meg azt az aktiválási kulcsot, amelyet a Azure stack Edge [aktiválási kulcsának beszerzése](azure-stack-edge-deploy-prep.md#get-the-activation-key) című mezőjében kapott.
-    2. Válassza az **Alkalmaz** lehetőséget.
+    1. Az **aktiválási kulcs** mezőben adja meg azt az aktiválási kulcsot, amelyet a Azure stack Edge Pro [aktiválási kulcsának beszerzése](azure-stack-edge-deploy-prep.md#get-the-activation-key) című pontjában kapott.
+    2. Kattintson az **Alkalmaz** gombra.
        
         ![Helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
@@ -158,7 +158,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Kapcsolódás fizikai eszközhöz
 > * A fizikai eszköz beállítása és aktiválása
 
-Ha szeretné megismerni, hogyan vihetők át adatok az Azure Stack Edge-eszközzel, tekintse meg a következőt:
+Ha szeretné megismerni, hogyan vihetők át adatok az Azure Stack Edge Pro-eszközével, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Adatok átvitele Azure stack Edge-vel](./azure-stack-edge-deploy-add-shares.md).
+> [Adatok átvitele Azure stack Edge Pro-val](./azure-stack-edge-deploy-add-shares.md).

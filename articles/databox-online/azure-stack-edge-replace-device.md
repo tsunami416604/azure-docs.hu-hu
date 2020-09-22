@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stack Edge-eszköz cseréje | Microsoft Docs
-description: Ismerteti, hogyan lehet helyettesítő Azure Stack Edge-eszközt beolvasni.
+title: Cserélje le az Azure Stack Edge Pro-eszközét | Microsoft Docs
+description: Ismerteti, hogyan lehet helyettesítő Azure Stack Edge Pro-eszközt beolvasni.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098752"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893900"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>Az Azure Stack Edge-eszköz cseréje
+# <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro-eszköz cseréje
 
-Ez a cikk egy helyettesítő Azure Stack Edge-eszköz beszerzését ismerteti. Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hibával rendelkezik, vagy frissítésre van szüksége. 
+Ez a cikk azt ismerteti, hogyan kérhető le egy helyettesítő Azure Stack Edge Pro-eszköz. Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hibával rendelkezik, vagy frissítésre van szüksége. 
 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
@@ -31,9 +31,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-Ha a meglévő eszköz hardveres hibával rendelkezik, nyisson meg egy támogatási jegyet. Microsoft ügyfélszolgálata megállapítja, hogy ehhez a példányhoz nem érhető el egy mező típusú helyettesítő egység, vagy az eszköznek hardveres frissítésre van szüksége. Mindkét esetben a támogatás egy helyettesítő eszközt fog rendelni.
+Ha a meglévő eszköz hardveres hibával rendelkezik, nyisson meg egy támogatási jegyet. A Microsoft ügyfélszolgálata megállapítja, hogy ehhez a példányhoz nem érhető el helyszíni cseregység, vagy az eszköznek hardveres frissítésre van szüksége. Mindkét esetben a támogatás egy helyettesítő eszközt fog rendelni.
 
-1. Nyisson meg egy támogatási jegyet Microsoft ügyfélszolgálata jelezve, hogy vissza kívánja adni az eszközt. Válassza ki a probléma típusát **Azure stack Edge hardverként**.
+1. Nyisson meg egy támogatási jegyet Microsoft ügyfélszolgálata jelezve, hogy vissza kívánja adni az eszközt. Válassza ki a probléma típusát **Azure stack Edge Pro hardverként**.
 
     ![Támogatási jegy megnyitása](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -47,7 +47,7 @@ Egy erőforrás létrehozásához kövesse az alábbi lépéseket.
 
 1. Kövesse az [új erőforrás létrehozása](azure-stack-edge-deploy-prep.md#create-a-new-resource) című témakör lépéseit, és hozzon létre egy erőforrást a helyettesítő eszközhöz. 
 
-2. Ügyeljen arra, hogy jelölje be a jelölőnégyzetet a **Azure stack Edge-eszközön**. 
+2. Ügyeljen arra, hogy jelölje be a jelölőnégyzetet a **Azure stack Edge Pro-eszközön**. 
 
     ![Erőforrás a helyettesítő eszközhöz](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 
@@ -69,6 +69,6 @@ Az eredeti eszköz visszaküldéséhez kövesse az összes lépést:
 4. [Törölje a](azure-stack-edge-return-device.md#delete-the-resource) visszaadott eszközhöz hozzárendelt erőforrást.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan adhat [vissza Azure stack Edge-eszközt](azure-stack-edge-return-device.md).
+- Megtudhatja, hogyan adhat [vissza Azure stack Edge Pro-eszközt](azure-stack-edge-return-device.md).

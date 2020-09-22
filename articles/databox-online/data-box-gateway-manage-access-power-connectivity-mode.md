@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893942"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>A Azure Data Box Gateway hozzáférésének, teljesítményének és kapcsolati módjának kezelése
 
@@ -57,16 +57,16 @@ A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó fel
 
 ## <a name="manage-resource-access"></a>Erőforrás-hozzáférés kezelése
 
-A Azure Stack Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrás létrehozásához az engedélyek közreműködőiként vagy magasabb szintűnek kell lennie az erőforráscsoport szintjén. Szükség van a megfelelő erőforrás-szolgáltatók regisztrálására is. Az aktiválási kulcsot és a hitelesítő adatokat is tartalmazó műveletek esetében a Azure Active Directory Graph APIra vonatkozó engedélyek is szükségesek. Ezeket a következő szakaszokban ismertetjük.
+A Azure Stack Edge Pro/Data Box Gateway, IoT Hub és Azure Storage-erőforrás létrehozásához jogosultságokat kell biztosítania közreműködőként vagy magasabb szintű erőforrás-csoport szintjén. Szükség van a megfelelő erőforrás-szolgáltatók regisztrálására is. Az aktiválási kulcsot és a hitelesítő adatokat is tartalmazó műveletek esetében a Azure Active Directory Graph APIra vonatkozó engedélyek is szükségesek. Ezeket a következő szakaszokban ismertetjük.
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API-engedélyek kezelése
 
-Az Azure Stack Edge-eszköz aktiválási kulcsának létrehozásakor, illetve a hitelesítő adatokat igénylő műveletek elvégzéséhez engedélyekkel kell rendelkeznie Microsoft Graph API-hoz. A hitelesítő adatokat igénylő műveletek a következők lehetnek:
+Az Azure Stack Edge Pro-eszköz aktiválási kulcsának létrehozásakor, illetve a hitelesítő adatokat igénylő műveletek elvégzéséhez engedélyekkel kell rendelkeznie Microsoft Graph API-hoz. A hitelesítő adatokat igénylő műveletek a következők lehetnek:
 
 -  Megosztás létrehozása társított Storage-fiókkal.
 -  Hozzon létre egy felhasználót, aki hozzáfér az eszközön található megosztásokhoz.
 
-Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a megosztás létrehozása az Azure Stack peremhálózati eszközön, a felhasználó létrehozása sikertelen lesz.
+Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a megosztás létrehozása a Azure Stack Edge Pro-eszközön, a felhasználó létrehozása sikertelen lesz.
 
 A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -89,7 +89,7 @@ A jelenlegi előfizetésben regisztrált erőforrás-szolgáltatók listájának
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge-eszköz esetében `Microsoft.DataBoxEdge` regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge` az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
+Azure Stack Edge Pro-eszköz esetében `Microsoft.DataBoxEdge` regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge` az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -123,7 +123,7 @@ Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
 
 ## <a name="manage-power"></a>A Power kezelése
 
-Leállíthatja vagy újraindíthatja a virtuális eszközt a helyi webes felhasználói felület használatával. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ez a művelet lekicsinyíti az adatsérülés lehetőségét.
+Leállíthatja vagy újraindíthatja a virtuális eszközt a helyi webes felhasználói felület használatával. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
 1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások**elemre.
 2. A kívánt művelettől függően kattintson a **Leállítás** vagy az **Újraindítás** lehetőségre.
