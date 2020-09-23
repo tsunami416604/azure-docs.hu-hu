@@ -1,27 +1,29 @@
 ---
-title: Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)
+title: Időponthoz való visszaállítás a blokk Blobok esetében
 titleSuffix: Azure Storage
 description: A blokkos Blobok időponthoz való visszaállítása védelmet nyújt a véletlen törléssel vagy a sérüléssel szemben azáltal, hogy lehetővé teszi a Storage-fiókok előző állapotba való visszaállítását egy adott időpontban.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1187b01fa623264055edecf21ea5c9d35d59a152
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068302"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987028"
 ---
-# <a name="point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)
+# <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
 Az időponthoz való visszaállítás védelmet nyújt a véletlen törlés vagy a sérülés ellen azáltal, hogy lehetővé teszi a blob-adatblokkok korábbi állapotba való visszaállítását. Az időponthoz való visszaállítás olyan esetekben hasznos, amikor egy felhasználó vagy alkalmazás véletlenül törli az adatvesztést, vagy ha egy alkalmazáshiba sérült az adatok között. Az időponthoz való visszaállítás olyan tesztelési forgatókönyveket is lehetővé tesz, amelyekben a további tesztek futtatása előtt egy ismert állapotba kell visszaállítani az adatkészletet.
 
-Ha szeretné megtudni, hogyan engedélyezhető az időponthoz tartozó visszaállítás egy Storage-fiókhoz, tekintse meg az időponthoz való visszaállítást a [blokkos Blobok számára (előzetes verzió)](point-in-time-restore-manage.md).
+Az időponthoz való visszaállítás csak az általános célú v2-alapú Storage-fiókok esetében támogatott. Csak a gyakori és ritka elérésű hozzáférési szinteken lévő adatok állíthatók vissza az időponthoz tartozó visszaállítással.
+
+Ha meg szeretné tudni, hogyan engedélyezhető az időponthoz tartozó visszaállítás egy Storage-fiókhoz, tekintse [meg az időponthoz való visszaállítást a Blobok adatain](point-in-time-restore-manage.md).
 
 ## <a name="how-point-in-time-restore-works"></a>Az időpontra történő visszaállítás működése
 
@@ -48,17 +50,15 @@ Ne feledje, hogy a visszaállítási műveletekre a következő korlátozások v
 > A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
 
 > [!CAUTION]
-> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból úgy, hogy meghívja a tároló [törlése](/rest/api/storageservices/delete-container) műveletet az időponthoz tartozó visszaállítási előzetes verzióban, a tároló nem állítható vissza visszaállítási művelettel. Az előzetes verzióban a tároló törlése helyett törölje az egyes blobokat, ha vissza szeretné állítani őket.
+> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. Tároló törlése helyett törölje az egyes blobokat, ha vissza szeretné állítani őket.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Az időponthoz tartozó visszaállítás előfeltételei
 
-Az időponthoz tartozó visszaállításhoz a következő Azure Storage-funkciók engedélyezése szükséges:
+Az időponthoz való visszaállításhoz az alábbi Azure Storage-funkciók engedélyezésére van szükség az időponthoz való visszaállítás engedélyezése előtt:
 
 - [Helyreállítható törlés](soft-delete-overview.md)
-- [Hírcsatorna módosítása (előzetes verzió)](storage-blob-change-feed.md)
+- [Csatorna módosítása](storage-blob-change-feed.md)
 - [BLOB verziószámozása](versioning-overview.md)
-
-Engedélyezze ezeket a szolgáltatásokat a Storage-fiókhoz az időponthoz tartozó visszaállítás engedélyezése előtt. Győződjön meg arról, hogy az engedélyezése előtt regisztrálja az adatmódosítási hírcsatorna és a blob verziószámozási előzetes verzióját.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Időponthoz tartozó visszaállítás megőrzési időtartama
 
@@ -72,83 +72,17 @@ Az időponthoz tartozó visszaállítás megőrzési időtartamának legalább e
 
 A visszaállítási művelet elindításához az ügyfélnek írási engedéllyel kell rendelkeznie a Storage-fiókban lévő összes tárolóhoz. Ha engedélyeket szeretne adni a Azure Active Directory (Azure AD) szolgáltatással való visszaállítási művelet engedélyezéséhez, rendelje hozzá a **Storage-fiók közreműködői** szerepkört a rendszerbiztonsági tag számára a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén.
 
-## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
+## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
-Az időponthoz való visszaállítás csak az általános célú v2-alapú Storage-fiókok esetében támogatott. Csak a gyakori és ritka elérésű hozzáférési szinteken lévő adatok állíthatók vissza az időponthoz tartozó visszaállítással.
+A blokk-Blobok időponthoz való visszaállítása a következő korlátozásokkal és ismert problémákkal rendelkezik:
 
-A következő régiók támogatják az időponthoz történő visszaállítást az előzetes verzióban:
-
-- Közép-Kanada
-- Kelet-Kanada
-- Közép-Franciaország
-
-Az előzetes verzió az alábbi korlátozásokat tartalmazza:
-
-- A prémium blokkos Blobok visszaállítása nem támogatott.
-- A blobok visszaállítása az archív szinten nem támogatott. Ha például egy blob két nappal ezelőtt át lett helyezve a gyakori elérésű szintről az archív szintre, és a visszaállítási művelet egy három nappal korábbi pontra állítja vissza a rendszert, a blob nem lesz vissza állítva a gyakori elérésű szintre.
+- Egy adott időponthoz tartozó visszaállítási művelet részeként csak a standard általános célú v2-es Storage-fiókban található Blobok állíthatók vissza. A Blobok, a blobok és a prémium blokk Blobok hozzáfűzése nem állítható vissza. Ha törölt egy tárolót a megőrzési időszak alatt, a rendszer nem állítja vissza a tárolót az időponthoz tartozó visszaállítási művelettel. A tárolók törlésből való védelmének megismeréséhez lásd: [tárolók törlésének törlése (előzetes verzió)](soft-delete-container-overview.md).
+- Az adott időponthoz tartozó visszaállítási műveletekben csak a gyakori vagy a ritka elérésű szinteken található Blobok állíthatók vissza. A blokk-Blobok archiválási szinten való visszaállítása nem támogatott. Ha például egy blob két nappal ezelőtt át lett helyezve a gyakori elérésű szintről az archív szintre, és a visszaállítási művelet egy három nappal korábbi pontra állítja vissza a rendszert, a blob nem lesz vissza állítva a gyakori elérésű szintre. Archivált blob visszaállításához először helyezze át az archiválási szintről.
+- Ha a visszaállítani kívánt tartományban található blokk-blob aktív bérlettel rendelkezik, az időponthoz tartozó visszaállítási művelet sikertelen lesz. A visszaállítási művelet megkezdése előtt szüntesse meg az aktív címbérletek megadását.
 - Azure Data Lake Storage Gen2 lapos és hierarchikus névterek visszaállítása nem támogatott.
-- A Storage-fiókok ügyfél által megadott kulcsokkal történő visszaállítása nem támogatott.
 
 > [!IMPORTANT]
-> Az időponthoz tartozó visszaállítás előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
-
-### <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzióra
-
-Az előzetes verzióra való regisztráláshoz futtassa a következő parancsokat:
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-# Register for the point-in-time restore preview
-Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
-
-# Register for change feed (preview)
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-
-# Register for Blob versioning
-Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
-az feature register --namespace Microsoft.Storage --name Changefeed
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-registration-status"></a>Regisztráció állapotának bejelölése
-
-Az időpontra történő visszaállítás regisztrálása automatikus, és kevesebb, mint 10 percet vesz igénybe. A regisztráció állapotának megtekintéséhez futtassa a következő parancsokat:
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName RestoreBlobRanges
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Changefeed
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
-```
-
----
+> Ha a blokk-blobokat a 2020. szeptember 22. előtti pontra állítja vissza, a rendszer az időponthoz tartozó visszaállításra vonatkozó előzetes korlátozásokat is érvénybe lép. A Microsoft azt javasolja, hogy az általánosan elérhető időpontra vonatkozó visszaállítási funkció kihasználása érdekében válasszon egy olyan visszaállítási pontot, amely a 2020. szeptember 22-én egyenlő vagy annál újabb.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
@@ -158,13 +92,9 @@ A visszaállítási művelet költségeit a helyreállítási időszak során m�
 
 Az időponthoz tartozó visszaállítás díjszabásáról további információt a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakörben talál.
 
-## <a name="ask-questions-or-provide-feedback"></a>Kérdések feltevése vagy visszajelzés küldése
-
-Ha kérdéseket szeretne feltenni az időponthoz tartozó visszaállítás előzetes verziójával kapcsolatban, vagy visszajelzést szeretne küldeni, forduljon a Microsofthoz pitrdiscussion@microsoft.com .
-
 ## <a name="next-steps"></a>Következő lépések
 
-- [Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)](point-in-time-restore-manage.md)
-- [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
+- [Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben](point-in-time-restore-manage.md)
+- [A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage](storage-blob-change-feed.md)
 - [Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

@@ -1,15 +1,15 @@
 ---
 title: Személyre szabott erőforrás létrehozása
-description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre személyre szabott erőforrást a Azure Portal minden visszajelzési hurokhoz.
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ebd5496eb45ed007f47cd34761800f8b54e5a5a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7965fb1eaa3efbe1f47db4eedd88e4444b0e610b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501252"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985831"
 ---
 # <a name="create-a-personalizer-resource"></a>Személyre szabott erőforrás létrehozása
 
@@ -77,6 +77,6 @@ Hozzon létre egy személyre szabott erőforrást minden visszajelzési hurokhoz
 
     A Rank és a jutalom API-k használatához mind az erőforrás-végpontot, mind a kulcsot kell használnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Konfigurálás](how-to-settings.md) Személyre szabott tanulási hurok

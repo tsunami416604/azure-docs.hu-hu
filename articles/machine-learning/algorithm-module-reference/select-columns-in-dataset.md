@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153774"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890293"
 ---
 # <a name="select-columns-in-dataset-module"></a>Oszlopok kiválasztása az adatkészlet modulban
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal kiválaszthatja az alsóbb rétegbeli műveletekben használandó oszlopok egy részhalmazát. A modul nem távolítja el fizikailag az oszlopokat a forrás adatkészletből; Ehelyett egy adatbázis- *nézethez* vagy *kivetítéshez*hasonlóan az oszlopok egy részhalmazát hozza létre.
 
@@ -62,7 +62,7 @@ A modulban több lehetőség is van az oszlopok név szerinti kiválasztására:
     Ha az adatkészlet széles, egyszerűbb lehet az indexek vagy a generált Névlista használata ahelyett, hogy külön oszlopokat kellene kiválasztania. Feltételezve, hogy előkészítette a listát előre:
 
     1. Kattintson a **with Rules (szabályokkal** ) lehetőségre. 
-    2. Válassza a **nem oszlopok**lehetőséget, válassza a **Belefoglalás**lehetőséget, majd kattintson a piros felkiáltójelet tartalmazó szövegmezőbe. 
+    2. Válassza a **nem oszlopok**lehetőséget, válassza a  **Belefoglalás**lehetőséget, majd kattintson a piros felkiáltójelet tartalmazó szövegmezőbe. 
     3. Illessze be vagy írja be a korábban érvényesített oszlopnevek vesszővel tagolt listáját. A modul nem menthető, ha bármelyik oszlop érvénytelen névvel rendelkezik, ezért ügyeljen arra, hogy a neveket előre ellenőrizze.
     
     Ezzel a módszerrel az oszlopok listáját is megadhatja az index értékei alapján. 
@@ -110,6 +110,6 @@ Például a Col1, Col2, Col3 és Col4 oszlopokkal rendelkező adatkészletekben 
 + `4,3,1`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

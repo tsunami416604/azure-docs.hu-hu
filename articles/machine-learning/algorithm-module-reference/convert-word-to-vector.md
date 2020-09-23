@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753888"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898612"
 ---
 # <a name="convert-word-to-vector-module"></a>A Word átalakítása vektoros modulba
 
-Ez a cikk azt ismerteti, hogyan használható a Word átalakítása vektoros modul Azure Machine Learning Designerben (előzetes verzió) a következő feladatok végrehajtásához:
+Ez a cikk azt ismerteti, hogyan használható a Word konvertálása vektoros modul Azure Machine Learning Designerben a következő feladatok elvégzéséhez:
 
 - Alkalmazzon különböző Word2Vec-modelleket (Word2Vec, FastText, kesztyűs előképzéses modellt) a beírt szövegre, amelyet bemenetként adott meg.
 - Word-beágyazásokkal rendelkező szókincs létrehozása.
@@ -55,7 +55,7 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely egy szöveges oszlopot ta
 
     Mivel ez a modul szövegből hoz létre egy szókincset, az oszlopok tartalma eltér, ami különböző szókincs-tartalmakhoz vezet. Ezért a modul csak egy cél oszlopot fogad el.
 
-4. A **Word2Vec stratégia**esetében válasszon a következő, az **előképzésen átadott angol modellből**, a **Gensim Word2Vec**és a **Gensim FastText**.
+4. A  **Word2Vec stratégia**esetében válasszon a következő, az **előképzésen átadott angol modellből**, a **Gensim Word2Vec**és a **Gensim FastText**.
 
 5. Ha a **Word2Vec stratégia** a **Gensim Word2Vec** vagy a **Gensim FastText**:
 
@@ -93,7 +93,7 @@ A modul egy kimenettel rendelkezik:
 
 + **Beágyazást tartalmazó szókincs**: tartalmazza a generált szókincset, valamint az egyes szavak beágyazását. Az egyik dimenzió egy oszlopot foglal le.
 
-Az alábbi példa azt szemlélteti, hogyan működik a Word konvertálása vektoros modulra. Ez a modul a Azure Machine Learning (előzetes verzió) szolgáltatásban megadott, előfeldolgozott wikipedia SP 500 adatkészlet alapértelmezett beállításaival lesz alkalmazva.
+Az alábbi példa azt szemlélteti, hogyan működik a Word konvertálása vektoros modulra. Ez a modul az alapértelmezett beállításokkal lesz végrehajtva az előfeldolgozott wikipedia SP 500 adatkészlet Azure Machine Learningban.
 
 ### <a name="source-dataset"></a>Forrásadatkészlet
 
@@ -145,8 +145,8 @@ Ez a szakasz tippeket és válaszokat tartalmaz a gyakori kérdésekre.
     Az előre betanított modellek esetében a Word-beágyazások hossza rögzített. Ebben a megvalósításban a kesztyű beágyazásának mérete – wiki-gigaword-100, 100.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 
-A tervezői (előzetes) modulokra vonatkozó hibák listáját a [Machine learning hibakódok](designer-error-codes.md)című részben tekintheti meg.
+A Designer modulokra jellemző hibák listáját itt tekintheti meg: [Machine learning hibakódok](designer-error-codes.md).

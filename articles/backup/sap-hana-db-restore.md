@@ -1,14 +1,14 @@
 ---
 title: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
-description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure Virtual Machines-on futó SAP HANA adatbázisokat.
+description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure Virtual Machines-on futó SAP HANA adatbázisokat. Az adatbázisok másodlagos régióba való visszaállításához a régiók közötti visszaállítást is használhatja.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375312"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986083"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -249,6 +249,51 @@ Ha a **teljes & különbözetet** választotta a visszaállítási típusként, 
 
     > [!NOTE]
     > Több adatbázis-tárolóban (MDC) a rendszer visszaállítja a rendszeradatbázist a célként megadott példányra, az egyiknek újra kell futtatnia az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek. További információt a [Hibaelhárítás – MDC visszaállítás](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore)című témakörben talál.
+
+## <a name="cross-region-restore"></a>Régiók közötti visszaállítás
+
+A visszaállítási lehetőségek egyike, a tartományok közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépeken üzemeltetett SAP HANA adatbázisok visszaállítását egy másodlagos régióban, amely egy Azure párosított régió.
+
+Ha az előzetes verzióban szeretné bejelentkezni a szolgáltatásba, olvassa el az előkészületek [című szakaszt](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Ha szeretné megtekinteni, hogy a CRR engedélyezve van-e, kövesse a [tartományok közötti visszaállítás konfigurálása](backup-create-rs-vault.md#configure-cross-region-restore) című témakör útmutatását.
+
+### <a name="view-backup-items-in-secondary-region"></a>Biztonsági másolati elemek megtekintése a másodlagos régióban
+
+Ha a CRR engedélyezve van, megtekintheti a másodlagos régió biztonsági másolati elemeit.
+
+1. A portálon nyissa meg **Recovery Services**  >  **tároló biztonsági másolati elemeit**.
+1. Válassza a **másodlagos régió** elemet a másodlagos régió elemeinek megtekintéséhez.
+
+>[!NOTE]
+>A listában csak a CRR funkciót támogató biztonsági mentési felügyeleti típusok jelennek meg. Jelenleg csak a másodlagos régióba tartozó adatelemek másodlagos régióba való visszaállításának támogatása engedélyezett.
+
+![Biztonsági másolati elemek a másodlagos régióban](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![Adatbázisok a másodlagos régióban](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Visszaállítás másodlagos régióban
+
+A másodlagos régió visszaállítási felhasználói felülete hasonló lesz az elsődleges régió visszaállítási felhasználói felületéhez. Amikor konfigurálja a részleteket a visszaállítási konfiguráció ablaktáblán a visszaállítás konfigurálásához, a rendszer kérni fogja, hogy csak a másodlagos régió paramétereit adja meg.
+
+![Hol és hogyan kell visszaállítani?](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>A másodlagos régióban lévő virtuális hálózatot egyedi módon kell hozzárendelni, és nem használható az adott erőforráscsoport bármely más virtuális gépe számára.
+
+![Trigger visszaállítása folyamatban lévő értesítésben](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* A visszaállítás elindítása és az adatátviteli fázisban a visszaállítási feladatot nem lehet megszakítani.
+>* A másodlagos régióban való visszaállításhoz szükséges Azure-szerepkörök ugyanazok, mint az elsődleges régióban.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Másodlagos régió visszaállítási feladatainak figyelése
+
+1. A portálon nyissa meg **Recovery Services**-  >  **tároló biztonsági mentési feladatait**
+1. Válassza a **másodlagos régió** elemet a másodlagos régió elemeinek megtekintéséhez.
+
+    ![Biztonsági mentési feladatok szűrve](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

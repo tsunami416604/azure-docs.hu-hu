@@ -1,7 +1,7 @@
 ---
-title: Mi a magával ragadó olvasó API?
+title: Mi a magával ragadó olvasó?
 titleSuffix: Azure Cognitive Services
-description: A lebilincselő olvasó API egy olyan eszköz, amellyel a tanulási különbségekkel rendelkező személyeket, illetve az új olvasókat és nyelvi tanulókat is felhasználhatják.
+description: A lebilincselő olvasó egy olyan eszköz, amelynek célja, hogy segítse a tanulási különbségeket, vagy új olvasókat és nyelvi tanulókat felismerni.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,57 +10,72 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: cog-serv-seo-aug-2020
+keywords: olvasók, nyelvi tanulók, képek megjelenítése, az olvasás javítása, tartalom olvasása, fordítás
+ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267273"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985736"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az olvasó ügyféloldali kódtár használatával a Microsoft Wordben és a Microsoft egy megjegyzésében is használhatja a webalkalmazások fejlesztéséhez használt technológiát. 
 
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg a feltörekvő olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségek, például a diszlexia megismerése érdekében.
+## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>A kisegítő lehetőségek kihasználása az olvasóval 
 
-Webalkalmazásában a Modern olvasó SDK-jával használhatja a Modern olvasót.
+A lebilincselő olvasó úgy lett kialakítva, hogy mindenki számára megkönnyítse és könnyebben elérhetővé tegye az olvasót. Vessünk egy pillantást néhány lebilincselő olvasó alapszolgáltatására.
 
-## <a name="what-does-immersive-reader-do"></a>Mit tesz a magával ragadó olvasó?
+### <a name="isolate-content-for-improved-readability"></a>Tartalom elkülönítése a jobb olvashatóság érdekében
 
-A magával ragadó olvasó úgy lett kialakítva, hogy mindenki számára elérhetővé tegye az olvasót.
+A lebilincselő olvasó elszigeteli a tartalmat az olvashatóság javítása érdekében. 
 
-* A tartalom minimális olvasási nézetben való megjelenítése
+  ![Tartalom elkülönítése a jobb olvashatóság érdekében a magával ragadó olvasóval](./media/immersive-reader.png)
 
-  ![Modern olvasó](./media/immersive-reader.png)
+### <a name="display-pictures-for-common-words"></a>Képek megjelenítése a gyakori szavakhoz
 
-* Megjeleníti a gyakran használt szavak képeit
+A gyakran használt kifejezések esetében a lebilincselő olvasó egy képet jelenít meg.
 
-  ![KÉPszóTÁR](./media/picture-dictionary.png)
+  ![A képet tartalmazó szótár magával ragadó olvasóval](./media/picture-dictionary.png)
 
-* Kiemelt nevek, igék, melléknevek és határozószók
+### <a name="highlight-parts-of-speech"></a>A beszédfelismerés részeinek kiemelése
 
-  ![A beszéd részei](./media/parts-of-speech.png)
+A lebilincselő olvasó segítségével a tanulók megismerhetik a beszéd és a nyelvtan egyes részeit, és kiemelheti a műveleteket, a névmásokat, a névmásokat és egyebeket.
 
-* Hangosan beolvassa a tartalmat
+  ![A beszéd egyes részeinek megjelenítése magával ragadó olvasóval](./media/parts-of-speech.png)
 
-  ![Hangosan olvasása](./media/read-aloud.png)
+### <a name="read-content-aloud"></a>Tartalom olvasása hangosan
 
-* Lefordítja a tartalmat egy másik nyelvre
+A beszédfelismerés (vagy szövegről beszédre) bekerül a lebilincselő olvasó szolgáltatásba, amely lehetővé teszi, hogy az olvasók hangosan felolvassák a szöveget. 
 
-  ![Fordítás](./media/translation.png)
+  ![Szöveg felolvasása a magára olvasóval](./media/read-aloud.png)
 
-* Megszakítja a szavakat szótagokra
+### <a name="translate-content-in-real-time"></a>Tartalom valós idejű fordítása
 
-  ![Syllabification](./media/syllabification.png)
+A lebilincselő olvasó számos nyelvre képes valós időben lefordítani a szöveget. Ez hasznos lehet az új nyelvet tanuló olvasóinak megértéséhez.
+
+  ![Szöveg lefordítása magába ejtő olvasóval](./media/translation.png)
+
+### <a name="split-words-into-syllables"></a>Szavak felosztása szótagokra
+
+A magával ragadó olvasóval a szavakat szótagokra lehet bontani az olvashatóság javítása vagy az új szavak kijavítása érdekében.
+
+  ![Szavak kibontása a szótagokra magával ragadó olvasóval](./media/syllabification.png)
 
 ## <a name="how-does-immersive-reader-work"></a>Hogyan működik a alámerülés olvasó?
 
-A részletes olvasó egy önálló webalkalmazás, amely a saját webalkalmazásának a használatával történő meghívásakor jelenik meg a meglévő webalkalmazáson keresztül `iframe` . Amikor meghívja az API-t, hogy elindítsa a lebilincselő olvasót, megadhatja, hogy milyen tartalmat szeretne megjeleníteni a lebilincselő olvasóban. Az SDK kezeli a és a kommunikáció létrehozását és stílusát `iframe` az olvasói háttérrendszer-szolgáltatással, amely a beszéd részeire, szövegről beszédre, fordításra és egyebekre dolgozza fel a tartalmat.
+A lebilincselő olvasó egy önálló webalkalmazás. Ha a meghívja az olvasó ügyféloldali függvénytárát, a meglévő webalkalmazás tetején jelenik meg `iframe` . Amikor a WEP-alkalmazás meghívja az olvasó szolgáltatást, megadja a tartalmat az olvasó megjelenítéséhez. A lebilincselő olvasó ügyféloldali kódtár kezeli a `iframe` és a kommunikációt az olvasói háttérrendszer-szolgáltatással. A magával ragadó olvasó szolgáltatás feldolgozza a tartalmat a beszédfelismerés, a szöveg és a fordítás között, és így tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="get-started-with-immersive-reader"></a>Ismerkedés a lebilincselő olvasóval
+
+A gördülékeny olvasó ügyféloldali kódtára C#, JavaScript, Java (Android), Kotlin (Android) és Swift (iOS) rendszeren érhető el. Első lépések:
+
+* [Rövid útmutató: az olvasó ügyféloldali függvénytárának használata](quickstarts/client-libraries.md)
+
+## <a name="next-steps"></a>Következő lépések
 
 A Modern olvasó használatának első lépései:
 
-* Ugrás [a gyors](./quickstarts/client-libraries.md?pivots=programming-language-csharp) üzembe helyezésre
-* Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
-* Olvassa el a [magára olvasó SDK-referenciát](./reference.md)
+* Az [olvasói ügyféloldali függvénytár-referenciájának](./reference.md) elolvasása
+* Ismerje [meg az olvasói ügyféloldali kódtárat a githubon](https://github.com/microsoft/immersive-reader-sdk)

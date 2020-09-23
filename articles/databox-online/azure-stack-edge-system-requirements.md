@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge rendszerre vonatkozó követelmények | Microsoft Docs
-description: Az Azure Stack Edge szoftver-és hálózatkezelési követelményeinek megismerése
+title: Microsoft Azure Stack Edge Pro rendszerkövetelményei | Microsoft Docs
+description: Tudnivalók a Azure Stack Edge Pro szoftver-és hálózatkezelési követelményeiről
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 921dcb05401c61a9fb581595c20112e67f696c5e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371302"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883512"
 ---
-# <a name="azure-stack-edge-system-requirements"></a>Azure Stack Edge rendszerkövetelményei
+# <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro rendszerkövetelményei
 
-Ez a cikk ismerteti az Microsoft Azure Stack Edge-megoldás és az Azure Stack Edge-hez csatlakozó ügyfelek fontos rendszerkövetelményeit. Javasoljuk, hogy figyelmesen tekintse át az információkat az Azure Stack Edge üzembe helyezése előtt. Az üzembe helyezés és az azt követő művelet során szükség szerint visszatérhet ezekre az adatokra.
+Ez a cikk ismerteti az Microsoft Azure Stack Edge Pro-megoldás és a Azure Stack Edge Pro-hoz csatlakozó ügyfelek fontos rendszerkövetelményeit. Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt telepítené a Azure Stack Edge Pro-t. Az üzembe helyezés és az azt követő művelet során szükség szerint visszatérhet ezekre az adatokra.
 
-Az Azure Stack Edge rendszerkövetelményei a következők:
+Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 
 - A **gazdagépek szoftveres követelményei** – a támogatott platformokat, a helyi konfiguráció felhasználói felületének böngészőit, az SMB-ügyfeleket, valamint az eszközt elérő ügyfelekre vonatkozó további követelményeket ismerteti.
 - **Az eszköz hálózati követelményei** – információt nyújt a fizikai eszköz működésével kapcsolatos hálózati követelményekről.
@@ -46,9 +46,9 @@ Az Azure Stack Edge rendszerkövetelményei a következők:
 
 ## <a name="networking-port-requirements"></a>Hálózati portokra vonatkozó követelmények
 
-### <a name="port-requirements-for-azure-stack-edge"></a>A Azure Stack Edge portjának követelményei
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>A Azure Stack Edge Pro portjának követelményei
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy az Azure stack Edge-eszköz külsőleg, az üzembe helyezésen túl, például az internet felé irányuló adatokat küld.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimeneti* állapot arra utal, hogy az Azure stack Edge *Pro-eszköz* külsőleg, az üzembe helyezésen túl, például az interneten keresztül küldi az adatokat.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -60,15 +60,15 @@ Használja a következő táblázatot a port konfigurálásához a Azure IoT Edg
 
 | Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutató |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
+| TCP 443 (HTTPS)| Ki       | WAN        | Yes      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
 
 A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
 ## <a name="url-patterns-for-firewall-rules"></a>Tűzfalszabályok URL-mintái
 
-A hálózati rendszergazdák gyakran konfigurálhatják a speciális tűzfalszabályok alapján a bejövő és a kimenő forgalom szűrésére szolgáló URL-mintákat. Az Azure Stack Edge-eszköz és a szolgáltatás más Microsoft-alkalmazásokkal (például Azure Service Bus, Azure Active Directory Access Control, Storage-fiókokkal és Microsoft Update-kiszolgálókkal függ. Az ezekhez az alkalmazásokhoz társított URL-mintákat a tűzfalszabályok konfigurálására lehet használni. Fontos megérteni, hogy az alkalmazásokhoz társított URL-minták megváltoztathatók. Ezekhez a változásokhoz a hálózati rendszergazdának kell megfigyelnie és frissítenie a tűzfal szabályait az Azure Stack Edge-ben és amikor szükséges.
+A hálózati rendszergazdák gyakran konfigurálhatják a speciális tűzfalszabályok alapján a bejövő és a kimenő forgalom szűrésére szolgáló URL-mintákat. Az Azure Stack Edge Pro-eszköz és a szolgáltatás más Microsoft-alkalmazásokkal, például Azure Service Bus, Azure Active Directory Access Control, Storage-fiókokkal és Microsoft Update-kiszolgálókkal függ. Az ezekhez az alkalmazásokhoz társított URL-mintákat a tűzfalszabályok konfigurálására lehet használni. Fontos megérteni, hogy az alkalmazásokhoz társított URL-minták megváltoztathatók. Ezekhez a változásokhoz a hálózati rendszergazdának kell megfigyelnie és frissítenie a Azure Stack Edge Pro-ra vonatkozó tűzfalszabályok beállításait, és szükség esetén.
 
-Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge rögzített IP-címei alapján állítsa be a tűzfal szabályait a kimenő forgalomra vonatkozóan. Az alábbi információk segítségével azonban megadhatja a biztonságos környezetek létrehozásához szükséges speciális tűzfalszabályok beállításait is.
+Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge Pro fix IP-címek alapján állítsa be a tűzfalszabályok a kimenő forgalomra vonatkozóan. Az alábbi információk segítségével azonban megadhatja a biztonságos környezetek létrehozásához szükséges speciális tűzfalszabályok beállításait is.
 
 > [!NOTE]
 > - Az eszköz (forrás) IP-címeit mindig az összes felhőalapú hálózati adapterre kell beállítani.
@@ -104,7 +104,7 @@ Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge rögzített IP-címei ala
 
 ## <a name="compute-sizing-considerations"></a>Számítási méretezési szempontok
 
-A megoldás fejlesztésével és tesztelésével gondoskodhat arról, hogy elegendő kapacitás legyen a Azure Stack Edge-eszközön, és hogy az eszköz optimális teljesítményű legyen.
+A megoldás fejlesztésével és tesztelésével gondoskodhat arról, hogy elegendő kapacitás legyen a Azure Stack Edge Pro-eszközön, és hogy az eszköz optimális teljesítményét kapja.
 
 Az alábbi tényezőket érdemes figyelembe venni:
 
@@ -123,16 +123,16 @@ A megoldás teljesítményének megismeréséhez és pontosításához használh
 - A Azure Portalben elérhető számítási mérőszámok. Nyissa meg az Azure Stack Edge-erőforrást, és válassza a **figyelés > metrikák**lehetőséget. Tekintse meg az **Edge számítási memória használatának** és a **peremhálózati számítási kapacitásának százalékos arányát** , hogy megismerje a rendelkezésre álló erőforrásokat és a felhasznált erőforrásokat.
 - Az eszköz PowerShell-felületén keresztül elérhető figyelési parancsok, például:
 
-    - `dkr`statisztika a tároló (k) erőforrás-használati statisztikáinak élő streambe való beszerzéséhez. A parancs támogatja a PROCESSZORt, a memóriahasználat, a memória korlátját és a hálózati IO-metrikákat.
-    - `dkr system df`a felhasznált lemezterület mennyiségére vonatkozó információk lekérése. 
-    - `dkr image [prune]`a fel nem használt rendszerképek tisztítása és a szabad terület felszabadítása.
-    - `dkr ps --size`egy futó tároló hozzávetőleges méretének megtekintéséhez. 
+    - `dkr` statisztika a tároló (k) erőforrás-használati statisztikáinak élő streambe való beszerzéséhez. A parancs támogatja a PROCESSZORt, a memóriahasználat, a memória korlátját és a hálózati IO-metrikákat.
+    - `dkr system df` a felhasznált lemezterület mennyiségére vonatkozó információk lekérése. 
+    - `dkr image [prune]` a fel nem használt rendszerképek tisztítása és a szabad terület felszabadítása.
+    - `dkr ps --size` egy futó tároló hozzávetőleges méretének megtekintéséhez. 
 
     Az elérhető parancsokról további információt a következő témakörben olvashat: a [számítási modulok figyelése és hibáinak megoldása](azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 
-Végezetül ellenőrizze, hogy az adatkészleten érvényesíti-e a megoldást, és az éles környezetben való üzembe helyezés előtt számszerűsítse Azure Stack Edge teljesítményét.
+Végezetül ellenőrizze, hogy az adatkészleten érvényesíti-e a megoldást, és az éles környezetben való üzembe helyezés előtt számszerűsítse Azure Stack Edge Pro teljesítményét.
 
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Az Azure Stack Edge üzembe helyezése](azure-stack-edge-deploy-prep.md)
+- [Az Azure Stack Edge Pro üzembe helyezése](azure-stack-edge-deploy-prep.md)

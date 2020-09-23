@@ -1,6 +1,6 @@
 ---
 title: A klasszikusról Azure Resource Managerre való Migrálás megtervezése
-description: Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése
+description: Ebből a cikkből megtudhatja, hogyan tervezheti meg a IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítését Linux rendszeren.
 services: virtual-machines-linux
 author: tanmaygore
 manager: vashan
@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: bb8045e8986ce52b6dddf63421edaa34243ea5df
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 496d58ee76e678e2529914ff2c586ce46bb01a92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506447"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967677"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésének megtervezése Linux rendszeren
 
@@ -153,7 +153,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
 - Ne használja a parancsikonokat, és hagyja ki a száraz futtatások ellenőrzése/előkészítése/megszakítása műveleteit.
 - A lehetséges problémák többsége az érvényesítési/előkészítési/megszakítási lépések során felszínre kerül.
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technikai megfontolások és kompromisszumok
 
@@ -201,7 +201,7 @@ Legyen céltudatos, hogy milyen szolgáltatásokat szeretne engedélyezni a Azur
 Ne feledje, miért kezdte meg ezt a klasszikus Azure Resource Manager áttelepítési útra.  Mi volt az eredeti üzleti ok? Sikerült elérni az üzleti okot?
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

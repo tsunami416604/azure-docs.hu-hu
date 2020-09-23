@@ -1,0 +1,86 @@
+---
+title: Azure arc-adatkezelő törlése
+description: Azure arc-adatkezelő törlése
+services: azure-arc
+ms.service: azure-arc
+ms.subservice: azure-arc-data
+author: twright-msft
+ms.author: twright
+ms.reviewer: mikeray
+ms.date: 09/22/2020
+ms.topic: how-to
+ms.openlocfilehash: 2bae661218989d49b74ed8ca3f694ccb912ef912
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90936041"
+---
+# <a name="delete-azure-arc-data-controller"></a>Azure arc-adatkezelő törlése
+
+A következő cikk az Azure arc-adatkezelők törlését ismerteti.
+
+A folytatás előtt győződjön meg arról, hogy az adatvezérlőn létrehozott összes adatszolgáltatás el lett távolítva a következő módon:
+
+## <a name="log-in-to-the-data-controller"></a>Bejelentkezés az adatvezérlőbe
+
+Jelentkezzen be a törölni kívánt adatkezelőbe:
+
+```
+azdata login
+```
+
+## <a name="list--delete-existing-data-services"></a>Meglévő adatszolgáltatások törlése &
+
+A következő parancs futtatásával ellenőrizze, hogy van-e létrehozva SQL felügyelt példány:
+
+```
+azdata arc sql mi list
+```
+
+A fenti listából minden egyes felügyelt SQL-példány esetében futtassa a DELETE parancsot a következő módon:
+
+```
+azdata arc sql mi delete -n <name>
+# for example: azdata arc sql mi delete -n sqlinstance1
+```
+
+Hasonlóképpen, a PostgreSQL nagy kapacitású-példányok kereséséhez futtassa a következőt:
+
+```
+azdata arc postgres server list
+```
+
+És minden PostgreSQL nagy kapacitású-példány esetében futtassa a DELETE parancsot a következő módon:
+```
+azdata arc postgres server delete -n <name>
+# for example: azdata arc postgres server delete -n pg1
+```
+
+## <a name="delete-controller"></a>Vezérlő törlése
+
+Miután az SQL felügyelt példányai és a PostgreSQL nagy kapacitású példányai el lettek távolítva, az adatvezérlőt a következőképpen törölheti:
+
+```
+azdata arc dc delete -n <name> -ns <namespace>
+# for example: azdata arc dc delete -ns arc -n arcdc
+```
+
+### <a name="remove-sccs-red-hat-openshift-only"></a>SCCs eltávolítása (csak Red Hat OpenShift)
+
+```console
+oc adm policy remove-scc-from-user privileged -z default -n arc
+oc adm policy remove-scc-from-user anyuid     -z default -n arc
+```
+
+### <a name="optionally-delete-the-azure-arc-data-controller-namespace"></a>Szükség esetén törölheti az Azure arc-adatvezérlő névterét
+
+
+```console
+kubectl delete ns <nameSpecifiedDuringCreation>
+# for example kubectl delete ns arc
+```
+
+## <a name="next-steps"></a>Következő lépések
+
+[Mik azok az Azure Arc-kompatibilis adatszolgáltatások?](overview.md)

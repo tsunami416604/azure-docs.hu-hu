@@ -4,12 +4,12 @@ description: Áttekintést nyújt a Azure Backup szolgáltatásról, valamint ar
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 9954c8fa6affca7d2c2b73d7176280587d749476
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017889"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968338"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi az az Azure App Service?
 
@@ -24,6 +24,7 @@ Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony me
 - **Azure Files megosztások**  -  [Azure-fájlmegosztás biztonsági mentése egy Storage-fiókba](backup-afs.md)
 - **SQL Server Azure-beli virtuális gépeken**  -   [Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentése](backup-azure-sql-database.md)
 - **Adatbázisok SAP HANA Azure-beli virtuális gépeken**  -  [Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentése](backup-azure-sap-hana-database.md)
+- **Azure Database for PostgreSQL-kiszolgálók (előzetes verzió)**  -   [Készítsen biztonsági mentést az Azure PostgreSQL-adatbázisokról, és őrizze meg a biztonsági mentéseket akár 10 évig](backup-azure-database-postgresql.md)
 
 ![Azure Backup áttekintése](./media/backup-overview/azure-backup-overview.png)
 
@@ -43,8 +44,9 @@ A Azure Backup a következő kulcsfontosságú előnyöket nyújtja:
 - **Rövid és hosszú távú adatok megőrzése**: [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tárolókat használhat a rövid és hosszú távú adatmegőrzéshez.
 - **Automatikus tárolófelügyelet** – A hibrid környezetek gyakran megkövetelik a heterogén tárhely alkalmazását – valamennyi tárhely szükséges a helyszínen, valamennyi a felhőben. Azure Backup esetén a helyszíni tárolóeszközök használata díjmentes. Az Azure Backup automatikusan foglalja le és kezeli a Backup-tárolót, és használatalapú modellt alkalmaz. Így csak a felhasznált tárterületért kell fizetnie. [További](https://azure.microsoft.com/pricing/details/backup) információ a díjszabásról.
 - **Több tárolási lehetőség** – a Azure Backup kétféle replikálási lehetőséget kínál a tárterület/az adatmennyiség nagyfokú rendelkezésre állásának megőrzésére.
-  - A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md) háromszor replikálja az adatait (az adatait három példányban hozza létre) egy adatközpont tárolási méretezési egységében. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
-  - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
+  - A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) háromszor replikálja az adatait (az adatait három példányban hozza létre) egy adatközpont tárolási méretezési egységében. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
+  - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
+  - A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja az adatait, és biztosítja az adattárolást és a rugalmasságot ugyanabban a régióban. A ZRS nem rendelkezik állásidővel. Így az [adattárolást](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)igénylő kritikus fontosságú munkaterhelések, valamint az állásidő nélkül is készíthető biztonsági mentés a ZRS-ben.
 
 ## <a name="next-steps"></a>Következő lépések
 

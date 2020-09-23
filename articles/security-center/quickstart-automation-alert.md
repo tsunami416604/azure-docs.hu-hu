@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: ecef318978194ac3773c54e2d9c960781086de65
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906352"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Gyors útmutató: automatikus válasz létrehozása egy adott biztonsági riasztáshoz egy Azure Resource Manager sablon (ARM-sablon) használatával
 
@@ -73,9 +73,7 @@ A Azure Portal használatával győződjön meg arról, hogy telepítve van a Mu
 1. [A Azure Portal](https://portal.azure.com)nyissa meg **Security Center**.
 1. A felső menüsorban kattintson a szűrő ikonra, és válassza ki azt az előfizetést, amelyre az új munkafolyamat-automatizálást telepítette.
 1. A Security Center oldalsávján nyissa meg a **munkafolyamat-automatizálást** , és keresse meg az új automatizálást.
-
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Képhelyettesítő szöveg" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Konfigurált automatizálások listája" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > Ha az előfizetése számos munkafolyamat-automatizálással rendelkezik, használja a **szűrés név alapján** lehetőséget. 
 
@@ -86,14 +84,12 @@ Ha már nincs rá szükség, törölje a munkafolyamat-automatizálást a Azure 
 1. [A Azure Portal](https://portal.azure.com)nyissa meg **Security Center**.
 1. A felső menüsorban kattintson a szűrő ikonra, és válassza ki azt az előfizetést, amelyre az új munkafolyamat-automatizálást telepítette.
 1. A Security Center oldalsávján nyissa meg a **munkafolyamatok automatizálását** , és keresse meg a törölni kívánt automatizálást.
-
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Képhelyettesítő szöveg" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="A Munkafolyamat-automatizálás eltávolításának lépései" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Jelölje be a törölni kívánt elem jelölőnégyzetét.
-1. Az eszköztáron válassza a Törlés lehetőséget.
+1. Az eszköztáron válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

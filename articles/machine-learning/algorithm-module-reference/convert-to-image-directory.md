@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171142"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898696"
 ---
 # <a name="convert-to-image-directory"></a>Átalakítás képkönyvtárrá
 
-Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a kép könyvtára adattípusra a képfájl konvertálása a rendszerkép-címtárba, amely szabványosított adatformátumot tartalmaz a képekhez kapcsolódó feladatokban, például a Azure Machine Learning Designerben (előzetes verzió) képbesorolásban.
+Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a Képkönyvtár típusú adattípusra a képfájl konvertálása a rendszerkép-címtárba, amely szabványosított adatformátumot tartalmaz a rendszerképekhez kapcsolódó feladatokban, például a képbesorolásban Azure Machine Learning Designerben.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Az átalakítás Rendszerképbeli könyvtárba való használata  
 
@@ -50,7 +50,7 @@ Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a kép könyvtá
 
 3.  A folyamat elküldése.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formátumú, és csatlakoztatható más rendszerképhez kapcsolódó modulokhoz, amelyekben a bemeneti port formátuma is a rendszerkép könyvtára.
 
@@ -68,6 +68,6 @@ A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formát
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

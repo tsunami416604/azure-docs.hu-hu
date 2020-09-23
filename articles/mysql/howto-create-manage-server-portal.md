@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: dfca1eb2eebe4418880be9da67e250bbc6e380a9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a9dba7c85ded7add1a9f1494d88a3f8a1f62f175
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882450"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure Database for MySQL-kiszolgáló kezelése a Azure Portal használatával
 
@@ -37,7 +37,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 2. Válassza ki az **általános célú** vagy a **memória optimalizált**elemet attól függően, hogy mit kíván méretezni.
 
-   ![A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for MySQL](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for MySQL":::
 
    > [!NOTE]
    > A rétegek módosítása a kiszolgáló újraindítását eredményezi.
@@ -50,7 +50,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 2. Módosítsa a **virtuális mag** beállítást úgy, hogy áthelyezi a csúszkát a kívánt értékre.
 
-    ![Képernyőkép a Azure Portalról a virtuális mag lehetőség kiválasztásához Azure Database for MySQL](./media/howto-create-manage-server-portal/scaling-compute.png)
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Képernyőkép a Azure Portalról a virtuális mag lehetőség kiválasztásához Azure Database for MySQL":::
 
     > [!NOTE]
     > A skálázás virtuális mag a kiszolgáló újraindítását okozza.
@@ -63,7 +63,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 2. Módosítsa a **tárolási** beállításokat úgy, hogy a csúszkát felfelé helyezi a kívánt értékre.
 
-   ![Képernyőfelvétel a Azure Portal a tárolási skála kiválasztásához Azure Database for MySQL](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Képernyőfelvétel a Azure Portal a tárolási skála kiválasztásához Azure Database for MySQL":::
 
    > [!NOTE]
    > A tárterület nem méretezhető le.
@@ -76,11 +76,11 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 
 1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
 
-   ![Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához Azure Database for MySQL](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához Azure Database for MySQL":::
 
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
-   ![Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához és a mentéshez Azure Database for MySQL](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához és a mentéshez Azure Database for MySQL":::
 
 3. Az új jelszó mentéséhez kattintson **az OK gombra** .
 
@@ -90,11 +90,11 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 
 1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
 
-   ![Képernyőkép a Azure Portalről a kiszolgáló törléséhez Azure Database for MySQL](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Képernyőkép a Azure Portalről a kiszolgáló törléséhez Azure Database for MySQL":::
 
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy ez a kiszolgáló, amelyet törölni szeretne.
 
-   ![Képernyőkép a Azure Portalről a kiszolgáló törlésének megerősítéséhez Azure Database for MySQL](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Képernyőkép a Azure Portalről a kiszolgáló törlésének megerősítéséhez Azure Database for MySQL":::
 
    > [!NOTE]
    > A kiszolgáló törlése visszafordíthatatlan.

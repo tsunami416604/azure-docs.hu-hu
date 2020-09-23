@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401724"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986581"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
@@ -299,7 +299,7 @@ Az ismétlődés ütemezése Eseményindítóban megadhatja az időzónát és a
 
 A munkafolyamat-konfiguráció végén megtekintheti az ismétlődés gyakoriságának konzisztenciáját, ha a munkafolyamatot néhányszor futtatja, majd ellenőrzi az eredményt a **futtatások előzményeiben**.
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Ismétlődés" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="A képernyőképen az ismétlődési időköz és a gyakoriság értékei láthatók." lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. feladatok létrehozása
 
@@ -320,7 +320,7 @@ A logikai alkalmazások más alkalmazásokhoz, szolgáltatásokhoz és platformo
 
 5. A **feladat létrehozása** lapon az egyszerű szolgáltatásnak rendelkeznie kell a "Reader" szerepkörrel az Automation-fiókot futtató **erőforráscsoporthoz** , és az Automation- **fiók**"Automation-feladat operátora". Továbbá győződjön meg arról, hogy a **Runbook neve** új paraméterként lett hozzáadva.
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Szerepkörök" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="A képernyőfelvételen a feladatok értékének ismétlődése látható, ahol ellenőrizheti a Runbook nevét." lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. a feladatok kimenetének beolvasása
 
@@ -343,7 +343,7 @@ A "Azure Automation Create Job Action" (előző lépések) kimenetében találha
 
 3. Kattintson a **Content (tartalom** ) mezőre. Amikor megjelenik a dinamikus tartalom lista, válassza a **tartalom**elemet.
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Tartalom" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Képernyőfelvétel: a JSON-elemzés párbeszédpanel, ahol a tartalom ki van választva." lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. A JSON-elemzéshez sémára van szükség. A séma az Automation-runbook kimenetének használatával hozható létre. Nyisson meg egy új webböngésző-munkamenetet, futtassa az Automation runbook, és ragadja meg a kimenetet. Térjen vissza az **Logic apps JSON-adatok** elemzése művelethez. A lap alján válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
 
@@ -363,7 +363,7 @@ A munkafolyamat ezen lépésében létrehozunk egy feltételt, amely e-mailben k
 
 1. A **feladatok kimenetének beolvasása művelet**alatt válassza az **új lépés**lehetőséget. A keresőmezőbe keresse meg és válassza ki a **változókat**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Változók":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="A képernyőképen megjelenik a művelet kiválasztása párbeszédpanel, amely változóval rendelkezik a keresőmezőbe, és a kiválasztott változók szerepelnek a listában.":::
 
 2. A **műveletek** listából válassza a **változó inicializálása** műveletet.
 
@@ -371,7 +371,7 @@ A munkafolyamat ezen lépésében létrehozunk egy feltételt, amely e-mailben k
 
 3. Adja meg a változó nevét. A **Típus mezőben**válassza a **karakterlánc**lehetőséget. A változó **értéke** később lesz hozzárendelve a munkafolyamatban.
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Sztring" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="A képernyőképen az inicializálási változóhoz társított elemzési JSON látható, ahol megadhatja a nevet, a típust és az értéket." lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. hozzon létre egy "for each" műveletet
 
@@ -379,7 +379,7 @@ A JSON elemzését követően a JSON- **adatok** elemzése művelet a *törzs* k
 
 1. A **változó inicializálása**területen válassza **a művelet hozzáadása**lehetőséget. A keresőmezőbe írja be a "for each" kifejezést a szűrőként.
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Vezérlés":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Képernyőfelvétel: a művelet kiválasztása párbeszédpanel, amely a keresési mezőben és a kijelölt vezérlőelemben is megjelenik.":::
 
 2. A **műveletek** listából válassza ki az **egyes vezérlők**műveleteit.
 
@@ -387,7 +387,7 @@ A JSON elemzését követően a JSON- **adatok** elemzése művelet a *törzs* k
 
 3. Kattintson a **Kimenet kiválasztása az előző lépésekből** szövegmezőbe. Amikor megjelenik a **dinamikus tartalom** lista, válassza ki a **törzset**, amely az elemzett JSON kimenete.
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Törzs":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Képernyőfelvétel: az egyesekhez társított inicializált változó, amely tartalmazza az előző lépések kimenetének kiválasztása szövegmezőt.":::
 
 4. A JSON-törzs minden eleméhez meg kell határozni egy feltételt. A műveleti csoportban válassza a **vezérlés**lehetőséget.
 

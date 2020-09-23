@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935687"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976492"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Rugalmasság és vész-helyreállítás az Azure Signaler szolgáltatásban
 
@@ -42,7 +42,7 @@ Ha azonban az ügyfél csatlakoztatva van, az optimális hálózati késés érd
 
 Alább látható egy diagram, amely a következő topológiát szemlélteti:
 
-![topology](media/signalr-concept-disaster-recovery/topology.png)
+![A diagram két olyan régiót mutat be, amelyek mindegyike egy alkalmazás-kiszolgálóval és egy Signaler szolgáltatással rendelkezik, ahol az egyes kiszolgálók a régiójában elsődlegesként és a másik régióban lévő szolgáltatással társítva vannak.](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Az alkalmazások kiszolgálóinak konfigurálása több Signaler szolgáltatás-példányokkal
 
@@ -132,7 +132,7 @@ Ha a használni kívánt mintákat nem számítja ki, akkor az egyes szignáló 
 A Signaler-kapcsolatok jellegéből adódóan (ez egy hosszú csatlakozás), az ügyfelek a kapcsolódást akkor fogják tapasztalni, ha katasztrófa és feladatátvétel történik.
 Ezeket az eseteket az ügyféloldali oldalon kell kezelnie ahhoz, hogy transzparensek legyenek a végfelhasználók számára. Tegyük fel például, hogy újracsatlakozik a kapcsolat lezárása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja az alkalmazást, hogy rugalmasságot biztosítson a Signaler szolgáltatás számára. Ha többet szeretne megtudni a kiszolgálóról/az ügyfél kapcsolatáról és a kapcsolati útválasztásról a Signaler szolgáltatásban, olvassa el [ezt a cikket](signalr-concept-internals.md) a signaler szolgáltatás belső szolgáltatásaihoz.
 

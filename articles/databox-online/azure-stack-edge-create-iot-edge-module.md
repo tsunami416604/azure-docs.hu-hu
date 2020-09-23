@@ -1,6 +1,6 @@
 ---
-title: C# IoT Edge modul Azure Stack Edge-hez | Microsoft Docs
-description: Ismerje meg, hogyan fejleszthet egy C# IoT Edge modult, amely az Azure Stack Edge-ben telepíthető.
+title: C# IoT Edge modul Azure Stack Edge Pro-hoz | Microsoft Docs
+description: Megtudhatja, hogyan fejleszthet C# IoT Edge modult, amely a Azure Stack Edge Pro-ra telepíthető.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,36 +9,36 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8cea74ec24efa7562caab5074d87d436cddaffb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8acbc7eec7581adcf0d73ffcd4bb2aa7ab2dd572
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018484"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883500"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge-ben való áthelyezéséhez
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge Pro-ban való áthelyezéséhez
 
-Ez a cikk bemutatja, hogyan hozhat létre IoT Edge modult az Azure Stack Edge-eszközzel történő üzembe helyezéshez. Az Azure Stack Edge egy tárolási megoldás, amely lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba.
+Ez a cikk bemutatja, hogyan hozhat létre IoT Edge modult az Azure Stack Edge Pro-eszközzel történő üzembe helyezéshez. Az Azure Stack Edge Pro egy tárolási megoldás, amely lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldést az Azure-ba.
 
-Az Azure-ba való áttelepítése során Azure IoT Edge modulokat használhat a Azure Stack Edge használatával. A cikkben használt modul azt a logikát valósítja meg, hogy egy helyi megosztásból származó fájlt egy Felhőbeli megosztásra másoljon az Azure Stack Edge-eszközön.
+Az Azure-ba való áttelepítése során Azure IoT Edge modulokat használhat a Azure Stack Edge Pro-val. A cikkben használt modul azt a logikát valósítja meg, hogy egy helyi megosztásból származó fájlt egy Felhőbeli megosztásra másoljon a Azure Stack Edge Pro-eszközön.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 >
 > * Hozzon létre egy tároló-beállításjegyzéket a modulok tárolásához és kezeléséhez (Docker-lemezképek).
-> * Hozzon létre egy IoT Edge modult az Azure Stack Edge-eszközön való üzembe helyezéshez. 
+> * Hozzon létre egy IoT Edge modult az Azure Stack Edge Pro-eszközön való üzembe helyezéshez. 
 
 
 ## <a name="about-the-iot-edge-module"></a>Tudnivalók a IoT Edge modulról
 
-Az Azure Stack Edge-eszköz IoT Edge modulokat telepíthet és futtathat. Az Edge-modulok lényegében olyan Docker-tárolók, amelyek egy adott feladatot hajtanak végre, például üzeneteket töltenek le egy eszközről, átalakítanak egy üzenetet, vagy üzeneteket küldenek egy IoT Hubnak. Ebben a cikkben egy olyan modult fog létrehozni, amely egy helyi megosztásból másol fájlokat egy felhőalapú megosztásra az Azure Stack Edge-eszközön.
+Az Azure Stack Edge Pro-eszközön IoT Edge modulokat helyezhet üzembe és futtathat. Az Edge-modulok lényegében olyan Docker-tárolók, amelyek egy adott feladatot hajtanak végre, például üzeneteket töltenek le egy eszközről, átalakítanak egy üzenetet, vagy üzeneteket küldenek egy IoT Hubnak. Ebben a cikkben egy olyan modult fog létrehozni, amely egy helyi megosztásból másol fájlokat egy felhőalapú megosztásra az Azure Stack Edge Pro-eszközön.
 
-1. A fájlok a Azure Stack peremhálózati eszköz helyi megosztására íródnak.
+1. A fájlok a Azure Stack Edge Pro-eszköz helyi megosztására íródnak.
 2. A fájl esemény-előállítója létrehoz egy fájl eseményt a helyi megosztásba írt minden fájlhoz. A fájlra vonatkozó eseményeket a rendszer a fájl módosításakor is létrehozza. A rendszer ezután elküldi a fájl eseményeit IoT Edge hubhoz (IoT Edge futtatókörnyezetben).
 3. A IoT Edge egyéni modul feldolgozza a fájl eseményt, hogy létrehozzon egy fájl-esemény objektumot, amely a fájl relatív elérési útját is tartalmazza. A modul egy abszolút elérési utat generál a fájl relatív elérési útjával, és átmásolja a fájlt a helyi megosztásról a Felhőbeli megosztásra. A modul ezután törli a fájlt a helyi megosztásról.
 
-![Azure IoT Edge modul működése Azure Stack Edge-ben](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
+![Azure IoT Edge modul működése Azure Stack Edge Pro-ban](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
 
 Ha a fájl a Felhőbeli megosztásban van, a rendszer automatikusan feltölti az Azure Storage-fiókjába.
 
@@ -46,11 +46,11 @@ Ha a fájl a Felhőbeli megosztásban van, a rendszer automatikusan feltölti az
 
 Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy rendszert futtató Azure Stack Edge-eszköz.
+- Egy rendszert futtató Azure Stack Edge Pro-eszköz.
 
     - Az eszközhöz hozzá van rendelve IoT Hub erőforrás is.
     - Az eszközön van konfigurált peremhálózati számítási szerepkör.
-    További információért látogasson el a Azure Stack Edge [számításának beállítása](azure-stack-edge-deploy-configure-compute.md#configure-compute) című témakörre.
+    További információért látogasson el a Azure Stack Edge Pro számítási szolgáltatásának [beállítása](azure-stack-edge-deploy-configure-compute.md#configure-compute) című témakörre.
 
 - A következő fejlesztői erőforrások:
 
@@ -65,7 +65,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker beállításjegyzék-szolgáltatás Azure Container Registry és a Docker hub. Ez a cikk a Container Registry használja.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Create** (Létrehozás) gombra.
+2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 3. Nyújt
 
    1. Egy egyedi, az Azure-ban található, 5 – 50 alfanumerikus karaktert tartalmazó **beállításjegyzékbeli név** .
@@ -278,4 +278,4 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 ## <a name="next-steps"></a>Következő lépések
 
-A modul Azure Stack Edge-ben való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](azure-stack-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.
+A modul Azure Stack Edge Pro platformon való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](azure-stack-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.

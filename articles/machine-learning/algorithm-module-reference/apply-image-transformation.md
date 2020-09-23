@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450723"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898907"
 ---
 # <a name="apply-image-transformation"></a>Képátalakítás alkalmazása 
 
-Ez a cikk azt ismerteti, hogyan használható a rendszerkép-átalakítási modul alkalmazása a Azure Machine Learning Designerben (előzetes verzió), hogy a korábban megadott rendszerkép-átalakítás alapján módosítson egy bemeneti képkönyvtárat.  
+Ez a cikk azt ismerteti, hogyan használható a rendszerkép-átalakítási modul alkalmazása a Azure Machine Learning Designerben, hogy a rendszer egy előzőleg megadott rendszerkép-átalakítás alapján módosítsa a bemeneti képkönyvtárat.  
 
 Az átalakítás megadásához kapcsolódnia kell egy [init rendszerkép-transzformációs](init-image-transformation.md) modullal, majd az átalakítást alkalmazhatja a rendszerkép-átalakítási modul bemeneti rendszerkép könyvtárába.
 
@@ -47,23 +47,23 @@ Az átalakítás megadásához kapcsolódnia kell egy [init rendszerkép-transzf
 
 ### <a name="module-parameters"></a>Modul paramétereinek
 
-| Name | Tartomány | Típus | Alapértelmezett                   | Description                              |
+| Name | Tartomány | Típus | Alapértelmezett                   | Leírás                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | Mód | Bármelyik   | Mód | (Meg kell adni a felhasználót a megadásához) | Milyen célra használja a bemeneti átalakítást. Érdemes kizárni a "véletlenszerű" átalakítási műveleteket a következtetésekben, de megtarthatja őket a képzésben |
 
 ### <a name="expected-inputs"></a>Várt bemenetek  
 
-| Name                       | Típus                    | Description                       |
+| Név                       | Típus                    | Leírás                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Bemeneti rendszerkép átalakítása | TransformationDirectory | Bemeneti rendszerkép átalakítása        |
 | Bemeneti rendszerkép könyvtára      | ImageDirectory          | Átalakítandó Képkönyvtár |
 
 ### <a name="outputs"></a>Kimenetek  
 
-| Name                   | Típus           | Description            |
+| Név                   | Típus           | Leírás            |
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

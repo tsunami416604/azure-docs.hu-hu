@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure app Configuration szolgáltatáshoz
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure-alkalmazások konfigurációjában. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: cdbae6e3df72ec27b8679667f0205049c8974bfc
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: bb0b78605d0f8015d3019e29a152a44c65331287
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007485"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986756"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Az Azure app Configuration Azure Policy beépített definíciói
 

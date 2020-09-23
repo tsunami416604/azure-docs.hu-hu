@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77209426"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976282"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
@@ -122,7 +122,7 @@ Használja a kapcsolódáshoz megadott engedélyezési kulcsot és az áramköri
 
 1. A ExpressRoute lapon kattintson a **+ engedélyezési kulcs beváltása** elemre.
 
-   ![beváltása](./media/virtual-wan-expressroute-portal/redeem.png "beváltása")
+   ![A képernyőképen egy virtuális központ ExpressRoute látható, ahol be van jelölve a beváltás engedélyezési kulcsa.](./media/virtual-wan-expressroute-portal/redeem.png "beváltása")
 2. Az engedélyezési kulcs beváltása lapon adja meg az értékeket.
 
    ![kulcs értékének beváltása](./media/virtual-wan-expressroute-portal/redeemkey2.png "kulcs értékének beváltása")

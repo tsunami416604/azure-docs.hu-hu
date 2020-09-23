@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414584"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905137"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Mélyreható tanulás és gépi tanulás
 
@@ -26,7 +26,7 @@ Ez a cikk segítséget nyújt a Deep learning és a Machine learning összehason
 
 Vegye figyelembe a következő definíciókat a Deep learning és a Machine learning és a AI megismerése érdekében:
 
-- A **Deep learning** a gépi tanulás egy olyan részhalmaza, amely mesterséges neurális hálózatokon alapul. A _tanulási folyamat_ _mély_ , mert a mesterséges neurális hálózatok szerkezete több bemeneti, kimeneti és rejtett rétegből áll. Minden réteg olyan egységeket tartalmaz, amelyek átalakítja a bemeneti adatokat olyan adatokba, amelyeket a következő réteg használhat egy adott prediktív feladathoz. Ennek a struktúrának köszönhetően a gépek saját adatfeldolgozással is megismerhetik.
+- A **Deep learning** a gépi tanulás egy olyan részhalmaza, amely mesterséges neurális hálózatokon alapul. A _tanulási folyamat_ _mély_ , mert a mesterséges neurális hálózatok szerkezete több bemeneti, kimeneti és rejtett rétegből áll. Mindegyik réteg egységekből épül fel, amelyek a bemenetet olyan információvá alakítják át, amelyet a következő réteg egy adott prediktív feladat elvégzéséhez fel tud használni. Ennek a struktúrának köszönhetően a gépek saját adatfeldolgozással is megismerhetik.
 
 - A **gépi tanulás** a mesterséges intelligencia olyan részhalmaza, amely technikákat használ (például a mély tanulást), amely lehetővé teszi a gépek számára, hogy a feladatok fejlesztéséhez használják a felhasználói élményt. A _tanulási folyamat_ a következő lépéseken alapul:
 
@@ -96,7 +96,7 @@ A következő fejezetek a legnépszerűbb mesterséges neurális hálózati tipo
 
 ### <a name="feedforward-neural-network"></a>Feedforward neurális hálózat
 
-A feedforward neurális hálózat a mesterséges neurális hálózat legalapvetőbb típusa. Egy feedforward-hálózatban az adatok csak egy irányba mozdulnak el a bemeneti rétegből a kimeneti rétegbe. A Feedforward neurális hálózatokat a rendszer a rejtett rétegek sorozatán keresztül alakítja át. Minden réteg idegsejtekből tevődik össze, és minden réteg teljesen csatlakoztatva van a rétegben lévő összes neuronokhoz. Az utolsó teljesen csatlakoztatott réteg (a kimeneti réteg) a generált előrejelzéseket jelöli.
+A feedforward neurális hálózat a mesterséges neurális hálózat legegyszerűebb típusa. Egy feedforward-hálózatban az adatok csak egy irányba mozdulnak el a bemeneti rétegből a kimeneti rétegbe. A Feedforward neurális hálózatokat a rendszer a rejtett rétegek sorozatán keresztül alakítja át. Minden réteg idegsejtekből tevődik össze, és minden réteg teljesen csatlakoztatva van a rétegben lévő összes neuronokhoz. Az utolsó teljesen csatlakoztatott réteg (a kimeneti réteg) a generált előrejelzéseket jelöli.
 
 ### <a name="recurrent-neural-network"></a>Visszatérő neurális hálózat
 
@@ -108,7 +108,7 @@ A többrendszeres neurális hálózat egy különösen hatékony mesterséges ne
 
 A többszintű neurális hálózatok olyan területeken lettek felhasználva, mint a videó-felismerés, a képfelismerés és az ajánlott rendszerek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
 

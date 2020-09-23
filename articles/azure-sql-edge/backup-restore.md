@@ -1,6 +1,6 @@
 ---
-title: Adatbázisok biztonsági mentése és visszaállítása – Azure SQL Edge (előzetes verzió)
-description: Ismerje meg a biztonsági mentési és visszaállítási képességeket az Azure SQL Edge (előzetes verzió) szolgáltatásban.
+title: Adatbázisok biztonsági mentése és visszaállítása – Azure SQL Edge
+description: Az Azure SQL Edge biztonsági mentési és visszaállítási képességeinek megismerése.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667862"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905955"
 ---
-# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Adatbázisok biztonsági mentése és visszaállítása az Azure SQL Edge-ben (előzetes verzió) 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Adatbázisok biztonsági mentése és visszaállítása az Azure SQL Edge-ben 
 
-Az Azure SQL Edge a Microsoft SQL Server adatbázismotor legújabb verziójára épül Linux rendszeren. Hasonló biztonsági mentési és helyreállítási adatbázis-képességeket biztosít, mint a SQL Server on Linux és SQL Server tárolókban futók. A biztonsági mentési és visszaállítási összetevő alapvető védelmet biztosít az Azure SQL Edge-adatbázisokban tárolt adatok védelméhez. 
+Az Azure SQL Edge a Microsoft SQL Database motor legújabb verzióira épül. Hasonló biztonsági mentési és helyreállítási adatbázis-képességeket biztosít, mint a SQL Server on Linux és SQL Server tárolókban futók. A biztonsági mentési és visszaállítási összetevő alapvető védelmet biztosít az Azure SQL Edge-adatbázisokban tárolt adatok védelméhez. 
 
 A katasztrofális adatvesztés kockázatának csökkentése érdekében rendszeresen készítsen biztonsági másolatot az adatbázisokról, hogy rendszeresen őrizze meg az adatait. Egy jól megtervezett biztonsági mentési és visszaállítási stratégia segít megvédeni az adatbázisokat a különböző hibák által okozott adatvesztéstől. Tesztelje a stratégiát úgy, hogy visszaállítja a biztonsági mentéseket, majd helyreállítja az adatbázist, hogy felkészüljön a vészhelyzetre való reagálásra.
 
@@ -75,7 +75,7 @@ A következő példában a `BACKUP DATABASE` Transact-SQL parancs használatáva
 
 ### <a name="back-up-to-url"></a>Biztonsági mentés az URL-címre
 
-Az Azure SQL Edge a blobok és a Blobok blokkolására is támogatja a biztonsági mentést. További információ: [biztonsági mentés a blob vs oldal blobjának letiltásához](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob). A következő példában az adatbázis *IronOreSilicaPrediction* biztonsági másolat készül egy blokk-blobba. 
+Az Azure SQL Edge a blobok és a Blobok blokkolására is támogatja a biztonsági mentést. További információ: [biztonsági mentés a blob vs oldal blobjának letiltásához](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob). A következő példában az adatbázis *IronOreSilicaPrediction* biztonsági másolat készül egy blokk-blobba. 
 
 1. A Blobok blokkolása érdekében a biztonsági másolatok konfigurálásához először hozzon létre egy közös hozzáférésű aláírási (SAS) tokent, amelynek segítségével SQL Server hitelesítő adatokat hozhat létre az Azure SQL Edge-ben. A parancsfájl egy tárolt hozzáférési házirenddel társított SAS-t hoz létre. További információt [a közös hozzáférésű aláírások, 1. rész: az SAS-modell megismerése című részben](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)talál. A parancsfájl a T-SQL-parancsot is írja a hitelesítő adatok SQL Server való létrehozásához. A következő parancsfájl azt feltételezi, hogy már rendelkezik egy Storage-fiókkal rendelkező Azure-előfizetéssel, valamint a biztonsági mentések tárolására szolgáló tárolóval.
 
@@ -133,7 +133,10 @@ Az Azure SQL Edge a blobok és a Blobok blokkolására is támogatja a biztonsá
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Adatbázis visszaállítása az Azure SQL Edge-ben
 
-Az Azure SQL Edge-ben egy helyi lemezről, egy hálózati helyről vagy egy Azure Blob Storage-fiókból lehet visszaállítani. A SQL Server visszaállításával és helyreállításával kapcsolatos további információkért tekintse meg a [visszaállítás és helyreállítás áttekintése](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)című témakört. Az SQL Server egyszerű helyreállítási modelljének áttekintését lásd: az adatbázis-visszaállítások [befejezése (egyszerű helyreállítási modell)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15).
+Az Azure SQL Edge-ben egy helyi lemezről, egy hálózati helyről vagy egy Azure Blob Storage-fiókból lehet visszaállítani. A SQL Server visszaállításával és helyreállításával kapcsolatos további információkért tekintse meg a [visszaállítás és helyreállítás áttekintése](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)című témakört. Az SQL Server egyszerű helyreállítási modelljének áttekintését lásd: az adatbázis-visszaállítások [befejezése (egyszerű helyreállítási modell)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
+
+> [!IMPORTANT] 
+> Az Azure SQL Edge-ben létrehozott adatbázisok nem állíthatók vissza Microsoft SQL Server vagy Azure SQL-példányon. Emellett a Microsoft SQL Server vagy az Azure SQL-ben létrehozott adatbázis visszaállítható az Azure SQL Edge-ben, ha az adatbázis nem tartalmazza az Azure SQL Edge által nem támogatott szolgáltatásokat. 
 
 ### <a name="restore-from-a-local-disk"></a>Visszaállítás helyi lemezről
 

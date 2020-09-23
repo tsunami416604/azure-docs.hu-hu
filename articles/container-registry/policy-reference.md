@@ -1,18 +1,18 @@
 ---
 title: A Azure Container Registry beépített szabályzat-definíciói
 description: A Azure Container Registry Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 061354d5e454764ef17eaf393549f5de75efd0af
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fb0788b2ecb560fa42f21b77e2f7db210007fb52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007383"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985730"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>A Azure Container Registry beépített definíciói Azure Policy
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749614"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905721"
 ---
 # <a name="train-anomaly-detection-model-module"></a>A Train rendellenesség észlelési modell modulja
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) Train rendellenesség-észlelési modell modulja egy betanított anomália-észlelési modell létrehozásához.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben a Train rendellenesség-észlelési modell modul a betanított anomáliák észlelési modelljének létrehozásához.
 
 A modul bemenetként egy anomália-észlelési modell és egy címkézetlen adatkészlet paramétereit adja meg. Egy betanított anomália-észlelési modellt ad vissza, amely a betanítási adatokhoz tartozó címkék készletével együtt.  
 
@@ -49,9 +49,9 @@ A betanítás befejezése után:
 + A betanított modell pillanatképének mentéséhez válassza ki a modult. Ezután válassza az **adatkészlet regisztrálása** ikont a jobb oldali panel **outputs + naplók** lapján.   
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 
-A Designer modulokra jellemző hibák listáját [a tervező (előzetes verzió) kivételei és hibakódai](designer-error-codes.md) részben tekintheti meg.
+A Designer modulokra jellemző hibák listáját lásd: [kivételek és hibakódok a tervezőhöz](designer-error-codes.md) .
 '

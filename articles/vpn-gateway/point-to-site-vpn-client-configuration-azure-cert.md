@@ -1,19 +1,19 @@
 ---
 title: 'A P2S VPN-ügyfél konfigurációs fájljainak létrehozása & telepítése: tanúsítványalapú hitelesítés'
 titleSuffix: Azure VPN Gateway
-description: Windows, Linux, Linux (alapú strongswan) és Mac OS X VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése a P2S-tanúsítvány hitelesítéséhez.
+description: Windows, Linux, Linux (alapú strongswan) és macOS X VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése a P2S-tanúsítványok hitelesítéséhez.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420778"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986636"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése az Azure natív tanúsítványalapú hitelesítést használó pont–hely kapcsolatokhoz
 
@@ -96,7 +96,7 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
 
    Az **illesztőfelület** értéke "VPN", a **VPN-típus** értéke pedig "IKEv2". Adja meg a profil nevét a **szolgáltatás neve** mezőben, majd kattintson a **Létrehozás** elemre a VPN-ügyfél kapcsolati profiljának létrehozásához.
 
-   ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![A képernyőfelvételen a hálózat ablakban választhat egy felületet, válassza a VPN-típus lehetőséget, majd adja meg a szolgáltatás nevét.](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. Az **általános** mappában, a **VpnSettings.xml** fájlból másolja a **VpnServer** címke értékét. Illessze be ezt az értéket a profil **kiszolgáló címe** és a **Távoli azonosító** mezőibe.
 
    ![kiszolgáló adatai](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,14 +106,14 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
 
    * A Catalina esetében válassza a **nincs** , majd a **tanúsítvány**lehetőséget. **Válassza ki** a megfelelő tanúsítványt:
    
-   ![Catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   ![Képernyőfelvétel: a hálózati ablak, amely nincs kiválasztva a hitelesítési beállításokra és a tanúsítvány kiválasztására.](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. Kattintson a **kijelölés...** lehetőségre. Válassza ki a hitelesítéshez használni kívánt ügyféltanúsítványt. Ez az a tanúsítvány, amelyet a 2. lépésben telepített.
 
-   ![tanúsítvány](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![A képernyőfelvételen a hálózati ablak a hitelesítési beállításokkal látható, ahol kiválaszthat egy tanúsítványt.](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Válasszon ki egy identitást** a tanúsítványok listájának megjelenítéséhez. Válassza ki a megfelelő tanúsítványt, majd kattintson a **Continue (folytatás**) gombra.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![Képernyőfelvétel: az identitás kiválasztása párbeszédpanel, ahol kiválaszthatja a megfelelő tanúsítványt.](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. A **helyi azonosító** mezőben adja meg a tanúsítvány nevét (a 6. lépésből). Ebben a példában ez a "ikev2Client.com". Ezután kattintson az **Apply (alkalmaz** ) gombra a módosítások mentéséhez.
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -213,4 +213,4 @@ A [P2S-konfiguráció befejezéséhez](vpn-gateway-howto-point-to-site-rm-ps.md)
 A P2S-kapcsolatok hibáinak megoldásához tekintse meg a következő cikkeket:
 
   * [Azure pont – hely kapcsolatok hibaelhárítása](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [Mac OS X VPN-ügyfelektől érkező VPN-kapcsolatok hibáinak megoldása](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+  * [A macOS X VPN-ügyfelektől érkező VPN-kapcsolatok hibáinak megoldása](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

@@ -11,17 +11,17 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647226"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905617"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan futtathatja a Azure Machine Learning modellt párhuzamosan, gyorsan nagy mennyiségű adat kiértékelésével. 
+
+Ebből a cikkből megtudhatja, hogyan futtathatja Azure Machine Learning-modelljét párhuzamosan, gyorsan értékelve nagy mennyiségű adatot. 
 
 A nagyméretű adathalmazokra vagy bonyolult modellekkel való következtetés időigényes lehet. A `ParallelRunStep` osztály lehetővé teszi, hogy párhuzamosan hajtsa végre a feldolgozást, ami a teljes eredmények gyorsabb elérését eredményezheti. Még akkor is, ha az egyszeri értékelés futtatása meglehetősen gyors, sok esetben (objektumok észlelése, videó-feldolgozás, természetes nyelvi feldolgozás stb.) számos értékelés futtatására van szükség. 
 

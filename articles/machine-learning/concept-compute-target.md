@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 08f1d1e0ca1936b30db968dde5d7f6f2e6104cf8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883197"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -59,7 +59,7 @@ A következő esetekben hozhat létre Azure Machine Learning számítási péld�
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, más típusú számítási céloktól eltérően.
 
 
-|A képességeik  |Számítási fürt  |Számítási példány  |
+|Képesség  |Számítási fürt  |Számítási példány  |
 |---------|---------|---------|
 |Egy vagy több csomópontos fürt     |    **&check;**       |         |
 |Minden alkalommal, amikor elküld egy futtatást     |     **&check;**      |         |
@@ -68,7 +68,7 @@ Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkate
 
 
 > [!NOTE]
-> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) a többletköltség elkerülése érdekében. 
+> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](concept-compute-instance.md#managing-a-compute-instance) a többletköltség elkerülése érdekében. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
 
@@ -82,19 +82,19 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| T | Nincs |
-| Dv2 | Nincs |  
-| DSv2 | Nincs |  
-| FSv2 | Nincs | 
+| T | Nincsenek |
+| Dv2 | Nincsenek |  
+| DSv2 | Nincsenek |  
+| FSv2 | Nincsenek | 
 | HBv2 | Jóváhagyást igényel |  
 | HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel |  
 | M | Jóváhagyást igényel |
-| NC | Nincs |    
+| NC | Nincsenek |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | Nincs |
+| NV | Nincsenek |
 | NVv3 | Jóváhagyást igényel | 
 
 
