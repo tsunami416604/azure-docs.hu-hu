@@ -1,6 +1,6 @@
 ---
 title: Hozzáférési csomag életciklus-beállításainak módosítása az Azure AD-jogosultságok kezelésében – Azure Active Directory
-description: Megtudhatja, hogyan módosíthatja a hozzáférési csomag életciklus-beállításait Azure Active Directory jogosultságok kezelése során.
+description: Megtudhatja, hogyan módosíthatja a kérelmező adatait & életciklus-beállításait egy hozzáférési csomaghoz Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,18 +16,21 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c628c3c1f11cb973176e7a689856b64177036c9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798698"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980123"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag életciklus-beállításainak módosítása az Azure AD-jogosultságok kezelésében
 
 Hozzáférés-csomagkezelőként bármikor módosíthatja egy hozzáférési csomag életciklus-beállításait egy meglévő szabályzat szerkesztésével. Ha módosítja egy házirend lejárati dátumát, a függőben lévő jóváhagyás vagy jóváhagyott állapotú kérelmek lejárati dátuma nem változik.
 
 Ez a cikk egy meglévő hozzáférési csomag életciklus-beállításainak módosítását ismerteti.
+
+## <a name="open-requestor-information"></a>A kérelmező adatainak megnyitása
+Annak biztosítása érdekében, hogy a felhasználók hozzáférjenek a hozzáférési csomagokhoz, az egyéni kérdéseket úgy is konfigurálhatja, hogy kérjenek bizonyos hozzáférési csomagokhoz hozzáférést kérő felhasználókat. A konfigurációs beállítások többek között a következők: honosítás, kötelező/nem kötelező, és szöveg/feleletválasztós válaszok formátuma. A kérelmező a csomag és a jóváhagyók kérése során megjelenő kérdéseket láthatja a kérdésekre adott válaszokban, amelyek segítenek a döntés meghozatalában. A következő lépésekkel konfigurálhatja a kérdéseket egy hozzáférési csomagban:
 
 ## <a name="open-lifecycle-settings"></a>Életciklus-beállítások megnyitása
 
@@ -53,6 +56,6 @@ Egy hozzáférési csomag életciklus-beállításainak módosításához meg ke
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag kérelem-és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md)

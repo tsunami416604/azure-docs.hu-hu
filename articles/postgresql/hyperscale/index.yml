@@ -1,0 +1,94 @@
+### YamlMime:Landing
+title: Az Azure Database for PostgreSQL – rugalmas skálázás (Citus) dokumentációja
+summary: Az Azure Database for PostgreSQL egy teljeskörűen felügyelt adatbázis-szolgáltatás, amely a nyílt forráskódú Postgres relációsadatbázis-motoron alapul. A Rugalmas skálázás (Citus) üzembehelyezési beállítás több gépen méretezi a lekérdezéseket horizontális skálázás segítségével, és nagyobb méretet és teljesítményt igénylő alkalmazásokat szolgál ki.
+metadata:
+  description: Az Azure Database for PostgreSQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapul.
+  author: jonels-msft
+  ms.author: jonels
+  ms.date: 09/27/2020
+  ms.service: postgresql
+  ms.subservice: hyperscale-citus
+  ms.topic: landing-page
+  ms.openlocfilehash: 20e99db5f380ee24cf88987a7884292ca47f7e1e
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928845"
+landingContent:
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kiszolgálócsoport létrehozása az Azure Portalon
+      url: ../quickstart-create-hyperscale-portal.md
+  - linkListType: concept
+    links:
+    - text: Kiszolgálócsoport-csomópontok és táblák
+      url: ../concepts-hyperscale-nodes.md
+  - linkListType: tutorial
+    links:
+    - text: Több-bérlős adatbázis tervezése
+      url: ../tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Valós idejű elemzési irányítópult tervezése
+      url: ../tutorial-design-database-hyperscale-realtime.md
+- title: Csatlakozás és lekérdezés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A tűzfal ismertetése
+      url: ../concepts-hyperscale-firewall-rules.md
+    - text: TLS konfigurálása
+      url: ../concepts-hyperscale-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tűzfalszabályok
+      url: ../howto-hyperscale-manage-firewall-using-portal.md
+    - text: Kapcsolati problémák hibaelhárítása
+      url: ../howto-hyperscale-troubleshoot-common-connection-issues.md
+- title: Méretezés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Csomópontok és táblák
+      url: ../concepts-hyperscale-nodes.md
+    - text: Elosztási oszlopok kiválasztása
+      url: ../concepts-hyperscale-choose-distribution-column.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kiszolgálócsoport mérete
+      url: ../howto-hyperscale-scaling.md
+    - text: Táblák elosztása
+      url: ../howto-hyperscale-modify-distributed-tables.md
+    - text: Riasztások létrehozása metrikákhoz
+      url: ../howto-hyperscale-alert-on-metric.md
+- title: Felügyelet
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Biztonsági mentés és visszaállítás
+      url: ../concepts-hyperscale-backup.md
+    - text: Figyelés és hangolás
+      url: ../concepts-hyperscale-monitoring.md
+    - text: Magas rendelkezésre állás
+      url: ../concepts-hyperscale-high-availability.md
+    - text: Fenntartott kapacitás
+      url: ../concepts-hyperscale-reserved-pricing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adatbázis-felhasználók létrehozása
+      url: ../howto-hyperscale-create-users.md
+    - text: Magas rendelkezésre állás konfigurálása
+      url: ../howto-hyperscale-high-availability.md
+    - text: Hozzáférés az adatbázisnaplókhoz
+      url: ../howto-hyperscale-logging.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: SQL API-függvények
+      url: ../reference-hyperscale-functions.md
+    - text: Kiszolgálóparaméterek
+      url: ../reference-hyperscale-parameters.md
+    - text: Rendszertáblák
+      url: ../reference-hyperscale-metadata.md

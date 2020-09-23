@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge-eszköz csatlakoztatása és kezelése a Windows PowerShell felületén keresztül | Microsoft Docs
-description: Ismerteti, hogyan csatlakozhat a szolgáltatáshoz, majd hogyan felügyelheti Azure Stack Edge-t a Windows PowerShell felületén keresztül.
+title: Microsoft Azure Stack Edge Pro-eszköz csatlakoztatása és kezelése a Windows PowerShell felületén keresztül | Microsoft Docs
+description: Ismerteti, hogyan csatlakozhat, majd felügyelheti Azure Stack Edge Pro-t a Windows PowerShell felületén keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313218"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894416"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Azure Stack Edge-eszköz kezelése a Windows PowerShell használatával
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Azure Stack Edge Pro-eszköz kezelése a Windows PowerShell használatával
 
-Azure Stack Edge-megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk az Azure Stack Edge-eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
+Azure Stack Edge Pro-megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk az Azure Stack Edge Pro-eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
 Ez a cikk a PowerShell-felületet használó feladatokra összpontosít. 
 
 Ez a cikk az alábbi eljárásokat tartalmazza:
 
-- Kapcsolódás a PowerShell felületéhez
+- Csatlakozás a PowerShell-felülethez
 - Támogatási csomag létrehozása
 - Tanúsítvány feltöltése
 - Az eszköz alaphelyzetbe állítása
@@ -31,7 +31,7 @@ Ez a cikk az alábbi eljárásokat tartalmazza:
 - Számítási naplók beolvasása
 - Számítási modulok figyelése és hibakeresése
 
-## <a name="connect-to-the-powershell-interface"></a>Kapcsolódás a PowerShell felületéhez
+## <a name="connect-to-the-powershell-interface"></a>Csatlakozás a PowerShell-felülethez
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -43,7 +43,7 @@ Ez a cikk az alábbi eljárásokat tartalmazza:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-IoT Edge tanúsítványokat is feltölthet, hogy biztonságos kapcsolatot lehessen létesíteni a IoT Edge-eszköz és a hozzájuk kapcsolódó alsóbb rétegbeli eszközök között. Három IoT Edge tanúsítvány (*. PEM* formátum) szükséges a telepítéséhez:
+IoT Edge-tanúsítványokat is feltölthet, hogy biztonságos kapcsolatot lehessen létesíteni az IoT Edge-eszköz és a hozzá kapcsolódó, alsóbb rétegbeli eszközök között. Három IoT Edge tanúsítvány (*. PEM* formátum) szükséges a telepítéséhez:
 
 - Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a tulajdonos HITELESÍTÉSSZOLGÁLTATÓja
 - Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
@@ -92,6 +92,6 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a számítási nap
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure stack Edge](azure-stack-edge-deploy-prep.md) üzembe helyezése Azure Portalban.
+- [Azure stack Edge Pro](azure-stack-edge-deploy-prep.md) üzembe helyezése Azure Portalban.

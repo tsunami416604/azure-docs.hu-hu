@@ -1,6 +1,6 @@
 ---
-title: Kubernetes állapot nélküli alkalmazás üzembe helyezése Azure Stack Edge GPU-eszközön a kubectl használatával | Microsoft Docs
-description: Útmutatás az állapot nélküli Kubernetes létrehozásához és kezeléséhez a kubectl használatával Microsoft Azure Stack peremhálózati eszközön.
+title: Kubernetes állapot nélküli alkalmazás üzembe helyezése Azure Stack Edge Pro GPU-eszközön a kubectl használatával | Microsoft Docs
+description: Ismerteti, hogyan hozhat létre és kezelhet Kubernetes állapot nélküli alkalmazások telepítését Microsoft Azure Stack Edge Pro-eszközön a kubectl használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268859"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890739"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Kubernetes állapot nélküli alkalmazás üzembe helyezése az Azure Stack Edge GPU-eszközön a kubectl használatával
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes állapot nélküli alkalmazás üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a kubectl használatával
 
 Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy állapot nélküli alkalmazást egy meglévő Kubernetes-fürtön lévő kubectl-parancsokkal. Ez a cikk végigvezeti a hüvelyek állapot nélküli alkalmazásokban való létrehozásának és beállításának folyamatán is.
 
@@ -23,13 +23,13 @@ Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy állapot nélküli alkalma
 
 A Kubernetes-fürt létrehozása és a `kubectl` parancssori eszköz használata előtt gondoskodnia kell a következőkről:
 
-- A hitelesítő adatok egy 1 csomópontos Azure Stack peremhálózati eszközhöz vannak bejelentkezett.
+- A bejelentkezési hitelesítő adatok egy 1 csomópontos Azure Stack Edge Pro-eszközhöz tartoznak.
 
-- A Windows PowerShell 5,0-es vagy újabb verziója telepítve van egy Windows rendszerű ügyfélszámítógépre az Azure Stack Edge-eszköz eléréséhez. Bármely más ügyfél támogatott operációs rendszerrel is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a [Windows PowerShell telepítését](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- A Windows PowerShell 5,0-es vagy újabb verziója Windows-ügyfélre van telepítve az Azure Stack Edge Pro-eszköz eléréséhez. Bármely más ügyfél támogatott operációs rendszerrel is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a [Windows PowerShell telepítését](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
 
-- A számítás engedélyezve van az Azure Stack peremhálózati eszközön. A számítás engedélyezéséhez lépjen a **számítási** lapra az eszköz helyi felhasználói felületén. Ezután válasszon ki egy hálózati adaptert, amelyet engedélyezni szeretne a számítási feladatokhoz. Válassza az **Engedélyezés** lehetőséget. A számítási eredmények lehetővé teszik, hogy az eszközön egy virtuális kapcsolót hozzanak létre az adott hálózati adapteren. További információ: a [számítási hálózat engedélyezése a Azure stack Edge](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)-ben.
+- A számítási funkció engedélyezve van az Azure Stack Edge Pro-eszközön. A számítás engedélyezéséhez lépjen a **számítási** lapra az eszköz helyi felhasználói felületén. Ezután válasszon ki egy hálózati adaptert, amelyet engedélyezni szeretne a számítási feladatokhoz. Válassza az **Engedélyezés** lehetőséget. A számítási eredmények lehetővé teszik, hogy az eszközön egy virtuális kapcsolót hozzanak létre az adott hálózati adapteren. További információ: a [számítási hálózat engedélyezése a Azure stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)-ban.
 
-- Az Azure Stack Edge-eszközön egy, a v 1.9-es vagy újabb verzióját futtató Kubernetes-fürt található. További információ: [Kubernetes-fürt létrehozása és kezelése Microsoft Azure stack peremhálózati eszközön](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- Az Azure Stack Edge Pro-eszközön egy, a v 1.9-es vagy újabb verzióját futtató Kubernetes-fürt található. További információ: [Kubernetes-fürt létrehozása és kezelése Microsoft Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 - Telepítette `kubectl` .
 
@@ -43,7 +43,7 @@ A Kezdés előtt a következőket kell tennie:
 4. A felhasználó konfigurációjának mentése a következőre: `C:\Users\<username>\.kube` .
 5. Telepítve `kubectl` .
 
-Most már megkezdheti az állapot nélküli alkalmazások központi telepítésének futtatását egy Azure Stack peremhálózati eszközön. A használatának megkezdése előtt `kubectl` ellenőriznie kell, hogy a megfelelő verziójú-e `kubectl` .
+Most már megkezdheti az állapot nélküli alkalmazások üzembe helyezésének és kezelésének megkezdését egy Azure Stack Edge Pro rendszerű eszközön. A használatának megkezdése előtt `kubectl` ellenőriznie kell, hogy a megfelelő verziójú-e `kubectl` .
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>Ellenőrizze, hogy rendelkezik-e a kubectl megfelelő verziójával, és állítsa be a konfigurációt
 
@@ -109,7 +109,7 @@ A pod egy Kubernetes-alkalmazás alapszintű végrehajtási egysége, a Kubernet
 
 A létrehozott állapot nélküli alkalmazás típusa egy Nginx webkiszolgáló-telepítés.
 
-Az állapot nélküli alkalmazások központi telepítésének létrehozásához és kezeléséhez használt összes kubectl-parancsnak meg kell adnia a konfigurációhoz társított névteret. A névteret a fürthöz való csatlakozáskor hozta létre a Azure Stack Edge eszközön a [Kubernetes-fürt létrehozása és kezelése Microsoft Azure stack Edge-eszközön](azure-stack-edge-gpu-create-kubernetes-cluster.md) című oktatóanyagban `New-HcsKubernetesNamespace` .
+Az állapot nélküli alkalmazások központi telepítésének létrehozásához és kezeléséhez használt összes kubectl-parancsnak meg kell adnia a konfigurációhoz társított névteret. A névteret a Azure Stack Edge Pro eszközön a fürthöz való csatlakozáskor hozta létre a [Kubernetes-fürt létrehozása és kezelése Microsoft Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-create-kubernetes-cluster.md) című oktatóanyagban `New-HcsKubernetesNamespace` .
 
 A névtér kubectl-parancsban való megadásához használja a következőt: `kubectl <command> -n <namespace-string>` .
 
@@ -361,6 +361,6 @@ PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
 deployment.extensions "nginx-deployment" deleted
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Kubernetes áttekintése](azure-stack-edge-gpu-kubernetes-overview.md)

@@ -10,21 +10,20 @@ author: saachigopal
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2289a761d4e266c305c2868e9f234871624ae528
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893115"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Modell betanítása egyéni Docker-rendszerkép használatával
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhat egyéni Docker-rendszerképet a modellek Azure Machine Learning használatával történő betanításakor. 
 
 Az ebben a cikkben szereplő szkriptek a PET-képek besorolására szolgálnak. 
 
-Míg Azure Machine Learning biztosít egy alapértelmezett Docker-alapképet, a Azure Machine Learning környezetekben is megadhat egy adott alapképet, például az Azure ML-alapú karbantartott [alapképek](https://github.com/Azure/AzureML-Containers) egyikét vagy a saját [Egyéni rendszerképét](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image). Az egyéni alaplemezképek lehetővé teszik a függőségek kezelését, valamint a betanítási feladatok végrehajtásakor szigorúbb vezérlést biztosít az összetevők verzióihoz. 
+Míg Azure Machine Learning biztosít egy alapértelmezett Docker-alapképet, a Azure Machine Learning környezetekben is megadhat egy adott alapképet, például az Azure ML-alapú karbantartott [alapképek](https://github.com/Azure/AzureML-Containers) egyikét vagy a saját [Egyéni rendszerképét](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Az egyéni alaplemezképek lehetővé teszik a függőségek kezelését, valamint a betanítási feladatok végrehajtásakor szigorúbb vezérlést biztosít az összetevők verzióihoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Futtassa ezt a kódot ezen környezetek bármelyikén:
@@ -101,11 +100,11 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Meglévő AmlCompute létrehozása vagy csatolása
-Létre kell hoznia egy [számítási célt](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#compute-target) a modell betanításához. Ebben az oktatóanyagban AmlCompute hoz létre a képzési számítási erőforrásként.
+Létre kell hoznia egy [számítási célt](concept-azure-machine-learning-architecture.md#compute-targets) a modell betanításához. Ebben az oktatóanyagban AmlCompute hoz létre a képzési számítási erőforrásként.
 
 A AmlCompute létrehozása körülbelül 5 percet vesz igénybe. Ha az adott névvel rendelkező AmlCompute már szerepel a munkaterületen, akkor ez a kód kihagyja a létrehozási folyamatot.
 
-A többi Azure-szolgáltatáshoz hasonlóan a Azure Machine Learning szolgáltatáshoz társított bizonyos erőforrások (például AmlCompute) is korlátozottak. Kérjük, olvassa el [ezt a cikket](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas) az alapértelmezett korlátokkal kapcsolatban, és hogyan kérhet további kvótát. 
+A többi Azure-szolgáltatáshoz hasonlóan a Azure Machine Learning szolgáltatáshoz társított bizonyos erőforrások (például AmlCompute) is korlátozottak. Kérjük, olvassa el [ezt a cikket](how-to-manage-quotas.md) az alapértelmezett korlátokkal kapcsolatban, és hogyan kérhet további kvótát. 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -132,7 +131,7 @@ print(compute_target.get_status().serialize())
 ```
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig létrehozása
-Ez a ScriptRunConfig a kívánt [számítási célra](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets#compute-targets-for-training)konfigurálja a feladatot a végrehajtáshoz.
+Ez a ScriptRunConfig a kívánt [számítási célra](how-to-set-up-training-targets.md)konfigurálja a feladatot a végrehajtáshoz.
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -160,4 +159,4 @@ A Python-környezet testreszabásával kapcsolatos további információkért l�
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy modellt egy egyéni Docker-rendszerkép használatával tanított ki. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 * A [futtatási metrikák nyomon követése](how-to-track-experiments.md) a betanítás során
-* [Modell üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image) egyéni Docker-rendszerkép használatával.
+* [Modell üzembe helyezése](how-to-deploy-custom-docker-image.md) egyéni Docker-rendszerkép használatával.

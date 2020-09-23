@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987203"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -139,17 +139,17 @@ Ha Start/Stop VMs during off-hours telepítése után módosítani szeretné az 
 
 1. A Azure Portal navigáljon a **figyelés**, majd a **műveleti csoportok**elemre. Válassza ki a **StartStop_VM_Notication**nevű műveleti csoportot.
 
-    ![Automation-Update Management lap](media/automation-solution-vm-management/azure-monitor.png)
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
 
 2. A StartStop_VM_Notification **lapon kattintson a részletek** elemre. **Details** Ekkor megnyílik az E-mail/SMS/leküldés/hang lap. Frissítse az e-mail-címet, és kattintson **az OK** gombra a módosítások mentéséhez.
 
-    ![Automation-Update Management lap](media/automation-solution-vm-management/change-email.png)
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Képernyőkép az e-mailek/SMS/push/Voice lapról, amely egy példaként frissített e-mail-címet mutat be.":::
 
     Másik lehetőségként további műveleteket is hozzáadhat a műveleti csoporthoz, hogy többet tudjon meg a műveleti csoportokról, lásd: [műveleti csoportok](../azure-monitor/platform/action-groups.md)
 
 A következő példa egy olyan e-mailt küld, amelyet a szolgáltatás a virtuális gépek leállításakor küld.
 
-![Automation-Update Management lap](media/automation-solution-vm-management/email.png)
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="A szolgáltatás által a virtuális gépek leállításakor küldött példa e-mail-üzenet képernyőképe.":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Virtuális gépek hozzáadása vagy kizárása
 
@@ -183,7 +183,7 @@ A szolgáltatás konfigurálása a virtuális gépek leállítására egy adott 
 
 5. A módosítások mentéséhez kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szolgáltatás működés közbeni figyeléséhez tekintse meg a [Start/Stop VMS During off-hours lekérdezési naplóit](automation-solution-vm-management-logs.md).
 * A virtuális gépek kezelése során felmerülő problémák kezeléséhez tekintse meg [Start/Stop VMS During off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)című témakört.

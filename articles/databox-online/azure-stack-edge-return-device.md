@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stack Edge-eszköz visszaküldése | Microsoft Docs
-description: Megtudhatja, hogyan törölheti az adatait, és visszaküldheti Azure Stack Edge-eszközét, majd törölheti az eszközhöz hozzárendelt erőforrást.
+title: A Azure Stack Edge Pro-eszköz visszaküldése | Microsoft Docs
+description: Megtudhatja, hogyan törölheti az adatait, és visszaküldheti Azure Stack Edge Pro-eszközét, majd törölheti az eszközhöz hozzárendelt erőforrást.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923951"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903665"
 ---
-# <a name="return-your-azure-stack-edge-device"></a>Az Azure Stack Edge-eszköz visszaküldése
+# <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro-eszköz visszaküldése
 
-Ez a cikk az adatok törlését és az Azure Stack Edge-eszköz visszaküldését ismerteti. Az eszköz visszaadása után törölheti az eszközhöz társított erőforrást is.
+Ez a cikk az adatok törlését és az Azure Stack Edge Pro-eszköz visszaküldését ismerteti. Az eszköz visszaadása után törölheti az eszközhöz társított erőforrást is.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 >
 > * Adatok törlése az eszközön lévő adatlemezekről
-> * Eszköz visszaküldésének kezdeményezése Azure Portal
+> * Az eszköz visszaküldésének megkezdése az Azure Portalon
 > * Az eszköz becsomagolása és a pickup beosztása
 > * Az erőforrás törlése Azure Portal
 
@@ -59,7 +59,7 @@ Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és h
 
 A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
-1. Nyissa meg az Azure Stack Edge/Data Box Gateway erőforrást Azure Portal. Az **áttekintésben**nyissa meg a parancssáv a jobb oldali ablaktáblán, majd válassza az **eszköz visszaküldése**lehetőséget. 
+1. Lépjen a Azure Stack Edge Pro/Data Box Gateway erőforrásra Azure Portal. Az **áttekintésben**nyissa meg a parancssáv a jobb oldali ablaktáblán, majd válassza az **eszköz visszaküldése**lehetőséget. 
 
     ![1. eszköz visszaküldése](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -90,11 +90,11 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
     ![4. visszaadott eszköz](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. Ha az eszköz visszaadja a részleteket, e-mailben értesítheti az Azure Stack Edge operatív csapatot. Használhatja az e-mail-alkalmazást, feltéve, hogy az e-mail-alkalmazás telepítve van és konfigurálva van. Az Adatmásolást is elvégezheti, és e-mailben is elküldheti azokat.
+6. Az eszköz visszaküldési részleteinek rögzítése után e-mailben értesítheti az Azure Stack Edge Pro műveleti csapatát. Használhatja az e-mail-alkalmazást, feltéve, hogy az e-mail-alkalmazás telepítve van és konfigurálva van. Az Adatmásolást is elvégezheti, és e-mailben is elküldheti azokat.
 
     ![Eszköz visszaküldése 5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Ha az Azure Stack Edge-műveleti csapat megkapja az e-mailt, a rendszer elküld egy fordított szállítólevél címkét. Ha ezt a címkét kapja, beállíthatja az eszköz felvételét a szállítóval. 
+7. Miután az Azure Stack Edge Pro Operations csapata megkapja az e-mailt, elküld egy fordított szállítólevél címkét. Ha ezt a címkét kapja, beállíthatja az eszköz felvételét a szállítóval. 
 
 ## <a name="schedule-a-pickup"></a>Pickup beosztása
 
@@ -107,24 +107,24 @@ Az alábbi lépéseket követve ütemezhet egy felvételt.
 5. Helyezze az Azure-ból kapott szállítási címkét a csomagba.
 6. Egyeztessen egy csomagfelvételi időpontot helyi szolgáltatójával. Ha visszaadja az eszközt az USA-ban, akkor a fuvarozó a UPS vagy a FedEx lehet. Felvétel beosztása a UPS-sel:
 
-    1. Hívja fel a helyi UPS-t (országtól/régiótól függően ingyenes szám).
+    1. Hívja fel a helyi UPS-t (ország-/régióspecifikus ingyenes szám).
     2. A hívásban adja meg a fordított szállítólevél nyomon követésének számát a nyomtatott címkén látható módon.
     3. Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek további díjat kell fizetnie a felvétel során.
 
-    A felvétel ütemezése helyett az Azure Stack Edge-t is elhúzhatja a legközelebbi legördülő helyen.
+    A felvétel ütemezése helyett a Azure Stack Edge Pro-t is elhúzhatja a legközelebbi legördülő helyen.
 
 ## <a name="delete-the-resource"></a>Erőforrás törlése
 
 Miután az eszközt megkapta az Azure-adatközpontban, a rendszer megkeresi az eszközt a károsodás vagy az illetéktelen módosítás jeleinek ellenőrzéséhez.
 
-- Ha az eszköz érintetlenül érkezik, és jó állapotban van, akkor az adott erőforrás számlázási mérőszáma leáll. Azure Stack Edge Operations csapat felveszi Önnel a kapcsolatot, hogy erősítse meg az eszköz visszaadását. Ezután törölheti az eszközhöz társított erőforrást a Azure Portal.
+- Ha az eszköz érintetlenül érkezik, és jó állapotban van, akkor az adott erőforrás számlázási mérőszáma leáll. Azure Stack Edge Pro operatív csapata felveszi Önnel a kapcsolatot, hogy erősítse meg az eszköz visszaadását. Ezután törölheti az eszközhöz társított erőforrást a Azure Portal.
 - Ha az eszköz jelentősen megsérült, a bírságok vonatkozhatnak. További részletekért tekintse [meg az elveszett vagy sérült eszköz](https://azure.microsoft.com/pricing/details/databox/edge/) és a [termék használati feltételeivel](https://www.microsoft.com/licensing/product-licensing/products)kapcsolatos gyakori kérdéseket.  
 
 
 Az eszközt törölheti a Azure Portalban:
 
 - Miután elvégezte a rendelést, és az eszközt a Microsoft előkészítette.
-- Miután visszaadta az eszközt a Microsoftnak, átadja az Azure adatközpontjának fizikai vizsgálatát, és Azure Stack Edge műveleti csapatának hívásával ellenőrizheti, hogy az eszköz visszakapott-e.
+- Miután visszaküldte az eszközt a Microsoftnak, átadja az Azure-adatközpont fizikai vizsgálatát, és Azure Stack Edge Pro műveleti csapatának hívásával ellenőrizheti, hogy az eszköz visszakapott-e.
 
 Ha aktiválta az eszközt egy másik előfizetéshez vagy helyhez, a Microsoft egy munkanapon belül áthelyezi a rendelését az új előfizetésre vagy helyre. A megrendelés áthelyezése után törölheti ezt az erőforrást.
 
@@ -142,6 +142,6 @@ A következő lépésekkel törölheti az eszközt és az erőforrást Azure Por
 Az eszköz és a hozzá tartozó erőforrás sikeres törlése után értesítést kap.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [szerezhet be helyettesítő Azure stack Edge-eszközt](azure-stack-edge-replace-device.md).
+- Megtudhatja, hogyan [szerezhet be helyettesítő Azure stack Edge Pro-eszközt](azure-stack-edge-replace-device.md).

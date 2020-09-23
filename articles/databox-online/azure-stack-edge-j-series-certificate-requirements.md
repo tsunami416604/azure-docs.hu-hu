@@ -1,6 +1,6 @@
 ---
-title: Tanúsítványokra vonatkozó követelmények és hibaelhárítás az Azure Stack Edge szolgáltatással | Microsoft Docs
-description: Ismerteti a tanúsítványokra vonatkozó követelményeket és a tanúsítvány hibáinak elhárítását Azure Stack Edge-eszközzel.
+title: Tanúsítványokra vonatkozó követelmények és hibaelhárítás az Azure Stack Edge Pro-val | Microsoft Docs
+description: Ismerteti a tanúsítványokra vonatkozó követelményeket és a tanúsítvány hibáinak elhárítását Azure Stack Edge Pro-eszközzel.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268262"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891373"
 ---
 # <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 
-Ez a cikk azokat a tanúsítványokra vonatkozó követelményeket ismerteti, amelyeknek teljesülniük kell ahhoz, hogy a tanúsítványok telepíthetők legyenek az Azure Stack peremhálózati eszközön. A követelmények a PFX-tanúsítványokkal, a kiállító hatóságokkal, a tanúsítvány tulajdonosának nevével és a tulajdonos alternatív nevével, valamint a támogatott tanúsítvány-algoritmusokkal kapcsolatosak.
+Ez a cikk azokat a tanúsítványokra vonatkozó követelményeket ismerteti, amelyeknek teljesülniük kell ahhoz, hogy a tanúsítványok telepíthetők legyenek a Azure Stack Edge Pro-eszközre. A követelmények a PFX-tanúsítványokkal, a kiállító hatóságokkal, a tanúsítvány tulajdonosának nevével és a tulajdonos alternatív nevével, valamint a támogatott tanúsítvány-algoritmusokkal kapcsolatosak.
 
 ## <a name="certificate-issuing-authority"></a>Tanúsítvány kiállító hatósága
 
@@ -64,13 +64,13 @@ A tanúsítványoknak a következő tulajdonos neve és a tulajdonos alternatív
     
 ## <a name="pfx-certificate"></a>PFX-tanúsítvány
 
-Az Azure Stack peremhálózati eszközre telepített PFX-tanúsítványoknak az alábbi követelményeknek kell megfelelniük:
+Az Azure Stack Edge Pro-eszközre telepített PFX-tanúsítványoknak az alábbi követelményeknek kell megfelelniük:
 
 * Ha a tanúsítványokat az SSL-szolgáltatótól kapja, akkor ellenőrizze, hogy a tanúsítványokhoz tartozó teljes aláírási láncot kapja-e.
 
 * PFX-tanúsítvány exportálásakor győződjön meg arról, hogy az **összes tanúsítvány belefoglalása a láncba** lehetőség van kiválasztva, ha lehetséges.
 
-* Használjon PFX-tanúsítványt a végponthoz, a helyi felhasználói felülethez, a csomóponthoz, a VPN-hez és a Wi-Fi-hez, mivel a nyilvános és a titkos kulcsok is szükségesek Azure Stack Edge számára. A titkos kulcsnak rendelkeznie kell a helyi számítógép kulcs attribútumával.
+* Használjon PFX-tanúsítványt a végponthoz, a helyi KEZELŐFELÜLEThez, a csomóponthoz, a VPN-hez és a Wi-Fi-hez, mivel a nyilvános és a titkos kulcs is szükséges a Azure Stack Edge Pro-hoz. A titkos kulcsnak rendelkeznie kell a helyi számítógép kulcs attribútumával.
 
 * A tanúsítvány PFX-titkosításának 3DES-nek kell lennie. Ez a Windows 10-es ügyfélről vagy a Windows Server 2016 tanúsítványtárolóból való exportáláskor használt alapértelmezett titkosítás. A 3DES-vel kapcsolatos további információkért lásd: [Triple des](https://en.wikipedia.org/wiki/Triple_DES).
 
@@ -78,17 +78,17 @@ Az Azure Stack peremhálózati eszközre telepített PFX-tanúsítványoknak az 
 
 * A tanúsítvány PFX-fájljainak a *Kibővített kulcshasználat* mezőben tartalmazniuk kell az Values *Server Authentication (1.3.6.1.5.5.7.3.1)* és az *ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)* értéket.
 
-* Az összes tanúsítvány PFX-fájl jelszavának meg kell egyeznie a telepítés időpontjában, ha a Azure Stack Readiness-ellenőrző eszközt használja. További információ: [tanúsítványok létrehozása a Azure stack Edge-hez Azure stack hub Readiness-ellenőrző eszköz használatával](azure-stack-edge-j-series-create-certificates-tool.md).
+* Az összes tanúsítvány PFX-fájl jelszavának meg kell egyeznie a telepítés időpontjában, ha a Azure Stack Readiness-ellenőrző eszközt használja. További információ: [tanúsítványok létrehozása a Azure stack Edge Pro-hoz Azure stack hub Readiness-ellenőrző eszköz használatával](azure-stack-edge-j-series-create-certificates-tool.md).
 
 * A tanúsítvány PFX-ként megadott jelszavának összetett jelszónak kell lennie. Jegyezze fel ezt a jelszót, mert az központi telepítési paraméterként van használatban.
 
 További információ: PFX- [tanúsítványok exportálása titkos kulccsal](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Tanúsítványok használata Azure Stack Edge használatával](azure-stack-edge-j-series-manage-certificates.md)
+[Tanúsítványok használata Azure Stack Edge Pro-val](azure-stack-edge-j-series-manage-certificates.md)
 
-[Tanúsítványok létrehozása az Azure Stack Edge-hez Azure Stack hub Readiness-ellenőrző eszköz használatával](azure-stack-edge-j-series-create-certificates-tool.md)
+[Tanúsítványok létrehozása a Azure Stack Edge Pro-hoz Azure Stack hub Readiness-ellenőrző eszköz használatával](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [PFX-tanúsítványok exportálása titkos kulccsal](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

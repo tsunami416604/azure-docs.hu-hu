@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981452"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ A kiszolgáló szintjén dönthet úgy, hogy az "Azure Defaults" értékről ör
 
 Ha engedélyezni szeretné az automatikus finomhangolást Azure SQL Database- [kiszolgálón](logical-servers.md) , keresse meg a kiszolgálót a Azure Portal, majd válassza az **automatikus hangolás** lehetőséget a menüben.
 
-![Kiszolgáló](./media/automatic-tuning-enable/server.png)
+![A képernyőképen a Azure Portal automatikus finomhangolása látható, ahol a kiszolgálók beállításait is alkalmazhatja.](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Vegye figyelembe, hogy a **DROP_INDEX** lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken.
@@ -77,7 +77,7 @@ Azure SQL Database lehetővé teszi az egyes adatbázisok Automatikus hangolási
 
 Az egyes adatbázisokhoz külön konfigurálható az automatikus finomhangolási beállítások. Manuálisan is konfigurálhat egyéni Automatikus hangolási beállítást, vagy megadhatja, hogy egy beállítás örökli a beállításait a-kiszolgálótól.
 
-![Adatbázis](./media/automatic-tuning-enable/database.png)
+![A képernyőképen a Azure Portal automatikus finomhangolása látható, ahol egyetlen adatbázishoz is alkalmazhat beállításokat.](./media/automatic-tuning-enable/database.png)
 
 Vegye figyelembe, hogy az DROP_INDEX lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni.
 

@@ -1,6 +1,6 @@
 ---
 title: Mi az a Dedicated HSM? – Azure dedikált HSM | Microsoft Docs
-description: Az Azure dedikált HSM áttekintése az Azure-ban elérhető főbb tárolási képességeket biztosítja az FIPS 140-2 3. szintű minősítéssel
+description: Ismerje meg, hogy az Azure dedikált HSM egy Azure-szolgáltatás, amely kriptográfiai kulcsot biztosít az Azure-ban.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881082"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970211"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Mi az az Azure Dedicated HSM?
 
@@ -81,7 +81,7 @@ Olyan helyzetekben, amelyekben a következőkre lesz szüksége:
 - Az Azure Storage ügyféloldali titkosítása
 - SQL Server és Azure SQL DB Always Encrypted
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez egy nagyon specializált szolgáltatás. Ezért javasoljuk, hogy teljes mértékben Ismerje meg a dokumentáció alapfogalmait, beleértve a díjszabást, a támogatást és a szolgáltatói szerződéseket. 
 

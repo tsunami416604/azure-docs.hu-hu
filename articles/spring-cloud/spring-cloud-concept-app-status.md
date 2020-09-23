@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037763"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892853"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Az Azure Spring Cloud alkalmazásállapotainak ismertetése
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Az Azure Spring Cloud felhasználói felülete információkat nyújt a futó alkalmazások állapotáról.  Az előfizetésben található minden erőforráscsoport esetében van **egy alkalmazási lehetőség,** amely az alkalmazások típusának általános állapotát jeleníti meg.  Minden egyes alkalmazás-típus esetében megjelenik az **alkalmazás példányai**.
 
@@ -32,7 +34,7 @@ Egy alkalmazás típusának általános állapotának megtekintéséhez válassz
 
 | Enumeráció | Definíció |
 |:--:|:----------------:|
-| Fut | A központi telepítésnek futnia kell. |
+| Futó | A központi telepítésnek futnia kell. |
 | Leállítva | A központi telepítést le kell állítani. |
 
 **A kiépítési állapot csak a parancssori felületről érhető el.  A jelentés az alábbi értékek egyike:**
@@ -58,7 +60,7 @@ Egy telepített alkalmazás adott példányának állapotának megtekintéséhez
 | Enumeráció | Definíció |
 |:--:|:----------------:|
 | Indítás | A bináris fájl sikeresen telepítve lett az adott példányon. A jar-fájl indítása sikertelen lehet, mert a jar nem futtatható megfelelően. |
-| Fut | A példány működik. |
+| Futó | A példány működik. |
 | Sikertelen | Az alkalmazás példánya több újrapróbálkozás után nem tudta elindítani a felhasználó bináris fájlját. |
 | Megszüntetéséről | Az alkalmazás példánya leáll. |
 
@@ -72,4 +74,4 @@ Egy telepített alkalmazás adott példányának állapotának megtekintéséhez
 
 
 ## <a name="see-also"></a>Lásd még
-* [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](spring-cloud-tutorial-prepare-app-deployment.md)
+* [Spring-vagy Steeltoe-alkalmazás előkészítése az Azure Spring Cloud-ban való üzembe helyezéshez](spring-cloud-tutorial-prepare-app-deployment.md)
