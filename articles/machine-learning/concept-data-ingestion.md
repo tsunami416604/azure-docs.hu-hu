@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875319"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890177"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Adatfeldolgozási lehetőségek Azure Machine Learning munkafolyamatokhoz
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, milyen előnyökkel és hátrányokkal érheti el
 A következő lehetőségek közül választhat:
 + [Azure Data Factory](#azure-data-factory) folyamatok, amelyek kifejezetten az adatok kinyerésére, betöltésére és átalakítására készültek
 
-+ [Azure Machine learning PYTHON SDK](#azure-machine-learning-python-sdk)-t, amely egyéni kódot biztosít az alapszintű adatfeldolgozási feladatokhoz.
++ [Azure Machine learning PYTHON SDK](#azure-machine-learning-python-sdk)-t, amely egyéni kódot biztosít az adatfeldolgozási feladatokhoz.
 
 + a kettő kombinációja
 
@@ -70,7 +70,7 @@ Saját Python-parancsfájlok konfigurálása | A nem támogatja natív módon az
 Az adatelőkészítés az összes modell betanításának részeként|Fejlesztési ismereteket igényel az adatfeldolgozási parancsfájlok létrehozásához
 Támogatja az adatelőkészítési parancsfájlokat különböző számítási céloknál, beleértve a [Azure Machine learning számítást](concept-compute-target.md#azure-machine-learning-compute-managed) is |Nem biztosít felhasználói felületet a betöltési mechanizmus létrehozásához.
 
-A következő ábrán a Azure Machine Learning folyamat két lépésből áll: az adatfeldolgozás és a modell betanítása. Az adatfeldolgozási lépés magában foglalja a Python-kódtárak és a Python SDK használatával elvégezhető feladatokat, például az adatok helyi/webes forrásokból való kinyerését, valamint az alapvető adatátalakításokat, például a hiányzó imputálási. A betanítási lépés ezután az előkészített adatokat bemenetként használja a betanítási szkriptnek a gépi tanulási modell betanításához. 
+A következő ábrán a Azure Machine Learning folyamat két lépésből áll: az adatfeldolgozás és a modell betanítása. Az adatfeldolgozási lépés magában foglalja a Python-kódtárak és a Python SDK használatával elvégezhető feladatokat, például az adatok helyi/webes forrásokból való kinyerését, valamint az adatok átalakítását, például a hiányzó imputálási. A betanítási lépés ezután az előkészített adatokat bemenetként használja a betanítási szkriptnek a gépi tanulási modell betanításához. 
 
 ![Azure-folyamat + SDK-adatfeldolgozás](media/concept-data-ingestion/data-ingest-option-two.png)
 

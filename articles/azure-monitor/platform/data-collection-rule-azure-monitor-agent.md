@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640837"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968401"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező és a küldendő adatforrásokat határozzák meg. Ez a cikk azt ismerteti, hogyan lehet adatgyűjtési szabályt létrehozni a virtuális gépekről az Azure Monitor ügynök használatával történő adatgyűjtéshez.
@@ -26,7 +26,7 @@ A DCR virtuális gépre való alkalmazásához létre kell hoznia egy társítá
 
 Vegyünk például egy olyan környezetet, amely egy üzletági alkalmazást futtató virtuális gépeket és a SQL Servert futtató többi alkalmazást futtat. Lehet, hogy egy alapértelmezett adatgyűjtési szabály vonatkozik az összes virtuális gépre, és elkülöníti az adatgyűjtési szabályokat, amelyek kifejezetten az üzletági alkalmazásra és a SQL Serverre vonatkozó adatokat gyűjtenek. Az adatgyűjtési szabályokhoz tartozó virtuális gépek társításai az alábbi ábrához hasonlóan jelennek meg.
 
-![Szövetségek](media/data-collection-rule-azure-monitor-agent/associations.png)
+![A diagramon az üzletági alkalmazások és a Central-i t-default és a LOB-alkalmazás nevű adatgyűjtési szabályokhoz társított virtuális SQL Server gépek jelennek meg a SQL Serverhoz.](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>Létrehozás az Azure Portal használatával
 A Azure Portal használatával létrehozhat egy adatgyűjtési szabályt, és az előfizetésében lévő virtuális gépeket hozzárendelheti a szabályhoz. A rendszer automatikusan telepíti a Azure Monitor ügynököt, és felügyelt identitást hozott létre minden olyan virtuális géphez, amelyen még nincs telepítve.

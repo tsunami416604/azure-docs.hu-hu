@@ -1,6 +1,6 @@
 ---
-title: Adatmegőrzési szabályzat – áttekintés – Azure SQL Edge (előzetes verzió)
-description: Tudnivalók az Azure SQL Edge adatmegőrzési szabályzatáról (előzetes verzió)
+title: Adatmegőrzési szabályzat – áttekintés – Azure SQL Edge
+description: Tudnivalók az Azure SQL Edge adatmegőrzési szabályzatáról
 keywords: SQL Edge, adatmegőrzés
 services: sql-edge
 ms.service: sql-edge
@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 3649d4f77e5b57ab14accacd87fbaa867ba2742f
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: bb059a946c03f41e5b65944eec67070f84ee6b08
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550658"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976343"
 ---
-# <a name="data-retention-policy-overview"></a>Adatmegőrzési szabályzat – áttekintés
+# <a name="data-retention-overview"></a>Adatmegőrzés áttekintése
 
 A csatlakoztatott IoT-eszközökről származó adatok gyűjtése és tárolása fontos szerepet játszik a működési és üzleti információk megszerzésében. Az ezekből az eszközökről származó adatok mennyisége miatt azonban fontos, hogy a szervezetek alaposan tervezzék meg a megőrizni kívánt adatok mennyiségét, és hogy milyen részletességgel rendelkeznek. Miközben minden részletességi adat megtartása szükséges, nem mindig praktikus. Emellett a megőrzött adatmennyiséget a IoT vagy a peremhálózati eszközökön elérhető tárterület mérete korlátozza. 
 
-Az Azure SQL Edge (előzetes verzió) CTP 2.3 egy új képességet ad hozzá, amely lehetővé teszi az adatbázis-rendszergazdák számára az adatmegőrzési szabályzatok megadását az SQL Edge-adatbázis és a mögöttes táblák Az adatmegőrzési házirend meghatározása után a háttérben futó rendszerfeladat a felhasználói táblákból származó elavult (régi) adatok törlését fogja futtatni. 
+Az Azure SQL Edge adatbázis-rendszergazdák meghatározhatják az adatmegőrzési szabályzatot az SQL Edge-adatbázison és a mögöttes táblákon. Az adatmegőrzési házirend meghatározása után a háttérben futó rendszerfeladat a felhasználói táblákból származó elavult (régi) adatok törlését fogja futtatni. 
 
 > [!Note]
 > Az adatok a táblából való kitisztítása után nem helyreállítható. A törölt adatok helyreállításának egyetlen lehetséges módja, ha egy régebbi biztonsági másolatból állítja vissza az adatbázist.
@@ -40,6 +40,7 @@ Ha az adatmegőrzést egy táblához konfigurálta, a háttérben futó feladat 
 
 - Ha engedélyezve van az adatok megőrzése, a automatikusan le lesz tiltva, ha az adatbázist egy teljes biztonsági másolatból állítja vissza, vagy újra csatolja. 
 - Az adatmegőrzés nem engedélyezhető egy ideiglenes előzmény tábla esetében
+- Az adatmegőrzési szűrő colomn nem módosítható. Az oszlop módosításához tiltsa le az adatok megőrzését a táblán.  
 
 ## <a name="next-steps"></a>Következő lépések
 

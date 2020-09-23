@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 9047309854df27ac0721eee51e20d7ccc989f443
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905464"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
 A fenyegetések megelőzése, észlelése és elhárítása érdekében a Azure Security Center gyűjti és dolgozza fel a biztonsággal kapcsolatos adatokat, beleértve a konfigurációs információkat, a metaadatokat, az eseménynaplókat és egyebeket. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
@@ -70,7 +70,7 @@ A más környezetben futó (pl. helyszíni) virtuális gépek és kiszolgálók 
 Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését az Azure Security Center Biztonsági szabályzat részén is bekapcsolhatja. Amikor az adatgyűjtés be van kapcsolva, Azure Security Center kiépíti az Log Analytics ügynököt az összes meglévő támogatott Azure-beli virtuális gépen és a létrehozott újakon.
 A Log Analytics ügynök különböző biztonsággal kapcsolatos konfigurációkat vizsgál, és azokat az eseményeket [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetésbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics ügynök beolvassa az Eseménynapló-bejegyzéseket és a ETW-nyomkövetéseket, és átmásolja őket a munkaterületre (ok) elemzésre. A Log Analytics ügynök a folyamat-létrehozási eseményeket és a parancssori naplózást is lehetővé teszi.
 
-Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a virtuális gépekről történő adatgyűjtést a biztonsági szabályzatban. Az adatgyűjtést a standard szintű előfizetések esetében kötelező megadni. A virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése akkor is engedélyezve lesz, ha letiltotta az adatgyűjtést.
+Ha nem használja az Azure Defendert, akkor a biztonsági házirendben letilthatja a virtuális gépekről történő adatgyűjtést is. Az Azure Defender által védett előfizetések esetében az adatgyűjtés szükséges. A virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése akkor is engedélyezve lesz, ha letiltotta az adatgyűjtést.
 
 ## <a name="data-consumption"></a>Adathasználat
 

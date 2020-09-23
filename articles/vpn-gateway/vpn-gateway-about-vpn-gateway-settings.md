@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419571"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976227"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -27,8 +27,6 @@ A cikkben szereplő értékek a VPN-átjárókat alkalmazzák (a virtuális hál
 * A zónákra redundáns átjárók esetében lásd: [a zóna – redundáns átjárók](about-zone-redundant-vnet-gateways.md).
 
 * Virtuális WAN esetén lásd: [a virtuális WAN ismertetése](../virtual-wan/virtual-wan-about.md).
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>Átjárótípusok
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>Helyi hálózati átjárók
 
- A helyi hálózati átjáró eltér a virtuális hálózati átjárótól. A VPN-átjárók konfigurációjának létrehozásakor a helyi hálózati átjáró általában a helyszíni helyet jelöli. A klasszikus üzembe helyezési modellben a helyi hálózati átjárót a Helyi névvel illettük.
+A helyi hálózati átjáró eltér a virtuális hálózati átjárótól. A VPN-átjárók konfigurációjának létrehozásakor a helyi hálózati átjáró általában a helyszíni hálózatot és a megfelelő VPN-eszközt jelöli. A klasszikus üzembe helyezési modellben a helyi hálózati átjárót a Helyi névvel illettük.
 
-Adja meg a helyi hálózati átjáró nevét, a helyszíni VPN-eszköz nyilvános IP-címét, és adja meg a helyszíni helyen található címek előtagjait. Az Azure a hálózati forgalomhoz tartozó célcím előtagjait tekinti át, a helyi hálózati átjáróhoz megadott konfigurációt, és ennek megfelelően irányítja a csomagokat. Helyi hálózati átjárókat is megadhat a VPN Gateway-kapcsolatokat használó VNet-VNet konfigurációkhoz.
+Adja meg a helyi hálózati átjáró nevét, a nyilvános IP-címet vagy a helyszíni VPN-eszköz teljes tartománynevét (FQDN), és adja meg a helyszíni helyen található címek előtagjait. Az Azure a hálózati forgalomhoz tartozó célcím előtagjait tekinti át, a helyi hálózati átjáróhoz megadott konfigurációt, és ennek megfelelően irányítja a csomagokat. Ha Border Gateway Protocolt (BGP) használ a VPN-eszközön, meg kell adnia a VPN-eszköz BGP-társ IP-címét és a helyszíni hálózatának autonóm rendszerbeli számát (ASN). Helyi hálózati átjárókat is megadhat a VPN Gateway-kapcsolatokat használó VNet-VNet konfigurációkhoz.
 
 A következő PowerShell-példa egy új helyi hálózati átjárót hoz létre:
 

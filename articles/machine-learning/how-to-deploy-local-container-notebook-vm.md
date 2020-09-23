@@ -11,16 +11,16 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: e4a62b9892af661f74df5b49ff4a451fb673b4e1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7992283c1652199d665aad07c027b88e9489ddf0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325763"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889834"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Machine Learning számítási példányon Azure Machine Learning használatával. Használjon számítási példányokat, ha a következő feltételek egyike igaz:
 
@@ -53,8 +53,8 @@ A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, a
     * Számítási példány: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
     Például: 
-    * Jegyzetfüzet virtuális gép:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * Számítási példány:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
+    * Jegyzetfüzet virtuális gép: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
+    * Számítási példány: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
 ## <a name="test-the-service"></a>A szolgáltatás tesztelése
 
@@ -93,11 +93,11 @@ resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

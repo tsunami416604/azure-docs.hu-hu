@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5333dd45cee58821d89cd49c44d3c5bba4cd9115
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500402"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888470"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be az átmeneti üzembe helyezést a kék-zöld üzembe helyezési minta használatával az Azure Spring Cloud-ban. A kék/zöld üzembe helyezés egy Azure DevOps folyamatos kézbesítési minta, amelynek lényege, hogy működésben tart egy meglévő (kék) verziót, miközben üzembe helyez egy új (zöld) verziót. Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az előkészítési telepítést éles környezetben anélkül, hogy az éles üzembe helyezést közvetlenül módosítaná.
 
@@ -103,3 +105,7 @@ Azt is megteheti, hogy az alábbi parancs futtatásával törli az átmeneti üz
 ```azurecli
 az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-group-name> -s <service-instance-name> --app gateway
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)

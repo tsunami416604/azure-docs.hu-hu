@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477408"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890249"
 ---
 # <a name="train-svd-recommender"></a>SVD-ajánló betanítása
 
-Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
+Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben. Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
 
 A Train SVD ajánló modul beolvassa a felhasználói elemek minősítésének háromszorosát tartalmazó adatkészletet. Egy betanított SVD-ajánlót ad vissza. Ezután használhatja a betanított modellt a minősítések előrejelzéséhez vagy javaslatok létrehozásához a [score SVD ajánló](score-svd-recommender.md) modul használatával.  
 
@@ -71,6 +71,6 @@ Ebből a mintából láthatja, hogy egyetlen felhasználó értékelte a több f
 5.  A folyamat elküldése.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

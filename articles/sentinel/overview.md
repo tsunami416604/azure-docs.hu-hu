@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure Sentinel? | Microsoft Docs
+title: Mi az Azure Sentinel? | Microsoft Docs
 description: Ismerje meg az Azure Sentinel, a skálázható, a felhőben natív biztonsági információ-kezelő (SIEM) és a biztonsági előkészítési automatikus válasz (SOAR) megoldását.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 1bd61341683148cfc6431d7ca4b1f9293e19e760
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662035"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889211"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
 A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, **biztonsági információkkal kapcsolatos esemény-felügyeleti (SIEM)** és biztonsági előkészítési **(felszárnyaló)** megoldás. Az Azure Sentinel intelligens biztonsági elemzési és fenyegetésekkel kapcsolatos intelligenciát biztosít a vállalaton belül, így egyetlen megoldást kínál a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra. 
 
-Az Azure Sentinel az egész vállalatra kiterjedő, az egyre kifinomultabb támadásokat, a riasztások mennyiségét és a hosszú távú megoldási időkereteket is csökkenti.
+Az Azure Sentinel az egész vállalatra kiterjedő, az egyre kifinomultabb támadásokkal, a riasztások számával és a hosszú felbontású időkeretekkel kapcsolatos stressz enyhítése.
 
 - Minden felhasználó, eszköz, alkalmazás és infrastruktúra, a helyszínen és több felhőben is **gyűjthet adatokat a felhőben** . 
 
@@ -43,7 +43,7 @@ A meglévő Azure-szolgáltatások teljes skáláját kiépítve az Azure Sentin
 
 ## <a name="connect-to-all-your-data"></a>Kapcsolódás az összes adattal
 
-Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](connect-data-sources.md). Az Azure Sentinel számos összekötőt tartalmaz a Microsoft-megoldások számára, és lehetővé teszi a valós idejű integrációt, beleértve a Microsoft 365 Defender (korábban Microsoft Threat Protection) megoldásokat, valamint Microsoft 365 forrásokat, beleértve az Office 365, az Azure AD, a Microsoft Defender for Identity (korábban Azure ATP) és a Microsoft Cloud App Securityt. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is.  
+Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](connect-data-sources.md). Az Azure Sentinel számos összekötőt tartalmaz a Microsoft-megoldások számára, és lehetővé teszi a valós idejű integrációt, beleértve a Microsoft 365 Defender (korábban Microsoft Threat Protection) megoldásokat, valamint Microsoft 365 forrásokat, beleértve az Office 365, az Azure AD, a Microsoft Defender for Identity (korábban Azure ATP) és a Microsoft Cloud App Securityt. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is. 
 
 ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
 
@@ -90,7 +90,7 @@ Az Azure Sentinel-Közösség hatékony erőforrás a fenyegetések észlelésé
 
 ![A felhasználói Közösség megismerése](./media/overview/community.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

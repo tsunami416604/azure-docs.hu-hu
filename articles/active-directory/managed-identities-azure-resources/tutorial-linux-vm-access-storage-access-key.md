@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c00c723c23e2f0d962009d33a6abe1008c734a5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 312ca5f693c42d70ecb5e210ef0d30df5c9739bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266272"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968702"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
@@ -130,7 +130,7 @@ echo "This is a test file." > test.txt
 Ezután hitelesítsen az `az storage` CLI-paranccsal a tárelérési kulcs használatával, és töltse fel a fájlt a blobtárolóba. Ehhez a lépéshez [telepítenie kell az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) a virtuális gépen, ha eddig még nem tette volna meg.
  
 
-```azurecli-interactive
+```azurecli
 az storage blob upload -c <CONTAINER NAME> -n test.txt -f test.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
@@ -148,7 +148,7 @@ Emellett a fájlt letöltheti az Azure CLI használatával is. A hitelesítéshe
 
 Kérés: 
 
-```azurecli-interactive
+```azurecli
 az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
@@ -194,7 +194,7 @@ Válasz:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan használhat Linux VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Storage hozzáférési kulcsokkal való eléréséhez.  További információ az Azure Storage tárelérési kulcsairól:
 

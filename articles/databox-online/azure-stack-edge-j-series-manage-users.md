@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU felhasználók kezelése | Microsoft Docs
-description: Ismerteti, hogyan kezelheti a felhasználókat az Azure Stack Edge GPU-ban a Azure Portal használatával.
+title: Azure Stack Edge Pro GPU felhasználók kezelése | Microsoft Docs
+description: Ismerteti, hogyan kezelheti a felhasználókat az Azure Stack Edge Pro GPU-val a Azure Portal használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8400f134c7a2b9da32c04e15e42a54f697b9cea6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254185"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904496"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge"></a>A Azure Portal használata a felhasználók Azure Stack Edge-beli kezeléséhez
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>A Azure Portal használatával kezelheti a felhasználókat a Azure Stack Edge Pro-ban
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk ismerteti, hogyan kezelheti a felhasználókat a Azure Stack Edge-ben. Az Azure Stack Edge a Azure Portal vagy a helyi webes felületen keresztül kezelhető. Az Azure Portalon felhasználókat vehet fel, módosíthat vagy törölhet.
+Ez a cikk bemutatja, hogyan kezelheti a felhasználókat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. Az Azure Portalon felhasználókat vehet fel, módosíthat vagy törölhet.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -80,6 +80,6 @@ A törlés végrehajtása után annak megfelelően frissül a felhasználók lis
 
 ![A felhasználók frissített listája](media/azure-stack-edge-j-series-manage-users/delete-user-4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-j-series-manage-bandwidth-schedules.md) talál.

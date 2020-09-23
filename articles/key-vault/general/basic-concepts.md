@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379001"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983287"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault alapvető fogalmak
 
-Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és elérésére használható eszköz. Titkos kulcsnak számít minden olyan adat, amelynek a hozzáférését szigorúan korlátozni kívánja, például az API-kulcsok, jelszavak vagy tanúsítványok. A tár a titkok logikai csoportja.
+A Azure Key Vault egy felhőalapú szolgáltatás a titkok biztonságos tárolásához és eléréséhez. A titkos kulcs minden, ami szigorúan szabályozni kívánja a hozzáférést, például az API-kulcsokat, a jelszavakat, a tanúsítványokat és a titkosítási kulcsokat. Key Vault a szolgáltatás két típusú tárolót támogat: a tárakat és a felügyelt HSM-készleteket. A tárolók támogatják a szoftverek és a HSM által támogatott kulcsok, titkok és tanúsítványok tárolását. A felügyelt HSM-készletek csak a HSM által támogatott kulcsokat támogatják. A részletekért tekintse meg a [Azure Key Vault REST API áttekintése](about-keys-secrets-certificates.md) című témakört.
 
 További fontos feltételek:
 
@@ -28,6 +28,12 @@ További fontos feltételek:
 - **Kulcstartó-tulajdonos**: Létrehozhat egy Key Vaultot, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett naplózást is beállíthat, amellyel naplózhatja a titkos kulcsok és a kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek, és elvégezhetik a kapcsolódó feladatokat.
 
 - **Kulcstartóhasználó**: A kulcstartóhasználó műveleteket hajthat végre a Key Vaultban található objektumokon, ha a kulcstartó-tulajdonos felruházta hozzáféréssel. Az elérhető műveletek a kiosztott jogosultságoktól függnek.
+
+- **Felügyelt HSM-rendszergazdák**: a rendszergazdai szerepkörhöz hozzárendelt felhasználók teljes mértékben szabályozzák a FELÜGYELt HSM-készleteket. Több szerepkör-hozzárendelést is létrehozhatnak a más felhasználók számára vezérelt hozzáférés delegálására.
+
+- **Felügyelt HSM titkosítási felelős/felhasználó**: általában olyan beépített szerepkörök, amelyek a felügyelt HSM-kulcsok használatával titkosítási műveleteket végző felhasználókhoz vagy egyszerű szolgáltatásokhoz vannak rendelve. A kriptográfiai felhasználók új kulcsokat hozhatnak létre, de nem törölhetnek kulcsokat.
+
+- **Felügyelt HSM titkosítási szolgáltatás titkosítása**: beépített szerepkör, amely általában egy szolgáltatásfiók által felügyelt szolgáltatás identitásához (pl. Storage-fiókhoz) van rendelve az ügyfelek által felügyelt kulccsal való inaktív adatok titkosításához.
 
 - **Erőforrás**: Az erőforrás egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. Gyakori példák a virtuális gép, a Storage-fiók, a webalkalmazás, az adatbázis és a virtuális hálózat. Sokkal több van.
 
@@ -59,7 +65,7 @@ Az alábbi táblázat segítségével jobban megértheti, hogyan segíti a Key V
 | --- | --- | --- |
 | Azure-alkalmazásfejlesztő |"Olyan alkalmazást szeretnék írni az Azure-hoz, amely kulcsokat használ az aláíráshoz és a titkosításhoz. De szeretném, hogy ezek a kulcsok az alkalmazáson kívül legyenek, hogy a megoldás megfelelő legyen a földrajzilag elosztott alkalmazásokhoz. <br/><br/>Azt szeretném, hogy ezek a kulcsok és titkos kulcsok el legyenek látva védelemmel, anélkül, hogy meg kellene írnom a kódot. Azt is szeretném, hogy ezek a kulcsok és titkok könnyen használhatók legyenek az alkalmazásaim és az optimális teljesítmény érdekében. " |√ A kulcsok tárolása tárolóban történik, és szükség esetén egy URI segítségével lehet előhívni őket.<br/><br/> √ A kulcsok számára az Azure biztosít védelmet az ipari szabványoknak megfelelő algoritmusok, kulcshosszok és hardveres biztonsági modulok segítségével.<br/><br/> √ A kulcsok feldolgozása hardveres biztonsági modulokban történik, amelyek ugyanazokban az Azure-adatközpontokban találhatók, mint az alkalmazások. Ez a módszer nagyobb megbízhatóságot és kisebb késést eredményez ahhoz képest, mintha a kulcsok egy külön helyen, például a helyszínen lennének. |
 | Szolgáltatott szoftverek fejlesztője (SaaS-fejlesztő) |"Nem szeretném, hogy az ügyfelek bérlői kulcsainak és titkainak felelőssége vagy lehetséges felelőssége. <br/><br/>Azt szeretném, hogy az ügyfelek saját maguk kezeljék a kulcsaikat, így a legfontosabb szoftvereket biztosító funkciókra koncentrálok. |√ Az ügyfelek importálhatják a saját kulcsaikat az Azure rendszerbe, és kezelhetik őket. Ha egy SaaS-alkalmazásnak titkosítási műveleteket kell végeznie az ügyfelek kulcsainak használatával, Key Vault hajtja végre ezeket a műveleteket az alkalmazás nevében. Az alkalmazás nem látja az ügyfelek kulcsait. |
-| Biztonsági vezető (CSO) |"Szeretnék tudni, hogy alkalmazásaink megfelelnek a FIPS 140-2 2. szintű HSM a biztonságos kulcsok kezeléséhez. <br/><br/>Biztos szeretnék lenni abban is, hogy a cégünk kézben tartja a kulcsok életciklusát, valamint meg tudja figyelni a kulcshasználatot. <br/><br/>Habár több Azure-szolgáltatást és-erőforrást is használunk, egyetlen helyről szeretném kezelni a kulcsokat az Azure-ban. " |√ A hardveres biztonsági modulokat a FIPS 140-2 2. szintje szerint ellenőrizték.<br/><br/>√ A Key Vault kialakításának köszönhetően a Microsoft nem tekintheti meg, illetve nem nyerheti ki a kulcsokat.<br/><br/>√ A kulcshasználatot közel valós időben naplózza rendszer.<br/><br/>√ A tároló egyetlen felületet biztosít függetlenül attól, hogy Ön hány tárolóval rendelkezik az Azure rendszerben, ezek mely régiókat támogatják, illetve mely alkalmazások használják őket. |
+| Biztonsági vezető (CSO) |"Szeretném tudni, hogy alkalmazásaink megfelelnek az FIPS 140-2 2. vagy a FIPS 140-2 3. szintű HSM a biztonságos kulcsok kezeléséhez. <br/><br/>Biztos szeretnék lenni abban is, hogy a cégünk kézben tartja a kulcsok életciklusát, valamint meg tudja figyelni a kulcshasználatot. <br/><br/>Habár több Azure-szolgáltatást és-erőforrást is használunk, egyetlen helyről szeretném kezelni a kulcsokat az Azure-ban. " |√ Válassza **a** tárolók lehetőséget a FIPS 140-2 2-es szint ellenőrzött HSM.<br/>√ Válassza a **felügyelt HSM-készletek** a FIPS 140-2 3. szintű hitelesített HSM elemet.<br/><br/>√ A Key Vault kialakításának köszönhetően a Microsoft nem tekintheti meg, illetve nem nyerheti ki a kulcsokat.<br/>√ A kulcshasználatot közel valós időben naplózza rendszer.<br/><br/>√ A tároló egyetlen felületet biztosít függetlenül attól, hogy Ön hány tárolóval rendelkezik az Azure rendszerben, ezek mely régiókat támogatják, illetve mely alkalmazások használják őket. |
 
 Azure-előfizetés birtokában bárki létrehozhat és használhat kulcstárolót. Bár a Key Vault a fejlesztők és a biztonsági rendszergazdák számára is, a szervezet rendszergazdája is megvalósíthatja és felügyelheti, aki más Azure-szolgáltatásokat felügyel. Például a rendszergazda bejelentkezhet egy Azure-előfizetéssel, létrehozhat egy tárolót azon szervezet számára, amelyben a kulcsokat tárolni kívánja, majd a következőhöz hasonló operatív feladatokért felelős:
 
@@ -77,7 +83,8 @@ A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. Tov
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan [védheti meg a](secure-your-key-vault.md)tárolót.
+- Megtudhatja, hogyan [védheti meg a](secure-your-key-vault.md)tárolót.
+- Ismerje meg, hogyan [védheti meg felügyelt HSM-készleteit](../managed-hsm/access-control.md)
 
 <!--Image references-->
 [1]: ../media/key-vault-whatis/AzureKeyVault_overview.png

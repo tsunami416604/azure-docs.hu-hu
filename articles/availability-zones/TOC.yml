@@ -95,6 +95,10 @@
       items:
         - name: Mik azok a peremhálózati zónák?
           href: ../networking/edge-zones-overview.md
+    - name: Azure Orbital-dokumentáció
+      items:
+        - name: Mi az az Azure Orbital?
+          href: ../networking/azure-orbital-overview.md
 - name: Vészhelyreállítás
   items:
     - name: Az Azure Site Recovery használata

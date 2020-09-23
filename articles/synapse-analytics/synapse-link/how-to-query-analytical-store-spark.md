@@ -1,111 +1,141 @@
 ---
-title: Lekérdezés Azure Cosmos DB analitikus tároló (előzetes verzió) és Apache Spark
-description: Azure Cosmos DB analitikus lekérdezése az Azure szinapszis Analytics Apache Spark használatával
+title: A Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával (előzetes verzió)
+description: A Azure Cosmos DB használata az Azure szinapszis-beli Apache Spark használatával
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 05/06/2020
+ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7ee04c922e4373414dc27ed2b7c98be605280e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089107"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881849"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Azure Cosmos DB analitikus áruház (előzetes verzió) lekérdezése az Azure szinapszis Analytics Apache Sparkával
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>A Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával (előzetes verzió)
 
-Ez a cikk példákat mutat be arra, hogyan használhatja az analitikai tárolót a szinapszis-kézmozdulatokkal. A kézmozdulatok akkor láthatók, ha a jobb egérgombbal egy tárolóra kattint. A kézmozdulatokkal gyorsan hozhat létre kódot, és testre szabhatja azt az igényei szerint. A kézmozdulatok az adatok egy kattintással való felderítéséhez is ideálisan használhatók.
+Ebből a cikkből megtudhatja, hogyan kommunikálhat a Azure Cosmos DB a szinapszis Apache Spark használatával. A Scala, a Python, a SparkSQL és a C# teljes körű támogatásával a szinapszis Apache Spark az Azure-beli [szinapszis-hivatkozáson](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)alapuló adatelemzési, adattervezési, adatelemzési és adatelemzési forgatókönyvek (Azure Cosmos db) központi része.
 
-## <a name="load-to-dataframe"></a>Betöltés a DataFrame
+A következő képességek támogatottak a Azure Cosmos DB való interakció közben:
+* A szinapszis Apache Spark lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az Azure szinapszis hivatkozásával közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. A következő két lehetőség érhető el a Spark Azure Cosmos DB [analitikai tárolójának](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lekérdezéséhez:
+    + Betöltés a Spark DataFrame
+    + Spark-tábla létrehozása
+* A szinapszis Apache Spark lehetővé teszi az adatAzure Cosmos DBba való betöltését is. Fontos megjegyezni, hogy az adatmennyiséget a tranzakciós tárolón keresztül mindig Azure Cosmos DB tárolóba kell bevenni. Ha a szinapszis-hivatkozás engedélyezve van, az új beszúrások, frissítések és törlések automatikusan szinkronizálva lesznek az analitikai tárolóba.
+* A szinapszis Apache Spark a Spark strukturált streamet is támogatja Azure Cosmos DB forrásként és fogadóként is. 
 
-Ebben a lépésben beolvassa a Azure Cosmos DB analitikus áruházból származó adatait egy Spark-DataFrame. Ekkor 10 sort fog megjeleníteni a ***DF***nevű DataFrame. Ha az adatai bekerültek a dataframe, további elemzést végezhet.
+A következő szakasz végigvezeti a fenti képességek szintaxisán. Az Azure szinapszis Analytics-munkaterületen található kézmozdulatok úgy lettek kialakítva, hogy könnyen használható felhasználói élményt nyújtsanak az első lépésekhez. A kézmozdulatok akkor láthatók, ha a jobb gombbal rákattint egy Azure Cosmos DB tárolóra a szinapszis munkaterület **adatlapján.** A kézmozdulatokkal gyorsan hozhat létre kódot, és testre szabhatja azt az igényei szerint. A kézmozdulatok az adatok egy kattintással való felderítéséhez is ideálisan használhatók.
 
-Ez a művelet nem érinti a tranzakciós tárolót.
+## <a name="query-azure-cosmos-db-analytical-store"></a>Lekérdezés Azure Cosmos DB analitikus tárolóban
 
+Mielőtt megtudhatja, hogyan lehet lekérdezni Azure Cosmos DB analitikus áruházat, betöltheti a Spark DataFrame, és létrehozza a Spark Table-et, érdemes megvizsgálnia a különböző élményekben rejlő lehetőségeket, így kiválaszthatja az igényeinek megfelelő lehetőséget.
+
+A tapasztalatok közötti különbség az, hogy az Azure Cosmos DB tárolóban lévő alapul szolgáló adatváltozások automatikusan megjelenjenek-e a Sparkban végzett elemzés során. Ha egy Spark-DataFrame regisztrálva van, vagy egy Spark-tábla jön létre egy tároló analitikus tárolóján, a rendszer az elemzési tárolóban lévő adatok aktuális pillanatképét a Sparkba olvassa be a további elemzések hatékony pushdown. Fontos megjegyezni, hogy mivel a Spark egy lusta kiértékelési szabályzatot követ, kivéve, ha egy műveletet a Spark-DataFrame vagy egy SparkSQL-lekérdezést hajt végre a Spark-táblán, a tényleges adatok nem kerülnek beolvasásra a mögöttes tároló analitikus tárolójából.
+
+A **Spark DataFrame való betöltés**esetén a beolvasott metaadatok a Spark-munkamenet élettartamán keresztül vannak gyorsítótárazva, és így a DataFrame meghívott további műveletek a DataFrame létrehozásakor az analitikai tároló pillanatképével lesznek kiértékelve.
+
+Másfelől a **Spark-tábla létrehozása**esetén az analitikai tár állapotának metaadatai nem kerülnek be a sparkba, és a rendszer minden SparkSQL-lekérdezés végrehajtásán újra betöltődik a Spark-táblán.
+
+Így választhat a Spark DataFrame betöltése és a Spark-táblázat létrehozása alapján, hogy szeretné-e kiértékelni a Spark-elemzést az analitikai tár rögzített pillanatképével vagy az analitikai tároló legújabb pillanatképének használatával.
+
+> [!NOTE]
+> A Mongo DB-fiókok Azure Cosmos DB API- [ját az analitikai](../../cosmos-db/analytical-store-introduction.md#analytical-schema) tárolóban és a használni kívánt bővített tulajdonságok neveiben tekintheti meg.
+
+### <a name="load-to-spark-dataframe"></a>Betöltés a Spark DataFrame
+
+Ebben a példában egy Spark-DataFrame fog létrehozni, amely a Azure Cosmos DB analitikus tárolóra mutat. Ezt követően további elemzéseket végezhet a Spark-műveletek a DataFrame való meghívásával. Ez a művelet nem érinti a tranzakciós tárolót.
+
+A **Python** szintaxisa a következő:
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 df = spark.read.format("cosmos.olap")\
-    .option("spark.synapse.linkedService", "INFERRED")\
-    .option("spark.cosmos.container", "INFERRED")\
+    .option("spark.synapse.linkedService", "<enter linked service name>")\
+    .option("spark.cosmos.container", "<enter container name>")\
     .load()
-
-df.show(10)
 ```
 
-A **Scala** megfelelő kód-kézmozdulata a következő kód lehet:
+A **Scala** egyenértékű szintaxisa a következő lesz:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 val df_olap = spark.read.format("cosmos.olap").
-    option("spark.synapse.linkedService", "pySparkSamplesDb").
-    option("spark.cosmos.container", "trafficSourceColl").
+    option("spark.synapse.linkedService", "<enter linked service name>").
+    option("spark.cosmos.container", "<enter container name>").
     load()
 ```
 
-## <a name="create-spark-table"></a>Spark-tábla létrehozása
+### <a name="create-spark-table"></a>Spark-tábla létrehozása
 
-Ebben a kézmozdulatban létre fog hozni egy Spark-táblázatot, amely a kiválasztott tárolóra mutat. Ez a művelet semmilyen adatáthelyezést nem von maga után. Ha úgy dönt, hogy törli a táblát, a mögöttes tárolót (és a hozzá tartozó analitikai tárolót) nem érinti a rendszer. 
+Ebben a példában egy Spark-táblázatot hozunk létre, amely a Azure Cosmos DB analitikus tárolót mutat. Ezt követően további elemzéseket végezhet, ha SparkSQL-lekérdezéseket küld a táblára. Ez a művelet nem befolyásolja a tranzakciós tárolót, és semmilyen adatáthelyezést sem jelent. Ha úgy dönt, hogy törli ezt a Spark-táblázatot, a mögöttes Azure Cosmos DB tárolót és a hozzá tartozó analitikus tárolót nem érinti a rendszer. 
 
-Ez a forgatókönyv lehetővé teszi a táblák harmadik féltől származó eszközökkel való újrafelhasználását, és az adatelérést a Futtatás ideje alatt elérhetővé teszi.
+Ez a forgatókönyv alkalmas a Spark-táblázatok harmadik féltől származó eszközökön keresztüli újrafelhasználására, és lehetővé teszi az alapul szolgáló adat elérését a Futtatás ideje alatt.
 
+A Spark-tábla létrehozásának szintaxisa a következő:
 ```sql
 %%sql
 -- To select a preferred list of regions in a multi-region Azure Cosmos DB account, add spark.cosmos.preferredRegions '<Region1>,<Region2>' in the config options
 
 create table call_center using cosmos.olap options (
-    spark.synapse.linkedService 'INFERRED',
-    spark.cosmos.container 'INFERRED'
+    spark.synapse.linkedService '<enter linked service name>',
+    spark.cosmos.container '<enter container name>'
 )
 ```
 
-## <a name="write-dataframe-to-container"></a>DataFrame írása tárolóba
+> [!NOTE]
+> Ha olyan forgatókönyvekkel rendelkezik, amelyekben az alapul szolgáló Azure Cosmos DB tároló sémája idővel megváltozik; Ha azt szeretné, hogy a frissített séma automatikusan tükrözze a Spark tábla lekérdezéseit, ezt a `spark.cosmos.autoSchemaMerge`  beállítást a `true` Spark-táblázat beállításainál állíthatja be.
 
-Ebben a kézmozdulatban egy dataframe fog írni egy tárolóba. Ez a művelet hatással lesz a tranzakciós teljesítményre és a kérelmek mennyiségének felhasználására. Az Azure Cosmos DB tranzakciós teljesítmény használata ideális írási tranzakcióhoz. Győződjön meg arról, hogy a **YOURDATAFRAME** lecseréli a dataframe, amelyet vissza szeretne írni.
 
+## <a name="write-spark-dataframe-to-azure-cosmos-db-container"></a>Spark-DataFrame írása Azure Cosmos DB tárolóba
+
+Ebben a példában egy Spark-DataFrame fog írni egy Azure Cosmos DB tárolóba. Ez a művelet hatással lesz a tranzakciós munkaterhelések teljesítményére és a Azure Cosmos DB tárolón vagy a megosztott adatbázison kiépített igénylési egységek felhasználására.
+
+A **Python** szintaxisa a következő:
 ```python
 # Write a Spark DataFrame into an Azure Cosmos DB container
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
-
 YOURDATAFRAME.write.format("cosmos.oltp")\
-    .option("spark.synapse.linkedService", "INFERRED")\
-    .option("spark.cosmos.container", "INFERRED")\
+    .option("spark.synapse.linkedService", "<enter linked service name>")\
+    .option("spark.cosmos.container", "<enter container name>")\
     .option("spark.cosmos.write.upsertEnabled", "true")\
     .mode('append')\
     .save()
 ```
 
-A **Scala** megfelelő kód-kézmozdulata a következő kód lehet:
+A **Scala** egyenértékű szintaxisa a következő lesz:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 import org.apache.spark.sql.SaveMode
 
 df.write.format("cosmos.oltp").
-    option("spark.synapse.linkedService", "pySparkSamplesDb").
-    option("spark.cosmos.container", "trafficSourceColl"). 
+    option("spark.synapse.linkedService", "<enter linked service name>").
+    option("spark.cosmos.container", "<enter container name>"). 
     option("spark.cosmos.write.upsertEnabled", "true").
     mode(SaveMode.Overwrite).
     save()
 ```
 
-## <a name="load-streaming-dataframe-from-container"></a>Adatfolyam-DataFrame betöltése a tárolóból
-Ebben a kézmozdulatban a Spark streaming funkciót fogja használni az adatok egy tárolóból egy dataframe való betöltéséhez. Az adattárolást a rendszer a munkaterülethez csatlakoztatott elsődleges adatlake-fiókban (és fájlrendszerben) tárolja. 
+> [!NOTE]
+> Ha a szinapszis Apache Sparkban található külső könyvtárakra hivatkozik, további információt [itt talál](#external-library-management). Ha például a Mongo DB-hez készült Cosmos DB API-t tartalmazó Spark-DataFrame szeretne bevenni, akkor a Spark Mongo DB-összekötőjét [itt](https://docs.mongodb.com/spark-connector/master/)is kihasználhatja.
 
-Ha a */localReadCheckpointFolder* mappa nincs létrehozva, a rendszer automatikusan létrehozza. Ez a művelet hatással lesz Azure Cosmos DB tranzakciós teljesítményére.
+## <a name="load-streaming-dataframe-from-azure-cosmos-db-container"></a>Adatfolyam-DataFrame betöltése Azure Cosmos DB tárolóból
+Ebben a példában a Spark strukturált adatfolyam-továbbítási funkcióját fogja használni a Azure Cosmos DB tárolóból származó adatok egy Spark streaming-DataFrame való betöltéséhez a Azure Cosmos DB a hírcsatornák módosítása funkciójának használatával. A Spark által használt ellenőrzőpont-információ a munkaterülethez csatlakoztatott elsődleges adatlake-fiókban (és fájlrendszerben) lesz tárolva.
 
+Ha a */localReadCheckpointFolder* mappa nincs létrehozva (az alábbi példában), a rendszer automatikusan létrehozza. Ez a művelet hatással lesz a tranzakciós számítási feladatok teljesítményére és a Azure Cosmos DB tárolón vagy megosztott adatbázison kiépített igénylési egységek felhasználására.
+
+A **Python** szintaxisa a következő:
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 dfStream = spark.readStream\
     .format("cosmos.oltp")\
-    .option("spark.synapse.linkedService", "INFERRED")\
-    .option("spark.cosmos.container", "INFERRED")\
+    .option("spark.synapse.linkedService", "<enter linked service name>")\
+    .option("spark.cosmos.container", "<enter container name>")\
     .option("spark.cosmos.changeFeed.readEnabled", "true")\
     .option("spark.cosmos.changeFeed.startFromTheBeginning", "true")\
     .option("spark.cosmos.changeFeed.checkpointLocation", "/localReadCheckpointFolder")\
@@ -113,24 +143,25 @@ dfStream = spark.readStream\
     .load()
 ```
 
-A **Scala** megfelelő kód-kézmozdulata a következő kód lehet:
+A **Scala** egyenértékű szintaxisa a következő lesz:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
 val dfStream = spark.readStream.
     format("cosmos.oltp").
-    option("spark.synapse.linkedService", "pySparkSamplesDb").
-    option("spark.cosmos.container", "trafficSourceColl").
+    option("spark.synapse.linkedService", "<enter linked service name>").
+    option("spark.cosmos.container", "<enter container name>").
     option("spark.cosmos.changeFeed.readEnabled", "true").
     option("spark.cosmos.changeFeed.startFromTheBeginning", "true").
     option("spark.cosmos.changeFeed.checkpointLocation", "/localReadCheckpointFolder").
-    option("spark.cosmos.changeFeed.queryName", "streamTestRevin2").
+    option("spark.cosmos.changeFeed.queryName", "streamQuery").
     load()
 ```
 
-## <a name="write-streaming-dataframe-to-container"></a>Adatfolyam-DataFrame írása tárolóba
-Ebben a kézmozdulatban egy streaming dataframe fog írni a kiválasztott Azure Cosmos DB-tárolóba. Ha a */localReadCheckpointFolder* mappa nincs létrehozva, a rendszer automatikusan létrehozza. Ez a művelet hatással lesz Azure Cosmos DB tranzakciós teljesítményére.
+## <a name="write-streaming-dataframe-to-azure-cosmos-db-container"></a>Adatfolyam-DataFrame írása Azure Cosmos DB tárolóba
+Ebben a példában egy streaming DataFrame fog írni egy Azure Cosmos DB tárolóba. Ez a művelet hatással lesz a tranzakciós számítási feladatok teljesítményére és a Azure Cosmos DB tárolón vagy megosztott adatbázison kiépített igénylési egységek felhasználására. Ha a */localWriteCheckpointFolder* mappa nincs létrehozva (az alábbi példában), a rendszer automatikusan létrehozza. 
 
+A **Python** szintaxisa a következő:
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
@@ -139,15 +170,15 @@ streamQuery = dfStream\
         .format("cosmos.oltp")\
         .outputMode("append")\
         .option("checkpointLocation", "/localWriteCheckpointFolder")\
-        .option("spark.synapse.linkedService", "INFERRED")\
-        .option("spark.cosmos.container", "trafficSourceColl_sink")\
+        .option("spark.synapse.linkedService", "<enter linked service name>")\
+        .option("spark.cosmos.container", "<enter container name>")\
         .option("spark.cosmos.connection.mode", "gateway")\
         .start()
 
 streamQuery.awaitTermination()
 ```
 
-A **Scala** megfelelő kód-kézmozdulata a következő kód lehet:
+A **Scala** egyenértékű szintaxisa a következő lesz:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
 
@@ -156,14 +187,30 @@ val query = dfStream.
             format("cosmos.oltp").
             outputMode("append").
             option("checkpointLocation", "/localWriteCheckpointFolder").
-            option("spark.synapse.linkedService", "pySparkSamplesDb").
-            option("spark.cosmos.container", "test2").
+            option("spark.synapse.linkedService", "<enter linked service name>").
+            option("spark.cosmos.container", "<enter container name>").
             option("spark.cosmos.connection.mode", "gateway").
             start()
 
 query.awaitTermination()
 ```
-## <a name="next-steps"></a>További lépések
 
-* [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./concept-synapse-link-cosmos-db-support.md)
+## <a name="external-library-management"></a>Külső kódtár kezelése
+
+Ebből a példából megtudhatja, hogyan hivatkozhat a külső kódtárak a JAR-fájlokból a Synpase Apache Spark-munkaterületeken Spark notebookok használatakor. A JAR-fájlokat elhelyezheti a munkaterülethez csatlakoztatott elsődleges adatközpont-fiókban lévő tárolóban, majd hozzáadhatja a következő `%configure` utasítást a Spark Notebookban:
+
+```cmd
+%%configure -f
+{
+    "jars": [
+        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
+    ]
+}
+```
+Ha távoli Spark-feladatokra vonatkozó definíciókat szeretne elküldeni egy szinapszis Spark-készletbe, megtudhatja, hogyan hivatkozhat a külső könyvtárakra az [oktatóanyag](../spark/apache-spark-job-definitions.md)követésével.
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Minták az Azure szinapszis hivatkozásának megkezdéséhez a GitHubon](https://aka.ms/cosmosdb-synapselink-samples)
+* [Ismerje meg, mi támogatott az Azure szinapszis-hivatkozás Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)
 * [Csatlakozás a szinapszis hivatkozásához Azure Cosmos DB](../quickstart-connect-synapse-link-cosmos-db.md)

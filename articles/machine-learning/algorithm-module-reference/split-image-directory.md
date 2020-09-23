@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84810193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890258"
 ---
 # <a name="split-image-directory"></a>Képkönyvtár felosztása
 
-Ez a témakör azt ismerteti, hogyan használható a lemezkép-könyvtár felosztása a Azure Machine Learning Designerben (előzetes verzió).
+Ez a témakör azt ismerteti, hogyan lehet a lemezkép-könyvtár lemezképeit két különböző csoportba osztani a Azure Machine Learning Designerben.
 
 Ez a modul különösen akkor hasznos, ha a képadatokat betanítási és tesztelési készletekbe kell elkülöníteni. 
 
@@ -35,24 +35,24 @@ Ez a modul különösen akkor hasznos, ha a képadatokat betanítási és teszte
 
 ### <a name="expected-inputs"></a>Várt bemenetek
 
-| Name                  | Típus           | Description              |
+| Név                  | Típus           | Leírás              |
 | --------------------- | -------------- | ------------------------ |
 | Bemeneti rendszerkép könyvtára | ImageDirectory | Felosztható Képkönyvtár |
 
 ### <a name="module-parameters"></a>Modul paramétereinek
 
-| Name                                   | Típus  | Tartomány | Választható | Description                            | Alapértelmezett |
+| Név                                   | Típus  | Tartomány | Választható | Leírás                            | Alapértelmezett |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
-| Az első kimenetben található rendszerképek töredéke | Float | 0-1   | Kötelező | Az első kimenetben található rendszerképek töredéke | 0.9     |
+| Az első kimenetben található rendszerképek töredéke | Float | 0-1   | Kötelező | Az első kimenetben található rendszerképek töredéke | 0,9     |
 
 ### <a name="outputs"></a>Kimenetek
 
-| Name                    | Típus           | Description                              |
+| Név                    | Típus           | Leírás                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Kimeneti rendszerkép directory1 | ImageDirectory | A kijelölt lemezképeket tartalmazó könyvtár |
 | Kimeneti rendszerkép directory2 | ImageDirectory | Az összes többi rendszerképet tartalmazó könyvtár |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85513309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983410"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban egy Data Factory folyamatot hoz létre, amely a vezérl
 
 Ez a ábra áttekintést nyújt a forgatókönyvről:
 
-![Áttekintés](media/tutorial-control-flow/overview.png)
+![A diagramon az Azure Blob Storage látható, amely egy másolat célja, amely sikeres, a részletekkel ellátott e-mailt küld, vagy meghibásodás esetén hibaüzenetet küld.](media/tutorial-control-flow/overview.png)
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 
 Ez az oktatóanyag a .NET SDK-t használja. Más mechanizmusokkal is használhatja a Azure Data Factory. Data Factory rövid útmutatók: [5 perces](/azure/data-factory/quickstart-create-data-factory-portal)gyors útmutató.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -748,7 +748,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

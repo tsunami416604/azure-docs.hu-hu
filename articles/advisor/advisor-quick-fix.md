@@ -4,12 +4,12 @@ description: Csoportos szervizelés végrehajtása a gyors javítással az Advis
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518062"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968592"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Gyors javítási szervizelés az Advisorhoz
 A **gyors javítás** a több erőforrásra vonatkozó javaslat gyorsabb és egyszerűbb megoldását teszi lehetővé. Lehetővé teszi az erőforrások tömeges szervizelését, és lehetővé teszi az előfizetések gyorsabb optimalizálását az erőforrások nagy mértékű szervizelésével.
@@ -20,13 +20,13 @@ A szolgáltatás csak bizonyos ajánlásokhoz érhető el, Azure Portalon keresz
 
 1. A **gyors javítás** címkével rendelkező javaslatok listájában kattintson a javaslatra.
 
-   ![Advisor – gyors javítás](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Képernyőfelvétel a Azure Advisorről, amely az ajánlásokban található gyors javítási címkéket mutatja.}":::
    
    *A rendszerkép árai csak példaként szolgálnak.*
 
 2. A javaslat részletei lapon megtekintheti azokat az erőforrásokat, amelyekhez ezt a javaslatot elvégezte. Válassza ki az összes olyan erőforrást, amelyet a javaslathoz szeretne szervizelni.
 
-   ![Advisor – gyors javítás](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="Képernyőkép az érintett erőforrások ablakról listaelemek és a gyors javítás gomb kiemelésével.":::
    
    *A rendszerkép árai csak példaként szolgálnak.*
 
@@ -44,7 +44,7 @@ A szolgáltatás csak bizonyos ajánlásokhoz érhető el, Azure Portalon keresz
 ## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
-* [Bevezetés a Azure Advisorba](advisor-overview.md)
+* [Az Azure Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
 * [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)

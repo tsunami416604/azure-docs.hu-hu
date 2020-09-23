@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708070"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983653"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Virtuális központ érvényes útvonalainak megtekintése
 
@@ -33,7 +33,7 @@ Az oldal kimenete a következő mezőket jeleníti meg:
 * **Forrás: az**útválasztási forrás erőforrás-azonosítója.
 * **Elérési út**: a BGP attribútum as (autonóm rendszer) elérési útja felsorolja az összes olyan számot, amelyet át kell adni ahhoz, hogy elérje azt a helyet, ahol az elérési utat csatolták, a meghirdetve.
 
-### <a name="example"></a><a name="example"></a>Például
+### <a name="example"></a><a name="example"></a>Példa
 
 A következő példában szereplő értékek azt jelzik, hogy a virtuális hub-kapcsolatok vagy az útválasztási táblázat megtanulta a 10.2.0.0/24 (ág-előtag) útvonalát. Megtanulta az útvonalat a **VPN következő ugrásának típusa** VPN_S2S_Gateway a **következő ugrás** VPN Gateway erőforrás-azonosítóval. Az **útvonal kezdőpontja** a kezdeményező VPN-átjáró/útválasztási tábla/kapcsolat erőforrás-azonosítójára mutat. Az **elérési** út a ág as elérési útját jelöli.
 
@@ -53,7 +53,7 @@ A táblázat alján található görgetősáv használatával megtekintheti az "
 
 * Egy virtuális központ útválasztási táblájának érvényes útvonalait csak akkor kell megtekinteni, ha a virtuális hubhoz legalább egy kapcsolat (VPN/ER/VNET) csatlakozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

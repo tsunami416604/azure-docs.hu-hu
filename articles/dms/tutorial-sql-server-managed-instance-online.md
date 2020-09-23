@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 08/04/2020
-ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984326"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL felügyelt példányra online a DMS használatával
 
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!IMPORTANT]
 > Az SQL Serverról az SQL felügyelt példányra Azure Database Migration Service használatával történő online áttelepítéshez meg kell adnia a teljes adatbázis biztonsági mentését és az azt követő biztonsági másolatokat abban az SMB-hálózati megosztásban, amelyet a szolgáltatás az adatbázisok áttelepítésére használhat. A Azure Database Migration Service nem kezdeményez biztonsági mentést, hanem meglévő biztonsági másolatokat használ, amelyek már a vész-helyreállítási terv részeként is megjelenhetnek az áttelepítés során.
-> Ügyeljen arra, hogy [biztonsági másolatokat készítsen a with ellenőrzőösszeg](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)paranccsal. Ügyeljen arra is, hogy ne fűzze több biztonsági mentést (azaz a teljes és a t-log-t) egyetlen biztonsági mentési adathordozóra; készítsen biztonsági mentést egy külön biztonságimásolat-fájlon. Végezetül a tömörített biztonsági mentések segítségével csökkentheti a nagyméretű biztonsági mentések áttelepítéséhez kapcsolódó lehetséges problémák előfordulásának valószínűségét.
+> Ügyeljen arra, hogy [biztonsági másolatokat készítsen a with ellenőrzőösszeg](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true)paranccsal. Ügyeljen arra is, hogy ne fűzze több biztonsági mentést (azaz a teljes és a t-log-t) egyetlen biztonsági mentési adathordozóra; készítsen biztonsági mentést egy külön biztonságimásolat-fájlon. Végezetül a tömörített biztonsági mentések segítségével csökkentheti a nagyméretű biztonsági mentések áttelepítéséhez kapcsolódó lehetséges problémák előfordulásának valószínűségét.
 
 > [!NOTE]
 > A Azure Database Migration Service használata az online áttelepítés végrehajtásához a prémium szintű díjszabás alapján kell létrehoznia egy példányt.
@@ -170,7 +170,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
    ![Forrás részletei](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 4. A **Forrásadatbázisok kiválasztása** képernyőn válassza ki az **Adventureworks2012** adatbázist a migráláshoz.
 
@@ -179,7 +179,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     > [!IMPORTANT]
     > Ha SQL Server Integration Servicest (SSIS) használ, a DMS jelenleg nem támogatja a katalógus-adatbázis áttelepítését a SSIS-projektekhez/-csomagokhoz (SSISDB) a SQL Server és az SQL felügyelt példánya között. A SSIS azonban Azure Data Factory (ADF) is kiépítheti, és újból üzembe helyezheti a SSIS-projekteket/csomagokat a felügyelt SQL-példány által üzemeltetett SSISDB. A SSIS-csomagok áttelepítésével kapcsolatos további információkért tekintse [meg SQL Server Integration Services csomagok migrálása az Azure-ba](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)című cikket.
 
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
@@ -195,7 +195,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     ![Cél kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="select-source-databases"></a>Forrásadatbázisok kiválasztása
 
@@ -203,7 +203,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     ![Forrásadatbázisok kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. Válassza a **Mentés** lehetőséget.
+2. Kattintson a **Mentés** gombra.
 
 ## <a name="configure-migration-settings"></a>Migrálási beállítások konfigurálása
 
@@ -225,7 +225,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     > [!IMPORTANT]
     > Ha a visszacsatolási ellenőrzési funkció engedélyezve van, és a forrás SQL Server és a fájlmegosztás ugyanazon a számítógépen található, akkor a forrás nem fogja tudni elérni a fájlokat a teljes tartománynév használatával. A probléma megoldásához tiltsa le a visszacsatolási ellenőrzés funkcióit az [itt](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)leírt utasítások alapján.
 
-2. Válassza a **Mentés** lehetőséget.
+2. Kattintson a **Mentés** gombra.
 
 ## <a name="review-the-migration-summary"></a>A migrálás összefoglalásának áttekintése
 
@@ -245,7 +245,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     Az adatbázisok és a bejelentkezések kategóriáit is kibonthatja a kapcsolódó kiszolgálói objektumok migrálási állapotának nyomon követéséhez.
 
-   ![A migrálási tevékenység folyamatban van](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
+   ![Áttelepítési tevékenység állapota](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Átállásos migrálás végrehajtása
 
@@ -264,7 +264,7 @@ Miután a teljes adatbázis biztonsági mentését visszaállította az SQL fel�
     ![Teljes átállás előkészítése](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
     > [!IMPORTANT]
-    > A átváltás követően a felügyelt példányok rendelkezésre állása csak üzletileg kritikus szolgáltatási szinten tarthat, mint általános célú, mivel három másodlagos replikát kell bevezetni a magas rendelkezésre állási csoport AlwaysOn. A művelet időtartama az adatok méretétől függ, további információ: [felügyeleti műveletek időtartama](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration).
+    > A átváltás követően a felügyelt példányok rendelkezésre állása csak üzletileg kritikus szolgáltatási szinten tarthat, mint általános célú, mivel három másodlagos replikát kell bevezetni a magas rendelkezésre állási csoport AlwaysOn. A művelet időtartama az adatok méretétől függ, további információ: [felügyeleti műveletek időtartama](../azure-sql/managed-instance/management-operations-overview.md#duration).
 
 5. Ha az adatbázis-áttelepítési **állapot megjelenik,** az alkalmazásait az SQL felügyelt példányának új célként megadott példányához kell összekötnie.
 

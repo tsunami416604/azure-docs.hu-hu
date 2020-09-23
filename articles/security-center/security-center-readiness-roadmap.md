@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771359"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904722"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -29,12 +29,12 @@ Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyege
 Használja az alábbi erőforrásokat a Security Center használatának elkezdéséhez.
 
 Cikkek
-* [Az Azure Security Center bemutatása](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Azure Security Center – rövid útmutató](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Az Azure Security Center bemutatása](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Security Center – rövid útmutató](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 Videók
-* [Rövid bemutatóvideó](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [A Security Center megelőzési, észlelési és kezelési képességeinek áttekintése](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [Rövid bemutatóvideó](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [A Security Center megelőzési, észlelési és kezelési képességeinek áttekintése](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>Tervezés és műveletek
 
@@ -42,20 +42,16 @@ Ahhoz, hogy a lehető legnagyobb mértékben kihasználhassa a Security Center �
 
 A következő forrásanyagok segítségére lehetnek a tervezési és műveleti folyamatok során.
 
-Cikk
-* [Azure Security Center tervezési és üzemeltetési útmutató](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Számítógépek regisztrációja a Security Centerben
-A Security Center automatikusan észleli azokat az Azure-előfizetéseket vagy munkaterületeket, amelyeken nincs engedélyezve a Security Center Standard. Ez a Security Center ingyenes verzióját használó Azure-előfizetéseket és az olyan munkaterületeket is magában foglalja, amelyeken nincs engedélyezve a biztonsági megoldás.
+Security Center automatikusan észleli az Azure Defender által nem védett Azure-előfizetéseket vagy-munkaterületeket. Ebbe beletartozik az Azure-előfizetések Security Center ingyenes és munkaterületek használata, amelyeken nincs engedélyezve a biztonsági megoldás.
 
 A következő forrásanyagok segítségére lehetnek a regisztrációs folyamatok során.
 
-Cikk
-* [Regisztráció az Azure Security Center Standardra a biztonság növelése érdekében](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-Videó
-* [Hibrid Azure Security Center – Áttekintés](https://youtu.be/NMa4L_M597k)
+- [Nem Azure-beli számítógépek előkészítése](quickstart-onboard-machines.md)
+- [Hibrid Azure Security Center – Áttekintés](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>Biztonsági hibák csökkentése a Security Centerrel
 A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások, például a tűzfalak és a végpontvédelmi megoldások naplóadatait a valós fenyegetések észlelése és a téves riasztások számának csökkentése érdekében.
@@ -63,14 +59,13 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 A következő forrásanyagok segítségére lehetnek a biztonsági riasztások kezelésében és az erőforrások védelmében.
 
 Cikkek    
-* [Biztonsági állapotfigyelés az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
-* [Hálózat védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Az Azure SQL-szolgáltatás és -adatok védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Biztonsági állapotfigyelés az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [Hálózat védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Az Azure SQL-szolgáltatás és -adatok védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
 Videó    
-* [Biztonsági hibák csökkentése az Azure Security Center használatával](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [Biztonsági hibák csökkentése az Azure Security Center használatával](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>A Security Center használata incidensmegoldásra
 A költségek és a károk csökkentése érdekében fontos, hogy a támadás megkezdése előtt egy incidensre vonatkozó válaszintézkedések legyenek érvényben. Az Azure Security Center az incidensmegoldás több szakaszában is alkalmazható.
@@ -105,7 +100,7 @@ Cikkek
 * [Webalkalmazási tűzfal (WAF) javasolt forgatókönyve a Security Centerben](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 * [Security Center – dokumentációs oldal](https://docs.microsoft.com/azure/security-center/)
 * [Security Center – REST API-dokumentációs oldal](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Azure Security Center – gyakori kérdések (GYIK)](https://docs.microsoft.com/azure/security-center/security-center-faq)
@@ -119,6 +114,4 @@ Cikkek
 ## <a name="community-resources"></a>Közösségi forrásanyagok
 
 * [Security Center – UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [A Microsoft Q&egy kérdés oldalt Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [Q&Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)

@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530794"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976263"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
 
@@ -26,7 +26,7 @@ A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehet�
 >* [PowerShell-cikk](virtual-wan-route-table-nva.md)
 >
 
-## <a name="design"></a><a name="design"></a>Tervezés
+## <a name="design"></a><a name="design"></a>Kialakítás
 
 Ebben az esetben az elnevezési konvenciót fogjuk használni:
 
@@ -69,14 +69,14 @@ Ebben a forgatókönyvben azonban meg kell gondolni, hogy mely statikus útvonal
 
 Ezzel az alapértelmezett táblában a NVA a NVA VNet mögötti forgalom küldéséhez szükséges statikus útvonalak a következők:
 
-| Description | Útválasztási táblázat | Statikus útvonal              |
+| Leírás | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | 2. VNet       | Alapértelmezett     | 10.2.0.0/16 – > eastusconn |
 | 4. VNet       | Alapértelmezett     | 10.4.0.0/16 – > weconn     |
 
 A Virtual WAN már tudja, hogy melyik kapcsolattal küldi el a csomagokat, de a kapcsolatnak tudnia kell, mi a teendő a csomagok fogadásakor: ez az a hely, ahol a kapcsolati útválasztási táblák vannak használatban. Itt fogjuk használni a rövidebb előtagokat (/24 a hosszabb/16 helyett), hogy meggyőződjünk arról, hogy ezek az útvonalak előnyben részesítettek a NVA virtuális hálózatok importált útvonalakon (VNet 2 és VNet 4):
 
-| Description | Kapcsolat | Statikus útvonal            |
+| Leírás | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | 5. VNet       | eastusconn | 10.2.1.0/24 – > 10.2.0.5 |
 | 6. VNet       | eastusconn | 10.2.2.0/24 – > 10.2.0.5 |

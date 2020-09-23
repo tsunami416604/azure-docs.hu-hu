@@ -1,14 +1,14 @@
 ---
 title: Service Health áttekintése | Microsoft Docs
-description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
+description: Ismerje meg, hogyan biztosíthatja a Service Health egy testreszabható irányítópultot, amely nyomon követi az Azure-szolgáltatások állapotát azokon a régiókban, amelyeken ezeket használja.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089600"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967783"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
 
@@ -72,6 +72,6 @@ A Service Health integrálható Azure Monitorekkel, hogy e-mailben, szöveges ü
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [ajánlott eljárások Azure Service Health riasztások beállításához](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

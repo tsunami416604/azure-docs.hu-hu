@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU megosztások kezelése | Microsoft Docs
-description: Ismerteti, hogyan kezelheti a Azure Portal az Azure Stack Edge GPU-ban lévő megosztások kezeléséhez.
+title: Azure Stack Edge Pro GPU megosztások kezelése | Microsoft Docs
+description: Ismerteti, hogyan kezelheti a Azure Portal az Azure Stack Edge Pro GPU-ban lévő megosztások kezeléséhez.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904694"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>A Azure Portal használata az Azure Stack Edge-megosztások kezeléséhez
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>A Azure Portal használata az Azure Stack Edge Pro-beli megosztások kezeléséhez
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk bemutatja, hogyan kezelheti a megosztásokat az Azure Stack Edge-ben. Az Azure Stack Edge a Azure Portal vagy a helyi webes felületen keresztül kezelhető. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához.
+Ez a cikk bemutatja, hogyan kezelheti a megosztásokat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához.
 
 ## <a name="about-shares"></a>Információk a megosztásokról
 
-Az adatok Azure-ba történő átviteléhez létre kell hoznia a megosztásokat az Azure Stack Edge-ben. Az Azure Stack peremhálózati eszközön hozzáadott megosztások lehetnek helyi megosztások vagy megosztások, amelyek az adatküldést a felhőbe továbbítják.
+Az adatok Azure-ba történő átviteléhez megosztásokat kell létrehoznia a Azure Stack Edge Pro-ban. Az Azure Stack Edge Pro-eszközön hozzáadott megosztások lehetnek helyi megosztások vagy megosztások, amelyek leküldik az adatforgalomot a felhőbe.
 
  - **Helyi megosztások**: akkor használja ezeket a megosztásokat, amikor azt szeretné, hogy az eszközön helyileg dolgozzák fel az adatfeldolgozást.
  - **Megosztások**: akkor használja ezeket a megosztásokat, ha azt szeretné, hogy az eszköz adatai automatikusan a felhőben legyenek leküldve a Storage-fiókba. Az összes Felhőbeli funkció, például a **frissítési** és **szinkronizálási tárolási kulcsok** a megosztásokra vonatkoznak.
@@ -74,7 +74,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 3. Válassza ki a megosztás **típusát**. A típus **SMB** vagy **NFS** lehet. Az alapértelmezett érték az SMB. Ez a szokásos típus Windows-ügyfelekhez, míg az NFS a Linux rendszerű ügyfelekhez használatos. Attól függően, hogy az SMB vagy az NFS típust választja, a megjelenő beállítások kis mértékben eltérőek.
 
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack peremhálózati vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack Edge Pro vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 4. Az Edge számítási modulok megosztásának egyszerű eléréséhez használja a helyi csatlakoztatási pontot. Válassza **a megosztás Edge-számítással** lehetőséget, hogy a peremhálózati modul a helyi csatlakoztatási ponttal tudja használni a számítást.
 
@@ -82,7 +82,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 6. A **minden jogosultság helyi felhasználó** mezőben válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**.
 
-7. Válassza a **Létrehozás** lehetőséget. 
+7. Kattintson a **Létrehozás** gombra. 
 
     ![Helyi megosztás létrehozása](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -96,7 +96,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 ## <a name="mount-a-share"></a>Megosztás csatlakoztatása
 
-Ha létrehozott egy megosztást, mielőtt beállította a számítást az Azure Stack Edge-eszközön, csatlakoztatnia kell a megosztást. A megosztás csatlakoztatásához hajtsa végre az alábbi lépéseket.
+Ha létrehozott egy megosztást, mielőtt beállította a számítást a Azure Stack Edge Pro-eszközön, csatlakoztatnia kell a megosztást. A megosztás csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
 
 1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
@@ -147,7 +147,7 @@ Megosztás törléséhez hajtsa végre a következő lépéseket az Azure Portal
 
     ![Jelölje ki a megosztást](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
 
-2. Kattintson a **Delete** (Törlés) gombra.
+2. Kattintson a **Törlés** gombra.
 
     ![Kattintson a Törlés gombra](media/azure-stack-edge-j-series-manage-shares/delete-share-2.png)
 
@@ -239,6 +239,6 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 > Ezt a műveletet csak egyszer kell elvégezni az egyes tárfiókok esetében, nem kell megismételni minden egyes, ugyanazon tárfiókhoz tartozó megosztásnál.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](azure-stack-edge-j-series-manage-users.md).
