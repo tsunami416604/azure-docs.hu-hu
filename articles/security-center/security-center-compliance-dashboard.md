@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519643"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895819"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: a szabályozás megfelelőségének javítása
 ---
@@ -35,8 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban szereplő funkciók átlépéséhez Security Center Standard díjszabási szinttel kell rendelkeznie. Security Center Standard díjmentesen is kipróbálható.
-További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](https://docs.microsoft.com/azure/security-center/security-center-get-started) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+Az oktatóanyagban szereplő funkciók átlépéséhez engedélyezni kell az [Azure Defendert](azure-defender.md) . 30 napig ingyenesen kipróbálhatja az Azure Defendert.
 
 ##  <a name="assess-your-regulatory-compliance"></a>A szabályozás megfelelőségének felmérése
 
@@ -72,13 +71,13 @@ A szabályozás megfelelőségi irányítópultján található információk al
 
 1.  Kiválaszthat egy adott erőforrást a további részletek megtekintéséhez és az adott erőforráshoz tartozó javaslat megoldásához. <br>Az **Azure CIS standard** lapon például a javaslatra kattintva **biztonságos átvitelt igényelhet a Storage-fiókra**.
 
-    ![megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![A * * javaslat kiválasztása a Storage-fiókhoz való biztonságos átvitel megkövetelése * *](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. Amikor rákattint az ajánlási információkra, és kijelöl egy nem megfelelő állapotú erőforrást, közvetlenül a Azure Portalon belül a **Biztonságos tár-átvitel** engedélyezésének élményét eredményezi.
 
     A javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
 
-    ![megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![Tárfiók konfigurálása](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  Miután lépéseket tett a javaslatok megoldására, látni fogja a megfelelőségi irányítópult jelentésének hatását, mivel a megfelelőségi pontszám javul.
 

@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021034"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975463"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -61,7 +61,7 @@ Választhat a földrajzilag redundáns tárolás és a helyileg redundáns táro
 
 - Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik.
 - Ha a tároló elsődleges biztonsági másolata, hagyja a beállítást a Geo-redundáns tárolás beállításnál. Ha olyan olcsóbb lehetőséget szeretne, amely nem annyira tartós, a következő eljárással konfigurálhatja a helyileg redundáns tárolást.
-- További információ az [Azure Storage](../storage/common/storage-redundancy.md)szolgáltatásról, valamint a [geo-redundáns](../storage/common/storage-redundancy.md) és a [helyileg redundáns](../storage/common/storage-redundancy.md) tárolási lehetőségekről.
+- Tudjon meg többet az [Azure Storage](../storage/common/storage-redundancy.md)szolgáltatásról, valamint a [geo-redundáns](../storage/common/storage-redundancy.md#geo-redundant-storage), [helyileg redundáns](../storage/common/storage-redundancy.md#locally-redundant-storage) és [zónákra](../storage/common/storage-redundancy.md#zone-redundant-storage) redundáns tárolási lehetőségekről.
 - Módosítsa a tárolási beállításokat a kezdeti biztonsági mentés előtt. Ha már készített biztonsági másolatot egy elemről, a tárolási beállítások módosítása előtt állítsa le a biztonsági mentést a tárolóban.
 
 A tárreplikációs beállítás szerkesztése:
@@ -165,7 +165,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
 7. Válassza a **regisztráció** lehetőséget a DPM-kiszolgáló a tárolóhoz való regisztrálásához.
 
-Miután a kiszolgáló regisztrálása sikeresen megtörtént a tárolóban, most már készen áll a Microsoft Azurere való biztonsági mentésre. A munkaterhelések Azure-ba történő biztonsági mentéséhez konfigurálnia kell a védelmi csoportot a DPM-konzolon. [További információ](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) a védelmi csoportok üzembe helyezéséről.
+Miután a kiszolgáló regisztrálása sikeresen megtörtént a tárolóban, most már készen áll a Microsoft Azurere való biztonsági mentésre. A munkaterhelések Azure-ba történő biztonsági mentéséhez konfigurálnia kell a védelmi csoportot a DPM-konzolon. [További információ](/system-center/dpm/create-dpm-protection-groups) a védelmi csoportok üzembe helyezéséről.
 
 ## <a name="troubleshoot-vault-credentials"></a>Tár hitelesítő adatainak hibakeresése
 

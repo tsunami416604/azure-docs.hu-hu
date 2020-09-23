@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge-korlátok | Microsoft Docs
-description: Ismerje meg a korlátokat és az ajánlott méreteket Azure Stack Edge üzembe helyezése és üzemeltetése során, beleértve a szolgáltatási korlátokat, az eszközök korlátait és a tárolási korlátokat.
+title: Azure Stack Edge Pro-korlátok | Microsoft Docs
+description: Ismerje meg a korlátokat és az ajánlott méreteket a Azure Stack Edge Pro üzembe helyezése és üzemeltetése során, beleértve a szolgáltatási korlátokat, az eszközök korlátait és a tárolási korlátokat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904452"
 ---
-# <a name="azure-stack-edge-limits"></a>Az Azure Stack Edge korlátai
+# <a name="azure-stack-edge-pro-limits"></a>Az Azure Stack Edge Pro korlátai
 
-Vegye figyelembe ezeket a korlátokat az Microsoft Azure Stack Edge-megoldás üzembe helyezése és üzemeltetése során. 
+Ezeket a korlátokat a Microsoft Azure Stack Edge Pro-megoldás üzembe helyezése és üzemeltetése során érdemes figyelembe venni. 
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge-szolgáltatás korlátai
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-device-limits"></a>Azure Stack eszköz korlátai
+## <a name="azure-stack-edge-device-limits"></a>Azure Stack Edge-eszközök korlátai
 
-Az alábbi táblázat az Azure Stack Edge-eszközre vonatkozó korlátozásokat ismerteti. 
+Az alábbi táblázat az Azure Stack Edge Pro-eszköz korlátozásait ismerteti. 
 
 | Leírás | Érték |
 |---|---|
@@ -53,4 +53,4 @@ Az alábbi táblázat az Azure Stack Edge-eszközre vonatkozó korlátozásokat 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felkészülés az Azure Stack Edge üzembe helyezésére](azure-stack-edge-deploy-prep.md)
+- [Felkészülés a Azure Stack Edge Pro üzembe helyezésére](azure-stack-edge-deploy-prep.md)

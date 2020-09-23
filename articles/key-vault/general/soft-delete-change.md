@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068846"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984596"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A Soft-delete minden kulcstartón engedélyezve lesz.
 
 > [!WARNING]
 > **Megszakítási változás**: a rendszer az év végéig elavulttá teszi a helyreállítható törlés lehetőségét, és az összes kulcstartó esetében automatikusan bekapcsolja a törlési védelmet.  Azure Key Vault felhasználóknak és rendszergazdáknak azonnal engedélyeznie kell a helyreállítható törlést a kulcstartón.
+>
+> A felügyelt HSM esetében a Soft delete alapértelmezés szerint engedélyezve van, és nem tiltható le.
 
 Ha törölnek egy titkos kulcsot a kulcstartóból, és nem törli a védelmet, a titkos kulcs véglegesen törlődik. A felhasználók jelenleg a Key Vault létrehozásakor letiltják a helyreállítható törlést, de a titkos kódok védelme érdekében a felhasználók véletlenül vagy rosszindulatúan törölhetik a felhasználókat, a Microsoft hamarosan lehetővé teszi az **összes** kulcstartóban lévő helyreállítható védelem törlését, és a felhasználók már nem választhatják ki vagy kapcsolhatják le a törlési funkciót.
 

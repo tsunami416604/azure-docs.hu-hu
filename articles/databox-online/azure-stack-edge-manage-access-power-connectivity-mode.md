@@ -1,6 +1,6 @@
 ---
-title: Az Edge-eszközök elérésének Azure Stack, a Power és a connectivity mód | Microsoft Docs
-description: Útmutató az Azure-ba való adatátvitelt segítő Azure Stack Edge-eszköz hozzáférésének, teljesítményének és csatlakozási módjának kezeléséhez
+title: Azure Stack Edge Pro-eszköz hozzáférésének, teljesítményének és kapcsolati módjának | Microsoft Docs
+description: Útmutató az Azure-ba való adatátvitelt segítő Azure Stack Edge Pro-eszköz hozzáférésének, energiaellátásának és csatlakozási módjának kezeléséhez
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904422"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Az Azure Stack Edge hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>A Azure Stack Edge Pro hozzáférési, energiagazdálkodási és csatlakozási módjának kezelése
 
-Ez a cikk azt ismerteti, hogyan kezelhető a Azure Stack Edge hozzáférési, energiagazdálkodási és kapcsolódási módja. Ezek a műveletek a helyi webes felületen vagy a Azure Portalon keresztül hajthatók végre.
+Ez a cikk azt ismerteti, hogyan kezelhető a Azure Stack Edge Pro hozzáférési, energiagazdálkodási és kapcsolódási módja. Ezek a műveletek a helyi webes felületen vagy a Azure Portalon keresztül hajthatók végre.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -29,7 +29,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="manage-device-access"></a>Eszközök hozzáférésének kezelése
 
-Az Azure Stack Edge-eszköz hozzáférését az eszköz jelszavának használatával szabályozhatja. A jelszó a helyi webes felületen keresztül módosítható. Alaphelyzetbe állíthatja az eszköz jelszavát is a Azure Portalban.
+Az Azure Stack Edge Pro-eszköz hozzáférését az eszköz jelszavának használatával szabályozhatja. A jelszó a helyi webes felületen keresztül módosítható. Alaphelyzetbe állíthatja az eszköz jelszavát is a Azure Portalban.
 
 ### <a name="change-device-password"></a>Az eszköz jelszavának módosítása
 
@@ -61,12 +61,12 @@ A Azure Stack Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrás 
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API-engedélyek kezelése
 
-Az Azure Stack Edge-eszköz aktiválási kulcsának létrehozásakor, illetve a hitelesítő adatokat igénylő műveletek elvégzéséhez engedélyekkel kell rendelkeznie Azure Active Directory Graph API. A hitelesítő adatokat igénylő műveletek a következők lehetnek:
+Az Azure Stack Edge Pro-eszköz aktiválási kulcsának létrehozásakor, illetve a hitelesítő adatokat igénylő műveletek elvégzéséhez engedélyekkel kell rendelkeznie Azure Active Directory Graph API. A hitelesítő adatokat igénylő műveletek a következők lehetnek:
 
 -  Megosztás létrehozása társított Storage-fiókkal.
 -  Hozzon létre egy felhasználót, aki hozzáfér az eszközön található megosztásokhoz.
 
-Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, egy megosztás létrehozása az Azure Stack Edge-eszközön, a felhasználó létrehozása, a peremhálózati számítási szerepkör konfigurálása, az eszköz jelszavának visszaállítása sikertelen lesz.
+Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a Azure Stack Edge Pro-eszközön létrehozott megosztás létrehozása, a felhasználó létrehozása, a peremhálózati számítási szerepkör konfigurálása, az eszköz jelszavának alaphelyzetbe állítása sikertelen lesz.
 
 A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -89,7 +89,7 @@ A jelenlegi előfizetésben regisztrált erőforrás-szolgáltatók listájának
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge-eszköz esetében `Microsoft.DataBoxEdge` regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge` az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
+Azure Stack Edge Pro-eszköz esetében `Microsoft.DataBoxEdge` regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge` az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

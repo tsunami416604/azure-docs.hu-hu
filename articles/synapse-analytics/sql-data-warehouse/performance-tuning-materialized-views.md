@@ -1,6 +1,6 @@
 ---
 title: Teljesítmény-Finomhangolás az anyagbeli nézetekkel
-description: 'A lekérdezési teljesítmény javítása érdekében a következő ajánlásokat és szempontokat érdemes ismernie:'
+description: Ismerje meg, hogy milyen ajánlásokat és szempontokat érdemes tudnia, mivel a lekérdezési teljesítmény javítása érdekében az anyagokhoz tartozó nézeteket használ.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441204"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984112"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Teljesítmény-Finomhangolás az anyagbeli nézetekkel
 
@@ -58,7 +58,7 @@ Az egyéb adattárház-szolgáltatók összehasonlításával az Azure szinapszi
 - Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
+## <a name="common-scenarios"></a>Gyakori helyzetek  
 
 A rendszer általában az alábbi helyzetekben használja az anyagilag látható nézeteket:
 

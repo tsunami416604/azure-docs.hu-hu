@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4ce14b9d467e4badc833a1e1e4d8e1d08d232b1a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985239"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -69,7 +69,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
 1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja (**CTRL** + **SHIFT** + **P**) a "üzembe helyezés a webalkalmazásba" parancs beírásával, és a **Azure app Service: üzembe helyezés a webalkalmazásban**) lehetőségre.
 
-    ![Üzembe helyezés a webalkalmazásban](media/quickstart-nodejs/deploy.png)
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.":::
         
 1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
 
@@ -141,7 +141,7 @@ Az `console.log` alkalmazásból közvetlenül a vs Code kimenet ablakban megtek
 
 1. Ha a rendszer kéri, válassza a naplózás engedélyezését, és indítsa újra az alkalmazást. Az alkalmazás újraindítása után a VS Code kimenet ablak megnyílik a log streamtel létesített kapcsolatban. 
 
-    ![Naplózás engedélyezése és újraindítás](media/quickstart-nodejs/enable-restart.png)
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőfelvétel a Visual Studio Code-ról a naplózás engedélyezéséhez és az alkalmazás újraindításához az igen gomb kiválasztásával.":::
 
 1. Néhány másodperc elteltével a kimeneti ablak egy üzenetet jelenít meg, amely jelzi, hogy csatlakozik a log-streaming szolgáltatáshoz. A böngészőben az oldal frissítésével több kimeneti tevékenység is létrehozható.
 
@@ -154,7 +154,7 @@ Az `console.log` alkalmazásból közvetlenül a vs Code kimenet ablakban megtek
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 
@@ -263,7 +263,7 @@ code .
 
 Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl ikont az alkalmazás üzembe helyezéséhez az Azure-ban.
 
-![Üzembe helyezés a webalkalmazásban](./media/quickstart-nodejs/deploy.png)
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Képernyőfelvétel a Visual Studio Code Azure App Service menüjéről a kiválasztott kék üzembe helyezési nyíllal.":::
 
 > [!TIP]
 > A **parancssorból** (CTRL + SHIFT + P) is üzembe helyezheti az "üzembe helyezés a webalkalmazásba" parancsot, és futtathatja a **Azure app Service: Deploy to Web App** paranccsal.
@@ -280,11 +280,11 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 1. Válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt a célkiszolgálón való futtatásra `npm install` . Ezután üzembe helyezi az alkalmazást.
 
-    ![Konfigurált üzemelő példány](./media/quickstart-nodejs/server-build.png)
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Képernyőkép a konfiguráció frissítéséről a célkiszolgálón az igen gomb kiválasztásával.":::
 
 1. Ha elindul az üzembe helyezés, a rendszer kéri, hogy frissítse a munkaterületet, hogy a későbbi központi telepítések automatikusan ugyanazt a App Service webalkalmazást célozzák meg. Válassza az **Igen** lehetőséget, hogy a módosítások a megfelelő alkalmazásra legyenek telepítve.
 
-    ![Konfigurált üzemelő példány](./media/quickstart-nodejs/save-configuration.png)
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Képernyőkép a munkaterület frissítéséről a kiválasztott igen gombbal.":::
 
 > [!TIP]
 > Győződjön meg arról, hogy az alkalmazás figyeli a PORT környezeti változó által biztosított portot: `process.env.PORT` .
@@ -314,7 +314,7 @@ Megnyílik a VS Code kimenet ablak a log streamtel létesített kapcsolatban.
 
 ![Folyamatos átviteli naplók megtekintése](./media/quickstart-nodejs/view-logs.png)
 
-![Naplózás engedélyezése és újraindítás](./media/quickstart-nodejs/enable-restart.png)
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőfelvétel a VS Code parancssorról a fájlok naplózásának engedélyezéséhez és a webalkalmazás újraindításához az igen gomb kiválasztásával.":::
 
 Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatlakozik a log-streaming szolgáltatáshoz. Frissítse az oldalt néhányszor, hogy láthassa a tevékenységeket.
 
@@ -328,7 +328,7 @@ Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatla
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

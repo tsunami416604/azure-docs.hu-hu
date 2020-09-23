@@ -7,25 +7,28 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d8f3b4d57f00ef33bbf566c36babafd83be9a5df
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299626"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904302"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
+
 Az Azure Spring Cloud Diagnostics egy interaktív felület, amely segítséget nyújt az alkalmazás hibakeresésében. Nem igényel konfigurálást. Ha problémákat tapasztal, az Azure Spring Cloud Diagnostics arra utal, hogy mi a probléma, és útmutatást nyújt a problémák elhárításához és megoldásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart.md) útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Navigáljon a diagnosztika lapra
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. Nyissa meg az Azure Spring Cloud **Áttekintés** oldalát.
 3. Az oldal bal oldalán található menüben nyissa meg a **problémák diagnosztizálását és megoldását** .
 

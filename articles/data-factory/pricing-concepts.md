@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087184"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983611"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákon keresztül
 
@@ -38,7 +38,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 
 3. Egy ütemezett trigger a folyamat óránkénti végrehajtásához.
 
-   ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![A diagramon egy ütemezett triggerrel rendelkező folyamat látható. A folyamat során a másolási tevékenység egy bemeneti adatkészletbe kerül, amely egy W S S3 társított szolgáltatásra és másolási tevékenységre áramlik, és egy kimeneti adatkészletbe is áramlik, amely egy Azure Storage-beli társított szolgáltatásba áramlik.](media/pricing-concepts/scenario1.png)
 
 | **Műveletek** | **Típusok és egységek** |
 | --- | --- |
@@ -69,7 +69,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 2. Egy Azure Databricks tevékenység az adatátalakításhoz.
 3. Egy ütemezett trigger a folyamat óránkénti végrehajtásához.
 
-![Scenario2](media/pricing-concepts/scenario2.png)
+![A diagramon egy ütemezett triggerrel rendelkező folyamat látható. A folyamat során a másolási tevékenység egy bemeneti adatkészletbe, egy kimeneti adatkészletbe és egy DataBricks tevékenységbe kerül, amely Azure Databricks fut. A bemeneti adatkészlet egy W S S3 társított szolgáltatásba áramlik. A kimeneti adatkészlet egy Azure Storage-beli társított szolgáltatásba áramlik.](media/pricing-concepts/scenario2.png)
 
 | **Műveletek** | **Típusok és egységek** |
 | --- | --- |
@@ -103,7 +103,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 3. Egy Azure Databricks tevékenység az adatátalakításhoz.
 4. Egy ütemezett trigger a folyamat óránkénti végrehajtásához.
 
-![Scenario3](media/pricing-concepts/scenario3.png)
+![A diagramon egy ütemezett triggerrel rendelkező folyamat látható. A folyamat során a másolási tevékenység egy bemeneti adatkészletbe, egy kimeneti adatkészletbe és keresési tevékenységbe áramlik, amely DataBricks tevékenységre irányul, amely Azure Databricks fut. A bemeneti adatkészlet egy W S S3 társított szolgáltatásba áramlik. A kimeneti adatkészlet egy Azure Storage-beli társított szolgáltatásba áramlik.](media/pricing-concepts/scenario3.png)
 
 | **Műveletek** | **Típusok és egységek** |
 | --- | --- |

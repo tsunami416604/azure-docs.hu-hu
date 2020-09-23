@@ -4,19 +4,25 @@ description: Ismerje meg, hogyan automatizálható a szolgáltatás-felderítés
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/05/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c3e26b157630df6004292c93a0a0a47307d5949a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1e60799878cc30b729344c03df36a4c5e4f4a199
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071022"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904209"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>A Spring Cloud Services felderítése és regisztrálása
 
 A Service Discovery kulcsfontosságú követelmény a Service-alapú architektúrák számára.  Az egyes ügyfelek manuális beállítása időt vesz igénybe, és bevezeti az emberi hiba lehetőségét.  Az Azure Spring Cloud Service beállításjegyzéke megoldja ezt a problémát.  A konfigurálást követően a szolgáltatás-regisztrációs kiszolgáló a szolgáltatás regisztrálását és felderítését fogja szabályozni az alkalmazáshoz tartozó szolgáltatásokhoz. A szolgáltatás beállításjegyzék-kiszolgálója karbantartja az üzembe helyezett szolgáltatások beállításjegyzékét, lehetővé teszi az ügyféloldali terheléselosztást, és leválasztja a szolgáltatókat az ügyfelektől a DNS-re való támaszkodás nélkül.
+
+::: zone pivot="programming-language-csharp"
+További információ a Steeltoe-alkalmazások szolgáltatásbeli regisztrációjának beállításáról: [Java Spring-alkalmazás előkészítése az Azure Spring Cloud-ban való üzembe helyezéshez](spring-cloud-tutorial-prepare-app-deployment.md).
+::: zone-end
+::: zone pivot="programming-language-java"
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Alkalmazás regisztrálása a Spring Cloud Service Registry használatával
 
@@ -56,3 +62,4 @@ Végezetül hozzáadunk egy jegyzetet az alkalmazás legfelső szintű osztály�
 A Spring Cloud Service beállításjegyzék-kiszolgáló végpontja környezeti változóként lesz befecskendezve az alkalmazásban.  A-szolgáltatások mostantól képesek regisztrálni magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
 
 Vegye figyelembe, hogy a módosítások a kiszolgálóról az összes-szolgáltatásra történő propagálására is eltarthat néhány percig.
+::: zone-end

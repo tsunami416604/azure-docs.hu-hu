@@ -1,6 +1,6 @@
 ---
 title: Paraméterek létrehozásához Azure Monitor munkafüzetek
-description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
+description: Ebből a cikkből megtudhatja, hogyan teszi lehetővé a munkafüzet szerzője a felhasználóktól érkező adatok begyűjtését, és a munkafüzet más részein való hivatkozását.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658217"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984562"
 ---
 # <a name="workbook-parameters"></a>Munkafüzet paramétereinek
 
@@ -40,8 +40,8 @@ Ezek a paraméterérték a munkafüzetek más részeire is hivatkozhatók köté
 4. A felugró új paraméter panelen írja be a következőket:
     1. Paraméter neve: `TimeRange` *(vegye figyelembe, hogy a paraméterek __nevei__ **nem** tartalmazhatnak szóközöket vagy speciális karaktereket).*
     2. Megjelenítendő név: `Time Range` *(a __megjelenítendő nevek__ azonban tartalmazhatnak szóközöket, speciális karaktereket, Emoji stb.).*  
-    2. Paraméter típusa:`Time range picker`
-    3. Szükséges`checked`
+    2. Paraméter típusa: `Time range picker`
+    3. Szükséges `checked`
     4. Rendelkezésre álló időtartományok: elmúlt óra, utolsó 12 óra, utolsó 24 óra, utolsó 48 óra, elmúlt 3 nap, utolsó 7 nap, és egyéni időtartomány-kijelölés engedélyezése
 5. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 
@@ -62,7 +62,7 @@ A munkafüzet a "tabletták" stílusban fog kinézni, ahogy olvasható módban.
 
 ### <a name="in-kql"></a>A KQL
 1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
-2. A KQL adja meg az időtartomány szűrőt a (z) paraméter használatával:`| where timestamp {TimeRange}`
+2. A KQL adja meg az időtartomány szűrőt a (z) paraméter használatával: `| where timestamp {TimeRange}`
 3. Ez kibővíti a lekérdezés értékelésének idejét a értékre `| where timestamp > ago(1d)` , amely a paraméter időtartományának értéke.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
@@ -70,7 +70,7 @@ A munkafüzet a "tabletták" stílusban fog kinézni, ahogy olvasható módban.
 
 ### <a name="in-text"></a>Szövegben 
 1. Adjon hozzá egy szövegbeviteli vezérlőt a munkafüzethez.
-2. A Markdown írja be a`The chosen time range is {TimeRange:label}`
+2. A Markdown írja be a `The chosen time range is {TimeRange:label}`
 3. Válassza a _Szerkesztés kész_ lehetőséget
 4. A szöveg vezérlőelem szövege a következő lesz: _a kiválasztott időtartomány az elmúlt 24 óra_
 
@@ -81,7 +81,7 @@ A paraméter `Previews` _szerkesztése_ ablaktábla szakaszának használatával
 
 ![Az időtartomány paraméterének beállításait ábrázoló kép](./media/workbooks-parameters/time-previews.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

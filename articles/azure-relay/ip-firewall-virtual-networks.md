@@ -3,12 +3,12 @@ title: IP-tűzfal konfigurálása Azure Relay névtérhez
 description: Ez a cikk azt ismerteti, hogyan használhatók a tűzfalszabályok az adott IP-címekről Azure Relay névterekhez való csatlakozás engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976022"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-tűzfal konfigurálása Azure Relay névtérhez
 Alapértelmezés szerint a továbbítási névterek elérhetők az internetről, feltéve, hogy a kérelem érvényes hitelesítést és engedélyezést tartalmaz. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -27,9 +27,9 @@ Az IP-tűzfalszabályok a névtér szintjén lesznek alkalmazva. Ezért a szabá
 Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfalszabályok létrehozására a névtérhez. 
 
 1. Navigáljon a **továbbítási névtérhez** a [Azure Portal](https://portal.azure.com).
-2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Ha az **összes hálózat** lehetőséget választja a **hozzáférés engedélyezése** részben, a továbbítási névtér bármely IP-címről fogad kapcsolatokat. Ez a beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Ha az **összes hálózat** lehetőséget választja a  **hozzáférés engedélyezése** részben, a továbbítási névtér bármely IP-címről fogad kapcsolatokat. Ez a beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
-    ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/ip-firewall/all-networks-selected.png)
+    ![Képernyőfelvétel: a hálózat lap, amelyen a minden hálózat lehetőség be van jelölve.](./media/ip-firewall/all-networks-selected.png)
 1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokra és IP-címekre, válassza a **kiválasztott hálózatok** lehetőséget. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
     1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
     2. A **címtartomány**mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 

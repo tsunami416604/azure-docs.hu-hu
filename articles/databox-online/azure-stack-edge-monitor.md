@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stack Edge-eszköz monitorozása | Microsoft Docs
-description: Ismerteti, hogyan használható a Azure Portal és a helyi webes KEZELŐFELÜLET az Azure Stack Edge figyelésére.
+title: A Azure Stack Edge Pro-eszköz monitorozása | Microsoft Docs
+description: Ismerteti, hogyan használható a Azure Portal és a helyi webes felhasználói felület a Azure Stack Edge Pro figyelésére.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339552"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904396"
 ---
-# <a name="monitor-your-azure-stack-edge"></a>Az Azure Stack Edge figyelése
+# <a name="monitor-your-azure-stack-edge-pro"></a>A Azure Stack Edge Pro figyelése
 
-Ez a cikk az Azure Stack Edge figyelését ismerteti. Az eszköz figyeléséhez Azure Portal vagy a helyi webes KEZELŐFELÜLETet használhatja. A Azure Portal használatával megtekintheti az eszközök eseményeit, konfigurálhatja és kezelheti a riasztásokat, és megtekintheti a metrikákat. A fizikai eszköz helyi webes felhasználói felületének használatával megtekintheti a különböző eszközök összetevőinek hardveres állapotát.
+Ez a cikk ismerteti, hogyan figyelheti Azure Stack Edge Pro-t. Az eszköz figyeléséhez Azure Portal vagy a helyi webes KEZELŐFELÜLETet használhatja. A Azure Portal használatával megtekintheti az eszközök eseményeit, konfigurálhatja és kezelheti a riasztásokat, és megtekintheti a metrikákat. A fizikai eszköz helyi webes felhasználói felületének használatával megtekintheti a különböző eszközök összetevőinek hardveres állapotát.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -34,10 +34,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="view-hardware-status"></a>Hardver állapotának megtekintése
 
-A helyi webes felületen a következő lépésekkel tekintheti meg az eszköz összetevőinek hardveres állapotát.
+Hajtsa végre a következő lépéseket a helyi webes felhasználói felületen az eszközösszetevők hardverállapotának megtekintéséhez.
 
-1. Kapcsolódjon az eszköz helyi webes FELÜLETéhez.
-2. Válassza a **karbantartás > hardver állapota**lehetőséget. Megtekintheti a különböző eszközök összetevőinek állapotát.
+1. Csatlakozzon az eszköz helyi webes felhasználói felületéhez.
+2. Válassza a **karbantartás > hardver állapota**lehetőséget. Megtekintheti az egyes eszközösszetevők állapotát.
 
     ![Hardver állapotának megtekintése](media/azure-stack-edge-monitor/view-hardware-status.png)
 
@@ -57,12 +57,12 @@ Ez a szakasz az eszköz figyelési mérőszámait ismerteti. A metrikák a köve
 
 A metrikák teljes listája a következő táblázatban látható:
 
-|Kapacitásmetrikák                     |Description  |
+|Kapacitásmetrikák                     |Leírás  |
 |-------------------------------------|-------------|
 |**Rendelkezésre álló kapacitás**               | Az eszközre írható adatméretet jelöli. Ez azt jelenti, hogy ez az a kapacitás, amelyet elérhetővé tehet az eszközön. <br></br>Az eszköz kapacitását az eszközön és a felhőben található másolattal rendelkező fájlok helyi másolatának törlésével szabadíthatja fel.        |
 |**Teljes kapacitás**                   | Az eszközön az adat írására szolgáló összes bájtra hivatkozik. Ezt a helyi gyorsítótár teljes méretének is nevezzük. <br></br> Most már megnövelheti egy meglévő virtuális eszköz kapacitását egy adatlemez hozzáadásával. Adjon hozzá egy adatlemezt a virtuális gép hypervisor-felügyeletén keresztül, majd indítsa újra a virtuális gépet. Az átjáró eszköz helyi tárolóhelye ki lesz bővítve az újonnan hozzáadott adatlemezre. <br></br>További információkért keresse [fel a Hyper-V virtuális gép merevlemezének hozzáadása](https://www.youtube.com/watch?v=EWdqUw9tTe4)című témakört. |
 
-|Tranzakciómetrikák              | Description         |
+|Tranzakciómetrikák              | Leírás         |
 |-------------------------------------|---------|
 |**Feltöltött Felhőbeli bájtok (eszköz)**    | Az eszközön található összes megosztáson feltöltött bájtok összege        |
 |**Felhőbeli feltöltött bájtok (megosztás)**     | Egy megosztáson feltöltött bájtok száma. Ez lehet: <br></br> AVG, amely (a megosztás/megosztások száma alapján feltöltött bájtok összege),  <br></br>Max, amely a megosztásból feltöltött bájtok maximális számát adja meg. <br></br>Minimum, amely a megosztásból feltöltött bájtok minimális száma      |
@@ -73,7 +73,7 @@ A metrikák teljes listája a következő táblázatban látható:
 |**Olvasási sebesség (hálózat)**           | Magában foglalja a felhőből beolvasott bájtok rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti a forgalmat az eszközön lévő összes hálózati adapteren. Ide tartoznak a nem csatlakoztatott vagy engedélyezett adapterek.      |
 |**Írási átviteli sebesség (hálózat)**       | Magában foglalja a felhőbe írt összes bájt rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti a forgalmat az eszközön lévő összes hálózati adapteren. Ide tartoznak a nem csatlakoztatott vagy engedélyezett adapterek.          |
 
-| Edge számítási metrikák              | Description         |
+| Edge számítási metrikák              | Leírás         |
 |-------------------------------------|---------|
 |**Edge-számítás – memóriahasználat**      |           |
 |**Edge-számítás – százalékos CPU**    |         |
@@ -82,6 +82,6 @@ A metrikák teljes listája a következő táblázatban látható:
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-manage-bandwidth-schedules.md) talál.

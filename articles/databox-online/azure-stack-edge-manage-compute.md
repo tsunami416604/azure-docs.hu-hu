@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge számítási felügyelet | Microsoft Docs
-description: Leírja, hogyan kezelheti a peremhálózati számítási beállításokat, például az triggert, a modulokat, a számítási konfiguráció megtekintését, a konfiguráció eltávolítását az Azure Stack Edge-beli Azure Portal használatával.
+title: Azure Stack Edge Pro számítási felügyelet | Microsoft Docs
+description: Leírja, hogyan kezelheti a peremhálózati számítási beállításokat, például az triggert, a modulokat, a számítási konfiguráció megtekintését, a konfiguráció eltávolítását a Azure Stack Edge Pro Azure Portalján keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339824"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904441"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>Számítások kezelése az Azure Stack Edge-ben
+# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Számítások kezelése a Azure Stack Edge Pro-ban
 
-Ez a cikk bemutatja, hogyan kezelheti a számításokat az Azure Stack Edge-ben. A számítást a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal segítségével kezelheti a modulokat, az eseményindítókat és a számítási konfigurációt, valamint a helyi webes felhasználói felületet a számítási beállítások kezeléséhez.
+Ez a cikk bemutatja, hogyan kezelheti a számításokat a Azure Stack Edge Pro-ban. A számítást a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal segítségével kezelheti a modulokat, az eseményindítókat és a számítási konfigurációt, valamint a helyi webes felhasználói felületet a számítási beállítások kezeléséhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="manage-triggers"></a>Eseményindítók kezelése
 
-Az események olyan dolgok, amelyek az Ön felhőalapú környezetében vagy az eszközön történnek, amelyre szükség lehet. Ha például egy fájl egy megosztásban jön létre, akkor ez egy esemény. Az eseményindítók megemelik az eseményeket. Az Azure Stack Edge esetében az eseményindítók a fájlok eseményeire vagy az ütemtervre is reagálnak.
+Eseménynek nevezzük a felhőalapú környezetben vagy az eszközén bekövetkező történéseket, amelyekkel kapcsolatban érdemes lehet cselekedni. Egy fájl létrehozása egy megosztásban például eseménynek számít. A trigger az, ami az eseményt kiváltja. A Azure Stack Edge Pro esetében az eseményindítók a fájlok eseményeire vagy az ütemtervre is reagálnak.
 
 - **Fájl**: ezek az eseményindítók olyan fájlok eseményeire reagálnak, mint például egy fájl létrehozása, egy fájl módosítása.
 - **Ütemezve**: ezek az eseményindítók olyan ütemezésre reagálnak, amelyet a kezdési dátummal, a kezdési időponttal és az Ismétlési intervallummal lehet meghatározni.
@@ -82,7 +82,7 @@ Az eseményindítók listájának frissítése, hogy tükrözze a törlést.
 
 ## <a name="manage-compute-configuration"></a>Számítási konfiguráció kezelése
 
-A Azure Portal használatával megtekintheti a számítási konfigurációt, eltávolíthatja a meglévő számítási konfigurációkat, vagy frissítheti a számítási konfigurációt, hogy szinkronizálja a IoT-eszköz hozzáférési kulcsait, és IoT Edge eszközét az Azure Stack Edge számára.
+A Azure Portal használatával megtekintheti a számítási konfigurációt, eltávolíthatja a meglévő számítási konfigurációkat, vagy frissítheti a számítási konfigurációt, hogy szinkronizálja a IoT-eszköz hozzáférési kulcsait, és IoT Edge eszközét az Azure Stack Edge Pro-hoz.
 
 ### <a name="view-compute-configuration"></a>Számítási konfiguráció megtekintése
 
@@ -111,11 +111,11 @@ A Azure Portal az alábbi lépéseket végrehajtva távolítsa el az eszköz meg
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-eszköz szinkronizálása és IoT Edge eszköz-hozzáférési kulcsok
 
-Ha az Azure Stack Edge-ben konfigurálja a számítást, létrejön egy IoT-eszköz és egy IoT Edge-eszköz. Ezeket az eszközöket a rendszer automatikusan hozzárendeli a szimmetrikus hozzáférési kulcsokhoz. Ajánlott biztonsági eljárásként ezeket a kulcsokat rendszeresen elforgatják a IoT Hub szolgáltatáson keresztül.
+Ha a Azure Stack Edge Pro-ban konfigurálja a számítást, egy IoT-eszköz és egy IoT Edge eszköz jön létre. Ezeket az eszközöket a rendszer automatikusan hozzárendeli a szimmetrikus hozzáférési kulcsokhoz. Ajánlott biztonsági eljárásként ezeket a kulcsokat rendszeresen elforgatják a IoT Hub szolgáltatáson keresztül.
 
 A kulcsok elforgatásához lépjen a létrehozott IoT Hub szolgáltatásra, és válassza ki a IoT eszközt vagy a IoT Edge eszközt. Minden eszközhöz tartozik egy elsődleges elérési kulcs és egy másodlagos elérési kulcs. Rendelje hozzá az elsődleges hozzáférési kulcsot a másodlagos elérési kulcshoz, majd az elsődleges hozzáférési kulcs újragenerálása.
 
-Ha a IoT-eszköz és a IoT Edge eszköz kulcsait elforgatták, akkor frissítenie kell az Azure Stack Edge konfigurációját a legújabb hozzáférési kulcsok beszerzéséhez. A Sync segítségével az eszköz beolvassa a IoT-eszköz és IoT Edge eszköz legújabb kulcsait. Azure Stack Edge csak az elsődleges hozzáférési kulcsokat használja.
+Ha elforgatták a IoT eszközt és IoT Edge eszköz kulcsait, akkor a legújabb hozzáférési kulcsok beszerzéséhez frissítenie kell a Azure Stack Edge Pro konfigurációját. A Sync segítségével az eszköz beolvassa a IoT-eszköz és IoT Edge eszköz legújabb kulcsait. Azure Stack Edge Pro csak az elsődleges hozzáférési kulcsokat használja.
 
 Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
@@ -129,6 +129,6 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti az Edge számítási hálózatot Azure Portal használatával](azure-stack-edge-extend-compute-access-modules.md).

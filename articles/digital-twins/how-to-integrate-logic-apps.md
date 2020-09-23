@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Ismerje meg, hogyan csatlakozhat Logic Apps az Azure Digital Twinshoz egyéni összekötő használatával
 author: baanders
 ms.author: baanders
-ms.date: 8/14/2020
+ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401061"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983449"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -26,8 +26,12 @@ Ebben a cikkben a [Azure Portal](https://portal.azure.com) használatával **hoz
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt **hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** .
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ezzel a fiókkal. 
 
-Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ezzel a fiókkal.
+A szakasz további részében a következő lépések jelennek meg:
+- Azure digitális Twins-példány beállítása
+- Az alkalmazás regisztrációs ügyfelének titkának beolvasása
+- Digitális Twin hozzáadása
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
 
@@ -46,10 +50,15 @@ Emellett létre kell hoznia egy **_ügyfél-titkot_** az Azure ad-alkalmazás re
 
 A *tanúsítványokat és a titkos kulcsokat* a regisztráció menüjéből, majd az *+ új ügyfél titka*elemre kattintva érheti el.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a tanúsítványok és titkok elemre mutató kiemelés, valamint az új ügyfél titka nevű oldalon egy kiemelés látható.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a "tanúsítványok és titkok" elemre mutató kiemelés, valamint az "új ügyfél titka" nevű oldalon egy kiemelés látható.":::
 
 Adja meg a leíráshoz és a lejárathoz szükséges értékeket, majd kattintson a *Hozzáadás gombra*.
-A rendszer hozzáadja a titkos kulcsot a *tanúsítványok és titkok* oldalon található ügyfél-titkok listájához. Jegyezze fel a későbbi használat értékét (a vágólapra másolhatja a másolás ikont is).
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Ügyfél titkos kulcsának hozzáadása":::
+
+Most ellenőrizze, hogy az ügyfél titka látható-e a _tanúsítványok & titkok_ oldalon a _lejárat_ és az _érték_ mezőkkel. Jegyezze fel a későbbi használat _értékét_ (a vágólapra másolhatja a másolás ikont is)
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Ügyfél titkos értékének másolása":::
 
 ### <a name="add-a-digital-twin"></a>Digitális Twin hozzáadása
 
@@ -65,11 +74,15 @@ Ebben a lépésben egy [egyéni Logic apps-összekötőt](../logic-apps/custom-c
 
 Navigáljon a Azure Portal [Logic apps egyéni összekötő](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) oldalára (ezt a hivatkozást használhatja, vagy megkeresheti a portál keresési sávján). Hit *+ Hozzáadás*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="A Azure Portal Logic Apps egyéni összekötő lapja. Kiemelés a Hozzáadás gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="A Azure Portal Logic Apps egyéni összekötő lapja. Kiemelés a "Hozzáadás" gomb körül":::
 
-Az alábbi *Logic apps egyéni összekötő létrehozása* oldalon válassza ki az előfizetést és az erőforráscsoportot, valamint az új összekötő nevét és üzembe helyezési helyét. Találatok *áttekintése + létrehozás*. Ekkor megnyílik a *felülvizsgálat + létrehozás* lap, ahol a *Létrehozás* alul található az erőforrás létrehozásához.
+Az alábbi *Logic apps egyéni összekötő létrehozása* oldalon válassza ki az előfizetést és az erőforráscsoportot, valamint az új összekötő nevét és üzembe helyezési helyét. Találatok *áttekintése + létrehozás*. 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Az Azure Portal a Logic Apps egyéni összekötő létrehozása lap felülvizsgálat + létrehozás lapját. Kiemelés a létrehozás gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Az Azure Portal a "Create Logic Apps Custom Connector" (egyéni összekötő létrehozása) oldal.":::
+
+Ekkor megnyílik a *felülvizsgálat + létrehozás* lap, ahol a *Létrehozás* alul található az erőforrás létrehozásához.
+
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="A Azure Portal a "felülvizsgálati Logic Apps egyéni összekötő" oldal "felülvizsgálat + létrehozás" lapja. Kiemelés a "létrehozás" gomb körül":::
 
 Ekkor megjelenik az összekötő üzembe helyezési lapja. Ha befejezte az üzembe helyezést, *lépjen az erőforrás* megnyitása gombra, és tekintse meg az összekötő részleteit a portálon.
 
@@ -81,7 +94,7 @@ Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy let
 
 Ezután nyissa meg az összekötő áttekintés lapját a [Azure Portal](https://portal.azure.com) , és kattintson a *Szerkesztés*elemre.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Az előző lépésben létrehozott összekötő áttekintés lapja. Kiemelés a szerkesztés gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Az előző lépésben létrehozott összekötő "áttekintés" lapja. Kiemelés a "szerkesztés" gomb körül":::
 
 A következő *Logic apps egyéni összekötő szerkesztése* oldalon adja meg az alábbi adatokat:
 * **Egyéni összekötők**
@@ -89,14 +102,16 @@ A következő *Logic apps egyéni összekötő szerkesztése* oldalon adja meg a
     - Importálási mód: OpenAPI-fájl (alapértelmezett elhagyás)
     - Fájl: ez lesz a korábban letöltött egyéni hencegő fájl. Kattintson az *Importálás*elemre, keresse meg a fájlt a gépen (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*), és kattintson a *Megnyitás gombra*.
 * **Általános információk**
-    - Ikon, ikon háttérszíne, leírás: adja meg a kívánt értékeket.
+    - Ikon: töltse fel a kívánt ikont
+    - Ikon háttérszíne: írja be a hexadecimális kódot "#xxxxxx" formátumban a színhez.
+    - Leírás: adja meg a kívánt értékeket.
     - Séma: HTTPS (alapértelmezett érték)
     - Gazdagép: az Azure Digital Twins-példány *állomásneve* .
     - Alap URL-cím:/(hagyja meg az alapértelmezett értéket)
 
 Ezután nyomja meg az ablak alján található *biztonsági* gombot, és folytassa a következő konfigurációs lépéssel.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Képernyőkép a Logic Apps egyéni összekötő szerkesztése oldal aljáról. A biztonság folytatásához jelölje ki a gombot.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Képernyőkép a "Logic Apps egyéni összekötő szerkesztése" oldal aljáról. A biztonság folytatásához jelölje ki a gombot.":::
 
 A biztonsági lépésben nyomja meg az alábbi információk *szerkesztését* és konfigurálását:
 * **Hitelesítés típusa**: OAuth 2,0
@@ -112,13 +127,13 @@ A biztonsági lépésben nyomja meg az alábbi információk *szerkesztését* �
 
 Vegye figyelembe, hogy az átirányítási URL-cím mező azt jelzi, hogy az *egyéni összekötő mentésével létrehozza az átirányítási URL-címet*. Ezt most úgy teheti meg, hogy a panel tetején megnyomja a *frissítési összekötőt* az összekötő beállításainak megerősítéséhez.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Képernyőkép a Logic Apps egyéni összekötő szerkesztése oldal tetején. Kiemelés az összekötő frissítése gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Képernyőkép a "Logic Apps egyéni összekötő szerkesztése" oldal tetején. Kiemelés az "összekötő frissítése" gomb körül":::
 
 <!-- Success message? didn't see one -->
 
 Térjen vissza az átirányítási URL-címhez, és másolja ki a generált értéket. Ezt a következő lépésben fogja használni.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="A Logic Apps egyéni összekötő szerkesztése lapon található átirányítási URL-cím mező most a következő értékkel rendelkezik:  https://logic-apis-westus2.consent.azure-apim.net/redirect . Az érték másolására szolgáló gomb kiemelve.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="A "Logic Apps egyéni összekötő szerkesztése" lapon található átirányítási URL-cím mező most a következő értékkel rendelkezik: " https://logic-apis-westus2.consent.azure-apim.net/redirect ". Az érték másolására szolgáló gomb kiemelve.":::
 
 Ez az összekötő létrehozásához szükséges összes információ (nincs szükség a definíciós lépéshez való korábbi biztonság folytatására). A *szerkesztés Logic apps egyéni összekötő* panelt is lezárhatja.
 
@@ -133,7 +148,7 @@ Navigáljon a Azure Portal [Alkalmazásregisztrációk](https://portal.azure.com
 
 A regisztráció menü *hitelesítés* területén adjon hozzá egy URI-t.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Az alkalmazás regisztrációjának hitelesítési lapja a Azure Portalban. A menüben a hitelesítés elem ki van jelölve, és az oldalon az URI hozzáadása gomb ki van emelve."::: 
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Az alkalmazás regisztrációjának hitelesítési lapja a Azure Portalban. A menüben a "hitelesítés" elem ki van jelölve, és az oldalon az "URI hozzáadása" gomb ki van emelve."::: 
 
 Adja meg az egyéni összekötő *átirányítási URL-címét* az új mezőbe, és nyomja le a *Save (Mentés* ) ikont.
 
@@ -145,11 +160,15 @@ Ezzel létrehozta az Azure Digital Twins API-khoz hozzáférő egyéni összekö
 
 Ezután létre fog hozni egy logikai alkalmazást, amely az új összekötő használatával automatizálja az Azure digitális Twins-frissítéseit.
 
-Keresse meg a Azure Portal [Logic apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) lapját (ezt a hivatkozást használhatja, vagy keresse meg a portálon a keresési sávban). Kattintson a *logikai alkalmazás létrehozása*.
+Navigáljon a Azure Portal [Logic apps (felhasználás)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) lapjára (ezt a hivatkozást használhatja, vagy keresse meg a portálon a keresési sávban). Logikai alkalmazás létrehozásához kattintson a *Hozzáadás* gombra.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="A Azure Portal Logic Apps lapja. A logikai alkalmazás létrehozása gomb kiemelése":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="A Azure Portal Logic Apps (felhasználás) lapja. A Hozzáadás gomb megnyomása":::
 
-Az alábbi *logikai alkalmazás* oldalon válassza ki az előfizetést és az erőforráscsoportot, valamint az új logikai alkalmazás nevét és üzembe helyezési helyét. Találatok *áttekintése + létrehozás*. Ekkor megnyílik a *felülvizsgálat + létrehozás* lap, ahol a *Létrehozás* alul található az erőforrás létrehozásához.
+Az alábbi *Logic apps (felhasználás)* lapon adja meg az előfizetését, az erőforráscsoportot. Továbbá válassza ki a logikai alkalmazás nevét, és válassza ki a helyet.
+
+Válassza a _felülvizsgálat + létrehozás_ gombot.
+
+Ekkor a *felülvizsgálat + létrehozás* lapra kerül, ahol áttekintheti az adatokat, és az alján található *create* (létrehozás) gombra kattintva létrehozhatja az erőforrást.
 
 Ekkor megjelenik a logikai alkalmazás üzembe helyezési lapja. Ha befejezte az üzembe helyezést, nyomja le az *erőforrás* megnyitása gombot a *Logic apps Designer*folytatásához, ahol a munkafolyamat logikáját fogja kitölteni.
 
@@ -157,7 +176,7 @@ Ekkor megjelenik a logikai alkalmazás üzembe helyezési lapja. Ha befejezte az
 
 A *Logic apps Designerben*az *Indítás általános eseményindítóval*területen válassza az _**Ismétlődés**_ lehetőséget.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="A Azure Portal Logic Apps Designer lapja. Az ismétlődés általános eseményindítójának kiemelése":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="A Azure Portal "Logic Apps Designer" lapja. Az ismétlődés általános eseményindítójának kiemelése":::
 
 Az alábbi *Logic apps Designer* lapon módosítsa az **ismétlődési** gyakoriságot a *második*értékre, hogy az eseményt 3 másodpercenként aktiválja. Ez megkönnyíti az eredmények későbbi megtekintését anélkül, hogy sokáig várnia kellene.
 
@@ -165,18 +184,20 @@ Nyomja meg az *+ új lépést*.
 
 Ekkor megnyílik a *művelet kiválasztása* jelölőnégyzet. Váltson az *Egyéni* lapra. Az egyéni összekötőt a felső mezőbe kell látni a korábbiak közül.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Folyamat létrehozása a Logic Apps Designerben a Azure Portalban. A művelet választása mezőben az egyéni lap van kiválasztva. A felhasználó egyéni összekötője a korábbi verzióban látható a dobozban, és kiemelve.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Folyamat létrehozása a Logic Apps Designerben a Azure Portalban. A "művelet választása" mezőben az "egyéni" lap van kiválasztva. A felhasználó egyéni összekötője a korábbi verzióban látható a dobozban, és kiemelve.":::
 
 Válassza ki az összekötőben található API-k listájának megjelenítéséhez. A keresősáv használatával vagy a lista görgetésével válassza ki a **DigitalTwins_Add**. (Ez a cikk az API-t használja, de más API-t is kijelölhet egy Logic Apps-kapcsolatok esetében érvényes választási lehetőségként).
 
 Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-beli hitelesítő adataival az összekötőhöz való csatlakozáshoz. Ha a *szükséges engedélyek* megadását kéri, kövesse az utasításokat, és fogadja el az alkalmazás jóváhagyását.
 
 Az új *DigitalTwinsAdd* mezőbe írja be a mezőket a következőképpen:
-* azonosító: töltse ki a példányban a digitális kettős *azonosítót* , amelyet a logikai alkalmazás frissítésére szeretne.
-* 1. tétel: ebben a mezőben adhatja meg azt a törzset, amelyhez a kiválasztott API-kérelem szükséges. A *DigitalTwinsUpdate*esetében ez a törzs JSON-javítási kód formájában szerepel. Ha többet szeretne megtudni egy JSON-javításról a Twin-fájl frissítéséhez, tekintse meg a következő témakört: a [Digital Twins](how-to-manage-twin.md#update-a-digital-twin) című rész, *útmutató: digitális ikrek kezelése*.
-* API-Version: az aktuális nyilvános előzetes verzióban ez az érték *2020-05-31 – előzetes* verzió
+* _azonosító_: töltse ki a példányban a digitális kettős *azonosítót* , amelyet a logikai alkalmazás frissítésére szeretne.
+* _Twin_: ebben a mezőben adhatja meg azt a törzset, amelyhez a kiválasztott API-kérelem szükséges. A *DigitalTwinsUpdate*esetében ez a törzs JSON-javítási kód formájában szerepel. Ha többet szeretne megtudni egy JSON-javításról a Twin-fájl frissítéséhez, tekintse meg a következő témakört: a [Digital Twins](how-to-manage-twin.md#update-a-digital-twin) című rész, *útmutató: digitális ikrek kezelése*.
+* _API-Version_: az aktuális nyilvános előzetes verzióban ez az érték *2020-05-31 – előzetes* verzió
 
 Kattintson a *Mentés gombra* a Logic apps Designerben.
+
+Más műveleteket is kiválaszthat, ha az _+ új lépést_ választja ugyanazon az ablakban.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Az alkalmazás kész nézete a Logic app-összekötőben. A DigitalTwinsAdd mező a fent ismertetett értékekkel van kitöltve, beleértve a JSON-javító minta törzsét is. Az ablak mentés gombja ki van emelve.":::
 

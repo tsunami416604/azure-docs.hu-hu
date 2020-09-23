@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416413"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984892"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
@@ -37,7 +37,7 @@ Az ADF olyan kiszolgáló nélküli architektúrát kínál, amely különböző
 
 Az ügyfelek sikeresen áttelepítették az Amazon S3-ból az Azure-ba Blob Storage több száz millió fájlból álló petabájt, és a folyamatos átviteli sebesség 2 GB/s. 
 
-![teljesítmény](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![A diagramon több lemezpartíció látható egy W S S3-tárolóban, amely a társított másolási műveleteket tartalmazza az Azure Blob Storage A D L S Gen2.](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 A fenti képen azt mutatjuk be, hogyan érheti el a nagy adatátviteli sebességet a különböző párhuzamossági szinteken:
  
@@ -61,7 +61,7 @@ Ha nem szeretné, hogy az adatátvitel nyilvános interneten keresztül történ
 
 Az adatáttelepítés nyilvános interneten keresztül:
 
-![megoldás – architektúra – nyilvános hálózat](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![A diagram az interneten keresztüli áttelepítést jeleníti meg H T T-S S3-tárolón keresztül, a D F Azure-ból az Azure Storage-ba Azure Integration Runtime keresztül. A futtatókörnyezet vezérlési csatornája Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - Ebben az architektúrában a rendszer biztonságosan továbbítja az adatátvitelt a HTTPS-en keresztül a nyilvános interneten keresztül. 
 - Mind a forrás Amazon S3, mind a cél Azure Blob Storage vagy Azure Data Lake Storage Gen2 úgy vannak konfigurálva, hogy engedélyezzék az összes hálózati IP-címről érkező forgalmat.  Tekintse meg az alábbi második architektúrát, amely azt ismerteti, hogyan korlátozható a hálózati hozzáférés adott IP-tartományhoz. 
@@ -70,7 +70,7 @@ Az adatáttelepítés nyilvános interneten keresztül:
 
 Az adatáttelepítés privát kapcsolaton keresztül: 
 
-![megoldás-architektúra-private-Network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![A diagram az Azure Virtual Machines szolgáltatásban az Azure-beli virtuális gépeken futó integrációs modulon keresztül az Azure Storage-ba való áttelepítést mutatja be egy, a W S S3 áruházból származó magánhálózati kapcsolaton keresztül. A futtatókörnyezet vezérlési csatornája Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - Ebben az architektúrában az adatáttelepítés az AWS Direct csatlakozás és az Azure Express Route közötti privát kapcsolaton keresztül történik, így az adatforgalom soha nem halad át a nyilvános interneten.  Az AWS VPC és az Azure Virtual Network használatát igényli. 
 - Az architektúra eléréséhez telepítenie kell az ADF saját üzemeltetésű integrációs modulját egy Windows rendszerű virtuális GÉPRE az Azure Virtual Networkben.  A saját üzemeltetésű IR virtuális gépeket manuálisan, vagy akár több virtuális gépre is kibővítheti (legfeljebb 4 csomópont), így teljes mértékben kihasználhatja a hálózat és a tárhely IOPS/sávszélességét. 
@@ -122,7 +122,7 @@ Ha az ADF másolási tevékenység által jelentett szabályozási hibákba ütk
 
 Vegye figyelembe a következő, az S3-ból az Blob Storage Azure-ba való Migrálás során felépített folyamatot: 
 
-![díjszabás – folyamat](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![A diagramon az adatáttelepítés folyamata látható, amely a ForEach-re irányuló manuális triggerrel áramlik át, és egy alfolyamatba áramlik az egyes partíciók között, amelyek a tárolt eljárásba másolt másolást tartalmaznak. A folyamaton kívül a tárolt eljárás átáramlik az Azure SQL D B-be, amely a kereséshez és A másoláshoz szükséges, A blob Storage-ba irányuló, és A](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 Tegyük fel a következőket: 
 
@@ -135,7 +135,7 @@ Tegyük fel a következőket:
 
 A fenti feltételezések alapján a becsült ár a következő: 
 
-![díjszabás – tábla](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![A tábla képernyőképe a becsült árat mutatja.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>További referenciák 
 - [Amazon Simple Storage szolgáltatás-összekötő](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
@@ -154,6 +154,6 @@ A fenti feltételezések alapján a becsült ár a következő:
 
 Itt látható az a [sablon](solution-template-migration-s3-azure.md) , amellyel az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt migrálhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

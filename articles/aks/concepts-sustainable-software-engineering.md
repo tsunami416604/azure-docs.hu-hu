@@ -4,18 +4,18 @@ description: Ismerje meg az Azure Kubernetes Service (ak) fenntartható szoftver
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: bc2240b3cb8508109f6dd25c4c80ff31ba197cfd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084472"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984979"
 ---
-# <a name="sustainable-software-engineering-principals-in-azure-kubernetes-service-aks"></a>Fenntartható szoftverfejlesztés az Azure Kubernetes szolgáltatásban (ak)
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Fenntartható szoftverfejlesztés alapelvei az Azure Kubernetes szolgáltatásban (ak)
 
-A fenntartható szoftverfejlesztés rendszerbiztonsági tagjai a fenntartható alkalmazások definiálásához, létrehozásához és futtatásához szükséges kompetenciák összessége. Az általános cél az, hogy csökkentse az alkalmazás minden aspektusának széndioxid-lábnyomát. Az [alapelvek. a zöld projekt][principals-green] áttekintést nyújt a fenntartható szoftverfejlesztés rendszerbiztonsági tagjairól.
+A fenntartható szoftverfejlesztés alapelvei olyan kompetenciák, amelyek segítenek a fenntartható alkalmazások definiálásában, létrehozásában és futtatásában. Az általános cél az, hogy csökkentse az alkalmazás minden aspektusának széndioxid-lábnyomát. Az [alapelvek. a zöld projekt][principles-green] áttekintést nyújt a fenntartható szoftverfejlesztés elveiről.
 
-A fenntartható szoftverfejlesztés fontos elképzelése, hogy ez a prioritások és a hangsúly változása. Sok esetben a szoftver úgy lett kialakítva és futtatva, hogy a gyors teljesítményre és az alacsony késésre koncentráljon. A fenntartható szoftverfejlesztés a lehető legnagyobb széndioxid-kibocsátás csökkentésére koncentrál. Bizonyos esetekben a fenntartható szoftverfejlesztői rendszerbiztonsági tag-alkalmazás gyorsabb teljesítményt vagy kisebb késést biztosít, például a teljes hálózati utazások csökkentésével. Más esetekben a széndioxid-kibocsátás csökkentése csökkentheti a teljesítményt vagy a megnövekedett késést, például az alacsony prioritású munkaterhelések késleltetését. Mielőtt fontolóra venné az alkalmazásra vonatkozó fenntartható szoftverfejlesztés bevezetését, tekintse át az alkalmazás prioritásait, igényeit és kompromisszumait.
+A fenntartható szoftverfejlesztés fontos elképzelése, hogy ez a prioritások és a hangsúly változása. Sok esetben a szoftver úgy lett kialakítva és futtatva, hogy a gyors teljesítményre és az alacsony késésre koncentráljon. A fenntartható szoftverfejlesztés a lehető legnagyobb széndioxid-kibocsátás csökkentésére koncentrál. Bizonyos esetekben a fenntartható szoftverfejlesztés alapelveinek alkalmazása gyorsabb teljesítményt vagy kisebb késést biztosít, például a teljes hálózati utazások csökkentésével. Más esetekben a széndioxid-kibocsátás csökkentése csökkentheti a teljesítményt vagy a megnövekedett késést, például az alacsony prioritású munkaterhelések késleltetését. Mielőtt fontolóra venné az alkalmazásra vonatkozó fenntartható szoftverfejlesztés alapelveinek alkalmazását, tekintse át az alkalmazás prioritásait, igényeit és kompromisszumait.
 
 ## <a name="measure-and-optimize"></a>Mérés és optimalizálás
 
@@ -74,4 +74,4 @@ További információ a jelen cikkben említett AK-funkciókról:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principals-green]: https://principles.green/
+[principles-green]: https://principles.green/

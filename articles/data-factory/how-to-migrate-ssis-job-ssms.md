@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627585"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984913"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent feladatok migrálása az ADF-be a SSMS-mel
 
@@ -31,7 +31,7 @@ Helyszíni [SQL Server Integration Services (SSIS) számítási feladatok ADF-be
     > A fájlrendszer csomagjának helye csak támogatott.
 - Telepítse át az alkalmazható feladatokat a megfelelő feladat lépéseivel a kapcsolódó ADF-erőforrásokra az alábbi módon:
 
-|SQL Agent-feladatok objektuma  |ADF-erőforrás  |Megjegyzések|
+|SQL Agent-feladatok objektuma  |ADF-erőforrás  |Jegyzetek|
 |---------|---------|---------|
 |SQL-ügynök feladata|folyamat     |A folyamat neve lesz *Létrehozva \<job name> *. <br> <br> A beépített ügynöki feladatok nem alkalmazhatók: <li> SSIS-kiszolgáló karbantartási feladata <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
 |SSIS-feladatok lépései|SSIS-csomag végrehajtása tevékenység|<li> A tevékenység neve lesz \<step name> . <li> A feladatütemezés során használt proxy fiók a tevékenység Windows-hitelesítésként lesz áttelepítve. <li> Az áttelepítés során a rendszer figyelmen kívül hagyja a *végrehajtási beállításokat* , kivéve a feladatok lépésben definiált *32-bites futtatókörnyezetet* . <li> Az áttelepítés során a rendszer figyelmen kívül hagyja a feladatok lépésben megadott *ellenőrzést* .|
@@ -46,7 +46,7 @@ A cikkben ismertetett szolgáltatáshoz SQL Server Management Studio 18,5-es vag
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS-feladatok migrálása az ADF-be
 
 1. A SSMS Object Explorer válassza a SQL Server Agent lehetőséget, válassza a feladatok lehetőséget, majd kattintson a jobb gombbal, majd válassza **a SSIS-feladatok áttelepíteni az ADF**-be lehetőséget.
-![menüben](media/how-to-migrate-ssis-job-ssms/menu.png)
+![Képernyőfelvétel: SQL Server Management Studio Object Explorer, ahol kiválaszthatja A feladatokat, majd áttelepítheti az S s-feladatokat A D F-re.](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Jelentkezzen be az Azure-ba, válassza az Azure-előfizetés, a Data Factory és a Integration Runtime lehetőséget. Az Azure Storage nem kötelező, amely a csomag helyének leképezési lépéseként használatos, ha az áttelepíteni kívánt SSIS feladatok SSIS rendelkeznek.
 ![menüben](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,29 +57,29 @@ A cikkben ismertetett szolgáltatáshoz SQL Server Management Studio 18,5-es vag
     1. A forrás mappa elérési útjának frissítése Az érvényes elérési utak a csomagok mappa elérési útjai vagy a szülőmappa elérési útjai.
     1. A célmappa elérési útjának frissítése Az alapértelmezett érték az 1. lépésben kiválasztott alapértelmezett Storage-fiók relatív elérési útja.
     1. Kijelölt leképezés törlése **törlési leképezéssel**.
-![2. lépés ](media/how-to-migrate-ssis-job-ssms/step2.png)
- ![ 2. lépés-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![Képernyőfelvétel: a Térkép S S I S csomag és a konfigurációs elérési utak lap, amelyen hozzáadhat leképezéseket. ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ Képernyőfelvétel: a Térkép S S I S csomag és a konfigurációs elérési utak lap, ahol frissítheti a forrás-és a célmappa elérési útját.](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Válassza ki az áttelepíteni kívánt feladatokat, és konfigurálja a megfelelő *végrehajtott SSIS-csomag tevékenység*beállításait.
 
     - Alapértelmezett *beállítás*, alapértelmezés szerint az összes kijelölt lépésre vonatkozik. Az egyes tulajdonságokról további információt talál a [SSIS-csomag végrehajtása tevékenység](how-to-invoke-ssis-package-ssis-activity.md) *Beállítások lapján* , ha a csomag helye *fájlrendszer (csomag)*.
-    ![3. lépés – 1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![Képernyőfelvétel: a kiválasztott S S I S feladatok lapja, amelyen konfigurálhatja a megfelelő végrehajtott SSIS-csomag tevékenység beállításait.](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - *Lépés beállítása*, beállítás beállítása a kiválasztott lépéshez.
         
         **Alapértelmezett beállítás alkalmazása**: alapértelmezett érték van kiválasztva. Törölje a kijelölést a kiválasztott lépéshez tartozó beállítás megadásához.  
         További információ a többi tulajdonságról: a [SSIS-csomag végrehajtása tevékenység](how-to-invoke-ssis-package-ssis-activity.md) *Beállítások lapja* , ha a csomag helye *fájlrendszer (csomag)*.
-    ![3. lépés – 2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![A képernyőfelvételen a Select S S I feladatok lap látható, ahol az alapértelmezett beállítások alkalmazhatók.](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. ARM-sablon előállítása és üzembe helyezése.
     1. Válassza ki vagy adja meg az áttelepített ADF-folyamatok ARM-sablonjainak kimeneti elérési útját. Ha a mappa nem létezik, a rendszer automatikusan létrehozza a mappát.
     2. Válassza ki az **ARM-sablonok üzembe helyezésének lehetőségét az adatai-gyárban**:
         - Az alapértelmezett beállítás nincs kiválasztva. A létrehozott ARM-sablonokat később manuálisan is üzembe helyezheti.
         - Válassza a létrehozott ARM-sablonok közvetlen üzembe helyezése az adatgyárban lehetőséget.
-    ![step4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![Képernyőfelvétel: az áttelepítés konfigurálása lap, amelyen kiválaszthatja vagy beírhatja az áttelepített ADF-folyamatok ARM-sablonjainak kimeneti elérési útját, és kiválaszthatja az ARM-sablonok üzembe helyezésének lehetőségét az adat-előállítóban.](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. Telepítse át, majd vizsgálja meg az eredményeket.
-![step5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![A képernyőképen az áttelepítési eredmény lap látható, amely megjeleníti az áttelepítés előrehaladását.](media/how-to-migrate-ssis-job-ssms/step5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Folyamat futtatása és figyelése](how-to-invoke-ssis-package-ssis-activity.md)
