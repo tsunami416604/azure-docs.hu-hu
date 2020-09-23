@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek üzembe helyezése a Azure Stack peremhálózati eszközön sablonok használatával
-description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack peremhálózati eszközön sablonok használatával.
+title: Virtuális gépek üzembe helyezése a Azure Stack Edge Pro-eszközön sablonok használatával
+description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge Pro-eszközön sablonok használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419826"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899717"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge GPU-eszközön sablonok használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge Pro GPU-eszközön sablonok használatával
 
-Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack peremhálózati eszközön sablonok használatával. Ezek a sablonok JavaScript Object Notation (JSON) fájlok, amelyek meghatározzák a virtuális gép infrastruktúráját és konfigurációját. Ezekben a sablonokban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
+Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack Edge Pro-eszközön sablonok használatával. Ezek a sablonok JavaScript Object Notation (JSON) fájlok, amelyek meghatározzák a virtuális gép infrastruktúráját és konfigurációját. Ezekben a sablonokban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
 
 A sablonok különböző környezetekben rugalmasak, mivel a paramétereket bemenetként, fájlból is elvégezhetik. A szabványos elnevezési struktúra a `TemplateName.json` sablonhoz és `TemplateName.parameters.json` a Parameters fájlhoz szükséges. Az ARM-sablonokkal kapcsolatos további információkért [tekintse meg a mi a Azure Resource Manager-sablonok?](../azure-resource-manager/templates/overview.md)című témakört.
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban az előre megírt minta sablonokat fogjuk használni az
 
 ## <a name="vm-deployment-workflow"></a>Virtuális gép üzembe helyezésének munkafolyamata
 
-Azure Stack peremhálózati virtuális gépek számos eszközön való üzembe helyezéséhez egyetlen Sysprep használatával létrehozott virtuális merevlemezt használhat a teljes flottához, ugyanezt a sablont az üzembe helyezéshez, és csak kisebb módosításokat hajthat végre a sablonban az egyes telepítési helyekhez (ezeket a módosításokat lehet kézzel elvégezni, ahogy itt vagy programozott módon).) 
+Azure Stack Edge Pro virtuális gépek számos eszközön való üzembe helyezéséhez egyetlen Sysprep használatával létrehozott virtuális merevlemezt használhat a teljes flottához, ugyanezt a sablont az üzembe helyezéshez, és csak kisebb módosításokat hajthat végre a sablonban az egyes telepítési helyekhez 
 
 A sablonok használatával történő üzembe helyezési munkafolyamat magas szintű összefoglalása a következő:
 
@@ -57,13 +57,13 @@ A sablonok használatával történő üzembe helyezési munkafolyamat magas szi
 
 ## <a name="device-prerequisites"></a>Eszköz előfeltételei
 
-Konfigurálja ezeket az előfeltételeket az Azure Stack Edge-eszközön.
+Konfigurálja ezeket az előfeltételeket az Azure Stack Edge Pro-eszközön.
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>Ügyfél előfeltételei
 
-Konfigurálja ezeket az előfeltételeket az ügyfélen, amely az Azure Stack Edge-eszköz elérésére szolgál majd.
+Konfigurálja ezeket az előfeltételeket az ügyfélen, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
 
 1. [Töltse le Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) , ha a virtuális merevlemez feltöltésére használja. Azt is megteheti, hogy letölti a AzCopy a virtuális merevlemez feltöltéséhez. Előfordulhat, hogy konfigurálnia kell a TLS 1,2-et az ügyfélszámítógépen, ha a AzCopy régebbi verzióját futtatja. 
 1. [Töltse le a virtuálisgép-sablonokat és a paraméterek fájljait](https://aka.ms/ase-vm-templates) az ügyfélszámítógépre. Bontsa ki a munkakönyvtárként használni kívánt könyvtárba.
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge](azure-stack-edge-j-series-deploy-add-storage-accounts.md)-ben című témakör lépéseit.
+> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md)-ban című témakör lépéseit.
 
 Az alábbiakban egy példa látható a kimenetre.
 
@@ -145,7 +145,7 @@ Győződjön meg arról, hogy már hozzáadta a blob URI-t a Hosts fájlban a bl
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-Egy tipikus környezetben a DNS-t úgy kell konfigurálni, hogy az összes Storage-fiók az Azure Stack Edge-eszközre mutasson egy `*.blob.devicename.domainname.com` bejegyzéssel.
+Egy tipikus környezetben a DNS-t úgy kell konfigurálni, hogy az összes Storage-fiók az Azure Stack Edge Pro-eszközre mutasson egy `*.blob.devicename.domainname.com` bejegyzéssel.
 
 ### <a name="optional-install-certificates"></a>Választható Tanúsítványok telepítése
 
@@ -215,7 +215,7 @@ Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blo
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -269,7 +269,7 @@ A fájl `CreateImageAndVnet.parameters.json` a következő paramétereket veszi 
     }
 ```
 
-Szerkessze a fájlt `CreateImageAndVnet.parameters.json` , hogy a következőt tartalmazza a Azure stack Edge-eszközhöz:
+Szerkessze a fájlt `CreateImageAndVnet.parameters.json` , hogy tartalmazza a következőt az Azure stack Edge Pro-eszközhöz:
 
 1. Adja meg a feltölteni kívánt virtuális merevlemezhez tartozó operációsrendszer-típust. Az operációs rendszer típusa Windows vagy Linux lehet.
 
@@ -341,7 +341,7 @@ Szerkessze a fájlt `CreateImageAndVnet.parameters.json` , hogy a következőt t
 A sablon üzembe helyezése `CreateImageAndVnet.json` . Ez a sablon telepíti a VNet és a képerőforrásokat, amelyeket a rendszer a későbbi lépésben a virtuális gépek létrehozásához használ majd.
 
 > [!NOTE]
-> Ha hitelesítési hibaüzenetet kap a sablon telepítésekor, előfordulhat, hogy a munkamenet Azure-beli hitelesítő adatai lejártak. Futtassa `login-AzureRM` újra a parancsot az Azure stack Edge-eszközön lévő Azure Resource Managerhoz való kapcsolódáshoz.
+> Ha hitelesítési hibaüzenetet kap a sablon telepítésekor, előfordulhat, hogy a munkamenet Azure-beli hitelesítő adatai lejártak. Futtassa `login-AzureRM` újra a parancsot az Azure stack Edge Pro-eszköz Azure Resource Managerhoz való kapcsolódáshoz.
 
 1. Futtassa az alábbi parancsot: 
     
@@ -437,7 +437,7 @@ Virtuális gép létrehozásához használja a `CreateVM.parameters.json` param�
         }
 ```    
 
-Rendelje hozzá a megfelelő paramétereket az `CreateVM.parameters.json` Azure stack Edge-eszközhöz.
+Rendelje hozzá a megfelelő paramétereket a `CreateVM.parameters.json` Azure stack Edge Pro-eszközhöz.
 
 1. Adjon meg egy egyedi nevet, a hálózati csatoló nevét és az ipconfig nevet. 
 1. Adja meg a felhasználónevet, a jelszót és a virtuális gép támogatott méretét.
@@ -594,7 +594,7 @@ A Linux rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az aláb
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -609,9 +609,9 @@ A bővítmények, a méretezési csoportok, a rendelkezésre állási csoportok,
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

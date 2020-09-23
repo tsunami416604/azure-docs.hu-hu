@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420889"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907788"
 ---
 # <a name="train-wide--deep-recommender"></a>Széles körű & a mély ajánló
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) teljes **körű & Deep ajánló** modulja egy javaslati modell betanításához. Ez a modul a Google által javasolt széles körű & mély tanuláson alapul.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben a **& Deep ajánló** modul a javaslati modell betanításához. Ez a modul a Google által javasolt széles körű & mély tanuláson alapul.
 
 A **betanítási szintű & Deep ajánló** modul beolvassa a felhasználói értékű tripla adatkészletét, és szükség esetén bizonyos felhasználók és elemek funkcióit. Egy betanított, széles körű, & részletes ajánlót ad vissza.  Ezután a betanított modell segítségével minősítési előrejelzéseket vagy javaslatokat készíthet a [pontszám széles és mély ajánló](score-wide-and-deep-recommender.md) modul használatával.  
 
@@ -77,14 +77,14 @@ Az elem funkcióinak adatkészletének tartalmaznia kell az első oszlopban szer
 
 Például az elemek egy tipikus készlete a következőhöz hasonló lehet:  
 
-|MovieId|Cím|Eredeti nyelv|Műfajokat|Év|
+|MovieId|Cím|Eredeti nyelv|Műfajokat|Year|
 |-------------|-------------|-------------------|-----------|---------------|
 |68646|A Keresztapa|Angol|Dráma|1972|
 |31381|Elment a szélhez|Angol|Előzmények|1939|
 
 ### <a name="train-the-model"></a>A modell betanítása
 
-1.  Adja hozzá a **nagy és mély Ajánlói** modult a kísérlethez a Designerben (előzetes verzió), és kapcsolja össze a betanítási adatkészlettel.  
+1.  Adja hozzá a teljes **körű és mély ajánló** modult a kísérlethez a tervezőben, és kapcsolja össze a betanítási adatkészlettel.  
   
 2. Ha a felhasználói funkciók és/vagy az elem funkcióinak külön adatkészlete van, akkor kapcsolja össze őket a **vonat széles és mély ajánló** moduljában.  
   

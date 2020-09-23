@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84487950"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907895"
 ---
 # <a name="init-image-transformation"></a>Képátalakítás indítása
 
-Ez a cikk azt ismerteti, hogyan használható az **init rendszerkép-átalakítási** modul a Azure Machine learning Designerben (előzetes verzió) a rendszerkép-átalakítás inicializálásához, hogy megtudja, hogyan szeretné átalakítani a képet.
+Ez a cikk azt ismerteti, hogyan használható az **init rendszerkép-átalakítási** modul a Azure Machine learning Designerben, hogy inicializálja a képátalakítást annak meghatározásához, hogyan szeretné átalakítani a képet.
 
 ## <a name="how-to-configure-init-image-transformation"></a>Az init-rendszerkép átalakításának konfigurálása
 
@@ -67,36 +67,36 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name                    | Tartomány   | Típus    | Alapértelmezett | Description                              |
+| Name                    | Tartomány   | Típus    | Alapértelmezett | Leírás                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
-| Átméretezés                  | Bármelyik     | Logikai | True (Igaz)    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
+| Átméretezés                  | Bármelyik     | Logikai | Igaz    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
 | Méret                    | >= 1     | Egész szám | 256     | A kívánt kimeneti méret megadása          |
-| Középpont – növénytermesztés             | Bármelyik     | Logikai | True (Igaz)    | Megvágja a megadott PIL-képet a központban  |
+| Középpont – növénytermesztés             | Bármelyik     | Logikai | Igaz    | Megvágja a megadott PIL-képet a központban  |
 | Vágási méret               | >= 1     | Egész szám | 224     | A körülvágás kívánt kimeneti méretének megadása |
-| Pad                     | Bármelyik     | Logikai | False (Hamis)   | A megadott PIL-képet a megadott "pad" értékkel rendelkező összes oldalon pad |
+| Pad                     | Bármelyik     | Logikai | Hamis   | A megadott PIL-képet a megadott "pad" értékkel rendelkező összes oldalon pad |
 | Kitöltés                 | >= 0     | Egész szám | 0       | Kitöltés az egyes szegélyeken                   |
-| Szín vibrálása            | Bármelyik     | Logikai | False (Hamis)   | A kép fényességének, kontrasztjának és telítettségének véletlenszerű módosítása |
-| Szürkeárnyalatos               | Bármelyik     | Logikai | False (Hamis)   | Rendszerkép átalakítása szürkeárnyalatos               |
-| Véletlenszerűen átméretezett termés     | Bármelyik     | Logikai | False (Hamis)   | A megadott PIL-kép véletlenszerű méretének és oldalarányának kivágása |
+| Szín vibrálása            | Bármelyik     | Logikai | Hamis   | A kép fényességének, kontrasztjának és telítettségének véletlenszerű módosítása |
+| Szürkeárnyalatos               | Bármelyik     | Logikai | Hamis   | Rendszerkép átalakítása szürkeárnyalatos               |
+| Véletlenszerűen átméretezett termés     | Bármelyik     | Logikai | Hamis   | A megadott PIL-kép véletlenszerű méretének és oldalarányának kivágása |
 | Véletlenszerű méret             | >= 1     | Egész szám | 256     | Az egyes szegélyek várható kimeneti mérete        |
-| Véletlenszerű körülvágás             | Bármelyik     | Logikai | False (Hamis)   | A megadott PIL-kép kivágása véletlenszerű helyen |
+| Véletlenszerű körülvágás             | Bármelyik     | Logikai | Hamis   | A megadott PIL-kép kivágása véletlenszerű helyen |
 | Véletlenszerű körülvágási méret        | >= 1     | Egész szám | 224     | A termés kívánt kimeneti mérete          |
-| Véletlenszerű vízszintes tükrözés  | Bármelyik     | Logikai | True (Igaz)    | A megadott PIL-rendszerkép vízszintes tükrözése egy adott valószínűséggel |
-| Véletlenszerű Függőleges tükrözés    | Bármelyik     | Logikai | False (Hamis)   | A megadott PIL-képek függőleges tükrözése véletlenszerűen egy adott valószínűséggel |
-| Véletlenszerű rotáció         | Bármelyik     | Logikai | False (Hamis)   | A kép elforgatása szög alapján                |
+| Véletlenszerű vízszintes tükrözés  | Bármelyik     | Logikai | Igaz    | A megadott PIL-rendszerkép vízszintes tükrözése egy adott valószínűséggel |
+| Véletlenszerű Függőleges tükrözés    | Bármelyik     | Logikai | Hamis   | A megadott PIL-képek függőleges tükrözése véletlenszerűen egy adott valószínűséggel |
+| Véletlenszerű rotáció         | Bármelyik     | Logikai | Hamis   | A kép elforgatása szög alapján                |
 | Véletlenszerű rotációs fok | [0180] | Egész szám | 0       | A kiválasztani kívánt fok tartománya          |
-| Véletlenszerű affin           | Bármelyik     | Logikai | False (Hamis)   | Véletlenszerű affin-átalakítás a Képközpont invariánsával |
+| Véletlenszerű affin           | Bármelyik     | Logikai | Hamis   | Véletlenszerű affin-átalakítás a Képközpont invariánsával |
 | Véletlenszerű affin fok   | [0180] | Egész szám | 0       | A kiválasztani kívánt fok tartománya          |
-| Véletlenszerű szürkeárnyalatos        | Bármelyik     | Logikai | False (Hamis)   | A rendszerképet véletlenszerűen konvertálhatja szürkeárnyalatos a 0,1-as valószínűséggel |
-| Véletlenszerű perspektíva      | Bármelyik     | Logikai | False (Hamis)   | A megadott PIL-rendszerkép perspektivikus átalakítását hajtja végre véletlenszerűen a 0,5-as valószínűséggel |
-| Véletlenszerű törlés          | Bármelyik     | Logikai | False (Hamis)   | Véletlenszerűen kiválaszt egy téglalap-régiót egy képen, és törli a képpontot a 0,5 valószínűséggel |
+| Véletlenszerű szürkeárnyalatos        | Bármelyik     | Logikai | Hamis   | A rendszerképet véletlenszerűen konvertálhatja szürkeárnyalatos a 0,1-as valószínűséggel |
+| Véletlenszerű perspektíva      | Bármelyik     | Logikai | Hamis   | A megadott PIL-rendszerkép perspektivikus átalakítását hajtja végre véletlenszerűen a 0,5-as valószínűséggel |
+| Véletlenszerű törlés          | Bármelyik     | Logikai | Hamis   | Véletlenszerűen kiválaszt egy téglalap-régiót egy képen, és törli a képpontot a 0,5 valószínűséggel |
 
 ###  <a name="output"></a>Kimenet  
 
-| Name                        | Típus                    | Description                              |
+| Név                        | Típus                    | Leírás                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Kimeneti rendszerkép átalakítása | TransformationDirectory | A rendszerkép- **átalakítási modul alkalmazásához** csatlakoztatható kimeneti képátalakítás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

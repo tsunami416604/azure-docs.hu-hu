@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU Storage-fiók kezelése | Microsoft Docs
-description: Ismerteti, hogyan kezelhető a Azure Portal a Storage-fiók kezeléséhez az Azure Stack Edge-ben.
+title: Azure Stack Edge Pro GPU Storage-fiókok kezelése | Microsoft Docs
+description: Ismerteti, hogyan kezelhető a Azure Portal a Storage-fiók kezeléséhez a Azure Stack Edge Pro-ban.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254295"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904532"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>Az Edge Storage-fiókok kezelése az Azure Stack Edge-Azure Portal használatával
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Az Edge Storage-fiókok kezelése az Azure Stack Edge Pro-ban Azure Portal használatával
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk azt ismerteti, hogyan kezelhetők az Edge Storage-fiókok az Azure Stack Edge-ben. Az Azure Stack Edge a Azure Portal vagy a helyi webes felületen keresztül kezelhető. A Azure Portal használatával hozzáadhat vagy törölhet Edge Storage-fiókokat az eszközön.
+Ez a cikk bemutatja, hogyan kezelheti az Edge Storage-fiókokat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal használatával hozzáadhat vagy törölhet Edge Storage-fiókokat az eszközön.
 
 ## <a name="about-edge-storage-accounts"></a>Az Edge Storage-fiókok ismertetése
 
-Az Azure Stack Edge-eszközről az SMB, az NFS vagy a REST protokollok használatával vihet át adatátvitelt. Ha a REST API-k használatával szeretne adatátvitelt végezni a blob Storage-ba, létre kell hoznia egy Edge Storage-fiókot az Azure Stack peremhálózati számítógépen. 
+Az Azure Stack Edge Pro-eszközről az SMB, az NFS vagy a REST protokoll használatával vihet át adatátvitelt. Ha a REST API-k használatával szeretne adatátvitelt végezni a blob Storage-ba, létre kell hoznia egy Edge Storage-fiókot a Azure Stack Edge Pro-ban. 
 
-Az Azure Stack peremhálózati eszközön hozzáadott Edge Storage-fiókok az Azure Storage-fiókokra vannak leképezve. A rendszer automatikusan leküldi a felhőbe az Edge Storage-fiókba írt összes adatsort.
+Az Azure Stack Edge Pro-eszközön hozzáadott Edge Storage-fiókok az Azure Storage-fiókokra vannak leképezve. A rendszer automatikusan leküldi a felhőbe az Edge Storage-fiókba írt összes adatsort.
 
 Az alábbi ábra a fiókok két típusát részletezi, és az egyes fiókoktól az Azure-ba irányuló adatfolyamatokat mutatja be:
 
@@ -95,6 +95,6 @@ A Storage-fiók elérési kulcsának szinkronizálásához hajtsa végre a köve
 
     ![Válassza ki a Storage-kulcs szinkronizálása lehetőséget](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](azure-stack-edge-j-series-manage-users.md).

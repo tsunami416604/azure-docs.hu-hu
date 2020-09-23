@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6dfee84c44643823a4ec76c32e750febc6646be5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285951"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908052"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészletet ad meg, amely egy modellből generált pontszámokat tartalmaz, és a **modell kiértékelése** modul az iparági szabványnak megfelelő értékelési metrikákat számítja ki.
   
@@ -47,7 +47,7 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 3. Küldje el a folyamatot a kiértékelési pontszámok létrehozásához.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A **kiértékelési modell**futtatása után válassza ki a modult, és nyissa meg a **modell kiértékelése** navigációs panelt a jobb oldalon.  Ezután válassza a **kimenetek + naplók** fület, és a lapon az **adatkimenetek** szakaszban több ikon látható. A **vizualizáció ikon egy** oszlopdiagram ikont tartalmaz, és első módszer az eredmények megjelenítésére.
 
@@ -132,6 +132,6 @@ A következő metrikákat kell jelenteni a fürtszolgáltatási modellek kiért�
 -   Az eredmények minden szakaszának alján az **összesített értékelési** pontszám felsorolja az adott modellben létrehozott fürtök átlagos pontszámait.  
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

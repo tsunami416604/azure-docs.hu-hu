@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392811"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902695"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -23,7 +23,7 @@ A naplózás a pgaudit postgres-bővítménnyel érhető el. További tudnivaló
 ## <a name="configure-logging"></a>Naplózás konfigurálása 
 A postgres standard naplózást a kiszolgálón a naplózási kiszolgáló paramétereinek használatával konfigurálhatja. Minden Azure Database for PostgreSQL kiszolgálón, `log_checkpoints` és `log_connections` alapértelmezés szerint be van kapcsolva. További paraméterek is megadhatók a naplózási igényeknek megfelelően: 
 
-![Azure Database for PostgreSQL – naplózási paraméterek](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL – naplózási paraméterek":::
 
 Ha többet szeretne megtudni a postgres, tekintse meg a [Mikor jelentkezzen be](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) , és [Mi a naplózási](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) szakaszt a postgres dokumentációjában. A postgres naplózási paramétereinek többsége a legtöbb esetben elérhető a Azure Database for PostgreSQLban való konfiguráláshoz.
 
@@ -103,10 +103,10 @@ A következő táblázat a **PostgreSQLLogs** típusának mezőit ismerteti. A k
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
-| Típus | A napló típusa. Mindig`AzureDiagnostics` |
+| Típus | A napló típusa. Mindig `AzureDiagnostics` |
 | SubscriptionId | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | ResourceGroup | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig`MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Erőforrás URI-ja |
 | Erőforrás | A kiszolgáló neve |
@@ -114,7 +114,7 @@ A következő táblázat a **PostgreSQLLogs** típusának mezőit ismerteti. A k
 | OperationName | `LogEvent` |
 | errorLevel | Naplózási szint, példa: napló, hiba, figyelmeztetés |
 | Üzenet | Elsődleges napló üzenete | 
-| Domain | Kiszolgáló verziója, példa: postgres-10 |
+| Tartomány | Kiszolgáló verziója, példa: postgres-10 |
 | Részletek | Másodlagos napló üzenete (ha van ilyen) |
 | ColumnName | Az oszlop neve (ha van ilyen) |
 | SchemaName (Sémanév) | A séma neve (ha van ilyen) |
@@ -124,7 +124,7 @@ A következő táblázat a **PostgreSQLLogs** típusának mezőit ismerteti. A k
 | Előtag | A naplózási sor előtagja |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a naplók [Azure Portal](howto-configure-server-logs-in-portal.md) vagy az [Azure CLI](howto-configure-server-logs-using-cli.md)-ből való eléréséről.
 - További információ a [Azure monitor díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/).
 - További információ a [naplókról](concepts-audit.md)

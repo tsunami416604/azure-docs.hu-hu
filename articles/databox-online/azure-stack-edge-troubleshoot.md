@@ -1,6 +1,6 @@
 ---
-title: A Azure Portal használata a Azure Stack Edge-hibák megoldásához | Microsoft Docs
-description: Ismerje meg, hogyan lehet elhárítani a problémákat az Azure Stack Edge-ben. Futtathat diagnosztikai adatokat, információkat gyűjthet a támogatáshoz, és hibakeresési naplókat is használhat.
+title: A Azure Portal használata a Azure Stack Edge Pro megoldásához | Microsoft Docs
+description: Ismerje meg, hogyan lehet elhárítani az Azure Stack Edge Pro-ban felmerülő problémákat. Futtathat diagnosztikai adatokat, információkat gyűjthet a támogatáshoz, és hibakeresési naplókat is használhat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134564"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903651"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Az Azure Stack Edge-problémák elhárítása
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Az Azure Stack Edge Pro-problémák elhárítása
 
-Ez a cikk azt ismerteti, hogyan lehet elhárítani a problémákat az Azure Stack Edge-ben. 
+Ez a cikk ismerteti, hogyan lehet elhárítani a Azure Stack Edge Pro-ban felmerülő problémákat. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -65,7 +65,7 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
       ![Kapcsolódás a megosztáshoz és a tartalom megtekintése](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Válassza ki a _Microsoft Azure stack Edge mappát_. Ebben a mappában két almappát talál:
+2. Válassza ki a _Microsoft Azure stack Edge Pro mappát_. Ebben a mappában két almappát talál:
 
     * A feltöltési mappa, amely a feltöltési hibákat tartalmazó naplófájlokat tárolja.
     * A frissítési mappa a frissítés során bekövetkezett hibák számára.

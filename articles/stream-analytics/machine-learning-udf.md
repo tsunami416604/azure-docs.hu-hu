@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900998"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
 A gépi tanulási modelleket felhasználó által definiált függvényként (UDF) implementálhatja a Azure Stream Analytics-feladatokban, így valós idejű pontozást és előrejelzéseket végezhet a folyamatos átviteli bemeneti adatokon. A [Azure Machine learning](../machine-learning/overview-what-is-azure-ml.md) lehetővé teszi, hogy bármilyen népszerű, nyílt forráskódú eszközt, például Tensorflow, Scikit vagy PyTorch használjon a modellek előkészítéséhez, betanításához és üzembe helyezéséhez.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása előtt végezze el a következő lépéseket:
 
@@ -33,23 +33,39 @@ A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása el
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Gépi tanulási modell hozzáadása a feladatokhoz
 
-Azure Machine Learning függvényeket közvetlenül a Azure Portal lehet hozzáadni a Stream Analytics feladathoz.
+A Stream Analytics feladathoz közvetlenül a Azure Portal vagy a Visual Studio Code-ból adhat hozzá Azure Machine Learning függvényeket.
 
-1. Navigáljon a Stream Analytics-feladathoz a Azure Portal, és válassza a **feladatok** lehetőséget a feladatok **topológiája**alatt. Ezután válassza ki az **Azure ml szolgáltatást** a **+** legördülő menüből.
+### <a name="azure-portal"></a>Azure Portal
 
-   ![Azure ML UDF hozzáadása](./media/machine-learning-udf/add-azureml-udf.png)
+1. Navigáljon a Stream Analytics-feladathoz a Azure Portal, és válassza a **feladatok** lehetőséget a feladatok **topológiája**alatt. Ezután válassza ki **Azure Machine learning szolgáltatást** a **+** legördülő menüből.
+
+   ![Azure Machine Learning UDF hozzáadása](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. Töltse ki a **Azure Machine learning Service Function** űrlapot a következő tulajdonságértékek megírásával:
 
-   ![Az Azure ML UDF konfigurálása](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Azure Machine Learning UDF konfigurálása](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-Az alábbi táblázat a Stream Analytics Azure ML Service functions egyes tulajdonságait ismerteti.
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. Nyissa meg a Stream Analytics projektet a Visual Studio Code-ban, és kattintson a jobb gombbal a **functions** mappára. Ezután válassza a **művelet hozzáadása**lehetőséget. Válassza ki **Machine learning UDF** elemet a legördülő listából.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="UDF hozzáadása a VS Code-ban":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Azure Machine Learning UDF hozzáadása a VS Code-ban":::
+
+2. Adja meg a függvény nevét, és töltse ki a konfigurációs fájlban lévő beállításokat a Codelensben- **előfizetések közül a kiválasztás** lehetőség használatával.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Azure Machine Learning UDF kiválasztása a VS Code-ban":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Azure Machine Learning UDF konfigurálása a VS Code-ban":::
+
+Az alábbi táblázat a Stream Analytics Azure Machine Learning Service functions egyes tulajdonságait ismerteti.
 
 |Tulajdonság|Leírás|
 |--------|-----------|
 |Függvény aliasa|Adjon meg egy nevet a függvény meghívásához a lekérdezésben.|
 |Előfizetés|Azure-előfizetése...|
-|Azure ML-munkaterület|A modell webszolgáltatásként való üzembe helyezéséhez használt Azure Machine Learning munkaterület.|
+|Azure Machine Learning-munkaterület|A modell webszolgáltatásként való üzembe helyezéséhez használt Azure Machine Learning munkaterület.|
 |Központi telepítés|A modellt működtető webszolgáltatás.|
 |Függvény aláírása|A webszolgáltatás aláírása az API sémájának specifikációja alapján lett kikövetkeztetve. Ha az aláírás nem töltődik be, ellenőrizze, hogy a pontozási parancsfájlban megadott minta bemenetet és kimenetet adott-e meg a séma automatikus létrehozásához.|
 |Párhuzamos kérelmek száma partíción|Ez egy speciális konfiguráció a nagy léptékű átviteli sebesség optimalizálása érdekében. Ez a szám a feladat egyes partíciói által a webszolgáltatásba küldött egyidejű kérelmeket jelöli. A hat folyamatos átviteli egységgel (SU) és eggyel alacsonyabb szintű feladatokhoz egy partíció tartozik. A 12 SUs-vel rendelkező feladatok két partícióval rendelkeznek, a 18 SUs pedig három partíciót és így tovább.<br><br> Ha például a feladatainak két partíciója van, és ezt a paramétert négyre állítja, a feladatokból nyolc egyidejű kérelem lesz a webszolgáltatásnak. A nyilvános előzetes verzióban ez az érték alapértelmezés szerint 20, és nem frissíthető.|
@@ -164,8 +180,7 @@ Optimális skálázás esetén a Stream Analyticsi feladatnak több párhuzamos 
 
 Az ilyen késések elkerülése érdekében győződjön meg arról, hogy az Azure Kubernetes szolgáltatás (ak) fürtjének [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Fontos, hogy a webszolgáltatás nagy rendelkezésre állású legyen, és sikeres válaszokat ad vissza. Ha a feladat egy szolgáltatás nem érhető el választ (503) kap a webszolgáltatástól, a rendszer folyamatosan újrapróbálkozik az exponenciális visszalépéssel. Ha a sikertől (200) és a szolgáltatástól (503) nem érhető el válasz, a művelet sikertelen állapotba kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)
 * [Stream Analytics-feladat skálázása Azure Machine Learning Studio (klasszikus) függvénnyel](stream-analytics-scale-with-machine-learning-functions.md)
-

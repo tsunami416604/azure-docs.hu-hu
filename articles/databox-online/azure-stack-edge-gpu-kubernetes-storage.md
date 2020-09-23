@@ -1,6 +1,6 @@
 ---
-title: A Kubernetes Azure Stack Edge-eszközön való felügyeletének ismertetése | Microsoft Docs
-description: Ismerteti, hogyan történik a Kubernetes-tárolók kezelése Azure Stack peremhálózati eszközön.
+title: A Kubernetes Azure Stack Edge Pro-eszközön való felügyeletének ismertetése | Microsoft Docs
+description: Ismerteti, hogyan történik a Kubernetes-tárolók kezelése Azure Stack Edge Pro-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268091"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899271"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Kubernetes a Azure Stack Edge GPU-eszközön
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes a Azure Stack Edge Pro GPU-eszközön
 
-A Azure Stack Edge-eszközön létrejön egy Kubernetes-fürt a számítási szerepkör konfigurálásakor. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A tárolók a Kubernetes-fürtben többféleképpen is megadhatók. 
+A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A tárolók a Kubernetes-fürtben többféleképpen is megadhatók. 
 
-Ez a cikk azokat a módszereket ismerteti, amelyekkel kiépíthető a Kubernetes-fürtön lévő tárterület, különösen az Azure Stack Edge-eszköz kontextusában. 
+Ez a cikk azokat a módszereket ismerteti, amelyekkel kiépíthető a Kubernetes-fürtön lévő tárterület, különösen az Azure Stack Edge Pro-eszköz kontextusában. 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>A Kubernetes hüvelyek tárolási követelményei
 
@@ -75,9 +75,9 @@ A következő lépések történnek:
 1. A **PVC csatlakoztatása a tárolóhoz**: Ha a PVC a PV-hez van kötve, a PVC-t a tárolóra csatlakoztathatja úgy, hogy az a statikus kiépítés és a megosztásba való beolvasás vagy írás.
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Tárolási kiépítés Azure Stack Edge-ben
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Tárolási kiépítés Azure Stack Edge Pro-ban
 
-Az Azure Stack Edge-eszközön a statikusan kiépített `PersistentVolumes` eszközök a tárolási képességek használatával jönnek létre. Ha kiépít egy megosztást, és **használja a megosztás az Edge használatával számítási** lehetőséget, ez a művelet automatikusan létrehoz egy PV-erőforrást a Kubernetes-fürtben.
+Az Azure Stack Edge Pro-eszközön a statikusan kiépített `PersistentVolumes` eszközök a tárolási képességek használatával jönnek létre. Ha kiépít egy megosztást, és **használja a megosztás az Edge használatával számítási** lehetőséget, ez a művelet automatikusan létrehoz egy PV-erőforrást a Kubernetes-fürtben.
 
 ![Helyi megosztás létrehozása a Azure Portalban statikus kiépítés esetén](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ A Felhőbeli rétegek használatához létrehozhat egy Edge-Felhőbeli megosztá
 
 ![Felhőalapú megosztás létrehozása Azure Portal statikus kiépítés esetén](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-Az SMB-és NFS-megosztások is létrehozhatók a PVs statikus kiépítéséhez Azure Stack peremhálózati eszközön. A PV kiépítés után egy PVC-t fog küldeni a tároló igényléséhez. Íme egy példa egy olyan PVC-telepítésre, `yaml` amely a tárterületet állítja be, és az Ön által kiépített megosztásokat használja.
+SMB-és NFS-megosztásokat is létrehozhat a Azure Stack Edge Pro-eszközön lévő PVs statikus kiépítéséhez. A PV kiépítés után egy PVC-t fog küldeni a tároló igényléséhez. Íme egy példa egy olyan PVC-telepítésre, `yaml` amely a tárterületet állítja be, és az Ön által kiépített megosztásokat használja.
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-További információ: állapot- [nyilvántartó alkalmazás üzembe helyezése statikus kiépítés használatával a Azure stack Edge-n keresztül a kubectl-on keresztül](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+További információ: állapot- [nyilvántartó alkalmazás üzembe helyezése statikus kiépítés használatával a Azure stack Edge Pro-n keresztül a kubectl-on keresztül](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
-Azure Stack Edge is rendelkezik egy olyan `StorageClass` nevű beépített névvel `ase-node-local` , amely a Kubernetes-csomóponthoz csatolt adatlemez-tárolót használ. Ez `StorageClass` támogatja a dinamikus kiépítés használatát. Létrehozhat egy `StorageClass` hivatkozást a pod-alkalmazásokban, és a rendszer automatikusan létrehoz egy PV-t az Ön számára. További információkért tekintse meg a [Kubernetes-irányítópultot](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) a lekérdezéshez `ase-node-local StorageClass` .
+Azure Stack Edge Pro is rendelkezik egy olyan beépített `StorageClass` névvel `ase-node-local` , amely egy, a Kubernetes-csomóponthoz csatolt adatlemez-tárolót használ. Ez `StorageClass` támogatja a dinamikus kiépítés használatát. Létrehozhat egy `StorageClass` hivatkozást a pod-alkalmazásokban, és a rendszer automatikusan létrehoz egy PV-t az Ön számára. További információkért tekintse meg a [Kubernetes-irányítópultot](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) a lekérdezéshez `ase-node-local StorageClass` .
 
 ![Beépített tárolási osztály a Kubernetes-irányítópulton](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-További információ: állapot- [nyilvántartó alkalmazás üzembe helyezése a Azure stack Edge-n keresztül a kuebctl-on keresztül történő dinamikus kiépítés használatával](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+További információ: állapot- [nyilvántartó alkalmazás üzembe helyezése a Azure stack Edge Pro-n keresztül a kuebctl-on keresztül történő dinamikus kiépítés használatával](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
 
 ## <a name="choose-storage-type"></a>Tárolási típus kiválasztása
 
@@ -123,12 +123,12 @@ Előfordulhat, hogy az üzembe helyezett munkaterheléstől függően ki kell v�
 A hozzáférési módokkal kapcsolatos további információkért lásd: [Kubernetes-kötetek hozzáférési módja](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A statikus kiépítésének megismeréséhez `PersistentVolume` lásd:
 
-- [Üzembe helyezhet egy állapot-nyilvántartó alkalmazást a Azure stack Edge statikus kiépítés útján a kubectl használatával](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+- [Üzembe helyezhet egy állapot-nyilvántartó alkalmazást a Azure stack Edge Pro-n keresztül a kubectl-on keresztül történő statikus kiépítés használatával](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
 Ha szeretné megtudni, hogyan lehet dinamikusan kiépíteni a t `StorageClass` , tekintse meg a következőt:
 
-- [Üzembe helyezhet egy állapot-nyilvántartó alkalmazást a Azure stack Edge dinamikus kiépítésen keresztül a kuebctl-on keresztül](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+- [Üzembe helyezhet egy állapot-nyilvántartó alkalmazást a Azure stack Edge Pro-n keresztül a kuebctl-on keresztül történő dinamikus kiépítés használatával](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).

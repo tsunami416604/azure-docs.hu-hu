@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 314004d2b62d5616c1d7925b82fd9f050d0a1fd0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441799"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906921"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure biztonsági alapkonfiguráció az Azure IoT Hub
 
@@ -71,7 +71,7 @@ Az alapszintű Azure DDoS Protection már engedélyezve van, és a IoT Hub rész
 
 - [IoT Hub IP-szűrő](iot-hub-ip-filtering.md)
 
-- [Azure Security Center IoT gyanús IP-címekkel való kommunikációhoz](../asc-for-iot/concept-security-alerts.md)
+- [Azure Security Center IoT gyanús IP-címekkel való kommunikációhoz](../defender-for-iot/concept-security-alerts.md)
 
 - [Alapszintű Azure DDoS Protection kezelése](../virtual-network/ddos-protection-overview.md)
 
@@ -234,7 +234,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure IoT Hub állapotának figyelése](iot-hub-monitor-resource-health.md)
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
-- [IoT-riasztások Azure Security Center](../asc-for-iot/concept-security-alerts.md)
+- [IoT-riasztások Azure Security Center](../defender-for-iot/concept-security-alerts.md)
 
 - [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
 

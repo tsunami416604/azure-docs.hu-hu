@@ -1,7 +1,7 @@
 ---
-title: Modellek újratanítása Azure Machine Learning Designer használatával (előzetes verzió)
+title: Modellek újratanítása Azure Machine Learning Designer használatával
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet a modelleket a Azure Machine Learning Designerben (előzetes verzió) közzétett folyamatokkal áttanítani.
+description: Ismerje meg, hogyan lehet a modelleket Azure Machine Learning Designerben közzétett folyamatokkal áttanítani.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661625"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905682"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellek újratanítása Azure Machine Learning designerrel
+
 
 Ebben a útmutatóban megismerheti, hogyan végezheti el a gépi tanulási modell újratanítását a Azure Machine Learning Designer használatával. A közzétett folyamatok segítségével automatizálhatja a munkafolyamatot, és paramétereket állíthat be a modell új adatokra való betanításához. 
 
@@ -32,12 +32,12 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Machine Learning munkaterület a vállalati SKU-val.
-* Fejezze be a How-to sorozat 1. részét, [alakítsa át az adatelemzést a tervezőben](how-to-designer-transform-data.md).
+* Egy Azure Machine Learning-munkaterület
+* A How-to sorozat 1. részének befejezése, [az adatátalakítás a tervezőben](how-to-designer-transform-data.md)
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-A cikk azt is feltételezi, hogy alapvető ismeretekkel rendelkezik a folyamatok létrehozásához a tervezőben. Az interaktív bevezetéshez végezze el az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
+A cikk azt is feltételezi, hogy a tervezőben már van néhány ismerete a folyamatok létrehozásához. Az interaktív bevezetéshez végezze el az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
 
 ### <a name="sample-pipeline"></a>Mintavételezési folyamat
 
@@ -69,7 +69,7 @@ Folyamat paramétereinek létrehozása a változók dinamikus beállításához 
    > [!NOTE]
    > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A folyamat futtatásának elküldése.
 
