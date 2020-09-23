@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/17/2020
-ms.openlocfilehash: 916d23670e1db22efe43e2966d96aa1c82f1852a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782158"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907776"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
-Ez a cikk azt ismerteti, hogyan használható a Hiperparaméterek beállítása-modul Tune Model Azure Machine Learning Designerben (előzetes verzió). A cél a gépi tanulási modell optimális hiperparaméterek beállítása meghatározása. A modul több modellt is felépít és tesztel a különböző beállítások kombinációjának használatával. Összehasonlítja az összes modell mérőszámait a beállítások kombinációjának lekéréséhez. 
+Ez a cikk azt ismerteti, hogyan használható a Hiperparaméterek beállítása-modul Tune Model Azure Machine Learning Designerben. A cél a gépi tanulási modell optimális hiperparaméterek beállítása meghatározása. A modul több modellt is felépít és tesztel a különböző beállítások kombinációjának használatával. Összehasonlítja az összes modell mérőszámait a beállítások kombinációjának lekéréséhez. 
 
 A feltételek *paraméter* és a *hiperparaméter* zavaró lehet. A modell *paramétereit* a modul jobb oldali ablaktábláján állíthatja be. Alapvetően ez a modul egy *paramétert* hajt végre a megadott paraméterek beállításain. Megtanulja a _hiperparaméterek beállítása_optimális készletét, amely minden egyes konkrét döntési fa, adatkészlet vagy regressziós módszer esetében eltérő lehet. Az optimális konfiguráció megtalálásának folyamatát más néven *hangolásnak*nevezzük. 
 

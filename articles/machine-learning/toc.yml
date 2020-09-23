@@ -15,21 +15,28 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: Python SDK
+    - name: Python (1. nap)
       expanded: true
       items:
-        - name: Az első ML-kísérlet létrehozása
-          items:
-            - name: 1. A munkaterület és a fejlesztési környezet beállítása
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. Az első modell betanítása
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. Helyi számítógép beállítása
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Hello world
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. Modell betanítása
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. Saját adatok használata
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Jupyter-notebookok
+      expanded: true
+      items:
         - name: Képbesorolás (MNIST-adatok)
           items:
-            - name: 1. Modell betanítása
+            - name: 1. Számítási példány beállítása
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Modell betanítása
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. Modell üzembe helyezése
+            - name: 3. Modell üzembe helyezése
               href: tutorial-deploy-models-with-aml.md
         - name: Regresszió automatizált ML használatával (NYC Taxi adatai)
           items:
@@ -92,8 +99,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Alapelvek
   items:
-    - name: Enterprise és alapszintű kiadások
-      href: concept-editions.md
     - name: Költségtervezés és a költségek kezelése
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -201,6 +206,9 @@
         - name: Biztonságos kódolás
           href: concept-secure-code-best-practice.md
           displayName: security threat
+        - name: Naplózás és megfelelőség kezelése
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: Felelősségteljes ML
       items:
         - name: Felelősségteljes ML áttekintése
@@ -287,12 +295,15 @@
               href: how-to-designer-import-data.md
         - name: Adatok elérése
           items:
-            - name: Csatlakozás az Azure Storage-hoz
+            - name: Csatlakozás az Azure Storage-hoz (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Adatok lekérése adattárból
+            - name: Adatok lekérése adattárból (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: Csatlakozás adatokhoz (felhasználói felület)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: Adatok kezelése és felhasználása
           items:
             - name: Betanítás adathalmazok használatával
@@ -448,6 +459,9 @@
         - name: Profilmodellek
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: Tervezői modellek üzembe helyezése
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: (Előzetes verzió) Nem történik kód üzembe helyezése
           displayName: no code
           href: how-to-deploy-no-code-deployment.md

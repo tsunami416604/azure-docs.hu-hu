@@ -1,7 +1,7 @@
 ---
 title: Rövid útmutató – lekérdezés küldése az API-nak a C# helyi üzleti keresés használatával
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a C#-ban a Bing local Business Search API-ra, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3102742d19e7e0dffa6135c9267f51b1231dafc8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925147"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970462"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak C-ben #
 
@@ -209,7 +209,7 @@ namespace localSearch
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Helyi üzleti keresés – Java rövid útmutató](local-search-java-quickstart.md)
 - [Helyi üzleti keresés Node.js rövid útmutató](local-search-node-quickstart.md)
 - [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

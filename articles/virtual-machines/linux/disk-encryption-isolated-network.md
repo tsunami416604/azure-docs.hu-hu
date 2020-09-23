@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption izolált hálózaton
-description: Ez a cikk hibaelhárítási tippeket tartalmaz a Linux rendszerű virtuális gépekhez Microsoft Azure lemezes titkosításhoz.
+description: Ebből a cikkből megtudhatja, hogyan hibaelhárítási tippeket Microsoft Azure lemezes titkosítást a Linux rendszerű virtuális gépeken.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ca50d137ef7e6378d2bf8d0ab03127d49a9a88
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 0cc54bcc23e354ae8cc807e63a0039286e295181
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373589"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970947"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption izolált hálózaton
 
@@ -36,7 +36,7 @@ Red Hat esetén, ha proxyra van szükség, meg kell győződnie arról, hogy az 
 
 Ha a csomagokat manuálisan telepítik, akkor azokat is manuálisan kell frissíteni, mivel a rendszer új verziókat szabadít fel.
 
-## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 Az alkalmazott hálózati biztonsági csoportok beállításai továbbra is lehetővé teszik, hogy a végpont megfeleljen a lemez titkosításának dokumentált hálózati konfigurációs előfeltételeinek.  Lásd [Azure Disk Encryption: hálózati követelmények](disk-encryption-overview.md#networking-requirements)
 
 ## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption az Azure AD-vel (előző verzió)
@@ -49,7 +49,7 @@ Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-en
 
 A virtuális gépnek képesnek kell lennie az [Azure-példány metaadatainak szolgáltatás](instance-metadata-service.md) -végpontjának elérésére, amely egy jól ismert, nem irányítható IP-címet () használ, `169.254.169.254` amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További lépések az [Azure Disk Encryption hibaelhárításához](disk-encryption-troubleshooting.md)
 - [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

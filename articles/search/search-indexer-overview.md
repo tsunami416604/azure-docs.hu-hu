@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
+ms.date: 09/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 982073c77a7e876611f753c716f55c50df8b0817
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971397"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -50,9 +50,9 @@ Az indexelő adattárakat térképez fel az Azure-ban.
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database és az SQL felügyelt példánya](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL Server az Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [SQL Server az Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
 ## <a name="indexer-stages"></a>Indexelő szakaszai
 
@@ -167,7 +167,7 @@ A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő)
 
 A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtást tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (így a legutóbbi végrehajtás a válaszban elsőként jelenik meg).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

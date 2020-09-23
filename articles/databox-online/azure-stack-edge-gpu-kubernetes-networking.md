@@ -1,6 +1,6 @@
 ---
-title: A Kubernetes hálózatkezelésének megismerése Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan működik a Kubernetes hálózatkezelés Azure Stack peremhálózati eszközön.
+title: Az Kubernetes hálózatkezelés ismertetése Azure Stack Edge Pro-eszközön | Microsoft Docs
+description: Ismerteti, hogyan működik a Kubernetes hálózatkezelés Azure Stack Edge Pro-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899314"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes hálózatkezelés a Azure Stack Edge GPU-eszközön
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes hálózatkezelés a Azure Stack Edge Pro GPU-eszközön
 
-A Azure Stack Edge-eszközön létrejön egy Kubernetes-fürt a számítási szerepkör konfigurálásakor. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A Kubernetes-fürtben a hüvelyek esetében különböző módokat használhat a hálózatkezeléshez. 
+A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A Kubernetes-fürtben a hüvelyek esetében különböző módokat használhat a hálózatkezeléshez. 
 
-Ez a cikk egy Kubernetes-fürt hálózatkezelését mutatja be általánosságban, különösen az Azure Stack Edge-eszköz kontextusában. 
+Ez a cikk egy Kubernetes-fürt hálózatkezelését mutatja be általánosságban, különösen az Azure Stack Edge Pro-eszköz kontextusában. 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Kubernetes hálózatkezelés Azure Stack Edge-ben
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Kubernetes hálózatkezelés Azure Stack Edge Pro-ban
 
-A tarka, a Metallb és a Core DNS az összes olyan összetevő, amely a hálózatkezelésre van telepítve a Azure Stack Edge-ben. 
+A tarka, a Metallb és a Core DNS az összes olyan összetevő, amely a hálózatkezelésre van telepítve a Azure Stack Edge Pro-ban. 
 
 - A **tarka** IP-címet rendel hozzá egy magánhálózati IP-tartományhoz, és konfigurálja a hálózatokat ezekhez a hüvelyekhez, így az egyik csomóponton található pod egy másik csomóponton tud kommunikálni a pod-vel. 
 - A **Metallb** egy fürtön futó Pod gépen fut, és IP-címet rendel a Load Balancer típusú szolgáltatásokhoz. A terheléselosztó IP-címei a helyi felhasználói felületen keresztül megadott szolgáltatási IP-címtartomány közül vannak kiválasztva. 
@@ -78,10 +78,10 @@ Az IP-cím hozzárendelése a következőhöz:
 - **Kubernetes külső szolgáltatás IP**-címei: ez az IP-címtartomány a Kubernetes-fürtön kívül elérhető külső szolgáltatásokhoz (más néven a Load Balancer szolgáltatásokhoz) használatos.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Kubernetes hálózatkezelésének konfigurálása az Azure Stack Edge-ben:
+A Kubernetes hálózatkezelés konfigurálásához a Azure Stack Edge Pro-ban lásd:
 
-- [Állapot nélküli alkalmazások közzététele a Azure stack Edge-ben IoT Edge használatával](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
+- [Állapot nélküli alkalmazások kiküldése a Azure stack Edge Pro-on IoT Edge használatával](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- [Állapot nélküli alkalmazások közzététele a Azure stack Edge-n keresztül a kuebctl-on keresztül](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Állapot nélküli alkalmazások kiküldése a Azure stack Edge Pro-n keresztül a kuebctl-on keresztül](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

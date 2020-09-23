@@ -1,6 +1,6 @@
 ---
-title: Adatmegőrzési házirendek engedélyezése és letiltása – Azure SQL Edge (előzetes verzió)
-description: Megtudhatja, hogyan engedélyezheti és tilthatja le az adatmegőrzési szabályzatokat az Azure SQL Edge-ben (előzetes verzió)
+title: Adatmegőrzési házirendek engedélyezése és letiltása – Azure SQL Edge
+description: Megtudhatja, hogyan engedélyezheti és tilthatja le az adatmegőrzési szabályzatokat az Azure SQL Edge-ben
 keywords: SQL Edge, adatmegőrzés
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9787f2cfa87a16d9e7dd1753e4389977c6753b81
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550665"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902495"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Adatmegőrzési szabályzatok engedélyezése és letiltása
 
@@ -23,9 +23,6 @@ Ez a témakör azt ismerteti, hogyan lehet engedélyezni és letiltani az adatme
 ## <a name="enable-data-retention-for-a-database"></a>Adatmegőrzés engedélyezése egy adatbázis számára
 
 Az alábbi példa bemutatja, hogyan engedélyezheti az adatmegőrzést az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)használatával.
-
-> [!NOTE]
-> Az Azure SQL Edge (előzetes verzió) adatmegőrzési funkciójának engedélyezéséhez engedélyezze a TF 12825-as indítási lehetőséget, vagy használja a DBCC TRACEON parancsot. A nyomkövetési jelzők MSSQL. conf fájl használatával történő engedélyezésével kapcsolatos további információkért lásd [az MSSQL. conf fájl használatával történő konfigurálást](configure.md#configure-by-using-an-mssqlconf-file)ismertető témakört. 
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -64,7 +61,7 @@ A `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD = 
     - DateTime
     - DateTime2
     - DateTimeOffset
-- RETENTION_PERIOD – egész érték, amelyet egy egység leírója követ. Az engedélyezett egységek: nap, hét, hónap és év.
+- RETENTION_PERIOD – egész érték, amelyet egy egység leírója követ. Az engedélyezett egységek: nap, nap, hét, hét, hónap, hónap, év és év.
 
 Az alábbi példa bemutatja, hogyan engedélyezheti az adatmegőrzést a tábla számára az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)paranccsal.  
 
@@ -98,9 +95,9 @@ Az adatbázis és a tábla adatmegőrzési beállítása a (z) együtt használh
 |Adatbázis-beállítás | Tábla lehetőség | Viselkedés |
 |----------------|--------------|----------|
 | KI | KI | Az adatmegőrzési házirend le van tiltva, és az elavult rekordok automatikus és manuális tisztítása le van tiltva.|
-| KI | ON  | Az adatmegőrzési szabályzat engedélyezve van a táblához, azonban az elavult rekordok automatikus és manuális karbantartása is le van tiltva. |
+| KI | ON  | Az adatmegőrzési szabályzat engedélyezve van a táblához. Az elavult rekordok automatikus tisztítása le van tiltva, azonban az elavult rekordok törlésére a manuális törlési módszer használható. |
 | ON | KI | Az adatmegőrzési szabályzat az adatbázis szintjén van engedélyezve. Mivel azonban a beállítás le van tiltva a tábla szintjén, a rendszer nem őrzi meg az elavult sorok megőrzésen alapuló törlését.|
-| ON | ON | Az adatmegőrzési házirend az adatbázishoz és a táblákhoz is engedélyezve van. Az elavult rekordok automatikus/manuális karbantartása engedélyezve van |
+| ON | ON | Az adatmegőrzési házirend az adatbázishoz és a táblákhoz is engedélyezve van. Az elavult rekordok automatikus törlése engedélyezve van. |
 
 ## <a name="disable-data-retention-on-a-table"></a>Adatok megőrzésének letiltása egy táblában 
 

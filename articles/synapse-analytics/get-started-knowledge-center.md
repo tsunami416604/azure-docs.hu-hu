@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c8aaef9c98e1fe44c73d4bd464bb1e52122e7a57
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: c01d1bcb682a5f711dcba3cc7b32ef69b2642ef6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709664"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900769"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>A szinapszis Tudásközpont megismerése
 
@@ -45,7 +45,7 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 1. Görgessen az első lekérdezéshez (28 – 32. sor), és válassza ki a lekérdezés szövegét.
 1. Kattintson a Futtatás elemre. A kiválasztott szöveget fogja futtatni.
 
-## <a name="loading-the-more-nyc-taxi-data"></a>A további NYC-taxi-adathalmaz betöltése
+## <a name="loading-more-nyc-taxi-data"></a>A New York-i taxi-adathalmazok betöltése
 
 1. A **Tudásbázisban**kattintson az **elérhető minták tallózása** elemre. 
 1. Válassza a felül található **SQL-parancsfájlok** lapot.

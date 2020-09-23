@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658557"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886379"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -78,8 +78,6 @@ A **Azure Machine learning**használatával a következő lépésekkel megtervez
 
    * A korlátozott vagy a nem szükséges programkódok kipróbálásához próbálja ki a Azure Machine Learning Studio webes felületét [https://ml.azure.com](https://ml.azure.com/)  
    * Python-fejlesztők számára tekintse meg a [Azure Machine learning PYTHON SDK](how-to-configure-auto-train.md) -t 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. A **címkézett betanítási adatmennyiség forrásának és formátumának meghatározása**: NumPy tömbök vagy pandák dataframe
 
@@ -118,7 +116,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; normalizálása| Description |
+|Méretezés &nbsp; & &nbsp; normalizálása| Leírás |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -172,25 +170,25 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
 ### <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása 
 
- További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
+ További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. 
 
-| Jellemző                                                    | Távoli | Helyi | Igényel <br>Vállalati munkaterület |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
-| DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |
-| Beépített GPU-támogatás (képzés és következtetés)        | ✓      |       | ✓                             |
-| Képbesorolás és címkézés támogatása                  | ✓      |       | ✓                             |
-| Auto-ARIMA, próféták és ForecastTCN modellek előrejelzéshez | ✓      |       | ✓                             |
-| Több Futtatás/ismétlés párhuzamosan                       | ✓      |       | ✓                             |
-| Modellek létrehozása a AutoML Studio webes felületének felhasználói felületének értelmezésével      | ✓      |       | ✓                             |
-| Funkciók mérnöki testreszabása a Studio web Experience felhasználói felületén                        | ✓      |       | ✓                              |
-| Azure ML hiperparaméter hangolás                             | ✓      |       |                               |
-| Azure ML-folyamat – munkafolyamat-támogatás                         | ✓      |       |                               |
-| Futtatás folytatása                                             | ✓      |       |                               |
-| Előrejelzések                                                | ✓      | ✓     | ✓                             |
-| Kísérletek létrehozása és futtatása jegyzetfüzetekben                    | ✓      | ✓     |                               |
-| A kísérlet adatainak és metrikáinak regisztrálása és megjelenítése a felhasználói felületen | ✓      | ✓     |                               |
-| Az adatguardrails                                            | ✓      | ✓     |                               |
+| Funkció                                                    | Távoli | Helyi | 
+|------------------------------------------------------------|--------|-------|
+| Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | 
+| DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       |
+| Beépített GPU-támogatás (képzés és következtetés)        | ✓      |       |
+| Képbesorolás és címkézés támogatása                  | ✓      |       |
+| Auto-ARIMA, próféták és ForecastTCN modellek előrejelzéshez | ✓      |       | 
+| Több Futtatás/ismétlés párhuzamosan                       | ✓      |       |
+| Modellek létrehozása a AutoML Studio webes felületének felhasználói felületének értelmezésével      | ✓      |       |
+| Funkciók mérnöki testreszabása a Studio web Experience felhasználói felületén| ✓      |       |
+| Azure ML hiperparaméter hangolás                             | ✓      |       |
+| Azure ML-folyamat – munkafolyamat-támogatás                         | ✓      |       |
+| Futtatás folytatása                                             | ✓      |       |
+| Előrejelzések                                                | ✓      | ✓     |
+| Kísérletek létrehozása és futtatása jegyzetfüzetekben                    | ✓      | ✓     |
+| A kísérlet adatainak és metrikáinak regisztrálása és megjelenítése a felhasználói felületen | ✓      | ✓     |
+| Az adatguardrails                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>Számos modell 
 

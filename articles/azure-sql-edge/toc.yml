@@ -15,10 +15,15 @@
   items:
     - name: Az SQL Edge üzembe helyezése
       href: deploy-portal.md
+    - name: Üzembe helyezés a Docker használatával
+      href: disconnected-deployment.md
     - name: ONNX-modellek üzembe helyezése az SQL Edge-ben
       href: deploy-onnx.md
 - name: Oktatóanyagok
+  expanded: true
   items:
+    - name: Üzembe helyezés a Kubernetesben
+      href: deploy-kubernetes.md
     - name: Adatok szinkronizálása az Azure Data Factoryvel
       href: tutorial-sync-data-factory.md
     - name: Adatok szinkronizálása az SQL Data Synckel
@@ -31,36 +36,42 @@
           href: tutorial-set-up-iot-edge-modules.md
         - name: Modell üzembe helyezése az SQL Edge-ben
           href: tutorial-run-ml-model-on-sql-edge.md
-- name: Útmutató
-  items:
-    - name: Stream Analytics-feladatok üzembe helyezése
-      href: stream-analytics.md
-    - name: Replikáció konfigurálása
-      href: configure-replication.md
-    - name: Adatváltozások követése
-      href: track-data-changes.md
-    - name: T-SQL-streamelési feladatok kezelése
-      href: create-stream-analytics-job.md
-    - name: Csatlakozás az SQL Edge-hez
-      href: connect.md
-    - name: Az SQL Edge konfigurálása
-      href: configure.md
-    - name: DAC-csomag üzembe helyezése
-      href: deploy-dacpac.md
 - name: Alapelvek
   items:
-    - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
-      href: onnx-overview.md
-    - name: Biztonsági mentés és visszaállítás
-      href: backup-restore.md
-    - name: Adatstreamelés az SQL Edge-ben
+    - name: Üzembe helyezés
+      items:
+        - name: Üzembe helyezés az Azure Portalon
+          href: deploy-portal.md
+        - name: Üzembe helyezés a Docker használatával
+          href: disconnected-deployment.md
+        - name: Üzembe helyezés a Kubernetesben
+          href: deploy-kubernetes.md
+        - name: SQL-eszközök
+          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+    - name: Gépi tanulás
+      items:
+        - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
+          href: onnx-overview.md
+        - name: ONNX-modellek üzembe helyezése
+          href: deploy-onnx.md
+    - name: Teljesítmény
+      items:
+        - name: Teljesítményre vonatkozó irányelvek
+          href: performance-best-practices.md
+    - name: Az üzletmenet folytonosságának konfigurálása
+      items:
+        - name: Biztonsági mentés és visszaállítás
+          href: backup-restore.md
+        - name: Magas rendelkezésre állás a tárolók számára
+          href: high-availability-sql-edge-containers.md
+    - name: Adatstreamelés
       items:
         - name: Adatok streamelése
           href: stream-data.md
+        - name: Streamelési feladatok létrehozása és kezelése
+          href: create-stream-analytics-job.md
         - name: Külső stream létrehozása (Transact-SQL)
           href: create-external-stream-transact-sql.md
-        - name: Külső stream módosítása (Transact-SQL)
-          href: alter-external-stream-transact-sql.md
         - name: Külső stream elvetése (Transact-SQL)
           href: drop-external-stream-transact-sql.md
         - name: Streamelési nézetek és DMV-k
@@ -69,14 +80,20 @@
               href: streaming-catalog-views.md
             - name: sys.external_job_streams (Transact-SQL)
               href: sys-external-job-streams.md
-            - name: sys.external-streaming_jobs (Transact-SQL)
+            - name: sys.external_streaming_jobs (Transact-SQL)
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
     - name: Idősorozat-adatok feldolgozása
       items:
-        - name: Date_Bucket (Transact-SQL)
+        - name: Hiányzó időszakok és értékek
+          href: imputing-missing-values.md
+        - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: FIRST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: LAST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
         - name: Adatmegőrzés és -törlés
           items:
             - name: Adatmegőrzés áttekintése
@@ -85,3 +102,43 @@
               href: data-retention-enable-disable.md
             - name: 'Adatmegőrzés, törlés'
               href: data-retention-cleanup.md
+            - name: sys.sp_cleanup_data_retention (Transact-SQL)
+              href: sys-sp-cleanup-data-retention.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági áttekintés
+          href: security-overview.md
+        - name: Biztonsági funkciók
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+        - name: Kapcsolatok titkosítása
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+        - name: Azure Security Center for IoT
+          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+- name: Útmutató
+  items:
+    - name: Az SQL Edge konfigurálása
+      items:
+        - name: Konfigurálás környezeti változók használatával
+          href: configure.md#configure-by-using-environment-variables
+        - name: Az mssql.conf fájl konfigurálása
+          href: configure.md#configure-by-using-an-mssqlconf-file
+        - name: Futtatás nem gyökérszintű felhasználóként
+          href: configure.md#run-azure-sql-edge-as-non-root-user
+        - name: Adatok megőrzése
+          href: configure.md#persist-your-data
+        - name: Replikáció konfigurálása
+          href: configure-replication.md
+    - name: Csatlakozás az SQL Edge-hez
+      href: connect.md
+    - name: DAC-csomag üzembe helyezése
+      href: deploy-dacpac.md
+    - name: Adatváltozások követése
+      href: track-data-changes.md
+    - name: T-SQL-streamelési feladatok kezelése
+      href: create-stream-analytics-job.md
+    - name: Üzembe helyezési problémák elhárítása
+      href: troubleshoot.md
+- name: Referencia
+  items:
+    - name: Transact-SQL- (T-SQL-) referencia
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

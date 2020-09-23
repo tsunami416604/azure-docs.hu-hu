@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052279"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970662"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure Multi-Factor Authentication
 
@@ -24,13 +24,12 @@ A vásárlói adatait az Azure AD tárolja földrajzi helyen a szervezete által
 
 A felhőalapú Azure Multi-Factor Authentication és az Azure Multi-Factor Authentication-kiszolgáló dolgozza fel és tárolja a személyes és a szervezeti adatmennyiséget. Ez a cikk azt ismerteti, hogy mit és hol tárolja a rendszer az adattárolást.
 
-A következő Multi-Factor Authentication tevékenységek jelenleg az Egyesült államokbeli adatközpontokból származnak, kivéve a következőket:
+Az Azure Multi-Factor Authentication szolgáltatás az USA-ban, Európában és Ázsia és a Csendes-óceáni térség adatközpontokkal rendelkezik. A következő tevékenységek a regionális adatközpontokból származnak:
 
-* A kétfaktoros hitelesítés telefonhívásokkal vagy SMS-sel általában az Egyesült államokbeli adatközpontokból származik, és a globális szolgáltatók irányítják.
-    * A más régiókból, például Európából vagy Ausztráliából származó általános célú felhasználói hitelesítési kérelmeket jelenleg az adott régióban lévő adatközpontok dolgozzák fel. Az Egyesült államokbeli adatközpontok jelenleg minden olyan eseményt feldolgoznak, mint például az önkiszolgáló jelszavak alaphelyzetbe állítása, az Azure B2C-események vagy az NPS-bővítményt vagy AD FS adaptert használó hibrid forgatókönyvek.
-* Az Microsoft Authenticator alkalmazást használó leküldéses értesítések az Egyesült államokbeli adatközpontokból származnak. Emellett az eszköz gyártó-specifikus szolgáltatásai is különböző régiókban is előfordulhatnak.
-* Az eskü kódok általában jelenleg az Egyesült Államokban vannak érvényesítve
-    * A más régiókban (például Európa vagy Ausztrália) származó általános célú felhasználói hitelesítési eseményeket az adott régióban lévő adatközpontok dolgozzák fel. Az Egyesült államokbeli adatközpontok jelenleg további eseményeket dolgoznak fel.
+* A többtényezős hitelesítés telefonos hívásokat használ az Egyesült államokbeli adatközpontokból, és a globális szolgáltatók irányítják.
+* Az egyéb régiókból (például Európából vagy Ausztráliából) származó általános célú felhasználói hitelesítési kérelmeket jelenleg a felhasználó helye alapján dolgozzák fel a rendszer.
+* A Microsoft Authenticator alkalmazást használó leküldéses értesítések a felhasználó helyétől függően a regionális adatközpontokat jelentik.
+    * Az eszköz gyártója által meghatározott szolgáltatások, például az Apple leküldéses értesítések, a felhasználó tartózkodási helyétől eltérőek lehetnek.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication által tárolt személyes adattárolás
 

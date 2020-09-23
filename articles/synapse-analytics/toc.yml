@@ -10,24 +10,34 @@
       items:
         - name: Introduction (Bevezetés)
           href: get-started.md
+          displayName: 'get, started'
         - name: 1. Synapse-munkaterület létrehozása
           href: get-started-create-workspace.md
+          displayName: 'get, started'
         - name: 2. Elemzés SQL-készlettel
           href: get-started-analyze-sql-pool.md
+          displayName: 'get, started'
         - name: 3. Elemzés a Spark használatával
           href: get-started-analyze-spark.md
+          displayName: 'get, started'
         - name: 4. Elemzés igény szerinti SQL használatával
           href: get-started-analyze-sql-on-demand.md
+          displayName: 'get, started'
         - name: 5. Tárfiók adatainak elemzése
           href: get-started-analyze-storage.md
+          displayName: 'get, started'
         - name: 6. Összehangolás folyamatok használatával
           href: get-started-pipelines.md
+          displayName: 'get, started'
         - name: 7. Vizualizáció a Power BI használatával
           href: get-started-visualize-power-bi.md
+          displayName: 'get, started'
         - name: 8. Monitorozás
           href: get-started-monitor.md
+          displayName: 'get, started'
         - name: 9. Ismerkedés a tudásbázissal
           href: get-started-knowledge-center.md
+          displayName: 'get, started'
     - name: Hasznos tanácsok
       href: overview-cheat-sheet.md
     - name: GYIK
@@ -48,16 +58,16 @@
       href: quickstart-power-bi.md
     - name: Készletek létrehozása
       items:
-        - name: Apache Spark-notebook létrehozása webes eszközök használatával
-          href: quickstart-apache-spark-notebook.md
-        - name: Apache Spark-készlet létrehozása az Azure Portal használatával
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Apache Spark-készlet létrehozása a Synapse Studio használatával
-          href: quickstart-create-apache-spark-pool-studio.md
-        - name: SQL-készlet létrehozása az Azure Portal használatával
-          href: quickstart-create-sql-pool-portal.md
         - name: SQL-készlet létrehozása a Synapse Studio használatával
           href: quickstart-create-sql-pool-studio.md
+        - name: SQL-készlet létrehozása az Azure Portal használatával
+          href: quickstart-create-sql-pool-portal.md
+        - name: Jegyzetfüzet létrehozása
+          href: quickstart-apache-spark-notebook.md
+        - name: Spark-készlet létrehozása az Azure Portallal
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Spark-készlet létrehozása a Synapse Studióval
+          href: quickstart-create-apache-spark-pool-studio.md
     - name: Adatok betöltése SQL-készletek használatával
       items:
         - name: COPY utasítás

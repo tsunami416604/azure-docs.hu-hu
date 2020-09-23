@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Edge támogatott funkciói (előzetes verzió)
-description: Ismerje meg az Azure SQL Edge (előzetes verzió) által támogatott funkciók részleteit.
+title: Az Azure SQL Edge támogatott funkciói
+description: Ismerje meg az Azure SQL Edge által támogatott funkciók részleteit.
 keywords: az SQL Edge bemutatása, mi az SQL Edge, az SQL Edge áttekintése
 services: sql-edge
 ms.service: sql-edge
@@ -9,21 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462700"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886541"
 ---
-# <a name="supported-features-of-azure-sql-edge-preview"></a>Az Azure SQL Edge támogatott funkciói (előzetes verzió) 
+# <a name="supported-features-of-azure-sql-edge"></a>Az Azure SQL Edge támogatott funkciói 
 
-Az Azure SQL Edge a Microsoft SQL Server adatbázismotor legújabb verziójára épül Linuxon. Támogatja a Linux SQL Server 2019-es verziójában támogatott szolgáltatások egy részhalmazát, valamint néhány olyan funkciót, amely jelenleg nem támogatott, vagy SQL Server 2019-ben érhető el Linux rendszeren (vagy SQL Server Windows rendszeren).
+Az Azure SQL Edge a SQL Database motor legújabb verziójára épül. Támogatja a Linux SQL Server 2019-es verziójában támogatott szolgáltatások egy részhalmazát, valamint néhány olyan funkciót, amely jelenleg nem támogatott, vagy SQL Server 2019-ben érhető el Linux rendszeren (vagy SQL Server Windows rendszeren).
 
 A SQL Server on Linux által támogatott funkciók teljes listáját a [Linuxon futó SQL Server 2019 kiadásait és támogatott funkcióit](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019)ismertető témakörben tekintheti meg. A Windows SQL Server kiadásait és támogatott funkcióit lásd: [SQL Server 2019 (15. x) kiadásai és támogatott szolgáltatásai](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15).
-
-> [!NOTE]
-> Az Azure SQL Edge jelenleg előzetes verzióban érhető el, ezért nem használható éles környezetben. Előfordulhat, hogy a Microsoft az üzemelő példány ellenőrzésének és a használati eseteknek megfelelően javasolja az Azure SQL Edge használatát éles környezetekben.
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge-kiadások
 
@@ -36,9 +33,7 @@ Az Azure SQL Edge két különböző kiadással vagy szoftver csomaggal érhető
 
 ## <a name="operating-system"></a>Operációs rendszer
 
-Az Azure SQL Edge-tárolók jelenleg Ubuntu 16,04-alapúak, és csak az Ubuntu 16,04 LTS (ajánlott) vagy az Ubuntu 18,04 LTS rendszerű Docker-gazdagépeken futnak. Az Azure SQL Edge-tárolók futtathatók más operációs rendszerű gazdagépeken, például a Linux vagy a Windows rendszerű (Docker CE vagy Docker EE használatával) más disztribúciókban is futtathatók, azonban a Microsoft nem javasolja ezt, mert ez a konfiguráció nem lesz alaposan tesztelve.
-
-Az Azure SQL Edge jelenleg csak a Azure IoT Edgeon keresztül történő üzembe helyezéshez támogatott. További információ: [Azure IoT Edge támogatott rendszerek](https://docs.microsoft.com/azure/iot-edge/support).
+Az Azure SQL Edge-tárolók Ubuntu 18,04-alapúak, és csak olyan Docker-gazdagépeken futnak, amelyek Ubuntu 18,04 LTS (ajánlott) vagy Ubuntu 20,04 LTS rendszert futtatnak. Az Azure SQL Edge-tárolók futtathatók más operációs rendszerű gazdagépeken, például a Linux vagy a Windows rendszerű (Docker CE vagy Docker EE használatával) más disztribúciókban is futtathatók, azonban a Microsoft nem javasolja ezt, mert ez a konfiguráció nem lesz alaposan tesztelve.
 
 Az Azure SQL Edge Windows rendszeren való futtatásához ajánlott konfiguráció egy Ubuntu virtuális gép konfigurálása a Windows-gazdagépen, majd az Azure SQL Edge futtatása a Linux rendszerű virtuális gépen.
 
@@ -46,7 +41,7 @@ Az Azure SQL Edge ajánlott és támogatott fájlrendszere EXT4 és XFS. Ha áll
 
 ## <a name="hardware-support"></a>Hardveres támogatás
 
-Az Azure SQL Edge használatához 64 bites processzor szükséges (x64 vagy ARM64), amely legalább egy processzorral és egy GB RAM-mal rendelkezik a gazdagépen. Míg az Azure SQL Edge indítási memória-lábnyoma 500 MB-tal közelíthető meg, a peremhálózati eszközön futó többi IoT Edge-modulhoz további memória szükséges. Az Azure SQL Edge tényleges memória-és CPU-követelményei a számítási feladatok és a feldolgozott adatmennyiség összetettsége alapján változhatnak. Ha hardvert választ a megoldásához, a Microsoft azt javasolja, hogy széleskörű teljesítménytesztek futtatásával ellenőrizze, hogy teljesülnek-e a megoldáshoz szükséges teljesítménybeli jellemzők.  
+Az Azure SQL Edge használatához 64 bites processzor szükséges (x64 vagy ARM64), amely legalább egy processzorral és egy GB RAM-mal rendelkezik a gazdagépen. Míg az Azure SQL Edge indítási memória-lábnyoma a 450MB-hez közeledik, a további memóriára van szükség a peremhálózati eszközön futó többi IoT Edge modulhoz vagy folyamathoz. Az Azure SQL Edge tényleges memória-és CPU-követelményei a számítási feladatok és a feldolgozott adatmennyiség összetettsége alapján változhatnak. Ha hardvert választ a megoldásához, a Microsoft azt javasolja, hogy széleskörű teljesítménytesztek futtatásával ellenőrizze, hogy teljesülnek-e a megoldáshoz szükséges teljesítménybeli jellemzők.  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge-összetevők
 
@@ -76,6 +71,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | Polybase. Vegye figyelembe, hogy az Azure SQL Edge a külső táblákhoz tartozó célként is konfigurálható. |
 | &nbsp; | Nyelvi bővíthetőség a Java és a Spark használatával. |
 | &nbsp; | Active Directory integráció. |
+| &nbsp; | Az adatbázis automatikus zsugorodása. Az adatbázis automatikus Shrink tulajdonsága a paranccsal állítható be `ALTER DATABASE <database_name> SET AUTO_SHRINK ON` , azonban a módosításnak nincs hatása. Az automatikus Shrink feladat nem fog futni az adatbázison. A felhasználók továbbra is csökkenthetik az adatbázisfájlok használatát az "DBCC" parancsokkal. |
 | &nbsp; | Adatbázis-Pillanatképek. |
 | &nbsp; | Az állandó memória támogatása. |
 | &nbsp; | Microsoft Elosztott tranzakciók koordinátora. |

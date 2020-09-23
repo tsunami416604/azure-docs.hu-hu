@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: e5ed84c6daaf01deb67d39bd13de1498dca131c5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750881"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907577"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebben az útmutatóban a következőket tanulhatja meg:
 
@@ -103,7 +103,7 @@ Az adatguardrails három állapot egyikét jeleníti meg:
 
 A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint a kísérlet elküldésekor esetlegesen megjelenő társított állapotokat:
 
-Guardrail|status|Trigger feltétele &nbsp; &nbsp;
+Guardrail|Állapot|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
 **Hiányzó szolgáltatási értékek imputálási** |Telt <br><br><br> Kész| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékű imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputáltak voltak.
 **Magas fokú szolgáltatások kezelését** |Telt <br><br><br> Kész| A rendszer elemezte a bemeneteket, és nem észlelt magas szintű funkciókat. <br><br> A rendszer a Kiemelt funkciókat észlelte a bemenetekben, és kezelte azokat.
@@ -350,7 +350,7 @@ automl_settings = {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan állíthatja be az automatikus ML-kísérleteket:
 

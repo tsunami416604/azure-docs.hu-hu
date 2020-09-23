@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
-ms.date: 09/11/2020
-ms.openlocfilehash: 5818e57f29558cbb5a29592cd4e1d7ae2eebbec1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.topic: tutorial
+ms.date: 10/20/2019
+ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980695"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a csatlakoztatott logisztikai alkalmazási sablonhoz
 
@@ -23,6 +23,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Hozzon létre egy csatlakoztatott logisztikai alkalmazást.
 > * Használja az alkalmazás fő funkcióit.
+> * Az irányítópult használatával jelenítheti meg a kritikus logisztikai eszköz működési tevékenységeit.
+> * Eszköz sablonjának használata
+> * Szabályok követése
+> * Feladatok használata
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,6 +45,7 @@ Hozza létre az alkalmazást az alábbi lépések segítségével:
 
 3. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a következő részleteket:
 
+
     * **Alkalmazás neve**: az alapértelmezett javasolt nevet használhatja, vagy megadhatja a felhasználóbarát alkalmazás nevét.
     * **URL**: használhatja a javasolt alapértelmezett URL-címet, vagy megadhatja a felhasználóbarát egyedi emlékezetes URL-címét. Ezt követően az alapértelmezett beállítás akkor ajánlott, ha már rendelkezik Azure-előfizetéssel. Elkezdheti a 7 napos ingyenes próbaverzió díjszabását, és úgy is dönthet, hogy az ingyenes nyomvonal lejárta előtt bármikor standard díjszabási csomagra vált.
     * **Számlázási információ**: a címtár, az Azure-előfizetés és a régió részletei szükségesek az erőforrások kiépítéséhez.
@@ -52,11 +57,22 @@ Hozza létre az alkalmazást az alábbi lépések segítségével:
 
 ## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti
 
-A következő szakasz végigvezeti az alkalmazás főbb funkcióiról:
+Alább látható a csatlakoztatott logisztikai alkalmazás sablonjának kiválasztását bemutató képernyőkép.
+
+> [!div class="mx-imgBorder"]
+> ![A csatlakoztatott logisztikai alkalmazás sablonjának kijelölését bemutató képernyőkép](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+
+Az alábbi szakasz végigvezeti az alkalmazás főbb funkcióinak áttekintésén.
 
 ### <a name="dashboard"></a>Irányítópult
 
 Az alkalmazás sablonjának üzembe helyezése után az alapértelmezett irányítópult egy kapcsolódó logisztikai szolgáltatói portál. A Northwind Trader egy fiktív logisztikai szolgáltató, amely egy árufuvarozási flottát kezel a tengeren és a szárazföldön. Ebben az irányítópultban két különböző átjáró jelenik meg, amelyek a szállítások telemetria biztosítják, valamint a hozzájuk tartozó parancsokat, feladatokat és műveleteket.
+
+> [!div class="mx-imgBorder"]
+> ![Képernyőfelvétel: alkalmazás létrehozása a csatlakoztatott logisztikai alkalmazás sablonból](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+> [!div class="mx-imgBorder"]
+> ![Az alkalmazás létrehozásakor a számlázási beállításokat ábrázoló képernyőkép](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 Ez az irányítópult előre konfigurálva van a kritikus logisztikai eszköz működési tevékenységének megjelenítéséhez.
 
@@ -114,6 +130,8 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Sablon karbantartása":::
 
 ## <a name="next-steps"></a>Következő lépések
-
-* További információ a [csatlakoztatott logisztikai koncepcióról](./architecture-connected-logistics.md)
+* További információ 
+> [!div class="nextstepaction"]
+> [Kapcsolódó logisztikai koncepció](./architecture-connected-logistics.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
+* További információ az [IoT Central áttekintése](../core/overview-iot-central.md)

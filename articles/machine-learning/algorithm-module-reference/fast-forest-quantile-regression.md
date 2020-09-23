@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 5f00164e90d625c5343103290e9272f15d164cd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099147"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907951"
 ---
-# <a name="fast-forest-quantile-regression"></a>Gyors erdő Quantile regresszió
+# <a name="fast-forest-quantile-regression"></a>Gyors erdő típusú kvantilis regresszió
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal hozhat létre egy gyors erdő quantile regressziós modellt egy folyamaton belül. Az erdő gyors quantile regressziója akkor hasznos, ha többet szeretne megtudni az előre jelzett érték eloszlásáról, és nem csak egyetlen átlagos előrejelzési értéket kap. Ez a metódus számos alkalmazást tartalmaz, többek között:  
   
@@ -32,7 +32,7 @@ Ez a regressziós algoritmus egy **felügyelt** tanulási módszer, ami azt jele
 
 ## <a name="more-about-quantile-regression"></a>További információ a quantile regresszióról
 
-Számos különböző típusú regresszió létezik. A legfontosabb értelemben a regresszió azt jelenti, hogy a modellt egy numerikus vektorként kifejezett célra illeszti be. A statisztikusok azonban egyre fejlettebb módszereket fejlesztenek a regresszióhoz.
+Számos különböző típusú regresszió létezik. Egyszerűen fogalmazva, a regresszió azt jelenti, hogy a modellt egy numerikus vektorként kifejezett célra illeszti be. A statisztikusok azonban egyre fejlettebb módszereket fejlesztenek a regresszióhoz.
 
 A *quantile* legegyszerűbb meghatározása olyan érték, amely az adathalmazokat egyenlő méretű csoportokra osztja fel. a quantile értékek tehát a csoportok közötti határokat jelzik. Statisztikailag beszélve a quantiles a véletlenszerűen változó kumulatív terjesztési funkció (CDF) inverze alapján rendszeres időközönként végrehajtott értékek.
 
@@ -93,6 +93,6 @@ A betanítás befejezése után:
 
 + Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása**elemre.  A mentett modellt megtalálhatja modulként a modul fájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

@@ -5,14 +5,14 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000538"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980550"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonja
 
@@ -62,11 +62,11 @@ Az irányítópulton a következőket teheti:
    * Megtekintheti a beteljesülés struktúrán belüli robot-szolgáltatók alapszintű tervét és helyét.
    * Trigger parancsok, például a vezérlőrendszer alaphelyzetbe állítása, a szolgáltató belső vezérlőprogram frissítése és a hálózat újrakonfigurálása.
 
-     ![A Northwind Traders Micro-beteljesülő központ irányítópultjának képernyőképe](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![A Northwind Traders Micro-beteljesülő központ irányítópultjának felső felét bemutató képernyőkép](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Tekintse meg az irányítópult azon példáját, amelyet az operátor a teljesítési központban lévő feltételek figyelésére használhat. 
    * Figyelje az átjáró eszközön futó hasznos adatok állapotát a teljesítési központban.    
 
-     ![A Northwind Traders Micro-beteljesülő központ irányítópultjának képernyőképe](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Képernyőkép a Northwind Traders Micro-beteljesülő központ irányítópultjának aljáról](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Eszköz sablonja
 Ha az eszközbeállítások lapot választja, akkor láthatja, hogy a sablonhoz két különböző típusú eszköz tartozik: 
@@ -86,11 +86,14 @@ A minta szabály mint inspiráció használatával határozhatja meg az üzleti 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját. Nyissa meg az **adminisztrációs** > **alkalmazás beállításait**, és válassza a **Törlés**lehetőséget.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját. Nyissa meg az **adminisztrációs**  >  **alkalmazás beállításait**, és válassza a **Törlés**lehetőséget.
 
 ![Képernyőkép a Micro-beteljesülés központ Alkalmazásbeállítások oldaláról](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
-## <a name="next-steps"></a>További lépések
-* További információ a [Micro-teljesítési központ megoldási architektúráról](./architecture-micro-fulfillment-center.md).
-* További információ a többi [Azure IoT Central kiskereskedelmi sablonról](./overview-iot-central-retail.md).
-* Olvassa el az [Azure IoT Central áttekintését](../preview/overview-iot-central.md).
+## <a name="next-steps"></a>Következő lépések
+
+További információ
+> [!div class="nextstepaction"]
+> [Micro-teljesítési központ megoldási architektúrája](./architecture-micro-fulfillment-center.md)
+* További információ az [Azure IoT Central kiskereskedelmi sablonjairól](./overview-iot-central-retail.md)
+* További információ az [Azure IoT Central – áttekintés](../preview/overview-iot-central.md)

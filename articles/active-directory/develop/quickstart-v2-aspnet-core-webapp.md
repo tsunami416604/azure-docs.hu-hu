@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 7e8cea18999bec34eba6630a96dca089fd4725af
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016320"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902358"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
@@ -96,18 +96,18 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 >       - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
 >       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, hagyja ezt az értéket `common`
 >
-> Ebben a rövid útmutatóban ne módosítsa a fájl *appsettings.js* más értékeit.
+> Ebben a rövid útmutatóban ne módosítsa a fájl *appsettings.js* egyéb értékeit.
 >
 > #### <a name="step-4-build-and-run-the-application"></a>4. lépés: Az alkalmazás fordítása és futtatása
-> 
+>
 > Az alkalmazás a Visual Studióban történő létrehozásához és futtatásához válassza a **hibakeresés menüt >** **hibakeresés indítása**vagy a kulcs megnyomásával `F5` .
-> 
+>
 > A rendszer kéri a hitelesítő adatait, majd megkéri, hogy adja meg az alkalmazáshoz szükséges engedélyeket. Válassza az **elfogadás** lehetőséget a beleegyezés kérése lapon.
-> 
+>
 > :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-01-consent.png" alt-text="Az alkalmazás által az > felhasználótól kért engedélyeket megjelenítő belefoglalási párbeszédpanel":::
-> 
+>
 > A kért engedélyek beleegyezése után az alkalmazás azt jeleníti meg, hogy sikeresen bejelentkezett a Azure Active Directory hitelesítő adataival.
-> 
+>
 > :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Webböngésző, amely megjeleníti a futó webalkalmazást és a bejelentkezett felhasználót":::
 
 ## <a name="more-information"></a>További információ
@@ -143,7 +143,7 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 Az `.AddMicrosoftIdentityWebApp` alkalmazáshoz a Microsoft Identity platform hitelesítésének hozzáadását tartalmazó sor. Ezt követően a rendszer úgy konfigurálja, hogy a Microsoft Identity platform végpontjának használatával jelentkezzen be a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |

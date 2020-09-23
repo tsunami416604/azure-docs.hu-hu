@@ -29,6 +29,10 @@
       href: fusion.md
     - name: Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: Fejlett fenyegetések észlelése az UEBA használatával
+      href: identify-threats-with-entity-behavior-analytics.md
+    - name: Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
+      href: import-threat-intelligence.md
     - name: Adatok normalizálása táblázatok között
       href: normalization.md
     - name: Biztonság
@@ -162,6 +166,8 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
           href: connect-azure-stack.md
+    - name: Felhasználói és entitásviselkedési elemzés engedélyezése
+      href: enable-entity-behavior-analytics.md
     - name: Munkavégzés egyszerre több bérlővel (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Munkavégzés több munkaterület incidenseivel

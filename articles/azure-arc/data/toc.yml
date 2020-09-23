@@ -1,0 +1,214 @@
+- name: Azure Arc-kompatibilis adatszolgáltatások dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mik azok az Azure Arc-kompatibilis adatszolgáltatások?
+      href: overview.md
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
+- name: Rövid útmutatók
+  items:
+    - name: Adatkezelő létrehozása
+      href: create-data-controller.md
+- name: Alapelvek
+  items:
+    - name: Csatlakozási módok és követelmények
+      href: connectivity.md
+    - name: Tároló konfigurálása
+      href: storage-configuration.md
+- name: Útmutatók
+  items:
+    - name: Eszközök telepítése
+      items:
+        - name: Ügyféleszközök telepítése
+          href: install-client-tools.md
+        - name: azdata
+          items:
+            - name: Telepítés
+              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: macOS
+              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Windows
+              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: 'Linuxon, az apt használatával'
+              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: 'Linuxon, a yum használatával'
+              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: 'Linuxon, a zypper használatával'
+              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: 'Linuxon, a pip használatával'
+              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+    - name: Adatkezelő létrehozása
+      items:
+        - name: Adatkezelő létrehozása (Azure data studio)
+          href: create-data-controller-azure-data-studio.md
+        - name: Adatkezelő erőforrás létrehozása (Portal)
+          href: create-data-controller-resource-in-azure-portal.md
+        - name: Adatkezelő létrehozása (azdata)
+          href: create-data-controller-using-azdata.md
+        - name: Adatkezelő létrehozása Kubernetes használatával
+          href: create-data-controller-using-k8s-native-tools.md
+    - name: Az Azure Arc-kompatibilis adatszolgáltatások közös felületei
+      items:
+        - name: Monitorozás irányítópulttal (Azure Data Studio)
+          href: azure-data-studio-dashboards.md
+        - name: Számlázási adatok megtekintése (Azure)
+          href: view-billing-data-in-azure.md
+        - name: Adatkezelő megtekintése (Portal)
+          href: view-data-controller-in-azure-portal.md
+        - name: Erőforrások törlése
+          href: delete-azure-resources.md
+        - name: Az Azure Arc-adatkezelő eltávolítása
+          href: uninstall-azure-arc-data-controller.md
+    - name: Kezelés
+      items:
+        - name: Monitorozás a Grafana és a Kibana használatával
+          href: monitor-grafana-kibana.md
+        - name: Metrikák és naplók feltöltése
+          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Adatbázispéldányok leltárazása
+          href: view-arc-data-services-inventory-in-azure-portal.md
+        - name: Adatkezelő felhasználónevének és jelszavának lekérése
+          href: retrieve-the-username-password-for-data-controller.md
+    - name: Hibaelhárítás
+      items:
+        - name: Útmutató
+          href: troubleshoot-guide.md
+        - name: Naplók lekérése
+          href: troubleshooting-get-logs.md
+- name: 'Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL (előzetes verzió)'
+  items:
+    - name: Áttekintés
+      items:
+        - name: 'Mi az az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL?'
+          href: what-is-azure-arc-enabled-postgres-hyperscale.md
+    - name: Rövid útmutatók
+      items:
+        - name: Támogatott verziók
+          href: supported-versions-postgres-hyperscale.md
+        - name: Rugalmas skálázású Postgres-kiszolgálócsoport létrehozása (parancssori felület)
+          href: create-postgresql-hyperscale-server-group.md
+        - name: Rugalmas skálázású Postgres-kiszolgálócsoport létrehozása (Azure Data Studio)
+          href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Kapcsolódás
+          href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - name: Alapelvek
+      items:
+        - name: Adatok elosztása
+          href: concepts-distributed-postgres-hyperscale.md
+        - name: Kiszolgálócsoport elhelyezése
+          href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
+    - name: Használati útmutató
+      items:
+        - name: Kezelés
+          items:
+            - name: Biztonsági mentés és visszaállítás
+              href: backup-restore-postgresql-hyperscale.md
+            - name: Konfigurálás és skálázás
+              items:
+                - name: Konfiguráció megjelenítése
+                  href: show-configuration-postgresql-hyperscale-server-group.md
+                - name: Horizontális felskálázás – munkavégző csomópontok hozzáadása
+                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: Memória és virtuális magok vertikális fel- és leskálázása
+                  href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
+                - name: Kiszolgáló paramétereinek konfigurálása
+                  href: configure-server-parameters-postgresql-hyperscale.md
+            - name: Törlés
+              href: delete-postgresql-hyperscale-server-group.md
+            - name: Kiszolgálócsoportok listázása
+              href: list-server-groups-postgres-hyperscale.md
+            - name: 'Monitorozás, naplóelemzés, számlázási információ, Azure Portal'
+              href: monitoring-log-analytics-azure-portal-postgresql.md
+            - name: Biztonságos
+              href: configure-security-postgres-hyperscale.md
+            - name: Kiszolgálócsoport kezelése (Azure Data Studio)
+              href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
+            - name: Postgres-bővítmények használata
+              href: using-extensions-in-postgresql-hyperscale-server-group.md
+        - name: Migrate
+          items:
+            - name: PostgreSQL-adatok migrálása rugalmas skálázású Postgres-kiszolgálócsoportba
+              href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+            - name: Az AdventureWorks-mintaadatbázis visszaállítása
+              href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+        - name: Hibaelhárítás
+          href: troubleshoot-postgresql-hyperscale-server-group.md
+- name: 'Azure Arc-kompatibilis, felügyelt SQL-példány (előzetes verzió)'
+  items:
+    - name: Áttekintés
+      items:
+        - name: 'Mi az az Azure Arc-kompatibilis, felügyelt SQL-példány?'
+          href: managed-instance-overview.md
+        - name: Funkciók
+          href: managed-instance-features.md
+    - name: Rövid útmutatók
+      items:
+        - name: Felügyelt SQL-példány létrehozása
+          href: create-sql-managed-instance.md
+        - name: Felügyelt SQL-példány létrehozása (Azure Data Studio)
+          href: create-sql-managed-instance-azure-data-studio.md
+        - name: Kapcsolódás
+          href: connect-managed-instance.md
+    - name: Használati útmutató
+      items:
+        - name: Kezelés
+          items:
+            - name: Konfigurálás
+              href: configure-managed-instance.md
+            - name: 'Monitorozás, naplóelemzés, számlázási információ, Azure Portal'
+              href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Törlés
+              href: delete-managed-instance.md
+        - name: Migrate
+          items:
+            - name: Migrálás felügyelt SQL-példányra (Azure Arc)
+              href: migrate-to-managed-instance.md
+            - name: AdventureWorks visszaállítása
+              href: restore-adventureworks-sample-db.md
+- name: Referencia
+  items:
+    - name: azdata
+      items:
+        - name: azdata
+          href: /sql/azdata/reference/reference-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: jegyzetfüzet
+          href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: postgres
+          href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: sql
+          href: /sql/azdata/reference/reference-azdata-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: azdata-arc
+          href: /sql/azdata/reference/reference-azdata-arc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc
+          href: /sql/azdata/reference/reference-azdata-arc-dc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-config
+          href: /sql/azdata/reference/reference-azdata-arc-dc-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-debug
+          href: /sql/azdata/reference/reference-azdata-arc-dc-debug?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-dc-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-status
+          href: /sql/azdata/reference/reference-azdata-arc-dc-status?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres
+          href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-config
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource
+          href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource-kind
+          href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql
+          href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi-config
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json

@@ -1,19 +1,19 @@
 ---
-title: Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .net SDK használatával
+title: Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 description: Megtudhatja, hogyan importálhat és betöltheti az adatok Azure Cosmos DB egy olyan .NET-konzolos alkalmazás létrehozásával, amely optimalizálja az adatok importálásához szükséges kiépített átviteli sebességet (RU/s).
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019249"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981932"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -86,7 +86,7 @@ A minta alkalmazásnak hitelesítenie kell magát az Azure Cosmos-fiókban. A hi
 1.  Navigáljon az Azure Cosmos-fiókjához.
 1.  Nyissa meg a **kulcsok** ablaktáblát, és másolja a fiókjának **URI-JÁT** és **elsődleges kulcsát** .
 
-Ha a Azure Cosmos DB emulátort használja, szerezze be az [emulátor hitelesítő adatait ebből a cikkből](local-emulator.md#authenticating-requests).
+Ha a Azure Cosmos DB emulátort használja, szerezze be az [emulátor hitelesítő adatait ebből a cikkből](local-emulator.md#authenticate-requests).
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>5. lépés: a CosmosClient objektum inicializálása tömeges végrehajtással támogatással
 
