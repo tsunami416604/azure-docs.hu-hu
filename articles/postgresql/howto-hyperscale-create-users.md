@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825956"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907415"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -48,11 +48,11 @@ Ahogy említettük, a `citus` rendszergazdai fióknak nincs engedélye további 
 
 1. Lépjen a nagy kapacitású-kiszolgálócsoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás**gombra:
 
-   ![A szerepkörök lap](media/howto-hyperscale-create-users/1-role-page.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="A szerepkörök lap":::
 
 2. Adja meg a szerepkör nevét és jelszavát. Kattintson a **Mentés** gombra.
 
-   ![Szerepkör hozzáadása](media/howto-hyperscale-create-users/2-add-user-fields.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Szerepkör hozzáadása":::
 
 A felhasználó a kiszolgálócsoport koordinátor csomópontján jön létre, és az összes munkavégző csomópontra propagálva lesz. A Azure Portal által létrehozott szerepkörök rendelkeznek az `LOGIN` attribútummal, ami azt jelenti, hogy azok az igaz felhasználók, akik bejelentkezhetnek az adatbázisba.
 
@@ -77,11 +77,11 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Egy felhasználó frissítéséhez keresse fel a nagy kapacitású-kiszolgálócsoport **szerepkörök** lapját, és kattintson a felhasználó melletti három pontra. **..** Az ellipszisek menüt nyitnak meg a felhasználó törléséhez vagy a jelszavuk alaphelyzetbe állításához.
 
-   ![Szerepkör szerkesztése](media/howto-hyperscale-create-users/edit-role.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Szerepkör szerkesztése":::
 
 A `citus` szerepkör jogosultsággal rendelkezik, és nem törölhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy csatlakozhasson a kapcsolódáshoz: [nagy kapacitású-(Citus-) tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-hyperscale-manage-firewall-using-portal.md).
 

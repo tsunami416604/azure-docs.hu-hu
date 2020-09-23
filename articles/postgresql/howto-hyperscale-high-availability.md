@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f08fb01cf26ddf73d31b575242b27d7d8b4017d9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033275"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907397"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>A nagy kapacitású (Citus) magas rendelkezésre állásának konfigurálása
 
@@ -23,13 +23,13 @@ A Azure Database for PostgreSQL-nagy kapacitású (Citus) magas rendelkezésre �
 
 A beállítás engedélyezése a kiszolgálócsoport létrehozása során lehetséges, vagy később a Azure Portal lévő kiszolgálói csoport **számítási és tárolási** lapján. A felhasználói felület mindkét esetben hasonló. Húzza a csúszkát a **magas rendelkezésre álláshoz** a nem értéket Igen értékre:
 
-![Ha csúszka](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="Ha csúszka":::
 
 Kattintson a **Save (Mentés** ) gombra a kijelölés alkalmazásához. HA engedélyezi, hogy a kiszolgálócsoport kiépítse a készenléti és adatstream-adatforgalmat, eltarthat egy ideig.
 
 A kiszolgálócsoport **Áttekintés** lapja felsorolja az összes csomópontot és a készenléti állapotot, valamint egy **magas rendelkezésre állású** oszlopot, amely azt jelzi, hogy az összes csomóponton sikeresen engedélyezve van-e a ha.
 
-![a kiszolgáló csoportjában található ha oszlop – áttekintés](./media/howto-hyperscale-high-availability/02-ha-column.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="a kiszolgáló csoportjában található ha oszlop – áttekintés":::
 
 ### <a name="next-steps"></a>Következő lépések
 

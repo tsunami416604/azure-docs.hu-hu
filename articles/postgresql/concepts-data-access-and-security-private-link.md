@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 773815cd64af2a398001bac91e14cca0b204ca8e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84c68125ab7e8256b8ca949a0f4b49c5ccd5162f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832064"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884640"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -22,7 +22,7 @@ A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a p
 > [!NOTE]
 > A privát hivatkozás funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for PostgreSQL-kiszolgálókon érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen díjszabási szintek egyikében található.
 
-## <a name="data-exfiltration-prevention"></a>Az adatkiszűrése megelőzése
+## <a name="data-exfiltration-prevention"></a>Adatkiszivárgás megelőzése
 
 Az adatok Azure Database for PostgreSQL önálló kiszolgálón való szűrése olyankor történik, amikor egy jogosult felhasználó, például egy adatbázis-rendszergazda képes az adatok kinyerésére egy rendszerből, és a szervezeten kívül más helyre vagy rendszerre helyezi át. A felhasználó például egy harmadik fél tulajdonában lévő Storage-fiókba helyezi át az adatátvitelt.
 
@@ -68,25 +68,25 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
     * Az összes privát végponti kapcsolat (Pécs) listáját jeleníti meg
     * Megfelelő titkos végpont (PE) létrehozva
 
-![Válassza ki a privát végpont portált](media/concepts-data-access-and-security-private-link/select-private-link-portal.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-portal.png" alt-text="Válassza ki a privát végpont portált":::
 
 * Válasszon ki egy egyéni PEC-t a listából.
 
-![Válassza ki a privát végpont jóváhagyását.](media/concepts-data-access-and-security-private-link/select-private-link.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="Válassza ki a privát végpont jóváhagyását.":::
 
 * A PostgreSQL-kiszolgáló rendszergazdája dönthet úgy, hogy jóváhagyja vagy elutasítja a PEC-t, és opcionálisan egy rövid szöveges választ is hozzáadhat.
 
-![Válassza ki a privát végpont üzenetet](media/concepts-data-access-and-security-private-link/select-private-link-message.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Válassza ki a privát végpont üzenetet":::
 
 * Jóváhagyás vagy elutasítás után a lista a megfelelő állapotot jeleníti meg a válasz szövegével együtt.
 
-![Válassza ki a privát végpont végső állapotát](media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Válassza ki a privát végpont végső állapotát":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>Privát hivatkozás használata Azure Database for PostgreSQL esetén
 
 Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymással azonos régióban lévő VNet, illetve a régiók közötti VNet-VNet kapcsolaton keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
 
-![Válassza ki a privát végpont áttekintését](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Válassza ki a privát végpont áttekintését":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure-beli virtuális gépről a Virtual Network (VNet)
 Konfigurálja a [VNet](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) -társítást úgy, hogy kapcsolatot létesítsen a Azure Database for PostgreSQL egyetlen kiszolgálóval egy Azure-beli virtuális gépről egy társ VNet.
@@ -124,7 +124,7 @@ Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon k
 
 Ha meg szeretné tudni, hogyan állíthatja be a **nyilvános hálózati hozzáférés megtagadása** a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal-ról, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának beállítása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Database for PostgreSQL egyetlen kiszolgáló biztonsági funkcióival kapcsolatban, tekintse meg a következő cikkeket:
 

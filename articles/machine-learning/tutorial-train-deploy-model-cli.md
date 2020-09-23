@@ -9,25 +9,25 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144022"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906646"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebben az oktatóanyagban az Azure CLI Machine learning-bővítményét használja a modellek betanításához, regisztrálásához és üzembe helyezéséhez.
 
-Az oktatóanyagban szereplő Python-betanítási szkriptek a [scikit-Learn](https://scikit-learn.org/) paranccsal egy alapszintű modellt tanítanak. Ennek az oktatóanyagnak a középpontjában nem a parancsfájlok vagy a modell szerepel, de a CLI-vel a Azure Machine Learning használatával dolgozhat.
+Az oktatóanyagban szereplő Python-betanítási szkriptek a [scikit-Learn](https://scikit-learn.org/) paranccsal egy egyszerű modellt tanítanak. Ennek az oktatóanyagnak a középpontjában nem a parancsfájlok vagy a modell szerepel, de a CLI-vel a Azure Machine Learning használatával dolgozhat.
 
 Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 > [!div class="checklist"]
 > * A Machine learning-bővítmény telepítése
-> * Azure Machine Learning munkaterület létrehozása
+> * Azure Machine Learning-munkaterület létrehozása
 > * A modell betanításához használt számítási erőforrás létrehozása
 > * A modell betanításához használt adatkészlet meghatározása és regisztrálása
 > * Tanítási Futtatás elindítása
@@ -37,7 +37,7 @@ Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-re.
 
@@ -75,7 +75,7 @@ A tárház a következő fájlokat tartalmazza, amelyek segítségével a betan�
 
 ## <a name="connect-to-your-azure-subscription"></a>Csatlakozás az Azure-előfizetéshez
 
-Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületről. A legalapvetőbb az interaktív hitelesítés böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
+Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületről. A legegyszerűbb az interaktív hitelesítés böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
 
 ```azurecli-interactive
 az login
@@ -99,9 +99,9 @@ Ha egy üzenet jelenik meg, amely szerint a bővítmény már telepítve van, a 
 az extension update -n azure-cli-ml
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport az Azure platformon található erőforrások alapszintű tárolója. A Azure Machine Learning használatakor az erőforráscsoport a Azure Machine Learning munkaterületet fogja tartalmazni. Emellett a munkaterület által használt egyéb Azure-szolgáltatásokat is tartalmazni fogja. Ha például egy felhőalapú számítási erőforrás használatával betanítja a modellt, akkor az erőforrást az erőforráscsoport hozza létre.
+Az erőforráscsoportok az Azure platformon található erőforrások tárolói. A Azure Machine Learning használatakor az erőforráscsoport a Azure Machine Learning munkaterületet fogja tartalmazni. Emellett a munkaterület által használt egyéb Azure-szolgáltatásokat is tartalmazni fogja. Ha például egy felhőalapú számítási erőforrás használatával betanítja a modellt, akkor az erőforrást az erőforráscsoport hozza létre.
 
 __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje le az `<resource-group-name>` -t az erőforráscsoporthoz használni kívánt névre. Cserélje le `<location>` az az Azure-régiót az erőforráscsoport használatára:
 
@@ -477,7 +477,7 @@ Ebben az Azure Machine Learning oktatóanyagban a Machine learning parancssori f
 
 > [!div class="checklist"]
 > * A Machine learning-bővítmény telepítése
-> * Azure Machine Learning munkaterület létrehozása
+> * Azure Machine Learning-munkaterület létrehozása
 > * A modell betanításához használt számítási erőforrás létrehozása
 > * A modell betanításához használt adatkészlet meghatározása és regisztrálása
 > * Tanítási Futtatás elindítása

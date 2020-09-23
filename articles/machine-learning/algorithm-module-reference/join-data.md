@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cde479e50c67006a9ef1668ba68b211c3a9af93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477578"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907909"
 ---
-# <a name="join-data"></a>Adatok összekapcsolása
+# <a name="join-data"></a>Csatlakozás adatokhoz
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Csatlakozás** adatmodulja két adatkészlet egyesítéséhez egy adatbázis-stílusú csatlakozási művelettel.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer **JOIN** adatmodulja két adatkészlet egyesítésére egy adatbázis-stílusú csatlakozási művelet használatával.  
 
 ## <a name="how-to-configure-join-data"></a>Csatlakozási adatbevitel konfigurálása
 
@@ -66,6 +66,6 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
 
 1. Az eredmények megtekintéséhez kattintson a jobb gombbal a **csatlakozásra** , majd válassza a **Megjelenítés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

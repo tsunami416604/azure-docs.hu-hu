@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek üzembe helyezése az Azure Stack Edge GPU-eszközön a Azure PowerShell használatával
-description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és kezelni Azure Stack peremhálózati eszközön Azure PowerShell használatával.
+title: Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
+description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge Pro-eszközön Azure PowerShell használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,26 +8,26 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256123"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890650"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack Edge GPU-eszközön Azure PowerShell parancsfájl használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön Azure PowerShell parancsfájl használatával
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack peremhálózati eszközön egy Azure PowerShell parancsfájl használatával.
+Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack Edge Pro-eszközön egy Azure PowerShell parancsfájl használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure Stack peremhálózati eszközön ezzel a parancsfájllal, meg kell győződnie arról, hogy végrehajtotta a következő lépésekben felsorolt előfeltételeket:
+Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure Stack Edge Pro-eszközön ezzel a parancsfájllal, meg kell győződnie arról, hogy végrehajtotta az alábbi lépéseket:
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>Azure Stack peremhálózati eszközön a helyi webes felületen keresztül
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Azure Stack Edge Pro-eszköz helyi webes felhasználói felületén keresztül
 
-1. A Azure Stack peremhálózati eszköz hálózati beállításait az [1. lépés: Azure stack Edge-eszköz konfigurálása című témakörben](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)leírtak szerint végezte el.
+1. Az Azure Stack Edge Pro-eszköz hálózati beállításait az [1. lépés: Azure stack Edge Pro-eszköz konfigurálása](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)című cikkben leírtak szerint végezte el.
 
 2. Hálózati adapter engedélyezése a számítási feladatokhoz. Ez a hálózati adapter IP-címe virtuális kapcsoló létrehozásához használatos a virtuális gép telepítéséhez. Az alábbi lépések végigvezetik a folyamaton:
 
@@ -36,9 +36,9 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
         > [!IMPORTANT] 
         > Csak egy portot lehet beállítani a számítási feladatokhoz.
 
-    2. A hálózati adapteren engedélyezze a számítást. Azure Stack Edge létrehoz és felügyel egy, az adott hálózati adapternek megfelelő virtuális kapcsolót.
+    2. A hálózati adapteren engedélyezze a számítást. Azure Stack Edge Pro létrehoz és felügyel egy, az adott hálózati adapternek megfelelő virtuális kapcsolót.
 
-3. Létrehozta és telepítette az összes tanúsítványt a Azure Stack Edge-eszközön és az ügyfél megbízható legfelső szintű tárolójában. Kövesse a [2. lépés: tanúsítványok létrehozása és telepítése](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)című témakörben ismertetett eljárást.
+3. Létrehozta és telepítette az összes tanúsítványt a Azure Stack Edge Pro-eszközön és az ügyfél megbízható legfelső szintű tárolójában. Kövesse a [2. lépés: tanúsítványok létrehozása és telepítése](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)című témakörben ismertetett eljárást.
 
 ### <a name="for-your-windows-client"></a>Windows-ügyfél esetén
 
@@ -116,6 +116,6 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gépek üzembe helyezése Azure PowerShell-parancsmagok használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)

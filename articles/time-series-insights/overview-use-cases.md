@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ede38edd9d24114eb4d0939ff9d4586a2d31daa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099197"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978137"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 használati esetei
 
@@ -66,7 +66,7 @@ A Azure Time Series Insights Gen2 tárolt adatkezelés három fő módon haszná
 
 Használja Azure Time Series Insights Gen2 a berendezések állapotának, használatának és teljesítményének figyelésére, és mérje fel a működési hatékonyságot. Azure Time Series Insights a Gen2 a terhelés vagy a lekérdezési teljesítmény feláldozása nélkül segíti a különböző és kiszámíthatatlan IoT számítási feladatok kezelését.
 
-[![Áttekintés](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Képernyőfelvétel: I o T-eszközök/alkalmazásadatok, adatfolyam-feldolgozás, működési hatékonyság, intelligencia/elemzések és fejlett Analitika Azure Time Series Insights Gen2.](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 A működési folyamatokból érkező adatok folyamatos átvitele és folyamatos feldolgozása a megfelelő technológiával vagy megoldással együtt sikeresen átalakíthatja a vállalatokat. Ezek a megoldások gyakran több rendszer kombinációját jelentik. Lehetővé teszik az állandóan módosult, különösen az IoT-tartományon belüli adatelemzést és elemzést, és megosztanak egy közös mintát.
 
@@ -98,7 +98,7 @@ Azure Time Series Insights Gen2 két egyszerű és költséghatékony módszert 
 
 * Másodszor, a gépi tanulási és előrejelzési modellek kimenete Azure Time Series Insights Gen2 az eredmények megjelenítéséhez és tárolásához. Ez az eljárás segít a szervezeteknek a modelljeik optimalizálásában és finomhangolásában. Azure Time Series Insights Gen2 megkönnyíti a folyamatos átviteli telemetria-adatokat a betanított modell kimenetével megegyező síkban. Így segít az adatelemzési csapatoknak észrevenni a rendellenességeket és azonosítani a mintákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./time-series-insights-update-explorer.md).
 * A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 ajánlott eljárásokat](./time-series-insights-update-plan.md) .

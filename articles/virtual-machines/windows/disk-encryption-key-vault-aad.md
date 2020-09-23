@@ -1,6 +1,6 @@
 ---
 title: Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)
-description: Ez a cikk a IaaS virtuális gépek Microsoft Azure lemezes titkosításának használatának előfeltételeit ismerteti.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Key vaultot az Azure AD-vel való Azure Disk Encryptionhoz.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: eb625624fa6faa4fdf3ef4fba3b49a0d2d5d7e09
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f983c0f5fc951376246fdbed9869211c8b495402
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284540"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977964"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)
 
@@ -232,13 +232,13 @@ Ha a titkosítási kulcsok további biztonsági rétegéhez kulcs titkosítási 
 
 * A Key Vault titkos és KEK URL-címeinek verziószámozással kell rendelkezniük. Az Azure ezt a verziószámozási korlátozást alkalmazza. Érvényes titkos és KEK URL-címek esetén tekintse meg az alábbi példákat:
 
-  * Érvényes titkos URL-cím – példa:*https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Érvényes KEK URL-cím – példa:*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Érvényes titkos URL-cím – példa:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Érvényes KEK URL-cím – példa:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * A Azure Disk Encryption nem támogatja a portszámok megadását a Key Vault Secrets és a KEK URL-címeinek részeként. A nem támogatott és a támogatott Key Vault URL-címekre vonatkozó példákat a következő példákban talál:
 
-  * Nem elfogadható Key Vault URL-cím*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Elfogadható Key Vault URL-cím:*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Nem elfogadható Key Vault URL-cím  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Elfogadható Key Vault URL-cím:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 ### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a>Kulcs titkosítási kulcsának beállítása Azure PowerShell 
 A PowerShell-szkript használata előtt ismernie kell a Azure Disk Encryption előfeltételeit a parancsfájl lépéseinek megismeréséhez. Előfordulhat, hogy a minta parancsfájlnak változásokra van szüksége a környezetben. Ez a szkript létrehozza az összes Azure Disk Encryption előfeltételt, és titkosít egy meglévő IaaS virtuális gépet, és egy kulcs titkosítási kulccsal csomagolja ki a lemez titkosítási kulcsát. 
@@ -455,6 +455,6 @@ Ha tanúsítványalapú hitelesítést szeretne használni, és a titkosítási 
 ```
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Disk Encryption engedélyezése az Azure AD-vel Windows rendszerű virtuális gépeken (korábbi kiadás)](disk-encryption-windows-aad.md)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186588"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987279"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -33,7 +33,7 @@ Automation-fiók létrehozásához vagy frissítéséhez, valamint a cikkben ism
 * Az Automation-fiók létrehozásához hozzá kell adni az Azure AD-felhasználói fiókot egy olyan szerepkörhöz, amely az erőforrások tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik `Microsoft.Automation` . További információ: [szerepköralapú Access Control Azure Automation](automation-role-based-access-control.md).
 * A Azure Portal **Azure Active Directory**  >  **MANAGE**  >  **felhasználói beállítások**kezelése területen, ha a **Alkalmazásregisztrációk** értéke **Igen**, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat Active Directory alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak legalább egy alkalmazás-fejlesztői szerepkörrel kell rendelkeznie az Azure ad-ben.
 
-Ha nem tagja az előfizetés Active Directory példányának, mielőtt felveszi az előfizetéshez tartozó globális rendszergazdai vagy társ-felügyeleti szerepkörbe, a rendszer vendégként adja hozzá a Active Directory. Ebben az esetben a következő üzenet jelenik meg az Automation-fiók hozzáadása panelen:`You do not have permissions to create.`
+Ha nem tagja az előfizetés Active Directory példányának, mielőtt felveszi az előfizetéshez tartozó globális rendszergazdai vagy társ-felügyeleti szerepkörbe, a rendszer vendégként adja hozzá a Active Directory. Ebben az esetben a következő üzenet jelenik meg az Automation-fiók hozzáadása panelen: `You do not have permissions to create.`
 
 Ha először ad hozzá egy felhasználót a globális rendszergazda vagy a rendszergazda szerepkörhöz, akkor eltávolíthatja a felhasználót az előfizetés Active Directory példányáról. A felhasználó a Active Directoryban található felhasználói szerepkörhöz is elolvasható. Felhasználói szerepkörök ellenőrzése:
 
@@ -59,7 +59,7 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
    > [!NOTE]
    > Ha a következő üzenet jelenik meg az Automation-fiók hozzáadása panelen, a fiókja nem tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés egyik felügyelője.
    >
-   > ![Automation-fiókra vonatkozó figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="A prompt képernyőképe: nem rendelkezik a futtató fiók Azure Active Directoryban való létrehozásához szükséges engedélyekkel.":::
 
 1. Az Automation-fiók hozzáadása panelen adja meg az új Automation-fiók nevét a **név** mezőben. Ez a név nem módosítható a kiválasztása után. 
 
@@ -74,7 +74,7 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
    > [!NOTE]
    > Ha úgy dönt, hogy nem hozza létre a futtató fiókot az Azure-beli **futtató fiók létrehozása** **nem lehetőség kiválasztásával** , egy üzenet jelenik meg az Automation-fiók hozzáadása panelen. Bár a fiók létrejön a Azure Portalban, a fiók nem rendelkezik a megfelelő hitelesítési identitással a klasszikus üzemi modell előfizetésében vagy a Azure Resource Manager előfizetés-címtárszolgáltatás szolgáltatásban. Ezért az Automation-fióknak nincs hozzáférése az előfizetéséhez tartozó erőforrásokhoz. Ez megakadályozza, hogy az erre a fiókra hivatkozó runbookok az adott üzemi modell erőforrásaihoz tartozó erőforrások hitelesítéséhez és végrehajtásához is hozzáférjenek.
    >
-   > ![Automation-fiókra vonatkozó figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Képernyőkép: "a következő üzenet jelenik meg:" úgy döntött, hogy nem hoz létre futtató fiókot. "":::
    >
    > Ha az egyszerű szolgáltatásnév nincs létrehozva, a közreműködői szerepkör nincs hozzárendelve.
    >
@@ -99,10 +99,10 @@ A klasszikus futtató fiókok már nem jönnek létre alapértelmezés szerint A
 2. Válassza a **klasszikus Azure-beli futtató fiók**lehetőséget.
 3. A klasszikus futtató fiók létrehozásának folytatásához kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a grafikus létrehozásról: [grafikus runbookok készítése Azure Automationban](automation-graphical-authoring-intro.md).
 * A PowerShell-runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)című témakört.
 * A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell munkafolyamat-Runbook létrehozása](learn/automation-tutorial-runbook-textual.md)című témakört.
 * A Python 2 runbookok megismeréséhez tekintse meg az [oktatóanyag: Python 2 Runbook létrehozása](learn/automation-tutorial-runbook-textual-python2.md)című témakört.
-* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

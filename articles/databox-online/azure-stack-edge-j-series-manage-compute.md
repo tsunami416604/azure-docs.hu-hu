@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU számítási felügyelet | Microsoft Docs
-description: Leírja, hogyan kezelheti a peremhálózati számítási beállításokat, például az triggert, a modulokat, a számítási konfiguráció megtekintését, a konfiguráció eltávolítását az Azure Stack Edge GPU-n lévő Azure Portal.
+title: Azure Stack Edge Pro GPU számítási felügyelet | Microsoft Docs
+description: Leírja, hogyan kezelheti a peremhálózati számítási beállításokat, például az triggert, a modulokat, a számítási konfiguráció megtekintését, a konfiguráció eltávolítását a Azure Stack Edge Pro GPU-n lévő Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ea52c393ec9897d43714d69ff448038b65ee555
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268791"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890591"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge-gpu"></a>Számítások kezelése az Azure Stack Edge GPU-val
+# <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Számítások kezelése a Azure Stack Edge Pro GPU-val
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk bemutatja, hogyan kezelheti a számításokat az Azure Stack Edge-ben. A számítást a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal segítségével kezelheti a modulokat, az eseményindítókat és a számítási konfigurációt, valamint a helyi webes felhasználói felületet a számítási beállítások kezeléséhez.
+Ez a cikk bemutatja, hogyan kezelheti a számításokat a Azure Stack Edge Pro-ban. A számítást a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal segítségével kezelheti a modulokat, az eseményindítókat és a számítási konfigurációt, valamint a helyi webes felhasználói felületet a számítási beállítások kezeléséhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="manage-triggers"></a>Eseményindítók kezelése
 
-Eseménynek nevezzük a felhőalapú környezetben vagy az eszközén bekövetkező történéseket, amelyekkel kapcsolatban érdemes lehet cselekedni. Egy fájl létrehozása egy megosztásban például eseménynek számít. A trigger az, ami az eseményt kiváltja. Az Azure Stack Edge-ben a triggerek fájleseményekre vagy ütemezésre reagálnak.
+Eseménynek nevezzük a felhőalapú környezetben vagy az eszközén bekövetkező történéseket, amelyekkel kapcsolatban érdemes lehet cselekedni. Egy fájl létrehozása egy megosztásban például eseménynek számít. A trigger az, ami az eseményt kiváltja. A Azure Stack Edge Pro esetében az eseményindítók a fájlok eseményeire vagy az ütemtervre is reagálnak.
 
 - **Fájl**: ezek az eseményindítók olyan fájlok eseményeire reagálnak, mint például egy fájl létrehozása, egy fájl módosítása.
 - **Ütemezve**: ezek az eseményindítók olyan ütemezésre reagálnak, amelyet a kezdési dátummal, a kezdési időponttal és az Ismétlési intervallummal lehet meghatározni.
@@ -84,7 +84,7 @@ Az eseményindítók listájának frissítése, hogy tükrözze a törlést.
 
 ## <a name="manage-compute-configuration"></a>Számítási konfiguráció kezelése
 
-A Azure Portal használatával megtekintheti a számítási konfigurációt, eltávolíthatja a meglévő számítási konfigurációkat, vagy frissítheti a számítási konfigurációt, hogy szinkronizálja a IoT-eszköz hozzáférési kulcsait, és IoT Edge eszközét az Azure Stack Edge számára.
+A Azure Portal használatával megtekintheti a számítási konfigurációt, eltávolíthatja a meglévő számítási konfigurációkat, vagy frissítheti a számítási konfigurációt, hogy szinkronizálja a IoT-eszköz hozzáférési kulcsait, és IoT Edge eszközét az Azure Stack Edge Pro-hoz.
 
 ### <a name="view-compute-configuration"></a>Számítási konfiguráció megtekintése
 
@@ -113,11 +113,11 @@ A Azure Portal az alábbi lépéseket végrehajtva távolítsa el az eszköz meg
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-eszköz szinkronizálása és IoT Edge eszköz-hozzáférési kulcsok
 
-Ha az Azure Stack Edge-ben konfigurálja a számítást, létrejön egy IoT-eszköz és egy IoT Edge-eszköz. Ezeket az eszközöket a rendszer automatikusan hozzárendeli a szimmetrikus hozzáférési kulcsokhoz. Ajánlott biztonsági eljárásként ezeket a kulcsokat rendszeresen elforgatják a IoT Hub szolgáltatáson keresztül.
+Ha a Azure Stack Edge Pro-ban konfigurálja a számítást, egy IoT-eszköz és egy IoT Edge eszköz jön létre. Ezeket az eszközöket a rendszer automatikusan hozzárendeli a szimmetrikus hozzáférési kulcsokhoz. Ajánlott biztonsági eljárásként ezeket a kulcsokat rendszeresen elforgatják a IoT Hub szolgáltatáson keresztül.
 
 A kulcsok elforgatásához lépjen a létrehozott IoT Hub szolgáltatásra, és válassza ki a IoT eszközt vagy a IoT Edge eszközt. Minden eszközhöz tartozik egy elsődleges elérési kulcs és egy másodlagos elérési kulcs. Rendelje hozzá az elsődleges hozzáférési kulcsot a másodlagos elérési kulcshoz, majd az elsődleges hozzáférési kulcs újragenerálása.
 
-Ha a IoT-eszköz és a IoT Edge eszköz kulcsait elforgatták, akkor frissítenie kell az Azure Stack Edge konfigurációját a legújabb hozzáférési kulcsok beszerzéséhez. A Sync segítségével az eszköz beolvassa a IoT-eszköz és IoT Edge eszköz legújabb kulcsait. Azure Stack Edge csak az elsődleges hozzáférési kulcsokat használja.
+Ha elforgatták a IoT eszközt és IoT Edge eszköz kulcsait, akkor a legújabb hozzáférési kulcsok beszerzéséhez frissítenie kell a Azure Stack Edge Pro konfigurációját. A Sync segítségével az eszköz beolvassa a IoT-eszköz és IoT Edge eszköz legújabb kulcsait. Azure Stack Edge Pro csak az elsődleges hozzáférési kulcsokat használja.
 
 Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
@@ -133,4 +133,4 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [végezhet hibakeresést Azure stack Edge](azure-stack-edge-gpu-troubleshoot.md)-ben.
+- Ismerje meg, hogyan lehet [elhárítani a Azure stack Edge Pro](azure-stack-edge-gpu-troubleshoot.md)-t.

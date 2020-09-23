@@ -1,27 +1,27 @@
 ---
-title: Virtuális gépek üzembe helyezése az Azure Stack Edge-eszköz GPU-n az Azure CLI és a Python használatával
-description: Útmutató virtuális gépek (VM-EK) létrehozásához és kezeléséhez Azure Stack Edge GPU-eszközön az Azure CLI és a Python használatával.
+title: Virtuális gépek üzembe helyezése a Azure Stack Edge Pro-eszköz GPU-n keresztül az Azure CLI és a Python használatával
+description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500232"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890722"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge GPU-eszközön az Azure CLI és a Python használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
-Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket az Azure Stack Edge-eszközön az Azure parancssori felület (CLI) és a Python használatával.
+Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket az Azure Stack Edge Pro-eszközön az Azure parancssori felület (CLI) és a Python használatával.
 
 ## <a name="vm-deployment-workflow"></a>Virtuális gép üzembe helyezésének munkafolyamata
 
@@ -43,13 +43,13 @@ Az üzembe helyezési munkafolyamat magas szintű összefoglalása a következő
 10. Virtuális hálózat létrehozása
 11. VNIC létrehozása a VNet alhálózati azonosító használatával
 
-A munkafolyamat-diagram részletes ismertetését lásd: [virtuális gépek telepítése Azure stack peremhálózati eszközön Azure PowerShell használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). További információ a Azure Resource Managerhoz való kapcsolódásról: [kapcsolódás Azure Resource Manager a Azure PowerShell használatával](azure-stack-edge-j-series-connect-resource-manager.md).
+A munkafolyamat-diagram részletes ismertetését lásd: [virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön Azure PowerShell használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). További információ a Azure Resource Managerhoz való kapcsolódásról: [kapcsolódás Azure Resource Manager a Azure PowerShell használatával](azure-stack-edge-j-series-connect-resource-manager.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az Azure CLI és a Python használatával a Azure Stack Edge-eszközön, meg kell győződnie arról, hogy végrehajtotta az alábbi lépéseket:
+Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure CLI és a Python használatával a Azure Stack Edge Pro-eszközön, meg kell győződnie arról, hogy végrehajtotta az alábbi lépéseket:
 
-1. A Azure Stack peremhálózati eszköz hálózati beállításait az [1. lépés: Azure stack Edge-eszköz konfigurálása című témakörben](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)leírtak szerint végezte el.
+1. Az Azure Stack Edge Pro-eszköz hálózati beállításait az [1. lépés: Azure stack Edge Pro-eszköz konfigurálása](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)című cikkben leírtak szerint végezte el.
 
 2. Hálózati adapter engedélyezése a számítási feladatokhoz. Ez a hálózati adapter IP-címe virtuális kapcsoló létrehozásához használatos a virtuális gép telepítéséhez. Az alábbi lépések végigvezetik a folyamaton:
 
@@ -58,7 +58,7 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
         > [!IMPORTANT] 
         > Csak egy portot lehet beállítani a számítási feladatokhoz.
 
-    2. A hálózati adapteren engedélyezze a számítást. Azure Stack Edge létrehoz és felügyel egy, az adott hálózati adapternek megfelelő virtuális kapcsolót.
+    2. A hálózati adapteren engedélyezze a számítást. Azure Stack Edge Pro létrehoz és felügyel egy, az adott hálózati adapternek megfelelő virtuális kapcsolót.
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -68,9 +68,9 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
 
     - You can now enable another network interface for compute.-->
 
-3. Létrehozta és telepítette az összes tanúsítványt az Azure Stack Edge-eszközön és az ügyfél megbízható tárolójában. Kövesse a [2. lépés: tanúsítványok létrehozása és telepítése](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)című témakörben ismertetett eljárást.
+3. Létrehozta és telepítette az összes tanúsítványt a Azure Stack Edge Pro-eszközön és az ügyfél megbízható tárolójában. Kövesse a [2. lépés: tanúsítványok létrehozása és telepítése](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)című témakörben ismertetett eljárást.
 
-4. Létrehozott egy Base-64 kódolású *. cer* tanúsítványt (PEM formátumban) az Azure stack Edge-eszközhöz. Ez már fel van töltve aláírási láncként az eszközön, és telepítve van az ügyfél megbízható legfelső szintű tárolójába. Ennek a tanúsítványnak a *PEM* -formátumban is szükség van a Python működéséhez ezen az ügyfélen.
+4. Létrehozott egy Base-64 kódolású *. cer* tanúsítványt (PEM formátumban) az Azure stack Edge Pro-eszközhöz. Ez már fel van töltve aláírási láncként az eszközön, és telepítve van az ügyfél megbízható legfelső szintű tárolójába. Ennek a tanúsítványnak a *PEM* -formátumban is szükség van a Python működéséhez ezen az ügyfélen.
 
     Alakítsa át ezt a tanúsítványt PEM-formátumra a `certutil` parancs használatával. Ezt a parancsot a tanúsítványt tartalmazó könyvtárba kell futtatnia.
 
@@ -199,7 +199,7 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-### <a name="trust-the-azure-stack-edge-ca-root-certificate"></a>Az Azure Stack Edge HITELESÍTÉSSZOLGÁLTATÓI főtanúsítványának megbízhatósága
+### <a name="trust-the-azure-stack-edge-pro-ca-root-certificate"></a>Az Azure Stack Edge Pro HITELESÍTÉSSZOLGÁLTATÓI főtanúsítványának megbízhatósága
 
 1. Keresse meg a tanúsítvány helyét a gépen. A hely változhat attól függően, hogy hol telepítette `az cli` . Futtassa a Windows PowerShellt rendszergazdaként. Váltson arra a elérési útra, ahol a `az cli` telepített Python: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe` .
 
@@ -219,7 +219,7 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
       
     Jegyezze fel ezt a helyet, mert később használni fogja – `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`
 
-2. A meglévő Python-tanúsítványhoz való hozzáfűzéssel bízza meg az Azure Stack Edge HITELESÍTÉSSZOLGÁLTATÓI főtanúsítványát. Adja meg az elérési utat, ahová a PEM-tanúsítványt korábban mentette.
+2. A meglévő Python-tanúsítványhoz való hozzáfűzéssel bízza meg a Azure Stack Edge Pro HITELESÍTÉSSZOLGÁLTATÓI főtanúsítványát. Adja meg az elérési utat, ahová a PEM-tanúsítványt korábban mentette.
 
     ```powershell
     $pemFile = "<Path to the pem format certificate>"
@@ -252,12 +252,12 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
     
-    Write-Host "Python Cert store was updated to allow the Azure Stack Edge CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Edge Pro CA root certificate"
     ```
     
-### <a name="connect-to-azure-stack-edge"></a>Kapcsolódás Azure Stack Edge-hez
+### <a name="connect-to-azure-stack-edge-pro"></a>Kapcsolódás Azure Stack Edge Pro-hoz
 
-1. A parancs futtatásával regisztrálja Azure Stack Edge-környezetét `az cloud register` .
+1. A parancs futtatásával regisztrálja Azure Stack Edge Pro-környezetét `az cloud register` .
 
     Bizonyos helyzetekben a közvetlen kimenő internetkapcsolatot egy proxyn vagy tűzfalon keresztül irányítjuk, amely kikényszeríti az SSL-elfogást. Ezekben az esetekben az az Cloud Register parancs hibát jelez, például \" nem tudja lekérni a végpontokat a felhőből. \" A hiba megkerüléséhez állítsa be a következő környezeti változókat a Windows PowerShellben:
 
@@ -266,7 +266,7 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Adja meg a környezeti változókat a parancsfájlhoz Azure Resource Manager végponthoz, az erőforrások létrehozásának helyét, valamint a forrás VHD helyének elérési útját. Az erőforrások helye az összes Azure Stack peremhálózati eszközön rögzített, és a következőre van beállítva: `dbelocal` . Meg kell adnia a cím előtagjait és a magánhálózati IP-címet is. A következő környezeti változók az értékeken alapuló értékeket határozzák meg, amelyek a (z `AZURE_RESOURCE_LOCATION` ) kivételével hardcoded `"dbelocal"` .
+2. Adja meg a környezeti változókat a parancsfájlhoz Azure Resource Manager végponthoz, az erőforrások létrehozásának helyét, valamint a forrás VHD helyének elérési útját. Az erőforrások helye rögzített az összes Azure Stack Edge Pro-eszközön, és a következőre van beállítva: `dbelocal` . Meg kell adnia a cím előtagjait és a magánhálózati IP-címet is. A következő környezeti változók az értékeken alapuló értékeket határozzák meg, amelyek a (z `AZURE_RESOURCE_LOCATION` ) kivételével hardcoded `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -308,7 +308,7 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Jelentkezzen be az Azure Stack Edge-környezetbe a `az login` paranccsal. A Azure Stack peremhálózati környezetbe bejelentkezhet felhasználóként vagy [egyszerű szolgáltatásnévként](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)is.
+4. Jelentkezzen be az Azure Stack Edge Pro-környezetbe a `az login` paranccsal. Bejelentkezhet a Azure Stack Edge Pro-környezetbe, akár felhasználóként, akár [szolgáltatásnévként](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
    A következő lépésekkel jelentkezhet be *felhasználóként*:
 
@@ -427,6 +427,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

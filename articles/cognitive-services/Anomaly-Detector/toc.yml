@@ -14,7 +14,7 @@
           href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
-        - name: 'A C# használata'
+        - name: A C# használata
           href: quickstarts/detect-data-anomalies-csharp.md
         - name: A Java használata
           href: quickstarts/detect-data-anomalies-java.md
@@ -69,7 +69,7 @@
         - name: Interaktív bemutató
           href: 'https://aka.ms/adDemo'
         - name: Jupyter Notebookon
-          href: 'https://aka.ms/adNotebook'
+          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
     - name: 'Tanulmány az SR-CNN-ről, KDD 2019'
       href: 'https://arxiv.org/abs/1906.03821'
 - name: További források

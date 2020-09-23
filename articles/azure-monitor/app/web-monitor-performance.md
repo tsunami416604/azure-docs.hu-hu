@@ -4,12 +4,12 @@ description: A Application Insights első lépései. A helyszíni vagy Microsoft
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323451"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987159"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
@@ -112,11 +112,11 @@ A teljesítmény-vizsgálati folyamattal ellenőrizheti a lassú teljesítmény�
 
 A művelettel kapcsolatos felhasználói élmény jobb megismeréséhez kijelölhetünk egy nagyobb időtartományt. Ezután leszűkítheti az időt egy adott időablakban, ahol a művelet lassú volt. A következő példában az alapértelmezett 24 órás időtartományról a 7 napos időtartományra váltottunk át, majd a 9:47 – 12:47 időintervallumra nagyítottuk a 12. és a 13. közötti időszakot. A jobb oldalon az időtartam eloszlása és a minta-és Profiler-Nyomkövetések száma is frissült.
 
-![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Képernyőfelvétel: a teljesítmény (előzetes verzió) három időtartammal, 7 napos időszakon belül, időablaktal](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 A lassú élmények csökkentése érdekében legközelebb a 95. és a esetek 99% percentilis közötti időtartamokra nagyítjuk. Ezek a felhasználói interakciók 4%-át jelentik, ami lassú volt.
 
-![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Képernyőfelvétel: az ügyfelek és a részletek három időtartamának kiugrása 7 napos időszakon belül egy időablaktal.](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 Most már megnézheti a reprezentatív mintákat, ha a minták gombra kattint, vagy a képviselő Profiler-nyomkövetésben a Profiler Nyomkövetések gombra kattint. Ebben a példában négy nyomkövetést gyűjtöttünk be az ügyfelek/részletek beszerzésére az időablakban és a tartomány érdeklődési ideje alatt.
 
@@ -126,10 +126,10 @@ Előfordulhat, hogy a probléma nem szerepel a kódban, hanem a kód által mega
 
 A teljesítmény vizsgálatával kapcsolatos tapasztalatok az arra a példára összpontosító, a kiválasztott minta felé irányuló releváns elemzéseket mutatják be. Az összes rendelkezésre álló információ megtekinthető úgy, hogy 30 napos időtartományra váltson, majd az általános lehetőségre kattintva megtekintheti az elmúlt hónap összes műveletét.
 
-![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![A képernyőképen a teljesítmény (előzetes verzió) látható, ahol a megnyitott ablak és a bepillantások vannak kiválasztva.](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 [Webes tesztek][availability] – a webes kérelmeket rendszeres időközönként, a világ minden tájáról küldik el az alkalmazásnak.
 
 [Diagnosztikai Nyomkövetések rögzítése és keresése][diagnostic] – nyomkövetési hívásokat szúrhat be, és átirányíthatja az eredményeket a problémák azonosításához.

@@ -3,14 +3,14 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448016"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987218"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -56,7 +56,7 @@ A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatj
 * Red Hat Enterprise Linux Server 5, 6 és 7 (x86/x64)
 * Debian GNU/Linux 6, 7 és 8 (x86/x64)
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 (x86/x64)
-* 11 és 12 SUSE Linux Enterprise Server (x86/x64)
+* 12 SUSE Linux Enterprise Server (x86/x64)
 
 ### <a name="minimum-requirements"></a>Minimális követelmények
 
@@ -76,17 +76,23 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 | **Választható csomag** | **Leírás** | **Minimális verzió**|
 | PowerShell Core | A PowerShell-runbookok futtatásához telepíteni kell a PowerShell Core-t. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
 
+## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
+
+A következők még nem támogatottak:
+
+* VIR
+
 ## <a name="supported-runbook-types"></a>Támogatott runbook-típusok
 
 A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támogatnak Azure Automationban, és a következő táblázatban vannak leírva.
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Igen |
+|Python 2 |Yes |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |Nem |
-|Grafikus |Nem |
-|Grafikus PowerShell-munkafolyamat |Nem |
+|PowerShell-munkafolyamat |No |
+|Grafikus |No |
+|Grafikus PowerShell-munkafolyamat |No |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
@@ -166,7 +172,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 Linux rendszerű gépek hibrid Runbook Worker csoportjának eltávolításához ugyanazokat a lépéseket kell használnia, mint a Windows Hybrid Worker-csoport esetében. Lásd: [hibrid feldolgozói csoport eltávolítása](automation-windows-hrw-install.md#remove-a-hybrid-worker-group).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
 

@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a9b0ec0fc19b6b6efa0453d698a5a978dacabc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137454"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907829"
 ---
 # <a name="linear-regression-module"></a>Lineáris regressziós modul
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal lineáris regressziós modellt hozhat létre a folyamatokban való használatra.  Lineáris regressziós kísérlet egy lineáris kapcsolat létrehozására egy vagy több független változó és egy numerikus eredmény, vagy egy függő változó között. 
 
@@ -25,7 +25,7 @@ Ezzel a modullal lineáris regressziós módszert határozhat meg, majd elvégez
 
 ## <a name="about-linear-regression"></a>A lineáris regresszió ismertetése
 
-A lineáris regresszió egy közös statisztikai módszer, amely a gépi tanulásban lett elfogadva, és számos új módszerrel bővült a vonal-és mérési hibákkal. A legfontosabb értelemben a regresszió egy numerikus cél előrejelzésére utal. A lineáris regresszió még mindig jó választás, ha egy egyszerű prediktív feladathoz szeretne egyszerű modellt használni. A lineáris regresszió a nagy dimenziós, ritka adathalmazok összetettségének hiányában is jól működik.
+A lineáris regresszió egy közös statisztikai módszer, amely a gépi tanulásban lett elfogadva, és számos új módszerrel bővült a vonal-és mérési hibákkal. Egyszerűen fogalmazva, a regresszió egy numerikus cél előrejelzésére utal. A lineáris regresszió még mindig jó választás, ha egy egyszerű prediktív feladathoz szeretne egyszerű modellt használni. A lineáris regresszió a nagy dimenziós, ritka adathalmazok összetettségének hiányában is jól működik.
 
 A Azure Machine Learning a lineáris regresszió mellett számos regressziós modellt támogat. A "regresszió" kifejezés azonban lazán is értelmezhető, és a más eszközökben megadott regressziós típusok nem támogatottak.
 
@@ -150,6 +150,6 @@ A betanítás befejezése után:
 + Az előrejelzések létrehozásához csatlakoztassuk a betanított modellt a [pontszám modell](./score-model.md) modulhoz, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

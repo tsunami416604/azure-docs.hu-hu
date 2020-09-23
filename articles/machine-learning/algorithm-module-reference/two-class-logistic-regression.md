@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137620"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907705"
 ---
 # <a name="two-class-logistic-regression-module"></a>Kétosztályos logisztikai regressziós modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy logisztikai regressziós modellt, amely két (és csak két) eredmény előrejelzésére használható. 
 
@@ -58,7 +58,7 @@ Előfordulhat például, hogy a Label (címke) oszlop [szavazott], és az "igen"
      Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: Ez a (z), ha <code>x = L1</code> és <code>y = L2</code> , majd <code>ax + by = c</code> meghatározza a regularizációs kifejezések lineáris hosszát.  
   
     > [!NOTE]
-    >  Többet szeretne megtudni az L1 és az L2 regularizációs? A következő cikk azt ismerteti, hogy az L1 és az L2 regularizációs miben különböznek, és hogy azok hogyan befolyásolják a modell-kialakítást, a logisztikai regressziós és neurális hálózati modellek esetében pedig: [L1 és L2 regularizációs Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Többet szeretne megtudni az L1 és az L2 regularizációs? A következő cikk azt ismerteti, hogy az L1 és az L2 regularizációs miben különböznek, és hogy azok hogyan befolyásolják a modell-kialakítást, a logisztikai regressziós és neurális hálózati modellek esetében pedig:  [L1 és L2 regularizációs Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
     > Az L1 és a L2 kifejezések különböző lineáris kombinációit a logisztikai regressziós modellekhez alakítottuk ki: például a [rugalmas háló regularizációs](https://wikipedia.org/wiki/Elastic_net_regularization). Javasoljuk, hogy ezeket a kombinációkat a modellben érvényes lineáris kombináció meghatározására hivatkozzon.
       
@@ -95,6 +95,6 @@ A betanítás befejezése után:
 + Az új adatokra vonatkozó előrejelzések készítéséhez használja a betanított modellt és az új adatokat bemenetként a [pontszám modell](./score-model.md) modulba. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

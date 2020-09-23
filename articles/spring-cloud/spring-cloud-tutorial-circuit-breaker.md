@@ -7,14 +7,18 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089481"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906878"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java
+
+::: zone pivot="programming-language-java"
 A Spring [Cloud Netflix turbina](https://github.com/Netflix/Turbine) széles körben használatos több [Hystrix](https://github.com/Netflix/Hystrix) mérőszámok összesítésére, így a streamek egyetlen nézetben figyelhetők meg a Hystrix-irányítópult használatával. Ez az oktatóanyag bemutatja, hogyan használhatja őket az Azure Spring Cloud-on.
 > [!NOTE]
 > A Netflix Hystrix széles körben használatos számos meglévő Spring Cloud-alkalmazásban, de már nem aktív fejlesztés alatt áll. Ha új projektet fejleszt, használja inkább a Spring Cloud Circuit megszakító implementációit, például a [resilience4j](https://github.com/resilience4j/resilience4j)-t. Az ebben az oktatóanyagban láthatótól eltérő, az új Spring Cloud Circuit Breaker-keretrendszer egyesíti a metrikák adatfolyamatának összes implementációját a mikrométerbe. Továbbra is dolgozunk a Mikrométerek támogatásán az Azure Spring Cloud-ban, ezért ez az oktatóanyag nem vonatkozik rá.
@@ -71,12 +75,13 @@ Másolja a turbina stream URL-címét `https://<SERVICE-NAME>-hystrix-turbine.az
 > Éles környezetben a Hystrix-irányítópult és a metrikák adatfolyama nem lehet elérhető az interneten.
 
 ### <a name="using-private-test-endpoints"></a>Privát tesztelési végpontok használata
-A Hystrix metrikái streamek is elérhetők innen: `test-endpoint` . Háttérbeli szolgáltatásként nem rendelek hozzá nyilvános végpontot a ( `recommendation-service` z) rendszerhez, de a tesztelési végponttal megjelenítheti a metrikákat`https://primary:<KEY>@<SERVICE-NAME>.test.azuremicroservices.io/recommendation-service/default/actuator/hystrix.stream`
+A Hystrix metrikái streamek is elérhetők innen: `test-endpoint` . Háttérbeli szolgáltatásként nem rendelek hozzá nyilvános végpontot a ( `recommendation-service` z) rendszerhez, de a tesztelési végponttal megjelenítheti a metrikákat `https://primary:<KEY>@<SERVICE-NAME>.test.azuremicroservices.io/recommendation-service/default/actuator/hystrix.stream`
 
 ![Hystrix test – Endpoint Stream](media/spring-cloud-circuit-breaker/hystrix-test-endpoint-stream.png)
 
 Webalkalmazásként a Hystrix irányítópultjának kell működnie `test-endpoint` . Ha nem működik megfelelően, két ok lehet: először a (z) vagy a `test-endpoint` (z) alapurl-címének módosítása a `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` (z) vagy a másodperc alapján, a webalkalmazás a statikus erőforrás abszolút elérési útját használja. A működésének megkezdéséhez `test-endpoint` Előfordulhat, hogy manuálisan kell szerkesztenie az <base> előtér-fájlokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Szolgáltatási példány kiépítése az Azure CLI-ben](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+::: zone-end

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547681"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884445"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Magas rendelkezésre állás Azure Database for PostgreSQL – egyetlen kiszolgáló
 A Azure Database for PostgreSQL – az egykiszolgálós szolgáltatás garantált magas szintű rendelkezésre állást biztosít a pénzügyi felelősséggel vállalt szolgáltatói szerződéssel (SLA) [99,99%-os](https://azure.microsoft.com/support/legal/sla/postgresql) üzemidő mellett. Azure Database for PostgreSQL magas rendelkezésre állást biztosít a tervezett események (például a megkezdeni skálázási számítási művelet) során, valamint olyan nem tervezett események esetén is, mint például az alapul szolgáló hardver, szoftver vagy hálózati hiba. Azure Database for PostgreSQL gyorsan helyreállítható a legfontosabb körülmények között, így gyakorlatilag nincs alkalmazás-leállási idő a szolgáltatás használatakor.
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL alkalmas olyan kritikus fontosságú adatbázisok 
 ## <a name="planned-downtime-mitigation"></a>Tervezett leállás-csökkentés
 A Azure Database for PostgreSQL a tervezett leállási műveletek során magas rendelkezésre állást biztosít. 
 
-![Rugalmas skálázás megtekintése az Azure PostgreSQL-ben](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-elastic-scaling.png" alt-text="Rugalmas skálázás megtekintése az Azure PostgreSQL-ben":::
 
 1. A PostgreSQL-adatbázis-kiszolgálók vertikális fel-és leskálázása másodpercek alatt
 2. Az ügyfél útválasztására szolgáló proxyként működő átjáró a megfelelő adatbázis-kiszolgálóhoz csatlakozik
@@ -49,7 +49,7 @@ Néhány tervezett karbantartási forgatókönyv:
 A nem tervezett leállás váratlan meghibásodások miatt fordulhat elő, beleértve a mögöttes hardverhiba, a hálózati problémák és a szoftverek hibáit. Ha az adatbázis-kiszolgáló váratlanul leáll, a rendszer automatikusan kiépít egy új adatbázis-kiszolgálót másodpercek alatt. A távoli tárterület automatikusan csatolva lesz az új adatbázis-kiszolgálóhoz. A PostgreSQL motor a helyreállítási műveletet a WAL-és adatbázisfájlok használatával hajtja végre, és megnyitja az adatbázis-kiszolgálót, amely lehetővé teszi az ügyfelek kapcsolódását. A nem véglegesített tranzakciók elvesznek, és az alkalmazásnak újra kell próbálkoznia. A nem tervezett állásidőt nem lehet elkerülni, Azure Database for PostgreSQL csökkenti az állásidőt úgy, hogy az adatbázis-kiszolgálón és a tárolási rétegen is automatikusan végrehajtja a helyreállítási műveleteket anélkül, hogy emberi beavatkozásra lenne szükség. 
 
 
-![Magas rendelkezésre állás megtekintése az Azure PostgreSQL-ben](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Magas rendelkezésre állás megtekintése az Azure PostgreSQL-ben":::
 
 1. Azure PostgreSQL-kiszolgálók gyors skálázási képességekkel.
 2. Átjáró, amely proxyként funkcionál az ügyfélkapcsolatok megfelelő adatbázis-kiszolgálóhoz való továbbításához
@@ -77,7 +77,7 @@ Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek 
 
 A Azure Database for PostgreSQL gyors újraindítási képességet biztosít az adatbázis-kiszolgálók, a redundáns tárolók és a hatékony útválasztás számára az átjáróról. További adatvédelem esetén a biztonsági mentések földrajzilag replikálva konfigurálhatók, és egy vagy több olvasási replika is üzembe helyezhető más régiókban. A magas rendelkezésre állási képességekkel rendelkező Azure Database for PostgreSQL a leggyakoribb kimaradások miatt védi az adatbázisokat, és piacvezető, pénzügyi támogatású, [99,99%-os üzemidőt](https://azure.microsoft.com/support/legal/sla/postgresql)biztosít. Mindezek a rendelkezésre állási és megbízhatósági képességek lehetővé teszik az Azure számára, hogy ideális platformot biztosítson a kritikus fontosságú alkalmazások futtatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az [Azure-régiók](../availability-zones/az-overview.md) megismerése
 - Tudnivalók az [átmeneti kapcsolódási hibák kezelésére](concepts-connectivity.md)
 - Ismerje meg, hogyan [replikálhatja adatait olvasási replikákkal](howto-read-replicas-portal.md)

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 912d6b80914232d1a2ed2b1fe987ebdf949a1abc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82136498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907674"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Kétosztályos támogatású vektoros gépi modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal olyan modellt hozhat létre, amely a támogatási vektoros gép algoritmusán alapul. 
 
@@ -89,6 +89,6 @@ A betanítás befejezése után:
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

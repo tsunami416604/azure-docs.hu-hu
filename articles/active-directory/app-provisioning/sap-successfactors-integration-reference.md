@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808456"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969518"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>A Azure Active Directory kiépítés integrálása az SAP SuccessFactors 
 
@@ -63,7 +63,7 @@ A SuccessFactors összes felhasználója esetében az Azure AD kiépítési szol
 | 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Csak akkor, ha `jobCode` vagy `jobCodeId` attribútum van leképezve |
 | 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Csak akkor `payGrade` , ha az attribútum le van képezve |
 | 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Csak akkor `location` , ha az attribútum le van képezve |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Ha a leképezés a következő attribútumok egyikét tartalmazza:`officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Ha a leképezés a következő attribútumok egyikét tartalmazza: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
 | 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Csak akkor `eventReason` , ha az attribútum le van képezve |
 | 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Csak akkor `assignmentType` , ha le van képezve |
 | 20 | EmploymentType-lista                | employmentNav/jobInfoNav/employmentTypeNav | Csak akkor `employmentType` , ha le van képezve |
@@ -166,9 +166,9 @@ Az Azure AD SuccessFactors alapértelmezett kiépítési alkalmazási sémája [
    * Ha az attribútum a *felhasználói* entitás része, keresse meg az attribútumot a *employmentNav/userNav* csomópont alatt.
    * Ha az attribútum a *EmpJob* entitás részét képezi, keresse meg az attribútumot a *employmentNav/jobInfoNav* csomópont alatt. 
 1. Hozza létre az attribútumhoz társított JSON-útvonalat, és adja hozzá ezt az új attribútumot a SuccessFactors-attribútumok listájához. 
-   * 1. példa: tegyük fel, hogy hozzá kívánja adni a *okToRehire*attribútumot, amely a *employmentNav* entitás részét képezi, majd használja a JSONPath`$.employmentNav.results[0].okToRehire`
+   * 1. példa: tegyük fel, hogy hozzá kívánja adni a *okToRehire*attribútumot, amely a *employmentNav* entitás részét képezi, majd használja a JSONPath  `$.employmentNav.results[0].okToRehire`
    * 2. példa: tegyük fel, hogy hozzá szeretné adni az *userNav* entitás részét képező *időzóna-időzónát*, majd használja a JSONPath`$.employmentNav.results[0].userNav.timeZone`
-   * 3. példa: tegyük fel, hogy hozzá kívánja adni a *flsaStatus*attribútumot, amely a *jobInfoNav* entitás részét képezi, majd használja a JSONPath`$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
+   * 3. példa: tegyük fel, hogy hozzá kívánja adni a *flsaStatus*attribútumot, amely a *jobInfoNav* entitás részét képezi, majd használja a JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. Mentse a sémát. 
 1. Indítsa újra az üzembe helyezést.
 
@@ -182,14 +182,14 @@ Alapértelmezés szerint a következő egyéni attribútumok előre definiálva 
 Tegyük fel, hogy az alkalmazott központi példányában a *EmpJobInfo* *customString35* attribútuma tárolja a hely leírását. Ezt az értéket át szeretné állítani Active Directory *physicalDeliveryOfficeName* attribútumra. Az attribútum hozzárendelésének konfigurálásához használja az alábbi lépéseket: 
 
 1. Szerkessze a SuccessFactors attribútum listáját, és vegyen fel egy *empJobNavCustomString35*nevű új attribútumot.
-1. Állítsa be a JSONPath API-kifejezést ehhez az attribútumhoz a következőként:`$.employmentNav.results[0].jobInfoNav.results[0].customString35`
+1. Állítsa be a JSONPath API-kifejezést ehhez az attribútumhoz a következőként: `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. Mentse és töltse be újra a megfeleltetés változását a Azure Portalban.  
 1. Az attribútum-hozzárendelés panelen a Térkép *EmpJobNavCustomString35* *physicalDeliveryOfficeName*.
 1. Mentse a leképezést.
 
 A forgatókönyv kiterjesztése: 
-* Ha a *custom35* attribútumot a *felhasználói* entitásból szeretné leképezni, akkor használja a JSONPath`$.employmentNav.results[0].userNav.custom35`
-* Ha a *customString35* attribútumot a *EmpEmployment* entitásból szeretné leképezni, akkor használja a JSONPath`$.employmentNav.results[0].customString35`
+* Ha a *custom35* attribútumot a *felhasználói* entitásból szeretné leképezni, akkor használja a JSONPath `$.employmentNav.results[0].userNav.custom35`
+* Ha a *customString35* attribútumot a *EmpEmployment* entitásból szeretné leképezni, akkor használja a JSONPath `$.employmentNav.results[0].customString35`
 
 ### <a name="handling-worker-conversion-scenario"></a>A Worker átalakítási forgatókönyvének feldolgozása
 
@@ -199,20 +199,20 @@ A munkavégzők átalakítása a meglévő teljes körű alkalmazott átalakít�
 1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
 1. Az itt található hivatkozásra kattintva **megtekintheti** a séma-szerkesztőt. 
 
-   >![séma áttekintése](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
+   >![A képernyőfelvételen a séma-szerkesztőt megnyitó hivatkozás látható.](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
 
 1. A **Letöltés** hivatkozásra kattintva mentheti a séma másolatát a Szerkesztés előtt. 
 
-   >![Letöltés – séma](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
+   >![Képernyőfelvétel: a letöltési lehetőséget tartalmazó séma-szerkesztő, amely a séma egy példányának mentésére szolgál.](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
 1. A sémakezelő szerkesztőben nyomja le a CTRL-H billentyűt a Find-replace vezérlő megnyitásához.
-1. A keresés szövegmezőbe másolja és illessze be az értéket.`$.employmentNav.results[0]`
+1. A keresés szövegmezőbe másolja és illessze be az értéket. `$.employmentNav.results[0]`
 1. A csere szövegmezőbe másolja és illessze be az értéket `$.employmentNav.results[?(@.userNav != null)]` . Jegyezze fel az `!=` operátort körülvevő szóközt, ami fontos a JSONPath kifejezés sikeres feldolgozásához. 
    >![Keresés – csere – konverzió](media/sap-successfactors-integration-reference/find-replace-conversion-scenario.png#lightbox)
 1. Kattintson az "összes cseréje" lehetőségre a séma frissítéséhez. 
 1. Mentse a sémát. 
 1. A fenti folyamat az alábbi módon frissíti az összes JSONPath-kifejezést: 
-   * Régi JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Új JSONPath:`$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
+   * Régi JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Új JSONPath: `$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
 1. Indítsa újra az üzembe helyezést. 
 
 ### <a name="handling-rehire-scenario"></a>Az újrafelvételi forgatókönyvek feldolgozása
@@ -230,13 +230,13 @@ A rehires forgatókönyv (2. lehetőség) kezeléséhez, hogy a legújabb foglal
 1. Az itt található hivatkozásra kattintva **megtekintheti** a séma-szerkesztőt.   
 1. A **Letöltés** hivatkozásra kattintva mentheti a séma másolatát a Szerkesztés előtt.   
 1. A sémakezelő szerkesztőben nyomja le a CTRL-H billentyűt a Find-replace vezérlő megnyitásához.
-1. A keresés szövegmezőbe másolja és illessze be az értéket.`$.employmentNav.results[0]`
+1. A keresés szövegmezőbe másolja és illessze be az értéket. `$.employmentNav.results[0]`
 1. A csere szövegmezőbe másolja és illessze be az értéket `$.employmentNav.results[-1:]` . Ez a JSONPath-kifejezés a legújabb *EmpEmployment* -rekordot adja vissza.   
 1. Kattintson az "összes cseréje" lehetőségre a séma frissítéséhez. 
 1. Mentse a sémát. 
 1. A fenti folyamat az alábbi módon frissíti az összes JSONPath-kifejezést: 
-   * Régi JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Új JSONPath:`$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
+   * Régi JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Új JSONPath: `$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
 1. Indítsa újra az üzembe helyezést. 
 
 Ez a séma-módosítás a Worker átalakítási forgatókönyvet is támogatja. 
@@ -254,13 +254,13 @@ A standard hozzárendelés és a globális hozzárendelés felhasználói profil
 1. Az itt található hivatkozásra kattintva **megtekintheti** a séma-szerkesztőt.   
 1. A **Letöltés** hivatkozásra kattintva mentheti a séma másolatát a Szerkesztés előtt.   
 1. A sémakezelő szerkesztőben nyomja le a CTRL-H billentyűt a Find-replace vezérlő megnyitásához.
-1. A keresés szövegmezőbe másolja és illessze be az értéket.`$.employmentNav.results[0]`
+1. A keresés szövegmezőbe másolja és illessze be az értéket. `$.employmentNav.results[0]`
 1. A csere szövegmezőbe másolja és illessze be az értéket `$.employmentNav.results[?(@.assignmentClass == 'ST')]` . 
 1. Kattintson az "összes cseréje" lehetőségre a séma frissítéséhez. 
 1. Mentse a sémát. 
 1. A fenti folyamat az alábbi módon frissíti az összes JSONPath-kifejezést: 
-   * Régi JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Új JSONPath:`$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
+   * Régi JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Új JSONPath: `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. Töltse be újra az alkalmazás attribútum-hozzárendelési paneljét. 
 1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
 1. Kattintson az **attribútumok szerkesztése SuccessFactors**elemre.
@@ -278,7 +278,7 @@ Ha az alkalmazotti központ egyik felhasználója egyidejűleg/több feladatot i
 1. Nyissa meg az SuccessFactors üzembe helyezési alkalmazásának attribútum-leképezési paneljét. 
 1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
 1. Kattintson az **attribútumok szerkesztése SuccessFactors**elemre.
-1. Tegyük fel, hogy az 1. feladatokhoz és a 2. feladatokhoz tartozó részleget szeretné lekérni. Az előre definiált attribútum *részleg* már beolvassa az első feladatokhoz tartozó részleg értékét. Megadhat egy *secondJobDepartment* nevű új attribútumot, és a JSONPath kifejezést a következőre állíthatja`$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
+1. Tegyük fel, hogy az 1. feladatokhoz és a 2. feladatokhoz tartozó részleget szeretné lekérni. Az előre definiált attribútum *részleg* már beolvassa az első feladatokhoz tartozó részleg értékét. Megadhat egy *secondJobDepartment* nevű új attribútumot, és a JSONPath kifejezést a következőre állíthatja `$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
 1. Most már két részleg értékeit is elvégezheti Active Directory attribútumokra, vagy szelektíven átadhat egy értéket a kifejezés-hozzárendelés használatával. 
 1. Mentse a leképezést. 
 1. Indítsa újra az üzembe helyezést. 
@@ -294,7 +294,7 @@ Ez a szakasz a különböző írási forgatókönyveket ismerteti. Azt javasolja
 | 1 | * Csak a vállalati e-mailek beállítása elsődlegesként. <br> * Ne állítson be telefonszámokat. | true | true | hamis | \[Nincs beállítva\] | \[Nincs beállítva\] | 
 | 2 | * A SuccessFactors az üzleti levelezés és a vállalati telefon elsődleges <br> * Az Azure AD-telefonszámot mindig az üzleti telefonra és a mobil mobiltelefonra kell átvenni. | true | true | hamis | telephoneNumber | mobil | 
 | 3 | * A SuccessFactors, az üzleti levelezés és a mobil telefon elsődleges <br> * Az Azure AD telefonszámának folyamatos átvitele a telefonra és a mobilról a mobiltelefonra | true | hamis | true |  telephoneNumber | mobil | 
-| 4 | * A SuccessFactors Business e-mail-címe elsődleges <br> * Az Azure AD-ben ellenőrizze, hogy megtalálható-e a munkahelyi telefonszám, ha van ilyen, majd ellenőrizze, hogy a Mobile Number is jelen van-e, jelölje meg a munkahelyi telefonszámot elsődlegesként, ha a Mobiltelefonszám nem található | true | Kifejezés-hozzárendelés használata:`IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | Kifejezés-hozzárendelés használata:`IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobil | 
+| 4 | * A SuccessFactors Business e-mail-címe elsődleges <br> * Az Azure AD-ben ellenőrizze, hogy megtalálható-e a munkahelyi telefonszám, ha van ilyen, majd ellenőrizze, hogy a Mobile Number is jelen van-e, jelölje meg a munkahelyi telefonszámot elsődlegesként, ha a Mobiltelefonszám nem található | true | Kifejezés-hozzárendelés használata: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | Kifejezés-hozzárendelés használata: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobil | 
 | 5 | * A SuccessFactors Business e-mail-címe és a vállalati telefon elsődleges. <br> * Az Azure AD-ben, ha a Mobile elérhető, állítsa be vállalati telefonként, máskülönben használja az telephoneNumber-t. | true | true | hamis | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[Nincs beállítva\] | 
 
 * Ha nincs leképezés a telefonszámra a write-back attribútumban – leképezés, akkor a rendszer csak az e-maileket tartalmazza a visszaíráshoz.
@@ -306,7 +306,7 @@ Ez a szakasz a különböző írási forgatókönyveket ismerteti. Azt javasolja
 * Az alkalmazottak középső régiójában a vállalati telefon elsődlegesként van beállítva. A write-back alkalmazás nem változtathatja meg ezt, és nem állíthatja be elsődlegesként a mobiltelefont.
 * A visszaírási alkalmazás nem tudja olvasni az elsődleges jelző aktuális beállításait, és ugyanazokat az értékeket használja az írási művelethez. Az attribútumban konfigurált jelző értékek mindig használatban lesznek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan konfigurálhatja a SuccessFactors Active Directory kiépítés céljából](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 * [Ismerje meg, hogyan konfigurálhatja a visszaírási a SuccessFactors-be](../saas-apps/sap-successfactors-writeback-tutorial.md)

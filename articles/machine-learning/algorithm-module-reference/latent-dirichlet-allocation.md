@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907848"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Látens Dirichlet kiosztási modul
 
-Ez a cikk azt ismerteti, hogyan használható a látens Dirichlet-kiosztási modul a Azure Machine Learning Designerben (előzetes verzió), hogy az egyébként nem besorolt szövegeket csoportosítsa kategóriákba. 
+Ez a cikk azt ismerteti, hogyan használható a látens Dirichlet-kiosztási modul a Azure Machine Learning Designerben, hogy az egyébként nem besorolt szövegeket csoportosítsa kategóriákba. 
 
 A látens Dirichlet-kiosztást (LDA) gyakran természetes nyelvi feldolgozásban használják a hasonló szövegek kereséséhez. Egy másik gyakori kifejezés a *témakör modellezése*.
 
@@ -58,7 +58,7 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely tartalmazza a nyers vagy 
 
     Mivel a LDA egy nagyméretű szolgáltatás-mátrixot hoz létre a szövegből, általában egyetlen szöveges oszlopot fog elemezni.
 
-4. A **modellhez tartozó témakörök számának**megadásához adjon meg egy 1 és 1000 közötti egész számot, amely azt jelzi, hogy hány kategóriát vagy témakört szeretne a bemeneti szövegből származtatni.
+4. A  **modellhez tartozó témakörök számának**megadásához adjon meg egy 1 és 1000 közötti egész számot, amely azt jelzi, hogy hány kategóriát vagy témakört szeretne a bemeneti szövegből származtatni.
 
     Alapértelmezés szerint 5 témakör jön létre.
 
@@ -75,7 +75,7 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely tartalmazza a nyers vagy 
     + A szolgáltatás témakörének mátrixában szereplő értékek a következő valószínűséggel lesznek megjelenítve: `P(word|topic)` .
 
     > [!NOTE] 
-    > Azure Machine Learning Designerben (előzetes verzió) a scikit-Learn függvénytár már nem támogatja a 0,19-es verzió nem normalizált *doc_topic_distr* kimenetét. Ebben a modulban a **normalizálás** paraméter csak a *szolgáltatás témakörének mátrix* kimenetére alkalmazható. Az *átalakított adatkészlet* kimenete mindig normalizált.
+    > Azure Machine Learning Designerben a scikit-Learn könyvtár már nem támogatja a 0,19-es verzió nem normalizált *doc_topic_distr* kimenetét. Ebben a modulban a **normalizálás** paraméter csak a *szolgáltatás témakörének mátrix* kimenetére alkalmazható. Az *átalakított adatkészlet* kimenete mindig normalizált.
 
 7. Válassza a **minden beállítás megjelenítése**lehetőséget, majd állítsa **igaz** értékre, ha a következő speciális paramétereket szeretné beállítani.
 
@@ -148,7 +148,7 @@ A LDA alapuló modellek pontossága gyakran javítható a természetes nyelvi fe
 
 További információ: [szöveg előfeldolgozása](preprocess-text.md).
 
-A tervezőben R-vagy Python-kódtárakat is használhat a szöveg feldolgozásához: [r-szkript](execute-r-script.md)végrehajtása, Python- [szkript végrehajtása](execute-python-script.md).
+A tervezőben R-vagy Python-kódtárakat is használhat a szöveg feldolgozásához: [r-szkript](execute-r-script.md)végrehajtása, Python-  [szkript végrehajtása](execute-python-script.md).
 
 
 
@@ -181,13 +181,13 @@ A kiszámított indexek kiszámítása után a távolság-alapú hasonlósági m
 
 ###  <a name="module-parameters"></a>Modul paramétereinek
 
-|Name|Típus|Tartomány|Választható|Alapértelmezett|Description|  
+|Név|Típus|Tartomány|Választható|Alapértelmezett|Leírás|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Cél oszlop (ok)|Oszlop kijelölése||Kötelező|StringFeature|Cél oszlop neve vagy indexe|  
 |A modellhez tartozó témakörök száma|Egész szám|[1; 1000]|Kötelező|5|A dokumentumok terjesztésének modellezése N témákkal.|  
 |N – gramm|Egész szám|[1; 10]|Kötelező|2|A kivonatolás során generált N-gramm sorrend.|  
-|Normalizálni|Logikai|Igaz vagy hamis|Kötelező|igaz|A kimenet normalizálása valószínűségek szerint.  Az átalakított adatkészlet a következő lesz: P (témakör&#124;dokumentum), és a szolgáltatás témakörének mátrixa a P (Word&#124;témakör) lesz.|  
-|Az összes beállítás megjelenítése|Logikai|Igaz vagy hamis|Kötelező|False (Hamis)|A scikit-Learn online LDA kapcsolatos további paramétereket jelenít meg.|  
+|Normalizálni|Logikai|Igaz vagy hamis|Kötelező|true|A kimenet normalizálása valószínűségek szerint.  Az átalakított adatkészlet a következő lesz: P (témakör&#124;dokumentum), és a szolgáltatás témakörének mátrixa a P (Word&#124;témakör) lesz.|  
+|Az összes beállítás megjelenítése|Logikai|Igaz vagy hamis|Kötelező|Hamis|A scikit-Learn online LDA kapcsolatos további paramétereket jelenít meg.|  
 |Rho paraméter|Float|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|Témakör korábbi eloszlása.|  
 |Alfa-paraméter|Float|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|A dokumentum korábbi eloszlása című témakör.|  
 |A dokumentumok becsült száma|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|1000|A dokumentumok becsült száma. A `total_samples` paraméternek felel meg.|  
@@ -195,15 +195,15 @@ A kiszámított indexek kiszámítása után a távolság-alapú hasonlósági m
 |A tanulási sebesség frissítési ütemtervében használt iteráció kezdeti értéke|Egész szám|[0; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0|Kezdeti érték, amely a korai iterációk downweights képzési arányát. A `learning_offset` paraméternek felel meg.|  
 |A frissítések során az iterációra alkalmazott teljesítmény|Float|[0.0; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,5|A tanulási arány szabályozása érdekében a rendszer az iterációk számára alkalmazza a szükséges teljesítményt. A `learning_decay` paraméternek felel meg. |  
 |Betanítási Ismétlések száma|Egész szám|[1; 1024]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|25|A betanítási Ismétlések száma.|  
-|Ngrams-szótár összeállítása|Logikai|Igaz vagy hamis|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet *nincs* bejelölve|True (Igaz)|Létrehozza a ngrams szótárát a számítástechnikai LDA előtt. Modellek ellenőrzése és értelmezése hasznos.|  
+|Ngrams-szótár összeállítása|Logikai|Igaz vagy hamis|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet *nincs* bejelölve|Igaz|Létrehozza a ngrams szótárát a számítástechnikai LDA előtt. Modellek ellenőrzése és értelmezése hasznos.|  
 |Ngram-szótár maximális mérete|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **ngrams-összeállítási szótár** értéke **true (igaz** )|20000|A ngrams szótár maximális mérete Ha a bemeneti tokenek száma meghaladja ezt a méretet, ütközések merülhetnek fel.|  
 |A szolgáltatás-kivonatoláshoz használandó bitek száma.|Egész szám|[1; 31]|Akkor érvényes, ha az **összes beállítás megjelenítése** jelölőnégyzet *nincs bejelölve,* és a **ngrams szótárának létrehozása** **hamis** .|12|A szolgáltatás-kivonatoláshoz használandó bitek száma.| 
-|Ngrams-szótár létrehozása a LDA előtt|Logikai|Igaz vagy hamis|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|True (Igaz)|A LDA előtti ngrams-szótárt hoz létre. Modellek ellenőrzése és értelmezése hasznos.|  
+|Ngrams-szótár létrehozása a LDA előtt|Logikai|Igaz vagy hamis|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|Igaz|A LDA előtti ngrams-szótárt hoz létre. Modellek ellenőrzése és értelmezése hasznos.|  
 |Ngrams maximális száma a szótárban|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve, és a **ngrams fordítási szótár** értéke **true (igaz** ).|20000|A szótár maximális mérete Ha a bemeneti tokenek száma meghaladja ezt a méretet, ütközések merülhetnek fel.|  
 |Kivonatoló bitek száma|Egész szám|[1; 31]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve, és a **ngrams-összeállítás szótárának** beállítása **hamis** .|12|A funkciók kivonatolásakor használandó bitek száma.|   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 
