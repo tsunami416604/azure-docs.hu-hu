@@ -1,81 +1,75 @@
 ---
 title: Az Azure Cosmos DB Emulator tanúsítványok exportálása
-description: Ha olyan nyelveken és futtatókörnyezeteken fejleszt, amelyek nem használják a Windows-tanúsítványtárolót, exportálnia kell a TLS/SSL-tanúsítványokat. Ez a bejegyzés lépésről lépésre leírja a teendőket.
+description: Ismerje meg, hogyan exportálhatja a Azure Cosmos DB Emulator-tanúsítványt Java-, Python-és Node.js-alkalmazásokkal való használatra. A tanúsítványokat exportálni kell, és olyan nyelvekhez és futásidejű környezetekhez kell használni, amelyek nem használják a Windows tanúsítványtárolót.
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java
-ms.openlocfilehash: e1321c0d5b1f83ffcfd3f46384dfb3af792c9b8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8f2714c7c49aa5e02747ce726da29a98485b5fbd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373096"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988238"
 ---
-# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
+# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra
 
-[**Az Emulator letöltése**](https://aka.ms/cosmosdb-emulator)
+Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos Emulator csak a biztonságos kommunikációt támogatja a TLS-kapcsolatokon keresztül.
 
-A Azure Cosmos DB Emulator olyan helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatást fejlesztési célokra emulálja, beleértve a TLS-kapcsolatok használatát is. Ez a bejegyzés bemutatja, hogyan exportálhatja a TLS/SSL-tanúsítványokat olyan nyelveken és futtatókörnyezetekben való használatra, amelyek nem integrálják a Windows-tanúsítványtárolót, például a Java-t, amely a saját [tanúsítványtárolóját](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) és a Pythont használja, amely [szoftvercsatorna-burkolókat](https://docs.python.org/2/library/ssl.html) és Node.jst használ a [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)használatával. Az emulátorról a [Fejlesztés és tesztelés az Azure Cosmos DB Emulator használatával](./local-emulator.md) című cikk ír bővebben.
+A Azure Cosmos DB helyi emulátorban lévő tanúsítványok az emulátor első futtatásakor jönnek létre. Két tanúsítvány van. Egyikük a helyi emulátorhoz való kapcsolódásra szolgál, a másik pedig az Emulator-adatemulátoron belüli alapértelmezett titkosítás kezelésére szolgál. Az exportálandó tanúsítvány a csatlakozáshoz való. Ennek felhasználóbarát neve "DocumentDBEmulatorCertificate".
 
-Ez az oktatóanyag a következő feladatokat mutatja be:
+Ha az emulátor használatával különböző nyelveken (például Java, Python vagy Node.js) fejleszt alkalmazásokat, exportálnia kell az Emulator-tanúsítványt, és importálnia kell azt a szükséges tanúsítványtárolóba.
 
-> [!div class="checklist"]
-> * Tanúsítványok rotálása
-> * TLS/SSL-tanúsítvány exportálása
-> * Tanúsítvány felhasználása Java-, Python- és Node.js-környezetben
+A .NET nyelv és futtatókörnyezet a Windows-tanúsítványtárolót használja a Azure Cosmos DB helyi emulátorhoz való biztonságos csatlakozáshoz, amikor az alkalmazás egy Windows operációs rendszerű gazdagépen fut. A többi nyelv saját módszert használ a tanúsítványok kezelésére és használatára. A Java például saját [tanúsítványtárolót](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)használ, a Python [szoftvercsatorna-burkolókat](https://docs.python.org/2/library/ssl.html)használ, és Node.js [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)használ.
 
-## <a name="certification-rotation"></a>Tanúsítvány rotálása
+Ez a cikk bemutatja, hogyan exportálhatja a TLS/SSL-tanúsítványokat különböző nyelveken és futtatókörnyezeti környezetekben való használatra, amelyek nem integrálhatók a Windows-tanúsítványtárolóba. Az emulátorról a [Fejlesztés és tesztelés az Azure Cosmos DB Emulator használatával](./local-emulator.md) című cikk ír bővebben.
 
-Az Azure Cosmos DB helyszíni emulátorában a tanúsítványok az emulátor első futtatásakor jönnek létre. Két tanúsítvány van. Az egyik a helyszíni emulátorhoz való csatlakozáshoz, a másik az emulátoron belüli titkos kódok kezeléséhez lesz használva. Az exportálandó tanúsítvány a csatlakozáshoz való. Ennek felhasználóbarát neve "DocumentDBEmulatorCertificate".
+## <a name="export-the-azure-cosmos-db-tlsssl-certificate"></a><a id="export-emulator-certificate"></a>A Azure Cosmos DB TLS/SSL-tanúsítvány exportálása
 
-Mindkét tanúsítvány újragenerálható a Windows-tálcán futó Azure Cosmos DB Emulator menüjének **Adatok alaphelyzetbe állítása** elemére kattintva. Ha a tanúsítványokat újragenerálja és telepíti a Java-tanúsítványtárolóba vagy máshol felhasználja, akkor frissítenie kell őket, másként az alkalmazás nem kapcsolódik többé a helyszíni emulátorhoz.
-
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB helyszíni emulátor adatok alaphelyzetbe állítása":::
-
-## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>A Azure Cosmos DB TLS/SSL-tanúsítvány exportálása
+Exportálnia kell az emulátor tanúsítványát, hogy az emulátor végpontját olyan nyelvekről és futásidejű környezetekről használja, amelyek nem integrálják a Windows-tanúsítványtárolót. A tanúsítványt a Windows tanúsítványkezelő használatával exportálhatja. A következő lépésenkénti útmutatót követve exportálhatja a "DocumentDBEmulatorCertificate" tanúsítványt BASE-64 kódolású X. 509 (. cer) fájlként:
 
 1. Indítsa el a Windows Tanúsítványkezelőjét a certlm.msc futtatásával, nyissa meg a Személyes->Tanúsítványok mappát, majd nyissa meg a **DocumentDbEmulatorCertificate** nevű tanúsítványt.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
 
-2. Kattintson a **Részletek**, majd az **OK** lehetőségre.
+1. Kattintson a **Részletek**, majd az **OK** lehetőségre.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB helyszíni emulátor 2. exportálási lépés":::
 
-3. Kattintson a **Másolás fájlba...** lehetőségre.
+1. Kattintson a **Másolás fájlba...** lehetőségre.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB helyszíni emulátor 3. exportálási lépés":::
 
-4. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB helyszíni emulátor 4. exportálási lépés":::
 
-5. Kattintson a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőségre, majd a **Tovább** gombra.
+1. Kattintson a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőségre, majd a **Tovább** gombra.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB helyszíni emulátor 5. exportálási lépés":::
 
-6. Kattintson a **Base-64 kódolású X.509 (.CER)** lehetőségre, majd a **Tovább** gombra.
+1. Kattintson a **Base-64 kódolású X.509 (.CER)** lehetőségre, majd a **Tovább** gombra.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB helyszíni emulátor 6. exportálási lépés":::
 
-7. Nevezze el a tanúsítványt. Ebben a példában a név **documentdbemulatorcert**. Végül kattintson a **Tovább** lehetőségre.
+1. Nevezze el a tanúsítványt. Ebben a példában a név **documentdbemulatorcert**. Végül kattintson a **Tovább** lehetőségre.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB helyszíni emulátor 7. exportálási lépés":::
 
-8. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés** gombra.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB helyszíni emulátor 8. exportálási lépés":::
 
-## <a name="how-to-use-the-certificate-in-java"></a>A tanúsítvány használata a Javában
+## <a name="use-the-certificate-with-java-apps"></a>A tanúsítvány használata Java-alkalmazásokkal
 
-A Java-ügyfelet használó Java-alkalmazások vagy MongoDB-alkalmazások futtatásakor a tanúsítvány telepítése egyszerűbb a Java alapértelmezett tanúsítványtárolóba, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők továbbítása. Például a mellékelt Java bemutató alkalmazás ( `https://localhost:8081/_explorer/index.html` ) az alapértelmezett tanúsítványtárolótól függ.
+Ha Java-alapú ügyfelet használó Java-alkalmazásokat vagy MongoDB-alkalmazásokat futtat, könnyebben telepítheti a tanúsítványt a Java alapértelmezett tanúsítványtárolóba, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők átadása. A mellékelt Java bemutató alkalmazás ( `https://localhost:8081/_explorer/index.html` ) például az alapértelmezett tanúsítványtárolótól függ.
 
-A [Tanúsítvány hozzáadása a Java CA tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikk utasításai alapján importálja az X.509-tanúsítványt az alapértelmezett Java-tanúsítványtárolóba. Tartsa szem előtt, hogy a keytool parancs futtatásakor a %JAVA_HOME% könyvtárban fog dolgozni.
+Az X. 509 tanúsítvány az alapértelmezett Java-tanúsítványtárolóba való importálásához kövesse a [tanúsítvány hozzáadása a Java-tanúsítványok tárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című témakör utasításait. Ne feledje, hogy a *(z)% JAVA_HOME%* könyvtárban fog működni a-eszköz futtatásakor. Miután importálta a tanúsítványt a tanúsítványtárolóba, az SQL-és a Azure Cosmos DB API-MongoDB csatlakozni fognak az Azure Cosmos Emulatorhoz.
 
-Másik lehetőségként létrehozhat és futtathat egy "bash"-szkriptet, amely automatikusan végrehajtja a következőket:
+Azt is megteheti, hogy a következő bash-szkriptet futtatja a tanúsítvány importálásához:
+
 ```bash
 #!/bin/bash
 
@@ -90,26 +84,26 @@ sudo $JAVA_HOME/bin/keytool -cacerts -delete -alias cosmos_emulator
 sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $EMULATOR_CERT_PATH
 ```
 
-Miután telepítette az "CosmosDBEmulatorCertificate" TLS/SSL-tanúsítványt, az alkalmazásnak képesnek kell lennie csatlakozni a helyi Azure Cosmos DB Emulator használatára. Ha továbbra is problémákat tapasztal, akkor ajánlott az [SSL/TLS-kapcsolatok hibaelhárítása](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) című cikk utasításai alapján eljárni. Valószínű, hogy a tanúsítvány nincs telepítve a %JAVA_HOME%/jre/lib/security/cacerts tárolóban. Megtörténhet például, hogy ha a Java több verziója is telepítve van, az alkalmazás nem azt a cacerts tárolót használja, amely frissítve lett.
+Miután telepítette a "CosmosDBEmulatorCertificate" TLS/SSL-tanúsítványt, az alkalmazásnak képesnek kell lennie csatlakozni a helyi Azure Cosmos DB Emulator használatára. Ha problémák merülnek fel, kövesse az [SSL/TLS-kapcsolatok hibakeresése](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) című cikket. A legtöbb esetben előfordulhat, hogy a tanúsítvány nincs telepítve a *(z)% JAVA_HOME%/JRE/lib/security/cacerts* áruházba. Ha például a Java több telepített verziójával rendelkezik, előfordulhat, hogy az alkalmazás egy másik hitesítésszolgáltatói-tárolót használ, mint amit a frissített.
 
-## <a name="how-to-use-the-certificate-in-python"></a>A tanúsítvány használata a Pythonban
+## <a name="use-the-certificate-with-python-apps"></a>A tanúsítvány használata Python-alkalmazásokkal
 
-Alapértelmezés szerint az SQL API-hoz készült [PYTHON SDK (2.0.0 vagy újabb verzió)](sql-api-sdk-python.md) nem próbálja meg és nem használja a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-ellenőrzést szeretne használni, kövesse a [Python socket Wrappers](https://docs.python.org/2/library/ssl.html) dokumentációjában található példákat.
+Ha Python-alkalmazásokból csatlakozik az emulátorhoz, a TLS-ellenőrzés le van tiltva. Alapértelmezés szerint a [PYTHON SDK (2.0.0 vagy újabb verzió)](sql-api-sdk-python.md) az SQL API-hoz nem fogja használni a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-ellenőrzést szeretne használni, kövesse a [Python socket Wrappers](https://docs.python.org/2/library/ssl.html) dokumentációjában található példákat.
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>A tanúsítvány használata a Node.js-ben
 
-Alapértelmezés szerint a [Node.js SDK (1.10.1 vagy újabb verzió)](sql-api-sdk-node.md) az SQL API-hoz nem próbálja meg és nem használja a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-érvényesítést szeretne használni, kövesse az [Node.js dokumentációjában](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)található példákat.
+Node.js SDK-k emulátorához való csatlakozáskor a TLS-ellenőrzés le van tiltva. Alapértelmezés szerint a [Node.js SDK (1.10.1 vagy újabb verzió)](sql-api-sdk-node.md) az SQL API-hoz nem fogja tudni használni a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-ellenőrzést szeretne használni, kövesse az [Node.js dokumentációjában](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)található példákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="rotate-emulator-certificates"></a>Emulator-tanúsítványok elforgatása
 
-Ebben az oktatóanyagban a következőket hajtotta végre:
+Az Emulator-tanúsítványok újbóli előállításához válassza az **adatok alaphelyzetbe állítása** lehetőséget a Windows tálcán futó Azure Cosmos db-emulátorban. Vegye figyelembe, hogy ez a művelet az emulátor által helyileg tárolt összes adat törlését is törli.
 
-> [!div class="checklist"]
-> * Tanúsítványokat rotált
-> * A TLS/SSL-tanúsítvány exportálása
-> * Elsajátította a tanúsítvány használatát Javában, Pythonban és a Node.js-ben
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB helyszíni emulátor adatok alaphelyzetbe állítása":::
 
-Az Azure Cosmos DB-vel kapcsolatos további információért folytassa az Alapfogalmak szakasz áttekintésével. 
+Ha telepítette a tanúsítványt a Java-tanúsítványtárolóba, vagy másutt használta őket, újra kell importálnia azokat az aktuális tanúsítványok használatával. Az alkalmazás addig nem tud kapcsolódni a helyi emulátorhoz, amíg nem frissíti a tanúsítványokat.
 
-> [!div class="nextstepaction"]
->[Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](../cosmos-db/consistency-levels.md)
+## <a name="next-steps"></a>Következő lépések
+
+* [Az emulátor vezérléséhez használjon parancssori paramétereket és PowerShell-parancsokat](emulator-command-line-parameters.md)
+* [Hibakeresési problémák az emulátorral](troubleshoot-local-emulator.md)
+

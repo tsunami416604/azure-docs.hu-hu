@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1899baa927bffdaedd1d7ee00f442c449480fc04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533869"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986852"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Gyors útmutató: felügyelt SQL-példány felügyelt példányának létrehozása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -124,7 +124,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 > 3. Válassza ki az SQL felügyelt példány központi telepítési műveletét folyamatban.
 
 > [!IMPORTANT]
-> - Az SQL felügyelt példány létrehozása egy hosszú ideig futó művelet, amely bizonyos körülményektől függően eltarthat néhány órát. Tekintse meg a [kezelési műveletek időtartamát](management-operations-overview.md#management-operations-duration) a tipikus létrehozási időpontokhoz.
+> - Az SQL felügyelt példány létrehozása egy hosszú ideig futó művelet, amely bizonyos körülményektől függően eltarthat néhány órát. Tekintse meg a [kezelési műveletek időtartamát](management-operations-overview.md#duration) a tipikus létrehozási időpontokhoz.
 > - A felügyelt SQL-példányok létrehozásának megkezdése késleltethető olyan esetekben, amikor más befolyásoló műveletek is léteznek, például az azonos alhálózaton lévő más felügyelt példányok esetében a hosszan futó visszaállítási vagy méretezési műveletek. További információ: a [felügyeleti műveletek hatása](management-operations-overview.md#management-operations-cross-impact).
 > - A felügyelt példányok létrehozási állapotának lekéréséhez **olvasási engedéllyel** kell rendelkeznie az erőforráscsoporthoz. Ha nem rendelkezik ezzel az engedéllyel vagy visszavonással, miközben a felügyelt példány létrehozása folyamatban van, ez azt eredményezheti, hogy az SQL felügyelt példánya nem látható az erőforráscsoport-telepítések listájában.
 >
@@ -161,7 +161,7 @@ A hálózati beállítások finomhangolásához ellenőrizze a következőket:
 > Ha nyilvános végpontot konfigurált az SQL felügyelt példányához, meg kell nyitnia a portokat, hogy engedélyezzék a hálózati forgalom számára a nyilvános internetről felügyelt példányhoz való kapcsolódást. További információért lásd: [nyilvános végpont konfigurálása SQL felügyelt példányhoz](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) .
 >
 
-## <a name="retrieve-connection-details-to-sql-managed-instance"></a>Kapcsolat adatainak beolvasása a felügyelt SQL-példányhoz
+## <a name="retrieve-connection-details-to-sql-managed-instance"></a>Felügyelt SQL-példány kapcsolatadatainak a lekérése
 
 A felügyelt SQL-példányhoz való kapcsolódáshoz kövesse az alábbi lépéseket az állomásnév és a teljes tartománynév (FQDN) lekéréséhez:
 
@@ -175,7 +175,7 @@ A felügyelt SQL-példányhoz való kapcsolódáshoz kövesse az alábbi lépés
 
    A másolt érték egy teljes tartománynevet (FQDN) jelöl, amely az SQL felügyelt példányhoz való kapcsolódáshoz használható. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a felügyelt SQL-példányokhoz való kapcsolódásról:
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

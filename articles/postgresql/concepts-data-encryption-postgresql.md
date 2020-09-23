@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064791"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902143"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -43,7 +43,7 @@ A KEK titkosított DEKs külön tárolja a rendszer. Csak egy KEK-hozzáféréss
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Az adattitkosítás használata az ügyfél által felügyelt kulcsokkal
 
-![A Bring Your Own Key áttekintését bemutató diagram](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png" alt-text="A Bring Your Own Key áttekintését bemutató diagram":::
 
 Ahhoz, hogy a PostgreSQL-kiszolgáló a ADATTITKOSÍTÁSI kulcsot titkosításához Key Vaultban tárolt ügyfél által felügyelt kulcsokat használjon, a Key Vault rendszergazdája a következő hozzáférési jogosultságokat biztosítja a kiszolgálóhoz:
 
@@ -79,7 +79,7 @@ Ha ügyfél által felügyelt kulccsal használja az adattitkosítást, a Key Va
 * Győződjön meg arról, hogy az egyetlen kiszolgáló Key Vault és Azure Database for PostgreSQL ugyanabban a régióban található, így biztosítva, hogy a ADATTITKOSÍTÁSI kulcsot-wrap és a kicsomagolási műveletek gyorsabban hozzáférhessenek.
 * Az Azure kulcstartó zárolása csak **privát végpontok és kiválasztott hálózatok** számára, és csak *megbízható Microsoft* -szolgáltatások engedélyezése az erőforrások biztonságossá tételéhez.
 
-    ![megbízható szolgáltatás – AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="megbízható szolgáltatás – AKV":::
 
 Az ügyfél által felügyelt kulcs konfigurálására vonatkozó javaslatok:
 
@@ -140,7 +140,7 @@ Azure Database for PostgreSQL esetén az ügyfelek által felügyelt kulcs (CMK)
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást egy ügyfél által felügyelt kulccsal a PostgreSQL-hez készült Azure-adatbázishoz a Azure Portal használatával](howto-data-encryption-portal.md).
 

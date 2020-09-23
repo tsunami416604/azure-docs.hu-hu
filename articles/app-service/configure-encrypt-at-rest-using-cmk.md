@@ -1,14 +1,14 @@
 ---
 title: Az alkalmazás forrásának titkosítása nyugalmi állapotban
-description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag fájlként történő üzembe helyezése.
+description: Ismerje meg, hogyan titkosíthatja az alkalmazásadatok adatait az Azure Storage-ban, és hogyan telepítheti csomagfájlként.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408743"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978478"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
@@ -117,7 +117,7 @@ Csak az Azure Storage-fiókhoz társított költségek és a kimenő forgalomra 
 - A TAR és a GZIP formátum nem támogatott.
 - Ez a funkció nem kompatibilis a helyi gyorsítótárral.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [App Service Key Vault referenciái](app-service-key-vault-references.md)
 - [Inaktív adatok Azure Storage-titkosítása](../storage/common/storage-service-encryption.md)

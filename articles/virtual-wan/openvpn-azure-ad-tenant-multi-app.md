@@ -1,18 +1,18 @@
 ---
 title: 'Virtuális WAN: Azure AD-bérlő különböző felhasználói csoportokhoz: Azure AD-hitelesítés'
-description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
+description: Állítson be egy Azure AD-bérlőt az P2S OpenVPN-hitelesítéshez, és hozzon létre és regisztráljon több alkalmazást az Azure AD-ben, hogy különböző felhasználók és csoportok számára engedélyezze a hozzáférést.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988267"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory (AD) bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -123,11 +123,11 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 1. Válassza a törölni kívánt ügyféloldali profil melletti három pontot (...). Ezután válassza az **Eltávolítás**lehetőséget.
 
-    ![törlés](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Válassza az **Eltávolítás** elemet a törléshez.
 
-    ![törlés](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>A kapcsolódási problémák diagnosztizálása
 
@@ -155,7 +155,7 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 

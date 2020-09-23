@@ -1,24 +1,24 @@
 ---
-title: CETAS a szinapszis SQL-ben
-description: A CETAS használata a szinapszis SQL használatával
+title: HOZZon létre külső TÁBLÁT SELECT (CETAS) néven a szinapszis SQL-ben
+description: A CREATE EXTERNAL TABLE AS SELECT (CETAS) használata a szinapszis SQL használatával
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 18f472da30b34fcacd70bba9ea7371b56f1a7abf
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032911"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885339"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS a szinapszis SQL-sel
 
-Az SQL-készletben vagy az igény szerinti SQL-ben (előzetes verzió) az alábbi feladatok végrehajtásához a SELECT (CETAS) (külső tábla létrehozása) lehetőséget használhatja:  
+A következő feladatok végrehajtásához használhatja az SQL-készlet vagy az SQL on-demand (előzetes verzió) szolgáltatásban a CREATE EXTERNAL TABLE AS SELECT (CETAS) parancsot:  
 
 - Külső tábla létrehozása
 - A Transact-SQL SELECT utasítás eredményeinek párhuzamos exportálása a következőre:
@@ -29,11 +29,12 @@ Az SQL-készletben vagy az igény szerinti SQL-ben (előzetes verzió) az alább
 
 ## <a name="cetas-in-sql-pool"></a>CETAS az SQL-készletben
 
-SQL-készlet esetén a CETAS-használat és-szintaxis beállításnál tekintse meg a [külső tábla létrehozása elemet](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . Emellett az SQL Pool használatával történő CTAS kapcsolatos útmutatásért tekintse meg a [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikket.
+Az SQL Pool CETAS használatának és szintaxisának megtekintéséhez tekintse meg a [külső tábla létrehozása mint Select](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikket. Emellett az SQL Pool használatával történő CTAS kapcsolatos útmutatásért tekintse meg a [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikket.
+Az SQL Pool CETAS használatának és szintaxisának megtekintéséhez tekintse meg a [külső tábla létrehozása mint Select](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikket. Emellett az SQL Pool használatával történő CTAS kapcsolatos útmutatásért tekintse meg a [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikket.
 
 ## <a name="cetas-in-sql-on-demand"></a>Igény szerinti SQL-CETAS
 
-Az igény szerinti SQL-erőforrás használatakor a CETAS egy külső tábla létrehozására és a lekérdezési eredmények exportálására szolgál Azure Storage Blob vagy Azure Data Lake Storage Gen2.
+Ha igény szerinti SQL-t használ, a CETAS egy külső tábla létrehozására és a lekérdezési eredmények exportálására Azure Storage Blob vagy Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -68,22 +69,22 @@ Annak a külső adatforrás-objektumnak a nevét adja meg, amely a külső adatt
 
 FILE_FORMAT = *external_file_format_name*
 
-Megadja a külső fájlformátum objektumának nevét, amely a külső adatfájl formátumát tartalmazza. Külső fájlformátum létrehozásához használja a [create External File Format (Transact-SQL) formátumot](develop-tables-external-tables.md#create-external-file-format). Jelenleg csak a FORMAT = ' PARQUEt ' formátumú külső fájlformátumok támogatottak.
+Megadja a külső fájlformátum objektumának nevét, amely a külső adatfájl formátumát tartalmazza. Külső fájlformátum létrehozásához használja a [create External File Format (Transact-SQL) formátumot](develop-tables-external-tables.md#create-external-file-format). Jelenleg csak a FORMAT_TYPE = parketta és a FORMAT_TYPE = DELIMITEDTEXT külső fájlformátumok támogatottak.
 
 *<common_table_expression>*
 
-Egy, a közös tábla kifejezésének (TÁBLAKIFEJEZÉSEK) elnevezésű ideiglenes elnevezett eredményhalmaz megadása. További információ: [common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Egy, a közös tábla kifejezésének (TÁBLAKIFEJEZÉSEK) elnevezésű ideiglenes elnevezett eredményhalmaz megadása. További információ: [common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Válassza ki <select_criteria>
 
-Feltölti az új táblát egy SELECT utasítás eredményeivel. *select_criteria* a SELECT utasítás törzse, amely meghatározza, hogy az új táblába milyen adatok legyenek átmásolva. További információ a SELECT utasításokról: [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Feltölti az új táblát egy SELECT utasítás eredményeivel. *select_criteria* a SELECT utasítás törzse, amely meghatározza, hogy az új táblába milyen adatok legyenek átmásolva. További információ a SELECT utasításokról: [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 > [!NOTE]
-> Az ORDER BY záradék nem támogatott a CETAS részének KIJELÖLÉSEkor.
+> A SELECT utasítás ORDER BY záradéka nem támogatott a CETAS.
 
 ## <a name="permissions"></a>Engedélyek
 
-A CETAS működéséhez rendelkeznie kell a mappa tartalmának listázásához és a hely mappájához való íráshoz szükséges engedélyekkel.
+Engedéllyel kell rendelkeznie a mappa tartalmának listázásához és az írási hely mappájához a CETAS működéséhez.
 
 ## <a name="examples"></a>Példák
 
@@ -112,7 +113,7 @@ FROM
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -132,7 +133,7 @@ FROM census_external_table
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -173,4 +174,4 @@ A következő adattípusok nem használhatók a CETAS kiválasztása részben:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Kipróbálhatja Apache Spark lekérdezését [Az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).
+Próbálja meg Apache Spark lekérdezését [Az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

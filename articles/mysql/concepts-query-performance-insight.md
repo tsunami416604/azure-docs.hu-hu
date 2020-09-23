@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 51b478e5184c79e11d95ff004a652b2e5298558f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83402615"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884911"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Lekérdezési teljesítmény elemzése az Azure Database for MySQL-ben
 
@@ -51,7 +51,7 @@ A **hosszú ideig futó lekérdezések** lapon az első 5 lekérdezés az átlag
 
 Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Azt is megteheti, hogy a nagyítás és kicsinyítés ikon használatával kisebb vagy nagyobb időszakot jelenít meg.
 
-![Hosszú ideig futó lekérdezések Lekérdezési terheléselemző](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Hosszú ideig futó lekérdezések Lekérdezési terheléselemző"::: 
 
 ### <a name="wait-statistics"></a>Várakozási statisztika
 
@@ -64,8 +64,8 @@ A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak 
 
 A várakozási Statisztika nézetben megjelenő lekérdezések csoportosítása a megadott időintervallumon belül a legnagyobb várakozásokat kiállító lekérdezések szerint történik.
 
-![Lekérdezési terheléselemző vár statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Lekérdezési terheléselemző vár statisztikái":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MySQL [figyeléséről és hangolásáról](concepts-monitoring.md) .

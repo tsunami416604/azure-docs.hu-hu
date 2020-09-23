@@ -3,12 +3,12 @@ title: Azure Application Insights – áttekintés irányítópult | Microsoft D
 description: Alkalmazások figyelése az Azure Application Insights és az áttekintő irányítópult funkcióinak segítségével.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322533"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970610"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintése irányítópult
 
@@ -36,7 +36,7 @@ Az alkalmazás irányítópultja a meglévő irányítópult-technológiát hasz
 
 Az alapértelmezett irányítópult eléréséhez válassza az _alkalmazás irányítópult_ lehetőséget a bal felső sarokban.
 
-![Irányítópult nézet](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![Képernyőfelvétel: az alkalmazás irányítópult gombja kiemelve.](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Ha első alkalommal fér hozzá az irányítópulthoz, a rendszer elindítja az alapértelmezett nézetet:
 
@@ -55,7 +55,7 @@ Ha vissza szeretne térni az áttekintő felületre, csak válassza a következ�
 
 Ha a **csempe beállításainak megadása** lehetőséget választja, és az egyéni időtartományt 31 napnál nagyobb időtartamra állítja be, az irányítópult nem jeleníti meg a 31 napos adatmennyiséget, még az alapértelmezett 90 napos adatmegőrzéssel sem. Ehhez a viselkedéshez jelenleg nincs Áthidaló megoldás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tölcsérek](./usage-funnels.md)
 - [Megőrzés](./usage-retention.md)

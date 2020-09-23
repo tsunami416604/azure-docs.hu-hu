@@ -7,24 +7,25 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 572bd35a916ed97ab0c846e2b8d561bd27b145cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602381"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978293"
 ---
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
 Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékeket kell megadnia. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
 * [Git](https://git-scm.com/).
 * [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk).
@@ -34,27 +35,27 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Új projekt elindítása Android Studioban. Ehhez a példához tartozó forráskód a [magával ragadó olvasó SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)részeként érhető el.
 
-![Új projekt](../../media/android/java/android-studio-create-project.png)
+![Új projekt – Android](../../media/android/java/android-studio-create-project.png)
 
 A **projekt kiválasztása** ablakban válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
 
-![Üres tevékenység projekt](../../media/android/java/android-studio-empty-activity.png)
+![Üres tevékenység projekt – Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>A projekt konfigurálása
 
 Nevezze el a projekt **QuickstartJava**, és válassza ki a menteni kívánt helyet. A programozási nyelvként válassza a **Java** lehetőséget, majd kattintson a **Befejezés gombra**.
 
-![A projekt konfigurálása](../../media/android/java/android-studio-configure-project.png)
+![A projekt konfigurálása – Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Eszközök és hitelesítés beállítása
 
 Hozzon létre egy új **/assets** mappát.
 
-![Új eszközök mappa létrehozása](../../media/android/java/android-studio-assets-folder.png)
+![Új assets mappa létrehozása – Android](../../media/android/java/android-studio-assets-folder.png)
 
  Hozzon létre egy **env** nevű fájlt az eszközök mappában. Adja hozzá a következő neveket és értékeket, és adja meg a megfelelő értékeket. Ne véglegesítse ezt az ENV-fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
 
-![Új env-fájl létrehozása](../../media/android/java/android-studio-create-env-file.png)
+![Új env-fájl létrehozása – Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -81,13 +82,13 @@ dependencies {
 }
 ```
 
-![Alkalmazás-gradle implementációk](../../media/android/java/android-studio-build-gradle.png)
+![Alkalmazás-gradle implementációk – Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Alkalmazás-karakterláncok és elrendezési erőforrások frissítése
 
 Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használandó következő karakterláncokra.
 
-![Alkalmazás strings.xml](../../media/android/java/android-studio-strings.png)
+![App strings.xml – Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +98,7 @@ Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használ
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +106,7 @@ Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használ
 
 Cserélje le a **res/layout/activity_main.xml** tartalmait a következő XML-fájlra az alkalmazásban való használathoz. Ez az XML az alkalmazás felhasználói felületének elrendezése.
 
-![Alkalmazás activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
+![App activity_main.xml – Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +207,9 @@ Cserélje le a **res/layout/activity_main.xml** tartalmait a következő XML-fá
 
 A **res/layout/** mappában hozzon létre egy új elrendezési erőforrás-fájlt, és nevezze el **activity_immersive_reader**. Ezután cserélje le a tartalmát a következő XML-fájlra. Ez az XML hozzáadja a webnézet összetevőt, amelyet a IRActivity Java-kód használ, amelyet egy későbbi lépésben fog létrehozni. Egyelőre nem definiált, és hibákat okoz.
 
-![Új elrendezési erőforrásfájl létrehozása](../../media/android/java/android-studio-new-layout-resource.png)
+![Új elrendezési forrásfájl létrehozása – Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![Az új elrendezési erőforrás konfigurálása](../../media/android/java/android-studio-activity-immersive-reader.png)
+![Az új elrendezési erőforrás konfigurálása – Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +236,7 @@ A **res/layout/** mappában hozzon létre egy új elrendezési erőforrás-fájl
 
 A **/Java/com.example.quickstartjava** mappában megjelenik egy meglévő **MainActivity. Java** Java-osztály fájl. Ez a mappa az alkalmazás logikájának szerzője.
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity – Android](../../media/android/java/android-studio-main-activity-java.png)
 
 Cserélje le az **MainActivity. Java** tartalmát a következő kódra. Van néhány olyan osztály, amely még nem létezik, és később lesz létrehozva.
 
@@ -292,7 +293,7 @@ public class MainActivity extends Activity {
 
 Új **ImmersiveReader. Java** Java-osztály létrehozásához kattintson a jobb gombbal a mappára Android Studioban, válassza az **új**, majd a **Java-osztály**elemet. Ugyanezt a módszert fogja használni a Java-osztályok fájljainak létrehozásához minden létrehozott új Java-osztályhoz.
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader – Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 Cserélje le az **ImmersiveReader. Java** tartalmát a következő kódra:
 
@@ -376,7 +377,7 @@ public class ImmersiveReader {
 
 Hozzon létre egy új **IRActivity. Java** Java-osztály fájlt.
 
-![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
+![IRActivity – Android](../../media/android/java/android-studio-iractivity-java.png)
 
 Cserélje le az **IRActivity. Java** tartalmát a következő kódra:
 
@@ -460,7 +461,7 @@ public class ImmersiveReader {
 
 Hozzon létre egy új **IRError. Java** Java-osztály fájlt.
 
-![IRError](../../media/android/java/android-studio-irerror-java.png)
+![IRError – Android](../../media/android/java/android-studio-irerror-java.png)
 
 Cserélje le az **IRError. Java** tartalmát a következő kódra:
 
@@ -539,7 +540,7 @@ public class IRError implements Parcelable {
 
 Hozzon létre egy új **error. Java** Java-osztály fájlt.
 
-![Hiba](../../media/android/java/android-studio-error-java.png)
+![Hiba – Android](../../media/android/java/android-studio-error-java.png)
 
 Cserélje le a **error. Java** tartalmát a következő kódra:
 
@@ -570,7 +571,7 @@ public class Error {
 
 Hozzon létre egy új **ReadableContent. Java** Java-osztály fájlt.
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent – Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 Cserélje le az **ReadableContent. Java** tartalmát a következő kódra:
 
@@ -614,7 +615,7 @@ public class ReadableContent {
 
 Hozzon létre egy új **ReadableTextChunk. Java** Java-osztály fájlt.
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk – Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 Cserélje le az **ReadableTextChunk. Java** tartalmát a következő kódra:
 
@@ -646,7 +647,7 @@ public class ReadableTextChunk {
 
 Hozzon létre egy új **IRDataHolder. Java** Java-osztály fájlt.
 
-![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
+![IRDataHolder – Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 Cserélje le az **IRDataHolder. Java** tartalmát a következő kódra:
 
@@ -711,7 +712,7 @@ public class IRDataHolder {
 
 Hozzon létre egy új **IRAuthenticator. Java** Java-osztály fájlt.
 
-![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
+![IRAuthenticator – Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 Cserélje le az **IRAuthenticator. Java** tartalmát a következő kódra:
 
@@ -822,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 Hozzon létre egy új **IRLauncher. Java** Java-osztály fájlt.
 
-![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![IRLauncher – Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 Cserélje le az **IRLauncher. Java** tartalmát a következő kódra:
 
@@ -1015,7 +1016,7 @@ public class IRLauncher {
 
 Hozzon létre egy új **IRStore. Java** Java-osztály fájlt.
 
-![IRStore](../../media/android/java/android-studio-irstore-java.png)
+![IRStore – Android](../../media/android/java/android-studio-irstore-java.png)
 
 Cserélje le az **IRStore. Java** tartalmát a következő kódra:
 
@@ -1097,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 Hozzon létre egy új **darab. Java** Java-osztály fájlt.
 
-![Adattömb](../../media/android/java/android-studio-chunk-java.png)
+![Adathalmaz – Android](../../media/android/java/android-studio-chunk-java.png)
 
 Cserélje le a **darab. Java** tartalmát a következő kódra:
 
@@ -1134,7 +1135,7 @@ public class Chunk {
 
 Hozzon létre egy új **Content. Java** Java-osztály fájlt.
 
-![Tartalom](../../media/android/java/android-studio-content-java.png)
+![Content-Android](../../media/android/java/android-studio-content-java.png)
 
 Cserélje le a **Content. Java** tartalmát a következő kódra:
 
@@ -1170,7 +1171,7 @@ public class Content {
 
 Hozzon létre egy új **Options. Java** Java Class fájlt.
 
-![Beállítások](../../media/android/java/android-studio-options-java.png)
+![Beállítások – Android](../../media/android/java/android-studio-options-java.png)
 
 Cserélje le a **Options. Java** tartalmát a következő kódra:
 
@@ -1204,7 +1205,7 @@ public class Options {
 
 Hozzon létre egy új **Message. Java** Java-osztály fájlt.
 
-![Üzenet](../../media/android/java/android-studio-message-java.png)
+![Üzenet – Android](../../media/android/java/android-studio-message-java.png)
 
 Cserélje le az **üzenet. Java** tartalmát a következő kódra:
 
@@ -1242,7 +1243,7 @@ public class Message {
 
 Hozzon létre egy új **WebAppInterface. Java** Java-osztály fájlt.
 
-![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
+![WebAppInterface – Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 Cserélje le az **WebAppInterface. Java** tartalmát a következő kódra:
 
@@ -1293,9 +1294,9 @@ public class WebAppInterface {
 
 A webes nézet implementációjának HTML-re van szüksége a működéséhez. Kattintson a jobb gombbal a **/assets** mappára, hozzon létre egy új fájlt, és nevezze el **immersiveReader.html**-ként.
 
-![Új HTML-fájl létrehozása](../../media/android/java/android-studio-immersive-reader-html.png)
+![Új HTML-fájl létrehozása – Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![HTML-eszköz helye](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![HTML-eszköz helye – Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 Adja hozzá a következő HTML-és JavaScript-kódot. Ez a kód hozzáadja a magával ragadó olvasói SDK-t az alkalmazáshoz, és a segítségével megnyithatja a magával ragadó olvasót az általunk írt alkalmazás kódjával.
 
@@ -1352,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Alkalmazás engedélyeinek beállítása
 
-![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![AndroidManifest – Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 Mivel az alkalmazásnak a zavartalan olvasó SDK-hoz való működéséhez hálózati hívásokat kell végeznie, gondoskodni kell arról, hogy az alkalmazás engedélyei a hálózati hozzáférés engedélyezésére legyenek konfigurálva. Cserélje le a **/manifests/AndroidManifest.xml** tartalmát a következő XML-fájlra:
 
@@ -1389,8 +1390,8 @@ Mivel az alkalmazásnak a zavartalan olvasó SDK-hoz való működéséhez hál�
 
 A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulátoron. Amikor kijelöli az **olvasót**, a magával ragadó olvasó megnyílik az alkalmazás tartalmával.
 
-![Modern olvasó](../../media/android/java/android-studio-device-emulator.png)
+![Lebilincselő olvasó – Android](../../media/android/java/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).

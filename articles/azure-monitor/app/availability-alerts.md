@@ -1,17 +1,17 @@
 ---
 title: Rendelkezésre állási riasztások beállítása az Azure Application Insightskal | Microsoft Docs
-description: Webes teszteket állíthat be az Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
+description: Ismerje meg, hogyan állíthat be Application Insights webteszteket. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320646"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970752"
 ---
 # <a name="availability-alerts"></a>Rendelkezésre állási riasztások
 
@@ -71,7 +71,7 @@ Ha Azure Resource Manager-sablonokkal szeretné automatizálni ezt a folyamatot,
 
 Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Többlépéses webes tesztek](availability-multistep.md)
 * [URL pingelése webes tesztek](monitor-web-app-availability.md)

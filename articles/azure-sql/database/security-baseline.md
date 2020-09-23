@@ -4,15 +4,15 @@ description: Azure Security alapkonfiguráció a Azure SQL Database és az Azure
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231027"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885206"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Az Azure biztonsági alapterve Azure SQL Database & SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 
-**Útmutató**: a Azure Security Center komplex veszélyforrások elleni védelem használata a rendellenes tevékenység figyelésére és riasztására Azure SQL Database. A speciális adatbiztonság engedélyezése az SQL-adatbázisokhoz. A speciális adatok biztonsága magában foglalja a bizalmas adatok felderítésére és besorolására, a felszínre és a lehetséges adatbázis-sebezhetőségek enyhítésére szolgáló funkciókat, valamint olyan rendellenes tevékenységek észlelését, amelyek fenyegetést jelenthetnek az adatbázisra.
+**Útmutató**: a Azure Security Center komplex veszélyforrások elleni védelem használata a rendellenes tevékenység figyelésére és riasztására Azure SQL Database. Engedélyezze az SQL-adatbázisokhoz készült Azure Defendert az SQL-adatbázisok számára. Az SQL-hez készült Azure Defender funkciói felszínre és a lehetséges adatbázis-sebezhetőségek enyhítésére, valamint az adatbázis fenyegetését jelző rendellenes tevékenységek észlelésére szolgálnak.
 
 Az összetett veszélyforrások elleni védelem és a riasztások megismerése Azure SQL Database esetén:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-A Azure SQL Database speciális adatbiztonságának engedélyezése:
+Az Azure Defender for SQL engedélyezése Azure SQL Database esetén:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Riasztások kezelése Azure Security Centerban:
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: a Azure Active Directory (HRE) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. A HRE PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
+**Útmutató**: Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítése érdekében.
 
 Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató**: a Azure Active Directory (hre) multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatainak követése.
+**Útmutató**: a Azure Active Directory (Azure AD) multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatainak követése.
 
 Az MFA engedélyezése az Azure-ban:
 
@@ -445,13 +445,13 @@ Elnevezett helyszínek konfigurálása az Azure-ban: https://docs.microsoft.com/
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: hozzon létre egy Azure Active Directory (HRE) rendszergazdát a kiszolgálóhoz.
+**Útmutató**: hozzon létre egy Azure Active Directory (Azure ad) rendszergazdát a kiszolgálóhoz.
 
 Azure Active Directory hitelesítés konfigurálása és kezelése az Azure SQL használatával:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-HRE-példány létrehozása és konfigurálása:
+Azure AD-példány létrehozása és konfigurálása:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: a Azure Active Directory (HRE) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználók hozzáférését rendszeresen áttekintheti, hogy csak a megfelelő felhasználók férhessenek hozzá.
+**Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználók hozzáférését rendszeresen áttekintheti, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
 Az Azure Identity hozzáférési felülvizsgálatok használata:
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
-**Útmutató**: Azure Active Directory (HRE) hitelesítés konfigurálása az Azure SQL-sel és diagnosztikai beállítások létrehozása Azure Active Directory felhasználói fiókok számára, a naplók és a bejelentkezési naplók elküldése egy log Analytics munkaterületre. A kívánt riasztások konfigurálása Log Analytics munkaterületen belül.
+**Útmutató**: Azure Active Directory (Azure ad) hitelesítés konfigurálása az Azure SQL használatával és diagnosztikai beállítások létrehozása Azure Active Directory felhasználói fiókokhoz, a naplók és a bejelentkezési naplók elküldése egy log Analytics munkaterületre. A kívánt riasztások konfigurálása Log Analytics munkaterületen belül.
 
 Azure Active Directory hitelesítés konfigurálása és kezelése az Azure SQL használatával:
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
-**Útmutató**: a Azure Active Directory (HRE) Identity Protection és a kockázati észlelések segítségével konfigurálja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Emellett további vizsgálatot is betöltheti az Azure Sentinelbe.
+**Útmutató**: a Azure Active Directory (Azure ad) Identity Protection és kockázati észlelések használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Emellett további vizsgálatot is betöltheti az Azure Sentinelbe.
 
 Az Azure AD kockázati bejelentkezések megtekintése:
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Active Directory (HRE) használata a Azure SQL Database példányokhoz való hozzáférés hitelesítéséhez és szabályozásához.
+**Útmutató**: Azure Active Directory (Azure ad) használata a Azure SQL Database példányokhoz való hozzáférés hitelesítéséhez és szabályozásához.
 
 Azure SQL Database integrálása Azure Active Directory hitelesítéssel:
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutató**: a Azure SQL Database speciális adatbiztonságának engedélyezése, valamint a kiszolgálókon a sebezhetőségi felmérések elvégzéséhez Azure Security Center ajánlásainak követése.
+**Útmutató**: az Azure DEFENDER for SQL engedélyezése a Azure SQL Databasehoz, és Azure Security Center ajánlásainak követése a kiszolgálókon a sebezhetőségi felmérések végrehajtásához.
 
 Sebezhetőségi felmérések futtatása Azure SQL Databaseon:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-A speciális adatbiztonság engedélyezése:
+Az Azure Defender for SQL engedélyezése:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása:
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató**: felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (HRE). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja a HRE hitelesítést, beleértve a Azure Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
+**Útmutató**: felügyelt identitások használata az Azure-szolgáltatások automatikus felügyelt identitással való ellátásához Azure Active Directory (Azure ad). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Azure Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
 Oktatóanyag: a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure SQL eléréséhez:
 
