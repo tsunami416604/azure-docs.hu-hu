@@ -2,16 +2,16 @@
 title: Az Azure Cosmos Emulator letöltése és kibocsátási megjegyzései
 description: Szerezze be az Azure Cosmos Emulator kiadási megjegyzéseit a különböző verziókhoz, és töltse le az információkat.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
-ms.date: 06/20/2019
-ms.openlocfilehash: 268470f846f31e3577b12c217ddcb3c128136101
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/21/2020
+ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086640"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988187"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -26,25 +26,25 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="2115-08232020"></a>2.11.5 (08/23/2020)
+### <a name="2115-23-august-2020"></a>2.11.5 (2020. augusztus 23.)
 
 Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre: 
 
 * "/EnablePreview" – lehetővé teszi az emulátor előzetes funkcióinak használatát. Az előzetes verzióban még fejlesztés alatt álló funkciók is elérhetők a CI és a Sample Writing használatával.
-* "/EnableAadAuthentication" – lehetővé teszi, hogy az emulátor fogadja az egyéni HRE-jogkivonatokat az Azure Cosmos főkulcsainak alternatívájaként. Ez a funkció továbbra is fejlesztés alatt áll; az adott szerepkör-hozzárendelések és más engedélyek kapcsolódó beállításai jelenleg nem támogatottak.
+* "/EnableAadAuthentication" – lehetővé teszi, hogy az emulátor fogadja az egyéni Azure Active Directory jogkivonatokat az Azure Cosmos főkulcsainak alternatívájaként. Ez a funkció továbbra is fejlesztés alatt áll; az adott szerepkör-hozzárendelések és az egyéb engedélyekkel kapcsolatos beállítások jelenleg nem támogatottak.
 
-### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+### <a name="2112-07-july-2020"></a>2.11.2 (2020. július 7.)
 
-- Ez a kiadás megváltoztatja a Cosmos-emulátor hibaelhárításakor szükséges ETL-nyomkövetési adatokat. A WPR (Windows teljesítmény-futtatókörnyezet eszközei) mostantól az ETL-alapú Nyomkövetések rögzítésének alapértelmezett eszközei, míg a régi LOGMAN-alapú rögzítés elavult. Ez a módosítás azért szükséges, mert a legújabb Windows-biztonsági frissítések váratlan hatással voltak arra, hogy a LOGMAN hogyan működik, amikor a Cosmos emulatoron keresztül hajtja végre.
+- Ez a kiadás megváltoztatja a Cosmos-emulátor hibaelhárításakor szükséges ETL-nyomkövetési adatokat. A WPR (Windows teljesítmény-futtatókörnyezet eszközei) mostantól az ETL-alapú Nyomkövetések rögzítésének alapértelmezett eszközei, miközben a régi LOGMAN-alapú rögzítés elavult. Ez a módosítás azért szükséges, mert a legújabb Windows-biztonsági frissítések váratlan hatással voltak arra, hogy a LOGMAN hogyan működik, amikor a Cosmos emulatoron keresztül hajtja végre.
 
-### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
+### <a name="2111-10-june-2020"></a>2.11.1 (2020. június 10.)
 
-- Ez a kiadás javít néhány, az Emulator Adatkezelőával kapcsolatos hibát. Bizonyos esetekben, amikor egy webböngészőn keresztül Adatkezelő emulátort, nem tud csatlakozni a Cosmos Emulator-végponthoz, és az összes kapcsolódó művelet, például egy adatbázis vagy egy tároló létrehozása hibát jelez. A második probléma kijavítva van, hogy egy JSON-fájlból Adatkezelő feltöltési művelettel hozzon létre egy elemet.
+- Ez a kiadás javít néhány, az Emulator Adatkezelőával kapcsolatos hibát. Bizonyos esetekben, amikor egy webböngészőn keresztül Adatkezelő emulátort, nem tud kapcsolódni a Cosmos Emulator-végponthoz, és az összes kapcsolódó művelet, például egy adatbázis vagy egy tároló létrehozása hibát okoz. A második probléma kijavítva van, hogy egy JSON-fájlból Adatkezelő feltöltési művelettel hozzon létre egy elemet.
 
 ### <a name="2110"></a>2.11.0
 
 - Ez a kiadás a kiosztott átviteli sebesség támogatását mutatja be. Ezek az új funkciók lehetővé teszik az egyéni maximális kiosztott átviteli sebesség beállítását a kérelmek egységében (RU/s), az autoskálázást a meglévő adatbázisokon és tárolókban, valamint a programozási támogatást Azure Cosmos DB SDK-k segítségével.
-- Probléma elhárítása a nagy mennyiségű (1 GB-nál több) dokumentum lekérdezése során az emulátor sikertelen lesz a belső hiba 500-as állapotkód esetén.
+- Probléma megoldása a nagy számú dokumentum (1 GB-nál több) lekérdezése során az emulátor sikertelen lesz a belső hiba 500-as állapotkód esetén.
 
 ### <a name="292"></a>2.9.2
 
@@ -64,11 +64,11 @@ Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre:
 
 ### <a name="270"></a>2.7.0
 
-- Ez a kiadás javít egy olyan regressziót, amely megakadályozta, hogy a felhasználók a .NET Core vagy x86 .NET-alapú ügyfelek használatakor lekérdezéseket futtassanak az emulátorból az SQL API-fiókból.
+- Ez a kiadás javít egy regressziót, amely megakadályozta, hogy a felhasználók a .NET Core vagy x86 .NET-alapú ügyfelek használatakor lekérdezéseket futtassanak az emulátorból az SQL API-fiókból.
 
 ### <a name="246"></a>2.4.6
 
-- Ez a kiadás paritást biztosít az Azure Cosmos szolgáltatás szolgáltatásaival július 2019-ig, az [Azure Cosmos Emulator segítségével helyileg fejleszthető](local-emulator.md)kivételekkel. Emellett javít számos, az emulátor leállításával kapcsolatos hibát, amikor a parancssorból és a belső IP-címek felülbírálásait használja a közvetlen módú kapcsolattal rendelkező SDK-ügyfelek számára.
+- Ez a kiadás paritást biztosít az Azure Cosmos szolgáltatás szolgáltatásaival július 2019-ig, az [Azure Cosmos Emulator segítségével helyileg fejleszthető](local-emulator.md)kivételekkel. Emellett javít számos, az emulátorral kapcsolatos hibát, amikor a parancssorból és a belső IP-címek felülbírálásait használja a közvetlen módú kapcsolattal rendelkező SDK-ügyfelek számára.
 
 ### <a name="243"></a>2.4.3
 
