@@ -1,5 +1,5 @@
 ---
-title: Tárolótámogatás
+title: Azure Cognitive Services tárolók
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan érheti el Cognitive Services a Docker-tárolókat az adataihoz.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 9/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 141b82467f2b437cfd4a8125d86618b85e48a6ef
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89424641"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907007"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Tárolók támogatása az Azure Cognitive Services
+# <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services tárolók
 
 > [!WARNING]
 > 2020. június 11-én a Microsoft bejelentette, hogy nem értékesít arcfelismerő technológiát az Egyesült Államok rendőrségének egészen addig, amíg az emberi jogokra alapozott erős szabályozást nem vezetnek be. Ilyen esetben előfordulhat, hogy az ügyfelek nem használhatják az Azure-szolgáltatások (például a Face vagy a Video Indexer) arc-felismerési funkcióit és funkcióit, ha az ügyfél vagy a által a Egyesült Államok egy rendőrségi részlege által vagy a szolgáltatásban való használatát engedélyezte.
@@ -52,22 +52,23 @@ Cognitive Services erőforrások elérhetők [Microsoft Azureon](https://azure.m
 
 Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosítják, amelyek mindegyike az Azure-beli szolgáltatások funkcióinak egy részhalmazát tartalmazza Cognitive Services:
 
-| Szolgáltatás | Támogatott árképzési szintek | Tároló | Description |
+| Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
 |--|--|--|--|
-| [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
+| [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Olvasás** | Különböző felületek és hátterek, például a nyugták, a plakátok és a névjegykártyák különböző objektumainak képeiből származó nyomtatott szöveg kibontása. Az olvasási tároló a képek *kézírásos szövegét* is észleli, és PDF/TIFF/többoldalas támogatást biztosít.<br/><br/>**Fontos:** Az olvasási tároló jelenleg csak angol nyelven működik. |
 | [Face][fa-containers] | F0, S0 | **Face** | Észleli az emberi arcokat a képekben, és azonosítja az attribútumokat, beleértve az arc-tereptárgyak (például az orr és a szemek), a nemek, az életkor és más, a géppel előre jelzett arc-funkciókat. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc vagy különböző kép azonos-e a megbízhatósági pontszám használatával, vagy összehasonlítja az arcokat egy adatbázissal, hogy megtudja, hasonló vagy azonos arc létezik-e. A hasonló arcok csoportokba rendezésére is képes, közös vizualizációs jellemzőkkel.<br>[Hozzáférés kérése][request-access] |
 | [Űrlap-felismerő][fr-containers] | F0, S0 | **Form Recognizer** | Az űrlap ismerete a gépi tanulási technológiákat alkalmazza a kulcs-érték párok és táblák űrlapokból való azonosításához és kinyeréséhez.<br>[Hozzáférés kérése][request-access] |
 | [LUIS][lu-containers] | F0, S0 | **Luis** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Betölti a betanított vagy közzétett Language Understanding modellt, más néven LUIS alkalmazást egy Docker-tárolóba, és hozzáférést biztosít a tároló API-végpontjai lekérdezési előrejelzéséhez. Lekérdezési naplókat gyűjthet a tárolóból, és feltöltheti ezeket a [Luis-portálra](https://www.luis.ai) az alkalmazás előrejelzési pontosságának javítása érdekében. |
-| [Speech Service API][sp-containers-stt] | F0, S0 | **Diktálás** | Folyamatos, valós idejű beszédet szöveggé alakít. |
-| [Speech Service API][sp-containers-cstt] | F0, S0 | **Custom Speech – szöveg** | A folyamatos valós idejű beszédet szövegbe helyezi egy egyéni modell használatával. |
-| [Speech Service API][sp-containers-tts] | F0, S0 | **Szövegfelolvasás** | Az írott szöveget természetesnek hangzó beszéddé alakítja. |
-| [Speech Service API][sp-containers-ctts] | F0, S0 | **Egyéni szöveg – beszéd** | Átalakítja a szöveget természetes hangú beszédre egyéni modell használatával. |
-| [Speech Service API][sp-containers-ntts] | F0, S0 | **Neurális szöveg – beszéd** | A mély neurális hálózati technológiával természetes hangú beszédre alakítja át a szöveget, ami lehetővé teszi a természetes szintetizált beszédek használatát. |
+| [Speech Service API][sp-containers-stt] | F0, S0 | **Beszéd – szöveg** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Folyamatos, valós idejű beszédet szöveggé alakít. |
+| [Speech Service API][sp-containers-cstt] | F0, S0 | **Custom Speech – szöveg** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | A folyamatos valós idejű beszédet szövegbe helyezi egy egyéni modell használatával. |
+| [Speech Service API][sp-containers-tts] | F0, S0 | **Szöveg – beszéd** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Az írott szöveget természetesnek hangzó beszéddé alakítja. |
+| [Speech Service API][sp-containers-ctts] | F0, S0 | **Egyéni szöveg-beszéd** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Átalakítja a szöveget természetes hangú beszédre egyéni modell használatával. |
+| [Speech Service API][sp-containers-ntts] | F0, S0 | **Neurális szöveg-beszéd** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | A mély neurális hálózati technológiával természetes hangú beszédre alakítja át a szöveget, ami lehetővé teszi a természetes szintetizált beszédek használatát. |
 | [Text Analytics][ta-containers-keyphrase] | F0, S | **Kulcsszókeresés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | A fő pontok azonosítására szolgáló legfontosabb kifejezések kibontása. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
 | [Text Analytics][ta-containers-language] | F0, S | **Nyelvfelismerés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | A legfeljebb 120 nyelv esetében azt észleli, hogy a bemeneti szöveg milyen nyelven íródott, és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
 | [Text Analytics][ta-containers-sentiment] | F0, S | **Hangulatelemzés v3** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | A nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az érzelmek elemzése ebben a verzióban az egyes dokumentumokhoz és mondatokhoz tartozó hangulati címkéket (például *pozitív* vagy *negatív*) adja vissza. |
 | [Text Analytics][ta-containers-health] | F0, S | **Text Analytics állapota** | Orvosi adatok kinyerése és címkézése strukturálatlan klinikai szövegből. |
+| [Térbeli elemzés][spa-containers] | S0 | **Térbeli elemzés** | Orvosi adatok kinyerése és címkézése strukturálatlan klinikai szövegből. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -78,7 +79,7 @@ Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánla
 * Computer Vision
 * Face
 * LUIS
-* Szövegelemzés
+* Text Analytics
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 
@@ -127,6 +128,7 @@ Telepítse és vizsgálja meg a tárolók által biztosított funkciókat az Azu
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

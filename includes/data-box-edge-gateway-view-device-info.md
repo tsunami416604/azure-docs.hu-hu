@@ -49,7 +49,7 @@ ms.locfileid: "86218445"
     |-----------|-------------|
     | FriendlyName                   | Az eszköz felhasználóbarát neve, amely a helyi webes felületen keresztül van konfigurálva az eszköz telepítése során. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma.  |
     | Sorozatszám                   | Az eszköz sorozatszáma a gyárban hozzárendelt egyedi szám.                                                                             |
-    | Modell                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |
+    | Modellezés                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |
     | FriendlySoftwareVersion        | Az eszköz szoftverének verziójának megfelelő felhasználóbarát karakterlánc. Az előzetes verziót futtató rendszerek esetében a felhasználóbarát szoftververzió Data Box Edge 1902. |
     | HcsVersion                     | Az eszközön futó HCS FRISSÍTŐÜGYNÖK szoftver verziója. Például a Data Box Edge 1902-nek megfelelő HCS FRISSÍTŐÜGYNÖK-szoftververzió 1.4.771.324.            |
     | LocalCapacityInMb              | Az eszköz teljes helyi kapacitása a megabitben.                                                                                                        |

@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203552"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906700"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Képbesorolási TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code-bővítmény (előzetes verzió) Azure Machine Learning
 
@@ -61,7 +61,7 @@ Ahhoz, hogy egy alkalmazást Azure Machine Learning hozzon létre, egy munkater�
 1. Válassza **az új erőforráscsoport létrehozása**lehetőséget. 
 1. Nevezze el az erőforráscsoportot "TeamWorkspace-RG" néven, majd nyomja le az **ENTER**billentyűt. 
 1. Válassza ki a munkaterület helyét. Ajánlott olyan helyet választani, amely a modell üzembe helyezéséhez legközelebb eső helyen található. Például: "USA nyugati régiója 2".
-1. Amikor a rendszer rákérdez a munkaterület típusának kiválasztására, válassza az **alapszintű** lehetőséget egy alapszintű munkaterület létrehozásához. A különböző munkaterület-ajánlatokkal kapcsolatos további információkért lásd: [Azure Machine learning áttekintése](./overview-what-is-azure-ml.md#sku).
+1. Amikor a rendszer kéri, hogy válassza ki a munkaterület típusát, válassza az **alapszintű**lehetőséget.
 
 Ezen a ponton a rendszer egy új munkaterületet hoz létre a fiókjában. Néhány perc elteltével az új munkaterület megjelenik az előfizetési csomópontban. 
 

@@ -3,12 +3,12 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000362"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985514"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -48,7 +48,7 @@ Azure Backup lehetővé teszi az adatvédelem különböző számítási feladat
 
 ### <a name="management-plane"></a>Felügyeleti sík
 
-* **Hozzáférés-vezérlés** – a Recovery Services-tároló biztosítja a felügyeleti képességeket, és a Azure Portal, az SDK, a CLI és a REST API-k segítségével érhető el. Emellett egy RBAC határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
+* **Hozzáférés-vezérlés** – a tárolók (Recovery Services és Backup-tárolók) biztosítják a felügyeleti képességeket, és elérhetők a Azure Portal, a Backup Center, a tároló irányítópultok, az SDK, a CLI és a REST API-k segítségével. Emellett egy RBAC határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
 
 * **Házirend-kezelés** – az egyes tárakon belül Azure Backup szabályzatok határozzák meg, hogy a biztonsági mentések Mikor legyenek aktiválva, és mennyi ideig kell megőrizni őket. Ezeket a szabályzatokat kezelheti, és több elem között is alkalmazhatja őket.
 
@@ -58,7 +58,7 @@ Azure Backup lehetővé teszi az adatvédelem különböző számítási feladat
 
 ## <a name="vault-considerations"></a>Tár szempontjai
 
-A Azure Backup Recovery Services-tárolókat használ a biztonsági másolatok előkészítéséhez és kezeléséhez. A tárolókat is használ a biztonsági másolatok tárolásához. A hatékony tár kialakításával a szervezetek létrehozhatnak egy struktúrát az Azure-beli biztonsági mentési eszközök rendszerezéséhez és kezeléséhez az üzleti prioritások támogatásához. Tár létrehozásakor vegye figyelembe a következő irányelveket:  
+A Azure Backup a tárolókat (Recovery Services és Backup-tárolókat) használja a biztonsági másolatok előkészítéséhez és kezeléséhez. A tárolókat is használ a biztonsági másolatok tárolásához. A hatékony tár kialakításával a szervezetek létrehozhatnak egy struktúrát az Azure-beli biztonsági mentési eszközök rendszerezéséhez és kezeléséhez az üzleti prioritások támogatásához. Tár létrehozásakor vegye figyelembe a következő irányelveket:  
 
 ### <a name="align-to-subscription-design-strategy"></a>Igazítás az előfizetési terv stratégiájához
 
@@ -71,7 +71,8 @@ A biztonsági másolatok rendszerezéséhez és kezeléséhez egyetlen tárat va
 * Ha a számítási feladatokat egyetlen előfizetéssel és egyetlen erőforrással felügyeli, akkor egyetlen tároló használatával figyelheti és kezelheti a biztonsági mentési hagyatékot.
 
 * Ha a számítási feladatok az előfizetések között oszlanak el, több tárolót is létrehozhat, egy vagy több előfizetéssel.
-  * Az operatív tevékenységek monitorozásának leegyszerűsítése az összes tárolón, előfizetésen és bérlőn keresztül a Backup Explorer és a jelentések segítségével végezhető el. [További információ](monitor-azure-backup-with-backup-explorer.md) : összesített nézet beszerzése.
+  * A Backup Center lehetővé teszi, hogy egyetlen üvegtábla legyen a biztonsági mentéssel kapcsolatos összes feladat kezeléséhez. [További információ itt]().
+  * A nézeteket a munkafüzet sablonjaival is testreszabhatja. A Backup Explorer egy ilyen sablon az Azure-beli virtuális gépekhez. [További információ itt](monitor-azure-backup-with-backup-explorer.md).
   * Ha konzisztens szabályzatra van szüksége a tárakban, akkor az Azure Policy segítségével több tárolón is propagálhatja a biztonsági mentési szabályzatot. Írhat olyan egyéni Azure Policy- [definíciót](../governance/policy/concepts/definition-structure.md) , amely a ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) effektus használatával propagálja a biztonsági mentési szabályzatot több tárolón keresztül. Ezt a Azure Policy [definíciót hozzárendelheti](../governance/policy/assign-policy-portal.md) egy adott hatókörhöz (előfizetés vagy RG), így egy "biztonsági mentési szabályzat" erőforrást helyez üzembe az Azure Policy hozzárendelés hatókörében lévő összes Recovery Services-tárolóra. A biztonsági mentési szabályzat beállításait (például a biztonsági mentés gyakoriságát, a megőrzést stb.) a felhasználónak kell megadnia paraméterként a Azure Policy-hozzárendelésben.
 
 * Ahogy a szervezeti lábnyoma nő, érdemes lehet áthelyezni a munkaterheléseket az előfizetések között a következő okok miatt: a biztonsági mentési szabályzattal való összehangolás, a tárolók összevonása, az alacsonyabb redundancia elleni kereskedelmi forgalom csökkentése a GRS és a LRS között.  Azure Backup támogatja egy Recovery Services-tároló áthelyezését az Azure-előfizetések között, vagy egy másik erőforráscsoporthoz ugyanazon az előfizetésen belül. [További információ itt](backup-azure-move-recovery-services-vault.md).

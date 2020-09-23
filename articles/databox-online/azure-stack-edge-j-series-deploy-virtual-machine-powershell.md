@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek üzembe helyezése az Azure Stack Edge GPU-eszközön a Azure PowerShell használatával
-description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge GPU-eszközön Azure PowerShell használatával.
+title: Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
+description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890695"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge GPU-eszközön a Azure PowerShell használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack peremhálózati eszközön Azure PowerShell használatával.
+Ez az oktatóanyag leírja, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack Edge Pro-eszközön Azure PowerShell használatával.
 
 ## <a name="vm-deployment-workflow"></a>Virtuális gép üzembe helyezésének munkafolyamata
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge](azure-stack-edge-j-series-deploy-add-storage-accounts.md)-ben című témakör lépéseit.
+> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md)-ban című témakör lépéseit.
 
 Az alábbiakban egy példa látható a kimenetre.
 
@@ -193,7 +193,7 @@ Ha *https*-t használ, telepítenie kell a megfelelő tanúsítványokat az eszk
 
 Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blobba felhasználható lemezes lemezképeit. Egy eszköz, például a [AzCopy](../storage/common/storage-use-azcopy-v10.md) használatával feltöltheti a virtuális merevlemezt a korábbi lépések során létrehozott Storage-fiókba. 
 
-A AzCopy használata előtt győződjön meg arról, hogy a [AzCopy megfelelően van](#configure-azcopy) -e konfigurálva a blob storage-REST API verziójával, amelyet az Azure stack Edge-eszközzel használ.
+A AzCopy használata előtt győződjön meg arról, hogy a [AzCopy megfelelően van](#configure-azcopy) -e konfigurálva a blob storage-REST API verziójával, amelyet az Azure stack Edge Pro-eszközével használ.
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -445,11 +445,11 @@ The public IP in this case will be the same as the private IP that you passed du
 
 ## <a name="manage-vm"></a>Virtuális gép kezelése
 
-A következő szakasz ismerteti a virtuális gép azon gyakori műveleteit, amelyeket az Azure Stack Edge-eszközön fog létrehozni.
+A következő szakasz ismerteti a virtuális gép azon gyakori műveleteit, amelyeket a Azure Stack Edge Pro-eszközön fog létrehozni.
 
 ### <a name="list-vms-running-on-the-device"></a>Az eszközön futó virtuális gépek listázása
 
-Az Azure Stack Edge-eszközön futó összes virtuális gép listájának visszaküldéséhez futtassa a következő parancsot.
+Az Azure Stack Edge Pro-eszközön futó összes virtuális gép listájának visszaküldéséhez futtassa a következő parancsot.
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -502,7 +502,7 @@ A parancsmaggal kapcsolatos további információkért nyissa meg a [Remove-Azur
 
 A virtuális gép mérete határozza meg a virtuális gép számára elérhető számítási erőforrások, például a processzor, a GPU és a memória mennyiségét. A virtuális gépeket a számítási feladatok számára megfelelő virtuálisgép-mérettel kell létrehozni. Annak ellenére, hogy az összes gép ugyanazon a hardveren fut, a gépi méretek eltérő korlátokkal rendelkeznek a lemezes hozzáféréshez, ami segíthet a teljes lemezes hozzáférés kezelésében a virtuális gépeken. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.
 
-A következő standard Dv2 sorozatú virtuális gépek támogatottak Azure Stack peremhálózati eszközön történő létrehozáshoz.
+A következő standard Dv2 sorozatú virtuális gépeket Azure Stack Edge Pro-eszközön lehet létrehozni.
 
 ### <a name="dv2-series"></a>Dv2-sorozat
 |Méret     |vCPU     |Memória (GiB) | Ideiglenes tároló (GiB)  | OPERÁCIÓSRENDSZER-lemez maximális átviteli sebessége (IOPS) | Maximális Temp Storage-átviteli sebesség (IOPS) | Adatlemezek maximális száma/átviteli sebesség (IOPS) | Hálózati adapterek maximális száma |
@@ -547,9 +547,9 @@ A bővítmény, a méretezési csoportok, a rendelkezésre állási csoportok, a
 
 ## <a name="configure-azcopy"></a>AzCopy konfigurálása
 
-A AzCopy legújabb verziójának telepítésekor konfigurálnia kell a AzCopy-t, hogy az megfeleljen az Azure Stack Edge-eszköz blob Storage REST API verziójának.
+A AzCopy legújabb verziójának telepítésekor konfigurálnia kell a AzCopy, hogy az megfeleljen a Azure Stack Edge Pro-eszköz blob Storage REST API verziójának.
 
-Az Azure Stack Edge-eszköz eléréséhez használt ügyfélen állítson be egy globális változót, amely megfelel a blob Storage REST API verziójának.
+Az Azure Stack Edge Pro-eszköz eléréséhez használt ügyfélen állítson be egy globális változót, amely megfelel a blob Storage REST API verziójának.
 
 ### <a name="on-windows-client"></a>Windows-ügyfélen 
 

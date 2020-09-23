@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421382"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985140"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -75,6 +75,30 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     ![Új hozzárendelés – értesítés](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
+## <a name="assign-a-role-with-restricted-scope"></a>Korlátozott hatókörű szerepkör társítása
+
+Bizonyos szerepkörök esetében a megadott engedélyek hatóköre egyetlen felügyeleti egységre, egyszerű szolgáltatásnév vagy alkalmazásra korlátozható. Ez az eljárás egy példa arra, ha olyan szerepkört rendel hozzá, amely egy felügyeleti egység hatókörével rendelkezik. A felügyeleti egységen keresztüli hatókört támogató szerepkörök listáját a [hatókörrel rendelkező szerepkörök felügyeleti egységhez való hozzárendelésével](../users-groups-roles/roles-admin-units-assign-roles.md)foglalkozó témakörben tekintheti meg. Ez a szolgáltatás jelenleg az Azure AD-szervezeteknek van bevezetve.
+
+1. Jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
+
+1. Válassza ki **Azure Active Directory**  >  **szerepköröket és rendszergazdákat**.
+
+1. Válassza ki a **felhasználói rendszergazdát**.
+
+    ![A hozzárendelés hozzáadása parancs akkor érhető el, amikor megnyit egy szerepkört a portálon](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. Válassza a **hozzárendelések hozzáadása**lehetőséget.
+
+    ![Ha egy szerepkör támogatja a hatókört, kiválaszthat egy hatókört.](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. A **hozzárendelések hozzáadása** lapon a következőket teheti:
+
+   - Válassza ki a szerepkörhöz hozzárendelni kívánt felhasználót vagy csoportot
+   - Válassza ki a szerepkör hatókörét (ebben az esetben a felügyeleti egységeket)
+   - Felügyeleti egység kiválasztása a hatókörhöz
+
+A felügyeleti egységek létrehozásával kapcsolatos további információkért lásd: [felügyeleti egységek hozzáadása és eltávolítása](../users-groups-roles/roles-admin-units-manage.md).
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Meglévő szerepkör-hozzárendelés frissítése vagy eltávolítása
 
 A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításához kövesse az alábbi lépéseket.
@@ -101,7 +125,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Válasszon **szerepköröket** vagy **tagokat**.
 
-    ![Azure AD-szerepkörök](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Azure AD-szerepkörök megnyitása](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Válassza a **tag hozzáadása** elemet a **felügyelt tagok hozzáadásának**megnyitásához.
 
@@ -111,7 +135,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Válassza a **Tagok kiválasztása**lehetőséget, válassza ki a szerepkörhöz hozzárendelni kívánt felhasználókat, majd válassza a **kiválasztás**lehetőséget.
 
-    ![Szerepkör kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Válassza ki a hozzárendelni kívánt felhasználót vagy csoportot](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. A **felügyelt Tagok hozzáadása**lapon kattintson az **OK** gombra a felhasználó szerepkörhöz való hozzáadásához.
 
@@ -169,7 +193,7 @@ A következő lépésekkel távolíthat el egy adott felhasználót egy Azure AD
 
 1. A megerősítést kérő üzenetben válassza az **Igen**lehetőséget.
 
-    ![Szerepkör eltávolítása](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Az Eltávolítás megerősítése](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     A szerepkör-hozzárendelés el lett távolítva.
 

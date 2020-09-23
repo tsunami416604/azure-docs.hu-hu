@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Static Web Apps?
+title: Mi az az Azure Static Web Apps?
 description: Az Azure statikus Web Apps legfontosabb funkciói és funkciói.
 services: static-web-apps
 author: craigshoemaker
@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565706"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906793"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
 
@@ -24,7 +24,7 @@ Az Azure statikus Web Apps munkafolyamata egy fejlesztői napi munkafolyamatra v
 
 Amikor létrehoz egy Azure Static Web Apps-erőforrást, az Azure beállít egy GitHub Actions-munkafolyamatot az alkalmazás forráskódjának adattárában, amely figyeli a kiválasztott ágat. Minden alkalommal, amikor leküldi vagy fogadja a lekéréses kérelmeket a figyelt ágra, a GitHub-művelet automatikusan létrehozza és telepíti az alkalmazást és az API-ját az Azure-ba.
 
-A statikus webalkalmazásokat gyakran hozzák létre olyan könyvtárak és keretrendszerek használatával, mint például az Angular, a React, a Svelte vagy a Vue. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
+A statikus webalkalmazások általában könyvtárak és keretrendszerek használatával készültek, mint például a szögletes, a reakciós, a karcsú, a Vue vagy a Blazer. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
 
 A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól választja el, és helyette a világ földrajzilag elosztott pontjairól szolgálnak. Ez az elosztás a fájlok sokkal gyorsabb szolgáltatását teszi lehetővé, mivel a fájlok fizikailag közelebb vannak a végfelhasználókhoz. Emellett az API-végpontok [kiszolgáló nélküli architektúrával](../azure-functions/functions-overview.md)vannak tárolva, így elkerülhető, hogy a teljes háttér-kiszolgálót egyszerre kelljen használni.
 
@@ -44,11 +44,11 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Mit tehet a statikus Web Apps
 
-- **Modern JavaScript-alkalmazásokat készíthet** olyan keretrendszerekkel és tárakkal, mint például a [szögletes](getting-started.md?tabs=angular), a [reakciós](getting-started.md?tabs=react), a [karcsú](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md?tabs=react) [Azure functions](apis.md) háttérrel.
+- Hozzon létre **modern webalkalmazásokat** JavaScript-keretrendszerekkel és-tárakkal, például a [szögletes](getting-started.md?tabs=angular), a [reagálási](getting-started.md?tabs=react), a [karcsú](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md?tabs=react)vagy a [Blazer](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) használatával webszerelvény-alkalmazások létrehozásához [Azure functions](apis.md) háttérrel.
 - **Statikus helyeket tehet közzé** olyan keretrendszerekkel, mint például a [Gatsby](publish-gatsby.md), a [Hugo](publish-hugo.md), a [VuePress](publish-vuepress.md).
 - **Webalkalmazások üzembe helyezése** olyan keretrendszerekkel, mint a [Next.js](deploy-nextjs.md) és a [Nuxt.js](deploy-nuxtjs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első statikus alkalmazás létrehozása](getting-started.md)

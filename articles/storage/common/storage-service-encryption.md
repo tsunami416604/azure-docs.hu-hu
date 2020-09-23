@@ -4,17 +4,17 @@ description: Az Azure Storage védi az adatait úgy, hogy automatikusan titkosí
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/24/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078197"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985756"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok Azure Storage-titkosítása
 
@@ -38,16 +38,16 @@ Az Azure Managed Disks titkosításával és kulcskezelő szolgáltatásával ka
 
 Alapértelmezés szerint a Microsoft által felügyelt kulcsokkal titkosítva vannak az új Storage-fiókok. Továbbra is használhatja a Microsoft által felügyelt kulcsokat az adatok titkosításához, vagy a titkosítást a saját kulcsaival is kezelheti. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, két lehetőség közül választhat. Bármelyik kulcskezelő típust használhatja, vagy mindkettőt:
 
-- Megadhat egy, a blob Storage-ban és a Azure Filesban található adattitkosításhoz és visszafejtéshez Azure Key Vault használó *ügyfél által felügyelt kulcsot* . <sup>az ügyfél</sup> által felügyelt kulcsokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](encryption-customer-managed-keys.md).
-- Megadhat egy *ügyfél által megadott kulcsot* a blob Storage-műveletekhez. A blob Storage-hoz tartozó olvasási vagy írási kérelmet készítő ügyfél tartalmazhat egy titkosítási kulcsot a kérelemben, amely részletesen szabályozza a Blobok titkosításának és visszafejtésének módját. Az ügyfél által biztosított kulcsokkal kapcsolatos további információkért lásd: [titkosítási kulcs megadása a blob Storage-hoz való kérelemben](encryption-customer-provided-keys.md).
+- Megadhat egy *ügyfél által felügyelt kulcsot* , amelyet a blob Storage-ban és a Azure Filesban lévő adattitkosításhoz és visszafejtéshez használhat. az ügyfél által felügyelt kulcsokat az Azure Key Vault vagy Azure Key Vault felügyelt hardveres biztonsági modell (HSM) (előzetes verzió <sup>) szerint kell</sup> tárolni. Az ügyfél által felügyelt kulcsokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Storage encryption](encryption-customer-managed-keys.md)szolgáltatáshoz.
+- Megadhat egy *ügyfél által megadott kulcsot* a blob Storage-műveletekhez. A blob Storage-hoz tartozó olvasási vagy írási kérelmet készítő ügyfél tartalmazhat egy titkosítási kulcsot a kérelemben, amely részletesen szabályozza a Blobok titkosításának és visszafejtésének módját. Az ügyfél által biztosított kulcsokkal kapcsolatos további információkért lásd: [titkosítási kulcs megadása a blob Storage-hoz való kérelemben](../blobs/encryption-customer-provided-keys.md).
 
 Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosabb felügyeleti lehetőségeit.
 
 | Kulcskezelő paraméter | Microsoft által felügyelt kulcsok | Felhasználó által kezelt kulcsok | Ügyfél által biztosított kulcsok |
 |--|--|--|--|
 | Titkosítási/visszafejtési műveletek | Azure | Azure | Azure |
-| Az Azure Storage szolgáltatásai támogatottak | Összes | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
-| Kulcstároló | Microsoft Key Store | Azure Key Vault | Ügyfél saját kulcstárolója |
+| Az Azure Storage szolgáltatásai támogatottak | Mind | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
+| Kulcstároló | Microsoft Key Store | Azure Key Vault vagy Key Vault HSM | Ügyfél saját kulcstárolója |
 | Kulcs rotációs felelőssége | Microsoft | Ügyfél | Ügyfél |
 | Kulcs vezérlő | Microsoft | Ügyfél | Ügyfél |
 
@@ -56,6 +56,14 @@ Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosa
 
 > [!NOTE]
 > A Microsoft által felügyelt kulcsok megfelelőségi követelmények szerint elforgatva. Ha meghatározott kulcs-elforgatási követelményekkel rendelkezik, a Microsoft javasolja, hogy az ügyfél által felügyelt kulcsokra váltson, így Ön is kezelheti és naplózhatja a rotációs szolgáltatást.
+
+## <a name="doubly-encrypt-data-with-infrastructure-encryption"></a>Az adattitkosítás megkettőzése az infrastruktúra titkosításával
+
+Azok az ügyfelek, akik magas szintű megbízhatóságot igényelnek, az adatbiztonságuk is lehetővé teszi az 256 bites AES-titkosítást az Azure Storage-infrastruktúra szintjén. Ha az infrastruktúra-titkosítás engedélyezve van, a Storage-fiókban tárolt adatforgalom kétszer, &mdash; a szolgáltatási szinten, az infrastruktúra szintjén pedig &mdash; két különböző titkosítási algoritmussal és két különböző kulccsal van titkosítva. Az Azure Storage-beli adattárolók kettős titkosítása védelmet nyújt olyan forgatókönyvek esetében, amelyekben az egyik titkosítási algoritmus vagy kulcs sérülhet. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait.
+
+A szolgáltatási szintű titkosítás támogatja a Microsoft által felügyelt kulcsok vagy az ügyfél által felügyelt kulcsok használatát Azure Key Vault. Az infrastruktúra-szintű titkosítás a Microsoft által felügyelt kulcsokra támaszkodik, és mindig külön kulcsot használ.
+
+Az infrastruktúra-titkosítást lehetővé tevő Storage-fiókok létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása infrastruktúra-titkosítással, amely lehetővé teszi az adatok kettős titkosítását](infrastructure-encryption-enable.md).
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB Storage titkosítási hatókörök (előzetes verzió)
 
@@ -102,6 +110,5 @@ Ha a titkosítási hatókör védett a Azure Key Vault ügyfél által felügyel
 ## <a name="next-steps"></a>Következő lépések
 
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
-- [Felhasználó által kezelt kulcsok konfigurálása az Azure Storage titkosításához az Azure Portalon](storage-encryption-keys-portal.md)
-- [Felhasználó által kezelt kulcsok konfigurálása az Azure Storage titkosításához a PowerShellből](storage-encryption-keys-powershell.md)
-- [Felhasználó által kezelt kulcsok konfigurálása az Azure Storage titkosításához az Azure CLI-ből](storage-encryption-keys-cli.md)
+- [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)
+- [BLOB Storage titkosítási hatókörök (előzetes verzió)](../blobs/encryption-scope-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Gépi tanulás és AI a ONNX az Azure SQL Edge-ben (előzetes verzió)
-description: Az Azure SQL Edge (előzetes verzió) gépi tanulása a nyílt neurális hálózati Exchange (ONNX) formátumú modelleket támogatja. A ONNX egy nyílt formátum, amellyel különböző gépi tanulási keretrendszerek és eszközök közötti adatcsere-modelleket lehet használni.
+title: Gépi tanulás és AI a ONNX az Azure SQL Edge-ben
+description: Az Azure SQL Edge gépi tanulása támogatja a nyílt neurális hálózati Exchange-(ONNX-) formátumú modelleket. A ONNX egy nyílt formátum, amellyel különböző gépi tanulási keretrendszerek és eszközök közötti adatcsere-modelleket lehet használni.
 keywords: SQL Edge üzembe helyezése
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907141"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Gépi tanulás és AI a ONNX az SQL Edge-ben (előzetes verzió)
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Gépi tanulás és AI a ONNX az SQL Edge-ben
 
-Az Azure SQL Edge (előzetes verzió) gépi tanulása a [nyílt neurális hálózati Exchange (ONNX)](https://onnx.ai/) formátumú modelleket támogatja. A ONNX egy nyílt formátum, amellyel különböző [gépi tanulási keretrendszerek és eszközök](https://onnx.ai/supported-tools)közötti adatcsere-modelleket lehet használni.
+Az Azure SQL Edge gépi tanulása támogatja a [nyílt neurális hálózati Exchange-(ONNX-)](https://onnx.ai/) formátumú modelleket. A ONNX egy nyílt formátum, amellyel különböző [gépi tanulási keretrendszerek és eszközök](https://onnx.ai/supported-tools)közötti adatcsere-modelleket lehet használni.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -36,7 +36,7 @@ Modell beszerzése ONNX formátumban:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit – Learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     A támogatott keretrendszerek és példák teljes listájáért lásd: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format).
@@ -52,7 +52,7 @@ A más numerikus típusok a [Cast és a convert](https://docs.microsoft.com/sql/
 
 A modell bemeneteit strukturálni kell, hogy a modell minden bemenete egy tábla egyetlen oszlopának felel meg. Ha például pandák dataframe használ a modell betanításához, akkor minden bemenetnek külön oszlopnak kell lennie a modellhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
-- [ONNX-modell üzembe helyezése az Azure SQL Edge-ben (előzetes verzió)](deploy-onnx.md)
+- [ONNX-modell üzembe helyezése az Azure SQL Edge-ben ](deploy-onnx.md)

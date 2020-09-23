@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612085"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907061"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -165,11 +165,8 @@ Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltat
 
 ### <a name="advance-threat-protection"></a>Veszélyforrások elleni védelem
 
-A speciális adatbiztonság a speciális SQL-alapú biztonsági képességek egységes csomagja. Ez a funkció magában foglalja a bizalmas adatok felderítését és besorolását, az adatbázis-sebezhetőségek kezelését, valamint az adatbázis fenyegetését jelző rendellenes tevékenységek észlelését. Egyetlen helyet biztosít a képességek engedélyezéséhez és kezeléséhez.
+Az SQL-hez készült Azure Defender egységes csomag a fejlett SQL-biztonsági funkciókhoz. Az adatbázis biztonsági rései kezelésére szolgáló funkciókat tartalmaz, valamint észleli a rendellenes tevékenységeket, amelyek fenyegetést jelenthetnek az adatbázisra. Egyetlen helyet biztosít a képességek engedélyezéséhez és kezeléséhez.
 
-- [Adatfelderítés és besorolás](data-discovery-and-classification-overview.md):
-
-  Ez a funkció Azure SQL Database beépített képességeket biztosít az adatbázisaiban található bizalmas adatok felfedezéséhez, besorolásához, címkézéséhez és védelméhez. Betekintést nyújt az adatbázis-besorolási állapotba, és nyomon követi a bizalmas adatokhoz való hozzáférést az adatbázison belül és a határain kívül is.
 - [Sebezhetőségi felmérés](sql-vulnerability-assessment.md):
 
   A szolgáltatás felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
@@ -185,6 +182,10 @@ A [naplózás](../../azure-sql/database/auditing-overview.md) nyomon követi az 
 
 Az SQL Database titkosítás biztosításával segíti az adatok védelmét. A mozgásban lévő adatforgalom a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatást használja. A nyugalmi állapotban lévő adatok esetében [transzparens adattitkosítást](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használ. A használatban lévő adatkezeléshez [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)használ.
 
+### <a name="data-discovery-and-classification"></a>Adatfelderítés és besorolás
+
+Az [adatok észlelése és besorolása](data-discovery-and-classification-overview.md) Azure SQL Database beépített képességeket biztosít az adatbázisaiban található bizalmas adatok felderítéséhez, besorolásához, címkézéséhez és védelméhez. Betekintést nyújt az adatbázis-besorolási állapotba, és nyomon követi a bizalmas adatokhoz való hozzáférést az adatbázison belül és a határain kívül is.
+
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
 Az SQL Database az [Azure Active Directory-integráció](authentication-aad-overview.md) által lehetővé teszi adatbázis-felhasználók és más Microsoft-szolgáltatások identitásainak központi kezelését. Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory támogatja a [többtényezős hitelesítést](authentication-mfa-ssms-overview.md) az adatkezelés és az alkalmazások biztonságának növeléséhez, miközben támogatja az egyszeri bejelentkezést.
@@ -196,7 +197,7 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
 |Eszköz|Leírás|
 |:---|:---|
 |[Az Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
-|[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, MacOS és Linux rendszeren fut.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, macOS és Linux rendszeren fut.|
 |[Az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
 |[SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server a kapcsolódó adatbázisok, adatbázisok Azure SQL Database, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és az Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) lekérdezéséhez.|

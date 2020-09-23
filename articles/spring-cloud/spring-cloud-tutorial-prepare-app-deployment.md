@@ -1,21 +1,90 @@
 ---
-title: Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
-description: Ismerje meg, hogyan készíthet egy Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez.
+title: Alkalmazás előkészítése üzembe helyezéshez az Azure Spring Cloud-ban
+description: Megtudhatja, hogyan készítheti elő az alkalmazást az Azure Spring Cloud üzembe helyezéséhez.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014939"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906840"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
+::: zone pivot="programming-language-csharp"
+Az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Steeltoe-alkalmazások üzemeltetéséhez, figyeléséhez, méretezéséhez és frissítéséhez. Ez a cikk bemutatja, hogyan készíthet egy meglévő Steeltoe-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. 
+
+Ez a cikk ismerteti azokat a függőségeket, konfigurációkat és kódokat, amelyek szükségesek a .NET Core Steeltoe alkalmazás Azure Spring Cloud-beli futtatásához. További információ az alkalmazások Azure Spring Cloud-beli üzembe helyezéséről: [az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md).
+
+>[!Note]
+> Az Azure Spring Cloud Steeltoe-támogatása jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ az előzetes verziók támogatásáról: [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)fájl.
+
+##  <a name="supported-versions"></a>Támogatott verziók
+
+Az Azure Spring Cloud a következőket támogatja:
+
+* .NET Core 3,1
+* Steeltoe 2,4
+
+## <a name="dependencies"></a>Függőségek
+
+Telepítse a [Microsoft. Azure. SpringCloud. Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) csomagot.
+
+## <a name="update-programcs"></a>Program.cs frissítése
+
+A `Program.Main` metódusban hívja meg a `UseAzureSpringCloudService` metódust:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>Az Eureka Server Service Discovery engedélyezése
+
+Azon a konfigurációs forráson, amelyet az alkalmazás az Azure Spring Cloud-ban való futtatásakor fog használni, állítsa a `spring.application.name` nevet ugyanarra a névre, mint az Azure Spring Cloud alkalmazásra, amelyhez a projekt telepítve lesz.
+
+Ha például egy nevű .NET-projektet helyez üzembe `EurekaDataProvider` aappSettings.jsfájl nevű Azure Spring Cloud-alkalmazáshoz, a `planet-weather-provider` következő JSON-t kell tartalmaznia: *appSettings.json*
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>A szolgáltatás felderítésének használata
+
+Ha az Eureka Server Service Discovery használatával szeretne meghívni egy szolgáltatást, a HTTP-kérelmeket a `http://<app_name>` `app_name` cél alkalmazás értékeként kell meghívnia `spring.application.name` . A következő kód például meghívja a `planet-weather-provider` szolgáltatást:
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Ez a témakör bemutatja, hogyan készíthet meglévő Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Java Spring Cloud-alkalmazás monitorozásához, méretezéséhez és frissítéséhez.
 
 A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstart.md)rövid útmutatót.
@@ -244,3 +313,4 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 
 További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+::: zone-end

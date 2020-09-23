@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601163"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969407"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése REST API-hívások használatával
 
@@ -34,10 +34,23 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre, listázhat és törölhet e
 
 - Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Ha Windows rendszert használ, telepítse a [Linux Windows alrendszerét](/windows/wsl/about) , vagy használja a Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) .
-- Ha a [Windows alrendszert Linux](/windows/wsl/about) vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)használja, [telepítse az Azure CLI helyi konzolt](/cli/azure/install-azure-cli).
-- Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure-ba `az login` egy olyan fiókkal, amely az Azure-előfizetéshez van társítva, vagy a felhasználó által hozzárendelt felügyelt személyazonossági adatokat szeretné lekérni.
-- Egy tulajdonosi hozzáférési jogkivonat lekérése `az account get-access-token` a használatával a következő, felhasználó által hozzárendelt felügyelt identitás-műveletek végrehajtásához.
+- A cikkben szereplő összes parancsot a felhőben vagy helyileg is futtathatja:
+    - A felhőben való futtatáshoz használja a [Azure Cloud Shell](../../cloud-shell/overview.md).
+    - A helyi futtatáshoz telepítse a [curl](https://curl.haxx.se/download.html) és az [Azure CLI](/cli/azure/install-azure-cli)-t.
+
+## <a name="obtain-a-bearer-access-token"></a>Tulajdonos hozzáférési jogkivonatának beszerzése
+
+1. Ha helyileg fut, jelentkezzen be az Azure-ba az Azure CLI-n keresztül:
+
+    ```
+    az login
+    ```
+
+1. Hozzáférési jogkivonat beszerzése [az az Account Get-Access-Token](/cli/azure/account#az_account_get_access_token) használatával
+
+    ```azurecli-interactive
+    az account get-access-token
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 
@@ -91,7 +104,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 Felhasználó által hozzárendelt felügyelt identitás törléséhez a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör-hozzárendelésével.
 
 > [!NOTE]
-> A felhasználó által hozzárendelt felügyelt identitás törlése nem távolítja el a hivatkozást a hozzá rendelt összes erőforrásból. Felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuális gépről a CURL használatával: [felhasználó által hozzárendelt identitás eltávolítása egy Azure-beli virtuális](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm)gépről.
+> A felhasználó által hozzárendelt felügyelt identitás törlése nem távolítja el a hivatkozást a hozzá rendelt összes erőforrásból. Felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuális gépről a CURL használatával: [felhasználó által hozzárendelt identitás eltávolítása egy Azure-beli virtuális](qs-configure-rest-vm.md#remove-a-user-assigned-managed-identity-from-an-azure-vm)gépről.
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
@@ -106,6 +119,6 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
 |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználó által hozzárendelt felügyelt identitás Azure-beli virtuális gépekhez/VMSS való hozzárendelésével kapcsolatos információkért tekintse meg a [felügyelt identitások konfigurálása](qs-configure-rest-vm.md#user-assigned-managed-identity) Azure-beli virtuális gépen REST API hívásokkal és felügyelt identitások konfigurálása az Azure-erőforrásokhoz a [virtuálisgép-méretezési csoportokban REST API hívások használatával](qs-configure-rest-vmss.md#user-assigned-managed-identity)című témakört.

@@ -4,18 +4,21 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567579"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906630"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a OpenVINO™ Model Server – AI bővítményt az Intel rendszerből egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez. Láthatja, hogy ez a következtetési kiszolgáló Hogyan férhet hozzá az objektumok (egy személy, egy jármű vagy egy kerékpár) észleléséhez és a járművek osztályozásához szükséges modellekhez. A rendszer elküldi az élő videó-hírcsatornában található keretek egy részhalmazát, és elküldi az eredményeket IoT Edge hubhoz. 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a OpenVINO™ Model Server – AI bővítményt az Intel rendszerből egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez. Láthatja, hogy ez a következtetési kiszolgáló Hogyan férhet hozzá az objektumok (egy személy, egy jármű vagy egy kerékpár) észleléséhez és a járművek osztályozásához szükséges modellekhez. A rendszer elküldi az élő videó-hírcsatornában található keretek egy részhalmazát, és elküldi az eredményeket IoT Edge hubhoz.
 
-Ez az oktatóanyag egy Azure-beli virtuális gépet használ IoT Edge eszközként, és szimulált élő videó streamet használ. Ez a C# nyelven írt mintakód alapján készült, amely az [észlelési és a kibocsátási események](detect-motion-emit-events-quickstart.md) gyors üzembe helyezésére épül. 
+Ez az oktatóanyag egy Azure-beli virtuális gépet használ IoT Edge eszközként, és szimulált élő videó streamet használ. Ez a C# nyelven írt mintakód alapján készült, amely az [észlelési és a kibocsátási események](detect-motion-emit-events-quickstart.md) gyors üzembe helyezésére épül.
+
+> [!NOTE]
+> Ehhez az oktatóanyaghoz egy x86-64 számítógép használatát kell használni peremhálózati eszközként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +43,7 @@ Ebben a rövid útmutatóban élő videó-elemzéseket fog használni a IoT Edge
 ## <a name="overview"></a>Áttekintés
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Áttekintés":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Áttekintés":::
 
 Ez az ábra azt mutatja be, hogyan áramlik be a gyors útmutatóban szereplő jelek. Az [Edge-modulok](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) egy valós idejű Streaming Protocol-(RTSP-) kiszolgálót üzemeltető IP-kamerát szimulálnak. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontját elérő video stream képkockasebességét. 
 
@@ -53,6 +56,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 1. Az erőforrások eltávolítása.
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>A OpenVINO™ Model Server – AI bővítmény az Inteltől
+
 A [OpenVINO™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (nyílt vizuális következtetések és neurális hálózati optimalizálás) Intel® eloszlása egy ingyenes szoftvercsomag, amely segít a fejlesztőknek és az adatszakértőknek felgyorsítani a számítógépes vizualizációk számítási feladatait, egyszerűsíteni a mélyebb tanulási következtetéseket és üzembe helyezéseket, és lehetővé teszi a könnyű és heterogén végrehajtást az Intel® platformok között a szélétől a felhőbe. Magában foglalja az Intel® Deep learning üzembe helyezési eszközkészletét a modell-optimalizáló és a következtetési motorral, valamint az [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) -tárházat, amely több mint 40 optimalizált, előre betanított modellt tartalmaz.
 
 Összetett, nagy teljesítményű élő videós elemzési megoldások létrehozásához a IoT Edge modul élő videó-elemzését egy olyan hatékony következtetési motorral kell párosítani, amely képes kihasználni a skálát a peremen. Ebben az oktatóanyagban a következtetési kérelmeket a rendszer elküldi a [OpenVINO™ Model Server – AI bővítménynek az Inteltől](https://aka.ms/lva-intel-ovms), egy Edge-modulból, amely a IoT Edge élő videó-elemzéssel való működésre lett tervezve. Ez a következtetési kiszolgálói modul tartalmazza a OpenVINO™ Model Servert (OVMS), amely a OpenVINO™ Toolkit által működtetett következtetési kiszolgáló, amely a számítógép-vizualizációs számítási feladatokhoz van optimalizálva, és az Intel® architektúrák számára lett kifejlesztve. A rendszer hozzáad egy bővítményt az OVMS-hez a képkeretek egyszerű cseréjéhez és a következtetési eredményekhez a következtetési kiszolgáló és a IoT Edge modul élő videó-elemzései között, így lehetővé téve, hogy bármely OpenVINO-™ eszközkészlet által támogatott modellt futtasson (a [kód](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)módosításával testre szabhatja a következtetési kiszolgáló modulját). Az Intel® hardverei által biztosított gyorsítási mechanizmusok széles választéka közül választhat. Ezek közé tartoznak a processzorok (atom, Core, Xeon), a FPGA, a VPUs.
@@ -374,7 +378,7 @@ Most megismételheti a fenti lépéseket a minta program újbóli futtatásához
 
 Ha más rövid útmutatókat vagy oktatóanyagokat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

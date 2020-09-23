@@ -3,12 +3,12 @@ title: A házirend-mentesítési struktúra részletei
 description: Ismerteti az Azure Policy által a kezdeményezések vagy definíciók kiértékelésével kapcsolatos erőforrások mentesítéséhez használt házirend-kivételi definíciót.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935734"
+ms.locfileid: "90968037"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy kivétel struktúrája
 
@@ -99,11 +99,12 @@ Ebben a mezőben egy szabályzat-hozzárendelés vagy egy kezdeményezés-hozzá
 
 Ha az `policyAssignmentId` egy kezdeményezési hozzárendelésre vonatkozik, a `policyDefinitionReferenceIds` tulajdonság segítségével megadhatja, hogy mely házirend-definíció (k) szerepel a kezdeményezésben, amelynek a tulajdonosi erőforrásának kivétele van. Mivel az erőforrás egy vagy több belefoglalt szabályzat-definícióból is kivételt képez, ez a tulajdonság egy _tömb_. Az értékeknek egyezniük kell a mezőkben szereplő kezdeményezési definíció értékeivel `policyDefinitions.policyDefinitionReferenceId` .
 
-## <a name="required-permissions"></a>Szükséges engedélyek
+## <a name="exemption-category"></a>Kivétel kategóriája
 
-A szabályzat-mentesítési objektumok kezeléséhez szükséges Azure RBAC-engedélyek a `Microsoft.Authorization/policyExemptions` műveleti csoportban találhatók. A beépített szerepkörök erőforrás- [házirend közreműködője](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) és [biztonsági rendszergazdája](../../../role-based-access-control/built-in-roles.md#security-admin) egyaránt rendelkezik a `read` és az `write` engedélyek és a [házirend-elemzések adatírója (előzetes](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) verzió) `read` engedéllyel.
+Két kivételi kategória létezik, és a rendszer a kivételek csoportosítására használja:
 
-A kivételek a kivételek megadásának következményei miatt további biztonsági intézkedésekkel bírnak. A `Microsoft.Authorization/policyExemptions/write` műveletnek az erőforrás-hierarchián vagy az egyedi erőforráson túl kell lennie ahhoz, hogy a kivétel a `exempt/Action` cél-hozzárendelésen legyen.
+- **Enyhített**: a rendszer megadta a kivételt, mert a házirend célja egy másik módszerrel teljesül.
+- **Lemondás**: a kivételt a rendszer azért adja meg, mert az erőforrás nem megfelelőségi állapota átmenetileg el van fogadva. Egy másik ok, hogy ezt a kategóriát olyan erőforrás-vagy erőforrás-hierarchiára használja, amelyet egy kezdeményezés egy vagy több definíciójában ki kell zárni, de a teljes kezdeményezésből nem zárható ki.
 
 ## <a name="expiration"></a>Lejárat
 
@@ -111,6 +112,12 @@ A kivételek a kivételek megadásának következményei miatt további biztons�
 
 > [!NOTE]
 > A házirend alóli kivételek nem törlődnek a `expiresOn` dátum elérésekor. Az objektum megmarad a nyilvántartás megőrzése érdekében, de a kivétel már nem teljesül.
+
+## <a name="required-permissions"></a>Szükséges engedélyek
+
+A szabályzat-mentesítési objektumok kezeléséhez szükséges Azure RBAC-engedélyek a `Microsoft.Authorization/policyExemptions` műveleti csoportban találhatók. A beépített szerepkörök erőforrás- [házirend közreműködője](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) és [biztonsági rendszergazdája](../../../role-based-access-control/built-in-roles.md#security-admin) egyaránt rendelkezik a `read` és az `write` engedélyek és a [házirend-elemzések adatírója (előzetes](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) verzió) `read` engedéllyel.
+
+A kivételek a kivételek megadásának következményei miatt további biztonsági intézkedésekkel bírnak. A `Microsoft.Authorization/policyExemptions/write` műveletnek az erőforrás-hierarchián vagy az egyedi erőforráson túl kell lennie ahhoz, hogy a kivétel a `exempt/Action` cél-hozzárendelésen legyen.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU a sávszélesség-ütemtervek kezelése | Microsoft Docs
-description: Ismerteti, hogyan használható a Azure Portal a sávszélesség-ütemtervek kezeléséhez a Azure Stack Edge GPU-ban.
+title: Azure Stack Edge Pro GPU a sávszélesség-ütemtervek kezelése | Microsoft Docs
+description: Ismerteti, hogyan használható a Azure Portal a sávszélesség-ütemtervek kezeléséhez a Azure Stack Edge Pro GPU-ban.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890666"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>A Azure Portal használatával kezelheti a sávszélesség-ütemterveket a Azure Stack Edge GPU-ban 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>A Azure Portal segítségével kezelheti a sávszélesség-ütemterveket a Azure Stack Edge Pro GPU-ban 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk bemutatja, hogyan kezelheti a sávszélesség-ütemterveket az Azure Stack Edge-ben. A sávszélesség-ütemezéssel napi szinten szabályozható a hálózati sávszélesség felhasználása. Ezek az ütemezések az eszköz és a felhő közötti összes fel- és letöltési műveletre alkalmazhatók.
+Ez a cikk bemutatja, hogyan kezelheti a sávszélesség-ütemterveket a Azure Stack Edge Pro-ban. A sávszélesség-ütemezéssel napi szinten szabályozható a hálózati sávszélesség felhasználása. Ezek az ütemezések az eszköz és a felhő közötti összes fel- és letöltési műveletre alkalmazhatók.
 
-A Azure Portal használatával hozzáadhat, módosíthat vagy törölhet Azure Stack Edge sávszélesség-menetrendjét.
+A Azure Portal használatával hozzáadhat, módosíthat vagy törölhet a Azure Stack Edge Pro sávszélesség-ütemterveit.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -42,9 +42,9 @@ Az ütemterv hozzáadásához hajtsa végre az alábbi lépéseket a Azure Porta
 
 3. Az **Ütemezés hozzáadása** területen: 
 
-   1. Adja meg az ütemezés **Kezdő nap**, **Záró nap**, **Kezdés** és **Befejezés** paramétereinek értékeit.
+   1. Adja meg a **kezdő napot**, a **Befejezés napját**, a **kezdési időt**és az ütemezett **befejezési időpontot** .
    2. Ellenőrizze az **egész nap** beállítást, ha az adott ütemtervnek egész nap kell futnia.
-   3. A **Sávszélesség** az eszköz által felhasznált sávszélesség Mb/s-ban kifejezett értéke a felhőműveletek (fel- és letöltés egyaránt) esetében. Ehhez a mezőhöz 20 és 2 147 483 647 közötti számot adjon meg.
+   3. A **sávszélesség sebessége** az eszköz által a felhővel (feltöltések és letöltések) járó műveletekben használt sávszélesség (MB/s). Ehhez a mezőhöz 20 és 2 147 483 647 közötti számot adjon meg.
    4. Ha nem kívánja korlátozni a fel- és letöltéseket, válassza a **Korlátlan** sávszélesség-beállítást.
    5. Válassza a **Hozzáadás** lehetőséget.
 
@@ -73,7 +73,7 @@ A sávszélesség-ütemezéseket az alábbi lépesek végrehajtásával szerkesz
 
 ## <a name="delete-a-schedule"></a>Ütemezés törlése
 
-Az Azure Stack Edge-eszközhöz társított sávszélesség-ütemterv törléséhez hajtsa végre a következő lépéseket.
+Az Azure Stack Edge Pro-eszközhöz társított sávszélesség-ütemterv törléséhez hajtsa végre a következő lépéseket.
 
 1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza a **sávszélesség**lehetőséget.  
 
@@ -84,6 +84,6 @@ Az Azure Stack Edge-eszközhöz társított sávszélesség-ütemterv törlésé
 3. Az ütemezés törlése után frissül az ütemezések listája.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-j-series-manage-shares.md).

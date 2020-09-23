@@ -1,14 +1,9 @@
 - name: A Modern olvasó dokumentációja
   href: index.yml
-- name: Áttekintés
-  items:
-    - name: Mi az a Modern olvasó?
-      href: Overview.md
-- name: Rövid útmutatók
-  expanded: true
-  items:
-    - name: Az ügyfélkódtár használata
-      href: ./quickstarts/client-libraries.md
+- name: Mi az a Modern olvasó?
+  href: Overview.md
+- name: Gyorsútmutató
+  href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: A Modern olvasó indítása (Android)

@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure Stack Edge műszaki specifikációi és megfelelőségi adatai | Microsoft Docs
-description: Ismerje meg az Azure Stack Edge műszaki specifikációit és megfelelőségét
+title: A Microsoft Azure Stack Edge Pro műszaki specifikációi és megfelelőségi adatai | Microsoft Docs
+description: Ismerje meg az Azure Stack Edge Pro műszaki specifikációit és megfelelőségét
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652035"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883446"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge műszaki specifikációi
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro technikai specifikációi
 
-Az Microsoft Azure Stack Edge-eszköz hardveres összetevői megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozási előírásoknak. A műszaki specifikációk a tápegységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le.
+Az Microsoft Azure Stack Edge Pro-eszköz hardveres összetevői megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozási előírásoknak. A műszaki specifikációk a tápegységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le.
 
 ## <a name="compute-memory-specifications"></a>Számítási, memória-specifikációk
 
-Az Azure Stack Edge-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
+Az Azure Stack Edge Pro-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 mag CPU                     |
-| Memory (Memória)              | 128 GB RAM                  |
+| Memória              | 128 GB RAM                  |
 
 ## <a name="fpga-specifications"></a>FPGA-specifikációk
 
-A rendszer minden olyan Azure Stack peremhálózati eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely lehetővé teszi Machine Learning (ML) forgatókönyvek használatát.
+A rendszer minden olyan Azure Stack Edge Pro-eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely Machine Learning (ML) forgatókönyveket tesz lehetővé.
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
@@ -38,35 +38,35 @@ A rendszer minden olyan Azure Stack peremhálózati eszközön tartalmaz egy pro
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
 
-Az Azure Stack Edge-eszközön két 100-240 V-os tápegység (PSUs) áll a nagy teljesítményű ventilátorokkal. A két PSUs redundáns energiaellátási konfigurációt biztosít. Ha egy PSU meghibásodik, az eszköz továbbra is általában a másik PSU-gépen működik, amíg le nem cseréli a hibás modult. A következő táblázat a PSUs műszaki specifikációit sorolja fel.
+Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelkezik, nagy teljesítményű ventilátorokkal. A két PSUs redundáns energiaellátási konfigurációt biztosít. Ha egy PSU meghibásodik, az eszköz továbbra is általában a másik PSU-gépen működik, amíg le nem cseréli a hibás modult. A következő táblázat a PSUs műszaki specifikációit sorolja fel.
 
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximális kimeneti teljesítmény    | 750 W                     |
-| Gyakoriság               | 50/60 Hz                   |
+| Frequency               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Yes                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>A Azure Stack Edge tápkábelének specifikációi régiónként
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack Edge Pro tápkábel-specifikációk régiónként
 
-Az Azure Stack Edge-eszköznek szüksége van egy olyan tápkábelre, amely az Azure-régiótól függően változhat.
-Az összes támogatott tápkábel műszaki specifikációjának megtekintéséhez tekintse meg a következő témakört: [Azure stack Edge tápkábel-specifikációk régiónként](azure-stack-edge-technical-specifications-power-cords-regional.md).
+Az Azure Stack Edge Pro-eszköznek szüksége van egy olyan tápkábelre, amely az Azure-régiótól függően változhat.
+Az összes támogatott tápkábel műszaki specifikációjának megtekintéséhez lásd: [Azure stack Edge Pro tápkábel-specifikációk régiónként](azure-stack-edge-technical-specifications-power-cords-regional.md).
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>Hálózati adapterek specifikációi
 
-Az Azure Stack Edge-eszköz 6 hálózati adapterrel rendelkezik, a PORT1-PORT6.
+Azure Stack Edge Pro-eszközének 6 hálózati adaptere van, a PORT1-PORT6.
 
-| Specifikáció           | Description                 |
+| Specifikáció           | Leírás                 |
 |-------------------------|----------------------------|
-|  Hálózati illesztők    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
+|  Hálózati adapterek    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 
-Az Azure Stack Edge-eszközökön 9 X 2,5 "NVMe SSD-k tartoznak, amelyek mindegyike 1,6 TB kapacitású. Ezek az SSD-k, 1 egy operációsrendszer-lemez, a másik 8 pedig adatlemez. Az eszköz teljes felhasználható kapacitása körülbelül 12,5 TB. Az alábbi táblázat az eszköz tárolókapacitásának részleteit tartalmazza.
+Az Azure Stack Edge Pro-eszközök 9 X 2,5 "NVMe SSD-k rendelkeznek, amelyek mindegyike 1,6 TB kapacitású. Ezek az SSD-k, 1 egy operációsrendszer-lemez, a másik 8 pedig adatlemez. Az eszköz teljes felhasználható kapacitása körülbelül 12,5 TB. Az alábbi táblázat az eszköz tárolókapacitásának részleteit tartalmazza.
 
 |     Specifikáció                          |     Érték             |
 |--------------------------------------------|-----------------------|
@@ -87,7 +87,7 @@ A következő táblázat a ház dimenzióit mutatja milliméterben és hüvelykb
 
 |     Ház     |     Milliméter     |     Hüvelyk     |
 |-------------------|---------------------|----------------|
-|    Height (Magasság)         |    44,45            |    1,75 "          |
+|    Magasság         |    44,45            |    1,75 "          |
 |    Szélesség          |    434,1           |    17,09 "          |
 |    Hossz          |    740,4           |    29,15 "          |
 
@@ -95,7 +95,7 @@ A következő táblázat a szállítási csomag dimenzióit mutatja be millimét
 
 |     Csomag     |     Milliméter     |     Hüvelyk     |
 |-------------------|---------------------|----------------|
-|    Height (Magasság)         |    311,2            |    12,25 "          |
+|    Magasság         |    311,2            |    12,25 "          |
 |    Szélesség          |    642,8          |    25,31 "          |
 |    Hossz          |   1 051,1          |    41,38 "          |
 
@@ -116,7 +116,7 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 
 |     Ház         |     Környezeti hőmérséklet tartománya     |     Környezeti relatív páratartalom     |     Maximális harmatpont     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Operatív        |    10 °C – 35 °C (50 °F-86 °F)         |    10%-80% nem kondenzációs.         |    29 °C (84 °F)            |
+|    Működik        |    10 °C – 35 °C (50 °F-86 °F)         |    10%-80% nem kondenzációs.         |    29 °C (84 °F)            |
 |    Nem működő    |    -40 °C-tól 65 °C-ig (-40 °F-149 °F)     |    5%-95%-os nem kondenzációs.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légáram, magasság, sokk, vibráció, orientáció, biztonság és EMC
@@ -144,6 +144,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Stack Edge üzembe helyezése](azure-stack-edge-deploy-prep.md)
+- [Az Azure Stack Edge Pro üzembe helyezése](azure-stack-edge-deploy-prep.md)

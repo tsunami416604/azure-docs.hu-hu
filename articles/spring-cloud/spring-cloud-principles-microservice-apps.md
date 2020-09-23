@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906865"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java és alap operációs rendszer a Spring mikroszolgáltatás-alapú alkalmazásokhoz
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java
+
 Az alábbi alapelvek az egészséges Java és az alap operációs rendszer fenntartásához szükséges alapelveket a Spring Service-alkalmazásokhoz.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Alapszintű Java és Base operációs rendszer alapelvei
 * Azonos alapszintű operációs rendszernek kell lennie a rétegek között – alapszintű | Standard | Prémium szintű.
@@ -52,5 +55,6 @@ A Azul Systems folyamatosan ellenőrzi az alapoperációs rendszerek változása
 > ![Alapértelmezett központi telepítés](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>Következő lépések
-* [Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md)
+
+* [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)
 * [Java hosszú távú támogatás az Azure-hoz és Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
