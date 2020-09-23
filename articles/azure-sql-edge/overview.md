@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure SQL Edge (előzetes verzió)?
-description: Tudnivalók az Azure SQL Edge (előzetes verzió) szolgáltatásról
+title: Mi az Azure SQL Edge?
+description: Tudnivalók az Azure SQL Edge-ről
 keywords: az SQL Edge bemutatása, mi az SQL Edge, az SQL Edge áttekintése
 services: sql-edge
 ms.service: sql-edge
@@ -9,27 +9,31 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489527"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907126"
 ---
-# <a name="what-is-azure-sql-edge-preview"></a>Mi az Azure SQL Edge (előzetes verzió)?
+# <a name="what-is-azure-sql-edge"></a>Mi az Azure SQL Edge?
 
-Az Azure SQL Edge (előzetes verzió) egy optimalizált, a IoT és a IoT Edge üzemelő példányok számára készült adatkezelő motor. Lehetőséget biztosít nagy teljesítményű adattárolási és feldolgozási réteg létrehozására a IoT alkalmazások és megoldások számára. Az Azure SQL Edge lehetővé teszi a kapcsolatok és a nem rokonok, például a JSON, a Graph és az idősoros adatsorozatok továbbítását, feldolgozását és elemzését, ami a megfelelő választás számos modern IoT alkalmazáshoz.
+Az Azure SQL Edge egy optimalizált, a IoT és a IoT Edge üzemelő példányokhoz kapcsolódó adatbázis-motor. Lehetőséget biztosít nagy teljesítményű adattárolási és feldolgozási réteg létrehozására a IoT alkalmazások és megoldások számára. Az Azure SQL Edge lehetővé teszi a kapcsolatok és a nem rokonok, például a JSON, a Graph és az idősoros adatsorozatok továbbítását, feldolgozását és elemzését, ami a megfelelő választás számos modern IoT alkalmazáshoz.
 
-Az Azure SQL Edge a Microsoft SQL Database Engine (/SQL/SQL-Server/SQL-Server-Technical-documentation? TOC =/Azure/Azure-SQL-Edge/toc.js) legújabb verziójára épül, amely piacvezető teljesítményt, biztonsági és lekérdezés-feldolgozási képességeket biztosít. Mivel az Azure SQL Edge ugyanarra a motorra épül, mint a [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) és az [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), ugyanazt a T-SQL programozási felületet biztosítja, amely megkönnyíti és gyorsabbá teszi az alkalmazások és megoldások fejlesztését, és ezzel egyidejűleg lehetővé teszi az alkalmazások hordozhatóságát IoT Edge eszközök, adatközpontok és a felhő között.
+Az Azure SQL Edge az [SQL Server adatbázismotor](/sql/sql-server/sql-server-technical-documentation)legújabb verziójára épül, amely piacvezető teljesítményt, biztonsági és lekérdezés-feldolgozási képességeket biztosít. Mivel az Azure SQL Edge ugyanarra a motorra épül, mint a [SQL Server](/sql/sql-server/sql-server-technical-documentation) és az [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), ugyanazt a Transact-SQL (T-SQL) programozási felületet biztosítja, amely megkönnyíti és gyorsabbá teszi az alkalmazások és megoldások fejlesztését, és lehetővé teszi az alkalmazások hordozhatóságát IoT Edge eszközök, adatközpontok és a felhő között.
 
-> [!NOTE]
-> Az Azure SQL Edge jelenleg előzetes verzióban érhető el, ezért nem használható éles környezetben.
+Mi az az Azure SQL Edge videó a Channel 9 platformon:
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]
 
 ## <a name="deployment-models"></a>Üzembe helyezési modellek
 
-Az Azure SQL Edge az Azure piactéren érhető el, és [Azure IoT Edge](../iot-edge/about-iot-edge.md)modulként is üzembe helyezhető. További információ: az [Azure SQL Edge üzembe helyezése](deploy-portal.md).<br>
+Az Azure SQL Edge két üzembe helyezési módot támogat.
+
+- Csatlakoztatott üzembe helyezés Azure IoT Edgeon keresztül: az Azure SQL Edge elérhető az Azure piactéren, és modulként üzembe helyezhető [Azure IoT Edgehoz](../iot-edge/about-iot-edge.md). További információ: az [Azure SQL Edge üzembe helyezése](deploy-portal.md).<br>
 
 ![SQL Edge – áttekintő diagram](media/overview/overview.png)
+
+- Leválasztott központi telepítés: az Azure SQL Edge-tároló lemezképei a Docker hub-ból tölthetők le, és önálló Docker-tárolóként vagy kubernetes-fürtön is üzembe helyezhetők. További információ: az [Azure SQL Edge üzembe helyezése a Docker-vel](disconnected-deployment.md) és az [Azure SQL Edge-tároló üzembe helyezése a Kubernetes-ben](deploy-kubernetes.md).
 
 ## <a name="editions-of-sql-edge"></a>Az SQL Edge kiadása
 
@@ -42,7 +46,7 @@ Az SQL Edge két különböző kiadással vagy szoftver csomaggal érhető el. E
 
 ## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
 
-Az Azure SQL Edge jelenleg előzetes verzióban érhető el. További információ a díjszabásról és a rendelkezésre állásról: [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
+Az Azure SQL Edge már általánosan elérhető. Az egyes régiókban a díjszabással és a rendelkezésre állással kapcsolatos további információkért lásd: az [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Az Azure SQL Edge és a SQL Server közötti különbségek megismeréséhez, valamint az Azure SQL Edge különböző lehetőségei közötti különbségekről az [Azure SQL Edge támogatott szolgáltatásai](features.md)című témakörben olvashat.

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: f2e067f76d6ed7d89a38e9b8920c407f161969a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17882581c4548996c9a8b2a8670b5f720e64da1e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456778"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898990"
 ---
 # <a name="add-columns-module"></a>Oszlopok hozzáadása modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet létrehozásához a bemenetként megadott két adatkészlet összes oszlopát össze kell kapcsolni. Ha kettőnél több adatkészletet kell összefűzni, használja az **Oszlopok hozzáadása**több példányát.
 
@@ -44,6 +44,6 @@ Az új adatkészlet oszlopainak száma megegyezik a bemeneti adatkészletek oszl
 
 Ha két azonos nevű oszlop szerepel a bemeneti adatkészletekben, a rendszer egy numerikus utótagot ad hozzá az oszlop nevéhez. Ha például egy TargetOutcome nevű oszlop két példánya van, a bal oldali oszlop átnevezve lesz TargetOutcome_1, és a jobb oldali oszlop átnevezve lesz TargetOutcome_2.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

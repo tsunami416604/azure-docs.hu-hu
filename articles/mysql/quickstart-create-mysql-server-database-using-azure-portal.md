@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: 840e7769e8a242314b10562684c942a2468ea5ad
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705146"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906555"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Rövid útmutató: Azure Database for MySQL-kiszolgáló létrehozása a Azure Portal
 
@@ -34,19 +34,19 @@ Kövesse az alábbi lépéseket egy, a MySQL-kiszolgálóhoz készült Azure-ada
 
   
 >[!div class="mx-imgBorder"]
-> ![Az Azure Database for MySQL menüpont](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Az Azure Database for MySQL menüpont":::
 
 3. Adja meg az alábbi adatokat az új kiszolgálóűrlapon:
     
 >[!div class="mx-imgBorder"]
-> ![Kiszolgáló létrehozása űrlap](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Kiszolgáló létrehozása űrlap":::
 
 **Beállítás** | **Ajánlott érték** | **Mező leírása** 
 ---|---|---
 Előfizetés | Az Ön előfizetése | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
-Erőforráscsoport | *myResourceGroup* | Adjon meg egy új vagy egy létező erőforráscsoportnevet. Az erőforráscsoport használható az egyetlen projekthez tartozó függőségek rendszerezéséhez.
+Erőforráscsoport | *myresourcegroup* | Adjon meg egy új vagy egy létező erőforráscsoportnevet. Az erőforráscsoport használható az egyetlen projekthez tartozó függőségek rendszerezéséhez.
 Kiszolgálónév | Egyedi kiszolgálónév | Adjon meg egy egyedi nevet, amely azonosítja a Azure Database for MySQL-kiszolgálót. Például: "mysqldbserver". A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
-Adatforrás |*Nincs* | Válassza a *nincs* lehetőséget, ha teljesen új kiszolgálót szeretne létrehozni. (Akkor válassza a *biztonsági mentés* lehetőséget, ha egy meglévő Azure Database for MySQL-kiszolgáló geo biztonsági másolatából hozta létre a kiszolgálót.
+Adatforrás |*Nincs* | Válassza a *Nincs* lehetőséget egy teljesen új kiszolgáló létrehozásához. (Akkor válassza a *biztonsági mentés* lehetőséget, ha egy meglévő Azure Database for MySQL-kiszolgáló geo biztonsági másolatából hozta létre a kiszolgálót.
 Kiszolgáló-rendszergazdai bejelentkezés | myadmin | Adjon meg egy felhasználónevet a kiszolgáló rendszergazdájához. Rendszergazdai felhasználónévként nem használható **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest**vagy **Public** .
 Jelszó | *Az Ön választása* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. A jelszónak 8 – 128 karakter hosszúnak kell lennie, kis-és nagybetűk, számok és nem alfanumerikus karakterek (!, $, #,% stb.) kombinációjával.
 Jelszó megerősítése | *Az Ön választása*| Erősítse meg a rendszergazdafiók jelszavát.
@@ -67,7 +67,7 @@ Alapértelmezés szerint a következő adatbázisok jönnek létre a kiszolgál�
 Alapértelmezés szerint a létrehozott kiszolgáló tűzfallal védett, és nem érhető el nyilvánosan. Ha hozzáférést szeretne adni az IP-címhez, lépjen a kiszolgálói erőforráshoz a Azure Portal, és válassza a **kapcsolatbiztonsági** lehetőséget a kiszolgáló erőforrásának bal oldali menüjében. Nem tudja, hogyan keresheti meg az erőforrást: [Hogyan lehet erőforrást megnyitni](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 >[!div class="mx-imgBorder"]
-> ![Kapcsolatbiztonság – Tűzfalszabályok](./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Kapcsolatbiztonság – Tűzfalszabályok":::
    
 Most válassza az **aktuális ügyfél IP-címének hozzáadása** lehetőséget, majd válassza a **Mentés**lehetőséget. További IP-címeket adhat hozzá, vagy megadhat egy IP-címtartományt, amely az adott IP-címekről csatlakozik a kiszolgálóhoz. További információ: a [Tűzfalszabályok kezelése Azure Database for MySQL kiszolgálón](./concepts-firewall-rules.md)
 
@@ -83,7 +83,7 @@ Az [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy a [MySQL
     >Ha első alkalommal indítja el a Cloud shellt, a rendszer rákérdez, hogy létrehoz egy erőforráscsoportot, egy Storage-fiókot. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. 
 
    >[!div class="mx-imgBorder"]
-   > ![Portál teljes nézete Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Portál teljes nézete Cloud Shell":::
 2. Futtassa ezt a parancsot Azure Cloud Shell terminálon. Cserélje le az értékeket a tényleges kiszolgálónévre és a rendszergazda felhasználói bejelentkezési nevére. A rendszergazdai felhasználónévhez az alább látható módon kell megadni a "@ \<servername> "-t Azure Database for MySQL  
 
   ```azurecli-interactive
@@ -136,9 +136,9 @@ Sikeresen létrehozott egy Azure Database for MySQL-kiszolgálót egy erőforrá
 
 A kiszolgáló törléséhez kattintson a kiszolgáló **Áttekintés** lapján található **delete (Törlés** ) gombra az alábbi ábrán látható módon:
 > [!div class="mx-imgBorder"]
-> ![Erőforrások törlése](media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Erőforrások törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 >[Php-alkalmazás létrehozása Windowson MySQL](../app-service/app-service-web-tutorial-php-mysql.md) 
 > -sel [Php-alkalmazás létrehozása Linuxon a MySQL](../app-service/containers/tutorial-php-mysql-app.md) 

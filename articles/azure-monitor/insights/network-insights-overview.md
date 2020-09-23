@@ -1,73 +1,113 @@
 ---
 title: Azure Monitor hálózatok számára (előzetes verzió)
-description: A hálózati Azure Monitor gyors áttekintése, amely az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé konfiguráció nélkül.
+description: A hálózat Azure Monitor gyors áttekintése, amely az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé konfiguráció nélkül.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/07/2019
-ms.openlocfilehash: 5a85efc5de0d99904da568c97672adf40ce8a414
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/22/2020
+ms.openlocfilehash: 88e69ac4156bb2bdfb217a4fc83ac2d798d08211
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088918"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987964"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor hálózatok számára (előzetes verzió)
-A hálózati Azure Monitor a konfiguráció nélkül átfogó képet nyújt az összes telepített hálózati erőforrás állapotáról és mérőszámáról. A speciális keresési funkció segítséget nyújt az olyan erőforrás-függőségek azonosításában, amelyek lehetővé teszik olyan forgatókönyvek használatát, mint például a webhelyét üzemeltető erőforrások azonosítása a szolgáltatott webhely neve alapján.
+A hálózati Azure Monitor a konfiguráció nélkül átfogó képet nyújt az összes telepített hálózati erőforrás [állapotáról](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) és [mérőszámáról](../platform/metrics-supported.md) .  Emellett hozzáférést biztosít az összes olyan hálózati figyelési lehetőséghez, mint a [kapcsolat figyelője](../../network-watcher/connection-monitor-preview.md), [a hálózati biztonsági csoportok (NSG) adatforgalmának naplózása, a](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) [Traffic Analytics](../../network-watcher/traffic-analytics.md)és egyéb hálózati [diagnosztikai](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) funkciók.
 
-A hálózatok Azure Monitor **áttekintése** lap egy könnyed módszert biztosít a hálózati erőforrások leltárának megjelenítéséhez a Resource Health és a riasztások mellett. Négy kulcsfontosságú funkcionális területre oszlik:
+A hálózatok Azure Monitor a figyelés következő fő összetevőinek köré szerveződik:
+- [Hálózati állapot és mérőszámok](#networkhealth)
+- [Kapcsolatok](#connectivity)
+- [Adatforgalom](#traffic)
+- [Diagnosztikai eszközkészlet](#diagnostictoolkit)
 
-- Keresés és szűrés
-- Resource Health és mérőszámok
-- Riasztások 
-- Függőség nézet
+## <a name="network-health-and-metrics"></a><a name="networkhealth"></a>Hálózati állapot és mérőszámok
+
+A hálózatok Azure Monitor **áttekintése** lap egy könnyed módszert biztosít a hálózati erőforrások leltárának megjelenítéséhez a Resource Health és a riasztások mellett. Négy kulcsfontosságú funkcionális területre oszlik: keresés és szűrés, Resource Health és mérőszámok, riasztások. és függőség nézet
 
 ![Áttekintő lap](media/network-insights-overview/overview.png)
 
-## <a name="search-and-filtering"></a>Keresés és szűrés
+### <a name="search-and-filtering"></a>Keresés és szűrés
 Az erőforrás állapota és riasztások nézet a szűrők, például az **előfizetés**, az **erőforráscsoport** és az **erőforrástípus**alapján testreszabható. A keresőmező lehetővé teszi az erőforrás-tulajdonságok közötti keresés lehetőségét.
 
 A keresőmező az erőforrások és a kapcsolódó erőforrások keresésére használható. Egy nyilvános IP-cím például egy Application Gatewayhoz van társítva. A nyilvános IP-címek DNS-nevének keresésekor a rendszer a nyilvános és a hozzá tartozó Application Gateway is azonosítja.
 
-![A képernyőkép a DNS-név keresésének eredményét jeleníti meg.](media/network-insights-overview/search.png)
+![Azure Monitor hálózatok számára – keresés](media/network-insights-overview/search.png)
 
 
-## <a name="resource-health-and-metric"></a>Resource Health és metrika
-Az egyes csempék egy erőforrástípust jelölnek, és az összes, a Resource Health állapottal együtt kiválasztott előfizetésben üzembe helyezett példányok számát adja meg. Az alábbi példában a 105 ER és a VPN-kapcsolatok üzembe helyezése, 103 kifogástalan, és 2 nem érhető el.
+### <a name="resource-health-and-metric"></a>Resource Health és metrika
+Az egyes csempék egy erőforrástípust jelölnek, és az összes, a Resource Health állapottal együtt kiválasztott előfizetésben üzembe helyezett példányok számát adja meg. Az alábbi példában a 45 ER és a VPN-kapcsolatok üzembe helyezése, 44 kifogástalan, és 1 nem érhető el.
 
-![Erőforrás állapota](media/network-insights-overview/resource-health.png)
+![Azure Monitor hálózatok számára – erőforrás állapota](media/network-insights-overview/resource-health.png)
 
-A két nem elérhető ER és VPN kapcsolatra kattintva metrikai nézetet indít el. 
+A nem elérhető ER-és VPN-kapcsolatokra kattintva metrikai nézetet indít el. 
 
-![Metrika nézet](media/network-insights-overview/metric-view.png)
+![Hálózatok Azure Monitor – metrikus nézet](media/network-insights-overview/metric-view.png)
 
 A rács nézet minden elemére rákattinthat. Kattintson a Health (állapot) ikonra az adott kapcsolatok erőforrás-állapotának átirányításához. Kattintson a riasztások elemre, hogy átirányítsa a riasztások és metrikák lapra az adott kapcsolatban. 
 
-## <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Riasztások
 A jobb oldali **riasztások** rács a kiválasztott erőforrásokhoz generált összes riasztást megjeleníti az összes előfizetésben. Kattintson a riasztások száma gombra a részletes riasztások oldal megtekintéséhez.
 
-## <a name="dependency-view"></a>Függőség nézet
-A **függőség** nézet segít megjeleníteni az erőforrás konfigurálásának módját. A függőségi nézet mostantól Application Gateway, a virtuális WAN és a Load Balancer esetében is támogatott. Application Gateway esetén például a függőség nézet a metrikák rács nézetében a Application Gateway erőforrás nevére kattintva érhető el. Ez a virtuális WAN-ra és a Load Balancer is vonatkozik. 
+### <a name="dependency-view"></a>Függőség nézet
+A **függőség** nézet segít megjeleníteni az erőforrás konfigurálásának módját. A függőségi nézet mostantól Application Gateway, a virtuális WAN és a Load Balancer esetében is támogatott. Application Gateway esetén például a függőség nézet a metrikák rács nézetében a Application Gateway erőforrás nevére kattintva érhető el. Ez a virtuális WAN-ra és a Load Balancer is vonatkozik.
 
-![Application Gateway nézet](media/network-insights-overview/application-gateway.png)
+![Azure Monitor hálózatok számára – Application Gateway nézet](media/network-insights-overview/application-gateway.png)
 
-A Application Gateway **függőségi** nézete egyszerűsített képet nyújt arról, hogy az előtér-IP-címek hogyan kapcsolódnak a figyelőkhöz, a szabályokhoz és a backend-készlethez. A csatlakozó élek színkódoltak, és további részleteket biztosítanak a háttér-készlet állapota alapján. A nézet az összes kapcsolódó háttér-készlet, például a virtuálisgép-méretezési csoport és a virtuálisgép-példányok Application Gateway metrikáinak és metrikáinak részletes áttekintését is tartalmazza.
+A Application Gateway **függőségi** nézete egyszerűsített képet nyújt arról, hogy az előtér-IP-címek hogyan kapcsolódnak a figyelőkhöz, a szabályokhoz és a backend-készlethez. A csatlakozó élek színkódoltak, és további részleteket biztosítanak a háttér-készlet állapota alapján. A nézet az összes kapcsolódó háttér-készlet, például a virtuálisgép-méretezési csoport és a VM-példányok Application Gateway metrikáinak és metrikáinak részletes áttekintését is tartalmazza.
 
-![Függőség nézet](media/network-insights-overview/dependency-view.png)
+![Azure Monitor hálózatok számára – függőség nézet](media/network-insights-overview/dependency-view.png)
 
-A függőségi gráf lehetővé teszi az egyszerű navigációt a konfigurációs beállításokhoz. Kattintson a jobb gombbal a háttér-készletre a más funkciók eléréséhez. Ha például a háttér-készlet egy virtuális gép, akkor közvetlenül hozzáférhet a virtuális gépekkel kapcsolatos megállapításokhoz és a Network Watcher kapcsolattal a kapcsolódási problémák elhárításához és azonosításához.
+A függőségi gráf lehetővé teszi az egyszerű navigációt a konfigurációs beállításokhoz. Kattintson a jobb gombbal a háttér-készletre más funkciók eléréséhez. Ha például a háttérrendszer-készlet egy virtuális gép, akkor a kapcsolódási problémák azonosításához közvetlenül hozzáférhet a virtuális gépekkel kapcsolatos megállapításokhoz és Network Watcher a kapcsolódási hibákhoz.
 
-![Függőség Nézet menü](media/network-insights-overview/dependency-view-menu.png)
+![Azure Monitor hálózatok számára – függőség Nézet menü](media/network-insights-overview/dependency-view-menu.png)
 
-A függőség nézet keresési és szűrési sávján keresztül könnyedén kereshet a gráfon. Például a *AppGWTestRule* keresése az alábbi példában leszűkíti a grafikus nézetet a *AppGWTestRule*-n keresztül csatlakozó összes csomópontra. 
+A függőség nézet keresési és szűrési sávján keresztül könnyedén kereshet a gráfon. Például a *AppGWTestRule* keresése az alábbi példában leszűkíti a grafikus nézetet a *AppGWTestRule*-n keresztül csatlakozó összes csomópontra.
 
-![Példa keresése](media/network-insights-overview/search-example.png)
+![Hálózatok Azure Monitor – keresési példa](media/network-insights-overview/search-example.png)
 
 A különböző szűrők segítségével leszűkítheti az adott elérési utat és állapotot. Válassza például *a csak a nem megfelelő állapotú* elemet **az állapot legördülő menüjéből** az összes olyan szegély megjelenítéséhez, ahol az állapot állapota *sérült*.
 
-Kattintson a **részletes mérőszám nézetre** egy előre konfigurált munkafüzet elindításához az Application Gateway, az összes háttér-készlet erőforrásai és az előtér-IP-címek részletes mérőszámával. 
+Kattintson a **részletes mérőszám nézetre** egy előre konfigurált munkafüzet elindításához, amely részletes mérőszámokkal rendelkezik a Application Gatewayhoz, az összes háttér-készlet erőforrásaihoz és az előtér-IP-címekhez. 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="connectivity"></a><a name="connectivity"></a>Kapcsolatok
 
-- További információ a hálózati monitorozásról: Mi az az [Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).
+A **kapcsolat lap a** kiválasztott előfizetések esetében a kapcsolat figyelője és a [Csatlakozáskezelő (előzetes verzió)](../../network-watcher/connection-monitor-preview.md) használatával konfigurált összes tesztet könnyedén megjelenítheti.
+
+![Hálózatok Azure Monitor kapcsolat lapja](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
+
+A tesztek a források és a célhelyek csempéi szerint vannak csoportosítva, és megjelenítik az egyes tesztek elérhetőségi állapotát. A elérhető beállítások egyszerű hozzáférést biztosítanak a elérhetőségi feltételek az ellenőrzéseken alapuló konfigurálásához (%) és RTT (MS). Az értékek beállítása után az egyes tesztek állapota a kiválasztási feltételek alapján frissül.
+
+![Azure Monitor hálózati kapcsolati tesztek](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)
+
+Ha bármilyen forrásra vagy célhelyre kattint, a rendszer metrikai nézetet indít el.
+
+![Hálózati Azure Monitor kapcsolati metrikái](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)
+
+
+A rács nézet minden elemére rákattinthat. Kattintson a **elérhetőség** ikonra a **kapcsolat figyelője** portálra való átirányításhoz, ahol megtekintheti a hop by hop topológiát és a kapcsolat befolyásoló problémáit. Kattintson a **riasztások** elemre a riasztásokra való átirányításhoz, és ellenőrizze, hogy a kiválasztott figyelő a metrikák lapra való átirányításához nem sikerült a (z) **%/oda-vissza** .
+
+A jobb oldali **riasztások**   rács az összes előfizetésben konfigurált kapcsolati tesztekhez generált riasztások nézetét jeleníti meg. Kattintson a riasztások száma gombra a részletes riasztások oldal megtekintéséhez.
+
+## <a name="traffic"></a><a name="traffic"></a>Adatforgalom
+A Traffic (forgalom) lapon elérhetők a [Traffic Analytics](../../network-watcher/traffic-analytics.md) [NSG](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) -NSG konfigurált összes, a kiválasztott előfizetések és a csoportok szerint csoportosított összes. Az ezen a lapon megadott keresési funkció lehetővé teszi a keresett IP-címhez konfigurált NSG azonosítását. Bármilyen IP-címet megkereshet a környezetében, és a csempézett regionális nézet megjeleníti az összes NSG, valamint a NSG flow-naplókat és a Traffic Analytics konfigurációs állapotát is.
+
+![Hálózati Azure Monitor forgalmi nézete](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)
+
+A bármely régió csempére kattintva olyan rácsos nézetet indít el, amely könnyen megtekinthető és konfigurálható NSG-naplókat és Traffic Analyticseket biztosít.  
+
+![Forgalmi régió nézet a Azure Monitor hálózatok számára](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)
+
+A rács nézet minden elemére rákattinthat. Kattintson a konfiguráció állapota elemre a NSG folyamat naplójának és a Traffic Analytics konfigurációjának szerkesztéséhez. Kattintson a riasztások elemre a kiválasztott NSG konfigurált forgalmi riasztások átirányításához. Ehhez hasonlóan a munkaterületre kattintva is megnyithatja a Traffic Analytics nézetet.  
+
+A jobb oldali **riasztások**   rács a Traffic Analytics munkaterület-alapú riasztásokat jeleníti meg az összes előfizetésen belül. Kattintson a riasztások száma gombra a részletes riasztások oldal megtekintéséhez.
+
+## <a name="diagnostic-toolkit"></a><a name="diagnostictoolkit"></a> Diagnosztikai eszközkészlet
+A diagnosztikai eszközkészlet hozzáférést biztosít a hálózat hibaelhárításához elérhető összes diagnosztikai szolgáltatáshoz. Ebből a legördülő listából elérheti az olyan szolgáltatásokat, mint a [csomagok rögzítése](../../network-watcher/network-watcher-packet-capture-overview.md), a [VPN-hibakeresés](../../network-watcher/network-watcher-troubleshoot-overview.md), a [kapcsolódási hibák](../../network-watcher/network-watcher-connectivity-overview.md), a [következő ugrás](../../network-watcher/network-watcher-next-hop-overview.md) és az [IP-folyamat ellenőrzése](../../network-watcher/network-watcher-ip-flow-verify-overview.md).
+
+![Diagnosztikai eszközkészlet lap](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+- További információ a hálózati monitorozásról: [Mi az az Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).

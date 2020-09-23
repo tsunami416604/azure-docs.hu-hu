@@ -7,24 +7,23 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0904694a461f57a1988444aea71ffe64bfa7e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c368964ca04662c8bf1dfe79db57f81c90f5699
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602493"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978262"
 ---
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
 Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékeket kell megadnia. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
 * [Git](https://git-scm.com/).
 * [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk).
@@ -34,27 +33,27 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Új projekt elindítása Android Studioban. Ehhez a példához tartozó forráskód a [magával ragadó olvasó SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)részeként érhető el.
 
-![Új projekt](../../media/android/kotlin/android-studio-create-project.png)
+![Új projekt – Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
 A **projekt kiválasztása** ablakban válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
 
-![Üres tevékenység projekt](../../media/android/kotlin/android-studio-empty-activity.png)
+![Üres tevékenység projekt – Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>A projekt konfigurálása
 
 Nevezze el a projekt **QuickstartKotlin**, és válassza ki a menteni kívánt helyet. A programozási nyelvként válassza a **Kotlin** lehetőséget, majd kattintson a **Befejezés gombra**.
 
-![A projekt konfigurálása](../../media/android/kotlin/android-studio-configure-project.png)
+![A projekt konfigurálása – Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Eszközök és hitelesítés beállítása
 
 Hozzon létre egy új **/assets** mappát.
 
-![Új eszközök mappa létrehozása](../../media/android/kotlin/android-studio-assets-folder.png)
+![Új assets mappa létrehozása – Kotlin](../../media/android/kotlin/android-studio-assets-folder.png)
 
  Hozzon létre egy **env** nevű fájlt az eszközök mappában. Adja hozzá a következő neveket és értékeket, és adja meg a megfelelő értékeket. Ne véglegesítse ezt az ENV-fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
 
-![Új env-fájl létrehozása](../../media/android/kotlin/android-studio-create-env-file.png)
+![Új env-fájl létrehozása – Kotlin](../../media/android/kotlin/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -62,7 +61,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Környezeti változók a Android Studioban](../../media/android/kotlin/android-studio-assets-and-env-file.png)
+![Környezeti változók a Android Studio-Kotlin](../../media/android/kotlin/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
@@ -85,13 +84,13 @@ dependencies {
 }
 ```
 
-![Alkalmazás-Gradle implementációk](../../media/android/kotlin/android-studio-build-gradle.png)
+![Alkalmazás-Gradle implementációk – Kotlin](../../media/android/kotlin/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Alkalmazás-karakterláncok és elrendezési erőforrások frissítése
 
 Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használandó következő karakterláncokra.
 
-![Alkalmazás strings.xml](../../media/android/kotlin/android-studio-strings.png)
+![App strings.xml – Kotlin](../../media/android/kotlin/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -101,7 +100,7 @@ Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használ
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -109,7 +108,7 @@ Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használ
 
 Cserélje le a **res/layout/activity_main.xml** tartalmait a következő XML-fájlra az alkalmazásban való használathoz. Ez az XML az alkalmazás felhasználói felületének elrendezése.
 
-![Alkalmazás activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
+![App activity_main.xml – Kotlin](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -210,9 +209,9 @@ Cserélje le a **res/layout/activity_main.xml** tartalmait a következő XML-fá
 
 A **/Java/com.example.quickstartkotlin** mappában hozzon létre egy új Kotlin osztályt, és nevezze el a **WebAppInterface**. Ezután adja hozzá a következő kódot. Ez a kód lehetővé teszi, hogy az alkalmazás a HTML-ben lévő JavaScript-függvényekkel, majd egy későbbi lépésben legyen felvéve.
 
-![com. example. quickstartkotlin mappa](../../media/android/kotlin/android-studio-com-folder.png)
+![com. example. quickstartkotlin mappa – Kotlin](../../media/android/kotlin/android-studio-com-folder.png)
 
-![WebAppInterface](../../media/android/kotlin/android-studio-web-app-interface.png)
+![WebAppInterface - Kotlin](../../media/android/kotlin/android-studio-web-app-interface.png)
 
 ```WebAppInterface.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -524,9 +523,9 @@ class MainActivity : AppCompatActivity() {
 
 A webes nézet implementációjának HTML-re van szüksége a működéséhez. Kattintson a jobb gombbal a **/assets** mappára, hozzon létre egy új fájlt, és nevezze el **immersiveReader.html**-ként.
 
-![Új HTML-fájl létrehozása](../../media/android/kotlin/android-studio-immersive-reader-html.png)
+![Új HTML-fájl létrehozása – Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
-![HTML-eszköz helye](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
+![HTML-eszköz helye – Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
 Adja hozzá a következő HTML-és JavaScript-kódot. Ez a kód hozzáadja a magával ragadó olvasói SDK-t az alkalmazáshoz, és a segítségével megnyithatja a magával ragadó olvasót az általunk írt alkalmazás kódjával.
 
@@ -575,7 +574,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Alkalmazás engedélyeinek beállítása
 
-![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
+![AndroidManifest – Kotlin](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
 Mivel az alkalmazásnak a zavartalan olvasó SDK-hoz való működéséhez hálózati hívásokat kell végeznie, gondoskodni kell arról, hogy az alkalmazás engedélyei a hálózati hozzáférés engedélyezésére legyenek konfigurálva. Cserélje le a **/manifests/AndroidManifest.xml** tartalmát a következő XML-fájlra:
 
@@ -609,8 +608,8 @@ Mivel az alkalmazásnak a zavartalan olvasó SDK-hoz való működéséhez hál�
 
 A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulátoron. Amikor kijelöli az **olvasót**, a magával ragadó olvasó megnyílik az alkalmazás tartalmával.
 
-![Modern olvasó](../../media/android/kotlin/android-studio-device-emulator.png)
+![Lebilincselő olvasó – Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).

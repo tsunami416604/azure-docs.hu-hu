@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84981761"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987390"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Adatvédelmi irányelvek a hangasszisztensekhez Windows rendszeren
 
@@ -31,7 +31,7 @@ A Windowsban a hangasszisztenseket létrehozó fejlesztőknek tartalmazniuk kell
 A Windows-felhasználók láthatják és szabályozhatják a Segéd-alkalmazásaik rendelkezésre állását a alkalmazásban **`Settings > Privacy > Voice activation`** .
 
  > [!div class="mx-imgBorder"]
- > [![Adatvédelem – alkalmazás – Listázás](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Egy segéd-alkalmazás Windows Voice Activate adatvédelmi beállítási bejegyzése")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
+ > [![A képernyőképen a Cortana availablity szabályozására szolgáló beállítások láthatók. ](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Egy segéd-alkalmazás Windows Voice Activate adatvédelmi beállítási bejegyzése")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
 A listában való részvételre való jogosultság kiválasztásához forduljon a Microsofthoz a winvoiceassistants@microsoft.com kezdéshez. Alapértelmezés szerint a felhasználóknak explicit módon engedélyeznie kell a hangaktiválást egy új asszisztens számára a **`Settings > Privacy > Voice Activation`** alkalmazásban `ms-settings:privacy-voiceactivation` . Az engedélyezett alkalmazások a listában jelennek meg, miután futtatták és használták az `Windows.ApplicationModel.ConversationalAgent` API-kat. A hangaktiválási beállítások módosítható, ha az alkalmazás mikrofonos beleegyezést kapott a felhasználótól.
 

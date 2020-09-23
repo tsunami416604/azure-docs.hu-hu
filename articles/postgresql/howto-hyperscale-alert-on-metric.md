@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 88425e2c875b3cce7c63cd66fd034e5a7af56ec7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5ccd1281e50ca10b8edd7d7567a000b97107901
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117032"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907425"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>A Azure Database for PostgreSQL-nagy kapacitású (Citus) metrikáinak beállítása a Azure Portal használatával
 
@@ -26,7 +26,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Hívja meg a webhookot.
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -35,19 +35,19 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 2. Az oldalsáv **figyelés** szakaszában válassza a **riasztások** lehetőséget az alábbiak szerint:
 
-   ![Riasztási szabályok kiválasztása](./media/howto-hyperscale-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/2-alert-rules.png" alt-text="Riasztási szabályok kiválasztása":::
 
 3. Válassza az **új riasztási szabály** (+ ikon) lehetőséget.
 
 4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
-   ![Metrikus riasztási űrlap hozzáadása](./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Metrikus riasztási űrlap hozzáadása":::
 
 5. A **feltétel** szakaszban válassza a **Hozzáadás**lehetőséget.
 
 6. Válasszon ki egy mérőszámot azon jelek listájáról, amelyekről riasztást szeretne kapni. Ebben a példában válassza a "tárolási százalék" lehetőséget.
    
-   ![Metrika kiválasztása](./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrika kiválasztása":::
 
 7. A riasztás logikájának konfigurálása:
 
@@ -58,13 +58,13 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
    
    A Befejezés gombra kattintva válassza a **kész** lehetőséget.
 
-   ![Metrika kiválasztása](./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Metrika kiválasztása":::
 
 8. A **műveleti csoportok** szakaszban válassza az **új létrehozása** lehetőséget egy új csoport létrehozásához, hogy értesítést kapjon a riasztásról.
 
 9. Töltse ki a "műveleti csoport hozzáadása" űrlapot névvel, rövid névvel, előfizetéssel és erőforráscsoporthoz.
 
-    ![Műveletcsoport](./media/howto-hyperscale-alert-on-metric/9-add-action-group.png)
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Műveletcsoport":::
 
 10. **E-mail/SMS/leküldéses/** hangműveletek típusának konfigurálása.
     
@@ -72,11 +72,11 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
    
     Ha elkészült, kattintson **az OK gombra** .
 
-    ![Műveletcsoport](./media/howto-hyperscale-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Műveletcsoport":::
 
 11. Adja meg a riasztási szabály nevét, leírását és súlyosságát.
 
-    ![Műveletcsoport](./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Műveletcsoport"::: 
 
 12. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
@@ -104,7 +104,7 @@ Mivel a lemez megközelíti a lemezterület korlátját, próbálja ki a követk
 * Érdemes lehet [csomópontokat hozzáadni](howto-hyperscale-scaling.md#add-worker-nodes) a kiszolgálócsoport és a szegmensek újrakiegyensúlyozásához. Az újrakiegyensúlyozás több számítógép között osztja el az adatmegosztást.
 * Vegye fontolóra a munkavégző csomópontok [kapacitásának növekedését](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) . Minden dolgozó legfeljebb 2 TiB tárterületet tartalmazhat. A csomópontok átméretezése előtt azonban meg kell adni a csomópontok hozzáadását, mivel a csomópontok hozzáadása gyorsabban megtörtént.
 
-### <a name="cpu-usage"></a>CPU-használat
+### <a name="cpu-usage"></a>Processzorhasználat
 
 A CPU-használat figyelése hasznos a teljesítmény alapkonfigurációjának létrehozásához. Észreveheti például, hogy a CPU-használat általában 40-60% körül van. Ha a CPU-használat hirtelen megkezdődik a 95% körül, akkor felismerheti az anomáliát. A CPU-használat a szerves növekedést is tükrözheti, de felfedi a kóbor lekérdezést is. A CPU-riasztások létrehozásakor állítsa be a hosszú összesítés részletességét a hosszan tartó növekedéshez, és hagyja figyelmen kívül a pillanatnyi tüskéket.
 

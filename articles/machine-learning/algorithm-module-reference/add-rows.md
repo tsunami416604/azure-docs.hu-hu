@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353ecc89e242e1d17dd83436f83afe77cc8c84ae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477731"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898978"
 ---
 # <a name="add-rows-module"></a>Sorok hozzáadása modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal összefűzheti a két adatkészletet. Az Összefűzés során a rendszer hozzáadja a második adatkészlet sorait az első adatkészlet végéhez.  
   
@@ -40,6 +40,6 @@ Két adatkészletből származó sorok összefűzéséhez a soroknak pontosan ug
 
     Ha ugyanazt az adatkészletet adja hozzá a **sorok hozzáadása** modul mindkét bemenetéhez, a rendszer duplikálja az adatkészletet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

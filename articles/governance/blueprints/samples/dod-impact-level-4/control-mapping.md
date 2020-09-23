@@ -1,14 +1,14 @@
 ---
 title: DoD Impact Level 4 terv minta-vezérlők
 description: A DoD Impact Level 4 terv minta hozzárendelésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923288"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978418"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 tervezetének vezérlése
 
@@ -102,11 +102,11 @@ Ez a terv olyan szabályzat-definíciókat tartalmaz, amelyek segítségével bi
 A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi konfigurációt és a felügyeletet. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
 - \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 Válasz a feldolgozási hibák naplózására
@@ -123,11 +123,11 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hoz
 A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi jelentéskészítést és elemzést. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
 - \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) audit felülvizsgálat, elemzés és jelentéskészítés | Integrációs/ellenőrzési és figyelési képességek
@@ -144,7 +144,7 @@ Ez a terv olyan szabályzat-definíciókat biztosít, amelyek a virtuális gépe
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
 
 ## <a name="au-12-audit-generation"></a>AU-12 naplózási generáció
 
@@ -152,11 +152,11 @@ Ez a terv olyan szabályzat-definíciókat biztosít, amelyek a Log Analytics ü
 Ezek a szabályzat-definíciók a diagnosztikai naplók konfigurációját is naplózzák, hogy betekintést nyújtsanak az Azure-erőforrásokon belül végrehajtott műveletekre. Emellett a naplózás és a speciális adatbiztonság is konfigurálva van az SQL-kiszolgálókon.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
 - \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 - Diagnosztikai beállítás naplózása
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
@@ -336,11 +336,8 @@ Ebből a tervből megtudhatja, hogyan kezelheti a rendszerhibákat a hiányzó r
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) hibák elhárítása | A szoftver/belső vezérlőprogram korábbi verzióinak eltávolítása
 
-Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségével biztosítható, hogy az alkalmazások a .NET-keretrendszer, a HTTP, a Java, a PHP, a Python és a TLS legújabb verzióját használják. Ez a terv egy olyan szabályzat-definíciót is hozzárendel, amely biztosítja, hogy a Kubernetes-szolgáltatások a nem sebezhető verzióra legyen frissítve.
+Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségével biztosítható, hogy az alkalmazások a HTTP, a Java, a PHP, a Python és a TLS legújabb verzióját használják. Ez a terv egy olyan szabályzat-definíciót is hozzárendel, amely biztosítja, hogy a Kubernetes-szolgáltatások a nem sebezhető verzióra legyen frissítve.
 
-- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha az API-alkalmazás részeként van használatban
-- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a függvényalkalmazás részeként van használatban
-- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a webalkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha az API-alkalmazás futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a Function app futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a webalkalmazás futtatására használatos
@@ -348,7 +345,6 @@ Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségéve
 - Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a Java-verzió a legújabb, ha a webalkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha az API-alkalmazás részeként van használatban
-- Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a webalkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha az API-alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
@@ -356,7 +352,7 @@ Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségéve
 - A legújabb TLS-verziót kell használni az API-alkalmazásban
 - A legújabb TLS-verziót kell használni a függvényalkalmazás
 - A legújabb TLS-verziót kell használni a webalkalmazásban
-- \[Előzetes \] verzió: a Kubernetes-szolgáltatásokat nem sebezhető Kubernetes-verzióra kell frissíteni
+- A Kubernetes-szolgáltatásokat nem sebezhető Kubernetes-verzióra kell frissíteni
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 kártékony kódok védelme
 
@@ -378,11 +374,11 @@ Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony 
 Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli naplózásával és érvényesítésével segíti a rendszerek figyelését. A szabályzatok a Log Analytics ügynök üzembe helyezését, valamint az SQL-adatbázisok, a Storage-fiókok és a hálózati erőforrások fokozott biztonsági beállításait naplózzák és érvényesítik. Ezek a képességek segítenek a rendellenes viselkedés és a támadási mutatók észlelésében, így elvégezheti a megfelelő lépéseket.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
 - \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
@@ -415,7 +411,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a DoD Impact Level 4 tervezetének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 

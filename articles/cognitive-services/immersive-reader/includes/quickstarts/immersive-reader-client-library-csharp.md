@@ -7,24 +7,23 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f3d694a1e1eb368a97d994ebe9885c279ff44463
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: fc3d5237fc795a2a828e886172e5d15acd9a9fb7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505391"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978328"
 ---
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
-Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és integrálhatja a magával ragadó olvasót az olvasói ügyféloldali kódtár használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)egy teljes körű működő minta érhető el.
-
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ebben a rövid útmutatóban egy webalkalmazást hoz létre a semmiből, és integrálhatja a magával ragadó olvasót az olvasó ügyféloldali kódtár használatával. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A minta projekt tulajdonságainak konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
 
@@ -32,17 +31,17 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazás-sablon használatával, beépített modell-vezérlővel, és ASP.NET Core 2,1. Nevezze el a "QuickstartSampleWebApp" projektet.
 
-![Új projekt](../../media/quickstart-csharp/1-createproject.png)
+![Új projekt – C #](../../media/quickstart-csharp/1-createproject.png)
 
-![Új projekt konfigurálása](../../media/quickstart-csharp/2-configureproject.png)
+![Új projekt konfigurálása – C #](../../media/quickstart-csharp/2-configureproject.png)
 
-![Új ASP.NET Core webalkalmazás](../../media/quickstart-csharp/3-createmvc.png)
+![Új ASP.NET Core webalkalmazás – C #](../../media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>Hitelesítés beállítása
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _secrets.js_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Cserélje le asecrets.jstartalmát a következőre, és adja _ meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _secrets.js_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true). Cserélje le asecrets.jstartalmát a következőre, és adja _ meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
 
 ```json
 {
@@ -53,7 +52,7 @@ Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Adja hozzá a Microsoft. IdentityModel. clients. ActiveDirectory NuGet-csomagot
+### <a name="install-active-directory"></a>Active Directory telepítése
 
 A következő kód a **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet-csomag objektumait használja, ezért hozzá kell adnia egy hivatkozást az adott csomaghoz a projektben.
 
@@ -216,7 +215,7 @@ Most hozzáadunk egy minta tartalmat ehhez a webalkalmazáshoz. Nyissa meg a _Vi
 
 Figyelje meg, hogy az összes szöveg **lang** attribútummal rendelkezik, amely a szöveg nyelveit írja le. Ez az attribútum segíti a magával ragadó olvasót a megfelelő nyelvi és nyelvtani funkciók biztosításában.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>JavaScript hozzáadása a magára ejtő olvasó indításának kezeléséhez
+## <a name="add-javascript-to-handle-launching-immersive-reader"></a>JavaScript hozzáadása a lebilincselő olvasó elindításához
 
 A részletes olvasó függvénytár olyan funkciókat biztosít, mint például a magával ragadó olvasó elindítása és a magára ejtő olvasó gombok megjelenítése. További információ [itt](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference).
 
@@ -296,18 +295,14 @@ A menüsávban válassza a **hibakeresés > a hibakeresés elindítása**lehető
 
 A böngészőben a következőknek kell megjelennie:
 
-![Minta alkalmazás](../../media/quickstart-csharp/4-buildapp.png)
+![Minta alkalmazás – C #](../../media/quickstart-csharp/4-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
 Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon található tartalommal ellátott olvasó.
 
-![Modern olvasó](../../media/quickstart-csharp/5-viewimmersivereader.png)
+![Lebilincselő olvasó – C #](../../media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg a [Node.js](../../tutorial-nodejs.md) rövid útmutatót, amelyből megtudhatja, mit tehet az olvasó ügyféloldali kódtár használatával Node.js
-* Tekintse meg az [Android-oktatóanyagot](../../tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
-* Tekintse meg az [iOS-oktatóanyagot](../../tutorial-ios.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
-* Tekintse meg a [Python-oktatóanyagot](../../tutorial-python.md) , amelyből megtudhatja, mit tehet az olvasó ügyféloldali kódtár a Python használatával
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)

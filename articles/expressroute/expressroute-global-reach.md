@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 8c6ed19a585bc1ebae65045cd1cc4c442f113597
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.custom: references_regions
+ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651497"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987624"
 ---
 # <a name="expressroute-global-reach"></a>Az ExpressRoute Global Reach
 A ExpressRoute egy privát és rugalmas módszer a helyi hálózatok Microsoft Cloudhoz való összekapcsolására. Számos Microsoft Cloud Services-szolgáltatást, például az Azure-t és a Microsoft 365t a privát adatközpontból vagy a vállalati hálózatból érheti el. Előfordulhat például, hogy egy San Francisco-beli fiókirodában egy ExpressRoute áramkör található a Szilícium-völgyben és egy másik fiókirodában Londonban, és egy ExpressRoute-áramkör található ugyanabban a városban. Mindkét fiókirodában nagy sebességű kapcsolat áll fenn az USA nyugati és Egyesült Királyság déli régiója Azure-erőforrásaival. Azonban a fiókirodák nem tudnak közvetlenül kapcsolatba lépni egymással, és nem küldhetnek adatküldést. Más szóval a 10.0.1.0/24 képes az 10.0.3.0/24 és a 10.0.4.0/24 hálózatra irányuló adatküldésre, de nem a 10.0.2.0/24 hálózatra.
@@ -29,10 +30,27 @@ A ExpressRoute Global Reach úgy lett kialakítva, hogy kiegészítse a szolgál
 ![Az Express Route Global Reach használati esetét bemutató diagram.][3]
 
 ## <a name="availability"></a>Rendelkezésre állás 
-A ExpressRoute Global Reach a legtöbb régióban támogatott, ahol a ExpressRoute jelenleg támogatott. A jelenlegi támogatott régiókat a [ExpressRoute kapcsolati szolgáltatói](expressroute-locations-providers.md#partners) című témakörben tekintheti meg. 
+A ExpressRoute Global Reach a következő helyeken támogatott. 
 
 > [!NOTE] 
 > Ahhoz, hogy a ExpressRoute Global Reach a [különböző geopolitikai régiók](expressroute-locations-providers.md#locations)között, az áramkörnek **prémium SKU**-nak kell lennie.
+
+* Ausztrália
+* Kanada
+* Franciaország
+* Németország
+* Hongkong (KKT)
+* Írország
+* Japán
+* Dél-Korea
+* Hollandia
+* Új-Zéland
+* Norvégia
+* Szingapúr
+* Svédország
+* Svájc
+* Egyesült Királyság
+* Egyesült Államok
 
 ## <a name="next-steps"></a>Következő lépések
 - Tekintse meg a [Global REACH gyakori kérdések](expressroute-faqs.md#globalreach)című részt.

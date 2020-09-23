@@ -464,27 +464,31 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Csatlakozás a Cosmos DB-hez készült Azure Synapse Linkhez
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Azure Cosmos DB elemzési tár lekérdezése az Azure Synapse Analyticshez készült Apache Sparkkal
+            - name: Az Azure Cosmos DB elemzési tárának lekérdezése az Apache Sparkkal
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Adatok másolása Synapse Linkből SQL-készletbe Apache Spark használatával
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: Az Azure Cosmos DB elemzési tárának lekérdezése az igény szerinti SQL-lel
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Adatok lekérdezése a tárterületen
+            - name: Külső adatok lekérdezése
               items:
                 - name: Áttekintés
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: CSV-fájl lekérdezése
+                - name: CSV-fájlok lekérdezése
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Parquet-fájlok lekérdezése
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: A Parquet beágyazott típusainak lekérdezése
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: JSON-fájlok lekérdezése
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Az Azure Cosmos DB lekérdezése
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Beágyazott típusok lekérdezése
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Mappák és több fájl lekérdezése
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Fájlok metaadatainak használata
+                - name: Particionált fájlok lekérdezése a fájlok metaadatainak használatával
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Nézetek létrehozása és használata
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

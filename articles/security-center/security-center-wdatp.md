@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569084"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907361"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -28,8 +28,8 @@ A Azure Security Center a [Microsoft Defender komplex veszélyforrások elleni v
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|**Általános elérhetőség**|
-|Árképzési|Standard csomag|
+|Kiadás állapota:|Általánosan elérhető (GA)|
+|Árképzési|[Azure Defender](security-center-pricing.md) szükséges|
 |Támogatott gépek:|![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
 |Szükséges szerepkörök és engedélyek:|Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa**vagy **előfizetéshez tartozó közreműködő**|
 |Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek nyilvános Azure-felhőkben<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
@@ -57,7 +57,7 @@ A Defender ATP és a Azure Security Center integrálásával a következő tová
 
 ## <a name="platform-support"></a>Platformtámogatás
 
-A Microsoft Defender ATP Security Center támogatja a Windows Server 2016, 2012 R2 és 2008 R2 SP1 észlelését. Az Azure-beli virtuális gépekhez standard szintű előfizetésre és nem Azure-beli virtuális gépekre van szükség, csak a munkaterület szintjén lévő standard csomagra van szükség.
+A Microsoft Defender ATP Security Center támogatja a Windows Server 2016, 2012 R2 és 2008 R2 SP1 észlelését. Azure-beli virtuális gépek esetén az Azure Defender engedélyezéséhez az előfizetéséhez és a nem Azure-beli virtuális gépekhez szükséges, hogy az Azure Defender csak munkaterület szintjén legyen engedélyezve.
 
 A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára.
 
@@ -74,24 +74,25 @@ A kiszolgálók Security Centerbe való bevezetéséhez kattintson az **Azure Se
 
 1. A bevezetési **területen válasszon** ki vagy hozzon létre egy munkaterületet az adattároláshoz.
 
-2. Ha nem látja az összes munkaterületet, előfordulhat, hogy az engedélyek hiánya miatt a munkaterület az Azure Security Standard díjszabási szintjére van beállítva. További információ: a [frissítés a Security Center Standard szintjére a fokozott biztonság érdekében](security-center-pricing.md).
+2. Ha nem látja az összes munkaterületet, előfordulhat, hogy az engedélyek hiánya miatt az Azure Defender védi a munkaterületet.
     
 3. Válassza a **kiszolgálók hozzáadása** lehetőséget a log Analytics ügynök telepítésére vonatkozó utasítások megtekintéséhez. 
 
-4. A bevezetést követően nyomon követheti a gépeket a **számítás és az alkalmazások**területen.
+4. A bevezetést követően nyomon követheti a gépeket az [Asset Inventory](asset-inventory.md)szolgáltatásban.
 
    ![Számítógépek előkészítése](media/security-center-wdatp/onboard-computers.png)
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>A Microsoft Defender ATP-integráció engedélyezése
 
-Ha meg szeretné tekinteni, hogy engedélyezve van-e a Microsoft Defender ATP-integrációja, válassza a **Security Center**  >  **díjszabása & beállításokat** > kattintson az előfizetésre.
+Ha meg szeretné tekinteni, hogy engedélyezve van-e a Microsoft Defender ATP-integrációja, válassza ki a **Security Center**  >  **díjszabási & beállításait** > válassza ki az előfizetés
+
 Itt láthatja az aktuálisan engedélyezett integrációkat.
 
   ![Azure Security Center veszélyforrások észlelésére vonatkozó beállítások lap, amelyen engedélyezve van a Microsoft Defender ATP-integráció](media/security-center-wdatp/enable-integrations.png)
 
-- Ha már előkészítette a-kiszolgálókat Azure Security Center standard szintű csomagra, akkor nem kell további műveletet végrehajtania. Azure Security Center automatikusan előkészíti a kiszolgálókat a Microsoft Defender ATP szolgáltatásba. A bevezetést akár 24 óráig is eltarthat.
+- Ha már engedélyezte az Azure Defender használatát, nincs szükség további műveletre. Azure Security Center automatikusan előkészíti a kiszolgálókat a Microsoft Defender ATP szolgáltatásba. A bevezetést akár 24 óráig is eltarthat.
 
-- Ha még soha nem állította be a kiszolgálókat Azure Security Center standard szintű csomagba, a szokásos módon Azure Security Center.
+- Ha még soha nem állította be a kiszolgálókat a Azure Security Centerba, bevezetheti őket, hogy Azure Security Center, és a szokásos módon engedélyezzék az Azure Defendert.
 
 - Ha a kiszolgálókat a Microsoft Defender ATP szolgáltatáson keresztül helyezte üzembe:
   - A [kiszolgálói gépek regisztrációjának megszüntetésére szolgáló](https://go.microsoft.com/fwlink/p/?linkid=852906)kapcsolatos útmutatásért tekintse meg a dokumentációt.

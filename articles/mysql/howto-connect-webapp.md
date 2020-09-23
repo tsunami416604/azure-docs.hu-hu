@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101624"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905839"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Meglévő Azure App Service összekötése Azure Database for MySQL-kiszolgálóval
 Ez a témakör azt ismerteti, hogyan csatlakoztatható egy meglévő Azure App Service a Azure Database for MySQL-kiszolgálóhoz.
@@ -26,21 +26,21 @@ A Azure Database for MySQL tűzfal használatával biztosít hozzáférést a bi
 
 1. A MySQL-kiszolgáló panelen, a beállítások fejléc alatt kattintson a **kapcsolatbiztonsági** elemre a Azure Database for MySQL kapcsolatbiztonsági paneljének megnyitásához.
 
-   ![Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre](./media/howto-connect-webapp/1-connection-security.png)
+   :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre":::
 
 2. Válassza **a** be **lehetőséget az Azure-szolgáltatásokhoz való hozzáférés engedélyezése**, majd a **Mentés**lehetőségre.
-   ![Azure Portal – Azure-hozzáférés engedélyezése](./media/howto-connect-webapp/allow-azure.png)
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure Portal – Azure-hozzáférés engedélyezése":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2. megoldás – tűzfalszabály létrehozása a kimenő IP-címek explicit engedélyezéséhez
 Explicit módon hozzáadhatja a Azure App Service összes kimenő IP-címeit.
 
 1. A App Service Tulajdonságok panelen tekintse meg a **kimenő IP-címet**.
 
-   ![Azure Portal – kimenő IP-címek megtekintése](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure Portal – kimenő IP-címek megtekintése":::
 
 2. A MySQL-kapcsolatok biztonsági paneljén egyenként adja hozzá a kimenő IP-címeket.
 
-   ![Azure Portal – explicit IP-címek hozzáadása](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure Portal – explicit IP-címek hozzáadása":::
 
 3. Ne felejtse el menteni a tűzfalszabályok **mentését** .
 

@@ -1,6 +1,6 @@
 ---
 title: TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure Virtual Machines
-description: Az IBM z/OS mainframe-alapú munkaterheléseket a TmaxSoft OpenFrame Kiindulópontul-környezettel helyezheti át az Azure Virtual Machines (VM) használatával.
+description: Ismerje meg, hogyan állíthat be olyan OpenFrame Kiindulópontul-környezetet az Azure-ban, amely fejlesztési, bemutatói, tesztelési és éles számítási feladatokhoz alkalmas.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082392"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987475"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban
 
@@ -64,7 +64,7 @@ A következő táblázat az Azure-beli telepítés követelményeit sorolja fel.
 
 <table>
 <thead>
-    <tr><th>Követelmény</th><th>Description</th></tr>
+    <tr><th>Követelmény</th><th>Leírás</th></tr>
 </thead>
 <tbody>
 <tr><td>Támogatott Linux-disztribúciók az Azure-ban
@@ -460,7 +460,7 @@ Az ODBC telepítése:
 
      Alapértelmezés szerint a unixODBC a/usr/local-ben van telepítve, ezért `--prefix` egy értéket kell áthaladnia a hely módosításához. Hasonlóképpen, a konfigurációs fájlok alapértelmezés szerint telepítve vannak a/etc számítógépen, ezért a `--sysconfdir` kívánt hely értékét adja át.
 
-4. Makefile végrehajtása:`[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. Makefile végrehajtása: `[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
 5. Másolja a végrehajtható fájlt a program könyvtárába a fordítás után. Például:
 
@@ -945,7 +945,7 @@ A rendezés az Adatrendezésre szolgáló batch-tranzakciókban használt segéd
      export PATH
      ```
 
-6. A bash-profil végrehajtásához írja be a következőt a parancssorba:`. .bash_profile`
+6. A bash-profil végrehajtásához írja be a következőt a parancssorba: `. .bash_profile`
 
 7. Hozza létre a konfigurációs fájlt. Például:
 
@@ -1342,7 +1342,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. Módosítás `jeus.password=jeusadmin nodename=Tmaxsoft` ide`jeus.password=tmax1234 nodename=ofdemo`
+7. Módosítás `jeus.password=jeusadmin nodename=Tmaxsoft` ide `jeus.password=tmax1234 nodename=ofdemo`
 
 8. Futtassa a `ant install` parancsot a JEUS létrehozásához.
 9.  Frissítse a. bash- \_ profilt a JEUS változókkal az alábbiak szerint:
@@ -1472,7 +1472,7 @@ Megjelenik a kezdőképernyő:
 
 Ezzel befejezte a OpenFrame Kiindulópontul-összetevők telepítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a nagyszámítógépek áttelepítését tervezi, a bővülő partneri ökoszisztémánk segítséget nyújt Önnek. A partneri megoldások kiválasztásával kapcsolatos részletes útmutatásért tekintse meg a [platform modernizációs szövetségét](https://datamigration.microsoft.com/).
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120643"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988110"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -183,7 +183,7 @@ Engedélyezett régiók:
 - Ausztrália középső régiója
 - Dél-Brazília
 - Közép-Kanada
-- USA középső régiója
+- Az USA középső régiója
 - Kelet-Kína 2
 - Észak-Kína 2
 - Kelet-Ázsia
@@ -228,14 +228,14 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Miután az adatbázist áttelepítette a nagy kapacitású, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a bacpac-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik. A Bacpac exportálás/Azure Portal Importálás a PowerShellből a [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) vagy a [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)használatával az Azure CLI-ből az [az SQL db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) és [az SQL db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import), valamint a [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) nem támogatott. A kisebb nagy kapacitású-adatbázisok (akár 200 GB) Bacpac importálását és exportálását a SSMS és a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 18,4-es vagy újabb verziója támogatja. Nagyobb adatbázisok esetén a bacpac-Exportálás/-Importálás hosszú időt vehet igénybe, és különböző okok miatt sikertelen lehet.|
 | Adatbázisok áttelepítése memóriában tárolt OLTP-objektumokkal | A nagy kapacitású támogatja a memóriában lévő OLTP objektumok egy részhalmazát, beleértve a memóriára optimalizált táblák típusát, a táblázat változóit és a natív módon lefordított modulokat. Ha azonban bármilyen memóriában lévő OLTP-objektum szerepel az áttelepített adatbázisban, a prémium és üzletileg kritikus szolgáltatási szintről a nagy kapacitású-re történő áttelepítés nem támogatott. Ha egy ilyen adatbázist át szeretne telepíteni a nagy kapacitású-be, az összes memóriában lévő OLTP objektumot és azok függőségeit el kell dobni. Az adatbázis migrálása után ezek az objektumok újra létrehozhatók. A tartós és nem tartós, memóriára optimalizált táblák jelenleg nem támogatottak a nagy kapacitású-ben, és lemezes táblákként újra létre kell őket hozni.|
 | Georeplikáció  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt. |
-| Adatbázis másolása | Az adatbázis másolása még nem használható új adatbázis létrehozására az Azure SQL-nagy kapacitású. |
+| Adatbázis másolása | A nagy kapacitású adatbázis-másolata már nyilvános előzetes verzióban érhető el. |
 | TDE/AKV-integráció | Az transzparens adatbázis-titkosítás Azure Key Vault használatával (általában a saját kulcsú vagy a BYOK néven ismert) jelenleg előzetes verzióban érhető el. |
 | Intelligens adatbázis-funkciók | A "kényszerített terv" lehetőség kivételével az összes többi Automatikus hangolási beállítás még nem támogatott a nagy kapacitású: a beállítások engedélyezhetők, de nem lesznek javaslatok vagy műveletek. |
 | Lekérdezési teljesítmény elemzése | A nagy kapacitású adatbázisok esetében jelenleg nem támogatott a lekérdezési teljesítmény. |
 | Adatbázis zsugorítása | A DBCC SHRINKDATABASE vagy DBCC SHRINKFILE jelenleg nem támogatott nagy kapacitású-adatbázisok esetén. |
 | Adatbázis integritásának ellenőrzése | A DBCC CHECKDB UTASÍTÁST jelenleg nem támogatott nagy kapacitású-adatbázisok esetén. A DBCC CHECKFILEGROUP és a DBCC CHECKTABLE UTASÍTÁST megkerülő megoldásként is használható. A Azure SQL Database adatintegritás-kezelésével kapcsolatos részletekért tekintse meg a [Azure SQL Database adatok integritását](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) ismertető témakört. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A nagy kapacitású kapcsolatos gyakori [kérdésekért](service-tier-hyperscale-frequently-asked-questions-faq.md)lásd: nagy kapacitású.
 - További információ a szolgáltatási szintekről: [szolgáltatási szintek](purchasing-models.md)

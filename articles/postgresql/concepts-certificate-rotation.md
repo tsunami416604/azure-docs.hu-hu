@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 5b46dc0197022aa72b6ca4c206d1da4369234167
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 576ff4eb3a189b27a4c7743966ced0676ec67a9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707679"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978912"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megértése Azure Database for PostgreSQL egyetlen kiszolgálón
 
@@ -126,5 +126,8 @@ Mivel ez a frissítés ügyféloldali módosítás, ha az ügyfél a másodpéld
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. van-e kiszolgálóoldali lekérdezés annak ellenőrzéséhez, hogy az SSL használatban van-e?
 Annak ellenőrzéséhez, hogy SSL-kapcsolatot használ-e a kiszolgálóhoz való kapcsolódáshoz, tekintse meg az [SSL-ellenőrzést](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity).
 
-### <a name="13-what-if-i-have-further-questions"></a>13. Mi a teendő, ha további kérdéseim vannak?
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. van szükség beavatkozásra, ha már van a DigiCertGlobalRootG2 a saját tanúsítványfájl?
+Nem. Nincs szükség beavatkozásra, ha a tanúsítványfájl már rendelkezik a **DigiCertGlobalRootG2**.
+
+### <a name="14-what-if-i-have-further-questions"></a>14. Mi a teendő, ha további kérdéseim vannak?
 Ha kérdése van, választ kaphat a [Microsoft Q&a](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)közösségi szakértőitől. Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége,  [vegye fel velünk a kapcsolatot](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

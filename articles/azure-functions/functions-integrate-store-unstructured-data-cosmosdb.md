@@ -4,12 +4,12 @@ description: Strukturálatlan adatok tárolása az Azure Functions és a Cosmos 
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210878"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987969"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Strukturálatlan adatok tárolása az Azure Functions és az Azure Cosmos DB használatával
 
@@ -54,7 +54,7 @@ A kimeneti kötés létrehozásához rendelkeznie kell egy SQL API-t használó 
     | **Dokumentumparaméter neve** | taskDocument | A Cosmos DB-objektumra utaló név a kódban. |
     | **Adatbázis neve** | taskDatabase | Adatbázis neve a dokumentumok mentéséhez. |
     | **Gyűjtemény neve** | taskCollection | Az adatbázis-gyűjtemény neve. |
-    | **Ha az értéke true, létrehozza a Cosmos DB-adatbázist és -gyűjteményt** | Igen | A gyűjtemény még nem létezik, hozza létre. |
+    | **Ha az értéke true, létrehozza a Cosmos DB-adatbázist és -gyűjteményt** | Yes | A gyűjtemény még nem létezik, hozza létre. |
     | **Cosmos DB-fiókkapcsolat** | Új beállítás | Válassza az **új**lehetőséget, majd válassza ki **Azure Cosmos db fiókot** és a korábban létrehozott **adatbázis-fiókot** , majd kattintson **az OK gombra**. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást használja a kötés, hogy kapcsolódjon az adatbázishoz. |
 
 1. A kötés létrehozásához kattintson **az OK gombra** .
@@ -143,7 +143,7 @@ A mintakód beolvassa a HTTP-kérelem sztringjeit, és egy `taskDocument` objekt
 
 1. Válassza a **Futtatás** lehetőséget, és ellenőrizze, hogy a rendszer visszaadja-e a 200 állapotot.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Tesztelje a függvényt." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="A képernyőképen a Futtatás után a 200-as HTTP-Response kód állapot jelenik meg." border="true":::
 
 
 1. A Azure Portal keresse meg és válassza a **Azure Cosmos db**lehetőséget.

@@ -1,6 +1,6 @@
 ---
-title: A kubectl használata a Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezéséhez statikusan kiosztott megosztáson keresztül Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan hozható létre és kezelhető egy Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezése egy Azure Stack Edge GPU-eszközön a kubectl használatával statikusan kiosztott megosztáson keresztül.
+title: A kubectl használata a Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezéséhez statikusan kiosztott megosztáson keresztül Azure Stack Edge Pro-eszközön | Microsoft Docs
+description: Ismerteti, hogyan hozható létre és kezelhető egy Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezése statikusan kiosztott megosztáson keresztül a kubectl használatával egy Azure Stack Edge Pro GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899537"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával az Azure Stack Edge-eszközön lévő PersistentVolume
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával a Azure Stack Edge Pro-eszközön PersistentVolume
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy egypéldányos állapotú alkalmazást a Kubernetes egy PersistentVolume (PV) és egy központi telepítés használatával. A központi telepítés `kubectl` egy meglévő Kubernetes-fürtön lévő parancsokat használ, és üzembe helyezi a MySQL-alkalmazást. 
 
-Ez az eljárás azon felhasználók számára készült, akik áttekintették a [Kubernetes-tárolót Azure stack Edge-eszközön](azure-stack-edge-gpu-kubernetes-storage.md) , és ismerik a [Kubernetes-tároló](https://kubernetes.io/docs/concepts/storage/)fogalmait.
+Ez az eljárás azon felhasználók számára készült, akik áttekintették a [Kubernetes-tárolót Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-storage.md) , és ismerik a [Kubernetes-tároló](https://kubernetes.io/docs/concepts/storage/)fogalmait.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -28,30 +28,30 @@ Az állapot-nyilvántartó alkalmazás üzembe helyezése előtt győződjön me
 
 ### <a name="for-device"></a>Az eszköz esetén
 
-- A hitelesítő adatok egy 1 csomópontos Azure Stack peremhálózati eszközhöz vannak bejelentkezett.
+- A bejelentkezési hitelesítő adatok egy 1 csomópontos Azure Stack Edge Pro-eszközhöz tartoznak.
     - Az eszköz aktiválva van. Lásd: [az eszköz aktiválása](azure-stack-edge-gpu-deploy-activate.md).
     - Az eszközön a Azure Portal-n keresztül konfigurált számítási szerepkör és egy Kubernetes-fürt van konfigurálva. Lásd: [számítás konfigurálása](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 ### <a name="for-client-accessing-the-device"></a>Az eszközt elérő ügyfél
 
-- Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge-eszköz elérésére szolgál majd.
+- Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
     - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
-    - Végrehajtotta a következő témakörben leírt eljárást: [Azure stack Edge-eszközön található Kubernetes-fürt elérése](azure-stack-edge-gpu-create-kubernetes-cluster.md). A következőket teheti:
+    - Végrehajtotta az [Azure stack Edge Pro-eszközön a Kubernetes-fürt eléréséhez](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakörben leírt eljárást. A következőket teheti:
       - `userns1`A parancs használatával létrehozott egy névteret `New-HcsKubernetesNamespace` . 
       - `user1`A parancs használatával létrehozott egy felhasználót `New-HcsKubernetesUser` . 
       - Hozzáférést kapott a `user1` `userns1` `Grant-HcsKubernetesNamespaceAccess` parancson keresztül.       
       - Telepítse az `kubectl` ügyfelet, és mentse a `kubeconfig` fájlt a felhasználói konfiguráció C: \\ Users \\ &lt; username &gt; \\ . Kube fájlba. 
     
-    - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy olyan verzió, amely az Azure stack Edge-eszközön futó Kubernetes-főverzión fut. 
+    - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy, a Azure stack Edge Pro-eszközön futó Kubernetes-verzió. 
         - Ezzel a paranccsal `kubectl version` ellenőrizhető az ügyfélen futó kubectl verziója. Jegyezze fel a teljes verziót.
-        - Az Azure Stack Edge-eszköz helyi felhasználói felületén lépjen az **Áttekintés** elemre, és jegyezze fel a Kubernetes szoftver számát. 
+        - Az Azure Stack Edge Pro-eszköz helyi felhasználói felületén lépjen az **Áttekintés** elemre, és jegyezze fel a Kubernetes-szoftver számát. 
         - Ellenőrizze, hogy ez a két verzió kompatibilis-e a támogatott Kubernetes-verzióban megadott leképezéssel <!-- insert link-->. 
 
 
-Készen áll egy állapot-nyilvántartó alkalmazás üzembe helyezésére az Azure Stack peremhálózati eszközön. 
+Készen áll egy állapot-nyilvántartó alkalmazás üzembe helyezésére az Azure Stack Edge Pro-eszközön. 
 
 ## <a name="provision-a-static-pv"></a>Statikus PV kiépítése
 
@@ -102,7 +102,7 @@ Az `kubectl` állapot-nyilvántartó alkalmazások központi telepítésének l�
 
     Ezt a jogcímet olyan meglévő PV-nek kell megfelelnie, amelyet statikusan kiosztottak, amikor a megosztást az előző lépésben hozta létre. Az eszközön az egyes megosztásokhoz egy nagy PV 32 TB jön létre. A PV megfelel a PVC által meghatározott követelményeknek, és a PVC-t ehhez a PV-hez kell kötni.
 
-    Másolja és mentse a következő `mysql-deployment.yml` fájlt egy olyan mappába, amely az Azure stack Edge-eszköz elérésére használt Windows-ügyfélen található.
+    Másolja és mentse a következő `mysql-deployment.yml` fájlt egy olyan mappába, amelyet a Windows-ügyfélen használ az Azure stack Edge Pro-eszköz eléréséhez.
     
     ```yml
     apiVersion: v1
@@ -354,4 +354,4 @@ A PV már nem kötődik a PVC-hez, mert a PVC törölve lett. Mivel a rendszer a
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tárolók dinamikus kiépítésének megismeréséhez lásd: [állapot-nyilvántartó alkalmazás üzembe helyezése dinamikus kiépítés Azure stack peremhálózati eszközön](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)
+A tárolók dinamikus kiépítésének megismeréséhez tekintse [meg az állapot-nyilvántartó alkalmazások üzembe helyezése dinamikus kiépítés Azure stack Edge Pro-eszközön keresztül](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md) című témakört.

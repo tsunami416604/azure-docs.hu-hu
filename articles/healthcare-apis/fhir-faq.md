@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843521"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978626"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -48,6 +48,23 @@ Fejlesztési szempontból minden funkció üzembe kerül az Azure nyílt forrás
 
 Az intelligens (behelyettesíthető orvosi alkalmazások és újrafelhasználható technológia) a FHIR-ben olyan Nyílt specifikációk összessége, amelyek a FHIR-kiszolgálókkal és más egészségügyi informatikai rendszerekkel, például az elektronikus egészségügyi adatokkal és az állapotadatok cseréjével integrálják a partneri alkalmazásokat. Egy intelligens on FHIR alkalmazás létrehozásával gondoskodhat arról, hogy az alkalmazás elérhető legyen, és számos különböző rendszerből is kihasználható legyen.
 Hitelesítés és Azure API a FHIR-hez. Ha többet szeretne megtudni az intelligens szolgáltatásról, látogasson el az [intelligens állapotba](https://smarthealthit.org/).
+
+### <a name="can-i-create-a-custom-fhir-resource"></a>Létrehozhatok egyéni FHIR-erőforrásokat?
+
+Nem engedélyezzük az egyéni FHIR-erőforrások használatát. Ha egyéni FHIR-erőforrásra van szüksége, hozzon létre egy egyéni erőforrást az [alapszintű erőforráshoz](http://www.hl7.org/fhir/basic.html) a bővítmények használatával. 
+
+### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>Támogatottak-e a [bővítmények](https://www.hl7.org/fhir/extensibility.html) a FHIR készült Azure API-ban?
+
+Lehetővé tesszük, hogy bármilyen érvényes FHIR JSON-adatkészletet töltsön be a-kiszolgálóra. Ha a bővítményt definiáló struktúrát szeretné tárolni, akkor azt struktúra-definíciós erőforrásként mentheti. Jelenleg nem kereshet bővítményeket.
+
+### <a name="what-is-the-limit-on-_count"></a>Mi a korlát a _count?
+
+A jelenlegi korlát értéke 100.
+
+### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Vannak korlátozások a csoportos exportálási funkciókhoz?
+
+A csoportos exportálás esetében csak a csoporton belül található hivatkozásokat exportáljuk, nem a [csoport erőforrásainak](https://www.hl7.org/fhir/group.html)minden jellemzőjét.
+
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT-összekötő a FHIR (előzetes verzió)
 

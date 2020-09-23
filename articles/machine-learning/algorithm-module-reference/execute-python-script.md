@@ -10,16 +10,16 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648745"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908026"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
-Ez a cikk a Azure Machine Learning Designerben (előzetes verzió) lévő Python parancsfájl-futtatási modult ismerteti.
+Ez a cikk a Python parancsfájl-futtatási modult ismerteti Azure Machine Learning Designerben.
 
 Ez a modul a Python-kód futtatására használható. További információ a Python architektúráról és tervezési alapelveiről: [a Python-kód futtatása Azure Machine learning Designerben](../how-to-designer-python.md).
 

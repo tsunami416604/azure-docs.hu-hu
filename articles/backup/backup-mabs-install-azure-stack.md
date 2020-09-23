@@ -3,12 +3,12 @@ title: Azure Backup Server telepítése az Azure Stacken
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a munkaterhelések védeleméhez vagy biztonsági mentéséhez Azure Stackban.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018127"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970233"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -107,7 +107,7 @@ Mindig csatlakozzon Azure Backup Server tartományhoz. Ha Azure Backup Server eg
 
 ### <a name="set-storage-replication"></a>Tárreplikáció beállítása
 
-A Recovery Services tároló tárolási replikációs lehetőséggel választhat a Geo-redundáns tárolás és a helyileg redundáns tárolás között. Alapértelmezés szerint a Recovery Services-tárolók a Geo-redundáns tárolást használják. Ha ez a tár az elsődleges tároló, hagyja a Storage beállítást a Geo-redundáns tárolás beállításnál. Válassza a helyileg redundáns tárolás lehetőséget, ha olcsóbb, kevésbé tartós megoldást szeretne használni. A [georedundáns](../storage/common/storage-redundancy.md) és a [helyileg redundáns](../storage/common/storage-redundancy.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
+A Recovery Services tároló tárolási replikációs lehetőséggel választhat a Geo-redundáns tárolás és a helyileg redundáns tárolás között. Alapértelmezés szerint a Recovery Services-tárolók a Geo-redundáns tárolást használják. Ha ez a tár az elsődleges tároló, hagyja a Storage beállítást a Geo-redundáns tárolás beállításnál. Válassza a helyileg redundáns tárolás lehetőséget, ha olcsóbb, kevésbé tartós megoldást szeretne használni. További információ a [geo-redundáns](../storage/common/storage-redundancy.md#geo-redundant-storage), [helyileg redundáns](../storage/common/storage-redundancy.md#locally-redundant-storage)és [zónákra redundáns](../storage/common/storage-redundancy.md#zone-redundant-storage) tárolási lehetőségekről az [Azure Storage-replikáció áttekintése című témakörben](../storage/common/storage-redundancy.md)olvasható.
 
 A tárreplikációs beállítás szerkesztése:
 
@@ -243,7 +243,7 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Adja meg a fájlok telepítésének helyét](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Az Azure-ba való biztonsági mentéshez a semmiből van szükség. Győződjön meg arról, hogy a megjelenő hely mérete megegyezik az Azure-ba történő biztonsági mentésre tervezett adatmennyiség legalább 5%-ában. A lemezek védelme érdekében a telepítés befejeződése után külön lemezeket kell konfigurálni. További információ a Storage-készletekről: [az adattároló előkészítése](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    Az Azure-ba való biztonsági mentéshez a semmiből van szükség. Győződjön meg arról, hogy a megjelenő hely mérete megegyezik az Azure-ba történő biztonsági mentésre tervezett adatmennyiség legalább 5%-ában. A lemezek védelme érdekében a telepítés befejeződése után külön lemezeket kell konfigurálni. További információ a Storage-készletekről: [az adattároló előkészítése](/system-center/dpm/plan-long-and-short-term-data-storage).
 
 6. A **biztonsági beállítások** képernyőn adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **Tovább gombra**.
 

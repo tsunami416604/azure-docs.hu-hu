@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907159"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
 
@@ -24,17 +24,17 @@ Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a 
 
 | Kimenet típusa | Particionálás | Biztonság | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory felhasználó </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Igen, engedélyezni kell.|SQL-felhasználó hitelesítése </br> MSI (előzetes verzió)|
-|[Azure szinapszis Analytics (előzetes verzió)](azure-synapse-analytics-output.md)|Nem|SQL-felhasználó hitelesítése|
-|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Igen|MSI </br> Hozzáférési kulcs|
-|[Azure Event Hubs](event-hubs-output.md)|Igen|Hozzáférési kulcs|
-|[Power BI](power-bi-output.md)|Nem|Azure Active Directory felhasználó </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Igen|Fiókkulcs|
-|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Service Bus témakörök](service-bus-topics-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Functions](azure-functions-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|No|SQL-felhasználó hitelesítése|
+|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Hozzáférési kulcs|
+|[Azure Event Hubs](event-hubs-output.md)|Yes|Hozzáférési kulcs|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory felhasználó </br> MSI|
+|[Azure Table storage](table-storage-output.md)|Yes|Fiókkulcs|
+|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Service Bus témakörök](service-bus-topics-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Functions](azure-functions-output.md)|Yes|Hozzáférési kulcs|
 
 ## <a name="partitioning"></a>Particionálás
 

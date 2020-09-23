@@ -1,6 +1,6 @@
 ---
-title: Virtuálisgép-rendszerképek létrehozása az Azure Stack Edge GPU-eszközhöz
-description: Ismerteti, hogyan hozhat létre Linux vagy Windows rendszerű virtuálisgép-rendszerképeket az Azure Stack Edge GPU-eszköz használatával.
+title: Virtuálisgép-rendszerképek létrehozása a Azure Stack Edge Pro GPU-eszközhöz
+description: Ismerteti, hogyan hozhat létre Linux vagy Windows rendszerű virtuálisgép-rendszerképeket az Azure Stack Edge Pro GPU-eszköz használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890984"
 ---
-# <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge-eszközhöz
+# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge Pro-eszközhöz
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-A virtuális gépek Azure Stack peremhálózati eszközön való üzembe helyezéséhez létre kell hoznia egy egyéni virtuálisgép-rendszerképet, amelyet a virtuális gépek létrehozásához használhat. Ez a cikk a Linux vagy a Windows rendszerű virtuális gépek egyéni rendszerképeinek létrehozásához szükséges lépéseket ismerteti, amelyeket a virtuális gépek Azure Stack peremhálózati eszközön való üzembe helyezéséhez használhat.
+Ha virtuális gépeket szeretne üzembe helyezni a Azure Stack Edge Pro-eszközön, létre kell hoznia egy egyéni virtuálisgép-rendszerképet, amelyet a virtuális gépek létrehozásához használhat. Ez a cikk a Linux vagy a Windows rendszerű virtuális gépek egyéni rendszerképeinek létrehozásához szükséges lépéseket ismerteti, amelyekkel virtuális gépeket helyezhet üzembe a Azure Stack Edge Pro-eszközön.
 
 ## <a name="vm-image-workflow"></a>VM-rendszerkép munkafolyamata
 
-A munkafolyamathoz létre kell hoznia egy virtuális gépet az Azure-ban, testre kell szabnia a virtuális gépet, általánosítani, majd le kell töltenie az adott virtuális géphez tartozó virtuális MEREVLEMEZt. Ezt az általánosított virtuális merevlemezt a rendszer feltölti Azure Stack peremhálózati gépre, a rendszer létrehoz egy felügyelt lemezt ebből a VHD-ből, a lemezképet a felügyelt lemezről hozza létre, és végül létrehozta a virtuális gépeket.   
+A munkafolyamathoz létre kell hoznia egy virtuális gépet az Azure-ban, testre kell szabnia a virtuális gépet, általánosítani, majd le kell töltenie az adott virtuális géphez tartozó virtuális MEREVLEMEZt. Ezt az általánosított virtuális merevlemezt a rendszer feltölti a Azure Stack Edge Pro-ba, felügyelt lemez jön létre a virtuális merevlemezről, a lemezképet a felügyelt lemezről hozza létre, és végül létrehozta a virtuális gépeket.   
 
-További információért látogasson el a [virtuális gép üzembe helyezése az Azure stack peremhálózati eszközön a Azure PowerShell használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+További információért látogasson el a [virtuális gép üzembe helyezése Azure stack Edge Pro-eszközön Azure PowerShell használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
 
 
 ## <a name="create-a-windows-custom-vm-image"></a>Egyéni Windowsos virtuális gép rendszerképének létrehozása
@@ -44,7 +44,7 @@ A következő lépések végrehajtásával hozzon létre egy Windows rendszerű 
    
        A [Sysprep (rendszer-előkészítés) áttekintését](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)is megtekintheti.
 
-Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet az Azure Stack Edge-eszközön.
+Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a Azure Stack Edge Pro-eszközön.
 
 ## <a name="create-a-linux-custom-vm-image"></a>Egyéni linuxos virtuális gép rendszerképének létrehozása
 
@@ -69,7 +69,7 @@ Hozzon létre egy linuxos virtuálisgép-rendszerképet a következő lépésekk
 
 1. [Meglévő operációsrendszer-lemez letöltése](../virtual-machines/linux/download-vhd.md).
 
-Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet az Azure Stack Edge-eszközön. A következő két Azure Marketplace-rendszerkép használatával hozhat létre linuxos egyéni rendszerképeket:
+Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a Azure Stack Edge Pro-eszközön. A következő két Azure Marketplace-rendszerkép használatával hozhat létre linuxos egyéni rendszerképeket:
 
 |Elemnév  |Leírás  |Publisher  |
 |---------|---------|---------|
@@ -79,6 +79,6 @@ Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a
 Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Virtuális gépek üzembe helyezése Azure stack peremhálózati eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

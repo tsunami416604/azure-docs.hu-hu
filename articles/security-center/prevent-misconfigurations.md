@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: ceafbe1fd1682fc5e92ab3048ed09866fb9ebbdf
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570455"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906385"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>A helytelen konfiguráció megelőzése a kényszerítő/megtagadási javaslatokkal
 
@@ -24,10 +24,9 @@ Ez a funkció segít megőrizni a számítási feladatokat, és stabilizálni tu
 A biztonságos konfiguráció egy adott javaslat alapján történő érvényesítése két üzemmódban érhető el:
 
 - A Azure Policy **megtagadásának** hatására leállíthatja a nem megfelelő állapotú erőforrásokat
-
 - A **kikényszerítés** lehetőség használatával kihasználhatja az Azure-szabályzat **DeployIfNotExist** hatását, és a létrehozáskor automatikusan elháríthatja a nem megfelelő erőforrásokat.
- 
-Ez a kiválasztott biztonsági javaslatok esetében elérhető, és az erőforrás részletei lap tetején található.
+
+Ez az erőforrás részletei lap tetején található a kiválasztott biztonsági javaslatok esetében (lásd: [javaslatok a megtagadási/kényszerítő beállításokkal](#recommendations-with-denyenforce-options)).
 
 ## <a name="prevent-resource-creation"></a>Erőforrás-létrehozás megakadályozása
 
@@ -57,7 +56,7 @@ Ez a kiválasztott biztonsági javaslatok esetében elérhető, és az erőforr�
 
 1. Adja meg a hatókört, a hozzárendelés nevét és az egyéb kapcsolódó beállításokat.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 ## <a name="recommendations-with-denyenforce-options"></a>Megtagadási/kikényszerítő lehetőségekkel kapcsolatos javaslatok
 

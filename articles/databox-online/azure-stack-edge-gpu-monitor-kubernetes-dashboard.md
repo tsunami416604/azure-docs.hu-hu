@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stack Edge-eszköz monitorozása a Kubernetes-irányítópulton keresztül | Microsoft Docs
-description: Ismerteti, hogyan érheti el és használhatja a Kubernetes irányítópultot az Azure Stack Edge-eszköz figyeléséhez.
+title: Az Azure Stack Edge Pro-eszköz monitorozása a Kubernetes-irányítópulton keresztül | Microsoft Docs
+description: Ismerteti, hogyan érheti el és használhatja a Kubernetes irányítópultot az Azure Stack Edge Pro-eszköz monitorozásához.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899198"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>A Kubernetes-irányítópult használata az Azure Stack Edge GPU-eszköz figyeléséhez
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>A Kubernetes-irányítópult használata az Azure Stack Edge Pro GPU-eszköz figyeléséhez
 
-Ez a cikk azt ismerteti, hogyan érheti el és használhatja a Kubernetes irányítópultot a Azure Stack Edge GPU-eszköz monitorozásához. Az eszköz figyeléséhez használhatja a Azure Portal diagramokat, megtekintheti a Kubernetes irányítópultját, vagy futtathat `kubectl` parancsokat az eszköz PowerShell-felületén keresztül. 
+Ez a cikk azt ismerteti, hogyan érheti el és használhatja a Kubernetes irányítópultot a Azure Stack Edge Pro GPU-eszköz monitorozásához. Az eszköz figyeléséhez használhatja a Azure Portal diagramokat, megtekintheti a Kubernetes irányítópultját, vagy futtathat `kubectl` parancsokat az eszköz PowerShell-felületén keresztül. 
 
 Ez a cikk csak a Kubernetes-irányítópulton végrehajtható figyelési feladatokra koncentrál.
 
@@ -35,7 +35,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 A Kubernetes irányítópult egy webalapú felhasználói felület, amellyel elháríthatja a tároló alkalmazások hibáit. A Kubernetes irányítópult a Kubernetes parancssorának felhasználói felületén alapuló alternatívája `kubectl` . További információ: Kubernetes- [irányítópult](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Az Azure Stack Edge-eszközön a Kubernetes-irányítópultot *csak olvasható* módban használhatja, így áttekintést kaphat az Azure stack Edge-eszközön futó alkalmazásokról, megtekintheti a Kubernetes-fürt erőforrásainak állapotát, és megtekintheti az eszközön bekövetkezett hibákat.
+Az Azure Stack Edge Pro-eszközön *csak olvasható* módban használhatja a Kubernetes irányítópultot, hogy áttekintést kapjon az Azure stack Edge Pro-eszközön futó alkalmazásokról, megtekintheti a Kubernetes-fürt erőforrásainak állapotát, és megtekintheti az eszközön bekövetkezett hibákat.
 
 ## <a name="access-dashboard"></a>Hozzáférés az irányítópulthoz
 
@@ -54,19 +54,19 @@ A Kubernetes irányítópult írásvédett, és az 31000 *-* es porton futtatja 
     1. Válassza ki a három pontot **.**.. Tallózással keresse meg a `kubeconfig` korábban letöltött helyi rendszerét, és mutasson rá. Válassza a **Bejelentkezés** lehetőséget.
         ![Tallózással keresse meg a kubeconfig fájlt](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. Most már csak olvasható módban tekintheti meg az Azure Stack Edge-eszköz Kubernetes irányítópultját.
+6. Most már csak olvasható módban tekintheti meg az Azure Stack Edge Pro-eszköz Kubernetes irányítópultját.
 
     ![Kubernetes-irányítópult főoldala](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>Modul állapotának megtekintése
 
-A számítási modulok olyan tárolók, amelyeken a rendszer üzleti logikát alkalmaz. Az irányítópulton ellenőrizheti, hogy a számítási modul üzembe helyezése sikeresen megtörtént-e az Azure Stack Edge-eszközön.
+A számítási modulok olyan tárolók, amelyeken a rendszer üzleti logikát alkalmaz. Az irányítópulton ellenőrizheti, hogy a számítási modul üzembe helyezése sikeresen megtörtént-e a Azure Stack Edge Pro-eszközön.
 
 A modul állapotának megtekintéséhez kövesse az alábbi lépéseket az irányítópulton:
 
 1. Az irányítópult bal oldali ablaktáblájában lépjen a **névtér**elemre. Szűrje azt a névteret, amelyben IoT Edge modulok jelennek meg, ebben az esetben a **iotedge**.
 1. A bal oldali ablaktáblán lépjen a **Munkaterhelések > központi telepítések**elemre.
-1. A jobb oldali panelen megjelenik az eszközre telepített összes modul. Ebben az esetben egy GettingStartedWithGPU-modul lett telepítve az Azure Stack Edge-ben. Láthatja, hogy a modul üzembe lett helyezve.
+1. A jobb oldali panelen megjelenik az eszközre telepített összes modul. Ebben az esetben egy GettingStartedWithGPU-modul lett üzembe helyezve a Azure Stack Edge Pro-ban. Láthatja, hogy a modul üzembe lett helyezve.
 
     ![Modul központi telepítésének megtekintése](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ Az IP-cím lekéréséhez kövesse az alábbi lépéseket az irányítópulton:
 
 1. Az irányítópult bal oldali ablaktáblájában lépjen a **névtér**elemre. Szűrje azt a névteret, amelyben a külső szolgáltatás telepítve van, ebben az esetben a **iotedge**.
 1. A bal oldali ablaktáblán lépjen a **felderítés és terheléselosztás > szolgáltatások**elemre.
-1. A jobb oldali ablaktáblában az összes olyan szolgáltatást látni fogja, amely a `iotedge` Azure stack peremhálózati eszközén található névtérben fut.
+1. A jobb oldali panelen a `iotedge` Azure stack Edge Pro-eszközön található névtérben futó összes szolgáltatást látni fogja.
 
     ![Külső szolgáltatások IP-címének beolvasása](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ A tároló naplófájljainak megtekintéséhez kövesse az alábbi lépéseket a
 
 ## <a name="view-cpu-memory-usage"></a>CPU megtekintése, memóriahasználat
 
-Az Azure Stack Edge-eszköz Kubernetes-irányítópultján található egy [metrikai kiszolgáló beépülő modul](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) is, amely ÖSSZEGZI a CPU-és memóriahasználat a Kubernetes-erőforrások között.
+A Azure Stack Edge Pro-eszközhöz készült Kubernetes-irányítópult olyan [metrikai kiszolgáló-bővítményt](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) is tartalmaz, amely összesíti a CPU-és memóriahasználat a Kubernetes-erőforrások között.
  
 Megtekintheti például a PROCESSZORt és a memóriát a központi telepítések között az összes névtérben. 
 

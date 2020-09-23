@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323255"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907066"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -54,9 +54,9 @@ Az objektum-észlelés hasonlít a címkézéshez, de az API az egyes alkalmazot
 
 A képeken vagy videókban található kereskedelmi márkákat több ezer globális emblémából álló adatbázisból azonosíthatja. Ezt a funkciót használhatja például arra, hogy felderítse, mely márkák a legnépszerűbbek a közösségi médiában, vagy a média termékeinek legelterjedtebb eleme. [Márkák észlelése](concept-brand-detection.md)
 
-### <a name="categorize-an-image"></a>Képek kategorizálása
+### <a name="categorize-an-image"></a>Rendszerkép kategorizálása
 
-Felismeri és kategorizálja a teljes képet egy [kategóriaelnevezési rendszer](Category-Taxonomy.md) segítségével, szülő/gyermek hierarchiák használatával. A kategóriák egyedül vagy az új címkéző modellekkel együtt is használhatóak.<br/>Jelenleg az egyetlen támogatott nyelv a képek címkézéséhez és kategorizálásához az angol. [Képek kategorizálása](concept-categorizing-images.md)
+Felismeri és kategorizálja a teljes képet egy [kategóriaelnevezési rendszer](Category-Taxonomy.md) segítségével, szülő/gyermek hierarchiák használatával. A kategóriák egyedül vagy az új címkéző modellekkel együtt is használhatóak.<br/>Jelenleg az egyetlen támogatott nyelv a képek címkézéséhez és kategorizálásához az angol. [Rendszerkép kategorizálása](concept-categorizing-images.md)
 
 ### <a name="describe-an-image"></a>Képek leírása
 
@@ -92,7 +92,11 @@ A Computer Vision használatával [felderítheti a felnőtt tartalmakat](concept
 
 ## <a name="use-containers"></a>Tárolók használata
 
-[Computer Vision tárolók használatával](computer-vision-how-to-install-containers.md) helyileg ismeri fel a nyomtatott és a kézírásos szövegeket, ha a szabványos Docker-tárolót az adataihoz közelebb telepíti.
+Computer Vision Docker-tárolók használatával használhatja a szolgáltatást a helyszínen. Jelenleg két tároló érhető el:
+
+* A [Computer Vision olvasási tároló](computer-vision-how-to-install-containers.md) lehetővé teszi a nyomtatott és a kézírásos szöveg felismerését a képekben.
+
+* A [Computer Vision térbeli elemzési tároló](spatial-analysis-container.md) segítségével elemezheti a valós idejű streaming videót, hogy megértse a személyek közötti térbeli kapcsolatokat a fizikai környezeteken keresztül.
 
 ## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 

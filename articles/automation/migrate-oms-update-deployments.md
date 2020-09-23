@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447844"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987605"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Áttelepítési Azure Monitor naplók frissítése a Azure Portal
 
@@ -33,7 +33,7 @@ Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platfor
 
 3. Az Automation-fiókban kattintson a **Update Management**elemre.
 
-    ![Frissítéskezelés](media/migrate-oms-update-deployments/azure-automation.png)
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="Képernyőkép az Update Management oldalról.":::
 
 4. A Azure Portal az **összes szolgáltatás**területen válassza az **Automation-fiókok** lehetőséget. 
 
@@ -43,7 +43,7 @@ Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platfor
 
 A OMS-portálon létrehozott összes frissítési központi telepítésnek más néven számítógépcsoport [néven is](../azure-monitor/platform/computer-groups.md) ismertnek kell lennie, amelynek a neve megegyezik a létező frissítési központi telepítéssel. A mentett keresés a frissítés központi telepítésében ütemezett számítógépek listáját tartalmazza.
 
-![Frissítéskezelés](media/migrate-oms-update-deployments/oms-deployment.png)
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Képernyőfelvétel a frissítések központi telepítése oldalról a Kiemelt név és kiszolgálók mezőkkel.":::
 
 A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
@@ -72,6 +72,6 @@ A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
 5. Ahogy korábban említettük, az új központi telepítések a Azure Portalon keresztül történő konfigurálása után eltávolíthatja a meglévő központi telepítéseket a Azure Portalról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Automation Update Managementáról: [Update Management Overview](update-management/update-mgmt-overview.md).
