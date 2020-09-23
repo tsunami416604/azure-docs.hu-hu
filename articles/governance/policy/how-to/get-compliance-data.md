@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648343"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895429"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -30,11 +30,13 @@ A befejezett kiértékelési ciklusok eredményei az erőforrás- `Microsoft.Pol
 
 A hozzárendelt szabályzatok és kezdeményezések értékelése a különböző események eredményeképpen történik:
 
-- Egy házirend vagy kezdeményezés újonnan van hozzárendelve egy hatókörhöz. A hozzárendelés a meghatározott hatókörre való alkalmazása körülbelül 30 percet vesz igénybe. Az alkalmazás alkalmazása után a kiértékelési ciklus az adott hatókörön belüli erőforrásokra kezdődik az újonnan hozzárendelt szabályzattal vagy kezdeményezéssel, valamint a házirend vagy kezdeményezés által használt hatástól függően az erőforrások megfelelőként vagy nem megfelelőként vannak megjelölve. Nagy mennyiségű erőforrásra kiértékelt nagyméretű házirend vagy kezdeményezés időt vehet igénybe. Ezért nincs előre definiált várakozás, ha a kiértékelési ciklus befejeződik. A befejezést követően a frissített megfelelőségi eredmények elérhetők a Portálon és az SDK-ban.
+- Egy házirend vagy kezdeményezés újonnan van hozzárendelve egy hatókörhöz. A hozzárendelés a meghatározott hatókörre való alkalmazása körülbelül 30 percet vesz igénybe. Az alkalmazása után a kiértékelési ciklus az adott hatókörön belüli erőforrásokra az újonnan hozzárendelt házirenddel vagy kezdeményezéssel kezdődik, és a házirend vagy kezdeményezés által használt hatástól függően az erőforrások megfelelőnek, nem megfelelőnek vagy adómentesnek vannak megjelölve. Nagy mennyiségű erőforrásra kiértékelt nagyméretű házirend vagy kezdeményezés időt vehet igénybe. Ezért nincs előre definiált várakozás, ha a kiértékelési ciklus befejeződik. A befejezést követően a frissített megfelelőségi eredmények elérhetők a Portálon és az SDK-ban.
 
 - Egy hatókörhöz már hozzárendelt házirend vagy kezdeményezés frissül. A kiértékelési ciklus és a forgatókönyv időzítése megegyezik egy hatókör új hozzárendelésével.
 
 - Egy erőforrás üzembe helyezése vagy frissítése Azure Resource Manageron, REST APIon vagy egy támogatott SDK-n keresztüli hozzárendelési hatókörön belül történik. Ebben az esetben az egyes erőforrásokra vonatkozó hatás esemény (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) és a megfelelő állapotadatok elérhetővé válnak a Portálon és az SDK-k körülbelül 15 perccel később. Ez az esemény nem okoz más erőforrások kiértékelését.
+
+- A [házirend-kivétel](../concepts/exemption-structure.md) létrehozása, frissítése vagy törlése megtörtént. Ebben az esetben a rendszer kiértékeli a megfelelő hozzárendelést a megadott kivételi hatókörhöz.
 
 - Szabványos megfelelőség kiértékelési ciklusa. 24 óránként egyszer automatikusan újraértékeli a hozzárendeléseket. Számos erőforrás nagyméretű házirendje vagy kezdeményezése időt vehet igénybe, így a próbaverzió befejezését követően nincs előre definiált várakozási idő. A befejezést követően a frissített megfelelőségi eredmények elérhetők a Portálon és az SDK-ban.
 
@@ -127,8 +129,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>A megfelelőség működése
 
-Egy hozzárendelésben az erőforrás **nem megfelelő** , ha nem követi a házirend-vagy kezdeményezési szabályokat.
-A következő táblázat bemutatja, hogyan működnek a különböző szabályzatok az eredményül kapott megfelelőségi állapotra vonatkozó feltételek kiértékelésével:
+Egy hozzárendelésben az erőforrás **nem megfelelő** , ha nem követi a házirend-vagy kezdeményezési szabályokat, és nem _mentesül_. A következő táblázat bemutatja, hogyan működnek a különböző szabályzatok az eredményül kapott megfelelőségi állapotra vonatkozó feltételek kiértékelésével:
 
 | Erőforrás állapota | Hatás | Szabályzat kiértékelése | Megfelelőségi állapot |
 | --- | --- | --- | --- |
@@ -137,8 +138,7 @@ A következő táblázat bemutatja, hogyan működnek a különböző szabályza
 | Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
 | Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelő |
 
-\* Az Append, a DeployIfNotExist és az AuditIfNotExist hatás esetében az IF utasításnak TRUE értéket kell visszaadnia.
-Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
+\* A módosítási, hozzáfűzési, DeployIfNotExist és AuditIfNotExist effektusok esetében az IF utasításnak IGAZnak kell lennie. Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
 
 Tegyük fel például, hogy van egy erőforráscsoport – ContsoRG, és néhány Storage-fiók (piros színnel), amelyek nyilvános hálózatokon vannak kitéve.
 
@@ -146,22 +146,23 @@ Tegyük fel például, hogy van egy erőforráscsoport – ContsoRG, és néhán
    Ábra, amely a contoso R G erőforráscsoporthoz tartozó öt Storage-fiókhoz tartozó képeket mutatja.  A Storage-fiókok egy és három kék színűek, míg a Storage-fiókok két, négy és öt piros színnel jelennek meg.
 :::image-end:::
 
-Ebben a példában óvatosnak kell lennie a biztonsági kockázatokkal szemben. Most, hogy létrehozott egy szabályzat-hozzárendelést, a rendszer kiértékeli a ContosoRG erőforráscsoport összes Storage-fiókját. A három nem megfelelő tárolási fiókot naplózza, így az állapotukat **nem megfelelőre** változtatja.
+Ebben a példában óvatosnak kell lennie a biztonsági kockázatokkal szemben. Most, hogy létrehozott egy szabályzat-hozzárendelést, a rendszer kiértékeli a ContosoRG erőforráscsoport összes belefoglalt és nem mentesített tárolási fiókját. A három nem megfelelő tárolási fiókot naplózza, így az állapotukat **nem megfelelőre** változtatja.
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="A Storage-fiók megfelelőségének diagramja a contoso R G-erőforráscsoporthoz." border="false":::
    Ábra, amely a contoso R G erőforráscsoporthoz tartozó öt Storage-fiókhoz tartozó képeket mutatja. A Storage-fiókok közül az egyik és a három már rendelkezik zöld pipa jellel, míg a Storage-fiókok két, négy és öt múlva piros figyelmeztető jelekkel rendelkeznek.
 :::image-end:::
 
-A **megfelelő** és **nem megfelelő**szabályzatok és erőforrások mellett három más állam is van:
+A **megfelelő** és **nem megfelelő**szabályzatok és erőforrások mellett négy másik állam is van:
 
-- **Ütköző**: az ütköző szabályok két vagy több szabályzatot tartalmaznak. Például két házirend fűzi hozzá ugyanazt a címkét eltérő értékekkel.
+- **Kivétel**: az erőforrás egy hozzárendelés hatókörében van, de [meghatározott kivételt](../concepts/exemption-structure.md)tartalmaz.
+- **Ütköző**: két vagy több, ütköző szabályokkal rendelkező házirend-definíció létezik. Például két definíció fűzi hozzá ugyanazt a címkét különböző értékekkel.
 - **Nem indult el**: a kiértékelési ciklus nem indult el a házirendhez vagy az erőforráshoz.
 - **Nincs regisztrálva**: a Azure Policy erőforrás-szolgáltató nincs regisztrálva, vagy a bejelentkezett fióknak nincs engedélye a megfelelőségi információk olvasásához.
 
-Azure Policy a definíció **típus** és **név** mezőjét használja annak megállapítására, hogy az erőforrás egyezik-e. Ha az erőforrás megfelel, a rendszer megfelelőnek tekinti, és **megfelelő** vagy **nem megfelelő**állapotú. Ha bármelyik **típus** vagy **név** az egyetlen tulajdonság a definícióban, akkor az összes erőforrás alkalmazható, és ki van értékelve.
+Azure Policy a definíció **típus** és **név** mezőjét használja annak megállapítására, hogy az erőforrás egyezik-e. Ha az erőforrás megfelel, a rendszer megfelelőnek tekinti, és állapota **megfelelő**, **nem megfelelő**vagy **adómentes**. Ha bármelyik **típus** vagy **név** a definíció egyetlen tulajdonsága, akkor a rendszer az összes belefoglalt és nem mentesített erőforrást is figyelembe veszi, és kiértékeli őket.
 
-A megfelelőség százalékos arányát úgy határozzák meg, hogy az _összes erőforrás_alapján osztja el a **megfelelő** erőforrásokat.
-Az _összes erőforrás_ a **megfelelő**, **nem megfelelő**és **ütköző** erőforrások összegeként van meghatározva. Az összesített megfelelőségi számok a különböző erőforrások összegével **megosztható** különálló erőforrások összessége. Az alábbi képen 20 különálló erőforrás áll rendelkezésre, és csak az egyik **nem megfelelő**. A teljes erőforrás-megfelelőség 95% (19 – 20).
+A megfelelőség százalékos arányát úgy határozzák meg, hogy a **megfelelő** és a **mentesített** erőforrásokat az _összes erőforrás_alapján osztja el. Az _összes erőforrás_ a **megfelelő**, **nem megfelelő**, **mentesített**és **ütköző** erőforrások összegeként van meghatározva. Az összesített megfelelőségi számok a **megfelelő** vagy a **kivétel** alá eső különálló erőforrások összege, amely az összes különálló erőforrás összegével egyenlő. Az alábbi képen 20 különálló erőforrás áll rendelkezésre, és csak az egyik **nem megfelelő**.
+A teljes erőforrás-megfelelőség 95% (19 – 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Képernyőkép a szabályzatok megfelelőségi részleteiről a megfelelőségi lapról." border="false":::
 

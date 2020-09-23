@@ -1,6 +1,6 @@
 ---
-title: Kubernetes-fürt létrehozása és kezelése Azure Stack Edge GPU-eszközön | Microsoft Docs
-description: Ismerteti, hogyan lehet Kubernetes-fürtöt létrehozni és felügyelni Azure Stack Edge GPU-eszközön a Windows PowerShell felületén keresztül.
+title: Kubernetes-fürt létrehozása és kezelése Azure Stack Edge Pro GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan lehet Kubernetes-fürtöt létrehozni és felügyelni Azure Stack Edge Pro GPU-eszközön a Windows PowerShell felületén keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267958"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903218"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge GPU-eszközön a kubectl használatával
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge Pro GPU-eszközön a kubectl használatával
 
-A Azure Stack Edge-eszközön létrejön egy Kubernetes-fürt a számítási szerepkör konfigurálásakor. A Kubernetes-fürt létrehozása után a fürt helyileg is csatlakoztatható egy ügyfélszámítógépről egy natív eszköz, például a *kubectl*használatával.
+A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a fürt helyileg is csatlakoztatható egy ügyfélszámítógépről egy natív eszköz, például a *kubectl*használatával.
 
-Ez a cikk azt ismerteti, hogyan csatlakozhat egy Kubernetes-fürthöz az Azure Stack Edge-eszközön, majd hogyan kezelheti azt a *kubectl*használatával. 
+Ez a cikk azt ismerteti, hogyan csatlakozhat egy Kubernetes-fürthöz a Azure Stack Edge Pro-eszközön, majd hogyan kezelheti azt a *kubectl*használatával. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Egy Azure Stack peremhálózati eszközhöz fér hozzá.
+1. Egy Azure Stack Edge Pro-eszközhöz férhet hozzá.
 
-2. Aktiválta a Azure Stack Edge-eszközt a [Azure stack Edge aktiválása](azure-stack-edge-gpu-deploy-activate.md)című témakörben leírtak szerint.
+2. Aktiválta Azure Stack Edge Pro-eszközét a [Azure stack Edge Pro aktiválása](azure-stack-edge-gpu-deploy-activate.md)című témakörben leírtak szerint.
 
-3. Engedélyezte a számítási szerepkört az eszközön. Egy Kubernetes-fürt is létrejött az eszközön, amikor az eszközön a számítás [konfigurálása az Azure stack Edge-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md)című témakör útmutatása szerint konfigurálta az eszközt.
+3. Engedélyezte a számítási szerepkört az eszközön. Egy Kubernetes-fürt is létrejött az eszközön, amikor az eszközön a számítás [konfigurálása az Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md)című témakör útmutatása szerint konfigurálta az eszközt.
 
 4. Hozzáférése van egy PowerShell 5,0 vagy újabb rendszert futtató Windows rendszerű ügyfélhez az eszköz eléréséhez. Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. 
 
@@ -48,7 +48,7 @@ A Kubernetes-fürt létrehozása után elérheti ezt a fürtöt névterek és fe
 
 A Kubernetes-fürt létrehozása után a *kubectl* a cmdline keresztül a fürt eléréséhez használhatja. 
 
-Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasználót. Ezután társítsa a felhasználót a névtérhez. Emellett olyan *konfigurációs* fájlt is be kell szereznie, amely lehetővé teszi, hogy egy Kubernetes-ügyféllel közvetlenül beszéljen a létrehozott Kubernetes-fürtön anélkül, hogy csatlakoznia kellene az Azure stack Edge-eszköz PowerShell-felületéhez.
+Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasználót. Ezután társítsa a felhasználót a névtérhez. Emellett olyan *konfigurációs* fájlt is be kell szereznie, amely lehetővé teszi, hogy egy Kubernetes-ügyféllel közvetlenül beszéljen a létrehozott Kubernetes-fürthöz anélkül, hogy csatlakoznia kellene a Azure stack Edge Pro-eszköz PowerShell-felületéhez.
 
 1. Hozzon létre egy névteret. Típus:
 
@@ -66,7 +66,7 @@ Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasznál�
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > A *aseuser* nem használható felhasználónévként, mert az Azure stack Edge-névtérhez társított alapértelmezett felhasználó számára van fenntartva.
+    > A *aseuser* nem használható felhasználónévként, mert az Azure stack Edge Pro-hoz tartozó IoT-névtérhez társított alapértelmezett felhasználó számára van fenntartva.
 
     Az alábbi példa a konfigurációs fájl kimenetét jeleníti meg:
    
@@ -113,7 +113,7 @@ Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasznál�
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    A konfigurációs fájl futtatása után nincs szükség fizikai hozzáférésre a fürthöz. Ha az ügyfél pingelheti az Azure Stack Edge-eszköz IP-címét, a *kubectl* parancsok használatával irányíthatja a fürtöt.
+    A konfigurációs fájl futtatása után nincs szükség fizikai hozzáférésre a fürthöz. Ha az ügyfél pingelheti az Azure Stack Edge Pro-eszköz IP-címét, a *kubectl* parancsok használatával irányíthatja a fürtöt.
 
 6. Indítson el egy új PowerShell-munkamenetet az ügyfélen. Nem kell csatlakoznia az eszköz felületéhez. Most már telepítheti az `kubectl` ügyfelet az alábbi parancs használatával:
 
@@ -125,7 +125,7 @@ Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasznál�
     Ha például a Kubernetes fő csomópontja a v 1.15.2-t futtatta, telepítse a v 1.15.2-t az ügyfélen.
 
     > [!IMPORTANT]
-    > Töltsön le egy olyan ügyfelet, amely nem rendelkezik több, mint egy alverzióval a főkiszolgálóról. Az ügyfél verziója, de a főkiszolgálót akár egy alverzión is elvezethetik. A v 1.3-as főkiszolgáló például a v 1.1, v 1.2 és v 1.3 csomópontokkal működik együtt, és működnie kell a v 1.2, v 1.3 és v 1.4 rendszerű ügyfelekkel. A Kubernetes-ügyfélszoftversel kapcsolatos további információkért lásd: [a Kubernetes verziója és verziója](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). A Azure Stack Edge Kubernetes-kiszolgáló verziójával kapcsolatos további információkért tekintse meg a Kubernetes-kiszolgáló verziójának beolvasása című témakört.<!-- insert link-->
+    > Töltsön le egy olyan ügyfelet, amely nem rendelkezik több, mint egy alverzióval a főkiszolgálóról. Az ügyfél verziója, de a főkiszolgálót akár egy alverzión is elvezethetik. A v 1.3-as főkiszolgáló például a v 1.1, v 1.2 és v 1.3 csomópontokkal működik együtt, és működnie kell a v 1.2, v 1.3 és v 1.4 rendszerű ügyfelekkel. A Kubernetes-ügyfélszoftversel kapcsolatos további információkért lásd: [a Kubernetes verziója és verziója](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). A Azure Stack Edge Pro Kubernetes Server-verziójával kapcsolatos további információkért keresse fel a Kubernetes-kiszolgáló verziójának beolvasása című témakört.<!-- insert link-->
     > Előfordulhat, `kubectl` hogy a rendszer előre telepíti a rendszert, ha a Windowshoz vagy más eszközökhöz a Docker-t futtatja. Fontos, hogy az ebben a szakaszban jelzett módon töltse le az adott verziót a `kubectl` kubernetes-fürttel való együttműködéshez. 
 
     A telepítés több percet is igénybe vehet.
@@ -170,6 +170,6 @@ A Kubernetes-fürt eltávolításához el kell távolítania a számítási konf
 Részletes útmutatásért lépjen a [számítási konfiguráció eltávolítása](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration)elemre.
    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Állapot nélküli alkalmazás üzembe helyezése az Azure stack Edge](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)-ben.
+- [Állapot nélküli alkalmazás üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)-ban.

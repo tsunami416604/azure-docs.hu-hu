@@ -1,20 +1,22 @@
 ---
 title: Az Azure Spring Cloud beépített szabályzat-definíciói
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure Spring Cloud-hoz. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: 8bd1d29ecc499f2b619e577692e86fa774f03151
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 40842a10da9d0bfaf4b1326b099f8b361cc8f916
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007655"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983974"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Az Azure Spring Cloud beépített definíciói Azure Policy
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Ez az oldal az Azure Spring Cloud [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 

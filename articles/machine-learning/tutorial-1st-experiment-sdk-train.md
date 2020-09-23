@@ -1,233 +1,403 @@
 ---
-title: 'Oktatóanyag: az első Azure ML-modell betanítása a Pythonban'
+title: 'Oktatóanyag: az első Machine learning-modell betanítása – Python'
 titleSuffix: Azure Machine Learning
-description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
+description: A Azure Machine Learning első lépések sorozatának 3. része bemutatja, hogyan lehet betanítani a Machine learning-modellt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: sgilley
-author: sdgilley
-ms.date: 08/25/2020
+author: aminsaied
+ms.author: amsaied
+ms.reviewer: sgilley
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536227"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896734"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+Ez az oktatóanyag bemutatja, hogyan végezheti el a gépi tanulási modellek betanítását Azure Machine Learning.
 
-Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
+Ez az oktatóanyag **egy négy részből álló oktatóanyag-sorozat harmadik része** , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag kiépíti az 1. [rész: beállítás](tutorial-1st-experiment-sdk-setup-local.md) és 2. rész: az adatsorozat [""Helló világ!"alkalmazás" futtatása](tutorial-1st-experiment-hello-world.md) során végzett munkát.
 
-Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
+Ebben az oktatóanyagban a következő lépést kell elvégeznie egy gépi tanulási modellt bemutató parancsfájl elküldésével. Ez a példa segít megérteni, hogyan könnyíti meg a Azure Machine Learning a helyi hibakeresés és a távoli futtatások közötti konzisztens viselkedést.
+
+Ebben az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
-> * A munkaterület összekötése és kísérlet létrehozása
-> * Az adatterhelés és a scikit betanítása – modellek
-> * Képzés eredményeinek megtekintése a Studióban
-> * A legjobb modell lekérése
+> * Hozzon létre egy betanítási parancsfájlt.
+> * Azure Machine Learning-környezet definiálásához használja a Conda.
+> * Vezérlő parancsfájl létrehozása
+> * Azure Machine Learning osztályok (környezet, Futtatás, metrikák) megismerése.
+> * A betanítási szkript elküldése és futtatása.
+> * A kód kimenetének megtekintése a felhőben.
+> * Azure Machine Learningra vonatkozó naplózási mérőszámok.
+> * Megtekintheti a mérőszámokat a felhőben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
+* Fejezze be az [1. részt](tutorial-1st-experiment-sdk-setup-local.md) , ha még nem rendelkezik Azure Machine learning munkaterülettel.
+* A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
+* Helyi fejlesztési környezet. Ez magában foglalja a következőket: de nem korlátozódik a Visual Studio Code, a Jupyter vagy a Notebookshoz.
+* Python (3.5-3.7-es verzió).
 
-Az oktatóanyag ezen részében futtatja a kódot a minta Jupyter notebook *oktatóanyagok/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* , az első rész végén megnyitva. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
+## <a name="create-training-scripts"></a>Képzési parancsfájlok létrehozása
 
-## <a name="open-the-notebook"></a>A jegyzetfüzet megnyitása
+Először meg kell határoznia a neurális hálózati architektúrát egy `model.py` fájlban. Az összes betanítási kód bekerül az `src` alkönyvtárba, beleértve a következőket is: `model.py` .
 
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
-
-1. Nyissa meg az **oktatóanyag-1st-Experiment-SDK-Train. ipynb** a mappában az első [részben](tutorial-1st-experiment-sdk-setup.md#open)látható módon.
-
-Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook *oktatóanyagok/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* tartalmazza az oktatóanyaghoz **szükséges összes kódot és** adatmennyiséget.
-
-## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
-
-<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
-
-> [!TIP]
-> Az oktatóanyag tartalma – _1. kísérlet – SDK – Train. ipynb_. Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
-
-
-Importálja az `Workspace` osztályt, és töltse be az előfizetési adatokat a fájlból az `config.json` `from_config().` aktuális könyvtárban található JSON-fájlhoz tartozó függvény használatával, de megadhat egy elérésiút-paramétert is, amellyel a fájlra mutathat `from_config(path="your/file/path")` . Ha ezt a jegyzetfüzetet a munkaterületen lévő felhőalapú jegyzetfüzet-kiszolgálón futtatja, a fájl automatikusan megjelenik a gyökérkönyvtárban.
-
-Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot. Ha a felhasználóhoz több bérlő is kapcsolódik, akkor a következő sorokat kell felvennie:
+Az alábbi kód a PyTorch [ebből a bevezető példából](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) származik. Vegye figyelembe, hogy a Azure Machine Learning fogalmak minden gépi tanulási kódra érvényesek, nem csak a PyTorch.
 
 ```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+# tutorial/src/model.py
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 ```
 
-A hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés Azure Machine learning](https://aka.ms/aml-notebook-auth)
+Ezután adja meg a betanítási parancsfájlt. Ez a szkript letölti a CIFAR10 adatkészletet a PyTorch `torchvision.dataset` API-k használatával, beállítja a hálózatban definiált hálózatot, és két időpontra, a `model.py` standard SGD és a több entrópia elleni adatvesztést használva.
 
+Hozzon létre egy `train.py` parancsfájlt az `src` alkönyvtárban:
 
 ```python
+# tutorial/src/train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+
+from model import Net
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                print(f"epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}")
+                running_loss = 0.0
+
+    print("Finished Training")
+
+```
+
+Most már az alábbi címtár-struktúrával rendelkezik:
+
+```txt
+tutorial
+└──.azureml
+|  └──config.json
+└──src
+|  └──hello.py
+|  └──model.py
+|  └──train.py
+└──01-create-workspace.py
+└──02-create-compute.py
+└──03-run-hello.py
+```
+
+## <a name="define-a-python-environment"></a>Python-környezet definiálása
+
+Demonstrációs célokra a Conda-környezetet fogjuk használni (a pip virtuális környezet lépései majdnem azonosak).
+
+Hozzon létre egy nevű fájlt `pytorch-env.yml` a `.azureml` rejtett könyvtárban:
+
+```yml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+```
+
+Ez a környezet minden, a modellhez és a képzési parancsfájlhoz szükséges függőséget tartalmaz. Figyelje meg, hogy nincs függőség a Azure Machine Learning Python SDK-val.
+
+## <a name="test-locally"></a>Helyi tesztelés
+
+Ellenőrizze, hogy a parancsfájl helyileg fut-e az alábbi környezettel:
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create conda environment
+conda activate pytorch-env             # activate conda environment
+python src/train.py                    # train model
+```
+
+A parancsfájl futtatása után a rendszer egy nevű könyvtárba fogja látni a letöltött információt `tutorial/data` .
+
+## <a name="create-the-control-script"></a>A vezérlő parancsfájl létrehozása
+
+Az alábbi vezérlő parancsfájl és a ""Helló világ!"alkalmazás" beküldésére használt különbség az, hogy a környezet beállításához több további sort is felvesz.
+
+Hozzon létre egy új Python-fájlt a (z) `tutorial` nevű könyvtárban `04-run-pytorch.py` :
+
+```python
+# tutorial/04-run-pytorch.py
 from azureml.core import Workspace
-ws = Workspace.from_config()
-```
-
-Most hozzon létre egy kísérletet a munkaterületen. A kísérlet egy másik, alapszintű felhőalapú erőforrás, amely a próbaverziók gyűjteményét jelöli (az egyes modellek futtatása). Ebben az oktatóanyagban futtatja a kísérletet a futtatások létrehozásához és a modell képzésének nyomon követéséhez a Azure Machine Learning Studióban. A paraméterek közé tartozik a munkaterület-hivatkozás, valamint a kísérlet karakterlánc-neve.
-
-
-```python
 from azureml.core import Experiment
-experiment = Experiment(workspace=ws, name="diabetes-experiment")
+from azureml.core import Environment
+from azureml.core import ScriptRunConfig
+
+if __name__ == "__main__":
+    ws = Workspace.from_config()
+    experiment = Experiment(workspace=ws, name='day1-experiment-train')
+    config = ScriptRunConfig(source_directory='src', script='train.py', compute_target='cpu-cluster')
+
+    # set up pytorch environment
+    env = Environment.from_conda_specification(name='pytorch-env', file_path='.azureml/pytorch-env.yml')
+    config.run_config.environment = env
+
+    run = experiment.submit(config)
+
+    aml_url = run.get_portal_url()
+    print(aml_url)
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Adatgyűjtés és felkészülés a képzésre
+### <a name="understand-the-code-changes"></a>A kód módosításainak megismerése
 
-Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a diabéteszes megbetegedések előrehaladásának előrejelzéséhez olyan szolgáltatásokat használ, mint az Age, a gender és a BMI. Töltse be az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/) osztályból, és ossza ki őket képzési és tesztelési készletekkel a használatával `train_test_split()` . Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
+:::row:::
+   :::column span="":::
+      `env = Environment.from_conda_specification( ... )`
+   :::column-end:::
+   :::column span="2":::
+      Azure Machine Learning egy olyan [környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) koncepcióját mutatja be, amely egy reprodukálható, verziószámmal rendelkező Python-környezetet jelöl a kísérletek futtatásához. Könnyen létrehozhat környezetet helyi Conda vagy pip-környezetből.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      `config.run_config.environment = env`
+   :::column-end:::
+   :::column span="2":::
+      Hozzáadja a környezetet a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+   :::column-end:::
+:::row-end:::
 
+## <a name="submit-run-to-azure-machine-learning"></a>Futtatás beküldése Azure Machine Learningre
+
+Ha helyi környezeteket váltott be, győződjön meg arról, hogy a Azure Machine Learning Python SDK-val telepített és futtatott környezetre vált vissza:
+
+```bash
+python 04-run-pytorch.py
+```
+
+>[!NOTE] 
+> Amikor először futtatja ezt a parancsfájlt, Azure Machine Learning egy új Docker-rendszerképet hoz létre a PyTorch-környezetből. A teljes Futtatás akár 5-10 percet is igénybe vehet. A Docker-Build naplóit a Azure Machine Learning Studioban tekintheti meg: kövesse a Machine learning Studióra mutató hivatkozást > válassza a "kimenetek + naplók" fület > válassza ki `20_image_build_log.txt` .
+Ezt a rendszerképet újra felhasználjuk a későbbi futtatásokban, így sokkal gyorsabban futnak.
+
+A rendszerkép létrehozása után válassza ki a `70_driver_log.txt` betanítási szkript kimenetét.
+
+```txt
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+...
+Files already downloaded and verified
+epoch=1, batch= 2000: loss 2.19
+epoch=1, batch= 4000: loss 1.82
+epoch=1, batch= 6000: loss 1.66
+epoch=1, batch= 8000: loss 1.58
+epoch=1, batch=10000: loss 1.52
+epoch=1, batch=12000: loss 1.47
+epoch=2, batch= 2000: loss 1.39
+epoch=2, batch= 4000: loss 1.38
+epoch=2, batch= 6000: loss 1.37
+epoch=2, batch= 8000: loss 1.33
+epoch=2, batch=10000: loss 1.31
+epoch=2, batch=12000: loss 1.27
+Finished Training
+```
+
+> [!WARNING]
+> Ha hibaüzenet jelenik meg, az azt `Your total snapshot size exceeds the limit` jelzi, hogy a könyvtár a alkalmazásban `data` használt helyen található `source_directory` `ScriptRunConfig` .
+> Ügyeljen arra, hogy `data` a alkalmazáson kívülre lépjen `src` .
+
+A környezetek regisztrálhatók egy munkaterületre a használatával `env.register(ws)` , így könnyen megoszthatók, újra felhasználhatók és verziószámozást végeznek. A környezetek megkönnyítik a korábbi eredmények újbóli előállítását és a csapattal való együttműködést.
+
+Azure Machine Learning is karbantartja a kurátori környezetek gyűjteményét. Ezek a környezetek a gyakori gépi tanulási forgatókönyvekre vonatkoznak, és a gyorsítótárazott Docker-rendszerképekből állnak. A gyorsítótárazott Docker-rendszerképek teszik lehetővé az első távoli futtatást.
+
+Röviden, a regisztrált környezetek használatával időt takaríthat meg! További részletek a [környezetek dokumentációjában](./how-to-use-environments.md) találhatók.
+
+## <a name="log-training-metrics"></a>A betanítási mérőszámok naplózása
+
+Most, hogy már rendelkezik a modellekkel kapcsolatos képzéssel Azure Machine Learningban, kezdje nyomon követni a teljesítmény mérőszámait.
+Az aktuális betanítási szkript mérőszámokat nyomtat a terminálra. Azure Machine Learning a metrikák naplózására szolgáló mechanizmust biztosít a további funkciókkal. Néhány sornyi kód hozzáadásával lehetősége nyílik a mérőszámok megjelenítésére a Studióban, illetve a metrikák összehasonlítására több Futtatás között.
+
+### <a name="modify-trainpy-to-include-logging"></a>Módosítás `train.py` a naplózás belefoglalásához
+
+Módosítsa a `train.py` parancsfájlt úgy, hogy további két sornyi kódot tartalmazzon:
 
 ```python
-from azureml.opendatasets import Diabetes
-from sklearn.model_selection import train_test_split
+# train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
 
-x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
-y_df = x_df.pop("Y")
-
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
-```
-
-## <a name="train-a-model"></a>Modell betanítása
-
-Egy egyszerű scikit-modell betanítása könnyen elvégezhető helyileg a kisméretű képzéshez, de ha sok ismétlést tanítanak több tucat különböző funkció-és hiperparaméter-beállítással, egyszerűen elveszítheti a betanított modelleket, és hogyan tanítja azokat. Az alábbi kialakítási minta bemutatja, hogyan használhatja ki az SDK-t a Felhőbeli képzések egyszerű nyomon követéséhez.
-
-Hozzon létre egy szkriptet, amely a Ridge-modelleket egy hurokban különböző hiperparaméter alfa-értékekkel hajtja össze.
-
-
-```python
-from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error
-from sklearn.externals import joblib
-import math
-
-alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-
-for alpha in alphas:
-    run = experiment.start_logging()
-    run.log("alpha_value", alpha)
-    
-    model = Ridge(alpha=alpha)
-    model.fit(X=X_train, y=y_train)
-    y_pred = model.predict(X=X_test)
-    rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
-    run.log("rmse", rmse)
-    
-    model_name = "model_alpha_" + str(alpha) + ".pkl"
-    filename = "outputs/" + model_name
-    
-    joblib.dump(value=model, filename=filename)
-    run.upload_file(name=model_name, path_or_stream=filename)
-    run.complete()
-```
-
-A fenti kód a következőket hajtja végre:
-
-1. A tömbben lévő összes alfa-hiperparaméter esetében `alphas` új Futtatás jön létre a kísérleten belül. A rendszer naplózza az alfa-értéket az egyes futtatások megkülönböztetése érdekében.
-1. Az egyes futtatások során a Ridge-modell példánya, betanítása és előrejelzések futtatására szolgál. A rendszer kiszámítja a tényleges és az előre jelzett értékeket, majd naplózza a futtatást. Ezen a ponton a futtatáshoz metaadatok vannak csatolva az Alpha értékhez és a gyökátlagos pontosságához.
-1. Ezután az egyes futtatásokhoz tartozó modell szerializálva lesz, és a futtatásra van feltöltve. Ez lehetővé teszi a modell fájljának letöltését a Studio futtatási funkciójával.
-1. Minden iteráció végén meghívja a futtatást `run.complete()` .
-
-A képzés befejezését követően hívja meg a `experiment` változót, hogy beolvassa a kísérletre mutató hivatkozást a Studióban.
-
-```python
-experiment
-```
-
-<table style="width:100%"><tr><th>Name</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Azure Machine Learning Studio-ra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
-
-## <a name="view-training-results-in-studio"></a>Képzés eredményeinek megtekintése a Studióban
-
-A **Azure Machine learning studióra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték ( `alpha_value` és `rmse` ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a diagramok számára is. Ha egy új diagramot naplózott metrikával szeretne kijelölni, kattintson a diagram hozzáadása elemre, és válassza ki a nyomtatandó mérőszámot.
-
-Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalon könnyedén megtekintheti a betanított modelleket, és hogy miként változnak az egyedi mérőszámok az idő múlásával.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="A fő kísérlet oldala a Studióban.":::
-
-
-Válasszon egy futtatási szám hivatkozást az `RUN NUMBER` oszlopban az egyes futtatások oldalának megtekintéséhez. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek és naplók** lapra, és megtekintheti azt a `.pkl` modellt, amelyet a Futtatás során töltöttek fel az egyes képzések ismétlése során. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Futtassa a részletek lapot a Studióban.":::
-
-## <a name="get-the-best-model"></a>A legjobb modell beszerzése
-
-Azon kívül, hogy le tudja tölteni a modell fájljait a kísérletből a Studióban, programozott módon is letöltheti őket. A következő kód a kísérletben szereplő minden egyes futtatást megismétli, és a naplózott futtatási metrikákat és a Futtatás részleteit (amely a run_id tartalmazza) is eléri. Ezzel a lépéssel nyomon követheti a legjobb futtatást, ebben az esetben a futtatást a legalacsonyabb, legfelső szintű, négyzetes hibával.
-
-```python
-minimum_rmse_runid = None
-minimum_rmse = None
-
-for run in experiment.get_runs():
-    run_metrics = run.get_metrics()
-    run_details = run.get_details()
-    # each logged metric becomes a key in this returned dict
-    run_rmse = run_metrics["rmse"]
-    run_id = run_details["runId"]
-    
-    if minimum_rmse is None:
-        minimum_rmse = run_rmse
-        minimum_rmse_runid = run_id
-    else:
-        if run_rmse < minimum_rmse:
-            minimum_rmse = run_rmse
-            minimum_rmse_runid = run_id
-
-print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))    
-```
-```output
-Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-Best run_id rmse: 57.234760283951765
-```
-
-A legjobb futtatási AZONOSÍTÓval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja `get_file_names()` meg az erről a futtatásról letölthető összes fájl megtekintését. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
-
-
-```python
+from model import Net
 from azureml.core import Run
-best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
-print(best_run.get_file_names())
+
+
+# ADDITIONAL CODE: get Azure Machine Learning run from the current context
+run = Run.get_context()
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                run.log('loss', loss) # ADDITIONAL CODE: log loss metric to Azure Machine Learning
+                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
+                running_loss = 0.0
+
+    print('Finished Training')
 ```
 
-```output
-['model_alpha_0.1.pkl']
-```
+#### <a name="understand-the-additional-two-lines-of-code"></a>A kód további két sorának megismerése
 
-Hívja `download()` meg a Futtatás objektumot, és adja meg a letölteni kívánt modell fájlnevét. Alapértelmezés szerint ez a függvény letölti az aktuális könyvtárat.
-
+A-ben a `train.py` metódus használatával érheti el _within_ a Run objektumot a betanítási parancsfájlból, és a következő módon `Run.get_context()` használhatja a metrikák naplózására:
 
 ```python
-best_run.download_file(name="model_alpha_0.1.pkl")
+# in train.py
+run = Run.get_context()
+
+...
+
+run.log('loss', loss)
 ```
-<!-- nbend -->
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+A Azure Machine Learning metrikái a következők:
 
-Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
+- A kísérlet és a Futtatás alapján rendezi, így könnyen nyomon követheti és összehasonlíthatja a metrikákat.
+- Egy felhasználói felülettel rendelkezik, így megjelenítheti a képzések teljesítményét a Studióban.
+- Úgy tervezték, hogy méretezhető legyen, így Ön is megőrizheti ezeket az előnyöket, még akkor is, ha több száz kísérletet futtat.
 
-### <a name="stop-the-compute-instance"></a>A számítási példány leállítása
+### <a name="update-the-conda-environment-file"></a>A Conda-környezet fájljának frissítése
 
-[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
+A `train.py` szkript csak új függőséget vett igénybe `azureml.core` . A `pytorch-env.yml` módosítást tükröző frissítés:
 
-### <a name="delete-everything"></a>Mindent törölni
+```yaml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+    - pip
+    - pip:
+        - azureml-sdk
+```
 
-[!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
+### <a name="submit-run-to-azure-machine-learning"></a>Futtatás beküldése Azure Machine Learningre
+A szkript elküldése még egyszer:
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+```bash
+python 04-run-pytorch.py
+```
 
-## <a name="next-steps"></a>További lépések
+Ez alkalommal, amikor felkeresi a stúdiót, lépjen a "metrikák" lapra, ahol mostantól a modell betanítása lehetőségre kattintva megtekintheti az élő frissítéseket.
 
-Ebben az oktatóanyagban a következő feladatokat végezte el:
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Betanítási adatvesztési gráf a metrikák lapon":::
 
-> [!div class="checklist"]
-> * Csatlakoztatta a munkaterületet, és létrehozott egy kísérletet
-> * Betöltött adatfeldolgozási és betanított scikit-modellek
-> * Megtekintett képzések eredményei a Studióban és a beolvasott modellek
+## <a name="next-steps"></a>Következő lépések
 
-[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) Azure Machine Learningsal.
-Ismerje meg, hogyan fejleszthet [automatizált gépi tanulási](tutorial-auto-train-models.md) kísérleteket.
+Ebben a munkamenetben egy alapszintű "Helló világból" frissítünk. parancsfájlt egy reálisabb betanítási parancsfájlhoz, amely egy adott Python-környezet futtatásához szükséges. Megismerte, hogyan végezheti el a helyi Conda-környezetet a felhőben Azure Machine Learning környezettel. Végül azt is láttuk, hogy a kódok néhány sorában hogyan naplózhatja a mérőszámokat Azure Machine Learningba.
+
+Más módokon is létrehozhatók Azure Machine Learning környezetek, például [egy pip-requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)vagy akár [egy meglévő helyi Conda-környezetből](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)is.
+
+A következő munkamenetben láthatja, hogyan dolgozhat a Azure Machine Learningban lévő adatokat, ha feltölti a CIFAR10-adatkészletet az Azure-ba.
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: saját adatbevitel](tutorial-1st-experiment-bring-data.md)
+
+>[!NOTE] 
+> Ha itt szeretné befejezni az oktatóanyag-sorozatot, és nem halad a következő lépéssel, ne feledje, hogy [kiüríti az erőforrásokat](tutorial-1st-experiment-bring-data.md#clean-up-resources)

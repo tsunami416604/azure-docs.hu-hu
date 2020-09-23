@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83641109"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982849"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: a Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
 
@@ -37,11 +37,11 @@ Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs` 
 >[!NOTE]
 > Ha most ismerkedik a Microsoft Identity platformmal, javasoljuk, hogy kezdje a [.net Core Daemon](quickstart-v2-netcore-daemon.md)gyors üzembe helyezésével.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfelei számára, biztosítania kell, hogy az ügyfelek "regisztráljanak" vagy "csatlakozzanak" az alkalmazáshoz a vállalati adatszolgáltatásokhoz. A kapcsolati folyamat során a vállalati rendszergazda először közvetlenül az *alkalmazáshoz ad engedélyeket* , így nem interaktív módon férhet hozzá a vállalati adatbázisokhoz a bejelentkezett felhasználó jelenléte nélkül. A példában szereplő logika többsége azt mutatja be, hogyan valósítható meg ez a kapcsolódási folyamat az Identity platform [rendszergazdai engedélyezési](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) végpontjának használatával.
 
-![Topológia](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
+![A diagram az Azure-hoz csatlakozó három helyi elemmel rendelkező UserSync-alkalmazást mutatja be, a Start dot Auth pedig interaktív módon beolvassa a tokent az Azure A D-hez való csatlakozáshoz, így a rendszergazda beleegyezik az Azure-ba való csatlakozáshoz, és a SyncController Microsoft Graphhoz való csatlakozáshoz.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 Az ebben a mintában használt fogalmakkal kapcsolatos további információkért olvassa el az [Identity platform végpontjának ügyfél-hitelesítő adatok protokolljának dokumentációját](v2-oauth2-client-creds-grant-flow.md).
 
@@ -255,7 +255,7 @@ Ha hibát talál a MSAL.NET-ben, akkor emelje fel a problémát a [MSAL.net GitH
 
 A javaslatok megadásához nyissa meg a [felhasználói hang lapot](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Microsoft Identity platform által támogatott különböző [hitelesítési folyamatokról és alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md) .
 
 További információkért tekintse meg a következő fogalmi dokumentációt:

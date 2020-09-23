@@ -4,15 +4,15 @@ description: Ismerkedjen meg az új Azure Monitor Application Insights munkater�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894546"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>Munkaterület-alapú Application Insights erőforrások (előzetes verzió)
+# <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások
 
 A munkaterület-alapú erőforrások a Application Insights és Log Analytics közötti teljes integrációt támogatják. Most már elküldheti Application Insights telemetria egy közös Log Analytics munkaterületre, amely teljes hozzáférést biztosít Log Analytics összes szolgáltatásához, miközben az alkalmazások, az infrastruktúra és a platformok naplóit egyetlen konszolidált helyen tartja.
 
@@ -21,7 +21,19 @@ Ez lehetővé teszi a közös szerepköralapú Access Control (RBAC) használat�
 > [!NOTE]
 > A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a Log Analytics munkaterületen történik, ahol az adatok találhatók. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
 
-Az új felület teszteléséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre egy Application Insights erőforrást:
+## <a name="new-capabilities"></a>Új képességek
+
+A munkaterület-alapú Application Insights lehetővé teszi Azure Monitor és Log Analytics legújabb képességeinek kihasználását, beleértve a következőket:
+
+* Az [ügyfél által felügyelt kulcsok (CMK)](../platform/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
+* Az [Azure Private link](../platform/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
+* A [Profiler és a Snapshot Debugger saját tárterületének (BYOS)](./profiler-bring-your-own-storage.md) teljes körű vezérlést biztosít a titkosítást a REST-alapú házirend, az élettartam-kezelési házirend és a Application Insights Profiler és Snapshot Debuggerhoz kapcsolódó összes adat hálózati hozzáférése felett. 
+* A [kapacitás-foglalási szintek](../platform/manage-cost-storage.md#pricing-model) lehetővé teszik, hogy akár 25%-ot is mentsen az utólagos elszámolású díjszabáshoz képest. 
+* Gyorsabb adatfeldolgozás Log Analytics folyamatos átvitelsel.
+
+## <a name="create-workspace-based-resource"></a>Munkaterület-alapú erőforrás létrehozása
+
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre egy Application Insights erőforrást:
 
 ![Munkaterület-alapú Application Insights erőforrás](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ Miután létrehozta az erőforrást, megjelenik a megfelelő munkaterület-infor
 A kék hivatkozás szövegére kattintva megtekintheti a társított Log Analytics munkaterületet, ahol kihasználhatja az új, egyesített munkaterület-lekérdezési környezetet.
 
 > [!NOTE]
-> Továbbra is visszamenőleges kompatibilitást biztosítunk a Application Insights klasszikus erőforrás-lekérdezésekhez, a munkafüzetekhez és a napló alapú riasztásokhoz a Application Insights felhasználói felületén belül. Az [Új munkaterület-alapú tábla struktúrájának/sémájának](apm-tables.md) lekérdezéséhez vagy megtekintéséhez először navigáljon a log Analytics munkaterületre. Az előzetes verzióban a **naplók** kiválasztása a Application Insights ablaktáblán elérhetővé teszi a klasszikus Application Insights lekérdezési élményt.
+> Továbbra is visszamenőleges kompatibilitást biztosítunk a Application Insights klasszikus erőforrás-lekérdezésekhez, a munkafüzetekhez és a napló alapú riasztásokhoz a Application Insights felhasználói felületén belül. Az [Új munkaterület-alapú tábla struktúrájának/sémájának](apm-tables.md) lekérdezéséhez vagy megtekintéséhez először navigáljon a log Analytics munkaterületre. A **naplók (Analytics)** a Application Insights ablaktáblán való kiválasztásával hozzáférhet a klasszikus Application Insights lekérdezési felületéhez.
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
@@ -185,14 +197,6 @@ A `New-AzApplicationInsights` PowerShell-parancs jelenleg nem támogatja a munka
 
 ```
 
-## <a name="new-capabilities"></a>Új képességek
-
-A munkaterület-alapú Application Insights lehetővé teszi a Azure Monitor legújabb képességeinek kihasználását, beleértve a következőket:
-
-* Az [ügyfél által felügyelt kulcsok (CMK)](../platform/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
-* Az [Azure Private link](../platform/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
-* A [Profiler és a Snapshot Debugger saját tárterületének (BYOS)](./profiler-bring-your-own-storage.md) teljes körű vezérlést biztosít a titkosítást a REST-alapú házirend, az élettartam-kezelési házirend és a Application Insights Profiler és Snapshot Debuggerhoz kapcsolódó összes adat hálózati hozzáférése felett. 
-
 ## <a name="modifying-the-associated-workspace"></a>A társított munkaterület módosítása
 
 A munkaterület-alapú Application Insights erőforrás létrehozása után módosíthatja a társított Log Analytics munkaterületet.
@@ -207,8 +211,3 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 
 * [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

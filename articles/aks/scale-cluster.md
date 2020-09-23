@@ -2,16 +2,14 @@
 title: Azure Kubernetes Service- (AKS-) fürt méretezése
 description: Megtudhatja, hogyan méretezheti a csomópontok számát egy Azure Kubernetes-szolgáltatásbeli (ak-) fürtben.
 services: container-service
-author: iainfoulds
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: d5686a74ffe138af51d2319c839a3a5c5887f992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79368417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902945"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Csomópontszám skálázása egy Azure Kubernetes Service- (AKS-) fürtben
 
@@ -41,7 +39,7 @@ A következő példa kimenete azt mutatja, hogy a *név* *nodepool1*:
 ]
 ```
 
-A fürtcsomópontok méretezéséhez használja az az [AK Scale][az-aks-scale] parancsot. Az alábbi példa egy *myAKSCluster* nevű fürtöt egyetlen csomópontra méretezi. Adja meg saját *nodepool-nevét* az előző parancsból, például *nodepool1*:
+A fürtcsomópontok méretezéséhez használja az az [AK Scale][az-aks-scale] parancsot. Az alábbi példa egy *myAKSCluster* nevű fürtöt egyetlen csomópontra méretezi. Adja meg a sajátját `--nodepool-name` az előző parancsból, például a *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -69,7 +67,21 @@ A következő példa kimenete azt mutatja, hogy a fürt egy csomópontra való s
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="scale-user-node-pools-to-0"></a>`User`Csomópont-készletek méretezése 0-ra
+
+A csomópont `System` -készletektől eltérően, amelyekhez mindig futó csomópontok szükségesek, a `User` csomópont-készletek lehetővé teszik a méretezést 0-ra. A rendszer és a felhasználói csomópontok készletei közötti különbségekről további információt a [rendszer-és felhasználói csomópontok készletei](use-system-pools.md)című témakörben talál.
+
+Ha a felhasználói készletet 0-ra szeretné méretezni, használhatja az az [AK nodepool skálázást][az-aks-nodepool-scale] a fenti `az aks scale` parancs alternatívájaként, és állítsa a 0 értéket a csomópontok számának megadásához.
+
+
+```azurecli-interactive
+az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
+```
+
+A `User` csomópont-készleteket 0 csomópontra is kibővítheti, ha a `--min-count` [fürt automéretező](cluster-autoscaler.md) paraméterét 0-ra állítja.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben manuálisan méretezhető egy AK-fürtöt a csomópontok számának növeléséhez vagy csökkentéséhez. A fürt automatikus [méretezésével][cluster-autoscaler] is automatikusan méretezheti a fürtöt.
 
@@ -81,3 +93,4 @@ Ebben a cikkben manuálisan méretezhető egy AK-fürtöt a csomópontok számá
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [cluster-autoscaler]: cluster-autoscaler.md
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale&preserve-view=true

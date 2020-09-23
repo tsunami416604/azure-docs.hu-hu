@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014591"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982976"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -156,7 +156,8 @@ Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, h
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>A Pepita minta a modell betöltését követően jelenik meg
 
-Ha a megjelenített rendszerkép a következőképpen néz ki: ![ Pepita ezt ](../reference/media/checkerboard.png) követően a megjelenítő [megkeresi a szabványos konfiguráció méretére vonatkozó sokszög-korlátokat](../reference/vm-sizes.md). A mérsékléshez váltson a **prémium** szintű konfiguráció méretére, vagy csökkentse a látható sokszögek számát.
+Ha a megjelenített rendszerkép így néz ki: a ![ képernyőképen a fekete-fehér négyzetek rácsa látható az eszközök menüvel.](../reference/media/checkerboard.png)
+Ezután a megjelenítő [megkeresi a szabványos konfiguráció méretére vonatkozó sokszög-korlátokat](../reference/vm-sizes.md). A mérsékléshez váltson a **prémium** szintű konfiguráció méretére, vagy csökkentse a látható sokszögek számát.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>A megjelenített rendszerkép (Unity)
 
@@ -216,7 +217,7 @@ Ha a fenti lépések kimerültek, és a fennmaradó z-harcok elfogadhatatlanok, 
 
 Az ARR tartalmaz egy funkciót, amely meghatározza, hogy a felületek megadhatják-e a z-Fight: [Pepita kiemelés](../overview/features/z-fighting-mitigation.md). Azt is megteheti, hogy vizuálisan mi okozza a z-harcok megjelenését. A következő első animáció egy példát mutat be a távolság pontosságára, a második pedig egy példát mutat be a közel álló felületek közül:
 
-![mélység – pontosság – z – harcok](./media/depth-precision-z-fighting.gif)  ![egysík – z – harcok](./media/coplanar-z-fighting.gif)
+![Az animáció egy példát mutat be a távolság pontosságának csökkenésére.](./media/depth-precision-z-fighting.gif)  ![Az animáció egy példát mutat be közel álló felületek számára.](./media/coplanar-z-fighting.gif)
 
 Hasonlítsa össze ezeket a példákat a z-küzdelemmel az ok megállapításához, vagy opcionálisan kövesse ezt a lépésenkénti munkafolyamatot:
 

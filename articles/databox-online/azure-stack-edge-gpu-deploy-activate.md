@@ -1,24 +1,24 @@
 ---
-title: Oktatóanyag Azure Stack Edge-eszköz aktiválásához Azure Portal GPU-val | Microsoft Docs
-description: Az Azure Stack Edge GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz aktiválását.
+title: Oktatóanyag Azure Stack Edge Pro-eszköz aktiválásához Azure Portal GPU-val | Microsoft Docs
+description: Az Azure Stack Edge Pro GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz aktiválását.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 88be4d9753e48f70dae5666e800a54209ed6ba3f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267938"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903462"
 ---
-# <a name="tutorial-activate-azure-stack-edge-with-gpu"></a>Oktatóanyag: Azure Stack Edge aktiválása GPU-val
+# <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro aktiválása GPU-val
 
-Ez az oktatóanyag azt ismerteti, hogyan aktiválhatja Azure Stack Edge-eszközét egy beépített GPU-val a helyi webes felhasználói felület használatával.
+Ez az oktatóanyag azt ismerteti, hogyan aktiválhatja Azure Stack Edge Pro-eszközét egy beépített GPU-val a helyi webes felhasználói felület használatával.
 
 Az aktiválási folyamat körülbelül 5 percet vesz igénybe.
 
@@ -30,15 +30,15 @@ Ebben az oktatóanyagban megismerte a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása előtt győződjön meg az alábbiakról:
+Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjön meg az alábbiakról:
 
 * Fizikai eszköz esetén: 
     
-    - A fizikai eszközt a [Azure stack Edge telepítése](azure-stack-edge-gpu-deploy-install.md)című részletesen telepítette.
+    - A fizikai eszközt a [Azure stack Edge Pro telepítésének](azure-stack-edge-gpu-deploy-install.md)részletesen telepítette.
     - A hálózati és a számítási hálózati beállításokat a [hálózat konfigurálása, a számítási hálózat és a webproxy](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md) beállítás részletesen konfigurálta.
     - Feltöltötte saját vagy az eszköz tanúsítványait az eszközön, ha módosította az eszköz nevét vagy a DNS-tartományt az **eszköz** lapon. Ha még nem tette meg ezt a lépést, hibaüzenet jelenik meg az eszköz aktiválása közben, és az aktiválás le lesz tiltva. További információkért keresse fel a [tanúsítványok konfigurálása](azure-stack-edge-gpu-deploy-configure-certificates.md)című témakört.
     
-* Az Azure Stack Edge-eszköz kezeléséhez létrehozott Azure Stack Edge-szolgáltatásból aktiválhatja az aktiválási kulcsot. További információ: [felkészülés a Azure stack Edge üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md).
+* Az Azure Stack Edge Pro-eszköz kezeléséhez létrehozott Azure Stack Edge-szolgáltatásból aktiválhatja az aktiválási kulcsot. További információért látogasson el a [felkészülés a Azure stack Edge Pro üzembe helyezéséhez](azure-stack-edge-gpu-deploy-prep.md)című témakörre.
 
 
 ## <a name="activate-the-device"></a>Az eszköz aktiválása
@@ -48,9 +48,9 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 
     ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-1.png)
     
-3. **Az aktiválás ablaktáblán** adja meg azt az **aktiválási kulcsot** , amelyet az [Azure stack Edge aktiválási kulcsának beszerzése](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)című részében kapott.
+3. **Az aktiválás ablaktáblán** adja meg a [Azure stack Edge Pro aktiválási kulcsának beszerzése](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)című rész **aktiválási kulcsát** .
 
-4. Válassza az **Alkalmaz** lehetőséget.
+4. Kattintson az **Alkalmaz** gombra.
 
     ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
@@ -59,23 +59,25 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
     
     ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
-    Válassza a **kulcsfájl letöltése** lehetőséget, és mentse a *keys.js* fájlt az eszközön kívüli biztonságos helyen. **Ez a kulcsfájl tartalmazza az operációs rendszer lemezének és adatlemezének helyreállítási kulcsait az eszközön**. Itt látható a fájl *keys.js* tartalma:
+    Válassza a **letöltés és folytatás** lehetőséget, majd mentse a *device-serial-no.js* fájlt biztonságos helyen az eszközön kívül. **Ez a kulcsfájl tartalmazza az operációs rendszer lemezének és adatlemezének helyreállítási kulcsait az eszközön**. Ezek a kulcsok szükségesek lehetnek a jövőbeli rendszerek helyreállításának megkönnyítésére.
+
+    Itt látható a *JSON* -fájl tartalma:
 
         
     ```json
     {
-      "Id": "1ab3fe39-26e6-4984-bb22-2e02d3fb147e",
+      "Id": "<Device ID>",
       "DataVolumeBitLockerExternalKeys": {
-        "hcsinternal": "C086yg1DrPo0DuZB/a7hUh+kBWj804coJfBA9LDzZqw=",
-        "hcsdata": "8ohX9bG3YSZl9DZmZLkYl//L9dXi1XiQrqza+iSd64Q="
+        "hcsinternal": "<BitLocker key for data disk>",
+        "hcsdata": "<BitLocker key for data disk>"
       },
-      "SystemVolumeBitLockerRecoveryKey": "105347-156739-594473-151107-005082-252604-471955-439395",
-      "ServiceEncryptionKey": "oEwxNJeULzGRFt6DsLgcLw=="
+      "SystemVolumeBitLockerRecoveryKey": "<BitLocker key for system volume>",
+      "ServiceEncryptionKey": "<Azure service encryption key>"
     }
     ```
         
  
-    A következő táblázat ismerteti a különböző kulcsokat:
+    A következő táblázat a különböző kulcsokat ismerteti:
     
     |Mező  |Leírás  |
     |---------|---------|
@@ -91,7 +93,7 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 Az eszköz aktiválása befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 
@@ -99,7 +101,7 @@ Ebben az oktatóanyagban megismerte a következőket:
 > * Előfeltételek
 > * A fizikai eszköz aktiválása
 
-Ha szeretné megismerni, hogyan vihetők át adatok az Azure Stack Edge-eszközzel, tekintse meg a következőt:
+Ha szeretné megismerni, hogyan vihetők át adatok az Azure Stack Edge Pro-eszközével, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Adatok átvitele Azure Stack Edge-vel](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [Adatok átvitele Azure Stack Edge Pro-val](./azure-stack-edge-j-series-deploy-add-shares.md)

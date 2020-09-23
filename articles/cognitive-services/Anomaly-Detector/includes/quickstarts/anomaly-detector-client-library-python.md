@@ -6,23 +6,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8d66b653f78de5b2dee1a42227fe64152ccc6fe9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 98f68af11cf21cb795e7741585e55c195c066995
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89464234"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025132"
 ---
 Ismerkedjen meg a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
 A következőhöz használhatja a a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtárat:
 
-* Az idősorozat-adatkészlet összes rendellenességének észlelése batch-kérelemként
+* Az idősorozat-adatkészletben lévő rendellenességek észlelése batch-kérelemként
 * Az idősorozat legújabb adatpontjának anomália állapotának észlelése
+* Az adatkészletben lévő trendek változási pontjainak észlelése.
 
-[Könyvtár-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/)  |  [Mintakód keresése a githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
+[Könyvtár-referenciák dokumentációja](https://go.microsoft.com/fwlink/?linkid=2090370)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/)  |  [Mintakód keresése a githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,16 +54,16 @@ Hozzon létre változókat a kulcshoz környezeti változóként, egy idősoroza
 A Python telepítése után az ügyféloldali kódtár a következővel telepíthető:
 
 ```console
-pip install --upgrade azure-cognitiveservices-anomalydetector
+pip install --upgrade azure-ai-anomalydetector
 ```
 
 ## <a name="object-model"></a>Objektummodell
 
-A rendellenesség-Kiderítő ügyfél egy [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél két módszert biztosít a anomáliák észlelésére: a [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)és a legújabb adatpontok [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)használatával történő teljes adatkészleten.
+A rendellenesség-Kiderítő ügyfél egy [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél a teljes adathalmazt a [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-), vagy a [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)használatával a legújabb adatpontokon is elvégezheti. A [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090370) függvény észleli azokat a pontokat, amelyek egy trend változásait jelzik.
 
 Az idősorozat-információk küldése egy [kérelem](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) -objektumban lévő [pontok](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) sorozata. Az `Request` objektum olyan tulajdonságokat tartalmaz, amelyek leírják az adatok (például a[részletesség](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) ) és az anomáliák észlelésének paramétereit.
 
-Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) vagy [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) objektum a használt módszertől függően.
+Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python), [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)vagy [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370) objektum a használt metódustól függően.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -72,6 +73,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 * [Idősorozat-adatkészlet betöltése fájlból](#load-time-series-data-from-a-file)
 * [A teljes adathalmazban észlelt rendellenességek észlelése](#detect-anomalies-in-the-entire-data-set)
 * [A legutóbbi adatpont anomália állapotának észlelése](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Az adatkészletben lévő változási pontok észlelése](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -107,6 +109,12 @@ Hívja meg az API-t, hogy észlelje a rendellenességeket a teljes idősoros ada
 A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legutóbbi adatpontja anomália-e az ügyfél [last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) metódusának használatával, és tárolja a visszaadott [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) objektumot. A válasz `is_anomaly` értéke egy olyan logikai érték, amely megadja az adott pont anomáliának állapotát.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Az adatkészletben lévő változási pontok észlelése
+
+Hívja meg az API-t az idősorozat-információkban található változási pontok észleléséhez az ügyfél [detect_change_point ()](https://go.microsoft.com/fwlink/?linkid=2090370) metódusának használatával. Tárolja a visszaadott [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370) objektumot. Ismételje meg a válasz `is_change_point` listáját, és nyomtassa ki bármelyik érték indexét `true` . Ezek az értékek a trend változási pontjainak indexeit tükrözik, ha vannak ilyenek.
+
+[!code-python[detect change points](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=changePointDetection)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 

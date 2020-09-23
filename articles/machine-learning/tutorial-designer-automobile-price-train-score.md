@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az autók árának előrejelzése a tervezővel (előzetes verzió)'
+title: 'Oktatóanyag: az autók árának előrejelzése a tervezővel'
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan lehet a gépi tanulási modellt betanítani, bemutatni és üzembe helyezni egy drag-and-drop interfész használatával. Ez az oktatóanyag egy kétrészes sorozat első része, amely az autó árát lineáris regresszió használatával Jósolja meg.
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 9d25d9e13cc7f3dba0f4254cda6e1119ff9e2e68
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659816"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896704"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel
+
 
 Ebben a kétrészes oktatóanyagban megtudhatja, hogyan használhatja a Azure Machine Learning designert a gépi tanulási modellek betanítására és üzembe helyezésére, ami előre jelezheti a személygépkocsik árát. A Designer egy húzással elválasztó eszköz, amely lehetővé teszi, hogy a gépi tanulási modellek egyetlen soros kód nélkül legyenek létrehozva.
 
@@ -49,10 +49,6 @@ Azure Machine Learning folyamat létrehozásához Azure Machine Learning munkate
 ### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
 A tervező használatához először Azure Machine Learning munkaterületre van szükség. A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központi helyet biztosít a Azure Machine Learningban létrehozott összes összetevővel való együttműködéshez.
-
-Ha vállalati kiadással rendelkező Azure Machine Learning munkaterülettel rendelkezik, [ugorjon a következő szakaszra](#create-the-pipeline).
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>A folyamat létrehozása
 
@@ -313,7 +309,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -15,24 +15,24 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 998527a8557db0b0cf271dc8b05d5771660a175c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 17817a5730678ae708c92c99093e7b859e05f8fe
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209438"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983850"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása .NET-keretrendszerbeli alkalmazáshoz
 
 Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-keretrendszerbeli alkalmazásba foglalja bele a szolgáltatások felügyeletének végpontok közötti megvalósításához. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat. 
 
-A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a funkció-jelölő átfogó támogatásával. Ezek a kódtárak a .NET konfigurációs rendszerére épülnek. Zökkenőmentesen integrálható az alkalmazások konfigurációjával a .NET-konfigurációs szolgáltatón keresztül.
+A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert a Feature Flag támogatásával. Ezek a kódtárak a .NET konfigurációs rendszerére épülnek. Integrálva vannak az alkalmazások konfigurációjával a .NET-konfigurációs szolgáltatón keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET-keretrendszer 4,8](https://dotnet.microsoft.com/download)
+- [.NET-keretrendszer 4.8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
@@ -51,7 +51,7 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Create** (Létrehozás) gombra.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 

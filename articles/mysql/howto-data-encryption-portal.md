@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 097e07f3f39fc647d311af5e4eface4a7c6b3675
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 201459f4a7d2d23b384435493d6272e569698933
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498480"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887164"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure Database for MySQL adattitkosítása a Azure Portal használatával
 
@@ -44,11 +44,11 @@ Megtudhatja, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
 
 1. A Key Vault területen válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**lehetőséget.
 
-   ![Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
 
 2. Válassza a **kulcs engedélyei**lehetőséget, majd válassza a **beolvasás**, **becsomagolás**, **kicsomagolás**és a **rendszerbiztonsági tag**lehetőséget, amely a MySQL-kiszolgáló neve. Ha a kiszolgáló rendszerbiztonsági tagja nem található a meglévő rendszerbiztonsági tag listájában, regisztrálnia kell. A rendszer arra kéri, hogy regisztrálja a kiszolgálói rendszerbiztonsági tag-t, amikor első alkalommal kísérli meg az adattitkosítás beállítását, és sikertelen lesz.
 
-   ![Hozzáférési szabályzat – áttekintés](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Hozzáférési szabályzat – áttekintés":::
 
 3. Kattintson a **Mentés** gombra.
 
@@ -56,11 +56,11 @@ Megtudhatja, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
 
 1. Az ügyfél által felügyelt kulcs beállításához Azure Database for MySQL válassza az **adattitkosítás** lehetőséget.
 
-   ![Képernyőkép a Azure Database for MySQLről, az adattitkosítás kiemelésével](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Képernyőkép a Azure Database for MySQLről, az adattitkosítás kiemelésével":::
 
 2. Kijelölhet egy kulcstartót és egy kulcspárt, vagy megadhatja a kulcs azonosítóját is.
 
-   ![Képernyőkép a Azure Database for MySQLről, az adattitkosítási lehetőségek kiemelésével](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Képernyőkép a Azure Database for MySQLről, az adattitkosítási lehetőségek kiemelésével":::
 
 3. Kattintson a **Mentés** gombra.
 
@@ -72,29 +72,29 @@ Miután Azure Database for MySQL titkosítása megtörténik a Key Vault tárolt
 
 1. A kiszolgálón válassza az **Áttekintés**  >  **visszaállítás**lehetőséget.
 
-   ![Képernyőkép a Azure Database for MySQLről, áttekintés és visszaállítás kiemelve](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Képernyőkép a Azure Database for MySQLről, áttekintés és visszaállítás kiemelve":::
 
    Vagy replikálásra alkalmas kiszolgáló esetén a **Beállítások** fejléc alatt válassza a **replikálás**lehetőséget.
 
-   ![Képernyőkép a Azure Database for MySQLról, a replikálás kiemelve](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/mysql-replica.png" alt-text="Képernyőkép a Azure Database for MySQLról, a replikálás kiemelve":::
 
 2. A visszaállítási művelet befejezése után a létrehozott új kiszolgáló az elsődleges kiszolgáló kulcsával lesz titkosítva. A kiszolgáló szolgáltatásai és beállításai azonban le vannak tiltva, és a kiszolgáló nem érhető el. Ez megakadályozza az adatkezelést, mert az új kiszolgáló identitása még nem kapott engedélyt a kulcstartó elérésére.
 
-   ![Képernyőkép a Azure Database for MySQLről, a nem elérhető állapot kiemelésével](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Képernyőkép a Azure Database for MySQLről, a nem elérhető állapot kiemelésével":::
 
 3. A kiszolgáló elérhetővé tételéhez érvényesítse újra a kulcsot a visszaállított kiszolgálón. Válassza **az adattitkosítás**  >  **újraellenőrzése kulcsot**.
 
    > [!NOTE]
    > Az első újraellenőrzési kísérlet sikertelen lesz, mert az új kiszolgáló egyszerű szolgáltatásának hozzáférést kell adni a kulcstartóhoz. Az egyszerű szolgáltatásnév létrehozásához válassza a **kulcs újraérvényesítése**lehetőséget, amely hibaüzenetet jelenít meg, de létrehozza az egyszerű szolgáltatásnevet. Ezt követően tekintse meg a jelen cikk korábbi részében [ismertetett lépéseket](#set-the-right-permissions-for-key-operations) .
 
-   ![Képernyőkép a Azure Database for MySQLról, az újraérvényesítési lépés kiemelve](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Képernyőkép a Azure Database for MySQLról, az újraérvényesítési lépés kiemelve":::
 
    A Key vaultnak hozzáférést kell adnia az új kiszolgálóhoz.
 
 4. Az egyszerű szolgáltatás regisztrálását követően ismét ellenőrizze újra a kulcsot, és a kiszolgáló folytatja a normál működést.
 
-   ![Képernyőkép a Azure Database for MySQLről, amely a visszaállított funkciókat mutatja](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Képernyőkép a Azure Database for MySQLről, amely a visszaállított funkciókat mutatja":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Az adattitkosítással kapcsolatos további tudnivalókért tekintse meg az [adattitkosítás Azure Database for MySQL az ügyfél által felügyelt kulccsal](concepts-data-encryption-mysql.md)című témakört.

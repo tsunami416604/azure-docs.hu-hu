@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan teheti elérhetővé a helyszíni WCF szolgált
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922548"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983893"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Helyszíni WCF-szolgáltatás közzététele a Felhőbeli webalkalmazásokban Azure Relay használatával
 
@@ -51,7 +51,7 @@ A megoldások tervezői elkezdték a felhőt használni a méretezési követelm
 
 Ebben az oktatóanyagban egy ASP.NET-webhelyet hoz létre, amely lehetővé teszi, hogy megtekintse a termékek listáját a termék leltározása lapon.
 
-![Forgatókönyv][0]
+![Használati eset][0]
 
 Az oktatóanyag feltételezi, hogy egy meglévő helyi rendszeren elérhetők a termékek adatai, és hogy az Azure Relay közvetítőn keresztül éri el ezt a rendszert. Egy egyszerű konzolos alkalmazásban futó webszolgáltatás szimulálja ezt a helyzetet. A termék memóriában tárolt készletét tartalmazza. Ezt a konzol alkalmazást futtathatja saját számítógépén, és üzembe helyezheti a webes szerepkört az Azure-ban. Ezzel megtudhatja, hogyan fut az Azure-adatközpontban futó webes szerepkör a számítógépén. Ez a hívás akkor is előfordul, ha a számítógép majdnem legalább egy tűzfalon és egy hálózati címfordítási (NAT-) réteg mögött található.
 
@@ -344,7 +344,7 @@ Futtassa az alkalmazást a működése ellenőrzéséhez.
 
 Az alkalmazásának meg kell jelennie egy böngészőben.
 
-![Webalkalmazás][21]
+![A képernyőképen egy olyan alkalmazás látható, amely egy, a kijelölt URL-címmel rendelkező böngészőben fut.][21]
 
 ## <a name="put-the-pieces-together"></a>Az egyes alkotórészek összeállítása teljes egésszé
 
@@ -466,7 +466,7 @@ A böngészőben frissítse a **ProductsPortal** lapot. Minden alkalommal, amiko
 
 ![Frissített kimenet][38]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal:
 

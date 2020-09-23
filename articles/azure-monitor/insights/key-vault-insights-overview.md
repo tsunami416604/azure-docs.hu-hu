@@ -1,23 +1,23 @@
 ---
-title: A Key Vault figyelése Azure Monitorekkel Key Vault (előzetes verzió) | Microsoft Docs
+title: Key Vault figyelése Azure Monitorekkel Key Vaulthoz | Microsoft Docs
 description: Ez a cikk a Key Vaultok Azure Monitor ismerteti.
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069798"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894514"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>A Key Vault szolgáltatás figyelése Azure Monitor for Key Vault (előzetes verzió)
-A Key Vault (előzetes verzió) Azure Monitor a kulcstartók átfogó figyelését teszi lehetővé a Key Vault kérelmek, a teljesítmény, a hibák és a késések egységes áttekintésével.
-Ez a cikk segítséget nyújt a Key Vault (előzetes verzió) Azure Monitorének bevezetéséhez és testreszabásához.
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>A Key Vault szolgáltatás figyelése a Azure Monitor for Key Vault
+A Key Vault Azure Monitor a Key Vault kérelmek, a teljesítmény, a hibák és a késés egységes áttekintésével biztosítja a kulcstartók átfogó figyelését.
+Ez a cikk segít megérteni, hogyan lehet bevezetni és testre szabni a Key Vault Azure Monitor élményét.
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>A Key Vault Azure Monitor bemutatása (előzetes verzió)
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>A Key Vault Azure Monitor bemutatása
 
 Mielőtt beugrott a felületre, tisztában kell lennie azzal, hogyan mutatja be és jeleníti meg az információkat.
 -    A **skálázási perspektívában** a kérelmeken alapuló, a hibák részletezését, valamint a műveletek és a késés áttekintését bemutató pillanatkép-nézet látható.
@@ -49,7 +49,7 @@ Ha meg szeretné tekinteni a kulcstartók kihasználtságát és műveleteit az 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
-2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az áttekintések szakaszban válassza a **kulcstartók (előzetes verzió)** lehetőséget.
+2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az áttekintések szakaszban válassza a **kulcstartók**lehetőséget.
 
 ![Képernyőkép az áttekintő élményről több gráfmal](./media/key-vaults-insights-overview/overview.png)
 
@@ -83,7 +83,7 @@ Azure Monitor Key Vault közvetlenül a Key Vaultból való eléréséhez:
 
 1. A Azure Portal válassza a kulcstartók lehetőséget.
 
-2. A listából válassza ki a kulcstartót. A figyelés szakaszban válassza az áttekintések (előzetes verzió) lehetőséget.
+2. A listából válassza ki a kulcstartót. A figyelés szakaszban válassza az áttekintések lehetőséget.
 
 Ezek a nézetek a Azure Monitor szintű munkafüzetből származó kulcstartó erőforrásának kiválasztásával is elérhetők.
 
@@ -140,7 +140,7 @@ A testreszabásokat egy egyéni munkafüzetbe menti a rendszer, hogy megakadály
 
 A következő lépések végrehajtásával konfigurálhatja a többszörös előfizetést és a Key Vault áttekintését vagy a hibákra vonatkozó munkafüzetek hatókörét egy adott előfizetéshez vagy kulcstartóhoz (k).
 
-1. Válassza a **figyelő** lehetőséget a portálon, majd a bal oldali ablaktáblán válassza a **kulcstartók (előzetes verzió)** lehetőséget.
+1. Válassza a **figyelő** lehetőséget a portálon, majd a bal oldali ablaktáblán válassza a **kulcstartók** lehetőséget.
 2. Az **Áttekintés** munkafüzet parancssáv területén válassza a **Szerkesztés**lehetőséget.
 3. Válasszon az **előfizetések** legördülő listából egy vagy több olyan előfizetést, amelyet az alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 10 előfizetés kiválasztását támogatja.
 4. Válassza ki a **kulcstárolók** legördülő lista egy vagy több olyan fiókját, amelyet alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 200 Storage-fiók kiválasztását támogatja.
@@ -150,11 +150,11 @@ A következő lépések végrehajtásával konfigurálhatja a többszörös elő
 
 Az általános hibaelhárítási útmutatóért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
 
-Ez a szakasz a Azure Monitor for Key Vault (előzetes verzió) használata során felmerülő gyakori problémák diagnosztizálását és hibaelhárítását ismerteti. Az alábbi lista segítségével megkeresheti az adott hibához kapcsolódó információkat.
+Ez a szakasz a Key Vault Azure Monitorének használatakor felmerülő gyakori problémák diagnosztizálását és hibaelhárítását ismerteti. Az alábbi lista segítségével megkeresheti az adott hibához kapcsolódó információkat.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Teljesítménnyel kapcsolatos problémák és hibák elhárítása
 
-A Key Vault (előzetes verzió) Azure Monitor azonosított kulcstartóval kapcsolatos problémák elhárításához tekintse meg a [Azure Key Vault dokumentációját](../../key-vault/index.yml).
+A Key Vault Azure Monitor azonosított Key vaulttal kapcsolatos problémák elhárításához tekintse meg a [Azure Key Vault dokumentációját](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Miért csak a 200 Key vaultot láthatom
 
