@@ -1,6 +1,6 @@
 ---
-title: Számítási hálózat kezelése Azure Stack Edge-ben a modulok eléréséhez | Microsoft Docs
-description: Ismerteti, hogyan lehet kibővíteni a számítási hálózatot a Azure Stack Edge-ben a modulok külső IP-n keresztüli eléréséhez.
+title: Azure Stack Edge Pro számítási hálózatának kezelése modulok eléréséhez | Microsoft Docs
+description: Ismerteti, hogyan lehet kiterjeszteni a számítási hálózatot a Azure Stack Edge Pro-ban a modulok külső IP-n keresztüli eléréséhez.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342986"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894117"
 ---
-# <a name="enable-compute-network-on-your-azure-stack-edge"></a>Számítási hálózat engedélyezése a Azure Stack Edge-ben
+# <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Számítási hálózat engedélyezése a Azure Stack Edge Pro-ban
 
-Ez a cikk azt ismerteti, hogy az Azure Stack Edge-ben futó modulok hogyan érhetik el az eszközön engedélyezett számítási hálózatot.
+Ez a cikk azt ismerteti, hogyan érheti el a Azure Stack Edge Pro-ban futó modulok az eszközön engedélyezett számítási hálózatot.
 
 A hálózat konfigurálásához hajtsa végre a következő lépéseket:
 
-- Hálózati adapter engedélyezése a Azure Stack peremhálózati eszközön a számítási feladatokhoz
-- Modul hozzáadása a számítási hálózat eléréséhez az Azure Stack Edge-ben
+- Hálózati adapter engedélyezése a Azure Stack Edge Pro-eszközön a számítási feladatokhoz
+- Modul hozzáadása a számítási hálózat eléréséhez az Azure Stack Edge Pro-ban
 - Ellenőrizze, hogy a modul hozzáférhet-e az engedélyezett hálózati adapterhez
 
 Ebben az oktatóanyagban egy webkiszolgáló-alkalmazás modult fog használni a forgatókönyv bemutatásához.
@@ -31,8 +31,8 @@ Ebben az oktatóanyagban egy webkiszolgáló-alkalmazás modult fog használni a
 
 A Kezdés előtt a következőkre lesz szüksége:
 
-- Egy Azure Stack peremhálózati eszköz, amelyen az eszköz telepítése befejeződött.
-- Elvégezte a **számítási lépés konfigurálását** az [oktatóanyagban: az adatok átalakítása Azure stack Edge segítségével](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) az eszközön. Az eszköznek rendelkeznie kell egy társított IoT Hub erőforrással, egy IoT eszközzel és egy IoT Edge eszközzel.
+- Egy Azure Stack Edge Pro-eszköz, amelyen az eszköz telepítése befejeződött.
+- Elvégezte a **számítási lépés konfigurálását** az [oktatóanyagban: az adatok átalakítása Azure stack Edge Pro-val](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) az eszközön. Az eszköznek rendelkeznie kell egy társított IoT Hub erőforrással, egy IoT eszközzel és egy IoT Edge eszközzel.
 
 ## <a name="enable-network-interface-for-compute"></a>Hálózati adapter engedélyezése a számítási feladatokhoz
 
@@ -55,10 +55,10 @@ A számítási beállítások konfigurálásához hajtsa végre a következő l�
 
 ## <a name="add-webserver-app-module"></a>Webkiszolgáló-alkalmazás hozzáadása modul
 
-A következő lépésekkel adhat hozzá egy webkiszolgáló-alkalmazás-modult az Azure Stack Edge-eszközhöz.
+A következő lépésekkel adhat hozzá egy webkiszolgáló-modult az Azure Stack Edge Pro-eszközhöz.
 
-1. Lépjen az Azure Stack Edge-eszközhöz társított IoT Hub erőforráshoz, majd válassza ki **IoT Edge eszközt**.
-2. Válassza ki az Azure Stack Edge-eszközhöz társított IoT Edge eszközt. Az **eszköz részletei**lapon válassza a **modulok beállítása**lehetőséget. A **modulok hozzáadása**lapon válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult**.
+1. Lépjen az Azure Stack Edge Pro-eszközhöz társított IoT Hub erőforráshoz, majd válassza ki **IoT Edge eszközt**.
+2. Válassza ki az Azure Stack Edge Pro-eszközhöz társított IoT Edge eszközt. Az **eszköz részletei**lapon válassza a **modulok beállítása**lehetőséget. A **modulok hozzáadása**lapon válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult**.
 3. A **IoT Edge egyéni modulok** panelen:
 
     1. Adja meg a telepíteni kívánt webkiszolgáló-modul **nevét** .
@@ -96,6 +96,6 @@ A következő lépésekkel adhat hozzá egy webkiszolgáló-alkalmazás-modult a
 
     ![A modulhoz való kapcsolódás ellenőrzése a megadott porton keresztül](media/azure-stack-edge-extend-compute-access-modules/verify-connect-module-1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](azure-stack-edge-manage-users.md).

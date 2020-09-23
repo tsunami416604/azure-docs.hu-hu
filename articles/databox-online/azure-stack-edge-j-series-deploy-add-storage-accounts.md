@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az adatok Storage-fiókba Azure Stack Edge GPU-val történő átviteléhez | Microsoft Docs
-description: Megtudhatja, hogyan vehet fel és csatlakozhat helyi és Edge Storage-fiókokhoz Azure Stack Edge GPU-eszközön.
+title: Oktatóanyag az adatok Storage-fiókba való átviteléhez Azure Stack Edge Pro GPU-val | Microsoft Docs
+description: Ismerje meg, hogyan vehet fel és csatlakozhat helyi és Edge Storage-fiókokhoz Azure Stack Edge Pro GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256396"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891055"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>Oktatóanyag: adatok átvitele a Storage-fiókok használatával Azure Stack Edge GPU-val 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele a Storage-fiókok használatával Azure Stack Edge Pro GPU-val 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Storage-fiókokhoz az Azure Stack Edge-eszközön. A Storage-fiókok hozzáadása után Azure Stack Edge adatátvitelt hajthat végre az Azure-ba.
+Ez az oktatóanyag azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Storage-fiókokhoz az Azure Stack Edge Pro-eszközön. A Storage-fiókok hozzáadása után Azure Stack Edge Pro átviheti az adatátvitelt az Azure-ba.
 
 Az eljárás végrehajtása körülbelül 30 percet vesz igénybe.
 
@@ -33,11 +33,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Storage-fiókok Azure Stack Edge-hez való hozzáadása előtt győződjön meg az alábbiakról:
+A Storage-fiókok Azure Stack Edge Pro-hoz való hozzáadása előtt győződjön meg a következőket:
 
-- Telepítette a fizikai eszközt a [Azure stack Edge telepítése](azure-stack-edge-gpu-deploy-install.md)című témakörben leírtak szerint.
+- Telepítette a fizikai eszközt a [Azure stack Edge Pro telepítése](azure-stack-edge-gpu-deploy-install.md)című témakörben leírtak szerint.
 
-- Aktiválta a fizikai eszközt az [Azure stack Edge aktiválása](azure-stack-edge-gpu-deploy-activate.md)című témakörben leírtak szerint.
+- A fizikai eszközt aktiválta a [Azure stack Edge Pro aktiválása](azure-stack-edge-gpu-deploy-activate.md)című témakörben leírtak szerint.
 
 
 ## <a name="add-an-edge-storage-account"></a>Edge Storage-fiók hozzáadása
@@ -135,7 +135,7 @@ Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
 ### <a name="get-certificate"></a>Tanúsítvány beolvasása
 
-A blob Storage HTTPS-kapcsolaton keresztüli eléréséhez SSL-tanúsítvány szükséges az eszközhöz. Ezt a tanúsítványt a Azure Stack peremhálózati eszközre is fel kell töltenie *. pfx* -fájlként, amelyhez hozzá van rendelve egy titkos kulcs. További információ a létrehozásáról (csak tesztelési és fejlesztési célokra) és a tanúsítványok Azure Stack Edge-eszközre való feltöltéséhez keresse fel a következőt:
+A blob Storage HTTPS-kapcsolaton keresztüli eléréséhez SSL-tanúsítvány szükséges az eszközhöz. Ezt a tanúsítványt a Azure Stack Edge Pro-eszközre is fel kell töltenie *. pfx* -fájlként, amelyhez titkos kulccsal csatolva van. További információ a létrehozásáról (csak tesztelési és fejlesztési célokra) és a tanúsítványok Azure Stack Edge Pro-eszközre való feltöltéséhez keresse fel a következőt:
 
 - [Hozza létre a blob-végpont tanúsítványát](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional).
 - [Töltse fel a blob-végpont tanúsítványát](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
@@ -165,17 +165,17 @@ A következő lépésekkel importálhatja a tanúsítványokat a Azure Storage E
 
 A HTTP protokollon [keresztüli kapcsolódás során használt kapcsolat konfigurálásához és ellenőrzéséhez *http*](#verify-connection)kövesse az alábbi lépéseket. Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megismerte az alábbi Azure Stack Edge-témaköröket:
+Ebben az oktatóanyagban megismerte a következő Azure Stack Edge Pro-témaköröket:
 
 > [!div class="checklist"]
 > * Storage-fiók hozzáadása
 > * Kapcsolódás Storage-fiókhoz
 
-Ha szeretné megtudni, hogyan alakíthatja át adatait Azure Stack Edge használatával, folytassa a következő oktatóanyaggal:
+Ha szeretné megtudni, hogyan alakíthatja át adatait Azure Stack Edge Pro használatával, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Az adatátalakítás Azure Stack Edge-sel](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Az adatátalakítás Azure Stack Edge Pro-val](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

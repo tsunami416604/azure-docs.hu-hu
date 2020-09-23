@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: bd2f7798ca02f4d6eab6d6d78d158a48bcccc010
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882556"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Magas rendelkezésre állás a Azure Database for MySQLban
 A Azure Database for MySQL szolgáltatás garantált magas szintű rendelkezésre állást biztosít a pénzügyi felelősséggel vállalt szolgáltatói szerződéssel (SLA) [99,99%-os](https://azure.microsoft.com/support/legal/sla/mysql) üzemidő mellett. Azure Database for MySQL magas rendelkezésre állást biztosít a tervezett események (például a megkezdeni skálázási számítási művelet) során, valamint olyan nem tervezett események esetén is, mint például az alapul szolgáló hardver, szoftver vagy hálózati hiba. Azure Database for MySQL gyorsan helyreállítható a legfontosabb körülmények között, így gyakorlatilag nincs alkalmazás-leállási idő a szolgáltatás használatakor.
@@ -29,7 +29,7 @@ Azure Database for MySQL alkalmas olyan kritikus fontosságú adatbázisok futta
 ## <a name="planned-downtime-mitigation"></a>Tervezett leállás-csökkentés
 A Azure Database for MySQL a tervezett leállási műveletek során magas rendelkezésre állást biztosít. 
 
-![Rugalmas skálázás megtekintése az Azure MySQL-ben](./media/concepts-high-availability/elastic-scaling-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/elastic-scaling-mysql-server.png" alt-text="Rugalmas skálázás megtekintése az Azure MySQL-ben":::
 
 Néhány tervezett karbantartási forgatókönyv:
 
@@ -46,7 +46,7 @@ Néhány tervezett karbantartási forgatókönyv:
 A nem tervezett leállás váratlan meghibásodások miatt fordulhat elő, beleértve a mögöttes hardverhiba, a hálózati problémák és a szoftverek hibáit. Ha az adatbázis-kiszolgáló váratlanul leáll, a rendszer automatikusan kiépít egy új adatbázis-kiszolgálót másodpercek alatt. A távoli tárterület automatikusan csatolva lesz az új adatbázis-kiszolgálóhoz. A MySQL-motor a helyreállítási műveletet a WAL-és adatbázisfájlok használatával hajtja végre, és megnyitja az adatbázis-kiszolgálót, amely lehetővé teszi az ügyfelek kapcsolódását. A nem véglegesített tranzakciók elvesznek, és az alkalmazásnak újra kell próbálkoznia. A nem tervezett állásidőt nem lehet elkerülni, Azure Database for MySQL csökkenti az állásidőt úgy, hogy az adatbázis-kiszolgálón és a tárolási rétegen is automatikusan végrehajtja a helyreállítási műveleteket anélkül, hogy emberi beavatkozásra lenne szükség. 
 
 
-![Magas rendelkezésre állás megtekintése az Azure MySQL-ben](./media/concepts-high-availability/availability-for-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Magas rendelkezésre állás megtekintése az Azure MySQL-ben":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Nem tervezett leállás: meghibásodási forgatókönyvek és szolgáltatás-helyreállítás
 Íme néhány meghibásodási forgatókönyv, valamint a Azure Database for MySQL automatikus helyreállítása:
@@ -60,16 +60,16 @@ Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek 
 
 | **Forgatókönyv** | **Helyreállítási terv** |
 | ---------- | ---------- |
-| <b>Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](howto-read-replicas-portal.md) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
-| <b>Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](concepts-backup.md) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha az adatbázis-kiszolgáló összes adatbázisa helyett csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani, az adatbázis-kiszolgálót visszaállíthatja egy új példányban, exportálhatja a táblázat (oka) t a [mysqldump](concepts-migrate-dump-restore.md)-on keresztül, majd a [visszaállítás](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
+| <b> Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](howto-read-replicas-portal.md) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
+| <b> Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](concepts-backup.md) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha az adatbázis-kiszolgáló összes adatbázisa helyett csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani, az adatbázis-kiszolgálót visszaállíthatja egy új példányban, exportálhatja a táblázat (oka) t a [mysqldump](concepts-migrate-dump-restore.md)-on keresztül, majd a [visszaállítás](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
 
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A Azure Database for MySQL gyors újraindítási képességet biztosít az adatbázis-kiszolgálók, a redundáns tárolók és a hatékony útválasztás számára az átjáróról. További adatvédelem esetén a biztonsági mentések földrajzilag replikálva konfigurálhatók, és egy vagy több olvasási replika is üzembe helyezhető más régiókban. A magas rendelkezésre állási képességekkel rendelkező Azure Database for MySQL a leggyakoribb kimaradások miatt védi az adatbázisokat, és piacvezető, pénzügyi támogatású, [99,99%-os üzemidőt](https://azure.microsoft.com/support/legal/sla/mysql)biztosít. Mindezek a rendelkezésre állási és megbízhatósági képességek lehetővé teszik az Azure számára, hogy ideális platformot biztosítson a kritikus fontosságú alkalmazások futtatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az [Azure-régiók](../availability-zones/az-overview.md) megismerése
 - Tudnivalók az [átmeneti kapcsolódási hibák kezelésére](concepts-connectivity.md)
 - Ismerje meg, hogyan [replikálhatja adatait olvasási replikákkal](howto-read-replicas-portal.md)

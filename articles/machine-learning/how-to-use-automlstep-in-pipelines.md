@@ -11,25 +11,25 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647408"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897250"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy teljesítményű modellek felderítését anélkül, hogy minden lehetséges megközelítést újra kellene implementálni. Azure Machine Learning folyamatokkal kombinálva olyan telepíthető munkafolyamatokat hozhat létre, amelyek gyorsan felfedezhetik az adataihoz legjobban illő algoritmust. Ez a cikk bemutatja, hogyan lehet hatékonyan csatlakoztatni egy adatelőkészítési lépést egy automatizált ML lépéshez. Az automatizált ML gyorsan képes felderíteni az adataihoz legjobban illő algoritmust, miközben a MLOps és-modellezési életciklus-operacionalizálási a folyamatokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
-* Az Azure [automatizált gépi tanulással](concept-automated-ml.md) és [gépi tanulási folyamatokkal](concept-ml-pipelines.md) és SDK-val kapcsolatos alapszintű ismerete.
+* Ismerje meg az Azure [automatizált gépi tanulási](concept-automated-ml.md) és [gépi tanulási folyamatait](concept-ml-pipelines.md) és az SDK-t.
 
 ## <a name="review-automated-mls-central-classes"></a>Az automatikus ML központi osztályainak áttekintése
 
@@ -368,7 +368,7 @@ Időnként előfordulhat, hogy az `X` adatszolgáltatások és `y` az Adatfelira
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Az automatizált ML által generált modell regisztrálása 
 
-Az alapszintű ML-folyamatok utolsó lépése a létrehozott modell regisztrálása. A modellnek a munkaterület modell-Hivatalához való hozzáadásával elérhető lesz a portálon, és telepíthető. A modell regisztrálásához írjon egy másikat, `PythonScriptStep` amely a `model_data` kimenetét veszi át `AutoMLStep` .
+Egy egyszerű ML-folyamat utolsó lépése a létrehozott modell regisztrálása. A modellnek a munkaterület modell-Hivatalához való hozzáadásával elérhető lesz a portálon, és telepíthető. A modell regisztrálásához írjon egy másikat, `PythonScriptStep` amely a `model_data` kimenetét veszi át `AutoMLStep` .
 
 ### <a name="write-the-code-to-register-the-model"></a>A kód megírása a modell regisztrálásához
 

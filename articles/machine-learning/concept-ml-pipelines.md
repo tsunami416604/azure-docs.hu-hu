@@ -9,12 +9,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2232aa46b0586ca62e80c8b9002271a67e4021c1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b0217766c92ddcd1907eca2c6702d91b02e06c03
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893641"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
@@ -36,7 +36,7 @@ Ezek az előnyök jelentősek lesznek, amint a gépi tanulási projekt a tiszta 
 
 Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más célra szolgál. A következő táblázat felsorolja a különböző folyamatokat, és azt, hogy mire szolgálnak:
 
-| Forgatókönyv | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
+| Használati eset | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | Modell-előkészítés (gépi tanulás) | Adattudós | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
 | Adat-előkészítés (adat-előkészítés) | Adatmérnök | [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache légáram | Adat>i adatszolgáltatások | Szigorúan beírt mozgás, adatközpontú tevékenységek |
@@ -95,7 +95,7 @@ Egy Azure Machine Learning munkaterülethez egy Azure ML-folyamat van társítva
 
 ### <a name="a-simple-python-pipeline"></a>Egy egyszerű Python-folyamat
 
-Ez a kódrészlet az alapszintű létrehozásához és futtatásához szükséges objektumokat és hívásokat mutatja be `Pipeline` :
+Ez a kódrészlet a létrehozásához és futtatásához szükséges objektumokat és hívásokat mutatja `Pipeline` :
 
 ```python
 ws = Workspace.from_config() 
@@ -141,7 +141,7 @@ A folyamatok vizuális megtervezése során láthatók a lépések bemenetei és
 
 A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a következők:
 
-|Kulcs előnye|Description|
+|Kulcs előnye|Leírás|
 |:-------:|-----------|
 |**Felügyelet nélküli &nbsp; futtatások**|A lépéseket párhuzamosan vagy egymás után, megbízható és felügyelet nélküli módon történő futtatásra ütemezze. Az adatok előkészítése és modellezése az elmúlt napokban vagy hetekben is elvégezhető, és a folyamatok lehetővé teszik, hogy a folyamat futása közben más feladatokra összpontosítson. |
 |**Különböző számítás**|Több folyamat is használható, amelyek megbízhatóan vannak összehangolva a heterogén és skálázható számítási erőforrások és a tárolási hely között. A rendelkezésre álló számítási erőforrások hatékony felhasználása a különböző számítási célokon, például a HDInsight, a GPU-adatelemzési virtuális gépeken és a Databricks futó egyes folyamatok lépéseinek futtatásával.|
@@ -152,7 +152,7 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure ML-folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Megismerte az alapszintű forráskódot, és bevezette néhányat a `PipelineStep` rendelkezésre álló osztályokba. Érdemes lehet az Azure ML-adatfolyamatok és az Azure-t futtató folyamatok használatára. 
+Az Azure ML-folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Láthatta néhány egyszerű forráskódot, és bevezette néhányat a `PipelineStep` rendelkezésre álló osztályokba. Érdemes lehet az Azure ML-adatfolyamatok és az Azure-t futtató folyamatok használatára. 
 
 
 + Ismerje meg, hogyan [hozhatja létre első folyamatát](how-to-create-your-first-pipeline.md).

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170258"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883242"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-modell betanítása
 
-Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure Machine learning Designerben (előzetes verzió) olyan Pytorch-modellek betanításához, mint a DenseNet. A betanítás a modell meghatározása és a hozzá tartozó paraméterek megadása után történik, és címkézett adatokra van szükség. 
+Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure Machine learning Designerben olyan Pytorch-modellek betanításához, mint a DenseNet. A betanítás a modell meghatározása és a hozzá tartozó paraméterek megadása után történik, és címkézett adatokra van szükség. 
 
 ## <a name="how-to-use-train-pytorch-model"></a>A Pytorch-modell használata 
 
@@ -51,7 +51,7 @@ Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure 
 
 9.  A folyamat elküldése. Ha az adatkészlet mérete nagyobb, akkor eltarthat egy ideig.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A folyamat futásának befejezése után a modell a pontozáshoz való használatához a [Pytorch modellt](train-pytorch-model.md) a [képmodellhez](score-image-model.md)kell kapcsolni az új bemeneti példák értékének előrejelzéséhez.
 
@@ -66,11 +66,11 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Név          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
+| Name          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Korszakok        | >0               | Egész szám | 5       | A címke vagy eredmény oszlopot tartalmazó oszlop kiválasztása |
 | Köteg mérete    | >0               | Egész szám | 16      | Egy kötegbe tartozó példányok számának betanítása   |
-| Tanulási sebesség | >= Double. Epszilon | Float   | 0.,01   | A sztochasztikus gradiens elsüllyedés optimalizálásának kezdeti tanulási díja. |
+| Tanulási sebesség | >= Double. Epszilon | Float   | 0,001   | A sztochasztikus gradiens elsüllyedés optimalizálásának kezdeti tanulási díja. |
 | Véletlenszerű mag   | Bármelyik              | Egész szám | 1       | A modell által használt véletlenszerű számú generátor magja. |
 | Türelem      | >0               | Egész szám | 3       | Hány korszakot kell korán leállítani   |
 
@@ -80,7 +80,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 | ------------- | -------------- | ------------- |
 | Betanított modell | ModelDirectory | Betanított modell |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

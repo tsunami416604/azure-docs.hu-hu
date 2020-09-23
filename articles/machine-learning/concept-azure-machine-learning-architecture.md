@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886312"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -193,7 +193,7 @@ Egy modell webszolgáltatásként való üzembe helyezésére példa: [lemezkép
 
 #### <a name="real-time-endpoints"></a>Valós idejű végpontok
 
-Ha egy betanított modellt helyez üzembe a tervezőben (előzetes verzió), [a modellt valós idejű végpontként is üzembe](tutorial-designer-automobile-price-deploy.md)helyezheti. Egy valós idejű végpont általában egyetlen kérést kap a REST-végponton keresztül, és valós időben előrejelzést ad vissza. Ez ellentétben áll a kötegelt feldolgozással, amely egyszerre több értéket dolgoz fel, és a befejezés után menti az eredményeket egy adattárba.
+Ha a tervezőben egy betanított modellt telepít, [valós idejű végpontként helyezheti üzembe a modellt](tutorial-designer-automobile-price-deploy.md). Egy valós idejű végpont általában egyetlen kérést kap a REST-végponton keresztül, és valós időben előrejelzést ad vissza. Ez ellentétben áll a kötegelt feldolgozással, amely egyszerre több értéket dolgoz fel, és a befejezés után menti az eredményeket egy adattárba.
 
 #### <a name="pipeline-endpoints"></a>Folyamat végpontjai
 
@@ -229,7 +229,7 @@ A folyamat lépései újrafelhasználhatók, és az előző lépések újbóli f
 
 A Studióban a Azure Machine Learning részét képező interaktív eszközök is elérhetők:
 
-+ [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) a munkafolyamat lépéseinek kód írása nélkül történő elvégzéséhez
++ [Azure Machine learning Designer](concept-designer.md) a munkafolyamat lépéseinek kód írásához való elvégzése nélkül
 + Webes felület az [automatizált gépi tanuláshoz](concept-automated-ml.md)
 + [Azure Machine learning jegyzetfüzetek](how-to-run-jupyter-notebooks.md) segítségével írhat és futtathat saját kódot az integrált Jupyter notebook-kiszolgálókon.
 + [Adatcímkéző projektek](how-to-create-labeling-projects.md) az adatcímkéző projektek létrehozásához, kezeléséhez és figyeléséhez
@@ -242,6 +242,7 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 
 +  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-val.
 + A szolgáltatás használata bármely R-környezetben az R- [hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) -val (előzetes verzió).
++ A [Azure Machine learning Designer](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit anélkül, hogy kódot kellene írnia. 
 + Az automatizáláshoz használja a [Azure Machine learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) -t.
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 

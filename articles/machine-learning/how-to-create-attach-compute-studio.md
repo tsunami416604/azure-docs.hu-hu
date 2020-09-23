@@ -11,15 +11,14 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661959"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898076"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet számítási célokat az Azure Machine Studióban.  Számítási célokat a használatával is létrehozhat és kezelhet:
 

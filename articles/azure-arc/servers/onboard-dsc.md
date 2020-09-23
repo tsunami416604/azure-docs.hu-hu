@@ -1,26 +1,26 @@
 ---
 title: Csatlakoztatott számítógép ügynökének telepítése a Windows PowerShell DSC használatával
-description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc-kompatibilis kiszolgálókon (előzetes verzió) a Windows PowerShell DSC használatával.
-ms.date: 03/12/2020
+description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával a Windows PowerShell DSC használatával.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5349ff870be324c0137d2adcaf201ecdac286cbc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887640"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott gép ügynökének telepítése a Windows PowerShell DSC használatával
 
-A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan használható a DSC az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynök telepítéséhez hibrid Windows rendszerű gépeken.
+A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan használható a DSC az Azure arc-kompatibilis kiszolgálók csatlakoztatott gépi ügynökének telepítéséhez hibrid Windows rendszerű gépeken.
 
 ## <a name="requirements"></a>Követelmények
 
 - Windows PowerShell 4,0 vagy újabb verzió
 
-- A [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC modul
+- A [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc) DSC modul
 
-- Egy egyszerű szolgáltatásnév, amely nem interaktív módon csatlakozik a gépekhez az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió). Ha még nem hozott létre egy egyszerű szolgáltatásnevet az arc-kompatibilis kiszolgálókhoz (előzetes verzió), kövesse az [egyszerű szolgáltatásnév létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) című szakasz lépéseit.
+- Egy egyszerű szolgáltatásnév, amely nem interaktív módon csatlakozik a gépekhez az Azure arc-kompatibilis kiszolgálókhoz. Ha nem hozott létre egy egyszerű szolgáltatásnevet az arc-kompatibilis kiszolgálókhoz, kövesse az [egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a bevezetéshez című szakaszban ismertetett lépéseket.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>A ConnectedMachine DSC moduljának telepítése
 
@@ -44,7 +44,7 @@ A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/get
 
 Az ebben a modulban található erőforrások úgy vannak kialakítva, hogy kezelhesse az Azure-beli csatlakoztatott gép ügynökének konfigurációját. A tartalmaz egy PowerShell-parancsfájlt is `AzureConnectedMachineAgent.ps1` , amely a `AzureConnectedMachineDsc\examples` mappában található. Közösségi erőforrásokat használ a letöltés és a telepítés automatizálásához, és kapcsolatot létesíteni az Azure arc használatával. Ez a szkript a [hibrid gépek az Azure-ba való összekapcsolásához a Azure Portal](onboard-portal.md) cikkben ismertetett hasonló lépéseket hajtja végre.
 
-Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, az [itt](manage-agent.md#update-or-remove-proxy-settings)ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy` . A parancs manuális futtatása helyett a [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modul használatával elvégezheti ezt a lépést a DSC-vel.
+Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, az [itt](manage-agent.md#update-or-remove-proxy-settings)ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy` . A parancs manuális futtatása helyett a [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) modul használatával elvégezheti ezt a lépést a DSC-vel.
 
 >[!NOTE]
 >A DSC futtatásának engedélyezéséhez a Windows rendszert úgy kell konfigurálni, hogy a localhost konfigurációjának futtatásakor is megkapja a PowerShell távoli parancsait. A környezet megfelelő konfigurálásához egyszerűen futtasson `Set-WsManQuickConfig -Force` egy emelt szintű PowerShell-terminált.
@@ -64,11 +64,11 @@ A következő paraméterek a használni kívánt PowerShell-szkripthez adhatók 
 
 - `Tags`: A csatlakoztatott gépi erőforrásra alkalmazni kívánt címkék karakterlánc-tömbje.
 
-- `Credential`: A **ApplicationId** és- **jelszóval** rendelkező PowerShell hitelesítőadat-objektum, amellyel a gépeket egy [egyszerű szolgáltatásnév](onboard-service-principal.md)használatával regisztrálják a méretekben. 
+- `Credential`: A **ApplicationId** és- **jelszóval** rendelkező PowerShell hitelesítőadat-objektum, amellyel a gépeket egy [egyszerű szolgáltatásnév](onboard-service-principal.md)használatával regisztrálják a méretekben.
 
 1. A PowerShell-konzolon Navigáljon arra a mappára, ahová a `.ps1` fájlt mentette.
 
-2. Futtassa a következő PowerShell-parancsokat a MOF-dokumentum fordításához (a DSC-konfigurációk fordításával kapcsolatos információkért lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
+2. Futtassa a következő PowerShell-parancsokat a MOF-dokumentum fordításához (a DSC-konfigurációk fordításával kapcsolatos információkért lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -76,13 +76,13 @@ A következő paraméterek a használni kívánt PowerShell-szkripthez adhatók 
 
 3. Ekkor létrejön egy `localhost.mof file` nevű új mappa `C:\dsc` .
 
-Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz (előzetes verzió), lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
+Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz, lépjen a Azure Portal a kiszolgáló sikeres csatlakoztatásának ellenőrzéséhez. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Hozzáadás meglévő konfigurációkhoz
 
 Ezt az erőforrást hozzá lehet adni a meglévő DSC-konfigurációkhoz a gép végpontok közötti konfigurációjának ábrázolásához. Előfordulhat például, hogy hozzá szeretné adni ezt az erőforrást egy olyan konfigurációhoz, amely az operációs rendszer biztonságos beállításait állítja be.
 
-A PowerShell-galéria [CompositeResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
+A PowerShell-galéria [CompositeResource](https://www.powershellgallery.com/packages/compositeresource) modulja a konfiguráció [összetett erőforrásának](/powershell/scripting/dsc/resources/authoringResourceComposite) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 

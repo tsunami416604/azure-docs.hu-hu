@@ -11,13 +11,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "79128828"
 ---
-Az eszköz alaphelyzetbe állításához biztonságosan ki kell törölni az adatlemez és az eszköz rendszerindító lemezének összes adatát. 
+Az eszköz visszaállításához biztonságosan törölnie kell az eszköz adatlemezén és rendszerindító lemezén található összes adatot. 
 
 A `Reset-HcsAppliance` parancsmag használatával törölje az adatlemezeket és a rendszerindító lemezt, vagy csak az adatlemezeket. A `ClearData` és `BootDisk` kapcsolók lehetővé teszik az adatlemezek és a rendszerindító lemez törlését.
 
-A `BootDisk` kapcsoló törli a rendszerindító lemezt, és használhatatlanná teszi az eszközt. Csak akkor használható, ha az eszközt vissza kell juttatni a Microsoftnak. További információ: [az eszköz visszaküldése a Microsoftnak](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+A `BootDisk` kapcsoló törli a rendszerindító lemezt, és használhatatlanná teszi az eszközt. Csak akkor érdemes használni, ha az eszközt vissza kell küldeni a Microsoftnak. További információ: [az eszköz visszaküldése a Microsoftnak](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
 
-Ha a helyi webes felhasználói felületen az eszköz alaphelyzetbe állítását használja, csak az adatlemezek törlődnek, a rendszerindító lemez pedig sértetlen marad. A rendszerindító lemez tartalmazza az eszköz konfigurációját.
+Ha az eszköz visszaállításához a helyi webes felhasználói felületet használja, csak az adatlemezek biztonságos törlése megy végbe, a rendszerindító lemez pedig érintetlen marad. A rendszerindító lemez tartalmazza az eszköz konfigurációját.
 
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
 2. A parancssorba írja be a következőt:

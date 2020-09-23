@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612166"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898008"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 A gépi tanulási projektek terjedelmes adatcímkézése gyakran fejfájás. A számítógép-látási összetevővel rendelkező projektek, például a képosztályozás vagy az objektumok észlelése általában több ezer rendszerkép használatát igénylik.
  
@@ -44,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * A címkével ellátni kívánt, helyi vagy Azure Blob Storage-beli adatfájlok.
 * Az alkalmazni kívánt címkék halmaza.
 * A címkézésre vonatkozó utasítások.
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Címkézési projekt létrehozása
@@ -144,13 +144,7 @@ A határoló mezőkhöz a következő fontos kérdések tartoznak:
 >[!NOTE]
 > Ügyeljen arra, hogy a címkéző az 1-9-as számú kulcsok használatával kiválaszthatják az első 9 címkét.
 
-## <a name="use-ml-assisted-labeling-preview"></a>ML-támogatással rendelkező címkézés használata (előzetes verzió)
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
-
-> [!IMPORTANT]
-> A ML által támogatott címkézés jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="use-ml-assisted-labeling"></a>ML-támogatással rendelkező címkézés használata
 
 A **ml által támogatott címkézési** oldal lehetővé teszi az automatikus gépi tanulási modellek aktiválását a címkézési feladat felgyorsításához. A címkézési projekt elején a rendszer véletlenszerű sorrendben rendezi a képeket a lehetséges torzulások csökkentése érdekében. A betanított modellben azonban megjelennek az adatkészletben található összes torzítás is. Ha például a lemezképek 80%-a egyetlen osztályból áll, akkor a modell betanításához használt adatmennyiség körülbelül 80%-a az adott osztály lesz. Ez a képzés nem tartalmazza az aktív tanulást.
 
@@ -175,9 +169,6 @@ A fürtözési fázis nem jelenik meg az objektumok észlelési modelljeinél.
 A megfelelő képfeliratok elküldése után a rendszer egy besorolási modellt használ a képcímkék előrejelzéséhez. Vagy egy objektum-észlelési modellt használ a határolókeretok előrejelzésére. A Labeler mostantól olyan lapokat lát, amelyek az egyes képeken már szerepelnek előre jelzett címkéket. Az objektumok észleléséhez az előre jelzett mezők is megjelennek. A feladat az, hogy áttekintse ezeket az előrejelzéseket, és javítsa ki a helytelenül címkézett képeket az oldal elküldése előtt.  
 
 Miután a gépi tanulási modellt betanítják a manuálisan címkézett adatokra, a modell kiértékelése manuálisan címkézett képekből történik, hogy meghatározza a pontosságot a különböző megbízhatósági küszöbértékeken. Ez a kiértékelési folyamat egy olyan megbízhatósági küszöbérték meghatározására szolgál, amely felett a modell elég pontos ahhoz, hogy megjelenjenek az előzetes feliratok. Ezt követően a modell kiértékelése a címke nélküli adatértékekkel történik. Az előcímkézéshez használt, a küszöbértéknél jobban megjelenő képek.
-
-> [!NOTE]
-> A ML-ben támogatott címkézés **csak** Enterprise Edition-munkaterületeken érhető el.
 
 ## <a name="initialize-the-labeling-project"></a>A címkézési projekt inicializálása
 

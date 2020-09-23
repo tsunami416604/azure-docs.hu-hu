@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477442"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898211"
 ---
 # <a name="summarize-data"></a>Adatok összegzése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
 
 Az összesítő adat modul használatával olyan szabványos statisztikai mértékeket hozhat létre, amelyek leírják a bemeneti tábla minden oszlopát.
 
@@ -46,15 +46,15 @@ A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként m
 
 A modul jelentései a következő statisztikákat is tartalmazhatják. 
 
-|Oszlop neve|Description|
+|Oszlop neve|Leírás|
 |------|------|  
-|**Szolgáltatás**|Az oszlop neve|
+|**Funkció**|Az oszlop neve|
 |**Száma**|Az összes sor száma|
 |**Egyedi értékek száma**|Egyedi értékek száma az oszlopban|
 |**Hiányzó értékek száma**|Egyedi értékek száma az oszlopban|
 |**Min**|Legalacsonyabb érték az oszlopban|  
 |**Max**|Legmagasabb érték az oszlopban|
-|**Értem**|Az összes oszlop értékének középértéke|
+|**Középérték**|Az összes oszlop értékének középértéke|
 |**Középérték szórása**|Oszlop értékeinek szórása|
 |**1. kvartilis**|Érték az első kvartilis|
 |**Medián**|Medián oszlop értéke|
@@ -85,6 +85,6 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
     
     - A lebegőpontos számításokat igénylő statisztikai adatok feldolgozásakor az igaz értéket a 1,0-as értékként kezeli a rendszer, a hamis értékek pedig 0,0-ként lesznek kezelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .  

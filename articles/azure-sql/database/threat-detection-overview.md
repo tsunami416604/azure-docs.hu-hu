@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 07a39edcb7a5605759ae70a014549863a038de1c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437054"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885133"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Komplex veszélyforrások elleni védelem a Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics számára
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 A [Azure SQL Database](sql-database-paas-overview.md)komplex veszélyforrások elleni védelme, az [Azure SQL felügyelt példánya](../managed-instance/sql-managed-instance-paas-overview.md) és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) rendellenes tevékenységeket észlel, amelyekben szokatlan és potenciálisan ártalmas kísérleteket jelez az adatbázisok eléréséhez vagy kiaknázásához.
 
-A komplex veszélyforrások elleni védelem a fejlett [adatbiztonsági](advanced-data-security.md) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. Az Advanced Threat Protection a központi SQL ADS portálon keresztül érhető el és kezelhető.
+A komplex veszélyforrások elleni védelem az [Azure Defender for SQL](azure-defender-for-sql.md) -ajánlat része, amely a fejlett SQL biztonsági funkciók egységes csomagja. A komplex veszélyforrások elleni védelem a központi Azure Defender for SQL portálon keresztül érhető el és kezelhető.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -55,19 +55,15 @@ A rendellenes adatbázis-tevékenységek észlelése után e-mailben értesíté
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>A riasztások megismerése a Azure Portal
 
-A komplex veszélyforrások elleni védelem a riasztásokat az [Azure Security Center](https://azure.microsoft.com/services/security-center/)szolgáltatással integrálja. Az adatbázison belüli élő SQL Advanced Threat Protection csempék és az SQL-hirdetések pengéi a Azure Portal nyomon követik az aktív fenyegetések állapotát.
+A komplex veszélyforrások elleni védelem a riasztásokat az [Azure Security Center](https://azure.microsoft.com/services/security-center/)szolgáltatással integrálja. Az adatbázison belül élő SQL Advanced Threat Protection csempéket, SQL Azure Defender-lapokat pedig az Azure Portal nyomon követheti az aktív fenyegetések állapotát.
 
 Kattintson a komplex **veszélyforrások elleni védelem riasztása** lehetőségre a Azure Security Center riasztások oldal elindításához, és tekintse át az adatbázisban észlelt aktív SQL-fenyegetések áttekintését.
-
-   ![Komplex veszélyforrások elleni védelem riasztása](./media/threat-detection-overview/threat_detection_alert.png)
-
-   ![Komplex veszélyforrások elleni védelem alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a komplex [veszélyforrások elleni védelemről Azure SQL Database & Azure szinapszisban](threat-detection-configure.md).
 - További információ [az összetett veszélyforrások elleni védelemről az Azure SQL felügyelt példányain](../managed-instance/threat-detection-configure.md).
-- További információ a [speciális adatbiztonságról](advanced-data-security.md).
+- További információ [Az Azure Defender for SQL szolgáltatásról](azure-defender-for-sql.md).
 - További információ a [Azure SQL Database naplózásról](../../azure-sql/database/auditing-overview.md)
 - További információ az [Azure Security Centerről](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - A díjszabással kapcsolatos további információkért tekintse meg a [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) .  

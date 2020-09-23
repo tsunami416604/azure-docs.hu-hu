@@ -2,13 +2,13 @@
 title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288967"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883391"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -55,6 +55,9 @@ A rögzített adatok megőrzési időtartamát beállíthatja a Storage-fiókban
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan figyeli a Event Hubs?
 Event Hubs teljes mérőszámokat bocsát ki, amelyek a [Azure monitor](../azure-monitor/overview.md)erőforrásainak állapotát biztosítják. Emellett lehetővé teszik a Event Hubs szolgáltatás általános állapotának felmérését, nem csak a névtér szintjén, hanem az entitás szintjén is. Ismerje meg, hogy az [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)milyen monitorozási lehetőségeket kínál.
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Hol tárolja az Azure Event Hubs az ügyféladatokat?
+Az Azure Event Hubs az ügyféladatokat tárolja. Ezeket az adategységeket a Event Hubs egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régiókban tárolt adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
 Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
 
@@ -78,9 +81,9 @@ Az alábbi lépéseket követve megkeresheti a kapcsolatok engedélyezett listá
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . 
 
-Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
+Ha a **zóna redundanciát** használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
 1. Először futtassa az nslookupt a névtéren.
 
@@ -94,9 +97,12 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > A parancs által visszaadott IP-cím `nslookup` nem statikus IP-cím. Azonban állandó marad, amíg a mögöttes központi telepítést nem törlik, vagy áthelyezik egy másik fürtre.
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Hol találom az ügyfél IP-küldési és-fogadási üzeneteit a névtérbe?
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Hol találhatom meg az ügyfél IP-küldését vagy az üzenetek fogadását a névtérhez?
 Először engedélyezze az [IP-szűrést](event-hubs-ip-filtering.md) a névtérben. 
 
 Ezután engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózati kapcsolatok eseményeihez](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) a [diagnosztikai naplók engedélyezése](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)című témakör utasításait követve. Ekkor megtekintheti az IP-címet, amelyhez a rendszer megtagadja a kapcsolódást.

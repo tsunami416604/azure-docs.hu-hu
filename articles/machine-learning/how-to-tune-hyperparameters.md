@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 04942c745548903a5f8092bc5b04ea2152029726
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084660"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885931"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning használatával hatékonyan hangolhatja be a modell hiperparaméterek beállítása.  A hiperparaméter hangolás a következő lépéseket tartalmazza:
 

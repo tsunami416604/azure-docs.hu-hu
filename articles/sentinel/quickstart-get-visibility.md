@@ -8,14 +8,14 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.date: 09/23/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 304f80dcb2da4ed60bd94e9fb4d71d985da87cc2
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889130"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyors útmutató: az Azure Sentinel használatának első lépései
 
@@ -44,7 +44,6 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
    ![Rosszindulatú forgalom térképe](./media/qs-get-visibility/map.png)
 
-
 - **Legutóbbi incidensek**: a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsát látja, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például egy hirtelen 20 Pass-The-hash típusú eseményt használ a Microsoft Defender for Identity (korábbi nevén Azure ATP) számára, akkor lehetséges, hogy valaki jelenleg próbálkozik a támadással.
 
 - **Adatforrások rendellenességei**: a Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatokkal kapcsolatos rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A **diagramra** kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
@@ -67,7 +66,7 @@ A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott a
       ![Palo Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ ](./media/qs-get-visibility/go-to-la-button.png) log Analytics a [lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
+A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ log Analytics gombot ](./media/qs-get-visibility/go-to-la-button.png) [log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
 
 További információ a lekérdezések használatáról [: oktatóanyag: vizualizációs adatok log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -126,7 +125,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

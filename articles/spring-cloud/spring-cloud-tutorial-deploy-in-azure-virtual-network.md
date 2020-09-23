@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f7817a596a38c6bb259a048e3dfea11abfd14d82
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892893"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Ez az oktatóanyag azt ismerteti, hogyan helyezhet üzembe egy Azure Spring Cloud Service-példányt a virtuális hálózaton. Ezt néha VNet injekciónak is nevezzük.  
 
@@ -120,7 +122,7 @@ az role assignment create \
 
     |Beállítás                                |Érték                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Üzembe helyezés saját virtuális hálózaton     |Válassza az **Igen** lehetőséget                                    |
+    |Üzembe helyezés saját virtuális hálózaton     |Válassza az **Igen** lehetőséget.                                    |
     |Virtuális hálózat                        |*Azure-Spring-Cloud-vnet* kiválasztása                  |
     |Szolgáltatás futásidejű alhálózata                 |*Service-Runtime-alhálózat* kiválasztása                   |
     |Spring boot Service-alhálózati alkalmazások alhálózata   |*Alkalmazások kiválasztása – alhálózat*                              |

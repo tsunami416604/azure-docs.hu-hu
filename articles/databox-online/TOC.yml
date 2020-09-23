@@ -1,11 +1,11 @@
-- name: Az Azure Stack Edge és a Data Box Gateway dokumentációja
+- name: Az Azure Stack Edge Pro és a Data Box Gateway dokumentációja
   href: /azure/databox-online/
   expanded: true
-- name: GPU-val rendelkező Azure Stack Edge (előzetes verzió)
+- name: Azure Stack Edge Pro – GPU
   items:
     - name: Áttekintés
       items:
-        - name: Mi az a GPU-val rendelkező Azure Stack Edge?
+        - name: Mi az a GPU-val rendelkező Azure Stack Edge Pro?
           href: azure-stack-edge-gpu-overview.md
     - name: Oktatóanyagok
       items:
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Tápkábel-specifikációk
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: A Kubernetes ismertetése
+        - name: A Kubernetes ismertetése (előzetes verzió)
           items:
             - name: Mi az a Kubernetes?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-modul a piactéren keresztül
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: A Kubernetes számítási feladatainak üzembe helyezése
+        - name: A Kubernetes számítási feladatainak üzembe helyezése (előzetes verzió)
           items:
             - name: Kubectl használata
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Azure Arc használatával
+            - name: Azure Arc használatával (előzetes verzió)
               items:
                 - name: Az Arc engedélyezése a Kubernetes-fürtön
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Állapotmentes alkalmazás üzembe helyezése a GitOps használatával
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Az Azure Resource Manager konfigurálása
+        - name: Az Azure Resource Manager konfigurálása (előzetes verzió)
           items:
             - name: Csatlakozás az Azure PowerShell használatával
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: Ügyfél TLS-beállításainak konfigurálása
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: Virtuális gépek üzembe helyezése
+        - name: Azure-beli virtuális gépek üzembe helyezése (előzetes verzió)
           items:
             - name: Virtuális gépek üzembe helyezése – sablonok
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: Eszköz felügyelete
           items:
             - name: 'Teljesítmény, hozzáférés és kapcsolatok'
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: A PowerShell-lel
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Frissítések alkalmazása
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: 2008 – Kibocsátási megjegyzések
+        - name: 2009 – GA
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008 – előzetes verzió
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Referencia
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: FPGA-val rendelkező Azure Stack Edge
+- name: Azure Stack Edge Pro – FPGA
   items:
     - name: Áttekintés
       items:
-        - name: Mi az az FPGA-val rendelkező Azure Stack Edge?
+        - name: Mi az FPGA-val rendelkező Azure Stack Edge Pro?
           href: azure-stack-edge-overview.md
     - name: Oktatóanyagok
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az Azure Stack Edge Pro R?
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az Azure Stack Edge Mini R?
+          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Áttekintés
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: További források
   items:
-    - name: Azure Stack Edge C#-mintamodulok (.NET)
+    - name: Azure Stack Edge Pro C#-mintamodulok (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge/Data Box Gateway termék
+    - name: Azure Stack Edge Pro/Data Box Gateway termék
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

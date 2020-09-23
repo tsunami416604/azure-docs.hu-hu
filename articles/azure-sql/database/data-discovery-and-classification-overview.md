@@ -1,5 +1,5 @@
 ---
-title: Adatfelderítés és besorolás
+title: Adatfelderítés és -besorolás
 description: Adatfelderítési & besorolás a Azure SQL Database, az Azure SQL felügyelt példányához és az Azure szinapszis Analytics szolgáltatáshoz
 services: sql-database
 ms.service: sql-db-mi
@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886499"
 ---
-# <a name="data-discovery--classification"></a>Adatfelderítés és besorolás
+# <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Az adatfelderítési & besorolása Azure SQL Databaseba, az Azure SQL felügyelt példányaiba és az Azure szinapszis Analyticsbe van építve. Fejlett képességeket biztosít az adatbázisaiban található bizalmas adatok felfedéséhez, besorolásához, címkézéséhez és jelentéséhez.
@@ -30,8 +30,6 @@ A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészség�
 - Az adatvédelemre vonatkozó szabványok és a szabályozásoknak való megfelelőség követelményeinek való megfelelés elősegítése.
 - Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása.
 - A szigorúan bizalmas adatokat tartalmazó adatbázisok biztonságának szabályozása és a hozzáférés megerősítése.
-
-Az adatfelderítési & besorolása a [speciális adatbiztonsági](advanced-data-security.md) ajánlat része, amely a fejlett Azure SQL-alapú biztonsági funkciók egységes csomagja. Az adatfelderítési & besorolását a Azure Portal központi **SQL Advanced adatbiztonság** szakasza segítségével érheti el és kezelheti.
 
 > [!NOTE]
 > További információ a helyszíni SQL Serverról: SQL- [Adatfelderítés & besorolása](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -79,31 +77,23 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-2. A Azure SQL Database panel **biztonsági** fejléce alatt lépjen a **speciális adatbiztonság** elemre. Válassza a **speciális adatbiztonság**lehetőséget, majd válassza ki az **adatfelderítési & besorolási** kártyát.
+1. Lépjen az **Adatfelderítési & besorolása** elemre a Azure SQL Database panel biztonsági fejléce alatt. Az Áttekintés lap az adatbázis aktuális besorolási állapotának összegzését tartalmazza. Az összefoglalás tartalmazza az összes besorolt oszlop részletes listáját, amelyeket szűrheti is, ha csak bizonyos sémákat, adattípusokat és címkéket szeretne megjeleníteni. Ha még nem sorolt be oszlopokat, [ugorjon a 4. lépésre](#step-4).
 
-   ![Speciális adatbiztonság ablaktábla Azure Portal](./media/data-discovery-and-classification-overview/data_classification.png)
+1. Egy jelentés Excel-formátumban való letöltéséhez válassza az **Exportálás** lehetőséget a panel felső menüjében.
 
-3. Az **Adatfelderítési & besorolása** lapon az **Áttekintés** lapon szerepel az adatbázis aktuális besorolási állapotának összegzése. Az összefoglalás tartalmazza az összes besorolt oszlop részletes listáját, amelyeket szűrheti is, ha csak bizonyos sémákat, adattípusokat és címkéket szeretne megjeleníteni. Ha még nem sorolt be oszlopokat, [ugorjon az 5. lépésre](#step-5).
-
-   ![Aktuális besorolási állapot összegzése](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Egy jelentés Excel-formátumban való letöltéséhez válassza az **Exportálás** lehetőséget a panel felső menüjében.
-
-5. <a id="step-5"></a>Az adatbesorolás megkezdéséhez válassza a **besorolás** lapot az **adatfelderítési & besorolása** lapon.
+1. <a id="step-4"></a>Az adatbesorolás megkezdéséhez válassza a **besorolás** lapot az **adatfelderítési & besorolása** lapon.
 
     A besorolási motor megvizsgálja az adatbázist a potenciálisan bizalmas adatokat tartalmazó oszlopokra vonatkozóan, és felsorolja a javasolt oszlopok besorolásait.
 
-6. Besorolási javaslatok megtekintése és alkalmazása:
+1. Besorolási javaslatok megtekintése és alkalmazása:
 
    - A javasolt oszlop besorolások listájának megtekintéséhez kattintson a panel alján található javaslatok panelre.
 
    - Egy adott oszlopra vonatkozó javaslat elfogadásához jelölje be a megfelelő sor bal oldali oszlopában található jelölőnégyzetet. Az összes javaslat elfogadottként való megjelöléséhez jelölje be a bal szélső jelölőnégyzetet a javaslatok táblázat fejlécében.
 
-       ![Besorolási javaslatok áttekintése és kiválasztása](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - A kiválasztott javaslatok alkalmazásához válassza a **kiválasztott javaslatok elfogadása**lehetőséget.
 
-7. Az oszlopokat manuálisan is osztályozhatja, Alternatív megoldásként vagy a javaslaton alapuló besorolás mellett:
+1. Az oszlopokat manuálisan is osztályozhatja, Alternatív megoldásként vagy a javaslaton alapuló besorolás mellett:
 
    1. A panel felső menüjében válassza a **besorolás hozzáadása** elemet.
 
@@ -111,9 +101,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
    1. A környezet ablakának alján válassza a **besorolás hozzáadása** elemet.
 
-      ![Jelölje ki a minősíteni kívánt oszlopot](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. Ha az adatbázis oszlopait az új besorolási metaadatokkal szeretné elvégezni, a besorolást és a tartósan címkézett címkét (címke) az ablak felső menüjében válassza a **Mentés** lehetőséget.
+1. Ha az adatbázis oszlopait az új besorolási metaadatokkal szeretné elvégezni, a besorolást és a tartósan címkézett címkét (címke) az ablak felső menüjében válassza a **Mentés** lehetőséget.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Bizalmas adatokhoz való hozzáférés naplózása
 
@@ -128,14 +116,14 @@ Ezek a beépített szerepkörök az adatbázisok adatbesorolását tudják olvas
 - Tulajdonos
 - Olvasó
 - Közreműködő
-- SQL Security Manager
+- SQL-biztonságkezelő
 - Felhasználói hozzáférés rendszergazdája
 
 Ezek a beépített szerepkörök módosíthatják egy adatbázis adatbesorolását:
 
 - Tulajdonos
 - Közreműködő
-- SQL Security Manager
+- SQL-biztonságkezelő
 
 További információ az [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)szerepköralapú engedélyeiről.
 
@@ -189,8 +177,7 @@ A REST API használatával programozott módon kezelheti a besorolásokat és a 
 - [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
 - Az [adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
 
-## <a name="next-steps"></a><a id="next-steps"></a>További lépések
+## <a name="next-steps"></a><a id="next-steps"></a>Következő lépések
 
-- További információ a [speciális adatbiztonságról](advanced-data-security.md).
 - Érdemes lehet az [Azure SQL auditot](../../azure-sql/database/auditing-overview.md) beállítani a minősített bizalmas adatokhoz való hozzáférés figyelésére és naplózására.
 - Adatfelderítési & besorolást tartalmazó bemutató esetén tekintse meg a következőt: az [SQL-adatok védelmének észlelése, osztályozása, címkézése & | Az elérhető adatvédelem](https://www.youtube.com/watch?v=itVi9bkJUNc).

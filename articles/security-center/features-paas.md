@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894779"
 ---
-# <a name="feature-coverage-for-azure-paas-services"></a>A szolgáltatás lefedettsége az Azure Pásti-szolgáltatásokhoz<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>A szolgáltatás lefedettsége az Azure Pásti-szolgáltatásokhoz <a name="paas-services"></a>
 
 Az alábbi táblázat a támogatott Azure Pásti-erőforrások Azure Security Center szolgáltatásainak rendelkezésre állását mutatja be.
 
-|Szolgáltatás|Javaslatok (ingyenes)|Biztonsági riasztások (standard)|Sebezhetőségi felmérés (standard)|
+|Szolgáltatás|Javaslatok (ingyenes)|Biztonsági riasztások (Azure Defender)|Sebezhetőségi felmérés (Azure Defender)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Automation fiók|✔|-|-|
@@ -41,7 +41,7 @@ Az alábbi táblázat a támogatott Azure Pásti-erőforrások Azure Security Ce
 |Azure Database for PostgreSQL *|✔|✔|-|
 |Azure Event Hubs névtér|✔|-|-|
 |Azure Functions-alkalmazás|✔|-|-|
-|Azure Key Vault|✔|✔ *|-|
+|Azure Key Vault|✔|✔|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
@@ -54,6 +54,6 @@ Az alábbi táblázat a támogatott Azure Pásti-erőforrások Azure Security Ce
 |Azure-előfizetés|✔ **|✔|-|
 |Azure Virtual Network</br> (alhálózat, hálózati adapterek és hálózati biztonsági csoportok együtt)|✔|-|-|
 
-\*Ezek a funkciók jelenleg előzetes verzióban támogatottak.
+\* Ezek a funkciók jelenleg előzetes verzióban támogatottak.
 
-\*\*Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
+\*\* Azure Active Directory (Azure AD) javaslatok csak az Azure Defender szolgáltatással rendelkező előfizetések esetén érhetők el.

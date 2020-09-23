@@ -1,7 +1,7 @@
 ---
 title: Gyakori kérdések (GYIK)
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
+description: Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661418"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887382"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ez a cikk az [Azure SQL felügyelt példányának](sql-managed-instance-paas-overview.md)leggyakoribb kérdéseit tartalmazza.
@@ -82,7 +82,7 @@ Az új és az előzetes verziójú funkciókhoz lásd: [kibocsátási megjegyzé
 
 **Hogyan lehet SQL felügyelt példányt kiépíteni?**
 
-Üzembe helyezhet egy példányt az [Azure Portal](instance-create-quickstart.md), a [PowerShell](scripts/create-configure-managed-instance-powershell.md), az [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) és az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)használatával.
+A [Azure Portal](instance-create-quickstart.md), a [PowerShell](scripts/create-configure-managed-instance-powershell.md), az [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) és az [ARM sablonokból](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)is kiépítheti a példányokat.
 
 **Létrehozhatok felügyelt példányokat egy meglévő előfizetésben?**
 
@@ -94,7 +94,7 @@ Ez az alapul szolgáló összetevő aktuális korlátozása, amely ellenőrzi az
 
 **Hogyan lehet méretezni a felügyelt példányt?**
 
-Felügyelt példányát az [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) vagy az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
+Felügyelt példányát [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) vagy az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
 
 **Áthelyezhetem a felügyelt példányt az egyik régióból a másikba?**
 
@@ -102,7 +102,7 @@ Igen, írhat. Útmutatásért lásd: [erőforrások áthelyezése régiók köz�
 
 **Hogyan törölhetem a felügyelt példányt?**
 
-A felügyelt példányokat az Azure Portal, a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) vagy a [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)-k használatával törölheti.
+A felügyelt példányok a Azure Portal, a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) vagy a [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
 
 **Mennyi ideig tart egy példány létrehozása vagy frissítése, vagy egy adatbázis visszaállítása?**
 
@@ -326,7 +326,7 @@ A felügyeleti és központi telepítési szolgáltatások egy felügyelt péld�
 
 **Használhatom a nyilvános végpontot a felügyelt példányok adatbázisaiban lévő adathozzáféréshez?**
 
-Igen. Az ügyfélnek engedélyeznie kell a nyilvános végponti adatok elérését az [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM-ből, és konfigurálnia kell a NSG az adatporthoz való hozzáférés zárolásához (3342-es portszám). További információkért lásd: [nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](public-endpoint-configure.md) , és az [Azure SQL felügyelt példány biztonságos használata nyilvános végponttal](public-endpoint-overview.md). 
+Igen. Az ügyfélnek engedélyeznie kell a nyilvános végponti adatok elérését [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM-ből, és konfigurálnia kell a NSG az adatporthoz való hozzáférés zárolásához (3342-es portszám). További információkért lásd: [nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](public-endpoint-configure.md) , és az [Azure SQL felügyelt példány biztonságos használata nyilvános végponttal](public-endpoint-overview.md). 
 
 **Megadhatok egyéni portot az SQL-adatvégpont (ok) hoz?**
 
@@ -350,7 +350,7 @@ A kiszűrése kockázatok enyhítése érdekében az ügyfeleknek ajánlott bizt
 - A példányt egy alacsony jogosultsági szintű DBA-fiókkal érheti el.
 - Állítsa be az JIT Jumpbox hozzáférését a sysadmin fiókhoz.
 - Kapcsolja be az [SQL-naplózást](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine), és integrálja azt a riasztási mechanizmusokkal.
-- A [veszélyforrások észlelésének](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) bekapcsolása a [speciális adatbiztonsági (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) csomagból.
+- A [veszélyforrások észlelésének](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) bekapcsolása az [Azure Defender for SQL Suite szolgáltatásban](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) .
 
 ## <a name="dns"></a>DNS
 
@@ -450,7 +450,7 @@ A biztonsági mentési tárolóhelyek mennyiségét a megvásárolt fenntartott 
 
 **Hogyan figyelhető meg a biztonsági mentési tárhely-felhasználás számlázási díja?**
 
-A biztonsági mentési tár költségeit az Azure Portalon figyelheti. Útmutatásért lásd: [az automatikus biztonsági mentések költségeinek figyelése](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
+A biztonsági mentési tár költségeit a Azure Portal használatával figyelheti. Útmutatásért lásd: [az automatikus biztonsági mentések költségeinek figyelése](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
 
 **Hogyan optimalizálható a biztonsági másolatok tárolási költségei a felügyelt példányon?**
 

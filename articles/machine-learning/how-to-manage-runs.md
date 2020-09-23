@@ -12,15 +12,15 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6d0d626fe0720500b436aea73d6df7c8bb08e004
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fc9dee3d4ace5f70c4238cdce5c57696b131bfa9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897318"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), [Machine learning parancssori](reference-azure-machine-learning-cli.md)felület és a [Azure Machine learning Studio](https://ml.azure.com) különböző módszereket biztosít a futtatások monitorozásához, rendszerezéséhez és kezeléséhez a képzés és kísérletezés érdekében.
 
@@ -35,7 +35,7 @@ Ez a cikk a következő feladatokra mutat be példákat:
 
 A következő elemekre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
@@ -110,7 +110,7 @@ A kísérlet futtatásának elindításához kövesse az alábbi lépéseket:
 
 ### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio használata
 
-A következő lépések végrehajtásával elindíthat egy folyamat küldését a tervezőben (előzetes verzió):
+A következő lépések végrehajtásával elindíthatja a folyamat elküldését a tervezőben:
 
 1. Állítsa be a folyamat alapértelmezett számítási célját.
 
@@ -384,7 +384,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>A parancssori felület használata
 
-Az Azure CLI támogatja a [JMESPath](http://jmespath.org) -lekérdezéseket, amelyek a tulajdonságok és címkék alapján szűrhetik a futtatásokat. Ha JMESPath-lekérdezést szeretne használni az Azure CLI-vel, a paraméterrel kell megadnia `--query` . Az alábbi példák a tulajdonságok és címkék használatával történő alapszintű lekérdezéseket mutatják be:
+Az Azure CLI támogatja a [JMESPath](http://jmespath.org) -lekérdezéseket, amelyek a tulajdonságok és címkék alapján szűrhetik a futtatásokat. Ha JMESPath-lekérdezést szeretne használni az Azure CLI-vel, a paraméterrel kell megadnia `--query` . Az alábbi példák a tulajdonságokat és a címkéket használó lekérdezéseket mutatják be:
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

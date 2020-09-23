@@ -1,6 +1,6 @@
 ---
-title: GPU-modul futtatása Microsoft Azure Stack Edge GPU-eszközön | Microsoft Docs
-description: Ismerteti, hogyan konfigurálhat és futtathat egy modult a GPU-n egy Azure Stack Edge-eszközön a Azure Portal használatával.
+title: GPU-modul futtatása Microsoft Azure Stack Edge Pro GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan konfigurálhat és futtathat egy modult a GPU-n egy Azure Stack Edge Pro-eszközön a Azure Portal használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266952"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891469"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>Modul konfigurálása és futtatása GPU-on Azure Stack Edge-eszközön
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Modul konfigurálása és futtatása GPU-ban Azure Stack Edge Pro-eszközön
 
-Az Azure Stack Edge-eszköz egy vagy több grafikus feldolgozó egységet (GPU) tartalmaz. A GPU-k olyan népszerű AI-számítások, amelyek párhuzamos feldolgozási képességeket kínálnak, és gyorsabbak a képmegjelenítésnél, mint a központi feldolgozó egységek (CPU-k). Az Azure Stack Edge-eszközön található GPU-val kapcsolatos további információkért keresse fel [Azure stack Edge-eszköz technikai specifikációit](azure-stack-edge-gpu-technical-specifications-compliance.md).
+Az Azure Stack Edge Pro-eszköz egy vagy több grafikus feldolgozó egységet (GPU) tartalmaz. A GPU-k olyan népszerű AI-számítások, amelyek párhuzamos feldolgozási képességeket kínálnak, és gyorsabbak a képmegjelenítésnél, mint a központi feldolgozó egységek (CPU-k). Az Azure Stack Edge Pro-eszközön található GPU-val kapcsolatos további információkért látogasson el az [Edge Pro-eszköz technikai specifikációjának Azure stack](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
-Ez a cikk bemutatja, hogyan konfigurálhat és futtathat egy modult a GPU-ban az Azure Stack Edge-eszközön. Ebben a cikkben az NVIDIA T4 GPU-hoz írt, nyilvánosan elérhető tároló modul **számjegyeit** fogjuk használni. Ezzel az eljárással konfigurálhatja az NVIDIA által a GPU-k által közzétett egyéb modulokat.
+Ez a cikk bemutatja, hogyan konfigurálhat és futtathat egy modult a GPU-ban az Azure Stack Edge Pro-eszközön. Ebben a cikkben az NVIDIA T4 GPU-hoz írt, nyilvánosan elérhető tároló modul **számjegyeit** fogjuk használni. Ezzel az eljárással konfigurálhatja az NVIDIA által a GPU-k által közzétett egyéb modulokat.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Hozzáférése van egy GPU-t támogató 1 csomópontos Azure Stack peremhálózati eszközhöz. Ez az eszköz egy Azure-erőforrással van aktiválva.  
+1. Hozzáférése van egy GPU-t támogató, 1 csomópontos Azure Stack Edge Pro-eszközhöz. Ez az eszköz egy Azure-erőforrással van aktiválva.  
 
 ## <a name="configure-module-to-use-gpu"></a>Modul konfigurálása a GPU használatára
 
-Ha egy modult úgy szeretne konfigurálni, hogy az Azure Stack Edge-eszközön lévő GPU-t használja egy modul futtatásához, kövesse az alábbi lépéseket.
+Ha egy modult úgy szeretne konfigurálni, hogy a GPU-t használja a Azure Stack Edge Pro-eszközön egy modul futtatásához, kövesse az alábbi lépéseket.
 
 1. A Azure Portal nyissa meg az eszközhöz hozzárendelt erőforrást. 
 
@@ -54,7 +54,7 @@ Ha egy modult úgy szeretne konfigurálni, hogy az Azure Stack Edge-eszközön l
 
     ![Modul konfigurálása a GPU 6 használatára](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    A jobb oldali ablaktáblában megjelenik az Azure Stack Edge-eszközhöz társított IoT Edge eszköz. Ez megfelel az IoT Hub erőforrás létrehozásakor az előző lépésben létrehozott IoT Edge eszköznek. 
+    A jobb oldali ablaktáblában megjelenik az Azure Stack Edge Pro-eszközhöz társított IoT Edge eszköz. Ez megfelel az IoT Hub erőforrás létrehozásakor az előző lépésben létrehozott IoT Edge eszköznek. 
     
 6. Válassza ki ezt az IoT Edge eszközt.
 
@@ -112,6 +112,6 @@ Ha egy modult úgy szeretne konfigurálni, hogy az Azure Stack Edge-eszközön l
     ![Modul konfigurálása a GPU 16 használatára](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-12.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ [az NVIDIA GPU-val használható környezeti változókról](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).

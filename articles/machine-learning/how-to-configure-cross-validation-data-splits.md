@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886199"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Az adatmegosztások és a több érvényesítés konfigurálása az automatizált gépi tanulásban
 
@@ -37,7 +37,7 @@ Ehhez a cikkhez szükséges,
 
 * Egy Azure Machine Learning-munkaterület. A munkaterület létrehozásával kapcsolatban tekintse meg [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md)című témakört.
 
-* A Azure Machine Learning SDK-val való automatikus gépi tanulási kísérlet beállításának ismerete. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy az [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg az alapszintű gépi tanulási kísérlet tervezési mintáit.
+* A Azure Machine Learning SDK-val való automatikus gépi tanulási kísérlet beállításának ismerete. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy az [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg az alapvető automatizált gépi tanulási kísérlet tervezési mintáit.
 
 * Az átellenőrzési és a betanítási/ellenőrzési adatmennyiség megismertetése ML-fogalmakkal. A magas szintű magyarázathoz
 

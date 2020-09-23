@@ -4,15 +4,16 @@ description: Ismerje meg, hogyan tekintheti át a metrikákat az Azure Spring Cl
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892645"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -89,13 +90,13 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="error"></a>Hiba
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. error | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 
 ### <a name="performance"></a>Teljesítmény
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
 >| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
@@ -109,18 +110,60 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| JVM. GC. pause. Total. Count | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
 >| JVM. GC. pause. Total. Time | JVM. GC. pause (teljes idő) | Ezredmásodpercben | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
 
+::: zone pivot="programming-language-csharp"
+### <a name="performance-net"></a>Teljesítmény (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>|------|-----------------------------|------|---------|
+>| Processzorhasználat       | CPU – használat      | Ezredmásodpercben | A folyamat által használt CPU-mennyiség. |
+>| Munkakészlet     | munkakészlet    | Megabájtban    | A folyamat által használt munkakészlet mennyisége. |
+>| GC-halom mérete    | GC-heap-size   | Megabájtban    | A szemetet gyűjtő által jelentett teljes halom mérete. |
+>| 0. generációs GC-darabszám  | Gen-0-GC-darabszám | Darabszám        | A 0. generációs Garbage gyűjtemények másodpercenkénti száma. |
+>| 1. generációs GC-darabszám  | Gen-1 – GC-darabszám | Darabszám        | Az 1. generációs Garbage gyűjtemények másodpercenkénti száma |
+>| 2. generációs GC-darabszám  | Gen-2 – GC – darabszám | Darabszám        | A 2. generációs Garbage gyűjtemények másodpercenkénti száma. |
+>| 0. generációs halom mérete | Gen-0 – méret     | Bájt        | 0. generációs halom mérete. |
+>| 1. generációs halom mérete | 1. generációs méret     | Bájt        | 1. generációs halom mérete |
+>| 2. generációs halom mérete | 2. generációs méret     | Bájt        | 2. generációs halom mérete. |
+>| Halmozott halom mérete   | Kissné méret       | Bájt        | Nagyméretű objektum halomba rakásának mérete. |
+>| Foglalási sebesség | foglalási – arány     | Bájt        | A lefoglalt bájtok másodpercenkénti száma |
+>| Szerelvények száma  | szerelvény – darabszám | Darabszám        | A betöltött szerelvények száma. |
+>| Kivételek száma | kivételek száma | Darabszám       | A kivételek másodpercenkénti száma. |
+>| Szálak készletének szálak száma      | szálkészlet munkaszála belépett – szálak száma              | Darabszám | Szálak készletének száma |
+>| A zárolási tartalom számának figyelése | figyelő – zárolási tartalom – darabszám        | Darabszám | A figyelő zárolásának megkísérlése során a másodpercenkénti számú alkalommal történt a verseny. |
+>| Szál-készlet várólistájának hossza      | szálkészlet munkaszála belépett – várólista hossza              | Darabszám | Szál készletének munkaelem-várólistájának hossza |
+>| Szál készletének befejezett elemeinek száma | szálkészlet munkaszála belépett – befejezett elemek – darabszám | Darabszám | A szál készlete befejezte a munkaelemek darabszámát. |
+>| Aktív Időzítők száma               | aktív – időzítő – darabszám               | Darabszám | A jelenleg aktív Időzítők száma. Az aktív időzítő olyan, amely a jövőben egy adott időpontban van regisztrálva, és még nem lett megszakítva. |
+
+További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
+
 ### <a name="request"></a>Kérés
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. elküldve | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
 >| tomcat. Global. Received | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
 >| tomcat. Global. Request. Total. Count | tomcat. Global. Request (összesen-Count) | Darabszám | A Tomcat webkiszolgáló által feldolgozott kérelmek teljes száma |
 >| tomcat. Global. Request. max | tomcat. Global. Request. max | Ezredmásodpercben | A Tomcat-webkiszolgáló maximális ideje a kérelem feldolgozására |
 
+::: zone pivot="programming-language-csharp"
+### <a name="request-net"></a>Kérelem (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>|------|-----------------------------|------|---------|
+>| Kérések száma másodpercenként | kérelmek/másodperc | Darabszám | Kérelmek gyakorisága. |
+>| Összes kérelem | kérelmek összesen | Darabszám | Kérelmek száma összesen |
+>| Aktuális kérések | aktuális – kérelmek | Darabszám | A jelenlegi kérések száma. |
+>| Sikertelen kérelmek | Sikertelen – kérelmek | Darabszám | Sikertelen kérelmek száma. |
+
+További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
+
 ### <a name="session"></a>Munkamenet
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Sessions. Active. max | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
 >| tomcat. Sessions. Alive. max | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |
@@ -130,6 +173,7 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| tomcat. Sessions. Active. Current | tomcat. Sessions. Active. Current | Darabszám | Tomcat-munkamenet aktív száma |
 
 ## <a name="see-also"></a>Lásd még
+
 * [Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel](spring-cloud-quickstart-logs-metrics-tracing.md)
 
 * [Bevezetés az Azure Metrikaböngésző használatába](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
@@ -137,7 +181,7 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
 ## <a name="next-steps"></a>Következő lépések
+
 * [Oktatóanyag: tavaszi Felhőbeli erőforrások figyelése riasztások és műveleti csoportok használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
-
