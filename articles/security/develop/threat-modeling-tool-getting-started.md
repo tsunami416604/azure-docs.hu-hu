@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539900"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980467"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool első lépései
 
@@ -97,7 +97,7 @@ Ricardo a lista első elemének kiválasztásával kezdődik. A következők tö
 
 Először is a két rajzsablon közötti interakció van kiemelve
 
-![Interakció](./media/threat-modeling-tool-getting-started/interaction.png)
+![A képernyőfelvételen két rajzsablon látható, és a görbe nyíl a sorban lévő nagyobb tömeghez csatlakozik.](./media/threat-modeling-tool-getting-started/interaction.png)
 
 Másodszor, a fenyegetéssel kapcsolatos további információk jelennek meg a fenyegetés Tulajdonságok ablak
 

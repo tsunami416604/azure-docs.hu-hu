@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543523"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979763"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: a Salesforce-homokozó konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a Salesforce homokozóban és
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 *   Egy Azure Active Directory-bérlő.
 *   Érvényes bérlő a Salesforce-homokozóban munkahelyi vagy Salesforce-homokozóban az oktatáshoz. Bármelyik szolgáltatáshoz használhatja az ingyenes próbaverziós fiókot is.
@@ -61,9 +61,9 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 1. Válassza ki a Salesforce-homokozó példányát, majd válassza ki a **kiépítés** lapot.
 
-1. Állítsa a **kiépítési módot** **automatikus**értékre.
+1. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![kiépítési](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![Képernyőfelvétel: a Salesforce-kiépítési mód a kiépítési móddal automatikus és más beállítható értékekre van beállítva.](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
    
@@ -95,7 +95,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
     
 1.  A leképezések szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Salesforce a homokozóban lehetőséget.**
 
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat a Salesforce homokozóban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Salesforce-homokozóban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat a Salesforce homokozóban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Salesforce-homokozóban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Salesforce homokozóban, módosítsa a **kiépítési állapotot** **a következőre** a beállítások szakaszban:
 
@@ -105,8 +105,8 @@ Elindítja a felhasználók és csoportok szakaszban a Salesforce-Sandboxhoz ren
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)

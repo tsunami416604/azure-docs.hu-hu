@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82024472"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972366"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -256,4 +256,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md).
+* További információ 
+
+> [!div class="nextstepaction"]
+> a [víz minőségének monitorozása](./concepts-waterqualitymonitoring-architecture.md).

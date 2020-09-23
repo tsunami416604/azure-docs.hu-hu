@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086623378b64aecb91c4e70e6e69bb13453f7681
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be03996f3f88efeb02893f815162a04d6a1e8aa6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078642"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979952"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek megtekintése az Azure AD-jogosultságok kezelésében
 
@@ -29,7 +29,7 @@ Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy ki k�
 
 ## <a name="view-requests"></a>Kérések megtekintése
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -41,7 +41,7 @@ Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy ki k�
 
     ![Hozzáférési csomagra vonatkozó kérelmek listája](./media/entitlement-management-access-package-requests/requests-list.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag kérelem-és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md)
 - [Hozzáférési csomag hozzárendeléseinek megtekintése, hozzáadása és eltávolítása](entitlement-management-access-package-assignments.md)

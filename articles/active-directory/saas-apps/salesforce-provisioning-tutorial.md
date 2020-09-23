@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 66bba0d4825300a6cead2453a67518af631234b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979767"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a Salesforce és az Azure AD 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 * Azure Active Directory-bérlő
 * Salesforce.com-bérlő
@@ -65,9 +65,9 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 3. Válassza ki a Salesforce példányát, majd válassza a **kiépítés** lapot.
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![kiépítési](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![Képernyőfelvétel: az Salesforce-létesítési oldal, a kiépítési mód pedig az automatikus és más beállítható értékekre van beállítva.](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
 
@@ -101,7 +101,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 15. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Salesforce lehetőséget.**
 
-16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 17. Az Azure AD-kiépítési szolgáltatás Salesforce való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
@@ -127,8 +127,8 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Salesforce megköveteli, hogy az e-mail-frissítéseket manuálisan kell jóváhagyni a módosítás előtt. Ennek eredményeképpen előfordulhat, hogy a kiépítési naplók több bejegyzést is láthatnak a felhasználó e-mail-címének frissítéséhez (az e-mail módosításának jóváhagyása után).
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

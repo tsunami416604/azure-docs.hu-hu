@@ -13,15 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378202"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894761"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
 Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
+
+## <a name="availability"></a>Rendelkezésre állás
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általánosan elérhető (GA)|
+|Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
+|Szükséges szerepkörök és engedélyek:|Írási engedélyek a gép NSG|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Mi az adaptív hálózat megerősítése?
 [Hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) alkalmazása az erőforrások felé irányuló és onnan érkező forgalom szűrésére, javítja a hálózat biztonsági helyzetét. Azonban továbbra is előfordulhatnak olyan esetek, amikor a NSG keresztül áramló tényleges forgalom a definiált NSG-szabályok részhalmaza. Ezekben az esetekben a NSG-szabályoknak a tényleges forgalmi minták alapján történő megerősítése révén a biztonsági helyzet további javítása is megvalósítható.
@@ -37,15 +46,6 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
 ![Hálózati megerősítő nézet](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="availability"></a>Rendelkezésre állás
-
-|Szempont|Részletek|
-|----|:----|
-|Kiadás állapota:|Általános elérhetőség|
-|Árképzési|Standard csomag|
-|Szükséges szerepkörök és engedélyek:|Írási engedélyek a gép NSG|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
-|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózat megerősítő riasztások és szabályok megtekintése
@@ -56,7 +56,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
    * Nem **vizsgált erőforrások**: a következő okok egyike miatt nem futtathatók az adaptív hálózati kötési algoritmust használó virtuális gépek:
       * **A virtuális gépek klasszikus virtuális gépek**: csak Azure Resource Manager virtuális gépek támogatottak.
       * **Nem áll rendelkezésre elegendő mennyiségű adatok**: a pontos forgalom-megerősítési javaslatok létrehozásához Security Center legalább 30 napos forgalmi adatokat igényel.
-      * A **virtuális gépet az ASC standard nem védi**: csak az Security Center Standard díjszabási szintjére beállított virtuális gépek jogosultak erre a szolgáltatásra.
+      * A **virtuális gépet az Azure Defender nem védi**: csak az [Azure Defender által a kiszolgálókhoz](defender-for-servers-introduction.md) védett virtuális gépek jogosultak erre a szolgáltatásra.
 
      ![sérült erőforrások](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -69,7 +69,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
 
 1. A nem kifogástalan **erőforrások** lapon válasszon ki egy virtuális gépet. A riasztások és az ajánlott megerősítő szabályok szerepelnek a felsorolásban.
 
-     ![szabályok megerősítése](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+     ![Szabályok megerősítése](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
    > A **szabályok** lap felsorolja azokat a szabályokat, amelyekkel az adaptív hálózat megerősítő javasolja a hozzáadását. A **riasztások** lapon láthatók azok a riasztások, amelyek a forgalom miatt keletkeztek, az erőforrás felé áramlanak, amely nem az ajánlott szabályokban engedélyezett IP-tartományon belül van.
@@ -106,14 +106,14 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
 
 1. Egy szabály egyes paramétereinek módosításához a **szabályok** lapon kattintson a három pontra (...) a szabály sorának végén, majd kattintson a **Szerkesztés**gombra.
 
-   ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![S szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. A **szabály szerkesztése** ablakban frissítse a módosítani kívánt adatokat, majd kattintson a **Mentés**gombra.
 
    > [!NOTE]
-   > A **Mentés**gombra kattintva sikeresen módosította a szabályt. *Azonban nem alkalmazta azt a NSG.* Az alkalmazásához ki kell választania a szabályt a listában, majd a **kikényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
+   > A **Mentés**gombra kattintva sikeresen módosította a szabályt. *Azonban nem alkalmazta azt a NSG.* Az alkalmazásához ki kell választania a szabályt a listában, majd a **kényszerítés** elemet kell választania (a következő lépésben leírtak szerint).
 
-   ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![Mentés kiválasztása](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson a **kikényszerítés**gombra.
 
@@ -150,4 +150,4 @@ Ha szükséges, törölheti az aktuális munkamenet javasolt szabályát. Meghat
 
 1. A **szabályok** lapon kattintson a három pontra (...) a szabály sor végén, majd kattintson a **Törlés**gombra.  
 
-    ![szabályok megerősítése](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![Szabály törlése](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

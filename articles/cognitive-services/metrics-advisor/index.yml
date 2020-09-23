@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: A Metrics Advisor dokumentációja
+summary: A Metrics Advisor egy idősor-monitorozási platform, amely API-kat biztosít az adatbetöltéshez, az anomáliadetektáláshoz és a diagnosztikához anélkül, hogy a gépi tanulás ismeretére lenne szükség.
+metadata:
+  title: A Metrics Advisor dokumentációja – oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: A Metrics Advisor egy idősor-monitorozási platform, amely API-kat biztosít az adatbetöltéshez, az anomáliadetektáláshoz és a diagnosztikához anélkül, hogy a gépi tanulás ismeretére lenne szükség.
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: metrics-advisor
+  ms.topic: landing-page
+  ms.date: 08/13/2020
+  ms.author: aahi
+  ms.openlocfilehash: f30f45b8a683d9403973517ee4558be9cd4be664
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928825"
+landingContent:
+- title: Tudnivalók a Metrics Advisorról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Metrics Advisor?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: A bemutatówebhely megismerése
+      url: quickstarts/explore-demo.md
+    - text: Az első metrika monitorozása a weben
+      url: quickstarts/web-portal.md
+    - text: A megoldás testreszabása REST API-kkal
+      url: quickstarts/rest-api.md
+- title: Útmutatók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az adatok előkészítése
+      url: how-tos/onboard-your-data.md
+    - text: Különböző adatcsatorna-források csatlakoztatása
+      url: data-feeds-from-different-sources.md
+    - text: Adatcsatornák kezelése
+      url: how-tos/manage-data-feeds.md
+    - text: Metrikák konfigurálása és a konfiguráció észlelésének finomhangolása
+      url: how-tos/configure-metrics.md
+    - text: Riasztások konfigurálása és értesítések fogadása beavatkozási pont segítségével
+      url: how-tos/alerts.md
+    - text: Incidens diagnosztizálása
+      url: how-tos/diagnose-incident.md
+    - text: Anomáliadetektálás beállítása visszajelzés használatával
+      url: how-tos/anomaly-feedback.md
+    - text: Metrikadiagram készítése
+      url: how-tos/metrics-graph.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Szószedet
+      url: glossary.md
+    - text: Metrics Advisor API
+      url: https://go.microsoft.com/fwlink/?linkid=2141634
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest

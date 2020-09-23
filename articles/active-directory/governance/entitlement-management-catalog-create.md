@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783535"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980044"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -100,6 +100,7 @@ A katalógusból eltávolíthatja az erőforrásokat. Egy erőforrás csak akkor
 1. Válassza ki az eltávolítani kívánt erőforrásokat.
 
 1. Kattintson az **Eltávolítás** gombra (vagy kattintson a három pontra (**...**), majd az **erőforrás eltávolítása**gombra.
+
 
 ## <a name="add-additional-catalog-owners"></a>További katalógus-tulajdonosok hozzáadása
 

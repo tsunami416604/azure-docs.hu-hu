@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: 72978636b878aac9120b356e7be5fe5c978d1738
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 237ca1f0041283bb86b24ad456ab781dc13eeb86
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499789"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980525"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Az Azure CLI és a IoT bővítmény használata az IoT Hub Device Provisioning Service kezeléséhez
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT Edge kezelésére. Az Azure CLI Windows, Linux és MacOS rendszeren érhető el. Az Azure CLI lehetővé teszi az Azure IoT Hub-erőforrások, a Device kiépítési szolgáltatás példányainak és a kapcsolt hubok felügyeletét a box-ban.
+Az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT Edge kezelésére. Az Azure CLI Windows, Linux és macOS rendszeren érhető el. Az Azure CLI lehetővé teszi az Azure IoT Hub-erőforrások, a Device kiépítési szolgáltatás példányainak és a kapcsolt hubok felügyeletét a box-ban.
 
 Az IoT bővítmény az Azure CLI-t az eszközök kezelésével és a teljes IoT Edge funkcióval gazdagítja.
 
@@ -53,7 +53,7 @@ Mielőtt nekikezdene, végezze el az előzőekben ismertetett telepítési lép�
 az login
 ```
 
-![bejelentkezés](./media/how-to-manage-dps-with-cli/login.jpg)
+![A képernyőképen egy parancssori ablak jelenik meg, amely az az login parancsot futtatja.](./media/how-to-manage-dps-with-cli/login.jpg)
 
 ### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. erőforráscsoport IoTHubBlogDemo létrehozása a eastus-ben
 

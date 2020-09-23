@@ -1,23 +1,23 @@
 ---
-title: Időjárási szolgáltatások – fogalmak | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, milyen fogalmakat kell alkalmazni a Microsoft Azure Maps időjárási szolgáltatásokra vonatkozóan.
+title: Időjárási szolgáltatások – fogalmak Microsoft Azure Maps-ben
+description: Ismerje meg a Microsoft Azure Maps időjárási szolgáltatásokra vonatkozó fogalmakat.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132109"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972043"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
-Ez a cikk a [Azure Maps időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket. 
+Ez a cikk a [Azure Maps időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket.
 
 ## <a name="unit-types"></a>Egységek típusai
 
@@ -56,27 +56,27 @@ Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `
 
 | Ikon száma |Ikon| Nap | Éjszaka | Szöveg |
 |-------------|:----:|-----|-------|------|
-| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Yes |  Nem    | Sunny|
-| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Yes |  Nem    | Többnyire napos|
-| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Yes |  Nem    | Részben Sunny|
-| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  Nem    | Időszakos felhők|
-| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  Nem    | Ködös napsütés |
-| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  Nem    | Többnyire Felhőbeli|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Igen |  Nem    | Sunny|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Igen |  Nem    | Többnyire napos|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Igen |  Nem    | Részben Sunny|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Igen |  Nem    | Időszakos felhők|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Igen |  Nem    | Ködös napsütés |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Igen |  Nem    | Többnyire Felhőbeli|
 | 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Igen |  Igen   | Felhős |
 | 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Igen |  Igen   | Sivár (borús)|
 | 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Igen |  Igen   | Köd|
 | 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Igen |  Igen   | Zuhanyzók|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  Nem    | Jórészt Felhőbeli|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  Nem    | Részben napos és zuhanyozós|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Igen |  Nem    | Jórészt Felhőbeli|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Igen |  Nem    | Részben napos és zuhanyozós|
 | 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Igen |  Igen   | Zivatarok|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  Nem    | Jórészt Felhőbeli|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  Nem    | Részben napos, zivataros|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Igen |  Nem    | Jórészt Felhőbeli|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Igen |  Nem    | Részben napos, zivataros|
 | 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Igen |  Igen   | Eső|
 | 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Igen |  Igen   | Flurries|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  Nem    | Többnyire Felhőbeli Flurries|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  Nem    | Részben Sunny a Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Igen |  Nem    | Többnyire Felhőbeli Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Igen |  Nem    | Részben Sunny a Flurries|
 | 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Igen |  Igen   | Vízisízni|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  Nem    | Jórészt Felhőbeli|     
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Igen |  Nem    | Jórészt Felhőbeli|     
 | 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Igen |  Igen   | Ice |
 | 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Igen |  Igen   | Ónos eső|
 | 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Igen |  Igen   | Fagyasztási eső|
@@ -84,11 +84,11 @@ Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `
 | 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Igen |  Igen   | Gyakori|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Igen |  Igen   | Ritka elérésű|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Igen |  Igen   | Szeles|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nem  |  Yes   | Törlés|
-| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nem  |  Yes   | Többnyire egyértelmű|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nem  |  Yes   | Részben felhőbe|
-| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nem  |  Yes   | Időszakos felhők|
-| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nem  |  Yes   | Ködös Holdfény|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nem  |  Igen   | Törlés|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nem  |  Igen   | Többnyire egyértelmű|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nem  |  Igen   | Részben felhőbe|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nem  |  Igen   | Időszakos felhők|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nem  |  Igen   | Ködös Holdfény|
 | 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Nem  |  Igen   | Többnyire Felhőbeli|
 | 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Nem  |  Igen   | Záporok részben felhőben|
 | 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Nem  |  Igen   | Jórészt Felhőbeli|
@@ -472,3 +472,169 @@ Alább látható az infravörös műholdképek részletes palettája.
 |307,57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>Index-azonosítók és indexelt csoportok azonosítói
+
+A napi indexek [beolvasása](https://aka.ms/AzureMapsWeatherDailyIndices) lehetővé teszi, hogy a felhasználók a visszaadott eredményeket meghatározott indexekre vagy index csoportokra korlátozzák.
+
+Az alábbi táblázat a rendelkezésre álló index-azonosítókat, azok nevét és a tartományra mutató hivatkozást tartalmazza. A táblázat alatti táblázat a különböző indexelő csoportok listáját tartalmazza.
+
+  Index neve |  ID (Azonosító)  | Értéktartomány
+  -------------------------- |---|-----
+  Ízületi fájdalom             |21 | [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  Asztma                     |23|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  Strand & készlet               |10| [Gyenge – kiváló 1](#poor-excellent-1)
+  Kerékpározás                  |4| [Gyenge – kiváló 1](#poor-excellent-1)
+  Gyakori nátha                |25|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  Komposztálás                 |38| [Gyenge – kiváló 1](#poor-excellent-1)
+  Építőipar               |14| [Gyenge – kiváló 1](#poor-excellent-1)
+  COPD                       |44|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  A kutya kényelme        |43| [Gyenge – kiváló 1](#poor-excellent-1)
+  Vezetés                    |40|  [Gyenge – kiváló 2](#poor-excellent-2)
+  Por & harag              |18| [Alacsony Extreme 1](#low-extreme-1)
+  Mező készültsége            |32| [Gyenge – kiváló 1](#poor-excellent-1)
+  Halászat                    |13| [Gyenge – kiváló 1](#poor-excellent-1)
+  Repülési késések              |-3|  [Nagyon valószínűtlen – nagyon valószínű, 2](#very-unlikely-very-likely-2)
+  Influenza                        |26|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  Repülési utazási index        |31| [Kiváló – gyenge](#excellent-poor)
+  Tüzelőanyag-takarékosság               |37| [Gyenge – kiváló 1](#poor-excellent-1)
+  Golf időjárása               |5| [Gyenge – kiváló 1](#poor-excellent-1)
+  Növekvő fű              |33| [Gyenge – kiváló 1](#poor-excellent-1)
+  Haj sima                 |42| [Nem valószínű – vészhelyzet](#unlikely-emergency)
+  Kifogástalan Heart fitness      |16| [Gyenge – kiváló 1](#poor-excellent-1)
+  Túrázás                     |3| [Gyenge – kiváló 1](#poor-excellent-1)
+  Home energiahatékonyság     |36| [Gyenge – kiváló 1](#poor-excellent-1)
+  Veszélyforrás-keresés                    | 20| [Gyenge – kiváló 1](#poor-excellent-1)
+  Beltéri tevékenység            | -2| [Gyenge – kiváló 1](#poor-excellent-1)
+  Jogging                    |2| [Gyenge – kiváló 1](#poor-excellent-1)
+  Kite repül                |9| [Gyenge – kiváló 1](#poor-excellent-1)
+  Gyepes kaszálás                |28| [Gyenge – kiváló 1](#poor-excellent-1)
+  Migrénes fejfájás          |27|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  Délelőtti iskolabusz         |35| [Gyenge – kiváló 1](#poor-excellent-1)
+  Szúnyog tevékenység          |17|[Alacsony Extreme 1](#low-extreme-1)
+  Kültéri tevékenység           |29| [Gyenge – kiváló 1](#poor-excellent-1)
+  Kültéri barbecue           |24| [Gyenge – kiváló 1](#poor-excellent-1)
+  Kültéri koncert            |8| [Gyenge – kiváló 1](#poor-excellent-1)
+  Futó                    |1|  [Gyenge – kiváló 1](#poor-excellent-1)
+  Tenisz                     |6| [Gyenge – kiváló 1](#poor-excellent-1)
+  Szomjúság                     |41| [Alacsony Extreme 2](#low-extreme-2)
+  Vitorlázás                    |11| [Gyenge – kiváló 1](#poor-excellent-1)
+  Bevásárló                   |39| [Gyenge – kiváló 1](#poor-excellent-1)
+  Sinus-fejfájás             |30|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
+  Gördeszka              | 7| [Gyenge – kiváló 1](#poor-excellent-1)
+  Sí Időjárás                | 15| [Gyenge – kiváló 1](#poor-excellent-1)
+  Hó napjai                  | 19| [Nagyon valószínűtlen – nagyon valószínű](#very-unlikely-very-likely)
+  Talaj nedvességtartalma              | 34| [Gyenge – kiváló 1](#poor-excellent-1)
+  Stargazing                 | 12| [Gyenge – kiváló 1](#poor-excellent-1)
+
+Alább látható az elérhető indexelt csoportok (indexGroupId) listája:
+
+  ID (Azonosító)   | Csoportnév | Indexek ebben a csoportban |
+  -------- | ------------------|------
+  1       |Mind | Mind
+  2       |Ízületi fájdalmak | Ízületi fájdalom (21) </br> Migrénes fejfájás (27) </br> Sinus-fejfájás (30)
+  3       |Légúti | Asztma (23) </br> Gyakori megfázás (25) </br> Influenza-előrejelzés (26)
+  4       |Kertészeti | Mező készültsége (32) </br> Gyepes kaszálás (28) </br> Talaj nedvességtartalma (34)</br>
+  5       |Környezeti | Összeállítás (38) </br> Home energiahatékonyság (36) </br> Tüzelőanyag-takarékosság (37)
+  6       |Szabadban élő | Kültéri barbecue (24) </br> Szúnyog tevékenység (17)
+  7       |Strand és tengeri | Strand & készlet (10) </br> Horgászat (13) </br> Vitorlázás (11)
+  8       |Sportoló | Horgászat (13) </br> Vadászat (20) </br> Kültéri tevékenység (29)</br>
+  9       |Mezőgazdasági |  Mező készültsége (32) </br>  Talaj nedvességtartalma (34)
+  10      |Egészségügy | Ízületi fájdalom (21) </br> Asztma (23) </br> Gyakori megfázás (25) </br> Por & harag (18) </br> Influenza (26) </br> Kifogástalan Heart fitness (16) </br> Migrénes fejfájás (27)
+  11      |Szabadtéri | Kültéri barbecue (24) </br> Strand & készlet (10) </br> Biciklis (4) </br> Kültéri koncert (8) </br>  Mező készültsége (32) </br> Horgászat (13) </br> Golf időjárása (5) </br> Túrázás (3) </br> Vadászat (20) </br> Kocogás (2) </br> Kite-repülő (9) </br> Szúnyog tevékenység (17)</br> Gyepes kaszálás (28) </br> Kültéri tevékenység (29) </br> Fut (1) </br> Vitorlázás (11) </br> Gördeszka (7) </br> Sí Időjárás (15) </br>  Talaj nedvességtartalma (34)</br> Stargazing (12) </br> Tenisz (6)
+  12      |Sport | Biciklis (4) </br> Golf időjárása (5) </br> Túrázás (3) </br>  Kocogás (2) </br> Fut (1) </br> Gördeszka (7) </br> Sí Időjárás (15) </br>Tenisz (6)
+  13      |Kezdőlap | Home energiahatékonyság (36) </br> Tüzelőanyag-takarékosság (37) </br> Beltéri tevékenység (-2)
+
+## <a name="daily-index-range-sets"></a>Napi indexelési tartomány készletei
+
+A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a tartományhoz tartozó értéket és a hozzá tartozó kategórianév nevét adja vissza az egyes index-azonosítók esetében. A tartomány-készletek nem egyeznek az összes indexnél. Az alábbi táblázat az [index-azonosítók és az index-csoportok azonosítói](#index-ids-and-index-groups-ids)között felsorolt támogatott indexek által használt különböző tartomány-készleteket mutatja. A jelen dokumentum [index-azonosítók és tárgymutató-csoportok azonosítók](#index-ids-and-index-groups-ids) szakaszában találhatja meg, hogy mely indexek milyen tartományokat használnak.
+
+### <a name="poor-excellent-1"></a>Gyenge – kiváló 1
+
+  | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Rossz              |  0 |                2,99
+  Elfogadható              |  3  |               4,99
+  Jó              |  5  |              6,99
+  nagyon jó         |  7  |               8,99
+  Kiváló         |  9  |               10
+
+### <a name="poor-excellent-2"></a>Gyenge – kiváló 2
+
+ | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Rossz           |0              |  3
+  Elfogadható           |3,01           |  6
+  Jó           |6,01           |  7,5
+  nagyon jó      |7,51           |  8,99
+  Kiváló      |9              |  10
+
+### <a name="excellent-poor"></a>Kiváló – gyenge
+
+ | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Kiváló      |     0,00        |    1,00
+  nagyon jó        |   1.01          |  3.00
+  Jó             |   3,01          |  5,00
+  Elfogadható             |   5,01          |  7,00
+  Rossz             |   7,01          |  10,00
+
+### <a name="low-extreme-1"></a>Alacsony Extreme 1
+
+   | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Alacsony                |  0         |        1,99
+  Mérsékelt           |  2         |        3,99
+  Magas               |  4         |        5,99
+  Nagyon magas          |  6         |        7,99
+  Extrém            |  8         |        10
+
+### <a name="low-extreme-2"></a>Alacsony Extreme 2
+
+   | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Alacsony                |  0            |      2,99
+  Mérsékelt           |  3            |      4,99
+  Magas               |  5            |      6,99
+  Nagyon magas          |  7            |      8,99
+  Extrém            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>Nagyon valószínűtlen – nagyon valószínű
+
+ | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Nagyon valószínűtlen      | 0     |           1,99
+  Nem valószínű           | 2     |           3,99
+  Esetleg           | 4     |           5,99
+  Valószínűleg             | 6     |           7,99
+  Nagyon valószínű        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>Nagyon valószínűtlen – nagyon valószínű, 2
+
+ | Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Nagyon valószínűtlen      |  0,00     |         1,00
+  Nem valószínű           |  1.01     |         3.00
+  Esetleg           |  3,01     |         5,00
+  Valószínűleg             |  5,01     |         7,00
+  Nagyon valószínű        |  7,01     |         10,00
+
+### <a name="unlikely-emergency"></a>Nem valószínű – vészhelyzet
+
+| Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Nem valószínű         |  0     |          2,99
+  Megtekintés            |  3     |          4,99
+  Tanácsadás         |  5     |          6,99
+  Figyelmeztetés          |  7     |          8,99
+  Sürgősségi        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>Hasznos – szélsőséges kockázat
+
+| Kategórianév | Kezdési tartomány | Záró tartomány |
+  ----------------|--------------|------------
+  Előnyös        |    0        |        1,99
+  Semleges           |    2        |        3,99
+  Veszélyeztetett           |    4        |        5,99
+  Magas kockázatú      |    6        |        7,99
+  Szélsőséges kockázati   |    8        |        10

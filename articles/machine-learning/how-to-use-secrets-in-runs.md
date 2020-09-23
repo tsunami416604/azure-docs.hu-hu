@@ -11,21 +11,21 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c7568b0914b5e60d1a47971424f1f04f41745da
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e984c0c43dcc47c3e11a36f3d5c32bf2ddb9973a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646961"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902331"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Hitelesítő adatokkal kapcsolatos titkos kódok használata Azure Machine Learning betanítási futtatásokban
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebből a cikkből megtudhatja, hogyan használhatók biztonságosan a Titkok a betanításban. A hitelesítési adatok, például a Felhasználónév és a jelszó titkos kódok. Ha például egy külső adatbázishoz csatlakozik a betanítási adatai lekérdezéséhez, a felhasználónevet és a jelszót át kell adnia a távoli futtatási környezetnek. Ha ezeket az értékeket a titkosítatlan szövegben lévő betanítási parancsfájlokba szeretné írni, nem biztonságos, mert a titkos kulcsot kiteszi. 
 
 Ehelyett a Azure Machine Learning munkaterület egy [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)nevű társított erőforrással rendelkezik. Ennek a Key Vaultnak a használatával biztonságosan továbbíthatja a titkos kulcsokat a távoli futtatáshoz a Azure Machine Learning Python SDK API-jai segítségével.
 
-A titkok használatának alapszintű folyamata a következő:
+A titkok használatára szolgáló standard folyamat a következő:
  1. A helyi számítógépen jelentkezzen be az Azure-ba, és kapcsolódjon a munkaterületéhez.
  2. Helyi számítógépen állítson be egy titkos kulcsot a munkaterületen Key Vault.
  3. Távoli Futtatás küldése.

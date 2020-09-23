@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017999"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979845"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználó kiépítési felállításához 
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 
@@ -234,7 +234,7 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
    
 1. Ellenőrizze az ügynök telepítését, és ellenőrizze, hogy fut-e. Ehhez nyissa meg a "szolgáltatások" beépülő modult, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
   
-   ![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről](./media/workday-inbound-tutorial/services.png)
+   ![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről.](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>3. rész: a kiépítési alkalmazásban konfigurálja a SuccessFactors-hez és a Active Directoryhoz való kapcsolódást.
 Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directoryekkel a Azure Portal. 
@@ -357,7 +357,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 * [További információ a bejövő kiépítés támogatott SuccessFactors attribútumairól](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [Ismerje meg, hogyan konfigurálhatja az e-mailek visszaírási a SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a SuccessFactors és a Azure Active Directory között](successfactors-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)

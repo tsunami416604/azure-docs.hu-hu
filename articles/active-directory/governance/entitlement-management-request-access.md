@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798494"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979908"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében
 
@@ -80,6 +80,12 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 Ha olyan hozzáférési csomaghoz kér hozzáférést, amelyhez több szabályzat is tartozik, akkor előfordulhat, hogy ki kell választania egy szabályzatot. A hozzáférési csomag kezelője például két, belső alkalmazottak két csoportjára vonatkozó házirendet konfigurálhat. Az első szabályzat 60 napig is engedélyezheti a hozzáférést, és jóváhagyást igényelhet. A második szabályzat 2 napig is engedélyezheti a hozzáférést, és nem igényel jóváhagyást. Ha ebben a forgatókönyvben találkozik, ki kell választania a használni kívánt szabályzatot.
 
 ![Hozzáférési portál – hozzáférés kérése – több szabályzat](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+### <a name="fill-out-requestor-information"></a>A kérelmező adatainak kitöltése
+
+Hozzáférést kérhet egy olyan hozzáférési csomaghoz, amely üzleti indoklást és további kérelmezői adatokat igényel, mielőtt hozzáférést adna a hozzáférési csomaghoz. Töltse ki a hozzáférési csomag eléréséhez szükséges összes kérő információt.
+
+![Saját hozzáférési portál – hozzáférés kérése – a kérelmező adatainak kitöltése](./media/entitlement-management-request-access/my-access-requestor-information.png)
 
 ## <a name="resubmit-a-request"></a>Kérelem újraküldése
 

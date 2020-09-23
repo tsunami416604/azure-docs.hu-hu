@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980683"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>A Threat Modeling Tool funkcióinak áttekintése
 
@@ -54,7 +54,7 @@ A szimbólumok a legfelső szintű menük parancsikonjai:
 | --------------------------------------- | ------------ |
 | **Megnyitás** | Új fájl megnyitása. |
 | **Mentés** | Az aktuális fájl mentése. |
-| **Tervezés** | Megnyitja a **tervezési** nézetet, ahol létrehozhat modelleket. |
+| **Kialakítás** | Megnyitja a **tervezési** nézetet, ahol létrehozhat modelleket. |
 | **Elemzés** | Megjeleníti a generált fenyegetéseket és azok tulajdonságait. |
 | **Diagram hozzáadása** | Új diagramot szúr be (az Excel új lapjaihoz hasonlóan). |
 | **Diagram törlése** | Törli az aktuális diagramot. |
@@ -122,7 +122,7 @@ Két lehetőség megjelenítéséhez vigye a kurzort a **nyílt modell** fölé,
 
 Ha a **visszajelzések, javaslatok és problémák**lehetőségre kattint, az MSDN-fórumba LÉPHET az SDL-eszközökhöz. Elolvashatja, hogy mások mit mondanak az eszközről, beleértve a megkerülő megoldásokat és az új ötleteket is.
 
-![Visszajelzés](./media/threat-modeling-tool-feature-overview/feedback.png)
+![A képernyőképen egy, a szöveges visszajelzéseket, a javaslatokat és a problémákat tartalmazó gomb látható.](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Tervező nézet
 
@@ -158,7 +158,7 @@ Az elemek kétféleképpen is csatlakoztathatók:
 
 Ha létrehoz egy fenyegetési modellt, és elfelejti az adatfolyamatok elemekhez való összekapcsolását, értesítést kap. Figyelmen kívül hagyhatja az üzenetet, vagy a probléma megoldásához kövesse az utasításokat. 
 
-![Üzenetek](./media/threat-modeling-tool-feature-overview/messages.png)
+![Képernyőfelvétel: a veszélyforrások modellje összekötő, amely nem kapcsolódik az elemekhez, a probléma okozta üzenettel.](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Jegyzetek
 
@@ -174,11 +174,11 @@ A diagram összeállítását követően válassza ki az **elemzési** szimbólu
 
 Amikor kijelöl egy fenyegetést, három különböző függvényt használhat:
 
-| Funkció                               | Információ      |
+| Funkció                               | Tájékoztatás      |
 | --------------------------------------- | ------------ |
 | **Olvasási kijelző** | <p>A fenyegetés olvasottként van megjelölve, így nyomon követheti az áttekintett elemeket.</p><p>![Olvasási/olvasatlan kijelző](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interakciós fókusz** | <p>A fenyegetéshez tartozó diagramon lévő interakció ki van emelve.</p><p>![Interakciós fókusz](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Fenyegetés tulajdonságai** | <p>A fenyegetéssel kapcsolatos további információk a **fenyegetés tulajdonságai** ablakban láthatók.</p><p>![Fenyegetés tulajdonságai](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Fenyegetéstulajdonságok** | <p>A fenyegetéssel kapcsolatos további információk a **fenyegetés tulajdonságai** ablakban láthatók.</p><p>![Fenyegetéstulajdonságok](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Prioritás módosítása
 
@@ -190,15 +190,15 @@ Megváltoztathatja az egyes generált fenyegetések prioritási szintjét. A kü
 
 Ahogy az előző képen is látható, módosíthatja az eszköz által létrehozott adatokat. Bizonyos mezőkhöz, például az indokláshoz is hozzáadhat adatokat. Ezeket a mezőket a sablon hozza létre. Ha további információra van szüksége az egyes fenyegetésekről, módosításokat végezhet.
 
-![Fenyegetés tulajdonságai](./media/threat-modeling-tool-feature-overview/threatproperties.png)
+![Fenyegetéstulajdonságok](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>Jelentések
 
 Miután befejezte a prioritások módosítását és az egyes generált fenyegetések állapotának frissítését, mentheti a fájlt, és/vagy kinyomtathatja a jelentést. Nyissa meg a **jelentés**  >  **létrehozása teljes jelentést**. Nevezze el a jelentést, és az alábbi képhez hasonlóan kell megjelennie:
 
-![Jelentés](./media/threat-modeling-tool-feature-overview/report.png)
+![Képernyőfelvétel: példa a veszélyforrások modellezésére szolgáló jelentésre, beleértve az összegzést, a diagramokat és az egyéb információkat.](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Küldje el kérdéseit, megjegyzéseit és problémáit tmtextsupport@microsoft.com . A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.
 - A sablon a Közösséghez való hozzájárulásához lépjen a [GitHub](https://github.com/Microsoft/threat-modeling-templates) oldalra.

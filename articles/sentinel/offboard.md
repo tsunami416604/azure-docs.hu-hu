@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662013"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885841"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Az Azure Sentinel eltávolítása a munkaterületről
 
@@ -48,13 +48,13 @@ A leválasztást követően a offboarding folyamat megkezdődik.
 
 -   AWS
 
--   Microsoft-szolgáltatások biztonsági riasztásai: Microsoft Defender for Identity (*korábbi nevén Azure ATP*), Microsoft Cloud App Security beleértve Cloud Discovery Shadow it Reporting, Azure ad Identity Protection, Microsoft Defender for Endpoint (*korábban Microsoft Defender ATP*), Azure Defender (*korábban Azure Security Center*)
+-   Microsoft-szolgáltatások biztonsági riasztásai: Microsoft Defender for Identity (*korábbi nevén Azure ATP*), Microsoft Cloud App Security beleértve Cloud Discovery Shadow it Reporting, Azure ad Identity Protection, Microsoft Defender for Endpoint (*korábban Microsoft Defender ATP*), Azure Defender-riasztások a Azure Security Center
 
 -   Fenyegetések felderítése
 
--   Gyakori biztonsági naplók (beleértve a CEF-alapú naplókat, a Barracuda-t és a syslog-t) (ha rendelkezik Azure Defender-rel, a rendszer a naplókat továbbra is gyűjti.)
+-   Gyakori biztonsági naplók (beleértve a CEF-alapú naplókat, a Barracuda-t és a syslog-t) (ha Azure Security Centerről kap Azure Defender-riasztásokat, a rendszer ezeket a naplókat továbbra is gyűjti.)
 
--   Windows biztonsági események (ha rendelkezik az Azure Defender szolgáltatással, a rendszer a naplókat továbbra is gyűjti.)
+-   Windows biztonsági események (ha Azure Security Centerről kap Azure Defender-riasztásokat, a rendszer ezeket a naplókat továbbra is gyűjti.)
 
 Az első 48 órán belül az adatkezelési és elemzési szabályok (beleértve a valós idejű Automation-konfigurációt) többé nem lesznek elérhetők vagy lekérdezhető az Azure Sentinelben.
 

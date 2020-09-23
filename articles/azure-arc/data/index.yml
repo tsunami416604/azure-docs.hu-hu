@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Arc-kompatibilis adatszolgáltatások
+summary: A Kubernetes használatával a helyszínen, a peremhálózaton és többfelhős környezetekben is futtathatja az Azure-beli adatszolgáltatásokat a választott infrastruktúrán.
+metadata:
+  title: Azure Arc-kompatibilis adatszolgáltatások (előzetes verzió)
+  description: A Kubernetes használatával a helyszínen, a peremhálózaton és többfelhős környezetekben is futtathatja az Azure-beli adatszolgáltatásokat a választott infrastruktúrán.
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928788"
+landingContent:
+- title: Névjegy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik azok az Azure Arc-kompatibilis adatszolgáltatások?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Csatlakozási módok és követelmények
+      url: connectivity.md
+    - text: Tároló konfigurálása
+      url: storage-configuration.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Adatkezelő létrehozása
+      url: create-data-controller.md
+    - text: Ügyféleszközök telepítése
+      url: install-client-tools.md
+- title: Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL (előzetes verzió)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Létrehozás
+      url: create-postgresql-hyperscale-server-group.md
+    - text: Kapcsolódás
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Migrate
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: Visszaállítás
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: Azure Arc-kompatibilis, felügyelt SQL-példány (előzetes verzió)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Létrehozás
+      url: create-sql-managed-instance.md
+    - text: Kapcsolódás
+      url: connect-managed-instance.md
+    - text: Migrate
+      url: migrate-to-managed-instance.md
+    - text: Visszaállítás
+      url: restore-adventureworks-sample-db.md
