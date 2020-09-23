@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 - devx-track-javascript
-ms.openlocfilehash: c7717416e58e772bee4ec8bf655d1341187a96e6
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7eba6adffcdd3dab3263e82faf51ac90bae79b89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019393"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968169"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással (Node.js)
 
@@ -338,12 +338,12 @@ Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node.js használatával, néhány javasolt következő lépés:
-
-* Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.
-* Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
-
 Ha továbbra is szeretne IoT Central oktatóanyagokat használni, és többet szeretne megtudni egy IoT Central megoldás létrehozásáról, tekintse meg a következő témakört:
 
 > [!div class="nextstepaction"]
 > [Átjáró-eszközsablon létrehozása](./tutorial-define-gateway-device-type.md)
+
+Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node.js használatával, néhány javasolt következő lépés:
+
+* Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.
+* Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.

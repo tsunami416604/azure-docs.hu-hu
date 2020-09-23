@@ -4,21 +4,21 @@ description: Megtudhatja, hogyan hozhat létre titkosítási hatókört a blob-a
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870255"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972194"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)
 
-A titkosítási hatókörök (előzetes verzió) lehetővé teszik a titkosítás kezelését egy adott blob vagy tároló szintjén. A titkosítási hatókör elkülöníti a blobadatokat egy biztonságos enklávéban a tárfiókon belül. A titkosítási hatókörök használatával biztonságos határokat hozhat létre az azonos Storage-fiókban található, de különböző ügyfelekhez tartozó adategységek között. A titkosítási hatókörökkel kapcsolatos további információkért lásd: [titkosítási hatókörök a blob Storage-hoz (előzetes verzió)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
+A titkosítási hatókörök (előzetes verzió) lehetővé teszik a titkosítás kezelését egy adott blob vagy tároló szintjén. A titkosítási hatókör elkülöníti a blobadatokat egy biztonságos enklávéban a tárfiókon belül. A titkosítási hatókörök használatával biztonságos határokat hozhat létre az azonos Storage-fiókban található, de különböző ügyfelekhez tartozó adategységek között. A titkosítási hatókörökkel kapcsolatos további információkért lásd: [titkosítási hatókörök a blob Storage-hoz (előzetes verzió)](encryption-scope-overview.md).
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre titkosítási hatókört. Azt is bemutatja, hogyan adhat meg titkosítási hatókört Blobok vagy tárolók létrehozásakor.
 
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre titkosítási hatókört. Az
 
 ## <a name="create-an-encryption-scope"></a>Titkosítási hatókör létrehozása
 
-A Microsoft által felügyelt kulccsal vagy Azure Key Vaultban tárolt, ügyfél által felügyelt kulccsal hozhat létre titkosítási hatóköröket. Ha ügyfél által felügyelt kulccsal szeretne titkosítási hatókört létrehozni, először létre kell hoznia egy Azure Key vaultot, és hozzá kell adnia a hatókörhöz használni kívánt kulcsot. A Key vaultban engedélyezni kell a **Soft delete** és a **Purge Protection** tulajdonságot is, és a Storage-fióknak ugyanabban a régióban kell lennie. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+Létrehozhat egy Microsoft által felügyelt kulccsal rendelkező titkosítási hatókört vagy egy Azure Key Vault vagy Azure Key Vault felügyelt hardveres biztonsági modellben (HSM) (előzetes verzió) tárolt ügyfél által felügyelt kulccsal. Ha ügyfél által felügyelt kulccsal szeretne titkosítási hatókört létrehozni, először létre kell hoznia egy Key vaultot vagy egy felügyelt HSM-t, és hozzá kell adnia a hatókörhöz használni kívánt kulcsot. A Key vaultnak vagy a felügyelt HSM-nek engedélyezve kell lennie a kiürítési védelemmel, és a Storage-fiókkal azonos régióban kell lennie.
 
 A létrehozáskor a titkosítási hatókör automatikusan engedélyezve lesz. A titkosítási hatókör létrehozása után megadhatja azt a blob létrehozásakor. A tároló létrehozásakor megadhat egy alapértelmezett titkosítási hatókört is, amely automatikusan a tárolóban lévő összes blobra vonatkozik.
 
@@ -41,11 +41,9 @@ Ha titkosítási hatókört szeretne létrehozni a Azure Portalban, kövesse az 
 1. A **titkosítási hatókör** létrehozása panelen adja meg az új hatókör nevét.
 1. Válassza ki a titkosítás típusát, vagy a **Microsoft által felügyelt kulcsokat** vagy az **ügyfél által felügyelt kulcsokat**.
     - Ha a **Microsoft által felügyelt kulcsokat**választotta, kattintson a **Létrehozás** gombra a titkosítási hatókör létrehozásához.
-    - Ha az **ügyfél által felügyelt kulcsokat**választotta, akkor a titkosítási hatókörhöz használandó kulcstartót, kulcsot és verziószámot kell megadnia, ahogy az az alábbi képen is látható.
+    - Ha az **ügyfél által felügyelt kulcsokat**választotta, akkor a titkosítási hatókörhöz használandó Key vaultot vagy felügyelt HSM, kulcs és kulcs verziót kell megadnia, ahogy az az alábbi képen is látható.
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Képernyőfelvétel: titkosítási hatókör létrehozása a Azure Portalban":::
-
-Az ügyfél által felügyelt kulcsok Azure Storage-titkosításhoz Azure Key Vault való konfigurálásával kapcsolatos további információkért lásd: [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault a Azure Portal használatával](../common/storage-encryption-keys-portal.md).
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -76,9 +74,9 @@ New-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok által védett titkosítási hatókör létrehozása
 
-Ha az ügyfél által felügyelt kulcsok által védett új titkosítási hatókört szeretne létrehozni Azure Key Vault, először konfigurálja az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Felügyelt identitást kell rendelnie a Storage-fiókhoz, majd a felügyelt identitás használatával kell konfigurálnia a kulcstartó hozzáférési házirendjét, hogy a Storage-fiók jogosult legyen az elérésére. További információ: ügyfél által [felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával](../common/storage-encryption-keys-powershell.md).
+A Key vaultban vagy a Managed HSM-ben tárolt, ügyfél által felügyelt kulcsok által védett új titkosítási hatókör létrehozásához először konfigurálja az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Felügyelt identitást kell rendelnie a Storage-fiókhoz, majd a felügyelt identitás használatával konfigurálnia kell a Key Vault vagy a felügyelt HSM hozzáférési házirendjét, hogy a Storage-fiók jogosult legyen az elérésére.
 
-Az ügyfél által felügyelt kulcsok titkosítási hatókörrel való használatához a Key vaulton engedélyezni kell a **Soft delete** és a **Purge Protection** tulajdonságokat is. A Key vaultnak ugyanabban a régióban kell lennie, mint a Storage-fióknak. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+Az ügyfél által felügyelt kulcsok titkosítási hatókörrel való használatához engedélyezni kell a kiürítési védelmet a Key vaulton vagy a felügyelt HSM-ben. A Key vaultnak vagy a Managed HSM-nek ugyanabban a régióban kell lennie, mint a Storage-fióknak.
 
 Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire:
 
@@ -132,9 +130,9 @@ az storage account encryption-scope create \
 
 A Microsoft által felügyelt kulcsok által védett új titkosítási hatókör létrehozásához hívja meg az az [Storage Account encryption-scope Create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) parancsot, és a paramétert a következő módon kell megadni: `--key-source` `Microsoft.Storage` . Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
 
-Ha az ügyfél által felügyelt kulcsok által védett új titkosítási hatókört szeretne létrehozni Azure Key Vault, először konfigurálja az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Felügyelt identitást kell rendelnie a Storage-fiókhoz, majd a felügyelt identitás használatával kell konfigurálnia a kulcstartó hozzáférési házirendjét, hogy a Storage-fiók jogosult legyen az elérésére. További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI használatával](../common/storage-encryption-keys-cli.md).
+Ha az ügyfél által felügyelt kulcsokkal védett új titkosítási hatókört szeretne létrehozni egy Key vaultban vagy felügyelt HSM-ben, először konfigurálja az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Felügyelt identitást kell rendelnie a Storage-fiókhoz, majd a felügyelt identitás használatával kell konfigurálnia a kulcstartó hozzáférési házirendjét, hogy a Storage-fiók jogosult legyen az elérésére. További információ: [ügyfél által felügyelt kulcsok az Azure Storage encryption szolgáltatáshoz](../common/customer-managed-keys-overview.md).
 
-Az ügyfél által felügyelt kulcsok titkosítási hatókörrel való használatához a Key vaulton engedélyezni kell a **Soft delete** és a **Purge Protection** tulajdonságokat is. A Key vaultnak ugyanabban a régióban kell lennie, mint a Storage-fióknak. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+Az ügyfél által felügyelt kulcsok titkosítási hatókörrel való használatához engedélyezni kell a kiürítési védelmet a Key vaulton vagy a felügyelt HSM-ben. A Key vaultnak vagy a Managed HSM-nek ugyanabban a régióban kell lennie, mint a Storage-fióknak.
 
 Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire:
 
@@ -173,6 +171,8 @@ az storage account encryption-scope create \
 
 ---
 
+Ha meg szeretné tudni, hogyan konfigurálhatja az Azure Storage-titkosítást az ügyfél által felügyelt kulcsokkal a kulcstartóban, tekintse meg a [titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal](../common/customer-managed-keys-configure-key-vault.md)témakört Az ügyfél által felügyelt kulcsok felügyelt HSM-ben való konfigurálásával kapcsolatban lásd: [a titkosítás konfigurálása a Azure Key Vault felügyelt HSM-ben (előzetes verzió) tárolt, ügyfél által felügyelt kulcsokkal](../common/customer-managed-keys-configure-key-vault-hsm.md).
+
 ## <a name="list-encryption-scopes-for-storage-account"></a>A Storage-fiók titkosítási hatókörének listázása
 
 # <a name="portal"></a>[Portál](#tab/portal)
@@ -183,14 +183,14 @@ A Azure Portal lévő Storage-fiókok titkosítási hatókörének megtekintés�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A PowerShell-lel rendelkező Storage-fiókok számára elérhető titkosítási hatókörök listázásához hívja meg a Get-AzStorageEncryptionScope parancsot. Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire:
+A PowerShell-lel rendelkező Storage-fiókok számára elérhető titkosítási hatókörök listázásához hívja meg a **Get-AzStorageEncryptionScope** parancsot. Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire:
 
 ```powershell
 Get-AzStorageEncryptionScope -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
-Egy erőforráscsoport összes titkosítási hatókörének a Storage-fiók alapján való listázásához használja a folyamat szintaxisát az alábbiak szerint:
+Egy erőforráscsoport összes titkosítási hatókörének a Storage-fiók alapján való listázásához használja a folyamat szintaxisát:
 
 ```powershell
 Get-AzStorageAccount -ResourceGroupName $rgName | Get-AzStorageEncryptionScope
@@ -210,6 +210,10 @@ az storage account encryption-scope list \
 
 ## <a name="create-a-container-with-a-default-encryption-scope"></a>Alapértelmezett titkosítási hatókörrel rendelkező tároló létrehozása
 
+Tároló létrehozásakor megadhat egy alapértelmezett titkosítási hatókört. A tárolóban lévő Blobok alapértelmezés szerint a hatókört fogják használni.
+
+Egyéni blob hozható létre a saját titkosítási hatókörével, kivéve, ha a tároló úgy van konfigurálva, hogy az összes blob használja az alapértelmezett hatókörét.
+
 # <a name="portal"></a>[Portál](#tab/portal)
 
 Ha a Azure Portal egy alapértelmezett titkosítási hatókörrel rendelkező tárolót szeretne létrehozni, először hozza létre a titkosítási hatókört a [titkosítási hatókör létrehozása](#create-an-encryption-scope)című témakörben leírtak szerint. Ezután kövesse az alábbi lépéseket a tároló létrehozásához:
@@ -225,7 +229,7 @@ Ha a Azure Portal egy alapértelmezett titkosítási hatókörrel rendelkező t�
 
 Ha egy alapértelmezett titkosítási hatókörrel rendelkező tárolót szeretne létrehozni a PowerShell-lel, hívja meg a [New-AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) parancsot a paraméter hatókörének megadásával `-DefaultEncryptionScope` . A **New-AzRmStorageContainer** parancs egy tárolót hoz létre az Azure Storage erőforrás-szolgáltató használatával, amely lehetővé teszi a titkosítási hatókörök és egyéb erőforrás-kezelési műveletek konfigurálását.
 
-Egyéni blob hozható létre a saját titkosítási hatókörével, kivéve, ha a tároló úgy van konfigurálva, hogy az összes blob használja az alapértelmezett hatókörét. Ha egy tárolóban lévő összes blobot szeretné kényszeríteni a tároló alapértelmezett hatókörének használatára, állítsa a paramétert a következőre: `-PreventEncryptionScopeOverride` `true` .
+Ha egy tárolóban lévő összes blobot szeretné kényszeríteni a tároló alapértelmezett hatókörének használatára, állítsa a paramétert a következőre: `-PreventEncryptionScopeOverride` `true` .
 
 ```powershell
 $containerName1 = "container1"
@@ -241,7 +245,7 @@ New-AzRmStorageContainer -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Ha egy alapértelmezett titkosítási hatókörrel rendelkező tárolót szeretne létrehozni az Azure CLI-vel, hívja meg az az [Storage Container Create](/cli/azure/storage/container#az-storage-container-create) parancsot, és határozza meg a paraméter hatókörét `--default-encryption-scope` . Egyéni blob hozható létre a saját titkosítási hatókörével, kivéve, ha a tároló úgy van konfigurálva, hogy az összes blob használja az alapértelmezett hatókörét. Ha egy tárolóban lévő összes blobot szeretné kényszeríteni a tároló alapértelmezett hatókörének használatára, állítsa a paramétert a következőre: `--prevent-encryption-scope-override` `true` .
+Ha egy alapértelmezett titkosítási hatókörrel rendelkező tárolót szeretne létrehozni az Azure CLI-vel, hívja meg az az [Storage Container Create](/cli/azure/storage/container#az-storage-container-create) parancsot, és határozza meg a paraméter hatókörét `--default-encryption-scope` . Ha egy tárolóban lévő összes blobot szeretné kényszeríteni a tároló alapértelmezett hatókörének használatára, állítsa a paramétert a következőre: `--prevent-encryption-scope-override` `true` .
 
 A következő példa az Azure AD-fiókját használja, hogy engedélyezze a műveletet a tároló létrehozásához. Használhatja a fiók elérési kulcsát is. További információ: a [blob-vagy üzenetsor-adatokhoz való hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md).
 
@@ -261,7 +265,7 @@ Ha az ügyfél a Blobok alapértelmezett titkosítási hatókörű tárolóba va
 
 ## <a name="upload-a-blob-with-an-encryption-scope"></a>BLOB feltöltése titkosítási hatókörrel
 
-BLOB feltöltésekor megadhatja a blob titkosítási hatókörét, vagy használhatja a tároló alapértelmezett titkosítási hatókörét, ha van ilyen. 
+BLOB feltöltésekor megadhatja a blob titkosítási hatókörét, vagy használhatja a tároló alapértelmezett titkosítási hatókörét, ha van ilyen.
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
@@ -309,6 +313,8 @@ az storage blob upload \
 
 ## <a name="change-the-encryption-key-for-a-scope"></a>Hatókör titkosítási kulcsának módosítása
 
+Ha a Microsoft által felügyelt kulcstól egy ügyfél által felügyelt kulcsra vonatkozó titkosítási hatókört védő kulcsot szeretne módosítani, először győződjön meg arról, hogy engedélyezte az ügyfél által felügyelt kulcsokat Azure Key Vault vagy Key Vault HSM-sel a Storage-fiókhoz. További információ: [a titkosítás konfigurálása az Azure Key Vault tárolt, ügyfél által felügyelt kulcsokkal](../common/customer-managed-keys-configure-key-vault.md) vagy a [titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal](../common/customer-managed-keys-configure-key-vault.md).
+
 # <a name="portal"></a>[Portál](#tab/portal)
 
 A Azure Portal hatókörét védő kulcs módosításához kövesse az alábbi lépéseket:
@@ -329,7 +335,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
     -StorageEncryption
 ```
 
-Ha módosítani szeretné a titkosítási hatókört egy Microsoft által kezelt kulcsból egy ügyfél által felügyelt kulcsra védő kulcsot, először győződjön meg arról, hogy engedélyezte az ügyfél által felügyelt kulcsokat a Storage-fiókhoz Azure Key Vault. További információ: ügyfél által [felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával](../common/storage-encryption-keys-powershell.md). Ezután hívja meg az **Update-AzStorageEncryptionScope** parancsot, és adja meg a `-KeyUri` és a `-KeyvaultEncryption` paramétereket:
+Ezután hívja meg az **Update-AzStorageEncryptionScope** parancsot, és adja meg a `-KeyUri` és a `-KeyvaultEncryption` paramétereket:
 
 ```powershell
 Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
@@ -351,7 +357,7 @@ az storage account encryption-scope update \
     --key-source Microsoft.Storage
 ```
 
-Ha módosítani szeretné a titkosítási hatókört egy Microsoft által kezelt kulcsból egy ügyfél által felügyelt kulcsra védő kulcsot, először győződjön meg arról, hogy engedélyezte az ügyfél által felügyelt kulcsokat a Storage-fiókhoz Azure Key Vault. További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI használatával](../common/storage-encryption-keys-cli.md). Ezután hívja meg az az **Storage Account encryption-scope Update** parancsot, adja át a `--key-uri` paramétert, és adja át a `--key-source` paramétert a következő értékkel `Microsoft.KeyVault` :
+Ezután hívja meg az az **Storage Account encryption-scope Update** parancsot, adja át a `--key-uri` paramétert, és adja át a `--key-source` paramétert a következő értékkel `Microsoft.KeyVault` :
 
 ```powershell
 az storage account encryption-scope update \
@@ -365,6 +371,8 @@ az storage account encryption-scope update \
 ---
 
 ## <a name="disable-an-encryption-scope"></a>Titkosítási hatókör letiltása
+
+Ha a titkosítási hatókör le van tiltva, már nem számítunk fel díjat. Tiltsa le azokat a titkosítási hatóköröket, amelyek nem szükségesek a szükségtelen költségek elkerülése érdekében. További információ: az [Azure Storage titkosítása inaktív adatokhoz](../common/storage-service-encryption.md).
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
@@ -398,4 +406,5 @@ az storage account encryption-scope update \
 ## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)
-- [Ügyfél által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md)
+- [BLOB Storage titkosítási hatókörök (előzetes verzió)](encryption-scope-overview.md)
+- [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](../common/customer-managed-keys-overview.md)

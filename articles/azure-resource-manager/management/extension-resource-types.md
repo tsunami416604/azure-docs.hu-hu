@@ -2,13 +2,13 @@
 title: Bővítményerőforrás-típusok
 description: Felsorolja az Azure-erőforrástípusok használatát a más erőforrástípusok képességeinek bővítésére.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 09/22/2020
+ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374014"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969746"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Más erőforrások képességeit kiterjesztő erőforrástípusok
 
@@ -21,6 +21,8 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. Advisor/tiltások
 - Microsoft. AlertsManagement/riasztások
 - Microsoft. AlertsManagement/alertsSummary
+- Microsoft. Authorization/accessReviewScheduleDefinitions
+- Microsoft. Authorization/accessReviewScheduleSettings
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/denyAssignments
 - Microsoft. Authorization/findOrphanRoleAssignments
@@ -34,6 +36,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. Authorization/roleAssignments
 - Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
+- Microsoft. automanage/configurationProfileAssignments
 - Microsoft. Billing/billingPeriods
 - Microsoft. Billing/billingPermissions
 - Microsoft. Billing/billingRoleAssignments
@@ -47,24 +50,24 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. fogyasztás/költségvetés
 - Microsoft. fogyasztás/díjak
 - Microsoft. fogyasztás/CostTags
+- Microsoft. felhasználás/kreditek
+- Microsoft. felhasználás/események
 - Microsoft. felhasználás/előrejelzések
+- Microsoft. fogyasztás/tételek
 - Microsoft. fogyasztás/piactér
 - Microsoft. fogyasztás/OperationResults
 - Microsoft. fogyasztás/OperationStatus
 - Microsoft. fogyasztás/Pricesheets
+- Microsoft. fogyasztás/termékek
 - Microsoft. fogyasztás/ReservationDetails
 - Microsoft. fogyasztás/ReservationRecommendationDetails
 - Microsoft. fogyasztás/ReservationRecommendations
 - Microsoft. fogyasztás/ReservationSummaries
 - Microsoft. fogyasztás/ReservationTransactions
 - Microsoft. felhasználás/Címkék
+- Microsoft. fogyasztás/bérlők
 - Microsoft. felhasználás/feltételek
 - Microsoft. fogyasztás/UsageDetails
-- Microsoft. felhasználás/kreditek
-- Microsoft. felhasználás/események
-- Microsoft. fogyasztás/tételek
-- Microsoft. fogyasztás/termékek
-- Microsoft. fogyasztás/bérlők
 - Microsoft. ContainerInstance/serviceAssociationLinks
 - Microsoft. CostManagement/riasztások
 - Microsoft. CostManagement/költségvetés
@@ -73,6 +76,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. CostManagement/export
 - Microsoft. CostManagement/ExternalSubscriptions
 - Microsoft. CostManagement/előrejelzés
+- Microsoft. CostManagement/bepillantások
 - Microsoft. CostManagement/Query
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/jelentések
@@ -93,17 +97,19 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. bepillantások/diagnosticSettingsCategories
 - Microsoft. bepillantások/eventtypes
 - Microsoft. bepillantások/extendedDiagnosticSettings
+- Microsoft. bepillantások/generateLiveToken
 - Microsoft. bepillantások/guestDiagnosticSettingsAssociation
 - Microsoft. bepillantások/logDefinitions
 - Microsoft. elemzések/naplók
+- Microsoft. bepillantások/metricbaselines
 - Microsoft. bepillantások/metricDefinitions
 - Microsoft. bepillantások/metricNamespaces
-- Microsoft. bepillantások/metricbaselines
 - Microsoft. bepillantások/mérőszámok
 - Microsoft. bepillantások/myWorkbooks
 - Microsoft. bepillantások/topológia
 - Microsoft. bepillantások/tranzakciók
 - Microsoft. bepillantások/vmInsightsOnboardingStatuses
+- Microsoft. KubernetesConfiguration/bővítmények
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
 - Microsoft. Maintenance/applyUpdates
 - Microsoft. Maintenance/configurationAssignments
@@ -128,20 +134,22 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. ResourceHealth/értesítések
 - Microsoft. Resources/hivatkozások
 - Microsoft. Resources/Tags
-- Microsoft. Security/megfelelőség
-- Microsoft. Security/InformationProtectionPolicies
 - Microsoft. Security/adaptiveNetworkHardenings
 - Microsoft. Security/advancedThreatProtectionSettings
 - Microsoft. Security/assessmentMetadata
 - Microsoft. Security/értékelések
 - Microsoft. Security/complianceResults
+- Microsoft. Security/megfelelőség
 - Microsoft. Security/dataCollectionAgents
 - Microsoft. Security/deviceSecurityGroups
+- Microsoft. Security/InformationProtectionPolicies
+- Microsoft. Security/iotSensors
 - Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
+- Microsoft. Security/sqlVulnerabilityAssessments
 - Microsoft. SecurityInsights/összesítések
-- Microsoft. SecurityInsights/alertRuleTemplates
 - Microsoft. SecurityInsights/alertRules
+- Microsoft. SecurityInsights/alertRuleTemplates
 - Microsoft. SecurityInsights/automationRules
 - Microsoft. SecurityInsights/könyvjelzők
 - Microsoft. SecurityInsights/esetek
@@ -153,6 +161,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. SecurityInsights/officeConsents
 - Microsoft. SecurityInsights/beállítások
 - Microsoft. SecurityInsights/threatIntelligence
+- Microsoft. SecurityInsights/listák
 - Microsoft. SoftwarePlan/hybridUseBenefits
 - Microsoft. előfizetés/CreateSubscription
 - Microsoft. support/supporttickets
@@ -161,7 +170,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. WorkloadMonitor/figyelők
 - Microsoft. WorkloadMonitor/notificationSettings
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha egy Azure Resource Manager-sablonban szeretné lekérni a bővítmény erőforrásának erőforrás-AZONOSÍTÓját, használja a [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid).
 - A bővítmény-erőforrások sablonban való létrehozásával kapcsolatos példát a [Event Grid esemény-előfizetések](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)című témakörben talál.

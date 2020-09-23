@@ -7,15 +7,177 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8931c22c3656cf9708756153268ab1d9d87b8343
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908349"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Gyors útmutató: alkalmazások létrehozása és üzembe helyezése az Azure Spring Cloud-ban
 
+::: zone pivot="programming-language-csharp"
+Ebben a rövid útmutatóban az Azure CLI használatával hozhat létre és telepíthet Service-alkalmazásokat az Azure Spring Cloud szolgáltatásban.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* A sorozat előző rövid útmutatóinak elvégzése:
+
+  * [Azure Spring Cloud-szolgáltatás kiépítése](spring-cloud-quickstart-provision-service-instance.md).
+  * Az [Azure Spring Cloud konfigurációs kiszolgáló beállítása](spring-cloud-quickstart-setup-config-server.md).
+
+## <a name="download-the-sample-app"></a>A mintaalkalmazás letöltése
+
+Ha már használta a Azure Cloud Shellt, váltson át egy helyi parancssorba a következő lépésekhez.
+
+1. Hozzon létre egy új mappát, és a minta alkalmazás-tárház klónozásával.
+
+   ```console
+   mkdir source-code
+   ```
+
+   ```console
+   cd source-code
+   ```
+
+   ```console
+   git clone https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples
+   ```
+
+1. Navigáljon az adattár könyvtárába.
+
+   ```console
+   cd Azure-Spring-Cloud-Samples
+   ```
+
+## <a name="deploy-planetweatherprovider"></a>PlanetWeatherProvider üzembe helyezése
+
+1. Hozzon létre egy alkalmazást a PlanetWeatherProvider projekthez az Azure Spring Cloud-példányban.
+
+   ```azurecli
+   az spring-cloud app create --name planet-weather-provider --runtime-version NetCore_31
+   ```
+
+   Az automatikus szolgáltatás-regisztráció engedélyezéséhez a `spring.application.name` projekt *appsettings.js* fájljában megegyező nevet kapott az alkalmazásnak:
+
+   ```json
+   "spring": {
+     "application": {
+       "name": "planet-weather-provider"
+     }
+   }
+   ```
+
+   A parancs futtatása több percet is igénybe vehet.
+
+1. Módosítsa a könyvtárat a `PlanetWeatherProvider` projekt mappájába.
+
+   ```console
+   cd steeltoe-sample/src/planet-weather-provider
+   ```
+
+1. Hozza létre a telepítendő bináris fájlokat és a *. zip* fájlt.
+
+   ```console
+   dotnet publish -c release -o ./publish
+   ```
+
+   > [!TIP]
+   > A projektfájl a következő XML-fájlt tartalmazza, amely a. *zip* fájlban lévő bináris fájlokat csomagolja a *./publish* mappába való írás után:
+   >
+   > ```xml
+   > <Target Name="Publish-Zip" AfterTargets="Publish">
+   >   <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(MSBuildProjectDirectory)/publish-deploy-planet.zip" Overwrite="true" />
+   > </Target>
+   > ```
+
+1. Üzembe helyezés az Azure-ban.
+
+   A következő parancs futtatása előtt győződjön meg arról, hogy a parancssor a Project mappában található.
+
+   ```console
+   az spring-cloud app deploy -n planet-weather-provider --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.PlanetWeatherProvider.dll --artifact-path ./publish-deploy-planet.zip
+   ```
+
+   A `--main-entry` beállítás megadja a *. zip* fájl gyökérkönyvtárának relatív elérési útját az alkalmazás belépési pontját tartalmazó *. dll* fájlhoz. Miután a szolgáltatás feltölti a *. zip* fájlt, kibontja az összes fájlt és mappát, és megkísérli végrehajtani a belépési pontot a megadott *. dll* fájlban.
+
+   A parancs futtatása több percet is igénybe vehet.
+
+## <a name="deploy-solarsystemweather"></a>SolarSystemWeather üzembe helyezése
+
+1. Hozzon létre egy másik alkalmazást az Azure Spring Cloud-példányában, ezúttal a SolarSystemWeather projekthez:
+
+   ```azurecli
+   az spring-cloud app create --name solar-system-weather --runtime-version NetCore_31
+   ```
+
+   `solar-system-weather` a a `SolarSystemWeather` projekt *appsettings.js* fájljában megadott név.
+
+   A parancs futtatása több percet is igénybe vehet.
+
+1. Módosítsa a könyvtárat a `SolarSystemWeather` projektre.
+
+   ```console
+   cd ../solar-system-weather
+   ```
+
+1. Hozza létre a telepítendő bináris fájlokat és *. zip* fájlt.
+
+   ```console
+   dotnet publish -c release -o ./publish
+   ```
+
+1. Üzembe helyezés az Azure-ban.
+
+   ```console
+   az spring-cloud app deploy -n solar-system-weather --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.dll --artifact-path ./publish-deploy-solar.zip
+   ```
+   
+   A parancs futtatása több percet is igénybe vehet.
+
+## <a name="assign-public-endpoint"></a>Nyilvános végpont kiosztása
+
+Az alkalmazás teszteléséhez küldjön egy böngészőből egy HTTP GET-kérést az `solar-system-weather` alkalmazásnak.  Ehhez a kérelemhez nyilvános végpont szükséges.
+
+1. A végpont hozzárendeléséhez futtassa a következő parancsot.
+
+   ```azurecli
+   az spring-cloud app update -n solar-system-weather --is-public true
+   ```
+
+1. A végpont URL-címének lekéréséhez futtassa a következő parancsot.
+
+   Windows:
+
+   ```azurecli
+   az spring-cloud app show -n solar-system-weather -o table
+   ```
+
+   Linux:
+
+   ```azurecli
+   az spring-cloud app show --name solar-system-weather | grep url
+   ```
+
+## <a name="test-the-application"></a>Az alkalmazás tesztelése
+
+Küldjön egy GET kérelmet az `solar-system-weather` alkalmazásnak. Egy böngészőben nyissa meg a nyilvános URL-címet, amely a `/weatherforecast` végéhez van hozzáfűzve. Például:
+
+```
+https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
+```
+
+A kimenet JSON:
+
+```json
+[{"Key":"Mercury","Value":"very warm"},{"Key":"Venus","Value":"quite unpleasant"},{"Key":"Mars","Value":"very cool"},{"Key":"Saturn","Value":"a little bit sandy"}]
+```
+
+Ez a válasz azt mutatja, hogy mind a Service-alkalmazások működnek. Az `SolarSystemWeather` alkalmazás az alkalmazásból beolvasott adatok visszaadása `PlanetWeatherProvider` .
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Ebből a dokumentumból megtudhatja, hogyan hozhat létre és helyezhet üzembe Service-alkalmazásokat az Azure Spring Cloud használatával:
 * Azure CLI
 * Maven beépülő modul
@@ -25,10 +187,10 @@ Az Azure CLI vagy Maven használatával történő üzembe helyezés előtt vég
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+* [A JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
-* Választható [A Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és a [Bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) telepítése
+* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
+* Választható [A Azure Toolkit for IntelliJ telepítése](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és [Bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>Üzembe helyezési eljárások
 
@@ -111,7 +273,7 @@ Egy webböngészőn keresztül elérhetővé kell tennie az alkalmazást. Az át
 
 ### <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Konfigurációk készítése és üzembe helyezése az Azure Spring Cloud-ban
 
-1. Konfigurációk előállításához futtassa a következő parancsot a szülő POM-t tartalmazó PiggyMetrics gyökérkönyvtárában. Ha már bejelentkezett az Azure CLI-vel, akkor a parancs automatikusan felveszi a hitelesítő adatokat. Ellenkező esetben a rendszer útmutatást ad a bejelentkezéshez. További részletekért tekintse meg a [wiki oldalát](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
+1. Konfigurációk előállításához futtassa a következő parancsot a szülő POM-t tartalmazó PiggyMetrics gyökérkönyvtárában. Ha már bejelentkezett az Azure CLI-vel, akkor a parancs automatikusan felveszi a hitelesítő adatokat. Ellenkező esetben a rendszer útmutatást ad a bejelentkezéshez. További információ: [wiki-oldal](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
     ```
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
@@ -148,7 +310,7 @@ Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával
 
     ![Üzembe helyezés az Azure 1-ben](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. A **név** mezőben Hozzáfűzés: a meglévő **név** *átjárója* a konfigurációra hivatkozik.
+1. A **név** mezőben adja hozzá a következőt *: átjáró* a meglévő **névhez**.
 1. Az összetevő **szövegmezőben** válassza a *com. piggymetrics: Gateway: 1.0-pillanatkép*elemet.
 1. Az **előfizetés** szövegmezőben ellenőrizze az előfizetését.
 1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)című részben hozott létre.
@@ -158,7 +320,7 @@ Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával
 
     ![Üzembe helyezés az Azure-ban OK](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. A párbeszédpanel **Indítás előtt** szakaszában kattintson duplán a Maven- *cél futtatása*elemre.
+1. A párbeszédpanel **Indítás előtt** szakaszában kattintson duplán a *Maven cél futtatása*elemre.
 1. A **Working Directory** szövegmezőben navigáljon a *piggymetrics/Gateway* mappára.
 1. A **parancssori** szövegmezőbe írja be a *Package-DskipTests*értéket. Kattintson az **OK** gombra.
 1. A telepítés elindításához kattintson a **Futtatás** gombra az **Azure Spring Cloud app üzembe helyezése** párbeszédpanel alján. A beépülő modul futtatja a parancsot `mvn package` az `gateway` alkalmazáson, és telepíti a parancs által generált jar-t `package` .
@@ -174,7 +336,7 @@ A fenti lépéseket megismételve üzembe helyezheti és futtathatja `auth-servi
 1. Ismételje meg ezeket az eljárásokat a konfigurálásához és telepítéséhez `account-service` .
 ---
 
-A PiggyMetrics alkalmazás eléréséhez navigáljon az előző lépések kimenetében megadott URL-címhez. emelkedés pl `https://<service instance name>-gateway.azuremicroservices.io`
+A PiggyMetrics alkalmazás eléréséhez navigáljon az előző lépések kimenetében megadott URL-címhez. Például: `https://<service instance name>-gateway.azuremicroservices.io`
 
 ![PiggyMetrics elérése](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
@@ -189,15 +351,25 @@ Az URL-cím megkereséséhez navigáljon a Azure Portal is.
 
     ![Alkalmazás második navigálása](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portálról, vagy futtassa a következő parancsot a Cloud Shellban:
+
+Ha folytatni kívánja a sorozat következő rövid útmutatóját, ugorja át ezt a lépést.
+
+Ezekben a gyors útmutatókban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem kívánja folytatni a következő rövid útmutatót, és nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portál használatával, vagy futtassa a következő parancsot a Cloud Shellban:
+
 ```azurecli
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
-Az előző lépésekben az erőforráscsoport alapértelmezett nevét is megadhatja. Az alapértelmezett beállítás törléséhez futtassa a következő parancsot a Cloud Shellban:
+
+Egy korábbi rövid útmutatóban az erőforráscsoport alapértelmezett nevét is megadhatja. Ha nem kívánja folytatni a következő rövid útmutatót, törölje az alapértelmezett beállítást az alábbi CLI-parancs futtatásával:
+
 ```azurecli
 az configure --defaults group=
 ```
+
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Naplók, metrikák és nyomkövetés](spring-cloud-quickstart-logs-metrics-tracing.md)
+

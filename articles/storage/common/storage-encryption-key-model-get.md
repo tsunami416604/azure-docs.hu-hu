@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e08427067efa5e7bd33b8d08d84443444a190b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be7cb8e3330a9bd0391e0750f5e37ac64b0484
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078265"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971009"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>A Storage-fiókhoz használt Azure Storage titkosítási kulcs modelljének meghatározása
 
@@ -79,4 +79,4 @@ Ha a **forrás** tulajdonság értéke `Microsoft.Storage` , akkor a fiók a Mic
 ## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
-- [Ügyfél által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](encryption-customer-managed-keys.md)
+- [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)

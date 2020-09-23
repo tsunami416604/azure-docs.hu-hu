@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3915108b9bd182053b62ee427fb95b5b984233db
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: caf37fcd236f1483580d007d1432284116f728ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255392"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969048"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával
 
@@ -45,15 +45,9 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő felügyelt 
     - Virtuálisgép-méretezési csoport létrehozásához, illetve a virtuálisgép-méretezési csoportból származó rendszer-és/vagy felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához a [virtuális gépek közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .
     - [Felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör felhasználó által hozzárendelt felügyelt identitás létrehozásához.
     - [Felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör a felhasználó által hozzárendelt felügyelt identitás hozzárendeléséhez és eltávolításához egy virtuálisgép-méretezési csoportba.
-- A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
-    - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).
-    - A beágyazott Azure Cloud Shell az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-    - [Telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) (2.0.13 vagy újabb), ha helyi CLI-konzolt szeretne használni. 
-      
-      > [!NOTE]
-      > A parancsok frissítve lettek, hogy tükrözzék az [Azure CLI](/cli/azure/install-azure-cli)legújabb kiadását.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- A példaként szolgáló szkriptek futtatásához két lehetőség közül választhat:
+    - Használja a [Azure Cloud shellt](../../cloud-shell/overview.md), amelyet a kódrészletek jobb felső sarkában található **kipróbálás** gomb használatával nyithat meg.
+    - Futtassa helyileg a parancsfájlokat az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziójának telepítésével, majd jelentkezzen be az Azure-ba az [az login](/cli/azure/reference-index#az-login)használatával. Használjon olyan Azure-előfizetéshez társított fiókot, amelyben erőforrásokat kíván létrehozni.
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
@@ -63,19 +57,13 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti és tilthatja le egy Az
 
 Virtuálisgép-méretezési csoport létrehozása a rendszerhez rendelt felügyelt identitás engedélyezésével:
 
-1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. Olyan fiókot használjon, amely ahhoz az Azure-előfizetéshez van társítva, amelybe telepíteni szeretné a virtuálisgép-méretezési csoportját:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/management/overview.md#terminology) a virtuálisgép-méretezési csoport és a kapcsolódó erőforrások tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ezt a lépést kihagyhatja, ha már rendelkezik a használni kívánt erőforráscsoporthoz:
+1. Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/management/overview.md#terminology) a virtuálisgép-méretezési csoport és a kapcsolódó erőforrások tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ezt a lépést kihagyhatja, ha már rendelkezik a használni kívánt erőforráscsoporthoz:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. [Hozzon létre](/cli/azure/vmss/#az-vmss-create) egy virtuálisgép-méretezési készletet. A következő példában egy *myVMSS* nevű virtuálisgép-méretezési csoport jön létre egy rendszer által hozzárendelt felügyelt identitással, a paraméter által kért módon `--assign-identity` . Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
+1. [Hozzon létre](/cli/azure/vmss/#az-vmss-create) egy virtuálisgép-méretezési készletet. A következő példában egy *myVMSS* nevű virtuálisgép-méretezési csoport jön létre egy rendszer által hozzárendelt felügyelt identitással, a paraméter által kért módon `--assign-identity` . Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -83,19 +71,11 @@ Virtuálisgép-méretezési csoport létrehozása a rendszerhez rendelt felügye
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Rendszerhez rendelt felügyelt identitás engedélyezése meglévő Azure virtuálisgép-méretezési csoportokban
 
-Ha egy meglévő Azure virtuálisgép-méretezési csoporton kell engedélyeznie a rendszer által hozzárendelt felügyelt identitást:
+Ha egy meglévő Azure virtuálisgép-méretezési csoporton kell [engedélyeznie](/cli/azure/vmss/identity/#az-vmss-identity-assign) a rendszer által hozzárendelt felügyelt identitást:
 
-1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. Olyan fiókot használjon, amely a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez van társítva.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Rendszerhez rendelt felügyelt identitás [engedélyezése](/cli/azure/vmss/identity/#az-vmss-identity-assign) meglévő virtuális géphez:
-
-   ```azurecli-interactive
-   az vmss identity assign -g myResourceGroup -n myVMSS
-   ```
+```azurecli-interactive
+az vmss identity assign -g myResourceGroup -n myVMSS
+```
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Rendszer által hozzárendelt felügyelt identitás letiltása egy Azure virtuálisgép-méretezési csoportból
 
@@ -114,9 +94,7 @@ Ha olyan virtuális géppel rendelkezik, amelyhez már nincs szükség a rendsze
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-
-
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
 Ebből a szakaszból megtudhatja, hogyan engedélyezheti és távolíthatja el a felhasználó által hozzárendelt felügyelt identitásokat az Azure CLI használatával.
 
@@ -213,9 +191,7 @@ Ha a virtuálisgép-méretezési csoporthoz a rendszerhez hozzárendelt és a fe
 az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
-- A teljes Azure-beli virtuálisgép-méretezési csoport létrehozásával kapcsolatos gyors útmutató: 
-
-  - [Virtuálisgép-méretezési csoport létrehozása a parancssori felülettel](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set)
+- A teljes Azure virtuálisgép-méretezési csoport létrehozásával kapcsolatos rövid útmutató: [virtuálisgép-méretezési csoport létrehozása a parancssori](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set) felülettel

@@ -768,6 +768,8 @@
                   href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
                 - name: Útmutató a migrálást követő folyamatokhoz
                   href: mongodb-post-migration.md
+            - name: Frissítés a MongoDB 3.2-ről a 3.6-os verzióra
+              href: mongodb-version-upgrade.md
             - name: A kapcsolati sztring lekérése
               href: connect-mongodb-account.md
             - name: Csatlakozás a Studio 3T használatával
@@ -944,7 +946,7 @@
               href: table-sdk-python.md
             - name: Table Storage REST API-k
               href: /rest/api/storageservices/table-service-rest-api
-    - name: Etcd API
+    - name: etcd API
       items:
         - name: Áttekintés
           items:
@@ -1108,7 +1110,7 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Változáscsatorna – Async Java-példa
           href: create-sql-api-java-changefeed.md
-    - name: Elemzés az Azure Synapse Linkkel
+    - name: Elemzés és BI az Azure Synapse Linkkel
       items:
         - name: Az Azure Synapse Link konfigurálása
           href: configure-synapse-link.md
@@ -1116,6 +1118,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Lekérdezés az Azure Synapse Sparkkal
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: A Power BI használata a Synapse Linkkel
+          href: synapse-link-power-bi.md
     - name: Beépített elemzések az Apache Sparkkal
       items:
         - name: Azure Databricks Spark-összekötő
@@ -1198,12 +1202,16 @@
           href: monitor-cosmos-db-reference.md
         - name: Alkalmazásnaplózás a Logic Apps használatával
           href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Helyi fejlesztés
+    - name: Helyi fejlesztés emulátorral
       items:
-        - name: Az emulátor használata
+        - name: Az emulátor telepítése és használata
           href: local-emulator.md
-        - name: Tanúsítványok exportálása
+        - name: Emulátortanúsítványok exportálása
           href: local-emulator-export-ssl-certificates.md
+        - name: Emulátor parancssori paraméterei
+          href: emulator-command-line-parameters.md
+        - name: Emulátor hibaelhárítása
+          href: troubleshoot-local-emulator.md
         - name: Visual Studio Code-bővítmény
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Az Azure DevOps CI-/CD-folyamat beállítása

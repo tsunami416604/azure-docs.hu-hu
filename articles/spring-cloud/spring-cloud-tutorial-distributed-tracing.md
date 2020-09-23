@@ -7,18 +7,76 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293999"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908300"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
 Az Azure Spring Cloud elosztott nyomkövetési eszközeivel könnyedén hibakeresést végezhet, és figyelheti az összetett problémákat. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony elosztott nyomkövetési képességet biztosít a Azure Portal.
 
-Ebben a cikkben az alábbiakkal fog megismerkedni:
+::: zone pivot="programming-language-csharp"
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a .NET Core Steeltoe-alkalmazások számára az elosztott nyomkövetés használatát.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az eljárások követéséhez olyan Steeltoe-alkalmazásra van szüksége, amely már [készen áll az Azure Spring Cloud üzembe helyezésére](spring-cloud-tutorial-prepare-app-deployment.md).
+
+## <a name="dependencies"></a>Függőségek
+
+A következő NuGet-csomagok telepítése
+
+* [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+* [Steeltoe. Management. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
+
+## <a name="update-startupcs"></a>Startup.cs frissítése
+
+1. A `ConfigureServices` metódusban hívja meg a `AddDistributedTracing` és `AddZipkinExporter` metódusokat.
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration);
+       services.AddZipkinExporter(Configuration);
+   }
+   ```
+
+1. A `Configure` metódusban hívja meg a `UseTracingExporter` metódust.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+        app.UseTracingExporter();
+   }
+   ```
+
+## <a name="update-configuration"></a>Konfiguráció frissítése
+
+Adja hozzá a következő beállításokat a konfigurációs forráshoz, amelyet az alkalmazás az Azure Spring Cloud-ban való futtatásakor fog használni:
+
+1. A `management.tracing.alwaysSample` paramétert állítsa igaz értékre.
+
+2. Ha látni szeretné az Eureka-kiszolgáló, a konfigurációs kiszolgáló és a felhasználói alkalmazások között eljuttatott nyomkövetési felölelt, állítsa a `management.tracing.egressIgnorePattern` következőre: "/API/v2/spans |/v2/apps/.* /permissions |/Eureka/.*| /oauth/.*".
+
+A *appsettings.json* például a következő tulajdonságokat fogja tartalmazni:
+ 
+```json
+"management": {
+    "tracing": {
+      "alwaysSample": true,
+      "egressIgnorePattern": "/api/v2/spans|/v2/apps/.*/permissions|/eureka/.*|/oauth/.*"
+    }
+  }
+```
+
+A .NET Core Steeltoe-alkalmazásokban található elosztott nyomkövetéssel kapcsolatos további információkért lásd: [elosztott nyomkövetés](https://steeltoe.io/docs/3/tracing/distributed-tracing) a Steeltoe dokumentációjában.
+::: zone-end
+::: zone pivot="programming-language-java"
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Az elosztott nyomkövetés engedélyezése a Azure Portalban.
@@ -28,8 +86,8 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A fenti eljárások követéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szükség, amely már üzembe van és fut. Fejezze be a gyors [üzembe helyezési útmutatót az Azure CLI-n keresztül](spring-cloud-quickstart.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
-    
+A fenti eljárások követéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szükség, amely már üzembe van és fut. Fejezze be az [első Azure Spring Cloud-alkalmazás üzembe helyezését](spring-cloud-quickstart.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
+
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
 1. Adja hozzá a következő sort az Application. properties fájlhoz:
@@ -73,6 +131,7 @@ spring.sleuth.sampler.probability=0.5
 ```
 
 Ha már létrehozott és telepített egy alkalmazást, módosíthatja a mintavételezési arányt. Ezt úgy teheti meg, ha hozzáadja az előző sort környezeti változóként az Azure CLI-ben vagy a Azure Portal.
+::: zone-end
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 

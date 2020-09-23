@@ -1,18 +1,18 @@
 ---
-title: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) ügynökének újdonságai
-description: Ez a cikk kibocsátási megjegyzéseket tartalmaz az Azure arc használatára képes kiszolgálók (előzetes verzió) ügynökhöz. Számos összefoglaló probléma esetén további részletekre mutató hivatkozásokat talál.
+title: Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
+description: Ebben a cikkben az Azure arc használatára képes kiszolgálók ügynökének kibocsátási megjegyzései szerepelnek. Számos összefoglaló probléma esetén további részletekre mutató hivatkozásokat talál.
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 3b739401603f6dc18b9f48fb3cb6e28023a051ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532171"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908165"
 ---
-# <a name="whats-new-with-azure-arc-enabled-servers-preview-agent"></a>Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) ügynökének újdonságai
+# <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
 
-Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynök folyamatosan fejleszti a fejlesztéseket. A legújabb fejleményekkel naprakészen tarthatja a következő információkat:
+Az Azure arc-kompatibilis kiszolgálókhoz csatlakoztatott gépi ügynök folyamatosan fejleszti a fejlesztéseket. A legújabb fejleményekkel naprakészen tarthatja a következő információkat:
 
 - A legújabb kiadások
 - Ismert problémák
@@ -60,4 +60,4 @@ Ha a Linux-ügynök régebbi verzióját használja, és a proxykiszolgáló has
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az arc-kompatibilis kiszolgálók (előzetes verzió) több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények, az ügynök műszaki adatai és a telepítési módszerek megismeréséhez.
+Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.

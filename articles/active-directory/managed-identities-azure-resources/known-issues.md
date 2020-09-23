@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0d8c835cdc501061607dc05d0b40ebf95deb36a8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260220"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969147"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -33,15 +33,13 @@ ms.locfileid: "89260220"
 > [!NOTE]
 > Az Azure-erőforrások felügyelt identitásai a Managed Service Identity (MSI) szolgáltatás új neve.
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Hogyan találhatják meg a felügyelt identitással rendelkező erőforrásokat?
 
 A rendszerhez rendelt felügyelt identitással rendelkező erőforrások listáját az alábbi Azure CLI-paranccsal érheti el: 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>A felügyelt identitások rendelkeznek egy támogató alkalmazási objektummal?
 
@@ -72,8 +70,6 @@ Az identitás biztonsági határa az az erőforrás, amelyhez hozzá van rendelv
 - Ha a rendszerhez rendelt felügyelt identitás nincs engedélyezve, és csak egy felhasználóhoz rendelt felügyelt identitás létezik, a IMDS alapértelmezés szerint az adott felhasználóhoz rendelt felügyelt identitást fogja használni. 
 - Ha a rendszerhez rendelt felügyelt identitás nincs engedélyezve, és több felhasználó által hozzárendelt felügyelt identitás létezik, akkor a kérésben a felügyelt identitás megadása szükséges.
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>A felügyelt identitások automatikusan újra létrejönnek, ha egy előfizetést másik könyvtárba helyezek át?
 
 Nem. Ha egy előfizetést másik könyvtárba helyez át, akkor manuálisan újra létre kell hoznia őket, és újra meg kell adnia az Azure szerepkör-hozzárendeléseket.
@@ -88,7 +84,6 @@ Nem. A felügyelt identitások jelenleg nem támogatják a könyvtárak között
 
 - Rendszer által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. Virtuális gépek esetében például a Microsoft.Compute/virtualMachines/write engedélyre van szükség. Ez a művelet az erőforrás-specifikus beépített szerepkörök, például a [virtuális gépek közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)része.
 - Felhasználó által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. Virtuális gépek esetében például a Microsoft.Compute/virtualMachines/write engedélyre van szükség. A felügyelt identitás- [kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendelésen felül a felügyelt identitáson kívül is.
-
 
 
 ## <a name="known-issues"></a>Ismert problémák
@@ -112,7 +107,7 @@ Ha a virtuális gépet futó állapotba helyezi, az áthelyezés során továbbr
 Indítson el egy frissítést a virtuális gépen, hogy helyes értékeket kapjon az Azure-erőforrások felügyelt identitásai számára. A virtuális gép tulajdonságainak módosításával frissítheti az Azure-erőforrások identitásához tartozó felügyelt identitásokra mutató hivatkozást. Beállíthat például egy új címke értéket a virtuális gépen a következő paranccsal:
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 Ez a parancs egy "fixVM" nevű új címkét állít be a virtuális gépen 1 értékkel. 
@@ -124,8 +119,6 @@ A virtuális gép elindítása után a címkét a következő parancs használat
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-
-
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Előfizetés továbbítása az Azure AD-címtárak között
 

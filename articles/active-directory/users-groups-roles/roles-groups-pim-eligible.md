@@ -1,6 +1,6 @@
 ---
 title: Szerepkör társítása egy csoporthoz Privileged Identity Management használatával az Azure AD-ben | Microsoft Docs
-description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure-szerepkörök kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
+description: Megtudhatja, hogyan rendelhet hozzá Azure Active Directory (Azure AD) szerepkört egy csoporthoz Azure AD Privileged Identity Management (PIM) használatával.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343da87048cf43c04a137376e9a7f24270ce729a
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476095"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971178"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Szerepkör társítása egy csoporthoz Privileged Identity Management használatával
 
@@ -101,9 +101,9 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](roles-groups-concept.md)
-- [Felhőalapú csoportokhoz rendelt szerepkörök hibaelhárítása](roles-groups-faq-troubleshooting.md)
+- [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](roles-groups-faq-troubleshooting.md)
 - [Az Azure AD rendszergazdai szerepkör beállításainak konfigurálása Privileged Identity Management](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](../privileged-identity-management/pim-resource-roles-assign-roles.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption az Azure AD-alkalmazás előfeltételeivel (előző kiadás)
-description: Ez a cikk a IaaS virtuális gépek Microsoft Azure lemezes titkosításának használatának előfeltételeit ismerteti.
+description: Ez a cikk kiegészíti az Azure AD-vel való Azure Disk Encryption további követelményeket és előfeltételeket biztosító Linux rendszerű virtuális gépek Azure Disk Encryption.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b258d499c78aa5fb734cbee01fb753c292bf2678
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372637"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970881"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Disk Encryption Azure Active Directory (AD) (előző kiadás)
 
@@ -57,7 +57,7 @@ Azure Disk Encryption a lemez titkosítási kulcsainak és titkainak szabályoz�
 
 További információ: [Key Vault létrehozása és konfigurálása Azure Disk Encryption az Azure ad-vel (korábbi kiadás)](disk-encryption-key-vault-aad.md).
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)](disk-encryption-key-vault-aad.md)
 - [Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)](disk-encryption-linux-aad.md)

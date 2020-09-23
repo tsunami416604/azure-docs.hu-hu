@@ -10,23 +10,29 @@ metadata:
   author: MGoedtel
   ms.author: magoedte
   ms.date: 08/21/2020
-  ms.openlocfilehash: 6dec6bb451e7a330138c9a2a65f2a7dec7202a6a
-  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+  ms.openlocfilehash: a2bf337f5bcd5d4fb5810025b6d2aaa8da15201c
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89051321"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908186"
 highlightedContent:
   items:
+  - title: Az Azure Arc bemutatása
+    itemType: overview
+    url: overview.md
   - title: Azure Arc-kompatibilis kiszolgálók (előzetes verzió)
     itemType: overview
     url: ./servers/overview.md
   - title: Azure Arc-kompatibilis Kubernetes (előzetes verzió)
     itemType: overview
     url: ./kubernetes/overview.md
-  - title: Az Azure Arc bemutatása
+  - title: Azure Arc-kompatibilis adatszolgáltatások (előzetes verzió)
     itemType: overview
-    url: overview.md
+    url: ./data/overview.md
+  - title: Azure Arc-kompatibilis SQL Server (előzetes verzió)
+    itemType: overview
+    url: https://docs.microsoft.com/en-us/sql/sql-server/
 productDirectory:
   title: Azure Arc-kompatibilis szolgáltatások
   summary: Tekintse át, mi kell ahhoz, hogy bárhol futtathasson szolgáltatásokat.
@@ -43,13 +49,31 @@ productDirectory:
     - url: ./servers/index.yml
       text: Több megjelenítése...
   - title: Azure Arc-kompatibilis Kubernetes
-    imageSrc: ./media/containers-101-kubernetes-services.svg
+    imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
     links:
     - url: ./kubernetes/connect-cluster.md
       text: Fürt csatlakoztatása
     - url: ./kubernetes/use-gitops-connected-cluster.md
       text: Konfigurációk üzembe helyezése GitOps használatával
     - url: ./kubernetes/index.yml
+      text: Több megjelenítése...
+  - title: Azure Arc-kompatibilis adatszolgáltatások (előzetes verzió)
+    imageSrc: ./media/manage-756-azure-arc.svg
+    links:
+    - url: ./data/install-client-tools.md
+      text: Eszközök telepítése
+    - url: ./data/create-sql-managed-instance.md
+      text: Felügyelt SQL-példány létrehozása
+    - url: ./data/create-postgresql-hyperscale-server-group.md
+      text: Rugalmas skálázású PostgreSQL létrehozása
+    - url: ./data/index.yml
+      text: Több megjelenítése...
+  - title: Azure Arc-kompatibilis SQL Server (előzetes verzió)
+    imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
+    links:
+    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/assess
+      text: Az SQL-példányok felmérése
+    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
       text: Több megjelenítése...
 conceptualContent:
   title: Bevezetés

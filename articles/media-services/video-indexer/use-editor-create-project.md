@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73839170"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970080"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Projektek létrehozása a Video Indexer Editor használatával
 
@@ -51,11 +51,11 @@ Ez a cikk bemutatja, hogyan hozhat létre egy projektet a semmiből, és hogyan 
     
     Az alábbi képen például a "GitHub" kifejezést tartalmazó videókat keresünk.
     
-    ![GitHub](./media/video-indexer-view-edit/github.png)
+    ![A képernyőfelvételen a GitHubot két találattal megemlítő videók keresése látható.](./media/video-indexer-view-edit/github.png)
 
     Az eredmények **szűrésével**további szűrést végezhet. Szűrheti, hogy megjelenjenek-e bizonyos személyekkel rendelkező videók, vagy megadhatja, hogy csak az adott nyelven vagy egy adott tulajdonossal rendelkező videó-eredményeket szeretné megjeleníteni. <br/> Megadhatja a lekérdezés hatókörét is. Ha például a "GitHub" kifejezést szeretné használni az OCR-ben, válassza a **vizuális szöveg**lehetőséget.
 
-    ![Szűrés](./media/video-indexer-view-edit/visual-text.png)
+    ![Szűrő](./media/video-indexer-view-edit/visual-text.png)
 
     Több szűrőt is megadhat a lekérdezéshez. **+** / **-** Szűrők hozzáadásához és eltávolításához használja a gombokat. Az összes szűrő eltávolításához használja a **Szűrők törlése** lehetőséget.
 1. Videók hozzáadásához jelölje ki őket, majd válassza a **Hozzáadás**lehetőséget.
@@ -63,7 +63,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy projektet a semmiből, és hogyan 
 
     Átrendezheti a videók sorrendjét húzással vagy eldobással, vagy kiválaszthatja a lista menü gombot, majd a lejjebb vagy a **mozgatás** **lehetőséget választva.** A lista menüből a projektből is el tudja távolítani a videót. 
 
-    ![Átrendezheti](./media/video-indexer-view-edit/rearrange.png)
+    ![A képernyőképen a Video Indexer látható az egyik videó eltávolításához, a kijelölés törléséhez, vagy a lefelé mutató helyi menühöz.](./media/video-indexer-view-edit/rearrange.png)
     
     Bármikor hozzáadhat további videókat a projekthez a **videók hozzáadása**lehetőség kiválasztásával. A projekthez ugyanazt a videót több előfordulás is hozzáadhatja. Erre akkor lehet szükség, ha egy videóból egy klipet szeretne megjeleníteni, majd egy másikat, majd egy másikat az első videóból. 
 
@@ -81,7 +81,7 @@ Ha az egyes videók jobb oldalán lévő lefelé mutató nyílra kattint, akkor 
 
     Előfordulhat például, hogy meg szeretné jeleníteni a GitHubon lévő klipeket, míg a Donovan Brown a képernyőn látható. Ehhez hozzá kell adnia egy "include" szűrőt, amelynek a típusa "People". Ezután be kell írnia a "Donovan Brown" kifejezést a szűrő keresőmezőbe.
     
-    ![Belefoglalás](./media/video-indexer-view-edit/include.png)
+    ![Képernyőfelvétel: a belefoglalási szűrőhöz kiválasztott személyek Video Indexer.](./media/video-indexer-view-edit/include.png)
     
     Ha azt szeretné, hogy a GitHubon megjelenő, a Donovan Brown _nem_ a képernyőn lévő klipeket használja, egyszerűen módosítsa a "Belefoglalás" szűrőt egy "kizárás" szűrőre a legördülő listából. 
 
@@ -96,7 +96,7 @@ Ha az egyes videók jobb oldalán lévő lefelé mutató nyílra kattint, akkor 
 > [!TIP]
 > A klipek kiválasztása és sorrendbe állítása közben megtekintheti a videót az oldal jobb oldalán lévő lejátszóban. 
 
-![Előnézet](./media/video-indexer-view-edit/preview.png)
+![Képernyőfelvétel: Video Indexer az ablak jobb oldalán található videó előnézetével.](./media/video-indexer-view-edit/preview.png)
 
 Ne felejtse el menteni a projektet, amikor módosításokat végez a **projekt mentése**gombra kattintva. 
 
@@ -107,7 +107,7 @@ Ne felejtse el menteni a projektet, amikor módosításokat végez a **projekt m
 
 1. Ha elkészült, győződjön meg arról, hogy a projekt el lett mentve. Most már elvégezheti a projekt megjelenítését. Válassza **a renderelés és letöltés**lehetőséget. 
 
-    ![Mentés](./media/video-indexer-view-edit/save.png)
+    ![A képernyőfelvétel megjeleníti Video Indexer a projekt megjelenítésének és letöltésének lehetőségével.](./media/video-indexer-view-edit/save.png)
 
     Megjelenik egy előugró ablak, amely arról tájékoztatja, hogy a video Indexer egy fájlt fog megjeleníteni, majd a letöltési hivatkozást elküldi az e-mail-címre. Válassza a Folytatás lehetőséget. 
     

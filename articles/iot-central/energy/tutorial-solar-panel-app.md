@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c0f4c4deaa57b1414a3ef55226e4c451b53ba72c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84310002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971317"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Oktatóanyag: létrehozás és útmutató a napelemek figyelésére szolgáló alkalmazás sablonja 
 
@@ -105,8 +105,9 @@ Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alk
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás törlése](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
-
-## <a name="next-steps"></a>További lépések
-* A napelemes alkalmazások architektúrájának megismerése tekintse meg [a koncepciót ismertető cikket.](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
+## <a name="next-steps"></a>Következő lépések
+* A napelemes alkalmazások architektúrájának megismerése 
+> [!div class="nextstepaction"]
+> [a koncepcióról szóló cikk](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
 * Solar panel-alkalmazások sablonjainak létrehozása ingyen: [napelemes](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) alkalmazás
 * További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)

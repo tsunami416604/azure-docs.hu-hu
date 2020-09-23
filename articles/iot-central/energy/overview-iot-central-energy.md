@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77016562"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970448"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Energiaipari megoldások létrehozása az IoT Centrallal 
 
@@ -63,8 +63,7 @@ Az alkalmazás üzembe helyezése után az alábbi irányítópulton látható, 
 > [!div class="mx-imgBorder"]
 > ![Napelemes alkalmazás irányítópultja](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az energetikai megoldások létrehozásának megkezdéséhez:
 * Ingyenes alkalmazás-sablonok létrehozása: [intelligens fogyasztásmérő alkalmazás](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [napelemes](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) alkalmazás
 * További tudnivalók az [intelligens fogyasztásmérő monitorozási alkalmazásával kapcsolatos fogalmakról](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
