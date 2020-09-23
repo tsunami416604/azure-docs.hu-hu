@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Az Azure Static Web Apps dokumentációja
-summary: Az Azure Static Web Appsszel olyan JavaScript-webalkalmazásokat hozhat létre, amelyek automatikusan közzé lesznek téve a GitHubon végrehajtott módosításokat követően.
+summary: Az Azure Static Web Appsszel olyan modern webalkalmazásokat buildelhet, amelyeket a rendszer automatikusan közzétesz a GitHub módosításai után.
 metadata:
   title: Az Azure Static Web Apps dokumentációja
-  description: Az Azure Static Web Appsszel olyan JavaScript-webalkalmazásokat hozhat létre, amelyek automatikusan közzé lesznek téve a GitHubon végrehajtott módosításokat követően.
+  description: Az Azure Static Web Appsszel olyan modern webalkalmazásokat buildelhet, amelyeket a rendszer automatikusan közzétesz a GitHub módosításai után.
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: a72c9ab1dfcaf6fd95ac706bc0f0a7b8adb17c0f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86528655"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90905359"
 landingContent:
 - title: A Static Web Apps bemutatása
   linkLists:
@@ -54,6 +54,8 @@ landingContent:
       url: publish-vuepress.md
     - text: Közzététel a Jekyllből
       url: publish-jekyll.md
+    - text: Üzembe helyezés a Blazorból
+      url: deploy-blazor.md
     - text: Üzembe helyezés a Next.js-ből
       url: deploy-nextjs.md
     - text: Üzembe helyezés a Nuxt.js-ből

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 5b2446aa62b16dcf9773c367d87faac65d79fa0b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056312"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904867"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>A felügyeleti portok védelme az igény szerinti hozzáféréssel
 
@@ -33,15 +33,15 @@ Ezen az oldalon megtudhatja, hogyan veheti fel a JIT-t a biztonsági programba. 
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Általános elérhetőség|
-|Árképzési|Standard csomag|
+|Kiadás állapota:|Általánosan elérhető (GA)|
+|Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Támogatott virtuális gépek:|![Igen, ](./media/icons/yes-icon.png) Azure Resource Manager használatával üzembe helyezett virtuális gépek.<br>![](./media/icons/no-icon.png)A klasszikus üzembe helyezési modellel rendelkező virtuális gépeket nem. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).<br>![Nem ](./media/icons/no-icon.png) [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) által vezérelt Azure-tűzfalak által védett virtuális gépek|
 |Szükséges szerepkörök és engedélyek:|Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.<br>Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)című témakörben.<br>Ha olyan felhasználók számára szeretne legkevesebb jogosultsági szintű szerepkört létrehozni, akiknek JIT-hozzáférést kell kérniük egy virtuális géphez, és nem kell más JIT-műveletet végezniük, használja a Security Center GitHub közösségi oldalain található [set-JitLeastPrivilegedRole szkriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) .|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
-## <a name="enable-jit-vm-access"></a>JIT virtuális gép hozzáférésének engedélyezése<a name="jit-configure"></a>
+## <a name="enable-jit-vm-access"></a>JIT virtuális gép hozzáférésének engedélyezése <a name="jit-configure"></a>
 
 Egy vagy több virtuális gép számára engedélyezheti a JIT virtuális gépek hozzáférését a saját egyéni beállításaival Security Center vagy programozott módon. 
 
@@ -51,13 +51,13 @@ Ezeket a beállításokat az alábbi külön lapon ismertetjük.
 
 ### <a name="azure-security-center"></a>[**Azure Security Center**](#tab/jit-config-asc)
 
-### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>A JIT engedélyezése a virtuális gépeken Azure Security Center<a name="jit-asc"></a>
+### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>A JIT engedélyezése a virtuális gépeken Azure Security Center <a name="jit-asc"></a>
 
-![JIT virtuális gép hozzáférésének konfigurálása Azure Security Center](./media/security-center-just-in-time/jit-config-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="JIT virtuális gép hozzáférésének konfigurálása Azure Security Center":::
 
 A Security Centerból engedélyezheti és konfigurálhatja a JIT VM-hozzáférést.
 
-1. A Security Center menüjében válassza az igény szerinti virtuális gépekhez **való hozzáférést**.
+1. Nyissa meg az Azure Defender irányítópultot, és a speciális védelem területen válassza az igény szerinti virtuális gépekhez **való hozzáférést**.
 
     Megnyílik az igény szerinti virtuálisgép **-hozzáférés** lap a virtuális gépekkel a következő lapokon csoportosítva:
 
@@ -101,13 +101,13 @@ A Security Centerból engedélyezheti és konfigurálhatja a JIT VM-hozzáféré
 
 
 
-### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>A JIT-konfiguráció szerkesztése egy JIT-kompatibilis virtuális gépen Security Center használatával<a name="jit-modify"></a>
+### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>A JIT-konfiguráció szerkesztése egy JIT-kompatibilis virtuális gépen Security Center használatával <a name="jit-modify"></a>
 
 A virtuális gép igény szerinti konfigurálását úgy módosíthatja, hogy egy új portot ad hozzá a virtuális gép védelméhez, vagy ha módosítja a már védett porthoz kapcsolódó egyéb beállításokat.
 
 Egy virtuális gép meglévő JIT-szabályainak szerkesztése:
 
-1. A Security Center menüjében válassza az igény szerinti virtuális gépekhez **való hozzáférést**.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
 
 1. A **konfigurált** lapon kattintson a jobb gombbal arra a virtuális gépre, amelyhez portot kíván hozzáadni, majd válassza a szerkesztés lehetőséget. 
 
@@ -241,7 +241,7 @@ Ezeket a beállításokat az alábbi külön lapon ismertetjük.
 
 Ha egy virtuális gépnek engedélyezve van a JIT, hozzáférést kell kérnie a csatlakozáshoz. Bármilyen támogatott módon kérhet hozzáférést, függetlenül attól, hogy hogyan engedélyezte a JIT-t.
 
-![JIT-hozzáférés kérése Security Center](./media/security-center-just-in-time/jit-request-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="JIT-hozzáférés kérése Security Center":::
 
 1. A **virtuális gépek igény szerinti elérése** lapon válassza a **konfigurált** lapot.
 
@@ -363,9 +363,9 @@ A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenysége
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, hogyan telepítheti és használhatja az igény szerinti virtuális gépekhez való hozzáférést. A JIT használatának okának megismeréséhez olvassa el a következő témakört:
+Ebből a cikkből megtudhatta, hogyan állíthatja be és használhatja a virtuális gépek igény szerinti elérését. A JIT használatának okának megismeréséhez olvassa el a következő témakört:
 
 > [!div class="nextstepaction"]
 > [JIT magyarázata](just-in-time-explained.md)

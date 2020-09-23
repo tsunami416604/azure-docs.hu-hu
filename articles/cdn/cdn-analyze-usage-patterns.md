@@ -1,6 +1,6 @@
 ---
 title: Alapvető jelentések a Verizontól | Microsoft Docs
-description: 'A CDN használati mintáit a következő jelentések segítségével tekintheti meg: sávszélesség, átvitt adatok, találatok, gyorsítótár állapota, gyorsítótár találati aránya, IPV4/IPV6-adatok átvitele.'
+description: Megtudhatja, hogyan érheti el és tekintheti meg a Verizon Core-jelentéseket a Verizon felügyeleti portálján keresztül.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985542"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
 
@@ -77,7 +77,7 @@ Ez a jelentés a tartalomhoz tartozó kérelmek állapot-kódjainak eloszlását
 Ez a jelentés a gyorsítótár-találatok és a gyorsítótár-kihagyott ügyfelek kéréseinek eloszlását ismerteti. Mivel a gyorsítótárbeli találatok közül a leggyorsabb a teljesítmény, a gyorsítótár-lemaradás és a gyorsítótár-találatok minimalizálása érdekében optimalizálhatja az adatátviteli sebességet. 
 
 A gyorsítótár-kihagyás csökkentése érdekében konfigurálja a forrás-kiszolgálót a következők használatának minimalizálása érdekében: 
- * `no-cache`Válasz fejlécei
+ * `no-cache` Válasz fejlécei
  * Lekérdezés-karakterlánc gyorsítótárazása, kivéve, ha szigorúan szükséges  
  * Nem gyorsítótárazható válaszok kódjai
 

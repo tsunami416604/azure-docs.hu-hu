@@ -1,7 +1,7 @@
 ---
-title: Adatimportálás a designerbe (előzetes verzió)
+title: Adatimportálás a tervezőbe
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan importálhat adatforrásokat a Azure Machine Learning designerbe (előzetes verzió) különböző adatforrásokból.
+description: Megtudhatja, hogyan importálhat különböző adatforrásokból származó adatok Azure Machine Learning designerbe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006984"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985612"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Az adatimportálás Azure Machine Learning designerbe (előzetes verzió)
+# <a name="import-data-into-azure-machine-learning-designer"></a>Az adatimportálás Azure Machine Learning designerbe
 
 Ebből a cikkből megtudhatja, hogyan importálhat saját adatait a Designerben egyéni megoldások létrehozásához. Az adatgyűjtés kétféleképpen importálható a tervezőbe: 
 
@@ -32,7 +32,7 @@ Azt javasoljuk, hogy [adatkészletek](concept-data.md#datasets) használatával 
 
 ### <a name="register-a-dataset"></a>Adatkészlet regisztrálása
 
-A meglévő adatkészleteket [programozott módon az SDK-val,](how-to-create-register-datasets.md#datasets-sdk) vagy [vizuálisan Azure Machine learning Studióban](how-to-create-register-datasets.md#datasets-ui)is.
+A meglévő adatkészleteket [programozott módon az SDK-val,](how-to-create-register-datasets.md#datasets-sdk) vagy [vizuálisan Azure Machine learning Studióban](how-to-connect-data-ui.md#create-datasets)is.
 
 Bármely tervező modul kimenetét adatkészletként is regisztrálhatja.
 
@@ -68,7 +68,7 @@ Habár azt javasoljuk, hogy adatkészletek használatával importálja az adatok
 Az adatok importálása modul használatával kapcsolatos részletes információkért lásd az [adatok importálása – hivatkozás lapot](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Ha az adatkészlet túl sok oszlopot tartalmaz, a következő hibaüzenet jelenhet meg: "az érvényesítés a méret korlátozása miatt meghiúsult". Ennek elkerüléséhez [regisztrálja az adatkészletet az adatkészletek kezelőfelületén](how-to-create-register-datasets.md#datasets-ui).
+> Ha az adatkészlet túl sok oszlopot tartalmaz, a következő hibaüzenet jelenhet meg: "az érvényesítés a méret korlátozása miatt meghiúsult". Ennek elkerüléséhez [regisztrálja az adatkészletet az adatkészletek kezelőfelületén](how-to-connect-data-ui.md#create-datasets).
 
 ## <a name="supported-sources"></a>Támogatott források
 
@@ -107,4 +107,4 @@ Ha a munkaterület virtuális hálózatban található, további konfigurációs
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg a tervező alapjait az [oktatóanyaggal: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).
+Ebből az oktatóanyagból megismerheti a tervezői alapismereteket [: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).

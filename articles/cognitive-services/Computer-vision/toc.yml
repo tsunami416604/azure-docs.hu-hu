@@ -109,6 +109,22 @@
       href: concept-recognizing-text.md
     - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md
+- name: Felelősségteljes MI
+  items:
+    - name: Átláthatósági megjegyzés
+      items:
+        - name: A térbeli elemzés bemutatása
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+        - name: Jellemzők és korlátozások
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+    - name: 'Megfelelőség, adatvédelem és biztonság'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+    - name: Felelős használat mesterséges intelligencia üzemeltetésekor
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+    - name: Közzététel-tervezési irányelvek
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+    - name: Kutatási megállapítások
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
 - name: Tárolók
   items:
     - name: API-tároló olvasása
@@ -125,6 +141,20 @@
         - name: A Container Instances használata
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+    - name: Térbeli elemzések tárolója
+      items:
+        - name: A gazdagép beállítása és a tároló futtatása
+          href: spatial-analysis-container.md
+        - name: Műveletek konfigurálása
+          href: spatial-analysis-operations.md
+        - name: Személyszámláló webalkalmazás üzembe helyezése
+          href: Spatial-analysis-web-app.md
+        - name: Naplózás és hibaelhárítás
+          href: spatial-analysis-logging.md
+        - name: Zónák és sorok elhelyezése
+          href: spatial-analysis-zone-line-placement.md
+        - name: Kamera elhelyezése
+          href: spatial-analysis-camera-placement.md
 - name: Útmutatók
   items:
     - name: A Computer Vision API meghívása

@@ -7,21 +7,24 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450995"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905384"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Oktatóanyag: a Service-alkalmazások autoskálázásának beállítása
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
+
 Az autoscale az Azure Spring Cloud beépített funkciója, amely segítséget nyújt a Service-alkalmazások számára a lehető legjobb megoldás megváltozásakor. Ez magában foglalja a virtuális CPU-, memória-és alkalmazás-példányok számának módosítását. Ez a cikk azt ismerteti, hogyan állíthatja be az alkalmazásaihoz az Microsoft Azure Portal vagy az Azure CLI használatával az alkalmazások autoskálázási beállításait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) foglalkozó rövid útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
@@ -65,7 +68,7 @@ Az Azure CLI használatával is beállíthatja az autoskálázási módokat.  Az
 
 Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen korláttal van korlátozva, a standard szintre válthat. Ehhez nyissa meg az **árképzési** szint menüt úgy, hogy először kiválasztja a *standard* szintű oszlopot, és a **frissítés** gombra kattint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az autoskálázás áttekintése Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Az Azure CLI figyelésének autoskálázása](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Az Azure CLI figyelésének autoskálázása](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017736"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986419"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -45,7 +45,7 @@ Igen. Recovery Services-tároló áthelyezéséhez tekintse meg ezt a [cikket](b
 
 Nem. A tárolókban tárolt biztonságimásolat-adatok nem helyezhetők át más tárolóba.
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Biztonsági mentés után lehetséges GRS-ről LRS-re váltani?
+### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>Módosíthatom a tárolási redundancia beállítást a biztonsági mentés után?
 
 Alapértelmezés szerint a tárolási replikálás típusa a Geo-redundáns tárolás (GRS). A biztonsági mentés konfigurálása után a módosítás lehetőség le van tiltva, és nem módosítható.
 

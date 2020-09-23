@@ -11,16 +11,16 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320204"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897683"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Különbözeti adatvédelem használata Azure Machine Learningban (előzetes verzió)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ismerje meg, hogyan alkalmazhatja a modelleket a WhiteNoise Python-csomagok használatával, hogy a különböző adatvédelmi eljárásokat Azure Machine Learning modellekre alkalmazza.
 
@@ -152,11 +152,11 @@ A könyvtár használatával összetettebb elemzési diagramokat hozhat létre, 
 | Darabszám         | Gauss   | Típuskonverzió       |
 | Hisztogram     | Lévő értékek mértani  | Befogó   |
 | Középérték          | Laplace    | Digitalizálni   |
-| Quantiles     |            | Szűrés     |
+| Kvantilisek     |            | Szűrő     |
 | Összeg           |            | Beszámítás |
 | Variancia/szórás |      | Átalakítás  |
 
-További részletekért tekintse meg az [alapszintű adatelemzési jegyzetfüzetet](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
+További részletekért tekintse meg az [adatelemzési jegyzetfüzetet](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>A differentially privát kiadásainak hozzávetőleges segédprogramja
 

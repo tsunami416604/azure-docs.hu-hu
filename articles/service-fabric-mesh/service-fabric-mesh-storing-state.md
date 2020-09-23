@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246826"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984124"
 ---
 # <a name="state-management-with-service-fabric"></a>Állapot-kezelés Service Fabric
 
@@ -22,7 +22,7 @@ A Service Fabric Mesh használatával egyszerűen üzembe helyezhető egy új al
 
 A tárolók gyakran használják az ideiglenes lemezeket. Az ideiglenes lemezek elmúló jellegűek, ezért új ideiglenes lemezt kap, és elveszíti az adatokat, amikor a tároló összeomlik. A többi tárolóval rendelkező ideiglenes lemezekkel kapcsolatos információkat is nehéz megosztani. A kötetek olyan könyvtárak, amelyek az állapot megőrzéséhez használható tároló-példányokon belül vannak csatlakoztatva. A kötetek általános célú fájlmegosztást biztosítanak, és lehetővé teszik a fájlok olvasását/írását a normál lemez I/O-fájl API-jai használatával. A mennyiségi erőforrás leírja, hogyan csatlakoztathat egy könyvtárat, és hogy mely biztonsági mentést kell használni a tárolóhoz. Az adattároláshoz az Azure file Storage vagy az Service Fabric kötet lemezét is választhatja.
 
-![Kötetek][image3]
+![A diagramon látható, hogy melyik szolgáltatás, amely a kötetre áramlik, amely a replikált helyi lemez Service Fabric megbízható kötetére, valamint a hálózati tárterületen Azure Files kötetre irányul.][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Megbízható kötet Service Fabric
 
@@ -32,7 +32,7 @@ Service Fabric megbízható kötet a helyi kötetek tárolóba csatlakoztatásá
 
 Azure Files kötet egy Azure Files-megosztás tárolóba csatlakoztatására szolgáló Docker-kötet-illesztőprogram. Azure Files a tárterület hálózati tárterületet használ, ezért az olvasás és az írás a hálózaton keresztül történik. A Service Fabric megbízható kötethez képest Azure Files tárterület kevésbé nagy teljesítményű, de olcsóbb és teljesen megbízható adatbeállítást biztosít. Példaként tekintse meg, [Hogyan helyezhet üzembe egy alkalmazást Azure Files kötettel](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazás modelljével kapcsolatos információkért lásd: [Service Fabric erőforrások](service-fabric-mesh-service-fabric-resources.md)
 

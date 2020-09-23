@@ -4,12 +4,12 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310276"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986027"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -78,7 +78,7 @@ A rendelkezésre állási teszt eredményei a line és a scatter ábrázolási n
 
 Néhány perc elteltével kattintson a **frissítés** gombra a tesztek eredményeinek megtekintéséhez.
 
-![Vonal nézet](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Képernyőfelvétel: a rendelkezésre állási oldal, amelyben a frissítés gomb ki van emelve.](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 A scatterplot nézet a tesztelési eredmények olyan mintáit jeleníti meg, amelyek diagnosztikai tesztelési lépésekkel kapcsolatos részletességgel rendelkeznek. A tesztmotor tárolja a hibákat tartalmazó tesztek diagnosztikai adatait. A sikeres tesztek esetében a végrehajtások részhalmazainak diagnosztikai adatait is tárolja. A teszt, a teszt neve és a hely megjelenítéséhez vigye a kurzort a zöld/piros pontok bármelyikére.
 
@@ -127,7 +127,7 @@ A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtek
 
 Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendelkezésre állási riasztások](availability-alerts.md)
 * [Többlépéses webes tesztek](availability-multistep.md)

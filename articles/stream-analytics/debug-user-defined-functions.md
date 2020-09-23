@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 758846e2b4bfa42c9f6db0dc330c12e38a2f8c96
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 25be55021e4f07b0803d8b7cc1bb48ab05a3ea3b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432366"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889617"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények hibakeresése Azure Stream Analytics 
 
@@ -47,7 +47,7 @@ A fordítás akkor történik meg, amikor a Stream Analytics projektet lefordít
 
 Mivel a JavaScript-függvények nem rendelkeznek hibakeresési támogatással közvetlenül a Stream Analyticsban, hibakeresést végezhet a függvény HTML-helyen való beágyazásával, és onnan is beolvashatja a kimenetet.
 
-Az alábbi példa bemutatja, hogyan lehet a [Visual Studio Code](quick-create-vs-code.md)-ban a JavaScript-UDF hibakeresését egy integrált futtatókörnyezeti környezet bizonyos korlátaival.
+Az alábbi példa bemutatja, hogyan lehet a [Visual Studio Code](quick-create-visual-studio-code.md)-ban a JavaScript-UDF hibakeresését egy integrált futtatókörnyezeti környezet bizonyos korlátaival.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -88,7 +88,7 @@ exports.data = methods;
 
 A hibakereséshez le kell [töltenie](https://nodejs.org/en/download/) és telepítenie kell **node.js**. Telepítse a megfelelő verziót a használt platformnak megfelelően. A node.js futtatókörnyezet telepítése után indítsa újra a Visual Studio Code-ot a módosítások végrehajtásához. 
 
-A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba. 
+A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst ** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba. 
 
 > [!div class="mx-imgBorder"]
 > ![Az UDF futtatása és hibakeresése Stream Analytics](./media/debug-user-defined-functions/run-debug-udf.png)
@@ -121,7 +121,7 @@ exports.data = methods;
 > [!div class="mx-imgBorder"]
 > ![Kód hozzáadva a UDA-hez](./media/debug-user-defined-functions/uda-expose-methods.png)
 
-A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba.
+A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst ** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba.
 
 > [!div class="mx-imgBorder"]
 > ![Uda Stream Analytics futtatása és hibakeresése](./media/debug-user-defined-functions/run-debug-uda.png)

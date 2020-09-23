@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307199"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897561"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -84,7 +84,7 @@ Ha a projekt "képbesorolás többosztályos" típusú, akkor egyetlen címkét 
 
 Ha úgy látja, hogy hibát vétett, miután hozzárendelt egy címkét egy képhez, azt megteheti. A címke törléséhez válassza ki a képen látható "**X**" címkét. Vagy válassza ki a képet, és válasszon egy másik osztályt. Az újonnan kiválasztott érték a korábban alkalmazott címkét váltja fel.
 
-## <a name="tag-images-for-multi-label-classification"></a>Képek címkézése a többcímkés besoroláshoz
+## <a name="tag-images-for-multi-label-classification"></a>Képek címkézése többcímkés besoroláshoz
 
 Ha "rendszerkép besorolása többcímkés" típusú projekttel dolgozik, egy *vagy több* címkét fog alkalmazni egy képre. A Project-specifikus irányok megtekintéséhez válassza az **utasítások** lehetőséget, és **tekintse meg a részletes utasításokat**.
 
@@ -103,7 +103,7 @@ A hiba elhárításához kattintson az "**X**" elemre egy adott címke törlés�
 Az Azure csak akkor engedélyezi a **Küldés** gombot, ha legalább egy címkét alkalmaz az egyes képekre. A munka mentéséhez válassza a **Submit (Küldés** ) lehetőséget.
 
 
-## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Képek címkézése és az objektumok észleléséhez tartozó határoló mezők megadása
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Képek címkézése és határoló keretek meghatározása az objektumok észleléséhez
 
 Ha a projekt típusa "Object Identification (határolókeret)", akkor meg kell adnia egy vagy több határolókerett a képen, és minden egyes dobozra alkalmaznia kell egy címkét. A képekhez több határolókeret is tartozhat, amelyek mindegyike egyetlen címkével rendelkezik. A **részletes utasítások megtekintésével** megállapíthatja, hogy a projektben több határolókeret van-e használatban.
 
@@ -111,7 +111,7 @@ Ha a projekt típusa "Object Identification (határolókeret)", akkor meg kell a
 1. Jelölje be **a négyzet alakú téglalap** ![ alakú eszközt ](./media/how-to-label-images/rectangular-box-tool.png) , vagy válassza az "R" lehetőséget.
 3. Kattintson és húzza átlósan a célhelyen egy durva határolókeret létrehozásához. A határolókeret módosításához húzza az éleket vagy a sarkokat.
 
-![A képernyőfelvétel alapszintű határolókeret létrehozását mutatja be.](./media/how-to-label-images/bounding-box-sequence.png)
+![Határolókeret létrehozása](./media/how-to-label-images/bounding-box-sequence.png)
 
 A határolókeret törléséhez kattintson a létrehozás után a határolókeret mellett megjelenő X alakú célra.
 
@@ -133,7 +133,7 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
 

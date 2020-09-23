@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5de8374f58eaf8dc83f54f05557b0a125191c34
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904881"
 ---
 # <a name="cut-planes"></a>Síkok kivágása
 
@@ -19,16 +19,6 @@ A *kivágott sík* olyan vizualizációs funkció, amely egy virtuális sík egy
 Az alábbi képen a hatás látható. A bal oldalon az eredeti rácsvonal látható, amely a jobb oldalon a Hálón belül látható:
 
 ![Sík kivágása](./media/cutplane-1.png)
-
-## <a name="limitations"></a>Korlátozások
-
-* Az Azure Remote rendering jelenleg **legfeljebb nyolc aktív kivágású gépet**támogat. Több kivágási sík-összetevőt is létrehozhat, de ha több párhuzamosan próbálkozik, a rendszer figyelmen kívül hagyja az aktiválást. Ha azt szeretné, hogy az adott összetevő milyen hatással legyen a jelenetre, tiltsa le a többi gépet.
-* Minden egyes kivágott sík hatással van az összes távolról kiolvasztott objektumra. Jelenleg nincs lehetőség bizonyos objektumok vagy rácsvonalak kizárására.
-* A kivágott síkok csupán vizualizációs funkciók, nem befolyásolják a [térbeli lekérdezések](spatial-queries.md)eredményét. Ha azt szeretné, hogy a Ray kivágású nyitott rácsvonalba kerüljön, beállíthatja, hogy a Ray kiindulási pontja a kivágási síkon legyen. Így a fénysugár csak a látható részeket tudja megütni.
-
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
-
-Az aktív kivágott síkok kis költségekkel járnak a renderelés során. A kivágott síkok letiltása vagy törlése, ha nem szükségesek.
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
@@ -67,6 +57,40 @@ A következő tulajdonságok vannak kitéve egy kivágott sík összetevőn:
 * `FadeColor` és `FadeLength` :
 
   Ha a *FadeColor* alfa értéke nem nulla, a kivágási sík közelébe mutató képpontok a FadeColor RGB-részéhez fognak elhalványulni. Az alfa-csatorna erőssége határozza meg, hogy teljes mértékben elhalványul-e az elhalványulás színe, vagy csak részben. A *FadeLength* határozza meg, hogy a Halványítás milyen távolságra legyen végrehajtva.
+
+* `ObjectFilterMask`: Egy szűrő-bit maszk, amely meghatározza, hogy a kivágott sík milyen geometriát érint. Részletes információkat a következő bekezdésben talál.
+
+### <a name="selective-cut-planes"></a>Szelektív kivágott síkok
+
+Az egyes kivágási síkok konfigurálhatók úgy, hogy csak a megadott geometriára legyenek hatással. Az alábbi képen látható, hogyan jelennek meg a beállítás a gyakorlatban:
+
+![Szelektív kivágott síkok](./media/selective-cut-planes.png)
+
+A szűrés a **logikai bitek összevetését** , a kivágási sík oldalán lévő egy kis maszk és a geometriában beállított második bites maszk között működik. Ha a `AND` maszkok közötti logikai művelet eredménye nem nulla, a kivágott sík hatással lesz a geometriára.
+
+* A kivágási sík összetevőn lévő bit mask a tulajdonságán keresztül van beállítva `ObjectFilterMask`
+* A geometriai alhierarchián a [HierarchicalStateOverrideComponent](override-hierarchical-state.md#features) a
+
+Példák:
+
+| Sík szűrő maszkjának kivágása | Geometriai szűrő maszkja  | Logikai eredmény `AND` | A kivágott sík befolyásolja a geometriát?  |
+|--------------------|-------------------|-------------------|:----------------------------:|
+| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
+| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
+| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | No |
+| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | No |
+
+>[!TIP]
+> A kivágott sík 0 értékre állítása azt `ObjectFilterMask` jelenti, hogy nem befolyásolja a geometriát, mert a logikai eredmény nem `AND` lehet null. A renderelési rendszer nem veszi figyelembe ezeket a gépeket az első helyen, ezért ez egy egyszerű módszer az egyes kivágott síkok letiltására. Ezek a kivágott síkok szintén nem számítanak bele a 8 aktív síkon.
+
+## <a name="limitations"></a>Korlátozások
+
+* Az Azure Remote rendering **legfeljebb nyolc aktív kivágott gépet**támogat. Több kivágási sík-összetevőt is létrehozhat, de ha több párhuzamosan próbálkozik, a rendszer figyelmen kívül hagyja az aktiválást. Ha azt szeretné, hogy az egyes összetevők milyen hatással legyenek a színtérre, tiltsa le a többi gépet.
+* A kivágott síkok tisztán vizualizációs funkciók, nem befolyásolják a [térbeli lekérdezések](spatial-queries.md)eredményét. Ha azt szeretné, hogy a Ray kivágású nyitott rácsvonalba kerüljön, beállíthatja, hogy a Ray kiindulási pontja a kivágási síkon legyen. Így a fénysugár csak a látható részeket tudja megütni.
+
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
+
+Az aktív kivágott síkok kis költségekkel járnak a renderelés során. A kivágott síkok letiltása vagy törlése, ha nem szükségesek.
 
 ## <a name="api-documentation"></a>API-dokumentáció
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Sentinel bővítése munkaterületek és bérlők között | Microsoft Docs
-description: Az Azure Sentinel elemzési képességeinek kiterjesztése munkaterületek és bérlők között.
+description: Az Azure Sentinel használata az adatterületek és bérlők közötti adatlekérdezésre és-elemzésre.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9e0fe46e0a7382c0adcfa1f1f781f282e9e77942
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019325"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905417"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
 
@@ -29,7 +29,7 @@ Az Azure Sentinel egy Log Analytics munkaterületre épül. Figyelje meg, hogy a
 
 Egyetlen munkaterület használata esetén az Azure Sentinel használatának teljes előnyeit élvezheti. Ennek ellenére bizonyos esetekben előfordulhat, hogy több munkaterületre van szükség. Az alábbi táblázat felsorolja ezeket a helyzeteket, és ha lehetséges, azt javasolja, hogy a követelmény hogyan lehet megfelelni egyetlen munkaterülettel:
 
-| Követelmény | Description | A munkaterületek számának csökkentési módjai |
+| Követelmény | Leírás | A munkaterületek számának csökkentési módjai |
 |-------------|-------------|--------------------------------|
 | Szuverenitás és szabályozási megfelelőség | Egy munkaterület egy adott régióhoz van kötve. Ha a szabályozás követelményeinek kielégítéséhez különböző [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -régiókban kell megőrizni az adatmennyiséget, külön munkaterületekre kell bontani. |  |
 | Az adatok tulajdonjoga | Az adattulajdonos határai, például a leányvállalatok vagy a kapcsolt vállalatok, jobban körülhatárolva vannak külön munkaterületek használatával. |  |

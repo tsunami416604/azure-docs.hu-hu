@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/03/2020
-ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440118"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897400"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning erőforrások kezelése a VS Code bővítménnyel (előzetes verzió)
 
@@ -44,7 +44,6 @@ További információ: [munkaterületek](concept-workspace.md).
     1. Azure-előfizetés kiválasztása
     1. Válasszon ki vagy hozzon létre egy új erőforráscsoportot a munkaterület kiépítéséhez
     1. Válassza ki azt a helyet, ahová a munkaterületet kiépíteni szeretné.
-    1. Válassza az *alapszintű* és a *nagyvállalati* kiadás lehetőséget. További információ a különböző [Azure Machine learning kiadásokról](concept-editions.md).
 
 A munkaterület létrehozásának alternatív módszerei a következők:
 

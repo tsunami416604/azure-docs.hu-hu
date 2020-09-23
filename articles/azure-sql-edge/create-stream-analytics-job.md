@@ -1,6 +1,6 @@
 ---
-title: T-SQL streaming-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió)
-description: Ismerkedjen meg Stream Analytics feladatok létrehozásával az Azure SQL Edge-ben (előzetes verzió).
+title: T-SQL streaming-feladatok létrehozása az Azure SQL Edge-ben
+description: Ismerkedjen meg Stream Analytics feladatok létrehozásával az Azure SQL Edge-ben.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,19 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888092"
 ---
-# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
+# <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Adatátviteli feladatok létrehozása az Azure SQL Edge szolgáltatásban 
 
-Ez a cikk azt ismerteti, hogyan lehet T-SQL streaming-feladatot létrehozni az Azure SQL Edge-ben (előzetes verzió). Létre kell hoznia a külső adatfolyam bemeneti és kimeneti objektumait, majd a folyamatos átviteli feladatok létrehozásának részeként meg kell határoznia a folyamatos átviteli feladatok lekérdezését.
-
-> [!NOTE]
-> Az Azure SQL Edge-ben a T-SQL streaming funkció engedélyezéséhez engedélyezze a TF 11515-as indítási lehetőséget, vagy használja a [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) parancsot. A nyomkövetési jelzők MSSQL. conf fájl használatával történő engedélyezésével kapcsolatos további információkért lásd [az MSSQL. conf fájl használatával történő konfigurálást](configure.md#configure-by-using-an-mssqlconf-file)ismertető témakört.
+Ez a cikk azt ismerteti, hogyan lehet T-SQL streaming-feladatot létrehozni az Azure SQL Edge-ben. Létre kell hoznia a külső adatfolyam bemeneti és kimeneti objektumait, majd a folyamatos átviteli feladatok létrehozásának részeként meg kell határoznia a folyamatos átviteli feladatok lekérdezését.
 
 ## <a name="configure-the-external-stream-input-and-output-objects"></a>A külső adatfolyam bemeneti és kimeneti objektumainak konfigurálása
 
@@ -253,7 +250,7 @@ A folyamatos átviteli feladatokhoz a következő állapotok tartozhatnak:
 | Leállítva | A folyamatos átviteli feladatot leállították. |
 | Sikertelen | A folyamatos átviteli feladatot nem sikerült végrehajtani. Ez általában egy végzetes hibát jelez a feldolgozás során. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A folyamatos átviteli feladatokhoz tartozó metaadatok megtekintése az Azure SQL Edge-ben (előzetes verzió)](streaming-catalog-views.md) 
+- [A folyamatos átviteli feladatokhoz tartozó metaadatok megtekintése az Azure SQL Edge-ben](streaming-catalog-views.md) 
 - [Külső stream létrehozása](create-external-stream-transact-sql.md)

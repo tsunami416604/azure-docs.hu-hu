@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208093"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986218"
 ---
 # <a name="column-level-security"></a>Oszlop szintű biztonság
 
@@ -28,9 +28,9 @@ Mivel ez a videó közzé lett téve, az Azure szinapszis számára elérhetőv�
 
 Az oszlop szintű biztonság leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását, ami lehetővé teszi az oszlopokhoz való hozzáférés korlátozását a bizalmas adatok védelme érdekében. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás megbízhatóbb és robusztus biztonságot tesz lehetővé azáltal, hogy csökkenti az általános biztonsági rendszerek felületi területét. Emellett az oszlop szintű biztonság is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.
 
-Az oszlop szintű biztonságot a [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítással implementálhatja. Ezzel a mechanizmussal az SQL és a Azure Active Directory (HRE) hitelesítés is támogatott.
+Az oszlop szintű biztonságot a [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítással implementálhatja. Ezzel a mechanizmussal az SQL és a Azure Active Directory (Azure AD) hitelesítés is támogatott.
 
-![CLS](./media/column-level-security/cls.png)
+![A diagramon egy sematikus táblázat látható, amelyben az első oszlop egy zárt lakattal és a hozzá tartozó cellákkal narancssárga színű, míg a többi oszlop fehér cella.](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntax
 

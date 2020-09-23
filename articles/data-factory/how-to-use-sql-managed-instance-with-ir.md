@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082267"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984882"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Az Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
 
@@ -116,7 +116,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |A kimenő adatforgalom engedélyezése a felügyelt SQL-példányok számára. Ha az **átirányítás**helyett a kapcsolódási szabályzat **proxyra** van beállítva, akkor csak az 1433-es port szükséges. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs eléréséhez. |
         | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az [Azure ExpressRoute vagy a felhasználó által megadott útvonal (UDR) használatát](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route)ismertető témakört.|
-        | TCP | VirtualNetwork | * | Storage | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
+        | TCP | VirtualNetwork | * | Tárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
         |||||||
 
         1. A **Azure-SSIS IR bejövő követelménye**, amely lehetővé teszi a Azure-SSIS IR számára szükséges forgalom engedélyezését.
@@ -141,7 +141,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
 
     A nyilvános végpont állomásneve <mi_name>. public. <dns_zone>. database.windows.net és a csatlakozáshoz használt port 3342.  
 
-    ![Katalógus – nyilvános végpont](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![A képernyőképen az Integration Runtime telepítőjét láthatja, amelynek a létrehozása S S S-s katalógus kiválasztott](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. Ha érvényes, válassza az Azure AD-hitelesítést.
 
@@ -157,7 +157,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
 
     További információ a Azure-SSIS IR virtuális hálózathoz való csatlakoztatásáról: [Azure-SSIS integrációs modul csatlakoztatása egy virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
 
-    ![Csatlakozás virtuális hálózathoz](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![A képernyőfelvételen az Integration Runtime speciális beállításai láthatók, ahol kiválaszthat egy virtuális hálózatot a futtatókörnyezethez a csatlakozáshoz.](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 A Azure-SSIS IR létrehozásával kapcsolatos további információkért lásd: [Azure-SSIS integrációs modul létrehozása Azure Data Factory-ben](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime).
 
@@ -175,7 +175,7 @@ A SSISDB-naplók adatmegőrzési házirendjét a katalógus alábbi tulajdonság
 
 A rendszergazda által beállított adatmegőrzési ablakon kívüli SSISDB-naplók eltávolításához aktiválhatja a tárolt eljárást `[internal].[cleanup_server_retention_window_exclusive]` . Igény szerint az SQL felügyelt példány-ügynök feladat-végrehajtását ütemezheti a tárolt eljárás elindításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SSIS-csomagok végrehajtása az Azure SQL felügyelt példány-ügynökének feladata](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Üzletmenet-folytonosság és vész-helyreállítás beállítása (BCDR)](configure-bcdr-azure-ssis-integration-runtime.md)

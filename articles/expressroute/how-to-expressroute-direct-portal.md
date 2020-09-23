@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401469"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986375"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
 
@@ -97,7 +97,7 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
 1. A ExpressRoute közvetlen **beállításai** szakaszban válassza az **áramkörök**, majd a **+ Hozzáadás**lehetőséget. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Hozzáadás" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Képernyőfelvétel: a ExpressRoute beállításai a kiválasztott áramkörökkel és a kijelöltek hozzáadása." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. Konfigurálja a beállításokat a **konfiguráció** lapon.
 

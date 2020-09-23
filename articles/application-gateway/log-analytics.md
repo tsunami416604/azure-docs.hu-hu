@@ -1,19 +1,19 @@
 ---
 title: WAF-naplók vizsgálata az Azure Log Analytics
 titleSuffix: Azure Application Gateway
-description: Ez a cikk bemutatja, hogyan használható az Azure Log Analytics a webalkalmazási tűzfal naplófájljainak Application Gateway vizsgálatához
+description: Ez a cikk bemutatja, hogyan használhatja az Azure Log Analyticst Application Gateway webalkalmazási tűzfal (WAF) naplófájljainak vizsgálatára.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 88e360c5630c24dd997f72bda3fc4a480264763d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a5925b9667cf0db5003584c3bf6a30d8611c5ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086914"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986005"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Log Analytics használata Application Gateway webalkalmazási tűzfal (WAF) naplófájljainak vizsgálatához
 
@@ -82,6 +82,6 @@ A lekérdezés létrehozása után felveheti azt az irányítópultra.  A log An
 
 ![Irányítópult](media/log-analytics/dashboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Háttérbeli állapot, diagnosztikai naplók és metrikák a Application Gateway](application-gateway-diagnostics.md)

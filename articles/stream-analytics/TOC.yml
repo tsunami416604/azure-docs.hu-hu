@@ -4,8 +4,8 @@
   items:
     - name: Mi a Stream Analytics?
       href: stream-analytics-introduction.md
-    - name: Teljes körű megoldásminták
-      href: stream-analytics-solution-patterns.md
+    - name: Stream Analytics-fürt
+      href: cluster-overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: Fürt létrehozása
+      items:
+        - name: Azure Portal
+          href: create-cluster.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Feladat létrehozása/kezelése
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Alapelvek
   items:
+    - name: Teljes körű megoldásminták
+      href: stream-analytics-solution-patterns.md
     - name: Streaming Analytics-technológia kiválasztása
       href: streaming-technologies.md
     - name: Feladatfejlesztési eszköz kiválasztása
@@ -145,6 +151,14 @@
   items:
     - name: Kezelés
       items:
+        - name: Fürtök
+          items:
+            - name: Privát végpontok létrehozása és törlése
+              href: private-endpoints.md
+            - name: Feladatok hozzáadása és eltávolítása
+              href: manage-jobs-cluster.md
+            - name: Fürtméret skálázása
+              href: scale-cluster.md
         - name: Feladatok automatikus skálázása
           href: stream-analytics-autoscale.md
         - name: Hitelesítő adatok frissítése
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: Exportálás és üzembe helyezés az Azure Resource Managerrel
           href: resource-manager-export.md
+    - name: Folyamatos integráció és üzembe helyezés
+      items:
+        - name: CI/CD áttekintése
+          href: cicd-overview.md
+        - name: 'Buildelés, tesztelés és üzembe helyezés a PowerShell használatával'
+          href: cicd-tools.md
+        - name: Folyamat beállítása az Azure DevOps használatával
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Eszközök telepítése
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: Lekérdezések hibakeresése feladatábra segítségével
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: CI-/CD-folyamat beállítása
-          href: setup-cicd-vs-code.md
         - name: Feladatok böngészése
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json-mezők

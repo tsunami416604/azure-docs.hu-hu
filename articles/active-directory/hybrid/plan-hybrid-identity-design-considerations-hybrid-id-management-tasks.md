@@ -1,6 +1,6 @@
 ---
 title: Hibrid Identity design – felügyeleti feladatok az Azure-ban | Microsoft Docs
-description: A feltételes hozzáférés-vezérléssel Azure Active Directory ellenőrzi a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés engedélyezése előtt kiválasztott konkrét feltételeket. Ha ezek a feltételek teljesülnek, a felhasználó hitelesíti és engedélyezi az alkalmazáshoz való hozzáférést.
+description: Az Azure AD ellenőrzi a felhasználók hitelesítése és a feltételes hozzáférés-vezérléssel való hozzáférés engedélyezése előtt a kiválasztott feltételeket.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109387"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986522"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>A hibrid identitás életciklusának tervezése
 Az identitás a nagyvállalati mobilitás és az alkalmazás-hozzáférési stratégia egyik alapja. Akár a mobileszközön, akár SaaS-alkalmazásba jelentkezik be, az identitása a legfontosabb, hogy mindenhez hozzáférjen. A legmagasabb szinten a személyazonosság-kezelési megoldás magában foglalja az identitás-Tárházak egységesítését és szinkronizálását, amely magában foglalja az erőforrások kiépítési folyamatának automatizálását és központosítását. Az Identity megoldásnak központilag központosított identitásnak kell lennie a helyszíni és a felhőben, valamint az identitás-összevonás valamilyen formáját is használhatja a központosított hitelesítés fenntartásához, valamint a külső felhasználók és vállalkozások biztonságos megosztásához és a velük való együttműködéshez. Az erőforrások az operációs rendszertől és az alkalmazásoktól az-ban vagy a-ban, a szervezeten belüli felhasználókig terjedhetnek. A szervezeti struktúra úgy módosítható, hogy megfeleljen a kiépítési szabályzatoknak és eljárásoknak.
@@ -66,7 +66,7 @@ Az Identity Manager egyik célja, hogy képes legyen az összes identitás-szolg
 *    Milyen funkciók érhetők el az egyszeri bejelentkezéshez?
 *    Mik a B2B és B2C közötti identitás-összevonás lehetőségei?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A hibrid Identitáskezelés bevezetési stratégiájának meghatározása](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>Lásd még:
