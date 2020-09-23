@@ -4,12 +4,12 @@ description: A Service Fabric, Virtual Machines, Web Apps és Cloud Services szo
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751338"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979043"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Az Azure-méretezés hibaelhárítása
  
@@ -47,7 +47,7 @@ A virtuálisgép-méretezési csoportokhoz egy egyszerű, az alábbiakra vonatko
 
 Tekintsük át az autoskálázási szolgáltatás mérőszámait.
  
-![Virtuálisgép-méretezési csoport százalékos CPU-példája](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![A képernyőfelvételen a virtuálisgép-méretezési csoport százalékos CPU-példája látható.](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![Virtuálisgép-méretezési csoport százalékos CPU-példája](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Ha a **kimenő forgalom egy példánya** nagyobb, mint 10, akkor az autoskáláz
 
 Ebben az esetben a rendszer kiszámítja az autoskálázási motor megfigyelt metrikai értékét, mivel a tényleges metrika értéke a példányok száma szerint oszlik meg. Ha a megfigyelt metrika értéke kisebb a küszöbértéknél, a rendszer nem kezdeményez Felskálázási műveletet. 
  
-![Virtuálisgép-méretezési csoportra vonatkozó mérőszámok – példa](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![A képernyőképen az átlagos kimenő folyamatok lap látható, amely egy virtuálisgép-méretezési csoportra vonatkozó, az autoscale mérőszámokat tartalmazó diagramokra mutat példát.](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![Virtuálisgép-méretezési csoportra vonatkozó mérőszámok – példa](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
@@ -205,5 +205,5 @@ Riasztási szabályok létrehozásával értesítést kaphat az autoscale művel
 
 További információ: az [erőforrás-naplók autoskálázása](autoscale-resource-log-schema.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el az [autoscale ajánlott eljárásaival](autoscale-best-practices.md)kapcsolatos információkat. 

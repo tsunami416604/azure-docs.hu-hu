@@ -1,6 +1,6 @@
 ---
 title: Gyakori kérdések – SAP-megoldások Azure Monitor | Microsoft Docs
-description: Ez a cikk az Azure monitor for SAP-megoldásokkal kapcsolatos gyakori kérdésekre ad választ.
+description: Ebből a cikkből megtudhatja, hogyan választhatja ki az SAP-megoldások Azure monitor szolgáltatásával kapcsolatos gyakori kérdéseket (GYIK).
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: cf0366300c4fab18a0f6231a97ca050eddd50132
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852322"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987247"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Azure monitor for SAP Solutions GYIK (előzetes verzió)
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -77,6 +77,6 @@ Nem. Az ügyfelek továbbra is használhatják az SAP Solution Managert az üzle
  - **Mi a szolgáltatás értéke olyan hagyományos megoldásokon keresztül, mint például a SAP HANA cockpit/Studio?**  
 Az SAP-megoldások Azure Monitor nem a HANA-adatbázisra jellemző. Az SAP-megoldások Azure Monitor támogatja a AnyDB is.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre az első Azure Monitor az SAP Solutions-erőforráshoz.

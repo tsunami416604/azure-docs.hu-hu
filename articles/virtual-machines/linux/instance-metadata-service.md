@@ -1,6 +1,6 @@
 ---
 title: Azure Instance Metadata szolgáltatás
-description: REST-felület a virtuális gépek számítási, hálózati és közelgő karbantartási eseményeivel kapcsolatos információk lekéréséhez.
+description: Ismerje meg az Azure Instance Metadata Service, valamint a jelenleg futó virtuálisgép-példányokkal kapcsolatos információkat.
 services: virtual-machines
 author: KumariSupriya
 manager: paulmey
@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: bb9bc978e49cddab13ab1e4f7ec4f0b74d369ac1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705843"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974150"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -244,7 +244,7 @@ azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
 customData | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
 isHostCompatibilityLayerVm | Annak azonosítása, hogy a virtuális gép a gazdagép kompatibilitási rétegén fut-e | 2020-06-01
 location | Az Azure-régió, amelyen a virtuális gép fut | 2017-04-02
-name | A virtuális gép neve | 2017-04-02
+név | A virtuális gép neve | 2017-04-02
 offer | A virtuálisgép-lemezképre vonatkozó információkat nyújtja, és csak az Azure rendszerkép-katalógusból üzembe helyezett rendszerképekhez érhető el | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
 placementGroupId | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
@@ -519,7 +519,7 @@ diskSizeGB | A lemez mérete GB-ban
 image   | Forrás felhasználói lemezkép virtuális merevlemeze
 LUN     | A lemez logikai egységének száma
 managedDisk | Felügyelt lemez paramétereinek
-name    | Lemez neve
+név    | Lemez neve
 VHD     | Virtuális merevlemez
 writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
 
@@ -534,7 +534,7 @@ diskSizeGB | A lemez mérete GB-ban
 encryptionSettings | A lemez titkosítási beállításai
 image   | Forrás felhasználói lemezkép virtuális merevlemeze
 managedDisk | Felügyelt lemez paramétereinek
-name    | Lemez neve
+név    | Lemez neve
 osType  | A lemezen található operációs rendszer típusa
 VHD     | Virtuális merevlemez
 writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
@@ -904,7 +904,7 @@ Használja a probléma típusát, `Management` és válassza ki `Instance Metada
 
 ![Példány metaadatainak támogatása](./media/instance-metadata-service/InstanceMetadata-support.png "Képernyőfelvétel: támogatási eset megnyitása a Instance Metadata Serviceával kapcsolatos problémák esetén")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk:
 1. [Szerezze be a virtuális gép hozzáférési jogkivonatát](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).

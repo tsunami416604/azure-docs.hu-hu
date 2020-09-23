@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 76c5bac600f05094f2e2a354cd5cf5895d9d45d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496610"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902683"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Rövid útmutató: Azure Database for PostgreSQL egyetlen kiszolgáló létrehozása a PowerShell használatával
 
@@ -21,7 +21,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható a PowerShell egy Azur
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
@@ -69,13 +69,13 @@ A következő táblázat a parancsmag leggyakrabban használt paramétereinek li
 | Hely                   | westus           | A-kiszolgáló Azure-régiója.                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | Engedélyezve          | Azt jelzi, hogy engedélyezve van-e az SSL, vagy sem ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51 200            | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes StorageInMb legalább 5120 MB, és 1024 MB-onként növekszik. További információ a tárolási méretekkel kapcsolatos korlátokról: [Azure Database for PostgreSQL díjszabási szintek](./concepts-pricing-tiers.md).                                                                               |
-| Verzió                    | 9.6              | A PostgreSQL főverziója.                                                                                                                                                                                                                                                                                                                 |
+| Verzió                    | 9,6              | A PostgreSQL főverziója.                                                                                                                                                                                                                                                                                                                 |
 | AdministratorUserName      | myadmin          | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | A rendszergazda felhasználó jelszava biztonságos sztring formájában. A jelszó 8–128 karakterből állhat. A jelszónak legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.                                       |
 
 Az **SKU** paraméter értéke az egyezmény **díjszabási rétegének \_ számítási-generálási \_ virtuális mag** követi, ahogy az alábbi példákban is látható.
 
-- `-Sku B_Gen5_1`az alapszintű, a Gen 5 és az 1 virtuális mag képezi le. Ez a lehetőség az elérhető legkisebb SKU.
+- `-Sku B_Gen5_1` az alapszintű, a Gen 5 és az 1 virtuális mag képezi le. Ez a lehetőség az elérhető legkisebb SKU.
 - `-Sku GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
 - `-Sku MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
@@ -141,7 +141,7 @@ Ha az ügyfélszámítógépen telepítve van a PostgreSQL, akkor használhatja 
    ```
 
    > [!TIP]
-   > Ha inkább URL-elérési utat szeretne használni a postgres-hez való kapcsolódáshoz, az URL-cím kódolja a @ Sign nevet a következővel: `%40` . Például a psql tartozó kapcsolatok karakterlánca a következő:.`psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres`
+   > Ha inkább URL-elérési utat szeretne használni a postgres-hez való kapcsolódáshoz, az URL-cím kódolja a @ Sign nevet a következővel: `%40` . Például a psql tartozó kapcsolatok karakterlánca a következő:. `psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres`
 
 1. Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amikor a rendszer kéri.
 
@@ -165,15 +165,15 @@ A pgAdmin egy nyílt forráskódú eszköz, amely a PostgreSQL-lel együtt haszn
 
 1. A **Létrehozás – Kiszolgáló** párbeszédpanel **Általános** lapján adjon meg egy egyedi rövid nevet a kiszolgáló számára, például **mydemoserver**.
 
-   ![Az „Általános” lap](./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png" alt-text="Az általános lap":::
 
 1. A **Létrehozás – Kiszolgáló** párbeszédpanel **Kapcsolat** lapján töltse ki a beállítások tábláját.
 
-   ![A „Kapcsolat” lap](./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="A kapcsolatok lap":::
 
     pgAdmin-paraméter |Érték|Leírás
     ---|---|---
-    Gazdagépnév/-cím | A kiszolgáló neve | Az a kiszolgálónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.postgres.database.azure.com.** Használja a teljes tartománynevet (** \* . postgres.database.Azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit.
+    Gazdagépnév/-cím | Kiszolgálónév | Az a kiszolgálónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.postgres.database.azure.com.** Használja a teljes tartománynevet (** \* . postgres.database.Azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit.
     Port | 5432 | Az Azure Database for PostgreSQL-kiszolgálóhoz való csatlakozáskor használt port.
     Karbantartási adatbázis | *postgres* | A rendszer által létrehozott alapértelmezett adatbázisnév.
     Felhasználónév | Kiszolgáló-rendszergazdai bejelentkezési név | A kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban az Azure Database for PostgreSQL-kiszolgáló létrehozásakor adott meg. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum a *username \@ servername*.
@@ -193,7 +193,7 @@ A pgAdmin egy nyílt forráskódú eszköz, amely a PostgreSQL-lel együtt haszn
 
 1. A listából válassza ki az adatbázis **tulajdonosát**. Válassza ki a kiszolgáló-rendszergazdai bejelentkezési nevet (a példánkban ez a **my admin**).
 
-   ![Adatbázis létrehozása a pgAdmin-ben](./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Adatbázis létrehozása a pgAdmin-ben":::
 
 1. Egy új, üres adatbázis létrehozásához válassza a **Mentés** lehetőséget.
 
@@ -217,7 +217,7 @@ Ha csak az ebben a rövid útmutatóban létrehozott kiszolgálót szeretné tö
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL tervezése a PowerShell használatával](tutorial-design-database-using-powershell.md)

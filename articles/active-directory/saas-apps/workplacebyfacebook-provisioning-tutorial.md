@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006091"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973883"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Facebook és Azure Active Directory (Azure AD) munkahelyén kell elvégezni a felhasználók automatikus kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a [Facebook](https://work.workplace.com/) számára az Azure ad kiépítési szolgáltatásával. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Facebook és Azure Active Directory (Azure AD) munkahelyén kell elvégezni a felhasználók automatikus kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a [Facebook](https://work.workplace.com/) számára az Azure ad kiépítési szolgáltatásával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
@@ -46,9 +46,9 @@ Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 - Ne használja éles környezetét, ha szükséges.
 - Ha még nem rendelkezik Azure AD-próbaverzióval, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
-1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
-2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
+1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 3. Határozza meg, hogy az [Azure ad és a munkahely milyen adatleképezést szeretne a Facebook által](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
 
 ## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>2. lépés A munkahelyi környezet konfigurálása a Facebook használatával az Azure AD-vel való kiépítés támogatásához
@@ -61,17 +61,17 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 
 ## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>3. lépés Munkaterület felvétele a Facebook használatával az Azure AD Application Galleryből
 
-Az Azure AD-alkalmazás-katalógusban a Facebook használatával is felveheti a munkahelyet, így megkezdheti a Facebook-ban való kiépítés kezelését. Ha korábban már beállította a munkahelyi beállításokat a Facebook által az SSO-hoz, ugyanazt az alkalmazást használhatja. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)
+Az Azure AD-alkalmazás-katalógusban a Facebook használatával is felveheti a munkahelyet, így megkezdheti a Facebook-ban való kiépítés kezelését. Ha korábban már beállította a munkahelyi beállításokat a Facebook által az SSO-hoz, ugyanazt az alkalmazást használhatja. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet.
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
-Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
+Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
 
-* A felhasználók és csoportok a Facebookhoz való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+* A felhasználók és csoportok a Facebookhoz való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
 
-* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -79,25 +79,25 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
 
     ![A munkahelyi Facebook-hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. A rendszer átirányítja a munkahelyre a Facebook engedélyezési oldalán. Adja meg a munkahelyi Facebook-felhasználónevet, majd kattintson a **Continue (folytatás** ) gombra. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad a Facebook segítségével csatlakozhasson a munkahelyhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a munkahelyi Facebook-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![kiépítési](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![Képernyőfelvétel: rendszergazdai hitelesítő adatok párbeszédpanel engedélyezési lehetőséggel.](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
     ![engedélyezés](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
-6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
+6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a munkahelyhez a Facebook**lehetőséget.
 
@@ -107,11 +107,11 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
    |---|---|
    |userName (Felhasználónév)|Sztring|
    |displayName|Sztring|
-   |Active|Logikai|
+   |active|Logikai|
    |cím|Logikai|
-   |e-mailek [type EQ "work"]. Value|Sztring|
-   |név. givenName|Sztring|
-   |név. familyName|Sztring|
+   |emails[type eq "work"].value|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
    |név. formázott|Sztring|
    |címek [type EQ "work"]. formázott|Sztring|
    |címek [type EQ "work"]. streetAddress|Sztring|
@@ -120,44 +120,44 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
    |címek [type EQ "work"]. Country|Sztring|
    |címek [type EQ "work"]. irányítószám|Sztring|
    |címek [type EQ "other"]. formázott|Sztring|
-   |phoneNumbers [type EQ "work"]. Value|Sztring|
-   |phoneNumbers [type EQ "Mobile"]. Value|Sztring|
+   |phoneNumbers[type eq "work"].value|Sztring|
+   |phoneNumbers[type eq "mobile"].value|Sztring|
    |phoneNumbers [type EQ "fax"]. Value|Sztring|
    |externalId|Sztring|
    |preferredLanguage|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Manager|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Department|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Division|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. szervezet|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. costCenter|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. employeeNumber|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.department|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.division|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|Sztring|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Sztring|
    |urn: scim: sémák: bővítmény: Facebook: auth_method: 1.0: auth_method|Sztring|
    |urn: scim: sémák: bővítmény: Facebook: Frontline: 1.0. is_frontline|Logikai|
    |urn: scim: sémák: bővítmény: Facebook: starttermdates: 1.0. startDate|Egész szám|
 
 
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 11. Az Azure AD-kiépítési szolgáltatás a Facebook számára történő engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
 12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a Facebook számára szeretne kiépíteni a munkahelyen a **Beállítások** **szakaszban található kívánt** értékek kiválasztásával.
 
-    ![Kiépítési hatókör](common/provisioning-scope.png)
+    ![Átadási hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+13. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
+Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
-Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
+Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
-1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
-2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
-3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 *  Ha egy felhasználót nem sikerült létrehozni, és egy "1789003" kóddal rendelkező naplózási esemény van, akkor a felhasználó nem ellenőrzött tartományból származik.
@@ -166,11 +166,11 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 
 * 09/10/2020 – a (z) "Division", "Organization", "costCenter" és "employeeNumber" vállalati attribútumok támogatása. A "startDate", a "auth_method" és a "Frontline" egyéni attribútumok támogatása
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)

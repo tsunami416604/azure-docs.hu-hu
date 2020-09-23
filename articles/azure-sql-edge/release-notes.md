@@ -9,17 +9,42 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/04/2020
-ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500351"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900598"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
 Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét.
+
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
+
+### <a name="sql-engine-build-number---15020001549"></a>SQL Engine Build száma – 15.0.2000.1549
+
+### <a name="whats-new"></a>Újdonságok
+1. Ubuntu 18,04-alapú tároló rendszerképek. 
+2. A és `IGNORE NULL` a `RESPECT NULL` függvények támogatása `LAST_VALUE()` `FIRST_VALUE()` . 
+3. Megbízhatósági változások a ONNX-vel való ELŐREJELZÉShez.
+4. Adatmegőrzési szabályzaton alapuló tisztítás támogatása.      
+   - A fürtözött oszlopcentrikus indexek optimalizált tisztításának támogatása.
+5. Új funkció támogatása 
+   - Gyors helyreállítás
+   - Lekérdezések automatikus finomhangolása
+
+### <a name="fixes"></a>Javítások
+1. További hibaüzenetek és részletek a TSQL adatfolyam-továbbítási műveleteivel kapcsolatos hibák elhárításához. 
+2. Az akkumulátor élettartamának az üresjárati módban való megőrzésének újdonságai. 
+3. TSQL streaming Engine-javítások: 
+   - Leállított folyamatos átviteli feladatok karbantartása 
+   - Javítások a honosítási és a Unicode-kezelési javításokhoz
+4. Adatmegőrzési házirend alapú tisztítás
+   - Az adatmegőrzési szabályzat létrehozásának és a tisztítási forgatókönyveknek a javításai.
+5. Javítja a háttérben futó időzítő feladatait, hogy az alacsony energiaellátású üzemmód számára növelje az energiamegtakarítást.
+
 
 ## <a name="ctp-23"></a>CTP 2,3
 ### <a name="sql-engine-build-number---15020001549"></a>SQL Engine Build száma – 15.0.2000.1549
@@ -33,7 +58,7 @@ Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét
 
 ### <a name="fixes"></a>Javítások
 1. További hibaüzenetek és részletek a TSQL adatfolyam-továbbítási műveleteivel kapcsolatos hibák elhárításához. 
-2. Imporvements az akkumulátor élettartamának üresjárati módban való megőrzéséhez. 
+2. Az akkumulátor élettartamának az üresjárati módban való megőrzésének újdonságai. 
 3. TSQL streaming Engine-javítások: 
    - Az elakadt vízjel-probléma kijavítása a alstreamben lévő ugráló ablakmal 
    - Javítsa ki a keretrendszer kivétel-kezelését, hogy a rendszer a felhasználó által végrehajtható hiba miatt begyűjtse

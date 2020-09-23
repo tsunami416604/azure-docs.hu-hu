@@ -1,6 +1,6 @@
 ---
-title: sys. external_streams (Transact-SQL) – Azure SQL Edge (előzetes verzió)
-description: Tudnivalók a sys. external_streams használatáról az Azure SQL Edge-ben (előzetes verzió)
+title: sys. external_streams (Transact-SQL) – Azure SQL Edge
+description: Tudnivalók a sys. external_streams használatáról az Azure SQL Edge-ben
 keywords: sys. external_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,28 +9,28 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 8200d1814537a76db357704d6baf3bf482c587e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04950f01c06bc3c8ed3bb11a790310c2319a0579
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235111"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900311"
 ---
 # <a name="sysexternal_streams-transact-sql"></a>sys.external_streams (Transact-SQL)
 
 Az adatbázis hatókörében létrehozott minden külső adatfolyam-objektum sorát adja vissza.
 
-|Oszlop neve|Adattípus|Description|  
+|Oszlop neve|Adattípus|Leírás|  
 |-----------------|---------------|-----------------|
 |**név**|**rendszerneve**|Az adatfolyam neve. Egyedi a adatbázison belül.|
 |**object_id**|**int**|az adatfolyam-objektumhoz tartozó objektum-azonosító szám. Egyedi a adatbázison belül.|
 |**principal_id**|**int**|A szerelvényt birtokló rendszerbiztonsági tag azonosítója|
 |**schema_id**|**int**| Az objektumot tartalmazó séma azonosítója.|
-|**parent_object_id**|**ID**| az adatfolyamhoz tartozó szülőobjektum objektum-azonosító száma. Az aktuális implementációban ez az érték mindig null|
+|**parent_object_id**|**id**| az adatfolyamhoz tartozó szülőobjektum objektum-azonosító száma. Az aktuális implementációban ez az érték mindig null|
 |**típusa**|**char (2)**|Objektumtípus. Stream-objektumok esetében a típus mindig "ES"|
 |**type_desc**|**nvarchar (60)**| Az objektumtípus leírása. Stream-objektumok esetében a típus mindig "EXTERNAL_STREAM"|
-|**create_date**|**datetime**| Az objektum létrehozásának dátuma.|
-|**modify_date**|**datetime**| Az objektum utolsó módosításának dátuma ALTER utasítás használatával.|
+|**create_date**|**dátum/idő**| Az objektum létrehozásának dátuma.|
+|**modify_date**|**dátum/idő**| Az objektum utolsó módosításának dátuma ALTER utasítás használatával.|
 |**is_ms_shipped**|**bit**| Egy belső összetevő által létrehozott objektum.|  
 |**is_published**|**bit**|Az objektum közzé van téve.|  
 |**is_schema_published**|**bit**|Csak az objektum sémája lesz közzétéve.|

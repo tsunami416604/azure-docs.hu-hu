@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018101"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974368"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -373,7 +373,7 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
 1. Ellenőrizze az ügynök telepítését, és ellenőrizze, hogy fut-e. Ehhez nyissa meg a "szolgáltatások" beépülő modult, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
 
    >[!div class="mx-imgBorder"]
-   >![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről](./media/workday-inbound-tutorial/services.png)
+   >![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről.](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3. rész: a kiépítési alkalmazásban konfigurálja a munkanapokhoz és a Active Directoryhoz való kapcsolódást.
 Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a Azure Portal. 
@@ -1152,9 +1152,9 @@ Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** ka
 
 Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, elemzéseket végez, vagy 30 napon belül nem nyújt betekintést. Ezért az Azure AD kiépítési szolgáltatás 30 napon belül nem tárolja, dolgozza fel és nem őrzi meg az összes adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Ismerje meg, hogyan használhatja a Microsoft Graph API-kat a kiépítési konfigurációk kezeléséhez](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

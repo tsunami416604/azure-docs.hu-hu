@@ -1,6 +1,6 @@
 ---
-title: Tanúsítványok hibaelhárítása Azure Stack Edge GPU-val | Microsoft Docs
-description: A Azure Stack Edge GPU-eszközzel kapcsolatos hibák elhárítását ismerteti.
+title: Tanúsítványok hibaelhárítása Azure Stack Edge Pro-val GPU-val | Microsoft Docs
+description: A Azure Stack Edge Pro GPU-eszközzel kapcsolatos hibák elhárítását ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269437"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891324"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Tanúsítványokkal kapcsolatos hibák elhárítása
 
-A cikk a tanúsítványoknak az Azure Stack Edge-eszközre történő telepítésekor gyakori hibák elhárítását ismerteti.
+A cikk a tanúsítványoknak a Azure Stack Edge Pro-eszközre történő telepítésekor gyakori hibák elhárítását ismerteti.
 
 ## <a name="common-certificate-errors"></a>Gyakori tanúsítvány-hibák
 
@@ -56,6 +56,6 @@ Az alábbi táblázat a hibákkal és a lehetséges megoldásokkal kapcsolatos g
 | CertificateManagement_UnreadableCertificate | A típusú tanúsítvány {0} nem olvasható. Ez a hiba akkor fordul elő, ha a tanúsítvány nem olvasható vagy sérült. Új tanúsítvány létrehozása.|
 | CertificateSubjectNotFound | Nem található a tulajdonos nevű tanúsítvány {0} . Új tanúsítvány létrehozása.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Tanúsítványkövetelmények](azure-stack-edge-j-series-certificate-requirements.md)
+[Tanúsítványokra vonatkozó követelmények](azure-stack-edge-j-series-certificate-requirements.md)

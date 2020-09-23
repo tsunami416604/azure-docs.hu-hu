@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76834684"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987176"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Oktatóanyag: Hálózatok közötti kommunikációs probléma diagnosztizálása az Azure Portal használatával
 
@@ -30,7 +30,7 @@ A virtuális hálózati átjárók egy Azure Virtual Networköt kapcsolnak össz
 > * Átjárókapcsolattal kapcsolatos problémák diagnosztizálása
 > * Átjárókkal kapcsolatos problémák megoldása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -73,12 +73,12 @@ Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytas
 8. Amíg a teszt fut, a **Fut** érték látható a **HIBAELHÁRÍTÁSI ÁLLAPOT** oszlopban, ahol az előző képen még **Nem indult el** szerepelt. A teszt futtatása több percig is eltarthat.
 9. Tekintse meg az elvégzett teszt állapotát. Az alábbi képen egy befejezett diagnosztikai teszt állapoteredményei láthatók:
 
-    ![status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![A képernyőkép a diagnosztikai tesztek állapotának eredményét jeleníti meg, a jelen példában nem kifogástalan állapotot, beleértve az összegzést és a részleteket is.](./media/diagnose-communication-problem-between-networks/status.png)
 
     Látható, hogy a **HIBAELHÁRÍTÁSI ÁLLAPOT****Nem kifogástalan**, illetve a probléma **Összegzése** és **Részletei** is láthatók az **Állapot** lapon.
 10. A **Művelet** lap kiválasztásakor a VPN-diagnosztika további információkkal szolgál. Az alábbi képen látható példában a VPN-diagnosztikából megtudhatja, hogy ellenőriznie kell az összes kapcsolat állapotát:
 
-    ![Műveletek](./media/diagnose-communication-problem-between-networks/action.png)
+    ![A képernyőképen a művelet lap jelenik meg, amely további információkat nyújt.](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Átjárókapcsolat diagnosztizálása
 
@@ -86,7 +86,7 @@ Az átjárók átjárókapcsolatokkal csatlakoznak más hálózatokhoz. Az átj�
 
 1. Hajtsa végre az [Átjáró diagnosztizálása](#diagnose-a-gateway) szakaszban leírt 7. lépést ismét, de ezúttal válasszon ki egy kapcsolatot. Az alábbi példában a **VNet1toSite1** nevű kapcsolatot teszteljük:
 
-    ![Kapcsolat](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![A képernyőképen megtudhatja, hogyan indíthatja el a hibaelhárítást a kiválasztott kapcsolatok esetében.](./media/diagnose-communication-problem-between-networks/connection.png)
 
     A teszt több percet is igénybe vehet.
 2. Amikor a kapcsolat tesztelése befejeződött, az alábbi képen láthatóhoz hasonló eredményeket fog kapni az **Állapot** és a **Művelet** lapon:

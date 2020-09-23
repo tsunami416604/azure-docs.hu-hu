@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961533"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973751"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -137,7 +137,7 @@ A webalkalmazás kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.
 
 A **app Services** lapon válassza ki a webalkalmazás nevét.
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-dotnetcore/select-app-service.png)
+:::image type="content" source="./media/quickstart-dotnetcore/select-app-service.png" alt-text="Képernyőkép a App Services oldalon egy példaként kiválasztott webalkalmazással.":::
 
 A webalkalmazás **áttekintő** lapja olyan alapszintű felügyeleti lehetőségeket tartalmaz, mint a Tallózás, Leállítás, indítás, újraindítás és törlés. A bal oldali menü további lapokat biztosít az alkalmazás konfigurálásához.
 
@@ -304,7 +304,7 @@ A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure
 
 A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-dotnetcore/portal-app-service-list.png)
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Képernyőkép a App Services lapról, amely egy példaként kiválasztott Azure-alkalmazást mutat be.":::
 
 Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421084"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902793"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for MySQL a Azure Portal használatával
 
@@ -32,7 +32,7 @@ A kiszolgáló létrehozásakor a **díjszabási** szinten ablakban beállíthat
 
 Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási rétegek** ablakban a **helyi redundáns** vagy **földrajzilag redundáns** biztonsági másolatokat választhatja a kiszolgáló számára. Ezen az ablakban is kiválaszthatja a **biztonsági mentés megőrzési időtartamát** – mennyi ideig (hány nap múlva) kívánja tárolni a kiszolgáló biztonsági másolatait.
 
-   ![Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
 További információ ezekről az értékekről a létrehozás során: [Azure Database for MySQL Server](quickstart-create-mysql-server-database-using-azure-portal.md)gyors üzembe helyezése.
 
@@ -41,7 +41,7 @@ A biztonsági másolatok megőrzési időszaka a kiszolgálón a következő lé
 2. Válassza ki a Azure Database for MySQL-kiszolgálót. Ez a művelet megnyitja az **Áttekintés** lapot.
 3. Válassza ki az **árképzési szintet** a menü **Beállítások**területén. A csúszka használatával megváltoztathatja a **biztonsági mentés megőrzési időtartamát** 7 és 35 nap között.
 Az alábbi képernyőképen a 34 napra nőtt.
-![A biztonsági másolatok megőrzési időszaka nagyobb](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="A biztonsági másolatok megőrzési időszaka nagyobb":::
 
 4. A módosítás megerősítéséhez kattintson **az OK** gombra.
 
@@ -57,11 +57,11 @@ A következő lépésekkel állíthatja vissza a kiszolgálót egy időpontra:
 
 2. A kiszolgáló **Áttekintés** lapjának eszköztárán válassza a **visszaállítás**lehetőséget.
 
-   ![Azure Database for MySQL – áttekintés – visszaállítás gomb](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – áttekintés – visszaállítás gomb":::
 
 3. Töltse ki a Visszaállítás űrlapot a szükséges információkkal:
 
-   ![Azure Database for MySQL – adatok visszaállítása](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL – adatok visszaállítása":::
    - **Visszaállítási pont**: válassza ki azt az időpontot, amelyet vissza szeretne állítani.
    - **Célkiszolgáló**: adja meg az új kiszolgáló nevét.
    - **Hely**: nem választhatja ki a régiót. Alapértelmezés szerint ugyanaz, mint a forráskiszolgáló.
