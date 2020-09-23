@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: több-bérlős adatbázis tervezése – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
-description: Ez az oktatóanyag bemutatja, hogyan tervezhet több-bérlős adatbázist Azure Database for PostgreSQL nagy kapacitású (Citus) használatával.
+description: Ez az oktatóanyag bemutatja, hogyan lehet egy skálázható, több-bérlős alkalmazást Azure Database for PostgreSQL nagy kapacitású (Citus) bekapcsolni.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: b28307783957af2613152c2a8305f3650aa352ac
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895263"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
@@ -275,6 +275,5 @@ Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsop
 
 Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogy a bérlők között és között is lekérdezze az adatlekérdezést, valamint a séma személyre szabását a bérlőn belül.
 
-Ezután megismerheti a nagy kapacitású fogalmait.
-> [!div class="nextstepaction"]
-> [Nagy kapacitású csomópont-típusok](https://aka.ms/hyperscale-concepts)
+- További információ a kiszolgálói csoportok [csomópontjainak típusairól](https://aka.ms/hyperscale-concepts)
+- A kiszolgálócsoport legjobb [kezdeti méretének](howto-hyperscale-scaling.md#picking-initial-size) meghatározása

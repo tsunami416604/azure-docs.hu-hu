@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Edge (előzetes verzió) üzembe helyezése a Azure Portal használatával
-description: Ismerje meg, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) szolgáltatását a Azure Portal használatával
+title: Az Azure SQL Edge üzembe helyezése a Azure Portal használatával
+description: Ismerje meg, hogyan helyezheti üzembe az Azure SQL Edge-t a Azure Portal használatával
 keywords: SQL Edge üzembe helyezése
 services: sql-edge
 ms.service: sql-edge
@@ -8,17 +8,17 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816864"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886763"
 ---
-# <a name="deploy-azure-sql-edge-preview"></a>Az Azure SQL Edge üzembe helyezése (előzetes verzió) 
+# <a name="deploy-azure-sql-edge"></a>Az Azure SQL Edge üzembe helyezése 
 
-Az Azure SQL Edge (előzetes verzió) egy IoT és Azure IoT Edge üzemelő példányokhoz optimalizált, összehasonlítható adatbázis-motor. Lehetőséget biztosít nagy teljesítményű adattárolási és feldolgozási réteg létrehozására a IoT alkalmazások és megoldások számára. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure SQL Edge-modult Azure IoT Edge segítségével a Azure Portal használatával.
+Az Azure SQL Edge egy IoT és Azure IoT Edge üzemelő példányokhoz optimalizált, a kapcsolatot kezelő adatbázismotor. Lehetőséget biztosít nagy teljesítményű adattárolási és feldolgozási réteg létrehozására a IoT alkalmazások és megoldások számára. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure SQL Edge-modult Azure IoT Edge segítségével a Azure Portal használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -28,7 +28,7 @@ Az Azure SQL Edge (előzetes verzió) egy IoT és Azure IoT Edge üzemelő péld
 * [IoT Edge eszköz regisztrálása a Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Készítse elő a IoT Edge eszközt [IoT Edge modul üzembe helyezéséhez a Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
 
-> [!NOTE]
+> [!NOTE]   
 > Ha IoT Edge eszközként szeretne üzembe helyezni egy Azure-beli linuxos virtuális gépet, tekintse meg ezt a rövid [útmutatót](../iot-edge/quickstart-linux.md).
 
 ## <a name="deploy-sql-edge-module-from-azure-marketplace"></a>Az SQL Edge-modul üzembe helyezése az Azure Marketplace-en
@@ -51,75 +51,73 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
    |IoT Hub   |  Azon IoT Hub neve, ahol a IoT Edge eszköz regisztrálva van, majd válassza az "üzembe helyezés eszközre" lehetőséget.|
    |IoT Edge eszköz neve  |  Annak a IoT Edge eszköznek a neve, amelyen az SQL Edge üzembe lett helyezve |
 
-4. A **modulok beállítása** lapon navigáljon az üzembe helyezési modulok szakaszhoz, és kattintson a **Konfigurálás** az SQL Edge-modulra elemre. 
+4. A **modulok beállítása az eszközön:** lapon kattintson az Azure SQL Edge-modulra **IoT Edge modulok**területen. Az alapértelmezett modul neve *AzureSQLEdge*értékre van állítva. 
 
-5. A **IoT Edge egyéni modulok** ablaktáblán válassza ki a környezeti változók kívánt értékeit, és/vagy szabja testre a modul létrehozási beállításait és kívánt tulajdonságait. A támogatott környezeti változók teljes listájáért tekintse meg [SQL Server tároló környezeti változóit](/sql/linux/sql-server-linux-configure-environment-variables/).
+5. A **IoT Edge-modul frissítése** panelen a *modul beállításai* szakaszban adja meg a *IoT Edge modul nevét*, az *Újraindítási szabályzatot* és a *kívánt állapotot*. 
+
+   > [!IMPORTANT]    
+   > Ne módosítsa vagy frissítse a **RENDSZERKÉP URI** -beállításait a modulon.
+
+6. A **IoT Edge-modul frissítése** panel *környezeti változók* szakaszában válassza ki a környezeti változók kívánt értékeit. Az Azure SQL Edge környezeti változók teljes listáját a [Konfigurálás környezeti változók használatával](configure.md#configure-by-using-environment-variables)című témakörben találja. A modulhoz a következő alapértelmezett környezeti változók vannak meghatározva. 
 
    |**Paraméter**  |**Leírás**|
    |---------|---------|
-   | Név | A modul neve. |
-   |SA_PASSWORD  | Erős jelszót kell megadnia az SQL Edge rendszergazdai fiókjához. |
-   |MSSQL_LCID   | Beállítja a SQL Server használandó nyelvi azonosítót. Például 1036 a francia. |
-   |MSSQL_COLLATION | Beállítja SQL Server alapértelmezett rendezését. Ez a beállítás felülbírálja a nyelvi azonosító (LCID) alapértelmezett leképezését a rendezéshez. |
+   | Name | A modul neve. |
+   | MSSQL_SA_PASSWORD  | Módosítsa az alapértelmezett értéket úgy, hogy erős jelszót határozzon meg az SQL Edge rendszergazdai fiókjához. |
+   | MSSQL_LCID   | Módosítsa az alapértelmezett értéket az SQL Edge-hez használni kívánt nyelvi azonosító megadásához. Például 1036 a francia. |
+   | MSSQL_COLLATION | Módosítsa az alapértelmezett értéket az SQL Edge alapértelmezett rendezésének beállításához. Ez a beállítás felülbírálja a nyelvi azonosító (LCID) alapértelmezett leképezését a rendezéshez. |
 
-   > [!NOTE]
-   > A modulban ne módosítsa vagy frissítse a **rendszerkép URI-ját** vagy a **ACCEPT_EULA** beállításait.
+   > [!IMPORTANT]    
+   > Ne módosítsa vagy frissítse a **ACCEPT_EULA** környezeti változót a modulhoz.
 
-6. A **IoT Edge egyéni modulok** ablaktáblán frissítse a tároló létrehozási beállításai kívánt értékét a **gazdagép portjához**. Ha egynél több SQL DB Edge-modult kell üzembe helyeznie, frissítse a csatlakoztatások lehetőséget, és hozzon létre egy új forrás & cél párt az állandó kötethez. A csatlakoztatásokról és a kötetekről a [kötetek használata](https://docs.docker.com/storage/volumes/) a Docker-dokumentációban című témakörben olvashat bővebben. 
-
-   ```json
-       {
-         "HostConfig": {
-           "Binds": [
-             "sqlvolume:/sqlvolume"
-           ],
-           "PortBindings": {
-             "1433/tcp": [
-               {
-                 "HostPort": "1433"
-               }
-             ]
-           },
-           "Mounts": [
-             {
-               "Type": "volume",
-               "Source": "sqlvolume",
-               "Target": "/var/opt/mssql"
-             }
-           ]
-         },
-         "Env": [
-           "MSSQL_AGENT_ENABLED=TRUE",
-           "MSSQL_PID=Developer"
-         ]
-       }
-   ```
-
-7. A **IoT Edge egyéni modulok** ablaktáblán frissítse a *set Module Twin 's kívánt tulajdonságait* , hogy tartalmazza az SQL-csomag és a stream Analytics-feladatának helyét. Ez a két mező nem kötelező, és akkor használható, ha az SQL Edge-modult egy adatbázissal és egy folyamatos átviteli feladattal szeretné üzembe helyezni.
+7. A **IoT Edge-modul frissítése** panelen a *tároló létrehozási beállítások* szakaszában frissítse a következő beállításokat, igény szerint. 
+   - **Gazda portja:** A megadott gazdagép portjának leképezése a tárolóban lévő 1433-as portra (alapértelmezett SQL-port).
+   - **Kötések** és **csatlakoztatások:** ha egynél több SQL Edge-modult kell központilag telepítenie, győződjön meg arról, hogy a csatlakoztatások lehetőségre kattintva új forrás & cél párt hoz létre az állandó kötethez. A csatlakoztatásokról és a kötetekről a [kötetek használata](https://docs.docker.com/storage/volumes/) a Docker-dokumentációban című témakörben olvashat bővebben. 
 
    ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+   {
+    "HostConfig": {
+        "CapAdd": [
+            "SYS_PTRACE"
+        ],
+        "Binds": [
+            "sqlvolume:/sqlvolume"
+        ],
+        "PortBindings": {
+            "1433/tcp": [
+                {
+                    "HostPort": "1433"
+                }
+            ]
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Source": "sqlvolume",
+                "Target": "/var/opt/mssql"
+            }
+        ]
+    },
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "PlanId=asde-developer-on-iot-edge"
+    ]
+   }
    ```
-
-8. A **IoT Edge egyéni modulok** ablaktáblán állítsa az *Újraindítási szabályzatot* mindig és a *kívánt állapotra* a futtatáshoz.
-9. A **IoT Edge egyéni modulok** ablaktáblán kattintson a **Mentés**gombra.
-10. A **modulok beállítása** lapon kattintson a **tovább**gombra.
-11. A **modulok beállítása** lap **útvonal megadása (nem kötelező)** lapján adja meg az útvonalakat a modulhoz vagy modulhoz IoT Edge hub-kommunikációhoz, lásd: [modulok üzembe helyezése és útvonalak létrehozása IoT Edgeokban](../iot-edge/module-composition.md).
-12. Kattintson a **Tovább** gombra.
-13. Kattintson a **Submit (Küldés**) gombra.
+   > [!IMPORTANT]    
+   > Ne módosítsa a `PlanId` konfiguráció létrehozása beállításban definiált környezeti változót. Ha ez az érték módosul, az Azure SQL Edge-tároló nem fog elindulni. 
+   
+8. A **frissítés IoT Edge modul** ablaktáblán kattintson a **frissítés**elemre.
+9. Az **eszközön lévő modulok beállítása** lapon kattintson a **Tovább gombra: útvonalak >** , ha útvonalakat kell meghatároznia az üzemelő példányhoz. Ellenkező esetben kattintson a **felülvizsgálat + létrehozás**gombra. Az útvonalak konfigurálásával kapcsolatos további információkért lásd: [modulok telepítése és útvonalak létrehozása IoT Edgeban](../iot-edge/module-composition.md).
+11. A **IoT Edge frissítése** panelen kattintson a **Létrehozás**elemre.
 
 ## <a name="connect-to-azure-sql-edge"></a>Kapcsolódás az Azure SQL Edge-hez
 
 A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd**-t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
 
-> [!NOTE]
-> a Sqlcmd eszköz nem érhető el az SQL Edge-tárolók ARM64-verzióján belül.
+> [!NOTE]      
+> Az SQL parancssori eszközök (Sqlcmd-EK) nem érhetők el az Azure SQL Edge-tárolók ARM64-verzióján belül.
 
 1. A `docker exec -it` paranccsal interaktív bash-rendszerhéj indítható el a futó tárolóban. A következő példában a `azuresqledge` `Name` IoT Edge modul paraméterében megadott név szerepel.
 
@@ -133,14 +131,14 @@ A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd**-t 
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
    ```
 
-   > [!TIP]
+   > [!TIP]    
    > A parancssorból kihagyhatja a jelszót, hogy a rendszer megkérje a jelszó megadását.
 
 3. Ha a művelet sikeres, egy **Sqlcmd** parancssorba kell beolvasnia: `1>` .
 
 ## <a name="create-and-query-data"></a>Adatlekérdezés létrehozása és lekérdezése
 
-A következő szakasz végigvezeti a **Sqlcmd** és a Transact-SQL használatával egy új adatbázis létrehozásához, az adathozzáadáshoz és egy egyszerű lekérdezés futtatásához.
+A következő szakasz végigvezeti a **Sqlcmd** és a Transact-SQL használatával egy új adatbázis létrehozásához, az adathozzáadáshoz és a lekérdezés futtatásához.
 
 ### <a name="create-a-new-database"></a>Új adatbázis létrehozása
 
@@ -220,8 +218,9 @@ SQL-lekérdezéseket kapcsolódhat és futtathat az Azure SQL Edge-példányon m
 
 Ebben a rövid útmutatóban egy SQL Edge-modult telepített egy IoT Edge eszközön. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Machine learning és mesterséges intelligencia a ONNX az SQL Edge-ben](onnx-overview.md).
-- [Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge segítségével](tutorial-deploy-azure-resources.md).
+- [Machine Learning és mesterséges intelligencia az SQL Edge ONNX](onnx-overview.md)
+- [Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge](tutorial-deploy-azure-resources.md)
 - [Adatfolyamok az Azure SQL Edge-ben](stream-data.md)
+- [Üzembehelyezési hibák elhárítása](troubleshoot.md)

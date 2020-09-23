@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894582"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -33,7 +33,7 @@ A Azure Security Center a kiválasztott szabályzatok alapján hozza meg a bizto
 
 Security Center a következő lehetőségeket kínálja a biztonsági házirendek használatához:
 
-* **A beépített alapértelmezett házirend megtekintése és szerkesztése – a** Security Center engedélyezésekor az "ASC default" nevű beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez (ingyenes vagy standard díjszabási szint). A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](security-center-policy-definitions.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
+* **A beépített alapértelmezett házirend megtekintése és szerkesztése** – a Security Center engedélyezésekor az "ASC default" nevű beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](security-center-policy-definitions.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
 
 * **Saját egyéni szabályzatok hozzáadása** – Ha testre szeretné szabni az előfizetésre alkalmazott biztonsági kezdeményezéseket, akkor a Security Centeron belül megteheti. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket. Az egyéni házirendek létrehozásával és hozzárendelésével kapcsolatos utasításokért lásd: [egyéni biztonsági házirendek használata](custom-security-policies.md).
 

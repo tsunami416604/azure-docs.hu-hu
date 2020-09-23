@@ -7,15 +7,106 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f9f03c355e1e619d004c8ec8c1cc2f91932db744
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 96a97b9b141d434f201da4c7e36f6715186a652e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903018"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel
 
+::: zone pivot="programming-language-csharp"
+Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud integrálja a Steeltoe [elosztott nyomkövetését](https://steeltoe.io/docs/3/tracing/distributed-tracing) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból.
+
+Az alábbi eljárások azt ismertetik, hogyan használhatók a naplózási adatfolyamok, a Log Analytics, a metrikák és az elosztott nyomkövetés az előző rövid útmutatókba telepített minta alkalmazással.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* A sorozat előző rövid útmutatóinak elvégzése:
+
+  * [Azure Spring Cloud-szolgáltatás kiépítése](spring-cloud-quickstart-provision-service-instance.md).
+  * Az [Azure Spring Cloud konfigurációs kiszolgáló beállítása](spring-cloud-quickstart-setup-config-server.md).
+  * [Alkalmazások készítése és üzembe helyezése](spring-cloud-quickstart-deploy-apps.md).
+
+## <a name="logs"></a>Naplók
+
+Az Azure Spring Cloud naplóit kétféleképpen tekintheti meg: valós idejű naplók **naplózása** alkalmazás-példányon vagy **log Analytics** a speciális lekérdezési képességgel rendelkező összesített naplókhoz.
+
+### <a name="log-streaming"></a>Naplózási adatfolyam
+
+A log streaming az Azure CLI-ben a következő paranccsal használható.
+
+```azurecli
+az spring-cloud app logs -n solar-system-weather -f
+```
+
+A következő példához hasonló kimenet jelenik meg:
+
+```output
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Executing action method Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather) - Validation state: Valid
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController[0]
+
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Retrieved weather data from 4 planets
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+
+=> ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
+Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]][]'.
+←[40m←[32minfo←[39m←[22m←[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+```
+
+> [!TIP]
+> `az spring-cloud app logs -h`A segítségével további paramétereket és a log stream működését is megismerheti.
+
+### <a name="log-analytics"></a>Log Analytics
+
+1. Ugrás a **szolgáltatásra | Áttekintés** oldalon, majd a **figyelés** szakaszban válassza a **naplók** lehetőséget. Válassza a **Futtatás** lehetőséget az Azure Spring Cloud-beli minta-lekérdezések egyikén.
+
+   [![Naplók Analytics-bejegyzés ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
+    
+1. Szerkessze a lekérdezést, és távolítsa el azokat a WHERE záradékokat, amelyek a figyelmeztetési és a hibajelentési naplókra korlátozzák a megjelenítést.
+
+1. Ezután válassza `Run` a () lehetőséget, és látni fogja a naplókat. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) talál.
+
+   [![Naplók Analytics-lekérdezés – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
+
+## <a name="metrics"></a>Mérőszámok
+
+1. A Azure Portal lépjen a **szolgáltatáshoz | Áttekintés** lapon válassza a **metrikák** lehetőséget a **figyelés** szakaszban. Adja hozzá az első mérőszámot a metrika lehetőség kiválasztásával `system.cpu.usage` , és **Metric** `Avg` a teljes CPU-használat idővonalának megjelenítéséhez. **Aggregation**
+
+   [![Metrikai bejegyzés – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
+    
+1. Kattintson a **szűrő hozzáadása** elemre az eszköztáron, és válassza a `App=solar-system-weather` CPU-használat csak a **nap-rendszer időjárási** alkalmazáshoz lehetőséget.
+
+   [![Szűrő használata mérőszámokban – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
+
+1. Zárja be az előző lépésben létrehozott szűrőt, válassza a **felosztás alkalmazása**lehetőséget, majd válassza `App` az **értékek** lehetőséget a különböző alkalmazások CPU-használatának megjelenítéséhez.
+
+   [![Felosztás alkalmazása mérőszámokban – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
+
+## <a name="distributed-tracing"></a>Elosztott nyomkövetés
+
+1. A Azure Portal lépjen a **szolgáltatáshoz | Áttekintés** lapon válassza az **elosztott nyomkövetés** lehetőséget a **figyelés** szakaszban. Ezután kattintson a jobb oldalon található **alkalmazás-hozzárendelés megtekintése** fülre.
+
+   [![Elosztott nyomkövetési bejegyzés – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
+
+1. Mostantól megtekintheti a hívások állapotát az alkalmazások között. 
+
+   [![Elosztott nyomkövetés áttekintése – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
+    
+1. Válassza a **Solar-System-Weather** és a **Planet-Weather-Provider** közötti kapcsolatot, ha további részleteket szeretne látni, például a leglassabb hívásokat http-módszerekkel.
+
+   [![Elosztott nyomkövetés – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
+    
+1. Végül a **teljesítmény vizsgálata** lehetőségre kattintva megismerheti a nagyobb teljesítményű beépített teljesítményt.
+
+   [![Elosztott nyomkövetési teljesítmény – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png#lightbox)
+::: zone-end
+
+::: zone pivot="programming-language-java"
 Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból. Az alábbi eljárások azt ismertetik, hogyan használhatók a naplózási adatfolyamok, a Log Analytics, a metrikák és az elosztott nyomkövetés a telepített PiggyMetrics-alkalmazásokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -110,15 +201,17 @@ Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
    [![Elosztott nyomkövetési teljesítmény ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portálról, vagy futtassa a következő parancsot a Cloud Shellban:
+Ezekben a gyors útmutatókban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portál használatával, vagy futtassa a következő parancsot a Cloud Shellban:
 
 ```azurecli
-az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
 
-Az előző lépésekben az erőforráscsoport alapértelmezett nevét is megadhatja. Az alapértelmezett beállítás törléséhez futtassa a következő parancsot a Cloud Shellban:
+Egy korábbi rövid útmutatóban az erőforráscsoport alapértelmezett nevét is megadhatja. Ha nem kívánja folytatni a következő rövid útmutatót, törölje az alapértelmezett beállítást az alábbi CLI-parancs futtatásával:
 
 ```azurecli
 az configure --defaults group=
@@ -126,9 +219,11 @@ az configure --defaults group=
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az Azure Spring Cloud szolgáltatáson kívüli figyelési képességről, tekintse meg a következőt:
+Az Azure Spring Cloud további figyelési képességeinek megismeréséhez lásd:
 
 > [!div class="nextstepaction"]
-> [Diagnosztikai szolgáltatások](diagnostic-services.md) 
->  [Elosztott nyomkövetés](spring-cloud-tutorial-distributed-tracing.md) 
->  [Adatfolyam-naplók valós időben](spring-cloud-howto-log-streaming.md)
+> [Diagnosztikai szolgáltatások](diagnostic-services.md)
+>
+> [Elosztott nyomkövetés](spring-cloud-tutorial-distributed-tracing.md)
+>
+> [Adatfolyam-naplók valós időben](spring-cloud-howto-log-streaming.md)

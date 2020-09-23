@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189924"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983240"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Az ügyféladatok funkcióinak Azure Key Vault
 
-A Azure Key Vault a tárolók, kulcsok, titkok, tanúsítványok és felügyelt Storage-fiókok létrehozása vagy frissítése során fogadja az ügyféladatokat. Ez az ügyféladatok közvetlenül látható a Azure Portalban és a REST APIon keresztül. Az ügyféladatokat szerkesztheti vagy törölheti az azokat tartalmazó objektum frissítésével vagy törlésével.
+A Azure Key Vault a tárolók, a felügyelt HSM-készletek, kulcsok, titkok, tanúsítványok és felügyelt Storage-fiókok létrehozása vagy frissítése során fogadja az ügyféladatokat. Ez az ügyféladatok közvetlenül látható a Azure Portalban és a REST APIon keresztül. Az ügyféladatokat szerkesztheti vagy törölheti az azokat tartalmazó objektum frissítésével vagy törlésével.
 
 A rendszer-hozzáférési naplók akkor jönnek létre, amikor egy felhasználó vagy alkalmazás hozzáfér Key Vaulthoz. A részletes hozzáférési naplók az Azure-elemzéseket használó ügyfelek számára érhetők el.
 
@@ -52,7 +52,7 @@ Azure Key Vault személyes adatokat tartalmazó diagnosztikai naplókat az expor
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Key Vault naplózás](logging.md))
+- [Azure Key Vault naplózás](logging.md)
 
 - [Azure Key Vault: a helyreállítható törlés áttekintése](soft-delete-cli.md)
 

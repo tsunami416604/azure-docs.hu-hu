@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431292"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983760"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (virtuális hálózati átjáró) összekötése virtuális WAN-kapcsolattal
 
@@ -41,13 +41,13 @@ Hozzon létre egy **VPN Gateway** virtuális hálózati átjárót aktív-aktív
 
 A virtuális hálózati átjáró **konfigurációja** lapon engedélyezze az aktív-aktív üzemmódot.
 
-![aktív-aktív](./media/connect-virtual-network-gateway-vwan/active.png "aktív-aktív")
+![aktív – aktív](./media/connect-virtual-network-gateway-vwan/active.png "aktív-aktív")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP-beállítás
 
 A virtuális hálózati átjáró **konfigurálása** lapon beállíthatja a **BGP ASN**-t. Módosítsa a BGP ASN-t. A BGP ASN nem lehet 65515. a 66515-et az Azure Virtual WAN fogja használni.
 
-![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
+![Képernyőfelvétel: a virtuális hálózati átjáró konfigurációs lapja, amelyen be van jelölve a BGP ASN konfigurálása.](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
 
 ### <a name="public-ip-addresses"></a><a name="pip"></a>Nyilvános IP-címek
 

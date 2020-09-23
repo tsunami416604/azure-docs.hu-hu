@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325525"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983598"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -21,7 +21,7 @@ A vizualizációk, például a diagramok és a diagramok segítségével elemezh
 ## <a name="workbooks"></a>Munkafüzetek
 A [munkafüzetek](./platform/workbooks-overview.md) olyan interaktív dokumentumok, amelyek részletesen betekintést nyújtanak az adataiba, a nyomozásba és a csapaton belüli együttműködésbe. Konkrét példák, ahol a munkafüzetek hasznosak a hibaelhárítási útmutatók és az incidens utáni események.
 
-![Munkafüzet](media/visualizations/workbook.png)
+![A diagram a munkafüzetek több oldalának képernyőképeit mutatja be, beleértve az oldal nézeteinek elemzését, a használatot és az oldalon töltött időt.](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Előnyök
 - A a metrikákat és a naplókat is támogatja.
@@ -39,7 +39,7 @@ A [munkafüzetek](./platform/workbooks-overview.md) olyan interaktív dokumentum
 ## <a name="azure-dashboards"></a>Azure-irányítópultok
 Az [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azure elsődleges irányítópult-technológiái. Különösen hasznosak lehetnek az Azure-infrastruktúra és-szolgáltatások egyetlen ablaktáblájának biztosításában, amely lehetővé teszi a fontos problémák gyors azonosítását.
 
-![Irányítópult](media/visualizations/dashboard.png)
+![A képernyőképen egy példa látható egy testreszabható adatokat tartalmazó Azure-irányítópultra.](media/visualizations/dashboard.png)
 
 Itt látható egy útmutató az irányítópultok létrehozásához.
 
@@ -88,7 +88,7 @@ Itt látható egy útmutató az irányítópultok létrehozásához.
 ## <a name="grafana"></a>Grafana
 A [Grafana](https://grafana.com/) egy nyílt platform, amely kiemelkedik az operatív irányítópultokon. Ez különösen hasznos az operatív incidensek észleléséhez és elkülönítéséhez, illetve osztályozásakor. Az Azure-előfizetéshez hozzáadhat [Grafana Azure monitor adatforrási beépülő modult](platform/grafana-plugin.md) , amely az Azure-metrikák adatait jeleníti meg.
 
-![Grafana](media/visualizations/grafana.png)
+![A képernyőképen a Grafana vizualizációk láthatók.](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Előnyök
 - Sokoldalú vizualizációk.
@@ -117,10 +117,10 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 > [!IMPORTANT]
 > A nézetek elavultak. Tekintse meg a munkafüzetekhez kapcsolódó nézetek konvertálásával kapcsolatos útmutatót a [Azure monitor View Designer a munkafüzetek](platform/view-designer-conversion-overview.md) számára című témakörben.
 
-[A Azure monitor nézetei](platform/view-designer.md) lehetővé teszik, hogy egyéni vizualizációkat hozzon létre a naplózási adattal. Ezeket a [figyelési megoldások](insights/solutions.md) használják a gyűjtött adatok bemutatására.
+[A Azure monitor nézetei](platform/view-designer.md)  lehetővé teszik, hogy egyéni vizualizációkat hozzon létre a naplózási adattal. Ezeket a [figyelési megoldások](insights/solutions.md) használják a gyűjtött adatok bemutatására.
 
 
-![Nézet](media/visualizations/view.png)
+![Képernyőfelvétel: a tároló-figyelési megoldás csempéje és a kiválasztáskor megnyíló Részletes Azure Monitor nézet.](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Előnyök
 - Rich vizualizációk a naplózási adatmegjelenítéshez.
@@ -137,7 +137,7 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 - Nem támogatott több munkaterület vagy Application Insights alkalmazások lekérdezése.
 - A lekérdezések mérete legfeljebb 8 MB, a lekérdezés végrehajtási ideje pedig 110 másodperc.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tudnivalók a [Azure monitor által gyűjtött adatokról](platform/data-platform.md).
 - Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
 - A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.

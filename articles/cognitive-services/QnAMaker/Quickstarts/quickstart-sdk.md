@@ -4,28 +4,40 @@ description: Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 60ba7d18e9da791373914fef7962e32396a489f0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+zone_pivot_groups: programming-languages-set-sixteen
+ms.openlocfilehash: 1517b84b38aaf1878b63d85c3e2f867bcd8e6586
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934174"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982754"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Gyors útmutató: QnA Maker ügyféloldali kódtár
 
 Ismerkedjen meg az QnA Maker ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
+[!INCLUDE [QnA Maker C# client library quickstart](../includes/quickstart-sdk-csharp.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
+[!INCLUDE [QnA Maker Javascript client library quickstart](../includes/quickstart-sdk-nodejs.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
+[!INCLUDE [QnA Maker Python client library quickstart](../includes/quickstart-sdk-python.md)]
+::: zone-end
+
+::: zone pivot="programming-language-java"
+[!INCLUDE [QnA Maker Java client library quickstart](../includes/quickstart-sdk-java.md)]
+::: zone-end
+
+::: zone pivot="programming-language-go"
+[!INCLUDE [QnA Maker Go client library quickstart](../includes/quickstart-sdk-go.md)]
+::: zone-end
+
+::: zone pivot="programming-language-ruby"
+[!INCLUDE [QnA Maker Ruby client library quickstart](../includes/quickstart-sdk-ruby.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -35,7 +47,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Oktatóanyag: a Tudásbázis tesztelése batch-fájllal](./batch-testing.md)

@@ -1,6 +1,6 @@
 ---
 title: Csoporthoz rendelt szerepkörök megtekintése Azure Active Directoryban | Microsoft Docs
-description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure-szerepkörök kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
+description: Megtudhatja, hogyan tekinthetők meg a csoportokhoz rendelt szerepkörök az Azure AD felügyeleti központban. A csoportok és a hozzárendelt szerepkörök megtekintése alapértelmezett felhasználói engedély.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7613fb70299a70e4389b97c2647a26cb7c3374
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0c0a34b3861c82b3d2ef54a36108f9ea522d716d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476087"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983113"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Csoporthoz rendelt szerepkörök megtekintése Azure Active Directory
 
@@ -60,7 +60,7 @@ GET https://graph.microsoft.com/beta/groups?$filter displayName eq ‘Contoso_He
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=principalId eq
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](roles-groups-concept.md)
-- [Felhőalapú csoportokhoz rendelt szerepkörök hibaelhárítása](roles-groups-faq-troubleshooting.md)
+- [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](roles-groups-faq-troubleshooting.md)

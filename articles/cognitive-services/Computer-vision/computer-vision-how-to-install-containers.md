@@ -8,23 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 13d483507092892187bc13dd23bfa51ed516c890
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441153"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982087"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Olvasási tárolók telepítése és futtatása (előzetes verzió)
 
+[!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
+
 A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ez a cikk azt mutatja be, hogyan tölthet le, telepíthet és futtathat egy Computer Vision-tárolót.
 
-Egyetlen Docker-tároló, *olvasás*, Computer Vision érhető el. Az *olvasási* tároló lehetővé teszi a *nyomtatott szövegek* észlelését és kinyerését különböző felületek és hátterek, például nyugták, plakátok és névjegykártyák képeiből. Az *olvasási* tároló emellett a *kézzel írt szövegeket* is észleli a képekben, és PDF-, TIFF-és többoldalas fájlok támogatását teszi lehetővé. További információ az API-k [olvasása](concept-recognizing-text.md#read-api) dokumentációban található.
+Az *olvasási* tároló lehetővé teszi a *nyomtatott szövegek* észlelését és kinyerését különböző felületek és hátterek, például nyugták, plakátok és névjegykártyák képeiből. Az *olvasási* tároló emellett a *kézzel írt szövegeket* is észleli a képekben, és PDF-, TIFF-és többoldalas fájlok támogatását teszi lehetővé. További információ az API-k [olvasása](concept-recognizing-text.md#read-api) dokumentációban található.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,9 +38,9 @@ A tárolók használata előtt meg kell felelnie a következő előfeltételekne
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.| 
 |Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont|
 
-## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a Private Container registryhez
+## <a name="request-approval-to-run-the-container"></a>Kérelem jóváhagyása a tároló futtatásához
 
-Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) , hogy hozzáférést Kérjen a tárolóhoz. 
+Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) a tároló futtatásához jóváhagyás kéréséhez. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -69,15 +71,26 @@ Az olvasáshoz tároló lemezképek érhetők el.
 
 | Tároló | Container Registry/adattár/rendszerkép neve |
 |-----------|------------|
-| Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
+| Olvasás 3,0 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| Olvasás 3,1 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
 
 ### <a name="docker-pull-for-the-read-container"></a>Docker-lekérés az olvasási tárolóhoz
 
+# <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
 ```
+
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
+```
+
+---
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -94,9 +107,11 @@ A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engi
 
 [Examples](computer-vision-resource-container-config.md#example-docker-run-commands) A parancs például `docker run` elérhető.
 
+# <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+
 ```bash
-docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-containerpreview.azurecr.io/microsoft/cognitive-services-read \
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -105,14 +120,45 @@ ApiKey={API_KEY}
 A parancs a következőket hajtja végre:
 
 * Futtatja az olvasási tárolót a tároló rendszerképből.
-* 8 CPU-mag és 16 gigabájt (GB) memóriát foglal le.
+* 8 CPU-mag és 18 gigabájt (GB) memóriát foglal le.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+A parancs a következőket hajtja végre:
+
+* Futtatja az olvasási tárolót a tároló rendszerképből.
+* 8 CPU-mag és 18 gigabájt (GB) memóriát foglal le.
+* Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
+* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+
+---
+
 
 További [példák](./computer-vision-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra. 
 
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+
+Ha nagyobb átviteli sebességre van szüksége (például többoldalas fájlok feldolgozásakor), érdemes több v 3.0 vagy v 3.1 tárolót telepíteni [egy Kubernetes-fürtre](deploy-computer-vision-on-premises.md)az [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) és az [Azure üzenetsor](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction)használatával.
+
+Ha az Azure Storage-t használja a lemezképek feldolgozásra történő tárolására, létrehozhat egy, a tároló meghívásakor használandó [kapcsolódási karakterláncot](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) .
+
+A kapcsolódási karakterlánc megkeresése:
+
+1. Navigáljon a Azure Portal **Storage-fiókjaihoz** , és keresse meg a fiókját.
+2. A bal oldali navigációs listában kattintson a **hozzáférési kulcsok** elemre.
+3. A kapcsolatok karakterlánca a **kapcsolatok karakterlánca** alatt lesz.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -124,11 +170,23 @@ További [példák](./computer-vision-resource-container-config.md#example-docke
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt. 
 
-A tároló API-khoz használja a gazdagépet (`http://localhost:5000`).
+# <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A hencegő útvonalat a következő helyen tekintheti meg: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
+
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A hencegő útvonalat a következő helyen tekintheti meg: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
+
+---
 
 ### <a name="asynchronous-read"></a>Aszinkron olvasás
 
-A `POST /vision/v2.0/read/core/asyncBatchAnalyze` koncerten a és a `GET /vision/v2.0/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
+
+# <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+
+A `POST /vision/v3.1/read/analyze` koncerten a és a `GET /vision/v3.1/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
+
 
 A hencegő felhasználói felületen válassza a elemet a `asyncBatchAnalyze` böngészőben való kibontáshoz. Ezután válassza a **kipróbálom**a  >  **fájl**elemet. Ebben a példában a következő képet fogjuk használni:
 
@@ -138,8 +196,8 @@ Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vi
 
 ```http
  content-length: 0
- date: Fri, 13 Sep 2019 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ date: Fri, 04 Sep 2020 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v3.1/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
  server: Kestrel
 ```
 
@@ -147,52 +205,151 @@ A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával ér
 
 ```json
 {
-  "status": "Succeeded",
-  "recognitionResults": [
-    {
-      "page": 1,
-      "clockwiseOrientation": 2.42,
-      "width": 502,
-      "height": 252,
-      "unit": "pixel",
-      "lines": [
-        {
-          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
-          "text": "Tabs VS",
-          "words": [
-            {
-              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
-              "text": "Tabs",
-              "confidence": "Low"
+  "status": "succeeded",
+  "createdDateTime": "2020-09-02T10:30:14Z",
+  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "analyzeResult": {
+    "version": "3.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 2.12,
+        "width": 502,
+        "height": 252,
+        "unit": "pixel",
+        "language": "",
+        "lines": [
+          {
+            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "text": "Tabs vs",
+            "appearance": {
+              "style": "handwriting",
+              "styleConfidence": 0.999
             },
-            {
-              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
-              "text": "VS"
-            }
-          ]
-        },
-        {
-          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
-          "text": "Spaces",
-          "words": [
-            {
-              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
-              "text": "Spaces"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+            "words": [
+              {
+                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "text": "Tabs",
+                "confidence": 0.981
+              },
+              {
+                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "text": "vs",
+                "confidence": 0.958
+              }
+            ]
+          },
+          {
+            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "text": "paces",
+            "appearance": {
+              "style": "print",
+              "styleConfidence": 0.603
+            },
+            "words": [
+              {
+                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "text": "paces",
+                "confidence": 0.918
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
+
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+A `POST /vision/v3.0/read/analyze` koncerten a és a `GET /vision/v3.0/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
+
+A hencegő felhasználói felületen válassza a elemet a `asyncBatchAnalyze` böngészőben való kibontáshoz. Ezután válassza a **kipróbálom**a  >  **fájl**elemet. Ebben a példában a következő képet fogjuk használni:
+
+![tabulátorok és szóközök](media/tabs-vs-spaces.png)
+
+Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vissza. A válasz részeként van egy `operation-location` fejléc, amely tartalmazza a kérelem eredmény-végpontját.
+
+```http
+ content-length: 0
+ date: Fri, 04 Sep 2020 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával érhető el. Itt látható az `operation-location` előző rendszerképből származó URL-cím végrehajtásának JSON-válasza:
+
+```json
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-09-02T10:24:49Z",
+  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 2.12,
+        "width": 502,
+        "height": 252,
+        "unit": "pixel",
+        "language": "",
+        "lines": [
+          {
+            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "text": "Tabs vs",
+            "words": [
+              {
+                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "text": "Tabs",
+                "confidence": 0.981
+              },
+              {
+                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "text": "vs",
+                "confidence": 0.958
+              }
+            ]
+          },
+          {
+            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "text": "paces",
+            "words": [
+              {
+                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "text": "paces",
+                "confidence": 0.918
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
 
 > [!IMPORTANT]
 > Ha több olvasási tárolót helyez üzembe egy terheléselosztó mögött, például a Docker-összeállítás vagy a Kubernetes alatt, külső gyorsítótárral kell rendelkeznie. Mivel előfordulhat, hogy a feldolgozó tároló és a GET kérelem tárolója nem azonos, a külső gyorsítótár tárolja az eredményeket, és megosztja őket a tárolók között. A gyorsítótár-beállításokkal kapcsolatos további információkért lásd: [Computer Vision Docker-tárolók konfigurálása](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
 
 ### <a name="synchronous-read"></a>Szinkron olvasás
 
-A `POST /vision/v2.0/read/core/Analyze` műveletet a rendszerképek szinkron beolvasására is használhatja. Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-választ kell visszaadnia. Ez alól az egyetlen kivétel, ha hiba történik. Ha hiba történik, a rendszer a következő JSON-t adja vissza:
+A következő művelettel lehet szinkronban olvasni egy rendszerképet. 
+
+# <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+
+`POST /vision/v3.1/read/syncAnalyze` 
+
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+`POST /vision/v3.0/read/SyncAnalyze`
+
+---
+
+Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-választ kell visszaadnia. Ez alól az egyetlen kivétel, ha hiba történik. Ha hiba történik, a rendszer a következő JSON-t adja vissza:
 
 ```json
 {
@@ -200,52 +357,7 @@ A `POST /vision/v2.0/read/core/Analyze` műveletet a rendszerképek szinkron beo
 }
 ```
 
-A JSON-válasz objektuma ugyanazzal az objektum-gráfmal rendelkezik, mint az aszinkron verzió. Ha Ön JavaScript-felhasználó, és meg szeretné adni a biztonságot, a következő típusokat használhatja a JSON-válasz objektumként való elküldéséhez `AnalyzeResult` .
-
-```typescript
-export interface AnalyzeResult {
-    status: Status;
-    recognitionResults?: RecognitionResult[] | null;
-}
-
-export enum Status {
-    NotStarted = 0,
-    Running = 1,
-    Failed = 2,
-    Succeeded = 3
-}
-
-export enum Unit {
-    Pixel = 0,
-    Inch = 1
-}
-
-export interface RecognitionResult {
-    page?: number | null;
-    clockwiseOrientation?: number | null;
-    width?: number | null;
-    height?: number | null;
-    unit?: Unit | null;
-    lines?: Line[] | null;
-}
-
-export interface Line {
-    boundingBox?: number[] | null;
-    text: string;
-    words?: Word[] | null;
-}
-
-export enum Confidence {
-    High = 0,
-    Low = 1
-}
-
-export interface Word {
-  boundingBox?: number[] | null;
-  text: string;
-  confidence?: Confidence | null;
-}
-```
+A JSON-válasz objektuma ugyanazzal az objektum-gráfmal rendelkezik, mint az aszinkron verzió. Ha Ön JavaScript-felhasználó, és szeretné beírni a biztonságot, érdemes lehet az írógéppel használni a JSON-válasz elküldéséhez.
 
 Példa a használati esetekre: itt **Run** <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer"> <span class="docon docon-navigate-external x-hidden-focus"></span> láthatja az írógéppel Sandboxot</a> , és a Futtatás lehetőség kiválasztásával jelenítheti meg a könnyű használatot.
 
@@ -271,7 +383,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta Computer Vision tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

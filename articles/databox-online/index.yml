@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Az Azure Stack Edge és az Azure Data Box Gateway dokumentációja – Online adatátvitel
-summary: Az Azure Data Box Gateway- és az Azure Stack Edge-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja. A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra. Az Azure Stack Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük előtt. Az Azure Data Box Edge a közelmúltban kapta az új Azure Stack Edge nevet.
+summary: Az Azure Stack Edge- és az Azure Data Box Gateway-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja. A számításgyorsító hardverrel felszerelt Azure Stack Edge Pro-eszközökkel szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük előtt. A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.
 metadata:
   title: Az Azure Stack Edge és az Azure Data Box Gateway dokumentációja – Online adatátvitel
-  description: A Data Box Gateway és az Azure Stack Edge (korábban Data Box Edge) dokumentációja az Azure-ba történő nagy teljesítményű hálózati adatátvitelhez.
+  description: A Data Box Gateway és az Azure Stack Edge dokumentációja az Azure-ba történő nagy teljesítményű hálózati adatátvitelhez.
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,22 +11,28 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 11/04/2019
-  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+  ms.date: 09/08/2020
+  ms.openlocfilehash: 2995a94f1b56144afd191bc3e8eb97c2da4593ef
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562355"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90902983"
 landingContent:
 - title: Az Azure Stack Edge és a Data Box Gateway ismertetése
   linkLists:
   - linkListType: overview
     links:
+    - text: Mi az Azure Stack Edge Pro GPU?
+      url: azure-stack-edge-gpu-overview.md
+    - text: Mi az Azure Stack Edge Pro FPGA?
+      url: azure-stack-edge-overview.md
+    - text: Mi az Azure Stack Edge R?
+      url: azure-stack-edge-j-series-overview.md
+    - text: Mi az Azure Stack Edge Mini?
+      url: azure-stack-edge-k-series-overview.md
     - text: Mi a Data Box Gateway?
       url: data-box-gateway-overview.md
-    - text: Mi az Azure Stack Edge?
-      url: azure-stack-edge-overview.md
   - linkListType: architecture
     links:
     - text: Azure adatátviteli lehetőségek kiválasztása
@@ -35,28 +41,36 @@ landingContent:
       url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 1905 kibocsátási megjegyzések
-      url: data-box-gateway-1905-release-notes.md
+    - text: 2009-es kibocsátási megjegyzések
+      url: azure-stack-edge-gpu-2008-release-notes.md
 - title: Követelmények és korlátok
   linkLists:
   - linkListType: concept
     links:
+    - text: Az Azure Stack Edge Pro GPU követelményei
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Az Azure Stack Edge Pro FPGA követelményei
+      url: azure-stack-edge-gpu-system-requirements.md
     - text: A Data Box Gateway követelményei
       url: data-box-gateway-system-requirements.md
-    - text: Az Azure Stack Edge követelményei
-      url: azure-stack-edge-system-requirements.md
+    - text: Az Azure Stack Edge Pro korlátai
+      url: azure-stack-edge-limits.md
     - text: A Data Box Gateway korlátai
       url: data-box-gateway-limits.md
-    - text: Az Azure Stack Edge korlátai
-      url: azure-stack-edge-limits.md
 - title: Üzembe helyezés
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Üzembe helyezés előtti ellenőrzőlista megtekintése
+      url: azure-stack-edge-gpu-deploy-checklist.md
+    - text: Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-deploy-prep.md
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-deploy-prep.md
+    - text: GPU-modul a piactéren keresztül
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: Kubernetes számítási feladat IoT Edge használatával
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
 - title: Fejlesztés
   linkLists:
   - linkListType: how-to-guide
@@ -65,31 +79,31 @@ landingContent:
       url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: Minták – A C# használata az Azure Stack Edge-ben
+    - text: Minták – a C# használata az Azure Stack Edge Pro GPU-ban
       url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: Kezelés
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Stack Edge Pro-megosztások
+      url: azure-stack-edge-manage-shares.md
     - text: A Data Box Gateway megosztásai
       url: data-box-gateway-manage-shares.md
-    - text: Az Azure Stack Edge megosztásai
-      url: azure-stack-edge-manage-shares.md
     - text: Peremhálózati számítás
       url: azure-stack-edge-manage-compute.md
-    - text: Peremhálózati számítási hálózat
-      url: azure-stack-edge-extend-compute-access-modules.md
+    - text: Edge-tárfiókok
+      url: azure-stack-edge-j-series-manage-storage-accounts.md
 - title: Hibaelhárítás
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Stack Edge GPU
+      url: azure-stack-edge-gpu-troubleshoot.md
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-troubleshoot.md
     - text: Peremhálózati számítási modulok
-      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: Az Azure Stack Edge visszaküldése vagy cseréje
+      url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
+    - text: Az Azure Stack Edge GPU visszaküldése
       url: azure-stack-edge-return-device.md
     - text: Támogatási jegy megnyitása
       url: azure-stack-edge-contact-microsoft-support.md

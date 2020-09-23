@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89040450"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902916"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -34,13 +34,13 @@ A Studio a projekt típusától és a felhasználói élmény szintjétől függ
 
   Saját kódot írhat és futtathat felügyelt [Jupyter notebook-kiszolgálókon](how-to-run-jupyter-notebooks.md) , amelyek közvetlenül a studióba vannak integrálva. 
 
-+ **Azure Machine Learning Designer (előzetes verzió)**
++ **Azure Machine Learning Designer**
 
   A Designer használatával a gépi tanulási modelleket bármilyen kód írása nélkül betaníthatja és üzembe helyezheti. Az adatkészletek és modulok húzásával ML-folyamatokat hozhat létre. Próbálja ki a [tervezői oktatóanyagot](tutorial-designer-automobile-price-train-score.md).
 
     ![Azure Machine Learning Designer – példa](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **Gépi tanulás automatizált felhasználói felülete (előzetes verzió)**
++ **Automatikus gépi tanulás felhasználói felülete**
 
   Megtudhatja, hogyan hozhat létre egy könnyen használható kezelőfelülettel rendelkező [AUTOMATIZÁLT ml-kísérleteket](tutorial-first-experiment-automated-ml.md) . 
 
@@ -80,9 +80,9 @@ Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azur
 
 Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Learning közötti fő különbségeket.
 
-| Szolgáltatás | ML Studio (klasszikus) | Azure Machine Learning |
+| Funkció | ML Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
-| Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) <br/>(Vállalati munkaterület szükséges hozzá) | 
+| Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
 | SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |
 | Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Számítási célok betanítása | Tulajdonosi számítási cél, csak CPU-támogatás | Testreszabható [képzési számítási célok](concept-compute-target.md#train)széles köre. GPU-val és CPU-támogatással rendelkezik | 

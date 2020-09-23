@@ -1,6 +1,6 @@
 ---
-title: Az Azure arc engedélyezése a Kubernetes-on Azure Stack Edge GPU-eszközön | Microsoft Docs
-description: Ismerteti, hogyan engedélyezhető az Azure arc egy meglévő Kubernetes-fürtön az Azure Stack Edge GPU-eszközön.
+title: Az Azure arc engedélyezése a Kubernetes-on Azure Stack Edge Pro GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan engedélyezhető az Azure arc egy meglévő Kubernetes-fürtön az Azure Stack Edge Pro GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322024"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903188"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge GPU-eszközön
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge Pro GPU-eszközön
 
-Ez a cikk bemutatja, hogyan engedélyezheti az Azure arc szolgáltatást egy meglévő Kubernetes-fürtön az Azure Stack Edge-eszközön. 
+Ez a cikk bemutatja, hogyan engedélyezheti az Azure arc szolgáltatást egy meglévő Kubernetes-fürtön a Azure Stack Edge Pro-eszközön. 
 
-Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)fogalmait?
+Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)fogalmait?
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt engedélyezi az Azure arc használatát a Kubernetes-fürtön, győződjön meg arról, hogy végrehajtotta a következő előfeltételeket az Azure Stack Edge-eszközön és az eszköz eléréséhez használni kívánt ügyfélen:
+Mielőtt engedélyezi az Azure arc használatát a Kubernetes-fürtön, győződjön meg arról, hogy végrehajtotta a következő előfeltételeket a Azure Stack Edge Pro-eszközön és az ügyfélen, amelyet az eszköz eléréséhez fog használni:
 
 ### <a name="for-device"></a>Az eszköz esetén
 
-1. A hitelesítő adatok egy 1 csomópontos Azure Stack peremhálózati eszközhöz vannak bejelentkezett.
+1. A bejelentkezési hitelesítő adatok egy 1 csomópontos Azure Stack Edge Pro-eszközhöz tartoznak.
     1. Az eszköz aktiválva van. Lásd: [az eszköz aktiválása](azure-stack-edge-gpu-deploy-activate.md).
     1. Az eszközön a Azure Portal-n keresztül konfigurált számítási szerepkör és egy Kubernetes-fürt van konfigurálva. Lásd: [számítás konfigurálása](azure-stack-edge-gpu-deploy-configure-compute.md).
 
@@ -37,19 +37,19 @@ Mielőtt engedélyezi az Azure arc használatát a Kubernetes-fürtön, győződ
 
 ### <a name="for-client-accessing-the-device"></a>Az eszközt elérő ügyfél
 
-1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge-eszköz elérésére szolgál majd.
+1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
   
     - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
-1. Végrehajtotta a következő témakörben leírt eljárást: [Azure stack Edge-eszközön található Kubernetes-fürt elérése](azure-stack-edge-gpu-create-kubernetes-cluster.md). A következőket teheti:
+1. Végrehajtotta az [Azure stack Edge Pro-eszközön a Kubernetes-fürt eléréséhez](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakörben leírt eljárást. A következőket teheti:
     
     - `kubectl`Az ügyfélre telepítve  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy olyan verzió, amely az Azure stack Edge-eszközön futó Kubernetes-főverzión fut. 
+    - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy, a Azure stack Edge Pro-eszközön futó Kubernetes-verzió. 
       - Ezzel a paranccsal `kubectl version` ellenőrizhető az ügyfélen futó kubectl verziója. Jegyezze fel a teljes verziót.
-      - Az Azure Stack Edge-eszköz helyi felhasználói felületén lépjen a **szoftverfrissítés** elemre, és jegyezze fel a Kubernetes-kiszolgáló verziószámát. 
+      - A Azure Stack Edge Pro-eszköz helyi felhasználói felületén lépjen a **szoftverfrissítés** elemre, és jegyezze fel a Kubernetes-kiszolgáló verziószámát. 
     
         ![Kubernetes-kiszolgáló verziószámának ellenőrzése](media/azure-stack-edge-gpu-connect-powershell-interface/verify-kubernetes-version-1.png)      
       
@@ -142,7 +142,7 @@ Az alábbi lépéseket követve konfigurálhatja a Kubernetes-fürtöt az Azure 
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Az Azure arc Azure Stack Edge-eszközön való üzembe helyezéséhez győződjön meg arról, hogy az [Azure arc támogatott régióját](../azure-arc/kubernetes/overview.md#supported-regions)használja. Az Azure arc jelenleg előzetes verzióban érhető el. A paranccsal a parancsmagnak átadandó régió pontos nevét is megtalálhatja a `az account list-locations` parancs használatával.
+    Az Azure arc Azure Stack Edge Pro-eszközön való üzembe helyezéséhez győződjön meg arról, hogy az [Azure arc támogatott régióját](../azure-arc/kubernetes/overview.md#supported-regions)használja. Az Azure arc jelenleg előzetes verzióban érhető el. A paranccsal a parancsmagnak átadandó régió pontos nevét is megtalálhatja a `az account list-locations` parancs használatával.
     
     Alább bemutatunk egy példát:
    
@@ -224,4 +224,4 @@ Az Azure arc-felügyelet eltávolításához kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure arc üzembe helyezésének megismeréséhez lásd: [állapot nélküli php Vendégkönyv alkalmazás üzembe helyezése az Redis-n keresztül az Azure stack Edge-eszközön](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)
+Az Azure arc központi telepítésének futtatásával kapcsolatban lásd: [állapot nélküli php-Vendégkönyv alkalmazás üzembe helyezése az Redis-n keresztül a GitOps-on keresztül egy Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

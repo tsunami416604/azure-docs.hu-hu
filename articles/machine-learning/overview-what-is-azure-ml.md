@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 72de3c45d0def7cf4a48884ee49be256179ac0a4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f8be403a9aa095a24ec4802aad0364b535ed7c5a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902911"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -41,7 +41,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Gépi tanulási eszközök az egyes feladatokhoz 
 
 Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szükséges összes eszközt a fejlesztők és az adatszakértők számára, beleértve a következőket:
-+ A [Azure Machine learning Designer](tutorial-designer-automobile-price-train-score.md) (előzetes verzió): húzzon-n-drop modulokat a kísérletek létrehozásához, majd a folyamatok üzembe helyezéséhez.
++ A [Azure Machine learning Designer](tutorial-designer-automobile-price-train-score.md): húzzon-n-drop modulokat a kísérletek létrehozásához, majd a folyamatok üzembe helyezéséhez.
 
 + Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python</a> -mintákhoz. 
 
@@ -71,7 +71,7 @@ Az SDK segítségével [automatizálhatja a modell betanítását és finomhango
 
 A [Azure Machine learning Studio](https://studio.azureml.net) egy webes portál, amely a modell betanításához, üzembe helyezéséhez és az eszközök kezeléséhez szükséges, az alacsony kódú és a kód nélküli lehetőségeket Azure Machine learning. A Studio zökkenőmentesen integrálható a Azure Machine Learning SDK-val. További információ: [What is Azure Machine learning Studio](overview-what-is-machine-learning-studio.md).
 
-+ **Azure Machine Learning Designer (előzetes verzió)**
++ **Azure Machine Learning Designer**
 
   [A Designer használatával a](concept-designer.md) gépi tanulási modelleket bármilyen kód írása nélkül betaníthatja és üzembe helyezheti. Próbálja ki a [tervezői oktatóanyagot](tutorial-designer-automobile-price-train-score.md) a kezdéshez. 
 
@@ -125,16 +125,7 @@ A Azure Machine Learning együttműködik az Azure platform egyéb szolgáltatá
 
 Az Azure Storage-fiók, a számítási célok és az egyéb erőforrások biztonságosan használhatók a virtuális hálózaton belül a modellek betanításához és következtetések teljesítéséhez. További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 
-## <a name="basic--enterprise-editions"></a><a name="sku"></a>Alapszintű & Enterprise kiadás
-
-Azure Machine Learning két, a gépi tanulási igényekhez igazított kiadást kínál:
-+ **Alapszintű**: kiváló a nyílt forráskódú fejlesztéshez a Cloud Scale-ben a Code-First felülettel.
-
-+ **Enterprise**: az összes alapszintű, valamint egy webes felület (Studio) + biztonságos, átfogó ml életciklus-kezelés minden képzettségi szinten.
-
-Ha többet szeretne megtudni ezekről a kiadásokról és a feloldható képességekről, olvassa el a ["Azure Machine learning Editions" című cikket](concept-editions.md).
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)
