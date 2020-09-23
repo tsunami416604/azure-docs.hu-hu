@@ -5,16 +5,19 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/20/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076024"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888773"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Az Azure Spring Cloud hitelesítése Key Vaultekkel a GitHub-műveletekben
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
+
 A Key Vault biztonságos hely a kulcsok tárolásához. A vállalati felhasználóknak hitelesítő adatokat kell tárolniuk a CI/CD-környezetekhez az általuk vezérelt hatókörben. A Key vaultban a hitelesítő adatok lekéréséhez szükséges kulcsot az erőforrás hatókörére kell korlátozni.  Csak a kulcstartó hatóköréhez férhet hozzá, nem pedig a teljes Azure-hatókörhöz. Olyan kulcs, amely csak egy erős mezőt nyit meg, amely nem egy főkulcs, amely az épületben lévő összes ajtót meg tudja nyitni. Lehetőség van arra, hogy egy kulcsot egy másik kulccsal lásson el, ami hasznos lehet egy vel-munkafolyamatban. 
 
 ## <a name="generate-credential"></a>Hitelesítő adat előállítása
@@ -43,7 +46,7 @@ Ezután mentse a GitHub- **titkokat** a GitHub- [tárház beállítása és az A
 ## <a name="add-access-policies-for-the-credential"></a>Hozzáférési szabályzatok hozzáadása a hitelesítő adatokhoz
 A fent létrehozott hitelesítő adatok csak általános információkat kaphatnak a Key Vaultről, és nem az általa tárolt tartalmakról.  A Key Vaultban tárolt titkok beszerzéséhez hozzáférési szabályzatokat kell beállítania a hitelesítő adatokhoz.
 
-Nyissa meg a **Key Vault** irányítópultot Azure Portalban, kattintson a **hozzáférés-vezérlés** menüre, majd nyissa meg a szerepkör- **hozzárendelések** lapot. Válassza a **típushoz** és **Apps** `This resource` a **hatókörhöz**tartozó alkalmazásokat.  Ekkor meg kell jelennie az előző lépésben létrehozott hitelesítő adatoknak:
+Lépjen a Azure Portal **Key Vault** irányítópultra, kattintson a **hozzáférés-vezérlés** menüre, majd nyissa meg a **szerepkör-hozzárendelések** lapot. Válassza **Apps** ki a **Type** és `This resource` a **hatókörhöz**tartozó alkalmazásokat.  Ekkor meg kell jelennie az előző lépésben létrehozott hitelesítő adatoknak:
 
  ![Hozzáférési szabályzat beállítása](./media/github-actions/key-vault1.png)
 
@@ -109,5 +112,5 @@ jobs:
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Spring Cloud GitHub-műveletek](./spring-cloud-howto-github-actions.md)

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: valós idejű irányítópult tervezése – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, tölthet fel és foglalhat le elosztott táblákat Azure Database for PostgreSQL nagy kapacitású (Citus).
+description: Ez az oktatóanyag bemutatja, hogyan integrálással valós idejű irányítópult-lekérdezéseket Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387574"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895247"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: valós idejű elemzési irányítópult tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
@@ -226,6 +226,5 @@ Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsop
 
 Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogyan lehet adatokat lekérdezni a nyers űrlapon, rendszeresen összesíti az adatokat, lekérdezni az összesített táblákat, és lejárati a régi adatokat.
 
-Ezután megismerheti a nagy kapacitású fogalmait.
-> [!div class="nextstepaction"]
-> [Nagy kapacitású csomópont-típusok](https://aka.ms/hyperscale-concepts)
+- További információ a kiszolgálói csoportok [csomópontjainak típusairól](https://aka.ms/hyperscale-concepts)
+- A kiszolgálócsoport legjobb [kezdeti méretének](howto-hyperscale-scaling.md#picking-initial-size) meghatározása

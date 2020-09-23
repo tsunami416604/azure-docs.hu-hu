@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650469"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888051"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Az Azure SQL Edge használati és diagnosztikai adatok konfigurálása
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 Az Azure SQL Edge használati és diagnosztikai adatok gyűjtése az alábbi módszerek bármelyikével letiltható.
 
+> [!NOTE]
+> A fejlesztői verzióban nem lehet letiltani a használati és diagnosztikai adatokat.
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>A használat és a diagnosztika letiltása környezeti változók használatával
 
 Ha le szeretné tiltani a használati és diagnosztikai adatok gyűjtését az Azure SQL Edge-ben, adja hozzá a következő környezeti változót, és állítsa be a értékét `*False*` . Az Azure SQL Edge környezeti változók használatával történő konfigurálásával kapcsolatos további információkért tekintse meg a [Konfigurálás környezeti változók használatával](configure.md#configure-by-using-environment-variables)című témakört.
@@ -68,7 +71,7 @@ Ha le szeretné tiltani a használati és diagnosztikai adatok gyűjtését az A
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE – lehetővé teszi a használati és diagnosztikai adatok gyűjtését. Ez az alapértelmezett beállítás.
-- FALSE (hamis) – letiltja a használati és diagnosztikai adatok gyűjtését
+- FALSE (hamis) – letiltja a használati és diagnosztikai adatok gyűjtését.
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>A használat és a diagnosztika letiltása az MSSQL. conf fájllal
 

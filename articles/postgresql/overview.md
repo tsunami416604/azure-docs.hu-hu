@@ -1,57 +1,83 @@
 ---
-title: Az Azure Database for PostgreSQL relációsadatbázis-szolgáltatás áttekintése
-description: Az Azure Database for PostgreSQL relációsadatbázis-szolgáltatás áttekintését nyújtja.
-author: jonels-msft
-ms.author: jonels
+title: Mi az Azure Database for PostgreSQL?
+description: Áttekintést nyújt Azure Database for PostgreSQL a kapcsolódó adatbázis-szolgáltatásról a rugalmas kiszolgáló kontextusában.
+author: sunilagarwal
+ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 11/25/2019
-ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 09/21/2020
+ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213601"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903762"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
-A Azure Database for PostgreSQL egy, a fejlesztők számára készült Microsoft-felhőben található, a Microsoft felhőalapú szolgáltatása. A szolgáltatás a nyílt forráskódú [PostgreSQL](https://www.postgresql.org/) adatbázismotor közösségi verzióján alapul, és két központi telepítési lehetőségben érhető el: egyetlen kiszolgáló és nagy kapacitású (Citus).
 
-## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Önálló kiszolgáló
-Az egykiszolgálós üzembe helyezési lehetőség a következőket biztosítja:
+A Azure Database for PostgreSQL egy, a Microsoft felhőben található, a [PostgreSQL közösségi kiadásán](https://www.postgresql.org/) alapuló, a GPLv2-licencben elérhető adatbázis-kezelője. Az Azure Database for PostgreSQL a következőket nyújtja:
 
-- Beépített [magas rendelkezésre állás](concepts-high-availability.md) további díjszabás nélkül (99,99%-os SLA)
-- Kiszámítható teljesítmény, használatalapú díjszabással
-- [A vertikális skálázás szükség szerint](concepts-pricing-tiers.md) másodpercek alatt
-- [Figyelés és riasztás](concepts-monitoring.md) a kiszolgáló értékeléséhez
-- Vállalati szintű biztonság és megfelelőség
-- [Biztonságos a](concepts-security.md) bizalmas adatok védelme érdekében a nyugalmi állapotban és a mozgásban
-- [Automatikus biztonsági mentések és időponthoz való visszaállítás –](concepts-business-continuity.md) akár 35 napig is
+- Beépített magas rendelkezésre állás.
+- Adatvédelem automatikus biztonsági mentéssel és időponthoz való visszaállítással akár 35 napig.
+- Automatizált karbantartás az alapul szolgáló hardver, operációs rendszer és adatbázismotor számára a szolgáltatás biztonságos és naprakészen tartásához.
+- Kiszámítható teljesítmény, használatalapú fizetéses befoglaló díjszabással.
+- Rugalmas skálázás másodpercek alatt.
+- Nagyvállalati szintű biztonság és piacvezető megfelelőség a bizalmas adatok védelme érdekében a nyugalmi és a mozgásban.
+- Figyelés és automatizálás a nagyméretű központi telepítések felügyeletének és figyelésének egyszerűsítése érdekében.
+- Piacvezető támogatási élmény.
 
+ :::image type="content" source="./media/overview/overview-what-is-azure-postgres.png" alt-text="Azure Database for PostgreSQL":::
 
-Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Lehetővé teszik az alkalmazások gyors fejlesztését és a piacra kerülési idő felgyorsítását ahelyett, hogy értékes időt és erőforrásokat kellene kitölteni a virtuális gépek és az infrastruktúra kezeléséhez. Az alkalmazást továbbra is kifejlesztheti a kívánt nyílt forráskódú eszközökkel és platformmal, anélkül, hogy új ismereteket kellene megtanulnia.
+Ezek a képességek szinte nem igényelnek felügyeletet, és minden további díj nélkül elérhető. Lehetővé teszik, hogy az alkalmazások gyors fejlesztésére koncentráljon, és a virtuális gépek és az infrastruktúra kezeléséhez szükséges értékes idő és erőforrások kiosztása helyett a piacra kerülési időt kell fordítania. Ezen kívül folytathatja az alkalmazás fejlesztését a kívánt nyílt forráskódú eszközökkel és platformmal, és ezeket az üzletvitel által igényelt sebességgel és hatékonysággal készítheti el, új készségek elsajátításának szükségessége nélkül.
 
-Az egykiszolgálós üzembe helyezési lehetőség három díjszabási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részletekért tekintse meg a [díjszabási szintet](concepts-pricing-tiers.md) .
+## <a name="deployment-models"></a>Üzembe helyezési modellek
 
-## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus)
+A PostgreSQL Community Edition által működtetett Azure Database for PostgreSQL három üzembe helyezési módban érhető el:
+
+- Önálló kiszolgáló
+- Rugalmas kiszolgáló (előzetes verzió)
+- Rugalmas skálázás (Citus)
+
+### <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Önálló kiszolgáló
+
+Azure Database for PostgreSQL egyetlen kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely minimális követelményeket támaszt az adatbázis testreszabásához. Az egykiszolgálós platform úgy lett kialakítva, hogy az adatbázis-kezelési funkciók, például a javítások, a biztonsági mentések, a magas rendelkezésre állás, a biztonság minimális felhasználói konfigurációval és vezérléssel kezelhető legyen. Az architektúra beépített, magas rendelkezésre állású, 99,99%-os rendelkezésre állást biztosít egyetlen rendelkezésre állási zónában. A PostgreSQL 9,5, 9, 6, 10 és 11 közösségi verzióját támogatja. A szolgáltatás ma már széles körben elérhető az [Azure számos régiójában](https://azure.microsoft.com/global-infrastructure/services/).
+
+Az egykiszolgálós üzembe helyezési lehetőség három díjszabási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) leírása tartalmazza.
+
+Az egyetlen kiszolgáló a legjobb megoldás a Felhőbeli natív alkalmazásokhoz, amelyek az automatikus javítás kezelésére szolgálnak anélkül, hogy a javítási ütemterv és az egyéni PostgreSQL konfigurációs beállítások részletes szabályozására lenne szükség.
+
+Az egykiszolgálós telepítési mód részletes áttekintéséhez tekintse meg az [egykiszolgálós áttekintés című témakört](./overview-single-server.md).
+
+### <a name="azure-database-for-postgresql---flexible-server-preview"></a>Rugalmas Azure Database for PostgreSQL-kiszolgáló (előzetes verzió)
+
+Azure Database for PostgreSQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban a szolgáltatás a felhasználói követelmények alapján nagyobb rugalmasságot és testreszabást biztosít. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgáló jobb költség-optimalizálási vezérlőket biztosít a kiszolgáló és a feltört számítási szint leállítására/indítására, ideális olyan munkaterhelésekhez, amelyek folyamatosan teljes számítási kapacitást igényelnek. A szolgáltatás jelenleg a PostgreSQL 11 és 12 közösségi verzióját támogatja, és hamarosan újabb verziókat ad hozzá. A szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, ma már számos Azure-régióban elérhető.
+
+A rugalmas kiszolgálók a legmegfelelőbbek a következőhöz:
+
+- Hatékonyabb vezérlést és testreszabást igénylő alkalmazások fejlesztése.
+- A kiszolgáló leállítására/indítására képes optimalizálási vezérlők.
+- Zóna redundáns magas rendelkezésre állása
+- Felügyelt karbantartási időszakok
+  
+A rugalmas kiszolgáló üzembe helyezési módjának részletes áttekintését lásd: [rugalmas kiszolgáló – áttekintés](./flexible-server/overview.md).
+
+### <a name="azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus)
+
 A nagy kapacitású (Citus) lehetőség vízszintesen méretezi a lekérdezéseket több gép között a horizontális skálázással. A lekérdezési motor parallelizes a bejövő SQL-lekérdezéseket ezen kiszolgálókon a nagyméretű adatkészletek gyorsabb megválaszolásához. Olyan alkalmazásokat kínál, amelyek nagyobb méretet és teljesítményt igényelnek, és általában a várható munkaterhelések, vagy már meghaladja a-100 GB-ot.
 
 A nagy kapacitású (Citus) telepítési lehetőség a következőket biztosítja:
 
 - Horizontális skálázás több gépen több szegmensen keresztül
 - Párhuzamos lekérdezése a kiszolgálók között a nagyméretű adatkészletek gyorsabb reagálásához
-- Kiváló támogatás a több-bérlős alkalmazások, a valós idejű operatív elemzések és a nagy teljesítményű tranzakciós számítási feladatok számára
+- Kiváló támogatás a több-bérlős alkalmazások, a valós idejű működési elemzések és a nagy teljesítményű tranzakciós számítási feladatok számára
+  
+A PostgreSQL-re épülő alkalmazások [a standard szintű](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
-A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connection-libraries.md) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="contacts"></a>Kapcsolattartók
-Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön e-mailt a Azure Database for PostgreSQL csapatnak (az[ @Ask Azure-adatbázis PostgreSQL-hez](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ez a címe a támogatási jegyek helyett általános kérdésekre szolgál.
+További információ a Azure Database for PostgreSQL három üzembe helyezési módjáról, valamint az igényeinek megfelelő beállítások kiválasztásáról.
 
-Emellett vegye figyelembe az alábbi kapcsolattartási pontokat a megfelelő módon:
-- Ha kapcsolatba szeretne lépni az Azure támogatási szolgálatával, vagy javítsa ki a fiókkal kapcsolatos problémát, vegyen fel [egy jegyet a Azure Portalból](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
-
-## <a name="next-steps"></a>További lépések
-- Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez. Az egykiszolgálós és a nagy kapacitású (Citus) telepítési lehetőségek az előre fizetett fenntartott példányok kedvezményeit is tartalmazzák, a részletekért tekintse meg az [egykiszolgálós ri díjszabását](concept-reserved-pricing.md) és a [nagy kapacitású ri díjszabási](concepts-hyperscale-reserved-pricing.md) oldalát.
-- Első lépésként hozza létre első Azure Database for PostgreSQL [egy kiszolgáló](./quickstart-create-server-database-portal.md) -vagy [nagy kapacitású (Citus)](./quickstart-create-hyperscale-portal.md)
-- Építse fel az első alkalmazását Python, PHP, Ruby, C\#, Java, Node.js nyelven: [Csatlakozási kódtárak](./concepts-connection-libraries.md)
+- [Önálló kiszolgáló](./overview-single-server.md)
+- [Rugalmas kiszolgáló](./flexible-server/overview.md)
+- Rugalmas skálázás (Citus)

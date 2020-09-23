@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: c31f3c998df918466e707c95f041592051e8251c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045314"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903831"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studio Code-ban a feladatütemezés használatával
 
@@ -27,7 +27,7 @@ A bemeneti adatoknak a kimeneti adatokba való átalakítására szolgáló Azur
 
 ### <a name="start-local-testing"></a>Helyi tesztelés indítása
 
-Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-vs-code.md) hozhat létre egy stream Analytics feladatot a Visual Studio Code használatával, vagy hogyan [exportálhat egy meglévő feladatot egy helyi projektbe](visual-studio-code-explore-jobs.md). A bemenetekhez és kimenetekhez tartozó hitelesítő adatokat a rendszer automatikusan kitölti az exportált feladatokhoz.
+Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-visual-studio-code.md) hozhat létre egy stream Analytics feladatot a Visual Studio Code használatával, vagy hogyan [exportálhat egy meglévő feladatot egy helyi projektbe](visual-studio-code-explore-jobs.md). A bemenetekhez és kimenetekhez tartozó hitelesítő adatokat a rendszer automatikusan kitölti az exportált feladatokhoz.
 
 Ha a lekérdezést helyi bemeneti adatokkal szeretné tesztelni, kövesse az alábbi [utasításokat](visual-studio-code-local-run.md). Ha élő bemenettel szeretne tesztelni, [konfigurálja a bemenetet](stream-analytics-add-inputs.md) a következő lépésre. 
 
@@ -59,7 +59,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 3. A bemeneti metrikák megjelenítéséhez válassza ki a bemeneti adatforrás nevét a legördülő listából. Az alábbi képernyőképen található bemeneti forrás neve *idézőjel*. A bemeneti metrikákkal kapcsolatos további információkért lásd: [stream Analytics feladatok figyelésének ismertetése és a lekérdezések figyelése](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
-   > ![Feladatok diagram metrikái](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
+   > ![A feladatütemezés bemeneti metrikái](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
 
 4. Válasszon egy lekérdezési lépést a feladatütemezés közül, vagy válassza ki a lépés nevét a legördülő listából a lépés szintű mérőszámok megtekintéséhez. A vízjel késleltetése az egyetlen elérhető lépés mérőszáma.
 
@@ -106,9 +106,9 @@ A feladatütemezés jobb felső sarkában válassza a **feladatok összegzése**
 
 * Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](stream-analytics-out-of-order-and-late-events.md) , míg a helyi bemeneti beállítások nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio Code használatával](quick-create-vs-code.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio Code használatával](quick-create-visual-studio-code.md)
 * [A Visual Studio Code Azure Stream Analytics megismerése](visual-studio-code-explore-jobs.md)
 * [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)
 * [Azure Stream Analytics feladatok helyi tesztelése élő bevitelsel a Visual Studio Code használatával](visual-studio-code-local-run-live-input.md)

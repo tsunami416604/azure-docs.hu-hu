@@ -4,15 +4,16 @@ description: Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyako
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322041"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888714"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -61,9 +62,11 @@ Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létr
 
 Az Azure Spring Cloud első lépéseinek megkezdéséhez kövesse a rövid útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md)című témakör utasításait.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Milyen Java-futtatókörnyezetet támogat az Azure Spring Cloud?
 
 Az Azure Spring Cloud támogatja a Java 8 és a 11 platformot. Lásd: [Java-futtatókörnyezet és operációsrendszer-verziók](#java-runtime-and-os-versions)
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Hol tekinthetem meg a Spring Cloud Application-naplókat és-metrikákat?
 
@@ -75,12 +78,14 @@ Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérősz
 
 Igen. További információ: [oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával](spring-cloud-tutorial-distributed-tracing.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Milyen típusú erőforrásokat támogat a szolgáltatás-kötés?
 
 Jelenleg három szolgáltatás támogatott:
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure cache a Redis-hez.
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Megtekinthetem, hozzáadhatom vagy áthelyezhetem az állandó köteteket az alkalmazásaim belsejében?
 
@@ -96,6 +101,7 @@ A Spring Cloud diagnosztikai beállításait az Azure CLI használatával törö
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java-futtatókörnyezet és operációsrendszer-verziók
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>A Java Runtime mely verzióit támogatja az Azure Spring Cloud?
@@ -136,10 +142,11 @@ A támogatási jegyet Azure-támogatással is megnyithatja.  Lásd: [Azure-támo
 
 A legújabb Ubuntu LTS-verziót használjuk, a jelenleg [ubuntu 20,04 LTS (gyújtóponti Fossa)](https://releases.ubuntu.com/focal/) az alapértelmezett operációs rendszer.
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>Milyen gyakran lesz alkalmazva az operációs rendszer biztonsági javításai?
+### <a name="how-often-are-os-security-patches-applied"></a>Milyen gyakran alkalmazza az operációs rendszer biztonsági javításait?
 
-Az Azure Spring Cloud-ra vonatkozó biztonsági javítások az éles környezetbe kerülnek.
+Az Azure Spring Cloud-ra vonatkozó biztonsági javítások havi rendszerességgel kerülnek a termelésbe.
 Az Azure Spring Cloud-ra vonatkozó kritikus biztonsági javítások (CVE-pontszám >= 9) a lehető leghamarabb bekerülnek.
+::: zone-end
 
 ## <a name="deployment"></a>Üzembe helyezés
 
@@ -158,6 +165,7 @@ Igen. További információ: [a Spring Cloud-alkalmazás elindítása forráskó
 
 Nem.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Mik az ajánlott eljárások a meglévő Spring Cloud-szolgáltatások Azure Spring Cloud-ba való áttelepítéséhez?
 
 A meglévő Spring Cloud-szolgáltatásoknak az Azure Spring Cloudba való áttelepítése során érdemes megfigyelni az alábbi ajánlott eljárásokat:
@@ -168,8 +176,22 @@ A meglévő Spring Cloud-szolgáltatásoknak az Azure Spring Cloudba való átte
 * Javasoljuk, hogy a hivatalos és a stabil Pivotal rugós kódtárakat használja. A Pivotal Spring-kódtárak nem hivatalos, bétaverziós vagy elágazó verziói nem rendelkeznek szolgáltatói szerződés (SLA) támogatással.
 
 Az áttelepítés után figyelje a CPU-/RAM-mérőszámokat és a hálózati forgalmat annak érdekében, hogy az alkalmazás példányai megfelelően méretezhetők legyenek.
+::: zone-end
 
-## <a name="trouble-shooting"></a>Hibaelhárítás
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core-verziók
+
+### <a name="which-net-core-versions-are-supported"></a>Mely .NET Core verziók támogatottak?
+
+.NET Core 3,1 és újabb verziók.
+
+### <a name="how-long-will-net-core-31-be-supported"></a>Mennyi ideig lesz támogatott a .NET Core 3,1?
+
+2022. december 3. között. Lásd: [.net Core támogatási szabályzat](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+::: zone-end
+
+
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Milyen hatással van a szolgáltatás-beállításjegyzék ritkán nem érhető el?
 

@@ -1,6 +1,6 @@
 ---
 title: Előrejelzések üzembe helyezése és elkészítése a ONNX
-description: Ismerje meg, hogyan alakíthatja át a modelleket, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) vagy az Azure SQL felügyelt példányain (előzetes verzió), majd a feltöltött ONNX-modell használatával natív ELŐREJELZÉSt futtathat az adatairól.
+description: Ismerje meg, hogyan alakíthatja át a modelleket, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az Azure SQL Edge-ben vagy az Azure SQL felügyelt példányain (előzetes verzió), majd a feltöltött ONNX modell használatával futtathatja a natív ELŐREJELZÉSt.
 keywords: SQL Edge üzembe helyezése
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718781"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886830"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel
 
-Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az [Azure SQL Edge (előzetes verzió)](onnx-overview.md) vagy az [Azure SQL felügyelt példányain (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md), majd a feltöltött ONNX modell használatával natív előrejelzést futtathat az adatairól.
+Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az [Azure SQL Edge](onnx-overview.md) -ben vagy az [Azure SQL felügyelt példányain (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md), majd a feltöltött ONNX-modell használatával FUTTAThatja a natív előrejelzést.
 
 Ez a rövid útmutató a **scikit-tanuláson** alapul, és a [bostoni lakhatási adatkészletet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)használja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Ha az Azure SQL Edge-t használja, és nem telepített Azure SQL Edge-modult, kövesse az [SQL Edge (előzetes verzió) üzembe helyezésének lépéseit a Azure Portal használatával](deploy-portal.md).
+* Ha az Azure SQL Edge-t használja, és nem telepített Azure SQL Edge-modult, kövesse az [SQL Edge üzembe helyezésének lépéseit a Azure Portal használatával](deploy-portal.md).
 
 * Telepítse a [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 
@@ -394,7 +394,7 @@ SELECT predict_input.id
 FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1 FLOAT) AS p;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Machine Learning és AI a ONNX az SQL Edge-ben](onnx-overview.md)
 * [Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md)

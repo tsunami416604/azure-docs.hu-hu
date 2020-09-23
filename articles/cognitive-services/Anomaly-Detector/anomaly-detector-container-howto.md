@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530709"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903548"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Rendellenesség-Kiderítő tárolók telepítése és futtatása (előzetes verzió)
+# <a name="install-and-run-anomaly-detector-containers"></a>Anomáliadetektor-tárolók telepítése és futtatása 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 Az anomáliadetektor a következő tárolói szolgáltatásfunkciókkal rendelkezik:
 
-| Függvény | Szolgáltatások |
+| Funkció | Funkciók |
 |--|--|
-| Anomália detektor | <li> Észleli a rendellenességeket, mivel azok valós időben történnek. <li> Az adatkészletben lévő összes adathalmazt a kötegben észleli. <li> Kikövetkezteti az adatai várható normál tartományát. <li> A anomáliák észlelésének érzékenységi beállítását támogatja, hogy jobban illeszkedjen az adataihoz. |
+| Anomália detektor | <li> Észleli a rendellenességeket, mivel azok valós időben történnek. <li> Az adatkészletben lévő összes adathalmazt a kötegben észleli. <li> Az adatkészletben lévő Trends-változási pontokat észleli kötegként.<li> Kikövetkezteti az adatai várható normál tartományát. <li> A anomáliák észlelésének érzékenységi beállítását támogatja, hogy jobban illeszkedjen az adataihoz. |
 
 Az API-kkal kapcsolatos részletes információkért lásd:
 * [További információ az anomália-érzékelő API szolgáltatásáról](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -67,7 +69,7 @@ A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) pa
 
 | Tároló | Adattár |
 |-----------|------------|
-| kognitív szolgáltatások – anomália – detektor | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| kognitív szolgáltatások – anomália – detektor | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engi
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 Ebből a cikkből megtudhatta, milyen fogalmakat és munkafolyamatokat használ az anomáliák-detektor tárolóinak letöltéséhez, telepítéséhez és futtatásához. Összegezve:
 
 * Az anomália detektor egy Linux-tárolót biztosít a Docker számára, valamint a Batch vs streaming, a várt Range és az érzékenység finomhangolását.
-* A rendszer a tárolók lemezképeit a tárolók előzetes verziójára kijelölt privát Azure Container Registry tölti le.
+* A rendszer a tárolók lemezképeit a tárolók számára kijelölt privát Azure Container Registry tölti le.
 * A tároló lemezképei a Docker-ben futnak.
 * Használhatja a REST API vagy az SDK-t, hogy a tároló gazdagép URI azonosítójának megadásával hívja meg a műveleteket a rendellenesség-Kiderítő tárolókban.
 * A tárolók létrehozásakor számlázási adatokat kell megadnia.
@@ -185,7 +187,7 @@ Ebből a cikkből megtudhatta, milyen fogalmakat és munkafolyamatokat használ 
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (pl. az elemzett idősoros adatgyűjtési időt) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](anomaly-detector-container-configuration.md) áttekintése konfigurációs beállításokhoz
 * [Rendellenesség-Kiderítő tároló üzembe helyezése Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)

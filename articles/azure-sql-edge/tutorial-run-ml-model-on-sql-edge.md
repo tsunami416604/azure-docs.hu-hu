@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85318641"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887472"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával 
 
@@ -37,7 +37,7 @@ A három részből álló, az Azure SQL Edge-beli Iron Ore-szennyeződések elő
    |Jelszó|Az Azure SQL Edge-példány létrehozásakor használt erős jelszó|
    |Adatbázis|Alapértelmezett|
    |Kiszolgálócsoport|Alapértelmezett|
-   |Név (nem kötelező)|Adjon meg egy opcionális nevet|
+   |Name (Név) (nem kötelező)|Adjon meg egy opcionális nevet|
 
 3. Kattintson a **kapcsolat** gombra.
 
@@ -223,6 +223,6 @@ Adja meg a következő Python-kódot a Azure Data Studio jegyzetfüzetben, és f
    fig.show()
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a ONNX-modellek Azure SQL Edge-ben történő használatáról: [Machine learning és AI with ONNX in SQL Edge (előzetes verzió)](onnx-overview.md).
+A ONNX-modellek Azure SQL Edge-ben történő használatáról további információt a [Machine learning és a AI a ONNX az SQL Edge-ben](onnx-overview.md)című témakörben talál.

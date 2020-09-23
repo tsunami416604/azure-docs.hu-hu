@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156560"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025388"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -207,3 +207,33 @@ Ha például az Alice és a Bob, mint az első jóváhagyó (k) szerepel, a Caro
     ![Hozzáférési csomag – házirend – házirend-beállítás engedélyezése](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Kattintson a **Tovább** gombra.
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>A kérelmező adatainak (előzetes verzió) hozzáadása egy hozzáférési csomaghoz
+
+1. Lépjen a **kérelmező adatai** lapra, és kattintson a **kérdések** allapra.
+ 
+1. Írja be, hogy mit szeretne kérni a kérelmezőnek, más néven a lekérdezési karakterláncot a **kérdés** mezőben.
+
+    ![Hozzáférési csomag – házirend – a kérelmező adatainak engedélyezése beállítás](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. Ha hozzá szeretné adni a saját honosítási beállításait, kattintson a **honosítás hozzáadása**lehetőségre.
+    1. Miután a **honosítás hozzáadása a kérdés** panelhez lehetőségre kattint, válassza ki annak a nyelvnek a nyelvi **kódját** , amelyben a kérdést honosítja.
+    1. A konfigurált nyelven írja be a kérdést a **honosított szövegmezőbe** .
+    1. Miután hozzáadta az összes szükséges honosítást, kattintson a **Mentés**gombra.
+
+    ![Hozzáférési csomag – házirend – honosított szöveg konfigurálása](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. Válassza ki a **Válasz formátumát** , amelyben a kérelmezőknek válaszolniuk kell. A válaszok formátuma a következőkből áll: *rövid szöveg*, *több választási lehetőség*és *hosszú szöveg*.
+ 
+    ![Hozzáférési csomag – házirend – több választási választ tartalmazó formátum megtekintése és szerkesztése](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. Ha több lehetőséget választ, kattintson a **megtekintés és szerkesztés** gombra a válasz beállításainak konfigurálásához.
+    1. A nézet kiválasztása és a **kérdés** szerkesztése ablaktábla megnyitása után megnyílik.
+    1. Írja be azokat a válaszokat, amelyeket a kérelmezőnek meg szeretne adni, amikor választ ad a kérdésre a **Válasz értékek** mezőiben.
+    1. Annyi választ adjon meg, amennyire szüksége van, majd kattintson a **Mentés**gombra.
+    
+    ![Hozzáférési csomag – házirend – több választási lehetőség megadása](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. Ha szeretné megkövetelni, hogy a kérelmező megválaszolja ezt a kérdést, amikor hozzáférést kér egy hozzáférési csomaghoz, kattintson a **kötelező**jelölőnégyzetre.
+
+1. Kattintson a Next (Tovább) gombra.

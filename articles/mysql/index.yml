@@ -1,19 +1,19 @@
 ### YamlMime:Landing
 title: Az Azure Database for MySQL dokumentációja
-summary: Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás, amelyet a MySQL Community Edition működtet.  Ez a teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. Az Azure Database for MySQL-ben végzett alkalmazásfejlesztéssel kiaknázhatja az Ön által választott nyílt forráskódú eszközök és platform előnyeit. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a MySQL-hez készült Azure Database használatát.
+summary: Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás, amely a MySQL Community Editionre épül. Önálló kiszolgálóval vagy Rugalmas kiszolgálóval (előzetes verzió) futtathat MySQL-adatbázist az Azure-ban. Ez a teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat.
 metadata:
-  description: Az Azure Database for MySQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amelyet a MySQL Community Edition működtet.
+  description: Az Azure Database for MySQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a MySQL Community Editionre épül. Önálló kiszolgálóval vagy Rugalmas kiszolgálóval (előzetes verzió) helyezheti üzembe a MySQL-adatbázist az Azure-ban.
   author: ajlam
   ms.author: andrela
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 2d01ffea7a570eb2f8af203dd1db8777661dc7df
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+  ms.openlocfilehash: 03deaa446b7db7790f751f226cb788faf9ebc2a7
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88078461"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90903953"
 landingContent:
 - title: További információ az Azure Database for MySQL-ről
   linkLists:
@@ -21,125 +21,131 @@ landingContent:
     links:
     - text: Mi az Azure Database for MySQL?
       url: overview.md
+    - text: A megfelelő MySQL kiválasztása
+      url: select-right-deployment-type.md
   - linkListType: whats-new
     links:
     - text: Tekintse meg blogunkat
       url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
-- title: A kiszolgáló létrehozása
+- title: Önálló kiszolgáló
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az önálló kiszolgáló?
+      url: single-server-overview.md
+    - text: Az önálló kiszolgáló összes dokumentációjának megtekintése
+      url: single-server/index.yml
+  - linkListType: concept
+    links:
+    - text: A tarifacsomagok ismertetése
+      url: concepts-pricing-tiers.md
+    - text: A támogatott MySQL-verziók ismertetése
+      url: concepts-supported-versions.md
   - linkListType: quickstart
     links:
     - text: Kiszolgáló létrehozása az Azure Portal használatával
       url: quickstart-create-mysql-server-database-using-azure-portal.md
     - text: Kiszolgáló létrehozása az Azure CLI használatával
       url: quickstart-create-mysql-server-database-using-azure-cli.md
+- title: Rugalmas kiszolgáló (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a rugalmas kiszolgáló?
+      url: flexible-server/overview.md
+    - text: A rugalmas kiszolgálókra vonatkozó összes dokumentáció megtekintése
+      url: flexible-server/index.yml
   - linkListType: concept
     links:
-    - text: A tarifacsomagok ismertetése
-      url: concepts-pricing-tiers.md
-    - text: A korlátozások ismertetése
-      url: concepts-limits.md
-    - text: A támogatott MySQL-verziók ismertetése
-      url: concepts-supported-versions.md
-    - text: Kiszolgáló paramétereinek konfigurálása
-      url: howto-server-parameters.md
-    - text: Tervezés magas rendelkezésre álláshoz
-      url: concepts-high-availability.md
-  - linkListType: tutorial
+    - text: Kiszolgálóval kapcsolatos fogalmak
+      url: flexible-server/concept-servers.md
+    - text: A számítás és tárolás megismerése
+      url: flexible-server/concepts-compute-storage.md
+    - text: Korlátozások
+      url: flexible-server/concepts-limitations.md
+  - linkListType: quickstart
     links:
-    - text: Adatbázis tervezése az Azure Portal használatával
-      url: tutorial-design-database-using-portal.md
-    - text: Adatbázis tervezése az Azure CLI használatával
-      url: tutorial-design-database-using-cli.md
-    - text: A WordPress üzembe helyezése tárolókban
-      url: ../app-service/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
-    - text: Webalkalmazás készítése PHP használatával az Azure CLI-ben
-      url: ../app-service/tutorial-php-mysql-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
-- title: Adatok biztonsági mentése és migrálása
+    - text: Kiszolgáló létrehozása a Portal használatával
+      url: flexible-server/quickstart-create-server-portal.md
+    - text: Kiszolgáló létrehozása parancssori felülettel
+      url: flexible-server/quickstart-create-server-cli.md
+- title: Csatlakozás és lekérdezés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Csatlakozási és lekérdezési gyorsútmutató
+      url: how-to-connect-overview-single-server.md
+  - linkListType: quickstart
+    links:
+    - text: Csatlakozás önálló kiszolgálóhoz a MySQL Workbench használatával
+      url: connect-workbench.md
+    - text: Csatlakozás önálló kiszolgálóhoz Java használatával
+      url: connect-java.md
+    - text: Csatlakozás önálló kiszolgálóhoz PHP használatával
+      url: connect-php.md
+    - text: Csatlakozás rugalmas kiszolgálóhoz a MySQL Workbench használatával
+      url: connect-workbench.md
+    - text: Csatlakozás rugalmas kiszolgálóhoz PHP használatával
+      url: flexible-server/connect-php.md
+    - text: Csatlakozás rugalmas kiszolgálóhoz Python használatával
+      url: flexible-server/connect-python.md
+- title: Adatok kezelése és migrálása
   linkLists:
   - linkListType: concept
     links:
-    - text: Biztonsági mentés és visszaállítás
-      url: concepts-backup.md
+    - text: Önálló kiszolgáló kezelése az Azure Portal használatával
+      url: howto-create-manage-server-portal.md
+    - text: Rugalmas kiszolgáló (előzetes verzió) kezelése az Azure Portal használatával
+      url: flexible-server/how-to-manage-server-portal.md
     - text: Migrálás memóriakép és visszaállítás használatával
       url: concepts-migrate-dump-restore.md
     - text: Migrálás importálás és exportálás használatával
       url: concepts-migrate-import-export.md
   - linkListType: how-to-guide
     links:
-    - text: Kiszolgáló visszaállítása az Azure Portal használatával
-      url: howto-restore-server-portal.md
-    - text: Kiszolgáló visszaállítása az Azure CLI használatával
-      url: howto-restore-server-cli.md
-    - text: Minimális állásidejű migrálások
+    - text: Migrálás a Data Migration Service használatával
       url: howto-migrate-online.md
-- title: Csatlakozás az Azure Database for MySQL-hez
+    - text: Azure adatmigrálási útmutató
+      url: https://datamigration.microsoft.com/scenario/mysql-to-azuremysql?step=1
+- title: Alkalmazásfejlesztés
   linkLists:
   - linkListType: concept
     links:
-    - text: A tűzfal ismertetése
-      url: concepts-firewall-rules.md
-    - text: Az SSL ismertetése
-      url: concepts-ssl-connection-security.md
-    - text: A virtuális hálózatok ismertetése
-      url: concepts-data-access-and-security-vnet.md
-  - linkListType: how-to-guide
+    - text: Kapcsolat rugalmassága
+      url: concepts-connectivity.md
+    - text: Ajánlott eljárások
+      url: app-development-best-practices.md
+    - text: Kompatibilis illesztők és eszközök
+      url: concepts-compatibility.md
+  - linkListType: tutorial
     links:
-    - text: Tűzfalszabályok létrehozása
-      url: howto-manage-firewall-using-portal.md
-    - text: SSL-kapcsolat konfigurálása
-      url: howto-configure-ssl.md
-    - text: Meglévő Azure App Service csatlakoztatása
-      url: howto-connect-webapp.md
-    - text: Kapcsolati sztringek
-      url: howto-connection-string.md
-    - text: Kapcsolati problémák hibaelhárítása
-      url: howto-troubleshoot-common-connection-issues.md
-  - linkListType: get-started
-    links:
-    - text: Csatlakozás MySQL Workbench használatával
-      url: connect-workbench.md
-    - text: Csatlakozás PHP használatával
-      url: connect-php.md
-    - text: Csatlakozás Java használatával
-      url: connect-java.md
-    - text: Csatlakozás .Net használatával
-      url: connect-csharp.md
-    - text: Csatlakozás Python használatával
-      url: connect-python.md
-    - text: Csatlakozás Node.js használatával
-      url: connect-nodejs.md
-    - text: Csatlakozás Ruby használatával
-      url: connect-ruby.md
-    - text: Csatlakozás C++ használatával
-      url: connect-cpp.md
-    - text: Csatlakozás Go használatával
-      url: connect-go.md
-- title: Adatok replikálása
+    - text: Adatbázis tervezése önálló kiszolgálón
+      url: tutorial-design-database-using-portal.md
+    - text: Webalkalmazás létrehozása rugalmas kiszolgálóval virtuális hálózaton
+      url: flexible-server/tutorial-webapp-server-vnet.md
+    - text: PHP (Laravel) webalkalmazás összeállítása rugalmas kiszolgálóval
+      url: flexible-server/tutorial-php-database-app.md
+    - text: PHP (Laravel) webalkalmazás összeállítása önálló kiszolgálóval
+      url: ../app-service/tutorial-php-mysql-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: Referencia
   linkLists:
-  - linkListType: concept
+  - linkListType: download
     links:
-    - text: A beérkező adatokra épülő replikáció ismertetése
-      url: concepts-data-in-replication.md
-    - text: Az olvasási replikák ismertetése
-      url: concepts-read-replicas.md
-  - linkListType: how-to-guide
-    links:
-    - text: Beérkező adatokra épülő replikáció konfigurálása
-      url: howto-data-in-replication.md
-    - text: Olvasási replika létrehozása az Azure Portal használatával
-      url: howto-read-replicas-portal.md
-- title: Kód írása programozási API-kkal
-  linkLists:
-  - linkListType: get-started
+    - text: MySQL workbench
+      url: https://www.mysql.com/products/workbench
+    - text: MySQL .NET-összekötő
+      url: https://dev.mysql.com/doc/connector-net/en/
+  - linkListType: deploy
     links:
     - text: Azure CLI-szkriptek gyakori műveletekhez
       url: /azure/mysql/sample-scripts-azure-cli
+    - text: Azure Resource Manager-sablonok
+      url: /azure/templates/microsoft.dbformysql/allversions
   - linkListType: reference
     links:
     - text: Azure CLI – fejlesztői segédletek
       url: /cli/azure/mysql
     - text: REST API – fejlesztői segédletek
       url: /rest/api/mysql/
-    - text: Azure Resource Manager-sablonok
-      url: /azure/templates/microsoft.dbformysql/allversions
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.mysql

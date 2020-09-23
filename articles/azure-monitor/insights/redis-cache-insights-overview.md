@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor az Azure cache for Redis (előzetes verzió) | Microsoft Docs
+title: Azure cache-Azure Monitor a Redis-hez | Microsoft Docs
 description: Ez a cikk a Azure Redis Cache funkció Azure Monitor ismerteti, amely a gyorsítótár-tulajdonosokat a teljesítmény-és kihasználtsági problémák gyors megismerésével biztosítja.
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2020
-ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/10/2020
+ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045866"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887011"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Ismerkedés az Azure cache Azure Monitor Redis
 
-Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaihoz tartozó összes Azure-gyorsítótárhoz a következő egységes, interaktív nézetet nyújtja:
+A Redis Azure cache Azure Monitor-hez készült Redis-erőforrások összes Azure-gyorsítótára esetében a következő egységes, interaktív képet nyújt:
 
 - Teljes teljesítmény
 - Hibák
@@ -50,7 +50,7 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítmén
 
     ![A "figyelő" szót tartalmazó keresőmező és a szolgáltatások keresési eredménye, amely a "monitor" karaktert mutatja egy sebességmérő szimbólummal](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. Válassza ki **Az Azure cache Redis (előzetes verzió)** lehetőséget. Ha ez a beállítás nincs jelen, válassza a **további**  >  **Azure cache Redis**lehetőséget.
+1. Válassza ki **Az Azure cache-t a Redis**. Ha ez a beállítás nincs jelen, válassza a **további**  >  **Azure cache Redis**lehetőséget.
 
 ### <a name="overview"></a>Áttekintés
 
@@ -128,9 +128,9 @@ Az Azure cache Azure Monitor az Redis közvetlenül egy adott erőforrásból va
 
 1. A Azure Portal válassza az Azure cache lehetőséget a Redis számára.
 
-2. A listáról válassza ki a Redis-erőforráshoz tartozó egyedi Azure cache-t. A figyelés szakaszban válassza az áttekintések (előzetes verzió) lehetőséget.
+2. A listáról válassza ki a Redis-erőforráshoz tartozó egyedi Azure cache-t. A figyelés szakaszban válassza az áttekintések lehetőséget.
 
-    ![A menüpontok képernyőképe a piros mezőben Kiemelt "bepillantások (előzetes verzió)" szavakkal](./media/redis-cache-insights-overview/insights.png)
+    ![A menüpontok képernyőképe a piros mezőben Kiemelt "bepillantások" kifejezéssel](./media/redis-cache-insights-overview/insights.png)
 
 Ezek a nézetek a Azure Monitor szintű munkafüzetből származó Redis-erőforráshoz tartozó Azure cache-erőforrás nevének kiválasztásával is elérhetők.
 
@@ -168,7 +168,7 @@ Egy munkafüzet összes nézetének kibontásához vagy összecsukásához vála
 
 ![Kiemelt kibontott munkafüzet szimbóluma](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>Az Azure cache Azure Monitor testreszabása a Redis (előzetes verzió)
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Az Azure cache Azure Monitor testreszabása a Redis
 
 Mivel ez a felület Azure monitor munkafüzet-sablonokon alapul, kiválaszthatja a **Customize**  >  **szerkesztési**  >  **Mentés** testreszabása lehetőséget, hogy a módosított verzió másolatát egy egyéni munkafüzetbe mentse.
 
@@ -184,7 +184,7 @@ Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust.
 
 A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
 

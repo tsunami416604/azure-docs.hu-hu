@@ -3,34 +3,21 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
-ms.openlocfilehash: 66bd78c94e6c54d26959778cc059730c13d02629
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 08/31/2020
+ms.openlocfilehash: 1c374429ca910afeb9972841204bd3e51dcc8306
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888337"
 ---
-Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Az űrlap elküldése után az Azure Cognitive Services csapata megtekinti, hogy megfelel-e a Private Container registryhez való hozzáférés feltételeinek.
+Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Az űrlap elküldése után az Azure Cognitive Services csapata áttekinti és e-mailben értesíti Önt a döntésről.
 
 > [!IMPORTANT]
-> Az űrlapon egy Microsoft-fiókhoz (MSA) vagy egy Azure Active Directory (Azure AD-fiókhoz) társított e-mail-címet kell használnia.
+> * Az űrlapon az Azure-előfizetési AZONOSÍTÓhoz társított e-mail-címet kell használnia.
+> * A tároló futtatásához használt Azure-erőforrást a jóváhagyott Azure-előfizetés azonosítójával kell létrehozni. 
+> * A Microsofttól származó alkalmazás állapotával kapcsolatos frissítésekért keresse meg az e-mail-címét (a beérkezett fájlok és a levélszemét mappáját is).
 
-Ha jóváhagyja a kérelmét, egy e-mailt kap, amely leírja, hogyan kérheti le a hitelesítő adatokat, és hogyan érheti el a privát tároló beállításjegyzékét.
+A jóváhagyást követően a tárolót a cikk későbbi részében leírtak szerint is futtathatja a Microsoft Container Registry (MCR) szolgáltatásból. 
 
-## <a name="log-in-to-the-private-container-registry"></a>Jelentkezzen be a Private Container registrybe
-
-A Cognitive Services tárolók magánhálózati tárolójának beállításjegyzékét többféleképpen lehet hitelesíteni. Javasoljuk, hogy a parancssori módszert használja a [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)használatával.
-
-Az alábbi példában látható [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs használatával jelentkezzen be `containerpreview.azurecr.io` , amely a Cognitive Services tárolók privát tárolójának beállításjegyzéke. Cserélje le a * \< felhasználónevet \> * a felhasználónévvel és a * \< jelszóval \> * az Azure Cognitive Services csapattól kapott hitelesítő adatokban megadott jelszóval.
-
-```
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
-
-Ha egy szövegfájlban biztosította a hitelesítő adatait, összefűzheti a szövegfájl tartalmát a `docker login` parancshoz. Használja az `cat` parancsot az alábbi példában látható módon. A * \< passwordFile \> * helyére írja be a jelszót tartalmazó szövegfájl elérési útját és nevét. Cserélje le a * \< username \> * nevet a hitelesítő adataiban megadott felhasználónévre.
-
-```
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
-
+Ha az Azure-előfizetését nem hagyták jóvá, nem fogja tudni futtatni a tárolót.

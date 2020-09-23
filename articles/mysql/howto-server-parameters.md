@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: a37fbee4361d4a87c43a42cae66c425eba1e0877
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887039"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MySQL a Azure Portal használatával
 
@@ -21,13 +21,13 @@ Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurác
 
 1. Jelentkezzen be a Azure Portalba, majd keresse meg a Azure Database for MySQL-kiszolgálót.
 2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
-![Azure Portal kiszolgáló paramétereinek lapja](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+:::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::
 3. Keresse meg a módosítani kívánt beállításokat. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
-![Számbavétel legördülő lista](./media/howto-server-parameters/3-toggle_parameter.png)
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Számbavétel legördülő lista":::
 4. A módosítások mentéséhez kattintson a  **Save (Mentés** ) gombra.
-![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Módosítások mentése vagy elvetése":::
 5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
-![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Az összes visszaállítása az alapértelmezett értékre":::
 
 ## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása
 
@@ -41,7 +41,7 @@ Ha a frissíteni kívánt kiszolgálói paraméter nem szerepel a Azure Portalba
 4. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 >[!Note]
-> `init_connect` felhasználható olyan paraméterek módosítására, amelyek nem igénylik a SUPER jogosultság (oka) t a munkamenet szintjén. Annak ellenőrzéséhez, hogy be tudja-e állítani a paramétert a használatával `init_connect` , hajtsa végre a `set session parameter_name=YOUR_DESIRED_VALUE;` parancsot, és ha a **hozzáférés megtagadva** hibaüzenettel rendelkezik, a (z) "init_connect" paraméterrel nem állíthatja be a paramétert.
+> Az `init_connect` olyan paraméterek módosítására használható, amelyek nem igényelnek SUPER jogosultságo(ka)t a munkamenet szintjén. A `set session parameter_name=YOUR_DESIRED_VALUE;` parancs végrehajtásával ellenőrizze, hogy megadható-e a paraméter az **használatával. Ha hiba lép fel, és a**Hozzáférés megtagadva; SUPER jogosultság(ok) szükséges(ek)`init_connect` hibaüzenet jelenik meg, akkor a paraméter nem adható meg az init_connect segítségével.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
@@ -69,7 +69,7 @@ SELECT name FROM mysql.time_zone_name;
 
 A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lapján lehet beállítani. Az alábbi beállítás a globális időzónát az "USA/csendes-óceáni" értékre állítja be.
 
-![Időzóna-paraméter beállítása](./media/howto-server-parameters/timezone.png)
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Időzóna-paraméter beállítása":::
 
 ### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
