@@ -1,7 +1,7 @@
 ---
-title: A Designer (előzetes verzió) modul hibáinak elhárítása
+title: A Designer modul hibáinak elhárítása
 titleSuffix: Azure Machine Learning
-description: A modul hibakódjának hibakeresése Azure Machine Learning Designerben (előzetes verzió)
+description: A modul hibakódjának hibakeresése Azure Machine Learning Designerben
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876920"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908090"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>A tervezőhöz tartozó kivételek és hibakódok (előzetes verzió)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>A tervezőhöz tartozó kivételek és hibakódok
 
-Ez a cikk a Azure Machine Learning Designerben (előzetes verzió) lévő hibaüzeneteket és kivételi kódokat ismerteti a gépi tanulási folyamatok hibaelhárításához.
+Ez a cikk a Azure Machine Learning Designerben található hibaüzeneteket és kivételi kódokat ismerteti, hogy segítsen a gépi tanulási folyamatok hibaelhárításában.
 
 A hibaüzenetet a tervezőben a következő lépésekkel érheti el:  
 
@@ -491,7 +491,7 @@ Azt is megteheti, hogy egy felirat típusú oszlop szerepel az adatkészletben, 
 
 **Felbontás**
 
-+ Nyissa meg a hibát generáló modult, és állapítsa meg, hogy van-e felirat típusú oszlop. Az oszlop neve vagy adattípusa nem számít, feltéve, hogy az oszlop egyetlen eredményt (vagy függő változót) tartalmaz, amelyet előre meg szeretne jósolni. Ha nem biztos abban, hogy melyik oszlop rendelkezik a címkével, keresse meg az általános nevet, például az *osztályt* vagy a *célt*. 
++ Nyissa meg a hibát generáló modult, és állapítsa meg, hogy van-e felirat típusú oszlop. Az oszlop neve vagy adattípusa nem számít, feltéve, hogy az oszlop egyetlen eredményt (vagy függő változót) tartalmaz, amelyet előre meg szeretne jósolni. Ha nem biztos abban, hogy melyik oszlop rendelkezik a címkével, keresse meg az általános nevet, például az  *osztályt* vagy a *célt*. 
 +  Ha az adatkészlet nem tartalmaz felirat oszlopot, akkor lehetséges, hogy a Label oszlop explicit módon vagy véletlenül eltávolította a felsőbb rétegbeli adatokat. Az is előfordulhat, hogy az adatkészlet nem egy felsőbb rétegbeli pontozási modul kimenete.
 + Ha explicit módon meg szeretné jelölni az oszlopot feliratként, vegye fel a [metaadatok szerkesztése](edit-metadata.md) modult, és kapcsolja össze az adatkészletet. Válassza ki a csak a címke oszlopot, és válassza a **címkék** lehetőséget a **mezők** legördülő listából. 
 + Ha a hibás oszlop van kiválasztva címkeként, a **mezőkben** lévő metaadatok kijavításához jelölje be a **címke törlése jelölőnégyzetet** . 
@@ -1079,7 +1079,7 @@ A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, 
 + Ellenőrizze, hogy a lekérdezés megfelelően működik-e Azure Machine Learning a Hadoop-fürt kaptár-konzolján való bejelentkezéssel és a lekérdezés futtatásával.  
 + Próbálja meg egy külön sorban elhelyezni a megjegyzéseket a kaptár-parancsfájlban, szemben a végrehajtható utasítások és megjegyzések egyetlen sorba való keverésével.  
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Források
 
 A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítségért tekintse meg a következő cikkeket:
 

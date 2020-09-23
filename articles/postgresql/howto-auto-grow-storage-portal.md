@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: 24ca9d84e8e05b2ffe093dc54963c1ac39464105
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1853bbb0e44526988b34ed23126664c5a2285a7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119616"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907512"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Tárterület automatikus növekedése a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
@@ -32,13 +32,13 @@ A PostgreSQL-kiszolgáló tárterület automatikus növekedésének beállítás
 
 3. Az **automatikus növekedés** szakaszban válassza az **Igen** lehetőséget a tárterület automatikus növekedésének engedélyezéséhez.
 
-    ![Azure Database for PostgreSQL-Settings_Pricing_tier – automatikus növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/3-auto-grow.png" alt-text="Azure Database for PostgreSQL-Settings_Pricing_tier – automatikus növekedés":::
 
 4. A módosítások mentéséhez kattintson az **OK** gombra.
 
 5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve lett.
 
-    ![Azure Database for PostgreSQL – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png" alt-text="Azure Database for PostgreSQL – az automatikus növekedés sikere":::
 
 ## <a name="next-steps"></a>Következő lépések
 

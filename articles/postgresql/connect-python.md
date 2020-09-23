@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182682"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901821"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL-adatbázishoz való csatlakozáshoz a teljes kiszo
    
    Szüksége lesz a rendszergazdai jelszavára is. Ha elfelejti, ezt a lapról állíthatja vissza. 
    
-   ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-python/1-connection-string.png)
+   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
 
 ## <a name="how-to-run-the-python-examples"></a>A Python-példák futtatása
 
@@ -55,9 +55,9 @@ A cikkben szereplő kódok mindegyike esetében:
 1. Hozzon létre egy új fájlt egy szövegszerkesztőben. 
    
 1. Adja hozzá a példában szereplő kódot a fájlhoz. A kódban cserélje le a következőket:
-   - `<server-name>`és a `<admin-username>` Azure Portalból másolt értékekkel.
-   - `<admin-password>`a kiszolgáló jelszavával.
-   - `<database-name>`a Azure Database for PostgreSQL-adatbázis nevével. A kiszolgáló létrehozásakor a rendszer automatikusan létrehozta a *postgres* nevű alapértelmezett adatbázist. Átnevezheti az adatbázist, vagy létrehozhat egy új adatbázist az SQL-parancsok használatával. 
+   - `<server-name>` és a `<admin-username>` Azure Portalból másolt értékekkel.
+   - `<admin-password>` a kiszolgáló jelszavával.
+   - `<database-name>` a Azure Database for PostgreSQL-adatbázis nevével. A kiszolgáló létrehozásakor a rendszer automatikusan létrehozta a *postgres* nevű alapértelmezett adatbázist. Átnevezheti az adatbázist, vagy létrehozhat egy új adatbázist az SQL-parancsok használatával. 
    
 1. Mentse a fájlt a Project mappájába *.* file kiterjesztéssel, például *postgres-INSERT.py*. Windows esetén győződjön meg arról, hogy az UTF-8 kódolás van kiválasztva a fájl mentésekor. 
    
@@ -105,7 +105,7 @@ conn.close()
 
 A kód sikeres futtatásakor a következő kimenetet hozza létre:
 
-![Parancssori kimenet](media/connect-python/2-example-python-output.png)
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Parancssori kimenet":::
 
 ## <a name="read-data"></a>Adatok olvasása
 A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **Select** utasítással az adatok beolvasásához használja az [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) kifejezést. Ez a függvény elfogad egy lekérdezést, és visszaad egy eredményhalmaz értékét a [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)használatával. 

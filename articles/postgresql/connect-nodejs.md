@@ -13,12 +13,12 @@ ms.custom:
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 10c7abf7349a3b2419e81459866920f20c3af6f7
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ca32426b2f3f6251d699c9249b8c6dfdc8fdb4eb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182731"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901916"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Gyors útmutató: a Node.js használata az adatAzure Database for PostgreSQL egyetlen kiszolgálón való kapcsolódáshoz és adatlekérdezéshez
 
@@ -52,7 +52,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 
 1. A kiszolgáló **Áttekintés** paneljén jegyezze fel a **kiszolgáló nevét** és a **rendszergazdai felhasználónevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
 
-   ![Azure Database for PostgreSQL a kapcsolatok karakterlánca](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+   :::image type="content" source="./media/connect-nodejs/server-details-azure-database-postgresql.png" alt-text="Azure Database for PostgreSQL a kapcsolatok karakterlánca":::
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>A JavaScript-kód futtatása a Node.js-ben
 A Node.js-t elindíthatja a Bash felületről, a Terminal eszközből vagy a Windows parancssorból a `node` parancs beírásával. Ezután a JavaScript-kód interaktív futtatásához másolja és illessze be azt a promptba. Másik megoldásként el is mentheti a JavaScript-kódot az adott szövegfájlba, majd a futtatáshoz végezze el a `node filename.js` indítását a paraméterként megadott fájlnévvel.

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542653"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969835"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy Azure-beli virtuáli
 
 A pont – hely kapcsolat használatával történő kapcsolódást bemutató rövid útmutatóban tekintse meg a [pont – hely kapcsolat konfigurálása](point-to-site-p2s-configure.md)című témakört.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató a [felügyelt példány létrehozása](instance-create-quickstart.md) kiindulási pontként létrehozott erőforrásokat használja.
 
@@ -85,7 +85,7 @@ Az ügyfél virtuális gépnek az összes szükséges eszközzel való létrehoz
    | **Hely** | Az erőforráscsoport helye | Ez az érték a kiválasztott erőforráscsoport alapján van feltöltve. |
    | **Virtuális gép neve**  | Bármely érvényes név | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    |**Rendszergazdai Felhasználónév**|Bármilyen érvényes Felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.<br>Ezt a felhasználónevet akkor használja, amikor [csatlakozik a virtuális géphez](#connect-to-the-virtual-machine).|
-   |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Ezt a jelszót bármikor használhatja [a virtuális géphez való kapcsolódáskor](#connect-to-the-virtual-machine).|
+   |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Ezt a jelszót bármikor használhatja [a virtuális géphez való kapcsolódáskor](#connect-to-the-virtual-machine).|
    | **Virtuális gép mérete** | Bármilyen érvényes méret | A **Standard_B2s** ebben a sablonban szereplő alapértelmezett értéke elegendő ehhez a rövid útmutatóhoz. |
    | **Hely**|[resourceGroup (). location].| Ne módosítsa ezt az értéket. |
    | **Virtual Network neve**|Az a virtuális hálózat, amelyben létrehozta a felügyelt példányt|
@@ -110,9 +110,9 @@ A következő lépések bemutatják, hogyan csatlakozhat az újonnan létrehozot
 
 1. Ha az üzembe helyezés elkészült, lépjen a virtuális gép erőforráshoz.
 
-    ![VM](./media/connect-vm-instance-configure/vm.png)  
+    ![Képernyőfelvétel: a kiválasztott virtuális gép áttekintő lapját tartalmazó Azure Portal és a Kiemelt kapcsolat.](./media/connect-vm-instance-configure/vm.png)  
 
-2. Kattintson a **Csatlakozás** gombra.
+2. Válassza a **Kapcsolódás** lehetőséget.
 
    A virtuális gép nyilvános IP-címét és portszámát tartalmazó RDP protokoll fájl (. rdp fájl) űrlap jelenik meg.
 
@@ -144,7 +144,7 @@ A Kiszolgálókezelő irányítópultján csatlakozik a virtuális géphez.
 
 A csatlakozás után megtekintheti a rendszer- és felhasználói adatbázisokat a Databases (Adatbázisok) csomóponton, valamint különféle objektumokat a Security (Biztonság), Server Objects (Kiszolgálóobjektumok), Replication (Replikáció), Management (Felügyelet), SQL Server Agent és XEvent Profiler csomópontokon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A pont – hely kapcsolattal rendelkező helyszíni ügyfélszámítógépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](point-to-site-p2s-configure.md).
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

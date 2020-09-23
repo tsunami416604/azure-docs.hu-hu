@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970056"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
 
@@ -51,7 +51,7 @@ Az alkalmazás lapjának bal oldali navigációs sávján görgessen a **Beáll�
 
 Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem az **F1** szinten van. Az egyéni DNS nem támogatott az **F1** szinten. 
 
-![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Képernyőfelvétel: az alkalmazás oldalának bal oldali navigációs menüje, amely felskálázással (App Service terv) van kiválasztva.":::
 
 Ha az App Service-csomag nem az **F1** -es szinten található, akkor a vertikális **felskálázás** oldal bezárásával ugorjon [a tartomány megvásárlása](#buy-the-domain)elemre.
 
@@ -61,7 +61,7 @@ Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, va
 
 Kattintson az **Alkalmaz** gombra.
 
-![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Képernyőfelvétel: az éles kategóriába tartozó egyéni tartomány díjszabási szintjei az üzemi lapon, a B1-terv és az alkalmaz gomb kiemelve.":::
 
 Amikor megjelenik a következő értesítés, a skálázási művelet befejeződött.
 

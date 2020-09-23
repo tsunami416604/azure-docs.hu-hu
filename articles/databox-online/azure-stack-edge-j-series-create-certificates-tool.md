@@ -1,29 +1,29 @@
 ---
 title: Tanúsítványok létrehozása Microsoft Azure Stack hub Readiness-ellenőrző eszköz használatával | Microsoft Docs
-description: Útmutatás a tanúsítványkérelmek létrehozásához, majd a tanúsítványok lekéréséhez és telepítéséhez a Azure Stack Edge GPU-eszközön az Azure Stack hub Readiness-ellenőrző eszköz használatával.
-services: Azure Stack Edge
+description: Útmutatás a tanúsítványkérelmek létrehozásához, majd a tanúsítványok lekéréséhez és telepítéséhez a Azure Stack Edge Pro GPU-eszközön az Azure Stack hub Readiness-ellenőrző eszköz használatával.
+services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267377"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891084"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>Tanúsítványok létrehozása az Azure Stack Edge-hez Azure Stack hub Readiness-ellenőrző eszköz használatával 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Tanúsítványok létrehozása a Azure Stack Edge Pro-hoz Azure Stack hub Readiness-ellenőrző eszköz használatával 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk bemutatja, hogyan hozhat létre tanúsítványokat az Azure Stack Edge-hez az Azure Stack hub Readiness-ellenőrző eszközével. 
+Ez a cikk azt ismerteti, hogyan hozhat létre tanúsítványokat a Azure Stack Edge Pro-hoz a Azure Stack hub Readiness-ellenőrző eszköz használatával. 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub Readiness-ellenőrző eszköz használata
 
-Az Azure Stack hub Readiness-ellenőrző eszköz használatával tanúsítvány-aláírási kérelmeket (munkatársakat) hozhat létre egy Azure Stack Edge-eszköz telepítéséhez. Ezeket a kérelmeket a Azure Stack Edge-eszközre vonatkozó megrendelés elhelyezése után hozhatja létre, és megvárja az eszköz érkezését. 
+Az Azure Stack hub Readiness-ellenőrző eszköz használatával tanúsítvány-aláírási kérelmeket (munkatársakat) hozhat létre egy Azure Stack Edge Pro-eszköz telepítéséhez. Ezeket a kéréseket a Azure Stack Edge Pro-eszközre vonatkozó megrendelés elhelyezése után hozhatja létre, és megvárja, amíg az eszköz el nem érkezik. 
 
 > [!NOTE]
 > Ezt az eszközt csak tesztelési vagy fejlesztési célokra, illetve éles eszközökre nem használhatja. 
@@ -39,10 +39,10 @@ Az Azure Stack hub Readiness-ellenőrző eszköz (AzsReadinessChecker) használa
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha az ügyfélszolgálatot Azure Stack peremhálózati eszköz telepítéséhez szeretné létrehozni, győződjön meg a következőket: 
+Az ügyfélszolgálati munkatársak létrehozásához Azure Stack Edge Pro-eszköz telepítéséhez győződjön meg a következőket: 
 
 - Windows 10 vagy Windows Server 2016 vagy újabb rendszert futtató ügyfél. 
-- Letöltötte az Microsoft Azure Stack hub Readiness-ellenőrző eszköz 1.2002.1133.85 a rendszer [PowerShell-Galéria](https://aka.ms/AzsReadinessChecker) . Előfordulhat, hogy keresnie kell erre a csomagra. Csak az eszköz ezen verziója hozhat létre tanúsítványokat Azure Stack peremhálózati eszközökhöz.
+- Letöltötte az Microsoft Azure Stack hub Readiness-ellenőrző eszköz 1.2002.1133.85 a rendszer [PowerShell-Galéria](https://aka.ms/AzsReadinessChecker) . Előfordulhat, hogy keresnie kell erre a csomagra. Csak az eszköz ezen verziója hozhat létre tanúsítványokat Azure Stack Edge Pro-eszközökhöz.
 - A tanúsítványokkal kapcsolatban a következő információk szerepelnek:
   - Eszköz neve
   - Csomópont sorozatszáma
@@ -50,7 +50,7 @@ Ha az ügyfélszolgálatot Azure Stack peremhálózati eszköz telepítéséhez 
 
 ## <a name="generate-certificate-signing-requests"></a>Tanúsítvány-aláírási kérelmek előállítása
 
-Az Azure Stack Edge-eszközök tanúsítványainak előkészítéséhez használja az alábbi lépéseket:
+Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-eszköz tanúsítványait:
 
 1. Futtassa a PowerShellt rendszergazdaként (5,1 vagy újabb).
 2. Telepítse az Azure Stack hub Readiness-ellenőrző eszközt. A PowerShell parancssorába írja be a következőt: 
@@ -121,15 +121,15 @@ Az Azure Stack Edge-eszközök tanúsítványainak előkészítéséhez használ
     Megjelenik egy INF-mappa is. Ez egy felügyeleti. <Edge-DeviceName> információs fájlt tartalmaz a tanúsítvány részleteit magyarázó szövegben.  
 
 
-6. Küldje el ezeket a fájlokat a hitelesítésszolgáltatótól (belső vagy nyilvános). Győződjön meg arról, hogy a HITELESÍTÉSSZOLGÁLTATÓ olyan tanúsítványokat hoz létre a generált kérelem alapján, amelyek megfelelnek a [csomópont-tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#node-certificates), a [végponti tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)és a [helyi felhasználói felületi tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)Azure stack peremhálózati tanúsítványokra vonatkozó követelményeinek.
+6. Küldje el ezeket a fájlokat a hitelesítésszolgáltatótól (belső vagy nyilvános). Győződjön meg arról, hogy a HITELESÍTÉSSZOLGÁLTATÓ olyan tanúsítványokat hoz létre a generált kérelem alapján, amelyek megfelelnek a [csomópont-tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#node-certificates), a [végponti tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)és a [helyi felhasználói felületi tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)Azure stack Edge Pro tanúsítványára vonatkozó követelményeinek.
 
 ## <a name="prepare-certificates-for-deployment"></a>Tanúsítványok előkészítése központi telepítéshez
 
-A HITELESÍTÉSSZOLGÁLTATÓTÓL beszerzett tanúsítványfájl-fájlokat importálni és exportálni kell olyan tulajdonságokkal, amelyek megfelelnek Azure Stack peremhálózati eszköz tanúsítványára vonatkozó követelményeknek. Hajtsa végre a következő lépéseket ugyanazon a rendszeren, amelyen a tanúsítvány-aláírási kéréseket létrehozta.
+A HITELESÍTÉSSZOLGÁLTATÓTÓL beszerzett tanúsítványfájl-fájlokat importálni és exportálni kell olyan tulajdonságokkal, amelyek megfelelnek Azure Stack Edge Pro-eszköz tanúsítványára vonatkozó követelményeknek. Hajtsa végre a következő lépéseket ugyanazon a rendszeren, amelyen a tanúsítvány-aláírási kéréseket létrehozta.
 
-- A tanúsítványok importálásához kövesse a [tanúsítványok importálása az Azure stack Edge-eszközt elérő ügyfeleken](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit.
+- A tanúsítványok importálásához kövesse a [tanúsítványok importálása az Azure stack Edge Pro-eszközt elérő ügyfeleken](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit.
 
-- A tanúsítványok exportálásához kövesse az [Azure stack Edge-eszközt elérő ügyfél tanúsítványának exportálása](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit.
+- A tanúsítványok exportálásához kövesse az [Azure stack Edge Pro-eszközhöz hozzáférő ügyfél tanúsítványának exportálása](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit.
 
 
 ## <a name="validate-certificates"></a>Tanúsítványok ellenőrzése
@@ -150,6 +150,6 @@ Először létrehoz egy megfelelő mappastruktúrát, és elhelyezi a tanúsítv
 
     `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az Azure Stack Edge-eszköz üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)
+[Az Azure Stack Edge Pro-eszköz üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)

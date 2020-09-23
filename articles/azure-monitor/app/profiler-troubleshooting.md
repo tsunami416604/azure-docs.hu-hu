@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049793"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979381"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
 
@@ -79,12 +79,12 @@ A Profiler megfelelő működéséhez:
    1. Az **eszközök** menüben válassza a **webjobs irányítópult**elemet.  
       Megnyílik a **webjobs** panel. 
    
-      ![Profiler – webjobs]   
+      ![Képernyőfelvétel: a webjobs panel, amely a feladatok nevét, állapotát és utolsó futási idejét jeleníti meg.][profiler-webjob]   
    
    1. A webjobs részleteinek megtekintéséhez, beleértve a naplót, válassza a **ApplicationInsightsProfiler3** hivatkozást.  
      Megnyílik a **folyamatos Webjobs részletei** ablaktábla.
 
-      ![Profiler-webjobs-log]
+      ![Képernyőfelvétel: a folyamatos Webjobs részletek panelje.][profiler-webjob-log]
 
 Ha nem tudja kideríteni, hogy a Profiler miért nem működik Önnek, letöltheti a naplót, és elküldheti a csapatnak segítségért serviceprofilerhelp@microsoft.com . 
     
@@ -168,7 +168,7 @@ A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését
 
 1. Ellenőrizze, hogy helyes-e a Rendszerállapotkulcsot a Profiler parancssorban. 
 
-1. A fájl előzőconfig.jstalálható elérési út használatával keresse *meg* a Profiler-naplófájlt ( **BootstrapN. log**). Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
+1. A fájl előzőconfig.jstalálható elérési út használatával keresse * meg* a Profiler-naplófájlt ( **BootstrapN. log**). Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
 
     A virtuális gépek esetében általában a fájl a következő:
     ```
@@ -191,5 +191,5 @@ Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, e
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler – webjobs]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-webjobs-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png

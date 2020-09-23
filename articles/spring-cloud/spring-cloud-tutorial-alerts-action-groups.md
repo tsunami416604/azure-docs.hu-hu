@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299227"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892529"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: a Spring Cloud-erőforrások figyelése riasztások és műveleti csoportok használatával
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Az Azure Spring Cloud-riasztások támogatják a figyelési erőforrásokat olyan feltételek alapján, mint a rendelkezésre álló tár, a kérelmek sebessége vagy az adatfelhasználás. A riasztások értesítést küldenek, ha a díjszabás vagy a feltételek megfelelnek a megadott specifikációknak.
 
@@ -58,11 +60,11 @@ A **műveleti csoport hozzáadása** oldalon:
 
 ## <a name="set-up-alert"></a>Riasztás beállítása 
 
-Az előző lépések olyan **műveleti csoportot** hoztak létre, amely e-mailt használ. Telefonos értesítéseket, webhookokat, Azure-függvényeket stb. is használhat.  
+Az előző lépések olyan **műveleti csoportot** hoztak létre, amely e-mailt használ. Telefonos értesítéseket, webhookokat, Azure-függvényeket és így tovább is használhat. A következő lépésekkel konfigurálhatja a **riasztásokat**.
 
-A **riasztások**konfigurálásához térjen vissza a **riasztások** lapra, majd kattintson a **riasztási szabályok kezelése**lehetőségre.
+1. váltson vissza a **riasztások** lapra, majd kattintson a **riasztási szabályok kezelése**elemre.
 
-  ![A képernyőfelvétel-portál meghatározza a riasztást](media/alerts-action-groups/alerts-2.png)
+   ![A képernyőfelvétel-portál meghatározza a riasztást](media/alerts-action-groups/alerts-2.png)
 
 1. Válassza ki a riasztás **erőforrását** .
 
@@ -84,9 +86,9 @@ A **riasztások**konfigurálásához térjen vissza a **riasztások** lapra, maj
 
 1. Kattintson a **Kész** gombra.
 
-A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](spring-cloud-concept-metrics.md#user-metrics-options).
+   A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](spring-cloud-concept-metrics.md#user-metrics-options).
 
- A **műveletek**területen kattintson a **műveleti csoport kiválasztása**elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
+1. A **műveletek**területen kattintson a **műveleti csoport kiválasztása**elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
 
    ![Képernyőkép-portál új riasztási szabály 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,15 +100,15 @@ A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhaszn
 
    ![Képernyőkép-portál új riasztási szabály 5](media/alerts-action-groups/alerts-3-4.png)
 
-Ellenőrizze, hogy az új riasztási szabály engedélyezve van-e.
+1. Ellenőrizze, hogy az új riasztási szabály engedélyezve van-e.
 
    ![Képernyőkép-portál új riasztási szabálya 6](media/alerts-action-groups/alerts-4.png)
 
 A **metrikák** lapról is létrehozhat egy szabályt:
 
-   ![Képernyőkép-portál új riasztási szabálya 7](media/alerts-action-groups/alerts-5.png)
+![Képernyőkép-portál új riasztási szabálya 7](media/alerts-action-groups/alerts-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan állíthat be riasztásokat és műveleti csoportokat egy Azure Spring Cloud-alkalmazáshoz. A műveleti csoportokról további információt a következő témakörben talál:
 

@@ -323,11 +323,12 @@
           items:
             - name: Előre beállított feladat
               href: indexer-task-preset.md
+    - name: Tartalom elemzése
+      items:
         - name: Feldolgozás a Face Redactorral
           href: media-services-face-redaction.md
-          items:
-            - name: Útmutatás a Face Redactorhoz
-              href: media-services-redactor-walkthrough.md
+        - name: Útmutatás a Face Redactorhoz
+          href: media-services-redactor-walkthrough.md
     - name: Telemetria konfigurálása
       href: media-services-telemetry-overview.md
       items:

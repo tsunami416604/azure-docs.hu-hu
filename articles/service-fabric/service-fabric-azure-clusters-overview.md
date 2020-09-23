@@ -1,18 +1,18 @@
 ---
 title: Fürtök létrehozása Windows Serveren és Linuxon
-description: A Service Fabric-fürtök Windows Serveren és Linuxon futnak, ami azt jelenti, hogy a Windows Servert vagy Linuxot futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
+description: Service Fabric-fürtök Windows Serveren és Linuxon futnak. A Windows Servert vagy Linux rendszert futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978710"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -30,7 +30,7 @@ Az Azure-beli Service Fabric-fürtök olyan Azure-erőforrások, amelyek más Az
 
 ![Service Fabric fürt][Image]
 
-### <a name="virtual-machine"></a>virtuális gép
+### <a name="virtual-machine"></a>Virtuális gép
 A fürt részét képező [virtuális gépeket](../virtual-machines/index.yml) a rendszer egy csomópontnak nevezi, azonban a fürtcsomópont egy Service Fabric futtatókörnyezeti folyamat. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzői, például [elhelyezési tulajdonságok](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Mindegyik gépen vagy virtuális gépen van egy automatikus indítási szolgáltatás, *FabricHost.exe*, amely indításkor elindul, majd elindítja a csomópontot alkotó két végrehajtható fájl, *Fabric.exe* és *FabricGateway.exe*. Az éles üzembe helyezés fizikai vagy virtuális gépenként egy csomópont. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen számítógépen vagy virtuális gépen a *Fabric.exe* és *FabricGateway.exe*több példányának futtatásával.
 
 Minden virtuális gép egy virtuális hálózati adapterrel (NIC) van társítva, és minden hálózati adapterhez magánhálózati IP-cím van hozzárendelve.  A virtuális gépeket a hálózati ADAPTERen keresztül egy virtuális hálózathoz és egy helyi Balancerhez rendeli a rendszer.
@@ -77,7 +77,7 @@ A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a h
 
 További információért olvassa el [Service Fabric szerepköralapú Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)című témakört.
 
-### <a name="network-security-groups"></a>Hálózati biztonsági csoportok 
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
 Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  
 
 További információkért lásd: [biztonsági csoportok](../virtual-network/security-overview.md)
@@ -100,11 +100,11 @@ A következő operációs rendszereket futtató virtuális gépeken hozhat létr
 | --- | --- |
 | Windows Server 2012 R2 | Az összes verzió |
 | Windows Server 2016 | Az összes verzió |
-| Windows Server 1709 | 6.0 |
+| Windows Server 1709 | 6,0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
+| Linux Ubuntu 16,04 | 6,0 |
 | Linux Ubuntu 18,04 | 7.1 |
 
 További információ: [támogatott fürtözött verziók az Azure-ban](./service-fabric-versions.md#supported-operating-systems)

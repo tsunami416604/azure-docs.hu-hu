@@ -1,6 +1,6 @@
 ---
-title: Az adatváltozások nyomon követése az Azure SQL Edge-ben (előzetes verzió)
-description: Tudnivalók a változások nyomon követéséről és az adatváltozások rögzítéséről az Azure SQL Edge-ben (előzetes verzió).
+title: Az adatváltozások nyomon követése az Azure SQL Edge-ben
+description: Tudnivalók a változások nyomon követéséről és az adatváltozások rögzítéséről az Azure SQL Edge-ben.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d5d5f74a816bf745faf5decf761cd453f40123
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669596"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900068"
 ---
-# <a name="track-data-changes-in-azure-sql-edge-preview"></a>Az adatváltozások nyomon követése az Azure SQL Edge-ben (előzetes verzió)
+# <a name="track-data-changes-in-azure-sql-edge"></a>Az adatváltozások nyomon követése az Azure SQL Edge-ben
 
 Az Azure SQL Edge a két SQL Server funkciót támogatja, amelyek nyomon követik az adatbázisban tárolt adatváltozásokat: [változások követése](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking) és [adatváltozások rögzítése](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture). Ezek a funkciók lehetővé teszik az alkalmazások számára, hogy meghatározzák az adatbázis felhasználói tábláiban végrehajtott adatmódosítási nyelvi módosításokat (INSERT, Update és DELETE művelet). Engedélyezheti az adatváltozások rögzítését és a változások nyomon követését ugyanazon az adatbázison. Nincs szükség különleges szempontokra.
 
@@ -58,12 +58,12 @@ Ezen időszak oszlopain kívül egy időbeli táblázat egy másik, tükrözött
 
 További információ: [időbeli táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Adatfolyamok az Azure SQL Edge-ben (előzetes verzió)](stream-data.md)
-- [Gépi tanulás és AI a ONNX az Azure SQL Edge-ben (előzetes verzió)](onnx-overview.md)
-- [Replikáció konfigurálása az Azure SQL Edge-be (előzetes verzió)](configure-replication.md)
-- [Adatbázisok biztonsági mentése és visszaállítása az Azure SQL Edge-ben (előzetes verzió)](backup-restore.md)
+- [Adatfolyamok az Azure SQL Edge-ben ](stream-data.md)
+- [Gépi tanulás és AI a ONNX az Azure SQL Edge-ben ](onnx-overview.md)
+- [Replikáció konfigurálása az Azure SQL Edge-be](configure-replication.md)
+- [Adatbázisok biztonsági mentése és visszaállítása az Azure SQL Edge-ben](backup-restore.md)
 
 
 

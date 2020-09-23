@@ -1,14 +1,14 @@
 ---
 title: Riasztások naplózása Azure Monitorről a tárolók számára | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan hozhatók létre egyéni riasztások a memória és a CPU-használat Azure Monitor a tárolók számára történő naplózási lekérdezései alapján.
+description: Ez a cikk bemutatja, hogyan hozhat létre egyéni naplózási riasztásokat a memóriához és a CPU-használathoz a Azure Monitor for containers szolgáltatásban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c023471ae041fa524fc4a2164c633ca80bcfdd88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096976"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973716"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Naplóbeli riasztások létrehozása Azure Monitorból tárolók számára
 
@@ -303,7 +303,7 @@ Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatj
 13. Válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. Ez a lépés biztosítja, hogy a rendszer minden alkalommal végrehajtson ugyanazokat a műveleteket, amikor a rendszer riasztást indít el. Konfigurálás az alapján, hogy az informatikai vagy DevOps operatív csapata hogyan kezeli az incidenseket.
 14. Válassza a **riasztási szabály létrehozása** lehetőséget a riasztási szabály befejezéséhez. Azonnal el fog indulni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
 

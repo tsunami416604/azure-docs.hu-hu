@@ -1,17 +1,17 @@
 ---
 title: A Azure Managed Applications beépített szabályzat-definíciói
 description: A Azure Managed Applications Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 94de20570da1e50555ab60967bb704117b71c612
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 7b5d64efa4f161f64ce3250f38dc51f0adef0145
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004425"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972472"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-managed-applications"></a>A Azure Managed Applications beépített definíciói Azure Policy
 

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086115"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892564"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Az Azure Spring Cloud diagnosztikai funkciójának használatával a naplók és a metrikák a következő szolgáltatásokkal elemezhetők:
 
@@ -25,11 +27,11 @@ Az Azure Spring Cloud diagnosztikai funkciójának használatával a naplók és
 Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát.
 
 > [!TIP]
-> Csak szeretné továbbítani a naplókat? Tekintse meg ezt az [Azure CLI-parancsot](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)!
+> Csak szeretné továbbítani a naplókat? Tekintse meg ezt az [Azure CLI-parancsot](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)!
 
 ## <a name="logs"></a>Naplók
 
-|Napló | Description |
+|Napló | Leírás |
 |----|----|
 | **ApplicationConsole** | Az összes felhasználói alkalmazás konzoljának naplója. |
 | **SystemLogs** | Jelenleg csak a [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) naplózza ezt a kategóriát. |
@@ -50,7 +52,7 @@ A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadá
     * **Küldés a Log Analyticsnek**
 
 1. Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát, majd adja meg a megőrzési időt (napokban). A megőrzési idő csak a Storage-fiókra vonatkozik.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > 1. A naplók és a metrikák kibocsátása között akár 15 percet is igénybe vehet, és amikor megjelennek a Storage-fiókban, az Event hub vagy a Log Analytics.
@@ -106,7 +108,7 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
     | limit 50
     ```
 > [!NOTE]
-> `==`megkülönbözteti a kis-és nagybetűket, de `=~` nem.
+> `==` megkülönbözteti a kis-és nagybetűket, de `=~` nem.
 
 Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](../azure-monitor/log-query/query-language.md)ismertető témakört.
 
@@ -203,3 +205,7 @@ AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
 Használhatja ugyanezt a stratégiát más Java-naplókhoz is.
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)

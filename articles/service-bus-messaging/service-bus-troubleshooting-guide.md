@@ -1,14 +1,14 @@
 ---
 title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
-description: Ez a cikk felsorolja az Azure Service Bus üzenetkezelési kivételeket és a kivétel bekövetkezésekor végrehajtandó javasolt műveleteket.
+description: Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/16/2020
+ms.openlocfilehash: 39d2bf14f88e8efabcddda98268a187009cf029e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067052"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885722"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
@@ -97,7 +97,7 @@ Az üzenetek küldésére és fogadására használt tokenek száma korlátozott
 ### <a name="resolution"></a>Feloldás
 További üzenetek küldéséhez nyisson meg egy új kapcsolódást a Service Bus névtérhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Azure Resource Manager kivételek](service-bus-resource-manager-exceptions.md). A Azure Service Bus a Azure Resource Manager használatával (sablonok vagy közvetlen hívások segítségével) való interakció során keletkező kivételeket sorolja fel.

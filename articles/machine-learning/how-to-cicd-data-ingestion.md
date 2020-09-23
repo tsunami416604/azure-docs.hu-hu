@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228885"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971266"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps adatfeldolgozási folyamathoz
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 Ez a név különbözik a ***fejlesztési***, a ***QA***-, a ***ellenőrzését***-és a ***Prod*** -környezetekben. A több tevékenységgel rendelkező összetett folyamatokban több egyéni tulajdonság is lehet. Célszerű az összes értéket összegyűjteni egy helyen, és a folyamat ***változóként***definiálni őket:
 
-![ADF – változók](media/how-to-cicd-data-ingestion/adf-variables.png)
+![A képernyőképen egy PrepareData nevű jegyzetfüzet és egy M L művelet-végrehajtási folyamat fut, amelynek neve: M L végrehajtási folyamat felül, az alábbi változók lapon, az új változók hozzáadásával, névvel, típussal és alapértelmezett értékkel.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 A folyamat tevékenységei a folyamat változóit a tényleges használat közben is hivatkozhatják:
 
-![ADF-jegyzetfüzet – paraméterek](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![A képernyőképen egy PrepareData nevű jegyzetfüzet és egy M L végrehajtási folyamat fut, amelynek neve: M L végrehajtási folyamat, az alább kiválasztott beállítások lapon.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 A Azure Data Factory munkaterület alapértelmezés szerint ***nem*** tesz elérhetővé Azure Resource Manager sablon paraméterként a folyamat változóit. A munkaterület az [alapértelmezett paraméterezés-sablont](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) használja, amely azt diktálja, hogy a folyamat mely tulajdonságai legyenek elérhetők Azure Resource Manager sablon paramétereinek. Ha a listához szeretné hozzáadni a folyamat változóit, frissítse az `"Microsoft.DataFactory/factories/pipelines"` [alapértelmezett paraméterezés-sablon](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) szakaszát az alábbi kódrészlettel, és helyezze el az eredmény JSON-fájlját a forrás mappa gyökerébe:
 

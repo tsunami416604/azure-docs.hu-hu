@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: d2ed06041e8ee0e2993289cdde5fe92f7664b476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829515"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902772"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>A sys_schema használata a teljesítmény finomhangolásához és az adatbázis-karbantartáshoz a Azure Database for MySQL
 
 A MySQL-5,5-ben elsőként elérhető MySQL-performance_schema számos létfontosságú kiszolgálói erőforrást biztosít, mint például a memória kiosztása, a tárolt programok, a metaadatok zárolása stb. A performance_schema azonban több mint 80 táblát tartalmaz, és a szükséges információk beszerzéséhez gyakran szükség van a táblázatokon performance_schema belüli táblákhoz való csatlakozásra, valamint a information_schema tábláira. A performance_schema és information_schema egyaránt kiépíthető, hogy a sys_schema egy csak olvasható adatbázisban a [felhasználóbarát nézetek](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) hatékony gyűjteményét kínálja, és teljes mértékben engedélyezve van a Azure Database for MySQL 5,7-es verziójában.
 
-![sys_schema nézetei](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/sys-schema-views.png" alt-text="sys_schema nézetei":::
 
 A sys_schemaban 52 nézet található, és mindegyik nézet a következő előtagok egyikével rendelkezik:
 
@@ -37,23 +37,23 @@ Most nézzük meg a sys_schema gyakori használati mintáit. Első lépésként 
 
 Az IO a legdrágább művelet az adatbázisban. Az átlagos IO-késést a *sys. user_summary_by_file_io* nézet lekérdezésével találhatja meg. Az alapértelmezett 125 GB kiépített tárterület esetén az i/o-késés körülbelül 15 másodperc.
 
-![IO-késés: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="IO-késés: 125 GB":::
 
 Mivel Azure Database for MySQL az i/o-méretezést a tárterület tekintetében, miután a kiépített tárterületet 1 TB-ra növelte, az i/o-késés a 571 MS-ra csökken.
 
-![IO-késés: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="IO-késés: 1 TB":::
 
 ### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
 
 A gondos tervezés ellenére számos lekérdezés továbbra is teljes táblázatos vizsgálatokat eredményezhet. Az indexek típusaival és optimalizálásával kapcsolatos további információkért tekintse meg a következő cikket: a [lekérdezés teljesítményének megoldása](./howto-troubleshoot-query-performance.md). A teljes táblázatos vizsgálatok erőforrás-igényesek, és csökkentik az adatbázis teljesítményét. A teljes táblázatos vizsgálattal rendelkező táblák keresésének leggyorsabb módja a *sys. schema_tables_with_full_table_scans* nézet lekérdezése.
 
-![teljes táblázatos vizsgálatok](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="teljes táblázatos vizsgálatok":::
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
 
 Az adatbázis-teljesítménnyel kapcsolatos problémák elhárítása érdekében hasznos lehet az adatbázison belül zajló események azonosítása, valamint a *sys. user_summary_by_statement_type* nézet használata is csak a trükk.
 
-![Összefoglaló utasítás szerint](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="Összefoglaló utasítás szerint":::
 
 Ebben a példában a 53 percet töltöttük a üt lekérdezési naplójának 44579-es időpontjának kiürítésével Azure Database for MySQL. Ez hosszú idő és sok IOs. Csökkentheti ezt a tevékenységet a lassú lekérdezési napló letiltásával vagy a lassú lekérdezés-bejelentkezési Azure Portal gyakoriságának csökkentésével.
 
@@ -66,7 +66,7 @@ Ebben a példában a 53 percet töltöttük a üt lekérdezési naplójának 445
 
 A InnoDB-puffer a memóriában található, és az adatbázis-kezelő és a tároló fő gyorsítótárazási mechanizmusa. A InnoDB-puffer mérete a teljesítmény szintjéhez van kötve, és nem módosítható, kivéve, ha egy másik termék SKU van kiválasztva. Csakúgy, mint az operációs rendszer memóriája, a régi oldalakat felcseréli a rendszer, hogy helyet szabadítson fel a friss adatmennyiséghez. Annak megállapításához, hogy mely táblák használják fel a InnoDB-puffer teljes memóriáját, lekérdezheti a *sys. innodb_buffer_stats_by_table* nézetet.
 
-![InnoDB-puffer állapota](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="InnoDB-puffer állapota":::
 
 A fenti ábrán látható, hogy a rendszertáblák és a nézetek kivételével a mysqldatabase033-adatbázis minden olyan táblája, amely az egyik WordPress-webhelyét üzemelteti, 16 KB-os vagy 1 lapot foglal le a memóriában.
 
@@ -74,13 +74,13 @@ A fenti ábrán látható, hogy a rendszertáblák és a nézetek kivételével 
 
 Az indexek nagyszerű eszközöket biztosítanak az olvasási teljesítmény javítására, de további költségekkel járnak a lapkák és a tárolók esetében. A *sys. schema_unused_indexes* és a *sys. schema_redundant_indexes* a nem használt vagy duplikált indexekről nyújt betekintést.
 
-![nem használt indexek](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="nem használt indexek":::
 
-![redundáns indexek](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="redundáns indexek":::
 
 ## <a name="conclusion"></a>Összegzés
 
 Összefoglalva, a sys_schema kiváló eszköz a teljesítmény finomhangolásához és az adatbázis-karbantartáshoz. Győződjön meg arról, hogy kihasználja ezt a funkciót a Azure Database for MySQL. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

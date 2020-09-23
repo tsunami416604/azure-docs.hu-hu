@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: az olvasó ügyféloldali függvénytárának használata'
+title: 'Gyors útmutató: az olvasó ügyféloldali könyvtára'
 titleSuffix: Azure Cognitive Services
-description: A hatékony olvasó API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
+description: A magával ragadó olvasó ügyféloldali kódtár megkönnyíti az olvasói szolgáltatás integrációját a webalkalmazásokban, így javíthatja a megértést. Ebből a rövid útmutatóból megtudhatja, hogyan használható az olvasó a szöveg kiválasztásához, a beszédfelismerési részek felismeréséhez, a kijelölt szöveg hangos, fordítási és egyéb módon történő olvasásához.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,17 +9,18 @@ zone_pivot_groups: programming-languages-set-twenty
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f02c473fb4a44fb8c0235658d3c8f6e3279844
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: cog-serv-seo-aug-2020
+keywords: képek megjelenítése, beszéd részei, kijelölt szöveg olvasása, szavak fordítása, szövegértés olvasása
+ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505393"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978292"
 ---
-# <a name="quickstart-use-the-immersive-reader-client-library"></a>Rövid útmutató: az olvasó ügyféloldali függvénytárának használata
+# <a name="quickstart-get-started-with-immersive-reader"></a>Gyors útmutató: Ismerkedés a lebilincselő olvasóval
 
 ::: zone pivot="programming-language-csharp"
 

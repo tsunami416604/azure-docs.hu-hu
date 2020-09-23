@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935501"
+ms.locfileid: "90973387"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
 
@@ -27,10 +27,10 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 | ---------------------|-------------|
 |**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
-| **AzureSQLConnectionString**| Tárolja a AzureSQL-alapú kapcsolódási karakterláncot **hitelesítési entitásként** a metrikai tanácsadóban, és használja közvetlenül minden alkalommal, amikor mérőszámok adatait készíti elő. Csak a hitelesítési entitás rendszergazdái tudják megtekinteni ezeket a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára, hogy adatcsatornákat hozzon létre anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit. |
-| **DataLakeGen2SharedKey**| A adat-Lake-fiók kulcsát **hitelesítési entitásként** tárolja a metrikai tanácsadóban, és használja közvetlenül minden alkalommal, amikor mérőszámok adatait készíti elő. Csak a hitelesítési entitás rendszergazdái tudják megtekinteni ezeket a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára az adatcsatorna létrehozását anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit.|
-| **Szolgáltatásnév**| Az egyszerű szolgáltatásnév **hitelesítési entitásként** való tárolása a metrikai tanácsadóban, és a metrikák adatok bevezetéséhez szükséges minden egyes alkalommal közvetlenül használatba. Csak a hitelesítési entitások rendszergazdái tudják megtekinteni a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára az adatcsatorna létrehozását anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit.|
-| **ServicePrincipalInKeyVault**|Az egyszerű szolgáltatásnevet a kulcstartóban található **hitelesítési entitásként** tárolja a metrikai tanácsadóban, és közvetlenül a metrikák adatai előkészítéséhez használja. Csak a **hitelesítési entitások** rendszergazdái tudják megtekinteni a hitelesítő adatokat, de a megjelenítők a részletes hitelesítő adatok ismerete nélkül is létrehozhatnak adatcsatornákat. |
+| **AzureSQLConnectionString**| Tárolja a AzureSQL-alapú kapcsolódási karakterláncot **hitelesítő entitásként** a metrikai tanácsadóban, és használja közvetlenül a metrikák adatainak bevezetéséhez. Csak a hitelesítőadat-entitás rendszergazdái tudják megtekinteni ezeket a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára, hogy adatcsatornákat hozzon létre anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit. |
+| **DataLakeGen2SharedKey**| A adat-Lake-fiók kulcsát **hitelesítő entitásként** tárolja a metrikai tanácsadóban, és közvetlenül a metrikák adatainak bevezetéséhez használja fel. Csak a hitelesítőadat-entitás rendszergazdái tudják megtekinteni ezeket a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára az adatcsatorna létrehozását anélkül, hogy ismerniük kellene a hitelesítő adatok részleteit.|
+| **Egyszerű szolgáltatásnév**| Az egyszerű szolgáltatásnevet a metrikai tanácsadóban tárolhatja **hitelesítőadat-entitásként** , és a metrikák adatainak bevezetéséhez közvetlenül minden alkalommal használhatja azt. Csak a hitelesítő adatok rendszergazdái tudják megtekinteni a hitelesítő adatokat, de lehetővé teszik a jogosult megjelenítők számára az adatcsatorna létrehozását anélkül, hogy ismerniük kellene a hitelesítő adatokat.|
+| **Egyszerű szolgáltatásnév a Key vaultból**|A szolgáltatásnevet a Key vaultban tárolja **hitelesítő egységként** a metrikai tanácsadóban, és közvetlenül a metrikák adatainak bevezetéséhez használja fel. Csak a hitelesítő adatokkal rendelkező **entitások** rendszergazdái tudják megtekinteni a hitelesítő adatokat, de a megjelenítők a részletes hitelesítő adatok ismerete nélkül is létrehozhatnak adatcsatornákat. |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>Támogatott adatforrások és az azokhoz tartozó hitelesítési típusok
 
@@ -41,8 +41,8 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 |[**Azure Blob Storage (JSON)**](#blob) | Alapszintű<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Alapszintű |
 |[**Azure Adatkezelő (Kusto)**](#kusto) | Alapszintű<br>ManagedIdentity|
-|[**2. generációs Azure Data Lake Storage**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>ManagedIdentity<br>Szolgáltatásnév<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**2. generációs Azure Data Lake Storage**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>ManagedIdentity<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br>AzureSQLConnectionString
 |[**Azure Table Storage**](#table) | Alapszintű | 
 |[**ElasticSearch**](#es) | Alapszintű |
 |[**Http-kérelem**](#http) | Alapszintű | 
@@ -51,7 +51,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 |[**MySQL**](#mysql) | Alapszintű |
 |[**PostgreSQL**](#pgsql)| Alapszintű|
 
-Hozzon létre egy **hitelesítési entitást** , és használja azt az adatforrásokhoz való hitelesítéshez. A következő részekben az *alapszintű* hitelesítéshez szükséges paramétereket kell megadni. 
+Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatforrásokhoz való hitelesítéshez. A következő részekben az *alapszintű* hitelesítéshez szükséges paramétereket kell megadni. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

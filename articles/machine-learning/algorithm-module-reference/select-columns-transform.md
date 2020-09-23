@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893625"
 ---
 # <a name="select-columns-transform"></a>Oszlopok kiválasztása átalakításhoz
 
-Ez a cikk azt ismerteti, hogyan használható az Oszlopok kiválasztása átalakító modul a Azure Machine Learning Designerben (előzetes verzió). Az Oszlopok kiválasztása átalakító modul célja annak biztosítása, hogy kiszámítható, konzisztens oszlopok legyenek használatban az alárendelt gépi tanulási műveletekben.
+Ez a cikk azt ismerteti, hogyan használható az Oszlopok kiválasztása átalakító modul a Azure Machine Learning Designerben. Az Oszlopok kiválasztása átalakító modul célja annak biztosítása, hogy kiszámítható, konzisztens oszlopok legyenek használatban az alárendelt gépi tanulási műveletekben.
 
 Ez a modul hasznos lehet olyan feladatokhoz, mint a pontozás, amelyeknek konkrét oszlopokra van szükségük. A rendelkezésre álló oszlopok változásai megváltoztathatják a folyamatot, vagy módosíthatják az eredményeket.
 
@@ -53,6 +53,6 @@ Ez a forgatókönyv feltételezi, hogy a szolgáltatás kiválasztásával kív�
 A Mentés és az oszlopok kijelölésének folyamata biztosítja, hogy ugyanaz az Adatséma elérhető legyen a képzéshez és a pontozáshoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

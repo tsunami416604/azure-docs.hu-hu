@@ -8,15 +8,14 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461510"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902724"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning adatkészletek létrehozása az Azure Open-adatkészletből
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhatja ki a kurátori adatokat a helyi vagy távoli gépi tanulási kísérletekben [Azure Machine learning](../machine-learning/overview-what-is-azure-ml.md) adatkészletekkel és az [Azure Open-adatkészletekkel](https://docs.microsoft.com/azure/open-datasets/). 
 

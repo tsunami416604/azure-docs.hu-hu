@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 34caefba5bae660ca150f6e447b1d59b7174c768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857739"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907805"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit modell betanítása
-Ez a cikk azt ismerteti, hogyan használható a **Vowpal Wabbit Model** modul a Azure Machine learning Designerben (előzetes verzió), hogy Vowpal-Wabbit használatával hozzon létre egy Machine learning-modellt.  
+Ez a cikk azt ismerteti, hogyan használható a **Vowpal Wabbit Model** modul a Azure Machine learning Designerben, és hogyan hozható létre gépi tanulási modell a Vowpal Wabbit használatával.  
 
 A Vowpal Wabbit a gépi tanuláshoz való használatához formázza a bemenetet a Vowpal Wabbit követelményeinek megfelelően, és készítse elő az adatokat a szükséges formátumban. Ezzel a modullal adhatja meg a Vowpal Wabbit parancssori argumentumokat. 
 
@@ -112,7 +112,7 @@ Ez a szakasz a Azure Machine Learning Designer Vowpal-Wabbit parancssori paramé
 
 A következő paraméterek nem támogatottak:
 
--   A ben megadott bemeneti/kimeneti beállítások[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   A ben megadott bemeneti/kimeneti beállítások [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      A modul már automatikusan konfigurálja ezeket a tulajdonságokat.  
   
@@ -124,6 +124,6 @@ A következő paraméterek nem támogatottak:
 
 Mivel a szolgáltatás célja, hogy támogassa a Vowpal-Wabbit tapasztalt felhasználóit, a bemeneti adatokat előre elő kell készíteni a Vowpal Wabbit natív szöveges formátumának használatával, nem pedig a más modulok által használt adatkészlet formátumát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

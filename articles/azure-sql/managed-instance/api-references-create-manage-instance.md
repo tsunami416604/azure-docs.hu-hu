@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969796"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Felügyelt API-referenciák az Azure SQL felügyelt példányaihoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ Felügyelt példányok Azure PowerShell használatával történő létrehozás�
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Egy felügyelt példányra vonatkozó adatokat ad vissza.|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Felügyelt példány tulajdonságainak beállítása.|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Eltávolít egy felügyelt példányt.|
+|[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|Lekéri a felügyelt példányon vagy adott műveleten végrehajtott felügyeleti műveletek listáját.|
+|[Leállítás – AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
 |[Új – AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Létrehoz egy SQL-alapú felügyelt példány-adatbázist.|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Egy SQL felügyelt példány adatbázisával kapcsolatos információkat ad vissza.|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Eltávolít egy SQL-alapú felügyelt példány-adatbázist.|
@@ -63,6 +65,9 @@ Felügyelt példányok [Azure CLI](/cli/azure)-vel történő létrehozásához 
 |[az SQL mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|A felügyelt példány részleteinek beolvasása.|
 |[az SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Felügyelt példány frissítése.|
 |[az SQL mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Eltávolít egy felügyelt példányt.|
+|[az SQL mi op List](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|Lekéri a felügyelt példányon végrehajtott felügyeleti műveletek listáját.|
+|[az SQL mi op show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|A felügyelt példányon végrehajtott adott felügyeleti művelet beolvasása.|
+|[az SQL mi op Cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
 |[az SQL MidB Create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Létrehoz egy felügyelt adatbázist.|
 |[az SQL MidB List](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Felsorolja az elérhető felügyelt adatbázisokat.|
 |[az SQL MidB Restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Visszaállítja a felügyelt adatbázist.|
@@ -80,8 +85,8 @@ A felügyelt példány létrehozása után hozzon létre és konfiguráljon pél
 
 | Parancs | Leírás |
 | --- | --- |
-|[ADATBÁZIS LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Létrehoz egy új példány-adatbázist a felügyelt SQL-példányban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Módosítja egy példány-adatbázist az SQL felügyelt példányában.|
+|[ADATBÁZIS LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|Létrehoz egy új példány-adatbázist a felügyelt SQL-példányban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
+| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |Módosítja egy példány-adatbázist az SQL felügyelt példányában.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: felügyelt példányok létrehozása és konfigurálása
 
@@ -95,8 +100,11 @@ Felügyelt példányok létrehozásához és konfigurálásához használja ezek
 |[Felügyelt példányok – lista](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Egy előfizetésben lévő felügyelt példányok listáját adja vissza.|
 |[Felügyelt példányok – erőforráslista szerint csoportosítva](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Egy erőforráscsoport felügyelt példányainak listáját adja vissza.|
 |[Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Felügyelt példány frissítése.|
+|[Felügyelt példányok műveletei – lista felügyelt példány alapján](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Lekéri a felügyelt példányon végrehajtott felügyeleti műveletek listáját.|
+|[Felügyelt példányok műveletei – Get](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|A felügyelt példányon végrehajtott adott felügyeleti művelet beolvasása.|
+|[Felügyelt példányok műveletei – Mégse](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](../database/migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](../database/features-comparison.md).

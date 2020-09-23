@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891488"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
 
@@ -21,7 +21,7 @@ ms.locfileid: "88814390"
 
 Az Azure szinapszis hivatkozása Azure Cosmos DB egy felhőalapú hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását Azure Cosmos DB-ban lévő operatív adaton. Az Azure szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között.
 
-A [Azure Cosmos db analitikus tároló](analytical-store-introduction.md), amely egy teljesen elszigetelt oszlopdiagram, az Azure szinapszis-hivatkozás lehetővé teszi, hogy az [Azure szinapszis](../synapse-analytics/overview-what-is.md) -elemzések ne legyenek kinyerve átalakítási-betöltési (etl) elemzések az operatív adatok nagy méretében. Az üzleti elemzők, az adatmérnökök és az adatszakértők mostantól a szinapszis Spark vagy a szinapszis SQL használatát is használhatják a közel valós idejű üzleti intelligencia, elemzés és gépi tanulási folyamatok futtatásához. Ezt úgy érheti el, hogy nem befolyásolja a tranzakciós munkaterhelések teljesítményét a Azure Cosmos DBon. 
+A [Azure Cosmos db analitikus tároló](analytical-store-introduction.md), amely egy teljesen elszigetelt oszlopdiagram, az Azure szinapszis-hivatkozás lehetővé teszi, hogy az [Azure szinapszis](../synapse-analytics/overview-what-is.md) -elemzések ne legyenek kinyerve átalakítási-betöltési (etl) elemzések az operatív adatok nagy méretében. Az üzleti elemzők, az adatmérnökök és az adatszakértők mostantól a szinapszis Spark vagy a szinapszis SQL használatát is használhatják a közel valós idejű üzleti intelligencia, elemzés és gépi tanulási folyamatok futtatásához. Mindez a tranzakciós számítási feladatok teljesítményének csökkenése nélkül érhető el az Azure Cosmos DB-n. 
 
 Az alábbi képen az Azure szinapszis hivatkozásának Azure Cosmos DB és az Azure szinapszis Analytics szolgáltatással való integrációja látható: 
 
@@ -40,7 +40,6 @@ Az Azure szinapszis-hivatkozás lehetővé teszi, hogy az Azure szinapszis Analy
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Közel valós idejű betekintést nyerhet az operatív adataiba
 
 Mostantól közel valós időben részletes elemzéseket készíthet az operatív adatairól az Azure szinapszis-hivatkozás használatával. Az ETL-alapú rendszerek általában nagyobb késéssel rendelkeznek az operatív adatok elemzéséhez, mert számos réteget kell kinyerni, átalakítani és betölteni az operatív adatokból. A Azure Cosmos DB Analytical Store és az Azure szinapszis Analytics natív integrációjának köszönhetően az operatív adatok közel valós időben elemezhetők, így új üzleti forgatókönyvek is elérhetők. 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>Nincs hatással az üzemeltetési munkaterhelésekre
 
@@ -91,7 +90,7 @@ Az adatok lekérdezése Azure Cosmos DB analitikus áruházból egyidejűleg vé
 
 Ez az integráció a következő HTAP forgatókönyveket teszi lehetővé a különböző felhasználók számára:
 
-* Egy BI-mérnök, aki szeretne modellezést készíteni és közzétenni egy jelentést, amely közvetlenül a szinapszis SQL-en keresztül éri el a Azure Cosmos DB operatív információit.
+* Egy BI-mérnök, aki Power BI jelentést szeretne készíteni és közzétenni az élő operatív adatAzure Cosmos DB közvetlenül a szinapszis SQL-en keresztül való eléréséhez.
 
 * Az adatelemzők, akik egy Azure Cosmos DB tároló operatív adatait szeretnék származtatni a szinapszis SQL-sel való lekérdezéssel, az adatok nagy mennyiségű beolvasását és az eredmények más adatforrásokkal való összevonását.
 
@@ -115,16 +114,15 @@ Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt b
 
 A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-követelményeket keres, mint például a magas Egyidejűség, a számítási feladatok kezelése és az összesítések megőrzése több adatforráson belül. További információkért tekintse meg a [gyakori forgatókönyveket, amelyek a Azure Cosmos db Azure szinapszis-hivatkozással](synapse-link-use-cases.md)használhatók.
 
-
 ## <a name="limitations"></a>Korlátozások
 
-* A nyilvános előzetes verzióban az Azure szinapszis hivatkozás csak a Azure Cosmos DB SQL (Core) API-hoz támogatott. A Azure Cosmos DB API-MongoDB & Cassandra API jelenleg egy megkeresett előzetes verzióban érhető el. Ha hozzáférést szeretne kérni a megtekintett előzetes verzióhoz, küldjön e-mailt a [Azure Cosmos db csapatnak](mailto:cosmosdbsynapselink@microsoft.com).
+* Az Azure szinapszis-hivatkozás a Azure Cosmos DB SQL (Core) API és a Azure Cosmos DB API-MongoDB esetében támogatott. A Cassandra API támogatása jelenleg egy megtekintett előzetes verzióban érhető el. Ha hozzáférést szeretne kérni a megtekintett előzetes verzióhoz, küldjön e-mailt a [Azure Cosmos db csapatnak](mailto:cosmosdbsynapselink@microsoft.com).
 
-* Jelenleg az analitikai tároló csak új tárolók esetében engedélyezhető (az új és a meglévő Azure Cosmos DB fiókokban is).
-
-* Az előzetes verzióban a szinapszis-kapcsolattal rendelkező adatbázis-fiókok, a tárolók biztonsági mentése és helyreállítása nem támogatott. Ha olyan éles számítási feladatokkal rendelkezik, amelyek biztonsági mentési és visszaállítási funkciókat igényelnek, javasoljuk, hogy ne engedélyezze a szinapszis-hivatkozást ezen adatbázis-fiókokon. 
+* Az analitikai tároló jelenleg csak új tárolók esetében engedélyezhető. Ha a meglévő tárolók esetében az analitikai tárolót szeretné használni, [Azure Cosmos db áttelepítési eszközökkel](cosmosdb-migrationchoices.md)áttelepítheti a meglévő tárolók adatait az új tárolókra. A szinapszis hivatkozását engedélyezheti az új és a meglévő Azure Cosmos DB fiókokon.
 
 * A Azure Cosmos DB analitikus tároló és a szinapszis SQL Server nélküli elérése jelenleg az előzetes verzióban érhető el. A hozzáférés kéréséhez küldje el a [Azure Cosmos db csapatának](mailto:cosmosdbsynapselink@microsoft.com)e-mail-címét.
+
+* Az előzetes verzióban a szinapszis-kapcsolattal rendelkező adatbázis-fiókok, a tárolók biztonsági mentése és helyreállítása nem támogatott. Ha olyan számítási feladatokkal rendelkezik, amelyek biztonsági mentési és visszaállítási funkciókat igényelnek, javasoljuk, hogy ne engedélyezze a szinapszis-hivatkozást ezen adatbázis-fiókokon. 
 
 * Jelenleg nem érhető el a Azure Cosmos DB Analytics-tároló elérése a szinapszis SQL kiépített állapotával.
 
@@ -132,7 +130,7 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmos DB analitikus tároló és a szinapszis-futtatókörnyezet használatával felmerülő költségeket. További információért lásd a [Azure Cosmos db analitikus áruház díjszabását](analytical-store-introduction.md#analytical-store-pricing) és az [Azure szinapszis Analytics árképzési](https://azure.microsoft.com/pricing/details/synapse-analytics/) cikkeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 

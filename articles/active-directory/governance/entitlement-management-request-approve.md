@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798358"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979820"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
@@ -49,6 +49,22 @@ Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja 
 
 1. A **függőben** lévő lapon keresse meg a kérelmet.
 
+## <a name="view-requestors-answers-to-questions-preview"></a>A kérelmező kérdéseire adott válaszok megtekintése (előzetes verzió)
+
+1. Nyissa meg a saját hozzáférés **jóváhagyások** lapját.
+
+1. Lépjen a jóváhagyni kívánt kérelemre, és kattintson a **részletek**lehetőségre. Ha készen áll a döntésre, a **jóváhagyás** vagy a **Megtagadás** lehetőségre is kattinthat.
+
+1. Kattintson a **kérelem részletei**elemre.
+
+     ![Hozzáférési portál – hozzáférési kérelem – kattintson a kérelem részletei lehetőségre](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. A kérelmező által megadott információk a panel alján lesznek.
+
+     ![Hozzáférési portál – hozzáférési kérelem](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. A kérelmező által megadott információk alapján jóváhagyhatja vagy megtagadhatja a kérelmet. Tekintse meg az útmutató jóváhagyása vagy elutasítása című témakör lépéseit.
+
 ## <a name="approve-or-deny-request"></a>Kérelem jóváhagyása vagy elutasítása
 
 Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti azokat a részleteket, amelyek segítségével jóváhagyhatja vagy megtagadhatja a döntést.
@@ -73,7 +89,7 @@ Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti a
 
     Ha a konfigurált jóváhagyók egyike sem tudja jóváhagyni vagy megtagadni a hozzáférési kérelmet, a kérelem érvényessége a konfigurált kérelem időtartama után lejár. A felhasználó értesítést kap arról, hogy a hozzáférési kérelem lejárt, és újra el kell küldenie a hozzáférési kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)
