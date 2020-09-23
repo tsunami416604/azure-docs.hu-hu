@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904624"
 ---
-# <a name="workflow-automation"></a>Munkafolyamat-automatizálás
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatikus válaszok létrehozása a riasztások és javaslatok számára a munkafolyamat-automatizálással
 
 Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megválaszolásához. Ezek a folyamatok magukban foglalhatják az érintett érintett felek értesítését, a módosítási felügyeleti folyamat indítását és az adott szervizelési lépések alkalmazását. A biztonsági szakértők azt ajánlják, hogy az eljárások több lépésének automatizálására legyen lehetőség. Az Automation csökkenti a terhelést. Emellett javíthatja a biztonságot, mivel biztosítja, hogy a folyamat lépései gyorsan, következetesen és az előre meghatározott követelményeknek megfelelően történjenek.
 
@@ -30,10 +30,10 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Általánosan elérhető|
-|Árképzési|Ingyenes szint|
+|Kiadás állapota:|Általánosan elérhető (GA)|
+|Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -42,7 +42,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 1. A Security Center oldalsávján válassza a **munkafolyamat-automatizálás**elemet.
 
-    [![Munkafolyamat-automatizálások listája](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Munkafolyamat-automatizálások listája":::
 
     Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
 
@@ -53,7 +53,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
     1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az "SQL" kifejezést tartalmazó biztonsági riasztást hoz létre.
     1. Az a logikai alkalmazás, amely az aktiválási feltételek teljesülése esetén fog futni. 
 
-        [![Munkafolyamat-automatizálások listája](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Munkafolyamat-automatizálások ablaktábla hozzáadása":::
 
 1. A műveletek szakaszban kattintson az **új létrehozása** lehetőségre a logikai alkalmazás létrehozási folyamatának megkezdéséhez.
 
@@ -101,7 +101,7 @@ A logikai alkalmazás-példánynak átadott biztonsági riasztások vagy javasla
 
 Ebből a cikkből megtudhatta, hogyan hozhat létre Logic Apps, hogyan automatizálhatja a végrehajtást a Security Centerban, és hogyan futtathatja őket manuálisan. 
 
-Más kapcsolódó anyagok esetében lásd: 
+Kapcsolódó anyagok esetében lásd: 
 
 - [A Microsoft Learn modul, amely bemutatja, hogyan használható a Munkafolyamat-automatizálás a biztonsági válaszok automatizálására](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Biztonsági javaslatok az Azure Security Centerben](security-center-recommendations.md)

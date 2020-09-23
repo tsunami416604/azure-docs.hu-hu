@@ -16,9 +16,9 @@ ms.locfileid: "67179760"
   - Telefonszám
   - E-mail-cím
   - Utca, házszám
-  - Város
+  - City
   - IRÁNYÍTÓSZÁM/irányítószám
-  - Állapot
+  - Állam
   - Ország/megye/régió
   - Szállítmány nyomkövetési száma
 

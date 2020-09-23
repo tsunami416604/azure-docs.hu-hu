@@ -11,9 +11,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712397"
 ---
-A `Eula` beállítás azt jelzi, hogy elfogadta a tároló licencét. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéket a értékre `accept`kell állítani.
+A `Eula` beállítás azt jelzi, hogy elfogadta a tároló licencét. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéket a értékre kell állítani `accept` .
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Eula` | Sztring | Licenc elfogadása<br><br>Példa:<br>`Eula=accept` |
 

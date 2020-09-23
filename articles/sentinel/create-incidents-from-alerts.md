@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: f4c631360417afda41b7f48a46b618e7a4328aef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906307"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Incidensek automatikus létrehozása a Microsoft biztonsági értesítéseiből
 
@@ -31,13 +31,13 @@ Az Azure Sentinel egyszerűen beállítható úgy, hogy a jelen cikk utasítása
 ## <a name="prerequisites"></a>Előfeltételek
 A biztonsági szolgáltatásokkal kapcsolatos riasztások engedélyezéséhez [kapcsolódnia kell a Microsoft biztonsági megoldásaihoz](connect-data-sources.md#data-connection-methods) .
 
-## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>A Microsoft biztonsági incidens-létrehozási elemzési szabályainak használata
+## <a name="using-microsoft-security-incident-creation-analytics-rules"></a>A Microsoft biztonsági incidensek létrehozási elemzési szabályainak használata
 
 Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hogy mely csatlakoztatott Microsoft biztonsági megoldások legyenek automatikusan létrehozva az Azure Sentinel-incidenseket valós időben. A szabályokat szerkesztheti úgy is, hogy a Microsoft biztonsági megoldás által generált riasztások alapján a szűrést lehetővé tegye, hogy az Azure Sentinelben incidenseket hozzon létre. Például úgy is dönthet, hogy az Azure Sentinel-incidenseket automatikusan csak a nagy súlyosságú Azure Defender (korábban Azure Security Center) riasztásokból hozza létre.
 
 1. Az Azure Sentinel alatti Azure Portal válassza az **elemzés**lehetőséget.
 
-1. Az összes beépített analitikus szabály megjelenítéséhez kattintson a **szabály sablonok** lapfülre.
+1. Az összes beépített elemzési szabály megjelenítéséhez kattintson a **szabály sablonok** lapfülre.
 
     ![Szabályok sablonjai](media/incidents-from-alerts/rule-templates.png)
 
@@ -47,7 +47,7 @@ Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hog
 
 1. Módosíthatja a szabály részleteit, és kiválaszthatja azokat a riasztásokat, amelyek a riasztás súlyossága vagy a riasztás nevében szereplő szöveg alapján hoznak létre incidenseket.  
       
-    Ha például az **Azure Defender** (továbbra is a Azure Security Center) lehetőséget választja a **Microsoft biztonsági szolgáltatás** mezőjében, és a **szűrés súlyossága** mezőben a **magas** értékre kattint, akkor csak a magas súlyosságú Azure Defender-riasztások automatikusan létrehoznak incidenseket az Azure sentinelben.  
+    Ha például az **Azure Defender** (továbbra is a *Azure Security Center*) lehetőséget választja a **Microsoft biztonsági szolgáltatás** mezőjében, és a **szűrés súlyossága** mezőben a **magas** értékre kattint, akkor csak a magas súlyosságú Azure Defender-riasztások automatikusan létrehoznak incidenseket az Azure sentinelben.  
 
     ![Szabály létrehozása varázsló](media/incidents-from-alerts/create-rule-wizard.png)
 
@@ -55,7 +55,7 @@ Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hog
 
     ![Incidens-létrehozási szabály](media/incidents-from-alerts/incident-creation-rule.png)
 
-  **Microsoft biztonsági szolgáltatásbeli** típusoknál több **Microsoft biztonsági** analitikai szabály is létrehozható. Ez nem hoz létre duplikált incidenseket, mivel minden szabály szűrőként van használatban. Akkor is, ha egy riasztás több **Microsoft biztonsági** analitikus szabálynak is megfelel, egyetlen Azure Sentinel-eseményt hoz létre.
+  **Microsoft biztonsági szolgáltatásbeli** típusoknál több **Microsoft biztonsági** elemzési szabály is létrehozható. Ez nem hoz létre duplikált incidenseket, mivel minden szabály szűrőként van használatban. Még ha egy riasztás több **Microsoft biztonsági** elemzési szabálynak is megfelel, egyetlen Azure Sentinel-eseményt hoz létre.
 
 ## <a name="enable-incident-generation-automatically-during-connection"></a>Az incidens létrehozásának automatikus engedélyezése a csatlakozás során
  Microsoft biztonsági megoldás összekapcsolásakor kiválaszthatja, hogy a biztonsági megoldás riasztásai automatikusan előállítanak-e incidenseket az Azure Sentinelben.
@@ -64,7 +64,7 @@ Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hog
 
    ![Biztonsági incidensek előállítása](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok**területen módosíthatja.
+1. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett elemzési szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok**területen módosíthatja.
 
 ## <a name="next-steps"></a>Következő lépések
 

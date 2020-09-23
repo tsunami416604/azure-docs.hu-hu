@@ -3,12 +3,12 @@ title: A hatókör megismerése Azure Policy
 description: Ismerteti Azure Resource Manager hatókörének fogalmát, valamint azt, hogy a Azure Policy hogyan vonatkozik a Azure Policy kiértékeléséhez szükséges erőforrások ellenőrzésére.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940149"
+ms.locfileid: "90984437"
 ---
 # <a name="understand-scope-in-azure-policy"></a>A hatókör megismerése Azure Policy
 
@@ -34,6 +34,8 @@ A hozzárendelések több olyan tulajdonsággal rendelkeznek, amelyek hatókört
 - Felvétel – az erőforrás-hierarchiát vagy az egyes erőforrásokat ki kell értékelni a definíciónak való megfelelőség érdekében. A `properties.scope` hozzárendelési objektum tulajdonsága határozza meg, hogy mit tartalmazzon, és hogyan értékelje ki a megfelelőséget. További információ: hozzárendelés- [definíció](./assignment-structure.md).
 
 - Kizárás – a definíció nem értékeli ki az erőforrás-hierarchiát vagy az egyes erőforrásokat. A `properties.notScopes` hozzárendelési objektum _Array_ tulajdonsága határozza meg, hogy mit szeretne kizárni. Az ezen hatókörökön belüli erőforrások nincsenek kiértékelve, vagy nem szerepelnek a megfelelőségi számban. További információ: [hozzárendelési definíció – kizárt hatókörök](./assignment-structure.md#excluded-scopes).
+
+A szabályzat-hozzárendelés tulajdonságain kívül a [házirend kivételi](./exemption-structure.md) objektuma is. A kivételek növelik a hatóköri történetet azáltal, hogy a hozzárendelések egy részének azonosítására szolgáló módszert biztosítanak a kiértékeléshez.
 
 - Kivétel (előzetes verzióban**ingyenes** ) – az erőforrás-hierarchiát vagy az egyes erőforrásokat ki kell értékelni a definíciónak való megfelelőség szempontjából, de nem lesz kiértékelve olyan okból, mint például a lemondás vagy más módszerrel való enyhítés. Az ebben az állapotban lévő erőforrások a megfelelőségi jelentésekben **kivételként** jelennek meg, hogy nyomon követhetők legyenek. A kivételt képező objektum az erőforrás-hierarchiában vagy az egyes erőforrásokban alárendelt objektumként jön létre, amely meghatározza a kivétel hatókörét. Egy erőforrás-hierarchia vagy egyedi erőforrás több hozzárendelésre is felhasználható. A kivételt úgy lehet konfigurálni, hogy a tulajdonság használatával lejárjon egy ütemterven `expiresOn` . További információ: [kivételek definíciója](./exemption-structure.md).
 

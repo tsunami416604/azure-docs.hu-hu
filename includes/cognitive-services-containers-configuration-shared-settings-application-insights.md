@@ -13,9 +13,9 @@ ms.locfileid: "67712431"
 ---
 A `ApplicationInsights` beállítás lehetővé teszi, hogy hozzáadja az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatását a tárolóhoz. Application Insights a tároló részletes figyelését teszi lehetővé. Egyszerűen figyelheti a tárolót a rendelkezésre állás, a teljesítmény és a használat érdekében. A tárolóban lévő hibák felismerése és diagnosztizálása is gyorsan elvégezhető.
 
-A következő táblázat a `ApplicationInsights` szakasz által támogatott konfigurációs beállításokat ismerteti.
+A következő táblázat a szakasz által támogatott konfigurációs beállításokat ismerteti `ApplicationInsights` .
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Nem| `InstrumentationKey` | Sztring | Annak a Application Insights-példánynak a rendszerállapot-kulcsa, amelybe a rendszer a tárolóhoz tartozó telemetria-adatmennyiséget elküldi. További információ: [Application Insights ASP.net Corehoz](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Példa:<br>`InstrumentationKey=123456789`|
 

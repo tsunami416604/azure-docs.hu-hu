@@ -11,12 +11,12 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562124"
 ---
-Az eszköz egy olyan Storage-fiókhoz van társítva, amelyet az Azure-ban tárolt adataihoz célként használt. A Storage-fiókhoz való hozzáférést az előfizetés és az ehhez a Storage-fiókhoz tartozó 2 512 bites tárterület-hozzáférési kulcsok vezérlik.
+Az eszköze társítva van a tárfiókhoz, amelyet az Azure-ban tárolt adatok célhelyeként szolgál. A tárfiók elérését az előfizetés és két 512 bites tárelérési kulcs szabályozza, amelyek társítva vannak a tárfiókkal.
 
-Az egyik kulcs a hitelesítéshez használatos, ha az Azure Stack Edge-eszköz hozzáfér a Storage-fiókhoz. A másik kulcs a tartalékban van tárolva, így a kulcsok rendszeres elforgatása is megtörténik.
+Az egyik kulcs hitelesítésre használatos, amikor az Azure Stack Edge-eszköz hozzáfér a tárfiókhoz. A másik kulcs a tartalék, így a kulcsok rendszeresen lecserélhetők.
 
-Biztonsági okokból számos adatközponthoz kulcsfontosságú rotáció szükséges. Javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat a Key rotációhoz:
+Biztonsági okokból számos adatközpont megköveteli a kulcsváltást. Javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat a Key rotációhoz:
 
-- A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. A fiók kulcsa körültekintően védhető. Ne ossza meg a jelszót más felhasználók számára, vagy jegyezze fel a kódot, vagy mentse a többi felhasználó számára elérhető egyszerű szövegbe.
+- A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Ügyeljen a fiókja kulcsának védelmére. Ne ossza meg a jelszót más felhasználókkal, rögzítse szoftveresen, vagy mentse el egy mások által is elérhető egyszerű szövegbe.
 - Ha úgy gondolja, hogy sérült, akkor a fiók kulcsát a Azure Portal használatával újra létrehozhatja. További információ: a [Storage-fiók elérési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
 - Az Azure-rendszergazdának rendszeresen módosítania vagy újra kell generálnia az elsődleges vagy másodlagos kulcsot a Azure Portal Storage szakaszának használatával, hogy közvetlenül hozzáférhessen a Storage-fiókhoz.

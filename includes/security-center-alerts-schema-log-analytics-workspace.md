@@ -17,14 +17,14 @@ ms.locfileid: "79538830"
 ---
 ### <a name="the-data-model-of-the-schema"></a>A séma adatmodellje
 
-|Mező|Description|
+|Mező|Leírás|
 |----|----|
 |**AlertName**|Riasztás megjelenítendő neve|
 |**AlertType**|egyedi riasztás azonosítója|
 |**ConfidenceLevel**|Választható A riasztás megbízhatósági szintje (magas/alacsony)|
 |**ConfidenceScore**|Választható A biztonsági riasztás numerikus megbízhatósági mutatója|
 |**Leírás**|A riasztás leírásának szövege|
-|**DisplayName**|A riasztás megjelenítendő neve|
+|**Megjelenítendő név**|A riasztás megjelenítendő neve|
 |**EndTime**|A riasztás befejezési időpontja (a riasztás utolsó eseményének időpontja)|
 |**Entitások**|A riasztáshoz kapcsolódó entitások listája. Ez a lista különböző típusú entitások keverékét képes tárolni|
 |**ExtendedLinks**|Választható A riasztással kapcsolatos összes hivatkozáshoz tartozó táska. Ez a táska különböző típusú hivatkozások tárolására képes|

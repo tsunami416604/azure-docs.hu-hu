@@ -11,15 +11,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "68320518"
 ---
-A `Logging` beállítások kezelik ASP.net Core naplózási támogatást a tárolóhoz. Ugyanazokat a konfigurációs beállításokat és értékeket használhatja a tárolóhoz, amelyeket egy ASP.NET Core alkalmazáshoz használ. 
+A `Logging` Beállítások kezelik ASP.net Core naplózási támogatást a tárolóhoz. Ugyanazokat a konfigurációs beállításokat és értékeket használhatja a tárolóhoz, amelyeket egy ASP.NET Core alkalmazáshoz használ. 
 
 A tároló a következő naplózási szolgáltatókat támogatja:
 
 |Szolgáltató|Cél|
 |--|--|
-|[Konzol](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|A ASP.NET Core `Console` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
+|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|A ASP.NET Core `Console` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
 |[Hibakeresés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|A ASP.NET Core `Debug` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
-|[Disk](#disk-logging)|A JSON-naplózási szolgáltató. Ez a naplózási szolgáltató a naplófájlba írja az adatokat a kimeneti csatlakoztatásba.|
+|[Lemez](#disk-logging)|A JSON-naplózási szolgáltató. Ez a naplózási szolgáltató a naplófájlba írja az adatokat a kimeneti csatlakoztatásba.|
 
 Ez a tároló parancs JSON formátumban tárolja a naplózási adatokat a kimeneti csatlakoztatásra:
 
@@ -34,7 +34,7 @@ ApiKey=<api-key> \
 Logging:Disk:Format=json
 ```
 
-Ez a tároló `dbug`-parancs a hibakeresési információit, a-előtagot jeleníti meg, miközben a tároló fut:
+Ez a tároló-parancs a hibakeresési információit, a-előtagot jeleníti meg, `dbug` miközben a tároló fut:
 
 ```bash
 docker run --rm -it -p 5000:5000 \
@@ -50,9 +50,9 @@ Logging:Console:LogLevel:Default=Debug
 
 A `Disk` naplózási szolgáltató a következő konfigurációs beállításokat támogatja:
 
-| Name (Név) | Adattípus | Leírás |
+| Name | Adattípus | Leírás |
 |------|-----------|-------------|
-| `Format` | Sztring | A naplófájlok kimeneti formátuma.<br/> **Megjegyzés:** Ezt az értéket úgy kell beállítani `json` , hogy engedélyezze a naplózási szolgáltatót. Ha ez az érték meg van adva, anélkül, hogy a kimeneti csatlakoztatást is megadja egy tároló példányának létrehozásakor, hiba történik. |
+| `Format` | Sztring | A naplófájlok kimeneti formátuma.<br/> **Megjegyzés:** Ezt az értéket úgy kell beállítani, hogy `json` engedélyezze a naplózási szolgáltatót. Ha ez az érték meg van adva, anélkül, hogy a kimeneti csatlakoztatást is megadja egy tároló példányának létrehozásakor, hiba történik. |
 | `MaxFileSize` | Egész szám | Egy naplófájl maximális mérete megabájtban (MB). Ha az aktuális naplófájl mérete megfelel vagy meghaladja ezt az értéket, a naplózási szolgáltató elindít egy új naplófájlt. Ha a-1 érték van megadva, a naplófájl méretét csak a kimeneti csatlakoztatáshoz tartozó Maximális fájlméret korlátozza. Az alapértelmezett érték az 1. |
 
 További információ a ASP.NET Core naplózási támogatásának konfigurálásáról: [beállítások fájl konfigurálása](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).

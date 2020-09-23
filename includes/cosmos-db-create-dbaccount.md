@@ -40,7 +40,7 @@ ms.locfileid: "88639051"
     > [!NOTE]
     > A következő beállítások nem érhetők el, ha a **kiszolgáló** nélküli lehetőséget választja a **kapacitás módban**:
     > - Az ingyenes szint árengedményének alkalmazása
-    > - Geo-redundancia
+    > - Georedundancia
     > - Többrégiós írók
     
     :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png" alt-text="Az Azure Cosmos DB Új fiók lapja":::

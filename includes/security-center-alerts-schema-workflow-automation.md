@@ -58,7 +58,7 @@ ms.locfileid: "80272846"
 
 ### <a name="the-data-model-of-the-schema"></a>A séma adatmodellje
 
-|Mező|Adattípus|Description|
+|Mező|Adattípus|Leírás|
 |----|----|----|
 |**AlertDisplayName**|Sztring|A riasztás megjelenítendő neve.|
 |**AlertType**|Sztring|A riasztás típusa. Az azonos típusú riasztásoknak ugyanazzal az értékkel kell rendelkezniük. Ez a mező egy olyan karakterlánc, amely a riasztás típusát jelöli, nem pedig a riasztási példányokat. Az azonos észlelési logikában/analitikusban található összes riasztási példánynak ugyanazzal az értékkel kell rendelkeznie a riasztás típusához.|
@@ -71,7 +71,7 @@ ms.locfileid: "80272846"
 |**IsIncident**|Logikai|Ez a mező határozza meg, hogy a riasztás incidens-e (több riasztás összetett csoportosítása) vagy egyetlen riasztás. A mező alapértelmezett értéke "false" (azaz egyetlen riasztás).|
 |**ProcessingEndTime**|DateTime|Az az idő, ameddig a riasztás elérhető volt a végfelhasználónak a riasztást birtokló eredeti termékben.|
 |**ProductName**|Sztring|A riasztást közzétevő termék neve (Azure Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS stb.).|
-|**RemediationSteps**|Lista<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
+|**RemediationSteps**|Listáját<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
 |**ResourceIdentifiers**|Lista (erőforrás-azonosítók)|A riasztáshoz tartozó erőforrás-azonosítók, amelyek segítségével a riasztást a megfelelő termék-expozíciós csoportba (bérlő, munkaterület, előfizetés stb.) lehet irányítani. A riasztások több különböző típusú azonosítóval is rendelkezhetnek.|
 |**Súlyosság**|Enumeráció|A szolgáltató által jelentett riasztás súlyossága. Lehetséges értékek: tájékoztató, alacsony, közepes és magas.|
 |**StartTimeUtc**|DateTime|A riasztásban szereplő első esemény vagy tevékenység időpontja. A mezőnek olyan karakterláncnak kell lennie, amely megfelel a ISO8601 formátumának, beleértve az UTC időzónára vonatkozó információkat is.|

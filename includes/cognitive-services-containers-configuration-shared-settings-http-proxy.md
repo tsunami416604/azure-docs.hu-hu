@@ -13,7 +13,7 @@ ms.locfileid: "88639180"
 ---
 Ha HTTP-proxyt kell konfigurálnia a kimenő kérelmek végrehajtásához, használja a következő két argumentumot:
 
-| Név | Adattípus | Leírás |
+| Name | Adattípus | Leírás |
 |--|--|--|
 |HTTPS_PROXY|sztring|A használandó proxy, például: `https://proxy:8888`<br>`<proxy-url>`|
 |HTTPS_PROXY_CREDS|sztring|A proxyn való hitelesítéshez szükséges hitelesítő adatok, például Felhasználónév: jelszó.|

@@ -8,26 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922344"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904580"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és C használatával #
 
-Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észlelési módjának használatát az idősorozat-adataiban észlelt rendellenességek észlelésére. Ez a C#-alkalmazás két, JSON-formátumú idősorozat-adatokat tartalmazó API-kérelmet küld, és lekéri a válaszokat.
+Ezzel a rövid útmutatóval megkezdheti a rendellenesség-Kiderítő API használatát, hogy észlelje a rendellenességeket az idősorozat-adataiban. Ez a C#-alkalmazás a JSON-formátumú idősorozat-adatokat tartalmazó API-kérelmeket küld, és lekéri a válaszokat.
 
 | API-kérelem                                        | Alkalmazás kimenete                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Rendellenességek észlelése kötegként                        | Az idősorozat-adatpontokhoz tartozó anomália-állapotot (és az egyéb adatmennyiségeket) tartalmazó JSON-válasz, valamint az észlelt rendellenességek helyei. |
-| A legutóbbi adatpont anomália állapotának észlelése | Az idősorozat-adatként a legutóbbi adatponthoz tartozó anomália-állapotot (és egyéb adatértékeket) tartalmazó JSON-válasz.                                        |
+| A legutóbbi adatpont anomália állapotának észlelése | Az idősorozat-adatként a legutóbbi adatponthoz tartozó anomália-állapotot (és egyéb adatértékeket) tartalmazó JSON-válasz. |
+| Az új adattrendeket jelölő változási pontok észlelése | Az idősorozat-információk észlelt változási pontjait tartalmazó JSON-válasz. |
 
- Habár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A jelen rövid útmutató forráskódját a [githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)találja.
+Habár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A jelen rövid útmutató forráskódját a [githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)találja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,6 +62,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
     |------------------------------------|--------------------------------------------------|
     | Kötegelt észlelés                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | Észlelés a legújabb adatponton | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | Pont észlelésének módosítása | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
@@ -95,6 +97,18 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>Az adatváltozási pontok észlelése
+
+1. Hozzon létre egy nevű új függvényt `detectChangePoints()` . Hozza létre a kérést, és küldje el úgy, hogy meghívja a `Request()` függvényt a végponttal, a köteg anomália észlelésének URL-címét, az előfizetési kulcsot és az idősorozat adatait.
+
+2. Deszerializálja a JSON-objektumot, és írja a konzolba.
+
+3. Ha a válasz egy `code` mezőt tartalmaz, nyomtassa ki a hibakódot és a hibaüzenetet.
+
+4. Ellenkező esetben keresse meg a változási pontok pozícióit az adatkészletben. A válasz `isChangePoint` mezője logikai értékek tömbjét tartalmazza, amely azt jelzi, hogy egy adatpontot változási pontként azonosította-e a rendszer. Alakítsa át ezt a karakterlánc-tömbre a Response objektum `ToObject<bool[]>()` függvényével. Ismételje meg a tömböt, és nyomtassa ki bármelyik `true` érték indexét. Ezek az értékek a trend változási pontjainak indexeit tükrözik, ha vannak ilyenek.
+
+    [!code-csharp[Detect change points](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectChangePoints)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Töltse be az idősorozat adatait, és küldje el a kérést
 
 1. Az alkalmazás fő metódusában töltse be a JSON idősorozat-adatait az-val `File.ReadAllText()` .
@@ -108,5 +122,6 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 A sikeres válaszokat JSON formátumban adja vissza a rendszer. Az alábbi hivatkozásokra kattintva megtekintheti a JSON-választ a GitHubon:
 * [Példa a Batch észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Példa a legutóbbi pont észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Példa a változási pont észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

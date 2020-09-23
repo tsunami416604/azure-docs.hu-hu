@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080750"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904814"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Azure Security Center bevezetésének automatizálása a PowerShell használatával
 
@@ -29,9 +29,9 @@ A PowerShell használatával történő bevezetési Azure Security Center lehet�
 
 Ez a cikk egy minta PowerShell-parancsfájlt tartalmaz, amely módosítható és használható a környezetben az előfizetések Security Centerének kiszámításához. 
 
-Ebben a példában a következő AZONOSÍTÓval rendelkező előfizetések esetében engedélyezzük Security Center: d07c0080-170c-4c24-861d-9c817742786c és a magas szintű védelmet biztosító ajánlott beállítások alkalmazása a Security Center Standard szintjének megvalósításával, amely komplex veszélyforrások elleni védelmet és észlelési képességeket biztosít:
+Ebben a példában a következő AZONOSÍTÓval rendelkező előfizetés esetében engedélyezzük a Security Centert: d07c0080-170c-4c24-861d-9c817742786c és a magas szintű védelmet biztosító ajánlott beállítások alkalmazása az Azure Defender engedélyezésével, amely fejlett veszélyforrások elleni védelmet és észlelési képességeket biztosít:
 
-1. Állítsa be a [Security Center standard szintű védelmet](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Az [Azure Defender](azure-defender.md)engedélyezése. 
  
 2. Állítsa be azt a Log Analytics munkaterületet, amelyhez a Log Analytics ügynök az előfizetéshez társított virtuális gépeken gyűjtött adatokat küldi el – ebben a példában egy meglévő felhasználó által definiált munkaterületet (Sajátmunkaterület).
 
@@ -61,7 +61,7 @@ Ezeket a lépéseket az Security Center-parancsmagok futtatása előtt kell vég
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. Nem kötelező: az előfizetések lefedettségi szintjének (árképzési szint) beállítása (ha nincs meghatározva, az árképzési szint szabad értékre van állítva):
+1. Nem kötelező: állítsa be az előfizetések lefedettségi szintjét (Azure Defender be/ki). Ha nincs meghatározva, a Defender ki van kapcsolva:
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 

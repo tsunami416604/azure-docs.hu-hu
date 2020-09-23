@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhat egy OpenID Connect-szolgáltató
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413918"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983878"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>App Service vagy Azure Functions alkalmazás konfigurálása OpenID Connect-szolgáltató használatával történő bejelentkezéshez (előzetes verzió)
+# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Az App Service- vagy az Azure Functions-alkalmazás konfigurálása OpenID Connect-szolgáltatóval való bejelentkezéshez (előzetes verzió)
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
@@ -53,7 +53,7 @@ Ha nem tud konfigurációs metaadat-dokumentumot használni, külön kell össze
 Ez a szakasz végigvezeti a konfiguráció frissítésén, hogy tartalmazza az új IDENTITÁSSZOLGÁLTATÓ. Egy példa a konfigurációra.
 
 1. Az `identityProviders` objektumon belül adjon hozzá egy `openIdConnectProviders` objektumot, ha még nem létezik ilyen.
-1. Az `openIdConnectProviders` objektumon belül adjon hozzá egy kulcsot az új szolgáltatóhoz. Ez egy felhasználóbarát név, amely a szolgáltatóra hivatkozik a konfiguráció többi részén. Ha például azt szeretné, hogy az összes kérelem hitelesítése ezzel a szolgáltatóval megtörténjen, a "RedirectToLoginPage" értékre kell állítani, `globalValidation.unauthenticatedClientAction` és `globalValidation.unauthenticatedClientAction` erre a rövid névre kell beállítani.
+1. Az `openIdConnectProviders` objektumon belül adjon hozzá egy kulcsot az új szolgáltatóhoz. Ez egy felhasználóbarát név, amely a szolgáltatóra hivatkozik a konfiguráció többi részén. Ha például azt szeretné, hogy az összes kérelem hitelesítése ezzel a szolgáltatóval megtörténjen, a "RedirectToLoginPage" értékre kell állítani, `globalValidation.unauthenticatedClientAction` és `redirectToProvider` erre a rövid névre kell beállítani.
 1. Rendeljen hozzá egy objektumot a kulcshoz egy `registration` objektumon belül, és opcionálisan egy `login` objektumot:
     
     ```json

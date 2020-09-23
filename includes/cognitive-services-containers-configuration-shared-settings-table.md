@@ -13,7 +13,7 @@ ms.locfileid: "73484077"
 ---
 A tároló a következő konfigurációs beállításokkal rendelkezik:
 
-|Kötelező|Beállítás|Cél|
+|Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
 |Igen|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követése.|
 |Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
@@ -21,5 +21,5 @@ A tároló a következő konfigurációs beállításokkal rendelkezik:
 |Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Naplózza a naplót, és opcionálisan metrikus adatokat is egy Fluent-kiszolgálóra.|
 |Nem|HTTP-proxy|Konfigurál egy HTTP-proxyt a kimenő kérések elkészítése céljából.|
-|Nem|[Naplózás](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|Nem|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
 |Nem|[Tartók](#mount-settings)|Adatokat olvas és ír a gazdagépről a tárolóba, a tárolóból pedig vissza a gazdagépre.|

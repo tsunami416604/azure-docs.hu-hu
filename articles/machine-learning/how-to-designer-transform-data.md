@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 06ba65b9ef031b1d33477a15e01f3e0be53b5e53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897811"
+ms.locfileid: "90983846"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Az adatátalakítás Azure Machine Learning Designerben
 
@@ -112,7 +112,7 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
     **Fájl formátuma**: CSV
 
     > [!NOTE]
-    > Ez a cikk azt feltételezi, hogy van hozzáférése az aktuális Azure Machine Learning munkaterülethez regisztrált adattárhoz. Az adattár beállításával kapcsolatos utasításokért lásd: [Kapcsolódás az Azure Storage Serviceshez](how-to-access-data.md#studio).
+    > Ez a cikk azt feltételezi, hogy van hozzáférése az aktuális Azure Machine Learning munkaterülethez regisztrált adattárhoz. Az adattár beállításával kapcsolatos utasításokért lásd: [Kapcsolódás az Azure Storage Serviceshez](how-to-connect-data-ui.md#create-datastores).
 
     Ha nincs adattára, létrehozhat egyet. Ez a cikk például az adatkészletek mentését fogja menteni a munkaterülethez társított alapértelmezett blob Storage-fiókba. Az adatkészleteket `azureml` egy új mappában fogja menteni a tárolóba `data` .
 

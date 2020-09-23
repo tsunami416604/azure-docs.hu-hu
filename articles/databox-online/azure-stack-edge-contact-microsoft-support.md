@@ -1,6 +1,6 @@
 ---
-title: A Azure Stack Edge, Azure Data Box Gateway támogatási jegyének naplózása | Microsoft Docs
-description: Megtudhatja, hogyan naplózhatja a támogatási kérelmet az Azure Stack Edge-vagy Data Box Gateway-rendelésekkel kapcsolatos problémákhoz.
+title: A Azure Stack Edge Pro, Azure Data Box Gateway támogatási jegyének naplózása | Microsoft Docs
+description: Megtudhatja, hogyan naplózhatja a támogatási kérelmet az Azure Stack Edge Pro vagy Data Box Gateway Orders szolgáltatással kapcsolatos problémákhoz.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339909"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904525"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge-hez és Azure Data Box Gateway
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge Pro-hoz és Azure Data Box Gateway
 
-Ez a cikk Azure Stack Edge-re vonatkozik, és Azure Data Box Gateway mindkettőt az Azure Stack Edge/Azure Data Box Gateway szolgáltatás kezeli. Ha problémák merülnek fel a szolgáltatással kapcsolatban, létrehozhat egy szolgáltatási kérelmet a technikai támogatáshoz. Ez a cikk végigvezeti a következő lépéseken:
+Ez a cikk Azure Stack Edge Pro-re vonatkozik, és Azure Data Box Gateway mindkettőt az Azure Stack Edge Pro/Azure Data Box Gateway szolgáltatás kezeli. Ha problémák merülnek fel a szolgáltatással kapcsolatban, létrehozhat egy szolgáltatási kérelmet a technikai támogatáshoz. Ez a cikk végigvezeti a következő lépéseken:
 
 * Támogatási kérelem létrehozása.
 * Támogatási kérelmek életciklusának kezelése a portálon belülről.
@@ -26,13 +26,13 @@ Ez a cikk Azure Stack Edge-re vonatkozik, és Azure Data Box Gateway mindkettőt
 
 Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az Azure Stack Edge-vagy Data Box Gateway-sorrendet. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem**lehetőséget.
+1. Lépjen a Azure Stack Edge Pro-vagy Data Box Gateway-sorrendbe. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem**lehetőséget.
 
 2. Az **új támogatási kérelemben**az **alapok** lapon végezze el a következő lépéseket:
 
     1. A **probléma típusa** legördülő listából válassza a **technikai**lehetőséget.
     2. Válassza ki az **Előfizetést**.
-    3. A **szolgáltatás**alatt keresse meg **a saját szolgáltatások**szolgáltatást. A legördülő listából válassza az **Azure stack Edge és a Data Box Gateway**lehetőséget.
+    3. A **szolgáltatás**alatt keresse meg **a saját szolgáltatások**szolgáltatást. A legördülő listából válassza a **Azure stack Edge Pro és a Data Box Gateway**lehetőséget.
     4. Válassza ki az **erőforrást**. Ez megfelel a megrendelés nevének.
     5. Adja meg a tapasztalt probléma rövid **összefoglalását** . 
     6. Válassza ki a **probléma típusát**.
@@ -57,7 +57,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
         ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Válassza a **Létrehozás** lehetőséget. 
+4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Kattintson a **Létrehozás** gombra. 
 
     ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
@@ -96,7 +96,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan lehet [elhárítani az Azure stack Edge-vel kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).
+Ismerje meg, hogyan lehet [elhárítani a Azure stack Edge Pro-val kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box Gateway kapcsolatos problémákat](data-box-gateway-troubleshoot.md).
