@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346314"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024901"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az Egyéni IPsec/IKE-házirendet az alapszintű SKU kivételével az összes Azure-beli SKU támogatja.
@@ -31,7 +31,7 @@ Az alábbi táblázatban megtekintheti az ügyfelek által konfigurálható, tá
 | ---              | ---                                                                           |
 | IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256                                                     |
-| DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Nincs |
+| DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Nincs  |
 | IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs      |
 | IPsec-integritás  | GCMAES256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5                            |
 | PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs                              |
@@ -99,6 +99,9 @@ Igen, mind az IPsec létesítmények közötti kapcsolataihoz, mind a virtuális
 
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>Ugyanazt a házirendet kell megadnom mindkét, virtuális hálózatok közötti kapcsolat erőforrásaihoz?
 Igen. A virtuális hálózatok közötti alagút két kapcsolati erőforrásból áll az Azure-ban, amelyek a két különböző irányba mutatnak. Győződjön meg róla, hogy mindkét kapcsolati erőforrás azonos házirenddel rendelkezik, ellenkező esetben a virtuális hálózatok közötti kapcsolat nem jön létre.
+
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>Mi a DPD alapértelmezett időtúllépési értéke? Megadhatok egy másik DPD-időtúllépést is?
+Az alapértelmezett DPD-időkorlát 45 másodperc. Megadhat egy másik DPD időtúllépési értéket minden IPsec-vagy VNet-VNet kapcsolathoz 9 másodperc és 3600 másodperc között.
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Működik az egyéni IPsec/IKE-házirend az ExpressRoute-kapcsolatokkal?
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.

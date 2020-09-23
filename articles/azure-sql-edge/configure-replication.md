@@ -1,6 +1,6 @@
 ---
-title: Replikáció konfigurálása az Azure SQL Edge-be (előzetes verzió)
-description: Tudnivalók az Azure SQL Edge (előzetes verzió) replikálásának konfigurálásáról.
+title: Replikáció konfigurálása az Azure SQL Edge-be
+description: Ismerje meg, hogyan konfigurálhatja a replikációt az Azure SQL Edge-be.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282772"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888417"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>Replikáció konfigurálása az Azure SQL Edge-be (előzetes verzió) 
+# <a name="configure-replication-to-azure-sql-edge"></a>Replikáció konfigurálása az Azure SQL Edge-be 
 
 Az Azure SQL Edge egy példányát leküldéses előfizetőként konfigurálhatja egyirányú tranzakciós replikáláshoz vagy pillanatkép-replikációhoz. Ez a példány nem működhet közzétevőként vagy terjesztőként a tranzakciós replikálási konfigurációhoz. Vegye figyelembe, hogy az Azure SQL Edge nem támogatja az egyesítéses replikálást, a társközi replikálást vagy az Oracle-közzétételt.
 
@@ -85,7 +85,7 @@ Hozzon létre egy kiadványt és egy leküldéses előfizetést. További inform
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) az Azure SQL Edge-kiszolgáló nevével és IP-címével előfizetőként (például **myEdgeinstance, 1433**), valamint egy adatbázisnevet az Azure SQL Edge-példányon célként megadott adatbázisként (például **AdventureWorks**).  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)

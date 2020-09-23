@@ -1,24 +1,24 @@
 ---
-title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
-description: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) segítségével kezelhetők a virtuálisgép-bővítmények központi telepítése, amelyek a nem Azure-beli virtuális gépeken üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak.
-ms.date: 06/17/2020
+title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal
+description: Az Azure arc-kompatibilis kiszolgálók kezelhetik azokat a virtuálisgép-bővítmények központi telepítését, amelyek a telepítés utáni konfigurálást és az automatizálási feladatokat nem Azure-beli virtuális gépekkel is rendelkeznek.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018161"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887747"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Virtuálisgép-bővítmények kezelése az Azure arc használatára képes kiszolgálókon
 
 A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha egy virtuális gépen például szoftver telepítésére, vírusvédelemre vagy egy szkript futtatására van szükség, erre felhasználható egy virtuálisgép-bővítmény.
 
-Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) segítségével Azure virtuálisgép-bővítményeket telepíthet a nem Azure-beli Windows-és Linux-alapú virtuális gépekre, így egyszerűbbé válik a helyszíni, peremhálózati és más felhőalapú környezetek kezelése a saját életciklusa során.
+Az Azure arc-kompatibilis kiszolgálók lehetővé teszik az Azure-beli virtuálisgép-bővítmények üzembe helyezését nem Azure-beli Windows-és Linux-alapú virtuális gépeken, a helyszíni, peremhálózati és más felhőalapú környezetek felügyeletének egyszerűsítését életciklusuk alapján.
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
-Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) virtuálisgép-bővítmények támogatása a következő főbb előnyöket nyújtja:
+Az Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítmények támogatása a következő főbb előnyöket nyújtja:
 
 * [Azure Automation állapot konfigurációjának](../../automation/automation-dsc-overview.md) használatával központilag tárolhatja a konfigurációkat, és megtarthatja a DSC virtuálisgép-bővítményen keresztül engedélyezett hibrid csatlakoztatott gépek kívánt állapotát.
 
@@ -47,7 +47,7 @@ Ebben az előzetes verzióban a következő virtuálisgép-bővítményeket tám
 |Log Analytics-ügynök |Linux |Microsoft. EnterpriseCloud. monitoring |[A Linux rendszerhez készült virtuálisgép-bővítmény Log Analytics](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft függőségi ügynök | Linux |Microsoft.Compute | [Függőségi ügynök linuxos virtuálisgép-bővítménye](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-A virtuálisgép-bővítmények Azure Resource Manager-sablonokkal, a Azure Portal, Azure PowerShell illetve az arc-kompatibilis kiszolgálók (előzetes verzió) által felügyelt hibrid kiszolgálókon is futtathatók.
+A virtuálisgép-bővítmények Azure Resource Manager-sablonokkal, a Azure Portal, Azure PowerShell illetve az arc-kompatibilis kiszolgálók által felügyelt hibrid kiszolgálókon is futtathatók.
 
 Ha többet szeretne megtudni az Azure-beli csatlakoztatott gépi ügynök csomagról és a bővítmény ügynök összetevőjéről, tekintse meg az [ügynök áttekintése](agent-overview.md#agent-component-details)című témakört.
 
@@ -75,13 +75,13 @@ Ha a gépet a szükséges ügynök verziójára szeretné frissíteni, tekintse 
 
 ## <a name="enable-extensions-from-the-portal"></a>Bővítmények engedélyezése a portálról
 
-A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók a kiszolgáló (előzetes verzió) által felügyelt gépekre.
+A virtuálisgép-bővítmények alkalmazhatók a kiszolgáló által felügyelt gépekre a Azure Portalon keresztül.
 
 1. A böngészőben nyissa meg a [Azure Portal](https://aka.ms/arcserver-preview).
 
-2. A portálon keresse meg a **Machines-Azure arc** elemet, és válassza ki a hibrid gépet a listából.
+2. A portálon keresse meg a **kiszolgálók – Azure arc** elemet, és válassza ki a hibrid gépet a listából.
 
-3. Válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait. Ebben a példában a Log Analytics virtuálisgép-bővítményt fogjuk telepíteni. 
+3. Válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait. Ebben a példában a Log Analytics virtuálisgép-bővítményt fogjuk telepíteni.
 
     ![Virtuálisgép-bővítmény kiválasztása a kiválasztott géphez](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -98,7 +98,7 @@ A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók a 
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Az arc-kompatibilis kiszolgálók (előzetes verzió) által támogatott virtuálisgép-bővítmények segítségével a Azure PowerShell használatával telepítheti a támogatott virtuálisgép-bővítményt Linux vagy Windows rendszerű gépekre. Az alábbi példákban egy sablonfájl és egy, a sablonhoz adni kívánt minta értékekkel rendelkező Parameters fájl szerepel.
+A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Az arc-kompatibilis kiszolgálók által támogatott virtuálisgép-bővítményekkel a Azure PowerShell használatával telepítheti a támogatott virtuálisgép-bővítményt Linux vagy Windows rendszerű gépekre. Az alábbi példákban egy sablonfájl és egy, a sablonhoz adni kívánt minta értékekkel rendelkező Parameters fájl szerepel.
 
 >[!NOTE]
 >Habár több bővítmény kötegelt feldolgozását és feldolgozását is elvégezheti, a rendszer sorosan telepíti őket. Az első bővítmény telepítésének befejezése után a rendszer a következő bővítmény telepítését kísérli meg.
@@ -707,6 +707,18 @@ A Azure Monitor függőségi ügynök bővítményének használatához a követ
 }
 ```
 
+## <a name="uninstall-extension"></a>Bővítmény eltávolítása
+
+Egy vagy több bővítmény egy ív által engedélyezett kiszolgálóról való eltávolítása csak a Azure Portal végezhető el. A bővítmény eltávolításához hajtsa végre az alábbi lépéseket.
+
+1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com).
+
+2. A portálon keresse meg a **kiszolgálók – Azure arc** elemet, és válassza ki a hibrid gépet a listából.
+
+3. Válassza a **bővítmények**lehetőséget, majd válasszon ki egy bővítményt a telepített bővítmények listájából.
+
+4. Válassza az **Eltávolítás** lehetőséget, és amikor a rendszer kéri az ellenőrzésre, válassza az **Igen** lehetőséget a folytatáshoz.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 A bővítmények állapotával kapcsolatos adatok a Azure Portalból kérhetők le.
@@ -715,7 +727,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A vendég ügynök naplójának vizsgálatához tekintse meg a tevékenységet, ha a bővítmény a Windows rendszerhez lett kiépítve `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` , és a Linux alatt `/var/lib/GuestConfig/ext_mgr_logs` .
 
-2. A Windows rendszerre vonatkozó további részletekért olvassa el a bővítmények naplóit az adott bővítménynél `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . A bővítmény kimenetét a rendszer a Linux rendszeren telepített minden bővítmény fájljában naplózza `/var/log/GuestConfig/extension_logs` .
+2. A Windows rendszerre vonatkozó további részletekért olvassa el a bővítmények naplóit az adott bővítménynél `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` . A bővítmény kimenetét a rendszer a Linux rendszeren telepített minden bővítmény fájljában naplózza `/var/lib/GuestConfig/extension_logs` .
 
 3. Tekintse meg a bővítmények specifikus dokumentációjának hibaelhárítási szakaszt a hibakódok, ismert problémák stb. esetében. Az egyes bővítményekkel kapcsolatos további hibaelhárítási információk a bővítmény áttekintésében, a **Hibaelhárítás és támogatás** szakaszban találhatók. Ez magában foglalja a naplóba írt hibakódok leírását. A bővítmények cikkei a jelen cikk korábbi részében található [bővítmények táblázatban](#extensions) vannak csatolva.
 
@@ -725,4 +737,4 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 
-- További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-intro.md).
+- További információ [a [log Analytics Agent]](../../azure-monitor/platform/log-analytics-agent.md)szolgáltatásról. A Windows és Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, az Automation-runbookok vagy-szolgáltatásokkal, például a Update Managementekkel, vagy más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-intro.md)használatával

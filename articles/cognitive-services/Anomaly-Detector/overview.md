@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887508"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -27,14 +27,15 @@ A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a
 
 Az anomália detektor használata nem igényel korábbi felhasználói élményt a gépi tanulásban, és a REST API lehetővé teszi a szolgáltatás egyszerű integrálását az alkalmazásokba és folyamataiba.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az idősorozat-adataiban, vagy valós időben végezheti el azokat.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |A valós időben előforduló rendellenességek észlelése. | A korábban látott adatpontok használatával észlelheti a folyamatos adatátviteli hibák észlelését, és meghatározhatja, hogy a legújabb-e anomália. A művelet létrehoz egy modellt a küldött adatpontok használatával, és meghatározza, hogy a célként megadott pont anomáli-e. Ha az API-t az Ön által létrehozott összes új adatpontra hívja fel, az adatait a létrehozásuk során figyelheti. |
 |Az adatkészletekben lévő rendellenességek észlelése kötegként. | Az idősorozat használatával észlelheti az összes olyan rendellenességet, amely létezhet az összes adategységben. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.         |
+|A módosítási pontok észlelése az adatkészletben kötegként. | Az idősorozat használatával észlelheti az adataiban található trend-változási pontokat. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.    |
 | További információkat kaphat az adatairól. | Hasznos információkhoz juthat az adatokról és az észlelt rendellenességekről, beleértve a várt értékeket, a rendellenességek határait és a pozíciókat. |
 | Állítsa be a anomália észlelési határait. | Az anomália detektor API automatikusan létrehoz határokat a anomáliák észleléséhez. Állítsa be ezeket a határokat az API-k adatrendellenességekre való érzékenységének növeléséhez vagy csökkentéséhez, és jobban illeszkedjen az adataihoz. |
 
@@ -45,7 +46,7 @@ A bemutató futtatásához létre kell hoznia egy anomália-detektor erőforrás
 
 ## <a name="notebook"></a>Jegyzetfüzet
 
-Ha meg szeretné tudni, hogyan hívhatja meg a rendellenesség-érzékelő API-t, próbálja ki ezt az [Azure notebookot](https://aka.ms/adNotebook). Ez a webkiszolgáló Jupyter Notebook bemutatja, hogyan küldhet API-kéréseket, és hogyan jelenítheti meg az eredményt.
+Ha meg szeretné tudni, hogyan hívhatja meg a rendellenesség-Kiderítő API-t, próbálkozzon a [jegyzetfüzettel](https://aka.ms/adNotebook). Ez a Jupyter Notebook bemutatja, hogyan küldhet API-kéréseket, és hogyan jelenítheti meg az eredményt.
 
 A jegyzetfüzet futtatásához hajtsa végre a következő lépéseket:
 
@@ -54,8 +55,8 @@ A jegyzetfüzet futtatásához hajtsa végre a következő lépéseket:
 1. A klónozási művelet befejezése előtt törölje a "nyilvános" lehetőséget a párbeszédpanelen, ellenkező esetben a notebook, beleértve az előfizetési kulcsokat is, nyilvános lesz.
 1. Kattintson **a Futtatás ingyenes számításkor** lehetőségre
 1. Válassza ki az egyik jegyzetfüzetet.
-1. Adja hozzá az érvényes anomália-érzékelő API- `subscription_key` előfizetési kulcsát a változóhoz.
-1. Módosítsa a `endpoint` változót a végpontra. Például:`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. Adja hozzá az érvényes anomália-érzékelő API-előfizetési kulcsát a `subscription_key` változóhoz.
+1. Módosítsa a `endpoint` változót a végpontra. Például: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. A felső menüsorban kattintson a **cella**, majd az **összes futtatása**elemre.
 
 ## <a name="workflow"></a>Munkafolyamat
@@ -88,8 +89,8 @@ Ha többet szeretne megtudni a Microsoft által fejlesztett SR-CNN-algoritmusokr
 * Csatlakozás az [anomália-detektor Advisors csoportjához a Microsoft Teams](https://aka.ms/AdAdvisorsJoin) szolgáltatásban
 * A kiválasztott [felhasználó által létrehozott tartalom](user-generated-content.md) megjelenítése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](quickstarts/detect-data-anomalies-csharp.md)
 * Az anomália érzékelő API [online bemutatója](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Az anomália detektor [REST API referenciája](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* Az anomália detektor [REST API referenciája](https://aka.ms/anomaly-detector-rest-api-ref)

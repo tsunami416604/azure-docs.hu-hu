@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.topic: how-to
+ms.openlocfilehash: dfba8bc1713e14099413a6c01d0af8508ba0eb73
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895120"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Erőforrások megismerése és kezelése az eszközök leltározásával és felügyeleti eszközeivel
 
@@ -25,22 +25,25 @@ Ha bármilyen erőforráshoz függőben lévő javaslatok vannak, akkor azok meg
 
 Ezt a nézetet és a hozzá tartozó szűrőket használhatja a következő kérdések megválaszolásához:
 
-- A standard szintű előfizetések közül melyiknek van kiemelkedő javaslatai?
+- Milyen előfizetések vannak engedélyezve az Azure Defender szolgáltatásban?
 - A "Production" címkével rendelkező gépek közül melyiknek hiányzik a Log Analytics ügynöke?
 - Az adott címkével rendelkező gépek közül hányon vannak Kiemelt javaslatok?
 - Egy adott erőforráscsoport hány erőforrása rendelkezik biztonsági megállapításokkal a sebezhetőségi felmérési szolgáltatástól?
 
 Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan növekednek. 
 
+> [!TIP]
+> A biztonsági javaslatok ugyanazok, mint a **javaslatok** lapon, de itt vannak szűrve a kiválasztott erőforrás-típusra. A javaslatok megoldásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
+
 
 ## <a name="availability"></a>Rendelkezésre állás
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Minden felhasználó|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -56,7 +59,7 @@ A leltár oldal a következő eszközöket biztosítja:
 
 - **Szűrők** – a lap tetején található több szűrő lehetővé teszi, hogy gyorsan pontosítsa az erőforrások listáját a válaszolni kívánt kérdésnek megfelelően. Ha például a *"Production" címkével rendelkező gépekkel* kapcsolatos kérdést szeretné megválaszolni, akkor a log Analytics ügynök hiányzik? az **ügynök figyelési** szűrőjét a **címkék** szűrővel kombinálhatja a következő klipben látható módon:
 
-    ![A nem figyelt éles erőforrásokra való szűrés](./media/asset-inventory/filtering-to-prod-unmonitored.gif)
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="A nem figyelt éles erőforrásokra való szűrés":::
 
     Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
 
@@ -69,8 +72,9 @@ A leltár oldal a következő eszközöket biztosítja:
 
 - **Eszközkezelés beállításai** – a leltár lehetővé teszi összetett felderítési lekérdezések végrehajtását. Ha megtalálta a lekérdezéseknek megfelelő erőforrásokat, a leltár a következő műveletekhez nyújt parancsikonokat:
 
-    - Címkék kiosztása a szűrt erőforrásokhoz – jelölje be a jelölőnégyzeteket a címkével ellátni kívánt erőforrások mellett.
-    - Új kiszolgálók előkészítése a Security Center – a **nem Azure-kiszolgálók hozzáadása** eszköztár gombjának használata
+    - Címkék kiosztása a szűrt erőforrásokhoz – jelölje be a címkével ellátni kívánt erőforrások melletti jelölőnégyzeteket.
+    - Új kiszolgálók előkészítése a Security Centerhoz – használja a **nem Azure-kiszolgálók hozzáadása** eszköztár gombot.
+    - Munkaterhelések automatizálása a Azure Logic Apps használatával – a logikai alkalmazás **elindítása** gomb segítségével futtathat egy logikai alkalmazást egy vagy több erőforráson. A logikai alkalmazásokat előre elő kell készíteni, és el kell fogadni a megfelelő trigger típusát (HTTP-kérés). [További információ a Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)szolgáltatásról.
 
 
 ## <a name="how-does-asset-inventory-work"></a>Hogyan működik a tárgyieszköz-leltár?
@@ -86,11 +90,11 @@ A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explor
 
 1. A Security Center oldalsávján válassza a **leltár**lehetőséget.
 
-1. Egy adott erőforrás megjelenítéséhez adja meg a nevet a **szűrés név szerint** mezőben.
+1. Egy adott erőforrás megjelenítéséhez használja a **szűrés név alapján** mezőt, vagy használja az alább leírt szűrőket.
 
 1. A szűrőkben válassza ki a megfelelő beállításokat a végrehajtani kívánt lekérdezés létrehozásához.
 
-    ![Leltár szűrőinek](./media/asset-inventory/inventory-filters.png)
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Leltár szűrési beállításai" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Alapértelmezés szerint az erőforrásokat az aktív biztonsági javaslatok száma alapján rendezi a rendszer.
 
@@ -106,19 +110,24 @@ A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explor
     > [!TIP]
     > A **biztonsági megállapítások** és a **címkék** szűrők csak egyetlen értéket fogadnak el. Ha egynél többre szeretne szűrni, használja a **szűrők hozzáadása**lehetőséget.
 
-1. Az **árképzési szint** szűrő használatához válasszon ki egy vagy több beállítást (ingyenes, részleges vagy standard):
+1. Az **Azure Defender** -szűrő használatához válasszon ki egy vagy több beállítást (off, on vagy részleges):
 
-    - **Ingyenes** – az ingyenes díjszabási szinten elérhető erőforrások
-    - **Standard** – a standard díjszabási szinten található erőforrások
-    - **Részleges** – a standard díjszabási szinten lévő előfizetésekre vonatkozik, de a választható biztonsági csomagok némelyike le van tiltva. A következő előfizetés például a standard szinten van, de a standard szint öt eleme le van tiltva. 
+    - Nem az Azure **Defender-csomag** által védett erőforrások. Kattintson a jobb gombbal bármelyikre, és frissítse őket:
 
-        ![Előfizetés standard (részleges) díjszabási szintjére](./media/asset-inventory/pricing-tier-partial.png)
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Erőforrás frissítése az Azure Defendernek a jobb gombbal kattintva" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+
+    - Azure **Defender-csomag által védett** erőforrások
+    - **Részleges** – ez vonatkozik azokra az **előfizetésekre** , amelyek esetében nem mindegyik Azure Defender-csomag le van tiltva. A következő előfizetésben például öt Azure Defender-csomag van letiltva. 
+
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Előfizetés részben az Azure Defenderben":::
 
 1. A lekérdezés eredményeinek további vizsgálatához válassza ki az Önt érdeklő erőforrásokat.
 
-1. Ha szeretné, válassza a nézet lehetőséget az **erőforrás Graph Explorerben** a lekérdezés a Resource Graph Explorerben való megnyitásához.
+1. Ha az aktuálisan kiválasztott szűrőbeállításokat lekérdezésként szeretné megtekinteni az erőforrás-diagram Explorerben, válassza a nézet lehetőséget a **Resource Graph Explorerben**.
 
     ![Leltár lekérdezése az ARG-ben](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+
+1. Korábban definiált logikai alkalmazás futtatása a következővel 
 
 1. Ha meghatározta a szűrőket, és megnyitotta a lapot, Security Center nem frissíti automatikusan az eredményeket. Az erőforrások módosításai nem befolyásolják a megjelenített eredményeket, hacsak nem tölti be manuálisan a lapot, vagy a **frissítés**lehetőséget választja.
 
@@ -127,29 +136,25 @@ A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explor
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>Miért nem jelenik meg az összes előfizetésem, gép, Storage-fiók stb.?
 
-A leltár nézet a Felhőbeli biztonsági állapot-felügyeleti (CSPM) perspektívából sorolja fel az erőforrásokat. A szűrők nem adják vissza a környezet minden erőforrását; csak a kiemelkedő (vagy "aktív") javaslatok közül. 
+A leltár nézet a Felhőbeli biztonsági állapot-felügyeleti (CSPM) perspektívából listázza a Security Center csatlakoztatott erőforrásait. A szűrők nem adják vissza a környezet minden erőforrását; csak a kiemelkedő (vagy "aktív") javaslatok közül. 
 
-Ha például kilenc előfizetéssel rendelkezik, de csak nyolc jelenleg van javaslata, akkor az **Erőforrás típusa = előfizetés** alapján csak a nyolc előfizetést fogja látni aktív javaslatokkal:
+Az alábbi képernyőfelvétel például egy, a 38-es előfizetéshez hozzáféréssel rendelkező felhasználót mutat be, de csak 10 jelenleg rendelkezik javaslatokkal. Tehát amikor az **Erőforrás típusa = előfizetések**alapján szűr, csak az aktív ajánlásokkal rendelkező 10 előfizetés jelenik meg a leltárban:
 
-![Nem minden olyan feliratot adott vissza, amikor nincsenek aktív javaslatok](./media/asset-inventory/filtered-subscriptions-some.png)
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Nem minden olyan feliratot adott vissza, amikor nincsenek aktív javaslatok":::
 
-
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-pricing-or-agent-monitoring-columns"></a>Miért mutatnak be néhány erőforrás üres értéket a díjszabás vagy az ügynök figyelési oszlopaiban?
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Miért mutatnak be néhány erőforrás üres értéket az Azure Defender vagy az ügynök figyelési oszlopaiban?
 
 Nem minden Security Center figyelt erőforrás rendelkezik ügynökkel. Ilyenek például az Azure Storage-fiókok vagy a Pásti-erőforrások, például lemezek, Logic Apps, Data Lake elemzések és az Event hub.
 
 Ha a díjszabás vagy az ügynök figyelése nem vonatkozik egy erőforrásra, a leltárban semmi sem jelenik meg.
 
-![Egyes erőforrások üres információkat jelenítenek meg az ügynök figyelési vagy árképzési oszlopaiban](./media/asset-inventory/agent-pricing-blanks.png)
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Egyes erőforrások üres információkat jelenítenek meg az ügynök figyelése vagy az Azure Defender oszlopaiban":::
 
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a Azure Security Center eszköz leltározási lapját ismerteti.
 
 A kapcsolódó eszközökről a következő lapokon talál további információt:
 
 - [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-
 - [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)

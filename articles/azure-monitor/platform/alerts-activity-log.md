@@ -4,12 +4,12 @@ description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azur
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322414"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983083"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -111,7 +111,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
 1. A Azure Portal válassza a **Monitor**  >  **riasztások**figyelése lehetőséget. Az ablak bal felső sarkában válassza a **riasztási szabályok kezelése** lehetőséget.
 
-    ![Riasztási szabályok kezelése](media/alerts-activity-log/manage-alert-rules.png)
+    ![A képernyőfelvétel megjeleníti a tevékenység naplóját a Kiemelt keresési mezővel.](media/alerts-activity-log/manage-alert-rules.png)
 
     Megjelenik az elérhető szabályok listája.
 
@@ -119,7 +119,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
     ![Keresési tevékenység naplójának riasztási szabályai](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
 
-    A szerkeszteni kívánt tevékenységi szabály megkereséséhez használhatja az elérhető szűrőket, _előfizetést_, _erőforráscsoportot_, _erőforrást_, _jel típusát_vagy _állapotát_.
+    A szerkeszteni kívánt tevékenységi szabály megkereséséhez használhatja az elérhető szűrőket, _előfizetést_, _erőforráscsoportot_,  _erőforrást_, _jel típusát_vagy _állapotát_.
 
    > [!NOTE]
    > 
@@ -283,7 +283,7 @@ Az egyik műveletnapló riasztási szabály erőforrásának lekéréséhez hasz
 )paranccsal. Ha meg szeretné tekinteni az összes műveletnapló riasztási szabályának erőforrását egy erőforráscsoporthoz, használja az [az monitor Activity-log riasztások listáját](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
 A műveletnapló riasztási szabályának erőforrásai eltávolíthatók az Azure CLI-paranccsal az [monitor Activity-log riasztás törlése](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete)lehetőséggel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [tevékenységi naplók webhook-sémájáról](./activity-log-alerts-webhook.md).
 - Olvassa el [a Tevékenységnaplók áttekintését](./activity-log-alerts.md).

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213686"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903888"
 ---
 # <a name="logical-decoding"></a>Logikai dekódolás
  
@@ -52,11 +52,11 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 
 1. Az Azure-beli replikáció támogatását állítsa **logikai**értékre. Kattintson a **Mentés** gombra.
 
-   ![Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása](./media/concepts-logical/replication-support.png)
+   :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
 
 2. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen**lehetőség kiválasztásával.
 
-   ![Azure Database for PostgreSQL – replikálás – újraindítás megerősítése](./media/concepts-logical/confirm-restart.png)
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikálás – újraindítás megerősítése":::
 
 
 ## <a name="start-logical-decoding"></a>Logikai dekódolás elindítása
@@ -162,7 +162,7 @@ SELECT pg_drop_replication_slot('test_slot');
 > Ha leállítja a logikai dekódolást, módosítsa az Azure-t. replication_support vissza a következőre: `replica` vagy `off` . A megőrzött WAL-részletek `logical` részletesebbek, és le kell tiltani, ha nincs használatban a logikai dekódolás. 
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [logikai dekódolással kapcsolatos további információkért](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html)látogasson el a postgres dokumentációba.
 * Ha a logikai dekódolással kapcsolatban kérdése van, akkor elérheti a [csapatot](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) .

@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Edge (előzetes verzió) összekötése és lekérdezése
-description: Útmutató az Azure SQL Edge (előzetes verzió) szolgáltatáshoz való kapcsolódáshoz és a lekérdezéshez.
+title: Az Azure SQL Edge összekötése és lekérdezése
+description: Ismerje meg, hogyan csatlakozhat az Azure SQL Edge-hez, és hogyan kérdezheti le azokat.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373113"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888237"
 ---
-# <a name="connect-and-query-azure-sql-edge-preview"></a>Az Azure SQL Edge (előzetes verzió) összekötése és lekérdezése
+# <a name="connect-and-query-azure-sql-edge"></a>Az Azure SQL Edge összekötése és lekérdezése
 
 Az Azure SQL Edge-ben a tároló üzembe helyezése után a következő helyekről csatlakozhat az adatbázis-motorhoz:
 
@@ -114,7 +114,7 @@ Ha az Azure SQL Edge egy példányához szeretne csatlakozni a Visual Studio Cod
 
 Ha Windows, Mac vagy Linux rendszerű gépen Azure Data Studio használatával szeretne csatlakozni az Azure SQL Edge egy példányához, tekintse meg a [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csatlakozás és lekérdezés](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 

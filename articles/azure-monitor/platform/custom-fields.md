@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906802"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974714"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor (előzetes verzió)
 
@@ -23,7 +23,7 @@ ms.locfileid: "84906802"
 
 A Azure Monitor **Egyéni mezők** funkciója lehetővé teszi, hogy a saját kereshető mezőinek hozzáadásával kiterjessze a log Analytics munkaterületen meglévő rekordokat.  Az egyéni mezők automatikusan ki lesznek töltve az ugyanabban a rekordban lévő más tulajdonságokból kinyert adatokból.
 
-![Áttekintés](media/custom-fields/overview.png)
+![Az ábrán egy Log Analytics munkaterület módosított rekordjához társított eredeti rekord látható, amely a módosított rekordban szereplő eredeti tulajdonsághoz hozzáadott tulajdonság-érték párokat tartalmazza.](media/custom-fields/overview.png)
 
 Az alábbi minta rekord például hasznos adatokkal van elárasztva az esemény leírásában. Az adatok egy külön tulajdonságba való kinyerése lehetővé teszi, hogy a rendezési és szűrési műveletekhez elérhető legyen.
 
@@ -81,7 +81,7 @@ Az alábbi szakasz végigvezeti az egyéni mezők létrehozásának teljes péld
 
 A következő lekérdezéssel adja vissza az összes olyan eseményt a szolgáltatásvezérlő kezelőjéből, amelynek 7036-as AZONOSÍTÓJÚ eseménye a szolgáltatás elindítását vagy leállítását jelző esemény.
 
-![Lekérdezés](media/custom-fields/query.png)
+![A képernyőképen egy eseményforrás és egy azonosító lekérdezése látható.](media/custom-fields/query.png)
 
 Ezután kiválasztunk minden olyan rekordot, amely a 7036-es AZONOSÍTÓJÚ eseménnyel rendelkezik.
 
@@ -127,7 +127,7 @@ Mostantól az egyéni mezőt is használhatja, mint bármely más rekord tulajdo
 
 ![Csoportosítás lekérdezés szerint](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [lekérdezések létrehozásáról a](../log-query/log-query-overview.md) lekérdezésekhez egyéni mezők használatával a feltételekhez.
 * Egyéni mezők használatával elemzett [Egyéni naplófájlok](data-sources-custom-logs.md) figyelése.
 

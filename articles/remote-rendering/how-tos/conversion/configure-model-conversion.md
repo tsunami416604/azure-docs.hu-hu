@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067171"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967227"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -73,42 +73,48 @@ Lehetséges például, `box.ConversionSettings.json` hogy a fájl:
 
 ### <a name="geometry-parameters"></a>Geometriai paraméterek
 
-* `scaling`– Ez a paraméter egységesen méretezi a modellt. A skálázás felhasználható egy modell növelésére vagy összekapcsolására, például egy kiépítési modell megjelenítésére egy tábla tetején.
+* `scaling` – Ez a paraméter egységesen méretezi a modellt. A skálázás felhasználható egy modell növelésére vagy összekapcsolására, például egy kiépítési modell megjelenítésére egy tábla tetején.
 A skálázás akkor is fontos, ha a modell a mérőműszertől eltérő egységben van definiálva, mivel a renderelési motor mérőszámokat vár.
 Ha például egy modell centiméterben van definiálva, akkor a 0,01-es méret alkalmazása esetén a modellt a megfelelő méretben kell megjeleníteni.
 Bizonyos forrásadatok formátuma (például. FBX) egy egység skálázási mutatót biztosít, amely esetben az átalakítás implicit módon méretezi a modellt a mérő egységekre. A forrás formátuma által biztosított implicit skálázás a skálázási paraméter tetején lesz alkalmazva.
 A végső skálázási tényező a geometriai csúcspontokra és a Scene Graph-csomópontok helyi átalakítására lesz alkalmazva. A gyökérszintű entitás átalakításának skálázása változatlan marad.
 
-* `recenterToOrigin`– Azt állítja be, hogy egy modellt át kell alakítani, hogy a határolókeret középpontba kerüljön a forráson.
+* `recenterToOrigin` – Azt állítja be, hogy egy modellt át kell alakítani, hogy a határolókeret középpontba kerüljön a forráson.
 Ha a forrás modell a forrástól távol esik, a lebegőpontos pontossággal kapcsolatos hibák okozhatnak megjelenítési összetevőket.
 A modell középpontba való benyújtása segíthet ebben a helyzetben.
 
-* `opaqueMaterialDefaultSidedness`– A renderelési motor azt feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
+* `opaqueMaterialDefaultSidedness` – A renderelési motor azt feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
 Ha a feltételezés nem igaz egy adott modell esetében, akkor ezt a paramétert "SingleSided" értékre kell beállítani. További információ: [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Anyagok felülbírálása
 
-* `material-override`– Ez a paraméter lehetővé teszi, hogy az anyagok feldolgozása az [átalakítás során testreszabható](override-materials.md)legyen.
+* `material-override` – Ez a paraméter lehetővé teszi, hogy az anyagok feldolgozása az [átalakítás során testreszabható](override-materials.md)legyen.
 
 ### <a name="material-de-duplication"></a>Anyag – ismétlődés
 
-* `deduplicateMaterials`– Ezzel a paraméterrel engedélyezheti vagy letilthatja az olyan anyagok automatikus ismétlődését, amelyek ugyanazokat a tulajdonságokat és textúrákat használják. A Duplikálás az anyagi Felülbírálások feldolgozása után következik be. Alapértelmezés szerint engedélyezve van.
+* `deduplicateMaterials` – Ezzel a paraméterrel engedélyezheti vagy letilthatja az olyan anyagok automatikus ismétlődését, amelyek ugyanazokat a tulajdonságokat és textúrákat használják. A Duplikálás az anyagi Felülbírálások feldolgozása után következik be. Alapértelmezés szerint engedélyezve van.
+
+* Ha a modell többszöri duplikálása után is több mint 65 535 anyag van, akkor a szolgáltatás hasonló tulajdonságokkal rendelkező anyagokat próbál egyesíteni. Utolsóként a határértéket meghaladó anyagokat a rendszer piros hibával helyettesíti.
+
+![A képen két, 68 921 színű háromszög látható.](media/mat-dedup.png?raw=true)
+
+Két kocka 68 921 színes háromszög. Balra: a 68 921-es színanyagokkal való megkettőzés előtt. Jobb: az 64 000-es színanyagokkal való megkettőzés után. A korlát 65 535 anyag. (Lásd a [korlátozásokat](../../reference/limits.md).)
 
 ### <a name="color-space-parameters"></a>Színtér paraméterei
 
 A renderelési motor a színértékeket a lineáris térben várja.
 Ha a modell a gamma szóköz használatával van definiálva, akkor ezeket a beállításokat igaz értékre kell állítani.
 
-* `gammaToLinearMaterial`– Az anyag színeinek konvertálása a gamma-területről a lineáris helyre
-* `gammaToLinearVertex`– :::no-loc text="vertex"::: Színek konvertálása a gamma-területről a lineáris helyre
+* `gammaToLinearMaterial` – Az anyag színeinek konvertálása a gamma-területről a lineáris helyre
+* `gammaToLinearVertex` – :::no-loc text="vertex"::: Színek konvertálása a gamma-területről a lineáris helyre
 
 > [!NOTE]
 > FBX-fájlok esetén ezek a beállítások `true` alapértelmezés szerint vannak beállítva. Az összes többi fájltípus esetében az alapértelmezett érték a következő: `false` .
 
 ### <a name="scene-parameters"></a>Jelenet paraméterei
 
-* `sceneGraphMode`-Meghatározza, hogy a program hogyan konvertálja a színtér gráfját:
-  * `dynamic`(alapértelmezett): a fájlban lévő összes objektum az API- [ban szerepel, és](../../concepts/entities.md) egymástól függetlenül alakítható át. A csomópont-hierarchia futásidőben azonos a forrásfájl struktúrájával.
+* `sceneGraphMode` -Meghatározza, hogy a program hogyan konvertálja a színtér gráfját:
+  * `dynamic` (alapértelmezett): a fájlban lévő összes objektum az API- [ban szerepel, és](../../concepts/entities.md) egymástól függetlenül alakítható át. A csomópont-hierarchia futásidőben azonos a forrásfájl struktúrájával.
   * `static`: Az összes objektum elérhető az API-ban, de nem alakítható át egymástól függetlenül.
   * `none`: A jelenet gráf egyetlen objektumba van összecsukva.
 
@@ -123,27 +129,27 @@ A `none` mód a legalacsonyabb futtatókörnyezettel rendelkezik, és valamivel 
 
 ### <a name="physics-parameters"></a>Fizikai paraméterek
 
-* `generateCollisionMesh`– Ha a modellen a [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md) támogatásra van szüksége, ezt a beállítást engedélyezni kell. A legrosszabb esetben az ütközési háló létrehozása megduplázhatja az átalakítási időt. Az ütközési hálókkal rendelkező modellek a betöltéshez és a Scene Graph használatakor hosszabb időt is igénybe vehetik `dynamic` . Az optimális teljesítmény érdekében tiltsa le ezt a beállítást minden olyan modellen, amelyen nincs szükség térbeli lekérdezésekre.
+* `generateCollisionMesh` – Ha a modellen a [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md) támogatásra van szüksége, ezt a beállítást engedélyezni kell. A legrosszabb esetben az ütközési háló létrehozása megduplázhatja az átalakítási időt. Az ütközési hálókkal rendelkező modellek a betöltéshez és a Scene Graph használatakor hosszabb időt is igénybe vehetik `dynamic` . Az optimális teljesítmény érdekében tiltsa le ezt a beállítást minden olyan modellen, amelyen nincs szükség térbeli lekérdezésekre.
 
 ### <a name="unlit-materials"></a>Kivilágított anyagok
 
-* `unlitMaterials`– Alapértelmezés szerint a konverzió szívesebben hozza létre a [pbr-anyagokat](../../overview/features/pbr-materials.md). Ez a beállítás azt jelzi, hogy a konverter az összes anyagot [színanyagként](../../overview/features/color-materials.md) kezeli. Ha olyan adatokkal rendelkezik, amelyek már befoglalják a világítást, például a photogrammetry használatával létrehozott modelleket, ez a beállítás lehetővé teszi, hogy gyorsan érvényesítse az összes anyag helyes átalakítását anélkül, hogy az [egyes anyagokat felül kellene bírálni](override-materials.md) .
+* `unlitMaterials` – Alapértelmezés szerint a konverzió szívesebben hozza létre a [pbr-anyagokat](../../overview/features/pbr-materials.md). Ez a beállítás azt jelzi, hogy a konverter az összes anyagot [színanyagként](../../overview/features/color-materials.md) kezeli. Ha olyan adatokkal rendelkezik, amelyek már befoglalják a világítást, például a photogrammetry használatával létrehozott modelleket, ez a beállítás lehetővé teszi, hogy gyorsan érvényesítse az összes anyag helyes átalakítását anélkül, hogy az [egyes anyagokat felül kellene bírálni](override-materials.md) .
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Konvertálás régebbi FBX-formátumokból
 
-* `fbxAssumeMetallic`– A FBX-formátum régebbi verziói az anyagokat egy, egy vagy több anyagot tartalmazó modell használatával határozzák meg. Az átalakítási folyamatnak azt a következtetést kell kimutatnia, hogy ezek az anyagok hogyan képezik le a megjelenítő [pbr-modelljét](../../overview/features/pbr-materials.md). Ez általában jól működik, de a kétértelműség akkor merülhet fel, ha egy anyag nem tartalmaz textúrákat, nagy fényvisszaverődési értékeket és nem szürke albedó-színt. Ebben a körülmények között a konverziónak választania kell a nagy teljesítményű értékek rangsorolása, a nagy mértékben tükröző fémes anyagok meghatározásával, ahol a albedó színe megszűnik, vagy rangsorolja a albedó színét, ami a fényes színes műanyaghoz hasonló. Alapértelmezés szerint az átalakítási folyamat azt feltételezi, hogy a nagyon fényvisszaverődési értékek fémes anyagokat jelentenek azokban az esetekben, ahol a kétértelműség vonatkozik. Ez a paraméter beállítható úgy, hogy `false` átváltson a másikra.
+* `fbxAssumeMetallic` – A FBX-formátum régebbi verziói az anyagokat egy, egy vagy több anyagot tartalmazó modell használatával határozzák meg. Az átalakítási folyamatnak azt a következtetést kell kimutatnia, hogy ezek az anyagok hogyan képezik le a megjelenítő [pbr-modelljét](../../overview/features/pbr-materials.md). Ez általában jól működik, de a kétértelműség akkor merülhet fel, ha egy anyag nem tartalmaz textúrákat, nagy fényvisszaverődési értékeket és nem szürke albedó-színt. Ebben a körülmények között a konverziónak választania kell a nagy teljesítményű értékek rangsorolása, a nagy mértékben tükröző fémes anyagok meghatározásával, ahol a albedó színe megszűnik, vagy rangsorolja a albedó színét, ami a fényes színes műanyaghoz hasonló. Alapértelmezés szerint az átalakítási folyamat azt feltételezi, hogy a nagyon fényvisszaverődési értékek fémes anyagokat jelentenek azokban az esetekben, ahol a kétértelműség vonatkozik. Ez a paraméter beállítható úgy, hogy `false` átváltson a másikra.
 
 ### <a name="coordinate-system-overriding"></a>Koordinátarendszer-felülbírálás
 
-* `axis`– A koordináta rendszeregység – vektorok felülbírálása. Az alapértelmezett értékek: `["+x", "+y", "+z"]` . Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
+* `axis` – A koordináta rendszeregység – vektorok felülbírálása. Az alapértelmezett értékek: `["+x", "+y", "+z"]` . Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
 
 ### <a name="node-meta-data"></a>Csomópont-Meta adat
 
-* `metadataKeys`– Lehetővé teszi, hogy megadhatja az átalakítás eredményében megőrizni kívánt csomópont-metaadat-tulajdonságok kulcsait. Megadhatja a pontos kulcsokat vagy a helyettesítő kulcsokat. A helyettesítő kulcsok "ABC *" formátumúak, és az "ABC" kezdetű kulcsnak felelnek meg. A támogatott metaadatok értékei a következők:,, `bool` `int` `float` és `string` .
+* `metadataKeys` – Lehetővé teszi, hogy megadhatja az átalakítás eredményében megőrizni kívánt csomópont-metaadat-tulajdonságok kulcsait. Megadhatja a pontos kulcsokat vagy a helyettesítő kulcsokat. A helyettesítő kulcsok "ABC *" formátumúak, és az "ABC" kezdetű kulcsnak felelnek meg. A támogatott metaadatok értékei a következők:,, `bool` `int` `float` és `string` .
 
     A GLTF-fájlok esetében ezek az adatok a [csomópontok extrák objektumában](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)származnak. A FBX-fájlok esetében ezek az adatok az `Properties70` adatokból származnak `Model nodes` . További részletekért tekintse meg a 3D Asset eszköz dokumentációját.
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formátumban
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: formátumban
 
 Lehetőség van a :::no-loc text="vertex"::: háló formátumának módosítására a memória megtakarításának pontossága érdekében. Az alacsonyabb memória-lábnyom lehetővé teszi nagyobb modellek betöltését vagy jobb teljesítmény elérését. Az adataitól függően azonban a helytelen formátum jelentős hatással lehet a renderelés minőségére.
 
@@ -194,7 +200,7 @@ Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
 A formátumok memória-lábnyomai a következők:
 
-| Formátum | Leírás | Bájt/:::no-loc text="vertex"::: |
+| Formátum | Leírás | Bájt/ :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|két összetevő teljes lebegőpontos pontossága|8
 |16_16_FLOAT|két összetevős fél lebegőpontos pontossága|4
@@ -208,7 +214,7 @@ A formátumok memória-lábnyomai a következők:
 * `position`: Ritkán fordul elő, hogy a kisebb pontosság elegendő. a **16_16_16_16_FLOAT** a nagy méretű modellek esetében is bevezeti a észlelhető kvantálási összetevőket.
 * `normal`, `tangent` , `binormal` : Általában ezek az értékek együtt változnak. Ha a normál kvantálást eredményező, észrevehetően megvilágított összetevők nem indokolják meg a pontosság növelését. Bizonyos esetekben azonban ezek az összetevők a **none**értékre állíthatók:
   * `normal`, `tangent` és `binormal` csak akkor szükséges, ha a modellben legalább egy anyagot meg kell világítani. Az ARR-ben ez a helyzet akkor, ha egy [pbr-anyagot](../../overview/features/pbr-materials.md) bármikor használ a modellben.
-  * `tangent`és `binormal` csak akkor szükséges, ha a megvilágított anyagok bármelyike normál Térkép textúrát használ.
+  * `tangent` és `binormal` csak akkor szükséges, ha a megvilágított anyagok bármelyike normál Térkép textúrát használ.
 * `texcoord0``texcoord1`: A textúra koordinátái használhatnak kisebb pontosságot (**16_16_FLOAT**), ha az értékek a tartományon maradnak, `[0; 1]` és ha a kezelt textúrák maximális mérete 2048 x 2048 képpont. Ha túllépi a korlátokat, a textúra-leképezés minősége is csökkenni fog.
 
 #### <a name="example"></a>Példa
@@ -241,9 +247,9 @@ Az [Autodesk 3ds Max](https://www.autodesk.de/products/3ds-max) különböző ob
 
 ![Klónozás a 3ds Max-ban](./media/3dsmax-clone-object.png)
 
-* **`Copy`**: Ebben a módban a rácsvonal klónozása megtörténik, ezért a rendszer nem használ egypéldányos ( `numMeshPartsInstanced` = 0).
-* **`Instance`**: A két objektum ugyanazt a hálót használja, ezért a rendszer egypéldányos használ ( `numMeshPartsInstanced` = 1).
-* **`Reference`**: A geometriák esetében különálló módosítók alkalmazhatók, így az exportőr konzervatív megközelítést választ, és nem használja a egypéldányos ( `numMeshPartsInstanced` = 0).
+* **`Copy`** : Ebben a módban a rácsvonal klónozása megtörténik, ezért a rendszer nem használ egypéldányos ( `numMeshPartsInstanced` = 0).
+* **`Instance`** : A két objektum ugyanazt a hálót használja, ezért a rendszer egypéldányos használ ( `numMeshPartsInstanced` = 1).
+* **`Reference`** : A geometriák esetében különálló módosítók alkalmazhatók, így az exportőr konzervatív megközelítést választ, és nem használja a egypéldányos ( `numMeshPartsInstanced` = 0).
 
 
 ### <a name="depth-based-composition-mode"></a>Mélység-alapú kompozíció mód
@@ -259,8 +265,8 @@ Az [összetevők formátumának változásai](configure-model-conversion.md#best
 A forgatókönyv típusától függően a textúra-adatmennyiség meghaladhatja a rácsvonalak esetében felhasznált memóriát. A photogrammetry modellek jelöltek.
 Az átalakítás konfigurációja nem teszi lehetővé a textúrák automatikus méretezését. Ha szükséges, a textúra skálázást ügyféloldali előzetes feldolgozási lépésként kell elvégezni. Az átalakítási lépés a megfelelő [textúra tömörítési formátumának](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)kiválasztása:
 
-* `BC1`átlátszatlan színes textúrák esetén
-* `BC7`a forrás színtextúrák alfa-csatornával
+* `BC1` átlátszatlan színes textúrák esetén
+* `BC7` a forrás színtextúrák alfa-csatornával
 
 Mivel a formátum `BC7` kétszer is megtelt a memória-lábnyomhoz képest `BC1` , fontos, hogy a bemeneti textúrák ne nyújtsanak szükségtelen alfa-csatornát.
 
@@ -300,7 +306,7 @@ Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel
 A nem modellre jellemző fájlnevet használó beállítások `conversionSettings.json` továbbra is támogatottak, de elavultak.
 Ehelyett használja a modell-specifikus fájlnevet `<modelName>.ConversionSettings.json` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)

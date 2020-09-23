@@ -2,28 +2,32 @@
 title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azure
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/09/2020
+ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526323"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887238"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
 Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 
+> [!NOTE]
+> A ARM64-eszközök támogatása a IoT Edge-buildeken és újabb verziókban elérhető élő videó-elemzésekben érhető el `1.0.4` .
+> A Azure IoT Edge Runtime ARM64-eszközökön való futtatásának támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Linux rendszerű gép, amely megfelel az élő videók elemzéséhez szükséges HW/SW megkötéseknek
+* X86-64 vagy ARM64-eszköz, amely a [támogatott Linux operációs rendszerek](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) egyikét futtatja
 * Azure-előfizetés, amelyhez [tulajdonosi jogosultsággal](../../role-based-access-control/built-in-roles.md#owner) rendelkezik
 * [IoT Hub létrehozása és beállítása](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge eszköz regisztrálása](../../iot-edge/how-to-register-device.md)
 * [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
 
-    * Használja az alábbi régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA 2. nyugati régiója, Nyugat-Európa, Kelet-Kanada, Egyesült Királyság déli régiója, Franciaország középső régiója, Dél-Franciaország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
+    * Használja a következő régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA nyugati régiója, USA 2. nyugati régiója, az USA nyugati középső régiója, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
     * Az általános célú v2-(GPv2-) Storage-fiókok használata javasolt
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Azure-erőforrások konfigurálása a Live Video Analytics használatához
@@ -81,7 +85,6 @@ sudo chown -R edgeuser /var/media
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Élő videó Analytics Edge-modul üzembe helyezése
 
-<!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 A IoT Edge élő videó-elemzési szolgáltatás a modul [Twin konfigurációs sémájában](module-twin-configuration-schema.md)dokumentált modulok kettős tulajdonságait teszi elérhetővé. 
 
 ### <a name="deploy-using-the-azure-portal"></a>Üzembe helyezés az Azure Portalon
@@ -252,4 +255,4 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
 Próbálja ki a rövid útmutató [: első lépések – élő videó Analytics IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> A parancsban a következőt fogja futtatni, a `device-id` helyett használja az alapértelmezett beállítást `lva-sample-device` .
+> Ha a fenti rövid útmutatóval folytatja a közvetlen metódusok Visual Studio Code használatával történő meghívását, akkor az alapértelmezett beállítás helyett a IoT Hubhoz hozzáadott eszközt fogja használni `lva-sample-device` .

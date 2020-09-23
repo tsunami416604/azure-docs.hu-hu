@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044362"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903792"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával
 
@@ -21,7 +21,7 @@ A Visual Studio Code-hoz készült Azure Stream Analytics Tools segítségével 
 
 * Telepítse a [.net Core SDK](https://dotnet.microsoft.com/download) -t, és indítsa újra a Visual Studio Code-ot.
 
-* Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-vs-code.md) hozhat létre egy stream Analytics feladatot a Visual Studio Code használatával.
+* Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-visual-studio-code.md) hozhat létre egy stream Analytics feladatot a Visual Studio Code használatával.
 
 ## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
 
@@ -31,17 +31,17 @@ Először elő kell készítenie a minta bemeneti adatfájljait. Ha már rendelk
 
 2. Az adatmegjelenítést követően kattintson a **Mentés másként** lehetőségre, hogy a helyi fájlba mentse az adatfájlokat.
 
- ![Élő bemenet megtekintése](./media/quick-create-vs-code/preview-live-input.png)
+ ![Élő bemenet megtekintése](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>Helyi bemenet megadása
 
 1. Kattintson a **input.js** elemre a stream Analytics projekt bemenetek mappájában. Ezután válassza a **helyi bemenet hozzáadása** lehetőséget a felső sorban.
 
-    ![Helyi bemenet hozzáadása a projektből](./media/quick-create-vs-code/add-input-from-project.png)
+    ![Helyi bemenet hozzáadása a projektből](./media/quick-create-visual-studio-code/add-input-from-project.png)
 
     A **CTRL + SHIFT + P** billentyűkombinációval is megnyithatja a parancs-palettát, és megadhatja az **ASA: bemenet hozzáadása**lehetőséget.
 
-   ![Stream Analytics bemenet hozzáadása a VS Code-ban](./media/quick-create-vs-code/add-input.png)
+   ![Stream Analytics bemenet hozzáadása a VS Code-ban](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Válassza a **helyi bevitel**lehetőséget.
 
@@ -79,7 +79,7 @@ Az eredmény a jobb oldali ablakban jelenik meg. Kattintson a **Futtatás** gomb
 
 ![Helyi Futtatás eredményének megtekintése](./media/vscode-local-run/run-locally-result.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics feladatok helyi tesztelése élő bevitelsel a Visual Studio Code használatával](visual-studio-code-local-run-live-input.md)
 

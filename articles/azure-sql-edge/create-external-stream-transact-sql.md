@@ -1,6 +1,6 @@
 ---
-title: KÜLSŐ STREAM létrehozása (Transact-SQL) – Azure SQL Edge (előzetes verzió)
-description: További tudnivalók a külső STREAM-utasítás létrehozása az Azure SQL Edge-ben (előzetes verzió)
+title: KÜLSŐ STREAM létrehozása (Transact-SQL) – Azure SQL Edge
+description: További tudnivalók a külső STREAM-utasítás létrehozása az Azure SQL Edge-ben című témakörben
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489544"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888163"
 ---
 # <a name="create-external-stream-transact-sql"></a>KÜLSŐ STREAM létrehozása (Transact-SQL)
 
@@ -24,7 +24,7 @@ Egy külső STREAM is megadható és létrehozható kimenetként és bemenetkén
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - Az Azure Blob Storage Stream objektum helye a blob-tárolón belül használandó elérésiút-mintát jelenti. A szolgáltatással kapcsolatos további információkért lásd: (/articles/stream-Analytics/stream-Analytics-define-outputs.MD # blob-Storage-and-Azure-adat-Lake-Gen2)
 
 - **INPUT_OPTIONS**: beállítások megadása kulcs-érték párokként olyan szolgáltatásokhoz, mint például a Kafka, a IoT Edge hub, amely az adatfolyam-lekérdezések bemenetei
-    - PARTÍCIÓk: egy témakörhöz definiált partíciók száma
+    - PARTÍCIÓk: egy témakörhöz definiált partíciók száma. A használható partíciók maximális száma 32-re van korlátozva.
       - A Kafka bemeneti Streamekre vonatkozik
     - CONSUMER_GROUP: az Event és a IoT hubok az egyik fogyasztói csoporton belül korlátozzák az olvasók számát (5). Ha ezt a mezőt üresen hagyja, a "$Default" fogyasztói csoportot fogja használni.
       - Későbbi használatra fenntartva. Nem vonatkozik az Azure SQL Edge-re.  
@@ -247,6 +247,5 @@ WITH
 
 ## <a name="see-also"></a>Lásd még
 
-- [KÜLSŐ STREAM módosítása (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [KÜLSŐ STREAM eldobása (Transact-SQL)](drop-external-stream-transact-sql.md) 
 

@@ -1,6 +1,6 @@
 ---
-title: A Azure Portal használata Azure Stack Edge-rendezési problémák elhárításához | Microsoft Docs
-description: Útmutatás Azure Stack peremhálózati rendezési problémák elhárításához.
+title: A Azure Portal használata Azure Stack Edge Pro-rendezési problémák elhárításához | Microsoft Docs
+description: Leírja, hogyan lehet elhárítani a Azure Stack Edge Pro rendezésével kapcsolatos problémákat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055945"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903639"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>A Azure Stack Edge-rendezéssel kapcsolatos problémák elhárítása
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>A Azure Stack Edge Pro-rendezéssel kapcsolatos problémák elhárítása
 
-Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Stack Edge-rendezéssel kapcsolatos problémákat.
+Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Stack Edge Pro rendezésével kapcsolatos problémákat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -59,7 +59,7 @@ További információ: erőforrás- [szolgáltatók regisztrálása](azure-stack
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>A Microsoft. DataBoxEdge nincs regisztrálva az előfizetéshez
 
-**Hiba:** Azure Portal az Azure Stack Edge vagy a Data Box Gateway esetében használandó előfizetést választhatja ki, és a következő hibaüzenetet kapja:
+**Hiba:** Azure Portal a Azure Stack Edge Pro vagy a Data Box Gateway esetében használni kívánt előfizetést választhatja, és a következő hibaüzenetet kaphatja:
 
 *Erőforrás-szolgáltató (k): a Microsoft. DataBoxEdge nincs regisztrálva az előfizetés &lt; -előfizetés neveként &gt; , és nincs engedélye az erőforrás-szolgáltató regisztrálására az előfizetés- &lt; előfizetés neveként &gt; *.
 
@@ -75,4 +75,4 @@ További információ: erőforrás- [szolgáltatók regisztrálása](azure-stack
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az [Azure stack Edge-problémák elhárításáról](azure-stack-edge-troubleshoot.md).
+* További információ az [Azure stack Edge Pro-problémák elhárításáról](azure-stack-edge-troubleshoot.md).

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74774737"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895092"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Oktatóanyag: Azure Database for PostgreSQL figyelése és finomhangolása – egyetlen kiszolgáló
 
@@ -40,7 +40,7 @@ A [Lekérdezéstár](concepts-query-store.md) rögzíti a kiszolgálója lekérd
 
 4. A lekérdezési teljesítményadatok gyűjtésének megkezdéséhez a **pg_qs.query_capture_mode** paramétert állítsa **TOP** értékre. A várakozási statisztikák gyűjtésének megkezdéséhez a **pgms_wait_sampling.query_capture_mode** paramétert állítsa **ALL** értékre. Mentse el.
    
-   ![A Lekérdezéstár kiszolgálóparaméterei](./media/tutorial-performance-intelligence/query-store-parameters.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="A Lekérdezéstár kiszolgálóparaméterei":::
 
 5. Engedélyezze az első köteg adat 20 percig történő tárolását az **azure_sys** adatbázisban.
 
@@ -52,7 +52,7 @@ A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-perform
 
 2. A **Hosszú ideig futó lekérdezések** lapon az 5 leggyakoribb lekérdezés látható a végrehajtásonkénti átlagos időtartam szerint, 15 perces időközönként összesítve. 
    
-   ![A Lekérdezési terheléselemző kezdőlapja](./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="A Lekérdezési terheléselemző kezdőlapja":::
 
    Több lekérdezés megtekintéséhez válasszon értéket a **Lekérdezések száma** legördülő menüből. A diagram színei ekkor egy adott lekérdezésazonosító tekintetében változhatnak.
 
@@ -64,7 +64,7 @@ A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-perform
 
 6. A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak megjelenítéséhez válassza a **Várakozási statisztikák** fület.
    
-   ![A Lekérdezési terheléselemző várakozási statisztikái](./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="A Lekérdezési terheléselemző várakozási statisztikái":::
 
 ### <a name="permissions"></a>Engedélyek
 A Lekérdezési terheléselemző lekérdezéseinek szövegét **Tulajdonos** vagy **Közreműködő** jogosultsággal lehet megjeleníteni. **Olvasó** jogosultsággal a diagramok és táblázatok megtekinthetők, de a lekérdezés szövege nem.
@@ -75,7 +75,7 @@ A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendation
 
 1. Nyissa meg a PostgreSQL-kiszolgálója Azure portáloldalán lévő menüsáv **Támogatás és hibaelhárítás** részén lévő **Teljesítménnyel kapcsolatos javaslatok** menüpontot.
    
-   ![A Teljesítménnyel kapcsolatos javaslatok kezdőlapja](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok kezdőlapja":::
 
 2. Jelölje ki az **Elemzés** funkciót, és válasszon egy adatbázist. Ez elindítja az elemzést.
 
@@ -85,7 +85,7 @@ A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendation
 
 5. A javaslat információt jelenít meg a releváns **adatbázisról**, **tábláról**, **oszlopról** és **indexméretről**.
 
-   ![A Teljesítménnyel kapcsolatos javaslatok eredményei](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok eredményei":::
 
 6. A javaslat megvalósításához másolja ki a lekérdezés szövegét, és futtassa azt a választott ügyfélről.
 

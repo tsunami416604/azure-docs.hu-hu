@@ -3,16 +3,16 @@ title: Kereskedelmi Marketplace-szabályzatok és-feltételek, Azure Marketplace
 description: A Microsoft kereskedelmi Marketplace-szabályzatok és-feltételek az Azure piactéren található összes közzétevőre és ajánlatra érvényesek.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: reference
+ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: cd936307eaacc7b2a46bac23c8fcfc9e2769135c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974848"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>A kereskedelmi piactér szabályzatai és feltételei
 
@@ -25,12 +25,11 @@ A kereskedelmi piactéren elérhető ajánlatoknak meg kell felelniük a szabál
 
 ## <a name="policies-and-terms"></a>Szabályzatok és feltételek
 
-* [Kereskedelmi piactér tanúsítási szabályzatai](https://docs.microsoft.com/legal/marketplace/certification-policies)
-
-* [Minősítési és felülvizsgálati szabályzatok](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
-
-* [Az Azure Marketplace használati feltételei](https://docs.microsoft.com/legal/marketplace/terms)
+- [Kereskedelmi piactér tanúsítási szabályzatai](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
+- [A Microsoft AppSource és az Azure Marketplace felülvizsgálati házirendjei](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
+- [Az Azure Marketplace részvételi szabályzata](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
+- [Az Azure Marketplace használati feltételei](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-step"></a>Következő lépés
 
-Látogasson el a [kereskedelmi piactér közzétételi útmutató](./marketplace-publishers-guide.md) oldalára.
+Látogasson el a [kereskedelmi piactér közzétételi útmutató](marketplace-publishers-guide.md) oldalára.

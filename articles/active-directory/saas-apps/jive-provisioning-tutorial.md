@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547086"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983119"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Jive konfigurálása
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a Jive és az Azure AD-ben el
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 *   Egy Azure Active Directory-bérlő.
 *   Egy Jive egyszeri bejelentkezésre engedélyezett előfizetés.
@@ -61,9 +61,9 @@ Ennek az eljárásnak a részeként meg kell adnia egy felhasználói biztonság
 
 1. Válassza ki a Jive példányát, majd válassza a **kiépítés** lapot.
 
-1. Állítsa a **kiépítési módot** **automatikus**értékre. 
+1. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre. 
 
-    ![kiépítési](./media/jive-provisioning-tutorial/provisioning.png)
+    ![Képernyőfelvétel: az Jive-létesítési oldal, a kiépítési mód pedig az automatikus és más beállítható értékekre van beállítva.](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
    
@@ -85,7 +85,7 @@ Ennek az eljárásnak a részeként meg kell adnia egy felhasználói biztonság
 
 1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Jive lehetőséget.**
 
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Jive-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Jive felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Jive-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Jive felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 1. Az Azure AD-kiépítési szolgáltatás Jive való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
@@ -95,8 +95,8 @@ Elindítja a felhasználók és csoportok szakaszban Jive rendelt felhasználók
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](jive-tutorial.md)
