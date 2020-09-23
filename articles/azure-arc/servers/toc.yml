@@ -47,12 +47,12 @@
       items:
         - name: Ügynökök kapcsolódási problémái
           href: troubleshoot-agent-onboard.md
-    - name: Hivatkozás
-      items:
-        - name: Regionális elérhetőség és adattárolási hely
-          href: data-residency.md
-        - name: REST
-          href: /rest/api/hybridcompute
-        - name: Az Azure Policy beépített elemei
-          displayName: 'samples, policies, definitions'
-          href: policy-reference.md
+- name: Hivatkozás
+  items:
+    - name: Adattárolási hely
+      href: data-residency.md
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

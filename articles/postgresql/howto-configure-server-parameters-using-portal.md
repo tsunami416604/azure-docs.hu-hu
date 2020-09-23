@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.openlocfilehash: 7a7a98818ba565aad9f2404c77682171514c7573
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a2410328b068be6bc5af358fa72ee20eead4c8ed
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117984"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907457"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával 
 A Azure Database for PostgreSQL-kiszolgálók konfigurációs paramétereit a Azure Portal használatával listázhatja, megjelenítheti és frissítheti.
@@ -21,27 +21,27 @@ Az útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - [Azure Database for PostgreSQL kiszolgáló](quickstart-create-server-database-portal.md)
 
 ## <a name="viewing-and-editing-parameters"></a>Paraméterek megtekintése és szerkesztése
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2. Válassza ki az Azure Database for PostgreSQL kiszolgálóját.
 
 3. A **Beállítások** szakaszban válassza ki a **kiszolgáló paramétereit**. Az oldalon a paraméterek, a saját értékek és a leírások listája látható.
-![Paraméterek áttekintő lapja](./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png" alt-text="Paraméterek áttekintő lapja":::
 
 4. Kattintson a **legördülő** menüre, hogy megtekintse a felsorolt típusú paraméterek lehetséges értékeit, például a client_min_messages.
-![Számbavétel legördülő lista](./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Számbavétel legördülő lista":::
 
 5. Válassza ki vagy vigye a kurzort az **i** (információ) gombra, hogy megtekintse a numerikus paraméterek, például a cpu_index_tuple_cost lehetséges értékeinek tartományát.
-![információ gomb](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="információ gomb":::
 
 6. Ha szükséges, a **keresőmező** használatával Szűkítse le az adott paramétert. A keresés a paraméterek neve és leírása alapján történik.
-![Keresési eredmények](./media/howto-configure-server-parameters-in-portal/5-search.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="Keresési eredmények":::
 
 7. Módosítsa a módosítani kívánt paraméterek értékét. A munkamenetekben elvégzett összes módosítás lila színnel van kiemelve. Ha módosította az értékeket, válassza a **Mentés**lehetőséget. Vagy **elvetheti** a módosításokat.
-![Módosítások mentése vagy elvetése](./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="Módosítások mentése vagy elvetése":::
 
 8. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
-![Az összes visszaállítása az alapértelmezett értékre](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Az összes visszaállítása az alapértelmezett értékre":::
 
 ## <a name="next-steps"></a>Következő lépések
 Ismerkedjen meg a következőkkel:

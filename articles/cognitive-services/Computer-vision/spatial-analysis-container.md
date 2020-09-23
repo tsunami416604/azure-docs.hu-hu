@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 3d419268302ac8fd55559c6af9cd328f22bd2404
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935621"
+ms.locfileid: "90987196"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -69,9 +69,9 @@ Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésér
 | Linux operációs rendszer | Az [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) -et telepíteni kell a gazdagépre.  |
 
 
-## <a name="request-access-to-the-spatial-analysis-functionality"></a>Hozzáférés kérése a térbeli elemzési funkciókhoz
+## <a name="request-approval-to-run-the-container"></a>Kérelem jóváhagyása a tároló futtatásához
 
-Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) , hogy hozzáférést Kérjen a tárolóhoz. 
+Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) a tároló futtatásához jóváhagyás kéréséhez. 
 
 Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Az űrlap elküldése után az Azure Cognitive Services csapata áttekinti és e-mailben értesíti Önt a döntésről.
 
@@ -208,7 +208,8 @@ sudo systemctl restart docker
 ## <a name="enable-nvidia-mps-on-the-host-computer"></a>NVIDIA MPS engedélyezése a gazdaszámítógépen
 
 > [!TIP]
-> Futtassa az MPS utasításokat a gazdaszámítógépen lévő terminál-ablakban. Nincs a Docker-tároló példányán belül.
+> * Ne telepítse az MPS-t, ha a GPU számítási funkciója kevesebb, mint 7. x (előfeltételként). Lásd a [CUDA kompatibilitását](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-title) ismertető témakört. 
+> * Futtassa az MPS utasításokat a gazdaszámítógépen lévő terminál-ablakban. Nincs a Docker-tároló példányán belül.
 
 A legjobb teljesítmény és kihasználtság érdekében konfigurálja a gazda számítógép GPU (ka) t az [NVIDIA többfolyamatos szolgáltatás (mp)](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf)számára. Futtassa az MPS utasításokat a gazdaszámítógépen lévő terminál-ablakban.
 
@@ -262,7 +263,9 @@ az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-
 Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.8 verzióját. Kövesse az alábbi lépéseket a megfelelő verzió letöltéséhez: Ubuntu Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-Copy the generated list.
+```
+
+Másolja a generált listát.
 
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
@@ -335,7 +338,8 @@ Ha a minta [DeploymentManifest.jsa](https://go.microsoft.com/fwlink/?linkid=2142
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'" -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+
 ```
 
 |Paraméter  |Leírás  |

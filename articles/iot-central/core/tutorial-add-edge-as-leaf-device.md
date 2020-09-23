@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge eszköz hozzáadása az Azure IoT Centralhoz | Microsoft Docs
-description: Operátorként vegyen fel egy Azure IoT Edge eszközt az Azure IoT Central alkalmazásba
+title: Oktatóanyag – Azure IoT Edge eszköz hozzáadása az Azure IoT Centralhoz | Microsoft Docs
+description: Oktatóanyag – kezelőként Azure IoT Edge eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018662"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987012"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -37,7 +37,7 @@ Fejezze be az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-c
 
 Az oktatóanyag lépéseinek elvégzéséhez aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Töltse le a IoT Edge manifest-fájlt a GitHubról. Kattintson a jobb gombbal a következő hivatkozásra, majd válassza a **hivatkozás mentése másként**: [EnvironmentalSensorManifest.jsbekapcsolva](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json) lehetőséget.
 
@@ -286,14 +286,14 @@ Ha azt tervezi, hogy folytatja a munkát a IoT Edge virtuális géppel, megtarth
 * A IoT Edge virtuális gép és a hozzá tartozó erőforrások törléséhez törölje a **contoso-Edge-RG** erőforráscsoportot a Azure Portal.
 * A IoT Central alkalmazás törléséhez navigáljon az alkalmazás **Adminisztráció** szakaszának **alkalmazás** lapjára, és válassza a **Törlés**lehetőséget.
 
+Most, hogy megtanulta, hogyan használhatja és felügyelheti IoT Edge eszközeit a IoT Centralban, a következő lépés a következő:
+
+> [!div class="nextstepaction"]
+> [Az eszközök telemetria elemzése az eszközök csoportjaival](./tutorial-use-device-groups.md)
+
 ## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan dolgozhat és kezelhet IoT Edge-eszközöket IoT Centralban, a következő lépés az, hogy olvassa el a következőket:
 
 > [!div class="nextstepaction"]
 > [IoT Edge modulok fejlesztése](../../iot-edge/tutorial-develop-for-linux.md)
-
-Most, hogy megtanulta, hogyan használhatja és felügyelheti IoT Edge eszközeit a IoT Centralban, a következő lépés a következő:
-
-> [!div class="nextstepaction"]
-> [Az eszközök telemetria elemzése az eszközök csoportjaival](./tutorial-use-device-groups.md)

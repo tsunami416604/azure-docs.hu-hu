@@ -1,6 +1,6 @@
 ---
 title: fájlbefoglalás
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: active-directory
 author: daveba
 ms.service: active-directory
@@ -9,14 +9,17 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc7849e52b3e00c87d271ee8aef8788d816dff7a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179528"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971016"
 ---
-| Kategória | Korlát |
-| --- | --- |
-| Felhasználó által hozzárendelt felügyelt identitások | <ul><li>Amikor felhasználó által hozzárendelt felügyelt identitásokat hoz létre, csak alfanumerikus karakterek (0-9, a-z és A-Z) és a kötőjel (-) támogatottak. Ahhoz, hogy a hozzárendelés egy virtuális géphez vagy virtuálisgép-méretezési csoporthoz megfelelően működjön, a név legfeljebb 24 karakter hosszú lehet.</li><li>Ha a felügyelt identitás virtuálisgép-bővítményét használja, a támogatott korlát 32 felhasználó által hozzárendelt felügyelt identitás. A felügyelt identitás virtuálisgép-bővítménye nélkül a támogatott korlát 512 felhasználó által hozzárendelt identitás.</li>|
+- Az egyes felügyelt identitások az Azure ad-bérlőben az [Azure ad szolgáltatás korlátai és korlátozásai](../articles/active-directory/users-groups-roles/directory-service-limits-restrictions.md)című témakörben leírtak szerint számítanak bele az objektum-kvótára.
+-   A felügyelt identitások létrehozásának sebessége a következő korlátozásokkal rendelkezhet:
 
+    1. Azure AD-bérlő/Azure-régió: 200 művelet/20 másodperc.
+    2. Azure-előfizetések/Azure-régiók: 40 művelet/20 másodperc.
+
+- Amikor felhasználó által hozzárendelt felügyelt identitásokat hoz létre, csak alfanumerikus karakterek (0-9, a-z és A-Z) és a kötőjel (-) támogatottak. Ahhoz, hogy a hozzárendelés egy virtuális géphez vagy virtuálisgép-méretezési csoporthoz megfelelően működjön, a név legfeljebb 24 karakter hosszú lehet.

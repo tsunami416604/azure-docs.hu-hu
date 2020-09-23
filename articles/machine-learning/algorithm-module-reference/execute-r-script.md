@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337840"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908013"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
-Ez a cikk azt ismerteti, hogyan használható az r-parancsfájl végrehajtása az R-kód futtatásához a Azure Machine Learning Designer (előzetes verzió) folyamatában.
+Ez a cikk azt ismerteti, hogyan használható az r-parancsfájl végrehajtása a Azure Machine Learning Designer-folyamat R-kódjának futtatásához.
 
 Az R használatával olyan feladatokat hajthat végre, amelyeket a meglévő modulok jelenleg nem támogatnak, például a következőket: 
 - Egyéni adatátalakítások létrehozása
@@ -217,7 +217,7 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 
 1. A folyamat elküldése.  
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 Az R-parancsfájl-modulok végrehajtása több kimenetet is képes visszaadni, de R-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
 
@@ -357,7 +357,7 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 
 | Csomag      | Verzió    | 
 |--------------|------------| 
-| askpass      | 1.1        | 
+| askpass      | 1,1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
 | base         | 3.5.1      | 
@@ -427,7 +427,7 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | Mátrix       | 1.2 – 17     | 
 | methods      | 3.5.1      | 
 | mgcv         | 1.8 – 28     | 
-| mime         | 0.7        | 
+| mime         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
 | modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
@@ -464,7 +464,7 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | rmarkdown    | 1.13       | 
 | ROCR         | 1.0-7      | 
 | rpart        | 4.1 – 15     | 
-| rstudioapi   | 0.1        | 
+| rstudioapi   | 0,1        | 
 | rvest        | 0.3.4      | 
 | scales       | 1.0.0      | 
 | selectr      | 0.4-1      | 
@@ -500,6 +500,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

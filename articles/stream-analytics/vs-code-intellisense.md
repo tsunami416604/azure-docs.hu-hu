@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bd72866e3e3db21691fda6aaec864a76af7414a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037256"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903724"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
 
@@ -37,7 +37,7 @@ A VS Code IntelliSense Stream Analytics eszközei különböző típusú kiegés
 |Befejezés     |  Típus       |
 | ----- | ------- |
 | Kulcsszavak | `keyword`
-| Functions | `build-in function`, `user defined function`  |
+| Függvények | `build-in function`, `user defined function`  |
 | Adathalmaz neve| `input`, `output`, `intermediate result set`|
 | Adathalmaz oszlopának neve|`input`, `intermediate result set`|
 
@@ -69,8 +69,8 @@ A nyelvi szolgáltatás által biztosítottak szerint az egyes azonosítók **gy
 
 Ezt a problémát a hiányzó bemeneti konfiguráció okozta, amely adatokat biztosít. Megtekintheti, hogy a [helyi bemenet](visual-studio-code-local-run.md#define-a-local-input) vagy az [élő bemenet](visual-studio-code-local-run-live-input.md#define-a-live-stream-input) megfelelően van-e konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md)
+* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)
 * [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)
 * [A Visual Studio Code használatával helyileg tesztelheti Stream Analytics lekérdezéseket élő stream-bevitelsel](visual-studio-code-local-run-live-input.md)

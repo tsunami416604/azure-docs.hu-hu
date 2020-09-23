@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456250"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907914"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
+Ez a cikk a Azure Machine Learning Designer részét képező modult ismerteti.
 
 A szolgáltatás-kivonatolási modul használatával az angol nyelvű adatfolyamokat egész számokból álló funkciókba alakíthatja át. Ezt követően átadhatja ezt a kivonatoló funkciót egy gépi tanulási algoritmusba egy szöveges elemzési modell betanításához.
 
@@ -39,7 +39,7 @@ Tegyük fel például, hogy a fentiekhez hasonló egyszerű mondatokat, majd egy
 
 Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az adatkészlet bigrams listája például a következőhöz hasonló lesz:
 
-|Kifejezés (bigrams)|Gyakoriság|
+|Kifejezés (bigrams)|Frequency|
 |------------|---------------|
 |Ez a könyv|3|
 |Szerettem|1|
@@ -48,7 +48,7 @@ Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az 
 
 Az n-gramm méretének szabályozására az **n-gramm** tulajdonság használható. Ha a bigrams lehetőséget választja, a rendszer a unigrams is kiszámítja. A szótár a következőhöz hasonló egyetlen kifejezést is tartalmaz:
 
-|Kifejezés (unigrams)|Gyakoriság|
+|Kifejezés (unigrams)|Frequency|
 |------------|---------------|
 |könyv|3|
 |I|3|
@@ -129,6 +129,6 @@ Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolás
 
 Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti igényektől függ. a folyamat adataival megtekintheti, hogy mely szöveg-feldolgozási módszerek a leghatékonyabbak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
             
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) 

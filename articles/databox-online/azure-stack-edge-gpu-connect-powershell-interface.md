@@ -1,23 +1,23 @@
 ---
-title: Microsoft Azure Stack Edge-eszköz csatlakoztatása és kezelése a Windows PowerShell felületén keresztül | Microsoft Docs
-description: Ismerteti, hogyan csatlakozhat a szolgáltatáshoz, majd hogyan felügyelheti Azure Stack Edge-t a Windows PowerShell felületén keresztül.
+title: Microsoft Azure Stack Edge Pro-eszköz csatlakoztatása és kezelése a Windows PowerShell felületén keresztül | Microsoft Docs
+description: Ismerteti, hogyan csatlakozhat, majd felügyelheti Azure Stack Edge Pro-t a Windows PowerShell felületén keresztül.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903519"
 ---
-# <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Azure Stack Edge GPU-eszköz kezelése a Windows PowerShell használatával
+# <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
 
-Azure Stack Edge-megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk az Azure Stack Edge-eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
+Azure Stack Edge Pro-megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk az Azure Stack Edge Pro-eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
 Ebből a cikkből megtudhatja, hogyan kapcsolódhat az eszköz PowerShell-felületéhez és az ezzel a felülettel elvégezhető feladatokhoz. 
 
@@ -84,11 +84,11 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a GPU-illesztőpro
 
 ## <a name="enable-multi-process-service-mps"></a>Többfolyamatos szolgáltatás (MPS) engedélyezése
 
-A többfolyamatos szolgáltatás (mp) az NVIDIA GPU-ban olyan mechanizmust biztosít, amelyben több feladat is megoszthatja a GPU-kat, ahol az egyes feladatok a GPU erőforrásainak bizonyos hányadát foglalják magukban. Az alábbi lépéseket követve engedélyezheti az MPS szolgáltatást a Azure Stack Edge-eszközön:
+A többfolyamatos szolgáltatás (mp) az NVIDIA GPU-ban olyan mechanizmust biztosít, amelyben több feladat is megoszthatja a GPU-kat, ahol az egyes feladatok a GPU erőforrásainak bizonyos hányadát foglalják magukban. Az MPS a Azure Stack Edge Pro GPU-eszköz előzetes verziójának funkciója. Az alábbi lépéseket követve engedélyezheti az MPS-t az eszközön:
 
 1. Mielőtt elkezdené, győződjön meg arról, hogy: 
 
-    1. Konfigurálta és [aktiválta Azure stack Edge-eszközét](azure-stack-edge-gpu-deploy-activate.md) egy Azure stack Edge/Data Box Gateway erőforrással az Azure-ban.
+    1. Konfigurálta és [aktiválta Azure stack Edge Pro-eszközét](azure-stack-edge-gpu-deploy-activate.md) egy Azure stack Edge pro/Data Box Gateway erőforrással az Azure-ban.
     1. [Ezen az eszközön konfigurálta a számítást a Azure Portal](azure-stack-edge-deploy-configure-compute.md#configure-compute).
     
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
@@ -187,7 +187,7 @@ users:
 ```
 -->
 
-Egy olyan Azure Stack Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, két különböző parancs használatával elháríthatja vagy figyelheti az eszközt.
+Olyan Azure Stack Edge Pro-eszközön, amelyen a számítási szerepkör konfigurálva van, az eszközt két különböző paranccsal lehet elhárítani vagy figyelni.
 
 - `iotedge`Parancsok használata. Ezek a parancsok alapszintű műveletekhez érhetők el az eszközön.
 - `kubectl`Parancsok használata. Ezek a parancsok az eszközhöz tartozó műveletek széles köréhez érhetők el.
@@ -212,7 +212,7 @@ Commands:
 
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `iotedge` :
 
-|command  |Description |
+|command  |Leírás |
 |---------|---------|
 |`list`     | Modulok listázása         |
 |`logs`     | Modul naplóinak beolvasása        |
@@ -241,7 +241,7 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 ### <a name="use-kubectl-commands"></a>Kubectl parancsok használata
 
-Egy olyan Azure Stack Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, az összes `kubectl` parancs elérhető a modulok figyeléséhez vagy megoldásához. Az elérhető parancsok listájának megjelenítéséhez futtassa `kubectl --help` a parancsot a parancsablakban.
+Egy olyan Azure Stack Edge Pro-eszközön, amelyen a számítási szerepkör konfigurálva van, az összes `kubectl` parancs elérhető a modulok figyeléséhez vagy megoldásához. Az elérhető parancsok listájának megjelenítéséhez futtassa `kubectl --help` a parancsot a parancsablakban.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -433,4 +433,4 @@ A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ab
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure stack Edge](azure-stack-edge-gpu-deploy-prep.md) üzembe helyezése Azure Portalban.
+- [Azure stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) üzembe helyezése Azure Portalban.

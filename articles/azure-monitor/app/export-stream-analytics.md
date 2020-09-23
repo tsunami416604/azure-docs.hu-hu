@@ -3,12 +3,12 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324352"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979184"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -97,10 +97,10 @@ Az elérési út előtagja minta megadja, hogy a Stream Analytics hol találja m
 
 Ebben a példában:
 
-* `webapplication27`a Application Insights erőforrás neve az **összes kisbetű**.
-* `1234...`a Application Insights erőforrás rendszerállapot-kulcsa, a **kötőjelek kihagyása**. 
-* `PageViews`az elemezni kívánt adattípust adja meg. A rendelkezésre álló típusok a folyamatos exportálásban beállított szűrőtől függenek. Vizsgálja meg az exportált adattípusokat, és tekintse meg az [adatmodell exportálása](export-data-model.md)című témakört.
-* `/{date}/{time}`egy, a szó szerint írt minta.
+* `webapplication27` a Application Insights erőforrás neve az **összes kisbetű**.
+* `1234...` a Application Insights erőforrás rendszerállapot-kulcsa, a **kötőjelek kihagyása**. 
+* `PageViews` az elemezni kívánt adattípust adja meg. A rendelkezésre álló típusok a folyamatos exportálásban beállított szűrőtől függenek. Vizsgálja meg az exportált adattípusokat, és tekintse meg az [adatmodell exportálása](export-data-model.md)című témakört.
+* `/{date}/{time}` egy, a szó szerint írt minta.
 
 > [!NOTE]
 > Ellenőrizze a tárterületet, és győződjön meg arról, hogy a megfelelő elérési utat kapja.
@@ -196,7 +196,7 @@ Nyissa meg Power BIt munkahelyi vagy iskolai fiókjával, és válassza ki a Str
 
 Ezt az adatkészletet most már használhatja jelentésekben és irányítópultokon [Power BIban](https://powerbi.microsoft.com).
 
-![A Power BI területen válassza ki az adatkészletet és a mezőket.](./media/export-stream-analytics/210.png)
+![A képernyőképen egy Power BI adatkészletből készített jelentés látható.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Nincs adat?
 * Győződjön meg arról, hogy a dátumformátum helyesen van megadva éééé-hh-nn [értékre](#set-path-prefix-pattern) (kötőjelekkel).
@@ -208,7 +208,7 @@ A Noam ben Zeev azt mutatja be, hogyan lehet az exportált adatfeldolgozást Str
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Folyamatos exportálás](export-telemetry.md)
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 * [Application Insights](./app-insights-overview.md)

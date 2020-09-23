@@ -1,15 +1,15 @@
 ---
 title: Virtuális gépek visszaállítása a Azure Portal használatával
-description: Azure-beli virtuális gép visszaállítása helyreállítási pontról a Azure Portal használatával
+description: Egy Azure-beli virtuális gép visszaállítása helyreállítási pontról a Azure Portal használatával, beleértve a régiók közötti visszaállítás funkciót is.
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986549"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -138,18 +138,21 @@ A [visszaállítási lehetőségek](#restore-options)egyike, a régiók között
 
 Ha az előzetes verzióban szeretné bejelentkezni a szolgáltatásba, olvassa el az előkészületek [című szakaszt](./backup-create-rs-vault.md#set-cross-region-restore).
 
-Ha szeretné megtekinteni, hogy a CRR engedélyezve van-e, kövesse a [tartományok közötti visszaállítás konfigurálása](backup-create-rs-vault.md#configure-cross-region-restore) című témakör útmutatását.
+Ha szeretné megtudni, hogy a CRR engedélyezve van-e, kövesse a [tartományok közötti visszaállítás konfigurálása](backup-create-rs-vault.md#configure-cross-region-restore)című témakör útmutatását.
 
 ### <a name="view-backup-items-in-secondary-region"></a>Biztonsági másolati elemek megtekintése a másodlagos régióban
 
 Ha a CRR engedélyezve van, megtekintheti a másodlagos régió biztonsági másolati elemeit.
 
-1. A portálon nyissa meg **Recovery Services**  >  **tároló biztonsági másolati elemeit**
+1. A portálon nyissa meg **Recovery Services**  >  **tároló biztonsági másolati elemeit**.
 1. Válassza a **másodlagos régió** elemet a másodlagos régió elemeinek megtekintéséhez.
 
-    ![Virtuális gépek a másodlagos régióban](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>A listában csak a CRR funkciót támogató biztonsági mentési felügyeleti típusok jelennek meg. Jelenleg csak a másodlagos régióba tartozó adatelemek másodlagos régióba való visszaállításának támogatása engedélyezett.
 
-    ![Másodlagos régió kiválasztása](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![Virtuális gépek a másodlagos régióban](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![Másodlagos régió kiválasztása](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>Visszaállítás másodlagos régióban
 

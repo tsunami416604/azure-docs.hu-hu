@@ -3,12 +3,12 @@ title: Exportálás Power BI az Azure Application Insightsból | Microsoft Docs
 description: Az elemzési lekérdezések a Power BIban is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324369"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979166"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Hírcsatorna-Power BI Application Insights
 A [Power bi](https://www.powerbi.com/) egy olyan üzleti eszköz, amely megkönnyíti az adatok elemzését és az elemzések megosztását. A gazdag irányítópultok minden eszközön elérhetők. Több forrásból is egyesítheti az adatait, beleértve az [Azure Application Insightsból](./app-insights-overview.md)származó elemzési lekérdezéseket is.
@@ -67,11 +67,11 @@ Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    Illessze be az exportált M nyelvi szkriptet a Speciális szerkesztőba. 
 
-   ![Képernyőkép a Power BI Desktopről, Speciális szerkesztő kiemelve](./media/export-power-bi/advancedquery.png)
+   ![A képernyőképen látható a Power BI Desktop Speciális szerkesztő kiemelve](./media/export-power-bi/advancedquery.png)
 
 4. Válassza ki az elemeket a lekérdezésből, és válassza ki a tölcsér vizualizációját.
 
-   ![Képernyőkép a Power BI Desktop vizualizációs lehetőségeiről](./media/export-power-bi/selectsequence.png)
+   ![Képernyőfelvétel a Power BI Desktop tölcsér vizualizációs lehetőségeiről](./media/export-power-bi/selectsequence.png)
 
 5. Módosítsa a címet, hogy az értelmes legyen, és tegye közzé a jelentést a Power BI felhőalapú munkaterületen. 
 
@@ -86,7 +86,7 @@ Ez akkor fordulhat elő, ha a frissítési jogkivonat nem frissült. Próbálja 
 
 1. Jelentkezzen be a Azure Portalba, és győződjön meg arról, hogy el tudja érni az erőforrást.
 2. Próbálja meg frissíteni az irányítópult hitelesítő adatait.
-3. Próbálja meg törölni a gyorsítótárat a PowerBI asztalról.
+3. Próbálja meg törölni a gyorsítótárat a Power BI Desktop.
 
 
    Ha rendelkezik hozzáféréssel, és a hitelesítő adatok frissítése nem működik, nyisson meg egy támogatási jegyet.
@@ -121,14 +121,14 @@ Ez a metódus létrehoz egy teljes irányítópultot a telemetria. A kezdeti ada
 1. Jelentkezzen be a [Power BI-ba](https://app.powerbi.com/).
 2. Nyissa meg az **adatolvasás** ![ képernyőképet a GetData ikon bal alsó sarkában ](./media/export-power-bi/001.png) , a **szolgáltatások**területen.
 
-    ![A Application Insights adatforrásból beolvasott adatok képernyőképei](./media/export-power-bi/002.png)
+    ![A Képernyőképek a szolgáltatások ablakban a beolvasás gombra mutatnak.](./media/export-power-bi/002.png)
 
 3. Válassza a **Letöltés most** Application Insights alatt lehetőséget.
 
    ![A Application Insights adatforrásból beolvasott adatok képernyőképei](./media/export-power-bi/003.png)
 4. Adja meg a Application Insights erőforrás adatait, majd **Jelentkezzen be**.
 
-    ![Képernyőkép a beolvasásról Application Insights adatforrásról](./media/export-power-bi/005.png)
+    ![Képernyőfelvétel: Kapcsolódás Application Insights ablakhoz.](./media/export-power-bi/005.png)
 
      Ezek az információk a Application Insights áttekintés ablaktáblán találhatók:
 
@@ -144,7 +144,7 @@ Szerkesztheti az irányítópultot, kombinálhatja a Application Insights diagra
 
 A kezdeti importálás után az irányítópult és a jelentések naponta frissülnek. A frissítési ütemtervet az adatkészleten is szabályozhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Power BI – Learn](https://www.powerbi.com/learning/)
 * [Elemzési oktatóanyag](../log-query/get-started-portal.md)
 

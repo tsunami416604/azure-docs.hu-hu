@@ -8,34 +8,34 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 57ab6bca820c4c25a9a56e4a801aa7d917d317ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978599"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>Gyors útmutató: nyílt forráskódú FHIR-kiszolgáló üzembe helyezése Azure Portal használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy nyílt forráskódú FHIR-kiszolgálót az Azure-ban a Azure Portal használatával. Az egyszerű üzembe helyezési hivatkozásokat a [nyílt forráskódú tárházban](https://github.com/Microsoft/fhir-server) fogjuk használni
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="github-open-source-repository"></a>GitHub nyílt forráskódú adattár
 
 Navigáljon a [GitHub-üzembe helyezés lapra](https://github.com/Microsoft/fhir-server/blob/master/docs/DefaultDeployment.md) , és keresse meg az "üzembe helyezés az Azure-ban" gombokat:
 
-![Nyílt forráskódú üzembe helyezési oldal](media/quickstart-oss-portal/deployment-page-oss.png)
+>[!div class="mx-imgBorder"]
+>![Nyílt forráskódú üzembe helyezési oldal](media/quickstart-oss-portal/deployment-page-oss.png)
 
 Kattintson a telepítés gombra, és megnyílik a Azure Portal.
 
 ## <a name="fill-in-deployment-parameters"></a>Adja meg a telepítési paramétereket
 
-Hozzon létre egy új erőforráscsoportot, és adjon meg egy nevet. Csak más kötelező paraméter a szolgáltatás neve.
+Hozzon létre egy új erőforráscsoportot, és adjon meg egy nevet. Csak más kötelező paraméterek szerepelnek a szolgáltatásban és az SQL-rendszergazdai jelszóban.
 
-![Egyéni telepítési paraméterek](media/quickstart-oss-portal/deployment-custom-parameters.png)
-
-Figyelje meg, hogy a telepítés közvetlenül a GitHubon lévő nyílt forráskódú tárházból fogja lekérni a forráskódot. Ha a tárházat összeállította, a saját és egy adott ág számára is rámutathat.
+>[!div class="mx-imgBorder"]
+>![Egyéni telepítési paraméterek](media/quickstart-oss-portal/deployment-custom-parameters.png)
 
 A részletek kitöltése után elindíthatja az üzemelő példányt.
 
@@ -43,7 +43,7 @@ A részletek kitöltése után elindíthatja az üzemelő példányt.
 
 Az üzembe helyezés befejezése után rámutathat a böngészőre, `https://SERVICENAME.azurewebsites.net/metadata` hogy beszerezzen egy képességi utasítást. Egy percet vesz igénybe, hogy a kiszolgáló első alkalommal válaszoljon.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a kiépített erőforrásokat tartalmazó erőforráscsoportot, válassza az **erőforráscsoport törlése**elemet, és erősítse meg a törölni kívánt erőforráscsoport nevét.
 
