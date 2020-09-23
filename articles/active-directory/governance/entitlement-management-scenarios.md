@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b66511720966ff978c8460b9ac69ad133b7501
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707220"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979500"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Gyakori forgatókönyvek az Azure AD-jogosultságok kezelésében
 
@@ -119,24 +119,24 @@ Több módon is konfigurálhatja a jogosultságok kezelését a szervezet szám�
 1. [Videó megtekintése: a mindennapos felügyelet: a dolgok megváltoztak](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. A hozzáférési csomag megnyitása
 1. [Az életciklus beállításainak megnyitása](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [A lejárat beállításainak frissítése](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [A lejárat beállításainak frissítése](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Hozzáférés a Package Managerhez: a projekthez való hozzáférés jóváhagyásának frissítése
 
 1. [Videó megtekintése: a mindennapos felügyelet: a dolgok megváltoztak](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [A kérelem és a jóváhagyási beállítások meglévő házirendjének megnyitása](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [A jóváhagyási beállítások frissítése](entitlement-management-access-package-request-policy.md#approval)
+1. [A kérelmek beállításainak meglévő házirendjének megnyitása](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [A jóváhagyási beállítások frissítése](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>Access Package Manager: egy projekt felhasználóinak frissítése
 
 1. [Videó megtekintése: a mindennapos felügyelet: a dolgok megváltoztak](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [A már nem szükséges felhasználók eltávolítása](entitlement-management-access-package-assignments.md)
-1. [A kérelem és a jóváhagyási beállítások meglévő házirendjének megnyitása](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [A kérelmek beállításainak meglévő házirendjének megnyitása](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Hozzáférésre szoruló felhasználók hozzáadása](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Hozzáférés a Package Managerhez: adott felhasználók közvetlen kiosztása egy hozzáférési csomaghoz
 
-1. [Ha a felhasználóknak eltérő életciklus-beállításokra van szükségük, vegyen fel egy új szabályzatot a hozzáférési csomagba](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Ha a felhasználóknak eltérő életciklus-beállításokra van szükségük, vegyen fel egy új szabályzatot a hozzáférési csomagba](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Konkrét felhasználók közvetlen kiosztása a hozzáférési csomaghoz](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>Hozzárendelések és jelentések
@@ -156,7 +156,7 @@ Több módon is konfigurálhatja a jogosultságok kezelését a szervezet szám�
 
 Microsoft Graph használatával is kezelheti a hozzáférési csomagokat, a katalógusokat, a szabályzatokat, a kérelmeket és a hozzárendeléseket.  Egy megfelelő szerepkörrel rendelkező felhasználó, aki a delegált engedéllyel rendelkező alkalmazással rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja a [jogosultsági felügyeleti API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta )-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Delegálás és szerepkörök](entitlement-management-delegate.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

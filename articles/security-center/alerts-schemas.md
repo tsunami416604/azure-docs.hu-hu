@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901336"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
-Azure Security Center Standard csomagjának felhasználói biztonsági riasztásokat kapnak, ha Security Center észlelik az erőforrásaik fenyegetését.
+Ha az előfizetése engedélyezve van az Azure Defender számára, akkor biztonsági riasztásokat fog kapni, amikor a Security Center észleli az erőforrásaik fenyegetését.
 
 Ezeket a biztonsági riasztásokat megtekintheti Azure Security Center **veszélyforrások elleni védelmi** oldalain, illetve külső eszközökkel, például a következőkkel:
 
@@ -68,7 +68,7 @@ Az Azure Sentinel szolgáltatással kapcsolatos további információkért tekin
 
 
 
-### <a name="azure-activity-log"></a>[Azure-tevékenységnapló](#tab/schema-activitylog)
+### <a name="azure-activity-log"></a>[Azure-tevékenység naplója](#tab/schema-activitylog)
 
 Azure Security Center naplózza a biztonsági riasztásokat az Azure-tevékenység naplójában lévő eseményekként.
 
@@ -140,7 +140,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 
 ### <a name="the-data-model-of-the-schema"></a>A séma adatmodellje
 
-|Mező|Description|
+|Mező|Leírás|
 |----|----|
 |**csatornák**|Állandó, "művelet"|
 |**correlationId**|A Azure Security Center riasztás azonosítója|
@@ -149,7 +149,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 |**eventName**|Az érték és a localizedValue almező tartalmazza a riasztás megjelenítendő nevét.|
 |**Kategória**|Az érték és a localizedValue almező állandó – "biztonság"|
 |**eventTimestamp**|UTC-időbélyeg a riasztás generálásakor|
-|**ID**|A teljesen minősített riasztás azonosítója|
+|**id**|A teljesen minősített riasztás azonosítója|
 |**szint**|Állandó, "tájékoztató"|
 |**operationId**|Lásd: correlationId|
 |**operationName**|Az érték mező állandó – "Microsoft. Security/Locations/Alerts/Activate/Action", a honosított érték pedig "riasztás aktiválása" lesz (potenciálisan honosítható a felhasználó területi beállítása)|
@@ -178,7 +178,7 @@ Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása
 ---
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azokat a sémákat ismerteti, amelyeket a Azure Security Center veszélyforrások elleni védelmi eszközei használnak a biztonsági riasztási információk küldésekor.
 

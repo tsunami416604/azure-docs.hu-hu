@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195874"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893868"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Gateway
 
@@ -38,7 +38,7 @@ A Data Box Gateway szolgáltatás az Azure-ban üzemeltetett felügyeleti szolg�
 
 A Data Box Gateway eszköz egy olyan virtuális eszköz, amely egy Ön által megadott helyszíni rendszer hypervisorában van kiépítve. Az eszköz segít az Azure-ba való adatküldésben. Az eszköz:
 
-- Aktiválási kulcsra van szükség az Azure Stack Edge/Data Box Gateway szolgáltatás eléréséhez.
+- Aktiválási kulcsra van szüksége az Azure Stack Edge Pro/Data Box Gateway szolgáltatás eléréséhez.
 - Az eszköz jelszavai mindig védelmet biztosítanak.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
@@ -98,6 +98,6 @@ A megosztásokat elérő vagy törölhető felhasználók listájának megtekint
 
 További információkért tekintse át a Microsoft adatvédelmi szabályzatát a [megbízhatósági központban](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Data Box Gateway eszköz üzembe helyezése](data-box-gateway-deploy-prep.md)

@@ -3,12 +3,12 @@ title: Az Azure Application Insights folyamatainak automatizálása Logic Apps h
 description: Megtudhatja, hogyan automatizálható a megismételhető folyamatok gyors automatizálásához, ha hozzáadja a Application Insights-összekötőt a logikai alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323196"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970864"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights folyamatok automatizálása Logic Apps használatával
 
@@ -36,7 +36,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan logikai alkal
 
     ![Logic app Designer ablak](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. Az **intervallum** mezőbe írja be az **1** , majd a**frekvencia** mezőt, és válassza a **nap**lehetőséget.
+1. Az  **intervallum** mezőbe írja be az **1** , majd a**frekvencia** mezőt, és válassza a **nap**lehetőséget.
 
     ![Logic app Designer "Ismétlődés" ablak](./media/automate-with-logic-apps/3recurrence.png)
 
@@ -53,7 +53,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan logikai alkal
 
 A lépés elvégzéséhez szüksége lesz egy alkalmazás-AZONOSÍTÓra és egy API-kulcsra az erőforráshoz. A Azure Portal a következő ábrán látható módon kérheti le:
 
-![Alkalmazás azonosítója a Azure Portal](./media/automate-with-logic-apps/5apiaccess.png)
+![A képernyőképen a Azure Portal API-hozzáférés lapja látható az API-kulcs létrehozása gomb kiválasztásával.](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![Alkalmazás azonosítója a Azure Portal](./media/automate-with-logic-apps/6apikey.png)
 
@@ -103,7 +103,7 @@ Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően műk�
     
    d. Kattintson az **új paraméter hozzáadása** legördülő listára, és válassza a mellékletek lehetőséget, és a HTML.
 
-      ![Office 365 Outlook-konfiguráció](./media/automate-with-logic-apps/10emailbody.png)
+      ![A képernyőképen az e-mailek küldése ablak jelenik meg a törzs mező mellett, a dinamikus tartalom menü pedig a jobb oldalon Kiemelt Törzstel.](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Office 365 Outlook-konfiguráció](./media/automate-with-logic-apps/11emailparameter.png)
 
@@ -128,7 +128,7 @@ A logikai alkalmazás futtatásakor az e-mail-listán megadott címzettek a köv
 
 ![Logikai alkalmazás e-mail-üzenete](./media/automate-with-logic-apps/flow9.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [elemzési lekérdezések](../log-query/get-started-queries.md)létrehozásáról.
 - További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról

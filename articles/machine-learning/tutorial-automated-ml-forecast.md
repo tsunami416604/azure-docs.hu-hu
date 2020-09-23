@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896689"
+ms.locfileid: "90979081"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése
 
@@ -236,7 +236,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Power BI támogatott sémát
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 + A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
 + További információ a [featurization](how-to-configure-auto-features.md#featurization).
-+ További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile).
++ További információ az [adatprofilkészítésről](how-to-connect-data-ui.md#profile).
 
 >[!NOTE]
 > Ez a kerékpáros megosztási adatkészlet módosult ehhez az oktatóanyaghoz. Ezt az adatkészletet egy [Kaggle-verseny](https://www.kaggle.com/c/bike-sharing-demand/data) részeként tették elérhetővé, és eredetileg a [Capital Bikeshare](https://www.capitalbikeshare.com/system-data)keresztül adták ki. Az [UCI Machine learning adatbázisban](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)is megtalálható.<br><br>

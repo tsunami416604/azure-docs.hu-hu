@@ -3,12 +3,12 @@ title: Azure Monitor konfigurálása a tárolók Prometheus-integrációhoz | Mi
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor a containers Agent számára a Kubernetes-fürthöz tartozó, a Prometheus-ből származó mérőszámok leselejtezéséhez.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069424"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971363"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Prometheus-metrikák Azure Monitorral való, tárolókra vonatkozó gyűjtésének konfigurálása
 
@@ -347,7 +347,7 @@ InsightsMetrics
 
 A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
 
-![Adatfeldolgozási kötet lekérdezési eredményeinek naplózása](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![A képernyőfelvételen az adatfeldolgozási kötetek napló lekérdezésének eredményei láthatók.](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
 Ha azt szeretné megbecsülni, hogy a GB-ban hány metrikai méret van egy hónapig, hogy megtudja, a munkaterületen fogadott adatok mennyisége magas-e, a következő lekérdezés van megadva.
 

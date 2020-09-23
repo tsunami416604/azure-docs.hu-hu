@@ -1,6 +1,6 @@
 ---
 title: A Azure Disk Encryption és az Azure virtuálisgép-méretezési csoportok bővítmény-sorrendje
-description: Ez a cikk a Linux IaaS virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást.
+description: Ebből a cikkből megtudhatja, hogyan engedélyezheti Microsoft Azure lemezes titkosítást linuxos IaaS virtuális gépekhez.
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117257"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988032"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>A Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének előkészítésével
 
@@ -158,7 +158,7 @@ Részletesebb sablon a következő témakörben található:
 * A Azure Disk Encryption bővítmény alkalmazása a lemezt formázó egyéni rendszerhéj-parancsfájl után (Linux): [deploy-extseq-linux-ADE-after-customscript.jsbe](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a bővítmények sorrendbe [állításáról: a bővítmények kiosztása a virtuálisgép-méretezési csoportokban](virtual-machine-scale-sets-extension-sequencing.md).
 - További információ a `provisionAfterExtensions` tulajdonságról: [Microsoft. számítási virtualMachineScaleSets/bővítmények sablonjának referenciája](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
 - [Azure Disk Encryption a virtuálisgép-méretezési csoportokhoz](disk-encryption-overview.md)

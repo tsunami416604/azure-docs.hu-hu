@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922837"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971610"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>A növekményes dúsítás gyorsítótárazásának konfigurálása az Azure-ban Cognitive Search
 
 > [!IMPORTANT] 
-> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es és 2020-06-30-es verziója – előzetes verzióként](search-api-preview.md) adja meg ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
+> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> A [REST API előzetes verziójának verziója](search-api-preview.md) biztosítja ezt a szolgáltatást. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 Ebből a cikkből megtudhatja, hogyan adhat hozzá gyorsítótárazást egy alkoholtartalom-növelési folyamathoz, hogy fokozatosan módosítsa a lépéseket anélkül, hogy minden alkalommal újra kellene építenie. Alapértelmezés szerint a készségkészlet állapota állapot nélküli, és az összeállítás bármely részének megváltoztatásához az indexelő teljes újrafuttatására van szükség. A növekményes bővítéssel az indexelő meg tudja határozni, hogy a készségkészlet vagy az indexelő definíciójában észlelt változások alapján a dokumentum fájának mely részeit kell frissíteni. A meglévő feldolgozott kimenet megmarad, és bárhol felhasználható. 
 
@@ -178,7 +179,7 @@ A következő táblázat összefoglalja, hogy a különböző API-k hogyan kapcs
 
 A gyorsítótárral kapcsolatos további információkért lásd: [gyorsítótár-kezelés](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A növekményes alkoholtartalom a szakértelmével tartalmazó indexelő esetében alkalmazható. A következő lépésként tekintse meg a készségkészlet dokumentációját, és Ismerje meg a fogalmakat és az összetételt. 
 

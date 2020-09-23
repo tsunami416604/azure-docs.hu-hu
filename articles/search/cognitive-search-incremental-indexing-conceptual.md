@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935381"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971631"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Növekményes gazdagodás és gyorsítótárazás az Azure-ban Cognitive Search
 
 > [!IMPORTANT] 
-> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es és 2020-06-30-es verziója – előzetes verzióként](search-api-preview.md) adja meg ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
+> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> A [REST API előzetes verziójának verziója](search-api-preview.md) biztosítja ezt a szolgáltatást. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 A *növekményes gazdagodás* egy olyan szolgáltatás, amely a [szakértelmével](cognitive-search-working-with-skillsets.md)célozza. Kihasználja az Azure Storage-t, hogy mentse a alkoholtartalom-növelési folyamat által kibocsátott feldolgozási kimenetet a jövőbeli indexelő futtatásokban való újrafelhasználáshoz. Amikor csak lehetséges, az indexelő újrahasznosítja a még érvényes gyorsítótárazott kimenetet. 
 
@@ -164,9 +165,9 @@ A REST API verzió `2020-06-30-Preview` növekményes dúsítást biztosít az i
 
   A **ignoreResetRequirement** takarékosan használható, mert nem kívánt inkonzisztenciát eredményezhet az adataiban, amelyeket nem lehet könnyen észlelni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A növekményes bővítés egy hatékony szolgáltatás, amely kibővíti a változások követését a szakértelmével és a mesterséges intelligenciával. A AIncremental-bővítés lehetővé teszi a meglévő feldolgozott tartalom újbóli használatát a készségkészlet-kialakítás megismétlése során.
+A növekményes bővítés egy hatékony szolgáltatás, amely kibővíti a változások követését a szakértelmével és a mesterséges intelligenciával. A növekményes bővítés lehetővé teszi a meglévő feldolgozott tartalom újbóli használatát a készségkészlet-kialakítás megismétlése során.
 
 A következő lépésként engedélyezze a gyorsítótárazást egy meglévő indexelő esetében, vagy adjon hozzá egy gyorsítótárat egy új indexelő definiálásához.
 

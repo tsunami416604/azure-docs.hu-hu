@@ -5,18 +5,18 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 77892cc9a05c569e431fb9c66c2f6eb92068b3af
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979491"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan hozható létre Ruby-alkalmazás, és hogyan csatlakoztatható egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
 
-![Az Azure App Service-ben futó Ruby on Rails-alkalmazás](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Képernyőkép a Ruby on Rails-alkalmazásról – példa a feladatokra.":::
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -255,7 +255,7 @@ Ebben a lépésben üzembe helyezi a Postgreshez csatlakoztatott Rails-alkalmaz�
 
 ### <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása
 
-Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ lehet beállítani az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs Cloud Shellben való használatával.
+Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ lehet beállítani az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) parancs Cloud Shellben való használatával.
 
 Az alábbi Cloud Shell-parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállításokat konfigurálja. Cserélje le a helyőrzőket a>és a _ &lt; postgres-Server-Name>_ _ &lt; AppName_ .
 
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
-![Az Azure App Service-ben futó Ruby on Rails-alkalmazás](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Képernyőkép az Azure-alkalmazásról – példa a feladatokra, amelyek a listához hozzáadott feladatokat mutatják.":::
 
 Gratulálunk, egy adatvezérelt Ruby on Rails-alkalmazást futtat az Azure App Service-ben.
 

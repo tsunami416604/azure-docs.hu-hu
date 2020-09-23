@@ -1,25 +1,22 @@
 ---
-title: A Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás (előzetes verzió) használatával
+title: A Storage-fiókkal létesített kapcsolatok beállítása felügyelt identitás használatával
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg, hogyan állíthat be indexelő-kapcsolatokat egy Azure Storage-fiókhoz felügyelt identitás használatával (előzetes verzió)
+description: Ismerje meg, hogyan állíthat be indexelő-kapcsolatokat egy Azure Storage-fiókhoz felügyelt identitás használatával
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917975"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971520"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás (előzetes verzió) használatával
-
-> [!IMPORTANT] 
-> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás használatával
 
 Ez a lap leírja, hogyan állíthat be egy Azure Storage-fiókhoz egy indexelő-kapcsolódást egy felügyelt identitás használatával, nem biztosítva hitelesítő adatokat az adatforrás-objektum kapcsolódási karakterláncában.
 
@@ -68,7 +65,7 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad a Stor
 
 ### <a name="3---create-the-data-source"></a>3 – az adatforrás létrehozása
 
-A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Storage-fiók adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
+A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Storage-fiók adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
 
 Egy Storage-fiókból való indexeléskor az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
@@ -150,6 +147,7 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 ## <a name="see-also"></a>Lásd még
 
 További információ az Azure Storage indexelő szolgáltatásáról:
+
 * [Azure Blob-indexelő](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 indexelő](search-howto-index-azure-data-lake-storage.md)
 * [Azure Table indexelő](search-howto-indexing-azure-tables.md)

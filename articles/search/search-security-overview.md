@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928768"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979611"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
@@ -38,7 +38,7 @@ Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel k
 
 A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-models.md)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
-| Modell | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
+| Modellezés | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
 |------------------|-------|-------------|--------------|------------|
 | kiszolgálóoldali titkosítás | Microsoft által felügyelt kulcsok | Nincs (beépített) | Nincs, az összes régióban elérhető minden szinten, a január 24 2018. után létrehozott tartalomhoz. | Tartalom (indexek és szinonima térképek) és definíciók (indexelő, adatforrások, szakértelmével) |
 | kiszolgálóoldali titkosítás | ügyfél által felügyelt kulcsok | Azure Key Vault | Minden régióban elérhető számlázandó szinten, a január 2019. után létrehozott tartalomhoz. | Az adatlemezeken található tartalom (indexek és szinonimák) |
@@ -94,7 +94,7 @@ A keresési szolgáltatáshoz való hozzáférés további szabályozásához ol
 
 A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md).
 
-Másik lehetőségként használhatja a felügyeleti REST API-kat is. Az 2020-03-13-es API-verzió a [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) paraméterrel lehetővé teszi a szolgáltatáshoz való hozzáférés korlátozását úgy, hogy az IP-címeket, egyenként vagy egy tartományon belül azonosítja, hogy hozzáférést kíván biztosítani a keresési szolgáltatáshoz.
+Másik lehetőségként használhatja a felügyeleti REST API-kat is. A 2020-03-13-es API-verziótól kezdődően a [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) paraméterrel a szolgáltatáshoz való hozzáférést úgy is korlátozhatja, ha az IP-címeket, egyenként vagy egy tartományban azonosítja, és amelyekhez hozzáférést szeretne biztosítani a keresési szolgáltatáshoz.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Magánhálózati végpont (nincs internetes forgalom)
 
@@ -123,7 +123,7 @@ Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények
 | Módszer | Leírás |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
-|[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (HRE) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
+|[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (Azure AD) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
 
 ## <a name="administrative-rights"></a>Rendszergazdai jogosultságok
 

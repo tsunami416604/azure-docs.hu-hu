@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
-ms.author: miguego
-ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/10/2020
+ms.author: jeedes
+ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979708"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a helyi SharePoint-környezettel
 
@@ -25,8 +25,6 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a helyszíni SharePoint 
 * Szabályozhatja, hogy ki férhet hozzá a helyszíni SharePointhoz az Azure AD-ben.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a helyszíni SharePointba az Azure AD-fiókjával.
 * A fiókokat a Azure Portal kezelheti.
-
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +43,7 @@ A helyi SharePoint-környezet Azure AD-be való integrálásának konfigurálás
 
 A SharePoint helyszíni hozzáadása a gyűjteményből:
 
-1. A [Azure Portal](https://portal.azure.com)bal szélső paneljén válassza a **Azure Active Directory**lehetőséget.
+1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory**lehetőséget.
 
    > [!NOTE]
    > Ha az elem nem érhető el, a bal oldali ablaktábla tetején található **minden szolgáltatás** hivatkozáson keresztül is megnyithatja. Az alábbi áttekintésben a **Azure Active Directory** hivatkozás az **identitás** szakaszban található. A szűrőt a szűrő mező használatával is megkeresheti.
@@ -72,7 +70,7 @@ Ebben a szakaszban az Azure AD SSO-t konfigurálja a helyszíni SharePoint-körn
 
 Az Azure AD SSO és a helyszíni SharePoint helyszíni konfigurálásához és teszteléséhez hajtsa végre az alábbi építőelemeket:
 
-- Az [Azure ad egyszeri bejelentkezés konfigurálásával](#configure-azure-ad-single-sign-on) engedélyezheti a felhasználók számára a funkció használatát.
+- [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
 - [Konfigurálja a helyszíni SharePoint](#configure-sharepoint-on-premises) szolgáltatást az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
 - [Hozzon létre egy Azure ad-tesztelési felhasználót a Azure Portal](#create-an-azure-ad-test-user-in-the-azure-portal) egy új felhasználó létrehozásához az Azure ad-ben az egyszeri bejelentkezéshez.
 - [Hozzon létre egy Azure ad biztonsági csoportot a Azure Portal](#create-an-azure-ad-security-group-in-the-azure-portal) egy új biztonsági csoport létrehozásához az Azure ad-ben az egyszeri bejelentkezéshez.
@@ -81,13 +79,13 @@ Az Azure AD SSO és a helyszíni SharePoint helyszíni konfigurálásához és t
 - [Hozzáférés biztosítása egy vendég fiókhoz a helyszíni sharepointhoz a Azure Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal) , hogy engedélyt adjon a vendég fióknak az Azure ad-ben a helyszíni sharepointhoz.
 - [Konfigurálja úgy a megbízható identitás-szolgáltatót,](#configure-the-trusted-identity-provider-for-multiple-web-applications) hogy több webalkalmazás ugyanazt a megbízható identitás-szolgáltatót használja több webalkalmazáshoz.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 
 Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
-1. A [Azure Portal](https://portal.azure.com/)válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza ki az **SAML** -módot az egyszeri bejelentkezés engedélyezéséhez.
  
@@ -102,7 +100,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
     1. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointSiteURL>/_trust/` .
 
     1. A **bejelentkezési URL** -cím mezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointSiteURL>/` .
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel.
@@ -156,7 +154,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
     1. Válassza a **megbízható identitás-szolgáltató**lehetőséget, majd válassza ki az imént regisztrált szolgáltatót a *AzureAD*.
 
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 
     ![A hitelesítési szolgáltató konfigurálása](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
@@ -205,7 +203,7 @@ Ha ezt a forgatókönyvet a People Picker használatával szeretné kijavítani,
   > [!NOTE]
   > AzureCP nélkül hozzáadhat csoportokat az Azure AD-csoport AZONOSÍTÓjának hozzáadásával, de ez a módszer nem felhasználóbarát és megbízható. A következőképpen néz ki:
   > 
-  >![Azure AD-csoport hozzáadása egy SharePoint-csoporthoz](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  >![Azure AD-csoport hozzáadása egy SharePoint-csoporthoz azonosító alapján](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
 ### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>Engedélyek megadása egy Azure AD-csoport számára a helyszíni SharePointban
 
@@ -244,7 +242,7 @@ A SharePoint-webhelyét konzisztens módon is megadhatja a vendég fiókhoz, miv
 
 1. Módosítsa a **forrás attribútum** tulajdonságot a **User. localuserprincipalname**értékre, majd válassza a **Mentés**lehetőséget.
 
-    ![Felhasználói attribútumok & jogcímek kezdeti](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+    ![Felhasználói attribútumok & jogcímek kezdeti forrás attribútuma](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
 1. A menüszalag használatával térjen vissza az **SAML-alapú bejelentkezéshez**. Most a **felhasználói attribútumok & a jogcímek** szakasz a következőképpen néz ki: 
 
@@ -287,9 +285,6 @@ A konfiguráció egyetlen webalkalmazás esetében működik, de további konfig
 
 Előfordulhat, hogy más forgatókönyvek is vannak, amelyekben a belső felhasználók számára hozzáférést kíván biztosítani a SharePoint helyszíni példányához. Ebben az esetben telepítenie kell Microsoft Azure Active Directory Connect a helyszíni felhasználók Azure AD-vel való szinkronizálásának engedélyezéséhez. Ezt a telepítést egy másik cikkben tárgyaljuk.
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>Következő lépések
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [Mi a hibrid identitás a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+A helyszíni SharePoint konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

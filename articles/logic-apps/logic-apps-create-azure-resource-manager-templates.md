@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066068"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971779"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása az Azure Logic Apps-alkalmazások üzembe helyezésének automatizálásához
 
@@ -60,14 +60,14 @@ Ezek a minták azt mutatják be, hogyan hozhat létre és helyezhet üzembe logi
 
 1. A LogicAppTemplate modul [PowerShell-galériaból](https://www.powershellgallery.com/packages/LogicAppTemplate)történő telepítésének legegyszerűbb módja a következő parancs futtatása:
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    A legújabb verzióra való frissítéshez futtassa a következő parancsot:
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 A manuális telepítéshez kövesse a következő témakör lépéseit: GitHub for [Logic app template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator).
@@ -80,28 +80,43 @@ Ha ezzel az eszközzel futtatja a `Get-LogicAppTemplate` parancsot, a parancs el
 
 ### <a name="generate-template-with-powershell"></a>Sablon készítése a PowerShell-lel
 
-Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](/cli/azure/?view=azure-cli-latest)telepítése után:
+Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](/cli/azure/)telepítése után:
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Ha követni szeretné a [Azure Resource Manager-ügyfél eszközén](https://github.com/projectkudu/ARMClient)található adatcsövekre vonatkozó javaslatot, futtassa ezt a parancsot ahelyett, hogy az `$SubscriptionId` Azure-előfizetés azonosítója:
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 A kinyerés után a következő parancs futtatásával létrehozhat egy paramétereket tartalmazó fájlt a sablonból:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 Azure Key Vault hivatkozásokkal történő kinyeréshez (csak statikus) futtassa ezt a parancsot:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | Paraméterek | Kötelező | Leírás |
@@ -110,7 +125,7 @@ PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $f
 | KeyVault | No | Egy felsorolás, amely leírja, hogyan kell kezelni a lehetséges kulcstároló-értékeket. A mező alapértelmezett értéke: `None`. |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Logikaialkalmazás-sablonok üzembe helyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)

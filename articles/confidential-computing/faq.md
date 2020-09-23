@@ -8,20 +8,20 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772898"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987989"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Gyakran ismételt kérdések az Azure bizalmas számítástechnikai szolgáltatásáról
 
-Ez a cikk a [bizalmas számítási feladatok Azure-on](overview.md)való futtatásával kapcsolatos leggyakoribb kérdésekre ad választ.
+Ez a cikk a [bizalmas számítási feladatok Azure-beli virtuális gépeken](overview.md)való futtatásával kapcsolatos leggyakoribb kérdésekre ad választ.
 
 Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN webhelyen](https://azure.microsoft.com/support/forums/)található Azure-fórumokra, és stack overflow. Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérést is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás lapon](https://azure.microsoft.com/support/options/)válassza a támogatás lekérése lehetőséget.
 
-## <a name="confidential-computing-virtual-machines"></a>Bizalmas számítástechnika Virtual Machines<a id="vm-faq"></a>
+## <a name="confidential-computing-virtual-machines"></a>Bizalmas számítástechnika Virtual Machines <a id="vm-faq"></a>
 
 **Hogyan helyezhetek üzembe DCsv2-sorozatú virtuális gépeket az Azure-ban?**
 
@@ -51,7 +51,7 @@ Győződjön meg arról, hogy egy [elérhető régiót](https://azure.microsoft.
 
 **Mi a különbség a DCsv2 és a DC sorozatú virtuális gépek között?**
 
-A DC sorozatú virtuális gépek régebbi 6 Magos Intel processzorokon futnak Intel SGX ENKLÁVÉHOZ, és kevesebb teljes memóriával, kevesebb enklávé-gyorsítótárral (EPC) rendelkeznek, és csak két régióban érhetők el (az USA keleti régiójában és Nyugat-Európában Standard_DC2s és Standard_DC4s méretben). A virtuális gépeket nem lehet általánosan elérhetővé tenni, és éles használatra nem ajánlottak. Ezeknek a virtuális gépeknek a üzembe helyezéséhez használja a [bizalmas számítási DC sorozatú VM [előzetes verzió] Marketplace-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) példányt.
+A DC sorozatú virtuális gépek régebbi 6 Magos Intel processzorokon futnak Intel SGX ENKLÁVÉHOZ, és kevesebb teljes memóriával, kevesebb enklávé-gyorsítótárral (EPC) rendelkeznek, és csak két régióban érhetők el (az USA keleti régiójában és Nyugat-Európában Standard_DC2s és Standard_DC4s méretben). A virtuális gépeket nem lehet általánosan elérhetővé tenni, és éles használatra nem ajánlottak. Ezeknek a virtuális gépeknek a üzembe helyezéséhez használja a  [bizalmas számítási DC sorozatú VM [előzetes verzió] Marketplace-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) példányt.
 
 **Globálisan elérhetők a DCsv2 virtuális gépek?**
 

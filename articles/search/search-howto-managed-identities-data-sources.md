@@ -1,25 +1,22 @@
 ---
-title: Az adatforráshoz való kapcsolódás beállítása felügyelt identitás használatával (előzetes verzió)
+title: Az adatforráshoz való kapcsolódás beállítása felügyelt identitás használatával
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg, hogyan állíthat be indexelő-kapcsolatokat egy adatforráshoz felügyelt identitás használatával (előzetes verzió)
+description: Ismerje meg, hogyan állíthat be indexelő-kapcsolatokat egy adatforráshoz felügyelt identitás használatával
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936588"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971544"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával (előzetes verzió)
-
-> [!IMPORTANT] 
-> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával
 
 Az Azure Cognitive Search [Indexelő](search-indexer-overview.md) egy olyan webbejáró, amely lehetővé teszi az adatok adatforrásból való lekérését az Azure Cognitive Searchba. Az indexelő beszerez egy adatforrás-kapcsolatokat a létrehozott adatforrás-objektumból. Az adatforrás-objektum általában tartalmazza a cél adatforráshoz tartozó hitelesítő adatokat. Az adatforrás-objektum például tartalmazhat egy Azure Storage-fiók kulcsát, ha blob Storage-tárolóból kívánja indexelni az adatait.
 
@@ -47,7 +44,7 @@ A következő szolgáltatások jelenleg nem támogatják a felügyelt identitás
 * Tudástár
 * Egyéni készségek
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az indexelő-kapcsolatok felügyelt identitások használatával történő beállításáról:
 

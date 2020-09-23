@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933783"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979442"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -55,7 +55,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy az Application-elemzések hogyan gyűjthetnek adatokat egy platformon az alkalmazás számára. A ASP.NET-alkalmazás figyelése alapértelmezés szerint két különböző szintű gyűjteménysel van ellátva.
 
-    ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new.png)
+    ![A képernyőképen a Application Insights site Extensions (új erőforrás létrehozása) lap jelenik meg.](./media/azure-web-apps/choose-options-new.png)
  
  Az alábbiakban az egyes útvonalakon összegyűjtött adatok összegzése látható:
         
@@ -65,7 +65,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 | Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
 | A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
 | Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
-| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Yes |
 
 3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
@@ -407,7 +407,7 @@ A PHP-és a WordPress-webhelyek nem támogatottak. Jelenleg nincs hivatalosan t�
 
 Ha kód nélküli figyelést használ, csak a kapcsolódási karakterláncra van szükség. Azonban továbbra is javasoljuk a kialakítási kulcs beállítását, hogy megőrizze a visszamenőleges kompatibilitást az SDK régebbi verzióival, ha manuális rendszerállapotot végez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](./profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
 * [Engedélyezze az Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.

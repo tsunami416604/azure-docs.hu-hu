@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
-description: Új Azure IoT Central-alkalmazás létrehozása. Hozza létre az alkalmazást az ingyenes díjszabási csomag vagy az egyik standard díjszabási csomag használatával.
+title: Rövid útmutató – Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
+description: Rövid útmutató – új Azure IoT Central-alkalmazás létrehozása. Hozza létre az alkalmazást az ingyenes díjszabási csomag vagy az egyik standard díjszabási csomag használatával.
 author: viv-liu
 ms.author: viviali
 ms.date: 07/30/2020
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552577"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987385"
 ---
-# <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
+# <a name="quickstart---create-an-azure-iot-central-application"></a>Rövid útmutató – Azure IoT Central-alkalmazás létrehozása
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure IoT Central alkalmazást.
 

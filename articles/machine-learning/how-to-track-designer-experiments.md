@@ -1,5 +1,5 @@
 ---
-title: Naplózási mérőszámok a Designerben (előzetes verzió)
+title: Naplózási mérőszámok a Designerben
 titleSuffix: Azure Machine Learning
 description: Az Azure ML Designer-kísérletek monitorozása. Engedélyezze a naplózást a Python parancsfájl-futtatási moduljának használatával, és tekintse meg a naplózott eredményeket a Studióban.
 services: machine-learning
@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950408"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885980"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Azure Machine Learning Designer (előzetes verzió) folyamatok naplózásának engedélyezése
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning Designer-folyamatok naplózásának engedélyezése
+
 
 Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a tervezői folyamatokhoz. Azt is megtudhatja, hogyan tekintheti meg ezeket a naplókat a Azure Machine Learning Studio webes portál használatával.
 
@@ -78,5 +78,6 @@ A folyamat futásának befejeződése után megtekintheti a *Mean_Absolute_Error
 
 Ebben a cikkben megtanulta, hogyan használhatja a naplókat a tervezőben. A következő lépésekért tekintse meg az alábbi kapcsolódó cikkeket:
 
-* Ismerje meg, hogyan lehet a tervezői folyamatokat elhárítani: [hibakeresés & ml-folyamatok hibaelhárítása](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview).
+
+* Ismerje meg, hogyan lehet a tervezői folyamatokat elhárítani: [hibakeresés & ml-folyamatok hibaelhárítása](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * Megtudhatja, hogyan használhatja a Python SDK-t a mérőszámok naplózására az SDK-létrehozási élményben: a [naplózás engedélyezése az Azure ml betanítási futtatásával](how-to-track-experiments.md).

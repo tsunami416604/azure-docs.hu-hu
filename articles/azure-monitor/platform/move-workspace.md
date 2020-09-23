@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566284"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979689"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -96,7 +96,7 @@ A következő eljárás használatával helyezheti át a munkaterületet a Azure
 4. Válassza ki a cél- **előfizetést** és az **erőforráscsoportot**. Ha a munkaterületet ugyanabba az előfizetésbe helyezi egy másik erőforráscsoporthoz, nem jelenik meg az **előfizetés** lehetőség.
 5. A munkaterület és a kiválasztott erőforrások áthelyezéséhez kattintson **az OK** gombra.
 
-    ![Portál](media/move-workspace/portal.png)
+    ![A képernyőképen a Log Analytics munkaterület áttekintés ablaktáblája látható, ahol megváltoztathatja az erőforráscsoportot és az előfizetés nevét.](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 Ha a munkaterületet a PowerShell használatával szeretné áthelyezni, használja a [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) az alábbi példában látható módon:
@@ -109,5 +109,5 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 > Az áthelyezési művelet után a rendszer újrakonfigurálja a megoldásokat és az Automation-fiók hivatkozását, hogy a munkaterület visszaálljon a korábbi állapotába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az áthelyezni kívánt erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](../../azure-resource-manager/management/move-support-resources.md).

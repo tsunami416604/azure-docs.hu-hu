@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987579"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -268,7 +268,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-## <a name="schedule-a-runbook-in-the-azure-portal"></a>Runbook beosztása a Azure Portalban
+## <a name="schedule-a-runbook-in-the-azure-portal"></a>Runbook ütemezése az Azure Portalon
 
 A runbook közzétételekor a következő műveletre ütemezhet:
 
@@ -293,7 +293,7 @@ Az összefoglalás a feladatok állapotának számát és grafikus ábrázolás�
 
 A csempére kattintva megjelenítheti a feladatok lapot, amely tartalmazza az összes végrehajtott feladat összegzett listáját. Ezen a lapon látható az egyes feladatokhoz tartozó állapot, a runbook neve, a kezdési idő és a befejezési idő.
 
-![Automation-fiók feladatok lapja](./media/manage-runbooks/automation-account-jobs-status-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="Képernyőkép a feladatok oldalról.":::
 
 A feladatok listájának szűréséhez kattintson a **feladatok szűrése**lehetőségre. Szűrje egy adott runbook, a feladatok állapotát, vagy válasszon a legördülő listából, és adja meg a keresés időtartományát.
 
@@ -301,7 +301,7 @@ A feladatok listájának szűréséhez kattintson a **feladatok szűrése**lehet
 
 Azt is megteheti, hogy megtekinti az adott runbook tartozó feladat összegzésének részleteit. Ehhez válassza ki az runbook az Automation-fiók Runbookok lapján, majd válassza a **feladatok**lehetőséget. Ez a művelet a feladatok lapot mutatja be. Innen egy feladatra kattintva megtekintheti annak adatait és kimenetét.
 
-![Automation-fiók feladatok lapja](./media/manage-runbooks/automation-runbook-job-summary-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Képernyőkép a feladatok oldalról, ahol a hibák gomb ki van emelve.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Feladatok állapotának beolvasása a PowerShell használatával
 
@@ -336,7 +336,7 @@ foreach($item in $output)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A runbook-kezelés részleteiért lásd: [runbook-végrehajtás a Azure Automation-ben](automation-runbook-execution.md).
 * PowerShell-runbook előkészítéséhez tekintse [meg a szöveges Runbookok szerkesztése Azure Automationban](automation-edit-textual-runbook.md)című témakört.

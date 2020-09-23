@@ -1,25 +1,22 @@
 ---
-title: Cosmos DB-fiókhoz való kapcsolódás beállítása felügyelt identitás használatával (előzetes verzió)
+title: Cosmos DB-fiókkal létesített kapcsolatok beállítása felügyelt identitás használatával
 titleSuffix: Azure Cognitive Search
-description: Megtudhatja, hogyan állíthat be indexelő-kapcsolatokat egy Cosmos DB-fiókhoz felügyelt identitás használatával (előzetes verzió)
+description: Ismerje meg, hogyan állíthat be indexelő-kapcsolatokat egy Cosmos DB-fiókhoz felügyelt identitás használatával
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936656"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971652"
 ---
-# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával (előzetes verzió)
-
-> [!IMPORTANT] 
-> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
+# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával
 
 Ez a lap azt ismerteti, hogyan állítható be egy indexelő-kapcsolódás egy Azure Cosmos DB-adatbázishoz felügyelt identitás használatával ahelyett, hogy hitelesítő adatokat kellene megadnia az adatforrás-objektum kapcsolódási karakterláncában.
 
@@ -57,7 +54,7 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad az ada
 
 ### <a name="3---create-the-data-source"></a>3 – az adatforrás létrehozása
 
-A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást a Cosmos DB adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
+A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást a Cosmos DB adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
 
 Ha felügyelt identitásokat használ a hitelesítéshez, a **hitelesítő adatok** nem tartalmazzák a fiók kulcsát.
 

@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931845"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979595"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="feature-announcements-in-2020"></a>Szolgáltatások hirdetményei a 2020-ben
+
+### <a name="september-2020"></a>2020. szeptember
+
+Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását, majd a RBAC engedélyek használatával adja meg az identitás írásvédett engedélyeit az Azure-adatforrásoknak. Ha az IP-szabályok nem választhatók, válassza a [megbízható szolgáltatás kivételének](search-indexer-howto-access-trusted-service-exception.md) lehetőségét.
+
+
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|------------------------------|----------|-------------|---------------|
+| [Felügyelt szolgáltatás identitása](search-howto-managed-identities-data-sources.md) | Indexelő, biztonság | Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását, majd RBAC engedélyek használatával engedélyezze az Azure-adatforrásokhoz való hozzáférést. Ez a megközelítés nem teszi szükségessé a hitelesítő adatok megadását a kapcsolatok karakterláncán. <br><br>A felügyelt szolgáltatás identitásának további módja a [megbízható szolgáltatásokkal kapcsolatos kivétel](search-indexer-howto-access-trusted-service-exception.md) , ha az IP-szabályok nem választhatók. | Általánosan elérhető. Hozzáférés a funkcióhoz a portál használatakor vagy az [adatforrás (REST) létrehozásakor](https://docs.microsoft.com/rest/api/searchservice/create-data-source) API-Version = 2020-06-30 használatával. |
+| [Privát hivatkozást használó kimenő kérelmek](search-indexer-howto-access-private.md) | Indexelő, biztonság | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet az indexelő használhatnak az Azure Private link által védett Azure-erőforrások eléréséhez. Az indexelő kapcsolatainak biztonságossá tételével kapcsolatos további információkért lásd: [az indexelő erőforrásainak védelme az Azure hálózati biztonsági szolgáltatásaival](search-indexer-securing-resources.md). | Általánosan elérhető. Ez a funkció a portál vagy a [megosztott magánhálózati kapcsolati erőforrás](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) API-Version = 2020-08-01 használatával való használata esetén érhető el. |
+| [Felügyeleti REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Az új stabil REST API támogatja a megosztott magánhálózati kapcsolati erőforrások létrehozását. | Általánosan elérhető. |
+| [Felügyeleti REST API (2020-08-01 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Megosztott privát kapcsolati erőforrást hoz létre Azure Functions és az Azure SQL for MySQL-adatbázisokhoz. | Nyilvános előzetes verzió. |
+| [Felügyelet .NET SDK 4,0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Az Azure SDK frissítése a Management SDK-hoz, az 2020-08-01-es verzió megcélozva REST API. | Általánosan elérhető. |
 
 ### <a name="august-2020"></a>2020. augusztus
 
@@ -31,9 +44,9 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents ügyféloldali kódtár](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK for .NET | Az Azure SDK csapata által kiadott .NET ügyféloldali kódtár, amely a többi .NET-ügyfél kódtáraval való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió a keresési REST API-Version = 2020-06-30 verziót célozza meg, de még nem támogatja a Knowledge Store-t, a térinformatikai típusokat vagy a [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). <br/><br/>További információ: gyors útmutató  [: index létrehozása](search-get-started-dotnet.md) és [frissítés Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
-| [azure.search.documents ügyféloldali kódtár](/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK for Python| Az Azure SDK csapata által kiadott Python ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
-| [@azure/search-documents ügyféloldali kódtár](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Az Azure SDK csapata által kiadott JavaScript ügyféloldali kódtár, amely az egyéb JavaScript-ügyfél-kódtárakkal való konzisztencia biztosítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
+| [Azure.Search.Documents ügyféloldali kódtár](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK for .NET | Az Azure SDK csapata által kiadott .NET ügyféloldali kódtár, amely a többi .NET-ügyfél kódtáraval való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió a keresési REST API-Version = 2020-06-30 verziót célozza meg, de még nem támogatja a Knowledge Store-t, a térinformatikai típusokat vagy a [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>További információ: gyors útmutató  [: index létrehozása](search-get-started-dotnet.md) és [frissítés Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
+| [azure.search.documents ügyféloldali kódtár](/python/api/overview/azure/search-documents-readme)  | Azure SDK for Python| Az Azure SDK csapata által kiadott Python ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
+| [@azure/search-documents ügyféloldali kódtár](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Az Azure SDK csapata által kiadott JavaScript ügyféloldali kódtár, amely az egyéb JavaScript-ügyfél-kódtárakkal való konzisztencia biztosítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
 
 ### <a name="june-2020"></a>2020. június
 

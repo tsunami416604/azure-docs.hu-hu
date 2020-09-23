@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure Stack Edge-eszköz hálózati beállításainak konfigurálásához GPU-val Azure Portalban | Microsoft Docs
-description: Az Azure Stack Edge GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja Önt, hogy konfigurálja a hálózat, a számítási hálózat és a fizikai eszköz WebProxy-beállításait.
+title: Oktatóanyag a Azure Stack Edge Pro-eszköz hálózati beállításainak konfigurálásához GPU-val Azure Portalban | Microsoft Docs
+description: Az Azure Stack Edge Pro GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja Önt, hogy konfigurálja a hálózat, a számítási hálózat és a fizikai eszköz WebProxy-beállításait.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461867"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894019"
 ---
-# <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Oktatóanyag: hálózat konfigurálása Azure Stack Edge-hez GPU-val
+# <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Network for Azure Stack Edge Pro konfigurálása GPU-val
 
-Ez az oktatóanyag azt ismerteti, hogyan konfigurálhatja a hálózatot a Azure Stack Edge-eszközhöz egy beépített GPU-val a helyi webes felhasználói felület használatával.
+Ez az oktatóanyag azt ismerteti, hogyan konfigurálhatja a hálózatot a Azure Stack Edge Pro-eszközhöz egy beépített GPU-val a helyi webes felhasználói felület használatával.
 
 A kapcsolódási folyamat körülbelül 20 percet vesz igénybe.
 
@@ -34,10 +34,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása előtt győződjön meg az alábbiakról:
+Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjön meg az alábbiakról:
 
-* A fizikai eszközt a [Azure stack Edge telepítése](azure-stack-edge-gpu-deploy-install.md)című részletesen telepítette.
-* Csatlakoztatta az eszköz helyi webes FELÜLETéhez a [csatlakozás Azure stack Edge](azure-stack-edge-gpu-deploy-connect.md) -hez részletesen
+* A fizikai eszközt a [Azure stack Edge Pro telepítésének](azure-stack-edge-gpu-deploy-install.md)részletesen telepítette.
+* Csatlakoztatta az eszköz helyi webes FELÜLETéhez a [csatlakozás Azure stack Edge Pro-hoz](azure-stack-edge-gpu-deploy-connect.md) című részletesen
 
 
 ## <a name="configure-network"></a>Hálózat konfigurálása
@@ -52,7 +52,7 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
     
     ![Helyi webes felhasználói felület "hálózati beállítások" csempe](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-1.png)
 
-    A fizikai eszközön hat hálózati adapter található. Az 1. és a 2. port 1 GB/s hálózati adapter. A 3. port, a 4-es port, az 5. port és a 6-os PORT mind a 25 GB-os hálózati adapterek, amelyek 10 GB/s hálózati adapterként is használhatók. Az 1. PORT automatikusan csak felügyeleti portként van konfigurálva, a 2-es port pedig minden adatport. Új eszköz esetén a **hálózati beállítások** lap az alábbi ábrán látható.
+    A fizikai eszközön hat hálózati adapter található. A PORT 1 és PORT 2 jelzésű portok 1 Gbps hálózati adapterek. A 3. port, a 4-es port, az 5. port és a 6-os PORT mind a 25 GB-os hálózati adapterek, amelyek 10 GB/s hálózati adapterként is használhatók. Az 1. PORT automatikusan csak felügyeleti portként van konfigurálva, a 2-es port pedig minden adatport. Új eszköz esetén a **hálózati beállítások** lap az alábbi ábrán látható.
     
     ![Helyi webes felhasználói felület "hálózati beállítások" lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
@@ -68,9 +68,9 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
 
         ![Helyi webes felhasználói felület – 3. port – hálózati beállítások](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-4.png)
 
-    A hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
+    A hálózati beállítások konfigurálása közben figyeljen a következőkre:
 
-   * Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendeli az IP-címet, az alhálózatot, az átjárót és a DNS-t.
+   * Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot, egy átjárót és egy DNS-t.
    * Ha a DHCP nincs engedélyezve, szükség esetén statikus IP-címeket is hozzárendelhet.
    * A hálózati adaptert IPv4-ként is konfigurálhatja.
    * A 25 GB-os felületeknél beállíthatja a RDMA (távoli közvetlen elérésű memória) módot iWarp vagy RoCE (RDMA konvergált Ethernet-kapcsolaton keresztül). Ha az alacsony késés az elsődleges követelmény, és a méretezhetőség nem jelent problémát, használja a RoCE. Ha a késés kulcsfontosságú követelmény, de a könnyű használat és a méretezhetőség is magas prioritású, a iWARP a legjobb választás.
@@ -83,26 +83,26 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
 
      >[!NOTE]
      >
-     > * Azt javasoljuk, hogy ne váltson át a hálózati adapter helyi IP-címére statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ, és a DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz aktiválta a szolgáltatást, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
+     > * Azt javasoljuk, hogy a hálózati adapter helyi IP-címét ne módosítsa statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ és DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz aktiválta a szolgáltatást, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
 
 
-    A hálózati beállítások konfigurálása és alkalmazása után lépjen vissza **a kezdéshez.**
+    A hálózati beállítások konfigurálása és alkalmazása után válassza a Tovább: számítás lehetőséget a számítási hálózat konfigurálásához.
 
 ## <a name="enable-compute-network"></a>Számítási hálózat engedélyezése
 
-Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálhatja a számítási hálózatot.
+Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálhatja a számítási hálózatot. 
 
-1. Az eszköz helyi webes FELÜLETén nyissa meg az **első lépések** lapot. A **hálózat** csempén válassza a **számítási hálózat**lehetőséget.  
+<!--1. Go to the **Get started** page in the local web UI of your device. On the **Network** tile, select **Compute network**.  
 
-    ![Számítási lap a helyi felhasználói felületen](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-1.png)
+    ![Compute page in local UI 1](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-1.png)-->
 
-2. A **számítás** lapon válasszon ki egy hálózati adaptert, amelyet szeretne engedélyezni a számítási feladatokhoz. 
+1. A **számítás** lapon válasszon ki egy hálózati adaptert, amelyet szeretne engedélyezni a számítási feladatokhoz. 
 
-    ![Számítási lap a helyi felhasználói felületen](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
+    ![Számítási oldal a helyi felhasználói felületen 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
-2. A **hálózati beállítások** párbeszédpanelen válassza az **Engedélyezés**lehetőséget. Ha engedélyezi a számítást, a rendszer létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren. A virtuális kapcsolót a számítási infrastruktúra használja az eszközön. 
+1. A **hálózati beállítások** párbeszédpanelen válassza az **Engedélyezés**lehetőséget. Ha engedélyezi a számítást, a rendszer létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren. A virtuális kapcsolót a számítási infrastruktúra használja az eszközön. 
     
-3. **Kubernetes-csomópontok IP**-címeinek kiosztása. Ezek a statikus IP-címek a számítási virtuális géphez tartoznak. 
+1. **Kubernetes-csomópontok IP**-címeinek kiosztása. Ezek a statikus IP-címek a számítási virtuális géphez tartoznak.  
 
     *N*-csomópontos eszköz esetén legalább *n + 1* IPv4-cím (vagy több) összefüggő tartománya van megadva a számítási virtuális géphez a kezdő és záró IP-címek használatával. A megadott Azure Stack Edge egy 1 csomópontos eszköz, amely legalább 2 egybefüggő IPv4-címet biztosít.
 
@@ -110,34 +110,40 @@ Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálha
     > A Kubernetes on Azure Stack Edge a 172.27.0.0/16 alhálózatot használja a pod és a 172.28.0.0/16 alhálózat számára a szolgáltatáshoz. Győződjön meg arról, hogy ezek nincsenek használatban a hálózaton. Ha ezek az alhálózatok már használatban vannak a hálózaton, ezeket az alhálózatokat a `Set-HcsKubeClusterNetworkInfo` parancsmagnak az eszköz PowerShell-felületéről való futtatásával módosíthatja. További információkért lásd: a [Kubernetes Pod és a Service alhálózatok módosítása](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-4. **Kubernetes külső szolgáltatás IP**-címeinek kiosztása. Ezek a terheléselosztási IP-címek is. Ezek a folytonos IP-címek olyan szolgáltatások, amelyeket a Kubernetes-fürtön kívül szeretne közzétenni, és a statikus IP-címtartományt az elérhető szolgáltatások számától függően kell megadnia. 
+1. **Kubernetes külső szolgáltatás IP**-címeinek kiosztása. Ezek a terheléselosztási IP-címek is. Ezek a folytonos IP-címek olyan szolgáltatások, amelyeket a Kubernetes-fürtön kívül szeretne közzétenni, és a statikus IP-címtartományt az elérhető szolgáltatások számától függően kell megadnia. 
     
     > [!IMPORTANT]
-    > Javasoljuk, hogy legalább 1 IP-címet határozzon meg az Azure Stack Edge hub szolgáltatáshoz a számítási modulok eléréséhez. Ezután további IP-címeket is megadhat más szolgáltatások/IoT Edge modulok számára (1/szolgáltatás/modul), amelyeket a fürtön kívülről kell elérni. A szolgáltatás IP-címei később is frissíthetők. 
+    > Javasoljuk, hogy legalább 1 IP-címet határozzon meg a Azure Stack Edge Pro hub szolgáltatáshoz a számítási modulok eléréséhez. Ezután további IP-címeket is megadhat más szolgáltatások/IoT Edge modulok számára (1/szolgáltatás/modul), amelyeket a fürtön kívülről kell elérni. A szolgáltatás IP-címei később is frissíthetők. 
     
-5. Válassza az **Alkalmaz** lehetőséget.
+1. Kattintson az **Alkalmaz** gombra.
 
-    ![Számítási lap a helyi felhasználói felületen](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
+    ![Számítási lap a helyi felhasználói felületen 3](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
+1. A konfiguráció néhány percet vesz igénybe, és előfordulhat, hogy frissítenie kell a böngészőt. Láthatja, hogy a megadott port engedélyezve van a számítási feladatokhoz. 
+ 
+    ![Számítási lap a helyi felhasználói felületen 4](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-4.png)
 
+    Válassza a **Tovább: webproxy** lehetőséget a webproxy konfigurálásához.  
+
+  
 ## <a name="configure-web-proxy"></a>A webproxy konfigurálása
 
 Ez egy opcionális konfiguráció.
 
 > [!IMPORTANT]
-> * Ha engedélyezi a számítást, és a IoT Edge modult használja az Azure Stack Edge-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none**értékre állítsa be. Az NTLM nem támogatott.
->* A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához. Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható. Az átlátszó proxyk jellemzően Azure Stack peremhálózati környezettel működnek. Nem transzparens webes proxyk nem támogatottak.
+> * Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none**értékre állítsa be. Az NTLM nem támogatott.
+>* A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához. Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható. Általában az átlátszó proxyk jól működnek Azure Stack Edge Pro-val. Nem transzparens webes proxyk nem támogatottak.
 
-1. Az eszköz helyi webes FELÜLETén nyissa meg az **első lépések** lapot.
-2. A **hálózat** csempén konfigurálja a webproxy-kiszolgáló beállításait. Bár a webproxy konfigurálása nem kötelező, ha webproxyt használ, csak ezen a lapon konfigurálhatja.
+<!--1. Go to the **Get started** page in the local web UI of your device.
+2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.
 
-   ![Helyi webes felhasználói felület "Webproxy-beállítások" lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)
+   ![Local web UI "Web proxy settings" page](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)-->
 
-3. A **webproxy beállításai** oldalon hajtsa végre a következő lépéseket:
+1. A **webproxy beállításai** oldalon hajtsa végre a következő lépéseket:
 
     1. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number` . A HTTPS URL-címek nem támogatottak.
 
-    2. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget. Ha engedélyezi a számítást, és a IoT Edge modult használja az Azure Stack Edge-eszközön, javasoljuk, hogy a webproxy-hitelesítést a **none**értékre állítsa be. Az **NTLM** nem támogatott.
+    2. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget. Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne állítsa be a **none**értékre. Az **NTLM** nem támogatott.
 
     3. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 
@@ -145,10 +151,10 @@ Ez egy opcionális konfiguráció.
     
    ![Helyi webes felhasználói felület "Webproxy-beállítások" lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
-4. A beállítások alkalmazása után lépjen vissza **a kezdéshez.**
+2. A beállítások alkalmazása után kattintson a **Tovább gombra: eszköz**.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 
@@ -159,7 +165,7 @@ Ebben az oktatóanyagban megismerte a következőket:
 > * A webproxy konfigurálása
 
 
-Az Azure Stack Edge-eszköz beállításával kapcsolatos további információkért lásd:
+Az Azure Stack Edge Pro-eszköz beállításával kapcsolatos további információkért lásd:
 
 > [!div class="nextstepaction"]
 > [Eszközbeállítások megadása](./azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
