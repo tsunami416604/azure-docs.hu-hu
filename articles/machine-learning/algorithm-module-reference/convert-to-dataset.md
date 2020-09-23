@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646254"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898704"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) adatkészletre való konvertálása a folyamat összes adatának a tervező belső formátumára való átalakításához.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben az átalakítás adatkészlethez modul a folyamat összes adatának a tervező belső formátumba való átalakításához.
   
 A legtöbb esetben nem szükséges a konverzió. Azure Machine Learning implicit módon átalakítja az adatokat a natív adatkészlet formátumára, amikor az adatokat az összes művelet elvégzi. 
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 ms.topic: include
 ms.date: 07/27/2020
 ms.openlocfilehash: 159462ad310fbb9f7275c99488e24c7ea4852b34

@@ -1,6 +1,6 @@
 ---
-title: Adatfolyamok az Azure SQL Edge-ben (előzetes verzió)
-description: Ismerje meg az Azure SQL Edge (előzetes verzió) adatátviteli szolgáltatását.
+title: Adatfolyamok az Azure SQL Edge-ben
+description: Ismerje meg az Azure SQL Edge adatátviteli szolgáltatását.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,23 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 866c74fbdfcfcef7cbb7d6cddb360c4265a2f776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669613"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900558"
 ---
-# <a name="data-streaming-in-azure-sql-edge-preview"></a>Adatfolyamok az Azure SQL Edge-ben (előzetes verzió)
+# <a name="data-streaming-in-azure-sql-edge"></a>Adatfolyamok az Azure SQL Edge-ben
 
-Az Azure SQL Edge (előzetes verzió) az alábbi lehetőségeket biztosítja az adatfolyamok megvalósításához: 
-
-- Az Azure-ban létrehozott Azure Stream Analytics Edge-feladatok üzembe helyezése. További információ: [Azure stream Analytics feladatok telepítése](deploy-dacpac.md).
-- A T-SQL streaming használatával adatfolyam-feladatok hozhatók létre az Azure SQL Edge-ben anélkül, hogy az Azure-ban be kellene állítania a folyamatos átviteli feladatokat. 
-
-Bár az Azure SQL Edge-ben mindkét lehetőség használható az adatfolyamok megvalósítására, csak az egyiket használhatja. Ha mindkettőt használja, a verseny olyan feltételekkel is rendelkezhet, amelyek hatással vannak az adatátviteli műveletek működésére.
-
-A T-SQL streaming ennek a cikknek a középpontjában áll. Valós idejű adatfolyam-továbbítást, elemzést és eseményt biztosít, így egyszerre több forrásból is elemezheti és feldolgozhatja a gyors adatfolyam-továbbítási adatok nagy mennyiségét. A T-SQL streaming egy olyan nagy teljesítményű streaming motor használatával készült, amely a Microsoft Azure [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) . A szolgáltatás a szélén futó Azure Stream Analytics által kínált hasonló képességeket támogatja.
+Az Azure SQL Edge a T-SQL streaming nevű adatátviteli képességek natív implementációját biztosítja. Valós idejű adatfolyam-továbbítást, elemzést és eseményt biztosít, így egyszerre több forrásból is elemezheti és feldolgozhatja a gyors adatfolyam-továbbítási adatok nagy mennyiségét. A T-SQL streaming egy olyan nagy teljesítményű streaming motor használatával készült, amely a Microsoft Azure [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) . A szolgáltatás a szélén futó Azure Stream Analytics által kínált hasonló képességeket támogatja.
 
 A Stream Analyticshoz hasonlóan a T-SQL streaming felismeri a mintákat és a kapcsolatokat számos IoT bemeneti forrásból, például eszközökből, érzékelőkből és alkalmazásokból kinyert információk alapján. Ezeket a mintákat használhatja a műveletek elindításához és a munkafolyamatok kezdeményezéséhez. Létrehozhat például riasztásokat, adatokat adhat hozzá egy jelentéskészítési vagy vizualizációs megoldáshoz, vagy tárolhatja az adatokat későbbi használatra. 
 
@@ -49,7 +42,6 @@ A stream Analytics-feladatok a következőkből állnak:
 - **Stream kimenete**: Ez határozza meg az adatforráshoz való kapcsolódást az adatfolyamnak a szolgáltatásba való írásához. Az Azure SQL Edge jelenleg a következő stream-kimeneti típusokat támogatja
     - Peremhálózati hub
     - SQL (az SQL-kimenet lehet az Azure SQL Edge példányán belüli helyi adatbázis, illetve távoli SQL Server vagy Azure SQL Database.) 
-    - Azure Blob Storage
 
 - **Stream-lekérdezés**: Ez határozza meg a bemeneti adatfolyamra alkalmazni kívánt átalakítást, összesítéseket, szűrést, rendezést és illesztéseket, mielőtt az adatfolyam kimenetére íródik. Az adatfolyam-lekérdezés ugyanarra a lekérdezési nyelvre épül, mint amelyet a Stream Analytics használ. További információ: [stream Analytics lekérdezési nyelv](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
 
@@ -65,9 +57,11 @@ A következő korlátozások és korlátozások érvényesek a T-SQL streamingre
 
 - Egy adott időpontban csak egy folyamatos átviteli feladatok lehetnek aktívak. A már futó feladatokat le kell állítani egy másik feladat elindítása előtt.
 - A folyamatos átviteli feladatok végrehajtása egyetlen szálból áll. Ha a folyamatos átviteli feladatok több lekérdezést is tartalmaznak, a rendszer a lekérdezéseket soros sorrendben értékeli ki.
+- Ha leállított egy folyamatos átviteli feladatot az Azure SQL Edge-ben, a következő folyamatos átviteli feladatok elindításához némi késés fordulhat elő. Ez a késleltetés azért van bevezetve, mert az alapul szolgáló folyamatos átviteli folyamatot le kell állítani a leállítási kérelemre adott válaszban, majd újra kell indítani az indítási feladatra vonatkozó kérelemre. 
+- A T-SQL streaming upto 32 partíciót egy Kafka-adatfolyamhoz. A magasabb partíciók számának konfigurálására tett kísérletek hibát eredményeznek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió)](create-stream-analytics-job.md)
-- [A stream-feladatokhoz társított metaadatok megtekintése az Azure SQL Edge-ben (előzetes verzió)](streaming-catalog-views.md)
+- [Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben ](create-stream-analytics-job.md)
+- [A stream-feladatokhoz kapcsolódó metaadatok megtekintése az Azure SQL Edge-ben ](streaming-catalog-views.md)
 - [Külső stream létrehozása](create-external-stream-transact-sql.md)

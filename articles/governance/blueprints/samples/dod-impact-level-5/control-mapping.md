@@ -1,14 +1,14 @@
 ---
 title: DoD Impact Level 5 terv minta-vezérlők
 description: A DoD Impact Level 5 tervezet-minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978358"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>A DoD Impact Level 5 tervezet-minta leképezésének vezérlése
 
@@ -307,11 +307,8 @@ Ebből a tervből megtudhatja, hogyan kezelheti a rendszerhibákat a hiányzó r
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) hibák elhárítása | A szoftver/belső vezérlőprogram korábbi verzióinak eltávolítása
 
-Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségével biztosítható, hogy az alkalmazások a .NET-keretrendszer, a HTTP, a Java, a PHP, a Python és a TLS legújabb verzióját használják. Ez a terv egy olyan szabályzat-definíciót is hozzárendel, amely biztosítja, hogy a Kubernetes-szolgáltatások a nem sebezhető verzióra legyen frissítve.
+Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségével biztosítható, hogy az alkalmazások a HTTP, a Java, a PHP, a Python és a TLS legújabb verzióját használják. Ez a terv egy olyan szabályzat-definíciót is hozzárendel, amely biztosítja, hogy a Kubernetes-szolgáltatások a nem sebezhető verzióra legyen frissítve.
 
-- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha az API-alkalmazás részeként van használatban
-- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a függvényalkalmazás részeként van használatban
-- Győződjön meg arról, hogy a .NET-keretrendszer verziója a legújabb, ha a webalkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha az API-alkalmazás futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a Function app futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a webalkalmazás futtatására használatos
@@ -319,7 +316,6 @@ Ez a terv olyan szabályzat-definíciókat rendel hozzá, amelyek segítségéve
 - Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a Java-verzió a legújabb, ha a webalkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha az API-alkalmazás részeként van használatban
-- Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a webalkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha az API-alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
@@ -366,7 +362,7 @@ Ez a terv olyan szabályzat-definíciókat tartalmaz, amelyek segítségével bi
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a DoD Impact Level 5 tervezetének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 

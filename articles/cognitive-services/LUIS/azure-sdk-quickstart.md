@@ -2,22 +2,22 @@
 title: 'Gyors útmutató: Language Understanding (LUIS) SDK-ügyfél kódtárai'
 description: Hozzon létre és kérdezzen egy LUIS-alkalmazást a LUIS SDK ügyféloldali kódtárakkal a C#, a Python vagy a JavaScript használatával.
 ms.topic: quickstart
-ms.date: 09/01/2020
-keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, természetes nyelvi megértés, NLU, AI-beszélgetés, társalgási AI, AI Csevegőrobot, Csevegőrobot Maker, LUIS, NLP AI, Luis AI, Azure Luis, természetes nyelv megismerése
+ms.date: 09/14/2020
+keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, LUIS, Azure Luis, természetes nyelvi megértés, AI Csevegőrobot, Csevegőrobot Maker, természetes nyelv megismerése
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 6bcdca85125d44475fadfd195c1dfda88f761f88
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323237"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972623"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Gyors útmutató: Language Understanding (LUIS) SDK-ügyfél kódtárai a LUIS-alkalmazás létrehozásához és lekérdezéséhez
 
-Hozzon létre és kérdezzen egy LUIS-alkalmazást a LUIS SDK ügyféloldali kódtárakkal a C#, a Python vagy a JavaScript használatával.
+Azure LUIS mesterséges intelligencia-(AI-) alkalmazás létrehozása és lekérdezése a LUIS SDK ügyféloldali kódtárakkal a C#, a Python vagy a JavaScript használatával.
 
-Language Understanding (LUIS) lehetővé teszi, hogy egyéni gépi tanulási intelligenciát alkalmazzon egy felhasználó társalgási, természetes nyelvi szövegére az általános jelentés megbecslése érdekében, és a vonatkozó, részletes információk kiolvasását.
+Language Understanding (LUIS) lehetővé teszi természetes nyelvi feldolgozás (NLP) alkalmazását a felhasználó társalgási, természetes nyelvű szövegére az általános jelentés megbecslése érdekében, valamint a releváns, részletes információk kiolvasását.
 
 * Az **authoring SDK** ügyféloldali kódtára lehetővé teszi a Luis-alkalmazás létrehozását, szerkesztését, betanítását és közzétételét. * Az **előrejelzési FUTTATÓKÖRNYEZET SDK** -ügyfelének könyvtára lehetővé teszi a közzétett alkalmazás lekérdezését.
 
@@ -45,7 +45,7 @@ Törölheti az alkalmazást a Luis- [portálról](https://www.luis.ai) , és tö
 * Képzés – ha betanítási hibaüzenetet kap, ez általában üres alkalmazást (például hosszúságú kimondott szöveg), vagy helytelenül formázott, szándékosan vagy entitásokat tartalmazó alkalmazást jelez.
 * Egyéb hibák – mivel a kód szöveg-és JSON-objektumokkal meghívja az ügyféloldali kódtárakat, ügyeljen arra, hogy ne változzon meg a kód.
 
-Egyéb hibák – ha az előző listában nem szereplő hibaüzenetet kap, tudassa velünk az oldal alján található visszajelzések megadásával. Adja meg a telepített ügyféloldali kódtárak programozási nyelvét és verzióját. 
+Egyéb hibák – ha az előző listában nem szereplő hibaüzenetet kap, tudassa velünk az oldal alján található visszajelzések megadásával. Adja meg a telepített ügyféloldali kódtárak programozási nyelvét és verzióját.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -53,3 +53,5 @@ Egyéb hibák – ha az előző listában nem szereplő hibaüzenetet kap, tudas
 * [Mi újság?](whats-new.md)
 * [Szándékok](luis-concept-intent.md), [entitások](luis-concept-entity-types.md)és [példa hosszúságú kimondott szöveg](luis-concept-utterance.md)és [előre összeépített entitások](luis-reference-prebuilt-entities.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code)található.
+* A természetes nyelv megismerése: [természetes nyelvi megértés (NLU) és természetes nyelvi feldolgozás (NLP)](artificial-intelligence.md)
+* Robotok: [AI csevegőrobotok](luis-csharp-tutorial-bf-v4.md "a Csevegőrobot Maker oktatóanyaga")

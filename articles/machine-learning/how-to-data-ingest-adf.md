@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852854"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986397"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Adatbetöltés az Azure Data Factoryvel
 
@@ -35,7 +35,7 @@ Számos gyakori módszer áll rendelkezésre a Azure Data Factory az adatfeldolg
 
 ## <a name="adf-with-azure-functions"></a>ADF az Azure functions használatával
 
-![ADF – függvény](media/how-to-data-ingest-adf/adf-function.png)
+![Ábrán látható egy Azure Data Factory folyamat, az Azure Function és az M L folyamat futtatásával, valamint egy Azure Machine Learning folyamattal, a betanítási modellel, valamint a nyers és előkészített adattal való interakcióval.](media/how-to-data-ingest-adf/adf-function.png)
 
 Azure Functions lehetővé teszi, hogy kis mennyiségű kódot (functions) futtasson anélkül, hogy az alkalmazás-infrastruktúrával kellene foglalkoznia. Ebben a beállításban az Azure-függvénybe becsomagolt egyéni Python-kóddal dolgozza fel az adatfeldolgozást. 
 
@@ -51,7 +51,7 @@ A függvényt az [ADF Azure Function tevékenység](https://docs.microsoft.com/a
 
 ## <a name="adf-with-custom-component-activity"></a>ADF egyéni összetevő-tevékenységgel
 
-![ADF – customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![Az ábrán egy Azure Data Factory folyamat látható, amely egy egyéni összetevővel és az M L folyamat futtatásával, valamint egy Azure Machine Learning folyamattal, valamint a betanítási modellel, valamint a nyers és az előkészített adattal való interakcióval.](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 Ebben a beállításban az adatfeldolgozást egyéni Python-kóddal, végrehajtható fájlba csomagolja a rendszer. A rendszer az [Egyéni ADF-összetevő tevékenységével](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)hívja meg. Ez a megközelítés jobban illeszkedik az előző technikánál nagyobb méretű adatmennyiséghez.
 
@@ -64,7 +64,7 @@ Ebben a beállításban az adatfeldolgozást egyéni Python-kóddal, végrehajth
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>ADF Azure Databricks Python notebooktal
 
-![ADF – databricks](media/how-to-data-ingest-adf/adf-databricks.png)
+![A diagram egy Azure Data Factory folyamatot mutat be, amely a Azure Databricks Python és az M L folyamat futtatásával, valamint egy Azure Machine Learning folyamattal, a betanítási modellel, valamint a nyers és az előkészített adattal való interakcióval foglalkozik.](media/how-to-data-ingest-adf/adf-databricks.png)
 
 A [Azure Databricks](https://azure.microsoft.com/services/databricks/) egy Apache Spark-alapú elemzési platform a Microsoft Cloud-ban.
 
@@ -82,7 +82,7 @@ Ebben a technikában az adatátalakítást egy Azure Databricks-fürtön futó [
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>Azure Machine Learning-folyamatok adatfeldolgozása
 
-![pénzmosás – adatkészlet](media/how-to-data-ingest-adf/aml-dataset.png)
+![A diagram egy Azure Data Factory folyamatot és egy Azure Machine Learning folyamatot mutat be, valamint azt, hogy hogyan működnek együtt a nyers és az előkészített adatfeldolgozási folyamat. Az Data Factory folyamat az adatokat az előkészített adatadatbázisba küldi, amely egy adattárat, amely a Machine Learning munkaterületen található adatkészleteket táplálja.](media/how-to-data-ingest-adf/aml-dataset.png)
 
 Az ADF-folyamatból származó átalakított adatok adattárolóba (például Azure Blobba) lesznek mentve. [A Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) adattárolók és [adatkészletek](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)használatával érheti el ezeket az adatokat.
 

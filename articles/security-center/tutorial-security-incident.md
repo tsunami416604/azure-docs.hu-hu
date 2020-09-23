@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076400"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901091"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -29,12 +29,12 @@ A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segí
 > * Részletes vizsgálat egy biztonsági incidens gyökerének és kiterjedésének meghatározása céljából
 > * Keresés a biztonsági adatok között a vizsgálat elősegítéséhez
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyagban szereplő funkciók átlépéséhez Security Center Standard díjszabási szinten kell lennie. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+Az oktatóanyagban szereplő funkciók átlépéséhez engedélyeznie kell az Azure Defender használatát. Az Azure Defender szolgáltatás díjmentesen kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). A gyors üzembe helyezés Security Center végigvezeti Önt a verziófrissítés [lépésein](security-center-get-started.md) .
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 A Contoso vállalat nemrégiben áttelepítette egyes helyszíni erőforrásait az Azure-ba, beleértve egyes virtuális gépeken alapuló üzleti számítási feladatait és SQL-adatbázisait. A Contoso fő számítógépes biztonsági incidensmegoldó csapata, a Core Computer Security Incident Response Team (CSIRT) jelenleg nem tudja kivizsgálni a biztonsági problémákat, mivel a biztonsági intelligencia nem képezi jelenlegi incidensmegoldási eszközparkjuk szerves részét. Az integráció hiánya az észlelési szakasz során (túl sok téves riasztás), valamint a felmérési és a diagnosztikai szakaszok során is problémát jelent. Az áttelepítés részeként úgy döntöttek, hogy a probléma megoldásához igénybe veszik a Security Center segítségét.
 
 Az áttelepítés első szakasza azzal ért véget, hogy az összes erőforrást üzembe helyezték, és a Security Center összes biztonsági ajánlását feldolgozták. A Contoso CSIRT a számítógépes biztonsági incidensek kezelésének központi eleme. A csapatot olyan személyek alkotják, akik biztonsági incidensek kezelésével foglalkoznak. A csapat tagjainak feladatai egyértelműen meg vannak határozva annak érdekében, hogy ne maradjon lefedetlen felelősségi terület.
@@ -68,13 +68,13 @@ A Security Center segítségével minden biztonsági riasztást egy egyesített 
 
    ![Biztonsági riasztások](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. A riasztások listájában kattintson egy biztonsági incidensre (egy riasztásgyűjteményre) az esemény részleteinek megjelenítéséhez. Megnyílik **A rendszer biztonsági incidenst észlelt** ablak.
+2. A riasztások listájában válasszon ki egy biztonsági incidenst, amely a riasztások gyűjteménye, hogy többet tudjon meg erről az incidensről. Megnyílik **A rendszer biztonsági incidenst észlelt** ablak.
 
-   ![Biztonsági incidens](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Biztonsági incidens észlelve](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Ezen a képernyőn felül megtalálja a biztonsági incidens leírását, majd azon riasztások listáját, amelyek az esemény részeit képezik. További információért kattintson az alaposabban megvizsgálni kívánt riasztásra.
 
-   ![Biztonsági incidens](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Riasztás részletei az incidensből](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    A riasztások típusa eltérő lehet. A riasztási típusokkal és az elhárításhoz szükséges lehetséges lépésekkel kapcsolatban tekintse meg [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) című cikket. A biztonságosan elvethető riasztások esetében jobb gombbal a riasztásra kattinthat, majd kiválaszthatja az **Elvetés** lehetőséget:
 
@@ -97,28 +97,27 @@ A Security Center keresési képességeinek segítségével további bizonyíté
 
 Keresés indításához nyissa meg a **Security Center** irányítópultot, kattintson a bal oldali navigációs ablaktáblán a **Keresés** elemre, válassza ki a keresni kívánt entitásokat tartalmazó munkaterületet, írja be a keresési lekérdezést, majd kattintson a Keresés gombra.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, folytassa a standard szint futtatását és az automatikus kiépítés engedélyezését. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
+A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, tartsa meg az automatikus kiépítés és az Azure Defender használatát. Ha nem tervezi a folytatást, vagy le szeretné tiltani az Azure Defendert:
 
-1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Válassza ki az előfizetést vagy a szabályzatot, amelyet vissza szeretne állítani Ingyenes állapotba. Megnyílik a **Biztonsági szabályzat** képernyő.
-3. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Tarifacsomag** lehetőséget.
-4. Válassza az **ingyenes** lehetőséget a standard szintről az ingyenes szintre való előfizetés módosításához.
-5. Válassza a **Mentés** lehetőséget.
+1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás és beállítások**lehetőséget.
+1. Válassza ki a leértékelni kívánt előfizetést.
+1. Állítsa be az **Azure Defendert** a kikapcsoláshoz.
+1. Kattintson a **Mentés** gombra.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
 1. Térjen vissza a Security Center főmenüre, és válassza a **biztonsági szabályzat**elemet.
 2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
 3. Az automatikus kiépítés letiltásához a **Biztonsági szabályzat – Adatgyűjtés** területen válassza a **Ki** lehetőséget az **Előkészítés** elemnél.
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt az Azure-beli virtuális gépekről, ahol az ügynököt kiépítték. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban a Security Center azon funkcióit ismerte meg, amelyeket a rendszer egy biztonsági incidensre adott reakció során használ, például:
 
 > [!div class="checklist"]

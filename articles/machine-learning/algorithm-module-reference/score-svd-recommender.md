@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
-ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893713"
 ---
 # <a name="score-svd-recommender"></a>SVD-ajánló pontozása
 
-Ez a cikk azt ismerteti, hogyan használható a score SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslati modell használatával az egyértékű dekompozíciós (SVD) algoritmus alapján.
+Ez a cikk azt ismerteti, hogyan használható a score SVD ajánló modul a Azure Machine Learning Designerben. Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslati modell használatával az egyértékű dekompozíciós (SVD) algoritmus alapján.
 
 A SVD ajánló két különböző típusú előrejelzést tud előállítani:
 

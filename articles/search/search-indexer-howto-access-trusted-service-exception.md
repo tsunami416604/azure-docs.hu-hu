@@ -7,20 +7,17 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f901833caf0623de643e0372c53658fa7da8c8be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 09/22/2020
+ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463552"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971404"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>A Storage-fiókokban tárolt adatok biztonságos elérése a megbízható szolgáltatásokkal kapcsolatos kivételek használatával
 
 A Storage-fiókokban tárolt adathozzáférésű indexelő használhatják a [megbízható szolgáltatás kivételi](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) funkcióját az adathozzáférés biztonságos eléréséhez. Ez a mechanizmus olyan ügyfelek számára biztosít egyszerű, biztonságos és ingyenes alternatívát, akik nem tudnak [hozzáférni az indexelő számára az IP-tűzfalszabályok](search-indexer-howto-access-ip-restricted.md) használatával.
-
-> [!NOTE]
-> A Storage-fiók a keresési szolgáltatáshoz rendelt identitással való elérése még előzetes verzióban érhető el. Ez az előzetes verziójú funkció szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>1. lépés: a Storage-fiókhoz való kapcsolódás konfigurálása identitás használatával
 

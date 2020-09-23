@@ -1,6 +1,6 @@
 ---
-title: A PHP Vendégkönyv alkalmazás üzembe helyezése az arc-kompatibilis Kubernetes Azure Stack Edge GPU-eszközön | Microsoft Docs
-description: Ismerteti, hogyan helyezhet üzembe egy PHP-beli Vendégkönyv állapot nélküli alkalmazást a Redis használatával az Azure Stack Edge-alapú Kubernetes-fürtön lévő GitOps segítségével.
+title: A PHP Vendégkönyv alkalmazás üzembe helyezése az arc-kompatibilis Kubernetes Azure Stack Edge Pro GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan helyezhet üzembe egy PHP-beli Vendégkönyv állapot nélküli alkalmazást a Redis használatával az Azure Stack Edge-alapú Kubernetes-fürtön a GitOps-mel.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319292"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899558"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge GPU-ban
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge Pro GPU-val
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy egyszerű, többrétegű webes alkalmazást a Kubernetes és az Azure arc használatával. Ez a példa a következő összetevőkből áll:
 
@@ -23,9 +23,9 @@ Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy egyszerű, t
 - Több replikált Redis-példány az olvasások kiszolgálására
 - Több webes frontend-példány
 
-Az üzembe helyezés a Azure Stack Edge-eszközön lévő arc-kompatibilis Kubernetes-fürtön található GitOps használatával végezhető el. 
+Az üzembe helyezés a Azure Stack Edge Pro-eszközön a GitOps használatával történik az arc-kompatibilis Kubernetes-fürtön. 
 
-Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)fogalmait.
+Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)fogalmait.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -34,30 +34,30 @@ Az állapot nélküli alkalmazás üzembe helyezése előtt győződjön meg arr
 
 ### <a name="for-device"></a>Az eszköz esetén
 
-1. A hitelesítő adatok egy 1 csomópontos Azure Stack peremhálózati eszközhöz vannak bejelentkezett.
+1. A bejelentkezési hitelesítő adatok egy 1 csomópontos Azure Stack Edge Pro-eszközhöz tartoznak.
     1. Az eszköz aktiválva van. Lásd: [az eszköz aktiválása](azure-stack-edge-gpu-deploy-activate.md).
     1. Az eszközön a Azure Portal-n keresztül konfigurált számítási szerepkör és egy Kubernetes-fürt van konfigurálva. Lásd: [számítás konfigurálása](azure-stack-edge-gpu-deploy-configure-compute.md).
 
-1. Engedélyezte az Azure arc használatát a meglévő Kubernetes-fürtön az eszközön, és a Azure Portal megfelelő Azure arc-erőforrással rendelkezik. A részletes lépésekért lásd: az [Azure arc engedélyezése Azure stack peremhálózati eszközön](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
+1. Engedélyezte az Azure arc használatát a meglévő Kubernetes-fürtön az eszközön, és a Azure Portal megfelelő Azure arc-erőforrással rendelkezik. A részletes lépésekért lásd: az [Azure arc engedélyezése Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
 
 ### <a name="for-client-accessing-the-device"></a>Az eszközt elérő ügyfél
 
-1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge-eszköz elérésére szolgál majd.
+1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
   
     - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
-1. Végrehajtotta a következő témakörben leírt eljárást: [Azure stack Edge-eszközön található Kubernetes-fürt elérése](azure-stack-edge-gpu-create-kubernetes-cluster.md). A következőket teheti:
+1. Végrehajtotta az [Azure stack Edge Pro-eszközön a Kubernetes-fürt eléréséhez](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakörben leírt eljárást. A következőket teheti:
     
     - `kubectl`Az ügyfélre telepítve  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy olyan verzió, amely az Azure stack Edge-eszközön futó Kubernetes-főverzión fut. 
+    - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy, a Azure stack Edge Pro-eszközön futó Kubernetes-verzió. 
       - Ezzel a paranccsal `kubectl version` ellenőrizhető az ügyfélen futó kubectl verziója. Jegyezze fel a teljes verziót.
-      - Az Azure Stack Edge-eszköz helyi felhasználói felületén lépjen az **Áttekintés** elemre, és jegyezze fel a Kubernetes szoftver számát. 
+      - Az Azure Stack Edge Pro-eszköz helyi felhasználói felületén lépjen az **Áttekintés** elemre, és jegyezze fel a Kubernetes-szoftver számát. 
       - Ellenőrizze, hogy ez a két verzió kompatibilis-e a támogatott Kubernetes-verzióban megadott leképezéssel <!--insert link-->.
 
-1. Rendelkezik egy [GitOps-konfigurációval, amely Azure arc-telepítés futtatására használható](https://github.com/kagoyal/dbehaikudemo). Ebben a példában a következő fájlokat fogja használni a `yaml` Azure stack Edge-eszközön való üzembe helyezéshez.
+1. Rendelkezik egy [GitOps-konfigurációval, amely Azure arc-telepítés futtatására használható](https://github.com/kagoyal/dbehaikudemo). Ebben a példában a következő fájlokat fogja használni a `yaml` Azure stack Edge Pro-eszközön való üzembe helyezéshez.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [figyelheti a Kubernetes irányítópultot a Azure stack Edge-eszközön üzemelő példányok figyelésére](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)
+Ismerje meg, hogyan [figyelheti a Kubernetes irányítópultot a Azure stack Edge Pro-eszközön üzemelő példányok figyelésére](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

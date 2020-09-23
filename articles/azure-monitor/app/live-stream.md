@@ -4,12 +4,12 @@ description: Valós időben figyelheti a webalkalmazást egyéni metrikákkal, �
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142213"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973581"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: figyelje & diagnosztizálása 1 másodperces késéssel
 
@@ -148,7 +148,7 @@ Mint a metrikák esetében, tetszőleges feltételek bármelyikét megadhatja a 
 
 Az élő hírcsatornában található elemek részleteinek megtekintéséhez kattintson rá. A hírcsatornát szüneteltetheti, ha a **szüneteltetés** gombra kattint, vagy egyszerűen lefelé görget, vagy rákattint egy elemre. Az élő hírcsatornák a felülre görgetés után is folytatódnak, vagy a felfüggesztéskor gyűjtött elemek számlálóra kattintanak.
 
-![Mintául szolgáló élő hibák](./media/live-stream/sample-telemetry.png)
+![A képernyőképen a minta telemetria ablak látható, és a kivétel részletei az ablak alján jelennek meg.](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>Szűrés kiszolgálópéldány szerint
 
@@ -180,7 +180,7 @@ A applicationinsights.config fájlban adja hozzá a AuthenticationApiKey a Quick
 </Add>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET-mag
+### <a name="aspnet-core"></a>ASP.NET Core
 
 [ASP.net Core](./asp-net-core.md) alkalmazások esetében kövesse az alábbi utasításokat.
 
@@ -249,7 +249,7 @@ Ha azonban felismeri és megbízik az összes csatlakoztatott kiszolgálón, a h
 
 Az alapszintű mérőszámok közé tartozik a kérelem, a függőség és a kivételek aránya. A teljesítmény-metrikák (teljesítményszámlálók) tartalmazzák a memóriát és a PROCESSZORt. A minta telemetria a sikertelen kérések és függőségek, kivételek, események és Nyomkövetések részletes információit jeleníti meg.
 
- \*A PerfCounters támogatása némileg eltér a .NET-keretrendszer azon verziói között, amelyek nem célozzák meg a .NET-keretrendszert:
+ \* A PerfCounters támogatása némileg eltér a .NET-keretrendszer azon verziói között, amelyek nem célozzák meg a .NET-keretrendszert:
 
 - A PerfCounters-metrikák a Windows Azure App Service operációs rendszerben való futtatása esetén támogatottak. (A AspNetCore SDK 2.4.1-es vagy újabb verziója)
 - A PerfCounters akkor támogatottak, ha az alkalmazás bármely Windows-gépen (VM vagy Cloud Service vagy on-Prem stb.) fut. (A AspNetCore SDK 2.7.1-es vagy újabb verziója), de a .NET Core 2,0-es vagy újabb verzióját célzó alkalmazásokhoz.

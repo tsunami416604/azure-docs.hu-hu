@@ -1,0 +1,55 @@
+- name: Metrics Advisor
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi az a Metrics Advisor?
+      href: overview.md
+- name: Rövid útmutatók
+  items:
+    - name: A bemutatówebhely megismerése
+      href: quickstarts/explore-demo.md
+    - name: A webes portál használata
+      href: quickstarts/web-portal.md
+    - name: A REST API használata
+      href: quickstarts/rest-api.md
+- name: Használati útmutatók
+  items:
+    - name: Az adatok előkészítése
+      href: how-tos/onboard-your-data.md
+    - name: Különböző adatcsatorna-források csatlakoztatása
+      href: data-feeds-from-different-sources.md
+    - name: Adatcsatornák kezelése
+      href: how-tos/manage-data-feeds.md
+    - name: Metrikák konfigurálása és a konfiguráció észlelésének finomhangolása
+      href: how-tos/configure-metrics.md
+    - name: Riasztások konfigurálása és értesítések fogadása beavatkozási pont segítségével
+      href: how-tos/alerts.md
+    - name: Incidens diagnosztizálása
+      href: how-tos/diagnose-incident.md
+    - name: Anomáliadetektálás beállítása visszajelzés használatával
+      href: how-tos/anomaly-feedback.md
+    - name: Metrikadiagram készítése
+      href: how-tos/metrics-graph.md
+- name: Referencia
+  items:
+    - name: Szószedet
+      href: glossary.md
+    - name: GYIK
+      href: faq.md
+    - name: Metrics Advisor API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
+    - name: Azure CLI-referencia
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: PowerShell-dokumentáció
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+- name: További források
+  items:
+    - name: Díjszabás
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Titkosítás
+      href: encryption.md

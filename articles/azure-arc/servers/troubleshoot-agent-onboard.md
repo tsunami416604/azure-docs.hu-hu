@@ -1,18 +1,18 @@
 ---
-title: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) ügynök-kapcsolataival kapcsolatos problémák elhárítása
-description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió) kapcsolatos problémákat a szolgáltatáshoz való kapcsolódási kísérlet során.
-ms.date: 07/20/2020
+title: Az Azure arc használatára képes kiszolgálók ügynökkel kapcsolatos problémáinak elhárítása
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani az Azure arc-kompatibilis kiszolgálókkal kapcsolatos problémákat, amikor megpróbálnak csatlakozni a szolgáltatáshoz.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213539"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900686"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>A csatlakoztatott gépi ügynök kapcsolódási problémáinak elhárítása
 
-Ez a cikk a Windows vagy Linux rendszerhez készült Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynök konfigurálására tett kísérlet során felmerülő problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. A szolgáltatáshoz való kapcsolódás konfigurálásakor az interaktív és a méretezhető telepítési módszerek is szerepelnek. Általános információk: az [ív használatára képes kiszolgálók áttekintése](./overview.md).
+Ez a cikk az Azure arc-kompatibilis kiszolgálók Windows vagy Linux rendszerhez csatlakoztatott számítógép-ügynökkel való konfigurálására tett kísérlet során felmerülő problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. A szolgáltatáshoz való kapcsolódás konfigurálásakor az interaktív és a méretezhető telepítési módszerek is szerepelnek. Általános információk: az [ív használatára képes kiszolgálók áttekintése](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Ügynök részletes naplója
 

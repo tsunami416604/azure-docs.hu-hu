@@ -8,16 +8,16 @@ ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4ad0ce1aef45dc4126d3ce17c7093b885f1b8bd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935416"
+ms.locfileid: "90974139"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
 
-Azure Disk Storage jelenleg beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt biztosítanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül, így a számítási feladatok teljesítményének és a költségek csökkentésének lehetővé tétele. Ez ideális olyan eseményekhez, amelyek átmenetileg igénylik a magasabb szintű teljesítményt, például az üdülési vásárlást, a teljesítménytesztet vagy a képzési környezet futtatását. Ezeknek az eseményeknek a kezeléséhez a szükségesnél magasabb szintű teljesítményt választhat, és visszatérhet az eredeti szintjére, ha a további teljesítmény már nem szükséges.
+Azure Disk Storage jelenleg beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt biztosítanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül, ami lehetővé teszi a számítási feladatok teljesítményének kielégítését és a költségek csökkentését, ez a funkció jelenleg előzetes verzióban érhető el. Ez ideális olyan eseményekhez, amelyek átmenetileg igénylik a magasabb szintű teljesítményt, például az üdülési vásárlást, a teljesítménytesztet vagy a képzési környezet futtatását. Ezeknek az eseményeknek a kezeléséhez a szükségesnél magasabb szintű teljesítményt választhat, és visszatérhet az eredeti szintjére, ha a további teljesítmény már nem szükséges.
 
 ## <a name="how-it-works"></a>Működés
 
