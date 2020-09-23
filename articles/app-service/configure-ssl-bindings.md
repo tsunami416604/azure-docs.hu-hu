@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962638"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981121"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
@@ -108,7 +108,7 @@ Két módosítást kell végeznie, potenciálisan:
 
 A különböző böngészőkben keresse meg az alkalmazást, és ellenőrizze, hogy az alkalmazás elérhető-e `https://<your.custom.domain>` .
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Képernyőkép: a contoso.com URL-cím kiemelésével megjeleníthető példa az egyéni tartományra való tallózásra.":::
 
 Az alkalmazás kódja a "x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https` . 
 

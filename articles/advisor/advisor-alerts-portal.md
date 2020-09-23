@@ -3,12 +3,12 @@ title: Azure Advisor riasztások létrehozása az új javaslatokhoz a Azure Port
 description: Új javaslat Azure Advisor riasztások létrehozása
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507216"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973650"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure Advisor riasztások létrehozása az új javaslatokhoz a Azure Portal használatával 
 
@@ -63,8 +63,7 @@ A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok 
 
 8. A riasztás részletei szakaszban adja meg a riasztás nevét és rövid leírását. Ha azt szeretné, hogy a riasztás engedélyezve legyen, hagyja a **szabály engedélyezése** beállítást az **Igen**értékre a létrehozás kiválasztása után. Ezután válassza ki azt az erőforráscsoportot, amelybe menteni szeretné a riasztást. Ez nem befolyásolja a javaslat célcsoport-hatókörét. 
 
-    ![Azure Advisor banner](./media/advisor-alerts/create8.png)
-
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="A riasztás részletei szakasz képernyőképe.":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Ajánlási riasztások konfigurálása webhook használatára
@@ -188,11 +187,11 @@ A Azure Advisorban szerkesztheti, törölheti vagy letilthatja és engedélyezhe
 
 1. A **portálon**válassza a **Azure Advisor**lehetőséget.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create1.png)
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="A Azure Advisor kijelölve látható Azure Portal menü képernyőképe.":::
 
 2. A bal oldali menü **figyelés** területén válassza a **riasztások**lehetőséget.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create2.png)
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Képernyőkép a Azure Portal menüjéről, amelyen a riasztások ki vannak választva.":::
 
 3. A riasztások szerkesztéséhez kattintson a riasztás nevére a riasztás megnyitásához, és szerkessze a szerkeszteni kívánt mezőket.
 

@@ -1,15 +1,15 @@
 ---
 title: Recovery Services-tárolók létrehozása és konfigurálása
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Recovery Services tárolókat, amelyek a biztonsági mentéseket és a helyreállítási pontokat tárolják.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Recovery Services tárolókat, amelyek a biztonsági mentéseket és a helyreállítási pontokat tárolják. Megtudhatja, hogyan használható a régiók közötti visszaállítás a másodlagos régióban való visszaállításhoz.
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981504"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -30,34 +30,45 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
 
 1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
 
-     ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - Javasoljuk, hogy ha az Azure-t elsődleges biztonsági mentési tárolási végpontként használja, folytassa az alapértelmezett **geo-redundáns** beállítás használatát.
    - Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amellyel csökkentheti az Azure Storage-költségeit.
-   - További információ a [földrajzi](../storage/common/storage-redundancy.md) és [helyi](../storage/common/storage-redundancy.md) redundanciáról.
+   - További információ a [földrajzi](../storage/common/storage-redundancy.md#geo-redundant-storage) és [helyi](../storage/common/storage-redundancy.md#locally-redundant-storage) redundanciáról.
+   - Ha állásidő nélkül szeretné rendelkezésre állást biztosítani egy régióban, garantálhatja az [adattárolást, majd a zóna – redundáns tároló](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)elemet.
 
 >[!NOTE]
 >A tár tárolási replikációs beállításai nem vonatkoznak az Azure-fájlmegosztás biztonsági mentésére, mert az aktuális megoldás a pillanatkép-alapú, és a tárolóra nem kerül át adatok. A pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás.
 
 ## <a name="set-cross-region-restore"></a>Régiók közötti visszaállítás beállítása
 
-A visszaállítási lehetőségek egyike, a régiók közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy Azure-beli [párosított régió](../best-practices-availability-paired-regions.md). Ez a beállítás a következőket teszi lehetővé:
+A Restore Option **Cross region Restore (CRR)** lehetővé teszi az adatvisszaállítást egy másodlagos, Azure-beli [párosított régióban](../best-practices-availability-paired-regions.md).
+
+A következő adatforrásokat támogatja:
+
+- Azure-beli virtuális gépek
+- Azure-beli virtuális gépeken üzemeltetett SQL-adatbázisok
+- Azure-beli virtuális gépeken üzemeltetett SAP HANA adatbázisok
+
+A régiók közötti visszaállítás a következőket teszi lehetővé:
 
 - a naplózási vagy megfelelőségi követelmények betartásának elvégzése
-- Állítsa vissza a virtuális gépet vagy a lemezét, ha az elsődleges régióban katasztrófa következik be.
+- az adatvisszaállítás az elsődleges régióban katasztrófa esetén
+
+A virtuális gépek visszaállításakor visszaállíthatja a virtuális gépet vagy a lemezét. Ha az Azure-beli virtuális gépeken üzemeltetett SQL-/SAP HANA-adatbázisokból végez visszaállítást, akkor visszaállíthatja az adatbázisokat vagy a fájljaikat.
 
 A szolgáltatás kiválasztásához válassza a **tartományok közötti visszaállítás engedélyezése** lehetőséget a **biztonsági mentési konfiguráció** ablaktáblán.
 
-Ehhez a folyamathoz díjszabási szempontokat számítunk fel, mivel azok tárolási szinten vannak.
+Mivel ez a folyamat tárolási szinten van, [díjszabási vonzatok](https://azure.microsoft.com/pricing/details/backup/)vannak.
 
 >[!NOTE]
 >Előkészületek:
 >
 >- A támogatott felügyelt típusok és régiók listáját a [támogatási mátrixban](backup-support-matrix.md#cross-region-restore) tekintheti meg.
->- A régión belüli visszaállítás (CRR) szolgáltatás most már az összes Azure-beli nyilvános régióban meg van jelenítve.
+>- A régió-visszaállítási (CRR) szolgáltatás most már az összes Azure-beli nyilvános régióban és szuverén felhőkben is elérhető.
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
->- Jelenleg a CRR csak a Backup Management Type-ARM Azure-beli virtuális gépen támogatott (a klasszikus Azure virtuális gép nem lesz támogatott).  Ha a további felügyeleti típusok támogatják a CRR-t, akkor a **rendszer automatikusan** regisztrálja őket.
+>- Az Azure-beli virtuális gépekhez jelenleg CRR csak az Azure Resource Manger Azure-beli virtuális gépek esetében támogatott. A klasszikus Azure-beli virtuális gépek nem támogatottak.  Ha a további felügyeleti típusok támogatják a CRR-t, akkor a **rendszer automatikusan** regisztrálja őket.
 >- A régiók közötti visszaállítás jelenleg nem állítható vissza GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet.
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
@@ -69,15 +80,13 @@ A GRS-redundanciával létrehozott tárolók tartalmazzák a régiók közötti 
 1. A portálon lépjen a Recovery Services tároló > beállítások > Tulajdonságok elemre.
 2. A funkció engedélyezéséhez válassza a **régiók közötti visszaállítás engedélyezése ebben** a tárolóban lehetőséget.
 
-   ![A régiók közötti visszaállítás engedélyezése ebben a tárban](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Régiók közötti visszaállítás engedélyezése](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![Miután kiválasztotta a régiók közötti visszaállítás engedélyezése ebben a tárban](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+A CRR biztonsági mentésével és visszaállításával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-Megtudhatja, hogyan [tekintheti meg a másodlagos régióban található biztonsági másolati elemeket](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
-
-Ismerje meg, hogyan lehet [visszaállítani a másodlagos régióban](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
-
-Megtudhatja, hogyan [figyelheti a másodlagos régió visszaállítási feladatait](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+- [Régiók közötti visszaállítás Azure-beli virtuális gépekhez](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [Régiók közötti visszaállítás SQL-adatbázisokhoz](restore-sql-database-azure-vm.md#cross-region-restore)
+- [Régiók közötti visszaállítás SAP HANA adatbázisokhoz](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>Titkosítási beállítások megadása
 
@@ -99,7 +108,7 @@ A fenti lépések utasításait [ebben a cikkben](encryption-at-rest-with-cmk.md
 
 ## <a name="modifying-default-settings"></a>Alapértelmezett beállítások módosítása
 
-Javasoljuk, hogy a biztonsági mentések konfigurálása előtt tekintse át a **tárolási replikálási típus** és a **biztonsági beállítások** alapértelmezett beállításait.
+Javasoljuk, hogy a tárban a biztonsági mentések konfigurálása előtt tekintse át a **Tárolóreplikáció típusa** és a **Biztonsági beállítások** alapértelmezett beállításait.
 
 - Alapértelmezés szerint a **tárolási replikálás típusa** **geo-redundáns** (GRS) értékre van állítva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva.
   - Ha még nem konfigurálta a biztonsági mentést, [kövesse az alábbi lépéseket](#set-storage-redundancy) a beállítások áttekintéséhez és módosításához.
@@ -151,7 +160,7 @@ Ha meg kell őriznie a védett adatok védelmét a GRS-tárolóban, és egy új 
   - Szükség esetén visszaállíthatja a virtuális gépet a GRS-tárból.
   - Az új erőforrásban található virtuális gép LRS-tárolójának első biztonsági mentése kezdeti replika lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](backup-azure-recovery-services-vault-overview.md) információ Recovery Services-tárolók.
 [További](backup-azure-delete-vault.md) információ Recovery Services tárolók törlése.

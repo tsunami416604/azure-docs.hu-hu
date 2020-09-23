@@ -4,12 +4,12 @@ description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások ha
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: da57bcb7ed434893548ae74fdb3cd9ac1ab5b245
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4576c8a7657ea3da1f8a732c2efd38302f33300c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974053"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 A Application Insights a [Azure monitor](../overview.md)egy funkciója, amely egy bővíthető Application Performance Management-(APM-) szolgáltatás fejlesztők és DevOps szakemberek számára. Használhatja az élő alkalmazások figyelésére. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Számos platformon használható, többek között a .NET, a Node.js, a Java és a Python helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett alkalmazásokhoz. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -58,7 +58,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 | [**Irányítópultok**](./overview-dashboard.md)<br/>Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén. |![Példa az irányítópultokra](./media/app-insights-overview/dashboard-tn.png) |
 | [**Élő metrikastream**](./live-stream.md)<br/>Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e. |![Példa a valós idejű metrikákra](./media/app-insights-overview/live-metrics-tn.png) |
 | [**Elemzés**](../log-query/log-query-overview.md)<br/>A hatékony lekérdezési nyelvnek köszönhetően válaszokat kaphat az alkalmazás teljesítményére és használatára vonatkozó legégetőbb kérdésekre. |![Példa az elemzésre](./media/app-insights-overview/analytics-tn.png) |
-| [**Visual Studio**](./visual-studio.md)<br/>A kódban tekintheti meg a teljesítményadatokat. A hívásláncokból a kódba ugorhat.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
+| [**Visual Studio**](./visual-studio.md)<br/>A kódban tekintheti meg a teljesítményadatokat. A hívásláncokból a kódba ugorhat.|![A képernyőfelvételen a Visual Studióban a kivétel részletei láthatók.](./media/app-insights-overview/visual-studio-tn.png) |
 | [**Pillanatkép-hibakereső**](./snapshot-debugger.md)<br/>A működés közbeni műveletekről készült pillanatképek hibakeresése paraméterértékekkel.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](./export-power-bi.md)<br/>Integrálhatja a használati metrikákat más üzleti intelligenciával.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Kód írásával lekérdezéseket futtathat a metrikákhoz és a nyers adatokhoz kapcsolódóan.| ![REST API](./media/app-insights-overview/rest-tn.png) |
@@ -87,7 +87,7 @@ Az újonnan üzembe helyezett szolgáltatások [hatékonyságának mérése](./u
 * Egyéni telemetriai adatokat vehet fel a kódba.
 * A következési fejlesztési ciklust a telemetriai adatokból származó konkrét tényekre alapozhatja.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 Az Application Insights a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike, és a telemetriai adatok ide érkeznek be elemzésre és megjelenítésre. A használat megkezdéséhez egy [Microsoft Azure-előfizetésre](https://azure.com) van szükség. A regisztráció ingyenes, és ha az Application Insights alapszintű [díjcsomagját](https://azure.microsoft.com/pricing/details/application-insights/) választja, a használat mindaddig díjmentes, amíg az alkalmazás el nem ér egy jelentős használati értéket. Ha a munkahelye már rendelkezik előfizetéssel, lehetőség van felvenni az Ön Microsoft-fiókját az adott előfizetésbe.
 
 Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önnek a legmegfelelőbb. További szolgáltatásokat később is felvehet.

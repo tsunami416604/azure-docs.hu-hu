@@ -1,6 +1,6 @@
 ---
 title: Munkafüzetek erőforrás-paramétereinek Azure Monitor
-description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
+description: Megtudhatja, hogyan használhatja az erőforrás-paramétereket az erőforrások munkafüzetekbe való kiválasztásának engedélyezéséhez. Az erőforrás-paraméterekkel állíthatja be azt a hatókört, amelyből az adatok beszerezhetők.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a4d4e095e065e9f505ba1b9b46f0d31fb1783eb2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504991"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972858"
 ---
 # <a name="workbook-resource-parameters"></a>Munkafüzet erőforrás-paraméterei
 
@@ -27,12 +27,12 @@ Az erőforrás-választóból származó értékek a munkafüzet kontextusában,
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`Applications`
-    2. Paraméter típusa:`Resource picker`
-    3. Szükséges`checked`
-    4. Több kijelölés engedélyezése:`checked`
-5. Adatok lekérése:`Workbook Resources`
-6. Csak az erőforrástípusok belefoglalása:`Application Insights`
+    1. Paraméter neve: `Applications`
+    2. Paraméter típusa: `Resource picker`
+    3. Szükséges `checked`
+    4. Több kijelölés engedélyezése: `checked`
+5. Adatok lekérése: `Workbook Resources`
+6. Csak az erőforrástípusok belefoglalása: `Application Insights`
 7. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 
 ![Az erőforrás-paraméternek a munkafüzet erőforrásaival való létrehozását bemutató kép](./media/workbooks-resources/resource-create.png)
@@ -42,13 +42,13 @@ Az erőforrás-választóból származó értékek a munkafüzet kontextusában,
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`Applications`
-    2. Paraméter típusa:`Resource picker`
-    3. Szükséges`checked`
-    4. Több kijelölés engedélyezése:`checked`
-5. Adatok lekérése:`Query`
-    1. Lekérdezés típusa:`Azure Resource Graph`
-    2. Előfizetések`Use default subscriptions`
+    1. Paraméter neve: `Applications`
+    2. Paraméter típusa: `Resource picker`
+    3. Szükséges `checked`
+    4. Több kijelölés engedélyezése: `checked`
+5. Adatok lekérése: `Query`
+    1. Lekérdezés típusa: `Azure Resource Graph`
+    2. Előfizetések `Use default subscriptions`
     3. A lekérdezés vezérlőelemben adja hozzá ezt a kódrészletet.
     ```kusto
     where type == 'microsoft.insights/components'
@@ -68,11 +68,11 @@ Az erőforrás-választóból származó értékek a munkafüzet kontextusában,
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`Applications`
-    2. Paraméter típusa:`Resource picker`
-    3. Szükséges`checked`
-    4. Több kijelölés engedélyezése:`checked`
-5. Adatok lekérése:`JSON`
+    1. Paraméter neve: `Applications`
+    2. Paraméter típusa: `Resource picker`
+    3. Szükséges `checked`
+    4. Több kijelölés engedélyezése: `checked`
+5. Adatok lekérése: `JSON`
     1. A tartalom vezérlőelemben adja hozzá ezt a JSON-kódrészletet
     ```json
     [

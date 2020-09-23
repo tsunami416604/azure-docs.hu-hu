@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085599"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973035"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database és SQL felügyelt példányok diagnosztikai telemetria adatfolyam-exportálásának konfigurálása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,16 +37,16 @@ A Intelligent Insights napló exportálásán kívül számos teljesítmény-mé
 
 | Diagnosztikai telemetria adatbázisok számára | Azure SQL Database támogatás | Az Azure SQL felügyelt példányainak támogatása |
 | :------------------- | ----- | ----- |
-| [Alapszintű mérőszámok](#basic-metrics): tartalmazza a DTU/CPU-arányt, a DTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási százalékos arányát, a sikeres/sikertelen/letiltott/blokkolt, a munkamenetek százalékos arányát, a dolgozók százalékos arányát, a tárterületet | Yes | Nem |
-| [A példány és az alkalmazás speciális](#advanced-metrics): tartalmazza a tempdb rendszeradatbázis-információit és a naplófájlok méretét, valamint a tempdb százalékos naplófájlját. | Yes | Nem |
+| [Alapszintű mérőszámok](#basic-metrics): tartalmazza a DTU/CPU-arányt, a DTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási százalékos arányát, a sikeres/sikertelen/letiltott/blokkolt, a munkamenetek százalékos arányát, a dolgozók százalékos arányát, a tárterületet | Igen | Nem |
+| [A példány és az alkalmazás speciális](#advanced-metrics): tartalmazza a tempdb rendszeradatbázis-információit és a naplófájlok méretét, valamint a tempdb százalékos naplófájlját. | Igen | Nem |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): a lekérdezési futtatókörnyezet statisztikáit, például a CPU-használat és a lekérdezés időtartamára vonatkozó statisztikai adatokat tartalmazza. | Igen | Igen |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): a lekérdezési várakozási statisztikával kapcsolatos információkat tartalmaz (a lekérdezéseket várta), például a processzort, a naplót és a zárolást. | Igen | Igen |
 | [Hibák](#errors-dataset): az adatbázis SQL-hibáiról tartalmaz információkat. | Igen | Igen |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): információ arról, hogy mennyi időt töltöttek egy adatbázis a különböző várakozási típusoknál. | Yes | Nem |
-| [Időtúllépések](#time-outs-dataset): az adatbázis-időtúllépésekkel kapcsolatos információkat tartalmaz. | Yes | Nem |
-| [Blokkok](#blockings-dataset): az adatbázis-események blokkolásával kapcsolatos információkat tartalmaz. | Yes | Nem |
-| [Holtpontok](#deadlocks-dataset): az adatbázis holtpont eseményeivel kapcsolatos információkat tartalmaz. | Yes | Nem |
-| [AutomaticTuning](#automatic-tuning-dataset): az adatbázis Automatikus hangolási javaslataival kapcsolatos információkat tartalmaz. | Yes | Nem |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): információ arról, hogy mennyi időt töltöttek egy adatbázis a különböző várakozási típusoknál. | Igen | Nem |
+| [Időtúllépések](#time-outs-dataset): az adatbázis-időtúllépésekkel kapcsolatos információkat tartalmaz. | Igen | Nem |
+| [Blokkok](#blockings-dataset): az adatbázis-események blokkolásával kapcsolatos információkat tartalmaz. | Igen | Nem |
+| [Holtpontok](#deadlocks-dataset): az adatbázis holtpont eseményeivel kapcsolatos információkat tartalmaz. | Igen | Nem |
+| [AutomaticTuning](#automatic-tuning-dataset): az adatbázis Automatikus hangolási javaslataival kapcsolatos információkat tartalmaz. | Igen | Nem |
 | [SQLInsights](#intelligent-insights-dataset): Intelligent Insightst tartalmaz egy adatbázis teljesítményében. További információ: [Intelligent Insights](intelligent-insights-overview.md). | Igen | Igen |
 
 > [!NOTE]
@@ -72,7 +72,7 @@ Ez a diagnosztikai telemetria az alábbi Azure-erőforrások egyikére továbbí
 
 Ez a diagnosztikai telemetria a következő célhelyek egyikére is felhasználható az erőforrás-kihasználtság és a lekérdezés-végrehajtási statisztika méréséhez, így egyszerűbbé válik a teljesítmény monitorozása.
 
-![Architektúra](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![A diagram számos SQL-adatbázist és-adatbázist mutat be a felügyelt példányokban, amelyek telemetria küldenek a Azure Diagnosticsnak, amelyek információkat küldenek a Azure SQL Analytics, az Event hub és a Storage szolgáltatásnak.](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>A diagnosztikai telemetria adatfolyam-exportálásának engedélyezése és konfigurálása
 
@@ -96,7 +96,7 @@ A Azure Portal **diagnosztikai beállítások** menüjében engedélyezheti és 
 
 A következő lapok egyikének kiválasztásával részletes útmutatást találhat a diagnosztikai telemetria adatfolyam-exportálásának konfigurálásához a Azure Portalban, valamint parancsfájlokat a PowerShell és az Azure CLI használatával történő végrehajtásához.
 
-# <a name="azure-portal"></a>[Azure Portalra](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Rugalmas készletek Azure SQL Database
 
@@ -605,7 +605,7 @@ További információ a [lekérdezési tár várakozási statisztikáinak adatai
 |Üzenet|Egyszerű szöveges üzenet hibaüzenete |
 |user_defined_b|A felhasználó által definiált bit |
 |error_number_d|Hibakód |
-|Severity|A hiba súlyossága |
+|Súlyosság|A hiba súlyossága |
 |state_d|A hiba állapota |
 |query_hash_s|Sikertelen lekérdezés kivonata, ha elérhető |
 |query_plan_hash_s|A sikertelen lekérdezéshez tartozó lekérdezési terv kivonata, ha elérhető |
@@ -743,16 +743,16 @@ További információ az [adatbázis-várakozási statisztikákról](https://doc
 
 További információ a [Intelligent Insights napló formátumáról](intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan engedélyezheti a naplózást, és megismerheti a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, tekintse meg a következőt:
 
 - [A Microsoft Azure metrikáinak áttekintése](../../azure-monitor/platform/data-platform.md)
-- [Az Azure platform naplófájljainak áttekintése](../../azure-monitor/platform/platform-logs-overview.md)
+- [Az Azure-platform naplóinak áttekintése](../../azure-monitor/platform/platform-logs-overview.md)
 
 A Event Hubsről a következő témakörben olvashat bővebben:
 
-- [Mi az az Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
+- [Mi az Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
 - [Bevezetés az Event Hubs használatába](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 A riasztások a log Analytics telemetria alapján történő beállításával kapcsolatos további információkért lásd:

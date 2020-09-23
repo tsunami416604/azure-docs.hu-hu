@@ -1,6 +1,6 @@
 ---
 title: A Micro Focus Enterprise Server 5,0 futtatása az Azure-beli Docker-tárolóban | Microsoft Docs
-description: Az IBM z/OS mainframe-alapú számítási feladatokat az Azure Virtual Machines (VM) Micro Focus fejlesztési és tesztkörnyezet használatával helyezheti át.
+description: Ebből a cikkből megtudhatja, hogyan futtathatja a Micro Focus Enterprise Server 5,0-et egy Docker-tárolóban Microsoft Azureon.
 services: virtual-machines-linux
 documentationcenter: ''
 author: maggsl
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083463"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974066"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>A Micro Focus Enterprise Server 5,0 futtatása az Azure-beli Docker-tárolóban
 
@@ -169,7 +169,7 @@ Ezen a ponton a virtuális gép RDP-kapcsolaton keresztül fut és csatlakoztatv
 
 Ennyi az egész! Most egy CICS-alkalmazást futtat és felügyel egy Docker-tárolóban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [A Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 telepítése az Azure-ban](./set-up-micro-focus-azure.md)
 

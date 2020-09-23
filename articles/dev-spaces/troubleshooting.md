@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210832"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981074"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -27,14 +27,6 @@ A Visual Studióban állítsa a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` kö
 A CLI-ben további információkat adhat meg a parancs végrehajtása során a kapcsoló használatával `--verbose` . További részletes naplókat is megkereshet a alkalmazásban `%TEMP%\Azure Dev Spaces` . Mac gépen a *temp* könyvtár `echo $TMPDIR` egy terminál-ablakból futtatható. Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp` . Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
 Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl tartalmaz egy *replicaCount*-beállítást, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
-
-## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Gyakori problémák a helyi folyamat Kubernetes való használatakor
-
-### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>Nem sikerült visszaállítani az üzemelő példány eredeti konfigurációját a fürtön
-
-Ha helyi folyamatot használ a Kubernetes-mel, ha a Kubernetes-ügyféllel rendelkező helyi folyamat összeomlik vagy leáll, az a szolgáltatás, amelyet a Kubernetes-hez tartozó helyi folyamat nem állít vissza, akkor a helyi folyamat Kubernetes-hez való csatlakoztatása előtt nem lehet visszaállítani az eredeti állapotába.
-
-A probléma megoldásához telepítse újra a szolgáltatást a fürtön.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Az Azure dev Spaces engedélyezésekor felmerülő gyakori problémák
 
@@ -265,7 +257,7 @@ Ez a hiba azért fordul elő, mert az Azure dev Spaces jelenleg nem támogatja a
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>A hálózati forgalmat nem továbbítja a rendszer az AK-fürthöz a fejlesztői gép csatlakoztatásakor
 
-Ha [Az Azure dev Spaces használatával csatlakozik az AK-fürthöz a fejlesztői géphez](https://code.visualstudio.com/docs/containers/local-process-kubernetes), előfordulhat, hogy olyan problémába ütközik, amelyben a hálózati forgalom nem továbbítódik a fejlesztési gép és az AK-fürt között.
+Ha [Az Azure dev Spaces használatával csatlakozik az AK-fürthöz a fejlesztői géphez](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes), előfordulhat, hogy olyan problémába ütközik, amelyben a hálózati forgalom nem továbbítódik a fejlesztési gép és az AK-fürt között.
 
 Ha a fejlesztési gépet az AK-fürthöz csatlakoztatja, az Azure dev Spaces a fejlesztési gép fájljának módosításával továbbítja a hálózati forgalmat az AK-fürt és a fejlesztői számítógép között `hosts` . Az Azure dev Spaces egy bejegyzést hoz létre a (z) és a (z `hosts` ) Kubernetes-szolgáltatás neveként, amelyet állomásnévként cserél. Ez a bejegyzés a port továbbításával használható a fejlesztői gép és az AK-fürt közötti közvetlen hálózati forgalomhoz. Ha a fejlesztési gépen lévő szolgáltatás ütközik a cserélni kívánt Kubernetes szolgáltatás portjával, az Azure dev Spaces nem tudja továbbítani a Kubernetes szolgáltatás hálózati forgalmát. Például a *Windows BranchCache* szolgáltatás általában *0.0.0.0:80*-ra van kötve, amely ütközést okoz a 80-es port összes helyi IP-címeinél.
 

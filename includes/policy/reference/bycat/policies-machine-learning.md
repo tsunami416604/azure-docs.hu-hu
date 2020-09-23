@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 12390b88d87baa4e3b6d95d1a40323e5f5d2a3e1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: d52a7bee62fc100dd2796c19ff2b11a205d018ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981019"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Machine Learning-munkaterületeket ügyfél által felügyelt kulccsal kell titkosítani (CMK)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |Értékelje ki azokat Azure Machine Learning munkaterületeket, amelyeken nincs engedélyezve a titkosítás az ügyfél által felügyelt kulcsokkal (CMK). Az ügyfél által felügyelt kulcsok szabályzattippjének biztonsági réteget adhatnak hozzá a munkaterületekhez. További információért látogasson el a következő oldalra: [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk) . |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[Azure Machine Learning munkaterületeknek privát hivatkozást kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) |Értékelje ki azokat Azure Machine Learning munkaterületeket, amelyek nem rendelkeznek legalább egy jóváhagyott privát Endpoint-kapcsolatban. A virtuális hálózatban lévő ügyfelek biztonságosan érhetik el a magánhálózati kapcsolatokon keresztül privát végponti kapcsolattal rendelkező erőforrásokat. További információért látogasson el a következő webhelyre: [https://aka.ms/azureml-workspaces-privatelink](https://aka.ms/azureml-workspaces-privatelink) . |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateLinkEnabled_Audit.json) |

@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: VPN-ügyfél a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés'
-description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
+description: Megtudhatja, hogyan konfigurálhat VPN-ügyfelet egy virtuális hálózathoz pont – hely VPN és Azure Active Directory hitelesítés használatával való csatlakozáshoz.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 781d3aeea6a5568aec065ec4b1cbcfacb74836a6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434673"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981878"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory hitelesítés: VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz
 

@@ -8,3 +8,7 @@
   href: ./servers/overview.md
 - name: Arc-kompatibilis Kubernetes >
   href: ./kubernetes/overview.md
+- name: Arc-kompatibilis adatszolgáltatások (előzetes verzió) >
+  href: ./data/overview.md
+- name: Arc-kompatibilis SQL Server (előzetes verzió) >
+  href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'
