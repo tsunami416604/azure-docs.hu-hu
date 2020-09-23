@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477510"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898494"
 ---
 # <a name="partition-and-sample-module"></a>Partíció és minta modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 A partíció és a minta modul használatával mintavételezést végezhet egy adatkészleten, vagy partíciókat hozhat létre az adatkészletből.
 
@@ -71,7 +71,7 @@ Ez a beállítás támogatja az egyszerű véletlenszerű mintavételezést vagy
 
 1. Adja hozzá a **partíciót és a minta** modult a folyamathoz, és kapcsolódjon az adatkészlethez.
 
-1. **Partíció vagy minta mód**: ezt a beállítást a **mintavételezéshez**kell beállítani.
+1. **Partíció vagy minta mód**: ezt a beállítást a  **mintavételezéshez**kell beállítani.
 
 1. **Mintavételezési sebesség**: adjon meg egy 0 és 1 közötti értéket. Ez az érték határozza meg a forrás adatkészletből a kimeneti adatkészletbe foglalandó sorok százalékos arányát.
 
@@ -165,6 +165,6 @@ Akkor használja ezt a beállítást, ha több partícióra osztott egy adatkés
 > [!NOTE]
 >  A fold megjelöléseit nem lehet közvetlenül megtekinteni. Csak a metaadatokban jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -1,14 +1,14 @@
 ---
 title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
-description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
+description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával. Az adatbázisok másodlagos régióba való visszaállításához a régiók közötti visszaállítást is használhatja.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985439"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -30,7 +30,7 @@ Az adatbázis visszaállítása előtt vegye figyelembe a következőket:
 - Az adatbázist visszaállíthatja egy SQL Server egy példányára ugyanabban az Azure-régióban.
 - A célkiszolgálón regisztrálni kell a forrással megegyező tárolóban.
 - Ha egy TDE-titkosított adatbázist szeretne visszaállítani egy másik SQL Serverre, először [vissza kell állítania a tanúsítványt a célkiszolgálóra](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- A [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) -kompatibilis adatbázisok [visszaállítását a fájlok visszaállítása](#restore-as-files) lehetőség használatával kell visszaállítani.
+- A [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) -kompatibilis adatbázisok [visszaállítását a fájlok visszaállítása](#restore-as-files) lehetőség használatával kell visszaállítani.
 - A "Master" adatbázis visszaállítása előtt indítsa el az SQL Server példányt egy egyfelhasználós módban az indítási lehetőség **– m AzureWorkloadBackup**használatával.
   - A **-m** érték az ügyfél neve.
   - A kapcsolatok csak a megadott ügyfél nevével nyithatók meg.
@@ -168,6 +168,51 @@ Ha a **teljes & különbözetet** választotta a visszaállítási típusként, 
 Ha egy adatbázisban lévő fájlok teljes mérete meghaladja az [adott korlátot](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), akkor a Azure Backup egy másik pit-összetevőben tárolja az adatbázisfájlok listáját, így nem állíthatja be a cél-visszaállítási útvonalat a visszaállítási művelet során. Ehelyett a rendszer visszaállítja a fájlokat az alapértelmezett SQL-elérési útra.
 
   ![Adatbázis visszaállítása nagyméretű fájllal](./media/backup-azure-sql-database/restore-large-files.jpg)
+
+## <a name="cross-region-restore"></a>Régiók közötti visszaállítás
+
+A visszaállítási lehetőségek egyike, a régiók közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépeken tárolt SQL-adatbázisok visszaállítását egy másodlagos régióban, amely egy Azure-beli párosított régió.
+
+Ha az előzetes verzióban szeretné bejelentkezni a szolgáltatásba, olvassa el az előkészületek [című szakaszt](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Ha szeretné megtekinteni, hogy a CRR engedélyezve van-e, kövesse a [tartományok közötti visszaállítás konfigurálása](backup-create-rs-vault.md#configure-cross-region-restore) című témakör útmutatását.
+
+### <a name="view-backup-items-in-secondary-region"></a>Biztonsági másolati elemek megtekintése a másodlagos régióban
+
+Ha a CRR engedélyezve van, megtekintheti a másodlagos régió biztonsági másolati elemeit.
+
+1. A portálon nyissa meg **Recovery Services**  >  **tároló biztonsági másolati elemeit**.
+1. Válassza a **másodlagos régió** elemet a másodlagos régió elemeinek megtekintéséhez.
+
+>[!NOTE]
+>A listában csak a CRR funkciót támogató biztonsági mentési felügyeleti típusok jelennek meg. Jelenleg csak a másodlagos régióba tartozó adatelemek másodlagos régióba való visszaállításának támogatása engedélyezett.
+
+![Biztonsági másolati elemek a másodlagos régióban](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![Adatbázisok a másodlagos régióban](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Visszaállítás másodlagos régióban
+
+A másodlagos régió visszaállítási felhasználói felülete hasonló lesz az elsődleges régió visszaállítási felhasználói felületéhez. Amikor konfigurálja a részleteket a visszaállítási konfiguráció ablaktáblán a visszaállítás konfigurálásához, a rendszer kérni fogja, hogy csak a másodlagos régió paramétereit adja meg.
+
+![Hol és hogyan kell visszaállítani?](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>A másodlagos régióban lévő virtuális hálózatot egyedi módon kell hozzárendelni, és nem használható az adott erőforráscsoport bármely más virtuális gépe számára.
+
+![Trigger visszaállítása folyamatban lévő értesítésben](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- A visszaállítás elindítása és az adatátviteli fázisban a visszaállítási feladatot nem lehet megszakítani.
+>- A másodlagos régióban való visszaállításhoz szükséges Azure-szerepkörök ugyanazok, mint az elsődleges régióban.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Másodlagos régió visszaállítási feladatainak figyelése
+
+1. A portálon nyissa meg **Recovery Services**-  >  **tároló biztonsági mentési feladatait**
+1. Válassza a **másodlagos régió** elemet a másodlagos régió elemeinek megtekintéséhez.
+
+    ![Biztonsági mentési feladatok szűrve](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

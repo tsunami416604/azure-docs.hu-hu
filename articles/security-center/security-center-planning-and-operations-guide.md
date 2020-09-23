@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461323"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904843"
 ---
 # <a name="planning-and-operations-guide"></a>Tervezési és működtetési útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -120,7 +120,7 @@ A Security Center-szabályzatok a következő összetevőkből állnak:
 - [Adatgyűjtés](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): ügynökkiépítési és adatgyűjtési beállítások.
 - [Biztonsági házirend](https://docs.microsoft.com/azure/security-center/security-center-policies): egy [Azure Policy](../governance/policy/overview.md) , amely meghatározza, hogy mely vezérlőket figyeli és javasolja a Security Center, vagy a Azure Policy használatával új definíciókat hozhat létre, további házirendeket határozhat meg, és szabályzatokat rendelhet hozzá a felügyeleti csoportokhoz.
 - [E-mail-értesítések](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): biztonsági felelősök kapcsolati adatai és értesítési beállításai.
-- [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing): ingyenes vagy standard díjszabás kiválasztása, amely meghatározza, hogy a Security Center mely szolgáltatásai érhetők el a hatókörbe eső erőforrásokhoz (beállítható előfizetésekhez, erőforráscsoportokhoz és munkaterületekhez).
+- [Díjszabási](https://docs.microsoft.com/azure/security-center/security-center-pricing)csomag: az Azure Defender vagy anélkül, amely meghatározza, hogy mely Security Center szolgáltatások érhetők el a hatókörben lévő erőforrásokhoz (előfizetések, erőforráscsoportok és munkaterületek esetében adható meg).
 
 > [!NOTE]
 > Biztonsági kapcsolattartó kinevezésével biztosítható, hogy az Azure a biztonsági incidensek esetén elérje a megfelelő illetékes személyt. Olvassa el a [Provide security contact details in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) (A biztonsági kapcsolattartó adatainak megadása az Azure Security Centerben) részt, amelyből megtudhatja, hogyan engedélyezheti ezt a javaslatot.
@@ -158,12 +158,12 @@ Az Azure Portalon megkeresheti a Log Analytics munkaterületeinek listáját, be
 Az Azure Security Center által létrehozott munkaterületek adatait 30 napig őrzi meg a rendszer. A meglévő munkaterületeknél a megőrzési idő a munkaterület tarifacsomagjától függ. Ha szeretné, használhat egy létező munkaterületet is.
 
 > [!NOTE]
-> A Microsoft fontos kötelességének tekinti ezeknek az adatoknak a védelmét és biztonságát. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatkezeléssel és adatbiztonsággal kapcsolatos további információkért olvassa el az [Azure Security Center adatbiztonság](security-center-data-security.md) című cikket.
+> A Microsoft erős kötelezettségvállalásokat tesz az adatok védelmének és biztonságának védelme érdekében. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatkezeléssel és adatbiztonsággal kapcsolatos további információkért olvassa el az [Azure Security Center adatbiztonság](security-center-data-security.md) című cikket.
 >
 
 ## <a name="onboarding-non-azure-resources"></a>Nem Azure-erőforrások előkészítése
 
-A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. A nem Azure-erőforrások előkészítésével kapcsolatos további információkért olvassa el a [fokozott biztonságot nyújtó Azure Security Center Standard előfizetésre történő előkészítéssel](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers) foglalkozó témakört.
+A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. A nem Azure-beli erőforrások bevezetésével kapcsolatos további információkért olvassa el a [nem Azure-beli számítógépek](quickstart-onboard-machines.md) bevezetését ismertető témakört.
 
 ## <a name="ongoing-security-monitoring"></a>A biztonság folyamatos ellenőrzése
 A kezdeti konfigurációt, illetve a Security Center javaslatainak alkalmazását követően a következő lépés a Security Center működési folyamatainak megtervezése.
@@ -191,7 +191,7 @@ Emellett rendszeresen figyelnie kell a meglévő erőforrásokat azokra a konfig
 
 A biztonsági folyamatai részeként érdemes bevezetnie megelőző intézkedéseket a virtuális gépek hozzáférésének megakadályozása és a rajtuk futó alkalmazások szabályozása érdekében. Az Azure-beli virtuális gépek bemenő forgalmának zárolásával kevésbé fogják veszélyeztetni a támadások, ugyanakkor könnyű hozzáférést biztosít arra az esetre, amikor csatlakozni kell a virtuális gépekhez. Az [igény szerinti virtuálisgép-hozzáférési](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) szolgáltatással megerősítheti a virtuális gépekhez való hozzáférést.
 
-Az [adaptív alkalmazások vezérlői](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) segítségével korlátozhatja, hogy mely alkalmazások futhatnak az Azure-ban található virtuális gépeken. Más előnyök mellett ez segít megerősíteni a virtuális gépeket a kártevők ellen. A gépi tanulás használatával a Security Center elemzi a virtuális gépen futó folyamatokat, hogy segítsen az engedélyezési szabályok létrehozásában.
+Az [adaptív alkalmazások vezérlői](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) segítségével korlátozhatja, hogy mely alkalmazások futhatnak az Azure-ban található virtuális gépeken. Más előnyök mellett ez segít megerősíteni a virtuális gépeket a kártevők ellen. A gépi tanulás használatával a Security Center elemzi a virtuális gépen futó folyamatokat, hogy segítsen az engedélyezési listák létrehozásában.
 
 
 ## <a name="incident-response"></a>Incidensmegoldás
@@ -199,7 +199,7 @@ A Security Center észleli az előforduló fenyegetéseket, és riasztást küld
 
 Habár ez a cikk nem nyújt segítséget a saját incidensekre vonatkozó válaszadási terv létrehozásához, Microsoft Azure biztonsági választ fogunk használni a felhő életciklusában az incidensek megválaszolásának alapjaként. Ezek a szakaszok a következő ábrán láthatók:
 
-![Gyanús tevékenység](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Az incidens válaszának szakaszai a felhő életciklusában](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > A terv létrehozásában segítséget nyújthat az amerikai National Institute of Standards and Technology (Országos Szabványügyi és Technológiai Intézet, NIST) által kidolgozott [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) (Útmutató a számítógépes biztonsági incidensek kezeléséhez) című dokumentum.

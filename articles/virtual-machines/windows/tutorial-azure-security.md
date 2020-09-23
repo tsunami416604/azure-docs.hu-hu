@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508236"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984593"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata Windows rendszerű virtuális gépek megfigyeléséhez
 
@@ -36,7 +36,7 @@ A Security Center irányítópultjának eléréséhez válassza a **Security Cen
 
 A Security Center az adatészlelésen túl javaslatokat is ad az észlelt problémák megoldására. Ha például egy virtuális gépet csatolt hálózati biztonsági csoport nélkül telepít, a Security Center megjelenít egy, az elvégezhető javítási lépéseket ismertető javaslatot. A Security Center környezetének elhagyása nélkül kaphat automatizált javításokat.  
 
-![Javaslatok](./media/tutorial-azure-security/recommendations.png)
+![A képernyőképen a javaslatok oldal látható, amely tartalmazza az ajánlások leírását, erőforrását, állapotát és súlyosságát.](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Adatgyűjtés beállítása
 

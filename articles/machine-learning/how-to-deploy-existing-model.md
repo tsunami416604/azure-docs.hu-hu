@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0dcede7e6c15fbc0bae39370431d14696cb4026e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648317"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905655"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>A meglévő modell üzembe helyezése Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebből a cikkből megtudhatja, hogyan regisztrálhatja és helyezheti üzembe a Azure Machine Learningon kívül betanított gépi tanulási modellt. Webszolgáltatásként vagy IoT Edge eszközként is üzembe helyezhető.  A telepítés után nyomon követheti a modellt, és felderítheti az adateltolódást Azure Machine Learningban. 
 
@@ -274,7 +274,7 @@ A telepítéssel kapcsolatos további információkért lásd a [modellek üzemb
 
 ## <a name="request-response-consumption"></a>Kérelem – válasz felhasználás
 
-Az üzembe helyezés után megjelenik a pontozási URI. Ezt az URI-t használhatja az ügyfelek a szolgáltatásnak küldött kérések küldésére. A következő példa egy alapszintű Python-ügyfél, amely elküldi az adatait a szolgáltatásnak, és megjeleníti a választ:
+Az üzembe helyezés után megjelenik a pontozási URI. Ezt az URI-t használhatja az ügyfelek a szolgáltatásnak küldött kérések küldésére. Az alábbi példa egy egyszerű Python-ügyfél, amely elküldi az adatait a szolgáltatásnak, és megjeleníti a választ:
 
 ```python
 import requests

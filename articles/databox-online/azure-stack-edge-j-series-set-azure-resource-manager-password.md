@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager jelszavának beállítása az Azure Stack Edge GPU-eszközön
-description: Ismerteti, hogyan lehet csatlakozni az Azure Stack Edge GPU-ban futó Azure Resource Managerhoz Azure PowerShell használatával.
+title: Azure Resource Manager jelszavának beállítása az Azure Stack Edge Pro GPU-eszközön
+description: Ismerteti, hogyan csatlakozhat a Azure Stack Edge Pro GPU-val futó Azure Resource Managerhoz Azure PowerShell használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254151"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904494"
 ---
-# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>Azure Resource Manager jelszavának beállítása Azure Stack Edge GPU-eszközön
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Resource Manager jelszavának beállítása Azure Stack Edge Pro GPU-eszközön
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -122,7 +122,7 @@ A jelszó beállítására szolgáló eljárás eltérő lehet attól függően,
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    A jelszó alaphelyzetbe állításához használja a fentiekben generált biztonságos karakterláncokat paraméterként a set-AzDataBoxEdgeUser parancsmagban. Használja ugyanazt az erőforráscsoportot, amelyet az Azure Stack Edge/Data Box Gateway erőforrás létrehozásakor használt.
+    A jelszó alaphelyzetbe állításához használja a fentiekben generált biztonságos karakterláncokat paraméterként a set-AzDataBoxEdgeUser parancsmagban. Használja ugyanazt az erőforráscsoportot, amelyet az Azure Stack Edge Pro/Data Box Gateway erőforrás létrehozásakor használt.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
@@ -146,6 +146,6 @@ A jelszó beállítására szolgáló eljárás eltérő lehet attól függően,
     ```
 A Azure Resource Managerhoz való kapcsolódáshoz használja az új jelszót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kapcsolódás Azure Resource Managerhoz](azure-stack-edge-j-series-connect-resource-manager.md)

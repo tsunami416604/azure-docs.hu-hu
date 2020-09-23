@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74184246"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976006"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Távoli figyelési adatmegjelenítés Power BI használatával
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatainak a Cosmo
    - URI
    - Elsődleges kulcs
 
-     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![Képernyőfelvétel: egy Azure Cosmos D B-fiók, amely a kijelölt kulcsok elemet tartalmazza.](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>A stream beállítása Power BI
   
@@ -98,7 +98,7 @@ Az irányítópultok sikeres létrehozása után javasoljuk, hogy [tegye közzé
 
 Emellett [frissítenie](https://docs.microsoft.com/power-bi/refresh-data) kell a közzétett irányítópulton lévőket is, hogy megbizonyosodjon arról, hogy rendelkezik a legújabb adatkészlettel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan jelenítheti meg a távoli monitorozási adatait a Power BI használatával
 

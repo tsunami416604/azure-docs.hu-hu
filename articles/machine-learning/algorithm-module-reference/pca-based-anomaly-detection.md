@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 0498823e1b730db6425d255b6de4b826dd05a6a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749488"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898465"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>PCA-alapú anomáliák észlelése modul
 
-Ez a cikk azt ismerteti, hogyan használható a PCA-alapú anomália-észlelési modul a Azure Machine Learning Designerben (előzetes verzió), amely a fő összetevők elemzése (PEM) alapján anomália-észlelési modellt hoz létre.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer PCA-alapú rendellenesség-észlelési modulja, amely az elsődleges összetevők elemzése (PEM) alapján anomália-észlelési modellt hoz létre.
 
 Ez a modul segítséget nyújt olyan modellek létrehozásában, amelyekben könnyű beolvasni az egyik osztályból származó betanítási adatait, például az érvényes tranzakciókat, de nehéz a megcélzó rendellenességeket kielégítő mintákat beolvasni. 
 
@@ -105,8 +105,8 @@ Ez az algoritmus PEM használatával közelíti meg a normál osztályt tartalma
 Minden új bemenetnél az anomália detektor először kiszámítja a eigenvectors való leképezését, majd kiszámítja a normalizált újraépítési hibát. Ez a hiba a rendellenesség pontszáma. Minél nagyobb a hiba, annál rendellenesebb a példány. A normál terület kiszámításának részletes ismertetését a wikipedia: [fő összetevő elemzése](https://wikipedia.org/wiki/Principal_component_analysis)című témakörben tekintheti meg. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 
-A Designer modulokra jellemző hibák listáját [a tervező (előzetes verzió) kivételei és hibakódai](designer-error-codes.md) részben tekintheti meg.
+A Designer modulokra jellemző hibák listáját lásd: [kivételek és hibakódok a tervezőhöz](designer-error-codes.md) .

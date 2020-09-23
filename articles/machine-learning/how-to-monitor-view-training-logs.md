@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649277"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905026"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebből a cikkből megtudhatja, hogyan figyelheti Azure Machine Learning futtatásait, és hogyan tekintheti meg a naplókat. Mielőtt megtekinti a naplókat, először engedélyeznie kell azokat. További információ: [a naplózás engedélyezése az Azure ml-képzésekben](how-to-track-experiments.md).
 
@@ -129,7 +129,7 @@ A naplózási API-k a következő módszerekkel befolyásolhatják a mérőszám
 
 Próbálja ki a következő lépéseket a Azure Machine Learning használatának megismeréséhez:
 
-* Ismerje meg, hogyan [követhet nyomon a kísérleteket, és hogyan engedélyezheti a naplókat a Azure Machine learning Designerben (előzetes verzió)](how-to-track-designer-experiments.md).
+* Ismerje meg, hogyan [követheti nyomon a kísérleteket, és hogyan engedélyezheti a naplókat a Azure Machine learning Designerben](how-to-track-designer-experiments.md).
 
-* Megtudhatja, hogyan regisztrálhat a legjobb modellt, és hogyan helyezheti üzembe az oktatóanyagban, hogyan [taníthatja be a rendszerképek besorolási modelljét Azure Machine learning](tutorial-train-models-with-aml.md).
+* [A képosztályozási modellek Azure Machine Learninggel való betanításával](tutorial-train-models-with-aml.md) kapcsolatos témakörben talál példát arra, hogyan regisztrálhatja a legjobb modellt, és hogyan helyezheti üzembe.
 

@@ -3,12 +3,12 @@ title: A hibrid Kubernetes-fürt figyelésének leállítása | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan állíthatja le a hibrid Kubernetes-fürtök figyelését a tárolók Azure Monitorával.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091198"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986051"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>A hibrid fürt figyelésének leállítása
 
@@ -84,6 +84,25 @@ A konfiguráció módosítása több percet is igénybe vehet. Mivel a Helm a t�
     .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
     ```
 
+#### <a name="using-service-principal"></a>Egyszerű szolgáltatásnév használata
+A szkript *disable-monitoring.ps1* az interaktív eszköz bejelentkezését használja. Ha inkább a nem interaktív bejelentkezést részesíti előnyben, használhat egy meglévő szolgáltatásnevet, vagy létrehozhat egy újat, amely rendelkezik a szükséges engedélyekkel az [Előfeltételek](container-insights-enable-arc-enabled-clusters.md#prerequisites)szakaszban leírtak szerint. Az egyszerű szolgáltatásnév használatához át kell adnia $servicePrincipalClientId, $servicePrincipalClientSecret és $tenantId paramétereket a szolgáltatás enable-monitoring.ps1 parancsfájlhoz használni kívánt egyszerű szolgáltatásnév értékeivel.
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+Például:
+
+```powershell
+\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
+```
+
+
 ### <a name="using-bash"></a>Bash használata
 
 1. Töltse le és mentse a parancsfájlt egy helyi mappába, amely a következő parancsokkal konfigurálja a fürtöt a figyelési bővítmény használatával:
@@ -118,6 +137,24 @@ A konfiguráció módosítása több percet is igénybe vehet. Mivel a Helm a t�
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
     ```
 
-## <a name="next-steps"></a>További lépések
+#### <a name="using-service-principal"></a>Egyszerű szolgáltatásnév használata
+A bash parancsfájl *disable-monitoring.sh* az interaktív eszköz bejelentkezését használja. Ha inkább a nem interaktív bejelentkezést részesíti előnyben, használhat egy meglévő szolgáltatásnevet, vagy létrehozhat egy újat, amely rendelkezik a szükséges engedélyekkel az [Előfeltételek](container-insights-enable-arc-enabled-clusters.md#prerequisites)szakaszban leírtak szerint. Az egyszerű szolgáltatás használatához át kell adnia az ügyfél-azonosító,--Client-Secret és a---bérlő-ID értékeket, amelyeket a bash-szkript *enable-monitoring.sh* kíván használni.
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+Például:
+
+```bash
+bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ha a Log Analytics munkaterület csak a fürt figyelésének támogatására lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../platform/delete-workspace.md)című témakört.

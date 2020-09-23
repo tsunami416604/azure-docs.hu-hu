@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 5929a34ea8fbcbb89f3738ac2a10b14353324b6c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d4ae9d793168a41930a51047caca6e0fb7e923b2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108933"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906041"
 ---
 A *kulcsszókeresés* tároló futtatásához hajtsa végre a következő `docker run` parancsot. Cserélje le az alábbi helyőrzőket a saját értékeire:
 
@@ -26,7 +26,7 @@ A *kulcsszókeresés* tároló futtatásához hajtsa végre a következő `docke
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

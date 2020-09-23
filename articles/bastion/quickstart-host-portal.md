@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0155ae92e3179918273d6a19773aa15b67949ea
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985594"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím és Azure-alapú megerősített kapcsolat használatával
 
@@ -25,7 +25,7 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy
 
 ### <a name="example-values"></a>Példaértékek
 
-|**Name (Név)** | **Érték** |
+|**Név** | **Érték** |
 | --- | --- |
 | Name |  VNet1Bastion |
 | Régió | eastus |
@@ -41,7 +41,7 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy
 
 Amikor egy meglévő virtuális gép használatával hoz létre egy megerősített gazdagépet a portálon, a különböző beállítások automatikusan megegyeznek a virtuális géppel és/vagy a virtuális hálózattal.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
 
    ![virtuális gép beállításai](./media/quickstart-host-portal/vm-settings.png)
 1. A legördülő listából válassza a **Bastion**lehetőséget.
@@ -66,18 +66,18 @@ Amikor egy meglévő virtuális gép használatával hoz létre egy megerősíte
 
    ![megerősített gazdagép létrehozása](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a><a name="connect"></a>Kapcsolódás
+## <a name="connect"></a><a name="connect"></a>Csatlakozni
 
 Miután a megerősített állapotot telepítette a virtuális hálózatra, a képernyő a kapcsolódás lapra változik.
 
 1. Írja be a virtuális gép felhasználónevét és jelszavát. Ezután válassza a **kapcsolat**lehetőséget.
 
-   ![csatlakozásra](./media/quickstart-host-portal/connect.png)
+   ![A képernyőfelvételen a kapcsolat az Azure Bastion használatával párbeszédablak jelenik meg, amely a Felhasználónév és a jelszó megadását kéri.](./media/quickstart-host-portal/connect.png)
 1. Az ehhez a virtuális géphez a Bastion-en keresztül létesített RDP-kapcsolat közvetlenül a Azure Portal (HTML5-n keresztül) lesz megnyitva a 443-es port és a megerősített szolgáltatás használatával.
 
    ![RDP-kapcsolat](./media/quickstart-host-portal/443-rdp.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett a virtuális hálózat és a virtuális gépek használatával, törölje az erőforráscsoportot és a benne található összes erőforrást:
 
@@ -87,7 +87,7 @@ Ha végzett a virtuális hálózat és a virtuális gépek használatával, tör
 
 3. Írja be a *TestRG1* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy megerősített gazdagépet hozott létre a virtuális hálózathoz, majd biztonságosan kapcsolódott egy virtuális géphez a megerősített gazdagépen keresztül.
 

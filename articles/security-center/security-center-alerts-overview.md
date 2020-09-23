@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278139"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905478"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
 A Azure Security Center számos különböző típusú erőforráshoz biztosít riasztásokat. A Security Center riasztásokat hoz létre az Azure-ban üzembe helyezett erőforrásokról, valamint a helyszíni és hibrid felhőalapú környezetekben üzembe helyezett erőforrásokról is.
 
-A biztonsági riasztásokat a speciális észlelések váltották ki, és csak a standard szintű Azure Security Center érhetők el. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítés a **díjszabás & beállítások** lapról végezhető el. További információ a [Security Center díjszabásáról](https://azure.microsoft.com/pricing/details/security-center/).
+A biztonsági riasztásokat a speciális észlelések váltották ki, és csak az Azure Defender esetében érhetők el. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítés a **díjszabás & beállítások** lapról végezhető el. További információ a [Security Center díjszabásáról](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="respond-to-todays-threats"></a>Válasz a mai fenyegetésekre <a name="respond-threats"> </a>
 
@@ -45,7 +45,7 @@ Az incidensek használatával a Security Center egyetlen nézetet biztosít a t�
 
 ## <a name="how-does-security-center-detect-threats"></a>Hogyan ismeri fel Security Center a fenyegetéseket? <a name="detect-threats"> </a>
 
-A Microsoft biztonsági kutatói folyamatosan figyelik a megjelenő fenyegetéseket. A Microsoft globális jelenléte a felhőben és a helyszínen egyaránt a telemetria expanzív készletéhez férhet hozzá. Az adatkészletek széles körű és változatos gyűjteménye lehetővé teszi, hogy az új támadási mintákat és trendeket a helyszíni fogyasztói és nagyvállalati termékekben, valamint a online szolgáltatásokon is felfedezzék. Ennek eredményeképpen a Security Center gyorsan tudja frissíteni az észlelési algoritmusait, igazodva a támadók újabb és egyre összetettebb biztonságirés-kihasználási megoldásaihoz. Ez a módszer segít lépést tartani a fenyegetések gyors ütemben növekvő körével.
+A Microsoft biztonsági kutatói folyamatosan figyelik a megjelenő fenyegetéseket. A felhőben és a helyszínen a globális jelenlétük miatt a telemetria expanzív készletét is elérjük. Az adatkészletek széles körű és változatos gyűjteménye lehetővé teszi, hogy felfedezzék az új támadási mintákat és trendeket a helyszíni fogyasztói és nagyvállalati termékek, valamint a online szolgáltatások között. Ennek eredményeképpen a Security Center gyorsan tudja frissíteni az észlelési algoritmusait, igazodva a támadók újabb és egyre összetettebb biztonságirés-kihasználási megoldásaihoz. Ez a módszer segít lépést tartani a fenyegetések gyors ütemben növekvő körével.
 
 A valós fenyegetések észlelése és a téves pozitív állapotok csökkentése érdekében Security Center gyűjti, elemzi és integrálja az Azure-erőforrások és a hálózat naplófájljait. Együttműködik továbbá a csatlakoztatott partneri megoldásokkal, például a tűzfal-és Endpoint Protection-megoldásokkal. Security Center elemzi ezeket az információkat, és gyakran korrelál több forrásból származó információkat a fenyegetések azonosítása érdekében.
 
@@ -90,6 +90,5 @@ Ezek az összetett erőfeszítések új és továbbfejlesztett észleléseket er
 
 Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információkért lásd:
 
-* [Veszélyforrások elleni védelem Azure Security Center](threat-protection.md) – a Azure Security Center által megjelenített biztonsági riasztások forrásainak rövid leírása 
-* **Biztonsági riasztások az Azure-tevékenység naplójában** – amellett, hogy elérhetővé válnak a Azure Portal vagy programozott módon, a biztonsági riasztások és incidensek naplózása eseményként történik az Azure-beli [tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). További információ az esemény-sémáról: [biztonsági riasztások az Azure-beli tevékenység naplójában](https://go.microsoft.com/fwlink/?linkid=2114113)
+- **Biztonsági riasztások az Azure-tevékenység naplójában** – amellett, hogy elérhetővé válnak a Azure Portal vagy programozott módon, a biztonsági riasztások és incidensek naplózása eseményként történik az Azure-beli [tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). További információ az esemény-sémáról: [biztonsági riasztások az Azure-beli tevékenység naplójában](https://go.microsoft.com/fwlink/?linkid=2114113)
 

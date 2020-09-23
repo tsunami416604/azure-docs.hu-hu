@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927147"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905331"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -115,7 +115,7 @@ A rendszer stabilitásának biztosítása és az egyéni belépésvezérlés meg
 
 Ha olyan kritikus használati esettel rendelkezik, amely a Kube-rendszeren (nem ajánlott) van telepítve, amelyet az egyéni beléptetési webhooknak kell megadnia, akkor az alábbi címkét vagy jegyzetet is hozzáadhatja, hogy a felvételi kényszerítő figyelmen kívül hagyja azt.
 
-Címke: ```"admissions.enforcer/disabled": "true"``` vagy Megjegyzés:```"admissions.enforcer/disabled": true```
+Címke: ```"admissions.enforcer/disabled": "true"``` vagy Megjegyzés: ```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Integrálva van Azure Key Vault AK-val?
 
@@ -163,7 +163,7 @@ De az AK nem javasolja ezt. A frissítéseket ideális esetben kell végrehajtan
 
 Nem, törölje vagy távolítsa el a meghibásodott állapotú csomópontokat, vagy távolítsa el a fürtöt a frissítés előtt.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg:`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg: `[Errno 11001] getaddrinfo failed` 
 
 Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati biztonsági csoporttal (NSG) rendelkeznek még használatban, és a fürthöz vannak társítva.  Távolítsa el őket, és próbálkozzon újra a törléssel.
 
@@ -173,7 +173,11 @@ Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK]
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem működik, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási és a PVC-ket? 
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](./kubernetes-service-principal.md) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](./update-credentials.md).
+Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](./kubernetes-service-principal.md)  -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](./update-credentials.md).
+
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>Lehet nullára méretezni az AK-fürtöt?
+A [futó AK-fürtök teljes mértékben leállíthatók](start-stop-cluster.md), így a megfelelő számítási költségek is megtekinthetők. Emellett dönthet úgy is, hogy az [összes vagy adott `User` csomópont-készletet 0-ra méretezi vagy automatikusan kiméretezi](scale-cluster.md#scale-user-node-pools-to-0) , csak a szükséges fürtkonfiguráció fenntartásával.
+A [rendszercsomópont-készletek](use-system-pools.md) nem méretezhetők közvetlenül a 0 értékre.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Használhatom a virtuálisgép-méretezési csoport API-jait a manuális méretezéshez?
 

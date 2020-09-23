@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 6be2805cab1bcaadb7878be69399e14ffe59d7b0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659742"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904555"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok összekapcsolásának Microsoft Cloud App Security 
 
@@ -48,7 +48,7 @@ Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a
 
 1. Kattintson a **módosítások alkalmazása**lehetőségre.
 
-1. Kiválaszthatja, hogy az Azure Defender (korábban Azure Security Center) riasztásai automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása**területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés**területen módosíthatja az  **aktív szabályok** lapon.
+1. Kiválaszthatja, hogy szeretné-e, hogy az Azure Defender-riasztások automatikusan előállítsák a Azure Security Center az Azure Sentinelben. Az **incidensek létrehozása**területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés**területen módosíthatja az  **aktív szabályok** lapon.
 
 1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityAlert` a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja be a következőt: `McasShadowItReporting` .
 

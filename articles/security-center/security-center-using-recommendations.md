@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569050"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904678"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Az Azure Security Center javaslatainak használata a biztonság növelése érdekében
 
@@ -29,7 +29,7 @@ Security Center automatikusan folyamatos vizsgálatokat futtat az Azure-erőforr
 - Az operációs rendszer biztonsági konfigurációs javaslatai 48 órán belül frissülnek
 - A Endpoint Protection kapcsolatos javaslatok 8 órán belül frissülnek
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 Ebből a forgatókönyvből megtudhatja, Security Center Hogyan csökkentheti a biztonsági incidensek esélyét a Security Center javaslatok figyelésével és a műveletek elvégzésével. A forgatókönyv a Security Center [tervezési és üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)ismertetett fiktív vállalatot, contosot és szerepköröket használja. Ebben a forgatókönyvben a következő personák szerepköreire koncentrálunk:
 
 ![Forgatókönyv szerepkörei](./media/security-center-using-recommendations/scenario-roles.png)
@@ -41,7 +41,7 @@ David, a contoso informatikai biztonsága már kiválasztotta a Security Center 
 
 Security Center automatikusan elemzi a contoso Azure-erőforrásainak biztonsági állapotát, és alkalmazza az alapértelmezett biztonsági házirendeket. Ha Security Center felismeri a lehetséges biztonsági réseket, a biztonsági házirendben beállított vezérlők alapján **javaslatokat** hoz létre. 
 
-David az Azure Security Standard szintű csomagot futtatja az összes előfizetésében, hogy megkapja a rendelkezésre álló javaslatok és biztonsági funkciók teljes csomagját. Jeff az összes olyan meglévő helyszíni kiszolgálót is bevezeti, amely még nem lett áttelepítve a felhőbe, így kihasználhatja Security Center hibrid támogatását a [Windows](quick-onboard-windows-computer.md) -és [Linux](quick-onboard-linux-computer.md) -kiszolgálókon.
+David az Azure Securityt az Azure Defender szolgáltatással együtt futtatja az összes előfizetésében, hogy elérhetővé tegye a rendelkezésre álló javaslatok és biztonsági funkciók teljes csomagját. Jeff az összes olyan meglévő helyszíni kiszolgálót is bevezeti, amely még nem lett áttelepítve a felhőbe, így kihasználhatja Security Center hibrid támogatását a [Windows-és Linux-kiszolgálókon](quickstart-onboard-machines.md).
 
 Jeff egy Felhőbeli számítási feladatok tulajdonosa. Jeff feladata, hogy a contoso biztonsági házirendjeinek megfelelően alkalmazza a biztonsági ellenőrzéseket. 
 
@@ -60,9 +60,9 @@ A napi megfigyelési tevékenységük részeként Jeff bejelentkezik az Azure-ba
 
 3. Jeffnek el kell döntenie, hogy mely ajánlásokat kell először kezelni. Így Jeff a biztonságos pontszámra kattint, és megkezdi az ajánlások kezelését a [biztonságos pontszámának](secure-score-security-controls.md)javítása alapján.
 
-4. Mivel Jeff számos csatlakoztatott virtuális géppel és kiszolgálóval rendelkezik, Jeff úgy dönt, hogy a **számítási és az alkalmazásokra**koncentrál.
+4. Mivel Jeff számos csatlakoztatott virtuális géppel rendelkezik, Jeff úgy dönt, hogy az [eszközök leltárában](asset-inventory.md)lévő gépekre koncentrál.
 
-5. Amikor Jeff a **számítás és az alkalmazások**elemre kattint, megtekinti a javaslatok listáját, és a biztonságos pontszám hatásának megfelelően kezeli őket.
+5. Amikor Jeff megnyitja az eszköz leltárát, megjelenik a javaslatok listája. Jeff a biztonságos pontszám hatásának megfelelően kezeli őket.
 
 6. Jeff számos internetkapcsolattal rendelkező virtuális gépet tartalmaz, és mivel a portok ki vannak téve, aggódnak amiatt, hogy a támadók megszerezhetik a kiszolgálók feletti irányítást. Így Jeff úgy dönt, hogy a virtuális gépek igény szerinti [**elérését**](security-center-just-in-time.md)használja.
 

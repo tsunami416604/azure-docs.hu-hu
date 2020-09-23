@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: bb7ebee67d65ab37dc037437b7c35d8c19c53096
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137025"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898540"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modulja
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal egy regressziós modellt hozhat létre a döntési fák együttese alapján.
 
@@ -102,6 +102,6 @@ A betanítás befejezése után:
 
 + A betanított modell pillanatképének mentéséhez válassza ki a betanítási modult, majd váltson a **kimenetek** lapra a jobb oldali panelen. Kattintson az ikonra a **modell regisztrálása**elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

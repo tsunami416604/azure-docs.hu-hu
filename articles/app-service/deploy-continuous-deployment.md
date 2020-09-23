@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fa30c6c2c3ecd9c9c119fee80b7ef90999e42d30
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962621"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984401"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés Azure App Service
 
@@ -23,7 +23,7 @@ A forrás-ellenőrzési szolgáltatásokkal kapcsolatos további információké
 
 ## <a name="authorize-azure-app-service"></a>Engedélyezés Azure App Service 
 
-Az Azure Repos használatához ellenőrizze, hogy az Azure DevOps-szervezet kapcsolódik-e az Azure-előfizetéséhez. További információkért lásd: [Azure DevOps Services-fiók beállítása, hogy az üzembe helyezhető egy webalkalmazásban](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+Az Azure Repos használatához ellenőrizze, hogy az Azure DevOps-szervezet kapcsolódik-e az Azure-előfizetéséhez. További információkért lásd: [Azure DevOps Services-fiók beállítása, hogy az üzembe helyezhető egy webalkalmazásban](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
 
 A bitbucket vagy a GitHub esetében engedélyezze Azure App Service az adattárhoz való kapcsolódást. Csak egyszer kell engedélyeznie a verziókövetés szolgáltatást. 
 
@@ -58,7 +58,7 @@ A beépített kudu App Service felépíteni a kiszolgálót a GitHub, a bitbucke
 1. A **központi telepítési központ** lapon válassza ki az Ön által jóváhagyott forrásoldali vezérlő szolgáltatót, majd válassza a **Folytatás**lehetőséget. A GitHub vagy a bitbucket esetében a **fiók módosítása** lehetőségre kattintva módosíthatja a hitelesítő fiókot. 
    
    > [!NOTE]
-   > Az Azure Repos használatához ellenőrizze, hogy az Azure DevOps Services-szervezet kapcsolódik-e az Azure-előfizetéséhez. További információkért lásd: [Azure DevOps Services-fiók beállítása, hogy az üzembe helyezhető egy webalkalmazásban](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+   > Az Azure Repos használatához ellenőrizze, hogy az Azure DevOps Services-szervezet kapcsolódik-e az Azure-előfizetéséhez. További információkért lásd: [Azure DevOps Services-fiók beállítása, hogy az üzembe helyezhető egy webalkalmazásban](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
    
 1. A GitHub vagy az Azure Repos esetében a **szolgáltató létrehozása** lapon válassza a **app Service Build szolgáltatás**lehetőséget, majd kattintson a **Folytatás**gombra. A bitbucket mindig a App Service Build szolgáltatást használja.
    
@@ -76,7 +76,7 @@ A beépített kudu App Service felépíteni a kiszolgálót a GitHub, a bitbucke
    - Az Azure Repos esetében válassza ki azt az **Azure DevOps-szervezetet**, **projektet**, **tárházat**és **ágat** , amelyet folyamatosan telepíteni szeretne.
      
      > [!NOTE]
-     > Ha az Azure DevOps-szervezet nem szerepel a felsorolásban, győződjön meg arról, hogy társítva van az Azure-előfizetéséhez. További információkért lásd: [Azure DevOps Services-fiók beállítása, hogy üzembe helyezhető egy webalkalmazásban](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+     > Ha az Azure DevOps-szervezet nem szerepel a felsorolásban, győződjön meg arról, hogy társítva van az Azure-előfizetéséhez. További információkért lásd: [Azure DevOps Services-fiók beállítása, hogy üzembe helyezhető egy webalkalmazásban](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
      
 1. Válassza a **Folytatás**lehetőséget.
    
@@ -110,11 +110,11 @@ Ahhoz Azure App Service, hogy az Azure-folyamatok használatával folyamatos ké
 
 1. A **telepítési központ** lapon válassza a **GitHub** lehetőséget, majd válassza a **Folytatás**lehetőséget. A **GitHub**esetében a **fiók módosítása** lehetőségre kattintva módosíthatja a hitelesített fiókot.
 
-    ![Verziókövetés](media/app-service-continuous-deployment/deployment-center-src-control.png)
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="Képernyőkép a App Service Deployment Center oldalról.":::
    
 1. A **szolgáltató létrehozása** lapon válassza az **Azure-folyamatok (előzetes verzió)** lehetőséget, majd kattintson a **Folytatás**gombra.
 
-    ![Szolgáltató létrehozása](media/app-service-continuous-deployment/select-build-provider.png)
+    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="Képernyőfelvétel: a központi telepítési központ lapja, amelyen az Azure-folyamatok (előzetes verzió) van kiválasztva.":::
    
 1. A **Konfigurálás** lap **kód** területén válassza ki azt a **szervezetet**, **tárat**és **ágat** , amelyet folyamatosan telepíteni kíván, majd válassza a **Folytatás**lehetőséget.
      
@@ -123,11 +123,11 @@ Ahhoz Azure App Service, hogy az Azure-folyamatok használatával folyamatos ké
        
     A **build (létrehozás** ) szakaszban adja meg azt az Azure DevOps-szervezetet, projektet és nyelvi keretrendszert, amelyet az Azure-folyamatoknak használnia kell a Build-feladatok futtatásához, majd válassza a **Folytatás**lehetőséget.
 
-   ![Szolgáltató létrehozása](media/app-service-continuous-deployment/build-configure.png)
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="A Build szakasz képernyőképe, a mezőkben például szöveggel.":::
 
 1. A Build szolgáltató konfigurálása után tekintse át a beállításokat az **Összefoglalás** lapon, majd válassza a **Befejezés**lehetőséget.
 
-   ![Szolgáltató létrehozása](media/app-service-continuous-deployment/summary.png)
+   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="Képernyőkép a központi telepítési központ oldaláról, amely a refresh (frissítés) gombot kiemelve tartalmazza a véglegesítő és központi telepítéseket.":::
    
 1. Új véglegesíti a kiválasztott tárházban és ág-ban, most már folyamatosan üzembe helyezi a App Service. A **központi telepítési központ** lapon nyomon követheti a véglegesítő és központi telepítéseket.
    
@@ -141,11 +141,11 @@ Ahhoz Azure App Service, hogy az Azure-folyamatok használatával folyamatos ké
 
 1. Válassza az **Azure reposs** lehetőséget a **telepítési központ** lapon a forrásoldali vezérlő szolgáltatóként, és válassza a **Folytatás**lehetőséget.
 
-    ![Verziókövetés](media/app-service-continuous-deployment/deployment-center-src-control.png)
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="Képernyőkép a központi telepítési központ oldaláról, amely a folyamatos üzembe helyezés (CI/CD) kijelölését mutatja.":::
 
 1. A **szolgáltató létrehozása** lapon válassza az **Azure-folyamatok (előzetes verzió)** lehetőséget, majd kattintson a **Folytatás**gombra.
 
-    ![Verziókövetés](media/app-service-continuous-deployment/azure-pipelines.png)
+    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="A központi telepítési központ képernyőképe, amelyen az Azure-folyamatok (előzetes verzió) láthatók.":::
 
 1. A **Konfigurálás** lap **kód** területén válassza ki azt a **szervezetet**, **tárat**és **ágat** , amelyet folyamatosan telepíteni kíván, majd válassza a **Folytatás**lehetőséget.
 
@@ -154,11 +154,11 @@ Ahhoz Azure App Service, hogy az Azure-folyamatok használatával folyamatos ké
 
    A **build (létrehozás** ) szakaszban adja meg azt az Azure DevOps-szervezetet, projektet és nyelvi keretrendszert, amelyet az Azure-folyamatoknak használnia kell a Build-feladatok futtatásához, majd válassza a **Folytatás**lehetőséget.
 
-   ![Szolgáltató létrehozása](media/app-service-continuous-deployment/build-configure.png)
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Képernyőkép a Buildről, amely az Azure DevOps-szervezet és a Project mezőinek kitöltését mutatja be példákkal.":::
 
 1. A Build szolgáltató konfigurálása után tekintse át a beállításokat az **Összefoglalás** lapon, majd válassza a **Befejezés**lehetőséget.  
      
-   ![Szolgáltató létrehozása](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="A kiválasztott beállításokat az összefoglalás lapon ábrázoló képernyőkép.":::
 
 1. Új véglegesíti a kiválasztott tárházban és ág-ban, most már folyamatosan üzembe helyezi a App Service. A **központi telepítési központ** lapon nyomon követheti a véglegesítő és központi telepítéseket.
 
@@ -174,7 +174,7 @@ A folyamatos üzembe helyezés letiltásához válassza a **Leválasztás** lehe
 
 Windows-alkalmazások esetén manuálisan is konfigurálhatja a folyamatos üzembe helyezést egy olyan felhőalapú git-vagy Mercurial-adattárból, amelyet a portál közvetlenül nem támogat, például [GitLab](https://gitlab.com/). Ezt úgy teheti meg, hogy kijelöli a külső mezőt a **központi telepítési központ** lapon. További információ: a [folyamatos üzembe helyezés beállítása manuális lépésekkel](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * [A folyamatos üzembe helyezéssel kapcsolatos gyakori problémák vizsgálata](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Azure PowerShell használatával](/powershell/azure/)

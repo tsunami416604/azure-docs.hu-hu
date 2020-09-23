@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Health áttekintése
-description: A Azure Resource Health áttekintése
+description: Ismerje meg, hogyan segít a Azure Resource Health az Azure-erőforrásokat érintő szolgáltatási problémák diagnosztizálásában és támogatásában.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041574"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967867"
 ---
 # <a name="resource-health-overview"></a>Resource Health áttekintése
  
@@ -36,7 +36,7 @@ Az *elérhető* érték azt jelenti, hogy nem észlelhetők olyan események, am
 
 A nem *érhető el* érték azt jelenti, hogy a szolgáltatás egy folyamatos platformot észlelt, vagy az erőforrás állapotát befolyásoló nem platformos eseményt.
 
-#### <a name="platform-events"></a>Platform eseményei
+#### <a name="platform-events"></a>Platformesemények
 
 A platform eseményeire az Azure-infrastruktúra több összetevője is aktiválódik. Ezek közé tartoznak az ütemezett műveletek (például a tervezett karbantartás) és a váratlan incidensek (például egy nem tervezett gazdagép újraindítása vagy csökkentett teljesítményű gazdagép hardvere, amelyet egy adott időablak után kell ellátni).
 
@@ -94,7 +94,7 @@ A Resource Health a **minden szolgáltatás** lehetőség kiválasztásával és
 
 ![Resource Health megnyitása a "minden szolgáltatás"](./media/resource-health-overview/FromOtherServices.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át ezeket a hivatkozásokat, hogy többet tudjon meg a Resource Healthról:
 -  [Erőforrástípusok és állapot-ellenőrzések Azure Resource Health](resource-health-checks-resource-types.md)

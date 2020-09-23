@@ -1,25 +1,24 @@
 ---
 title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
-ms.date: 06/17/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044192"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905983"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
-Azure Policy segít a szervezeti szabványok betartatásában és a megfelelőségi követelmények kiértékelésében. A megfelelőségi irányítópulton egy összesített nézetet biztosít a környezet általános állapotának kiértékeléséhez, amely lehetővé teszi az erőforrás-alapú, a házirendek részletességét. Emellett a meglévő erőforrások tömeges szervizelésével és az új erőforrások automatikus szervizelésével is lehetővé teszi az erőforrások megfelelőségét.
+Az Azure Policy segít a szervezeti szabványok betartatásában és a megfelelőségi követelmények nagy léptékű kiértékelésében. A megfelelőségi irányítópulton egy összesített nézetet biztosít a környezet általános állapotának kiértékeléséhez, amely lehetővé teszi az erőforrás-alapú, a házirendek részletességét. Emellett a meglévő erőforrások tömeges szervizelésével és az új erőforrások automatikus szervizelésével is lehetővé teszi az erőforrások megfelelőségét.
 
 A Azure Policy gyakori használati esetei közé tartozik az erőforrás-konzisztencia megvalósítása, a szabályozások megfelelősége, a biztonság, a költséghatékonyság és a felügyelet. Ezeknek a gyakori használati eseteknek a szabályzat-definíciói már elérhetők az Azure-környezetben olyan beépített modulként, amely segítséget nyújt az első lépésekhez.
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Policy kiértékeli az erőforrásokat az Azure-ban az erőforrások tulajdonságainak az üzleti szabályokhoz való összehasonlításával. A [JSON formátumban](./concepts/definition-structure.md)leírt üzleti szabályok [szabályzat-definíciók](#policy-definition). A felügyelet egyszerűsítése érdekében több üzleti szabály is csoportosítható egy [házirend-kezdeményezés](#initiative-definition) (más néven _policySet_) formájában. Az üzleti szabályok létrejötte után a házirend-definíció vagy kezdeményezés az Azure által támogatott összes erőforrás-hatókörhöz [hozzá van rendelve](#assignments) , például [felügyeleti csoportok](../management-groups/overview.md), előfizetések, [erőforráscsoportok](../../azure-resource-manager/management/overview.md#resource-groups)vagy egyedi erőforrások. A hozzárendelés az adott hozzárendelés [hatókörén](../../azure-resource-manager/management/overview.md#understand-scope) belüli összes erőforrásra vonatkozik.
-Ha szükséges, az alhatókörök kizárható.
+Azure Policy kiértékeli az erőforrásokat az Azure-ban az erőforrások tulajdonságainak az üzleti szabályokhoz való összehasonlításával. A [JSON formátumban](./concepts/definition-structure.md)leírt üzleti szabályok [szabályzat-definíciók](#policy-definition). A felügyelet egyszerűsítése érdekében több üzleti szabály is csoportosítható egy [házirend-kezdeményezés](#initiative-definition) (más néven _policySet_) formájában. Az üzleti szabályok létrejötte után a házirend-definíció vagy kezdeményezés az Azure által támogatott összes erőforrás-hatókörhöz [hozzá van rendelve](#assignments) , például [felügyeleti csoportok](../management-groups/overview.md), előfizetések, [erőforráscsoportok](../../azure-resource-manager/management/overview.md#resource-groups)vagy egyedi erőforrások. A hozzárendelés az adott hozzárendelés [Resource Manager-hatókörében](../../azure-resource-manager/management/overview.md#understand-scope) lévő összes erőforrásra vonatkozik. Ha szükséges, az alhatókörök kizárható. További információ: [scope in Azure Policy](./concepts/scope.md).
 
 A Azure Policy [JSON-formátumban formázza](./concepts/definition-structure.md) a kiértékelés által használt logikát annak megállapításához, hogy az erőforrás megfelel-e vagy sem. A definíciók közé tartoznak a metaadatok és a házirend-szabály. A definiált szabály a függvények, paraméterek, logikai operátorok, feltételek és tulajdonság- [aliasok](./concepts/definition-structure.md#aliases) használatával pontosan megfelel a kívánt forgatókönyvnek. A házirend-szabály meghatározza, hogy mely erőforrások legyenek kiértékelve a hozzárendelés hatókörében.
 
@@ -71,7 +70,7 @@ A RBAC és a Azure Policy kombinációja teljes hatókör-vezérlést biztosít 
 Az Azure Policy több engedéllyel (más néven művelettel) rendelkezik két erőforrás-szolgáltatóban:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft. PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
 Számos beépített szerepkör oszt ki engedélyeket Azure Policy-erőforrásoknak. Az **erőforrás-házirend közreműködői** szerepkör a legtöbb Azure Policy műveletet tartalmazza. A **tulajdonos** teljes körű jogosultságokkal rendelkezik. Mind a **közreműködő** , mind az **olvasó** hozzáfér az összes _olvasási_ Azure Policy művelethez. A **közreműködő** erőforrás-szervizelést indíthat, de nem _hozhat létre_ definíciókat vagy hozzárendeléseket.
 
@@ -147,7 +146,7 @@ Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióho
 
 | Szabályzat | Paraméter neve |Paraméter típusa  |Megjegyzés |
 |---|---|---|---|
-| A szabályzat | allowedLocations | tömb  |Ez a paraméter sztringek listáját várja értékként, mivel a paraméter típusa tömbként lett megadva |
+| A szabályzat | allowedLocations | array  |Ez a paraméter sztringek listáját várja értékként, mivel a paraméter típusa tömbként lett megadva |
 | B szabályzat | allowedSingleLocation |sztring |Ez a paraméter egy szót vár értékként, mivel a paraméter típusa sztringként lett megadva |
 
 Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdeményezési paramétereinek megadására:
@@ -174,7 +173,7 @@ A hozzárendelések portálon keresztüli beállításával kapcsolatos további
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 

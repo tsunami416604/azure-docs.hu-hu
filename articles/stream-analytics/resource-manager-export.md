@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043529"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906241"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics-feladatok exportálása Azure Resource Manager sablon
 
@@ -28,7 +28,7 @@ Ha a feladatot egy helyi projektbe szeretné exportálni, keresse meg az export�
 
 ![Stream Analytics-feladatok megnyitása a Visual Studio Code-ban](./media/resource-manager-export/open-job-vs-code.png)
 
-A Visual Studio Code Stream Analytics feladatok kezelésével kapcsolatos további információkért tekintse meg a [Visual Studio Code](quick-create-vs-code.md)gyors útmutatóját.
+A Visual Studio Code Stream Analytics feladatok kezelésével kapcsolatos további információkért tekintse meg a [Visual Studio Code](quick-create-visual-studio-code.md)gyors útmutatóját.
 
 ## <a name="compile-the-script"></a>A szkript fordítása 
 
@@ -42,7 +42,7 @@ A következő lépés a feladatok parancsfájljának lefordítása egy Azure Res
 
 1. Figyelje meg, hogy az **üzembe helyezési** mappa megjelenik a stream Analytics feladatok munkaterületen.
 
-1. Ismerkedjen *meg a fájlJobTemplate.jsával* , amely az üzembe helyezéséhez használt Azure Resource Management-sablon.
+1. Ismerkedjen * meg a fájlJobTemplate.jsával* , amely az üzembe helyezéséhez használt Azure Resource Management-sablon.
 
 ## <a name="complete-the-parameters-file"></a>A parameters (paraméterek) fájl befejezése
 
@@ -66,7 +66,7 @@ Ha nincs Azure PowerShell konfigurálva, kövesse az [Azure PowerShell modul tel
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics feladatok helyi tesztelése élő bevitelsel a Visual Studio Code használatával](visual-studio-code-local-run-live-input.md)
 

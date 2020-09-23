@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/18/2020
-ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984894"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898625"
 ---
 # <a name="create-python-model-module"></a>Python-modell modul létrehozása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ismerje meg, hogyan hozhat létre egy nem betanított modellt egy Python-szkriptből a Python-modell létrehozása modul használatával. A modellt a Azure Machine Learning Designer-környezetben található Python-csomagban szereplő bármelyik tanulón alapozhatja. 
 
@@ -131,6 +131,6 @@ Ez a cikk bemutatja, hogyan használható a **Python-modell létrehozása** egys
 
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
