@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000587"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980737"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
 
@@ -35,7 +35,7 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
 1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
     > [!div class="mx-imgBorder"]
-    > ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > ![A Digital Distribution Center alkalmazás sablonjának kijelölését bemutató képernyőkép](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
 2. Válassza a **kereskedelem** fület, és válassza az alkalmazás **létrehozása** a **digitális terjesztési központ alkalmazás** alatt elemet.
 
@@ -46,10 +46,10 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
    **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
     > [!div class="mx-imgBorder"]
-    > ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![Képernyőfelvétel: alkalmazás létrehozása a Digital Distribution Center Application sablonból](./media/tutorial-iot-central-ddc/ddc-create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![Digitális disztribúció számlázási adatai](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![Az alkalmazás létrehozásakor a számlázási beállításokat ábrázoló képernyőkép](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Az alkalmazás irányítópultjának átjárása 
 
@@ -62,31 +62,31 @@ Az irányítópult logikailag úgy van rendszerezve, hogy megjelenjen az Azure I
    * A megoldás részét képező összes kamera kezelése. 
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![A Digital Distribution Center irányítópultját ábrázoló képernyőfelvétel](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>Eszköz sablonja
 
 Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képességének modelljét. A képességi modell két különböző interfész **kamera** és **digitális terjesztési átjáró** köré szerveződik
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Az alkalmazásban található Digital Distribution Gateway-eszköz sablonját ábrázoló képernyőfelvétel](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **Kamera** – ez a felület az összes kamera-specifikus parancssori funkciót rendszerezi 
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![A Digital Distribution Gateway eszköz sablonjának kamera felületét ábrázoló képernyőkép](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **Digital Distribution Gateway** – ez az interfész a fényképezőgépből, a felhőben definiált eszköz Twin tulajdonságaiból és az átjáró adataiból származó összes telemetria jelöli.
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Képernyőfelvétel: a Digital Distribution Gateway Interface a Digital Distribution Gateway Device sablonban](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>Átjáró parancsai
 Ez a felület az összes átjáró-parancs funkcióját rendszerezi
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![A Digital Distribution Gateway-eszköz sablonjának átjáró parancsai felületét ábrázoló képernyőkép](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>Szabályok
 Válassza a szabályok lapot az alkalmazás sablonjában található két különböző szabály megjelenítéséhez. Ezek a szabályok úgy vannak konfigurálva, hogy e-mail-értesítéseket küldjön a kezelőknek további vizsgálatokra.
@@ -96,7 +96,7 @@ Válassza a szabályok lapot az alkalmazás sablonjában található két külö
 **Nagyméretű csomag** – ez a szabály akkor aktiválódik, ha a kamera olyan hatalmas csomagot észlel, amely nem vizsgálható meg a minőség tekintetében. 
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![A Digital Distribution Center alkalmazásban található szabályok listáját bemutató képernyőkép](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>Feladatok
 Válassza a feladatok fület az alkalmazás sablonjának részeként öt különböző feladat megjelenítéséhez: a feladatok funkció kihasználható az egész megoldásra kiterjedő műveletek végrehajtásához. Itt a Digital Distribution Center-feladatok az eszköz parancsaival & Twin képességgel végezhetnek feladatokat, például
@@ -105,15 +105,17 @@ Válassza a feladatok fület az alkalmazás sablonjának részeként öt külön
    * az adatfeltöltés kezelése telemetria intervallumának módosítása
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![A Digital Distribution Center alkalmazásban található feladatok listáját bemutató képernyőkép](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti** > **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés**gombra.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti**  >  **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés**gombra.
 
 > [!div class="mx-imgBorder"]
-> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![Képernyőfelvétel az alkalmazás törléséről, ha elkészült vele](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
-## <a name="next-steps"></a>További lépések
-* További információ a Digital Distribution Center Solution Architecture [Digital Distribution Center koncepcióról](./architecture-digital-distribution-center.md)
+## <a name="next-steps"></a>Következő lépések
+* További információ a Digital Distribution Center megoldási architektúráról 
+> [!div class="nextstepaction"]
+> [a Digital Distribution Center koncepciója](./architecture-digital-distribution-center.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

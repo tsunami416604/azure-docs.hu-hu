@@ -3,12 +3,12 @@ title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973794"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -23,7 +23,7 @@ Ha hozzá kívánja adni az Application Insights megoldást ASP.NET-webhelyéhez
     - ASP.NET és webes fejlesztés (ne törölje a választható összetevőket)
     - Azure-fejlesztés
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
 
@@ -42,7 +42,7 @@ Az Application Insights konfigurációs képernyőjén:
 
 Válassza az első **lépések**lehetőséget.
 
-![Képernyőkép az alkalmazásregisztrációs szakaszról az Application Insights oldalon](./media/asp-net/00004-start-free.png)
+![Képernyőfelvétel: a Application Insights lap és az első lépések gomb.](./media/asp-net/00004-start-free.png)
 
 Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának helyét, kattintson a **Configure settings** (Beállítások konfigurálása) lehetőségre. Az erőforráscsoportok az adatokhoz való hozzáférés szabályozásához használhatóak. Ha például több alkalmazása is van, amelyek egy adott rendszer részét képezik, azok Application Insights-adatait ugyanabba az erőforráscsoportba helyezheti.
 
@@ -104,7 +104,7 @@ Továbbra is elemezheti a telemetria a [Visual Studióban](./visual-studio.md), 
 >
 >
 
-## <a name="youre-all-set"></a><a name="land"></a>Készen áll
+## <a name="youre-all-set"></a><a name="land"></a> Készen áll
 
 Gratulálunk! Telepítette az Application Insights csomagot az alkalmazásba, és konfigurálta, hogy telemetriát küldjön az Application Insights szolgáltatásba az Azure-ban.
 
@@ -119,7 +119,7 @@ Az SDK új verziójára való frissítéshez nyissa meg a **NuGet csomagkezelő 
 
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt. Ezután egyesítse a módosításait az új verzióval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További témaköröket is elolvashat, ha a következők érdeklik:
 

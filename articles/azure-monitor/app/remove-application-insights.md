@@ -3,12 +3,12 @@ title: Application Insights eltávolítása a Visual Studióban – Azure Monito
 description: A ASP.NET és a ASP.NET Core Application Insights SDK eltávolítása a Visual Studióban.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049775"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981473"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights eltávolítása a Visual Studióban
 
@@ -66,11 +66,11 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
 
 1. Válassza az **Eltávolítás** lehetőséget.
     
-    ![Jelölje be a függőségek eltávolítása, majd az Eltávolítás elemet.](./media/remove-application-insights/uninstall-framework.png)
+    ![Képernyőfelvétel: a Microsoft. ApplicationInsights. Web ablak, melyben a függőségek eltávolítása és a Kiemelt eltávolítás van kijelölve.](./media/remove-application-insights/uninstall-framework.png)
 
     Ekkor megjelenik egy párbeszédpanel, amely megjeleníti az alkalmazásból eltávolítandó összes függőséget.Az eltávolításhoz kattintson **az OK gombra**   .
     
-    ![Jelölje be a függőségek eltávolítása, majd az Eltávolítás elemet.](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![A képernyőképen egy párbeszédpanel jelenik meg, amelyen az eltávolítandó függőségek jelennek meg.](./media/remove-application-insights/preview-uninstall-framework.png)
     
 1.  Az eltávolítás után a *megoldáskezelő*a "ApplicationInsights.config" és a "AiHandleErrorAttribute.cs" is megjelenik.A két fájlt manuálisan is törölheti.
 
@@ -227,6 +227,6 @@ Ha Application Insights Telemetriat ad hozzá egy Visual Studio ASP.NET Core-sab
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Monitor](../overview.md)

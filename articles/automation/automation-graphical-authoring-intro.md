@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186333"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987332"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
 
@@ -61,7 +61,7 @@ Válasszon ki egy tevékenységet a vásznon a tulajdonságok és paraméterek k
 
 A beállításhalmaz meghatározza azokat a kötelező és választható paramétereket, amelyek egy adott parancsmag értékeit fogadják el. Minden parancsmaghoz legalább egy paraméter van beállítva, néhány pedig több készlettel rendelkezik. Ha egy parancsmagnak több paramétere is van, akkor a paraméterek konfigurálása előtt ki kell választania a használni kívánt elemet. A tevékenység által használt paramétereket megváltoztathatja a **set paraméter** kiválasztásával és egy másik készlet kiválasztásával. Ebben az esetben a már konfigurált paraméterek értékei elvesznek.
 
-A következő példában a [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) parancsmag három paraméter-készlettel rendelkezik. A példa egy **ListVirtualMachineInResourceGroupParamSet**nevű készletet használ egyetlen opcionális paraméterrel, amely egy erőforráscsoport összes virtuális gépének visszaadása. A példa a **GetVirtualMachineInResourceGroupParamSet** paramétert is használja a visszaadni kívánt virtuális gép megadásához. A készlet két kötelező paraméterrel és egy opcionális paraméterrel rendelkezik.
+A következő példában a [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) parancsmag három paraméter-készlettel rendelkezik. A példa egy **ListVirtualMachineInResourceGroupParamSet**nevű készletet használ egyetlen opcionális paraméterrel, amely egy erőforráscsoport összes virtuális gépének visszaadása. A példa a **GetVirtualMachineInResourceGroupParamSet** paramétert is használja a visszaadni kívánt virtuális gép megadásához. A készlet két kötelező paraméterrel és egy opcionális paraméterrel rendelkezik.
 
 ![Paraméter beállítva](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -91,11 +91,11 @@ Egy tevékenység újrapróbálkozási funkciója lehetővé teszi, hogy többsz
 
 Ha engedélyezi az újrapróbálkozást egy tevékenységhez, beállíthatja a késést és a feltételt. A késleltetés az az idő (másodpercben vagy percben mérve), ameddig a runbook megvárja a tevékenység ismételt futtatása előtt. Ha nem ad meg késleltetést, a tevékenység a befejeződése után azonnal elindul.
 
-![Tevékenység újrapróbálkozási késleltetése](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="Képernyőfelvétel: az újrapróbálkozási funkció beállításainak engedélyezése.":::
 
 Az újrapróbálkozási feltétel egy PowerShell-kifejezés, amelyet a rendszer a tevékenység futtatásakor értékel ki. Ha a kifejezés True (igaz) értékre oldódik, a tevékenység újra lefut. Ha a kifejezés hamis értéket ad vissza, a tevékenység nem fut újra, és a runbook a következő tevékenységre lép.
 
-![Tevékenység újrapróbálkozási késleltetése](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Képernyőfelvétel: az Újrapróbálkozás, amíg ez a feltétel igaz mező, és példák az újrapróbálkozási feltételben használható PowerShell-kifejezésekre.":::
 
 Az újrapróbálkozási feltétel olyan nevű változót használhat `RetryData` , amely hozzáférést biztosít a tevékenység újrapróbálkozásával kapcsolatos információkhoz. Ez a változó a következő táblázatban található tulajdonságokkal rendelkezik:
 
@@ -430,9 +430,9 @@ Tegye közzé a grafikus runbook úgy, hogy megnyitja a runbook a szerkesztéshe
 
 Lehetősége van arra, hogy visszaállítson egy runbook közzétett verzióját. A művelet eldönti, hogy milyen módosításokat hajtottak végre a runbook legutóbbi közzététele óta. Lecseréli a runbook Piszkozat verzióját a közzétett verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A grafikus runbookok megkezdéséhez tekintse meg az [oktatóanyag: grafikus Runbook létrehozása](learn/automation-tutorial-runbook-graphical.md)című témakört.
 * Ha többet szeretne megtudni a runbook típusairól és azok előnyeiről és korlátairól, tekintse meg a [Azure Automation runbook-típusok](automation-runbook-types.md)című témakört.
 * Az Automation futtató fiók használatával végzett hitelesítés megismeréséhez lásd: [futtató fiók](automation-security-overview.md#run-as-account).
-* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

@@ -7,20 +7,20 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 1202e46f2ea12db62062ac50b8e83b51fe9e5ca0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89428126"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974417"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával (örökölt)
 
 > [!Note]
 > Ez a cikk a IoT Central korábbi adatexportálási funkcióit ismerteti.
 >
-> - Az új előzetes verziójú adatexportálási funkciókkal kapcsolatos további információkért lásd: a [IoT-adatok exportálása a Felhőbeli célhelyekre az adatok exportálása (előzetes verzió) használatával](./howto-export-data.md).
-> - Az előzetes verziójú adatexportálás és az örökölt adatexportálási funkciók közötti különbségekről az [összehasonlítási táblázatban](./howto-export-data.md#comparison-of-legacy-data-export-and-preview-data-export)talál további információt.
+> - Az új előzetes verziójú adatexportálási funkciókkal kapcsolatos további információkért lásd: [IoT-adatok exportálása a Felhőbeli célhelyekre az adatok exportálása használatával](./howto-export-data.md).
+> - Az előzetes verziójú adatexportálás és az örökölt adatexportálási funkciók közötti különbségekről az [összehasonlítási táblázatban](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)talál további információt.
 
 Ez a cikk az Azure IoT Central adatexportálási funkciójának használatát ismerteti. Ezzel a szolgáltatással folyamatosan exportálhatja az adatait az **azure Event Hubsba**, **Azure Service Busba**vagy **Azure Blob Storage** -példányba. Az adatexportálás JSON-formátumot használ, és tartalmazhatja a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
 
@@ -113,7 +113,7 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
 
 7. Az **exportálni**kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a**típust be értékre állítja.
 
-8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Válassza a **Mentés** lehetőséget.
+8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Kattintson a **Mentés** gombra.
 
 9. Néhány perc elteltével az adatai megjelennek a kiválasztott célhelyen.
 
@@ -298,7 +298,7 @@ Ez a pillanatkép egy példaként szolgáló üzenet, amely megjeleníti az eszk
 }
 ```
 
-## <a name="device-templates"></a>Eszközök sablonjai
+## <a name="device-templates"></a>Eszközsablonok
 
 Minden üzenet-vagy pillanatkép-rekord egy közzétett sablon egy vagy több módosítását jelöli a legutóbbi exportált üzenet óta. Az egyes üzenetekben vagy rekordokban küldött információk a következők:
 

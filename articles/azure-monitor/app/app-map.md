@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936605"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974036"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -34,7 +34,7 @@ Ha a "Térkép-összetevők frissítése" gombra kattint, a Térkép frissül az
 
 Ha az összes összetevő szerepkör egyetlen Application Insights erőforráson belül van, akkor ez a felderítési lépés nem szükséges. Az ilyen alkalmazások kezdeti terhelése az összes összetevőjét tartalmazni fogja.
 
-![Alkalmazás-Térkép képernyőképe](media/app-map/app-map-001.png)
+![A képernyőképen egy példa látható az alkalmazás-hozzárendelésre.](media/app-map/app-map-001.png)
 
 Ennek a tapasztalatnak az egyik fő célja, hogy képes legyen a több száz összetevővel rendelkező összetett topológiák megjelenítésére.
 
@@ -293,7 +293,7 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](correlation.md).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.

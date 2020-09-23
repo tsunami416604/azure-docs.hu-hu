@@ -3,12 +3,12 @@ title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMWare megoldás használatával
 ms.topic: tutorial
 ms.date: 09/07/2020
-ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512367"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985939"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése az Azure-ban
 
@@ -76,14 +76,24 @@ azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
-## <a name="delete-a-private-cloud-azure-portal"></a>Privát felhő törlése (Azure Portal)
+## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware-megoldás saját felhő törlése
 
-Ha rendelkezik olyan Azure VMware-megoldással, amelyet már nem kell használnia, törölheti. Ha töröl egy privát felhőt, a rendszer minden fürtöt töröl az összes összetevővel együtt.
-
-Ehhez navigáljon a privát felhőhöz a Azure Portalban, és válassza a **Törlés**lehetőséget. A jóváhagyás lapon erősítse meg a saját felhő nevét, és válassza az **Igen**lehetőséget.
+Ha rendelkezik olyan Azure VMware-megoldással, amelyet már nem kell használnia, törölheti. Az Azure VMware-megoldás saját felhője egy elkülönített hálózati tartományt, egy vagy több dedikált vSphere-fürtöt, és általában sok virtuális gépet tartalmaz. Ha töröl egy privát felhőt, a rendszer törli az összes virtuális gépet, az adatmennyiséget és a fürtöket. A dedikált operációs rendszer nélküli csomópontok biztonságosan törlődnek, és az ingyenes készletbe kerülnek vissza. Az ügyfél számára kiosztott hálózati tartomány törölve lett.  
 
 > [!CAUTION]
-> A privát felhő törlése visszafordíthatatlan művelet. A privát felhő törlése után az adatok nem állíthatók helyre, mivel az összes futó munkaterhelést, összetevőt és megsemmisítést végez, és megsemmisíti az összes személyes Felhőbeli adatát és konfigurációs beállítását, beleértve a nyilvános IP-címeket is. 
+> A privát felhő törlése visszafordíthatatlan művelet. A privát felhő törlése után az adatok nem állíthatók helyre, mivel leállítja az összes futó munkaterhelést és összetevőt, és megsemmisíti az összes titkos Felhőbeli adat-és konfigurációs beállítást, beleértve a nyilvános IP-címeket is.
+
+### <a name="prerequisites"></a>Előfeltételek
+
+A privát felhő törlése után nem lehet helyreállítani a virtuális gépeket és az azokhoz tartozó adatokat. Ha később szükség lesz a virtuális gépekre, a rendszergazdának először biztonsági másolatot kell készítenie az összes adattal a saját felhő törlése előtt.
+
+### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Azure-beli VMware-megoldás saját Felhőbeli törlésének lépései
+
+1. Nyissa meg a Azure Portal Azure VMware Solutions lapját.
+
+2. Válassza ki a törölni kívánt privát felhőt.
+ 
+3. Adja meg a privát felhő nevét, és válassza az **Igen**lehetőséget. A törlési folyamat néhány órán belül befejeződik.  
 
 ## <a name="next-steps"></a>További lépések
 
@@ -91,7 +101,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Azure VMware-megoldás saját felhő létrehozása
-> * Ellenőrizte a saját felhő üzembe helyezését
+> * A privát felhő üzembe helyezésének ellenőrzése
+> * Azure VMware-megoldás saját felhő törlése
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre virtuális hálózatot a saját felhőhöz való használatra a saját felhőalapú fürtök helyi felügyeletének beállításának részeként.
 

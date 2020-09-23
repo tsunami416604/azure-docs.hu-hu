@@ -3,12 +3,12 @@ title: A Windows rendszer állapotának biztonsági mentése az Azure-ba
 description: Ismerje meg, hogyan készíthet biztonsági mentést a Windows Server rendszerű számítógépek rendszerállapotáról az Azure-ba.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975490"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
 
@@ -40,7 +40,7 @@ A Recovery Services-tároló létrehozásakor győződjön meg róla, hogy a tá
 
     ![Tárolási konfiguráció lehetőségei](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a **georedundáns** beállítás használatát. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amely csökkenti az Azure Storage költségeit. A [georedundáns](../storage/common/storage-redundancy.md) és a [helyileg redundáns](../storage/common/storage-redundancy.md) tárolási lehetőségekről többet olvashat ebben a [Tárhely-redundancia áttekintésben](../storage/common/storage-redundancy.md).
+    Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a **georedundáns** beállítás használatát. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amely csökkenti az Azure Storage költségeit. További információ a tárterület [-redundáns](../storage/common/storage-redundancy.md#geo-redundant-storage), [helyileg redundáns](../storage/common/storage-redundancy.md#locally-redundant-storage) és [zónákra redundáns](../storage/common/storage-redundancy.md#zone-redundant-storage) tárolási lehetőségekről a [tárolási redundancia áttekintésében](../storage/common/storage-redundancy.md).
 
 Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapotának biztonsági mentésére.
 

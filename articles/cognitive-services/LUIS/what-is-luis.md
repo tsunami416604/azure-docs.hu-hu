@@ -1,24 +1,24 @@
 ---
 title: Mi a Language Understanding (LUIS)?
 description: Language Understanding (LUIS) – felhőalapú API-szolgáltatás gépi tanulással, természetes nyelvvel, a jelentés és az adatok kinyerése érdekében.
-keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, természetes nyelvi megértés, NLU, AI-beszélgetés, társalgási AI, AI Csevegőrobot, Csevegőrobot Maker, LUIS, NLP AI, Luis AI, Azure Luis, természetes nyelv megismerése
+keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, természetes nyelvi megértés, NLU, LUIS, társalgási AI, AI Csevegőrobot, NLP AI, Azure Luis
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400942"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985862"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-A Language Understanding (LUIS) egy olyan felhőalapú API-szolgáltatás, amely egyéni gépi tanulási intelligenciát használ a felhasználó párbeszédszerű, természetes nyelvi szövege általános jelentésének megállapítására, valamint a releváns, részletes információk kinyerésére.
+Language Understanding (LUIS) egy felhőalapú társalgási szolgáltatás, amely egyéni gépi tanulási intelligenciát alkalmaz a felhasználó társalgási, természetes nyelvű szövegére az általános jelentés kiszámításához, valamint a releváns és részletes információk lekéréséhez.
 
-A LUIS ügyfélalkalmazása lehet bármely beszélgetési alkalmazás, amely a felhasználóval természetes nyelven kommunikál egy adott feladat végrehajtásához. Az ügyfélalkalmazások közé sorolhatók például a közösségimédia-alkalmazások, a csevegőrobotok és a beszédalapú asztali alkalmazások.
+A LUIS ügyfélalkalmazása lehet bármely beszélgetési alkalmazás, amely a felhasználóval természetes nyelven kommunikál egy adott feladat végrehajtásához. Ilyenek például a közösségi multimédia alkalmazások, az AI csevegőrobotok és a beszédfelismerést támogató asztali alkalmazások.
 
 ![A Cognitive Services Language Understanding (LUIS)-vel dolgozó 3 ügyfélalkalmazás fogalmi képe](./media/luis-overview/luis-entry-point.png "A Cognitive Services Language Understanding (LUIS)-vel dolgozó 3 ügyfélalkalmazás fogalmi képe")
 
@@ -26,12 +26,12 @@ A LUIS ügyfélalkalmazása lehet bármely beszélgetési alkalmazás, amely a f
 
 <a name="Accessing-LUIS"></a>
 
-A LUIS alkalmazás közzététele után az ügyfélalkalmazás kimondott szöveget (szöveg) küld a LUIS természetes nyelvi feldolgozási végpont [API-jának][endpoint-apis], és az eredményeket JSON-válaszok formájában kapja meg. A csevegőrobotok a LUIS gyakori ügyfélalkalmazásai.
+Miután közzétette az Azure LUIS alkalmazást, egy ügyfélalkalmazás hosszúságú kimondott szöveg (Text) küld a LUIS Natural Language Processing Endpoint [API][endpoint-apis] -nak, és JSON-válaszként fogadja az eredményeket. A csevegőrobotok a LUIS gyakori ügyfélalkalmazásai.
 
 
 ![A LUIS elméleti ábrázolása a csevegő használatával a természetes nyelvi megértést (NLP) használó felhasználói szöveg előrejelzéséhez](./media/luis-overview/LUIS-chat-bot-request-response.svg "A LUIS-vel kapcsolatos elméleti képek a csevegő használatával a természetes nyelvi megértéssel (NLP")
 
-|Lépés|Művelet|
+|Lépés|Műveletek|
 |:--|:--|
 |1|Az ügyfélalkalmazás a következő felhasználói _kimondott szöveget_ (saját szavaikkal megfogalmazott szöveg) küldi el HTTP-kérésként a LUIS-végpontnak: „Fel szeretném hívni a HR képviselőmet.”|
 |2|A LUIS lehetővé teszi, hogy egyéni nyelvi modelljeit az alkalmazáshoz való intelligenciával bővítse. A gépi megtanult nyelvi modellek a felhasználó strukturálatlan bemeneti szövegét, és egy JSON-formátumú választ adnak vissza, amely a legfelső szándékot használja `HRContact` . A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöveget, valamint a legmagasabb pontszámú szándékot. Emellett olyan adatok kinyerésére is képes, mint például a _Contact Type_ entitás.|
@@ -44,7 +44,7 @@ A LUIS alkalmazás biztosítja az intelligenciát, így az ügyfélalkalmazás i
 
 ## <a name="natural-language-understanding-nlu"></a>Természetes nyelvi megértés (NLU)
 
-A [Luis mesterséges intelligenciát (AI) biztosít](artificial-intelligence.md "LUIS mesterséges intelligenciát (AI) biztosít") a NLU, a természetes nyelvi feldolgozás (NLP) egy részhalmaza formájában.
+A [Luis a mesterséges intelligenciát (AI)](artificial-intelligence.md "LUIS mesterséges intelligenciát (AI) biztosít") NLU, a természetes nyelvi feldolgozó mesterséges intelligencia egy részét képezi.
 
 A LUIS-alkalmazás egy tartományszintű természetes nyelvi modellt tartalmaz. A LUIS alkalmazás elindításához használhat előre összeállított tartománymodellt, elkészítheti a saját modelljét vagy kombinálhatja egy előre elkészített tartomány elemeit saját egyéni adataival.
 
@@ -52,7 +52,7 @@ A LUIS-alkalmazás egy tartományszintű természetes nyelvi modellt tartalmaz. 
 
 * **Egyéni modell** LUIS számos lehetőséget kínál a saját egyéni modelljeinek, például a szándékok és az entitások azonosítására. Az entitások például a gépi tanulási entitások, a konkrét vagy literális entitások, valamint a gépi tanulás és a literál kombinációja.
 
-További információ az [NLP](artificial-intelligence.md "NLP")-ról és a NLU Luis-specifikus területéről.
+További információ az [NLP AI](artificial-intelligence.md "NLP")-ról és a NLU Luis-specifikus területéről.
 
 ## <a name="step-1-design-and-build-your-model"></a>1. lépés: a modell megtervezése és összeállítása
 

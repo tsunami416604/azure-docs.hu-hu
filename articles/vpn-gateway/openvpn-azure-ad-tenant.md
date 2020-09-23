@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: Azure AD-bérlő a P2S VPN-kapcsolatokhoz: Azure AD-hitelesítés'
-description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
+description: Ismerje meg, hogyan állíthat be egy Azure AD-bérlőt a P2S Open VPN-hitelesítéshez.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 01fe9331d4063ae45a5d30aa3546d6338d30822d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89499960"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981528"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
@@ -85,7 +85,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 6. Ha a rendszer kéri, válassza az **elfogadás** lehetőséget.
 
-    ![Elfogadás](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![A képernyőképen a szervezete által kért üzenet-engedélyek és az elfogadás lehetőség látható.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. Az Azure AD-ben a **vállalati alkalmazásokban**a felsorolt **Azure VPN** látható.
 

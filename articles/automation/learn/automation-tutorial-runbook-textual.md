@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185398"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987634"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Oktatóanyag: PowerShell munkafolyamat-runbook létrehozása
 
@@ -109,17 +109,17 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
 6. Vegye figyelembe, hogy a feladatok állapota a **feladatok összegzése**területen látható. Ez az állapot megegyezik a runbook tesztelésekor meglátott állapotokkal.
 
-   ![Feladat összegzése](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="Képernyőkép a runbook-feladat panelről, amely a feladat összegzése szakaszra van kiemelve.":::
 
 7. Miután a runbook állapota megjelenik, kattintson a **kimenet**elemre. Megnyílik a kimenet lap, ahol megtekintheti az `Hello World` üzenetet.
 
-   ![Feladat összegzése](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Képernyőkép a runbook-feladat panelről, amely a Kiemelt kimenet gombot mutatja.":::
 
 8. A kimeneti oldal bezárásához.
 
 9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. Csak `Hello World` a kimeneti adatfolyamban látható. Vegye figyelembe, hogy a streamek panel más streameket jeleníthet meg egy runbook-feladatokhoz, például a részletes és a hiba-adatfolyamokhoz, ha a runbook ezeket írja.
 
-   ![Feladat összegzése](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Képernyőkép a runbook-feladat panelről, amelyen a minden napló gomb ki van emelve.":::
 
 10. A MyFirstRunbook lapra való visszatéréshez zárjuk be a streamek panelt és a feladatok panelt.
 

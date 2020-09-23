@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005312"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986773"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,7 +22,7 @@ Ez az ajánlott eljárás a fürt és a számítási feladatok alkalmazások fej
 
 > [!div class="checklist"]
 > * Mik a pod-erőforrásokra vonatkozó kérelmek és korlátozások
-> * Alkalmazások fejlesztésének és üzembe helyezésének módjai a fejlesztői és a Visual Studio Code használatával
+> * Alkalmazások fejlesztése és üzembe helyezése a Bridge használatával a Kubernetes és a Visual Studio Code segítségével
 > * Az eszköz használata az üzemelő `kube-advisor` példányokkal kapcsolatos problémák kereséséhez
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod-erőforrásokra vonatkozó kérelmek és korlátok meghatározása
@@ -74,13 +74,13 @@ További információ az erőforrás-mérésekről és a hozzárendelésekről: 
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Alkalmazások fejlesztése és hibakeresése egy AK-fürtön
 
-Ajánlott **eljárási útmutató** – a fejlesztési csapatoknak egy AK-fürtön kell üzembe helyezniük és hibakeresést végezniük a dev Spaces használatával. Ez a fejlesztői modell gondoskodik arról, hogy a szerepköralapú hozzáférés-vezérlés (RBAC), a hálózat vagy a tárolási igények az alkalmazás éles környezetben való üzembe helyezése előtt legyenek implementálva.
+Ajánlott **eljárási útmutató** – a fejlesztési csapatoknak egy AK-fürtön kell üzembe helyezniük és hibakeresést végezniük a Bridge használatával a Kubernetes.
 
-Az Azure dev Spaces révén közvetlenül egy AK-fürtön fejlesztheti, hibakeresést és tesztelheti az alkalmazásokat. A csapaton belüli fejlesztők együttműködve készítenek és tesztelnek az alkalmazások életciklusa során. Továbbra is használhatja a meglévő eszközöket, például a Visual studiót vagy a Visual Studio Code-ot. A dev Spaces szolgáltatáshoz olyan bővítmény van telepítve, amely lehetőséget ad az alkalmazás futtatására és hibakeresésére egy AK-fürtben.
+A Kubernetes híd használatával közvetlenül egy AK-fürtön fejlesztheti, hibakeresést végezhet és tesztelheti az alkalmazásokat. A csapaton belüli fejlesztők együttműködve készítenek és tesztelnek az alkalmazások életciklusa során. Továbbra is használhatja a meglévő eszközöket, például a Visual studiót vagy a Visual Studio Code-ot. A Bridge-hez olyan Kubernetes-bővítmény van telepítve, amely lehetővé teszi, hogy közvetlenül egy AK-fürtben fejlesszen.
 
-Ez az integrált fejlesztési és tesztelési folyamat a fejlesztői terekkel csökkenti a helyi tesztelési környezetek, például a [minikube][minikube]szükségességét. Ehelyett egy AK-fürtön fejlesztheti és tesztelheti. A fürt biztonságossá tétele és elkülönítése a fürt logikai elkülönítése érdekében a névterek használatáról szóló előző szakaszban látható. Ha alkalmazásai készen állnak az éles környezetbe való üzembe helyezésre, akkor magabiztosan üzembe helyezheti a fejlesztést egy valós AK-fürtön.
+Ez az integrált fejlesztési és tesztelési folyamat a Kubernetes-mel csökkenti a helyi tesztelési környezetek, például a [minikube][minikube]szükségességét. Ehelyett egy AK-fürtön fejlesztheti és tesztelheti. A fürt biztonságossá tétele és elkülönítése a fürt logikai elkülönítése érdekében a névterek használatáról szóló előző szakaszban látható.
 
-Az Azure dev Spaces szolgáltatás a Linux-hüvelyeken és-csomópontokon futó alkalmazásokkal való használatra készült.
+A Kubernetes-hez készült híd a Linux-hüvelyeken és-csomópontokon futó alkalmazásokkal használható.
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>A Visual Studio Code bővítmény használata a Kubernetes
 
@@ -100,13 +100,13 @@ Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, val
 
 A sok fejlesztői csapatot és alkalmazást üzemeltető AK-fürtben nehéz lehet a hüvelyek nyomon követése az erőforrás-kérelmek és a korlátok beállítása nélkül. Ajánlott eljárásként rendszeresen futtasson `kube-advisor` az AK-fürtökön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az ajánlott eljárási cikk a fürt és a számítási feladatok fürtözési perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation].
 
 Az ajánlott eljárások némelyikének megvalósításához tekintse meg a következő cikkeket:
 
-* [Fejlesztés a Dev Spaces használatával][dev-spaces]
+* [Fejlesztés a Bridge és a Kubernetes között][btk]
 * [Az Kube-Advisor problémáinak keresése][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ Az ajánlott eljárások némelyikének megvalósításához tekintse meg a köv
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

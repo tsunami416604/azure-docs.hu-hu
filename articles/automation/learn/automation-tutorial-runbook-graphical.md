@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 1490687e85d2f59b8cfa28712ef075b451363534
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564219"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987654"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Oktatóanyag: grafikus runbook létrehozása
 
@@ -218,7 +218,7 @@ Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárol�
 
 23. Vigye az egérmutatót `Login to Azure` addig, amíg az alakzat alján egy kör nem jelenik meg. Kattintson a körre, és húzza a nyilat a következőre: `Specify Subscription Id` . A runbook a következőhöz hasonlóan kell kinéznie.
 
-    ![Forgatókönyv-hitelesítés konfigurálása](../media/automation-tutorial-runbook-graphical/runbook-auth-config.png)
+    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Képernyőkép a runbook a nyílra húzva az "előfizetés-azonosító meghatározása" gombra.":::
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>7. lépés – Virtuális gépet elindító tevékenység hozzáadása
 
@@ -363,7 +363,7 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 31. Indítsa el a runbook a virtuális gép leállításával, és a számítógépnek el kell indulnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a grafikus létrehozásról: [grafikus runbook készítése Azure Automationban](../automation-graphical-authoring-intro.md).
 * A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.

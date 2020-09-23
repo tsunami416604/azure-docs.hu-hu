@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 8/10/2020
-ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/18/2020
+ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906477"
+ms.locfileid: "90986733"
 ---
 # <a name="server-group-size"></a>Kiszolgálócsoport mérete
 
@@ -60,9 +60,6 @@ SELECT rebalance_table_shards('distributed_table_name');
 A függvény a (z `rebalance_table_shards` ) argumentumban megnevezett tábla együttes [elhelyezés](concepts-hyperscale-colocation.md) csoportjában lévő összes táblát újraegyenlíti. Így nem kell minden elosztott táblához meghívnia a függvényt, csak egy reprezentatív táblán kell meghívnia az egyes közös helyek csoportjából.
 
 ### <a name="increase-or-decrease-vcores-on-nodes"></a>Virtuális mag növelése vagy csökkentése a csomópontokon
-
-> [!NOTE]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Ha módosítani szeretné a virtuális mag lévő csomópontok módosítását, vegye fel a [kapcsolatot az Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 Az új csomópontok hozzáadásán kívül növelheti a meglévő csomópontok képességeit is. A számítási kapacitás felfelé és lefelé való beállítása hasznos lehet a teljesítmény-kísérleteknél, valamint a forgalmi igények rövid vagy hosszú távú változásaihoz.
 

@@ -3,12 +3,12 @@ title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Doc
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311228"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979457"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
 Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [Azure Application Insightsból][start] a [folyamatos exportálás][export] és a [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával Azure SQL Databaseba. 
@@ -133,21 +133,21 @@ Ebben a példában a lap nézeteiből származó adatok szerepelnek. Ha meg szer
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics példány létrehozása
 A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics szolgáltatást, és hozzon létre egy új stream Analytics feladatot:
 
-![Stream Analytics-beállítások](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![Képernyőfelvétel: a stream Analytics-feladat lapja, a létrehozás gombbal kiemelve.](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![Új stream Analytics-feladatok](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz**lehetőséget.
 
-![Stream Analytics-beállítások](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![A képernyőképen az üzemelő példány sikeres üzenet jelenik meg, majd az erőforrás gombra.](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Új bemenet hozzáadása
 
-![Stream Analytics-beállítások](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![Képernyőfelvétel: megjeleníti a bemenetek lapot, ahol a Hozzáadás gomb van kiválasztva.](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 Állítsa be úgy, hogy a folyamatos exportálási blob bemenetét használja:
 
-![Stream Analytics-beállítások](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![Képernyőfelvétel: az új bemeneti ablak, amelyben a bemeneti alias, a forrás és a Storage-fiók legördülő menüje van kiválasztva.](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 Most szüksége lesz az elsődleges hozzáférési kulcsra a Storage-fiókjából, amelyet korábban említett. Adja meg ezt a Storage-fiók kulcsaként.
 
@@ -163,10 +163,10 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 Ebben a példában:
 
-* `webapplication27`a Application Insights erőforrás neve, amely az **összes kisbetűs**. 
-* `1234...`a Application Insights erőforrás rendszerállapot-kulcsát **eltávolították a kötőjelekkel**. 
-* `PageViews`az elemezni kívánt adattípus. A rendelkezésre álló típusok a folyamatos exportálásban beállított szűrőtől függenek. Vizsgálja meg az exportált adattípusokat, és tekintse meg az [adatmodell exportálása](./export-data-model.md)című témakört.
-* `/{date}/{time}`egy, a szó szerint írt minta.
+* `webapplication27` a Application Insights erőforrás neve, amely az **összes kisbetűs**. 
+* `1234...` a Application Insights erőforrás rendszerállapot-kulcsát **eltávolították a kötőjelekkel**. 
+* `PageViews` az elemezni kívánt adattípus. A rendelkezésre álló típusok a folyamatos exportálásban beállított szűrőtől függenek. Vizsgálja meg az exportált adattípusokat, és tekintse meg az [adatmodell exportálása](./export-data-model.md)című témakört.
+* `/{date}/{time}` egy, a szó szerint írt minta.
 
 A Application Insights-erőforrás nevének és Rendszerállapotkulcsot beszerzéséhez nyissa meg az Essentials szolgáltatást az Áttekintés lapon, vagy nyissa meg a beállításokat.
 

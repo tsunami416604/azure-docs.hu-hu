@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783552"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980066"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
 
@@ -36,7 +36,7 @@ Az Azure AD-jogosultságok felügyeletének használatához és a felhasználók
 
 ## <a name="view-who-has-an-assignment"></a>Hozzárendelést használó nézet megtekintése
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -64,7 +64,7 @@ Microsoft Graph használatával is lekérheti a hozzárendeléseket egy hozzáf�
 
 Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót szeretne hozzárendelni egy hozzáférési csomaghoz, hogy a felhasználóknak ne kelljen átesniük a hozzáférési csomag igénylésének folyamatán. A felhasználók közvetlen hozzárendeléséhez a hozzáférési csomagnak rendelkeznie kell egy olyan házirenddel, amely lehetővé teszi a közvetlen rendszergazdai hozzárendeléseket.
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
@@ -94,7 +94,7 @@ Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasznál
 
 ## <a name="remove-an-assignment"></a>Hozzárendelés eltávolítása
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
 1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 

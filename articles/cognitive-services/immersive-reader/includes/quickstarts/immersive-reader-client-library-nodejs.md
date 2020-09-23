@@ -7,24 +7,23 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: bbef435bc7cf0bf146009859044bcabe3c0f55ee
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: d485e95e0f41b323d1297c669c13fb1fe5886619
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505392"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978243"
 ---
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
-Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és integrálhatja a magával ragadó olvasót az olvasói ügyféloldali kódtár használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)egy teljes körű működő minta érhető el.
-
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ebben a rövid útmutatóban egy webalkalmazást hoz létre a semmiből, és integrálhatja a magával ragadó olvasót az olvasó ügyféloldali kódtár használatával. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
 * [Node.js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
 * IDE, például a [Visual Studio Code](https://code.visualstudio.com/)
@@ -246,13 +245,13 @@ npm start
 
 Nyissa meg a böngészőt, és navigáljon a gombra _http://localhost:3000_ . A következőnek kell megjelennie:
 
-![Minta alkalmazás](../../media/quickstart-nodejs/1-buildapp.png)
+![Minta alkalmazás – Node.js](../../media/quickstart-nodejs/1-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
 Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon található tartalommal ellátott olvasó.
 
-![Modern olvasó](../../media/quickstart-nodejs/2-viewimmersivereader.png)
+![Lebilincselő olvasó – Node.js](../../media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

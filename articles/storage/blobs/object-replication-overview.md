@@ -10,12 +10,12 @@ ms.date: 09/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0d03b2708bfd4aac2565b303ddce44f50be65ef9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ee76c1692049d5b25e85b6780fbcf78f7ebfdd2f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612343"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987047"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektum-replikálás blokk-blobokhoz
 
@@ -68,7 +68,7 @@ Egy vagy több szűrőt is megadhat egy replikációs szabály részeként a blo
 
 A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs szabályzat létrehozása után a céltároló csak olvashatóvá válik. A céltárolóba történő írásra tett kísérlet sikertelen lesz a következő hibakóddal: 409 (ütközés). Meghívhatja azonban a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon az archív szintre való áthelyezéshez. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
 
-## <a name="billing"></a>Számlázás 
+## <a name="billing"></a>Számlázás
 
 Az objektum-replikálás további költségekkel jár a forrás-és a célhelyek olvasási és írási műveleteinél, valamint a kimenő adatforgalomért a forrás-fiókból a cél fiókba történő adatreplikálási költségekkel, valamint a változási adatcsatorna feldolgozásával kapcsolatos költségek beolvasásával.
 

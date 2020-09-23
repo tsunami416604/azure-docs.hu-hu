@@ -3,12 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892371"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987104"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -42,7 +42,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Adja meg a használandó tárolási redundancia típusát. Használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md). Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testVault* beállításnál a **GeoRedundant**értékre.
+4. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testVault* beállításnál a **GeoRedundant**értékre.
 
    > [!TIP]
    > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ezért célszerű a Backup Recovery Services Vault-objektumot tárolni egy változóban.
@@ -740,7 +740,7 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Windows Server/Client Azure Backupról:
 

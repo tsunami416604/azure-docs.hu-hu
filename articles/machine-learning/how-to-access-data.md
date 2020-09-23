@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893466"
+ms.locfileid: "90976789"
 ---
 # <a name="connect-to-azure-storage-services"></a>Csatlakozás Azure Storage-szolgáltatásokhoz
 
-Ebből a cikkből megtudhatja, hogyan **csatlakozhat az Azure Storage-szolgáltatásokhoz Azure Machine learning adattáron keresztül**. Az adattárolók biztonságosan csatlakoznak az Azure Storage szolgáltatáshoz a hitelesítő adatok és az eredeti adatforrások integritásának veszélyeztetése nélkül. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Az adattárolók létrehozásához és regisztrálásához használhatja a [Azure Machine learning PYTHON SDK](#python) -t vagy a [Azure Machine learning Studio alkalmazást](#studio) .
+Ebből a cikkből megtudhatja, hogyan **csatlakozhat az Azure Storage-szolgáltatásokhoz Azure Machine learning adattáron keresztül**. Az adattárolók biztonságosan csatlakoznak az Azure Storage szolgáltatáshoz a hitelesítő adatok és az eredeti adatforrások integritásának veszélyeztetése nélkül. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Az adattárolók létrehozásához és regisztrálásához használhatja a [Azure Machine learning PYTHON SDK](#python) -t vagy a [Azure Machine learning Studio alkalmazást](how-to-connect-data-ui.md) .
 
 Ha az adattárolókat a Azure Machine Learning VS Code bővítménnyel szeretné létrehozni és kezelni, További tudnivalókért tekintse meg a [vs Code erőforrás-kezelési útmutatóját](how-to-manage-resources-vscode.md#datastores) .
 
@@ -92,7 +92,7 @@ Ha az adattároló-fiók egy **virtuális hálózaton**található, további kon
 
 ### <a name="access-validation"></a>Hozzáférés ellenőrzése
 
-**A kezdeti adattár létrehozása és regisztrálása során**Azure Machine learning automatikusan ellenőrzi, hogy a mögöttes tárolási szolgáltatás létezik-e, és hogy a felhasználó által megadott rendszerbiztonsági tag (Felhasználónév, szolgáltatásnév vagy sas-jogkivonat) hozzáfér-e a megadott tárolóhoz.
+**A kezdeti adattár-létrehozási és regisztrációs folyamat részeként**Azure Machine learning automatikusan ellenőrzi, hogy a mögöttes tárolási szolgáltatás létezik-e, és hogy a felhasználó által megadott rendszerbiztonsági tag (Felhasználónév, szolgáltatásnév vagy sas-jogkivonat) hozzáfér-e a megadott tárolóhoz.
 
 Az **adattár létrehozása után**ezt az ellenőrzést csak olyan metódusok hajtják végre, amelyek hozzáférést igényelnek a mögöttes tárolóhoz, **nem** minden alkalommal, amikor az adattár-objektumokat lekérik. Például az ellenőrzés akkor történik meg, ha le szeretné tölteni a fájlokat az adattárból. Ha azonban csak módosítani szeretné az alapértelmezett adattárat, akkor az érvényesítés nem történik meg.
 
@@ -117,7 +117,7 @@ Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében 
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>Adattárolók létrehozása és regisztrálása az SDK-n keresztül
+## <a name="create-and-register-datastores"></a>Adattárolók létrehozása és regisztrálása
 
 Ha az Azure Storage-megoldást adattárként regisztrálja, automatikusan létrehozza és regisztrálja az adattárt egy adott munkaterületen. Tekintse át a [tárolási hozzáférési & engedélyek](#storage-access-and-permissions) szakaszt a virtuális hálózati forgatókönyvekkel kapcsolatos útmutatásért és a szükséges hitelesítő adatok megkereséséhez. 
 
@@ -129,7 +129,7 @@ Ebben a szakaszban példákat talál egy adattár létrehozására és regisztr�
 
  Más támogatott tárolási szolgáltatásokhoz tartozó adattárolók létrehozásához tekintse meg a [megfelelő `register_azure_*` módszerek dokumentációját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods).
 
-Ha alacsony kódú élményt szeretne, tekintse meg az adattárolók [létrehozása Azure Machine learning Studióban](#studio)című témakört.
+Ha alacsony szintű felhasználói élményt szeretne, tekintse meg az [Azure Machine learning Studióval való kapcsolódás](how-to-connect-data-ui.md)az adatkapcsolathoz című témakört.
 
 > [!NOTE]
 > Az adattár neve csak kisbetűkből, számokból és aláhúzásokból állhat. 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>Adattárolók létrehozása a Studióban 
-
-Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Studióval.
-
-> [!IMPORTANT]
-> Ha az adattároló-fiók egy virtuális hálózaton található, további konfigurációs lépések szükségesek ahhoz, hogy a Studio hozzáférhessen az adataihoz. A megfelelő konfigurációs lépések megtételéhez tekintse meg a [Azure Machine learning Studio használata Azure-beli virtuális hálózatban](how-to-enable-studio-virtual-network.md) című témakört. 
-
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
-1. A **kezelés** **alatt kattintson a** bal oldali ablaktábla adattárolók elemére.
-1. Válassza az **+ új adattár**lehetőséget.
-1. Töltse ki az űrlapot egy új adattárhoz. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján. Az űrlap feltöltéséhez szükséges hitelesítő adatok megkereséséhez tekintse meg a [tárolási hozzáférés és engedélyek című szakaszt](#access-validation) .
-
-Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár**létrehozásakor: 
-    
-![Űrlap új adattárhoz](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Adattárolók használata

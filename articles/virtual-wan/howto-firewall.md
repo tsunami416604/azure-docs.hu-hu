@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753685"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983662"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Azure Firewall konfigurálása virtuális WAN-központban
 
@@ -32,20 +32,20 @@ A cikkben ismertetett lépések azt feltételezik, hogy már telepített egy vir
 
 A virtuális WAN **áttekintő** lapja a virtuális hubok és a biztonságos hubok listáját jeleníti meg. Az alábbi ábrán egy biztonságos hubok nélküli virtuális WAN látható.
 
-[![Áttekintés](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[![Képernyőfelvétel: a virtuális WAN áttekintő lapja, amely a virtuális hubok listáját tartalmazza.](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>Konvertálás biztonságos hubhoz
 
 1. A virtuális WAN **Áttekintés** lapján válassza ki azt a hubot, amelyet biztonságos hubhoz kíván átalakítani. A virtuális központ lapon két lehetőséget láthat a Azure Firewall üzembe helyezésére ebben a központban. Válassza az egyik lehetőséget.
 
-   [![Biztonság](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [![A képernyőfelvételen a virtuális WAN áttekintő lapja látható, ahol kiválaszthatja az átalakítás biztonságos hubhoz vagy Azure Firewall lehetőségre.](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. Az egyik lehetőség kiválasztását követően megjelenik az **átalakítás biztonságos hubhoz** lapra. Válasszon ki egy konvertálandó központot, majd kattintson a **Next (Azure Firewall tovább** ) gombra a lap alján.
 
    [![hub kiválasztása](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. A munkafolyamat befejezése után válassza a **Confirm (megerősítés**) lehetőséget.
 
-   [![megerősítés](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [![A képernyőfelvétel a biztonságos központi panelre való konvertálást mutatja, és a jóváhagyás lehetőséget választja.](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. Miután a hubot egy biztonságos hubhoz alakította át, megtekintheti a virtuális WAN **Áttekintés** lapján.
 
@@ -70,6 +70,6 @@ Ha vissza szeretne térni a hub **– Áttekintés** lapra, a következő ábrá
 
 [![Visszatérés az áttekintéshez](./media/howto-firewall/arrow.png)](./media/howto-firewall/arrow.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.

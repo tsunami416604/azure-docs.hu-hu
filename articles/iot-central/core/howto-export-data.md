@@ -1,29 +1,29 @@
 ---
-title: Adatok exportálása az Azure IoT Central (előzetes verzió) | Microsoft Docs
+title: Adatok exportálása az Azure IoT Centralból | Microsoft Docs
 description: Az új adatexportálás használata a IoT-adatainak az Azure-ba és az egyéni Felhőbeli célhelyekre való exportálásához.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/02/2020
+ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461935"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974403"
 ---
-# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>IoT-alapú adatexportálás a Felhőbeli célhelyekre adatexportálással (előzetes verzió)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
 > [!Note]
-> Ez a cikk a IoT Central előnézeti adatexportálási funkcióit ismerteti.
+> Ez a cikk a IoT Central adatexportálási funkcióit ismerteti.
 >
 > - Az örökölt adatexportálási funkciókkal kapcsolatos információkért lásd: [IoT-adatok exportálása a Felhőbeli célhelyekre adatexportálás (örökölt) használatával](./howto-export-data-legacy.md).
-> - Az előzetes verziójú adatexportálás és az örökölt adatexportálási funkciók közötti különbségekről az alábbi [összehasonlító táblázatban](#comparison-of-legacy-data-export-and-preview-data-export) talál további információt.
+> - Az adatexportálási és a korábbi adatexportálási funkciók közötti különbségekről az alábbi [összehasonlító táblázatban](#comparison-of-legacy-data-export-and-data-export) talál további információt.
 
-Ez a cikk azt ismerteti, hogyan használható az új adatexportálási Előnézet funkció az Azure IoT Centralban. Ezzel a szolgáltatással folyamatosan exportálhatja a szűrt és a dúsított IoT-adatait a IoT Central alkalmazásból. Az adatexportálás leküldi a közel valós idejű változásokat a felhőalapú megoldás más részeire a meleg elérésű elemzések, az elemzések és a tárolás érdekében.
+Ez a cikk azt ismerteti, hogyan használható az új adatexportálási funkció az Azure IoT Centralban. Ezzel a szolgáltatással folyamatosan exportálhatja a szűrt és a dúsított IoT-adatait a IoT Central alkalmazásból. Az adatexportálás leküldi a közel valós idejű változásokat a felhőalapú megoldás más részeire a meleg elérésű elemzések, az elemzések és a tárolás érdekében.
 
 Megteheti például a következőt:
 
@@ -37,7 +37,7 @@ Megteheti például a következőt:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az előzetes verziójú adatexportálási funkciók használatához [v3 alkalmazás](howto-get-app-info.md)szükséges, és rendelkeznie kell az [adatexportálási](howto-manage-users-roles.md) engedéllyel.
+Az adatexportálási funkciók használatához [v3 alkalmazás](howto-get-app-info.md)szükséges, és rendelkeznie kell az [adatexportálási](howto-manage-users-roles.md) engedéllyel.
 
 ## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
@@ -63,7 +63,12 @@ Ha nem rendelkezik meglévő Event Hubs-névtérrel az exportáláshoz, kövesse
     - Válassza a **beállítások > a közös hozzáférési szabályzatok**lehetőséget.
     - Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
     - Másolja az elsődleges vagy a másodlagos kapcsolatok sztringjét. Ezt a kapcsolódási karakterláncot használva új célhelyet állíthat be IoT Centralban.
-
+    - Azt is megteheti, hogy a teljes Event Hubs névtérhez létrehoz egy kapcsolatok karakterláncot:
+        1. Nyissa meg a Event Hubs névteret a Azure Portalban.
+        2. A **Beállítások**területen válassza a **megosztott elérési szabályzatok** elemet.
+        3. Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
+        4. Az elsődleges vagy a másodlagos kapcsolatok karakterláncának másolása
+        
 ### <a name="create-a-service-bus-queue-or-topic-destination"></a>Service Bus üzenetsor vagy témakör célhelyének létrehozása
 
 Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
@@ -78,6 +83,11 @@ Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövess
     - Válassza a **Beállítások/közös hozzáférési szabályzatok**lehetőséget.
     - Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
     - Másolja az elsődleges vagy a másodlagos kapcsolatok sztringjét. Ezt a kapcsolódási karakterláncot használva új célhelyet állíthat be IoT Centralban.
+    - Azt is megteheti, hogy a teljes Service Bus névtérhez létrehoz egy kapcsolatok karakterláncot:
+        1. Nyissa meg a Service Bus névteret a Azure Portalban.
+        2. A **Beállítások**területen válassza a **megosztott elérési szabályzatok** elemet.
+        3. Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
+        4. Az elsődleges vagy a másodlagos kapcsolatok karakterláncának másolása
 
 ### <a name="create-an-azure-blob-storage-destination"></a>Azure Blob Storage célhely létrehozása
 
@@ -109,10 +119,10 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
 
 1. Jelentkezzen be IoT Central alkalmazásba.
 
-1. A bal oldali panelen válassza az **adatexportálás (előzetes verzió)** lehetőséget.
+1. A bal oldali panelen válassza az **adatexportálás**elemet.
 
     > [!Tip]
-    > Ha nem látja az **adatexportálás (előzetes verzió)** lehetőséget a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
+    > Ha nem látja az **adatexportálást** a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
 1. Válassza az **+ új Exportálás**lehetőséget.
 
@@ -127,9 +137,10 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
 
 1. Szükség esetén szűrők hozzáadásával csökkentheti az exportált adatmennyiséget. Az egyes adatexportálási típusokhoz különböző típusú szűrők érhetők el:
 
-    A telemetria szűréséhez használja a következőt:
+    A telemetria szűréséhez a következőket teheti:
 
-    - **Képesség szűrő**: Ha egy telemetria elemet választ a **név** legördülő menüben, az exportált adatfolyam csak olyan telemetria tartalmaz, amelyek megfelelnek a szűrési feltételnek. Ha a **név** legördülő menüben kiválasztja az eszköz vagy a felhő tulajdonság elemét, az exportált adatfolyam csak a telemetria megfelelő tulajdonságokkal rendelkező eszközökről származó eszközöket tartalmaz.
+    - **Az exportált** adatfolyam csak olyan eszközökön telemetria, amelyek megfelelnek az eszköz nevének, az eszköz azonosítójának és az eszköz sablonjának szűrési feltételének.
+    - **Szűrés** a képességek felett: Ha egy telemetria elemet választ a **név** legördülő menüben, az exportált adatfolyam csak a szűrési feltételnek megfelelő telemetria tartalmaz. Ha a **név** legördülő menüben kiválasztja az eszköz vagy a felhő tulajdonság elemét, az exportált adatfolyam csak a telemetria megfelelő tulajdonságokkal rendelkező eszközökről származó eszközöket tartalmaz.
     - **Üzenet tulajdonságai szűrő**: az eszköz SDK-kat használó eszközök az egyes telemetria üzenetekben küldhetnek *üzenet-tulajdonságokat* vagy *alkalmazás-tulajdonságokat* . A tulajdonságok olyan kulcs-érték párok táska, amelyek egyéni azonosítókkal címkézik az üzenetet. Az üzenet tulajdonságai szűrő létrehozásához adja meg a keresett üzenet tulajdonság kulcsát, és adjon meg egy feltételt. Csak a megadott szűrési feltételnek megfelelő tulajdonságokkal rendelkező telemetria exportálja a rendszer. A következő karakterlánc-összehasonlító operátorok támogatottak: egyenlő, nem egyenlő, nem tartalmaz, nem tartalmaz, létezik, nem létezik. [További információ az alkalmazás tulajdonságairól IoT hub docs-ból](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     A tulajdonságok változásainak szűréséhez használjon egy **képesség szűrőt**. Válasszon egy tulajdonságot a legördülő menüben. Az exportált adatfolyam csak a szűrési feltételnek megfelelő kijelölt tulajdonság módosításait tartalmazza.
@@ -143,8 +154,8 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
 
     - **Cél neve**: a célhely megjelenítendő neve IoT Centralban.
     - **Cél típusa**: válassza ki a célhely típusát. Ha még nem állította be a célhelyet, olvassa el az [Exportálás célhelyének beállítása](#set-up-export-destination)című témakört.
-    - Az Azure Event Hubs Azure Service Bus üzenetsor vagy témakör esetében illessze be az erőforráshoz tartozó kapcsolatok karakterláncát.
-    - Az Azure Blob Storage esetében illessze be az erőforráshoz tartozó kapcsolatok karakterláncát, és adja meg a kis-és nagybetűket megkülönböztető tároló nevét.
+    - Az Azure Event Hubs, Azure Service Bus üzenetsor vagy témakör esetében illessze be az erőforráshoz tartozó kapcsolati karakterláncot, és szükség esetén adja meg a kis-és nagybetűket megkülönböztető esemény hub, üzenetsor vagy témakör nevét.
+    - Az Azure Blob Storage esetében illessze be az erőforráshoz tartozó kapcsolatok karakterláncát, és ha szükséges, adja meg a kis-és nagybetűket megkülönböztető tároló nevét.
     - Webhook esetén illessze be a webhook-végpont visszahívási URL-címét.
     - Kattintson a **Létrehozás** gombra.
 
@@ -185,7 +196,7 @@ Minden exportált üzenet a teljes üzenet normalizált formáját tartalmazza, 
 - `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
 - `messageProperties`: Az eszköz által az üzenettel küldött további tulajdonságok. Ezeket a tulajdonságokat más néven az *alkalmazás tulajdonságai*is nevezik. [További információ: IoT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-Event Hubs és Service Bus esetén a IoT Central gyorsan exportál egy új üzenetet, miután megkapta az üzenetet az eszközről.
+Event Hubs és Service Bus esetén a IoT Central gyorsan exportál egy új üzenetet, miután megkapta az üzenetet az eszközről. A felhasználó tulajdonságaiban (más néven az alkalmazás tulajdonságai) minden üzenet, a `iotcentral-device-id` , `iotcentral-application-id` és `iotcentral-message-source` automatikusan szerepel.
 
 A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva.
 
@@ -197,7 +208,7 @@ Az alábbi példa egy exportált telemetria üzenetet mutat be:
     "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
     "messageSource": "telemetry",
     "deviceId": "1vzb5ghlsg1",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:26:55.455Z",
     "telemetry": {
@@ -232,7 +243,7 @@ Minden üzenet vagy rekord egy eszköz vagy egy Felhőbeli tulajdonság egyik m�
 - `templateId`: Az eszközhöz társított eszköz sablonjának azonosítója.
 - `enrichments`: Az exportáláskor beállított alkoholtartalom-NÖVELÉSEK.
 
-Event Hubs és Service Bus esetén IoT Central az új üzenetek adatait az Event hub-ba vagy a Service Bus üzenetsor vagy témakörbe exportálja közel valós időben.
+Event Hubs és Service Bus esetén IoT Central az új üzenetek adatait az Event hub-ba vagy a Service Bus üzenetsor vagy témakörbe exportálja közel valós időben. Az egyes üzenetek felhasználói tulajdonságaiban (más néven az alkalmazás tulajdonságai) a, a, `iotcentral-device-id` a `iotcentral-application-id` `iotcentral-message-source` és a `iotcentral-message-type` automatikusan szerepel.
 
 A blob Storage esetében az üzenetek kötegbe kerülnek, és percenként egyszer lesznek exportálva.
 
@@ -244,11 +255,11 @@ Az alábbi példa egy exportált tulajdonság-módosítási üzenetet mutat be a
     "messageSource": "properties",
     "messageType": "cloudPropertyChange",
     "deviceId": "18a985g1fta",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
-        "fieldName": "MachineSerialNumber",
+        "name": "MachineSerialNumber",
         "value": "abc"
     }],
     "enrichments": {
@@ -257,15 +268,15 @@ Az alábbi példa egy exportált tulajdonság-módosítási üzenetet mutat be a
 }
 ```
 
-## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>A régi adatexportálás és az előzetes verziójú adatexportálás összehasonlítása
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>A régi adatexportálás és az adatexportálás összehasonlítása
 
-Az alábbi táblázat a [korábbi adatexportálási](howto-export-data-legacy.md) és-előnézeti adatexportálási funkciók közötti különbségeket mutatja be:
+Az alábbi táblázat az [örökölt adatexportálás](howto-export-data-legacy.md) és az új adatexportálási funkciók közötti különbségeket mutatja be:
 
 | Képességek  | Örökölt adatexportálás | Új adatexportálás |
 | :------------- | :---------- | :----------- |
 | Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, tulajdonságok módosításai |
-| Szűrés | Nincs | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
-| Modellbővítések | Nincs | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
+| Szűrés | Nincsenek | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
+| Modellbővítések | Nincsenek | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
 | Célhelyek | Azure Event Hubs, Azure Service Bus várólisták és témakörök, Azure Blob Storage | Ugyanaz, mint a korábbi adatexportáláshoz és webhookokhoz|
 | Támogatott alkalmazások verziói | V2, V3 | Csak v3 |
 | Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint |

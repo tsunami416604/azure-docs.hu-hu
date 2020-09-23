@@ -7,23 +7,22 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 7a298de40264a06e18aa4b7c77abfd622be4bb75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978271"
 ---
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
 Ebben a rövid útmutatóban egy iOS-alkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)egy teljes körű működő minta érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A minta projekt tulajdonságainak konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
 
@@ -31,21 +30,21 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Hozzon létre egy új projektet a Xcode-ben.
 
-![Új projekt](../../media/ios/xcode-create-project.png)
+![Új projekt – Swift](../../media/ios/xcode-create-project.png)
 
 Válassza az **Egynézetes alkalmazás**lehetőséget.
 
-![Új egynézetes alkalmazás](../../media/ios/xcode-single-view-app.png)
+![Új egynézetes alkalmazás – Swift](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Hitelesítés beállítása
 
 A felső menüben kattintson a **termék > séma > a séma szerkesztése..**. elemre.
 
-![Séma szerkesztése](../../media/ios/quickstart-ios-edit-scheme.png)
+![Séma szerkesztése – Swift](../../media/ios/quickstart-ios-edit-scheme.png)
 
 A **Futtatás** nézetben kattintson az **argumentumok** fülre.
 
-![Séma szerkesztése](../../media/ios/quickstart-ios-env-vars.png)
+![Séma-környezeti változók szerkesztése – Swift](../../media/ios/quickstart-ios-env-vars.png)
 
 A **környezeti változók** szakaszban adja meg a következő neveket és értékeket, és adja meg a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
 
@@ -557,19 +556,19 @@ function sendContentToReader(message) {
 
 Állítsa be az archiválási sémát a Xcode-ben egy szimulátor vagy egy eszköz céljának kiválasztásával.
 
-![Archiválási séma](../../media/ios/xcode-archive-scheme.png)
+![Archiválási séma – Swift](../../media/ios/xcode-archive-scheme.png)
 
-![Cél kiválasztása](../../media/ios/xcode-select-target.png)
+![Cél – Swift kiválasztása](../../media/ios/xcode-select-target.png)
 
 A Xcode nyomja le a **CTRL + R billentyűkombinációt** , vagy kattintson a lejátszás gombra a projekt futtatásához. Az alkalmazásnak a megadott szimulátoron vagy eszközön kell elindulnia.
 
 Az alkalmazásban a következőket kell látnia:
 
-![Minta alkalmazás](../../media/ios/sample-app-ipad.png)
+![Minta alkalmazás – Swift](../../media/ios/sample-app-ipad.png)
 
 Ha a **magától** megjelenő olvasó gombra kattint, megjelenik az alkalmazásban a tartalommal megjelenő lebilincselő olvasó.
 
-![Modern olvasó](../../media/ios/immersive-reader-ipad.png)
+![Lebilincselő olvasó – Swift](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

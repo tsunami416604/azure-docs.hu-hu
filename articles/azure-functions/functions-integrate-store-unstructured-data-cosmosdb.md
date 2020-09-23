@@ -54,7 +54,7 @@ A kimeneti kötés létrehozásához rendelkeznie kell egy SQL API-t használó 
     | **Dokumentumparaméter neve** | taskDocument | A Cosmos DB-objektumra utaló név a kódban. |
     | **Adatbázis neve** | taskDatabase | Adatbázis neve a dokumentumok mentéséhez. |
     | **Gyűjtemény neve** | taskCollection | Az adatbázis-gyűjtemény neve. |
-    | **Ha az értéke true, létrehozza a Cosmos DB-adatbázist és -gyűjteményt** | Yes | A gyűjtemény még nem létezik, hozza létre. |
+    | **Ha az értéke true, létrehozza a Cosmos DB-adatbázist és -gyűjteményt** | Igen | A gyűjtemény még nem létezik, hozza létre. |
     | **Cosmos DB-fiókkapcsolat** | Új beállítás | Válassza az **új**lehetőséget, majd válassza ki **Azure Cosmos db fiókot** és a korábban létrehozott **adatbázis-fiókot** , majd kattintson **az OK gombra**. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást használja a kötés, hogy kapcsolódjon az adatbázishoz. |
 
 1. A kötés létrehozásához kattintson **az OK gombra** .

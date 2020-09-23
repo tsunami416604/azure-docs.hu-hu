@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 430f477422e040e0e7e28fd69a1cbc18bce7d656
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000545"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980613"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató intelligens leltár-kezelési alkalmazás sablonja
 
@@ -36,7 +36,7 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
 1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
     > [!div class="mx-imgBorder"]
-    > ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > ![Az intelligens leltár managementapplication sablonjának kijelölését bemutató képernyőkép](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
 2. Válassza a **kereskedelem** fület, és válassza az **alkalmazás létrehozása** az **intelligens leltár kezelése** alatt elemet.
 
@@ -47,10 +47,10 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
    **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
     > [!div class="mx-imgBorder"]
-    > ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > ![Az alkalmazások intelligens leltár managementapplication sablonból való létrehozását bemutató képernyőkép](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![Intelligens leltár felügyeletének számlázási adatai](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    > ![Az alkalmazás létrehozásakor a számlázási beállításokat ábrázoló képernyőkép](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti 
 
@@ -63,14 +63,14 @@ Az irányítópult logikailag oszlik meg két különböző átjáró-eszköz fe
    * Az átjáró helyének, az állapot & kapcsolódó részleteknek a megtekintése 
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
+> ![Az intelligens leltár managementdashboard felső felét ábrázoló képernyőkép](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
 
    * Egyszerűen nyomon követheti az átjárók, az aktív és az ismeretlen címkék teljes számát.
    * Elvégezheti az Eszközkezelő műveleteit, például a belső vezérlőprogram frissítését, az érzékelő letiltását, az érzékelő engedélyezését, az érzékelő küszöbértékének frissítését, az telemetria intervallumok frissítését &
    * Az átjárók igény szerinti leltározását teljes vagy növekményes vizsgálattal is elvégezhetik.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
+> ![Az intelligens leltár managementdashboard alsó felét ábrázoló képernyőkép](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
 
 ## <a name="device-template"></a>Eszköz sablonja
 Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képességének modelljét. A képesség modell két különböző interfész átjáró telemetria van strukturálva **& tulajdonság** -és **átjáró-parancsok**
@@ -78,13 +78,13 @@ Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képess�
 **Átjáró telemetria & tulajdonsága** – ez a felület az érzékelőkkel, a hellyel, az eszköz adataival és az eszközök Twin tulajdonságával kapcsolatos képességeket jelképezi, például az átjáró küszöbértékeit és a frissítési intervallumokat.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+> ![Az alkalmazásban található Inventory Gateway-eszköz sablonját ábrázoló képernyőfelvétel](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
 
 
 **Átjáró parancsai** – ez az illesztő az összes átjáró-parancs funkcióját rendszerezi
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
+> ![Az átjáró parancsainak felületét ábrázoló képernyőkép a Inventory Gateway-eszköz sablonjában](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
 
 ## <a name="rules"></a>Szabályok
 Válassza a szabályok lapot az alkalmazás sablonjában található két különböző szabály megjelenítéséhez. Ezek a szabályok úgy vannak konfigurálva, hogy e-mail-értesítéseket küldjön a kezelőknek további vizsgálatokra.
@@ -94,7 +94,7 @@ Válassza a szabályok lapot az alkalmazás sablonjában található két külö
 **Ismeretlen címkék**: kritikus fontosságú, hogy nyomon követhesse az adott eszközhöz társított összes RFID-&. Ha az átjáró túl sok ismeretlen címkét észlel, akkor a szinkronizálási kihívások megjelölése a forrásként szolgáló alkalmazásokkal.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
+> ![Az intelligens leltár managementapplication lévő szabályok listáját megjelenítő képernyőkép](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Feladatok
 Válassza a feladatok fület az alkalmazás sablonjának részeként öt különböző feladat megjelenítéséhez: a feladatok szolgáltatással az egész megoldásra kiterjedő műveleteket hajthat végre. Itt a leltár-felügyeleti feladatok az eszköz parancsait és a Twin képességet használják olyan feladatok elvégzésére, mint például a,
@@ -103,16 +103,18 @@ Válassza a feladatok fület az alkalmazás sablonjának részeként öt külön
    * igény szerinti leltározási vizsgálat végrehajtása a teljes megoldáson keresztül.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
+> ![Az intelligens leltár managementapplication található feladatok listáját megjelenítő képernyőkép](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti** > **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés**gombra.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti**  >  **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés**gombra.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligens leltár-kezelési irányítópult](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
+> ![Képernyőfelvétel az alkalmazás törléséről, ha elkészült vele](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
-## <a name="next-steps"></a>További lépések
-* További információ az intelligens leltár felügyeletének [intelligens leltár-kezelési koncepcióról](./architecture-smart-inventory-management.md)
+## <a name="next-steps"></a>Következő lépések
+* További információ az intelligens leltár kezeléséről 
+> [!div class="nextstepaction"]
+> [Intelligens leltár-felügyeleti koncepció](./architecture-smart-inventory-management.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)
