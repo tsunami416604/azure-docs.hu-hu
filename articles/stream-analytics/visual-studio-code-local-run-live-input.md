@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037443"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892070"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>A Visual Studio Code használatával helyileg tesztelheti Stream Analytics lekérdezéseket élő stream-bevitelsel
 
@@ -21,39 +21,39 @@ A Visual Studio Code-hoz készült Azure Stream Analytics Tools használatával 
 
 * Telepítse a [.net Core SDKt](https://dotnet.microsoft.com/download) , és indítsa újra a Visual Studio Code-ot.
 
-* [Ebből](quick-create-vs-code.md) a rövid útmutatóból megtudhatja, hogyan hozhat létre stream Analytics feladatokat a Visual Studio Code használatával.
+* [Ebből](quick-create-visual-studio-code.md) a rövid útmutatóból megtudhatja, hogyan hozhat létre stream Analytics feladatokat a Visual Studio Code használatával.
 
 ## <a name="define-a-live-stream-input"></a>Élő stream-bemenet megadása
 
 1. Kattintson a jobb gombbal a Stream Analytics projekt **bemenetek** mappájára. Ezután válassza az **ASA: bemenet hozzáadása** lehetőséget a helyi menüből.
 
-   ![Bemenet hozzáadása a bemenetek mappából](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![Bemenet hozzáadása a bemenetek mappából](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    A **CTRL + SHIFT + P** billentyűkombinációval is megnyithatja a parancssort, és megadhatja az **ASA: bemenet hozzáadása**elemet.
 
-   ![Stream Analytics bevitel hozzáadása a Visual Studio Code-ban](./media/quick-create-vs-code/add-input.png)
+   ![Stream Analytics bevitel hozzáadása a Visual Studio Code-ban](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Válassza ki a bemeneti forrás típusát a legördülő listából.
 
-   ![Válassza az IoT hub lehetőséget a bemeneti beállításként](./media/quick-create-vs-code/iot-hub.png)
+   ![Válassza az IoT hub lehetőséget a bemeneti beállításként](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. Ha hozzáadta a bemenetet a parancssorból, válassza ki a Stream Analytics lekérdezési parancsfájlt, amely a bemenetet fogja használni. A rendszer automatikusan kitölti a **myASAproj. asaql**fájl elérési útját.
 
-   ![Stream Analytics szkript kiválasztása a Visual Studio Code-ban](./media/quick-create-vs-code/asa-script.png)
+   ![Stream Analytics szkript kiválasztása a Visual Studio Code-ban](./media/quick-create-visual-studio-code/asa-script.png)
 
 4. A legördülő menüben válassza az **Azure-előfizetések kiválasztása** lehetőséget.
 
-    ![Kiválasztás az előfizetések közül](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![Kiválasztás az előfizetések közül](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
 5. Konfigurálja az újonnan létrehozott JSON-fájlt. A Codelensben funkcióval karakterláncot adhat meg, kiválaszthatja a legördülő listából, vagy megváltoztathatja a szöveget közvetlenül a fájlban. Az alábbi képernyőképen az **előfizetések közül választhat** , példaként.
 
-   ![A bemenet konfigurálása a Visual Studio Code-ban](./media/quick-create-vs-code/configure-input.png)
+   ![A bemenet konfigurálása a Visual Studio Code-ban](./media/quick-create-visual-studio-code/configure-input.png)
 
 ## <a name="preview-input"></a>Előzetes verzió bemenete
 
 Győződjön meg arról, hogy a bemeneti adatok beérkeznek, válassza az **adatok előnézete** lehetőséget az élő bemeneti konfigurációs fájlban a felső sorban. Egyes bemeneti adatok egy IoT-hubhoz származnak, és az előnézet ablakban láthatók. Az előnézet néhány másodpercig is eltarthat.
 
- ![Élő bemenet megtekintése](./media/quick-create-vs-code/preview-live-input.png)
+ ![Élő bemenet megtekintése](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>Lekérdezések helyi futtatása
 
@@ -69,7 +69,7 @@ A kimenet létrehozásának megkezdéséhez használt alapértelmezett idő **mo
 
 ![Helyi Futtatás eredményének megtekintése](./media/vscode-local-run-live-input/vscode-livetesting.gif)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics feladatok megismerése a Visual Studio Code-ban (előzetes verzió)](visual-studio-code-explore-jobs.md)
 

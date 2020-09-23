@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7586cca21d470bcb0cf637ca0370f5dfcb59406
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711085"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901099"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban (előzetes verzió)
  
@@ -56,7 +56,7 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
  
 4. A feliratok növekvő érzékenységi sorrendben vannak felsorolva. A feliratok közötti rangsor módosításához húzza a címkéket úgy, hogy átrendezi őket a táblázatba, vagy használja a **feljebb és lejjebb gombokat a sorrend** megváltoztatásához. **Move down** 
  
-    ![Information Protection-házirend konfigurálása](./media/security-center-info-protection-policy/move-up.png)
+    ![Címkék listája](./media/security-center-info-protection-policy/move-up.png)
  
 5. Ha elkészült, kattintson a **Mentés** gombra a képernyő tetején.
  
@@ -66,7 +66,7 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
 1. Az adattípusok kezeléséhez és testreszabásához kattintson az **adattípusok kezelése**lehetőségre.
 2. Új **adattípus**hozzáadásához válassza a felső menüben az **információ létrehozása típust** . Megadhatja az **adattípus**nevét, leírását és a keresési minta sztringjét. A keresési minta sztringek helyettesítő karakterekkel rendelkező kulcsszavakat is használhatnak (a (z) "%" karakterrel), amelyet az automatikus felderítési motor használ a bizalmas adatok azonosításához az adatbázisokban az oszlopok metaadatai alapján.
  
-    ![Information Protection-házirend konfigurálása](./media/security-center-info-protection-policy/info-types.png)
+    ![Információ típusának létrehozása](./media/security-center-info-protection-policy/info-types.png)
  
 3. A beépített **adattípusokat** további keresési minta karakterláncok hozzáadásával, a meglévő sztringek letiltásával vagy a Leírás módosításával is konfigurálhatja. A beépített **adattípusok** nem törölhetők, és nem szerkeszthetők a nevük. 
 4. Az **adattípusok** növekvő felderítési rangsorolási sorrendben vannak felsorolva, ami azt jelenti, hogy a listában magasabb típusok először is megpróbálják egyeztetni az adatokat. Az adattípusok rangsorolásának módosításához húzza a típusokat a táblázat jobb oldali helyére, vagy használja a **feljebb és lejjebb gombokat a sorrend** módosításához. **Move down** 
@@ -81,7 +81,7 @@ Miután az adatvédelmi szabályzatot teljesen meghatározta és mentette, a bé
 - [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): lekéri az érvényes bérlői SQL Information Protection-házirendet.
 - [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): beállítja a hatályos bérlői SQL Information Protection-házirendet.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ebben a cikkben megtanulta, hogyan határozhat meg egy SQL Information Protection szabályzatot a Azure Security Centerban. Ha többet szeretne megtudni az SQL-Information Protection használatáról az SQL-adatbázisokban található bizalmas adatok osztályozásához és védelméhez, olvassa el az [adatfelderítés és-besorolás Azure SQL Database](../azure-sql/database/data-discovery-and-classification-overview.md). 
 

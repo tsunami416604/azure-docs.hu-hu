@@ -1,6 +1,6 @@
 ---
-title: Tanúsítványok használata Azure Stack Edge GPU-val | Microsoft Docs
-description: Ismerteti a tanúsítványok használatát Azure Stack Edge GPU-eszközzel, beleértve a használatának okát, valamint a tanúsítványok az eszközön való feltöltésének módját.
+title: Tanúsítványok használata Azure Stack Edge Pro GPU-val | Microsoft Docs
+description: Ismerteti a tanúsítványok használatát Azure Stack Edge Pro GPU-eszközzel, beleértve a használatának okát és a tanúsítványok az eszközön való feltöltésének módját.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268876"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890753"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Tanúsítványok használata Azure Stack Edge GPU-eszközzel
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Tanúsítványok használata Azure Stack Edge Pro GPU-eszközzel
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ez a cikk az Azure Stack Edge-eszközre telepíthető tanúsítványok típusait ismerteti. A cikk az egyes tanúsítvány-típusok részleteit is tartalmazza, valamint a lejárati dátum telepítésére és azonosítására szolgáló eljárást. 
+Ez a cikk az Azure Stack Edge Pro-eszközre telepíthető tanúsítványok típusait ismerteti. A cikk az egyes tanúsítvány-típusok részleteit is tartalmazza, valamint a lejárati dátum telepítésére és azonosítására szolgáló eljárást. 
 
 ## <a name="about-certificates"></a>Információ a tanúsítványokról
 
 A tanúsítvány egy **nyilvános kulcs** és egy olyan entitás (például tartománynév) közötti kapcsolatot biztosít, amely egy megbízható harmadik fél ( **például egy hitelesítésszolgáltató**) számára van **aláírva** (ellenőrizve).  A tanúsítvány kényelmes módszert biztosít a megbízható nyilvános titkosítási kulcsok terjesztésére. A tanúsítványok segítségével biztosítható, hogy a kommunikáció megbízható legyen, és titkosított adatokat küldjön a megfelelő kiszolgálóra. 
 
-Az Azure Stack Edge-eszköz kezdeti konfigurálásakor az önaláírt tanúsítványok automatikusan létrejönnek. Igény szerint saját tanúsítványokat is használhat. Ha saját tanúsítványokat szeretne létrehozni, kövesse az alábbi irányelveket.
+Ha a Azure Stack Edge Pro-eszköz eredetileg be van állítva, az önaláírt tanúsítványok automatikusan létrejönnek. Igény szerint saját tanúsítványokat is használhat. Ha saját tanúsítványokat szeretne létrehozni, kövesse az alábbi irányelveket.
 
 ## <a name="types-of-certificates"></a>A tanúsítványok típusai
 
-Az Azure Stack Edge-eszközön használt különböző típusú tanúsítványok a következők: 
+Az Azure Stack Edge Pro-eszközön használt különböző típusú tanúsítványok a következők: 
 - Aláíró tanúsítványok
     - Legfelső szintű hitelesítésszolgáltató
     - Haladó
@@ -68,7 +68,7 @@ Ezek a tanúsítványok lehetnek főtanúsítványok vagy közbenső tanúsítv�
 
 ## <a name="node-certificates"></a>Csomóponti tanúsítványok
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> Az eszköz összes csomópontja folyamatosan kommunikál egymással, ezért megbízhatósági kapcsolatban kell lennie. A csomópont-tanúsítványok lehetőséget biztosítanak a megbízhatóság létrehozására. A csomópont-tanúsítványok akkor is lejátszásra kerülnek, ha egy távoli PowerShell-munkamenettel csatlakozik a https-kapcsolaton keresztül az eszköz csomóponthoz.
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> Az eszköz összes csomópontja folyamatosan kommunikál egymással, ezért megbízhatósági kapcsolatban kell lennie. A csomópont-tanúsítványok lehetőséget biztosítanak a megbízhatóság létrehozására. A csomópont-tanúsítványok akkor is lejátszásra kerülnek, ha egy távoli PowerShell-munkamenettel csatlakozik a https-kapcsolaton keresztül az eszköz csomóponthoz.
 
 ### <a name="caveats"></a>Figyelmeztetések
 
@@ -121,9 +121,9 @@ Az eszköz helyi webes FELÜLETét böngészőn keresztül érheti el. A kommuni
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge eszközök tanúsítványainak
 
-Az Azure Stack Edge-eszköz egy olyan IoT-eszköz is, amelyhez egy IoT Edge eszköz csatlakozik. A IoT Edge-eszköz és a hozzájuk kapcsolódó alsóbb rétegbeli eszközök közötti biztonságos kommunikációhoz IoT Edge tanúsítványokat is fel lehet tölteni. 
+Az Azure Stack Edge Pro-eszköz egy IoT-eszköz is, amely egy IoT Edge eszközhöz csatlakoztatott számítási kapacitást is engedélyez. A IoT Edge-eszköz és a hozzájuk kapcsolódó alsóbb rétegbeli eszközök közötti biztonságos kommunikációhoz IoT Edge tanúsítványokat is fel lehet tölteni. 
 
-Az eszköz önaláírt tanúsítványokkal rendelkezik, amelyek akkor használhatók, ha csak a számítási forgatókönyvet szeretné használni az eszközzel. Ha az Azure Stack Edge-eszköz csatlakoztatva van az alárendelt eszközökhöz, akkor saját tanúsítványokat kell használnia.
+Az eszköz önaláírt tanúsítványokkal rendelkezik, amelyek akkor használhatók, ha csak a számítási forgatókönyvet szeretné használni az eszközzel. Ha az Azure Stack Edge Pro-eszköz csatlakoztatva van az alárendelt eszközökhöz, akkor saját tanúsítványokat kell használnia.
 
 A megbízhatósági kapcsolat engedélyezéséhez három IoT Edge tanúsítványt kell telepítenie:
 
@@ -140,7 +140,7 @@ További információ a IoT Edge tanúsítványokról: [Azure IoT Edge tanúsít
 
 ## <a name="support-session-certificates"></a>A munkamenet-tanúsítványok támogatása
 
-Ha az Azure Stack Edge-eszköz bármilyen problémát tapasztal, akkor a problémák elhárítása érdekében egy távoli PowerShell-támogatási munkamenet is megnyitható az eszközön. Ha biztonságos, titkosított kommunikációt szeretne engedélyezni ezen a támogatási munkameneten keresztül, feltöltheti a tanúsítványt.
+Ha az Azure Stack Edge Pro-eszköz bármilyen problémát tapasztal, akkor a problémák elhárítása érdekében egy távoli PowerShell-támogatási munkamenet is megnyitható az eszközön. Ha biztonságos, titkosított kommunikációt szeretne engedélyezni ezen a támogatási munkameneten keresztül, feltöltheti a tanúsítványt.
 
 ### <a name="caveats"></a>Figyelmeztetések
 
@@ -155,7 +155,7 @@ Ha az Azure Stack Edge-eszköz bármilyen problémát tapasztal, akkor a problé
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-A tanúsítványok létrehozása után a következő lépés a tanúsítványok feltöltése az Azure Stack Edge-eszközön
+A tanúsítványok létrehozása után a következő lépés a tanúsítványok feltöltése a Azure Stack Edge Pro-eszközön
 
 
 ## <a name="upload-certificates"></a>Tanúsítványok feltöltése 
@@ -401,7 +401,7 @@ A. pfx-fájl biztonsági mentése mostantól a kiválasztott helyre lett mentve,
 
 ## <a name="supported-certificate-algorithms"></a>Támogatott tanúsítvány-algoritmusok
 
- Az Azure Stack Edge-eszközön csak a Rivest – a Adleman (RSA) tanúsítványok támogatottak. Ha a rendszer elliptikus görbe digitális aláírási algoritmust (ECDSA) használ, az eszköz viselkedése meghatározatlan.
+ Az Azure Stack Edge Pro-eszközön csak a Rivest – a-Adleman (RSA) tanúsítványok támogatottak. Ha a rendszer elliptikus görbe digitális aláírási algoritmust (ECDSA) használ, az eszköz viselkedése meghatározatlan.
 
  Az RSA nyilvános kulcsot tartalmazó tanúsítványokat RSA-tanúsítványoknak nevezzük. Az elliptikus görbe kriptográfiai (ECC) nyilvános kulcsát tartalmazó tanúsítványokat ECDSA (elliptikus görbe digitális aláírási algoritmus) tanúsítványoknak nevezzük. 
 
@@ -416,6 +416,6 @@ A tanúsítványok forgása ebben a kiadásban nincs implementálva. A tanúsít
 
 Tekintse meg a tanúsítvány lejárati dátumát a **tanúsítványok** lapon az eszköz helyi webes felületén. Ha a tanúsítvány lejárata közeledik, hozzon létre és töltsön fel új tanúsítványokat a [tanúsítványok létrehozása és feltöltése](azure-stack-edge-j-series-manage-certificates.md)párbeszédpanelen található részletes utasítások szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az Azure Stack Edge-eszköz üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)
+[Az Azure Stack Edge Pro-eszköz üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)

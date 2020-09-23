@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568047"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884939"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -84,6 +84,9 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
 Ha a kapcsolatok sikeresek, megjelenik az Edge-eszközök listája. Legalább egy **LVA-Sample-Device**nevű eszközt kell látnia. Mostantól kezelheti IoT Edge eszközeit, és a helyi menüben használhatja az Azure IoT Hubt. A peremhálózati eszközön üzembe helyezett modulok megtekintéséhez a **LVA – minta-eszköz**területen bontsa ki a **modulok** csomópontot.
 
 ![LVA – minta – eszköz csomópont](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> Ha a [Live Video Analytics szolgáltatást manuálisan telepítette IoT Edge](deploy-iot-edge-device.md) magatokat egy peremhálózati eszközön (például egy ARM64-eszközön), akkor a modul az Azure IoT hub alatt jelenik meg az eszköz alatt. Kiválaszthatja a modult, és követheti az alábbi lépéseket.
 
 ## <a name="use-direct-method-calls"></a>Közvetlen metódusú hívások használata
 
@@ -680,7 +683,7 @@ Próbálkozzon a következő lépésekkel:
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [rögzíthet videót a IoT Edge élő video Analytics használatával](continuous-video-recording-tutorial.md).
 * További információ a [diagnosztikai üzenetekről](monitoring-logging.md).

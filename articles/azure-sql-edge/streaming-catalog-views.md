@@ -1,6 +1,6 @@
 ---
-title: Streaming Catalog-nézetek (Transact-SQL) – Azure SQL Edge (előzetes verzió)
-description: Ismerje meg a streaming Catalog-nézeteket és a dinamikus felügyeleti nézeteket az Azure SQL Edge-ben (előzetes verzió)
+title: Streaming Catalog-nézetek (Transact-SQL) – Azure SQL Edge
+description: Ismerje meg az Azure SQL Edge elérhető streaming Catalog-nézeteit és dinamikus felügyeleti nézeteit
 keywords: sys. external_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 5b1cd58b8947e376ac70ee307041ae7864ed7e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a8f037cd9923564e2e214e9727ff87d63cca547
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233111"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900526"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>Streaming Catalog-nézetek (Transact-SQL)
 
@@ -22,7 +22,7 @@ Ez a szakasz a T-SQL streaminghez kapcsolódó elérhető katalógus-nézeteket 
   
 ## <a name="in-this-section"></a>A szakasz tartalma  
   
-|Nézet|Description|  
+|Nézet|Leírás|  
 |:---|:---|
 |[sys. external_streams](sys-external-streams.md) |Az adatbázis hatókörében létrehozott minden külső adatfolyam-objektum sorát adja vissza.|
 |[sys. external_streaming_jobs](sys-external-streaming-jobs.md) |Az adatbázis hatókörében létrehozott összes külső adatfolyam-feladatsor sorát adja vissza.|

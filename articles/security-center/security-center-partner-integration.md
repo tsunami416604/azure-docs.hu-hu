@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180847"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883938"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -35,11 +35,11 @@ Az integrált biztonsági megoldások jelenleg a [Qualys](https://www.qualys.com
 > [!NOTE]
 > Security Center nem telepíti a Log Analytics ügynököt a partner virtuális készülékekre, mert a legtöbb biztonsági gyártó tiltja a készülékeken futó külső ügynököket.
 
-Ha többet szeretne megtudni a biztonsági rések vizsgálati eszközeinek a Qualys-ből való integrálásáról, beleértve a standard szintű ügyfelek számára elérhető beépített szkennert, tekintse meg az [Azure-Virtual Machines sebezhetőségi felméréseit](deploy-vulnerability-assessment-vm.md).
+Ha többet szeretne megtudni a sebezhetőségi vizsgálat eszközeinek integrálásáról a Qualys-ből, beleértve az Azure Defender-ügyfelek számára elérhető beépített szkennert, tekintse meg az [Azure-Virtual Machines sebezhetőségi felméréseit](deploy-vulnerability-assessment-vm.md).
 
 A Security Center a következő biztonsági rések elemzését is biztosítja:
 
-* SQL-adatbázisok – lásd: [sebezhetőségi felmérési jelentések feltárása a sebezhetőségi felmérés irányítópultján](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* SQL-adatbázisok – lásd: [sebezhetőségi felmérési jelentések feltárása a sebezhetőségi felmérés irányítópultján](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry rendszerképek – lásd: [Azure Container Registry Integration with Security Center (előzetes verzió)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>A biztonsági megoldások integrálása
@@ -88,7 +88,7 @@ Válassza a **nézet** lehetőséget További információk és beállítások m
 Security Center automatikusan felderíti az Azure-ban futó biztonsági megoldásokat, de nem kapcsolódik Security Centerhoz, és megjeleníti a megoldásokat a **felderített megoldások** szakaszban. Ezen megoldások közé tartoznak az Azure-megoldások, például a [Azure ad Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)és a partneri megoldások.
 
 > [!NOTE]
-> A felderített megoldások szolgáltatás előfizetési szintjén a Security Center standard szintű csomag szükséges. A díjszabással kapcsolatos további információkért tekintse meg a [díjszabást](security-center-pricing.md) .
+> Az **Azure Defender** előfizetési szintjének engedélyezése a felderített megoldások szolgáltatáshoz. A díjszabással kapcsolatos további információkért tekintse meg a [díjszabást](security-center-pricing.md) .
 >
 
 Válassza a **Kapcsolódás** a megoldás alatt lehetőséget a Security Center való integráláshoz és a biztonsági riasztások értesítéséhez.
@@ -101,7 +101,7 @@ Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztathat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A kapcsolódó információk a következő cikkekben találhatók:
 

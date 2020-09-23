@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 56a03d6f1e4684da797b733d6041309acdac65c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 674c906a4316ec92101f3f2028a57aa82db3f504
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888156"
+ms.locfileid: "90982005"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
 
@@ -33,10 +33,10 @@ A tároló a következő tároló-specifikus konfigurációs beállításokkal i
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod|Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
-|No|Gyorsítótár: Redis|Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|No|Üzenetsor: RabbitMQ|Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|No|Tárolás::D ocumentStore:: MongoDB|Engedélyezi a MongoDB az állandó eredményű tároláshoz.|
+|Nem|ReadEngineConfig:ResultExpirationPeriod|Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
+|Nem|Gyorsítótár: Redis|Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|Nem|Üzenetsor: RabbitMQ|Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|Nem|Tárolás::D ocumentStore:: MongoDB|Engedélyezi a MongoDB az állandó eredményű tároláshoz.|
 
 ## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
@@ -118,7 +118,7 @@ Cserélje le a {_argument_name_} értéket a saját értékeire:
 A következő Docker-példák az olvasási tárolóra vonatkoznak.
 
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 ### <a name="basic-example"></a>Alapszintű példa
 
@@ -141,7 +141,7 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="version-31"></a>[3,1-es verzió](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
 
 ### <a name="basic-example"></a>Alapszintű példa
 

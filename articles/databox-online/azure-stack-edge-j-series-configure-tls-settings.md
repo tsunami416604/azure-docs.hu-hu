@@ -1,6 +1,6 @@
 ---
-title: A TLS 1,2 konfigurálása Azure Stack Edge GPU-eszközt elérő Windows-ügyfeleken
-description: Ismerteti, hogyan kell konfigurálni a TLS 1,2-t a Azure Stack Edge GPU-eszközt elérő Windows-ügyfeleken.
+title: A TLS 1,2 konfigurálása Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken
+description: Ismerteti, hogyan kell konfigurálni a TLS 1,2-t a Azure Stack Edge Pro GPU-eszközt elérő Windows-ügyfeleken.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268502"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891179"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>A TLS 1,2 konfigurálása Azure Stack Edge-eszközt elérő Windows-ügyfeleken
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>A TLS 1,2 konfigurálása Azure Stack Edge Pro-eszközt elérő Windows-ügyfeleken
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Ha Windows-ügyfelet használ az Azure Stack Edge-eszköz eléréséhez, konfigurálnia kell a TLS 1,2-t az ügyfélen. Ez a cikk a TLS 1,2 konfigurálásához nyújt forrásokat és irányelveket a Windows-ügyfélen. 
+Ha Windows-ügyfelet használ a Azure Stack Edge Pro-eszköz eléréséhez, konfigurálnia kell a TLS 1,2-t az ügyfélen. Ez a cikk a TLS 1,2 konfigurálásához nyújt forrásokat és irányelveket a Windows-ügyfélen. 
 
 Az itt megadott irányelvek a Windows Server 2016 rendszerű ügyfeleken végrehajtott tesztelésen alapulnak.
 
@@ -72,6 +72,6 @@ Ha a környezethez az egész rendszerre kiterjedő TLS 1,2-et kívánja beállí
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kapcsolódás Azure Resource Managerhoz](azure-stack-edge-j-series-connect-resource-manager.md)

@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás Azure Resource Managerhoz az Azure Stack Edge GPU-eszközön
-description: Ismerteti, hogyan lehet csatlakozni az Azure Stack Edge GPU-ban futó Azure Resource Managerhoz Azure PowerShell használatával.
+title: Kapcsolódás Azure Resource Managerhoz a Azure Stack Edge Pro GPU-eszközön
+description: Ismerteti, hogyan csatlakozhat a Azure Stack Edge Pro GPU-val futó Azure Resource Managerhoz Azure PowerShell használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269811"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891268"
 ---
-# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Azure Resource Manager csatlakoztatása az Azure Stack Edge-eszközön
+# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Resource Manager csatlakoztatása a Azure Stack Edge Pro-eszközön
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-A Azure Resource Manager olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. Az Azure Stack Edge-eszköz ugyanazokat a Azure Resource Manager API-kat támogatja a helyi előfizetésben lévő virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a támogatás lehetővé teszi az eszköznek a felhővel konzisztens módon történő kezelését. 
+A Azure Resource Manager olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. Az Azure Stack Edge Pro-eszköz ugyanazokat a Azure Resource Manager API-kat támogatja a helyi előfizetésben lévő virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a támogatás lehetővé teszi az eszköznek a felhővel konzisztens módon történő kezelését. 
 
-Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a helyi API-khoz az Azure Stack Edge-eszközön Azure Resource Manager segítségével Azure PowerShell használatával.
+Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a helyi API-khoz Azure Stack Edge Pro-eszközön a Azure PowerShell használatával Azure Resource Manager segítségével.
 
 ## <a name="about-azure-resource-manager"></a>Tudnivalók az Azure Resource Manager használatáról
 
-A Azure Resource Manager konzisztens felügyeleti réteget biztosít a Azure Stack Edge-eszköz API meghívásához, valamint olyan műveletek elvégzéséhez, mint például a virtuális gépek létrehozása, frissítése és törlése. A Azure Resource Manager architektúrája részletesen szerepel a következő ábrán.
+A Azure Resource Manager konzisztens felügyeleti réteget biztosít a Azure Stack Edge Pro-eszköz API meghívásához, valamint olyan műveletek elvégzéséhez, mint például a virtuális gépek létrehozása, frissítése és törlése. A Azure Resource Manager architektúrája részletesen szerepel a következő ábrán.
 
 ![Diagram a Azure Resource Manager](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## <a name="endpoints-on-azure-stack-edge-device"></a>Végpontok Azure Stack peremhálózati eszközön
+## <a name="endpoints-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro-eszközön futó végpontok
 
 A következő táblázat összefoglalja az eszközön elérhető különböző végpontokat, a támogatott protokollokat és a végpontok eléréséhez szükséges portokat. A cikk során a végpontokra mutató hivatkozásokat talál.
 
@@ -47,7 +47,7 @@ Az eszköz helyi API-khoz való csatlakozásának folyamata a következő lépé
 
 | . Lépés # | Ezt a lépést kell elvégeznie... | .. ezen a helyen. |
 | --- | --- | --- |
-| 1. | [Az Azure Stack Edge-eszköz konfigurálása](#step-1-configure-azure-stack-edge-device) | Helyi webes felhasználói felület |
+| 1. | [Az Azure Stack Edge Pro-eszköz konfigurálása](#step-1-configure-azure-stack-edge-pro-device) | Helyi webes felhasználói felület |
 | 2. | [Tanúsítványok létrehozása és telepítése](#step-2-create-and-install-certificates) | Windows-ügyfél/helyi webes felhasználói felület |
 | 3. | [Az előfeltételek áttekintése és konfigurálása](#step-3-install-powershell-on-the-client) | Windows-ügyfél |
 | 4. | [Azure PowerShell beállítása az ügyfélen](#step-4-set-up-azure-powershell-on-the-client) | Windows-ügyfél |
@@ -59,13 +59,13 @@ A következő részek részletesen ismertetik a Azure Resource Managerhoz való 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy az Azure Resource Manager által az eszközhöz való csatlakozáshoz használt ügyfél TLS 1,2-et használ. További információért látogasson el a [TLS 1,2 konfigurálása Azure stack Edge-eszközt elérő Windows-ügyfélhez](azure-stack-edge-j-series-configure-tls-settings.md)című témakörben.
+Mielőtt elkezdené, győződjön meg arról, hogy az Azure Resource Manager által az eszközhöz való csatlakozáshoz használt ügyfél TLS 1,2-et használ. További információért látogasson el a [TLS 1,2 konfigurálása Windows-ügyfélhez Azure stack Edge Pro-eszköz eléréséhez](azure-stack-edge-j-series-configure-tls-settings.md).
 
-## <a name="step-1-configure-azure-stack-edge-device"></a>1. lépés: Azure Stack Edge-eszköz konfigurálása 
+## <a name="step-1-configure-azure-stack-edge-pro-device"></a>1. lépés: Azure Stack Edge Pro-eszköz konfigurálása 
 
-Hajtsa végre az alábbi lépéseket a Azure Stack Edge-eszköz helyi webes FELÜLETén.
+Hajtsa végre az alábbi lépéseket a Azure Stack Edge Pro-eszköz helyi webes FELÜLETén.
 
-1. Töltse ki a Azure Stack Edge-eszköz hálózati beállításait. 
+1. Töltse ki a Azure Stack Edge Pro-eszköz hálózati beállításait. 
 
     ![Helyi webes felhasználói felület "hálózati beállítások" lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -83,7 +83,7 @@ Hajtsa végre az alábbi lépéseket a Azure Stack Edge-eszköz helyi webes FEL�
 
 ## <a name="step-2-create-and-install-certificates"></a>2. lépés: tanúsítványok létrehozása és telepítése
 
-A tanúsítványok biztosítják, hogy a kommunikáció megbízható legyen. Az Azure Stack Edge-eszközön automatikusan létrejönnek az önaláírt berendezések, a blobok és a Azure Resource Manager tanúsítványok. Igény szerint saját aláírt blobot is bevihet, és Azure Resource Manager tanúsítványokat is.
+A tanúsítványok biztosítják, hogy a kommunikáció megbízható legyen. A Azure Stack Edge Pro-eszközön automatikusan létrejönnek az önaláírt berendezések, a blobok és a Azure Resource Manager tanúsítványok. Igény szerint saját aláírt blobot is bevihet, és Azure Resource Manager tanúsítványokat is.
 
 Ha saját aláírt tanúsítványt használ, a tanúsítvány megfelelő aláíró láncára is szüksége lesz. Az aláíró lánchoz, Azure Resource Managerhoz és az eszközön található blob-tanúsítványokhoz szüksége lesz a megfelelő tanúsítványokra az ügyfélszámítógépen is, hogy hitelesítse és kommunikáljon az eszközzel.
 
@@ -319,7 +319,7 @@ Ellenőrizze, hogy a végpont neve fel van-e oldva azon az ügyfélen, amelyet a
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Állítsa be a környezetet Azure Stack Edge-ként és a Azure Resource Manager-hívásokhoz használandó portot 443-ként. A környezet két módon adható meg:
+2. Állítsa be a környezetet Azure Stack Edge Pro-ként és a Azure Resource Manager-hívásokhoz használandó portot 443-ként. A környezet két módon adható meg:
 
     - Állítsa be a környezetet. Írja be a következő parancsot:
 
@@ -329,7 +329,7 @@ Ellenőrizze, hogy a végpont neve fel van-e oldva azon az ügyfélen, amelyet a
     
     További információkért keresse fel a [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
 
-    - Adja meg a környezetet minden olyan parancsmagnál, amelyet végrehajt. Ez biztosítja, hogy minden API-hívás a megfelelő környezetben legyen. Alapértelmezés szerint a hívások az Azure nyilvános verzióján keresztül történnek, de szeretné, ha ezek az Azure Stack Edge-eszközhöz beállított környezeten keresztül mennek át.
+    - Adja meg a környezetet minden olyan parancsmagnál, amelyet végrehajt. Ez biztosítja, hogy minden API-hívás a megfelelő környezetben legyen. Alapértelmezés szerint a hívások az Azure nyilvános verzióján keresztül történnek, de azt szeretné, hogy az Azure Stack Edge Pro-eszközhöz beállított környezeten át lehessen lépni.
 
     - A [AzureRM-környezetek váltásával](#switch-environments)kapcsolatos további információkért lásd:.
 
@@ -376,7 +376,7 @@ Ellenőrizze, hogy a végpont neve fel van-e oldva azon az ügyfélen, amelyet a
 
 
 > [!IMPORTANT]
-> A Azure Resource Managerhoz való kapcsolódás 1,5 óránként lejár, vagy ha az Azure Stack Edge-eszköz újraindul. Ha ez történik, a futtatott parancsmagok hibaüzeneteket küldenek ahhoz, hogy többé ne kapcsolódjon az Azure-hoz. Újra be kell jelentkeznie.
+> A Azure Resource Managerhoz való kapcsolódás 1,5 óránként lejár, vagy ha a Azure Stack Edge Pro-eszköz újraindul. Ha ez történik, a futtatott parancsmagok hibaüzeneteket küldenek ahhoz, hogy többé ne kapcsolódjon az Azure-hoz. Újra be kell jelentkeznie.
 
 ## <a name="switch-environments"></a>Környezetek váltása
 
@@ -458,6 +458,6 @@ ExtendedProperties : {}
 ```
 Ezzel átváltotta a kívánt környezetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Virtuális gépek üzembe helyezése Azure stack peremhálózati eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

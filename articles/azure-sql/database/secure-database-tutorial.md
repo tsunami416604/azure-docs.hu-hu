@@ -7,15 +7,15 @@ ms.subservice: security
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 09/03/2019
+ms.reviewer: ''
+ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496916"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885417"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > - Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok létrehozása
 > - Azure Active Directory (Azure AD) rendszergazdájának konfigurálása
 > - Felhasználói hozzáférés kezelése SQL-hitelesítéssel, Azure AD-hitelesítéssel és biztonságos kapcsolati karakterláncokkal
-> - Engedélyezheti a biztonsági funkciókat, például a speciális adatbiztonságot, a naplózást, az adatmaszkolást és a titkosítást
+> - Olyan biztonsági funkciók engedélyezése, mint például az SQL-hez készült Azure Defender, a naplózás, az adatmaszkolás és a titkosítás
 
 A Azure SQL Database a következőket teszi biztonságossá:
 
@@ -233,30 +233,30 @@ Biztonságos kapcsolódási sztring másolása:
 
 ## <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése
 
-A Azure SQL Database a Azure Portal használatával elérhető biztonsági funkciókat biztosít. Ezek a funkciók mind az adatbázis, mind a kiszolgáló számára elérhetők, kivéve az adatmaszkolást, amely csak az adatbázison érhető el. További információ: [speciális adatbiztonság](advanced-data-security.md), [naplózás](../../azure-sql/database/auditing-overview.md), [dinamikus adatmaszkolás](dynamic-data-masking-overview.md)és [transzparens adattitkosítás](transparent-data-encryption-tde-overview.md).
+A Azure SQL Database a Azure Portal használatával elérhető biztonsági funkciókat biztosít. Ezek a funkciók mind az adatbázis, mind a kiszolgáló számára elérhetők, kivéve az adatmaszkolást, amely csak az adatbázison érhető el. További információ: [Az Azure Defender for SQL](azure-defender-for-sql.md), a [naplózás](../../azure-sql/database/auditing-overview.md), a [dinamikus adatmaszkolás](dynamic-data-masking-overview.md)és az [transzparens adattitkosítás](transparent-data-encryption-tde-overview.md).
 
-### <a name="advanced-data-security"></a>Advanced Data Security
+### <a name="azure-defender-for-sql"></a>Azure Defender SQL-hez
 
-A speciális adatbiztonsági funkció észleli a lehetséges veszélyforrásokat, és biztonsági riasztásokat biztosít a rendellenes tevékenységekről. A felhasználók a naplózási funkcióval megismerhetik ezeket a gyanús eseményeket, és meghatározhatják, hogy az esemény az adatbázisban való hozzáféréshez, az illetéktelen behatoláshoz vagy a biztonsági rés kihasználásához kapcsolódott-e. A felhasználók biztonsági áttekintést is kapnak, amely tartalmazza a sebezhetőségi felmérést, valamint az adatfelderítési és besorolási eszközt.
+Az Azure Defender for SQL funkció észleli a lehetséges veszélyforrásokat, és biztonsági riasztásokat biztosít a rendellenes tevékenységekről. A felhasználók a naplózási funkcióval megismerhetik ezeket a gyanús eseményeket, és meghatározhatják, hogy az esemény az adatbázisban való hozzáféréshez, az illetéktelen behatoláshoz vagy a biztonsági rés kihasználásához kapcsolódott-e. A felhasználók biztonsági áttekintést is kapnak, amely tartalmazza a sebezhetőségi felmérést, valamint az adatfelderítési és besorolási eszközt.
 
 > [!NOTE]
 > Ilyen veszélyforrás például az SQL-injektálás, amely során a támadók rosszindulatú SQL-adatokat szúrnak be az alkalmazásba. Egy alkalmazás ezután nem tudja végrehajtani a rosszindulatú SQL-t, és lehetővé teszi a támadók számára, hogy hozzáférjenek az adatbázishoz, vagy módosíthassák azokat.
 
-A speciális adatbiztonság engedélyezése:
+Az Azure Defender for SQL engedélyezése:
 
 1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
 1. Az **Áttekintés** lapon válassza a **kiszolgáló neve** hivatkozást. Ekkor megnyílik a kiszolgáló lap.
 
-1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **speciális adatbiztonság**lehetőséget.
+1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **Security Center**elemet.
 
-   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ez után válassza a **Mentés** lehetőséget.
+   1. A **funkció engedélyezéséhez válassza az** **Azure Defender for SQL** lehetőséget. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ez után válassza a **Mentés** lehetőséget.
 
       ![Navigációs panel](./media/secure-database-tutorial/threat-settings.png)
 
       Az e-maileket is konfigurálhatja a biztonsági riasztások, a tárolási adatok és a veszélyforrások észlelési típusai fogadására.
 
-1. Térjen vissza az adatbázis **SQL-adatbázisok** lapjára, és válassza a **Biztonság** szakaszban a **speciális adatbiztonság** lehetőséget. Itt számos, az adatbázishoz elérhető biztonsági mutatót talál.
+1. Térjen vissza az adatbázis **SQL-adatbázisok** lapjára, és válassza a biztonság szakaszban **a** **Security Center** elemet. Itt számos, az adatbázishoz elérhető biztonsági mutatót talál.
 
     ![Fenyegetés állapota](./media/secure-database-tutorial/threat-status.png)
 
@@ -266,7 +266,7 @@ Ha a rendszer rendellenes tevékenységeket észlel, az eseményre vonatkozó in
 
 ### <a name="auditing"></a>Naplózás
 
-Az auditálási szolgáltatás nyomon követi az adatbázis eseményeit, és az eseményeket egy Azure Storage-ban, Azure Monitor naplókban vagy egy Event hub-naplóba írja. Az auditálás segítségével megtarthatja a szabályozás megfelelőségét, megismerheti az adatbázis-tevékenységeket, és betekintést nyerhet a lehetséges biztonsági szabálysértéseket jelező eltérésekre és rendellenességekre.
+Az auditálási szolgáltatás nyomon követi az adatbázis eseményeit, és az eseményeket egy Azure Storage-ban, Azure Monitor naplókban vagy egy Event hub-naplóba írja. A naplózás segít a jogszabályi megfelelőség fenntartásában és az adatbázison végzett tevékenység megértésében, valamint a lehetséges biztonsági problémákat jelző rendellenességek feltárásában.
 
 A naplózás engedélyezése:
 
@@ -276,7 +276,7 @@ A naplózás engedélyezése:
 
 1. A **naplózási** beállítások területen állítsa be a következő értékeket:
 
-   1. A **naplózás** beállítása **a**következőre:.
+   1. A **Naplózást** állítsa **BE** értékre.
 
    1. Válassza ki a **napló célhelyét** az alábbi módon:
 
@@ -338,7 +338,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 > [!NOTE]
 > A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](connect-query-ssms.md) használatával, és kérdezze le a `encryption_state` [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet oszlopát. A állapot `3` azt jelzi, hogy az adatbázis titkosítva van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -347,7 +347,7 @@ Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel jav
 > - Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok létrehozása
 > - Azure Active Directory (AD) rendszergazda konfigurálása
 > - Felhasználói hozzáférés kezelése SQL-hitelesítéssel, Azure AD-hitelesítéssel és biztonságos kapcsolati karakterláncokkal
-> - Engedélyezheti a biztonsági funkciókat, például a speciális adatbiztonságot, a naplózást, az adatmaszkolást és a titkosítást
+> - Olyan biztonsági funkciók engedélyezése, mint például az SQL-hez készült Azure Defender, a naplózás, az adatmaszkolás és a titkosítás
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan valósítható meg a Geo-eloszlás.
 
