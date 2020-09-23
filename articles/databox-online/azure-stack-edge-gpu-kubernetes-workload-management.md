@@ -1,29 +1,29 @@
 ---
-title: A Kubernetes számítási feladatok kezelésének megismerése Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan kezelhetők a Kubernetes számítási feladatok az Azure Stack Edge-eszközön.
+title: A Kubernetes számítási feladatok kezelésének megismerése Azure Stack Edge Pro-eszközön | Microsoft Docs
+description: Ismerteti, hogyan kezelhetők a Kubernetes számítási feladatok a Azure Stack Edge Pro-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899185"
 ---
-# <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes munkaterhelés-kezelés az Azure Stack Edge-eszközön
+# <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes a számítási feladatok kezelése a Azure Stack Edge Pro-eszközön
 
-A Azure Stack Edge-eszközön létrejön egy Kubernetes-fürt a számítási szerepkör konfigurálásakor. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A számítási feladatok a Kubernetes-fürtön való üzembe helyezésének különböző módjai vannak. 
+A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A számítási feladatok a Kubernetes-fürtön való üzembe helyezésének különböző módjai vannak. 
 
-Ez a cikk azokat a különböző módszereket ismerteti, amelyekkel a munkaterhelések a Azure Stack peremhálózati eszközön helyezhetők üzembe.
+Ez a cikk a munkaterhelések Azure Stack Edge Pro-eszközön való üzembe helyezéséhez használható különböző módszereket ismerteti.
 
 ## <a name="workload-types"></a>Számítási feladatok típusai
 
-Az Azure Stack Edge-eszközön üzembe helyezhető munkaterhelések két gyakori típusa állapot nélküli alkalmazások vagy állapot-nyilvántartó alkalmazások.
+Az Azure Stack Edge Pro-eszközön üzembe helyezhető munkaterhelések két gyakori típusa állapot nélküli alkalmazások vagy állapot-nyilvántartó alkalmazások.
 
 - Az **állapot nélküli alkalmazások** nem őrzik meg az állapotukat, és nem mentik az adatvesztést az állandó tárterületre. Az összes felhasználói és munkamenet-adatmennyiség az ügyféllel együtt marad. Néhány példa az állapot nélküli alkalmazásokra, például az Nginx és más webalkalmazások webes felületére.
 
@@ -35,7 +35,7 @@ Az Azure Stack Edge-eszközön üzembe helyezhető munkaterhelések két gyakori
 
 ## <a name="deployment-flow"></a>Üzembe helyezési folyamat
 
-Az alkalmazások Azure Stack peremhálózati eszközön való üzembe helyezéséhez kövesse az alábbi lépéseket: 
+Az alkalmazások Azure Stack Edge Pro-eszközön való üzembe helyezéséhez kövesse az alábbi lépéseket: 
  
 1. **Hozzáférés konfigurálása**: először a PowerShell-RunSpace használatával hozzon létre egy felhasználót, hozzon létre egy névteret, és adja meg a felhasználói hozzáférést a névtérhez.
 2. **Tároló konfigurálása**: ezután a Azure Portal Azure stack Edge erőforrását fogja használni az állandó kötetek létrehozásához, statikus vagy dinamikus kiépítés használatával a telepítendő állapot-nyilvántartó alkalmazások számára.
@@ -47,11 +47,13 @@ A munkaterhelések üzembe helyezésének három fő módja van. Az üzembe hely
 
 ![Kubernetes munkaterhelés üzembe helyezése](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Helyi telepítés**: Ez a központi telepítés a parancssori hozzáférési eszközön keresztül történik, például `kubectl` lehetővé teszi a Kubernetes üzembe helyezését `yamls` . A Kubernetes-fürtöt egy fájlon keresztül érheti el az Azure Stack Edge-ben `kubeconfig` . További információért látogasson el a [Kubernetes-fürt eléréséhez a kubectl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- **Helyi telepítés**: Ez a központi telepítés a parancssori hozzáférési eszközön keresztül történik, például `kubectl` lehetővé teszi a Kubernetes üzembe helyezését `yamls` . A Kubernetes-fürtöt egy fájlon keresztül érheti el a Azure Stack Edge Pro-ban `kubeconfig` . További információért látogasson el a [Kubernetes-fürt eléréséhez a kubectl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
-- **IoT Edge**üzemelő példány: ez a IoT Edgeon keresztül történik, amely az Azure IoT hubhoz csatlakozik. Az Azure Stack Edge-eszközön a névtéren keresztül csatlakozik a Kubernetes-fürthöz `iotedge` . Az ebben a névtérben üzembe helyezett IoT Edge ügynökök felelősek az Azure-hoz való csatlakozásért. A `IoT Edge deployment.json` konfigurációt az Azure DEVOPS CI/CD használatával alkalmazhatja. A névtér és a IoT Edge kezelése a Cloud Operator használatával történik.
+- **IoT Edge**üzemelő példány: ez a IoT Edgeon keresztül történik, amely az Azure IoT hubhoz csatlakozik. A Kubernetes-fürthöz a névtéren keresztül csatlakozik a Azure Stack Edge Pro-eszközön `iotedge` . Az ebben a névtérben üzembe helyezett IoT Edge ügynökök felelősek az Azure-hoz való csatlakozásért. A `IoT Edge deployment.json` konfigurációt az Azure DEVOPS CI/CD használatával alkalmazhatja. A névtér és a IoT Edge kezelése a Cloud Operator használatával történik.
 
-- **Azure/arc üzembe helyezése**: az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. A Kubernetes-fürtöt a Azure Stack peremhálózati eszközén kell összekapcsolni a használatával `azure-arc namespace` . Az ügynökök üzembe helyezése ebben a névtérben történik, amely felelős az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el az [Azure-arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre.
+- **Azure arc-kompatibilis Kubernetes üzembe helyezése**: az Azure arc enabled Kubernetes egy hibrid felügyeleti eszköz, amely lehetővé teszi alkalmazások üzembe helyezését a Kubernetes-fürtökön. A Azure Stack Edge Pro-eszközön keresztül csatlakozik a Kubernetes-fürthöz `azure-arc namespace` . Az ebben a névtérben üzembe helyezett ügynökök felelősek az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. 
+    
+    Az Azure arc-kompatibilis Kubernetes azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöt. További információért látogasson el az [Azure arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre.
 
 ## <a name="choose-the-deployment-type"></a>A központi telepítés típusának kiválasztása
 
@@ -59,7 +61,7 @@ Az alkalmazások központi telepítése során vegye figyelembe a következő in
 
 - Egy **vagy több típus**: egyetlen központi telepítési lehetőség vagy különböző telepítési lehetőségek kombinációja is kiválasztható.
 - A felhő és a **helyi**környezet: az alkalmazástól függően a helyi telepítést a kubectl vagy a Cloud deployment használatával IoT Edge és az Azure arc segítségével választhatja ki. 
-    - Ha helyi központi telepítést választ, arra a hálózatra korlátozódik, amelyben az Azure Stack Edge-eszköz telepítve van.
+    - Ha helyi központi telepítést választ, arra a hálózatra korlátozódik, amelyben az Azure Stack Edge Pro-eszköz telepítve van.
     - Ha van olyan felhőalapú ügynöke, amelyet üzembe helyezhet, üzembe helyezheti a Felhőbeli operátort, és használhatja a felhőalapú felügyeletet.
 - **IoT vs Azure arc**: az üzembe helyezés megválasztása a termék forgatókönyvének szándékával is függ. Ha olyan alkalmazásokat vagy tárolókat helyez üzembe, amelyek mélyebb integrációt végeznek a IoT vagy a IoT ökoszisztémával, válassza az IoT Edge lehetőséget az alkalmazások telepítéséhez. Ha már rendelkezik Kubernetes üzemelő példányokkal, az Azure arc az előnyben részesített választás lenne.
 
@@ -68,11 +70,11 @@ Az alkalmazások központi telepítése során vegye figyelembe a következő in
 
 Ha helyileg szeretné telepíteni az alkalmazást a kubectl-on keresztül, olvassa el a következőt:
 
-- [Állapot nélküli alkalmazás üzembe helyezése az Azure stack Edge-n keresztül a kubectl-on keresztül](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Állapot nélküli alkalmazás üzembe helyezése az Azure stack Edge Pro-n keresztül a kubectl-on keresztül](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
 
 Alkalmazás IoT Edgeon keresztüli üzembe helyezéséhez lásd:
 
-- [Helyezzen üzembe egy minta modult az Azure stack Edge-ben IoT Edge használatával](azure-stack-edge-gpu-deploy-sample-module.md).
+- [Helyezzen üzembe egy minta-modult az Azure stack Edge Pro-ban IoT Edge használatával](azure-stack-edge-gpu-deploy-sample-module.md).
 
 Az alkalmazások Azure arc használatával történő üzembe helyezéséhez lásd:
 

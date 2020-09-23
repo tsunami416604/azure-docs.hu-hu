@@ -7,14 +7,16 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c86ff07d07ee0a29320315831a7abe28f37e38e6
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: a95ec76c63a35c29b061c2fddff67a28e0f8f553
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89671072"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883657"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>A Spring Cloud-alkalmazás elindítása forráskódból
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java
 
 Az Azure Spring Cloud lehetővé teszi a Spring Cloud-alapú Service-alkalmazások használatát az Azure-ban.
 
@@ -150,7 +152,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

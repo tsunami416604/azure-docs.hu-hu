@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701807"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900050"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
 
@@ -22,11 +22,16 @@ ms.locfileid: "83701807"
 
 **K: mi érhető el?**
 
-**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók egy megtekinthető előzetes verzióként érhetők el, amelyekhez szükség lehet egy alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) cikkben. 
+**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók egy megtekinthető előzetes verzióként érhetők el, amelyekhez szükség lehet egy alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) cikkben. A tárolókat a [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)-ban is megtekintheti.
 
 **K: van különbség a Cognitive Services felhő és a tárolók között?**
 
 **A:** Cognitive Services tárolók a Cognitive Services felhő alternatívája. A tárolók ugyanazokat a funkciókat kínálja, mint a megfelelő felhőalapú szolgáltatások. Az ügyfelek üzembe helyezhetik a tárolókat a helyszínen vagy az Azure-ban. Az alapszintű AI-technológia, a díjszabási szintek, az API-kulcsok és az API-aláírások megegyeznek a tároló és a hozzá tartozó felhőalapú szolgáltatások között. Ezek a [funkciók és előnyök](../cognitive-services-container-support.md#features-and-benefits) a tárolók Felhőbeli szolgáltatással egyenértékűként való kiválasztásához.
+
+**K: Hogyan hozzáférni és használni egy lezárt előzetes tárolót?**
+
+**A:** Korábban a lezárt előnézet tárolók a tárházban voltak tárolva `containerpreview.azurecr.io` . A 2020. szeptember 22-én kezdődően ezek a tárolók a Microsoft Container Registryon futnak, és a letöltéshez nem szükséges a Docker login parancs használata. Ha az Azure-erőforrás a jóváhagyott Azure-előfizetés-AZONOSÍTÓval lett létrehozva, akkor futtathat egy megnyitható előnézeti tárolót. Ha az Azure-előfizetését nem hagyták jóvá a [kérelem űrlapjának](https://aka.ms/csgate)befejezése után, nem fogja tudni futtatni a tárolót.
+
 
 **K: lesznek elérhetők a tárolók az összes Cognitive Services számára, és mik a tárolók következő készletei?**
 
@@ -76,6 +81,22 @@ A tárolókat nem teszteljük OpenShift, de általában Cognitive Services táro
 **K: Hogyan a termékkel kapcsolatos visszajelzéseket és a szolgáltatásokra vonatkozó ajánlásokat?**
 
 **A:** Javasoljuk, hogy az ügyfeleket [nyilvánosan,](https://cognitive.uservoice.com/) és szavazzon másokkal, akik a lehetséges problémák átfedésben vannak. A felhasználói hangvezérelt eszköz a termékkel kapcsolatos visszajelzésekhez és a szolgáltatásokra vonatkozó javaslatokhoz is használható.
+
+**K: milyen állapotüzenetek és hibaüzenetek lesznek visszaadva Cognitive Services tárolók számára?**
+
+**A:** Az állapotüzenetek és a hibák listáját a következő táblázat tartalmazza.
+
+|Állapot  | Leírás  |
+|---------|---------|
+| `Valid` | Az API-kulcs érvényes, nincs szükség beavatkozásra. |
+| `Invalid` |   Az API-kulcs érvénytelen. Meg kell adnia egy érvényes API-kulcsot a tároló futtatásához. Keresse meg az API-kulcsot és a szolgáltatási régiót az Azure Cognitive Services erőforrás **kulcs és végpont** szakaszában, a Azure Portal. |
+| `Mismatch` | Egy API-kulcsot vagy egy végpontot adott meg a kognitív szolgáltatások különböző erőforrásaihoz. Keresse meg az API-kulcsot és a szolgáltatási régiót az Azure Cognitive Services-erőforrás **kulcsok és végpont** szakaszában. |
+| `CouldNotConnect` | A tároló nem tudott kapcsolódni a számlázási végponthoz. A `Retry-After` további kérések elvégzése előtt győződjön meg arról, hogy az adott időszak véget ért. |
+| `OutOfQuota` | Az API-kulcs kívül esik a kvótán. Frissítheti az árképzési szintet, vagy megvárhatja, hogy további kvótát lehessen elérhetővé tenni. Az Azure kognitív szolgáltatások erőforrásának **díjszabási szintje** szakaszában találja a szintet a Azure Portal. |
+| `BillingEndpointBusy` | A számlázási végpont jelenleg foglalt. A `Retry-After` további kérések elvégzése előtt győződjön meg arról, hogy az adott időszak véget ért. |
+| `ContainerUseUnauthorized` | A megadott API-kulcs nincs engedélyezve ehhez a tárolóhoz. Valószínűleg egy kezdeményezett tárolót használ, ezért az [online kérelem](https://aka.ms/csgate)elküldésével győződjön meg arról, hogy az Azure-előfizetés azonosítóját jóváhagyja. |
+| `Unknown` | A kiszolgáló jelenleg nem tudja feldolgozni a számlázási kérelmeket. |
+
 
 **K: kik vehetem fel a kapcsolatot a támogatási szolgálattal?**
 

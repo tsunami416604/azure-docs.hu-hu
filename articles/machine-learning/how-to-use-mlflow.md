@@ -3,28 +3,32 @@ title: MLflow követése ML-kísérleteknél
 titleSuffix: Azure Machine Learning
 description: Állítsa be a MLflow-t a Azure Machine Learning használatával a mérőszámok és az összetevők a ML modellekből való naplózásához, és telepítse az ML-modelleket webszolgáltatásként.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: shivp950
+ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 06/04/2020
+ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e31fdec18ab4c6135031bf21d2387585141c2735
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 116faae1bc0a93ce2007fcf809a8c96475289036
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018220"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897182"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Modell metrikáinak nyomon követése és ML modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+Ez a cikk bemutatja, hogyan engedélyezheti a MLflow követési URI-és naplózási API-JÁT, a [MLflow-követést](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)együttesen, a MLflow-kísérletek és a Azure Machine learning összekapcsolásához. 
 
-Ez a cikk bemutatja, hogyan engedélyezheti a MLflow követési URI-és naplózási API-JÁT, a [MLflow-követést](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)együttesen, a MLflow-kísérletek és a Azure Machine learning összekapcsolásához.  Ezzel lehetővé teszi, hogy
+A MLflow Azure Machine Learning natív támogatása lehetővé teszi, hogy
 
 + A kísérlet metrikáinak és összetevőinek nyomon követése és naplózása a [Azure Machine learning munkaterületen](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Ha már használja a kísérletek MLflow követését, a munkaterület központosított, biztonságos és skálázható helyet biztosít a képzési mérőszámok és modellek tárolásához.
+
++ Betanítási feladatok elküldése MLflow-projektekkel Azure Machine Learning háttér-támogatással (előzetes verzió). A feladatokat helyileg is elküldheti Azure Machine Learning nyomon követheti, vagy áttelepítheti a futtatásokat a felhőbe, például egy [Azure Machine learning-számításon](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-sdk#amlcompute)keresztül.
+
++ Modellek követése és kezelése a MLflow és a Azure Machine Learning modell beállításjegyzékében.
 
 + A MLflow-kísérletek Azure Machine Learning webszolgáltatásként való üzembe helyezése. Webszolgáltatásként való üzembe helyezéssel az éles modelleken alkalmazhatja a Azure Machine Learning monitorozási és adateltolódás-észlelési funkcióit. 
 
@@ -46,8 +50,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
  A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-n keresztül érhetők el.
 
-
-| A képességeik | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Machine Learning Studio|
+| Képesség | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Munkaterület kezelése |   | ✓ | ✓ | ✓ |
 | Adattárak használata  |   | ✓ | ✓ | |
@@ -138,17 +141,90 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-Ennek a számítási és betanítási futtatási konfigurációnak a használatával `Experiment.submit('train.py')` elküldheti a futtatást a metódussal. Ez a metódus automatikusan beállítja a MLflow követési URI-t, és a naplózást a MLflow a munkaterületre irányítja.
+Ennek a számítási és betanítási futtatási konfigurációnak a használatával `Experiment.submit()` elküldheti a futtatást a metódussal. Ez a metódus automatikusan beállítja a MLflow követési URI-t, és a naplózást a MLflow a munkaterületre irányítja.
 
 ```Python
 run = exp.submit(src)
 ```
 
+## <a name="train-with-mlflow-projects"></a>Betanítás MLflow-projektekkel
+
+A [MLflow-projektek](https://mlflow.org/docs/latest/projects.html) lehetővé teszik a kód rendszerezését és leírását, hogy más adatszakértők (vagy automatizált eszközök) fussanak. A Azure Machine Learning MLflow-projektjei lehetővé teszik a képzési programok nyomon követését és kezelését a munkaterületen. 
+
+Ez a példa azt mutatja be, hogyan lehet helyileg beküldeni a MLflow-projekteket Azure Machine Learning követéssel.
+
+Telepítse a `azureml-mlflow` csomagot úgy, hogy a MLflow-követést helyi Azure Machine Learningon használja a kísérletekhez. A kísérletek egy Jupyter notebookon vagy kódszerkesztőon keresztül futhatnak.
+
+```shell
+pip install azureml-mlflow
+```
+
+Importálja a `mlflow` és [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
+
+```Python
+import mlflow
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+
+mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
+```
+
+Állítsa be a MLflow-kísérlet nevét a (z) értékre, `set_experiment()` és indítsa el a képzést a alkalmazással `start_run()` . Ezután a használatával `log_metric()` aktiválja a MLflow naplózási API-t, és kezdje meg a betanítási futtatási metrikák naplózását.
+
+```Python
+experiment_name = 'experiment-with-mlflow-projects'
+mlflow.set_experiment(experiment_name)
+```
+
+Hozza létre a háttér-konfigurációs objektumot az integrációhoz szükséges információk tárolására, például a számítási célra és a használni kívánt felügyelt környezet típusára.
+
+```python
+backend_config = {"USE_CONDA": False}
+```
+Vegye fel a `azureml-mlflow` csomagot pip-függőségként a környezet konfigurációs fájljába, hogy nyomon követhesse a mérőszámokat és a kulcsfontosságú összetevőket a munkaterületen. 
+
+``` shell
+name: mlflow-example
+channels:
+  - defaults
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.6
+  - scikit-learn=0.19.1
+  - pip
+  - pip:
+    - mlflow
+    - azureml-mlflow
+```
+Küldje el a helyi futtatást, és győződjön meg róla, hogy beállította a paramétert `backend = "azureml" ` . Ezzel a beállítással helyileg is elküldheti a futtatásokat, és az automatikus kimeneti nyomon követés, a naplófájlok, a pillanatképek és a kinyomtatott hibák további támogatását a munkaterületen teheti meg. 
+
+A futtatások és mérőszámok megtekintése a [Azure Machine learning Studióban](overview-what-is-machine-learning-studio.md). 
+
+
+```python
+local_env_run = mlflow.projects.run(uri=".", 
+                                    parameters={"alpha":0.3},
+                                    backend = "azureml",
+                                    use_conda=False,
+                                    backend_config = backend_config, 
+                                    )
+
+```
+
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks futtatások nyomon követése
 
-A MLflow követése Azure Machine Learning lehetővé teszi a naplózott metrikák és összetevők tárolását a Azure Databricks a Azure Machine Learning munkaterületen.
+A MLflow követése Azure Machine Learning lehetővé teszi a naplózott metrikák és összetevők tárolását a Azure Databricks a következő területek mindhárom területére: 
 
-Ha a Mlflow-kísérleteket Azure Databricks segítségével szeretné futtatni, először létre kell hoznia egy [Azure Databricks-munkaterületet és-fürtöt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). A fürtben ügyeljen arra, hogy a *azureml-mlflow* függvénytárat a PyPi-ből telepítse, hogy a fürt hozzáférhessen a szükséges függvényekhez és osztályokhoz.
+* Azure Machine Learning-munkaterület
+* Azure Databricks-munkaterület.
+* MLflow
+
+Ha a Mlflow-kísérleteket Azure Databricks segítségével szeretné futtatni, először létre kell hoznia egy [Azure Databricks-munkaterületet és-fürtöt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). A fürtben telepítse a *azureml-mlflow* könyvtárat a PyPi-ből, hogy a fürt hozzáférjen a szükséges függvényekhez és osztályokhoz.
+
+> [!NOTE]
+> A `azureml.core` csomag tartalmazza a következőket: `azureml-mlflow` . Ha már telepítette `azureml.core` a alkalmazást, kihagyhatja a `azureml-mlflow` telepítési lépést. 
 
 Innen importálja a kísérleti jegyzetfüzetet, csatolja a Azure Databricks-fürthöz, és futtassa a kísérletet. 
 
@@ -156,11 +232,11 @@ Innen importálja a kísérleti jegyzetfüzetet, csatolja a Azure Databricks-fü
 
 Ha a fürtön szeretné telepíteni a kódtárakat, navigáljon a **tárak** lapra, és kattintson az **új telepítése** parancsra.
 
- ![mlflow az Azure Machine learning-diagrammal](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
+ ![mlflow az Azure databricks](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
 
 A **csomag** mezőbe írja be a következőt: azureml-mlflow, majd kattintson a telepítés gombra. Szükség szerint ismételje meg ezt a lépést, hogy a kísérlethez további csomagokat telepítsen a fürtön.
 
- ![mlflow az Azure Machine learning-diagrammal](./media/how-to-use-mlflow/install-libraries.png)
+ ![Azure DB install mlflow könyvtár](./media/how-to-use-mlflow/install-libraries.png)
 
 ### <a name="set-up-your-notebook-and-workspace"></a>A jegyzetfüzet és a munkaterület beállítása
 
@@ -191,33 +267,36 @@ ws = Workspace.get(name=workspace_name,
                    resource_group=resource_group)
 ```
 
-#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks és Azure Machine Learning munkaterületek összekötése
+### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks és Azure Machine Learning munkaterületek összekötése
 
 A [Azure Portal](https://ms.portal.azure.com)a Azure DATABRICKS (ADB) munkaterületet egy új vagy egy meglévő Azure Machine learning munkaterülethez csatolhatja. Ehhez navigáljon az ADB munkaterületére, és válassza a jobb alsó sarokban található **Azure Machine learning munkaterület csatolása** gombot. A munkaterületek összekapcsolása lehetővé teszi, hogy nyomon kövesse a kísérlet adatait a Azure Machine Learning munkaterületen. 
 
-### <a name="link-mlflow-tracking-to-your-workspace"></a>A MLflow követésének összekapcsolása a munkaterülettel
+### <a name="mlflow-tracking-in-your-workspaces"></a>MLflow követése a munkaterületeken
 
-Miután létrehozta a munkaterületet, állítsa be a MLflow követési URI-t. Ezzel összekapcsolja a MLflow nyomon követését Azure Machine Learning munkaterületre. A csatolást követően minden kísérlet a felügyelt Azure Machine Learning követési szolgáltatásban fog megjelenni.
+Miután létrehozta a munkaterületet, a MLflow nyomon követése automatikusan nyomon követhető a következő helyeken:
 
-#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Közvetlenül a MLflow-követés beállítása a jegyzetfüzetben
+* A csatolt Azure Machine Learning munkaterület.
+* Az eredeti ADB-munkaterülete. 
+* MLflow. 
+
+Minden kísérlet a felügyelt Azure Machine Learning követési szolgáltatásban fog megjelenni.
+
+#### <a name="set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace"></a>MLflow-követés beállítása csak a Azure Machine Learning munkaterület nyomon követéséhez
+
+Ha inkább egy központi helyen szeretné kezelni a nyomon követett kísérleteket, beállíthatja, hogy a MLflow követése **csak** a Azure Machine learning munkaterületen legyen nyomon követhető. 
+
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
 mlflow.set_tracking_uri(uri)
 ```
 
-A betanítási szkriptben importálja a mlflow-t a MLflow-naplózási API-k használatára, és kezdje meg a futtatási metrikák naplózását. A következő példa naplózza az alapkorszak elvesztésének mérőszámát. 
+A betanítási szkriptben importálja `mlflow` a MLflow-naplózási API-k használatára, és kezdje meg a futtatási metrikák naplózását. A következő példa naplózza az alapkorszak elvesztésének mérőszámát. 
 
 ```python
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
-
-#### <a name="automate-setting-mlflow-tracking"></a>MLflow-követési beállítások automatizálása
-
-Ahelyett, hogy manuálisan állítja be a nyomkövetési URI-t a fürtökön lévő minden további kísérlet jegyzetfüzet-munkamenetben, ezt a [Azure Machine learning a fürt inicializálási parancsfájljának](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)használatával automatikusan végrehajtja.
-
-Ha megfelelően van konfigurálva, a MLflow-követési adatait megtekintheti a Azure Machine Learning REST API és az összes ügyfelet, illetve Azure Databricks a MLflow felhasználói felületén vagy a MLflow-ügyfél használatával.
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Metrikák és összetevők megtekintése a munkaterületen
 
@@ -228,55 +307,63 @@ run.get_metrics()
 ws.get_details()
 ```
 
-## <a name="deploy-mlflow-models-as-a-web-service"></a>MLflow-modellek üzembe helyezése webszolgáltatásként
+## <a name="manage-models"></a>Modellek kezelése 
 
-A MLflow-kísérletek Azure Machine Learning webszolgáltatásként való üzembe helyezése lehetővé teszi, hogy kihasználja a Azure Machine Learning modell-felügyeleti és adateltolódás-észlelési képességeket, és alkalmazza azokat az éles modelleken.
+Regisztrálja és kövesse a modelleket a [Azure Machine learning modell beállításjegyzékével](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) , amely támogatja a MLflow-modell beállításjegyzékét. Azure Machine Learning modellek a MLflow modell sémájának megfelelően vannak igazítva, így ezek a modellek egyszerűen exportálhatók és importálhatók különböző munkafolyamatokban. A MLflow kapcsolódó metaadatok, például a, a Run ID a nyomkövetéshez regisztrált modellel is címkével rendelkeznek. A felhasználók elküldhetik a MLflow-futtatásokból készített betanítási, regisztrálási és üzembe helyezési modelleket. 
+
+Ha egy lépésben szeretné üzembe helyezni és regisztrálni az üzemi használatra kész modellt, tekintse meg a [MLflow-modellek üzembe helyezése és regisztrálása](#deploy-and-register-mlflow-models)című témakört.
+
+Egy modell egy futtatásból való regisztrálásához és megtekintéséhez kövesse az alábbi lépéseket:
+
+1. A Futtatás befejezése után hívja meg a `register_model()` metódust.
+
+    ```python
+    # the model folder produced from the run is registered. This includes the MLmodel file, model.pkl and the conda.yaml.
+    run.register_model(model_name = 'my-model', model_path = 'model')
+    ```
+
+1. Tekintse meg a regisztrált modellt a munkaterületen a [Azure Machine learning Studióval](overview-what-is-machine-learning-studio.md).
+
+    A következő példában a regisztrált modell `my-model` MLflow követési metaadatokat jelölt ki. 
+
+    ![regisztrált – mlflow-modell](./media/how-to-use-mlflow/registered-mlflow-model.png)
+
+1. **Az összetevők lapon** megtekintheti a MLflow-modell sémához (Conda. YAML, MLmodel, Model. PKL) igazított összes modellt.
+
+    ![modell – séma](./media/how-to-use-mlflow/mlflow-model-schema.png)
+
+1. Válassza a MLmodel lehetőséget a Futtatás által generált MLmodel-fájl megtekintéséhez.
+
+    ![MLmodel – séma](./media/how-to-use-mlflow/mlmodel-view.png)
+
+
+
+## <a name="deploy-and-register-mlflow-models"></a>MLflow-modellek üzembe helyezése és regisztrálása 
+
+A MLflow-kísérletek Azure Machine Learning webszolgáltatásként való üzembe helyezése lehetővé teszi a Azure Machine Learning modell-felügyeleti és adatdrift-észlelési képességek kihasználása és alkalmazása az éles modellekben.
+
+Ehhez meg kell adnia a
+
+1. Regisztrálja a modellt.
+1. Határozza meg, hogy melyik központi telepítési konfigurációt szeretné használni a forgatókönyvhöz.
+
+    1. Az [Azure Container instance (ACI)](#deploy-to-aci) egy megfelelő választás a gyors fejlesztési és tesztelési célú üzembe helyezéshez.
+    1. Az [Azure Kubernetes Service (ak)](#deploy-to-aks) alkalmas a skálázható éles üzembe helyezéshez.
 
 A következő ábra azt mutatja be, hogy a MLflow üzembe helyezési API-val a meglévő MLflow-modelleket üzembe helyezheti Azure Machine Learning webszolgáltatásként, a keretrendszerük, a PyTorch, a Tensorflow, a scikit-Learn, a ONNX stb., valamint a munkaterületen lévő üzemi modellek kezeléséhez.
 
-![mlflow az Azure Machine learning-diagrammal](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
+![ mlflow-modellek üzembe helyezése az Azure Machine learning szolgáltatással](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
-### <a name="log-your-model"></a>A modell naplózása
 
-A telepítés előtt győződjön meg róla, hogy a modell el lett mentve, hogy hivatkozhat rá, és annak elérési útját a központi telepítéshez. A betanítási szkriptben a következő [mlflow. sklearn. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) metódushoz hasonló kódot kell megadni, amely a modellt a megadott kimeneti könyvtárba menti. 
-
-```python
-# change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
-import mlflow.sklearn
-
-# Save the model to the outputs directory for capture
-mlflow.sklearn.log_model(regression_model, model_save_path)
-```
->[!NOTE]
-> Adja meg a `conda_env` paramétert annak a függőségeknek és környezetnek az átadásához, amelynek a modellnek futnia kell.
-
-### <a name="retrieve-model-from-previous-run"></a>Modell beolvasása az előző futtatásból
-
-A Futtatás lekéréséhez szüksége lesz a futtatási AZONOSÍTÓra és az elérési útra a modell mentési helyétől függően. 
-
-```python
-# gets the list of runs for your experiment as an array
-experiment_name = 'experiment-with-mlflow'
-exp = ws.experiments[experiment_name]
-runs = list(exp.get_runs())
-
-# get the run ID and the path in run history
-runid = runs[0].id
-model_save_path = 'model'
-```
-
-### <a name="deploy-the-model"></a>A modell üzembe helyezése
-
-A modell webszolgáltatásként való üzembe helyezéséhez használja a Azure Machine Learning SDK-t.
-
-Először határozza meg a telepítési konfigurációt. Az Azure Container instance (ACI) egy megfelelő választás a gyors fejlesztési és tesztelési célú üzembe helyezéshez, az Azure Kubernetes Service (ak) pedig méretezhető üzemi környezetekhez alkalmas.
-
-#### <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
+### <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
 
 Állítsa be a telepítési konfigurációt a [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) metódussal. A webszolgáltatások nyomon követéséhez címkéket és leírásokat is hozzáadhat.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
+
+# Set the model path to the model folder created by your run
+model_path = "model"
 
 # Configure 
 aci_config = AciWebservice.deploy_configuration(cpu_cores=1, 
@@ -286,7 +373,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Ezután regisztrálja és telepítse a modellt a Azure Machine Learning SDK [üzembe helyezési](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) módszer használatával. 
+Ezután regisztráljon és telepítse a modellt egy lépésben a Azure Machine Learning SDK [üzembe helyezési](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) metódusával. 
 
 ```python
 (webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
@@ -298,7 +385,8 @@ Ezután regisztrálja és telepítse a modellt a Azure Machine Learning SDK [üz
 
 webservice.wait_for_deployment(show_output=True)
 ```
-#### <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
+
+### <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
 
 Az AK-ra való üzembe helyezéshez először hozzon létre egy AK-fürtöt. Hozzon létre egy AK-fürtöt a [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) metódus használatával. Egy új fürt létrehozása 20-25 percet is igénybe vehet.
 
@@ -308,7 +396,7 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # Use the default configuration (can also provide parameters to customize)
 prov_config = AksCompute.provisioning_configuration()
 
-aks_name = 'aks-mlflow' 
+aks_name = 'aks-mlflow'
 
 # Create the cluster
 aks_target = ComputeTarget.create(workspace=ws, 
@@ -330,11 +418,16 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True, comput
 
 ```
 
-Ezután telepítse a lemezképet a Azure Machine Learning SDK [Deploy ()] használatával (ezt követően regisztrálja és telepítse a modellt a Azure Machine Learning SDK [üzembe helyezési](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) módszer használatával. 
+Ezt követően regisztrálja és telepítse a modellt egy lépésben a Azure Machine Learning SDK [Deploy ()] (a modell regisztrálása és üzembe helyezése a Azure Machine Learning SDK- [telepítés](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) módszer használatával). 
 
 ```python
+
 # Webservice creation using single command
 from azureml.core.webservice import AksWebservice, Webservice
+
+# set the model path 
+model_path = "model"
+
 (webservice, model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
                       workspace=ws,
                       model_name='sklearn-model', 
@@ -364,8 +457,9 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
-Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://aka.ms/azureml-mlflow-examples) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
+Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
 ## <a name="next-steps"></a>Következő lépések
+
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * Figyelje az [adateltolódáshoz](how-to-monitor-data-drift.md)használt üzemi modelleket.

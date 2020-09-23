@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7573abbbee479bfb0d1710beba3b95d084a5e657
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488630"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898880"
 ---
 # <a name="apply-transformation-module"></a>Átalakítási modul alkalmazása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal módosíthatja a bemeneti adatkészletet egy korábban számított transzformáció alapján.
 
@@ -48,6 +48,6 @@ A Designer lehetővé teszi adatátalakítások **adatkészletként** való ment
   
 1. Ha egy átalakítást szeretne alkalmazni az új adatkészletre, futtassa a folyamatot.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

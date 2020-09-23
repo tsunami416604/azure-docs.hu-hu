@@ -1,6 +1,6 @@
 ---
-title: sys. external_job_streams (Transact-SQL) – Azure SQL Edge (előzetes verzió)
-description: Tudnivalók a sys. external_job_streams használatáról az Azure SQL Edge-ben (előzetes verzió)
+title: sys. external_job_streams (Transact-SQL) – Azure SQL Edge
+description: Tudnivalók a sys. external_job_streams használatáról az Azure SQL Edge-ben
 keywords: sys. external_job_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 2634128f4d431e4283f59032c6474a71f2af364d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35010d3aba7f6d5ee3185291c917ff7726ba8bd7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233084"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900350"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
 
 Egy olyan sort ad vissza, amely a külső adatfolyam-feladathoz hozzárendelt bemeneti vagy kimeneti külső stream objektumra vonatkozik.
 
-|Oszlop neve|Adattípus|Description|  
+|Oszlop neve|Adattípus|Leírás|  
 |-----------------|---------------|-----------------|
 |**job_id**|**int**| A folyamatos átviteli feladattípushoz tartozó objektum-azonosító szám. Ez az oszlop a sys. external_streaming_jobs object_id oszlopát képezi le.|
 |**stream_id**|**int**| Az adatfolyam-objektumhoz tartozó objektum-azonosító szám. Ez az oszlop a sys. external_streams object_id oszlopát képezi le. |

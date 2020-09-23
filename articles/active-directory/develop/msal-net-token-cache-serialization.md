@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4edb0f356dd83ab1aa353e0791f619be497a9d91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166025"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982919"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
 A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a Microsoft Authentication Library (MSAL) gyorsítótárazza azt.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
@@ -39,8 +39,8 @@ Ne feledje, hogy az egyéni szerializálás nem érhető el a mobil platformokon
 A következő osztályok és felületek használatosak a jogkivonat-gyorsítótár szerializálásakor:
 
 - `ITokenCache`, amely a jogkivonat-gyorsítótár szerializálási kéréseire előfizetett eseményeket, valamint a gyorsítótár szerializálásának vagy deszerializálásának módszereit határozza meg különböző formátumokban (ADAL v 3.0, MSAL 2. x és MSAL 3. x = ADAL v 5.0).
-- `TokenCacheCallback`az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú argumentumokkal hívja meg őket `TokenCacheNotificationArgs` .
-- `TokenCacheNotificationArgs`a csak az `ClientId` alkalmazás és annak a felhasználónak a hivatkozását adja meg, amelyhez a jogkivonat elérhető.
+- `TokenCacheCallback` az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú argumentumokkal hívja meg őket `TokenCacheNotificationArgs` .
+- `TokenCacheNotificationArgs` a csak az `ClientId` alkalmazás és annak a felhasználónak a hivatkozását adja meg, amelyhez a jogkivonat elérhető.
 
   ![Osztály diagramja](media/msal-net-token-cache-serialization/class-diagram.png)
 
@@ -283,7 +283,7 @@ A [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) 
 
 | Kiterjesztési módszer | Microsoft. Identity. Web sub névtér | Leírás  |
 | ---------------- | --------- | ------------ |
-| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | A memória-jogkivonat gyorsítótárának szerializálásakor. Ez a megvalósítás nagyszerű a mintákban. Az éles környezetben is jó, ha nem bánod, ha a jogkivonat gyorsítótára elvész a webalkalmazás újraindításakor. `AddInMemoryTokenCaches`egy opcionális paramétert használ, `MsalMemoryTokenCacheOptions` amely lehetővé teszi, hogy megadja azt az időtartamot, ameddig a gyorsítótár-bejegyzés lejár, kivéve, ha használatban van.
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | A memória-jogkivonat gyorsítótárának szerializálásakor. Ez a megvalósítás nagyszerű a mintákban. Az éles környezetben is jó, ha nem bánod, ha a jogkivonat gyorsítótára elvész a webalkalmazás újraindításakor. `AddInMemoryTokenCaches` egy opcionális paramétert használ, `MsalMemoryTokenCacheOptions` amely lehetővé teszi, hogy megadja azt az időtartamot, ameddig a gyorsítótár-bejegyzés lejár, kivéve, ha használatban van.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | A jogkivonat-gyorsítótár a felhasználói munkamenethez van kötve. Ez a lehetőség nem ideális, ha az azonosító jogkivonat sok jogcímet tartalmaz, mivel a cookie túl nagy lesz.
 | `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | A jogkivonat-gyorsítótár a ASP.NET Core `IDistributedCache` implementációja, ezért lehetővé teszi az elosztott memória-gyorsítótár, a Redis cache, az elosztott NCache vagy a SQL Server cache közötti választást. A megvalósításokkal kapcsolatos további információkért `IDistributedCache` lásd: https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache .
 
@@ -327,11 +327,11 @@ services.AddDistributedSqlServerCache(options =>
 
 Használatuk a [ASP.net Core webalkalmazás-oktatóanyagban](/aspnet/core/tutorials/first-mvc-app/) az 2-2-os [token gyorsítótárban](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)című szakaszban szerepel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.
 
 | Sample | Platform | Leírás|
 | ------ | -------- | ----------- |
-|[Active-Directory-DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztali (WPF) | A Microsoft Graph API-t hívó Windowsos asztali .NET (WPF) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
+|[Active-Directory-DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztali (WPF) | A Microsoft Graph API-t hívó Windowsos asztali .NET (WPF) alkalmazás. ![A diagram egy olyan topológiát mutat be, amelyben az asztali alkalmazás W P F TodoListClient az Azure A D-be, a jogkivonat interaktív beszerzésével és a Microsoft Graphával.](media/msal-net-token-cache-serialization/topology.png)|
 |[Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | A Visual Studio-megoldások készlete az Azure AD 1.0-alkalmazások (ADAL.NET használatával) áttelepítését szemlélteti a Microsoft Identity platform alkalmazásaihoz (a MSAL.NET használatával). Különösen lásd: [jogkivonat-gyorsítótár áttelepítése](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

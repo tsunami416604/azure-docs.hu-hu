@@ -1,5 +1,5 @@
 ---
-title: Új átjáró típusú eszköz definiálása az Azure IoT Centralban | Microsoft Docs
+title: Oktatóanyag – új átjáró típusú eszköz megadása az Azure IoT Centralban | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan definiálhat egy új IoT-átjárót az Azure IoT Central-alkalmazásban.
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81758124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967903"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáró típusú eszköz definiálása az Azure IoT Central-alkalmazásban
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag – új IoT átjáró-eszköz típusának meghatározása az Azure IoT Central-alkalmazásban
 
 *Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
@@ -31,6 +31,9 @@ A IoT Central alkalmazással folytatott kommunikációt lehetővé tevő alsóbb
 * Küldje el saját telemetria, például a hőmérsékletet.
 * Válaszoljon az operátor által készített írható tulajdonságokra. Egy operátor például módosíthatja a telemetria küldési intervallumát.
 * Válaszoljon a parancsokra, például az eszköz újraindítására.
+
+> [!div class="checklist"]
+> Alsóbb rétegbeli sablonfájlok létrehozása átjáró-sablon létrehozása a szimulált eszközök létrehozásához az eszköz sablonjának közzététele
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,7 +110,7 @@ Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró e
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | Nincsenek          | Date   |
+    | Utolsó szervizelés dátuma | Nincsenek          | Dátum   |
     | Ügyfél neve     | Nincsenek          | Sztring |
 
 2. Kattintson a **Mentés** gombra.

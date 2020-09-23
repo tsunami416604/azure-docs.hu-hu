@@ -1,6 +1,6 @@
 ---
-title: sys. external_streaming_jobs (Transact-SQL) – Azure SQL Edge (előzetes verzió)
-description: Tudnivalók a sys. external_streaming_jobs használatáról az Azure SQL Edge-ben (előzetes verzió)
+title: sys. external_streaming_jobs (Transact-SQL) – Azure SQL Edge
+description: Tudnivalók a sys. external_streaming_jobs használatáról az Azure SQL Edge-ben
 keywords: sys. external_streaming_jobs, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,28 +9,28 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: c4da73e3197df894a0726556b4e92141818a520e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9643c58f5c9fa1db3e3eb7ec75ce6d3b41620aa3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233068"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900343"
 ---
-# <a name="sysexternal_streaming_jobs-transact-sql"></a>sys. external_streaming_jobs (Transact-SQL)
+# <a name="sysexternal_streaming_jobs-transact-sql"></a>sys.external_streaming_jobs (Transact-SQL)
 
 Az adatbázis hatókörében létrehozott összes külső adatfolyam-feladatsor sorát adja vissza.
 
-|Oszlop neve|Adattípus|Description|  
+|Oszlop neve|Adattípus|Leírás|  
 |-----------------|---------------|-----------------|
 |**név**|**rendszerneve**|Az adatfolyam neve. Egyedi a adatbázison belül.|
 |**object_id**|**int**|az adatfolyam-objektumhoz tartozó objektum-azonosító szám. Egyedi a adatbázison belül.|
 |**principal_id**|**int**|A szerelvényt birtokló rendszerbiztonsági tag azonosítója|
 |**schema_id**|**int**| Az objektumot tartalmazó séma azonosítója.|
-|**parent_object_id**|**ID**| az adatfolyamhoz tartozó szülőobjektum objektum-azonosító száma. Az aktuális implementációban ez az érték mindig null|
+|**parent_object_id**|**id**| az adatfolyamhoz tartozó szülőobjektum objektum-azonosító száma. Az aktuális implementációban ez az érték mindig null|
 |**típusa**|**char (2)**|Objektumtípus. Stream-objektumok esetében a típus mindig "EJ".|
 |**type_desc**|**nvarchar (60)**| Az objektumtípus leírása. Stream-objektumok esetében a típus mindig "EXTERNAL_STREAMING_JOB"|
-|**create_date**|**datetime**| Az objektum létrehozásának dátuma.|
-|**modify_date**|**datetime**| Az aktuális implementációban ez az érték ugyanaz, mint az adatfolyam-objektum create_date |
+|**create_date**|**dátum/idő**| Az objektum létrehozásának dátuma.|
+|**modify_date**|**dátum/idő**| Az aktuális implementációban ez az érték ugyanaz, mint az adatfolyam-objektum create_date |
 |**is_ms_shipped**|**bit**| Egy belső összetevő által létrehozott objektum.|  
 |**is_published**|**bit**| Az objektum közzé van téve.|  
 |**is_schema_published**|**bit**|Csak az objektum sémája lesz közzétéve.|

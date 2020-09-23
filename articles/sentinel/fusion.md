@@ -10,327 +10,423 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2020
+ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f415294c77b743996993f1f00be45e36f9d6002
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660677"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906273"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Fejlett többlépcsős támadások észlelése az Azure Sentinelben
 
 
 > [!IMPORTANT]
-> Az Azure Sentinel néhány fúziós funkciója jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Sentinel néhány fúziós funkciója jelenleg **nyilvános előzetes**verzióban érhető el.
 > Ezeket a szolgáltatásokat szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+A gépi tanuláson alapuló fúziós technológiával az Azure Sentinel képes automatikusan észlelni a többlépcsős támadásokat a rendellenes viselkedések és a gyanús tevékenységek kombinációinak azonosításával, amelyek a kill-Chain különböző szakaszaiban figyelhetők meg. Ezen észlelések alapján az Azure Sentinel olyan incidenseket hoz létre, amelyeket egyébként nehéz lenne megfogni. Ezek az incidensek két vagy több riasztást vagy tevékenységet tartalmaznak. A tervezés szerint ezek az incidensek kis mennyiségű, magas megbízhatóságú és nagy súlyosságú.
 
-
-A gépi tanuláson alapuló fúziós technológiával az Azure Sentinel automatikusan észleli a többszörös támadásokat a rendellenes viselkedés és a gyanús tevékenységek kombinálásával, amelyek a kill-Chain különböző szakaszaiban figyelhetők meg. Az Azure Sentinel ezután olyan incidenseket hoz létre, amelyek egyébként nagyon nehézek lesznek a fogáshoz. Ezek az incidensek két vagy több riasztást vagy tevékenységet foglalnak magukban. A tervezés szerint ezek az incidensek alacsony mennyiségű, magas megbízhatóságú és nagy fontossággal rendelkeznek.
-
-A környezethez testre szabott, ez az észlelés nem csupán csökkenti a hamis pozitív arányt, de a korlátozott vagy hiányzó adatokat tartalmazó támadásokat is képes észlelni.
+A környezethez testre szabott, ez az észlelési technológia nem csak a hamis pozitív arányt csökkenti, de a támadásokat a korlátozott vagy hiányzó információk alapján is észleli.
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Fejlett többfázisú támadásészlelés konfigurálása
 
-Ez az észlelés alapértelmezés szerint engedélyezve van az Azure Sentinelben. Az állapot ellenőrzéséhez, illetve annak letiltásához, mert a több riasztáson alapuló incidensek létrehozására alternatív megoldást használ, kövesse az alábbi utasításokat:
+Ez az észlelés alapértelmezés szerint engedélyezve van az Azure Sentinelben. Az alábbi utasításokat követve ellenőrizhető az állapot, vagy letiltható abban az esetben, ha alternatív megoldást használ a több riasztáson alapuló incidensek létrehozására:
 
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Navigáljon az **Azure Sentinel**  >  **Configuration**  >  **Analytics szolgáltatáshoz**
+1. Navigáljon az **Azure Sentinel**  >  **Configuration**  >  **Analytics szolgáltatáshoz**
 
-3. Válassza az **aktív szabályok** lehetőséget, és keresse meg a **speciális többlépcsős támadás észlelését** a **Name (név** ) oszlopban. Ellenőrizze az **állapot** oszlopot, és erősítse meg, hogy az észlelés engedélyezve van vagy le van tiltva.
+1. Válassza az **aktív szabályok**lehetőséget, majd a **Name (név** ) oszlopban keresse meg a **speciális többlépcsős támadás észlelése** elemet a **fúziós** szabály típusának szűrésével. Ellenőrizze az **állapot** oszlopot, és erősítse meg, hogy az észlelés engedélyezve van vagy le van tiltva.
 
-4. Az állapot módosításához válassza ki ezt a bejegyzést, és a **speciális többlépcsős támadás-észlelés** panelen válassza a **Szerkesztés**lehetőséget.
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{ALT-Text}":::
 
-5. A **szabály létrehozása varázsló** panelen az állapot módosítása automatikusan ki lesz választva, ezért válassza a **Tovább: Áttekintés**, majd a **Mentés**lehetőséget. 
+1. Az állapot módosításához válassza ki ezt a bejegyzést, és a **speciális többlépcsős támadás-észlelés** panelen válassza a **Szerkesztés**lehetőséget.
 
-A szabály sablonjai nem alkalmazhatók a fejlett többlépcsős támadás észlelésére.
+1. A **szabály létrehozása varázsló** panelen az állapot módosítása automatikusan ki lesz választva, ezért válassza a **Tovább: Áttekintés**, majd a **Mentés**lehetőséget. 
+
+ Mivel a **fúziós** szabály típusa csak egy olyan szabályt tartalmaz, amely nem módosítható, a szabály sablonjai nem alkalmazhatók ennél a szabálytípusnél.
 
 > [!NOTE]
 > Az Azure Sentinel jelenleg 30 napos korábbi adatmennyiséget használ a gépi tanulási rendszerek betanításához. Ezeket az adategységeket a rendszer mindig a Microsoft kulcsaival titkosítja, ahogy az a Machine learning-folyamaton halad át. A betanítási adatait azonban nem titkosítja az [ügyfél által felügyelt kulcsokkal (CMK)](customer-managed-keys.md) , ha engedélyezte a CMK használatát az Azure Sentinel-munkaterületen. A fúzió letiltásához navigáljon az **Azure Sentinel**   \>  **Configuration**   \>  **Analytics \> aktív szabályok \> speciális többlépcsős támadás észlelése** elemre, és az **állapot** oszlopban válassza a **Letiltás lehetőséget.**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Fúzió a Palo Alto Networks és a Microsoft Defender for Endpoint használatával (korábbi nevén Microsoft Defender ATP)
+## <a name="attack-detection-scenarios"></a>Támadás észlelésének forgatókönyvei
 
-Ezek a forgatókönyvek a biztonsági elemzők által használt alapvető naplók közül kettőt kombinálnak: a tűzfalak a Palo Alto hálózatokból és a Microsoft Defender for Endpoint végponti észlelési naplóiból származnak. Az alább felsorolt forgatókönyvekben a rendszer gyanús tevékenységet észlel a végponton, amely egy külső IP-címet is magában foglal, majd ezt követi a külső IP-címről érkező rendellenes forgalom a tűzfalon. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek).
+A következő szakasz felsorolja a korrelációs forgatókönyvek típusait, a fenyegetések besorolása szerint csoportosítva, hogy az Azure Sentinel a fúziós technológia használatát vizsgálja.
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Hálózati kérelem a TOR névtelenítésével szolgáltatáshoz, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+A fentiekben leírtaknak megfelelően a Fusion a különböző termékekből származó több biztonsági riasztást használ a fejlett többlépcsős támadások észleléséhez, a sikeres fúziós észlelések **fúziós incidensként** jelennek meg az Azure Sentinel **incidensek** lapján, nem pedig **riasztásként** a **naplók** **biztonsági riasztások** táblájában.
 
-Ebben az esetben az Azure Sentinel először riasztást észlel arról, hogy a Microsoft Defender for Endpoint (korábbi nevén a Microsoft Defender for ATP) hálózati kérelmet észlelt egy olyan TOR névtelenítésével szolgáltatáshoz, amely rendellenes tevékenységet eredményezett. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} nevű fiókban kezdeményezték. A kapcsolódás kimenő IP-címe: {IndividualIp}.
-Ezt követően a Palo Alto Networks-tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózati forgalom célként megadott IP-címe {DestinationIP}.
+A fúziós támadásokkal kapcsolatos észlelési forgatókönyvek engedélyezéséhez a felsorolt adatforrásokat a társított Azure Sentinel-adatösszekötők használatával kell bevenni.
 
-Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
+> [!NOTE]
+> Ezen forgatókönyvek némelyike **nyilvános előzetes**verzióban érhető el. A rendszer ezt jelzi.
 
+## <a name="compute-resource-abuse"></a>Számítási erőforrásokkal való visszaélés
 
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A PowerShell gyanús hálózati kapcsolatokat követett, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Több virtuális gépre vonatkozó létrehozási tevékenység a gyanús Azure Active Directory bejelentkezést követően
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
 
-Ebben az esetben az Azure Sentinel először riasztást észlel, hogy a Microsoft Defender for Endpoint (korábban az ATP-hez készült Microsoft Defender) észlelte, hogy a PowerShell gyanús hálózati kapcsolatot vezetett be, amely a Palo Alto hálózati tűzfal által észlelt rendellenes tevékenységhez vezet. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} fiókkal kezdeményezte. A kapcsolódás kimenő IP-címe: {IndividualIp}. Ezt követően a Palo Alto Networks-tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózatban a rosszindulatú forgalom lett megadva. A hálózati forgalom cél IP-címe: {DestinationIP}.
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás 
 
-Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), erőforrás-eltérítés (T1496)
 
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Kimenő kapcsolat az IP-címmel a jogosulatlan hozzáférési kísérletek előzményeivel, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
 
-Ebben az esetben az Azure Sentinel olyan riasztást észlel, amelyet a Microsoft Defender for Endpoint (korábbi nevén Microsoft Defender for ATP) egy IP-címhez tartozó kimenő kapcsolatot észlelt, amely a Palo Alto Networks tűzfal által észlelt rendellenes tevékenységeket okozó, nem engedélyezett hozzáférési kísérleteket eredményezett. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} fiókkal kezdeményezte. A kapcsolódás kimenő IP-címe: {IndividualIp}. Ezt követően a Palo Alto Networks tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózatban a rosszindulatú forgalom lett megadva. A hálózati forgalom cél IP-címe: {DestinationIP}.
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú virtuális gép lett létrehozva egyetlen munkamenetben egy Azure AD-fiókba való gyanús bejelentkezést követően. Ez a típusú riasztás nagy fokú megbízhatósággal jelzi, hogy a fúziós incidens leírásában feljegyzett fiókot feltörték, és az új virtuális gépek jogosulatlan célra való létrehozására használták, például kriptográfiai adatbányászati műveletek futtatásával. A gyanús Azure AD-bejelentkezési riasztások és a több virtuális gépre vonatkozó létrehozási tevékenységek riasztásai a következők:
 
-Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
+- **Nem lehet olyan szokatlan helyre utazni, amely több VM-létrehozási tevékenységhez vezet**
 
+- **Bejelentkezési esemény egy ismeretlen helyről, amely több VM-létrehozási tevékenységhez vezet**
 
+- **Bejelentkezési esemény egy fertőzött eszközről, amely több VM-létrehozási tevékenységhez vezet**
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Az Identity Protectiont és a Microsoft Cloud App Securityt használó fúzió
+- **Bejelentkezési esemény egy névtelen IP-címről, amely több VM-létrehozási tevékenységhez vezet**
 
-Az Azure Sentinel fejlett többlépcsős támadásokkal támogatja az alábbi forgatókönyveket, amelyekkel összekapcsolhatja a Azure Active Directory Identity Protection és Microsoft Cloud App Security anomália eseményeit:
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal több VM-létrehozási tevékenységhez**
 
-- [Nem lehet utazni atipikus helyre, amelyet rendellenes Office 365-tevékenység követ](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Ismeretlen helyre vonatkozó bejelentkezési tevékenység, amelyet rendellenes Office 365-tevékenység követ.](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
-- [Bejelentkezési tevékenység fertőzött eszközről, majd rendellenes Office 365-tevékenység](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Bejelentkezési tevékenység névtelen IP-címről, majd rendellenes Office 365-tevékenység](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Bejelentkezési tevékenység a felhasználótól a kiszivárgott hitelesítő adatokkal, majd a rendellenes Office 365-tevékenységgel](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+## <a name="data-exfiltration"></a>Adatkiszivárgás
 
-Rendelkeznie kell a [Azure ad Identity Protection adatösszekötővel](connect-azure-ad-identity-protection.md) és a konfigurált [Cloud app Security](connect-cloud-app-security.md) -összekötővel.
+### <a name="office-365-mailbox-exfiltration-following-a-suspicious-azure-ad-sign-in"></a>Office 365 postaláda kiszűrése gyanús Azure AD-bejelentkezés után
 
-Az alábbi leírásokban az Azure Sentinel megjeleníti az ezen az oldalon megjelenített adatok tényleges értékét zárójelek között. Például a fiók tényleges megjelenítendő neve nem \<*account name*> , és nem a tényleges szám \<*number*> .
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése, gyűjtemény
 
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Nem lehet utazni atipikus helyre, amelyet rendellenes Office 365-tevékenység követ
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), E-mail gyűjtemény (T1114), automatizált kiszűrése (T1020)
 
-Hét lehetséges Azure Sentinel-incidens áll rendelkezésre, amelyek összekapcsolják a lehetetlen utazást szokatlan helyre Azure AD Identity Protection és a Microsoft Cloud App Security által generált rendellenes Office 365-riasztások esetén:
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
 
-- **Az Office 365 postaláda-kiszűrése vezető atipikus helyekre nem lehet utazni**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény nem \<*account name*>  lehet egy \<*location*> szokatlan hely, és egy gyanús beérkezett fájlok továbbítására vonatkozó szabály, amelyet egy felhasználó postaládájába állítottak be.
-    
-    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználó \<*account name*> létrehozta vagy frissítette a bejövõ továbbítási szabályt, amely az összes bejövő e-mailt továbbítja a külső címre \<*email address*> .
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy egy gyanús bejövő továbbítási szabályt állítottak be egy felhasználó postaládájába egy, az Azure AD-fiókba gyanús bejelentkezést követően. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a felhasználói fiók (a fúziós incidens leírásában szerepel) biztonságban legyen, és hogy a rendszer a szervezet hálózatáról származó adatokat exfiltrate, ha a postaláda-továbbítási szabályt a valódi felhasználó tudta nélkül engedélyezte. A gyanús Azure AD-bejelentkezési riasztások és az Office 365 postaláda-kiszűrése riasztásai a következők:
 
-- **Nem lehet utazni a gyanús Cloud app felügyeleti tevékenységekhez vezető atipikus helyszínekre**
-    
-    Ez a riasztás arra utal, hogy a bejelentkezési esemény egy \<*account name*> szokatlan helyre történő, lehetetlen utazást eredményez \<*location*> .
-    
-    Ezt követően a fiók a \<*account name*> \<*number*> rendszergazdai tevékenységeken keresztül egyetlen munkamenetben hajt végre.
+- **Az Office 365 postaláda-kiszűrése vezető szokatlan helyre nem lehet utazni**
 
-- **Nem lehet utazni a tömeges fájl törlését eredményező atipikus helyszínekre**
-    
-    Ez a riasztás egy szokatlan helyre utal a bejelentkezési eseményre \<*account name*> \<*location*> . 
-    
-    Ezt követően a fiók \<*account name*> \<*number of*> egyetlen munkamenetben törölte az egyedi fájlokat.
-
-- **Nem lehet utazni a tömeges fájl letöltéséhez vezető atipikus helyekre**
-    
-    Ez a riasztás arra utal, hogy a bejelentkezési esemény egy \<*account name*> szokatlan helyre történő, lehetetlen utazást eredményez \<*location*> . 
-    
-    Ezt követően a fiók az \<*account name*> egyedi fájlokon keresztül lett letöltve \<*number of*> egyetlen munkamenetben.
-
-- **Az Office 365 megszemélyesítéshez vezető atipikus helyekre nem lehet utazni**
-    
-    Ez a riasztás arra utal, hogy a bejelentkezési esemény egy \<*account name*> szokatlan helyre történő, lehetetlen utazást eredményez \<*location*> . 
-    
-    Ezt követően a fiók \<*account name*> szokatlan mennyiségű ( \<*number of activities*> ) megszemélyesítési tevékenységet hajtott végre egyetlen munkamenetben.
-
-- **Nem lehet utazni a tömeges fájlmegosztást eredményező atipikus helyszínekre**
-    
-    Ez a riasztás arra utal, hogy a bejelentkezési esemény egy \<*account name*> szokatlan helyre történő, lehetetlen utazást eredményez \<*location*> . 
-    
-    Ezt követően az \<*account name*> \<*number of*> egyedi fájlokban megosztott fiók egyetlen munkamenetben.
-
-- **Nem lehet utazni a Cloud app ransomware vezető atipikus helyszínekre**
-    
-    Ez a riasztás arra utal, hogy a bejelentkezési esemény egy \<*account name*> szokatlan helyre történő, lehetetlen utazást eredményez \<*location*> . 
-    
-    Ezután a fiók \<*account name*> feltöltött \<*number of*> fájlokat, és törölte az összes \<*number of*> fájlt. 
-    
-    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
-
-
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Ismeretlen helyre vonatkozó bejelentkezési tevékenység, amelyet rendellenes Office 365-tevékenység követ.
-
-Hét lehetséges Azure Sentinel-incidens van, amelyek a bejelentkezési tevékenységet a Microsoft Cloud App Security által generált Azure AD Identity Protection és rendellenes Office 365 riasztásokkal ötvözik.
-
-- **Bejelentkezési esemény egy ismeretlen helyről, amely az Exchange Online postaláda-kiszűrése vezet**
-    
-    Ez a riasztás azt jelzi, hogy a (z)- \<*account name*> ből származó bejelentkezési esemény egy \<*location*> Ismeretlen hely, amelyet egy gyanús beérkezett fájlok továbbítására vonatkozó szabály követ egy felhasználó postaládájába.
-    
-    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználó \<*account name*> létrehozta vagy frissítette a bejövõ továbbítási szabályt, amely az összes bejövő e-mailt továbbítja a külső címre \<*email address*> . 
-
-- **Bejelentkezési esemény olyan ismeretlen helyről, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
-    
-    Ez a riasztás egy \<*account name*> ismeretlen helyről érkező bejelentkezési eseményre utal \<*location*> . 
-    
-    Ezt követően a fiók a \<*account name*> \<*number of*> rendszergazdai tevékenységeken keresztül egyetlen munkamenetben hajt végre.
-
-- **Bejelentkezési esemény egy ismeretlen helyről, amely a tömeges fájlok törlését eredményezi**
-    
-    Ez a riasztás egy \<*account name*> ismeretlen helyről érkező bejelentkezési eseményre utal \<*location*> . 
-    
-    Ezt követően a fiók \<*account name*> \<*number of*> egyetlen munkamenetben törölte az egyedi fájlokat.
-
-- **Bejelentkezési esemény egy ismeretlen helyről, amely a Mass file letöltéséhez vezet**
-    
-    Ez a riasztás egy \<*account name*> ismeretlen helyről érkező bejelentkezési eseményre utal \<*location*> . 
-    
-    Ezt követően a fiók az \<*account name*> egyedi fájlokon keresztül lett letöltve \<*number of*> egyetlen munkamenetben.
-
-- **Bejelentkezési esemény egy ismeretlen helyről, amely az Office 365 megszemélyesítéshez vezet**
-    
-    Ez a riasztás egy \<*account name*> ismeretlen helyről érkező bejelentkezési eseményre utal \<*location*> .
-    
-    Ezt követően a fiók \<*account name*> megszemélyesítve lett a \<*number of*> különböző fiókok között egyetlen munkamenetben.
-
-- **Bejelentkezési esemény egy ismeretlen helyről, amely a tömeges fájlmegosztást eredményezi**
-    
-    Ez a riasztás egy \<*account name*> ismeretlen helyről érkező bejelentkezési eseményre utal \<*location*> . 
-    
-    Ezt követően az \<*account name*> \<*number of*> egyedi fájlokban megosztott fiók egyetlen munkamenetben.
-
-- **Bejelentkezési esemény ismeretlen helyről, amely a Cloud app ransomware vezető**
-    
-    Ez a riasztás egy \<*account name*> ismeretlen helyről érkező bejelentkezési eseményre utal \<*location*> . 
-    
-    Ezután a fiók \<*account name*> feltöltött \<*number of*> fájlokat, és törölte az összes \<*number of*> fájlt. 
-    
-    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
-
-### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység fertőzött eszközről, majd rendellenes Office 365-tevékenység
-
-A rendszer hét lehetséges Azure Sentinel-eseményt tartalmaz, amelyek a Azure AD Identity Protection és a rendellenes Office 365 által generált riasztásokból származó bejelentkezési tevékenységeket egyesítenek Microsoft Cloud App Security:
+- **Bejelentkezési esemény egy ismeretlen helyről, amely az Office 365 postaláda-kiszűrése vezet**
 
 - **Bejelentkezési esemény egy olyan fertőzött eszközről, amely az Office 365 postaláda-kiszűrése vezet**
-    
-    Ez a riasztás egy \<*account name*> , a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési esemény, amelyet egy gyanús beérkezett fájlok továbbítására vonatkozó szabály állított be a felhasználó postaládájába.
-    
-    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználó \<*account name*> létrehozta vagy frissítette a bejövõ továbbítási szabályt, amely az összes bejövő e-mailt továbbítja a külső címre \<*email address*> . 
-
-- **Bejelentkezési esemény olyan fertőzött eszközről, amely gyanús Cloud app rendszergazdai tevékenységet vezet**
-    
-    Ez a riasztás egy, a \<*account name*> kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményre utal.
-    
-    Ezt követően a fiók a \<*account name*> \<*number of*> rendszergazdai tevékenységeken keresztül egyetlen munkamenetben hajt végre.
-
-- **Bejelentkezési esemény egy fertőzött eszközről, amely a tömeges fájl törlését eredményezi**
-    
-    Ez a riasztás egy, a \<*account name*> kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményre utal. 
-    
-    Ezt követően a fiók \<*account name*> \<*number of*> egyetlen munkamenetben törölte az egyedi fájlokat.
-
-- **Bejelentkezési esemény egy fertőzött eszközről, amely a Mass file letöltését eredményezi**
-    
-    Ez a riasztás egy, a \<*account name*> kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményre utal. 
-    
-    Ezt követően a fiók az \<*account name*> egyedi fájlokon keresztül lett letöltve \<*number of*> egyetlen munkamenetben.
-
-- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely az Office 365 megszemélyesítést vezeti**
-    
-    Ez a riasztás egy, a \<*account name*> kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményre utal. 
-    
-    Ezt követően a fiók \<*account name*> megszemélyesítve lett a \<*number of*> különböző fiókok között egyetlen munkamenetben.
-
-- **Bejelentkezési esemény a tömeges fájlmegosztást eredményező fertőzött eszközről**
-    
-    Ez a riasztás egy, a \<*account name*> kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményre utal. 
-    
-    Ezt követően az \<*account name*> \<*number of*> egyedi fájlokban megosztott fiók egyetlen munkamenetben.
-
-- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely ransomware vezet a Cloud app szolgáltatásban**
-    
-    Ez a riasztás egy, a \<*account name*> kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményre utal. 
-    
-    Ezután a fiók \<*account name*> feltöltött \<*number of*> fájlokat, és törölte az összes \<*number of*> fájlt. 
-    
-    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
-
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység névtelen IP-címről, majd rendellenes Office 365-tevékenység
-
-Hét lehetséges Azure Sentinel-incidens áll rendelkezésre, amelyek a bejelentkezési tevékenységet kombinálják a névtelen IP-címek értesítéseitől Azure AD Identity Protection és a rendellenes Office 365-riasztásokból, amelyeket a Microsoft Cloud App Security generált:
 
 - **Bejelentkezési esemény egy névtelen IP-címről, amely az Office 365 postaláda-kiszűrése vezet**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal, amelyet egy \<*IP address*> gyanús beérkezett fájlok továbbítására vonatkozó szabály követ egy felhasználó postaládájába.
-    
-    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználó \<*account name*> létrehozta vagy frissítette a bejövõ továbbítási szabályt, amely az összes bejövő e-mailt továbbítja a külső címre \<*email address*> . 
-
-- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal \<*IP address*> . 
-    
-    Ezt követően a fiók a \<*account name*> \<*number of*> rendszergazdai tevékenységeken keresztül egyetlen munkamenetben hajt végre.
-
-- **Bejelentkezési esemény a tömeges fájlok törlését eredményező névtelen IP-címről**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal \<*IP address*> . 
-    
-    Ezt követően a fiók \<*account name*> \<*number of*> egyetlen munkamenetben törölte az egyedi fájlokat.
-
-- **Bejelentkezési esemény a tömeges fájl letöltését eredményező névtelen IP-címről**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal \<*IP address*> . 
-    
-    Ezt követően a fiók az \<*account name*> egyedi fájlokon keresztül lett letöltve \<*number of*> egyetlen munkamenetben.
-
-- **Bejelentkezési esemény egy névtelen IP-címről, amely az Office 365 megszemélyesítést vezeti**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal \<*IP address*> . 
-    
-    Ezt követően a fiók \<*account name*> megszemélyesítve lett a \<*number of*> különböző fiókok között egyetlen munkamenetben.
-
-- **Bejelentkezési esemény egy tömeges fájlmegosztást eredményező névtelen IP-címről**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal \<*IP address*> . 
-    
-    Ezt követően az \<*account name*> \<*number of*> egyedi fájlokban megosztott fiók egyetlen munkamenetben.
-
-- **Bejelentkezési esemény névtelen IP-címről a Cloud app ransomware**
-    
-    Ez a riasztás egy \<*account name*> Névtelen proxy IP-címről érkező bejelentkezési eseményre utal \<*IP address*> . 
-    
-    Ezután a fiók \<*account name*> feltöltött \<*number of*> fájlokat, és törölte az összes \<*number of*> fájlt. 
-    
-    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
-
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység a felhasználótól a kiszivárgott hitelesítő adatokkal, majd a rendellenes Office 365-tevékenységgel
-
-Hét lehetséges Azure Sentinel-incidens van, amelyek a bejelentkezési tevékenységet összekapcsolják a felhasználótól a kiszivárgott hitelesítő adatokkal Azure AD Identity Protection és az Microsoft Cloud App Security által generált rendellenes Office 365 riasztásokkal:
 
 - **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal az Office 365 postaláda kiszűrése**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történt, majd egy gyanús beérkezett fájlok továbbítására vonatkozó szabály is be lett állítva egy felhasználó postaládájába. 
-    
-    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználó \<*account name*> létrehozta vagy frissítette a bejövõ továbbítási szabályt, amely az összes bejövő e-mailt továbbítja a külső címre \<*email address*> . 
 
-- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús Cloud app felügyeleti tevékenységet vezetnek**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történik.
-    
-    Ezt követően a fiók a \<*account name*> \<*number of*> rendszergazdai tevékenységeken keresztül egyetlen munkamenetben hajt végre.
+### <a name="mass-file-download-following-suspicious-azure-ad-sign-in"></a>A tömeges fájl letöltése a gyanús Azure AD-bejelentkezést követően
 
-- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek a tömeges fájlok törlését eredményezik**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történik.
-    
-    Ezt követően a fiók \<*account name*> \<*number of*> egyetlen munkamenetben törölte az egyedi fájlokat.
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy a felhasználó rendellenes számú fájlt töltött le egy, az Azure AD-fiókba gyanús bejelentkezést követően. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a fúziós incidens leírásában feljegyzett fiókot feltörték, és a rendszer felhasználta az adatok exfiltrate a szervezet hálózatáról. A gyanús Azure AD-bejelentkezések riasztásai a tömeges fájlok letöltési riasztásával:  
+
+- **Nem lehet utazni a tömeges fájl letöltését eredményező szokatlan helyre**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely a Mass file letöltéséhez vezet**
+
+- **Bejelentkezési esemény egy fertőzött eszközről, amely a Mass file letöltését eredményezi**
+
+- **Bejelentkezési esemény a tömeges fájl letöltését eredményező névtelen IP-címről**
 
 - **Bejelentkezési esemény a felhasználótól a fájlok letöltéséhez szükséges kiszivárgott hitelesítő adatokkal**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történik.
-    
-    Ezt követően a fiók az \<*account name*> egyedi fájlokon keresztül lett letöltve \<*number of*> egyetlen munkamenetben.
 
-- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal az Office 365 megszemélyesítéshez vezető módon**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történik. 
-    
-    Ezt követően a fiók \<*account name*> megszemélyesítve lett a \<*number of*> különböző fiókok között egyetlen munkamenetben.
+### <a name="mass-file-sharing-following-suspicious-azure-ad-sign-in"></a>Tömeges fájlmegosztás a gyanús Azure AD-bejelentkezést követően
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), kiszűrése over Web Service (T1567)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy egy adott küszöbértéket meghaladó számú fájl megosztva lett másokkal egy Azure AD-fiókba gyanús bejelentkezést követően. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a fúziós incidensek leírásában feljegyzett fiókot feltörték, és a rendszer a szervezete hálózatáról származó adatokat exfiltrate, például dokumentumokat, táblázatokat stb., jogosulatlan felhasználókkal, rosszindulatú célra. A gyanús Azure AD bejelentkezési riasztások és a tömeges fájlmegosztás riasztásai a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely a tömeges fájlmegosztást eredményezi**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely a tömeges fájlmegosztást eredményezi**
+
+- **Bejelentkezési esemény a tömeges fájlmegosztást eredményező fertőzött eszközről**
+
+- **Bejelentkezési esemény egy tömeges fájlmegosztást eredményező névtelen IP-címről**
 
 - **Bejelentkezési esemény a felhasználótól a tömeges fájlmegosztást eredményező kiszivárgott hitelesítő adatokkal**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történik.
-    
-    Ezt követően az \<*account name*> \<*number of*> egyedi fájlokban megosztott fiók egyetlen munkamenetben.
 
-- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal a ransomware a Cloud app szolgáltatásban**
-    
-    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény a \<*account name*> kiszivárgott hitelesítő adatok használatával történik. 
-    
-    Ezután a fiók \<*account name*> feltöltött \<*number of*> fájlokat, és törölte az összes \<*number of*> fájlt. 
-    
-    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
+### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Gyanús beérkezett fájlok kezelésére vonatkozó szabályok a gyanús Azure AD-bejelentkezést követően
+Ez a forgatókönyv két fenyegetési besoroláshoz tartozik a listában: az **kiszűrése** és az **oldalirányú mozgást**. Az érthetőség kedvéért mindkét szakaszban megjelenik.
+
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, oldalirányú mozgás, kiszűrése
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), belső célzott adathalászat (T1534)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy az Azure AD-fiókba gyanús bejelentkezést követően a rendszer rendellenes beérkezett fájlok szabályait állította be a felhasználó postaládájába. Ez nagy megbízhatósággal jelzi, hogy a fúziós incidens leírásában feljegyzett fiók biztonsága megsérült, és a felhasználó e-mail-címére vonatkozó szabályok rosszindulatú célokra való kezelésére használták. Lehetséges, hogy egy támadó megpróbálta exfiltrate az adatok a szervezet hálózatáról. Azt is megteheti, hogy a támadó e-maileket próbál előállítani a szervezeten belülről (a külső forrásokból érkező e-mailekre irányuló adathalászat-észlelési mechanizmusok megkerülése) abból a célból, hogy a későbbiekben a további felhasználói és/vagy emelt szintű fiókokhoz való hozzáféréshez hozzáférjen. A gyanús Azure AD-bejelentkezési riasztások a gyanús beérkezett fájlok kezelésére vonatkozó szabályainak riasztásai a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény olyan fertőzött eszközről, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús beérkezett fájlok manipulációs szabályához vezetnek**
+
+### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Több Power BI jelentés-megosztási tevékenység a gyanús Azure AD-bejelentkezést követően 
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése 
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), kiszűrése over Web Service (T1567)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú Power BI jelentést osztottak meg egyetlen munkamenetben az Azure AD-fiókba való gyanús bejelentkezést követően. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a fúziós incidens leírásában feljegyzett fiókot feltörték, és a rendszer a szervezet hálózatáról származó adatok exfiltrate a jogosulatlan felhasználóktól származó Power BI jelentések rosszindulatú célból történő megosztásával. A gyanús Azure AD-bejelentkezési riasztások és a több Power BI jelentéskészítő tevékenységekkel kapcsolatos permutációk a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely több Power BI jelentéskészítési tevékenységhez vezet**
+
+- **Bejelentkezési esemény ismeretlen helyről, amely több Power BI jelentéskészítési tevékenységhez vezet**
+
+- **Bejelentkezési esemény egy fertőzött eszközről, amely több Power BI jelentéskészítési tevékenységhez vezet**
+
+- **Bejelentkezési esemény egy névtelen IP-címről, amely több Power BI jelentéskészítési tevékenységhez vezet**
+
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek több Power BI jelentéskészítési tevékenységhez vezetnek**
+
+### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Gyanús Power BI jelentés megosztása a gyanús Azure AD-bejelentkezés után
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése 
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), kiszűrése over Web Service (T1567)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy egy gyanús Power BI jelentéskészítő tevékenység gyanús bejelentkezést követően történt egy Azure AD-fiókban. A megosztási tevékenység gyanúsként lett azonosítva, mert az Power BI jelentés természetes nyelvi feldolgozással azonosított bizalmas adatokat foglalt magukban, és mivel egy külső e-mail-címmel lett megosztva, amelyet a weben közzétettek, vagy amelyeket egy külső előfizetett e-mail-címre küldtek el. Ez a riasztás nagy megbízhatósággal jelzi, hogy a fúziós incidensek leírásában feljegyzett fiók biztonsága sérül, és a szervezet bizalmas adatainak exfiltrate való megosztásával a jogosulatlan felhasználókkal való Power BI jelentések rosszindulatú céllal való megosztása történik. A gyanús Azure AD bejelentkezési riasztások a gyanús Power BI jelentés megosztásával kapcsolatos permutációi a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely gyanús Power BI jelentés megosztására vezet**
+
+- **Bejelentkezési esemény ismeretlen helyről, amely gyanús Power BI jelentés megosztására vezet**
+
+- **Bejelentkezési esemény olyan fertőzött eszközről, amely gyanús Power BI jelentés megosztásához vezet**
+
+- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús Power BI jelentés megosztásához vezet**
+
+- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús Power BI jelentés megosztásához vezetnek**
+
+## <a name="data-destruction"></a>Adatmegsemmisítés
+
+### <a name="mass-file-deletion-following-suspicious-azure-ad-sign-in"></a>A tömeges fájl törlése a gyanús Azure AD-bejelentkezést követően
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), adatmegsemmisítés (T1485)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú egyedi fájlt töröltek egy Azure AD-fiókba való gyanús bejelentkezés után. Ez azt jelzi, hogy a fúziós incidens leírásában feljegyzett fiók biztonsága sérült, és az adatok rosszindulatú céllal történő megsemmisítésére használták. A gyanús Azure AD-bejelentkezések riasztásai a Mass file törlési riasztással a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely a tömeges fájl törlését eredményezi**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely a tömeges fájlok törlését eredményezi**
+
+- **Bejelentkezési esemény egy fertőzött eszközről, amely a tömeges fájl törlését eredményezi**
+
+- **Bejelentkezési esemény a tömeges fájlok törlését eredményező névtelen IP-címről**
+
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek a tömeges fájlok törlését eredményezik**
+
+### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Gyanús e-mail törlési tevékenység gyanús Azure AD-bejelentkezést követően
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás 
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), adatmegsemmisítés (T1485)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú e-mailt töröltek egyetlen munkamenetben az Azure AD-fiókba való gyanús bejelentkezést követően. Ez azt jelzi, hogy a fúziós incidens leírásában feljegyzett fiók biztonsága megsérült, és az adatok rosszindulatú célra való megsemmisítésére használták, például a szervezet károsodásával vagy a levélszeméttel kapcsolatos e-mail-tevékenységek elrejtésével. A gyanús Azure AD bejelentkezési riasztások és a gyanús e-mail törlési tevékenység riasztásai a következők:   
+
+- **Nem lehet olyan szokatlan helyre utazni, amely gyanús e-mail törlési tevékenységet eredményez**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely gyanús e-mail törlési tevékenységet eredményez**
+
+- **Bejelentkezési esemény egy fertőzött eszközről, amely gyanús e-mail törlési tevékenységet eredményez**
+
+- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús e-mail törlési tevékenységet eredményez**
+
+- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús e-mail törlési tevékenységet eredményeznek**
+
+## <a name="denial-of-service"></a>Szolgáltatásmegtagadás
+
+### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Több virtuális gép törlése tevékenységek a gyanús Azure AD-bejelentkezés után
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), végpont-megtagadási szolgáltatás (T1499)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú virtuális gépet töröltek egyetlen munkamenetben egy Azure AD-fiókba való gyanús bejelentkezést követően. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a fúziós incidens leírásában feljegyzett fiókot feltörték, és a szervezet felhőalapú környezetének megszakadására vagy megsemmisítésére használták. A gyanús Azure AD-bejelentkezési riasztások és a több virtuális gépre vonatkozó törlési tevékenységek riasztása a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely több virtuális gép törlési tevékenységét eredményezi**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely több virtuális gép törlési tevékenységét eredményezi**
+
+- **Bejelentkezési esemény egy fertőzött eszközről, amely több virtuális gép törlési tevékenységét eredményezi**
+
+- **Bejelentkezési esemény egy névtelen IP-címről, amely több virtuális gép törlési tevékenységét eredményezi**
+
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek több virtuális gép törlési tevékenységét eredményezik**
+
+## <a name="lateral-movement"></a>Oldalirányú mozgás
+
+### <a name="office-365-impersonation-following-suspicious-azure-ad-sign-in"></a>Office 365 megszemélyesítés a gyanús Azure AD-bejelentkezés után
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, oldalirányú mozgás
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), belső célzott adathalászat (T1534)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú megszemélyesítési művelet történt egy Azure AD-fiókból érkező gyanús bejelentkezés után. Bizonyos szoftverekben lehetőség van arra, hogy a felhasználók megszemélyesítsék más felhasználókat. Az e-mail szolgáltatások például lehetővé teszik, hogy a felhasználók más felhasználók számára is engedélyezzék az e-mailek küldését a nevükben. Ez a riasztás nagyobb megbízhatóságot jelez, hogy a fúziós incidens leírásában feljegyzett fiók biztonsága sérül, és a megszemélyesítési tevékenységek rosszindulatú célra való elvégzésére szolgál, például adathalászó e-mailek küldése a kártevők terjesztéséhez vagy az oldalirányú mozgáshoz. A gyanús Azure AD-bejelentkezési riasztások és az Office 365 megszemélyesítési riasztások a következők:  
+
+- **Nem lehet utazni egy szokatlan helyre, amely az Office 365 megszemélyesítést eredményezi**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely az Office 365 megszemélyesítéshez vezet**
+
+- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely az Office 365 megszemélyesítést vezeti**
+
+- **Bejelentkezési esemény egy névtelen IP-címről, amely az Office 365 megszemélyesítést vezeti**
+
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal az Office 365 megszemélyesítéshez vezető módon**
+ 
+### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Gyanús beérkezett fájlok kezelésére vonatkozó szabályok a gyanús Azure AD-bejelentkezést követően
+Ez a forgatókönyv két fenyegetési besoroláshoz tartozik a következő listában: **oldalirányú mozgás** és **az adatkiszűrése**. Az érthetőség kedvéért mindkét szakaszban megjelenik.
+
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, oldalirányú mozgás, kiszűrése
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), belső célzott adathalászat (T1534), automatizált kiszűrése (T1020)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy az Azure AD-fiókba gyanús bejelentkezést követően a rendszer rendellenes beérkezett fájlok szabályait állította be a felhasználó postaládájába. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a fúziós incidensek leírásában feljegyzett fiók biztonsága megsérül, és a felhasználó e-mailes beérkező szabályainak rosszindulatú célokra való kezelésére használták. Lehetséges, hogy egy támadó megpróbálta exfiltrate az adatok a szervezet hálózatáról. Azt is megteheti, hogy a támadó e-maileket próbál előállítani a szervezeten belülről (a külső forrásokból érkező e-mailekre irányuló adathalászat-észlelési mechanizmusok megkerülése) abból a célból, hogy a későbbiekben a további felhasználói és/vagy emelt szintű fiókokhoz való hozzáféréshez hozzáférjen. A gyanús Azure AD-bejelentkezési riasztások a gyanús beérkezett fájlok kezelésére vonatkozó szabályainak riasztásai a következők:
+
+- **Nem lehet olyan szokatlan helyre utazni, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény egy ismeretlen helyről, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény olyan fertőzött eszközről, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús beérkezett fájlok manipulációs szabályához vezet**
+
+- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús beérkezett fájlok manipulációs szabályához vezetnek**
+
+## <a name="malicious-administrative-activity"></a>Rosszindulatú felügyeleti tevékenység
+
+### <a name="suspicious-cloud-app-administrative-activity-following-suspicious-azure-ad-sign-in"></a>Gyanús Felhőbeli alkalmazás rendszergazdai tevékenysége gyanús Azure AD-bejelentkezést követően
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, adatmegőrzés, védelmi adócsalás, oldalirányú mozgás, gyűjtés, kiszűrése és hatás
+
+**Mitre ATT&CK technikák:** N/A
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy rendellenes számú rendszergazdai tevékenységet hajtottak végre egy adott munkamenetben egy gyanús Azure AD-bejelentkezést követően ugyanabból a fiókból. Ez azt jelzi, hogy a fúziós incidens leírásában feljegyzett fiók biztonsága megsérült, és a rendszer felhasználta a rosszindulatú szándékú jogosulatlan adminisztratív műveletek elvégzésére. Ez azt is jelenti, hogy egy rendszergazdai jogosultságokkal rendelkező fiók biztonsága sérült. A gyanús Azure AD bejelentkezési riasztások és a gyanús Cloud app felügyeleti tevékenység riasztásai a következők:  
+
+- **Nem lehet olyan szokatlan helyre utazni, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
+
+- **Bejelentkezési esemény olyan ismeretlen helyről, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
+
+- **Bejelentkezési esemény olyan fertőzött eszközről, amely gyanús Cloud app rendszergazdai tevékenységet vezet**
+
+- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
+
+- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús Cloud app felügyeleti tevékenységet vezetnek**
+
+## <a name="malicious-execution-with-legitimate-process"></a>Rosszindulatú végrehajtás legitim folyamattal
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A PowerShell gyanús hálózati kapcsolatban tartott, majd a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom következik.
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Végrehajtási
+
+**Mitre ATT&CK technikák:** Parancs-és parancsfájl-értelmező (T1059)
+
+**Adatösszekötő-források:** Microsoft Defender for Endpoint (korábban Microsoft Defender komplex veszélyforrások elleni védelem vagy MDATP), Palo Alto Networks 
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy egy PowerShell-paranccsal kezdeményezték a kimenő kapcsolódási kérelmeket, és ezt követően a rendszer rendellenes bejövő tevékenységeket észlelt a Palo Alto Networks tűzfalon. Ez azt jelzi, hogy egy támadó valószínűleg hozzáfért a hálózathoz, és rosszindulatú műveleteket próbál végrehajtani. Az ezt a mintát követő PowerShell-kapcsolati kísérletek jelezhetik a kártevők parancs-és vezérlési tevékenységeket, a további kártevők letöltésére vonatkozó kéréseket, illetve a távoli interaktív hozzáférést létrehozó támadót. Ahogy az összes "élő a szárazföldön" támadás is, ez a tevékenység a PowerShell jogos használata lehet. Azonban a PowerShell-parancs végrehajtása, amelyet a gyanús bejövő tűzfal tevékenység követ, növeli a PowerShell rosszindulatú módon való használatának megbízhatóságát, és további vizsgálatot kell végeznie. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
+
+### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Gyanús távoli WMI-végrehajtás, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Végrehajtás, felderítés
+
+**Mitre ATT&CK technikák:** Windows Management Instrumentation (T1047)
+
+**Adatösszekötő-források:** Microsoft Defender for Endpoint (korábban MDATP), Palo Alto Networks 
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy a Windows Management Interface (WMI) parancsok távolról lettek végrehajtva egy rendszeren, és ezt követően a rendszer gyanús bejövő tevékenységet észlelt a Palo Alto Networks tűzfalon. Ez azt jelzi, hogy egy támadó elérheti a hálózatát, és megpróbálkozik a későbbi áthelyezéssel, a jogosultságok kiterjesztésével és/vagy a kártékony hasznos adatok végrehajtásával. Ahogy az összes "a szárazföldön él" támadásokkal szemben, ez a tevékenység a WMI jogos használata lehet. Azonban a távoli WMI-parancs végrehajtása, amelyet a gyanús bejövő tűzfalszabályok követnek, növeli a WMI rosszindulatú módon való használatának megbízhatóságát, és további vizsgálatot kell végeznie. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
+
+## <a name="malware-c2-or-download"></a>Kártevő C2 vagy Letöltés
+
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Hálózati kérelem a TOR névtelenítésével szolgáltatáshoz, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Parancs és vezérlés
+
+**Mitre ATT&CK technikák:** Titkosított csatorna (T1573), proxy (T1090)
+
+**Adatösszekötő-források:** Microsoft Defender for Endpoint (korábban MDATP), Palo Alto Networks 
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy kimenő kapcsolódási kérelem érkezett a TOR névtelenítésével szolgáltatáshoz, és ezt követően a rendszer rendellenes bejövő tevékenységeket észlelt a Palo Alto Networks tűzfalon. Ez azt jelzi, hogy egy támadó valószínűleg hozzáfért a hálózathoz, és megpróbálja elrejteni a műveleteit és szándékait. Az ezzel a mintázattal rendelkező TOR-hálózattal létesített kapcsolatok a kártevők és a vezérlési tevékenységek, valamint a további kártevők letöltésére vonatkozó kérések, illetve a távoli interaktív hozzáférést létrehozó támadók. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Kimenő kapcsolat az IP-címmel a jogosulatlan hozzáférési kísérletek előzményeivel, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Parancs és vezérlés
+
+**Mitre ATT&CK technikák:** Nem alkalmazható
+
+**Adatösszekötő-források:** Microsoft Defender for Endpoint (korábban MDATP), Palo Alto Networks 
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy egy, a jogosulatlan hozzáférési kísérletek előzményeivel rendelkező IP-címhez való kimenő kapcsolat létrejött, és ezt követően a rendszer rendellenes tevékenységeket észlelt a Palo Alto Networks tűzfalon. Ez azt jelzi, hogy egy támadó valószínűleg hozzáfért a hálózathoz. Az ezt a mintát követő kapcsolódási kísérletek a kártevők és a vezérlési tevékenységek, valamint a további kártevők letöltésére vonatkozó kérések, illetve a távoli interaktív hozzáférést létrehozó támadók számára is megadhatók. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
+
+## <a name="ransomware"></a>Zsarolóprogramok
+
+### <a name="ransomware-execution-following-suspicious-azure-ad-sign-in"></a>Ransomware-végrehajtás a gyanús Azure AD-bejelentkezést követően
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás
+
+**Mitre ATT&CK technikák:** Érvényes fiók (T1078), a hatáshoz titkosított adatforgalom (T1486)
+
+**Adatösszekötő-források:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy a rendellenes felhasználói viselkedés azt jelzi, hogy az Azure AD-fiókba gyanús bejelentkezést követően ransomware támadás észlelhető. Ez a jelzés magas megbízhatóságot biztosít ahhoz, hogy a fúziós incidens leírásában feljegyzett fiókot feltörték, és az adatok titkosítására használták az adatok tulajdonosának érvényesítése vagy az adatok tulajdonosának hozzáférésének megtagadása céljából. A gyanús Azure AD bejelentkezési riasztások és a ransomware-végrehajtási riasztások a következők:  
+
+- **Nem lehet utazni a Cloud app ransomware vezető szokatlan helyre**
+
+- **Bejelentkezési esemény ismeretlen helyről, amely a Cloud app ransomware vezető**
+
+- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely ransomware vezet a Cloud app szolgáltatásban**
+
+- **Bejelentkezési esemény egy névtelen IP-címről, amely a Cloud app ransomware vezet**
+
+- **Bejelentkezési esemény felhasználótól kiszivárgott hitelesítő adatokkal, amelyek a Cloud app ransomware vezetnek**
+
+## <a name="remote-exploitation"></a>Távoli kiaknázás
+
+### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A támadási keretrendszer feltételezett használata, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
+
+**Mitre ATT&CK-taktika:** Kezdeti hozzáférés, végrehajtás, oldalirányú mozgás, jogosultság-eszkaláció
+
+**Mitre ATT&CK technikák:** Nyilvános alkalmazás (T1190) kiaknázása, az ügyfél-végrehajtás (T1203) kiaknázása, a távoli szolgáltatások kiaknázása (T1210), a jogosultságok eszkalációjának kiaknázása (T1068)
+
+**Adatösszekötő-források:** Microsoft Defender for Endpoint (korábban MDATP), Palo Alto Networks 
+
+**Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy nem szabványos, a támadási keretrendszerek (például Metasploit) használatára hasonlítanak a protokollok, és ezt követően a rendszer gyanús bejövő tevékenységet észlelt a Palo Alto Networks tűzfalon. Ez lehet az első jele annak, hogy egy támadó kihasználta a szolgáltatást, hogy hozzáférjen a hálózati erőforrásokhoz, vagy hogy a támadó már elérte a hozzáférést, és megkísérli az elérhető rendszerek/szolgáltatások további kiaknázását a későbbiekben és/vagy a jogosultságok kiterjesztésével. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
 
 ## <a name="next-steps"></a>Következő lépések
 

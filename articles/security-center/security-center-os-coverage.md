@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2092a1aa3d5157db0392397e86553c5cc9da9de2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998832"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883801"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -55,7 +55,7 @@ Az Azure által felügyelt szolgáltatások, például az Azure Kubernetes (ak),
 
 A Cloud Service-ben futó virtuális gépek is támogatottak. Csak az üzemi tárolóhelyeken futó Cloud Services-alapú webes és feldolgozói szerepköröket figyeli a rendszer. További információ a Cloud Services szolgáltatásról: [Az Azure Cloud Services áttekintése](../cloud-services/cloud-services-choose-me.md).
 
-A Azure Stackban található virtuális gépek védelme is támogatott. A Security Center Azure Stack-nal való integrálásával kapcsolatos további információkért tekintse meg [a Azure stack virtuális gépek Security Centerba való](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)bevezetését ismertető témakört.
+A Azure Stackban található virtuális gépek védelme is támogatott. A Security Center Azure Stack-nal való integrálásával kapcsolatos további információkért tekintse meg [a Azure stack virtuális gépek Security Centerba való](quickstart-onboard-machines.md)bevezetését ismertető témakört. 
 
 ## <a name="next-steps"></a>Következő lépések
 

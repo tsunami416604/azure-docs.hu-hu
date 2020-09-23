@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905201"
 ---
 # <a name="resnet"></a>ResNet
 
-Ez a cikk azt ismerteti, hogyan használható a **ResNet** modul a Azure Machine learning Designerben (előzetes verzió) a rendszerkép-besorolási modell létrehozásához a ResNet algoritmus használatával.  
+Ez a cikk azt ismerteti, hogyan használható a **ResNet** modul a Azure Machine learning Designerben, és hogyan hozható létre rendszerkép-besorolási modell a ResNet algoritmus használatával.  
 
 Ez a besorolási algoritmus egy felügyelt tanulási módszer, amelyhez címkézett adatkészlet szükséges. A címkével ellátott Képkönyvtár beszerzésével kapcsolatos további információkért tekintse meg a [Konvertálás Képkönyvtár](convert-to-image-directory.md) -modulba című témakört. A modellt úgy is betaníthatja, hogy a modell és a címkével ellátott képkönyvtárat bemenetként adja meg a [Pytorch-modell betanításához](train-pytorch-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére a [score képmodell](score-image-model.md)használatával.
 
@@ -46,18 +46,18 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name       | Tartomány | Típus    | Alapértelmezett           | Description                              |
+| Name       | Tartomány | Típus    | Alapértelmezett           | Leírás                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Modell neve | Bármelyik   | Mód    | resnext101 \_ 32x8d | Egy bizonyos ResNet-struktúra neve       |
-| Imagenet | Bármelyik   | Logikai | True (Igaz)              | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
+| Imagenet | Bármelyik   | Logikai | Igaz              | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>Kimenet  
 
-| Name            | Típus                    | Description                              |
+| Név            | Típus                    | Leírás                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nem betanított modell | UntrainedModelDirectory | Egy képzetlen ResNet-modell, amely csatlakoztatható a Pytorch-modellhez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

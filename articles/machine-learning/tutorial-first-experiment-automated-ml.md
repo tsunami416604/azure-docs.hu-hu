@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896474"
+ms.locfileid: "90976654"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 
@@ -242,7 +242,7 @@ Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell lét
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 + A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
 + További információ a [featurization](how-to-configure-auto-features.md#featurization).
-+ További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile).
++ További információ az [adatprofilkészítésről](how-to-connect-data-ui.md#profile).
 
 
 >[!NOTE]

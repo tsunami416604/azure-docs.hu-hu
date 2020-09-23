@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4112d26d6a21ac800e20bb67ce24a35ca9d09a13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477493"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905241"
 ---
 # <a name="preprocess-text"></a>Szöveg előfeldolgozása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 A szöveg megtisztításához és leegyszerűsítéséhez használja az **előfeldolgozási szöveg** modult. Támogatja ezeket a gyakori szöveg-feldolgozási műveleteket:
 
@@ -71,7 +71,7 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
     * **Duplikált karakterek eltávolítása**: Ha ezt a beállítást választja, akkor a több mint kétszeresére ismétlődő sorokban távolítsa el a felesleges karaktereket. Például az "AAAAA" karakterláncot az "AA" értékre kell csökkenteni.
     
     * **E-mail-címek eltávolítása**: ezzel a beállítással távolíthatja el a formátum tetszőleges sorszámát `<string>@<string>` .  
-    * **URL-címek eltávolítása**: akkor válassza ezt a lehetőséget, ha el szeretné távolítani az alábbi URL-előtagokat tartalmazó sorozatot: `http` , `https` , `ftp` ,`www`
+    * **URL-címek eltávolítása**: akkor válassza ezt a lehetőséget, ha el szeretné távolítani az alábbi URL-előtagokat tartalmazó sorozatot: `http` , `https` , `ftp` , `www`
     
 1. Művelet-összevonások **kibontása**: Ez a beállítás csak olyan nyelvekre vonatkozik, amelyek művelet-összevonásokat használnak; jelenleg csak angol nyelven érhető el. 
 
@@ -85,6 +85,6 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
 
 1. A folyamat elküldése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
-ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192746"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905175"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Wide and Deep ajánló pontozása
 
-Ez a cikk azt ismerteti, hogyan használhatók a Azure Machine Learning Designer (előzetes verzió) részletes, **átfogó és mélyreható ajánló** modulja a betanított javaslatok alapján, a Google széles körű & mély tanulása alapján.
+Ez a cikk azt ismerteti, hogyan használhatja a Azure Machine Learning Designerben a **pontszám széles és mély ajánló** modulját, hogy a betanított javaslat modell alapján hozzon létre előrejelzéseket a Google széles körű & mély tanulása alapján.
 
 A széles és mély ajánló két különböző előrejelzést készíthet:
 

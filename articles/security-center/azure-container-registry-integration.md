@@ -10,33 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1335b1034304b7efe2b113f7ff2d2927fea41638
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056601"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977359"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Security Center Azure Container Registry képvizsgálat
 
 A Azure Container Registry (ACR) egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely egy központi beállításjegyzékben tárolja és kezeli az Azure-beli központi telepítésekhez tartozó tároló lemezképeit. Ez a nyílt forráskódú Docker beállításjegyzék 2,0-es adatbázisán alapul.
 
-Ha Azure Security Center standard szintű csomaggal rendelkezik, hozzáadhatók a Container nyilvántartók csomagja. Ez a választható funkció mélyebb betekintést nyújt a Azure Resource Manager-alapú nyilvántartásokban lévő rendszerképek biztonsági rései között. Engedélyezheti vagy letilthatja az előfizetés szintjén lévő köteget, hogy az előfizetéshez tartozó összes regisztrációs adatbázisra vonatkozzon. A szolgáltatás díját a [díjszabás lapon](security-center-pricing.md)látható módon számítjuk fel. A Container registrys csomag engedélyezésével biztosíthatja, hogy Security Center készen álljon a beállításjegyzékbe leküldeni kívánt rendszerképek vizsgálatára. 
-
-## <a name="availability"></a>Rendelkezésre állás
-
-|Szempont|Részletek|
-|----|:----|
-|Kiadás állapota:|Általános elérhetőség|
-|Árképzési|Standard csomag|
-|Támogatott nyilvántartások és lemezképek:|![Igen, ](./media/icons/yes-icon.png) a nyilvános internetről elérhető és a rendszerhéj elérését biztosító, a Linux által üzemeltetett ACR-nyilvántartások.<br>![Nem található a ](./media/icons/no-icon.png) Windows által üzemeltetett ACR-jegyzék.<br>![Nincsenek ](./media/icons/no-icon.png) "privát" beállításjegyzékek – Security Center megköveteli, hogy a kibocsátásiegység-forgalmi jegyzékek elérhetők legyenek a nyilvános internetről. Security Center jelenleg nem tud csatlakozni a szolgáltatáshoz, vagy beolvasni azokat a beállításjegyzékeket, amelyekhez hozzáférés van korlátozva tűzfallal, szolgáltatási végponttal vagy privát végpontokkal, például az Azure Private-hivatkozással.<br>![Nincsenek olyan ](./media/icons/no-icon.png) Super minimalista képek, mint például a [Docker](https://hub.docker.com/_/scratch/) -lemezképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.|
-|Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
-|||
-
-
+Lehetővé teszi az **Azure Defender számára a tároló** -beállításjegyzékek számára a Azure Resource Manager-alapú nyilvántartásokban lévő rendszerképek sebezhetőségének mélyebb láthatóságát. Engedélyezheti vagy letilthatja a csomagot az előfizetési szinten, hogy az előfizetéshez tartozó összes regisztrációs adatbázisra vonatkozzon. A szolgáltatás díját a [díjszabás lapon](security-center-pricing.md)látható módon számítjuk fel. Az Azure Defender engedélyezése lehetővé teszi, hogy Security Center készen álljon a beállításjegyzékbe leküldhető lemezképek vizsgálatára. 
 
 
 ## <a name="when-are-images-scanned"></a>Mikor vannak beolvasva a képek?
@@ -74,12 +61,12 @@ A képvizsgálatok minden leküldésen aktiválva lesznek.
 Igen. Az eredmények az [alárendelt értékelések REST API](/rest/api/securitycenter/subassessments/list/)-ban találhatók. Emellett használhatja az Azure Resource Graph (ARG), a Kusto API-t az összes erőforráshoz: a lekérdezés egy adott vizsgálatot tud beolvasni.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Milyen beállításjegyzék-típusok vannak beolvasva? Milyen típusú számlázást kell fizetni?
-A [rendelkezésre állási szakasz](#availability) felsorolja a Container nyilvántartók csomagja által támogatott tároló-beállításjegyzékek típusait. 
+A rendelkezésre állási szakasz felsorolja az Azure Defender által a Container nyilvántartók számára támogatott tároló-nyilvántartások típusait. 
 
 Ha az Azure-előfizetéshez nem támogatott kibocsátásiegység-forgalmi jegyzékek kapcsolódnak, nem lesznek beolvasva, és nem lesznek kiszámlázva.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
 
@@ -87,4 +74,4 @@ Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkci
 
 * [Integráció az Azure Kubernetes Service-szel](azure-kubernetes-service-integration.md)
 
-* [Virtuális gépek védelme](security-center-virtual-machine-protection.md) – a Security Center javaslatainak ismertetése
+

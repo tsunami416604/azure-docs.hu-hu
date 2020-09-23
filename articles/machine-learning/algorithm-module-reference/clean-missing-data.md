@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898831"
 ---
 # <a name="clean-missing-data-module"></a>Hiányzó adatmodul törlése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal törölheti, lecserélheti vagy következtetheti ki a hiányzó értékeket. 
 
@@ -48,7 +48,7 @@ Ez a modul lehetővé teszi a tisztítási művelet definiálását. A tisztít�
 
 ### <a name="replace-missing-values"></a>Hiányzó értékek cseréje  
 
-Minden alkalommal, amikor a [tiszta hiányzó](./clean-missing-data.md) adatmodult alkalmazza egy adathalmazra, a rendszer az összes kiválasztott oszlopra alkalmazza ugyanazt a tisztítási műveletet. Ezért ha eltérő módszerekkel kell megtisztítani a különböző oszlopokat, használja a modul különálló példányait.
+Minden alkalommal, amikor a  [tiszta hiányzó](./clean-missing-data.md) adatmodult alkalmazza egy adathalmazra, a rendszer az összes kiválasztott oszlopra alkalmazza ugyanazt a tisztítási műveletet. Ezért ha eltérő módszerekkel kell megtisztítani a különböző oszlopokat, használja a modul különálló példányait.
 
 1.  Vegye fel a [tiszta hiányzó](./clean-missing-data.md) adatmodult a folyamatba, és kapcsolja össze a hiányzó értékeket tartalmazó adatkészletet.  
   
@@ -140,6 +140,6 @@ Ha gyakran kell megismételni a tisztítási műveleteket, javasoljuk, hogy ment
 
 6.  A folyamat elküldése.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

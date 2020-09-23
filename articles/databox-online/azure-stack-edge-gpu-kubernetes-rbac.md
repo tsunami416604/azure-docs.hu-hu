@@ -1,6 +1,6 @@
 ---
-title: A Kubernetes szerepköralapú Access Control megismerése Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan történik a Kubernetes szerepköralapú Access Control Azure Stack Edge-eszközön.
+title: A Kubernetes szerepköralapú Access Control megismerése Azure Stack Edge Pro-eszközön | Microsoft Docs
+description: Ismerteti, hogyan történik a Kubernetes szerepköralapú Access Control Azure Stack Edge Pro-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318964"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899289"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes szerepköralapú Access Control az Azure Stack Edge GPU-eszközön
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes szerepköralapú Access Control a Azure Stack Edge Pro GPU-eszközön
 
 
-A Azure Stack Edge-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatával korlátozhatja az eszközön található fürterőforrások elérését.
+A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatával korlátozhatja az eszközön található fürterőforrások elérését.
 
-Ez a cikk áttekintést nyújt a Kubernetes által biztosított RBAC rendszerről, valamint arról, hogy a Kubernetes-RBAC hogyan valósulnak meg az Azure Stack Edge-eszközön. 
+Ez a cikk áttekintést nyújt a Kubernetes által biztosított RBAC rendszerről, valamint arról, hogy a Kubernetes-RBAC hogyan valósulnak meg az Azure Stack Edge Pro-eszközön. 
 
 ## <a name="rbac-for-kubernetes"></a>RBAC a Kubernetes
 
@@ -34,7 +34,7 @@ A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések 
 
 A névterek olyan környezetekben használhatók, amelyekben számos felhasználó több csapat vagy projekt között oszlik meg. További információ: Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-Az Azure Stack Edge-eszköz a következő névterekkel rendelkezik:
+Az Azure Stack Edge Pro-eszköz a következő névtereket tartalmazhatja:
 
 - **Rendszernévtér** – ez a névtér az alapvető erőforrások, például a DNS és a proxy, illetve a Kubernetes irányítópult. Általában nem telepítheti saját alkalmazásait ebbe a névtérbe. Használja ezt a névteret a Kubernetes-fürtökkel kapcsolatos problémák hibakereséséhez. 
 
@@ -73,9 +73,9 @@ A Kubernetes a szerepkör és a szerepkör-kötés fogalmával rendelkezik, amel
 
 Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen Kubernetes-fürtöt, és a felhasználók csak a hozzájuk rendelt névtérben tudják elérni az alkalmazás erőforrásait. 
 
-## <a name="rbac-on-azure-stack-edge"></a>RBAC Azure Stack Edge-ben
+## <a name="rbac-on-azure-stack-edge-pro"></a>RBAC Azure Stack Edge Pro-ban
 
-A RBAC jelenlegi implementációjában a Azure Stack Edge lehetővé teszi a következő műveletek végrehajtását egy korlátozott PowerShell-RunSpace:
+A RBAC jelenlegi implementációjában a Azure Stack Edge Pro lehetővé teszi a következő műveletek végrehajtását egy korlátozott PowerShell-RunSpace:
 
 - Hozzon létre névtereket.  
 - Hozzon létre további felhasználókat.
@@ -83,11 +83,11 @@ A RBAC jelenlegi implementációjában a Azure Stack Edge lehetővé teszi a kö
 - `kubeconfig`A Kubernetes-fürt eléréséhez szükséges adatokat tartalmazó fájl beolvasása.
 
 
-Az Azure Stack Edge-eszköz több rendszernévtérrel rendelkezik, és olyan felhasználói névtereket hozhat létre, amelyek `kubeconfig` fájlokkal férnek hozzá ezekhez a névterekhez. A felhasználók teljes körűen vezérelhetik ezeket a névtereket, és létrehozhatnak vagy módosíthatnak felhasználókat, vagy hozzáférést biztosíthatnak a felhasználóknak. Csak a fürt rendszergazdája fér hozzá a rendszernévtérhez és a fürtre kiterjedő erőforrásokhoz. Az egy `aseuser` csak olvasási hozzáféréssel rendelkezik a rendszernévterekhez.
+Az Azure Stack Edge Pro-eszköz több rendszernévtérrel rendelkezik, és a `kubeconfig` névtér eléréséhez fájlokkal rendelkező felhasználói névtereket is létrehozhat. A felhasználók teljes körűen vezérelhetik ezeket a névtereket, és létrehozhatnak vagy módosíthatnak felhasználókat, vagy hozzáférést biztosíthatnak a felhasználóknak. Csak a fürt rendszergazdája fér hozzá a rendszernévtérhez és a fürtre kiterjedő erőforrásokhoz. Az egy `aseuser` csak olvasási hozzáféréssel rendelkezik a rendszernévterekhez.
 
-Itt látható egy diagram, amely a RBAC Azure Stack Edge-eszközön való megvalósítását ábrázolja.
+Itt látható egy diagram, amely a RBAC Azure Stack Edge Pro-eszközön való megvalósítását ábrázolja.
 
-![RBAC Azure Stack Edge-eszközön](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![RBAC Azure Stack Edge Pro-eszközön](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 Ebben az ábrában Alice, Bob és Chuck csak a hozzárendelt felhasználói névterekhez fér hozzá, ami ebben az esetben a, a `ns1` `ns2` és a `ns3` . Ezeken a névtereken belül rendszergazdai hozzáférésük van. A fürt rendszergazdájának viszont rendszergazdai hozzáférése van a rendszer névteréhez és a fürtre kiterjedő erőforrásokhoz.
 
@@ -109,10 +109,10 @@ Ebben az ábrában Alice, Bob és Chuck csak a hozzárendelt felhasználói név
 
 5. `kubectl`Alkalmazások telepítése és elindítása a alkalmazásban `kubectl` . 
 
-Részletes útmutatásért lásd: [hozzáférés a Kubernetes-fürthöz a Azure stack Edge-n keresztül a kuebctl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+Részletes útmutatásért lásd: [hozzáférés a Kubernetes-fürthöz a Azure stack Edge Pro-on keresztül a kuebctl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
-Ha névtereket és felhasználókat használ a Azure Stack Edge-eszközökön, a következő kikötések érvényesek:
+Ha névtereket és felhasználókat használ a Azure Stack Edge Pro-eszközökön, a következő kikötések érvényesek:
 
 - Nem végezhet olyan műveleteket, mint például a felhasználók létrehozása, a névtér elérésének engedélyezése vagy visszavonása a felhasználóhoz a rendszernévtérek esetében. Példák a rendszernévtérre:,,, `kube-system` `metallb-system` `kubernetes-dashboard` `default` `kube-node-lease` , `kube-public` . A rendszernévtérek közé tartoznak a központi telepítési típusok számára fenntartott névterek (például a `iotedge` (IoT Edge névtér) és az `azure-arc` Azure arc-névtér is.
 - Létrehozhat felhasználói névtereket, és ezeken a névterekben létrehozhat további felhasználókat, és engedélyezheti vagy visszavonhatja a névtér elérését a felhasználók számára.

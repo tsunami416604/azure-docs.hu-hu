@@ -1,6 +1,6 @@
 ---
 title: 'Webszolgáltatás bemenete/kimenete: modul leírása'
-description: Tudnivalók a Azure Machine Learning Designer webszolgáltatási moduljairól (előzetes verzió)
+description: Tudnivalók a Azure Machine Learning Designer webszolgáltatási moduljairól
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751106"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883214"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Webszolgáltatás bemeneti és webszolgáltatási kimeneti moduljai
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) webszolgáltatások bemeneti és webszolgáltatás-kimeneti moduljait ismerteti.
+Ez a cikk a Azure Machine Learning Designer webszolgáltatás bemeneti és webszolgáltatási kimeneti moduljait ismerteti.
 
 A webszolgáltatás bemeneti modulja csak a **DataFrameDirectory**típusú bemeneti porthoz tud csatlakozni. A webszolgáltatás kimeneti modulja csak **DataFrameDirectory**típusú kimeneti portról csatlakoztatható. A modul fájában található két modult a **webszolgáltatás** kategóriájában találja. 
 
@@ -47,7 +47,7 @@ A folyamat elküldése és a Futtatás sikeres befejezése után üzembe helyezh
 > [!NOTE]
 >  Az előző példában az **adatok manuális megadása** a webszolgáltatás bemeneti adatsémáját adja meg, és a valós idejű végpont üzembe helyezéséhez szükséges. Általában mindig csatlakoztatnia kell egy modult vagy adatkészletet ahhoz a porthoz, ahol a **webszolgáltatás bemenete** csatlakozik az Adatséma biztosításához.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ [a valós idejű végpont üzembe helyezéséről](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint).
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

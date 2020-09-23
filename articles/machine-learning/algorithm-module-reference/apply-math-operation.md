@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456743"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898897"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
 
 Használja a matematikai művelet alkalmazása lehetőséget a bemeneti adatkészlet numerikus oszlopaira alkalmazott számítások létrehozásához. 
 
@@ -32,11 +32,11 @@ A művelet definiálása és a folyamat futtatása után a rendszer hozzáadja a
 
 Keresse meg a szükséges műveletet ezekben a kategóriákban:  
 
-- [Alapszintű](#basic-math-operations)  
+- [Basic](#basic-math-operations)  
   
      Az **alapszintű** kategóriába tartozó függvények egyetlen érték vagy oszlop értékének módosítására használhatók. Előfordulhat például, hogy egy adott oszlopban az összes szám abszolút értékét kapja meg, vagy kiszámítja az egyes értékek négyzetes gyökerét egy adott oszlopban.  
   
--   [Összehasonlítása](#comparison-operations)  
+-   [Összehasonlítás](#comparison-operations)  
   
       Az **összehasonlítás kategóriába tartozó függvények** mindegyike az összehasonlításhoz használatos: a két oszlopban lévő értékek párok közötti összehasonlítását, illetve az egyes értékek adott konstanshoz való összehasonlítását is elvégezheti. Az oszlopok összehasonlításával például megállapíthatja, hogy az értékek megegyeznek-e két adatkészletben. Vagy használhat állandót is, például a maximálisan megengedett értéket, hogy kiugró értékeket keressen egy numerikus oszlopban.  
   
@@ -138,7 +138,7 @@ Az e értéket adja vissza a kijelölt oszlopban lévő érték hatványára. Ez
 
 Az argumentumok alap-2 exponenciális értékét adja vissza, amely az y = x * 2<sup>t</sup> , ahol a t a kitevőket tartalmazó értékek oszlopa.  
 
-Az **oszlop beállítása**területen válassza ki azt az oszlopot, amely a kitevő értékeit tartalmazza (t).
+Az  **oszlop beállítása**területen válassza ki azt az oszlopot, amely a kitevő értékeit tartalmazza (t).
 
 A **Exp2** esetében megadhat egy második argumentum x értéket, amely lehet konstans vagy más oszlop is. A **második argumentum típusa mezőben**adja meg, hogy az x szorzót állandóként vagy egy oszlopban lévő értékként adja meg.  
 
@@ -306,7 +306,7 @@ A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.
 
 A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
 
-### <a name="remainder"></a>Fennmaradó
+### <a name="remainder"></a>Maradék
 
 Az **oszlop**értékeinek maradékát adja vissza.  
 
@@ -588,6 +588,6 @@ Azt is megteheti, hogy az alábbi modulok egyikével végrehajtja az összes sz�
 + [Python-szkript futtatása](execute-python-script.md)
 + [SQL-átalakítás alkalmazása](apply-sql-transformation.md)   
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

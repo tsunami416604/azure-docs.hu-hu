@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge GPU technikai specifikációkkal és megfelelőséggel | Microsoft Docs
-description: Ismerje meg az Azure Stack Edge-eszköz GPU-val való műszaki specifikációit és megfelelőségét
+title: Microsoft Azure Stack Edge Pro GPU technikai specifikációkkal és megfelelőséggel | Microsoft Docs
+description: Ismerje meg az Azure Stack Edge Pro-eszköz GPU-val való technikai specifikációit és megfelelőségét
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899036"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technikai specifikációk és megfelelőség Azure Stack Edge GPU-val 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro műszaki specifikációi és megfelelőségi követelményei 
 
-Az Azure Stack Edge-hez tartozó hardveres összetevők, amelyek egy beépített grafikus processzorral (GPU) rendelkeznek, megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozásoknak. A műszaki specifikációk a hardverek, az áramellátási egységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le.
+A Azure Stack Edge Pro és egy beépített grafikus processzorral (GPU) kapcsolatos hardver-összetevők megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozási előírásoknak. A műszaki specifikációk a hardverek, az áramellátási egységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le.
 
 ## <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
-Az Azure Stack Edge-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
+Az Azure Stack Edge Pro-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
@@ -31,7 +31,7 @@ Az Azure Stack Edge-eszköz a következő specifikációkkal rendelkezik a szám
 
 ## <a name="compute-acceleration-specifications"></a>Számítási gyorsítási specifikációk
 
-A grafikus processzorok (GPU) minden olyan Azure Stack peremhálózati eszközön szerepelnek, amely lehetővé teszi a Kubernetes, a Deep learning és a gépi tanulási forgatókönyvek használatát.
+A grafikus processzort (GPU) minden olyan Azure Stack Edge Pro-eszköz tartalmazza, amely lehetővé teszi a Kubernetes, a Deep learning és a gépi tanulási forgatókönyvek használatát.
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
@@ -40,25 +40,25 @@ A grafikus processzorok (GPU) minden olyan Azure Stack peremhálózati eszközö
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
 
-Az Azure Stack Edge-eszközön két 100-240 V-os tápegység (PSUs) áll a nagy teljesítményű ventilátorokkal. A két PSUs redundáns energiaellátási konfigurációt biztosít. Ha egy PSU meghibásodik, az eszköz továbbra is általában a másik PSU-gépen működik, amíg le nem cseréli a hibás modult. A következő táblázat a PSUs műszaki specifikációit sorolja fel.
+Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelkezik, nagy teljesítményű ventilátorokkal. A két PSUs redundáns energiaellátási konfigurációt biztosít. Ha egy PSU meghibásodik, az eszköz továbbra is általában a másik PSU-gépen működik, amíg le nem cseréli a hibás modult. A következő táblázat a PSUs műszaki specifikációit sorolja fel.
 
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximális kimeneti teljesítmény    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
-| Gyors csatlakoztatás           | Igen                        |
+| Gyors csatlakoztatás           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Hálózati adapterek specifikációi
 
-Az Azure Stack Edge-eszköz hat hálózati adapterrel rendelkezik, a PORT1-PORT6.
+Az Azure Stack Edge Pro-eszköz hat hálózati adapterrel rendelkezik, a PORT1-PORT6.
 
 | Specifikáció           | Leírás                 |
 |-------------------------|----------------------------|
 |  Hálózati adapterek    | **2 X 1 GbE-illesztő** – 1 felügyeleti felület az 1. port a kezdeti beállításhoz van használatban, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. port a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP. <br>**4 X 25 GbE interfész** – ezeket az adatillesztőket, a 3-as portot a 6-os porton keresztül, a felhasználó DHCP-ként (alapértelmezett) vagy statikusként is konfigurálhatja. Ezek 10 GbE interfészként is működhetnek.  | 
 
-Az Azure Stack Edge-eszköz a következő hálózati hardverrel rendelkezik:
+Az Azure Stack Edge Pro-eszköz a következő hálózati hardverrel rendelkezik:
 
 * **Egyéni Microsoft Qlogic Cavium 25G NDC adapter** – 1. port a 4. porton keresztül.
 * **Mellanox Dual port 25G ConnectX-4 csatornás hálózati adapter** -5. és 6. port.
@@ -67,7 +67,7 @@ A Mellanox kártya részletei:
 
 | Paraméter           | Leírás                 |
 |-------------------------|----------------------------|
-| Modell    | ConnectX®-4 LX EN hálózati csatolókártya                      |
+| Modellezés    | ConnectX®-4 LX EN hálózati csatolókártya                      |
 | Modell leírása               | 25GbE Dual-port SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Eszköz részének száma (R640) | MCX4121A – ACAT  |
 | PSID (R640)           | MT_2420110034                         |
@@ -79,7 +79,7 @@ A hálózati kártyák által támogatott kábelek, kapcsolók és adóvevők te
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 
-Az Azure Stack Edge-eszközök öt 2,5 "NVMe DC SSD-P4610 rendelkeznek, amelyek mindegyike 1,6 TB kapacitással rendelkezik. A rendszerindító meghajtó 240 GB SATA SSD. Az eszköz teljes felhasználható kapacitása körülbelül 8,28 TB. A következő táblázat felsorolja az eszköz tárolókapacitását.
+Az Azure Stack Edge Pro-eszközök öt 2,5 "NVMe DC SSD-P4610 rendelkeznek, amelyek mindegyike 1,6 TB kapacitással rendelkezik. A rendszerindító meghajtó 240 GB SATA SSD. Az eszköz teljes felhasználható kapacitása körülbelül 8,28 TB. A következő táblázat felsorolja az eszköz tárolókapacitását.
 
 |     Specifikáció                          |     Érték             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ Az Azure Stack Edge-eszközök öt 2,5 "NVMe DC SSD-P4610 rendelkeznek, amelyek 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -170,6 +170,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az Azure Stack Edge üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)
+[Az Azure Stack Edge Pro üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)
