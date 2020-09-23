@@ -6,21 +6,21 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: overview
-ms.date: 04/06/2020
+ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835816"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967585"
 ---
 # <a name="confidential-computing-on-azure"></a>Bizalmas számítástechnika az Azure-ban
 
-Az Azure bizalmas számítástechnikai szolgáltatása lehetővé teszi a bizalmas adatok elkülönítését a felhőben történő feldolgozás során. Számos iparág bizalmas számítástechnikai adatok védelmére használja fel az adataikat. Ezek a számítási feladatok a következők:
+Az Azure bizalmas számítástechnikai szolgáltatása lehetővé teszi a bizalmas adatok elkülönítését a felhőben történő feldolgozás során. Számos iparág bizalmas számítástechnikai szolgáltatásokkal védi az adataikat bizalmas számítástechnikai szolgáltatásokkal:
 
-- Pénzügyi adatbiztonság
-- A beteg adatainak védelme
+- Biztonságos pénzügyi adatkezelés
+- A betegek adatainak megvédése
 - Gépi tanulási folyamatok futtatása bizalmas adatokon
 - Algoritmusok végrehajtása több forrásból származó titkosított adatkészleteken
 
@@ -39,74 +39,58 @@ Tudjuk, hogy fontos a Felhőbeli adatvédelme. Halljuk az Ön problémáit. Íme
 
 A Microsoft Azure segítségével csökkentheti a támadási felületet, így erősebb adatvédelmet nyerhet. Az Azure már számos olyan eszközt kínál, amelyekkel a különböző modelleken keresztül biztosíthatja az [**adatok**](../security/fundamentals/encryption-atrest.md) védelmét, például az ügyféloldali titkosítással és a kiszolgálóoldali titkosítással. Az Azure emellett a biztonságos protokollok, például a TLS [**és a HTTPS protokollon keresztül is**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) titkosítja az adatátviteli mechanizmusokat. Ez az oldal az adattitkosítás harmadik szakaszát mutatja be – a **használatban**lévő adattitkosítást.
 
+## <a name="introduction-to-confidential-computing"></a>A bizalmas számítástechnika bemutatása 
 
-## <a name="introduction-to-confidential-computing"></a>A bizalmas számítástechnika bemutatása<a id="intro to acc"></a>
+A bizalmas számítástechnika a bizalmas számítástechnikai [konzorcium](https://confidentialcomputing.io/) (CCC) által meghatározott iparági kifejezés, amely a bizalmas számítástechnika bevezetésének meghatározására és felgyorsítására dedikált alap. A CCC a következőképpen határozza meg a bizalmas számítástechnikai feladatokat: a használatban lévő adatok védelme egy hardveres megbízható végrehajtási környezetben (TEE) végzett számítások végrehajtásával.
 
-A bizalmas számítástechnika a bizalmas számítástechnikai [konzorcium](https://confidentialcomputing.io/) (CCC) által meghatározott iparági kifejezés, amely a bizalmas számítástechnika bevezetésének meghatározására és felgyorsítására dedikált alap. A CCC a használatban lévő adatok védelme érdekében a számítási feladatokat a hardveres megbízható végrehajtási környezetben (TEE) végzi.
+A TEE olyan környezet, amely csak a jóváhagyott kód végrehajtását kényszeríti ki. A TEE-ben lévő összes adattal nem lehet beolvasni vagy módosítani az adott környezeten kívüli kódokat. 
 
-A TEE olyan környezet, amely csak a jóváhagyott kód végrehajtását kényszeríti ki. A TEE-ben lévő összes adattal nem lehet beolvasni vagy módosítani az adott környezeten kívüli kódokat.
-
-### <a name="enclaves"></a>Enklávék
-
-Az enklávék a hardver processzorának és memóriájának biztonságos részei. Az enklávéban még egy hibakeresővel sem lehet megtekinteni az adatelemeket vagy a kódokat. Ha a nem megbízható kód megkísérli módosítani a tartalmat az enklávé memóriájában, a környezet le lesz tiltva, és a rendszer megtagadja a műveleteket.
-
-Az alkalmazások fejlesztése során a [szoftvereszközök](#oe-sdk) segítségével a kód és az adatközpontban tárolt adatvédelmek részeinek védelmét is elvégezheti. Ezek az eszközök biztosítják, hogy a kód és az adatai nem tekinthetők meg és nem módosíthatók a megbízható környezeten kívüli személyek számára. 
-
-Alapvetően úgy gondolja, hogy egy enklávé biztonságos mező. A mezőbe a titkosított kódot és az adatmezőket helyezheti el. A mező kívülről nem láthat semmit. Az enklávénak egy kulcsot kell adnia az adatvisszafejtéshez, majd újra fel kell dolgoznia és titkosítania kell az adatközpontot az enklávéból való kiküldésük előtt.
-
-### <a name="attestation"></a>Igazolási
-
-Meg kell kérnie a megbízható környezet biztonságos ellenőrzésének és érvényesítésének megszerzését. Ez az ellenőrzés az igazolási folyamat. 
-
-Az igazolás lehetővé teszi, hogy a függő entitás nagyobb megbízhatóságot biztosítson, hogy a szoftverük (1) egy enklávéban fut, és (2) az enklávé naprakész és biztonságos. Az enklávé például arra kéri a mögöttes hardvert, hogy olyan hitelesítő adatokat állítson elő, amely igazolja, hogy az enklávé létezik a platformon. A jelentést ezután egy második enklávé is megadhatja, amely ellenőrzi, hogy a jelentés ugyanazon a platformon lett létrehozva.
-
-Az igazolást olyan biztonságos igazolási szolgáltatás használatával kell megvalósítani, amely kompatibilis a rendszerszoftverrel és a szilíciummal. Az [Intel tanúsítvány-és kiépítési szolgáltatásai](https://software.intel.com/sgx/attestation-services) kompatibilisek az Azure bizalmas számítástechnikai virtuális gépekkel.
+### <a name="lessen-the-need-for-trust"></a>A bizalmi kapcsolat szükségességének csökkentése
+A munkaterhelések Felhőbeli futtatása megbízhatóságot igényel. Ezt a megbízhatóságot a különböző szolgáltatók számára biztosíthatja, amelyek lehetővé teszik az alkalmazás különböző összetevőit.
 
 
-## <a name="using-azure-for-cloud-based-confidential-computing"></a>Az Azure használata felhőalapú, bizalmas számítástechnikai rendszerekhez<a id="cc-on-azure"></a>
+**Alkalmazás-szoftvergyártók**: a helyszíni alkalmazások központi telepítésével, nyílt forráskódú vagy házon belüli alkalmazás létrehozásával megbízza a szoftvert.
 
-Az Azure bizalmas számítástechnikai részlege lehetővé teszi, hogy a virtualizált környezetekben a bizalmas számítástechnikai funkciókat használja. Mostantól eszközöket, szoftvereket és felhőalapú infrastruktúrát is használhat a biztonságos hardverre való kiépítéshez. 
+**Hardvergyártók**: a helyszíni hardver vagy a házon belüli hardver használatával bízza a hardvert. 
 
-### <a name="virtual-machines"></a>Virtual Machines
+**Infrastruktúra-szolgáltatók**: megbízható felhőalapú szolgáltatók vagy saját helyszíni adatközpontok kezelése.
 
-Az Azure az első olyan felhőalapú szolgáltató, amely a virtualizált környezetekben nyújt bizalmas számítástechnikai szolgáltatásokat. Olyan virtuális gépeket fejlesztettünk ki, amelyek absztrakt rétegként működnek a hardver és az alkalmazás között. A számítási feladatokat nagy méretekben, a redundancia és a rendelkezésre állási lehetőségek használatával futtathatja.  
 
-#### <a name="intel-sgx-enabled-virtual-machines"></a>Intel SGX ENKLÁVÉHOZ-kompatibilis Virtual Machines
+Az Azure bizalmas számítástechnikai szolgáltatásával könnyebben megbízhat a Felhőbeli szolgáltatóban, így a számítási felhő-infrastruktúra különböző szempontjain való megbízhatóságra van szükség. Az Azure bizalmas számítástechnikai szolgáltatásával a gazdagép operációs rendszerének kernele, a hypervisor, a VM-rendszergazda és a gazdagép rendszergazdája is megbízik.
 
-Az Azure bizalmas számítástechnikai virtuális gépeken a CPU hardverének egy része az alkalmazás kódjának és adatainak egy részére van fenntartva. Ez a korlátozott rész az enklávé. 
+### <a name="reducing-the-attack-surface"></a>A támadási felület csökkentése
+A megbízható számítástechnikai bázis (TCB) egy biztonságos környezetet biztosító rendszer hardver-, belső vezérlőprogram-és szoftver-összetevőire vonatkozik. A TCB-ben található összetevők "kritikus" állapotúnak tekintendők. Ha a TCB egyik összetevője biztonságban van, a teljes rendszer biztonsága veszélyben lehet. 
 
-![VM-modell](media/overview/hardware-backed-enclave.png)
+Az alsó TCB nagyobb biztonságot jelent. A különböző sebezhetőségek, kártevők, támadások és rosszindulatú személyek számára kevésbé sok a kockázata. Az Azure bizalmas számítástechnika célja, hogy pólók használatával csökkentse a TCB-t a Felhőbeli munkaterhelésekhez. A pólók csökkentik a TCB-t a megbízható futásidejű bináris fájlokat, kódokat és könyvtárakat. Ha Azure-infrastruktúrát és-szolgáltatásokat használ bizalmas számítástechnikai szolgáltatásokhoz, az összes Microsoftot törölheti a TCB-ből.
 
-Az Azure bizalmas számítástechnikai infrastruktúrája jelenleg a virtuális gépek (VM-EK) speciális SKU-jának részét alkotja. Ezek a virtuális gépek az Intel-processzorokon futnak a szoftveres Guard bővítménnyel (Intel SGX ENKLÁVÉHOZ). Az [Intel SGX enklávéhoz](https://intel.com/sgx) az a komponens, amely lehetővé teszi a bizalmas számítástechnikai szolgáltatással való fokozott védelmet. 
 
-Napjainkban az Azure az Intel SGX ENKLÁVÉHOZ technológiára épülő [DCsv2-sorozatot](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) kínálja a hardveres enklávé létrehozásához. Létrehozhat biztonságos enklávé-alapú alkalmazásokat az DCsv2-sorozatú virtuális gépeken való futtatáshoz az alkalmazásadatok és a használatban lévő kódok védelme érdekében. 
+## <a name="using-azure-for-cloud-based-confidential-computing"></a>Az Azure használata felhőalapú, bizalmas számítástechnikai rendszerekhez <a id="cc-on-azure"></a>
 
-[További](virtual-machine-solutions.md) információ az Azure bizalmas számítástechnikai virtuális gépek hardveres megbízható enklávékkal történő üzembe helyezéséről.
+Az Azure bizalmas számítástechnikai részlege lehetővé teszi, hogy a virtualizált környezetekben a bizalmas számítástechnikai funkciókat használja. Mostantól eszközöket, szoftvereket és felhőalapú infrastruktúrát is használhat a biztonságos hardverre való kiépítéshez.  
 
-## <a name="application-development"></a>Alkalmazásfejlesztés<a id="application-development"></a>
+**Jogosulatlan hozzáférés megakadályozása**: bizalmas adatok futtatása a felhőben. Bízza az Azure-t, hogy a lehető legjobb adatvédelmet biztosítson, kevés a változás a mai naptól.
 
-Az enklávék és az elszigetelt környezetek hatékonyságának kihasználásához a bizalmas számítástechnikai eszközöket támogató eszközöket kell használnia. Az enklávé-alkalmazások fejlesztését számos eszköz segíti. Használhatja például a következő nyílt forráskódú keretrendszereket: 
+**Jogszabályi megfelelőség**: Migrálás a felhőbe és az adatok teljes körű ellenőrzése a személyes adatok védelméhez és a szervezeti IP-címek védelméhez szükséges kormányzati rendelkezések teljesítése érdekében.
 
-- [Az Open enklávé szoftverfejlesztői készlete (SDK)](https://github.com/openenclave/openenclave)
-- [A bizalmas konzorciumi keretrendszer (CCF)](https://github.com/Microsoft/CCF)
+**Biztonságos és nem megbízható együttműködés**: az iparági szintű munkamennyiséggel kapcsolatos problémák megoldása azáltal, hogy az adatvédelmet több szervezet, akár a versenytársak között, a széles körű adatelemzések és a mélyebb elemzések feloldása érdekében.
 
-### <a name="overview"></a>Áttekintés
+**Elkülönített feldolgozás**: egy új hullámot kínál, amely megszünteti a személyes és a vak feldolgozással kapcsolatos felelősséget. A szolgáltató nem tudja lekérni a felhasználói adatkéréseket. 
 
-Az enklávékkal létrehozott alkalmazások kétféleképpen vannak particionálva:
-1. "Nem megbízható" összetevő (a gazdagép)
-1. "Megbízható" összetevő (az enklávé)
+## <a name="get-started"></a>Első lépések
+### <a name="azure-compute"></a>Azure Compute
+Hozzon létre alkalmazásokat az Azure-ban bizalmas számítási IaaS-ajánlatokkal.
+- Virtual Machines (VM): [DCsv2 sorozat](confidential-computing-enclaves.md)
+- Azure Kubernetes (ak): [bizalmas tárolók](confidential-nodes-aks-overview.md) összehangolása
 
-**A gazdagép** az a hely, ahol az enklávé alkalmazása fut, és nem megbízható környezet. A gazdagépen központilag telepített enklávé-kódot nem lehet elérni. 
+### <a name="azure-security"></a>Azure Security 
+Ellenőrizze, hogy a munkaterhelések biztonságosak-e az ellenőrzési módszerek és a hardveres kulcsok felügyelete révén. 
+- Igazolás: [Microsoft Azure igazolás (előzetes verzió)](https://docs.microsoft.com/azure/attestation/overview)
+- Kulcskezelő: felügyelt HSM (előzetes verzió)
 
-**Az enklávé** , ahol az alkalmazás kódja és a gyorsítótárazott adatmennyisége/memóriája fut. Az enklávékban biztonságos számításokat kell megtenni a titkok és bizalmas adatok védelme érdekében. 
-
-Az alkalmazás kialakítása során fontos azonosítani és meghatározni, hogy az alkalmazás mely részeit kell futtatni az enklávékban. A megbízható összetevőbe helyezett kód el van különítve az alkalmazás többi részétől. Miután az enklávé inicializálása megtörtént, és a kód betöltődik a memóriába, a kód nem olvasható vagy nem módosítható a nem megbízható összetevőkből. 
-
-### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open enklávé szoftverfejlesztői készlet (OE SDK)<a id="oe-sdk"></a>
-
-Ha egy enklávéban futó kódot szeretne írni, használja a szolgáltató által támogatott függvénytárat vagy keretrendszert. Az [Open ENKLÁVÉ SDK](https://github.com/openenclave/openenclave) (OE SDK) egy nyílt forráskódú SDK, amely lehetővé teszi a különböző bizalmas számítástechnikai hardverek absztrakt használatát. 
-
-Az OE SDK egyetlen absztrakciós rétegként van felépítve bármely CSP hardverén. Az OE SDK az Azure-beli bizalmas számítástechnikai virtuális gépeken is használható a enklávékban található alkalmazások létrehozásához és futtatásához.
+### <a name="develop"></a>Fejlesztés
+A bizalmas következtetési keretrendszer használatával megkezdheti a enklávé-kompatibilis alkalmazások fejlesztését és a bizalmas algoritmusok üzembe helyezését.
+- Alkalmazások írása DCsv2 virtuális gépeken való futtatásra: [Open-ENKLÁVÉ SDK](https://github.com/openenclave/openenclave)
+- Bizalmas ML-modellek a ONNX-futtatókörnyezetben: [bizalmas következtetés (bétaverzió)](https://aka.ms/confidentialinference)
 
 ## <a name="next-steps"></a>Következő lépések
 

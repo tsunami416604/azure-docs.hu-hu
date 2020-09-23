@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 9cd1db0365cdc4f834516fd4efb0d80dacc75eca
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e7b747bd2babeeccb210bb30c3eb28f22d4befe7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118528"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905795"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>Az Azure Database for MySQL adattitkosításának ellenőrzése
 
@@ -19,7 +19,7 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
 ## <a name="check-the-encryption-status"></a>A titkosítás állapotának keresése
 
-### <a name="from-portal"></a>A portálról
+### <a name="from-portal"></a>A portálon
 
 1. Ha szeretné ellenőrizni, hogy az ügyfél kulcsát használja-e a rendszer a titkosításhoz, kövesse az alábbi lépéseket:
 
@@ -37,7 +37,7 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
 2. Ha meg szeretné győződni arról, hogy a titkosítási kulcs be van állítva, akkor a Azure Portal a Azure Portal használt ügyfelek kulcsával titkosítja az adatvédelmet.
 
-  ![Hozzáférési szabályzat – áttekintés](media/concepts-data-access-and-security-data-encryption/byok-validate.png)
+  :::image type="content" source="media/concepts-data-access-and-security-data-encryption/byok-validate.png" alt-text="Hozzáférési szabályzat – áttekintés":::
 
 ### <a name="from-cli"></a>A CLI-ből
 

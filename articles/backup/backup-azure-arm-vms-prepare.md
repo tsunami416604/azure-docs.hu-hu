@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145654"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986511"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -41,10 +41,11 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
 ### <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
 
-Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md)használják.
+Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)használják.
 
 * Ha a tároló elsődleges biztonsági mentési mechanizmusa, javasoljuk, hogy használja a GRS-t.
-* A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) is használhatja egy olcsóbb megoldáshoz.
+* A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) is használhatja egy olcsóbb megoldáshoz.
+* A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja az adatait, és biztosítja az adattárolást és a rugalmasságot ugyanabban a régióban.
 
 Módosítsa a tárolási replikálás típusát a következőképpen:
 
@@ -80,7 +81,7 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
 
       ![Virtuális gépek hozzáadása](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. Ekkor megnyílik a **virtuális gépek kiválasztása** panel. Válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ez után válassza az **OK** gombot.
+1. Ekkor megnyílik a **virtuális gépek kiválasztása** panel. Válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ezután válassza az **OK** gombot.
 
    * A kiválasztott virtuális gépek ellenőrzése megtörtént.
    * Csak a tárolóval megegyező régióban lévő virtuális gépeket lehet kiválasztani.
@@ -128,7 +129,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 2. A **biztonsági másolati elemek**területen válassza az Azure-beli **virtuális gép**lehetőséget.
 3. A **biztonsági mentési elemek** listában válassza a három pontot (...).
 4. Válassza a **biztonsági mentés**lehetőséget.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ez után válassza az **OK** gombot.
+5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután válassza az **OK** gombot.
 6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="verify-backup-job-status"></a>Biztonsági mentési feladatok állapotának ellenőrzése

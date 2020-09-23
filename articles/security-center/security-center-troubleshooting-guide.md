@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904743"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -81,7 +81,7 @@ A Log Analytics ügynöknek a számítógépre való telepítésekor két telep�
 
 A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre beállított virtuális gépeket és számítógépeket. Az alábbi táblázatban a **Figyelés állapota** értékei, leírásai és a megoldás lépései láthatók.
 
-| Figyelés állapota | Description | A megoldás lépései |
+| Figyelés állapota | Leírás | A megoldás lépései |
 |---|---|---|
 | Ügynök függőben lévő telepítése | A Log Analytics ügynök telepítése még fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
 | Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics ügynök csak a rendszert futtató virtuális gépekre telepíthető. | Indítsa újra a virtuális gépet. |
@@ -132,7 +132,7 @@ Ha problémákat tapasztal a Security Center irányítópultjának betöltése s
 
 ## <a name="contacting-microsoft-support"></a>Kapcsolatfelvétel a Microsoft támogatási szolgálatával
 
-Bizonyos problémák a jelen cikkben ismertetett irányelvek alapján azonosíthatók, másokat a Security Center nyilvános [Microsoft Q&egy kérdés oldalon](https://docs.microsoft.com/answers/topics/azure-security-center.html)találhat. Ha azonban további hibaelhárításra van szüksége, az alábbi ábrán látható módon nyithat meg egy új támogatási kérést **Azure Portal** használatával:
+Bizonyos problémák a jelen cikkben ismertetett irányelvek alapján azonosíthatók, másokat a Security Center nyilvános [Microsoft Q&oldalon](https://docs.microsoft.com/answers/topics/azure-security-center.html)találhat. Ha azonban további hibaelhárításra van szüksége, az alábbi ábrán látható módon nyithat meg egy új támogatási kérést **Azure Portal** használatával:
 
 ![Microsoft támogatási szolgálat](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

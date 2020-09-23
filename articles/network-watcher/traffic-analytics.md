@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747529"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967498"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -67,7 +67,7 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * USA déli középső régiója
 * USA középső régiója
 * USA nyugati régiója
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 * Közép-Franciaország
 * Nyugat-Európa
 * Észak-Európa
@@ -97,8 +97,8 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * USA déli középső régiója
 * USA középső régiója
 * USA nyugati régiója
-* USA nyugati régiója, 2.
-* USA középső régiója
+* USA 2. nyugati régiója
+* Az USA középső régiója
 * Közép-Franciaország
 * Nyugat-Európa
 * Észak-Európa
@@ -121,7 +121,7 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 
 A fiókjának a következő Azure [beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)egyikének kell lennie:
 
-|Üzemi modell   | Szerepkör                   |
+|Üzembehelyezési modell   | Szerepkör                   |
 |---------          |---------               |
 |Resource Manager   | Tulajdonos                  |
 |                   | Közreműködő            |
@@ -339,7 +339,7 @@ Az Application Gateway adatforgalmának eloszlása & Load Balancer, topológia, 
  - Annak ismerete, hogy mely alhálózatok beszélgetnek az Application Gateway vagy a Load Balancer. Ha váratlan beszélgetéseket figyel, javítsa ki a konfigurációt.
  - Ha a támadó hálózatok egy Application Gateway vagy Load Balancer használatával beszélgetnek, a NSG szabályok konfigurálásával is kijavítani tudja a szélhámos hálózatok blokkolását. 
 
-    ![alhálózat – topológia – bemutató – Traffic-Distribution-to-a-Application-Gateway-subnet-with-about-to-flow](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![A képernyőfelvétel egy alhálózati topológiát mutat be, amely az Application Gateway-alhálózatra irányuló forgalom eloszlását mutatja a folyamatok tekintetében.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Az internetről érkező forgalmat fogadó portok és virtuális gépek megtekintése
 
@@ -382,7 +382,7 @@ Rosszindulatú forgalmat észlelt a környezetében? Honnan származnak? Hol van
 
 Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics – gyakori](traffic-analytics-faq.md)kérdések című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
 - A Traffic Analytics sémájának és feldolgozási adatainak megismeréséhez tekintse meg a [Traffic Analytics-séma](traffic-analytics-schema.md)című témakört.

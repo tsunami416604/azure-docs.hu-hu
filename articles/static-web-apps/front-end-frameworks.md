@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075971"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905377"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Előtér-keretrendszerek és-kódtárak konfigurálása az Azure statikus Web Apps előzetes verziójával
 
@@ -35,6 +35,7 @@ A táblázat oszlopainak szándékát a következő elemek magyarázzák:
 | [Szögletes univerzális](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
 | [Aurelia](https://aurelia.io/) | `dist` | n.a. |
 | [Backbone.js](https://backbonejs.org/) | `/` | n.a. |
+| [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | n.a. |
 | [Ember](https://emberjs.com/) | `dist` | n.a. |
 | [Flutter](https://flutter.dev/) | `build/web` | `flutter build web` |
 | [Framework7](https://framework7.io/) | `www` | `npm run build-prod` |
@@ -52,7 +53,7 @@ A táblázat oszlopainak szándékát a következő elemek magyarázzák:
 | [Preact](https://preactjs.com/) | `build` | n.a. |
 | [React](https://reactjs.org/) | `build` | n.a. |
 | [Rajzsablonon](https://stenciljs.com/) | `www` | n.a. |
-| [Karcsú](https://svelte.dev/) | `public` | n.a. |
+| [Svelte](https://svelte.dev/) | `public` | n.a. |
 | [Three.js](https://threejs.org/) | `/` | n.a. |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | n.a. |
 | [Vue.js](https://vuejs.org/) | `dist` | n.a. |
@@ -61,6 +62,6 @@ A táblázat oszlopainak szándékát a következő elemek magyarázzák:
 
 <sup>2</sup> nem alkalmazható
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Buildelés és munkafolyamat-konfiguráció](github-actions-workflow.md)

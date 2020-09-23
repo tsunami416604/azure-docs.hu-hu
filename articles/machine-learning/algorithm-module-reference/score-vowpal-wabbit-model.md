@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 02f4fe4f97d3e976675757835e3931666d1c6410
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857744"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898409"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit modell pontozása
-Ez a cikk azt ismerteti, hogyan használható a **score Vowpal Wabbit Model** modul a Azure Machine learning Designerben (előzetes verzió), amely a bemeneti adatok egy csoportjának egy meglévő, betanított Vowpal Wabbit-modell használatával történő létrehozását mutatja be.  
+Ez a cikk azt ismerteti, hogyan használható a **score Vowpal Wabbit Model** modul a Azure Machine learning Designerben, és hogyan hozhatók létre a bemeneti adatok egy készlete egy meglévő betanított Vowpal Wabbit-modell használatával.  
 
 Ez a modul a Vowpal Wabbit Framework legújabb verzióját, a 8.8.1 verzióját tartalmazza. Ezzel a modullal egy, a VW 8-as verzióban mentett, betanított modell használatával szerzi be az adatpontszámokat.  
 
@@ -74,7 +74,7 @@ A Vowpal Wabbit számos parancssori kapcsolóval rendelkezik az algoritmusok kiv
 
 A következő paraméterek nem támogatottak a Azure Machine Learning Studioban (klasszikus).  
 
--   A ben megadott bemeneti/kimeneti beállítások[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   A ben megadott bemeneti/kimeneti beállítások [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      A modul már automatikusan konfigurálja ezeket a tulajdonságokat.  
   
@@ -84,6 +84,6 @@ A következő paraméterek nem támogatottak a Azure Machine Learning Studioban 
 
 A fentiekben ismertetett összes argumentum engedélyezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

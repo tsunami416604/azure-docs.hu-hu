@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: társítás konfigurálása: PowerShell'
-description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
+description: Megtudhatja, hogyan hozhat létre és kezelhet útválasztási konfigurációt egy ExpressRoute-áramkörhöz a Resource Manager-alapú üzemi modellben a PowerShell használatával.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: e1f1a36e84567a56ddb25366f96d1b2dba1d82fb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2c29dc051780b15fb55d446d3f4002c3870fb529
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395570"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968389"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>ExpressRoute-áramkör társításának létrehozása és módosítása a PowerShell használatával
 

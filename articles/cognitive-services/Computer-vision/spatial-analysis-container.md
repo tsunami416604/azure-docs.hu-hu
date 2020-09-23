@@ -1,0 +1,432 @@
+---
+title: A térbeli elemzési tároló telepítése és futtatása – Computer Vision
+titleSuffix: Azure Cognitive Services
+description: A térbeli elemzési tároló segítségével azonosíthatja a személyeket és a távolságokat.
+services: cognitive-services
+author: aahill
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: computer-vision
+ms.topic: conceptual
+ms.date: 09/01/2020
+ms.author: aahi
+ms.openlocfilehash: 3d419268302ac8fd55559c6af9cd328f22bd2404
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90935621"
+---
+# <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
+
+A térbeli elemzési tároló lehetővé teszi a valós idejű adatfolyam-videók elemzését a személyek közötti térbeli kapcsolatok, a mozgásuk és a fizikai környezetekben található objektumok közötti interakciók megismerése érdekében. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * A térbeli elemzési tároló futtatásához a létrehozott erőforrás kulcsára és végpontra lesz szüksége. Később a kulcsot és a végpontot fogja használni.
+
+
+### <a name="spatial-analysis-container-requirements"></a>Térbeli elemzési tárolóra vonatkozó követelmények
+
+A térbeli elemzési tároló futtatásához egy [NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/)-val rendelkező számítási eszközre van szükség. Javasoljuk, hogy a [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) -t GPU-gyorsítással használja, azonban a tároló minden olyan asztali gépen fut, amely megfelel a minimális követelményeknek. Ezt az eszközt a gazdaszámítógépként fogjuk megtekinteni.
+
+#### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-eszköz](#tab/azure-stack-edge)
+
+Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és egy hálózati adatátviteli képességekkel rendelkező AI-kompatibilis Edge számítástechnikai eszköz. A részletes előkészítési és beállítási utasításokért tekintse meg az [Azure stack Edge dokumentációját](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep).
+
+#### <a name="desktop-machine"></a>[Asztali gép](#tab/desktop-machine)
+
+#### <a name="minimum-hardware-requirements"></a>Minimális hardverkövetelmények
+
+* 4 GB RAM-memória
+* 4 GB GPU RAM
+* 8 magos processzor
+* 1 NVIDIA Tesla T4 GPU
+* 20 GB HDD terület
+
+#### <a name="recommended-hardware"></a>Ajánlott hardver
+
+* 32 GB RAM-memória
+* 16 GB GPU RAM
+* 8 magos processzor
+* 2 NVIDIA Tesla T4 GPU
+* 50 GB SSD-terület
+
+Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésére lesz szüksége. A gazdagépnek képesnek kell lennie a következők futtatására (útmutatásért lásd alább):
+
+* [NVIDIA grafikus illesztőprogramok](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) és [NVIDIA CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+* Az [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (többfolyamatos szolgáltatás) beállításai.
+* [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) és [NVIDIA – Docker2](https://github.com/NVIDIA/nvidia-docker) 
+* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) futtatókörnyezet.
+
+---
+
+| Követelmény | Leírás |
+|--|--|
+| Kamera | A térbeli elemzési tároló nem kötődik egy adott kamera-márkához. A kamera eszközének a következőnek kell lennie: a valós idejű Streaming Protocol (RTSP) és a H. 264 kódolás támogatása, a gazdaszámítógép számára elérhetőnek kell lennie, és képesnek kell lennie a folyamatos átvitelre a 15FPS és az 1080p felbontásban. |
+| Linux operációs rendszer | Az [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) -et telepíteni kell a gazdagépre.  |
+
+
+## <a name="request-access-to-the-spatial-analysis-functionality"></a>Hozzáférés kérése a térbeli elemzési funkciókhoz
+
+Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) , hogy hozzáférést Kérjen a tárolóhoz. 
+
+Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Az űrlap elküldése után az Azure Cognitive Services csapata áttekinti és e-mailben értesíti Önt a döntésről.
+
+> [!IMPORTANT]
+> * Az űrlapon az Azure-előfizetési AZONOSÍTÓhoz társított e-mail-címet kell használnia.
+> * A tároló futtatásához használt Computer Vision erőforrást a jóváhagyott Azure-előfizetés azonosítójával kell létrehozni.
+
+A jóváhagyást követően a tárolót a cikk későbbi részében leírtak szerint is futtathatja a Microsoft Container Registry (MCR) szolgáltatásból.
+
+Ha az Azure-előfizetését nem hagyták jóvá, nem fogja tudni futtatni a tárolót.
+
+## <a name="set-up-the-host-computer"></a>A gazdaszámítógép beállítása
+
+Azt javasoljuk, hogy a gazdaszámítógéphez használjon Azure Stack Edge-eszközt. Ha másik eszközt konfigurál, kattintson az **asztali gép** elemre.
+
+#### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-eszköz](#tab/azure-stack-edge)
+
+### <a name="configure-compute-on-the-azure-stack-edge-portal"></a>Számítás konfigurálása az Azure Stack Edge portálon 
+ 
+A térbeli elemzés a Azure Stack Edge számítási funkcióit használja egy AI-megoldás futtatásához. A számítási funkciók engedélyezéséhez győződjön meg a következőket: 
+
+* [Csatlakoztatta és aktiválta](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate) Azure stack Edge-eszközét. 
+* Az eszköz eléréséhez a PowerShell 5,0-es vagy újabb verzióját futtató Windows rendszerű ügyfélrendszer van.  
+* Kubernetes-fürt üzembe helyezéséhez konfigurálnia kell az Azure Stack Edge-eszközt a [Azure Portal](https://portal.azure.com/) **helyi felhasználói felületén** : 
+  1. Engedélyezze a számítási funkciót az Azure Stack Edge-eszközön. A számítás engedélyezéséhez nyissa meg az eszköz webes felületének **számítás** lapját. 
+  2. Válassza ki a számításhoz engedélyezni kívánt hálózati adaptert, majd kattintson az **Engedélyezés**gombra. Ezzel létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren.
+  3. Hagyja üresen a Kubernetes teszt csomópontjának IP-címeit és a Kubernetes külső szolgáltatások IP-címeit.
+  4. Kattintson az **Alkalmaz** gombra. A művelet két percet is igénybe vehet. 
+
+![Számítás konfigurálása](media/spatial-analysis/configure-compute.png)
+
+### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>Peremhálózati számítási szerepkör beállítása és IoT Hub erőforrás létrehozása
+
+A [Azure Portal](https://portal.azure.com/)navigáljon az Azure stack Edge-erőforráshoz. Az **Áttekintés** oldalon vagy a navigációs listában kattintson a peremhálózati számítási első **lépések** gombra. Az **Edge-számítás konfigurálása**   csempén kattintson a **Konfigurálás**elemre. 
+
+![Hivatkozás](media/spatial-analysis/configure-edge-compute-tile.png)
+
+Az **Edge-számítás konfigurálása**   lapon válasszon ki egy meglévő IoT hub, vagy hozzon létre egy újat. Alapértelmezés szerint a rendszer egy standard (S1) árképzési szintet használ egy IoT Hub erőforrás létrehozásához. Ha ingyenes szintű IoT Hub erőforrást szeretne használni, hozzon létre egyet, majd jelölje ki. A IoT Hub erőforrás ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ. 
+
+Kattintson a **Létrehozás** lehetőségre. A IoT Hub erőforrás létrehozása néhány percet is igénybe vehet. A IoT Hub erőforrás létrejötte után a rendszer frissíti az **Edge számítási csempe beállítása** frissítést az új konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása**   csempén.
+
+Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. A Azure IoT Edge futtatókörnyezet már fut a IoT Edge eszközön.            
+
+> [!NOTE]
+> Jelenleg csak a Linux platform érhető el IoT Edge eszközökhöz. Az Azure Stack Edge-eszköz hibaelhárításával kapcsolatos segítségért lásd a [naplózási és hibaelhárítási](spatial-analysis-logging.md) cikket.
+
+###  <a name="enable-mps-on-azure-stack-edge"></a>MPS engedélyezése Azure Stack Edge-ben 
+
+1. Futtasson egy Windows PowerShell-munkamenetet rendszergazdaként. 
+
+2. Győződjön meg arról, hogy a Windows távfelügyeleti szolgáltatása fut az ügyfélen. A PowerShell-terminálon használja a következő parancsot: 
+    
+    ```powershell
+    winrm quickconfig
+    ```
+    
+    Ha a tűzfalra vonatkozó kivételek jelennek meg, ellenőrizze a hálózati kapcsolatok típusát, és tekintse meg a [rendszerfelügyeleti](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) webszolgáltatások dokumentációját.
+
+3. Rendeljen hozzá egy változót az eszköz IP-címéhez. 
+    
+    ```powershell
+    $ip = "" Replace with the IP address of your device. 
+    ```
+    
+4. Ha hozzá szeretné adni az eszköz IP-címét az ügyfél megbízható gazdagépek listájához, használja a következő parancsot: 
+    
+    ```powershell
+    Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force 
+    ```
+
+5. Indítsa el a Windows PowerShell-munkamenetet az eszközön. 
+
+    ```powershell
+    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell 
+    ```
+
+6. Ha a rendszer kéri, adja meg a jelszót. Használja ugyanazt a jelszót, amelyet a helyi webes felhasználói felületen való bejelentkezéshez használ. A helyi webes felhasználói felület alapértelmezett jelszava `Password1` .
+
+Írja be az `Start-HcsGpuMPS` MPS szolgáltatás indítását az eszközön. 
+
+Az Azure Stack Edge-eszköz hibaelhárításával kapcsolatos segítségért lásd: [az Azure stack Edge-eszköz hibaelhárítása](spatial-analysis-logging.md#troubleshooting-the-azure-stack-edge-device) 
+
+#### <a name="desktop-machine"></a>[Asztali gép](#tab/desktop-machine)
+
+Kövesse ezeket az utasításokat, ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz.
+
+#### <a name="install-nvidia-cuda-toolkit-and-nvidia-graphics-drivers-on-the-host-computer"></a>Az NVIDIA CUDA Toolkit és az NVIDIA Graphics-illesztőprogramok telepítése a gazdagépen
+
+A szükséges NVIDIA grafikus illesztőprogramok és a CUDA Toolkit telepítéséhez használja a következő bash-szkriptet.
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+
+Indítsa újra a gépet, és futtassa a következő parancsot.
+
+```bash
+nvidia-smi
+```
+
+A következő kimenetnek kell megjelennie.
+
+![NVIDIA-illesztőprogram kimenete](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-host-computer"></a>A Docker CE és az NVIDIA-docker2 telepítése a gazdagépen
+
+Telepítse a Docker CE-t a gazdagépen.
+
+```bash
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+Telepítse az *NVIDIA-Docker-2* szoftvercsomagot.
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y docker-ce nvidia-docker2
+sudo systemctl restart docker
+```
+
+## <a name="enable-nvidia-mps-on-the-host-computer"></a>NVIDIA MPS engedélyezése a gazdaszámítógépen
+
+> [!TIP]
+> Futtassa az MPS utasításokat a gazdaszámítógépen lévő terminál-ablakban. Nincs a Docker-tároló példányán belül.
+
+A legjobb teljesítmény és kihasználtság érdekében konfigurálja a gazda számítógép GPU (ka) t az [NVIDIA többfolyamatos szolgáltatás (mp)](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf)számára. Futtassa az MPS utasításokat a gazdaszámítógépen lévő terminál-ablakban.
+
+```bash
+# Set GPU(s) compute mode to EXCLUSIVE_PROCESS
+sudo nvidia-smi --compute-mode=EXCLUSIVE_PROCESS
+
+# Cronjob for setting GPU(s) compute mode to EXCLUSIVE_PROCESS on boot
+echo "SHELL=/bin/bash" > /tmp/nvidia-mps-cronjob
+echo "PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin" >> /tmp/nvidia-mps-cronjob
+echo "@reboot   root    nvidia-smi --compute-mode=EXCLUSIVE_PROCESS" >> /tmp/nvidia-mps-cronjob
+
+sudo chown root:root /tmp/nvidia-mps-cronjob
+sudo mv /tmp/nvidia-mps-cronjob /etc/cron.d/
+
+# Service entry for automatically starting MPS control daemon
+echo "[Unit]" > /tmp/nvidia-mps.service
+echo "Description=NVIDIA MPS control service" >> /tmp/nvidia-mps.service
+echo "After=cron.service" >> /tmp/nvidia-mps.service
+echo "" >> /tmp/nvidia-mps.service
+echo "[Service]" >> /tmp/nvidia-mps.service
+echo "Restart=on-failure" >> /tmp/nvidia-mps.service
+echo "ExecStart=/usr/bin/nvidia-cuda-mps-control -f" >> /tmp/nvidia-mps.service
+echo "" >> /tmp/nvidia-mps.service
+echo "[Install]" >> /tmp/nvidia-mps.service
+echo "WantedBy=multi-user.target" >> /tmp/nvidia-mps.service
+
+sudo chown root:root /tmp/nvidia-mps.service
+sudo mv /tmp/nvidia-mps.service /etc/systemd/system/
+
+sudo systemctl --now enable nvidia-mps.service
+```
+
+## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Azure IoT Edge konfigurálása a gazdaszámítógépen
+
+A térbeli elemzési tároló a gazdagépen való üzembe helyezéséhez hozzon létre egy [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) szolgáltatás egy példányát a standard (S1) vagy az ingyenes (F0) árképzési szint használatával. Ha a gazdaszámítógép Azure Stack Edge, használja ugyanazt az előfizetést és erőforráscsoportot, amelyet az Azure Stack Edge-erőforrás használ.
+
+Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség esetén cserélje le a paramétereket. Azt is megteheti, hogy az Azure-IoT Hub is létrehozhatja a [Azure Portal](https://portal.azure.com/).
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az login
+az account set --subscription <name or ID of Azure Subscription>
+az group create --name "test-resource-group" --location "WestUS"
+
+az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.8 verzióját. Kövesse az alábbi lépéseket a megfelelő verzió letöltéséhez: Ubuntu Server 18,04:
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+Copy the generated list.
+
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+Telepítse a Microsoft GPG nyilvános kulcsot.
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+Frissítse a csomagok listáját az eszközön.
+
+```bash
+sudo apt-get update
+```
+
+A 1.0.8 kiadásának telepítése:
+
+```bash
+sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+```
+
+A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)használatával.
+
+Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
+
+```bash
+az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+Nyissa meg a gazdagépet a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélje le `ADD DEVICE CONNECTION STRING HERE` a karakterláncot a és a közötti értékre. Mentse és zárja be a fájlt. Futtassa ezt a parancsot a IoT Edge szolgáltatás újraindításához a gazdaszámítógépen.
+
+```bash
+sudo systemctl restart iotedge
+```
+
+Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
+
+Az alábbi lépések segítségével helyezheti üzembe a tárolót az Azure CLI használatával.
+
+---
+
+### <a name="iot-deployment-manifest"></a>IoT üzembe helyezési jegyzéke
+
+Ha több gazdagépen szeretné egyszerűsíteni a tárolók telepítését, létrehozhat egy üzembe helyezési jegyzékfájlt a tároló-létrehozási beállítások és a környezeti változók megadásához. A GitHubon megtalálhatja az [üzembe helyezési jegyzék](https://go.microsoft.com/fwlink/?linkid=2142179)egy példáját.
+
+A következő táblázat a IoT Edge modul által használt különféle környezeti változókat mutatja be. Ezeket a fent hivatkozott telepítési jegyzékfájlban is megadhatja a (z) `env` attribútumának használatával `spatialanalysis` :
+
+| Beállítás neve | Érték | Leírás|
+|---------|---------|---------|
+| ARCHON_LOG_LEVEL | Információ Részletes | Naplózási szint, válasszon egyet a két érték közül|
+| ARCHON_SHARED_BUFFER_LIMIT | 377487360 | Ne módosítsa|
+| ARCHON_PERF_MARKER| hamis| Állítsa igaz értékre a teljesítmény naplózásához, ellenkező esetben hamis értéket kell megadni.| 
+| ARCHON_NODES_LOG_LEVEL | Információ Részletes | Naplózási szint, válasszon egyet a két érték közül|
+| OMP_WAIT_POLICY | PASSZÍV | Ne módosítsa|
+| QT_X11_NO_MITSHM | 1 | Ne módosítsa|
+| API_KEY | az API-kulcs| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja a Azure Portal. |
+| BILLING_ENDPOINT | a végpont URI-ja| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja a Azure Portal.|
+| EULA | fogadja el | Ezt az értéket úgy kell beállítani, hogy *fogadja* a tároló futtatását |
+| KIJELZŐ | : 1 | Ennek az értéknek meg kell egyeznie a gazdaszámítógép kimenetével `echo $DISPLAY` . Azure Stack Edge-eszközök nem rendelkeznek kijelzővel. Ez a beállítás nem alkalmazható|
+
+
+> [!IMPORTANT]
+> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+
+Ha a minta [DeploymentManifest.jsa](https://go.microsoft.com/fwlink/?linkid=2142179) saját beállításaival és a műveletek kiválasztásával frissítette a fájlt, az alábbi [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
+
+```azurecli
+az login
+az extension add --name azure-iot
+az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'" -–subscription "<subscriptionId>"
+```
+
+|Paraméter  |Leírás  |
+|---------|---------|
+| `--deployment-id` | A központi telepítés új neve. |
+| `--hub-name` | Az Azure-IoT Hub neve. |
+| `--content` | A telepítési fájl neve. |
+| `--target-condition` | A gazdagéphez tartozó IoT Edge eszköz neve. |
+| `-–subscription` | Előfizetés-azonosító vagy-név. |
+
+Ez a parancs elindítja az üzemelő példányt. Az üzembe helyezés állapotának megtekintéséhez navigáljon az Azure IoT Hub példányának oldalára a Azure Portal. Az állapot *417-ként jelenhet meg – az eszköz telepítési konfigurációja nincs beállítva* , amíg az eszköz be nem fejeződik a tároló lemezképének letöltése, és nem indul el.
+
+## <a name="validate-that-the-deployment-is-successful"></a>A telepítés sikerességének ellenőrzése
+
+Több módon is ellenőrizheti, hogy a tároló fut-e. Keresse meg a *futásidejű állapotot* az Azure IoT hub-példányban található térbeli elemzési modul **IoT Edge moduljának beállításainál** a Azure Portal. Ellenőrizze, hogy a *futásidejű állapot* **kívánt értéke** és a **jelentett érték** *fut*-e.
+
+![Példa a központi telepítés ellenőrzésére](./media/spatial-analysis/deployment-verification.png)
+
+Miután a telepítés befejeződött, és a tároló fut, a **gazdaszámítógép** elkezdi az események küldését az Azure IoT hubba. Ha a `.debug` műveletek verzióját használta, megjelenik egy megjelenítő ablak a telepítési jegyzékfájlban konfigurált összes kamerához. Mostantól megadhatja a figyelni kívánt vonalakat és zónákat a központi telepítési jegyzékben, és az utasításokat követve újra üzembe helyezheti azokat. 
+
+## <a name="configure-the-operations-performed-by-spatial-analysis"></a>A térbeli elemzés által végrehajtott műveletek konfigurálása
+
+[Térbeli elemzési műveletekkel](spatial-analysis-operations.md) konfigurálja a tárolót a csatlakoztatott kamerák használatára, konfigurálja a műveleteket, és így tovább. Minden konfigurált kamera-eszközön a térbeli elemzés műveletei a JSON-üzenetek kimeneti streamjét eredményezik, amelyet az Azure IoT Hub-példánya küld.
+
+## <a name="redeploy-or-delete-the-deployment"></a>Az üzemelő példány újbóli üzembe helyezése vagy törlése
+
+Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)-t.
+
+## <a name="use-the-output-generated-by-the-container"></a>A tároló által generált kimenet használata
+
+Ha el szeretné kezdeni a tároló által generált kimenet felhasználását, tekintse meg a következő cikkeket:
+
+*   Használja az Azure Event hub SDK-t a kiválasztott programozási nyelvhez az Azure IoT Hub-végponthoz való kapcsolódáshoz és az események fogadásához. További információért lásd: [eszközről a felhőbe irányuló üzenetek olvasása a beépített végpontról](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
+*   Állítsa be az üzenet-útválasztást az Azure-IoT Hub az események más végpontoknak való elküldéséhez, vagy mentse az eseményeket az Azure-Blob Storageba stb.). További információ: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+
+## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Térbeli elemzés futtatása rögzített videofájl-fájllal
+
+Térbeli elemzést is használhat rögzített vagy élő videóval. A rögzített videó térbeli elemzésének használatához próbálkozzon egy videofájl rögzítésével és MP4-fájlként való mentésével. Hozzon létre egy blob Storage-fiókot az Azure-ban, vagy használjon egy meglévőt. Ezután frissítse a blob Storage következő beállításait a Azure Portalban:
+    1. A **letiltani** **kívánt biztonságos átvitel** módosítása
+    2. A **Blobok nyilvános hozzáférésének engedélyezése** **engedélyezve**
+
+Navigáljon a **tároló** szakaszhoz, vagy hozzon létre egy új tárolót, vagy használjon egy meglévőt. Ezután töltse fel a videofájlokat a tárolóba. Bontsa ki a fájl beállításait a feltöltött fájlhoz, és válassza az **sas előállítása**lehetőséget. Ügyeljen arra, hogy a **lejárati dátum** elég hosszú legyen a tesztelési időszak lefedéséhez. Az **engedélyezett protokollok** beállítása *http* -re (a*https* nem támogatott).
+
+Kattintson a **sas-jogkivonat és URL-cím előállítása** elemre, és másolja a blob sas URL-címét. Cserélje le a `https` - `http` t, és tesztelje az URL-címet egy olyan böngészőben, amely támogatja a videolejátszás használatát.
+
+Cserélje le az `VIDEO_URL` [üzembe helyezési jegyzékben](https://go.microsoft.com/fwlink/?linkid=2142179) a létrehozott URL-címet az összes gráfhoz. Állítsa `VIDEO_IS_LIVE` be `false` , majd telepítse újra a térbeli elemzési tárolót a frissített jegyzékfájl használatával. Lásd az alábbi példát.
+
+A térbeli elemzési modul elkezdi a videofájl felhasználását, és folyamatosan automatikusan újrajátszható.
+
+
+```json
+"zonecrossing": {
+  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+  "version": 1,
+  "enabled": true,
+  "parameters": {
+      "VIDEO_URL": "Replace http url here",
+      "VIDEO_SOURCE_ID": "personcountgraph",
+      "VIDEO_IS_LIVE": false,
+        "VIDEO_DECODE_GPU_INDEX": 0,
+      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
+      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    }
+  },
+
+```
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha problémák merülnek fel a tároló indításakor vagy futtatásakor, tekintse meg a gyakori problémák [telemetria és hibaelhárítási](spatial-analysis-logging.md) lépéseit. Ez a cikk a naplók létrehozásával és gyűjtésével, valamint a rendszerállapot gyűjtésével kapcsolatos információkat is tartalmaz.
+
+## <a name="billing"></a>Számlázás
+
+A térbeli elemzési tároló számlázási adatokat küld az Azure-nak az Azure-fiókja Computer Vision erőforrásának használatával. A térbeli elemzés a nyilvános előzetes verzióban jelenleg ingyenesen használható. 
+
+Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett videót vagy képet a Microsoftnak.
+
+
+## <a name="summary"></a>Összefoglalás
+
+Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
+
+* A térbeli elemzés a Docker Linux-tárolója.
+* A rendszer letölti a tároló lemezképeit a Microsoft Container Registryból.
+* A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
+* A tároló konfigurálása és üzembe helyezése a gazdagépen.
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
+* [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)
+* [Naplózás és hibaelhárítás](spatial-analysis-logging.md)
+* [Kamera elhelyezése – útmutató](spatial-analysis-camera-placement.md)
+* [A zóna és a vonal elhelyezési útmutatója](spatial-analysis-zone-line-placement.md)

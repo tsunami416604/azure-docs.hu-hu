@@ -372,6 +372,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Architektúra-központ
       href: /azure/architecture/
+    - name: Azure Hybrid Benefit
+      href: azure-hybrid-benefit-linux.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása

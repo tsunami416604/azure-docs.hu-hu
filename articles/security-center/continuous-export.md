@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433932"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905620"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok exportálása
 
@@ -33,8 +33,8 @@ Az alábbi eszközöket használhatja:
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Általánosan elérhető|
-|Árképzési|Ingyenes szint|
+|Kiadás állapota:|Általánosan elérhető (GA)|
+|Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie|
 |Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
 |||
@@ -69,7 +69,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 
 ## <a name="set-up-continuous-export-via-the-rest-api"></a>Folyamatos exportálás beállítása a REST API használatával
@@ -123,13 +123,13 @@ Ha a folyamatosan exportált adatok automatikusan a konfigurált esemény közpo
 
 ## <a name="continuous-export-to-a-log-analytics-workspace"></a>Folyamatos exportálás Log Analytics munkaterületre
 
-Ha egy Log Analytics munkaterületen belül szeretné elemezni Azure Security Center adatait, vagy az Azure-riasztásokat az Security Center használatával együtt kívánja használni, állítsa be a folyamatos exportálást a Log Analytics munkaterületre.
+Ha egy Log Analytics-munkaterületen belül szeretné elemezni Azure Security Center adatait, vagy az Azure-riasztásokat az Security Center használatával együtt kívánja használni, állítsa be a folyamatos exportálást a Log Analytics munkaterületre.
 
-Log Analytics munkaterületre való exportáláshoz a munkaterületen engedélyezni kell Security Center Log Analytics megoldásait. Ha a Azure Portal használja, a folyamatos exportálás engedélyezésekor a rendszer automatikusan engedélyezi Security Center ingyenes szintű megoldását. Ha azonban programozott módon konfigurálja a folyamatos exportálási beállításokat, manuálisan kell kiválasztania a szükséges munkaterület ingyenes vagy standard díjszabási szintjét a **díjszabási & beállításain**belül.  
+Log Analytics munkaterületre való exportáláshoz a munkaterületen engedélyezni kell Security Center Log Analytics megoldásait. Ha a Azure Portal használja, a folyamatos exportálás engedélyezésekor a rendszer automatikusan engedélyezi Security Center ingyenes megoldását. Ha programozott módon konfigurálja a folyamatos exportálási beállításokat, a **díjszabási & beállítások** lapján manuálisan be kell kapcsolnia az Azure Defender be-vagy kikapcsolását.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Táblák és sémák Log Analytics
 
-A biztonsági riasztások és javaslatok tárolása a *SecurityAlert* és a *SecurityRecommendations* táblákban történik. Az ezeket a táblákat tartalmazó Log Analytics megoldás neve attól függ, hogy az ingyenes vagy a standard szinten van-e (lásd a [díjszabást](security-center-pricing.md)): biztonság ("Security and audit") vagy SecurityCenterFree.
+A biztonsági riasztások és javaslatok tárolása a *SecurityAlert* és a *SecurityRecommendations* táblákban történik. Az alábbi táblákat tartalmazó Log Analytics-megoldás neve attól függ, hogy engedélyezve van-e az Azure Defender: Security ("Security and Audit") vagy a SecurityCenterFree.
 
 ![A * SecurityAlert * tábla Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 

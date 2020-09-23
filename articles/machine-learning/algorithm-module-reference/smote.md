@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477459"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898261"
 ---
 # <a name="smote"></a>SMOTE
 
-Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben (előzetes verzió) a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
+Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
 
 A ARCUL ütötte modult egy *kiegyensúlyozatlan*adatkészlet számára kapcsolja össze. Számos oka lehet annak, hogy egy adatkészlet kiegyensúlyozatlan. Előfordulhat például, hogy a megcélzott kategória ritkán fordul elő a populációban, vagy az adatok összegyűjtése nehéz lehet. Az elemezni kívánt *osztályt* általában a arcul ütötte használatával lehet használni. 
   
@@ -44,7 +44,7 @@ Az esetek számának növeléséhez a következő módon állíthatja be a **arc
 |-|-------------|-------------|-----------|  
 |Eredeti adatkészlet<br /><br /> (a **arcul ütötte százalékos értékkel**  =  egyenértékű **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
 |**Arcul ütötte százalékos aránya**  =  **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
-|**Arcul ütötte százalékos aránya**  =  **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
+|**Arcul ütötte százalékos aránya**  =  **200**|570<br /><br /> 52%|534<br /><br /> 48%|1,104|  
 |**Arcul ütötte százalékos aránya**  =  **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
   
 > [!WARNING]
@@ -97,7 +97,7 @@ Az esetek számának növeléséhez a következő módon állíthatja be a **arc
   + Olyan Ensemble-technikák, amelyek a tanulót közvetlenül a fürtözés, a csomagok és az adaptív növelés használatával segítik elő.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

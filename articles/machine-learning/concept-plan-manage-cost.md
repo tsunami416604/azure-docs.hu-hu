@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f20abffa429add8edcbffba16529c467cb9506fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 21153d3c914864966106bf66edccb3c549398bc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651111"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898235"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -49,7 +49,7 @@ A következő képernyőkép a kalkulátor használatával mutatja be a költsé
 
 Amikor új erőforrásokat ad hozzá a munkaterülethez, térjen vissza ehhez a kalkulátorhoz, és adja hozzá ugyanezt az erőforrást a költségbecslés frissítéséhez.
 
-Míg a nagyvállalati kiadás előzetes verzióban érhető el, nem áll rendelkezésre ML-díj. Ha a nagyvállalati kiadás általánosan elérhetővé válik, felár (képzés és következtetés) lesz.  További információ: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
+További információ: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 ## <a name="get-cost-alerts"></a>Cost-riasztások beszerzése
 

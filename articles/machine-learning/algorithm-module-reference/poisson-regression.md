@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096749"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905260"
 ---
 # <a name="poisson-regression"></a>Poisson-regresszió
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy Poisson-regressziós modellt egy folyamaton belül. A Poisson-regresszió a numerikus értékek előrejelzésére szolgál, jellemzően a számítások számát. Ezért ezt a modult csak akkor kell használni a regressziós modell létrehozásához, ha az előre jelezni kívánt értékek megfelelnek a következő feltételeknek:
 
@@ -49,7 +49,7 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
 ## <a name="how-to-configure-poisson-regression"></a>A Poisson-regresszió konfigurálása
 
-1. Adja hozzá a **Poisson regressziós** modult a folyamathoz a Designerben (előzetes verzió). Ez a modul a **regressziós** kategóriában **Machine learning algoritmusok**alatt található.
+1. Adja hozzá a **Poisson regressziós** modult a folyamathoz a Designerben. Ez a modul a **regressziós** kategóriában **Machine learning algoritmusok**alatt található.
 
 2. Adjon hozzá egy adatkészletet, amely a megfelelő típusú betanítási adatokat tartalmazza. 
 
@@ -103,6 +103,6 @@ A betanítás befejezése után:
 
 + Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása**elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

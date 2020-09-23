@@ -3,12 +3,12 @@ title: Prémium és standard szintű Azure Service Bus
 description: Ez a cikk a Azure Service Bus standard és prémium szintű csomagját ismerteti. Összehasonlítja ezeket a szinteket, és technikai különbségeket biztosít.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386350"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90966783"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
 
@@ -72,7 +72,7 @@ Az architektúrához tartozó üzenetkezelési egységek számának meghatároz�
     - Ha a CPU-használat ***20%***-nál kisebb, akkor lehetséges, hogy ***le tudja méretezni*** a névtérhez lefoglalt üzenetküldési egységek számát.
     - Ha a CPU-használat ***meghaladja a 70%-ot***, az alkalmazása kihasználhatja a névtérhez lefoglalt üzenetküldési egységek számának ***növelését*** .
 
-A Service Bus névtérhez lefoglalt erőforrások méretezésének folyamata [Azure Automation runbookok](../automation/automation-quickstart-create-runbook.md)használatával automatizálható.
+Ha meg szeretné tudni, hogyan konfigurálhat egy Service Bus névteret az automatikus skálázáshoz (üzenetkezelési egységek növelése vagy csökkentése), olvassa el az [üzenetkezelési egységek automatikus frissítése](automate-update-messaging-units.md)című témakört.
 
 > [!NOTE]
 > A névtérhez lefoglalt erőforrások **skálázása** lehet preemptív karbantartással vagy reaktív.
@@ -96,10 +96,9 @@ A prémium szintű üzenetkezelés használatba vétele egyszerű, a folyamat pe
 
 A Service Bus üzenetküldési funkcióival kapcsolatos további információkért tekintse meg a következőket:
 
-* [Azure Service Bus prémium szintű üzenetkezelés bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Az Azure Service Bus prémium szintű üzenetkezelés bemutatása (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [A Service Bus-üzenetkezelés áttekintése](service-bus-messaging-overview.md)
-* [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
+- [Üzenetkezelési egységek automatikus frissítése](automate-update-messaging-units.md).
+- [Azure Service Bus prémium szintű üzenetkezelés bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+- [Az Azure Service Bus prémium szintű üzenetkezelés bemutatása (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
 <!--Image references-->
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20e6d26808964c8e697c694bd796af2851e7ca48
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450190"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985191"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dinamikus csoportok használata az Update Managementtel
 
@@ -33,7 +33,7 @@ Az Azure-gépek dinamikus csoportos lekérdezésének meghatározásakor a köve
 * Előfizetés
 * Erőforráscsoportok
 * Helyek
-* Címkéket
+* Címkék
 
 ![Csoportok kiválasztása](./media/update-mgmt-groups/select-groups.png)
 
@@ -45,8 +45,8 @@ A dinamikus csoportos lekérdezés eredményének megtekintéséhez kattintson a
 
 A nem Azure-alapú gépek dinamikus csoportja mentett kereséseket, más néven számítógépcsoportot használ. A mentett keresések létrehozásáról további információt a [számítógépcsoport létrehozása](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group)című témakörben talál. A mentett keresés létrehozása után kiválaszthatja azt a mentett keresések listájában a Azure Portal **Update Management szolgáltatásban** . Az **előnézet** gombra kattintva megtekintheti a mentett keresésben lévő számítógépeket.
 
-![Csoportok kiválasztása](./media/update-mgmt-groups/select-groups-2.png)
+![Képernyőfelvétel: a csoportok kiválasztása lap a nem Azure (előzetes verzió) és a jobb oldalon látható előnézet ablaktábla.](./media/update-mgmt-groups/select-groups-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure monitor naplók lekérdezésével](update-mgmt-query-logs.md) elemezheti a frissítési felméréseket, a központi telepítéseket és az egyéb kapcsolódó felügyeleti feladatokat. Előre definiált lekérdezéseket tartalmaz, amelyek segítenek az első lépések megtételében.
