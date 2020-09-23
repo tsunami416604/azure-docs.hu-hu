@@ -3,12 +3,12 @@ title: Visual Studio Resource Group-projektek létrehozása & üzembe helyezése
 description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-projektet, és telepítse az erőforrásokat az Azure-ba.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152731"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985254"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -23,7 +23,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
 1. Válassza ki az **Azure erőforráscsoport** -projekt sablonját, és kattintson a **Tovább gombra**.
 
-    ![Projekt létrehozása](./media/create-visual-studio-deployment-project/create-project.png)
+    ![Képernyőfelvétel: az új projekt létrehozása ablak az Azure-erőforráscsoport és a következő gomb kiemelése.](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. Adjon nevet a projektnek. A többi alapértelmezett beállítás valószínűleg megfelelő, de tekintse át őket, hogy működjenek a környezetében. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
@@ -41,7 +41,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
     A webalkalmazás-sablon választása óta a következő fájlok láthatók:
 
-   | Fájlnév | Description |
+   | Fájlnév | Leírás |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |PowerShell-parancsfájl, amely PowerShell-parancsokat futtat az Azure Resource Manager üzembe helyezéséhez. A Visual Studio ezt a PowerShell-parancsfájlt használja a sablon üzembe helyezéséhez. |
    | WebSite.jsbekapcsolva |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
@@ -53,7 +53,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
 A központi telepítési projektet testreszabhatja úgy, hogy módosítja a telepíteni kívánt erőforrásokat leíró Resource Manager-sablont. A Resource Manager-sablon elemeivel kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](template-syntax.md).
 
-1. A sablonon való működéshez nyissa meg **aWebSite.jst a**következőn:.
+1. A sablonon való működéshez nyissa meg ** aWebSite.jst a**következőn:.
 
 1. A Visual Studio szerkesztő eszközöket biztosít a Resource Manager-sablon szerkesztéséhez. A **JSON-vázlat** ablak segítségével könnyen áttekinthetőek a sablonban meghatározott elemek.
 
@@ -65,7 +65,7 @@ A központi telepítési projektet testreszabhatja úgy, hogy módosítja a tele
 
 1. Hozzáadhat egy új erőforrást a JSON-vázlat ablak tetején található **Erőforrás hozzáadása** gomb kiválasztásával, vagy kattintson a jobb gombbal az **erőforrások** elemre, és válassza az **Új erőforrás hozzáadása** lehetőséget.
 
-   ![Erőforrás hozzáadása](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![A képernyőképen a JSON-vázlat ablak látható az új erőforrás hozzáadása lehetőség kiemelve.](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. Válassza ki a **Storage-fiókot** , és adjon meg egy nevet. Olyan nevet adjon meg, amely nem hosszabb 11 karakternél, és csak számokat és kisbetűket tartalmaz.
 
@@ -189,7 +189,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
 1. Most győződjön meg arról, hogy az erőforráscsoport észleli az új projektet. Térjen vissza az erőforráscsoport-projekthez (ExampleAppDeploy). Kattintson jobb gombbal a **References** (Hivatkozások) elemre és válassza az **Add Reference** (Hivatkozás hozzáadása) lehetőséget.
 
-    ![Hivatkozás hozzáadása](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![Képernyőfelvétel: a ExampleAppDeploy menü és a hivatkozás hozzáadása lehetőség látható.](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. Válassza ki a webalkalmazás-projektet, amelyet létrehozott.
 
@@ -211,7 +211,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
 1. A sablonban néhány új paraméter szerepel. Ezek az előző lépésben lettek hozzáadva. Nem kell megadnia **_artifactsLocation** vagy **_artifactsLocationSasToken** értékét, mivel ezek az értékek automatikusan létrejönnek. A mappát és a fájlnevet azonban a központi telepítési csomagot tartalmazó elérési útra kell beállítania. Ezeknek a paramétereknek a nevei a **PackageFolder** és a **PackageFileName**végződéssel rendelkeznek. A név első része a hozzáadott webes üzembe helyezési erőforrás neve. Ebben a cikkben a **ExampleAppPackageFolder** és a **ExampleAppPackageFileName**nevet kapta.
 
-   Nyissa megWebsite.parameters.jsbe, majd állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között **megjelenő** értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
+   Nyissa megWebsite.parameters.jsbe, majd állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között ** megjelenő** értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
 
    ```json
    {
@@ -364,7 +364,7 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
 
 1. Az üzembe helyezés befejezése után tekintse meg az irányítópultot a portálon. Válassza ki az **irányítópultot** , és válassza ki az üzembe helyezett elemet.
 
-   ![Egyéni irányítópult](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![A képernyőképen az irányítópult oldal jelenik meg, amely egy példaként szolgáló egyéni irányítópultot mutat be.](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. Megjelenik a testreszabott irányítópult.
 
@@ -372,7 +372,7 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
 
 RBAC-csoportokkal kezelheti az irányítópult hozzáférését. Az irányítópult kinézetét is testreszabhatja az üzembe helyezése után. Ha azonban újból üzembe helyezi az erőforráscsoportot, az irányítópult visszaáll a sablonban szereplő alapértelmezett állapotba. Az irányítópultok létrehozásával kapcsolatos további információkért lásd az [Azure-irányítópultok szoftveres létrehozásával](../../azure-portal/azure-portal-dashboards-create-programmatically.md) foglalkozó témakört.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -382,7 +382,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 1. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre és helyezhet üzembe sablonokat a Visual Studióval. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 

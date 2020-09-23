@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: a68622a921bb58513c7bb2154ccee81162a59c53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936184"
+ms.locfileid: "90977781"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával
 
@@ -23,12 +23,12 @@ Miután a metrikai tanácsadó észlelte a anomáliát, a riasztási beállítá
 
 ## <a name="create-a-hook"></a>Hook létrehozása
 
-A metrikai tanácsadó három különböző típusú hookot támogat: e-mail-hookot, webhookot és Azure-DevOps. Kiválaszthatja az adott forgatókönyvhöz használhatót. 
+A metrikai tanácsadó három különböző típusú hookot támogat: e-mail-hookot, webhookot és Azure-DevOps. Kiválaszthatja az adott forgatókönyvhöz használhatót.       
 
 ### <a name="email-hook"></a>E-mail Hook
 
 > [!Note]
-> A metrikai tanácsadó erőforrás-rendszergazdáinak be kell állítania az **e-mail-beállításokat**, és be kell ÁLLÍTANI az SMTP-hez kapcsolódó információkat a metrikai TANÁCSADÓBA, mielőtt a rendszer az anomáliák riasztásait
+> A metrikai tanácsadó erőforrás-rendszergazdáinak be kell állítania az e-mail-beállításokat, és be kell állítani az SMTP-hez kapcsolódó adatokat a metrikai TANÁCSADÓBA, mielőtt a rendszer elküldi a Az erőforráscsoport rendszergazdájának vagy az előfizetés rendszergazdájának legalább egy *Cognitive Services metrikai Advisor rendszergazdai* szerepkört kell rendelnie a metrikai tanácsadó erőforrás hozzáférés-vezérlés lapján. 
 
 E-mail Hook létrehozásához a következő paraméterek érhetők el: 
 

@@ -11,23 +11,24 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545658"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906008"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
 > [!NOTE]
 > * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kulcskifejezés-kinyerési és a nyelvfelismerési tárolók nem korlátozott nyilvános előzetes verzióként érhetők el.
 > * Az entitások összekapcsolása és megtekintő szolgáltatás jelenleg nem érhető el tárolóként.
-> * Jelenleg nem számolunk fel díjat az Egészségügyi Text Analytics-tároló használatáért.
+> * Ahhoz, hogy a Text Analytics az állapotfigyelő tárolóhoz hozzáférhessen, egy [kérelem űrlapra](https://aka.ms/cognitivegate)van szükség. Jelenleg a használatért nem számítunk fel díjat.
+> * Lehetséges, hogy a tároló rendszerképének helyei nemrég módosultak. Ebből a cikkből megtudhatja, hogy melyik a tároló frissített helye.
 
 A tárolók lehetővé teszik a Text Analytics API-k a saját környezetében való futtatását, és kiválóan alkalmasak saját biztonsági és adatszabályozási követelményeihez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 > [!IMPORTANT]
 > Az ingyenes fiók havonta 5 000 tranzakcióra van korlátozva, és csak az **ingyenes** és a **standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">szintű <span class="docon docon-navigate-external x-hidden-focus"></span> díjszabás</a> érvényes a tárolók esetében. A tranzakciós kérelmek díjszabásával kapcsolatos további információkért lásd az [Adatkorlátokat](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)ismertető témakört.
@@ -174,7 +175,7 @@ Ebben a cikkben megtanulta Text Analytics tárolók letöltésére, telepítés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](../text-analytics-resource-container-config.md) áttekintése konfigurációs beállításokhoz
 * A funkciókkal kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md) című témakört.

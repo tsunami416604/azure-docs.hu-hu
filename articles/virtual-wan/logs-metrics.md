@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983628"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure-beli virtuális WAN-naplók és-metrikák
 
@@ -60,9 +60,9 @@ A következő lépések segítségével megkeresheti és megtekintheti a metrik�
 
 2. A pont – hely átjáró megkereséséhez válassza a **VPN (helyek közötti)** lehetőséget a helyek közötti átjáró, a **ExpressRoute** vagy a ExpressRoute-átjáró megkereséséhez, vagy a **felhasználói VPN (a helyhez pont)** beállításhoz. Az oldalon megtekintheti az átjáró információit. Másolja ezt az információt. Később a Azure Monitor használatával fogja megtekinteni a diagnosztikát.
 
-3. Válassza a **Metrika** lehetőséget.
+3. Válassza a **Metrikák** lehetőséget.
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="mutatókat":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
 
 4. A **metrikák** lapon megtekintheti az Önt érdeklő mérőszámokat.
 
@@ -121,7 +121,7 @@ Szükség esetén cserélje le az alábbi értékeket a **= =** érték után.
 
 A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók*) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](../firewall/tutorial-diagnostics.md)című témakört.
 * Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md).

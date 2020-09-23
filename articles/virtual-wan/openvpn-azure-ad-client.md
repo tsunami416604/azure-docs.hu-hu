@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: VPN-ügyfél az OpenVPN protokoll P2S kapcsolataihoz: Azure AD-hitelesítés'
-description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
+description: Megtudhatja, hogyan használhatja a P2S VPN-t a VNet való csatlakozásra az Azure AD-hitelesítés használatával.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 08/04/2020
-ms.author: alzam
-ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.date: 09/22/2020
+ms.author: cherylmc
+ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761178"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977844"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása P2S OpenVPN protokollt használó kapcsolatokhoz: Azure AD-hitelesítés
 
@@ -88,11 +88,11 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 1. Válassza ki a törölni kívánt ügyfél-profil melletti ellipsziseket. Ezután válassza az **Eltávolítás**lehetőséget.
 
-    ![törlés](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Válassza az **Eltávolítás** elemet a törléshez.
 
-    ![törlés](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Kapcsolat létrehozása
 
@@ -260,6 +260,6 @@ azurevpn -i azurevpnconfig.xml
 az importálás kényszerítéséhez használja az **-f** kapcsolót is
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

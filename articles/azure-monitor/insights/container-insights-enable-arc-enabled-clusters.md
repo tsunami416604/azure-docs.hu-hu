@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure Monit
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Monitor az Azure arc-kompatibilis Kubernetes-fürtökön található tárolók esetében.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090618"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977538"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Az Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése
 
@@ -63,7 +63,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
     >[!IMPORTANT]
     >Az arc-kompatibilis Kubernetes-fürtök figyelésének minimális ügynök-verziója ciprod04162020 vagy újabb.
 
-- Ha a PowerShell-parancsfájl használatával engedélyezi a figyelést, a [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) megadása szükséges.
+- Ha a PowerShell-parancsfájl használatával engedélyezi a figyelést, a [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6&preserve-view=true) megadása szükséges.
 
 - Ha a bash parancsfájl használatával engedélyezi a figyelést, a [bash 4-es verziója](https://www.gnu.org/software/bash/) szükséges.
 
@@ -137,6 +137,33 @@ Ha engedélyezni szeretné a fürt figyelését a korábban letöltött PowerShe
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
+### <a name="using-service-principal"></a>Egyszerű szolgáltatásnév használata
+A szkript *enable-monitoring.ps1* az interaktív eszköz bejelentkezését használja. Ha inkább a nem interaktív bejelentkezést részesíti előnyben, használhat egy meglévő szolgáltatásnevet, vagy létrehozhat egy újat, amely rendelkezik a szükséges engedélyekkel az [Előfeltételek](#prerequisites)szakaszban leírtak szerint. Az egyszerű szolgáltatásnév használatához át kell adnia $servicePrincipalClientId, $servicePrincipalClientSecret és $tenantId paramétereket a szolgáltatás *enable-monitoring.ps1* parancsfájlhoz használni kívánt egyszerű szolgáltatásnév értékeivel.
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+```
+
+Az alábbi szerepkör-hozzárendelés csak akkor érvényes, ha a meglévő Log Analytics munkaterületet egy másik Azure-előfizetésben használja, mint az arc K8s kapcsolódó fürterőforrás.
+
+```powershell
+$logAnalyticsWorkspaceResourceId = "<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+New-AzRoleAssignment -RoleDefinitionName 'Log Analytics Contributor'  -ObjectId $servicePrincipal.Id -Scope  $logAnalyticsWorkspaceResourceId
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+Például:
+
+```powershell
+.\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
+```
+
+
+
 ## <a name="enable-using-bash-script"></a>Engedélyezés bash-parancsfájl használatával
 
 Az alábbi lépések végrehajtásával engedélyezheti a figyelést a megadott bash-parancsfájl használatával.
@@ -162,7 +189,7 @@ Az alábbi lépések végrehajtásával engedélyezheti a figyelést a megadott 
 4. Ha meglévő Azure Monitor Log Analytics munkaterületet szeretne használni, konfigurálja a változót `logAnalyticsWorkspaceResourceId` a munkaterület erőforrás-azonosítóját jelképező megfelelő értékkel. Ellenkező esetben állítsa a (z) változót a (z) értékre, `""` és a parancsfájl létrehoz egy alapértelmezett munkaterületet a fürt-előfizetés alapértelmezett erőforrás-csoportjában, ha még nem létezik a régióban. A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<SubscriptionID> - \<Region> *formátumához hasonlít.
 
     ```bash
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Ha az arc-kompatibilis Kubernetes-fürt proxykiszolgálón keresztül kommunikál, konfigurálja a változót a `proxyEndpoint` proxykiszolgáló URL-címével. Ha a fürt nem proxykiszolgálón keresztül kommunikál, akkor beállíthatja a értéket a következőre: `""` . További információ: proxy- [végpont konfigurálása](#configure-proxy-endpoint) a cikk későbbi részében.
@@ -194,6 +221,31 @@ Az alábbi lépések végrehajtásával engedélyezheti a figyelést a megadott 
     ```
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
+
+### <a name="using-service-principal"></a>Egyszerű szolgáltatásnév használata
+A bash parancsfájl *enable-monitoring.sh* az interaktív eszköz bejelentkezését használja. Ha inkább a nem interaktív bejelentkezést részesíti előnyben, használhat egy meglévő szolgáltatásnevet, vagy létrehozhat egy újat, amely rendelkezik a szükséges engedélyekkel az [Előfeltételek](#prerequisites)szakaszban leírtak szerint. Az egyszerű szolgáltatás használatához át kell adnia az ügyfél-azonosító,--Client-Secret és a---bérlő-ID értékeket, amelyeket a bash-szkript *enable-monitoring.sh* kíván használni.
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+```
+
+Az alábbi szerepkör-hozzárendelés csak akkor érvényes, ha a meglévő Log Analytics munkaterületet egy másik Azure-előfizetésben használja, mint az arc K8s kapcsolódó fürterőforrás.
+
+```bash
+logAnalyticsWorkspaceResourceId="<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+az role assignment create --role 'Log Analytics Contributor' --assignee $servicePrincipalClientId --scope $logAnalyticsWorkspaceResourceId
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+Például:
+
+```bash
+bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
+```
 
 ## <a name="configure-proxy-endpoint"></a>Proxy végpontjának konfigurálása
 

@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888583"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
+
 Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítanak Azure Active Directory egy Azure-erőforráshoz, például az Azure Spring Cloud-alkalmazáshoz. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban.
 
 Ez a cikk bemutatja, hogyan engedélyezheti és tilthatja le a rendszerhez rendelt felügyelt identitásokat egy Azure Spring Cloud-alkalmazáshoz a Azure Portal és a CLI használatával (az 0.2.4 verzióban elérhető).
@@ -81,7 +84,8 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* [Felügyelt identitások használata a Java SDK-val](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
+
 * [Felügyelt identitásokkal rendelkező Azure Key Vault elérése a Spring boot Starter-ben](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [Felügyelt identitások használata a Java SDK-val](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 

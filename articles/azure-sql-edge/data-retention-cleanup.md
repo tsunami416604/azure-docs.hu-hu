@@ -1,6 +1,6 @@
 ---
-title: Korábbi adatok kezelése adatmegőrzési házirenddel – Azure SQL Edge (előzetes verzió)
-description: Ismerje meg, hogyan kezelheti a korábbi adatok megőrzési szabályzatát az Azure SQL Edge-ben (előzetes verzió)
+title: Korábbi adatok kezelése adatmegőrzési házirenddel – Azure SQL Edge
+description: Ismerje meg, hogyan kezelheti a korábbi adatmegőrzési szabályzatot az Azure SQL Edge szolgáltatásban
 keywords: SQL Edge, adatmegőrzés
 services: sql-edge
 ms.service: sql-edge
@@ -9,22 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9acec467819f159623176edf2f3f763a55019eb4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888130"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Korábbi adatok kezelése adatmegőrzési házirenddel
 
 Az adatmegőrzés az adatbázison és a mögöttes táblákon is engedélyezhető, így a felhasználók rugalmas korosítási házirendeket hozhatnak létre a tábláikban és adatbázisaikban. Az adatmegőrzés alkalmazása egyszerű: ehhez csak egy paramétert kell beállítani a tábla létrehozásakor vagy az ALTER TABLE művelet részeként. 
 
-Miután az adatmegőrzési szabályzat egy adatbázis és a mögöttes tábla esetében a deördög, a háttérben futó idő időzítő feladat lefuttatja az összes elavult rekordot, amely az adatok megőrzéséhez engedélyezve van a táblából. Az egyező sorok azonosítása és a táblázatból való eltávolítása transzparens módon történik a rendszer által ütemezett és futtatott háttér-feladatban. A tábla sorainak életkori feltétele a tábla definíciójában használt oszlop alapján van bejelölve `filter_column` . Ha például a megőrzési időtartam egy hétig van beállítva, a kitakarításra jogosult táblázat sorai megfelelnek a következő feltételnek: 
+Miután az adatmegőrzési szabályzat egy adatbázis és a mögöttes tábla esetében a deördög, a háttérben futó idő időzítő feladat lefuttatja az összes elavult rekordot, amely az adatok megőrzéséhez engedélyezve van a táblából. Az egyező sorok azonosítása és a táblázatból való eltávolítása transzparens módon történik a rendszer által ütemezett és futtatott háttér-feladatban. A tábla sorainak életkori feltétele a tábla definíciójában használt oszlop alapján van bejelölve `filter_column` . Ha például a megőrzési idő egy hétig van beállítva, a törlésre jogosult táblák a következő feltétel valamelyikét elégítik ki: 
 
-```sql
-filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
-```
+- Ha a szűrő oszlop DATETIMEOFFSET adattípust használ, akkor a feltétel `filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())`
+- Máskülönben a feltétel `filter_column < DATEADD(WEEK, -1, SYSDATETIME())`
 
 ## <a name="data-retention-cleanup-phases"></a>Adatmegőrzési karbantartási fázisok
 
@@ -37,7 +36,7 @@ Az adatmegőrzési karbantartási művelet két fázisból áll.
 
 ## <a name="manual-cleanup"></a>Manuális karbantartás
 
-A tábla adatmegőrzési beállításaitól és az adatbázis számítási feladatainak természetétől függően előfordulhat, hogy az automatikus karbantartási szál nem távolítja el teljesen az összes elavult sort a futása során. Ennek támogatásához, valamint az elavult sorok manuális eltávolításának engedélyezéséhez a felhasználók a `sys.sp_cleanup_data_retention` tárolt eljárást az Azure SQL Edge (előzetes verzió) szolgáltatásban mutatták be. 
+A tábla adatmegőrzési beállításaitól és az adatbázis számítási feladatainak természetétől függően előfordulhat, hogy az automatikus karbantartási szál nem távolítja el teljesen az összes elavult sort a futása során. Ha segítségre van ez, és lehetővé teszi a felhasználók számára az elavult sorok manuális eltávolítását, a `sys.sp_cleanup_data_retention` tárolt eljárás az Azure SQL Edge-ben lett bevezetve. 
 
 Ez a tárolt eljárás három paramétert vesz igénybe. 
     - Séma neve – a tábla tulajdonosi sémájának neve. Ez egy kötelező paraméter. 
@@ -67,7 +66,7 @@ A kiváló adattömörítés és a hatékony megőrzés érdekében a fürtözö
 
 ## <a name="monitoring-data-retention-cleanup"></a>Adatmegőrzési karbantartás figyelése
 
-Az adatmegőrzési szabályzatok karbantartási műveletei az Azure SQL Edge (előzetes verzió) szolgáltatásban elérhető kiterjesztett események (Xevent típusú eseményekhez) használatával figyelhetők. További információ a kiterjesztett eseményekről: [Xevent típusú eseményekhez – áttekintés](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events).
+Az adatmegőrzési szabályzatok karbantartási műveletei a kiterjesztett események (Xevent típusú eseményekhez-EK) használatával figyelhetők meg az Azure SQL Edge-ben. További információ a kiterjesztett eseményekről: [Xevent típusú eseményekhez – áttekintés](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events). 
 
 A következő hat kiterjesztett esemény segít nyomon követni a karbantartási műveletek állapotát. 
 
@@ -78,7 +77,9 @@ A következő hat kiterjesztett esemény segít nyomon követni a karbantartási
 | data_retention_task_exception  | Akkor következik be, amikor az adatmegőrzési szabályzattal rendelkező táblák tisztítására szolgáló háttérben végzett feladat a táblára vonatkozó megőrzési karbantartási folyamaton kívül esik. |
 | data_retention_cleanup_started  | Akkor következik be, amikor megkezdődik az adatmegőrzési szabályzattal rendelkező tábla törlése. |
 | data_retention_cleanup_exception  | Az adatmegőrzési szabályzattal rendelkező tábla karbantartási folyamata sikertelen lesz. |
-| data_retention_cleanup_completed  | Akkor következik be, amikor az adatmegőrzési szabályzattal rendelkező tábla tisztítási folyamata lejár. |
+| data_retention_cleanup_completed  | Akkor következik be, amikor az adatmegőrzési szabályzattal rendelkező tábla tisztítási folyamata lejár. |  
+
+Emellett egy nevű új gyűrűs puffer-típus lett `RING_BUFFER_DATA_RETENTION_CLEANUP` hozzáadva a sys. dm_os_ring_buffers dinamikus felügyeleti nézethez. Ez a nézet használható az adatmegőrzési karbantartási műveletek figyelésére. 
 
 
 ## <a name="next-steps"></a>Következő lépések

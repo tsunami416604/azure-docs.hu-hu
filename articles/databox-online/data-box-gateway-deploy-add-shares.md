@@ -8,17 +8,17 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923475"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904373"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: adatok átvitele Azure Data Box Gateway
 
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Ez a cikk azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Data Box Gateway-megosztásokhoz. A megosztások hozzáadása után Data Box Gateway eszköz adatátvitelt hajthat végre az Azure-ba.
 
@@ -57,7 +57,7 @@ A megosztás létrehozásához hajtsa végre a következő eljárást:
 
     3. Adja meg azt a Storage-fiókot, amelyben a megosztás található. Ha egy tároló még nem létezik, a rendszer létrehozza a Storage-fiókban az újonnan létrehozott megosztási névvel. Ha a tároló már létezik, a rendszer a tárolót használja.
        > [!IMPORTANT]
-       > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack peremhálózati vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack Edge Pro vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
     
     4. Válassza ki a **tárolási szolgáltatást** a blokkblobok, lapblobok vagy fájlok közül. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adatok blokkblobokban legyenek tárolva az Azure-ban, ezért a Blokkblob lehetőséget választjuk. Ha a Lapblob lehetőséget választja, biztosítania kell az adatok 512 bájtos igazítását. A VHDX például mindig 512 bájtos igazítású.
    
@@ -107,7 +107,7 @@ A Data Box Gatewayhoz csatlakoztatott Windows Server-ügyfélen a következő pa
 
 
 2. A billentyűzeten válassza a Windows + R lehetőséget. 
-3. A **Futtatás** ablakban adja meg a elemet, majd kattintson az `\\<device IP address>` **OK gombra**. Megnyílik a fájlkezelő. Ekkor meg kell tudnia tekinteni a mappákként létrehozott megosztásokat. A Fájlkezelőben kattintson duplán egy megosztásra (mappára) a tartalom megtekintéséhez.
+3. A **Futtatás** ablakban adja meg a elemet, majd kattintson az `\\<device IP address>` **OK gombra**. Megnyílik a Fájlkezelő. A létrehozott megosztásoknak meg kell jelenniük mappaként. A Fájlkezelőben duplán kattintva nyisson meg egy megosztást (mappát) a tartalma megtekintéséhez.
  
     ![Csatlakozás SMB-megosztáshoz](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -115,13 +115,13 @@ A Data Box Gatewayhoz csatlakoztatott Windows Server-ügyfélen a következő pa
 
 ### <a name="connect-to-an-nfs-share"></a>Csatlakozás NFS-megosztáshoz
 
-Az Azure Stack Edge-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a következő eljárást:
+Az Azure Stack Edge Pro-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a következő eljárást:
 
-1. Győződjön meg arról, hogy az ügyfélen telepítve van a Nfsv4 névleképezője-ügyfél. Ha nincs, az NFS-ügyfél telepítéséhez használja az alábbi parancsot:
+1. Győződjön meg arról, hogy az ügyfélen telepítve van az NFSv4-ügyfél. Ha nincs, az NFS-ügyfél telepítéséhez használja az alábbi parancsot:
 
    `sudo apt-get install nfs-common`
 
-    További információkat az [NFSv4-ügyfél telepítését ismertető](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client) cikkben találhat.
+    További információért látogasson el a [nfsv4 névleképezője-ügyfél telepítése](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client)elemre.
 
 2. Az NFS-ügyfél telepítését követően az alábbi parancs használatával csatlakoztathatja a Data Box Gateway eszközön létrehozott NFS-fájlmegosztást:
 
@@ -139,7 +139,7 @@ Az Azure Stack Edge-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a
 > - A fájlok megosztásból való törlése nem törli a bejegyzéseket a tárfiókból.
 > - Ha az `rsync` Adatmásolást használja, akkor `rsync -a` a beállítás nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

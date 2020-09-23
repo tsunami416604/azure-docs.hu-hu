@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Edge konfigurálása (előzetes verzió)
-description: Az Azure SQL Edge (előzetes verzió) konfigurálásának ismertetése.
+title: Az Azure SQL Edge konfigurálása
+description: Tudnivalók az Azure SQL Edge konfigurálásáról.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816881"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888376"
 ---
-# <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
+# <a name="configure-azure-sql-edge"></a>Az Azure SQL Edge konfigurálása
 
 Az Azure SQL Edge a következő két lehetőség egyikének használatával támogatja a konfigurálást:
 
@@ -30,6 +30,15 @@ Az Azure SQL Edge a következő két lehetőség egyikének használatával tám
 
 Az Azure SQL Edge számos különböző környezeti változót tesz elérhetővé, amelyek segítségével konfigurálhatja az SQL Edge-tárolót. Ezek a környezeti változók a SQL Server on Linux számára rendelkezésre álló részhalmazok. SQL Server on Linux környezeti változókról további információért lásd: [környezeti változók](/sql/linux/sql-server-linux-configure-environment-variables/).
 
+A következő új környezeti változók lettek hozzáadva az Azure SQL Edge-hez. 
+
+| Környezeti változó | Leírás | Értékek |     
+|-----|-----| ---------- |   
+| **MSSQL_TELEMETRY_ENABLED** | A használati és diagnosztikai adatok gyűjtésének engedélyezése vagy letiltása. | TRUE (igaz) vagy FALSE (hamis) |  
+| **MSSQL_TELEMETRY_DIR** | Beállítja a használati és diagnosztikai adatgyűjtési naplófájlok célhelyének könyvtárát. | Mappa helye az SQL Edge-tárolón belül. Ez a mappa csatlakoztatási pontok vagy adatmennyiségek használatával képezhető le egy gazdagép kötetére. | 
+| **MSSQL_PACKAGE** | Megadja a telepítendő dacpac vagy bacpac-csomag helyét. | A dacpac-vagy bacpac-csomagokat tartalmazó mappa, fájl vagy SAS URL-cím. További információkért lásd [: SQL Database DACPAC és BACPAC-csomagok üzembe helyezése az SQL Edge-ben](deploy-dacpac.md). |
+
+
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változót. Ha meg van adva, a rendszer a tároló inicializálása során figyelmen kívül hagyja ezt a környezeti változót.
 
 | Környezeti változó | Leírás |
@@ -38,9 +47,6 @@ Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti vál
 
 > [!IMPORTANT]
 > Az SQL Edge **MSSQL_PID** környezeti változója csak a **prémium** és a **fejlesztői** értéket fogadja el érvényes értékként. Az Azure SQL Edge nem támogatja az inicializálást termékkulcs használatával.
-
-> [!NOTE]
-> Töltse le az Azure SQL Edge-hez készült [Microsoft szoftverlicenc-feltételeit](https://go.microsoft.com/fwlink/?linkid=2128283) .
 
 ### <a name="specify-the-environment-variables"></a>Környezeti változók meghatározása
 
@@ -53,6 +59,9 @@ Az SQL Edge környezeti változóinak megadása, amikor a [Azure Portalon](deplo
 Értékek hozzáadása a **tároló létrehozási beállításaiban**.
 
 ![Beállítás a tároló létrehozása lehetőség használatával](media/configure/set-environment-variables-using-create-options.png)
+
+> [!NOTE]
+> A leválasztott központi telepítési módban környezeti változók is megadhatók a `-e` vagy a `--env` parancs használatával `--env-file` `docker run` .
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>Konfigurálás az MSSQL. conf fájl használatával
 
@@ -71,11 +80,18 @@ Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot
     }
 ```
 
+A következő új MSSQL. conf-beállítások lettek hozzáadva az Azure SQL Edge-hez. 
+
+|Beállítás|Leírás|
+|:---|:---|
+|**customerfeedback** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. További információ: a [használati és diagnosztikai adatok gyűjtésének letiltása](usage-and-diagnostics-data-configuration.md#disable-usage-and-diagnostic-data-collection)|      
+|**userrequestedlocalauditdirectory** | Beállítja a használati és diagnosztikai adatgyűjtési naplófájlok célhelyének könyvtárát. További információ: [a használati és diagnosztikai adatgyűjtés helyi ellenőrzése](usage-and-diagnostics-data-configuration.md#local-audit-of-usage-and-diagnostic-data-collection) |        
+
 A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 
 |Beállítás|Leírás|
 |:---|:---|
-|**Felhasználói visszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
+|**Ügyfélvisszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
 |**Adatbázisbeli levelezési profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
 |**Magas rendelkezésre állás** | Rendelkezésre állási csoportok engedélyezése. |
 |**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
@@ -116,7 +132,7 @@ traceflag2 = 1204
 
 ## <a name="run-azure-sql-edge-as-non-root-user"></a>Az Azure SQL Edge futtatása nem gyökérszintű felhasználóként
 
-Az Azure SQL Edge CTP 2.2-től kezdve az SQL Edge-tárolók nem gyökérszintű felhasználóval vagy csoporttal futhatnak. Ha az Azure piactéren helyezi üzembe a programot, kivéve, ha egy másik felhasználó/csoport van megadva, az SQL Edge-tárolók az MSSQL (nem gyökérszintű) felhasználóként kezdődnek. Ha másik nem root felhasználót szeretne megadni az üzembe helyezés során, adja hozzá a `*"User": "<name|uid>[:<group|gid>]"*` kulcs-érték párokat a tároló létrehozási beállításai között. Az alábbi példában az SQL Edge úgy van konfigurálva, hogy felhasználóként induljon el `*IoTAdmin*` .
+Alapértelmezés szerint az Azure SQL Edge-tárolók nem gyökérszintű felhasználóval vagy csoporttal futnak. Az Azure Marketplace-en (vagy a Docker Run használatával) való üzembe helyezéskor, kivéve, ha egy másik felhasználó/csoport van megadva, az SQL Edge-tárolók az MSSQL (nem root) felhasználóként kezdődnek. Ha másik nem root felhasználót szeretne megadni az üzembe helyezés során, adja hozzá a `*"User": "<name|uid>[:<group|gid>]"*` kulcs-érték párokat a tároló létrehozási beállításai között. Az alábbi példában az SQL Edge úgy van konfigurálva, hogy felhasználóként induljon el `*IoTAdmin*` .
 
 ```json
 {
@@ -140,7 +156,7 @@ chown -R 10001:0 <database file dir>
 
 ### <a name="upgrading-from-earlier-ctp-releases"></a>Frissítés korábbi CTP-kiadásokból
 
-Az Azure SQL Edge korábbi CTP-je úgy lett konfigurálva, hogy legfelső szintű felhasználóként fusson. A korábbi CTP-ről való frissítéskor a következő lehetőségek érhetők el:
+Az Azure SQL Edge korábbi CTPs úgy lettek konfigurálva, hogy legfelső szintű felhasználóként fussanak. A korábbi CTPs való frissítéskor a következő beállítások érhetők el.
 
 - Továbbra is használhatja a root felhasználót – a root felhasználó használatának folytatásához adja hozzá a `*"User": "0:0"*` kulcs-érték párokat a tároló létrehozása lehetőség alatt.
 - Az alapértelmezett MSSQL-felhasználó használata – az alapértelmezett MSSQL-felhasználó használata, kövesse az alábbi lépéseket
@@ -169,11 +185,11 @@ Az Azure SQL Edge konfigurációjának módosításai és az adatbázisfájlok a
 Az első lehetőség az, hogy az állomáson lévő könyvtárat egy adatkötetként csatlakoztassa a tárolóban. Ehhez használja a `docker run` parancsot a `-v <host directory>:/var/opt/mssql` jelzővel. Ez lehetővé teszi, hogy a tároló-végrehajtások között visszaálljon az adatgyűjtés.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 Ezzel a technikával a Docker-on kívül is megoszthatja és megtekintheti a gazdagépen lévő fájlokat.
@@ -189,11 +205,11 @@ Ezzel a technikával a Docker-on kívül is megoszthatja és megtekintheti a gaz
 A második lehetőség egy adatmennyiség-tároló használata. Adatmennyiség-tároló létrehozásához adjon meg egy kötet nevet a paraméterrel rendelkező gazdagép könyvtára helyett `-v` . A következő példa egy **sqlvolume**nevű megosztott adatkötetet hoz létre.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 > [!NOTE]
@@ -213,7 +229,7 @@ Adatmennyiség-tároló eltávolításához használja az `docker volume rm` par
 > Ha törli az adatmennyiség-tárolót, a tárolóban lévő összes Azure SQL Edge-adatbázis *véglegesen* törölve lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

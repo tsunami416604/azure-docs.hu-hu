@@ -86,12 +86,18 @@
     - name: A hatások megismerése
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Hatókör
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: Kezdeményezési struktúra
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: Hozzárendelés struktúrája
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: Kivétel struktúrája
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: Új szabályzat hatásának értékelése
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md

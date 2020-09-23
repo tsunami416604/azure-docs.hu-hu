@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7573e99de96e3d13509056c49bc24be7fe166bf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768384"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906529"
 ---
 # <a name="query-performance-insight"></a>Lekérdezési terheléselemző 
 
@@ -30,7 +30,7 @@ A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-perform
 
 A Azure Database for PostgreSQL-kiszolgáló portál lapján válassza a **lekérdezési teljesítmény betekintése** lehetőséget a menüsáv **intelligens teljesítmény** szakaszában.
 
-![Hosszú ideig futó lekérdezések Lekérdezési terheléselemző](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Hosszú ideig futó lekérdezések Lekérdezési terheléselemző":::
 
 A **hosszú ideig futó lekérdezések** lapon az első öt lekérdezés az átlagos időtartam szerint, 15 perces időközökben összesítve jelenik meg. Több lekérdezés megtekintéséhez válasszon értéket a **Lekérdezések száma** legördülő menüből. A diagram színei ekkor egy adott lekérdezésazonosító tekintetében változhatnak.
 
@@ -40,12 +40,12 @@ A diagram alatti táblázat további részleteket tartalmaz a hosszú ideig fut�
 
 A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak megjelenítéséhez válassza a **Várakozási statisztikák** fület.
 
-![Lekérdezési terheléselemző vár statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Lekérdezési terheléselemző vár statisztikái":::
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Lekérdezési terheléselemző nem érhető el az [olvasási replikák](concepts-read-replicas.md)esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).
 
 

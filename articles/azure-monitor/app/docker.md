@@ -3,12 +3,12 @@ title: Docker-alkalmazások figyelése az Azure Application Insightsban | Micros
 description: A Docker-teljesítményszámlálók, az események és a kivételek a Application Insightson, valamint a tároló alkalmazások telemetria is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977588"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-alkalmazások figyelése Application Insightsban (elavult)
 
@@ -61,7 +61,7 @@ Ha az alkalmazása a [Javához készült Application INSIGHTS SDK](./java-get-st
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-Ezzel hozzáadja a Docker-adatokat, például a tárolót és a gazdagép azonosítóját az alkalmazásból eljuttatott minden telemetria-elemhez.
+Ezzel hozzáadja a Docker-adatokat, például a tárolót és a gazdagép AZONOSÍTÓját az alkalmazásból eljuttatott minden telemetria-elemhez.
 
 ## <a name="view-your-telemetry"></a>A telemetria megtekintése
 Térjen vissza a Azure Portal Application Insights erőforrásához.
@@ -71,12 +71,12 @@ Kattintson a Docker csempére.
 Hamarosan megtekintheti a Docker-alkalmazásból érkező adatok adatait, különösen akkor, ha a Docker-motoron fut más tárolók.
 
 ### <a name="docker-container-events"></a>Docker-tároló eseményei
-![például](./media/docker/13.png)
+![A képernyőképen a keresés, a diagnosztikai keresési eredmények ablaka látható, amely egy egyéni eseményről az egyéni adatokkal rendelkező ablakra mutat.](./media/docker/13.png)
 
 Az egyes események kivizsgálásához kattintson a [Keresés](./diagnostic-search.md)gombra. Keresés és szűrés a kívánt események megkereséséhez. További részletekért kattintson bármelyik eseményre.
 
 ### <a name="exceptions-by-container-name"></a>Kivételek a tároló neve alapján
-![például](./media/docker/14.png)
+![Képernyőfelvétel: a Metrikaböngésző oldalon egy diagram van kiválasztva, a jobb oldalon pedig a diagram részleteit tartalmazó ablak jelenik meg.](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Az alkalmazás telemetria felvett Docker-környezet
 Az AI SDK-val az alkalmazásból elkészített telemetria-kérések a Docker környezeti adataival gazdagodnak.
@@ -96,7 +96,7 @@ Az AI SDK-val az alkalmazásból elkészített telemetria-kérések a Docker kö
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Java-Application Insights](./java-get-started.md)
 * [Node.js-hez készült Application Insights](./nodejs.md)

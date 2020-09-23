@@ -1,17 +1,17 @@
 ---
 title: A megfelelő központi telepítési típus kiválasztása – Azure Database for MySQL
 description: Ez a cikk azokat a tényezőket ismerteti, amelyeket figyelembe kell vennie, mielőtt üzembe helyezi a Azure Database for MySQL infrastruktúra-szolgáltatásként (IaaS) vagy a szolgáltatásként szolgáló platformként (Pásti).
-author: kummanish
-ms.author: manishku
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 827c1954456ee7943c48525919ed411836f610aa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/26/2020
+ms.openlocfilehash: a1b66528bee63fb123271e4277e122603ced2e75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114023"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906514"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -21,45 +21,66 @@ A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
 
 - **Azure Database for MySQL**. Ez a lehetőség egy teljes körűen felügyelt MySQL-adatbázismotor, amely a MySQL Community Edition stabil verzióján alapul. Ez az Azure-beli felhőalapú platformon üzemelő, szolgáltatásként (DBaaS) elérhető, a (z) és a
 
-  Ha felügyelt példánya van az Azure-ban, a MySQL-t használhatja olyan beépített funkciókkal, amelyek egyébként nagy méretű konfigurációt igényelnek, ha a MySQL-kiszolgáló vagy egy Azure-beli virtuális gépen van.
+  Ha felügyelt MySQL-példányt használ az Azure-ban, beépített funkciókkal rendelkezik, mint például az automatikus javítás, a magas rendelkezésre állás, az automatizált biztonsági másolatok, a rugalmas skálázás, a nagyvállalati szintű biztonság, a megfelelőség és az irányítás, a figyelés és a riasztás, amely egyébként a MySQL-kiszolgáló helyszíni vagy Azure-beli virtuális gépeken való használatának megkövetelése. Ha a MySQL-t szolgáltatásként használja, az utólagos elszámolású, és a vertikális felskálázást és a vertikális felskálázást is megszakíthatja. 
+  
+  A MySQL Community Edition által működtetett [Azure Database for MySQL](overview.md)két üzembe helyezési módban érhető el:
+    - Az [egyetlen kiszolgáló](single-server-overview.md) egy teljes körűen felügyelt adatbázis-szolgáltatás, amely minimális követelményeket támaszt az adatbázis testreszabásához. Az egykiszolgálós platform úgy lett kialakítva, hogy az adatbázis-kezelési funkciók, például a javítások, a biztonsági mentések, a magas rendelkezésre állás, a biztonság minimális felhasználói konfigurációval és vezérléssel kezelhető legyen. Az architektúra úgy van optimalizálva, hogy 99,99%-os rendelkezésre állást biztosítson egyetlen rendelkezésre állási zónában. Az egyetlen kiszolgáló a legjobb megoldás a Felhőbeli natív alkalmazásokhoz, amelyek az automatikus javítás kezelésére szolgálnak anélkül, hogy a javítási ütemterv és az egyéni MySQL konfigurációs beállítások részletes szabályozására lenne szükség. 
+    
+    - A [rugalmas kiszolgáló (előzetes verzió)](flexible-server/overview.md) egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások számára. A szolgáltatás általában nagyobb rugalmasságot és kiszolgáló-konfigurációt biztosít az egykiszolgálós telepítéshez képest a felhasználói követelmények alapján. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek. A rugalmas kiszolgálók jobb költség-optimalizálási szabályozást is biztosítanak, amely lehetővé teszi a kiszolgáló és a feltört SKU-alkalmazások indítását és leállítását, ideális olyan számítási feladatokhoz, amelyeknek nincs szükségük teljes számítási kapacitásra. 
+    A rugalmas kiszolgálók legmegfelelőbbek a következőkhöz:
+     
+      - Alkalmazásfejlesztés a MySQL-motor jobb vezérléséhez és testreszabásához.
+      - Zóna redundáns magas rendelkezésre állása
+      - Felügyelt karbantartási időszakok
 
-  Ha a MySQL-t használja szolgáltatásként, akkor a nagyobb felügyelet érdekében a megszakadás és a vertikális felskálázás lehetőségével kell fizetnie. Az önálló MySQL-kiszolgálótól eltérően a Azure Database for MySQL olyan további funkciókat is tartalmaz, mint például a beépített magas rendelkezésre állás, az intelligencia és a felügyelet.
+- **MySQL Azure-beli virtuális gépeken**. Ez a lehetőség a IaaS iparági kategóriába tartozik. Ezzel a szolgáltatással a MySQL-kiszolgálót a felügyelt virtuális gépeken belül futtathatja az Azure Cloud platformon. A MySQL legújabb verzióit és kiadásait telepítheti a virtuális gépre.
 
-- **MySQL Azure-beli virtuális gépeken**. Ez a lehetőség a IaaS iparági kategóriába tartozik. Ezzel a szolgáltatással a MySQL-kiszolgálót egy teljes körűen felügyelt virtuális gépen futtathatja az Azure Cloud platformon. A MySQL legújabb verzióit és kiadásait IaaS virtuális gépre lehet telepíteni.
-
-  A Azure Database for MySQL legjelentősebb különbsége, hogy az Azure-beli virtuális gépeken a MySQL felügyeli az adatbázis-motort. Ez a szabályozás azonban a virtuális gépek és számos adatbázis-felügyeleti (DBA) feladat felügyeletének a felelősségi körébe tartozik. Ezen feladatok közé tartozik az adatbázis-kiszolgálók, az adatbázis-helyreállítás és a magas rendelkezésre állású kialakítás fenntartása és javítása.
+## <a name="comparing-the-mysql-deployment-options-in-azure"></a>A MySQL üzembe helyezési lehetőségeinek összehasonlítása az Azure-ban
 
 A fenti lehetőségek közötti fő különbségek a következő táblázatban láthatók:
 
-| Attribútum          | Azure Database for MySQL | MySQL Azure-beli virtuális gépeken    |
-|:-------------------|:-----------------------------|:--------------------|
-| Szolgáltatói szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
-| Operációs rendszer javítása        | Automatikus  | Ügyfelek által felügyelt |
-| MySQL-javítás     | Automatikus  | Ügyfelek által felügyelt |
-| Magas rendelkezésre állás | A magas rendelkezésre állású (HA) modell olyan beépített feladatátvételi mechanizmusokon alapul, amelyekben csomópont szintű megszakítás történik. Ilyen esetekben a szolgáltatás automatikusan létrehoz egy új példányt, és csatolja a tárolót ehhez a példányhoz. | Az ügyfelek a magas rendelkezésre állás kialakítását, tesztelését és karbantartását is elismerik. A képességek lehetnek fürtözés, replikálás stb.|
-| Zóna redundancia | Jelenleg nem támogatott | Az Azure-beli virtuális gépek különböző rendelkezésre állási zónákban való futtatásra állíthatók be. Helyszíni megoldás esetén az ügyfeleknek saját másodlagos adatközpontot kell létrehozniuk, kezelnie és karbantartani.|
-| Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.| Ügyfelek által felügyelt
-| Biztonsági mentés és helyreállítás | A automatikusan létrehozza a [kiszolgáló biztonsági másolatait](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) , és tárolja azokat a helyileg redundáns vagy földrajzilag redundáns, felhasználó által konfigurált tárolóban. A szolgáltatás teljes, differenciális és tranzakciónapló-alapú biztonsági mentéseket tart | Ügyfelek által felügyelt |
-| Adatbázis-műveletek figyelése | A lehetővé teszi az ügyfeleknek, hogy [riasztásokat állítsanak be](https://docs.microsoft.com/azure/mysql/concepts-monitoring) az adatbázis-műveletre, és a küszöbértékek elérésekor járjanak. | Ügyfelek által felügyelt |
-| Fejlett fenyegetésvédelem | [Fejlett veszélyforrások elleni védelmet](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)nyújt. Ez a védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. | Az ügyfeleknek saját maguknak kell elkészíteniük ezt a védelmet.
-| Vészhelyreállítás | Az automatizált biztonsági mentéseket a felhasználó által konfigurált [helyileg redundáns vagy földrajzilag redundáns tárolóban](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal)tárolja. A biztonsági mentések egy adott időpontban is visszaállíthatják a kiszolgálót. A megőrzési időtartam 7 és 35 nap között van. A visszaállítás a Azure Portal használatával valósul meg. | Az ügyfelek teljes körűen kezelik. A felelősség magában foglalja az ütemezési, tesztelési, archiválási, tárolási és adatmegőrzési feladatokat. Egy másik lehetőség egy Azure Recovery Services-tároló használata az Azure-beli virtuális gépek és adatbázisok biztonsági mentésére a virtuális gépeken. Ez a beállítás előzetes verzióban érhető el. |
-| Teljesítménnyel kapcsolatos javaslatok | [Teljesítményre vonatkozó javaslatokat](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) biztosít az ügyfeleknek a rendszer által létrehozott használati naplófájlok alapján. A javaslatok segítenek optimalizálni a munkaterheléseket. | Ügyfelek által felügyelt |
+
+| Attribútum          | Azure Database for MySQL<br/>Önálló kiszolgáló |Azure Database for MySQL<br/>Rugalmas kiszolgáló  |MySQL Azure-beli virtuális gépeken                      |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
+| MySQL-verzió támogatása | 5,6, 5,7 & 8,0| 5.7 | Bármely verzió|
+| Számítási skálázás | Támogatott (a és az alapszintű csomagra való skálázás nem támogatott)| Támogatott | Támogatott|
+| Tárterület mérete | 5 GiB – 16 TiB| 5 GiB – 16 TiB | 32 GiB – 32 767 GiB|
+| Online tárterület skálázása | Támogatott| Támogatott| Nem támogatott|
+| Automatikus tárolás skálázása | Támogatott| Előzetes verzióban nem támogatott| Nem támogatott|
+| Hálózati kapcsolat | – Nyilvános végpontok kiszolgálói tűzfallal.<br/> – Privát hozzáférés a privát kapcsolat támogatásával.|– Nyilvános végpontok kiszolgálói tűzfallal.<br/> – Privát hozzáférés Virtual Network integrációval.| – Nyilvános végpontok kiszolgálói tűzfallal.<br/> – Privát hozzáférés a privát kapcsolat támogatásával.|
+| Szolgáltatói szerződés (SLA) | 99,99%-os rendelkezésre állási SLA |Előzetes verzióban nem érhető el SLA| 99,99% a Availability Zones használatával|
+| Operációs rendszer javítása| Automatikus  | Automatikus egyéni karbantartási időszak vezérlésével | Végfelhasználók által felügyelt |
+| MySQL-javítás     | Automatikus  | Automatikus egyéni karbantartási időszak vezérlésével | Végfelhasználók által felügyelt |
+| Magas rendelkezésre állás | Az egyetlen rendelkezésre állási zónán belül beépített HA| Beépített HA a rendelkezésre állási zónákon belül és között van | Egyéni felügyelet fürtszolgáltatással, replikálással stb.|
+| Zónaredundancia | Nem támogatott | Támogatott | Támogatott|
+| Hibrid forgatókönyvek | Támogatott [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)| Nem érhető el előzetes verzióban | Végfelhasználók által felügyelt |
+| Olvasási replikák | Támogatott| Támogatott | Végfelhasználók által felügyelt |
+| Backup | Automatizált, 7-35 napos megőrzéssel | Automatizált, 1-35 napos megőrzéssel | Végfelhasználók által felügyelt |
+| Adatbázis-műveletek figyelése | Támogatott | Támogatott | Végfelhasználók által felügyelt |
+| Vészhelyreállítás | A Geo-redundáns biztonsági mentési tár és a régiók közötti olvasási replikák támogatása | Előzetes verzióban nem támogatott| Egyéni felügyelt replikációs technológiákkal |
+| Lekérdezési teljesítmény elemzése | Támogatott | Nem érhető el előzetes verzióban| Végfelhasználók által felügyelt |
+| Fenntartott példány díjszabása | Támogatott | Nem érhető el előzetes verzióban | Támogatott |
+| Azure AD-hitelesítés | Támogatott | Nem érhető el előzetes verzióban | Nem támogatott|
+| Inaktív adatok titkosítása | Ügyfél által felügyelt kulcsokkal támogatott | Szolgáltatás által felügyelt kulcsokkal támogatott | Nem támogatott|
+| SSL/TLS | Alapértelmezés szerint engedélyezve van a TLS v 1.2, 1,1 és 1,0 támogatással | Kikényszerítve a TLS 1.2-es verzióval | A TLS 2.0-s, 1,1-es és 1,0-es verzióval támogatott | 
+| A flotta kezelése | Az Azure CLI, a PowerShell, a REST és a Azure Resource Manager támogatása | Az Azure CLI, a PowerShell, a REST és a Azure Resource Manager támogatása  | Az Azure CLI, a PowerShell, a REST és a Azure Resource Manager rendszerű virtuális gépek esetében támogatott |
+
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>A Pásti vagy a IaaS kiválasztásának üzleti motivációi
 
 A MySQL-adatbázisok üzemeltetéséhez több tényező is befolyásolhatja a IaaS-t vagy a kiválasztását.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Költség
 
-A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépeken a Azure Database for MySQL és a MySQL
+A költségcsökkentés gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépeken a Azure Database for MySQL és a MySQL
 
 #### <a name="billing"></a>Számlázás
 
-Azure Database for MySQL jelenleg számos különböző szinten érhető el szolgáltatásként, és az erőforrásokra eltérő árak érvényesek. Az összes erőforrás számlázása óránként, rögzített sebességgel történik. A jelenleg támogatott szolgáltatási rétegekkel, számítási méretekkel és tárolási mennyiségekkel kapcsolatos legfrissebb információkért lásd: [virtuális mag-alapú vásárlási modell](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). A szolgáltatási szintek és a számítási méretek dinamikusan állíthatók be úgy, hogy megfeleljenek az alkalmazás eltérő átviteli igényeinek. A kimenő internetes forgalom díját a normál [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/)alapján számítjuk fel.
+Azure Database for MySQL jelenleg számos különböző szinten érhető el szolgáltatásként, és az erőforrásokra eltérő árak érvényesek. Az összes erőforrás számlázása óránként, rögzített sebességgel történik. A jelenleg támogatott szolgáltatási szintek, számítási méretek és tárolási összegek legfrissebb információit a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/mysql/)tekintheti meg. A szolgáltatási szintek és a számítási méretek dinamikusan állíthatók be úgy, hogy megfeleljenek az alkalmazás eltérő átviteli igényeinek. A kimenő internetes forgalom díját a normál [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/)alapján számítjuk fel.
 
-A Azure Database for MySQL a Microsoft automatikusan konfigurálja, kijavításokat végez, és frissíti az adatbázis szoftverét. Ezek az automatizált műveletek csökkentik az adminisztrációs költségeket. Emellett a Azure Database for MySQL [beépített biztonsági mentési](https://docs.microsoft.com/azure/mysql/concepts-backup) képességekkel rendelkezik. Ezeknek a képességeknek köszönhetően jelentős költségmegtakarítást érhet el, különösen akkor, ha nagy számú adatbázissal rendelkezik. Ezzel szemben az Azure-beli virtuális gépeken futó MySQL-sel bármelyik MySQL-verziót kiválaszthatja és futtathatja. Függetlenül attól, hogy milyen MySQL-verziót használ, fizetnie kell a kiépített virtuális gépen, valamint a felhasznált MySQL-licencek költségeiért.
+A Azure Database for MySQL a Microsoft automatikusan konfigurálja, kijavításokat végez, és frissíti az adatbázis szoftverét. Ezek az automatizált műveletek csökkentik az adminisztrációs költségeket. Azure Database for MySQL a [biztonsági mentések képességei is automatizáltak](https://docs.microsoft.com/azure/mysql/concepts-backup) . Ezeknek a képességeknek köszönhetően jelentős költségmegtakarítást érhet el, különösen akkor, ha nagy számú adatbázissal rendelkezik. Ezzel szemben az Azure-beli virtuális gépeken futó MySQL-sel bármelyik MySQL-verziót kiválaszthatja és futtathatja. Függetlenül attól, hogy milyen MySQL-verziót használ, fizetnie kell a kiépített virtuális gépen, az adattárolási költségekkel, a biztonsági mentéssel, a figyeléssel és a naplózási szolgáltatással, valamint a használt MySQL-licenccel kapcsolatos költségekkel (ha van ilyen).
 
-A Azure Database for MySQL beépített magas rendelkezésre állást biztosít bármilyen csomópont szintű megszakításhoz, miközben továbbra is fenntartja a szolgáltatás 99,99%-os SLA-garanciáját. A virtuális gépeken belüli magas rendelkezésre állás érdekében azonban az ügyfeleknek a magas rendelkezésre állási lehetőségeket, például a MySQL-adatbázison elérhető [MySQL-replikációt](https://dev.mysql.com/doc/refman/8.0/en/replication.html) kell használniuk. A támogatott magas rendelkezésre állási lehetőség használata nem biztosít további SLA-t. Ugyanakkor további költségekkel és adminisztratív terheléssel több mint 99,99%-os adatbázis-elérhetőséget érhet el.
+A Azure Database for MySQL beépített magas rendelkezésre állást biztosít bármilyen csomópont szintű megszakításhoz, miközben továbbra is fenntartja a szolgáltatás 99,99%-os SLA-garanciáját. Az adatbázisok magas rendelkezésre állása esetén azonban a virtuális gépeken a magas rendelkezésre állási lehetőségeket, például a MySQL-adatbázison elérhető [MySQL-replikációt](https://dev.mysql.com/doc/refman/8.0/en/replication.html) kell használni. A támogatott magas rendelkezésre állási lehetőség használata nem biztosít további SLA-t. Ugyanakkor további költségekkel és adminisztratív terheléssel több mint 99,99%-os adatbázis-elérhetőséget érhet el.
 
 A díjszabással kapcsolatos további információkért tekintse meg a következő cikkeket:
 * [Díjszabás Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/)
@@ -68,13 +89,21 @@ A díjszabással kapcsolatos további információkért tekintse meg a következ
 
 ### <a name="administration"></a>Felügyelet
 
-Sok vállalat esetében a felhőalapú szolgáltatásba való áttérésre vonatkozó döntés annyit jelent, mint az adminisztráció bonyolultságának kiszervezése. A IaaS és a Pásti, a Microsoft:
+Sok vállalat esetében a felhőalapú szolgáltatásba való áttérésre vonatkozó döntés annyit jelent, mint az adminisztráció bonyolultságának kiszervezése. 
+
+A IaaS-mel a Microsoft:
 
 - A mögöttes infrastruktúra felügyelete.
-- A automatikusan replikálja az összes adatforrást a vész-helyreállítás biztosításához.
-- Az adatbázis szoftverének konfigurálása és frissítése.
-- Kezeli a terheléselosztást.
-- Transzparens feladatátvételt hajt végre, ha kiszolgálóhiba történt.
+- Automatizált javítást biztosít a mögöttes hardverek és operációs rendszerek számára.
+  
+A Microsoft:
+
+- A mögöttes infrastruktúra felügyelete.
+- Automatizált javítást biztosít a mögöttes hardverek, az operációs rendszer és az adatbázis-motor számára.
+- Az adatbázis magas rendelkezésre állását kezeli.
+- A automatikusan végrehajtja a biztonsági mentéseket, és az összes adat replikálásával vész-helyreállítást biztosít.
+- Alapértelmezés szerint az inaktív és a mozgásban lévő adatok titkosítása.
+- Figyeli a kiszolgálót, és funkciókat biztosít a lekérdezési teljesítményhez és a teljesítménnyel kapcsolatos ajánlásokhoz
 
 A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
@@ -89,15 +118,15 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
   Emellett a magas rendelkezésre állás konfigurálása egy másik adatközponthoz minimálisan szükséges a konfiguráció vagy a felügyelet nélkül.
 
-* Az Azure-beli virtuális gépeken futó MySQL-sel teljes mértékben szabályozhatja az operációs rendszert és a MySQL-kiszolgáló példányának konfigurációját. A virtuális géppel eldöntheti, hogy mikor frissítse vagy frissítse az operációs rendszert és az adatbázis szoftverét. Azt is eldöntheti, hogy mikor telepítsen további szoftvereket, például vírusirtó alkalmazást. Bizonyos automatizált funkciók jelentősen leegyszerűsítik a javítást, a biztonsági mentést és a magas rendelkezésre állást. A virtuális gép méretét, a lemezek számát és a tárolási konfigurációkat is szabályozhatja. További információ: [virtuális gépek és felhőalapú szolgáltatások mérete az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)-ban.
+* Az Azure-beli virtuális gépeken futó MySQL-sel teljes mértékben szabályozhatja az operációs rendszert és a MySQL-kiszolgáló példányának konfigurációját. A virtuális géppel eldöntheti, hogy mikor frissítse vagy frissítse az operációs rendszert és az adatbázis szoftverét, és hogy milyen javításokat kell alkalmaznia. Azt is eldöntheti, hogy mikor telepítsen további szoftvereket, például vírusirtó alkalmazást. Bizonyos automatizált funkciók jelentősen leegyszerűsítik a javítást, a biztonsági mentést és a magas rendelkezésre állást. A virtuális gép méretét, a lemezek számát és a tárolási konfigurációkat is szabályozhatja. További információ: [virtuális gépek és felhőalapú szolgáltatások mérete az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)-ban.
 
 ### <a name="time-to-move-to-azure"></a>Az Azure-ba való áttérés ideje
 
 * A Azure Database for MySQL a megfelelő megoldás a felhőben tervezett alkalmazások számára, ha a fejlesztő és az új megoldások piacra jutásának gyors időpontja kritikus fontosságú. A DBA-hez hasonló programozott funkciókkal a szolgáltatás alkalmas a Felhőbeli építészek és fejlesztők számára, mivel csökkenti a mögöttes operációs rendszer és adatbázis felügyeletének szükségességét.
 
-* Ha el szeretné kerülni az új helyszíni hardver beszerzésének idejét és költségét, a MySQL az Azure-beli virtuális gépeken a megfelelő megoldás olyan alkalmazásokhoz, amelyek MySQL-adatbázist igényelnek, vagy Windows vagy Linux rendszerű MySQL-funkciókhoz férnek hozzá. Ez a megoldás alkalmas a meglévő helyszíni alkalmazások és adatbázisok az Azure-ba való áttelepítésére is, olyan esetekben, amikor a Azure Database for MySQL gyenge illeszkedést biztosít.
+* Ha el szeretné kerülni az új helyszíni hardver beszerzésének idejét és költségét, a MySQL az Azure-beli virtuális gépeken a megfelelő megoldás olyan alkalmazásokhoz, amelyek a szolgáltatás által nem támogatott, illetve a mögöttes operációs rendszer elérését igénylik a MySQL motor részletes szabályozására és testreszabására. Ez a megoldás alkalmas a meglévő helyszíni alkalmazások és adatbázisok az Azure-ba való áttelepítésére is, olyan esetekben, amikor a Azure Database for MySQL gyenge illeszkedést biztosít.
 
-  Mivel nincs szükség a bemutató, az alkalmazás és az adatrétegek módosítására, időt és költségvetést takaríthat meg a meglévő megoldás újratervezése során. Ehelyett a megoldások Azure-ba való áttelepítésére és az Azure-platform által igényelt teljesítmény-optimalizálásokra koncentrálhat.
+Mivel nincs szükség a bemutató, az alkalmazás és az adatrétegek módosítására, időt és költségvetést takaríthat meg a meglévő megoldás újratervezése során. Ehelyett a megoldások Azure-ba való áttelepítésére és az Azure-platform által igényelt teljesítmény-optimalizálásokra koncentrálhat.
 
 ## <a name="next-steps"></a>Következő lépések
 

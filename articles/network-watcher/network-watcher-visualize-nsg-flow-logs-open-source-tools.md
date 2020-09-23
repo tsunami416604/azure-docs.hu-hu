@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807669"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986259"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-forgalomnaplók vizualizációja nyílt forráskódú eszközök használatával
 
@@ -25,11 +25,11 @@ A hálózati biztonsági csoport folyamatábrája olyan információkat biztosí
 
 Ezek a flow-naplók nehéz kézzel elemezni és betekintést nyerni. Azonban több nyílt forráskódú eszköz is rendelkezésre áll, amelyek segítenek megjeleníteni ezeket az adatforrásokat. Ez a cikk megoldást nyújt a naplók rugalmas verem használatával történő megjelenítésére, így gyorsan indexelheti és megjelenítheti a folyamat naplóit egy Kibana-irányítópulton.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Ebben a cikkben egy olyan megoldást hozunk létre, amely lehetővé teszi a hálózati biztonsági csoport folyamatábráinak megjelenítését a rugalmas verem használatával.  A Logstash bemeneti beépülő modulja közvetlenül a flow-naplókat tartalmazó tárolási blobból szerzi be a folyamat naplóit. Ezután a rugalmas verem használatával a rendszer indexeli a folyamat naplóit, és egy Kibana-irányítópult létrehozásához használja az információk megjelenítéséhez.
 
-![forgatókönyv][scenario]
+![A diagram egy olyan forgatókönyvet mutat be, amely lehetővé teszi a hálózati biztonsági csoport folyamatábráinak megjelenítését a rugalmas verem használatával.][scenario]
 
 ## <a name="steps"></a>Lépések
 
@@ -193,7 +193,7 @@ A beépülő modullal kapcsolatos további információkért tekintse meg a [dok
    ./bin/kibana
    ```
 
-3. A Kibana webes felületének megtekintéséhez navigáljon a`http://localhost:5601`
+3. A Kibana webes felületének megtekintéséhez navigáljon a `http://localhost:5601`
 4. Ebben az esetben a folyamat naplóihoz használt index minta a "NSG-flow-logs". Az index minta az logstash. conf fájl "output" szakaszában módosítható.
 5. Ha távolról szeretné megtekinteni a Kibana-irányítópultot, hozzon létre egy bejövő NSG-szabályt, amely engedélyezi a hozzáférést a 5601-es **porthoz**.
 
@@ -215,27 +215,27 @@ A minta irányítópult több vizualizációt biztosít a flow naplóihoz:
 
 1. Az időpontok közötti adatsorozat-grafikonok alapján, az adott időszakon belüli folyamatok számát ábrázoló döntési/irányi folyamatok. Szerkesztheti az időegységet és a két vizualizáció közötti időtartamot is. A folyamatokra vonatkozó döntés az engedélyezési vagy megtagadási döntések arányát jeleníti meg, míg a folyamatok iránya szerint a bejövő és a kimenő forgalom arányát jeleníti meg. Ezekkel a vizualizációkkal az idő múlásával ellenőrizheti a forgalmi trendeket, és megkeresheti az esetleges tüskéket vagy szokatlan mintákat.
 
-   ![2. ábra][2]
+   ![A képernyőképen egy minta-irányítópult látható, amelynek folyamata döntés és irány az idő múlásával.][2]
 
 2. Folyamatok a cél/forrás port – kördiagramok – a megfelelő portokra irányuló folyamatok részletezését mutatják. Ebben a nézetben láthatja a leggyakrabban használt portokat. Ha a tortadiagramon belül egy adott portra kattint, az irányítópult többi része az adott porton belüli folyamatokra lesz szűrve.
 
-   ![figure3][3]
+   ![A képernyőképen egy minta irányítópult látható, amely a cél és a forrásport által forgalmazott folyamatokat jeleníti meg.][3]
 
 3. Folyamatok száma és a legkorábbi naplózási idő – a metrikák a rögzített folyamatok számát és a legkorábbi napló rögzítésének dátumát mutatják.
 
-   ![figure4][4]
+   ![Képernyőfelvétel: egy minta-irányítópult, amely a folyamatok számát és a legkorábbi naplózási időt jeleníti meg.][4]
 
 4. Folyamatok NSG és Rule szerint – az egyes NSG belüli folyamatok eloszlását, valamint az egyes NSG belüli szabályok eloszlását bemutató oszlopdiagram. Itt láthatja, hogy mely NSG és szabályok generálják a legtöbb forgalmat.
 
-   ![figure5][5]
+   ![Képernyőfelvétel: az N S G és a szabály által forgalmazott minta-irányítópult.][5]
 
 5. Az első 10 forrás/cél IP-címek – sávdiagramok, amelyek az első 10 forrás-és cél IP-címeket mutatják. Ezeket a diagramokat beállíthatja úgy, hogy több vagy kevesebb felső IP-címet jelenítsen meg. Itt láthatja a leggyakrabban előforduló IP-címeket, valamint az egyes IP-címekre irányuló forgalomra vonatkozó döntést (Engedélyezés vagy megtagadás).
 
-   ![figure6][6]
+   ![Képernyőfelvétel: az első tíz forrás és a cél I P-címek által forgalmazott minta irányítópult.][6]
 
 6. Flow rekordok – ez a táblázat az egyes folyamatokon belül található információkat, valamint a hozzá tartozó minősítések és szabályt tartalmazza.
 
-   ![figure7][7]
+   ![Képernyőfelvétel: egy tábla flow-rekordok.][7]
 
 Az irányítópult tetején található lekérdezési sáv használatával a folyamatok bármely paramétere alapján szűrheti az irányítópultot, például az előfizetés AZONOSÍTÓját, az erőforráscsoportot, a szabályt vagy más érdekes változót. A Kibana lekérdezéseit és szűrőit a [hivatalos dokumentációban](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html) találja.
 
@@ -243,7 +243,7 @@ Az irányítópult tetején található lekérdezési sáv használatával a fol
 
 A hálózati biztonsági csoport folyamatábráinak és a rugalmas verem kombinálásával a hálózati forgalom megjelenítésének hatékony és testreszabható módját is elérjük. Ezek az irányítópultok lehetővé teszik a hálózati forgalom gyors megszerzését és megosztását, valamint az esetleges anomáliák szűrését és kivizsgálását. Az Kibana használatával testreszabhatja ezeket az irányítópultokat, és létrehozhat bizonyos vizualizációkat, hogy azok megfeleljenek a biztonsági, auditálási és megfelelőségi igényeknek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan jelenítheti meg a NSG-flow-naplókat a Power BI a [NSG flow-naplók megjelenítése a Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

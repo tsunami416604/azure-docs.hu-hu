@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 07/6/2020
-ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881879"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Mi az az Azure Stream Analytics?
 
@@ -57,7 +57,7 @@ A Stream Analytics kimenetek teljes listájáért lásd: [Azure stream Analytics
 
 ## <a name="programmer-productivity"></a>Programozói termelékenység
 
-Azure Stream Analytics egy egyszerű SQL-alapú lekérdezési nyelvet használ, amely hatékony időbeli korlátozásokkal bővült a mozgásban lévő adatelemzéshez. A feladattranszformációk a [Stream Analytics egyszerű, deklaratív lekérdező nyelvével](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) definiálhatók, amely lehetővé teszi, hogy egyszerű SQL-szerkezetekkel hozzon létre összetett historikus lekérdezéseket. Mivel Stream Analytics lekérdezés nyelve konzisztens az SQL nyelvével, az SQL megfelelő ismerete elegendő a feladatok létrehozásának megkezdéséhez. A feladatokat olyan fejlesztői eszközök használatával is létrehozhatja Stream Analytics, mint például a Azure PowerShell, a [Visual Studio Tools](stream-analytics-tools-for-visual-studio-install.md), a [stream Analytics Visual Studio Code bővítmény](quick-create-vs-code.md)vagy a Azure Resource Manager sablonok. A fejlesztői eszközök használatával offline módon fejleszthet transzformációs lekérdezéseket és a [folyamatos integrációs és folyamatos teljesítési folyamattal](stream-analytics-tools-for-visual-studio-cicd.md) küldhet be feladatokat az Azure-ba.
+Azure Stream Analytics egy egyszerű SQL-alapú lekérdezési nyelvet használ, amely hatékony időbeli korlátozásokkal bővült a mozgásban lévő adatelemzéshez. A feladattranszformációk a [Stream Analytics egyszerű, deklaratív lekérdező nyelvével](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) definiálhatók, amely lehetővé teszi, hogy egyszerű SQL-szerkezetekkel hozzon létre összetett historikus lekérdezéseket. Mivel Stream Analytics lekérdezés nyelve konzisztens az SQL nyelvével, az SQL megfelelő ismerete elegendő a feladatok létrehozásának megkezdéséhez. A feladatokat olyan fejlesztői eszközök használatával is létrehozhatja Stream Analytics, mint például a Azure PowerShell, a [Visual Studio Tools](stream-analytics-tools-for-visual-studio-install.md), a [stream Analytics Visual Studio Code bővítmény](quick-create-visual-studio-code.md)vagy a Azure Resource Manager sablonok. A fejlesztői eszközök használatával offline módon fejleszthet transzformációs lekérdezéseket és a [folyamatos integrációs és folyamatos teljesítési folyamattal](stream-analytics-tools-for-visual-studio-cicd.md) küldhet be feladatokat az Azure-ba.
 
 A Stream Analytics lekérdezési nyelv a streaming adatok elemzéséhez és feldolgozásához használható függvények széles skáláját kínálja. Ez a lekérdezési nyelv támogatja az egyszerű adatmanipulációt, az összesítési és elemzési funkciókat, a [térinformatikai funkciókat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), a [mintázat megfeleltetését](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) és a [rendellenességek észlelését](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection). Szerkesztheti a lekérdezéseket a portálon, és tesztelheti azokat az élő streamből kinyert mintaadatok használatával.
 
@@ -106,4 +106,4 @@ A cikk az Azure Stream Analytics szolgáltatásról nyújtott áttekintést. Ezu
 * [Stream Analytics-feladat létrehozása az Azure Portalon](stream-analytics-quick-create-portal.md).
 * [Hozzon létre egy stream Analytics feladatot Azure PowerShell használatával](stream-analytics-quick-create-powershell.md).
 * [Hozzon létre egy stream Analytics feladatot a Visual Studio használatával](stream-analytics-quick-create-vs.md).
-* [Hozzon létre egy stream Analytics feladatot a Visual Studio Code használatával](quick-create-vs-code.md).
+* [Hozzon létre egy stream Analytics feladatot a Visual Studio Code használatával](quick-create-visual-studio-code.md).

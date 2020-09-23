@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/03/2020
-ms.openlocfilehash: 46f7c7185de559fb6b6545eb8f1b2113aa0ec4b2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085008"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986019"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -31,12 +31,13 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 | Eseményindítók/munkafolyamat | 10 | Ha kód nézetben dolgozik, a tervező nem |
 | Váltás hatóköri eseteinek korlátja | 25 | |
 | Változók száma munkafolyamatban | 250 | |
-| Karakter/kifejezés | 8,192 | |
-| Maximális méret `trackedProperties` | 16 000 karakter |
 | Név `action` vagy `trigger` | 80 karakter | |
+| Karakter/kifejezés | 8,192 | |
 | Hossz `description` | 256 karakter | |
-| Maximális `parameters` | 50 | |
-| Maximális `outputs` | 10 | |
+| Maximális száma `parameters` | 50 | |
+| Maximális száma `outputs` | 10 | |
+| Maximális méret `trackedProperties` | 16 000 karakter |
+| Beágyazott kód művelet – a kód karaktereinek maximális száma | 1 024 karakter <p>100 000 karakteres korlát esetén hozza létre a logikai alkalmazásokat a Visual Studio Code és az [előzetes verziójú **Azure Logic apps** bővítménnyel](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md). |
 
 <a name="run-duration-retention-limits"></a>
 
@@ -436,7 +437,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Government – kimenő IP-címek
 
-| Régió | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
+| Region | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
 |--------|---------------|-----------------------|
 | US DoD – Középső régió | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | USA-beli államigazgatás – Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

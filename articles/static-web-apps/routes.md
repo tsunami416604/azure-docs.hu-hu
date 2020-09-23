@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518775"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906782"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Útvonalak az Azure statikus Web Apps előzetes verziójában
 
@@ -32,14 +32,17 @@ A részletekért tekintse meg a [példában szereplő útvonal-fájlt](#example-
 
 A fájl _routes.jsjának_ léteznie kell az alkalmazás Build-összetevő mappájának gyökerében. Ha a webalkalmazás olyan Build lépést tartalmaz, amely egy adott mappából a Build-összetevő mappájába másolt létrehozott fájlokat, akkor a fájl _routes.jsának_ léteznie kell az adott mappában.
 
-A következő táblázat felsorolja a megfelelő helyet, amellyel a _routes.jsa_ fájlba helyezheti el számos előtér-JavaScript-keretrendszer és-könyvtár számára.
+A következő táblázat felsorolja a megfelelő helyet, amellyel a _routes.jsa_ fájl számos előtér-keretrendszerhez és-könyvtárhoz elhelyezhető.
 
 |Keretrendszer/könyvtár | Hely  |
 |---------|----------|
 | Angular | _eszközök_   |
 | React   | _public_  |
-| Karcsú  | _public_   |
+| Svelte  | _public_   |
 | Vue     | _public_ |
+| Blazor  | _wwwroot_ |
+
+A fenti táblázat csak néhány, az Azure statikus Web Appsával kompatibilis keretrendszert és könyvtárat képvisel. További információért lásd az [előtér-keretrendszerek és-kódtárak konfigurálását](./front-end-frameworks.md) ismertető témakört.
 
 ## <a name="defining-routes"></a>Útvonalak meghatározása
 
@@ -47,10 +50,10 @@ Az útvonalak a (z) _routes.js_ fájlon vannak definiálva az útválasztási sz
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \* _ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
-| `serve`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve`az értékeknek tényleges fájlokra kell mutatniuk.  |
-| `allowedRoles` | Nem       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz a [meghívások](authentication-authorization.md)útján vannak társítva.</ul> |
-| `statusCode`   | Nem       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
+| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \* _ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
+| `serve`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve` az értékeknek tényleges fájlokra kell mutatniuk.  |
+| `allowedRoles` | No       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz a [meghívások](authentication-authorization.md)útján vannak társítva.</ul> |
+| `statusCode`   | No       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
 
@@ -106,7 +109,7 @@ Az útvonalakat helyettesítő karakterekkel is biztonságossá teheti. A követ
 
 ## <a name="fallback-routes"></a>Tartalék útvonalak
 
-Az előtér-JavaScript-keretrendszerek vagy-kódtárak gyakran használják az ügyféloldali útválasztást a webalkalmazások navigációs felületén. Ezek az ügyféloldali útválasztási szabályok frissítik a böngésző ablakának helyét anélkül, hogy kéréseket kellene visszaküldeni a kiszolgálónak. Ha frissíti az oldalt, vagy közvetlenül az ügyféloldali útválasztási szabályok által létrehozott helyekre navigál, a megfelelő HTML-oldal kiszolgálásához kiszolgálóoldali tartalék útvonal szükséges.
+Egyoldalas alkalmazások, függetlenül attól, hogy az előtér-JavaScript-keretrendszerek vagy-kódtárak vagy webszerelvény-platformok, például a Blazer használják-e, gyakran az ügyféloldali útválasztásra támaszkodnak a webalkalmazások navigációs felületén. Ezek az ügyféloldali útválasztási szabályok frissítik a böngésző ablakának helyét anélkül, hogy kéréseket kellene visszaküldeni a kiszolgálónak. Ha frissíti az oldalt, vagy közvetlenül az ügyféloldali útválasztási szabályok által létrehozott helyekre navigál, a megfelelő HTML-oldal kiszolgálásához kiszolgálóoldali tartalék útvonal szükséges.
 
 A következő példában egy közös tartalék útvonal látható:
 
@@ -186,6 +189,9 @@ A következő szempontok fontosak a MIME-típusok használatakor:
 
 - A kulcsok értéke nem lehet null vagy üres, vagy 50 karakternél hosszabb.
 - Az értékek nem lehetnek null értékűek vagy üresek, vagy több mint 1000 karakterből állhatnak.
+
+> [!NOTE]
+> A statikus Web Apps megérti a Blazer-alkalmazásokat és a WASM és a DLL-fájlok várható MIME-típusait, ezért nem szükséges leképezéseket hozzáadni ezekhez.
 
 ## <a name="default-headers"></a>Alapértelmezett fejlécek
 

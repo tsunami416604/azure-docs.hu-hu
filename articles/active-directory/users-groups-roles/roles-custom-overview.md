@@ -1,6 +1,6 @@
 ---
 title: Egyéni rendszergazdai szerepkörök a Azure Active Directoryban | Microsoft Docs
-description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure-szerepkörök kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
+description: Ismerje meg, hogyan megismerheti az Azure AD egyéni szerepköreit Azure Active Directory (Azure AD) szerepkör-alapú hozzáférés-vezérléssel és erőforrás-hatókörökkel.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e962bea893e8a658b876aabf417e64b11a31dfc1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033506"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975555"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Egyéni rendszergazdai szerepkörök a Azure Active Directoryban (előzetes verzió)
 

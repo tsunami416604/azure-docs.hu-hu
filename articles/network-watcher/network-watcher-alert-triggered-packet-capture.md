@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975074"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Az előjelzéses hálózati figyeléshez használja a csomagok rögzítését riasztásokkal és Azure Functionsokkal
 
@@ -30,7 +30,7 @@ Az Azure-ban üzembe helyezett erőforrások 24/7. Ön és a munkatársai nem tu
 
 Az Azure-ökoszisztémán belüli Network Watcher, riasztás és függvények használatával proaktív módon reagálhat az adatokra és az eszközökre a hálózatban felmerülő problémák megoldásához.
 
-![Forgatókönyv][scenario]
+![A diagram egy olyan virtuális gép Network Watcher bővítményét jeleníti meg, amely egy T C P szegmensbe áramló, > 100-as hibát eredményezett, amely Azure Functionsre áramlik, amely Network Watcher, amely Network Watcher kiterjesztésbe kerül.][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -41,7 +41,7 @@ Az Azure-ökoszisztémán belüli Network Watcher, riasztás és függvények ha
 * Network Watcher meglévő példánya. Ha még nem rendelkezik ilyennel, [hozzon létre Network Watcher egy példányát](network-watcher-create.md).
 * Egy meglévő virtuális gép ugyanabban a régióban, mint Network Watcher a [Windows-bővítmény](../virtual-machines/windows/extensions-nwa.md) vagy a [linuxos virtuálisgép-bővítmény](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Ebben a példában a virtuális gép a szokásosnál több TCP-szegmenst küld, és riasztást szeretne kapni. A TCP-szegmensek példaként használhatók, de bármilyen riasztási feltételt használhat.
 
@@ -80,8 +80,8 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |**Előfizetés**|[Az Ön előfizetése] Az előfizetés, amelyhez létre kívánja hozni a Function alkalmazást.||
     |**Erőforráscsoport**|PacketCaptureRG|A Function alkalmazást tartalmazó erőforráscsoport.|
     |**Szolgáltatási csomag**|Használatalapú csomag| A Function app által használt terv típusa. A lehetőségek a következők: felhasználás vagy Azure App Service terv. |
-    |**Hely**|USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
-    |**Tárfiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
+    |**Hely**|Az USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
+    |**Storage-fiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
 
 3. A **PacketCaptureExample Function apps** panelen válassza a **functions**  >  **Egyéni függvény**lehetőséget  > **+** .
 
@@ -91,7 +91,7 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |---|---|---|
     |**Forgatókönyv**|Kísérleti|Forgatókönyv típusa|
     |**A függvény neve**|AlertPacketCapturePowerShell|A függvény neve|
-    |**Authorization level (Engedélyszint)**|Függvény|A függvény engedélyezési szintje|
+    |**Engedélyszint**|Funkció|A függvény engedélyezési szintje|
 
 ![Függvények – példa][functions1]
 
@@ -138,7 +138,7 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
 1. Kattintson a jobb gombbal az az **. Network** almappába, majd válassza a **fájlok feltöltése**lehetőséget. 
 
-6. Nyissa meg az Azure-modulokat. A helyi az **. Network** mappában válassza ki a mappában található összes fájlt. Ezután kattintson az **OK** gombra. 
+6. Nyissa meg az Azure-modulokat. A helyi az **. Network** mappában válassza ki a mappában található összes fájlt. Ezután válassza az **OK** gombot. 
 
 7. Ismételje meg ezeket a lépéseket az **az. accounts** és **az. Resources**esetében.
 
@@ -344,11 +344,11 @@ Nyissa meg a meglévő virtuális gépet, majd adjon hozzá egy riasztási szab�
 
   |**Beállítás** | **Érték** | **Részletek** |
   |---|---|---|
-  |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
+  |**Név**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
   |**Leírás**|A TCP-szegmensek elküldése túllépte a küszöbértéket|A riasztási szabály leírása.|
   |**Metrika**|Eljuttatott TCP-szegmensek| A riasztás elindításához használandó metrika. |
-  |**Állapot**|Nagyobb, mint| A metrika kiértékeléséhez használandó feltétel.|
-  |**Küszöb**|100| A riasztást kiváltó metrika értéke. Ezt az értéket a környezet érvényes értékére kell beállítani.|
+  |**Feltétel**|Nagyobb, mint| A metrika kiértékeléséhez használandó feltétel.|
+  |**Küszöbérték**|100| A riasztást kiváltó metrika értéke. Ezt az értéket a környezet érvényes értékére kell beállítani.|
   |**Időszak**|Az utóbbi öt percben| Meghatározza azt az időszakot, amelyben a küszöbértéket meg kell keresni a metrikában.|
   |**Webhook**|[webhook URL-címe a Function alkalmazásból]| Az előző lépésekben létrehozott Function alkalmazás webhook URL-címe.|
 
@@ -370,7 +370,7 @@ A rögzítés letöltését követően megtekintheti azt bármely olyan eszközz
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [WireShark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan tekintheti meg a csomagokat, ha a Wireshark használatával meglátogatja a [csomagok rögzítése elemzését](network-watcher-deep-packet-inspection.md).
 

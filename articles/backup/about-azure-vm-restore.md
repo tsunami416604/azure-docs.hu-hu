@@ -3,18 +3,18 @@ title: Tudnivalók az Azure-beli virtuális gépek visszaállítási folyamatár
 description: Ismerje meg, hogyan állítja vissza az Azure Virtual Machines szolgáltatást a Azure Backup szolgáltatás
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5458d02e241860a98d1ab5f64df141132813f8dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011956"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985326"
 ---
 # <a name="about-azure-vm-restore"></a>Azure-beli virtuális gépek visszaállítása
 
 Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) [szolgáltatást a Azure Backup szolgáltatás](./backup-overview.md) . Számos visszaállítási lehetőség van. Megbeszéljük az általuk támogatott különböző forgatókönyveket.
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 - **Helyreállítási pont** (más néven **visszaállítási pont**): a helyreállítási pont az eredeti, biztonsági mentés alatt álló adatbázis másolata.
 
@@ -30,8 +30,9 @@ Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) 
 - **Elemszintű visszaállítás (ILR):** A virtuális gépen lévő egyes fájlok vagy mappák visszaállítása a helyreállítási pontról
 
 - **Rendelkezésre állás (replikációs típusok)**: a Azure Backup kétféle replikációt biztosít a tárterület/az adatmennyiség nagyfokú elérhetőségének biztosításához:
-  - A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md) háromszor replikálja az adatait (az adatait három példányban hozza létre) egy adatközpont tárolási méretezési egységében. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
-  - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
+  - A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) háromszor replikálja az adatait (az adatait három példányban hozza létre) egy adatközpont tárolási méretezési egységében. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
+  - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
+  - A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja az adatait, és biztosítja az adattárolást és a rugalmasságot ugyanabban a régióban. A ZRS nem rendelkezik állásidővel. Így az [adattárolást](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)igénylő kritikus fontosságú munkaterhelések, valamint az állásidő nélkül is készíthető biztonsági mentés a ZRS-ben.
 
 - **Régiók közötti visszaállítás (CRR)**: a [visszaállítási lehetőségek](./backup-azure-arm-restore-vms.md#restore-options)egyike a tartományok közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy [Azure párosított régió](../best-practices-availability-paired-regions.md#what-are-paired-regions).
 
@@ -44,7 +45,7 @@ Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) 
 | [Visszaállítás új virtuális gép létrehozásához](./backup-azure-arm-restore-vms.md) | Visszaállítja a teljes virtuális gépet a OLR (ha a forrás virtuális gép még létezik) vagy ALR | <li> Ha a forrásként szolgáló virtuális gép elveszett vagy sérült, akkor teljes virtuális gépet állíthat vissza.  <li> Létrehozhat egy másolatot a virtuális gépről  <li> A naplózási és megfelelőségi műveletek visszaállítására is lehetőség van  <li> Ez a lehetőség nem működik a Piactéri rendszerképekből létrehozott Azure-beli virtuális gépek esetén (azaz ha nem érhetők el, mert a licenc lejárt). |
 | [A virtuális gép lemezei visszaállítása](./backup-azure-arm-restore-vms.md#restore-disks) | A virtuális géphez csatolt lemezek visszaállítása                             |  Összes lemez: Ez a beállítás létrehozza a sablont, és visszaállítja a lemezt. A sablont speciális konfigurációkkal (például a rendelkezésre állási csoportokkal) szerkesztheti, hogy megfeleljen a követelményeknek, majd a sablon használatával és a lemez visszaállításával hozza létre újra a virtuális gépet. |
 | [A virtuális gépen lévő adott fájlok visszaállítása](./backup-azure-restore-files-from-vm.md) | Válassza a visszaállítási pont lehetőséget, tallózással válassza ki a fájlokat, majd állítsa vissza őket ugyanarra a (vagy kompatibilis) operációs rendszerre, mint a biztonsági másolattal elválasztott virtuális gép. |  Ha ismeri a visszaállítani kívánt fájlokat, akkor a teljes virtuális gép visszaállítása helyett használja ezt a lehetőséget. |
-| [Titkosított virtuális gép visszaállítása](./backup-azure-vms-encryption.md) | A portálról állítsa vissza a lemezeket, majd a PowerShell használatával hozza létre a virtuális gépet. | <li> [Titkosított virtuális gép Azure Active Directory (HRE)](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Titkosított virtuális gép HRE nélkül](../virtual-machines/windows/disk-encryption-windows.md) <li> [Titkosított virtuális gép *HRE* - *HRE nélkül* áttelepítve](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
+| [Titkosított virtuális gép visszaállítása](./backup-azure-vms-encryption.md) | A portálról állítsa vissza a lemezeket, majd a PowerShell használatával hozza létre a virtuális gépet. | <li> [Titkosított virtuális gép Azure Active Directory](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Titkosított virtuális gép Azure AD nélkül](../virtual-machines/windows/disk-encryption-windows.md) <li> [Titkosított virtuális gép *Az Azure ad-vel* az Azure ad-vel való Migrálás *nélkül*](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [Régiók közötti visszaállítás](./backup-azure-arm-restore-vms.md#cross-region-restore) | Új virtuális gép létrehozása vagy lemezek visszaállítása másodlagos régióba (Azure párosított régió) | <li> **Teljes leállás**: a régiók közötti visszaállítási szolgáltatással a másodlagos régióban nem lehet várni az adatok helyreállítására. A visszaállításokat a másodlagos régióban is kezdeményezheti, még az Azure előtt is. <li> **Részleges leállás**: az állásidő olyan tárolási fürtökön fordulhat elő, ahol a Azure Backup tárolja a biztonsági másolatok adatait, vagy akár hálózatban is, összekapcsolva a biztonsági másolatban szereplő adataihoz társított Azure Backup és Storage-fürtöket. A régiók közötti visszaállítással a másodlagos régióban visszaállíthat egy visszaállítást a másodlagos régióban. <li> **Nincs leállás**: az üzletmenet-folytonosságot és a vész-helyreállítási (BCDR) gyakorlatokat a másodlagos régió adataival történő auditálási és megfelelőségi célokra is elvégezheti. Ez lehetővé teszi a biztonsági másolatok adatainak visszaállítását a másodlagos régióban, még akkor is, ha az elsődleges régióban nincs teljes vagy részleges leállás az üzletmenet folytonosságának és a vész-helyreállítási gyakorlatoknak.  |
 
 ## <a name="next-steps"></a>Következő lépések

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983702"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -67,7 +67,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Megjegyzés:* Ez a címke a **AzureActiveDirectory**, a **AzureFrontDoor. frontend** és a **AzureFrontDoor. FirstParty** címkéktől függ. | Kimenő | Nem | Nem |
 | **AzureIoTHub** | Azure IoT Hub. | Kimenő | Nem | Nem |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory** címkével. | Kimenő | Igen | Igen |
-| **AzureLoadBalancer** | Az Azure-infrastruktúra Load Balancer. A címke a gazdagép (168.63.129.16) [virtuális IP-címére van](security-overview.md#azure-platform-considerations) lefordítva, ahol az Azure Health-Szondák származnak. Ez nem tartalmazza a Azure Load Balancer-erőforrás felé irányuló forgalmat. Ha nem Azure Load Balancer használ, felülbírálhatja ezt a szabályt. | Mindkettő | Nem | Nem |
+| **AzureLoadBalancer** | Az Azure-infrastruktúra Load Balancer. A címke a gazdagép (168.63.129.16) [virtuális IP-címére van](security-overview.md#azure-platform-considerations) lefordítva, ahol az Azure Health-Szondák származnak. Ez csak a mintavételi forgalmat, nem pedig a háttér-erőforráshoz való valós forgalmat foglalja magában. Ha nem Azure Load Balancer használ, felülbírálhatja ezt a szabályt. | Mindkettő | Nem | Nem |
 | **AzureMachineLearning** | Azure Machine Learning. | Mindkettő | Nem | Igen |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon és egyéni metrikák (GiG-végpontok).<br/><br/>*Megjegyzés:* Log Analytics esetén ez a címke függőséget tartalmaz a **tárolási** címkével. | Kimenő | Nem | Igen |
 | **AzureOpenDatasets** | Azure Open-adatkészletek.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureFrontDoor. frontend** és a **Storage** címkével. | Kimenő | Nem | Nem |

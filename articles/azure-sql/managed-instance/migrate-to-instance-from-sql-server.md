@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090227"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887663"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -198,7 +198,7 @@ Még ha nem végez módosításokat a felügyelt példányon az áttelepítés s
 
 Például nem kell biztonsági másolatokat létrehoznia a felügyelt példányon – a szolgáltatás automatikusan készít biztonsági másolatokat. Többé nem kell aggódnia a biztonsági mentések ütemezésével, megkezdésével és kezelésével kapcsolatban. Az SQL felügyelt példánya lehetővé teszi, hogy az [időponthoz tartozó helyreállítás (PITR)](../database/recovery-using-backups.md#point-in-time-restore)használatával bármely időpontra vissza tudja állítani a megőrzési időtartamot. Emellett nem kell aggódnia a magas rendelkezésre állás beállításával kapcsolatban, mivel a [magas rendelkezésre állás](../database/high-availability-sla.md) beépített.
 
-A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory hitelesítést](../database/security-overview.md), [naplózást](auditing-configure.md), [veszélyforrások észlelését](../database/advanced-data-security.md), [sor szintű biztonságot](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)és [dinamikus adatmaszkolást](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)használni.
+A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory hitelesítést](../database/security-overview.md), [naplózást](auditing-configure.md), [veszélyforrások észlelését](../database/azure-defender-for-sql.md), [sor szintű biztonságot](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)és [dinamikus adatmaszkolást](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)használni.
 
 A speciális felügyeleti és biztonsági funkciók mellett a felügyelt példányok olyan speciális eszközöket biztosítanak, amelyek segítségével [figyelheti és beállíthatja a számítási feladatokat](../database/monitor-tune-overview.md). [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) lehetővé teszi a felügyelt példányok nagy készletének figyelését és a nagy számú példány és adatbázis figyelését. A felügyelt példányok [automatikus finomhangolása](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) folyamatosan FIGYELI az SQL-terv végrehajtási statisztikáinak teljesítményét, és automatikusan kijavítja az azonosított teljesítménnyel kapcsolatos problémákat.
 

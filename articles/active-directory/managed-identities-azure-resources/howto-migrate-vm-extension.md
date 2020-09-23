@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260186"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969209"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>A virtuális gépi felügyelt identitások bővítmény használatának leállítása és az Azure-Instance Metadata Service használatának megkezdése
 
@@ -37,8 +37,8 @@ A következő szakaszban ismertetett számos korlátozás miatt a felügyelt ide
 
 Ha a virtuális gépet vagy virtuálisgép-méretezési csoportját felügyelt identitásra konfigurálja, dönthet úgy, hogy kiépíti az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásait a `-Type` [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmag paraméterének használatával. A (z) vagy a (z) vagy a (z `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` ) paramétert a virtuális gép típusától függően adhatja át, és a paraméter használatával nevezheti el `-Name` . A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
 
-```powershell
-   $settings = @{ "port" = 50342 }
+```azurepowershell-interactive
+$settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
@@ -68,7 +68,7 @@ A virtuálisgép-bővítmény kiépítéséhez használhatja a Azure Resource Ma
     
 Ha virtuálisgép-méretezési csoportokkal dolgozik, az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmaggal kiépítheti a felügyelt identitásokat az Azure-erőforrások virtuálisgép-méretezési csoport bővítményének használatával is. A `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` virtuálisgép-méretezési csoport típusától függően vagy a (z `-Name` ) paramétert átadhatja. A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
 
-   ```powershell
+   ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
@@ -106,7 +106,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
 ```
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
@@ -162,7 +162,7 @@ Content-Type: application/json
 
 Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a következő parancsmag használható a manuális újraindításhoz:
 
-```powershell
+```azurepowershell-interactive
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
@@ -209,7 +209,7 @@ Az Azure IMDS használatának számos előnye van a jogkivonatok igényléséhez
 Ezen okok miatt az Azure IMDS szolgáltatás a tokenek igénylésének defacto, miután a virtuálisgép-bővítmény elavulttá válik. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez](how-to-use-vm-token.md)
 * [Azure Instance Metadata szolgáltatás](../../virtual-machines/windows/instance-metadata-service.md)
