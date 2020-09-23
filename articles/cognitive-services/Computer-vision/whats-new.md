@@ -8,20 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: b8741d17c55a786d7a90d1c311039f2855adf43b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530658"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904090"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
 
 ## <a name="september-2020"></a>2020. szeptember
+
+### <a name="spatial-analysis-container-preview"></a>Térbeli elemzési tároló – előzetes verzió
+
+A [térbeli elemzési tároló](spatial-analysis-container.md) mostantól előzetes verzióban érhető el. A Computer Vision térbeli elemzési funkciója lehetővé teszi, hogy elemezze a valós idejű adatfolyam-továbbítási videókat, hogy megértse a személyek közötti térbeli kapcsolatokat és a fizikai környezetek közötti mozgást. A térbeli elemzés egy olyan Docker-tároló, amelyet a helyszínen használhat. 
 
 ### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Az API v 3.1-es verziójának nyilvános előzetes verziója hozzáadja a japán OCR-t
 A Computer Vision Read API v 3.1 nyilvános előzetes verziója hozzáadja ezeket a képességeket:

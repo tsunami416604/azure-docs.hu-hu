@@ -10,15 +10,15 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661635"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897342"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A gépi tanulási bővítmény a parancssori felülethez parancsokat biztosít a Azure Machine Learning erőforrásainak használatához.
 
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munka
 > [!IMPORTANT]
 > Ha a Azure Cloud Shell használja, akkor kihagyhatja ezt a szakaszt. A Cloud Shell automatikusan hitelesíti Önt az Azure-előfizetésében bejelentkezett fiók használatával.
 
-Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületről. A legalapvetőbb az interaktív hitelesítés böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
+Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületről. A legegyszerűbb az interaktív hitelesítés böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
 
 ```azurecli-interactive
 az login
@@ -109,9 +109,6 @@ További információ az erőforráscsoportok használatáról: [az Group](https
 
 Ha új munkaterületet szeretne létrehozni, amelyben a __szolgáltatások automatikusan létrejönnek__, használja a következő parancsot:
 
-> [!TIP]
-> Az ebben a szakaszban található parancsok alapszintű kiadási munkaterületet hoznak létre. Vállalati munkaterület létrehozásához használja a `--sku enterprise` kapcsolót a `az ml workspace create` paranccsal. Azure Machine Learning kiadásokkal kapcsolatos további információkért lásd: [Mi az Azure Machine learning](overview-what-is-azure-ml.md#sku).
-
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
@@ -161,7 +158,7 @@ A privát végpontok és a virtuális hálózatok munkaterülettel való haszná
 
 Alapértelmezés szerint a munkaterülethez tartozó metrikák és metaadatok a Microsoft által fenntartott Azure Cosmos DB-példányban vannak tárolva. Ezeket az adatfájlokat a Microsoft által felügyelt kulcsokkal titkosítjuk. 
 
-Ha Azure Machine Learning __vállalati__ verzióját hozza létre, a saját kulcs megadása lehetőséget használhatja. Ezzel létrehozza az Azure-előfizetésében szereplő mérőszámokat és metaadatokat tároló Azure Cosmos DB-példányt. Használja a `--cmk-keyvault` paramétert a kulcsot tartalmazó Azure Key Vault megadásához, valamint a `--resource-cmk-uri` kulcs URL-címének megadásához a tárolón belül.
+A Microsoft által felügyelt kulcs használata helyett használhatja a saját kulcs megadását. Ezzel létrehozza az Azure-előfizetésében szereplő mérőszámokat és metaadatokat tároló Azure Cosmos DB-példányt. Használja a `--cmk-keyvault` paramétert a kulcsot tartalmazó Azure Key Vault megadásához, valamint a `--resource-cmk-uri` kulcs URL-címének megadásához a tárolón belül.
 
 > [!IMPORTANT]
 > A és a `--cmk-keyvault` paraméterek használata előtt `--resource-cmk-uri` először végre kell hajtania a következő műveleteket:

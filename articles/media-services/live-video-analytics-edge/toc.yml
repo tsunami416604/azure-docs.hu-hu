@@ -51,6 +51,10 @@
         - name: Az OVMS-sel HTTP-bővítményen keresztül
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: Custom Vision használata
+          href: custom-vision-tutorial.md
+        - name: Térbeli elemzés használata
+          href: spatial-analysis-tutorial.md
 - name: Példák
   items:
     - name: Közvetlenmetódus-példák – C#
@@ -89,6 +93,8 @@
       href: manage-recording-policy-how-to.md
     - name: Közvetlen metódusok meghívása a portállal
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: Üzembe helyezés az Azure Stack Edge-en
+      href: deploy-azure-stack-edge-how-to.md
     - name: Hibaelhárítás
       href: troubleshoot-how-to.md
 - name: Referencia

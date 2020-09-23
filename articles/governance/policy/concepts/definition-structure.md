@@ -1,14 +1,14 @@
 ---
 title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895374"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -206,8 +206,10 @@ Kezdeményezés vagy szabályzat létrehozásakor meg kell adnia a definíció h
 
 Ha a definíció helye:
 
-- Az előfizetésen belül csak **az előfizetés** erőforrásait lehet hozzárendelni.
-- **Felügyeleti csoport** – csak a gyermek-felügyeleti csoportokon belüli erőforrások és a gyermek előfizetések rendelhetők hozzá a szabályzathoz. Ha azt tervezi, hogy a házirend-definíciót több előfizetésre is alkalmazza, akkor a helynek az előfizetést tartalmazó felügyeleti csoportnak kell lennie.
+- Az előfizetéshez tartozó csak **előfizetéshez** tartozó erőforrások rendelhetők hozzá a szabályzat-definícióhoz.
+- **Felügyeleti csoport** – csak a gyermek-felügyeleti csoportokon belüli erőforrások és a gyermek előfizetések rendelhetők hozzá a szabályzat-definícióhoz. Ha azt tervezi, hogy a házirend-definíciót több előfizetésre is alkalmazza, akkor a helynek minden előfizetést tartalmazó felügyeleti csoportnak kell lennie.
+
+További információ: [a hatókör megismerése Azure Policy](./scope.md#definition-location).
 
 ## <a name="policy-rule"></a>Házirend-szabály
 
@@ -576,13 +578,13 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban (ARM-sablon):
 
 - `utcNow()` – Az ARM-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
-  - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumban van beállítva az aktuális dátumra és időpontra vonatkozóan (éééé-hh-NNTóó: PP: SS. fffffffZ).
+  - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumú aktuális dátumra és időpontra van beállítva `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 A következő függvények csak a házirend-szabályokban érhetők el:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime**: [Required] String-String in the Universal ISO 8601 datetime Format éééé-hh-NNTóó: PP: SS. fffffffZ '
-  - **numberOfDaysToAdd**: [kötelező] egész szám – hozzáadandó napok száma
+  - **datetime**: [Required] String-String az univerzális ISO 8601 datetime formátumban `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
+  - **numberOfDaysToAdd**: [kötelező] egész szám – a hozzáadandó napok száma.
 - `field(fieldName)`
   - **Mezőnév**: [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
   - Annak az erőforrásnak az értékét adja vissza, amelyet az IF feltétel kiértékel.

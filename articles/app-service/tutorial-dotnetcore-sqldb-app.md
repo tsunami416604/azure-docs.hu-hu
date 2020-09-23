@@ -1,19 +1,19 @@
 ---
-title: 'Oktatóanyag: ASP.NET Core a SQL Database'
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure App Service-ben működő .NET Core-alkalmazásra, amely csatlakozik az SQL Database-hez.
+title: 'Oktatóanyag: ASP.NET Core a Azure SQL Database'
+description: Megtudhatja, hogyan szerezhet be Azure App Serviceban működő .NET Core-alkalmazást egy Azure SQL Databasehoz való kapcsolódással.
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 27b01a86d1bc44b5adb977f10339a0f2d56a64d4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958524"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982882"
 ---
-# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service
+# <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és Azure SQL Database alkalmazás létrehozása Azure App Service
 
 ::: zone pivot="platform-windows"  
 
@@ -89,7 +89,7 @@ Ebben a lépésben egy SQL Database-adatbázist hozhat létre az Azure-ban. Miut
 
 Ez az oktatóanyag az SQL-adatbázisokhoz az [Azure SQL Database-t](/azure/sql-database/) használja.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -482,7 +482,7 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 A log streaming elindítása után frissítse az Azure-alkalmazást a böngészőben a webes forgalom eléréséhez. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
 
-Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a következőt: `Ctrl` + `C` .
+A `Ctrl`+`C` billentyűparanccsal bármikor leállíthatja a naplóstreamelést.
 
 A ASP.NET Core naplók testreszabásával kapcsolatos további információkért tekintse meg a [ASP.net Core naplózása](/aspnet/core/fundamentals/logging)című témakört.
 

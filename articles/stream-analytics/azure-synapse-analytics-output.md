@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 5d281bf33542354e2904805deed2f1deaf2725a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875737"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881894"
 ---
-# <a name="azure-synapse-analytics-output-from-azure-stream-analytics-preview"></a>Az Azure szinapszis Analytics kimenete Azure Stream Analytics (előzetes verzió)
+# <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Az Azure szinapszis Analytics kimenete Azure Stream Analytics
 
 Az [Azure szinapszis Analytics](https://azure.microsoft.com/services/synapse-analytics) (korábban SQL Data Warehouse) egy korlátlan elemzési szolgáltatás, amely a nagyvállalati adattárházat és a Big adatelemzéseket is egyesíti. 
 
@@ -44,4 +44,4 @@ A következő táblázat felsorolja a tulajdonságok nevét és leírásait az a
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával](quick-create-azure-resource-manager.md)
 * [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
 * [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md)
+* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)

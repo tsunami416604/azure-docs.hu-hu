@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659636"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895807"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -38,6 +38,7 @@ Ha engedélyezte az Azure Sentinelt, először össze kell kapcsolni az adatforr
 
    ![Az összekötők következő lépései](./media/collect-data/data-insights.png)
  
+
 ## <a name="data-connection-methods"></a>Adatkapcsolati módszerek
 
 Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
@@ -49,7 +50,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Microsoft Defender for Identity](connect-azure-atp.md) (korábbi nevén Azure Advanced Threat Protection)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Defender](connect-azure-security-center.md) (korábban Azure Security Center)
+    - [Azure Security Center](connect-azure-security-center.md) – riasztások az Azure Defender-megoldásokból
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Tartományi névkiszolgáló](connect-dns.md)
     - [Office 365](connect-office-365.md)
@@ -135,7 +136,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | WindowsFirewall | [A Windows tűzfal összekapcsolása](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Az Azure AD Identity Protection csatlakoztatása](connect-azure-ad-identity-protection.md)  | &#10003; | |
 | AATP SecurityAlert  | [A Microsoft Defender for Identity](connect-azure-atp.md) (korábban Azure ATP) összekötése | &#10003; | |
-| ASC SecurityAlert  | Az [Azure Defender összekötése](connect-azure-security-center.md) (korábban Azure Security Center)  | &#10003; | |
+| ASC SecurityAlert  | [Azure Defender-riasztások Összekötése](connect-azure-security-center.md) Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security összekötése](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/platform/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |

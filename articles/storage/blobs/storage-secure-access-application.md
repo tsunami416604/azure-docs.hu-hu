@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967524"
 ---
 # <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
 
@@ -160,7 +160,7 @@ Az előző feladatban használt osztályok, tulajdonságok és metódusok a köv
 
 Az [Azure Storage-titkosítás](../common/storage-service-encryption.md) az adatok védelméhez és védelméhez nyújt segítséget azáltal, hogy titkosítja az adatait, és kezeli a titkosítást és a visszafejtést. Minden adat titkosítása 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) történik, amely a jelenleg elérhető egyik legerősebb blokktitkosító.
 
-Megadhatja, hogy a Microsoft kezelje a titkosítási kulcsokat, vagy a Azure Key Vault segítségével saját kulcsokat is használhat az ügyfelek által felügyelt kulcsokkal. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+Megadhatja, hogy a Microsoft kezelje a titkosítási kulcsokat, vagy saját kulcsokat is használhat Azure Key Vault vagy Key Vault felügyelt hardveres biztonsági modellben (HSM) (előzetes verzió) tárolt, ügyfél által felügyelt kulcsokkal. További információ: [ügyfél által felügyelt kulcsok az Azure Storage encryption szolgáltatáshoz](../common/customer-managed-keys-overview.md).
 
 Az Azure Storage-titkosítás automatikusan titkosítja az összes teljesítményszint (standard és prémium), az összes üzembe helyezési modell (Azure Resource Manager és klasszikus), valamint az összes Azure Storage-szolgáltatás (blob, üzenetsor, tábla és fájl) mennyiségét.
 

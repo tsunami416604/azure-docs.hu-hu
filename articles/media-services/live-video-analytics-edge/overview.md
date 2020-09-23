@@ -3,45 +3,48 @@ title: Mi az élő videó-elemzés a IoT Edgeon – Azure
 description: Ez a témakör áttekintést nyújt a IoT Edge élő videók elemzéséről. A platform a IoT-megoldások fejlesztéséhez használható képességet kínálja. Például rögzítheti, rögzítheti és elemezheti az élő videót, és közzéteheti az eredményeket (videó és/vagy videó-elemzés) az Azure-szolgáltatásokban.
 ms.topic: overview
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a67322d0a5e524d75b9bf3e481be7157e09e63
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266797"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904348"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>Mi a IoT Edge Live Video Analytics? (előzetes verzió)
 
-A IoT Edge élő videó-elemzések platformot biztosítanak a peremhálózat és a felhőre kiterjedő intelligens video-alkalmazások létrehozásához. A platform lehetővé teszi az élő videók rögzítését, rögzítését és elemzését, valamint az eredmények (videó és/vagy videó-elemzés) közzétételét az Azure-szolgáltatásokban (a felhőben és/vagy az Edge-ben). A platform segítségével javíthatja a IoT-megoldásokat a video Analytics használatával. A IoT Edge funkcióban élő videó-elemzések kombinálhatók más Azure IoT Edge-modulokkal, Stream Analytics például a IoT Edge, Cognitive Services a IoT Edge, valamint a felhőben található Azure-szolgáltatásokkal, például az Media Services, az Event hub, Cognitive Services stb. hatékony hibrid (például Edge + Cloud) alkalmazások létrehozásához.
+Az IoT Edge-en futó Live Video Analytics olyan platformot nyújt, amelyen a peremhálózatra és a felhőre kiterjedő intelligens videóalkalmazások készíthetők. A platform lehetővé teszi az élő videók rögzítését, felvételét és elemzését, valamint az eredmények (videó és/vagy videóelemzés) közzétételét az Azure-szolgáltatásokban (a felhőben és/vagy a peremhálózaton). A platform segítségével javíthatja a IoT-megoldásokat a video Analytics használatával. A IoT Edge funkcióban élő videó-elemzések kombinálhatók más Azure IoT Edge-modulokkal, Stream Analytics például a IoT Edge, Cognitive Services a IoT Edge, valamint a felhőben található Azure-szolgáltatásokkal, például az Media Services, az Event hub, Cognitive Services stb. hatékony hibrid (például Edge + Cloud) alkalmazások létrehozásához.
 
 A IoT Edge Live Video Analytics bővíthető platformként lett kialakítva, amely lehetővé teszi a különböző videó-elemzési peremhálózati modulok (például a kognitív Services-tárolók, az Ön által létrehozott egyéni Edge-modulok vagy a saját adataival rendelkező egyéni modellek) összekapcsolását, és az élő videók elemzésének bonyolultságát anélkül, hogy az éles videó folyamatának összetettségét kellene használnia.
 
 ## <a name="accelerate-iot-solutions-development"></a>Gyorsítsa fel a IoT-megoldások fejlesztését 
 
-A IoT más IoT érzékelőkből és/vagy üzleti adatokból származó jelekkel kombináló megoldásai segítségével automatizálhatja vagy félig automatizálhatja üzleti döntéseit, ami a termelékenység fejlesztését eredményezi. A IoT Edge élő videó-elemzés lehetővé teszi az ilyen megoldások gyorsabb kiépítését. A videó elemzési moduljainak és a vállalatra jellemző logikájának kiépítésére koncentrálhat, és lehetővé teszi, hogy a platform elrejtse a videós folyamat kezelésének és futtatásának bonyolultságát.
+A videóelemzést más IoT-érzékelőkből és/vagy üzleti adatokból származó jelekkel kombináló IoT-megoldásokkal automatizálhatja vagy félig automatizálhatja üzleti döntéseit, ami a termelékenység javulását eredményezi. Az IoT Edge-en futó Live Video Analytics lehetővé teszi, hogy gyorsabban készítsen ilyen megoldásokat. A vállalkozáshoz kapcsolódó videóelemző modulok és logika elkészítésére összepontosíthat, és a platformmal elrejtheti a videós folyamat kezelésének és futtatásának bonyolultságát.
 
-A IoT Edge élő videó-elemzési szolgáltatásával továbbra is használhatja a [CCTV kamerákat](https://en.wikipedia.org/wiki/Closed-circuit_television_camera) a meglévő [videó-felügyeleti rendszerekkel (VM)](https://en.wikipedia.org/wiki/Video_management_system) , és a video Analytics-alkalmazásokat egymástól függetlenül is létrehozhatja. A IoT Edge élő videó-elemzéseket a Computer látási SDK-k és az eszközkészletek együttes használatával is felhasználhatják az élvonalbeli IoT-megoldások létrehozásához. Az alábbi ábra ezt mutatja be.
+A IoT Edge élő videó-elemzési szolgáltatásával továbbra is használhatja a [CCTV kamerákat](https://en.wikipedia.org/wiki/Closed-circuit_television_camera) a meglévő [videó-felügyeleti rendszerekkel (VM)](https://en.wikipedia.org/wiki/Video_management_system) , és a video Analytics-alkalmazásokat egymástól függetlenül is létrehozhatja. Az IoT Edge-en futó Live Video Analytics a Computer Vision SDK-kal és eszközkészletekkel együtt élvonalbeli IoT-megoldások létrehozásához használható. Az alábbi diagram ezt ábrázolja.
 
 ![IoT-megoldások fejlesztése élő videó-elemzéssel IoT Edge](./media/overview/product-diagram.svg)
 
 ## <a name="supported-environments"></a>Támogatott környezetek
 
-A Linux AMD64 és x64 környezetek támogatottak.
+A Linux x86-64-és ARM64-környezetek támogatottak.
+> [!NOTE]
+> A ARM64-eszközök támogatása a buildekben és az újabb verziókban érhető el `1.0.4` .
+> A Azure IoT Edge Runtime ARM64-eszközökön való futtatásának támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
 
 ## <a name="get-started"></a>Bevezetés
 
 Olvassa el a következő fogalmakat, majd próbáljon ki egy rövid útmutatót a mozgásérzékelők élő videó-hírcsatornán való futtatásához.
 
-### <a name="concepts"></a>Alapelvek
+### <a name="concepts"></a>Fogalmak
 
-* [Adathordozó-gráf](media-graph-concept.md)
-* [Videofelvétel](video-recording-concept.md)
-* [Videolejátszás](video-playback-concept.md)
-* [Folyamatos videofelvétel](continuous-video-recording-concept.md)
-* [Event-alapú videó rögzítése](event-based-video-recording-concept.md)
-* [Videó-rögzítés nélküli élő videó-elemzés](analyze-live-video-concept.md)
+* [Médiagrafikon](media-graph-concept.md)
+* [Videófelvétel](video-recording-concept.md)
+* [Videó lejátszása](video-playback-concept.md)
+* [Folyamatos videófelvétel](continuous-video-recording-concept.md)
+* [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
+* [Live Video Analytics videófelvétel nélkül](analyze-live-video-concept.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Kövesse a gyors útmutató [: élő videó elemzés futtatása saját modell](use-your-model-quickstart.md) használatával című cikket, amelyből megtudhatja, hogyan futtathatja a mozgásérzékelőt élő videó-hírcsatornán.
 * [Terminológia](terminology.md) áttekintése

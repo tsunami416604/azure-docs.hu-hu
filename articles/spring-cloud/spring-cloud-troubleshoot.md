@@ -4,15 +4,16 @@ description: Az Azure Spring Cloud hibaelhárítási útmutatója
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669757"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904201"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -20,6 +21,7 @@ Ez a cikk útmutatást nyújt az Azure Spring Cloud Development-problémák mego
 
 ## <a name="availability-performance-and-application-issues"></a>Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos problémák
 
+::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Az alkalmazás nem indítható el (például a végpont nem csatlakoztatható, vagy egy 502 értéket ad vissza néhány újrapróbálkozás után)
 
 Exportálja a naplókat az Azure Log Analyticsba. A rugós alkalmazások naplóihoz tartozó tábla neve *AppPlatformLogsforSpring*. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md).
@@ -67,6 +69,7 @@ Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az a
 
 
 Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört.
+::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Az alkalmazás CPU- vagy memóriahasználata magas
 
@@ -90,6 +93,7 @@ Ha minden példány fut, lépjen az Azure Log Analyticsra az alkalmazás naplóf
 
 Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört. A naplókat a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával kérdezheti le.
 
+::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Ellenőrzőlista a Spring-alkalmazás üzembe helyezéséhez az Azure Spring Cloud-ban
 
 Az alkalmazás előkészítése előtt győződjön meg arról, hogy az megfelel a következő feltételeknek:
@@ -101,6 +105,7 @@ Az alkalmazás előkészítése előtt győződjön meg arról, hogy az megfelel
 * A JVM paraméterei a várt értékekkel rendelkeznek.
 * Javasoljuk, hogy tiltsa le vagy távolítsa el a beágyazott _konfigurációs kiszolgálót_ és a _Spring Service Registry_ Servicest az alkalmazáscsomag alapján.
 * Ha vannak _szolgáltatáskötéssel_ kötni kívánt Azure-erőforrások, ellenőrizze, hogy a célerőforrások működnek-e.
+::: zone-end
 
 ## <a name="configuration-and-management"></a>Konfigurálás és felügyelet
 
@@ -119,6 +124,17 @@ Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretn
 
 A rendszer az Azure Spring Cloud Service-példány nevét fogja használni a (z) altartomány nevének megadásához `azureapps.io` , így a telepítés sikertelen lesz, ha a név ütközik egy meglévővel. Előfordulhat, hogy további részleteket talál a tevékenység naplóiban.
 
+::: zone pivot="programming-language-java"
+### <a name="i-cant-deploy-a-net-core-app"></a>Nem tudok .NET Core-alkalmazást üzembe helyezni
+
+A .NET Core Steeltoe alkalmazáshoz nem tölthet fel *. zip* fájlt a Azure Portal vagy a Resource Manager-sablon használatával.
+
+Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
+
+Győződjön meg arról, hogy az alkalmazás a megfelelő *. zip* -fájlformátumban van csomagolva. Ha nem megfelelően van csomagolva, a folyamat lefagy, vagy hibaüzenet jelenik meg.
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>Nem tudok telepíteni egy JAR-csomagot
 
 A Java Archive file (JAR)/Source csomag nem tölthető fel a Azure Portal vagy a Resource Manager-sablon használatával.
@@ -216,3 +232,8 @@ Ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az a
 ```
 
 Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+::: zone-end
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása](spring-cloud-howto-self-diagnose-solve.md)

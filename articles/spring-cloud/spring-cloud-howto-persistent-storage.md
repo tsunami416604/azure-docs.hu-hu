@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1ff09941d07ecd6d62483b1fca59c9003ddbd159
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d769cb6e2cc33df259da46a82ad27a8bfd9e74b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496270"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888529"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Állandó tárolók használata az Azure Spring Cloudban
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Az Azure Spring Cloud két típusú tárolót biztosít az alkalmazáshoz: állandó és ideiglenes.
 
@@ -82,7 +84,7 @@ Egyéb műveletek:
     > [!WARNING]
     > Ha letilt egy alkalmazás állandó tárterületét, az összes tárterület fel van foglalva, és az összes tárolt érték véglegesen elvész.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [alkalmazások és a szolgáltatási kvóták](spring-cloud-quotas.md)megismerése.
 * Megtudhatja, hogyan [méretezheti manuálisan az alkalmazást](spring-cloud-tutorial-scale-manual.md).

@@ -1,77 +1,68 @@
 ---
 title: Áttekintés – Azure Database for MySQL
 description: Ismerkedjen meg az Azure Database for MySQL szolgáltatással, amely a Microsoft Cloud-on alapuló, a MySQL Community Edition rendszerre épülő, kapcsolódó adatbázis-szolgáltatás.
-author: ajlam
+author: savjani
 ms.service: mysql
-ms.author: andrela
+ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2a44896ff7cabb9e44c02be9f3dba201298d4794
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763660"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903939"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL?
 
 A Azure Database for MySQL a Microsoft Cloud-on alapuló, a [MySQL Community Edition](https://www.mysql.com/products/community/) (a GPLv2 licenc alatt elérhető) adatbázismotor, a 5,6, a 5,7 és a 8,0 verziók alapján készült, a Microsoft felhőben található, Azure Database for MySQL a következőket biztosítja:
 
-- Beépített magas rendelkezésre állás további költség nélkül.
-- Kiszámítható teljesítmény, használatalapú díjszabással.
-- Méretezés igény szerint másodpercek alatt.
-- A helyi és mozgó bizalmas adatok védelme.
-- Automatikus biztonsági mentések és időponthoz kötött visszaállítás akár 35 napig.
-- Vállalati szintű biztonság és megfelelőség.
+- Beépített magas rendelkezésre állás.
+- Adatvédelem automatikus biztonsági mentéssel és időponthoz való visszaállítással akár 35 napig.
+- Automatizált karbantartás az alapul szolgáló hardver, operációs rendszer és adatbázismotor számára a szolgáltatás biztonságos és naprakészen tartásához.
+- Kiszámítható teljesítmény, használatalapú fizetéses befoglaló díjszabással.
+- Rugalmas skálázás másodpercek alatt.
+- A kiszolgáló leállítására/indítására képes optimalizálási vezérlők. 
+- Nagyvállalati szintű biztonság és piacvezető megfelelőség a bizalmas adatok védelme érdekében a nyugalmi és a mozgásban.
+- Figyelés és automatizálás a nagyméretű központi telepítések felügyeletének és figyelésének egyszerűsítése érdekében.
+- Piacvezető támogatási élmény.
 
 Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Segítségükkel az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Ezen kívül folytathatja az alkalmazás fejlesztését a kívánt nyílt forráskódú eszközökkel és platformmal, és ezeket az üzletvitel által igényelt sebességgel és hatékonysággal készítheti el, új készségek elsajátításának szükségessége nélkül.
 
-![Azure Database for MySQL fogalmi diagram](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
+:::image type="content" source="media/overview/1-azure-db-for-mysql-conceptual-diagram.png" alt-text="Azure Database for MySQL fogalmi diagram":::
 
-Ez a Azure Database for MySQL cikk a teljesítménygel, a méretezhetőséggel és a kezelhetőséggel kapcsolatos alapfogalmakat és funkciókat mutatja be, amelyek a részletekre mutató hivatkozásokat tartalmaznak. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
+## <a name="deployment-models"></a>Üzembe helyezési modellek
 
-- [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md)
+A MySQL Community Edition Azure Database for MySQL a két üzembe helyezési módban érhető el:
+- Önálló kiszolgáló 
+- Rugalmas kiszolgáló (előzetes verzió)
+  
+### <a name="azure-database-for-mysql---single-server"></a>Azure Database for MySQL – egyetlen kiszolgáló
 
-Több Azure CLI-mintát talál itt:
+Azure Database for MySQL egyetlen kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely minimális követelményeket támaszt az adatbázis testreszabásához. Az egykiszolgálós platform úgy lett kialakítva, hogy az adatbázis-kezelési funkciók, például a javítások, a biztonsági mentések, a magas rendelkezésre állás, a biztonság minimális felhasználói konfigurációval és vezérléssel kezelhető legyen. Az architektúra beépített, magas rendelkezésre állású, 99,99%-os rendelkezésre állást biztosít egyetlen rendelkezésre állási zónában. A MySQL 5,6, 5,7 és 8,0 közösségi verzióját támogatja. A szolgáltatás ma már széles körben elérhető az [Azure számos régiójában](https://azure.microsoft.com/global-infrastructure/services/).
 
-- [Azure CLI-példák az Azure Database for MySQL-hez](sample-scripts-azure-cli.md)
+Az egykiszolgálós üzembe helyezési lehetőség három díjszabási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](concepts-pricing-tiers.md) leírása tartalmazza.
 
-## <a name="automated-patching"></a>Automatikus javítás
-A szolgáltatás a mögöttes hardver, az operációs rendszer és az adatbázis motorjának automatizált javítását végzi. A javítás a mögöttes hardver, az operációs rendszer és az adatbázismotor biztonsági és szoftverfrissítési szolgáltatásait is tartalmazza. A MySQL-motor esetében az alverziók frissítése automatikusan megtörténik, és a javítási kiadás részeként szerepel. Ha a Közösség alverziót bocsát ki, az automatikusan integrálva lesz a szolgáltatás tesztelési ciklusának részeként. Az alverzió tesztelése a MySQL-hez készült kanonikus számítási feladatokon történik. A MySQL-motor alverzióit a rendszer kiértékeli a megbízhatóság (összeomlás nélkül), a rendelkezésre állás, a biztonság és a teljesítmény szempontjából. A szolgáltatás nem minden alverziót bocsát ki éles környezetben, de a hibajavítások és az új növekményes értékek kritikus evaluted alapul. Ezzel a megfelelő egyensúlyt kell megteremteni az új növekményes érték és a stabilitási rendszer változóinak minimalizálása között. Nincs szükség felhasználói műveletre vagy konfigurációs beállításra a javításhoz. A javítási gyakoriság a szolgáltatás által felügyelt, az adattartalom kritikus jellemzői alapján. Általánosságban elmondható, hogy a szolgáltatás a folyamatos integráció és a kiadás részeként havi kiadási ütemtervet követ. A felhasználók előfizethetnek a [tervezett karbantartási értesítésre](concepts-monitoring.md) , hogy értesítést kapjanak a közelgő karbantartási 72 órával az esemény előtt.
+Az egyetlen kiszolgáló a legjobb megoldás a Felhőbeli natív alkalmazásokhoz, amelyek az automatikus javítás kezelésére szolgálnak anélkül, hogy a javítási ütemterv és az egyéni MySQL konfigurációs beállítások részletes szabályozására lenne szükség. 
 
-## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
-A Azure Database for MySQL szolgáltatás számos szolgáltatási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részletekért tekintse meg a [díjszabási szintet](concepts-service-tiers.md) .
+Az egykiszolgálós telepítési mód részletes áttekintéséhez tekintse meg az [egykiszolgálós áttekintés című témakört](single-server-overview.md).
 
-## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
-Hogyan lehet megállapítani, hogy mikor van szükség fel- és leskálázásra? Használja a virtuális magokon alapuló, teljesítmény-értékeléssel kombinált, beépített teljesítménymonitorozó és riasztási eszközöket. Ezek az eszközök lehetővé teszik a virtuális magok aktuális vagy a becsült teljesítményigényeken alapuló fel- vagy leskálázása hatásainak gyors kiértékelését. A részleteket a [riasztások](howto-alert-on-metric.md) leírása tartalmazza.
+### <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
-## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
-Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 99,99 százalékos rendelkezésre állást biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Minden Azure Database for MySQL-kiszolgáló esetében kihasználhatja a beépített biztonság, hibatűrés és adatvédelem előnyeit, amelyeket egyébként nem kell megvásárolnia vagy megterveznie, kiépítenie és kezelnie. A Azure Database for MySQL használatával az időponthoz tartozó visszaállítással visszaállíthatja a kiszolgálót egy korábbi állapotba, a 35 nap visszamenőleg visszamenőleg.
+Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban a szolgáltatás a felhasználói követelmények alapján nagyobb rugalmasságot és testreszabást biztosít. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgálók jobb költség-optimalizálási vezérlőket biztosítanak a kiszolgáló és a feltört számítási szint leállítására/indítására, ideális olyan munkaterhelésekhez, amelyek folyamatosan teljes számítási kapacitást igényelnek. A szolgáltatás jelenleg támogatja a MySQL 5,7 közösségi verzióját, és hamarosan újabb verziókat ad hozzá. A szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, ma már számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/)elérhető.
 
-## <a name="secure-your-data"></a>Az adatok védelme
-Az Azure Database Services olyan adatbiztonságot biztosít, amely Azure Database for MySQL megtartja az olyan funkciókat, amelyek korlátozzák a hozzáférést, a REST-alapú és a mozgásban lévő adatok védelméhez, és a tevékenységek figyeléséhez. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter/security) talál információkat. A Azure Database for MySQL biztonsági funkcióival kapcsolatos további információkért tekintse meg a [Biztonság áttekintése](concepts-security.md)című témakört.
+A rugalmas kiszolgálók a legmegfelelőbbek a következőhöz: 
+- Hatékonyabb vezérlést és testreszabást igénylő alkalmazások fejlesztése.
+- Zóna redundáns magas rendelkezésre állása
+- Felügyelt karbantartási időszakok
 
-## <a name="contacts"></a>Kapcsolattartók
-Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask a MySQL-hez készült Azure-adatbázis](mailto:AskAzureDBforMySQL@service.microsoft.com)). Ez az e-mail-cím nem technikai támogatási alias.
+A rugalmas kiszolgáló üzembe helyezési módjának részletes áttekintését lásd: [rugalmas kiszolgáló – áttekintés](flexible-server/overview.md).
 
-Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
+## <a name="next-steps"></a>Következő lépések
 
-- Ha az Azure-támogatással szeretne kapcsolatba lépni, [nyújtson be igénylést az Azure Portalon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
-- Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+További információ a Azure Database for MySQL két üzembe helyezési módjáról, és az igényeinek megfelelő lehetőségek közül választhat.
 
-## <a name="next-steps"></a>További lépések
-Most, hogy elolvasta a Azure Database for MySQL bevezetését, és megválaszolta a "mi az Azure Database for MySQL?" kérdést? készen áll a következőre:
-
-- Tekintse meg az árképzést ismertető oldalt a költségek összehasonlításáért és árkalkulációjáért. [Díjszabás](https://azure.microsoft.com/pricing/details/mysql/)
-- Első lépésként hozza létre első kiszolgálóját. [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Hozza létre első alkalmazását a kívánt nyelv használatával:
-  - [Python](./connect-python.md)
-  - [Node.JS](./connect-nodejs.md)
-  - [Java](./connect-java.md)
-  - [Ruby](./connect-ruby.md)
-  - [PHP](./connect-php.md)
-  - [.NET (C#)](./connect-csharp.md)
-  - [Ugrás](./connect-go.md)
+- [Önálló kiszolgáló](single-server/index.yml)
+- [Rugalmas kiszolgáló](flexible-server/index.yml)
+- [Válassza ki a megfelelő MySQL üzembe helyezési lehetőséget a munkaterhelés számára](select-right-deployment-type.md)

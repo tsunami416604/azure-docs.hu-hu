@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299507"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904276"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Alkalmazás kezelése és monitorozása az Azure Spring Boot Actuatorrel
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java
 
 Miután telepítette az új bináris alkalmazást az alkalmazásba, érdemes megtekinteni a funkciót, és megtekintheti a futó alkalmazással kapcsolatos információkat. Ez a cikk azt ismerteti, hogyan érheti el az API-t egy Azure Spring Cloud által biztosított tesztelési végpontból, és elérhetővé teheti az alkalmazás éles használatra kész funkcióit.
 
@@ -73,5 +75,7 @@ Most visszatérhet az alkalmazás áttekintés paneljére, és megvárhatja, am�
 A beépített összes végpont megtekintéséhez lásd: [végpontok](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints) kimutatása
 
 ## <a name="next-steps"></a>Következő lépések
+
 * [Az Azure Spring Cloud metrikáinak ismertetése](spring-cloud-concept-metrics.md)
-* [Az alkalmazás állapotának megértése az Azure Spring Cloud-ban](spring-cloud-concept-app-status.md))
+* [Az Azure Spring Cloud alkalmazásállapotainak ismertetése](spring-cloud-concept-app-status.md)
+

@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök telepítése
 description: Ismerje meg, hogyan telepítheti a Microsoft Azure Recovery Services-(MARS-) ügynököt a Windows rendszerű gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533478"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975296"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>A Azure Backup MARS-ügynök telepítése
 
@@ -42,10 +42,10 @@ A biztonsági mentéshez rendelkezésre álló adatok az ügynök telepítésén
 
 ## <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
 
-Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md)használják.
+Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)használják.
 
 * Ha a tároló elsődleges biztonsági mentési mechanizmusa, javasoljuk, hogy használja a GRS.
-* A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) használatával csökkentheti az Azure Storage szolgáltatás költségeit.
+* A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) használatával csökkentheti az Azure Storage szolgáltatás költségeit.
 
 A tárolási replikálás típusának módosítása:
 
@@ -162,6 +162,6 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
 1. Válassza a **Befejezés** lehetőséget. Az ügynök már telepítve van, és a számítógép regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Windows rendszerű gépek biztonsági mentésének ismertetése a Azure Backup Mars-ügynök használatával](backup-windows-with-mars-agent.md)

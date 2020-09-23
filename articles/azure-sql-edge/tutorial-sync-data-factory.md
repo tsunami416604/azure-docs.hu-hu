@@ -1,6 +1,6 @@
 ---
-title: Adatok szinkronizálása az Azure SQL Edge-ből (előzetes verzió) Azure Data Factory használatával
-description: Tudnivalók az Azure SQL Edge (előzetes verzió) és az Azure Blob Storage közötti adatszinkronizálásról
+title: Adatok szinkronizálása az Azure SQL Edge-ből Azure Data Factory használatával
+description: Tudnivalók az Azure SQL Edge és az Azure Blob Storage közötti adatszinkronizálásról
 keywords: SQL Edge, adatok szinkronizálása az SQL Edge-ből, az SQL Edge-adatgyárból
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85255432"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904167"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
 
@@ -107,7 +107,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     ![Társított szolgáltatás létrehozása](media/tutorial-sync-data-factory/create-linked-service.png)
 
-    7. Kattintson az **OK** gombra.
+    7. Válassza az **OK** lehetőséget.
 
 8. A **Beállítások** lapon válassza a **Szerkesztés**lehetőséget.
 
@@ -125,7 +125,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A **táblázat**alatt válassza ki a szinkronizálni kívánt táblát. Ehhez az adatkészlethez is megadhat egy lekérdezést az oktatóanyag későbbi részében leírtak szerint. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblázatban.
 
-    3. Kattintson az **OK** gombra.
+    3. Válassza az **OK** lehetőséget.
 
 14. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával. A keresési tevékenység tulajdonságok ablakában ellenőrizze, hogy a **SourceDataset** van-e kiválasztva a **forrás adatkészlet** listájában.
 
@@ -210,7 +210,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 2. Nevezze el az trigger **HourlySync**. A **típus**területen válassza az **ütemterv**lehetőséget. Állítsa be az **ismétlődést** 1 óránként.
 
-3. Kattintson az **OK** gombra.
+3. Válassza az **OK** lehetőséget.
 
 4. Kattintson **Az összes közzététele** gombra.
 
@@ -218,6 +218,6 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 6. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban szereplő Azure Data Factory folyamat óránként egy SQL Edge-példányból származó adatokból másolja az Azure Blob Storage-ba egy helyet. Ha többet szeretne megtudni a Data Factory használatáról más forgatókönyvekben, tekintse meg ezeket az [oktatóanyagokat](../data-factory/tutorial-copy-data-portal.md).

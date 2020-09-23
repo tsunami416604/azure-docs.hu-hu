@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888950"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
-Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. A csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A rendszercsomópont-készletek és a felhasználói csomópontok készletei két különböző Node Pool-mód az AK-fürtökhöz. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a CoreDNS és a tunnelfront üzemeltetésének elsődleges célját szolgálják ki. A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. Minden AK-fürtnek legalább egy csomóponttal rendelkező rendszercsomópont-készletet kell tartalmaznia.
+Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. A csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A rendszercsomópont-készletek és a felhasználói csomópontok készletei két különböző Node Pool-mód az AK-fürtökhöz. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a és a üzemeltetésének elsődleges célját szolgálják ki `CoreDNS` `metrics-server` . A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. Minden AK-fürtnek legalább egy csomóponttal rendelkező rendszercsomópont-készletet kell tartalmaznia.
 
 > [!Important]
 > Ha az AK-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, javasoljuk, hogy legalább három csomópontot használjon a csomópont-készlethez.
@@ -164,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > Ha a rendszercsomópont-készleteket az AK-fürtökön a 2020-03-02-es API-verzió előtt szeretné használni, vegyen fel egy új rendszercsomópont-készletet, majd törölje az eredeti alapértelmezett csomópont-
 
-Korábban nem lehetett törölni a rendszercsomópont-készletet, amely a kezdeti alapértelmezett Node-készlet volt egy AK-fürtben. Mostantól rugalmasan törölheti a fürt összes csomópont-készletét. Mivel az AK-fürtök legalább egy rendszercsomópont-készletet igényelnek, legalább két rendszercsomópont-készlettel kell rendelkeznie az AK-fürtön, mielőtt törölni lehetne őket.
+Ahhoz, hogy törölni lehessen az egyiket, legalább két rendszercsomópont-készlettel kell rendelkeznie az AK-fürtön.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool

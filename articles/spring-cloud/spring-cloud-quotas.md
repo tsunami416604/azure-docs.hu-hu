@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7c4c832819f61d208d0722823d0a74354960f182
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904264"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz
+
+**Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
 Az összes Azure-szolgáltatás alapértelmezett korlátokat és kvótákat állít be az erőforrásokhoz és a szolgáltatásokhoz.   Az Azure Spring Cloud két díjszabási szintet kínál: alapszintű és standard. A jelen cikk mindkét szintjére vonatkozóan részletezjük a korlátot.
 
@@ -28,6 +30,6 @@ Azure Spring Cloud Service instances régiónként/előfizetés | 10 | 10
 Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 25 | 500
 Tartós kötetek | 1 GB/app x 10 alkalmazás | 50 GB/app x 10 alkalmazás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Néhány alapértelmezett korlát növelhető. Ha a telepítőnek növekedésre van szüksége, [hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).

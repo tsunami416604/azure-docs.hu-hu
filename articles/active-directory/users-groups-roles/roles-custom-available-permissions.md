@@ -1,6 +1,6 @@
 ---
-title: Elérhető egyéni rendszergazdai szerepkör-engedélyek – Azure AD | Microsoft Docs
-description: Egyéni rendszergazdai szerepkör engedélyei az Identitáskezelés delegálásához.
+title: Egyéni szerepkör engedélyei az alkalmazás regisztrálásához – Azure AD | Microsoft Docs
+description: Az egyéni rendszergazdai szerepkör engedélyeinek delegálása az alkalmazások regisztrálásának kezeléséhez.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732106"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967695"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Alkalmazás regisztrációs altípusai és engedélyei Azure Active Directory
+# <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek a Azure Active Directory egyéni szerepköreihez
 
 Ez a cikk a jelenleg elérhető alkalmazás-regisztrációs engedélyeket tartalmazza a Azure Active Directory (Azure AD) egyéni szerepkör-definícióinak esetében.
 
-## <a name="permissions-for-managing-single-directory-applications"></a>Engedélyek egyetlen címtárbeli alkalmazások kezeléséhez
+## <a name="permissions-for-managing-single-tenant-applications"></a>Az egybérlős alkalmazások kezelésére vonatkozó engedélyek
 
-Az egyéni szerepkör engedélyeinek kiválasztásakor lehetősége van arra, hogy hozzáférést biztosítson csak egyetlen címtárból származó alkalmazások kezeléséhez. Az egykönyvtáras alkalmazások csak az Azure AD-szervezet azon felhasználói számára érhetők el, ahol az alkalmazás regisztrálva van. Az egykönyvtáras alkalmazások úgy vannak definiálva, hogy **támogatott fióktípus** legyenek beállítva a "fiókok ebben a szervezeti címtárban" beállítás. A Graph API az egykönyvtáras alkalmazások esetében a signInAudience tulajdonság értéke "AzureADMyOrg".
+Az egyéni szerepkör engedélyeinek kiválasztásakor lehetősége van arra, hogy hozzáférést biztosítson csak egybérlős alkalmazások kezeléséhez. az egybérlős alkalmazások csak az Azure AD-szervezet azon felhasználói számára érhetők el, ahol az alkalmazás regisztrálva van. az egybérlős alkalmazások úgy vannak definiálva, hogy **támogatott fióktípus** legyenek beállítva a "fiókok ebben a szervezeti címtárban" beállítás. A Graph API az egybérlős alkalmazások esetében a signInAudience tulajdonság értéke "AzureADMyOrg".
 
-Ahhoz, hogy hozzáférést biztosítson a csak egy címtárbeli alkalmazások kezeléséhez, használja az alábbi engedélyeket az altípus **Applications. myOrganization**. Például: Microsoft. Directory/Applications. myOrganization/Basic/Update.
+Ahhoz, hogy hozzáférést biztosítson csak egybérlős alkalmazások kezeléséhez, használja az alábbi engedélyeket az **Applications. myOrganization**altípussal. Például: Microsoft. Directory/Applications. myOrganization/Basic/Update.
 
 Tekintse meg az [Egyéni szerepkörök áttekintése](roles-custom-overview.md) című témakört, amelyből megtudhatja, hogy mi az általános kifejezés altípusa, az engedély és a tulajdonság beállítása. Az alábbi információk az alkalmazások regisztrálására vonatkoznak.
 
@@ -95,7 +95,7 @@ Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applicatio
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/alkalmazások/allProperties/Update
 
-Lehetőség az egykönyvtáros és a több könyvtáros alkalmazások összes tulajdonságának frissítésére.
+Lehetőség az egybérlős és a több-bérlős alkalmazások összes tulajdonságának frissítésére.
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>Microsoft. Directory/Applications. myOrganization/allProperties/Update
 
@@ -103,7 +103,7 @@ Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applicatio
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/alkalmazások/célközönség/frissítés
 
-Képes frissíteni a támogatott fióktípus (signInAudience) tulajdonságot az egykönyvtáras és a több könyvtáros alkalmazásokhoz.
+Az egybérlős és a több-bérlős alkalmazások támogatott fiók típusának (signInAudience) tulajdonságának frissítése.
 
 ![Ez az engedély hozzáférést biztosít az alkalmazás regisztrációja által támogatott fiók Type tulajdonságához a hitelesítés lapon](./media/roles-custom-available-permissions/supported-account-types.png)
 
@@ -139,7 +139,7 @@ Az egybérlős és a több-bérlős alkalmazásokhoz tartozó tanúsítványok �
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>Microsoft. Directory/Applications. myOrganization/hitelesítő adatok/frissítés
 
-Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés, de csak egykönyvtáras alkalmazásokhoz.
+Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés, de csak egybérlős alkalmazásokhoz.
 
 #### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/alkalmazások/tulajdonosok/frissítés
 
@@ -167,7 +167,7 @@ Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applicatio
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyéni szerepkörök létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](roles-create-custom.md) használatával
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](roles-view-assignments.md)

@@ -1,25 +1,37 @@
 ---
-title: Tudnivalók a Azure Key Vault kulcsokról – Azure Key Vault
+title: A kulcsok ismertetése – Azure Key Vault
 description: A kulcsok Azure Key Vault REST-felületének és fejlesztői adatainak áttekintése.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 76e9c342f87a3aa1d04a8f4be4065af73e6ba9f2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967556"
 ---
-# <a name="about-azure-key-vault-keys"></a>Információk az Azure Key Vaultban tárolt kulcsokról
+# <a name="about-keys"></a>Információ a kulcsokról
 
-Azure Key Vault támogatja több kulcs típusát és algoritmusát, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz.
+Azure Key Vault két típusú erőforrást biztosít a titkosítási kulcsok tárolásához és kezeléséhez:
+
+|Erőforrás típusa|Kulcsfontosságú védelmi módszerek|Adatsík-végpont alap URL-címe|
+|--|--|--|
+| **Kulcstartók** | Szoftveres védelemmel ellátott<br/><br/>és<br/><br/>HSM által védett (prémium SKU-val)</li></ul> | https://{Vault-Name}. Vault. Azure. net |
+| **Felügyelt HSM-készletek** | HSM által védett | https://{HSM-Name}. managedhsm. Azure. net |
+||||
+
+- **Tárolók – a** tárolók alacsony költséghatékonyságú, könnyen telepíthető, több-bérlős, zóna-rugalmas (ahol elérhető), nagy teljesítményű kulcskezelő megoldás, amely a leggyakoribb felhőalapú alkalmazási forgatókönyvekhez megfelelő.
+- A **felügyelt HSM** által FELÜGYELt HSM egybérlős, rugalmas (ahol elérhető), magasan elérhető HSM biztosít a titkosítási kulcsok tárolásához és kezeléséhez. A leginkább megfelelő alkalmazások és használati forgatókönyvek esetében, amelyek nagy értékű kulcsokat kezelnek. Emellett segít a legszigorúbb biztonsági, megfelelőségi és szabályozási követelményeknek való megfelelésben. 
+
+> [!NOTE]
+> A tárolók lehetővé teszik a titkosítási kulcsok mellett különféle típusú objektumok, például a titkok, a tanúsítványok és a Storage-fiókok kulcsának tárolását és kezelését is.
 
 A Key Vaultban található titkosítási kulcsok JSON webkulcs [JWK] objektumként jelennek meg. A JavaScript Object Notation (JSON) és a JavaScript Object aláírási és titkosítási (JOSE) specifikációi a következők:
 
@@ -28,30 +40,49 @@ A Key Vaultban található titkosítási kulcsok JSON webkulcs [JWK] objektumké
 -   [JSON webes algoritmusok (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON webes aláírás (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Az alap JWK-/JWA-specifikációk is kiterjeszthetők a Key Vault implementációban egyedi kulcs típusú típusok engedélyezéséhez. Ha például a kulcsokat a HSM gyártótól függő csomagolás használatával importálja, a lehetővé teszi a kulcsok biztonságos szállítását, amelyek csak Key Vault HSM használhatók. 
+Az alap JWK-/JWA-specifikációk a Azure Key Vault és a felügyelt HSM-implementációk egyedi alaptípusának engedélyezésére is kiterjednek. 
 
-A Azure Key Vault a szoftveres védelemmel ellátott és a HSM által védett kulcsokat is támogatja:
+HSM-védelemmel ellátott kulcsok (más néven HSM-kulcsok) feldolgozása egy HSM-ben (hardveres biztonsági modul) történik, és mindig az HSM védelmi határa marad. 
 
-- **Szoftveres védelemmel ellátott kulcsok**: a szoftver által Key Vault által feldolgozott kulcs, de a rendszer egy HSM-ben lévő rendszerkulcs használatával titkosítja a nyugalmi állapotot. Az ügyfelek importálhatók egy meglévő RSA-vagy EC-(elliptikus görbe-) kulcs, vagy kérhetik, hogy Key Vault létrehozzon egyet.
-- **HSM-potected kulcsok**: egy HSM-ben feldolgozott kulcs (hardveres biztonsági modul). Ezeket a kulcsokat a Key Vault HSM biztonsági világok egyikén védik (az elkülönítés fenntartása érdekében a földrajz egy biztonsági világa van). Az ügyfelek a szoftveres védelemmel ellátott űrlapon vagy egy kompatibilis HSM-eszközről is importálhatók. Előfordulhat, hogy az ügyfelek Key Vault kérhetnek a kulcsok létrehozásához. Ez a kulcspár hozzáadja a key_hsm attribútumot a JWK a HSM-kulcs anyagának elvégzéséhez.
+- A tárolók az **FIPS 140-2 2. szintű** hitelesített HSM védik a HSM-kulcsok a megosztott HSM háttér-infrastruktúrában való ellátásához. 
+- A felügyelt HSM-készletek a **FIPS 140-2 3. szintű** hitelesített HSM-modulokat használják a kulcsok védetté tenni. Mindegyik HSM-készlet egy elkülönített, egybérlős példány, amely saját [biztonsági tartománnyal](../managed-hsm/security-domain.md) rendelkezik, és teljes titkosítási elkülönítést biztosít minden más HSM-készlettől, amely ugyanazokat a hardveres infrastruktúrát is megosztja.
 
-A földrajzi határokra vonatkozó további információkért lásd: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/privacy/)  
+Ezek a kulcsok egyetlen bérlős HSM-készletekben vannak védve. Az RSA, az EC és a szimmetrikus kulcs importálható puha formában, vagy egy támogatott HSM-eszközről is exportálható. A HSM-készletekben is létrehozhat kulcsokat. Ha a [BYOK (a saját kulcs használata) specifikációban](../keys/byok-specification.md)leírt módszer segítségével importálja a HSM-kulcsokat a kulcsok használatával, az lehetővé teszi a biztonságos szállítási kulcsra vonatkozó anyagok kezelését a felügyelt HSM-készletekbe. 
 
-## <a name="cryptographic-protection"></a>Titkosítási védelem
+A földrajzi határokra vonatkozó további információkért lásd: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/privacy/)
 
-A Key Vault csak az RSA és az elliptikus görbe kulcsait támogatja. 
+## <a name="key-types-protection-methods-and-algorithms"></a>Kulcshasználat, védelmi módszerek és algoritmusok
 
--   **EC**: szoftveres védelemmel ellátott elliptikus görbe kulcsa.
--   **EC-HSM**: "kemény" elliptikus görbe kulcsa.
--   **RSA**: szoftveres védelemmel ELlátott RSA-kulcs.
--   **RSA-HSM**: "Hard" RSA-kulcs.
+Key Vault támogatja az RSA, az EC és a szimmetrikus kulcsokat. 
 
-A Key Vault a 2048, 3072 és 4096 méretű RSA-kulcsokat támogatja. Key Vault támogatja a P-256, a P-384, a P-521 és a P-256K (SECP256K1) elliptikus görbe típusú kulcsokat.
+### <a name="hsm-protected-keys"></a>HSM-védett kulcsok
 
-A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a FIPS (szövetségi adatfeldolgozási szabványok) hitelesítése. A FIPS-módban való futtatáshoz nem szükséges semmilyen speciális művelet. A HSM által védettként **létrehozott** vagy **importált** kulcsok a HSM-ben lesznek feldolgozva, amely a 2. szintű FIPS 140-2-es szintre van érvényesítve. A szoftver által védettként **létrehozott** vagy **importált** kulcsok feldolgozása az 1. szintű FIPS 140-2-es szintre ellenőrzött titkosítási modulokon belül történik.
+|Kulcs típusa|Tárolók (csak prémium SKU)|Felügyelt HSM-készletek|
+|--|--|--|--|
+**EC-HSM**: elliptikus görbe kulcsa|FIPS 140-2 2. szint HSM|FIPS 140-2 Level 3 HSM
+**RSA-HSM**: RSA-kulcs|FIPS 140-2 2. szint HSM|FIPS 140-2 Level 3 HSM
+**Oct – HSM**: szimmetrikus|Nem támogatott|FIPS 140-2 Level 3 HSM
+||||
+
+### <a name="software-protected-keys"></a>Szoftveres védelemmel ellátott kulcsok
+
+|Kulcs típusa|Kulcstartók|Felügyelt HSM-készletek|
+|--|--|--|--|
+**RSA**: "szoftveres védelemmel ellátott" RSA-kulcs|FIPS 140-2 1. szint|Nem támogatott
+**EC**: "szoftveres védelemmel ellátott" elliptikus görbe kulcsa|FIPS 140-2 1. szint|Nem támogatott
+||||
+
+### <a name="supported-algorithms"></a>Támogatott algoritmusok
+
+|Kulcs típusa/méretek/görbék| Titkosítás/visszafejtés<br>(Becsomagolás/kicsomagolás) | Aláírás/ellenőrzés | 
+| --- | --- | --- |
+|EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
+|RSA 2K, 3K, 4K| RSA1_5<br>RSA – OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
+|AES 128 bites, 256 bites| AES-KW<br>AES – GCM<br>AES – CBC| NA| 
+|||
 
 ###  <a name="ec-algorithms"></a>EK-algoritmusok
- A következő algoritmus-azonosítók támogatottak a Key Vault EC és EC-HSM kulcsaival. 
+ A következő algoritmus-azonosítók támogatottak az EC-HSM-kulcsok használatával
 
 #### <a name="curve-types"></a>Görbe típusai
 
@@ -68,12 +99,13 @@ A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a 
 -   **ES512** – ECDSA a P-521 görbével létrehozott SHA-512 kivonatokhoz és kulcsokhoz. Ez az algoritmus a következő címen érhető el: [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>RSA-algoritmusok  
- A következő algoritmus-azonosítók támogatottak az RSA és az RSA-HSM kulcsok esetében Key Vaultban.  
+ A következő algoritmus-azonosítók támogatottak az RSA és az RSA-HSM kulcsok esetében  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, TITKOSÍTÁS/VISSZAFEJTÉS
 
 -   **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447] kulcs titkosítása  
 -   **RSA-OAEP** -RSAES az optimális aszimmetrikus titkosítási kitöltés (OAEP) [RFC3447] használatával az a. 2.1. szakaszban az RFC 3447 által meghatározott alapértelmezett paraméterekkel. Ezek az alapértelmezett paraméterek az SHA-1 kivonatoló függvényét használják, és a MGF1 maszk generálási funkciója az SHA-1.  
+-  **RSA-OAEP-256** – RSAES optimális aszimmetrikus titkosítással az sha-256 kivonatoló funkciójával, valamint a MGF1 maszk generálási FUNKCIÓJÁVAL az sha-256 használatával
 
 #### <a name="signverify"></a>ALÁÍRÁS/ELLENŐRZÉS
 
@@ -83,11 +115,19 @@ A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a 
 -   **RS256** -RSASSA-PKCS-V1_5 az SHA-256 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-256 értékkel kell kiszámítani, és 32 bájt hosszúságú kell lennie.  
 -   **RS384** -RSASSA-PKCS-V1_5 az SHA-384 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-384 értékkel kell kiszámítani, és 48 bájt hosszúságú kell lennie.  
 -   **RS512** -RSASSA-PKCS-V1_5 az SHA-512 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-512 értékkel kell kiszámítani, és 64 bájt hosszúságú kell lennie.  
--   **RSNULL** – tekintse meg a következőt: [RFC2437], speciális használati eset az egyes TLS-forgatókönyvek engedélyezéséhez.  
+-   **RSNULL** – lásd: [RFC2437](https://tools.ietf.org/html/rfc2437), speciális használati eset, hogy bizonyos TLS-forgatókönyvek engedélyezve legyenek.  
+
+###  <a name="symmetric-key-algorithms"></a>Szimmetrikus kulcsú algoritmusok
+- **AES-kW** -AES-kulcs becsomagolása ([RFC3394](https://tools.ietf.org/html/rfc3394)).
+- **AES-GCM** -AES titkosítás a Galois Counter mode-ban ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC** -AES titkosítás titkosított blokkos láncolási módban ([NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+
+> [!NOTE] 
+> A jelenlegi AES-GCM implementáció és a megfelelő API-k kísérleti jellegűek. A megvalósítás és az API-k jelentősen megváltozhatnak a jövőbeli iterációk során. 
 
 ##  <a name="key-operations"></a>Legfontosabb műveletek
 
-Key Vault a következő műveleteket támogatja a legfontosabb objektumokon:  
+A felügyelt HSM a következő műveleteket támogatja a legfontosabb objektumokon:  
 
 -   **Létrehozás**: lehetővé teszi, hogy az ügyfél Key Vaultban hozzon létre egy kulcsot. A kulcs értékét Key Vault és tárolja a rendszer, és az nem jelenik meg a-ügyfél számára. Az aszimmetrikus kulcsok a Key Vaultben hozhatók létre.  
 -   **Importálás**: lehetővé teszi, hogy az ügyfél egy meglévő kulcsot importáljon Key Vaultba. Az aszimmetrikus kulcsok a JWK-konstrukción belül számos különböző csomagolási módszer használatával importálhatók Key Vaultba. 
@@ -142,8 +182,8 @@ További információ a többi lehetséges attribútumról: JSON- [webkulcs (JWK
 
 További alkalmazásspecifikus metaadatokat is megadhat címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakterből és 256 karakterből állhat.  
 
->[!Note]
->A címkék a hívó által olvashatók, ha rendelkeznek a *listával* , vagy *kapnak* engedélyt az adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványok) számára.
+> [!NOTE] 
+> A címkék a hívó által olvashatók, ha rendelkeznek a *listával* , vagy *kapnak* engedélyt erre a kulcsra.
 
 ##  <a name="key-access-control"></a>Kulcshozzáférés-vezérlés
 
@@ -176,10 +216,10 @@ A következő engedélyek adhatók meg felhasználónkénti vagy egyszerű szolg
 A kulcsok használatával kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciával](/rest/api/keyvault)foglalkozó témakörben található főbb műveleteket. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
 ## <a name="next-steps"></a>Következő lépések
-
 - [Tudnivalók a Key Vaultról](../general/overview.md)
-- [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)
+- [A felügyelt HSM ismertetése](../managed-hsm/overview.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)
 - [Információ a tanúsítványokról](../certificates/about-certificates.md)
+- [Key Vault REST API áttekintése](../general/about-keys-secrets-certificates.md)
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

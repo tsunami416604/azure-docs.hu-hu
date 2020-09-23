@@ -6,15 +6,15 @@ author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7fbc7b1cb8119a6ee9403bf0139380aa5dcd0613
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895536"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
@@ -24,30 +24,30 @@ Ez a cikk az Azure Cosmos DB-hez készült Azure Synapse Link jelenleg támogato
 
 A Azure Cosmos DB kétféle tároló létezik:
 * HTAP-tároló – egy szinapszis-hivatkozással rendelkező tároló. Ez a tároló tranzakciós tárolót és analitikai tárolót is tartalmaz. 
-* OLTP-tároló – csak tranzakciós tárolóval rendelkező tároló; A szinapszis-hivatkozás nincs engedélyezve. 
+* OLTP-tároló – az Synaspe-hivatkozással rendelkező tároló nincs engedélyezve. Ez a tároló csak tranzakciós tárolóval rendelkezik, és nem rendelkezik analitikus tárolóval.
 
 > [!IMPORTANT]
-> A Azure Cosmos DB Azure szinapszis hivatkozása jelenleg támogatott olyan munkaterületek esetében, amelyeken nincs engedélyezve a felügyelt virtuális hálózat. 
+> A Azure Cosmos DB Azure szinapszis-hivatkozása jelenleg olyan szinapszis-munkaterületeken támogatott, amelyeken nincs engedélyezve a felügyelt virtuális hálózat. 
 
-A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos DB tárolóhoz, ebben az esetben csak olvasható/írható lehet a tranzakciós tároló. Az alábbi lista a Azure Cosmos DB szinapszis-hivatkozáson belüli jelenleg támogatott szolgáltatásainak listáját tartalmazza. 
+A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos DB tárolóhoz, ebben az esetben csak olvasható/írható lehet a tranzakciós tároló. A következő lista a szinapszis-hivatkozáson belüli jelenleg támogatott szolgáltatások listáját Azure Cosmos DB. 
 
 | Kategória              | Leírás |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL Server nélküli](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
-| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| **Futásidejű támogatás** |Az Azure szinapszis futtatási idejének olvasási vagy írási támogatása| ✓ | [Kapcsolatfelvétel](mailto:AskSynapse@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB)|
-| **API-támogatás Azure Cosmos DB** |API-támogatás szinapszis-hivatkozásként| SQL/MongoDB | SQL/MongoDB |
-| **Objektum**  |Olyan objektumok, mint például egy létrehozható tábla, amely közvetlenül a Azure Cosmos DB tárolóra mutat| Nézet, tábla | Nézet |
-| **Olvasás**    |Adatok beolvasása egy Azure Cosmos DB tárolóból| OLTP/HTAP | HTAP  |
-| **Írás**   |Adatok írása a futtatási időről Azure Cosmos DB tárolóba| OLTP | n.a. |
+| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
+| **Futásidejű támogatás** |Az Azure szinapszis futtatókörnyezetének támogatása a Azure Cosmos DB eléréséhez| ✓ | [Kapcsolatfelvétel](mailto:cosmosdbsynapselink@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB) |
+| **API-támogatás Azure Cosmos DB** | Támogatott Azure Cosmos DB API-típus | SQL/MongoDB | SQL/MongoDB |
+| **Objektum**  |Olyan objektumok, mint például egy létrehozható tábla, amely közvetlenül a Azure Cosmos DB tárolóra mutat| Dataframe, megtekintés, tábla | Nézet |
+| **Olvasás**    | Az olvasható Azure Cosmos DB tároló típusa | OLTP/HTAP | HTAP  |
+| **Írás**   | Használható az Azure szinapszis futtatókörnyezete az adatAzure Cosmos DB tárolóba való írásra | Igen | Nem |
 
-* Ha a Spark-ból ír egy Azure Cosmos DB tárolóba, ez a folyamat a Azure Cosmos DB tranzakciós tárolóján keresztül történik, és az Azure Cosmos DB tranzakciós teljesítményét is befolyásolja.
-* Az SQL Pool külső táblákon keresztüli integrációja jelenleg nem támogatott.
+* Ha a Spark-ból ír egy Azure Cosmos DB tárolóba, ez a Azure Cosmos DB tranzakciós tárolójával történik, és a tranzakciós munkaterhelések teljesítményét befolyásolja Azure Cosmos DB és a kérelmek mennyiségét.
+* A szinapszis SQL Pool külső táblákon keresztüli integrációja jelenleg nem támogatott.
 
 ## <a name="supported-code-generated-actions-for-spark"></a>Támogatott, kód által generált műveletek a Sparkhoz
 
-| Kézmozdulat              | Description |OLTP |HTAP  |
+| Kézmozdulat              | Leírás |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **Betöltés a DataFrame** |Betöltés és beolvasás egy Spark-DataFrame |X| ✓ |
-| **Spark-tábla létrehozása** |Azure Cosmos DB tárolóra mutató tábla létrehozása|X| ✓ |
+| **Betöltés a DataFrame** |Betöltés és beolvasás egy Spark-DataFrame |✓| ✓ |
+| **Spark-tábla létrehozása** |Azure Cosmos DB tárolóra mutató tábla létrehozása|✓| ✓ |
 | **DataFrame írása tárolóba** |Adatbevitel tárolóba|✓| ✓ |
 | **Adatfolyam-DataFrame betöltése a tárolóból** |Adatfolyam-adatátvitel Azure Cosmos DB változási csatornán keresztül|✓| ✓ |
 | **Adatfolyam-DataFrame írása tárolóba** |Adatfolyam-adatátvitel Azure Cosmos DB változási csatornán keresztül|✓| ✓ |
@@ -56,12 +56,13 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>Támogatott programkód által generált műveletek az SQL Server nélküli rendszerhez
 
-| Kézmozdulat              | Description |OLTP |HTAP |
+| Kézmozdulat              | Leírás |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **Válassza ki a Top 100** |Első 100-elem előnézete egy tárolóból|X| ✓ |
-| **Nézet létrehozása** |Hozzon létre egy nézetet, amely közvetlenül rendelkezik BI-hozzáféréssel egy tárolóban a szinapszis SQL használatával|X| ✓ |
+| **Adatok feltárása** |Az ismerős T-SQL szintaxissal és az automatikus séma-következtetéssel megvizsgálhatja a tároló adatait|X| ✓ |
+| **Nézetek létrehozása és BI-jelentések készítése** |SQL-nézet létrehozása, hogy közvetlen hozzáférést biztosítson a BI-hoz készült tárolóhoz az SQL Server nélküli |X| ✓ |
+| **Különböző adatforrások csatlakoztatása Cosmos DB-adatforrásokkal együtt** | A lekérdezés eredményeinek tárolása Cosmos DB tárolóból származó adatok beolvasásával, valamint az Azure Blob Storage vagy a Azure Data Lake Storage CETAS használatával |X| ✓ |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Csatlakozás a szinapszishoz hivatkozás Azure Cosmos db](../quickstart-connect-synapse-link-cosmos-db.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](how-to-query-analytical-store-spark.md)

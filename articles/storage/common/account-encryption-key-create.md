@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070496"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967471"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Olyan fiók létrehozása, amely támogatja az ügyfél által felügyelt kulcsokat a táblákhoz és a várólistákhoz
 
-Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint a üzenetsor-tároló és a Table Storage olyan kulcsot használ, amely a szolgáltatásra vonatkozik, és amelyet a Microsoft kezel. Dönthet úgy is, hogy az ügyfél által felügyelt kulcsokat használja a várólista vagy a tábla adatai titkosításához. Ha az ügyfél által felügyelt kulcsokat várólistákkal és táblázatokkal szeretné használni, először létre kell hoznia egy olyan Storage-fiókot, amely a fiókra hatókörrel rendelkező titkosítási kulcsot használ, nem pedig a szolgáltatáshoz. Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsát használja a várólista-és a tábla-adatkezeléshez, az ügyfél által felügyelt kulcsokat az adott Storage-fiókhoz Azure Key Vault is konfigurálhatja.
+Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint a üzenetsor-tároló és a Table Storage olyan kulcsot használ, amely a szolgáltatásra vonatkozik, és amelyet a Microsoft kezel. Dönthet úgy is, hogy az ügyfél által felügyelt kulcsokat használja a várólista vagy a tábla adatai titkosításához. Ha az ügyfél által felügyelt kulcsokat várólistákkal és táblázatokkal szeretné használni, először létre kell hoznia egy olyan Storage-fiókot, amely a fiókra hatókörrel rendelkező titkosítási kulcsot használ, nem pedig a szolgáltatáshoz. Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsát használja a várólista-és a tábla-adatbázishoz, konfigurálhatja az ügyfél által felügyelt kulcsokat a Storage-fiókhoz.
 
 Ez a cikk azt ismerteti, hogyan hozható létre olyan Storage-fiók, amely a fiókra hatókörben lévő kulcsra támaszkodik. A fiók első létrehozásakor a Microsoft a fiók kulcsával titkosítja a fiókban lévő adatvédelmet, és a Microsoft kezeli a kulcsot. Ezt követően konfigurálhatja az ügyfél által felügyelt kulcsokat a fiók számára az előnyök kihasználása érdekében, beleértve a saját kulcsok megadásának lehetőségét, a kulcs verziójának frissítését, a kulcsok elforgatását és a hozzáférés-vezérlés visszavonását.
 
@@ -62,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -94,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -120,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -215,11 +215,7 @@ A következő JSON-példa egy általános célú v2-es Storage-fiókot hoz létr
 
 ---
 
-Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsára támaszkodik, tekintse meg az alábbi cikkek egyikét az ügyfél által felügyelt kulcsok Azure Key Vault való konfigurálásához:
-
-- [Ügyfél által kezelt kulcsok konfigurálása az Azure Key Vaulttal az Azure Portalon](storage-encryption-keys-portal.md)
-- [Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával](storage-encryption-keys-powershell.md)
-- [Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI használatával](storage-encryption-keys-cli.md)
+Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsára támaszkodik, a Azure Key Vault vagy Key Vault felügyelt hardveres biztonsági modell (HSM) (előzetes verzió) szolgáltatásban tárolt ügyfelek által felügyelt kulcsokat konfigurálhatja. Az ügyfél által felügyelt kulcsok kulcstartóban való tárolásával kapcsolatban lásd: [a titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal](customer-managed-keys-configure-key-vault.md). Az ügyfél által felügyelt kulcsok felügyelt HSM-ben való tárolásával kapcsolatban lásd: [a titkosítás konfigurálása Azure Key Vault felügyelt HSM-ben (előzetes verzió) tárolt, ügyfél által felügyelt kulcsokkal](customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="verify-the-account-encryption-key"></a>A fiók titkosítási kulcsának ellenőrzése
 
@@ -248,11 +244,12 @@ az storage account show /
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md) 
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
+- [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

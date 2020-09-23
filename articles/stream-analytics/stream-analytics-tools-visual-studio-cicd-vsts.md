@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75354436"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903834"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
 Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz az Azure Pipelines használatával. 
@@ -26,8 +26,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Kiadási folyamat létrehozása az Azure Pipelinesban
 > * Alkalmazás automatikus üzembe helyezése és frissítése
 
+> [!NOTE]
+> A CI/CD NuGet elavult. A legújabb NPM való áttelepítéssel kapcsolatos információkért tekintse meg a [folyamatos integráció és üzembe helyezés áttekintése](cicd-overview.md) című témakört.
+
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
+
+Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a következő lépéseket:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Visual Studiót](stream-analytics-tools-for-visual-studio-install.md) és az **Azure-fejlesztési** vagy az **Adattárolási és -feldolgozási** számítási feladatokat.
@@ -63,9 +67,9 @@ Az alkalmazás forrásfájljait megoszthatja az Azure DevOps egyik projektjében
     Az adattár közzétételével egy új projekt jön létre a szervezetben a helyi adattáréval azonos néven. Ha egy meglévő projektben szeretné létrehozni a tárházat, kattintson a **repository neve**melletti **speciális** elemre, és válasszon ki egy projektet. A kód böngészőben való megtekintéséhez válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Folyamatos továbbítás konfigurálása az Azure DevOps használatával
-A Team Pipelines buildelési folyamat egy olyan munkafolyamatot ír le, amely egymás után végrehajtott buildelési lépések sorozatából áll. További tudnivalók az [Azure Pipelines buildelési folyamatokról](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). 
+A Team Pipelines buildelési folyamat egy olyan munkafolyamatot ír le, amely egymás után végrehajtott buildelési lépések sorozatából áll. További tudnivalók az [Azure Pipelines buildelési folyamatokról](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true).
 
-Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildelési és a kiadási folyamat a teljes munkafolyamatot végrehajtja, amely a forrásfájlokkal kezdődik, és a fürtön futó alkalmazással ér véget. További információ az Azure Pipelines [kiadási folyamatairól](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts).
+Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildelési és a kiadási folyamat a teljes munkafolyamatot végrehajtja, amely a forrásfájlokkal kezdődik, és a fürtön futó alkalmazással ér véget. További információ az Azure Pipelines [kiadási folyamatairól](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true).
 
 ### <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
 Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://app.vsaex.visualstudio.com/) létrehozott projektet. 
@@ -121,7 +125,7 @@ Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://a
     |Erőforráscsoport  |  Adja meg az erőforráscsoport nevét.   |
     |Sablon  | [Saját megoldás elérési útja]\bin\Debug\Deploy\\[Saját projekt neve].JobTemplate.json   |
     |Sablon paraméterei  | [Saját megoldás elérési útja]\bin\Debug\Deploy\\[Saját projekt neve].JobTemplate.parameters.json   |
-    |Sablon paramétereinek felülbírálása  | Írja be a szövegmezőbe a felülbírálni kívánt sablonparamétereket. Például: –storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Ez a tulajdonság nem kötelező, de a build hibaüzeneteket eredményezhet, ha a paraméterek nincsenek felülbírálva.    |
+    |Sablon paramétereinek felülbírálása  | Írja be a szövegmezőbe a felülbírálni kívánt sablonparamétereket. Példa: `–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre)` . Ez a tulajdonság nem kötelező, de a build hibaüzeneteket eredményezhet, ha a paraméterek nincsenek felülbírálva.    |
     
     ![Az Azure erőforráscsoport-telepítés tulajdonságainak beállítása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
@@ -151,14 +155,14 @@ Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiv�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a jövőben szeretné még használni a feladatot, leállíthatja, és később újraindíthatja, amikor szüksége lesz rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az oktatóanyagban létrehozott összes erőforrást törölheti:
+Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az oktatóanyagban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni arról, hogyan használhatja a Visual Studio Azure Stream Analytics-eszközeit egy folyamatos integrációs és üzembehelyezési folyamat létrehozásához, folytassa az olvasást a CI/CD-folyamatot bemutató cikkel:
+Ha többet szeretne megtudni arról, hogyan használhatók a Visual Studio Azure Stream Analytics eszközei a folyamatos integrációs és üzembe helyezési folyamat beállításához, folytassa a következőt: CI/CD-folyamatok beállítása.
 
 > [!div class="nextstepaction"]
 > [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)

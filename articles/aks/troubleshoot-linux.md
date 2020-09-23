@@ -1,19 +1,19 @@
 ---
 title: Linux-teljesítménynövelő eszközök
 titleSuffix: Azure Kubernetes Service
-description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata során felmerülő gyakori problémák elhárításához és megoldásához
+description: Megtudhatja, hogyan használhatja a linuxos teljesítményű eszközöket az Azure Kubernetes szolgáltatás (ak) használata során felmerülő gyakori problémák elhárítására és megoldására.
 services: container-service
 author: alexeldeib
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
-ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77925604"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982036"
 ---
 # <a name="linux-performance-troubleshooting"></a>A Linux teljesítményének hibaelhárítása
 
@@ -62,7 +62,7 @@ $ dmesg --level=err | tail
 
 a dmesg kiírja a kernel pufferét. Az olyan események, mint a OOMKill, adjon hozzá egy bejegyzést a kernel pufferéhez. A OOMKill vagy más erőforrás-kimerülési üzenetek megkeresése a dmesg-naplókban a probléma erős mutatója.
 
-### <a name="top"></a>felül
+### <a name="top"></a>top
 
 ```
 $ top
@@ -78,13 +78,13 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top`átfogó áttekintést nyújt az aktuális rendszerállapotról. A fejlécek hasznos összesített információkat tartalmaznak:
+`top` átfogó áttekintést nyújt az aktuális rendszerállapotról. A fejlécek hasznos összesített információkat tartalmaznak:
 
 - feladatok állapota: fut, alvó, leállítva.
 - CPU-kihasználtság, ebben az esetben többnyire a tétlen időt mutatja.
 - a teljes, az ingyenes és a felhasznált rendszermemória.
 
-`top`rövid élettartamú folyamatokat hagyhat ki; `htop` `atop` az ilyen jellegű hiányosságok kijavítása közben hasonló felületeket biztosítanak.
+`top` rövid élettartamú folyamatokat hagyhat ki; `htop` `atop` az ilyen jellegű hiányosságok kijavítása közben hasonló felületeket biztosítanak.
 
 ## <a name="cpu"></a>CPU
 
@@ -108,7 +108,7 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat`a hasonló CPU-adatokat a legfelülre nyomtatja, de CPU-szál szerint lebontva. Ha egyszerre látja az összes magot, akkor hasznos lehet a nagy mértékű egyensúlyú CPU-használat észleléséhez, például ha egy szálon futó alkalmazás 100%-os kihasználtságot használ. Ez a probléma nehezebben jelenhet meg, ha a rendszeren lévő összes CPU-ra összesítve van.
+`mpstat` a hasonló CPU-adatokat a legfelülre nyomtatja, de CPU-szál szerint lebontva. Ha egyszerre látja az összes magot, akkor hasznos lehet a nagy mértékű egyensúlyú CPU-használat észleléséhez, például ha egy szálon futó alkalmazás 100%-os kihasználtságot használ. Ez a probléma nehezebben jelenhet meg, ha a rendszeren lévő összes CPU-ra összesítve van.
 
 ### <a name="vmstat"></a>vmstat
 
@@ -119,9 +119,9 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`hasonló információkat nyújt `mpstat` , valamint a `top` processzor (r oszlop), a memória statisztikái és az egyes munkaállapotokban ELtöltött CPU-idő százalékos arányának enumerálása.
+`vmstat` hasonló információkat nyújt `mpstat` , valamint a `top` processzor (r oszlop), a memória statisztikái és az egyes munkaállapotokban ELtöltött CPU-idő százalékos arányának enumerálása.
 
-## <a name="memory"></a>Memory (Memória)
+## <a name="memory"></a>Memória
 
 A memória nagyon fontos, és szerencsére könnyen nyomon követhető az erőforrás. Egyes eszközök a PROCESSZORt és a memóriát is jelenthetik, például a következőt: `vmstat` . `free`A gyors hibakereséshez azonban hasonló eszközök is hasznosak lehetnek.
 
@@ -134,7 +134,7 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free`a teljes memóriával, valamint a felhasznált és szabad memóriával kapcsolatos alapvető információkat mutatja be. `vmstat`hasznos lehet még az alapszintű memória elemzéséhez is, mivel a működés közbeni kimenet is biztosítható.
+`free` a teljes memóriával, valamint a felhasznált és szabad memóriával kapcsolatos alapvető információkat mutatja be. `vmstat` hasznos lehet még az alapszintű memória elemzéséhez is, mivel a működés közbeni kimenet is biztosítható.
 
 ## <a name="disk"></a>Lemez
 
@@ -157,21 +157,21 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`mélyreható betekintést nyújt a lemez kihasználtságára. Ezt a meghívást `-x` a kibővített statisztikákhoz kell átadni, `-y` hogy kihagyják a kezdeti kimeneti nyomtatási rendszer átlagait a rendszerindítás óta, és `1 1` meg kell határozni, hogy a kimenet egy blokk után véget ér. 
+`iostat` mélyreható betekintést nyújt a lemez kihasználtságára. Ezt a meghívást `-x` a kibővített statisztikákhoz kell átadni, `-y` hogy kihagyják a kezdeti kimeneti nyomtatási rendszer átlagait a rendszerindítás óta, és `1 1` meg kell határozni, hogy a kimenet egy blokk után véget ér. 
 
-`iostat`számos hasznos statisztikát tesz elérhetővé:
+`iostat` számos hasznos statisztikát tesz elérhetővé:
 
-- `r/s`a másodpercenkénti `w/s` olvasások és az írások másodpercenkénti száma. Ezeknek az értékeknek az összege IOPS.
+- `r/s` a másodpercenkénti `w/s` olvasások és az írások másodpercenkénti száma. Ezeknek az értékeknek az összege IOPS.
 - `rkB/s``wkB/s`a és a másodpercenként olvasható/írható. Ezeknek az értékeknek az összege az átviteli sebesség.
-- `await`a várólistára helyezett kérelmek átlagos iowait-ideje ezredmásodpercben.
-- `avgqu-sz`a várólista átlagos mérete a megadott intervallumban.
+- `await` a várólistára helyezett kérelmek átlagos iowait-ideje ezredmásodpercben.
+- `avgqu-sz` a várólista átlagos mérete a megadott intervallumban.
 
 Azure-beli virtuális gépen:
 
 - az `r/s` `w/s` egyes blokkos eszközök összege és száma nem haladhatja meg a lemez SKU-korlátait.
-- az `rkB/s` `wkB/s` egyes blokkos eszközök összege és száma nem haladhatja meg a lemez SKU-korlátait
+- az `rkB/s` `wkB/s`  egyes blokkos eszközök összege és száma nem haladhatja meg a lemez SKU-korlátait
 - a `r/s` és `w/s` az összes blokkos eszköz összege nem lépheti túl a virtuális gép SKU-jának korlátait.
-- a ( `rkB/s` z) és az összes blokkos eszközhöz tartozó wkB/s összege nem lépheti túl a virtuális gép SKU-jának korlátait.
+- a (  `rkB/s` z) és az összes blokkos eszközhöz tartozó wkB/s összege nem lépheti túl a virtuális gép SKU-jának korlátait.
 
 Vegye figyelembe, hogy az operációsrendszer-lemez a kapacitásának megfelelő legkisebb SKU felügyelt lemezének számít. Egy 1024GB operációsrendszer-lemez például egy P30-lemeznek felel meg. Az elmúló operációsrendszer-lemezek és az ideiglenes lemezek nem rendelkeznek egyedi lemezzel; ezeket csak a teljes VM-korlátok korlátozzák.
 
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`hatékony eszköz az elemzések széles köréhez. Habár ez a példa a hálózati statisztika mérésére szolgál, egyformán hatékony a CPU és a memória használatának méréséhez. Ez a példa `sar` a `-n` jelzővel hívja meg a `DEV` (hálózati eszköz) kulcsszót, amely az eszköz hálózati átviteli sebességét jeleníti meg.
+`sar` hatékony eszköz az elemzések széles köréhez. Habár ez a példa a hálózati statisztika mérésére szolgál, egyformán hatékony a CPU és a memória használatának méréséhez. Ez a példa `sar` a `-n` jelzővel hívja meg a `DEV` (hálózati eszköz) kulcsszót, amely az eszköz hálózati átviteli sebességét jeleníti meg.
 
 - `rxKb/s` `txKb/s` Egy adott eszköz összege és teljes átviteli sebessége. Ha ez az érték meghaladja a kiépített Azure hálózati adapterek korlátját, akkor a gépen felmerülő terhelések nagyobb hálózati késést tapasztalnak.
-- `%ifutil`egy adott eszköz kihasználtságának mértéke. Mivel ez az érték a 100%-ot közelíti meg, a munkaterhelések nagyobb hálózati késést tapasztalnak.
+- `%ifutil` egy adott eszköz kihasználtságának mértéke. Mivel ez az érték a 100%-ot közelíti meg, a munkaterhelések nagyobb hálózati késést tapasztalnak.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat`a számos hálózati statisztikát képes betekinteni, itt az összefoglalás kimenetével meghívott. A probléma függvényében számos hasznos mező van. A TCP szakaszban található egyik hasznos mező a "sikertelen csatlakozási kísérletek". Ez jelezheti a SNAT-portok kimerülését vagy a kimenő kapcsolatokkal kapcsolatos egyéb problémákat. A nagy sebességű újraküldött szegmensek (a TCP szakaszban is) jelezhetik a csomagok kézbesítésével kapcsolatos problémákat. 
+`netstat` a számos hálózati statisztikát képes betekinteni, itt az összefoglalás kimenetével meghívott. A probléma függvényében számos hasznos mező van. A TCP szakaszban található egyik hasznos mező a "sikertelen csatlakozási kísérletek". Ez jelezheti a SNAT-portok kimerülését vagy a kimenő kapcsolatokkal kapcsolatos egyéb problémákat. A nagy sebességű újraküldött szegmensek (a TCP szakaszban is) jelezhetik a csomagok kézbesítésével kapcsolatos problémákat. 

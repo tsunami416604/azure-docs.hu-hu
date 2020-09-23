@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897423"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Ebből a cikkből megismerheti az Azure-erőforrások előre konfigurált korlátozásait a [Azure Machine learning](overview-what-is-azure-ml.md) -előfizetéshez, valamint a felügyelhető kvótákat. Ezeket a korlátozásokat a rendszer a csalás miatt, illetve az Azure-kapacitás megkötések tiszteletben tartásának megelőzése érdekében helyezi el. 
 
@@ -85,7 +85,7 @@ Rendelkezésre álló erőforrások:
 Az adott időszakban (óránkénti hatókörben) vagy a teljes előfizetésen belül elforgatható tároló-példányok száma is korlátozott.
 A korlátokat lásd: [Container instances korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 A Storage-fiókok száma régiónként és egy adott előfizetésben is korlátozott. Az alapértelmezett korlát 250, és a standard és a Premium Storage fiókot is tartalmazza. Ha egy adott régióban több mint 250 Storage-fiókra van szüksége, az [Azure támogatási szolgálatán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül teheti meg a kérést. Az Azure Storage csapata áttekinti az üzleti ügyeit, és akár 250 Storage-fiókot is jóváhagyhat egy adott régióban.
 
 
@@ -99,8 +99,6 @@ Ha a kvótákat a munkaterület szintjén szeretné beállítani, lépjen az el�
 
 
 > [!NOTE]
-> Ez csak az Enterprise Edition funkció. Ha az előfizetésében egy [alapszintű és egy Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterülettel is rendelkezik, akkor ez csak a vállalati munkaterületeken lévő kvóták beállítására használható. Az alapszintű munkaterületek továbbra is az előfizetési szint kvótáját fogják használni, amely az alapértelmezett viselkedés.
->
 > Az előfizetési szintű engedélyekre van szükség a kvóta beállításához a munkaterület szintjén. Ezt úgy kell kikényszeríteni, hogy az egyes munkaterület-tulajdonosok ne szerkesszék vagy növeljék a kvótákat, és a csorbítaná a másik munkaterületre elkülönített erőforrásokra indítsák. Ennek megfelelően az előfizetés-adminisztrátor a legmegfelelőbb a kvóták munkaterületek közötti kiosztásához és terjesztéséhez.
 
 
@@ -137,7 +135,7 @@ A határértékek nem állíthatók be a táblákban megjelenő maximális hatá
 Ha a kvóta megnövekedését kéri, ki kell választania azt a szolgáltatást, amelyre a kvótát fel kívánja emelni, ami olyan szolgáltatások, mint például a Machine Learning szolgáltatási kvóta, a tároló példányai vagy a tárolási kvóta. A Azure Machine Learning számítás mellett **a kvóta megtekintése gombra is** kattinthat, miközben a fenti lépéseket követve megtekinti a kvótát.
 
 > [!NOTE]
-> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](../billing/billing-upgrade-azure-subscription.md) utólagos elszámolású és az [ingyenes próbaverziós előfizetésre vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](../billing/billing-upgrade-azure-subscription.md) utólagos elszámolású és az  [ingyenes próbaverziós előfizetésre vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 
 ## <a name="next-steps"></a>Következő lépések
 
