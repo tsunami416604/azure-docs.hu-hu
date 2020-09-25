@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 54fe96ecee99f3de37667d255b57b89c34aecc14
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2701b4cd17a132de07c031166bbe4cb1086227e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324762"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a JavaScripthez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t weblapokkal való használatra.
 
@@ -29,16 +29,16 @@ Hozzon létre egy új, üres mappát. Abban az esetben, ha a mintát egy webkisz
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>A JavaScripthez készült Speech SDK kicsomagolása a mappába
 
 Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ennek eredményeképpen öt fájlt csomagol ki a rendszer:
-* `microsoft.cognitiveservices.speech.sdk.bundle.js`A Speech SDK egy olvasható verziója.
-* `microsoft.cognitiveservices.speech.sdk.bundle.js.map`Az SDK-kód hibakereséséhez használt Térkép-fájl.
-* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts`A géppel használható objektumok definíciói
-* `microsoft.cognitiveservices.speech.sdk.bundle-min.js`A Speech SDK egy minified-verziója.
-* `speech-processor.js`Bizonyos böngészők teljesítményének javításához szükséges kód.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js` A Speech SDK egy olvasható verziója.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js.map` Az SDK-kód hibakereséséhez használt Térkép-fájl.
+* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts` A géppel használható objektumok definíciói
+* `microsoft.cognitiveservices.speech.sdk.bundle-min.js` A Speech SDK egy minified-verziója.
+* `speech-processor.js` Bizonyos böngészők teljesítményének javításához szükséges kód.
 
 ## <a name="create-an-indexhtml-page"></a>Az index.html lap létrehozása
 
 Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a fájlt egy szövegszerkesztőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa79af1047862e8694fa6342942ffd0793bafcb6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335007"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Tartalmi referenciák konfigurálása és kezelése – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 
 - [Azure Active Directory (Azure AD) hitelesítésének konfigurálása](authentication-aad-configure.md)
 - [Feltételes hozzáférés konfigurálása](conditional-access-configure.md)
-- [Multi-Factor Azure AD-hitelesítés](authentication-mfa-ssms-overview.md)
+- [Többtényezős Azure AD-hitelesítés](authentication-mfa-ssms-overview.md)
 - [Multi-Factor Authentication konfigurálása](authentication-mfa-ssms-configure.md)
 - [Ideiglenes adatmegőrzési szabály konfigurálása](temporal-tables-retention-policy.md)
 - [A TDE konfigurálása BYOK megoldással](transparent-data-encryption-byok-configure.md)
@@ -111,7 +111,7 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 
-- [Kapcsolódás](connect-query-content-reference-guide.md#libraries)
+- [Kapcsolatok](connect-query-content-reference-guide.md#libraries)
 - [Spark-összekötő használata](spark-connector.md)
 - [Alkalmazás hitelesítése](application-authentication-get-client-id-keys.md)
 - [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](../performance-improve-use-batching.md)
@@ -134,6 +134,6 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 - [SaaS-videóindexelő](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ [Az Azure SQL felügyelt példányaival kapcsolatos útmutatókról](../managed-instance/how-to-content-reference-guide.md)

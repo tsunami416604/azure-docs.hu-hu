@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276084"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -102,24 +102,17 @@ A futtatást akkor kell létrehoznia, ha parancsfájlt küld a modell betanítá
 
 [Munkaterület](#workspace)  >  [Kísérletek](#experiments)  >  [Futtatás](#runs)  >  **Konfiguráció futtatása**
 
-A futtatási konfiguráció olyan utasítások összessége, amelyek meghatározzák, hogy egy parancsfájl hogyan fusson egy adott számítási célhelyen. A konfiguráció számos viselkedési definíciót tartalmaz, például azt, hogy egy meglévő Python-környezetet kíván-e használni, vagy egy specifikáció alapján létrehozott Conda-környezetet használ-e.
+A futtatási konfiguráció határozza meg, hogyan fusson egy parancsfájl egy adott számítási célhelyen. A konfiguráció segítségével megadhatja a parancsfájlt, a számítási célt és az Azure ML-környezetet a futtatáshoz, a feladatokra vonatkozó elosztott konfigurációkat és néhány további tulajdonságot. További információ a futtatások konfigurálható lehetőségeinek teljes készletéről: [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
 
 A futtatási konfiguráció a betanítási parancsfájlt tartalmazó könyvtárban található fájlban maradhat.   Vagy egy memóriában tárolt objektumként is létrehozható, és futtatásra is elküldhető.
 
-Példa a futtatási konfigurációkra: [számítási cél használata a modell betanításához](how-to-set-up-training-targets.md).
-
-### <a name="estimators"></a>Becslések
-
-A kisegítő lehetőségek a népszerű keretrendszerekkel való modellezésének megkönnyítésére a kalkulátor osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
-
-További információ a becslések: ML- [modellek betanítása a becslések](how-to-train-ml-models.md).
+Példa a futtatási konfigurációkra: [képzések futtatásának konfigurálása](how-to-set-up-training-targets.md).
 
 ### <a name="snapshots"></a>Pillanatképek
 
 [Munkaterület](#workspace)  >  [Kísérletek](#experiments)  >  [Futtatás](#runs)  >  **Pillanatkép**
 
 Amikor elküld egy futtatást, Azure Machine Learning tömöríti azt a könyvtárat, amely a parancsfájlt zip-fájlként tartalmazza, és elküldi a számítási célnak. Ekkor a rendszer kibontja a zip-fájlt, és ott futtatja a parancsfájlt. Azure Machine Learning a zip-fájlt pillanatképként tárolja a futtatási rekord részeként. Bárki, aki hozzáféréssel rendelkezik a munkaterülethez, böngészhet egy futtatási rekordot, és letöltheti a pillanatképet.
-
 
 ### <a name="logging"></a>Naplózás
 
@@ -133,7 +126,7 @@ Több módon is megtekintheti a naplókat: valós időben figyelheti a futtatás
 
 ### <a name="git-tracking-and-integration"></a>Git-követés és-integráció
 
-Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. Ez a szolgáltatás a kalkulátor, a ML folyamat vagy a szkript futtatásával elküldött futtatásokkal működik. Az SDK-ból vagy Machine Learning parancssori felületről küldött futtatások esetén is működik.
+Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. Ez a parancsfájl-futtatási konfiguráció vagy a ML-folyamat használatával elküldött futtatásokkal működik. Az SDK-ból vagy Machine Learning parancssori felületről küldött futtatások esetén is működik.
 
 További információ: git- [integráció Azure Machine Learninghoz](concept-train-model-git-integration.md).
 

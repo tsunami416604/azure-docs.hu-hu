@@ -3,12 +3,12 @@ title: 'Gyors útmutató: egyéni események küldése az Azure-függvénynek �
 description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI vagy a portál használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A végponthoz egy Azure-függvény van használatban.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324396"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Gyors útmutató: egyéni események átirányítása egy Azure-függvénybe Event Grid
 
@@ -17,14 +17,17 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Azure Fun
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Azure-függvény létrehozása
+Az egyéni témakörre való feliratkozás előtt hozzon létre egy függvényt az események kezeléséhez. 
 
-Az egyéni témakörre való feliratkozás előtt hozzon létre egy függvényt az események kezeléséhez. A Azure Portal kattintson az "erőforrás létrehozása" elemre, és írja be a "Function" parancsot, majd válassza a "függvényalkalmazás" lehetőséget, és kattintson a Létrehozás gombra. Válassza az új létrehozása lehetőséget az erőforráscsoport területen, és adjon meg egy nevet. Ezt az oktatóanyag további részében fogja használni. Adja meg a függvényalkalmazás nevet, hagyja meg a "közzététel" kapcsolót a Code (kód) elemnél, válassza ki bármelyik futtatókörnyezetet és régiót, majd a létrehozás elemet.
+1. Hozzon létre egy Function alkalmazást a [Function-alkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)című témakör utasításai alapján.
+2. Hozzon létre egy függvényt a **Event Grid trigger**használatával. Ha először használja ezt az triggert, akkor a bővítmény telepítéséhez a telepítés gombra kell kattintania.
+    1. A **függvényalkalmazás** lapon válassza a bal oldali menü **függvények** elemét, keresse meg a **Event Grid** a sablonokban, majd válassza a **Azure Event Grid trigger**lehetőséget. 
 
-Ha a függvényalkalmazás elkészült, navigáljon hozzá, és kattintson az "+ új függvény" elemre. Válassza ki a fejlesztői környezethez a "portálon" lehetőséget, és kattintson a Folytatás gombra. A függvény létrehozása területen válassza a további sablonok lehetőséget a további sablonok megtekintéséhez, majd keressen rá a "Azure Event Grid trigger" kifejezésre, és jelölje ki. Ha első alkalommal használja ezt az triggert, előfordulhat, hogy a bővítmény telepítéséhez a telepítés gombra kell kattintania.
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Event Grid trigger kiválasztása":::
+3. Az **új függvény** lapon adja meg a függvény nevét, majd válassza a **create Function (függvény létrehozása**) lehetőséget.
 
-![Függvény Event Grid trigger](./media/custom-event-to-function/grid-trigger.png)
-
-Miután telepítette a bővítményt, kattintson a Continue (folytatás) gombra, adja meg a függvény nevét, majd nyomja meg a Create (létrehozás) lehetőséget.
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Új függvény lap":::
+4. A **kód + teszt** lapon megtekintheti a függvény meglévő kódját, és frissítheti azt. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -49,7 +52,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
     5. Tartsa meg az alapértelmezett értéket **Event Grid sémát** az **esemény sémája** mezőhöz. 
 
        ![Témakör létrehozása lap](./media/custom-event-to-function/create-custom-topic.png)
-    6. Válassza a **Létrehozás** lehetőséget. 
+    6. Kattintson a **Létrehozás** gombra. 
 
 5. Az egyéni témakör létrehozása után láthatja a sikeres műveletről szóló értesítést. Válassza **az Ugrás az erőforrás-csoportba**lehetőséget. 
 
@@ -81,8 +84,12 @@ Az Event Grid-témakörre való feliratkozással lehet tudatni az Event Griddel,
     5. A függvény végpontján válassza ki az Azure-előfizetést és az erőforráscsoportot a függvényalkalmazás, majd válassza ki a korábban létrehozott függvényalkalmazás és függvényt. Válassza a **Kiválasztás megerősítése** lehetőséget.
 
        ![Végpont URL-címének megadása](./media/custom-event-to-function/provide-endpoint.png)
-
-    6. Vissza az **esemény-előfizetés létrehozása** lapon válassza a **Létrehozás**lehetőséget.
+    6. Ez a lépés nem kötelező, de ajánlott éles környezetekben. Az **esemény-előfizetés létrehozása** lapon váltson a **speciális szolgáltatások** lapra, és állítsa be a **kötegek maximális száma** és az **előnyben részesített köteg mérete kilobájtban**értéket. 
+    
+        A kötegelt feldolgozás magas átviteli sebességet biztosít. A **másodpercenkénti események**maximális száma beállításnál állítsa be, hogy az előfizetés hány eseményt tartalmazzon egy kötegben. Az előnyben részesített batch-méret a Batch méretének előnyben részesített felső határát adja meg kilogramm bájtban, de túlléphető, ha egyetlen esemény nagyobb ennél a küszöbértéknél.
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Kötegelt feldolgozás engedélyezése":::
+    6. Az **esemény-előfizetés létrehozása** lapon válassza a **Létrehozás**lehetőséget.
 
 ## <a name="send-an-event-to-your-topic"></a>Esemény elküldése a témakörbe
 
@@ -168,7 +175,7 @@ A második példa a PowerShell használatával végez hasonló lépéseket.
 
 ![Sikeres függvény-trigger naplója](./media/custom-event-to-function/successful-function.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 
 1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali menüben. Ha nem látja a bal oldali menüben, válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, és válassza az **erőforráscsoportok**lehetőséget. 

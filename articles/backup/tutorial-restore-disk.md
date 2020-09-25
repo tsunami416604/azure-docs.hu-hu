@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan h
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324985"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI használatával
 
@@ -43,13 +43,13 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 
 A lemez visszaállításához ki kell választania egy helyreállítási pontot a helyreállítási adatok forrásaként. Az alapértelmezett szabályzat minden nap létrehoz egy-egy helyreállítási pontot, és mindegyiket 30 napig tartja meg. Így fenntartható egy helyreállítási pontokból álló készlet, amelyből kiválaszthat egy adott időpontot a helyreállításhoz.
 
-Az elérhető helyreállítási pontok listájának megjelenítéséhez használja az [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) parancsot. A lemezek a helyreállítási pont **nevével** állíthatók helyre. Ebben az oktatóanyagban a legutóbbi rendelkezésre álló helyreállítási pontot használjuk. A `--query [0].name` paraméter az alábbiak szerint választja ki a legutóbbi helyreállítási pont nevét:
+Az elérhető helyreállítási pontok listájának megjelenítéséhez használja az [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancsot. A lemezek a helyreállítási pont **nevével** állíthatók helyre. Ebben az oktatóanyagban a legutóbbi rendelkezésre álló helyreállítási pontot használjuk. A `--query [0].name` paraméter az alábbiak szerint választja ki a legutóbbi helyreállítási pont nevét:
 
 ```azurecli-interactive
 az backup recoverypoint list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --backup-management-type AzureIaasVM
+    --backup-management-type AzureIaasVM \
     --container-name myVM \
     --item-name myVM \
     --query [0].name \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel rendelkezik, és ha a felügyelt lemezeket a helyreállítási pontról szeretné visszaállítani, először egy Azure Storage-fiókot kell megadnia. Ez a Storage-fiók a virtuálisgép-konfiguráció és a központi telepítési sablon tárolására szolgál, amelyet később a virtuális gép a visszaállított lemezekről való üzembe helyezéséhez használhat. Ezután megadhat egy célként megadott erőforráscsoportot is a felügyelt lemezek visszaállításához.
 
-1. A tárfiók létrehozásához használja az [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) parancsot. A tárfiók nevének globálisan egyedinek kell lennie, és csak kisbetűkből állhat. Cserélje le *mystorageaccount* kifejezést egy saját egyedi névre:
+1. A tárfiók létrehozásához használja az [az storage account create](/cli/azure/storage/account#az-storage-account-create) parancsot. A tárfiók nevének globálisan egyedinek kell lennie, és csak kisbetűkből állhat. Cserélje le *mystorageaccount* kifejezést egy saját egyedi névre:
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
         --sku Standard_LRS
     ```
 
-2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a célként megadott erőforráscsoportot is, amelyhez a felügyelt lemezeket vissza kívánja állítani***.
+2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a célként megadott erőforráscsoportot is, amelyhez a felügyelt lemezeket vissza kívánja állítani***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ Ha a biztonsági másolatban szereplő virtuális gép nem felügyelt lemezekkel
 
 A további lépésekben a visszaállított lemezzel létrehoz egy virtuális gépet.
 
-1. A tárfiók létrehozásához használja az [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) parancsot. A tárfiók nevének globálisan egyedinek kell lennie, és csak kisbetűkből állhat. Cserélje le *mystorageaccount* kifejezést egy saját egyedi névre:
+1. A tárfiók létrehozásához használja az [az storage account create](/cli/azure/storage/account#az-storage-account-create) parancsot. A tárfiók nevének globálisan egyedinek kell lennie, és csak kisbetűkből állhat. Cserélje le *mystorageaccount* kifejezést egy saját egyedi névre:
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ A további lépésekben a visszaállított lemezzel létrehoz egy virtuális gé
         --sku Standard_LRS
     ```
 
-2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myRecoveryPointName* kifejezést az előzőleg használt [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) parancs kimenetéből származó helyreállításipont-névre:
+2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myRecoveryPointName* kifejezést az előzőleg használt [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancs kimenetéből származó helyreállításipont-névre:
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +145,7 @@ A fentiekben leírtaknak megfelelően a nem felügyelt lemezeket az eredeti Stor
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-A lekérdezés kimenete minden adatot megad, de csak a Storage-fiók tartalma érdekli. Az Azure CLI [lekérdezési funkciójának](/cli/azure/query-azure-cli?view=azure-cli-latest) használatával beolvashatók a kapcsolódó részletek
+A lekérdezés kimenete minden adatot megad, de csak a Storage-fiók tartalma érdekli. Az Azure CLI [lekérdezési funkciójának](/cli/azure/query-azure-cli) használatával beolvashatók a kapcsolódó részletek
 
 ```azurecli-interactive
 az backup job show \
@@ -258,13 +258,13 @@ az group deployment create \
   --template-uri $url?$token
 ```
 
-Ha ellenőrizni szeretné, hogy létrejött-e a virtuális gép a helyreállított lemezről, listázza az erőforráscsoportban szereplő virtuális gépeket az [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) paranccsal az alábbiak szerint:
+Ha ellenőrizni szeretné, hogy létrejött-e a virtuális gép a helyreállított lemezről, listázza az erőforráscsoportban szereplő virtuális gépeket az [az vm list](/cli/azure/vm#az-vm-list) paranccsal az alábbiak szerint:
 
 ```azurecli-interactive
 az vm list --resource-group myResourceGroup --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban visszaállított egy lemezt a helyreállítási pontról, és létrehozott egy virtuális gépet a lemezről. Megtanulta végrehajtani az alábbi műveleteket:
 

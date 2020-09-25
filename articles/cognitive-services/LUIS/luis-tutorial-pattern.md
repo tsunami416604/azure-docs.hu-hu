@@ -1,14 +1,16 @@
 ---
 title: 'Oktatóanyag: minták – LUIS'
 description: Használjon mintázatokat a szándékok és az entitások előrejelzésének növeléséhez, miközben kevesebb példát hosszúságú kimondott szöveg ebben az oktatóanyagban. A minta sablon-kiírási példaként van megadva, amely az entitások és a figyelmen kívül hagyható szöveg azonosítására szolgáló szintaxist tartalmaz.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86039500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324654"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Oktatóanyag: általános minta sablon-megadási formátumok hozzáadása az előrejelzések tökéletesítéséhez
 
@@ -533,7 +535,7 @@ Ez az oktatóanyag olyan mintákat vett fel, amelyek segítségével a LUIS elő
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 > [!div class="nextstepaction"]

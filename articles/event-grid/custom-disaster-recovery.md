@@ -4,12 +4,12 @@ description: Ez az oktatóanyag végigvezeti az eseményvezérelt architektúra 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324127"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
 A vész-helyreállítási funkció az alkalmazások jelentős elvesztése miatti helyreállításra összpontosít. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eseményvezérelt architektúrát, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy adott régióban.
@@ -72,7 +72,7 @@ Először hozzon létre két Event Grid témakört. Ezek a témakörök elsődle
    * Válassza ki a végpont típusa webhook elemet.
    * Állítsa a végpontot az Event fogadó esemény-URL-címére, amelynek a következőképpen kell kinéznie: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Elsődleges esemény-előfizetés Event Grid](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Képernyőkép, amely a "név", a "végpont típusa" és a "végpont" értékek kiemelésével jeleníti meg az "esemény-előfizetés – alapszintű" lapot.](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Ismételje meg ugyanezt a folyamatot a másodlagos témakör és előfizetés létrehozásához. Ezúttal cserélje le az "-Primary" utótagot "-másodlagos" értékre a könnyebb nyomon követés érdekében. Végül ügyeljen arra, hogy egy másik Azure-régióban helyezze el. Amíg a kívánt helyre helyezi, azt javasoljuk, hogy az [Azure párosított régiókat](../best-practices-availability-paired-regions.md)használja. A másodlagos témakör és az előfizetés egy másik régióban való elhelyezése biztosítja, hogy az új események akkor is folynak, ha az elsődleges régió leáll.
 

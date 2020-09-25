@@ -1,6 +1,6 @@
 ---
 title: Az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)
-description: Ebből az oktatóanyagból megtudhatja, hogyan lehet egyszerűen elvégezni a felderítő adatelemzést, amely különböző Azure Open-adatkészleteket használ az SQL on-demand (előzetes verzió) használatával, és megjelenítheti az eredményeket az Azure szinapszis Studióban.
+description: Ismerje meg, hogyan végezheti el a különböző Azure Open-adatkészletek összevonását az igény szerinti SQL on-demand (előzetes verzió) használatával, és megjelenítheti az eredményeket az Azure szinapszis Studióban.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 6325c5c597ce0f85615780f7970a4a3c6c4c451b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089141"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288052"
 ---
 # <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Az SQL on-demand használatával elemezze az Azure Open-adatkészleteket, és megjelenítheti az eredményeket az Azure szinapszis Studióban
 
@@ -135,7 +135,7 @@ A következő kódrészlet a lekérdezés eredményét jeleníti meg:
 
 ![Oszlopdiagram, amely a 2016-as napi számú túrákat mutatja](./media/tutorial-data-analyst/7.png)
 
-A mintaterület diagramon láthatja, hogy van egy heti minta, amely szombatonként, a csúcs napjával. A nyári hónapokban a vakációk miatt kevesebb taxi rides van. A taxi-túrák száma is jelentős mértékben csökken, és nem egyértelmű minta, hogy mikor és miért jelentkeznek.
+A mintaterület diagramon láthatja, hogy heti minta van, szombatonként, a csúcs napjával. A nyári hónapokban a vakációk miatt kevesebb taxi rides van. Azt is figyelje meg, hogy a taxi-túrák száma jelentős mértékben elesik, és nem egyértelmű minta, hogy mikor és miért jelentkeznek.
 
 Ezután lássuk, hogy a kilépések a nyilvános munkaszünetekkel együtt csatlakoznak a New York-i taxi rides adatkészlethez a nyilvános szünnapok adatkészlettel:
 
@@ -215,7 +215,7 @@ A lekérdezés eredménye azt jelzi, hogy a taxik számának csökkenése a köv
 
 Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és a különböző adatkészleteket egyszerűen kombinálhatja az SQL igény szerinti használatával, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan csatlakoztatható az SQL on-demand Power BI Desktop és hogyan hozhat létre jelentéseket, tekintse meg az [SQL igény szerinti csatolása Power bi Desktop és jelentések létrehozása](tutorial-connect-power-bi-desktop.md)című témakört.
  

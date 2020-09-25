@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztons�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324960"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A Geo-redundáns tárolás biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól. Ha módosítani kell a tárolási redundancia beállítást, használja az az [Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) parancsmagot.
+A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A Geo-redundáns tárolás biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól. Ha módosítani kell a tárolási redundancia beállítást, használja az az [Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) parancsmagot.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -59,7 +59,7 @@ az backup vault backup-properties set \
     --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-Ha szeretné megtudni, hogy a tár létrehozása sikeres volt-e, használja az az [Backup Vault List](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list) parancsmagot. A következő választ fogja látni:
+Ha szeretné megtudni, hogy a tár létrehozása sikeres volt-e, használja az az [Backup Vault List](/cli/azure/backup/vault#az-backup-vault-list) parancsmagot. A következő választ fogja látni:
 
 ```output
 Location   Name             ResourceGroup
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 Ahhoz, hogy az Azure-szolgáltatások felderítsék az SAP HANA-példányt (a SAP HANA telepített virtuális gépet), az SAP HANA gépen egy [regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni. A parancsfájl futtatása előtt győződjön meg arról, hogy minden [előfeltétel](./tutorial-backup-sap-hana-db.md#prerequisites) teljesül. Ha többet szeretne megtudni a szkripttel kapcsolatban, tekintse meg a [Mi az előzetes regisztrációs parancsfájl](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) a következő témakört:.
 
-A szkript futtatása után a SAP HANA-példány regisztrálható a korábban létrehozott Recovery Services-tárolóban. A példány regisztrálásához használja az az [Backup Container Register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) parancsmagot. A *VMResourceId* a SAP HANA telepítéséhez létrehozott virtuális gép erőforrás-azonosítója.
+A szkript futtatása után a SAP HANA-példány regisztrálható a korábban létrehozott Recovery Services-tárolóban. A példány regisztrálásához használja az az [Backup Container Register](/cli/azure/backup/container#az-backup-container-register) parancsmagot. A *VMResourceId* a SAP HANA telepítéséhez létrehozott virtuális gép erőforrás-azonosítója.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
@@ -87,7 +87,7 @@ az backup container register --resource-group saphanaResourceGroup \
 
 A SAP HANA példány regisztrálása automatikusan felfedi az összes aktuális adatbázisát. Azonban a későbbiekben felvehető új adatbázisok felderítéséhez tekintse meg a regisztrált SAP HANA példányhoz [hozzáadott új adatbázisok felfedése](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance) című szakaszt.
 
-Az az [Backup Container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) parancsmag használatával ellenőrizze, hogy a SAP HANA-példány sikeresen regisztrálva van-e a tárolóban. A következő választ fogja látni:
+Az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsmag használatával ellenőrizze, hogy a SAP HANA-példány sikeresen regisztrálva van-e a tárolóban. A következő választ fogja látni:
 
 ```output
 Name                                                    Friendly Name    Resource Group        Type           Registration Status
@@ -100,7 +100,7 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 
 ## <a name="enable-backup-on-sap-hana-database"></a>Biztonsági mentés engedélyezése SAP HANA adatbázison
 
-Az az [Backup Protected-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) parancsmag felsorolja az előző lépésben regisztrált SAP HANA példányon felderített összes adatbázist.
+Az az [Backup Protected-Item List](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) parancsmag felsorolja az előző lépésben regisztrált SAP HANA példányon felderített összes adatbázist.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -121,7 +121,7 @@ saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost   
 
 Ahogy a fenti kimenetben látható, a SAP HANA rendszer SID-HXE. Ebben az oktatóanyagban a *saphanadatabase; hxe; hxe* -adatbázis biztonsági mentését konfigurálja, amely a *hxehost* -kiszolgálón található.
 
-Egy adatbázis biztonsági mentésének védelméhez és konfigurálásához használja az az [Backup Protection Enable-for-azurewl](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) parancsmagot. Adja meg a használni kívánt szabályzat nevét. Ha a parancssori felület használatával szeretne szabályzatot létrehozni, használja az az [Backup Policy Create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) parancsmagot. Ebben az oktatóanyagban a *sapahanaPolicy* szabályzatot fogjuk használni.
+Egy adatbázis biztonsági mentésének védelméhez és konfigurálásához használja az az [Backup Protection Enable-for-azurewl](/cli/azure/backup/protection#az-backup-protection-enable-for-azurewl) parancsmagot. Adja meg a használni kívánt szabályzat nevét. Ha a parancssori felület használatával szeretne szabályzatot létrehozni, használja az az [Backup Policy Create](/cli/azure/backup/policy#az-backup-policy-create) parancsmagot. Ebben az oktatóanyagban a *sapahanaPolicy* szabályzatot fogjuk használni.
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
@@ -133,7 +133,7 @@ az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Megtekintheti, hogy a fenti biztonsági mentési konfiguráció készen áll-e az az [Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag használatával. A kimenet a következőképpen fog megjelenni:
+Megtekintheti, hogy a fenti biztonsági mentési konfiguráció készen áll-e az az [Backup Job List](/cli/azure/backup/job#az-backup-job-list) parancsmag használatával. A kimenet a következőképpen fog megjelenni:
 
 ```output
 Name                                  Operation         Status     Item Name   Start Time UTC
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-Az az [Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag felsorolja az összes olyan biztonsági mentési feladatot (ütemezett vagy igény szerint), amely fut vagy jelenleg fut a védett adatbázisban, valamint az egyéb műveleteket, például a regisztrálást, a biztonsági mentés konfigurálását és a biztonsági mentési adatok törlését.
+Az az [Backup Job List](/cli/azure/backup/job#az-backup-job-list) parancsmag felsorolja az összes olyan biztonsági mentési feladatot (ütemezett vagy igény szerint), amely fut vagy jelenleg fut a védett adatbázisban, valamint az egyéb műveleteket, például a regisztrálást, a biztonsági mentés konfigurálását és a biztonsági mentési adatok törlését.
 
 >[!NOTE]
 >A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást az Azure-beli virtuális gépen futó SAP HANA-adatbázis biztonsági mentésekor.
@@ -173,7 +173,7 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladatok állapotának nyomon követésére az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag használatával.
+A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladatok állapotának nyomon követésére az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmag használatával.
 
 >[!NOTE]
 >A teljes vagy különbözeti biztonsági másolat ütemezése mellett manuálisan is aktiválhatja őket. A naplók biztonsági mentését a rendszer automatikusan aktiválja és felügyeli SAP HANA belsőleg.

@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4840363b2f6645fceca80f6dd57ece64fb2c8163
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7f887aac91bdb1b8c752806c7c5076708a40bc10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419920"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276169"
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszköz modellje működésének megvalósítása
 
@@ -37,8 +37,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Az eszköz modell sémájának [szimulációs](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) szakasza egy szimulált eszköz belső állapotát határozza meg:
 
-- `InitialState`meghatározza az eszköz állapot objektumának összes tulajdonságának kezdeti értékeit.
-- `Script`egy ütemezett JavaScript-fájlt azonosít, amely frissíti az eszköz állapotát.
+- `InitialState` meghatározza az eszköz állapot objektumának összes tulajdonságának kezdeti értékeit.
+- `Script` egy ütemezett JavaScript-fájlt azonosít, amely frissíti az eszköz állapotát.
 
 Az alábbi példa egy szimulált hűtő eszköz eszköz állapot objektumának definícióját mutatja be:
 
@@ -79,9 +79,9 @@ function main(context, previousState, previousProperties) {
 
 A `context` paraméter a következő tulajdonságokkal rendelkezik:
 
-- `currentTime`formátummal rendelkező sztring`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, például:`Simulated.Chiller.123`
-- `deviceModel`, például:`Chiller`
+- `currentTime` formátummal rendelkező sztring `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, például: `Simulated.Chiller.123`
+- `deviceModel`, például: `Chiller`
 
 A `state` paraméter a Device szimulációs szolgáltatás által karbantartott eszköz állapotát tartalmazza. Ez az érték az `state` előző hívás által visszaadott objektum `main` .
 
@@ -200,9 +200,9 @@ function main(context, previousState, previousProperties) {
 
 A `context` paraméter a következő tulajdonságokkal rendelkezik:
 
-- `currentTime`formátummal rendelkező sztring`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, például:`Simulated.Chiller.123`
-- `deviceModel`, például:`Chiller`
+- `currentTime` formátummal rendelkező sztring `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, például: `Simulated.Chiller.123`
+- `deviceModel`, például: `Chiller`
 
 A `state` paraméter a Device szimulációs szolgáltatás által karbantartott eszköz állapotát tartalmazza.
 
@@ -210,9 +210,9 @@ A `properties` paraméter tartalmazza a jelentett tulajdonságokként írt eszk�
 
 A metódus működésének megvalósításához három globális funkció használható:
 
-- `updateState`a szimulációs szolgáltatás által őrzött állapot frissítése.
-- `updateProperty`egyetlen eszköz tulajdonságának frissítése.
-- `sleep`a végrehajtás szüneteltetése egy hosszan futó feladat szimulálása érdekében.
+- `updateState` a szimulációs szolgáltatás által őrzött állapot frissítése.
+- `updateProperty` egyetlen eszköz tulajdonságának frissítése.
+- `sleep` a végrehajtás szüneteltetése egy hosszan futó feladat szimulálása érdekében.
 
 Az alábbi példa a szimulált Chiller-eszközök által használt **IncreasePressure-method.js** szkript rövidített verzióját mutatja be:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287712"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Az Azure szinapszis Studio (előzetes verzió) kapcsolódási problémáinak diagnosztizálása a PowerShell-parancsfájllal
 
@@ -27,13 +27,13 @@ Az Azure szinapszis Studio (előzetes verzió) a webes API-végpontok megfelelő
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-Kattintson a jobb gombbal a következő hivatkozásra, majd kattintson a cél mentése másként elemre:
+Kattintson a jobb gombbal a következő hivatkozásra, és válassza a "cél mentése másként" lehetőséget:
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Másik lehetőségként közvetlenül is megnyithatja a hivatkozást, és mentheti a megnyitott parancsfájlt. Ne mentse a fenti hivatkozáshoz tartozó címet, mert a jövőben változhat.
 
-A Fájlkezelőben kattintson a jobb gombbal a letöltött parancsfájlra, majd kattintson a Futtatás a PowerShell használatával lehetőségre.
+A Fájlkezelőben kattintson a jobb gombbal a letöltött parancsfájlra, és válassza a Futtatás a PowerShell használatával lehetőséget.
 
 ![Letöltött parancsfájl futtatása a PowerShell-lel](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
@@ -57,5 +57,5 @@ Ha Ön hálózati rendszergazda, és az Azure szinapszis studióhoz tartozó tű
  A sikertelen kérelmek esetében az OK sárga színnel jelenik meg, például: `NamedResolutionFailure` vagy `ConnectFailure` . Ezek az okok segíthetnek kideríteni, hogy vannak-e helytelen konfiguráció a hálózati környezettel.
 
 
-## <a name="next-steps"></a>További lépések
-Ha az előző lépések nem segítenek megoldani a [támogatási jegyet, hozzon létre](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+## <a name="next-steps"></a>Következő lépések
+Ha az előző lépések nem segítenek a probléma megoldásában, [hozzon létre egy támogatási jegyet](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

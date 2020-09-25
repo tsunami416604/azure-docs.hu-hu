@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 332b5198f046d0096e95e79e27cbc49408e6d136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325198"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Az Azure SQL felügyelt példányának tartalmi referenciája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 
 - [Azure AD-hitelesítés konfigurálása](../database/authentication-aad-configure.md)
 - [Feltételes hozzáférés konfigurálása](../database/conditional-access-configure.md)
-- [Multi-Factor Azure AD-hitelesítés](../database/authentication-mfa-ssms-overview.md)
+- [Többtényezős Azure AD-hitelesítés](../database/authentication-mfa-ssms-overview.md)
 - [Többtényezős hitelesítés konfigurálása](../database/authentication-mfa-ssms-configure.md)
 - [Időbeli adatmegőrzési szabályzat konfigurálása](../database/temporal-tables-retention-policy.md)
 - [A TDE konfigurálása BYOK megoldással](../database/transparent-data-encryption-byok-configure.md)
@@ -77,9 +77,9 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 
 ### <a name="alerting"></a>Riasztások kezelése
 
-- [Riasztások létrehozása a felügyelt példányon](alerts-create.md)
+- [Riasztások létrehozása a felügyelt példányhoz](alerts-create.md)
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 - [Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon](user-initiated-failover.md)
 
@@ -108,6 +108,6 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 - [SaaS-videóindexelő](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépések: az [SQL felügyelt példányának telepítése](instance-create-quickstart.md).

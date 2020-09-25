@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325215"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Ez az alapul szolgáló összetevő aktuális korlátozása, amely ellenőrzi az
 
 **Hogyan lehet méretezni a felügyelt példányt?**
 
-Felügyelt példányát [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) vagy az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
+Felügyelt példányát [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) vagy az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
 
 **Áthelyezhetem a felügyelt példányt az egyik régióból a másikba?**
 
@@ -102,7 +102,7 @@ Igen, írhat. Útmutatásért lásd: [erőforrások áthelyezése régiók köz�
 
 **Hogyan törölhetem a felügyelt példányt?**
 
-A felügyelt példányok a Azure Portal, a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) vagy a [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
+A felügyelt példányok a Azure Portal, a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) vagy a [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
 
 **Mennyi ideig tart egy példány létrehozása vagy frissítése, vagy egy adatbázis visszaállítása?**
 
@@ -135,9 +135,9 @@ A felügyelt példányok a számítási és a tárolási méretnél ugyanazok a 
 
 Az egyik lehetőség, hogy [exportál egy adatbázist a BACPAC](../database/database-export.md) -be, majd [importálja a BACPAC-fájlt](../database/database-import.md). Ez az ajánlott módszer, ha az adatbázis 100 GB-nál kisebb.
 
-A [tranzakciós replikáció](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) akkor használható, ha az adatbázis minden táblája rendelkezik *elsődleges* kulccsal, és nincsenek memóriában tárolt OLTP objektumok az adatbázisban.
+A [tranzakciós replikáció](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) akkor használható, ha az adatbázis minden táblája rendelkezik *elsődleges* kulccsal, és nincsenek memóriában tárolt OLTP objektumok az adatbázisban.
 
-A felügyelt példányból származó natív COPY_ONLY biztonsági másolatok nem állíthatók vissza SQL Server, mert a felügyelt példány magasabb verziójú adatbázis-verzióval rendelkezik, mint SQL Server. További részletekért lásd: [csak másolatot tartalmazó biztonsági mentés](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15).
+A felügyelt példányból származó natív COPY_ONLY biztonsági másolatok nem állíthatók vissza SQL Server, mert a felügyelt példány magasabb verziójú adatbázis-verzióval rendelkezik, mint SQL Server. További részletekért lásd: [csak másolatot tartalmazó biztonsági mentés](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true).
 
 **Hogyan telepíthetem át a SQL Server példányt az SQL felügyelt példányára?**
 
@@ -184,11 +184,11 @@ Az SQL felügyelt példányok felhasználásának és teljesítményének figyel
 
 **Használhatom az SQL Profilert a teljesítmény nyomon követéséhez?**
 
-Igen, az SQL Profiler támogatott vagy SQL felügyelt példány. További részletek: [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15).
+Igen, az SQL Profiler támogatott vagy SQL felügyelt példány. További részletek: [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true).
 
 **Database Advisor és Lekérdezési terheléselemző támogatottak a felügyelt példányok adatbázisaiban?**
 
-Nem, nem támogatottak. Az adatbázisok figyeléséhez használhatja az [DMV](../database/monitoring-with-dmvs.md) és a [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) -t az [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) és a [xevent típusú eseményekhez](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) használatával.
+Nem, nem támogatottak. Az adatbázisok figyeléséhez használhatja az [DMV](../database/monitoring-with-dmvs.md) és a [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) -t az [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) és a [xevent típusú eseményekhez](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) használatával.
 
 **Létrehozhatok metrikai riasztásokat a felügyelt SQL-példányok esetén?**
 
@@ -228,7 +228,7 @@ Ha nyomon szeretné követni, hogy mikor hajtottak végre automatizált biztons�
 
 **Támogatott az igény szerinti biztonsági mentés?**
 
-Igen, létrehozhat egy csak másolatot tartalmazó teljes biztonsági mentést az Azure Blob Storageban, de csak felügyelt példányban lehet helyreállítani. Részletekért lásd: [csak másolási biztonsági mentés](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Azonban a csak másolásra alkalmas biztonsági mentés nem lehetséges, ha az adatbázist a szolgáltatás által felügyelt TDE titkosítja, mivel a titkosításhoz használt tanúsítvány nem érhető el. Ilyen esetben használja az időponthoz való visszaállítás funkciót, hogy az adatbázist másik SQL felügyelt példányra helyezze át, vagy váltson az ügyfél által felügyelt kulcsra.
+Igen, létrehozhat egy csak másolatot tartalmazó teljes biztonsági mentést az Azure Blob Storageban, de csak felügyelt példányban lehet helyreállítani. Részletekért lásd: [csak másolási biztonsági mentés](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true). Azonban a csak másolásra alkalmas biztonsági mentés nem lehetséges, ha az adatbázist a szolgáltatás által felügyelt TDE titkosítja, mivel a titkosításhoz használt tanúsítvány nem érhető el. Ilyen esetben használja az időponthoz való visszaállítás funkciót, hogy az adatbázist másik SQL felügyelt példányra helyezze át, vagy váltson az ügyfél által felügyelt kulcsra.
 
 **A felügyelt példányok natív visszaállítása (a. bak fájlokból) támogatott?**
 
@@ -390,7 +390,7 @@ Igen, transzparens adattitkosítás támogatott az SQL felügyelt példányain. 
 
 **Kihasználhatom a "saját kulcs használata" modellt a TDE?**
 
-Igen, a BYOK forgatókönyvhöz Azure Key Vault érhető el az Azure SQL felügyelt példányaihoz. Részletekért lásd: [transzparens adattitkosítás ügyfél által felügyelt kulccsal](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
+Igen, a BYOK forgatókönyvhöz Azure Key Vault érhető el az Azure SQL felügyelt példányaihoz. Részletekért lásd: [transzparens adattitkosítás ügyfél által felügyelt kulccsal](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true).
 
 **Áttelepíthetek egy titkosított SQL Server adatbázist?**
 
@@ -509,6 +509,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>Szolgáltatási hírek
+
+**Mi a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változása Azure SQL Database & SQL felügyelt példánynál?**
+
+Lásd: [Azure SQL Database & SQL felügyelt példányának tanúsítvány-elforgatása](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
 
 **Mi az SQL felügyelt példányának tervezett karbantartási eseménye?**
 

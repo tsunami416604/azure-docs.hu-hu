@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213125"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288001"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>Önkiszolgáló Súgó az SQL igény szerinti használatra (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan lehet az Azure szinapszis Analytics szolgáltat�
 
 Ha a szinapszis Studio nem tud kapcsolatot létesíteni az SQL-on igény szerinti kapcsolattal, megfigyelheti, hogy az SQL on-demand szürkén jelenik meg, vagy a "kapcsolat nélküli" állapotot jeleníti meg. Ez a probléma általában akkor fordul elő, ha a következő esetek valamelyike történik:
 
-1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A leggyakoribb eset az, hogy a 1443-es port le van tiltva. Az igény szerinti SQL-szolgáltatás letiltásának feloldásához a portot. Más problémák miatt előfordulhat, hogy az SQL on-demand is működik. [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
+1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A leggyakoribb eset az, hogy a 1443-es port le van tiltva. Az SQL igény szerinti működésének megkezdéséhez tiltsa le a portot. Más problémák miatt előfordulhat, hogy az SQL on-demand is működik. [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
 2) Nincs engedélye az SQL igény szerinti bejelentkezni. A hozzáféréshez az Azure szinapszis-munkaterület rendszergazdáinak egyike adja hozzá a munkaterület-rendszergazdához vagy az SQL-rendszergazdai szerepkörhöz. [További információkért tekintse meg a hozzáférés-vezérlés teljes útmutatóját](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>A lekérdezés sikertelen, mert a fájl nem nyitható meg
@@ -33,9 +33,9 @@ Ha a lekérdezés sikertelen a "fájl nem nyitható meg, mert nem létezik, vagy
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>A lekérdezés sikertelen, mert a jelenlegi erőforrás-megkötések miatt nem hajtható végre. 
 
-Ha a lekérdezés meghiúsul a következő hibaüzenettel: "Ez a lekérdezés az aktuális erőforrás-korlátozások miatt nem hajtható végre", az azt jelenti, hogy az SQL igény szerinti futtatása az erőforrás-korlátozások miatt jelenleg nem hajtható végre. 
+Ha a lekérdezés sikertelen, a következő hibaüzenet jelenik meg: "Ez a lekérdezés nem hajtható végre az aktuális erőforrás-korlátozások miatt", az azt jelenti, hogy az SQL igény szerint nem hajtható végre az erőforrás-korlátozások miatt jelenleg. 
 
-- Győződjön meg arról, hogy megfelelő méretű adattípusokat használ. Ezenkívül adja meg a sztringoszlopok Parquet-fájljainak sémáját, amelynek alapértelmezés szerinti beállítása VARCHAR(8000). 
+- Győződjön meg arról, hogy megfelelő méretű adattípusok vannak használatban. Emellett a karakterlánc-oszlopokhoz tartozó Parquet-fájlok sémáját is megadhatja, mivel alapértelmezés szerint VARCHAR (8000) lesz. 
 
 - Ha a lekérdezés CSV-fájlokat céloz meg, érdemes lehet [statisztikai adatokat létrehoznia](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
 
@@ -61,7 +61,7 @@ Megoldás:
 CREATE DATABASE <DATABASE_NAME>
 ```
 
-  2. A Create utasítás végrehajtása <DATABASE_NAME-> környezetében, amely korábban a Master adatbázis esetében meghiúsult. 
+  2. A Create utasítás végrehajtása <DATABASE_NAME> környezetében, amely korábban a Master adatbázis esetében meghiúsult. 
   
   Példa külső fájlformátum létrehozására:
     
@@ -71,7 +71,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL igény szerinti használatáról az alábbi cikkekben olvashat bővebben:
 

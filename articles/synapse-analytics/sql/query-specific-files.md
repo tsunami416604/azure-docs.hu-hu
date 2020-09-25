@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.reviewer: jrasnick
+ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288103"
 ---
 # <a name="use-file-metadata-in-queries"></a>Fájl metaadatainak használata a lekérdezésekben
 
@@ -22,13 +22,13 @@ Az igény szerinti SQL-alkalmazás több fájlt és mappát is képes kezelni a 
 
 Előfordulhat, hogy tudnia kell, hogy melyik fájl-vagy mappa-forrás korrelál az eredményhalmaz egy adott sorával.
 
-Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fájlneveket és/vagy az elérési utat az eredményhalmazban. Vagy használhatja őket az adatszűréshez a fájlnév és/vagy a mappa elérési útja alapján. Ezeket a függvényeket a szintaxis szakasz [filename függvénye](query-data-storage.md#filename-function) és a [filepath függvény](query-data-storage.md#filepath-function)ismerteti. Alább rövid leírásokat talál a minták mentén.
+Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fájlneveket és/vagy az elérési utat az eredményhalmazban. Vagy használhatja őket az adatszűréshez a fájlnév és/vagy a mappa elérési útja alapján. Ezeket a függvényeket a szintaxis szakasz [filename függvénye](query-data-storage.md#filename-function) és a [filepath függvény](query-data-storage.md#filepath-function)ismerteti. A következő fejezetekben rövid leírásokat talál a minták között.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Első lépésként létre kell **hoznia egy adatbázist** egy olyan adatforrással, amely a Storage-fiókra hivatkozik. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 ### <a name="filename"></a>Filename
 

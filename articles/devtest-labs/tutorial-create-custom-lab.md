@@ -3,12 +3,12 @@ title: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással | M
 description: Ebben az oktatóanyagban egy labort hoz létre Azure DevTest Labs a Azure Portal használatával. A tesztkörnyezet rendszergazdája beállítja a labort, virtuális gépeket hoz létre a laborban, és konfigurálja a házirendeket.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85476563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324280"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
 Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
@@ -56,7 +56,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
     2. A **Felhasználónév** mezőbe írja be a felhasználó nevét, aki hozzáférhet a virtuális géphez. 
     3. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó jelszót. 
 
-        ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![Képernyőfelvétel: a "labor erőforrás létrehozása" lap alapszintű beállításainak megjelenítése.](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. Válassza a **Speciális beállítások** fület.
     1. **A gép legyen lefoglalható** beállításnál válassza az **Igen** lehetőséget.
     2. Győződjön meg arról, hogy a **példányszám** értéke **1**. Ha az érték **2**, két virtuális gép jön létre a következő nevekkel: `<base image name>00' and <base image name>01`. Például: `win10vm00` és `win10vm01`.     
@@ -98,7 +98,7 @@ A következő oktatóanyag azt mutatja be, hogyan foglalhatják le a tesztkörny
     ![Laboratóriumi erőforráscsoport](./media/tutorial-create-custom-lab/lab-resource-group.png)
 1. Ismételje meg ezeket a lépéseket a `<your resource group name><random numbers>` nevű, az Ön számára létrehozott további erőforráscsoport esetében. Például: `splab3988722144001`. A virtuális gépek ebben az erőforráscsoportban jönnek létre, és nem abban, amelyben a tesztkörnyezet található. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy tesztkörnyezetet egy virtuális géppel, és egy felhasználónak hozzáférést biztosított a tesztkörnyezethez. Ha meg szeretné tudni, tesztkörnyezet-felhasználóként hogyan érheti el a tesztkörnyezetet, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

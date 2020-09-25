@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 5d9bf672aae3cf55ae7cf22aa1437f01ced99901
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265833"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
@@ -220,8 +220,9 @@ A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 
 * A (z) "nincs engedélye a (z **)" Microsoft. Authorization/roleAssignments/Write "művelet végrehajtására a (z)"/Subscriptions/{GUID} "hatókörben."** – ezt a hibaüzenetet akkor látja, ha a fiók nem rendelkezik megfelelő engedélyekkel ahhoz, hogy egy szerepkört társítson az identitáshoz. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
 * Az alkalmazásokról és a szolgáltatásnevekről bővebben az [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md) című cikkben olvashat.
 * Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](./authentication-vs-authorization.md).
+* További információ az alkalmazás-regisztrációk **Microsoft Graph**használatával történő használatáról: [alkalmazások](/graph/api/resources/application) API-referenciája.

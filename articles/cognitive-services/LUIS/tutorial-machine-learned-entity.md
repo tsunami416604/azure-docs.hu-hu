@@ -1,14 +1,16 @@
 ---
 title: 'Oktatóanyag: strukturált adatok kinyerése gépi tanulási entitással – LUIS'
 description: A gépi tanulási entitás használatával kinyerheti a strukturált adatok teljes körű kinyerését. A kinyerési pontosság növeléséhez adja hozzá az alentitásokat a szolgáltatásokhoz.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86045603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334726"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a gépi tanulási entitásokkal Language Understanding (LUIS)
 
@@ -79,12 +81,12 @@ A pizza-sorrend részleteinek kinyeréséhez hozzon létre egy legfelső szintű
 
 1. Az **entitás típusának kiválasztása** mezőben válassza a **struktúra hozzáadása** lehetőséget, majd válassza a **tovább**lehetőséget. Az alentitások, például a méret és a mennyiség hozzáadásához struktúra szükséges.
 
-    ![Struktúra hozzáadása az entitáshoz](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![Képernyőfelvétel: az entitás típusának kiválasztása ablak és a struktúra hozzáadása beállítás be van jelölve.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. Az **alentitások hozzáadása (nem kötelező)** mezőben válassza ki **+** a `Order` sort, majd adja hozzá a `Size` és `Quantity` az alentitások elemet, majd válassza a **Létrehozás**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![Struktúra hozzáadása az entitáshoz](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![A képernyőképen az alentitások hozzáadása (nem kötelező) ablak jelenik meg.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>Alentitások szerkesztése a kinyerés javítása érdekében
 
@@ -121,7 +123,7 @@ Ismert méretek listájának hozzáadása esetén az ügyfélalkalmazás felisme
 
 
     > [!div class="mx-imgBorder"]
-    > ![Struktúra hozzáadása az entitáshoz](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![Képernyőfelvétel: a SizeList ablak és listaelemek XLarge kijelölve.](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>SizeList-entitás funkciójának hozzáadása
 
@@ -160,7 +162,7 @@ Egy előre összeépített számú entitás hozzáadása a kinyeréshez is segí
 Az entitás részletei lapon a **rendelés** entitásnál válassza a csillag, a `*` **@ SizeList** és a **@ Number** funkciót. A csillag a szolgáltatás nevével megegyező címkében jelenik meg.
 
 > [!div class="mx-imgBorder"]
-> ![Struktúra hozzáadása az entitáshoz](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![A képernyőképen látható a @SizeList szolgáltatás a csillaggal, és figyelmeztetést igényel.](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ Az alkalmazás betanításához válassza a **betanítás**lehetőséget. A kép
 1. Ha módosítani szeretné az előrejelzést egy címkével ellátott entitásra, jelölje be a jelölőnégyzetet ugyanazon a sorban.
 
     > [!div class="mx-imgBorder"]
-    > ![Részleges képernyőkép az új példáról az entitással előre jelezve](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![A képernyőképen egy, a pipa kiemelését bemutató példa látható.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     Ezen a ponton a gépi tanulási entitás működik, mert az új példán belül megtalálja az entitást. Ha például hosszúságú kimondott szöveg ad hozzá, ha az entitás nem megfelelően van előre jelezve, címkézze fel az entitást és az alentitásokat. Ha az entitás előre jelezve van, ügyeljen arra, hogy erősítse meg az előrejelzéseket.
 
@@ -302,7 +304,7 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az alkalmazás egy gépi tanulási entitás használatával keresi meg a felhasználó teljes részletességét, és Kinyeri a részleteket ebből a részletekből. A gépi tanulási entitás segítségével elvégezheti az entitás részleteit.
 

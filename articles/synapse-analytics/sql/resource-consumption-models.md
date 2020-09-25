@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288222"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Szinapszis SQL-erőforrások felhasználása
 
@@ -29,7 +29,7 @@ Javaslatok az adatraktár-egységek (DWU) ideális számának kiválasztásához
 
 ### <a name="data-warehouse-units"></a>Adattárházegységek
 
-A szinapszis SQL-készlet a kiépített analitikai erőforrások gyűjteményét jelöli. Az analitikai erőforrások a CPU, a memória és az IO kombinációja vannak meghatározva. Ez a három erőforrás az adatraktár-egységek (DWU) számítási skálázási egységei között van. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. A szolgáltatási szint módosítása megváltoztatja a rendszer számára elérhető DWU számát, ami viszont a teljesítmény és a szolgáltatás költségeit is módosítja.
+A szinapszis SQL-készlet a kiépített analitikai erőforrások gyűjteményét jelöli. Az analitikai erőforrások a CPU, a memória és az IO kombinációja vannak meghatározva. Ez a három erőforrás az adatraktár-egységek (DWU) számítási skálázási egységei között van. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. A szolgáltatási szint módosítása megváltoztatja a rendszer számára elérhető DWU számát. Ez a változás pedig módosítja a rendszere teljesítményét és költségeit.
 
 A nagyobb teljesítmény érdekében növelheti az adatraktár-egységek számát. Kevesebb teljesítmény esetén csökkentse az adatraktár-egységeket. A tár és a számítási feladatok költségeinek számlázása külön történik, ezért az adattárházegységek számának módosítása nem befolyásolja a tárolási költségeket.
 
@@ -81,7 +81,7 @@ Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik eg
 
 ### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>A szükséges adatraktár-egységek számának felmérése
 
-Az adatraktár-egységek ideális száma nagy mértékben függ a munkaterheléstől és a rendszerbe betöltött adatok mennyiségétől.
+Az adatraktár-egységek ideális száma a munkaterheléstől és a rendszerbe betöltött adatok mennyiségétől függ.
 
 A számítási feladatok legjobb DWU megkeresésének lépései:
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 DWU módosítása:
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com), nyissa meg az adatbázist, és kattintson a **skálázás**elemre.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com), nyissa meg az adatbázist, és válassza a **skála**lehetőséget.
 
 2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
+3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Válassza az **Igen** lehetőséget a megerősítéshez **, vagy a Mégse gombra.**
 
 #### <a name="powershell"></a>PowerShell
 
@@ -176,11 +176,11 @@ További REST API Példákért lásd: [REST API-k az Azure szinapszis analyticsh
 
 ### <a name="check-status-of-dwu-changes"></a>DWU-változások állapotának ellenõrzése
 
-A DWU módosításai több percet is igénybe vehetnek. Ha automatikusan méretezést végez, érdemes megfontolnia a logikát, hogy a művelet végrehajtása előtt bizonyos műveleteket végre lehessen hajtani.
+A DWU módosításai több percet is igénybe vehetnek. Ha automatikusan végzi a méretezést, érdemes megfontolnia a logikát, hogy a művelet végrehajtása előtt bizonyos műveleteket végre lehessen hajtani.
 
 Az adatbázis állapotának ellenőrzése különböző végpontokon keresztül lehetővé teszi az automatizálás megfelelő megvalósítását. A portál értesítést küld egy művelet és az adatbázisok aktuális állapotának befejezéséről, de nem teszi lehetővé az állapot programozott ellenőrzését.
 
-A kibővíthető műveletekhez tartozó adatbázis-állapot nem ellenőrizhető a Azure Portal.
+Az adatbázis állapota nem ellenőrizhető a kibővíthető műveletekhez a Azure Portal.
 
 A DWU változásainak állapotának ellenõrzése:
 
@@ -212,6 +212,6 @@ Amikor elindít egy méretezési műveletet, a rendszer először az összes nyi
 - A skálázási műveletek esetében a rendszer leválasztja az összes számítási csomópontot, kiépíti a további számítási csomópontokat, majd újracsatlakoztatja a tárolási réteghez.
 - A leskálázási művelethez a rendszer leválasztja az összes számítási csomópontot, majd csak a szükséges csomópontokat csatlakoztatja a tárolási réteghez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , valamint a [memória és a Egyidejűség korlátai](../sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: a5944f4d512914c956d8e6fbbdbd1b8c30e35417
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288035"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: az SQL igény szerinti használata Power BI Desktop & jelentés létrehozása
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 >
@@ -151,7 +151,7 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
 
    ![Válassza ki a kívánt oszlopokat a térképes jelentés létrehozásához.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépésekkel:
 
@@ -173,6 +173,6 @@ Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépé
    DROP DATABASE Demo;
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [lekérdezési tároló fájljaival](develop-storage-files-overview.md) , hogy megtudja, hogyan kérdezheti le a tárolási fájlokat a szinapszis SQL használatával.

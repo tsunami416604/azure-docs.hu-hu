@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – geo-szűrési WAF házirend konfigurálása – Azure bejárati ajtó
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy geo-szűrési házirendet, és hogyan társíthatja a házirendet a meglévő előtér-előtérbeli gazdagéphez.
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy geo-szűrési WAF szabályzatot, és hogyan társíthatja a házirendet a meglévő előtér-gazdagéphez.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f9b5869f7dd472c50ffb2c1c0dce765200f53882
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324026"
 ---
 # <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Oktatóanyag: Geo-szűrési WAF szabályzat beállítása a bejárati ajtóhoz
 Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez az Azure PowerShell-lel. Ez a minta geo-szűrési házirend letiltja az összes többi országból/régiótól érkező kéréseket Egyesült Államok kivételével.

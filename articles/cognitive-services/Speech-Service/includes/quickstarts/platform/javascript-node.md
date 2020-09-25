@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e5c83b4b8e579223fa8bc00e1347e5cb2f92fca1
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 6a7fbac72c73ae44d158d91653b3713b271f8da4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406415"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324767"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a JavaScripthez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t a NodeJS-mel való használatra. Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját számára, futtassa a `npm install microsoft-cognitiveservices-speech-sdk` meglévő projektjét.
 
@@ -34,8 +34,8 @@ Hozzon létre egy új könyvtárat, és indítsa el `npm init` a kérdéseit.
 
 ## <a name="add-the-speech-sdk-package"></a>A Speech SDK-csomag hozzáadása
 
-Az `npm install microsoft-cognitiveservices-speech-sdk` parancs futtatásával
+Az `npm install microsoft-cognitiveservices-speech-sdk` parancs futtatása
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 02/11/2019
-ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d62d568b4924a2bfa67740b3e5f0cc1377519d47
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084987"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335041"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Gyors útmutató: kiszolgálói szintű tűzfalszabály létrehozása a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
  A SQL Database egy tűzfalat hoz létre a kiszolgáló szintjén az önálló és a készletezett adatbázisokhoz. Ez a tűzfal megakadályozza, hogy az ügyfélalkalmazások csatlakozzanak a kiszolgálóhoz vagy a hozzá tartozó adatbázisokhoz, kivéve, ha létrehoz egy IP-tűzfalszabály-szabályt a tűzfal megnyitásához. Az Azure-on kívüli IP-címről létesített kapcsolathoz hozzon létre egy tűzfalszabály egy adott IP-cím vagy címtartomány számára, amelyhez csatlakozni szeretne. A kiszolgálói szintű és az adatbázis szintű IP-tűzfalszabályok részletes ismertetését lásd: [kiszolgálói szintű és adatbázis-szintű IP-tűzfalszabályok](firewall-configure.md).
 
 > [!NOTE]
-> A Azure SQL Database a 1433-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, kivéve, ha az informatikai részleg megnyitja a 1433-es portot.
+> Az Azure SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, kivéve, ha az informatikai részleg megnyitja a 1433-es portot.
 > [!IMPORTANT]
 > A 0.0.0.0 tűzfalszabály lehetővé teszi az összes Azure-szolgáltatás számára a kiszolgálói szintű tűzfalszabály továbbítását, és megkísérli a kiszolgálón keresztül csatlakozni egy adatbázishoz.
 
@@ -64,7 +64,7 @@ Kövesse az alábbi lépéseket egy kiszolgálói szintű IP-tűzfalszabály lé
 
 Ha SQL Server Management Studio vagy egy másik eszközt használ, a korábban létrehozott kiszolgálói rendszergazdai fiókkal csatlakozhat a kiszolgálóhoz és az adatbázisaihoz ebből az IP-címről.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan milyen módokon csatlakozhat az adatbázishoz és végezhet róla lekérdezéseket. Ha azonban törölni szeretné az ebben a rövid útmutatóban létrehozott erőforrásokat, kövesse az alábbi lépéseket.
 

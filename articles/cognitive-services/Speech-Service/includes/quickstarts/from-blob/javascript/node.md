@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5d1d7008151ae61a72368d3d8ecfaf545a2080fa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: f480419bb25f3fe8d49c6b4af4a5d1873e286b58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324744"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -155,7 +155,7 @@ Az állapotot úgy is megtekintheti, hogy beolvassa a tartalmat a kérelem elkü
 
 A sikeres befejezést követően az állapotot megjelenítő lekérdezési kód a következő lesz. 
 
-`CheckTranscriptionStatus`az átírási kérelem állapotának URL-címe, és 5 másodpercenként kérdezi le, amíg a művelet nem jelent sikeres vagy hibaüzenetet. Ezután meghívja az `PrintResults` átirat eredményeinek nyomtatását. A következőt fogjuk megvalósítani `PrintResults` .
+`CheckTranscriptionStatus` az átírási kérelem állapotának URL-címe, és 5 másodpercenként kérdezi le, amíg a művelet nem jelent sikeres vagy hibaüzenetet. Ezután meghívja az `PrintResults` átirat eredményeinek nyomtatását. A következőt fogjuk megvalósítani `PrintResults` .
 ```csharp
 function CheckTranscriptionStatus(statusUrl) {
     transcription = null;
@@ -426,6 +426,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
 
 **Indítsa el az alkalmazást** futtató csomópontot index.js.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
