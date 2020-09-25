@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301105"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>A RabbitMQ integrálása a Azure Service Bus használatával
 
@@ -98,7 +98,7 @@ Itt hívja meg a lapátot `azure` , és válassza ki `AMQP 0.9.1` a forrásoldal
 
 A műveletek üzenetsor oldalán használhatja a `azure` várólista nevét. Ha ez a várólista nem létezik, akkor a RabbitMQ létrehozza. Kiválaszthatja azt a várólista-nevet is, amely már létezik. A többi beállítás alapértelmezettként is elhagyható.
 
-Ezután a `destination` dolgok oldalon válassza `AMQP 1.0` a protokollt. A `URI` mezőben adja meg az előző lépésben kapott összekapcsolási karakterláncot, és az Azure-kapcsolati karakterláncot a RabbitMQ formátumra alakította át. Így kell kinéznie:
+Ezután a `destination` dolgok oldalon válassza `AMQP 1.0` a protokollt. A `URI` mezőben adja meg az előző lépésben kapott összekapcsolási karakterláncot, és az Azure-kapcsolati karakterláncot a RabbitMQ formátumra alakította át. Ennek így kell kinéznie:
 
 ```
 amqps://rabbitmq-shovel:StringOfRandomChars@rabbitmq.servicebus.windows.net:5671/?sasl=plain
@@ -112,7 +112,7 @@ A RabbitMQ kezelőfelületén `Queues` válassza ki a `azure` várólistát, és
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Első üzenet közzététele":::
 
-Lépjen vissza az Azure-ba, és vizsgálja meg a várólistáját. Kattintson `Service Bus Explorer` a bal oldali panelre. Ha minden rendben volt, látni fogja, hogy a várólista már egy üzenettel rendelkezik. Yay, Gratula!
+Lépjen vissza az Azure-ba, és vizsgálja meg a várólistáját. Kattintson a `Service Bus Explorer` bal oldali panelre, majd kattintson a _betekintés_ gombra. Ha minden rendben volt, látni fogja, hogy a várólista már egy üzenettel rendelkezik. Yay, Gratula!
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure Service Bus üzenetsor":::
 
@@ -136,3 +136,8 @@ Gratulálunk! Sokat elért! Ön felügyelte, hogy az üzenetek a RabbitMQ-ból A
 Az előző lépésekkel az Ön szervezetének az Azure-on kívüli integrált területeit követheti. A lapátos beépülő modul lehetővé teszi, hogy az üzeneteket a RabbitMQ Azure Service Busba szállítsa. Ez óriási előnyökkel jár, mivel mostantól engedélyezheti a megbízható harmadik felek számára, hogy az alkalmazásaikat az Azure-beli üzembe helyezéssel csatlakozhassanak.
 
 A végén az üzenetküldés a kapcsolatok engedélyezését, és ezzel a technikával nemrég nyitott egy újat.
+
+## <a name="next-steps"></a>Következő lépések
+
+- További információ a [Azure Service Bus](./service-bus-messaging-overview.md)
+- További információ a [AMQP 1,0-támogatásáról Service Bus](./service-bus-amqp-overview.md)

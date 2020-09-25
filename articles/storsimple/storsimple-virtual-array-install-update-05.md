@@ -1,6 +1,6 @@
 ---
 title: Az 0,5-es frissítés telepítése a StorSimple virtuális tömbön | Microsoft Docs
-description: Ismerteti, hogyan használhatók a StorSimple virtuális tömb webes felhasználói felülete a frissítések alkalmazásához a Azure Portal és a gyorsjavítási módszer használatával
+description: Ismerteti, hogyan használható a StorSimple Virtual Array webes FELÜLETe az 0,5-es frissítés alkalmazásához a Azure Portal és a gyors javítási módszer használatával.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513657"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300599"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Az 0,5-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -34,7 +34,7 @@ A frissítés alkalmazása előtt javasoljuk, hogy a köteteket vagy a megosztá
 >
 > - Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a frissítéseket a Azure Portal használatával. Ha a 0,1-es vagy a GA-os verziót futtatja, a gyorsjavítást a helyi webes felületen keresztül kell használnia az 0,5-es frissítés telepítéséhez.
 >
-> - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
+> - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -117,7 +117,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 A frissítés befejeződött.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

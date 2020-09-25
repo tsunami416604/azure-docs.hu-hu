@@ -1,6 +1,6 @@
 ---
 title: Diagnosztikai eszköz a StorSimple 8000-eszköz hibáinak megoldásához | Microsoft Docs
-description: Ismerteti a StorSimple eszköz üzemmódját, és ismerteti, hogyan lehet a Windows PowerShell StorSimple-bővítménye használatával módosítani az eszköz üzemmódját.
+description: Ez a cikk áttekintést nyújt a diagnosztikai eszközről, és leírja, hogyan használható az eszköz StorSimple-eszközzel.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300445"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Az 8000 sorozatú eszköz problémáinak elhárításához használja a StorSimple Diagnostics eszközt
 
@@ -418,7 +418,7 @@ Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk külö
 |-------------------------|------------------|
 | Instance ID             | Minden vezérlő egyedi azonosítóval vagy a hozzá társított GUID azonosítóval rendelkezik.|
 | Name                    | Az eszköz rövid neve, amelyet az eszköz telepítése során a Azure Portal konfigurál. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma. |
-| Modell                   | A StorSimple 8000 sorozatú eszköz modellje. A modell 8100 vagy 8600 lehet.|
+| Modellezés                   | A StorSimple 8000 sorozatú eszköz modellje. A modell 8100 vagy 8600 lehet.|
 | Sorozatszám            | Az eszköz sorozatszáma a gyárban van hozzárendelve, és 15 karakter hosszú. Például: 8600-SHX0991003G44HT azt jelzi, hogy:<br> 8600 – az eszköz modellje.<br>SHX – a gyártási hely.<br> 0991003 – egy adott termék. <br> G44HT – az utolsó 5 számjegy növekszik az egyedi sorozatszámok létrehozásához. Ez nem lehet szekvenciális készlet.|
 | TimeZone                | Az eszköz üzembe helyezése során a Azure Portal konfigurált eszköz időzónája.|
 | CurrentController       | Az a vezérlő, amelyhez a StorSimple-eszköz Windows PowerShell-felületén keresztül csatlakozik.|
@@ -438,7 +438,7 @@ Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk külö
 | RemoteManagementMode    | Azt jelzi, hogy az eszköz távolról felügyelhető-e Windows PowerShell-felületén keresztül. |
 | FipsMode                | Azt jelzi, hogy engedélyezve van-e a Egyesült Államok Federal Information Processing standard (FIPS) mód az eszközön. Az FIPS 140 szabvány a bizalmas adatok védelméhez jóváhagyott titkosítási algoritmusokat határoz meg az USA szövetségi kormányzati számítógépes rendszereinek használatára. A 4-es vagy újabb frissítést futtató eszközök esetében a FIPS mód alapértelmezés szerint engedélyezve van. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [meghívó-HcsDiagnostics parancsmag szintaxisának](https://technet.microsoft.com/library/mt795371.aspx)megismerése.
 

@@ -3,12 +3,12 @@ title: Labor-fiókok kezelése a Azure Lab Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes laboratóriumi fiókot, vagy törölhet egy Lab-fiókot egy Azure-előfizetésben.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445491"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251660"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Tesztkörnyezeti fiókok létrehozása és felügyelete
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.
@@ -41,9 +41,9 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
         > A **címtartomány** tulajdonság csak akkor érvényes, ha a tesztkörnyezetben engedélyezve van egy **társ virtuális hálózat** .
 
         ![Labor-fiók létrehozása – > Advanced](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
-6. Kattintson a **Next (tovább** ) gombra a lap alján a **címkék** lapra való váltáshoz. adja meg a labor-fiókhoz társítandó címkéket. A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását és az összevont számlázás megtekintését, ha ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
+6. Kattintson a **Next (tovább** ) gombra a lap alján a **címkék** lapra való váltáshoz. Vegyen fel minden olyan címkét, amelyet hozzá szeretne rendelni a labor-fiókhoz. A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását és az összevont számlázás megtekintését, ha ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
 
-    ![Lab-fiók létrehozása – > Címkék](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![Képernyőkép, amely a "Lab-fiók létrehozása" lapot mutatja a Címkék lapon kiemelve.](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. Kattintson a lap alján található **felülvizsgálat + létrehozás** gombra a **felülvizsgálat + létrehozás** lapra való váltáshoz. 
 4. Tekintse át az ezen a lapon található összegző információkat, majd kattintson a **Létrehozás**gombra. 
 
@@ -83,5 +83,5 @@ Kövesse az előző szakasz utasításait, amely a listában szereplő Lab-fiók
 > [!NOTE]
 > A Lab-fiókok kezeléséhez az az. LabServices PowerShell-modult (előzetes verzió) is használhatja. További információ: az az [. LabServices Kezdőlap a githubon](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikkeket **: útmutató a**(z) tartalomjegyzék  ->  (**Lab-fiók tulajdonosa) szakaszának létrehozásához és konfigurálásához** . 

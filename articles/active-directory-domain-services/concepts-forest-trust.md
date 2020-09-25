@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258779"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hogyan működik a megbízhatósági kapcsolatok a Azure Active Directory Domain Services erőforrás-erdőkön
 
@@ -99,12 +99,12 @@ Ha például egy egyirányú, erdőszintű megbízhatósági kapcsolat jön lét
 Erdőszintű megbízhatóság létrehozása előtt ellenőriznie kell, hogy a megfelelő tartománynévrendszer (DNS) infrastruktúra van-e érvényben. Az erdőszintű megbízhatósági kapcsolatok csak akkor hozhatók létre, ha a következő DNS-konfigurációk valamelyike elérhető:
 
 * Egyetlen legfelső szintű DNS-kiszolgáló a legfelső szintű DNS-kiszolgáló mind az erdő DNS-névterekhez – a legfelső szintű zóna minden DNS-névtérhez és az összes DNS-kiszolgálóhoz tartozó gyökérútmutató-delegálást tartalmaz, beleértve a legfelső szintű DNS-kiszolgálót is.
-* Ha nincs megosztott gyökér DNS-kiszolgáló, és az egyes erdő DNS-névteréhez tartozó legfelső szintű DNS-kiszolgálók az egyes DNS-névterek DNS feltételes továbbítóit használják a más névtérben található nevekre irányuló lekérdezések irányítására.
+* Ha nincs megosztott gyökér DNS-kiszolgáló, és az egyes erdők DNS-névterében lévő legfelső szintű DNS-kiszolgálók az egyes DNS-névterek DNS feltételes továbbítóit használják a más névtérben található nevekre irányuló lekérdezések irányítására.
 
     > [!IMPORTANT]
     > Azure AD Domain Services az erőforrás-erdőben ezt a DNS-konfigurációt kell használnia. Az erőforrás-erdő DNS-névterén kívül más DNS-névtér nem a Azure AD Domain Services egyik funkciója. A feltételes továbbító a megfelelő konfiguráció.
 
-* Ha nincs megosztott gyökértartomány DNS-kiszolgálója, és az egyes erdő DNS-névteréhez tartozó legfelső szintű DNS-kiszolgálók a DNS másodlagos zónáit használják, a többi névtérben lévő nevekre irányuló lekérdezéseket a rendszer az egyes DNS-névterekben konfigurálja.
+* Ha nincs megosztott gyökér DNS-kiszolgáló, és az egyes erdő DNS-névterében lévő legfelső szintű DNS-kiszolgálók a DNS másodlagos zónáit használják, a rendszer az egyes DNS-névterekben konfigurálja a lekérdezéseket a másik névtérben található nevekre.
 
 Erdőszintű megbízhatóság létrehozásához a Tartománygazdák csoport (az erdő gyökértartományában) vagy a vállalati rendszergazdák csoport tagjának kell lennie Active Directory. Minden megbízhatósághoz hozzá van rendelve egy jelszó, amelyet mindkét erdőben a rendszergazdáknak ismerniük kell. Mindkét erdőben a vállalati rendszergazdák tagjai egyszerre is létrehozhatják a megbízhatósági kapcsolatokat mindkét erdőben, és ebben az esetben a titkosítási szempontból véletlenszerű jelszó automatikusan létrejön és íródik mindkét erdőhöz.
 
@@ -276,7 +276,7 @@ A rendszergazdák *Active Directory tartományokat és megbízhatóságokat*, *N
 * *Active Directory tartományok és megbízhatósági kapcsolatok* a Microsoft Management Console (MMC), amely a tartományi Megbízhatóságok, a tartomány és az erdő működési szintjeinek, valamint az egyszerű felhasználónevek utótagjának felügyeletére szolgál.
 * A *Netdom* és a *nltest* parancssori eszközöket a megbízhatósági kapcsolatok kereséséhez, megjelenítéséhez, létrehozásához és kezeléséhez használhatja. Ezek az eszközök közvetlenül kommunikálnak az LSA-szolgáltatóval egy tartományvezérlőn.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az erőforrás-erdőkről: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 

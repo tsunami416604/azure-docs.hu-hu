@@ -1,14 +1,14 @@
 ---
 title: Beágyazott virtualizáció engedélyezése sablonbeli virtuális gépen Azure Lab Services (szkript) | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre több virtuális géppel rendelkező sablonos virtuális gépet a rendszeren belül.  Más szóval engedélyezze a beágyazott virtualizációt a sablonban lévő virtuális gépen Azure Lab Servicesban.
+description: Megtudhatja, hogyan hozhat létre egy sablonból álló virtuális gépet több virtuális géppel egy parancsfájl használatával.  Más szóval engedélyezze a beágyazott virtualizációt a sablonban lévő virtuális gépen Azure Lab Servicesban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a45257dffffc98c3f650c5b1753158edd9bfbede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251495"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Beágyazott virtualizálás engedélyezése Azure Lab Services sablonban lévő virtuális gépen parancsfájl használatával
 
@@ -29,7 +29,7 @@ A cikk lépései a Windows Server 2016, a Windows Server 2019 vagy a Windows 10 
 
         ![Megbízható helyek](./media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Töltse le a git-tárház fájljait az alábbi lépésekben leírtak szerint.
-    1. Ugrás a következőre: [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
+    1. Ugrás a következőre:  [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Kattintson a **klón vagy a letöltés** gombra.
     1. Kattintson a **zip letöltése**elemre.
     1. ZIP-fájl kibontása
@@ -63,7 +63,7 @@ A cikk lépései a Windows Server 2016, a Windows Server 2019 vagy a Windows 10 
 
 Most a sablon-számítógép készen áll a Hyper-V virtuális gépek létrehozására. A Hyper-V virtuális gépek létrehozásával kapcsolatos útmutatásért tekintse meg [a virtuális gép létrehozása a Hyper-v-ben](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) című témakört. Továbbá tekintse meg a [Microsoft próbaverzióját](https://www.microsoft.com/evalcenter/) a rendelkezésre álló operációs rendszerek és szoftverek ellenőrzéséhez.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

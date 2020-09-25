@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253191"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 
@@ -60,7 +60,7 @@ Az analitikus lekérdezések miatt nincs hatással a tranzakciós számítási f
 
 ### <a name="auto-sync"></a>Automatikus szinkronizálás
 
-Az automatikus szinkronizálás a Azure Cosmos DB teljes körűen felügyelt funkcióját jelenti, ahol a lapkák, a frissítések és az operatív adatok törlését automatikusan szinkronizálja a tranzakciós tárolóból az analitikai tárolóba, közel valós időben, 5 percen belül.
+Az automatikus szinkronizálás a Azure Cosmos DB teljes körűen felügyelt képességeire utal, ahol a lapkák, a frissítések és az operatív adatok törlését automatikusan szinkronizálja a tranzakciós tárolóból az analitikai tárolóba közel valós időben. Az automatikus szinkronizálás késése általában 2 percen belül megtörténik. Ha a megosztott átviteli sebességű adatbázis nagy mennyiségű tárolóval rendelkezik, az egyes tárolók automatikus szinkronizálási késése magasabb lehet, és akár 5 percet is igénybe vehet. Szeretnénk többet megtudni, hogy ez a késés hogyan illeszkedik a forgatókönyvekhez. Ehhez kérjük, lépjen kapcsolatba a [Azure Cosmos db csapatával](mailto:cosmosdbsynapselink@microsoft.com).
 
 Az automatikus szinkronizálási képesség az analitikai tárolóval együtt a következő alapvető előnyöket nyújtja:
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-A `streetName` beágyazott objektumon belüli Leaf tulajdonság `address` oszlopként fog szerepelni az analitikai tároló sémájában `address.object.streetName.int32` . Az adattípust a rendszer utótagként adja hozzá az oszlophoz. Így ha egy másik dokumentum kerül be a tranzakciós tárolóba, ahol a Leaf tulajdonság értéke `streetNo` "123" (Megjegyzés: karakterlánc), az analitikai tároló sémája automatikusan a korábban írt oszlop típusának módosítása nélkül fejlődik. Az analitikai tárolóhoz hozzáadott új oszlop, `address.object.streetName.string` amelyben a "123" érték van tárolva.
+A `streetNo` beágyazott objektumon belüli Leaf tulajdonság `address` oszlopként fog szerepelni az analitikai tároló sémájában `address.object.streetNo.int32` . Az adattípust a rendszer utótagként adja hozzá az oszlophoz. Így ha egy másik dokumentum kerül be a tranzakciós tárolóba, ahol a Leaf tulajdonság értéke `streetNo` "123" (Megjegyzés: karakterlánc), az analitikai tároló sémája automatikusan a korábban írt oszlop típusának módosítása nélkül fejlődik. Az analitikai tárolóhoz hozzáadott új oszlop, `address.object.streetNo.string` amelyben a "123" érték van tárolva.
 
 **Az utótagok megfeleltetésének adattípusa**
 

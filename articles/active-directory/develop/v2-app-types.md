@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015806"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256756"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -117,6 +117,9 @@ Az eszközre telepített alkalmazások, például a mobil-és asztali alkalmazá
 Ebben a folyamatban az alkalmazás egy engedélyezési kódot kap a Microsoft Identity platform végponttól, amikor a felhasználó bejelentkezik. Az engedélyezési kód az alkalmazásnak a bejelentkezett felhasználó nevében történő meghívására vonatkozó engedélyét jelöli. Az alkalmazás a háttérben egy OAuth 2,0 hozzáférési jogkivonat és egy frissítési jogkivonat számára is kicserélheti az engedélyezési kódot. Az alkalmazás a hozzáférési token használatával hitelesíti a webes API-kat a HTTP-kérelmekben, és a frissítési token használatával új hozzáférési jogkivonatokat kérhet le, ha a régebbi hozzáférési tokenek lejárnak.
 
 ![Megjeleníti a natív alkalmazás hitelesítési folyamatát.](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> Ha az alkalmazás az alapértelmezett webnézetet használja, tekintse meg a "bejelentkezési adatok megerősítése" funkció és a hibakód AADSTS50199 az [Azure ad-hitelesítési és-engedélyezési hibakódokban](reference-aadsts-error-codes.md)című témakört.
 
 ## <a name="daemons-and-server-side-apps"></a>Démonok és kiszolgálóoldali alkalmazások
 

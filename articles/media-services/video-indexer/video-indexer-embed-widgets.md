@@ -10,13 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: juliako
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js
+ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268621"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -208,7 +208,7 @@ Ha nem a Azure Media Playert használja, akkor manuálisan kell módosítania a 
     ```
 
 2. Ágyazza be a Kognitív elemzési vezérlőt.
-3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Például:
+3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Példa:
 
     ```javascript
     <script>
@@ -271,7 +271,7 @@ Fontos tudni, hogy ez a beállítás csak olyan esetekben releváns, ha azt szer
 
 A Video Indexer-lejátszó beágyazásakor megadhatja a lejátszó méretét az iframe méretének meghatározásával.
 
-Például:
+Példa:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

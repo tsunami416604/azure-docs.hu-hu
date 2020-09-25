@@ -3,16 +3,16 @@ title: Erőforrás kivétele Azure Security Center biztonsági javaslatok és a 
 description: Ismerje meg, hogyan mentesítheti az erőforrásokat a biztonsági javaslatokból és a biztonságos pontszámból
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301533"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Erőforrások kizárása a javaslatokból és a biztonságos pontszámból
 
@@ -62,7 +62,7 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Kivétel módosítása":::
 
-    Az egyes kivételek okát a táblázat tartalmazza. 
+    Az egyes kivételek okát a táblázat tartalmazza (1).
 
     A kivételek módosításához vagy törléséhez válassza a három pontot ("...") a látható módon (2).
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/08/2020
+ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad5c2ad76f9ab98a6ad284a0bb50f3a611dc9a00
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257673"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -26,7 +26,7 @@ Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazá
 
 Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
-  MSAL-könyvtár | Description
+  MSAL-könyvtár | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatott a Daemon-alkalmazások létrehozásához. (A UWP, a Xamarin. iOS és az Xamarin. Android nem támogatott, mert ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használatosak.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban.
@@ -51,16 +51,13 @@ A MSAL-könyvtárakban az ügyfél hitelesítő adatai (titkos vagy tanúsítvá
 
 A konfigurációs fájl határozza meg a következőket:
 
-- A hatóság vagy a Felhőbeli példány és a bérlő azonosítója.
+- A Felhőbeli példány és a bérlő azonosítója, amely együttesen alkotja a *szolgáltatót*.
 - Az alkalmazás regisztrálásakor kapott ügyfél-azonosító.
 - Vagy egy ügyfél titka vagy egy tanúsítvány.
 
-> [!NOTE]
-> A .net-kódrészletek a cikk további részében [, az](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) mintából.
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appsettings.jsa](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) [.net Core Console Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) -mintából.
+Íme egy példa arra, hogyan határozható meg a konfiguráció egy [*appsettings.js*](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) fájlban. Ez a példa a " [.net Core Console Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) code" mintából származik a githubon.
 
 ```json
 {
@@ -124,9 +121,9 @@ Hivatkozzon a MSAL csomagra az alkalmazás kódjában.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Adja hozzá a [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-csomagot az alkalmazáshoz.
+Adja hozzá a [Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-csomagot az alkalmazáshoz, majd adjon hozzá egy `using` direktívát a kódban a hivatkozáshoz.
+
 A MSAL.NET-ben a bizalmas ügyfélalkalmazás az `IConfidentialClientApplication` illesztőfelületet jelképezi.
-Használja a MSAL.NET névteret a forráskódban.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -167,6 +164,23 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
+```
+
+A a `Authority` Felhőbeli példány és a bérlő azonosítójának összefűzése, például `https://login.microsoftonline.com/contoso.onmicrosoft.com` vagy `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` . A [konfigurációs fájl](#configuration-file) szakaszban láthatóappsettings.jsa (z) és a (z) értékben a (z) és értékek szerint jelennek *meg* `Instance` `Tenant` .
+
+A kódban az előző kódrészletet a a `Authority`  [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) osztály egyik tulajdonsága határozza meg, amely a következőképpen van definiálva:
+
+```csharp
+/// <summary>
+/// URL of the authority
+/// </summary>
+public string Authority
+{
+    get
+    {
+        return String.Format(CultureInfo.InvariantCulture, Instance, Tenant);
+    }
+}
 ```
 
 # <a name="python"></a>[Python](#tab/python)

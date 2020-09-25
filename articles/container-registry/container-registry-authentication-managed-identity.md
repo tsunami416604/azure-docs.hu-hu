@@ -3,12 +3,12 @@ title: Hitelesítés felügyelt identitással
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253462"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
@@ -230,6 +230,8 @@ Egy üzenetnek kell megjelennie `Login succeeded` . Ezután parancsok futtatás�
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> A rendszer által hozzárendelt felügyelt szolgáltatás-identitások használhatók a ACR-EK és a App Service képes a rendszer által hozzárendelt felügyelt szolgáltatás-identitások használatára. Ezek azonban nem kombinálhatók, mert App Service nem használhatja az MSI-t az ACR-vel való kommunikációhoz. Az egyetlen módszer a rendszergazda engedélyezése az ACR-ben, és a rendszergazdai Felhasználónév/jelszó használata.
 
 ## <a name="next-steps"></a>Következő lépések
 

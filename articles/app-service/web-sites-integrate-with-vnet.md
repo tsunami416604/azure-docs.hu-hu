@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255244"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
 
@@ -54,6 +54,10 @@ A App Serviceban lévő alkalmazások a feldolgozói szerepkörökben vannak tá
 
 Ha a regionális VNet-integráció engedélyezve van, az alkalmazás a normál módon megegyező csatornákon keresztül teszi elérhetővé az internet felé irányuló hívásokat. Az alkalmazás-tulajdonságok portálon felsorolt kimenő címek az alkalmazás által még mindig használt címek. Az alkalmazásban a végpontok által biztosított szolgáltatásokra irányuló hívások, illetve az RFC 1918-címek bekerülnek a VNet. Ha WEBSITE_VNET_ROUTE_ALL értéke 1, a rendszer minden kimenő forgalmat elküldhet a VNet.
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` jelenleg nem támogatott Windows-tárolókban.
+> 
+
 A szolgáltatás csak egy virtuális felületet támogat egy feldolgozón. A munkavégzők egy virtuális felülete egy regionális VNet integrációt jelent App Service csomagon keresztül. Az azonos App Service tervben szereplő összes alkalmazás ugyanazt a VNet-integrációt használhatja. Ha egy alkalmazásnak egy további VNet való kapcsolódásra van szüksége, létre kell hoznia egy másik App Service csomagot. A használt virtuális felület nem erőforrás, amelyhez az ügyfeleknek közvetlen hozzáférésük van.
 
 A technológia működésének jellegéből adódóan a VNet-integrációhoz használt forgalom nem jelenik meg az Azure Network Watcher vagy a NSG flow naplóiban.
@@ -72,7 +76,8 @@ Az átjáróval megkövetelt VNet-integráció támogatja a csatlakozást egy m�
 Az átjáróhoz szükséges VNet-integráció nem használható:
 
 * Az Azure ExpressRoute-vel összekapcsolt VNet.
-* Linux-alkalmazásokból
+* Linux-alkalmazásokból.
+* Egy [Windows-tárolóból](quickstart-custom-container.md).
 * A szolgáltatási végpont által védett erőforrások eléréséhez.
 * Egy párhuzamos átjáróval, amely támogatja mind a ExpressRoute, mind a pont-hely vagy a helyek közötti VPN-eket.
 

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: d52673f1c66c8e053639b24bb31a3159a75736b9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029052"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258132"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -30,9 +30,9 @@ Minden egyes alkalmazásnak regisztrálnia kell a Microsoft Identity platformot 
 * Aktív előfizetéssel rendelkező Azure-fiók – [ingyenes fiók létrehozása](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * A rövid útmutató befejezése [: bérlő beállítása](quickstart-create-new-tenant.md)
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
-Az alkalmazás regisztrálása megbízhatósági kapcsolatot létesít az alkalmazás és a Microsoft Identity platform között. A bizalmi kapcsolat egyirányú: az alkalmazás megbízik a Microsoft Identity platformon, és nem fordítva.
+Az alkalmazás regisztrálása megbízhatósági kapcsolatot létesít az alkalmazás és a Microsoft Identity platform között. A bizalmi kapcsolat egyirányú: az alkalmazás megbízhatónak tartja a Microsoft Identity platformot, nem pedig fordítva.
 
 Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépéseket:
 
@@ -43,7 +43,7 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
 1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 1. Itt adhatja meg, hogy ki használhatja az alkalmazást, más néven a *bejelentkezési célközönségnek*.
 
-    | Támogatott fióktípusok | Description |
+    | Támogatott fióktípusok | Leírás |
     |-------------------------|-------------|
     | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez egy **egybérlős** alkalmazás a Microsoft Identity platformon. |
     | **Tetszőleges szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha *bármely* Azure ad-bérlő felhasználói számára szeretné használni az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt nevezzük **több-bérlős** alkalmazásnak a Microsoft Identity platformon. |
@@ -110,7 +110,7 @@ Más néven *nyilvános kulcs*, a tanúsítványok az ajánlott hitelesítő ada
 1. Válassza ki az alkalmazást a Azure Portal **Alkalmazásregisztrációkban** .
 1. Válassza a **tanúsítványok & titkok**  >  **feltöltési tanúsítvány**elemet.
 1. Válassza ki a feltölteni kívánt fájlt. A fájlnak a következő típusok egyikébe kell tartoznia: .cer, .pem vagy .crt.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="add-a-client-secret"></a>Ügyfél titkos kulcsának hozzáadása
 
@@ -120,7 +120,7 @@ Az ügyfél titkos kulcsa (más néven *alkalmazás jelszava*) egy olyan karakte
 1. Válassza a **tanúsítványok & titkos kulcsok**  >   **új ügyfél titka**lehetőséget.
 1. Adja meg titkos ügyfélkódja leírását.
 1. Válassza ki az időtartamot.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. **Jegyezze fel a titkos kulcs értékét** az ügyfélalkalmazás kódjában való használathoz – ez a lap *nem jelenik meg többé* , miután elhagyja ezt a lapot.
 
 ## <a name="next-steps"></a>Következő lépések

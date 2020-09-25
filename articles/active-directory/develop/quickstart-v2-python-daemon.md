@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform Python Daemon | Azure
-description: Ismerje meg, hogyan szerezhet be egy Python-folyamat hozzáférési jogkivonatot, és hogyan hívhat meg a Microsoft Identity platform-végpont által védett API-t az alkalmazás saját identitásával
+title: 'Gyors útmutató: Microsoft Graph meghívása Python-démonból | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebből a rövid útmutatóból megtudhatja, hogyan szerezhet be egy Python-folyamat hozzáférési jogkivonatot, és hogyan hívhat meg a Microsoft Identity platform-végpont által védett API-t az alkalmazás saját identitásával
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257741"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Python-konzol alkalmazásból az alkalmazás identitásával
 
@@ -218,24 +219,9 @@ További információkért tekintse [meg `AcquireTokenForClient` ](https://msal-
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv kezdőlapját.
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó Daemon-alkalmazás](scenario-daemon-overview.md)
-
-A Daemon Application oktatóanyaghoz lásd:
-
-> [!div class="nextstepaction"]
-> [A Daemon Python konzol oktatóanyaga](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-További információ az engedélyekről és a beleegyezik:
-
-> [!div class="nextstepaction"]
-> [Engedélyek és beleegyezik](v2-permissions-and-consent.md)
-
-Ha többet szeretne megtudni a forgatókönyv hitelesítési folyamatáról, tekintse meg a OAuth 2,0-ügyfél hitelesítő adatait tartalmazó folyamatot:
-
-> [!div class="nextstepaction"]
-> [Ügyfél-hitelesítő adatok OAuth folyamata](v2-oauth2-client-creds-grant-flow.md)

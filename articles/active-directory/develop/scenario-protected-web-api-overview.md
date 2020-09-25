@@ -12,22 +12,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c9ff9ae811a29685937b922f04a277e663e26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026628"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257364"
 ---
 # <a name="scenario-protected-web-api"></a>Forgatókönyv: védett webes API
 
 Ebből a forgatókönyvből megtudhatja, hogyan teheti elérhetővé a webes API-t. Azt is megtudhatja, hogyan védhető a webes API, hogy csak a hitelesített felhasználók férhessenek hozzá.
 
 A webes API használatához engedélyeznie kell a hitelesített felhasználókat a munkahelyi és az iskolai fiókkal, vagy engedélyeznie kell a személyes Microsoft-fiókokat.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="specifics"></a>Sajátosságai
 
@@ -40,7 +36,11 @@ Itt találja a webes API-k elleni védelemhez szükséges információkat:
 - A webes API-kód konfigurációjának ellenőriznie kell a webes API meghívásakor használt jogkivonatot.
 - A vezérlő műveleteiben szereplő kódnak ellenőriznie kell a tokenben lévő szerepköröket vagy hatóköröket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="recommended-reading"></a>Ajánlott olvasás
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásregisztráció](scenario-protected-web-api-app-registration.md)

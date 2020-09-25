@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170054"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259068"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio-ellenőrzési alkalmazás integrálása Azure Active Directory B2C
 
@@ -34,8 +34,8 @@ A kezdéshez a következőkre lesz szüksége:
 
 A következő összetevők alkotják a Twilio megoldást:
 
-- .NET PSD2 bemutató webalkalmazás, amely lehetővé teszi a bejelentkezést, illetve a regisztrációt, valamint egy nagy kockázatú, magas kockázatú tranzakció elvégzését.
-- Azure AD B2C a kombinált bejelentkezést és a regisztrálási szabályzatot.
+- .NET [PSD2 bemutató webalkalmazás](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App), amely lehetővé teszi a bejelentkezést, illetve a regisztrációt, valamint egy nagy kockázatú, magas kockázatú tranzakció elvégzését.
+- Azure AD B2C [a kombinált bejelentkezést és a regisztrálási szabályzatot](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy).
 - Azure AD B2C a Twilio-sel integrált szabályzat az API-t használva `id_token_hint` .
 - .NET-webalkalmazás, amely egy `.well-known` OpenIdConnect-végpontot üzemeltet, amely lehetővé teszi az érvényesítését `id_token_hint` .
 
@@ -73,7 +73,7 @@ A következő összetevők alkotják a Twilio megoldást:
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. A webalkalmazás emellett az ID jogkivonat-generátort és a metaadat-végpontot is üzemelteti.
+2. A [webalkalmazás](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App) emellett az id jogkivonat-generátort és a metaadat-végpontot is üzemelteti.
    - Hozza létre az aláíró tanúsítványt a [minta leírásában](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)leírtak szerint.
    - Frissítse a következő sorokat a tanúsítványa alapján a web.configban:
    
@@ -86,7 +86,7 @@ A következő összetevők alkotják a Twilio megoldást:
 
 4. Frissítse a Azure AD B2C alkalmazás regisztrációját úgy, hogy a válasz URL-címét adja meg, amely egyenértékű az alkalmazás által üzemeltetett URL-címmel.
 
-5. Nyissa meg a házirend-fájlokat, és cserélje le az összes példányát a  `contoso` bérlő nevére.
+5. Nyissa meg a [házirend-fájlokat](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy) , és cserélje le az összes példányát a  `contoso` bérlő nevére.
 
 6. Keresse meg a Twilio REST API a technikai profil **Egyéni-SMS-regisztrációját**. Frissítse a  `ServiceURL`   Twilio-AccountSID és a számot a megvásárolt telefonszámra.
 
@@ -116,7 +116,7 @@ Adja hozzá a Azure AD B2C a házirend-fájlokat:
 
 * Keresse meg az alkalmazást, és tesztelje a bejelentkezést, a regisztrációt és a pénz küldése műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

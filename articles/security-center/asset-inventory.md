@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302043"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Erőforrások megismerése és kezelése az eszközök leltározásával és felügyeleti eszközeivel
 
@@ -54,7 +54,7 @@ A leltár oldal a következő eszközöket biztosítja:
 - **Összegzések** – a szűrők definiálása előtt a leltár nézet felső részén látható értékek egy kiemelt sáv jelenik meg:
 
     - **Összes erőforrás**: Security Centerhoz csatlakoztatott erőforrások teljes száma.
-    - **Sérült erőforrások**: aktív biztonsági javaslatokkal rendelkező erőforrások. [További információ a biztonsági javaslatokról](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+    - **Sérült erőforrások**: aktív biztonsági javaslatokkal rendelkező erőforrások. [További információ a biztonsági javaslatokról](security-center-recommendations.md).
     - Nem **figyelt erőforrások**: az ügynök figyelésével kapcsolatos problémákkal rendelkező erőforrások – log Analytics ügynök telepítve van, de az ügynök nem küld adatokat, vagy egyéb állapottal kapcsolatos problémákba ütközik.
 
 - **Szűrők** – a lap tetején található több szűrő lehetővé teszi, hogy gyorsan pontosítsa az erőforrások listáját a válaszolni kívánt kérdésnek megfelelően. Ha például a *"Production" címkével rendelkező gépekkel* kapcsolatos kérdést szeretné megválaszolni, akkor a log Analytics ügynök hiányzik? az **ügynök figyelési** szűrőjét a **címkék** szűrővel kombinálhatja a következő klipben látható módon:

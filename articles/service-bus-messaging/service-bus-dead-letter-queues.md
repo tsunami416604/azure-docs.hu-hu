@@ -4,12 +4,12 @@ description: A Azure Service Bus kézbesítetlen levelek várólistáinak leír�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301023"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A kézbesítetlen levelek várólistájának Service Bus áttekintése
 
@@ -62,7 +62,7 @@ A lejárt üzenetek csak akkor törlődnek és átkerülnek a DLQ, ha van legal�
 
 ## <a name="errors-while-processing-subscription-rules"></a>Hibák az előfizetési szabályok feldolgozásakor
 
-Ha a [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság engedélyezve van egy előfizetéshez, az előfizetés SQL-szűrési szabályának végrehajtása során felmerülő hibák rögzítése a DLQ és a jogsértő üzenettel együtt történik.
+Ha a [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság engedélyezve van egy előfizetéshez, az előfizetés SQL-szűrési szabályának végrehajtása során felmerülő hibák rögzítése a DLQ és a jogsértő üzenettel együtt történik. Ne használja ezt a beállítást olyan éles környezetben, amelyben nem minden üzenetnek van előfizetője.
 
 ## <a name="application-level-dead-lettering"></a>Alkalmazás szintű kézbesítetlen levelek
 

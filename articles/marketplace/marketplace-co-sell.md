@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268723"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -36,7 +36,7 @@ Az **Azure-beli IP-incentivized** állapotot elérő ajánlatok ezen további Pi
 * A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi Piactéren keresztül eladott IaaS vagy SaaS-ajánlatra vonatkozik. További részletekért lásd: [csökkentett szolgáltatási díj](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
 * A Cloud Solution Provider (CSP) partnerei 10%-os kedvezményt kapnak a IaaS vagy SaaS-ajánlat értékesítéséhez. További információ a CSP programról a [Cloud Solution Provider programban](cloud-solution-providers.md).
 * Az ajánlat kereskedelmi piactéren keresztüli értékesítései hozzájárulnak az ügyfelek Azure-beli felhasználási kötelezettségeihez. A jogosult ügyfelek az Azure Portalon láthatják, hogy az ajánlat **"Azure Benefit jogosult"** jelölésű. További részletekért tekintse meg az Azure-beli [felhasználásra vonatkozó kötelezettségvállalási kedvezményt](azure-consumption-commitment-benefit.md) .
-* Ajánlatunk a kirakatok **"előnyben részesített megoldások"** jelvényét fogja kapni. A jelvény a minőségi, teljesítménybeli és az ügyfelek igényeinek megfelelő képességet biztosít egy adott iparági vertikális vagy megoldási területen. További információ: [Microsoft AppSource és az Azure Marketplace előnyben részesített megoldásai](preferred-solutions.md).
+* Az **Azure-beli IP-incentivized** vagy **Business Applications közös értékesítésű incentivized** -állapotot elérő ajánlatok a kirakatokban **"előnyben részesített megoldások"** jelvényt kapnak. A jelvény az ajánlat minőségének, teljesítményének és az ügyfelek igényeinek egy adott iparági vertikális vagy megoldási területen való kezelésére való képességének növelését segíti elő. További információ: [Microsoft AppSource és az Azure Marketplace előnyben részesített megoldásai](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Közzétételi lépések és követelmények együttes értékesítése
 

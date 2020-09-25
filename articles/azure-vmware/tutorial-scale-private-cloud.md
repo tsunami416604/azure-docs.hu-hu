@@ -1,22 +1,20 @@
 ---
-title: 'Oktatóanyag: privát felhő méretezése'
-description: Ebben az oktatóanyagban a Azure Portal használatával méretezheti az Azure VMware-megoldás előzetes privát felhőjét.
+title: Oktatóanyag – privát felhő méretezése
+description: Ebben az oktatóanyagban a Azure Portal használatával méretezheti az Azure VMware-megoldás saját felhőjét.
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: dddfbddd57f3ad6b541d11c360aeadea4383044a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: e1226eb98607a34869bda1f998c7cecea2e50919
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254414"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-preview-private-cloud"></a>Oktatóanyag: Azure-beli VMware-megoldás előnézetének saját felhőbe méretezése
+# <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás – saját felhő méretezése
 
-Annak érdekében, hogy a lehető legtöbbet hozza ki az Azure VMware-megoldás előzetes verziójával, a fürtöket és a gazdagépeket úgy méretezheti, hogy azok tükrözzék a tervezett munkaterhelésekhez szükséges igényeket. Mivel az Azure VMware-megoldás nem támogatja a helyszíni vCenter az előzetes verzióban, a Azure Portalon keresztül már létrehozott módon kell használnia.
+Annak érdekében, hogy a lehető legtöbbet hozza ki az Azure VMware-megoldás saját felhőalapú környezetében, méretezheti a fürtöket és a gazdagépeket, hogy azok tükrözzék a tervezett munkaterhelésekhez szükséges igényeket. Az alkalmazás számítási feladataihoz szükség szerint méretezheti a fürtök számát és a privát felhőben lévő gazdagépek számát. Az egyes szolgáltatások teljesítmény-és rendelkezésre állási korlátozásait eseti alapon kell kezelni az Azure VMware-megoldás saját felhőalapú környezetében. A fürt és a gazdagép korlátai a [Private Cloud Concept](concepts-private-clouds-clusters.md) cikkben találhatók.
 
-Az alkalmazás számítási feladataihoz szükség szerint méretezheti a fürtök számát és a privát felhőben lévő gazdagépek számát. Az egyes szolgáltatások teljesítmény-és rendelkezésre állási korlátozásait eseti alapon kell kezelni az Azure VMware-megoldás előzetes felhőalapú környezetében. A privát felhőben a fürt és a gazdagép korlátai a [Private Cloud Concept című cikkben](concepts-private-clouds-clusters.md)találhatók.
-
-Ebben az oktatóanyagban a Azure Portal a következőket használja:
+Ebben az oktatóanyagban a Azure Portal a következőkre fogja használni:
 
 > [!div class="checklist"]
 > * Fürt hozzáadása meglévő privát felhőhöz
@@ -24,7 +22,7 @@ Ebben az oktatóanyagban a Azure Portal a következőket használja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy privát felhőre. Ha még nem hozott létre privát felhőt, használja a [create a Private Cloud oktatóanyagot](tutorial-create-private-cloud.md) , és hozzon létre egy privát felhőt, és konfigurálja a VMware Private-felhő hálózatkezelését az Azure-ban a szükséges virtuális hálózat beállításához.
+Az oktatóanyag elvégzéséhez szüksége lesz egy privát felhőre. Ha még nem hozott létre privát felhőt, a [create a Private Cloud tutorial (privát felhő létrehozása) oktatóanyag](tutorial-create-private-cloud.md) használatával hozzon létre egyet, és konfigurálja a VPN-t az Azure-ban, hogy beállítsa a szükséges virtuális hálózatot.
 
 ## <a name="add-a-new-cluster"></a>Új fürt hozzáadása
 
@@ -50,7 +48,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy privát felhőre. Ha még ne
 
    Elindul a gazdagépek hozzáadása a fürthöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szüksége van egy másik Azure VMware-megoldás saját felhőre, [hozzon létre egy másik privát felhőt](tutorial-create-private-cloud.md), amely a hálózat előfeltételeit, a fürt és a gazdagép korlátait követi.
 

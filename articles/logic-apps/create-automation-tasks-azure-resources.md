@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269726"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Azure-erőforrások kezelése és a költségek figyelése automatizálási feladatok létrehozásával (előzetes verzió)
 
@@ -30,6 +30,7 @@ Ebben az előzetes verzióban a jelenleg elérhető feladatok sablonjai láthat�
 | Minden Azure-erőforrásban | **Erőforrás havi költségének elküldése** |
 | Azure-beli virtuális gépek | Továbbá: <p>- **Virtuális gép kikapcsolása** <br>- **Virtuális gép indítása** |
 | Azure Storage-fiókok | Továbbá: <p>- **Régi Blobok törlése** |
+| Azure Cosmos DB | Emellett <p>- **Lekérdezési eredmény küldése e-mailben** |
 |||
 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -40,11 +41,13 @@ Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 
 * [Szerkessze a](#edit-task) feladatot úgy, hogy frissítse a feladatot, vagy szabja testre a feladat alapjául szolgáló munkafolyamatot a Logic app Designerben.
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Hogyan térnek el az Automation-feladatok a Azure Automation?
 
-Jelenleg csak az erőforrás szintjén hozhat létre Automation-feladatokat, megtekintheti a feladat futtatási előzményeit, és szerkesztheti a feladat alapjául szolgáló logikai alkalmazás munkafolyamatát, amelyet a [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatás működtet.
+Jelenleg csak az erőforrás szintjén hozhat létre Automation-feladatokat, megtekintheti a feladat futtatási előzményeit, és szerkesztheti a feladat alapjául szolgáló logikai alkalmazás munkafolyamatát, amelyet a [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatás működtet. Az automatizálási feladatok több alapszintű és könnyű, mint [Azure Automation](../automation/automation-intro.md).
 
-A [Azure Automation](../automation/automation-intro.md) egy felhőalapú automatizálási és konfigurációs szolgáltatás, amely támogatja az Azure-beli és nem Azure-beli környezetek konzisztens felügyeletét. A szolgáltatás folyamat- [automatizálást biztosít a folyamatok](../automation/automation-intro.md#process-automation) [runbookok](../automation/automation-runbook-execution.md), a [változások követésével és leltározásával](../automation/change-tracking.md), a frissítési felügyelettel, a megosztott képességekkel és a heterogén funkciókkal való összeszereléshez. Az Automation szolgáltatás teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.
+Ezzel szemben az Azure Automation egy felhőalapú automatizálási és konfigurációs szolgáltatás, amely támogatja az Azure-beli és nem Azure-beli környezetek egységes felügyeletét. A szolgáltatás folyamat- [automatizálást biztosít a folyamatok](../automation/automation-intro.md#process-automation) [runbookok](../automation/automation-runbook-execution.md), a [változások követésével és leltározásával](../automation/change-tracking.md), a frissítési felügyelettel, a megosztott képességekkel és a heterogén funkciókkal való összeszereléshez. Az Automation szolgáltatás teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

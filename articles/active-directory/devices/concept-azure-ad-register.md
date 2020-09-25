@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure AD-ban regisztrált eszközök?
-description: Megtudhatja, hogyan segítheti a környezet erőforrásaihoz hozzáférő eszközök felügyeletét.
+description: Ismerje meg, hogy az Azure AD által regisztrált eszközök Hogyan biztosítják a felhasználók számára a saját eszközök használatát (BYOD) vagy a mobileszköz-forgatókönyveket.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554878"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256438"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-ben regisztrált eszközök
 
 Az Azure AD-ban regisztrált eszközök célja, hogy a felhasználók számára támogatást nyújtson a saját eszközök használata (BYOD) vagy a mobileszköz-forgatókönyvek számára. Ezekben a forgatókönyvekben a felhasználók személyes eszköz használatával férhetnek hozzá a szervezet Azure Active Directory felügyelt erőforrásaihoz.
 
-| Azure AD-regisztráció | Description |
+| Azure AD-regisztráció | Leírás |
 | --- | --- |
 | **Definíció** | Regisztrálva van az Azure AD-be anélkül, hogy szervezeti fiókot kellene bejelentkeznie az eszközre |
 | **Elsődleges célközönség** | Az összes felhasználóra érvényes a következő feltételekkel: |
@@ -59,7 +59,7 @@ A szervezet egyik felhasználója szeretné elérni az e-mailek, a jelentéskés
 
 Egy másik felhasználó szeretné elérni a szervezeti e-mail-címét a személyes androidos telefonján, amely fel van gyökerezve. A vállalatának megfelelő eszközre van szüksége, és létrehozott egy Intune-megfelelőségi szabályzatot a feltört eszközök blokkolásához. Az alkalmazott nem fér hozzá a szervezeti erőforrásokhoz az eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az eszközök identitásának kezelése a Azure Portal használatával](device-management-azure-portal.md)
+- [Eszközidentitások kezelése az Azure Portal használatával](device-management-azure-portal.md)
 - [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

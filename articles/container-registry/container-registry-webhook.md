@@ -3,12 +3,12 @@ title: Webhookok a beállításjegyzékbeli műveletekre való reagáláshoz
 description: Ismerje meg, hogyan indíthat el eseményeket a webhookok használatával, amikor leküldéses vagy lekéréses műveletek történnek a beállításjegyzékbeli adattárakban.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83685033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253394"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
@@ -29,7 +29,7 @@ A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Regist
 1. A webhook eszköztárban válassza a **Hozzáadás** lehetőséget.
 1. Fejezze be a *webhook létrehozása* űrlapot a következő információkkal:
 
-| Érték | Description |
+| Érték | Leírás |
 |---|---|
 | Webhook neve | A webhookhoz adni kívánt név. Csak betűket és számokat tartalmazhat, és 5-50 karakter hosszúnak kell lennie. |
 | Hely | [Földrajzilag replikált](container-registry-geo-replication.md) beállításjegyzék esetén a beállításjegyzék-replika Azure-régióját kell megadnia. 
@@ -41,7 +41,7 @@ A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Regist
 
 Példa webhook-űrlapra:
 
-![ACR webhook-létrehozási felhasználói felület a Azure Portal](./media/container-registry-webhook/webhook.png)
+![Képernyőkép, amely az ACR webhook létrehozását mutatja be a Azure Portalban.](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>Webhook létrehozása – Azure CLI
 
@@ -89,7 +89,7 @@ Minden webhook törölhető úgy, hogy kiválasztja a webhookot, majd a Azure Po
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="webhook-schema-reference"></a>Webhook-séma – dokumentáció
 

@@ -3,12 +3,12 @@ title: A Azure Service Bus IP-tűzfalszabályok konfigurálása
 description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ba6b1902213af8d968b220a387e419e56e8aa67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064638"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300955"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Azure Service Bus névtér elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -51,7 +51,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfal
     
     Ha a **minden hálózat** lehetőséget választja, akkor a Service Bus névtér bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
-    ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+    ![Képernyőkép a Azure Portal hálózatkezelési oldalról. A tűzfalak és virtuális hálózatok lapon a hozzáférés engedélyezése az összes hálózatról lehetőség van kiválasztva.](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. Ha csak a megadott IP-címről szeretne hozzáférést engedélyezni, válassza a **kiválasztott hálózatok** lehetőséget, ha még nincs kiválasztva. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
     1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
     2. A **címtartomány**mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
@@ -60,7 +60,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfal
         > [!WARNING]
         > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad meg IP-címet vagy címtartományt, akkor a szolgáltatás minden hálózatról engedélyezi a forgalmat. 
 
-        ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        ![Képernyőkép a Azure Portal hálózatkezelési oldalról. A kijelölt hálózatokból való hozzáférés engedélyezése lehetőség ki van választva, és a tűzfal szakasz ki van emelve.](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.
 
     > [!NOTE]
@@ -154,7 +154,7 @@ Sablon paraméterei:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-beli virtuális hálózatokhoz való Service Bus hozzáférésének korlátozásához tekintse meg a következő hivatkozást:
 

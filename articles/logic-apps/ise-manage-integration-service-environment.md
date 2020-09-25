@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269369"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezetet (ISE) felügyelete az Azure Logic Appsben
 
@@ -122,7 +122,7 @@ A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több 
    * [**Manuális méretezés**](#manual-scale): méretezés a használni kívánt feldolgozási egységek számától függően.
    * [**Egyéni autoscale**](#custom-autoscale): méretezés teljesítmény-mérőszámok alapján, különböző feltételek kiválasztásával és a feltételek teljesítéséhez szükséges küszöbértékek megadásával.
 
-   ![Válassza ki a kívánt skálázási típust](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![Képernyőkép, amely a "manuális méretezéssel" kiválasztva jeleníti meg a "felskálázás" lapot.](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 
@@ -182,6 +182,6 @@ Mielőtt töröl egy olyan ISE-t, amelyhez már nincs szüksége, vagy egy olyan
 
 Az ISE törlése után előfordulhat, hogy az Azure-beli virtuális hálózat vagy alhálózatok törlése előtt legfeljebb 9 órát kell várnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)

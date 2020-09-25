@@ -1,14 +1,16 @@
 ---
 title: Aktív és inaktív események – személyre szabás
 description: Ez a cikk a személyre szabott szolgáltatáson belüli aktív és inaktív események használatát ismerteti.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624252"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253649"
 ---
 # <a name="active-and-inactive-events"></a>Aktív és inaktív események
 
@@ -37,10 +39,10 @@ Az üzleti logikában később, ha az alkalmazás a rangsor hívásában találh
 
 ## <a name="inactive-events"></a>Inaktív események
 
-Ha le szeretné tiltani egy esemény betanítását, hívja `learningEnabled = False`a rangsort a használatával.
+Ha le szeretné tiltani egy esemény betanítását, hívja a rangsort a használatával `learningEnabled = False` .
 
-Inaktív esemény esetén a tanulás implicit módon aktiválódik, ha jutalmat küld a Napszállta, vagy meghívja az `activate` API-t az adott Napszállta.
+Inaktív esemény esetén a tanulás implicit módon aktiválódik, ha jutalmat küld a Napszállta, vagy meghívja az API-t az `activate` adott Napszállta.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan határozhatja meg a jutalom pontszámát és a megfontolandó információkat](concept-rewards.md).

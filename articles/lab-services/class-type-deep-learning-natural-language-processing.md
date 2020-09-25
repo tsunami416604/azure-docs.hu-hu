@@ -1,14 +1,14 @@
 ---
 title: Tesztkörnyezet létrehozása a mélyreható tanuláshoz a Azure Lab Services használatával | Microsoft Docs
-description: Ismerje meg, hogyan állíthat be egy labort a rendszerhéj-parancsfájlok Linuxon való tanításához.
+description: Megtudhatja, hogyan állíthat be egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c5ac93109d24c0d5936c8f271276c02e4e6f6c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01199e76b7b9cb1a6360b5aba010d0cfd8936c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251456"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan állíthat be egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) formája, amely lehetővé teszi, hogy a számítógépek fordítással, beszédfelismeréssel és más nyelvi felismerési képességekkel rendelkeznek.  
@@ -16,7 +16,7 @@ Ebből a cikkből megtudhatja, hogyan állíthat be egy olyan labort, amely a te
 Az NLP osztályba tartozó diákok linuxos virtuális gépet (VM) kapnak, amelyből megtudhatja, hogyan alkalmazhat neurális hálózati algoritmusokat az írott emberi nyelv elemzéséhez használt mély tanulási modellek fejlesztéséhez. 
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Ha már rendelkezik Azure-előfizetéssel, létrehozhat egy új Labor-fiókot Azure Lab Services vagy használhat egy meglévő Lab-fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
+A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Ha már rendelkezik Azure-előfizetéssel, létrehozhat egy új Labor-fiókot Azure Lab Services vagy használhat egy meglévő Lab-fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
  
 A labor-fiók létrehozása után engedélyezze a következő beállításokat a labor-fiókban: 
 
@@ -36,7 +36,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 A Linux-rendszerképekhez készült Data Science Virtual Machine az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket biztosít. Ennek eredményeképpen a sablon létrehozása után nem kell további testreszabást végeznie. A tanulók számára közzé lehet tenni. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
 
 Egy 25 tanulós osztály esetében, amely 20 órányi időpontot és 10 órányi kvótát biztosít a munkahelyhez vagy a hozzárendelésekhez, a labor díja 25 diák * (20 + 10) óra * 139 labor egység * 0,01 USD/óra = 1042,5 USD
@@ -46,7 +46,7 @@ További részletek a díjszabásról: [Azure Lab Services díjszabása](https:/
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a tesztkörnyezet a természetes nyelvi feldolgozó osztályhoz való létrehozásának lépésein. Hasonló beállításokat használhat más Deep learning-osztályokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépések közösek a laborok beállításához:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

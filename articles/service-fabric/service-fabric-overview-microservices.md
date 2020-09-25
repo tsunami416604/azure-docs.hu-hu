@@ -4,12 +4,12 @@ description: Annak áttekintése, hogy miért fontos a Felhőbeli alkalmazások 
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300768"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Miért érdemes alkalmazások létrehozására használni a Service-t
 
@@ -139,6 +139,9 @@ Az Azure Service Fabric akkor alakult ki, amikor a Microsoft áttért a bekerete
 
 ***A Service Fabric célja, hogy megoldja a szolgáltatások kiépítésével és futtatásával, valamint az infrastruktúra-erőforrások hatékony kihasználásával kapcsolatos problémákat, így a csapatok a szolgáltatásokkal kapcsolatos üzleti problémák megoldására használhatók.***
 
+Ez a rövid videó bemutatja a Service Fabric platformot és a mikroszolgáltatásokat: 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
+
 A Service Fabric segítségével a következőkkel hozhat létre olyan alkalmazásokat, amelyek a szolgáltatással kapcsolatos megközelítést használnak:
 
 * Platform, amely rendszerszolgáltatásokat biztosít a sikertelen szolgáltatások üzembe helyezésére, frissítésére, észlelésére és újraindítására, a szolgáltatások felderítésére, az üzenetek továbbítására, az állapot kezelésére és az állapot figyelésére.
@@ -163,7 +166,7 @@ Ne feledje, hogy *bármelyik szakaszban elindíthatja és leállíthatja*. A kö
 
 Nézzük meg az egyes szakaszokra vonatkozó példákat.
 
-**Migrálás**  
+**Migrate**  
 Két okból kifolyólag számos vállalat telepít át meglévő monolitikus alkalmazásokat tárolóba:
 
 * Költségcsökkentés a meglévő hardverek összevonása és eltávolítása, illetve a nagyobb sűrűségű alkalmazások futtatása miatt.

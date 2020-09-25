@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: eaada1981929cec890ce3c8ca89fe47393730b05
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250331"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Függvények a nagy kapacitású (Citus) SQL API-ban
 
@@ -20,7 +20,7 @@ Ez a szakasz a nagy kapacitású (Citus) által biztosított, felhasználó ált
 
 > [!NOTE]
 >
-> Előfordulhat, hogy a Citus motor régebbi verzióit futtató nagy kapacitású-kiszolgálócsoportok nem rendelkeznek az alább felsorolt összes funkcióval.
+> Előfordulhat, hogy a Citus-motor régebbi verzióit futtató nagy kapacitású-(Citus-) kiszolgálócsoportok nem biztosítanak az összes alább felsorolt funkciót.
 
 ## <a name="table-and-shard-ddl"></a>Táblázat és szegmens DDL
 
@@ -46,7 +46,7 @@ Ha egy új elosztott tábla nem kapcsolódik más táblákhoz, érdemes megadnia
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -70,7 +70,7 @@ A Create \_ Reference \_ Table () függvény egy kis hivatkozás vagy dimenzió 
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -90,7 +90,7 @@ A frissítés \_ a \_ hivatkozási \_ táblára () függvény egy meglévő, a s
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -152,7 +152,7 @@ A postgres keresési útvonala nincs propagálva a koordinátortól a feldolgoz�
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -359,7 +359,7 @@ Ez a függvény a alkalmazástól függetlenül működik `pg_stat_statements_re
 
 #### <a name="arguments"></a>Argumentumok
 
-N/A
+N.A.
 
 #### <a name="return-value"></a>Visszatérési érték
 
@@ -387,7 +387,7 @@ A szegmensek kijavításához a függvény először eldobja a nem kifogástalan
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -427,7 +427,7 @@ Sikeres áthelyezési művelet után a rendszer a forrás csomópont szegmenseit
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -477,7 +477,7 @@ Ha ez az argumentum nincs megadva, a függvény kiválasztja az alapértelmezett
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -520,7 +520,7 @@ A szegmensek újraegyensúlyának megkezdése után a `get_rebalance_progress()`
 
 #### <a name="arguments"></a>Argumentumok
 
-N/A
+N.A.
 
 #### <a name="return-value"></a>Visszatérési érték
 
@@ -575,7 +575,7 @@ Az argumentumokkal kapcsolatos további tudnivalókért tekintse meg a megfelel�
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus \_ \_ alapértelmezett \_ egyensúlyi \_ stratégia beállítása
 
@@ -587,7 +587,7 @@ Frissítse a [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebal
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -601,7 +601,7 @@ A citus \_ Remote \_ Connection \_ stats () függvény az egyes távoli csomópo
 
 #### <a name="arguments"></a>Argumentumok
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -637,7 +637,7 @@ Ha ez az argumentum nincs megadva, a függvény kiválasztja az alapértelmezett
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="example"></a>Példa
 
@@ -687,7 +687,7 @@ szegmensek **maximális \_ \_ példányszáma:** (nem kötelező) a másolandó 
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N/A
+N.A.
 
 #### <a name="examples"></a>Példák
 

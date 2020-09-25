@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269284"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
 
@@ -21,7 +21,7 @@ A hatókör állapotának vizsgálatához használhatja a logikai alkalmazások 
 
 Íme például egy olyan magas szintű logikai alkalmazás, amely egy hatókör használatával futtat adott műveleteket és egy feltételt a hatókör állapotának vizsgálatához. Ha a hatókörben lévő bármelyik művelet meghiúsul vagy leáll, a hatókör "sikertelen" vagy "megszakított" értékre van állítva, és a logikai alkalmazás "sikertelen hatókör" üzenetet küld. Ha az összes hatókörrel rendelkező művelet sikeres, a logikai alkalmazás "hatókör sikeres" üzenetet küld.
 
-![A "Schedule-Ismétlődés" eseményindító beállítása](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![A diagram a Logic app-hatókör folyamatát mutatja be a "hatókör sikertelen" és a "hatókör sikeres" értékkel.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,12 +77,12 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
       | ------- | ----- | ----------- |
       | **1. útvonalpont** | <*Start*> | Adja meg az útvonal forrását. | 
       | **2. útvonalpont** | <*végén*> | Adja meg az útvonal célhelyét. | 
-      | **Elkerülés** | Egyik sem | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
+      | **Elkerülés** | Nincsenek | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
-      | **Tranzit dátuma és időpontja** | Egyik sem | Csak az átviteli módra vonatkozik. | 
-      | **Tranzit dátum-típus típusa** | Egyik sem | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátuma és időpontja** | Nincsenek | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátum-típus típusa** | Nincsenek | Csak az átviteli módra vonatkozik. | 
       ||||  
 
 1. [Adjon hozzá egy feltételt](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy az aktuális utazási idő meghaladja-e a megadott időt. 
@@ -143,7 +143,7 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
    1. Ha elkészült, válassza az **OK** gombot.
 
    <!-- markdownlint-disable MD038 -->
-   1. A kifejezés feloldása után adja hozzá a következő szöveget egy kezdő szóközzel:``` minutes```
+   1. A kifejezés feloldása után adja hozzá a következő szöveget egy kezdő szóközzel: ``` minutes```
   
        A **törzs** mező most a következő példához hasonlít:
 
@@ -192,7 +192,7 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
    
       `result('Scope')[0]['status']`
 
-      ![A hatókör állapotát ellenőrző kifejezés hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Képernyőkép, amely a "kifejezés hozzáadása" ablakot mutatja a Kiemelt eredmény kifejezéssel.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Mindkét sorban válassza a **egyenlő** , mint az operátor elemet. 
    

@@ -1,21 +1,21 @@
 ---
-title: JSON használata a Azure Cosmos DBban
+title: A JSON használata az Azure Cosmos DB-ben
 description: További információ a beágyazott JSON-tulajdonságok lekérdezéséről és eléréséről, valamint speciális karakterek használata Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270852"
 ---
-# <a name="working-with-json-in-azure-cosmos-db"></a>JSON használata a Azure Cosmos DBban
+# <a name="working-with-json-in-azure-cosmos-db"></a>A JSON használata az Azure Cosmos DB-ben
 
-Azure Cosmos DB SQL (Core) API-ban az elemek JSON-ként vannak tárolva. A Type rendszer és a kifejezések kizárólag JSON-típusokkal való kezelésre korlátozódnak. További információ: [JSON-specifikáció](https://www.json.org/).
+Az Azure Cosmos DB SQL (Core) API-ja JSON formátumban tárolja az elemeket. A típusrendszer és a kifejezések kizárólag JSON-típusokkal működnek. További információ: [JSON-specifikáció](https://www.json.org/).
 
 Összefoglaljuk a JSON használatának néhány fontos aspektusát:
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Null és nem definiált érték közötti különbség
+
+Ha egy tulajdonság nincs definiálva egy elemben, akkor annak értéke `undefined` . Az értékkel rendelkező tulajdonságot `null` explicit módon meg kell határozni, és hozzá kell rendelni egy `null` értéket.
+
+Vegyük például ezt a minta tételt:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+Ebben a példában a tulajdonság `isRegistered` értéke, `undefined` mert ki van hagyva az elemből. A tulajdonság `creationDate` `null` értéke.
+
+Azure Cosmos DB a következő két hasznos típust támogatja: a és a tulajdonságok ellenőrzése a rendszerfunkciókkal `null` `undefined` :
+
+* [IS_NULL](sql-query-is-null.md) – ellenőrzi, hogy a tulajdonság értéke `null`
+* [IS_DEFINED](sql-query-is-defined.md) – ellenőrzi, hogy a tulajdonság értéke definiálva van-e
+
+Megismerheti a [támogatott operátorokat](sql-query-operators.md) és azok viselkedését `null` és `undefined` értékeit.
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Fenntartott kulcsszavak és speciális karakterek a JSON-ban
 
@@ -263,7 +291,7 @@ Az eredmény a következő:
 
 Az aliasok nem használhatók olyan tulajdonság neveként, amely szóközt, speciális karaktert vagy fenntartott szót használ. Ha például egy érték kivetítését szeretné módosítani egy szóközzel, használhat egy [JSON-kifejezést](#json-expressions).
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```sql
     SELECT
@@ -273,7 +301,7 @@ Az aliasok nem használhatók olyan tulajdonság neveként, amely szóközt, spe
     WHERE f.id = "AndersenFamily"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)

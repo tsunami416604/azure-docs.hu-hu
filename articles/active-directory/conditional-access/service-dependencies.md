@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258608"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? 
 
@@ -25,7 +25,7 @@ A feltételes hozzáférési szabályzatok segítségével megadhatja a webhelye
 Ha közvetlenül fér hozzá egy webhelyhez vagy szolgáltatáshoz, a kapcsolódó szabályzatok hatása általában könnyen felmérhető. Ha például olyan szabályzattal rendelkezik, amely a SharePoint Online-hoz a többtényezős hitelesítés (MFA) használatát igényli, a rendszer minden egyes bejelentkezéskor MFA-t alkalmaz a SharePoint webes portálra. Azonban nem mindig áll készen a szabályzat hatásának felmérésére, mert a Felhőbeli alkalmazások függőségekkel rendelkeznek más felhőalapú alkalmazásokkal. A Microsoft Teams például hozzáférést biztosíthat az erőforrásokhoz a SharePoint Online-ban. Így ha a Microsoft csapatait a jelenlegi forgatókönyvben éri el, a SharePoint MFA-szabályzata is érvényes. 
 
 > [!TIP]
-> Az [office 365 (előzetes verzió)](concept-conditional-access-cloud-apps.md#office-365-preview) alkalmazás használata minden Office-alkalmazást megcéloz, hogy elkerülje a szolgáltatási függőségek problémáit az Office-veremben.
+> Az [office 365](concept-conditional-access-cloud-apps.md#office-365) alkalmazással az Office-alkalmazások minden Office-alkalmazást megcéloznak, hogy elkerülje a szolgáltatási függőségek problémáit az Office-veremben.
 
 ## <a name="policy-enforcement"></a>Szabályzatbetartatás 
 
@@ -40,7 +40,7 @@ Az alábbi ábra az MS Teams szolgáltatás függőségeit mutatja be. A folyton
 
 Ajánlott eljárásként a kapcsolódó alkalmazásokban és szolgáltatásokban közös házirendeket kell beállítania, amikor csak lehetséges. A konzisztens biztonsági testhelyzet a legjobb felhasználói élményt nyújtja. Például az Exchange Online, a SharePoint Online, a Microsoft Teams és a Skype for Business közös házirendjének beállítása jelentősen csökkenti az alárendelt szolgáltatásokra alkalmazott különböző házirendektől esetlegesen felmerülő váratlan kéréseket. 
 
-Ezt az Office-veremben lévő alkalmazásokkal nagyszerű módszerként használhatja az [office 365 (előzetes verzió)](concept-conditional-access-cloud-apps.md#office-365-preview) használata az egyes alkalmazások célzása helyett.
+Ezt az Office-veremben lévő alkalmazásokkal nagyszerű módszerként használhatja az [office 365 alkalmazás](concept-conditional-access-cloud-apps.md#office-365) használata az egyes alkalmazások célzása helyett.
 
 Az alábbi táblázat felsorolja azokat a szolgáltatási függőségeket, amelyeknek meg kell felelniük az ügyfélalkalmazások számára  
 

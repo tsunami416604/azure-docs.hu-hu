@@ -1,7 +1,7 @@
 ---
-title: Token beszerzése & hívás Microsoft Graph a Console app Identity szolgáltatással | Azure
+title: 'Gyors útmutató: token beszerzése & Call Microsoft Graph a konzol alkalmazásban | Azure'
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan kérhet jogkivonatot, és hogyan hívhat meg védett Microsoft Graph API-t egy .NET Core-alkalmazásból
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a .NET Core-minta alkalmazás az ügyfél hitelesítő adatait a token beszerzéséhez és a Microsoft Graph meghívásához.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257824"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával
 
@@ -170,12 +170,7 @@ A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.I
 
  A MSAL.NET a következő parancs futtatásával telepítheti a Visual Studio **Package Manager konzolján**:
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-Ha nem a Visual studiót használja, akkor a következő parancs futtatásával MSAL adhat hozzá a projekthez:
-
+```powershell twhitney
 ```console
 dotnet add package Microsoft.Identity.Client
 ```
@@ -204,7 +199,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 > | `config.Authority`    | Választható A hitelesítéshez a felhasználó STS-végpontja. A nyilvános felhő esetében általában a (z) `https://login.microsoftonline.com/{tenant}` {bérlő} a bérlő vagy a bérlői azonosító neve.|
 
-További információkért tekintse [meg `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) a következő dokumentációt:
+További információkért tekintse [meg `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication) a következő dokumentációt:
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
@@ -219,28 +214,13 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében a hasonló formátumot kell használnia, hogy `{Application ID URI}/.default` jelezze, hogy a kért hatókörök az Azure Portalon beállított app Object (Microsoft Graph, `{Application ID URI}` pont –) számára statikusan meghatározottak `https://graph.microsoft.com` . Az egyéni webes API- `{Application ID URI}` k esetében az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
 
-További információkért tekintse [meg `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) a következő dokumentációt:
+További információkért tekintse [meg `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient) a következő dokumentációt:
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv kezdőlapját.
+A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv áttekintését:
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó Daemon-alkalmazás](scenario-daemon-overview.md)
-
-A Daemon Application oktatóanyaghoz lásd:
-
-> [!div class="nextstepaction"]
-> [A Daemon .NET Core konzol oktatóanyaga](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-További információ az engedélyekről és a beleegyezik:
-
-> [!div class="nextstepaction"]
-> [Engedélyek és beleegyezik](v2-permissions-and-consent.md)
-
-Ha többet szeretne megtudni a forgatókönyv hitelesítési folyamatáról, tekintse meg a OAuth 2,0-ügyfél hitelesítő adatait tartalmazó folyamatot:
-
-> [!div class="nextstepaction"]
-> [Ügyfél-hitelesítő adatok OAuth folyamata](v2-oauth2-client-creds-grant-flow.md)

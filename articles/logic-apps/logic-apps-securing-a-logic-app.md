@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500402"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269165"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -68,12 +68,14 @@ A logikai alkalmazás minden kérelem végpontja [közös hozzáférési aláír
 
 Minden URL-cím tartalmazza a `sp` , a `sv` és a `sig` lekérdezési paramétert a következő táblázatban leírtak szerint:
 
-| Lekérdezési paraméter | Description |
+| Lekérdezési paraméter | Leírás |
 |-----------------|-------------|
 | `sp` | Megadja az engedélyezett HTTP-metódusok használatának engedélyeit. |
 | `sv` | Megadja az aláírás generálásához használandó SAS-verziót. |
 | `sig` | Meghatározza az triggerhez való hozzáférés hitelesítéséhez használandó aláírást. Ezt az aláírást a SHA256 algoritmussal hozza létre a rendszer az összes URL-útvonalon és tulajdonságon található titkos hozzáférési kulccsal. Soha nem érhető el vagy nem lett közzétéve, a kulcs titkosítva marad, és a logikai alkalmazás tárolja őket. A logikai alkalmazás csak azokat az eseményindítókat engedélyezi, amelyekben a titkos kulccsal létrehozott érvényes aláírás szerepel. |
 |||
+
+A kérések végpontjának bejövő hívásai csak egy engedélyezési sémát használhatnak, vagy a SAS vagy a [Azure Active Directory nyílt hitelesítés](#enable-oauth). Habár az egyik séma használata nem tiltja le a másik sémát, mindkét sémát használva egy hiba miatt a szolgáltatás nem tudja, melyik sémát kell választania.
 
 Az SAS-vel való hozzáférés biztonságossá tételével kapcsolatos további információkért tekintse meg a jelen témakör következő szakaszait:
 
@@ -121,62 +123,62 @@ A törzsben adja meg a `KeyType` tulajdonságot a következők egyikével: `Prim
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Azure Active Directory nyílt hitelesítés engedélyezése (Azure AD OAuth)
 
-Ha a logikai alkalmazás egy kérelem- [triggerrel](../connectors/connectors-native-reqres.md)kezdődik, engedélyezheti [Azure Active Directory nyílt hitelesítését (Azure ad OAuth)](../active-directory/develop/index.yml) egy engedélyezési házirend definiálásával vagy hozzáadásával a kérelem-trigger felé irányuló bejövő hívásokhoz.
+A kérelmeken alapuló trigger által létrehozott végpontra irányuló bejövő hívások esetén engedélyezheti [Azure Active Directory Open Authentication (Azure ad OAuth) használatát](../active-directory/develop/index.yml) a logikai alkalmazáshoz tartozó engedélyezési szabályzat definiálásával vagy hozzáadásával. Így a bejövő hívások OAuth [hozzáférési jogkivonatokat](../active-directory/develop/access-tokens.md) használnak az engedélyezéshez.
 
-A hitelesítés engedélyezése előtt tekintse át a következő szempontokat:
+Ha a logikai alkalmazás egy OAuth hozzáférési tokent tartalmazó bejövő kérelmet kap, akkor a Azure Logic Apps szolgáltatás összehasonlítja a jogkivonat jogcímeit az egyes engedélyezési házirendek által meghatározott jogcímekre. Ha egyezés van a jogkivonat jogcímeinek és a legalább egy házirendben szereplő összes jogcím között, akkor a hitelesítés a bejövő kérelem esetében sikeres lesz. A jogkivonat több jogcímet is tartalmazhat, mint az engedélyezési házirend által megadott szám.
 
-* A kérelem-trigger bejövő hívása csak egy engedélyezési sémát használhat, vagy az Azure AD-OAuth egy hitelesítési jogkivonat használatával, amely csak a kérelem-trigger esetén támogatott, vagy egy [közös hozzáférésű aláírás (SAS) URL-címével](#sas) nem használhatja mindkét sémát.
+Az Azure AD-OAuth engedélyezése előtt tekintse át a következő szempontokat:
 
-  Bár az egyik séma használata nem tiltja le a másik sémát, a mindkettő egyidejű használata hibát okoz, mivel a szolgáltatás nem tudja, melyik sémát kell választania. A OAuth hitelesítési tokenek esetében csak a [tulajdonos típusú](../active-directory/develop/active-directory-v2-protocols.md#tokens) engedélyezési sémák támogatottak, amelyek csak a kérelem-trigger esetén támogatottak. A hitelesítési jogkivonatot meg kell adni `Bearer-type` az engedélyezési fejlécben.
+* A kérelem végpontjának bejövő hívása csak egy engedélyezési sémát használhat, vagy az Azure AD OAuth vagy a [közös hozzáférési aláírást (SAS)](#sas). Habár az egyik séma használata nem tiltja le a másik sémát, mindkét sémát használva egy hiba miatt a Logic Apps szolgáltatás nem tudja, melyik sémát szeretné kiválasztani.
+
+* Csak a [tulajdonos típusú](../active-directory/develop/active-directory-v2-protocols.md#tokens) engedélyezési sémák támogatottak az Azure ad OAuth hozzáférési jogkivonatai esetében, ami azt jelenti, hogy a `Authorization` hozzáférési token fejlécének meg kell adnia a `Bearer` típust.
 
 * A logikai alkalmazás maximális számú engedélyezési házirendre van korlátozva. Az egyes engedélyezési házirendek maximális számú [jogcímet](../active-directory/develop/developer-glossary.md#claim)is tartalmaz. További információ: [Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
 
-* Az engedélyezési házirendnek tartalmaznia kell legalább a **kiállítói** jogcímet, amelynek értéke a (z `https://sts.windows.net/` `https://login.microsoftonline.com/` ) vagy (OAuth v2) karakterrel kezdődik az Azure ad kiállítói azonosítójaként. A hozzáférési jogkivonatokkal kapcsolatos további információkért tekintse meg a [Microsoft Identity platform hozzáférési jogkivonatait](../active-directory/develop/access-tokens.md).
+* Az engedélyezési házirendnek tartalmaznia kell legalább a **kiállítói** jogcímet, amelynek értéke a `https://sts.windows.net/` vagy `https://login.microsoftonline.com/` a (OAuth v2) karakterrel kezdődik az Azure ad kiállítói azonosítójaként.
 
-Ha a logikai alkalmazás egy OAuth hitelesítési tokent tartalmazó bejövő kérelmet kap, Azure Logic Apps összehasonlítja a jogkivonatok jogcímeit az egyes engedélyezési házirendek jogcímeivel. Ha egyezés van a jogkivonat jogcímeinek és a legalább egy házirendben szereplő összes jogcím között, akkor a hitelesítés a bejövő kérelem esetében sikeres lesz. A jogkivonat több jogcímet is tartalmazhat, mint az engedélyezési házirend által megadott szám.
+  Tegyük fel például, hogy a logikai alkalmazás olyan engedélyezési házirenddel rendelkezik, amely két jogcím-típust, egy **célközönséget** és egy **kiállítót**igényel. A dekódolású hozzáférési tokenek esetében ez a mintavételi [hasznos terület](../active-directory/develop/access-tokens.md#payload-claims) tartalmazza a jogcím típusát is, ahol `aud` a **célközönség** értéke és `iss` a **kiállító** értéke:
 
-Tegyük fel például, hogy a logikai alkalmazás olyan engedélyezési házirenddel rendelkezik, amely két jogcím-típust, **kiállítót** és **célközönséget**igényel. Ez a minta dekódolású [hozzáférési jogkivonat](../active-directory/develop/access-tokens.md) a következő típusú jogcímeket tartalmazza:
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ Ha engedélyezni szeretné az Azure AD-OAuth a logikai alkalmazáshoz a Azure Po
 
    ![Válassza az "engedélyezés" > "házirend hozzáadása" lehetőséget.](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. Adja meg az engedélyezési szabályzattal kapcsolatos információkat úgy, hogy megadja a logikai alkalmazás által a kérelem-trigger által megjelenített hitelesítési jogkivonatban megjelenő [jogcím-típusokat](../active-directory/develop/developer-glossary.md#claim) és értékeket:
+1. Adja meg az engedélyezési szabályzattal kapcsolatos információkat úgy, hogy megadja a logikai alkalmazás által az egyes bejövő hívások által a kérelem-trigger által bemutatott hozzáférési jogkivonatban szereplő [jogcím-típusokat](../active-directory/develop/developer-glossary.md#claim) és-értékeket.
 
    ![Adja meg az engedélyezési házirend adatait](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Szabályzat neve** | Yes | Az engedélyezési házirendhez használni kívánt név |
-   | **Igénylések** | Yes | A logikai alkalmazás által a bejövő hívásokból elfogadott jogcím-típusok és-értékek. Az elérhető jogcím-típusok a következők: <p><p>- **Kibocsátó** <br>- **Célközönség** <br>- **Tulajdonos** <br>- **JWT-azonosító** (JSON web token azonosító) <p><p>A **jogcímek** listájának minimálisan tartalmaznia kell a **kiállítói** jogcímet, amely egy olyan értékkel rendelkezik, amely a `https://sts.windows.net/` vagy `https://login.microsoftonline.com/` Az Azure ad kiállítói azonosítóval kezdődik. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is. |
+   | **Igénylések** | Yes | A logikai alkalmazás által a bejövő hívásokból elfogadott jogcím-típusok és-értékek. Az elérhető jogcím-típusok a következők: <p><p>- **Kibocsátó** <br>- **Célközönség** <br>- **Tulajdonos** <br>- **JWT-azonosító** (JSON web token azonosító) <p><p>A **jogcímek** listájának legalább a **kiállítói** jogcímet tartalmaznia kell, amelynek értéke `https://sts.windows.net/` vagy `https://login.microsoftonline.com/` Az Azure ad kiállító azonosítója. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is. |
    |||
 
 1. Egy másik Jogcím hozzáadásához válasszon a következő lehetőségek közül:
@@ -210,14 +212,27 @@ Ha engedélyezni szeretné az Azure AD-OAuth a logikai alkalmazáshoz a Azure Po
 
 1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
+1. Ha a `Authorization` hozzáférési jogkivonat fejlécét szeretné felvenni a kérelmeken alapuló triggerek kimenetében, tekintse meg az ["engedélyezés" fejléc belefoglalása a kérelem-trigger kimenetei közé](#include-auth-header).
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Engedélyezési szabályzat definiálása Azure Resource Manager sablonban
 
-Ha engedélyezni szeretné az Azure AD-OAuth az ARM-sablonban a logikai alkalmazás üzembe helyezéséhez, a `properties` [logikai alkalmazás erőforrás-definíciójának](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)szakaszában adjon hozzá egy `accessControl` objektumot (ha nincs ilyen), amely tartalmaz egy `triggers` objektumot. Az `triggers` objektumban adjon hozzá egy `openAuthenticationPolicies` objektumot, ahol egy vagy több engedélyezési házirendet határozhat meg a következő szintaxis szerint:
+Ha engedélyezni szeretné az Azure AD-OAuth az ARM-sablonban a logikai alkalmazás üzembe helyezéséhez, kövesse az alábbi lépéseket és az alábbi szintaxist:
 
-> [!NOTE]
-> Legalább a `claims` tömbnek tartalmaznia kell a `iss` jogcímet, amely egy olyan értékkel rendelkezik, amely a `https://sts.windows.net/` vagy `https://login.microsoftonline.com/` Az Azure ad kiállítói azonosítóval kezdődik. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is.
+1. A `properties` [logikai alkalmazás erőforrás-definíciójának](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)szakaszában adjon hozzá egy objektumot ( `accessControl` Ha nincs ilyen), amely tartalmaz egy `triggers` objektumot.
+
+   További információ az `accessControl` objektumról: a [bejövő IP-címtartományok korlátozása Azure Resource Manager sablonban](#restrict-inbound-ip-template) és a [Microsoft. Logic munkafolyamatok sablonjának referenciája](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+1. Az `triggers` objektumban adjon hozzá egy `openAuthenticationPolicies` objektumot, amely tartalmazza `policies` azt az objektumot, amelyben egy vagy több engedélyezési házirendet definiál.
+
+1. Adja meg az engedélyezési házirend nevét, állítsa be a házirend típusát `AAD` , és `claims` adjon meg egy tömböt, amelyben meg kell adnia egy vagy több jogcím-típust.
+
+   Legalább a `claims` tömbnek tartalmaznia kell a kiállítói jogcím típusát, amelyben a jogcím tulajdonságát be kell állítani `name` `iss` , és be kell állítani a-t `value` vagy az `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure ad kiállítói azonosítóját. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is.
+
+1. Ha a `Authorization` hozzáférési jogkivonat fejlécét szeretné felvenni a kérelmeken alapuló triggerek kimenetében, tekintse meg az ["engedélyezés" fejléc belefoglalása a kérelem-trigger kimenetei közé](#include-auth-header).
+
+A következő szintaxist kell követnie:
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ Ha engedélyezni szeretné az Azure AD-OAuth az ARM-sablonban a logikai alkalmaz
 ],
 ```
 
-További információ a `accessControl` szakaszról: a [bejövő IP-tartományok korlátozása Azure Resource Manager sablonban](#restrict-inbound-ip-template) és a [Microsoft. Logic munkafolyamatok sablonjának referenciája](/azure/templates/microsoft.logic/2019-05-01/workflows).
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>Az "engedélyezés" fejléc belefoglalása a kérelem-trigger kimenetei közé
+
+A [Azure Active Directory nyílt hitelesítéssel (Azure ad OAuth)](#enable-oauth) engedélyező logikai alkalmazások esetében, amelyek engedélyezik a bejövő hívások hozzáférését a kérelmeken alapuló eseményindítók számára, engedélyezheti a kérelem eseményindítóját vagy a http-webhook eseményindító kimenetét, hogy tartalmazza a `Authorization` fejlécet a OAuth hozzáférési jogkivonatból. Az trigger mögöttes JSON-definíciójában adja hozzá és állítsa be a tulajdonságot a következőre: `operationOptions` `IncludeAuthorizationHeadersInOutputs` . Példa a kérelem triggerre:
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+További információt az alábbi témakörökben talál:
+
+* [Séma-hivatkozás trigger és Művelettípus esetén – kérelem trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [Séma-hivatkozás trigger és Művelettípus esetén – HTTP webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Séma-hivatkozás trigger és Művelettípus esetén – műveleti beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -608,7 +646,7 @@ További információ az alábbi `parameters` fejezetekről:
 
 Ez a példa több, a típust használó biztonságos paraméter-definícióval rendelkező sablont tartalmaz `securestring` :
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |----------------|-------------|
 | `TemplatePasswordParam` | A munkafolyamat-definíció paraméterének átadott jelszót fogadó sablon-paraméter `basicAuthPasswordParam` |
 | `TemplateUsernameParam` | A munkafolyamat-definíció paraméterének átadandó felhasználónevet megadó sablon-paraméter `basicAuthUserNameParam` |
@@ -896,7 +934,7 @@ Kéréses eseményindítók esetén [Azure Active Directory nyílt hitelesítés
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
 | **Hitelesítés** | `type` | Yes | **Active Directory OAuth** <br>vagy <br>`ActiveDirectoryOAuth` | A használni kívánt hitelesítési típus. A Logic Apps jelenleg a [OAuth 2,0 protokollt](../active-directory/develop/v2-overview.md)követi. |
-| **Authority** | `authority` | No | <*URL-cím-a-Authority-token-kiállító*> | A hitelesítési jogkivonatot biztosító szolgáltató URL-címe. Alapértelmezés szerint ez az érték `https://login.windows.net` . |
+| **Authority** | `authority` | No | <*URL-cím-a-Authority-token-kiállító*> | A hozzáférési jogkivonatot biztosító szolgáltató URL-címe. Alapértelmezés szerint ez az érték `https://login.windows.net` . |
 | **Bérlő** | `tenant` | Yes | <*Bérlő azonosítója*> | Az Azure AD-bérlő bérlői azonosítója |
 | **Célközönség** | `audience` | Yes | <*erőforrás-engedélyezés*> | Az engedélyezéshez használni kívánt erőforrás, például: `https://management.core.windows.net/` |
 | **Ügyfél-azonosító** | `clientId` | Yes | <*ügyfél-azonosító*> | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |

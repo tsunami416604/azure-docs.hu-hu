@@ -1,7 +1,7 @@
 ---
 title: Felhasználói bejelentkezés a JavaScript-alapú egyoldalas alkalmazásokban (SPA) hitelesítési kóddal | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan hívhat meg egy JavaScript-alkalmazás olyan API-t, amely a Microsoft Identity platform használatával hozzáférési jogkivonatokat igényel.
+description: Megtudhatja, hogyan jelentkezhet be a JavaScript-alapú egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatábrájának használatával.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: 224ce2ea64016db7b632ac36193f39e679c8da4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257979"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
@@ -111,9 +111,9 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 >
 > Módosítsa a szakasz értékeit az `msalConfig` itt leírtak szerint:
 >
-> - `Enter_the_Application_Id_Here`a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
-> - `Enter_the_Cloud_Instance_Id_Here`Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: `https://login.microsoftonline.com/` . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](authentication-national-cloud.md).
-> - `Enter_the_Tenant_info_here`értéke a következők egyike lehet:
+> - `Enter_the_Application_Id_Here` a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
+> - `Enter_the_Cloud_Instance_Id_Here` Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: `https://login.microsoftonline.com/` . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here` értéke a következők egyike lehet:
 >   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
 >   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `organizations` .
 >   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `common` . Ehhez a rövid útmutatóhoz használja **a következőt:** `common` .
@@ -152,7 +152,7 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here`a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). Az országos felhők Microsoft Graphával kapcsolatos további információkért lásd: [országos Felhőbeli üzembe helyezés](/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here` a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). Az országos felhők Microsoft Graphával kapcsolatos további információkért lásd: [országos Felhőbeli üzembe helyezés](/graph/deployments).
 >
 > `graphMeEndpoint`Ha a `graphMailEndpoint` fő (globális) Microsoft Graph API-szolgáltatást használja, a *graphConfig.js* fájlban a következőhöz hasonló értéknek kell szerepelnie:
 >
@@ -197,7 +197,7 @@ Ha Node.js van telepítve, a legújabb verziót a Node.js Package Manager (NPM) 
 npm install @azure/msal-browser
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a rövid útmutatóban használt alkalmazás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a következő oktatóanyagot:
 

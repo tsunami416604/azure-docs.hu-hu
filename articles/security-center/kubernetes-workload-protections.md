@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 332c33ce46298e5338587cd4d001466d30c1a9e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935000"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301359"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -39,7 +39,7 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Egy hozzárendelés szerkesztéséhez a **tulajdonos** vagy a **biztonsági rendszergazda**<br>**Olvasó** a javaslatok megtekintéséhez|
 |Támogatott fürtök|Kubernetes v 1.14 (vagy újabb) szükséges<br>Nincs PodSecurityPolicy-erőforrás (régi PSP-modell) a fürtökön<br>A Windows-csomópontok nem támogatottak|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -69,12 +69,12 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
 
     | Javaslat neve                                                                   | Biztonsági ellenőrzés                         | Konfiguráció szükséges |
     |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | A tároló CPU-és memória-korlátozásait kényszeríteni kell (előzetes verzió)                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | Nem                     |
-    | Az emelt szintű tárolókat el kell kerülni (előzetes verzió)                                     | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára (előzetes verzió)     | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A jogosultság-eszkalációs tárolót el kell kerülni (előzetes verzió)                       | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A tárolók futtatását root felhasználóként el kell kerülni (előzetes verzió)                           | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni (előzetes verzió)              | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A tároló CPU-és memória-korlátozásait kényszeríteni kell (előzetes verzió)                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | No                     |
+    | Az emelt szintű tárolókat el kell kerülni (előzetes verzió)                                     | Hozzáférés és engedélyek kezelése            | No                     |
+    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára (előzetes verzió)     | Hozzáférés és engedélyek kezelése            | No                     |
+    | A jogosultság-eszkalációs tárolót el kell kerülni (előzetes verzió)                       | Hozzáférés és engedélyek kezelése            | No                     |
+    | A tárolók futtatását root felhasználóként el kell kerülni (előzetes verzió)                           | Hozzáférés és engedélyek kezelése            | No                     |
+    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni (előzetes verzió)              | Hozzáférés és engedélyek kezelése            | No                     |
     | A minimális jogosultsági szintű Linux-funkciókat kötelező kikényszeríteni a tárolók számára (előzetes verzió)       | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni (előzetes verzió)    | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A tárolók csak az engedélyezett portokat figyelik (előzetes verzió)                              | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
@@ -95,11 +95,15 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
     1. Kattintson a **Mentés** gombra.
 
 
-1. A javaslatok bármelyikének kikényszeríthető, ha **Megtagadja** Security Center biztonsági házirend **paramétereinek** lapján:
+1. A javaslatok bármelyikének érvénybe léptetéséhez 
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy paraméter megtagadási beállítása":::
+    1. Nyissa meg a javaslat részletei lapot, és válassza a **Megtagadás**lehetőséget:
 
-    Ez megtagadja az AK-fürtökhöz nem megfelelő kérelmeket
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy paraméter megtagadási beállítása":::
+
+        Ekkor megnyílik a panel, amelyen be kell állítania a hatókört. 
+
+    1. A hatókör beállítása után válassza a **módosítás megtagadásra**lehetőséget.
 
 1. Annak megtekintéséhez, hogy mely javaslatok vonatkoznak a fürtökre:
 

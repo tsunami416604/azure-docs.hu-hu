@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 87b674a9c6b7f7d591b39f1baf54c4d54082f306
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987307"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252833"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -27,7 +27,7 @@ A végpontokat és útvonalakat a [EventRoutes API](how-to-use-apis-sdks.md)-kka
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Szüksége lesz egy **Azure-fiókra** ( [itt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)akár ingyenesen is beállíthatja)
-* Azure-beli **digitális Twins-példányra** lesz szüksége az Azure-előfizetésében. Ha még nem rendelkezik példányokkal, létrehozhat egyet a következő útmutató lépéseit követve [*: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md). A telepítésből származó alábbi értékekkel a cikk későbbi részében használhatja a következő értékeket:
+* Azure-beli **digitális Twins-példányra** lesz szüksége az Azure-előfizetésében. Ha még nem rendelkezik példányokkal, létrehozhat egyet a következő útmutató lépéseit követve [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md). A telepítésből származó alábbi értékekkel a cikk későbbi részében használhatja a következő értékeket:
     - Példány neve
     - Erőforráscsoport
 
@@ -58,7 +58,7 @@ Miután létrehozta a témakört, összekapcsolhatja azt az Azure Digital ikrek 
 
 A példány menüben válassza a _végpontok_lehetőséget. Ezután az alábbi *végpontok* lapról válassza a *+ végpont létrehozása*lehetőséget. 
 
-A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Event Grid_ típusú végpontot a megfelelő választógomb kiválasztásával. Fejezze be a további részleteket: adjon meg egy nevet a végpontnak a _név_ mezőben, válassza ki az _előfizetését_ a legördülő listából, és válassza ki az előre létrehozott _Event Grid témakört_ a harmadik legördülő menüből.
+A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Event Grid_ típusú végpontot a megfelelő választógomb kiválasztásával. Fejezze be a további részleteket: adjon meg egy nevet a végpontnak a _név_ mezőben, válassza ki az _előfizetését_ a legördülő listából, és válassza ki az előre létrehozott  _Event Grid témakört_ a harmadik legördülő menüből.
 
 Ezután hozza létre a végpontot a _Save (Mentés_) parancs megnyomásával.
 
@@ -133,8 +133,8 @@ Az események útvonalának definíciója az alábbi elemeket tartalmazza:
 * A használni kívánt útvonal neve
 * A használni kívánt végpont neve
 * Egy szűrő, amely meghatározza, hogy mely eseményeket küldi a rendszer a végpontnak.
-    - Ha le szeretné tiltani az útvonalat, hogy ne küldjön eseményeket, használja a`false`
-    - Ha olyan útvonalat szeretne engedélyezni, amely nem rendelkezik adott szűréssel, használja a szűrő értékét`true`
+    - Ha le szeretné tiltani az útvonalat, hogy ne küldjön eseményeket, használja a `false`
+    - Ha olyan útvonalat szeretne engedélyezni, amely nem rendelkezik adott szűréssel, használja a szűrő értékét `true`
     - A más típusú szűrők részleteiről az alábbi, az [*Események szűrése*](#filter-events) című szakaszban olvashat.
 
 Egyetlen útvonalon több értesítés és eseménytípus is kijelölhető.
@@ -211,7 +211,7 @@ Itt láthatók a támogatott útválasztási szűrők. A *szűrési szöveg sém
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

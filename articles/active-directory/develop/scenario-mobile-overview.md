@@ -13,31 +13,24 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257537"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó mobil alkalmazás
 
 Megtudhatja, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>Első lépések
 
-Hozza létre az első mobil alkalmazást, és próbálja ki a gyors üzembe helyezést.
+Ha még nem tette meg, hozza létre első alkalmazását egy rövid útmutató elvégzésével:
 
-> [!div class="nextstepaction"]
-> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása Android-alkalmazásból](./quickstart-v2-android.md)
->
-> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása iOS-alkalmazásból](./quickstart-v2-ios.md)
->
-> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Xamarin iOS-és Android-alkalmazásból](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+- [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása Android-alkalmazásból](./quickstart-v2-android.md)
+- [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása iOS-alkalmazásból](./quickstart-v2-ios.md)
+- Gyors útmutató [: token beszerzése és Microsoft Graph API meghívása egy Xamarin iOS-és Android-alkalmazásból](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) (GitHub)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -60,7 +53,11 @@ Vegye figyelembe a következő szempontokat, amikor a Microsoft Identity platfor
 - Az iOS és az Android rendszereken a MSAL külső böngésző használatával jelentkezhet be a felhasználókba. Előfordulhat, hogy a külső böngésző az alkalmazás tetején jelenik meg.
 - Soha ne használjon titkos kulcsot a mobil alkalmazásokban. Ezekben az alkalmazásokban a titkok minden felhasználó számára elérhetők.
 
-## <a name="next-steps"></a>További lépések
+## <a name="recommended-reading"></a>Ajánlott olvasás
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásregisztráció](scenario-mobile-app-registration.md)

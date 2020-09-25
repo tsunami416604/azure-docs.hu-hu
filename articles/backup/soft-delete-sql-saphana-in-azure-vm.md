@@ -3,59 +3,18 @@ title: Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP
 description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server és az Azure-beli virtuális gépek számítási feladatainak SAP HANAa hogyan teszi biztonságosabbá a biztonsági mentéseket
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254295"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
 
 A Azure Backup mostantól az Azure-beli virtuális gépen futó SQL Serverhez és az Azure-beli virtuális gépek számítási feladataihoz SAP HANA. Ez a már támogatott Azure-beli [virtuális gépekre vonatkozó Soft delete forgatókönyvön](soft-delete-virtual-machines.md)kívül.
 
 A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció, amely a törlés után is védelmet nyújt a biztonsági mentési adatai számára. A helyreállítható törléssel akkor is, ha egy rosszindulatú szereplő töröl egy adatbázis biztonsági másolatát (vagy a biztonsági mentési adat véletlenül törlődik), a biztonsági mentési adat 14 további napig megmarad. Ez lehetővé teszi, hogy a biztonsági mentési tétel adatvesztés nélkül legyen helyreállítva. Ez a "Soft Delete" állapotban lévő biztonsági mentési adatoknak a 14 napos további megőrzésével kapcsolatos költségek nem merülnek fel az ügyfél számára.
-
->[!NOTE]
->Ha az előzetes verzió engedélyezve van egy előfizetéshez, nem lehet letiltani a csak az SQL Serverhez vagy a SAP HANA a virtuális gépekhez tartozó nem kötelező törlést, miközben az azonos tárolóban lévő virtuális gépek számára engedélyezve van. A részletes szabályozáshoz külön tárolókat is létrehozhat.
-
-## <a name="steps-to-enroll-in-preview"></a>Az előzetes verzióra való regisztrálás lépései
-
-1. Jelentkezzen be az Azure-fiókjába.
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. Válassza ki azt az előfizetést, amelyet regisztrálni szeretne az előzetes verzióban:
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. Az előfizetés regisztrálása az előnézeti programban:
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. Várjon 30 percet, amíg az előfizetés regisztrálva lesz az előzetes verzióban.
-
-5. Az állapot ellenõrzéséhez futtassa a következő parancsmagokat:
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. Ha az előfizetés regisztráltként jelenik meg, futtassa a következő parancsot:
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->Minden alkalommal, amikor új tárolót/tárat hoznak létre a helyreállítható törlés engedélyezve előfizetés alatt, a következő parancsot újra kell futtatni, hogy engedélyezze a funkciót az újonnan létrehozott tárak számára.<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>Az Azure-beli virtuális gépen futó SQL Server-kiszolgáló Soft delete Azure Portal használatával
 

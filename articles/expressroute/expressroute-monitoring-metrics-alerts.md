@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252629"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
@@ -154,6 +154,19 @@ Az átjárón másodpercenként megtekintheti a csomagokat.
 A **riasztási feltételek**között kiválaszthatja a jel típusa **tevékenység naplóját** , és kiválaszthatja a jelet.
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="Tevékenységnaplók":::
+
+## <a name="additional-metrics-in-log-analytics"></a>További metrikák a Log Analytics
+
+Az ExpressRoute mérőszámait úgy is megtekintheti, hogy a ExpressRoute-áramköri erőforráshoz navigál, és kiválasztja a *naplók* lapot. A lekérdezett mérőszámok esetében a kimenet az alábbi oszlopokat fogja tartalmazni.
+
+|**Oszlop**|**Típus**|**Leírás**|
+| --- | --- | --- |
+|TimeGrain|sztring|PT1M (a metrikus értékeket percenként küldi el a rendszer)|
+|Darabszám|valós szám|Általában egyenlő, mint 2 (minden MSEE percenként egyetlen metrikai értéket küld el)|
+|Minimális|valós szám|A két Msee által leküldett két metrikai érték minimuma|
+|Maximum|valós szám|A két Msee által leküldett két metrikai érték megengedettnél|
+|Átlag|valós szám|Egyenlő (minimum + maximum)/2|
+|Összesen|valós szám|Mindkét Msee két metrikai értékének összege (a fő érték, amely a lekérdezett metrikára koncentrál)|
   
 ## <a name="next-steps"></a>Következő lépések
 

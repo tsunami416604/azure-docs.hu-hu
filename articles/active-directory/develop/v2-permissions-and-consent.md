@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5d1aa4ff87b272911e4e39076f337ea249b962d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256602"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
 
@@ -48,15 +48,15 @@ A OAuth 2,0-ben az ilyen típusú engedélyeket *hatóköröknek*nevezzük. Ezek
 * Írás a felhasználó naptárába a következő használatával: `Calendars.ReadWrite`
 * E-mail küldése felhasználóként a általi használatával `Mail.Send`
 
-Az alkalmazások leggyakrabban a Microsoft Identity platform engedélyezés végpontjának megadásával kérik le ezeket az engedélyeket. Bizonyos magas jogosultsági szintű engedélyek azonban csak a rendszergazdai engedélyekkel adhatók meg, és a kérés/engedélyezés a [rendszergazdai engedélyezési végpont](v2-permissions-and-consent.md#admin-restricted-permissions)használatával lehetséges. További információért olvassa el a következőt:.
+Az alkalmazások leggyakrabban a Microsoft Identity platform engedélyezés végpontjának megadásával kérik le ezeket az engedélyeket. Bizonyos magas jogosultsági szintű engedélyek azonban csak a rendszergazdai engedélyekkel adhatók meg, és a kérés/engedélyezés a [rendszergazdai engedélyezési végpont](#admin-restricted-permissions)használatával lehetséges. További információért olvassa el a következőt:.
 
 ## <a name="permission-types"></a>Engedélyezési típusok
 
 A Microsoft Identity platform két típusú engedélyt támogat: a **delegált engedélyeket** és az **alkalmazás engedélyeit**.
 
-* A **delegált engedélyeket** a bejelentkezett felhasználóval rendelkező alkalmazások használják. Ezekhez az alkalmazásokhoz a felhasználó vagy a rendszergazda jóváhagyja az alkalmazás által kért engedélyeket, és az alkalmazás delegált engedéllyel rendelkezik, hogy bejelentkezett felhasználóként működjön a célként megadott erőforrás meghívásakor. Egyes delegált engedélyek a nem rendszergazda felhasználók számára is megadhatók, de egyes magasabb jogosultságú engedélyek esetén [rendszergazdai hozzájárulásra](v2-permissions-and-consent.md#admin-restricted-permissions)van szükség. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../users-groups-roles/directory-assign-admin-roles.md).
+* A **delegált engedélyeket** a bejelentkezett felhasználóval rendelkező alkalmazások használják. Ezekhez az alkalmazásokhoz a felhasználó vagy a rendszergazda jóváhagyja az alkalmazás által kért engedélyeket, és az alkalmazás delegált engedéllyel rendelkezik, hogy bejelentkezett felhasználóként működjön a célként megadott erőforrás meghívásakor. Egyes delegált engedélyek a nem rendszergazda felhasználók számára is megadhatók, de egyes magasabb jogosultságú engedélyek esetén [rendszergazdai hozzájárulásra](#admin-restricted-permissions)van szükség. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../users-groups-roles/directory-assign-admin-roles.md).
 
-* Az **alkalmazás engedélyeit** a bejelentkezett felhasználó nélkül futtató alkalmazások használják. például olyan alkalmazások, amelyek háttér-szolgáltatásként vagy démonként futnak.  Az alkalmazás engedélyeit csak a [rendszergazda](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)fogadhatja el.
+* Az **alkalmazás engedélyeit** a bejelentkezett felhasználó nélkül futtató alkalmazások használják. például olyan alkalmazások, amelyek háttér-szolgáltatásként vagy démonként futnak.  Az alkalmazás engedélyeit csak a [rendszergazda](#requesting-consent-for-an-entire-tenant)fogadhatja el.
 
 A _hatályos engedélyek_ azokat az engedélyeket jelentik, amelyekkel az alkalmazás a célként megadott erőforrásra irányuló kéréseket tesz elérhetővé. Fontos megérteni az alkalmazás által biztosított delegált és alkalmazási engedélyek, valamint a célként megadott erőforrásra irányuló hívások esetén érvényes engedélyek közötti különbséget.
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 Ez egy beleegyezési képernyőt hoz létre az összes regisztrált engedélyhez (ha alkalmazható a fenti és a beleegyezési leírás alapján `/.default` ), akkor egy hozzáférési jogkivonat helyett egy id_token ad vissza.  Ez a viselkedés bizonyos, a ADAL-ből a MSAL-re áthelyezett örökölt ügyfelek esetében létezik, és a Microsoft Identity platform végpontját célzó új ügyfelek **nem** használhatják.
 
+### <a name="client-credentials-grant-flow-and-default"></a>Az ügyfél hitelesítő adatai biztosítják a folyamatot és a/.default
+
+A szolgáltatás egy másik használata `./default` , amikor alkalmazás-engedélyeket (vagy *szerepköröket*) kér egy nem interaktív alkalmazásban, például egy olyan Daemon-alkalmazást, amely az [ügyfél hitelesítő adatainak](v2-oauth2-client-creds-grant-flow.md) megadását használja a webes API-k meghívásához.
+
+Ha alkalmazás-engedélyeket (szerepköröket) szeretne létrehozni egy webes API-hoz, tekintse meg az [alkalmazás szerepköreinek hozzáadása az alkalmazásban](howto-add-app-roles-in-azure-ad-apps.md)című témakört.
+
+Az ügyfél-alkalmazáshoz tartozó ügyfél-hitelesítő adatokra vonatkozó kérelmeknek tartalmaznia **kell** a `scope={resource}/.default` -t, ahol az az `{resource}` alkalmazás által hívni kívánt webes API. Az ügyfél-hitelesítő adatok egyedi alkalmazás-engedélyekkel (szerepkörökkel) való kiállítása **nem** támogatott. Az adott webes API számára biztosított összes alkalmazás-engedély (szerepkör) szerepelni fog a visszaadott hozzáférési jogkivonatban.
+
+Ha hozzáférést szeretne adni a megadott alkalmazás-engedélyekhez, beleértve az alkalmazáshoz való rendszergazdai jóváhagyást is, tekintse meg a rövid útmutató [: ügyfélalkalmazás konfigurálása webes API eléréséhez](quickstart-configure-app-access-web-apis.md)című témakört.
+
 ### <a name="trailing-slash-and-default"></a>Záró perjel és/.default
 
 Egyes erőforrás-URI-k záró perjeltel rendelkeznek ( `https://contoso.com/` ellentétben a `https://contoso.com` következővel), ami problémákat okozhat a jogkivonat-ellenőrzés során.  Ez elsősorban akkor fordulhat elő, ha tokent kér az Azure Resource Management () szolgáltatáshoz `https://management.azure.com/` , amely záró perjeltel rendelkezik az erőforrás-URI-n, és azt igényli, hogy a jogkivonat kérésekor legyen jelen.  Így ha tokent kér `https://management.azure.com/` és használ `/.default` , meg kell adnia `https://management.azure.com//.default` a kettős perjelet!
@@ -311,3 +321,8 @@ Egyes erőforrás-URI-k záró perjeltel rendelkeznek ( `https://contoso.com/` e
 ## <a name="troubleshooting-permissions-and-consent"></a>Hibaelhárítási engedélyek és beleegyezett
 
 Ha Ön vagy az alkalmazás felhasználóinak váratlan hibába ütközik a beleegyező folyamat során, tekintse meg ezt a cikket a hibaelhárítási lépésekhez: [váratlan hiba történt az alkalmazáshoz való beleegyező művelet végrehajtásakor](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+* [AZONOSÍTÓ tokenek | Microsoft Identity platform](id-tokens.md)
+* [Hozzáférési tokenek | Microsoft Identity platform](access-tokens.md)

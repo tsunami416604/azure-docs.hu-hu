@@ -1,6 +1,6 @@
 ---
 title: SSO-munkamenetek Azure Active Directory B2Cban | Microsoft Docs
-description: Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban.
+description: A munkamenet viselkedésének Azure Active Directory B2C-ben való konfigurálásának áttekintése.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258965"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C-munkamenet
 
@@ -112,7 +112,7 @@ Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra
 
 Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével és a válasz visszaadásával `200` . Ha az alkalmazásban szeretné támogatni az egyszeri kijelentkezést, az alkalmazás kódjában végre kell hajtania egy `LogoutUrl` alkalmazást. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését a felhasználói folyamatokban](session-behavior.md).
 - Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését az egyéni házirendekben](session-behavior-custom-policy.md).

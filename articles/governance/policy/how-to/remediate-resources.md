@@ -1,14 +1,14 @@
 ---
 title: Nem megfelelő erőforrások szervizelése
 description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésén, amelyek nem felelnek meg a Azure Policy szabályzatának.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269845"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Nem megfelelő erőforrások szervizelése Azure Policy
 
@@ -17,12 +17,16 @@ Azok az erőforrások, amelyek nem felelnek meg a **deployIfNotExists** vagy a h
 ## <a name="how-remediation-security-works"></a>A Szervizelési biztonság működése
 
 Ha Azure Policy futtatja a sablont a **deployIfNotExists** házirend-definíciójában, akkor azt [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md)használatával végzi el.
-Azure Policy létrehoz egy felügyelt identitást az egyes hozzárendelésekhez, de a felügyelt identitást megadó szerepkörökkel kapcsolatos részletekkel kell rendelkeznie. Ha a felügyelt identitásból hiányzik egy szerepkör, akkor ez a hiba a házirend vagy egy kezdeményezés hozzárendelésekor jelenik meg. A portál használatakor Azure Policy automatikusan megadja a felügyelt identitást a felsorolt szerepköröknek a hozzárendelés indításakor. A felügyelt identitás _helye_ nem befolyásolja a műveletét Azure Policy.
+Azure Policy létrehoz egy felügyelt identitást az egyes hozzárendelésekhez, de a felügyelt identitást megadó szerepkörökkel kapcsolatos részletekkel kell rendelkeznie. Ha a felügyelt identitásból hiányzik egy szerepkör, akkor ez a hiba a házirend vagy egy kezdeményezés hozzárendelésekor jelenik meg. A portál használatakor Azure Policy automatikusan megadja a felügyelt identitást a felsorolt szerepköröknek a hozzárendelés indításakor. Az SDK használatakor a szerepköröket manuálisan kell megadni a felügyelt identitásnak. A felügyelt identitás _helye_ nem befolyásolja a műveletét Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 > [!IMPORTANT]
-> Ha egy **deployIfNotExists** vagy **módosítás** által módosított erőforrás kívül esik a házirend-hozzárendelés hatókörén, vagy a sablon a szabályzat-hozzárendelés hatókörén kívüli erőforrásokhoz fér hozzá, akkor a hozzárendelés felügyelt identitásának [manuálisan kell hozzáférést adni](#manually-configure-the-managed-identity) , vagy a Szervizelési telepítés sikertelen lesz.
+> A következő helyzetekben a hozzárendelés felügyelt identitásának [manuálisan kell megadnia a hozzáférést](#manually-configure-the-managed-identity) , vagy a Szervizelési telepítés sikertelen lesz:
+>
+> - Ha a hozzárendelést SDK-val hozták létre
+> - Ha egy **deployIfNotExists** vagy **módosítás** által módosított erőforrás kívül esik a szabályzat-hozzárendelés hatókörén
+> - Ha a sablon a szabályzat-hozzárendelés hatókörén kívüli erőforrásokhoz fér hozzá a tulajdonságokhoz
 
 ## <a name="configure-policy-definition"></a>Házirend-definíció konfigurálása
 

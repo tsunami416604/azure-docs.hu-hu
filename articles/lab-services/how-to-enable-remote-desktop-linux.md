@@ -3,12 +3,12 @@ title: A Linux rendszerhez készült grafikus távoli asztal engedélyezése a A
 description: Megtudhatja, hogyan engedélyezheti a Távoli asztalt a Linux rendszerű virtuális gépek számára a Azure Lab Servicesban található laborban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445763"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251609"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>A grafikus távoli asztal engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Servicesban
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -46,7 +46,7 @@ Ez a lépés csak az RDP használatával való kapcsolódáshoz szükséges.  Ha
 
 1.  A labor létrehozása során az oktató **lehetővé teszi távoli asztali kapcsolat engedélyezését**.  Az oktatónak **engedélyeznie kell ezt a** beállítást ahhoz, hogy megnyissa a PORTOT az RDP távoli asztali munkamenethez szükséges linuxos virtuális gépen.  Ellenkező esetben, ha ez a beállítás **le van tiltva**, csak az SSH-port van megnyitva.
   
-    ![Távoli asztali kapcsolat engedélyezése Linux-rendszerképekhez](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![Képernyőfelvétel: az "új Labor" ablak az "Enable Távoli asztali kapcsolat" lehetőséggel.](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. A **Távoli asztali kapcsolati üzenet engedélyezése** párbeszédpanelen válassza a **Folytatás a távoli asztal**lehetőséget. 
 
@@ -103,8 +103,8 @@ Kövesse az alábbi lépéseket a sablon virtuális géphez való kapcsolódásh
 
 A X2Go-ügyfél a X2Go konfigurált virtuálisgép-virtuális gépekhez való kapcsolódásra szolgál.  A virtuális gép SSH-kapcsolati adatainak használatával kövesse a útmutató a [virtuális géphez való kapcsolódás a X2Go használatával](how-to-use-remote-desktop-linux-student.md#connect-to-the-student-vm-using-x2go)című témakör lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután az oktató létrehozta a sablon virtuális gépén az RDP-t vagy a X2Go-t, és közzéteszi, a tanulók a grafikus felhasználói felület távoli asztalán vagy SSH-n keresztül kapcsolódhatnak a virtuális gépekhez.
 
 További információkért lásd:
- - [Kapcsolódás Linux rendszerű virtuális géphez](how-to-use-remote-desktop-linux-student.md)
+ - [Csatlakozás Linux rendszerű virtuális géphez](how-to-use-remote-desktop-linux-student.md)

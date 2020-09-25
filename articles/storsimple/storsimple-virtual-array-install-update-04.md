@@ -1,6 +1,6 @@
 ---
 title: Frissítések telepítése a StorSimple Virtual Array-ben | Microsoft Docs
-description: Ismerteti, hogyan használhatók a StorSimple virtuális tömb webes felhasználói felülete a frissítések alkalmazásához a Azure Portal és a gyorsjavítási módszer használatával
+description: Ismerteti, hogyan használható a StorSimple Virtual Array webes FELÜLETe az 0,4-es frissítés alkalmazásához a Azure Portal és a gyors javítási módszer használatával.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529b93e7754df7aa0a981f4389108b8f53b4be2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300564"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Az 0,4-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -27,7 +27,7 @@ ms.locfileid: "85513692"
 
 Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a 0,4-es frissítés telepítéséhez a StorSimple virtuális tömbön a helyi webes felületen és a Azure Portal keresztül. A StorSimple virtuális tömb naprakészen tartásához szükséges szoftverfrissítéseket vagy gyorsjavításokat kell alkalmaznia. 
 
-Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal. 
+Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal. 
 
 A frissítés alkalmazása előtt javasoljuk, hogy a köteteket vagy a megosztásokat a gazdagépen, majd az eszközön offline állapotba helyezze. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
@@ -106,7 +106,7 @@ Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a fri
 A telepítés befejezését követően (a feladatok állapota a 100%-ban jelezve) lépjen a StorSimple Eszközkezelő szolgáltatásra. Válassza az **eszközök** lehetőséget, majd válassza ki a frissíteni kívánt eszközt a szolgáltatáshoz csatlakozó eszközök listájából. A **Beállítások** panelen lépjen a **kezelés** szakaszra, és válassza az **eszközök frissítései**lehetőséget. A megjelenített szoftververzió **10.0.10289.0**kell lennie.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

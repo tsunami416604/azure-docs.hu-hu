@@ -3,28 +3,30 @@ title: Fürtkonfiguráció az Azure Kubernetes Servicesben (ak)
 description: Megtudhatja, hogyan konfigurálhat fürtöt az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433449"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255298"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
 Az AK-fürtök létrehozásának részeként előfordulhat, hogy a fürt konfigurációját testre kell szabnia az igényeinek megfelelően. Ez a cikk néhány lehetőséget mutat be az AK-fürt testreszabásához.
 
-## <a name="os-configuration-preview"></a>Operációs rendszer konfigurációja (előzetes verzió)
+## <a name="os-configuration"></a>Operációs rendszer konfigurációja
 
-Az AK mostantól támogatja az Ubuntu 18,04-as verziót a Node operációs rendszerként (OS) az előzetes verzióban. Az előzetes verzió ideje alatt az Ubuntu 16,04 és az Ubuntu 18,04 egyaránt elérhető.
+Az AK mostantól támogatja az Ubuntu 18,04-et, mint a Node operációs rendszer (OS) a 1.18.8-nál nagyobb kubernetes-verziókban elérhető fürtök esetében. A 1.18. x alatti verziók esetében az AK Ubuntu 16,04 még mindig az alapértelmezett alaprendszerkép. A kubernetes v 1.18. x és újabb verziók esetében az alapértelmezett alap az AK Ubuntu 18,04.
 
 > [!IMPORTANT]
-> A Kubernetes v 1.18-es vagy újabb verziójában létrehozott Node-készletek egy szükséges `AKS Ubuntu 18.04` csomópont-rendszerképhez. A 1,18-nál kisebb, támogatott Kubernetes-verzióban található csomópont `AKS Ubuntu 16.04` -készletek csomóponti képként jelennek meg, de `AKS Ubuntu 18.04` a csomópont-készlet Kubernetes verziójának frissítése a v 1.18-ra vagy újabbra történik.
+> A Kubernetes v 1.18-es vagy újabb verziójában létrehozott Node-készletek `AKS Ubuntu 18.04` . A 1,18-nál kisebb, támogatott Kubernetes-verzióban található csomópont `AKS Ubuntu 16.04` -készletek csomóponti képként jelennek meg, de `AKS Ubuntu 18.04` a csomópont-készlet Kubernetes verziójának frissítése a v 1.18-ra vagy újabbra történik.
 > 
 > Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt. Olvassa el az [Ubuntu 18,04 Node-készletek tesztelését](#use-aks-ubuntu-1804-existing-clusters-preview)ismertető témakört.
+
+A következő szakasz ismerteti, hogyan használhatja és tesztelheti az AK Ubuntu 18,04-et olyan fürtökön, amelyek még nem használnak 1.18. x vagy újabb verziójú kubernetes, vagy amelyeket a szolgáltatás általánosan elérhetővé válása előtt hoztak létre az operációs rendszer konfigurációjának előzetes verziójának használatával.
 
 A következő erőforrásokat kell telepítenie:
 
@@ -44,13 +46,13 @@ Regisztrálja a `UseCustomizedUbuntuPreview` szolgáltatást:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Az Azure támogatja a [2. generációs (Gen2) virtuális gépeket (VM)](../virtu
 A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási architektúrát használják az 1. generációs virtuális gépek által használt BIOS-alapú architektúra helyett.
 A Gen2 virtuális gépeket csak a megadott SKU-és méretek támogatják. Tekintse át a [támogatott méretek listáját](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes), és ellenőrizze, hogy az SKU támogatja vagy igényli-e a Gen2.
 
-Emellett nem minden virtuálisgép-lemezkép támogatja a Gen2-t, az AK-Gen2 virtuális gépeken az új [AK Ubuntu 18,04-lemezképet](#os-configuration-preview)fogja használni. Ez a rendszerkép az összes Gen2 SKU-t és méretet támogatja.
+Emellett nem minden virtuálisgép-lemezkép támogatja a Gen2-t, az AK-Gen2 virtuális gépeken az új [AK Ubuntu 18,04-lemezképet](#os-configuration)fogja használni. Ez a rendszerkép az összes Gen2 SKU-t és méretet támogatja.
 
 Ha az előzetes verzióban szeretné használni a Gen2 virtuális gépeket, a következőkre lesz szüksége:
 - A `aks-preview` CLI-bővítmény telepítve van.
@@ -191,13 +193,13 @@ Regisztrálja a `Gen2VMPreview` szolgáltatást:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ Regisztrálja a `EnableEphemeralOSDiskPreview` szolgáltatást:
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+Az időszakos operációs rendszerhez legalább az AK-előnézet CLI-bővítmény 0.4.63 van szükség.
 
 A következő Azure CLI-parancsokkal telepítheti az AK-előnézeti CLI-bővítményt:
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Ideiglenes operációs rendszer használata új fürtökön (előzetes verzió)
 
-Konfigurálja úgy a fürtöt, hogy az elmúló operációsrendszer-lemezeket használja a fürt létrehozásakor. A `--aks-custom-headers` jelzővel állíthatja be az ideiglenes operációs rendszert az új fürt operációsrendszer-lemezének típusaként.
+Konfigurálja úgy a fürtöt, hogy az elmúló operációsrendszer-lemezeket használja a fürt létrehozásakor. A `--node-osdisk-type` jelzővel állíthatja be az ideiglenes operációs rendszert az új fürt operációsrendszer-lemezének típusaként.
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Ha a hálózatra csatlakoztatott operációsrendszer-lemezekkel szeretne normál fürtöt létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` . Azt is megteheti, hogy az alábbi módon további elmúló operációsrendszer-csomópont-készleteket ad hozzá.
+Ha a hálózathoz csatlakoztatott operációsrendszer-lemezeket használó normál fürtöt szeretne létrehozni, ezt az egyéni címke kihagyása `--node-osdisk-type` vagy a megadásával teheti meg `--node-osdisk-type=Managed` . Azt is megteheti, hogy az alábbi módon további elmúló operációsrendszer-csomópont-készleteket ad hozzá.
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Ideiglenes operációs rendszer használata meglévő fürtökön (előzetes verzió)
-Új csomópont-készlet beállítása az ideiglenes operációsrendszer-lemezek használatára. Használja a `--aks-custom-headers` jelzőt az operációsrendszer-lemez típusaként az adott csomópont operációsrendszer-lemezének típusaként.
+Új csomópont-készlet beállítása az ideiglenes operációsrendszer-lemezek használatára. Használja a `--node-osdisk-type` jelzőt az operációsrendszer-lemez típusaként az adott csomópont operációsrendszer-lemezének típusaként.
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > Az elmúló operációs rendszerrel a virtuális gépek és a példányok rendszerképeinek üzembe helyezése a virtuális gép gyorsítótárának méretétől függetlenül végezhető el. Az AK esetében az alapértelmezett csomópont operációsrendszer-lemez konfigurációja 100GiB használ, ami azt jelenti, hogy olyan virtuálisgép-méretre van szüksége, amelynek a gyorsítótára nagyobb, mint 100 GiB. Az alapértelmezett Standard_DS2_v2 gyorsítótárának mérete 86 GiB, ami nem elég nagy. A Standard_DS3_v2 gyorsítótárának mérete 172 GiB, ami elég nagy. A használatával csökkentheti az operációsrendszer-lemez alapértelmezett méretét is `--node-osdisk-size` . Az AK-lemezképek minimális mérete 30GiB. 
 
-Ha hálózattal csatlakoztatott operációsrendszer-lemezekkel rendelkező csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` .
+Ha hálózattal csatlakoztatott operációsrendszer-lemezekkel rendelkező csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--node-osdisk-type` .
 
 ## <a name="custom-resource-group-name"></a>Egyéni erőforráscsoport neve
 

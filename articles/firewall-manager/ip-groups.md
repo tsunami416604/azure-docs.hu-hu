@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall házirendben szereplő IP-csoportok
-description: Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-címeinek csoportosítását és kezelését.
+description: Az IP-csoportok lehetővé teszik az IP-címek csoportosítását és kezelését Azure Firewall házirend-szabályokhoz.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 5192ecb31c71364bdf1301b13da0b0742625d44f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 5b3b3fb5e5440fea888654027f4fbf1a68b34141
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252425"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>Azure Firewall házirendben szereplő IP-csoportok
 
@@ -80,6 +80,6 @@ Az IP-csoportok létrehozásához és kezeléséhez a következő Azure PowerShe
 - [Új – AzFirewallPolicyApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyapplicationrule?view=azps-3.4.0)
 - [Új – AzFirewallPolicyNatRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynatrule?view=azps-3.4.0)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Managerrel](secure-cloud-network.md)

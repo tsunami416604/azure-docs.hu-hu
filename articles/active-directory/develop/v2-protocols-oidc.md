@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256585"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform és OpenID Connect protokoll
 
@@ -37,13 +37,13 @@ A legalapvetőbb bejelentkezési folyamat a következő ábrán látható lépé
 
 Az OpenID Connect egy metaadat [-dokumentumot (RFC)](https://openid.net/specs/openid-connect-discovery-1_0.html) tartalmaz, amely az alkalmazás számára a bejelentkezéshez szükséges információk nagy részét tartalmazza. Ide tartozik például a használni kívánt URL-címek és a szolgáltatás nyilvános aláíró kulcsainak helye. A dokumentumot úgy keresheti meg, hogy hozzáfűzi a felderítési dokumentum elérési útját a szolgáltató URL-címéhez:
 
-Felderítési dokumentum elérési útja:`/.well-known/openid-configuration`
+Felderítési dokumentum elérési útja: `/.well-known/openid-configuration`
 
-Hitelesítésszolgáltató`https://login.microsoftonline.com/{tenant}/v2.0`
+Hitelesítésszolgáltató `https://login.microsoftonline.com/{tenant}/v2.0`
 
 A `{tenant}` négy érték egyikét is elvégezheti:
 
-| Érték | Description |
+| Érték | Leírás |
 | --- | --- |
 | `common` |Az Azure AD-ben személyes Microsoft-fiók és munkahelyi vagy iskolai fiókkal rendelkező felhasználók is bejelentkezhetnek az alkalmazásba. |
 | `organizations` |Csak az Azure AD-ből munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazásba. |
@@ -101,7 +101,7 @@ Ha a webalkalmazásnak hitelesítenie kell a felhasználót, akkor a felhasznál
 > [!IMPORTANT]
 > Ahhoz, hogy sikeresen igényeljen egy azonosító jogkivonatot a/Authorization-végponttól, a [regisztrációs portálon](https://portal.azure.com) lévő alkalmazás-regisztrációnak a hitelesítés lapon engedélyeznie kell a id_tokens engedélyezését (amely a `oauth2AllowIdTokenImplicitFlow` jelölőt az [alkalmazás jegyzékfájljában](reference-app-manifest.md) adja meg `true` ). Ha nincs engedélyezve, `unsupported_response` hibaüzenetet kap: "a (z) response_type bemeneti paraméter megadott értéke nem engedélyezett ehhez az ügyfélhez. A várt érték a "code" (kód)
 
-Például:
+Példa:
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Paraméter | Állapot | Description |
+| Paraméter | Condition (Állapot) | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | A `{tenant}` kérelem elérési útjának értékét követve szabályozhatja, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További információ: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 A következő táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza:
 
-| Hibakód | Description | Ügyfél művelete |
+| Hibakód | Leírás | Ügyfél művelete |
 | --- | --- | --- |
 | `invalid_request` | Protokollhiba, például hiányzó, kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy olyan fejlesztési hiba, amelyet általában a kezdeti tesztelés során kapnak. |
 | `unauthorized_client` | Az ügyfélalkalmazás nem kérhet engedélyezési kódot. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és adja hozzá az Azure AD-hez. |
@@ -249,7 +249,7 @@ A válasz paraméterei ugyanazt a dolgot jelentik, függetlenül attól, hogy mi
 
 | Paraméter | Leírás |
 | --- | --- |
-| `token` | Az UserInfo-végpont meghívásához használt jogkivonat.|
+| `access_token` | Az UserInfo-végpont meghívásához használt jogkivonat.|
 | `token_type` | Mindig "tulajdonos" |
 | `expires_in`| A hozzáférési jogkivonat lejárati ideje (másodperc). |
 | `scope` | A hozzáférési jogkivonaton megadott engedélyek.  Vegye figyelembe, hogy mivel az UserInfo-végpontot MS Graph üzemelteti, előfordulhat, hogy további gráf-hatókörök is szerepelnek itt (például user. Read), ha korábban már megadták az alkalmazást.  Ennek az az oka, hogy egy adott erőforráshoz tartozó jogkivonat mindig tartalmazza az ügyfél számára jelenleg biztosított összes engedélyt.  |
@@ -292,7 +292,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Paraméter | Állapot | Description |
+| Paraméter | Condition (Állapot) | Leírás |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Ajánlott | Az URL-cím, amelyet a felhasználó átirányított a sikeres kijelentkezés után. Ha a paraméter nincs feltüntetve, a felhasználó egy általános üzenetet jelenít meg, amelyet a Microsoft Identity platform végpontja generált. Ennek az URL-címnek meg kell egyeznie az alkalmazás regisztrációs portálján az alkalmazáshoz regisztrált átirányítási URI-k egyikével. |
 
@@ -300,7 +300,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Amikor átirányítja a felhasználót a alkalmazásba `end_session_endpoint` , a Microsoft Identity platform végpontja törli a felhasználó munkamenetét a böngészőből. Előfordulhat azonban, hogy a felhasználó továbbra is bejelentkezett a Microsoft-fiókokat használó más alkalmazásokba a hitelesítéshez. Annak engedélyezéséhez, hogy az alkalmazások egyidejűleg írják alá a felhasználót, a Microsoft Identity platform végpontja egy HTTP GET kérelmet küld az összes olyan alkalmazás regisztrálásához, `LogoutUrl` amelyhez a felhasználó jelenleg be van jelentkezve. Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével és a válasz visszaadásával `200` . Ha szeretné támogatni az egyszeri kijelentkezést az alkalmazásban, akkor az alkalmazás kódjában be kell vezetnie egy ilyen `LogoutUrl` alkalmazást. Az `LogoutUrl` alkalmazást az alkalmazás regisztrációs portálján állíthatja be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [UserInfo dokumentációjának](userinfo.md) áttekintése
 * Megtudhatja, hogyan [szabhatja testre a tokenek értékeit](active-directory-claims-mapping.md) a helyszíni rendszerek adataival. 

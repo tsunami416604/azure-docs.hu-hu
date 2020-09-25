@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683878"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259373"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Oktatóanyag a Experian konfigurálásához a Azure Active Directory B2C
 
@@ -77,7 +77,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott API-kód üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
@@ -117,7 +117,7 @@ Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 ### <a name="part-5---replace-the-configuration-values"></a>5. rész – a konfigurációs értékek cseréje
 
-A megadott egyéni szabályzatokban keresse meg a következő helyőrzőket, és cserélje le a elemet a példány megfelelő értékeire.
+A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)keresse meg a következő helyőrzőket, és cserélje le a elemet a példány megfelelő értékeire.
 
 |                      Helyőrző                       |                                   Csere értékkel                                 |                   Példa                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
@@ -163,7 +163,7 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 7. A **folytatáshoz**a CrossCore-puzzle jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

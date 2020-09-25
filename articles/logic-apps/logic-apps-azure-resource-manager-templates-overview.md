@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269046"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
@@ -34,12 +34,14 @@ A Resource Manager-sablonokkal kapcsolatos további információkért tekintse m
 * [Ajánlott eljárások az Azure Resource Manager-sablonokhoz](../azure-resource-manager/templates/template-best-practices.md)
 * [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
+A Logic apps, az integrációs fiókok, az integrációs fiók összetevői és az integrációs szolgáltatási környezetek sablon-erőforrásairól a [Microsoft. Logic erőforrástípusok](/azure/templates/microsoft.logic/allversions)című témakörben talál további információt.
+
 A minta logikai alkalmazások sablonjai a következő példákban találhatók:
 
 * A témakörben szereplő példákhoz használt [teljes sablon](#full-example-template)
 * [Minta rövid útmutató Logic app-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) a githubban
 
-A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](/azure/templates/microsoft.logic/allversions).
+A Logic Apps REST API a [Azure Logic Apps REST API áttekintésével](/rest/api/logic)kezdje.
 
 <a name="template-structure"></a>
 
@@ -280,7 +282,7 @@ A sablonok erőforrásaival és attribútumaival kapcsolatos általános inform�
 
 ### <a name="logic-app-resource-definition"></a>Logikai alkalmazás erőforrás-definíciója
 
-A logikai alkalmazás erőforrás-definíciója az `properties` objektummal kezdődik, amely tartalmazza ezt az információt:
+A logikai alkalmazás [munkafolyamat-erőforrás-definíciója egy sablonban](/azure/templates/microsoft.logic/workflows) az `properties` objektummal kezdődik, amely tartalmazza ezt az információt:
 
 * A logikai alkalmazás állapota az üzembe helyezéskor
 * A logikai alkalmazás által használt bármely integrációs fiók azonosítója
@@ -328,13 +330,37 @@ A logikai alkalmazás erőforrás-definíciójának attribútumai a következők
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | `state` | Igen | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor `Enabled` azt jelenti, hogy a logikai alkalmazás él, és `Disabled` azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a vázlat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
-| `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
-| `definition` | Igen | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
-| `parameters` | Nem | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez az objektum tartalmaz egy `$connections` objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
-| `accessControl` | Nem | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `integrationAccount` | No | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
+| `definition` | Yes | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
+| `parameters` | No | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez az objektum tartalmaz egy `$connections` objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
+| `accessControl` | No | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](/azure/templates/microsoft.logic/allversions).
+A Logic Apps objektumok erőforrás-definíciókkal kapcsolatos további információkért lásd: [Microsoft. Logic Resource types](/azure/templates/microsoft.logic/allversions):
+
+* [Munkafolyamat-erőforrás definíciója](/azure/templates/microsoft.logic/workflows)
+* [Integrációs szolgáltatás környezeti erőforrás-definíciója](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [Integrációs szolgáltatás környezetének felügyelt API-erőforrásának definíciója](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+
+* [Integrációs fiók erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts)
+
+* Integrációs fiók összetevői:
+
+  * [Megállapodás erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/agreements)
+
+  * [Szerelvény erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/assemblies)
+
+  * [A Batch-konfiguráció erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/batchconfigurations)
+
+  * [Tanúsítvány erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/certificates)
+
+  * [Térkép erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/maps)
+
+  * [Partner erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/partners)
+
+  * [Séma erőforrás-definíciója](/azure/templates/microsoft.logic/integrationaccounts/schemas)
+
+  * [Munkamenet-erőforrás definíciója](/azure/templates/microsoft.logic/integrationaccounts/sessions)
 
 <a name="workflow-definition-parameters"></a>
 

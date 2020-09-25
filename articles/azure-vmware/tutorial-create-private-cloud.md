@@ -2,19 +2,19 @@
 title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMWare megoldás használatával
 ms.topic: tutorial
-ms.date: 09/07/2020
-ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/21/2020
+ms.openlocfilehash: 47ad5ca5e9d6b116ea48e1120b5ad3defaec7509
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254632"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése az Azure-ban
 
 Az Azure VMware megoldás lehetővé teszi, hogy vSphere-fürtöt helyezzen üzembe az Azure-ban. A minimális kezdeti üzembe helyezés három gazdagép. A további gazdagépek egyenként is hozzáadhatók, legfeljebb 16 gazdagépre. 
 
-Mivel az Azure VMware-megoldás nem teszi lehetővé a privát felhő kezelését a helyszíni vCenter a indításakor, a helyi vCenter-példányokkal, a virtuális hálózattal és más további konfigurációval és a velük való kapcsolódással kapcsolatos további beállításokra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
+Mivel az Azure VMware-megoldás nem teszi lehetővé, hogy az indításkor a helyszíni vCenter kezelhesse saját felhőjét, további konfigurálásra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -43,11 +43,11 @@ A [Azure Portal](#azure-portal) vagy az [Azure parancssori](#azure-cli)felület�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ahelyett, hogy a Azure Portal egy Azure VMware-megoldáshoz tartozó privát felhőt létrehozni, az Azure CLI-t használhatja a Azure Cloud Shell használatával. Ez egy ingyenes, közös Azure-eszközökkel előre telepített és a fiókkal való használatra konfigurált interaktív felület. 
+Ahelyett, hogy a Azure Portal egy Azure VMware-megoldáshoz tartozó privát felhőt létrehozni, az Azure CLI-t használhatja a Azure Cloud Shell használatával.  Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Az Azure Cloud Shell megnyitása
 
-A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
+Válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
 #### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -60,7 +60,7 @@ az group create --name myResourceGroup --location eastus
 
 #### <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
 
-Adja meg az erőforráscsoport nevét, a saját felhő nevét, helyét, a fürt méretét.
+Adja meg az erőforráscsoport nevét, a saját felhőt, a helyet és a fürt méretét.
 
 | Tulajdonság  | Leírás  |
 | --------- | ------------ |
@@ -95,6 +95,10 @@ A privát felhő törlése után nem lehet helyreállítani a virtuális gépeke
  
 3. Adja meg a privát felhő nevét, és válassza az **Igen**lehetőséget. A törlési folyamat néhány órán belül befejeződik.  
 
+## <a name="azure-vmware-commands"></a>Azure VMware-parancsok
+
+Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
@@ -104,7 +108,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A privát felhő üzembe helyezésének ellenőrzése
 > * Azure VMware-megoldás saját felhő törlése
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre virtuális hálózatot a saját felhőhöz való használatra a saját felhőalapú fürtök helyi felügyeletének beállításának részeként.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre egy Jump Box-t. A Jump Box használatával csatlakozhat a környezethez, hogy helyileg kezelhesse a saját felhőjét.
+
 
 > [!div class="nextstepaction"]
-> [Virtual Network létrehozása](tutorial-configure-networking.md)
+> [Hozzáférés egy Azure VMware-megoldáshoz – saját felhő](tutorial-access-private-cloud.md)

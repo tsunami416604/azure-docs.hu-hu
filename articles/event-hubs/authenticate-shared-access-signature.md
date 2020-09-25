@@ -3,13 +3,13 @@ title: Az Azure Event Hubshoz való hozzáférés hitelesítése közös hozzáf
 description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrásokhoz való hozzáférést közös hozzáférési aláírások használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270100"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 

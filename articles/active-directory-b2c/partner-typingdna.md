@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dcf80ffa26ecaeb0f4481b3997146c07bd89be10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392902"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259051"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Oktatóanyag a TypingDNA konfigurálásához a Azure Active Directory B2C
 
@@ -36,9 +36,9 @@ Ebből az útmutatóból megtudhatja, hogyan integrálhat egy minta online fizet
 
 2. Amikor a felhasználó elküldi a lapot, a TypingDNA-könyvtár kiszámítja a felhasználó begépelési jellemzőjét. Ezt követően szúrja be az adatokat egy olyan rejtett szövegmezőbe, amely Azure AD B2C renderelt. Ez a mező a CSS-sel van elrejtve.  
 
-    A minta a JavaScript-és CSS-módosításokat tartalmazó HTML-fájlokat tartalmaz, és a `api.selfasserted.tdnasignin` és a `api.selfasserted.tdnasignup` tartalmi definíciók hivatkoznak rá. A HTML-fájlok tárolásához tekintse meg [a lap tartalmát](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) .
+    A minta a JavaScript-és CSS-módosításokat [tartalmazó HTML-fájlokat tartalmaz](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) , és a `api.selfasserted.tdnasignin` és a `api.selfasserted.tdnasignup` tartalmi definíciók hivatkoznak rá. A HTML-fájlok tárolásához tekintse meg [a lap tartalmát](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) .
 
-3. Azure AD B2C most már a kérelem táskájában a begépelési minta szerepel, amikor a felhasználó elküldi a hitelesítő adatait. Meg kell hívnia egy API-t (a tiéd), hogy átadja ezeket az adatfájlokat a TypingDNA REST API-végpontnak. Ezt az API-t a minta tartalmazza (typingDNA-API-Interface).
+3. Azure AD B2C most már a kérelem táskájában a begépelési minta szerepel, amikor a felhasználó elküldi a hitelesítő adatait. Meg kell hívnia egy API-t (a tiéd), hogy átadja ezeket az adatfájlokat a TypingDNA REST API-végpontnak. Ezt az API-t a [minta tartalmazza (typingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
 4. A középső rétegbeli API ezután átadja a gépelési minta TypingDNA REST API. A regisztráció során a rendszer meghívja a felhasználói [végpontot](https://api.typingdna.com/index.html#api-API_Services-GetUser) , hogy erősítse meg, hogy a felhasználó nem létezett, majd a [mentési minta](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) végpontját a rendszer a felhasználó első gépelési mintájának mentéséhez hívja meg.
 
 > [!NOTE]
@@ -61,7 +61,7 @@ Az REST API-hívások modellezése a következőkön `validationTechnicalProfile
 
 ### <a name="sign-in"></a>Bejelentkezés
 
-A következő bejelentkezéskor a felhasználó gépelési mintáját ugyanúgy számítjuk ki, mint az egyéni HTML használatával történő regisztráció során. Miután a begépelési profil a Azure AD B2C jogcím-Táskán belül van, Azure AD B2C meghívja az API-t a TypingDNA REST API végpontjának meghívásához. A rendszer meghívja a [felhasználói](https://api.typingdna.com/index.html#api-API_Services-GetUser) végpontot, hogy erősítse meg a felhasználó létezését. Ezután [ellenőrizze a minta](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) végpontot, hogy visszaállítsa a következőt: `net_score` . Ez annak a jele, hogy a `net_score` Gépelési minta hogyan zárult az eredeti regisztrációnál.
+A következő bejelentkezéskor a felhasználó gépelési mintáját ugyanúgy számítjuk ki, mint az [egyéni HTML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignIn.cshtml)használatával történő regisztráció során. Miután a begépelési profil a Azure AD B2C jogcím-Táskán belül van, Azure AD B2C meghívja az API-t a TypingDNA REST API végpontjának meghívásához. A rendszer meghívja a [felhasználói](https://api.typingdna.com/index.html#api-API_Services-GetUser) végpontot, hogy erősítse meg a felhasználó létezését. Ezután [ellenőrizze a minta](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) végpontot, hogy visszaállítsa a következőt: `net_score` . Ez annak a jele, hogy a `net_score` Gépelési minta hogyan zárult az eredeti regisztrációnál.
 
 Ez a gépelési minta a következőn belül van modellezve `validationTechnicalProfiles` `SelfAsserted-LocalAccountSignin-Email-TDNA` :
 
@@ -99,7 +99,7 @@ Ez a gépelési minta a következőn belül van modellezve `validationTechnicalP
 
  Ha a felhasználó egy magas szintű gépelési mintát kap `net_score` , ezt a TypingDNA [Save gépelési minta](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) végpontjának használatával mentheti el.  
 
-Az API-nak egy jogcímet kell visszaadnia `saveTypingPattern` , ha szeretné, hogy a TypingDNA Save begépelési minta végpontját Azure ad B2C (az API-n keresztül) hívja meg.
+Az API-nak egy jogcímet kell visszaadnia  `saveTypingPattern` , ha szeretné, hogy a TypingDNA Save begépelési minta végpontját Azure ad B2C (az API-n keresztül) hívja meg.
 
 A tárházban szereplő példa egy olyan API-t (TypingDNA-API-Interface) tartalmaz, amely a következő tulajdonságokkal van konfigurálva.
 
@@ -158,14 +158,14 @@ Ezeket a küszöbértékeket a használati esethez kell igazítani.
 
 ## <a name="integrate-typingdna-with-azure-ad-b2c"></a>A TypingDNA integrálása Azure AD B2C
 
-1. A TypingDNA-API-Interface üzemeltetése az Ön által választott üzemeltetési szolgáltatónál
-2. Cserélje le `apiKey` a és a `apiSecret` TYPINGDNA-API-Interface megoldás összes példányát a TypingDNA irányítópultjának hitelesítő adataival
+1. A [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) üzemeltetése az Ön által választott üzemeltetési szolgáltatónál
+2. Cserélje le `apiKey` a és a `apiSecret` [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) megoldás összes példányát a TypingDNA irányítópultjának hitelesítő adataival
 3. A CORS [vonatkozó követelményeket](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) követve üzemeltetheti a saját SZOLGÁLTATÓjának HTML-fájljait.
 4. Cserélje le a fájlban lévő és a tartalom-definíciók Tartalomdefinícióban elemeit `api.selfasserted.tdnasignup` `api.selfasserted.tdnasignin` `TrustFrameworkExtensions.xml` a tárolt HTML-fájlok URI-ra.
 5. Hozzon létre egy B2C-szabályzatot a **Azure Portal**Azure ad paneljének identitási élmény keretrendszere területén. Használja a `Generate` kapcsolót, és nevezze el a kulcsot `tdnaHashedId` .
 6. Cserélje le a TenantId a szabályzat fájljaiban.
-7. Cserélje le a ServiceURLs az összes TypingDNA REST API technikai profilban (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) a TypingDNA-API-Interface API-hoz tartozó végponttal.
-8. Töltse fel a házirend-fájlokat a bérlőbe.
+7. Cserélje le a ServiceURLs az összes TypingDNA REST API technikai profilban (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) a [TypingDNA-API-Interface API-](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)hoz tartozó végponttal.
+8. Töltse fel a [házirend-fájlokat](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy) a bérlőbe.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
@@ -190,7 +190,7 @@ Ezeket a küszöbértékeket a használati esethez kell igazítani.
 
 • [Regisztráljon itt, és](https://b2cprod.b2clogin.com/b2cprod.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SU_TDNA&client_id=51d907f8-db14-4460-a1fd-27eaeb2a74da&nonce=defaultNonce&redirect_uri=https://jwt.ms/&scope=openid&response_type=id_token&prompt=login) jelentkezzen be [ide](https://b2cprod.b2clogin.com/b2cprod.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SI_TDNA&client_id=51d907f8-db14-4460-a1fd-27eaeb2a74da&nonce=defaultNonce&redirect_uri=https://jwt.ms/&scope=openid&response_type=id_token&prompt=login)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

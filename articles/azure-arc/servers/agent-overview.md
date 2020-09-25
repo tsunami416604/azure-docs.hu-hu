@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 01f1b291fee57d94b95bdeeef5f9f24b011e9fca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255043"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -131,6 +131,9 @@ Az erőforrás-szolgáltatókat a Azure Portal is regisztrálhatja a [Azure Port
 
 A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a követelményektől függően különböző módszerekkel végezhetők el. Az alábbi táblázat az egyes módszereket ismerteti, amelyek alapján meghatározhatja, hogy melyik a legmegfelelőbb a szervezet számára.
 
+> [!IMPORTANT]
+> A csatlakoztatott számítógép ügynöke nem telepíthető Azure Windows rendszerű virtuális gépre. Ha megkísérli a-t, a telepítés észleli ezt, és Visszagörgeti azt.
+
 | Metódus | Leírás |
 |--------|-------------|
 | Interaktív módon | Manuálisan telepítse az ügynököt egy vagy több gépen a [gépek Azure Portal-ból való összekapcsolása](onboard-portal.md)című témakör lépéseit követve.<br> A Azure Portal létrehozhat egy parancsfájlt, és végrehajthatja azt a gépen, hogy automatizálja az ügynök telepítésének és konfigurálásának lépéseit.|
@@ -170,7 +173,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Name |Alapértelmezett érték |Leírás |
+    |Név |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -228,11 +231,11 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     |/opt/logs/dsc.log |A DSC szolgáltatási tevékenység részleteit rögzíti,<br> különösen a himds szolgáltatás és a Azure Policy közötti kapcsolat.|
     |/opt/logs/dsc.telemetry.txt |A DSC szolgáltatás telemetria és részletes naplózási adatait rögzíti.|
     |/var/lib/GuestConfig/ext_mgr_logs |A bővítmény ügynök összetevőjének adatait rögzíti.|
-    |/var/log/GuestConfig/extension_logs|A telepített bővítmény adatait rögzíti.|
+    |/var/lib/GuestConfig/extension_logs|A telepített bővítmény adatait rögzíti.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Alapértelmezett érték |Leírás |
+    |Név |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -244,4 +247,6 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
+* Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
+
+* A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.

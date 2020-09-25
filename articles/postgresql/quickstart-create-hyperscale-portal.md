@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268452"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Gyors útmutató: nagy kapacitású-(Citus-) kiszolgálócsoport létrehozása a Azure Portalban
 
@@ -25,7 +25,7 @@ Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé
 
 Miután csatlakozott a nagy kapacitású koordinátori csomóponthoz a psql használatával, elvégezhet néhány alapvető feladatot.
 
-A nagy kapacitású-kiszolgálókon belül háromféle tábla létezik:
+A nagy kapacitású-(Citus-) kiszolgálókon három típusú tábla található:
 
 - Elosztott vagy felosztott táblák (a teljesítmény és a párhuzamos skálázásának elősegítése érdekében)
 - Hivatkozási táblák (több másolat is karbantartva)
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Ezután ezeket a postgres táblázatokat a koordinátori csomóponton fogjuk kiadni, és megmondjuk, hogy nagy kapacitású a feldolgozók között. Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát is a következőre fogjuk bemutatni `user_id` :
+Ezután ezeket a postgres táblázatokat a koordinátor csomóponton kell megadnia, és meg kell mondanom a nagy kapacitású (Citus). Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát is a következőre fogjuk bemutatni `user_id` :
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 Eddig a lekérdezések kizárólag a GitHub \_ -eseményeket érintették, de ezeket az információkat a GitHub- \_ felhasználókkal kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón () osztottuk fel `user_id` , a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek](concepts-hyperscale-colocation.md) el, és könnyedén csatlakoztathatók.
 
-Ha csatlakozik a `user_id` szolgáltatáshoz, a nagy kapacitású a munkavégző csomópontokon párhuzamosan hajthatja végre a csatlakozás végrehajtását a szegmensekben. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
+Ha bekapcsoljuk a szolgáltatást `user_id` , a nagy kapacitású (Citus) a munkavégző csomópontokon párhuzamosan hajthatja végre a csatlakozás végrehajtását a szegmensekben. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
 
 ```sql
 SELECT gu.login, count(*)

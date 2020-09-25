@@ -4,12 +4,12 @@ description: Lemezképek vagy más összetevők gyűjteményének átvitele egy 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253411"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -162,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
+A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Példa:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -208,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
+Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Példa:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -250,7 +250,7 @@ Az összetevők exportálására több percet is igénybe vehet. Az üzembe hely
 
 ```azurecli
 az storage blob list \
-  --account-name $SA_SOURCE
+  --account-name $SOURCE_SA
   --container transfer
   --output table
 ```
@@ -363,7 +363,7 @@ az deployment group delete \
   * Az egyéb folyamatokkal kapcsolatos problémák esetén adja meg az Exportálás futtatásának vagy importálásának a Azure Container Registry csapatnak való futtatásához szükséges telepítési [korrelációs azonosítót](../azure-resource-manager/templates/deployment-history.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha egyetlen tároló lemezképét szeretné importálni egy Azure Container registrybe egy nyilvános beállításjegyzékből vagy egy másik privát beállításjegyzékből, tekintse meg az az [ACR import][az-acr-import] parancs-referenciát.
 

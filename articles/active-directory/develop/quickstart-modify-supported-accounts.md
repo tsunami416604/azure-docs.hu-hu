@@ -1,6 +1,6 @@
 ---
-title: A Microsoft IDENTIFY platform-alkalmazás fiókjainak módosítása | Azure
-description: A Microsoft Identity Platformon regisztrált alkalmazás konfigurálásával módosíthatja, hogy kik, illetve mely fiókok érhetik el az alkalmazást.
+title: 'Rövid útmutató: a Microsoft IDENTIFY platform-alkalmazás fiókjainak módosítása | Azure'
+description: Ebben a rövid útmutatóban a Microsoft Identity platformmal regisztrált alkalmazást konfigurálhatja, hogy megváltoztassa, kik vagy milyen fiókok férhessenek hozzá az alkalmazáshoz.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258013"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: alkalmazás által támogatott fiókok módosítása
 
@@ -27,11 +27,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan változtassa meg alkalmazása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először is győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
-
-* Megismerte a támogatott [engedélyekkel és hozzájárulással](v2-permissions-and-consent.md) kapcsolatos tudnivalókat, mivel fontos szem előtt tartania őket olyan alkalmazások készítésekor, amelyeket más felhasználóknak vagy alkalmazásoknak is használniuk kell.
-* Rendelkezik olyan bérlővel, amelyhez regisztrált alkalmazások tartoznak.
-  * Ha nincsenek regisztrált alkalmazásai, [ismerje meg, hogyan regisztrálhat alkalmazásokat a Microsoft Identity Platformon](quickstart-register-app.md).
+* A rövid útmutató befejezése [: alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
 
@@ -76,15 +72,7 @@ Az OAuth 2.0 implicit engedély alapértelmezés szerint le van tiltva az alkalm
 1. Jelölje ki az **Azonosító-jogkivonatok** vagy a **Hozzáférési jogkivonatok** lehetőséget, vagy mindkettőt.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
-
-* [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
-* [Ügyfélalkalmazás konfigurálása a webes API-k elérésére](quickstart-configure-app-access-web-apis.md)
-* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
-* [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)
-
-Ha szeretne többet megtudni a regisztrált alkalmazásokat jelölő két Azure AD-objektumról és azok kapcsolatáról, tekintse meg az [alkalmazás- és szolgáltatásnév-objektumokat](app-objects-and-service-principals.md) ismertető szakaszt.
-
-Ha szeretne többet megtudni az Azure Active Directoryt használó alkalmazások fejlesztése során alkalmazandó védjegyzési irányelvekről, tekintse meg az [alkalmazások védjegyzési irányelveit](howto-add-branding-in-azure-ad-apps.md) ismertető szakaszt.
+> [!div class="nextstepaction"]
+> [Védjegyzési útmutató az alkalmazásokhoz](howto-add-branding-in-azure-ad-apps.md)

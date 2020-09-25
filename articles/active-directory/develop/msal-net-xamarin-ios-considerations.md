@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258059"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>A Xamarin iOS és a MSAL.NET használatának szempontjai
 
@@ -81,7 +81,7 @@ További információ: [iOS-jogosultságok dokumentációja](https://developer.a
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Jogkivonat-gyorsítótár megosztásának engedélyezése iOS-alkalmazások között
 
-A MSAL 2. x verziótól kezdődően megadhat egy kulcstartó-hozzáférési csoportot, amely több alkalmazás között is megőrzi a jogkivonat-gyorsítótárat. Ez a beállítás lehetővé teszi, hogy megossza a jogkivonat-gyorsítótárat több olyan alkalmazás között, amelyek ugyanazzal a kulcstartó-hozzáférési csoporttal rendelkeznek. Megoszthatja a tokent a [ADAL.net](https://aka.ms/adal-net) alkalmazások, MSAL.net Xamarin. iOS-alkalmazások és a [ADAL. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) vagy [MSAL.](https://github.com/AzureAD/microsoft-authentication-library-for-objc)ObjC által fejlesztett natív iOS-alkalmazások között.
+A MSAL 2. x verziótól kezdődően megadhat egy kulcstartó-hozzáférési csoportot, amely több alkalmazás között is megőrzi a jogkivonat-gyorsítótárat. Ez a beállítás lehetővé teszi, hogy megossza a jogkivonat-gyorsítótárat több olyan alkalmazás között, amelyek ugyanazzal a kulcstartó-hozzáférési csoporttal rendelkeznek. A jogkivonat-gyorsítótárat megoszthatja a [ADAL.net](https://aka.ms/adal-net) -alkalmazások, a MSAL.net-Xamarin. iOS-alkalmazások és a [ADAL. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) vagy [MSAL.](https://github.com/AzureAD/microsoft-authentication-library-for-objc)ObjC által fejlesztett natív iOS-alkalmazások között.
 
 A jogkivonat-gyorsítótár megosztásával engedélyezheti az egyszeri bejelentkezést (SSO) az összes olyan alkalmazás között, amelyek ugyanazt a kulcstartó-hozzáférési csoportot használják.
 

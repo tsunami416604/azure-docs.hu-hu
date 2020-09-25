@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 219132fc8a0e618cdf2561947ae3904a9e2cb310
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300751"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node.js és az Azure-SB csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js alkalmazásokat, hogy üzeneteket küldjön egy Service Bus témakörbe, és üzeneteket fogadjon egy Service Bus előfizetésből az [Azure-SB-](https://www.npmjs.com/package/azure-sb) csomag használatával. A minták JavaScript nyelven íródtak, és a Node.js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja a `azure-sb` csomagot.
@@ -330,7 +330,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hivatkozásokat további információért.
 
 * Lásd: [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions].

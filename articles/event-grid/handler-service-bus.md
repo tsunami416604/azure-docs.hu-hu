@@ -3,12 +3,12 @@ title: Várólisták és témakörök Service Bus Azure Event Grid események es
 description: Ismerteti, hogyan használhatók Service Bus várólisták és témakörök Azure Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 00f937a66ff17c2d5f502fe976675c999ee02a58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440796"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270168"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure Service Bus** az egyikük. 
@@ -51,9 +51,9 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="message-properties"></a>Üzenet tulajdonságai
-Ha **Service Bus témakört vagy üzenetsor** -kezelőt használ a Event Grid eseményeihez, állítsa be a következő üzenet-fejléceket: 
+Ha **Service Bus témakört vagy üzenetsor** -kezelőt használ a Event Grid eseményeihez, ezek a tulajdonságok, amelyeket az üzenet fejlécében kap: 
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | ------------- | ----------- | 
 | AEG-előfizetés – név | Az esemény-előfizetés neve. |
 | AEG – kézbesítés – darabszám | <p>Az eseményre tett kísérletek száma.</p> <p>Példa: "1"</p> |
@@ -156,6 +156,9 @@ Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése f
     }
 }
 ```
+
+> [!NOTE]
+> Nem támogatott az események továbbítása egy Azure-beli Serving Bus-várólistához vagy **egy másik bérlőben** található témakörhöz. 
 
 ## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

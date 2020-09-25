@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251592"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
 
@@ -47,7 +47,7 @@ A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőbe
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Egyéb  | Bármely | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Változók beállítása
 
-Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse a <YourResourceGroupName> , <YourStorageAccountName> és <YourKeyVaultName> helyőrzőket, és állítsa be $keyVaultSpAppId a `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` következőre: (az [egyszerű szolgáltatásnév alkalmazásban](#service-principal-application-id)megadott módon).
+Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse a "YourResourceGroupName", a "YourStorageAccountName" és a "YourKeyVaultName" helyőrzőket, és állítsa a $keyVaultSpAppId értéket `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (az [egyszerű szolgáltatásnév alkalmazásban](#service-principal-application-id)megadott módon).
 
 A Get [-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) és a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) parancsmagokkal is Azure PowerShell a felhasználói azonosítót és az Azure Storage-fiók környezetét fogjuk használni.
 
@@ -267,7 +267,7 @@ Write-Host $secret.SecretValueText
 A parancs kimenete az SAS-definíciós karakterláncot jeleníti meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [PowerShell-útmutató Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

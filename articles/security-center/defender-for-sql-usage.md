@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 76015602cbf949b166c4067ad72bace5d355d70b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935561"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301652"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -79,7 +79,7 @@ A fentiek mindegyikét alább találja.
 
 
 1. Szükség esetén az e-mail-értesítések konfigurálása a biztonsági riasztásokhoz. 
-    Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. További információ: [e-mail-értesítések beállítása biztonsági riasztásokhoz](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details).
+    Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. További információ: [e-mail-értesítések beállítása biztonsági riasztásokhoz](security-center-provide-security-contact-details.md).
 
 
 
@@ -121,7 +121,7 @@ Az Azure Defender-riasztások a Security Center riasztások lapján, az erőforr
     * A további vizsgálatok érdekében engedélyezze SQL Server naplózási funkcióját. Ha Ön Azure Sentinel-felhasználó, feltöltheti az SQL-naplózási naplókat a Windows biztonsági napló eseményeiből a Sentinel szolgáltatásba, és élvezheti a részletes nyomozást. [További információ a SQL Server naplózásról](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15).
     * A biztonsági helyzet javításához használja Security Center javaslatait az egyes riasztásokban jelzett gazdagéphez. Ez csökkenti a jövőbeli támadások kockázatát. 
 
-    [További információ a riasztások kezeléséről és megválaszolásáról](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
+    [További információ a riasztások kezeléséről és megválaszolásáról](security-center-managing-and-responding-alerts.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

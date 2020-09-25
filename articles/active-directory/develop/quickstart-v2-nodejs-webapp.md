@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
+ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257690"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -26,7 +26,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Con
 
 A minta futtatásához a következőkre lesz szüksége:
 
-* Node.js telepítése innen:http://nodejs.org/
+* Node.js telepítése innen: http://nodejs.org/
 
 * [Microsoft-fiók](https://www.outlook.com) vagy [Microsoft 365 fejlesztői program](/office/developer-program/office-365-developer-program)
 
@@ -51,11 +51,11 @@ A minta futtatásához a következőkre lesz szüksége:
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Erre az értékre szüksége lesz ahhoz, hogy az alkalmazást később konfigurálja a projektben.
 
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-    - Az **átirányítási URI** -k szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-t:`http://localhost:3000/auth/openid/return`
+    - Az **átirányítási URI** -k szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-t: `http://localhost:3000/auth/openid/return`
     - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:3000` .
     - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezze a bejelentkezést a felhasználó számára.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet.
     - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).

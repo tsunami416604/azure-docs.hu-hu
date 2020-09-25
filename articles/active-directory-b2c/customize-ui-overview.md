@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259543"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -34,7 +34,7 @@ Ha [felhasználói folyamatokat](user-flow-overview.md)használ, megváltoztatha
 A [Azure Portal](tutorial-customize-ui.md) használatával konfigurálhatja a felhasználói folyamatok felhasználói felületének testreszabását.
 
 > [!TIP]
-> Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, a cikk későbbi részében leírtak szerint kipróbálhatja a [vállalati arculat (előzetes verzió)](#company-branding-preview) szolgáltatást.
+> Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, akkor a cikk későbbi részében ismertetett [vállalati védjegyezési](#company-branding) funkciót is kipróbálhatja.
 
 ### <a name="custom-policies"></a>Egyéni szabályzatok
 
@@ -158,13 +158,11 @@ A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure
 | Többtényezős hitelesítés | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
 | Hiba | Információt nyújt az ügyfélnek. |
 
-## <a name="company-branding-preview"></a>Vállalati arculat (előzetes verzió)
+## <a name="company-branding"></a>Vállalati védjegyezés
 
 A felhasználói folyamatok lapjait szalagcím emblémával, háttérképgel és háttérszínsel testreszabhatja Azure Active Directory [vállalati arculat](../active-directory/fundamentals/customize-branding.md)használatával.
 
 A felhasználói folyamatok lapjain való testreszabáshoz először a vállalati arculatot kell konfigurálnia Azure Active Directoryban, majd a felhasználói folyamatokban lévő lapok elrendezésében Azure AD B2C.
-
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Vállalati arculat konfigurálása
 
@@ -236,7 +234,7 @@ A [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureb
 
 A sablonok HTML-és CSS-fájljai a [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) könyvtárban találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha **felhasználói folyamatokat**használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével:
 

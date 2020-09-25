@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258625"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Feltételes hozzáférés Azure Active Directory – gyakori kérdések
 
@@ -31,11 +31,11 @@ A szabályzatokat a vállalatok közötti (B2B) együttműködési felhasználó
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>A SharePoint Online-szabályzat a OneDrive for Business szolgáltatásra is érvényes?
 
-Igen. A SharePoint Online-szabályzat a vállalati OneDrive is vonatkozik. További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Igen. A SharePoint Online-szabályzat a vállalati OneDrive is vonatkozik. További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Miért nem állítható be házirend közvetlenül az ügyfélalkalmazások, például a Word vagy az Outlook?
 
-A feltételes hozzáférési szabályzatok a szolgáltatások elérésére vonatkozó követelményeket határozzák meg. Ez a szolgáltatás akkor lép érvénybe, ha a szolgáltatás hitelesítése megtörténik. A házirend nincs beállítva közvetlenül egy ügyfélalkalmazás számára. Ehelyett akkor alkalmazza a rendszer, amikor egy ügyfél meghívja a szolgáltatást. A SharePoint házirend-beállítása például a SharePointot hívó ügyfelekre vonatkozik. Az Exchange-ben beállított házirend az Outlookra vonatkozik. További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365-preview) .
+A feltételes hozzáférési szabályzatok a szolgáltatások elérésére vonatkozó követelményeket határozzák meg. Ez a szolgáltatás akkor lép érvénybe, ha a szolgáltatás hitelesítése megtörténik. A házirend nincs beállítva közvetlenül egy ügyfélalkalmazás számára. Ehelyett akkor alkalmazza a rendszer, amikor egy ügyfél meghívja a szolgáltatást. A SharePoint házirend-beállítása például a SharePointot hívó ügyfelekre vonatkozik. Az Exchange-ben beállított házirend az Outlookra vonatkozik. További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Érvényes a feltételes hozzáférési szabályzat a szolgáltatásfiókok esetében?
 
@@ -53,7 +53,7 @@ A Microsoft Teams szolgáltatást a feltételes hozzáférési szabályzatokban 
 
 A Microsoft Teams asztali Windows-és Mac-ügyfelei támogatják a modern hitelesítést. A modern hitelesítés a Azure Active Directory Authentication Library (ADAL) alapján a különböző platformokon Microsoft Office ügyfélalkalmazások számára teszi lehetővé a bejelentkezést.
 
-További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365-preview) .
+További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Miért nem működnek a lapok a Microsoft Teams szolgáltatásban a feltételes hozzáférési házirendek engedélyezése után?
 
@@ -61,6 +61,6 @@ Miután engedélyezte a feltételes hozzáférési szabályzatokat a bérlőhöz
 
 Az érintett lapok megjelenítéséhez az Edge, az Internet Explorer vagy a Chrome alkalmazásban kell használni a Teams webes ügyfelet, amelyen telepítve van a Windows 10-es fiók bővítmény. Egyes lapok a webes hitelesítéstől függenek, amely nem működik a Microsoft Teams asztali ügyfélprogramban, ha a feltételes hozzáférés engedélyezve van. A Microsoft a partnerekkel együttműködve engedélyezi ezeket a forgatókönyveket. A mai napig engedélyezték a Planner, a OneNote és a stream használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A környezet feltételes hozzáférési házirendjeinek konfigurálásához tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 

@@ -2,13 +2,13 @@
 title: Azure-függvény Azure Event Grid események eseménykezelőként
 description: Leírja, hogyan használhatja az Azure functions-t Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/18/2020
+ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270318"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-függvény Event Grid események eseménykezelőként
 
@@ -39,14 +39,40 @@ További információ: [Event Grid trigger a Azure functions](../azure-functions
             "properties": 
             {
                 "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Web/sites/<FUNCTION APP NAME>/functions/<FUNCTION NAME>",
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64
+                "maxEventsPerBatch": 10,
+                "preferredBatchSizeInKilobytes": 6400
             }
         },
         "eventDeliverySchema": "EventGridSchema"
     }
 }
 ```
+
+## <a name="enable-batching"></a>Kötegelt feldolgozás engedélyezése
+Magasabb átviteli sebesség esetén engedélyezze a kötegelt feldolgozást az előfizetésben. Ha a Azure Portal használja, beállíthatja a kötegek maximális számát és az előnyben részesített köteg méretét kilogramm bájtban az előfizetés létrehozásakor vagy a létrehozás után. 
+
+A Batch beállításait a Azure Portal, a PowerShell, a CLI vagy a Resource Manager-sablon használatával konfigurálhatja. 
+
+### <a name="azure-portal"></a>Azure Portal
+Amikor létrehoz egy előfizetést a felhasználói felületen, az **esemény-előfizetés létrehozása** lapon váltson a **speciális szolgáltatások** lapra, és állítsa be az értékek **maximális száma a Batch** és **az előnyben részesített köteg mérete kilobájtban**. 
+    
+:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Az előfizetés létrehozásának időpontjában engedélyezze a kötegelt feldolgozást":::
+
+A meglévő előfizetések ezen értékeit a **Event Grid témakör** lap **szolgáltatások** lapján frissítheti. 
+
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Kötegelt feldolgozás engedélyezése a létrehozás után":::
+
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
+**MaxEventsPerBatch** és **preferredBatchSizeInKilobytes** is beállíthat egy Azure Resource Manager sablonban. További információ: [Microsoft. EventGrid eventSubscriptions-sablon referenciája](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
+
+### <a name="azure-cli"></a>Azure CLI
+A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-előfizetés Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) vagy [az eventgrid Event-előfizetés Update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) paranccsal konfigurálhatja a következő paraméterekkel: `--max-events-per-batch` vagy `--preferred-batch-size-in-kilobytes` .
+
+### <a name="azure-powershell"></a>Azure PowerShell
+A [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) vagy az [Update-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) parancsmaggal konfigurálhatja a Batch szolgáltatáshoz kapcsolódó beállításokat a következő paraméterekkel: `-MaxEventsPerBatch` vagy `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> Az események egy **másik bérlőben** lévő Azure-függvénybe való továbbítása nem támogatott. 
 
 ## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

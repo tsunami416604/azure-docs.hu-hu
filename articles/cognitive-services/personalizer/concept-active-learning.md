@@ -1,14 +1,16 @@
 ---
 title: Tanulási szabályzat – személyre szabás
 description: A képzési beállítások határozzák meg a *hiperparaméterek beállításaát* . A különböző tanulási beállításokba betanított két modell eltérő lesz.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1d2038e3796df843736eb80f7e5645f4141c82f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84700732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253632"
 ---
 # <a name="learning-policy-and-settings"></a>Képzési szabályzat és beállítások
 
@@ -49,6 +51,6 @@ A személyre szabott képzési szabályzatok egy [Offline próbaverzióban](how-
 
 A tanulási szabályzatok optimalizálása után közvetlenül is alkalmazhatja a személyre szabást, hogy azonnal felváltsa az aktuális házirendet. Vagy mentheti az optimalizált szabályzatot a további értékeléshez, és később eldöntheti, hogy elveti, menti vagy alkalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az aktív és az inaktív események](concept-active-inactive-events.md)megismerése.

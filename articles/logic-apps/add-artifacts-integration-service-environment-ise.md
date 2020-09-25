@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269743"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -40,7 +40,7 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
 1. Adja meg a létrehozni kívánt logikai alkalmazás adatait, például:
 
-   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![Képernyőkép, amely a "Logic app" "Create" ablakot mutatja be példaként megadott információval.](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
@@ -121,7 +121,7 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
 1. A **hely** listában az **integrációs szolgáltatási környezetek** szakaszban válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, majd válassza a **Létrehozás**lehetőséget, például:
 
-   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
+   ![Képernyőkép: a "Create Logic Apps egyéni összekötő" ablak, ahol például a kiválasztott információk láthatók.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. Válassza ki az új egyéni összekötőt, majd válassza a **Szerkesztés**lehetőséget, például:
 
@@ -131,6 +131,6 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
 1. Az ISE-ben lévő egyéni összekötők kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 440f901f06e431c371b7445f4a04499c475c9aa1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254023"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Útmutató: webes alkalmazások leltározása
 
@@ -181,8 +181,8 @@ A fenti paraméterek megadása után kattintson a **felülvizsgálat + létrehoz
 
 Várjon, amíg a telepítés befejeződik, és navigáljon az erőforráshoz a Azure Portal. Nyissa meg a **konfigurációs** szakaszt, és adja hozzá az alábbi két **Alkalmazásbeállítások**közül.
 
-* `EventHubConsumerGroup` – Az Azure IoT hub fogyasztói csoportjának karakterlánc-neve, létrehozhat egy új fogyasztói csoportot az IoT hub-ban, vagy használhatja az alapértelmezett csoportot. 
-* `IotHubConnectionString`– Az Azure IoT hub kapcsolódási karakterlánca, amely az Azure IoT hub-erőforrás Keys (kulcsok) részéből kérhető le. ![](./media/spatial-analysis/solution-app-config-page.png)
+* `EventHubConsumerGroup` – Az Azure-IoT Hub lévő fogyasztói csoport karakterláncának neve, létrehozhat egy új fogyasztói csoportot a IoT Hub, vagy használhatja az alapértelmezett csoportot. 
+* `IotHubConnectionString`– Az Azure-IoT Hub kapcsolódási karakterlánca, amely az Azure IoT Hub erőforrás-konfigurálási paramétereinek kulcsok részéből kérhető le. ![](./media/spatial-analysis/solution-app-config-page.png)
 
 A 2 beállítás hozzáadása után kattintson a **Mentés**gombra. Ezután kattintson a **hitelesítés/engedélyezés** elemre a bal oldali navigációs menüben, és frissítse a kívánt hitelesítési szinttel. Az Azure Active Director (Azure AD) Express használatát javasoljuk. 
 

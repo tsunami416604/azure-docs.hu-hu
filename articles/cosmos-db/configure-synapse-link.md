@@ -1,50 +1,50 @@
 ---
 title: Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
-description: Megtudhatja, hogyan engedélyezheti az Azure Cosmos-fiókok szinapszis-hivatkozását, hogyan hozhat létre olyan tárolót, amelyeken engedélyezve van az analitikai tároló, valamint csatlakoztathatja az Azure Cosmos-adatbázist a szinapszis munkaterülethez
+description: Megtudhatja, hogyan engedélyezheti a szinapszis hivatkozását Azure Cosmos DB fiókokhoz, létrehozhat egy tárolót az analitikai tárolóval, és csatlakoztathatja az Azure Cosmos-adatbázist a szinapszis munkaterülethez, és futtathat lekérdezéseket.
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a375656f579e626d8f41afe49adc3f2ebdb3b27d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 559c596ed9b7412b277fbfc1cf30cad15e852cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253156"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
 A Azure Cosmos DB szinapszis hivatkozása egy felhőalapú hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását Azure Cosmos DBokban lévő operatív adatokon. A szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre Azure Cosmos DB és az Azure szinapszis Analytics között.
 
 > [!IMPORTANT]
-> Az Azure szinapszis-hivatkozás használatához győződjön meg arról, hogy az Azure Cosmos-fiókot & Azure szinapszis Analytics-munkaterületen helyezi üzembe az egyik támogatott régióban. Az Azure szinapszis hivatkozás jelenleg a következő Azure-régiókban érhető el: USA nyugati középső régiója, USA keleti régiója, Nyugat-RÉGIÓJA, Észak-Európa, Nyugat-Európa, az USA déli középső régiója, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Európai U2, Egyesült Királyság déli régiója.
+> Az Azure szinapszis-hivatkozás használatához győződjön meg róla, hogy az Azure szinapszis Analytics-munkaterületet & az egyik támogatott régióban Azure Cosmos DB fiókját. Az Azure szinapszis hivatkozás jelenleg a következő Azure-régiókban érhető el: USA nyugati középső régiója, USA keleti régiója, Nyugat-RÉGIÓJA, Észak-Európa, Nyugat-Európa, az USA déli középső régiója, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Európai U2, Egyesült Királyság déli régiója.
 
-Az alábbi lépések végrehajtásával elemzési lekérdezéseket futtathat a Azure Cosmos DB szinapszis hivatkozásával:
+Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo DB-gyűjtemények Azure Cosmos DB API-k számára érhető el. Az alábbi lépések végrehajtásával elemzési lekérdezéseket futtathat a Azure Cosmos DB Azure szinapszis hivatkozásával:
 
-* [Az Azure Cosmos-fiókok szinapszis-hivatkozásának engedélyezése](#enable-synapse-link)
-* [Analitikai tár engedélyezett Azure Cosmos-tárolójának létrehozása](#create-analytical-ttl)
-* [Az Azure Cosmos-adatbázis összekötése egy szinapszis-munkaterülettel](#connect-to-cosmos-database)
+* [Szinapszis-hivatkozás engedélyezése a Azure Cosmos DB-fiókokhoz](#enable-synapse-link)
+* [Analitikai tár engedélyezett Azure Cosmos DB tárolójának létrehozása](#create-analytical-ttl)
+* [Azure Cosmos DB-adatbázis összekötése egy szinapszis-munkaterülettel](#connect-to-cosmos-database)
 * [Az analitikai tároló lekérdezése a szinapszis Spark használatával](#query-analytical-store-spark)
 * [Az analitikai tároló lekérdezése a szinapszis SQL Server nélküli használatával](#query-analytical-store-sql-on-demand)
 * [A szinapszis SQL Server nélküli használata az adatelemzéshez és megjelenítéséhez Power BI](#analyze-with-powerbi)
 
-## <a name="enable-azure-synapse-link-for-azure-cosmos-accounts"></a><a id="enable-synapse-link"></a>Azure-beli szinapszis-hivatkozás engedélyezése az Azure Cosmos-fiókokhoz
+## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure szinapszis-hivatkozás engedélyezése Azure Cosmos DB fiókokhoz
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. [Hozzon létre egy új Azure-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
+1. [Hozzon létre egy új Azure-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos db fiókot.
 
-1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **szolgáltatások** ablaktáblát.
+1. Navigáljon a Azure Cosmos DB-fiókjához, és nyissa meg a **szolgáltatások** ablaktáblát.
 
 1. Válassza a **szinapszis hivatkozás** elemet a szolgáltatások listából.
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="A szinapszis-hivatkozás előzetes funkciójának keresése":::
 
-1. Ezután felszólítja, hogy engedélyezze a szinapszis hivatkozását a fiókján. Válassza az Engedélyezés lehetőséget.
+1. Ezután felszólítja, hogy engedélyezze a szinapszis hivatkozását a fiókján. Válassza az **Engedélyezés** lehetőséget. A folyamat elvégzése 1 – 5 percet is igénybe vehet.
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Szinapszis-hivatkozás funkciójának engedélyezése":::
 
@@ -64,15 +64,17 @@ A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cos
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) vagy az [Azure Cosmos Explorerben](https://cosmos.azure.com/).
 
-1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő** lapot.
+1. Navigáljon a Azure Cosmos DB-fiókjához, és nyissa meg a **adatkezelő** lapot.
 
 1. Válassza az **új tároló** lehetőséget, és adja meg az adatbázis nevét, a tárolót, a partíció kulcsát és az átviteli sebesség részleteit. Kapcsolja be az **analitikai tároló** lehetőséget. Az analitikai tároló engedélyezése után egy olyan tárolót hoz létre, amelynek `AnalyicalTTL` a tulajdonsága az alapértelmezett-1 értékre van beállítva (végtelen megőrzés). Ez az analitikai tároló a rekordok összes korábbi verzióját megőrzi.
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Az analitikai tár bekapcsolása az Azure Cosmos-tárolóhoz":::
 
-1. Ha korábban nem engedélyezte a szinapszis hivatkozását ezen a fiókon, a rendszer felszólítja erre, mert ez egy, az analitikai tároló engedélyezett tárolójának létrehozásához szükséges előfeltétel. Ha a rendszer kéri, válassza a **szinapszis-hivatkozás engedélyezése**lehetőséget.
+1. Ha korábban nem engedélyezte a szinapszis hivatkozását ezen a fiókon, a rendszer felszólítja erre, mert ez egy, az analitikai tároló engedélyezett tárolójának létrehozásához szükséges előfeltétel. Ha a rendszer kéri, válassza a **szinapszis-hivatkozás engedélyezése**lehetőséget. A folyamat elvégzése 1 – 5 percet is igénybe vehet.
 
 1. Az **OK gombra**kattintva hozzon létre egy analitikai tár által engedélyezett Azure Cosmos-tárolót.
+
+1. A tároló létrehozása után ellenőrizze, hogy az analitikai tároló engedélyezve van-e. ehhez kattintson a **Beállítások**lehetőségre, közvetlenül a adatkezelő lévő dokumentumok elemre, és ellenőrizze, hogy be van-e kapcsolva az **analitikai tár élettartama** beállítás.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -170,7 +172,7 @@ Ha a Azure Portalon keresztül létrehozott egy analitikai tárolót engedélyez
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) vagy az [Azure Cosmos Explorerben](https://cosmos.azure.com/).
 
-1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő** lapot.
+1. Navigáljon a Azure Cosmos DB-fiókjához, és nyissa meg a **adatkezelő** lapot.
 
 1. Válasszon ki egy olyan meglévő tárolót, amelyen engedélyezve van az analitikus tároló. Bontsa ki a csomópontot, és módosítsa a következő értékeket:
 
@@ -215,7 +217,7 @@ Kövesse a [lekérdezés Azure Cosmos db analitikus tároló](../synapse-analyti
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> Az analitikai tároló lekérdezése a szinapszis SQL Server nélküli használatával
 
-A szinapszis SQL Server nélküli (előzetes verzió, amely korábban **SQL on-demand**néven ismert) használatával kérdezheti le és elemezheti a Azure Cosmos db tárolók adatait, amelyek engedélyezve vannak az Azure szinapszis hivatkozással. Közel valós időben elemezheti az adatait anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az analitikus áruházból származó adatok lekérdezését, valamint a BI-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a T-SQL felületen keresztül. További információért tekintse meg a [lekérdezési analitikus áruházat a SZINAPSZIS SQL Server nélküli](../synapse-analytics/sql/on-demand-workspace-overview.md) cikkben.
+A szinapszis SQL Server nélküli (előzetes verzió, amely korábban **SQL on-demand**néven ismert) használatával kérdezheti le és elemezheti a Azure Cosmos db tárolók adatait, amelyek engedélyezve vannak az Azure szinapszis hivatkozással. Közel valós időben elemezheti az adatait anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az analitikus áruházból származó adatok lekérdezését, valamint a BI-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a T-SQL felületen keresztül. További információért tekintse meg a [lekérdezési analitikus áruházat a SZINAPSZIS SQL Server nélküli](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) cikkben.
 
 > [!NOTE]
 > A Azure Cosmos DB analitikus tároló és a szinapszis SQL Server nélküli használata jelenleg az előzetes verzióban érhető el. A hozzáférés kéréséhez nyissa meg a [Azure Cosmos db csapatot](mailto:cosmosdbsynapselink@microsoft.com).
@@ -226,7 +228,7 @@ Létrehozhat egy szinapszis SQL Server nélküli adatbázist és a Azure Cosmos 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-A [Azure Resource Manager sablon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) létrehoz egy szinapszis hivatkozást, amely lehetővé teszi az Azure Cosmos-fiók SQL API-hoz való használatát. Ez a sablon létrehoz egy core (SQL) API-fiókot az egyik régióban egy olyan tárolóval, amelyen engedélyezve van az analitikai TTL, valamint a manuális vagy automatikus méretezési sebesség használata. A sablon üzembe helyezéséhez kattintson az **üzembe helyezés az Azure** -ra lehetőségre a readme oldalon.
+A [Azure Resource Manager sablon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) létrehoz egy szinapszis-hivatkozást Azure Cosmos db FIÓKOT az SQL API-hoz. Ez a sablon létrehoz egy core (SQL) API-fiókot az egyik régióban egy olyan tárolóval, amelyen engedélyezve van az analitikai TTL, valamint a manuális vagy automatikus méretezési sebesség használata. A sablon üzembe helyezéséhez kattintson az **üzembe helyezés az Azure** -ra lehetőségre a readme oldalon.
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Bevezetés az Azure Synpase link-Samples használatába
 

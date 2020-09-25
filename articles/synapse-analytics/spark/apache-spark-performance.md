@@ -1,6 +1,6 @@
 ---
 title: A Spark-feladatok optimalizálása a teljesítmény érdekében
-description: Ez a cikk az Azure szinapszis Analytics és a különböző fogalmak Apache Sparkának bevezetését ismerteti.
+description: Ez a cikk az Azure szinapszis Analytics Apache Sparkának bevezetését ismerteti.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249467"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark feladatok (előzetes verzió) optimalizálása az Azure szinapszis Analytics szolgáltatásban
 
-Megtudhatja, hogyan optimalizálhatja [Apache Spark](https://spark.apache.org/) -fürt konfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memória leterheltsége, amelynek okai lehetnek a nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtók), a hosszan futó műveletek, valamint a Descartes-műveleteket eredményező feladatok. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását.
+Megtudhatja, hogyan optimalizálhat egy [Apache Spark](https://spark.apache.org/) fürtkonfiguráció az adott számítási feladathoz.  A leggyakoribb kihívás a memória leterheltsége, amelynek okai lehetnek a nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtók), a hosszan futó műveletek, valamint a Descartes-műveleteket eredményező feladatok. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását.
 
 A következő szakaszok ismertetik a Spark-feladatok gyakori optimalizálásait és javaslatait.
 
@@ -52,7 +52,7 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
 
 A Spark számos formátumot támogat, például a CSV-t, a JSON-t, az XML-t, a parketta, az ork és a Avro. A Spark bővíthető a külső adatforrásokkal rendelkező több formátum támogatásához – további információ: [Apache Spark csomagok](https://spark-packages.org).
 
-A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely az alapértelmezett a Spark 2. x verzióban. A Parquet oszlopos formátumban tárolja az adatok, és a Spark-ban is nagyon optimalizált. Emellett a *lendületes tömörítés* is nagyobb fájlokat eredményezhet, mint a gzip-tömörítést. Ezeknek a fájloknak a felosztható jellegéből adódóan gyorsabban kitömöríthető lesz]
+A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely az alapértelmezett a Spark 2. x verzióban. A Parquet oszlopos formátumban tárolja az adatok, és a Spark-ban is nagyon optimalizált. Emellett a *Snappy Compression* is nagyobb fájlokat eredményezhet, mint a gzip-tömörítést. Ezeknek a fájloknak a felosztható jellegéből adódóan a kibontása gyorsabb lesz]
 
 ## <a name="use-the-cache"></a>Gyorsítótár használata
 
@@ -176,7 +176,7 @@ Ha például nem megváltoztathatatlan típust ( `string` ) használ az összes�
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hangolás Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
 - [A Apache Spark-feladatok tényleges finomhangolása](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)

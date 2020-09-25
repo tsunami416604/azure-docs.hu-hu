@@ -1,8 +1,8 @@
 ---
 title: Leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával | Microsoft Docs
-description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
+description: Megtudhatja, hogyan küldhet leküldéses értesítéseket adott iOS-felhasználóknak az Azure Notification Hubs használatával.
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302189"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs
 
@@ -312,7 +312,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     ```
 
     > [!NOTE]
-    > A következő kódrészlet nem biztonságos hitelesítési séma, a- `createAndSetAuthenticationHeaderWithUsername:AndPassword:` t az adott hitelesítési mechanizmussal kell helyettesítenie, amely létrehoz egy hitelesítési jogkivonatot, amelyet a regisztrációs ügyfél osztály használ fel, például OAuth, Active Directory.
+    > A következő kódrészlet nem biztonságos hitelesítési séma, a-    `createAndSetAuthenticationHeaderWithUsername:AndPassword:` t az adott hitelesítési mechanizmussal kell helyettesítenie, amely létrehoz egy hitelesítési jogkivonatot, amelyet a regisztrációs ügyfél osztály használ fel, például OAuth, Active Directory.
 
 10. Ezután `@implementation` `ViewController.m` adja hozzá a következő kódot a szakaszához, amely hozzáadja az eszköz-jogkivonat és a hitelesítési fejléc beállításának megvalósítását.
 
@@ -492,7 +492,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 
     ![iOS-teszt címkézett értesítése][4]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 

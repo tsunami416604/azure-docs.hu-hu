@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301923"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Bevezetés az Azure Defender for Container-jegyzékbe
 
@@ -64,14 +64,11 @@ A rendszerkép a beállításjegyzékből lett kihúzva. Ezután egy elkülöní
 
 Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
 
-### <a name="how-often-does-security-center-scan-my-images"></a>Milyen gyakran Security Center beolvasni a képeiket?
-A rendszer minden leküldéses vagy importálási képvizsgálatot aktivál, és ha a rendszerkép az elmúlt 30 napban lett kihúzva. 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Lekérhetem a vizsgálat eredményeit REST APIon keresztül?
 Igen. Az eredmények az [alárendelt értékelések REST API](/rest/api/securitycenter/subassessments/list/)-ban találhatók. Emellett használhatja az Azure Resource Graph (ARG), a Kusto API-t az összes erőforráshoz: a lekérdezés egy adott vizsgálatot tud beolvasni.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Milyen beállításjegyzék-típusok vannak beolvasva? Milyen típusú számlázást kell fizetni?
-A rendelkezésre állási szakasz felsorolja az Azure Defender által a Container nyilvántartók számára támogatott tároló-nyilvántartások típusait. 
+Az Azure Defender által a Container nyilvántartók számára támogatott tároló-nyilvántartási típusok listáját a [rendelkezésre állás](defender-for-container-registries-usage.md#availability)című részben tekintheti meg.
 
 Ha nem támogatott beállításjegyzéket csatlakozik az Azure-előfizetéséhez, a rendszer nem ellenőrzi őket, és nem lesz rájuk kiszámlázva.
 

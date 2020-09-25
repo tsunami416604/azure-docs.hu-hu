@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269709"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -65,6 +65,23 @@ A jelenlegi korlát értéke 100.
 
 A csoportos exportálás esetében csak a csoporton belül található hivatkozásokat exportáljuk, nem a [csoport erőforrásainak](https://www.hl7.org/fhir/group.html)minden jellemzőjét.
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>Küldhetek egy köteget az Azure API FHIR?
+
+Jelenleg támogatjuk a [Batch-csomagok](https://www.hl7.org/fhir/valueset-bundle-type.html) közzétételét, de nem támogatják a tranzakciós kötegek feladását a FHIR készült Azure API-ban. Az SQL által támogatott nyílt forráskódú FHIR-kiszolgálót tranzakciós kötegek küldésére használhatja.
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>Hogyan szerezhetem be az összes erőforrást egyetlen beteg számára a FHIR készült Azure API-ban?
+
+Az FHIR-hez készült Azure API-ban támogatjuk az [adatrekeszek keresését](https://www.hl7.org/fhir/compartmentdefinition.html) . Ez lehetővé teszi, hogy egy adott beteghez kapcsolódó összes erőforrást lekérje. Vegye figyelembe, hogy a jobb oldali rekesz magában foglalja az összes olyan erőforrást, amely a beteghez kapcsolódik, de maga nem maga a beteg, így a beteg számára is keresnie kell, ha az eredmények között a beteg erőforrásra van szüksége.
+
+Néhány példa erre:
+
+* Beteg/<id>/*
+* Beteg//Observation beolvasása <id>
+* Beolvassa a beteg/ <id> /Observation? Code = 8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Hol láthatok néhány példát a FHIR készült Azure API használatára a munkafolyamaton belül?
+
+Az állapotfigyelő architektúrák gyűjteménye az [Health Architecture GitHub oldalán](https://github.com/microsoft/health-architectures)érhető el.
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT-összekötő a FHIR (előzetes verzió)
 

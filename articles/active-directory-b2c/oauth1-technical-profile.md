@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259425"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -37,7 +37,7 @@ A **protokoll** elem **Name** attribútumát be kell állítani `OAuth1` . A **T
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-A **szabályzattípushoz** és a **InputClaimsTransformations** elemek üresek vagy hiányoznak.
+A **szabályzattípushoz** és a **InputClaimsTransformations**  elemek üresek vagy hiányoznak.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
@@ -88,23 +88,8 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg a (z `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` ) értéket. Győződjön meg arról, hogy lecseréli a **bérlőt** a bérlő nevére (például contosob2c.onmicrosoft.com), és **policyId** a szabályzat azonosítójával (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az összes olyan házirendhez, amely az identitás-szolgáltatói bejelentkezést használja.
-
-Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
+Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be a (z `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp` ) értéket. Ne felejtse el lecserélni a `{tenant-name}` bérlő nevét (például contosob2c) és a `{policy-id}` szabályzat azonosítóját (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az összes olyan házirendhez, amely az identitás-szolgáltatói bejelentkezést használja.
 
 Példák:
 
 - [Twitter hozzáadása OAuth1-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-twitter-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

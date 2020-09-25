@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259220"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Oktatóanyag a Onfido konfigurálásához a Azure Active Directory B2C
 
@@ -94,7 +94,7 @@ Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https:
 
 1. [Blob Storage-tároló beállítása a Storage-fiókban](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 
-2. Tárolja a felhasználói felületi fájlokat a felhasználói felület mappájából a blob-tárolóba.
+2. Tárolja a felhasználói felületi fájlokat a [felhasználói felület mappájából](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) a blob-tárolóba.
 
 3. A CORS hozzáférés engedélyezése a létrehozott tárolóhoz a következő utasítások követésével:
 
@@ -124,7 +124,7 @@ Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https:
 
 #### <a name="replace-the-configuration-values"></a>A konfigurációs értékek cseréje
 
-A megadott egyéni szabályzatokban keresse meg a következő helyőrzőket, és cserélje le a elemet a példány megfelelő értékeire.
+A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)keresse meg a következő helyőrzőket, és cserélje le a elemet a példány megfelelő értékeire.
 
 | Helyőrző | Csere értékkel | Példa  |
 |:---------------|:----------------|:-------------------|
@@ -165,7 +165,7 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 5. A Onfido szolgáltatás a folyamat során lesz meghívva, a felhasználói attribútum létrehozása után. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

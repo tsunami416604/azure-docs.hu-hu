@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269233"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Párhuzamos ágak létrehozása vagy csatlakoztatása a munkafolyamat-műveletekhez Azure Logic Apps
 
@@ -47,7 +47,7 @@ A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az ös
 
 1. A keresőmezőbe keresse meg és válassza ki a kívánt műveletet.
 
-   ![Keresse meg és válassza ki a kívánt műveletet](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![A Logic app Designerben a "művelet választása" ablakot bemutató képernyőkép.](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    A kiválasztott művelet most megjelenik a párhuzamos ágban, például:
 
@@ -59,7 +59,7 @@ A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az ös
 
 1. A keresőmezőbe keresse meg és válassza ki a kívánt műveletet.
 
-   ![Szekvenciális művelet keresése és kiválasztása](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![A Logic app Designerben a "művelet választása" ablakot és keresőmezőt bemutató képernyőkép.](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    A kiválasztott művelet most megjelenik az aktuális ág között, például:
 
@@ -186,7 +186,7 @@ Ha kód nézetben dolgozik, megadhatja az illesztési struktúrát a logikai alk
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)

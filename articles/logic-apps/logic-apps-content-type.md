@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269097"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Tartalomtípusok kezelése Azure Logic Appsban
 
@@ -59,9 +59,9 @@ A Logic Apps lehetővé teszi a JSON-tartalomban szereplő tulajdonságokat jelk
   
   1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.  
   
-  2. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget. Például: 
+  2. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget. Példa: 
 
-     ![Minta JSON-adattartalom megadása](./media/logic-apps-content-type/request-trigger.png)
+     ![Képernyőkép, amely a "HTTP-kérelem fogadása" ablakot jeleníti meg egy minta JSON-adattartalommal.](./media/logic-apps-content-type/request-trigger.png)
 
      A létrehozott séma most megjelenik az triggerben.
 
@@ -136,13 +136,13 @@ Egyes adattípusok megőrzése érdekében Logic Apps átalakítja a tartalmat e
 
 Ez a lista leírja, hogyan alakítja át a Logic Apps tartalmakat a [függvények](../logic-apps/workflow-definition-language-functions-reference.md)használatakor:
 
-* `json()`: Az adatátvitelt a következőre`application/json`
-* `xml()`: Az adatátvitelt a következőre`application/xml`
-* `binary()`: Az adatátvitelt a következőre`application/octet-stream`
-* `string()`: Az adatátvitelt a következőre`text/plain`
+* `json()`: Az adatátvitelt a következőre `application/json`
+* `xml()`: Az adatátvitelt a következőre `application/xml`
+* `binary()`: Az adatátvitelt a következőre `application/octet-stream`
+* `string()`: Az adatátvitelt a következőre `text/plain`
 * `base64()`: Tartalom konvertálása Base64 kódolású karakterlánccá
-* `base64toString()`: Base64 kódolású karakterlánc konvertálása`text/plain`
-* `base64toBinary()`: Base64 kódolású karakterlánc konvertálása`application/octet-stream`
+* `base64toString()`: Base64 kódolású karakterlánc konvertálása `text/plain`
+* `base64toBinary()`: Base64 kódolású karakterlánc konvertálása `application/octet-stream`
 * `dataUri()`: Sztring átalakítása adaturi-ra
 * `dataUriToBinary()`: Az adaturi-t bináris karakterlánccá alakítja
 * `dataUriToString()`: Az adaturi-t karakterlánccá alakítja át.

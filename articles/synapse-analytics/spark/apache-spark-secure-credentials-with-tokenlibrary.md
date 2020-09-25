@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249416"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>A hitelesítő adatok biztonságossá tétele a társított szolgáltatásokkal a TokenLibrary
-A külső forrásokból származó adatokhoz való hozzáférés gyakori minta. Ha a külső adatforrás engedélyezi a névtelen hozzáférést, akkor előfordulhat, hogy a kapcsolatot hitelesítő adatokkal, titkos kulccsal vagy kapcsolati karakterlánccal kell védenie.  Az Azure szinapszis Analytics társított szolgáltatásokat biztosít az integrációs folyamat egyszerűsítéséhez, ha egy társított szolgáltatásban vagy Azure Key Vaultban tárolja a kapcsolati adatokat. A társított szolgáltatás létrehozása után az Apache Spark hivatkozhat a társított szolgáltatásra, hogy alkalmazza a kapcsolati adatokat a kódban. További információ: [társított szolgáltatások](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+A külső forrásokból származó adatokhoz való hozzáférés gyakori minta. Ha a külső adatforrás engedélyezi a névtelen hozzáférést, akkor előfordulhat, hogy a kapcsolatot hitelesítő adatokkal, titkos kulccsal vagy kapcsolati karakterlánccal kell védenie.  
+
+Az Azure szinapszis Analytics társított szolgáltatásokat biztosít az integrációs folyamat egyszerűsítéséhez, ha egy társított szolgáltatásban vagy Azure Key Vaultban tárolja a kapcsolati adatokat. A társított szolgáltatás létrehozása után az Apache Spark hivatkozhat a társított szolgáltatásra, hogy alkalmazza a kapcsolati adatokat a kódban. 
+
+További információ: [társított szolgáltatások](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 > [!NOTE]
 > Ahhoz, hogy a munkaterületen lévő Azure Data Lake Storage fájljai hozzáférjenek a HRE, ezért a TokenLibrary nem kell használnia. 
 
@@ -26,7 +30,7 @@ A külső forrásokból származó adatokhoz való hozzáférés gyakori minta. 
 * Társított szolgáltatás – létre kell hoznia egy társított szolgáltatást a külső adatforráshoz, és hivatkoznia kell a társított szolgáltatásra a jogkivonat-tárból. További információ a [társított szolgáltatásokról](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>Csatlakozás a szinapszis munkaterületen kívüli ADLS Gen2hoz
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>Kapcsolódás a szinapszis munkaterületen kívüli ADLS Gen2hoz
 
 A szinapszis egy integrált társított szolgáltatási élményt biztosít a Azure Data Lake Storage Gen2 számára.
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>A jogkivonat-függvénytár használata
+## <a name="use-the-token-library"></a>A jogkivonat-függvénytár használata
 
 Ha más társított szolgáltatásokhoz szeretne csatlakozni, közvetlenül is meghívhatja a TokenLibrary.
 

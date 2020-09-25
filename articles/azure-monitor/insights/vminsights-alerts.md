@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
-ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80289601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254805"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Riasztások létrehozása a Azure Monitor for VMsból
 A [Azure monitor riasztásai](../platform/alerts-overview.md) proaktívan értesítik Önt a megfigyelési adataiban található érdekes adatmennyiségekről és mintákról. A Azure Monitor for VMs nem tartalmaz előre konfigurált riasztási szabályokat, de saját maga is létrehozhat saját adatokat a gyűjtött adatok alapján. Ez a cikk útmutatást nyújt a riasztási szabályok létrehozásához, többek között a példákat tartalmazó lekérdezésekhez.
@@ -22,8 +22,8 @@ A Azure Monitor [különböző típusú riasztási szabályokkal](../platform/al
 
 A Azure Monitor két típusú naplózási riasztás létezik:
 
-- [Az eredmények száma riasztások](../platform/alerts-unified-log.md#number-of-results-alert-rules) esetén egyetlen riasztás jön létre, ha egy lekérdezés legalább egy megadott számú rekordot ad vissza. Ezek ideálisak a nem numerikus adatokhoz, például a [log Analytics ügynök](../platform/log-analytics-agent.md) által összegyűjtött Windows-és syslog-eseményekhez, vagy a teljesítménybeli trendek elemzéséhez több számítógép között.
-- A [metrikai mérési riasztások](../platform/alerts-unified-log.md#metric-measurement-alert-rules) külön riasztást hoznak létre minden olyan rekordhoz, amely egy olyan értékkel rendelkezik, amely meghaladja a riasztási szabályban meghatározott küszöbértéket. Ezek a riasztási szabályok ideálisak a Azure Monitor for VMs által gyűjtött teljesítményadatok számára, mivel egyéni riasztásokat hozhatnak létre az egyes számítógépekhez.
+- [Az eredmények száma riasztások](../platform/alerts-unified-log.md#count-of-the-results-table-rows) esetén egyetlen riasztás jön létre, ha egy lekérdezés legalább egy megadott számú rekordot ad vissza. Ezek ideálisak a nem numerikus adatokhoz, például a [log Analytics ügynök](../platform/log-analytics-agent.md) által összegyűjtött Windows-és syslog-eseményekhez, vagy a teljesítménybeli trendek elemzéséhez több számítógép között.
+- A [metrikai mérési riasztások](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) külön riasztást hoznak létre minden olyan rekordhoz, amely egy olyan értékkel rendelkezik, amely meghaladja a riasztási szabályban meghatározott küszöbértéket. Ezek a riasztási szabályok ideálisak a Azure Monitor for VMs által gyűjtött teljesítményadatok számára, mivel egyéni riasztásokat hozhatnak létre az egyes számítógépekhez.
 
 
 ## <a name="alert-rule-walkthrough"></a>Riasztási szabály – útmutató
@@ -195,7 +195,7 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor riasztásokról](../platform/alerts-overview.md).
 - További információ a [Azure monitor for VMS származó adatokkal történő naplózási lekérdezésekről](vminsights-log-search.md).
