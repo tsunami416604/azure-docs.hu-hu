@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512334"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257452"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -111,6 +111,12 @@ Ha elfogadta az alkalmazás-regisztrációs portál által javasolt azonosító 
 
 Ha egy alkalmazás hívása olyan vezérlőre történik, amely egy **[engedélyezés]** attribútummal rendelkezik, a ASP.net és a ASP.net Core Kinyeri a hozzáférési jogkivonatot az engedélyezési fejléc tulajdonosi jogkivonatával. Ezután a hozzáférési tokent továbbítjuk a JwtBearer middleware-re, amely meghívja a .NET-hez készült Microsoft IdentityModel-bővítményeket.
 
+#### <a name="microsoftidentityweb"></a>Microsoft. Identity. Web
+
+A Microsoft azt javasolja, hogy a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet csomagot használja a webes API-k ASP.net Core való fejlesztésekor.
+
+A _Microsoft. Identity. Web_ biztosítja a ASP.net Core, a köztes hitelesítés és a .net-hez készült [Microsoft Authentication Library (MSAL)](msal-overview.md) közötti összekapcsolást. A funkció lehetővé teszi a tisztább és robusztusabb fejlesztői élményt, és kihasználja a Microsoft Identity platform és a Azure AD B2C erejét.
+
 #### <a name="using-microsoftidentityweb-templates"></a>A Microsoft. Identity. Web sablonok használata
 
 A Microsoft. Identity. Web Project sablonok használatával létrehozhat egy teljesen új webes API-t. További részletek: [Microsoft. Identity. Web-Web API Project sablon](https://aka.ms/ms-id-web/webapi-project-templates)
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat a Microsoft Identity platform végpontjának használatára is módosíthatja a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web)használatával, amely NuGet-csomagként érhető el, a kód helyére a *Startup.cs*:
+ A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat azonban a Microsoft Identity platform végpontjának használatára módosíthatja a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) helyett a *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -189,7 +195,7 @@ Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](h
 
 Ez a táblázat a validatorokat ismerteti:
 
-| Validator | Description |
+| Validator | Leírás |
 |---------|---------|
 | **ValidateAudience** | Gondoskodik arról, hogy a jogkivonat az alkalmazáshoz legyen hitelesítve, amely érvényesíti a jogkivonatot. |
 | **ValidateIssuer** | Gondoskodik arról, hogy a tokent egy megbízható STS bocsátotta ki, ami azt jelenti, hogy a jogkivonatot megbízhatónak minősíti. |

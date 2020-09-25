@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 97d3b5030ed0ddb29fc439f4a0f6bcc7ff98b6ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268026"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
 A fenyegetések megelőzése, észlelése és elhárítása érdekében a Azure Security Center gyűjti és dolgozza fel a biztonsággal kapcsolatos adatokat, beleértve a konfigurációs információkat, a metaadatokat, az eseménynaplókat és egyebeket. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
@@ -76,7 +76,7 @@ Ha nem használja az Azure Defendert, akkor a biztonsági házirendben letilthat
 
 Az ügyfelek különböző adatstreamekből származó Security Center-adatokat használhatnak, az alábbiak szerint:
 
-* **Azure-tevékenység**: minden biztonsági riasztás, jóváhagyott [Security Center igény](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) szerinti kérelmek, valamint az [adaptív alkalmazások](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)által létrehozott összes riasztás.
+* **Azure-tevékenység**: minden biztonsági riasztás, jóváhagyott [Security Center igény](security-center-just-in-time.md) szerinti kérelmek, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.
 * **Azure monitor naplók**: minden biztonsági riasztás.
 
 

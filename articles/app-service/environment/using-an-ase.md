@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255162"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -161,7 +161,7 @@ További változtatások nélkül az internetalapú CI-rendszerek (például a G
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
@@ -196,7 +196,7 @@ Ha integrálja Log Analyticsokkal, a naplókat a beadási portál **naplók** el
 
 **Riasztás létrehozása**
 
-Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozása, megtekintése és kezelése a Azure monitor használatával című][logalerts]témakör utasításait. Röviden:
+Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozása, megtekintése és kezelése a Azure monitor használatával című](../../azure-monitor/platform/alerts-log.md)témakör utasításait. Röviden:
 
 * A beadási portál riasztások oldalának megnyitása
 * **Új riasztási szabály** kiválasztása
@@ -250,7 +250,7 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="ase-cli"></a>KIEGÉSZÍTŐ PARANCSSORI FELÜLET
 

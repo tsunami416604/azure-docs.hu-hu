@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7e4da2051ab84cebff5aae857c02907f7b58e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263623"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Oktatóanyag: az aktív földrajzi replikálás és feladatátvétel konfigurálása a Azure Portalban (Azure SQL Database)
 
@@ -55,12 +55,12 @@ A másodlagos létrehozása és összevetése után az adatok megkezdik az első
     ![Aktív georeplikáció konfigurálása](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. Válassza ki vagy konfigurálja a másodlagos adatbázis kiszolgálóját és díjszabási szintjét.
 
-    ![Másodlagos konfigurálása](./media/active-geo-replication-configure-portal/create-secondary.png)
+    ![másodlagos űrlap létrehozása](./media/active-geo-replication-configure-portal/create-secondary.png)
 4. Lehetősége van másodlagos adatbázist is felvenni egy rugalmas készletbe. A másodlagos adatbázis készletben való létrehozásához kattintson a **rugalmas készlet** elemre, és jelöljön ki egy készletet a célkiszolgálón. Egy készletnek már léteznie kell a célkiszolgálón. Ez a munkafolyamat nem hoz létre készletet.
 5. A másodlagos hozzáadásához kattintson a **Létrehozás** gombra.
 6. A rendszer létrehozza a másodlagos adatbázist, és megkezdi az előkészítési folyamatot.
 
-    ![Másodlagos konfigurálása](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![formátumú másodlagos zónák Térkép](./media/active-geo-replication-configure-portal/seeding0.png)
 7. A kiindulási folyamat befejezésekor a másodlagos adatbázis megjeleníti annak állapotát.
 
     ![Előkészítés befejezve](./media/active-geo-replication-configure-portal/seeding-complete.png)
@@ -73,7 +73,7 @@ A másodlagos adatbázis átváltható elsődlegesként.
 2. A SQL Database panelen válassza a **minden beállítás**  >  **földrajzi replikálás**lehetőséget.
 3. A **formátumú másodlagos zónák** listában válassza ki azt az adatbázist, amelynek az új elsődlegesnek kell lennie, majd kattintson a **kényszerített feladatátvétel**elemre.
 
-    ![feladatátvételi](./media/active-geo-replication-configure-portal/secondaries.png)
+    ![feladatátvétel](./media/active-geo-replication-configure-portal/secondaries.png)
 4. A feladatátvétel elindításához kattintson az **Igen** gombra.
 
 A parancs azonnal átváltja a másodlagos adatbázist az elsődleges szerepkörbe. Ez a folyamat általában legalább 30 másodpercen belül elvégezhető.
@@ -95,7 +95,7 @@ Ez a művelet véglegesen leállítja a replikálást a másodlagos adatbázisba
     ![Másodlagos eltávolítása](./media/active-geo-replication-configure-portal/remove-secondary.png)
 5. Megnyílik egy megerősítő ablak. Az **Igen** gombra kattintva távolítsa el az adatbázist a földrajzi replikálási partnerségből. (Állítsa azt egy írható-olvasható adatbázisba, amely nem része egyetlen replikációnak sem.)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az aktív földrajzi replikálásról: [Active geo-Replication](active-geo-replication-overview.md).
 * További információ az automatikus feladatátvételi csoportokról: [automatikus feladatátvételi csoportok](auto-failover-group-overview.md)

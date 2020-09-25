@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296195"
 ---
 # <a name="options"></a>Beállítások #
 
@@ -51,7 +51,7 @@ Ha az automatikus lejátszás értéke TRUE (igaz), a videó a lap betöltése u
 > [!NOTE]
 > Ez a beállítás nem támogatott a mobileszközök, például az Windows Phone-telefon, az Apple iOS és az Android esetében. A mobileszközök letiltják az automatikus lejátszás funkciót, amely megakadályozza a fogyasztó havi adatcsomagjainak (gyakran költséges) használatát. Ebben az esetben a videó elindításához a felhasználó érintése/kattintás szükséges.
 
-`<video autoplay ...>`vagy`{ "autoplay": true }`
+`<video autoplay ...>`vagy `{ "autoplay": true }`
 
 ### <a name="poster"></a>poszter ###
 A poszter attribútum azt a képet állítja be, amely a videó megkezdése előtt megjelenik. Ez gyakran a videó kerete vagy egy egyéni cím képernyő. Amint a felhasználó rákattint a lejátszás gombra, a rendszer elindul.
@@ -93,11 +93,11 @@ Ha ezt a beállítást True video elemre állítja, a rendszer a szülő tárol�
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`a beállítás felülbírálja `width` a explicit és a `height` beállításokat. Ez a beállítás csak Azure Media Player vagy újabb verzióban érhető el `2.0.0` .
+`fluid` a beállítás felülbírálja `width` a explicit és a `height` beállításokat. Ez a beállítás csak Azure Media Player vagy újabb verzióban érhető el `2.0.0` .
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`a beállítás szabályozza a felhasználó számára elérhető playbackSpeed-szabályozást és a lejátszási sebesség beállítását. `playbackSpeed`egy objektumot vesz fel. Ha engedélyezni szeretné a lejátszás sebességének vezérlését a menüsávon, `enabled` az objektum tulajdonságát True értékre kell állítani. Példa a lejátszási sebesség engedélyezésére a kódban:
+`playbackSpeed` a beállítás szabályozza a felhasználó számára elérhető playbackSpeed-szabályozást és a lejátszási sebesség beállítását. `playbackSpeed` egy objektumot vesz fel. Ha engedélyezni szeretné a lejátszás sebességének vezérlését a menüsávon, `enabled` az objektum tulajdonságát True értékre kell állítani. Példa a lejátszási sebesség engedélyezésére a kódban:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 

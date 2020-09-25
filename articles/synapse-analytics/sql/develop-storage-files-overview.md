@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288987"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Külső tárterület elérése a szinapszis SQL-ben (igény szerint)
 
@@ -52,12 +52,12 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-Ha nincs olyan kiszolgálói szintű HITELESÍTő adat, amely megfelel az URL-címnek vagy az SQL-felhasználónak nincs hivatkozása erre a hitelesítő adatra, a rendszer a hibaüzenetet adja vissza. Az SQL-rendszerbiztonsági tag nem tud megszemélyesíteni néhány Azure AD-identitást.
+Ha nincs olyan kiszolgálói szintű HITELESÍTő adat, amely megfelel az URL-címnek, vagy az SQL-felhasználó nem rendelkezik hivatkozásokkal a hitelesítő adatokhoz, a rendszer a hibaüzenetet adja vissza. Az SQL-rendszerbiztonsági tag nem tud megszemélyesíteni néhány Azure AD-identitást.
 
 ### <a name="direct-access"></a>[Közvetlen hozzáférés](#tab/direct-access)
 
 Nincs szükség további beállításra ahhoz, hogy az Azure AD-felhasználók identitásuk alapján hozzáférjenek a fájlokhoz.
-Bármely felhasználó hozzáférhet az Azure Storage szolgáltatáshoz, amely engedélyezi a névtelen hozzáférést (további beállításra nincs szükség).
+Bármely felhasználó hozzáférhet az Azure Storage szolgáltatáshoz, amely lehetővé teszi a névtelen hozzáférést (további beállításra nincs szükség).
 
 ---
 
@@ -79,7 +79,7 @@ A lekérdezést végrehajtó felhasználónak képesnek kell lennie hozzáférni
 
 ### <a name="impersonation"></a>[Megszemélyesítési](#tab/impersonation)
 
-`DATABASE SCOPED CREDENTIAL`Megadja, hogy miként lehet hozzáférni a hivatkozott adatforrásban található fájlokhoz (jelenleg SAS és felügyelt identitás). Az engedéllyel rendelkező energiaellátási felhasználónak `CONTROL DATABASE` létre kell hoznia `DATABASE SCOPED CREDENTIAL` ezt a tároló eléréséhez, `EXTERNAL DATA SOURCE` amely a használandó adatforrás és hitelesítő adatok URL-címét adja meg:
+`DATABASE SCOPED CREDENTIAL` Megadja, hogy miként lehet hozzáférni a hivatkozott adatforrásban található fájlokhoz (jelenleg SAS és felügyelt identitás). Az engedéllyel rendelkező energiaellátási felhasználónak `CONTROL DATABASE` létre kell hoznia `DATABASE SCOPED CREDENTIAL` ezt a tároló eléréséhez, `EXTERNAL DATA SOURCE` amely a használandó adatforrás és hitelesítő adatok URL-címét adja meg:
 
 ```sql
 EXECUTE AS somepoweruser;
@@ -99,9 +99,9 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 A hívónak a következő engedélyek egyikével kell rendelkeznie a OPENROWSET függvény végrehajtásához:
 
 - A OPENROWSET végrehajtásának egyik engedélye:
-  - `ADMINISTER BULK OPERATIONS`engedélyezi a bejelentkezést a OPENROWSET függvény végrehajtásához.
-  - `ADMINISTER DATABASE BULK OPERATIONS`lehetővé teszi, hogy az adatbázis hatókörű felhasználója OPENROWSET-függvényt hajtson végre.
-- `REFERENCES DATABASE SCOPED CREDENTIAL`a-ben hivatkozott hitelesítő adathoz `EXTERNAL DATA SOURCE` .
+  - `ADMINISTER BULK OPERATIONS` engedélyezi a bejelentkezést a OPENROWSET függvény végrehajtásához.
+  - `ADMINISTER DATABASE BULK OPERATIONS` lehetővé teszi, hogy az adatbázis hatókörű felhasználója OPENROWSET-függvényt hajtson végre.
+- `REFERENCES DATABASE SCOPED CREDENTIAL` a-ben hivatkozott hitelesítő adathoz `EXTERNAL DATA SOURCE` .
 
 ### <a name="direct-access"></a>[Közvetlen hozzáférés](#tab/direct-access)
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 A táblázat olvasására jogosult felhasználók külső fájlokat is elérhet az Azure Storage-mappák és-fájlok készletén létrehozott külső tábla használatával.
 
-A [külső tábla létrehozásához szükséges engedélyekkel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) rendelkező felhasználó (például CREATE TABLE és a hitelesítő adatok vagy az adatbázis HATÓKÖRű HITELESÍTŐ adatainak módosítása) a következő parancsfájllal hozhat létre táblázatot az Azure Storage-adatforráson:
+A [külső tábla létrehozásához szükséges engedélyekkel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) rendelkező felhasználó (például CREATE TABLE és a hitelesítő adatok vagy az adatbázis HATÓKÖRű HITELESÍTŐ adatainak módosítása) a következő parancsfájllal hozhat létre táblázatot az Azure Storage-adatforráson:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
@@ -171,8 +171,8 @@ FROM dbo.DimProductsExternal
 ```
 
 A hívónak az alábbi engedélyekkel kell rendelkeznie az információk olvasásához:
-- `SELECT`engedély a külső táblán
-- `REFERENCES DATABASE SCOPED CREDENTIAL`engedély `DATA SOURCE` , ha rendelkezik`CREDENTIAL`
+- `SELECT` engedély a külső táblán
+- `REFERENCES DATABASE SCOPED CREDENTIAL` engedély `DATA SOURCE` , ha rendelkezik `CREDENTIAL`
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -182,13 +182,13 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 | --- | --- |
 | OPENROWSET (BULK) adatforrás nélkül | `ADMINISTER BULK OPERATIONS`, `ADMINISTER DATABASE BULK OPERATIONS` vagy az SQL-bejelentkezéshez hivatkozásokkal rendelkező hitelesítő adatok szükségesek:: \<URL> sas által védett tároló esetén |
 | OPENROWSET (TÖMEGES) adatforrással hitelesítő adatok nélkül | `ADMINISTER BULK OPERATIONS`vagy `ADMINISTER DATABASE BULK OPERATIONS` |
-| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | `REFERENCES DATABASE SCOPED CREDENTIAL`és az egyik `ADMINISTER BULK OPERATIONS` vagy`ADMINISTER DATABASE BULK OPERATIONS` |
+| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | `REFERENCES DATABASE SCOPED CREDENTIAL` és az egyik `ADMINISTER BULK OPERATIONS` vagy `ADMINISTER DATABASE BULK OPERATIONS` |
 | KÜLSŐ ADATFORRÁS LÉTREHOZÁSA | `ALTER ANY EXTERNAL DATA SOURCE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| KÜLSŐ TÁBLA LÉTREHOZÁSA | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` és`ALTER ANY EXTERNAL DATA SOURCE` |
+| KÜLSŐ TÁBLA LÉTREHOZÁSA | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` és `ALTER ANY EXTERNAL DATA SOURCE` |
 | KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMINISTER BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

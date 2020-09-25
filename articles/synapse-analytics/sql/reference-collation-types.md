@@ -8,23 +8,23 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288069"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Adatbázis-rendezési támogatás a szinapszis SQL-hez
 
-A rendezések lehetővé teszik a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok megkülönböztetésére vonatkozó szabályok megadását. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
+A rendezések a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok esetében a karakterek megkülönböztetésére szolgáló szabályokat biztosítják. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
 
 Az adatbázis alapértelmezett rendezését az új SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
 
 Megadhatja az alapértelmezett szinapszis SQL on-demand adatbázis-rendezést a létrehozáskor az adatbázis létrehozása utasítás használatával.
 
 ## <a name="change-collation"></a>Rendezés módosítása
-Az SQL Pool-adatbázis alapértelmezett rendezésének módosításához egyszerűen frissítse a rendezési mezőt a létesítési élményben. Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra. 
+Az SQL Pool-adatbázis alapértelmezett rendezésének módosításához frissítsen a rendezés mezőre a létesítési élményben. Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, akkor a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra kell átnevezni. 
 
 Az SQL on-demand adatbázis alapértelmezett rendezésének módosításához használhatja az ALTER DATABASE utasítást.
 

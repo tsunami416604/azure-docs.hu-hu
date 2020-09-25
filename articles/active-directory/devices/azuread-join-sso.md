@@ -1,6 +1,6 @@
 ---
 title: Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a hibrid Azure Active Directory-csatlakoztatott eszközöket.
+description: Ismerje meg, hogyan bővítheti az egyszeri bejelentkezési élményt a hibrid Azure Active Directory csatlakoztatott eszközök konfigurálásával.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256462"
 ---
-# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön
+# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>A helyszíni erőforrásokra történő egyszeri bejelentkezés működése Azure AD-be léptetett eszközökön
 
 Valószínűleg nem meglepő, hogy egy Azure Active Directory (Azure AD) csatlakoztatott eszköz egyszeri bejelentkezéses (SSO) élményt biztosít a bérlő felhőalapú alkalmazásai számára. Ha a környezet helyszíni Active Directory (AD), kiterjesztheti ezen eszközök egyszeri bejelentkezéses felületét olyan erőforrásokra és alkalmazásokra, amelyek helyszíni AD-t is használnak. 
 
@@ -70,6 +70,6 @@ A Active Directory számítógép-hitelesítéstől függő alkalmazások és er
 
 Egy Azure AD-hez csatlakoztatott eszközön nem oszthat meg fájlokat más felhasználókkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Mi az Eszközkezelés a Azure Active Directory?](overview.md) 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254074"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
@@ -121,7 +121,7 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge eszköz hibaelhárítása
 
-A `iotedge` futó modulok állapotát és naplóit a parancssori eszközzel is megtekintheti. Például:
+A `iotedge` futó modulok állapotát és naplóit a parancssori eszközzel is megtekintheti. Példa:
 * `iotedge list`: A futó modulok listáját jelenti. 
   A következővel további hibákat is megtudhat `iotedge logs edgeAgent` . Ha `iotedge` elakad, próbálkozzon újra a használatával `iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -313,8 +313,7 @@ Ha a modul naplóiban a következő üzenet jelenik meg, az Azure-előfizetést 
 
 "A tároló érvénytelen állapotban van. Az előfizetés ellenőrzése nem sikerült, állapot: "eltérés". Az API-kulcs nem a megadott típusú tárolóhoz készült. "
 
-További információ: [a kérelem jóváhagyása a tároló futtatásához](spatial-analysis-container.md#request-approval-to-run-the-container). 
-
+További információ: [a kérelem jóváhagyása a tároló futtatásához](spatial-analysis-container.md#request-approval-to-run-the-container).
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Az Azure Stack Edge-eszköz hibaelhárítása
 

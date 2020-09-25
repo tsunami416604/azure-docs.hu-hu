@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e70b22b3edaae96e00306d5d0a93d229e11aac41
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296977"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
@@ -71,7 +71,7 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
     > [!div class="mx-imgBorder"]
     > [![A iotedge virtuális gép DNS-nevét bemutató képernyőkép](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
 
-1. Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a társított **DNS-nevet** a következő paranccsal:`ssh <adminUsername>@<DNS_Name>`
+1. Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a társított **DNS-nevet** a következő paranccsal:  `ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="deploy-from-azure-cli"></a>Üzembe helyezés az Azure CLI-ből
 
@@ -117,7 +117,7 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='my-edge-vm1' \
    --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
    --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
@@ -134,7 +134,7 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
     --template-uri "https://aka.ms/iotedge-vm-deploy" \
     --parameters dnsLabelPrefix='my-edge-vm1' \
     --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
-    --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
     --parameters authenticationType='sshPublicKey' \
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
@@ -157,9 +157,9 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
     > [!div class="mx-imgBorder"]
     > [![A iotedge virtuális gép DNS-nevét bemutató képernyőkép](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
 
-1. Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a társított **DNS-nevet** a következő paranccsal:`ssh <adminUsername>@<DNS_Name>`
+1. Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a társított **DNS-nevet** a következő paranccsal:  `ssh <adminUsername>@<DNS_Name>`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már telepített egy IoT Edge eszközt a futtatott futtatókörnyezettel, telepítheti [IoT Edge modulokat](how-to-deploy-modules-portal.md).
 

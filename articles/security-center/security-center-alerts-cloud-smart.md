@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60798ad1fab0ed66f3d4a39b2fd7faf79fd515e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73686486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268063"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Felhőbeli intelligens riasztás korrelációja Azure Security Centerban (incidensek)
 
@@ -38,5 +38,5 @@ Az incidensek vizsgálata során az elemzőknek gyakran további kontextusra van
 
 ![Képernyőkép a biztonsági incidensek által észlelt jelentésről](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-A biztonsági incidensek jobb megismeréséhez lásd: a [biztonsági incidensek kezelése a Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-incident).
+A biztonsági incidensek jobb megismeréséhez lásd: a [biztonsági incidensek kezelése a Azure Security Centerban](security-center-incident.md).
 

@@ -1,7 +1,7 @@
 ---
 title: E-mail-ellenőrzés letiltása egyéni szabályzattal rendelkező ügyfél-regisztráció során
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan tilthatja le az e-mailek ellenőrzését a Azure Active Directory B2C az ügyfelek regisztrációja során.
+description: Megtudhatja, hogyan tilthatja le az e-mailek ellenőrzését a Azure Active Directory B2C egyéni szabályzatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29426f8e3797c89deb712e89e0d972dd1ac8028e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9372a9caff5aefb53bfa8adf7eb1c68d2a3b7b2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259612"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az e-mailek ellenőrzésének letiltása az ügyfél-regisztráció során a Azure Active Directory B2C egyéni szabályzatának használatával
 
@@ -58,6 +58,6 @@ A **LocalAccountSignUpWithLogonEmail** technikai profil egy [önérvényesített
 3. Az érvényesítés nélkül egy e-mail-cím használatával regisztrálhat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [önérvényesített technikai profilról](self-asserted-technical-profile.md) a IEF-referenciában.

@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c64a42c66a3b1c1810c17347e18979d599b36b6f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288393"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>Az SQL igény szerinti Azure Cosmos DB lekérdezése az Azure-beli szinapszis-kapcsolaton (előzetes verzió)
 
-Az SQL Server nélküli (korábban SQL on-demand) lehetővé teszi az Azure Cosmos DB tárolóban lévő adatok elemzését az [Azure szinapszis-hivatkozással](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
+Az SQL Server nélküli (korábban SQL on-demand) lehetővé teszi az Azure Cosmos DB tárolóban lévő adatok elemzését az [Azure szinapszis-hivatkozással](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben, a tranzakciós számítási feladatok teljesítményének befolyásolása nélkül. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
 
 > [!NOTE]
 > Az SQL on-demand szolgáltatással Azure Cosmos DB analitikus tároló lekérdezésének támogatása jelenleg elérhető előzetes verzióban érhető el. 
@@ -44,7 +44,7 @@ A Azure Cosmos DB kapcsolódási karakterlánc megadja a Azure Cosmos DB fiók n
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
-A Azure Cosmos DB tároló neve idézőjelek nélkül van megadva a `OPENROWSET` szintaxisban. Ha a tároló neve tartalmaz valamilyen speciális karaktert (például egy kötőjelet), a nevet a `[]` szintaxisban a (szögletes zárójelben) belül kell becsomagolni `OPENROWSET` .
+A Azure Cosmos DB tároló neve idézőjelek nélkül van megadva a `OPENROWSET` szintaxisban. Ha a tároló neve speciális karaktereket tartalmaz (például kötőjelet (-)), a nevet a `[]` szintaxisban a (szögletes zárójelben) belül kell becsomagolni `OPENROWSET` .
 
 > [!NOTE]
 > Az SQL on-demand nem támogatja Azure Cosmos DB tranzakciós tároló lekérdezését.
@@ -85,9 +85,9 @@ FROM OPENROWSET(
 
 ## <a name="explicitly-specify-schema"></a>Séma explicit meghatározása
 
-Habár az automatikus séma-következtetési funkció `OPENROWSET` egyszerű és könnyen használható querience biztosít, az üzleti forgatókönyvek esetében előfordulhat, hogy explicit módon meg kell adnia a sémát, hogy csak a Azure Cosmos db adatokból származó releváns tulajdonságokat olvassa be.
+Habár az automatikus séma-következtetési funkció `OPENROWSET` egy egyszerű, könnyen használható querience biztosít, az üzleti forgatókönyvek esetében előfordulhat, hogy explicit módon meg kell adnia a sémát a csak olvasható tulajdonságokhoz a Azure Cosmos db adatokból.
 
-`OPENROWSET` lehetővé teszi explicit módon megadhatja, hogy milyen tulajdonságokat szeretne beolvasni a tárolóban lévő adatokból, és megadhatja az adattípusokat. Tegyük fel, hogy az [ECDC COVID-adatkészletből](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) néhány adat importálása a következő szerkezettel történt Azure Cosmos db:
+`OPENROWSET` lehetővé teszi explicit módon megadhatja, hogy milyen tulajdonságokat szeretne beolvasni a tárolóban lévő adatokból, és megadhatja az adattípusokat. Tegyük fel, hogy az [ECDC COVID-adatkészletből](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) importáltunk néhány adatát a következő szerkezettel Azure Cosmos DBba:
 
 ```json
 {"date_rep":"2020-08-13","cases":254,"countries_and_territories":"Serbia","geo_id":"RS"}
@@ -179,7 +179,7 @@ További információ az [összetett adattípusok elemzéséről a szinapszis-hi
 
 ## <a name="flattening-nested-arrays"></a>Beágyazott tömbök összeolvasztása
 
-Azure Cosmos DB adatok lehetnek beágyazott altömbök, például a szerzők tömbje a [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) -adatkészletből:
+Azure Cosmos DB adatok lehetnek beágyazott altömbök, például a szerző tömbje a [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) -adatkészletből:
 
 ```json
 {
@@ -236,7 +236,7 @@ Kiegészítő információk öko-epidemi... | `[{"first":"Nicolas","last":"4#","
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB az SQL-típusok megfeleltetéséhez
 
-Fontos megjegyezni, hogy habár Azure Cosmos DB tranzakciós tároló séma-agnosztikus, az analitikai tároló sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. A szinapszis hivatkozás automatikus szinkronizálási funkciójával a Azure Cosmos DB kezeli a séma megjelenítését az analitikus tárolóban, amely magában foglalja a beágyazott adattípusok kezelését. Mivel az SQL on-demand lekérdezi az analitikai tárolót, fontos tisztában lennie azzal, hogyan képezhető le Azure Cosmos DB bemeneti adattípusok az SQL-adattípusokhoz.
+Fontos megjegyezni, hogy habár Azure Cosmos DB tranzakciós tároló séma-agnosztikus, az analitikai tároló sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. A szinapszisok automatikus szinkronizálási funkciójával a Azure Cosmos DB kezeli a séma megjelenítését az analitikus tárolóban, amely magában foglalja a beágyazott adattípusok kezelését. Mivel az SQL on-demand lekérdezi az analitikai tárolót, fontos tisztában lennie azzal, hogyan képezhető le Azure Cosmos DB bemeneti adattípusok az SQL-adattípusokhoz.
 
 Azure Cosmos DB SQL (Core) API-fiókok esetében a JSON-tulajdonságok száma, karakterlánc, logikai, null, beágyazott objektum vagy tömb. Olyan SQL-típusokat kell választania, amelyek megfelelnek ezeknek a JSON-típusoknak, ha a `WITH` záradékot használja `OPENROWSET` . Tekintse meg azokat az SQL-oszlopokat, amelyeket a Azure Cosmos DB különböző típusú tulajdonságainál kíván használni.
 

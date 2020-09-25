@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293900"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>DACPAC-és BACPAC-csomagok beSQL Databasea az SQL Edge-ben
 
 Az Azure SQL Edge egy IoT- és peremhálózati környezetekre optimalizált relációsadatbázis-motor. A Microsoft SQL Database Engine legújabb verziójára épül, amely piacvezető teljesítményt, biztonságot és lekérdezés-feldolgozási képességeket biztosít. Az Azure SQL Edge a SQL Server piacvezető, az adatbázis-kezelési képességeivel együtt biztosítja a valós idejű elemzési és összetett események feldolgozására szolgáló, beépített folyamatos átviteli képességet.
 
-Az Azure SQL Edge olyan SqlPackage.exe natív implementációját is biztosítja, amely lehetővé teszi [SQL Database DACPAC és BACPAC-](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) csomagok üzembe helyezését az SQL Edge üzembe helyezése során. 
+Az Azure SQL Edge olyan natív mechanizmust biztosít, amely lehetővé teszi [SQL Database DACPAC és BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -csomagok üzembe helyezését az SQL Edge üzembe helyezése során vagy azt követően.
 
 SQL Database dacpac-és bacpac-csomagok telepíthetők az SQL Edge-be a `MSSQL_PACKAGE` környezeti változó használatával. A környezeti változót a következők bármelyikével lehet konfigurálni.  
 - A dacpac-és bacpac-fájlokat tartalmazó SQL-tárolóban található helyi mappa. Ez a mappa csatlakoztatási pontok vagy adatmennyiség-tárolók használatával képezhető le egy gazdagép kötetére. 
@@ -64,6 +64,10 @@ Ha SQL Database DAC-csomagot vagy BACPAC-fájlt szeretne telepíteni (vagy impor
 5. A modul frissítése után a rendszer letölti a csomagokat, kicsomagolja és üzembe helyezi az SQL Edge-példányon.
 
 Az Azure SQL Edge-tároló minden újraindításakor az SQL Edge megkísérli a tömörített fájl letöltését és a módosítások kiértékelését. Ha a rendszer a dacpac fájl új verzióját észlelte, a módosításokat a rendszer az adatbázishoz az SQL Edge-ben telepíti.
+
+## <a name="known-issue"></a>Ismert probléma
+
+Egyes DACPAC-vagy BACPAC-telepítések során a felhasználók a parancs időtúllépésével találkozhatnak, ami a DACPAC telepítési művelet hibáját eredményezi. Ha ezzel a problémával találkozik, használja a SQLPackage.exe (vagy az SQL-ügyfél eszközeit) a DACPAC vagy a BACPAC maually alkalmazásához. 
 
 ## <a name="next-steps"></a>Következő lépések
 

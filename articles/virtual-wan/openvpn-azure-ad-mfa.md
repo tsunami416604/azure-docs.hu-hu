@@ -1,18 +1,18 @@
 ---
 title: MFA engedélyezése VPN-felhasználók számára az Azure AD-hitelesítés használatával
-description: A többtényezős hitelesítés engedélyezése a VPN-felhasználók számára
+description: Ismerje meg, hogyan engedélyezheti az Azure Multi-Factor Authentication (MFA) használatát a VPN-felhasználók számára az Azure AD-hitelesítés használatával.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 01/16/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 7adcdcf00f22020daf66192e777b1aca151349e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efe01c9e0907fef4d33d2a70b3e479b30c471a7c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267890"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users-by-using-azure-ad-authentication"></a>Azure Multi-Factor Authentication (MFA) engedélyezése VPN-felhasználók számára az Azure AD-hitelesítés használatával
 
@@ -34,6 +34,6 @@ ms.locfileid: "87082120"
 
 [!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális hálózathoz való csatlakozáshoz létre kell hoznia és konfigurálnia kell egy VPN-ügyféloldali profilt. Lásd: [Az Azure ad-hitelesítés konfigurálása pont – hely kapcsolathoz az Azure-hoz](virtual-wan-point-to-site-azure-ad.md).

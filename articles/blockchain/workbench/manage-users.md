@@ -4,12 +4,12 @@ description: Felhasználók kezelése az Azure Blockchain Workbenchben.
 ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263011"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Felhasználók kezelése az Azure Blockchain Workbenchben
 
@@ -79,7 +79,7 @@ A Blockchain Workbench alkalmazással kezelheti a konzorcium részét képező f
 1. Válassza ki a tag csempét az aktuális tagok listájának megjelenítéséhez.
 1. Válassza a **Tagok hozzáadása**elemet.
 
-    ![Tagok hozzáadása](./media/manage-users/application-add-members.png)
+    ![Képernyőfelvétel: az alkalmazás tagsági ablaka, a tag hozzáadása gomb kiemelve.](./media/manage-users/application-add-members.png)
 
 1. Keresse meg a felhasználó nevét.  Csak az Blockchain Workbench-bérlőben található Azure AD-felhasználók jelennek meg. Ha a felhasználó nem található, [fel kell vennie az Azure ad-felhasználókat](#add-azure-ad-users).
 

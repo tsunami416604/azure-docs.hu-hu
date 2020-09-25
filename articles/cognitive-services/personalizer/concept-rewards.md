@@ -1,14 +1,16 @@
 ---
 title: Jutalom pontszáma – személyre szabás
 description: A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben RewardActionID. A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján. A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253496"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>A jutalom pontszámai a személyre szabás sikerességét jelzik
 
@@ -105,7 +107,7 @@ A jobb eredmények érdekében kövesse ezeket az ajánlásokat.
 
 * Ne válasszon olyan időtartamot, amely rövidebb, mint a visszajelzés kéréséhez szükséges idő. Ha például egy adott jutalom egy felhasználónál 1 perces videó megtekintése után következik be, a kísérlet hosszának legalább kétszeresnak kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megerősítő tanulás](concepts-reinforcement-learning.md)
 * [A Rank API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)

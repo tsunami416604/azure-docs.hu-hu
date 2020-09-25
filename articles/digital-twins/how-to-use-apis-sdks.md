@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086674"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252663"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -61,6 +61,8 @@ Az adatsík API-k használata:
 * Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
    - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
    - megtekintheti az [SDK-referenciák dokumentációját](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true).
+* Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
+   - a csomagot a Mavenből tekintheti meg és telepítheti: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
 * Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 
 A Date Plant API-kat a [CLI](how-to-use-cli.md)használatával is használhatja az Azure digitális ikrekkel.
@@ -298,7 +300,7 @@ Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is
 ## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan használható az API-k egy Azure digitális Twins-példány és-hitelesítés beállításához:
-* [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md)
+* [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)
 
 Vagy járjon végig egy ügyfélalkalmazás létrehozásához szükséges lépéseken, például a következő útmutatóban használt módon:
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

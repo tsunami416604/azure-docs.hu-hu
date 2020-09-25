@@ -3,12 +3,12 @@ title: A beállításjegyzékbe való bejelentkezés hibáinak megoldása
 description: Az Azure Container registrybe való bejelentkezés során felmerülő gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253354"
 ---
 # <a name="troubleshoot-registry-login"></a>Beállításjegyzékbeli bejelentkezés – problémamegoldás
 
@@ -105,9 +105,9 @@ Kapcsolódó hivatkozások:
 
 * [RBAC szerepkörök és engedélyek – Azure Container Registry](container-registry-roles.md)
 * [Bejelentkezés adattár-hatókörű jogkivonattal](container-registry-repository-scoped-permissions.md)
-* [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+* [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 * [Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Új alkalmazás-titok létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [Új titkos alkalmazáskulcs létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Azure AD-hitelesítés és-engedélyezési kódok](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>Győződjön meg arról, hogy a hitelesítő adatok nem jártak le
@@ -134,13 +134,13 @@ Kapcsolódó hivatkozások:
 * [Container Registry – gyakori kérdések](container-registry-faq.md)
 * [Az Azure Container Registry ajánlott eljárásai](container-registry-best-practices.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
 
 * A beállításjegyzék egyéb hibaelhárítási témakörei a következők:
   * [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
-  * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
+  * [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
 * [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/) – az Ön által megadott információk alapján egy gyors diagnosztika is futtatható a beállításjegyzékben található hitelesítési hibák esetén.

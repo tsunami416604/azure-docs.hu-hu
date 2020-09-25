@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264371"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -23,7 +23,7 @@ Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használ
 >
 >
 
-|Típus|Platform|Hely|Description|
+|Típus|Platform|Hely|Leírás|
 |-|-|-|-|
 | Alkalmazásnaplózás | Windows, Linux | App Service fájlrendszer és/vagy Azure Storage-Blobok | Az alkalmazás kódjában létrehozott üzenetek naplózása. Az üzeneteket a választott webes keretrendszer hozza létre, vagy az alkalmazás kódjából közvetlenül a nyelv szabványos naplózási mintájának használatával. Minden üzenethez a következő kategóriák egyike van rendelve: **kritikus**, **hiba**, **Figyelmeztetés**, **információ**, **hibakeresés**és **nyomkövetés**. Kiválaszthatja, hogy milyen részletességgel szeretné a naplózást beállítani a súlyossági szint beállításával az alkalmazások naplózásának engedélyezésekor.|
 | Webkiszolgáló naplózása| Windows | App Service fájlrendszer vagy Azure Storage-Blobok| Nyers HTTP-kérelmekre vonatkozó, a [W3C bővített naplófájl formátuma](/windows/desktop/Http/w3c-logging). Minden naplóbejegyzés olyan adatforrást tartalmaz, mint például a HTTP-metódus, az erőforrás URI-ja, az ügyfél IP-címe, az ügyfél portja, a felhasználói ügynök, a válasz kódja stb. |
@@ -62,7 +62,7 @@ Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A
 
 | Szint | Belefoglalt kategóriák |
 |-|-|
-|**Disabled** | Nincs |
+|**Disabled** | Nincsenek |
 |**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
 |**Tájékoztatás** | Információ, figyelmeztetés, hiba, kritikus|
@@ -108,9 +108,9 @@ Mindkét típusú naplót a App Service fájlrendszer tárolja. Akár 50 hibát 
 
 ## <a name="add-log-messages-in-code"></a>Naplóüzenetek hozzáadása a kódban
 
-Az alkalmazás kódjában a szokásos naplózási létesítményeket használja a naplóüzenetek küldésére az alkalmazás naplófájljaiba. Például:
+Az alkalmazás kódjában a szokásos naplózási létesítményeket használja a naplóüzenetek küldésére az alkalmazás naplófájljaiba. Példa:
 
-- A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Például:
+- A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Példa:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -138,12 +138,12 @@ A [Cloud Shell](../cloud-shell/overview.md)élő naplók továbbításához hasz
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Például:
+Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Példa:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Például:
+Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Példa:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -166,7 +166,7 @@ A Linux/Container alkalmazások esetében a ZIP-fájl konzol kimeneti naplókat 
 
 Windows-alkalmazások esetén a ZIP-fájl tartalmazza a *D:\Home\LogFiles* könyvtárának tartalmát a app Service fájlrendszerben. A következő szerkezettel rendelkezik:
 
-| Napló típusa | Címtár | Description |
+| Napló típusa | Címtár | Leírás |
 |-|-|-|
 | **Alkalmazás-naplók** |*/LogFiles/Application/* | Egy vagy több szövegfájlt tartalmaz. A naplóüzenetek formátuma a használt naplózási szolgáltatótól függ. |
 | **Sikertelen kérelmek nyomkövetése** | */LogFiles/W3SVC#########/* | XML-fájlokat és XSL-fájlt tartalmaz. A formázott XML-fájlok megtekinthetők a böngészőben. |
@@ -185,16 +185,16 @@ Az új [Azure monitor integrációval](https://aka.ms/appsvcblog-azmon) [diagnos
 
 A következő táblázat a támogatott naplózási típusokat és leírásokat tartalmazza: 
 
-| Napló típusa | Windows-támogatás | Linux (Docker) támogatása | Description |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | Yes | Standard kimenet és standard hiba |
-| AppServiceHTTPLogs | Igen | Igen | Webkiszolgáló-naplók |
-| AppServiceEnvironmentPlatformLogs | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
-| AppServiceAuditLogs | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | Yes | TBD | A webhely tartalma módosult; csak a prémium szinthez és a fentiekhez érhető el |
-| AppServiceAppLogs | TBA | Java SE & tomcat | Alkalmazás-naplók |
-| AppServiceIPSecAuditLogs  | Igen | Igen | IP-szabályoktól érkező kérések |
-| AppServicePlatformLogs  | TBA | Yes | Tároló naplófájljai |
+| Napló típusa | Windows | Windows-tároló | Linux | Linux-tároló | Leírás |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | TBA | TBA | Igen | Igen | Standard kimenet és standard hiba |
+| AppServiceHTTPLogs | Yes | TBA | Igen | Igen | Webkiszolgáló-naplók |
+| AppServiceEnvironmentPlatformLogs | Yes | N.A. | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
+| AppServiceAuditLogs | Yes | TBA | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
+| AppServiceFileAuditLogs | Yes | TBA | TBA | TBA | A webhely tartalma módosult; csak a prémium szinthez és a fentiekhez érhető el |
+| AppServiceAppLogs | ASP .NET | TBA | Java SE & tomcat | Java SE & tomcat | Alkalmazás-naplók |
+| AppServiceIPSecAuditLogs  | Yes | TBA | Igen | Igen | IP-szabályoktól érkező kérések |
+| AppServicePlatformLogs  | TBA | TBA | Igen | Igen | Tároló műveleti naplói |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> További lépések
 * [Naplók lekérdezése Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

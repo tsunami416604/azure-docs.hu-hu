@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258336"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése
 
-Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő a Microsoft Partner Network (MPN) fiók használatával ellenőrizte az identitását, és az alkalmazás regisztrálásával társította ezt az MPN-fiókot. Ez a cikk bemutatja, hogyan végezheti el a [közzétevő ellenőrzési](publisher-verification-overview.md) folyamatát.
+Ha egy alkalmazás regisztrálása ellenőrzött közzétevővel rendelkezik, az azt jelenti, hogy az alkalmazás közzétevője [ellenőrizte](/partner-center/verification-responses) az identitását a Microsoft Partner Network (MPN) fiók használatával, és társítja ezt az MPN-fiókot az alkalmazás regisztrálásával. Ez a cikk bemutatja, hogyan végezheti el a [közzétevő ellenőrzési](publisher-verification-overview.md) folyamatát.
 
 ## <a name="quickstart"></a>Gyorsútmutató
 Ha már regisztrált a Microsoft Partner Network (MPN) szolgáltatásban, és teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), azonnal megkezdheti az első lépéseket: 
@@ -42,9 +42,9 @@ Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-ver
 
 1. Győződjön meg arról, hogy a [többtényezős hitelesítéssel](../fundamentals/concept-fundamentals-mfa-get-started.md) olyan szervezeti (Azure ad-) fiókkal jelentkezett be, amely jogosult a közzétevőként megjelölni kívánt alkalmazás (ok) módosítására, valamint a fiókpartner MPN-fiókjára.
 
-    - Az Azure AD-ben a felhasználónak a következő szerepkörök egyikének kell lennie: Application admin, Cloud Application admin, globális rendszergazda. 
+    - Az Azure AD-ben a felhasználónak a következő [szerepkörök](../users-groups-roles/directory-assign-admin-roles.md)egyikének kell lennie: Application admin, Cloud Application admin, globális rendszergazda. 
 
-    - A partner Centerben ennek a felhasználónak a következő szerepkörökkel kell rendelkeznie: MPN-rendszergazda, fiókok rendszergazdája vagy globális rendszergazda (ez az Azure AD-ben elsajátított megosztott szerepkör). 
+    - A partner Centerben ennek a felhasználónak a következő [szerepkörökkel](/partner-center/permissions-overview)kell rendelkeznie: MPN-rendszergazda, fiókok rendszergazdája vagy globális rendszergazda (ez az Azure ad-ben elsajátított megosztott szerepkör). 
 
 1. Navigáljon az alkalmazás regisztrációs portálján:  
 

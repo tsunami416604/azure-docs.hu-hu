@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289055"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>T-SQL-hurkok használata a szinapszis SQL-ben
 Ez a cikk a T-SQL-hurkok használatával, a kurzorok cseréjével és az SQL-készlettel kapcsolatos kapcsolódó megoldások fejlesztésével kapcsolatos alapvető tippeket tartalmaz a szinapszis SQL-ben.
 
 ## <a name="purpose-of-while-loops"></a>Hurkok célja
 
-A szinapszis SQL a [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) ciklust is támogatja az utasítások ismételt végrehajtásához. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával. 
+A szinapszis SQL a [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) ciklust is támogatja az utasítások ismételt végrehajtásához. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával. 
 
-Az SQL-készletben található hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Tehát a [WHILE] hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
+Az SQL-készletben található hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Szóval, míg a hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
 
 ## <a name="replace-cursors-in-sql-pool"></a>Kurzorok cseréje az SQL-készletben
 
@@ -72,6 +72,6 @@ Végül dobja el az első lépésben létrehozott ideiglenes táblát
 DROP TABLE #tbl;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [fejlesztés áttekintése](develop-overview.md).

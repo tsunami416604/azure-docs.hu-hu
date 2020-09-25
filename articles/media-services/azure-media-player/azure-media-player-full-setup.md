@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296246"
 ---
 # <a name="azure-media-player-full-setup"></a>Az Azure Media Player teljes telepítése #
 
@@ -56,11 +56,11 @@ A Azure Media Player használatával a videó beágyazására használható HTML
 1. Az `<data-setup>` attribútum az `<video>` Azure Media Playeron automatikusan beállítja a videót, amikor az oldal elkészült, és az attribútumból beolvassa az összes (JSON formátumban).
 1. A `id` következő attribútumot kell használni, és egyedinek kell lennie minden videóhoz ugyanazon a lapon.
 1. Az `class` attribútum két osztályt tartalmaz:
-    - `azuremediaplayer`a Azure Media Player felhasználói felület funkcióinak használatához szükséges stílusokat alkalmazza.
-    - `amp-default-skin`az alapértelmezett bőr alkalmazása a HTML5-vezérlőkre
+    - `azuremediaplayer` a Azure Media Player felhasználói felület funkcióinak használatához szükséges stílusokat alkalmazza.
+    - `amp-default-skin` az alapértelmezett bőr alkalmazása a HTML5-vezérlőkre
 1. A `<source>` két kötelező attribútumot tartalmaz
-    - `src`az attribútum tartalmazhatja a **. ISM/manifest* fájlt Azure Media Services hozzáadásával, Azure Media Player automatikusan HOZZÁADJA a Dash, a Smooth és a HLS URL-címeit a lejátszóhoz.
-    - `type`az attribútum a stream kötelező MIME-típusa. A *". ISM/manifest"* kifejezéshez társított MIME-típus az *"Application/vnd. MS-sstr + XML"* .
+    - `src` az attribútum tartalmazhatja a **. ISM/manifest* fájlt Azure Media Services hozzáadásával, Azure Media Player automatikusan HOZZÁADJA a Dash, a Smooth és a HLS URL-címeit a lejátszóhoz.
+    - `type` az attribútum a stream kötelező MIME-típusa. A *". ISM/manifest"* kifejezéshez társított MIME-típus az *"Application/vnd. MS-sstr + XML"* .
 1. Az *optional* `<data-setup>` Azure Media Player nem kötelező attribútuma, `<source>` Ha a streamhez egyedi kézbesítési szabályzatok tartoznak Azure Media Services, beleértve a (z) titkosítási típust (AES vagy PlayReady, Widevine vagy Fairplay) és a tokent.
 
 Az attribútumok, a beállítások, a források és a nyomon követések pontosan úgy foglalhatók el/zárhatók ki, mint a HTML5-videóknál.

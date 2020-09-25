@@ -1,5 +1,5 @@
 ---
-title: Felügyeleti egységek hozzáadása és eltávolítása (előzetes verzió) – Azure Active Directory | Microsoft Docs
+title: Felügyeleti egységek hozzáadása és eltávolítása – Azure Active Directory | Microsoft Docs
 description: A felügyeleti egységekkel korlátozhatja a szerepkör-engedélyek hatókörét Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264707"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Felügyeleti egységek kezelése Azure Active Directory
 
 A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez a felhasználókat hozzárendelheti egy Azure AD-szerepkörhöz olyan hatókörrel, amely egy vagy több felügyeleti egységre (AUs) korlátozódik.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 1. Ha a [Graph Explorerben](https://aka.ms/ge)a következő utasítások alapján szeretne lekérdezéseket futtatni, tegye a következőket:
 
@@ -45,7 +45,7 @@ A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez 
 
 1. A Azure Portalban nyissa meg az Azure AD-t, majd a bal oldali panelen válassza a **felügyeleti egységek**elemet.
 
-    ![Képernyőkép a felügyeleti egységek (előzetes verzió) hivatkozásáról az Azure AD-ben](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Képernyőkép az Azure AD felügyeleti unitslink](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
 1. Válassza a **Hozzáadás** lehetőséget, majd adja meg a felügyeleti egység nevét. Opcionálisan a felügyeleti egység leírását is hozzáadhatja.
 
@@ -106,7 +106,7 @@ Request body
 {}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználók kezelése egy felügyeleti egységben](roles-admin-units-add-manage-users.md)
 * [Csoportok kezelése egy felügyeleti egységben](roles-admin-units-add-manage-groups.md)

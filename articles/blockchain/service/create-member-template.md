@@ -5,13 +5,13 @@ services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
-ms.date: 07/16/2020
-ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 09/16/2020
+ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292761"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Rövid útmutató: Azure Blockchain-szolgáltatásbeli tag létrehozása ARM-sablonnal
 
@@ -49,14 +49,16 @@ A sablonban definiált Azure-erőforrások:
     --------|------------
     Előfizetés | Válassza ki a szolgáltatásához használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
     Erőforráscsoport | Hozzon létre egy új erőforráscsoport-nevet, vagy válasszon ki egy meglévőt az előfizetésből.
-    Hely | Válasszon egy helyet a tag létrehozásához. A konzorcium összes tagjának ugyanazon a helyen kell lennie. A központi telepítés elérhető helyei a következők: *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*és *japaneast*. Előfordulhat, hogy egyes régiókban nem érhetők el szolgáltatások. Az Azure Blockchain Data Manager a következő Azure-régiókban érhető el: USA keleti régiója és Nyugat-Európa.
-    Tag neve | Válasszon egyedi nevet az Azure Blockchain szolgáltatás tagjának. A blockchain-tag neve csak kisbetűket és számokat tartalmazhat. Az első karakternek betűnek kell lennie. Az értéknek 2 – 20 karakter hosszúnak kell lennie.
+    Region | Válasszon régiót az erőforráscsoport létrehozásához. A konzorcium összes tagjának ugyanazon a helyen kell lennie. A központi telepítés elérhető helyei a következők: *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*és *japaneast*. Előfordulhat, hogy egyes régiókban nem érhetők el szolgáltatások. Az Azure Blockchain Data Manager a következő Azure-régiókban érhető el: USA keleti régiója és Nyugat-Európa.
+    BC-tag neve | Válasszon egyedi nevet az Azure Blockchain szolgáltatás tagjának. A blockchain-tag neve csak kisbetűket és számokat tartalmazhat. Az első karakternek betűnek kell lennie. Az értéknek 2 – 20 karakter hosszúnak kell lennie.
     Konzorcium neve | Adjon meg egy egyedi nevet. A konzorciumokkal kapcsolatos további információkért lásd: [Azure Blockchain Service Consortium](consortium.md).
-    Tag jelszava | A tag fiók jelszava a tag számára létrehozott Ethereum-fiók titkos kulcsának titkosítására szolgál. A tag fiókja és a fiók jelszava a konzorciumok kezeléséhez.
-    SKU-rétegek | Az új szolgáltatás díjszabási szintje. A **standard** és az **alapszintű** csomagok közül választhat. A fogalmak fejlesztéséhez, teszteléséhez és bizonyításához *használja az alapszintű* csomagot. Használja a *standard* szintű üzemi szintű üzembe helyezést. A *standard* szintet is érdemes használni, ha Blockchain Data Manager használ, vagy nagy mennyiségű privát tranzakciót küld. Az alapszintű és a standard szintű díjszabás a tag létrehozása után történő módosítása nem támogatott.
-    SKU neve | A csomópont-konfiguráció és az új szolgáltatás díja.
+    Tag jelszava | A tag alapértelmezett tranzakciós csomópontjának jelszava. Az alapszintű hitelesítéshez használja a jelszót az blockchain-tag alapértelmezett tranzakciós csomópontjának nyilvános végponthoz való csatlakozáskor.
+    Konzorcium-felügyeleti fiók jelszava | A konzorciumi fiók jelszava a tag számára létrehozott Ethereum-fiók titkos kulcsának titkosítására szolgál. A konzorciumok felügyeletére szolgál.
+    SKU-rétegek | Az új szolgáltatás díjszabási szintje. A **standard** és az **alapszintű** csomagok közül választhat. A fogalmak fejlesztéséhez, teszteléséhez és bizonyításához *használja az alapszintű* csomagot. Használja a *standard* szintű üzemi szintű üzembe helyezést. A *standard* szintet is használhatja, ha Blockchain Data Manager használ, vagy nagy mennyiségű privát tranzakciót küld. Az alapszintű és a standard szintű díjszabás a tag létrehozása után történő módosítása nem támogatott.
+    SKU neve | A csomópont-konfiguráció és az új szolgáltatás díja. Az alapszintű és a **S0** **B0** használata a standard szintű használatra.
+    Hely | Válasszon egy helyet a tag létrehozásához. Alapértelmezés szerint az erőforráscsoport helye van használatban `[resourceGroup().location]` . A konzorcium összes tagjának ugyanazon a helyen kell lennie. A központi telepítés elérhető helyei a következők: *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*és *japaneast*. Előfordulhat, hogy egyes régiókban nem érhetők el szolgáltatások. Az Azure Blockchain Data Manager a következő Azure-régiókban érhető el: USA keleti régiója és Nyugat-Európa.
 
-1. Válassza a **vásárlás** lehetőséget a sablon telepítéséhez.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a sablon ellenőrzéséhez és üzembe helyezéséhez.
 
   A Azure Portal a sablon üzembe helyezéséhez használja a rendszer. Használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
 

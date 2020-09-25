@@ -3,12 +3,12 @@ title: modern biztonsági másolati tárhely használata a Azure Backup Server
 description: Ismerkedjen meg a Azure Backup Server új szolgáltatásaival. Ez a cikk a biztonsági mentési kiszolgáló telepítésének frissítését ismerteti.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292897"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -18,7 +18,7 @@ A Azure Backup Server v2 és újabb verziók olyan modern biztonsági másolati 
 > A modern biztonsági másolati tárhely használatához a Backup Server v2 vagy v3 verzióját kell futtatnia a Windows Server 2016-es vagy v3-es verziójával a Windows Server 2019 rendszeren.
 > Ha a Backup Server v2-t a Windows Server egy korábbi verziójára futtatja, Azure Backup Server nem tudja kihasználni modern biztonsági másolati tárhely. Ehelyett a biztonsági mentési kiszolgáló v1-es verziójának megfelelően védi a munkaterheléseket. További információt a biztonsági mentési kiszolgáló verziójának [védelmi mátrixa](backup-mabs-protection-matrix.md)című témakörben talál.
 >
-> A továbbfejlesztett biztonsági mentési teljesítmény érdekében javasoljuk, hogy a Windows Server 2019-es verziójában a MABS v3-ot a többplatformos tárolással telepítse. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a "[MBS és Tiered Storage beállítása](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)" DPM.
+> A továbbfejlesztett biztonsági mentési teljesítmény érdekében javasoljuk, hogy a Windows Server 2019-es verziójában a MABS v3-ot a többplatformos tárolással telepítse. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a "[MBS és Tiered Storage beállítása](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)" DPM.
 
 ## <a name="volumes-in-backup-server"></a>Kötetek a biztonsági mentési kiszolgálón
 

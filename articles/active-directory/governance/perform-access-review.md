@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265681"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -37,7 +37,7 @@ A hozzáférési felülvizsgálati folyamat elindításához az értesítő e-ma
 
 1. Keressen egy e-mailt a Microsofttól, és kérje meg, hogy tekintse át a hozzáférést. Íme egy példa e-mailben a csoport hozzáférésének áttekintéséhez.
 
-    ![Példa a Microsoft e-mail-címére a csoportokhoz való hozzáférés áttekintéséhez](./media/perform-access-review/access-review-email.png)
+    ![Képernyőkép, amely a Microsoft egy adott e-mail-címét jeleníti meg a csoportokhoz való hozzáférés áttekintéséhez.](./media/perform-access-review/access-review-email.png)
 
 1. A hozzáférési felülvizsgálat megnyitásához kattintson a **Start Review (áttekintés** ) hivatkozásra.
 
@@ -54,7 +54,7 @@ A hozzáférési felülvizsgálati folyamat elindításához az értesítő e-ma
         > [!NOTE]
         > Ha a **hozzáférési felülvizsgálatok** csempe nem látható, akkor a szervezet számára nem végeznek hozzáférési felülvizsgálatokat, és jelenleg nincs szükség beavatkozásra.
 
-        ![Alkalmazások és csoportok függőben lévő hozzáférési felülvizsgálatok listája](./media/perform-access-review/access-reviews-list.png)
+        ![Képernyőkép, amely megjeleníti az alkalmazások és csoportok függőben lévő hozzáférési felülvizsgálatok listáját.](./media/perform-access-review/access-reviews-list.png)
 
     1. Kattintson a **megkezdés felülvizsgálati** hivatkozásra a végrehajtani kívánt hozzáférési felülvizsgálathoz.
 
@@ -99,7 +99,7 @@ Ahhoz, hogy a hozzáférési felülvizsgálatok könnyebben és gyorsabban elér
 
 1. A lap alján található kék sávban kattintson a **javaslatok elfogadása**elemre.
 
-    ![Hozzáférés-felülvizsgálati lista megnyitása a javaslatok elfogadása gomb megjelenítéséhez](./media/perform-access-review/accept-recommendations.png)
+    ![Képernyőkép: a megnyitási javaslatok kiválasztása gomb kiválasztásával megjelenítheti az Open Access felülvizsgálati listáját.](./media/perform-access-review/accept-recommendations.png)
 
     Ekkor megjelenik a javasolt műveletek összegzése.
 

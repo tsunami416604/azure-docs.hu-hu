@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287729"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>A Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával (előzetes verzió)
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>Adatfolyam-DataFrame betöltése a tárolóból
+Ebben a kézmozdulatban a Spark streaming funkciót fogja használni az adatok egy tárolóból egy dataframe való betöltéséhez. Az adattárolást a rendszer a munkaterülethez csatlakoztatott elsődleges adatlake-fiókban (és fájlrendszerben) tárolja. 
 > [!NOTE]
 > Ha a szinapszis Apache Sparkban található külső könyvtárakra hivatkozik, további információt [itt talál](#external-library-management). Ha például a Mongo DB-hez készült Cosmos DB API-t tartalmazó Spark-DataFrame szeretne bevenni, akkor a Spark Mongo DB-összekötőjét [itt](https://docs.mongodb.com/spark-connector/master/)is kihasználhatja.
 

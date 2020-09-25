@@ -3,12 +3,12 @@ title: Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 description: Log Analytics diagnosztikai beállítások konfigurálása egy adott hatókörben lévő összes tárolóhoz a Azure Policy használatával
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378049"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293084"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 
@@ -34,7 +34,7 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a **szabályzat** irányítópultra.
 2. A bal oldali menüben válassza a **definíciók** lehetőséget, hogy lekérje az Azure-erőforrások összes beépített szabályzatának listáját.
-3. A **Kategória = figyelés**listájának szűrése Keresse meg az [előzetes verzió] nevű szabályzatot **: Recovery Services-tároló diagnosztikai beállításainak központi telepítése log Analytics munkaterületre erőforrás-specifikus kategóriákhoz**.
+3. A **Kategória = Backup**szolgáltatás listájának szűrése Keresse meg az [előzetes verzió] nevű szabályzatot **: Recovery Services-tároló diagnosztikai beállításainak központi telepítése log Analytics munkaterületre erőforrás-specifikus kategóriákhoz**.
 
     ![Házirend-definíciós ablaktábla](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

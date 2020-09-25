@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259254"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Oktatóanyag a LexisNexis konfigurálásához a Azure Active Directory B2C
 
@@ -73,7 +73,7 @@ A fiók létrehozása után megkapja az API-konfigurációhoz szükséges inform
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott API-kód üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
@@ -95,9 +95,9 @@ A megadott API-kód üzembe helyezése egy Azure-szolgáltatásban. A kód a Vis
 
 Ez a megoldás a Azure AD B2C által betöltött egyéni FELHASZNÁLÓIFELÜLET-sablonokat használja. Ezek a felhasználói felületi sablonok a profilkészítést közvetlenül a ThreatMetrix szolgáltatásnak küldik el.
 
-Tekintse át ezeket az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) a mellékelt felhasználói felületi fájlok blob Storage-fiókba történő telepítéséhez. Az utasítások közé tartozik a blob Storage-fiók beállítása, a CORS konfigurálása és a nyilvános hozzáférés engedélyezése.
+Tekintse át ezeket az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) a mellékelt [felhasználói felületi fájlok](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) blob Storage-fiókba történő telepítéséhez. Az utasítások közé tartozik a blob Storage-fiók beállítása, a CORS konfigurálása és a nyilvános hozzáférés engedélyezése.
 
-A felhasználói felület az Ocean Blue oldal sablonján alapul. A felhasználói felületen lévő összes hivatkozást frissíteni kell, hogy az üzembe helyezett helyre hivatkozzon. A felhasználói felület mappában keresse meg és cserélje le https://yourblobstorage/blobcontainer az üzembe helyezett helyet.
+A felhasználói felület az [Ocean Blue sablonon](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)alapul. A felhasználói felületen lévő összes hivatkozást frissíteni kell, hogy az üzembe helyezett helyre hivatkozzon. A felhasználói felület mappában keresse meg és cserélje le https://yourblobstorage/blobcontainer az üzembe helyezett helyet.
 
 ### <a name="part-4---create-api-policy-keys"></a>4. rész – API-szabályzatok kulcsainak létrehozása
 
@@ -111,21 +111,21 @@ A minta szabályzat ezeket a neveket használja:
 
 ### <a name="part-5---update-the-api-url"></a>5. rész – az API URL-címének frissítése
 
-A megadott TrustFrameworkExtensions-szabályzatban keresse meg a nevű technikai profilt `Rest-LexisNexus-SessionQuery` , és frissítse a `ServiceUrl` metaadatokat a fent üzembe helyezett API helyére.
+A megadott [TrustFrameworkExtensions-szabályzatban](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)keresse meg a nevű technikai profilt `Rest-LexisNexus-SessionQuery` , és frissítse a `ServiceUrl` metaadatokat a fent üzembe helyezett API helyére.
 
 ### <a name="part-6---update-ui-url"></a>6. rész – felhasználói felület URL-címének frissítése
 
-A megadott TrustFrameworkExtensions-szabályzatban keresse meg és cserélje le, hogy megkeresse azt https://yourblobstorage/blobcontainer/ a helyet, ahol a felhasználói felület fájljai telepítve vannak.
-
-### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>7. rész – a Azure AD B2C házirend konfigurálása
-
-Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) a [helyi fiókok kezdő csomagjának](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez, és konfigurálja a Azure ad B2C bérlő házirendjét.
-
->[!NOTE]
->Frissítse a megadott szabályzatokat az adott bérlőhöz kapcsolódóan.
+A megadott [TrustFrameworkExtensions-szabályzatban](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)keresse meg és cserélje le, hogy megkeresse azt https://yourblobstorage/blobcontainer/ a helyet, ahol a felhasználói felület fájljai telepítve vannak.
 
 >[!NOTE]
 > Ajánlott eljárásként Azt javasoljuk, hogy az ügyfelek az attribútumok gyűjteménye lapon vegyenek fel beleegyező értesítéseket. Értesítse a felhasználókat arról, hogy az adatok a harmadik féltől származó szolgáltatásoknak személyazonosság-ellenőrzés céljából lesznek elküldve.
+
+### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>7. rész – a Azure AD B2C házirend konfigurálása
+
+Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) a [helyi fiókok kezdő csomagjának](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez, és konfigurálja a Azure ad B2C bérlő [házirendjét](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) .
+
+>[!NOTE]
+>Frissítse a megadott szabályzatokat az adott bérlőhöz kapcsolódóan.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
@@ -149,7 +149,7 @@ Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 7. A **folytatáshoz**a ThreatMetrix-puzzle jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

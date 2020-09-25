@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256891"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -59,7 +59,7 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
 
 - **A multi-Factor Authentication szolgáltatással kapcsolatos hibaüzenetet kapok. Mit tegyek?** 
     Győződjön meg arról, hogy a [többtényezős hitelesítés](../fundamentals/concept-fundamentals-mfa-get-started.md) engedélyezve van, és szükséges ahhoz a felhasználóhoz, amelyhez be van jelentkezve, és ehhez a forgatókönyvhöz be kell jelentkezni. Az MFA például a következő lehet:
-    - Mindig szükséges ahhoz, hogy a felhasználó bejelentkezzen
+    - Mindig szükséges ahhoz a felhasználóhoz, amelyhez bejelentkezik
     - [Az Azure-felügyelethez szükséges](../conditional-access/howto-conditional-access-policy-azure-management.md).
     - [Azon rendszergazda típusához szükséges](../conditional-access/howto-conditional-access-policy-admin-mfa.md) , amelyhez be van jelentkezve.
 
@@ -150,31 +150,45 @@ Az alábbi lista felsorolja a lehetséges hibakódokat, amelyeket a Microsoft Gr
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-A megadott MPN-azonosító ( <MPNID> ) nem létezik, vagy Önnek nincs hozzáférése. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra. 
+A megadott MPN-azonosító ( <MPNID> ) nem létezik, vagy Önnek nincs hozzáférése. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra.
+    
+Leggyakrabban a bejelentkezett felhasználó okozta, hogy nem tagja a megfelelő szerepkörnek az MPN-fiókhoz a partner Centerben – lásd a jogosult szerepkörök listájára vonatkozó [követelményeket](publisher-verification-overview.md#requirements) , és további információt a [gyakori problémák](#common-issues) című részben talál. Azt is okozhatja, hogy az alkalmazás regisztrálva van, és nem kerül be az MPN-fiókba, vagy érvénytelen MPN-azonosító van.
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra. 
+A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra.
+    
+A leggyakrabban akkor következik be, ha egy olyan MPN-azonosító van megadva, amely egy partneri hely fiókjának (PLA) felel meg. Csak a partner globális fiókjai támogatottak. További részletekért tekintse meg a [partner Center-fiók struktúráját](/partner-center/account-structure) .
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra. 
+A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra.
+    
+Leggyakrabban a nem megfelelő MPN-azonosító okozta.
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 A megadott MPN-azonosító ( <MPNID> ) nem fejeződött be az átvett folyamaton. Fejezze be ezt a folyamatot a partner Centerben, és próbálkozzon újra. 
+    
+Általában az okozza, hogy az MPN-fiók nem végezte el az [ellenőrzési](/partner-center/verification-responses) folyamatot.
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra. 
+   
+Leggyakrabban a nem megfelelő MPN-azonosító okozta.
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra. 
+A megadott MPN-azonosító ( <MPNID> ) érvénytelen. Adjon meg egy érvényes MPN-azonosítót, és próbálkozzon újra.
+    
+Leggyakrabban a nem megfelelő MPN-azonosító okozta.
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-A célalkalmazás ( <AppId> ) nem található. Érvényes alkalmazás-azonosítót adjon meg, majd próbálkozzon újra. 
+A célalkalmazás ( <AppId> ) nem található. Érvényes alkalmazás-azonosítót adjon meg, majd próbálkozzon újra.
+    
+A leggyakrabban a Graph APIon keresztüli ellenőrzés végrehajtásakor, a megadott alkalmazás azonosítója pedig helytelen. Megjegyzés – az alkalmazás azonosítóját meg kell adni, nem pedig a AppId/ClientId.
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Ez a funkció nem támogatott e-mailben ellenőrzött bérlőn.
 
 A célalkalmazás ( \<AppId\> ) közzétevő tartományi készlettel kell rendelkeznie. Állítsa be a közzétevő tartományát, és próbálkozzon újra.
 
+Akkor következik be, amikor a [közzétevő tartomány](howto-configure-publisher-domain.md) nincs konfigurálva az alkalmazásban.
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 A célalkalmazás közzétevő tartománya ( <publisherDomain> ) nem egyezik az e-mail-ellenőrzés végrehajtásához használt tartománnyal a partner Centerben ( <pcDomain> ). Győződjön meg arról, hogy ezek a tartományok egyeznek, és próbálkozzon újra. 
+    
+Akkor következik be, amikor sem az alkalmazás [közzétevője](howto-configure-publisher-domain.md) , sem az Azure ad-bérlőhöz hozzáadott [egyéni tartomány](../fundamentals/add-custom-domain.md) nem egyezik az e-mail-ellenőrzés a partner Centerben való végrehajtásához használt tartománnyal.
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 Nem jogosult az ellenőrzött közzétevő tulajdonság beállítására az alkalmazásban ( <AppId> ) 
+  
+Leggyakrabban a bejelentkezett felhasználó okozta a megfelelő szerepkört az Azure AD-ben az MPN-fiókhoz – lásd a jogosult szerepkörök listájára vonatkozó [követelményeket](publisher-verification-overview.md#requirements) , és további információkat a [gyakori problémák](#common-issues) című részben talál.
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ Az MPN-azonosító nem lett megadva a kérelem törzsében, vagy a kérelem tart
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Ez a funkció Microsoft fogyasztói fiókok esetén nem támogatott. Csak az Azure AD-beli Azure AD-felhasználó által regisztrált alkalmazások támogatottak. 
+Ez a funkció Microsoft fogyasztói fiókok esetén nem támogatott. Csak az Azure AD-beli Azure AD-felhasználó által regisztrált alkalmazások támogatottak.
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+Akkor következik be, amikor a többtényezős hitelesítés nem lett elvégezve, mielőtt a rendszer megpróbálta hozzáadni a hitelesített közzétevőt az alkalmazáshoz. További információért lásd: [gyakori problémák](#common-issues) .
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -216,4 +240,4 @@ Ha áttekintette az összes korábbi információt, és továbbra is a Microsoft
 - TenantId, ahol az alkalmazás regisztrálva van
 - MPN-azonosító
 - REST-kérelem történt 
-- Hibakód és visszaadott üzenet 
+- Hibakód és visszaadott üzenet

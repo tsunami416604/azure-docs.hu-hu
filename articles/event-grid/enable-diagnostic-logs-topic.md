@@ -3,12 +3,12 @@ title: Azure Event Grid – diagnosztikai naplók engedélyezése témakörökh�
 description: Ez a cikk lépésről lépésre bemutatja, hogyan engedélyezheti a diagnosztikai naplókat egy Azure Event Grid-témakörben.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297521"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Diagnosztikai naplók engedélyezése az Azure Event Grid-témakörökhöz vagy-tartományokhoz
 A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók számára a **közzétételi és kézbesítési hibák** naplóinak rögzítését vagy megtekintését egy Storage-fiókban, egy Event hub-ban vagy egy log Analytics-munkaterületen. Ez a cikk részletes útmutatást nyújt ezen beállítások Event Grid témakörben való engedélyezéséhez.
@@ -37,19 +37,19 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
     
     ![Diagnosztikai beállítások hozzáadása gomb](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Adja meg a diagnosztikai beállítás **nevét** . 
-7. Válassza ki a **DeliveryFailures** és a **PublishFailures** beállításokat a **napló** szakaszban. 
+6. Válassza ki a **DeliveryFailures** és a **PublishFailures** beállításokat a **napló** szakaszban. 
     ![A hibák kiválasztása](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. Engedélyezzen egy vagy több rögzítési célhelyet a naplókhoz, majd konfigurálja őket úgy, hogy kiválasztja az előző létrehozott rögzítési erőforrást. 
+7. Engedélyezzen egy vagy több rögzítési célhelyet a naplókhoz, majd konfigurálja őket úgy, hogy kiválasztja az előző létrehozott rögzítési erőforrást. 
     - Ha kijelöli az **archiválás egy Storage-fiókba**lehetőséget, válassza a **Storage-fiók konfigurálása**lehetőséget, majd válassza ki a Storage-fiókot az Azure-előfizetésében. 
 
-        ![Archiválás Azure Storage-fiókba](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        ![Képernyőkép: "diagnosztikai beállítások" oldal, "Archive to a Azure Storage-fiók", és egy kiválasztott Storage-fiók.](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - Ha **az adatfolyam lehetőséget választja egy Event hub**-ra, válassza az **Event hub-configure**lehetőséget, majd válassza ki a Event Hubs névteret, az Event hub és a hozzáférési házirendet. 
-        ![Stream az Event hub-ba](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        ![A "diagnosztikai beállítások" lapot, amely az "adatfolyam az Event hubhoz" jelölőnégyzetet mutatja be.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Ha a **küldés log Analytics**lehetőséget választja, válassza ki a log Analytics munkaterületet.
-        ![Küldés a Log Analyticsnek](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+        ![A "Küldés Log Analyticsba" jelölőnégyzettel rendelkező "diagnosztikai beállítások" oldalt megjelenítő képernyőkép.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 8. Kattintson a **Mentés** gombra. Ezután a jobb oldali sarokban található **X** gombra kattintva zárhatja be a lapot. 
 9. Most vissza a **diagnosztikai beállítások** lapon ellenőrizze, hogy megjelenik-e új bejegyzés a **diagnosztikai beállítások** táblázatban. 
-    ![Diagnosztikai beállítás a listában](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    ![Képernyőkép: a "diagnosztikai beállítások" oldal, amely egy új bejegyzéssel jelenik meg a "diagnosztikai beállítások" táblában.](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      A témakör összes mérőszámának gyűjteményét is engedélyezheti. 
 

@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294818"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibáinak megoldása
 
@@ -37,6 +37,7 @@ Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmente
 - Ha 30 vagy több Active Directory erdőt szinkronizál, a zökkenőmentes SSO-t nem engedélyezheti Azure AD Connecton keresztül. Megkerülő megoldásként [manuálisan engedélyezheti](#manual-reset-of-the-feature) a szolgáltatást a bérlőn.
 - Az Azure AD szolgáltatás URL-címének () hozzáadása a `https://autologon.microsoftazuread-sso.com` megbízható helyek zónájához a helyi intranet zóna helyett *blokkolja a felhasználók bejelentkezését*.
 - A zökkenőmentes egyszeri bejelentkezés támogatja a Kerberos AES256_HMAC_SHA1, AES128_HMAC_SHA1 és RC4_HMAC_MD5 titkosítási típusait. Azt javasoljuk, hogy a AzureADSSOAcc $ fiók titkosítási típusa legyen AES256_HMAC_SHA1, vagy a további biztonság érdekében adja meg az egyik AES-típust a vs. RC4-nek. A titkosítási típust a Active Directory lévő fiók msDS-Supportedencryptiontypes attribútuma alapján attribútuma tárolja.  Ha a AzureADSSOAcc $ fiók titkosítási típusa RC4_HMAC_MD5 értékre van állítva, és módosítani szeretné az AES-titkosítási típusok egyikére, akkor ügyeljen arra, hogy az adott kérdésben a [GYIK-dokumentumban](how-to-connect-sso-faq.md) leírtak szerint először átadja a AzureADSSOAcc $ fiók Kerberos-visszafejtési kulcsát, ellenkező esetben a zökkenőmentes egyszeri bejelentkezés nem fog történni.
+-  Ha több erdővel rendelkezik, és az egyszeri bejelentkezés engedélyezése az egyik erdőben, az az összes megbízható erdőben engedélyezi az egyszeri bejelentkezést. Ha olyan erdőben engedélyezi az egyszeri bejelentkezést, amelyben az SSO már engedélyezve van, hibaüzenet jelenik meg, amely azt jelzi, hogy az SSO már engedélyezve van az erdőben.
 
 ## <a name="check-status-of-feature"></a>Szolgáltatás állapotának ellenõrzése
 

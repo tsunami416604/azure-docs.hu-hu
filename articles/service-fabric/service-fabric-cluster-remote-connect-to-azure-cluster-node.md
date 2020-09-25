@@ -3,12 +3,12 @@ title: Távoli kapcsolódás Azure Service Fabric fürtcsomópont-csomóponthoz
 description: Megtudhatja, hogyan csatlakozhat távolról egy méretezési csoport példányaihoz (Service Fabric fürtcsomópont).
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268094"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
 Az Azure-ban futó Service Fabric-fürtökben minden egyes definiált csomópont-típus [a virtuális gép külön méretezését állítja](service-fabric-cluster-nodetypes.md)be.  A távoli kapcsolódást egy adott méretezési csoport példányaihoz (fürtcsomópontok) lehet csatlakoztatni.  Az Egypéldányos virtuális gépektől eltérően a méretezési csoport példányai nem rendelkeznek saját virtuális IP-címmel. Ez kihívást jelenthet, ha olyan IP-címet és portot keres, amelyet egy adott példányhoz való távoli kapcsolódáshoz használhat.
@@ -21,11 +21,11 @@ Ha olyan IP-címet és portot szeretne megkeresni, amelyet egy adott példányho
     
     A terheléselosztó lapján a Azure Portalban válassza a **Beállítások**  >  **bejövő NAT-szabályok**elemet: 
 
-    ![Terheléselosztó bejövő NAT-szabályai](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Képernyőfelvétel a Azure Portal Load Balancer oldaláról. A bal oldali menü beállítások területén a bejövő NAT-szabályok lehetőség van kiválasztva.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     Az alábbi képernyőfelvételen egy FrontEnd nevű csomópont-típus bejövő NAT-szabályai láthatók: 
 
-    ![Terheléselosztó bejövő NAT-szabályai](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![A terheléselosztó bejövő NAT-szabályait bemutató képernyőkép. Az egyes szabályokhoz a név, az IP-verzió, a cél, a cél és a szolgáltatás szerepel.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
     Az egyes csomópontok esetében az IP-cím a **cél** oszlopban jelenik meg, a **cél** oszlop pedig megadja a méretezési csoport példányát, és a **szolgáltatás** oszlopa megadja a portszámot. A távoli kapcsolatok esetében a portok a 3389-es porttól kezdődően növekvő sorrendben vannak lefoglalva az egyes csomópontokhoz.
 

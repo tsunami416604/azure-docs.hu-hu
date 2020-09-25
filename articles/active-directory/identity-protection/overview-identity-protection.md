@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b19b8e928a220efa8a445ff033582e0f13c6de
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265272"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -53,8 +53,8 @@ Az Identity Protection a következő besorolások kockázatait azonosítja:
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
 | Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
 | Kártevők társított IP-címe | Jelentkezzen be egy kártevővel összekapcsolt IP-címről. |
-| Kiszivárgott hitelesítő adatok | Ez a kockázati észlelés azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. |
-| Jelszó spray | Azt jelzi, hogy a rendszer több felhasználónevet is megtámad a gyakori jelszavakkal egy egységes találgatásos kényszerített módon. |
+| Kiszivárgott hitelesítő adatok | Azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. |
+| Jelszó spray | Azt jelzi, hogy a rendszer több felhasználónevet is megtámad a közös jelszavakkal egyesített, találgatásos módon. |
 | Azure AD-fenyegetések felderítése | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak. |
 
 A kockázatokról és azok kiszámításáról további részleteket a cikkben [találhat.](concept-identity-protection-risks.md)
@@ -96,7 +96,7 @@ Az Identity Protection használatához a felhasználóknak biztonsági olvasóna
 
 Jelenleg a biztonsági operátori szerepkör nem fér hozzá a kockázatos bejelentkezések jelentéséhez.
 
-A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozhatnak, amelyek feltétele a bejelentkezési kockázat tényezője. további információt a [feltételes hozzáférés: feltételek](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)című cikkben talál.
+A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozhatnak, amelyek feltétele a bejelentkezési kockázat. További információt a [feltételes hozzáférés: feltételek](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)című cikkben talál.
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 

@@ -1,6 +1,6 @@
 ---
 title: Az 1,0-es frissítés telepítése a StorSimple virtuális tömbön | Microsoft Docs
-description: Ismerteti, hogyan használhatók a StorSimple virtuális tömb webes felhasználói felülete a frissítések alkalmazásához a Azure Portal és a gyorsjavítási módszer használatával
+description: Ismerteti, hogyan használható a StorSimple Virtual Array webes FELÜLETe az 1,0-es frissítés alkalmazásához a Azure Portal és a gyors javítási módszer használatával.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295566"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Az 1,0-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -33,7 +33,7 @@ A szoftverfrissítések vagy gyorsjavítások alkalmazása a StorSimple virtuál
 >
 > - Az 1,0-es frissítés megfelel az eszközön **10.0.10296.0** szoftver verziójának. A frissítéssel kapcsolatos újdonságokról a 1,0-es [frissítés kibocsátási megjegyzései](storsimple-virtual-array-update-1-release-notes.md)című témakörben olvashat bővebben.
 >
-> - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
+> - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
 >
 > - Az 1. frissítés csak akkor érhető el a Azure Portalban, ha a virtuális tömb a 0,6-es frissítést futtatja. A 0,6-es frissítés előtti verziót futtató virtuális tömbök esetében először telepítenie kell a 0,6-es frissítést, majd telepíteni kell az 1. frissítést.
 
@@ -128,6 +128,6 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 > [!NOTE]
 > Ha közvetlenül az 1. frissítést alkalmazza egy olyan eszközre, amely a 0,6-es frissítés előtt fut, akkor hiányoznak néhány frissítés. A következő lépésekhez forduljon Microsoft ügyfélszolgálatahoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).

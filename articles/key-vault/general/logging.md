@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290653"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -133,6 +133,7 @@ Mi kerül naplózásra?
   * A kulcsok vagy titkos kódok létrehozása, módosítása vagy törlése.
   * A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása, a titkok beolvasása és a kulcsok és titkok listázása (és azok verziói).
 * A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek olyan tulajdonosi jogkivonattal, amely nem formázott vagy lejárt, vagy érvénytelen tokent tartalmaz.  
+* Event Grid a közeljövőben lejáró értesítési események, a lejárt és a tár hozzáférési szabályzata megváltozott (az új verzió esemény nincs naplózva). Az események naplózása attól függetlenül történik, hogy van-e esemény-előfizetés létrehozva a Key vaultban. További információ: Event Grid- [esemény sémája Key Vault](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
 
 ## <a name="enable-logging-using-azure-cli"></a>Naplózás engedélyezése az Azure CLI-vel
 
@@ -190,7 +191,7 @@ A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a Storage-fiókot használhatja több erőforráshoz tartozó naplók összegyűjtésére, a blob nevében lévő teljes erőforrás-azonosító hasznos lehet, ha csak a szükséges blobokat szeretné elérni vagy letölteni. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Hozzon létre egy mappát a Blobok letöltéséhez. Például:
+Hozzon létre egy mappát a Blobok letöltéséhez. Példa:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -210,7 +211,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 Ha ezt a második parancsot futtatja, a **/** Blobok neveiben szereplő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -281,13 +282,15 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
 | **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen érkezik (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját (as), a tároló `id` URI-ját vagy a titkos kódot is tartalmazza. |
 
-A **OperationName** *ObjectVerb* formátumban vannak. Például:
+A **OperationName** *ObjectVerb* formátumban vannak. Példa:
 
 * A Key Vault összes műveletének `Vault<action>` formátuma, például `VaultGet` és `VaultCreate` .
 * Az összes kulcsfontosságú művelet `Key<action>` formátuma, például `KeySign` és `KeyList` .
 * Minden titkos művelet `Secret<action>` formátuma, például `SecretGet` és `SecretListVersions` .
 
 A következő táblázat felsorolja a **operationName** és a hozzá tartozó REST API parancsokat:
+
+### <a name="operation-names-table"></a>Műveleti nevek tábla
 
 | operationName | REST API parancs |
 | --- | --- |
@@ -318,6 +321,13 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **SecretDelete** |[Titkos kulcs törlése](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | A tár hozzáférési szabályzatának változási eseménye közzétéve |
+| **SecretNearExpiryEventGridNotification** |Secret Near lejárat esemény közzététele |
+| **SecretExpiredEventGridNotification** |Titokban lejárt esemény közzétéve |
+| **KeyNearExpiryEventGridNotification** |Kulcs közel lejárati eseményének közzététele |
+| **KeyExpiredEventGridNotification** |A kulcs lejárt eseményének közzététele |
+| **CertificateNearExpiryEventGridNotification** |Tanúsítvány közel lejárati eseménye közzétéve |
+| **CertificateExpiredEventGridNotification** |A tanúsítvány lejárt esemény közzétéve |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor naplók használata
 
@@ -325,7 +335,7 @@ A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key 
 
 További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a><a id="next"></a>További lépések
+## <a name="next-steps"></a><a id="next"></a>Következő lépések
 
 A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata webalkalmazásból](tutorial-net-create-vault-azure-web-app.md).
 

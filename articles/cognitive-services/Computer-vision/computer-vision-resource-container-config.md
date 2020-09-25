@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 674c906a4316ec92101f3f2028a57aa82db3f504
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254176"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
 
@@ -33,10 +33,10 @@ A tároló a következő tároló-specifikus konfigurációs beállításokkal i
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|Nem|ReadEngineConfig:ResultExpirationPeriod|Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
-|Nem|Gyorsítótár: Redis|Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|Nem|Üzenetsor: RabbitMQ|Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|Nem|Tárolás::D ocumentStore:: MongoDB|Engedélyezi a MongoDB az állandó eredményű tároláshoz.|
+|No|ReadEngineConfig:ResultExpirationPeriod|Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
+|No|Gyorsítótár: Redis|Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|No|Üzenetsor: RabbitMQ|Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|No|Tárolás::D ocumentStore:: MongoDB|Engedélyezi a MongoDB az állandó eredményű tároláshoz.|
 
 ## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
@@ -60,7 +60,7 @@ Ez a beállítás a következő helyen érhető el:
 
 Ne felejtse el hozzáadni az `vision/v1.0` útválasztást a VÉGPONT URI-hoz az alábbi táblázatban látható módon. 
 
-|Kötelező| Name | Adattípus | Leírás |
+|Kötelező| Név | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja<br><br>Példa:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -88,7 +88,7 @@ A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztat�
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Name | Adattípus | Leírás |
+|Választható| Név | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -124,7 +124,7 @@ A következő Docker-példák az olvasási tárolóra vonatkoznak.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -134,7 +134,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

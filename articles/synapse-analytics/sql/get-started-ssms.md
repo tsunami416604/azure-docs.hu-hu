@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288783"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő el�
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
 * SQL-készlet esetén egy meglévő adattárházra van szükség. A létrehozáshoz tekintse meg [az SQL-készlet létrehozása](../quickstart-create-sql-pool-portal.md)című témakört. Az SQL igény szerint az egyiket a rendszer a létrehozáskor már üzembe helyezi a munkaterületen. 
-* A teljesen minősített SQL Server neve. Ennek megkereséséhez lásd: [Kapcsolódás a SZINAPSZIS SQL](connect-overview.md)-hez.
+* A teljesen minősített SQL Server neve. A név megkereséséhez lásd: [Kapcsolódás a SZINAPSZIS SQL](connect-overview.md)-hez.
 
 ## <a name="connect"></a>Kapcsolódás
 
@@ -52,7 +52,7 @@ Ha az SQL-készlet használatával szeretne csatlakozni a szinapszis SQL-hez, k�
 1. Nyissa meg SQL Server Management Studio (SSMS). 
 1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a mezőket, majd válassza a **Kapcsolódás**lehetőséget: 
   
-    ![Csatlakozás kiszolgálóhoz](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![Kapcsolódás az 1. kiszolgálóhoz](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
    * **Hitelesítés**: válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**.
@@ -60,7 +60,7 @@ Ha az SQL-készlet használatával szeretne csatlakozni a szinapszis SQL-hez, k�
 
 1. Bontsa ki az Azure-SQL Server **Object Explorer**. Megtekintheti a kiszolgálóhoz társított adatbázisokat, például a minta AdventureWorksDW-adatbázist. Az adatbázis kibontásával megjelenítheti a táblákat:
    
-    ![Az AdventureWorksDW áttekintése](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![Ismerkedés a AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="sql-on-demand-preview"></a>Igény szerinti SQL-verzió (előzetes verzió)
@@ -70,16 +70,16 @@ Ha az SQL on-demand használatával szeretne csatlakozni a szinapszis SQL-hez, k
 1. Nyissa meg SQL Server Management Studio (SSMS).
 1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a mezőket, majd válassza a **Kapcsolódás**lehetőséget: 
    
-    ![Csatlakozás kiszolgálóhoz](./media/get-started-ssms/connect-object-explorer1.png)
+    ![Kapcsolódás a 2. kiszolgálóhoz](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
    * **Hitelesítés**: válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**:
    * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
-   * Kattintson a **Csatlakozás** gombra.
+   * Válassza a **Kapcsolódás** lehetőséget.
 
 4. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki a *bemutatót* a mintaadatbázis tartalmának megtekintéséhez.
    
-    ![Az AdventureWorksDW áttekintése](./media/get-started-ssms/explore-tables.png)
+    ![A 2. AdventureWorksDW megismerése](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Mintalekérdezés futtatása
@@ -91,18 +91,18 @@ Most, hogy létrejött az adatbázis-kapcsolatok, lekérdezheti az adatforrást.
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
 2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
-    ![Új lekérdezés](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
-3. Másolja ezt a T-SQL-lekérdezést a lekérdezési ablakba:
+    ![1. új lekérdezés](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Futtassa a lekérdezést. Ehhez kattintson `Execute` vagy használja a következő billentyűparancsot: `F5` .
+4. Futtassa a lekérdezést a következő parancsikon kiválasztásával `Execute` vagy használatával: `F5` .
    
-    ![A lekérdezés futtatása](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
-5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
+    ![1. lekérdezés futtatása](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
+5. Tekintse meg a lekérdezés eredményeit. A következő példában a FactInternetSales tábla 60398 sorral rendelkezik.
    
-    ![Lekérdezés eredményei](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![Lekérdezés eredményei 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="sql-on-demand"></a>Igény szerinti SQL
 
@@ -111,20 +111,20 @@ Most, hogy létrehozta az adatbázis-kapcsolatokat, lekérdezheti az adatforrás
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
 2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
-    ![Új lekérdezés](./media/get-started-ssms/new-query.png)
+    ![2. új lekérdezés](./media/get-started-ssms/new-query.png)
 3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Futtassa a lekérdezést. Ehhez kattintson `Execute` vagy használja a következő billentyűparancsot: `F5` .
+4. Futtassa a lekérdezést a következő parancsikon kiválasztásával `Execute` vagy használatával: `F5` .
    
-    ![A lekérdezés futtatása](./media/get-started-ssms/execute-query.png)
+    ![A 2. lekérdezés futtatása](./media/get-started-ssms/execute-query.png)
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a usPopulationView nézet 3664512 sorral rendelkezik.
    
-    ![Lekérdezés eredményei](./media/get-started-ssms/results.png)
+    ![Lekérdezés eredménye 2](./media/get-started-ssms/results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
 
 A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-ben.

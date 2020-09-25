@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267499"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Forgatókönyv: forgalom irányítása NVA – egyéni (előzetes verzió)
 
@@ -65,14 +65,14 @@ A kapcsolati mátrix minden cellája azt írja le, hogy egy virtuális WAN-kapcs
 
 Ezekre a statikus útvonalakra azért van szükségünk, hogy a VNet és a VNet közötti forgalom a szolgáltatás VNet NVA (VNet 4) haladjon át:
 
-| Description | Útválasztási táblázat | Statikus útvonal              |
+| Leírás | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | Ágak    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
 | NVA küllők  | Alapértelmezett     | 10.1.0.0/16 – > vnet4conn  |
 
 A Virtual WAN már tudja, hogy melyik kapcsolattal küldi el a csomagokat, de a kapcsolatnak tudnia kell, mi a teendő a csomagok fogadásakor: ez az a hely, ahol a kapcsolati útválasztási táblák vannak használatban.
 
-| Description | Kapcsolat | Statikus útvonal            |
+| Leírás | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |

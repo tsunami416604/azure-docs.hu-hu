@@ -3,15 +3,15 @@ title: Azure metric-riasztások hibaelhárítása
 description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokkal kapcsolatos gyakori problémák.
 author: harelbr
 ms.author: harelbr
-ms.topic: reference
+ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294225"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -245,7 +245,7 @@ Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, ve
 - Minden feltételben csak egy értéket lehet kijelölni dimenzión belül.
 - Nem használhatja a "minden aktuális és jövőbeli érték kijelölése" lehetőséget (válassza ki \* ).
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (a vonatkozó feltételek között).
-Például:
+Példa:
     - Vegyünk egy olyan metrikai riasztási szabályt, amely egy Storage-fiókban van definiálva, és két feltételt figyel:
         * **Tranzakciók** összesen > 5
         * Átlagos **SuccessE2ELatency** > 250 MS

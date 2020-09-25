@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory minősítésű AppSource beszerzése | Microsoft Docs
-description: Az alkalmazás AppSource minősítése Azure Active Directory számára.
+description: Megtudhatja, hogyan szerezheti be az alkalmazás AppSource minősítését Azure Active Directory számára.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 08acaf4f0171e586ff2cc3f52134395fb5925df7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 65d6151536eb92e2ab9b740a99984fb0b5977cab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256874"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory AppSource minősítésének beolvasása
 
@@ -110,7 +110,7 @@ Javasoljuk, hogy először Kérdezzen rá Stack Overflow kérdéseire, és Böng
 
 A következő Megjegyzések szakaszban visszajelzéseket adhat meg, és segítheti a tartalom pontosítását és kialakítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](authentication-flows-app-scenarios.md).
 - A SaaS-alkalmazás AppSource való listázásával kapcsolatos információkért lásd: AppSource- [partner adatai](https://appsource.microsoft.com/partners)

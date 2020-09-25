@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5955bc35acfaf8f877e68db083871c353a3ce326
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254006"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -644,7 +644,7 @@ Előfordulhat, hogy integrálni szeretné a térbeli elemzési észlelést vagy 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Térbeli elemzési műveletek nagy léptékű üzembe helyezése (több kamera)
 
-A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érdekében a Graph-példányok használatával több kamerán is üzembe helyezhet bármilyen térbeli elemzési műveletet. Az alábbi példa a cognitiveservices. vízió. spatialanalysis-personcount művelet öt (5) kamerán való futtatására szolgál.
+A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érdekében a Graph-példányok használatával több kamerán is üzembe helyezhet bármilyen térbeli elemzési műveletet. Az alábbi példa a `cognitiveservices.vision.spatialanalysis-personcount` művelet öt kamerán való futtatására szolgál.
 
 ```json
  "properties.desired": {
@@ -727,7 +727,7 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
   ```
 | Név | Típus| Leírás|
 |---------|---------|---------|
-| `batch_size` | int | Azt jelzi, hogy a rendszer hány kamerát fog használni a műveletben.|
+| `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
 
 ## <a name="next-steps"></a>Következő lépések
 

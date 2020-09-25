@@ -1,6 +1,6 @@
 ---
 title: Adatmásolás Blob Storage a Azure Data Factory használatával
-description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
+description: Hozzon létre egy Azure-beli adatgyárat a PowerShell használatával, és másolja át az adatait az Azure Blob Storage egyik helyéről egy másik helyre.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292387"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adatelőállító létrehozása a PowerShell használatával
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rövid útmutató: Azure-beli adat-előállító létrehozása a PowerShell használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -63,7 +63,7 @@ Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepíté
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"ADFQuickStartRG"`.
 
@@ -166,7 +166,7 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
 A feladat részeként két adatkészletet hoz létre, az **InputDataset** és az **OutputDataset** adatkészletet. Ezek az adatkészletek **bináris**típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak.
 A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A bemeneti adatkészlet definíciójában adhatja meg a forrásadatokat tartalmazó blobtároló (**adftutorial**), mappa (**input**) és fájl (**emp.txt**) nevét.
 A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatkészlet definíciójában adhatja meg annak a blobtárolónak (**adftutorial**), mappának (**output**) és fájlnak a nevét, amelybe az adatok át lesznek másolva. 
-1. Hozzon létre egy **InputDataset. JSON** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
+1. Hozzon létre egy **InputDataset.js** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
 
     ```json
     {
@@ -208,7 +208,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket. Hozzon létre egy **OutputDataset. JSON** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
+3. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket. Hozzon létre egy **OutputDataset.js** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
 
     ```json
     {
@@ -444,6 +444,6 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

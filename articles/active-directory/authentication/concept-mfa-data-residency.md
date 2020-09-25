@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b8673dd98ab66714c54720ea1d909a90e117c18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970662"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266428"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure Multi-Factor Authentication
 
@@ -28,7 +28,7 @@ Az Azure Multi-Factor Authentication szolgáltatás az USA-ban, Európában és 
 
 * A többtényezős hitelesítés telefonos hívásokat használ az Egyesült államokbeli adatközpontokból, és a globális szolgáltatók irányítják.
 * Az egyéb régiókból (például Európából vagy Ausztráliából) származó általános célú felhasználói hitelesítési kérelmeket jelenleg a felhasználó helye alapján dolgozzák fel a rendszer.
-* A Microsoft Authenticator alkalmazást használó leküldéses értesítések a felhasználó helyétől függően a regionális adatközpontokat jelentik.
+* A Microsoft Authenticator alkalmazást használó leküldéses értesítések jelenleg a felhasználó helyétől függően a regionális adatközpontokban lesznek feldolgozva.
     * Az eszköz gyártója által meghatározott szolgáltatások, például az Apple leküldéses értesítések, a felhasználó tartózkodási helyétől eltérőek lehetnek.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication által tárolt személyes adattárolás

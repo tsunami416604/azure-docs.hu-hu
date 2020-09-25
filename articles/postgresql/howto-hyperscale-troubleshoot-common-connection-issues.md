@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
-ms.openlocfilehash: a47a6e1860edcb9b2bf89c25e78f6a66e8a7cf4d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295617"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáinak elhárítása (Citus)
 
@@ -27,7 +27,7 @@ A kapcsolódási problémákat számos dolog okozhatja, például:
 * Szolgáltatás karbantartása
 * A koordinátor csomópontja feladatátvételt hajt végre az új hardvereszközökön
 
-A nagy kapacitású kapcsolatos kapcsolódási problémák általában a következőképpen sorolhatók be:
+A nagy kapacitású (Citus) kapcsolódási problémái általában a következőképpen sorolhatók be:
 
 * Átmeneti hibák (rövid életű vagy időszakos)
 * Állandó vagy nem átmeneti hibák (a rendszeresen ismétlődő hibák)
@@ -36,7 +36,7 @@ A nagy kapacitású kapcsolatos kapcsolódási problémák általában a követk
 
 Az átmeneti hibák számos okból történnek. A leggyakoribb például a Rendszerkarbantartás, a hardveres vagy szoftveres hiba, valamint a koordinátori csomópontok virtuális mag frissítése.
 
-Ha magas rendelkezésre állást tesz lehetővé a nagy kapacitású-kiszolgáló csoportházirend-csomópontjai számára, akkor az ilyen típusú problémák automatikusan csökkenthetők. Az alkalmazásnak azonban még fel kell készülnie, hogy röviden elveszítse a kapcsolatát. Más események is hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
+A magas rendelkezésre állású nagy kapacitású (Citus) kiszolgálói csoport csomópontjainak engedélyezése automatikusan csökkentheti az ilyen típusú problémákat. Az alkalmazásnak azonban még fel kell készülnie, hogy röviden elveszítse a kapcsolatát. Más események is hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
@@ -49,13 +49,13 @@ Ha magas rendelkezésre állást tesz lehetővé a nagy kapacitású-kiszolgál�
 
 Ha az alkalmazás tartósan nem tud csatlakozni a nagy kapacitású (Citus), a leggyakoribb okok a tűzfal helytelen konfigurációja vagy felhasználói hiba.
 
-* Koordinátori csomópont tűzfala: Ellenőrizze, hogy a nagy kapacitású-kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
+* Koordinátori csomópont tűzfala: Ellenőrizze, hogy a nagy kapacitású (Citus) kiszolgálói tűzfal úgy van-e konfigurálva, hogy engedélyezze az ügyfélről érkező kapcsolatokat, beleértve a proxykiszolgálót és az átjárókat is.
 * Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. Egyes tűzfalak esetében nem csak a név, hanem a kiszolgáló IP-címeinek és portjainak engedélyezése szükséges.
 * Felhasználói hiba: dupla – ellenőrizze a kapcsolatok karakterláncát. Lehet, hogy a kiszolgáló neve nem megfelelő típusú paraméterekkel rendelkezik. A Azure Portal különböző nyelvi keretrendszerek és psql esetében a kapcsolatok karakterláncai találhatók. Nyissa meg a nagy kapacitású (Citus) kiszolgálócsoport **kapcsolódási karakterláncok** lapját. Azt is vegye figyelembe, hogy a nagy kapacitású-(Citus-) fürtöknek csak egy adatbázisa van, az előre definiált neve pedig **Citus**.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
-1. [Tűzfalszabályok](howto-hyperscale-manage-firewall-using-portal.md) beállítása az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címként, és használja a 255.255.255.255 a záró IP-címként. Ez a szabály minden IP-címre megnyitja a kiszolgálót. Ha a szabály feloldja a kapcsolati problémát, távolítsa el, és hozzon létre egy tűzfalszabály megfelelő, korlátozott IP-címhez vagy címtartományból.
+1. [Tűzfalszabályok](howto-hyperscale-manage-firewall-using-portal.md) beállítása az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címként, és használja a 255.255.255.255 a záró IP-címként. Ez a szabály minden IP-cím számára megnyitja a kiszolgálót. Ha a szabály feloldja a kapcsolati problémát, távolítsa el, és hozzon létre egy tűzfalszabály megfelelő, korlátozott IP-címhez vagy címtartományból.
 2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 5432-es port nyitva van-e a kimenő kapcsolatok számára.
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat.
 4. Keresse meg a szolgáltatás állapotát az irányítópulton.

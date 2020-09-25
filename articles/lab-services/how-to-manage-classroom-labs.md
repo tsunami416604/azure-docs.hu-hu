@@ -3,12 +3,12 @@ title: Tantermi laborok kezelése Azure Lab Servicesban | Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy tantermi labort, megtekintheti az összes tantermi labort, megoszthatja a regisztrációs hivatkozást egy labor felhasználóval, vagy törölhet egy labort.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251677"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 
@@ -32,7 +32,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
     1. Tekintse át az oldalon megjelenő **teljes óradíjat** . 
     1. Kattintson a **Mentés** gombra.
 
-        ![Új tesztkörnyezet ablak](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![Képernyőkép, amely az "új Labor" ablakot jeleníti meg.](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > Megtekintheti a tesztkörnyezet helyét, ha a labor-fiók úgy lett konfigurálva, hogy a labor [-létrehozó engedélyezze a labor helyének](allow-lab-creator-pick-lab-location.md) kiválasztását. 
@@ -89,7 +89,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete  
 
-| Méret | Cores | RAM | Description | 
+| Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
 | Kicsi | 2 | 3,5 GB | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
 | Közepes | 4 | 7 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. | 
@@ -130,7 +130,7 @@ Ehhez a legördülő listából új labort is létrehozhat az **új Labor** hasz
 
 Ha másik labor-fiókra szeretne váltani, válassza a labor fiók melletti legördülő listát, és válassza ki a másik labor-fiókot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)

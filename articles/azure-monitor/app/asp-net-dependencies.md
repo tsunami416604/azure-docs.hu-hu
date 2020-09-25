@@ -4,12 +4,12 @@ description: A helyszíni vagy Microsoft Azure webalkalmazástól származó fü
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263929"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -101,9 +101,10 @@ A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezési szöveget a rendsze
 | Platform | A teljes SQL-lekérdezés beolvasásához szükséges lépés (ek) |
 | --- | --- |
 | Azure-webalkalmazás |A webalkalmazás-Vezérlőpulton [nyissa meg a Application Insights](../../azure-monitor/app/azure-web-apps.md) panelt, és engedélyezze az SQL-parancsokat a .net alatt. |
-| IIS-kiszolgáló (Azure-beli virtuális gép, helyszíni stb.) | Használja a [Microsoft. Information. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot, vagy használja a Állapotmonitor PowerShell-modult [a Instrumentation-motor telepítéséhez](../../azure-monitor/app/status-monitor-v2-api-reference.md) , és indítsa újra az IIS-t. |
+| IIS-kiszolgáló (Azure-beli virtuális gép, helyszíni stb.) | Használja a [Microsoft. Information. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot, vagy használja a Állapotmonitor PowerShell-modult [a Instrumentation-motor telepítéséhez](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine) , és indítsa újra az IIS-t. |
 | Azure-felhőszolgáltatás | [Indítási feladat hozzáadása a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást a NuGet-csomagok [ASP.net](./asp-net.md) vagy [ASP.net Core alkalmazások](./asp-net-core.md) számára történő telepítésével kell előkészíteni a ApplicationInsights SDK-ra. |
 | IIS Express | Használja a [Microsoft. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot.
+| Azure web Jobs-feladatok | Használja a [Microsoft. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot.
 
 A fenti platform-specifikus lépések mellett **explicit módon be kell jelentkeznie az SQL-parancsok gyűjtésének engedélyezéséhez** a applicationInsights.config fájl módosításával a következőkkel:
 
@@ -155,7 +156,7 @@ Itt láthatja a sikertelen függőségek darabszámát. Ha további részleteket
 
 ## <a name="logs-analytics"></a>Naplók (Analitika)
 
-A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követheti nyomon. Az alábbiakban néhány példa következik.
+A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követheti nyomon. Íme néhány példa.
 
 * A sikertelen függőségi hívások keresése:
 
@@ -213,7 +214,7 @@ A Log Analytics lekérdezés nézetben `timestamp` a TrackDependency () hívás 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 Mint minden Application Insights SDK, a függőség-gyűjtési modul is nyílt forráskódú. Olvassa el és járuljon hozzá a kóddal, vagy jelentse [a hibákat a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)-tárházban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kivételek](./asp-net-exceptions.md)
 * [Felhasználói & lap adatvédelme](./javascript.md)

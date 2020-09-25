@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: a83a050b65f5673a86dd07ec13842f6009d2c8dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f24696c0db3155a59106e1361b01454b9ac16a20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753341"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267754"
 ---
 # <a name="azure-path-selection-across-multiple-isp-links"></a>Az Azure Path kiválasztása több ISP-kapcsolaton keresztül
 
@@ -43,6 +43,6 @@ Ez az ábra több hivatkozást mutat be egy, az Azure Virtual WAN-hoz csatlakoz�
 
 * Fontos megjegyezni, hogy a Virtual HUB VPN a ECMP-t használja (az egyenlő árú, több útvonalú útválasztást) az összes megszakítási alagútban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [Azure gyakori kérdések](virtual-wan-faq.md)című témakört.

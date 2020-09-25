@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262994"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
 
@@ -23,8 +23,8 @@ A folytatás előtt győződjön meg arról, hogy a Azure Backup Server [telepí
 
 Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Telepítse az ügynököt az Exchange-kiszolgálóra a **felügyeleti > ügynökök** kiválasztásával > a MABS felügyeleti konzol. A részletes lépésekért lásd [a MABS védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
+1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Telepítse az ügynököt az Exchange-kiszolgálóra a **felügyeleti > ügynökök** kiválasztásával > a MABS felügyeleti konzol. A részletes lépésekért lásd [a MABS védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
 
@@ -68,10 +68,10 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
 11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább**gombra.
 12. Válassza ki azt az időpontot, amikor a MABS-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább**gombra.
 13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd válassza a **tovább**lehetőséget.
-14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább**lehetőséget. Például:
+14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább**lehetőséget. Példa:
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Például:
+15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Példa:
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

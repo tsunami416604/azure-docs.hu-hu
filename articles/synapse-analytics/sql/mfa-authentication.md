@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bc503213169f909850460edf5e50ed3f1b34fbe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288596"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor HRE-hitelesítés használata a szinapszis SQL-sel (SSMS-támogatás az MFA-hoz)
 
@@ -22,9 +22,7 @@ A szinapszis SQL támogatja a SQL Server Management Studio (SSMS) kapcsolatait *
 
 Ez a cikk a különböző hitelesítési lehetőségek közötti különbségeket ismerteti, valamint az univerzális hitelesítéssel kapcsolatos korlátozásokat is. 
 
-**Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)webhelyről. 
-
-**Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)webhelyről.
+**Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)webhelyről.
 
 Az ebben a cikkben tárgyalt összes szolgáltatáshoz használja a 17,2-es vagy újabb 2017-es verziót.  A legutóbbi kapcsolódás párbeszédpanelnek az alábbi képhez hasonlóan kell kinéznie:
 
@@ -33,8 +31,8 @@ Az ebben a cikkben tárgyalt összes szolgáltatáshoz használja a 17,2-es vagy
 ## <a name="the-five-authentication-options"></a>Az öt hitelesítési lehetőség  
 
 Active Directory univerzális hitelesítés támogatja a két nem interaktív hitelesítési módszert:
-    - `Active Directory - Password`hitelesítés
-    - `Active Directory - Integrated`hitelesítés
+    - `Active Directory - Password` hitelesítés
+    - `Active Directory - Integrated` hitelesítés
 
 Két nem interaktív hitelesítési modell is létezik, amelyek számos különböző alkalmazásban (ADO.NET, JDCB, ODC stb.) is használhatók. Ez a két módszer soha nem eredményez előugró párbeszédpanelt:
 
@@ -51,7 +49,7 @@ Multi-Factor Authentication leírását itt tekintheti meg: [multi-Factor Authen
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-tartománynév vagy bérlői azonosító paraméter
 
-A [SSMS 17-es verziójától](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kezdve a felhasználók, akik az aktuális Active Directoryba importálnak a vendég felhasználóként más Azure Active Directory-címtárból, megadhatják az Azure ad-tartománynevet vagy a bérlő azonosítóját a csatlakozáskor. 
+A [SSMS 17-es verziójától](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kezdve a felhasználók, akik az aktuális Active Directoryba importálnak a vendég felhasználóként más Azure Active Directory-címtárból, megadhatják az Azure ad-tartománynevet vagy a bérlő azonosítóját a csatlakozáskor. 
 
 A vendég felhasználók a más Azure-hirdetéseket, például a outlook.com, a hotmail.com, a live.com vagy más, például a gmail.com fiókokat meghívó felhasználókat is tartalmazhatnak. Ez az információ lehetővé teszi, hogy az **MFA-hitelesítéssel rendelkező Active Directory univerzálisan** azonosítsa a megfelelő hitelesítő szolgáltatót. Ez a beállítás a Microsoft-fiókok (MSA), például a outlook.com, a hotmail.com, a live.com és a nem MSA fiókok támogatásához is szükséges. 
 
@@ -61,7 +59,7 @@ Ha például az Azure Server társítva van az Azure AD-tartományhoz `contosote
 
 Ha a felhasználó az Azure AD-hez társított natív felhasználó, és nem MSA-fiók, nincs szükség tartománynévre vagy bérlői AZONOSÍTÓra. 
 
-A (17,2-es SSMS-es verziótól kezdődő) paraméter megadásához a **Kapcsolódás az adatbázishoz** párbeszédpanelen végezze el a párbeszédpanelt, válassza a **Active Directory-Universal az MFA-** hitelesítéssel lehetőséget, kattintson a **Beállítások**elemre, fejezze be a **Felhasználónév** mezőt, majd kattintson a **kapcsolat tulajdonságai** fülre. 
+A (17,2-es SSMS-es verziótól kezdődő) paraméter megadásához a **Kapcsolódás az adatbázishoz** párbeszédpanelen végezze el a párbeszédpanelt, válassza a **Active Directory-Universal az MFA-** hitelesítéssel lehetőséget, válassza a **Beállítások**, majd a **Felhasználónév** mezőt, és válassza a **kapcsolat tulajdonságai** lapot. 
 
 Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet (**contosotest.onmicrosoft.com**) vagy a bérlő azonosítójának GUID azonosítóját.  
 
@@ -80,7 +78,7 @@ Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com
 
 Alapértelmezés szerint a csoporthoz csak a kapcsolódási engedély és minden további adathozzáférés szükséges, amelyet a szokásos módon kell megadni. 
 
-Vegye figyelembe, hogy a felhasználónak `steve@gmail.com` , mint vendég felhasználónak be kell jelölnie a jelölőnégyzetet, és fel kell vennie az ad-tartománynevet a `contosotest.onmicrosoft.com` SSMS- **kapcsolatok tulajdonságai** párbeszédpanelen. Az **Active Directory Domain Name vagy a bérlői azonosító** lehetőség csak az univerzális és MFA-kapcsolatok esetén támogatott, ellenkező esetben szürkén jelenik meg.
+Vendég felhasználóként `steve@gmail.com` jelölje be a jelölőnégyzetet, és adja hozzá az ad-tartománynevet a `contosotest.onmicrosoft.com` SSMS- **kapcsolatok tulajdonságai** párbeszédpanelen. Az **Active Directory Domain Name vagy a bérlői azonosító** lehetőség csak az univerzális és MFA-kapcsolatok esetén támogatott, ellenkező esetben szürkén jelenik meg.
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Általános hitelesítési korlátozások a szinapszis SQL-hez
 
@@ -92,6 +90,6 @@ Vegye figyelembe, hogy a felhasználónak `steve@gmail.com` , mint vendég felha
 - Az univerzális hitelesítéshez nincs szükség további szoftverre Active Directory, kivéve, ha a SSMS támogatott verzióját kell használnia.  
 - Az univerzális hitelesítés Active Directory-hitelesítési tár (ADAL) verziója frissítve lett a legújabb ADAL.dll 3.13.9 elérhető verzióra. Lásd: [Active Directory-hitelesítési tár 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Kapcsolódás a SZINAPSZIS sqlhoz SQL Server Management Studio](get-started-ssms.md) cikkel. 
 

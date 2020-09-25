@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 54d33b849f809dbe1ebefbbc3d2f63db6877e86e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995294"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296671"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Kapcsolódás adatkapcsolathoz a Azure Machine Learning Studióval
 
@@ -24,20 +24,20 @@ Ebből a cikkből megtudhatja, hogyan férhet hozzá az adataihoz a [Azure Machi
 
 Az alábbi táblázat az adattárolók és adatkészletek előnyeit határozza meg és összegzi. 
 
-||Leírás| Előnyök|   
+|Objektum|Description| Előnyök|   
 |---|---|---|
-|Adattárak| Biztonságos kapcsolódás a Storage szolgáltatáshoz az Azure-ban a kapcsolati adatok tárolásával, például az előfizetés-AZONOSÍTÓval és a jogkivonat-hitelesítéssel a munkaterülethez társított [Key Vaultban](https://azure.microsoft.com/services/key-vault/) | Mivel az adatok tárolása biztonságos, <br><br> <li> Ne &nbsp; helyezzen el a hitelesítő &nbsp; &nbsp; adatokat vagy az eredeti adatforrásokat veszélyben. <li> Már nem kell a parancsfájlokba felvennie a kódot.
+|Adattárak| Biztonságos kapcsolódás a Storage szolgáltatáshoz az Azure-ban a kapcsolati adatok tárolásával, például az előfizetés-AZONOSÍTÓval és a jogkivonat-hitelesítéssel a munkaterülethez társított [Key Vaultban](https://azure.microsoft.com/services/key-vault/) | Mivel az adatok tárolása biztonságos, <br><br> <li> Ne &nbsp; helyezzen el a hitelesítő &nbsp; &nbsp; adatokat &nbsp; vagy &nbsp; &nbsp; az eredeti adatforrásokat veszélyben. <li> Már nem kell a parancsfájlokba felvennie a kódot.
 |Adathalmazok| Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Az adatkészletek segítségével <br><br><li> Az adathozzáférés a modell betanítása során.<li> Az adatmegosztás és együttműködés más felhasználókkal.<li> Kihasználhatja a nyílt forráskódú kódtárakat, például a pandat az adatfeltáráshoz. | Mivel az adathalmazok kiértékelése a lustán történik, és az adatokat a meglévő helyükön maradják, <br><br><li>Tároljon egyetlen másolatot az adattárolóban.<li> További tárolási költségek nem merülnek fel <li> Ne kockáztatja véletlenül az eredeti adatforrások módosítását.<li>Javítsa a ML-munkafolyamatok teljesítményének sebességét. 
 
 Ha meg szeretné tudni, hogy az adattárolók és adatkészletek hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataiba, tekintse meg a [biztonságos hozzáférésről](concept-data.md#data-workflow) szóló cikket.
 
-A Code első használatakor tekintse meg az alábbi cikkeket a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) használatára a következő cikkekben:
+A Code első használatakor tekintse meg az alábbi cikkeket a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) használatára a következő cikkekben:
 * [Azure Storage-szolgáltatásokhoz való kapcsolódás adattárolókkal](how-to-access-data.md). 
 * [Hozzon létre Azure Machine learning adatkészleteket](how-to-create-register-datasets.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Hozzáférés [Azure Machine learning studióhoz](https://ml.azure.com/).
 
@@ -112,22 +112,22 @@ Azure Machine Learning adatkészlet adatprofilja az alábbiakat tartalmazza:
 >[!NOTE]
 > A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
-Statisztikai adatok|Leírás
-------|------
-Funkció| Az összesíteni kívánt oszlop neve.
-Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
-Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
-Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
-Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások esetében jelennek meg, amelyek típusa nem rendelkezik a bennük rejlő sorrendtel (például logikai értékekkel).
-Max| Az oszlop maximális értéke. 
-Darabszám| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
-Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
-Kvantilisek| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
-Középérték| Az oszlop számtani középértéke vagy átlaga.
-Szórás| Az oszlop adateloszlásának vagy variációjának mértékét.
-Variance| Az oszlop adatainak kiszóródásának mértéke az átlagos értéktől számítva. 
-Ferdeség| Az oszlop adatainak normál eloszlásból való megmérése.
-Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
+|Statisztikai adatok|Description
+|------|------
+|Funkció| Az összesíteni kívánt oszlop neve.
+|Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
+|Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
+|Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
+|Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások esetében jelennek meg, amelyek típusa nem rendelkezik a bennük rejlő sorrendtel (például logikai értékekkel).
+|Max| Az oszlop maximális értéke. 
+|Darabszám| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
+|Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
+|Kvantilisek| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
+|Középérték| Az oszlop számtani középértéke vagy átlaga.
+|Szórás| Az oszlop adateloszlásának vagy variációjának mértékét.
+|Variance| Az oszlop adatainak kiszóródásának mértéke az átlagos értéktől számítva. 
+|Ferdeség| Az oszlop adatainak normál eloszlásból való megmérése.
+|Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
 
 ## <a name="storage-access-and-permissions"></a>Tárterület-hozzáférés és engedélyek
 

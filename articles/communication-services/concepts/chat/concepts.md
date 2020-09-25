@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292472"
 ---
-# <a name="chat-concepts"></a>Csevegési fogalmak
+# <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -28,7 +28,7 @@ Tekintse meg a [kommunikációs szolgáltatások csevegési függvénytárának 
 
 Csevegési beszélgetések a csevegési szálakon belül történnek. Egy csevegési szál Számos üzenetet és számos felhasználót tartalmazhat. Minden üzenet egyetlen szálhoz tartozik, és egy felhasználó egy vagy több szál része lehet. 
 
-A csevegési szál minden felhasználójának neve tag. Egy csevegési szálban akár 250 taggal is rendelkezhet. Csak a szál tagjai küldhetnek és fogadhatnak üzeneteket, vagy hozzáadhatnak vagy eltávolíthatnak tagokat egy csevegési szálban. Az üzenet maximális megengedett mérete körülbelül 28KB. A kommunikációs szolgáltatások addig tárolja a csevegési előzményeket, amíg nem végez törlési műveletet a csevegési szálon. A csevegési szálban lévő összes üzenetet lekérheti a `List/Get Messages` művelettel.
+A csevegési szál minden felhasználójának neve tag. Egy csevegési szálban akár 250 taggal is rendelkezhet. Csak a szál tagjai küldhetnek és fogadhatnak üzeneteket, vagy hozzáadhatnak vagy eltávolíthatnak tagokat egy csevegési szálban. Az üzenet maximális megengedett mérete körülbelül 28KB. A csevegési szálban lévő összes üzenetet lekérheti a `List/Get Messages` művelettel. A kommunikációs szolgáltatások addig tárolja a csevegési előzményeket, amíg nem hajt végre törlési műveletet a csevegési szálon vagy az üzeneten, vagy amíg egyetlen tag sem marad a csevegési szálban, ahol az árva, és a törlésre van feldolgozva.   
 
 A több mint 20 taggal rendelkező csevegési szálak esetében a beolvasás és a begépelési mutatók funkció le van tiltva. 
 
@@ -47,7 +47,7 @@ Két fő részből áll a csevegő architektúra: 1) megbízható szolgáltatás
 A kommunikációs szolgáltatások csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a szál- **tevékenységek**nevű rendszer által generált üzeneteket. A hozzászóláslánc-tevékenységek akkor jönnek létre, amikor egy csevegési szál frissül. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény a felhasználó által generált szöveges üzeneteket, valamint a rendszerüzeneteket is tartalmazza időrendben. Ez segít megállapítani, hogy mikor lett hozzáadva vagy eltávolítva egy tag, vagy mikor frissítették a csevegési szál témakört. A támogatott üzenetek típusai a következők:  
 
  - `Text`: A csevegési beszélgetés részeként a felhasználó által összeállított és küldött tényleges üzenet. 
- - `ThreadActivity/AddMember`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz. Például:
+ - `ThreadActivity/AddMember`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz. Példa:
 
 ```xml
 
@@ -72,7 +72,7 @@ A kommunikációs szolgáltatások csevegés megosztja a felhasználó által l�
 
 ```  
 
-- `ThreadActivity/DeleteMember`: Az a Rendszerüzenet, amely azt jelzi, hogy a tag el lett távolítva a csevegési szálból. Például:
+- `ThreadActivity/DeleteMember`: Az a Rendszerüzenet, amely azt jelzi, hogy a tag el lett távolítva a csevegési szálból. Példa:
 
 ```xml
 
@@ -92,7 +92,7 @@ A kommunikációs szolgáltatások csevegés megosztja a felhasználó által l�
 
 ```
 
-- `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett. Például:
+- `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett. Példa:
 
 ```xml
 

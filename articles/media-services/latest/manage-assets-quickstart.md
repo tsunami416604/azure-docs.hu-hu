@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261413"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 
@@ -66,7 +66,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
 
 Ha az eszközök ablakra navigál, látni fogja, hogy a listához új eszköz lett hozzáadva:
 
-![Feltöltés](./media/manage-assets-quickstart/upload.png)
+![Képernyőkép a Azure Portal az eszközök ablak megnyitásával, amely az eszközök (új) elem kiválasztásával, valamint a feltöltés gomb kiválasztásával hozzáadott új eszközzel bővült.](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>Kódolás
 
@@ -78,13 +78,13 @@ Ha az eszközök ablakra navigál, látni fogja, hogy a listához új eszköz le
 
 Ha az eszközök ablakra navigál, látni fogja, hogy a kimeneti eszköz hozzá lett adva a listához:
 
-![Kódolás](./media/manage-assets-quickstart/encode.png)
+![A Azure Portal eszközök ablakának képernyőképe, amely az adategység ignite.mp4 a média által kódolt standard kódolású adatforrást mutatja.](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>A feladatok előrehaladásának figyelése
 
 A feladat állapotának megtekintéséhez navigáljon a **feladatok**elemhez. A feladatok általában a következő állapotokon haladnak át: ütemezett, várólistán lévő, feldolgozás, befejezett (végső állapot). Ha a feladat hibát észlelt, a Hiba állapot jelenik meg.
 
-![status](./media/manage-assets-quickstart/job-status.png)
+![Állapot](./media/manage-assets-quickstart/job-status.png)
 
 ## <a name="publish-and-stream"></a>Közzététel és stream
 
@@ -114,6 +114,6 @@ Vagy másolja a streaming URL-címet, és használja azt az ügyfél-lejátszób
 
 Ha szeretné kipróbálni a többi rövid útmutatót, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben futtatta ezt a rövid útmutatót, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A portál használata tartalom titkosításához](encrypt-content-quickstart.md)

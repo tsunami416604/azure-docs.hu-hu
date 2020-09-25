@@ -1,14 +1,14 @@
 ---
 title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252004"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -374,8 +374,8 @@ Ha **enforcementMode** a enforcementMode _le van tiltva_, a rendszer továbbra i
 
 Ez a hatás a szabályzat-definíciós _móddal_ együtt használható `Microsoft.Kubernetes.Data` . A rendszer az [Opa-korlátozási keretrendszerben](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiált forgalomirányító v3 belépésvezérlési szabályok átadására szolgál a Kubernetes-fürtökön az Azure-ban való [megnyitásához](https://www.openpolicyagent.org/) .
 
-> [!NOTE]
-> A [Kubernetes-hez készült Azure Policy](./policy-for-kubernetes.md) előzetes verzióban érhető el, és csak a Linux-csomópontok készleteit és beépített szabályzat-definíciókat támogat. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verzióra vonatkozó szabályzat-definíciók **EnforceOPAConstraint** -effektussal és a kapcsolódó **Kubernetes szolgáltatás** kategóriája _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** -effektussal és a kapcsolódó **Kubernetes szolgáltatás** kategóriája _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint kiértékelése
 
@@ -430,8 +430,8 @@ Példa: forgalomirányító v3 belépésvezérlési szabály a tároló CPU-és 
 
 Ez a hatás a szabályzat-definíciós _móddal_ együtt használható `Microsoft.ContainerService.Data` . A [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) által meghatározott forgalomirányító v2 belépésvezérlés-szabályok átadására szolgálnak [az](https://www.openpolicyagent.org/) [Azure Kubernetes Service](../../../aks/intro-kubernetes.md)-ben.
 
-> [!NOTE]
-> A [Kubernetes-hez készült Azure Policy](./policy-for-kubernetes.md) előzetes verzióban érhető el, és csak a Linux-csomópontok készleteit és beépített szabályzat-definíciókat támogat. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verzióra vonatkozó szabályzat-definíciók **EnforceRegoPolicy** -effektussal és a kapcsolódó **Kubernetes szolgáltatás** kategóriája _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> A korlátozott előzetes verziójú házirend-definíciók a **EnforceRegoPolicy** -effektussal és a kapcsolódó **Kubernetes szolgáltatás** kategóriája _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy kiértékelése
 
@@ -569,7 +569,7 @@ Az **Operations** Property Array lehetővé teszi több címke különböző mó
 
 A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 
-|Művelet |Description |
+|Művelet |Leírás |
 |-|-|
 |addOrReplace |Hozzáadja a definiált tulajdonságot vagy címkét és értéket az erőforráshoz, még akkor is, ha a tulajdonság vagy a címke már létezik egy másik értékkel. |
 |Hozzáadás |Hozzáadja a definiált tulajdonságot vagy címkét és értéket az erőforráshoz. |
@@ -646,7 +646,7 @@ A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 
 ## <a name="layering-policy-definitions"></a>Rétegbeli házirend-definíciók
 
-Egy erőforrásra több hozzárendelés is hatással lehet. Ezek a hozzárendelések lehetnek ugyanazon a hatókörön vagy eltérő hatókörökben. Ezen hozzárendelések mindegyike valószínűleg más effektust is meghatároz. Az egyes szabályzatok feltételeit és hatásait egymástól függetlenül ki kell értékelni. Például:
+Egy erőforrásra több hozzárendelés is hatással lehet. Ezek a hozzárendelések lehetnek ugyanazon a hatókörön vagy eltérő hatókörökben. Ezen hozzárendelések mindegyike valószínűleg más effektust is meghatároz. Az egyes szabályzatok feltételeit és hatásait egymástól függetlenül ki kell értékelni. Példa:
 
 - 1. szabályzat
   - Erőforrás helyének korlátozása a következőre: "westus"

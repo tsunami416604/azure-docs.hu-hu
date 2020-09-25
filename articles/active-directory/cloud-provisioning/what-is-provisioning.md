@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85430aea183cca977e3cb648cb43779f25c61a0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a5d5528865fc910751b8052dcc78a82131e17290
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657825"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266241"
 ---
 # <a name="what-is-identity-provisioning"></a>Mi az az identitáslétesítés?
 
@@ -24,7 +24,7 @@ Napjainkban a vállalatok és a vállalatok egyre többen használják a helysz�
 
 A kiépítés során a rendszer bizonyos feltételek alapján hozza létre az objektumot, és az objektumot naprakészen tartja, és törli az objektumot, amikor a feltételek már nem teljesülnek. Ha például egy új felhasználó csatlakozik a szervezethez, a felhasználó bekerül a HR rendszerbe.  Ezen a ponton a kiépítés létrehozhat egy megfelelő felhasználói fiókot a felhőben, Active Directoryban és különböző alkalmazásokban, amelyekhez a felhasználónak hozzá kell férnie.  Ez lehetővé teszi a felhasználó számára, hogy megkezdje a munkát, és hozzáférhessen az első napon szükséges alkalmazásokhoz és rendszerekhez. 
 
-![Felhőbeli kiépítés](media/what-is-provisioning/cloud1.png)
+![A felhőbe való kiépítés Azure Active Directorysal való kihelyezését bemutató diagram.](media/what-is-provisioning/cloud1.png)
 
 Azure Active Directory tekintetében a kiépítés a következő főbb forgatókönyvek szerint bontható.  
 
@@ -34,7 +34,7 @@ Azure Active Directory tekintetében a kiépítés a következő főbb forgatók
 
 ## <a name="hr-driven-provisioning"></a>HR-vezérelt kiépítés
 
-![Felhőbeli kiépítés](media/what-is-provisioning/cloud2.png)
+![Diagram, amely a HR-alapú üzembe helyezést mutatja a Cloud HR, a helyszíni HR és a Azure Active Directory alapján.](media/what-is-provisioning/cloud2.png)
 
 A HR-ből a felhőbe való kiépítés magában foglalja az adott HR-rendszeren található információk alapján objektumok (felhasználók, szerepkörök, csoportok stb.) létrehozását.  
 
@@ -48,7 +48,7 @@ A leggyakoribb forgatókönyv a következő: amikor egy új alkalmazott csatlako
 
 ## <a name="app-provisioning"></a>Alkalmazás kiépítés
 
-![Felhőbeli kiépítés](media/what-is-provisioning/cloud3.png)
+![Diagram, amely az alkalmazások kiépítését mutatja be helyszíni alkalmazásokkal, nem a Microsofttól származó felhőalapú alkalmazásokkal és Azure Active Directoryokkal.](media/what-is-provisioning/cloud3.png)
 
 Azure Active Directory (Azure AD) esetében az **[alkalmazás üzembe](../app-provisioning/user-provisioning.md)** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
@@ -62,7 +62,7 @@ A leggyakoribb forgatókönyv a következő: Ha Active Directory (AD) felhaszná
 
 Ezt a Azure AD Connect Sync, Azure AD Connect a felhőalapú kiépítés és a Microsoft Identity Manager használatával hajtották végre. 
  
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
 - [A felhő kiépítés telepítése](how-to-install.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287414"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>A Azure Time Series Insights Gen2-környezet megtervezése
 
@@ -69,10 +69,7 @@ Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot vál
 
 Az **időbélyeg** tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
 
-> [!TIP]
-> Ellenőrizze az eseményforrás formázásának és elemzésének követelményeit.
-
-Ha üresen hagyja, az esemény időbélyegzője az sorba helyezni időpontját használja. Ha a múltbeli vagy kötegelt eseményeket küldi el, az időbélyegző tulajdonság testreszabása az alapértelmezett Event sorba helyezni-időpontnál hasznosabb lehet. További információkért olvassa el a következő témakört [: Event sources hozzáadása az Azure IoT Hubban](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Ha üresen hagyja, a rendszer az eseményt várólistán lévő az IoT Hub vagy az Event hub esemény időbélyegzőként való használatakor. Általánosságban elmondható, hogy a felhasználóknak meg kell választaniuk az időbélyegző tulajdonságot, és azt az időpontot kell használniuk, amikor az érzékelő vagy címke a hub várólistán lévő idejének helyett az olvasást generálta. További információ és az időzóna-eltolások olvasása az [eseményforrás időbélyegzője](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp)alapján.
 
 ## <a name="understand-the-time-series-model"></a>Az idősorozat-modell ismertetése
 
@@ -91,11 +88,11 @@ Egy jó ökölszabály:
 * Az idősorozat-modellben tárolja a metaadatokat.
 * Győződjön meg arról, hogy az idősoros mód, a példány mezői és az események csak a szükséges információkat tartalmazzák, például egy idősorozat-azonosítót vagy egy időbélyeg-tulajdonságot.
 
-További információ: [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
+További információért és az események összeolvasztásának és tárolásának megismeréséhez olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.

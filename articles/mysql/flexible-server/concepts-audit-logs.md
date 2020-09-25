@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295989"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Az adatbázis-tevékenységek nyomon követése Azure Database for MySQL rugalmas kiszolgáló naplófájljaival
 
 > [!IMPORTANT] 
 > Azure Database for MySQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
+
+> [!NOTE]
+> A naplók eléréséhez Azure Monitor diagnosztikai beállításokkal való integráció az üzembe helyezés és a teljes funkcionalitás hamarosan elérhető lesz.
 
 Azure Database for MySQL rugalmas kiszolgáló lehetővé teszi a felhasználók számára, hogy konfigurálja a naplókat. A naplók segítségével nyomon követhető az adatbázis-szintű tevékenységek, például a kapcsolódási, a felügyeleti, a DDL-és a DML-események. Ezek a naplótípusok általában a megfelelőség biztosítása érdekében használatosak.
 
@@ -49,6 +52,9 @@ A naplózási naplózási viselkedés vezérléséhez beállítható egyéb para
 | `TABLE_ACCESS` | – Csak MySQL 5,7 esetén érhető el <br> – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
+
+> [!NOTE]
+> A naplók eléréséhez Azure Monitor diagnosztikai beállításokkal való integráció az üzembe helyezés és a teljes funkcionalitás hamarosan elérhető lesz.
 
 A naplófájlok integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a naplók használatát a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubs vagy Azure Storage-ba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/platform/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [log Portalt ismertető cikket](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 

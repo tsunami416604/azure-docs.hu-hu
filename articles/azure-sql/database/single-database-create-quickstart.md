@@ -4,19 +4,19 @@ description: A Azure Portal, a PowerShell vagy az Azure CLI használatával hozz
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: contperfq1
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 8747e2f898b9810f50a08830728f1fab9a7f0548
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263402"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása
 
@@ -50,10 +50,10 @@ Egyetlen adatbázis létrehozásához a Azure Portal ez a rövid útmutató az A
    - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
    - **Hely**: válasszon ki egy helyet a legördülő listából.
 
-   Kattintson az **OK** gombra.
+   Válassza az **OK** lehetőséget.
 
 1. Ha **nem**értékre szeretné ÁLLÍTANI az **SQL rugalmas** készletet, ne használja.
-1. A **számítás és tárolás**területen válassza az **adatbázis konfigurálása**lehetőséget.
+1. A **Számítás + tárolás** területen válassza az **Adatbázis konfigurálása** lehetőséget.
 1. Ez a rövid útmutató kiszolgáló nélküli adatbázist használ, ezért válassza a **kiszolgáló**nélküli lehetőséget, majd kattintson az **alkalmaz**gombra. 
 
       ![kiszolgáló nélküli adatbázis konfigurálása](./media/single-database-create-quickstart/configure-database.png)
@@ -309,7 +309,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis [összekötése és lekérdezése](connect-query-content-reference-guide.md) különböző eszközök és nyelvek használatával:
 > [!div class="nextstepaction"]

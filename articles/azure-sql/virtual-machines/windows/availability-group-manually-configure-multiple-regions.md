@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e33a5e32848dfd0a6cf252d6876616fc89edd1d7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f312b690ac7743b1574dbbec9d408b3fafbb0194
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263181"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>SQL Server always on rendelkezésre állási csoport konfigurálása különböző Azure-régiók között
 
@@ -107,7 +107,7 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
 1. Adja hozzá az IP-címet az alapszintű fürt nevéhez.
 
-   Nyissa meg még egyszer a fürt tulajdonságait, és válassza a **függőségek** fület. konfigurálja a következő két IP-cím vagy függőség beállítását: 
+   Nyissa meg a fürt tulajdonságait még egyszer, és válassza a **függőségek** lapot. A két IP-cím vagy a függőség beállítása: 
 
    ![Fürt tulajdonságai](./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png)
 
@@ -197,7 +197,7 @@ További információkért tekintse át a következők témaköröket:
 - [Rendelkezésre állási csoport tervezett manuális feladatátvételének végrehajtása (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Egy rendelkezésre állási csoport kényszerített manuális feladatátvételének végrehajtása (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Always On rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)

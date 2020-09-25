@@ -1,6 +1,6 @@
 ---
 title: A Azure Active Directory B2C korábbi felhasználói flow-verziói | Microsoft Docs
-description: A Azure Active Directory B2Cban elérhető felhasználói folyamatok verzióinak megismerése.
+description: Ismerje meg a Azure Active Directory B2Cban elérhető felhasználói folyamatok örökölt verzióit.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67ce6ab611e8d32c320320976ff2eba932f761a2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3471b9988b154ccb38dc56545e769a7179a4026f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258727"
 ---
 # <a name="legacy-user-flow-versions-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C korábbi felhasználói flow-verziói
 
@@ -30,25 +30,25 @@ Az alábbi táblázatban, kivéve, ha a felhasználói folyamat **ajánlottként
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
-| Új jelszó létrehozása | Igen | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
-| Profil szerkesztése | Igen | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
-| Bejelentkezés a ROPC használatával | Nem | Lehetővé teszi, hogy a felhasználó helyi fiókkal jelentkezzen be közvetlenül a natív alkalmazásokban (nincs szükség böngészőre). A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li></ul> |
-| Bejelentkezés | Nem | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>Bejelentkezés letiltása</li><li>Jelszó alaphelyzetbe állításának kényszerítése</li><li>Bejelentkezés megtartása (KMSI)</ul><br>Ezzel a felhasználói folyamattal nem szabhatja testre a felhasználói felületet. |
-| Regisztráció | Nem | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
-| Regisztráció és bejelentkezés | Igen | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul>|
+| Új jelszó létrehozása | Yes | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Profil szerkesztése | Yes | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
+| Bejelentkezés a ROPC használatával | No | Lehetővé teszi, hogy a felhasználó helyi fiókkal jelentkezzen be közvetlenül a natív alkalmazásokban (nincs szükség böngészőre). A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li></ul> |
+| Bejelentkezés | No | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>Bejelentkezés letiltása</li><li>Jelszó alaphelyzetbe állításának kényszerítése</li><li>Bejelentkezés megtartása (KMSI)</ul><br>Ezzel a felhasználói folyamattal nem szabhatja testre a felhasználói felületet. |
+| Regisztráció | No | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Regisztráció és bejelentkezés | Yes | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul>|
 
 ## <a name="v11"></a>1.1-es verzió
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
-| Jelszó-visszaállítási v 1.1 | Nem | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után (az új lapelrendezés elérhető). A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Jelszó-visszaállítási v 1.1 | No | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után (az új lapelrendezés elérhető). A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
 
 ## <a name="v2"></a>2. verzió
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
-| Jelszó alaphelyzetbe állítása v2 | Nem | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
-| Profil szerkesztése v2 | Igen | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
-| Bejelentkezés v2-ben | Nem | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>Bejelentkezési oldal testreszabása</li></ul> |
-| Regisztráció v2 | Nem | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
-| Regisztráció és bejelentkezés v2-ben | Nem | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjával. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Jelszó alaphelyzetbe állítása v2 | No | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Profil szerkesztése v2 | Yes | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
+| Bejelentkezés v2-ben | No | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>Bejelentkezési oldal testreszabása</li></ul> |
+| Regisztráció v2 | No | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Regisztráció és bejelentkezés v2-ben | No | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjával. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |

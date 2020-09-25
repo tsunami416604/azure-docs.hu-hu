@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 2f3641bf540b188ce3d2333ccd6bcf4a926ba130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 928a68cff5dc8043e69c25be3dcfa3510a7d3a2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267300"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és virtuális központ helyei
 
@@ -23,7 +23,7 @@ Az Azure Virtual WAN egy olyan hálózati szolgáltatás, amely optimalizált é
 
 A helyszíni eszköz kapcsolatát a virtuális központ automatizált módon hozza meg. A virtuális központ egy Microsoft által felügyelt virtuális hálózat. Az elosztó különféle szolgáltatásvégpontokat tartalmaz a helyszíni hálózatból (vpnsite) induló kapcsolatok biztosításához. Régiónként csak egy hubhoz tartozhat.
 
-## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>Automatizálás a kapcsolati partnerektől
+## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>Ág IPSec-kapcsolatának automatizálása a partnerektől
 
 Az Azure Virtual WAN-hoz csatlakozó eszközökhöz beépített Automation szükséges a kapcsolódáshoz. Ez általában az Eszközkezelő felhasználói felületén (vagy ezzel egyenértékű) van beállítva, amely a VPN-ág eszköz és egy Azure Virtual hub VPN-végpont (VPN-átjáró) közötti kapcsolat és konfiguráció kezelését állítja be.
 
@@ -36,17 +36,37 @@ A következő magas szintű automatizálás van beállítva az Eszközkezelőben
 
 Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazza az Azure Virtual hub VNet és VPN Gateway létrehozását. Ha többet szeretne megtudni az automatizálásról, tekintse meg [a virtuális WAN-partnerek automatizálási irányelveit](virtual-wan-configure-automation-providers.md).
 
-## <a name="connectivity-through-partners"></a><a name="partners"></a>Kapcsolódás partnereken keresztül
+## <a name="branch-ipsec-connectivity-partners"></a><a name="partners"></a>Ág IPSec-kapcsolati partnerei
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-A következő partnereink a közeljövőben: 128 Technologies, Arista, Aruba HPE, Cisco Systems (Viptela), F5 Networks, Open Systems, Oracle SD-WAN és SharpLink.
+A következő partnereink a közeljövőben: 128 technológiák, Arista, Cisco Systems (Viptela), F5 Networks, Oracle SD-WAN és SharpLink.
+
+## <a name="partners-with-integrated-virtual-hub-offerings"></a>Integrált virtuális hub-ajánlatokat tartalmazó partnerek
+Az automatikus fiókirodai IPSec-kapcsolat mellett egyes partnerek olyan **hálózati virtuális berendezéseket (NVA)** is kínálnak, amelyek közvetlenül az Azure Virtual WAN-hubhoz integrálhatók.  Ez lehetővé teszi, hogy az ügyfelek az ág kapcsolataikat egy kompatibilis, harmadik féltől származó berendezéssel szakítsák meg a virtuális központban.  
+
+A virtuális WAN-központban NVA kínáló partnereknek a következőket kell tenniük:
+
+* Implementálták az IPSec-kapcsolat automatizálását a fiókirodából, és az Azure Virtual WAN hub-ra felkészítettük a NVA ajánlatot.
+* Az Azure Marketplace-en rendelkezésre áll egy meglévő hálózati virtuális berendezési ajánlat.
+
+Ha Ön partner, és kérdései vannak a virtuális központ által felügyelt NVA kapcsolatban, kérjük, lépjen kapcsolatba velünk e-mailben a következő címre: vwannvaonboarding@microsoft.com
+
+## <a name="integrated-virtual-hub-nva-partners"></a>Integrált Virtual hub NVA-partnerek
+Ezek a partnerek **felügyelt alkalmazási** ajánlatokat biztosítanak, amelyek mostantól elérhetők a virtuális WAN-hubhoz való üzembe helyezéshez.
+
+|Partnerek|Konfiguráció/útmutató/üzembe helyezési útmutató|
+|---|---|
+|[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN üzembe helyezési útmutató](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
+|[Cisco Cloud Service router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| [A Cisco Cloud Service router (CSR) VWAN üzembe helyezési útmutatója]()
+
+A következő partnerek a NVA a közeljövőben a virtuális hub-ajánlatokban való létrehozásához szükségesek: Citrix, Versed Networks és VeloCloud.
 
 ## <a name="locations"></a><a name="locations"></a>Helyek
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 

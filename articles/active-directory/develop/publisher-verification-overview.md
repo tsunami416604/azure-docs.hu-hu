@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258149"
 ---
 # <a name="publisher-verification"></a>Közzétevő ellenőrzése
 
@@ -33,9 +33,10 @@ A kiadói ellenőrzés a következő előnyöket biztosítja:
 
 - **Továbbfejlesztett védjegyezés**– az "ellenőrzött" jelvény jelenik meg az Azure ad- [hozzájárulási kérdés](application-consent-experience.md), a vállalati alkalmazások lapon, valamint a végfelhasználók és a rendszergazdák által használt további UX-felületek. 
 
-- **Gördülékeny nagyvállalati elfogadás**– a rendszergazdák a [felhasználói jóváhagyási házirendeket](../manage-apps/configure-user-consent.md)konfigurálhatják, a közzétevő ellenőrzési állapotát pedig az elsődleges házirend feltételei közé. 
+- **Gördülékeny nagyvállalati elfogadás**– a rendszergazdák a [felhasználói jóváhagyási házirendeket](../manage-apps/configure-user-consent.md)konfigurálhatják, a közzétevő ellenőrzési állapotát pedig az elsődleges házirend feltételei közé.
 
-- **Továbbfejlesztett kockázatértékelés**– a Microsoft által a "kockázatos" jóváhagyási kérelmekre vonatkozó észlelések a kiadói ellenőrzés jeleként is szerepelnek. 
+> [!NOTE]
+> November 2020-től kezdve a végfelhasználók nem tudnak jóváhagyást adni a legtöbb újonnan regisztrált több-bérlős alkalmazásnak ellenőrzött közzétevők nélkül. Ez a november 8th 2020 után regisztrált alkalmazásokra vonatkozik, és a OAuth 2.0-s verzióját használja az alapszintű bejelentkezés és a felhasználói profil olvasása után, valamint a különböző bérlők felhasználói számára történő kérésének megadására, ha az alkalmazás regisztrálva van. Egy figyelmeztetés jelenik meg a jóváhagyás képernyőn, amely tájékoztatja a felhasználókat arról, hogy ezek az alkalmazások kockázatos, és nem ellenőrzött közzétevők.    
 
 ## <a name="requirements"></a>Követelmények
 A kiadói ellenőrzéshez néhány előfeltétel van, amelyek némelyikét már számos Microsoft-partner végezte el. Ezek a következők: 
@@ -69,7 +70,7 @@ Az alábbiakban néhány gyakori kérdést talál a közzétevő ellenőrzési p
 
   A Microsoft 365t is integráló fejlesztők további előnyöket kaphatnak a programoktól. További információkért tekintse meg [Microsoft 365 közzétevői igazolást](/microsoft-365-app-certification/docs/attestation) és [Microsoft 365 alkalmazás minősítését](/microsoft-365-app-certification/docs/certification). 
 
-- **Ugyanaz, mint az Azure AD Application Gallery?** Nem – a közzétevő ellenőrzése egy kiegészítő, de különálló program a [Azure Active Directory alkalmazás-gyűjteményben](../azuread-dev/howto-app-gallery-listing.md). A fenti feltételeknek megfelelő fejlesztőknek a programban való részvételtől függetlenül kell befejezniük a közzétevő ellenőrzési folyamatát. 
+- **Ugyanaz, mint az Azure AD Application Gallery?** Nem – a közzétevő ellenőrzése egy kiegészítő, de különálló program a [Azure Active Directory alkalmazás-gyűjteményben](v2-howto-app-gallery-listing.md). A fenti feltételeknek megfelelő fejlesztőknek a programban való részvételtől függetlenül kell befejezniük a közzétevő ellenőrzési folyamatát. 
 
 ## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [jelölheti meg az alkalmazást közzétevőként](mark-app-as-publisher-verified.md).

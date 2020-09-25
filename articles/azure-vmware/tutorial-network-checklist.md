@@ -1,32 +1,36 @@
 ---
-title: 'Oktatóanyag: hálózati ellenőrzőlista'
-description: A hálózati kapcsolatra és a hálózati portokra vonatkozó előfeltételek és részletek
+title: Oktatóanyag – hálózati tervezési ellenőrzőlista
+description: Ismerje meg a hálózati követelményekre vonatkozó előfeltételeket, valamint a hálózati kapcsolattal és az Azure VMware-megoldás hálózati portjaival kapcsolatos információkat.
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750409"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254397"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution"></a>Hálózati ellenőrzőlista az Azure VMware-megoldáshoz 
+# <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Hálózatkezelési tervezési ellenőrzőlista az Azure VMware-megoldáshoz 
 
-Az Azure VMware megoldás egy VMware Private Cloud Environment-környezetet kínál, amely a helyszíni és az Azure-alapú környezetek vagy erőforrások felhasználói és alkalmazásai számára érhető el. A kapcsolat olyan hálózati szolgáltatásokon keresztül valósul meg, mint az Azure ExpressRoute és a VPN-kapcsolatok, és bizonyos hálózati címtartományok és tűzfal-portok szükségesek a szolgáltatások engedélyezéséhez. Ebből a cikkből megtudhatja, hogy milyen információkra van szüksége ahhoz, hogy megfelelően konfigurálja a hálózatkezelést az Azure VMware-megoldással való együttműködéshez.
+Az Azure VMware megoldás egy VMware Private Cloud Environment-környezetet kínál, amely a helyszíni és az Azure-alapú környezetek vagy erőforrások felhasználói és alkalmazásai számára érhető el. A kapcsolat olyan hálózati szolgáltatásokon keresztül történik, mint az Azure ExpressRoute és a VPN-kapcsolatok, és a szolgáltatások engedélyezéséhez bizonyos hálózati címtartományok és tűzfal-portok szükségesek. Ez a cikk azokat az információkat tartalmazza, amelyeket a hálózatkezelés megfelelő konfigurálásához szükséges, hogy működjön az Azure VMware-megoldással.
 
-Ez az oktatóanyag a következőket ismerteti:
+Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
 > [!div class="checklist"]
-> * Hálózati kapcsolatra vonatkozó követelmények
-> * DHCP az Azure VMware-megoldásban
+> * A Virtual Network és a ExpressRoute Circuit szempontjai
+> * Útválasztási és alhálózati követelmények
+> * A szolgáltatásokkal való kommunikációhoz szükséges hálózati portok
+> * DHCP-és DNS-megfontolások az Azure VMware-megoldásban
 
-## <a name="virtual--network-and-expressroute-circuit--considerations"></a>A Virtual Network és a ExpressRoute Circuit szempontjai
-Amikor létrehoz egy kapcsolatot az előfizetésben található virtuális hálózatból, a ExpressRoute áramkör a társításon keresztül jön létre, és egy engedélyezési kulcsot és egy, a Azure Portal által kért társ-azonosítót használ. A társítás egy privát, egy-az-egyhez kapcsolat a privát felhő és a virtuális hálózat között.
+
+
+## <a name="virtual-network-and-expressroute-circuit-considerations"></a>A Virtual Network és a ExpressRoute Circuit szempontjai
+Amikor létrehoz egy virtuális hálózati kapcsolatot az előfizetésében, a rendszer a ExpressRoute áramkört a társításon keresztül hozza létre, egy engedélyezési kulcsot használ, valamint egy, a Azure Portalban kért társ-AZONOSÍTÓt. A társítás egy privát, egy-az-egyhez kapcsolat a privát felhő és a virtuális hálózat között.
 
 > [!NOTE] 
 > A ExpressRoute áramkör nem része a felhőalapú telepítésnek. A helyszíni ExpressRoute áramkör a jelen dokumentum hatókörén kívül esik. Ha helyszíni kapcsolatra van szüksége a saját felhőhöz, használhat egy meglévő ExpressRoute-áramkört, vagy vásárolhat egyet a Azure Portal.
 
-Privát felhő telepítésekor a vCenter és a NSX-T kezelő IP-címeit kapja meg. Ezen felügyeleti felületek eléréséhez további erőforrásokat kell létrehoznia az előfizetésében található virtuális hálózatban. Ezen erőforrások létrehozásához és ExpressRoute létrehozásához szükséges eljárásokat az oktatóanyagokban találja.
+Privát felhő telepítésekor a vCenter és a NSX-T kezelő IP-címeit kapja meg. Ezen felügyeleti felületek eléréséhez további erőforrásokat kell létrehoznia az előfizetés virtuális hálózatában. Ezen erőforrások létrehozásához és [ExpressRoute](tutorial-expressroute-global-reach-private-cloud.md) létrehozásához szükséges eljárásokat az oktatóanyagokban találja.
 
 A privát felhőalapú logikai hálózat előre kiépített NSX-T tartalmaz. Az Ön számára előre kiépített 0. rétegbeli átjáró és 1. rétegbeli átjáró. Létrehozhat egy szegmenst, és csatolhatja azt a meglévő 1. rétegbeli átjáróhoz, vagy csatolhatja azt egy Ön által definiált új 1. rétegbeli átjáróhoz. A NSX-T logikai hálózatkezelési összetevők kelet-nyugati kapcsolatot biztosítanak a munkaterhelések között, és észak-déli kapcsolatot biztosítanak az internettel és az Azure-szolgáltatásokkal.
 
@@ -39,15 +43,15 @@ Példa a `/22` CIDR hálózati címterület:  `10.10.0.0/22`
 
 Az alhálózatok:
 
-| Hálózati forgalom             | Alhálózat | Példa        |
-| ------------------------- | ------ | -------------- |
-| Magánfelhő-felügyelet  | `/24`  | `10.10.0.0/24` |
-| vMotion hálózat           | `/24`  | `10.10.1.0/24` |
-| Virtuális gépek számítási feladatai              | `/24`  | `10.10.2.0/24` |
-| ExpressRoute-társítás      | `/24`  | `10.10.3.8/30` |
+| Hálózati forgalom             | Alhálózat | Példa          |
+| ------------------------- | ------ | ---------------- |
+| Magánfelhő-felügyelet  | `/26`  | `10.10.0.0/26`   |
+| vMotion hálózat           | `/25`  | `10.10.1.128/25` |
+| Virtuális gépek számítási feladatai              | `/24`  | `10.10.2.0/24`   |
+| ExpressRoute-társítás      | `/29`  | `10.10.3.8/29`   |
 
 
-### <a name="network-ports-required-to-communicate-with-the-service"></a>A szolgáltatással való kommunikációhoz szükséges hálózati portok
+## <a name="required-network-ports"></a>Szükséges hálózati portok
 
 | Forrás | Cél | Protokoll | Port | Leírás  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
@@ -67,20 +71,17 @@ Az alhálózatok:
 | Helyszíni vCenter-hálózat | Saját felhőalapú felügyeleti hálózat | TCP | 8000 |  helyszíni vCenter származó virtuális gépek vMotion saját Felhőbeli vCenter   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP-és DNS-feloldási megfontolások
-A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a keresési és IP-címek hozzárendeléséhez. Ezeknek a szolgáltatásoknak a biztosításához megfelelő DHCP-és DNS-infrastruktúra szükséges. A virtuális gépeket konfigurálhatja úgy, hogy biztosítsa ezeket a szolgáltatásokat a saját felhőalapú környezetében.  
+A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a keresési és IP-címek hozzárendeléseihez. Ezeknek a szolgáltatásoknak a biztosításához megfelelő DHCP-és DNS-infrastruktúra szükséges. A virtuális gépeket konfigurálhatja úgy, hogy biztosítsa ezeket a szolgáltatásokat a saját felhőalapú környezetében.  
 
-Azt javasoljuk, hogy használja a beépített DHCP-szolgáltatást a NSX, vagy használjon helyi DHCP-kiszolgálót a privát felhőben, ahelyett, hogy a szórásos DHCP-forgalmat átirányítja a WAN-on keresztül a helyszíni környezetbe.
+A DHCP-szolgáltatás beépített használatával NSX vagy használhat helyi DHCP-kiszolgálót a privát felhőben ahelyett, hogy útválasztást továbbít a DHCP-forgalomnak a WAN-on keresztül a helyszíni környezetbe.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megismerte a következőket:
+Ebben az oktatóanyagban megismerte az Azure VMware-megoldás saját felhő üzembe helyezésének szempontjait és követelményeit. 
 
-> [!div class="checklist"]
-> * Hálózati kapcsolatra vonatkozó követelmények
-> * DHCP az Azure VMware-megoldásban
 
 Ha a megfelelő hálózatkezelés van érvényben, folytassa a következő oktatóanyaggal, amely az Azure VMware-megoldás saját felhőjét hozza létre.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure VMware-megoldás – saját felhő létrehozása](tutorial-create-private-cloud.md)
+> [Azure VMware-megoldás saját felhő létrehozása](tutorial-create-private-cloud.md)

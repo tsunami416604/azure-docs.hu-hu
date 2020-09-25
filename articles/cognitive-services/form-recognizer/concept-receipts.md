@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262348"
 ---
-# <a name="receipt-concepts"></a>Bevételezési fogalmak
+# <a name="receipt-concepts"></a>Nyugtákra vonatkozó fogalmak
 
 Az Azure-űrlap felismerője az előre elkészített modellek egyikével elemezheti a nyugtákat. A beérkezési API Kinyeri a legfontosabb információkat az értékesítési visszaigazolásokból az angol nyelven, például a kereskedelmi név, a tranzakció dátuma, a tranzakciók összege, a sorok és egyebek. 
 
@@ -74,14 +74,11 @@ A beérkezési API a következő információkat is megadja:
   > Nyelvi bevitel 
   >
   > Az előre összeállított nyugták v 2.1 – preview. 1 egy opcionális kérési paraméterrel megadhatja a további angol piacoktól érkező bevételezési területi beállításokat. Az ausztrál (EN-AU), Kanada (EN-CA), Nagy-Britannia (EN-GB) és India (en-IN) típusú értékesítési nyugták esetében megadhatja a területi beállításokat a jobb eredmények eléréséhez. Ha nincs megadva területi beállítás a v 2.1-ben – előzetes verzió. 1, a modell alapértelmezett értéke az EN-US modell lesz.
-  
- ### <a name="input-requirements"></a>Bemeneti követelmények 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>A Bevételezés elemzése művelet
 
-Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) egy nyugtát tartalmazó képet vagy PDF-fájlt vesz fel bemenetként, és kinyeri az érdekes és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) egy nyugtát tartalmazó képet vagy PDF-fájlt vesz fel bemenetként, és Kinyeri a kamat és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
@@ -454,9 +451,12 @@ A nyugták hasznos információkat tartalmaznak, amelyek segítségével elemezh
 
 A beérkezési API a [AIBuilder-visszaigazolás feldolgozási funkcióját](https://docs.microsoft.com/ai-builder/prebuilt-receipt-processing)is felhasználja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Kövesse a gyors kezdést a [befogadási API Python](./quickstarts/python-receipts.md)gyors útmutatója című témakörben.
-- Az űrlap- [felismerő REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)megismerése.
-- További információ az [űrlap-felismerőről](overview.md).
+- Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) rövid útmutatóját, hogy megkezdje a nyugták feldolgozását a választott nyelven az űrlap-felismerővel.
+- Vagy kövesse a [beérkezési API Python](./quickstarts/python-receipts.md) rövid útmutatóját a visszaigazolások felismeréséhez a REST API használatával.
 
+## <a name="see-also"></a>Lásd még
+
+* [Mi a Form Recognizer?](./overview.md)
+* [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)

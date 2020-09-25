@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289021"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
-A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET`a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. Az SQL on-demand (előzetes verzió) erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
+A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET` a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. Az SQL on-demand (előzetes verzió) erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
 
 A `OPENROWSET` függvény hivatkozhat a `FROM` lekérdezés záradékára úgy, mintha a tábla neve lenne `OPENROWSET` . Olyan beépített TÖMEGES szolgáltatón keresztül támogatja a tömeges műveleteket, amely lehetővé teszi, hogy egy fájlból származó adatok beolvassák és visszaadjanak a sorhalmazban.
 
@@ -26,7 +26,7 @@ A `OPENROWSET` függvény hivatkozhat a `FROM` lekérdezés záradékára úgy, 
 
 A OPENROWSET függvény a szinapszis SQL-ben beolvassa a fájl (ok) tartalmát egy adatforrásból. Az adatforrás egy Azure Storage-fiók, amely explicit módon hivatkozható a `OPENROWSET` függvényben, vagy dinamikusan következtetni lehet az olvasni kívánt fájlok URL-címére.
 A `OPENROWSET` függvény opcionálisan tartalmazhat egy `DATA_SOURCE` paramétert a fájlokat tartalmazó adatforrás megadásához.
-- `OPENROWSET`a nem használható a `DATA_SOURCE` fájlok tartalmának közvetlen olvasására a megadott URL-címről a következő `BULK` beállítással:
+- `OPENROWSET` a nem használható a `DATA_SOURCE` fájlok tartalmának közvetlen olvasására a megadott URL-címről a következő `BULK` beállítással:
 
     ```sql
     SELECT *
@@ -36,7 +36,7 @@ A `OPENROWSET` függvény opcionálisan tartalmazhat egy `DATA_SOURCE` paraméte
 
 Ezzel a módszerrel gyorsan és egyszerűen elolvashatja a fájlok tartalmát előzetes konfigurálás nélkül. Ez a beállítás lehetővé teszi, hogy az alapszintű hitelesítési lehetőség használatával hozzáférjen a tárolóhoz (Azure ad áteresztő Azure AD-bejelentkezésekhez és SAS-jogkivonat SQL-bejelentkezésekhez). 
 
-- `OPENROWSET`a `DATA_SOURCE` használatával a megadott Storage-fiókban található fájlok érhetők el:
+- `OPENROWSET` a `DATA_SOURCE` használatával a megadott Storage-fiókban található fájlok érhetők el:
 
     ```sql
     SELECT *
@@ -58,7 +58,7 @@ Egy adatbázis-felhasználónak engedéllyel kell rendelkeznie `ADMINISTER BULK 
 
 A tároló rendszergazdájának engedélyeznie kell a felhasználók számára, hogy érvényes SAS-jogkivonatot biztosítanak, vagy engedélyezni kell az Azure AD-rendszerbiztonsági tag számára a tárolási fájlok elérését. További információ a tárterület-hozzáférés-vezérlésről [ebben a cikkben](develop-storage-files-storage-access-control.md).
 
-`OPENROWSET`a következő szabályok segítségével határozhatja meg, hogyan hitelesíthető a tárolóban:
+`OPENROWSET` a következő szabályok segítségével határozhatja meg, hogyan hitelesíthető a tárolóban:
 - A `OPENROWSET` `DATA_SOURCE` hitelesítési mechanizmus nélkül a hívó típusától függ.
   - Bármely felhasználó használhatja `OPENROWSET` anélkül `DATA_SOURCE` , hogy nyilvánosan elérhető fájlokat kellene beolvasnia az Azure Storage-ban.
   - Az Azure AD-bejelentkezések saját [Azure ad-identitással](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) férhetnek hozzá a védett fájlokhoz, ha az Azure Storage lehetővé teszi, hogy az Azure ad-felhasználó hozzáférjen a mögöttes fájlokhoz (például ha a hívó rendelkezik `Storage Reader` engedéllyel az Azure Storage szolgáltatásban).
@@ -117,9 +117,9 @@ Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív 
 | -------------------------- | ------ | ---------------------------------------------------- |
 | Azure Blob Storage         | http [s]  | \<storage_account>. blob.core.windows.net/path/file   |
 | Azure Blob Storage         | wasb [s]  | \<container>@\<storage_account>. blob.core.windows.net/path/file |
-| Azure Data Lake Store Gen1 | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | http [s]  | \<storage_account>. dfs.core.windows.net/Path/file   |
-| Azure Data Lake Store Gen2 | abfs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Storage Gen1 | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen2 | http [s]  | \<storage_account>. dfs.core.windows.net/Path/file   |
+| Azure Data Lake Storage Gen2 | aufs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -135,7 +135,7 @@ Ha a unstructured_data_path mappát adja meg, az SQL igény szerinti lekérdezé
 > [!NOTE]
 > A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a Base függvénytől eltérően az SQL igény szerint visszaadja azokat a fájlokat, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
-Ha az alábbi példában a unstructured_data_path =, az `https://mystorageaccount.dfs.core.windows.net/webdata/` SQL igény szerinti lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem tér vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
+Ha az alábbi példában a unstructured_data_path =, az `https://mystorageaccount.dfs.core.windows.net/webdata/` SQL igény szerinti lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
 ![Rekurzív adatértékek külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
 
@@ -184,7 +184,7 @@ A ESCAPE_CHAR paraméter attól függetlenül lesz alkalmazva, hogy a FIELDQUOTE
 
 FIRSTROW = ' first_row ' 
 
-Meghatározza a betöltendő első sor számát. Az alapértelmezett érték 1. Ez jelzi a megadott adatfájl első sorát. A sorok száma a sorok lezáróinak számlálásával határozható meg. A FIRSTROW 1-alapú.
+Meghatározza a betöltendő első sor számát. Az alapértelmezett érték 1, és jelzi a megadott adatfájl első sorát. A sorok száma a sorok lezáróinak számlálásával határozható meg. A FIRSTROW 1-alapú.
 
 FIELDQUOTE = ' field_quote ' 
 
@@ -203,7 +203,7 @@ A fájlok olvasásakor használandó elemző verzió megadása. Jelenleg támoga
 - PARSER_VERSION = "1,0"
 - PARSER_VERSION = "2,0"
 
-A CSV-elemző 1,0-es verziója alapértelmezés szerint gazdag, míg a 2,0 a teljesítményhez készült, és nem támogatja az összes beállítást és kódolást. 
+A CSV-elemző 1,0-es verziója alapértelmezett, és gazdag funkció. Az 2,0-es verzió a teljesítményre van felépítve, és nem támogatja az összes beállítást és kódolást. 
 
 CSV-elemző 2,0-es verziójának sajátosságai:
 
@@ -229,7 +229,7 @@ WITH (
 ) AS [r]
 ```
 
-A következő példa az első sor összes oszlopát adja vissza a (z) és a (z)-ben található népszámlálás-adatkészletből, az oszlopnevek és az adattípusok megadása nélkül: 
+A következő példa visszaadja az első sor összes oszlopát a számbavételi adatkészletből, a parketta formátuma, valamint az oszlopnevek és az adattípusok megadása nélkül: 
 
 ```sql
 SELECT 
@@ -241,6 +241,6 @@ FROM
     ) AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

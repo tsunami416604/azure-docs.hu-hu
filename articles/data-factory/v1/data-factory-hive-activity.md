@@ -1,6 +1,6 @@
 ---
 title: Adatátalakítás a méhkas tevékenységgel – Azure
-description: Megtudhatja, hogyan használhatja a kaptár tevékenységeket egy Azure-beli adatgyárban a kaptár-lekérdezések futtatásához egy igény szerinti vagy saját HDInsight-fürtön.
+description: Megtudhatja, hogyan használhatja a kaptár tevékenységet egy Azure-beli adatelőállító v1-ben a kaptár-lekérdezések egy igény szerinti vagy saját HDInsight-fürtön való futtatásához.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252783"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a kaptár tevékenységgel Azure Data Factory 
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -74,7 +74,7 @@ A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúr�
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |A tevékenység neve |Yes |
+| név |A tevékenység neve |Yes |
 | leírás |A tevékenység által használt szöveg leírása |No |
 | típus |HDinsightHive |Yes |
 | bemenetek |A kaptár tevékenység által felhasznált bemenetek |No |

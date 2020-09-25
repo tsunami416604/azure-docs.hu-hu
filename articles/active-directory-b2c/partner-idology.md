@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259322"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Oktatóanyag a IDology konfigurálásához a Azure Active Directory B2C 
 
@@ -67,7 +67,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott API-kód üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 
 Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
 
@@ -75,7 +75,7 @@ Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD kon
 
 Az Alkalmazásbeállítások [konfigurálhatók app Service az Azure-ban](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Megjegyzések |
+| Alkalmazásbeállítások | Forrás | Jegyzetek |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology-fiók konfigurálása |     |
 |IdologySettings:ApiPassword | IDology-fiók konfigurálása |     |
@@ -139,7 +139,7 @@ A minta szabályzat ezeket a neveket használja:
 
 7. A **Folytatás**gombra való belépés után a IDology puzzle jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

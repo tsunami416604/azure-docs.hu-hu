@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289480"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
@@ -50,7 +50,7 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 2. Navigáljon a Azure Data Lake Storage Gen2 fiókhoz
 3. Navigáljon az Azure szinapszis munkaterülethez kiválasztott tárolóhoz (fájlrendszerhez)
-4. Kattintson **Access Control (iam)**
+4. **Access Control kiválasztása (iam)**
 5. Rendelje hozzá a következő szerepköröket:
    1. **Olvasói** szerepkör:  `Synapse_WORKSPACENAME_Users`
    2. **Storage blob-adattulajdonosi** szerepkör:  `Synapse_WORKSPACENAME_Admins`
@@ -64,17 +64,17 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 
 1. Ugrás az [ **Azure szinapszis webes felhasználói felületére**](https://web.azuresynapse.net)
 2. Ugrás a **Manage**   >  **biztonsági**  >  **hozzáférés-vezérlés** kezelése
-3. Kattintson a **rendszergazda hozzáadása**lehetőségre, majd válassza a `Synapse_WORKSPACENAME_Admins`
+3. Válassza a **rendszergazda hozzáadása**lehetőséget, majd válassza a `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. lépés: az SQL-rendszergazdai hozzáférés konfigurálása a munkaterülethez
 
 1. Ugrás a [Azure Portal](https://portal.azure.com)
 2. Navigáljon a munkaterületre
 3. Lépjen a **Beállítások**  >  **Active Directory adminisztrátor**
-4. Kattintson a **rendszergazda beállítása** elemre.
+4. Válassza a **rendszergazda beállítása** lehetőséget.
 5. A következők szerint válasszon: `Synapse_WORKSPACENAME_Admins`
-6. kattintson a **kiválasztás** elemre.
-7. kattintson a **Mentés** gombra
+6. Válassza a **kiválasztás** lehetőséget.
+7. Válassza a **Mentés** lehetőséget
 
 > [!NOTE]
 > WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.

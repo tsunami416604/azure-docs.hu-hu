@@ -2,19 +2,19 @@
 title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban az erőforrástípus többszöri üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293968"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció az ARM-sablonokban
 
 Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás több példányát a Azure Resource Manager-(ARM-) sablonban. Ha hozzáadja a **Másolás** elemet a sablon erőforrások szakaszához, akkor dinamikusan beállíthatja a telepítendő erőforrások számát. Emellett ne kelljen megismételni a sablon szintaxisát.
 
-A másolást a [Tulajdonságok](copy-properties.md), a [változók](copy-variables.md) és a [kimenetek](copy-outputs.md)segítségével is használhatja.
+A másolást a [Tulajdonságok](copy-properties.md), a [változók](copy-variables.md)és a [kimenetek](copy-outputs.md)segítségével is használhatja.
 
 Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
 
@@ -156,6 +156,8 @@ Alapértelmezés szerint a Resource Manager párhuzamosan hozza létre az erőfo
 
 Azonban érdemes megadnia, hogy az erőforrások sorba legyenek telepítve. Ha például éles környezetet frissít, érdemes lehet megosztani a frissítéseket, hogy csak egy adott szám legyen frissítve egyszerre. Egy adott erőforrás egynél több példányának soros üzembe helyezéséhez állítsa a `mode` **soros** értéket, és adja meg `batchSize` az egyszerre telepítendő példányok számát. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
 
+A nem lehet nagyobb az értéknél a `batchSize` `count` másolási elemben.
+
 Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, használja a következőt:
 
 ```json
@@ -287,7 +289,7 @@ Az alábbi példák egy erőforrás vagy tulajdonság egynél több példányán
 |[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
 |[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Több biztonsági szabályt telepít egy hálózati biztonsági csoportra. A biztonsági szabályokat egy paraméter alapján hozza létre. A paraméternél tekintse meg a [több NSG-paramétert tartalmazó fájlt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonok használatával](template-tutorial-create-multiple-instances.md)című témakört.
 * A másolási elem egyéb felhasználási módjaiért lásd:

@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295038"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez
 
@@ -306,7 +306,7 @@ A Microsoft olyan eszközt biztosított, amellyel tesztelheti az SAML 2,0-alapú
 2.  A telepítés gombra kattintva megkezdheti az eszköz letöltését és telepítését.
 3.  Válassza a "nem tudom beállítani az Office 365, az Azure vagy más, Azure Active Directory használó szolgáltatásokkal való összevonást" lehetőséget.
 4.  Az eszköz letöltése és futtatása után megjelenik a kapcsolati diagnosztika ablak. Az eszköz végigvezeti az összevonási kapcsolatok tesztelésének lépésein.
-5.  A connectivity Analyzer megnyitja az SAML 2,0-IDENTITÁSSZOLGÁLTATÓ a bejelentkezéshez, adja meg a tesztelni kívánt felhasználó hitelesítő adatait: ![ SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  A connectivity Analyzer megnyitja az SAML 2,0 IDENTITÁSSZOLGÁLTATÓ a bejelentkezéshez, adja meg a tesztelni kívánt felhasználó hitelesítő adatait: ![ képernyőkép, amely az SAML 2,0 identitásszolgáltató bejelentkezési ablakát jeleníti meg.](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Az összevonási teszt bejelentkezési ablakában meg kell adnia egy fióknevet és egy jelszót ahhoz az Azure AD-bérlőhöz, amely az SAML 2,0-identitás-szolgáltatóval való összevonásra van konfigurálva. Az eszköz megkísérli a bejelentkezést a hitelesítő adatok használatával, és a bejelentkezési kísérlet során végrehajtott tesztek részletes eredményeit kimenetként adja meg.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Ez az ablak a tesztelés sikertelen eredményét jeleníti meg. A részletes eredmények megtekintése elemre kattintva megtekintheti az egyes végrehajtott tesztek eredményeire vonatkozó információkat. Az eredményeket lemezre is mentheti, hogy megossza őket.

@@ -3,16 +3,22 @@ title: Azure Service Fabric – a Service Fabric Application kulcstartó-referen
 description: Ez a cikk azt ismerteti, hogyan használható a Service-Fabric KeyVaultReference támogatása az alkalmazás titkos kulcsaihoz.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246163"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261141"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
 
 A felhőalapú alkalmazások készítése során gyakran előforduló kihívás az alkalmazás által igényelt titkok biztonságos tárolása. Előfordulhat például, hogy a tároló adattárának hitelesítő adatait szeretné tárolni a kulcstartóban, és hivatkozni rá az alkalmazás jegyzékfájljában. Service Fabric a KeyVaultReference Service Fabric felügyelt identitást használ, és megkönnyíti a kulcstartó-titkok hivatkozását. A cikk további részében részletesen ismertetjük a Service Fabric KeyVaultReference használatát, és néhány tipikus használatot tartalmaz.
+
+> [!IMPORTANT]
+> Az előzetes verziójú funkció használata éles környezetben nem ajánlott.
+
+> [!NOTE]
+> A kulcstartó referenciájának előzetes verziója csak a [verzióval](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) ellátott titkokat támogatja. A verzióval nem rendelkező titkok nem támogatottak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -90,14 +96,14 @@ Tegyük fel, hogy az alkalmazásnak a kulcstartóban tárolt háttér-adatbázis
 
 - Szakasz hozzáadása a settings.xml
 
-    Paraméter definiálása `DBPassword` típussal `KeyVaultReference` és értékkel`<KeyVaultURL>`
+    Paraméter definiálása `DBPassword` típussal `KeyVaultReference` és értékkel `<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- A ApplicationManifest.xml új szakaszának hivatkozása`<ConfigPackagePolicies>`
+- A ApplicationManifest.xml új szakaszának hivatkozása `<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>

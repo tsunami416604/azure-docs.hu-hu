@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032299"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289169"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>CSOPORTOSÍTÁSi lehetőségek a szinapszis SQL-ben
 A szinapszis SQL lehetővé teszi a megoldások fejlesztését különböző CSOPORTOSÍTÁSi beállításokkal. 
 
 ## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY do
 
-A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával.
+A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával.
 
 Az SQL on-demand a CSOPORTOSÍTÁSi lehetőségek teljes körét támogatja. Az SQL-készlet korlátozott számú CSOPORTOSÍTÁSi lehetőséget támogat.
 
@@ -57,7 +57,7 @@ GROUP BY ROLLUP (
 A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
-* Country
+* Ország
 * Végösszeg
 
 Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:
@@ -124,7 +124,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Az alábbi képen a [CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)eredményei láthatók:
+Az alábbi képen a [CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)eredményei láthatók:
 
 ![Csoportosítás adatkockával](./media/develop-group-by-options/develop-group-by-cube.png)
 

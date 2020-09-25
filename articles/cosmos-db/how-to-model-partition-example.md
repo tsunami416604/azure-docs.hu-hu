@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d5809d7475759450a513153abf641f7943163d98
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422215"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253234"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával
 
@@ -20,7 +20,7 @@ Ez a cikk számos olyan Azure Cosmos DB-fogalomra épül, mint például [az ada
 
 Ha általában a kapcsolatok adatbázisaival dolgozik, valószínűleg az adatmodell kialakításával kapcsolatos szokásait és tapasztalatait is felkészítette. Az egyes megkötések, de a Azure Cosmos DB egyedi erőssége miatt az ajánlott eljárások többsége nem jól lefordítható, és a legoptimálisabb megoldásokra is húzhatja őket. Ennek a cikknek a célja, hogy végigvezeti Önt a valós használati eset modellezésének teljes folyamatán a Azure Cosmos DBon, az elemek modellezése és a tárolók particionálása között.
 
-## <a name="the-scenario"></a>A forgatókönyv
+## <a name="the-scenario"></a>Esetleírás
 
 Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket*. *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
 
@@ -323,7 +323,7 @@ function createComment(postId, comment) {
 Ez a tárolt eljárás a bejegyzés és az új Megjegyzés törzsének AZONOSÍTÓját veszi fel paraméterekként, majd:
 
 - a bejegyzés beolvasása
-- növeli a`commentCount`
+- növeli a `commentCount`
 - a bejegyzés cseréje
 - hozzáadja az új megjegyzést
 
@@ -365,7 +365,7 @@ Ez a tárolt eljárás a felhasználó AZONOSÍTÓját és a felhasználó új f
 
 - lekéri az összes elemet `userId` (amely lehet hozzászólások, hozzászólások vagy kedvelő)
 - mindegyik elemhez
-  - lecseréli a`userUsername`
+  - lecseréli a `userUsername`
   - az tétel cseréje
 
 > [!IMPORTANT]
@@ -418,7 +418,7 @@ A fennmaradó lekérdezés azonban továbbra sem a tároló partíciós kulcsár
 Ennek a helyzetnek a meggondolása valójában egyszerű:
 
 1. A kérésnek szűrnie kell a *-t,* `userId` mert egy adott felhasználó összes bejegyzését szeretné beolvasni
-1. Nem jól teljesíti, mert a `posts` tárolón fut, amelyet a nem particionál`userId`
+1. Nem jól teljesíti, mert a `posts` tárolón fut, amelyet a nem particionál `userId`
 1. Egyértelművé tettük a teljesítménnyel kapcsolatos problémát, ha a kérelmet egy olyan tárolón hajtja *végre, amelyet a következő particionál:*`userId`
 1. Kiderül, hogy már van ilyen tárolónk: a `users` tároló!
 

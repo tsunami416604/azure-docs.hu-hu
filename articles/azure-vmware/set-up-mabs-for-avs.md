@@ -3,16 +3,16 @@ title: Azure Backup Server beállítása Azure VMware-megoldáshoz
 description: Állítsa be az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 516f4a2fa92740897e186a782e276fc6d40fc925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255009"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server beállítása Azure VMware-megoldáshoz
 
-Azure Backup Server egy robusztus nagyvállalati biztonsági mentési és helyreállítási rendszer, amely hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához. Az Azure VMware-megoldás előzetes verziójában a Azure Backup Server használatával konfigurálhatja a virtuális gép (VM) szintjének biztonsági mentését. 
+Azure Backup Server egy robusztus nagyvállalati biztonsági mentési és helyreállítási rendszer, amely hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához. Az Azure VMware megoldásban a Azure Backup Server használatával konfigurálhatja a virtuális gép (VM) szintjének biztonsági mentését. 
 
 A Azure Backup Server a következő helyre tudja tárolni a biztonsági mentési fájlokat:
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan készítheti elő Azure VMware-megoldási 
 - **Ügynök nélküli biztonsági mentés:** Azure Backup Server nem szükséges, hogy az ügynök telepítve legyen a vCenter vagy ESXi-kiszolgálón a virtuális gép biztonsági mentéséhez. Ehelyett csak adja meg az IP-címet vagy a teljes tartománynevet (FQDN), valamint a VMware-kiszolgáló Azure Backup Server használatával történő hitelesítéséhez használt bejelentkezési hitelesítő adatokat.
 - **Felhőbe integrált biztonsági mentés:** Azure Backup Server védi a munkaterheléseket a lemezre és a felhőre. Azure Backup Server biztonsági mentési és helyreállítási munkafolyamata segítségével kezelheti a hosszú távú adatmegőrzést és a telephelyen kívüli biztonsági mentést.
 - **A vCenter által felügyelt virtuális gépek észlelése és biztosítása:** Azure Backup Server észleli és védi a vCenter-vagy ESXi-kiszolgálón üzembe helyezett virtuális gépeket. A Azure Backup Server a vCenter által felügyelt virtuális gépeket is észleli, így a nagyméretű telepítések is védhetők.
-- **Mappa szintű autoprotection:** a vCenter lehetővé teszi a virtuális gépek megszervezését a virtuálisgép-mappákban. Azure Backup Server észleli ezeket a mappákat, és felhasználhatja a virtuális gépeket a mappa szintjén, amely tartalmazza az összes almappát is. A mappák védelme során Azure Backup Server nem csak a mappában lévő virtuális gépeket védi, hanem a később hozzáadott virtuális gépeket is. A Azure Backup Server naponta észleli az új virtuális gépeket, és automatikusan megvédi azokat. Amikor a virtuális gépeket rekurzív mappákba rendezi, Azure Backup Server automatikusan észleli és védi a rekurzív mappákban üzembe helyezett új virtuális gépeket.
+- **Mappa szintű autoprotection:** a vCenter lehetővé teszi a virtuális gépek megszervezését a virtuálisgép-mappákban. A Azure Backup Server észleli ezeket a mappákat. Ezzel a beállítással a virtuális gépeket a mappa szintjén biztosíthatja, amely tartalmazza az összes almappát is. A mappák védelme során Azure Backup Server nem csak a mappában lévő virtuális gépeket védi, hanem a később hozzáadott virtuális gépeket is. A Azure Backup Server naponta észleli az új virtuális gépeket, és automatikusan megvédi azokat. Amikor a virtuális gépeket rekurzív mappákba rendezi, Azure Backup Server automatikusan észleli és védi a rekurzív mappákban üzembe helyezett új virtuális gépeket.
 - **Azure Backup Server továbbra is biztosítja a fürtön belüli VMotioned virtuális gépeket:** Mivel a virtuális gépek a fürtön belüli terheléselosztás vMotioned, Azure Backup Server automatikusan észleli és folytatja a virtuális gép védelmét.
 - A **szükséges fájlok gyorsabb helyreállítása:** A Azure Backup Server a teljes virtuális gép helyreállítása nélkül állíthatja helyre a fájlokat vagy mappákat egy Windows rendszerű virtuális gépről.
 
@@ -68,7 +68,7 @@ Győződjön meg arról, hogy az [Azure-ban konfigurálja a VMware Private-felh�
 
 ### <a name="determine-the-size-of-the-virtual-machine"></a>A virtuális gép méretének meghatározása
 
-Az előző lépésben létrehozott virtuális hálózaton létre kell hoznia egy Windows rendszerű virtuális gépet. Ha Azure Backup Server futtatására szolgáló kiszolgálót választ, kezdje a Windows Server 2019 Datacenter katalógusának rendszerképével. Az oktatóanyag [hozza létre az első Windows rendszerű virtuális gépet a Azure Portal az](../virtual-machines/windows/quick-create-portal.md) Azure-ban az ajánlott virtuális géppel indul el, még akkor is, ha soha nem használta az Azure-t.
+Hozzon létre egy Windows rendszerű virtuális gépet az előző lépésben létrehozott virtuális hálózaton. Ha Azure Backup Server futtatására szolgáló kiszolgálót választ, kezdje a Windows Server 2019 Datacenter katalógusának rendszerképével. Az oktatóanyag [hozza létre az első Windows rendszerű virtuális gépet a Azure Portal az](../virtual-machines/windows/quick-create-portal.md) Azure-ban az ajánlott virtuális géppel indul el, még akkor is, ha soha nem használta az Azure-t.
 
 A következő táblázat összefoglalja a védett munkaterhelések maximális számát az egyes Azure Backup Server virtuális gépek méretével kapcsolatban. Az információk belső teljesítmény- és méretezési teszteken alapulnak, amelyek a munkaterhelések méretére és forgalmára kanonikus értékeket alkalmaznak. A tényleges munkaterhelés mérete nagyobb is lehet, de a Azure Backup Server virtuális géphez csatlakoztatott lemezek számára is elérhetőnek kell lennie.
 
@@ -136,11 +136,11 @@ Bár az előzetes verzió használatakor nem támogatott, az Azure-beli virtuál
 
 A Recovery Services-tároló egy olyan tárolási entitás, amely az idő múlásával létrehozott helyreállítási pontokat tárolja. Emellett a védett elemekhez társított biztonsági mentési házirendeket is tartalmaz.
 
-1. Jelentkezzen be az előfizetésbe a [Azure Portalban](https://portal.azure.com/).
+1. Jelentkezzen be az előfizetésébe az [Azure Portalon](https://portal.azure.com/).
 
-1. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
+1. A bal oldali menüben válassza a **Minden szolgáltatás** lehetőséget.
 
-   ![A bal oldali menüben válassza a minden szolgáltatás lehetőséget.](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![A bal oldali menüben válassza a Minden szolgáltatás lehetőséget.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. A **minden szolgáltatás** párbeszédpanelen írja be a **Recovery Services** , és válassza ki **Recovery Services** tárolókat a listából.
 
@@ -148,26 +148,26 @@ A Recovery Services-tároló egy olyan tárolási entitás, amely az idő múlá
 
    Megjelenik az előfizetésben található Recovery Services-tárolók listája.
 
-1. A **Recovery Services** -tárolók irányítópultján válassza a **Hozzáadás**lehetőséget.
+1. A **Recovery Services-tárolók** irányítópultján kattintson a **Hozzáadás** elemre.
 
    ![Recovery Services-tároló hozzáadása.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
-   Megnyílik az **Recovery Services** -tároló párbeszédpanel.
+   Megnyílik a **Recovery Services-tároló** párbeszédpanel.
 
 1. Adja meg a **név**, az **előfizetés**, az **erőforráscsoport**és a **hely**értékét.
 
    ![Konfigurálja a Recovery Services-tárolót.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Név**: adjon meg egy rövid nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetésben. Olyan nevet adjon meg, amely legalább kettőnél több mint 50 karakterből áll. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat.
-   - **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha csak egy előfizetés tagja, akkor ezt a nevet fogja látni. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Több választási lehetőség is van, ha a munkahelyi vagy iskolai fiók egynél több Azure-előfizetéshez van társítva.
-   - **Erőforráscsoport**: használjon meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata**lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a nevet.
-   - **Hely**: válassza ki a tároló földrajzi régióját. Ha egy tárolót szeretne létrehozni az Azure VMware megoldás virtuális gépei számára, a tárolónak ugyanabban a régióban *kell lennie* , mint az Azure VMware-megoldás saját felhője.
+   - **Név**: Adjon meg egy, a tárolót azonosító rövid nevet. A névnek egyedinek kell lennie az Azure-előfizetésben. Olyan nevet adjon meg, amely legalább kettőnél több mint 50 karakterből áll. A névnek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
+   - **Előfizetés**: Válassza ki a használni kívánt előfizetést. Ha csak egyetlen előfizetés tagja, azt a nevet fogja látni. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a munkahelyi vagy iskolai fiók több Azure-előfizetéshez van társítva.
+   - **Erőforráscsoport**: Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megjelenítéséhez válassza ki a **Meglévő használata** elemet, majd válasszon egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához kattintson az **Új létrehozása** elemre, majd adjon meg egy nevet.
+   - **Hely**: Válassza ki a tároló földrajzi régióját. Ha egy tárolót szeretne létrehozni az Azure VMware megoldás virtuális gépei számára, a tárolónak ugyanabban a régióban *kell lennie* , mint az Azure VMware-megoldás saját felhője.
 
-1. Ha készen áll az Recovery Services-tároló létrehozására, válassza a **Létrehozás**lehetőséget.
+1. Amikor készen áll a Recovery Services-tároló létrehozására, válassza a **Létrehozás** elemet.
 
    ![Hozza létre a Recovery Services-tárolót.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
-   A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területén. A tároló létrehozása után a Recovery Services-tárolók listájában látható. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
+   A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában. Ha nem látja a tárat, válassza a **Frissítés** lehetőséget.
 
    ![Frissítse a Backup-tárolók listáját.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
@@ -183,8 +183,6 @@ A tárolási replikáció lehetőséggel választhat a Geo-redundáns tárolók 
 1. A **Beállítások** alatt válassza a **Tulajdonságok** elemet. A **biztonsági mentés konfigurálása**területen válassza a **frissítés**lehetőséget.
 
 1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
-
-   ![Adja meg az új tároló tárolási konfigurációját.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>A szoftvercsomag letöltése és telepítése
 
@@ -309,7 +307,7 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
    * **Adatbázis**: a **databasename** **reportserver $ \<SQLInstanceName> **-nek kell lennie.
    * **Webportál URL-címe**: a **virtuális könyvtárnak** **Reports_nak \<SQLInstanceName> **kell lennie.
 
-   [További](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
+   További információ az [SSRS-konfigurációról](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode).
 
    > [!NOTE]
    > A [Microsoft Online Services használati feltételei](https://www.microsoft.com/licensing/product-licensing/products) (OST) szabályozzák a Azure Backup Server-adatbázisként használt SQL Server licencelését. Az OST-nek megfelelően a SQL Server a csomagban Azure Backup Server csak a Azure Backup Server adatbázisa használható.
@@ -387,7 +385,7 @@ A Azure Backup Server v3 csak a tárolási köteteket fogadja el. Kötet hozzáa
 
 ![Elérhető kötetek hozzáadása](../backup/media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan konfigurálhatja az Azure VMware-megoldáson futó VMware virtuális gépek biztonsági mentését Azure Backup Server használatával.
 

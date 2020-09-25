@@ -3,13 +3,13 @@ title: Rövid útmutató – Docker-tároló üzembe helyezése tároló példá
 description: Ebben a rövid útmutatóban a Docker CLI használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányban futó tároló-webalkalmazást
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 37a6c430055e440d149b9a793c453251787267d4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.custom: devx-track-js
+ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262314"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Docker CLI használatával
 
@@ -19,7 +19,7 @@ Ebben a rövid útmutatóban natív Docker CLI-parancsokat használ a Docker-tá
 
 :::image type="content" source="media/quickstart-docker-cli/view-application-running-in-an-azure-container-instance.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
 
 Ebben a rövid útmutatóban a [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) vagy [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg)rendszerhez elérhető Docker Desktop 2.3.0.5 vagy újabb verzióra van szükség. Vagy telepítse a [Docker ACI Integration CLI-t a Linux rendszerhez](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux). 
 
